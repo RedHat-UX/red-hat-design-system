@@ -1,3 +1,9 @@
+<style data-helmet>
+  rh-alert[state="info"] {
+    width: 408px
+  }
+</style>
+
 ## Overview
 
 {{ tagName | getElementDescription }}
@@ -5,7 +11,8 @@
 <uxdot-example width-adjustment="456px">
   <img alt="Two examples of the alert element"
        src="alert-overview.svg"
-       width="456px">
+       width="456"
+       height="276">
 </uxdot-example>
 
 {% repoStatusList repoStatus=repoStatus %}

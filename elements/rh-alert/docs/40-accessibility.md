@@ -5,7 +5,8 @@ A user should have the ability to navigate to and interact with alerts using the
 <uxdot-example width-adjustment="456px">
   <img src="../alert-a11y-keyboard-interactions.svg" 
       alt="Example of the keyboard navigation tab stops on both inline and toast variant alerts"
-      width="456px">
+      width="456"
+      height="276">
 </uxdot-example>
 
 <rh-table>
@@ -40,7 +41,8 @@ A logical focus order helps users understand and operate our websites and produc
 <uxdot-example width-adjustment="456px">
   <img src="../alert-a11y-focus-order.svg" 
       alt="Focus goes to action buttons and to the close button last" 
-      width="456px">
+      width="456"
+      height="276">
 </uxdot-example>
 
 {% include 'partials/accessibility/ariaguide.md' %}

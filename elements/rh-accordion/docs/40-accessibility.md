@@ -1,8 +1,11 @@
 ## Keyboard interactions
 Each panel is a focus stop where `Enter` or `Space` expands or collapses each panel.
 
-<uxdot-example>
-  <img src="../accordion-keyboard-interactions.png" alt="Accordion keyboard interactions; pressing Tab will focus the top panel, pressing Tab again will move focus to the next panel underneath, and pressing Enter or Space will expand the panel">
+<uxdot-example width-adjustment="872px">
+  <img src="../accordion-keyboard-interactions.png" 
+      alt="Accordion keyboard interactions; pressing Tab will focus the top panel, pressing Tab again will move focus to the next panel underneath, and pressing Enter or Space will expand the panel"
+      width="872"
+      height="357">
 </uxdot-example>
 
 <rh-table>

@@ -59,7 +59,8 @@ A logical focus order helps keyboard users operate our websites. Elements need t
 <uxdot-example width-adjustment="800px">
   <img src="../audio-player-a11y-focus-order.png" 
       alt="Image of all players and the Compact player with a contextual menu open showing the focus order from left to right and top to bottom"
-      width="800px">
+      width="800"
+      height="614">
 </uxdot-example>
 
 ### Toggling a feature
@@ -68,7 +69,8 @@ When a user closes a feature by pressing <kbd>Space</kbd> or <kbd>Esc</kbd>, foc
 <uxdot-example width-adjustment="738px">
   <img src="../audio-player-a11y-toggling-feature.png" 
       alt="Image of the Compact player showing focus landing on the contextual menu or close buttons regardless if a feature is open or closed"
-      width="738px">
+      width="738"
+      height="540">
 </uxdot-example>
 
 {% include 'partials/accessibility/ariaguide.md' %}

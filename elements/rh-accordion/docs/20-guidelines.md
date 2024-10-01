@@ -20,9 +20,10 @@ accordion can also accommodate multiple sections of content, whereas a
 disclosure can only accommodate one.
 
 <uxdot-example width-adjustment="872px">
-   <img alt="Comparison of how to use accordion vs. disclosure elements showing an accordion on top and a disclosure on the bottom"
-        src="../accordion-vs-disclosure.png" 
-        width="872px">
+  <img src="../accordion-vs-disclosure.png"  
+      alt="Comparison of how to use accordion vs. disclosure elements showing an accordion on top and a disclosure on the bottom"
+      width="872"
+      height="603">
 </uxdot-example>
 
 ### Sizes
@@ -30,9 +31,10 @@ It is acceptable to use the Small size on large breakpoints, but do not use the
 Large size on small breakpoints.
 
 <uxdot-example width-adjustment="872px">
-   <img alt="Size comparison of accordions; a wide small size accordion is on top, which is acceptable to use, and a thin large size accordion below it which is not acceptable to use"
-        src="../accordion-sizes-best-practices.png" 
-        width="872px">
+  <img src="../accordion-sizes-best-practices.png"  
+      alt="Size comparison of accordions; a wide small size accordion is on top, which is acceptable to use, and a thin large size accordion below it which is not acceptable to use"
+      width="872"
+      height="485">
 </uxdot-example>
 
 ## Writing content
@@ -44,16 +46,21 @@ or when translated. If title text is too long, create another section. Do not
 write title text to sound like a call to action, make it as easy as possible for 
 users to understand the content within.
 
+<figure>
 <uxdot-example width-adjustment="872px">
-   <img alt="Title text examples of various lengths; it should not be too long, too short, or too vague"
-        src="../accordion-title-text.png" 
-        width="872px">
+  <img src="../accordion-title-text.png"  
+      alt="Title text examples of various lengths; it should not be too long, too short, or too vague"
+      width="872"
+      height="181">
 </uxdot-example>
+<figcaption>
 
-1) Title text is too long and should be broken into two sections
-2) Title text is short and might not help users understand the content within
-3) Title text should not be written like a call to action
-   {.example-notes}
+1. Title text is too long and should be broken into two sections
+2. Title text is short and might not help users understand the content within
+3. Title text should not be written like a call to action
+
+</figcaption>
+</figure>
 
 ### Character count
 
@@ -75,9 +82,10 @@ chevron icon. Content can include text, cards, images, etc. Text blocks should
 not exceed `750px` to maintain optimal readability.
 
 <uxdot-example width-adjustment="872px">
-  <img alt="Accordion showing different elements you may include in the expanded panel like headings, body text, links, cards, and more"
-       src="../accordion-panel-content.png" 
-       width="872px">
+  <img src="../accordion-panel-content.png" 
+      alt="Accordion showing different elements you may include in the expanded panel like headings, body text, links, cards, and more" 
+      width="872"
+      height="705">
 </uxdot-example>
 
 ### Long title text
@@ -85,9 +93,10 @@ not exceed `750px` to maintain optimal readability.
 Title text can be two lines on small breakpoints, but no more.
 
 <uxdot-example width-adjustment="544px">
-  <img alt="Two accordions; one wide accordion with the text title on one line and one thin accordion with the text title on two lines"
-       src="../accordion-long-title-text.png"
-       width="544px">
+  <img src="../accordion-long-title-text.png" 
+      alt="Two accordions; one wide accordion with the text title on one line and one thin accordion with the text title on two lines"
+      width="544"
+      height="310">
 </uxdot-example>
 
 ## Layout
@@ -96,9 +105,10 @@ The width of an accordion can be adjusted on large breakpoints to fit fewer
 columns if necessary.
 
 <uxdot-example width-adjustment="872px">
-  <img alt="A wider accordion placed on a 12-column grid and occupying four grid columns"
-       src="../accordion-layout.png"
-       width="872px">
+  <img src="../accordion-layout.png" 
+      alt="A wider accordion placed on a 12-column grid and occupying four grid columns"
+      width="872"
+      height="439">
 </uxdot-example>
 
 ## Behavior
@@ -114,8 +124,10 @@ Users can expand multiple panels simultaneously either stacked on top of each
 other or not. Expanding one panel does not collapse another.
 
 <uxdot-example width-adjustment="872px">
-  <img alt="Two accordions; one is showing two expanded panels stacked on top of each other and the other is showing two expanded panels and one collapsed panel in between"
-       src="../accordion-expanding-multiple-panels.png" width="872px">
+  <img src="../accordion-expanding-multiple-panels.png" 
+      alt="Two accordions; one is showing two expanded panels stacked on top of each other and the other is showing two expanded panels and one collapsed panel in between"
+      width="872"
+      height="714">
 </uxdot-example>
 
 ## Responsive design
@@ -124,15 +136,17 @@ An accordion changes from the Large size to the Small size as breakpoints get
 smaller.
 
 <uxdot-example no-border width-adjustment="1000px" alignment="left" variant="full" >
-  <img alt="Accordions on large breakpoints"
-       src="../accordion-breakpoints-large.png" 
-       width="1000px">
+  <img src="../accordion-breakpoints-large.png"  
+      alt="Accordions on large breakpoints"
+      width="1000"
+      height="274">
 </uxdot-example>
 
 <uxdot-example no-border width-adjustment="576px" alignment="left" variant="full">
-  <img alt="Accordions on small breakpoints"
-       src="../accordion-breakpoints-small.png" 
-       width="576px">
+  <img src="../accordion-breakpoints-small.png"  
+       alt="Accordions on small breakpoints"
+       width="576"
+       height="262">
 </uxdot-example>
 
 ### Breakpoints
@@ -158,8 +172,9 @@ Do not display one panel only, use an expandable section instead.
 
 <uxdot-example danger width-adjustment="872px">
   <img alt="Accordion having only one panel is incorrect usage"
-       src="../accordion-best-practice-1.png" 
-       width="872px">
+      src="../accordion-best-practice-1.png" 
+      width="872"
+      height="61">
 </uxdot-example>
 
 ### Text readability
@@ -167,9 +182,10 @@ Do not display one panel only, use an expandable section instead.
 Text within panels should not exceed `750px` to maintain optimal readability.
 
 <uxdot-example danger width-adjustment="872px">
-  <img alt="Accordion with body text exceeding 750px wide which is incorrect usage"
-       src="../accordion-best-practice-2.png"
-       width="872px">
+  <img src="../accordion-best-practice-2.png" 
+      alt="Accordion with body text exceeding 750px wide which is incorrect usage"
+      width="872"
+      height="213">
 </uxdot-example>
 
 ### Mixing themes
@@ -178,6 +194,7 @@ Do not use a dark theme accordion in a light theme environment and vice versa.
 
 <uxdot-example danger width-adjustment="872px">
   <img alt="Do not use a dark theme accordion in a light theme environment and vice versa"
-       src="../accordion-best-practice-3.png"
-       width="872px">
+      src="../accordion-best-practice-3.png"
+      width="872"
+      height="181">
 </uxdot-example>
