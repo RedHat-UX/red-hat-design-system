@@ -170,9 +170,9 @@ Best practices for all microcopy:
 
 When writing for the web, use bold and italic formatting sparingly. Remember: if everything is emphasized, nothing is emphasized.
 
-Red Hat design guidelines mandate users employ either bold or italics—never both together.
+[Red Hat design guidelines](https://www.redhat.com/en/about/brand/standards/typography) mandate users employ either bold or italics—never both together.
 
-#### Bolding
+#### Bold
 
 The most effective way to highlight key points in text is by **using bold**. Bold text naturally draws the eye and makes specific parts stand out.
 
@@ -182,17 +182,17 @@ However, the golden rule for bolding is moderation. Overusing bold can backfire�
 
 Italics offer another useful option for formatting, though they’re not a substitute for bold. They can help distinguish a section of text from the rest, adding emphasis in a subtler way. 
 
-However, italics can be harder to read, especially for individuals with dyslexia. For this reason, and like bolding, it’s best to use italics sparingly.
+However, italics can be harder to read, especially for individuals with dyslexia. As with bolding, it’s best to use italics sparingly.
 
 #### Underlines
 
-Do not underline any text that isn’t a link. Underlining text that is not a link is confusing to users and must be avoided. Instead of underlining text, consider bolding or italicizing it.
+On the web, avoid using underlines for any text that isn't a link, since it can be confusing to users. Instead of underlining text, consider bolding or italicizing it.
 
 Also, be cautious about using your site’s link color elsewhere—especially for text. Users may think blue text is a link even if it is not. Catch up on how to use [color accessibly](/accessibility/design/#color) on our [Design](/accessibility/design/) page.
 
 #### All caps
 
-Only use all caps for acronyms and abbreviations (like <abbr title="Red Hat Design System">RHDS</abbr> and <abbr title="Consumer Financial Protection Bureau">CFPB</abbr>). Do not use all caps for emphasis—use bold or italics instead. For users with dyslexia, the changes in letter heights from big to small is actually easier to read—especially when the copy is longer than 2-3 words.
+Only use all caps for acronyms and abbreviations (like <abbr title="Red Hat Design System">RHDS</abbr> and <abbr title="Consumer Financial Protection Bureau">CFPB</abbr>). Do not use all caps for emphasis. Use bold or italics instead. For users with dyslexia, the variation in letter height between uppercase and lowercase is actually easier to read—especially when the copy is longer than two to three words.
 
 ### Link text
 
