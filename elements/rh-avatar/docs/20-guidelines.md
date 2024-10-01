@@ -10,7 +10,9 @@ room for customization.
 The avatar thumbnail can be used at different sizes based on our design tokens. The default size is <code>64px</code>.
 
 <uxdot-example width-adjustment="823px">
-  <img src="../avatar-usage-sizes.png" alt="Image of all avatar thumbnail sizes and their pixel values underneath">
+  <img src="../avatar-usage-sizes.png" 
+      alt="Image of all avatar thumbnail sizes and their pixel values underneath"
+      width="823px">
 </uxdot-example>
 
 <rh-table>
@@ -43,7 +45,9 @@ The avatar thumbnail can be used at different sizes based on our design tokens. 
 Separate each part of the job title and company name with a comma.
 
 <uxdot-example width-adjustment="611px">
-  <img src="../avatar-writing-content.png" alt="Image of three job details text, ranging from short to long"> 
+  <img src="../avatar-writing-content.png" 
+      alt="Image of three job details text, ranging from short to long"
+      width="611px"> 
 </uxdot-example>
 
 ## Layout
@@ -54,7 +58,9 @@ The avatar thumbnail and job details text can be horizontally or vertically
 centered.
 
 <uxdot-example width-adjustment="625px">
-  <img src="../avatar-usage-alignment.png" alt="Image of two avatar groups; one is horizontally centered and the other is vertically centered">
+  <img src="../avatar-usage-alignment.png" 
+      alt="Image of two avatar groups; one is horizontally centered and the other is vertically centered"
+      width="625px">
 </uxdot-example>
 
 
@@ -63,7 +69,9 @@ centered.
 There is `48px` of space when avatar groups are stacked vertically.
 
 <uxdot-example width-adjustment="385px">
-  <img src="../avatar-usage-stacking.png" alt="Image of three avatar groups stacked vertically with 48 pixel of space in between">
+  <img src="../avatar-usage-stacking.png" 
+      alt="Image of three avatar groups stacked vertically with 48 pixel of space in between"
+      width="385px">
 </uxdot-example>
 
 ## Responsive design
@@ -71,13 +79,17 @@ There is `48px` of space when avatar groups are stacked vertically.
 ### Large breakpoints
 
 <uxdot-example variant="full" no-border alignment="left" width-adjustment="1000px">
-  <img src="../avatar-breakpoints-large.png" alt="Image of two avatar groups used on large breakpoints; one is aligned left and the other is aligned in the center">
+  <img src="../avatar-breakpoints-large.png" 
+      alt="Image of two avatar groups used on large breakpoints; one is aligned left and the other is aligned in the center"
+      width="1000px">
 </uxdot-example>
 
 ### Small breakpoints
 
 <uxdot-example variant="full" no-border alignment="left" width-adjustment="576px">
-  <img src="../avatar-breakpoints-small.png" alt="Image of four avatar groups used on small breakpoints; two are aligned left and the other two are aligned in the center">
+  <img src="../avatar-breakpoints-small.png" 
+      alt="Image of four avatar groups used on small breakpoints; two are aligned left and the other two are aligned in the center"
+      width="576px">
 </uxdot-example>
 
 ### Line breaks
@@ -86,7 +98,9 @@ As breakpoints or containers get smaller, regardless if job details text will
 break to more lines, it is still anchored at the top.
 
 <uxdot-example width-adjustment="498px">
-  <img src="../avatar-line-breaks.png" alt="Image of two avatar groups with specs on top; one has two lines and the other has five lines">
+  <img src="../avatar-line-breaks.png" 
+      alt="Image of two avatar groups with specs on top; one has two lines and the other has five lines"
+      width="498px">
 </uxdot-example>
 
 ## Best practices
@@ -96,7 +110,9 @@ break to more lines, it is still anchored at the top.
 Do not change the shape of the avatar thumbnail.
 
 <uxdot-example danger width-adjustment="293px">
-  <img src="../avatar-best-practice-1.png" alt="Image of a square avatar thumbnail which is incorrect usage">
+  <img src="../avatar-best-practice-1.png" 
+      alt="Image of a square avatar thumbnail which is incorrect usage"
+      width="293px">
 </uxdot-example>
 
 ### Light theme thumbnail
@@ -112,7 +128,7 @@ Do not use a light theme avatar thumbnail in the dark theme.
 Do not use an avatar thumbnail when an icon is more suitable.
 
 <uxdot-example danger width-adjustment="136px">
-  <img src="../avatar-best-practice-3.png" alt="Image of an icon and avatar thumbnail right next to each other which is incorrect usage">
+  <img src="../avatar-best-practice-3.png" 
+      alt="Image of an icon and avatar thumbnail right next to each other which is incorrect usage"
+      width="136px">
 </uxdot-example>
-
-

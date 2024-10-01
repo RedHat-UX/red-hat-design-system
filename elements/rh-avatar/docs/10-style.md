@@ -8,7 +8,9 @@ including their full name, job title, and company.
 
 <figure>
   <uxdot-example width-adjustment="239px">
-    <img src="../avatar-anatomy.png" alt="Anatomy of an avatar group with numbered annotations">
+    <img src="../avatar-anatomy.png" 
+        alt="Anatomy of an avatar group with numbered annotations"
+        width="239px">
   </uxdot-example>
   <figcaption>
     <ol>
@@ -27,7 +29,9 @@ their name. A specific name is linked to the same pattern, so thumbnails can
 stay static without storing lots of generated images.
 
 <uxdot-example width-adjustment="651px">
-  <img src="../avatar-variations.png" alt="Image of all avatar groups including default, photo, green squares, purple squares, and blue triangles">
+  <img src="../avatar-variations.png" 
+      alt="Image of all avatar groups including default, photo, green squares, purple squares, and blue triangles"
+      width="651px">
 </uxdot-example>
 
 ### Plain
@@ -37,7 +41,9 @@ The avatar thumbnail can be used on its own in places like
 [cards](https://ux.redhat.com/elements/card/), navigations, tables, and more.
 
 <uxdot-example width-adjustment="576px">
-  <img src="../avatar-plain.png" alt="Image of a row of only avatar thumbnails">
+  <img src="../avatar-plain.png" 
+    alt="Image of a row of only avatar thumbnails"
+    width="576px">
 </uxdot-example>
 
 ### Link
@@ -50,7 +56,9 @@ Links can be applied to full name or job details text.
 </rh-alert>
 
 <uxdot-example width-adjustment="706px">
-  <img src="../avatar-links.png" alt="Image of two avatar groups; one has the full name linked and the other has the company name linked">
+  <img src="../avatar-links.png" 
+      alt="Image of two avatar groups; one has the full name linked and the other has the company name linked"
+      width="706px">
 </uxdot-example>
 
 ## Theme
@@ -60,11 +68,15 @@ All avatar variants are available in both light and dark themes.
 ### Light and dark themes
 
 <uxdot-example width-adjustment="239px">
-  <img src="../avatar-theme-light.png" alt="Image of a light theme avatar group">
+  <img src="../avatar-theme-light.png" 
+    alt="Image of a light theme avatar group"
+    width="239px">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="239px">
-  <img src="../avatar-theme-dark.png" alt="Image of a dark theme avatar group">
+  <img src="../avatar-theme-dark.png" 
+      alt="Image of a dark theme avatar group"
+      width="239px">
 </uxdot-example>
 
 <rh-table>
@@ -94,7 +106,9 @@ examples, go to the
 [Guidelines](https://ux.redhat.com/elements/avatar/guidelines/) page.
 
 <uxdot-example width-adjustment="463px">
-  <img src="../avatar-configuration.png" alt="Image of two avatar groups showing specs like height, width, and centering/alignment">
+  <img src="../avatar-configuration.png" 
+      alt="Image of two avatar groups showing specs like height, width, and centering/alignment"
+      width="463px">
 </uxdot-example>
 
 ### Job details text
@@ -102,7 +116,9 @@ examples, go to the
 Job details text has specific styles applied to it.
 
 <uxdot-example width-adjustment="546px">
-  <img src="../avatar-job-details-text.png" alt="Image of two avatar groups showing only job details text left justified and center justified">
+  <img src="../avatar-job-details-text.png" 
+      alt="Image of two avatar groups showing only job details text left justified and center justified"
+      width="546px">
 </uxdot-example>
 
 <rh-table>
@@ -135,7 +151,9 @@ Job details text has specific styles applied to it.
 Space values are the same for all variants and on all breakpoints.
 
 <uxdot-example width-adjustment="570px">
-  <img src="../avatar-space.png" alt="Image of all avatar groups with spacing values in between">
+  <img src="../avatar-space.png" 
+      alt="Image of all avatar groups with spacing values in between"
+      width="570px">
 </uxdot-example>
 
 <rh-table>
@@ -153,7 +171,9 @@ Interaction states are visual representations used to communicate the status of 
 ### Hover
 
 <uxdot-example width-adjustment="293px">
-  <img src="../avatar-interaction-state-hover-theme-light.png" alt="Image of light theme avatar group hover states">
+  <img src="../avatar-interaction-state-hover-theme-light.png" 
+      alt="Image of light theme avatar group hover states"
+      width="293px">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="293px">
@@ -207,7 +227,9 @@ Interaction states are visual representations used to communicate the status of 
 
 
 <uxdot-example width-adjustment="293px">
-  <img src="../avatar-interaction-state-focus-theme-light.png" alt="Image of light theme avatar group focus states">
+  <img src="../avatar-interaction-state-focus-theme-light.png" 
+      alt="Image of light theme avatar group focus states"
+      width="293px">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="293px">
@@ -242,11 +264,15 @@ Interaction states are visual representations used to communicate the status of 
 </rh-alert>
 
 <uxdot-example width-adjustment="293px">
-  <img src="../avatar-interaction-state-active-theme-light.png" alt="Image of light theme avatar group active states">
+  <img src="../avatar-interaction-state-active-theme-light.png" 
+      alt="Image of light theme avatar group active states"
+      width="293px">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="293px">
-  <img src="../avatar-interaction-state-active-theme-dark.png" alt="Image of dark theme avatar group active states">
+  <img src="../avatar-interaction-state-active-theme-dark.png" 
+      alt="Image of dark theme avatar group active states"
+      width="293px">
 </uxdot-example>
 
 <rh-table>
