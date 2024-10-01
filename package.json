@@ -152,8 +152,7 @@
         "docs/assets/javascript/elements/*.js",
         "docs/assets/javascript/**/*.d.ts",
         "docs/assets/javascript/**/*.js.map",
-        "!elements/*/{demo,test}/**/*.js",
-        "!docs/assets/javascript/elements/uxdot-pattern.js"
+        "!elements/*/{demo,test}/**/*.js"
       ]
     },
     "entrypoint": {
