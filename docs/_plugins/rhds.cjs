@@ -213,6 +213,11 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     return pfeconfig.aliases[tagName] || deslugify(slug);
   });
 
+  eleventyConfig.addFilter('isPlanned', function isPlanned(repoStatus, name) {
+    const element = repoStatus.find(element => element.name === name);
+    return element?.libraries.find(library => library.name === 'RH Elements')?.status === 'Planned';
+  });
+
   eleventyConfig.addFilter('getTitleFromDocs', function(docs) {
     return docs.find(x => x.docsPage?.title)?.alias
       ?? docs[0]?.alias
