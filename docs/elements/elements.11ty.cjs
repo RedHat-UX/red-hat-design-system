@@ -274,6 +274,13 @@ module.exports = class ElementsPage {
           border-width: 0;
         }
       }
+
+      .attributes rh-table td.type pre {
+        background: transparent;
+        margin: 0;
+        padding: 0;
+        display: inline;
+      }
       </style>
       <section class="band">
         <h2>Installation</h2>
@@ -324,35 +331,6 @@ module.exports = class ElementsPage {
     const { docsPage } = ctx.doc;
     const { manifest } = docsPage;
 
-    const allSlots = manifest.getSlots(tagName) ?? [];
-    const slotCount = allSlots.filter(x => !x.deprecated).length;
-    const deprecatedSlotCount = allSlots.filter(x => x.deprecated).length;
-
-    const allAttr = manifest.getAttributes(tagName) ?? [];
-    const attrCount = allAttr.filter(x => !x.deprecated).length;
-    const deprecatedAttrCount = allAttr.filter(x => x.deprecated).length;
-
-    const allMethods = manifest.getMethods(tagName) ?? [];
-    const methodsCount = allMethods.filter(x => !x.deprecated).length;
-    const deprecatedMethodsCount = allMethods.filter(x => x.deprecated).length;
-
-    const allEvents = manifest.getEvents(tagName) ?? [];
-    const eventsCount = allEvents.filter(x => !x.deprecated).length;
-    const deprecatedEventsCount = allEvents.filter(x => x.deprecated).length;
-
-    const allCssParts = manifest.getCssParts(tagName) ?? [];
-    const cssPartsCount = allCssParts.filter(x => !x.deprecated).length;
-    const deprecatedCssPartsCount = allCssParts.filter(x => x.deprecated).length;
-
-    const allCssProperties = manifest.getCssCustomProperties(tagName) ?? [];
-    const cssPropertiesCount =
-      allCssProperties.filter(x => !x.deprecated && !tokens.has(x.name)).length;
-    const deprecatedCssPropertiesCount =
-      allCssProperties.filter(x => x.deprecated && !tokens.has(x.name)).length;
-
-    const allDesignTokens = manifest.getCssCustomProperties(tagName) ?? [];
-    const designTokensCount = allDesignTokens.filter(x => tokens.has(x.name)).length;
-
     const h = ctx.level ?? 2;
 
     // TODO: dsd
@@ -362,79 +340,95 @@ module.exports = class ElementsPage {
       <p>${manifest.getDescription(tagName)}</p>
 
       <rh-accordion box>
-        <rh-accordion-header id="${tagName}-slots" expanded>Slots
-          <rh-badge>${slotCount}</rh-badge>
-          ${deprecatedSlotCount > 0 ? html`<rh-badge state="moderate">${deprecatedSlotCount}</rh-badge>` : ``}
-        </rh-accordion-header>
-        <rh-accordion-panel>${await this.renderSlots(tagName, ctx)}</rh-accordion-panel>
-        <rh-accordion-header id="${tagName}-attributes">Attributes
-          <rh-badge>${attrCount}</rh-badge>
-          ${deprecatedAttrCount > 0 ? html`<rh-badge state="moderate">${deprecatedAttrCount}</rh-badge>` : ``}
-        </rh-accordion-header>
-        <rh-accordion-panel>${await this.renderAttributes(tagName, ctx)}</rh-accordion-panel>
-        <rh-accordion-header id="${tagName}-methods">Methods
-          <rh-badge>${methodsCount}</rh-badge>
-          ${deprecatedMethodsCount > 0 ? html`<rh-badge state="moderate">${deprecatedMethodsCount}</rh-badge>` : ``}
-        </rh-accordion-header>
-        <rh-accordion-panel>${await this.renderMethods(tagName, ctx)}</rh-accordion-panel>
-        <rh-accordion-header id="${tagName}-events">Events
-          <rh-badge>${eventsCount}</rh-badge>
-          ${deprecatedEventsCount > 0 ? html`<rh-badge state="moderate">${deprecatedEventsCount}</rh-badge>` : ``}
-        </rh-accordion-header>
-        <rh-accordion-panel>${await this.renderEvents(tagName, ctx)}</rh-accordion-panel>
-        <rh-accordion-header id="${tagName}-css-parts">CSS Shadow Parts
-          <rh-badge>${cssPartsCount}</rh-badge>
-          ${deprecatedCssPartsCount > 0 ? html`<rh-badge state="moderate">${deprecatedCssPartsCount}</rh-badge>` : ``}
-        </rh-accordion-header>
-        <rh-accordion-panel>${await this.renderCssParts(tagName, ctx)}</rh-accordion-panel>
-        <rh-accordion-header id="${tagName}-css-properties">CSS Custom Properties
-          <rh-badge>${cssPropertiesCount}</rh-badge>
-          ${deprecatedCssPropertiesCount > 0 ? html`<rh-badge state="moderate">${deprecatedCssPropertiesCount}</rh-badge>` : ``}
-        </rh-accordion-header>
-        <rh-accordion-panel>${await this.renderCssCustomProperties(tagName, ctx)}</rh-accordion-panel>
-        <rh-accordion-header id="${tagName}-design-tokens">Design Tokens
-          <rh-badge>${designTokensCount}</rh-badge>
-        </rh-accordion-header>
-        <rh-accordion-panel>${await this.renderTokens(tagName, ctx)}</rh-accordion-panel>
+        ${await this.renderSlots(tagName, ctx)}
+        ${await this.renderAttributes(tagName, ctx)}
+        ${await this.renderMethods(tagName, ctx)}
+        ${await this.renderEvents(tagName, ctx)}
+        ${await this.renderCssParts(tagName, ctx)}
+        ${await this.renderCssCustomProperties(tagName, ctx)}
+        ${await this.renderDesignTokens(tagName, ctx)}
       </rh-accordion>
-    `.trim();
+    `;;
+  }
+
+  async renderSlots(tagName, ctx) {
+    const level = ctx.level ?? 2;
+    const allSlots = ctx.doc.docsPage.manifest.getSlots(tagName) ?? [];
+    const slots = allSlots.filter(x => !x.deprecated);
+    const deprecated = allSlots.filter(x => x.deprecated);
+    const slotCount = slots.length;
+    const deprecatedSlotCount = deprecated.length;
+
+    return html`
+      <rh-accordion-header id="${tagName}-slots" expanded>Slots
+        <rh-badge>${slotCount}</rh-badge>
+        ${deprecatedSlotCount > 0 ? html`<rh-badge state="moderate">${deprecatedSlotCount}</rh-badge>` : ``}
+      </rh-accordion-header>
+      <rh-accordion-panel>
+        <section class="slots">
+          ${!slots.length ? html`
+          <em>None</em>` : html`
+          <rh-table>
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Slot Name</th>
+                  <th scope="col">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${(await Promise.all(slots.map(async slot => html`
+                <tr>
+                  <td><code>${slot.name}</code></td>
+                  <td>${await this.innerMD(slot.description)}</td>
+                </tr>`))).join('')}
+              </tbody>
+            </table>
+          </rh-table>`}${!deprecated.length ? '' : html`
+          <details>
+            <summary><h${level + 1}>Deprecated Slots</h${level + 1}></summary>
+            <rh-table>
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Slot Name</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${(await Promise.all(deprecated.map(async slot => html`
+                  <tr>
+                    <td><code>${slot.name}</code></td>
+                    <td>
+                      ${await this.innerMD(slot.description)}
+                      <em>Note: ${slot.name} is deprecated. ${await this.innerMD(slot.deprecated)}</em>
+                    </td>
+                  </tr>`))).join('')}
+                </tbody>
+              </table>
+            </rh-table>
+          </details>`}
+        </section>
+      </rh-accordion-panel>`;
   }
 
   async renderAttributes(tagName, ctx) {
     const level = ctx.level ?? 2;
-    const _attrs = ctx.doc.docsPage.manifest.getAttributes(tagName) ?? [];
+    const _attrs = (ctx.doc.docsPage.manifest.getAttributes(tagName) ?? [])
+        .filter(x => !x.static && x.privacy !== 'protected' && x.privacy !== 'private');
     const deprecated = _attrs.filter(x => x.deprecated);
     const attributes = _attrs.filter(x => !x.deprecated);
+    const attrCount = _attrs.length;
+    const deprecatedAttrCount = deprecated.length;
+
     return html`
-      <section class="attributes">
-        ${!attributes.length ? html`
-        <em>None</em>` : html`
-        <rh-table>
-          <table>
-            <thead>
-              <tr>
-                <th scope="col">Attribute</th>
-                <th scope="col">DOM Property</th>
-                <th scope="col">Description</th>
-                <th scope="col">Type</th>
-                <th scope="col">Default</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${(await Promise.all(attributes.map(async attribute => html`
-              <tr>
-                <td><code>${attribute.name}</code></td>
-                <td><code>${attribute.fieldName}</code></td>
-                <td>${await this.innerMD(attribute.description)}</td>
-                <td>${this.highlight('ts', attribute?.type?.text ?? 'unknown')}</td>
-                <td>${this.highlight('ts', attribute?.default ?? 'unknown')}</td>
-              </tr>`))).join('')}
-            </tbody>
-          </table>
-        </rh-table>`}
-        ${!deprecated.length ? '' : html`
-        <details>
-          <summary><h${level + 1}>Deprecated Attributes<h${level + 1}></summary>
+      <rh-accordion-header id="${tagName}-attributes">Attributes
+        <rh-badge>${attrCount}</rh-badge>
+        ${deprecatedAttrCount > 0 ? html`<rh-badge state="moderate">${deprecatedAttrCount}</rh-badge>` : ``}
+      </rh-accordion-header>
+      <rh-accordion-panel>
+        <section class="attributes">${!attributes.length ? html`
+          <em>None</em>` : html`
           <rh-table>
             <table>
               <thead>
@@ -447,196 +441,47 @@ module.exports = class ElementsPage {
                 </tr>
               </thead>
               <tbody>
-                ${(await Promise.all(deprecated.map(async attribute => html`
+                ${(await Promise.all(attributes.map(async attribute => html`
                 <tr>
                   <td><code>${attribute.name}</code></td>
                   <td><code>${attribute.fieldName}</code></td>
                   <td>${await this.innerMD(attribute.description)}</td>
-                  <td>${this.highlight('ts', attribute.type?.text ?? 'unknown')}</td>
-                  <td>${this.highlight('ts', attribute.default ?? 'unknown')}</td>
+                  <td class="type">${this.highlight('ts', attribute?.type?.text ?? 'unknown').replace(/\s+/g, ' ')}</td>
+                  <td class="type">${this.highlight('ts', attribute?.default ?? 'unknown').replace(/\s+/g, ' ')}</td>
                 </tr>`))).join('')}
               </tbody>
             </table>
-          </rh-table>
-        </details>`}
-      </section>`;
-  }
-
-  async renderTokens(tagName, ctx) {
-    const allCssProperties =
-      ctx.doc.docsPage.manifest.getCssCustomProperties(tagName) ?? [];
-    const elTokens = allCssProperties.filter(x => tokens.has(x.name));
-    return html`
-      <section class="design-tokens">
-        ${!elTokens.length ? html`
-        <em>None</em>` : html`
-        <rh-table>
-          <table>
-            <thead>
-              <tr>
-                <th>Token</th>
-                <th>Copy</th>
-              </tr>
-            </thead>
-            <tbody>${elTokens.map(token => html`<tr><td><a href="${getTokenHref(token)}"><code>${token.name}</code></a></td>${copyCell(token)}</tr>`).join('')}</tbody>
-          </table>
-      </rh-table>`}
-      </section>`;
-  }
-
-  async renderCssCustomProperties(tagName, ctx) {
-    const level = ctx.level ?? 2;
-    const allCssProperties = ctx.doc.docsPage.manifest.getCssCustomProperties(tagName) ?? [];
-    const cssProperties = allCssProperties.filter(x => !x.deprecated && !tokens.has(x.name));
-    const deprecated = allCssProperties.filter(x => x.deprecated && !tokens.has(x.name));
-    return html`
-      <section class="css-custom-properties">
-        ${!cssProperties.length ? html`
-        <em>None</em>` : html`
-        <rh-table>
-          <table class=css-custom-properties>
-            <thead>
-              <tr>
-                <th scope="col">CSS Property</th>
-                <th scope="col">Description</th>
-                <th scope="col">Default</th>
-              </tr>
-            </thead>
-            <tbody>${(await Promise.all(cssProperties.map(async prop => html`
-              <tr>
-                <td><code>${prop.name}</code></td>
-                <td>${await this.innerMD(prop.description ?? '')}</td>
-                <td>
-                  ${!prop.default?.startsWith('#') ? html`<code>` : html`<code data-color="${prop.default}" style="--color:${prop.default}">`}${prop.default ?? '—'}</code>
-                </td>
-              </tr>`))).join('')}
-            </tbody>
-          </table>`}${!deprecated.length ? '' : html`
+          </rh-table>`}
+          ${!deprecated.length ? '' : html`
           <details>
-            <summary><h${level + 1}>Deprecated CSS Custom Properties</h${level + 1}></summary>
-            <table>
-              <thead>
-                <tr>
-                  <th scope="col">CSS Property</th>
-                  <th scope="col">Description</th>
-                  <th>Default</th>
-                </tr>
-              </thead>
-              <tbody>${(await Promise.all(deprecated.map(async prop => html`
-                <tr>
-                  <td><code>${prop.name}</code></td>
-                  <td>${await this.innerMD(prop.description)}</td>
-                  <td>${await this.innerMD(prop.default ?? '—')}</td>
-                </tr>`))).join('')}
-              </tbody>
-            </table>
-          </rh-table>
-        </details>`}
-      </section>`;
-  }
-
-  async renderCssParts(tagName, ctx) {
-    const level = ctx.level ?? 2;
-    const allParts = ctx.doc.docsPage.manifest.getCssParts(tagName) ?? [];
-    const parts = allParts.filter(x => !x.deprecated);
-    const deprecated = allParts.filter(x => x.deprecated);
-    return html`
-      <section class="css-shadow-parts">
-        ${!parts.length ? html`
-        <em>None</em>` : html`
-        <rh-table>
-          <table>
-            <thead>
-              <tr>
-                <th scope="col">Part Name</th>
-                <th scope="col">Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${(await Promise.all(parts.map(async part => html`
-              <tr>
-                <td><code>${part.name}</code></td>
-                <td>${await this.innerMD(part.description)}</td>
-              </tr>`))).join('')}
-            </tbody>
-          </table>
-        </rh-table>`}${!deprecated.length ? '' : html`
-        <details>
-          <summary><h${level + 1}>Deprecated CSS Shadow Parts</h${level + 1}></summary>
-          <rh-table>
-            <table>
-              <thead>
-                <tr>
-                  <th scope="col">Part Name</th>
-                  <th scope="col">Description</th>
-                </tr>
-              </thead>
-              <tbody>
-                ${(await Promise.all(deprecated.map(async part => html`
-                <tr>
-                  <td><code>${part.name}</code></td>
-                  <td>
-                    ${await this.innerMD(part.description)}
-                    <em>Note: ${part.name} is deprecated. ${await this.innerMD(part.deprecated)}</em>
-                  </td>
-                </tr>`))).join('')}
-              </tbody>
-            </table>
-          </rh-table>
-        </details>`}
-      </section>`;
-  }
-
-  async renderEvents(tagName, ctx) {
-    const level = ctx.level ?? 2;
-    const _events = ctx.doc.docsPage.manifest.getEvents(tagName) ?? [];
-    const deprecated = _events.filter(x => x.deprecated);
-    const events = _events.filter(x => !x.deprecated);
-    return html`
-      <section class="events">
-        ${!events.length ? html`
-        <em>None</em>` : html`
-        <rh-table>
-          <table>
-            <thead>
-              <tr>
-                <th scope="col">Event Name</th>
-                <th scope="col">Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${(await Promise.all(events.map(async event => html`
-              <tr>
-                <td><code>${event.name}</code></td>
-                <td>${await this.innerMD(event.description)}</td>
-              </tr>`))).join('')}
-            </tbody>
-          </table>
-        </rh-table>`}${!deprecated.length ? '' : html`
-        <details>
-          <summary><h${level + 1}>Deprecated Events</h${level + 1}></summary>
-          <rh-table>
-            <table>
-              <thead>
-                <tr>
-                  <th scope="col">Event Name</th>
-                  <th scope="col">Description</th>
-                </tr>
-              </thead>
-              <tbody>
-                ${(await Promise.all(deprecated.map(async event => html`
-                <tr>
-                  <td><code>${event.name}</code></td>
-                  <td>
-                    ${await this.innerMD(event.description)}
-                    <em>Note: ${event.name} is deprecated. ${await this.innerMD(event.deprecated)}</em>
-                  </td>
-                </tr>`))).join('')}
-              </tbody>
-            </table>
-          </rh-table>
-        </details>`}
-      </section>`;
+            <summary><h${level + 1}>Deprecated Attributes<h${level + 1}></summary>
+            <rh-table>
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Attribute</th>
+                    <th scope="col">DOM Property</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Default</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${(await Promise.all(deprecated.map(async attribute => html`
+                  <tr>
+                    <td><code>${attribute.name}</code></td>
+                    <td><code>${attribute.fieldName}</code></td>
+                    <td>${await this.innerMD(attribute.description)}</td>
+                    <td class="type">${this.highlight('ts', attribute.type?.text ?? 'unknown').replace(/\s+/g, ' ')}</td>
+                    <td class="type">${this.highlight('ts', attribute.default ?? 'unknown').replace(/\s+/g, ' ')}</td>
+                  </tr>`))).join('')}
+                </tbody>
+              </table>
+            </rh-table>
+          </details>`}
+        </section>
+      </rh-accordion-panel>
+    `;
   }
 
   async renderMethods(tagName, ctx) {
@@ -644,30 +489,19 @@ module.exports = class ElementsPage {
     const allMethods = ctx.doc.docsPage.manifest.getMethods(tagName) ?? [];
     const deprecated = allMethods.filter(x => x.deprecated);
     const methods = allMethods.filter(x => !x.deprecated);
+    const methodsCount = methods.length;
+    const deprecatedMethodsCount = deprecated.length;
+
     // TODO: inline code highlighting for type and default: render the markdown to html and extract the `<code>` from the `<pre>`
     return html`
-      <section class="methods">
-        ${!methods.length ? html`
-        <em>None</em>` : html`
-        <rh-table>
-          <table>
-            <thead>
-              <tr>
-                <th scope="col">Method Name</th>
-                <th scope="col">Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${(await Promise.all(methods.map(async method => html`
-              <tr>
-                <td><code>${method.name}(${stringifyParams(method)})</code></td>
-                <td>${await this.innerMD(method.description)}</td>
-              </tr>`))).join('')}
-            </tbody>
-          </table>
-        </rh-table>`}${!deprecated.length ? '' : html`
-        <details>
-          <summary><h${level + 1}>Deprecated Methods</h${level + 1}></summary>
+      <rh-accordion-header id="${tagName}-methods">Methods
+        <rh-badge>${methodsCount}</rh-badge>
+        ${deprecatedMethodsCount > 0 ? html`<rh-badge state="moderate">${deprecatedMethodsCount}</rh-badge>` : ``}
+      </rh-accordion-header>
+      <rh-accordion-panel>
+        <section class="methods">
+          ${!methods.length ? html`
+          <em>None</em>` : html`
           <rh-table>
             <table>
               <thead>
@@ -677,70 +511,264 @@ module.exports = class ElementsPage {
                 </tr>
               </thead>
               <tbody>
-                ${(await Promise.all(deprecated.map(async method => html`
+                ${(await Promise.all(methods.map(async method => html`
                 <tr>
                   <td><code>${method.name}(${stringifyParams(method)})</code></td>
-                  <td>
-                    ${await this.innerMD(method.description)}
-                    <em>Note: ${method.name} is deprecated. ${await this.innerMD(method.deprecated)}</em>
-                  </td>
+                  <td>${await this.innerMD(method.description)}</td>
                 </tr>`))).join('')}
               </tbody>
             </table>
-          </rh-table>
-        </details>`}
-      </section>`;
+          </rh-table>`}${!deprecated.length ? '' : html`
+          <details>
+            <summary><h${level + 1}>Deprecated Methods</h${level + 1}></summary>
+            <rh-table>
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Method Name</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${(await Promise.all(deprecated.map(async method => html`
+                  <tr>
+                    <td><code>${method.name}(${stringifyParams(method)})</code></td>
+                    <td>
+                      ${await this.innerMD(method.description)}
+                      <em>Note: ${method.name} is deprecated. ${await this.innerMD(method.deprecated)}</em>
+                    </td>
+                  </tr>`))).join('')}
+                </tbody>
+              </table>
+            </rh-table>
+          </details>`}
+        </section>
+      </rh-accordion-panel>
+    `;
   }
 
-  async renderSlots(tagName, ctx) {
+  async renderEvents(tagName, ctx) {
     const level = ctx.level ?? 2;
-    const allSlots = ctx.doc.docsPage.manifest.getSlots(tagName) ?? [];
-    const slots = allSlots.filter(x => !x.deprecated);
-    const deprecated = allSlots.filter(x => x.deprecated);
+    const _events = ctx.doc.docsPage.manifest.getEvents(tagName) ?? [];
+    const deprecated = _events.filter(x => x.deprecated);
+    const events = _events.filter(x => !x.deprecated);
+    const eventsCount = events.length;
+    const deprecatedEventsCount = deprecated.length;
+
     return html`
-      <section class="slots">
-        ${!slots.length ? html`
-        <em>None</em>` : html`
-        <rh-table>
-          <table>
-            <thead>
-              <tr>
-                <th scope="col">Slot Name</th>
-                <th scope="col">Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${(await Promise.all(slots.map(async slot => html`
-              <tr>
-                <td><code>${slot.name}</code></td>
-                <td>${await this.innerMD(slot.description)}</td>
-              </tr>`))).join('')}
-            </tbody>
-          </table>
-        </rh-table>`}${!deprecated.length ? '' : html`
-        <details>
-          <summary><h${level + 1}>Deprecated Slots</h${level + 1}></summary>
+      <rh-accordion-header id="${tagName}-events">Events
+        <rh-badge>${eventsCount}</rh-badge>
+        ${deprecatedEventsCount > 0 ? html`<rh-badge state="moderate">${deprecatedEventsCount}</rh-badge>` : ``}
+      </rh-accordion-header>
+      <rh-accordion-panel>
+        <section class="events">
+          ${!events.length ? html`
+          <em>None</em>` : html`
           <rh-table>
             <table>
               <thead>
                 <tr>
-                  <th scope="col">Slot Name</th>
+                  <th scope="col">Event Name</th>
                   <th scope="col">Description</th>
                 </tr>
               </thead>
               <tbody>
-                ${(await Promise.all(deprecated.map(async slot => html`
+                ${(await Promise.all(events.map(async event => html`
                 <tr>
-                  <td><code>${slot.name}</code></td>
+                  <td><code>${event.name}</code></td>
+                  <td>${await this.innerMD(event.description)}</td>
+                </tr>`))).join('')}
+              </tbody>
+            </table>
+          </rh-table>`}${!deprecated.length ? '' : html`
+          <details>
+            <summary><h${level + 1}>Deprecated Events</h${level + 1}></summary>
+            <rh-table>
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Event Name</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${(await Promise.all(deprecated.map(async event => html`
+                  <tr>
+                    <td><code>${event.name}</code></td>
+                    <td>
+                      ${await this.innerMD(event.description)}
+                      <em>Note: ${event.name} is deprecated. ${await this.innerMD(event.deprecated)}</em>
+                    </td>
+                  </tr>`))).join('')}
+                </tbody>
+              </table>
+            </rh-table>
+          </details>`}
+        </section>
+      </rh-accordion-panel>
+    `;
+  }
+
+  async renderCssParts(tagName, ctx) {
+    const level = ctx.level ?? 2;
+    const allParts = ctx.doc.docsPage.manifest.getCssParts(tagName) ?? [];
+    const parts = allParts.filter(x => !x.deprecated);
+    const deprecated = allParts.filter(x => x.deprecated);
+    const cssPartsCount = parts.length;
+    const deprecatedCssPartsCount = deprecated.length;
+
+    return html`
+      <rh-accordion-header id="${tagName}-css-parts">CSS Shadow Parts
+        <rh-badge>${cssPartsCount}</rh-badge>
+        ${deprecatedCssPartsCount > 0 ? html`<rh-badge state="moderate">${deprecatedCssPartsCount}</rh-badge>` : ``}
+      </rh-accordion-header>
+      <rh-accordion-panel>
+        <section class="css-shadow-parts">
+          ${!parts.length ? html`
+          <em>None</em>` : html`
+          <rh-table>
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Part Name</th>
+                  <th scope="col">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${(await Promise.all(parts.map(async part => html`
+                <tr>
+                  <td><code>${part.name}</code></td>
+                  <td>${await this.innerMD(part.description)}</td>
+                </tr>`))).join('')}
+              </tbody>
+            </table>
+          </rh-table>`}${!deprecated.length ? '' : html`
+          <details>
+            <summary><h${level + 1}>Deprecated CSS Shadow Parts</h${level + 1}></summary>
+            <rh-table>
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Part Name</th>
+                    <th scope="col">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${(await Promise.all(deprecated.map(async part => html`
+                  <tr>
+                    <td><code>${part.name}</code></td>
+                    <td>
+                      ${await this.innerMD(part.description)}
+                      <em>Note: ${part.name} is deprecated. ${await this.innerMD(part.deprecated)}</em>
+                    </td>
+                  </tr>`))).join('')}
+                </tbody>
+              </table>
+            </rh-table>
+          </details>`}
+        </section>
+      </rh-accordion-panel>
+    `;
+  }
+
+  async renderCssCustomProperties(tagName, ctx) {
+    const level = ctx.level ?? 2;
+    const allCssProperties = (ctx.doc.docsPage.manifest.getCssCustomProperties(tagName) ?? [])
+        .filter(x => !tokens.has(x.name));
+    const cssProperties = allCssProperties.filter(x => !x.deprecated);
+    const deprecated = allCssProperties.filter(x => x.deprecated);
+    const cssPropertiesCount = cssProperties.length;
+    const deprecatedCssPropertiesCount = deprecated.length;
+
+    return html`
+      <rh-accordion-header id="${tagName}-css-properties">CSS Custom Properties
+        <rh-badge>${cssPropertiesCount}</rh-badge>
+        ${deprecatedCssPropertiesCount > 0 ? html`<rh-badge state="moderate">${deprecatedCssPropertiesCount}</rh-badge>` : ``}
+      </rh-accordion-header>
+      <rh-accordion-panel>
+        <section class="css-custom-properties">
+          ${!cssProperties.length ? html`
+          <em>None</em>` : html`
+          <rh-table>
+            <table class=css-custom-properties>
+              <thead>
+                <tr>
+                  <th scope="col">CSS Property</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Default</th>
+                </tr>
+              </thead>
+              <tbody>${(await Promise.all(cssProperties.map(async prop => html`
+                <tr>
+                  <td><code>${prop.name}</code></td>
+                  <td>${await this.innerMD(prop.description ?? '')}</td>
                   <td>
-                    ${await this.innerMD(slot.description)}
-                    <em>Note: ${slot.name} is deprecated. ${await this.innerMD(slot.deprecated)}</em>
+                    ${!prop.default?.startsWith('#') ? html`<code>` : html`<code data-color="${prop.default}" style="--color:${prop.default}">`}${prop.default ?? '—'}</code>
                   </td>
                 </tr>`))).join('')}
               </tbody>
             </table>
-          </rh-table>
-        </details>`}
-      </section>`;
+          </rh-table>`}${!deprecated.length ? '' : html`
+          <details>
+            <summary><h${level + 1}>Deprecated CSS Custom Properties</h${level + 1}></summary>
+            <rh-table>
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">CSS Property</th>
+                    <th scope="col">Description</th>
+                    <th>Default</th>
+                  </tr>
+                </thead>
+                <tbody>${(await Promise.all(deprecated.map(async prop => html`
+                  <tr>
+                    <td><code>${prop.name}</code></td>
+                    <td>${await this.innerMD(prop.description)}</td>
+                    <td>${await this.innerMD(prop.default ?? '—')}</td>
+                  </tr>`))).join('')}
+                </tbody>
+              </table>
+            </rh-table>
+          </details>`}
+        </section>
+      </rh-accordion-panel>
+    `;
+  }
+
+  async renderDesignTokens(tagName, ctx) {
+    const designTokens = (ctx.doc.docsPage.manifest.getCssCustomProperties(tagName) ?? [])
+        .filter(x => tokens.has(x.name));
+    const designTokensCount = designTokens.length;
+    return html`
+      <rh-accordion-header id="${tagName}-design-tokens">Design Tokens
+        <rh-badge>${designTokensCount}</rh-badge>
+      </rh-accordion-header>
+      <rh-accordion-panel>
+        <section class="design-tokens">
+          ${!designTokens.length ? html`
+          <em>None</em>` : html`
+          <rh-table>
+            <table>
+              <thead>
+                <tr>
+                  <th>Token</th>
+                  <th>Copy</th>
+                </tr>
+              </thead>
+              <tbody>${designTokens.map(token => html`
+                <tr>
+                  <td>
+                    <a href="${getTokenHref(token)}">
+                      <code>${token.name}</code>
+                    </a>
+                  </td>
+                  ${copyCell(token)}
+                </tr>`).join('')}
+              </tbody>
+            </table>
+          </rh-table>`}
+        </section>
+      </rh-accordion-panel>
+    `;
   }
 };
