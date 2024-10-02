@@ -354,6 +354,7 @@ module.exports = class ElementsPage {
     const designTokensCount = allDesignTokens.filter(x => tokens.has(x.name)).length;
 
     const h = ctx.level ?? 2;
+
     // TODO: dsd
     return html`
       <h${h}>${tagName}</h${h}>
@@ -399,7 +400,6 @@ module.exports = class ElementsPage {
     `.trim();
   }
 
-  /** Render the list of element attributes */
   async renderAttributes(tagName, ctx) {
     const level = ctx.level ?? 2;
     const _attrs = ctx.doc.docsPage.manifest.getAttributes(tagName) ?? [];
@@ -462,7 +462,6 @@ module.exports = class ElementsPage {
       </section>`;
   }
 
-  /** Render a table of element Design Tokens */
   async renderTokens(tagName, ctx) {
     const allCssProperties =
       ctx.doc.docsPage.manifest.getCssCustomProperties(tagName) ?? [];
@@ -485,7 +484,6 @@ module.exports = class ElementsPage {
       </section>`;
   }
 
-  /** Render a table of element CSS Custom Properties */
   async renderCssCustomProperties(tagName, ctx) {
     const level = ctx.level ?? 2;
     const allCssProperties = ctx.doc.docsPage.manifest.getCssCustomProperties(tagName) ?? [];
@@ -537,7 +535,6 @@ module.exports = class ElementsPage {
       </section>`;
   }
 
-  /** Render the list of element CSS Shadow Parts */
   async renderCssParts(tagName, ctx) {
     const level = ctx.level ?? 2;
     const allParts = ctx.doc.docsPage.manifest.getCssParts(tagName) ?? [];
@@ -590,7 +587,6 @@ module.exports = class ElementsPage {
       </section>`;
   }
 
-  /** Render the list of events for the element */
   async renderEvents(tagName, ctx) {
     const level = ctx.level ?? 2;
     const _events = ctx.doc.docsPage.manifest.getEvents(tagName) ?? [];
@@ -643,7 +639,6 @@ module.exports = class ElementsPage {
       </section>`;
   }
 
-  /** Render the list of element methods */
   async renderMethods(tagName, ctx) {
     const level = ctx.level ?? 2;
     const allMethods = ctx.doc.docsPage.manifest.getMethods(tagName) ?? [];
@@ -697,7 +692,6 @@ module.exports = class ElementsPage {
       </section>`;
   }
 
-  /** Render the list of the element's slots */
   async renderSlots(tagName, ctx) {
     const level = ctx.level ?? 2;
     const allSlots = ctx.doc.docsPage.manifest.getSlots(tagName) ?? [];
