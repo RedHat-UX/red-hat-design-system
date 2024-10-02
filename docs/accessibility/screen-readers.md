@@ -19,8 +19,6 @@ importElements:
   }
 </style>
 
-Here, we provide some quick guidance for starting, stopping, and changing the settings of various readers. Each how-to section offers screen-reader-specific bonus tips and links to third-party resources like keyboard/gesture shortcut guides.
-
 ## Why test with screen readers?
 
 When testing with screen readers, our goal is to verify that an assistive tech user will have an experience equivalent to that of any other user. Tests may include the following:
@@ -40,7 +38,7 @@ After turning on your computer’s screen reader and opening your browser, use y
 
 Each screen reader also has its own set of keyboard shortcuts to navigate and read non-interactive content within an experience. Different keypresses can start (or stop) reading the page, jump to the next heading element, move vertically and horizontally among table cells, and so on. Links to keyboard shortcut resources are included in each screen reader’s section.
 
-### How to use computer screen readers
+### Getting started with computer screen readers
 
 <nav class="grid xs-two-columns sm-three-columns">
   <rh-tile compact="">
@@ -70,7 +68,7 @@ Each screen reader also has its own set of keyboard shortcuts to navigate and re
 On mobile devices, you will use touchscreen gestures and taps instead of a keyboard to navigate the page and activate interactive elements.
 For basic navigation, you can swipe right, left, up, and down with one finger to move forward and backward through the page, and then double-tap to activate form controls and links. Each platform has many other gestures for more advanced navigation. View the linked gesture shortcuts pages within each section for more guidance.
 
-### How to use mobile screen readers
+### Getting started with mobile screen readers
 
 <nav class="grid xs-two-columns sm-three-columns">
   <rh-tile compact="">
