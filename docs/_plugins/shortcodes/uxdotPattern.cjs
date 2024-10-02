@@ -84,8 +84,8 @@ module.exports = function(eleventyConfig) {
     <span slot="action-label-copy"
           hidden
           data-code-block-state="active">Copied!</span>
-    <script type="sample/javascript">${jsContent.replaceAll(NEWLINE_RE, COMMENT)}</script>`}
-  </rh-code-block>
+    <script type="sample/javascript">${jsContent.replaceAll(NEWLINE_RE, COMMENT)}</script>
+  </rh-code-block>`}
 </uxdot-pattern>
 `;
   });

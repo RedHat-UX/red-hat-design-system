@@ -26,20 +26,31 @@
 }
 
 .surface-grid,
-.tile-grid {
+.color-palette-grid {
   display: grid;
   padding: 0;
   list-style-type: none;
   gap: var(--rh-space-sm);
   grid-template-columns: 1fr 1fr 1fr;
+  text-align: center;
 }
 
 .surface-grid {
   grid-template-columns: 1fr 1fr;
+
+  ::part(header) {
+    margin-block-end: 1rem;
+  }
 }
 
 .icon-card {
   --rh-icon-size: var(--rh-size-icon-07);
+}
+
+.color-palette-grid rh-surface {
+  padding: 2rem;
+  border-radius: var(--rh-border-radius-default);
+  border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
 }
 
 .pullquote-card {
