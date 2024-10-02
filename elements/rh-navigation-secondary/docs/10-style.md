@@ -11,7 +11,10 @@ A secondary navigation is divided into three slots, it is not required to use al
 - Slot 3 - includes tertiary elements like a call to action (optional)
 
 <uxdot-example width-adjustment="872px">
-  <img src="../nav-secondary-style-slots.png" alt="Image of a gray secondary navigation background with dotted line boxes that say slot 1, slot 2, and slot 3 from left to right">
+  <img src="../nav-secondary-style-slots.png"
+        alt="Image of a gray secondary navigation background with dotted line boxes that say slot 1, slot 2, and slot 3 from left to right"
+        width="872"
+        height="98">
 </uxdot-example>
 
 
@@ -50,7 +53,10 @@ Slots are defined areas where content can be inserted, each slot includes a spec
 On small breakpoints, navigation elements in Slot 2 will collapse into an accordion within a menu. Optional elements in Slot 3 will be placed below the accordion or hidden completely.
 
 <uxdot-example width-adjustment="872px">
-  <img src="../nav-secondary-style-slots-and-breakpoints.png" alt="Image of four secondary navigations; two large ones and two small ones with dotted line boxes around each slot and labels that say slot 1, slot 2, and slot 3">
+  <img src="../nav-secondary-style-slots-and-breakpoints.png"
+        alt="Image of four secondary navigations; two large ones and two small ones with dotted line boxes around each slot and labels that say slot 1, slot 2, and slot 3"
+        width="872"
+        height="748">
 </uxdot-example>
 
 ### Using the expandable menu
@@ -88,7 +94,10 @@ A secondary navigation is available in both light and dark themes. The light the
 The light theme secondary navigation should be used in environments with a lighter look and feel. The box shadow is always visible unless covered by an expanded menu.
 
 <uxdot-example width-adjustment="872px">
-  <img src="../nav-secondary-style-theme-light.png" alt="Image of a light theme secondary navigation">
+  <img src="../nav-secondary-style-theme-light.png"
+        alt="Image of a light theme secondary navigation"
+        width="872"
+        height="98">
 </uxdot-example>
 
 <rh-table>
@@ -122,7 +131,10 @@ The light theme secondary navigation should be used in environments with a light
 The dark theme secondary navigation should be used in environments with a darker look and feel. The gray bottom border is always visible unless covered by an expanded menu.
 
 <uxdot-example color-palette="darkest" width-adjustment="872px">
-  <img src="../nav-secondary-style-theme-dark.png" alt="Image of a dark theme secondary navigation">
+  <img src="../nav-secondary-style-theme-dark.png"
+        alt="Image of a dark theme secondary navigation"
+        width="872"
+        height="98">
 </uxdot-example>
 
 <rh-table>
@@ -156,7 +168,10 @@ The dark theme secondary navigation should be used in environments with a darker
 A secondary navigation spans the entire width of a browser window on all breakpoints. It has a fixed height of <code>86px</code> on large breakpoints and a fixed height of <code>80px</code> on small breakpoints even if Slot 1 text is only one line. Content in all slots is horizontally centered with the background.
 
 <uxdot-example width-adjustment="872px">
-  <img src="../nav-secondary-style-configuration.png" alt="Image of a secondary navigation construction; several examples showing details like spacing, alignment, height, width, and more">
+  <img src="../nav-secondary-style-configuration.png"
+        alt="Image of a secondary navigation construction; several examples showing details like spacing, alignment, height, width, and more"
+        width="872"
+        height="802">
 </uxdot-example>
 
 ### Expandable menu styles
@@ -164,7 +179,10 @@ A secondary navigation spans the entire width of a browser window on all breakpo
 An expandable menu includes content like text, links, calls to action, and more. The menu tab, panel, and backdrop have the same styles on all breakpoints.
 
 <uxdot-example width-adjustment="872px">
-  <img src="../nav-secondary-style-expandable-menu-styles.png" alt="Image of two stacked secondary navigations with menus expanded; one for large breakpoints and the other for small breakpoints">
+  <img src="../nav-secondary-style-expandable-menu-styles.png"
+        alt="Image of two stacked secondary navigations with menus expanded; one for large breakpoints and the other for small breakpoints"
+        width="872"
+        height="1125">
 </uxdot-example>
 
 ### Slot text labels
@@ -177,7 +195,10 @@ Slot 1 and Slot 2 text elements have specific styles applied to them.
 </rh-alert>
 
 <uxdot-example width-adjustment="872px">
-  <img src="../nav-secondary-style-text-labels.png" alt="Image of four stacked secondary navigations; two are light theme and two are dark theme, both with dotted line boxes and labels that say slot 1 and slot 2">
+  <img src="../nav-secondary-style-text-labels.png"
+        alt="Image of four stacked secondary navigations; two are light theme and two are dark theme, both with dotted line boxes and labels that say slot 1 and slot 2"
+        width="872"
+        height="430">
 </uxdot-example>
 
 <rh-table>
@@ -247,14 +268,20 @@ The amount of space in a secondary navigation remains about the same on all brea
 ### Large breakpoints
 
 <uxdot-example width-adjustment="872px">
-  <img src="../nav-secondary-space-breakpoints-large.png" alt="Image of secondary navigation spacing values on large breakpoints">
+  <img src="../nav-secondary-space-breakpoints-large.png"
+        alt="Image of secondary navigation spacing values on large breakpoints"
+        width="1000"
+        height="582">
 </uxdot-example>
 
 
 ### Small breakpoints  
 
 <uxdot-example width-adjustment="872px">
-  <img src="../nav-secondary-space-breakpoints-small.png" alt="Image of secondary navigation spacing values on small breakpoints">
+  <img src="../nav-secondary-space-breakpoints-small.png"
+        alt="Image of secondary navigation spacing values on small breakpoints"
+        width="984"
+        height="714">
 </uxdot-example>
 
 <rh-table>
@@ -274,11 +301,17 @@ Interaction states are visual representations used to communicate the status of 
 ### Hover
 
 <uxdot-example width-adjustment="872px">
-  <img src="../nav-secondary-interaction-state-hover-theme-light.png" alt="Image of light theme secondary navigation hover states">
+  <img src="../nav-secondary-interaction-state-hover-theme-light.png"
+        alt="Image of light theme secondary navigation hover states"
+        width="872"
+        height="238">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="872px">
-  <img src="../nav-secondary-interaction-state-hover-theme-dark.png" alt="Image of dark theme secondary navigation hover states">
+  <img src="../nav-secondary-interaction-state-hover-theme-dark.png"
+        alt="Image of dark theme secondary navigation hover states"
+        width="872"
+        height="238">
 </uxdot-example>
 
 
@@ -331,11 +364,17 @@ Interaction states are visual representations used to communicate the status of 
 </rh-alert>
 
 <uxdot-example width-adjustment="872px">
-  <img src="../nav-secondary-interaction-state-focus-theme-light.png" alt="Image of light theme secondary navigation focus states">
+  <img src="../nav-secondary-interaction-state-focus-theme-light.png"
+        alt="Image of light theme secondary navigation focus states"
+        width="872"
+        height="212">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="872px">
-  <img src="../nav-secondary-interaction-state-focus-theme-dark.png" alt="Image of dark theme secondary navigation focus states">
+  <img src="../nav-secondary-interaction-state-focus-theme-dark.png"
+        alt="Image of dark theme secondary navigation focus states"
+        width="872"
+        height="212">
 </uxdot-example>
   
 <rh-table>
@@ -366,11 +405,17 @@ Interaction states are visual representations used to communicate the status of 
 </rh-alert>
 
 <uxdot-example width-adjustment="872px">
-  <img src="../nav-secondary-interaction-state-active-theme-light.png" alt="Image of light theme secondary navigation active states">
+  <img src="../nav-secondary-interaction-state-active-theme-light.png"
+        alt="Image of light theme secondary navigation active states"
+        width="872"
+        height="212">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="872px">
-  <img src="../nav-secondary-interaction-state-active-theme-dark.png" alt="Image of dark theme secondary navigation active states">
+  <img src="../nav-secondary-interaction-state-active-theme-dark.png"
+        alt="Image of dark theme secondary navigation active states"
+        width="872"
+        height="212">
 </uxdot-example>
 
 <rh-table>
