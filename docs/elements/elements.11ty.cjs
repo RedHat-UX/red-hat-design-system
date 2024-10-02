@@ -426,8 +426,8 @@ module.exports = class ElementsPage {
                 <td><code>${attribute.name}</code></td>
                 <td><code>${attribute.fieldName}</code></td>
                 <td>${await this.innerMD(attribute.description)}</td>
-                <td>${this.highlight(attribute?.type?.text ?? 'unknown', 'ts')}</td>
-                <td>${this.highlight(attribute?.default ?? 'unknown', 'ts')}</td>
+                <td>${this.highlight('ts', attribute?.type?.text ?? 'unknown')}</td>
+                <td>${this.highlight('ts', attribute?.default ?? 'unknown')}</td>
               </tr>`))).join('')}
             </tbody>
           </table>
@@ -452,8 +452,8 @@ module.exports = class ElementsPage {
                   <td><code>${attribute.name}</code></td>
                   <td><code>${attribute.fieldName}</code></td>
                   <td>${await this.innerMD(attribute.description)}</td>
-                  <td>${this.highlight(attribute.type?.text ?? 'unknown', 'ts')}</td>
-                  <td>${this.highlight(attribute.default ?? 'unknown', 'ts')}</td>
+                  <td>${this.highlight('ts', attribute.type?.text ?? 'unknown')}</td>
+                  <td>${this.highlight('ts', attribute.default ?? 'unknown')}</td>
                 </tr>`))).join('')}
               </tbody>
             </table>
