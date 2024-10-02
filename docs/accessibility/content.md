@@ -1,8 +1,8 @@
 ---
 title: Content
 tags:
- - accessibility
-order: 10
+  - accessibility
+order: 40
 importElements:
   - rh-code-block
   - rh-blockquote
@@ -117,7 +117,7 @@ If the above image supplements the text of an article about Red Hat or our produ
 
 ```html rhcodeblock
 <a href="https://www.redhat.com/">
-  <img src="logo-redhat.png" alt="Red Hat homepage">
+  <img src="logo-redhat.png" alt="Red Hat homepage" />
 </a>
 ```
 
@@ -127,18 +127,18 @@ Grouped images that convey a single meaning (e.g., movie rating stars), can be g
 
 ```html rhcodeblock
 <div aria-label="2 of 3 attempts left">
-  <img src="pending.jpg" alt>
-  <img src="pending.jpg" alt>
-  <img src="failed.jpg" alt>
+  <img src="pending.jpg" alt />
+  <img src="pending.jpg" alt />
+  <img src="failed.jpg" alt />
 </div>
 ```
 
 Or the first element of the group can have alt text, while the others are hidden:
 
 ```html rhcodeblock
-<img src="pending.jpg" alt="2 of 3 attempts left">
-<img src="pending.jpg" alt>
-<img src="failed.jpg" alt>
+<img src="pending.jpg" alt="2 of 3 attempts left" />
+<img src="pending.jpg" alt />
+<img src="failed.jpg" alt />
 ```
 
 ### Embedded media (and other non-text) titles
@@ -146,9 +146,8 @@ Or the first element of the group can have alt text, while the others are hidden
 Though the techniques may vary, meaningful embedded media objects require text alternatives—just like images do. This applies to `<video>`. `<audio>`, and `<canvas>` elements; objects; applets; ASCII art; and (if you still use them) multimedia embeds like Flash and Silverlight.
 A common technique is labeling objects with ARIA attributes:
 
-
 ```html rhcodeblock
-<video src="video.mp4" aria-label="Deploying applications with OpenShift">
+<video src="video.mp4" aria-label="Deploying applications with OpenShift"></video>
 ```
 
 ## Writing microcopy
@@ -187,7 +186,6 @@ In addition to the best practices for all microcopy, adhere to the following bes
 
 In addition to the best practices for all microcopy, adhere to the following best practices for buttons, when possible.
 
-
 ```html rhcodeblock
 <button>Save draft</button>
 ```
@@ -219,13 +217,11 @@ In addition to the best practices for all microcopy, adhere to the following bes
 
 Use clear language in headings to describe the content that follows them:
 
-
 ```html rhcodeblock
 <h1>Red Hat Enterprise Linux</h1>
 ```
 
 At Red Hat, we use sentence case for our headings:
-
 
 ```html rhcodeblock
 <h2>How companies are using RHEL</h2>
@@ -255,21 +251,20 @@ And here’s how that outline would be reflected in a page’s heading structure
 
 ```html rhcodeblock
 <h1>Midwestern Recipes</h1>
-  <h2>Sides</h2>
-    <h3>Cheese</h3>
-      <h4>Fried cheese curds</h4>
-      <h4>Beer cheese dip</h4>
-  <h2>Desserts</h2>
-    <h3>Bars</h3>
-      <h4>Scotch-a-roos</h4>
-      <h4>Dream bars</h4>
-    <h3>Pastries</h3>
-      <h4>Kringle</h4>
-      <h4>Dutch letters</h4>
+<h2>Sides</h2>
+<h3>Cheese</h3>
+<h4>Fried cheese curds</h4>
+<h4>Beer cheese dip</h4>
+<h2>Desserts</h2>
+<h3>Bars</h3>
+<h4>Scotch-a-roos</h4>
+<h4>Dream bars</h4>
+<h3>Pastries</h3>
+<h4>Kringle</h4>
+<h4>Dutch letters</h4>
 ```
 
 Note that an `<h1>` is often the first heading on a page:
-
 
 ```html rhcodeblock
 <h1>Midwestern Recipes</h1>
@@ -277,7 +272,6 @@ Note that an `<h1>` is often the first heading on a page:
 ```
 
 But it doesn’t have to be the first heading on a page. This is also acceptable:
-
 
 ```html rhcodeblock
 <h2>Navigation</h2>
@@ -294,7 +288,9 @@ Each web page is required to have a page `<title>` element within its `<head>` t
   <head>
     <title>Red Hat Ansible Automation Platform</title>
   </head>
-  <body>...</body>
+  <body>
+    ...
+  </body>
 </html>
 ```
 
@@ -307,7 +303,6 @@ As mentioned in the Headings section, page titles and `<h1>` elements often rela
 ### iframe titles
 
 Non-hidden, non-empty `<iframe>` elements are required to have titles describing their meaning or purpose, similar to alternative text for images.
-
 
 ```html rhcodeblock
 <iframe src="video.html" title="Video: Network automation with Ansible"></iframe>
@@ -339,7 +334,9 @@ For example, the following doesn’t need to be a table:
 
 ```html rhcodeblock
 <table>
-  <caption>Groceries</caption>
+  <caption>
+    Groceries
+  </caption>
   <tbody>
     <tr>
       <th scope="row">Apples</th>
@@ -538,13 +535,17 @@ For pages with multilingual content, each element containing a different languag
 ```html rhcodeblock
 <!DOCTYPE html>
 <html lang="en">
-  <head>...</head>
+  <head>
+    ...
+  </head>
   <body>
-      <p>Colombian author Gabriel García Márquez wrote that
-      we each live three lives: one public, one private, and
-      one secret. (Full original quote: <span lang="es">“Todos
-      los seres humanos tenemos tres vidas: pública, privada y
-      secreta.”</span>)</p>
+    <p>
+      Colombian author Gabriel García Márquez wrote that we each live three lives: one public, one
+      private, and one secret. (Full original quote:
+      <span lang="es"
+        >“Todos los seres humanos tenemos tres vidas: pública, privada y secreta.”</span
+      >)
+    </p>
   </body>
 </html>
 ```

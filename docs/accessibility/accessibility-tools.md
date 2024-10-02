@@ -4,7 +4,7 @@ sidenavTitle: Accessibility tools
 permalink: /accessibility/accessibility-tools/index.html
 tags:
   - accessibility
-order: 50
+order: 10
 importElements:
   - rh-blockquote
 ---
@@ -13,9 +13,9 @@ importElements:
 
 Automated tools can help you quickly identify many potential high-impact accessibility issues. Among such tools are free browser extensions like:
 
-  * Deque’s aXe DevTools
-  * WebAIM’s WAVE
-  * IBM's Equal Access Checker
+- Deque’s aXe DevTools
+- WebAIM’s WAVE
+- IBM's Equal Access Checker
 
 ### Deque aXe DevTools
 
@@ -66,11 +66,11 @@ Running an accessibility audit in Lighthouse is recommended to catch errors dete
 
 Chrome and Edge also have an "Accessibility Pane" that lets users see information about the currently selected DOM node. This includes properties like:
 
-   * An element's role
-   * If an element is focusable
-   * If the element contains any `aria` attributes and their values
-   * An element's title
-   * ...and many other accessibility-related properties
+- An element's role
+- If an element is focusable
+- If the element contains any `aria` attributes and their values
+- An element's title
+- ...and many other accessibility-related properties
 
 <figure>
   <uxdot-example width-adjustment="893px">

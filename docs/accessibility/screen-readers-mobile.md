@@ -4,7 +4,7 @@ sidenavTitle: "Screen readers: mobile"
 permalink: /accessibility/screen-readers-mobile/index.html
 tags:
   - accessibility
-order: 72
+order: 102
 ---
 
 On mobile devices, you will use touchscreen gestures and taps instead of a keyboard to navigate the page and activate interactive elements.

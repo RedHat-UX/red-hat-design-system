@@ -4,7 +4,7 @@ sidenavTitle: "Screen readers: computer"
 permalink: /accessibility/screen-readers-computer/index.html
 tags:
   - accessibility
-order: 71
+order: 101
 ---
 
 On computers, screen reader testing often lets you perform two tests simultaneously. First, it ensures that all meaningful web content and interactions are available to assistive tech. Second, it helps you verify that your experiences are keyboard operable (which is a [WCAG requirement](https://www.w3.org/WAI/WCAG21/Understanding/keyboard-accessible.html)).

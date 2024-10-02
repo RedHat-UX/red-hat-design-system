@@ -4,35 +4,24 @@ sidenavTitle: Screen reader testing
 permalink: /accessibility/screen-readers/index.html
 tags:
   - accessibility
-order: 70
+order: 100
 importElements:
   - rh-tile
 ---
 
-<script type="module" data-helmet>
-  import '@rhds/elements/rh-tile/rh-tile-group.js';
-  import '@rhds/elements/rh-tile/rh-tile.js';
-</script>
-
 <link rel="stylesheet"
       data-helmet
       href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
-<link rel="stylesheet"
-      data-helmet
-      href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-group.css">
-<style>
-rh-tile-group {
-display: flex;
-align-items: top;
-flex-wrap: wrap;
-column-gap: var(--rh-space-2xl, 32px);
-row-gap: var(--rh-space-2xl, 32px);
-margin-inline-end: var(--rh-space-md, 8px);
-}
 
-rh-tile {
-width: 320px;
-}
+<style>
+  rh-tile {
+    margin-block: var(--rh-space-3xl, 48px);
+    max-width: 320px;
+  }
+
+  rh-tile [slot="headline"] {
+    font-weight: var(--rh-font-weight-heading-bold, 700);
+  }
 </style>
 
 Our screen reader testing pages provide some quick guidance for starting, stopping, and changing the settings of various screen readers. They also offer screen-reader-specific bonus tips and links to third-party resources like keyboard/gesture shortcut guides.
@@ -59,7 +48,6 @@ But if you’re either pressed for time or have access to multiple operating sys
 - iOS: Safari and VoiceOver
 - Android: Chrome and TalkBack
 
-  <rh-tile-group>
     <rh-tile compact="">
       <h2 slot="headline"><a href="#top">Link1</a></h2>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -72,4 +60,3 @@ But if you’re either pressed for time or have access to multiple operating sys
       <h2 slot="headline"><a href="#top">Link3</a></h2>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
     </rh-tile>
-  </rh-tile-group>
