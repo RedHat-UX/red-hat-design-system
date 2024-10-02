@@ -1,14 +1,10 @@
 ---
-title: "Screen readers: mobile"
-sidenavTitle: "Screen readers: mobile"
+title: "Mobile screen readers"
 permalink: /accessibility/screen-readers-mobile/index.html
 tags:
   - accessibility
 order: 102
 ---
-
-On mobile devices, you will use touchscreen gestures and taps instead of a keyboard to navigate the page and activate interactive elements.
-For basic navigation, you can swipe right, left, up, and down with one finger to move forward and backward through the page, and then double-tap to activate form controls and links. Each platform has many other gestures for more advanced navigation. View the linked gesture shortcuts pages within each section for more guidance.
 
 ## VoiceOver (iOS)
 

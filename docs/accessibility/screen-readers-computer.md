@@ -1,17 +1,10 @@
 ---
-title: "Screen readers: computer"
-sidenavTitle: "Screen readers: computer"
+title: "Computer screen readers"
 permalink: /accessibility/screen-readers-computer/index.html
 tags:
   - accessibility
 order: 101
 ---
-
-On computers, screen reader testing often lets you perform two tests simultaneously. First, it ensures that all meaningful web content and interactions are available to assistive tech. Second, it helps you verify that your experiences are keyboard operable (which is a [WCAG requirement](https://www.w3.org/WAI/WCAG21/Understanding/keyboard-accessible.html)).
-
-After turning on your computer’s screen reader and opening your browser, use your keyboard to access the entire experience, top to bottom. Use the <kbd>Tab</kbd>, <kbd>Shift-Tab</kbd>, and <kbd>↑ → ↓ ←</kbd> keys to move among (and within) focusable elements like links, form controls, and interactive components. And you can then use other keys like <kbd>Space</kbd>, <kbd>Enter</kbd>, and <kbd>Escape</kbd> to interact with those elements.
-
-Each screen reader also has its own set of keyboard shortcuts to navigate and read non-interactive content within an experience. Different keypresses can start (or stop) reading the page, jump to the next heading element, move vertically and horizontally among table cells, and so on. Links to keyboard shortcut resources are included in each screen reader’s section, below.
 
 ## VoiceOver (macOS)
 
