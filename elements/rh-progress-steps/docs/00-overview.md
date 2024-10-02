@@ -12,7 +12,10 @@ toward the completion of a linear process.
 ## Sample element
 
 <uxdot-example width-adjustment="687px">
-  <img src="./progress-steps-sample.svg" alt="Progress steps component sample">
+  <img src="./progress-steps-sample.svg"
+        alt="Progress steps component sample"
+        width="687"
+        height="64">
 </uxdot-example>
 
 {% repoStatusChecklist repoStatus=repoStatus %}

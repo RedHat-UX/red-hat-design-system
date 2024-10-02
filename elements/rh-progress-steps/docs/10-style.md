@@ -5,7 +5,10 @@ on a thin horizontal or vertical line and organized sequentially from left to
 right or top to bottom.
 
 <uxdot-example width-adjustment="699px">
-  <img src="../progress-steps-blueprint.svg" alt="Progress steps component blueprint">
+  <img src="../progress-steps-blueprint.svg"
+        alt="Progress steps component blueprint"
+        width="699"
+        height="298">
 </uxdot-example>
 
 
@@ -27,7 +30,10 @@ through each step of the task.
   indicates how much progress a user has made.
 
 <uxdot-example width-adjustment="385px">
-  <img src="../progress-steps-visual-elements.svg" alt="Progress steps component visual elements">  
+  <img src="../progress-steps-visual-elements.svg"
+        alt="Progress steps component visual elements"
+        width="385"
+        height="64">  
 </uxdot-example>
 
 
@@ -45,7 +51,10 @@ them in **Sentence case** only.
 </rh-alert>
 
 <uxdot-example width-adjustment="687px">
-  <img src="../progress-steps-text-labels.svg" alt="Progress steps component text labels">
+  <img src="../progress-steps-text-labels.svg"
+        alt="Progress steps component text labels"
+        width="687"
+        height="64">
 </uxdot-example>
 
 
@@ -64,7 +73,10 @@ steps with short text labels.
 </rh-alert>
 
 <uxdot-example width-adjustment="687px">
-  <img src="../progress-steps-horizontal-orientation.svg" alt="Progress steps component horizontal orientation">
+  <img src="../progress-steps-horizontal-orientation.svg"
+        alt="Progress steps component horizontal orientation"
+        width="687"
+        height="592">
 </uxdot-example>
 
 
@@ -82,7 +94,10 @@ with more words.
 </rh-alert>
 
 <uxdot-example width-adjustment="872px">
-  <img src="../progress-steps-vertical-orientation.svg" alt="Progress steps component vertical orientation">
+  <img src="../progress-steps-vertical-orientation.svg"
+        alt="Progress steps component vertical orientation"
+        width="872"
+        height="641">
 </uxdot-example>
 
 
@@ -95,28 +110,40 @@ orientation.
 ### Desktop
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../progress-steps-responsive-desktop.svg" alt="Progress steps component responsive design, desktop">
+  <img src="../progress-steps-responsive-desktop.svg"
+        alt="Progress steps component responsive design, desktop"
+        width="1000"
+        height="536">
 </uxdot-example>
 
 
 ### Tablet
 
 <uxdot-example width-adjustment="768px"  variant="full" alignment="left" no-border>
-  <img src="../progress-steps-responsive-tablet.svg" alt="Progress steps component responsive design, tablet">
+  <img src="../progress-steps-responsive-tablet.svg"
+        alt="Progress steps component responsive design, tablet"
+        width="768"
+        height="536">
 </uxdot-example>
 
 
 ### Mobile
 
 <uxdot-example width-adjustment="375px" variant="full" alignment="left" no-border>
-  <img src="../progress-steps-responsive-mobile.svg" alt="Progress steps component responsive design, mobile">
+  <img src="../progress-steps-responsive-mobile.svg"
+        alt="Progress steps component responsive design, mobile"
+        width="360"
+        height="648">
 </uxdot-example>
 
 
 ## Spacing
 
 <uxdot-example width-adjustment="687px">
-  <img src="../progress-steps-spacing.svg" alt="Progress steps component spacing">
+  <img src="../progress-steps-spacing.svg"
+        alt="Progress steps component spacing"
+        width="687"
+        height="272">
 </uxdot-example>
 
 <rh-table>
