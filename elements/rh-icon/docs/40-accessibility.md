@@ -4,7 +4,10 @@ If an icon is interactive or otherwise not merely decorative, it will need to be
 
 <div class="grid sm-two-columns">
   <uxdot-example width-adjustment="36px">
-    <img src="../icon-accessibility-labeling-icons.svg" alt="Image of a download icon, an arrow pointing down with an underline beneath it">
+    <img src="../icon-accessibility-labeling-icons.svg"
+        alt="Image of a download icon, an arrow pointing down with an underline beneath it"
+        width="24"
+        height="24">
   </uxdot-example>
   <rh-code-block wrap="true">
     <script type="text/html"><rh-icon icon="download" set="ui" accessible-label="Download"></rh-icon></script>
@@ -15,7 +18,10 @@ However, when an icon is accompanied by text, the icon does not need to use acce
 
 <div class="grid sm-two-columns">
   <uxdot-example width-adjustment="113px">
-    <img src="../icon-accessibility-labeling-icons-2.svg" alt="Image of a download icon with text, an arrow pointing down with an underline beneath it with accompanying download text">
+    <img src="../icon-accessibility-labeling-icons-2.svg"
+        alt="Image of a download icon with text, an arrow pointing down with an underline beneath it with accompanying download text"
+        width="114"
+        height="28">
   </uxdot-example>
   <rh-code-block wrap="true">
     <script type="text/html"><rh-icon icon="download" set="ui"></rh-icon><span>Download</span></script>
