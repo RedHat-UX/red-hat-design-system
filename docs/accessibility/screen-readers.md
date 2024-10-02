@@ -45,7 +45,7 @@ Each screen reader also has its own set of keyboard shortcuts to navigate and re
 <nav class="grid xs-two-columns sm-three-columns">
   <rh-tile compact="">
     <h3 slot="headline"><a href="/accessibility/screen-readers-computer/#voiceover-(macos)">VoiceOver (macOS)</a></h3>
-    VoiceOver is a screen reader that comes packaged with macOS.
+    VoiceOver is the built-in screen reader for macOS.
   </rh-tile>
   <rh-tile compact="">
     <h3 slot="headline"><a href="/accessibility/screen-readers-computer/#nvda-(windows)">NVDA (Windows)</a></h3>
@@ -57,7 +57,7 @@ Each screen reader also has its own set of keyboard shortcuts to navigate and re
   </rh-tile>
   <rh-tile compact="">
     <h3 slot="headline"><a href="/accessibility/screen-readers-computer/#narrator-(windows)">Narrator (Windows)</a></h3>
-    Narrator comes packaged with Windows 10 and 11.
+    Narrator is the built-in screen reader for Windows 10 and 11.
   </rh-tile>
   <rh-tile compact="">
     <h3 slot="headline"><a href="/accessibility/screen-readers-computer/#orca-(linux)">Orca (Linux)</a></h3>
@@ -75,11 +75,11 @@ For basic navigation, you can swipe right, left, up, and down with one finger to
 <nav class="grid xs-two-columns sm-three-columns">
   <rh-tile compact="">
     <h3 slot="headline"><a href="/accessibility/screen-readers-mobile/#voiceover-(ios)">VoiceOver (iOS)</a></h3>
-    VoiceOver comes preinstalled on iOS and iPadOS devices.
+    VoiceOver is the built-in screen reader for iOS and iPadOS devices.
   </rh-tile>
   <rh-tile compact="">
     <h3 slot="headline"><a href="/accessibility/screen-readers-mobile/#talkback-(android)">Talkback (Android)</a></h3>
-    TalkBack comes preinstalled on Android devices.
+    TalkBack is the built-in screen reader for most Android devices.
   </rh-tile>
 </nav>
 
