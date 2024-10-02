@@ -3,7 +3,10 @@
 {{ tagName | getElementDescription }}
 
 <uxdot-example width-adjustment="220">
-  <img src="./skip-link.svg" alt="Image of a skip link">
+  <img src="./skip-link.svg"
+        alt="Image of a skip link"
+        width="220"
+        height="56">
 </uxdot-example>
 
 
