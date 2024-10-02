@@ -7,6 +7,11 @@ const { readFile } = require('node:fs/promises');
 
 const { AssetCache } = require('@11ty/eleventy-fetch');
 
+function stringifyParams(method) {
+  return method.parameters?.map?.(p =>
+    `${p.name}: ${p.type?.text ?? 'unknown'}`).join(', ') ?? '';
+}
+
 module.exports = class ElementsPage {
   static assetCache = new AssetCache('rhds-ux-dot-import-map-jspmio');
 
@@ -181,7 +186,9 @@ module.exports = class ElementsPage {
       html`<h2>Usage</h2>`,
       await this.getMainDemoContent(tagName),
       doc.fileExists && await this.renderFile(doc.filePath),
-      await this.renderCodeDocs.call(this, doc.docsPage.tagName, ctx),
+      await this.renderCodeDocs.call(this,
+                                     doc.docsPage.tagName,
+                                     { ctx, level: (ctx.level ?? 2) + 1 }),
       await Promise.all(doc.siblingElements.map(tagName =>
         this.renderCodeDocs.call(this, tagName, ctx))),
     ].filter(Boolean).join('');
@@ -394,7 +401,7 @@ module.exports = class ElementsPage {
 
   /** Render the list of element attributes */
   async renderAttributes(tagName, ctx) {
-    const level = ctx.level ?? 3;
+    const level = ctx.level ?? 2;
     const _attrs = ctx.doc.docsPage.manifest.getAttributes(tagName) ?? [];
     const deprecated = _attrs.filter(x => x.deprecated);
     const attributes = _attrs.filter(x => !x.deprecated);
@@ -427,7 +434,7 @@ module.exports = class ElementsPage {
         </rh-table>`}
         ${!deprecated.length ? '' : html`
         <details>
-          <summary>${mdHeading(`Deprecated Attributes`, { level: level + 1 })}</summary>
+          <summary><h${level + 1}>Deprecated Attributes<h${level + 1}></summary>
           <rh-table>
             <table>
               <thead>
@@ -480,6 +487,7 @@ module.exports = class ElementsPage {
 
   /** Render a table of element CSS Custom Properties */
   async renderCssCustomProperties(tagName, ctx) {
+    const level = ctx.level ?? 2;
     const allCssProperties = ctx.doc.docsPage.manifest.getCssCustomProperties(tagName) ?? [];
     const cssProperties = allCssProperties.filter(x => !x.deprecated && !tokens.has(x.name));
     const deprecated = allCssProperties.filter(x => x.deprecated && !tokens.has(x.name));
@@ -507,7 +515,7 @@ module.exports = class ElementsPage {
             </tbody>
           </table>`}${!deprecated.length ? '' : html`
           <details>
-            <summary>${mdHeading(`Deprecated CSS Custom Properties`, { level: level + 1 })}</summary>
+            <summary><h${level + 1}>Deprecated CSS Custom Properties</h${level + 1}></summary>
             <table>
               <thead>
                 <tr>
@@ -531,6 +539,7 @@ module.exports = class ElementsPage {
 
   /** Render the list of element CSS Shadow Parts */
   async renderCssParts(tagName, ctx) {
+    const level = ctx.level ?? 2;
     const allParts = ctx.doc.docsPage.manifest.getCssParts(tagName) ?? [];
     const parts = allParts.filter(x => !x.deprecated);
     const deprecated = allParts.filter(x => x.deprecated);
@@ -556,7 +565,7 @@ module.exports = class ElementsPage {
           </table>
         </rh-table>`}${!deprecated.length ? '' : html`
         <details>
-          <summary>${mdHeading(`Deprecated CSS Shadow Parts`, { level: level + 1 })}</summary>
+          <summary><h${level + 1}>Deprecated CSS Shadow Parts</h${level + 1}></summary>
           <rh-table>
             <table>
               <thead>
@@ -583,6 +592,7 @@ module.exports = class ElementsPage {
 
   /** Render the list of events for the element */
   async renderEvents(tagName, ctx) {
+    const level = ctx.level ?? 2;
     const _events = ctx.doc.docsPage.manifest.getEvents(tagName) ?? [];
     const deprecated = _events.filter(x => x.deprecated);
     const events = _events.filter(x => !x.deprecated);
@@ -608,7 +618,7 @@ module.exports = class ElementsPage {
           </table>
         </rh-table>`}${!deprecated.length ? '' : html`
         <details>
-          <summary>${mdHeading(`Deprecated Events`, { level: level + 1 })}</summary>
+          <summary><h${level + 1}>Deprecated Events</h${level + 1}></summary>
           <rh-table>
             <table>
               <thead>
@@ -635,6 +645,7 @@ module.exports = class ElementsPage {
 
   /** Render the list of element methods */
   async renderMethods(tagName, ctx) {
+    const level = ctx.level ?? 2;
     const allMethods = ctx.doc.docsPage.manifest.getMethods(tagName) ?? [];
     const deprecated = allMethods.filter(x => x.deprecated);
     const methods = allMethods.filter(x => !x.deprecated);
@@ -661,7 +672,7 @@ module.exports = class ElementsPage {
           </table>
         </rh-table>`}${!deprecated.length ? '' : html`
         <details>
-          <summary>${mdHeading(`Deprecated Methods`, { level: level + 1 })}</summary>
+          <summary><h${level + 1}>Deprecated Methods</h${level + 1}></summary>
           <rh-table>
             <table>
               <thead>
@@ -688,6 +699,7 @@ module.exports = class ElementsPage {
 
   /** Render the list of the element's slots */
   async renderSlots(tagName, ctx) {
+    const level = ctx.level ?? 2;
     const allSlots = ctx.doc.docsPage.manifest.getSlots(tagName) ?? [];
     const slots = allSlots.filter(x => !x.deprecated);
     const deprecated = allSlots.filter(x => x.deprecated);
@@ -713,7 +725,7 @@ module.exports = class ElementsPage {
           </table>
         </rh-table>`}${!deprecated.length ? '' : html`
         <details>
-          <summary>${mdHeading(`Deprecated Slots`, { level: level + 1 })}</summary>
+          <summary><h${level + 1}>Deprecated Slots</h${level + 1}></summary>
           <rh-table>
             <table>
               <thead>
