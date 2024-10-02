@@ -4,8 +4,8 @@
 <uxdot-example width-adjustment="872px">
   <img src="./accordion-sample-element.png" 
       alt="An accordion with four collapsed panels and one expanded panel" 
-      width="872px" 
-      height="420px">
+      width="872" 
+      height="420">
 </uxdot-example>
 
 {% repoStatusList repoStatus=repoStatus %}
