@@ -188,7 +188,7 @@ module.exports = class ElementsPage {
       doc.fileExists && await this.renderFile(doc.filePath),
       await this.renderCodeDocs.call(this,
                                      doc.docsPage.tagName,
-                                     { ctx, level: (ctx.level ?? 2) + 1 }),
+                                     { ...ctx, level: (ctx.level ?? 2) + 1 }),
       await Promise.all(doc.siblingElements.map(tagName =>
         this.renderCodeDocs.call(this, tagName, ctx))),
     ].filter(Boolean).join('');
