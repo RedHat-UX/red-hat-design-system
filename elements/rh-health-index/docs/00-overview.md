@@ -3,7 +3,10 @@
 {{ tagName | getElementDescription }}
 
 <uxdot-example width-adjustment="752px">
-  <img src="./overview.svg" alt="Four health index components. One is green with letter grade A, one is yellow with letter grade C, one is orange with letter grade D, and one is red with letter grade F.">
+  <img src="./overview.svg"
+        alt="Four health index components. One is green with letter grade A, one is yellow with letter grade C, one is orange with letter grade D, and one is red with letter grade F."
+        width="480"
+        height="141">
 </uxdot-example>
 
 
