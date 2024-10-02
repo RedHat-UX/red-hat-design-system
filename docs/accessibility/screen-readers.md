@@ -55,7 +55,7 @@ Each screen reader also has its own set of keyboard shortcuts to navigate and re
   </rh-tile>
   <rh-tile compact="">
     <h3 slot="headline"><a href="/accessibility/screen-readers-computer/#narrator-(windows)">Narrator (Windows)</a></h3>
-    Narrator is the built-in screen reader for Windows 10 and 11.
+    Narrator is the built-in screen reader for Windows.
   </rh-tile>
   <rh-tile compact="">
     <h3 slot="headline"><a href="/accessibility/screen-readers-computer/#orca-(linux)">Orca (Linux)</a></h3>
