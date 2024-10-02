@@ -9,6 +9,9 @@ is visible in the browser window.
 ## Sample element
 
 <uxdot-example width-adjustment="128px">
-  <img src="./jump-links-sample.svg" alt="Jump links sample component" />
+  <img src="./jump-links-sample.svg"
+        alt="Jump links sample component"
+        width="128"
+        height="307">
 </uxdot-example>
 
