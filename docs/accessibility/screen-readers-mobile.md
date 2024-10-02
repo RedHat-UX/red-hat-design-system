@@ -1,8 +1,7 @@
 ---
 title: "Mobile screen readers"
 permalink: /accessibility/screen-readers-mobile/index.html
-tags:
-  - accessibility
+
 order: 102
 ---
 

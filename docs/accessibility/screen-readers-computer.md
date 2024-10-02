@@ -1,8 +1,7 @@
 ---
 title: "Computer screen readers"
 permalink: /accessibility/screen-readers-computer/index.html
-tags:
-  - accessibility
+
 order: 101
 ---
 
