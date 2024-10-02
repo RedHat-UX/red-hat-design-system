@@ -1,29 +1,10 @@
-<style>
-  .grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--rh-space-2xl, 32px);
-    margin-block-end: var(--rh-space-4xl, 64px);
-  }
-
+<style data-helmet>
   .grid rh-card h4 {
     margin-block: 0;
   }
 
   .grid rh-card::part(footer) {
     display: none;
-  }
-
-  @container container (min-width: 567px) {
-    .grid {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-
-  @container container (min-width: 992px) {
-    .grid {
-      grid-template-columns: 1fr 1fr 1fr;
-    }
   }
 </style>
 
@@ -45,7 +26,7 @@ Default calls to action may be used.
 
 There are several card variants that can be used for a variety of use cases.
 
-<div class="grid">
+<div class="grid sm-two-columns md-three-columns">
   <rh-card>
     <h4 slot="header">Basic</h4>
     <p>
@@ -213,7 +194,10 @@ content. For example, grouping a basic card with a pricing card will look bad
 because they’re not very similar.
 
 <uxdot-example width-adjustment="784px">
-  <img src="../card-usage-grouping.svg" alt="Grouping of a card">
+  <img src="../card-usage-grouping.svg"
+        alt="Grouping of a card"
+        width="784"
+        height="513">
 </uxdot-example>
 
 These cards can be grouped together because they have similar styles and 
@@ -233,7 +217,10 @@ Cards can include complex components if necessary. For example, the
 place any other complex components in card layouts.
 
 <uxdot-example width-adjustment="664px">
-  <img src="../card-usage-other.svg" alt="Alternative card usage">
+  <img src="../card-usage-other.svg"
+        alt="Alternative card usage"
+        width="664"
+        height="513">
 </uxdot-example>
 
 ## Best practices
@@ -242,21 +229,30 @@ The minimum width of a card in any layout is four columns and the maximum
 number of cards that can be used in a row is three.
 
 <uxdot-example width-adjustment="872px" danger>
-  <img src="../card-bestpractice-1.svg" alt="Too many cards">
+  <img src="../card-bestpractice-1.svg"
+        alt="Too many cards"
+        width="872"
+        height="206">
 </uxdot-example>
 
 Don’t use a primary call to action in any card unless the primary action of a 
 page is positioned inside of that card.
 
 <uxdot-example width-adjustment="360px" danger>
-  <img src="../card-bestpractice-2.svg" alt="Card width error">
+  <img src="../card-bestpractice-2.svg"
+        alt="Card width error"
+        width="360"
+        height="326">
 </uxdot-example>
 
 Don’t use multiple calls to action in one card. Instead, distribute them to 
 other cards.
 
 <uxdot-example width-adjustment="360px">
-  <img src="../card-bestpractice-3.svg" alt="Multiple calls to action">
+  <img src="../card-bestpractice-3.svg"
+        alt="Multiple calls to action"
+        width="360"
+        height="326">
 </uxdot-example>
 
 ## Behavior
@@ -269,7 +265,10 @@ determined by the tallest card. Don’t place inconsistent amounts of content in
 cards, as this will impact how scannable the group will appear to users.
 
 <uxdot-example width-adjustment="784px">
-  <img src="../card-behavior-height.svg" alt="Card height behavior">
+  <img src="../card-behavior-height.svg"
+        alt="Card height behavior"
+        width="784"
+        height="536">
 </uxdot-example>
 
 ### Interactivity
@@ -279,7 +278,10 @@ elements inside should all be interactive. Otherwise, each interactive element
 should continue to be interactive, but not the card container.
 
 <uxdot-example width-adjustment="784px">
-  <img src="../card-behavior-interaction.svg" alt="Card interaction">
+  <img src="../card-behavior-interaction.svg"
+        alt="Card interaction"
+        width="786"
+        height="335">
 </uxdot-example>
 
 ## Interaction states
