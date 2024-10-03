@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
       <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Screen reader testing basics | Red Hat design system</title>
+  <title>Screen readers | Red Hat design system</title>
   <meta name="description" content="This is Red Hat's design system. Using Red Hat brand standards and PatternFly as our foundational design language, we enable designers and developers to concurrently build branded experiences across redhat.com, Red Hat Customer Portal, and beyond.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" type="image/svg+xml" sizes="any" href="/assets/logo-red-hat.svg">
@@ -54,11 +54,11 @@
     "lit": "/assets/packages/lit/index.js",
     "@rhds/tokens/css/color-context-provider.css.js": "/assets/packages/@rhds/tokens/css/color-context-provider.css.js",
     "@rhds/tokens/css/color-context-consumer.css.js": "/assets/packages/@rhds/tokens/css/color-context-consumer.css.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
-    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.2/core.js",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.2/core.js",
     "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
     "lit/": "/assets/packages/lit/",
     "lit-html/": "/assets/packages/lit-html/",
@@ -101,6 +101,8 @@
   
     <script type="module">import '@rhds/elements/rh-alert/rh-alert.js';</script>
   
+    <script type="module">import '@rhds/elements/rh-tile/rh-tile.js';</script>
+  
 
   
   <script type="module">
@@ -116,7 +118,7 @@
 
 
 
-  <script type="module">
+  <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css"><script type="module">
   import '/assets/javascript/elements/uxdot-header.js';
   import '/assets/javascript/elements/uxdot-search.js';
 </script><link rel="stylesheet" href="/styles/pages/backpage.css"><script type="module">
@@ -129,7 +131,7 @@
   import '@rhds/elements/rh-surface/rh-surface.js';
 </script></head>
 
-  <body dsd-pending="" class="element-docs page-screen-reader-testing-basics">
+  <body dsd-pending="" class="element-docs page-screen-readers">
     <rh-skip-link href="#main"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus=""><style>#container{display:block;z-index:1000}a#container{position:fixed}div#container{position:relative}::slotted(a),a{background-color:var(--rh-color-surface-lightest,#fff)!important;border-block-start-width:0!important;border-block-end:var(--rh-border-width-sm,1px) solid var(--rh-color-border-interactive-on-light,#06c)!important;border-inline-start:var(--rh-border-width-sm,1px) solid var(--rh-color-border-interactive-on-light,#06c)!important;border-inline-end:var(--rh-border-width-sm,1px) solid var(--rh-color-border-interactive-on-light,#06c)!important;border-end-start-radius:var(--rh-border-radius-default,3px)!important;border-end-end-radius:var(--rh-border-radius-default,3px)!important;clip:rect(0,0,0,0)!important;color:var(--rh-color-interactive-primary-default-on-light,#06c)!important;font-family:var(--rh-font-family-heading,RedHatDisplay,"Red Hat Display","Noto Sans Arabic","Noto Sans Hebrew","Noto Sans JP","Noto Sans KR","Noto Sans Malayalam","Noto Sans SC","Noto Sans TC","Noto Sans Thai",Helvetica,Arial,sans-serif)!important;font-size:var(--rh-font-size-body-text-md,1rem)!important;font-weight:var(--rh-font-weight-heading-bold,700)!important;height:1px!important;left:50%!important;margin:-1px!important;outline:0!important;overflow:hidden!important;padding:0!important;text-decoration:none!important;top:-40px!important;transform:translateX(-50%)!important;transition:top .05s ease-in!important;white-space:nowrap!important;width:1px!important}::slotted(a){position:fixed!important}::slotted(a:is(:active,:focus)),a:is(:active,:focus){border-width:var(--rh-border-width-md,2px)!important;clip:auto!important;height:auto!important;margin:0!important;overflow:visible!important;padding:var(--rh-space-lg,16px) var(--rh-space-2xl,32px)!important;top:0!important;white-space:inherit!important;width:auto!important}::slotted(a:is(:active,:hover)),a:is(:active,:hover){text-decoration:underline!important}@media (prefers-reduced-motion:reduce){::slotted(a),a{transition-duration:.001ms!important}}</style><!--lit-part c9HdRUDmBIg=--><!--lit-node 0--><a id="container" href="#main"><slot></slot></a><!--/lit-part--></template>Skip to main content</rh-skip-link>
     
 
@@ -588,29 +590,29 @@
     <!--/lit-part--></template>
         
         
-        <uxdot-sidenav-dropdown-menu-item href="/accessibility/"><template shadowroot="open" shadowrootmode="open"><style>:host,a{display:block}a{padding:var(--rh-space-lg) var(--rh-space-2xl);font-size:var(--rh-font-size-body-text-lg);text-decoration:none!important;color:var(--rh-color-text-primary-on-light)!important;border-inline-start:var(--rh-border-width-lg) solid #0000}a:hover{border-inline-start-color:var(--rh-color-border-subtle-on-light)}a.active,a:hover{background:var(--rh-color-surface-lighter)}a.active{border-inline-start-color:var(--rh-color-accent-brand-on-light)}a{text-transform:capitalize;padding:var(--rh-space-md) 0 var(--rh-space-md) var(--rh-space-lg);font-size:var(--rh-font-size-body-text-md)}</style><!--lit-part BpIOZLGP/0w=-->
-      <!--lit-node 0--><a class="  " href="/accessibility/"><slot></slot></a>
-    <!--/lit-part--></template>Fundamentals</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item href="/accessibility/content/"><template shadowroot="open" shadowrootmode="open"><style>:host,a{display:block}a{padding:var(--rh-space-lg) var(--rh-space-2xl);font-size:var(--rh-font-size-body-text-lg);text-decoration:none!important;color:var(--rh-color-text-primary-on-light)!important;border-inline-start:var(--rh-border-width-lg) solid #0000}a:hover{border-inline-start-color:var(--rh-color-border-subtle-on-light)}a.active,a:hover{background:var(--rh-color-surface-lighter)}a.active{border-inline-start-color:var(--rh-color-accent-brand-on-light)}a{text-transform:capitalize;padding:var(--rh-space-md) 0 var(--rh-space-md) var(--rh-space-lg);font-size:var(--rh-font-size-body-text-md)}</style><!--lit-part BpIOZLGP/0w=-->
+        <uxdot-sidenav-dropdown-menu-item href="/accessibility/accessibility-tools/"><template shadowroot="open" shadowrootmode="open"><style>:host,a{display:block}a{padding:var(--rh-space-lg) var(--rh-space-2xl);font-size:var(--rh-font-size-body-text-lg);text-decoration:none!important;color:var(--rh-color-text-primary-on-light)!important;border-inline-start:var(--rh-border-width-lg) solid #0000}a:hover{border-inline-start-color:var(--rh-color-border-subtle-on-light)}a.active,a:hover{background:var(--rh-color-surface-lighter)}a.active{border-inline-start-color:var(--rh-color-accent-brand-on-light)}a{text-transform:capitalize;padding:var(--rh-space-md) 0 var(--rh-space-md) var(--rh-space-lg);font-size:var(--rh-font-size-body-text-md)}</style><!--lit-part BpIOZLGP/0w=-->
+      <!--lit-node 0--><a class="  " href="/accessibility/accessibility-tools/"><slot></slot></a>
+    <!--/lit-part--></template>Accessibility tools</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item href="/accessibility/assistive-tech/"><template shadowroot="open" shadowrootmode="open"><style>:host,a{display:block}a{padding:var(--rh-space-lg) var(--rh-space-2xl);font-size:var(--rh-font-size-body-text-lg);text-decoration:none!important;color:var(--rh-color-text-primary-on-light)!important;border-inline-start:var(--rh-border-width-lg) solid #0000}a:hover{border-inline-start-color:var(--rh-color-border-subtle-on-light)}a.active,a:hover{background:var(--rh-color-surface-lighter)}a.active{border-inline-start-color:var(--rh-color-accent-brand-on-light)}a{text-transform:capitalize;padding:var(--rh-space-md) 0 var(--rh-space-md) var(--rh-space-lg);font-size:var(--rh-font-size-body-text-md)}</style><!--lit-part BpIOZLGP/0w=-->
+      <!--lit-node 0--><a class="  " href="/accessibility/assistive-tech/"><slot></slot></a>
+    <!--/lit-part--></template>Assistive technologies</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item href="/accessibility/ci-cd/"><template shadowroot="open" shadowrootmode="open"><style>:host,a{display:block}a{padding:var(--rh-space-lg) var(--rh-space-2xl);font-size:var(--rh-font-size-body-text-lg);text-decoration:none!important;color:var(--rh-color-text-primary-on-light)!important;border-inline-start:var(--rh-border-width-lg) solid #0000}a:hover{border-inline-start-color:var(--rh-color-border-subtle-on-light)}a.active,a:hover{background:var(--rh-color-surface-lighter)}a.active{border-inline-start-color:var(--rh-color-accent-brand-on-light)}a{text-transform:capitalize;padding:var(--rh-space-md) 0 var(--rh-space-md) var(--rh-space-lg);font-size:var(--rh-font-size-body-text-md)}</style><!--lit-part BpIOZLGP/0w=-->
+      <!--lit-node 0--><a class="  " href="/accessibility/ci-cd/"><slot></slot></a>
+    <!--/lit-part--></template>CI/CD</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item href="/accessibility/content/"><template shadowroot="open" shadowrootmode="open"><style>:host,a{display:block}a{padding:var(--rh-space-lg) var(--rh-space-2xl);font-size:var(--rh-font-size-body-text-lg);text-decoration:none!important;color:var(--rh-color-text-primary-on-light)!important;border-inline-start:var(--rh-border-width-lg) solid #0000}a:hover{border-inline-start-color:var(--rh-color-border-subtle-on-light)}a.active,a:hover{background:var(--rh-color-surface-lighter)}a.active{border-inline-start-color:var(--rh-color-accent-brand-on-light)}a{text-transform:capitalize;padding:var(--rh-space-md) 0 var(--rh-space-md) var(--rh-space-lg);font-size:var(--rh-font-size-body-text-md)}</style><!--lit-part BpIOZLGP/0w=-->
       <!--lit-node 0--><a class="  " href="/accessibility/content/"><slot></slot></a>
-    <!--/lit-part--></template>Content</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item href="/accessibility/design/"><template shadowroot="open" shadowrootmode="open"><style>:host,a{display:block}a{padding:var(--rh-space-lg) var(--rh-space-2xl);font-size:var(--rh-font-size-body-text-lg);text-decoration:none!important;color:var(--rh-color-text-primary-on-light)!important;border-inline-start:var(--rh-border-width-lg) solid #0000}a:hover{border-inline-start-color:var(--rh-color-border-subtle-on-light)}a.active,a:hover{background:var(--rh-color-surface-lighter)}a.active{border-inline-start-color:var(--rh-color-accent-brand-on-light)}a{text-transform:capitalize;padding:var(--rh-space-md) 0 var(--rh-space-md) var(--rh-space-lg);font-size:var(--rh-font-size-body-text-md)}</style><!--lit-part BpIOZLGP/0w=-->
+    <!--/lit-part--></template>Content</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item href="/accessibility/contributors/"><template shadowroot="open" shadowrootmode="open"><style>:host,a{display:block}a{padding:var(--rh-space-lg) var(--rh-space-2xl);font-size:var(--rh-font-size-body-text-lg);text-decoration:none!important;color:var(--rh-color-text-primary-on-light)!important;border-inline-start:var(--rh-border-width-lg) solid #0000}a:hover{border-inline-start-color:var(--rh-color-border-subtle-on-light)}a.active,a:hover{background:var(--rh-color-surface-lighter)}a.active{border-inline-start-color:var(--rh-color-accent-brand-on-light)}a{text-transform:capitalize;padding:var(--rh-space-md) 0 var(--rh-space-md) var(--rh-space-lg);font-size:var(--rh-font-size-body-text-md)}</style><!--lit-part BpIOZLGP/0w=-->
+      <!--lit-node 0--><a class="  " href="/accessibility/contributors/"><slot></slot></a>
+    <!--/lit-part--></template>Contributors</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item href="/accessibility/design/"><template shadowroot="open" shadowrootmode="open"><style>:host,a{display:block}a{padding:var(--rh-space-lg) var(--rh-space-2xl);font-size:var(--rh-font-size-body-text-lg);text-decoration:none!important;color:var(--rh-color-text-primary-on-light)!important;border-inline-start:var(--rh-border-width-lg) solid #0000}a:hover{border-inline-start-color:var(--rh-color-border-subtle-on-light)}a.active,a:hover{background:var(--rh-color-surface-lighter)}a.active{border-inline-start-color:var(--rh-color-accent-brand-on-light)}a{text-transform:capitalize;padding:var(--rh-space-md) 0 var(--rh-space-md) var(--rh-space-lg);font-size:var(--rh-font-size-body-text-md)}</style><!--lit-part BpIOZLGP/0w=-->
       <!--lit-node 0--><a class="  " href="/accessibility/design/"><slot></slot></a>
     <!--/lit-part--></template>Design</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item href="/accessibility/development/"><template shadowroot="open" shadowrootmode="open"><style>:host,a{display:block}a{padding:var(--rh-space-lg) var(--rh-space-2xl);font-size:var(--rh-font-size-body-text-lg);text-decoration:none!important;color:var(--rh-color-text-primary-on-light)!important;border-inline-start:var(--rh-border-width-lg) solid #0000}a:hover{border-inline-start-color:var(--rh-color-border-subtle-on-light)}a.active,a:hover{background:var(--rh-color-surface-lighter)}a.active{border-inline-start-color:var(--rh-color-accent-brand-on-light)}a{text-transform:capitalize;padding:var(--rh-space-md) 0 var(--rh-space-md) var(--rh-space-lg);font-size:var(--rh-font-size-body-text-md)}</style><!--lit-part BpIOZLGP/0w=-->
       <!--lit-node 0--><a class="  " href="/accessibility/development/"><slot></slot></a>
-    <!--/lit-part--></template>Development</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item href="/accessibility/assistive-tech/"><template shadowroot="open" shadowrootmode="open"><style>:host,a{display:block}a{padding:var(--rh-space-lg) var(--rh-space-2xl);font-size:var(--rh-font-size-body-text-lg);text-decoration:none!important;color:var(--rh-color-text-primary-on-light)!important;border-inline-start:var(--rh-border-width-lg) solid #0000}a:hover{border-inline-start-color:var(--rh-color-border-subtle-on-light)}a.active,a:hover{background:var(--rh-color-surface-lighter)}a.active{border-inline-start-color:var(--rh-color-accent-brand-on-light)}a{text-transform:capitalize;padding:var(--rh-space-md) 0 var(--rh-space-md) var(--rh-space-lg);font-size:var(--rh-font-size-body-text-md)}</style><!--lit-part BpIOZLGP/0w=-->
-      <!--lit-node 0--><a class="  " href="/accessibility/assistive-tech/"><slot></slot></a>
-    <!--/lit-part--></template>Assistive technologies</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item href="/accessibility/accessibility-tools/"><template shadowroot="open" shadowrootmode="open"><style>:host,a{display:block}a{padding:var(--rh-space-lg) var(--rh-space-2xl);font-size:var(--rh-font-size-body-text-lg);text-decoration:none!important;color:var(--rh-color-text-primary-on-light)!important;border-inline-start:var(--rh-border-width-lg) solid #0000}a:hover{border-inline-start-color:var(--rh-color-border-subtle-on-light)}a.active,a:hover{background:var(--rh-color-surface-lighter)}a.active{border-inline-start-color:var(--rh-color-accent-brand-on-light)}a{text-transform:capitalize;padding:var(--rh-space-md) 0 var(--rh-space-md) var(--rh-space-lg);font-size:var(--rh-font-size-body-text-md)}</style><!--lit-part BpIOZLGP/0w=-->
-      <!--lit-node 0--><a class="  " href="/accessibility/accessibility-tools/"><slot></slot></a>
-    <!--/lit-part--></template>Accessibility tools</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item href="/accessibility/manual-testing/"><template shadowroot="open" shadowrootmode="open"><style>:host,a{display:block}a{padding:var(--rh-space-lg) var(--rh-space-2xl);font-size:var(--rh-font-size-body-text-lg);text-decoration:none!important;color:var(--rh-color-text-primary-on-light)!important;border-inline-start:var(--rh-border-width-lg) solid #0000}a:hover{border-inline-start-color:var(--rh-color-border-subtle-on-light)}a.active,a:hover{background:var(--rh-color-surface-lighter)}a.active{border-inline-start-color:var(--rh-color-accent-brand-on-light)}a{text-transform:capitalize;padding:var(--rh-space-md) 0 var(--rh-space-md) var(--rh-space-lg);font-size:var(--rh-font-size-body-text-md)}</style><!--lit-part BpIOZLGP/0w=-->
+    <!--/lit-part--></template>Development</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item href="/accessibility/"><template shadowroot="open" shadowrootmode="open"><style>:host,a{display:block}a{padding:var(--rh-space-lg) var(--rh-space-2xl);font-size:var(--rh-font-size-body-text-lg);text-decoration:none!important;color:var(--rh-color-text-primary-on-light)!important;border-inline-start:var(--rh-border-width-lg) solid #0000}a:hover{border-inline-start-color:var(--rh-color-border-subtle-on-light)}a.active,a:hover{background:var(--rh-color-surface-lighter)}a.active{border-inline-start-color:var(--rh-color-accent-brand-on-light)}a{text-transform:capitalize;padding:var(--rh-space-md) 0 var(--rh-space-md) var(--rh-space-lg);font-size:var(--rh-font-size-body-text-md)}</style><!--lit-part BpIOZLGP/0w=-->
+      <!--lit-node 0--><a class="  " href="/accessibility/"><slot></slot></a>
+    <!--/lit-part--></template>Fundamentals</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item href="/accessibility/manual-testing/"><template shadowroot="open" shadowrootmode="open"><style>:host,a{display:block}a{padding:var(--rh-space-lg) var(--rh-space-2xl);font-size:var(--rh-font-size-body-text-lg);text-decoration:none!important;color:var(--rh-color-text-primary-on-light)!important;border-inline-start:var(--rh-border-width-lg) solid #0000}a:hover{border-inline-start-color:var(--rh-color-border-subtle-on-light)}a.active,a:hover{background:var(--rh-color-surface-lighter)}a.active{border-inline-start-color:var(--rh-color-accent-brand-on-light)}a{text-transform:capitalize;padding:var(--rh-space-md) 0 var(--rh-space-md) var(--rh-space-lg);font-size:var(--rh-font-size-body-text-md)}</style><!--lit-part BpIOZLGP/0w=-->
       <!--lit-node 0--><a class="  " href="/accessibility/manual-testing/"><slot></slot></a>
-    <!--/lit-part--></template>Manual testing</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item href="/accessibility/screen-readers/" active=""><template shadowroot="open" shadowrootmode="open"><style>:host,a{display:block}a{padding:var(--rh-space-lg) var(--rh-space-2xl);font-size:var(--rh-font-size-body-text-lg);text-decoration:none!important;color:var(--rh-color-text-primary-on-light)!important;border-inline-start:var(--rh-border-width-lg) solid #0000}a:hover{border-inline-start-color:var(--rh-color-border-subtle-on-light)}a.active,a:hover{background:var(--rh-color-surface-lighter)}a.active{border-inline-start-color:var(--rh-color-accent-brand-on-light)}a{text-transform:capitalize;padding:var(--rh-space-md) 0 var(--rh-space-md) var(--rh-space-lg);font-size:var(--rh-font-size-body-text-md)}</style><!--lit-part BpIOZLGP/0w=-->
-      <!--lit-node 0--><a class=" active " href="/accessibility/screen-readers/"><slot></slot></a>
-    <!--/lit-part--></template>Screen reader basics</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item href="/accessibility/ci-cd/"><template shadowroot="open" shadowrootmode="open"><style>:host,a{display:block}a{padding:var(--rh-space-lg) var(--rh-space-2xl);font-size:var(--rh-font-size-body-text-lg);text-decoration:none!important;color:var(--rh-color-text-primary-on-light)!important;border-inline-start:var(--rh-border-width-lg) solid #0000}a:hover{border-inline-start-color:var(--rh-color-border-subtle-on-light)}a.active,a:hover{background:var(--rh-color-surface-lighter)}a.active{border-inline-start-color:var(--rh-color-accent-brand-on-light)}a{text-transform:capitalize;padding:var(--rh-space-md) 0 var(--rh-space-md) var(--rh-space-lg);font-size:var(--rh-font-size-body-text-md)}</style><!--lit-part BpIOZLGP/0w=-->
-      <!--lit-node 0--><a class="  " href="/accessibility/ci-cd/"><slot></slot></a>
-    <!--/lit-part--></template>CI/CD</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item href="/accessibility/contributors/"><template shadowroot="open" shadowrootmode="open"><style>:host,a{display:block}a{padding:var(--rh-space-lg) var(--rh-space-2xl);font-size:var(--rh-font-size-body-text-lg);text-decoration:none!important;color:var(--rh-color-text-primary-on-light)!important;border-inline-start:var(--rh-border-width-lg) solid #0000}a:hover{border-inline-start-color:var(--rh-color-border-subtle-on-light)}a.active,a:hover{background:var(--rh-color-surface-lighter)}a.active{border-inline-start-color:var(--rh-color-accent-brand-on-light)}a{text-transform:capitalize;padding:var(--rh-space-md) 0 var(--rh-space-md) var(--rh-space-lg);font-size:var(--rh-font-size-body-text-md)}</style><!--lit-part BpIOZLGP/0w=-->
-      <!--lit-node 0--><a class="  " href="/accessibility/contributors/"><slot></slot></a>
-    <!--/lit-part--></template>Contributors</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item href="/accessibility/resources/"><template shadowroot="open" shadowrootmode="open"><style>:host,a{display:block}a{padding:var(--rh-space-lg) var(--rh-space-2xl);font-size:var(--rh-font-size-body-text-lg);text-decoration:none!important;color:var(--rh-color-text-primary-on-light)!important;border-inline-start:var(--rh-border-width-lg) solid #0000}a:hover{border-inline-start-color:var(--rh-color-border-subtle-on-light)}a.active,a:hover{background:var(--rh-color-surface-lighter)}a.active{border-inline-start-color:var(--rh-color-accent-brand-on-light)}a{text-transform:capitalize;padding:var(--rh-space-md) 0 var(--rh-space-md) var(--rh-space-lg);font-size:var(--rh-font-size-body-text-md)}</style><!--lit-part BpIOZLGP/0w=-->
+    <!--/lit-part--></template>Manual testing</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item href="/accessibility/resources/"><template shadowroot="open" shadowrootmode="open"><style>:host,a{display:block}a{padding:var(--rh-space-lg) var(--rh-space-2xl);font-size:var(--rh-font-size-body-text-lg);text-decoration:none!important;color:var(--rh-color-text-primary-on-light)!important;border-inline-start:var(--rh-border-width-lg) solid #0000}a:hover{border-inline-start-color:var(--rh-color-border-subtle-on-light)}a.active,a:hover{background:var(--rh-color-surface-lighter)}a.active{border-inline-start-color:var(--rh-color-accent-brand-on-light)}a{text-transform:capitalize;padding:var(--rh-space-md) 0 var(--rh-space-md) var(--rh-space-lg);font-size:var(--rh-font-size-body-text-md)}</style><!--lit-part BpIOZLGP/0w=-->
       <!--lit-node 0--><a class="  " href="/accessibility/resources/"><slot></slot></a>
-    <!--/lit-part--></template>Resources</uxdot-sidenav-dropdown-menu-item>
+    <!--/lit-part--></template>Resources</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item href="/accessibility/screen-readers/" active=""><template shadowroot="open" shadowrootmode="open"><style>:host,a{display:block}a{padding:var(--rh-space-lg) var(--rh-space-2xl);font-size:var(--rh-font-size-body-text-lg);text-decoration:none!important;color:var(--rh-color-text-primary-on-light)!important;border-inline-start:var(--rh-border-width-lg) solid #0000}a:hover{border-inline-start-color:var(--rh-color-border-subtle-on-light)}a.active,a:hover{background:var(--rh-color-surface-lighter)}a.active{border-inline-start-color:var(--rh-color-accent-brand-on-light)}a{text-transform:capitalize;padding:var(--rh-space-md) 0 var(--rh-space-md) var(--rh-space-lg);font-size:var(--rh-font-size-body-text-md)}</style><!--lit-part BpIOZLGP/0w=-->
+      <!--lit-node 0--><a class=" active " href="/accessibility/screen-readers/"><slot></slot></a>
+    <!--/lit-part--></template>Screen readers</uxdot-sidenav-dropdown-menu-item>
       </uxdot-sidenav-dropdown-menu>
     </details>
   </uxdot-sidenav-dropdown>
@@ -777,7 +779,7 @@
       </div>
       <slot name="subnav" part="subnav"></slot>
     <!--/lit-part--></template>
-  <h1 id="screen-reader-testing-basics" class="page-title">Screen reader testing basics</h1>
+  <h1 id="screen-readers" class="page-title">Screen readers</h1>
 
   
 
@@ -802,12 +804,18 @@
         </div>
       </div>
     <!--/lit-part--></template>
-    <ol slot="details"><li><a href="#general-info">General info</a></li><li><a href="#computer-screen-readers">Computer screen readers</a></li><li><a href="#mobile-screen-readers">Mobile screen readers</a></li></ol><ol slot="expanded"><li><a href="#general-info">General info</a></li><li><a href="#computer-screen-readers">Computer screen readers</a></li><li><a href="#mobile-screen-readers">Mobile screen readers</a></li></ol>
+    <ol slot="details"><li><a href="#why-test-with-screen-readers%3F">Why test with screen readers?</a></li><li><a href="#computer-screen-readers">Computer screen readers</a></li><li><a href="#mobile-screen-readers">Mobile screen readers</a></li><li><a href="#browser-and-screen-reader-pairings">Browser and screen reader pairings</a></li></ol><ol slot="expanded"><li><a href="#why-test-with-screen-readers%3F">Why test with screen readers?</a></li><li><a href="#computer-screen-readers">Computer screen readers</a></li><li><a href="#mobile-screen-readers">Mobile screen readers</a></li><li><a href="#browser-and-screen-reader-pairings">Browser and screen reader pairings</a></li></ol>
   </uxdot-toc>
   
 
   <div class="container">
-    <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+    
+<style>
+  rh-tile [slot="headline"] {
+    font-weight: var(--rh-font-weight-heading-bold, 700);
+  }
+</style>
+<uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button id="button" aria-label="Copy link to clipboard">
@@ -817,24 +825,9 @@
     <!--/lit-part--></template></rh-icon>
       </button>
     <!--/lit-part--></template>
-  <h2 id="general-info" tabindex="-1">
-    <a href="#general-info">General info</a><a>
-  </a></h2>
-</uxdot-copy-permalink>
-<p>This page provides some quick guidance for starting, stopping, and changing the settings of various screen readers. It also offers screen-reader-specific bonus tips and links to third-party resources like keyboard/gesture shortcut guides.</p>
-<uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button id="button" aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon set="ui" icon="link" defer-hydration=""><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container" aria-hidden="true" class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"></path><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"></path></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden=""><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
-    <!--/lit-part--></template>
-  <h3 id="why-test-with-screen-readers%3F" tabindex="-1">
+  <h2 id="why-test-with-screen-readers%3F" tabindex="-1">
     <a href="#why-test-with-screen-readers%3F">Why test with screen readers?</a><a>
-  </a></h3>
+  </a></h2>
 </uxdot-copy-permalink>
 <p>When testing with screen readers, our goal is to verify that an assistive tech user will have an experience equivalent to that of any other user. Tests may include the following:</p>
 <ol>
@@ -842,31 +835,6 @@
 <li>Can you accomplish all the same tasks with and without assistive tech (e.g. navigating the site, submitting forms, adding items to a cart, etc.)?</li>
 <li>When page contents are read, are you presented with all the meaningful info you would expect as a visual user? (This includes status updates on dynamic pages.)</li>
 </ol>
-<uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button id="button" aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon set="ui" icon="link" defer-hydration=""><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container" aria-hidden="true" class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"></path><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"></path></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden=""><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
-    <!--/lit-part--></template>
-  <h3 id="browser-and-screen-reader-pairings" tabindex="-1">
-    <a href="#browser-and-screen-reader-pairings">Browser and screen reader pairings</a><a>
-  </a></h3>
-</uxdot-copy-permalink>
-<p>If you can only test on one platform, it never hurts to try your screen reader with as many browsers as possible. For example, if you only have a Mac, go ahead and pair VoiceOver with Safari, Chrome, and Firefox.</p>
-<p>But if you’re either pressed for time or have access to multiple operating systems, these are the most common browser and screen reader pairings, and thus the ones to prioritize when testing:</p>
-<ul>
-<li>macOS: Safari and VoiceOver</li>
-<li>Windows: Firefox and NVDA</li>
-<li>Windows: Chrome and JAWS or NVDA</li>
-<li>Windows: Edge and Narrator</li>
-<li>Linux: Firefox and Orca</li>
-<li>iOS: Safari and VoiceOver</li>
-<li>Android: Chrome and TalkBack</li>
-</ul>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
@@ -881,9 +849,13 @@
     <a href="#computer-screen-readers">Computer screen readers</a><a>
   </a></h2>
 </uxdot-copy-permalink>
-<p>On computers, screen reader testing often lets you perform two tests simultaneously. First, it ensures that all meaningful web content and interactions are available to assistive tech. Second, it helps you verify that your experiences are keyboard operable (which is a <a href="https://www.w3.org/WAI/WCAG21/Understanding/keyboard-accessible.html">WCAG requirement</a>).</p>
+<p>On computers, screen reader testing often lets you perform two tests simultaneously:</p>
+<ol>
+<li>It ensures that all meaningful web content and interactions are available to assistive tech.</li>
+<li>It helps you verify that your experiences are keyboard operable (which is a <a href="https://www.w3.org/WAI/WCAG21/Understanding/keyboard-accessible.html">WCAG requirement</a>).</li>
+</ol>
 <p>After turning on your computer’s screen reader and opening your browser, use your keyboard to access the entire experience, top to bottom. Use the <kbd>Tab</kbd>, <kbd>Shift-Tab</kbd>, and <kbd>↑ → ↓ ←</kbd> keys to move among (and within) focusable elements like links, form controls, and interactive components. And you can then use other keys like <kbd>Space</kbd>, <kbd>Enter</kbd>, and <kbd>Escape</kbd> to interact with those elements.</p>
-<p>Each screen reader also has its own set of keyboard shortcuts to navigate and read non-interactive content within an experience. Different keypresses can start (or stop) reading the page, jump to the next heading element, move vertically and horizontally among table cells, and so on. Links to keyboard shortcut resources are included in each screen reader’s section, below.</p>
+<p>Each screen reader also has its own set of keyboard shortcuts to navigate and read non-interactive content within an experience. Different keypresses can start (or stop) reading the page, jump to the next heading element, move vertically and horizontally among table cells, and so on. Links to keyboard shortcut resources are included in each screen reader’s section.</p>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
@@ -894,311 +866,32 @@
     <!--/lit-part--></template></rh-icon>
       </button>
     <!--/lit-part--></template>
-  <h3 id="voiceover-(macos)" tabindex="-1">
-    <a href="#voiceover-(macos)">VoiceOver (macOS)</a><a>
+  <h3 id="getting-started-with-computer-screen-readers" tabindex="-1">
+    <a href="#getting-started-with-computer-screen-readers">Getting started with computer screen readers</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<ul>
-<li>VoiceOver is included with MacOS.</li>
-<li>Commonly paired with: Safari</li>
-<li><a href="https://dequeuniversity.com/screenreaders/voiceover-keyboard-shortcuts">Keyboard shortcuts (from Deque)</a></li>
-</ul>
-<uxdot-copy-permalink class="h4"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button id="button" aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon set="ui" icon="link" defer-hydration=""><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container" aria-hidden="true" class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"></path><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"></path></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden=""><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
-    <!--/lit-part--></template>
-  <h4 id="setting-up-your-mac-and-safari" tabindex="-1">
-    <a href="#setting-up-your-mac-and-safari">Setting up your Mac and Safari</a><a>
-  </a></h4>
-</uxdot-copy-permalink>
-<p>Before testing with VoiceOver, you may need to enable keyboard navigation—for both your Mac and Safari.</p>
-<p>To turn on keyboard navigation for your Mac:</p>
-<ol>
-<li>Go to the Keyboard section in System Settings.</li>
-<li>Turn on the "Keyboard navigation" switch within this section.</li>
-</ol>
-<p>(For MacOS versions before MacOS 13 Ventura, enter the Shortcuts tab panel in the System Settings' Keyboard section and check the "Use keyboard navigation..." checkbox.)</p>
-<p>In Safari, you may need the additional step of enabling the browser's tab navigation:</p>
-<ol>
-<li>Open Safari’s Preferences/Settings window</li>
-<li>Enter the Advanced tab.</li>
-<li>Check the "Press Tab to highlight each item on a webpage" checkbox.</li>
-</ol>
-<uxdot-copy-permalink class="h4"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button id="button" aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon set="ui" icon="link" defer-hydration=""><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container" aria-hidden="true" class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"></path><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"></path></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden=""><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
-    <!--/lit-part--></template>
-  <h4 id="getting-started-with-voiceover" tabindex="-1">
-    <a href="#getting-started-with-voiceover">Getting started with VoiceOver</a><a>
-  </a></h4>
-</uxdot-copy-permalink>
-<p>To toggle VoiceOver on and off, press <kbd>Command-F5</kbd>. Or, if you have a Touch ID keyboard, hold down <kbd>Command</kbd> and quickly press the <kbd>Touch ID</kbd> key three times.</p>
-<p>To customize VoiceOver settings (e.g., the voice), open the VoiceOver Utility on your computer (e.g., via <kbd>Command-Space</kbd> and then typing "voiceover utility").</p>
-<p>By default, the <kbd>Ctrl-Opt</kbd> keypress combo is what's called the <kbd>VO</kbd> modifier. You can execute many VoiceOver commands with this modifier. For example, <kbd>VO-H</kbd> (or <kbd>Ctrl-Opt-H</kbd>) launches VoiceOver Help (which can then be exited via <kbd>Esc</kbd>).</p>
-<uxdot-copy-permalink class="h4"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button id="button" aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon set="ui" icon="link" defer-hydration=""><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container" aria-hidden="true" class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"></path><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"></path></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden=""><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
-    <!--/lit-part--></template>
-  <h4 id="using-the-transcript-window-and-muting-voiceover" tabindex="-1">
-    <a href="#using-the-transcript-window-and-muting-voiceover">Using the transcript window and muting VoiceOver</a><a>
-  </a></h4>
-</uxdot-copy-permalink>
-<p>To visually reinforce what you’re hearing, VoiceOver’s transcript window reflects the content currently being read. If VoiceOver's audio is too distracting (e.g., maybe you're presenting it in a meeting and want to hear the other participants), you can even mute it via the "Mute speech" checkbox in the VoiceOver Utility’s Speech tab. The transcript window will continue to appear and display content as if it were being read aloud.</p>
-<p>While speech is muted, the shortcut for continually reading page content (<kbd>VO-A</kbd>) will be deactivated, though you can still use the <kbd>↑ → ↓ ←</kbd> keys to move through and test non-interactive content.</p>
-<p>While transcript windows can be helpful, there are cases where the audio may not match a transcript exactly. So, when testing, confirm any issues with the audio on.</p>
-<uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button id="button" aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon set="ui" icon="link" defer-hydration=""><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container" aria-hidden="true" class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"></path><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"></path></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden=""><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
-    <!--/lit-part--></template>
-  <h3 id="nvda-(windows)" tabindex="-1">
-    <a href="#nvda-(windows)">NVDA (Windows)</a><a>
-  </a></h3>
-</uxdot-copy-permalink>
-<ul>
-<li><a href="https://www.nvaccess.org/download/">Download and install</a> NVDA to use it. It’s free.</li>
-<li>Commonly paired with: Firefox (and Chrome, if you don’t have access to JAWS)</li>
-<li><a href="https://dequeuniversity.com/screenreaders/nvda-keyboard-shortcuts">Keyboard shortcuts</a> (from Deque)</li>
-</ul>
-<uxdot-copy-permalink class="h4"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button id="button" aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon set="ui" icon="link" defer-hydration=""><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container" aria-hidden="true" class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"></path><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"></path></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden=""><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
-    <!--/lit-part--></template>
-  <h4 id="getting-started" tabindex="-1">
-    <a href="#getting-started">Getting started</a><a>
-  </a></h4>
-</uxdot-copy-permalink>
-<p>You can start NVDA via any of the following methods:</p>
-<ul>
-<li>Open it in the Windows Start menu.</li>
-<li>Press the <kbd>Windows</kbd> key, type <code>NVDA</code> and then <kbd>Enter</kbd>.</li>
-<li>Click the NVDA desktop shortcut icon (if available).</li>
-</ul>
-<p>When NVDA starts, a welcome dialog will appear. Here, you can specify what kind of keyboard you’re using, so NVDA knows what to use as your <kbd>NVDA</kbd> modifier key for keyboard shortcuts:</p>
-<ul>
-<li>If your keyboard has an <kbd>Insert</kbd> key (most full Windows keyboards do), then you can leave "Use CapsLock as an NVDA modifier key" unchecked. <kbd>Insert</kbd> will be assigned as your <kbd>NVDA</kbd> modifier key.</li>
-<li>If your keyboard does not have an <kbd>Insert</kbd> key (many laptop keyboards do not), check the "Use CapsLock…" checkbox. <kbd>CapsLock</kbd> will be assigned as your <kbd>NVDA</kbd> key.</li>
-</ul>
-<p>To customize NVDA’s settings, press <kbd>NVDA-N</kbd>. This brings up an options menu, which you can then navigate via arrows and the <kbd>Enter</kbd> key.</p>
-<p>To quit NVDA, press <kbd>NVDA-Q</kbd>. You can also quit NVDA and access settings via its system tray icon.</p>
-<uxdot-copy-permalink class="h4"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button id="button" aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon set="ui" icon="link" defer-hydration=""><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container" aria-hidden="true" class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"></path><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"></path></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden=""><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
-    <!--/lit-part--></template>
-  <h4 id="displaying-the-speech-viewer" tabindex="-1">
-    <a href="#displaying-the-speech-viewer">Displaying the speech viewer</a><a>
-  </a></h4>
-</uxdot-copy-permalink>
-<p>Like MacOS VoiceOver, NVDA offers an option for using the screen reader visually. This speech viewer keeps a running log of all content read during a session, for quick reference.</p>
-<p>To open the speech viewer:</p>
-<ol>
-<li>Press <kbd>NVDA-N</kbd> to open the app’s settings.</li>
-<li>Press <kbd>T</kbd> to open the tools menu.</li>
-<li>Arrow down to the "Speech Viewer" option and press <kbd>Enter</kbd>.</li>
-</ol>
-<p>The speech viewer window will appear on your screen. The viewer window has a "Show Speech Viewer on Startup" checkbox, which you can check to make sure it always appears when you run NVDA.</p>
-<p>As with VoiceOver’s transcript window, there are cases where audio may not match the speech viewer’s log exactly. So, when testing, confirm any issues with audio on.</p>
-<uxdot-copy-permalink class="h4"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button id="button" aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon set="ui" icon="link" defer-hydration=""><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container" aria-hidden="true" class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"></path><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"></path></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden=""><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
-    <!--/lit-part--></template>
-  <h4 id="creating-a-portable-copy" tabindex="-1">
-    <a href="#creating-a-portable-copy">Creating a portable copy</a><a>
-  </a></h4>
-</uxdot-copy-permalink>
-<p>One handy thing about NVDA is that you can create a portable copy to place on a flash drive and use on any Windows computer. This can be useful if you need to demonstrate something on someone else’s machine, or if you yourself switch computers.</p>
-<p>To make a portable copy:</p>
-<ol>
-<li>Start NVDA and open its settings (<kbd>NVDA-N</kbd>).</li>
-<li>Press <kbd>T</kbd> to open the tools menu.</li>
-<li>Arrow down to the "Create portable copy" option and press <kbd>Enter</kbd>.</li>
-<li>Choose a destination for this copy of NVDA.</li>
-</ol>
-<uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button id="button" aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon set="ui" icon="link" defer-hydration=""><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container" aria-hidden="true" class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"></path><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"></path></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden=""><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
-    <!--/lit-part--></template>
-  <h3 id="jaws-(windows)" tabindex="-1">
-    <a href="#jaws-(windows)">JAWS (Windows)</a><a>
-  </a></h3>
-</uxdot-copy-permalink>
-<ul>
-<li><a href="https://support.freedomscientific.com/Downloads/JAWS">Download and install JAWS</a> to use it. It’s commercial software with a trial mode.</li>
-<li>Commonly paired with: Chrome</li>
-<li><a href="https://www.freedomscientific.com/training/jaws/hotkeys/">Keyboard shortcuts (from the official Freedom Scientific site)</a></li>
-<li><a href="https://dequeuniversity.com/screenreaders/jaws-keyboard-shortcuts">Keyboard shortcuts (from Deque)</a></li>
-</ul>
-<uxdot-copy-permalink class="h4"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button id="button" aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon set="ui" icon="link" defer-hydration=""><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container" aria-hidden="true" class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"></path><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"></path></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden=""><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
-    <!--/lit-part--></template>
-  <h4 id="getting-started-1" tabindex="-1">
-    <a href="#getting-started-1">Getting started</a><a>
-  </a></h4>
-</uxdot-copy-permalink>
-<p>You can start JAWS via any of the following methods:</p>
-<ul>
-<li>Open it in the Windows Start menu.</li>
-<li>Press the <kbd>Windows</kbd> key, type <code>JAWS</code>, and then <kbd>Enter</kbd>.</li>
-<li>Click the JAWS desktop shortcut icon (if available).</li>
-</ul>
-<p>On keyboards with an <kbd>Insert</kbd> key, that key will be assigned as your <kbd>JAWS</kbd> modifier key for keyboard shortcuts. On keyboards without an <kbd>Insert</kbd> key, the <kbd>CapsLock</kbd> key will be your <kbd>JAWS</kbd> key. You can test this out by pressing <kbd>JAWS-F12</kbd> to read out the system time.</p>
-<p>To customize your JAWS settings, use its system tray menu:</p>
-<ol>
-<li>Open the system tray menu with your mouse or via keyboard shortcut (<kbd>Insert-J</kbd> or <kbd>CapsLock-Shift-Ctrl-J</kbd>).</li>
-<li>Press <kbd>O</kbd> for options.</li>
-<li>Pressing <kbd>B</kbd> for basic settings will then let you switch between keyboard types and adjust other options.</li>
-</ol>
-<p><strong>Note:</strong> If you have a web browser running when you start JAWS, you may need to restart it before the screen reader will work properly with it.</p>
-<p>To quit JAWS, press <kbd>JAWS-F4</kbd>. If this keypress combination is unavailable (e.g., you don’t have function keys), you can quit JAWS and access settings via its system tray icon.</p>
-<uxdot-copy-permalink class="h4"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button id="button" aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon set="ui" icon="link" defer-hydration=""><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container" aria-hidden="true" class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"></path><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"></path></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden=""><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
-    <!--/lit-part--></template>
-  <h4 id="using-the-jaws-text-viewer" tabindex="-1">
-    <a href="#using-the-jaws-text-viewer">Using the JAWS text viewer</a><a>
-  </a></h4>
-</uxdot-copy-permalink>
-<p>JAWS has a text viewer that appears at the top of the screen and reflects much (though not all) of what is spoken. If it is not running by default on your machine, you can enable it via the JAWS system tray menu.</p>
-<ol>
-<li>Open the system tray menu with your mouse or via keyboard shortcut (<kbd>Insert-J</kbd> or <kbd>CapsLock-Shift-Ctrl-J</kbd>).</li>
-<li>Press <kbd>U</kbd> to open the utilities submenu.</li>
-<li>Press <kbd>V</kbd> to open the text viewer options.</li>
-<li>Select "Show Text Viewer" and press <kbd>Enter</kbd> to toggle the text viewer.</li>
-</ol>
-<p>Settings for the text viewer can also be opened via this same submenu.</p>
-<uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button id="button" aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon set="ui" icon="link" defer-hydration=""><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container" aria-hidden="true" class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"></path><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"></path></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden=""><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
-    <!--/lit-part--></template>
-  <h3 id="narrator-(windows)" tabindex="-1">
-    <a href="#narrator-(windows)">Narrator (Windows)</a><a>
-  </a></h3>
-</uxdot-copy-permalink>
-<ul>
-<li>Narrator is included with Windows.</li>
-<li>Commonly paired with: Edge</li>
-<li><a href="https://dequeuniversity.com/screenreaders/narrator-keyboard-shortcuts">Keyboard shortcuts</a> (from Deque)</li>
-</ul>
-<uxdot-copy-permalink class="h4"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button id="button" aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon set="ui" icon="link" defer-hydration=""><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container" aria-hidden="true" class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"></path><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"></path></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden=""><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
-    <!--/lit-part--></template>
-  <h4 id="getting-started-2" tabindex="-1">
-    <a href="#getting-started-2">Getting started</a><a>
-  </a></h4>
-</uxdot-copy-permalink>
-<p>To start and stop Narrator, press <kbd>Windows-Ctrl-Enter</kbd> on your keyboard. Starting Narrator via this shortcut also opens the Narrator dashboard, which includes usage guides and settings.</p>
-<p><kbd>Insert</kbd> and <kbd>CapsLock</kbd> can both be assigned as Narrator modifier keys in its settings. To open Narrator settings when the dashboard is closed, press <kbd>Windows-Ctrl-N</kbd>.</p>
-<uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button id="button" aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon set="ui" icon="link" defer-hydration=""><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container" aria-hidden="true" class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"></path><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"></path></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden=""><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
-    <!--/lit-part--></template>
-  <h3 id="orca-(linux)" tabindex="-1">
-    <a href="#orca-(linux)">Orca (Linux)</a><a>
-  </a></h3>
-</uxdot-copy-permalink>
-<ul>
-<li>Orca is included with many Linux distros.</li>
-<li>Commonly paired with: Firefox</li>
-<li>Keyboard shortcuts (from Accessibility Support)</li>
-</ul>
-<uxdot-copy-permalink class="h4"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button id="button" aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon set="ui" icon="link" defer-hydration=""><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container" aria-hidden="true" class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"></path><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"></path></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden=""><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
-    <!--/lit-part--></template>
-  <h4 id="getting-started-3" tabindex="-1">
-    <a href="#getting-started-3">Getting started</a><a>
-  </a></h4>
-</uxdot-copy-permalink>
-<p>To start Orca for the first time and open its settings dialog, type <code>orca -s</code> in your terminal program.</p>
-<p>Within the settings app, you can indicate whether you are using a full or laptop keyboard, change voice options, etc. As with Windows screen readers, <kbd>Insert</kbd> is the default <kbd>Orca</kbd> modifier key used in keyboard shortcuts, but switching to laptop mode assigns <kbd>CapsLock</kbd> to <kbd>Orca</kbd>.</p>
-<p>Once you have the settings how you like them, you can just type <code>orca</code> in a terminal to start the screen reader in subsequent sessions.</p>
-<p>To stop Orca, press <kbd>Ctrl-C</kbd> in the same terminal window in which you started it. Or you can use the keyboard shortcut <kbd>Windows-Alt-S</kbd> (or the equivalent keys on your keyboard, like <kbd>Command-Opt-S</kbd> on a Mac) to toggle Orca on and off.</p>
-<p><strong>Note:</strong> If you have a web browser running when you start Orca, you <em>must</em> restart it before the screen reader will work properly with it.</p>
+<nav class="grid xs-two-columns sm-three-columns">
+  <rh-tile compact="">
+    <h3 slot="headline"><a href="/accessibility/screen-readers-computer/#voiceover-(macos)">VoiceOver (macOS)</a></h3>
+    VoiceOver is the built-in screen reader for macOS.
+  </rh-tile>
+  <rh-tile compact="">
+    <h3 slot="headline"><a href="/accessibility/screen-readers-computer/#nvda-(windows)">NVDA (Windows)</a></h3>
+    NVDA is a free, downloadable screen reader for Windows. 
+  </rh-tile>
+  <rh-tile compact="">
+    <h3 slot="headline"><a href="/accessibility/screen-readers-computer/#jaws-(windows)">JAWS (Windows)</a></h3>
+    JAWS is a paid, downloadable screen reader for Windows.
+  </rh-tile>
+  <rh-tile compact="">
+    <h3 slot="headline"><a href="/accessibility/screen-readers-computer/#narrator-(windows)">Narrator (Windows)</a></h3>
+    Narrator is the built-in screen reader for Windows.
+  </rh-tile>
+  <rh-tile compact="">
+    <h3 slot="headline"><a href="/accessibility/screen-readers-computer/#orca-(linux)">Orca (Linux)</a></h3>
+    Orca comes packaged with GNOME and other desktop environments.
+  </rh-tile>
+</nav>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
@@ -1225,109 +918,45 @@ For basic navigation, you can swipe right, left, up, and down with one finger to
     <!--/lit-part--></template></rh-icon>
       </button>
     <!--/lit-part--></template>
-  <h3 id="voiceover-(ios)" tabindex="-1">
-    <a href="#voiceover-(ios)">VoiceOver (iOS)</a><a>
+  <h3 id="getting-started-with-mobile-screen-readers" tabindex="-1">
+    <a href="#getting-started-with-mobile-screen-readers">Getting started with mobile screen readers</a><a>
   </a></h3>
 </uxdot-copy-permalink>
+<nav class="grid xs-two-columns sm-three-columns">
+  <rh-tile compact="">
+    <h3 slot="headline"><a href="/accessibility/screen-readers-mobile/#voiceover-(ios)">VoiceOver (iOS)</a></h3>
+    VoiceOver is the built-in screen reader for iOS and iPadOS devices.
+  </rh-tile>
+  <rh-tile compact="">
+    <h3 slot="headline"><a href="/accessibility/screen-readers-mobile/#talkback-(android)">Talkback (Android)</a></h3>
+    TalkBack is the built-in screen reader for most Android devices.
+  </rh-tile>
+</nav>
+<uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button id="button" aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon set="ui" icon="link" defer-hydration=""><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container" aria-hidden="true" class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"></path><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"></path></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden=""><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+  <h2 id="browser-and-screen-reader-pairings" tabindex="-1">
+    <a href="#browser-and-screen-reader-pairings">Browser and screen reader pairings</a><a>
+  </a></h2>
+</uxdot-copy-permalink>
+<p>If you can only test on one platform, it never hurts to try your screen reader with as many browsers as possible. For example, if you only have a Mac, go ahead and pair VoiceOver with Safari, Chrome, and Firefox.</p>
+<p>But if you’re either pressed for time or have access to multiple operating systems, these are the most common browser and screen reader pairings, and thus the ones to prioritize when testing:</p>
 <ul>
-<li>VoiceOver is included with iOS.</li>
-<li>Commonly paired with: Safari</li>
-<li><a href="https://dequeuniversity.com/screenreaders/voiceover-ios-shortcuts">Gesture shortcuts</a> (from Deque)</li>
+<li>macOS: Safari and VoiceOver</li>
+<li>Windows: Firefox and NVDA</li>
+<li>Windows: Chrome and JAWS or NVDA</li>
+<li>Windows: Edge and Narrator</li>
+<li>Linux: Firefox and Orca</li>
+<li>iOS: Safari and VoiceOver</li>
+<li>Android: Chrome and TalkBack</li>
 </ul>
-<uxdot-copy-permalink class="h4"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button id="button" aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon set="ui" icon="link" defer-hydration=""><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container" aria-hidden="true" class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"></path><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"></path></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden=""><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
-    <!--/lit-part--></template>
-  <h4 id="getting-started-4" tabindex="-1">
-    <a href="#getting-started-4">Getting started</a><a>
-  </a></h4>
-</uxdot-copy-permalink>
-<p>There are several ways to start and stop VoiceOver in iOS:</p>
-<ul>
-<li>If you’ve added VoiceOver as an Accessibility Shortcut (by going to Settings → Accessibility → Accessibility Shortcut and checking "VoiceOver"), you can toggle it by pressing your side button three times in rapid succession. (On non-Face-ID devices, click the Home button three times, instead.)</li>
-<li>If you’ve added it to Control Center (by going to Settings → Control Center and pressing the add symbol for "Accessibility Shortcuts"), you can toggle VoiceOver there.</li>
-<li>If you have Siri enabled, you can say, "Turn VoiceOver on/off."</li>
-<li>You can toggle it in your device’s Settings → Accessibility → VoiceOver section. (This is also where you can customize VoiceOver to your preferences.)</li>
-</ul>
-<uxdot-copy-permalink class="h4"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button id="button" aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon set="ui" icon="link" defer-hydration=""><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container" aria-hidden="true" class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"></path><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"></path></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden=""><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
-    <!--/lit-part--></template>
-  <h4 id="using-the-rotor" tabindex="-1">
-    <a href="#using-the-rotor">Using the Rotor</a><a>
-  </a></h4>
-</uxdot-copy-permalink>
-<p>One of VoiceOver’s most powerful tools is the Rotor. The Rotor is a virtual dial you can turn to let you navigate by categories like lines, words, links, form elements, headings, and so on.</p>
-<p>Turn the rotor on by placing two fingers on your screen (e.g., thumb and forefinger) and twisting them clockwise or counterclockwise (like turning a dial). VoiceOver will announce the currently selected category as you twist. For example, twist until you hear "Headings." If you now swipe up and down on the page, VoiceOver will move from heading to heading, and you can then swipe right and left to have the content around that heading read to you.</p>
-<p>The Rotor also includes an option for setting VoiceOver’s speaking rate, if you’d like to adjust that setting.</p>
-<uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button id="button" aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon set="ui" icon="link" defer-hydration=""><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container" aria-hidden="true" class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"></path><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"></path></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden=""><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
-    <!--/lit-part--></template>
-  <h3 id="talkback-(android)" tabindex="-1">
-    <a href="#talkback-(android)">TalkBack (Android)</a><a>
-  </a></h3>
-</uxdot-copy-permalink>
-<ul>
-<li>TalkBack is included with Android.</li>
-<li>Commonly paired with: Chrome</li>
-<li><a href="https://dequeuniversity.com/screenreaders/talkback-shortcuts">Gesture shortcuts</a> (from Deque)</li>
-</ul>
-<uxdot-copy-permalink class="h4"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button id="button" aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon set="ui" icon="link" defer-hydration=""><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container" aria-hidden="true" class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"></path><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"></path></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden=""><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
-    <!--/lit-part--></template>
-  <h4 id="getting-started-5" tabindex="-1">
-    <a href="#getting-started-5">Getting started</a><a>
-  </a></h4>
-</uxdot-copy-permalink>
-<p>There are several ways to start and stop TalkBack for Android:</p>
-<ul>
-<li>Toggle Talkback by pressing and holding both the volume up and volume down buttons simultaneously for a few seconds.</li>
-<li>If you have Google Assistant enabled, you can say, "Turn TalkBack on/off."</li>
-<li>Go to Settings → Accessibility → TalkBack and select or deselect the "Use TalkBack" option. (This is also where you can adjust your screen reader preferences.)</li>
-</ul>
-<uxdot-copy-permalink class="h4"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button id="button" aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon set="ui" icon="link" defer-hydration=""><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container" aria-hidden="true" class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"></path><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"></path></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden=""><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
-    <!--/lit-part--></template>
-  <h4 id="using-reading-controls" tabindex="-1">
-    <a href="#using-reading-controls">Using reading controls</a><a>
-  </a></h4>
-</uxdot-copy-permalink>
-<p>Similar to iOS’s Rotor, Talkback’s reading controls let you navigate by categories like headings, links, or words. To change the current reading controls selection, quickly swipe up and then down (or vice versa) until TalkBack announces the category you want to use.</p>
-<p>Once you’ve selected a category, swipe up or down to navigate the page by that category, and then right or left to navigate content adjacent to the current heading, link, or whatever else you’ve navigated to.</p>
-<p>TalkBack’s speaking rate can also be adjusted within reading controls.</p>
 
     <div id="edit-this-page">
   
