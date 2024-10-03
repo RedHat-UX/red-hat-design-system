@@ -126,7 +126,7 @@ The spacer in the Default variant is the same for all viewport sizes.
 
 Depending on the theme and chosen variant, each severity level can have different colors and font styling.
 
-<uxdot-example width-adjustment="752px">
+<uxdot-example width-adjustment="715px">
   <img src="../style-severity-level-light.svg"
         alt="Multiple light theme health index components at different sizes. Annotations 1 through 4 are pointing to various styling details as well as letter grades that have been enlarged."
         width="715"
@@ -194,7 +194,7 @@ Depending on the theme and chosen variant, each severity level can have differen
 </rh-table>
 
 
-<uxdot-example color-palette="darkest" width-adjustment="752px">
+<uxdot-example color-palette="darkest" width-adjustment="715px">
   <img src="../style-severity-level-dark.svg"
         alt="Multiple dark theme health index components at different sizes. Annotations 1 through 4 are pointing to various styling details as well as letter grades that have been enlarged.."
         width="715"
