@@ -259,7 +259,7 @@ Switches can be used in a list to toggle multiple independent options.
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
-    <uxdot-example slot="image" width-adjustment="160px">
+    <uxdot-example slot="image" width-adjustment="193px">
       <img src="../switch-best-practice-multiple-options-do.svg"
         alt="Four switches stacked vertically with half of them turned on"
         width="193"
@@ -269,7 +269,7 @@ Switches can be used in a list to toggle multiple independent options.
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="dont">
-    <uxdot-example slot="image" width-adjustment="160px">
+    <uxdot-example slot="image" width-adjustment="193px">
       <img src="../switch-best-practice-multiple-options-do-not.svg"
         alt="Four switches stacked vertically with a save button below them"
         width="193"
