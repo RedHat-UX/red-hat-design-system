@@ -38,14 +38,20 @@ Each panel is a focus stop where `Enter` or `Space` expands or collapses each pa
 {% include 'partials/accessibility/focusorder.md' %}
 
 <uxdot-example>
-  <img src="../accordion-focus-order.png" alt="Accordion showing the order how focus moves through the element when pressing Tab continuously">
+  <img src="../accordion-focus-order.png" 
+      alt="Accordion showing the order how focus moves through the element when pressing Tab continuously"
+      width="505"
+      height="316">
 </uxdot-example>
 
 ## Touch targets
 Each panel is selectable instead of only title text or the chevrons.
 
 <uxdot-example>
-  <img src="../accordion-touch-targets.png" alt="Accordion showing touch target size examples for large and small sizes">
+  <img src="../accordion-touch-targets.png" 
+      alt="Accordion showing touch target size examples for large and small sizes"
+      width="505"
+      height="536">>
 </uxdot-example>
 
 {% include 'partials/accessibility/ariaguide.md' %}
