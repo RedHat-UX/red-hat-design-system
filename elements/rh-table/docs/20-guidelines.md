@@ -80,7 +80,7 @@ In general, header labels should be as short as possible. However, if columns ha
 
 A table should be the same width as nearby blocks of content on the page.
 
-<uxdot-example width-adjustment="872px">
+<uxdot-example width-adjustment="1000px">
   <img src="../table-layout-placement.png"
         alt="Image of examples of placeholder content and a table having the same width, one is wide and one is narrow"
         width="1000"
