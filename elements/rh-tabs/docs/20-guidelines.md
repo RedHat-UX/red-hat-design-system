@@ -108,7 +108,7 @@ Certain content layouts may require removing the inset. While this is not a defa
 
 In certain edge cases, logos can be used instead of text labels.
 
-<uxdot-example width-adjustment="872px">
+<uxdot-example width-adjustment="669px">
   <img src="../tabs-logos.png"
         alt="Image of open tabs with small logos in place of text labels"
         width="669"
