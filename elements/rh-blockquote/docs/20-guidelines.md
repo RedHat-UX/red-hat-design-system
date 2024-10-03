@@ -41,7 +41,7 @@ A variety of extras including an emphasis border, logo, and text styles may be a
 </uxdot-example>
 
 <uxdot-example width-adjustment="750px">
-  <img src="./blockquote-variations-emphasis-b-theme-light.png" 
+  <img src="../blockquote-variations-emphasis-b-theme-light.png" 
       alt="Image of two light theme blockquotes, left example is default size with logo and right example is default size with title text and heading text" 
       width="750" 
       height="319">
