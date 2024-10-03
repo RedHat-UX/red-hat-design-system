@@ -2,7 +2,7 @@
 
 Users should have the ability to navigate to and interact with calls to action using their keyboard.
 
-<uxdot-example width-adjustment="872px">
+<uxdot-example width-adjustment="586px">
   <img src="../cta-a11y-keyboard-interactions.png"
         alt="Image of three groups with different variants showing focus indicators and tab key labels"
         width="586"
@@ -43,7 +43,7 @@ Users should have the ability to navigate to and interact with calls to action u
 
 A logical focus order helps keyboard users operate our websites. Elements need to receive focus in an order that preserves meaning, therefore the focus order should make sense and not jump around randomly. For grouped calls to action, the focus order is from left to right and top to bottom.
 
-<uxdot-example width-adjustment="465px">
+<uxdot-example width-adjustment="489px">
   <img src="../cta-a11y-focus-order.png"
         alt="Image of groups of three variants with numbers one through three moving from left to right and top to bottom"
         width="489"
