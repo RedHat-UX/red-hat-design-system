@@ -2,7 +2,7 @@
 title: Assistive technologies
 tags:
   - accessibility
-order: 40
+order: 20
 ---
 
 ## What are assistive technologies?
