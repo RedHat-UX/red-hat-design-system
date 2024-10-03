@@ -193,24 +193,33 @@ Promos are available in four different configurations.
 
 A Standard promo also has a subtle border, but it uses the `Lighter` or `Darker` surface color. It does not have an image slot and the call to action appears either to the left or right of the text.
 
-<uxdot-example>
-  <img src="../card-variants-promo-standard.svg" alt="Standard promo with placeholder text">
+<uxdot-example width-adjustment="1012px">
+  <img src="../card-variants-promo-standard.svg"
+       alt="Standard promo with placeholder text"
+       width="1012"
+       height="123">
 </uxdot-example>
 
 #### Featured promo
 
 A Featured promo uses the `Lightest` or `Darkest` surface color with a subtle border. An image can appear on the left or right side of a promo, but a featured promo can also omit an image.
 
-<uxdot-example>
-  <img src="../card-variants-promo-featured.svg" alt="Featured promo with placeholder text and image">
+<uxdot-example width-adjustment="1012px">
+  <img src="../card-variants-promo-featured.svg"
+       alt="Featured promo with placeholder text and image"
+       width="1012"
+       height="249">
 </uxdot-example>
 
 #### Full-width promo
 
 A Full-width promo bleeds to the left and right edges of the screen. It does not have a border. Similarly to a featured promo, a full-width promo can use either the `Lightest` or `Darkest` surface color, and it can have no image or an image positioned to the left or right of the text.
 
-<uxdot-example variant="full">
-  <img src="../card-variants-promo-full-width.svg" alt="Full-width promo with placeholder text and image">
+<uxdot-example width-adjustment="1012px" variant="full">
+  <img src="../card-variants-promo-full-width.svg"
+       alt="Full-width promo with placeholder text and image"
+       width="1012"
+       height="254">
 </uxdot-example>
 
 #### Narrow promo
@@ -218,7 +227,10 @@ A Full-width promo bleeds to the left and right edges of the screen. It does not
 A Narrow promo can fit into a section or container smaller than 296 pixels. It moves an image in any type of promo below the body text and call to action. This is also the configuration used on phone viewports for a featured, standard promo, or full-width promo.
 
 <uxdot-example width-adjustment="752px">
-  <img src="../card-variants-promo-narrow.svg" alt="Narrow promo versions with featured promo and standard promo">
+  <img src="../card-variants-promo-narrow.svg"
+       alt="Narrow promo versions with featured promo and standard promo"
+       width="752"
+       height="401">
 </uxdot-example>
 
 ### Theme
@@ -227,14 +239,20 @@ A Narrow promo can fit into a section or container smaller than 296 pixels. It m
 
 The standard promo uses the `Lighter` (in light theme) and `Darker` (in dark theme) surface colors.
 
-<uxdot-example>
-  <img src="../card-theme-promo-standard.svg" alt="Standard Promo's in light and dark themes">
+<uxdot-example width-adjustment="1012px">
+  <img src="../card-theme-promo-standard.svg"
+       alt="Standard Promo's in light and dark themes"
+       width="1012"
+       height="294">
 </uxdot-example>
 
 The featured and full-width promos use the `Lightest` and `Darkest` surface colors for light and dark theme, respectively.
 
-<uxdot-example no-border variant="full">
-  <img src="../card-theme-promo-featured-full-width.svg" alt="Featured and full-width Promo's in light and dark themes">
+<uxdot-example width-adjustment="1140" no-border variant="full">
+  <img src="../card-theme-promo-featured-full-width.svg"
+       alt="Featured and full-width Promo's in light and dark themes"
+       width="1140"
+       height="1187">
 </uxdot-example>
 
 ### Responsive Design
@@ -251,20 +269,32 @@ Except for narrow promos, spacing within the other promo configurations is a lit
 
 <uxdot-example class="promo-spacing" alignment="left">
   <figure>
-    <img src="../card-spacing-promo-standard.svg" alt="Standard promo with spacing annotations. 48px on all sides and 24px to the left of the CTA.">
+    <img src="../card-spacing-promo-standard.svg"
+         alt="Standard promo with spacing annotations. 48px on all sides and 24px to the left of the CTA."
+         width="1018"
+         height="123">
     <figcaption>Standard promo</figcaption>
   </figure>
   <figure>  
-    <img src="../card-spacing-promo-featured.svg" alt="Featured promo with spacing annotations. 48px on all sides. 32px between the copy and image. 16px after the heading and 24px above the CTA.">
+    <img src="../card-spacing-promo-featured.svg"
+         alt="Featured promo with spacing annotations. 48px on all sides. 32px between the copy and image. 16px after the heading and 24px above the CTA."
+         width="1018"
+         height="249">
     <figcaption>Featured promo</figcaption>
   </figure>
   <figure>
-    <img src="../card-spacing-promo-full-width.svg" alt="Full-width promo with spacing annotations. 32px between the image and body copy.">
+    <img src="../card-spacing-promo-full-width.svg"
+         alt="Full-width promo with spacing annotations. 32px between the image and body copy."
+         width="1018"
+         height="158">
     <figcaption>Full-width promo</figcaption>
   </figure>
   <figure>
     <div style="max-width: 360px;">
-      <img src="../card-spacing-promo-narrow.svg" alt="Narrow promo with spacing annotations. 32px on all sides and 24px above the CTA.">
+      <img src="../card-spacing-promo-narrow.svg"
+           alt="Narrow promo with spacing annotations. 32px on all sides and 24px above the CTA."
+           width="360"
+           height="401">
     </div>
     <figcaption>Narrow promo</figcaption>
   </figure>
