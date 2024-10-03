@@ -83,7 +83,7 @@ A blockquote is available in both light and dark themes.
 ### Light theme
 
 <uxdot-example width-adjustment="589px">
-  <img src="./blockquote-theme-light.png" 
+  <img src="../blockquote-theme-light.png" 
       alt="Image of a light theme blockquote, red quote icon, black quotation text, and dark gray citation text" 
       width="589"
       height="177">
@@ -158,7 +158,7 @@ A blockquote is available in both light and dark themes.
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="872px">
-  <img src="./blockquote-emphasis-theme-dark.png" 
+  <img src="../blockquote-emphasis-theme-dark.png" 
       alt="Image of two blockquotes, a red emphasis border on the left and a black emphasis border on the right" 
       width="872" 
       height="260">
@@ -191,7 +191,7 @@ A blockquote is available in both light and dark themes.
 ### Title and heading text
 
 <uxdot-example width-adjustment="872px">
-  <img src="./blockquote-title-heading-theme-light.png" 
+  <img src="../blockquote-title-heading-theme-light.png" 
       alt="Image of two blockquotes, both with red title text and black header text" 
       width="872" 
       height="356">
@@ -233,7 +233,7 @@ A blockquote is available in both light and dark themes.
 The base elements in both sizes are stacked and left aligned by default, but they can be vertically centered if necessary.
 
 <uxdot-example width-adjustment="872px">
-  <img src="./blockquote-configuration.png" 
+  <img src="../blockquote-configuration.png" 
       alt="Image of four blockquotes, two are left aligned and two are vertically centered, the quote icon is 20px tall" 
       width="872" 
       height="615">
