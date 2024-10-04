@@ -1,4 +1,4 @@
-<style>
+<style data-helmet>
   rh-code-block script {
     white-space: pre-wrap;
   }
@@ -11,22 +11,8 @@
     margin-block-start: var(--rh-space-lg, 16px);
   }
 
-  .grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--rh-space-2xl, 32px);
-    margin-block: var(--rh-space-2xl, 32px);
-  }
-
   .grid uxdot-example {
     margin-block-end: 0;
-  }
-
-  @container container (min-width: 768px) {
-    .grid {
-      grid-template-columns: 1fr 1fr;
-      gap: var(--rh-space-4xl, 64px);
-    }
   }
 </style>
 
@@ -50,7 +36,7 @@ The format of the displayed content can be customized by setting the `date-forma
 
 You can also set the `display-suffix` attribute to display a custom suffix at the end of the displayed content. This will not override a timezone that is already displayed from the applied time format.
 
-<div class="grid">
+<div class="grid sm-two-columns">
   <uxdot-example>
     <rh-timestamp date-format="full" time-format="full"></rh-timestamp>
     <rh-code-block compact>
@@ -116,7 +102,10 @@ The format of the displayed content can be further customized by setting the cus
 To add a tooltip that displays the timestamp content as a UTC time, you can wrap `rh-timestamp` with `rh-tooltip` and set the `UTC` attribute on an additional `rh-timestamp`.
 
 <uxdot-example width-adjustment="231px">
-  <img src="../timestamp-tooltip-1.png" alt="Timestamp with a tooltip on top showing the time with the UTC acronym at the end">
+  <img src="../timestamp-tooltip-1.png"
+        alt="Timestamp with a tooltip on top showing the time with the UTC acronym at the end"
+        width="231"
+        height="111">
 </uxdot-example>
 
 <rh-code-block compact>
@@ -128,7 +117,10 @@ To add a tooltip that displays the timestamp content as a UTC time, you can wrap
 </rh-code-block>
 
 <uxdot-example width-adjustment="225px">
-  <img src="../timestamp-tooltip-2.png" alt="Timestamp with a tooltip on top showing the time and the words Coordinated Universal Time at the end">
+  <img src="../timestamp-tooltip-2.png"
+        alt="Timestamp with a tooltip on top showing the time and the words Coordinated Universal Time at the end"
+        width="225"
+        height="132">
 </uxdot-example>
 
 <rh-code-block compact>
@@ -144,7 +136,7 @@ To add a tooltip that displays the timestamp content as a UTC time, you can wrap
 
 To display relative time, set the `relative` attribute on `rh-timestamp`.
 
-<div class="grid">
+<div class="grid sm-two-columns">
   <uxdot-example>
     <rh-timestamp date="Tue Aug 09 2022 14:57:00 GMT-0400 (Eastern Daylight Time)" relative></rh-timestamp>
     <rh-code-block compact>
@@ -169,7 +161,10 @@ To display relative time, set the `relative` attribute on `rh-timestamp`.
 To display relative time, set the `relative` attribute on `rh-timestamp`.
 
 <uxdot-example width-adjustment="192px">
-  <img src="../timestamp-tooltip-3.png" alt="Timestamp with a tooltip on top showing what the date and time would be 11 months previous">
+  <img src="../timestamp-tooltip-3.png"
+        alt="Timestamp with a tooltip on top showing what the date and time would be 11 months previous"
+        width="192"
+        height="111">
 </uxdot-example>
 
 <rh-code-block compact>
@@ -181,7 +176,10 @@ To display relative time, set the `relative` attribute on `rh-timestamp`.
 </rh-code-block>
 
 <uxdot-example width-adjustment="192px">
-  <img src="../timestamp-tooltip-4.png" alt="Timestamp with a tooltip on top showing what the date and time would be in one year">
+  <img src="../timestamp-tooltip-4.png"
+        alt="Timestamp with a tooltip on top showing what the date and time would be in one year"
+        width="193"
+        height="111">
 </uxdot-example>
 
 <rh-code-block compact>
@@ -197,7 +195,7 @@ To display relative time, set the `relative` attribute on `rh-timestamp`.
 
 The default locale is inferred by the browser. To set the locale to something else, set the `locale` attribute.
 
-<div class="grid">
+<div class="grid sm-two-columns">
   <uxdot-example>
     <rh-timestamp locale="en-GB" date-format="full" time-format="full"></rh-timestamp>
     <rh-code-block compact>
@@ -239,14 +237,20 @@ Just like text, a timestamp will break to two lines as breakpoints get smaller.
 ### Large breakpoints
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../timestamp-breakpoints-large.png" alt="Timestamp text on desktop and tablet breakpoints">
+  <img src="../timestamp-breakpoints-large.png"
+        alt="Timestamp text on desktop and tablet breakpoints"
+        width="1000"
+        height="142">
 </uxdot-example>
 
 
 ### Small breakpoints
 
 <uxdot-example width-adjustment="568px" variant="full" alignment="left" no-border>
-  <img src="../timestamp-breakpoints-small.png" alt="Timestamp text on large and small mobile breakpoints with the smallest mobile example breaking to two lines">
+  <img src="../timestamp-breakpoints-small.png"
+        alt="Timestamp text on large and small mobile breakpoints with the smallest mobile example breaking to two lines"
+        width="576"
+        height="162">
 </uxdot-example>
 
 

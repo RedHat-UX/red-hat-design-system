@@ -2,13 +2,9 @@
   display: block;
   background-color: var(--rh-color-surface-darkest);
   color: var(--rh-color-text-primary-on-dark);
-  position: fixed;
-  inset: 0;
   height: max-content;
-  z-index: var(--uxdot-masthead-z-index, 2);
   container-type: inline-size;
   container-name: host;
-  z-index: 10;
 }
 
 #container {

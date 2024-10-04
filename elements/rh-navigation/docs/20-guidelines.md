@@ -7,7 +7,10 @@ It should include the most important content a visitor needs or might be
 looking for.
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../primary-nav-usage-intro.png" alt="Primary navigation - usage">
+  <img src="../primary-nav-usage-intro.png"
+        alt="Primary navigation - usage"
+        width="1000"
+        height="176">
 </uxdot-example>
 
 
@@ -26,17 +29,26 @@ tray to organize a large amount of content in two, three, or four columns.
 
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../full-width-tray-4-columns.png" alt="Primary navigation - full-width expandable tray (four columns)">
+  <img src="../full-width-tray-4-columns.png"
+        alt="Primary navigation - full-width expandable tray (four columns)"
+        width="1000"
+        height="513">
 </uxdot-example>
 
 If content is organized in less than four columns, containers will stretch to fill the columns.
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../full-width-tray-3-columns.png" alt="Primary navigation - full-width expandable tray (three columns)">
+  <img src="../full-width-tray-3-columns.png"
+        alt="Primary navigation - full-width expandable tray (three columns)"
+        width="1000"
+        height="513">
 </uxdot-example>
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../full-width-tray-2-columns.png" alt="Primary navigation - full-width expandable tray (two columns)">
+  <img src="../full-width-tray-2-columns.png"
+        alt="Primary navigation - full-width expandable tray (two columns)"
+        width="1000"
+        height="513">
 </uxdot-example>
 
 
@@ -53,7 +65,10 @@ Utilities are not able to leverage fixed-width expandable trays at this time.
 </rh-alert>
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../fixed-width-tray.png" alt="Primary navigation - fixed-width expandable tray">
+  <img src="../fixed-width-tray.png"
+        alt="Primary navigation - fixed-width expandable tray"
+        width="1000"
+        height="411">
 </uxdot-example>
 
 
@@ -63,7 +78,10 @@ There is no maximum number of menu slots, but be conscious of space when
 adding menus especially when the text is translated to other languages.
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../menu-slots.png" alt="Primary navigation - menu slots">
+  <img src="../menu-slots.png"
+        alt="Primary navigation - menu slots"
+        width="1000"
+        height="176">
 </uxdot-example>
 
 
@@ -81,11 +99,17 @@ Tabs component is used, it will change to a nested [Accordion]({{
 </rh-alert>
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../components-in-tray-desktop.png" alt="Primary navigation - components in an expandable tray (desktop)">
+  <img src="../components-in-tray-desktop.png"
+        alt="Primary navigation - components in an expandable tray (desktop)"
+        width="1000"
+        height="530">
 </uxdot-example>
 
 <uxdot-example width-adjustment="360px" variant="full" alignment="left" no-border>
-  <img src="../components-in-tray-mobile.png" alt="Primary navigation - components in an expandable tray (mobile)">
+  <img src="../components-in-tray-mobile.png"
+        alt="Primary navigation - components in an expandable tray (mobile)"
+        width="360"
+        height="1600">
 </uxdot-example>
 
 
@@ -104,7 +128,10 @@ goals.
 </rh-alert>
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../primary-nav-utilities.png" alt="Primary navigation - utilities">
+  <img src="../primary-nav-utilities.png"
+        alt="Primary navigation - utilities"
+        width="1000"
+        height="230">
 </uxdot-example>
 
 
@@ -124,7 +151,10 @@ The order of some utilities can be customized or even removed, but not all.
   team](mailto:brand@redhat.com)
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../utility-ordering.png" alt="Primary navigation - utility ordering">
+  <img src="../utility-ordering.png"
+        alt="Primary navigation - utility ordering"
+        width="1000"
+        height="104">
 </uxdot-example>
 
 
@@ -135,7 +165,10 @@ to reduce visual crowding. The Account utility should always be visible on any
 breakpoint.
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../menus-utilities-small-breakpoints.png" alt="Primary navigation - menus and utilities on small breakpoints">
+  <img src="../menus-utilities-small-breakpoints.png"
+        alt="Primary navigation - menus and utilities on small breakpoints"
+        width="1000"
+        height="745">
 </uxdot-example>
 
 
@@ -144,21 +177,30 @@ breakpoint.
 ### redhat.com
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../example-rhdc.png" alt="Primary navigation - redhat.com example">
+  <img src="../example-rhdc.png"
+        alt="Primary navigation - redhat.com example"
+        width="1000"
+        height="72">
 </uxdot-example>
 
 
 ### Developer
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../example-developer.png" alt="Primary navigation - Developer example">
+  <img src="../example-developer.png"
+        alt="Primary navigation - Developer example"
+        width="1000"
+        height="72">
 </uxdot-example>
 
 
 ### Hybrid Cloud
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../example-hybrid-cloud.png" alt="Primary navigation - Hybrid Cloud example">
+  <img src="../example-hybrid-cloud.png"
+        alt="Primary navigation - Hybrid Cloud example"
+        width="1000"
+        height="72">
 </uxdot-example>
 
 
@@ -176,7 +218,10 @@ On hover, menu text will display a red bar and gray arrow indicating an
 expandable tray will be triggered if selected.
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../primary-nav-menus.png" alt="Primary navigation - menus">
+  <img src="../primary-nav-menus.png"
+        alt="Primary navigation - menus"
+        width="1000"
+        height="72">
 </uxdot-example>
 
 
@@ -185,7 +230,10 @@ expandable tray will be triggered if selected.
 Some utilities leverage the expandable tray pattern or function as links.
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../utility-menus-vs-links.png" alt="Primary navigation - utility menus vs. links">
+  <img src="../utility-menus-vs-links.png"
+        alt="Primary navigation - utility menus vs. links"
+        width="1000"
+        height="272">
 </uxdot-example>
 
 
@@ -195,7 +243,10 @@ When an [Announcement]({{ '/patterns/announcement' |
 url }}) component is used, the primary navigation is positioned below it.
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../primary-nav-stacking.png" alt="Primary navigation - stacking">
+  <img src="../primary-nav-stacking.png"
+        alt="Primary navigation - stacking"
+        width="1000"
+        height="152">
 </uxdot-example>
 
 ### Scrolling with expandable tray
@@ -204,7 +255,10 @@ If the height of the expandable tray is shorter than the viewport, content
 will scroll underneath.
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../scrolling-with-tray-1.png" alt="Primary navigation - scrolling with expandable tray">
+  <img src="../scrolling-with-tray-1.png"
+        alt="Primary navigation - scrolling with expandable tray"
+        width="1000"
+        height="673">
 </uxdot-example>
 
 If the height of the expandable tray is taller than the viewport, the tray 
@@ -217,7 +271,10 @@ will scroll instead.
 </rh-alert>
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../scrolling-with-tray-2.png" alt="Primary navigation - scrolling with expandable tray">
+  <img src="../scrolling-with-tray-2.png"
+        alt="Primary navigation - scrolling with expandable tray"
+        width="1000"
+        height="809">
 </uxdot-example>
 
 
@@ -227,7 +284,10 @@ Only one expandable tray can be visible at a time and there is no animation
 when navigating from one tray to the next.
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../navigating-between-trays.png" alt="Primary navigation - navigating between expandable trays">
+  <img src="../navigating-between-trays.png"
+        alt="Primary navigation - navigating between expandable trays"
+        width="1000"
+        height="176">
 </uxdot-example>
 
 
@@ -238,7 +298,10 @@ it. Pressing the **esc** key should collapse the expandable tray
 as well.
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../collapsing-expandable-tray.png" alt="Primary navigation - collapsing the expandable tray">
+  <img src="../collapsing-expandable-tray.png"
+        alt="Primary navigation - collapsing the expandable tray"
+        width="1000"
+        height="513">
 </uxdot-example>
 
 
@@ -256,7 +319,10 @@ Keep in mind the following additional behaviors:
 ### Default
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../interaction-state-default.png" alt="Primary navigation - default interaction state">
+  <img src="../interaction-state-default.png"
+        alt="Primary navigation - default interaction state"
+        width="1000"
+        height="72">
 </uxdot-example>
 
 <rh-table>
@@ -291,7 +357,10 @@ Keep in mind the following additional behaviors:
 ### Hover
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../interaction-state-hover.png" alt="Primary navigation - hover interaction state">
+  <img src="../interaction-state-hover.png"
+        alt="Primary navigation - hover interaction state"
+        width="1000"
+        height="72">
 </uxdot-example>
 
 <rh-table>
@@ -322,7 +391,10 @@ Keep in mind the following additional behaviors:
 ### Focus
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../interaction-state-focus.png" alt="Primary navigation - focus interaction state">
+  <img src="../interaction-state-focus.png"
+        alt="Primary navigation - focus interaction state"
+        width="1000"
+        height="72">
 </uxdot-example>
 
 <rh-alert state="info">
@@ -359,7 +431,10 @@ Keep in mind the following additional behaviors:
 ### Active
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../interaction-state-active.png" alt="Primary navigation - active interaction state">
+  <img src="../interaction-state-active.png"
+        alt="Primary navigation - active interaction state"
+        width="1000"
+        height="72">
 </uxdot-example>
 
 <rh-table>
@@ -406,5 +481,8 @@ properties. Elements need to receive focus in an order that preserves meaning,
 therefore the focus order should make sense and not jump around randomly.
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../focus-order.png" alt="Primary navigation - focus order">
+  <img src="../focus-order.png"
+        alt="Primary navigation - focus order"
+        width="1000"
+        height="617">
 </uxdot-example>

@@ -1,11 +1,10 @@
-<style>
+<style data-helmet>
   .card-grid {
     margin-block-end: var(--rh-space-4xl, 64px);
   }
 
   .card-grid rh-card {
     height: auto;
-  }
 
   .card-grid rh-card h4 {
     margin-block: 0;
@@ -206,7 +205,10 @@ content. For example, grouping a basic card with a pricing card will look bad
 because they’re not very similar.
 
 <uxdot-example width-adjustment="784px">
-  <img src="../card-usage-grouping.svg" alt="Grouping of a card">
+  <img src="../card-usage-grouping.svg"
+        alt="Grouping of a card"
+        width="784"
+        height="513">
 </uxdot-example>
 
 These cards can be grouped together because they have similar styles and 
@@ -226,7 +228,10 @@ Cards can include complex components if necessary. For example, the
 place any other complex components in card layouts.
 
 <uxdot-example width-adjustment="664px">
-  <img src="../card-usage-other.svg" alt="Alternative card usage">
+  <img src="../card-usage-other.svg"
+        alt="Alternative card usage"
+        width="664"
+        height="513">
 </uxdot-example>
 
 ## Variants
@@ -258,9 +263,9 @@ A narrow promo can be used if the promo content needs to fit in a small area, li
 <uxdot-best-practice variant="do">
   <uxdot-example width-adjustment="1012px" slot="image">
     <img src="../card-best-practices-width-do.svg"
-         alt="Three cards in a row"
-         width="1012"
-         height="187">
+          alt="Three cards in a row"
+          width="1012"
+          height="187">
   </uxdot-example>
   <p>In a 12-column layout, use a minimum width of four columns for a card. The maximum number of cards that should be used in a row is three.</p>
 </uxdot-best-practice>
@@ -268,9 +273,9 @@ A narrow promo can be used if the promo content needs to fit in a small area, li
 <uxdot-best-practice variant="dont">
   <uxdot-example width-adjustment="1012px" slot="image">
     <img src="../card-best-practices-width-dont.svg"
-         alt="Four cards in a row"
-         width="1012"
-         height="187">
+          alt="Four cards in a row"
+          width="1012"
+          height="187">
   </uxdot-example>
   <p>Do not make cards narrower than 4 columns. This may not give enough space for content within the card.</p>
 </uxdot-best-practice>
@@ -281,9 +286,9 @@ A narrow promo can be used if the promo content needs to fit in a small area, li
   <uxdot-best-practice variant="do">
     <uxdot-example width-adjustment="360px" slot="image">
       <img src="../card-best-practices-cta-variants-do.svg"
-           alt="Card with a default call to action"
-           width="360"
-           height="223">
+            alt="Card with a default call to action"
+            width="360"
+            height="223">
     </uxdot-example>
     <p>Use secondary or default calls to action in most cards.</p>
   </uxdot-best-practice>
@@ -291,9 +296,9 @@ A narrow promo can be used if the promo content needs to fit in a small area, li
   <uxdot-best-practice variant="dont">
     <uxdot-example width-adjustment="360px" slot="image">
       <img src="../card-best-practices-cta-variants-dont.svg"
-           alt="Card with a primary call to action"
-           width="360"
-           height="252">
+            alt="Card with a primary call to action"
+            width="360"
+            height="252">
     </uxdot-example>
     <p>Do not use a primary call to action in any card unless the primary action for the whole page is positioned inside of that card.</p>
   </uxdot-best-practice>
@@ -305,9 +310,9 @@ A narrow promo can be used if the promo content needs to fit in a small area, li
   <uxdot-best-practice variant="do">
     <uxdot-example width-adjustment="360px" slot="image">
       <img src="../card-best-practices-cta-number-do.svg"
-           alt="Card with a secondary call to action and a default call to action"
-           width="360"
-           height="303">
+            alt="Card with a secondary call to action and a default call to action"
+            width="360"
+            height="303">
     </uxdot-example>
     <p>Use up to two calls to action in a card. They can be two different variants.</p>
   </uxdot-best-practice>
@@ -315,9 +320,9 @@ A narrow promo can be used if the promo content needs to fit in a small area, li
   <uxdot-best-practice variant="dont">
     <uxdot-example width-adjustment="360px" slot="image">
       <img src="../card-best-practices-cta-number-dont.svg"
-           alt="Card with three call to actions"
-           width="360"
-           height="354">
+            alt="Card with three call to actions"
+            width="360"
+            height="354">
     </uxdot-example>
     <p>Do not use more than two calls to action in a card. This could make it harder for the user to understand what action to take next.</p>
   </uxdot-best-practice>
@@ -329,9 +334,9 @@ A narrow promo can be used if the promo content needs to fit in a small area, li
   <uxdot-best-practice variant="do">
     <uxdot-example width-adjustment="546px" slot="image">
       <img src="../card-best-practices-promo-do.svg"
-           alt="One featured promo below lorem ipsum text"
-           width="546"
-           height="312">
+            alt="One featured promo below lorem ipsum text"
+            width="546"
+            height="312">
     </uxdot-example>
     <p>Because promo is used for special promotional content only, promos should typically appear individually.</p>
   </uxdot-best-practice>
@@ -339,9 +344,9 @@ A narrow promo can be used if the promo content needs to fit in a small area, li
   <uxdot-best-practice variant="dont">
     <uxdot-example width-adjustment="546px" slot="image">
       <img src="../card-best-practices-promo-dont.svg"
-           alt="Three narrow promos in a group"
-           width="546"
-           height="312">
+            alt="Three narrow promos in a group"
+            width="546"
+            height="312">
     </uxdot-example>
     <p>Do not group multiple promos together as if they were a regular card group.</p>
   </uxdot-best-practice>
@@ -357,7 +362,10 @@ determined by the tallest card. Don’t place inconsistent amounts of content in
 cards, as this will impact how scannable the group will appear to users.
 
 <uxdot-example width-adjustment="784px">
-  <img src="../card-behavior-height.svg" alt="Card height behavior">
+  <img src="../card-behavior-height.svg"
+        alt="Card height behavior"
+        width="784"
+        height="536">
 </uxdot-example>
 
 ### Interactivity
@@ -367,7 +375,10 @@ elements inside should all be interactive. Otherwise, each interactive element
 should continue to be interactive, but not the card container.
 
 <uxdot-example width-adjustment="784px">
-  <img src="../card-behavior-interaction.svg" alt="Card interaction">
+  <img src="../card-behavior-interaction.svg"
+        alt="Card interaction"
+        width="786"
+        height="335">
 </uxdot-example>
 
 ## Interaction states

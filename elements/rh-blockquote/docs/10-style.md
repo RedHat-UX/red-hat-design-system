@@ -12,7 +12,10 @@ also include the following optional elements:
 
 <figure>
   <uxdot-example width-adjustment="653px">
-    <img src="../blockquote-anatomy.png" alt="Anatomy image of a blockquote with numbered annotations">
+    <img src="../blockquote-anatomy.png" 
+        alt="Anatomy image of a blockquote with numbered annotations" 
+        width="653" 
+        height="530">
   </uxdot-example>
   <figcaption>
     <ol>
@@ -28,7 +31,10 @@ also include the following optional elements:
 ## Sizes
 
 <uxdot-example width-adjustment="872px">
-  <img src="../blockquote-style-sizes.png" alt="Image of two blockquotes, default size on the left and large size on the right">
+  <img src="../blockquote-style-sizes.png" 
+      alt="Image of two blockquotes, default size on the left and large size on the right" 
+      width="872" 
+      height="350">
 </uxdot-example>
 
 <rh-table>
@@ -77,7 +83,10 @@ A blockquote is available in both light and dark themes.
 ### Light theme
 
 <uxdot-example width-adjustment="589px">
-  <img src="../blockquote-theme-light.png" alt="Image of a light theme blockquote, red quote icon, black quotation text, and dark gray citation text">
+  <img src="../blockquote-theme-light.png" 
+      alt="Image of a light theme blockquote, red quote icon, black quotation text, and dark gray citation text" 
+      width="589"
+      height="177">
 </uxdot-example>
 
 <rh-table>
@@ -108,7 +117,10 @@ A blockquote is available in both light and dark themes.
 ### Dark theme
 
 <uxdot-example color-palette="darkest" width-adjustment="589px">
-  <img src="../blockquote-theme-dark.png" alt="Image of a dark theme blockquote, red quote icon, white quotation text, and light gray citation text">
+  <img src="../blockquote-theme-dark.png" 
+      alt="Image of a dark theme blockquote, red quote icon, white quotation text, and light gray citation text"
+      width="589"
+      height="177">
 </uxdot-example>
 
 <rh-table>
@@ -139,11 +151,17 @@ A blockquote is available in both light and dark themes.
 ### Emphasis border
 
 <uxdot-example width-adjustment="872px">
-  <img src="../blockquote-emphasis-theme-light.png" alt="Image of two blockquotes, a red emphasis border on the left and a black emphasis border on the right">
+  <img src="../blockquote-emphasis-theme-light.png" 
+      alt="Image of two blockquotes, a red emphasis border on the left and a black emphasis border on the right" 
+      width="872" 
+      height="260">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="872px">
-  <img src="../blockquote-emphasis-theme-dark.png" alt="Image of two blockquotes, a red emphasis border on the left and a black emphasis border on the right">
+  <img src="../blockquote-emphasis-theme-dark.png" 
+      alt="Image of two blockquotes, a red emphasis border on the left and a black emphasis border on the right" 
+      width="872" 
+      height="260">
 </uxdot-example>
 
 <rh-table>
@@ -173,11 +191,17 @@ A blockquote is available in both light and dark themes.
 ### Title and heading text
 
 <uxdot-example width-adjustment="872px">
-  <img src="../blockquote-title-heading-theme-light.png" alt="Image of two blockquotes, both with red title text and black header text">
+  <img src="../blockquote-title-heading-theme-light.png" 
+      alt="Image of two blockquotes, both with red title text and black header text" 
+      width="872" 
+      height="356">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="872px">
-  <img src="../blockquote-title-heading-theme-dark.png" alt="Image of two blockquotes, both with red title text and white header text">
+  <img src="../blockquote-title-heading-theme-dark.png" 
+      alt="Image of two blockquotes, both with red title text and white header text" 
+      width="872" 
+      height="356">
 </uxdot-example>
 
 <rh-table>
@@ -209,7 +233,10 @@ A blockquote is available in both light and dark themes.
 The base elements in both sizes are stacked and left aligned by default, but they can be vertically centered if necessary.
 
 <uxdot-example width-adjustment="872px">
-  <img src="../blockquote-configuration.png" alt="Image of four blockquotes, two are left aligned and two are vertically centered, the quote icon is 20px tall">
+  <img src="../blockquote-configuration.png" 
+      alt="Image of four blockquotes, two are left aligned and two are vertically centered, the quote icon is 20px tall" 
+      width="872" 
+      height="615">
 </uxdot-example>
 
 ### Order
@@ -218,7 +245,10 @@ A blockquote was designed to be read from top to bottom. If certain optional ele
 
 <figure>
   <uxdot-example width-adjustment="872px">
-    <img src="../blockquote-configuration.png" alt="Image of a blockquote with numbers 1 - 4 on the right side going from top to bottom">
+    <img src="../blockquote-configuration.png" 
+        alt="Image of a blockquote with numbers 1 - 4 on the right side going from top to bottom" 
+        width="872" 
+        height="615">
   </uxdot-example>
   <figcaption>
     <ol>
@@ -235,7 +265,10 @@ A blockquote was designed to be read from top to bottom. If certain optional ele
 Citation text has specific styles applied to it.
 
 <uxdot-example width-adjustment="349px">
-  <img src="../blockquote-configuration-citation.png" alt="Image of three citation text examples">
+  <img src="../blockquote-configuration-citation.png" 
+      alt="Image of three citation text examples" 
+      width="349" 
+      height="181">
 </uxdot-example>
 
 <rh-table>
@@ -272,7 +305,10 @@ Citation text has specific styles applied to it.
 Space values are the same in both sizes and on all breakpoints.
 
 <uxdot-example width-adjustment="872px">
-  <img src="../blockquote-space.png" alt="Image of four blockquotes with spacing values in between">
+  <img src="../blockquote-space.png" 
+      alt="Image of four blockquotes with spacing values in between" 
+      width="872" 
+      height="642">
 </uxdot-example>
 
 <rh-table>

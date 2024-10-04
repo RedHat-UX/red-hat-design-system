@@ -8,7 +8,10 @@ A blockquote is a styled quotation and citation offset from other text styles on
 ## Sample element
 
 <uxdot-example width-adjustment="593px">
-  <img src="./blockquote-sample.png" alt="Image of a blockquote including a quote icon, quotation text, and citation text">
+  <img src="./blockquote-sample.png" 
+      alt="Image of a blockquote including a quote icon, quotation text, and citation text" 
+      width="593" 
+      height="205">
 </uxdot-example>
 
 

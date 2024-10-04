@@ -10,7 +10,10 @@ additional emphasis or context.
 
 <figure>
   <uxdot-example width-adjustment="388px">
-    <img src="../stat-anatomy.png" alt="Anatomy of a statistic with annotations; number 1 is pointing to an optional icon, number 2 is pointing to optional title text, number 3 is pointing to data text, number 4 is pointing to body text, and number 5 is pointing to an optional call to action">
+    <img src="../stat-anatomy.png"
+        alt="Anatomy of a statistic with annotations; number 1 is pointing to an optional icon, number 2 is pointing to optional title text, number 3 is pointing to data text, number 4 is pointing to body text, and number 5 is pointing to an optional call to action"
+        width="388"
+        height="271">
   </uxdot-example>
   <figcaption>
     <ol>
@@ -29,7 +32,10 @@ There are two available sizes and the only difference is the size of some
 elements.
 
 <uxdot-example width-adjustment="772px">
-  <img src="../stat-sizes.png" alt="Default size and Large size statistics both with icons and body text; text under the default size says ‘Default size’ and text under the large size says ‘Large size’">
+  <img src="../stat-sizes.png"
+        alt="Default size and Large size statistics both with icons and body text; text under the default size says ‘Default size’ and text under the large size says ‘Large size’"
+        width="772"
+        height="228">
 </uxdot-example>
 
 <rh-table>
@@ -68,14 +74,20 @@ requirements.
 ### Light theme
 
 <uxdot-example width-adjustment="346px">
-  <img src="../stat-theme-light.png" alt="Light theme statistic with a red icon, red data text, and black body text">
+  <img src="../stat-theme-light.png"
+        alt="Light theme statistic with a red icon, red data text, and black body text"
+        width="346"
+        height="154">
 </uxdot-example>
 
 
 ### Dark theme
 
 <uxdot-example color-palette="darkest" width-adjustment="346px">
-  <img src="../stat-theme-dark.png" alt="Dark theme statistic with a white icon and white text styles to meet accessibility contrast requirements">
+  <img src="../stat-theme-dark.png"
+        alt="Dark theme statistic with a white icon and white text styles to meet accessibility contrast requirements"
+        width="346"
+        height="154">
 </uxdot-example>
 
 
@@ -89,7 +101,10 @@ the left, for example if grouped statistics are used in several rows or if
 surrounding content is all left aligned.
 
 <uxdot-example width-adjustment="346px">
-  <img src="../stat-configuration.png" alt="Statistic with a dotted vertical line through it">
+  <img src="../stat-configuration.png"
+        alt="Statistic with a dotted vertical line through it"
+        width="346"
+        height="154">
 </uxdot-example>
 
 
@@ -99,7 +114,10 @@ elements are included, the order will change.
 
 <figure>
   <uxdot-example width-adjustment="346px">
-    <img src="../stat-configuration-order.png" alt="Statistic with boxes around each element slot, there are also numbers next to each box arranged 1 to 4 from top to bottom">
+    <img src="../stat-configuration-order.png"
+        alt="Statistic with boxes around each element slot, there are also numbers next to each box arranged 1 to 4 from top to bottom"
+        width="416"
+        height="271">
   </uxdot-example>
   <figcaption>
   <ol>
@@ -119,7 +137,10 @@ breakpoints. To see space values when statistics are used in a layout,
 go to the [Guidelines](../guidelines) page.
 
 <uxdot-example width-adjustment="800px">
-  <img src="../stat-space.png" alt="Default and Large size spacing between all elements">
+  <img src="../stat-space.png"
+        alt="Default and Large size spacing between all elements"
+        width="800"
+        height="271">
 </uxdot-example>
 
 <rh-table>
