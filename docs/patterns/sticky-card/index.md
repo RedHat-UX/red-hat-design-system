@@ -21,15 +21,21 @@ scrolls underneath until a user dismisses them.
 ## Sample pattern
 
 <uxdot-example width-adjustment="274px">
-  <img src="./sticky-card.svg" alt="Sticky card">
+  <img src="./sticky-card.svg"
+      alt="Sticky card"
+      width="274"
+      height="361">
 </uxdot-example>
 
 ## Style
 
 A sticky card acts as a small container for a limited amount of content.
 
-<uxdot-example width-adjustment="451px">
-  <img src="./sticky-card-style.svg" alt="Sticky card style">
+<uxdot-example width-adjustment="453px">
+  <img src="./sticky-card-style.svg"
+      alt="Sticky card style"
+      width="453"
+      height="361">
 </uxdot-example>
 
 ### Theme
@@ -42,11 +48,17 @@ border is also required even if the sticky card background color is different
 than the page background color.
 
 <uxdot-example width-adjustment="277px">
-  <img src="./sticky-card-theme-light.svg" alt="Sticky card light theme">
+  <img src="./sticky-card-theme-light.svg"
+      alt="Sticky card light theme"
+      width="277"
+      height="361">
 </uxdot-example>
 
-<uxdot-example color-palette="darkest" width-adjustment="277px">
-  <img src="./sticky-card-theme-dark.svg" alt="Sticky card dark theme">
+<uxdot-example color-palette="darkest" width-adjustment="262px">
+  <img src="./sticky-card-theme-dark.svg"
+      alt="Sticky card dark theme"
+      width="262"
+      height="349">
 </uxdot-example>
 
 ### Layout
@@ -77,8 +89,11 @@ enough to explain what the content is, the body section can be hidden.
 The footer section can include normal links or a call to action. A sticky card 
 footer is always required and shouldn't be hidden.
 
-<uxdot-example width-adjustment="870px">
-  <img src="./sticky-card-layout.svg" alt="Sticky card content sections">
+<uxdot-example width-adjustment="713px">
+  <img src="./sticky-card-layout.svg"
+      alt="Sticky card content sections"
+      width="713"
+      height="361">
 </uxdot-example>
 
 ## Usage
@@ -95,8 +110,11 @@ that’s helpful to a user, like a resource or webinar.
 A sticky card can be placed on the left or the right edge of a page and it has a 
 fixed width of 262px.
 
-<uxdot-example width-adjustment="872px">
-  <img src="./sticky-card-layout-right.svg" alt="Sticky card on right side">
+<uxdot-example width-adjustment="879px">
+  <img src="./sticky-card-layout-right.svg"
+      alt="Sticky card on right side"
+      width="879"
+      height="477">
 </uxdot-example>
 
 ### Content
@@ -108,7 +126,10 @@ included at the same time. Move any extra content to other parts of the page if
 possible.
 
 <uxdot-example width-adjustment="596px">
-  <img src="./sticky-card-content.png" alt="Sticky card content sections">
+  <img src="./sticky-card-content.png"
+      alt="Sticky card content sections"
+      width="596"
+      height="399">
 </uxdot-example>
 
 ### Character count
@@ -154,32 +175,47 @@ sticky card is anchored to the right edge of a page.
 
 Don’t use more than one sticky card per page.
 
-<uxdot-example width-adjustment="870px" danger>
-  <img src="./sticky-card-best-practices-1.svg" alt="Sticky card multiple issue">
+<uxdot-example width-adjustment="751px" danger>
+  <img src="./sticky-card-best-practices-1.svg"
+      alt="Sticky card multiple issue"
+      width="751"
+      height="477">
 </uxdot-example>
 
 Don’t change the width of a sticky card on large screens, it’s fixed at 262px.
 
 <uxdot-example width-adjustment="375px" danger>
-  <img src="./sticky-card-best-practices-2.svg" alt="Sticky card width issue">
+  <img src="./sticky-card-best-practices-2.svg"
+      alt="Sticky card width issue"
+      width="375"
+      height="311">
 </uxdot-example>
 
 Don’t anchor a sticky card on small screens, it covers too much content.
 
 <uxdot-example width-adjustment="386px" danger>
-  <img src="./sticky-card-best-practices-3.svg" alt="Sticky card overlap issue">
+  <img src="./sticky-card-best-practices-3.svg"
+      alt="Sticky card overlap issue"
+      width="366"
+      height="477">
 </uxdot-example>
 
 Don't omit the close button, it’s needed for accessibility.
 
 <uxdot-example width-adjustment="277px" danger>
-  <img src="./sticky-card-best-practices-4.svg" alt="Sticky card close button issue">
+  <img src="./sticky-card-best-practices-4.svg"
+      alt="Sticky card close button issue"
+      width="277"
+      height="323">
 </uxdot-example>
 
 Don’t use more than one call to action.
 
 <uxdot-example width-adjustment="277px" danger>
-  <img src="./sticky-card-best-practices-5.svg" alt="Sticky card call to action issue">
+  <img src="./sticky-card-best-practices-5.svg"
+      alt="Sticky card call to action issue"
+      width="277"
+      height="400">
 </uxdot-example>
 
 ## Behavior
@@ -210,7 +246,10 @@ user experience, so keep the content short to maintain as close to a square
 aspect ratio as possible.
 
 <uxdot-example width-adjustment="603px">
-  <img src="./sticky-card-behavior-height.svg" alt="Sticky card vertical height caution">
+  <img src="./sticky-card-behavior-height.svg"
+      alt="Sticky card vertical height caution"
+      width="603"
+      height="607">
 </uxdot-example>
 
 ## Breakpoints
@@ -222,19 +261,28 @@ maintains the same styles.
 ### Desktop
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="./sticky-card-responsive-desktop.svg" alt="Sticky card desktop layout">
+  <img src="./sticky-card-responsive-desktop.svg"
+      alt="Sticky card desktop layout"
+      width="1007"
+      height="477">
 </uxdot-example>
 
 ### Tablet
 
-<uxdot-example width-adjustment="768px" variant="full" alignment="left" no-border>
-  <img src="./sticky-card-responsive-tablet.svg" alt="Sticky card tablet layout">
+<uxdot-example width-adjustment="775px" variant="full" alignment="left" no-border>
+  <img src="./sticky-card-responsive-tablet.svg"
+      alt="Sticky card tablet layout"
+      width="775"
+      height="477">
 </uxdot-example>
 
 ### Mobile
 
 <uxdot-example width-adjustment="360px" variant="full" alignment="left" no-border>
-  <img src="./sticky-card-responsive-mobile.svg" alt="Sticky card mobile layout">
+  <img src="./sticky-card-responsive-mobile.svg"
+      alt="Sticky card mobile layout"
+      width="360"
+      height="640">
 </uxdot-example>
 
 ## Interaction states
@@ -249,7 +297,10 @@ A sticky card uses [space tokens](/tokens/space/) to define spacing
 values between elements.
 
 <uxdot-example width-adjustment="287px">
-  <img src="./sticky-card-spacing.svg" alt="Sticky card spacing">
+  <img src="./sticky-card-spacing.svg"
+      alt="Sticky card spacing"
+      width="287"
+      height="361">
 </uxdot-example>
 
 <rh-table>

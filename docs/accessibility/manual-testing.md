@@ -10,7 +10,7 @@ importElements:
   - rh-blockquote
 ---
 
-<style>
+<style data-helmet>
   rh-blockquote {
     display: block;
     margin-block: 2rem;

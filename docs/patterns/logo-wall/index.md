@@ -13,7 +13,7 @@ subnav:
   order: 1
 ---
 
-<script type="module">
+<script type="module" data-helmet>
   import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
 </script>
 
@@ -21,18 +21,27 @@ subnav:
 
 A logo wall is a visual arrangement of logos representing various brands, companies, or organizations. It’s often used to showcase different partners or products within a particular ecosystem.
 
-## Sample Pattern
+## Sample Patterns
 
 <div class="grid">
-  <uxdot-example>
-    <img src="./overview-sample-bordered.png"
-         alt="An example of a bordered logo wall with 6 logos each inside of a bordered container.">
-  </uxdot-example>
-
-  <uxdot-example>
-    <img src="./overview-sample-borderless.png"
-         alt="An example of a borderless logo wall with 6 logos.">
-  </uxdot-example>
+  <div> 
+    <h3>Bordered</h3>
+    <uxdot-example>
+      <img src="./overview-sample-bordered.png"
+        alt="An example of a bordered logo wall with 6 logos each inside of a bordered container."
+        width="560"
+        height="55">
+    </uxdot-example>
+  </div>
+  <div>
+    <h3>Borderless</h3>
+    <uxdot-example>
+      <img src="./overview-sample-borderless.png"
+        alt="An example of a borderless logo wall with 6 logos."
+        width="556"
+        height="55">
+    </uxdot-example>
+  </div>
 </div>
 
 ## When to use

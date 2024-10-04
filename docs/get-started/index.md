@@ -8,9 +8,9 @@ importElements:
   - rh-tile
 ---
 
-<link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
+<link data-helmet rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
 
-<style>
+<style data-helmet>
   #get-started-nav {
     margin-block-start: var(--rh-space-2xl, 32px);
   }
