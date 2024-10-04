@@ -150,27 +150,25 @@ export class RhDialog extends LitElement {
                 part="dialog"
                 aria-labelledby=${ifDefined(this.accessibleLabel ? undefined : headerId)}
                 aria-label=${ifDefined(this.accessibleLabel ? this.accessibleLabel : (!headerId ? triggerLabel : undefined))}>
-          <div id="container">
-            <div id="content" part="content" class=${classMap({ hasHeader, hasDescription, hasFooter })}>
-              <rh-button variant="close"
-                         id="close-button"
-                         part="close-button"
-                         type="button"
-                         @click=${this.close}>
-                <span class="visually-hidden">Close Dialog</span>
-              </rh-button>
-              <div part="header" ?hidden=${!hasHeader}>
-                <slot name="header"></slot>
-                <div part="description" ?hidden=${!hasDescription}>
-                  <slot name="description"></slot>
-                </div>
+          <div id="content" part="content" class=${classMap({ hasHeader, hasDescription, hasFooter })}>
+            <rh-button variant="close"
+                       id="close-button"
+                       part="close-button"
+                       type="button"
+                       @click=${this.close}>
+              <span class="visually-hidden">Close Dialog</span>
+            </rh-button>
+            <div part="header" ?hidden=${!hasHeader}>
+              <slot name="header"></slot>
+              <div part="description" ?hidden=${!hasDescription}>
+                <slot name="description"></slot>
               </div>
-              <div part="body">
-                <slot></slot>
-              </div>
-              <div ?hidden=${!hasFooter} part="footer">
-                <slot name="footer"></slot>
-              </div>
+            </div>
+            <div part="body">
+              <slot></slot>
+            </div>
+            <div ?hidden=${!hasFooter} part="footer">
+              <slot name="footer"></slot>
             </div>
           </div>
         </dialog>

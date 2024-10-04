@@ -39,10 +39,22 @@
 }
 
 [part='dialog'] {
-  background-color: transparent;
+  background-color: var(--rh-color-surface-lightest, #ffffff);
+  border-radius: var(--rh-border-radius-default, 3px);
   border: 0;
-  padding-bottom: var(--rh-space-2xl, 32px); /* NOTE: don't cut off box-shadow at the bottom */
+  box-shadow: var(--rh-box-shadow-xl, 0 8px 24px 3px rgba(21, 21, 21, 0.35));
+  box-sizing: border-box;
+  color: var(--rh-color-text-primary-on-light, #151515);
+  font-family: inherit;
   inline-size: 100%;
+  margin-inline: auto;
+  max-block-size: var(--_box-max-block-size, calc(100vh - var(--rh-space-3xl, 48px)));
+  max-inline-size: var(--_box-width, min(90%, 1140px));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: var(--rh-space-xl, 24px);
+  padding-block-end: var(--rh-space-2xl, 32px); /* NOTE: don't cut off box-shadow at the bottom */
+  position: relative;
 }
 
 :host([width]) [part='dialog'],
@@ -65,22 +77,6 @@
   --_box-width: 70rem;
 }
 
-[part='content'] {
-  background-color: var(--rh-color-surface-lightest, #ffffff);
-  border-radius: var(--rh-border-radius-default, 3px);
-  box-shadow: var(--rh-box-shadow-xl, 0 8px 24px 3px rgba(21, 21, 21, 0.35));
-  box-sizing: border-box;
-  color: var(--rh-color-text-primary-on-light, #151515);
-  font-family: inherit;
-  margin-inline: auto;
-  max-block-size: var(--_box-max-block-size, calc(100vh - var(--rh-space-3xl, 48px)));
-  max-inline-size: var(--_box-width, min(90%, 1140px));
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  padding: var(--rh-space-xl, 24px);
-  position: relative;
-}
-
 [part='header'] {
   background-color: var(--rh-color-surface-lightest, #ffffff);
   padding-block-end: var(--rh-space-sm, 6px);
@@ -93,7 +89,7 @@
 }
 
 @media (min-width: 1200px) {
-  [part='content'] {
+  [part='dialog'] {
     padding: var(--rh-space-2xl, 32px);
   }
 
