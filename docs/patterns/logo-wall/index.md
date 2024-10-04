@@ -28,18 +28,18 @@ A logo wall is a visual arrangement of logos representing various brands, compan
     <h3>Bordered</h3>
     <uxdot-example>
       <img src="./overview-sample-bordered.png"
-        alt="An example of a bordered logo wall with 6 logos each inside of a bordered container."
-        width="560"
-        height="55">
+      alt="An example of a bordered logo wall with 6 logos each inside of a bordered container."
+      width="1010"
+      height="99">
     </uxdot-example>
   </div>
   <div>
     <h3>Borderless</h3>
     <uxdot-example>
       <img src="./overview-sample-borderless.png"
-        alt="An example of a borderless logo wall with 6 logos."
-        width="556"
-        height="55">
+      alt="An example of a borderless logo wall with 6 logos."
+      width="1010"
+      height="100">
     </uxdot-example>
   </div>
 </div>
