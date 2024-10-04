@@ -54,8 +54,8 @@
     "lit": "/assets/packages/lit/index.js",
     "@rhds/tokens/css/color-context-provider.css.js": "/assets/packages/@rhds/tokens/css/color-context-provider.css.js",
     "@rhds/tokens/css/color-context-consumer.css.js": "/assets/packages/@rhds/tokens/css/color-context-consumer.css.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.2/core.js",
@@ -141,7 +141,7 @@
 
 
 
-<uxdot-masthead role="banner"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface-darkest);color:var(--rh-color-text-primary-on-dark);position:fixed;inset:0;height:max-content;z-index:var(--uxdot-masthead-z-index,2);container-type:inline-size;container-name:host;z-index:10}#container{display:grid;column-gap:var(--rh-space-lg);grid-template-columns:max-content 1fr max-content;max-height:var(--uxdot-masthead-max-height,72px);margin-inline:var(--rh-space-md);margin-block:var(--rh-space-lg)}slot[name=hamburger]{display:flex;flex-direction:column;align-items:center;gap:var(--rh-space-md);justify-content:center}slot[name=hamburger]::slotted(button){color:var(--rh-color-text-primary-on-dark);background-color:initial;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}slot[name=hamburger]::slotted(button:active),slot[name=hamburger]::slotted(button:focus),slot[name=hamburger]::slotted(button:hover),slot[name=hamburger]:hover::slotted(button){color:var(--rh-color-icon-subtle-hover)}slot[name=hamburger]::slotted(button:focus){outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);border-radius:var(--rh-border-radius-default)}slot[name=logo]::slotted(a){display:flex;flex-direction:row;align-items:center;justify-self:flex-start;gap:var(--rh-space-md)}slot[name=links]{--rh-icon-size:24px;display:flex;flex-direction:row;column-gap:var(--rh-space-lg)}slot[name=links]::slotted(a){display:flex;flex-direction:row;gap:var(--rh-space-lg);align-items:center}@container (min-width: 576px){#container{gap:var(--rh-space-lg);margin:var(--rh-space-lg)}}@container (min-width: 992px){#container{grid-template-columns:1fr max-content}slot[name=hamburger]{display:none}slot[name=logo]::slotted(a){margin-inline-start:var(--rh-space-lg)}}</style><!--lit-part PgF9K1dm7N4=-->
+<uxdot-masthead role="banner"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface-darkest);color:var(--rh-color-text-primary-on-dark);height:max-content;container-type:inline-size;container-name:host}#container{display:grid;column-gap:var(--rh-space-lg);grid-template-columns:max-content 1fr max-content;max-height:var(--uxdot-masthead-max-height,72px);margin-inline:var(--rh-space-md);margin-block:var(--rh-space-lg)}slot[name=hamburger]{display:flex;flex-direction:column;align-items:center;gap:var(--rh-space-md);justify-content:center}slot[name=hamburger]::slotted(button){color:var(--rh-color-text-primary-on-dark);background-color:initial;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}slot[name=hamburger]::slotted(button:active),slot[name=hamburger]::slotted(button:focus),slot[name=hamburger]::slotted(button:hover),slot[name=hamburger]:hover::slotted(button){color:var(--rh-color-icon-subtle-hover)}slot[name=hamburger]::slotted(button:focus){outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);border-radius:var(--rh-border-radius-default)}slot[name=logo]::slotted(a){display:flex;flex-direction:row;align-items:center;justify-self:flex-start;gap:var(--rh-space-md)}slot[name=links]{--rh-icon-size:24px;display:flex;flex-direction:row;column-gap:var(--rh-space-lg)}slot[name=links]::slotted(a){display:flex;flex-direction:row;gap:var(--rh-space-lg);align-items:center}@container (min-width: 576px){#container{gap:var(--rh-space-lg);margin:var(--rh-space-lg)}}@container (min-width: 992px){#container{grid-template-columns:1fr max-content}slot[name=hamburger]{display:none}slot[name=logo]::slotted(a){margin-inline-start:var(--rh-space-lg)}}</style><!--lit-part PgF9K1dm7N4=-->
       <div id="container" part="container">
         <slot name="hamburger"></slot>
         <slot name="logo"></slot>
@@ -825,21 +825,7 @@
     
 
     <div class="container">
-      <style>
-  .grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--rh-space-2xl, 32px);
-  }
-
-  @container container (min-width: 768px) {
-    .grid {
-      grid-template-columns: 1fr 1fr;
-      gap: var(--rh-space-4xl, 64px);
-    }
-  }
-</style>
-<uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+      <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button id="button" aria-label="Copy link to clipboard">
@@ -1158,7 +1144,7 @@ well.</p>
   <p>If content is very short and does not include links, use a [Tooltip](/elements/tooltip/) component instead.</p>
 </rh-alert>
 <uxdot-example width-adjustment="832px">
-  <img src="../popover-usage-content.svg" alt="Popover component usage, content">
+  <img src="../popover-usage-content.svg" alt="Popover component usage, content" width="845" height="242">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1486,7 +1472,7 @@ message creates a more helpful user experience.</p>
 content or is cut off by the edge of the screen when triggered, change the
 orientation.</p>
 <uxdot-example width-adjustment="844px">
-  <img src="../popover-usage-orientation.svg" alt="Popover component usage, orientation">
+  <img src="../popover-usage-orientation.svg" alt="Popover component usage, orientation" width="851" height="519">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1505,7 +1491,7 @@ orientation.</p>
 <p>Avoid using a black popover on dark backgrounds, it will completely disappear
 into the background.</p>
 <uxdot-example color-palette="darkest" width-adjustment="392px" danger="">
-  <img src="../popover-usage-black.svg" alt="Popover component usage, black on black">
+  <img src="../popover-usage-black.svg" alt="Popover component usage, black on black" width="392" height="258">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1524,7 +1510,7 @@ into the background.</p>
 <p>Avoid using a white popover on light backgrounds, there is not enough contrast
 even with the subtle drop shadow.</p>
 <uxdot-example width-adjustment="392px" danger="">
-  <img src="../popover-usage-white.svg" alt="Popover component usage, white on white">
+  <img src="../popover-usage-white.svg" alt="Popover component usage, white on white" width="405" height="258">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1559,7 +1545,7 @@ text, or another element that encourages a user to interact with it. To close
 a popover, a user must select the close button, make a selection outside of
 the popover, or press the <strong>Escape (esc)</strong> key.</p>
 <uxdot-example width-adjustment="832px">
-  <img src="../popover-behavior-trigger.svg" alt="Popover component behavior, trigger">
+  <img src="../popover-behavior-trigger.svg" alt="Popover component behavior, trigger" width="845" height="251">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1579,7 +1565,7 @@ the popover, or press the <strong>Escape (esc)</strong> key.</p>
 trigger. However, an icon is not the only visual element that can trigger a
 popover.</p>
 <uxdot-example width-adjustment="406px">
-  <img src="../popover-behavior-form.svg" alt="Popover component behavior, form">
+  <img src="../popover-behavior-form.svg" alt="Popover component behavior, form" width="406" height="282">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1598,7 +1584,7 @@ popover.</p>
 <p>A popover and tooltip are triggered the same way on mobile, by a tap, but
 still have different use cases (see <strong>Usage</strong>).</p>
 <uxdot-example width-adjustment="772px">
-  <img src="../popover-behavior-mobile.svg" alt="Popover component behavior, mobile">
+  <img src="../popover-behavior-mobile.svg" alt="Popover component behavior, mobile" width="779" height="253">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1615,17 +1601,17 @@ still have different use cases (see <strong>Usage</strong>).</p>
   </a></h2>
 </uxdot-copy-permalink>
 <p>Both popover variants have interaction states.</p>
-<div class="grid">
+<div class="grid sm-two-columns">
   <figure>
     <figcaption><h3 id="defaultfocus-black">Default/Focus (black)</h3></figcaption>
     <uxdot-example width-adjustment="392px">
-      <img src="../popover-interaction-state-default-focus-black.svg" alt="Popover component interaction state, default and focus">
+      <img src="../popover-interaction-state-default-focus-black.svg" alt="Popover component interaction state, default and focus" width="405" height="214">
     </uxdot-example>
   </figure>
   <figure>
     <figcaption><h3 id="defaultfocus-white">Default/Focus (white)</h3></figcaption>
     <uxdot-example width-adjustment="392px" color-palette="darkest">
-      <img src="../popover-interaction-state-default-focus-white.svg" alt="Popover component interaction state, default and focus">
+      <img src="../popover-interaction-state-default-focus-white.svg" alt="Popover component interaction state, default and focus" width="392" height="214">
     </uxdot-example>
   </figure>
 </div>
@@ -1671,13 +1657,13 @@ still have different use cases (see <strong>Usage</strong>).</p>
   <figure>
     <figcaption><h4 id="hoveractive-black">Hover/Active (black)</h4></figcaption>
     <uxdot-example width-adjustment="392px">
-      <img src="../popover-interaction-state-hover-active-black.svg" alt="Popover component interaction state, hover and active"> 
+      <img src="../popover-interaction-state-hover-active-black.svg" alt="Popover component interaction state, hover and active" width="405" height="214"> 
     </uxdot-example>
   </figure>
   <figure>
     <figcaption><h4 id="hoveractive-white">Hover/Active (white)</h4></figcaption>
     <uxdot-example width-adjustment="392px" color-palette="darkest">
-      <img src="../popover-interaction-state-hover-active-white.svg" alt="Popover component interaction state, hover and active">
+      <img src="../popover-interaction-state-hover-active-white.svg" alt="Popover component interaction state, hover and active" width="392" height="214">
     </uxdot-example>
   </figure>
 </div>
@@ -1737,7 +1723,7 @@ still have different use cases (see <strong>Usage</strong>).</p>
 the close button must have focus in order for a user to have control over the
 popover and be able to interact with the links or close it.</p>
 <uxdot-example width-adjustment="392px">
-  <img src="../popover-accessibility.svg" alt="Popover component accessibility">
+  <img src="../popover-accessibility.svg" alt="Popover component accessibility" width="405" height="236">
 </uxdot-example>
 <rh-table>
   <table>
@@ -1797,7 +1783,7 @@ popover and be able to interact with the links or close it.</p>
 </uxdot-copy-permalink>
 <p>Do not embed a popover or tooltip within another popover.</p>
 <uxdot-example width-adjustment="479px" danger="">
-  <img src="../popover-best-practice-1.svg" alt="Popover component best practice 1">
+  <img src="../popover-best-practice-1.svg" alt="Popover component best practice 1" width="486" height="246">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1815,7 +1801,7 @@ popover and be able to interact with the links or close it.</p>
 </uxdot-copy-permalink>
 <p>Do not overload a popover with too much content.</p>
 <uxdot-example width-adjustment="432px" danger="">
-  <img src="../popover-best-practice-2.svg" alt="Popover component best practice 2">
+  <img src="../popover-best-practice-2.svg" alt="Popover component best practice 2" width="445" height="370">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1833,7 +1819,7 @@ popover and be able to interact with the links or close it.</p>
 </uxdot-copy-permalink>
 <p>Do not remove the close button from a popover.</p>
 <uxdot-example width-adjustment="392px" danger="">
-  <img src="../popover-best-practice-3.svg" alt="Popover component best practice 3">
+  <img src="../popover-best-practice-3.svg" alt="Popover component best practice 3" width="405" height="246">
 </uxdot-example>
 
 

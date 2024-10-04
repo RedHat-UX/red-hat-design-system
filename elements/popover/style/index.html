@@ -54,8 +54,8 @@
     "lit": "/assets/packages/lit/index.js",
     "@rhds/tokens/css/color-context-provider.css.js": "/assets/packages/@rhds/tokens/css/color-context-provider.css.js",
     "@rhds/tokens/css/color-context-consumer.css.js": "/assets/packages/@rhds/tokens/css/color-context-consumer.css.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.2/core.js",
@@ -141,7 +141,7 @@
 
 
 
-<uxdot-masthead role="banner"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface-darkest);color:var(--rh-color-text-primary-on-dark);position:fixed;inset:0;height:max-content;z-index:var(--uxdot-masthead-z-index,2);container-type:inline-size;container-name:host;z-index:10}#container{display:grid;column-gap:var(--rh-space-lg);grid-template-columns:max-content 1fr max-content;max-height:var(--uxdot-masthead-max-height,72px);margin-inline:var(--rh-space-md);margin-block:var(--rh-space-lg)}slot[name=hamburger]{display:flex;flex-direction:column;align-items:center;gap:var(--rh-space-md);justify-content:center}slot[name=hamburger]::slotted(button){color:var(--rh-color-text-primary-on-dark);background-color:initial;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}slot[name=hamburger]::slotted(button:active),slot[name=hamburger]::slotted(button:focus),slot[name=hamburger]::slotted(button:hover),slot[name=hamburger]:hover::slotted(button){color:var(--rh-color-icon-subtle-hover)}slot[name=hamburger]::slotted(button:focus){outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);border-radius:var(--rh-border-radius-default)}slot[name=logo]::slotted(a){display:flex;flex-direction:row;align-items:center;justify-self:flex-start;gap:var(--rh-space-md)}slot[name=links]{--rh-icon-size:24px;display:flex;flex-direction:row;column-gap:var(--rh-space-lg)}slot[name=links]::slotted(a){display:flex;flex-direction:row;gap:var(--rh-space-lg);align-items:center}@container (min-width: 576px){#container{gap:var(--rh-space-lg);margin:var(--rh-space-lg)}}@container (min-width: 992px){#container{grid-template-columns:1fr max-content}slot[name=hamburger]{display:none}slot[name=logo]::slotted(a){margin-inline-start:var(--rh-space-lg)}}</style><!--lit-part PgF9K1dm7N4=-->
+<uxdot-masthead role="banner"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface-darkest);color:var(--rh-color-text-primary-on-dark);height:max-content;container-type:inline-size;container-name:host}#container{display:grid;column-gap:var(--rh-space-lg);grid-template-columns:max-content 1fr max-content;max-height:var(--uxdot-masthead-max-height,72px);margin-inline:var(--rh-space-md);margin-block:var(--rh-space-lg)}slot[name=hamburger]{display:flex;flex-direction:column;align-items:center;gap:var(--rh-space-md);justify-content:center}slot[name=hamburger]::slotted(button){color:var(--rh-color-text-primary-on-dark);background-color:initial;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}slot[name=hamburger]::slotted(button:active),slot[name=hamburger]::slotted(button:focus),slot[name=hamburger]::slotted(button:hover),slot[name=hamburger]:hover::slotted(button){color:var(--rh-color-icon-subtle-hover)}slot[name=hamburger]::slotted(button:focus){outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);border-radius:var(--rh-border-radius-default)}slot[name=logo]::slotted(a){display:flex;flex-direction:row;align-items:center;justify-self:flex-start;gap:var(--rh-space-md)}slot[name=links]{--rh-icon-size:24px;display:flex;flex-direction:row;column-gap:var(--rh-space-lg)}slot[name=links]::slotted(a){display:flex;flex-direction:row;gap:var(--rh-space-lg);align-items:center}@container (min-width: 576px){#container{gap:var(--rh-space-lg);margin:var(--rh-space-lg)}}@container (min-width: 992px){#container{grid-template-columns:1fr max-content}slot[name=hamburger]{display:none}slot[name=logo]::slotted(a){margin-inline-start:var(--rh-space-lg)}}</style><!--lit-part PgF9K1dm7N4=-->
       <div id="container" part="container">
         <slot name="hamburger"></slot>
         <slot name="logo"></slot>
@@ -825,21 +825,7 @@
     
 
     <div class="container">
-      <style>
-  .grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--rh-space-2xl, 32px);
-  }
-
-  @container container (min-width: 768px) {
-    .grid {
-      grid-template-columns: 1fr 1fr;
-      gap: var(--rh-space-4xl, 64px);
-    }
-  }
-</style>
-<uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+      <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button id="button" aria-label="Copy link to clipboard">
@@ -856,7 +842,7 @@
 <p>A popover should include text and interactive elements like a close button and
 links.</p>
 <uxdot-example width-adjustment="538px">
-  <img src="../popover-style.svg" alt="Popover component blueprint">
+  <img src="../popover-style.svg" alt="Popover component blueprint" width="538" height="252">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1136,14 +1122,14 @@ on the content and color of the background.</p>
  <h4 slot="header">Warning</h4>
   <p>A heading does not need to be included, but if links are not included either, use a <a href="/elements/tooltip">Tooltip</a> component instead.</p>
 </rh-alert>
-<div class="grid">
+<div class="grid sm-two-columns">
   <figure>
     <figcaption>
       <h4 id="black">Black </h4>
       <p>Use on light background.</p>
     </figcaption>
     <uxdot-example width-adjustment="392px" variant="full" no-border="">
-      <img src="../popover-black.svg" alt="Popover component, black variant">
+      <img src="../popover-black.svg" alt="Popover component, black variant" width="405" height="214">
     </uxdot-example>
   </figure>
   <figure>
@@ -1152,14 +1138,14 @@ on the content and color of the background.</p>
       <p>Use on dark background.</p>
     </figcaption>
     <uxdot-example width-adjustment="392px" variant="full" no-border="">
-      <img src="../popover-white.svg" alt="Popover component, white variant">
+      <img src="../popover-white.svg" alt="Popover component, white variant" width="392" height="214">
     </uxdot-example>
   </figure>
   <figure>
     <figcaption><h4 id="with-heading">With heading</h4></figcaption>
     <p>Use for messages that require a heading.</p>
     <uxdot-example width-adjustment="392px" variant="full" no-border="">
-      <img src="../popover-with-heading.svg" alt="Popover component, with heading variant">
+      <img src="../popover-with-heading.svg" alt="Popover component, with heading variant" width="405" height="214">
     </uxdot-example>
   </figure>
   <figure>
@@ -1168,7 +1154,7 @@ on the content and color of the background.</p>
       <p>Use for messages that do not require a heading.</p>
     </figcaption>
     <uxdot-example width-adjustment="392px" variant="full" no-border="">
-      <img src="../popover-without-heading.svg" alt="Popover component, without heading variant">
+      <img src="../popover-without-heading.svg" alt="Popover component, without heading variant" width="405" height="180">
     </uxdot-example>
   </figure>
   <figure>
@@ -1177,7 +1163,7 @@ on the content and color of the background.</p>
       <p>A drop shadow gives a popover subtle elevation above light backgrounds.</p>
     </figcaption>
     <uxdot-example width-adjustment="392px" variant="full" no-border="">
-      <img src="../popover-with-drop-shadow.svg" alt="Popover component, with drop shadow variant">
+      <img src="../popover-with-drop-shadow.svg" alt="Popover component, with drop shadow variant" width="405" height="124">
     </uxdot-example>
   </figure>
   <figure>
@@ -1186,7 +1172,7 @@ on the content and color of the background.</p>
       <p>A drop shadow cannot be seen on dark backgrounds, so it is not included.</p> 
     </figcaption>
     <uxdot-example width-adjustment="392px" variant="full" no-border="">
-      <img src="../popover-without-drop-shadow.svg" alt="Popover component, without drop shadow variant">
+      <img src="../popover-without-drop-shadow.svg" alt="Popover component, without drop shadow variant" width="392" height="124">
     </uxdot-example>
   </figure>
 </div>
@@ -1223,7 +1209,7 @@ should be used on dark backgrounds.</p>
   </a></h3>
 </uxdot-copy-permalink>
 <uxdot-example width-adjustment="392px">
-  <img src="../popover-theme-light.svg" alt="Popover component, light theme">
+  <img src="../popover-theme-light.svg" alt="Popover component, light theme" width="405" height="214">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1240,7 +1226,7 @@ should be used on dark backgrounds.</p>
   </a></h3>
 </uxdot-copy-permalink>
 <uxdot-example color-palette="darkest" width-adjustment="392px">
-  <img src="../popover-theme-dark.svg" alt="Popover component, dark theme">
+  <img src="../popover-theme-dark.svg" alt="Popover component, dark theme" width="392" height="214">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1273,7 +1259,7 @@ screens.</p>
   </a></h3>
 </uxdot-copy-permalink>
 <uxdot-example width-adjustment="1000px" variant="full" no-border="" alignment="left">
-  <img src="../popover-responsive-design-lg.svg" alt="Popover component responsive design, large screens">
+  <img src="../popover-responsive-design-lg.svg" alt="Popover component responsive design, large screens" width="1000" height="268">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1290,7 +1276,7 @@ screens.</p>
   </a></h3>
 </uxdot-copy-permalink>
 <uxdot-example width-adjustment="360px" variant="full" no-border="" alignment="left">
-  <img src="../popover-responsive-design-sm.svg" alt="Popover component responsive design, small screens">
+  <img src="../popover-responsive-design-sm.svg" alt="Popover component responsive design, small screens" width="373" height="268">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1308,7 +1294,7 @@ screens.</p>
 </uxdot-copy-permalink>
 <p>Each popover orientation contains the same amount of spacing in between the component and icon.</p>
 <uxdot-example palette="lightest" width-adjustment="392px">
-  <img src="../popover-spacing.svg" alt="Popover component spacing">
+  <img src="../popover-spacing.svg" alt="Popover component spacing" width="405" height="236">
 </uxdot-example>
 <rh-table>
  <table>

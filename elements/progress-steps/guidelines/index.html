@@ -54,8 +54,8 @@
     "lit": "/assets/packages/lit/index.js",
     "@rhds/tokens/css/color-context-provider.css.js": "/assets/packages/@rhds/tokens/css/color-context-provider.css.js",
     "@rhds/tokens/css/color-context-consumer.css.js": "/assets/packages/@rhds/tokens/css/color-context-consumer.css.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.2/core.js",
@@ -141,7 +141,7 @@
 
 
 
-<uxdot-masthead role="banner"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface-darkest);color:var(--rh-color-text-primary-on-dark);position:fixed;inset:0;height:max-content;z-index:var(--uxdot-masthead-z-index,2);container-type:inline-size;container-name:host;z-index:10}#container{display:grid;column-gap:var(--rh-space-lg);grid-template-columns:max-content 1fr max-content;max-height:var(--uxdot-masthead-max-height,72px);margin-inline:var(--rh-space-md);margin-block:var(--rh-space-lg)}slot[name=hamburger]{display:flex;flex-direction:column;align-items:center;gap:var(--rh-space-md);justify-content:center}slot[name=hamburger]::slotted(button){color:var(--rh-color-text-primary-on-dark);background-color:initial;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}slot[name=hamburger]::slotted(button:active),slot[name=hamburger]::slotted(button:focus),slot[name=hamburger]::slotted(button:hover),slot[name=hamburger]:hover::slotted(button){color:var(--rh-color-icon-subtle-hover)}slot[name=hamburger]::slotted(button:focus){outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);border-radius:var(--rh-border-radius-default)}slot[name=logo]::slotted(a){display:flex;flex-direction:row;align-items:center;justify-self:flex-start;gap:var(--rh-space-md)}slot[name=links]{--rh-icon-size:24px;display:flex;flex-direction:row;column-gap:var(--rh-space-lg)}slot[name=links]::slotted(a){display:flex;flex-direction:row;gap:var(--rh-space-lg);align-items:center}@container (min-width: 576px){#container{gap:var(--rh-space-lg);margin:var(--rh-space-lg)}}@container (min-width: 992px){#container{grid-template-columns:1fr max-content}slot[name=hamburger]{display:none}slot[name=logo]::slotted(a){margin-inline-start:var(--rh-space-lg)}}</style><!--lit-part PgF9K1dm7N4=-->
+<uxdot-masthead role="banner"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface-darkest);color:var(--rh-color-text-primary-on-dark);height:max-content;container-type:inline-size;container-name:host}#container{display:grid;column-gap:var(--rh-space-lg);grid-template-columns:max-content 1fr max-content;max-height:var(--uxdot-masthead-max-height,72px);margin-inline:var(--rh-space-md);margin-block:var(--rh-space-lg)}slot[name=hamburger]{display:flex;flex-direction:column;align-items:center;gap:var(--rh-space-md);justify-content:center}slot[name=hamburger]::slotted(button){color:var(--rh-color-text-primary-on-dark);background-color:initial;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}slot[name=hamburger]::slotted(button:active),slot[name=hamburger]::slotted(button:focus),slot[name=hamburger]::slotted(button:hover),slot[name=hamburger]:hover::slotted(button){color:var(--rh-color-icon-subtle-hover)}slot[name=hamburger]::slotted(button:focus){outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);border-radius:var(--rh-border-radius-default)}slot[name=logo]::slotted(a){display:flex;flex-direction:row;align-items:center;justify-self:flex-start;gap:var(--rh-space-md)}slot[name=links]{--rh-icon-size:24px;display:flex;flex-direction:row;column-gap:var(--rh-space-lg)}slot[name=links]::slotted(a){display:flex;flex-direction:row;gap:var(--rh-space-lg);align-items:center}@container (min-width: 576px){#container{gap:var(--rh-space-lg);margin:var(--rh-space-lg)}}@container (min-width: 992px){#container{grid-template-columns:1fr max-content}slot[name=hamburger]{display:none}slot[name=logo]::slotted(a){margin-inline-start:var(--rh-space-lg)}}</style><!--lit-part PgF9K1dm7N4=-->
       <div id="container" part="container">
         <slot name="hamburger"></slot>
         <slot name="logo"></slot>
@@ -1122,7 +1122,7 @@ labels, the vertical orientation should be used instead.</p>
   become crowded and a user might feel overwhelmed by the number of steps.</p>
 </rh-alert>
 <uxdot-example width-adjustment="360px">
-  <img src="../progress-steps-mobile-usage.svg" alt="Progress steps component mobile usage">
+  <img src="../progress-steps-mobile-usage.svg" alt="Progress steps component mobile usage" width="360" height="704">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1406,10 +1406,10 @@ before finishing and submitting.</p>
   able to unless the task is complete.</p>
 </rh-alert>
 <uxdot-example width-adjustment="687px">
-  <img src="../progress-steps-progression-1.svg" alt="Progress steps component progression, part 1">
+  <img src="../progress-steps-progression-1.svg" alt="Progress steps component progression, part 1" width="691" height="349">
 </uxdot-example>
 <uxdot-example width-adjustment="687px">
-  <img src="../progress-steps-progression-2.svg" alt="Progress steps component progression, part 2">
+  <img src="../progress-steps-progression-2.svg" alt="Progress steps component progression, part 2" width="687" height="345">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1431,7 +1431,7 @@ the next step without inputting the required data, a <a href="https://ux.redhat.
 alert</a> is displayed to
 inform them of what they should do.</p>
 <uxdot-example width-adjustment="687px">
-  <img src="../progress-steps-validation.svg" alt="Progress steps component validation">
+  <img src="../progress-steps-validation.svg" alt="Progress steps component validation" width="687" height="393">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1714,7 +1714,7 @@ user <strong>is not able</strong> to go back to review or change anything.</p>
   previous steps</strong> without starting the task all over again.</p>
 </rh-alert>
 <uxdot-example width-adjustment="702px">
-  <img src="../progress-steps-completion.svg" alt="Progress steps component completion">
+  <img src="../progress-steps-completion.svg" alt="Progress steps component completion" width="702" height="186">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1770,7 +1770,7 @@ to choose a trial. Displaying relevant content and being clear about where a
 user is in the process will make them feel in control and encourage them to
 finish the task.</p>
 <uxdot-example width-adjustment="728px">
-  <img src="../progress-steps-behavior.svg" alt="Progress steps component behavior">
+  <img src="../progress-steps-behavior.svg" alt="Progress steps component behavior" width="728" height="421">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1802,7 +1802,7 @@ finish the task.</p>
   </a></h3>
 </uxdot-copy-permalink>
 <uxdot-example width-adjustment="738px">
-  <img src="../progress-steps-interaction-states-link.svg" alt="Progress steps component interaction state, link">
+  <img src="../progress-steps-interaction-states-link.svg" alt="Progress steps component interaction state, link" width="738" height="200">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1819,7 +1819,7 @@ finish the task.</p>
   </a></h3>
 </uxdot-copy-permalink>
 <uxdot-example width-adjustment="738px">
-  <img src="../progress-steps-interaction-states-hover.svg" alt="Progress steps component interaction state, hover">
+  <img src="../progress-steps-interaction-states-hover.svg" alt="Progress steps component interaction state, hover" width="738" height="213">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1836,7 +1836,7 @@ finish the task.</p>
   </a></h3>
 </uxdot-copy-permalink>
 <uxdot-example width-adjustment="738px">
-  <img src="../progress-steps-interaction-states-focus.svg" alt="Progress steps component interaction state, focus">
+  <img src="../progress-steps-interaction-states-focus.svg" alt="Progress steps component interaction state, focus" width="738" height="232">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1853,7 +1853,7 @@ finish the task.</p>
   </a></h3>
 </uxdot-copy-permalink>
 <uxdot-example width-adjustment="738px">
-  <img src="../progress-steps-interaction-states-active.svg" alt="Progress steps component interaction state, active">
+  <img src="../progress-steps-interaction-states-active.svg" alt="Progress steps component interaction state, active" width="738" height="232">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1873,7 +1873,7 @@ finish the task.</p>
 and text label in order, from left to right in the horizontal component or
 from top to bottom in the vertical component.</p>
 <uxdot-example width-adjustment="738px">
-  <img src="../progress-steps-tab-order.svg" alt="Progress steps component tab order">
+  <img src="../progress-steps-tab-order.svg" alt="Progress steps component tab order" width="738" height="381">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1960,7 +1960,7 @@ from top to bottom in the vertical component.</p>
 <p>Do not use too many or too few steps, there should be between three and five
 steps visible.</p>
 <uxdot-example width-adjustment="698px" danger="">
-  <img src="../progress-steps-best-practice-1.svg" alt="Progress steps component best practice 1">
+  <img src="../progress-steps-best-practice-1.svg" alt="Progress steps component best practice 1" width="698" height="192">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1980,7 +1980,7 @@ steps visible.</p>
 present or if text labels are too long, switch to the vertical orientation
 instead.</p>
 <uxdot-example width-adjustment="360px" danger="">
-  <img src="../progress-steps-best-practice-2.svg" alt="Progress steps component best practice 2">
+  <img src="../progress-steps-best-practice-2.svg" alt="Progress steps component best practice 2" width="360" height="192">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -2000,7 +2000,7 @@ instead.</p>
 proceed to the next step without resolving any errors first nor can they go
 back to resolve any errors and then continue.</p>
 <uxdot-example width-adjustment="687px" danger="">
-  <img src="../progress-steps-best-practice-3.svg" alt="Progress steps component best practice 3">
+  <img src="../progress-steps-best-practice-3.svg" alt="Progress steps component best practice 3" width="687" height="64">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -2020,7 +2020,7 @@ back to resolve any errors and then continue.</p>
 used to represent step position or validation if a user is colorblind or uses
 assistive technologies like a screen reader.</p>
 <uxdot-example width-adjustment="687px" danger="">
-  <img src="../progress-steps-best-practice-4.svg" alt="Progress steps component best practice 4">
+  <img src="../progress-steps-best-practice-4.svg" alt="Progress steps component best practice 4" width="687" height="32">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -2039,7 +2039,7 @@ assistive technologies like a screen reader.</p>
 <p>Do not use Progress steps as an image carousel without including text labels
 and other types of content.</p>
 <uxdot-example width-adjustment="687px" danger="">
-  <img src="../progress-steps-best-practice-5.svg" alt="Progress steps component best practice 5">
+  <img src="../progress-steps-best-practice-5.svg" alt="Progress steps component best practice 5" width="687" height="384">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -2058,7 +2058,7 @@ and other types of content.</p>
 <p>Do not use Progress steps as Tabs. Progress steps are used for guiding a user
 through a task by displaying sequential steps and instructional content.</p>
 <uxdot-example width-adjustment="687px" danger="">
-  <img src="../progress-steps-best-practice-6.svg" alt="Progress steps component best practice 6">
+  <img src="../progress-steps-best-practice-6.svg" alt="Progress steps component best practice 6" width="687" height="88">
 </uxdot-example>
 
 

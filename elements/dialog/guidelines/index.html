@@ -54,8 +54,8 @@
     "lit": "/assets/packages/lit/index.js",
     "@rhds/tokens/css/color-context-provider.css.js": "/assets/packages/@rhds/tokens/css/color-context-provider.css.js",
     "@rhds/tokens/css/color-context-consumer.css.js": "/assets/packages/@rhds/tokens/css/color-context-consumer.css.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.2/core.js",
@@ -145,7 +145,7 @@
 
 
 
-<uxdot-masthead role="banner"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface-darkest);color:var(--rh-color-text-primary-on-dark);position:fixed;inset:0;height:max-content;z-index:var(--uxdot-masthead-z-index,2);container-type:inline-size;container-name:host;z-index:10}#container{display:grid;column-gap:var(--rh-space-lg);grid-template-columns:max-content 1fr max-content;max-height:var(--uxdot-masthead-max-height,72px);margin-inline:var(--rh-space-md);margin-block:var(--rh-space-lg)}slot[name=hamburger]{display:flex;flex-direction:column;align-items:center;gap:var(--rh-space-md);justify-content:center}slot[name=hamburger]::slotted(button){color:var(--rh-color-text-primary-on-dark);background-color:initial;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}slot[name=hamburger]::slotted(button:active),slot[name=hamburger]::slotted(button:focus),slot[name=hamburger]::slotted(button:hover),slot[name=hamburger]:hover::slotted(button){color:var(--rh-color-icon-subtle-hover)}slot[name=hamburger]::slotted(button:focus){outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);border-radius:var(--rh-border-radius-default)}slot[name=logo]::slotted(a){display:flex;flex-direction:row;align-items:center;justify-self:flex-start;gap:var(--rh-space-md)}slot[name=links]{--rh-icon-size:24px;display:flex;flex-direction:row;column-gap:var(--rh-space-lg)}slot[name=links]::slotted(a){display:flex;flex-direction:row;gap:var(--rh-space-lg);align-items:center}@container (min-width: 576px){#container{gap:var(--rh-space-lg);margin:var(--rh-space-lg)}}@container (min-width: 992px){#container{grid-template-columns:1fr max-content}slot[name=hamburger]{display:none}slot[name=logo]::slotted(a){margin-inline-start:var(--rh-space-lg)}}</style><!--lit-part PgF9K1dm7N4=-->
+<uxdot-masthead role="banner"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface-darkest);color:var(--rh-color-text-primary-on-dark);height:max-content;container-type:inline-size;container-name:host}#container{display:grid;column-gap:var(--rh-space-lg);grid-template-columns:max-content 1fr max-content;max-height:var(--uxdot-masthead-max-height,72px);margin-inline:var(--rh-space-md);margin-block:var(--rh-space-lg)}slot[name=hamburger]{display:flex;flex-direction:column;align-items:center;gap:var(--rh-space-md);justify-content:center}slot[name=hamburger]::slotted(button){color:var(--rh-color-text-primary-on-dark);background-color:initial;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}slot[name=hamburger]::slotted(button:active),slot[name=hamburger]::slotted(button:focus),slot[name=hamburger]::slotted(button:hover),slot[name=hamburger]:hover::slotted(button){color:var(--rh-color-icon-subtle-hover)}slot[name=hamburger]::slotted(button:focus){outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);border-radius:var(--rh-border-radius-default)}slot[name=logo]::slotted(a){display:flex;flex-direction:row;align-items:center;justify-self:flex-start;gap:var(--rh-space-md)}slot[name=links]{--rh-icon-size:24px;display:flex;flex-direction:row;column-gap:var(--rh-space-lg)}slot[name=links]::slotted(a){display:flex;flex-direction:row;gap:var(--rh-space-lg);align-items:center}@container (min-width: 576px){#container{gap:var(--rh-space-lg);margin:var(--rh-space-lg)}}@container (min-width: 992px){#container{grid-template-columns:1fr max-content}slot[name=hamburger]{display:none}slot[name=logo]::slotted(a){margin-inline-start:var(--rh-space-lg)}}</style><!--lit-part PgF9K1dm7N4=-->
       <div id="container" part="container">
         <slot name="hamburger"></slot>
         <slot name="logo"></slot>
@@ -894,7 +894,7 @@ amount of available content.</p>
 <p>The fixed-width dialog container works well for environments with a fixed grid,
 like marketing pages.</p>
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border="">
-  <img src="../dialog-width-fixed.png" alt="A dialog container spanning a 12-column grid that is fixed in the center of the page">
+  <img src="../dialog-width-fixed.png" alt="A dialog container spanning a 12-column grid that is fixed in the center of the page" width="1000" height="640">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -913,7 +913,7 @@ like marketing pages.</p>
 <p>The full-width dialog container works well for environments with a more fluid
 grid like apps or dashboards.</p>
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border="">
-  <img src="../dialog-width-full.png" alt="A dialog container spanning a 6-column fluid grid that takes up the whole screen">
+  <img src="../dialog-width-full.png" alt="A dialog container spanning a 6-column fluid grid that takes up the whole screen" width="1000" height="640">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -953,7 +953,7 @@ non-destructive action</li>
 <li>Be specific about what will happen when an action is confirmed</li>
 </ul>
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border="">
-  <img src="../dialog-confirmation-non-destructive.png" alt="Non-destructive confirmation dialog example with a blue primary button">
+  <img src="../dialog-confirmation-non-destructive.png" alt="Non-destructive confirmation dialog example with a blue primary button" width="1000" height="322">
 </uxdot-example>
 <p>When confirming a destructive action, do the following.</p>
 <ul>
@@ -961,7 +961,7 @@ non-destructive action</li>
 a <a href="https://ux.redhat.com/elements/button/">danger button</a> instead</li>
 </ul>
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border="">
-  <img src="../dialog-confirmation-destructive.png" alt="Destructive confirmation dialog example with a red primary button">
+  <img src="../dialog-confirmation-destructive.png" alt="Destructive confirmation dialog example with a red primary button" width="1000" height="322">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -981,7 +981,7 @@ a <a href="https://ux.redhat.com/elements/button/">danger button</a> instead</li
 expected behavior. Briefly contextualize the problem, explain why it happened,
 and then provide actionable steps toward a solution.</p>
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border="">
-  <img src="../dialog-error.png" alt="Error dialog example with a blue primary button">
+  <img src="../dialog-error.png" alt="Error dialog example with a blue primary button" width="1000" height="349">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1009,7 +1009,7 @@ alert</a> or <a href="https://ux.redhat.com/elements/alert/">toast
 alert</a> instead</li>
 </ul>
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border="">
-  <img src="../dialog-passive.png" alt="Passive dialog example with a blue primary button">
+  <img src="../dialog-passive.png" alt="Passive dialog example with a blue primary button" width="1000" height="322">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1028,7 +1028,7 @@ alert</a> instead</li>
 <p>A video can replace a fixed-width dialog container, it should have the same
 width and include a close button.</p>
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border="">
-  <img src="../dialog-video-player.png" alt="A dialog video player spanning a 12-column grid with a white close button">
+  <img src="../dialog-video-player.png" alt="A dialog video player spanning a 12-column grid with a white close button" width="1000" height="640">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1163,7 +1163,7 @@ The content should visibly fade at the end of the dialog body section to
 indicate there is additional content out of view. Dialog content should never
 scroll horizontally.</p>
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border="">
-  <img src="../dialog-overflow.png" alt="Dialog with a long amount of content showing visible gradient at the bottom of the body text section">
+  <img src="../dialog-overflow.png" alt="Dialog with a long amount of content showing visible gradient at the bottom of the body text section" width="1000" height="586">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1196,12 +1196,12 @@ scroll horizontally.</p>
 <p>By default, a dialog container is horizontally and vertically centered on top of
 the backdrop and viewport.</p>
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border="">
-  <img src="../dialog-placement-center.png" alt="Dialog with container horizontally and vertically centered">
+  <img src="../dialog-placement-center.png" alt="Dialog with container horizontally and vertically centered" width="1000" height="640">
 </uxdot-example>
 <p>By default, a dialog container is horizontally and vertically centered on top of
 the backdrop and viewport.</p>
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border="">
-  <img src="../dialog-placement-top.png" alt="Dialog with container horizontally centered, but positioned at the top of the page">
+  <img src="../dialog-placement-top.png" alt="Dialog with container horizontally centered, but positioned at the top of the page" width="1000" height="640">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1234,7 +1234,7 @@ the backdrop and viewport.</p>
 <p>Both the fixed-width and full-width dialog containers can be used on large
 breakpoints.</p>
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border="">
-  <img src="../dialog-breakpoint-large.png" alt="A dialog container on a large breakpoint">
+  <img src="../dialog-breakpoint-large.png" alt="A dialog container on a large breakpoint" width="1000" height="640">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1253,7 +1253,7 @@ breakpoints.</p>
 <p>As breakpoints get smaller, the fixed-width dialog container will change to
 full-width and become taller.</p>
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border="">
-  <img src="../dialog-breakpoint-small.png" alt="Two dialog containers on small breakpoints, one tablet size and one mobile size">
+  <img src="../dialog-breakpoint-small.png" alt="Two dialog containers on small breakpoints, one tablet size and one mobile size" width="968" height="640">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1287,7 +1287,7 @@ full-width and become taller.</p>
 them to the main page instead. A dialog is disruptive, so it is important to
 bring users back to their original workflow as quickly as possible.</p>
 <uxdot-example width-adjustment="872px" danger="">
-  <img src="../dialog-best-practice-1.png" alt="A dialog container with a three-panel accordion which is incorrect usage">
+  <img src="../dialog-best-practice-1.png" alt="A dialog container with a three-panel accordion which is incorrect usage" width="872" height="543">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1306,7 +1306,7 @@ bring users back to their original workflow as quickly as possible.</p>
 <p>Make sure to write clearly about what will happen when users confirm a specific
 action.</p>
 <uxdot-example width-adjustment="872px" danger="">
-  <img src="../dialog-best-practice-2.png" alt="A dialog container with vague text which is incorrect usage">
+  <img src="../dialog-best-practice-2.png" alt="A dialog container with vague text which is incorrect usage" width="872" height="357">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1325,7 +1325,7 @@ action.</p>
 <p>Do not use more than two buttons in a dialog and do not add or change button
 variants.</p>
 <uxdot-example width-adjustment="872px" danger="">
-  <img src="../dialog-best-practice-3.png" alt="A dialog container with three buttons which is incorrect usage">
+  <img src="../dialog-best-practice-3.png" alt="A dialog container with three buttons which is incorrect usage" width="872" height="322">
 </uxdot-example>
 
 

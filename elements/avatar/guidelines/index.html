@@ -54,8 +54,8 @@
     "lit": "/assets/packages/lit/index.js",
     "@rhds/tokens/css/color-context-provider.css.js": "/assets/packages/@rhds/tokens/css/color-context-provider.css.js",
     "@rhds/tokens/css/color-context-consumer.css.js": "/assets/packages/@rhds/tokens/css/color-context-consumer.css.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.2/core.js",
@@ -145,7 +145,7 @@
 
 
 
-<uxdot-masthead role="banner"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface-darkest);color:var(--rh-color-text-primary-on-dark);position:fixed;inset:0;height:max-content;z-index:var(--uxdot-masthead-z-index,2);container-type:inline-size;container-name:host;z-index:10}#container{display:grid;column-gap:var(--rh-space-lg);grid-template-columns:max-content 1fr max-content;max-height:var(--uxdot-masthead-max-height,72px);margin-inline:var(--rh-space-md);margin-block:var(--rh-space-lg)}slot[name=hamburger]{display:flex;flex-direction:column;align-items:center;gap:var(--rh-space-md);justify-content:center}slot[name=hamburger]::slotted(button){color:var(--rh-color-text-primary-on-dark);background-color:initial;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}slot[name=hamburger]::slotted(button:active),slot[name=hamburger]::slotted(button:focus),slot[name=hamburger]::slotted(button:hover),slot[name=hamburger]:hover::slotted(button){color:var(--rh-color-icon-subtle-hover)}slot[name=hamburger]::slotted(button:focus){outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);border-radius:var(--rh-border-radius-default)}slot[name=logo]::slotted(a){display:flex;flex-direction:row;align-items:center;justify-self:flex-start;gap:var(--rh-space-md)}slot[name=links]{--rh-icon-size:24px;display:flex;flex-direction:row;column-gap:var(--rh-space-lg)}slot[name=links]::slotted(a){display:flex;flex-direction:row;gap:var(--rh-space-lg);align-items:center}@container (min-width: 576px){#container{gap:var(--rh-space-lg);margin:var(--rh-space-lg)}}@container (min-width: 992px){#container{grid-template-columns:1fr max-content}slot[name=hamburger]{display:none}slot[name=logo]::slotted(a){margin-inline-start:var(--rh-space-lg)}}</style><!--lit-part PgF9K1dm7N4=-->
+<uxdot-masthead role="banner"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface-darkest);color:var(--rh-color-text-primary-on-dark);height:max-content;container-type:inline-size;container-name:host}#container{display:grid;column-gap:var(--rh-space-lg);grid-template-columns:max-content 1fr max-content;max-height:var(--uxdot-masthead-max-height,72px);margin-inline:var(--rh-space-md);margin-block:var(--rh-space-lg)}slot[name=hamburger]{display:flex;flex-direction:column;align-items:center;gap:var(--rh-space-md);justify-content:center}slot[name=hamburger]::slotted(button){color:var(--rh-color-text-primary-on-dark);background-color:initial;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}slot[name=hamburger]::slotted(button:active),slot[name=hamburger]::slotted(button:focus),slot[name=hamburger]::slotted(button:hover),slot[name=hamburger]:hover::slotted(button){color:var(--rh-color-icon-subtle-hover)}slot[name=hamburger]::slotted(button:focus){outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);border-radius:var(--rh-border-radius-default)}slot[name=logo]::slotted(a){display:flex;flex-direction:row;align-items:center;justify-self:flex-start;gap:var(--rh-space-md)}slot[name=links]{--rh-icon-size:24px;display:flex;flex-direction:row;column-gap:var(--rh-space-lg)}slot[name=links]::slotted(a){display:flex;flex-direction:row;gap:var(--rh-space-lg);align-items:center}@container (min-width: 576px){#container{gap:var(--rh-space-lg);margin:var(--rh-space-lg)}}@container (min-width: 992px){#container{grid-template-columns:1fr max-content}slot[name=hamburger]{display:none}slot[name=logo]::slotted(a){margin-inline-start:var(--rh-space-lg)}}</style><!--lit-part PgF9K1dm7N4=-->
       <div id="container" part="container">
         <slot name="hamburger"></slot>
         <slot name="logo"></slot>
@@ -854,7 +854,7 @@ room for customization.</p>
 </uxdot-copy-permalink>
 <p>The avatar thumbnail can be used at different sizes based on our design tokens. The default size is <code>64px</code>.</p>
 <uxdot-example width-adjustment="823px">
-  <img src="../avatar-usage-sizes.png" alt="Image of all avatar thumbnail sizes and their pixel values underneath">
+  <img src="../avatar-usage-sizes.png" alt="Image of all avatar thumbnail sizes and their pixel values underneath" width="823" height="152">
 </uxdot-example>
 <rh-table>
   <table>
@@ -896,7 +896,7 @@ room for customization.</p>
 </uxdot-copy-permalink>
 <p>Separate each part of the job title and company name with a comma.</p>
 <uxdot-example width-adjustment="611px">
-  <img src="../avatar-writing-content.png" alt="Image of three job details text, ranging from short to long"> 
+  <img src="../avatar-writing-content.png" alt="Image of three job details text, ranging from short to long" width="611" height="181"> 
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -929,7 +929,7 @@ room for customization.</p>
 <p>The avatar thumbnail and job details text can be horizontally or vertically
 centered.</p>
 <uxdot-example width-adjustment="625px">
-  <img src="../avatar-usage-alignment.png" alt="Image of two avatar groups; one is horizontally centered and the other is vertically centered">
+  <img src="../avatar-usage-alignment.png" alt="Image of two avatar groups; one is horizontally centered and the other is vertically centered" width="625" height="119">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -947,7 +947,7 @@ centered.</p>
 </uxdot-copy-permalink>
 <p>There is <code>48px</code> of space when avatar groups are stacked vertically.</p>
 <uxdot-example width-adjustment="385px">
-  <img src="../avatar-usage-stacking.png" alt="Image of three avatar groups stacked vertically with 48 pixel of space in between">
+  <img src="../avatar-usage-stacking.png" alt="Image of three avatar groups stacked vertically with 48 pixel of space in between" width="385" height="288">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -978,7 +978,7 @@ centered.</p>
   </a></h3>
 </uxdot-copy-permalink>
 <uxdot-example variant="full" no-border="" alignment="left" width-adjustment="1000px">
-  <img src="../avatar-breakpoints-large.png" alt="Image of two avatar groups used on large breakpoints; one is aligned left and the other is aligned in the center">
+  <img src="../avatar-breakpoints-large.png" alt="Image of two avatar groups used on large breakpoints; one is aligned left and the other is aligned in the center" width="1000" height="215">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -995,7 +995,7 @@ centered.</p>
   </a></h3>
 </uxdot-copy-permalink>
 <uxdot-example variant="full" no-border="" alignment="left" width-adjustment="576px">
-  <img src="../avatar-breakpoints-small.png" alt="Image of four avatar groups used on small breakpoints; two are aligned left and the other two are aligned in the center">
+  <img src="../avatar-breakpoints-small.png" alt="Image of four avatar groups used on small breakpoints; two are aligned left and the other two are aligned in the center" width="576" height="492">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1014,7 +1014,7 @@ centered.</p>
 <p>As breakpoints or containers get smaller, regardless if job details text will
 break to more lines, it is still anchored at the top.</p>
 <uxdot-example width-adjustment="498px">
-  <img src="../avatar-line-breaks.png" alt="Image of two avatar groups with specs on top; one has two lines and the other has five lines">
+  <img src="../avatar-line-breaks.png" alt="Image of two avatar groups with specs on top; one has two lines and the other has five lines" width="498" height="96">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1046,7 +1046,7 @@ break to more lines, it is still anchored at the top.</p>
 </uxdot-copy-permalink>
 <p>Do not change the shape of the avatar thumbnail.</p>
 <uxdot-example danger="" width-adjustment="293px">
-  <img src="../avatar-best-practice-1.png" alt="Image of a square avatar thumbnail which is incorrect usage">
+  <img src="../avatar-best-practice-1.png" alt="Image of a square avatar thumbnail which is incorrect usage" width="293" height="64">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1064,7 +1064,7 @@ break to more lines, it is still anchored at the top.</p>
 </uxdot-copy-permalink>
 <p>Do not use a light theme avatar thumbnail in the dark theme.</p>
 <uxdot-example danger="" width-adjustment="270px">
-  <img src="../avatar-best-practice-2.png" alt="Image of a light theme avatar thumbnail placed on a black background which is incorrect usage">
+  <img src="../avatar-best-practice-2.png" alt="Image of a light theme avatar thumbnail placed on a black background which is incorrect usage" width="270" height="64">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1082,7 +1082,7 @@ break to more lines, it is still anchored at the top.</p>
 </uxdot-copy-permalink>
 <p>Do not use an avatar thumbnail when an icon is more suitable.</p>
 <uxdot-example danger="" width-adjustment="136px">
-  <img src="../avatar-best-practice-3.png" alt="Image of an icon and avatar thumbnail right next to each other which is incorrect usage">
+  <img src="../avatar-best-practice-3.png" alt="Image of an icon and avatar thumbnail right next to each other which is incorrect usage" width="136" height="48">
 </uxdot-example>
 
 

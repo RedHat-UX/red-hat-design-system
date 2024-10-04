@@ -54,8 +54,8 @@
     "lit": "/assets/packages/lit/index.js",
     "@rhds/tokens/css/color-context-provider.css.js": "/assets/packages/@rhds/tokens/css/color-context-provider.css.js",
     "@rhds/tokens/css/color-context-consumer.css.js": "/assets/packages/@rhds/tokens/css/color-context-consumer.css.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.2/core.js",
@@ -153,7 +153,7 @@
 
 
 
-<uxdot-masthead role="banner"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface-darkest);color:var(--rh-color-text-primary-on-dark);position:fixed;inset:0;height:max-content;z-index:var(--uxdot-masthead-z-index,2);container-type:inline-size;container-name:host;z-index:10}#container{display:grid;column-gap:var(--rh-space-lg);grid-template-columns:max-content 1fr max-content;max-height:var(--uxdot-masthead-max-height,72px);margin-inline:var(--rh-space-md);margin-block:var(--rh-space-lg)}slot[name=hamburger]{display:flex;flex-direction:column;align-items:center;gap:var(--rh-space-md);justify-content:center}slot[name=hamburger]::slotted(button){color:var(--rh-color-text-primary-on-dark);background-color:initial;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}slot[name=hamburger]::slotted(button:active),slot[name=hamburger]::slotted(button:focus),slot[name=hamburger]::slotted(button:hover),slot[name=hamburger]:hover::slotted(button){color:var(--rh-color-icon-subtle-hover)}slot[name=hamburger]::slotted(button:focus){outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);border-radius:var(--rh-border-radius-default)}slot[name=logo]::slotted(a){display:flex;flex-direction:row;align-items:center;justify-self:flex-start;gap:var(--rh-space-md)}slot[name=links]{--rh-icon-size:24px;display:flex;flex-direction:row;column-gap:var(--rh-space-lg)}slot[name=links]::slotted(a){display:flex;flex-direction:row;gap:var(--rh-space-lg);align-items:center}@container (min-width: 576px){#container{gap:var(--rh-space-lg);margin:var(--rh-space-lg)}}@container (min-width: 992px){#container{grid-template-columns:1fr max-content}slot[name=hamburger]{display:none}slot[name=logo]::slotted(a){margin-inline-start:var(--rh-space-lg)}}</style><!--lit-part PgF9K1dm7N4=-->
+<uxdot-masthead role="banner"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface-darkest);color:var(--rh-color-text-primary-on-dark);height:max-content;container-type:inline-size;container-name:host}#container{display:grid;column-gap:var(--rh-space-lg);grid-template-columns:max-content 1fr max-content;max-height:var(--uxdot-masthead-max-height,72px);margin-inline:var(--rh-space-md);margin-block:var(--rh-space-lg)}slot[name=hamburger]{display:flex;flex-direction:column;align-items:center;gap:var(--rh-space-md);justify-content:center}slot[name=hamburger]::slotted(button){color:var(--rh-color-text-primary-on-dark);background-color:initial;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}slot[name=hamburger]::slotted(button:active),slot[name=hamburger]::slotted(button:focus),slot[name=hamburger]::slotted(button:hover),slot[name=hamburger]:hover::slotted(button){color:var(--rh-color-icon-subtle-hover)}slot[name=hamburger]::slotted(button:focus){outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);border-radius:var(--rh-border-radius-default)}slot[name=logo]::slotted(a){display:flex;flex-direction:row;align-items:center;justify-self:flex-start;gap:var(--rh-space-md)}slot[name=links]{--rh-icon-size:24px;display:flex;flex-direction:row;column-gap:var(--rh-space-lg)}slot[name=links]::slotted(a){display:flex;flex-direction:row;gap:var(--rh-space-lg);align-items:center}@container (min-width: 576px){#container{gap:var(--rh-space-lg);margin:var(--rh-space-lg)}}@container (min-width: 992px){#container{grid-template-columns:1fr max-content}slot[name=hamburger]{display:none}slot[name=logo]::slotted(a){margin-inline-start:var(--rh-space-lg)}}</style><!--lit-part PgF9K1dm7N4=-->
       <div id="container" part="container">
         <slot name="hamburger"></slot>
         <slot name="logo"></slot>
@@ -876,7 +876,7 @@
 </uxdot-copy-permalink>
 <p>When choosing one size over the other, consider where it is being used and what controls should be visible to users. Some audio player sizes have limited controls due to space constraints and some sizes occupy more space in a layout than others. Also take into account how an audio player changes size when users expand certain features.</p>
 <uxdot-example width-adjustment="712px">
-  <img src="../audio-player-guidelines-sizes.png" alt="Image of all audio player sizes with text labels">
+  <img src="../audio-player-guidelines-sizes.png" alt="Image of all audio player sizes with text labels" width="712" height="606">
 </uxdot-example>
 <rh-table>
   <table>
@@ -918,7 +918,7 @@
 </uxdot-copy-permalink>
 <p>It is acceptable to remove optional elements, but doing so will change the height or width of the audio player.</p>
 <uxdot-example width-adjustment="504px">
-  <img src="../audio-player-removing-elements.png" alt="Image of two Full players; one is without an image and the other is without an image and description text">
+  <img src="../audio-player-removing-elements.png" alt="Image of two Full players; one is without an image and the other is without an image and description text" width="504" height="570">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -936,7 +936,7 @@
 </uxdot-copy-permalink>
 <p>In certain edge cases, the Mini player can hide the volume and contextual menu buttons.</p>
 <uxdot-example width-adjustment="712px">
-  <img src="../audio-player-mini-player.png" alt="Image of three Mini players; one is the default state, one is missing the menu button, and one is missing both the volume and menu buttons">
+  <img src="../audio-player-mini-player.png" alt="Image of three Mini players; one is the default state, one is missing the menu button, and one is missing both the volume and menu buttons" width="712" height="276">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1230,7 +1230,7 @@
   <p>The description and title are not included in the Mini size players.</p>
 </rh-alert>
 <uxdot-example width-adjustment="712px">
-  <img src="../audio-player-description-and-title.png" alt="Image of the Full player and two Compact players; one Compact player has both description and title text and the other Compact player has only title text">
+  <img src="../audio-player-description-and-title.png" alt="Image of the Full player and two Compact players; one Compact player has both description and title text and the other Compact player has only title text" width="712" height="504">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1297,7 +1297,7 @@
 </uxdot-copy-permalink>
 <p>Compact and Mini players can be used inline with titles, headings, and a call to action.</p>
 <uxdot-example width-adjustment="712px">
-  <img src="../audio-player-layout-inline.png" alt="Image of Compact and Mini players used with titles, headings, and calls to action">
+  <img src="../audio-player-layout-inline.png" alt="Image of Compact and Mini players used with titles, headings, and calls to action" width="712" height="508">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1315,7 +1315,7 @@
 </uxdot-copy-permalink>
 <p>Compact players can be stacked with headings, text, and horizontal rules.</p>
 <uxdot-example width-adjustment="712px">
-  <img src="../audio-player-layout-stacking.png" alt="Image of the Compact player in a stacked layout with headers, text, and horizontal rules">
+  <img src="../audio-player-layout-stacking.png" alt="Image of the Compact player in a stacked layout with headers, text, and horizontal rules" width="712" height="670">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1594,11 +1594,11 @@
   <h3 slot="header">Warning</h3>
   <p>When a Compact size is used full-width, the contextual menu button is replaced by a close button and there is no access to features.</p>
 </rh-alert>
-<uxdot-example variant="full" no-border="">
-  <img src="../audio-player-layout-full-width-1.png" alt="Image of a full-width Compact player in a light theme context">
+<uxdot-example alignment="left" variant="full" no-border="" width-adjustment="1000px">
+  <img src="../audio-player-layout-full-width-1.png" alt="Image of a full-width Compact player in a light theme context" width="1000" height="670">
 </uxdot-example>
-<uxdot-example variant="full" no-border="">
-  <img src="../audio-player-layout-full-width-2.png" alt="Image of a full-width Compact player in a dark theme context">
+<uxdot-example alignment="left" variant="full" no-border="" width-adjustment="1000px">
+  <img src="../audio-player-layout-full-width-2.png" alt="Image of a full-width Compact player in a dark theme context" width="1000" height="670">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1630,7 +1630,7 @@
 </uxdot-copy-permalink>
 <p>When a page loads, audio should <strong>never</strong> start playing automatically without receiving input from a user first.</p>
 <uxdot-example width-adjustment="712px">
-  <img src="../audio-player-behavior-autoplay.png" alt="Image of the Full player showing audio stopped">
+  <img src="../audio-player-behavior-autoplay.png" alt="Image of the Full player showing audio stopped" width="712" height="266">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1648,7 +1648,7 @@
 </uxdot-copy-permalink>
 <p>If the description or title is long, it scrolls from left to right while audio is playing.</p>
 <uxdot-example width-adjustment="712px">
-  <img src="../audio-player-behavior-scrolling-text.png" alt="Image of the Full player with description and title text cut off and scrolling from left to right as audio plays">
+  <img src="../audio-player-behavior-scrolling-text.png" alt="Image of the Full player with description and title text cut off and scrolling from left to right as audio plays" width="712" height="926">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1681,7 +1681,7 @@
 </uxdot-copy-permalink>
 <p>Dragging the current time indicator will jump to a specific time. Arrow keys will rewind or advance audio by 15 seconds.</p>
 <uxdot-example width-adjustment="712px">
-  <img src="../audio-player-playback-seek.png" alt="Image of the Full player showing how to seek with a cursor or keyboard">
+  <img src="../audio-player-playback-seek.png" alt="Image of the Full player showing how to seek with a cursor or keyboard" width="712" height="528">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1699,7 +1699,7 @@
 </uxdot-copy-permalink>
 <p>Audio can be toggled on or off by pressing the unmute/mute button.</p>
 <uxdot-example width-adjustment="712px">
-  <img src="../audio-player-playback-unmute-mute.png" alt="Image of the Full player showing how to toggle the unmute/mute button with a cursor or keyboard">
+  <img src="../audio-player-playback-unmute-mute.png" alt="Image of the Full player showing how to toggle the unmute/mute button with a cursor or keyboard" width="712" height="528">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1717,7 +1717,7 @@
 </uxdot-copy-permalink>
 <p>Dragging the slider will adjust the volume. Arrow keys will increase or decrease the volume by 25% intervals.</p>
 <uxdot-example width-adjustment="712px">
-  <img src="../audio-player-playback-volume.png" alt="Image of the Full player showing how to adjust the volume with a cursor or keyboard">
+  <img src="../audio-player-playback-volume.png" alt="Image of the Full player showing how to adjust the volume with a cursor or keyboard" width="712" height="528">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1734,8 +1734,8 @@
   </a></h3>
 </uxdot-copy-permalink>
 <p>The rate of speed can be adjusted by clicking the carets or selecting the speed button and choosing a speed in the menu.</p>
-<uxdot-example>
-  <img src="../audio-player-playback-speed.png" alt="Image of the Full player showing how to open the speed menu and selecting another speed with a cursor or keyboard">
+<uxdot-example width-adjustment="712px">
+  <img src="../audio-player-playback-speed.png" alt="Image of the Full player showing how to open the speed menu and selecting another speed with a cursor or keyboard" width="712" height="613">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1753,7 +1753,7 @@
 </uxdot-copy-permalink>
 <p>Audio rewinds or advances by 15 seconds if either button is pressed.</p>
 <uxdot-example width-adjustment="712px">
-  <img src="../audio-player-playback-rewind-forward.png" alt="Image of the Full player showing how to toggle the rewind or forward buttons with a cursor or keyboard">
+  <img src="../audio-player-playback-rewind-forward.png" alt="Image of the Full player showing how to toggle the rewind or forward buttons with a cursor or keyboard" width="712" height="532">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1771,7 +1771,7 @@
 </uxdot-copy-permalink>
 <p>Audio playback can be resumed/stopped by pressing the play/pause button.</p>
 <uxdot-example width-adjustment="712px">
-  <img src="../audio-player-playback-play-pause.png" alt="Image of the Full player showing how to toggle the play/pause button with a cursor or keyboard">
+  <img src="../audio-player-playback-play-pause.png" alt="Image of the Full player showing how to toggle the play/pause button with a cursor or keyboard" width="712" height="544">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1803,10 +1803,10 @@
 </uxdot-copy-permalink>
 <p>All audio players can be used on large breakpoints. The Mini player can be stretched to fit any grid or container size.</p>
 <uxdot-example variant="full" no-border="" alignment="left" width-adjustment="1000px">
-  <img src="../audio-player-responsive-breakpoints-desktop.png" alt="Image of the Full, Full without image, and Compact players as well as a stretched Mini player on large breakpoints">
+  <img src="../audio-player-responsive-breakpoints-desktop.png" alt="Image of the Full, Full without image, and Compact players as well as a stretched Mini player on large breakpoints" width="1000" height="704">
 </uxdot-example>The Full player will change to the Compact player and the Compact player will change to the Mini player as breakpoints get smaller.<p></p>
 <uxdot-example variant="full" no-border="" alignment="left" width-adjustment="768px">
-  <img src="../audio-player-responsive-breakpoints-tablet.png" alt="Image of the Full player and a stretched Compact player on large breakpoints">
+  <img src="../audio-player-responsive-breakpoints-tablet.png" alt="Image of the Full player and a stretched Compact player on large breakpoints" width="768px">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1823,7 +1823,7 @@
   </a></h3>
 </uxdot-copy-permalink>
 <uxdot-example variant="full" no-border="" alignment="left" width-adjustment="576px">
-  <img src="../audio-player-responsive-breakpoints-mobile.png" alt="Image of the Full, Full without image, and Compact players as well as a stretched Mini player on small breakpoints">
+  <img src="../audio-player-responsive-breakpoints-mobile.png" alt="Image of the Full, Full without image, and Compact players as well as a stretched Mini player on small breakpoints" width="576" height="176">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1855,7 +1855,7 @@
 </uxdot-copy-permalink>
 <p>Be careful when using the Full player near too many other elements.</p>
 <uxdot-example width-adjustment="712px" danger="">
-  <img src="../audio-player-best-practice-1.png" alt="Image of the Full player used near lots of other elements">
+  <img src="../audio-player-best-practice-1.png" alt="Image of the Full player used near lots of other elements" width="712" height="382">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1873,7 +1873,7 @@
 </uxdot-copy-permalink>
 <p>Do not alter contextual menu theming.</p>
 <uxdot-example width-adjustment="712px" danger="">
-  <img src="../audio-player-best-practice-2.png" alt="Image of Compact players with contextual menus that are a different theme than the audio player which is incorrect usage">
+  <img src="../audio-player-best-practice-2.png" alt="Image of Compact players with contextual menus that are a different theme than the audio player which is incorrect usage" width="712" height="482">
 </uxdot-example>
 
 

@@ -54,8 +54,8 @@
     "lit": "/assets/packages/lit/index.js",
     "@rhds/tokens/css/color-context-provider.css.js": "/assets/packages/@rhds/tokens/css/color-context-provider.css.js",
     "@rhds/tokens/css/color-context-consumer.css.js": "/assets/packages/@rhds/tokens/css/color-context-consumer.css.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.2/core.js",
@@ -145,7 +145,7 @@
 
 
 
-<uxdot-masthead role="banner"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface-darkest);color:var(--rh-color-text-primary-on-dark);position:fixed;inset:0;height:max-content;z-index:var(--uxdot-masthead-z-index,2);container-type:inline-size;container-name:host;z-index:10}#container{display:grid;column-gap:var(--rh-space-lg);grid-template-columns:max-content 1fr max-content;max-height:var(--uxdot-masthead-max-height,72px);margin-inline:var(--rh-space-md);margin-block:var(--rh-space-lg)}slot[name=hamburger]{display:flex;flex-direction:column;align-items:center;gap:var(--rh-space-md);justify-content:center}slot[name=hamburger]::slotted(button){color:var(--rh-color-text-primary-on-dark);background-color:initial;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}slot[name=hamburger]::slotted(button:active),slot[name=hamburger]::slotted(button:focus),slot[name=hamburger]::slotted(button:hover),slot[name=hamburger]:hover::slotted(button){color:var(--rh-color-icon-subtle-hover)}slot[name=hamburger]::slotted(button:focus){outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);border-radius:var(--rh-border-radius-default)}slot[name=logo]::slotted(a){display:flex;flex-direction:row;align-items:center;justify-self:flex-start;gap:var(--rh-space-md)}slot[name=links]{--rh-icon-size:24px;display:flex;flex-direction:row;column-gap:var(--rh-space-lg)}slot[name=links]::slotted(a){display:flex;flex-direction:row;gap:var(--rh-space-lg);align-items:center}@container (min-width: 576px){#container{gap:var(--rh-space-lg);margin:var(--rh-space-lg)}}@container (min-width: 992px){#container{grid-template-columns:1fr max-content}slot[name=hamburger]{display:none}slot[name=logo]::slotted(a){margin-inline-start:var(--rh-space-lg)}}</style><!--lit-part PgF9K1dm7N4=-->
+<uxdot-masthead role="banner"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface-darkest);color:var(--rh-color-text-primary-on-dark);height:max-content;container-type:inline-size;container-name:host}#container{display:grid;column-gap:var(--rh-space-lg);grid-template-columns:max-content 1fr max-content;max-height:var(--uxdot-masthead-max-height,72px);margin-inline:var(--rh-space-md);margin-block:var(--rh-space-lg)}slot[name=hamburger]{display:flex;flex-direction:column;align-items:center;gap:var(--rh-space-md);justify-content:center}slot[name=hamburger]::slotted(button){color:var(--rh-color-text-primary-on-dark);background-color:initial;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}slot[name=hamburger]::slotted(button:active),slot[name=hamburger]::slotted(button:focus),slot[name=hamburger]::slotted(button:hover),slot[name=hamburger]:hover::slotted(button){color:var(--rh-color-icon-subtle-hover)}slot[name=hamburger]::slotted(button:focus){outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);border-radius:var(--rh-border-radius-default)}slot[name=logo]::slotted(a){display:flex;flex-direction:row;align-items:center;justify-self:flex-start;gap:var(--rh-space-md)}slot[name=links]{--rh-icon-size:24px;display:flex;flex-direction:row;column-gap:var(--rh-space-lg)}slot[name=links]::slotted(a){display:flex;flex-direction:row;gap:var(--rh-space-lg);align-items:center}@container (min-width: 576px){#container{gap:var(--rh-space-lg);margin:var(--rh-space-lg)}}@container (min-width: 992px){#container{grid-template-columns:1fr max-content}slot[name=hamburger]{display:none}slot[name=logo]::slotted(a){margin-inline-start:var(--rh-space-lg)}}</style><!--lit-part PgF9K1dm7N4=-->
       <div id="container" part="container">
         <slot name="hamburger"></slot>
         <slot name="logo"></slot>
@@ -878,8 +878,8 @@ and less clicking, it is advised to not use an accordion.</p>
 information that might not be critical to read or impact the experience. An
 accordion can also accommodate multiple sections of content, whereas a
 disclosure can only accommodate one.</p>
-<uxdot-example>
-   <img alt="Comparison of how to use accordion vs. disclosure elements showing an accordion on top and a disclosure on the bottom" src="../accordion-vs-disclosure.png">
+<uxdot-example width-adjustment="872px">
+  <img src="../accordion-vs-disclosure.png" alt="Comparison of how to use accordion vs. disclosure elements showing an accordion on top and a disclosure on the bottom" width="872" height="603">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -897,8 +897,8 @@ disclosure can only accommodate one.</p>
 </uxdot-copy-permalink>
 <p>It is acceptable to use the Small size on large breakpoints, but do not use the
 Large size on small breakpoints.</p>
-<uxdot-example>
-   <img alt="Size comparison of accordions; a wide small size accordion is on top, which is acceptable to use, and a thin large size accordion below it which is not acceptable to use" src="../accordion-sizes-best-practices.png">
+<uxdot-example width-adjustment="872px">
+  <img src="../accordion-sizes-best-practices.png" alt="Size comparison of accordions; a wide small size accordion is on top, which is acceptable to use, and a thin large size accordion below it which is not acceptable to use" width="872" height="485">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -933,14 +933,18 @@ expand a panel. Beware of long character counts especially on small breakpoints
 or when translated. If title text is too long, create another section. Do not
 write title text to sound like a call to action, make it as easy as possible for
 users to understand the content within.</p>
-<uxdot-example>
-   <img alt="Title text examples of various lengths; it should not be too long, too short, or too vague" src="../accordion-title-text.png">
+<figure>
+<uxdot-example width-adjustment="872px">
+  <img src="../accordion-title-text.png" alt="Title text examples of various lengths; it should not be too long, too short, or too vague" width="872" height="181">
 </uxdot-example>
-<ol class="example-notes">
+<figcaption>
+<ol>
 <li>Title text is too long and should be broken into two sections</li>
 <li>Title text is short and might not help users understand the content within</li>
 <li>Title text should not be written like a call to action</li>
 </ol>
+</figcaption>
+</figure>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
@@ -990,8 +994,8 @@ content will be when they expand a panel.</p>
 <p>When a panel is expanded, some content must appear below the title text and
 chevron icon. Content can include text, cards, images, etc. Text blocks should
 not exceed <code>750px</code> to maintain optimal readability.</p>
-<uxdot-example>
-  <img alt="Accordion showing different elements you may include in the expanded panel like headings, body text, links, cards, and more" src="../accordion-panel-content.png">
+<uxdot-example width-adjustment="872px">
+  <img src="../accordion-panel-content.png" alt="Accordion showing different elements you may include in the expanded panel like headings, body text, links, cards, and more" width="872" height="705">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1009,7 +1013,7 @@ not exceed <code>750px</code> to maintain optimal readability.</p>
 </uxdot-copy-permalink>
 <p>Title text can be two lines on small breakpoints, but no more.</p>
 <uxdot-example width-adjustment="544px">
-  <img alt="Two accordions; one wide accordion with the text title on one line and one thin accordion with the text title on two lines" src="../accordion-long-title-text.png">
+  <img src="../accordion-long-title-text.png" alt="Two accordions; one wide accordion with the text title on one line and one thin accordion with the text title on two lines" width="544" height="310">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1028,7 +1032,7 @@ not exceed <code>750px</code> to maintain optimal readability.</p>
 <p>The width of an accordion can be adjusted on large breakpoints to fit fewer
 columns if necessary.</p>
 <uxdot-example width-adjustment="872px">
-  <img alt="A wider accordion placed on a 12-column grid and occupying four grid columns" src="../accordion-layout.png">
+  <img src="../accordion-layout.png" alt="A wider accordion placed on a 12-column grid and occupying four grid columns" width="872" height="439">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1079,7 +1083,7 @@ When a panel is expanded, the caret animates to point up.</p>
 <p>Users can expand multiple panels simultaneously either stacked on top of each
 other or not. Expanding one panel does not collapse another.</p>
 <uxdot-example width-adjustment="872px">
-  <img alt="Two accordions; one is showing two expanded panels stacked on top of each other and the other is showing two expanded panels and one collapsed panel in between" src="../accordion-expanding-multiple-panels.png">
+  <img src="../accordion-expanding-multiple-panels.png" alt="Two accordions; one is showing two expanded panels stacked on top of each other and the other is showing two expanded panels and one collapsed panel in between" width="872" height="714">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1097,11 +1101,11 @@ other or not. Expanding one panel does not collapse another.</p>
 </uxdot-copy-permalink>
 <p>An accordion changes from the Large size to the Small size as breakpoints get
 smaller.</p>
-<uxdot-example no-border="" variant="full">
-  <img alt="Accordions on large breakpoints" src="../accordion-breakpoints-large.png">
+<uxdot-example no-border="" width-adjustment="1000px" alignment="left" variant="full">
+  <img src="../accordion-breakpoints-large.png" alt="Accordions on large breakpoints" width="1000" height="274">
 </uxdot-example>
 <uxdot-example no-border="" width-adjustment="576px" alignment="left" variant="full">
-  <img alt="Accordions on small breakpoints" src="../accordion-breakpoints-small.png">
+  <img src="../accordion-breakpoints-small.png" alt="Accordions on small breakpoints" width="576" height="262">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1194,8 +1198,8 @@ smaller.</p>
   </a></h3>
 </uxdot-copy-permalink>
 <p>Do not display one panel only, use an expandable section instead.</p>
-<uxdot-example danger="">
-  <img alt="Accordion having only one panel is incorrect usage" src="../accordion-best-practice-1.png">
+<uxdot-example danger="" width-adjustment="872px">
+  <img alt="Accordion having only one panel is incorrect usage" src="../accordion-best-practice-1.png" width="872" height="61">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1212,8 +1216,8 @@ smaller.</p>
   </a></h3>
 </uxdot-copy-permalink>
 <p>Text within panels should not exceed <code>750px</code> to maintain optimal readability.</p>
-<uxdot-example danger="">
-  <img alt="Accordion with body text exceeding 750px wide which is incorrect usage" src="../accordion-best-practice-2.png">
+<uxdot-example danger="" width-adjustment="872px">
+  <img src="../accordion-best-practice-2.png" alt="Accordion with body text exceeding 750px wide which is incorrect usage" width="872" height="213">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1230,8 +1234,8 @@ smaller.</p>
   </a></h3>
 </uxdot-copy-permalink>
 <p>Do not use a dark theme accordion in a light theme environment and vice versa.</p>
-<uxdot-example danger="">
-  <img alt="Do not use a dark theme accordion in a light theme environment and vice versa" src="../accordion-best-practice-3.png">
+<uxdot-example danger="" width-adjustment="872px">
+  <img alt="Do not use a dark theme accordion in a light theme environment and vice versa" src="../accordion-best-practice-3.png" width="872" height="181">
 </uxdot-example>
 
 

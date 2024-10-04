@@ -1,29 +1,15 @@
-<style>
-rh-surface {
-  padding: var(--rh-space-2xl, 32px);
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--rh-space-2xl, 32px);
-}
-
-@container container (min-width: 768px) {
-  .grid {
-    grid-template-columns: 1fr 1fr 1fr;
+<style data-helmet>
+  #example {
+    padding: var(--rh-space-2xl);
   }
-}
 </style>
-
 
 ## Overview
 
 {{ tagName | getElementDescription }}
 
-
-<rh-surface color-palette="darkest">
-  <div class="grid">
+<rh-surface id="example" color-palette="darkest">
+  <div class="grid sm-three-columns">
     <rh-blockquote>
       <p>Surface is used to provide a theme to children</p>
     </rh-blockquote>
@@ -34,7 +20,6 @@ rh-surface {
     <rh-spinner>Loading...</rh-spinner>
   </div>
 </rh-surface>
-
 
 <script type="module">
 import '@rhds/elements/rh-surface/rh-surface.js';

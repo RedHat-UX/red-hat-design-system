@@ -54,8 +54,8 @@
     "lit": "/assets/packages/lit/index.js",
     "@rhds/tokens/css/color-context-provider.css.js": "/assets/packages/@rhds/tokens/css/color-context-provider.css.js",
     "@rhds/tokens/css/color-context-consumer.css.js": "/assets/packages/@rhds/tokens/css/color-context-consumer.css.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.2/core.js",
@@ -145,7 +145,7 @@
 
 
 
-<uxdot-masthead role="banner"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface-darkest);color:var(--rh-color-text-primary-on-dark);position:fixed;inset:0;height:max-content;z-index:var(--uxdot-masthead-z-index,2);container-type:inline-size;container-name:host;z-index:10}#container{display:grid;column-gap:var(--rh-space-lg);grid-template-columns:max-content 1fr max-content;max-height:var(--uxdot-masthead-max-height,72px);margin-inline:var(--rh-space-md);margin-block:var(--rh-space-lg)}slot[name=hamburger]{display:flex;flex-direction:column;align-items:center;gap:var(--rh-space-md);justify-content:center}slot[name=hamburger]::slotted(button){color:var(--rh-color-text-primary-on-dark);background-color:initial;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}slot[name=hamburger]::slotted(button:active),slot[name=hamburger]::slotted(button:focus),slot[name=hamburger]::slotted(button:hover),slot[name=hamburger]:hover::slotted(button){color:var(--rh-color-icon-subtle-hover)}slot[name=hamburger]::slotted(button:focus){outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);border-radius:var(--rh-border-radius-default)}slot[name=logo]::slotted(a){display:flex;flex-direction:row;align-items:center;justify-self:flex-start;gap:var(--rh-space-md)}slot[name=links]{--rh-icon-size:24px;display:flex;flex-direction:row;column-gap:var(--rh-space-lg)}slot[name=links]::slotted(a){display:flex;flex-direction:row;gap:var(--rh-space-lg);align-items:center}@container (min-width: 576px){#container{gap:var(--rh-space-lg);margin:var(--rh-space-lg)}}@container (min-width: 992px){#container{grid-template-columns:1fr max-content}slot[name=hamburger]{display:none}slot[name=logo]::slotted(a){margin-inline-start:var(--rh-space-lg)}}</style><!--lit-part PgF9K1dm7N4=-->
+<uxdot-masthead role="banner"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface-darkest);color:var(--rh-color-text-primary-on-dark);height:max-content;container-type:inline-size;container-name:host}#container{display:grid;column-gap:var(--rh-space-lg);grid-template-columns:max-content 1fr max-content;max-height:var(--uxdot-masthead-max-height,72px);margin-inline:var(--rh-space-md);margin-block:var(--rh-space-lg)}slot[name=hamburger]{display:flex;flex-direction:column;align-items:center;gap:var(--rh-space-md);justify-content:center}slot[name=hamburger]::slotted(button){color:var(--rh-color-text-primary-on-dark);background-color:initial;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}slot[name=hamburger]::slotted(button:active),slot[name=hamburger]::slotted(button:focus),slot[name=hamburger]::slotted(button:hover),slot[name=hamburger]:hover::slotted(button){color:var(--rh-color-icon-subtle-hover)}slot[name=hamburger]::slotted(button:focus){outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);border-radius:var(--rh-border-radius-default)}slot[name=logo]::slotted(a){display:flex;flex-direction:row;align-items:center;justify-self:flex-start;gap:var(--rh-space-md)}slot[name=links]{--rh-icon-size:24px;display:flex;flex-direction:row;column-gap:var(--rh-space-lg)}slot[name=links]::slotted(a){display:flex;flex-direction:row;gap:var(--rh-space-lg);align-items:center}@container (min-width: 576px){#container{gap:var(--rh-space-lg);margin:var(--rh-space-lg)}}@container (min-width: 992px){#container{grid-template-columns:1fr max-content}slot[name=hamburger]{display:none}slot[name=logo]::slotted(a){margin-inline-start:var(--rh-space-lg)}}</style><!--lit-part PgF9K1dm7N4=-->
       <div id="container" part="container">
         <slot name="hamburger"></slot>
         <slot name="logo"></slot>
@@ -923,7 +923,7 @@
 <li>The Switch status message is used with a check icon to add clarity if necessary</li>
 </ul>
 <uxdot-example width-adjustment="783px">
-  <img src="../switch-variants.svg" alt="four variants of switch">
+  <img src="../switch-variants.svg" alt="four variants of switch" width="783" height="24">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1065,7 +1065,7 @@
       </figure>
     <!--/lit-part--></template>
     <uxdot-example slot="image" alignment="left" width-adjustment="241px">
-      <img src="../switch-language-clarity-do.svg" alt="Magenta button, brand red default call to action, green tooltip, and dark orange switch">
+      <img src="../switch-language-clarity-do.svg" alt="Magenta button, brand red default call to action, green tooltip, and dark orange switch" width="241" height="24">
     </uxdot-example>
     <p>Ensure the message is clear when a Switch is toggled to the On or Off position and that the form label explains the switch's purpose.</p>
   </uxdot-best-practice>
@@ -1082,7 +1082,7 @@
       </figure>
     <!--/lit-part--></template>
     <uxdot-example slot="image" alignment="left" width-adjustment="254px">
-      <img src="../switch-language-clarity-do-not.svg" alt="Magenta button, brand red default call to action, green tooltip, and dark orange switch">
+      <img src="../switch-language-clarity-do-not.svg" alt="Magenta button, brand red default call to action, green tooltip, and dark orange switch" width="254" height="24">
     </uxdot-example>
     <p>Do not use a status message that does not make the switch state clear, especially if the form label is hidden.</p>
   </uxdot-best-practice>
@@ -1152,7 +1152,7 @@
 </uxdot-copy-permalink>
 <p>Use a stack of Switches for situations where multiple independent options need to be turned on or off.</p>
 <uxdot-example width-adjustment="193px">
-  <img src="../switch-layout-stacking.svg" alt="four switches, half of which are on, stacked in a column">
+  <img src="../switch-layout-stacking.svg" alt="four switches, half of which are on, stacked in a column" width="193" height="168">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1170,7 +1170,7 @@
 </uxdot-copy-permalink>
 <p>A Switch is successfully toggled when the handle slides to the other side of the track and the status message changes. When a user toggles a Switch, the effects should start immediately without needing to save. If immediate results are not achievable, another element should be used instead (see table above in Usage section).</p>
 <uxdot-example width-adjustment="319px">
-  <img src="../switch-behavior.svg" alt="One switch that is on, next to one that is off">
+  <img src="../switch-behavior.svg" alt="One switch that is on, next to one that is off" width="319" height="24">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1215,7 +1215,7 @@
       </figure>
     <!--/lit-part--></template>
     <uxdot-example slot="image" width-adjustment="160px">
-      <img src="../switch-best-practice-no-status-message-do.svg" alt="Switches with Bluetooth as a form label and/or a status message">
+      <img src="../switch-best-practice-no-status-message-do.svg" alt="Switches with Bluetooth as a form label and/or a status message" width="160" height="72">
     </uxdot-example>
     <p>Ensure the message is clear when a Switch is toggled to the On or Off position and that the form label explains the switch's purpose.</p>
   </uxdot-best-practice>
@@ -1232,7 +1232,7 @@
       </figure>
     <!--/lit-part--></template>
     <uxdot-example slot="image" width-adjustment="160px">
-      <img src="../switch-best-practice-no-status-message-do-not.svg" alt="Two switches without a form label or status message">
+      <img src="../switch-best-practice-no-status-message-do-not.svg" alt="Two switches without a form label or status message" width="160" height="24">
     </uxdot-example>
     <p>Do not make it unknown to users what a Switch will do when toggled.</p>
   </uxdot-best-practice>
@@ -1297,8 +1297,8 @@
         </figcaption>
       </figure>
     <!--/lit-part--></template>
-    <uxdot-example slot="image" width-adjustment="160px">
-      <img src="../switch-best-practice-multiple-options-do.svg" alt="Four switches stacked vertically with half of them turned on">
+    <uxdot-example slot="image" width-adjustment="193px">
+      <img src="../switch-best-practice-multiple-options-do.svg" alt="Four switches stacked vertically with half of them turned on" width="193" height="168">
     </uxdot-example>
     <p>Use Switches in a list only if the effects from toggling each Switch are immediate.</p>
   </uxdot-best-practice>
@@ -1314,8 +1314,8 @@
         </figcaption>
       </figure>
     <!--/lit-part--></template>
-    <uxdot-example slot="image" width-adjustment="160px">
-      <img src="../switch-best-practice-multiple-options-do-not.svg" alt="Four switches stacked vertically with a save button below them">
+    <uxdot-example slot="image" width-adjustment="193px">
+      <img src="../switch-best-practice-multiple-options-do-not.svg" alt="Four switches stacked vertically with a save button below them" width="193" height="236">
     </uxdot-example>
     <p>Do not use Switches in a list if a user has to save to see the effects</p>
   </uxdot-best-practice>

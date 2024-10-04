@@ -54,8 +54,8 @@
     "lit": "/assets/packages/lit/index.js",
     "@rhds/tokens/css/color-context-provider.css.js": "/assets/packages/@rhds/tokens/css/color-context-provider.css.js",
     "@rhds/tokens/css/color-context-consumer.css.js": "/assets/packages/@rhds/tokens/css/color-context-consumer.css.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.2/core.js",
@@ -145,7 +145,7 @@
 
 
 
-<uxdot-masthead role="banner"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface-darkest);color:var(--rh-color-text-primary-on-dark);position:fixed;inset:0;height:max-content;z-index:var(--uxdot-masthead-z-index,2);container-type:inline-size;container-name:host;z-index:10}#container{display:grid;column-gap:var(--rh-space-lg);grid-template-columns:max-content 1fr max-content;max-height:var(--uxdot-masthead-max-height,72px);margin-inline:var(--rh-space-md);margin-block:var(--rh-space-lg)}slot[name=hamburger]{display:flex;flex-direction:column;align-items:center;gap:var(--rh-space-md);justify-content:center}slot[name=hamburger]::slotted(button){color:var(--rh-color-text-primary-on-dark);background-color:initial;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}slot[name=hamburger]::slotted(button:active),slot[name=hamburger]::slotted(button:focus),slot[name=hamburger]::slotted(button:hover),slot[name=hamburger]:hover::slotted(button){color:var(--rh-color-icon-subtle-hover)}slot[name=hamburger]::slotted(button:focus){outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);border-radius:var(--rh-border-radius-default)}slot[name=logo]::slotted(a){display:flex;flex-direction:row;align-items:center;justify-self:flex-start;gap:var(--rh-space-md)}slot[name=links]{--rh-icon-size:24px;display:flex;flex-direction:row;column-gap:var(--rh-space-lg)}slot[name=links]::slotted(a){display:flex;flex-direction:row;gap:var(--rh-space-lg);align-items:center}@container (min-width: 576px){#container{gap:var(--rh-space-lg);margin:var(--rh-space-lg)}}@container (min-width: 992px){#container{grid-template-columns:1fr max-content}slot[name=hamburger]{display:none}slot[name=logo]::slotted(a){margin-inline-start:var(--rh-space-lg)}}</style><!--lit-part PgF9K1dm7N4=-->
+<uxdot-masthead role="banner"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface-darkest);color:var(--rh-color-text-primary-on-dark);height:max-content;container-type:inline-size;container-name:host}#container{display:grid;column-gap:var(--rh-space-lg);grid-template-columns:max-content 1fr max-content;max-height:var(--uxdot-masthead-max-height,72px);margin-inline:var(--rh-space-md);margin-block:var(--rh-space-lg)}slot[name=hamburger]{display:flex;flex-direction:column;align-items:center;gap:var(--rh-space-md);justify-content:center}slot[name=hamburger]::slotted(button){color:var(--rh-color-text-primary-on-dark);background-color:initial;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}slot[name=hamburger]::slotted(button:active),slot[name=hamburger]::slotted(button:focus),slot[name=hamburger]::slotted(button:hover),slot[name=hamburger]:hover::slotted(button){color:var(--rh-color-icon-subtle-hover)}slot[name=hamburger]::slotted(button:focus){outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);border-radius:var(--rh-border-radius-default)}slot[name=logo]::slotted(a){display:flex;flex-direction:row;align-items:center;justify-self:flex-start;gap:var(--rh-space-md)}slot[name=links]{--rh-icon-size:24px;display:flex;flex-direction:row;column-gap:var(--rh-space-lg)}slot[name=links]::slotted(a){display:flex;flex-direction:row;gap:var(--rh-space-lg);align-items:center}@container (min-width: 576px){#container{gap:var(--rh-space-lg);margin:var(--rh-space-lg)}}@container (min-width: 992px){#container{grid-template-columns:1fr max-content}slot[name=hamburger]{display:none}slot[name=logo]::slotted(a){margin-inline-start:var(--rh-space-lg)}}</style><!--lit-part PgF9K1dm7N4=-->
       <div id="container" part="container">
         <slot name="hamburger"></slot>
         <slot name="logo"></slot>
@@ -852,7 +852,7 @@
 </uxdot-copy-permalink>
 <figure>
   <uxdot-example width-adjustment="295px">
-    <img src="../breadcrumbs-anatomy.svg" alt="Anatomy of breadcrumbs with numbered annotations pointing to various parts">
+    <img src="../breadcrumbs-anatomy.svg" alt="Anatomy of breadcrumbs with numbered annotations pointing to various parts" width="296" height="47">
   </uxdot-example>
   <figcaption>
      <ol>
@@ -879,10 +879,10 @@
 <p>Breadcrumbs are available in both light and dark themes.</p>
 <div class="grid xs-two-columns">
   <uxdot-example width-adjustment="295px">
-    <img src="../breadcrumb-theme-light.svg" alt="Light theme breadcrumb with blue links and black text and separators">
+    <img src="../breadcrumb-theme-light.svg" alt="Light theme breadcrumb with blue links and black text and separators" width="296" height="21">
   </uxdot-example>
   <uxdot-example width-adjustment="295px" color-palette="darkest">
-    <img src="../breadcrumb-theme-dark.svg" alt="Dark theme breadcrumb with light blue links and white text and separators">
+    <img src="../breadcrumb-theme-dark.svg" alt="Dark theme breadcrumb with light blue links and white text and separators" width="296" height="21">
   </uxdot-example>
 </div>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
@@ -901,7 +901,7 @@
 </uxdot-copy-permalink>
 <p>Breadcrumbs typically appear above the title of a page and below primary and/or secondary navigation.</p>
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border="">
-    <img src="../breadcrumb-placement.svg" alt="partial view of Red Hat's homepage with primary and secondary navigation above breadcrumb navigation">
+    <img src="../breadcrumb-placement.svg" alt="partial view of Red Hat's homepage with primary and secondary navigation above breadcrumb navigation" width="1000" height="445">
   </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -919,7 +919,7 @@
 </uxdot-copy-permalink>
 <p>The space between parent pages or current pages and the separators is 16px. If a row of breadcrumbs has to wrap, the space between the lines is 8px. This remains the same across all breakpoints.</p>
 <uxdot-example width-adjustment="162px">
- <img src="../breadcrumb-space.svg" alt="Diagram of spacing for breadcrumbs">
+ <img src="../breadcrumb-space.svg" alt="Diagram of spacing for breadcrumbs" width="162" height="50">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -953,10 +953,10 @@
 <p>A breadcrumb link turns a darker or lighter shade of the default state’s blue and becomes underlined on hover.</p>
 <div class="grid xs-two-columns">
   <uxdot-example width-adjustment="295px">
-    <img src="../breadcrumb-hover-light.svg" alt="Light theme breadcrumbs with dark blue, underlined links on hover and black text and separators">
+    <img src="../breadcrumb-hover-light.svg" alt="Light theme breadcrumbs with dark blue, underlined links on hover and black text and separators" width="296" height="44">
   </uxdot-example>
   <uxdot-example width-adjustment="295px" color-palette="darkest">
-    <img src="../breadcrumb-hover-dark.svg" alt="Dark theme breadcrumbs with light blue, underlined links on hover and white text and separators">
+    <img src="../breadcrumb-hover-dark.svg" alt="Dark theme breadcrumbs with light blue, underlined links on hover and white text and separators" width="296" height="44">
   </uxdot-example>
 </div>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
@@ -976,10 +976,10 @@
 <p>The focus state of a breadcrumb link looks similar to the hover state, but it adds a focus ring around the link.</p>
 <div class="grid xs-two-columns">
   <uxdot-example width-adjustment="295px">
-    <img src="../breadcrumb-focus-light.svg" alt="Light theme breadcrumbs with one dark blue, underlined link in a focus ring">
+    <img src="../breadcrumb-focus-light.svg" alt="Light theme breadcrumbs with one dark blue, underlined link in a focus ring" width="296" height="25">
   </uxdot-example>
   <uxdot-example width-adjustment="295px" color-palette="darkest">
-    <img src="../breadcrumb-focus-dark.svg" alt="Dark theme breadcrumbs with one light blue, underlined link in a focus ring">
+    <img src="../breadcrumb-focus-dark.svg" alt="Dark theme breadcrumbs with one light blue, underlined link in a focus ring" width="296" height="25">
   </uxdot-example>
 </div>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
@@ -1260,10 +1260,10 @@
 </rh-alert>
 <div class="grid xs-two-columns">
   <uxdot-example width-adjustment="295px">
-    <img src="../breadcrumb-active-light.svg" alt="Light theme breadcrumbs with one dark blue, underlined link in a focus ring">
+    <img src="../breadcrumb-active-light.svg" alt="Light theme breadcrumbs with one dark blue, underlined link in a focus ring" width="296" height="25">
   </uxdot-example>
   <uxdot-example width-adjustment="295px" color-palette="darkest">
-    <img src="../breadcrumb-active-dark.svg" alt="Dark theme breadcrumbs with one light blue, underlined link in a focus ring">
+    <img src="../breadcrumb-active-dark.svg" alt="Dark theme breadcrumbs with one light blue, underlined link in a focus ring" width="296" height="25">
   </uxdot-example>
 </div>
 

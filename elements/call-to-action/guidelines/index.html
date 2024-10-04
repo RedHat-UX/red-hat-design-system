@@ -54,8 +54,8 @@
     "lit": "/assets/packages/lit/index.js",
     "@rhds/tokens/css/color-context-provider.css.js": "/assets/packages/@rhds/tokens/css/color-context-provider.css.js",
     "@rhds/tokens/css/color-context-consumer.css.js": "/assets/packages/@rhds/tokens/css/color-context-consumer.css.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.2/core.js",
@@ -145,7 +145,7 @@
 
 
 
-<uxdot-masthead role="banner"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface-darkest);color:var(--rh-color-text-primary-on-dark);position:fixed;inset:0;height:max-content;z-index:var(--uxdot-masthead-z-index,2);container-type:inline-size;container-name:host;z-index:10}#container{display:grid;column-gap:var(--rh-space-lg);grid-template-columns:max-content 1fr max-content;max-height:var(--uxdot-masthead-max-height,72px);margin-inline:var(--rh-space-md);margin-block:var(--rh-space-lg)}slot[name=hamburger]{display:flex;flex-direction:column;align-items:center;gap:var(--rh-space-md);justify-content:center}slot[name=hamburger]::slotted(button){color:var(--rh-color-text-primary-on-dark);background-color:initial;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}slot[name=hamburger]::slotted(button:active),slot[name=hamburger]::slotted(button:focus),slot[name=hamburger]::slotted(button:hover),slot[name=hamburger]:hover::slotted(button){color:var(--rh-color-icon-subtle-hover)}slot[name=hamburger]::slotted(button:focus){outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);border-radius:var(--rh-border-radius-default)}slot[name=logo]::slotted(a){display:flex;flex-direction:row;align-items:center;justify-self:flex-start;gap:var(--rh-space-md)}slot[name=links]{--rh-icon-size:24px;display:flex;flex-direction:row;column-gap:var(--rh-space-lg)}slot[name=links]::slotted(a){display:flex;flex-direction:row;gap:var(--rh-space-lg);align-items:center}@container (min-width: 576px){#container{gap:var(--rh-space-lg);margin:var(--rh-space-lg)}}@container (min-width: 992px){#container{grid-template-columns:1fr max-content}slot[name=hamburger]{display:none}slot[name=logo]::slotted(a){margin-inline-start:var(--rh-space-lg)}}</style><!--lit-part PgF9K1dm7N4=-->
+<uxdot-masthead role="banner"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface-darkest);color:var(--rh-color-text-primary-on-dark);height:max-content;container-type:inline-size;container-name:host}#container{display:grid;column-gap:var(--rh-space-lg);grid-template-columns:max-content 1fr max-content;max-height:var(--uxdot-masthead-max-height,72px);margin-inline:var(--rh-space-md);margin-block:var(--rh-space-lg)}slot[name=hamburger]{display:flex;flex-direction:column;align-items:center;gap:var(--rh-space-md);justify-content:center}slot[name=hamburger]::slotted(button){color:var(--rh-color-text-primary-on-dark);background-color:initial;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}slot[name=hamburger]::slotted(button:active),slot[name=hamburger]::slotted(button:focus),slot[name=hamburger]::slotted(button:hover),slot[name=hamburger]:hover::slotted(button){color:var(--rh-color-icon-subtle-hover)}slot[name=hamburger]::slotted(button:focus){outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);border-radius:var(--rh-border-radius-default)}slot[name=logo]::slotted(a){display:flex;flex-direction:row;align-items:center;justify-self:flex-start;gap:var(--rh-space-md)}slot[name=links]{--rh-icon-size:24px;display:flex;flex-direction:row;column-gap:var(--rh-space-lg)}slot[name=links]::slotted(a){display:flex;flex-direction:row;gap:var(--rh-space-lg);align-items:center}@container (min-width: 576px){#container{gap:var(--rh-space-lg);margin:var(--rh-space-lg)}}@container (min-width: 992px){#container{grid-template-columns:1fr max-content}slot[name=hamburger]{display:none}slot[name=logo]::slotted(a){margin-inline-start:var(--rh-space-lg)}}</style><!--lit-part PgF9K1dm7N4=-->
       <div id="container" part="container">
         <slot name="hamburger"></slot>
         <slot name="logo"></slot>
@@ -896,7 +896,7 @@ signals that function to users. Therefore, it is important that each variant is
 implemented consistently so they communicate the correct actions.</p>
 <uxdot-example width-adjustment="788px">
   <img src="../cta-variants.png" alt="Image of the Primary, 
-    Secondary, Brick, and Default variants with descriptive text labels below">
+    Secondary, Brick, and Default variants with descriptive text labels below" width="788" height="90">
 </uxdot-example>
 <rh-table>
   <table>
@@ -953,7 +953,7 @@ implemented consistently so they communicate the correct actions.</p>
 disabled.</p>
 <uxdot-example width-adjustment="529px">
   <img src="../cta-disabled.png" alt="Image of disabled Primary, 
-    Secondary, Brick, and Default variants">
+    Secondary, Brick, and Default variants" width="529" height="56">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -974,7 +974,7 @@ communicate various topics, but the icons must be the same color, height, style,
 etc.</p>
 <uxdot-example width-adjustment="872px">
   <img src="../cta-brick-icons.png" alt="Image of Brick variants 
-    with an icon on the left of text and on top of text">
+    with an icon on the left of text and on top of text" width="872" height="273">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1019,7 +1019,7 @@ announce text to users</li>
 </ul>
 <uxdot-example width-adjustment="411px">
   <img src="../cta-text-labels.png" alt="Image of Default variants 
-    showing how to incorrectly and correctly write text labels">
+    showing how to incorrectly and correctly write text labels" width="411" height="186">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1039,7 +1039,7 @@ announce text to users</li>
 help our users make informed decisions.</p>
 <uxdot-example width-adjustment="458px">
   <img src="../cta-clarity-of-language.png" alt="Image of how to 
-    incorrectly and correctly use clear and straightforward language">
+    incorrectly and correctly use clear and straightforward language" width="458" height="67">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1059,7 +1059,7 @@ help our users make informed decisions.</p>
 labels with as few words as possible.</p>
 <uxdot-example width-adjustment="675px">
   <img src="../cta-long-text-labels-1.png" alt="Image of comparing 
-    very long and shortened text labels">
+    very long and shortened text labels" width="675" height="221">
 </uxdot-example>
 <p>Long text labels will break to two lines on small breakpoints or when translated
 to certain languages. This can be avoided by writing less text.</p>
@@ -1329,7 +1329,7 @@ to certain languages. This can be avoided by writing less text.</p>
 <uxdot-example width-adjustment="360px">
   <img src="../cta-long-text-labels-2.png" alt="Image of Primary, 
     Default, and Brick variants within a small breakpoint showing each text 
-    label breaking to two lines">
+    label breaking to two lines" width="360" height="342">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1349,7 +1349,7 @@ to certain languages. This can be avoided by writing less text.</p>
 button text labels are written to be short and communicate an action.</p>
 <uxdot-example width-adjustment="689px">
   <img src="../cta-call-to-action-vs-button-text-labels.png" alt="Image of comparing text labels in calls to action versus text labels in 
-    buttons">
+    buttons" width="689" height="56">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1428,7 +1428,7 @@ important. Variants that are lower in hierarchy can be used more than one time
 per page.</p>
 <uxdot-example width-adjustment="720px">
   <img src="../cta-layout-hierarchy.png" alt="Image of calls to 
-    action hierarchy and usage guidance">
+    action hierarchy and usage guidance" width="720" height="236">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1449,11 +1449,11 @@ lists, and more. It is commonly used as the last element in a group so users can
 read about something first and then proceed further if they are interested.</p>
 <uxdot-example width-adjustment="872px">
   <img src="../cta-placement-examples-1.png" alt="Image of calls 
-    to action used in context including under a text block and within a card">
+    to action used in context including under a text block and within a card" width="872" height="377">
 </uxdot-example>
 <uxdot-example width-adjustment="872px">
   <img src="../cta-placement-examples-2.png" alt="Image of calls 
-    to action used in context including within a grid and in a list">
+    to action used in context including within a grid and in a list" width="872" height="430">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1474,7 +1474,7 @@ Variants that are lower in hierarchy can be grouped with Primary as well as used
 more than once per page.</p>
 <uxdot-example width-adjustment="650px">
   <img src="../cta-layout-grouping.png" alt="Image of call to 
-    action groups and their hierarchy from left to right">
+    action groups and their hierarchy from left to right" width="650" height="202">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1756,7 +1756,7 @@ more than once per page.</p>
 </rh-alert>
 <uxdot-example width-adjustment="872px">
   <img src="../cta-layout-bricks.png" alt="Image of Brick variants 
-    stretched to fit a variety of grid formations">
+    stretched to fit a variety of grid formations" width="872" height="528">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -2039,18 +2039,18 @@ more than once per page.</p>
 </rh-alert>
 <uxdot-example width-adjustment="473px">
   <img src="../cta-layout-space-in-groups-1.png" alt="Image of 
-    24px spacers in between Primary and Secondary variants">
+    24px spacers in between Primary and Secondary variants" width="473" height="256">
 </uxdot-example>
 <p>Horizontal and vertical spacing between the Default variant is <code>24px</code>.</p>
 <uxdot-example width-adjustment="705px">
   <img src="../cta-layout-space-in-groups-2.png" alt="Image of 
-    24px spacers in between Default variants">
+    24px spacers in between Default variants" width="705" height="78">
 </uxdot-example>
 <p>Horizontal and vertical spacing between Brick variants should be the same as
 grid gutters.</p>
 <uxdot-example width-adjustment="872px">
   <img src="../cta-layout-space-in-groups-3.png" alt="Image of a 
-    variety of space values in between Brick variants">
+    variety of space values in between Brick variants" width="872" height="508">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -2086,7 +2086,7 @@ selected at a time like <a href="/elements/tabs/">tabs</a>.</p>
 <uxdot-example width-adjustment="1000px">
   <img src="../cta-bricks-hide-and-reveal.png" alt="Image of Brick 
     variants with a panel open showing a variety of styles and content 
-    formations">
+    formations" width="1000" height="1016">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -2107,12 +2107,12 @@ right in one row. On small breakpoints, if calls to action have long text
 labels, a second row appears.</p>
 <p><uxdot-example width-adjustment="1000px" variant="full" no-border="" alignment="left">
 <img src="../cta-breakpoints-large.png" alt="Image of calls to 
-  action in a layout on a large breakpoint showing them all in one row">
+  action in a layout on a large breakpoint showing them all in one row" width="1000" height="401">
 </uxdot-example></p>
 <p><uxdot-example width-adjustment="576px" variant="full" no-border="" alignment="left">
 <img src="../cta-breakpoints-small.png" alt="Image of calls to 
   action in a layout on a small breakpoint showing two variants in one row and 
-  one variant in a second row">
+  one variant in a second row" width="576" height="390">
 </uxdot-example></p>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -2145,7 +2145,7 @@ labels, a second row appears.</p>
 <p>Do not change the styles of any variant.</p>
 <uxdot-example width-adjustment="407px" danger="">
   <img src="../cta-best-practice-1.png" alt="Image of several 
-    variants with brand new styles which is incorrect usage">
+    variants with brand new styles which is incorrect usage" width="407" height="56">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -2164,7 +2164,7 @@ labels, a second row appears.</p>
 <p>Do not use more than one Primary variant on any page.</p>
 <uxdot-example width-adjustment="407px" danger="">
   <img src="../cta-best-practice-2.png" alt="Image of two Primary 
-    variants in one row which is incorrect usage">
+    variants in one row which is incorrect usage" width="331" height="56">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -2183,7 +2183,7 @@ labels, a second row appears.</p>
 <p>Do not group different Brick variants together, use one variant per grid.</p>
 <uxdot-example width-adjustment="407px" danger="">
   <img src="../cta-best-practice-3.png" alt="Image of Brick 
-    variants in one row with and without icons which is incorrect usage">
+    variants in one row with and without icons which is incorrect usage" width="816" height="88">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -2202,7 +2202,7 @@ labels, a second row appears.</p>
 <p>Do not group more than two different variants together.</p>
 <uxdot-example width-adjustment="483px" danger="">
   <img src="../cta-best-practice-4.png" alt="Image of Primary, 
-    Secondary, and Default variants in one row which is incorrect usage">
+    Secondary, and Default variants in one row which is incorrect usage" width="483" height="56">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -2484,7 +2484,7 @@ first on the left.</p>
   </rh-alert>
 <uxdot-example width-adjustment="533px" danger="">
   <img src="../cta-best-practice-5.png" alt="Image of the Primary 
-    variant last in a row which is incorrect usage">
+    variant last in a row which is incorrect usage" width="533" height="56">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -2504,7 +2504,7 @@ first on the left.</p>
 paralysis</a> greatly increases.</p>
 <uxdot-example width-adjustment="659px" danger="">
   <img src="../cta-best-practice-6.png" alt="Image of two rows of 
-    calls to action with four variants in each row which is incorrect usage">
+    calls to action with four variants in each row which is incorrect usage" width="659" height="212">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -2523,7 +2523,7 @@ paralysis</a> greatly increases.</p>
 <p>Do not add extra spacing or stretch the width of any variant except for Bricks.</p>
 <uxdot-example width-adjustment="672px" danger="">
   <img src="../cta-best-practice-7.png" alt="Image of Primary and 
-    Secondary variants stretched which is incorrect usage">
+    Secondary variants stretched which is incorrect usage" width="672" height="56">
 </uxdot-example>
 
 

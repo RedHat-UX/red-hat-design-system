@@ -54,8 +54,8 @@
     "lit": "/assets/packages/lit/index.js",
     "@rhds/tokens/css/color-context-provider.css.js": "/assets/packages/@rhds/tokens/css/color-context-provider.css.js",
     "@rhds/tokens/css/color-context-consumer.css.js": "/assets/packages/@rhds/tokens/css/color-context-consumer.css.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.2/core.js",
@@ -145,7 +145,7 @@
 
 
 
-<uxdot-masthead role="banner"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface-darkest);color:var(--rh-color-text-primary-on-dark);position:fixed;inset:0;height:max-content;z-index:var(--uxdot-masthead-z-index,2);container-type:inline-size;container-name:host;z-index:10}#container{display:grid;column-gap:var(--rh-space-lg);grid-template-columns:max-content 1fr max-content;max-height:var(--uxdot-masthead-max-height,72px);margin-inline:var(--rh-space-md);margin-block:var(--rh-space-lg)}slot[name=hamburger]{display:flex;flex-direction:column;align-items:center;gap:var(--rh-space-md);justify-content:center}slot[name=hamburger]::slotted(button){color:var(--rh-color-text-primary-on-dark);background-color:initial;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}slot[name=hamburger]::slotted(button:active),slot[name=hamburger]::slotted(button:focus),slot[name=hamburger]::slotted(button:hover),slot[name=hamburger]:hover::slotted(button){color:var(--rh-color-icon-subtle-hover)}slot[name=hamburger]::slotted(button:focus){outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);border-radius:var(--rh-border-radius-default)}slot[name=logo]::slotted(a){display:flex;flex-direction:row;align-items:center;justify-self:flex-start;gap:var(--rh-space-md)}slot[name=links]{--rh-icon-size:24px;display:flex;flex-direction:row;column-gap:var(--rh-space-lg)}slot[name=links]::slotted(a){display:flex;flex-direction:row;gap:var(--rh-space-lg);align-items:center}@container (min-width: 576px){#container{gap:var(--rh-space-lg);margin:var(--rh-space-lg)}}@container (min-width: 992px){#container{grid-template-columns:1fr max-content}slot[name=hamburger]{display:none}slot[name=logo]::slotted(a){margin-inline-start:var(--rh-space-lg)}}</style><!--lit-part PgF9K1dm7N4=-->
+<uxdot-masthead role="banner"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface-darkest);color:var(--rh-color-text-primary-on-dark);height:max-content;container-type:inline-size;container-name:host}#container{display:grid;column-gap:var(--rh-space-lg);grid-template-columns:max-content 1fr max-content;max-height:var(--uxdot-masthead-max-height,72px);margin-inline:var(--rh-space-md);margin-block:var(--rh-space-lg)}slot[name=hamburger]{display:flex;flex-direction:column;align-items:center;gap:var(--rh-space-md);justify-content:center}slot[name=hamburger]::slotted(button){color:var(--rh-color-text-primary-on-dark);background-color:initial;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}slot[name=hamburger]::slotted(button:active),slot[name=hamburger]::slotted(button:focus),slot[name=hamburger]::slotted(button:hover),slot[name=hamburger]:hover::slotted(button){color:var(--rh-color-icon-subtle-hover)}slot[name=hamburger]::slotted(button:focus){outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);border-radius:var(--rh-border-radius-default)}slot[name=logo]::slotted(a){display:flex;flex-direction:row;align-items:center;justify-self:flex-start;gap:var(--rh-space-md)}slot[name=links]{--rh-icon-size:24px;display:flex;flex-direction:row;column-gap:var(--rh-space-lg)}slot[name=links]::slotted(a){display:flex;flex-direction:row;gap:var(--rh-space-lg);align-items:center}@container (min-width: 576px){#container{gap:var(--rh-space-lg);margin:var(--rh-space-lg)}}@container (min-width: 992px){#container{grid-template-columns:1fr max-content}slot[name=hamburger]{display:none}slot[name=logo]::slotted(a){margin-inline-start:var(--rh-space-lg)}}</style><!--lit-part PgF9K1dm7N4=-->
       <div id="container" part="container">
         <slot name="hamburger"></slot>
         <slot name="logo"></slot>
@@ -815,7 +815,7 @@
         </div>
       </div>
     <!--/lit-part--></template>
-        <ol slot="details"><li><a href="#style">Style</a></li><li><a href="#variants">Variants</a></li><li><a href="#interaction-states">Interaction states</a></li><li><a href="#spacing">Spacing</a></li></ol><ol slot="expanded"><li><a href="#style">Style</a></li><li><a href="#variants">Variants</a></li><li><a href="#interaction-states">Interaction states</a></li><li><a href="#spacing">Spacing</a></li></ol>
+        <ol slot="details"><li><a href="#style">Style</a></li><li><a href="#variants">Variants</a></li><li><a href="#space">Space</a></li><li><a href="#interaction-states">Interaction states</a></li></ol><ol slot="expanded"><li><a href="#style">Style</a></li><li><a href="#variants">Variants</a></li><li><a href="#space">Space</a></li><li><a href="#interaction-states">Interaction states</a></li></ol>
       </uxdot-toc>
     </div>
     
@@ -835,9 +835,7 @@
     <a href="#style">Style</a><a>
   </a></h2>
 </uxdot-copy-permalink>
-<p>An alert contains title text with an icon, body text, and a close button. They
-may also include action buttons below the text or inline links. There are two
-variants, toast and inline, which serve different purposes.</p>
+<p>An alert is a layout including an icon, title, text, actions, and a close button. It comes in a variety of colors depending on status. A toast is a variant of alert. Instead of having a background color, it has a white background with a drop shadow.</p>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
@@ -852,17 +850,23 @@ variants, toast and inline, which serve different purposes.</p>
     <a href="#anatomy">Anatomy</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<uxdot-example width-adjustment="538px">
-  <img alt="Alert with numbers pointing to parts of the element" src="../alert-anatomy.svg" width="538px">
-</uxdot-example>
-<ol class="example-notes">
-<li>Severity indicator</li>
-<li>Severity icon</li>
-<li>Title</li>
-<li>Body</li>
-<li>Actions</li>
-<li>Close button</li>
-</ol>
+<figure>
+  <uxdot-example width-adjustment="456px">
+    <img src="../alert-style-anatomy.svg" alt="Alert with numbers pointing to parts of the element" width="538" height="276">
+  </uxdot-example>    
+  <figcaption>
+    <ol>
+      <li>Status icon</li>
+      <li>Title</li>
+      <li>Body text</li>
+      <li>Action buttons</li>
+      <li>Close button</li>
+      <li>Color background</li>
+      <li>White background with drop shadow</li>
+    </ol>
+  </figcaption>
+</figure>
+å
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
@@ -891,12 +895,9 @@ variants, toast and inline, which serve different purposes.</p>
     <a href="#inline">Inline</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<p>The required elements of an Inline alert are a thin top bar or thin border,
-icon, title, close button, and a container background. Supporting text and
-buttons may or may not be included below the title to add clarity or optional
-actions.</p>
-<uxdot-example width-adjustment="538px">
-  <img alt="Two examples of an inline alert" src="../alert-style-inline.svg">
+<p>The default alert is inline. At minimum, the status icon and title needs to be visible.</p>
+<uxdot-example width-adjustment="408px">
+  <img src="../alert-style-variant-inline.svg" alt="Two examples of an inline alert" width="408" height="339">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -908,14 +909,13 @@ actions.</p>
     <!--/lit-part--></template></rh-icon>
       </button>
     <!--/lit-part--></template>
-  <h3 id="inline%2C-alternate" tabindex="-1">
-    <a href="#inline%2C-alternate">Inline, alternate</a><a>
+  <h3 id="inline-alternate" tabindex="-1">
+    <a href="#inline-alternate">Inline alternate</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<p>The alternate Inline alert style includes a border instead of a line which can
-be used to express more urgency or better grab the attention of a user.</p>
-<uxdot-example width-adjustment="538px">
-  <img alt="Two examples of an alternate design for inline alerts" src="../alert-style-inline-alt.svg">
+<p>There is an alternate inline alert where the border covers all sides.</p>
+<uxdot-example width-adjustment="408px">
+  <img src="../alert-style-variant-inline-alt.svg" alt="Two examples of an alternate design for inline alerts" width="408" height="339">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -931,12 +931,9 @@ be used to express more urgency or better grab the attention of a user.</p>
     <a href="#toast">Toast</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<p>The required elements of a Toast alert are a thin top bar, icon, title, close
-button, and a white container with a subtle drop shadow. Supporting text and
-buttons may or may not be included below the title to add clarity or optional
-actions.</p>
-<uxdot-example width-adjustment="538px">
-  <img alt="Two examples of a toast alert" src="../alert-style-toast.svg">
+<p>Same as the inline alert, at minimum, the status icon and title needs to be visible.</p>
+<uxdot-example width-adjustment="456px">
+  <img src="../alert-style-variant-toast.svg" alt="Two examples of a toast alert" width="456" height="203">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -948,112 +945,19 @@ actions.</p>
     <!--/lit-part--></template></rh-icon>
       </button>
     <!--/lit-part--></template>
-  <h2 id="interaction-states" tabindex="-1">
-    <a href="#interaction-states">Interaction states</a><a>
+  <h2 id="space" tabindex="-1">
+    <a href="#space">Space</a><a>
   </a></h2>
 </uxdot-copy-permalink>
-<p>Interaction states are visual representations used to communicate the status of
-a component or element. The close button and any linked content are the only
-interactive elements in both alert variants.</p>
-<uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button id="button" aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon set="ui" icon="link" defer-hydration=""><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container" aria-hidden="true" class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"></path><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"></path></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden=""><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
-    <!--/lit-part--></template>
-  <h3 id="hover" tabindex="-1">
-    <a href="#hover">Hover</a><a>
-  </a></h3>
-</uxdot-copy-permalink>
-<uxdot-example width-adjustment="538px">
-  <img alt="Examples showing hover state" src="../alert-interaction-states-hover.svg">
+<uxdot-example width-adjustment="456px">
+  <img src="../alert-style-spacing-1.svg" alt="Diagram of spacing for inline alerts" width="456" height="276">
 </uxdot-example>
-<uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button id="button" aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon set="ui" icon="link" defer-hydration=""><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container" aria-hidden="true" class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"></path><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"></path></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden=""><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
-    <!--/lit-part--></template>
-  <h3 id="focus" tabindex="-1">
-    <a href="#focus">Focus</a><a>
-  </a></h3>
-</uxdot-copy-permalink>
-<uxdot-example width-adjustment="538px">
-  <img alt="Examples showing focus state" src="../alert-interaction-states-focus.svg">
+<uxdot-example variant="full" no-border="">
+  <img src="../alert-style-spacing-2.svg" alt="Diagram of spacing for toast alerts" width="1140" height="302">
 </uxdot-example>
-<uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button id="button" aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon set="ui" icon="link" defer-hydration=""><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container" aria-hidden="true" class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"></path><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"></path></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden=""><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
-    <!--/lit-part--></template>
-  <h3 id="active" tabindex="-1">
-    <a href="#active">Active</a><a>
-  </a></h3>
-</uxdot-copy-permalink>
-<uxdot-example width-adjustment="538px">
-  <img alt="Examples showing active state" src="../alert-interaction-states-active.svg">
-</uxdot-example>
-<uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button id="button" aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon set="ui" icon="link" defer-hydration=""><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container" aria-hidden="true" class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"></path><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"></path></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden=""><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
-    <!--/lit-part--></template>
-  <h2 id="spacing" tabindex="-1">
-    <a href="#spacing">Spacing</a><a>
-  </a></h2>
-</uxdot-copy-permalink>
-<uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button id="button" aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon set="ui" icon="link" defer-hydration=""><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container" aria-hidden="true" class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"></path><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"></path></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden=""><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
-    <!--/lit-part--></template>
-  <h3 id="inline-1" tabindex="-1">
-    <a href="#inline-1">Inline</a><a>
-  </a></h3>
-</uxdot-copy-permalink>
-<uxdot-example width-adjustment="538px">
-  <img alt="Diagram of spacing for inline alerts" src="../alert-spacing-inline.svg">
-</uxdot-example>
-<uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button id="button" aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon set="ui" icon="link" defer-hydration=""><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container" aria-hidden="true" class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"></path><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"></path></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden=""><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
-    <!--/lit-part--></template>
-  <h3 id="toast-1" tabindex="-1">
-    <a href="#toast-1">Toast</a><a>
-  </a></h3>
-</uxdot-copy-permalink>
-<uxdot-example width-adjustment="538px">
-  <img alt="Diagram of spacing for toast alerts" src="../alert-spacing-toast.svg">
-</uxdot-example>
+<p><uxdot-example width-adjustment="752px" alignment="left" variant="full" no-border="">
+<img src="../alert-style-spacing-3.svg" alt="Diagram of spacing for alerts on mobile" width="752" height="640">
+</uxdot-example></p>
 <rh-table>
 <table>
           <caption></caption>
@@ -1097,7 +1001,7 @@ interactive elements in both alert variants.</p>
         <div class="token-props-table palette-light ">          
 <p></p></div>
 </rh-table><p></p>
-<uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+<uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button id="button" aria-label="Copy link to clipboard">
@@ -1107,13 +1011,14 @@ interactive elements in both alert variants.</p>
     <!--/lit-part--></template></rh-icon>
       </button>
     <!--/lit-part--></template>
-  <h3 id="toast-(stacked)" tabindex="-1">
-    <a href="#toast-(stacked)">Toast (stacked)</a><a>
-  </a></h3>
+  <h2 id="interaction-states" tabindex="-1">
+    <a href="#interaction-states">Interaction states</a><a>
+  </a></h2>
 </uxdot-copy-permalink>
-<uxdot-example variant="full" no-border="">
-  <img alt="Diagram of spacing between stacked toast alerts" src="../alert-spacing-toast-layout.svg">
-</uxdot-example>
+<p>Refer to these documentation pages for interaction states.</p>
+<ul>
+<li><a href="/elements/button/style/#interaction-states">Button</a></li>
+</ul>
 
 
       

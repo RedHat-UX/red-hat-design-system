@@ -54,8 +54,8 @@
     "lit": "/assets/packages/lit/index.js",
     "@rhds/tokens/css/color-context-provider.css.js": "/assets/packages/@rhds/tokens/css/color-context-provider.css.js",
     "@rhds/tokens/css/color-context-consumer.css.js": "/assets/packages/@rhds/tokens/css/color-context-consumer.css.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.2/core.js",
@@ -145,7 +145,7 @@
 
 
 
-<uxdot-masthead role="banner"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface-darkest);color:var(--rh-color-text-primary-on-dark);position:fixed;inset:0;height:max-content;z-index:var(--uxdot-masthead-z-index,2);container-type:inline-size;container-name:host;z-index:10}#container{display:grid;column-gap:var(--rh-space-lg);grid-template-columns:max-content 1fr max-content;max-height:var(--uxdot-masthead-max-height,72px);margin-inline:var(--rh-space-md);margin-block:var(--rh-space-lg)}slot[name=hamburger]{display:flex;flex-direction:column;align-items:center;gap:var(--rh-space-md);justify-content:center}slot[name=hamburger]::slotted(button){color:var(--rh-color-text-primary-on-dark);background-color:initial;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}slot[name=hamburger]::slotted(button:active),slot[name=hamburger]::slotted(button:focus),slot[name=hamburger]::slotted(button:hover),slot[name=hamburger]:hover::slotted(button){color:var(--rh-color-icon-subtle-hover)}slot[name=hamburger]::slotted(button:focus){outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);border-radius:var(--rh-border-radius-default)}slot[name=logo]::slotted(a){display:flex;flex-direction:row;align-items:center;justify-self:flex-start;gap:var(--rh-space-md)}slot[name=links]{--rh-icon-size:24px;display:flex;flex-direction:row;column-gap:var(--rh-space-lg)}slot[name=links]::slotted(a){display:flex;flex-direction:row;gap:var(--rh-space-lg);align-items:center}@container (min-width: 576px){#container{gap:var(--rh-space-lg);margin:var(--rh-space-lg)}}@container (min-width: 992px){#container{grid-template-columns:1fr max-content}slot[name=hamburger]{display:none}slot[name=logo]::slotted(a){margin-inline-start:var(--rh-space-lg)}}</style><!--lit-part PgF9K1dm7N4=-->
+<uxdot-masthead role="banner"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface-darkest);color:var(--rh-color-text-primary-on-dark);height:max-content;container-type:inline-size;container-name:host}#container{display:grid;column-gap:var(--rh-space-lg);grid-template-columns:max-content 1fr max-content;max-height:var(--uxdot-masthead-max-height,72px);margin-inline:var(--rh-space-md);margin-block:var(--rh-space-lg)}slot[name=hamburger]{display:flex;flex-direction:column;align-items:center;gap:var(--rh-space-md);justify-content:center}slot[name=hamburger]::slotted(button){color:var(--rh-color-text-primary-on-dark);background-color:initial;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}slot[name=hamburger]::slotted(button:active),slot[name=hamburger]::slotted(button:focus),slot[name=hamburger]::slotted(button:hover),slot[name=hamburger]:hover::slotted(button){color:var(--rh-color-icon-subtle-hover)}slot[name=hamburger]::slotted(button:focus){outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);border-radius:var(--rh-border-radius-default)}slot[name=logo]::slotted(a){display:flex;flex-direction:row;align-items:center;justify-self:flex-start;gap:var(--rh-space-md)}slot[name=links]{--rh-icon-size:24px;display:flex;flex-direction:row;column-gap:var(--rh-space-lg)}slot[name=links]::slotted(a){display:flex;flex-direction:row;gap:var(--rh-space-lg);align-items:center}@container (min-width: 576px){#container{gap:var(--rh-space-lg);margin:var(--rh-space-lg)}}@container (min-width: 992px){#container{grid-template-columns:1fr max-content}slot[name=hamburger]{display:none}slot[name=logo]::slotted(a){margin-inline-start:var(--rh-space-lg)}}</style><!--lit-part PgF9K1dm7N4=-->
       <div id="container" part="container">
         <slot name="hamburger"></slot>
         <slot name="logo"></slot>
@@ -858,7 +858,7 @@ break or respite.</p>
 external source. Doing this increases the credibility of the statistic and
 better integrates the data with the rest of the page content.</p>
 <uxdot-example width-adjustment="369px">
-  <img src="../stat-footnote.png" alt="A statistic with a small text footnote underneath">
+  <img src="../stat-footnote.png" alt="A statistic with a small text footnote underneath" width="369" height="215">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -877,7 +877,7 @@ better integrates the data with the rest of the page content.</p>
 <p>Use an icon to add visual context and emphasis while helping to explain a
 statistic further.</p>
 <uxdot-example width-adjustment="800px">
-  <img src="../stat-icon-regular.png" alt="Two statistics with icons; the left statistic has a fighter jet icon on top whereas the right has a wrench">
+  <img src="../stat-icon-regular.png" alt="Two statistics with icons; the left statistic has a fighter jet icon on top whereas the right has a wrench" width="800" height="194">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -898,7 +898,7 @@ data point is written into the body text. This is an edge case, so work with a
 content strategist to write short data text and body text or use another element
 instead.</p>
 <uxdot-example width-adjustment="872px">
-  <img src="../stat-icon-large.png" alt="Three statistics with large icons and body text">
+  <img src="../stat-icon-large.png" alt="Three statistics with large icons and body text" width="872" height="208">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1252,7 +1252,7 @@ sense.</p>
   <p>Title text can be positioned above or below data text even if statistics are grouped.</p>
 </rh-alert>
 <uxdot-example width-adjustment="760px">
-  <img src="../stat-text-slot-title.png" alt="Two statistics, one with title text above the data text and the other with title text below data text">
+  <img src="../stat-text-slot-title.png" alt="Two statistics, one with title text above the data text and the other with title text below data text" width="760" height="132">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1270,7 +1270,7 @@ sense.</p>
 </uxdot-copy-permalink>
 <p>Data text is the number or percent that represents data.</p>
 <uxdot-example width-adjustment="760px">
-  <img src="../stat-text-slot-data.png" alt="Two statistics with different data text percents">
+  <img src="../stat-text-slot-data.png" alt="Two statistics with different data text percents" width="664" height="95">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1289,7 +1289,7 @@ sense.</p>
 <p>Body text explains data text. A percent or number means nothing without
 something that explains the rest of the statistic.</p>
 <uxdot-example width-adjustment="760px">
-  <img src="../stat-text-slot-body.png" alt="Two statistics with different body text examples">
+  <img src="../stat-text-slot-body.png" alt="Two statistics with different body text examples" width="780" height="95">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1309,7 +1309,7 @@ something that explains the rest of the statistic.</p>
 If statistics are grouped, it is not mandatory for each statistic to include a
 call to action.</p>
 <uxdot-example width-adjustment="340px">
-  <img src="../stat-text-slot-cta.png" alt="Statistic with a call to action">
+  <img src="../stat-text-slot-cta.png" alt="Statistic with a call to action" width="340" height="199">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1331,10 +1331,10 @@ This is important for statistics used in groups as more words will cause them to
 be arranged closer to each other therefore reducing any comfortable spacing
 around them.</p>
 <uxdot-example width-adjustment="348px">
-  <img src="../stat-i18n-a.png" alt="Two statistics with English on top and German on the bottom; the English statistic has two lines of body text whereas the German has three">
+  <img src="../stat-i18n-a.png" alt="Two statistics with English on top and German on the bottom; the English statistic has two lines of body text whereas the German has three" width="348" height="330">
 </uxdot-example>
 <uxdot-example width-adjustment="516px">
-  <img src="../stat-i18n-b.png" alt="Two statistics with English on top and Chinese on the bottom; the English statistic body text is wider whereas the Chinese is thinner">
+  <img src="../stat-i18n-b.png" alt="Two statistics with English on top and Chinese on the bottom; the English statistic body text is wider whereas the Chinese is thinner" width="516" height="225">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1367,7 +1367,7 @@ around them.</p>
 <p>The minimum number of statistics per row is one and the maximum is four
 regardless if they are in a container or not.</p>
 <uxdot-example width-adjustment="1000px">
-  <img src="../stat-layout-grouping.png" alt="Four statistics arranged evenly-spaced on a 12-column grid">
+  <img src="../stat-layout-grouping.png" alt="Four statistics arranged evenly-spaced on a 12-column grid" width="992" height="133">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1386,7 +1386,7 @@ regardless if they are in a container or not.</p>
 <p>A statistic can be placed in a card if the body text or other text styles are
 short enough. Otherwise, keep them on the page to avoid readability issues.</p>
 <uxdot-example width-adjustment="1000px">
-  <img src="../stat-layout-card.png" alt="Four statistics placed in cards and arranged evenly-spaced on a 12-column grid">
+  <img src="../stat-layout-card.png" alt="Four statistics placed in cards and arranged evenly-spaced on a 12-column grid" width="1000" height="170">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1405,7 +1405,7 @@ short enough. Otherwise, keep them on the page to avoid readability issues.</p>
 <p>By default, a statistic is always center aligned. However, a statistic may be
 left aligned if grouped and if the surrounding content is also left aligned.</p>
 <uxdot-example width-adjustment="926px">
-  <img src="../stat-layout-alignment.png" alt="Three statistics left aligned with vertical dashed lines on the left side of each">
+  <img src="../stat-layout-alignment.png" alt="Three statistics left aligned with vertical dashed lines on the left side of each" width="926" height="194">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1425,7 +1425,7 @@ left aligned if grouped and if the surrounding content is also left aligned.</p>
 content, but in most situations, it is 32px on large breakpoints. On small
 breakpoints, the padding is 48px for better vertical rhythm.</p>
 <uxdot-example width-adjustment="1000px">
-  <img src="../stat-layout-padding.png" alt="Two groups of statistics; one group has 32px of padding with text underneath that says ‘Large breakpoints’, the other group has 48px of padding with text underneath that says ‘Small breakpoints’">
+  <img src="../stat-layout-padding.png" alt="Two groups of statistics; one group has 32px of padding with text underneath that says ‘Large breakpoints’, the other group has 48px of padding with text underneath that says ‘Small breakpoints’" width="1000" height="282">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1457,7 +1457,7 @@ breakpoints, the padding is 48px for better vertical rhythm.</p>
 </uxdot-copy-permalink>
 <p>If only one statistic is used, it can span a maximum of six columns.</p>
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border="">
-  <img src="../stat-breakpoint-large.png" alt="Statistic spanning less than six columns with a box around the body copy spanning six columns">
+  <img src="../stat-breakpoint-large.png" alt="Statistic spanning less than six columns with a box around the body copy spanning six columns" width="992" height="244">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1477,7 +1477,7 @@ breakpoints, the padding is 48px for better vertical rhythm.</p>
 breakpoints. Text sizes will also be reduced based on the <a href="https://ux.redhat.com/foundations/typography/">mobile
 typography scale</a>.</p>
 <uxdot-example width-adjustment="360px" variant="full" alignment="left" no-border="">
-  <img src="../stat-breakpoint-small.png" alt="Three statistics spanning the width of one column on mobile">
+  <img src="../stat-breakpoint-small.png" alt="Three statistics spanning the width of one column on mobile" width="360" height="357">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1509,7 +1509,7 @@ typography scale</a>.</p>
 </uxdot-copy-permalink>
 <p>Do not duplicate or rearrange any element to create a custom statistic.</p>
 <uxdot-example width-adjustment="452px" danger="">
-  <img src="../stat-best-practice-1.png" alt="Statistic with some elements arranged horizontally and some vertically which is incorrect usage">
+  <img src="../stat-best-practice-1.png" alt="Statistic with some elements arranged horizontally and some vertically which is incorrect usage" width="452" height="201">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1527,7 +1527,7 @@ typography scale</a>.</p>
 </uxdot-copy-permalink>
 <p>Do not use an icon that is unrelated to the rest of the statistic content.</p>
 <uxdot-example width-adjustment="452px" danger="">
-  <img src="../stat-best-practice-2.png" alt="Statistic with a crab icon on top of text which is incorrect usage">
+  <img src="../stat-best-practice-2.png" alt="Statistic with a crab icon on top of text which is incorrect usage" width="452" height="193">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1548,7 +1548,7 @@ for all statistics or do not use them at all. For example, if a statistic has an
 icon and the others do not, either remove the icon or ensure they all have an
 icon.</p>
 <uxdot-example width-adjustment="872px" danger="">
-  <img src="../stat-best-practice-3.png" alt="Three statistics with different element combinations with is incorrect usage">
+  <img src="../stat-best-practice-3.png" alt="Three statistics with different element combinations with is incorrect usage" width="872" height="199">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1567,7 +1567,7 @@ icon.</p>
 <p>Do not include too much body text, a statistic should clarify a single data
 point quickly and with impact, not tell a long story.</p>
 <uxdot-example width-adjustment="476px" danger="">
-  <img src="../stat-best-practice-4.png" alt="Statistic with data text and long lines of body text which is incorrect usage">
+  <img src="../stat-best-practice-4.png" alt="Statistic with data text and long lines of body text which is incorrect usage" width="476" height="175">
 </uxdot-example>
 
 

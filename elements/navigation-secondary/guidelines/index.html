@@ -54,8 +54,8 @@
     "lit": "/assets/packages/lit/index.js",
     "@rhds/tokens/css/color-context-provider.css.js": "/assets/packages/@rhds/tokens/css/color-context-provider.css.js",
     "@rhds/tokens/css/color-context-consumer.css.js": "/assets/packages/@rhds/tokens/css/color-context-consumer.css.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.2/core.js",
@@ -145,7 +145,7 @@
 
 
 
-<uxdot-masthead role="banner"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface-darkest);color:var(--rh-color-text-primary-on-dark);position:fixed;inset:0;height:max-content;z-index:var(--uxdot-masthead-z-index,2);container-type:inline-size;container-name:host;z-index:10}#container{display:grid;column-gap:var(--rh-space-lg);grid-template-columns:max-content 1fr max-content;max-height:var(--uxdot-masthead-max-height,72px);margin-inline:var(--rh-space-md);margin-block:var(--rh-space-lg)}slot[name=hamburger]{display:flex;flex-direction:column;align-items:center;gap:var(--rh-space-md);justify-content:center}slot[name=hamburger]::slotted(button){color:var(--rh-color-text-primary-on-dark);background-color:initial;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}slot[name=hamburger]::slotted(button:active),slot[name=hamburger]::slotted(button:focus),slot[name=hamburger]::slotted(button:hover),slot[name=hamburger]:hover::slotted(button){color:var(--rh-color-icon-subtle-hover)}slot[name=hamburger]::slotted(button:focus){outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);border-radius:var(--rh-border-radius-default)}slot[name=logo]::slotted(a){display:flex;flex-direction:row;align-items:center;justify-self:flex-start;gap:var(--rh-space-md)}slot[name=links]{--rh-icon-size:24px;display:flex;flex-direction:row;column-gap:var(--rh-space-lg)}slot[name=links]::slotted(a){display:flex;flex-direction:row;gap:var(--rh-space-lg);align-items:center}@container (min-width: 576px){#container{gap:var(--rh-space-lg);margin:var(--rh-space-lg)}}@container (min-width: 992px){#container{grid-template-columns:1fr max-content}slot[name=hamburger]{display:none}slot[name=logo]::slotted(a){margin-inline-start:var(--rh-space-lg)}}</style><!--lit-part PgF9K1dm7N4=-->
+<uxdot-masthead role="banner"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface-darkest);color:var(--rh-color-text-primary-on-dark);height:max-content;container-type:inline-size;container-name:host}#container{display:grid;column-gap:var(--rh-space-lg);grid-template-columns:max-content 1fr max-content;max-height:var(--uxdot-masthead-max-height,72px);margin-inline:var(--rh-space-md);margin-block:var(--rh-space-lg)}slot[name=hamburger]{display:flex;flex-direction:column;align-items:center;gap:var(--rh-space-md);justify-content:center}slot[name=hamburger]::slotted(button){color:var(--rh-color-text-primary-on-dark);background-color:initial;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}slot[name=hamburger]::slotted(button:active),slot[name=hamburger]::slotted(button:focus),slot[name=hamburger]::slotted(button:hover),slot[name=hamburger]:hover::slotted(button){color:var(--rh-color-icon-subtle-hover)}slot[name=hamburger]::slotted(button:focus){outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);border-radius:var(--rh-border-radius-default)}slot[name=logo]::slotted(a){display:flex;flex-direction:row;align-items:center;justify-self:flex-start;gap:var(--rh-space-md)}slot[name=links]{--rh-icon-size:24px;display:flex;flex-direction:row;column-gap:var(--rh-space-lg)}slot[name=links]::slotted(a){display:flex;flex-direction:row;gap:var(--rh-space-lg);align-items:center}@container (min-width: 576px){#container{gap:var(--rh-space-lg);margin:var(--rh-space-lg)}}@container (min-width: 992px){#container{grid-template-columns:1fr max-content}slot[name=hamburger]{display:none}slot[name=logo]::slotted(a){margin-inline-start:var(--rh-space-lg)}}</style><!--lit-part PgF9K1dm7N4=-->
       <div id="container" part="container">
         <slot name="hamburger"></slot>
         <slot name="logo"></slot>
@@ -867,7 +867,7 @@
 </uxdot-copy-permalink>
 <p>The <a href="../../navigation-primary">primary navigation</a> includes links to the most important pages across a domain. If content related to a specific topic needs to be organized somewhere, it should be added to a secondary navigation instead. This hierarchy can be demonstrated visually by the primary navigation being on top of a secondary navigation when a page loads.</p>
 <uxdot-example width-adjustment="872px">
-  <img src="../nav-secondary-usage-vs-primary.png" alt="Image of a primary navigation stacked on top of a secondary navigation">
+  <img src="../nav-secondary-usage-vs-primary.png" alt="Image of a primary navigation stacked on top of a secondary navigation" width="872" height="286">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -903,7 +903,7 @@
 <li>If product name text is short and there are fewer links and menus, it can remain on one line</li>
 </ul>
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border="">
-  <img src="../nav-secondary-guidelines-slot-1-text.png" alt="Image of four secondary navigations showing how stacked product name text offers more space">
+  <img src="../nav-secondary-guidelines-slot-1-text.png" alt="Image of four secondary navigations showing how stacked product name text offers more space" width="1000" height="440">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -927,7 +927,7 @@
 <li>Text will expand when translated to some languages</li>
 </ul>
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border="">
-  <img src="../nav-secondary-guidelines-slot-2-text.png" alt="Image of two secondary navigations comparing an acceptable amount of links and menus">
+  <img src="../nav-secondary-guidelines-slot-2-text.png" alt="Image of two secondary navigations comparing an acceptable amount of links and menus" width="1000" height="212">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -951,7 +951,7 @@
 <li>Text will expand when translated to some languages</li>
 </ul>
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border="">
-  <img src="../nav-secondary-guidelines-slot-3-text.png" alt="Image of two secondary navigations comparing the character counts of a call to action">
+  <img src="../nav-secondary-guidelines-slot-3-text.png" alt="Image of two secondary navigations comparing the character counts of a call to action" width="1000" height="212">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1274,11 +1274,11 @@
   <p>Do not use more than four columns, stack groups below other groups instead like in the examples below.</p>
 </rh-alert>
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border="">
-  <img src="../nav-secondary-usage-expandable-menu-columns-4.png" alt="Image of a secondary navigation with four columns of links">
+  <img src="../nav-secondary-usage-expandable-menu-columns-4.png" alt="Image of a secondary navigation with four columns of links" width="1000" height="736">
 </uxdot-example>
 <p>If content is organized in two columns, they will stretch to fill the empty space.</p>
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border="">
-  <img src="../nav-secondary-usage-expandable-menu-columns-2.png" alt="Image of a secondary navigation with two columns of links">
+  <img src="../nav-secondary-usage-expandable-menu-columns-2.png" alt="Image of a secondary navigation with two columns of links" width="1000" height="453">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1332,7 +1332,7 @@
 </uxdot-copy-permalink>
 <p>When a user is viewing a page that is part of the secondary navigation information architecture, a red top border is visible. In the example below, a user is viewing both the <em>Overview</em> page and a page within the <em>Product variants</em> menu. External links do not display the red top border (except on hover) because they open links in a new tab or window instead.</p>
 <uxdot-example width-adjustment="872px" variant="full" alignment="left" no-border="">
-  <img src="../nav-secondary-guidelines-current-page-indicator.png" alt="Image of two secondary navigations with red bars on top of different menus">
+  <img src="../nav-secondary-guidelines-current-page-indicator.png" alt="Image of two secondary navigations with red bars on top of different menus" width="872" height="212">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1350,7 +1350,7 @@
 </uxdot-copy-permalink>
 <p>A secondary navigation is positioned below the primary navigation when the page loads. When a user scrolls down, the primary navigation disappears and the secondary navigation becomes fixed to the top of the browser window. When a user scrolls back up to the top, the secondary navigation is positioned under the primary navigation again.</p>
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border="">
-  <img src="../nav-secondary-guidelines-scrolling-primary-nav.png" alt="Image of primary and secondary navigations and their behaviors when scrolling">
+  <img src="../nav-secondary-guidelines-scrolling-primary-nav.png" alt="Image of primary and secondary navigations and their behaviors when scrolling" width="1000" height="554">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1630,7 +1630,7 @@
   <p>The default state of the menu caret is pointing down. When a menu is expanded, the caret points up.</p>
 </rh-alert>
 <uxdot-example width-adjustment="872px">
-  <img src="../nav-secondary-guidelines-navigating-menus.png" alt="Image of three secondary navigations with different menus selected">
+  <img src="../nav-secondary-guidelines-navigating-menus.png" alt="Image of three secondary navigations with different menus selected" width="872" height="326">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1648,11 +1648,11 @@
 </uxdot-copy-permalink>
 <p>If the height of the menu is <strong>shorter</strong> than the viewport height, content should scroll underneath the backdrop.</p>
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border="">
-  <img src="../nav-secondary-guidelines-scrolling-menu-expanded-a.png" alt="Image of secondary navigation showing the scrolling behavior when the menu panel is shorter than the viewport height">
+  <img src="../nav-secondary-guidelines-scrolling-menu-expanded-a.png" alt="Image of secondary navigation showing the scrolling behavior when the menu panel is shorter than the viewport height" width="1000" height="668">
 </uxdot-example>
 <p>If the height of the menu is <strong>taller</strong> than the viewport height, scroll is trapped within the panel until the menu is collapsed.</p>
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border="">
-  <img src="../nav-secondary-guidelines-scrolling-menu-expanded-b.png" alt="Image of secondary navigation showing the scrolling behavior when the menu panel is taller than the viewport height">
+  <img src="../nav-secondary-guidelines-scrolling-menu-expanded-b.png" alt="Image of secondary navigation showing the scrolling behavior when the menu panel is taller than the viewport height" width="1000" height="760">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1684,7 +1684,7 @@
   </a></h3>
 </uxdot-copy-permalink>
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border="">
-  <img src="../nav-secondary-guidelines-responsive-slot-2-visible.png" alt="Image of secondary navigations; one has a menu collapsed and the other has a menu expanded, but both have slot 2 visible on large breakpoints">
+  <img src="../nav-secondary-guidelines-responsive-slot-2-visible.png" alt="Image of secondary navigations; one has a menu collapsed and the other has a menu expanded, but both have slot 2 visible on large breakpoints" width="1000" height="550">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1701,7 +1701,7 @@
   </a></h3>
 </uxdot-copy-permalink>
 <uxdot-example width-adjustment="784px" variant="full" alignment="left" no-border="">
-  <img src="../nav-secondary-guidelines-responsive-slot-2-hidden.png" alt="Image of secondary navigations; slot 2 on small breakpoints is not visible unless the menu is expanded">
+  <img src="../nav-secondary-guidelines-responsive-slot-2-hidden.png" alt="Image of secondary navigations; slot 2 on small breakpoints is not visible unless the menu is expanded" width="784" height="731">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1803,7 +1803,7 @@
 </uxdot-copy-permalink>
 <p>Do not position the secondary navigation above the primary navigation.</p>
 <uxdot-example width-adjustment="872px" danger="">
-  <img src="../nav-secondary-best-practice-1.png" alt="Image of a secondary navigation on top of a primary navigation which is incorrect usage">
+  <img src="../nav-secondary-best-practice-1.png" alt="Image of a secondary navigation on top of a primary navigation which is incorrect usage" width="1000" height="170">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1821,7 +1821,7 @@
 </uxdot-copy-permalink>
 <p>Do not use a dark theme secondary navigation in light environments and vice versa.</p>
 <uxdot-example width-adjustment="872px" danger="">
-  <img src="../nav-secondary-best-practice-2.png" alt="Image of a dark theme secondary navigation in a light theme environment which is incorrect usage">
+  <img src="../nav-secondary-best-practice-2.png" alt="Image of a dark theme secondary navigation in a light theme environment which is incorrect usage" width="1000" height="393">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1839,7 +1839,7 @@
 </uxdot-copy-permalink>
 <p>Do not use too many links or menus in Slot 2.</p>
 <uxdot-example width-adjustment="872px" danger="">
-  <img src="../nav-secondary-best-practice-3.png" alt="Image of a secondary navigation with way more than five links and menus which is incorrect usage">
+  <img src="../nav-secondary-best-practice-3.png" alt="Image of a secondary navigation with way more than five links and menus which is incorrect usage" width="1000" height="98">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1857,7 +1857,7 @@
 </uxdot-copy-permalink>
 <p>Do not add more slots than provided, three is the maximum.</p>
 <uxdot-example width-adjustment="872px" danger="">
-  <img src="../nav-secondary-best-practice-4.png" alt="Image of a secondary navigation with four dotted line boxes for slots which is incorrect usage">
+  <img src="../nav-secondary-best-practice-4.png" alt="Image of a secondary navigation with four dotted line boxes for slots which is incorrect usage" width="1000" height="98">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1875,7 +1875,7 @@
 </uxdot-copy-permalink>
 <p>Slot 1 text should never break to three lines.</p>
 <uxdot-example width-adjustment="872px" danger="">
-  <img src="../nav-secondary-best-practice-5.png" alt="Image of a secondary navigation, but the product name logo in slot 1 is three lines which is incorrect usage">
+  <img src="../nav-secondary-best-practice-5.png" alt="Image of a secondary navigation, but the product name logo in slot 1 is three lines which is incorrect usage" width="1000" height="125">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1893,7 +1893,7 @@
 </uxdot-copy-permalink>
 <p>At least one link or menu in Slot 2 must be visible.</p>
 <uxdot-example width-adjustment="872px" danger="">
-  <img src="../nav-secondary-best-practice-6.png" alt="Image of a secondary navigation with no links or menus in slot 2 which is incorrect usage">
+  <img src="../nav-secondary-best-practice-6.png" alt="Image of a secondary navigation with no links or menus in slot 2 which is incorrect usage" width="1000" height="98">
 </uxdot-example>
 
 

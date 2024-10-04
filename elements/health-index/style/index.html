@@ -54,8 +54,8 @@
     "lit": "/assets/packages/lit/index.js",
     "@rhds/tokens/css/color-context-provider.css.js": "/assets/packages/@rhds/tokens/css/color-context-provider.css.js",
     "@rhds/tokens/css/color-context-consumer.css.js": "/assets/packages/@rhds/tokens/css/color-context-consumer.css.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.2/core.js",
@@ -114,7 +114,17 @@
 
 
 
-  <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css"><link rel="stylesheet" href="/styles/pages/backpage.css"><link rel="stylesheet" href="/styles/samp.css"><script type="module">
+  <style>
+  .list-flat {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  rh-table caption {
+    font-weight: var(--rh-font-weight-body-text-regular, 400);
+    font-size: var(--rh-font-size-code-sm, 0.875rem);
+  }
+</style><link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css"><link rel="stylesheet" href="/styles/pages/backpage.css"><link rel="stylesheet" href="/styles/samp.css"><script type="module">
   import "/assets/javascript/elements/uxdot-feedback.js";
   import "/assets/javascript/elements/uxdot-copy-button.js";
   import '/assets/javascript/elements/uxdot-header.js';
@@ -145,7 +155,7 @@
 
 
 
-<uxdot-masthead role="banner"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface-darkest);color:var(--rh-color-text-primary-on-dark);position:fixed;inset:0;height:max-content;z-index:var(--uxdot-masthead-z-index,2);container-type:inline-size;container-name:host;z-index:10}#container{display:grid;column-gap:var(--rh-space-lg);grid-template-columns:max-content 1fr max-content;max-height:var(--uxdot-masthead-max-height,72px);margin-inline:var(--rh-space-md);margin-block:var(--rh-space-lg)}slot[name=hamburger]{display:flex;flex-direction:column;align-items:center;gap:var(--rh-space-md);justify-content:center}slot[name=hamburger]::slotted(button){color:var(--rh-color-text-primary-on-dark);background-color:initial;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}slot[name=hamburger]::slotted(button:active),slot[name=hamburger]::slotted(button:focus),slot[name=hamburger]::slotted(button:hover),slot[name=hamburger]:hover::slotted(button){color:var(--rh-color-icon-subtle-hover)}slot[name=hamburger]::slotted(button:focus){outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);border-radius:var(--rh-border-radius-default)}slot[name=logo]::slotted(a){display:flex;flex-direction:row;align-items:center;justify-self:flex-start;gap:var(--rh-space-md)}slot[name=links]{--rh-icon-size:24px;display:flex;flex-direction:row;column-gap:var(--rh-space-lg)}slot[name=links]::slotted(a){display:flex;flex-direction:row;gap:var(--rh-space-lg);align-items:center}@container (min-width: 576px){#container{gap:var(--rh-space-lg);margin:var(--rh-space-lg)}}@container (min-width: 992px){#container{grid-template-columns:1fr max-content}slot[name=hamburger]{display:none}slot[name=logo]::slotted(a){margin-inline-start:var(--rh-space-lg)}}</style><!--lit-part PgF9K1dm7N4=-->
+<uxdot-masthead role="banner"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface-darkest);color:var(--rh-color-text-primary-on-dark);height:max-content;container-type:inline-size;container-name:host}#container{display:grid;column-gap:var(--rh-space-lg);grid-template-columns:max-content 1fr max-content;max-height:var(--uxdot-masthead-max-height,72px);margin-inline:var(--rh-space-md);margin-block:var(--rh-space-lg)}slot[name=hamburger]{display:flex;flex-direction:column;align-items:center;gap:var(--rh-space-md);justify-content:center}slot[name=hamburger]::slotted(button){color:var(--rh-color-text-primary-on-dark);background-color:initial;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}slot[name=hamburger]::slotted(button:active),slot[name=hamburger]::slotted(button:focus),slot[name=hamburger]::slotted(button:hover),slot[name=hamburger]:hover::slotted(button){color:var(--rh-color-icon-subtle-hover)}slot[name=hamburger]::slotted(button:focus){outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);border-radius:var(--rh-border-radius-default)}slot[name=logo]::slotted(a){display:flex;flex-direction:row;align-items:center;justify-self:flex-start;gap:var(--rh-space-md)}slot[name=links]{--rh-icon-size:24px;display:flex;flex-direction:row;column-gap:var(--rh-space-lg)}slot[name=links]::slotted(a){display:flex;flex-direction:row;gap:var(--rh-space-lg);align-items:center}@container (min-width: 576px){#container{gap:var(--rh-space-lg);margin:var(--rh-space-lg)}}@container (min-width: 992px){#container{grid-template-columns:1fr max-content}slot[name=hamburger]{display:none}slot[name=logo]::slotted(a){margin-inline-start:var(--rh-space-lg)}}</style><!--lit-part PgF9K1dm7N4=-->
       <div id="container" part="container">
         <slot name="hamburger"></slot>
         <slot name="logo"></slot>
@@ -821,17 +831,7 @@
     
 
     <div class="container">
-      <style>
-  .list-flat {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  rh-table caption {
-    font-weight: var(--rh-font-weight-body-text-regular, 400);
-    font-size: var(--rh-font-size-code-sm, 0.875rem);
-  }
-</style>
+      
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
@@ -863,7 +863,7 @@
 </uxdot-copy-permalink>
 <figure>
   <uxdot-example width-adjustment="752px">
-    <img src="../style-anatomy.svg" alt="Anatomy of 3 health index components. Annotation #1 is pointing to the letter grade and annotation #2 is pointing to the severity level.">
+    <img src="../style-anatomy.svg" alt="Anatomy of 3 health index components. Annotation #1 is pointing to the letter grade and annotation #2 is pointing to the severity level." width="638" height="82">
   </uxdot-example>
   <figcaption>
     <ol>
@@ -888,7 +888,7 @@
 </uxdot-copy-permalink>
 <p>There are four available variants: <code>Small</code>, <code>Default</code>, <code>Large</code>, and <code>Extra large</code>. The only difference between the Large and Extra large variants is the size.</p>
 <uxdot-example width-adjustment="752px">
-  <img src="../style-variants.svg" alt="4 columns of health index components. Each column is a different size. Under each column, there is every letter grade and severity color.">
+  <img src="../style-variants.svg" alt="4 columns of health index components. Each column is a different size. Under each column, there is every letter grade and severity color." width="802" height="334">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -920,13 +920,13 @@
   </a></h3>
 </uxdot-copy-permalink>
 <uxdot-example width-adjustment="752px">
-  <img src="../style-theme-light.svg" alt="Light theme health index component examples.">
+  <img src="../style-theme-light.svg" alt="Light theme health index component examples." width="793" height="38">
 </uxdot-example>
 <uxdot-example color-palette="lighter" width-adjustment="752px">
-  <img src="../style-theme-light.svg" alt="Light theme health index component examples.">
+  <img src="../style-theme-light.svg" alt="Light theme health index component examples." width="793" height="38">
 </uxdot-example>
 <uxdot-example color-palette="light" width-adjustment="752px">
-  <img src="../style-theme-light.svg" alt="Light theme health index component examples.">
+  <img src="../style-theme-light.svg" alt="Light theme health index component examples." width="793" height="38">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -943,13 +943,13 @@
   </a></h3>
 </uxdot-copy-permalink>
 <uxdot-example color-palette="dark" width-adjustment="752px">
-  <img src="../style-theme-dark.svg" alt="Dark theme health index component examples.">
+  <img src="../style-theme-dark.svg" alt="Dark theme health index component examples." width="793" height="38">
 </uxdot-example>
 <uxdot-example color-palette="darker" width-adjustment="752px">
-  <img src="../style-theme-dark.svg" alt="Dark theme health index component examples.">
+  <img src="../style-theme-dark.svg" alt="Dark theme health index component examples." width="793" height="38">
 </uxdot-example>
 <uxdot-example color-palette="darkest" width-adjustment="752px">
-  <img src="../style-theme-dark.svg" alt="Dark theme health index component examples.">
+  <img src="../style-theme-dark.svg" alt="Dark theme health index component examples." width="793" height="38">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -967,7 +967,7 @@
 </uxdot-copy-permalink>
 <p>Squares in the Default, Large, and Extra large variants are aligned horizontally.</p>
 <uxdot-example width-adjustment="752px">
-  <img src="../style-configuration.svg" alt="3 examples of health index component configurations. The small size is just 1 square, so it’s horizontally and vertically centered. The default, large, and extra large sizes are rows of squares, so they’re horizontally centered only.">
+  <img src="../style-configuration.svg" alt="3 examples of health index component configurations. The small size is just 1 square, so it’s horizontally and vertically centered. The default, large, and extra large sizes are rows of squares, so they’re horizontally centered only." width="764" height="90">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -985,7 +985,7 @@
 </uxdot-copy-permalink>
 <p>The spacer in the Default variant is the same for all viewport sizes.</p>
 <uxdot-example width-adjustment="240px">
-  <img src="../style-space.svg" alt="Health index component with a 16px spacer box in between a C letter grade and a row of severity squares. The active severity square is yellow.">
+  <img src="../style-space.svg" alt="Health index component with a 16px spacer box in between a C letter grade and a row of severity squares. The active severity square is yellow." width="170" height="24">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1016,8 +1016,8 @@
   </a></h3>
 </uxdot-copy-permalink>
 <p>Depending on the theme and chosen variant, each severity level can have different colors and font styling.</p>
-<uxdot-example width-adjustment="752px">
-  <img src="../style-severity-level-light.svg" alt="Multiple light theme health index components at different sizes. Annotations 1 through 4 are pointing to various styling details as well as letter grades that have been enlarged.">
+<uxdot-example width-adjustment="715px">
+  <img src="../style-severity-level-light.svg" alt="Multiple light theme health index components at different sizes. Annotations 1 through 4 are pointing to various styling details as well as letter grades that have been enlarged." width="715" height="227">
 </uxdot-example>
 <rh-table>
   <table>
@@ -1078,8 +1078,8 @@
     </tbody>
   </table>
 </rh-table>
-<uxdot-example color-palette="darkest" width-adjustment="752px">
-  <img src="../style-severity-level-dark.svg" alt="Multiple dark theme health index components at different sizes. Annotations 1 through 4 are pointing to various styling details as well as letter grades that have been enlarged..">
+<uxdot-example color-palette="darkest" width-adjustment="715px">
+  <img src="../style-severity-level-dark.svg" alt="Multiple dark theme health index components at different sizes. Annotations 1 through 4 are pointing to various styling details as well as letter grades that have been enlarged.." width="715" height="227">
 </uxdot-example>
 <rh-table>
   <table>

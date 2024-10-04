@@ -3,7 +3,10 @@
 Users should have the ability to move focus to the Website status link if it is used in the Footer component or anywhere else.
 
 <uxdot-example>
-  <img src="../site-status-accessibility-footer.svg" alt="Image of a site status element with a green checkmark and the text 'All systems operational' in a footer element with focus indicators.">
+  <img src="../site-status-accessibility-footer.svg"
+        alt="Image of a site status element with a green checkmark and the text 'All systems operational' in a footer element with focus indicators."
+        width="992"
+        height="789">
 </uxdot-example>
 
 

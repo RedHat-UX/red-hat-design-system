@@ -8,11 +8,17 @@ Icons can be used in Red Hat’s brand red, black, and two shades of gray. Dark 
 
 <div class="grid sm-two-columns">
   <uxdot-example width-adjustment="208px">
-    <img src="../icon-theme-light.svg" alt="Image of five icons in a light theme">
+    <img src="../icon-theme-light.svg"
+        alt="Image of five icons in a light theme"
+        width="208"
+        height="96">
   </uxdot-example>
 
   <uxdot-example width-adjustment="208px" color-palette="darkest">
-    <img src="../icon-theme-dark.svg" alt="Image of a five icons in dark theme">
+    <img src="../icon-theme-dark.svg"
+        alt="Image of a five icons in dark theme"
+        width="208"
+        height="96">
   </uxdot-example>
 </div>
 
@@ -28,7 +34,10 @@ Sizes can be set using <code>&lt;rh-icon&gt;</code> which places icons into a tr
 </rh-alert>
 
 <uxdot-example width-adjustment="308px">
-  <img src="../icon-sizes.svg" alt="Image displaying icon standard size output.">
+  <img src="../icon-sizes.svg"
+        alt="Image displaying icon standard size output."
+        width="310"
+        height="78">
 </uxdot-example>
 
 <rh-table>

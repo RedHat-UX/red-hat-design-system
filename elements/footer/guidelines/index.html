@@ -54,8 +54,8 @@
     "lit": "/assets/packages/lit/index.js",
     "@rhds/tokens/css/color-context-provider.css.js": "/assets/packages/@rhds/tokens/css/color-context-provider.css.js",
     "@rhds/tokens/css/color-context-consumer.css.js": "/assets/packages/@rhds/tokens/css/color-context-consumer.css.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.2/core.js",
@@ -145,7 +145,7 @@
 
 
 
-<uxdot-masthead role="banner"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface-darkest);color:var(--rh-color-text-primary-on-dark);position:fixed;inset:0;height:max-content;z-index:var(--uxdot-masthead-z-index,2);container-type:inline-size;container-name:host;z-index:10}#container{display:grid;column-gap:var(--rh-space-lg);grid-template-columns:max-content 1fr max-content;max-height:var(--uxdot-masthead-max-height,72px);margin-inline:var(--rh-space-md);margin-block:var(--rh-space-lg)}slot[name=hamburger]{display:flex;flex-direction:column;align-items:center;gap:var(--rh-space-md);justify-content:center}slot[name=hamburger]::slotted(button){color:var(--rh-color-text-primary-on-dark);background-color:initial;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}slot[name=hamburger]::slotted(button:active),slot[name=hamburger]::slotted(button:focus),slot[name=hamburger]::slotted(button:hover),slot[name=hamburger]:hover::slotted(button){color:var(--rh-color-icon-subtle-hover)}slot[name=hamburger]::slotted(button:focus){outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);border-radius:var(--rh-border-radius-default)}slot[name=logo]::slotted(a){display:flex;flex-direction:row;align-items:center;justify-self:flex-start;gap:var(--rh-space-md)}slot[name=links]{--rh-icon-size:24px;display:flex;flex-direction:row;column-gap:var(--rh-space-lg)}slot[name=links]::slotted(a){display:flex;flex-direction:row;gap:var(--rh-space-lg);align-items:center}@container (min-width: 576px){#container{gap:var(--rh-space-lg);margin:var(--rh-space-lg)}}@container (min-width: 992px){#container{grid-template-columns:1fr max-content}slot[name=hamburger]{display:none}slot[name=logo]::slotted(a){margin-inline-start:var(--rh-space-lg)}}</style><!--lit-part PgF9K1dm7N4=-->
+<uxdot-masthead role="banner"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface-darkest);color:var(--rh-color-text-primary-on-dark);height:max-content;container-type:inline-size;container-name:host}#container{display:grid;column-gap:var(--rh-space-lg);grid-template-columns:max-content 1fr max-content;max-height:var(--uxdot-masthead-max-height,72px);margin-inline:var(--rh-space-md);margin-block:var(--rh-space-lg)}slot[name=hamburger]{display:flex;flex-direction:column;align-items:center;gap:var(--rh-space-md);justify-content:center}slot[name=hamburger]::slotted(button){color:var(--rh-color-text-primary-on-dark);background-color:initial;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}slot[name=hamburger]::slotted(button:active),slot[name=hamburger]::slotted(button:focus),slot[name=hamburger]::slotted(button:hover),slot[name=hamburger]:hover::slotted(button){color:var(--rh-color-icon-subtle-hover)}slot[name=hamburger]::slotted(button:focus){outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);border-radius:var(--rh-border-radius-default)}slot[name=logo]::slotted(a){display:flex;flex-direction:row;align-items:center;justify-self:flex-start;gap:var(--rh-space-md)}slot[name=links]{--rh-icon-size:24px;display:flex;flex-direction:row;column-gap:var(--rh-space-lg)}slot[name=links]::slotted(a){display:flex;flex-direction:row;gap:var(--rh-space-lg);align-items:center}@container (min-width: 576px){#container{gap:var(--rh-space-lg);margin:var(--rh-space-lg)}}@container (min-width: 992px){#container{grid-template-columns:1fr max-content}slot[name=hamburger]{display:none}slot[name=logo]::slotted(a){margin-inline-start:var(--rh-space-lg)}}</style><!--lit-part PgF9K1dm7N4=-->
       <div id="container" part="container">
         <slot name="hamburger"></slot>
         <slot name="logo"></slot>
@@ -871,7 +871,7 @@ screens of the user experience.</p>
 </uxdot-copy-permalink>
 <p>Most of the content in the website-specific footer can be customized.</p>
 <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border="">
-  <img src="../footer-variant-website-specific.png" alt="Image of the website-specific footer showing regions that can and cannot be customized">
+  <img src="../footer-variant-website-specific.png" alt="Image of the website-specific footer showing regions that can and cannot be customized" width="968" height="596">
 </uxdot-example>
 <rh-table>
   <table>
@@ -937,7 +937,7 @@ screens of the user experience.</p>
 </uxdot-copy-permalink>
 <p>Content in the universal footer is always the same across all websites.</p>
 <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border="">
-  <img src="../footer-variant-universal.png" alt="Image of the universal footer showing only one region that cannot be customized">
+  <img src="../footer-variant-universal.png" alt="Image of the universal footer showing only one region that cannot be customized" width="968" height="200">
 </uxdot-example>
 <rh-table>
   <table>
@@ -987,7 +987,7 @@ screens of the user experience.</p>
 </uxdot-copy-permalink>
 <p>A footer spans the entire width of the browser window at all breakpoints.</p>
 <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border="">
-  <img src="../footer-layout-browser-window.png" alt="Image of a footer in a layout spanning the width of the browser window">
+  <img src="../footer-layout-browser-window.png" alt="Image of a footer in a layout spanning the width of the browser window" width="968" height="1036">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1269,7 +1269,7 @@ Red Hat fedora always links to redhat.com.</p>
   <p>Using the universal footer by itself is acceptable, but never use the website-specific footer by itself.</p>
 </rh-alert>
 <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border="">
-  <img src="../footer-layout-universal-footer.png" alt="Image of the universal footer by itself">
+  <img src="../footer-layout-universal-footer.png" alt="Image of the universal footer by itself" width="968" height="200">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1291,13 +1291,13 @@ is flexible enough to accommodate grids, elements, text, and more.</p>
   <img src="../footer-layout-other-web-properties.png" alt="Image of the footer on a Customer Portal website">
 </uxdot-example>
 <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border="">
-  <img src="../footer-layout-customer-portal.png" alt="Image of a footer on a Customer Portal website">
+  <img src="../footer-layout-customer-portal.png" alt="Image of a footer on a Customer Portal website" width="968" height="775">
 </uxdot-example>
 <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border="">
-  <img src="../footer-layout-developer.png" alt="Image of a footer on a Developer website">
+  <img src="../footer-layout-developer.png" alt="Image of a footer on a Developer website" width="968" height="800">
 </uxdot-example>
 <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border="">
-  <img src="../footer-layout-partner-connect.png" alt="Image of a footer on a Partner Connect website">
+  <img src="../footer-layout-partner-connect.png" alt="Image of a footer on a Partner Connect website" width="968" height="833">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1330,17 +1330,17 @@ is flexible enough to accommodate grids, elements, text, and more.</p>
 <p>If the website-specific footer includes a lot of content, columns can be added
 below the first row of columns.</p>
 <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border="">
-  <img src="../footer-behavior-columns-two-rows.png" alt="Image of a footer with four columns of links in one row and two columns in the second row">
+  <img src="../footer-behavior-columns-two-rows.png" alt="Image of a footer with four columns of links in one row and two columns in the second row" width="968" height="796">
 </uxdot-example>
 <p>If the website-specific footer includes less content, columns will stretch to
 fill the empty space.</p>
 <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border="">
-  <img src="../footer-behavior-columns-less-content.png" alt="Image of a footer with only two columns of links in one row">
+  <img src="../footer-behavior-columns-less-content.png" alt="Image of a footer with only two columns of links in one row" width="968" height="796">
 </uxdot-example>
 <p>If the number of columns changes, social media links will shift position to
 remain aligned to the left edge of the last column.</p>
 <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border="">
-  <img src="../footer-behavior-columns-social-media-icons.png" alt="Image of a footer with three columns of links showing an example of social media icons shifting">
+  <img src="../footer-behavior-columns-social-media-icons.png" alt="Image of a footer with three columns of links showing an example of social media icons shifting" width="968" height="754">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1371,7 +1371,7 @@ remain aligned to the left edge of the last column.</p>
   </a></h3>
 </uxdot-copy-permalink>
 <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border="">
-  <img src="../footer-responsive-large-breakpoints.png" alt="Image of a large breakpoint footer">
+  <img src="../footer-responsive-large-breakpoints.png" alt="Image of a large breakpoint footer" width="968" height="796">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1652,10 +1652,10 @@ content will also get rearranged.</p>
   <p>At small breakpoints, the horizontal rule between the logo, icons, and columns is no longer visible.</p>
 </rh-alert>
 <uxdot-example width-adjustment="768px" variant="full" alignment="left" no-border="">
-  <img src="../footer-responsive-small-breakpoints-a.png" alt="Image of a tablet breakpoint footer">
+  <img src="../footer-responsive-small-breakpoints-a.png" alt="Image of a tablet breakpoint footer" width="768" height="1070">
 </uxdot-example>
 <uxdot-example width-adjustment="360px" variant="full" alignment="left" no-border="">
-  <img src="../footer-responsive-small-breakpoints-b.png" alt="Image of a mobile breakpoint footer">
+  <img src="../footer-responsive-small-breakpoints-b.png" alt="Image of a mobile breakpoint footer" width="360" height="1285">
 </uxdot-example>
 <rh-table>
   <table>
@@ -1736,7 +1736,7 @@ content will also get rearranged.</p>
 <p>Do not reverse the order of footers, the website-specific footer should always
 be on top.</p>
 <uxdot-example width-adjustment="968px" danger="">
-  <img src="../footer-best-practice-1.png" alt="Image of the global footer on top of the website-specific footer which is incorrect usage">
+  <img src="../footer-best-practice-1.png" alt="Image of the global footer on top of the website-specific footer which is incorrect usage" width="1000" height="796">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1754,7 +1754,7 @@ be on top.</p>
 </uxdot-copy-permalink>
 <p>Do not replace columns with an accordion if there is still adequate space.</p>
 <uxdot-example width-adjustment="968px" danger="">
-  <img src="../footer-best-practice-2.png" alt="Image of a desktop footer with an accordion replacing four columns of links which is incorrect usage">
+  <img src="../footer-best-practice-2.png" alt="Image of a desktop footer with an accordion replacing four columns of links which is incorrect usage" width="1000" height="796">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1772,7 +1772,7 @@ be on top.</p>
 </uxdot-copy-permalink>
 <p>Do not use the website-specific footer without the universal footer.</p>
 <uxdot-example width-adjustment="968px" danger="">
-  <img src="../footer-best-practice-3.png" alt="Image of a footer missing the universal footer which is incorrect usage">
+  <img src="../footer-best-practice-3.png" alt="Image of a footer missing the universal footer which is incorrect usage" width="1000" height="796">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1791,7 +1791,7 @@ be on top.</p>
 <p>Do not create your own custom universal footer by changing, deleting, or
 rearranging any elements.</p>
 <uxdot-example width-adjustment="968px" danger="">
-  <img src="../footer-best-practice-4.png" alt="Image of a universal footer with a new design which is incorrect usage">
+  <img src="../footer-best-practice-4.png" alt="Image of a universal footer with a new design which is incorrect usage" width="1000" height="104">
 </uxdot-example>
 
 

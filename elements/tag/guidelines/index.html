@@ -54,8 +54,8 @@
     "lit": "/assets/packages/lit/index.js",
     "@rhds/tokens/css/color-context-provider.css.js": "/assets/packages/@rhds/tokens/css/color-context-provider.css.js",
     "@rhds/tokens/css/color-context-consumer.css.js": "/assets/packages/@rhds/tokens/css/color-context-consumer.css.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.2/core.js",
@@ -149,7 +149,7 @@
 
 
 
-<uxdot-masthead role="banner"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface-darkest);color:var(--rh-color-text-primary-on-dark);position:fixed;inset:0;height:max-content;z-index:var(--uxdot-masthead-z-index,2);container-type:inline-size;container-name:host;z-index:10}#container{display:grid;column-gap:var(--rh-space-lg);grid-template-columns:max-content 1fr max-content;max-height:var(--uxdot-masthead-max-height,72px);margin-inline:var(--rh-space-md);margin-block:var(--rh-space-lg)}slot[name=hamburger]{display:flex;flex-direction:column;align-items:center;gap:var(--rh-space-md);justify-content:center}slot[name=hamburger]::slotted(button){color:var(--rh-color-text-primary-on-dark);background-color:initial;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}slot[name=hamburger]::slotted(button:active),slot[name=hamburger]::slotted(button:focus),slot[name=hamburger]::slotted(button:hover),slot[name=hamburger]:hover::slotted(button){color:var(--rh-color-icon-subtle-hover)}slot[name=hamburger]::slotted(button:focus){outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);border-radius:var(--rh-border-radius-default)}slot[name=logo]::slotted(a){display:flex;flex-direction:row;align-items:center;justify-self:flex-start;gap:var(--rh-space-md)}slot[name=links]{--rh-icon-size:24px;display:flex;flex-direction:row;column-gap:var(--rh-space-lg)}slot[name=links]::slotted(a){display:flex;flex-direction:row;gap:var(--rh-space-lg);align-items:center}@container (min-width: 576px){#container{gap:var(--rh-space-lg);margin:var(--rh-space-lg)}}@container (min-width: 992px){#container{grid-template-columns:1fr max-content}slot[name=hamburger]{display:none}slot[name=logo]::slotted(a){margin-inline-start:var(--rh-space-lg)}}</style><!--lit-part PgF9K1dm7N4=-->
+<uxdot-masthead role="banner"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface-darkest);color:var(--rh-color-text-primary-on-dark);height:max-content;container-type:inline-size;container-name:host}#container{display:grid;column-gap:var(--rh-space-lg);grid-template-columns:max-content 1fr max-content;max-height:var(--uxdot-masthead-max-height,72px);margin-inline:var(--rh-space-md);margin-block:var(--rh-space-lg)}slot[name=hamburger]{display:flex;flex-direction:column;align-items:center;gap:var(--rh-space-md);justify-content:center}slot[name=hamburger]::slotted(button){color:var(--rh-color-text-primary-on-dark);background-color:initial;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}slot[name=hamburger]::slotted(button:active),slot[name=hamburger]::slotted(button:focus),slot[name=hamburger]::slotted(button:hover),slot[name=hamburger]:hover::slotted(button){color:var(--rh-color-icon-subtle-hover)}slot[name=hamburger]::slotted(button:focus){outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);border-radius:var(--rh-border-radius-default)}slot[name=logo]::slotted(a){display:flex;flex-direction:row;align-items:center;justify-self:flex-start;gap:var(--rh-space-md)}slot[name=links]{--rh-icon-size:24px;display:flex;flex-direction:row;column-gap:var(--rh-space-lg)}slot[name=links]::slotted(a){display:flex;flex-direction:row;gap:var(--rh-space-lg);align-items:center}@container (min-width: 576px){#container{gap:var(--rh-space-lg);margin:var(--rh-space-lg)}}@container (min-width: 992px){#container{grid-template-columns:1fr max-content}slot[name=hamburger]{display:none}slot[name=logo]::slotted(a){margin-inline-start:var(--rh-space-lg)}}</style><!--lit-part PgF9K1dm7N4=-->
       <div id="container" part="container">
         <slot name="hamburger"></slot>
         <slot name="logo"></slot>
@@ -917,7 +917,7 @@ consistency throughout your UI.</p>
 <p>Use a desaturated tag to reduce visual prominence or to better fit a specific
 theme or visual style.</p>
 <uxdot-example variant="full" no-border="" alignment="left">
-  <img src="../tag-guidelines-usage-desaturated-tag.svg" alt="Image of a representation of a desaturated tag on a black background with two columns.  The first column contains a card pattern with the title of Red Hat enterprise Linux UI and above it is a tag that says start.  In the second column is another card parttern with the title Red Hat OpenShift AI and a tag above it that says scale.">
+  <img src="../tag-guidelines-usage-desaturated-tag.svg" alt="Image of a representation of a desaturated tag on a black background with two columns.  The first column contains a card pattern with the title of Red Hat enterprise Linux UI and above it is a tag that says start.  In the second column is another card parttern with the title Red Hat OpenShift AI and a tag above it that says scale." width="1140" height="422">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1265,7 +1265,7 @@ something.</p>
 many users. Learn more in the <a href="/accessibility">accessibility</a> section.</p>
 </rh-alert>
 <uxdot-example width-adjustment="652px">
-  <img src="../tag-guidelines-status-color.svg" alt="An image of two rows of tags each representing representing a state:, Failure, Error, Caution, Warning, Success, General, Informative, Helpful, Neutral.  The tags in the first row are filled and in the second outline variants.">
+  <img src="../tag-guidelines-status-color.svg" alt="An image of two rows of tags each representing representing a state:, Failure, Error, Caution, Warning, Success, General, Informative, Helpful, Neutral.  The tags in the first row are filled and in the second outline variants." width="652" height="90">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1284,11 +1284,11 @@ many users. Learn more in the <a href="/accessibility">accessibility</a> section
 <p>If text is descriptive or generic, most colors can be used. Do not use red or
 red orange, those colors are reserved for failure or error states.</p>
 <uxdot-example width-adjustment="738px">
-  <img src="../tag-guidelines-status-text-1.svg" alt="An image a row of tags each with the following text, Important, Documentation, Job template, Managed Service, Red Hat OpenShift, Security, Certified.  Each tag is aligned with proper state colors.">
+  <img src="../tag-guidelines-status-text-1.svg" alt="An image a row of tags each with the following text, Important, Documentation, Job template, Managed Service, Red Hat OpenShift, Security, Certified.  Each tag is aligned with proper state colors." width="738" height="29">
 </uxdot-example>
 <p>If text communicates a status, choose a color that corresponds with that status.</p>
 <uxdot-example width-adjustment="476px">
-  <img src="../tag-guidelines-status-text-2.svg" alt="An image a row of tags each with the following text, Trial has expired in red, Deprecated in orange-red, Trial expiring soon in yellow, Trial has started in green.">
+  <img src="../tag-guidelines-status-text-2.svg" alt="An image a row of tags each with the following text, Trial has expired in red, Deprecated in orange-red, Trial expiring soon in yellow, Trial has started in green." width="476" height="29">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1308,7 +1308,7 @@ red orange, those colors are reserved for failure or error states.</p>
 them to distinguish tags of the same color if needed. Ensure the icon makes
 sense when paired with text and color.</p>
 <uxdot-example width-adjustment="377px">
-  <img src="../tag-guidelines-status-icon.svg" alt="An image a row of tags, The first has the text Success paired with a checkmark icon, the second has the text secure with a padlock icon, the third with the text critical and a exclamation point icon, and the fourth with the text In progress with a timer icon.">
+  <img src="../tag-guidelines-status-icon.svg" alt="An image a row of tags, The first has the text Success paired with a checkmark icon, the second has the text secure with a padlock icon, the third with the text critical and a exclamation point icon, and the fourth with the text In progress with a timer icon." width="377" height="29">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1328,7 +1328,7 @@ sense when paired with text and color.</p>
 If text needs to be longer, add text somewhere else or use another element
 instead.</p>
 <uxdot-example width-adjustment="724px">
-  <img src="../tag-guidelines-writing-content.svg" alt="An image of two rows of tags, representing short usage of words, The first row is incorrect examples which include trial started successfully, this process is secure, 147 critical tickets, your course is in progress. The second row includes correct examples include: success, secure, critical, In progress">
+  <img src="../tag-guidelines-writing-content.svg" alt="An image of two rows of tags, representing short usage of words, The first row is incorrect examples which include trial started successfully, this process is secure, 147 critical tickets, your course is in progress. The second row includes correct examples include: success, secure, critical, In progress" width="724" height="202">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1376,7 +1376,7 @@ instead.</p>
 </uxdot-copy-permalink>
 <p>Tags in one row will break to two or more rows as viewport sizes get smaller.</p>
 <uxdot-example variant="full" no-border="" alignment="left">
-  <img src="../tag-guidelines-responsive-design.svg" alt="An image displaying the correct collapsing of a collection of tags on different width viewports.">
+  <img src="../tag-guidelines-responsive-design.svg" alt="An image displaying the correct collapsing of a collection of tags on different width viewports." width="1140" height="616">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1420,7 +1420,7 @@ instead.</p>
       </figure>
     <!--/lit-part--></template>
     <uxdot-example width-adjustment="418px" slot="image">
-      <img src="../tag-guidelines-best-practice-do-1.svg" alt="An image showing 3 rows of tags. Each row has a different variant, first row is filled, second row is outlined, and 3rd row is desaturated.">
+      <img src="../tag-guidelines-best-practice-do-1.svg" alt="An image showing 3 rows of tags. Each row has a different variant, first row is filled, second row is outlined, and 3rd row is desaturated." width="418" height="151">
     </uxdot-example>
     <p>Use any variant, but in different parts of the UI</p>
   </uxdot-best-practice>
@@ -1437,7 +1437,7 @@ instead.</p>
       </figure>
     <!--/lit-part--></template>
     <uxdot-example width-adjustment="418px" slot="image">
-      <img src="../tag-guidelines-best-practice-dont-1.svg" alt="An image showing a row of tags.  First tag is a filled, second is a outlined, and third is a desaturated.">
+      <img src="../tag-guidelines-best-practice-dont-1.svg" alt="An image showing a row of tags.  First tag is a filled, second is a outlined, and third is a desaturated." width="418" height="151">
     </uxdot-example>
     <p>Do not mix variants in the same element or area</p>
   </uxdot-best-practice>
@@ -1470,7 +1470,7 @@ instead.</p>
       </figure>
     <!--/lit-part--></template>
     <uxdot-example width-adjustment="418px" slot="image">
-      <img src="../tag-guidelines-best-practice-do-2.svg" alt="An image of two rows of tags the first row is normal size, the second row is compact size.">
+      <img src="../tag-guidelines-best-practice-do-2.svg" alt="An image of two rows of tags the first row is normal size, the second row is compact size." width="418" height="79">
     </uxdot-example>
     <p>Use any size, but in different parts of the UI</p>
   </uxdot-best-practice>
@@ -1487,7 +1487,7 @@ instead.</p>
       </figure>
     <!--/lit-part--></template>
     <uxdot-example width-adjustment="418px" slot="image">
-      <img src="../tag-guidelines-best-practice-dont-2.svg" alt="An image of a row of tags, the first tag is compact, the second is normal size and the third is compact.">
+      <img src="../tag-guidelines-best-practice-dont-2.svg" alt="An image of a row of tags, the first tag is compact, the second is normal size and the third is compact." width="418" height="79">
     </uxdot-example>
     <p>Do not mix sizes in the same element or area</p>
   </uxdot-best-practice>
@@ -1520,7 +1520,7 @@ instead.</p>
       </figure>
     <!--/lit-part--></template>
     <uxdot-example width-adjustment="418px" slot="image">
-      <img src="../tag-guidelines-best-practice-do-3.svg" alt="An image with a row of 3 tags, the first tag has the text trial expired with a circle with a slash icon. The second has the text deprecated and has an exclamation icon. The third has the text trial expiring soon with a triangle shaped icon with an exclamation point.">
+      <img src="../tag-guidelines-best-practice-do-3.svg" alt="An image with a row of 3 tags, the first tag has the text trial expired with a circle with a slash icon. The second has the text deprecated and has an exclamation icon. The third has the text trial expiring soon with a triangle shaped icon with an exclamation point." width="418" height="29">
     </uxdot-example>
     <p>Use icons and their colors consistently</p>
   </uxdot-best-practice>
@@ -1537,7 +1537,7 @@ instead.</p>
       </figure>
     <!--/lit-part--></template>
     <uxdot-example width-adjustment="418px" slot="image">
-      <img src="../tag-guidelines-best-practice-dont-3.svg" alt="An image of a row of 3 tags, the first tag has the text trial expired on a red background. The second tag has an icon that has been colored teal, the icon is a circle with an exclamation and the text of the tag reads deprecated, on a red backgroudn.  The third tag has the text trial expired on a yellow background.">
+      <img src="../tag-guidelines-best-practice-dont-3.svg" alt="An image of a row of 3 tags, the first tag has the text trial expired on a red background. The second tag has an icon that has been colored teal, the icon is a circle with an exclamation and the text of the tag reads deprecated, on a red backgroudn.  The third tag has the text trial expired on a yellow background." width="418" height="29">
     </uxdot-example>
     <p>Do not hide icons or change their color</p>
   </uxdot-best-practice>

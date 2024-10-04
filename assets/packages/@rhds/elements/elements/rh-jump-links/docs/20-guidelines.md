@@ -44,7 +44,10 @@ can scroll freely on the right without interruption. Ensure there’s ample
 space between jump links and the content.
 
 <uxdot-example>
-  <img src="../jump-links-positioning.svg" alt="Jump links positioning" />
+  <img src="../jump-links-positioning.svg"
+        alt="Jump links positioning"
+        width="1000"
+        height="193">
 </uxdot-example>
 
 
@@ -53,14 +56,20 @@ space between jump links and the content.
 Jump links should contain at least two section links.
 
 <uxdot-example width-adjustment="129px" danger>
-  <img src="../jump-links-best-practices-1.svg" alt="Jump links not enough links issue" />
+  <img src="../jump-links-best-practices-1.svg"
+        alt="Jump links not enough links issue"
+        width="127"
+        height="115">
 </uxdot-example>
 
 Don’t include section links that are really long, they can be customized to be 
 shorter when added to a group of jump links.
 
 <uxdot-example width-adjustment="361px" danger>
-  <img src="../jump-links-best-practices-2.svg" alt="Jump links too long titles" />
+  <img src="../jump-links-best-practices-2.svg"
+        alt="Jump links too long titles"
+        width="360"
+        height="189">
 </uxdot-example>
 
 
@@ -68,14 +77,20 @@ Don’t overload jump links with too many section links, but including lots
 of nested section links is acceptable.
 
 <uxdot-example width-adjustment="146px" danger>
-  <img src="../jump-links-best-practices-3.svg" alt="Jump links too many top level links issue" />
+  <img src="../jump-links-best-practices-3.svg"
+        alt="Jump links too many top level links issue"
+        width="146"
+        height="358">
 </uxdot-example>
 
 
 Don’t nest section links within nested section links.
 
 <uxdot-example width-adjustment="141px" danger>
-  <img src="../jump-links-best-practices-4.svg" alt="Jump links nesting issue" />
+  <img src="../jump-links-best-practices-4.svg"
+        alt="Jump links nesting issue"
+        width="140"
+        height="374">
 </uxdot-example>
 
 
@@ -109,7 +124,10 @@ use jump links in a mobile layout, so it’s wrapped in a [Disclosure]({{
 becomes persistent when a user scrolls past the top edge of the content.
 
 <uxdot-example width-adjustment="872px">
-  <img src="../jump-links-behavior-mobile.svg" alt="Jump links on mobile" />
+  <img src="../jump-links-behavior-mobile.svg"
+        alt="Jump links on mobile"
+        width="884"
+        height="259" />
 </uxdot-example>
 
 
@@ -127,7 +145,10 @@ top edge of content. Once jump links come into view and are persistent, the
 first section link is focused and the tab order becomes top to bottom.
 
 <uxdot-example width-adjustment="872px">
-  <img src="../jump-links-tab-order.svg" alt="Jump links tab order" />
+  <img src="../jump-links-tab-order.svg"
+        alt="Jump links tab order"
+        width="871"
+        height="195" />
 </uxdot-example>
 
 

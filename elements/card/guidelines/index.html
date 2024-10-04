@@ -54,8 +54,8 @@
     "lit": "/assets/packages/lit/index.js",
     "@rhds/tokens/css/color-context-provider.css.js": "/assets/packages/@rhds/tokens/css/color-context-provider.css.js",
     "@rhds/tokens/css/color-context-consumer.css.js": "/assets/packages/@rhds/tokens/css/color-context-consumer.css.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.2/core.js",
@@ -114,7 +114,15 @@
 
 
 
-  <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css"><link rel="stylesheet" href="/styles/pages/backpage.css"><link rel="stylesheet" href="/styles/samp.css"><script type="module">
+  <style>
+  .grid rh-card h4 {
+    margin-block: 0;
+  }
+
+  .grid rh-card::part(footer) {
+    display: none;
+  }
+</style><link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css"><link rel="stylesheet" href="/styles/pages/backpage.css"><link rel="stylesheet" href="/styles/samp.css"><script type="module">
   import "/assets/javascript/elements/uxdot-feedback.js";
   import "/assets/javascript/elements/uxdot-copy-button.js";
   import '/assets/javascript/elements/uxdot-header.js';
@@ -145,7 +153,7 @@
 
 
 
-<uxdot-masthead role="banner"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface-darkest);color:var(--rh-color-text-primary-on-dark);position:fixed;inset:0;height:max-content;z-index:var(--uxdot-masthead-z-index,2);container-type:inline-size;container-name:host;z-index:10}#container{display:grid;column-gap:var(--rh-space-lg);grid-template-columns:max-content 1fr max-content;max-height:var(--uxdot-masthead-max-height,72px);margin-inline:var(--rh-space-md);margin-block:var(--rh-space-lg)}slot[name=hamburger]{display:flex;flex-direction:column;align-items:center;gap:var(--rh-space-md);justify-content:center}slot[name=hamburger]::slotted(button){color:var(--rh-color-text-primary-on-dark);background-color:initial;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}slot[name=hamburger]::slotted(button:active),slot[name=hamburger]::slotted(button:focus),slot[name=hamburger]::slotted(button:hover),slot[name=hamburger]:hover::slotted(button){color:var(--rh-color-icon-subtle-hover)}slot[name=hamburger]::slotted(button:focus){outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);border-radius:var(--rh-border-radius-default)}slot[name=logo]::slotted(a){display:flex;flex-direction:row;align-items:center;justify-self:flex-start;gap:var(--rh-space-md)}slot[name=links]{--rh-icon-size:24px;display:flex;flex-direction:row;column-gap:var(--rh-space-lg)}slot[name=links]::slotted(a){display:flex;flex-direction:row;gap:var(--rh-space-lg);align-items:center}@container (min-width: 576px){#container{gap:var(--rh-space-lg);margin:var(--rh-space-lg)}}@container (min-width: 992px){#container{grid-template-columns:1fr max-content}slot[name=hamburger]{display:none}slot[name=logo]::slotted(a){margin-inline-start:var(--rh-space-lg)}}</style><!--lit-part PgF9K1dm7N4=-->
+<uxdot-masthead role="banner"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface-darkest);color:var(--rh-color-text-primary-on-dark);height:max-content;container-type:inline-size;container-name:host}#container{display:grid;column-gap:var(--rh-space-lg);grid-template-columns:max-content 1fr max-content;max-height:var(--uxdot-masthead-max-height,72px);margin-inline:var(--rh-space-md);margin-block:var(--rh-space-lg)}slot[name=hamburger]{display:flex;flex-direction:column;align-items:center;gap:var(--rh-space-md);justify-content:center}slot[name=hamburger]::slotted(button){color:var(--rh-color-text-primary-on-dark);background-color:initial;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}slot[name=hamburger]::slotted(button:active),slot[name=hamburger]::slotted(button:focus),slot[name=hamburger]::slotted(button:hover),slot[name=hamburger]:hover::slotted(button){color:var(--rh-color-icon-subtle-hover)}slot[name=hamburger]::slotted(button:focus){outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);border-radius:var(--rh-border-radius-default)}slot[name=logo]::slotted(a){display:flex;flex-direction:row;align-items:center;justify-self:flex-start;gap:var(--rh-space-md)}slot[name=links]{--rh-icon-size:24px;display:flex;flex-direction:row;column-gap:var(--rh-space-lg)}slot[name=links]::slotted(a){display:flex;flex-direction:row;gap:var(--rh-space-lg);align-items:center}@container (min-width: 576px){#container{gap:var(--rh-space-lg);margin:var(--rh-space-lg)}}@container (min-width: 992px){#container{grid-template-columns:1fr max-content}slot[name=hamburger]{display:none}slot[name=logo]::slotted(a){margin-inline-start:var(--rh-space-lg)}}</style><!--lit-part PgF9K1dm7N4=-->
       <div id="container" part="container">
         <slot name="hamburger"></slot>
         <slot name="logo"></slot>
@@ -820,34 +828,7 @@
     
 
     <div class="container">
-      <style>
-  .grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--rh-space-2xl, 32px);
-    margin-block-end: var(--rh-space-4xl, 64px);
-  }
-
-  .grid rh-card h4 {
-    margin-block: 0;
-  }
-
-  .grid rh-card::part(footer) {
-    display: none;
-  }
-
-  @container container (min-width: 567px) {
-    .grid {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-
-  @container container (min-width: 992px) {
-    .grid {
-      grid-template-columns: 1fr 1fr 1fr;
-    }
-  }
-</style>
+      
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
@@ -1141,7 +1122,7 @@ see the <a href="/patterns/card">card patterns page</a>.</p>
   </a></h3>
 </uxdot-copy-permalink>
 <p>There are several card variants that can be used for a variety of use cases.</p>
-<div class="grid">
+<div class="grid sm-two-columns md-three-columns">
   <rh-card>
     <h4 slot="header">Basic</h4>
     <p>
@@ -1324,7 +1305,7 @@ size. Be sure to only group cards together that have similar styles or
 content. For example, grouping a basic card with a pricing card will look bad
 because they’re not very similar.</p>
 <uxdot-example width-adjustment="784px">
-  <img src="../card-usage-grouping.svg" alt="Grouping of a card">
+  <img src="../card-usage-grouping.svg" alt="Grouping of a card" width="784" height="513">
 </uxdot-example>
 <p class="footnote">These cards can be grouped together because they have similar styles and
 content</p>
@@ -1364,7 +1345,7 @@ maximum width of six columns.</p>
 <a href="/patterns/disclosure/">Disclosure</a> to sort a content set. Don't
 place any other complex components in card layouts.</p>
 <uxdot-example width-adjustment="664px">
-  <img src="../card-usage-other.svg" alt="Alternative card usage">
+  <img src="../card-usage-other.svg" alt="Alternative card usage" width="664" height="513">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1383,17 +1364,17 @@ place any other complex components in card layouts.</p>
 <p>The minimum width of a card in any layout is four columns and the maximum
 number of cards that can be used in a row is three.</p>
 <uxdot-example width-adjustment="872px" danger="">
-  <img src="../card-bestpractice-1.svg" alt="Too many cards">
+  <img src="../card-bestpractice-1.svg" alt="Too many cards" width="872" height="206">
 </uxdot-example>
 <p>Don’t use a primary call to action in any card unless the primary action of a
 page is positioned inside of that card.</p>
 <uxdot-example width-adjustment="360px" danger="">
-  <img src="../card-bestpractice-2.svg" alt="Card width error">
+  <img src="../card-bestpractice-2.svg" alt="Card width error" width="360" height="326">
 </uxdot-example>
 <p>Don’t use multiple calls to action in one card. Instead, distribute them to
 other cards.</p>
 <uxdot-example width-adjustment="360px">
-  <img src="../card-bestpractice-3.svg" alt="Multiple calls to action">
+  <img src="../card-bestpractice-3.svg" alt="Multiple calls to action" width="360" height="326">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1428,7 +1409,7 @@ there are multiple cards in a row, the vertical height of each of them will be
 determined by the tallest card. Don’t place inconsistent amounts of content in
 cards, as this will impact how scannable the group will appear to users.</p>
 <uxdot-example width-adjustment="784px">
-  <img src="../card-behavior-height.svg" alt="Card height behavior">
+  <img src="../card-behavior-height.svg" alt="Card height behavior" width="784" height="536">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1448,7 +1429,7 @@ cards, as this will impact how scannable the group will appear to users.</p>
 elements inside should all be interactive. Otherwise, each interactive element
 should continue to be interactive, but not the card container.</p>
 <uxdot-example width-adjustment="784px">
-  <img src="../card-behavior-interaction.svg" alt="Card interaction">
+  <img src="../card-behavior-interaction.svg" alt="Card interaction" width="786" height="335">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>

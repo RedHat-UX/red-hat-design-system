@@ -54,8 +54,8 @@
     "lit": "/assets/packages/lit/index.js",
     "@rhds/tokens/css/color-context-provider.css.js": "/assets/packages/@rhds/tokens/css/color-context-provider.css.js",
     "@rhds/tokens/css/color-context-consumer.css.js": "/assets/packages/@rhds/tokens/css/color-context-consumer.css.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.2/core.js",
@@ -146,7 +146,7 @@
 
 
 
-<uxdot-masthead role="banner"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface-darkest);color:var(--rh-color-text-primary-on-dark);position:fixed;inset:0;height:max-content;z-index:var(--uxdot-masthead-z-index,2);container-type:inline-size;container-name:host;z-index:10}#container{display:grid;column-gap:var(--rh-space-lg);grid-template-columns:max-content 1fr max-content;max-height:var(--uxdot-masthead-max-height,72px);margin-inline:var(--rh-space-md);margin-block:var(--rh-space-lg)}slot[name=hamburger]{display:flex;flex-direction:column;align-items:center;gap:var(--rh-space-md);justify-content:center}slot[name=hamburger]::slotted(button){color:var(--rh-color-text-primary-on-dark);background-color:initial;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}slot[name=hamburger]::slotted(button:active),slot[name=hamburger]::slotted(button:focus),slot[name=hamburger]::slotted(button:hover),slot[name=hamburger]:hover::slotted(button){color:var(--rh-color-icon-subtle-hover)}slot[name=hamburger]::slotted(button:focus){outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);border-radius:var(--rh-border-radius-default)}slot[name=logo]::slotted(a){display:flex;flex-direction:row;align-items:center;justify-self:flex-start;gap:var(--rh-space-md)}slot[name=links]{--rh-icon-size:24px;display:flex;flex-direction:row;column-gap:var(--rh-space-lg)}slot[name=links]::slotted(a){display:flex;flex-direction:row;gap:var(--rh-space-lg);align-items:center}@container (min-width: 576px){#container{gap:var(--rh-space-lg);margin:var(--rh-space-lg)}}@container (min-width: 992px){#container{grid-template-columns:1fr max-content}slot[name=hamburger]{display:none}slot[name=logo]::slotted(a){margin-inline-start:var(--rh-space-lg)}}</style><!--lit-part PgF9K1dm7N4=-->
+<uxdot-masthead role="banner"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface-darkest);color:var(--rh-color-text-primary-on-dark);height:max-content;container-type:inline-size;container-name:host}#container{display:grid;column-gap:var(--rh-space-lg);grid-template-columns:max-content 1fr max-content;max-height:var(--uxdot-masthead-max-height,72px);margin-inline:var(--rh-space-md);margin-block:var(--rh-space-lg)}slot[name=hamburger]{display:flex;flex-direction:column;align-items:center;gap:var(--rh-space-md);justify-content:center}slot[name=hamburger]::slotted(button){color:var(--rh-color-text-primary-on-dark);background-color:initial;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}slot[name=hamburger]::slotted(button:active),slot[name=hamburger]::slotted(button:focus),slot[name=hamburger]::slotted(button:hover),slot[name=hamburger]:hover::slotted(button){color:var(--rh-color-icon-subtle-hover)}slot[name=hamburger]::slotted(button:focus){outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);border-radius:var(--rh-border-radius-default)}slot[name=logo]::slotted(a){display:flex;flex-direction:row;align-items:center;justify-self:flex-start;gap:var(--rh-space-md)}slot[name=links]{--rh-icon-size:24px;display:flex;flex-direction:row;column-gap:var(--rh-space-lg)}slot[name=links]::slotted(a){display:flex;flex-direction:row;gap:var(--rh-space-lg);align-items:center}@container (min-width: 576px){#container{gap:var(--rh-space-lg);margin:var(--rh-space-lg)}}@container (min-width: 992px){#container{grid-template-columns:1fr max-content}slot[name=hamburger]{display:none}slot[name=logo]::slotted(a){margin-inline-start:var(--rh-space-lg)}}</style><!--lit-part PgF9K1dm7N4=-->
       <div id="container" part="container">
         <slot name="hamburger"></slot>
         <slot name="logo"></slot>
@@ -853,7 +853,7 @@
 </uxdot-copy-permalink>
 <figure>
   <uxdot-example width-adjustment="360px">
-    <img src="../link-tile-anatomy.png" alt="Default link tile with numbers pointing to locations of an image, an icon, text, and a footer">
+    <img src="../link-tile-anatomy.png" alt="Default link tile with numbers pointing to locations of an image, an icon, text, and a footer" width="360" height="606">
   </uxdot-example>
   <figcaption>
     <ol>
@@ -868,7 +868,7 @@
 </figure>
 <figure>
   <uxdot-example width-adjustment="755px">
-    <img src="../selectable-tile-anatomy.png" alt="Selectable tiles with numbers pointing to locations of text, a checkbox or radio button, and a footer">
+    <img src="../selectable-tile-anatomy.png" alt="Selectable tiles with numbers pointing to locations of text, a checkbox or radio button, and a footer" width="755" height="188">
   </uxdot-example>
   <figcaption>
     <ol>
@@ -895,7 +895,7 @@
 </uxdot-copy-permalink>
 <p>A link tile is available in Default and Compact sizes. A selectable tile has only one size which is based on the size of a compact tile.</p>
 <uxdot-example width-adjustment="752px">
-  <img src="../tile-sizes.png" alt="Examples of a link tile, compact tile, and selectable tile to show size differences">
+  <img src="../tile-sizes.png" alt="Examples of a link tile, compact tile, and selectable tile to show size differences" width="752" height="408">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -913,10 +913,10 @@
 </uxdot-copy-permalink>
 <p>Both the link tile and the selectable tile are available in dark and light themes.</p>
 <uxdot-example width-adjustment="752px">
-  <img src="../tile-light-theme.png" alt="Light theme tiles use a white background, blue or black heading, black text, and a blue arrow icon">
+  <img src="../tile-light-theme.png" alt="Light theme tiles use a white background, blue or black heading, black text, and a blue arrow icon" width="752" height="511">
 </uxdot-example>
 <uxdot-example color-palette="darkest" width-adjustment="752px">
-  <img src="../tile-dark-theme.png" alt="Dark theme tiles use a dark gray background, blue or white heading, white text, and a light blue arrow icon">
+  <img src="../tile-dark-theme.png" alt="Dark theme tiles use a dark gray background, blue or white heading, white text, and a light blue arrow icon" width="752" height="511">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -934,10 +934,10 @@
 </uxdot-copy-permalink>
 <p>A link tile has a blue heading by default, but a desaturated variant exists for both light and dark themes. The desaturated heading uses either a black or white heading. A selectable tile has a desaturated heading only and does not have the option for a blue heading.</p>
 <uxdot-example width-adjustment="752px">
-  <img src="../tile-heading-color-light-theme.png" alt="Examples of a light theme link tile with a blue heading, link tile with a black heading, and selectable tile with a black heading">
+  <img src="../tile-heading-color-light-theme.png" alt="Examples of a light theme link tile with a blue heading, link tile with a black heading, and selectable tile with a black heading" width="752" height="511">
 </uxdot-example>
 <uxdot-example color-palette="darkest" width-adjustment="752px">
-  <img src="../tile-heading-color-dark-theme.png" alt="Examples of a dark theme link tile with a light blue heading, link tile with a white heading, and selectable tile with a white heading">
+  <img src="../tile-heading-color-dark-theme.png" alt="Examples of a dark theme link tile with a light blue heading, link tile with a white heading, and selectable tile with a white heading" width="752" height="511">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -969,7 +969,7 @@
   </a></h3>
 </uxdot-copy-permalink>
 <uxdot-example width-adjustment="752px">
-  <img src="../space-link-tile-no-image.png" alt="Default link tile and compact link tile with spacers showing padding and margins">
+  <img src="../space-link-tile-no-image.png" alt="Default link tile and compact link tile with spacers showing padding and margins" width="752" height="371">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -986,7 +986,7 @@
   </a></h3>
 </uxdot-copy-permalink>
 <uxdot-example width-adjustment="752px">
-  <img src="../space-link-tile-with-image.png" alt="Link tiles that have full-width and default image sizes with spacers showing padding and margins">
+  <img src="../space-link-tile-with-image.png" alt="Link tiles that have full-width and default image sizes with spacers showing padding and margins" width="752" height="925">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1003,7 +1003,7 @@
   </a></h3>
 </uxdot-copy-permalink>
 <uxdot-example width-adjustment="360px">
-  <img src="../space-selectable-tile.png" alt="Selectable tile with spacers showing padding and margins">
+  <img src="../space-selectable-tile.png" alt="Selectable tile with spacers showing padding and margins" width="360" height="188">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1036,10 +1036,10 @@
 </uxdot-copy-permalink>
 <p>The hover state of a link tile also includes the arrow icon moving 3px to the right.</p>
 <uxdot-example width-adjustment="752px">
-  <img src="../tile-states-hover-light-theme.png" alt="On hover, light theme tiles have a light gray background, an underlined (and sometimes darker blue) heading, a darker blue arrow icon">
+  <img src="../tile-states-hover-light-theme.png" alt="On hover, light theme tiles have a light gray background, an underlined (and sometimes darker blue) heading, a darker blue arrow icon" width="752" height="511">
 </uxdot-example>
 <uxdot-example color-palette="darkest" width-adjustment="752px">
-  <img src="../tile-states-hover-dark-theme.png" alt="On hover, dark theme tiles have a lighter gray background, an underlined (and sometimes lighter blue) heading, a lighter blue arrow icon">
+  <img src="../tile-states-hover-dark-theme.png" alt="On hover, dark theme tiles have a lighter gray background, an underlined (and sometimes lighter blue) heading, a lighter blue arrow icon" width="752" height="511">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1318,10 +1318,10 @@
   <p>Focus state has the same styles as the hover state, except for the arrow icon animation.</p>
 </rh-alert>
 <uxdot-example width-adjustment="752px">
-  <img src="../tile-states-focus-light-theme.png" alt="Focused light theme tiles have a blue focus ring and use hover state styling">
+  <img src="../tile-states-focus-light-theme.png" alt="Focused light theme tiles have a blue focus ring and use hover state styling" width="764" height="523">
 </uxdot-example>
 <uxdot-example color-palette="darkest" width-adjustment="752px">
-  <img src="../tile-states-focus-dark-theme.png" alt="Focused dark theme tiles have a light blue focus ring and use hover state styling">
+  <img src="../tile-states-focus-dark-theme.png" alt="Focused dark theme tiles have a light blue focus ring and use hover state styling" width="764" height="523">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1601,10 +1601,10 @@
   <p>The Active state has the same styles as the Hover state.</p>
 </rh-alert>
 <uxdot-example width-adjustment="752px">
-  <img src="../tile-states-active-light-theme.png" alt="Active light theme link tiles use the focus state styles">
+  <img src="../tile-states-active-light-theme.png" alt="Active light theme link tiles use the focus state styles" width="764" height="299">
 </uxdot-example>
 <uxdot-example color-palette="darkest" width-adjustment="752px">
-  <img src="../tile-states-active-dark-theme.png" alt="Active dark theme link tiles use the focus state styles">
+  <img src="../tile-states-active-dark-theme.png" alt="Active dark theme link tiles use the focus state styles" width="764" height="299">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1622,10 +1622,10 @@
 </uxdot-copy-permalink>
 <p>Only a selectable tile has a selected state. A link tile has an active state instead.</p>
 <uxdot-example width-adjustment="752px">
-  <img src="../tile-states-selected-light-theme.svg" alt="When selected, the form input of light theme selectable tiles appears blue and filled or checked">
+  <img src="../tile-states-selected-light-theme.svg" alt="When selected, the form input of light theme selectable tiles appears blue and filled or checked" width="752" height="188">
 </uxdot-example>
 <uxdot-example color-palette="darkest" width-adjustment="752px">
-  <img src="../tile-states-selected-dark-theme.png" alt="When selected, the form input of dark theme selectable tiles appears light blue and filled or checked">
+  <img src="../tile-states-selected-dark-theme.png" alt="When selected, the form input of dark theme selectable tiles appears light blue and filled or checked" width="752" height="188">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1642,10 +1642,10 @@
   </a></h3>
 </uxdot-copy-permalink>
 <uxdot-example width-adjustment="752px">
-  <img src="../tile-states-disabled-light-theme.png" alt="Disabled light theme tiles have a light gray background and lighter gray text. Disabled link tiles have a ban icon">
+  <img src="../tile-states-disabled-light-theme.png" alt="Disabled light theme tiles have a light gray background and lighter gray text. Disabled link tiles have a ban icon" width="752" height="511">
 </uxdot-example>
 <uxdot-example color-palette="darkest" width-adjustment="752px">
-  <img src="../tile-states-disabled-dark-theme.png" alt="Disabled dark theme tiles have a lighter gray background and light gray text. Disabled link tiles have a ban icon">
+  <img src="../tile-states-disabled-dark-theme.png" alt="Disabled dark theme tiles have a lighter gray background and light gray text. Disabled link tiles have a ban icon" width="752" height="511">
 </uxdot-example>
 
 

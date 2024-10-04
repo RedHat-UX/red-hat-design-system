@@ -54,8 +54,8 @@
     "lit": "/assets/packages/lit/index.js",
     "@rhds/tokens/css/color-context-provider.css.js": "/assets/packages/@rhds/tokens/css/color-context-provider.css.js",
     "@rhds/tokens/css/color-context-consumer.css.js": "/assets/packages/@rhds/tokens/css/color-context-consumer.css.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.2/core.js",
@@ -145,7 +145,7 @@
 
 
 
-<uxdot-masthead role="banner"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface-darkest);color:var(--rh-color-text-primary-on-dark);position:fixed;inset:0;height:max-content;z-index:var(--uxdot-masthead-z-index,2);container-type:inline-size;container-name:host;z-index:10}#container{display:grid;column-gap:var(--rh-space-lg);grid-template-columns:max-content 1fr max-content;max-height:var(--uxdot-masthead-max-height,72px);margin-inline:var(--rh-space-md);margin-block:var(--rh-space-lg)}slot[name=hamburger]{display:flex;flex-direction:column;align-items:center;gap:var(--rh-space-md);justify-content:center}slot[name=hamburger]::slotted(button){color:var(--rh-color-text-primary-on-dark);background-color:initial;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}slot[name=hamburger]::slotted(button:active),slot[name=hamburger]::slotted(button:focus),slot[name=hamburger]::slotted(button:hover),slot[name=hamburger]:hover::slotted(button){color:var(--rh-color-icon-subtle-hover)}slot[name=hamburger]::slotted(button:focus){outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);border-radius:var(--rh-border-radius-default)}slot[name=logo]::slotted(a){display:flex;flex-direction:row;align-items:center;justify-self:flex-start;gap:var(--rh-space-md)}slot[name=links]{--rh-icon-size:24px;display:flex;flex-direction:row;column-gap:var(--rh-space-lg)}slot[name=links]::slotted(a){display:flex;flex-direction:row;gap:var(--rh-space-lg);align-items:center}@container (min-width: 576px){#container{gap:var(--rh-space-lg);margin:var(--rh-space-lg)}}@container (min-width: 992px){#container{grid-template-columns:1fr max-content}slot[name=hamburger]{display:none}slot[name=logo]::slotted(a){margin-inline-start:var(--rh-space-lg)}}</style><!--lit-part PgF9K1dm7N4=-->
+<uxdot-masthead role="banner"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface-darkest);color:var(--rh-color-text-primary-on-dark);height:max-content;container-type:inline-size;container-name:host}#container{display:grid;column-gap:var(--rh-space-lg);grid-template-columns:max-content 1fr max-content;max-height:var(--uxdot-masthead-max-height,72px);margin-inline:var(--rh-space-md);margin-block:var(--rh-space-lg)}slot[name=hamburger]{display:flex;flex-direction:column;align-items:center;gap:var(--rh-space-md);justify-content:center}slot[name=hamburger]::slotted(button){color:var(--rh-color-text-primary-on-dark);background-color:initial;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}slot[name=hamburger]::slotted(button:active),slot[name=hamburger]::slotted(button:focus),slot[name=hamburger]::slotted(button:hover),slot[name=hamburger]:hover::slotted(button){color:var(--rh-color-icon-subtle-hover)}slot[name=hamburger]::slotted(button:focus){outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);border-radius:var(--rh-border-radius-default)}slot[name=logo]::slotted(a){display:flex;flex-direction:row;align-items:center;justify-self:flex-start;gap:var(--rh-space-md)}slot[name=links]{--rh-icon-size:24px;display:flex;flex-direction:row;column-gap:var(--rh-space-lg)}slot[name=links]::slotted(a){display:flex;flex-direction:row;gap:var(--rh-space-lg);align-items:center}@container (min-width: 576px){#container{gap:var(--rh-space-lg);margin:var(--rh-space-lg)}}@container (min-width: 992px){#container{grid-template-columns:1fr max-content}slot[name=hamburger]{display:none}slot[name=logo]::slotted(a){margin-inline-start:var(--rh-space-lg)}}</style><!--lit-part PgF9K1dm7N4=-->
       <div id="container" part="container">
         <slot name="hamburger"></slot>
         <slot name="logo"></slot>
@@ -852,7 +852,7 @@
 </uxdot-copy-permalink>
 <figure>
   <uxdot-example width-adjustment="738px">
-    <img src="../cta-anatomy.png" alt="Anatomy image showing calls to action with various annotation numbers">
+    <img src="../cta-anatomy.png" alt="Anatomy image showing calls to action with various annotation numbers" width="738" height="100">
   </uxdot-example>
   <figcaption>
     <ol>
@@ -893,10 +893,10 @@
   </a></h3>
 </uxdot-copy-permalink>
 <uxdot-example width-adjustment="664px">
-  <img src="../cta-theme-light.png" alt="Image of light theme Primary, Secondary, Brick, Default, and Default video variants">
+  <img src="../cta-theme-light.png" alt="Image of light theme Primary, Secondary, Brick, Default, and Default video variants" width="664" height="56">
 </uxdot-example>
 <uxdot-example color-palette="darkest" width-adjustment="664px">
-  <img src="../cta-theme-dark.png" alt="Image of dark theme Primary, Secondary, Brick, Default, and Default video variants">
+  <img src="../cta-theme-dark.png" alt="Image of dark theme Primary, Secondary, Brick, Default, and Default video variants" width="666" height="56">
 </uxdot-example>
 <rh-table>
   <table>
@@ -982,10 +982,10 @@
 </uxdot-copy-permalink>
 <p>The Brick variant includes a slot for an icon as well as an extra orientation.</p>
 <uxdot-example width-adjustment="396px">
-  <img src="../cta-bricks-theme-light.png" alt="Image of light theme Brick variants; one with text and no icon, one with an icon on the left of text, and one with an icon on top of text">
+  <img src="../cta-bricks-theme-light.png" alt="Image of light theme Brick variants; one with text and no icon, one with an icon on the left of text, and one with an icon on top of text" width="396" height="88">
 </uxdot-example>
 <uxdot-example color-palette="darkest" width-adjustment="396px">
-  <img src="../cta-bricks-theme-dark.png" alt="Image of light theme Brick variants; one with text and no icon, one with an icon on the left of text, and one with an icon on top of text">
+  <img src="../cta-bricks-theme-dark.png" alt="Image of light theme Brick variants; one with text and no icon, one with an icon on the left of text, and one with an icon on top of text" width="396" height="88">
 </uxdot-example>
 <rh-table>
   <table>
@@ -1021,7 +1021,7 @@
 </uxdot-copy-permalink>
 <p>Primary, Secondary, and Default variants include a slot for a video icon. The video icon is the same color as the text label.</p>
 <uxdot-example width-adjustment="612px">
-  <img src="../cta-video-variants.png" alt="Image of Primary, Secondary, and Default variants with video icons to the right of text">
+  <img src="../cta-video-variants.png" alt="Image of Primary, Secondary, and Default variants with video icons to the right of text" width="612" height="56">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1039,7 +1039,7 @@
 </uxdot-copy-permalink>
 <p>Dark theme includes white variants if other variants are duplicative or if they violate accessibility guidelines.</p>
 <uxdot-example width-adjustment="523px">
-  <img src="../cta-white-variants.png" alt="Image of Primary and Primary video variants with a white background and black text and Default and Default video variants with white text">
+  <img src="../cta-white-variants.png" alt="Image of Primary and Primary video variants with a white background and black text and Default and Default video variants with white text" width="523" height="56">
 </uxdot-example>
 <rh-table>
   <table>
@@ -1085,7 +1085,7 @@
 </uxdot-copy-permalink>
 <p>All calls to action with a container have the same border radius, but the height and width vary based on the presence of icons and the amount of content. Calls to action in a row are horizontally centered.</p>
 <uxdot-example width-adjustment="721px">
-  <img src="../cta-configuration.png" alt="Image of all variants with various specs like border radius, height, width, alignment, and more">
+  <img src="../cta-configuration.png" alt="Image of all variants with various specs like border radius, height, width, alignment, and more" width="721" height="413">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1103,7 +1103,7 @@
 </uxdot-copy-permalink>
 <p>Space values are the same on all breakpoints for calls to action. To see space values when calls to action are grouped, go to the <a href="/elements/call-to-action/guidelines/">Guidelines</a> page.</p>
 <uxdot-example width-adjustment="828px">
-  <img src="../cta-space.png" alt="Image of Primary, Secondary, two Brick variants, and two Default variants with spacing values in between">
+  <img src="../cta-space.png" alt="Image of Primary, Secondary, two Brick variants, and two Default variants with spacing values in between" width="828" height="88">
 </uxdot-example>
 <rh-table>
   <table>
@@ -1178,13 +1178,13 @@
   </a></h3>
 </uxdot-copy-permalink>
 <uxdot-example width-adjustment="664px">
-  <img src="../cta-interaction-state-hover-theme-light.png" alt="Image of light theme hover states">
+  <img src="../cta-interaction-state-hover-theme-light.png" alt="Image of light theme hover states" width="666" height="56">
 </uxdot-example>
 <uxdot-example color-palette="darkest" width-adjustment="664px">
-  <img src="../cta-interaction-state-hover-theme-dark.png" alt="Image of dark theme hover states">
+  <img src="../cta-interaction-state-hover-theme-dark.png" alt="Image of dark theme hover states" width="666" height="56">
 </uxdot-example>
 <uxdot-example color-palette="darkest" width-adjustment="543px">
-  <img src="../cta-interaction-state-hover-white-variants.png" alt="Image of dark theme white variant hover states">
+  <img src="../cta-interaction-state-hover-white-variants.png" alt="Image of dark theme white variant hover states" width="540" height="56">
 </uxdot-example>
 <rh-table>
   <table>
@@ -1526,13 +1526,13 @@
   <p>The Focus state has the same styles as the Hover state.</p>
 </rh-alert>
 <uxdot-example width-adjustment="668px">
-  <img src="../cta-interaction-state-focus-theme-light.png" alt="Image of light theme focus states">
+  <img src="../cta-interaction-state-focus-theme-light.png" alt="Image of light theme focus states" width="690" height="64">
 </uxdot-example>
 <uxdot-example color-palette="darkest" width-adjustment="668px">
-  <img src="../cta-interaction-state-focus-theme-dark.png" alt="Image of dark theme focus states">
+  <img src="../cta-interaction-state-focus-theme-dark.png" alt="Image of dark theme focus states" width="690" height="64">
 </uxdot-example>
 <uxdot-example color-palette="darkest" width-adjustment="543px">
-  <img src="../cta-interaction-state-focus-white-variants.png" alt="Image of dark theme white variant focus states">
+  <img src="../cta-interaction-state-focus-white-variants.png" alt="Image of dark theme white variant focus states" width="560" height="64">
 </uxdot-example>
 <rh-table>
   <table>
@@ -1829,13 +1829,13 @@
   <p>The Active state has the same styles as the Hover state.</p>
 </rh-alert>
 <uxdot-example width-adjustment="668px">
-  <img src="../cta-interaction-state-active-theme-light.png" alt="Image of light theme active states">
+  <img src="../cta-interaction-state-active-theme-light.png" alt="Image of light theme active states" width="690" height="64">
 </uxdot-example>
 <uxdot-example color-palette="darkest" width-adjustment="668px">
-  <img src="../cta-interaction-state-active-theme-dark.png" alt="Image of dark theme active states">
+  <img src="../cta-interaction-state-active-theme-dark.png" alt="Image of dark theme active states" width="690" height="64">
 </uxdot-example>
 <uxdot-example color-palette="darkest" width-adjustment="543px">
-  <img src="../cta-interaction-state-active-white-variants.png" alt="Image of dark theme white variant active states">
+  <img src="../cta-interaction-state-active-white-variants.png" alt="Image of dark theme white variant active states" width="560" height="64">
 </uxdot-example>
 <rh-table>
   <table>

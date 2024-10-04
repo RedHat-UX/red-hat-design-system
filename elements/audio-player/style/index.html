@@ -54,8 +54,8 @@
     "lit": "/assets/packages/lit/index.js",
     "@rhds/tokens/css/color-context-provider.css.js": "/assets/packages/@rhds/tokens/css/color-context-provider.css.js",
     "@rhds/tokens/css/color-context-consumer.css.js": "/assets/packages/@rhds/tokens/css/color-context-consumer.css.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.2/core.js",
@@ -153,7 +153,7 @@
 
 
 
-<uxdot-masthead role="banner"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface-darkest);color:var(--rh-color-text-primary-on-dark);position:fixed;inset:0;height:max-content;z-index:var(--uxdot-masthead-z-index,2);container-type:inline-size;container-name:host;z-index:10}#container{display:grid;column-gap:var(--rh-space-lg);grid-template-columns:max-content 1fr max-content;max-height:var(--uxdot-masthead-max-height,72px);margin-inline:var(--rh-space-md);margin-block:var(--rh-space-lg)}slot[name=hamburger]{display:flex;flex-direction:column;align-items:center;gap:var(--rh-space-md);justify-content:center}slot[name=hamburger]::slotted(button){color:var(--rh-color-text-primary-on-dark);background-color:initial;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}slot[name=hamburger]::slotted(button:active),slot[name=hamburger]::slotted(button:focus),slot[name=hamburger]::slotted(button:hover),slot[name=hamburger]:hover::slotted(button){color:var(--rh-color-icon-subtle-hover)}slot[name=hamburger]::slotted(button:focus){outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);border-radius:var(--rh-border-radius-default)}slot[name=logo]::slotted(a){display:flex;flex-direction:row;align-items:center;justify-self:flex-start;gap:var(--rh-space-md)}slot[name=links]{--rh-icon-size:24px;display:flex;flex-direction:row;column-gap:var(--rh-space-lg)}slot[name=links]::slotted(a){display:flex;flex-direction:row;gap:var(--rh-space-lg);align-items:center}@container (min-width: 576px){#container{gap:var(--rh-space-lg);margin:var(--rh-space-lg)}}@container (min-width: 992px){#container{grid-template-columns:1fr max-content}slot[name=hamburger]{display:none}slot[name=logo]::slotted(a){margin-inline-start:var(--rh-space-lg)}}</style><!--lit-part PgF9K1dm7N4=-->
+<uxdot-masthead role="banner"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface-darkest);color:var(--rh-color-text-primary-on-dark);height:max-content;container-type:inline-size;container-name:host}#container{display:grid;column-gap:var(--rh-space-lg);grid-template-columns:max-content 1fr max-content;max-height:var(--uxdot-masthead-max-height,72px);margin-inline:var(--rh-space-md);margin-block:var(--rh-space-lg)}slot[name=hamburger]{display:flex;flex-direction:column;align-items:center;gap:var(--rh-space-md);justify-content:center}slot[name=hamburger]::slotted(button){color:var(--rh-color-text-primary-on-dark);background-color:initial;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}slot[name=hamburger]::slotted(button:active),slot[name=hamburger]::slotted(button:focus),slot[name=hamburger]::slotted(button:hover),slot[name=hamburger]:hover::slotted(button){color:var(--rh-color-icon-subtle-hover)}slot[name=hamburger]::slotted(button:focus){outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);border-radius:var(--rh-border-radius-default)}slot[name=logo]::slotted(a){display:flex;flex-direction:row;align-items:center;justify-self:flex-start;gap:var(--rh-space-md)}slot[name=links]{--rh-icon-size:24px;display:flex;flex-direction:row;column-gap:var(--rh-space-lg)}slot[name=links]::slotted(a){display:flex;flex-direction:row;gap:var(--rh-space-lg);align-items:center}@container (min-width: 576px){#container{gap:var(--rh-space-lg);margin:var(--rh-space-lg)}}@container (min-width: 992px){#container{grid-template-columns:1fr max-content}slot[name=hamburger]{display:none}slot[name=logo]::slotted(a){margin-inline-start:var(--rh-space-lg)}}</style><!--lit-part PgF9K1dm7N4=-->
       <div id="container" part="container">
         <slot name="hamburger"></slot>
         <slot name="logo"></slot>
@@ -867,7 +867,7 @@
   </a></h3>
 </uxdot-copy-permalink>
 <uxdot-example width-adjustment="712px">
-  <img src="../audio-player-anatomy.png" alt="Image of audio player anatomy showing all players with lots of annotations">
+  <img src="../audio-player-anatomy.png" alt="Image of audio player anatomy showing all players with lots of annotations" width="712" height="504">
 </uxdot-example>
 <ol class="example-notes">
 <li>Image</li>
@@ -900,7 +900,7 @@ b. Total time</li>
 </uxdot-copy-permalink>
 <p>There are three available sizes and the only difference is the amount of interface elements. The Compact and Mini players can be used on large breakpoints, but the Full player cannot be used on small breakpoints due to space constraints.</p>
 <uxdot-example width-adjustment="712px">
-  <img src="../audio-player-style-sizes.png" alt="Image of all audio player sizes with text labels">  
+  <img src="../audio-player-style-sizes.png" alt="Image of all audio player sizes with text labels" width="712" height="606">  
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -932,7 +932,7 @@ b. Total time</li>
   </a></h3>
 </uxdot-copy-permalink>
 <uxdot-example width-adjustment="800px">
-  <img src="../audio-player-theme-light.png" alt="Image of light theme audio players">
+  <img src="../audio-player-theme-light.png" alt="Image of light theme audio players" width="800" height="640">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -949,7 +949,7 @@ b. Total time</li>
   </a></h3>
 </uxdot-copy-permalink>
 <uxdot-example width-adjustment="800px" color-palette="darkest">
-  <img src="../audio-player-theme-dark.png" alt="Image of dark theme audio players">
+  <img src="../audio-player-theme-dark.png" alt="Image of dark theme audio players" width="800px" height="640">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1228,7 +1228,7 @@ b. Total time</li>
   <p>If your audio player requires a custom theme, <a href="https://github.com/orgs/RedHat-UX/discussions">contact</a> the design system team.</p>
 </rh-alert>
 <uxdot-example width-adjustment="800px" color-palette="darkest">
-  <img src="../audio-player-theme-custom.png" alt="Image of custom theme audio players">  
+  <img src="../audio-player-theme-custom.png" alt="Image of custom theme audio players" width="800" height="640">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1245,8 +1245,8 @@ b. Total time</li>
   </a></h2>
 </uxdot-copy-permalink>
 <p>The size of audio players change if an image is included or not.</p>
-<uxdot-example width-adjustment="870px">
-  <img src="../audio-player-configuration.png" alt="Image of all audio players showing various specs like alignment, border radius, height, width, and more">
+<uxdot-example width-adjustment="872px">
+  <img src="../audio-player-configuration.png" alt="Image of all audio players showing various specs like alignment, border radius, height, width, and more" width="872" height="731">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1264,7 +1264,7 @@ b. Total time</li>
 </uxdot-copy-permalink>
 <p>The amount of space in all audio players remains the same on all breakpoints.</p>
 <uxdot-example width-adjustment="712px">
-  <img src="../audio-player-space.png" alt="Image of audio player spacing for all sizes">
+  <img src="../audio-player-space.png" alt="Image of audio player spacing for all sizes" width="712" height="504">
 </uxdot-example>
 <rh-table>
   <table>
@@ -1610,10 +1610,10 @@ b. Total time</li>
   <p>Every interactive element includes a tooltip as part of the Hover state. To learn more, go to the <a href="../accessibility">Accessibility</a> page.</p>
 </rh-alert>
 <uxdot-example width-adjustment="715px">
-  <img src="../audio-player-interaction-state-hover-theme-light.png" alt="Image of light theme audio player hover states">
+  <img src="../audio-player-interaction-state-hover-theme-light.png" alt="Image of light theme audio player hover states" width="715" height="504">
 </uxdot-example>
 <uxdot-example width-adjustment="712px" color-palette="darkest">
-  <img src="../audio-player-interaction-state-hover-theme-dark.png" alt="Image of dark theme audio player hover states">
+  <img src="../audio-player-interaction-state-hover-theme-dark.png" alt="Image of dark theme audio player hover states" width="712" height="504">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1892,10 +1892,10 @@ b. Total time</li>
   <p>The Focus state has the same styles as the Hover state.</p>
 </rh-alert>
 <uxdot-example width-adjustment="715px">
-  <img src="../audio-player-interaction-state-focus-theme-light.png" alt="Image of light theme audio player focus states">
+  <img src="../audio-player-interaction-state-focus-theme-light.png" alt="Image of light theme audio player focus states" width="715" height="504">
 </uxdot-example>
 <uxdot-example width-adjustment="712px" color-palette="darkest">
-  <img src="../audio-player-interaction-state-focus-theme-dark.png" alt="Image of dark theme audio player focus states">
+  <img src="../audio-player-interaction-state-focus-theme-dark.png" alt="Image of dark theme audio player focus states" width="712" height="504">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -2174,10 +2174,10 @@ b. Total time</li>
   <p>The Active state has the same styles as the Hover state.</p>
 </rh-alert>
 <uxdot-example width-adjustment="715px">
-  <img src="../audio-player-interaction-state-active-theme-light.png" alt="Image of light theme audio player active states">  
+  <img src="../audio-player-interaction-state-active-theme-light.png" alt="Image of light theme audio player active states" width="715" height="504">
 </uxdot-example>
 <uxdot-example width-adjustment="712px" color-palette="darkest">
-  <img src="../audio-player-interaction-state-active-theme-dark.png" alt="Image of dark theme audio player active states">  
+  <img src="../audio-player-interaction-state-active-theme-dark.png" alt="Image of dark theme audio player active states" width="712" height="504">
 </uxdot-example>
 
 

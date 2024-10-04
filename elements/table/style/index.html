@@ -54,8 +54,8 @@
     "lit": "/assets/packages/lit/index.js",
     "@rhds/tokens/css/color-context-provider.css.js": "/assets/packages/@rhds/tokens/css/color-context-provider.css.js",
     "@rhds/tokens/css/color-context-consumer.css.js": "/assets/packages/@rhds/tokens/css/color-context-consumer.css.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.2/core.js",
@@ -145,7 +145,7 @@
 
 
 
-<uxdot-masthead role="banner"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface-darkest);color:var(--rh-color-text-primary-on-dark);position:fixed;inset:0;height:max-content;z-index:var(--uxdot-masthead-z-index,2);container-type:inline-size;container-name:host;z-index:10}#container{display:grid;column-gap:var(--rh-space-lg);grid-template-columns:max-content 1fr max-content;max-height:var(--uxdot-masthead-max-height,72px);margin-inline:var(--rh-space-md);margin-block:var(--rh-space-lg)}slot[name=hamburger]{display:flex;flex-direction:column;align-items:center;gap:var(--rh-space-md);justify-content:center}slot[name=hamburger]::slotted(button){color:var(--rh-color-text-primary-on-dark);background-color:initial;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}slot[name=hamburger]::slotted(button:active),slot[name=hamburger]::slotted(button:focus),slot[name=hamburger]::slotted(button:hover),slot[name=hamburger]:hover::slotted(button){color:var(--rh-color-icon-subtle-hover)}slot[name=hamburger]::slotted(button:focus){outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);border-radius:var(--rh-border-radius-default)}slot[name=logo]::slotted(a){display:flex;flex-direction:row;align-items:center;justify-self:flex-start;gap:var(--rh-space-md)}slot[name=links]{--rh-icon-size:24px;display:flex;flex-direction:row;column-gap:var(--rh-space-lg)}slot[name=links]::slotted(a){display:flex;flex-direction:row;gap:var(--rh-space-lg);align-items:center}@container (min-width: 576px){#container{gap:var(--rh-space-lg);margin:var(--rh-space-lg)}}@container (min-width: 992px){#container{grid-template-columns:1fr max-content}slot[name=hamburger]{display:none}slot[name=logo]::slotted(a){margin-inline-start:var(--rh-space-lg)}}</style><!--lit-part PgF9K1dm7N4=-->
+<uxdot-masthead role="banner"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface-darkest);color:var(--rh-color-text-primary-on-dark);height:max-content;container-type:inline-size;container-name:host}#container{display:grid;column-gap:var(--rh-space-lg);grid-template-columns:max-content 1fr max-content;max-height:var(--uxdot-masthead-max-height,72px);margin-inline:var(--rh-space-md);margin-block:var(--rh-space-lg)}slot[name=hamburger]{display:flex;flex-direction:column;align-items:center;gap:var(--rh-space-md);justify-content:center}slot[name=hamburger]::slotted(button){color:var(--rh-color-text-primary-on-dark);background-color:initial;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}slot[name=hamburger]::slotted(button:active),slot[name=hamburger]::slotted(button:focus),slot[name=hamburger]::slotted(button:hover),slot[name=hamburger]:hover::slotted(button){color:var(--rh-color-icon-subtle-hover)}slot[name=hamburger]::slotted(button:focus){outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);border-radius:var(--rh-border-radius-default)}slot[name=logo]::slotted(a){display:flex;flex-direction:row;align-items:center;justify-self:flex-start;gap:var(--rh-space-md)}slot[name=links]{--rh-icon-size:24px;display:flex;flex-direction:row;column-gap:var(--rh-space-lg)}slot[name=links]::slotted(a){display:flex;flex-direction:row;gap:var(--rh-space-lg);align-items:center}@container (min-width: 576px){#container{gap:var(--rh-space-lg);margin:var(--rh-space-lg)}}@container (min-width: 992px){#container{grid-template-columns:1fr max-content}slot[name=hamburger]{display:none}slot[name=logo]::slotted(a){margin-inline-start:var(--rh-space-lg)}}</style><!--lit-part PgF9K1dm7N4=-->
       <div id="container" part="container">
         <slot name="hamburger"></slot>
         <slot name="logo"></slot>
@@ -838,7 +838,7 @@
 <p>Use a table to organize and display data efficiently in a grid with columns and rows. When using a table, consider the structure of the data and how to make it easy for a user to scan, examine, and compare. Although a table can share space with other components and content, consider giving a table extra space on the page to help a user view dense data.</p>
 <figure>
   <uxdot-example width-adjustment="872px">
-    <img src="../table-anatomy.png" alt="Image of table with numbers next to various parts">
+    <img src="../table-anatomy.png" alt="Image of table with numbers next to various parts" width="872" height="319">
   </uxdot-example>
   <figcaption>
     <ol>
@@ -869,7 +869,7 @@
 </uxdot-copy-permalink>
 <p>Column and row titles should be a few words that describe the data in that column or row.</p>
 <uxdot-example width-adjustment="872px">
-  <img src="../table-column-row-titles.png" alt="Image of various tables with no titles, column titles, row titles, and both">
+  <img src="../table-column-row-titles.png" alt="Image of various tables with no titles, column titles, row titles, and both" width="872" height="976">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -887,7 +887,7 @@
 </uxdot-copy-permalink>
 <p>The table title should make it clear to a user what the data is and what purpose it serves. A caption can be added under the table to provide more information about the data or its source.</p>
 <uxdot-example width-adjustment="872px">
-  <img src="../table-title-caption.png" alt="Image of table with a title on top and a caption underneath">
+  <img src="../table-title-caption.png" alt="Image of table with a title on top and a caption underneath" width="872" height="319">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -919,7 +919,7 @@
   </a></h3>
 </uxdot-copy-permalink>
 <uxdot-example width-adjustment="872px">
-  <img src="../table-light-theme.png" alt="Light theme table with black text on white surface">
+  <img src="../table-light-theme.png" alt="Light theme table with black text on white surface" width="928" height="224">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -936,7 +936,7 @@
   </a></h3>
 </uxdot-copy-permalink>
 <uxdot-example color-palette="darkest" width-adjustment="872px">
-  <img src="../table-dark-theme.png" alt="Dark theme table with white text on black surface">
+  <img src="../table-dark-theme.png" alt="Dark theme table with white text on black surface" width="928" height="224">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -954,7 +954,7 @@
 </uxdot-copy-permalink>
 <p>A scrollbar is visible if content exceeds the width or height of a table. Content can scroll horizontally, vertically, or both.</p>
 <uxdot-example width-adjustment="872px">
-  <img src="../table-scrolling.png" alt="Image of various tables with a scrollbar on the right, on the bottom, and both">
+  <img src="../table-scrolling.png" alt="Image of various tables with a scrollbar on the right, on the bottom, and both" width="872" height="1044">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -972,7 +972,7 @@
 </uxdot-copy-permalink>
 <p>A table has equal spacing within columns, rows, and in between divider lines. The same spacing is also maintained across large and small viewport sizes.</p>
 <uxdot-example width-adjustment="872px">
-  <img src="../table-space.png" alt="Image of table with spacers in between elements">
+  <img src="../table-space.png" alt="Image of table with spacers in between elements" width="872" height="624">
 </uxdot-example>
 <rh-table>
   <table>
@@ -1031,15 +1031,15 @@
 <p>On hover, cell rows and columns are highlighted with a semitransparent background color to make content easier to view.</p>
 <p>In light theme, a row is highlighted in light gray on white surface colors and white on light gray surface colors. The column highlight remains light blue.</p>
 <uxdot-example width-adjustment="872px">
-  <img src="../table-interaction-state-hover.png" alt="Light theme tables with hover effects on a white surface">
+  <img src="../table-interaction-state-hover.png" alt="Light theme tables with hover effects on a white surface" width="872" height="512">
 </uxdot-example>
 <!--change bg to light gray -->
 <uxdot-example color-palette="lighter" width-adjustment="872px">
-  <img src="../table-interaction-state-hover-light-gray-surface.png" alt="Light theme tables with hover effects on a light gray surface">
+  <img src="../table-interaction-state-hover-light-gray-surface.png" alt="Light theme tables with hover effects on a light gray surface" width="872" height="512">
 </uxdot-example>
 <p>On all dark theme surface colors, the row highlight is white, and the column highlight uses a dark blue.</p>
 <uxdot-example color-palette="darkest" width-adjustment="872px">
-  <img src="../table-interaction-state-hover-dark.png" alt="Dark theme tables with hover effects on a black surface">
+  <img src="../table-interaction-state-hover-dark.png" alt="Dark theme tables with hover effects on a black surface" width="872" height="512">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1318,10 +1318,10 @@
   <p>A cell with focus does not display row and column highlighting unless it is hovered.</p>
 </rh-alert>
 <uxdot-example width-adjustment="872px">
-  <img src="../table-interaction-state-focus.png" alt="Light theme table cell in focus state">
+  <img src="../table-interaction-state-focus.png" alt="Light theme table cell in focus state" width="872" height="224">
 </uxdot-example>
 <uxdot-example color-palette="darkest" width-adjustment="872px">
-  <img src="../table-interaction-state-focus-dark.png" alt="Dark theme table cell in focus state">
+  <img src="../table-interaction-state-focus-dark.png" alt="Dark theme table cell in focus state" width="872" height="224">
 </uxdot-example>
 
 

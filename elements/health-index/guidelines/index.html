@@ -54,8 +54,8 @@
     "lit": "/assets/packages/lit/index.js",
     "@rhds/tokens/css/color-context-provider.css.js": "/assets/packages/@rhds/tokens/css/color-context-provider.css.js",
     "@rhds/tokens/css/color-context-consumer.css.js": "/assets/packages/@rhds/tokens/css/color-context-consumer.css.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.2/core.js",
@@ -114,7 +114,17 @@
 
 
 
-  <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css"><link rel="stylesheet" href="/styles/pages/backpage.css"><link rel="stylesheet" href="/styles/samp.css"><script type="module">
+  <style>
+  .list-flat {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  rh-table caption {
+    font-weight: var(--rh-font-weight-body-text-regular, 400);
+    font-size: var(--rh-font-size-code-sm, 0.875rem);
+  }
+</style><link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css"><link rel="stylesheet" href="/styles/pages/backpage.css"><link rel="stylesheet" href="/styles/samp.css"><script type="module">
   import "/assets/javascript/elements/uxdot-feedback.js";
   import "/assets/javascript/elements/uxdot-copy-button.js";
   import '/assets/javascript/elements/uxdot-header.js';
@@ -145,7 +155,7 @@
 
 
 
-<uxdot-masthead role="banner"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface-darkest);color:var(--rh-color-text-primary-on-dark);position:fixed;inset:0;height:max-content;z-index:var(--uxdot-masthead-z-index,2);container-type:inline-size;container-name:host;z-index:10}#container{display:grid;column-gap:var(--rh-space-lg);grid-template-columns:max-content 1fr max-content;max-height:var(--uxdot-masthead-max-height,72px);margin-inline:var(--rh-space-md);margin-block:var(--rh-space-lg)}slot[name=hamburger]{display:flex;flex-direction:column;align-items:center;gap:var(--rh-space-md);justify-content:center}slot[name=hamburger]::slotted(button){color:var(--rh-color-text-primary-on-dark);background-color:initial;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}slot[name=hamburger]::slotted(button:active),slot[name=hamburger]::slotted(button:focus),slot[name=hamburger]::slotted(button:hover),slot[name=hamburger]:hover::slotted(button){color:var(--rh-color-icon-subtle-hover)}slot[name=hamburger]::slotted(button:focus){outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);border-radius:var(--rh-border-radius-default)}slot[name=logo]::slotted(a){display:flex;flex-direction:row;align-items:center;justify-self:flex-start;gap:var(--rh-space-md)}slot[name=links]{--rh-icon-size:24px;display:flex;flex-direction:row;column-gap:var(--rh-space-lg)}slot[name=links]::slotted(a){display:flex;flex-direction:row;gap:var(--rh-space-lg);align-items:center}@container (min-width: 576px){#container{gap:var(--rh-space-lg);margin:var(--rh-space-lg)}}@container (min-width: 992px){#container{grid-template-columns:1fr max-content}slot[name=hamburger]{display:none}slot[name=logo]::slotted(a){margin-inline-start:var(--rh-space-lg)}}</style><!--lit-part PgF9K1dm7N4=-->
+<uxdot-masthead role="banner"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface-darkest);color:var(--rh-color-text-primary-on-dark);height:max-content;container-type:inline-size;container-name:host}#container{display:grid;column-gap:var(--rh-space-lg);grid-template-columns:max-content 1fr max-content;max-height:var(--uxdot-masthead-max-height,72px);margin-inline:var(--rh-space-md);margin-block:var(--rh-space-lg)}slot[name=hamburger]{display:flex;flex-direction:column;align-items:center;gap:var(--rh-space-md);justify-content:center}slot[name=hamburger]::slotted(button){color:var(--rh-color-text-primary-on-dark);background-color:initial;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}slot[name=hamburger]::slotted(button:active),slot[name=hamburger]::slotted(button:focus),slot[name=hamburger]::slotted(button:hover),slot[name=hamburger]:hover::slotted(button){color:var(--rh-color-icon-subtle-hover)}slot[name=hamburger]::slotted(button:focus){outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);border-radius:var(--rh-border-radius-default)}slot[name=logo]::slotted(a){display:flex;flex-direction:row;align-items:center;justify-self:flex-start;gap:var(--rh-space-md)}slot[name=links]{--rh-icon-size:24px;display:flex;flex-direction:row;column-gap:var(--rh-space-lg)}slot[name=links]::slotted(a){display:flex;flex-direction:row;gap:var(--rh-space-lg);align-items:center}@container (min-width: 576px){#container{gap:var(--rh-space-lg);margin:var(--rh-space-lg)}}@container (min-width: 992px){#container{grid-template-columns:1fr max-content}slot[name=hamburger]{display:none}slot[name=logo]::slotted(a){margin-inline-start:var(--rh-space-lg)}}</style><!--lit-part PgF9K1dm7N4=-->
       <div id="container" part="container">
         <slot name="hamburger"></slot>
         <slot name="logo"></slot>
@@ -821,17 +831,7 @@
     
 
     <div class="container">
-      <style>
-  .list-flat {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  rh-table caption {
-    font-weight: var(--rh-font-weight-body-text-regular, 400);
-    font-size: var(--rh-font-size-code-sm, 0.875rem);
-  }
-</style>
+      
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
@@ -863,7 +863,7 @@
 </uxdot-copy-permalink>
 <p>There are four available variants: <code>Small</code>, <code>Default</code>, <code>Large</code>, and <code>Extra large</code>. Each variant has an associated level of emphasis.</p>
 <uxdot-example width-adjustment="752px">
-  <img src="../guidelines-variants.svg" alt="A row of health index components with emphasis descriptions under each size. Small is low, default is medium, large is high, and extra large is highest.">
+  <img src="../guidelines-variants.svg" alt="A row of health index components with emphasis descriptions under each size. Small is low, default is medium, large is high, and extra large is highest." width="823" height="110">
 </uxdot-example>
 <rh-table>
   <table>
@@ -1177,7 +1177,7 @@
   <p>The Ecosystem Catalog team is using a health index to grade the security of their container images. <a href="https://catalog.redhat.com/software/containers/openshift3/ose-pod/57ea8d029c624c035f96f424?architecture=amd64&amp;image=630e82fc80cc9b32912f31e7&amp;container-tabs=security">Read their documentation</a> to learn more about how they are calculating grades.</p>
 </rh-alert>
 <uxdot-example width-adjustment="640px">
-  <img src="../guidelines-severity-levels.svg" alt="A 3 by 3 grid of small size health index components. Each row has letter grades A, C, and F. Under each letter grade is text that describes a safe, at risk, or vulnerable state.">
+  <img src="../guidelines-severity-levels.svg" alt="A 3 by 3 grid of small size health index components. Each row has letter grades A, C, and F. Under each letter grade is text that describes a safe, at risk, or vulnerable state." width="596" height="343">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1472,7 +1472,7 @@
 </uxdot-copy-permalink>
 <p>Health index can be stacked with other content. In such cases, we recommend using the Small variant, as it does not take focus away from surrounding information.</p>
 <uxdot-example width-adjustment="120px">
-  <img src="../guidelines-layout-stacked.svg" alt="A small size health index component with a letter grade A at the bottom of a stack of text.">
+  <img src="../guidelines-layout-stacked.svg" alt="A small size health index component with a letter grade A at the bottom of a stack of text." width="112" height="340">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1490,7 +1490,7 @@
 </uxdot-copy-permalink>
 <p>Health index can also be inserted inline with text and components. In such cases, we recommend using the Large or Extra large variants to maintain equal hierarchy among elements.</p>
 <uxdot-example width-adjustment="752px">
-  <img src="../guidelines-layout-inline.svg" alt="An extra large size health index component with a letter grade F in between a heading, body text, and a call to action.">
+  <img src="../guidelines-layout-inline.svg" alt="An extra large size health index component with a letter grade F in between a heading, body text, and a call to action." width="856" height="224">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1535,7 +1535,7 @@
       </figure>
     <!--/lit-part--></template>
     <uxdot-example color-palette="lightest" width-adjustment="176px" slot="image">
-      <img src="../guidelines-best-practice-1-do.svg" alt="Small, default, and large size health index components displaying correct letter grades and severity colors.">
+      <img src="../guidelines-best-practice-1-do.svg" alt="Small, default, and large size health index components displaying correct letter grades and severity colors." width="170" height="143">
     </uxdot-example>
     <p>Keep letter grades and severity level colors consistent.</p>
   </uxdot-best-practice>
@@ -1552,7 +1552,7 @@
       </figure>
     <!--/lit-part--></template>
     <uxdot-example color-palette="lightest" width-adjustment="176px" slot="image">
-      <img src="../guidelines-best-practice-1-dont.svg" alt="Small, default, and large size health index components displaying incorrect letter grades and severity colors.">
+      <img src="../guidelines-best-practice-1-dont.svg" alt="Small, default, and large size health index components displaying incorrect letter grades and severity colors." width="170" height="143">
     </uxdot-example>
     <p>Do not mix up letter grades and severity level colors.</p>
   </uxdot-best-practice>
@@ -1586,7 +1586,7 @@
       </figure>
     <!--/lit-part--></template>
     <uxdot-example color-palette="darkest" width-adjustment="176px" slot="image">
-      <img src="../guidelines-best-practice-2-do.svg" alt="Dark theme small, default, and large size health index components.">
+      <img src="../guidelines-best-practice-2-do.svg" alt="Dark theme small, default, and large size health index components." width="170" height="143">
     </uxdot-example>
     <p>Use the correct components in the correct theme.</p>
   </uxdot-best-practice>
@@ -1603,7 +1603,7 @@
       </figure>
     <!--/lit-part--></template>
     <uxdot-example color-palette="darkest" width-adjustment="176px" slot="image">
-      <img src="../guidelines-best-practice-2-dont.svg" alt="Light theme small, default, and large size health index components used incorrectly in the dark theme.">
+      <img src="../guidelines-best-practice-2-dont.svg" alt="Light theme small, default, and large size health index components used incorrectly in the dark theme." width="170" height="143">
     </uxdot-example>
     <p>Do not use components from one theme in another theme.</p>
   </uxdot-best-practice>
@@ -1637,7 +1637,7 @@
       </figure>
     <!--/lit-part--></template>
     <uxdot-example color-palette="lightest" width-adjustment="176px" slot="image">
-      <img src="../guidelines-best-practice-3-do.svg" alt="Small, default, and large size health index components displaying correct letter grades and severity colors.">
+      <img src="../guidelines-best-practice-3-do.svg" alt="Small, default, and large size health index components displaying correct letter grades and severity colors." width="170" height="143">
     </uxdot-example>
     <p>Use the available variants as intended.</p>
   </uxdot-best-practice>
@@ -1654,7 +1654,7 @@
       </figure>
     <!--/lit-part--></template>
     <uxdot-example color-palette="lightest" width-adjustment="278px" slot="image">
-      <img src="../guidelines-best-practice-3-dont.svg" alt="Large size health index component displaying extra text and an incorrect combination of styles.">
+      <img src="../guidelines-best-practice-3-dont.svg" alt="Large size health index component displaying extra text and an incorrect combination of styles." width="267" height="142">
     </uxdot-example>
     <p>Do not combine variants or add other elements like text.</p>
   </uxdot-best-practice>

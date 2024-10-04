@@ -54,8 +54,8 @@
     "lit": "/assets/packages/lit/index.js",
     "@rhds/tokens/css/color-context-provider.css.js": "/assets/packages/@rhds/tokens/css/color-context-provider.css.js",
     "@rhds/tokens/css/color-context-consumer.css.js": "/assets/packages/@rhds/tokens/css/color-context-consumer.css.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.2/core.js",
@@ -145,7 +145,7 @@
 
 
 
-<uxdot-masthead role="banner"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface-darkest);color:var(--rh-color-text-primary-on-dark);position:fixed;inset:0;height:max-content;z-index:var(--uxdot-masthead-z-index,2);container-type:inline-size;container-name:host;z-index:10}#container{display:grid;column-gap:var(--rh-space-lg);grid-template-columns:max-content 1fr max-content;max-height:var(--uxdot-masthead-max-height,72px);margin-inline:var(--rh-space-md);margin-block:var(--rh-space-lg)}slot[name=hamburger]{display:flex;flex-direction:column;align-items:center;gap:var(--rh-space-md);justify-content:center}slot[name=hamburger]::slotted(button){color:var(--rh-color-text-primary-on-dark);background-color:initial;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}slot[name=hamburger]::slotted(button:active),slot[name=hamburger]::slotted(button:focus),slot[name=hamburger]::slotted(button:hover),slot[name=hamburger]:hover::slotted(button){color:var(--rh-color-icon-subtle-hover)}slot[name=hamburger]::slotted(button:focus){outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);border-radius:var(--rh-border-radius-default)}slot[name=logo]::slotted(a){display:flex;flex-direction:row;align-items:center;justify-self:flex-start;gap:var(--rh-space-md)}slot[name=links]{--rh-icon-size:24px;display:flex;flex-direction:row;column-gap:var(--rh-space-lg)}slot[name=links]::slotted(a){display:flex;flex-direction:row;gap:var(--rh-space-lg);align-items:center}@container (min-width: 576px){#container{gap:var(--rh-space-lg);margin:var(--rh-space-lg)}}@container (min-width: 992px){#container{grid-template-columns:1fr max-content}slot[name=hamburger]{display:none}slot[name=logo]::slotted(a){margin-inline-start:var(--rh-space-lg)}}</style><!--lit-part PgF9K1dm7N4=-->
+<uxdot-masthead role="banner"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface-darkest);color:var(--rh-color-text-primary-on-dark);height:max-content;container-type:inline-size;container-name:host}#container{display:grid;column-gap:var(--rh-space-lg);grid-template-columns:max-content 1fr max-content;max-height:var(--uxdot-masthead-max-height,72px);margin-inline:var(--rh-space-md);margin-block:var(--rh-space-lg)}slot[name=hamburger]{display:flex;flex-direction:column;align-items:center;gap:var(--rh-space-md);justify-content:center}slot[name=hamburger]::slotted(button){color:var(--rh-color-text-primary-on-dark);background-color:initial;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}slot[name=hamburger]::slotted(button:active),slot[name=hamburger]::slotted(button:focus),slot[name=hamburger]::slotted(button:hover),slot[name=hamburger]:hover::slotted(button){color:var(--rh-color-icon-subtle-hover)}slot[name=hamburger]::slotted(button:focus){outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);border-radius:var(--rh-border-radius-default)}slot[name=logo]::slotted(a){display:flex;flex-direction:row;align-items:center;justify-self:flex-start;gap:var(--rh-space-md)}slot[name=links]{--rh-icon-size:24px;display:flex;flex-direction:row;column-gap:var(--rh-space-lg)}slot[name=links]::slotted(a){display:flex;flex-direction:row;gap:var(--rh-space-lg);align-items:center}@container (min-width: 576px){#container{gap:var(--rh-space-lg);margin:var(--rh-space-lg)}}@container (min-width: 992px){#container{grid-template-columns:1fr max-content}slot[name=hamburger]{display:none}slot[name=logo]::slotted(a){margin-inline-start:var(--rh-space-lg)}}</style><!--lit-part PgF9K1dm7N4=-->
       <div id="container" part="container">
         <slot name="hamburger"></slot>
         <slot name="logo"></slot>
@@ -850,8 +850,8 @@
     <a href="#anatomy">Anatomy</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<uxdot-example>
-  <img src="../accordion-anatomy.png" alt="Anatomy of an accordion with lots of annotations pointing to various parts">
+<uxdot-example width-adjustment="872px">
+  <img src="../accordion-anatomy.png" alt="Anatomy of an accordion with lots of annotations pointing to various parts" width="872" height="755">
 </uxdot-example>
 <ol class="example-notes">
 <li>Collapsed panel</li>
@@ -879,8 +879,8 @@
   </a></h3>
 </uxdot-copy-permalink>
 <p>There are two available sizes and the only difference is the title text size. You can use the Small size on large breakpoints, but not the Large size on small breakpoints due to the potential of long title text wrapping to more than two lines.</p>
-<uxdot-example>
-  <img src="../accordion-sizes.png" alt="A large size accordion with text underneath saying ‘Large size’ and a small size accordion with text underneath saying ‘Small size’">
+<uxdot-example width-adjustment="872px">
+  <img src="../accordion-sizes.png" alt="A large size accordion with text underneath saying ‘Large size’ and a small size accordion with text underneath saying ‘Small size’" width="872" height="536">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -911,8 +911,8 @@
     <a href="#light-theme">Light theme</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<uxdot-example>
-  <img src="../accordion-theme-light.png" alt="Light theme accordion with an expanded panel">
+<uxdot-example width-adjustment="872px">
+  <img src="../accordion-theme-light.png" alt="Light theme accordion with an expanded panel" width="872" height="213">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -928,8 +928,8 @@
     <a href="#dark-theme">Dark theme</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<uxdot-example color-palette="darkest">
-  <img src="../accordion-theme-dark.png" alt="Dark theme accordion with an expanded panel">
+<uxdot-example color-palette="darkest" width-adjustment="872px">
+  <img src="../accordion-theme-dark.png" alt="Dark theme accordion with an expanded panel" width="872" height="213">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -946,8 +946,8 @@
   </a></h2>
 </uxdot-copy-permalink>
 <p>An expanded panel does not have a maximum height, but it may scroll if constrained by vertical space. The width of an accordion varies based on content and page layout. Title text and icons are horizontally aligned.</p>
-<uxdot-example>
-  <img src="../accordion-configuration.png" alt="How an accordion is constructed showing alignment, space, scrolling, and width details">
+<uxdot-example width-adjustment="872px">
+  <img src="../accordion-configuration.png" alt="How an accordion is constructed showing alignment, space, scrolling, and width details" width="872" height="356">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -964,8 +964,8 @@
   </a></h3>
 </uxdot-copy-permalink>
 <p>The accent slot can be positioned inline or below the panel's title. This can contain tags, badges, or other small elements with secondary information.</p>
-<uxdot-example>
-  <img src="../accordion-accent-slot.png" alt="Accordion panel with two tags in inline accent slot and an accordion with two tags below the title">
+<uxdot-example width-adjustment="872px">
+  <img src="../accordion-accent-slot.png" alt="Accordion panel with two tags in inline accent slot and an accordion with two tags below the title" width="872" height="221">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -982,8 +982,8 @@
   </a></h3>
 </uxdot-copy-permalink>
 <p>Panels can be nested to help organize complex or granular sections of content.</p>
-<uxdot-example>
-  <img src="../accordion-nested-panels.png" alt="An accordion with an expanded panel and a nested expanded panel">
+<uxdot-example width-adjustment="872px">
+  <img src="../accordion-nested-panels.png" alt="An accordion with an expanded panel and a nested expanded panel" width="872" height="442">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1000,8 +1000,8 @@
   </a></h3>
 </uxdot-copy-permalink>
 <p>Multiple panels can be expanded simultaneously even when nested.</p>
-<uxdot-example>
-  <img src="../accordion-stacked-panels.png" alt="An accordion with one collapsed panel on top and two stacked expanded panels below">
+<uxdot-example width-adjustment="872px">
+  <img src="../accordion-stacked-panels.png" alt="An accordion with one collapsed panel on top and two stacked expanded panels below" width="872" height="999">
 </uxdot-example>  
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1017,8 +1017,8 @@
     <a href="#space">Space</a><a>
   </a></h2>
 </uxdot-copy-permalink>
-<uxdot-example>
-  <img src="../accordion-space.png" alt="Accordion spacing within panels and in between elements like titles, body text, rules, and icons">
+<uxdot-example width-adjustment="872px">
+  <img src="../accordion-space.png" alt="Accordion spacing within panels and in between elements like titles, body text, rules, and icons" width="872" height="1336">
 </uxdot-example>
 <rh-table>
 <table>
@@ -1092,11 +1092,11 @@
     <a href="#hover">Hover</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<uxdot-example>
-  <img src="../accordion-hover-theme-light.png" alt="Light theme accordion with a hover state">
+<uxdot-example width-adjustment="872px">
+  <img src="../accordion-hover-theme-light.png" alt="Light theme accordion with a hover state" width="872" height="213">
 </uxdot-example>
-<uxdot-example color-palette="darkest">
-  <img src="../accordion-hover-theme-dark.png" alt="Dark theme accordion with a hover state">
+<uxdot-example width-adjustment="872px" color-palette="darkest">
+  <img src="../accordion-hover-theme-dark.png" alt="Dark theme accordion with a hover state" width="872" height="213">
 </uxdot-example>
 <rh-table>
   <table>
@@ -1130,11 +1130,11 @@
     <a href="#focus">Focus</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<uxdot-example>
-  <img src="../accordion-focus-theme-light.png" alt="Light theme accordion with a focus state">
+<uxdot-example width-adjustment="872px">
+  <img src="../accordion-focus-theme-light.png" alt="Light theme accordion with a focus state" width="872" height="213">
 </uxdot-example>
-<uxdot-example color-palette="darkest">
-  <img src="../accordion-focus-theme-dark.png" alt="Dark theme accordion with a focus state">
+<uxdot-example width-adjustment="872px" color-palette="darkest">
+  <img src="../accordion-focus-theme-dark.png" alt="Dark theme accordion with a focus state" width="872" height="213">
 </uxdot-example>
 <rh-table>
   <table>
@@ -1173,11 +1173,11 @@
     <a href="#active">Active</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<uxdot-example>
-  <img src="../accordion-active-theme-light.png" alt="Light theme accordion with an active state">
+<uxdot-example width-adjustment="872px">
+  <img src="../accordion-active-theme-light.png" alt="Light theme accordion with an active state" width="872" height="213">
 </uxdot-example>
-<uxdot-example>
-  <img src="../accordion-active-theme-dark.png" alt="Dark theme accordion with an active state">
+<uxdot-example width-adjustment="872px">
+  <img src="../accordion-active-theme-dark.png" alt="Dark theme accordion with an active state" width="872" height="213">
 </uxdot-example>
 <rh-table>
   <table>
