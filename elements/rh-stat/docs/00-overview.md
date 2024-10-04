@@ -3,7 +3,10 @@
 {{ tagName | getElementDescription }}
 
 <uxdot-example width-adjustment="346px">
-  <img src="./stat-sample-element.png" alt="A vertically aligned stack of elements; includes a small red icon, large red data text showing 80% percent, and two lines of black body text">
+  <img src="./stat-sample-element.png"
+        alt="A vertically aligned stack of elements; includes a small red icon, large red data text showing 80% percent, and two lines of black body text"
+        width="346"
+        height="154">
 </uxdot-example>
 
 {% repoStatusList repoStatus=repoStatus %}

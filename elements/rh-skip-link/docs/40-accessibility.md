@@ -3,7 +3,10 @@
 Users will interact with the skip link using a keyboard primarily.
 
 <uxdot-example width-adjustment="870px">
-  <img src="../skip-link-keyboard-navigation.png" alt="Screenshots of navigation with and without skip link showing and keyboard navigation text">
+  <img src="../skip-link-keyboard-navigation.png"
+        alt="Screenshots of navigation with and without skip link showing and keyboard navigation text"
+        width="872"
+        height="651">
 </uxdot-example>
 
 
@@ -38,7 +41,10 @@ Users will interact with the skip link using a keyboard primarily.
 The skip link should be the first item on a page to receive focus. After the skip link is activated, the first interactive element in the main content area will receive focus next.
 
 <uxdot-example width-adjustment="870px">
-  <img src="../skip-link-focus-order.png" alt="Screenshot of navigation and hero of redhat.com with a skip link and arrows showing focus order">
+  <img src="../skip-link-focus-order.png"
+        alt="Screenshot of navigation and hero of redhat.com with a skip link and arrows showing focus order"
+        width="872"
+        height="628">
 </uxdot-example>
 
 

@@ -1,28 +1,8 @@
-<script type="module" src="/assets/javascript/elements/uxdot-best-practice.js"></script>
-
-<style>
-
-uxdot-example div,
-uxdot-example rh-surface {
-  padding: var(--rh-space-xl, 24px);
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--rh-space-lg, 16px);
-}
-
-.grid uxdot-best-practice:not(:first-of-type) {
-  margin-block-start: var(--rh-space-lg, 16px);
-}
-
-@container container (min-width: 768px) {
-  .grid {
-    grid-template-columns: 1fr 1fr;
-    gap: var(--rh-space-2xl, 32px);
+<style data-helmet>
+  uxdot-example div,
+  uxdot-example rh-surface {
+    padding: var(--rh-space-xl, 24px);
   }
-}
 </style>
 
 ## Guidelines
@@ -31,7 +11,7 @@ Surface elements are used only when another container like card or blockquote wo
 
 Avoid using surface inside of other containers. Use the appropriate `color-palette` on the container instead
 
-<div class="grid">
+<div class="grid sm-two-columns">
   <uxdot-best-practice variant="dont">
     <uxdot-example slot="image">
       <h2>⚠️ Avoid</h2>

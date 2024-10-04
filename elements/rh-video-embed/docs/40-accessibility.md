@@ -3,7 +3,10 @@
 Users should have the ability to move focus to a video embed element and play the video using the keyboard.
 
 <uxdot-example width-adjustment="424px">
-  <img src="../video-keyboard-navigation.svg" alt="Screenshots of a video embed showing a darkened play button on focus">
+  <img src="../video-keyboard-navigation.svg"
+        alt="Screenshots of a video embed showing a darkened play button on focus"
+        width="428"
+        height="284">
 </uxdot-example>
 
 <rh-table>

@@ -9,7 +9,10 @@ For users that do not have advertising cookies enabled, the video embed element 
 Check the [Code subpage](/elements/video-embed/code/) for information about [attributes](/elements/video-embed/code/#rh-video-embed) and [events](/elements/video-embed/code/#rh-video-embed) that will help you implement the cookie consent thumbnail and integrate it with the preferred cookie consent manager. View the [Require Consent demo](/elements/video-embed/demo/require-consent/) to see a standalone implementation of this functionality.
 
 <uxdot-example width-adjustment="555px">
-  <img src="../video-require-consent.svg" alt="Video displaying the cookie consent which says, 'View this video by opting into Advertising Cookies.' It also has an 'Update Preferences button'.">
+  <img src="../video-require-consent.svg"
+        alt="Video displaying the cookie consent which says, 'View this video by opting into Advertising Cookies.' It also has an 'Update Preferences button'."
+        width="556"
+        height="312">
 </uxdot-example>
 
 ## Writing Content
@@ -41,11 +44,17 @@ The video’s width will dynamically adjust with its parent container. The video
 
 ### Large Viewport Sizes
 
-<img src="../video-grid-lg-viewports.svg" alt="Video embed with a semitransparent grid in the background. The video embed only spans half the columns.">
+<img src="../video-grid-lg-viewports.svg"
+        alt="Video embed with a semitransparent grid in the background. The video embed only spans half the columns."
+        width="1000"
+        height="351">
 
 ### Small Viewport sizes
 
-<img src="../video-grid-sm-viewports.svg" alt="Video embed with a semitransparent grid background on mobile. The video embed spans all columns on small viewports.">
+<img src="../video-grid-sm-viewports.svg"
+        alt="Video embed with a semitransparent grid background on mobile. The video embed spans all columns on small viewports."
+        width="360"
+        height="242">
 
 ## Best Practices
 
@@ -56,14 +65,20 @@ Display the play button in a consistent, predictable spot for all videos.
 <div class="grid xs-two-columns">
   <uxdot-best-practice variant="do">
     <uxdot-example color-palette="lightest" width-adjustment="420px" slot="image">
-      <img src="../guidelines-best-practice-1-do.svg" alt="Video with vertically and horizontally centered play button">
+      <img src="../guidelines-best-practice-1-do.svg"
+        alt="Video with vertically and horizontally centered play button"
+        width="420"
+        height="236">
     </uxdot-example>
     <p>Keep the play button centered horizontally and vertically.</p>
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="dont">
     <uxdot-example color-palette="lightest" width-adjustment="420px" slot="image">
-      <img src="../guidelines-best-practice-1-dont.svg" alt="Video with play button in the bottom right">
+      <img src="../guidelines-best-practice-1-dont.svg"
+        alt="Video with play button in the bottom right"
+        width="420"
+        height="236">
     </uxdot-example>
     <p>Do not move the play button to another area of the video element.</p>
   </uxdot-best-practice>
@@ -77,14 +92,20 @@ A video embed element and should have the same aspect ratio as the video it’s 
 <div class="grid xs-two-columns">
   <uxdot-best-practice variant="do">
     <uxdot-example color-palette="lightest" width-adjustment="420px" slot="image">
-      <img src="../guidelines-best-practice-2-do.svg" alt="Video embed with a correct, 16:9 aspect ratio">
+      <img src="../guidelines-best-practice-2-do.svg"
+        alt="Video embed with a correct, 16:9 aspect ratio"
+        width="420"
+        height="237">
     </uxdot-example>
     <p>The video embed element should display a video using its original aspect ratio.</p>
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="dont">
     <uxdot-example color-palette="lightest" width-adjustment="420px" slot="image">
-      <img src="../guidelines-best-practice-2-dont.svg" alt="Video embed with a very narrow aspect ratio">
+      <img src="../guidelines-best-practice-2-dont.svg"
+        alt="Video embed with a very narrow aspect ratio"
+        width="420"
+        height="184">
     </uxdot-example>
     <p>Do not change the aspect ratio of the video within the video embed element.</p>
   </uxdot-best-practice>

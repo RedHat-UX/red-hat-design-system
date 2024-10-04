@@ -3,7 +3,10 @@
 {{ tagName | getElementDescription }}
 
 <uxdot-example width-adjustment="230px">
-  <img src="./tooltip-sample-element.png" alt="A black tooltip on top of a gray disabled button">
+  <img src="./tooltip-sample-element.png"
+        alt="A black tooltip on top of a gray disabled button"
+        width="230"
+        height="131">
 </uxdot-example>
 
 {% repoStatusList repoStatus=repoStatus %}

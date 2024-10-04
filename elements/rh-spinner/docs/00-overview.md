@@ -3,7 +3,10 @@
 {{ tagName | getElementDescription }}
 
 <uxdot-example width-adjustment="184px">
-  <img src="./spinner-sample.png" alt="Example of a spinner">
+  <img src="./spinner-sample.png"
+        alt="Example of a spinner"
+        width="184"
+        height="64">
 </uxdot-example>
 
 {% repoStatusList repoStatus=repoStatus %}

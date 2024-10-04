@@ -11,7 +11,10 @@ websites.
 
 <figure>
   <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
-    <img src="../footer-anatomy.png" alt="Image of a footer showing lots of annotation numbers next to various styles and other elements">
+    <img src="../footer-anatomy.png"
+        alt="Image of a footer showing lots of annotation numbers next to various styles and other elements"
+        width="968"
+        height="796">
   </uxdot-example>
   <figcaption>
     <ol>
@@ -37,7 +40,10 @@ universal footer background color. This variant creates separation and helps
 distinguish both footers from each other.
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../footer-grays.png" alt="Image of a footer with no elements except for backgrounds; the top background is dark gray and the bottom is black">
+  <img src="../footer-grays.png"
+        alt="Image of a footer with no elements except for backgrounds; the top background is dark gray and the bottom is black"
+        width="1000"
+        height="480">
 </uxdot-example>
 
 
@@ -47,7 +53,10 @@ A footer only has one theme, but visually it could be considered in the dark
 theme.
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../footer-theme.png" alt="Image of a large footer">
+  <img src="../footer-theme.png"
+        alt="Image of a large footer"
+        width="968"
+        height="796">
 </uxdot-example>
 
 
@@ -134,7 +143,10 @@ theme.
 ### Language selector 
 
 <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
-  <img src="../footer-language-selector.png" alt="Image of a footer with the language selector menu open">
+  <img src="../footer-language-selector.png"
+        alt="Image of a footer with the language selector menu open"
+        width="968"
+        height="796">
 </uxdot-example>
 
 <rh-table>
@@ -174,26 +186,41 @@ Within these regions, position and alignment are somewhat rigid in order to
 maintain consistency.
 
 <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
-  <img src="../footer-configuration.png" alt="Image of how a footer is architected showing lots of alignment examples">
+  <img src="../footer-configuration.png"
+        alt="Image of how a footer is architected showing lots of alignment examples"
+        width="968"
+        height="796">
 </uxdot-example>
 
 
 ## Space 
 
 <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
-  <img src="../footer-space-desktop.png" alt="Image of a desktop footer showing space values in between elements">
+  <img src="../footer-space-desktop.png"
+        alt="Image of a desktop footer showing space values in between elements"
+        width="968"
+        height="796">
 </uxdot-example>
 
 <uxdot-example width-adjustment="768px" variant="full" alignment="left" no-border>
-  <img src="../footer-space-tablet.png" alt="Image of a tablet footer showing space values in between elements">
+  <img src="../footer-space-tablet.png"
+        alt="Image of a tablet footer showing space values in between elements"
+        width="768"
+        height="1070">
 </uxdot-example>
 
 <uxdot-example width-adjustment="360px" variant="full" alignment="left" no-border>
-  <img src="../footer-space-mobile.png" alt="Image of a mobile footer showing space values in between elements">
+  <img src="../footer-space-mobile.png"
+        alt="Image of a mobile footer showing space values in between elements"
+        width="360"
+        height="1285">
 </uxdot-example>
 
 <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
-  <img src="../footer-space-language-selector.png" alt="Image of a footer showing space values in the language selector menu">
+  <img src="../footer-space-language-selector.png"
+        alt="Image of a footer showing space values in the language selector menu"
+        width="968"
+        height="796">
 </uxdot-example>
 
 <rh-table>
@@ -210,7 +237,10 @@ maintain consistency.
 ### Hover 
 
 <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
-  <img src="../footer-interaction-state-hover.png" alt="Hover state examples within a footer">
+  <img src="../footer-interaction-state-hover.png"
+        alt="Hover state examples within a footer"
+        width="968"
+        height="796">
 </uxdot-example>
 
 <rh-table>
@@ -250,7 +280,10 @@ maintain consistency.
 ### Hover - language selector 
 
 <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
-  <img src="../footer-ls-interaction-state-hover.png" alt="Hover state example within the language selector menu">
+  <img src="../footer-ls-interaction-state-hover.png"
+        alt="Hover state example within the language selector menu"
+        width="968"
+        height="796">
 </uxdot-example>
 
 <rh-table>
@@ -279,7 +312,10 @@ maintain consistency.
 </rh-alert>
 
 <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
-  <img src="../footer-interaction-state-focus.png" alt="Focus state examples within a footer">
+  <img src="../footer-interaction-state-focus.png"
+        alt="Focus state examples within a footer"
+        width="968"
+        height="796">
 </uxdot-example>
 
 <rh-table>
@@ -307,7 +343,10 @@ maintain consistency.
 </rh-alert>
 
 <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
-  <img src="../footer-ls-interaction-state-focus.png" alt="Focus state example within the language selector menu">
+  <img src="../footer-ls-interaction-state-focus.png"
+        alt="Focus state example within the language selector menu"
+        width="968"
+        height="796">
 </uxdot-example>
 
 <rh-table>
@@ -336,7 +375,10 @@ maintain consistency.
 </rh-alert>
 
 <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
-  <img src="../footer-interaction-state-active.png" alt="Active state examples within a footer">
+  <img src="../footer-interaction-state-active.png"
+        alt="Active state examples within a footer"
+        width="968"
+        height="796">
 </uxdot-example>
 
 <rh-table>
@@ -364,7 +406,10 @@ maintain consistency.
 </rh-alert>
 
 <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
-  <img src="../footer-ls-interaction-state-active.png" alt="Active state example within the language selector menu">
+  <img src="../footer-ls-interaction-state-active.png"
+        alt="Active state example within the language selector menu"
+        width="968"
+        height="796">
 </uxdot-example>
 
 <rh-table>
