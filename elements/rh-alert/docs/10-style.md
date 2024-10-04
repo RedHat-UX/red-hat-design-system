@@ -87,7 +87,7 @@ Same as the inline alert, at minimum, the status icon and title needs to be visi
         height="640">
 </uxdot-example>
 
-<rh-table>å
+<rh-table>
 {% spacerTokensTable 
     caption='',
     headingLevel="4",

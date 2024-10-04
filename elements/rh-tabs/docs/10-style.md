@@ -31,7 +31,7 @@ Tabs are used to group related content allowing users to navigate a view without
 There are two available variants. Open tabs has a more understated style whereas Box tabs has a more traditional style.
 
 <uxdot-example width-adjustment="872px">
-  <img src="../tabs-variants.png" alt="Image of open tabs on top and box tabs below">
+  <img src="../tabs-variations.png" alt="Image of open tabs on top and box tabs below">
 </uxdot-example>
 
 
