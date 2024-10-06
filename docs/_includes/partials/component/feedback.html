@@ -1,5 +1,9 @@
 {% set related = (doc.tagName if doc.tagName else (title | slug)) | relatedItems %}
 
+<script type="module" data-helmet>
+  import '/assets/javascript/elements/uxdot-feedback.js';
+</script>
+
 <uxdot-feedback>
   {% if related.length %}
     <h2>Related elements or patterns</h2>

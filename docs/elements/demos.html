@@ -13,6 +13,7 @@ pagination:
   alias: element
   size: 1
 ---
+{# TODO: replace boilerplate with has-toc.njk template #}
 {%- set prettyName -%}{{ (doc.alias or doc.slug or element.slug) | deslugify }}{% endset %}
 {%- set planned = repoStatus | isPlanned(prettyName) %}
 {%- set manifest = doc.docsPage.manifest -%}

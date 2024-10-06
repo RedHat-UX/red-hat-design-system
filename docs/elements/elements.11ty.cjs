@@ -17,8 +17,7 @@ module.exports = class ElementsPage {
 
   data() {
     return {
-      hasToc: true,
-      layout: 'layouts/base.njk',
+      layout: 'layouts/pages/has-toc.njk',
       permalink: ({ doc }) => doc.permalink,
       eleventyComputed: {
         title: ({ doc }) => doc.pageTitle || doc.slug,
@@ -63,36 +62,18 @@ module.exports = class ElementsPage {
   }
 
   async render(ctx) {
-    const { doc, page, repoStatus } = ctx;
-    const { alias, docsPage, fileExists, filePath, isCodePage, slug, tagName } = doc;
-    const { manifest } = docsPage;
+    const { doc, repoStatus } = ctx;
+    const { alias, fileExists, filePath, isCodePage, slug, tagName } = doc;
     const content = fileExists ? await this.renderFile(filePath, ctx) : '';
     const prettyName = this.deslugify(alias ?? slug);
     const planned = this.isPlanned(repoStatus, prettyName);
-    const demos = manifest?.getDemos(docsPage.tagName);
-    const demosUrl = `/elements/${slug}/demos/`;
-    const hasLightdom = [
-      'rh-pagination',
-      'rh-table',
-      'rh-tile',
-      'rh-audio-player',
-    ].includes(tagName);
 
     const stylesheets = [
       '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css',
-      '/styles/pages/backpage.css',
       '/styles/samp.css',
-    ];
-
-    if (isCodePage) {
-      stylesheets.push('/styles/pages/code.css');
-    }
-
-    if (hasLightdom) {
-      stylesheets.push(
-        `/assets/packages/@rhds/elements/elements/${tagName}/${tagName}-lightdom.css`,
-      );
-    }
+      ctx.doc.hasLightdom && `/assets/packages/@rhds/elements/elements/${tagName}/${tagName}-lightdom.css`,
+      isCodePage && '/styles/pages/code.css',
+    ].filter(Boolean);
 
     return html`${stylesheets.map(x => html`
       <link rel="stylesheet" data-helmet href="${x}">`).join('')}
@@ -106,12 +87,9 @@ module.exports = class ElementsPage {
       </noscript>
 
       <script type="module" data-helmet>
-        import '/assets/javascript/elements/uxdot-feedback.js';
         import '/assets/javascript/elements/uxdot-copy-button.js';
-        import '/assets/javascript/elements/uxdot-header.js';
         import '@rhds/elements/rh-alert/rh-alert.js';
         import '@rhds/elements/rh-cta/rh-cta.js';
-        import '@rhds/elements/rh-footer/rh-footer.js';
         import '@rhds/elements/rh-subnav/rh-subnav.js';
         import '@rhds/elements/rh-surface/rh-surface.js';
         import '@rhds/elements/rh-code-block/rh-code-block.js';
@@ -126,45 +104,15 @@ module.exports = class ElementsPage {
         import '@rhds/elements/${tagName}/${tagName}.js';
       </script>`}
 
-      ${await this.renderFile('./docs/_includes/partials/component/masthead.njk', ctx)}
-      ${await this.renderFile('./docs/_includes/partials/component/sidenav.njk', ctx)}
-
-      <rh-surface id="main"
-                  role="main"
-                  color-palette="lightest">
-        <article class="has-toc">
-          <uxdot-header has-subnav>
-            <h1 id="${slug}" class="page-title">
-              ${prettyName}${!planned ? '' : html`
-              <rh-tag icon="notification-fill" color="gray">Planned</rh-tag>`}
-            </h1>
-            <rh-subnav slot="subnav">${doc.tabs.map((tab, i, a) => html`
-              ${!(demos.length && i === a.length - 1) ? '' : html`
-              <a ${page.url !== demosUrl ? '' : 'active'} href="${demosUrl}">Demos</a>`}
-              <a ${tab.href !== page.url ? '' : 'active'} href="${tab.href}">${tab.pageTitle}</a>`).join('')}
-            </rh-subnav>
-          </uxdot-header>
-
-          <div class="aside">
-            <uxdot-toc summary="On this page">
-              ${this.toc(content)}
-            </uxdot-toc>
-          </div>
-
-          <div class="container">
-            ${!isCodePage ? content : await this.renderCodePage.call(this, ctx)}
-            ${await this.renderFile('./docs/_includes/partials/component/feedback.html', ctx)}
-            ${await this.renderFile('./docs/_includes/partials/component/edit-this-page.njk', ctx)}
-          </div>
-
-        </article>
-        ${await this.renderFile('./docs/_includes/partials/component/back-to-top.njk', ctx)}
-      </rh-surface>
-      ${await this.renderFile('./docs/_includes/partials/component/footer.njk', ctx)}
+      ${!isCodePage ? content : await this.#renderCodePage.call(this, ctx)}
     `;
   }
 
-  async getMainDemoContent(tagName) {
+  async #innerMD(content = '') {
+    return (await this.renderTemplate(content.trim(), 'md')).trim();
+  }
+
+  async #getMainDemoContent(tagName) {
     try {
       const demoPath = join(process.cwd(), 'elements', tagName, 'demo', `${tagName}.html`);
       const demoContent = await readFile(demoPath, 'utf8');
@@ -177,24 +125,24 @@ module.exports = class ElementsPage {
     }
   }
 
-  async renderCodePage(ctx) {
+  async #renderCodePage(ctx) {
     const { doc } = ctx;
     const { tagName } = doc.docsPage;
     return [
-      await this.renderInstallation.call(this, ctx),
-      await this.renderLightdom(ctx),
+      await this.#renderInstallation.call(this, ctx),
+      await this.#renderLightdom(ctx),
       html`<h2>Usage</h2>`,
-      await this.getMainDemoContent(tagName),
+      await this.#getMainDemoContent(tagName),
       doc.fileExists && await this.renderFile(doc.filePath),
-      await this.renderCodeDocs.call(this,
-                                     doc.docsPage.tagName,
-                                     { ...ctx, level: (ctx.level ?? 2) + 1 }),
-      await Promise.all(doc.siblingElements.map(tagName =>
-        this.renderCodeDocs.call(this, tagName, ctx))),
+      await this.#renderCodeDocs.call(this,
+                                      doc.docsPage.tagName,
+                                      { ...ctx, level: (ctx.level ?? 2) + 1 }),
+      ...await Promise.all(doc.siblingElements.map(tagName =>
+        this.#renderCodeDocs.call(this, tagName, ctx))),
     ].filter(Boolean).join('');
   }
 
-  async renderLightdom(ctx) {
+  async #renderLightdom(ctx) {
     const { docsPage } = ctx.doc;
     let content = '';
     // TODO: revisit after implementing auto-loaded light-dom css
@@ -247,7 +195,7 @@ module.exports = class ElementsPage {
     return content;
   }
 
-  async renderInstallation({ doc, cdnVersion = 'v1-alpha' }) {
+  async #renderInstallation({ doc, cdnVersion = 'v1-alpha' }) {
     const { version: packageVersion } = require('../../package.json');
 
     const jspmMap = await this.generateImportMap(doc.docsPage.tagName)
@@ -323,11 +271,7 @@ module.exports = class ElementsPage {
     `;
   }
 
-  async innerMD(content = '') {
-    return (await this.renderTemplate(content.trim(), 'md')).trim();
-  }
-
-  async renderCodeDocs(tagName, ctx) {
+  async #renderCodeDocs(tagName, ctx) {
     const { docsPage } = ctx.doc;
     const { manifest } = docsPage;
 
@@ -340,18 +284,18 @@ module.exports = class ElementsPage {
       <p>${manifest.getDescription(tagName)}</p>
 
       <rh-accordion box>
-        ${await this.renderSlots(tagName, ctx)}
-        ${await this.renderAttributes(tagName, ctx)}
-        ${await this.renderMethods(tagName, ctx)}
-        ${await this.renderEvents(tagName, ctx)}
-        ${await this.renderCssParts(tagName, ctx)}
-        ${await this.renderCssCustomProperties(tagName, ctx)}
-        ${await this.renderDesignTokens(tagName, ctx)}
+        ${await this.#renderSlots(tagName, ctx)}
+        ${await this.#renderAttributes(tagName, ctx)}
+        ${await this.#renderMethods(tagName, ctx)}
+        ${await this.#renderEvents(tagName, ctx)}
+        ${await this.#renderCssParts(tagName, ctx)}
+        ${await this.#renderCssCustomProperties(tagName, ctx)}
+        ${await this.#renderDesignTokens(tagName, ctx)}
       </rh-accordion>
     `;;
   }
 
-  async renderSlots(tagName, ctx) {
+  async #renderSlots(tagName, ctx) {
     const level = ctx.level ?? 2;
     const allSlots = ctx.doc.docsPage.manifest.getSlots(tagName) ?? [];
     const slots = allSlots.filter(x => !x.deprecated);
@@ -380,7 +324,7 @@ module.exports = class ElementsPage {
                 ${(await Promise.all(slots.map(async slot => html`
                 <tr>
                   <td><code>${slot.name}</code></td>
-                  <td>${await this.innerMD(slot.description)}</td>
+                  <td>${await this.#innerMD(slot.description)}</td>
                 </tr>`))).join('')}
               </tbody>
             </table>
@@ -400,8 +344,8 @@ module.exports = class ElementsPage {
                   <tr>
                     <td><code>${slot.name}</code></td>
                     <td>
-                      ${await this.innerMD(slot.description)}
-                      <em>Note: ${slot.name} is deprecated. ${await this.innerMD(slot.deprecated)}</em>
+                      ${await this.#innerMD(slot.description)}
+                      <em>Note: ${slot.name} is deprecated. ${await this.#innerMD(slot.deprecated)}</em>
                     </td>
                   </tr>`))).join('')}
                 </tbody>
@@ -412,7 +356,7 @@ module.exports = class ElementsPage {
       </rh-accordion-panel>`;
   }
 
-  async renderAttributes(tagName, ctx) {
+  async #renderAttributes(tagName, ctx) {
     const level = ctx.level ?? 2;
     const _attrs = (ctx.doc.docsPage.manifest.getAttributes(tagName) ?? [])
         .filter(x => !x.static && x.privacy !== 'protected' && x.privacy !== 'private');
@@ -445,7 +389,7 @@ module.exports = class ElementsPage {
                 <tr>
                   <td><code>${attribute.name}</code></td>
                   <td><code>${attribute.fieldName}</code></td>
-                  <td>${await this.innerMD(attribute.description)}</td>
+                  <td>${await this.#innerMD(attribute.description)}</td>
                   <td class="type">${this.highlight('ts', attribute?.type?.text ?? 'unknown').replace(/\s+/g, ' ')}</td>
                   <td class="type">${this.highlight('ts', attribute?.default ?? 'unknown').replace(/\s+/g, ' ')}</td>
                 </tr>`))).join('')}
@@ -471,7 +415,7 @@ module.exports = class ElementsPage {
                   <tr>
                     <td><code>${attribute.name}</code></td>
                     <td><code>${attribute.fieldName}</code></td>
-                    <td>${await this.innerMD(attribute.description)}</td>
+                    <td>${await this.#innerMD(attribute.description)}</td>
                     <td class="type">${this.highlight('ts', attribute.type?.text ?? 'unknown').replace(/\s+/g, ' ')}</td>
                     <td class="type">${this.highlight('ts', attribute.default ?? 'unknown').replace(/\s+/g, ' ')}</td>
                   </tr>`))).join('')}
@@ -484,7 +428,7 @@ module.exports = class ElementsPage {
     `;
   }
 
-  async renderMethods(tagName, ctx) {
+  async #renderMethods(tagName, ctx) {
     const level = ctx.level ?? 2;
     const allMethods = ctx.doc.docsPage.manifest.getMethods(tagName) ?? [];
     const deprecated = allMethods.filter(x => x.deprecated);
@@ -514,7 +458,7 @@ module.exports = class ElementsPage {
                 ${(await Promise.all(methods.map(async method => html`
                 <tr>
                   <td><code>${method.name}(${stringifyParams(method)})</code></td>
-                  <td>${await this.innerMD(method.description)}</td>
+                  <td>${await this.#innerMD(method.description)}</td>
                 </tr>`))).join('')}
               </tbody>
             </table>
@@ -534,8 +478,8 @@ module.exports = class ElementsPage {
                   <tr>
                     <td><code>${method.name}(${stringifyParams(method)})</code></td>
                     <td>
-                      ${await this.innerMD(method.description)}
-                      <em>Note: ${method.name} is deprecated. ${await this.innerMD(method.deprecated)}</em>
+                      ${await this.#innerMD(method.description)}
+                      <em>Note: ${method.name} is deprecated. ${await this.#innerMD(method.deprecated)}</em>
                     </td>
                   </tr>`))).join('')}
                 </tbody>
@@ -547,7 +491,7 @@ module.exports = class ElementsPage {
     `;
   }
 
-  async renderEvents(tagName, ctx) {
+  async #renderEvents(tagName, ctx) {
     const level = ctx.level ?? 2;
     const _events = ctx.doc.docsPage.manifest.getEvents(tagName) ?? [];
     const deprecated = _events.filter(x => x.deprecated);
@@ -576,7 +520,7 @@ module.exports = class ElementsPage {
                 ${(await Promise.all(events.map(async event => html`
                 <tr>
                   <td><code>${event.name}</code></td>
-                  <td>${await this.innerMD(event.description)}</td>
+                  <td>${await this.#innerMD(event.description)}</td>
                 </tr>`))).join('')}
               </tbody>
             </table>
@@ -596,8 +540,8 @@ module.exports = class ElementsPage {
                   <tr>
                     <td><code>${event.name}</code></td>
                     <td>
-                      ${await this.innerMD(event.description)}
-                      <em>Note: ${event.name} is deprecated. ${await this.innerMD(event.deprecated)}</em>
+                      ${await this.#innerMD(event.description)}
+                      <em>Note: ${event.name} is deprecated. ${await this.#innerMD(event.deprecated)}</em>
                     </td>
                   </tr>`))).join('')}
                 </tbody>
@@ -609,7 +553,7 @@ module.exports = class ElementsPage {
     `;
   }
 
-  async renderCssParts(tagName, ctx) {
+  async #renderCssParts(tagName, ctx) {
     const level = ctx.level ?? 2;
     const allParts = ctx.doc.docsPage.manifest.getCssParts(tagName) ?? [];
     const parts = allParts.filter(x => !x.deprecated);
@@ -638,7 +582,7 @@ module.exports = class ElementsPage {
                 ${(await Promise.all(parts.map(async part => html`
                 <tr>
                   <td><code>${part.name}</code></td>
-                  <td>${await this.innerMD(part.description)}</td>
+                  <td>${await this.#innerMD(part.description)}</td>
                 </tr>`))).join('')}
               </tbody>
             </table>
@@ -658,8 +602,8 @@ module.exports = class ElementsPage {
                   <tr>
                     <td><code>${part.name}</code></td>
                     <td>
-                      ${await this.innerMD(part.description)}
-                      <em>Note: ${part.name} is deprecated. ${await this.innerMD(part.deprecated)}</em>
+                      ${await this.#innerMD(part.description)}
+                      <em>Note: ${part.name} is deprecated. ${await this.#innerMD(part.deprecated)}</em>
                     </td>
                   </tr>`))).join('')}
                 </tbody>
@@ -671,7 +615,7 @@ module.exports = class ElementsPage {
     `;
   }
 
-  async renderCssCustomProperties(tagName, ctx) {
+  async #renderCssCustomProperties(tagName, ctx) {
     const level = ctx.level ?? 2;
     const allCssProperties = (ctx.doc.docsPage.manifest.getCssCustomProperties(tagName) ?? [])
         .filter(x => !tokens.has(x.name));
@@ -701,7 +645,7 @@ module.exports = class ElementsPage {
               <tbody>${(await Promise.all(cssProperties.map(async prop => html`
                 <tr>
                   <td><code>${prop.name}</code></td>
-                  <td>${await this.innerMD(prop.description ?? '')}</td>
+                  <td>${await this.#innerMD(prop.description ?? '')}</td>
                   <td>
                     ${!prop.default?.startsWith('#') ? html`<code>` : html`<code data-color="${prop.default}" style="--color:${prop.default}">`}${prop.default ?? '—'}</code>
                   </td>
@@ -723,8 +667,8 @@ module.exports = class ElementsPage {
                 <tbody>${(await Promise.all(deprecated.map(async prop => html`
                   <tr>
                     <td><code>${prop.name}</code></td>
-                    <td>${await this.innerMD(prop.description)}</td>
-                    <td>${await this.innerMD(prop.default ?? '—')}</td>
+                    <td>${await this.#innerMD(prop.description)}</td>
+                    <td>${await this.#innerMD(prop.default ?? '—')}</td>
                   </tr>`))).join('')}
                 </tbody>
               </table>
@@ -735,7 +679,7 @@ module.exports = class ElementsPage {
     `;
   }
 
-  async renderDesignTokens(tagName, ctx) {
+  async #renderDesignTokens(tagName, ctx) {
     const designTokens = (ctx.doc.docsPage.manifest.getCssCustomProperties(tagName) ?? [])
         .filter(x => tokens.has(x.name));
     const designTokensCount = designTokens.length;

@@ -401,11 +401,17 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
           customElementsManifestDocsPages.find(x => x.tagName === props.tagName)
             ?? new DocsPage(manifest);
 
+        const demosUrl = `/elements/${props.slug}/demos/`;
         const tabs = await Promise.all(elementDocFilePaths
             .filter(x => x.split('/docs/').at(0) === (`elements/${props.tagName}`))
             .sort()
         // todo: avoid calling getProps twice, it's expensive
             .map(x => getProps(x)));
+        tabs.splice(-1, 0, {
+          ...props,
+          pageTitle: 'Demos',
+          href: demosUrl,
+        });
         return { docsPage, tabs, ...props };
       }));
       elementDocs.sort(alphabeticallyBySlug);

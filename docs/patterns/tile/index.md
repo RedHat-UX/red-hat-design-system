@@ -3,7 +3,6 @@ title: Overview
 heading: Tile
 sidenavTitle: Tile
 layout: layouts/pages/pattern.njk
-hasToc: true
 order: 120
 tags:
   - pattern
