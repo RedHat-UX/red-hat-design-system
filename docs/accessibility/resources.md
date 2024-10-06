@@ -2,7 +2,7 @@
 title: Resources
 tags:
   - accessibility
-order: 100
+order: 90
 ---
 
 ## Fundamentals

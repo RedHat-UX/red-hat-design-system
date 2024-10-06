@@ -3,7 +3,9 @@
 Every interactive element is a focus stop and controls are operated using different keyboard inputs. Users should be able to open and close menus while navigating other controls without losing focus. Audio playback and the volume level are expected to respond to keyboard inputs as well.
 
 <uxdot-example width-adjustment="800px">
-  <img src="../audio-player-a11y-keyboard-interactions.png" alt="Image of all players with labels of how to activate or adjust all controls and menus">
+  <img src="../audio-player-a11y-keyboard-interactions.png" 
+      alt="Image of all players with labels of how to activate or adjust all controls and menus" 
+      width="800px">
 </uxdot-example>
   
 <rh-table>
@@ -55,14 +57,20 @@ Every interactive element is a focus stop and controls are operated using differ
 A logical focus order helps keyboard users operate our websites. Elements need to receive focus in an order that preserves meaning, therefore the focus order should make sense and not jump around randomly. The focus moves across the audio player from left to right and top to bottom. When the focus is moved outside of the contextual menu, the menu closes.
 
 <uxdot-example width-adjustment="800px">
-  <img src="../audio-player-a11y-focus-order.png" alt="Image of all players and the Compact player with a contextual menu open showing the focus order from left to right and top to bottom">
+  <img src="../audio-player-a11y-focus-order.png" 
+      alt="Image of all players and the Compact player with a contextual menu open showing the focus order from left to right and top to bottom"
+      width="800"
+      height="614">
 </uxdot-example>
 
 ### Toggling a feature
 When a user closes a feature by pressing <kbd>Space</kbd> or <kbd>Esc</kbd>, focus returns to the contextual menu button so users can easily open the menu again to return to that feature or select a new one.
 
 <uxdot-example width-adjustment="738px">
-  <img src="../audio-player-a11y-toggling-feature.png" alt="Image of the Compact player showing focus landing on the contextual menu or close buttons regardless if a feature is open or closed">
+  <img src="../audio-player-a11y-toggling-feature.png" 
+      alt="Image of the Compact player showing focus landing on the contextual menu or close buttons regardless if a feature is open or closed"
+      width="738"
+      height="540">
 </uxdot-example>
 
 {% include 'partials/accessibility/ariaguide.md' %}

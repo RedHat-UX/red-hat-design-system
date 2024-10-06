@@ -1,18 +1,25 @@
+<style data-helmet>
+  rh-alert[state="info"] {
+    width: 408px
+  }
+</style>
+
 ## Overview
 
 {{ tagName | getElementDescription }}
 
-<uxdot-example width-adjustment="538px">
+<uxdot-example width-adjustment="456px">
   <img alt="Two examples of the alert element"
        src="alert-overview.svg"
-       width="538px">
+       width="456"
+       height="276">
 </uxdot-example>
 
 {% repoStatusList repoStatus=repoStatus %}
 
 ## Sample element
 
-<rh-alert dismissable>
+<rh-alert dismissable state="info">
   <h3 slot="header">Title</h3>
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
   <rh-button slot="actions" data-action="dismiss" variant="secondary">Confirm</rh-button>
@@ -21,8 +28,8 @@
 
 ## When to use
 
-  - To communicate essential information in a prominent way
-  - To notify a user of a change in status
-  - To communicate urgency using severity
+  - Communicate essential information in a prominent way
+  - Notify a user of a change in status
+  - Communicate urgency using severity
 
 {% repoStatusChecklist repoStatus=repoStatus %}

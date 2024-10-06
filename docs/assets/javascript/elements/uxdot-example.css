@@ -29,6 +29,7 @@
   align-items: var(--_alignment, center);
   justify-content: center;
   max-width: 100%;
+  height: auto;
   width: var(--_width, 100%);
 }
 

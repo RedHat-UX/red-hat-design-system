@@ -5,7 +5,7 @@ permalink: /accessibility/ci-cd/index.html
 hasToc: false
 tags:
   - accessibility
-order: 80
+order: 30
 ---
 
 <script data-helmet type="module">
@@ -14,11 +14,11 @@ order: 80
 
 ## Accessibility tools for CI/CD pipelines
 
-Many Red Hat projects use continuous integration and continuous delivery pipelines to help deliver robust digital products to our users. There are several accessibility tools for CI/CD. The Red Hat Design System uses the [Chai A11y aXe][chaia11yaxe] module and [PatternFly Elements Tools][pfe-tools]'s  a11ySnapshot feature, based on [Web Test Runner][a11ysnapshot], for unit tests.
+Many Red Hat projects use continuous integration and continuous delivery pipelines to help deliver robust digital products to our users. There are several accessibility tools for CI/CD. The Red Hat Design System uses the [Chai A11y aXe][chaia11yaxe] module and [PatternFly Elements Tools][pfe-tools]'s a11ySnapshot feature, based on [Web Test Runner][a11ysnapshot], for unit tests.
 
 ### Chai A11y aXe
 
-Chai A11y Axe is a plugin to perform automated accessibility tests via [aXe](https://www.deque.com/axe/) for the [Chai Assertion Library](https://www.chaijs.com/). Here's how to test and see if a web component in the Red Hat Design System passes aXe accessibility tests. In this example, we're going to use Chai A11y aXe with `<rh-tag>`:
+Chai A11y aXe is a plugin to perform automated accessibility tests via [aXe](https://www.deque.com/axe/) for the [Chai Assertion Library](https://www.chaijs.com/). Here's how to test and see if a web component in the Red Hat Design System passes aXe accessibility tests. In this example, we're going to use Chai A11y aXe with `<rh-tag>`:
 
 1. Follow the instructions to [Install the project](https://ux.redhat.com/get-started/developers/contributing/).
 1. Open `elements/rh-tag/test/rh-tag.spec.ts`.
@@ -29,13 +29,11 @@ Chai A11y Axe is a plugin to perform automated accessibility tests via [aXe](htt
 
 The aXe assertion from step 3 looks like this, add it anywhere inside the first `describe('<rh-tag>')` block:
 
-
 <rh-code-block highlighting="prerendered">
 
 ```ts
-it('should be accessible', async function() {
-  await expect(element)
-      .to.be.accessible();
+it("should be accessible", async function () {
+  await expect(element).to.be.accessible();
 });
 ```
 
@@ -63,22 +61,20 @@ These ax-tree assertions can go inside the top-level `describe('rh-skip-link')` 
 <rh-code-block highlighting="prerendered">
 
 ```ts
-describe('when the element loads', function() {
+describe("when the element loads", function () {
   let element: RhSkipLink;
-  beforeEach(async function() {
+  beforeEach(async function () {
     element = await createFixture<RhSkipLink>(html`
       <rh-skip-link>
-        <a href="#main-content">
-          Skip to main content
-        </a>
+        <a href="#main-content"> Skip to main content </a>
       </rh-skip-link>
     `);
   });
 
-  it('should have a link with the name, "Skip to main content"', async function() {
+  it('should have a link with the name, "Skip to main content"', async function () {
     const snapshot = await a11ySnapshot();
-    expect(snapshot).to.axContainRole('link');
-    expect(snapshot).to.axContainName('Skip to main content');
+    expect(snapshot).to.axContainRole("link");
+    expect(snapshot).to.axContainName("Skip to main content");
   });
 });
 ```

@@ -15,7 +15,10 @@ A footer is divided into two parts, the **Website-specific** footer and the
 Most of the content in the website-specific footer can be customized.
 
 <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
-  <img src="../footer-variant-website-specific.png" alt="Image of the website-specific footer showing regions that can and cannot be customized">
+  <img src="../footer-variant-website-specific.png"
+        alt="Image of the website-specific footer showing regions that can and cannot be customized"
+        width="968"
+        height="596">
 </uxdot-example>
 
 <rh-table>
@@ -73,7 +76,10 @@ Most of the content in the website-specific footer can be customized.
 Content in the universal footer is always the same across all websites.
 
 <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
-  <img src="../footer-variant-universal.png" alt="Image of the universal footer showing only one region that cannot be customized">
+  <img src="../footer-variant-universal.png"
+        alt="Image of the universal footer showing only one region that cannot be customized"
+        width="968"
+        height="200">
 </uxdot-example>
 
 <rh-table>
@@ -102,7 +108,10 @@ Content in the universal footer is always the same across all websites.
 A footer spans the entire width of the browser window at all breakpoints.
 
 <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
-  <img src="../footer-layout-browser-window.png" alt="Image of a footer in a layout spanning the width of the browser window">
+  <img src="../footer-layout-browser-window.png"
+        alt="Image of a footer in a layout spanning the width of the browser window"
+        width="968"
+        height="1036">
 </uxdot-example>
 
 
@@ -118,7 +127,10 @@ Red Hat fedora always links to redhat.com.
 </rh-alert>
 
 <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
-  <img src="../footer-layout-universal-footer.png" alt="Image of the universal footer by itself">
+  <img src="../footer-layout-universal-footer.png"
+        alt="Image of the universal footer by itself"
+        width="968"
+        height="200">
 </uxdot-example>
 
 ### Other web properties
@@ -131,15 +143,24 @@ is flexible enough to accommodate grids, elements, text, and more.
 </uxdot-example>
 
 <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
-  <img src="../footer-layout-customer-portal.png" alt="Image of a footer on a Customer Portal website">
+  <img src="../footer-layout-customer-portal.png"
+        alt="Image of a footer on a Customer Portal website"
+        width="968"
+        height="775">
 </uxdot-example>
 
 <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
-  <img src="../footer-layout-developer.png" alt="Image of a footer on a Developer website">
+  <img src="../footer-layout-developer.png"
+        alt="Image of a footer on a Developer website"
+        width="968"
+        height="800">
 </uxdot-example>
 
 <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
-  <img src="../footer-layout-partner-connect.png" alt="Image of a footer on a Partner Connect website">
+  <img src="../footer-layout-partner-connect.png"
+        alt="Image of a footer on a Partner Connect website"
+        width="968"
+        height="833">
 </uxdot-example>
 
 
@@ -151,14 +172,20 @@ If the website-specific footer includes a lot of content, columns can be added
 below the first row of columns.
 
 <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
-  <img src="../footer-behavior-columns-two-rows.png" alt="Image of a footer with four columns of links in one row and two columns in the second row">
+  <img src="../footer-behavior-columns-two-rows.png"
+        alt="Image of a footer with four columns of links in one row and two columns in the second row"
+        width="968"
+        height="796">
 </uxdot-example>
 
 If the website-specific footer includes less content, columns will stretch to 
 fill the empty space.
 
 <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
-  <img src="../footer-behavior-columns-less-content.png" alt="Image of a footer with only two columns of links in one row">
+  <img src="../footer-behavior-columns-less-content.png"
+        alt="Image of a footer with only two columns of links in one row"
+        width="968"
+        height="796">
 </uxdot-example>
 
 
@@ -166,7 +193,10 @@ If the number of columns changes, social media links will shift position to
 remain aligned to the left edge of the last column.
 
 <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
-  <img src="../footer-behavior-columns-social-media-icons.png" alt="Image of a footer with three columns of links showing an example of social media icons shifting">
+  <img src="../footer-behavior-columns-social-media-icons.png"
+        alt="Image of a footer with three columns of links showing an example of social media icons shifting"
+        width="968"
+        height="754">
 </uxdot-example>
 
 ## Responsive design
@@ -174,7 +204,10 @@ remain aligned to the left edge of the last column.
 ### Large breakpoints
 
 <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
-  <img src="../footer-responsive-large-breakpoints.png" alt="Image of a large breakpoint footer">
+  <img src="../footer-responsive-large-breakpoints.png"
+        alt="Image of a large breakpoint footer"
+        width="968"
+        height="796">
 </uxdot-example>
 
 
@@ -189,11 +222,17 @@ content will also get rearranged.
 </rh-alert>
 
 <uxdot-example width-adjustment="768px" variant="full" alignment="left" no-border>
-  <img src="../footer-responsive-small-breakpoints-a.png" alt="Image of a tablet breakpoint footer">
+  <img src="../footer-responsive-small-breakpoints-a.png"
+        alt="Image of a tablet breakpoint footer"
+        width="768"
+        height="1070">
 </uxdot-example>
 
 <uxdot-example width-adjustment="360px" variant="full" alignment="left" no-border>
-  <img src="../footer-responsive-small-breakpoints-b.png" alt="Image of a mobile breakpoint footer">
+  <img src="../footer-responsive-small-breakpoints-b.png"
+        alt="Image of a mobile breakpoint footer"
+        width="360"
+        height="1285">
 </uxdot-example>
 
 <rh-table>
@@ -253,7 +292,10 @@ Do not reverse the order of footers, the website-specific footer should always
 be on top.
 
 <uxdot-example width-adjustment="968px" danger>
-  <img src="../footer-best-practice-1.png" alt="Image of the global footer on top of the website-specific footer which is incorrect usage">
+  <img src="../footer-best-practice-1.png"
+        alt="Image of the global footer on top of the website-specific footer which is incorrect usage"
+        width="1000"
+        height="796">
 </uxdot-example>
 
 
@@ -262,7 +304,10 @@ be on top.
 Do not replace columns with an accordion if there is still adequate space.
 
 <uxdot-example width-adjustment="968px" danger>
-  <img src="../footer-best-practice-2.png" alt="Image of a desktop footer with an accordion replacing four columns of links which is incorrect usage">
+  <img src="../footer-best-practice-2.png"
+        alt="Image of a desktop footer with an accordion replacing four columns of links which is incorrect usage"
+        width="1000"
+        height="796">
 </uxdot-example>
 
 
@@ -271,7 +316,10 @@ Do not replace columns with an accordion if there is still adequate space.
 Do not use the website-specific footer without the universal footer.
 
 <uxdot-example width-adjustment="968px" danger>
-  <img src="../footer-best-practice-3.png" alt="Image of a footer missing the universal footer which is incorrect usage">
+  <img src="../footer-best-practice-3.png"
+        alt="Image of a footer missing the universal footer which is incorrect usage"
+        width="1000"
+        height="796">
 </uxdot-example>
 
 
@@ -281,5 +329,8 @@ Do not create your own custom universal footer by changing, deleting, or
 rearranging any elements.
 
 <uxdot-example width-adjustment="968px" danger>
-  <img src="../footer-best-practice-4.png" alt="Image of a universal footer with a new design which is incorrect usage">
+  <img src="../footer-best-practice-4.png"
+        alt="Image of a universal footer with a new design which is incorrect usage"
+        width="1000"
+        height="104">
 </uxdot-example>

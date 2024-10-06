@@ -10,7 +10,10 @@ The audio player is a collection of elements used to play audio clips and browse
 ### Anatomy
 
 <uxdot-example width-adjustment="712px">
-  <img src="../audio-player-anatomy.png" alt="Image of audio player anatomy showing all players with lots of annotations">
+  <img src="../audio-player-anatomy.png" 
+      alt="Image of audio player anatomy showing all players with lots of annotations" 
+      width="712"
+      height="504">
 </uxdot-example>
 
 1) Image
@@ -32,7 +35,10 @@ The audio player is a collection of elements used to play audio clips and browse
 There are three available sizes and the only difference is the amount of interface elements. The Compact and Mini players can be used on large breakpoints, but the Full player cannot be used on small breakpoints due to space constraints.
 
 <uxdot-example width-adjustment="712px">
-  <img src="../audio-player-style-sizes.png" alt="Image of all audio player sizes with text labels">  
+  <img src="../audio-player-style-sizes.png" 
+      alt="Image of all audio player sizes with text labels" 
+      width="712"
+      height="606">  
 </uxdot-example>
 
 ## Theme
@@ -41,13 +47,19 @@ The audio player is available in both light and dark themes.
 ### Light theme
 
 <uxdot-example width-adjustment="800px">
-  <img src="../audio-player-theme-light.png" alt="Image of light theme audio players">
+  <img src="../audio-player-theme-light.png" 
+      alt="Image of light theme audio players"
+      width="800"
+      height="640">
 </uxdot-example>
 
 ### Dark theme
 
 <uxdot-example width-adjustment="800px" color-palette="darkest">
-  <img src="../audio-player-theme-dark.png" alt="Image of dark theme audio players">
+  <img src="../audio-player-theme-dark.png" 
+      alt="Image of dark theme audio players"
+      width="800px"
+      height="640">
 </uxdot-example>
 
 ### Custom theme
@@ -58,21 +70,30 @@ The audio player is available in both light and dark themes.
 </rh-alert>
 
 <uxdot-example width-adjustment="800px" color-palette="darkest">
-  <img src="../audio-player-theme-custom.png" alt="Image of custom theme audio players">  
+  <img src="../audio-player-theme-custom.png" 
+      alt="Image of custom theme audio players"
+      width="800"
+      height="640">
 </uxdot-example>
 
 ## Configuration
 The size of audio players change if an image is included or not.
 
-<uxdot-example width-adjustment="870px">
-  <img src="../audio-player-configuration.png" alt="Image of all audio players showing various specs like alignment, border radius, height, width, and more">
+<uxdot-example width-adjustment="872px">
+  <img src="../audio-player-configuration.png" 
+      alt="Image of all audio players showing various specs like alignment, border radius, height, width, and more"
+      width="872"
+      height="731">
 </uxdot-example>
 
 ## Space
 The amount of space in all audio players remains the same on all breakpoints.
 
 <uxdot-example width-adjustment="712px">
-  <img src="../audio-player-space.png" alt="Image of audio player spacing for all sizes">
+  <img src="../audio-player-space.png" 
+      alt="Image of audio player spacing for all sizes"
+      width="712"
+      height="504">
 </uxdot-example>
 
 <rh-table>
@@ -95,11 +116,17 @@ Interaction states are visual representations used to communicate the status of 
 </rh-alert>
 
 <uxdot-example width-adjustment="715px">
-  <img src="../audio-player-interaction-state-hover-theme-light.png" alt="Image of light theme audio player hover states">
+  <img src="../audio-player-interaction-state-hover-theme-light.png" 
+      alt="Image of light theme audio player hover states"
+      width="715"
+      height="504">
 </uxdot-example>
 
 <uxdot-example width-adjustment="712px" color-palette="darkest">
-  <img src="../audio-player-interaction-state-hover-theme-dark.png" alt="Image of dark theme audio player hover states">
+  <img src="../audio-player-interaction-state-hover-theme-dark.png" 
+      alt="Image of dark theme audio player hover states"
+      width="712"
+      height="504">
 </uxdot-example>
 
 
@@ -111,11 +138,17 @@ Interaction states are visual representations used to communicate the status of 
 </rh-alert>
 
 <uxdot-example width-adjustment="715px">
-  <img src="../audio-player-interaction-state-focus-theme-light.png" alt="Image of light theme audio player focus states">
+  <img src="../audio-player-interaction-state-focus-theme-light.png" 
+      alt="Image of light theme audio player focus states"
+      width="715"
+      height="504">
 </uxdot-example>
 
 <uxdot-example width-adjustment="712px" color-palette="darkest">
-  <img src="../audio-player-interaction-state-focus-theme-dark.png" alt="Image of dark theme audio player focus states">
+  <img src="../audio-player-interaction-state-focus-theme-dark.png" 
+      alt="Image of dark theme audio player focus states"
+      width="712"
+      height="504">
 </uxdot-example>
 
 ### Active
@@ -126,9 +159,15 @@ Interaction states are visual representations used to communicate the status of 
 </rh-alert>
 
 <uxdot-example width-adjustment="715px">
-  <img src="../audio-player-interaction-state-active-theme-light.png" alt="Image of light theme audio player active states">  
+  <img src="../audio-player-interaction-state-active-theme-light.png" 
+    alt="Image of light theme audio player active states"
+    width="715"
+    height="504">
 </uxdot-example>
 
 <uxdot-example width-adjustment="712px" color-palette="darkest">
-  <img src="../audio-player-interaction-state-active-theme-dark.png" alt="Image of dark theme audio player active states">  
+  <img src="../audio-player-interaction-state-active-theme-dark.png" 
+      alt="Image of dark theme audio player active states"
+      width="712"
+      height="504">
 </uxdot-example>

@@ -17,24 +17,11 @@ hasToc: true
     max-width: 320px;
   }
 
-  rh-tile [slot="headline"] {
-    font-weight: var(--rh-font-weight-heading-bold, 700);
-  }
-
   rh-tile [icon="github"] {
     --rh-icon-size: var(--rh-size-icon-03, 32px);
   }
 
-  @media (min-width: 768px) {
-    [data-label="Change"] {
-      width: 30%;
-    }
-
-    [data-label="Type"] {
-      width: 10%;
-    }
-  }
-  @media (max-width: 768px) {
+  @container host (max-width: 768px) {
     rh-table thead ~ tbody tr :is(th, td) {
       display: block;
     }

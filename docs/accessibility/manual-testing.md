@@ -5,7 +5,7 @@ permalink: /accessibility/manual-testing/index.html
 hasToc: false
 tags:
   - accessibility
-order: 60
+order: 80
 importElements:
   - rh-blockquote
 ---

@@ -3,7 +3,10 @@
 {{ tagName | getElementDescription }}
 
 <uxdot-example width-adjustment="752px">
-  <img src="./tile-sample.png" alt="Example of a default link tile and a selectable tile">
+  <img src="./tile-sample.png"
+        alt="Example of a default link tile and a selectable tile"
+        width="752"
+        height="291">
 </uxdot-example>
 
 

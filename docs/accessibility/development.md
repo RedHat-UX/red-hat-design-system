@@ -2,7 +2,7 @@
 title: Development
 tags:
   - accessibility
-order: 30
+order: 70
 ---
 
 <script data-helmet type="module">
@@ -47,7 +47,7 @@ To make icon fonts accessible, you often have to re-hack what’s already a hack
 As with any other image, SVGs that are loaded into your page via an `<img>` tag should include alt attributes. This attribute should be descriptive for meaningful SVGs and null for decorative SVGs. In addition, we recommend adding a role="img" attribute to the `<img>` element for SVGs:
 
 ```html rhcodeblock
-<img src="logo.svg" alt="Image description" role="img">
+<img src="logo.svg" alt="Image description" role="img" />
 ```
 
 Inline `<svg>` elements (i.e., SVGs that are coded directly into the page source) cannot use the alt attribute. You must use some other means to describe or hide these images.
@@ -74,11 +74,8 @@ More complex `<svg>` elements may require additional descriptive information. On
 
 You can hide `<svg>` elements from assistive tech with an `aria-hidden="true"` attribute.
 
-
 ```html rh-code-block
-<svg aria-hidden="true">
-  ...
-</svg>
+<svg aria-hidden="true">...</svg>
 ```
 
 Carie Fisher explores several patterns (including the above) for embedding accessible SVGs in her 2021 [Smashing Magaine article][smashingmagainearticle].

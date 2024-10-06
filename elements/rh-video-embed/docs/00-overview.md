@@ -5,7 +5,10 @@
 A video embed element is a graphical preview of a video overlayed with a play button. When clicked, the YouTube video will begin playing.
 
 <uxdot-example width-adjustment="555px">
-  <img src="./video-sample.svg" alt="Red Hat Logo on a gray background">
+  <img src="./video-sample.svg"
+        alt="Red Hat Logo on a gray background"
+        width="556"
+        height="312">
 </uxdot-example>
 
 {% repoStatusList repoStatus=repoStatus %}
