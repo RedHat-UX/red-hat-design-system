@@ -31,7 +31,7 @@ This element has an optional "Lightdom CSS" <em>shim</em> to help reduce <a href
 
 <rh-alert state="warning">
   <h4 slot="header">Warning</h4>
-  <p>Lightdom CSS shims are an optional, temporary solution for reducing CLS. Delcarative Shadow DOM is the better solution, and once it is more widely available, Lightdom CSS shims will no longer be needed and will become deprecated.</p>
+  <p>Lightdom CSS shims are an optional, temporary solution for reducing CLS. <a href="/get-started/developers/installation/#lightdom-css-shims">Learn more about lightdom CSS shims</a></p>
 </rh-alert>
 `;
   } else {

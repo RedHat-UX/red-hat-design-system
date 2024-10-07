@@ -116,14 +116,31 @@ default, they will not block rendering.
 
 ### Lightdom CSS
 
-Some elements require you to load "Lightdom CSS" stylesheets. This can also help 
-to reduce [Cumulative Layout Shift (CLS)][cls] experience before the element has 
-fully initialized.
+Some elements require you to load "Lightdom CSS" stylesheets, which are necessary 
+for styling deeply slotted child elements. In some cases, these may also help reduce 
+some [Cumulative Layout Shift (CLS)][cls] experience before the element has fully 
+initialized, but are not intended to be used without initializing the element or by 
+themselves to prevent CLS.
 
 ```html
 <link rel="stylesheet"
       href="https://www.redhatstatic.com/dx/v1/@rhds/elements@1.4.5/rh-footer/rh-footer-lightdom.css">
 ```
+
+### Lightdom CSS shims
+
+Some elements have provided an *optional* `-lightdom-shim.css` file to aid in limiting 
+[CLS][cls] as much as possible, by styling some parts of the element before it has fully 
+initialized (i.e., `:not(:defined)`). These "shims" are inherently different than the 
+required "Lightdom CSS" mentioned above, and are only a temporary stop-gap until 
+[Delcarative Shadow DOM][dsd] is more widely available; at which point the shims will 
+no longer be needed and will become deprecated.
+
+```html
+<link rel="stylesheet"
+      href="https://www.redhatstatic.com/dx/v1/@rhds/elements@1.4.5/rh-cta/rh-cta-lightdom-shim.css">
+```
+
 
 <uxdot-feedback>
   <h2>Designers</h2>
@@ -138,3 +155,4 @@ fully initialized.
 [importmap]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap
 [barespec]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules
 [cls]: https://web.dev/cls/
+[dsd]: https://web.dev/articles/declarative-shadow-dom
