@@ -125,7 +125,7 @@ represented.
   <p>Do not apply the Red Hat red color to text in dark environments unless it meets <a href="https://www.w3.org/WAI/WCAG21/Understanding/">WCAG 2.1 AA</a> requirements.</p>
 </rh-alert>
 
-<uxdot-example variant="full">
+<uxdot-example variant="full" no-border>
   <img src="/assets/color/text.png" alt="Dark and light theme examples of the seven types of semantic colors used by text">
 </uxdot-example>
 
@@ -142,7 +142,7 @@ three categories of icons: Brand, Technology, and UI.
 To learn more about icons, go to the [Brand
 standards](https://www.redhat.com/en/about/brand/standards) website.
 
-<uxdot-example variant="full">
+<uxdot-example variant="full" no-border>
   <img src="/assets/color/icons.png" alt="Examples of the three icon categories">
 </uxdot-example>
 
@@ -158,7 +158,7 @@ Certain colors are used to indicate that something is interactive.
 4.  **Red-orange** - use for destructive actions (and errors)
 5.  **Red** - use sparingly for Primary calls to action only
 
-<uxdot-example variant="full">
+<uxdot-example variant="full" no-border>
   <img src="/assets/color/interactivity.png" alt="Examples of elements using the five colors that denote interactivity">
 </uxdot-example>
 
@@ -177,15 +177,15 @@ patterns like [alerts](/elements/alert), [badges](/elements/badge),
 </rh-alert>
 
 <rh-table>
-
-| Status  | Use case                                                                                                        |
-| ------- | --------------------------------------------------------------------------------------------------------------- |
-| Neutral | Use gray to communicate information that will have no impact on a user.                                         |
-| Info    | Use purple to communicate helpful or important information.<br>*Note:* "Info" was previously called "note/tip." |
-| Success | Use green to communicate a success state.                                                                       |
-| Warning | Use yellow to communicate that a destructive action might occur if an issue is not resolved.                    |
-| Caution | Use orange to communicate that an issue can be avoided.                                                         |
-| Danger  | Use red-orange to communicate a destructive action or critical error.                                           |
+  
+| Status                                     | Severity level | Use case                                                                         |
+| ------------------------------------------ | :------------: | -------------------------------------------------------------------------------- |
+| <rh-tag color="purple">Info</rh-tag>       | N/A            | Use `purple` to communicate helpful or important information.<br>*Note:* "Info" was previously called "note/tip." |
+| <rh-tag color="green">Success</rh-tag>     | 0              | Use `green` to communicate a success state.                                      |
+| <rh-tag color="gray">Neutral</rh-tag>      | 0              | Use `gray` to communicate information that will have no impact on a user.        |
+| <rh-tag color="yellow">Warning</rh-tag>    | 1              | Use `yellow` to communicate that a destructive action might occur if an issue is not resolved. |
+| <rh-tag color="orange">Caution</rh-tag>    | 2              | Use `orange` to communicate that an issue can be avoided.                        |
+| <rh-tag color="red-orange">Danger</rh-tag> | 3              | Use `red-orange` to communicate a destructive action or critical error.          |
 
 </rh-table>
 
