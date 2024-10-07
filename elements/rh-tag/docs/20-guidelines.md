@@ -84,6 +84,8 @@ something.
         height="90">
 </uxdot-example>
 
+<rh-cta><a href="/foundations/color/usage/#status">More on status color usage</a></rh-cta>
+
 ### Text 
 
 If text is descriptive or generic, most colors can be used. Do not use red or 
