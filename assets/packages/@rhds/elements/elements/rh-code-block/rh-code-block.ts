@@ -150,7 +150,6 @@ export class RhCodeBlock extends LitElement {
   override connectedCallback() {
     super.connectedCallback();
     this.#ro.observe(this);
-    this.#onSlotChange();
   }
 
   override disconnectedCallback() {
