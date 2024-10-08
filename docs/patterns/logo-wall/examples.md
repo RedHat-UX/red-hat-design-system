@@ -22,30 +22,29 @@ importElements:
 <link rel="stylesheet" data-helmet href="/styles/samp.css">
 <link rel="stylesheet" data-helmet href="../logo-wall-lightdom.css">
 
-## Within a promo band (bordered)
-
 <uxdot-pattern src="./patterns/1x1-grid.html"
                 css-src="./logo-wall-lightdom.css"
                 target="example-1x1-grid">
+  <h2 slot="heading">Within a promo band (bordered)</h2>
 </uxdot-pattern>
 
-## Within a promo band (borderless)
 
 <uxdot-pattern src="./patterns/1x1-grid-flat.html"
                css-src="./logo-wall-lightdom.css"
                target="example-1x1-grid-flat">
+  <h2 slot="heading">Within a promo band (borderless)</h2>
 </uxdot-pattern>
 
-## With 2x2 grid
 <uxdot-pattern src="./patterns/2x2-grid.html"
                css-src="./logo-wall-lightdom.css"
                target="example-2x2-grid">
+  <h2 slot="heading">With 2x2 grid</h2>
 </uxdot-pattern>
 
-## With 2x3 grid
 <uxdot-pattern src="./patterns/2x3-grid.html"
                 css-src="./logo-wall-lightdom.css"
                 target="example-2x3-grid">
+  <h2 slot="heading">With 2x3 grid</h2>
 </uxdot-pattern>
 
 {% include 'partials/component/feedback.html' %}
