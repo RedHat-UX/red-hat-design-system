@@ -49,6 +49,7 @@ h3,
 #content {
   display: block;
   resize: vertical;
+  overflow: auto;
   grid-area: content;
   padding: var(--rh-space-4xl);
   border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
