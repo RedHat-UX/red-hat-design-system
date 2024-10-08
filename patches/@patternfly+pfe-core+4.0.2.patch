@@ -1,5 +1,5 @@
 diff --git a/node_modules/@patternfly/pfe-core/controllers/tabs-aria-controller.js b/node_modules/@patternfly/pfe-core/controllers/tabs-aria-controller.js
-index 0993544..f56cab0 100644
+index 0993544..9a6b1d7 100644
 --- a/node_modules/@patternfly/pfe-core/controllers/tabs-aria-controller.js
 +++ b/node_modules/@patternfly/pfe-core/controllers/tabs-aria-controller.js
 @@ -1,3 +1,4 @@
