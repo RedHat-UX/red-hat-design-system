@@ -57,6 +57,7 @@ module.exports = function(eleventyConfig) {
   }
 
   eleventyConfig.addWatchTarget('docs/styles/');
+  eleventyConfig.addWatchTarget('docs/patterns/**/*.md');
 
   eleventyConfig.addGlobalData('isLocal', isLocal);
 
