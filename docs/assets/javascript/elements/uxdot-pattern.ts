@@ -79,6 +79,8 @@ export class UxdotPattern extends LitElement {
 
     return html`
       <div id="container">
+        <div id="heading"><slot name="heading"><h3>Example</h3></slot></div>
+
         <form id="color-picker"
               ?hidden="${this.noColorPicker}"
               @submit="${(e: Event) => e.preventDefault()}">
@@ -90,7 +92,7 @@ export class UxdotPattern extends LitElement {
                              allow="${this.allow}"></rh-context-picker>
         </form>
 
-        <slot id="heading" name="heading"><h3>Example</h3></slot>
+        <div id="description"><slot></slot></div>
 
         <rh-surface id="content">${this.ssrController.allContent}</rh-surface>
 
