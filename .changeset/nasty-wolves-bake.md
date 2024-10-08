@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-`<rh-code-block>`: fixed client side and prerendered syntax highlighting via Prism
+`<rh-code-block>`: ensure that syntax colours and styles are applied when the element upgrades
