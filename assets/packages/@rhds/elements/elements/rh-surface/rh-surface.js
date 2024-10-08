@@ -6,7 +6,7 @@ import { property } from 'lit/decorators/property.js';
 import { colorContextProvider } from '@rhds/elements/lib/context/color/provider.js';
 import consumerStyles from '@rhds/tokens/css/color-context-consumer.css.js';
 import { css } from "lit";
-const styles = css `:host{display:block;background-color:var(--rh-color-surface);color:var(--rh-color-text-primary)}.on.dark,.on.light{--rh-color-surface:unset}#slot.palette-lightest{--rh-color-surface:var(--rh-color-surface-lightest,#fff)}#slot.palette-lighter{--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}#slot.palette-light{--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}#slot.palette-dark{--rh-color-surface:var(--rh-color-surface-dark,#383838)}#slot.palette-darker{--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}#slot.palette-darkest{--rh-color-surface:var(--rh-color-surface-darkest,#151515)}`;
+const styles = css `:host{display:block;background-color:var(--rh-color-surface)}#slot{color:var(--rh-color-text-primary)}.on.dark,.on.light{--rh-color-surface:unset}#slot.palette-lightest{--rh-color-surface:var(--rh-color-surface-lightest,#fff)}#slot.palette-lighter{--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}#slot.palette-light{--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}#slot.palette-dark{--rh-color-surface:var(--rh-color-surface-dark,#383838)}#slot.palette-darker{--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}#slot.palette-darkest{--rh-color-surface:var(--rh-color-surface-darkest,#151515)}`;
 import { classMap } from 'lit/directives/class-map.js';
 /**
  * Surfaces are content containers with a color palette which provide a theme

@@ -628,7 +628,7 @@
   <uxdot-sidenav-item href="/support/"><template shadowroot="open" shadowrootmode="open"><style>:host,a{display:block}a{padding:var(--rh-space-lg) var(--rh-space-2xl);font-size:var(--rh-font-size-body-text-lg);text-decoration:none!important;color:var(--rh-color-text-primary-on-light)!important;border-inline-start:var(--rh-border-width-lg) solid #0000}a:hover{border-inline-start-color:var(--rh-color-border-subtle-on-light)}a.active,a:hover{background:var(--rh-color-surface-lighter)}a.active{border-inline-start-color:var(--rh-color-accent-brand-on-light)}</style><!--lit-part BpIOZLGP/0w=-->
       <!--lit-node 0--><a class="  " href="/support/"><slot></slot></a>
     <!--/lit-part--></template>Get support</uxdot-sidenav-item></uxdot-sidenav>
-<rh-surface id="main" role="main" color-palette="lightest"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface);color:var(--rh-color-text-primary)}.on.dark,.on.light{--rh-color-surface:unset}#slot.palette-lightest{--rh-color-surface:var(--rh-color-surface-lightest,#fff)}#slot.palette-lighter{--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}#slot.palette-light{--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}#slot.palette-dark{--rh-color-surface:var(--rh-color-surface-dark,#383838)}#slot.palette-darker{--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}#slot.palette-darkest{--rh-color-surface:var(--rh-color-surface-darkest,#151515)}
+<rh-surface id="main" role="main" color-palette="lightest"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface)}#slot{color:var(--rh-color-text-primary)}.on.dark,.on.light{--rh-color-surface:unset}#slot.palette-lightest{--rh-color-surface:var(--rh-color-surface-lightest,#fff)}#slot.palette-lighter{--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}#slot.palette-light{--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}#slot.palette-dark{--rh-color-surface:var(--rh-color-surface-dark,#383838)}#slot.palette-darker{--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}#slot.palette-darkest{--rh-color-surface:var(--rh-color-surface-darkest,#151515)}
 .on,
 .on.light {
   --rh-color-accent-base: var(--rh-color-accent-base-on-light, #0066cc);
@@ -843,7 +843,7 @@ scrolls underneath until a user dismisses them.</p>
   </a></h2>
 </uxdot-copy-permalink>
 <uxdot-example width-adjustment="340px">
-  <img src="./sticky-banner.svg" alt="Sticky banner">
+  <img src="./sticky-banner.svg" alt="Sticky banner" width="340" height="200">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -863,8 +863,8 @@ scrolls underneath until a user dismisses them.</p>
 a thumbnail image on large screens, but both sizes can include a headline, text,
 a call to action, and a background container with a subtle drop shadow. A close
 button also needs to be included in both sizes.</p>
-<uxdot-example width-adjustment="870px">
-  <img src="./sticky-banner-style.svg" alt="Sticky banner style">
+<uxdot-example width-adjustment="884px">
+  <img src="./sticky-banner-style.svg" alt="Sticky banner style" width="884" height="170">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -886,10 +886,10 @@ small size is fixed width and features rounded corners on top. The large size
 can feature more than the small size as well, including a thumbnail image, more
 text, and a larger call to action.</p>
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border="">
-  <img src="./sticky-banner-size-desktop.svg" alt="Sticky banner large size">
+  <img src="./sticky-banner-size-desktop.svg" alt="Sticky banner large size" width="1012" height="140">
 </uxdot-example>
 <uxdot-example width-adjustment="360px" variant="full" alignment="left" no-border="">
-  <img src="./sticky-banner-size-mobile.svg" alt="Sticky banner small size">
+  <img src="./sticky-banner-size-mobile.svg" alt="Sticky banner small size" width="360" height="640">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -980,10 +980,10 @@ because it scrolls on top of content and the backgrounds contain a drop shadow
 to help give it some depth. A user must close the Cookie banner for a sticky
 banner to appear.</p>
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border="">
-  <img src="./sticky-banner-usage.svg" alt="Sticky banner desktop placement">
+  <img src="./sticky-banner-usage.svg" alt="Sticky banner desktop placement" width="1012" height="628">
 </uxdot-example>
 <uxdot-example width-adjustment="360px" variant="full" alignment="left" no-border="">
-  <img src="./sticky-banner-usage-mobile.svg" alt="Sticky banner mobile placement">
+  <img src="./sticky-banner-usage-mobile.svg" alt="Sticky banner mobile placement" width="372" height="643">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1040,20 +1040,20 @@ headline, text, and a call to action, but not all elements are required.</p>
   </a></h2>
 </uxdot-copy-permalink>
 <p>Don't change the large sticky banner to be fixed width.</p>
-<uxdot-example width-adjustment="870px" danger="">
-  <img src="./sticky-banner-best-practices-1.svg" alt="Fixed width issue">
+<uxdot-example width-adjustment="872px" danger="">
+  <img src="./sticky-banner-best-practices-1.svg" alt="Fixed width issue" width="872" height="195">
 </uxdot-example>
 <p>Don’t omit the thumbnail image from the sticky banner on large screens like
 Desktop or Tablet, landscape, it helps users get a better idea of what they’re
 downloading.</p>
-<uxdot-example width-adjustment="870px" danger="">
+<uxdot-example width-adjustment="884px" danger="">
   <img src="./sticky-banner-best-practices-2.svg" alt="Full width small banner 
-    issue">
+    issue" width="884" height="171">
 </uxdot-example>
 <p>Don’t omit the drop shadow because the banner will blend into the background.</p>
-<uxdot-example width-adjustment="870px" danger="">
+<uxdot-example width-adjustment="872px" danger="">
   <img src="./sticky-banner-best-practices-3.svg" alt="Banner without thumbnail 
-    issue">
+    issue" width="872" height="192">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1075,7 +1075,7 @@ difference is that a sticky banner is conversion-driven, they promote a more
 important offer that drives a user to a landing page whereas a sticky card
 promotes a less important offer like a resource or webinar.</p>
 <uxdot-example width-adjustment="1000px">
-  <img src="./sticky-banner-behavior.svg" alt="Sticky banner behavior">
+  <img src="./sticky-banner-behavior.svg" alt="Sticky banner behavior" width="1012" height="608">
   </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1156,7 +1156,7 @@ dropped when space reduces to keep the layout clean and organized.</p>
 </uxdot-copy-permalink>
 <p><uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border="">
 <img src="./sticky-banner-breakpoints-desktop.svg" alt="Sticky banner desktop 
-  breakpoint">
+  breakpoint" width="1012" height="140">
 </uxdot-example></p>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1174,7 +1174,7 @@ dropped when space reduces to keep the layout clean and organized.</p>
 </uxdot-copy-permalink>
 <p><uxdot-example width-adjustment="768px" variant="full" alignment="left" no-border="">
 <img src="./sticky-banner-breakpoints-tablet.svg" alt="Sticky banner tablet 
-  breakpoint">
+  breakpoint" width="780" height="116">
 </uxdot-example></p>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1193,7 +1193,7 @@ dropped when space reduces to keep the layout clean and organized.</p>
 <figure>
   <uxdot-example width-adjustment="360px" variant="full" alignment="left" no-border="">
     <img src="./sticky-banner-breakpoints-mobile-landscape.svg" alt="Sticky 
-      banner mobile landscape breakpoint">
+      banner mobile landscape breakpoint" width="588" height="327">
   </uxdot-example>
   <figcaption>Some text styles reduce in size on small screens. Learn more about 
     typography on mobile.</figcaption>
@@ -1212,9 +1212,9 @@ dropped when space reduces to keep the layout clean and organized.</p>
     <a href="#mobile%2C-portrait">Mobile, portrait</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<p><uxdot-example width-adjustment="360px" variant="full" alignment="left" no-border="">
+<p><uxdot-example width-adjustment="372px" variant="full" alignment="left" no-border="">
 <img src="./sticky-banner-breakpoints-mobile-portrait.svg" alt="Sticky banner 
-  mobile portrait breakpoint">
+  mobile portrait breakpoint" width="372" height="643">
 </uxdot-example></p>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1263,9 +1263,9 @@ between elements.</p>
     <a href="#large-size">Large size</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<uxdot-example width-adjustment="870px">
+<uxdot-example width-adjustment="884px">
   <img src="./sticky-banner-spacing-large-screens.svg" alt="Sticky banner large 
-    spacing">
+    spacing" width="884" height="308">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1285,7 +1285,7 @@ between elements.</p>
 section.</p>
 <uxdot-example width-adjustment="588px">
   <img src="./sticky-banner-spacing-small-screens.svg" alt="Sticky banner small 
-    spacing">
+    spacing" width="588" height="329">
 </uxdot-example>
 <rh-table>
 <table>

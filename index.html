@@ -621,7 +621,7 @@
       <!--lit-node 0--><a class="  " href="/support/"><slot></slot></a>
     <!--/lit-part--></template>Get support</uxdot-sidenav-item></uxdot-sidenav>
 
-<rh-surface id="main" role="main" color-palette="lightest"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface);color:var(--rh-color-text-primary)}.on.dark,.on.light{--rh-color-surface:unset}#slot.palette-lightest{--rh-color-surface:var(--rh-color-surface-lightest,#fff)}#slot.palette-lighter{--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}#slot.palette-light{--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}#slot.palette-dark{--rh-color-surface:var(--rh-color-surface-dark,#383838)}#slot.palette-darker{--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}#slot.palette-darkest{--rh-color-surface:var(--rh-color-surface-darkest,#151515)}
+<rh-surface id="main" role="main" color-palette="lightest"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface)}#slot{color:var(--rh-color-text-primary)}.on.dark,.on.light{--rh-color-surface:unset}#slot.palette-lightest{--rh-color-surface:var(--rh-color-surface-lightest,#fff)}#slot.palette-lighter{--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}#slot.palette-light{--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}#slot.palette-dark{--rh-color-surface:var(--rh-color-surface-dark,#383838)}#slot.palette-darker{--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}#slot.palette-darkest{--rh-color-surface:var(--rh-color-surface-darkest,#151515)}
 .on,
 .on.light {
   --rh-color-accent-base: var(--rh-color-accent-base-on-light, #0066cc);
@@ -746,7 +746,7 @@
 
 
 <div class="container">
-  <uxdot-hero><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}:host([compact]){margin-block-end:var(--rh-space-3xl)}#container{display:flex;flex-direction:column;align-items:center;width:100%}slot[name=header]::slotted(*){margin-block:0!important}slot[name=header]::slotted(h1){color:var(--rh-color-text-brand-on-light);margin-block-end:0;text-transform:uppercase;font-family:var(--rh-font-family-heading);line-height:var(--rh-line-height-heading);font-size:var(--rh-font-size-code-lg)!important;font-weight:var(--rh-font-weight-code-medium)}slot[name=tagline]::slotted(p){font-size:var(--rh-font-size-heading-2xl)!important;margin-block:var(--rh-space-lg)!important;text-align:center}slot[name=image]::slotted(img){width:100%;margin-block-start:var(--rh-space-4xl)}:host slot[name=header]::slotted(h2){color:var(--rh-color-text-brand-on-light);font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xl)!important;font-weight:var(--rh-font-weight-heading-regular)!important;margin-block-end:var(--rh-space-2xl)!important;text-align:center}:host([compact]) ::slotted(p){font-size:var(--rh-font-size-body-text-lg);text-align:center;max-width:62rem}</style><!--lit-part iJbFl+mgGIA=-->
+  <uxdot-hero><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}:host([compact]){margin-block-end:var(--rh-space-3xl)}#container{display:flex;flex-direction:column;align-items:center;width:100%}slot[name=header]::slotted(*){margin-block:0!important}slot[name=header]::slotted(h1){color:var(--rh-color-text-brand-on-light);margin-block-end:0;text-transform:uppercase;font-family:var(--rh-font-family-heading);line-height:var(--rh-line-height-heading);font-size:var(--rh-font-size-code-lg)!important;font-weight:var(--rh-font-weight-code-medium)}slot[name=tagline]::slotted(p){font-size:var(--rh-font-size-heading-2xl)!important;margin-block:var(--rh-space-lg)!important;text-align:center}slot[name=image]::slotted(img){width:100%;height:auto;margin-block-start:var(--rh-space-4xl)}:host slot[name=header]::slotted(h2){color:var(--rh-color-text-brand-on-light);font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xl)!important;font-weight:var(--rh-font-weight-heading-regular)!important;margin-block-end:var(--rh-space-2xl)!important;text-align:center}:host([compact]) ::slotted(p){font-size:var(--rh-font-size-body-text-lg);text-align:center;max-width:62rem}</style><!--lit-part iJbFl+mgGIA=-->
       <div id="container" part="container">
         <slot name="header"></slot>
         <slot name="tagline"></slot>
@@ -756,7 +756,7 @@
     <!--/lit-part--></template>
     <h1 slot="header">Red Hat design system</h1>
     <p slot="tagline">Open source meets open design</p>
-    <img slot="image" src="/assets/home/element-examples.svg" alt="Element examples">
+    <img src="/assets/home/element-examples.svg" slot="image" alt="Element examples" width="1000" height="560">
   </uxdot-hero>
 
   <rh-card id="feature">
@@ -776,25 +776,25 @@
 
     <div class="grid xs-two-columns">
       <rh-tile>
-        <img src="/assets/home/foundations.svg" alt="Foundations" slot="image">
+        <img src="/assets/home/foundations.svg" alt="Foundations" width="300" height="131">
         <h2 slot="headline"><a href="/foundations">Foundations</a></h2>
         <p>Design principles to help you create engaging layouts</p>
       </rh-tile>
 
       <rh-tile>
-        <img src="/assets/home/elements.svg" alt="Elements" slot="image">
+        <img src="/assets/home/elements.svg" alt="Elements" width="300" height="131">
         <h2 slot="headline"><a href="/elements">Elements</a></h2>
         <p>Guidance to help you create interactive user interfaces</p>
       </rh-tile>
 
       <rh-tile>
-        <img src="/assets/home/code-status.svg" alt="Code status" slot="image">
+        <img src="/assets/home/code-status.svg" alt="Code status" width="300" height="131">
         <h2 slot="headline"><a href="/design-code-status">Code status</a></h2>
         <p>Track the status of our components and patterns</p>
       </rh-tile>
 
       <rh-tile>
-        <img src="/assets/home/release-notes.svg" alt="Release notes" slot="image">
+        <img src="/assets/home/release-notes.svg" alt="Release notes" width="300" height="131">
         <h2 slot="headline"><a href="/release-notes">Release notes</a></h2>
         <p>Track the updates we're making to the design system</p>
       </rh-tile>

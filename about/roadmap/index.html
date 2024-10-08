@@ -114,7 +114,20 @@
 
 
 
-  <script type="module">
+  <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css"><style>
+  rh-tile {
+    margin-block: var(--rh-space-3xl, 48px);
+    max-width: 320px;
+  }
+
+  rh-tile [slot="headline"] {
+    font-weight: var(--rh-font-weight-heading-bold, 700);
+  }
+
+  rh-tile [icon="github"] {
+    --rh-icon-size: var(--rh-size-icon-03, 32px);
+  }
+</style><script type="module">
   import '/assets/javascript/elements/uxdot-header.js';
   import '/assets/javascript/elements/uxdot-search.js';
 </script><link rel="stylesheet" href="/styles/pages/backpage.css"><script type="module">
@@ -624,7 +637,7 @@
   <uxdot-sidenav-item href="/support/"><template shadowroot="open" shadowrootmode="open"><style>:host,a{display:block}a{padding:var(--rh-space-lg) var(--rh-space-2xl);font-size:var(--rh-font-size-body-text-lg);text-decoration:none!important;color:var(--rh-color-text-primary-on-light)!important;border-inline-start:var(--rh-border-width-lg) solid #0000}a:hover{border-inline-start-color:var(--rh-color-border-subtle-on-light)}a.active,a:hover{background:var(--rh-color-surface-lighter)}a.active{border-inline-start-color:var(--rh-color-accent-brand-on-light)}</style><!--lit-part BpIOZLGP/0w=-->
       <!--lit-node 0--><a class="  " href="/support/"><slot></slot></a>
     <!--/lit-part--></template>Get support</uxdot-sidenav-item></uxdot-sidenav>
-<rh-surface id="main" role="main" color-palette="lightest"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface);color:var(--rh-color-text-primary)}.on.dark,.on.light{--rh-color-surface:unset}#slot.palette-lightest{--rh-color-surface:var(--rh-color-surface-lightest,#fff)}#slot.palette-lighter{--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}#slot.palette-light{--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}#slot.palette-dark{--rh-color-surface:var(--rh-color-surface-dark,#383838)}#slot.palette-darker{--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}#slot.palette-darkest{--rh-color-surface:var(--rh-color-surface-darkest,#151515)}
+<rh-surface id="main" role="main" color-palette="lightest"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface)}#slot{color:var(--rh-color-text-primary)}.on.dark,.on.light{--rh-color-surface:unset}#slot.palette-lightest{--rh-color-surface:var(--rh-color-surface-lightest,#fff)}#slot.palette-lighter{--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}#slot.palette-light{--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}#slot.palette-dark{--rh-color-surface:var(--rh-color-surface-dark,#383838)}#slot.palette-darker{--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}#slot.palette-darkest{--rh-color-surface:var(--rh-color-surface-darkest,#151515)}
 .on,
 .on.light {
   --rh-color-accent-base: var(--rh-color-accent-base-on-light, #0066cc);
@@ -786,21 +799,8 @@
   
 
   <div class="container">
-    <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
-<style>
-  rh-tile {
-    margin-block: var(--rh-space-3xl, 48px);
-    max-width: 320px;
-  }
+    
 
-  rh-tile [slot="headline"] {
-    font-weight: var(--rh-font-weight-heading-bold, 700);
-  }
-
-  rh-tile [icon="github"] {
-    --rh-icon-size: var(--rh-size-icon-03, 32px);
-  }
-</style>
 <p>Our roadmap is an up-to-date outline of what we're working on and what we're planning to do in the Red Hat Design System over the next 2–3 quarters (6-9 months). You can follow along through <a href="https://github.com/orgs/RedHat-UX/projects/7/">our open source roadmap on GitHub</a>.</p>
 <p>The roadmap is subject to change based on our users' feedback and needs. If you have an idea or feature request, please submit a <a href="https://github.com/RedHat-UX/red-hat-design-system/issues">GitHub issue</a>.</p>
 <p>Check out <a href="https://github.com/orgs/RedHat-UX/projects/1/views/18">our scrum board on GitHub</a> to see what we're working on from week to week.</p>

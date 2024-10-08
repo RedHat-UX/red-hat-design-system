@@ -116,7 +116,13 @@
 
 
 
-  <script type="module">
+  <style>
+  rh-blockquote {
+    display: block;
+    margin-block: 2rem;
+    margin-inline-start: 2.5rem;
+  }
+</style><script type="module">
   import '/assets/javascript/elements/uxdot-header.js';
   import '/assets/javascript/elements/uxdot-search.js';
 </script><link rel="stylesheet" href="/styles/pages/backpage.css"><script type="module">
@@ -626,7 +632,7 @@
   <uxdot-sidenav-item href="/support/"><template shadowroot="open" shadowrootmode="open"><style>:host,a{display:block}a{padding:var(--rh-space-lg) var(--rh-space-2xl);font-size:var(--rh-font-size-body-text-lg);text-decoration:none!important;color:var(--rh-color-text-primary-on-light)!important;border-inline-start:var(--rh-border-width-lg) solid #0000}a:hover{border-inline-start-color:var(--rh-color-border-subtle-on-light)}a.active,a:hover{background:var(--rh-color-surface-lighter)}a.active{border-inline-start-color:var(--rh-color-accent-brand-on-light)}</style><!--lit-part BpIOZLGP/0w=-->
       <!--lit-node 0--><a class="  " href="/support/"><slot></slot></a>
     <!--/lit-part--></template>Get support</uxdot-sidenav-item></uxdot-sidenav>
-<rh-surface id="main" role="main" color-palette="lightest"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface);color:var(--rh-color-text-primary)}.on.dark,.on.light{--rh-color-surface:unset}#slot.palette-lightest{--rh-color-surface:var(--rh-color-surface-lightest,#fff)}#slot.palette-lighter{--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}#slot.palette-light{--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}#slot.palette-dark{--rh-color-surface:var(--rh-color-surface-dark,#383838)}#slot.palette-darker{--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}#slot.palette-darkest{--rh-color-surface:var(--rh-color-surface-darkest,#151515)}
+<rh-surface id="main" role="main" color-palette="lightest"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface)}#slot{color:var(--rh-color-text-primary)}.on.dark,.on.light{--rh-color-surface:unset}#slot.palette-lightest{--rh-color-surface:var(--rh-color-surface-lightest,#fff)}#slot.palette-lighter{--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}#slot.palette-light{--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}#slot.palette-dark{--rh-color-surface:var(--rh-color-surface-dark,#383838)}#slot.palette-darker{--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}#slot.palette-darkest{--rh-color-surface:var(--rh-color-surface-darkest,#151515)}
 .on,
 .on.light {
   --rh-color-accent-base: var(--rh-color-accent-base-on-light, #0066cc);
@@ -788,13 +794,7 @@
   
 
   <div class="container">
-    <style>
-  rh-blockquote {
-    display: block;
-    margin-block: 2rem;
-    margin-inline-start: 2.5rem;
-  }
-</style>
+    
 <p>If you're getting started with accessibility after you already have web properties out in the wild, your first experiences with accessibility testing will likely be in an effort to remediate these experiences. But learning to shift left on accessibility—incorporating it earlier in your processes—can ultimately save time and help ensure your projects are inclusive at launch.</p>
 <rh-blockquote>
   <p>"When you call something an edge case, you're really just defining the limits of what you care about."</p>

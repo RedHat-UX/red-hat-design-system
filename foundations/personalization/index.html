@@ -116,7 +116,7 @@
 
 
 
-  <script type="module">
+  <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css"><script type="module">
   import '/assets/javascript/elements/uxdot-header.js';
   import '/assets/javascript/elements/uxdot-search.js';
 </script><link rel="stylesheet" href="/styles/pages/backpage.css"><script type="module">
@@ -626,7 +626,7 @@
   <uxdot-sidenav-item href="/support/"><template shadowroot="open" shadowrootmode="open"><style>:host,a{display:block}a{padding:var(--rh-space-lg) var(--rh-space-2xl);font-size:var(--rh-font-size-body-text-lg);text-decoration:none!important;color:var(--rh-color-text-primary-on-light)!important;border-inline-start:var(--rh-border-width-lg) solid #0000}a:hover{border-inline-start-color:var(--rh-color-border-subtle-on-light)}a.active,a:hover{background:var(--rh-color-surface-lighter)}a.active{border-inline-start-color:var(--rh-color-accent-brand-on-light)}</style><!--lit-part BpIOZLGP/0w=-->
       <!--lit-node 0--><a class="  " href="/support/"><slot></slot></a>
     <!--/lit-part--></template>Get support</uxdot-sidenav-item></uxdot-sidenav>
-<rh-surface id="main" role="main" color-palette="lightest"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface);color:var(--rh-color-text-primary)}.on.dark,.on.light{--rh-color-surface:unset}#slot.palette-lightest{--rh-color-surface:var(--rh-color-surface-lightest,#fff)}#slot.palette-lighter{--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}#slot.palette-light{--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}#slot.palette-dark{--rh-color-surface:var(--rh-color-surface-dark,#383838)}#slot.palette-darker{--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}#slot.palette-darkest{--rh-color-surface:var(--rh-color-surface-darkest,#151515)}
+<rh-surface id="main" role="main" color-palette="lightest"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface)}#slot{color:var(--rh-color-text-primary)}.on.dark,.on.light{--rh-color-surface:unset}#slot.palette-lightest{--rh-color-surface:var(--rh-color-surface-lightest,#fff)}#slot.palette-lighter{--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}#slot.palette-light{--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}#slot.palette-dark{--rh-color-surface:var(--rh-color-surface-dark,#383838)}#slot.palette-darker{--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}#slot.palette-darkest{--rh-color-surface:var(--rh-color-surface-darkest,#151515)}
 .on,
 .on.light {
   --rh-color-accent-base: var(--rh-color-accent-base-on-light, #0066cc);
@@ -807,7 +807,7 @@
   
 
   <div class="container">
-    <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
+    
 <section aria-labelledby="overview">
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -834,19 +834,19 @@
     </rh-tile>
     <rh-tile compact="" bleed="">
       <uxdot-example slot="image" transparent="" no-border="">
-        <img src="/assets/patterns/all-patterns-sticky-banner.png" alt="Sticky banner">
+        <img src="/assets/patterns/all-patterns-sticky-banner.png" alt="Sticky banner" width="340" height="200">
       </uxdot-example>
       <h3 slot="headline"><a href="#pattern-2-sticky-banner" slot="headline">Sticky banner</a></h3>
     </rh-tile>
     <rh-tile compact="" bleed="">
       <uxdot-example slot="image" transparent="" no-border="">
-        <img src="/assets/patterns/all-patterns-sticky-card.png" alt="Sticky card">
+        <img src="/assets/patterns/all-patterns-sticky-card.png" alt="Sticky card" width="340" height="200">
       </uxdot-example>
       <h3 slot="headline"><a href="#pattern-3-sticky-card" slot="headline">Sticky card</a></h3>
     </rh-tile>
     <rh-tile compact="" bleed="">
       <uxdot-example slot="image" no-border="" color-palette="lighter">
-        <img src="/assets/patterns/all-patterns-announcement.png" alt="Announcement">
+        <img src="/assets/patterns/all-patterns-announcement.png" alt="Announcement" width="340" height="200">
       </uxdot-example>
       <h3 slot="headline"><a href="#pattern-4-announcement">Announcement</a></h3>
     </rh-tile>
@@ -937,7 +937,7 @@
 </uxdot-copy-permalink>
 <p>A dialog can be used both on desktop and mobile.</p>
   <uxdot-example variant="full">
-    <img src="/assets/optimization/modal.svg" alt="Dialog">
+    <img src="/assets/optimization/modal.svg" alt="Dialog" width="1000" height="322">
   </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1020,7 +1020,7 @@
     <li>A user should be able to permanently close a sticky banner and that same sticky banner <strong>should not</strong> reappear when they return.</li>
   </ul>
   <uxdot-example variant="full">
-    <img src="/assets/optimization/sticky-banner.svg" alt="Sticky banner">
+    <img src="/assets/optimization/sticky-banner.svg" alt="Sticky banner" width="1000" height="152">
   </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1110,7 +1110,7 @@
     </li>
   </ul>
   <uxdot-example variant="full">
-    <img src="/assets/optimization/sticky-card.svg" alt="Sticky card">
+    <img src="/assets/optimization/sticky-card.svg" alt="Sticky card" width="1000" height="419">
   </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1182,7 +1182,7 @@
 </uxdot-copy-permalink>
 <p>An announcement can be used to display an important message at the top of a website, but is not limited to one page at a time. An announcement can either have a themed background image or solid color background. For colored backgrounds, we suggest using <a href="https://ux.redhat.com/foundations/color/" target="_blank">alert styles</a>.</p>
   <uxdot-example variant="full">
-    <img src="/assets/optimization/announcement.svg" alt="Announcement">
+    <img src="/assets/optimization/announcement.svg" alt="Announcement" width="1000" height="203">
   </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1359,7 +1359,7 @@
   --rh-color-text-brand: var(--rh-color-text-brand-on-dark, #ee0000);
 
 }</style><!--lit-part 2qjzROR2O6c=-->
-      <!--lit-node 0--><rh-surface id="container" role="alert" aria-hidden="false" color-palette="lightest" class=" hasBody on light warning " defer-hydration=""><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface);color:var(--rh-color-text-primary)}.on.dark,.on.light{--rh-color-surface:unset}#slot.palette-lightest{--rh-color-surface:var(--rh-color-surface-lightest,#fff)}#slot.palette-lighter{--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}#slot.palette-light{--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}#slot.palette-dark{--rh-color-surface:var(--rh-color-surface-dark,#383838)}#slot.palette-darker{--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}#slot.palette-darkest{--rh-color-surface:var(--rh-color-surface-darkest,#151515)}
+      <!--lit-node 0--><rh-surface id="container" role="alert" aria-hidden="false" color-palette="lightest" class=" hasBody on light warning " defer-hydration=""><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface)}#slot{color:var(--rh-color-text-primary)}.on.dark,.on.light{--rh-color-surface:unset}#slot.palette-lightest{--rh-color-surface:var(--rh-color-surface-lightest,#fff)}#slot.palette-lighter{--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}#slot.palette-light{--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}#slot.palette-dark{--rh-color-surface:var(--rh-color-surface-dark,#383838)}#slot.palette-darker{--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}#slot.palette-darkest{--rh-color-surface:var(--rh-color-surface-darkest,#151515)}
 .on,
 .on.light {
   --rh-color-accent-base: var(--rh-color-accent-base-on-light, #0066cc);
@@ -1524,7 +1524,7 @@
     <li>Product card</li>
   </ul>
   <uxdot-example variant="full">
-    <img src="/assets/optimization/card.svg" alt="Card">
+    <img src="/assets/optimization/card.svg" alt="Card" width="1000" height="340">
   </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1594,7 +1594,7 @@
 </uxdot-copy-permalink>
 <p>Active tab uses the existing tab component design and only customizes the active tab within the tab set (no custom design work is needed).</p>
   <uxdot-example variant="full">
-    <img src="/assets/optimization/tabs.svg" alt="Tabs">
+    <img src="/assets/optimization/tabs.svg" alt="Tabs" width="1000" height="166">
   </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1669,7 +1669,7 @@
 </uxdot-copy-permalink>
   <p>An inline-alert only includes text, but no images. It can also include a single or two links that direct a user to other pages.</p>
   <uxdot-example variant="full">
-    <img src="/assets/optimization/alert.svg" alt="Alert">
+    <img src="/assets/optimization/alert.svg" alt="Alert" width="1000" height="207">
   </uxdot-example>
 <p>If a user closes an inline alert, consider if or when it should be displayed again for the same user. It could be suppressed for a week, month, or forever depending on the goal of the project. The <a href="https://ux.redhat.com/elements/alert/" target="_blank">alert component</a> in Adobe XD has two styles, normal and alternate, and either can be used.</p>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->

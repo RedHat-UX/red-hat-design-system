@@ -628,7 +628,7 @@
   <uxdot-sidenav-item href="/support/"><template shadowroot="open" shadowrootmode="open"><style>:host,a{display:block}a{padding:var(--rh-space-lg) var(--rh-space-2xl);font-size:var(--rh-font-size-body-text-lg);text-decoration:none!important;color:var(--rh-color-text-primary-on-light)!important;border-inline-start:var(--rh-border-width-lg) solid #0000}a:hover{border-inline-start-color:var(--rh-color-border-subtle-on-light)}a.active,a:hover{background:var(--rh-color-surface-lighter)}a.active{border-inline-start-color:var(--rh-color-accent-brand-on-light)}</style><!--lit-part BpIOZLGP/0w=-->
       <!--lit-node 0--><a class="  " href="/support/"><slot></slot></a>
     <!--/lit-part--></template>Get support</uxdot-sidenav-item></uxdot-sidenav>
-<rh-surface id="main" role="main" color-palette="lightest"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface);color:var(--rh-color-text-primary)}.on.dark,.on.light{--rh-color-surface:unset}#slot.palette-lightest{--rh-color-surface:var(--rh-color-surface-lightest,#fff)}#slot.palette-lighter{--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}#slot.palette-light{--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}#slot.palette-dark{--rh-color-surface:var(--rh-color-surface-dark,#383838)}#slot.palette-darker{--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}#slot.palette-darkest{--rh-color-surface:var(--rh-color-surface-darkest,#151515)}
+<rh-surface id="main" role="main" color-palette="lightest"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface)}#slot{color:var(--rh-color-text-primary)}.on.dark,.on.light{--rh-color-surface:unset}#slot.palette-lightest{--rh-color-surface:var(--rh-color-surface-lightest,#fff)}#slot.palette-lighter{--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}#slot.palette-light{--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}#slot.palette-dark{--rh-color-surface:var(--rh-color-surface-dark,#383838)}#slot.palette-darker{--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}#slot.palette-darkest{--rh-color-surface:var(--rh-color-surface-darkest,#151515)}
 .on,
 .on.light {
   --rh-color-accent-base: var(--rh-color-accent-base-on-light, #0066cc);
@@ -929,7 +929,7 @@ The <a href="https://wave.webaim.org/">WAVE browser extension</a> is available f
 <p>Google's Chrome and Microsoft's Edge browsers have several accessibility tools built into DevTools. One of the most straightforward tools to use is <a href="https://developer.chrome.com/docs/lighthouse/overview/">Lighthouse</a>. Lighthouse can test for performance, best practices, accessibility, and SEO. It gives a page a score from 0-100% in each of these categories.</p>
 <figure>
   <uxdot-example width-adjustment="900px">
-    <img src="/assets/accessibility/lighthouse-audit.png" alt="Screenshot of a Lighthouse autdit with a score of 100%.">
+    <img src="/assets/accessibility/lighthouse-audit.png" alt="Screenshot of a Lighthouse autdit with a score of 100%." width="900" height="251">
   </uxdot-example>
 </figure>
 <p>Running an accessibility audit in Lighthouse is recommended to catch errors detectable via automated tooling.</p>
@@ -943,7 +943,7 @@ The <a href="https://wave.webaim.org/">WAVE browser extension</a> is available f
 </ul>
 <figure>
   <uxdot-example width-adjustment="893px">
-    <img src="/assets/accessibility/accessibility-pane.png" alt="Screenshot of the accessibility pane on a ux.redhat.com page with three numbers identifying key features.">
+    <img src="/assets/accessibility/accessibility-pane.png" alt="Screenshot of the accessibility pane on a ux.redhat.com page with three numbers identifying key features." width="893" height="498">
   </uxdot-example>
   <figcaption>
     To view the Accessibility Pane, open DevTools then click:
@@ -957,7 +957,7 @@ The <a href="https://wave.webaim.org/">WAVE browser extension</a> is available f
 <p>Users can optionally check "Enable full-page accessibility tree" to change what's shown in the Elements panel. Doing so will transform the HTML in Elements into a representation of how assistive technology interprets the current page's DOM structure.</p>
 <figure>
   <uxdot-example width-adjustment="1167px">
-    <img src="/assets/accessibility/accessibility-tree-view.png" alt="Screenshot showing the rendered page content in the browser on the left and the same content in the accessibility tree view on the right in DevTools">
+    <img src="/assets/accessibility/accessibility-tree-view.png" alt="Screenshot showing the rendered page content in the browser on the left and the same content in the accessibility tree view on the right in DevTools" width="1167" height="535">
   </uxdot-example>
   <figcaption>
     Inspecting the Alert (left) with the full-page accessibility tree enabled reveals its accessible properties (right).
@@ -983,7 +983,7 @@ The <a href="https://wave.webaim.org/">WAVE browser extension</a> is available f
 <p>One neat feature included within Firefox's accessibility inspector is the ability to "Show Tabbing Order". This adds numbered markers to the page which visually demonstrates where each focusable element lands in the tab order.</p>
 <figure>
   <uxdot-example width-adjustment="994px">
-    <img src="/assets/accessibility/firefox-show-tab-order.png" alt="Screenshot of a page with 'Show Tabbing Order' checked. Each tab stop shows its tab stop number inside a pip.">
+    <img src="/assets/accessibility/firefox-show-tab-order.png" alt="Screenshot of a page with 'Show Tabbing Order' checked. Each tab stop shows its tab stop number inside a pip." width="994" height="505">
   </uxdot-example>
   <figcaption>
     A page in Firefox with visually numbered tab stops via the Firefox feature, "Show Tabbing order".

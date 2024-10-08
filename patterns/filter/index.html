@@ -628,7 +628,7 @@
   <uxdot-sidenav-item href="/support/"><template shadowroot="open" shadowrootmode="open"><style>:host,a{display:block}a{padding:var(--rh-space-lg) var(--rh-space-2xl);font-size:var(--rh-font-size-body-text-lg);text-decoration:none!important;color:var(--rh-color-text-primary-on-light)!important;border-inline-start:var(--rh-border-width-lg) solid #0000}a:hover{border-inline-start-color:var(--rh-color-border-subtle-on-light)}a.active,a:hover{background:var(--rh-color-surface-lighter)}a.active{border-inline-start-color:var(--rh-color-accent-brand-on-light)}</style><!--lit-part BpIOZLGP/0w=-->
       <!--lit-node 0--><a class="  " href="/support/"><slot></slot></a>
     <!--/lit-part--></template>Get support</uxdot-sidenav-item></uxdot-sidenav>
-<rh-surface id="main" role="main" color-palette="lightest"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface);color:var(--rh-color-text-primary)}.on.dark,.on.light{--rh-color-surface:unset}#slot.palette-lightest{--rh-color-surface:var(--rh-color-surface-lightest,#fff)}#slot.palette-lighter{--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}#slot.palette-light{--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}#slot.palette-dark{--rh-color-surface:var(--rh-color-surface-dark,#383838)}#slot.palette-darker{--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}#slot.palette-darkest{--rh-color-surface:var(--rh-color-surface-darkest,#151515)}
+<rh-surface id="main" role="main" color-palette="lightest"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface)}#slot{color:var(--rh-color-text-primary)}.on.dark,.on.light{--rh-color-surface:unset}#slot.palette-lightest{--rh-color-surface:var(--rh-color-surface-lightest,#fff)}#slot.palette-lighter{--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}#slot.palette-light{--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}#slot.palette-dark{--rh-color-surface:var(--rh-color-surface-dark,#383838)}#slot.palette-darker{--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}#slot.palette-darkest{--rh-color-surface:var(--rh-color-surface-darkest,#151515)}
 .on,
 .on.light {
   --rh-color-accent-base: var(--rh-color-accent-base-on-light, #0066cc);
@@ -842,10 +842,10 @@
 </uxdot-copy-permalink>
 <div class="grid">
   <uxdot-example width-adjustment="300px">
-    <img src="./filter-sample-1.svg" alt="Example of a filter using an accordion">
+    <img src="./filter-sample-1.svg" alt="Example of a filter using an accordion" width="300" height="513">
   </uxdot-example>
   <uxdot-example width-adjustment="300px">
-    <img src="./filter-sample-2.svg" alt="Example of a filter using a disclosure">
+    <img src="./filter-sample-2.svg" alt="Example of a filter using a disclosure" width="300" height="328">
   </uxdot-example>
 </div>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
@@ -864,7 +864,7 @@
 </uxdot-copy-permalink>
 <p>A filter can be used in the light theme only. It features a list of checkboxes and text that are wrapped in an <a href="../accordion">Accordion</a> or a <a href="../disclosure">Disclosure</a>. Content categories can be represented by accordion panels that users can expand to view the checkboxes inside. When one or more checkboxes are selected, a button will appear that gives users the option to reset their selections.</p>
 <uxdot-example width-adjustment="600px">
-  <img src="./filter-style-1.svg" alt="Filter component with different parts labeled">
+  <img src="./filter-style-1.svg" alt="Filter component with different parts labeled" width="600" height="695">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -899,13 +899,13 @@
 <div class="grid sm-two-columns">
   <figure>
     <uxdot-example width-adjustment="300px">
-      <img src="./filter-usage-1.svg" alt="Expanded disclosure panel with one checkbox">
+      <img src="./filter-usage-1.svg" alt="Expanded disclosure panel with one checkbox" width="300" height="592">
     </uxdot-example>
     <figcaption>A user can select one or multiple tags to sort by in one category</figcaption>
   </figure>
   <figure>
     <uxdot-example width-adjustment="300px">
-      <img src="./filter-usage-2.svg" alt="Expanded accordion panels with multiple checkboxes selected">
+      <img src="./filter-usage-2.svg" alt="Expanded accordion panels with multiple checkboxes selected" width="300" height="592">
     </uxdot-example>
     <figcaption>A user can select multiple tags to sort by in multiple categories</figcaption>
   </figure>
@@ -956,11 +956,11 @@
 </uxdot-copy-permalink>
 <p>Even when used in a filter, accordions still require at least two panels. If only one panel is needed, use a disclosure instead.</p>
 <uxdot-example width-adjustment="300px">
-  <img src="./filter-best-practices-1.svg" alt="A filter using an accordion instead of a disclosure even though it has only one panel">
+  <img src="./filter-best-practices-1.svg" alt="A filter using an accordion instead of a disclosure even though it has only one panel" width="300" height="148">
 </uxdot-example>
 <p>Don’t change the width of a filter on large screens because the aside region is already a fixed width.</p>
 <uxdot-example width-adjustment="555px" danger="">
-  <img src="./filter-best-practices-2.svg" alt="A filter that is abnormally wide on desktop">
+  <img src="./filter-best-practices-2.svg" alt="A filter that is abnormally wide on desktop" width="555" height="513">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -992,7 +992,7 @@
 </uxdot-copy-permalink>
 <p>By default, a filter loads with all category panels collapsed, enabling users to get a high-level overview of the available content, but this can be customized. Category panels have collapsed and expanded states that hide or reveal tags when toggled.</p>
 <uxdot-example width-adjustment="664px" variant="full" alignment="left" no-border="">
-  <img src="./filter-behavior-1.svg" alt="Two filters showing collapsed and expanded states of the enclosed accordions">
+  <img src="./filter-behavior-1.svg" alt="Two filters showing collapsed and expanded states of the enclosed accordions" width="664" height="439">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1010,7 +1010,7 @@
 </uxdot-copy-permalink>
 <p>Multiple category panels can be expanded simultaneously or stack. Expanding one panel doesn’t collapse another which makes it easy for users to search for and filter content in the same view.</p>
 <uxdot-example width-adjustment="664px" variant="full" alignment="left" no-border="">
-  <img src="./filter-behavior-2.svg" alt="Two filters, one showing an expanded accordion panel and one showing two expanded accordion panels">
+  <img src="./filter-behavior-2.svg" alt="Two filters, one showing an expanded accordion panel and one showing two expanded accordion panels" width="664" height="494">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1028,7 +1028,7 @@
 </uxdot-copy-permalink>
 <p>A filter is also required to load with all checkboxes unselected which means that a result set is displayed all at once. The amount of content narrows down as more checkboxes are selected. When a user selects one or more checkboxes, the list and the content set will refresh to display any content with the corresponding tags. The bar above the accordion will also display the number of checkboxes that are currently selected.</p>
 <uxdot-example width-adjustment="664px" variant="full" alignment="left" no-border="">
-  <img src="./filter-behavior-3.svg" alt="Two accordions, one showing an expanded accordion with unselected checkboxes, and one showing selected checkboxes">
+  <img src="./filter-behavior-3.svg" alt="Two accordions, one showing an expanded accordion with unselected checkboxes, and one showing selected checkboxes" width="664" height="555">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1046,7 +1046,7 @@
 </uxdot-copy-permalink>
 <p>If there are more than 10 checkboxes in one category panel, not all of them should be displayed. An Expand to see more tags label can be added at the bottom of the list of checkboxes that acts a progressive disclosure. When selected, it reveals an additional five checkboxes until all checkboxes are displayed.</p>
 <uxdot-example width-adjustment="300px" variant="full" alignment="left" no-border="">
-  <img src="./filter-behavior-4.svg" alt="A filter showing 10 checkboxes and an link to see more">
+  <img src="./filter-behavior-4.svg" alt="A filter showing 10 checkboxes and an link to see more" width="300" height="584">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1108,7 +1108,7 @@
 </uxdot-copy-permalink>
 <p>A filter can work well in a variety of layouts. On small screens, it stretches to fit the entire grid column. Otherwise, it’s placed in the same layout as the content set.</p>
 <uxdot-example width-adjustment="708px" variant="full" alignment="left" no-border="">
-  <img src="./filter-responsive-1.svg" alt="A filter that stretches across the entire grid">
+  <img src="./filter-responsive-1.svg" alt="A filter that stretches across the entire grid" width="708" height="386">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1125,7 +1125,7 @@
   </a></h3>
 </uxdot-copy-permalink>
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border="">
-  <img src="./filter-responsive-2.svg" alt="A filter on desktop taking up almost 4 columns">
+  <img src="./filter-responsive-2.svg" alt="A filter on desktop taking up almost 4 columns" width="1000" height="598">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1142,7 +1142,7 @@
   </a></h3>
 </uxdot-copy-permalink>
 <uxdot-example width-adjustment="768px" variant="full" alignment="left" no-border="">
-  <img src="./filter-responsive-3.svg" alt="A filter on a tablet taking up the full width">
+  <img src="./filter-responsive-3.svg" alt="A filter on a tablet taking up the full width" width="768" height="706">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1159,7 +1159,7 @@
   </a></h3>
 </uxdot-copy-permalink>
 <uxdot-example width-adjustment="360px" variant="full" alignment="left" no-border="">
-  <img src="./filter-responsive-4.svg" alt="A filter on a mobile device taking up the full width">
+  <img src="./filter-responsive-4.svg" alt="A filter on a mobile device taking up the full width" width="360" height="640">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1191,7 +1191,7 @@
   </a></h3>
 </uxdot-copy-permalink>
 <uxdot-example width-adjustment="664px" variant="full" alignment="left" no-border="">
-  <img src="./filter-interaction-1.svg" alt="Example of expanded accordions with filter checkboxes">
+  <img src="./filter-interaction-1.svg" alt="Example of expanded accordions with filter checkboxes" width="664" height="513">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1208,7 +1208,7 @@
   </a></h3>
 </uxdot-copy-permalink>
 <uxdot-example width-adjustment="664px" variant="full" alignment="left" no-border="">
-  <img src="./filter-interaction-2.svg" alt="Example of focus states for filters">
+  <img src="./filter-interaction-2.svg" alt="Example of focus states for filters" width="664" height="513">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1225,7 +1225,7 @@
   </a></h3>
 </uxdot-copy-permalink>
 <uxdot-example width-adjustment="664px" variant="full" alignment="left" no-border="">
-  <img src="./filter-interaction-3.svg" alt="Example of hover states for filters">
+  <img src="./filter-interaction-3.svg" alt="Example of hover states for filters" width="664" height="513">
 </uxdot-example>
 <uxdot-copy-permalink class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1243,7 +1243,7 @@
 </uxdot-copy-permalink>
 <p>When the Tab key is pressed repeatedly, the focus indicator moves from top to bottom. When a category panel is expanded, checkboxes and text are added to the tab order before the focus indicator reaches the next panel.</p>
 <uxdot-example width-adjustment="664px" variant="full" alignment="left" no-border="">
-  <img src="./filter-interaction-4.svg" alt="Example of interaction states for a filter">
+  <img src="./filter-interaction-4.svg" alt="Example of interaction states for a filter" width="664" height="513">
 </uxdot-example>
 <uxdot-copy-permalink class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1262,7 +1262,7 @@
 <p>A filter uses <a href="/tokens/space/">space tokens</a> to define spacing
 values between elements.</p>
 <uxdot-example width-adjustment="664px">
-  <img src="./filter-spacing-1.svg" alt="A filter with spacers">
+  <img src="./filter-spacing-1.svg" alt="A filter with spacers" width="664" height="565">
 </uxdot-example>
 <rh-table>
 <table>

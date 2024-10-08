@@ -114,7 +114,53 @@
 
 
 
-  <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css"><link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-pagination/rh-pagination-lightdom.css"><link rel="stylesheet" href="/styles/pages/backpage.css"><link rel="stylesheet" href="/styles/samp.css"><script type="module">
+  <style>
+playground-project {
+  height: 825px;
+  &:fullscreen {
+    height: 100vh;
+    & rh-card {
+      height: 100%;
+      &::part(body) {
+        flex: auto;
+      }
+    }
+    & playground-file-editor,
+    & playground-preview {
+      height: 100%;
+    }
+  }
+  &:not(:defined) { opacity: 0; }
+  display: flex;
+  flex-flow: column;
+  gap: var(--rh-space-sm);
+  --playground-code-background: var(--rh-color-surface-lighter);
+  & playground-preview {
+    border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle-on-light);
+    &::part(preview-toolbar) {
+      display: none;
+    }
+  }
+  & rh-card {
+    &::part(header),
+    &::part(body) { margin: 0; }
+    &::part(footer) {
+      margin-block: var(--rh-space-lg);
+      justify-content: end;
+    }
+    &::part(body) {
+      border-block-end: var(--rh-border-width-sm) solid var(--rh-color-border-subtle-on-light);
+    }
+    & rh-button[slot="footer"] {
+      display: inline-block;
+      margin-inline-end: auto;
+    }
+  }
+  & rh-tab-panel {
+    display: none !important;
+  }
+}
+</style><link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css"><link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-pagination/rh-pagination-lightdom.css"><link rel="stylesheet" href="/styles/pages/backpage.css"><link rel="stylesheet" href="/styles/samp.css"><script type="module">
   import "/assets/javascript/elements/uxdot-feedback.js";
   import "/assets/javascript/elements/uxdot-copy-button.js";
   import '/assets/javascript/elements/uxdot-header.js';
@@ -639,7 +685,7 @@
       <!--lit-node 0--><a class="  " href="/support/"><slot></slot></a>
     <!--/lit-part--></template>Get support</uxdot-sidenav-item></uxdot-sidenav>
 
-<rh-surface id="main" role="main" color-palette="lightest"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface);color:var(--rh-color-text-primary)}.on.dark,.on.light{--rh-color-surface:unset}#slot.palette-lightest{--rh-color-surface:var(--rh-color-surface-lightest,#fff)}#slot.palette-lighter{--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}#slot.palette-light{--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}#slot.palette-dark{--rh-color-surface:var(--rh-color-surface-dark,#383838)}#slot.palette-darker{--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}#slot.palette-darkest{--rh-color-surface:var(--rh-color-surface-darkest,#151515)}
+<rh-surface id="main" role="main" color-palette="lightest"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;background-color:var(--rh-color-surface)}#slot{color:var(--rh-color-text-primary)}.on.dark,.on.light{--rh-color-surface:unset}#slot.palette-lightest{--rh-color-surface:var(--rh-color-surface-lightest,#fff)}#slot.palette-lighter{--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}#slot.palette-light{--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}#slot.palette-dark{--rh-color-surface:var(--rh-color-surface-dark,#383838)}#slot.palette-darker{--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}#slot.palette-darkest{--rh-color-surface:var(--rh-color-surface-darkest,#151515)}
 .on,
 .on.light {
   --rh-color-accent-base: var(--rh-color-accent-base-on-light, #0066cc);
@@ -822,53 +868,7 @@
     
 
     <div class="container">
-      <style>
-playground-project {
-  height: 825px;
-  &:fullscreen {
-    height: 100vh;
-    & rh-card {
-      height: 100%;
-      &::part(body) {
-        flex: auto;
-      }
-    }
-    & playground-file-editor,
-    & playground-preview {
-      height: 100%;
-    }
-  }
-  &:not(:defined) { opacity: 0; }
-  display: flex;
-  flex-flow: column;
-  gap: var(--rh-space-sm);
-  --playground-code-background: var(--rh-color-surface-lighter);
-  & playground-preview {
-    border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle-on-light);
-    &::part(preview-toolbar) {
-      display: none;
-    }
-  }
-  & rh-card {
-    &::part(header),
-    &::part(body) { margin: 0; }
-    &::part(footer) {
-      margin-block: var(--rh-space-lg);
-      justify-content: end;
-    }
-    &::part(body) {
-      border-block-end: var(--rh-border-width-sm) solid var(--rh-color-border-subtle-on-light);
-    }
-    & rh-button[slot="footer"] {
-      display: inline-block;
-      margin-inline-end: auto;
-    }
-  }
-  & rh-tab-panel {
-    display: none !important;
-  }
-}
-</style>
+      
 
 <script type="module">
   import 'playground-elements';
