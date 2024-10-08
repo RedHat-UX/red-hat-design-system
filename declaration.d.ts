@@ -15,3 +15,4 @@ declare module '@11ty/eleventy-plugin-syntaxhighlight/src/HighlightPairedShortco
 declare module '@11ty/eleventy-plugin-syntaxhighlight/src/getAttributes.js' {
   export default function getAttributes(...args: any[]): string
 }
+
