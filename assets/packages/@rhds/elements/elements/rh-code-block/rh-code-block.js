@@ -66,6 +66,7 @@ let RhCodeBlock = RhCodeBlock_1 = class RhCodeBlock extends LitElement {
     connectedCallback() {
         super.connectedCallback();
         __classPrivateFieldGet(this, _RhCodeBlock_ro, "f").observe(this);
+        __classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_onSlotChange).call(this);
     }
     disconnectedCallback() {
         super.disconnectedCallback();

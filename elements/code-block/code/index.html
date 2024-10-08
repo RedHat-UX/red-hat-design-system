@@ -55,10 +55,10 @@
     "@rhds/tokens/css/color-context-provider.css.js": "/assets/packages/@rhds/tokens/css/color-context-provider.css.js",
     "@rhds/tokens/css/color-context-consumer.css.js": "/assets/packages/@rhds/tokens/css/color-context-consumer.css.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.2/core.js",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
-    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.2/core.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
     "lit/": "/assets/packages/lit/",
     "lit-html/": "/assets/packages/lit-html/",
@@ -1461,7 +1461,7 @@ use the correct mime type for your content, e.g. <code>text/html</code> for HTML
       </rh-surface>
     <!--/lit-part--></template>
  <h3 slot="header">Warning</h3>
-  <p>When slotting HTML content into the code-block, if that HTML content contains a `` end tag, you must escape it.</p>
+  <p>When slotting HTML content into the code-block, if that HTML content contains a <code>&lt;/script&gt;</code> end tag, you must escape it.</p>
 </rh-alert>
 <p>One approach to escaping script tags that is to close the containing <code>&lt;script  type="text/html"&gt;</code> within the sample's closing script tag, then immediately open
 a new sample script tag containing the rest of the snippet. Another method is to
