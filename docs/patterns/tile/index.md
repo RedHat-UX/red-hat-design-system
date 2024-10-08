@@ -53,7 +53,9 @@ Examples include:
 For more information, please see the docs on [theming][theming] and
 [`<rh-tile>` css custom properties][css-props].
 
-{% uxdotPattern stacked=true, target="custom-tiles" %}{% include './patterns/custom-themes.html' %}{% enduxdotPattern %}
+<uxdot-pattern src="./patterns/custom-themes.html"
+               target="custom-tiles">
+</uxdot-pattern>
 
 [element]: /elements/tile/
 [css-props]: /elements/tile/code/#css-custom-properties

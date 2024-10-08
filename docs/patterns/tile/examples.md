@@ -32,6 +32,7 @@ set of tiles. Be careful not to apply the accented tile pattern to all tiles
 within a page, otherwise the accent effect will be lost. After all, "if 
 everything is special, then nothing is special."
 
-{% uxdotPattern %}{% include './patterns/accented-tile.html' %}{% enduxdotPattern %}
+<uxdot-pattern src="./patterns/accented-tile.html">
+</uxdot-pattern>
 
 <rh-cta href="/elements/tile/demos/#demo-accented-tiles">View accented tile demo</rh-cta>

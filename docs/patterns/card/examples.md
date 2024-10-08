@@ -53,13 +53,18 @@ Use to display that an asset can be downloaded. An icon and label group or
 text may be used to describe the asset.
 
 ### Text and CTA
-{% uxdotPattern %}{% include './patterns/asset-text-and-cta.html' %}{% enduxdotPattern %}
+
+<uxdot-pattern src="./patterns/asset-text-and-cta.html">
+</uxdot-pattern>
+
 
 ### Title and Link
-{% uxdotPattern %}{% include './patterns/asset-title-and-link.html' %}{% enduxdotPattern %}
+<uxdot-pattern src="./patterns/asset-title-and-link.html">
+</uxdot-pattern>
 
 ### Title and Link - Top
-{% uxdotPattern %}{% include './patterns/asset-title-and-link-top.html' %}{% enduxdotPattern %}
+<uxdot-pattern src="./patterns/asset-title-and-link-top.html">
+</uxdot-pattern>
 
 ## Avatars card
 
@@ -69,55 +74,65 @@ should be included, but including text is optional.
 Use the [`<rh-avatar>`](/elements/avatar/) element to element to present
 the list of users.
 
-{% uxdotPattern %}{% include './patterns/avatars.html' %}{% enduxdotPattern %}
+<uxdot-pattern src="./patterns/avatars.html">
+</uxdot-pattern>
 
 ## Fast facts card
 Use to display quick facts or short data points under a label. A Secondary 
 call to action may be used or not.
 
-{% uxdotPattern %}{% include './patterns/fast-facts.html' %}{% enduxdotPattern %}
+<uxdot-pattern src="./patterns/fast-facts.html">
+</uxdot-pattern>
 
 ## Icon card
 
 Use to add an icon to the basic style above the text. Secondary and Default 
 calls to action may be used.
 
-{% uxdotPattern %}{% include './patterns/icon.html' %}{% enduxdotPattern %}
+<uxdot-pattern src="./patterns/icon.html">
+</uxdot-pattern>
 
 ## Image card
 
 Use to add an image to the basic style above the text.
 Secondary and Default calls to action may be used.
 
-{% uxdotPattern %}{% include './patterns/image.html' %}{% enduxdotPattern %}
+<uxdot-pattern src="./patterns/image.html">
+</uxdot-pattern>
 
 ## List cards
 Use to display a short amount of content using various list styles. 
 Secondary and Default calls to action may be used.
 
 ### Flat list
-{% uxdotPattern %}{% include './patterns/list-flat.html' %}{% enduxdotPattern %}
+<uxdot-pattern src="./patterns/list-flat.html">
+</uxdot-pattern>
 
 ### List with dividers
-{% uxdotPattern %}{% include './patterns/list-with-dividers.html' %}{% enduxdotPattern %}
+<uxdot-pattern src="./patterns/list-with-dividers.html">
+</uxdot-pattern>
 
 ### Ordered list
 
-{% uxdotPattern %}{% include './patterns/ordered-list.html' %}{% enduxdotPattern %}
+<uxdot-pattern src="./patterns/ordered-list.html">
+</uxdot-pattern>
 
 ### Unordered list
 
-{% uxdotPattern %}{% include './patterns/unordered-list.html' %}{% enduxdotPattern %}
+<uxdot-pattern src="./patterns/unordered-list.html">
+</uxdot-pattern>
 
 ## Logo cards
 Use to display a customer logo in a variety of arrangements. A call to 
 action is required, otherwise use a logo wall.
 
 ### CTA only
-{% uxdotPattern %}{% include './patterns/logo-cta.html' %}{% enduxdotPattern %}
+<uxdot-pattern src="./patterns/logo-cta.html">
+</uxdot-pattern>
 
 ### Text and CTA
-{% uxdotPattern %}{% include './patterns/logo-text-and-cta.html' %}{% enduxdotPattern %}
+<uxdot-pattern src="./patterns/logo-text-and-cta.html">
+</uxdot-pattern>
 
 ## Title bar card
 
@@ -127,7 +142,8 @@ or a logo may be used.
 Alternative title bar styles can be achieved by selecting [card's `header` CSS
 Shadow Part](/elements/card/code/#parts).
 
-{% uxdotPattern %}{% include './patterns/title-bar.html' %}{% enduxdotPattern %}
+<uxdot-pattern src="./patterns/title-bar.html">
+</uxdot-pattern>
 
 ## Quote cards
 
@@ -135,19 +151,12 @@ Use to display a short quote with attribution text. Logos, images, and a
 Secondary call to action may be used or not.
 
 ### Basic
-{% uxdotPattern %}{% include './patterns/quote.html' %}{% enduxdotPattern %}
+<uxdot-pattern src="./patterns/quote.html">
+</uxdot-pattern>
 
 ### Logo and quote
-{% uxdotPattern %}{% include './patterns/logo-and-quote.html' %}{% enduxdotPattern %}
-
-
-<!-- ## Video cards
-
-Use to trigger a video that will play in a [Modal dialog](/elements/dialog).
-Different layout configurations may be used.
-
-{% include './patterns/video.html' %} -->
-
+<uxdot-pattern src="./patterns/logo-and-quote.html">
+</uxdot-pattern>
 
 {% include 'partials/component/feedback.html' %}
 

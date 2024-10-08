@@ -1,0 +1,36 @@
+## Link to tab
+
+<rh-alert state="warning">Use this pattern sparingly. If your tabs serve only as 
+  page navigation, use the [Subnav](/elements/subnavigation) element 
+  instead.</rh-alert>
+
+Use to activate a particular tab when the page's URL hash refers to an element
+within the tab panel, or to the tab itself.
+
+<uxdot-pattern src="./patterns/link-to-tab.html">
+</uxdot-pattern>
+
+<nav id="simulate-nav" aria-labelledby="simulate-nav-heading">
+  <h3 id="simulate-nav-heading">Navigate to tab</h3>
+  <ul>
+    <li><a href="#north">North tab</a></li>
+    <li><a href="#south">South tab</a></li>
+    <li><a href="#east">East tab</a></li>
+    <li><a href="#west">West tab</a></li>
+    <li><a href="#best">Content inside the West tab</a></li>
+  </ul>
+</nav>
+
+{% include './patterns/link-to-tab.html' %}
+
+## Code Tabs
+
+Use this pattern to display highlighted code blocks of one or more languages, 
+for example: the HTML, CSS, and JavaScript needed to implement a pattern.
+
+<uxdot-pattern src="./patterns/code-tabs.html">
+</uxdot-pattern>
+
+[element]: /elements/tabs
+[css-props]: /elements/tabs/code/#css-custom-properties
+

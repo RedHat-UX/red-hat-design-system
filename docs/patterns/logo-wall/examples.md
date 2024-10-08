@@ -24,23 +24,28 @@ importElements:
 
 ## Within a promo band (bordered)
 
-{% uxdotPattern stacked=true, css='./logo-wall-lightdom.css', target="example-1x1-grid" %}
-{% include './patterns/1x1-grid.html' %}
-{% enduxdotPattern %}
+<uxdot-pattern src="./patterns/1x1-grid.html"
+                css-src="./logo-wall-lightdom.css"
+                target="example-1x1-grid">
+</uxdot-pattern>
 
 ## Within a promo band (borderless)
-{% uxdotPattern stacked=true, css='./logo-wall-lightdom.css', target="example-1x1-grid-flat" %}
-{% include './patterns/1x1-grid-flat.html' %}
-{% enduxdotPattern %}
+
+<uxdot-pattern src="./patterns/1x1-grid-flat.html"
+               css-src="./logo-wall-lightdom.css"
+               target="example-1x1-grid-flat">
+</uxdot-pattern>
 
 ## With 2x2 grid
-{% uxdotPattern stacked=true, css='./logo-wall-lightdom.css', target="example-2x2-grid" %}
-{% include './patterns/2x2-grid.html' %}
-{% enduxdotPattern %}
+<uxdot-pattern src="./patterns/2x2-grid.html"
+               css-src="./logo-wall-lightdom.css"
+               target="example-2x2-grid">
+</uxdot-pattern>
 
 ## With 2x3 grid
-{% uxdotPattern stacked=true, css='./logo-wall-lightdom.css', target="example-2x3-grid" %}
-{% include './patterns/2x3-grid.html' %}
-{% enduxdotPattern %}
+<uxdot-pattern src="./patterns/2x3-grid.html"
+                css-src="./logo-wall-lightdom.css"
+                target="example-2x3-grid">
+</uxdot-pattern>
 
 {% include 'partials/component/feedback.html' %}

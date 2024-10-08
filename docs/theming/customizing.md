@@ -40,9 +40,8 @@ To create a custom theme, designers and developers need only set the values for
 the relevant color properties in the design system. For example, a _Bordeaux_ 
 theme might look like this:
 
-{% uxdotPattern class="card-snippet-grid", stacked=true %}
-{% include './patterns/card-bordeaux.html' %}
-{% enduxdotPattern %}
+<uxdot-pattern class="card-snippet-grid" src="./patterns/card-bordeaux.html">
+</uxdot-pattern>
 
 <rh-alert>When writing themes, use the semantic, themeable tokens such as
 `--rh-color-interactive-primary-default-on-light` rather than the crayon tokens
@@ -54,7 +53,7 @@ e.g. `--rh-color-purple-10`.</rh-alert>
 Do not set the "computed" theme tokens, e.g.
 `--rh-color-interactive-primary-default`, those will always be calculated for
 you from their `-on-light` and `-on-dark` versions.
-ke m
+
 </rh-alert>
 
 <rh-card>

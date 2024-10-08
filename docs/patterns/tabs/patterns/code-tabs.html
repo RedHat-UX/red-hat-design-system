@@ -1,0 +1,61 @@
+<rh-tabs class="code-tabs">
+  <rh-tab slot="tab">TypeScript</rh-tab>
+  <rh-tab-panel>
+    <rh-code-block dedent highlighting="client">
+      <script type="sample/typescript">
+        import { LitElement, html } from 'lit';
+        import { customElement } from 'lit/decorators/custom-element.js';
+        import { classMap } from 'lit/directives/class-map.js';  // 1
+        import {
+          colorContextConsumer,
+          type ColorTheme,
+        } from '@rhds/elements/lib/context/color/consumer.js';
+
+        @customElement('rh-consumer')
+        export class RhConsumer extends LitElement {
+          @colorContextConsumer() private on?: ColorTheme;       // 2
+
+          render() {
+            const { on = 'light' } = this;                       // 3
+            return html`
+              <div id="container"
+                   class="${classMap({ on: true, [on]: true })}">
+              </div>`;
+          }
+        }
+      </script>
+    </rh-code-block>
+  </rh-tab-panel>
+  <rh-tab slot="tab">CSS</rh-tab>
+  <rh-tab-panel>
+    <rh-code-block dedent highlighting="client">
+      <script type="text/css">
+        #container {
+          color: var(--rh-color-text-primary);
+          background: var(--rh-color-surface);
+        }
+      </script>
+    </rh-code-block>
+  </rh-tab-panel>
+</rh-tabs>
+
+<style>
+  .code-tabs {
+    border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
+    border-radius: var(--rh-border-radius-default);
+    max-width: 56rem; /* warning: magic number */
+    overflow: hidden;
+
+    & rh-tab-panel {
+      padding: 0;
+      border-radius: 0;
+    }
+
+    & rh-code-block {
+      --rh-border-radius-default: 0;
+      --rh-border-width-sm: 0px;
+
+      border-width: 0;
+    }
+  }
+</style>
