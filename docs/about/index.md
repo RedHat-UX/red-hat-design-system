@@ -86,7 +86,7 @@ and adapts to meet new challenges.
 
 <uxdot-example variant="full" no-border alignment="left" width-adjustment="1140px">
  <img src="../assets/about/about-rhds-brand-standards.png"
-      alt="the words 'brand standards' framed by elements and shapes in ReEd Hat colors"
+      alt="the words 'brand standards' framed by elements and shapes in Red Hat colors"
       width="1140"
       height="286">
 </uxdot-example>
