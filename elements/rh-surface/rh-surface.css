@@ -1,6 +1,9 @@
 :host {
   display: block;
   background-color: var(--rh-color-surface);
+}
+
+#slot {
   color: var(--rh-color-text-primary);
 }
 
