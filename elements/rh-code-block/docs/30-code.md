@@ -26,7 +26,7 @@ use the correct mime type for your content, e.g. `text/html` for HTML content.
 
 <rh-alert state="warning">
  <h3 slot="header">Warning</h3>
-  <p>When slotting HTML content into the code-block, if that HTML content contains a `</script>` end tag, you must escape it.</p>
+  <p>When slotting HTML content into the code-block, if that HTML content contains a <code>&lt;/script&gt;</code> end tag, you must escape it.</p>
 </rh-alert>
 
 One approach to escaping script tags that is to close the containing `<script 
