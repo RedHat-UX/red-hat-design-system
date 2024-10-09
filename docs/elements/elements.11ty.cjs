@@ -31,6 +31,13 @@ module.exports = class ElementsPage {
     };
   }
 
+  #actionsLabels = html`
+    <span slot="action-label-copy">Copy to Clipboard</span>
+    <span slot="action-label-copy" hidden data-code-block-state="active">Copied!</span>
+    <span slot="action-label-wrap">Wrap lines</span>
+    <span slot="action-label-wrap" hidden data-code-block-state="active">Overflow lines</span>
+  `;
+
   /**
    * Returns a string with common indent stripped from each line. Useful for templating HTML
    * @param {string} str
@@ -119,6 +126,7 @@ module.exports = class ElementsPage {
       return html`
         <rh-code-block actions="wrap copy" highlighting="prerendered">
           ${this.highlight('html', demoContent)}
+          ${this.#actionsLabels}
         </rh-code-block>`;
     } catch {
       return '';
@@ -222,7 +230,6 @@ module.exports = class ElementsPage {
           border-width: 0;
         }
       }
-
       .attributes rh-table td.type pre {
         background: transparent;
         margin: 0;
@@ -244,11 +251,13 @@ module.exports = class ElementsPage {
                 }
               }
               </script>`))}
+              ${this.#actionsLabels}
             </rh-code-block>
           </rh-tab-panel>
           <rh-tab slot="tab">NPM</rh-tab>
           <rh-tab-panel>
-            <rh-code-block actions="copy" highlighting="prerendered">${this.highlight('shell', `npm install @rhds/elements`, 'shell')}</rh-code-block>
+            <rh-code-block actions="copy" highlighting="prerendered">${this.highlight('shell', `npm install @rhds/elements`, 'shell')}${this.#actionsLabels}
+            </rh-code-block>
           </rh-tab-panel>
           <rh-tab slot="tab">JSPM</rh-tab>
           <rh-tab-panel>
@@ -256,6 +265,7 @@ module.exports = class ElementsPage {
               <script type="importmap">
               ${jspmMap}
               </script>`))}
+              ${this.#actionsLabels}
             </rh-code-block>
           </rh-tab-panel>
         </uxdot-installation-tabs>
@@ -266,6 +276,7 @@ module.exports = class ElementsPage {
           <script type="module">
             import '@rhds/elements/${doc.docsPage.tagName}/${doc.docsPage.tagName}.js';
           </script>`))}
+          ${this.#actionsLabels}
         </rh-code-block>
       </section>
     `;
