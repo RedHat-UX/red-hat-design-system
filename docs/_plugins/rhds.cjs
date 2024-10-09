@@ -405,11 +405,13 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
             .sort()
         // todo: avoid calling getProps twice, it's expensive
             .map(x => getProps(x)));
-        tabs.splice(-1, 0, {
-          ...props,
-          pageTitle: 'Demos',
-          href: demosUrl,
-        });
+        if (!tabs.some(x => x.pageTitle === 'Demos')) {
+          tabs.splice(-1, 0, {
+            ...props,
+            pageTitle: 'Demos',
+            href: demosUrl,
+          });
+        }
         return { docsPage, tabs, ...props };
       }));
       elementDocs.sort(alphabeticallyBySlug);
