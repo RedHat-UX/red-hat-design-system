@@ -17,7 +17,7 @@ import { LitElement, type PropertyValues } from 'lit';
  */
 export declare class RhCodeBlock extends LitElement {
     #private;
-    private static actionIcons;
+    private static actions;
     static styles: CSSStyleSheet[];
     actions: ('copy' | 'wrap')[];
     /**

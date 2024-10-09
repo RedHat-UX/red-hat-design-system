@@ -110,7 +110,7 @@ let RhCodeBlock = RhCodeBlock_1 = class RhCodeBlock extends LitElement {
             <button id="action-${x}"
                     class="shadow-fab"
                     data-code-block-action="${x}">
-              ${RhCodeBlock_1.actionIcons.get(this.wrap && x === 'wrap' ? 'wrap-active' : x) ?? ''}
+              ${RhCodeBlock_1.actions.get(this.wrap && x === 'wrap' ? 'wrap-active' : x) ?? ''}
             </button>
           </rh-tooltip>`)}
         <!-- </slot> -->
@@ -306,7 +306,7 @@ _RhCodeBlock_copy = async function _RhCodeBlock_copy() {
     this.requestUpdate();
     tooltip?.show();
 };
-RhCodeBlock.actionIcons = new Map([
+RhCodeBlock.actions = new Map([
     ['wrap', html `
       <svg xmlns="http://www.w3.org/2000/svg"
           fill="currentColor"

@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
       <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title> | Breadcrumb | Red Hat design system</title>
+  <title>Demos | Breadcrumb | Red Hat design system</title>
   <meta name="description" content="This is Red Hat's design system. Using Red Hat brand standards and PatternFly as our foundational design language, we enable designers and developers to concurrently build branded experiences across redhat.com, Red Hat Customer Portal, and beyond.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" type="image/svg+xml" sizes="any" href="/assets/logo-red-hat.svg">
@@ -102,107 +102,85 @@
 
   
   <script type="module">
+    import '@rhds/elements/rh-footer/rh-footer-universal.js';
     import '/assets/javascript/elements/uxdot-copy-permalink.js';
     import '/assets/javascript/elements/uxdot-sidenav.js';
     import '/assets/javascript/elements/uxdot-example.js';
   </script>
+  <link rel="stylesheet" href="/assets/javascript/elements/uxdot-toc-lightdom.css">
+  <script type="module" src="/assets/javascript/elements/uxdot-toc.js"></script>
 
   <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.0/dist/es-module-shims.js"></script>
 
 
 
-  <script type="module">
-  import '/assets/javascript/elements/uxdot-feedback.js';
-</script><style>
-  playground-project {
-    height: 825px;
-    &:fullscreen {
-      height: 100vh;
-      & rh-card {
-        height: 100%;
-        &::part(body) {
-          flex: auto;
-        }
-      }
-      & playground-file-editor,
-      & playground-preview {
-        height: 100%;
-      }
-    }
-    &:not(:defined) { opacity: 0; }
-    display: flex;
-    flex-flow: column;
-    gap: var(--rh-space-sm);
-    --playground-code-background: var(--rh-color-surface-lighter);
-    & playground-preview {
-      border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle-on-light);
-      &::part(preview-toolbar) {
-        display: none;
-      }
-    }
+  <style>
+playground-project {
+  height: 825px;
+  &:fullscreen {
+    height: 100vh;
     & rh-card {
-      &::part(header),
-      &::part(body) { margin: 0; }
-      &::part(footer) {
-        margin-block: var(--rh-space-lg);
-        justify-content: end;
-      }
+      height: 100%;
       &::part(body) {
-        border-block-end: var(--rh-border-width-sm) solid var(--rh-color-border-subtle-on-light);
-      }
-      & rh-button[slot="footer"] {
-        display: inline-block;
-        margin-inline-end: auto;
+        flex: auto;
       }
     }
-    & rh-tab-panel {
-      display: none !important;
+    & playground-file-editor,
+    & playground-preview {
+      height: 100%;
     }
   }
-</style><link rel="stylesheet" href="/styles/pages/backpage.css"><script type="module">
-  import '/assets/javascript/elements/uxdot-feedback.js';
-  import '/assets/javascript/elements/uxdot-copy-button.js';
+  &:not(:defined) { opacity: 0; }
+  display: flex;
+  flex-flow: column;
+  gap: var(--rh-space-sm);
+  --playground-code-background: var(--rh-color-surface-lighter);
+  & playground-preview {
+    border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle-on-light);
+    &::part(preview-toolbar) {
+      display: none;
+    }
+  }
+  & rh-card {
+    &::part(header),
+    &::part(body) { margin: 0; }
+    &::part(footer) {
+      margin-block: var(--rh-space-lg);
+      justify-content: end;
+    }
+    &::part(body) {
+      border-block-end: var(--rh-border-width-sm) solid var(--rh-color-border-subtle-on-light);
+    }
+    & rh-button[slot="footer"] {
+      display: inline-block;
+      margin-inline-end: auto;
+    }
+  }
+  & rh-tab-panel {
+    display: none !important;
+  }
+}
+</style><link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css"><link rel="stylesheet" href="/styles/pages/backpage.css"><link rel="stylesheet" href="/styles/samp.css"><script type="module">
+  import "/assets/javascript/elements/uxdot-feedback.js";
+  import "/assets/javascript/elements/uxdot-copy-button.js";
   import '/assets/javascript/elements/uxdot-header.js';
-  import 'playground-elements';
-  import '@rhds/elements/rh-button/rh-button.js';
-  import '@rhds/elements/rh-card/rh-card.js';
-  import '@rhds/elements/rh-code-block/rh-code-block.js';
+  import '@rhds/elements/rh-alert/rh-alert.js';
   import '@rhds/elements/rh-cta/rh-cta.js';
   import '@rhds/elements/rh-footer/rh-footer.js';
   import '@rhds/elements/rh-subnav/rh-subnav.js';
   import '@rhds/elements/rh-surface/rh-surface.js';
-  import '@rhds/elements/rh-tabs/rh-tabs.js';
-  import {TabExpandEvent} from '@rhds/elements/rh-tabs/rh-tab.js';
-  for (const tabs of document.querySelectorAll('.demo-fileswitcher')) {
-    tabs.addEventListener('expand', function(event) {
-      if (event instanceof TabExpandEvent && event.active) {
-        const { filename } = event.tab.dataset;
-        if (filename) {
-          const project = tabs.closest('playground-project');
-          const fileEditor = project.querySelector('playground-file-editor');
-          if (fileEditor) {
-            fileEditor.filename = filename;
-          }
-        }
-      }
-    })
-  }
-  for (const playground of document.querySelectorAll('playground-project')) {
-    playground.addEventListener('click', function(event) {
-      if (event.target.dataset?.action === 'fullscreen') {
-        playground.requestFullscreen();
-      }
-    })
-  }
+  import '@rhds/elements/rh-code-block/rh-code-block.js';
+  import '@rhds/elements/rh-table/rh-table.js';
+  import '@rhds/elements/rh-accordion/rh-accordion.js';
+  import '@rhds/elements/rh-badge/rh-badge.js';
+  import '@rhds/elements/rh-tag/rh-tag.js';
 </script><script type="module">
-  import '@rhds/elements/rh-footer/rh-footer-universal.js';
-  import '@rhds/elements/rh-footer/rh-footer-copyright.js';
+  import '@rhds/elements/rh-breadcrumb/rh-breadcrumb.js';
 </script></head>
 
-  <body dsd-pending="" class=" page-or-breadcrumb">
+  <body dsd-pending="" class=" page-demos-or-breadcrumb">
     <rh-skip-link href="#main"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus=""><style>#container{display:block;z-index:1000}a#container{position:fixed}div#container{position:relative}::slotted(a),a{background-color:var(--rh-color-surface-lightest,#fff)!important;border-block-start-width:0!important;border-block-end:var(--rh-border-width-sm,1px) solid var(--rh-color-border-interactive-on-light,#06c)!important;border-inline-start:var(--rh-border-width-sm,1px) solid var(--rh-color-border-interactive-on-light,#06c)!important;border-inline-end:var(--rh-border-width-sm,1px) solid var(--rh-color-border-interactive-on-light,#06c)!important;border-end-start-radius:var(--rh-border-radius-default,3px)!important;border-end-end-radius:var(--rh-border-radius-default,3px)!important;clip:rect(0,0,0,0)!important;color:var(--rh-color-interactive-primary-default-on-light,#06c)!important;font-family:var(--rh-font-family-heading,RedHatDisplay,"Red Hat Display","Noto Sans Arabic","Noto Sans Hebrew","Noto Sans JP","Noto Sans KR","Noto Sans Malayalam","Noto Sans SC","Noto Sans TC","Noto Sans Thai",Helvetica,Arial,sans-serif)!important;font-size:var(--rh-font-size-body-text-md,1rem)!important;font-weight:var(--rh-font-weight-heading-bold,700)!important;height:1px!important;left:50%!important;margin:-1px!important;outline:0!important;overflow:hidden!important;padding:0!important;text-decoration:none!important;top:-40px!important;transform:translateX(-50%)!important;transition:top .05s ease-in!important;white-space:nowrap!important;width:1px!important}::slotted(a){position:fixed!important}::slotted(a:is(:active,:focus)),a:is(:active,:focus){border-width:var(--rh-border-width-md,2px)!important;clip:auto!important;height:auto!important;margin:0!important;overflow:visible!important;padding:var(--rh-space-lg,16px) var(--rh-space-2xl,32px)!important;top:0!important;white-space:inherit!important;width:auto!important}::slotted(a:is(:active,:hover)),a:is(:active,:hover){text-decoration:underline!important}@media (prefers-reduced-motion:reduce){::slotted(a),a{transition-duration:.001ms!important}}</style><!--lit-part c9HdRUDmBIg=--><!--lit-node 0--><a id="container" href="#main"><slot></slot></a><!--/lit-part--></template>Skip to main content</rh-skip-link>
     
-
 
 
 
@@ -457,11 +435,6 @@
       <!--lit-node 0--><a class="  " href="/elements/icon/"><slot></slot></a>
     <!--/lit-part--></template>Icon</uxdot-sidenav-dropdown-menu-item>
         
-        
-        
-        <uxdot-sidenav-dropdown-menu-item href="/elements/menu/"><template shadowroot="open" shadowrootmode="open"><style>:host,a{display:block}a{padding:var(--rh-space-lg) var(--rh-space-2xl);font-size:var(--rh-font-size-body-text-lg);text-decoration:none!important;color:var(--rh-color-text-primary-on-light)!important;border-inline-start:var(--rh-border-width-lg) solid #0000}a:hover{border-inline-start-color:var(--rh-color-border-subtle-on-light)}a.active,a:hover{background:var(--rh-color-surface-lighter)}a.active{border-inline-start-color:var(--rh-color-accent-brand-on-light)}a{text-transform:capitalize;padding:var(--rh-space-md) 0 var(--rh-space-md) var(--rh-space-lg);font-size:var(--rh-font-size-body-text-md)}</style><!--lit-part BpIOZLGP/0w=-->
-      <!--lit-node 0--><a class="  " href="/elements/menu/"><slot></slot></a>
-    <!--/lit-part--></template>Menu</uxdot-sidenav-dropdown-menu-item>
         
         
         <uxdot-sidenav-dropdown-menu-item href="/elements/navigation-primary/"><template shadowroot="open" shadowrootmode="open"><style>:host,a{display:block}a{padding:var(--rh-space-lg) var(--rh-space-2xl);font-size:var(--rh-font-size-body-text-lg);text-decoration:none!important;color:var(--rh-color-text-primary-on-light)!important;border-inline-start:var(--rh-border-width-lg) solid #0000}a:hover{border-inline-start-color:var(--rh-color-border-subtle-on-light)}a.active,a:hover{background:var(--rh-color-surface-lighter)}a.active{border-inline-start-color:var(--rh-color-accent-brand-on-light)}a{text-transform:capitalize;padding:var(--rh-space-md) 0 var(--rh-space-md) var(--rh-space-lg);font-size:var(--rh-font-size-body-text-md)}</style><!--lit-part BpIOZLGP/0w=-->
@@ -866,11 +839,11 @@
         <a href="/elements/breadcrumb/guidelines/">Guidelines</a>
         <a href="/elements/breadcrumb/code/">Code</a>
         <a active="" href="/elements/breadcrumb/demos/">Demos</a>
-        <a active="" href="/elements/breadcrumb/demos/">Demos</a>
         <a href="/elements/breadcrumb/accessibility/">Accessibility</a>
       </rh-subnav>
     </uxdot-header>
 
+    
     <div class="aside">
       <uxdot-toc summary="On this page"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;container-type:inline-size;container-name:host;position:relative}details{display:flex;padding-inline:var(--rh-space-xl);border-inline-start:var(--rh-border-width-lg) solid #0000;border:var(--rh-border-width-sm) solid var(--rh-color-border-subtle-on-light)}details[open]:after{content:"";position:absolute;inset-block:0;inset-inline-start:0;inset-block-start:-1px;width:var(--rh-border-width-lg);background-color:var(--rh-color-brand-red-on-light)}summary{list-style:none;display:inline-flex;gap:var(--rh-space-sm);align-items:center;padding-block:var(--rh-space-lg)}.summary,summary{font-family:var(--rh-font-family-body-text);font-size:var(--rh-font-size-body-text-xl)!important;font-weight:var(--rh-font-weight-body-text-medium)}summary:before{content:"";width:1rem;height:1rem;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 10 15' fill='none'%3E%3Cg clip-path='url(%23clip0_232_19576)'%3E%3Cpath d='M2.5 14.5L0.5 12.5L5.5 7.5L0.5 2.5L2.5 0.5L9.5 7.5L2.5 14.5Z' fill='%23707070'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_232_19576'%3E%3Crect width='10' height='14' fill='white' transform='matrix(-1 0 0 1 10 0.5)'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");background-repeat:no-repeat;background-size:contain;transition:.2s}summary::-webkit-details-marker,summary::marker{display:none}details[open]>summary:before{transform:rotate(90deg)}nav{margin-block-end:var(--rh-space-lg)}#expanded{display:none}@media (min-width:568px){details{display:none}#expanded{display:block}}</style><!--lit-part zXZqIsCB308=-->
       <div id="container" part="container">
@@ -891,9 +864,41 @@
         <ol slot="details"><li><a href="#demo-breadcrumb">Breadcrumb</a></li><li><a href="#demo-color-context">Color Context</a></li><li><a href="#demo-custom-accessible-label">Custom Accessible Label</a></li><li><a href="#demo-non-interactive-last-item">Non Interactive Last Item</a></li><li><a href="#demo-subtle">Subtle</a></li></ol><ol slot="expanded"><li><a href="#demo-breadcrumb">Breadcrumb</a></li><li><a href="#demo-color-context">Color Context</a></li><li><a href="#demo-custom-accessible-label">Custom Accessible Label</a></li><li><a href="#demo-non-interactive-last-item">Non Interactive Last Item</a></li><li><a href="#demo-subtle">Subtle</a></li></ol>
       </uxdot-toc>
     </div>
+    
 
     <div class="container">
       
+
+<script type="module">
+  import 'playground-elements';
+  import '@rhds/elements/rh-button/rh-button.js';
+  import '@rhds/elements/rh-card/rh-card.js';
+  import '@rhds/elements/rh-tabs/rh-tabs.js';
+  import {TabExpandEvent} from '@rhds/elements/rh-tabs/rh-tab.js';
+  for (const tabs of document.querySelectorAll('.demo-fileswitcher')) {
+    tabs.addEventListener('expand', function(event) {
+      if (event instanceof TabExpandEvent && event.active) {
+        const { filename } = event.tab.dataset;
+        if (filename) {
+          const project = tabs.closest('playground-project');
+          const fileEditor = project.querySelector('playground-file-editor');
+          if (fileEditor) {
+            fileEditor.filename = filename;
+          }
+        }
+      }
+    })
+  }
+  for (const playground of document.querySelectorAll('playground-project')) {
+    playground.addEventListener('click', function(event) {
+      if (event.target.dataset?.action === 'fullscreen') {
+        playground.requestFullscreen();
+      }
+    })
+  }
+</script>
+
+
     
     
     
@@ -3331,8 +3336,6 @@ select) {
     </playground-project>
       
 
-
-
 <uxdot-feedback><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;container-type:inline-size;container-name:host;margin-block-start:var(--rh-space-5xl)}#container{display:grid;grid-template-columns:1fr;grid-gap:var(--rh-space-3xl);margin-block-end:var(--rh-space-3xl)}::slotted(h2),h2{font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-md)!important;font-weight:var(--rh-font-weight-heading-medium);line-height:var(--rh-line-height-heading);margin:var(--rh-space-2xl) 0!important}p{font-size:var(--rh-font-size-body-text-lg)}@container host (min-width: 576px){#container{grid-template-columns:1fr 1fr}}</style><!--lit-part Vrt6k7lfZV8=-->
       <div id="container" part="container">
         <div>
@@ -3386,9 +3389,6 @@ select) {
       
       
     
-      
-      
-    
   
   
   
@@ -3414,8 +3414,6 @@ select) {
 <rh-back-to-top href="#"></rh-back-to-top>
 
 </rh-surface>
-
-
 <rh-footer-universal color-palette="darker"><template shadowroot="open" shadowrootmode="open"><style>:host{color:var(--rh-color-white,#fff);font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text","Noto Sans Arabic","Noto Sans Hebrew","Noto Sans JP","Noto Sans KR","Noto Sans Malayalam","Noto Sans SC","Noto Sans TC","Noto Sans Thai",Helvetica,Arial,sans-serif);line-height:var(--rh-line-height-body-text,1.5);font-weight:var(--_font-weight);font-size:medium;display:flex;flex-direction:column}.global-base,footer{--_icon-color:var(--rh-footer-icon-color,var(--rh-color-gray-40,#a3a3a3));--_icon-color-hover:var(--rh-footer-icon-color-hover,var(--rh-color-gray-30,#c7c7c7));--_border-color:var(--rh-footer-border-color,var(--rh-color-border-subtle-on-dark,#707070));--_accent-color:var(--rh-footer-accent-color,var(--rh-color-accent-brand-on-light,#e00));--_section-side-gap:var(--rh-footer-section-side-gap,var(--rh-space-lg,16px));--_accordion-background:var(--rh-color-white,#fff);--_logo-width:var(--rh-size-icon-04,40px);--_font-weight:var(--rh-font-weight-body-text-regular,400)}*{box-sizing:border-box}::slotted(:is(h1,h2,h3,h4,h5,h6)){font-family:var(--rh-font-family-heading,RedHatDisplay,"Red Hat Display","Noto Sans Arabic","Noto Sans Hebrew","Noto Sans JP","Noto Sans KR","Noto Sans Malayalam","Noto Sans SC","Noto Sans TC","Noto Sans Thai",Helvetica,Arial,sans-serif)!important;line-height:var(--rh-line-height-heading,1.3)!important}:host([debug]) :not(.spacer,.base,a,svg){min-height:var(--rh-length-xl,24px);position:relative;outline:var(--rh-length-3xs,2px) dotted red}:host([debug]) :not(.spacer,.base,a,svg):after{content:attr(part);display:block;position:absolute;color:#fff;background-color:#2f4f4f;padding:var(--rh-space-xs,4px);top:0;right:0;font-family:var(--rh-font-family-code,RedHatMono,"Red Hat Mono","Courier New",Courier,monospace);font-size:var(--rh-font-size-code-xs,.75rem)}.section{padding:var(--rh-space-2xl,32px) var(--_section-side-gap)}.header{background-color:var(--rh-color-surface-darker,#1f1f1f);display:flex;flex-wrap:wrap;gap:var(--rh-space-2xl,32px);align-items:center;position:relative}.header:after{display:none;content:"";background-color:var(--_border-color);height:var(--rh-length-4xs,1px);position:absolute;bottom:0;width:calc(100% - var(--_section-side-gap)*2);left:var(--_section-side-gap)}.header-primary{flex:1 1 auto}.header-secondary{flex:0 1 auto}.main{background-color:var(--rh-color-surface-darker,#1f1f1f);display:grid;gap:var(--rh-space-2xl,32px);padding-top:0}.main-secondary{display:grid;gap:var(--pf-global--spacer--xl,32px);place-items:baseline;place-content:start}.global-base{--rh-footer-link-font-size:var(--rh-font-size-body-text-xs,0.75rem);line-height:100%;background-color:var(--rh-color-surface-darkest,#151515);display:grid;grid-template-columns:1fr;grid-template-areas:"logo" "primary" "spacer" "secondary" "tertiary";gap:var(--rh-space-2xl,32px) var(--rh-space-xl,24px)}.global-logo{grid-area:logo;width:var(--_logo-width)}.global-logo-image{fill:var(--_icon-color)}.global-logo-image:is(:hover,:focus-within){fill:var(--_icon-color-hover)}.global-primary{grid-area:primary}.global-secondary{grid-area:secondary;color:var(--rh-color-text-secondary-on-dark,#c7c7c7);display:flex;flex-direction:column;gap:var(--rh-space-lg,16px);justify-content:space-between}.global-tertiary{grid-area:tertiary;display:grid;justify-content:start;align-items:start}.global-links-primary,.global-links-secondary{display:flex;flex-direction:column;gap:var(--rh-space-md,8px) var(--rh-space-xl,24px)}:is(.global-primary,.global-secondary,.global-tertiary) ::slotted(*){font-size:var(--rh-font-size-body-text-xs,.75rem)!important}.logo{line-height:0px}.social-links{display:flex;margin-inline-start:0;padding-inline-start:0}.social-links rh-footer-links,.social-links slot::slotted(rh-footer-links){display:flex;flex-direction:row;gap:var(--rh-space-xl,24px)}:is(.links,.global-links-primary,.global-links-secondary) ::slotted(ul){padding:0;margin:0;display:contents}.isMobile .links{--rh-footer-link-header-font-size:var(--rh-font-size-body-text-lg,1.125rem)}.isMobile .links ::slotted(ul){--rh-footer-link-font-size:1em;display:grid;grid-template-columns:1fr;gap:calc(var(--rh-space-2xl, 32px)/2)}#global-heading,#heading{position:absolute;left:-9999999px;width:0;height:0;overflow:hidden;display:flex}[part=base]:not(.isMobile) .links{display:grid;grid-template-columns:repeat(1fr,25%);grid-template-rows:repeat(1,min-content auto);grid-auto-columns:minmax(0,1fr);gap:var(--rh-space-lg,16px) var(--rh-space-2xl,32px);grid-auto-flow:column}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):first-of-type){grid-column:1/2;grid-row:1/2}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):nth-of-type(2)){grid-column:2/3;grid-row:1/2}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):nth-of-type(3)){grid-column:3/4;grid-row:1/2}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):nth-of-type(4)){grid-column:4/5;grid-row:1/2}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):nth-of-type(5)){grid-column:1/2;grid-row:3/4}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):nth-of-type(6)){grid-column:2/3;grid-row:3/4}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):nth-of-type(7)){grid-column:3/4;grid-row:3/4}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):nth-of-type(8)){grid-column:4/5;grid-row:3/4}[part=base]:not(.isMobile) .links ::slotted(:is(ul:first-of-type)){grid-column:1/2;grid-row:2/3}[part=base]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(2))){grid-column:2/3;grid-row:2/3}[part=base]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(3))){grid-column:3/4;grid-row:2/3}[part=base]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(4))){grid-column:4/5;grid-row:2/3}[part=base]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(5))){grid-column:1/2;grid-row:4/5}[part=base]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(6))){grid-column:2/3;grid-row:4/5}[part=base]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(7))){grid-column:3/4;grid-row:4/5}[part=base]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(8))){grid-column:4/5;grid-row:4/5}[part=base]:not(.isMobile) .links ::slotted(ul){gap:var(--rh-footer-links-gap,var(--rh-space-lg,16px));display:flex;flex-direction:column}#footer-logo{width:var(--_logo-width)}:is(.links,.global-links-primary,.global-links-secondary) ::slotted(:is(h1,h2,h3,h4,h5)){font-weight:var(--rh-font-weight-heading-medium,500)!important;margin-block:0!important;margin-block-start:var(--_link-header-margin,0)!important;font-size:var(--rh-footer-link-header-font-size,var(--rh-font-size-body-text-sm,.875rem))!important;color:var(--rh-color-text-primary-on-dark,#fff)!important}rh-accordion-header[expanded]{--_border-inline-end-color:var(--_border-color)}rh-accordion-header:not([expanded])::part(container){--_background-color:var(--rh-color-surface-darker,#1f1f1f);--_active-background-color:var(--rh-color-surface-darker,#1f1f1f)}rh-accordion-header:hover{--_after-background-color:var(--_accent-color)}::slotted(rh-footer-copyright){grid-column:-1/1}@media screen and (min-width:768px){.global-base{grid-template-columns:4fr 4fr 4fr;grid-template-areas:"logo      logo      logo" "primary   primary   primary" "spacer    spacer    spacer" "secondary secondary secondary"}.global-base:is(.hasTertiary){grid-template-columns:4fr 4fr 4fr;grid-template-areas:"logo      logo      logo" "primary   primary   primary" "spacer    spacer    spacer" "secondary secondary tertiary"}}@media screen and (min-width:992px){.global-base:not(.nothing){grid-template-columns:auto 10fr 2fr;grid-template-rows:max-content max-content;grid-template-areas:"logo primary  tertiary" "logo secondary tertiary";gap:24px 32px}.global-primary{display:flex}}.spacer{grid-area:spacer;border-bottom:1px solid var(--_border-color)}@media screen and (min-width:992px){.spacer{display:none}.global-tertiary{display:grid;justify-content:flex-end;align-items:center}}@media screen and (min-width:320px){.global-links-primary,.global-links-secondary{display:grid;grid-template-columns:1fr 1fr}}@media screen and (min-width:768px){.global-links-primary,.global-links-secondary{display:grid;grid-template-columns:1fr 1fr 1fr}.hasTertiary .global-links-secondary{display:grid;grid-template-columns:1fr 1fr}}@media screen and (min-width:992px){.global-links-primary{display:flex;flex-flow:row wrap;align-items:center}:not(.hasTertiary) .global-links-secondary{display:flex;flex-flow:row wrap;gap:8px 24px}}@media screen and (max-width:992px){.global-logo{grid-area:logo}.global-primary{grid-area:primary}}@media screen and (min-width:992px){.header:after{display:block}.main{padding-top:var(--rh-space-2xl,32px);padding-bottom:var(--rh-space-4xl,64px)}}@media screen and (min-width:992px) and (max-width:1368px){.header,.main{display:grid;grid-template-columns:8fr 4fr}}@media screen and (min-width:1368px){.header,.main{display:grid;grid-template-columns:8fr 4fr}}@media screen and (min-width:768px){.isMobile .links ::slotted(ul){grid-template-columns:1fr 1fr}}</style><!--lit-part zkXBulb2pk4=-->
       <!--lit-node 0--><footer>
         <!--lit-node 1--><h2 id="global-heading"><slot name="heading">Red Hat footer</slot></h2>
