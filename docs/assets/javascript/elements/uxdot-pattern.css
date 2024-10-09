@@ -53,16 +53,16 @@ h3,
   resize: vertical;
   overflow: auto;
   grid-area: content;
-  padding: var(--rh-space-4xl);
+  padding: var(--rh-space-lg);
   border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
   border-radius: var(--rh-border-radius-default);
   background-color: var(--rh-color-surface);
   color: var(--rh-color-text-primary);
   border-color: var(--rh-color-border-subtle);
 
-  @container host (width < 300px) {
-    padding: var(--rh-space-lg);
-  }
+  @container host (width > 300px) { padding: var(--rh-space-xl); }
+
+  @container host (width > 540px) { padding: var(--rh-space-4xl); }
 }
 
 #content > * {
