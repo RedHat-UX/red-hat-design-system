@@ -25,7 +25,10 @@ scrolls underneath until a user dismisses them.
 ## Sample pattern
 
 <uxdot-example width-adjustment="340px">
-  <img src="./sticky-banner.svg" alt="Sticky banner">
+  <img src="./sticky-banner.svg"
+      alt="Sticky banner"
+      width="340"
+      height="200">
 </uxdot-example>
 
 ## Style
@@ -35,8 +38,11 @@ a thumbnail image on large screens, but both sizes can include a headline, text,
 a call to action, and a background container with a subtle drop shadow. A close 
 button also needs to be included in both sizes.
 
-<uxdot-example width-adjustment="870px">
-  <img src="./sticky-banner-style.svg" alt="Sticky banner style">
+<uxdot-example width-adjustment="884px">
+  <img src="./sticky-banner-style.svg"
+      alt="Sticky banner style"
+      width="884"
+      height="170">
 </uxdot-example>
 
 ### Sizes
@@ -48,11 +54,17 @@ can feature more than the small size as well, including a thumbnail image, more
 text, and a larger call to action.
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="./sticky-banner-size-desktop.svg" alt="Sticky banner large size">
+  <img src="./sticky-banner-size-desktop.svg"
+      alt="Sticky banner large size"
+      width="1012"
+      height="140">
 </uxdot-example>
 
 <uxdot-example width-adjustment="360px" variant="full" alignment="left" no-border>
-  <img src="./sticky-banner-size-mobile.svg" alt="Sticky banner small size">
+  <img src="./sticky-banner-size-mobile.svg"
+      alt="Sticky banner small size"
+      width="360"
+      height="640">
 </uxdot-example>
 
 ### Content
@@ -89,11 +101,17 @@ to help give it some depth. A user must close the Cookie banner for a sticky
 banner to appear.
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="./sticky-banner-usage.svg" alt="Sticky banner desktop placement">
+  <img src="./sticky-banner-usage.svg"
+      alt="Sticky banner desktop placement"
+      width="1012"
+      height="628">
 </uxdot-example>
 
 <uxdot-example width-adjustment="360px" variant="full" alignment="left" no-border>
-  <img src="./sticky-banner-usage-mobile.svg" alt="Sticky banner mobile placement">
+  <img src="./sticky-banner-usage-mobile.svg"
+      alt="Sticky banner mobile placement"
+      width="372"
+      height="643">
 </uxdot-example>
 
 ### Layout
@@ -117,24 +135,33 @@ headline, text, and a call to action, but not all elements are required.
 
 Don't change the large sticky banner to be fixed width.
 
-<uxdot-example width-adjustment="870px" danger>
-  <img src="./sticky-banner-best-practices-1.svg" alt="Fixed width issue">
+<uxdot-example width-adjustment="872px" danger>
+  <img src="./sticky-banner-best-practices-1.svg"
+      alt="Fixed width issue"
+      width="872"
+      height="195">
 </uxdot-example>
 
 Don’t omit the thumbnail image from the sticky banner on large screens like 
 Desktop or Tablet, landscape, it helps users get a better idea of what they’re 
 downloading.
 
-<uxdot-example width-adjustment="870px" danger>
-  <img src="./sticky-banner-best-practices-2.svg" alt="Full width small banner 
-    issue">
+<uxdot-example width-adjustment="884px" danger>
+  <img src="./sticky-banner-best-practices-2.svg"
+      alt="Full width small banner 
+    issue"
+      width="884"
+      height="171">
 </uxdot-example>
 
 Don’t omit the drop shadow because the banner will blend into the background.
 
-<uxdot-example width-adjustment="870px" danger>
-  <img src="./sticky-banner-best-practices-3.svg" alt="Banner without thumbnail 
-    issue">
+<uxdot-example width-adjustment="872px" danger>
+  <img src="./sticky-banner-best-practices-3.svg"
+      alt="Banner without thumbnail 
+    issue"
+      width="872"
+      height="192">
 </uxdot-example>
 
 ## Behavior
@@ -146,7 +173,10 @@ important offer that drives a user to a landing page whereas a sticky card
 promotes a less important offer like a resource or webinar.
 
 <uxdot-example width-adjustment="1000px">
-  <img src="./sticky-banner-behavior.svg" alt="Sticky banner behavior">
+  <img src="./sticky-banner-behavior.svg"
+      alt="Sticky banner behavior"
+      width="1012"
+      height="608">
   </uxdot-example>
 
 ### Sliding
@@ -171,16 +201,22 @@ dropped when space reduces to keep the layout clean and organized.
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" 
 no-border>
-<img src="./sticky-banner-breakpoints-desktop.svg" alt="Sticky banner desktop 
-  breakpoint">
+<img src="./sticky-banner-breakpoints-desktop.svg"
+      alt="Sticky banner desktop 
+  breakpoint"
+      width="1012"
+      height="140">
 </uxdot-example>
 
 ### Tablet
 
 <uxdot-example width-adjustment="768px" variant="full" alignment="left" 
 no-border>
-<img src="./sticky-banner-breakpoints-tablet.svg" alt="Sticky banner tablet 
-  breakpoint">
+<img src="./sticky-banner-breakpoints-tablet.svg"
+      alt="Sticky banner tablet 
+  breakpoint"
+      width="780"
+      height="116">
 </uxdot-example>
 
 ### Mobile, landscape
@@ -188,8 +224,11 @@ no-border>
 <figure>
   <uxdot-example width-adjustment="360px" variant="full" alignment="left" 
     no-border>
-    <img src="./sticky-banner-breakpoints-mobile-landscape.svg" alt="Sticky 
-      banner mobile landscape breakpoint">
+    <img src="./sticky-banner-breakpoints-mobile-landscape.svg"
+      alt="Sticky 
+      banner mobile landscape breakpoint"
+      width="588"
+      height="327">
   </uxdot-example>
   <figcaption>Some text styles reduce in size on small screens. Learn more about 
     typography on mobile.</figcaption>
@@ -197,10 +236,13 @@ no-border>
 
 ### Mobile, portrait
 
-<uxdot-example width-adjustment="360px" variant="full" alignment="left" 
+<uxdot-example width-adjustment="372px" variant="full" alignment="left" 
 no-border>
-<img src="./sticky-banner-breakpoints-mobile-portrait.svg" alt="Sticky banner 
-  mobile portrait breakpoint">
+<img src="./sticky-banner-breakpoints-mobile-portrait.svg"
+      alt="Sticky banner 
+  mobile portrait breakpoint"
+      width="372"
+      height="643">
 </uxdot-example>
 
 ## Interaction states
@@ -216,9 +258,12 @@ between elements.
 
 ### Large size
 
-<uxdot-example width-adjustment="870px">
-  <img src="./sticky-banner-spacing-large-screens.svg" alt="Sticky banner large 
-    spacing">
+<uxdot-example width-adjustment="884px">
+  <img src="./sticky-banner-spacing-large-screens.svg"
+      alt="Sticky banner large 
+    spacing"
+      width="884"
+      height="308">
 </uxdot-example>
 
 ### Small size
@@ -227,8 +272,11 @@ Content padding defines how far away elements are from each other inside each
 section.
 
 <uxdot-example width-adjustment="588px">
-  <img src="./sticky-banner-spacing-small-screens.svg" alt="Sticky banner small 
-    spacing">
+  <img src="./sticky-banner-spacing-small-screens.svg"
+      alt="Sticky banner small 
+    spacing"
+      width="588"
+      height="329">
 </uxdot-example>
 
 <rh-table>

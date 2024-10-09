@@ -120,6 +120,10 @@
   }
 
   uxdot-toc {
+    @container main (width < 576px) {
+      margin-inline: var(--rh-space-lg);
+    }
+
     @container main (width >= 576px) {
       padding-inline: var(--rh-space-2xl);
     }

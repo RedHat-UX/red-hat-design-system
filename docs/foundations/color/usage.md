@@ -45,8 +45,11 @@ it meets <a href="https://www.w3.org/WAI/WCAG21/Understanding/">WCAG 2.1 AA</a>
 requirements.</p>
 </rh-alert>
 
-<uxdot-example>
-  <img src="/assets/color/brand-red.png" alt="spectrum of brand red shades with examples of brand red being used">
+<uxdot-example width-adjustment="872px">
+  <img src="/assets/color/brand-red.png"
+      alt="spectrum of brand red shades with examples of brand red being used"
+      width="872"
+      height="266">
 </uxdot-example>
 
 ### Canvas
@@ -58,8 +61,11 @@ other colors as long as contrast is maintained throughout the entire
 design. If a custom canvas color is lighter or darker than the defaults,
 white or black may be used as surface colors.
 
-<uxdot-example>
-  <img src="/assets/color/canvas.png" alt="swatches of the default canvas colors for dark and light theme and examples of custom canvas colors">
+<uxdot-example width-adjustment="872px">
+  <img src="/assets/color/canvas.png"
+      alt="swatches of the default canvas colors for dark and light theme and examples of custom canvas colors"
+      width="872"
+      height="248">
 </uxdot-example>
 
 ### Surface
@@ -70,7 +76,10 @@ sections. For example, a card (white surface) can be placed in a section
 (light gray surface) on a canvas (white).
 
 <uxdot-example variant="full" no-border>
-  <img src="/assets/color/surface.png" alt="swatches of the default surface colors for dark and light theme and examples of a card in a section with a card">
+  <img src="/assets/color/surface.png"
+      alt="swatches of the default surface colors for dark and light theme and examples of a card in a section with a card"
+      width="1000"
+      height="682">
 </uxdot-example>
 
 ### Layering <rh-tag color="purple">Beta</rh-tag>
@@ -88,7 +97,10 @@ as well as how they stack to create depth and separate content.
 In the light theme, white and gray values alternate when stacked.
 
 <uxdot-example variant="full" no-border>
-  <img src="/assets/color/layering-light-theme.png" alt="A light gray card in a larger, white card, which sits in a light gray section">
+  <img src="/assets/color/layering-light-theme.png"
+      alt="A light gray card in a larger, white card, which sits in a light gray section"
+      width="1000"
+      height="560">
 </uxdot-example>
 
 
@@ -97,7 +109,10 @@ In the light theme, white and gray values alternate when stacked.
 In the dark theme, gray values should get one step lighter when stacked.
 
 <uxdot-example variant="full" no-border>
-  <img src="/assets/color/layering-dark-theme.png" alt="A dark gray card in a larger, darker gray card, which sits in an even dark gray section">
+  <img src="/assets/color/layering-dark-theme.png"
+      alt="A dark gray card in a larger, darker gray card, which sits in an even dark gray section"
+      width="1000"
+      height="560">
 </uxdot-example>
 
 
@@ -125,8 +140,12 @@ represented.
   <p>Do not apply the Red Hat red color to text in dark environments unless it meets <a href="https://www.w3.org/WAI/WCAG21/Understanding/">WCAG 2.1 AA</a> requirements.</p>
 </rh-alert>
 
+
 <uxdot-example variant="full" no-border>
-  <img src="/assets/color/text.png" alt="Dark and light theme examples of the seven types of semantic colors used by text">
+  <img src="/assets/color/text.png"
+      alt="Dark and light theme examples of the seven types of semantic colors used by text"
+      width="1000"
+      height="851">
 </uxdot-example>
 
 ### Icons
@@ -143,7 +162,10 @@ To learn more about icons, go to the [Brand
 standards](https://www.redhat.com/en/about/brand/standards) website.
 
 <uxdot-example variant="full" no-border>
-  <img src="/assets/color/icons.png" alt="Examples of the three icon categories">
+  <img src="/assets/color/icons.png"
+      alt="Examples of the three icon categories"
+      width="1000"
+      height="462">
 </uxdot-example>
 
 ### Interactivity
@@ -159,7 +181,10 @@ Certain colors are used to indicate that something is interactive.
 5.  **Red** - use sparingly for Primary calls to action only
 
 <uxdot-example variant="full" no-border>
-  <img src="/assets/color/interactivity.png" alt="Examples of elements using the five colors that denote interactivity">
+  <img src="/assets/color/interactivity.png"
+      alt="Examples of elements using the five colors that denote interactivity"
+      width="1000"
+      height="593">
 </uxdot-example>
 
 ### Status
@@ -191,7 +216,10 @@ patterns like [alerts](/elements/alert), [badges](/elements/badge),
 
 
 <uxdot-example width-adjustment="648px">
-  <img src="/assets/color/status.png" alt="Alerts, a form field, and tags that use status colors">
+  <img src="/assets/color/status.png"
+      alt="Alerts, a form field, and tags that use status colors"
+      width="648"
+      height="489">
 </uxdot-example>
 
 ## Best practices
@@ -211,14 +239,20 @@ the [Design system](https://github.com/RedHat-UX/red-hat-design-system/discussio
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
     <uxdot-example slot="image" no-border variant="full" alignment="left">
-      <img src="/assets/color/best-practices-custom-themes-correct.svg" alt="Blue submit button, blue default call to action, black tooltip, and blue switch">
+      <img src="/assets/color/best-practices-custom-themes-correct.svg"
+      alt="Blue submit button, blue default call to action, black tooltip, and blue switch"
+      width="500"
+      height="264">
     </uxdot-example>
     <p>Use the color variants already available for elements and patterns.</p>
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="dont">
     <uxdot-example slot="image" no-border variant="full" alignment="left">
-      <img src="/assets/color/best-practices-custom-themes-wrong.svg" alt="Magenta button, brand red default call to action, green tooltip, and dark orange switch">
+      <img src="/assets/color/best-practices-custom-themes-wrong.svg"
+      alt="Magenta button, brand red default call to action, green tooltip, and dark orange switch"
+      width="500"
+      height="264">
     </uxdot-example>
     <p>Do not create your own colors, design tokens, or change the colors of existing elements and patterns.</p>
   </uxdot-best-practice>
@@ -235,13 +269,19 @@ using elements and patterns from the desaturated theme instead.
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
     <uxdot-example slot="image" no-border variant="full" alignment="left">
-      <img src="/assets/color/best-practices-sufficient-contrast-correct.svg" alt="Examples of a blue button against a light gray background and a red CTA against a black background">
+      <img src="/assets/color/best-practices-sufficient-contrast-correct.svg"
+      alt="Examples of a blue button against a light gray background and a red CTA against a black background"
+      width="500"
+      height="284">
     </uxdot-example>
     <p>Use a surface color token for background to ensure accessibility, or use a <a href="../accessibility/#tools">tool</a> to check proper contrast.</p>
   </uxdot-best-practice>
   <uxdot-best-practice variant="dont">
     <uxdot-example slot="image" no-border variant="full" alignment="left">
-      <img src="/assets/color/best-practices-sufficient-contrast-wrong.svg" alt="Examples of a blue button against a red background and a red CTA against a blue background">
+      <img src="/assets/color/best-practices-sufficient-contrast-wrong.svg"
+      alt="Examples of a blue button against a red background and a red CTA against a blue background"
+      width="500"
+      height="284">
     </uxdot-example>
     <p>Do not use a background color that has a similar hue, saturation, or lightness to foreground elements.</p>
   </uxdot-best-practice>
