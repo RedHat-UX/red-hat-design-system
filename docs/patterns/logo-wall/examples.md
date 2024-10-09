@@ -23,8 +23,8 @@ importElements:
 <link rel="stylesheet" data-helmet href="../logo-wall-lightdom.css">
 
 <uxdot-pattern src="./patterns/1x1-grid.html"
-                css-src="./logo-wall-lightdom.css"
-                target="example-1x1-grid">
+               css-src="./logo-wall-lightdom.css"
+               target="example-1x1-grid">
   <h2 slot="heading">Within a promo band (bordered)</h2>
 </uxdot-pattern>
 
@@ -42,8 +42,8 @@ importElements:
 </uxdot-pattern>
 
 <uxdot-pattern src="./patterns/2x3-grid.html"
-                css-src="./logo-wall-lightdom.css"
-                target="example-2x3-grid">
+               css-src="./logo-wall-lightdom.css"
+               target="example-2x3-grid">
   <h2 slot="heading">With 2x3 grid</h2>
 </uxdot-pattern>
 
