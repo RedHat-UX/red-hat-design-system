@@ -21,6 +21,31 @@ subnav:
   within the tab panel, or to the tab itself.</p>
 </uxdot-pattern>
 
+<script type="module">
+  // NOTE: the script sample provided in the link-to-tab demo will only work in the 
+  // document, but we present it here in shadow root, so this script specifically
+  // targets the element
+  const pattern = document.querySelector('uxdot-pattern[src="./patterns/link-to-tab.html"]')
+  await pattern.updateComplete;
+  function activateTabByHash() {
+    const { hash } = location;
+    if (!hash) { return; }
+    const hashTarget = pattern.shadowRoot.querySelector(hash);
+    const tabs = hashTarget.closest('rh-tabs');
+    if (hashTarget.localName === 'rh-tab') {
+      tabs.select(hashTarget);
+    } else {
+      const panel = hashTarget?.closest('rh-tab-panel');
+      const panelIndex = Array.from(tabs.querySelectorAll('rh-tab-panel')).indexOf(panel);
+      if (panelIndex >= 0) {
+        tabs.select(panelIndex);
+      }
+    }
+  }
+  addEventListener('hashchange', activateTabByHash);
+  activateTabByHash();
+</script>
+
 <uxdot-pattern src="./patterns/code-tabs.html">
   <h2 slot="heading">Code Tabs</h2>
   <p>Use this pattern to display highlighted code blocks of one or more
