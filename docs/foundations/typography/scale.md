@@ -14,9 +14,9 @@ importElements:
 permalink: /foundations/typography/scale.html
 ---
 
-<link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
+<link data-helmet rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
 
-<style>
+<style data-helmet>
   table td,
   table th {
     width: 20%;

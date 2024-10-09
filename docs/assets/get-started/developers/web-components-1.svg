@@ -1,0 +1,28 @@
+<svg aria-hidden="true" class="image-block" viewBox="0 0 295 243" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="295" height="242.357" rx="3" fill="#F2F2F2"/>
+  <mask id="mask0_89_60" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="43" y="16" width="210" height="221">
+    <path d="M43 16H253V237H43V16Z" fill="#D9D9D9"/>
+  </mask>
+  <g mask="url(#mask0_89_60)">
+    <path d="M113.353 84.1064L162.036 84.1094L186.143 125.593L161.569 167.618L112.886 167.888L88.7785 126.132L113.353 84.1064Z" fill="#92C5F9"/>
+    <path d="M103.418 117.907L128.287 75.3775L177.569 75.3794L201.935 117.308L177.064 159.842L127.787 160.115L103.418 117.907Z" stroke="#151515" stroke-width="6"/>
+    <path d="M149.924 67.357L164.068 8" stroke="#A3A3A3" stroke-width="2" stroke-linejoin="bevel" stroke-dasharray="16 8"/>
+    <path d="M147.325 62.018L141.377 45.771" stroke="#A3A3A3" stroke-width="2" stroke-linejoin="bevel" stroke-dasharray="16 8"/>
+    <path d="M137.4 36.2001L147.133 44.2438L135.3 48.651L137.4 36.2001Z" fill="#A3A3A3"/>
+    <path d="M200.144 94.8159L253.764 65.6934" stroke="#A3A3A3" stroke-width="2" stroke-linejoin="bevel" stroke-dasharray="16 8"/>
+    <path d="M202.381 89.3156L210.499 74.0371" stroke="#A3A3A3" stroke-width="2" stroke-linejoin="bevel" stroke-dasharray="16 8"/>
+    <path d="M214.965 64.6836L215.48 77.2998L204.296 71.438L214.965 64.6836Z" fill="#A3A3A3"/>
+    <path d="M201.513 143.04L233.483 195.013" stroke="#A3A3A3" stroke-width="2" stroke-linejoin="bevel" stroke-dasharray="16 8"/>
+    <path d="M207.126 144.977L222.82 152.26" stroke="#A3A3A3" stroke-width="2" stroke-linejoin="bevel" stroke-dasharray="16 8"/>
+    <path d="M232.4 156.215L219.83 157.41L225.081 145.927L232.4 156.215Z" fill="#A3A3A3"/>
+    <path d="M94.8564 94.8159L41.2356 65.6934" stroke="#A3A3A3" stroke-width="2" stroke-linejoin="bevel" stroke-dasharray="16 8"/>
+    <path d="M92.6193 89.3156L84.5011 74.0371" stroke="#A3A3A3" stroke-width="2" stroke-linejoin="bevel" stroke-dasharray="16 8"/>
+    <path d="M80.0355 64.6836L79.5202 77.2998L90.7037 71.438L80.0355 64.6836Z" fill="#A3A3A3"/>
+    <path d="M93.4873 143.04L61.5168 195.013" stroke="#A3A3A3" stroke-width="2" stroke-linejoin="bevel" stroke-dasharray="16 8"/>
+    <path d="M87.874 144.977L72.1801 152.26" stroke="#A3A3A3" stroke-width="2" stroke-linejoin="bevel" stroke-dasharray="16 8"/>
+    <path d="M62.5999 156.215L75.1699 157.41L69.9194 145.927L62.5999 156.215Z" fill="#A3A3A3"/>
+    <path d="M152.769 175L138.625 234.357" stroke="#A3A3A3" stroke-width="2" stroke-linejoin="bevel" stroke-dasharray="16 8"/>
+    <path d="M155.368 180.339L161.316 196.586" stroke="#A3A3A3" stroke-width="2" stroke-linejoin="bevel" stroke-dasharray="16 8"/>
+    <path d="M165.293 206.157L155.56 198.113L167.393 193.706L165.293 206.157Z" fill="#A3A3A3"/>
+  </g>
+</svg>

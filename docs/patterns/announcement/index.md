@@ -18,7 +18,10 @@ audience.
 ## Sample implementation
 
 <uxdot-example width-adjustment="872px">
-  <img src="./announcement-sample-1.svg" alt="Example of an announcement banner">
+  <img src="./announcement-sample-1.svg"
+      alt="Example of an announcement banner"
+      width="872"
+      height="80">
 </uxdot-example>
 
 ## Style
@@ -28,17 +31,26 @@ feature elements like text, a button, a call to action, icons, imagery, or a
 background container.
 
 <uxdot-example width-adjustment="872px">
-  <img src="./announcement-style-1.svg" alt="Anatomy of an announcement banner">
+  <img src="./announcement-style-1.svg"
+      alt="Anatomy of an announcement banner"
+      width="872"
+      height="113">
 </uxdot-example>
 
 ## Theme
 
 <uxdot-example width-adjustment="872px">
-  <img src="./announcement-theme-1.svg" alt="Announcement banner on light theme">
+  <img src="./announcement-theme-1.svg"
+      alt="Announcement banner on light theme"
+      width="872"
+      height="80">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="872px">
-  <img src="./announcement-theme-2.svg" alt="Announcement banner on dark theme">
+  <img src="./announcement-theme-2.svg"
+      alt="Announcement banner on dark theme"
+      width="872"
+      height="80">
 </uxdot-example>
 
 ## Usage
@@ -52,8 +64,11 @@ An announcement banner doesn’t fall within the grid. It spans the entire width
 of a browser window on all screens whereas the content of the banner itself 
 should fall within the standard grid.
 
-<uxdot-example width-adjustment="872px">
-  <img src="./announcement-usage-1.svg" alt="Announcement banner spanning entire width of browser window">
+<uxdot-example width-adjustment="1000px">
+  <img src="./announcement-usage-1.svg"
+      alt="Announcement banner spanning entire width of browser window"
+      width="1000"
+      height="208">
 </uxdot-example>
 
 ### Layout
@@ -64,7 +79,10 @@ better attract attention from visitors who might be coming from different
 places.
 
 <uxdot-example width-adjustment="872px">
-  <img src="./announcement-usage-2.svg" alt="Announcement banner positioned above the main menu on Redhat.com">
+  <img src="./announcement-usage-2.svg"
+      alt="Announcement banner positioned above the main menu on Redhat.com"
+      width="872"
+      height="152">
 </uxdot-example>
 
 ### Content
@@ -74,7 +92,10 @@ aligned to the left and right sides, depending on the amount of content and what
 its objective is.
 
 <uxdot-example width-adjustment="872px">
-  <img src="./announcement-usage-content.svg" alt="One announcement banner showing center-aligned content and one showing left and right-aligned content">
+  <img src="./announcement-usage-content.svg"
+      alt="One announcement banner showing center-aligned content and one showing left and right-aligned content"
+      width="872"
+      height="224">
 </uxdot-example>
 
 ### Character count
@@ -106,7 +127,10 @@ The recommended maximum character count for the elements of an announcement are 
 Do not position the announcement banner below the navigation.
 
 <uxdot-example width-adjustment="872px" danger>
-  <img src="./announcement-bestpractice-1.svg" alt="Example of an announcement banner below the primary navigation">
+  <img src="./announcement-bestpractice-1.svg"
+      alt="Example of an announcement banner below the primary navigation"
+      width="872"
+      height="152">
 </uxdot-example>
 
 ## Behavior
@@ -129,20 +153,29 @@ screens.
 
 #### Desktop
 
-<uxdot-example width-adjustment="872px" variant="full" alignment="left" no-border>
-  <img src="./announcement-responsive-1.svg" alt="Example of an announcement banner on desktop">
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+  <img src="./announcement-responsive-1.svg"
+      alt="Example of an announcement banner on desktop"
+      width="1000"
+      height="152">
 </uxdot-example>
 
 #### Tablet
 
 <uxdot-example width-adjustment="768px" variant="full" alignment="left" no-border>
-  <img src="./announcement-responsive-2.svg" alt="Example of an announcement banner on tablet">
+  <img src="./announcement-responsive-2.svg"
+      alt="Example of an announcement banner on tablet"
+      width="768"
+      height="152">
 </uxdot-example>
 
 #### Mobile
 
 <uxdot-example width-adjustment="360px" variant="full" alignment="left" no-border>
-  <img src="./announcement-responsive-3.svg" alt="Example of an announcement banner on mobile">
+  <img src="./announcement-responsive-3.svg"
+      alt="Example of an announcement banner on mobile"
+      width="360"
+      height="640">
 </uxdot-example>
 
 Some text styles reduce in size on small screens. Learn more about 
@@ -161,7 +194,10 @@ Since announcement banners can consist of a variety of elements, refer to the sp
 The announcement banner uses [space tokens](/tokens/space/) to define spacing values between elements.
 
 <uxdot-example width-adjustment="872px">
-  <img src="./announcement-spacing-1.svg" alt="Example of an announcement banner with spacers">
+  <img src="./announcement-spacing-1.svg"
+      alt="Example of an announcement banner with spacers"
+      width="872"
+      height="393">
 </uxdot-example>
 
 <rh-table>

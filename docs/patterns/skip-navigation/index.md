@@ -21,7 +21,10 @@ content when selected.
 ## Sample pattern
 
 <uxdot-example width-adjustment="1000px">
-  <img src="./skip-nav.svg" alt="Skip navigation">
+  <img src="./skip-nav.svg"
+      alt="Skip navigation"
+      width="1000"
+      height="72">
 </uxdot-example>
 
 ## Style
@@ -31,7 +34,10 @@ background container. Even though it looks like a Button, it functions more like
 a jump link.
 
 <uxdot-example color-palette="lighter" width-adjustment="129px" no-border>
-  <img src="./skip-nav-style.svg" alt="Skip navigation specs">
+  <img src="./skip-nav-style.svg"
+      alt="Skip navigation specs"
+      width="129"
+      height="60">
 </uxdot-example>
 
 ## Usage
@@ -40,23 +46,35 @@ A skip to main content link helps some users browse the web more effectively. It
 should be invisible on every page as a commitment to accessibility.
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="./skip-nav-usage-1.svg" alt="Skip navigation usage">
+  <img src="./skip-nav-usage-1.svg"
+      alt="Skip navigation usage"
+      width="1000"
+      height="72">
 </uxdot-example>
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="./skip-nav-usage-2.svg" alt="Skip navigation usage">
+  <img src="./skip-nav-usage-2.svg"
+      alt="Skip navigation usage"
+      width="1000"
+      height="72">
 </uxdot-example>
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="./skip-nav-usage-3.svg" alt="Skip navigation usage">
+  <img src="./skip-nav-usage-3.svg"
+      alt="Skip navigation usage"
+      width="1000"
+      height="72">
 </uxdot-example>
 
 ## Best practices
 
 Don't apply the skip to main content link style to other components.
 
-<uxdot-example width-adjustment="870px" danger>
-  <img src="./skip-nav-best-practices-1.svg" alt="Skip navigation style errors">
+<uxdot-example width-adjustment="872px" danger>
+  <img src="./skip-nav-best-practices-1.svg"
+      alt="Skip navigation style errors"
+      width="872"
+      height="184">
 </uxdot-example>
 
 ## Behavior
@@ -67,7 +85,10 @@ Enter key, the page will move down and the focus indicator should highlight the
 main content.
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="./skip-nav-behavior.svg" alt="Skip navigation behavior">
+  <img src="./skip-nav-behavior.svg"
+      alt="Skip navigation behavior"
+      width="1000"
+      height="1014">
 </uxdot-example>
 
 ## Spacing
@@ -76,7 +97,10 @@ A skip to main content link  uses [space tokens](/tokens/space/) to define spaci
 values between elements.
 
 <uxdot-example width-adjustment="1000px">
-  <img src="./skip-nav-spacing.svg" alt="Skip navigation spacing diagram">
+  <img src="./skip-nav-spacing.svg"
+      alt="Skip navigation spacing diagram"
+      width="1000"
+      height="72">
 </uxdot-example>
 
 
