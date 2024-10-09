@@ -311,12 +311,12 @@ module.exports = class ElementsPage {
     const allSlots = ctx.doc.docsPage.manifest.getSlots(tagName) ?? [];
     const slots = allSlots.filter(x => !x.deprecated);
     const deprecated = allSlots.filter(x => x.deprecated);
-    const slotCount = slots.length;
+    const count = slots.length;
     const deprecatedSlotCount = deprecated.length;
 
     return html`
-      <rh-accordion-header id="${tagName}-slots" expanded>Slots
-        <rh-badge>${slotCount}</rh-badge>
+      <rh-accordion-header id="${tagName}-slots" ${!count ? '' : 'expanded'}>Slots
+        <rh-badge>${count}</rh-badge>
         ${deprecatedSlotCount > 0 ? html`<rh-badge state="moderate">${deprecatedSlotCount}</rh-badge>` : ``}
       </rh-accordion-header>
       <rh-accordion-panel>
@@ -373,12 +373,12 @@ module.exports = class ElementsPage {
         .filter(x => !x.static && x.privacy !== 'protected' && x.privacy !== 'private');
     const deprecated = _attrs.filter(x => x.deprecated);
     const attributes = _attrs.filter(x => !x.deprecated);
-    const attrCount = _attrs.length;
+    const count = _attrs.length;
     const deprecatedAttrCount = deprecated.length;
 
     return html`
-      <rh-accordion-header id="${tagName}-attributes">Attributes
-        <rh-badge>${attrCount}</rh-badge>
+      <rh-accordion-header id="${tagName}-attributes" ${!count ? '' : 'expanded'}>Attributes
+        <rh-badge>${count}</rh-badge>
         ${deprecatedAttrCount > 0 ? html`<rh-badge state="moderate">${deprecatedAttrCount}</rh-badge>` : ``}
       </rh-accordion-header>
       <rh-accordion-panel>
@@ -444,13 +444,13 @@ module.exports = class ElementsPage {
     const allMethods = ctx.doc.docsPage.manifest.getMethods(tagName) ?? [];
     const deprecated = allMethods.filter(x => x.deprecated);
     const methods = allMethods.filter(x => !x.deprecated);
-    const methodsCount = methods.length;
+    const count = methods.length;
     const deprecatedMethodsCount = deprecated.length;
 
     // TODO: inline code highlighting for type and default: render the markdown to html and extract the `<code>` from the `<pre>`
     return html`
-      <rh-accordion-header id="${tagName}-methods">Methods
-        <rh-badge>${methodsCount}</rh-badge>
+      <rh-accordion-header id="${tagName}-methods" ${!count ? '' : 'expanded'}>Methods
+        <rh-badge>${count}</rh-badge>
         ${deprecatedMethodsCount > 0 ? html`<rh-badge state="moderate">${deprecatedMethodsCount}</rh-badge>` : ``}
       </rh-accordion-header>
       <rh-accordion-panel>
@@ -507,12 +507,12 @@ module.exports = class ElementsPage {
     const _events = ctx.doc.docsPage.manifest.getEvents(tagName) ?? [];
     const deprecated = _events.filter(x => x.deprecated);
     const events = _events.filter(x => !x.deprecated);
-    const eventsCount = events.length;
+    const count = events.length;
     const deprecatedEventsCount = deprecated.length;
 
     return html`
-      <rh-accordion-header id="${tagName}-events">Events
-        <rh-badge>${eventsCount}</rh-badge>
+      <rh-accordion-header id="${tagName}-events" ${!count ? '' : 'expanded'}>Events
+        <rh-badge>${count}</rh-badge>
         ${deprecatedEventsCount > 0 ? html`<rh-badge state="moderate">${deprecatedEventsCount}</rh-badge>` : ``}
       </rh-accordion-header>
       <rh-accordion-panel>
@@ -569,12 +569,12 @@ module.exports = class ElementsPage {
     const allParts = ctx.doc.docsPage.manifest.getCssParts(tagName) ?? [];
     const parts = allParts.filter(x => !x.deprecated);
     const deprecated = allParts.filter(x => x.deprecated);
-    const cssPartsCount = parts.length;
+    const count = parts.length;
     const deprecatedCssPartsCount = deprecated.length;
 
     return html`
-      <rh-accordion-header id="${tagName}-css-parts">CSS Shadow Parts
-        <rh-badge>${cssPartsCount}</rh-badge>
+      <rh-accordion-header id="${tagName}-css-parts" ${!count ? '' : 'expanded'}>CSS Shadow Parts
+        <rh-badge>${count}</rh-badge>
         ${deprecatedCssPartsCount > 0 ? html`<rh-badge state="moderate">${deprecatedCssPartsCount}</rh-badge>` : ``}
       </rh-accordion-header>
       <rh-accordion-panel>
@@ -632,12 +632,12 @@ module.exports = class ElementsPage {
         .filter(x => !tokens.has(x.name));
     const cssProperties = allCssProperties.filter(x => !x.deprecated);
     const deprecated = allCssProperties.filter(x => x.deprecated);
-    const cssPropertiesCount = cssProperties.length;
+    const count = cssProperties.length;
     const deprecatedCssPropertiesCount = deprecated.length;
 
     return html`
-      <rh-accordion-header id="${tagName}-css-properties">CSS Custom Properties
-        <rh-badge>${cssPropertiesCount}</rh-badge>
+      <rh-accordion-header id="${tagName}-css-properties" ${!count ? '' : 'expanded'}>CSS Custom Properties
+        <rh-badge>${count}</rh-badge>
         ${deprecatedCssPropertiesCount > 0 ? html`<rh-badge state="moderate">${deprecatedCssPropertiesCount}</rh-badge>` : ``}
       </rh-accordion-header>
       <rh-accordion-panel>
@@ -693,10 +693,10 @@ module.exports = class ElementsPage {
   async #renderDesignTokens(tagName, ctx) {
     const designTokens = (ctx.doc.docsPage.manifest.getCssCustomProperties(tagName) ?? [])
         .filter(x => tokens.has(x.name));
-    const designTokensCount = designTokens.length;
+    const count = designTokens.length;
     return html`
-      <rh-accordion-header id="${tagName}-design-tokens">Design Tokens
-        <rh-badge>${designTokensCount}</rh-badge>
+      <rh-accordion-header id="${tagName}-design-tokens" ${!count ? '' : 'expanded'}>Design Tokens
+        <rh-badge>${count}</rh-badge>
       </rh-accordion-header>
       <rh-accordion-panel>
         <section class="design-tokens">
