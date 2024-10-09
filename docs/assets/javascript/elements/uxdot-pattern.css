@@ -8,11 +8,12 @@
 
 #container {
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: auto;
   grid-template-areas: 'heading' 'controls' 'content' 'code';
   gap: var(--rh-space-2xl) var(--rh-space-4xl);
 
   @container host (width >= 530px) {
+    grid-template-columns: auto auto;
     grid-template-areas:
       'heading controls'
       'content content'
