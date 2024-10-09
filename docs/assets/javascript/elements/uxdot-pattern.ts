@@ -87,32 +87,36 @@ export class UxdotPattern extends LitElement {
 
         <rh-surface id="content">${this.ssrController.allContent}</rh-surface>
 
-        <rh-tabs class="code-tabs">
-          <rh-tab slot="tab" active>HTML</rh-tab>
-          <rh-tab-panel>
+        <rh-tabs id="code-tabs" class="code-tabs">
+          <rh-tab id="html-tab"
+                  slot="tab"
+                  active>HTML</rh-tab>
+          <rh-tab-panel id="html-panel">
             <rh-code-block highlighting="prerendered"
                            actions="copy wrap"
-                           ?full-height="${this.fullHeight}">
+                           .full-height="${this.fullHeight}">
               ${this.ssrController.htmlContent}
               ${actionsLabels}
             </rh-code-block>
           </rh-tab-panel>
-          <rh-tab slot="tab"
+          <rh-tab id="css-tab"
+                  slot="tab"
                   ?disabled="${!this.ssrController.hasCss}">CSS</rh-tab>
-          <rh-tab-panel>
+          <rh-tab-panel id="css-panel">
             <rh-code-block highlighting="prerendered"
                            actions="copy wrap"
-                           ?full-height="${this.fullHeight}">
+                           .full-height="${this.fullHeight}">
               ${this.ssrController.cssContent}
               ${actionsLabels}
             </rh-code-block>
           </rh-tab-panel>
-          <rh-tab slot="tab"
+          <rh-tab id="js-tab"
+                  slot="tab"
                   ?disabled="${!this.ssrController.hasJs}">JS</rh-tab>
-          <rh-tab-panel>
+          <rh-tab-panel id="js-panel">
             <rh-code-block highlighting="prerendered"
                            actions="copy wrap"
-                           ?full-height="${this.fullHeight}">
+                           .full-height="${this.fullHeight}">
               ${this.ssrController.jsContent}
               ${actionsLabels}
             </rh-code-block>
