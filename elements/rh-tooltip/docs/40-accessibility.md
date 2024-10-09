@@ -3,7 +3,10 @@
 A tooltip will appear when the trigger receives focus and disappear when moving focus away from the trigger.
 
 <uxdot-example width-adjustment="315px">
-  <img src="../tooltip-keyboard-interactions.png" alt="Tooltip keyboard interactions; pressing tab to focus the trigger will show the tooltip, but pressing tab again will hide the tooltip">
+  <img src="../tooltip-keyboard-interactions.png"
+        alt="Tooltip keyboard interactions; pressing tab to focus the trigger will show the tooltip, but pressing tab again will hide the tooltip"
+        width="315"
+        height="153">
 </uxdot-example>
 
 <rh-table>

@@ -35,6 +35,7 @@ slot[name='tagline']::slotted(p) {
 
 slot[name='image']::slotted(img) {
   width: 100%;
+  height: auto;
   margin-block-start: var(--rh-space-4xl);
 }
 

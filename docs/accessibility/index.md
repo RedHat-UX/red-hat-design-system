@@ -1,11 +1,10 @@
 ---
 title: Fundamentals
-tags: 
- - accessibility
-order: 0
+tags:
+  - accessibility
+order: 75
 importElements:
   - rh-blockquote
-
 ---
 
 <style>
@@ -34,7 +33,6 @@ The former may imply that someone is lacking in some way, and thus they are resp
 
 The World Wide Web Consortium’s Web Accessibility Initiative (WAI) has authored a [Diverse Abilities and Barriers](https://www.w3.org/WAI/people-use-web/abilities-barriers/) page that lists potential barriers that individuals of varying auditory, cognitive, learning, neurological, physical, speech, and visual abilities are likely to face.
 
-
 ### Personas and user stories
 
 Personas are fictionalized distillations of the varying types of users who may engage with your web properties. Using them is a common UX design technique that can be helpful for developing empathy and building inclusive experiences.
@@ -42,7 +40,6 @@ Personas are fictionalized distillations of the varying types of users who may e
 When writing, designing, or developing, you can put yourself in the mind of these personas to imagine what outcomes the users they represent might want from your experience and how successfully they can accomplish these goals. Using personas shifts accessibility left in your processes, helping you avoid and catch issues before they ever get to handoffs, QA, or even launch.
 
 WAI has designed a collection of [web user stories](https://www.w3.org/WAI/people-use-web/user-stories/) (e.g., a color-blind online shopper, a hard-of-hearing student, etc.) that you may find helpful to adapt as personas for your own web projects.
-
 
 ## Laws
 
@@ -61,6 +58,7 @@ Businesses open to the public are subject to Title III of the Americans with Dis
 Section 508 of the Rehabilitation Act of 1973 requires that accessible electronic and information technology be provided by all federal agencies—and, by extension, by any companies doing business with the federal government or its subcontractors.
 
 #### Section 504
+
 Under Section 504 of the Rehabilitation Act of 1973, entities receiving federal funding must offer equal access to all facilities and communications—including online communications. This law is most commonly referenced in regard to publicly-funded educational institutions (PreK-12 and post-secondary). But it can apply to any organization that receives federal assistance and any companies doing business with such entities.
 
 ### International

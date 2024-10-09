@@ -3,7 +3,6 @@ title: Overview
 heading: Card
 sidenavTitle: Card
 layout: layouts/pages/pattern.njk
-hasToc: true
 order: 20
 tags:
   - pattern
@@ -24,7 +23,6 @@ subnav:
 
 <link rel="stylesheet" data-helmet href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
 <link rel="stylesheet" data-helmet href="/styles/samp.css">
-
 
 ## Overview
 
@@ -59,22 +57,28 @@ Cards will automatically react to the `color-palette` context provided by a
 parent element, like `<rh-surface>`.
 
 <div id="card-themes" class="grid sm-two-columns">
-{% uxdotPattern allow="light, lighter, lightest" %}{% include './patterns/themes.html' %}{% enduxdotPattern %}
-{% uxdotPattern allow="dark, darker, darkest" %}{% include './patterns/themes.html' %}{% enduxdotPattern %}
+  <uxdot-pattern allow="light, lighter, lightest"
+                 color-palette="lightest"
+                 src="./patterns/themes.html"></uxdot-pattern>
+  <uxdot-pattern allow="dark, darker, darkest"
+                 color-palette="darkest"
+                 src="./patterns/themes.html"></uxdot-pattern>
 </div>
 
 ### Explicit card theming
 
 Cards can play an active role in theming by declaring a specific `color-palette`.
 
-{% uxdotPattern stacked=true %}{% include './patterns/explicit-themes.html' %}{% enduxdotPattern %}
+<uxdot-pattern src="./patterns/explicit-themes.html">
+</uxdot-pattern>
 
 ### Custom theming
 
 When using design tokens to apply custom themes, it is important to ensure that 
 the colors used meet [color contrast guidelines][color-contrast].
 
-{% uxdotPattern stacked=true %}{% include './patterns/custom-themes.html' %}{% enduxdotPattern %}
+<uxdot-pattern src="./patterns/custom-themes.html">
+</uxdot-pattern>
 
 {% include 'partials/component/feedback.html' %}
 

@@ -40,9 +40,8 @@ less effort and greater cross-property consistency.
 <abbr title="red hat design system">RHDS</abbr> defines six color palettes They range from lightest to darkest, and those
 are the two palettes you will use the most for the majority of your projects.
 
-{% uxdotPattern id="elements-grid", stacked=true %}
-{% include './patterns/collage.html' %}
-{% enduxdotPattern %}
+<uxdot-pattern id="elements-grid" src="./patterns/collage.html">
+</uxdot-pattern>
 
 ### How color palettes work
 
@@ -119,9 +118,10 @@ Authors may define the color palette of a container using the `color-palette`
 HTML attribute. So for example, to create a card with the darkest color palette, 
 use this HTML:
 
-{% uxdotPattern class="card-snippet-grid", fullHeight=true %}
-{% include './patterns/card-default-vs-set-palette.html' %}
-{% enduxdotPattern %}
+<uxdot-pattern class="card-snippet-grid"
+               full-height
+               src="./patterns/card-default-vs-set-palette.html">
+</uxdot-pattern>
 
 A color palette provider is a **surface** on which a particular color palette is
 active, as well as a **container** for themeable consumer elements.
@@ -164,9 +164,10 @@ Extending our card example from above, if our page author then adds an
 `<rh-cta>` to the card, it will *automatically* adopt the dark color theme. The 
 page author need not and should not customize the CTA.
 
-{% uxdotPattern class="card-snippet-grid", fullHeight=true %}
-{% include './patterns/card-child-consumers.html' %}
-{% enduxdotPattern %}
+<uxdot-pattern class="card-snippet-grid"
+               full-height
+               src="./patterns/card-child-consumers.html">
+</uxdot-pattern>
 
 <rh-card class="pullquote-card right">
   <rh-blockquote>Color palettes lets authors write more HTML, simpler CSS, and 
@@ -182,9 +183,10 @@ Some elements are both providers and consumers. Card, for example is both a
 provider and a consumer. It can accept the color theme of its parent context and 
 it can also set its own color palette.
 
-{% uxdotPattern class="card-snippet-grid", fullHeight=true %}
-{% include './patterns/card-consumer-provider.html' %}
-{% enduxdotPattern %}
+<uxdot-pattern class="card-snippet-grid"
+               full-height
+               src="./patterns/card-consumer-provider.html">
+</uxdot-pattern>
 
 ## Inline color palettes  <rh-tag color="purple">Beta</rh-tag>
 
@@ -221,8 +223,8 @@ palette, e.g. from `lightest` to `light`.
 <rh-alert>
   <h4 slot="header">More information</h4>
   <p>High contrast is using bright elements, patterns, or images in dark
-environments and vice versa. This is useful to focus attention or create
-visual tension.</p>
+     environments and vice versa. This is useful to focus attention or create
+     visual tension.</p>
 </rh-alert>
 
 {% include 'partials/component/feedback.html' %}

@@ -3,7 +3,10 @@
 {{ tagName | getElementDescription }}
 
 <uxdot-example width-adjustment="692px">
-  <img src="./cta-sample.png" alt="Image of variants including Primary (red background and white text), Secondary (black border and black text), Brick (light gray border and blue text), and Default (blue text and blue icon)">
+  <img src="./cta-sample.png"
+        alt="Image of variants including Primary (red background and white text), Secondary (black border and black text), Brick (light gray border and blue text), and Default (blue text and blue icon)"
+        width="692"
+        height="56">
 </uxdot-example>
 
 {% repoStatusList repoStatus=repoStatus %}

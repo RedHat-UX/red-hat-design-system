@@ -3,7 +3,10 @@
 {{ tagName | getElementDescription }}
 
 <uxdot-example width-adjustment="90px">
-  <img src="./back-to-top.svg" alt="Example of a back to top button">
+  <img src="./back-to-top.svg" 
+      alt="Example of a back to top button"
+      width="90"
+      height="26">
 </uxdot-example>
 
 

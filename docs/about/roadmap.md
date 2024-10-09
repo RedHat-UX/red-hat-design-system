@@ -9,9 +9,9 @@ importElements:
   - rh-tile
 ---
 
-<link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
+<link data-helmet rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
 
-<style>
+<style data-helmet>
   rh-tile {
     margin-block: var(--rh-space-3xl, 48px);
     max-width: 320px;

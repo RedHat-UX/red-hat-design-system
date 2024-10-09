@@ -7,7 +7,10 @@ every page to ensure a consistent user experience across websites.
 ## Sample element
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="./primary-nav-example.png" alt="Primary navigation component sample">
+  <img src="./primary-nav-example.png"
+        alt="Primary navigation component sample"
+        width="1000"
+        height="72">
 </uxdot-example>
 
 ## Demos

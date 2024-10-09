@@ -8,7 +8,10 @@ Each tab is a focus stop. Pressing the <code>Arrow</code> keys moves the focus a
 </rh-alert>
 
 <uxdot-example width-adjustment="872px">
-  <img src="../tabs-a11y-keyboard-interactions.png" alt="Image of horizontal tabs with diagrams of what happens when Arrow or Tab keys are pressed">
+  <img src="../tabs-a11y-keyboard-interactions.png"
+        alt="Image of horizontal tabs with diagrams of what happens when Arrow or Tab keys are pressed"
+        width="872"
+        height="618">
 </uxdot-example>
 
 <rh-table>
@@ -54,7 +57,10 @@ Each tab is a focus stop. Pressing the <code>Arrow</code> keys moves the focus a
 A logical focus order helps keyboard users operate our websites. Elements need to receive focus in an order that preserves meaning, therefore the focus order should make sense and not jump around randomly. For both sizes and orientations, the focus order is from left to right and top to bottom. Disabled buttons are not included in the focus order.
 
 <uxdot-example width-adjustment="872px">
-  <img src="../tabs-a11y-focus-order.png" alt="Image of horizontal, vertical, and tabs with overflow buttons showing the focus order from left to right and top to bottom">
+  <img src="../tabs-a11y-focus-order.png"
+        alt="Image of horizontal, vertical, and tabs with overflow buttons showing the focus order from left to right and top to bottom"
+        width="872"
+        height="994">
 </uxdot-example>
 
 
@@ -63,7 +69,10 @@ A logical focus order helps keyboard users operate our websites. Elements need t
 Tabs are adequately spaced for optimal touch targets.
 
 <uxdot-example width-adjustment="872px">
-  <img src="../tabs-a11y-touch-targets.png" alt="Image of open, box, and tabs with overflow buttons showing adequate touch target spacing">
+  <img src="../tabs-a11y-touch-targets.png"
+        alt="Image of open, box, and tabs with overflow buttons showing adequate touch target spacing"
+        width="872"
+        height="420">
 </uxdot-example>
 
 

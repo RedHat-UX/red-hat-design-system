@@ -3,7 +3,10 @@
 Users should have the ability to move focus to a Switch and toggle it on or off using their keyboard.
 
 <uxdot-example width-adjustment="240px">
-  <img src="../switch-keyboard-nav.svg"  alt="Diagram of switch with text and arrows that show what can be controlled by keyboard">
+  <img src="../switch-keyboard-nav.svg"
+        alt="Diagram of switch with text and arrows that show what can be controlled by keyboard"
+        width="240"
+        height="156">
 </uxdot-example>
 
 <rh-table>
@@ -32,7 +35,10 @@ Users should have the ability to move focus to a Switch and toggle it on or off 
 A logical focus order helps keyboard users operate our websites. Elements need to receive focus in an order that preserves meaning, therefore the focus order should make sense and not jump around randomly. If Switches are stacked, focus lands on each as it moves from top to bottom. Each Switch should have the ability to be toggled.
 
 <uxdot-example width-adjustment="193px">
-  <img src="../switch-focus-order.svg" alt="Diagram with four switches and numbers 1 to 4 indicating focus order">
+  <img src="../switch-focus-order.svg"
+        alt="Diagram with four switches and numbers 1 to 4 indicating focus order"
+        width="193"
+        height="176">
 </uxdot-example>
 
 ## Touch targets
@@ -40,7 +46,10 @@ A logical focus order helps keyboard users operate our websites. Elements need t
 Grouped Switches are adequately spaced for optimal touch targets.
 
 <uxdot-example width-adjustment="192px">
-  <img src="../switch-touch-targets.svg"  alt="group of four switches and red circles with low opacity over each switch">
+  <img src="../switch-touch-targets.svg"
+        alt="group of four switches and red circles with low opacity over each switch"
+        width="193"
+        height="192">
 </uxdot-example>
 
 ## Using form labels

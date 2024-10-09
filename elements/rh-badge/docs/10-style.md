@@ -5,7 +5,10 @@ A badge is number text on a pill background used to reflect the count of somethi
 
 <figure>
   <uxdot-example width-adjustment="102px">
-    <img src="../badge-anatomy.svg" alt="Anatomy of a badge with annotations; number 1 is pointing to the container and number 2 is pointing to the counter number">
+    <img src="../badge-anatomy.svg" 
+        alt="Anatomy of a badge with annotations; number 1 is pointing to the container and number 2 is pointing to the counter number"
+        width="102"
+        height="18">
   </uxdot-example>
   <figcaption>
     <ol>
@@ -22,13 +25,19 @@ A badge is available in light and dark theme.
 ### Light theme
 
 <uxdot-example width-adjustment="272px">
-  <img src="../badge-theme-light.svg" alt="Light theme badges">
+  <img src="../badge-theme-light.svg" 
+      alt="Light theme badges"
+      width="272"
+      height="18">
 </uxdot-example>
 
 ### Dark theme
 
 <uxdot-example width-adjustment="272px" color-palette="darkest">
-  <img src="../badge-theme-dark.svg" alt="Dark theme badges">
+  <img src="../badge-theme-dark.svg" 
+      alt="Dark theme badges"
+      width="272"
+      height="18">
 </uxdot-example>
 
 ## Configuration 
@@ -36,14 +45,20 @@ A badge is available in light and dark theme.
 All badges have the same height and border radius.
 
 <uxdot-example width-adjustment="350px">
-  <img src="../badge-configuration.svg" alt="How a badge is constructed showing border radius and height details">
+  <img src="../badge-configuration.svg" 
+      alt="How a badge is constructed showing border radius and height details"
+      width="350"
+      height="35">
 </uxdot-example>
 
 
 ## Space and width 
 
 <uxdot-example width-adjustment="238px">
-  <img src="../badge-space-and-width.svg" alt="Badge spacing and minimum width">
+  <img src="../badge-space-and-width.svg" 
+      alt="Badge spacing and minimum width"
+      width="238"
+      height="49">
 </uxdot-example>
 
 <rh-table>

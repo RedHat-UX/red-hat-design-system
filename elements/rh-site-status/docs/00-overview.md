@@ -3,7 +3,10 @@
 {{ tagName | getElementDescription }}
 
 <uxdot-example color-palette="darkest" width-adjustment="200px">
-  <img src="./site-status-sample.svg" alt="Image of a site status element with a green checkmark and the text 'All systems operational'">
+  <img src="./site-status-sample.svg"
+        alt="Image of a site status element with a green checkmark and the text 'All systems operational'"
+        width="200"
+        height="53">
 </uxdot-example>
 
 

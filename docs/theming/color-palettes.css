@@ -2,20 +2,7 @@
   width: 100%;
 }
 
-#elements-grid {
-  &::part(example) {
-    display: block;
-    width: auto;
-  }
-}
-
 .card-snippet-grid {
-  &::part(example) {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-    gap: var(--rh-space-lg);
-  }
-
   & h4[slot='heading'] {
     margin: 0;
   }

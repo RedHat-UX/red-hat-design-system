@@ -3,7 +3,10 @@
 {{ tagName | getElementDescription }}
 
 <uxdot-example width-adjustment="78px">
-  <img src="./switch-overview.svg" alt="example of switch that's on">
+  <img src="./switch-overview.svg"
+        alt="example of switch that's on"
+        width="78"
+        height="24">
 </uxdot-example>
 
 {% repoStatusList repoStatus=repoStatus %}

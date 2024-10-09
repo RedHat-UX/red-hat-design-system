@@ -23,7 +23,10 @@ function to users. Therefore, it is important that each variant is implemented
 consistently so they communicate the correct actions.
 
 <uxdot-example width-adjustment="494px">
-  <img src="../button-variants.png" alt="Image of the seven available button variant">
+  <img src="../button-variants.png"
+        alt="Image of the seven available button variant"
+        width="494"
+        height="124">
 </uxdot-example>
 
 <rh-table>
@@ -77,7 +80,10 @@ Use a Play button to indicate that audio or video will play when selected.
 </rh-alert>
 
 <uxdot-example width-adjustment="806px">
-  <img src="../button-usage-play.png" alt="Image of play button examples; a video thumbnail on the left and a text layout on the right">
+  <img src="../button-usage-play.png"
+        alt="Image of play button examples; a video thumbnail on the left and a text layout on the right"
+        width="806"
+        height="212">
 </uxdot-example>
 
 ### Close button
@@ -86,7 +92,10 @@ Use a Close button to indicate that a window will close when selected.
 Close buttons are mostly found in [dialogs](/elements/dialog/).
 
 <uxdot-example width-adjustment="1000px" alignment="left" variant="full" no-border>
-  <img src="../button-usage-close.png" alt="Image of a dialog with a close button in the top right corner">
+  <img src="../button-usage-close.png"
+        alt="Image of a dialog with a close button in the top right corner"
+        width="1000"
+        height="322">
 </uxdot-example>
 
 ### Other icons
@@ -101,7 +110,10 @@ completed first, most buttons can become disabled. However, the Play and Close
 buttons do not include a disabled state.
 
 <uxdot-example width-adjustment="494px">
-  <img src="../button-usage-disabled.png" alt="Image of five disabled buttons not including play and close buttons, underneath is a dropdown with a disabled button">
+  <img src="../button-usage-disabled.png"
+        alt="Image of five disabled buttons not including play and close buttons, underneath is a dropdown with a disabled button"
+        width="494"
+        height="169">
 </uxdot-example>
 
 ## Writing content
@@ -128,7 +140,10 @@ When writing link button text labels, use specific and action-focused language
 that matches what users will see when they arrive at their location.
 
 <uxdot-example width-adjustment="525px">
-  <img src="../button-link-text-labels.png" alt="Image of link button text labels">
+  <img src="../button-link-text-labels.png"
+        alt="Image of link button text labels"
+        width="525"
+        height="107">
 </uxdot-example>
 
 ### Button vs. call to action text labels
@@ -137,7 +152,10 @@ Button text labels are written to be short and communicate an action whereas
 call to action text labels are written to entice users to select a link.
 
 <uxdot-example width-adjustment="696px">
-  <img src="../button-vs-cta-text-labels.png" alt="Image of two buttons on the left and two calls to action on the right">
+  <img src="../button-vs-cta-text-labels.png"
+        alt="Image of two buttons on the left and two calls to action on the right"
+        width="696"
+        height="56">
 </uxdot-example>
 
 ### Character and word count
@@ -182,7 +200,10 @@ consistent across all contexts
 elements are stacked vertically
 
 <uxdot-example width-adjustment="1000px" variant="full" no-border alignment="left">
-  <img src="../button-layout-placement.png" alt="Image of buttons used in a dialog and a form">
+  <img src="../button-layout-placement.png"
+        alt="Image of buttons used in a dialog and a form"
+        width="1000"
+        height="370">
 </uxdot-example>
 
 ### Hierarchy
@@ -191,7 +212,10 @@ Buttons are ordered by hierarchy from left to right. Do not use multiple Danger,
 Primary, or Close buttons in the same area.
 
 <uxdot-example width-adjustment="797px">
-  <img src="../button-layout-hierarchy.png" alt="Image of buttons grouped by hierarchy from left to right">
+  <img src="../button-layout-hierarchy.png"
+        alt="Image of buttons grouped by hierarchy from left to right"
+        width="797"
+        height="104">
 </uxdot-example>
 
 ### Grouping
@@ -200,7 +224,10 @@ Grouping buttons is a useful way of aligning buttons that have a relationship.
 Group buttons logically into sets based on hierarchy and usage.
 
 <uxdot-example width-adjustment="740px">
-  <img src="../button-layout-grouping.png" alt="Image of button groups and their hierarchy from left to right">
+  <img src="../button-layout-grouping.png"
+        alt="Image of button groups and their hierarchy from left to right"
+        width="740"
+        height="162">
 </uxdot-example>
 
 ### Space in groups
@@ -210,7 +237,10 @@ buttons. If buttons are stacked, the spacing between each button should be
 `8px`.
 
 <uxdot-example width-adjustment="508px">
-  <img src="../button-layout-spacing.png" alt="Image of button groups and their horizontal and vertical spacing in between each button">
+  <img src="../button-layout-spacing.png"
+        alt="Image of button groups and their horizontal and vertical spacing in between each button"
+        width="508"
+        height="80">
 </uxdot-example>
 
 ## Best practices
@@ -220,7 +250,10 @@ buttons. If buttons are stacked, the spacing between each button should be
 Buttons should never have more than one line of text.
 
 <uxdot-example width-adjustment="80px" danger>
-  <img src="../button-best-practice-1.png" alt="Image of a button with two lines of text which is incorrect usage">
+  <img src="../button-best-practice-1.png"
+        alt="Image of a button with two lines of text which is incorrect usage"
+        width="80"
+        height="60">
 </uxdot-example>
 
 ### Multiple buttons
@@ -228,7 +261,10 @@ Buttons should never have more than one line of text.
 Do not use multiple Danger or Primary buttons in the same area.
 
 <uxdot-example width-adjustment="544px" danger>
-  <img src="../button-best-practice-2.png" alt="Image of two danger and two primary button groups which is incorrect usage">
+  <img src="../button-best-practice-2.png"
+        alt="Image of two danger and two primary button groups which is incorrect usage"
+        width="544"
+        height="36">
 </uxdot-example>
 
 ### Text labels
@@ -236,7 +272,10 @@ Do not use multiple Danger or Primary buttons in the same area.
 Do not write button text labels that are expressive or ambiguous.
 
 <uxdot-example width-adjustment="358px" danger>
-  <img src="../button-best-practice-3.png" alt="Image of two buttons; one has expressive language and the other has ambiguous language which is incorrect usage">
+  <img src="../button-best-practice-3.png"
+        alt="Image of two buttons; one has expressive language and the other has ambiguous language which is incorrect usage"
+        width="358"
+        height="36">
 </uxdot-example>
 
 ### Danger button
@@ -244,7 +283,10 @@ Do not write button text labels that are expressive or ambiguous.
 Do not use a Danger button for non-destructive purposes.
 
 <uxdot-example width-adjustment="680px" danger>
-  <img src="../button-best-practice-4.png" alt="Image of a search bar using a danger button which is incorrect usage">
+  <img src="../button-best-practice-4.png"
+        alt="Image of a search bar using a danger button which is incorrect usage"
+        width="680"
+        height="36">
 </uxdot-example>
 
 ### Button as a call to action
@@ -253,5 +295,8 @@ Do not use buttons as links or change the Primary button styling, use a link or
 call to action instead.
 
 <uxdot-example width-adjustment="433px" danger>
-  <img src="../button-best-practice-5.png" alt="Image of text styles with a button underneath that resembles a call to action which is incorrect usage">
+  <img src="../button-best-practice-5.png"
+        alt="Image of text styles with a button underneath that resembles a call to action which is incorrect usage"
+        width="433"
+        height="269">
 </uxdot-example>

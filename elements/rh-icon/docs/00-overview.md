@@ -3,7 +3,10 @@
 {{ tagName | getElementDescription }}
 
 <uxdot-example width-adjustment="228px">
-  <img src="./icon-overview.svg" alt="Image of three icons">
+  <img src="./icon-overview.svg"
+        alt="Image of three icons"
+        width="228"
+        height="64">
 </uxdot-example>
 
 
