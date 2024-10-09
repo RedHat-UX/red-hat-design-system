@@ -17,10 +17,16 @@
 
   {# only load components that need hydrated (aka interactivity) #}
   <script type="module">
+    import '@rhds/elements/rh-footer/rh-footer-universal.js';
     import '/assets/javascript/elements/uxdot-copy-permalink.js';
     import '/assets/javascript/elements/uxdot-sidenav.js';
     import '/assets/javascript/elements/uxdot-example.js';
   </script>
+
+  {%- if hasToc %}
+  <link rel="stylesheet" href="/assets/javascript/elements/uxdot-toc-lightdom.css">
+  <script type="module" src="/assets/javascript/elements/uxdot-toc.js"></script>
+  {%- endif %}
 
   <script async src="https://ga.jspm.io/npm:es-module-shims@1.8.0/dist/es-module-shims.js"></script>
 

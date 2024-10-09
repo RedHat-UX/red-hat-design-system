@@ -7,10 +7,10 @@ rh-code-block {
     color: var(--_code-color);
     font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
     text-align: left;
-    white-space: var(--_code-white-space, pre);
-    word-wrap: var(--_code-word-wrap, initial);
+    white-space: pre;
     word-spacing: normal;
     word-break: normal;
+    word-wrap: normal;
     line-height: var(--rh-line-height-code, 1.5);
     tab-size: 4;
     hyphens: none;

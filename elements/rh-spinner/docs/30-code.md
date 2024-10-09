@@ -1,3 +1,5 @@
+{% renderInstall %}{% endrenderInstall %}
+
 ## Usage
 
 ### Default/Large Spinner
@@ -11,7 +13,8 @@
 ```
 
 ### Small Spinner
-
 ```html
 <rh-spinner size="sm"></rh-spinner>
 ```
+
+{% renderCodeDocs hideDescription=true %}{% endrenderCodeDocs %}
