@@ -388,9 +388,7 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
           // (elementDocs) should be refactored, and the elements/*/docs/*.md files should be used
           // only for markdown content, but the code and demos tabs should be fully generated, with
           // the XX-code.md content interjected, if any.
-          ...await Array.fromAsync(glob('elements/*', { cwd }), x =>
-                x === 'elements/rh-code-block' ? `${x}/docs/40-code.md`
-            : `${x}/docs/30-code.md`
+          ...await Array.fromAsync(glob('elements/*', { cwd }), x => `${x}/docs/30-code.md`
           ),
         ]));
 
@@ -415,7 +413,7 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
         return { docsPage, tabs, ...props };
       }));
       elementDocs.sort(alphabeticallyBySlug);
-      return elementDocs; ;
+      return elementDocs;
     } catch (e) {
       // it's important to surface this
       // eslint-disable-next-line no-console
