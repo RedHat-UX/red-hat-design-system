@@ -3,7 +3,6 @@ title: Overview
 heading: Card
 sidenavTitle: Card
 layout: layouts/pages/pattern.njk
-hasToc: true
 order: 20
 tags:
   - pattern

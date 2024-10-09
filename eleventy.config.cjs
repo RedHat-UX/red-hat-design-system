@@ -49,7 +49,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy('docs/styles/**/*');
   eleventyConfig.addPassthroughCopy('docs/foundations/**/*.{css,js}');
 
-
   if (isLocal) {
     eleventyConfig.addPassthroughCopy({
       'node_modules/playground-elements/playground-*worker*': '.',
@@ -87,8 +86,8 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     'node_modules/@lit/reactive-element': '/assets/packages/@lit/reactive-element',
   });
-  eleventyConfig.addPassthroughCopy({ 'elements': 'assets/packages/@rhds/elements/elements/' });
-  eleventyConfig.addPassthroughCopy({ 'lib': 'assets/packages/@rhds/elements/lib/' });
+  eleventyConfig.addPassthroughCopy({ 'elements': '/assets/packages/@rhds/elements/elements/' });
+  eleventyConfig.addPassthroughCopy({ 'lib': '/assets/packages/@rhds/elements/lib/' });
   eleventyConfig.addPlugin(ImportMapPlugin, {
     nodemodulesPublicPath: '/assets/packages',
     manualImportMap: {
@@ -159,14 +158,6 @@ module.exports = function(eleventyConfig) {
 
   // RHDS Tokens docs
   eleventyConfig.addPlugin(DesignTokensPlugin);
-
-  eleventyConfig.addPassthroughCopy({
-    'node_modules/@rhds/tokens/css/global.css': '/assets/rhds.css',
-  });
-
-  eleventyConfig.addPassthroughCopy({
-    'node_modules/@lit/reactive-element': '/assets/packages/@lit/reactive-element',
-  });
 
   /** Generate and consume custom elements manifests */
   eleventyConfig.addPlugin(CustomElementsManifestPlugin, {
