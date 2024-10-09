@@ -54,18 +54,19 @@ let RhContextPicker = class RhContextPicker extends LitElement {
            class="visually-hidden">${__classPrivateFieldGet(this, _RhContextPicker_internals, "f").computedLabelText}</div>
       <div id="container"
            @input="${__classPrivateFieldGet(this, _RhContextPicker_instances, "m", _RhContextPicker_onInput)}"
-           class="on ${classMap({ [on]: true })}">
+           class="${classMap({ on: true, [on]: true })}">
         ${allow.map(palette => html `
         <label for="radio-${palette}" class="visually-hidden">${palette}</label>
         <rh-tooltip>
           <span slot="content">${palette}</span>
-          <input id="radio-${palette}" class="${classMap({ [palette]: true })}"
+          <input id="radio-${palette}"
+                 class="${classMap({ [palette]: true })}"
                  name="palette"
                  type="radio"
                  value="${palette}"
                  aria-describedby="host-label"
-                 ?checked="${value === palette}">`)}
-        </rh-tooltip>
+                 ?checked="${value === palette}">
+        </rh-tooltip>`)}
       </div>
     `;
     }
