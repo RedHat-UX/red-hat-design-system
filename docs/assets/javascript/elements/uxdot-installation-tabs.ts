@@ -10,12 +10,21 @@ const TABS_KEY = 'rhds-installation-tabs-selected-index';
 export class InstallationTabs extends RhTabs {
   static stored = localStorage.getItem(TABS_KEY);
 
+  constructor() {
+    super();
+    this.box = 'box';
+    this.vertical = true;
+  }
+
   async firstUpdated() {
     super.firstUpdated?.();
     await Promise.all(Array.from(
       this.querySelectorAll('rh-tab'),
       x => x.updateComplete,
     ));
+    for (const pre of this.querySelectorAll<HTMLElement>('rh-tab-panel > pre')) {
+      pre.style.maxWidth = '100cqw';
+    }
     if (InstallationTabs.stored !== null) {
       const index = parseInt(InstallationTabs.stored);
       if (!Number.isNaN(index)

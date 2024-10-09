@@ -54,7 +54,6 @@ function rhdsCodeBlock(md) {
       return html`
         <rh-code-block full-height
                        dedent
-                       actions="wrap copy"
                        highlighting="prerendered"
                        ${slf.renderAttrs(redactedToken)}>${rendered}</rh-code-block>`.trim();
     } else {

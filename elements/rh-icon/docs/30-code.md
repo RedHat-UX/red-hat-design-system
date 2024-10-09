@@ -1,3 +1,11 @@
+{% renderInstall lightdomcss=true %}{% endrenderInstall %}
+
+## Usage
+
+<rh-code-block>
+<script type="text/html"><rh-icon icon="alert"></rh-icon></script>
+</rh-code-block>
+
 ### Loading
 
 Icons load lazily by default, meaning that the browser will not attempt to fetch and render the icon until it scrolls into view. You can change this with the loading attribute, which has three values:
@@ -8,7 +16,9 @@ Icons load lazily by default, meaning that the browser will not attempt to fetch
 
 You might choose to enable eager rendering for "above-the-fold" content, but keep lazy loading for the rest of the page.
 
-```html rh-code-block
-<rh-icon icon="alert" loading="eager"></rh-icon>
-```
+<rh-code-block>
+<script type="text/html"><rh-icon icon="alert" loading="eager"></rh-icon></script>
+</rh-code-block>
+
+{% renderCodeDocs hideDescription=true %}{% endrenderCodeDocs %}
 
