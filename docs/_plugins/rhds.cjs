@@ -13,6 +13,18 @@ const RHDSAlphabetizeTagsPlugin = require('./alphabetize-tags.cjs');
 const RHDSShortcodesPlugin = require('./shortcodes.cjs');
 const { parse } = require('async-csv');
 
+const exists = async path => {
+  const { stat } = await import('node:fs/promises');
+  try {
+    await stat(path);
+    return true;
+  } catch {
+    return false;
+  }
+};
+
+const cwd = process.cwd();
+
 /**
  * EleventyTransformContext the `this` binding for transform functions
  * outputPath the path the page will be written to
@@ -109,7 +121,7 @@ const COPY_CONTENT_EXTENSIONS = [
  */
 function getFilesToCopy() {
   // Copy element demo files
-  const repoRoot = process.cwd();
+  const repoRoot = cwd;
   const tagNames = fs.readdirSync(path.join(repoRoot, 'elements'), { withFileTypes: true })
       .filter(ent => ent.isDirectory())
       .map(ent => ent.name);
@@ -213,6 +225,11 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     return pfeconfig.aliases[tagName] || deslugify(slug);
   });
 
+  eleventyConfig.addFilter('isPlanned', function isPlanned(repoStatus, name) {
+    const element = repoStatus.find(element => element.name === name);
+    return element?.libraries.find(library => library.name === 'RH Elements')?.status === 'Planned';
+  });
+
   eleventyConfig.addFilter('getTitleFromDocs', function(docs) {
     return docs.find(x => x.docsPage?.title)?.alias
       ?? docs[0]?.alias
@@ -303,9 +320,9 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     /**
      * @param {string} filePath
      */
-    function getProps(filePath) {
+    async function getProps(filePath) {
       const [, tagName] = filePath.split(path.sep);
-      const absPath = path.join(process.cwd(), filePath);
+      const absPath = path.join(cwd, filePath);
       /** configured alias for this element e.g. `Call to Action` for `rh-cta` */
       const alias = pfeconfig.aliases[tagName];
       /** e.g. `footer` for `rh-footer` or `call-to-action` for `rh-cta` */
@@ -320,11 +337,26 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
           pageSlug === 'overview' ? `/elements/${slug}/index.html`
         : `/elements/${slug}/${pageSlug}/index.html`;
       const href = permalink.replace('index.html', '');
+      const fileExists = await exists(absPath);
+      const elDir = path.join(cwd, 'elements', tagName);
+      const hasLightdom = await exists(path.join(elDir, `${tagName}-lightdom.css`));
+      const hasLightdomShim = await exists(path.join(elDir, `${tagName}-lightdom-shim.css`));
+      const siblingElements = (await Array.fromAsync(glob(`elements/${tagName}/*.ts`, { cwd })))
+          .map(x => x.split('/').pop())
+          .filter(x => x && x.startsWith('rh-') && !x.endsWith('.d.ts'))
+          .map(x => x?.split('.').shift())
+          .filter(x => x !== tagName );
+      const isCodePage = pageSlug === 'code';
       const screenshotPath = `/elements/${slug}/screenshot.png`;
       /** urls for related links */
       return {
         tagName,
         filePath,
+        fileExists,
+        hasLightdom,
+        hasLightdomShim,
+        isCodePage,
+        siblingElements,
         absPath,
         alias,
         slug,
@@ -346,20 +378,42 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
       );
 
       const customElementsManifestDocsPages = await eleventyConfig.globalData?.elements();
-      const filePaths = (await Array.fromAsync(glob(`elements/*/docs/*.md`, { cwd: process.cwd() })))
+      const filePaths = (await Array.fromAsync(glob(`elements/*/docs/*.md`, { cwd })))
           .filter(x => x.match(/\d{1,3}-[\w-]+\.md$/)); // only include new style docs
-      return filePaths.map(filePath => {
-        const props = getProps(filePath);
+      const elementDocFilePaths =
+        Array.from(new Set([
+          ...filePaths,
+          // TODO: adding the code file in the next line is a temporary hack to add in a virtual
+          // `XX-code.md` if one doesn't already exist. At a later date, this entire function
+          // (elementDocs) should be refactored, and the elements/*/docs/*.md files should be used
+          // only for markdown content, but the code and demos tabs should be fully generated, with
+          // the XX-code.md content interjected, if any.
+          ...await Array.fromAsync(glob('elements/*', { cwd }), x => `${x}/docs/30-code.md`
+          ),
+        ]));
+
+      const elementDocs = await Promise.all(elementDocFilePaths.map(async filePath => {
+        const props = await getProps(filePath);
         const [manifest] = getAllManifests();
         const docsPage =
-              customElementsManifestDocsPages.find(x => x.tagName === props.tagName)
-              ?? new DocsPage(manifest);
-        const tabs = filePaths
+          customElementsManifestDocsPages.find(x => x.tagName === props.tagName)
+            ?? new DocsPage(manifest);
+
+        const demosUrl = `/elements/${props.slug}/demos/`;
+        const tabs = await Promise.all(elementDocFilePaths
             .filter(x => x.split('/docs/').at(0) === (`elements/${props.tagName}`))
             .sort()
-            .map(x => getProps(x));
+        // todo: avoid calling getProps twice, it's expensive
+            .map(x => getProps(x)));
+        tabs.splice(-1, 0, {
+          ...props,
+          pageTitle: 'Demos',
+          href: demosUrl,
+        });
         return { docsPage, tabs, ...props };
-      }).sort(alphabeticallyBySlug);
+      }));
+      elementDocs.sort(alphabeticallyBySlug);
+      return elementDocs;
     } catch (e) {
       // it's important to surface this
       // eslint-disable-next-line no-console
@@ -368,8 +422,11 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     }
   });
 
-  for (const tagName of fs.readdirSync(path.join(process.cwd(), './elements/'))) {
-    const dir = path.join(process.cwd(), './elements/', tagName, 'docs/');
+  eleventyConfig.addWatchTarget('docs/patterns/**/patterns/*.html');
+  eleventyConfig.addWatchTarget('docs/theming/**/patterns/*.html');
+
+  for (const tagName of fs.readdirSync(path.join(cwd, './elements/'))) {
+    const dir = path.join(cwd, './elements/', tagName, 'docs/');
     eleventyConfig.addWatchTarget(dir);
   }
 

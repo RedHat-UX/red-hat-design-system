@@ -1,25 +1,38 @@
+{%- set headingId = (heading if heading else title) | lower | slug -%}
+{%- set headingContent = heading or title -%}
+{%- set manifest = doc and doc.docsPage and doc.docsPage.manifest -%}
+{%- if subnav.collection -%}
+  {% set tabs = collections[subnav.collection] | sort(attribute="data.subnav.order") %}
+{%- endif -%}
+{%- if manifest -%}
+  {% set tabs = doc.tabs %}
+  {% set demos = manifest.getDemos(doc.docsPage.tagName) %}
+  {% set planned = repoStatus | isPlanned(prettyName) %}
+  {% set prettyName -%}{{ (doc.alias or doc.slug or element.slug) | deslugify }}{% endset %}
+  {% set headingContent -%}
+    {{ prettyName }}
+    {% if planned %}
+    <rh-tag icon="notification-fill" color="gray">Planned</rh-tag>
+    {% endif %}
+  {% endset %}
+{%- endif -%}
+
 <script type="module" data-helmet>
   import '/assets/javascript/elements/uxdot-header.js';
-  import '/assets/javascript/elements/uxdot-search.js';
 </script>
 
 <uxdot-header {% if subnav.collection %}has-subnav{% endif %} {% if tokenSearch %}has-search {% endif %}>
-  <h1 id="{{ (heading if heading else title) | lower | slug }}" class="page-title">{{ heading if heading else title }}</h1>
-
-  {% if tokenSearch %}
-    <form slot="search" id="search-tokens" action="/tokens/search">
-      <uxdot-search id="search-input"
-        name="search"
-        aria-label="Search for tokens"
-        placeholder="Enter a token name"></uxdot-search>
-    </form>
-  {% endif %}
-
-  {% if subnav.collection %}
-    <rh-subnav slot="subnav" accessible-label="{{heading}}">{% for tab in collections[subnav.collection] | sort(attribute="data.subnav.order") %}
-      <a {{ 'active' if tab.url == page.url }} href="{{ tab.url }}">
-        {{ tab.data.title }}
-      </a>{% endfor %}
-    </rh-subnav>
+  <h1 id="{{ headingId }}" class="page-title">{{ headingContent }}</h1>
+  {% if tokenSearch %}{% include 'partials/component/token-search.html' %}{% endif %}
+  {% if tabs %}
+  <rh-subnav slot="subnav" accessible-label="{{ heading }}">
+  {% for tab in tabs %}
+    {%- set href = tab.url or tab.href -%}
+    {%- set pageUrl = (doc and doc.permalink | replace('index.html', '')) or page.url -%}
+    {%- set title = tab.data.title or tab.pageTitle -%}
+    {%- set active = href == pageUrl -%}
+    <a data-page-url="{{ page.url }}" href="{{ href }}" {{ 'active' if active }}>{{ title | capitalize }}</a>
+  {%- endfor -%}
+  </rh-subnav>
   {% endif %}
 </uxdot-header>
