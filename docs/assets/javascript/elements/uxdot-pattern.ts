@@ -54,23 +54,15 @@ export class UxdotPattern extends LitElement {
 
   ssrController = new UxdotPatternSSRController(this);
 
-  willUpdate() {
-    if (!isServer && this.shadowRoot && !this.hasUpdated) {
-      this.ssrController.allContent ||= this.shadowRoot.getElementById('content')!;
-      this.ssrController.htmlContent ||= this.shadowRoot.querySelector('.language-html')!;
-      this.ssrController.jsContent ||= this.shadowRoot.querySelector('.language-js')!;
-      this.ssrController.cssContent ||= this.shadowRoot.querySelector('.language-css')!;
-    }
-  }
-
   render() {
     const target = isServer || (this.target === 'container') ? this.target
       : (this.getRootNode() as Document).getElementById(this.target);
-    const actions = html`
+
+    const actionsLabels = html`
       <span slot="action-label-copy">Copy to Clipboard</span>
-      <span slot="action-label-copy"
-            hidden
-            data-code-block-state="active">Copied!</span>`;
+      <span slot="action-label-copy" hidden data-code-block-state="active">Copied!</span>
+      <span slot="action-label-wrap">Toggle line wrap</span>
+    `;
 
     return html`
       <div id="container">
@@ -92,25 +84,25 @@ export class UxdotPattern extends LitElement {
         <rh-surface id="content">${this.ssrController.allContent}</rh-surface>
 
         <rh-tabs class="code-tabs">
-          <rh-tab slot="tab">HTML</rh-tab>
+          <rh-tab slot="tab" active>HTML</rh-tab>
           <rh-tab-panel>
-            <rh-code-block highlighting="prerendered">
+            <rh-code-block highlighting="prerendered" actions="copy wrap">
               ${this.ssrController.htmlContent}
-              ${actions}
+              ${actionsLabels}
             </rh-code-block>
           </rh-tab-panel>
-          <rh-tab slot="tab" ?hidden="${!this.ssrController.hasCss}">CSS</rh-tab>
-          <rh-tab-panel ?hidden="${!this.ssrController.hasCss}">
-            <rh-code-block highlighting="prerendered">
+          <rh-tab slot="tab" ?disabled="${!this.ssrController.hasCss}">CSS</rh-tab>
+          <rh-tab-panel>
+            <rh-code-block highlighting="prerendered" actions="copy wrap">
               ${this.ssrController.cssContent}
-              ${actions}
+              ${actionsLabels}
             </rh-code-block>
           </rh-tab-panel>
-          <rh-tab slot="tab" ?hidden="${!this.ssrController.hasCss}">JS</rh-tab>
-          <rh-tab-panel ?hidden="${!this.ssrController.hasCss}">
-            <rh-code-block highlighting="prerendered">
+          <rh-tab slot="tab" ?disabled="${!this.ssrController.hasJs}">JS</rh-tab>
+          <rh-tab-panel>
+            <rh-code-block highlighting="prerendered" actions="copy wrap">
               ${this.ssrController.jsContent}
-              ${actions}
+              ${actionsLabels}
             </rh-code-block>
           </rh-tab-panel>
         </rh-tabs>
