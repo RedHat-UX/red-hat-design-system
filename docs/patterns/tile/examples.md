@@ -3,7 +3,6 @@ title: Examples
 heading: Tile
 sidenavTitle: Tile
 layout: layouts/pages/pattern.njk
-hasToc: true
 order: 20
 tags:
   - tilePatterns
@@ -22,16 +21,19 @@ subnav:
   import '@rhds/elements/rh-blockquote/rh-blockquote.js';
 </script>
 
-<link rel="stylesheet" data-helmet href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
-<link rel="stylesheet" data-helmet href="/styles/samp.css">
+<link rel="stylesheet"
+      href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css"
+      data-helmet>
+<link rel="stylesheet"
+      href="/styles/samp.css"
+      data-helmet>
 
-## Accented tile
-
-The accented tile pattern should be used to draw attention to a specifc tile or 
-set of tiles. Be careful not to apply the accented tile pattern to all tiles 
-within a page, otherwise the accent effect will be lost. After all, "if 
-everything is special, then nothing is special."
-
-{% uxdotPattern %}{% include './patterns/accented-tile.html' %}{% enduxdotPattern %}
+<uxdot-pattern src="./patterns/accented-tile.html">
+  <h2 id="accented-tile" slot="heading">Accented tile</h2>
+  <p>The accented tile pattern should be used to draw attention to a specific 
+     tile or set of tiles. Be careful not to apply the accented tile pattern to 
+     all tiles within a page, otherwise the accent effect will be lost. After 
+     all, "if everything is special, then nothing is special."</p>
+</uxdot-pattern>
 
 <rh-cta href="/elements/tile/demos/#demo-accented-tiles">View accented tile demo</rh-cta>

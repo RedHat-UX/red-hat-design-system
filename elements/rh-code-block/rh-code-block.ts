@@ -53,7 +53,7 @@ interface CodeLineHeightsInfo {
  */
 @customElement('rh-code-block')
 export class RhCodeBlock extends LitElement {
-  private static actions = new Map([
+  private static actionIcons = new Map([
     ['wrap', html`
       <svg xmlns="http://www.w3.org/2000/svg"
           fill="currentColor"
@@ -150,6 +150,7 @@ export class RhCodeBlock extends LitElement {
   override connectedCallback() {
     super.connectedCallback();
     this.#ro.observe(this);
+    this.#onSlotChange();
   }
 
   override disconnectedCallback() {
@@ -195,7 +196,7 @@ export class RhCodeBlock extends LitElement {
             <button id="action-${x}"
                     class="shadow-fab"
                     data-code-block-action="${x}">
-              ${RhCodeBlock.actions.get(this.wrap && x === 'wrap' ? 'wrap-active' : x) ?? ''}
+              ${RhCodeBlock.actionIcons.get(this.wrap && x === 'wrap' ? 'wrap-active' : x) ?? ''}
             </button>
           </rh-tooltip>`)}
         <!-- </slot> -->

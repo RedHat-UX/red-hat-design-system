@@ -25,13 +25,19 @@ more.
 ## Sample pattern
 
 <uxdot-example width-adjustment="736px">
-  <img src="./form-samples.svg" alt="Form component samples">
+  <img src="./form-samples.svg"
+      alt="Form component samples"
+      width="736"
+      height="717">
 </uxdot-example>
 
 ## Style
 
 <uxdot-example width-adjustment="660px">
-  <img src="./form-blueprint.svg" alt="Form component blueprint">
+  <img src="./form-blueprint.svg"
+      alt="Form component blueprint"
+      width="660"
+      height="899">
 </uxdot-example>
 
 ### Visual elements
@@ -51,7 +57,10 @@ There are a variety of form elements available for use depending on what informa
 </rh-alert>
 
 <uxdot-example width-adjustment="824px">
-  <img src="./form-visual-elements.svg" alt="Form component visual elements">
+  <img src="./form-visual-elements.svg"
+      alt="Form component visual elements"
+      width="824"
+      height="167">
 </uxdot-example>
 
 ### Variants
@@ -61,7 +70,10 @@ There are two form variants available for use.
  - **Floating** - Form elements float in a group and the title and body text sizes are slightly larger.
 
 <uxdot-example width-adjustment="736px">
-  <img src="./form-variants.svg" alt="Form component variants">
+  <img src="./form-variants.svg"
+      alt="Form component variants"
+      width="736"
+      height="389">
 </uxdot-example>
 
 ## Theme
@@ -69,7 +81,10 @@ There are two form variants available for use.
 ### Light theme
 
 <uxdot-example width-adjustment="360px">
-  <img src="./form-theme-light.svg" alt="Form component, light theme">
+  <img src="./form-theme-light.svg"
+      alt="Form component, light theme"
+      width="360"
+      height="717">
 </uxdot-example>
 
 ### Dark theme
@@ -80,7 +95,10 @@ There are two form variants available for use.
 </rh-alert>
 
 <uxdot-example color-palette="darkest" width-adjustment="360px">
-  <img src="./form-theme-dark.svg" alt="Form component, dark theme">
+  <img src="./form-theme-dark.svg"
+      alt="Form component, dark theme"
+      width="360"
+      height="717">
 </uxdot-example>
 
 ## Orientation
@@ -98,7 +116,10 @@ the left edge and some elements span the width of the form, like a field.
 </rh-alert>
 
 <uxdot-example width-adjustment="736px">
-  <img src="./form-container-floating-orientation-default.svg" alt="Form components (Container and Floating), default orientation">
+  <img src="./form-container-floating-orientation-default.svg"
+      alt="Form components (Container and Floating), default orientation"
+      width="736"
+      height="717">
 </uxdot-example>
 
 ### Horizontal
@@ -121,11 +142,17 @@ of other form elements with text labels.
 </rh-alert>
 
 <uxdot-example width-adjustment="750px">
-  <img src="./form-container-orientation-horizontal.svg" alt="Form components (Container and Floating), horizontal orientation">
+  <img src="./form-container-orientation-horizontal.svg"
+      alt="Form components (Container and Floating), horizontal orientation"
+      width="750"
+      height="587">
 </uxdot-example>
 
 <uxdot-example width-adjustment="750px">
-  <img src="./form-floating-orientation-horizontal.svg" alt="Form component (Floating), horizontal orientation">
+  <img src="./form-floating-orientation-horizontal.svg"
+      alt="Form component (Floating), horizontal orientation"
+      width="750"
+      height="525">
 </uxdot-example>
 
 ### Text label alignment
@@ -133,7 +160,10 @@ of other form elements with text labels.
 In the Horizontal orientation, text labels should be **left justified** making it easy for a user to scan.
 
 <uxdot-example width-adjustment="872px">
-  <img src="./form-text-label-alignment.svg" alt="Form component text label alignment">
+  <img src="./form-text-label-alignment.svg"
+      alt="Form component text label alignment"
+      width="872"
+      height="204">
 </uxdot-example>
 
 ## Usage
@@ -154,7 +184,10 @@ page.
 </rh-alert>
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="./form-in-use-container-default-orientation.svg" alt="Form (Container), default orientation">
+  <img src="./form-in-use-container-default-orientation.svg"
+      alt="Form (Container), default orientation"
+      width="1000"
+      height="917">
 </uxdot-example>
 
 ### Floating variant
@@ -170,11 +203,17 @@ page.
 </rh-alert>
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="./form-in-use-floating-default-orientation.svg" alt="Form (Floating), default orientation">
+  <img src="./form-in-use-floating-default-orientation.svg"
+      alt="Form (Floating), default orientation"
+      width="1000"
+      height="855">
 </uxdot-example>
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="./form-in-use-floating-horizontal-orientation.svg" alt="Form (Floating), horizontal orientation">
+  <img src="./form-in-use-floating-horizontal-orientation.svg"
+      alt="Form (Floating), horizontal orientation"
+      width="1000"
+      height="903">
 </uxdot-example>
 
 ### Form content
@@ -187,7 +226,10 @@ A user will have a better experience with submitting a form if the elements are 
  - **Helper text** - Use underneath a form element as an example of how to correctly provide an input.
 
 <uxdot-example width-adjustment="296px">
-  <img src="./form-content.svg" alt="Form component content">
+  <img src="./form-content.svg"
+      alt="Form component content"
+      width="296"
+      height="84">
 </uxdot-example>
 
 ### Required fields
@@ -200,7 +242,10 @@ title stating **All fields are required**. If all inputs are optional, the text
 should state **All fields are optional** instead.
 
 <uxdot-example width-adjustment="736px">
-  <img src="./form-required-fields.svg" alt="Form component required fields">
+  <img src="./form-required-fields.svg"
+      alt="Form component required fields"
+      width="736"
+      height="717">
 </uxdot-example>
 
 ### Data inputs
@@ -210,7 +255,10 @@ input has a specific use case and different data input groups can be used in the
 same form.
 
 <uxdot-example width-adjustment="576px">
-  <img src="./form-data-inputs.svg" alt="Form component data inputs">
+  <img src="./form-data-inputs.svg"
+      alt="Form component data inputs"
+      width="576"
+      height="124">
 </uxdot-example>
 
 ### Using data inputs
@@ -254,7 +302,10 @@ Radio buttons and checkboxes can be stacked horizontally or vertically depending
  - If there are more than three options, arrange data inputs vertically.
 
 <uxdot-example width-adjustment="462px">
-  <img src="./form-arranging-data-inputs.svg" alt="Form component arranging data inputs">
+  <img src="./form-arranging-data-inputs.svg"
+      alt="Form component arranging data inputs"
+      width="462"
+      height="272">
 </uxdot-example>
 
 ### Popover
@@ -278,7 +329,10 @@ as a trigger to display the popover.
 </rh-alert>
 
 <uxdot-example width-adjustment="406px">
-  <img src="./form-popover.svg" alt="Form component popover">
+  <img src="./form-popover.svg"
+      alt="Form component popover"
+      width="406"
+      height="282">
 </uxdot-example>
 
 ### Placement
@@ -288,11 +342,17 @@ readability, it should span at least four grid columns but not exceed eight grid
 columns (or 750px).
 
 <uxdot-example width-adjustment="1000px">
-  <img src="./form-placement-default-orientation.svg" alt="Form component placement, default orientation">
+  <img src="./form-placement-default-orientation.svg"
+      alt="Form component placement, default orientation"
+      width="1000"
+      height="438">
 </uxdot-example>
 
 <uxdot-example width-adjustment="1000px">
-  <img src="./form-placement-horizontal-orientation.svg" alt="Form component placement, horizontal orientation">
+  <img src="./form-placement-horizontal-orientation.svg"
+      alt="Form component placement, horizontal orientation"
+      width="1000"
+      height="720">
 </uxdot-example>
 
 ## Behavior
@@ -311,7 +371,10 @@ can still submit a form successfully if they skip an optional form element.
 </rh-alert>
 
 <uxdot-example width-adjustment="720px">
-  <img src="./form-disabled-state.svg" alt="Form component disabled state">
+  <img src="./form-disabled-state.svg"
+      alt="Form component disabled state"
+      width="720"
+      height="148">
 </uxdot-example>
 
 ### Error states
@@ -329,7 +392,10 @@ icons will disappear when the errors are resolved and the focus is moved away
 once again.
 
 <uxdot-example width-adjustment="360px">
-  <img src="./form-error-loss-of-focus.svg" alt="Form component, error validation on loss of focus">
+  <img src="./form-error-loss-of-focus.svg"
+      alt="Form component, error validation on loss of focus"
+      width="360"
+      height="627">
 </uxdot-example>
 
 ### Error validation on submission
@@ -342,7 +408,10 @@ same width as the widest form element. The alert will disappear when the errors
 are resolved and the form is submitted again.
 
 <uxdot-example width-adjustment="360px">
-  <img src="./form-error-submission.svg" alt="Form component, error validation on submission">
+  <img src="./form-error-submission.svg"
+      alt="Form component, error validation on submission"
+      width="360"
+      height="707">
 </uxdot-example>
 
 ## Interaction states
@@ -357,7 +426,10 @@ are resolved and the form is submitted again.
 ### Link
 
 <uxdot-example width-adjustment="300px">
-  <img src="./form-interaction-states-link.svg" alt="Form component interaction state, link">
+  <img src="./form-interaction-states-link.svg"
+      alt="Form component interaction state, link"
+      width="300"
+      height="344">
 </uxdot-example>
 
 ### Hover
@@ -365,7 +437,10 @@ are resolved and the form is submitted again.
 Form fields and select lists share the same hover state.
 
 <uxdot-example width-adjustment="300px">
-  <img src="./form-interaction-states-hover.svg" alt="Form component interaction state, hover">
+  <img src="./form-interaction-states-hover.svg"
+      alt="Form component interaction state, hover"
+      width="300"
+      height="349">
 </uxdot-example>
 
 ### Focus
@@ -374,7 +449,10 @@ When the focus is moved to a form field with placeholder text, the text will
 disappear and a blinking cursor will be visible.
 
 <uxdot-example width-adjustment="300px">
-  <img src="./form-interaction-states-focus.svg" alt="Form component interaction state, focus">
+  <img src="./form-interaction-states-focus.svg"
+      alt="Form component interaction state, focus"
+      width="300"
+      height="344">
 </uxdot-example>
 
 ### Active
@@ -382,7 +460,10 @@ disappear and a blinking cursor will be visible.
 Form fields and select lists share the same active state.
 
 <uxdot-example width-adjustment="300px">
-  <img src="./form-interaction-states-active.svg" alt="Form component interaction state, active">
+  <img src="./form-interaction-states-active.svg"
+      alt="Form component interaction state, active"
+      width="300"
+      height="344">
 </uxdot-example>
 
 ### Tab order
@@ -391,7 +472,10 @@ When the Tab key is pressed repeatedly, the focus highlights each form element
 in order, from top to bottom or left to right.
 
 <uxdot-example width-adjustment="1000px">
-  <img src="./form-tab-order.svg" alt="Form component tab order">
+  <img src="./form-tab-order.svg"
+      alt="Form component tab order"
+      width="1000"
+      height="717">
 </uxdot-example>
 
 ## Accessibility
@@ -433,11 +517,17 @@ Horizontal variant will switch to the Default variant as screens get smaller.
 ### Desktop
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="./form-responsive-default-desktop.svg" alt="Form component (Default) responsive design, desktop">
+  <img src="./form-responsive-default-desktop.svg"
+      alt="Form component (Default) responsive design, desktop"
+      width="1000"
+      height="438">
 </uxdot-example>
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="./form-responsive-horizontal-desktop.svg" alt="Form component (Horizontal) responsive design, desktop">
+  <img src="./form-responsive-horizontal-desktop.svg"
+      alt="Form component (Horizontal) responsive design, desktop"
+      width="1000"
+      height="360">
 </uxdot-example>
 
 ### Tablet
@@ -446,13 +536,19 @@ As screens get smaller, the Horizontal variant will switch to the Default
 variant to reduce crowding.
 
 <uxdot-example width-adjustment="768px" variant="full" alignment="left" no-border>
-  <img src="./form-responsive-tablet.svg" alt="Form component responsive design, tablet">
+  <img src="./form-responsive-tablet.svg"
+      alt="Form component responsive design, tablet"
+      width="768"
+      height="438">
 </uxdot-example>
 
 ### Mobile
 
 <uxdot-example width-adjustment="360px" variant="full" alignment="left" no-border>
-  <img src="./form-responsive-mobile.svg" alt="Form component responsive design, mobile">
+  <img src="./form-responsive-mobile.svg"
+      alt="Form component responsive design, mobile"
+      width="360"
+      height="438">
 </uxdot-example>
 
 ## Best practices
@@ -462,7 +558,10 @@ variant to reduce crowding.
 Do not align the button group and privacy link to the **right edge** of other form elements.
 
 <uxdot-example width-adjustment="360px" danger>
-  <img src="./form-best-practice-1.svg" alt="Form component, best practice 1">
+  <img src="./form-best-practice-1.svg"
+      alt="Form component, best practice 1"
+      width="360"
+      height="438">
 </uxdot-example>
 
 ### Two Primary buttons
@@ -475,7 +574,10 @@ Do not include two Primary buttons, use a combination of Primary and Link button
 </rh-alert>
 
 <uxdot-example width-adjustment="360px" danger>
-  <img src="./form-best-practice-2.svg" alt="Form component, best practice 2">
+  <img src="./form-best-practice-2.svg"
+      alt="Form component, best practice 2"
+      width="360"
+      height="438">
 </uxdot-example>
 
 ### Too many required fields
@@ -485,7 +587,10 @@ Instead, add text below the title stating **All fields are required**. If all
 inputs are optional, the text should state **All fields are optional** instead.
 
 <uxdot-example width-adjustment="360px" danger>
-  <img src="./form-best-practice-3.svg" alt="Form component, best practice 3">
+  <img src="./form-best-practice-3.svg"
+      alt="Form component, best practice 3"
+      width="360"
+      height="717">
 </uxdot-example>
 
 ### 12 columns
@@ -500,7 +605,10 @@ maximum of 8 grid columns.
 </rh-alert>
 
 <uxdot-example width-adjustment="872px" danger>
-  <img src="./form-best-practice-4.svg" alt="Form component, best practice 4">
+  <img src="./form-best-practice-4.svg"
+      alt="Form component, best practice 4"
+      width="872"
+      height="438">
 </uxdot-example>
 
 ### Rearranging data inputs and button groups
@@ -509,7 +617,10 @@ Do not change the stacking order of data inputs and button groups, except in
 rare cases.
 
 <uxdot-example width-adjustment="360px" danger>
-  <img src="./form-best-practice-5.svg" alt="Form component, best practice 5">
+  <img src="./form-best-practice-5.svg"
+      alt="Form component, best practice 5"
+      width="360"
+      height="444">
 </uxdot-example>
 
 ## Spacing
@@ -520,13 +631,19 @@ values between elements.
 ### Default
 
 <uxdot-example width-adjustment="360px">
-  <img src="./form-spacing-default.svg" alt="Form component spacing, default">
+  <img src="./form-spacing-default.svg"
+      alt="Form component spacing, default"
+      width="360"
+      height="497">
 </uxdot-example>
 
 ### Horizontal
 
 <uxdot-example width-adjustment="750px">
-  <img src="./form-spacing-horizontal.svg" alt="Form component spacing, horizontal">
+  <img src="./form-spacing-horizontal.svg"
+      alt="Form component spacing, horizontal"
+      width="750"
+      height="419">
 </uxdot-example>
 
 <rh-table>

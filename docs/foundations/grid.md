@@ -9,7 +9,7 @@ importElements:
   - rh-table
 ---
 
-<link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
+<link data-helmet rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
 
 <section aria-labelledby="overview">
 
@@ -20,7 +20,10 @@ importElements:
   ### Sample component
 
   <uxdot-example variant="full" no-border>  
-    <img src="/assets/grid/grid.svg" alt="Grid">
+    <img src="/assets/grid/grid.svg"
+      alt="Grid"
+      width="1000"
+      height="160">
   </uxdot-example>
 
   ### Grid availability
@@ -32,7 +35,10 @@ importElements:
   ### Style
 
   <uxdot-example variant="full" no-border>
-    <img src="/assets/grid/grid-style.svg" alt="Grid specs">
+    <img src="/assets/grid/grid-style.svg"
+      alt="Grid specs"
+      width="877"
+      height="193">
   </uxdot-example>
 
 </section>
@@ -50,14 +56,20 @@ importElements:
 
   <uxdot-example variant="full" no-border alignment="left">
     <figure>
-      <img src="/assets/grid/grid-usage-desktop.svg" alt="Grid columns on desktop">
+      <img src="/assets/grid/grid-usage-desktop.svg"
+      alt="Grid columns on desktop"
+      width="1000"
+      height="232">
       <figcaption>A grid on large screens contains 12 columns</figcaption>
     </figure>
   </uxdot-example>
   
   <uxdot-example variant="full" no-border alignment="left" width-adjustment="576px">
     <figure>
-      <img src="/assets/grid/grid-usage-mobile.svg" alt="Grid columns on mobile">
+      <img src="/assets/grid/grid-usage-mobile.svg"
+      alt="Grid columns on mobile"
+      width="576"
+      height="232">
       <figcaption>A grid on small screens contains one column</figcaption>
     </figure>
   </uxdot-example>
@@ -68,10 +80,16 @@ importElements:
 
   <div class="grid">
     <uxdot-example variant="full" no-border>
-      <img src="/assets/grid/grid-gutters-desktop.svg" alt="Grid gutters on desktop">
+      <img src="/assets/grid/grid-gutters-desktop.svg"
+      alt="Grid gutters on desktop"
+      width="1000"
+      height="262">
     </uxdot-example>
     <uxdot-example variant="full" no-border alignment="left" width-adjustment="576px">
-      <img src="/assets/grid/grid-gutters-mobile.svg" alt="Grid gutters on mobile">
+      <img src="/assets/grid/grid-gutters-mobile.svg"
+      alt="Grid gutters on mobile"
+      width="576"
+      height="266">
     </uxdot-example>
   </div>
 
@@ -84,7 +102,10 @@ importElements:
   The grid for large screens features 12 columns, like desktop and tablet. Column, gutter, and margin widths reduce as breakpoints get smaller.
 
   <uxdot-example variant="full" no-border>
-    <img src="/assets/grid/grid-margins-desktop.svg" alt="Grid margins on desktop">
+    <img src="/assets/grid/grid-margins-desktop.svg"
+      alt="Grid margins on desktop"
+      width="1000"
+      height="265">
   </uxdot-example>
 
   ### Small screens
@@ -92,7 +113,10 @@ importElements:
   The grid for small screens features one column. In rare cases, content on small screens can sometimes be arranged in two columns.
 
   <uxdot-example variant="full" no-border alignment="left" width-adjustment="576px">
-    <img src="/assets/grid/grid-margins-mobile.svg" alt="Grid margins on mobile">
+    <img src="/assets/grid/grid-margins-mobile.svg"
+      alt="Grid margins on mobile"
+      width="574"
+      height="266">
   </uxdot-example>
 
 </section>
@@ -106,13 +130,19 @@ importElements:
 
   <uxdot-example variant="full" no-border alignment="left">
     <figure>
-      <img src="/assets/grid/grid-best-practices-1.svg" alt="Grid content outside of grid">
+      <img src="/assets/grid/grid-best-practices-1.svg"
+      alt="Grid content outside of grid"
+      width="872"
+      height="427">
       <figcaption>18px or larger text shouldn't exceed eight columns to maintain optimal readability.</figcaption>
     </figure>
   </uxdot-example>
 
   <uxdot-example variant="full" no-border>
-    <img src="/assets/grid/grid-best-practices-2.svg" alt="Grid alignment issues">
+    <img src="/assets/grid/grid-best-practices-2.svg"
+      alt="Grid alignment issues"
+      width="872"
+      height="158">
   </uxdot-example>
 
 </section>
@@ -130,11 +160,17 @@ importElements:
   The grid for large screens features 12 columns, like desktop and tablet. Column, gutter, and margin widths reduce as breakpoints get smaller.
 
   <uxdot-example variant="full" no-border>
-    <img src="/assets/grid/grid-responsive-1.svg" alt="Example of responsive grid on large screen">
+    <img src="/assets/grid/grid-responsive-1.svg"
+      alt="Example of responsive grid on large screen"
+      width="1000"
+      height="232">
   </uxdot-example>
 
   <uxdot-example variant="full" no-border>
-    <img src="/assets/grid/grid-responsive-2.svg" alt="Example of responsive grid on smaller screen">
+    <img src="/assets/grid/grid-responsive-2.svg"
+      alt="Example of responsive grid on smaller screen"
+      width="1000"
+      height="232">
   </uxdot-example>
 
   ### Small screens
@@ -142,11 +178,17 @@ importElements:
   The grid for small screens features one column. In rare cases, content on small screens can sometimes be arranged in two columns.
 
   <uxdot-example variant="full" no-border alignment="left" width-adjustment="576px">
-    <img src="/assets/grid/grid-responsive-3.svg" alt="Example of responsive grid on large screen">
+    <img src="/assets/grid/grid-responsive-3.svg"
+      alt="Example of responsive grid on large screen"
+      width="576"
+      height="232">
   </uxdot-example>
 
   <uxdot-example variant="full" no-border alignment="left" width-adjustment="360px">
-    <img src="/assets/grid/grid-responsive-4.svg" alt="Example of responsive grid on smaller screen">
+    <img src="/assets/grid/grid-responsive-4.svg"
+      alt="Example of responsive grid on smaller screen"
+      width="360"
+      height="232">
   </uxdot-example>
 
 </section>
