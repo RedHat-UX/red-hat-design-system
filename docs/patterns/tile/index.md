@@ -55,6 +55,7 @@ For more information, please see the docs on [theming][theming] and
 
 <uxdot-pattern src="./patterns/custom-themes.html"
                target="custom-tiles">
+  <h3 id="custom-tiles">Custom tiles</h3>
 </uxdot-pattern>
 
 [element]: /elements/tile/

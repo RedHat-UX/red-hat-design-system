@@ -229,10 +229,8 @@ values between elements.
 </uxdot-example>
 
 <rh-table>
-  {% spacerTokensTable headline="",
-    caption='',
-    headingLevel="4",
-    tokens="--rh-space-xl" %}
+  {% spacerTokensTable headingLevel="4",
+                       tokens="--rh-space-xl" %}
   {% endspacerTokensTable %}
 </rh-table>
 

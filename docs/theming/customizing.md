@@ -40,7 +40,8 @@ To create a custom theme, designers and developers need only set the values for
 the relevant color properties in the design system. For example, a _Bordeaux_ 
 theme might look like this:
 
-<uxdot-pattern class="card-snippet-grid" src="./patterns/card-bordeaux.html">
+<uxdot-pattern class="card-snippet-grid"
+               src="./patterns/card-bordeaux.html">
 </uxdot-pattern>
 
 <rh-alert>When writing themes, use the semantic, themeable tokens such as

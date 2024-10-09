@@ -118,7 +118,9 @@ Authors may define the color palette of a container using the `color-palette`
 HTML attribute. So for example, to create a card with the darkest color palette, 
 use this HTML:
 
-<uxdot-pattern class="card-snippet-grid" full-height src="./patterns/card-default-vs-set-palette.html">
+<uxdot-pattern class="card-snippet-grid"
+               full-height
+               src="./patterns/card-default-vs-set-palette.html">
 </uxdot-pattern>
 
 A color palette provider is a **surface** on which a particular color palette is
@@ -162,7 +164,9 @@ Extending our card example from above, if our page author then adds an
 `<rh-cta>` to the card, it will *automatically* adopt the dark color theme. The 
 page author need not and should not customize the CTA.
 
-<uxdot-pattern class="card-snippet-grid" full-height src="./patterns/card-child-consumers.html">
+<uxdot-pattern class="card-snippet-grid"
+               full-height
+               src="./patterns/card-child-consumers.html">
 </uxdot-pattern>
 
 <rh-card class="pullquote-card right">
@@ -179,7 +183,9 @@ Some elements are both providers and consumers. Card, for example is both a
 provider and a consumer. It can accept the color theme of its parent context and 
 it can also set its own color palette.
 
-<uxdot-pattern class="card-snippet-grid" full-height src="./patterns/card-consumer-provider.html">
+<uxdot-pattern class="card-snippet-grid"
+               full-height
+               src="./patterns/card-consumer-provider.html">
 </uxdot-pattern>
 
 ## Inline color palettes  <rh-tag color="purple">Beta</rh-tag>
@@ -217,8 +223,8 @@ palette, e.g. from `lightest` to `light`.
 <rh-alert>
   <h4 slot="header">More information</h4>
   <p>High contrast is using bright elements, patterns, or images in dark
-environments and vice versa. This is useful to focus attention or create
-visual tension.</p>
+     environments and vice versa. This is useful to focus attention or create
+     visual tension.</p>
 </rh-alert>
 
 {% include 'partials/component/feedback.html' %}

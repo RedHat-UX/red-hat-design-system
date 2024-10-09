@@ -57,8 +57,8 @@ a `<rh-surface>` may be used as a full-width container and provide the
 *Bordeaux* theme values to a set of 3 cards in a grid:
 
 <uxdot-pattern src="./patterns/band.html"
-                class="band-example"
-                target="band">
+               class="band-example"
+               target="band">
 </uxdot-pattern>
 
 ### The `color-palette` attribute
