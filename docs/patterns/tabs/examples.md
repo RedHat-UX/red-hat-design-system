@@ -1,3 +1,16 @@
+---
+title: Examples
+heading: Tabs
+sidenavTitle: Tabs
+layout: layouts/pages/pattern.njk
+order: 20
+tags:
+  - pattern
+  - tabPatterns
+subnav:
+  collection: tabPatterns
+  order: 1
+---
 <uxdot-pattern src="./patterns/link-to-tab.html">
   <h2 slot="heading">Link to tab</h2>
   <rh-alert state="warning">
