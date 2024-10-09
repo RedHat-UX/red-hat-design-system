@@ -289,7 +289,7 @@
   },
   "dependencies": {
     "@lit/context": "^1.1.2",
-    "@patternfly/pfe-core": "^4.0.2",
+    "@patternfly/pfe-core": "^4.0.3",
     "@rhds/icons": "^1.1.2",
     "@rhds/tokens": "^2.1.0",
     "lit": "^3.2.0",
