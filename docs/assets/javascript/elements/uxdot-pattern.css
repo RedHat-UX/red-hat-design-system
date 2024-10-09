@@ -4,6 +4,7 @@
   container: host / inline-size;
   display: block;
   margin-block-start: var(--rh-space-2xl);
+  max-width: 56rem; /* warning: magic number */
 }
 
 #container {
@@ -24,7 +25,7 @@
     grid-template-areas:
       'heading heading'
       'controls controls'
-      'example example'
+      'content content'
       'code code';
   }
 }
@@ -79,7 +80,6 @@ h3,
 rh-tabs {
   border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
   border-radius: var(--rh-border-radius-default);
-  max-width: 56rem; /* warning: magic number */
   overflow: hidden;
   grid-area: code;
 

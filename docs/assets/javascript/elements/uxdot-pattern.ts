@@ -1,14 +1,10 @@
-import { LitElement, html, isServer, type PropertyValues } from 'lit';
+import type { ColorPalette } from '@rhds/elements/lib/context/color/provider.js';
+
+import { LitElement, html, isServer } from 'lit';
 
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { classMap } from 'lit/directives/class-map.js';
-import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
 
-import {
-  colorContextProvider,
-  type ColorPalette,
-} from '@rhds/elements/lib/context/color/provider.js';
 import {
   colorContextConsumer,
   type ColorTheme,
@@ -33,7 +29,6 @@ import styles from './uxdot-pattern.css';
 export class UxdotPattern extends LitElement {
   static styles = [styles];
 
-  @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' })
   colorPalette: ColorPalette = 'lightest';
 

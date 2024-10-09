@@ -59,8 +59,10 @@ parent element, like `<rh-surface>`.
 
 <div id="card-themes" class="grid sm-two-columns">
   <uxdot-pattern allow="light, lighter, lightest"
+                 color-palette="lightest"
                  src="./patterns/themes.html"></uxdot-pattern>
   <uxdot-pattern allow="dark, darker, darkest"
+                 color-palette="darkest"
                  src="./patterns/themes.html"></uxdot-pattern>
 </div>
 
