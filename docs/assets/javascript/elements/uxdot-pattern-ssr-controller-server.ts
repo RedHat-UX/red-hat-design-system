@@ -29,6 +29,25 @@ function dedent(str: string) {
   return match ? stripped.replace(new RegExp(`^${match[0]}`, 'gm'), '') : str;
 }
 
+function isScript(node: Tools.Element) {
+  if (node.tagName === 'script') {
+    const type = Tools.getAttribute(node, 'type');
+    switch (type) {
+      case 'module':
+      case 'javascript':
+      case 'application/javascript':
+      case 'text/javascript':
+      case null:
+        return true;
+    }
+  }
+  return false;
+}
+
+function isStyle(node: Tools.Element) {
+  return node.tagName === 'style';
+}
+
 interface EleventyPageData {
   inputPath: string;
   outputPath: string;
@@ -48,8 +67,8 @@ export class UxdotPatternSSRControllerServer extends RHDSSSRController {
 
   async #extractInlineContent(kind: 'js' | 'css', partial: Tools.Node) {
     const prop = kind === 'js' ? 'jsSrc' as const : 'cssSrc' as const;
-    const nodePred = kind === 'js' ? (node: Tools.Element) => node.tagName === 'script'
-                   : kind === 'css' ? (node: Tools.Element) => node.tagName === 'style'
+    const nodePred = kind === 'js' ? isScript
+                   : kind === 'css' ? isStyle
                    : () => false;
     const baseUrl = pathToFileURL(this.page.inputPath);
     let content = !this.host[prop] ? ''
