@@ -71,10 +71,15 @@ pagination:
 
 <link rel="stylesheet" data-helmet href="/styles/pages/backpage.css">
 
+<link data-helmet
+      rel="stylesheet"
+      href="/assets/javascript/elements/uxdot-toc-lightdom.css">
+
 <script type="module" data-helmet>
   import '/assets/javascript/elements/uxdot-feedback.js';
   import '/assets/javascript/elements/uxdot-copy-button.js';
   import '/assets/javascript/elements/uxdot-header.js';
+  import '/assets/javascript/elements/uxdot-toc.js';
   import 'playground-elements';
   import '@rhds/elements/rh-button/rh-button.js';
   import '@rhds/elements/rh-card/rh-card.js';
@@ -210,6 +215,7 @@ pagination:
 
 {% include 'partials/component/masthead.njk' %}
 {% include 'partials/component/sidenav.njk' %}
+
 <rh-surface id="main"
             role="main"
             color-palette="lightest">
