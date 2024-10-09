@@ -1,11 +1,27 @@
+import type { DirectiveResult } from 'lit/directive.js';
+
 import { readFile } from 'node:fs/promises';
 import { join, dirname } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { parseFragment, serialize } from 'parse5';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
+import { RHDSSSRController } from '@rhds/elements/lib/ssr-controller.js';
+
 import * as Tools from '@parse5/tools';
 import type { UxdotPattern } from './uxdot-pattern.js';
-import type { DirectiveResult } from 'lit/directive.js';
+
+let HighlightPairedShortcode: (
+  content: string,
+  language: string,
+  highlights: '',
+  options: {
+    lineSeparator: string;
+    errorOnInvalidLanguage: boolean;
+    alwaysWrapLineHighlights: boolean;
+    preAttributes: Record<string, string>;
+    codeAttributes: Record<string, string>;
+  },
+) => string;
 
 function dedent(str: string) {
   const stripped = str.replace(/^\n/, '');
@@ -18,16 +34,8 @@ interface EleventyPageData {
   outputPath: string;
 }
 
-export class UxdotPatternSSRControllerServer {
-  constructor(public host: UxdotPattern) {}
-
-  #HighlightPairedShortcode?: (
-    content: string,
-    language: string,
-    highlightlines: string,
-    options: object,
-  ) => string;
-
+export class UxdotPatternSSRControllerServer extends RHDSSSRController {
+  declare host: UxdotPattern;
   allContent?: DirectiveResult;
   htmlContent?: DirectiveResult;
   cssContent?: DirectiveResult;
@@ -64,7 +72,7 @@ export class UxdotPatternSSRControllerServer {
   }
 
   #highlight(language: string, content: string) {
-    const result = this.#HighlightPairedShortcode?.(content, language, '', {
+    const result = HighlightPairedShortcode(content, language, '', {
       lineSeparator: '\n',
       errorOnInvalidLanguage: false,
       alwaysWrapLineHighlights: false,
@@ -74,17 +82,22 @@ export class UxdotPatternSSRControllerServer {
     return result;
   }
 
-  async hostUpdate() {
+  async #loadHighlighter() {
     // START workaround for ssr: prism will try to use the DOM is `document` is available
     // but lit-ssr needs the shims, so delete it before highlighting and restore it after
     const shim = globalThis.document;
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     delete globalThis.document;
-    this.#HighlightPairedShortcode =
-      await import(
-        '@11ty/eleventy-plugin-syntaxhighlight/src/HighlightPairedShortcode.js',
-      ).then(m => m.default);
+    const hl = await import('@11ty/eleventy-plugin-syntaxhighlight/src/HighlightPairedShortcode.js')
+        .then(m => m.default);
+    // END workaround
+    globalThis.document = shim;
+    return hl;
+  }
+
+  async ssrSetup() {
+    HighlightPairedShortcode ||= await this.#loadHighlighter();
     const allContent = await this.#getPatternContent();
     const partial = parseFragment(allContent);
 
@@ -101,9 +114,6 @@ export class UxdotPatternSSRControllerServer {
     this.cssContent = unsafeHTML(this.#highlight('css', cssContent));
     this.jsContent = unsafeHTML(this.#highlight('js', jsContent));
     this.htmlContent = unsafeHTML(this.#highlight('html', htmlContent));
-    // END workaround
-    globalThis.document = shim;
-    return [];
   }
 }
 

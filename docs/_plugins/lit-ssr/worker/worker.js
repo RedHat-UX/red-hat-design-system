@@ -4,6 +4,9 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
+/** @import { RHDSSSRController } from '@rhds/elements/lib/ssr-controller.js' */
+/** @import { ReactiveController } from 'lit' */
+
 import { parentPort } from 'worker_threads';
 import { render } from '@lit-labs/ssr';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
@@ -11,20 +14,28 @@ import { collectResult } from '@lit-labs/ssr/lib/render-result.js';
 
 import { LitElementRenderer } from '@lit-labs/ssr/lib/lit-element-renderer.js';
 
+import { ssrControllerMap } from '@rhds/elements/lib/ssr-controller.js';
+
 if (parentPort === null) {
   throw new Error('worker.js must only be run in a worker thread');
 }
 
 let initialized = false;
 
+/**
+ * @param {ReactiveController} controller
+ * @returns {controller is RHDSSSRController}
+ */
+function isRHDSSSRController(controller) {
+  return !!controller.isRHDSSSRController;
+}
+
 parentPort.on('message', async message => {
   switch (message.type) {
     case 'initialize-request': {
       if (!initialized) {
-        const { imports } = message;
-        await Promise.all(imports.map(module => import(module)));
-        const response = { type: 'initialize-response' };
-        parentPort.postMessage(response);
+        await Promise.all(message.imports.map(module => import(module)));
+        parentPort.postMessage({ type: 'initialize-response' });
       }
       initialized = true;
       break;
@@ -34,24 +45,27 @@ parentPort.on('message', async message => {
       const { id, content, page } = message;
       const result = render(unsafeHTML(content), {
         elementRenderers: [
-          class UxdotPatternRenderer extends LitElementRenderer {
+          class RHDSSSRableRenderer extends LitElementRenderer {
             * renderShadow(renderInfo) {
-              if (this.tagName === 'uxdot-pattern') {
-                this.element.ssrController.page = page;
-                yield [this.element.ssrController.hostUpdate()];
-              }
+              const controllers = ssrControllerMap.get(this.element);
+              yield controllers?.map(async x => {
+                if (isRHDSSSRController(x)) {
+                  x.page = page;
+                  await x.ssrSetup();
+                  return [];
+                }
+              }) ?? [];
               yield* super.renderShadow(renderInfo);
             }
           },
         ],
       });
       const rendered = await collectResult(result);
-      const response = {
+      parentPort.postMessage({
         type: 'render-response',
         id,
         rendered,
-      };
-      parentPort.postMessage(response);
+      });
       break;
     }
   }
