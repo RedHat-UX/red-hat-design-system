@@ -29,28 +29,32 @@ import styles from './uxdot-pattern.css';
 export class UxdotPattern extends LitElement {
   static styles = [styles];
 
+  /** Which color palette to apply to the demo surface */
   @property({ reflect: true, attribute: 'color-palette' })
   colorPalette: ColorPalette = 'lightest';
 
-  @colorContextConsumer() private on?: ColorTheme;
-
-  @property({ reflect: true }) src?: string;
-
-  @property({ attribute: 'output-path' }) outputPath?: string;
-
-  @property({ attribute: 'input-path' }) inputPath?: string;
-
-  @property({ reflect: true, attribute: 'css-src' }) cssSrc?: string;
-
-  @property({ reflect: true, attribute: 'js-src' }) jsSrc?: string;
-
+  /** The id of the element in shadow DOM which the color picker targets */
   @property({ reflect: true }) target = 'content';
 
-  @property({ type: Boolean }) noColorPicker = false;
+  /** Path to the pattern source file, relative to the input file */
+  @property({ reflect: true }) src?: string;
 
-  @property({ type: Boolean }) stacked = false;
+  /** Path to additional CSS file to include */
+  @property({ reflect: true, attribute: 'css-src' }) cssSrc?: string;
 
+  /** Path to additional JS file to include */
+  @property({ reflect: true, attribute: 'js-src' }) jsSrc?: string;
+
+  /** Should the color picker be hidden? */
+  @property({ type: Boolean, attribute: 'no-color-picker' }) noColorPicker = false;
+
+  /** Should the code blocks be expanded? */
+  @property({ type: Boolean, attribute: 'full-height' }) fullHeight = false;
+
+  /** Which colour palettes should be allowed in the picker? (default: all) */
   @property({ converter: ColorPaletteListConverter }) allow = paletteNames;
+
+  @colorContextConsumer() private on?: ColorTheme;
 
   ssrController = new UxdotPatternSSRController(this);
 
@@ -66,7 +70,7 @@ export class UxdotPattern extends LitElement {
 
     return html`
       <div id="container">
-        <div id="heading"><slot name="heading"><h3>Example</h3></slot></div>
+        <div id="heading"><slot name="heading"></slot></div>
 
         <form id="color-picker"
               ?hidden="${this.noColorPicker}"
@@ -86,21 +90,29 @@ export class UxdotPattern extends LitElement {
         <rh-tabs class="code-tabs">
           <rh-tab slot="tab" active>HTML</rh-tab>
           <rh-tab-panel>
-            <rh-code-block highlighting="prerendered" actions="copy wrap">
+            <rh-code-block highlighting="prerendered"
+                           actions="copy wrap"
+                           ?full-height="${this.fullHeight}">
               ${this.ssrController.htmlContent}
               ${actionsLabels}
             </rh-code-block>
           </rh-tab-panel>
-          <rh-tab slot="tab" ?disabled="${!this.ssrController.hasCss}">CSS</rh-tab>
+          <rh-tab slot="tab"
+                  ?disabled="${!this.ssrController.hasCss}">CSS</rh-tab>
           <rh-tab-panel>
-            <rh-code-block highlighting="prerendered" actions="copy wrap">
+            <rh-code-block highlighting="prerendered"
+                           actions="copy wrap"
+                           ?full-height="${this.fullHeight}">
               ${this.ssrController.cssContent}
               ${actionsLabels}
             </rh-code-block>
           </rh-tab-panel>
-          <rh-tab slot="tab" ?disabled="${!this.ssrController.hasJs}">JS</rh-tab>
+          <rh-tab slot="tab"
+                  ?disabled="${!this.ssrController.hasJs}">JS</rh-tab>
           <rh-tab-panel>
-            <rh-code-block highlighting="prerendered" actions="copy wrap">
+            <rh-code-block highlighting="prerendered"
+                           actions="copy wrap"
+                           ?full-height="${this.fullHeight}">
               ${this.ssrController.jsContent}
               ${actionsLabels}
             </rh-code-block>
