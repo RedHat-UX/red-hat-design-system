@@ -368,9 +368,6 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     }
   });
 
-  eleventyConfig.addWatchTarget('docs/patterns/**/patterns/*.html');
-  eleventyConfig.addWatchTarget('docs/theming/**/patterns/*.html');
-
   for (const tagName of fs.readdirSync(path.join(process.cwd(), './elements/'))) {
     const dir = path.join(process.cwd(), './elements/', tagName, 'docs/');
     eleventyConfig.addWatchTarget(dir);
