@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en" dir="ltr"><head>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="/assets/logo-red-hat.svg">
@@ -33,8 +35,8 @@
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
-    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.2/core.js",
     "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.2/core.js",
     "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
     "lit/": "/assets/packages/lit/",
     "lit-html/": "/assets/packages/lit-html/",
@@ -95,7 +97,81 @@
   <rh-card id="custom">
     <h2 slot="header">Slotted title, content, and footer</h2>
     <label for="picker">Change this card's color-palette</label>
-    <rh-context-picker id="picker" target="custom" allow="darkest, lighter, lightest"></rh-context-picker>
+    <rh-context-picker    id="picker" target="custom" allow="darkest, lighter, lightest"><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-flex;position:relative}*{box-sizing:border-box}#container{display:contents;--thumb-color:var(--rh-color-interactive-primary-default-on-light,#06c)}#container.on.dark{--thumb-color:var(--rh-color-interactive-primary-default-on-dark,#92c5f9)}.darkest{--c:var(--rh-color-surface-darkest,#151515)}.darker{--c:var(--rh-color-surface-darker,#1f1f1f)}.dark{--c:var(--rh-color-surface-dark,#383838)}.light{--c:var(--rh-color-surface-light,#e0e0e0)}.lighter{--c:var(--rh-color-surface-lighter,#f2f2f2)}.lightest{--c:var(--rh-color-surface-lightest,#fff)}:is(.dark,.darker,.darkest){--alt-color:var(--rh-color-surface-light,#e0e0e0)}:is(.light,.lighter,.lightest){--alt-color:var(--rh-color-surface-dark,#383838)}:is(:focus,:hover){--alt-color:var(--thumb-color)}input{appearance:none;display:block;position:relative;width:var(--rh-size-icon-03,32px);height:var(--rh-size-icon-03,32px);border-radius:50%;margin-block:8px;margin-inline:4px}input:before{background:var(--c);inset:0;outline:var(--alt-color) solid 2px}input:before,input:checked:after{display:block;content:"";border-radius:50%;position:absolute}input:checked:after{background:var(--alt-color);inset:6px}input:focus{outline:var(--thumb-color) solid 4px}label,rh-tooltip span{text-transform:capitalize}.visually-hidden{position:fixed;top:0;left:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}</style><!--lit-part x15W7UYhQy4=-->
+      <div id="host-label"
+           class="visually-hidden"><!--lit-part--><!--/lit-part--></div>
+      <!--lit-node 2--><div id="container"
+           
+           class=" on dark ">
+        <!--lit-part--><!--lit-part CvB6VummPTo=-->
+        <!--lit-node 0--><label for="radio-darkest" class="visually-hidden"><!--lit-part-->darkest<!--/lit-part--></label>
+        <!--lit-node 2--><rh-tooltip defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline}#container{display:inline-flex;position:relative;max-width:100%;--_floating-arrow-size:var(--rh-tooltip-arrow-size,var(--rh-tooltip__arrow--Width,11px))}#tooltip,#tooltip:after{position:absolute}#tooltip{display:none;opacity:0;pointer-events:none;z-index:10000;transition:opacity .3s cubic-bezier(.54,1.5,.38,1.11) 0s;text-align:var(--_text-alignment,center);word-break:break-word;translate:var(--_floating-content-translate);width:max-content;inset-block-start:0;inset-inline-start:0;will-change:opacity;line-height:var(--rh-line-height-body-text,1.5);box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 #15151533);max-width:var(--rh-tooltip-max-width,var(--rh-tooltip--MaxWidth,18.75rem));border-radius:var(--rh-border-radius-default,3px);padding:var(--rh-tooltip-content-padding-block-start,var(--rh-tooltip__content--PaddingTop,var(--rh-space-lg,16px))) var(--rh-tooltip-content-padding-inline-end,var(--rh-tooltip__content--PaddingRight,var(--rh-space-lg,16px))) var(--rh-tooltip-content-padding-block-end,var(--rh-tooltip__content--PaddingBottom,var(--rh-space-lg,16px))) var(--rh-tooltip-content-padding-inline-start,var(--rh-tooltip__content--PaddingLeft,var(--rh-space-lg,16px)));font-size:var(--rh-tooltip-content-font-size,var(--rh-tooltip__content--FontSize,var(--rh-font-size-body-text-sm,.875rem)));color:var(--rh-tooltip-content-color,var(--rh-tooltip__content--Color,var(--rh-color-text-primary-on-dark,#fff)));background-color:var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-darkest,#151515)))}.initialized #tooltip{display:block}#tooltip:after{display:block;content:"";rotate:45deg;width:var(--_floating-arrow-size);height:var(--_floating-arrow-size);will-change:left top right bottom;background-color:var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-darkest,#151515)))}.c{display:contents}.open #tooltip{opacity:1}.left #tooltip:after{inset-inline-start:calc(var(--_floating-arrow-size)*-.5)}.top #tooltip:after{inset-block-start:calc(100% - var(--_floating-arrow-size)*.5)}.right #tooltip:after{inset-inline-end:calc(100% - var(--_floating-arrow-size)*.5)}.bottom #tooltip:after{inset-block-end:calc(100% - var(--_floating-arrow-size)*.5)}.left.center #tooltip:after{inset-block-start:calc(50% - var(--_floating-arrow-size)*.5)}.top.center #tooltip:after{inset-inline-end:calc(50% - var(--_floating-arrow-size)*.5)}.right.center #tooltip:after{inset-block-start:calc(50% - var(--_floating-arrow-size)*.5)}.bottom.center #tooltip:after{inset-inline-end:calc(50% - var(--_floating-arrow-size)*.5)}.left.start #tooltip:after{inset-block-start:var(--_floating-arrow-size)}.top.start #tooltip:after{inset-inline-start:var(--_floating-arrow-size)}.right.start #tooltip:after{inset-block-start:var(--_floating-arrow-size)}.bottom.start #tooltip:after{inset-inline-start:var(--_floating-arrow-size)}.left.end #tooltip:after{inset-block-end:var(--_floating-arrow-size)}.top.end #tooltip:after{inset-inline-end:var(--_floating-arrow-size)}.right.end #tooltip:after{inset-block-end:var(--_floating-arrow-size)}.bottom.end #tooltip:after{inset-inline-end:var(--_floating-arrow-size)}:host([position=left]),:host([position=right]){--_text-alignment:"start"}.dark{--rh-tooltip-content-background-color:var(--rh-color-surface-lightest,#fff);--rh-tooltip-content-color:var(--rh-color-text-primary-on-light,#151515)}</style><!--lit-part OZxlTKV0W1c=-->
+      <!--lit-node 0--><div id="container"
+           style=""
+           class=" center ">
+        <div class="c" role="tooltip" aria-labelledby="tooltip">
+          <slot id="invoker"></slot>
+        </div>
+        <!--lit-node 3--><div class="c" aria-hidden="true">
+          <slot id="tooltip" name="content"><!--lit-part--><!--/lit-part--></slot>
+        </div>
+      </div>
+    <!--/lit-part--></template>
+          <span slot="content"><!--lit-part-->darkest<!--/lit-part--></span>
+          <!--lit-node 5--><input id="radio-darkest"
+                 class=" darkest "
+                 name="palette"
+                 type="radio"
+                 value="darkest"
+                 aria-describedby="host-label"
+                 checked>
+        </rh-tooltip><!--/lit-part--><!--lit-part CvB6VummPTo=-->
+        <!--lit-node 0--><label for="radio-lighter" class="visually-hidden"><!--lit-part-->lighter<!--/lit-part--></label>
+        <!--lit-node 2--><rh-tooltip defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline}#container{display:inline-flex;position:relative;max-width:100%;--_floating-arrow-size:var(--rh-tooltip-arrow-size,var(--rh-tooltip__arrow--Width,11px))}#tooltip,#tooltip:after{position:absolute}#tooltip{display:none;opacity:0;pointer-events:none;z-index:10000;transition:opacity .3s cubic-bezier(.54,1.5,.38,1.11) 0s;text-align:var(--_text-alignment,center);word-break:break-word;translate:var(--_floating-content-translate);width:max-content;inset-block-start:0;inset-inline-start:0;will-change:opacity;line-height:var(--rh-line-height-body-text,1.5);box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 #15151533);max-width:var(--rh-tooltip-max-width,var(--rh-tooltip--MaxWidth,18.75rem));border-radius:var(--rh-border-radius-default,3px);padding:var(--rh-tooltip-content-padding-block-start,var(--rh-tooltip__content--PaddingTop,var(--rh-space-lg,16px))) var(--rh-tooltip-content-padding-inline-end,var(--rh-tooltip__content--PaddingRight,var(--rh-space-lg,16px))) var(--rh-tooltip-content-padding-block-end,var(--rh-tooltip__content--PaddingBottom,var(--rh-space-lg,16px))) var(--rh-tooltip-content-padding-inline-start,var(--rh-tooltip__content--PaddingLeft,var(--rh-space-lg,16px)));font-size:var(--rh-tooltip-content-font-size,var(--rh-tooltip__content--FontSize,var(--rh-font-size-body-text-sm,.875rem)));color:var(--rh-tooltip-content-color,var(--rh-tooltip__content--Color,var(--rh-color-text-primary-on-dark,#fff)));background-color:var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-darkest,#151515)))}.initialized #tooltip{display:block}#tooltip:after{display:block;content:"";rotate:45deg;width:var(--_floating-arrow-size);height:var(--_floating-arrow-size);will-change:left top right bottom;background-color:var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-darkest,#151515)))}.c{display:contents}.open #tooltip{opacity:1}.left #tooltip:after{inset-inline-start:calc(var(--_floating-arrow-size)*-.5)}.top #tooltip:after{inset-block-start:calc(100% - var(--_floating-arrow-size)*.5)}.right #tooltip:after{inset-inline-end:calc(100% - var(--_floating-arrow-size)*.5)}.bottom #tooltip:after{inset-block-end:calc(100% - var(--_floating-arrow-size)*.5)}.left.center #tooltip:after{inset-block-start:calc(50% - var(--_floating-arrow-size)*.5)}.top.center #tooltip:after{inset-inline-end:calc(50% - var(--_floating-arrow-size)*.5)}.right.center #tooltip:after{inset-block-start:calc(50% - var(--_floating-arrow-size)*.5)}.bottom.center #tooltip:after{inset-inline-end:calc(50% - var(--_floating-arrow-size)*.5)}.left.start #tooltip:after{inset-block-start:var(--_floating-arrow-size)}.top.start #tooltip:after{inset-inline-start:var(--_floating-arrow-size)}.right.start #tooltip:after{inset-block-start:var(--_floating-arrow-size)}.bottom.start #tooltip:after{inset-inline-start:var(--_floating-arrow-size)}.left.end #tooltip:after{inset-block-end:var(--_floating-arrow-size)}.top.end #tooltip:after{inset-inline-end:var(--_floating-arrow-size)}.right.end #tooltip:after{inset-block-end:var(--_floating-arrow-size)}.bottom.end #tooltip:after{inset-inline-end:var(--_floating-arrow-size)}:host([position=left]),:host([position=right]){--_text-alignment:"start"}.dark{--rh-tooltip-content-background-color:var(--rh-color-surface-lightest,#fff);--rh-tooltip-content-color:var(--rh-color-text-primary-on-light,#151515)}</style><!--lit-part OZxlTKV0W1c=-->
+      <!--lit-node 0--><div id="container"
+           style=""
+           class=" center ">
+        <div class="c" role="tooltip" aria-labelledby="tooltip">
+          <slot id="invoker"></slot>
+        </div>
+        <!--lit-node 3--><div class="c" aria-hidden="true">
+          <slot id="tooltip" name="content"><!--lit-part--><!--/lit-part--></slot>
+        </div>
+      </div>
+    <!--/lit-part--></template>
+          <span slot="content"><!--lit-part-->lighter<!--/lit-part--></span>
+          <!--lit-node 5--><input id="radio-lighter"
+                 class=" lighter "
+                 name="palette"
+                 type="radio"
+                 value="lighter"
+                 aria-describedby="host-label"
+                 >
+        </rh-tooltip><!--/lit-part--><!--lit-part CvB6VummPTo=-->
+        <!--lit-node 0--><label for="radio-lightest" class="visually-hidden"><!--lit-part-->lightest<!--/lit-part--></label>
+        <!--lit-node 2--><rh-tooltip defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline}#container{display:inline-flex;position:relative;max-width:100%;--_floating-arrow-size:var(--rh-tooltip-arrow-size,var(--rh-tooltip__arrow--Width,11px))}#tooltip,#tooltip:after{position:absolute}#tooltip{display:none;opacity:0;pointer-events:none;z-index:10000;transition:opacity .3s cubic-bezier(.54,1.5,.38,1.11) 0s;text-align:var(--_text-alignment,center);word-break:break-word;translate:var(--_floating-content-translate);width:max-content;inset-block-start:0;inset-inline-start:0;will-change:opacity;line-height:var(--rh-line-height-body-text,1.5);box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 #15151533);max-width:var(--rh-tooltip-max-width,var(--rh-tooltip--MaxWidth,18.75rem));border-radius:var(--rh-border-radius-default,3px);padding:var(--rh-tooltip-content-padding-block-start,var(--rh-tooltip__content--PaddingTop,var(--rh-space-lg,16px))) var(--rh-tooltip-content-padding-inline-end,var(--rh-tooltip__content--PaddingRight,var(--rh-space-lg,16px))) var(--rh-tooltip-content-padding-block-end,var(--rh-tooltip__content--PaddingBottom,var(--rh-space-lg,16px))) var(--rh-tooltip-content-padding-inline-start,var(--rh-tooltip__content--PaddingLeft,var(--rh-space-lg,16px)));font-size:var(--rh-tooltip-content-font-size,var(--rh-tooltip__content--FontSize,var(--rh-font-size-body-text-sm,.875rem)));color:var(--rh-tooltip-content-color,var(--rh-tooltip__content--Color,var(--rh-color-text-primary-on-dark,#fff)));background-color:var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-darkest,#151515)))}.initialized #tooltip{display:block}#tooltip:after{display:block;content:"";rotate:45deg;width:var(--_floating-arrow-size);height:var(--_floating-arrow-size);will-change:left top right bottom;background-color:var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-darkest,#151515)))}.c{display:contents}.open #tooltip{opacity:1}.left #tooltip:after{inset-inline-start:calc(var(--_floating-arrow-size)*-.5)}.top #tooltip:after{inset-block-start:calc(100% - var(--_floating-arrow-size)*.5)}.right #tooltip:after{inset-inline-end:calc(100% - var(--_floating-arrow-size)*.5)}.bottom #tooltip:after{inset-block-end:calc(100% - var(--_floating-arrow-size)*.5)}.left.center #tooltip:after{inset-block-start:calc(50% - var(--_floating-arrow-size)*.5)}.top.center #tooltip:after{inset-inline-end:calc(50% - var(--_floating-arrow-size)*.5)}.right.center #tooltip:after{inset-block-start:calc(50% - var(--_floating-arrow-size)*.5)}.bottom.center #tooltip:after{inset-inline-end:calc(50% - var(--_floating-arrow-size)*.5)}.left.start #tooltip:after{inset-block-start:var(--_floating-arrow-size)}.top.start #tooltip:after{inset-inline-start:var(--_floating-arrow-size)}.right.start #tooltip:after{inset-block-start:var(--_floating-arrow-size)}.bottom.start #tooltip:after{inset-inline-start:var(--_floating-arrow-size)}.left.end #tooltip:after{inset-block-end:var(--_floating-arrow-size)}.top.end #tooltip:after{inset-inline-end:var(--_floating-arrow-size)}.right.end #tooltip:after{inset-block-end:var(--_floating-arrow-size)}.bottom.end #tooltip:after{inset-inline-end:var(--_floating-arrow-size)}:host([position=left]),:host([position=right]){--_text-alignment:"start"}.dark{--rh-tooltip-content-background-color:var(--rh-color-surface-lightest,#fff);--rh-tooltip-content-color:var(--rh-color-text-primary-on-light,#151515)}</style><!--lit-part OZxlTKV0W1c=-->
+      <!--lit-node 0--><div id="container"
+           style=""
+           class=" center ">
+        <div class="c" role="tooltip" aria-labelledby="tooltip">
+          <slot id="invoker"></slot>
+        </div>
+        <!--lit-node 3--><div class="c" aria-hidden="true">
+          <slot id="tooltip" name="content"><!--lit-part--><!--/lit-part--></slot>
+        </div>
+      </div>
+    <!--/lit-part--></template>
+          <span slot="content"><!--lit-part-->lightest<!--/lit-part--></span>
+          <!--lit-node 5--><input id="radio-lightest"
+                 class=" lightest "
+                 name="palette"
+                 type="radio"
+                 value="lightest"
+                 aria-describedby="host-label"
+                 >
+        </rh-tooltip><!--/lit-part--><!--/lit-part-->
+      </div>
+    <!--/lit-part--></template></rh-context-picker>
     <rh-cta variant="primary" slot="footer">
       <a href="#">Call to action</a>
     </rh-cta>
@@ -191,5 +267,5 @@
   import '@rhds/elements/rh-cta/rh-cta.js';
   import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
 </script>
-</main>
-</body></html>
+</main></body>
+</html>

@@ -1,4 +1,4 @@
-import type { ReactiveController, ReactiveControllerHost } from 'lit';
+import { type ReactiveController, type ReactiveControllerHost } from 'lit';
 export interface TabsAriaControllerOptions<Tab, Panel> {
     /** Add an `isTab` predicate to ensure this tabs instance' state does not leak into parent tabs' state */
     isTab: (node: unknown) => node is Tab;
