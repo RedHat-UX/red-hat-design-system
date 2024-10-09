@@ -23,13 +23,12 @@ An alert is a layout including an icon, title, text, actions, and a close button
     </ol>
   </figcaption>
 </figure>
-å
 
 ## Variants
 
 ### Inline
 
-The default alert is inline. At minimum, the status icon and title needs to be visible.
+The default alert is inline. At minimum, the status icon and title need to be visible.
 
 <uxdot-example width-adjustment="408px">
   <img src="../alert-style-variant-inline.svg" 
