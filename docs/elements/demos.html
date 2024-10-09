@@ -222,8 +222,7 @@ pagination:
   <article class="has-toc">
     <uxdot-header has-subnav>
       <h1 id="{{ slug }}" class="page-title">{{ prettyName }}{% if planned %} <rh-tag icon="notification-fill" color="gray">Planned</rh-tag>{% endif %}</h1>
-      <rh-subnav slot="subnav">{% for tab in doc.tabs %}{% if loop.last and demos.length %}
-        <a {{ 'active' if page.url === demosUrl }} href="{{ demosUrl }}">Demos</a>{% endif %}
+      <rh-subnav slot="subnav">{% for tab in doc.tabs %}
         <a {{ 'active' if tab.href == page.url }} href="{{ tab.href }}">
           {{- tab.pageTitle | capitalize -}}
         </a>{% endfor %}
