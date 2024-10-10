@@ -1,8 +1,7 @@
 ---
 # this file generates the demos subnav tab,
 # e.g. ux.redhat.com/elements/tile/demos/
-layout: layouts/base.njk
-hasToc: true
+layout: layouts/pages/has-toc.njk
 templateEngineOverride: njk
 permalink: '/elements/{{ element.slug }}/demos/'
 eleventyComputed:
@@ -69,17 +68,10 @@ pagination:
   }
 </style>
 
-<link rel="stylesheet" data-helmet href="/styles/pages/backpage.css">
-
-<link data-helmet
-      rel="stylesheet"
-      href="/assets/javascript/elements/uxdot-toc-lightdom.css">
-
 <script type="module" data-helmet>
   import '/assets/javascript/elements/uxdot-feedback.js';
   import '/assets/javascript/elements/uxdot-copy-button.js';
   import '/assets/javascript/elements/uxdot-header.js';
-  import '/assets/javascript/elements/uxdot-toc.js';
   import 'playground-elements';
   import '@rhds/elements/rh-button/rh-button.js';
   import '@rhds/elements/rh-card/rh-card.js';
@@ -156,7 +148,6 @@ pagination:
 {%- endset -%}
 {# END COMMON #}
 
-{% set demosContent %}
 {%- for filename, config in playground.files -%}
   {%- if config.label -%}
     {% set extension = filename.split('.').pop() %}
@@ -209,39 +200,3 @@ pagination:
     </playground-project>
   {%- endif -%}
 {%- endfor -%}
-{% endset %}
-
-{% set table = demosContent | toc %}
-
-{% include 'partials/component/masthead.njk' %}
-{% include 'partials/component/sidenav.njk' %}
-
-<rh-surface id="main"
-            role="main"
-            color-palette="lightest">
-  <article class="has-toc">
-    <uxdot-header has-subnav>
-      <h1 id="{{ slug }}" class="page-title">{{ prettyName }}{% if planned %} <rh-tag icon="notification-fill" color="gray">Planned</rh-tag>{% endif %}</h1>
-      <rh-subnav slot="subnav">{% for tab in doc.tabs %}
-        <a {{ 'active' if tab.href == page.url }} href="{{ tab.href }}">
-          {{- tab.pageTitle | capitalize -}}
-        </a>{% endfor %}
-      </rh-subnav>
-    </uxdot-header>
-
-    <div class="aside">
-      <uxdot-toc summary="On this page">
-        {{ table | safe }}
-      </uxdot-toc>
-    </div>
-
-    <div class="container">
-      {{ demosContent | safe }}
-      {% include "partials/component/feedback.html" %}
-      {% include "partials/component/edit-this-page.njk" %}
-    </div>
-
-  </article>
-  {% include "partials/component/back-to-top.njk" %}
-</rh-surface>
-{% include 'partials/component/footer.njk' %}

@@ -1,7 +1,7 @@
 ---
 title: Color Palettes
 bodyClasses: element-docs
-hasToc: true
+layout: layouts/pages/has-toc.njk
 order: 2
 ---
 <link rel="stylesheet"
@@ -119,8 +119,8 @@ HTML attribute. So for example, to create a card with the darkest color palette,
 use this HTML:
 
 <uxdot-pattern class="card-snippet-grid"
-               full-height
-               src="./patterns/card-default-vs-set-palette.html">
+               src="./patterns/card-default-vs-set-palette.html"
+               full-height="">
 </uxdot-pattern>
 
 A color palette provider is a **surface** on which a particular color palette is
@@ -165,8 +165,8 @@ Extending our card example from above, if our page author then adds an
 page author need not and should not customize the CTA.
 
 <uxdot-pattern class="card-snippet-grid"
-               full-height
-               src="./patterns/card-child-consumers.html">
+               src="./patterns/card-child-consumers.html"
+               full-height="">
 </uxdot-pattern>
 
 <rh-card class="pullquote-card right">
@@ -184,8 +184,8 @@ provider and a consumer. It can accept the color theme of its parent context and
 it can also set its own color palette.
 
 <uxdot-pattern class="card-snippet-grid"
-               full-height
-               src="./patterns/card-consumer-provider.html">
+               src="./patterns/card-consumer-provider.html"
+               full-height="">
 </uxdot-pattern>
 
 ## Inline color palettes  <rh-tag color="purple">Beta</rh-tag>

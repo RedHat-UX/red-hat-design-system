@@ -1,7 +1,7 @@
 ---
 title: Form
+layout: layouts/pages/has-toc.njk
 order: 50
-hasToc: true
 tags:
   - pattern
 spacerTokens:
@@ -26,18 +26,18 @@ more.
 
 <uxdot-example width-adjustment="736px">
   <img src="./form-samples.svg"
-      alt="Form component samples"
-      width="736"
-      height="717">
+       alt="Form component samples"
+       width="736"
+       height="717">
 </uxdot-example>
 
 ## Style
 
 <uxdot-example width-adjustment="660px">
   <img src="./form-blueprint.svg"
-      alt="Form component blueprint"
-      width="660"
-      height="899">
+       alt="Form component blueprint"
+       width="660"
+       height="899">
 </uxdot-example>
 
 ### Visual elements
@@ -58,9 +58,9 @@ There are a variety of form elements available for use depending on what informa
 
 <uxdot-example width-adjustment="824px">
   <img src="./form-visual-elements.svg"
-      alt="Form component visual elements"
-      width="824"
-      height="167">
+       alt="Form component visual elements"
+       width="824"
+       height="167">
 </uxdot-example>
 
 ### Variants
@@ -71,9 +71,9 @@ There are two form variants available for use.
 
 <uxdot-example width-adjustment="736px">
   <img src="./form-variants.svg"
-      alt="Form component variants"
-      width="736"
-      height="389">
+       alt="Form component variants"
+       width="736"
+       height="389">
 </uxdot-example>
 
 ## Theme
@@ -82,9 +82,9 @@ There are two form variants available for use.
 
 <uxdot-example width-adjustment="360px">
   <img src="./form-theme-light.svg"
-      alt="Form component, light theme"
-      width="360"
-      height="717">
+       alt="Form component, light theme"
+       width="360"
+       height="717">
 </uxdot-example>
 
 ### Dark theme
@@ -96,9 +96,9 @@ There are two form variants available for use.
 
 <uxdot-example color-palette="darkest" width-adjustment="360px">
   <img src="./form-theme-dark.svg"
-      alt="Form component, dark theme"
-      width="360"
-      height="717">
+       alt="Form component, dark theme"
+       width="360"
+       height="717">
 </uxdot-example>
 
 ## Orientation
@@ -117,9 +117,9 @@ the left edge and some elements span the width of the form, like a field.
 
 <uxdot-example width-adjustment="736px">
   <img src="./form-container-floating-orientation-default.svg"
-      alt="Form components (Container and Floating), default orientation"
-      width="736"
-      height="717">
+       alt="Form components (Container and Floating), default orientation"
+       width="736"
+       height="717">
 </uxdot-example>
 
 ### Horizontal
@@ -143,16 +143,16 @@ of other form elements with text labels.
 
 <uxdot-example width-adjustment="750px">
   <img src="./form-container-orientation-horizontal.svg"
-      alt="Form components (Container and Floating), horizontal orientation"
-      width="750"
-      height="587">
+       alt="Form components (Container and Floating), horizontal orientation"
+       width="750"
+       height="587">
 </uxdot-example>
 
 <uxdot-example width-adjustment="750px">
   <img src="./form-floating-orientation-horizontal.svg"
-      alt="Form component (Floating), horizontal orientation"
-      width="750"
-      height="525">
+       alt="Form component (Floating), horizontal orientation"
+       width="750"
+       height="525">
 </uxdot-example>
 
 ### Text label alignment
@@ -185,9 +185,9 @@ page.
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
   <img src="./form-in-use-container-default-orientation.svg"
-      alt="Form (Container), default orientation"
-      width="1000"
-      height="917">
+       alt="Form (Container), default orientation"
+       width="1000"
+       height="917">
 </uxdot-example>
 
 ### Floating variant
@@ -204,16 +204,16 @@ page.
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
   <img src="./form-in-use-floating-default-orientation.svg"
-      alt="Form (Floating), default orientation"
-      width="1000"
-      height="855">
+       alt="Form (Floating), default orientation"
+       width="1000"
+       height="855">
 </uxdot-example>
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
   <img src="./form-in-use-floating-horizontal-orientation.svg"
-      alt="Form (Floating), horizontal orientation"
-      width="1000"
-      height="903">
+       alt="Form (Floating), horizontal orientation"
+       width="1000"
+       height="903">
 </uxdot-example>
 
 ### Form content
@@ -227,9 +227,9 @@ A user will have a better experience with submitting a form if the elements are 
 
 <uxdot-example width-adjustment="296px">
   <img src="./form-content.svg"
-      alt="Form component content"
-      width="296"
-      height="84">
+       alt="Form component content"
+       width="296"
+       height="84">
 </uxdot-example>
 
 ### Required fields
@@ -243,9 +243,9 @@ should state **All fields are optional** instead.
 
 <uxdot-example width-adjustment="736px">
   <img src="./form-required-fields.svg"
-      alt="Form component required fields"
-      width="736"
-      height="717">
+       alt="Form component required fields"
+       width="736"
+       height="717">
 </uxdot-example>
 
 ### Data inputs
@@ -256,9 +256,9 @@ same form.
 
 <uxdot-example width-adjustment="576px">
   <img src="./form-data-inputs.svg"
-      alt="Form component data inputs"
-      width="576"
-      height="124">
+       alt="Form component data inputs"
+       width="576"
+       height="124">
 </uxdot-example>
 
 ### Using data inputs
@@ -270,26 +270,26 @@ more information.
   <table>
     <thead>
       <tr>
-        <th scope="col" data-label="Data input name">Data input name</th>
-        <th scope="col" data-label="Usage">Usage</th>
+        <th scope="col">Data input name</th>
+        <th scope="col">Usage</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td data-label="Data input name">Radio button</td>
-        <td data-label="Usage">Use when only one option can be chosen from a list of no more than five options.</td>
+        <td>Radio button</td>
+        <td>Use when only one option can be chosen from a list of no more than five options.</td>
       </tr>
       <tr>
-        <td data-label="Data input name">Checkbox</td>
-        <td data-label="Usage">Use when either several or no options can be chosen from a list of no more than five options.</td>
+        <td>Checkbox</td>
+        <td>Use when either several or no options can be chosen from a list of no more than five options.</td>
       </tr>
       <tr>
-        <td data-label="Data input name">Select list</td>
-        <td data-label="Usage">Use to select one or more options from a list of more than five options.</td>
+        <td>Select list</td>
+        <td>Use to select one or more options from a list of more than five options.</td>
       </tr>
       <tr>
-        <td data-label="Data input name">Switch</td>
-        <td data-label="Usage">Use to toggle between two different states.</td>
+        <td>Switch</td>
+        <td>Use to toggle between two different states.</td>
       </tr>
     </tbody>
   </table>
@@ -481,32 +481,14 @@ in order, from top to bottom or left to right.
 ## Accessibility
 
 <rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Key">Key</th>
-        <th scope="col" data-label="Action">Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Key"><kbd>Tab</kbd></td>
-        <td data-label="Action">Moves the focus to the next form element.</td>
-      </tr>
-      <tr>
-        <td data-label="Key"><kbd>Shift + Tab</kbd></td>
-        <td data-label="Action">Moves the focus to the previous form element.</td>
-      </tr>
-      <tr>
-        <td data-label="Key"><kbd>Space</kbd></td>
-        <td data-label="Action">Opens/closes a popover, opens/closes a select list, or selects/toggles a data input.</td>
-      </tr>
-      <tr>
-        <td data-label="Key"><kbd>Enter</kbd></td>
-        <td data-label="Action">Opens/closes a popover or submits/clears the form.</td>
-      </tr>
-    </tbody>
-  </table>
+
+| Key                    | Action                                                                               |
+| ---------------------- | ------------------------------------------------------------------------------------ |
+| <kbd>Tab</kbd>         | Moves the focus to the next form element.                                            |
+| <kbd>Shift + Tab</kbd> | Moves the focus to the previous form element.                                        |
+| <kbd>Space</kbd>       | Opens/closes a popover, opens/closes a select list, or selects/toggles a data input. |
+| <kbd>Enter</kbd>       | Opens/closes a popover or submits/clears the form.                                   |
+
 </rh-table>
 
 ## Responsive design
@@ -518,16 +500,16 @@ Horizontal variant will switch to the Default variant as screens get smaller.
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
   <img src="./form-responsive-default-desktop.svg"
-      alt="Form component (Default) responsive design, desktop"
-      width="1000"
-      height="438">
+       alt="Form component (Default) responsive design, desktop"
+       width="1000"
+       height="438">
 </uxdot-example>
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
   <img src="./form-responsive-horizontal-desktop.svg"
-      alt="Form component (Horizontal) responsive design, desktop"
-      width="1000"
-      height="360">
+       alt="Form component (Horizontal) responsive design, desktop"
+       width="1000"
+       height="360">
 </uxdot-example>
 
 ### Tablet
@@ -537,18 +519,18 @@ variant to reduce crowding.
 
 <uxdot-example width-adjustment="768px" variant="full" alignment="left" no-border>
   <img src="./form-responsive-tablet.svg"
-      alt="Form component responsive design, tablet"
-      width="768"
-      height="438">
+       alt="Form component responsive design, tablet"
+       width="768"
+       height="438">
 </uxdot-example>
 
 ### Mobile
 
 <uxdot-example width-adjustment="360px" variant="full" alignment="left" no-border>
   <img src="./form-responsive-mobile.svg"
-      alt="Form component responsive design, mobile"
-      width="360"
-      height="438">
+       alt="Form component responsive design, mobile"
+       width="360"
+       height="438">
 </uxdot-example>
 
 ## Best practices
@@ -559,9 +541,9 @@ Do not align the button group and privacy link to the **right edge** of other fo
 
 <uxdot-example width-adjustment="360px" danger>
   <img src="./form-best-practice-1.svg"
-      alt="Form component, best practice 1"
-      width="360"
-      height="438">
+       alt="Form component, best practice 1"
+       width="360"
+       height="438">
 </uxdot-example>
 
 ### Two Primary buttons
@@ -575,9 +557,9 @@ Do not include two Primary buttons, use a combination of Primary and Link button
 
 <uxdot-example width-adjustment="360px" danger>
   <img src="./form-best-practice-2.svg"
-      alt="Form component, best practice 2"
-      width="360"
-      height="438">
+       alt="Form component, best practice 2"
+       width="360"
+       height="438">
 </uxdot-example>
 
 ### Too many required fields
@@ -588,9 +570,9 @@ inputs are optional, the text should state **All fields are optional** instead.
 
 <uxdot-example width-adjustment="360px" danger>
   <img src="./form-best-practice-3.svg"
-      alt="Form component, best practice 3"
-      width="360"
-      height="717">
+       alt="Form component, best practice 3"
+       width="360"
+       height="717">
 </uxdot-example>
 
 ### 12 columns
@@ -606,9 +588,9 @@ maximum of 8 grid columns.
 
 <uxdot-example width-adjustment="872px" danger>
   <img src="./form-best-practice-4.svg"
-      alt="Form component, best practice 4"
-      width="872"
-      height="438">
+       alt="Form component, best practice 4"
+       width="872"
+       height="438">
 </uxdot-example>
 
 ### Rearranging data inputs and button groups
@@ -618,9 +600,9 @@ rare cases.
 
 <uxdot-example width-adjustment="360px" danger>
   <img src="./form-best-practice-5.svg"
-      alt="Form component, best practice 5"
-      width="360"
-      height="444">
+       alt="Form component, best practice 5"
+       width="360"
+       height="444">
 </uxdot-example>
 
 ## Spacing
@@ -632,18 +614,18 @@ values between elements.
 
 <uxdot-example width-adjustment="360px">
   <img src="./form-spacing-default.svg"
-      alt="Form component spacing, default"
-      width="360"
-      height="497">
+       alt="Form component spacing, default"
+       width="360"
+       height="497">
 </uxdot-example>
 
 ### Horizontal
 
 <uxdot-example width-adjustment="750px">
   <img src="./form-spacing-horizontal.svg"
-      alt="Form component spacing, horizontal"
-      width="750"
-      height="419">
+       alt="Form component spacing, horizontal"
+       width="750"
+       height="419">
 </uxdot-example>
 
 <rh-table>

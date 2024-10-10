@@ -1,7 +1,7 @@
 ---
 title: Customizing
 bodyClasses: element-docs
-hasToc: true
+layout: layouts/pages/has-toc.njk
 order: 3
 ---
 <link rel="stylesheet"

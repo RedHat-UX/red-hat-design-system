@@ -1,6 +1,6 @@
 ---
 title: Announcement
-hasToc: true
+layout: layouts/pages/has-toc.njk
 order: 10
 tags:
   - pattern
@@ -19,9 +19,9 @@ audience.
 
 <uxdot-example width-adjustment="872px">
   <img src="./announcement-sample-1.svg"
-      alt="Example of an announcement banner"
-      width="872"
-      height="80">
+       alt="Example of an announcement banner"
+       width="872"
+       height="80">
 </uxdot-example>
 
 ## Style
@@ -32,25 +32,25 @@ background container.
 
 <uxdot-example width-adjustment="872px">
   <img src="./announcement-style-1.svg"
-      alt="Anatomy of an announcement banner"
-      width="872"
-      height="113">
+       alt="Anatomy of an announcement banner"
+       width="872"
+       height="113">
 </uxdot-example>
 
 ## Theme
 
 <uxdot-example width-adjustment="872px">
   <img src="./announcement-theme-1.svg"
-      alt="Announcement banner on light theme"
-      width="872"
-      height="80">
+       alt="Announcement banner on light theme"
+       width="872"
+       height="80">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="872px">
   <img src="./announcement-theme-2.svg"
-      alt="Announcement banner on dark theme"
-      width="872"
-      height="80">
+       alt="Announcement banner on dark theme"
+       width="872"
+       height="80">
 </uxdot-example>
 
 ## Usage
@@ -66,9 +66,9 @@ should fall within the standard grid.
 
 <uxdot-example width-adjustment="1000px">
   <img src="./announcement-usage-1.svg"
-      alt="Announcement banner spanning entire width of browser window"
-      width="1000"
-      height="208">
+       alt="Announcement banner spanning entire width of browser window"
+       width="1000"
+       height="208">
 </uxdot-example>
 
 ### Layout
@@ -80,9 +80,9 @@ places.
 
 <uxdot-example width-adjustment="872px">
   <img src="./announcement-usage-2.svg"
-      alt="Announcement banner positioned above the main menu on Redhat.com"
-      width="872"
-      height="152">
+       alt="Announcement banner positioned above the main menu on Redhat.com"
+       width="872"
+       height="152">
 </uxdot-example>
 
 ### Content
@@ -93,33 +93,23 @@ its objective is.
 
 <uxdot-example width-adjustment="872px">
   <img src="./announcement-usage-content.svg"
-      alt="One announcement banner showing center-aligned content and one showing left and right-aligned content"
-      width="872"
-      height="224">
+       alt="One announcement banner showing center-aligned content and one showing left and right-aligned content"
+       width="872"
+       height="224">
 </uxdot-example>
 
 ### Character count
-The recommended maximum character count for the elements of an announcement are listed below and include spaces.
+
+The recommended maximum character count for the elements of an announcement are 
+listed below and include spaces.
 
 <rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Element">Element</th>
-        <th scope="col" data-label="Character count">Character count</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Element">Text</td>
-        <td data-label="Character count">60</td>
-      </tr>
-      <tr>
-        <td data-label="Element">Call to action</td>
-        <td data-label="Character count">20</td>
-      </tr>
-    </tbody>
-  </table>
+
+| Element        | Character count |
+|----------------|-----------------|
+| Text           | 60              |
+| Call to action | 20              |
+
 </rh-table>
 
 ## Best practices
@@ -128,9 +118,9 @@ Do not position the announcement banner below the navigation.
 
 <uxdot-example width-adjustment="872px" danger>
   <img src="./announcement-bestpractice-1.svg"
-      alt="Example of an announcement banner below the primary navigation"
-      width="872"
-      height="152">
+       alt="Example of an announcement banner below the primary navigation"
+       width="872"
+       height="152">
 </uxdot-example>
 
 ## Behavior
@@ -155,27 +145,27 @@ screens.
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
   <img src="./announcement-responsive-1.svg"
-      alt="Example of an announcement banner on desktop"
-      width="1000"
-      height="152">
+       alt="Example of an announcement banner on desktop"
+       width="1000"
+       height="152">
 </uxdot-example>
 
 #### Tablet
 
 <uxdot-example width-adjustment="768px" variant="full" alignment="left" no-border>
   <img src="./announcement-responsive-2.svg"
-      alt="Example of an announcement banner on tablet"
-      width="768"
-      height="152">
+       alt="Example of an announcement banner on tablet"
+       width="768"
+       height="152">
 </uxdot-example>
 
 #### Mobile
 
 <uxdot-example width-adjustment="360px" variant="full" alignment="left" no-border>
   <img src="./announcement-responsive-3.svg"
-      alt="Example of an announcement banner on mobile"
-      width="360"
-      height="640">
+       alt="Example of an announcement banner on mobile"
+       width="360"
+       height="640">
 </uxdot-example>
 
 Some text styles reduce in size on small screens. Learn more about 
@@ -185,19 +175,22 @@ Some text styles reduce in size on small screens. Learn more about
 
 ## Interaction states
 
-Since announcement banners can consist of a variety of elements, refer to the specific interaction states that are assigned to each style and component for more information.
+Since announcement banners can consist of a variety of elements, refer to the 
+specific interaction states that are assigned to each style and component for 
+more information.
 
 <hr>
 
 ## Spacing
 
-The announcement banner uses [space tokens](/tokens/space/) to define spacing values between elements.
+The announcement banner uses [space tokens](/tokens/space/) to define spacing 
+values between elements.
 
 <uxdot-example width-adjustment="872px">
   <img src="./announcement-spacing-1.svg"
-      alt="Example of an announcement banner with spacers"
-      width="872"
-      height="393">
+       alt="Example of an announcement banner with spacers"
+       width="872"
+       height="393">
 </uxdot-example>
 
 <rh-table>

@@ -1,8 +1,7 @@
 ---
 title: Search bar
+layout: layouts/pages/has-toc.njk
 order: 80
-layout: layouts/pages/basic.njk
-hasToc: true
 tags:
     - pattern
 spacerTokens:
@@ -23,9 +22,9 @@ a button. It allows a user to input text and then perform a search.
 
 <uxdot-example width-adjustment="1000px">
   <img src="./search-bar-sample.svg"
-      alt="Search bar component sample"
-      width="1000"
-      height="36">
+       alt="Search bar component sample"
+       width="1000"
+       height="36">
 </uxdot-example>
 
 ## Style
@@ -35,9 +34,9 @@ red button that is placed on the right.
 
 <uxdot-example width-adjustment="872px">
   <img src="./search-bar-blueprint.svg"
-      alt="Search bar component blueprint"
-      width="872"
-      height="74">
+       alt="Search bar component blueprint"
+       width="872"
+       height="74">
 </uxdot-example>
 
 #### Button
@@ -48,16 +47,16 @@ search, so a button must be used instead.
 
 <rh-alert state="info">
   <h4 slot="header">Learn more</h4>
-  <p>Visit the <a href="/elements/button/">Button</a> or <a 
-    href="/elements/call-to-action/">Call to action</a> element pages to learn 
-    more about how to use buttons and calls to action.</p>
+  <p>Visit the <a href="/elements/button/">Button</a> or
+     <a href="/elements/call-to-action/">Call to action</a> element pages to
+     learn more about how to use buttons and calls to action.</p>
 </rh-alert>
 
 <uxdot-example width-adjustment="262px">
   <img src="./search-bar-button-vs-cta.svg"
-      alt="Search bar component button vs. CTA"
-      width="262"
-      height="106">
+       alt="Search bar component button vs. CTA"
+       width="262"
+       height="106">
 </uxdot-example>
 
 ## Theme
@@ -68,9 +67,9 @@ The light theme search bar includes a light theme form field and red button.
 
 <uxdot-example width-adjustment="872px">
   <img src="./search-bar-light-theme.svg"
-      alt="Search bar component, light theme"
-      width="872"
-      height="36">
+       alt="Search bar component, light theme"
+       width="872"
+       height="36">
 </uxdot-example>
 
 #### Dark theme
@@ -79,9 +78,9 @@ For now, the light theme search bar can also be used in the dark theme.
 
 <uxdot-example color-palette="darkest" width-adjustment="872px">
   <img src="./search-bar-dark-theme.svg"
-      alt="Search bar component, dark theme"
-      width="872"
-      height="36">
+       alt="Search bar component, dark theme"
+       width="872"
+       height="36">
 </uxdot-example>
 
 ## Usage
@@ -96,9 +95,9 @@ boundaries of whatever container or grid it is placed in.
 
 <uxdot-example width-adjustment="872px">
   <img src="./search-bar-layout.svg"
-      alt="Search bar component usage"
-      width="872"
-      height="503">
+       alt="Search bar component usage"
+       width="872"
+       height="503">
 </uxdot-example>
 
 #### Content
@@ -110,9 +109,9 @@ resources), a user might expect to search through an individual page.
 
 <uxdot-example width-adjustment="872px">
   <img src="./search-bar-placeholder-text.svg"
-      alt="Search bar component placeholder text options"
-      width="872"
-      height="104">
+       alt="Search bar component placeholder text options"
+       width="872"
+       height="104">
 </uxdot-example>
 
 ## Behavior
@@ -131,9 +130,9 @@ change.
 
 <uxdot-example width-adjustment="872px">
   <img src="./search-bar-form-field.svg"
-      alt="Search bar component styling changes"
-      width="872"
-      height="172">
+       alt="Search bar component styling changes"
+       width="872"
+       height="172">
 </uxdot-example>
 
 #### Typeahead
@@ -144,9 +143,9 @@ options.
 
 <uxdot-example width-adjustment="872px">
   <img src="./search-bar-typeahead.svg"
-      alt="Search bar component typeahead"
-      width="872"
-      height="240">
+       alt="Search bar component typeahead"
+       width="872"
+       height="240">
 </uxdot-example>
 
 #### Errors
@@ -162,27 +161,27 @@ form field, an error will be displayed.
 
 <uxdot-example width-adjustment="872px">
   <img src="./search-bar-errors.svg"
-      alt="Search bar component form field errors"
-      width="872"
-      height="359">
+       alt="Search bar component form field errors"
+       width="872"
+       height="359">
 </uxdot-example>
 
 ## Interaction states
 
 <rh-alert state="info">
   <h4 slot="header">Learn more</h4>
-  <p>Visit the <a href="/patterns/form/">Form</a> or <a 
-    href="/elements/button/">Button</a> pages to learn more about interaction 
-    states.</p>
+  <p>Visit the <a href="/patterns/form/">Form</a> or
+     <a href="/elements/button/">Button</a> pages to learn more about
+     interaction states.</p>
 </rh-alert>
 
 #### Link
 
 <uxdot-example width-adjustment="872px">
   <img src="./search-bar-interaction-states-link.svg"
-      alt="Search bar component interaction state, link"
-      width="872"
-      height="36">
+       alt="Search bar component interaction state, link"
+       width="872"
+       height="36">
 </uxdot-example>
 
 #### Hover
@@ -191,9 +190,9 @@ A blue line appears at the bottom of the form field indicating it is selectable.
 
 <uxdot-example width-adjustment="872px">
   <img src="./search-bar-interaction-states-hover.svg"
-      alt="Search bar component interaction state, hover"
-      width="872"
-      height="42">
+       alt="Search bar component interaction state, hover"
+       width="872"
+       height="42">
 </uxdot-example>
 
 #### Focus
@@ -204,9 +203,9 @@ moved away, the placeholder text will be visible again.
 
 <uxdot-example width-adjustment="872px">
   <img src="./search-bar-interaction-states-focus.svg"
-      alt="Search bar component interaction state, focus"
-      width="872"
-      height="104">
+       alt="Search bar component interaction state, focus"
+       width="872"
+       height="104">
 </uxdot-example>
 
 #### Active
@@ -217,9 +216,9 @@ away, the placeholder text will be visible again.
 
 <uxdot-example width-adjustment="872px">
   <img src="./search-bar-interaction-states-active.svg"
-      alt="Search bar component interaction state, active"
-      width="872"
-      height="110">
+       alt="Search bar component interaction state, active"
+       width="872"
+       height="110">
 </uxdot-example>
 
 #### Tab order
@@ -230,40 +229,22 @@ button without an error being displayed.
 
 <uxdot-example width-adjustment="872px">
   <img src="./search-bar-tab-order.svg"
-      alt="Search bar component tab order"
-      width="872"
-      height="229">
+       alt="Search bar component tab order"
+       width="872"
+       height="229">
 </uxdot-example>
 
 ## Accessibility
 
 <rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Key">Key</th>
-        <th scope="col" data-label="Action">Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Key"><kbd>Tab</kbd></td>
-        <td data-label="Action">Moves the focus to the button.</td>
-      </tr>
-      <tr>
-        <td data-label="Key"><kbd>Shift</kbd> + <kbd>Tab</kbd></td>
-        <td data-label="Action">Moves the focus to the form field.</td>
-      </tr>
-      <tr>
-        <td data-label="Key"><kbd>Enter</kbd> (if text)</td>
-        <td data-label="Action">Triggers a search.</td>
-      </tr>
-      <tr>
-        <td data-label="Key"><kbd>Enter</kbd> (if no text)</td>
-        <td data-label="Action">Displays an error icon and text requiring a user to input text in the form field.</td>
-      </tr>
-    </tbody>
-  </table>
+
+| Key                               | Action                                                                            |
+| --------------------------------- | --------------------------------------------------------------------------------- |
+| <kbd>Tab</kbd>                    | Moves the focus to the button.                                                    |
+| <kbd>Shift</kbd> + <kbd>Tab</kbd> | Moves the focus to the form field.                                                |
+| <kbd>Enter</kbd> (if text)        | Triggers a search.                                                                |
+| <kbd>Enter</kbd> (if no text)     | Displays an error icon and text requiring a user to input text in the form field. |
+
 </rh-table>
 
 ## Responsive design
@@ -276,27 +257,27 @@ whereas the button always stays the same size.
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
   <img src="./search-bar-responsive-desktop.svg"
-      alt="Search bar component responsive design, desktop"
-      width="1000"
-      height="168">
+       alt="Search bar component responsive design, desktop"
+       width="1000"
+       height="168">
 </uxdot-example>
 
 #### Tablet
 
 <uxdot-example width-adjustment="768px" variant="full" alignment="left" no-border>
   <img src="./search-bar-responsive-tablet.svg"
-      alt="Search bar component responsive design, tablet"
-      width="768"
-      height="168">
+       alt="Search bar component responsive design, tablet"
+       width="768"
+       height="168">
 </uxdot-example>
 
 #### Mobile
 
 <uxdot-example width-adjustment="360px" variant="full" alignment="left" no-border>
   <img src="./search-bar-responsive-mobile.svg"
-      alt="Search bar component responsive design, mobile"
-      width="360"
-      height="100">
+       alt="Search bar component responsive design, mobile"
+       width="360"
+       height="100">
 </uxdot-example>
 
 ## Best practices
@@ -308,9 +289,9 @@ Do not write placeholder text too long, it should be short and to the point
 
 <uxdot-example width-adjustment="872px" danger>
   <img src="./search-bar-best-practice-1.svg"
-      alt="Search component best practice 1"
-      width="872"
-      height="36">
+       alt="Search component best practice 1"
+       width="872"
+       height="36">
 </uxdot-example>
 
 #### Call to action as button
@@ -319,9 +300,9 @@ Do not replace the button with a call to action.
 
 <uxdot-example width-adjustment="872px" danger>
   <img src="./search-bar-best-practice-2.svg"
-      alt="Search component best practice 2"
-      width="872"
-      height="56">
+       alt="Search component best practice 2"
+       width="872"
+       height="56">
 </uxdot-example>
 
 #### Different style or color
@@ -331,9 +312,9 @@ Do not use a different button color or style when using a search bar on Red Hat
 
 <uxdot-example width-adjustment="872px" danger>
   <img src="./search-bar-best-practice-3.svg"
-      alt="Search component best practice 3"
-      width="872"
-      height="36">
+       alt="Search component best practice 3"
+       width="872"
+       height="36">
 </uxdot-example>
 
 #### Disabled
@@ -344,9 +325,9 @@ in the form field, an error should be displayed instead.
 
 <uxdot-example width-adjustment="872px" danger>
   <img src="./search-bar-best-practice-4.svg"
-      alt="Search component best practice 4"
-      width="872"
-      height="36">
+       alt="Search component best practice 4"
+       width="872"
+       height="36">
 </uxdot-example>
 
 #### Solo button
@@ -360,9 +341,9 @@ Avoid using the search button on its own without a form field.
 
 <uxdot-example width-adjustment="81px" danger>
   <img src="./search-bar-best-practice-5.svg"
-      alt="Search component best practice 5"
-      width="81"
-      height="36">
+       alt="Search component best practice 5"
+       width="81"
+       height="36">
 </uxdot-example>
 
 #### Rearranging the component
@@ -372,9 +353,9 @@ changing its width.
 
 <uxdot-example width-adjustment="360px" danger>
   <img src="./search-bar-best-practice-6.svg"
-      alt="Search component best practice 6"
-      width="360"
-      height="88">
+       alt="Search component best practice 6"
+       width="360"
+       height="88">
 </uxdot-example>
 
 ## Spacing
@@ -384,9 +365,9 @@ between elements.
 
 <uxdot-example width-adjustment="872px">
   <img src="./search-bar-spacing.svg"
-      alt="Search bar spacing"
-      width="872"
-      height="36">
+       alt="Search bar spacing"
+       width="872"
+       height="36">
 </uxdot-example>
 
 <rh-table>

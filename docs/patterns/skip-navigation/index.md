@@ -1,7 +1,7 @@
 ---
 title: Skip navigation
+layout: layouts/pages/has-toc.njk
 order: 90
-hasToc: true
 tags:
   - pattern
 spacerTokens:
@@ -22,9 +22,9 @@ content when selected.
 
 <uxdot-example width-adjustment="1000px">
   <img src="./skip-nav.svg"
-      alt="Skip navigation"
-      width="1000"
-      height="72">
+       alt="Skip navigation"
+       width="1000"
+       height="72">
 </uxdot-example>
 
 ## Style
@@ -35,9 +35,9 @@ a jump link.
 
 <uxdot-example color-palette="lighter" width-adjustment="129px" no-border>
   <img src="./skip-nav-style.svg"
-      alt="Skip navigation specs"
-      width="129"
-      height="60">
+       alt="Skip navigation specs"
+       width="129"
+       height="60">
 </uxdot-example>
 
 ## Usage
@@ -47,23 +47,23 @@ should be invisible on every page as a commitment to accessibility.
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
   <img src="./skip-nav-usage-1.svg"
-      alt="Skip navigation usage"
-      width="1000"
-      height="72">
+       alt="Skip navigation usage"
+       width="1000"
+       height="72">
 </uxdot-example>
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
   <img src="./skip-nav-usage-2.svg"
-      alt="Skip navigation usage"
-      width="1000"
-      height="72">
+       alt="Skip navigation usage"
+       width="1000"
+       height="72">
 </uxdot-example>
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
   <img src="./skip-nav-usage-3.svg"
-      alt="Skip navigation usage"
-      width="1000"
-      height="72">
+       alt="Skip navigation usage"
+       width="1000"
+       height="72">
 </uxdot-example>
 
 ## Best practices
@@ -72,9 +72,9 @@ Don't apply the skip to main content link style to other components.
 
 <uxdot-example width-adjustment="872px" danger>
   <img src="./skip-nav-best-practices-1.svg"
-      alt="Skip navigation style errors"
-      width="872"
-      height="184">
+       alt="Skip navigation style errors"
+       width="872"
+       height="184">
 </uxdot-example>
 
 ## Behavior
@@ -86,9 +86,9 @@ main content.
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
   <img src="./skip-nav-behavior.svg"
-      alt="Skip navigation behavior"
-      width="1000"
-      height="1014">
+       alt="Skip navigation behavior"
+       width="1000"
+       height="1014">
 </uxdot-example>
 
 ## Spacing
@@ -98,9 +98,9 @@ values between elements.
 
 <uxdot-example width-adjustment="1000px">
   <img src="./skip-nav-spacing.svg"
-      alt="Skip navigation spacing diagram"
-      width="1000"
-      height="72">
+       alt="Skip navigation spacing diagram"
+       width="1000"
+       height="72">
 </uxdot-example>
 
 
