@@ -21,7 +21,14 @@
   import '/assets/javascript/elements/uxdot-header.js';
 </script>
 
-<uxdot-header {% if subnav.collection %}has-subnav{% endif %} {% if tokenSearch %}has-search {% endif %}>
+{% if tabs %}
+<script type="module" data-helmet>
+  import '@rhds/elements/rh-subnav/rh-subnav.js';
+</script>
+
+{% endif %}
+
+<uxdot-header {% if tabs %}has-subnav{% endif %} {% if tokenSearch %}has-search {% endif %}>
   <h1 id="{{ headingId }}" class="page-title">{{ headingContent }}</h1>
   {% if tokenSearch %}{% include 'partials/component/token-search.html' %}{% endif %}
   {% if tabs %}
