@@ -10,6 +10,7 @@ tags:
 
 <script type="module" data-helmet>
   import '@rhds/elements/rh-alert/rh-alert.js';
+  import '@rhds/elements/rh-accordion/rh-accordion.js';
   import '@rhds/elements/rh-table/rh-table.js';
 </script>
 
