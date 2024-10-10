@@ -37,7 +37,7 @@ const html = String.raw;
 module.exports = class TokensPage {
   data() {
     return {
-      layout: 'layouts/pages/basic.njk',
+      layout: 'layouts/pages/has-toc.njk',
       permalink: ({ tokenCategory }) => !tokenCategory?.slug ? null
         : `/tokens/${tokenCategory.slug}/index.html`,
       eleventyComputed: {
@@ -45,23 +45,19 @@ module.exports = class TokensPage {
           title
             || `${capitalize(tokenCategory.title || tokenCategory.slug)} tokens`,
       },
-      hasToc: true,
       pagination: {
         size: 1,
         alias: 'tokenCategory',
         data: 'collections.tokenCategory',
       },
       tokenSearch: true,
-      importElements: [
-        'rh-table',
-      ],
     };
   }
 
-  themeTokensCardCount = 1;
+  #themeTokensCardCount = 1;
 
   /** @param {DesignToken} token */
-  getTokenLightness(token) {
+  #getTokenLightness(token) {
     const meta = tokensMeta.get(`--${token.name}`);
     const value =
        meta?.$value
@@ -73,13 +69,13 @@ module.exports = class TokensPage {
       `--rh-${value?.toString().replace(/{(.*)}/, '$1').replace(/\./g, '-')}`;
     const derefedToken = meta?.$value ? meta : tokensMeta.get(derefed);
     const color = tinycolor(derefedToken?.$value?.toString());
-    const isDark = color.isDark();
-    const isLight = color.isLight();
+    const isDark = color?.isDark();
+    const isLight = color?.isLight();
     return { isDark, isLight };
   }
 
   /** @param {Options} options */
-  getThemeTokens(options) {
+  #getThemeTokens(options) {
     const parts = options.path?.split('.') ?? [];
     const themeTokens = [];
     if (parts.at(0) === 'color' && parts.length === 2) {
@@ -94,7 +90,7 @@ module.exports = class TokensPage {
   }
 
   /** @param {Options} options */
-  async renderTable(options) {
+  async #renderTable(options) {
     const tokens = Object.values(options.tokens).filter(x => x.$value);
     const { name } = options;
     const example = getDocs(options.tokens)?.example ?? '';
@@ -264,10 +260,10 @@ module.exports = class TokensPage {
   }
 
   /** @param {Options} options */
-  async renderIncludes(options) {
+  async #renderIncludes(options) {
     if (Array.isArray(options.include)) {
       const includes = await Promise.all(
-        options.include.map(path => this.renderCategory({
+        options.include.map(path => this.#renderCategory({
           ...options,
           path,
           level: 2,
@@ -285,10 +281,10 @@ module.exports = class TokensPage {
   }
 
   /** @param {Options} options */
-  renderThemeTokensCard(options) {
+  #renderThemeTokensCard(options) {
     const { level = 1 } = options;
-    const themeTokens = this.getThemeTokens(options);
-    const slug = (this.themeTokensCardCount++).toString();
+    const themeTokens = this.#getThemeTokens(options);
+    const slug = (this.#themeTokensCardCount++).toString();
     return !themeTokens?.length ? '' : html`
       <rh-card id="surface-${slug}"
                class="swatches"
@@ -300,20 +296,20 @@ module.exports = class TokensPage {
                            allow="lightest,darkest"
                            target="surface-${slug}"></rh-context-picker>
         ${themeTokens.map(token => token.path.includes('text') ? html`
-        <samp class="swatch font ${classMap(this.getTokenLightness(token))}"
+        <samp class="swatch font ${classMap(this.#getTokenLightness(token))}"
               style="--swatch-color: var(--${token.name})">
           <span>Aa</span> <span>--${token.name}</span>
         </samp>` : token.path.includes('icon') ? html`
-        <samp class="swatch icon ${classMap(this.getTokenLightness(token))}"
+        <samp class="swatch icon ${classMap(this.#getTokenLightness(token))}"
               style="--swatch-color: var(--${token.name})">
           <rh-icon icon="unknown-fill" set="ui"></rh-icon>
           <span>--${token.name}</span>
         </samp>` : token.path.includes('border') ? html`
-        <samp class="swatch border ${classMap(this.getTokenLightness(token))}"
+        <samp class="swatch border ${classMap(this.#getTokenLightness(token))}"
               style="--swatch-color: var(--${token.name})">
           <span>--${token.name}</span>
         </samp>` : html`
-        <samp class="swatch color ${classMap(this.getTokenLightness(token))}"
+        <samp class="swatch color ${classMap(this.#getTokenLightness(token))}"
               style="--swatch-color: var(--${token.name})">
           <span>--${token.name}</span>
         </samp>`).join('')}
@@ -322,7 +318,7 @@ module.exports = class TokensPage {
   }
 
   /** @param {Options} options */
-  async renderChildren(options) {
+  async #renderChildren(options) {
     const include = [];
     const parent = options.tokens;
     const level = (options.level ?? 1) + 1;
@@ -333,7 +329,7 @@ module.exports = class TokensPage {
             && !value.$value
             && !key.startsWith('$')
             && !(options.exclude ?? []).includes(key))
-        .map(([name, tokens]) => this.renderCategory({
+        .map(([name, tokens]) => this.#renderCategory({
           ...options, include, name, tokens, parent, level,
           path: `${options.path}.${name}`.replace('..', '.').replace(/^\./, ''),
           slug: `${options.slug}-${name}`.toLowerCase(),
@@ -342,7 +338,7 @@ module.exports = class TokensPage {
   }
 
   /** @param {Options} options */
-  async renderContent(options) {
+  async #renderContent(options) {
     const docs = getDocs(options.tokens);
     const heading = docs?.heading ?? capitalize(options.name.replace('-', ' '));
     const permalink = options.level === 1 ? '' : html`
@@ -355,15 +351,15 @@ module.exports = class TokensPage {
     return html`
       ${permalink}
       <div class="description">${await this.renderTemplate(options.tokens.$description ?? '', 'md')}</div>
-      ${this.renderThemeTokensCard(options)}
-      ${await this.renderTable(options)}
-      ${await this.renderChildren(options)}
-      ${await this.renderIncludes(options)}
+      ${this.#renderThemeTokensCard(options)}
+      ${await this.#renderTable(options)}
+      ${await this.#renderChildren(options)}
+      ${await this.#renderIncludes(options)}
     `;
   }
 
   /** @param {Options} options */
-  async renderCategory(options) {
+  async #renderCategory(options) {
     if (options.seenPaths?.has(options.path)) {
       return '';
     }
@@ -376,7 +372,7 @@ module.exports = class TokensPage {
         return '';
     }
 
-    const content = await this.renderContent(options);
+    const content = await this.#renderContent(options);
 
     /**
      * 0. render the description
@@ -417,7 +413,10 @@ module.exports = class TokensPage {
       <link rel="stylesheet" data-helmet href="/styles/samp.css">
       <link rel="stylesheet" data-helmet href="/styles/tokens-pages.css">
       <script type="module" data-helmet src="/assets/javascript/tokens-pages.js"></script>
-      ${await this.renderCategory({ tokens, name, path, slug, level: 1, exclude, include, seenPaths })}
+      <script type="module" data-helmet>
+        import '@rhds/elements/rh-table/rh-table.js';
+      </script>
+      ${await this.#renderCategory({ tokens, name, path, slug, level: 1, exclude, include, seenPaths })}
       ${await this.renderFile('./docs/_includes/partials/component/feedback.html')}
     `;
   }

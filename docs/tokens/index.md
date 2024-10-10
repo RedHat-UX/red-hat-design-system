@@ -1,14 +1,17 @@
 ---
-layout: layouts/pages/basic.njk
+layout: layouts/pages/has-toc.njk
 title: Overvie
-hasToc: true
 tokenSearch: true
-importElements: 
-  - rh-tile
-  - rh-code-block
 ---
 
-<link rel="stylesheet" data-helmet href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
+<link rel="stylesheet"
+      href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css"
+      data-helmet>
+
+<script type="module" data-helmet>
+  import '@rhds/elements/rh-tile/rh-tile.js';
+  import '@rhds/elements/rh-code-block/rh-code-block.js';
+</script>
 
 <style data-helmet>
 .page-overvie .container .grid {
@@ -43,9 +46,7 @@ websites, libraries, and tools.
 
 To install design tokens, please visit our dedicated repo for instructions.
 
-<rh-cta>
-  <a href="https://github.com/redhat-ux/red-hat-design-tokens">Install our design tokens</a>
-</rh-cta>
+<rh-cta href="https://github.com/redhat-ux/red-hat-design-tokens">Install our design tokens</rh-cta>
 
 ## Token categories
 
