@@ -6,9 +6,12 @@ tags:
   - getstarted
 ---
 
-<link data-helmet rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
+<link rel="stylesheet"
+      href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css"
+      data-helmet>
 
 <script type="module" data-helmet>
+  import '/assets/javascript/elements/uxdot-example.js';
   import '@rhds/elements/rh-alert/rh-alert.js';
   import '@rhds/elements/rh-accordion/rh-accordion.js';
   import '@rhds/elements/rh-table/rh-table.js';
@@ -59,19 +62,18 @@ Welcome to the **Red Hat Design System** (RHDS) for digital experiences. If you
 need to design something using our design system, you have come to the right
 place.
 
-Follow these steps to get started and e-mail
-[design-system@redhat.com](mailto:design-system@redhat.com) or connect with us
+Follow these steps to get started and e-mail 
+[design-system@redhat.com][designsystemredhatcom] or connect with us
 on Slack if you have any questions along the way.
 
 
 ## Explore brand standards
 
-Our [Brand standards](https://www.redhat.com/en/about/brand/standards) are the
-source code of the Red Hat brand. Using brand standards as the starting point
-for every project ensures that every interaction with Red Hat reflects our brand
-personality, brand strategy, and consistent visual language. Consistency is how
-we create authentic relationships and credibility with our customers, partners,
-and contributors.
+Our [Brand standards][brandstandards] are the source code of the Red Hat brand. 
+Using brand standards as the starting point for every project ensures that every 
+interaction with Red Hat reflects our brand personality, brand strategy, and 
+consistent visual language. Consistency is how we create authentic relationships 
+and credibility with our customers, partners, and contributors.
 
 <uxdot-example variant="full">
   <img alt="The text 'Brand Standards' with small illustrations of color swatches, dropdown element, and resizing an icon"

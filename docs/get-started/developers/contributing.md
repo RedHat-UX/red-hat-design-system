@@ -23,7 +23,8 @@ subnav:
 
 ## Install Project
 
-A quick start guide for installing the local development tools needed for contributing to the Red Hat Design System.
+A quick start guide for installing the local development tools needed for 
+contributing to the Red Hat Design System.
 
 1. [Install Git][installgit] for your system.
 2. [Install Node Version Manager][installnodeversionmanager] for your system.  
