@@ -88,21 +88,23 @@ The font sizes that are considered normal and large are as follows:
 - normal: non-bold text under 18pt/24px and bold text under 14pt/19px
 - large: non-bold text of at least 18pt/24px and bold text of at least 14pt/19px
 
+{% macro p(content='WCAG AA: Pass') %}<span class="pass">{{ content }}</span>{% endmacro %}
+{% macro f(content='WCAG AA: Fail') %}<span class="fail">{{ content }}</span>{% endmacro %}
+
 <rh-table>
 
-| Background color      | Contrast ratio | Normal text   | Large text    | Objects and UI components |
-|-----------------------|----------------|---------------|---------------|---------------------------|
-| `white` (`#fff`)      | 4.53           | WCAG AA: Pass | WCAG AA: Pass | WCAG AA: Pass             |
-| `gray-10` (`#f2f2f2`) | 4.04           | WCAG AA: Fail | WCAG AA: Pass | WCAG AA: Pass             |
-| `gray-20` (`#e0e0e0`) | 4.04           | WCAG AA: Fail | WCAG AA: Pass | WCAG AA: Pass             |
-| `gray-70` (`#383838`) | 2.58           | WCAG AA: Fail | WCAG AA: Fail | WCAG AA: Fail             |
-| `gray-80` (`#292929`) | 3.21           | WCAG AA: Fail | WCAG AA: Pass | WCAG AA: Pass             |
-| `gray-90` (`#1f1f1f`) | 3.63           | WCAG AA: Fail | WCAG AA: Pass | WCAG AA: Pass             |
-| `gray-95` (`#151515`) | 4.03           | WCAG AA: Fail | WCAG AA: Pass | WCAG AA: Pass             |
-| `black` (`#000`)      | 4.63           | WCAG AA: Pass | WCAG AA: Pass | WCAG AA: Pass             |
+| Background color      | Contrast ratio | Normal text | Large text | Objects and UI components |
+| --------------------- | -------------- | ----------- | ---------- | ------------------------- |
+| `white` (`#fff`)      | {{ p(4.53) }}  | {{ p() }}   | {{ p() }}  | {{ p() }}                 |
+| `gray-10` (`#f2f2f2`) | {{ f(4.04) }}  | {{ f() }}   | {{ p() }}  | {{ p() }}                 |
+| `gray-20` (`#e0e0e0`) | {{ f(4.04) }}  | {{ f() }}   | {{ p() }}  | {{ p() }}                 |
+| `gray-70` (`#383838`) | {{ f(2.58) }}  | {{ f() }}   | {{ f() }}  | {{ f() }}                 |
+| `gray-80` (`#292929`) | {{ f(3.21) }}  | {{ f() }}   | {{ p() }}  | {{ p() }}                 |
+| `gray-90` (`#1f1f1f`) | {{ f(3.63) }}  | {{ f() }}   | {{ p() }}  | {{ p() }}                 |
+| `gray-95` (`#151515`) | {{ f(4.03) }}  | {{ f() }}   | {{ p() }}  | {{ p() }}                 |
+| `black` (`#000`)      | {{ p(4.63) }}  | {{ p() }}   | {{ p() }}  | {{ p() }}                 |
 
 </rh-table>
-
 
 ### Links
 
