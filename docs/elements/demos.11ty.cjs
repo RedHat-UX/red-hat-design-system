@@ -21,6 +21,9 @@ module.exports = class DemosPage {
       permalink: ({ element }) => `/elements/${element.slug}/demos/`,
       eleventyComputed: {
         title: ({ element }) => `Demos | ${deslugify(element.slug)}`,
+        // need this for subnav tabs
+        doc: data => data.doc || data.collections.elementDocs
+            .find(x => x.slug === data.element.slug),
       },
       pagination: {
         data: 'elements',

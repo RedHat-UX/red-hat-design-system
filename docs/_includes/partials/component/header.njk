@@ -8,7 +8,7 @@
   {% set tabs = doc.tabs %}
   {% set demos = manifest.getDemos(doc.docsPage.tagName) %}
   {% set planned = doc.docsPage.tagName | isPlanned %}
-  {% set prettyName -%}{{ doc.alias or ((element.tagName or element.slug or doc.slug) | deslugify) }}{% endset %}
+  {% set prettyName -%}{{ (doc.alias or doc.slug or element.slug) | deslugify | capitalize }}{% endset %}
   {% set headingContent -%}
     {{ prettyName }}
     {% if planned %}
