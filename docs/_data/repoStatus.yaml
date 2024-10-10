@@ -231,7 +231,7 @@
       status: N/A
     - name: Documentation
       status: Ready
-- tagName: rh-navigation-primary      
+- tagName: rh-navigation
   name: "Navigation (primary)"
   type: "Element"
   overallStatus: "Planned"
