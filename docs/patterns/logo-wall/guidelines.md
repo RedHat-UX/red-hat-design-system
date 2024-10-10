@@ -165,4 +165,4 @@ with this case</rh-alert>
   </uxdot-best-practice>
 </div>
 
-{% include 'partials/component/feedback.html' %}
+{% include 'partials/component/feedback.11ty.cjs' %}

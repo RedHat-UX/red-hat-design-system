@@ -91,4 +91,4 @@ system if possible.
        src="/assets/theming/custom-theme.png">
 </uxdot-example>
 
-{% include 'partials/component/feedback.html' %}
+{% include 'partials/component/feedback.11ty.cjs' %}

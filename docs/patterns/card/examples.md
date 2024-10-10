@@ -131,7 +131,7 @@ Secondary call to action may be used or not.
   <h3 id="logo-and-quote" slot="heading">Logo and quote</h3>
 </uxdot-pattern>
 
-{% include 'partials/component/feedback.html' %}
+{% include 'partials/component/feedback.11ty.cjs' %}
 
 [element]: /elements/card
 [css-props]: /elements/card/code/#css-custom-properties

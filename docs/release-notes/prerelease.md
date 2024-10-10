@@ -405,4 +405,4 @@ importElements:
 
 </section>
 
-{% include 'partials/component/feedback.html' %}
+{% include 'partials/component/feedback.11ty.cjs' %}

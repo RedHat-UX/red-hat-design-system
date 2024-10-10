@@ -22,7 +22,7 @@
         {%- set href = '/elements/' + slug + '/' -%}
         {%- set active = href === page.url -%}
         {%- set name = (fst.alias) or (slug | deslugify) %}
-        {%- set planned = repoStatus | isPlanned(name) %}
+        {%- set planned = tagName | isPlanned %}
         {% if not (tagName in comingSoonItems) %}
         <uxdot-sidenav-dropdown-menu-item href="{{ href }}" {{ 'active' if active }}>
           {{- fst.alias or (slug | deslugify) -}}

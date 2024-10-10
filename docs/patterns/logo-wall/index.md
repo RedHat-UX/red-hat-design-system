@@ -47,4 +47,4 @@ A logo wall is a visual arrangement of logos representing various brands, compan
 
 Use a logo wall pattern when you need to display multiple logos in a group.
 
-{% include 'partials/component/feedback.html' %}
+{% include 'partials/component/feedback.11ty.cjs' %}

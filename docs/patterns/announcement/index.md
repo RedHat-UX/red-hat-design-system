@@ -197,4 +197,4 @@ values between elements.
 {% spacerTokensTable headingLevel="3", tokens="--rh-space-sm,--rh-space-lg, --rh-space-xl, --rh-space-3xl" %}{% endspacerTokensTable %}
 </rh-table>
 
-{% include 'partials/component/feedback.html' %}
+{% include 'partials/component/feedback.11ty.cjs' %}

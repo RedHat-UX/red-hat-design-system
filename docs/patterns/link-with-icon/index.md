@@ -133,4 +133,4 @@ between elements.
 {% spacerTokensTable tokens="--rh-space-lg" %}{% endspacerTokensTable %}
 </rh-table>
 
-{% include 'partials/component/feedback.html' %}
+{% include 'partials/component/feedback.11ty.cjs' %}

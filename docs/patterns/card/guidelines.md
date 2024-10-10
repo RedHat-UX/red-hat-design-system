@@ -61,4 +61,4 @@ The recommended maximum character count for the elements of a card are listed be
 
 
 
-{% include 'partials/component/feedback.html' %}
+{% include 'partials/component/feedback.11ty.cjs' %}

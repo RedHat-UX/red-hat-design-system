@@ -220,4 +220,4 @@ different audience or brand requirements.
 [typography]: /tokens/typography/
 [contact]: mailto:design-system@redhat.com
 
-{% include 'partials/component/feedback.html' %}
+{% include 'partials/component/feedback.11ty.cjs' %}

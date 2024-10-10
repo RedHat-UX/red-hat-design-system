@@ -632,4 +632,4 @@ values between elements.
 {% spacerTokensTable headingLevel="4", tokens=spacerTokens %}{% endspacerTokensTable %}
 </rh-table>
 
-{% include 'partials/component/feedback.html' %}
+{% include 'partials/component/feedback.11ty.cjs' %}

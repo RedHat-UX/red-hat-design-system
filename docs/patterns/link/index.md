@@ -462,4 +462,4 @@ the same line.
   <p>Visit the <a href="/foundations/spacing/">Spacing</a> page to see spacing values between link variants and other elements.</p>
 </rh-alert>
 
-{% include 'partials/component/feedback.html' %}
+{% include 'partials/component/feedback.11ty.cjs' %}

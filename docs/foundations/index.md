@@ -63,4 +63,4 @@ Foundations are the visual and structural elements of our design system. Foundat
 
 To request a new foundation or if updates need to be made to an existing foundation, [contact us](mailto:digital-design-system@redhat.com).
 
-{% include 'partials/component/feedback.html' %}
+{% include 'partials/component/feedback.11ty.cjs' %}

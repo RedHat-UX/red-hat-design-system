@@ -71,7 +71,7 @@ module.exports = class IconsPage {
         <ul class="icon-set">${this.#renderIcons('social', icons)}</ul>
       </section>
 
-      ${await this.renderFile('./docs/_includes/partials/component/feedback.html', 'njk')}
+      ${await this.renderFile('./docs/_includes/partials/component/feedback.11ty.cjs')}
     `;
   }
 

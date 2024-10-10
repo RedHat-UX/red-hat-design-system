@@ -251,4 +251,4 @@ values between elements.
   {% endspacerTokensTable %}
 </rh-table>
 
-{% include 'partials/component/feedback.html' %}
+{% include 'partials/component/feedback.11ty.cjs' %}

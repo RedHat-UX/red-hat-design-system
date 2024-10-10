@@ -69,11 +69,10 @@ module.exports = class ElementsPage {
   }
 
   async render(ctx) {
-    const { doc, repoStatus } = ctx;
-    const { alias, fileExists, filePath, isCodePage, slug, tagName } = doc;
+    const { doc } = ctx;
+    const { fileExists, filePath, isCodePage, tagName } = doc;
     const content = fileExists ? await this.renderFile(filePath, ctx) : '';
-    const prettyName = this.deslugify(alias ?? slug);
-    const planned = this.isPlanned(repoStatus, prettyName);
+    const planned = await this.isPlanned(tagName);
 
     const stylesheets = [
       '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css',
