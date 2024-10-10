@@ -21,7 +21,6 @@ module.exports = class ElementsPage {
       permalink: ({ doc }) => doc.permalink,
       eleventyComputed: {
         title: ({ doc }) => doc.pageTitle || doc.slug,
-        context: x => x,
       },
       pagination: {
         data: 'collections.elementDocs',

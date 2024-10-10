@@ -76,10 +76,6 @@ function getFilesToCopy() {
   }));
 }
 
-async function readYaml(filePath) {
-  return yaml.load(await readFile(path.join(cwd, filePath), 'utf8'));
-}
-
 /**
  * @param {import('@11ty/eleventy').UserConfig} eleventyConfig user config
  * @param {{tagsToAlphabetize: string[]}} opts
@@ -117,13 +113,6 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
     const slug = getTagNameSlug(tagName, pfeconfig);
     const deslugify = eleventyConfig.getFilter('deslugify');
     return pfeconfig.aliases[tagName] || deslugify(slug);
-  });
-
-  eleventyConfig.addFilter('isPlanned', async function isPlanned(tagName) {
-    const repoStatus =
-      eleventyConfig.globalData?.repoStatus ?? await readYaml('./docs/_data/repoStatus.yaml');
-    const element = repoStatus.find(element => element.tagName === tagName);
-    return element?.libraries.find(library => library.name === 'RH Elements')?.status === 'Planned';
   });
 
   /** get the element overview from the manifest */
