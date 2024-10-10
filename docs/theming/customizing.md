@@ -30,14 +30,14 @@ order: 3
 Red Hat Design System is composed of tokens, elements, and patterns, each layer
 building on the last. Theming emerges as a design possibility from the
 composition of those smaller pieces. By setting custom values for themeable
-design tokens, elements, sections, or entire pages can take on a new color 
+design tokens, elements, sections, or entire pages can take on a new color
 scheme, layout density, etc. Custom themes can apply to multiple color-palettes
 and to both the `light` and `dark` backgrounds.
 
 ## Custom themes
 
-To create a custom theme, designers and developers need only set the values for 
-the relevant color properties in the design system. For example, a _Bordeaux_ 
+To create a custom theme, designers and developers need only set the values for
+the relevant color properties in the design system. For example, a _Bordeaux_
 theme might look like this:
 
 <uxdot-pattern class="card-snippet-grid"
@@ -66,18 +66,18 @@ you from their `-on-light` and `-on-dark` versions.
              message-off="Raleigh"></rh-switch>
 </rh-card>
 
-- set token values on `:root` for whole pages, or on a selector for a class 
+- set token values on `:root` for whole pages, or on a selector for a class
 (e.g. 3-card promo band)
-- brag about your customizations! did other teams use it, or something similar? 
+- brag about your customizations! did other teams use it, or something similar?
   maybe it should be added upstream to the design system?
 
 ## When to use custom themes
 
-A custom theme may be used for very specific brand projects like campaigns. 
-However, the light and dark themes are fine for the majority of other projects. 
-If your project does need a custom theme, contact the Brand team and [Design 
-system](https://github.com/RedHat-UX/red-hat-design-system/discussions) team for guidance. A custom theme may feature a bespoke color 
-palette, but try to use other styles with elements and patterns from the design 
+A custom theme may be used for very specific brand projects like campaigns.
+However, the light and dark themes are fine for the majority of other projects.
+If your project does need a custom theme, contact the Brand team and [Design
+system](https://github.com/RedHat-UX/red-hat-design-system/discussions) team for guidance. A custom theme may feature a bespoke color
+palette, but try to use other styles with elements and patterns from the design
 system if possible.
 
 <rh-alert state="warning">
@@ -91,4 +91,4 @@ system if possible.
        src="/assets/theming/custom-theme.png">
 </uxdot-example>
 
-{% include 'partials/component/feedback.11ty.cjs' %}
+{% renderFile './docs/_includes/partials/component/feedback.11ty.cjs' %}

@@ -11,8 +11,8 @@ tags:
 
 ## Overview
 
-A Video thumbnail is a graphical preview of a video overlayed with a play 
-button. When it’s selected, a video player modal will be displayed so a user can 
+A Video thumbnail is a graphical preview of a video overlayed with a play
+button. When it’s selected, a video player modal will be displayed so a user can
 watch the video at a larger size.
 
 ## Sample pattern
@@ -26,8 +26,8 @@ watch the video at a larger size.
 
 ## Style
 
-A video thumbnail is a combination of a graphic with a slightly transparent play 
-button on top. A video thumbnail can also include an optional caption underneath 
+A video thumbnail is a combination of a graphic with a slightly transparent play
+button on top. A video thumbnail can also include an optional caption underneath
 that explains what the video is.
 
 <uxdot-example width-adjustment="624px">
@@ -55,8 +55,8 @@ that explains what the video is.
 
 ### Button
 
-A video thumbnail can include either a light or a dark play button, depending on 
-the image underneath. If an image is lighter, use a dark play button for 
+A video thumbnail can include either a light or a dark play button, depending on
+the image underneath. If an image is lighter, use a dark play button for
 accessibility and vice versa.
 
 <div class="grid sm-two-columns">
@@ -77,13 +77,13 @@ accessibility and vice versa.
 
 ## Usage
 
-A video thumbnail can be used to indicate that a video can be played and using a 
+A video thumbnail can be used to indicate that a video can be played and using a
 caption underneath isn’t required.
 
 ### Layouts
 
-A video thumbnail can be used in most layouts that have enough space to 
-accommodate a small image with a play button on top. A video thumbnail used in a 
+A video thumbnail can be used in most layouts that have enough space to
+accommodate a small image with a play button on top. A video thumbnail used in a
 card is a good example of a minimum size.
 
 <uxdot-example width-adjustment="487px">
@@ -95,7 +95,7 @@ card is a good example of a minimum size.
 
 ### Caption
 
-An optional descriptor caption can be placed underneath the video thumbnail, it 
+An optional descriptor caption can be placed underneath the video thumbnail, it
 can be left- or center-aligned, depending on how the video is oriented.
 
 ### Character counts
@@ -126,19 +126,19 @@ Don't change the aspect ratio of a video thumbnail.
 
 ### Modal
 
-When a video thumbnail is smaller than six columns, selecting the play button 
-triggers a [Video player modal](../modal) where a larger version of the video 
+When a video thumbnail is smaller than six columns, selecting the play button
+triggers a [Video player modal](../modal) where a larger version of the video
 will play on top of a background overlay.
 
 ### Inline
 
-When a video thumbnail is larger than six columns, the video will play inline on 
+When a video thumbnail is larger than six columns, the video will play inline on
 the page.
 
 ## Responsive design
 
-A video thumbnail changes size, but it should maintain its aspect ratio across 
-all screen sizes. The caption also maintains the same text size, but changes 
+A video thumbnail changes size, but it should maintain its aspect ratio across
+all screen sizes. The caption also maintains the same text size, but changes
 alignment to match the video thumbnail.
 
 ### Desktop, centered
@@ -159,7 +159,7 @@ When centered, the video thumbnail and caption should span six grid columns
       height="262">
 </uxdot-example>
 
-When aligned on the left or right edge of the grid, the video thumbnail and 
+When aligned on the left or right edge of the grid, the video thumbnail and
 caption should span five grid columns
 
 ### Mobile
@@ -173,7 +173,7 @@ caption should span five grid columns
 
 ## Interaction states
 
-The only interactive element in a video thumbnail is the play button. For more 
+The only interactive element in a video thumbnail is the play button. For more
 information about modal interaction states, see [Video player modal](../modal).
 
 ### Default
@@ -235,7 +235,7 @@ information about modal interaction states, see [Video player modal](../modal).
 
 ## Spacing
 
-A video thumbnail uses [space tokens](/tokens/space/) to define spacing 
+A video thumbnail uses [space tokens](/tokens/space/) to define spacing
 values between elements.
 
 <uxdot-example width-adjustment="1000px">
@@ -251,4 +251,4 @@ values between elements.
   {% endspacerTokensTable %}
 </rh-table>
 
-{% include 'partials/component/feedback.11ty.cjs' %}
+{% renderFile './docs/_includes/partials/component/feedback.11ty.cjs' %}

@@ -25,7 +25,7 @@ subnav:
 <link rel="stylesheet" data-helmet href="/styles/samp.css">
 
 ## Asset cards
-Use to display that an asset can be downloaded. An icon and label group or 
+Use to display that an asset can be downloaded. An icon and label group or
 text may be used to describe the asset.
 
 <uxdot-pattern src="./patterns/asset-text-and-cta.html">
@@ -54,7 +54,7 @@ text may be used to describe the asset.
 <uxdot-pattern src="./patterns/fast-facts.html">
   <h2 id="fast-facts-card" slot="heading">Fast facts card</h2>
 
-  Use to display quick facts or short data points under a label. A Secondary 
+  Use to display quick facts or short data points under a label. A Secondary
   call to action may be used or not.
 
 </uxdot-pattern>
@@ -62,7 +62,7 @@ text may be used to describe the asset.
 <uxdot-pattern src="./patterns/icon.html">
   <h2 id="icon-card" slot="heading">Icon card</h2>
 
-  Use to add an icon to the basic style above the text. Secondary and Default 
+  Use to add an icon to the basic style above the text. Secondary and Default
   calls to action may be used.
 
 </uxdot-pattern>
@@ -76,7 +76,7 @@ text may be used to describe the asset.
 </uxdot-pattern>
 
 ## List cards
-Use to display a short amount of content using various list styles. 
+Use to display a short amount of content using various list styles.
 Secondary and Default calls to action may be used.
 
 <uxdot-pattern src="./patterns/list-flat.html">
@@ -96,7 +96,7 @@ Secondary and Default calls to action may be used.
 </uxdot-pattern>
 
 ## Logo cards
-Use to display a customer logo in a variety of arrangements. A call to 
+Use to display a customer logo in a variety of arrangements. A call to
 action is required, otherwise use a logo wall.
 
 <uxdot-pattern src="./patterns/logo-cta.html">
@@ -120,7 +120,7 @@ action is required, otherwise use a logo wall.
 
 ## Quote cards
 
-Use to display a short quote with attribution text. Logos, images, and a 
+Use to display a short quote with attribution text. Logos, images, and a
 Secondary call to action may be used or not.
 
 <uxdot-pattern src="./patterns/quote.html">
@@ -131,7 +131,7 @@ Secondary call to action may be used or not.
   <h3 id="logo-and-quote" slot="heading">Logo and quote</h3>
 </uxdot-pattern>
 
-{% include 'partials/component/feedback.11ty.cjs' %}
+{% renderFile './docs/_includes/partials/component/feedback.11ty.cjs' %}
 
 [element]: /elements/card
 [css-props]: /elements/card/code/#css-custom-properties

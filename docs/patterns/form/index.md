@@ -18,8 +18,8 @@ spacerTokens:
 
 ## Overview
 
-A Form is a group of elements used to collect information from a user. It can 
-include a combination of text, fields, select lists, data inputs, buttons, and 
+A Form is a group of elements used to collect information from a user. It can
+include a combination of text, fields, select lists, data inputs, buttons, and
 more.
 
 ## Sample pattern
@@ -105,13 +105,13 @@ There are two form variants available for use.
 
 ### Default
 
-In the Default orientation, form elements are organized vertically and the text 
-labels are positioned **on top**. All form elements and groups are aligned to 
+In the Default orientation, form elements are organized vertically and the text
+labels are positioned **on top**. All form elements and groups are aligned to
 the left edge and some elements span the width of the form, like a field.
 
 <rh-alert state="warning">
   <h4 slot="header">Warning</h4>
-  <p>Do not write text labels with <strong>more than a few words</strong> as 
+  <p>Do not write text labels with <strong>more than a few words</strong> as
     they might break to two lines or make the form hard to scan.</p>
 </rh-alert>
 
@@ -124,20 +124,20 @@ the left edge and some elements span the width of the form, like a field.
 
 ### Horizontal
 
-In the Horizontal orientation, form elements are still organized vertically, but 
-the text labels are positioned **to the left**. Form elements without a text 
-label, like the button group or privacy link, should be aligned to the left edge 
+In the Horizontal orientation, form elements are still organized vertically, but
+the text labels are positioned **to the left**. Form elements without a text
+label, like the button group or privacy link, should be aligned to the left edge
 of other form elements with text labels.
 
 <rh-alert state="info">
   <h4 slot="header">Helpful tip</h4>
-  <p>Form variants in the Horizontal orientation span more grid columns, so only 
+  <p>Form variants in the Horizontal orientation span more grid columns, so only
     use them if there is ample space or enough padding near content.</p>
 </rh-alert>
 
 <rh-alert state="warning">
   <h4 slot="header">Warning</h4>
-  <p>Do not write text labels with <strong>more than a few words</strong> as 
+  <p>Do not write text labels with <strong>more than a few words</strong> as
     they might break to two lines or make the form hard to scan.</p>
 </rh-alert>
 
@@ -168,18 +168,18 @@ In the Horizontal orientation, text labels should be **left justified** making i
 
 ## Usage
 
-A form is best used to guide a user through a task while gathering information 
+A form is best used to guide a user through a task while gathering information
 from them.
 
 ### Container variant
 
-When the Container variant is positioned on the grid, it may span between four 
-and eight columns, and be oriented on the left, center, or right side of the 
+When the Container variant is positioned on the grid, it may span between four
+and eight columns, and be oriented on the left, center, or right side of the
 page.
 
 <rh-alert state="info">
   <h4 slot="header">Helpful tip</h4>
-  <p>When the Container variant is positioned near content, there should be 
+  <p>When the Container variant is positioned near content, there should be
     <strong>at least one</strong> grid column of padding in between.</p>
 </rh-alert>
 
@@ -192,13 +192,13 @@ page.
 
 ### Floating variant
 
-When the Floating variant is positioned on the grid, it may span between four 
-and eight columns, and be oriented on the left, center, or right side of the 
+When the Floating variant is positioned on the grid, it may span between four
+and eight columns, and be oriented on the left, center, or right side of the
 page.
 
 <rh-alert state="info">
   <h4 slot="header">Helpful tip</h4>
-  <p>When the Floating variant is positioned near content, there should be 
+  <p>When the Floating variant is positioned near content, there should be
     <strong>at least one</strong> grid column of padding in between.</p>
 </rh-alert>
 
@@ -234,11 +234,11 @@ A user will have a better experience with submitting a form if the elements are 
 
 ### Required fields
 
-If a user is required to input information when submitting a form, indicate 
-exactly where by adding a required asterisk (<span style="color: 
-  #c9190b;">*</span>) to the right of a text label. If all inputs are required, 
-**do not** add an asterisk next to every text label. Instead, add text below the 
-title stating **All fields are required**. If all inputs are optional, the text 
+If a user is required to input information when submitting a form, indicate
+exactly where by adding a required asterisk (<span style="color:
+  #c9190b;">*</span>) to the right of a text label. If all inputs are required,
+**do not** add an asterisk next to every text label. Instead, add text below the
+title stating **All fields are required**. If all inputs are optional, the text
 should state **All fields are optional** instead.
 
 <uxdot-example width-adjustment="736px">
@@ -250,8 +250,8 @@ should state **All fields are optional** instead.
 
 ### Data inputs
 
-Data inputs provide additional ways for a user to submit information. Each data 
-input has a specific use case and different data input groups can be used in the 
+Data inputs provide additional ways for a user to submit information. Each data
+input has a specific use case and different data input groups can be used in the
 same form.
 
 <uxdot-example width-adjustment="576px">
@@ -263,7 +263,7 @@ same form.
 
 ### Using data inputs
 
-A variety of data inputs can be used in the same form to allow a user to submit 
+A variety of data inputs can be used in the same form to allow a user to submit
 more information.
 
 <rh-table>
@@ -310,21 +310,21 @@ Radio buttons and checkboxes can be stacked horizontally or vertically depending
 
 ### Popover
 
-If a form element requires more explanation beyond text labels, use a popover to 
-help a user better understand what they need to input. The content in a popover 
-can include text or links to help documents or other websites. When adding a 
-popover to a form, a small icon should be added next to a text label which acts 
+If a form element requires more explanation beyond text labels, use a popover to
+help a user better understand what they need to input. The content in a popover
+can include text or links to help documents or other websites. When adding a
+popover to a form, a small icon should be added next to a text label which acts
 as a trigger to display the popover.
 
 <rh-alert state="info">
   <h4 slot="header">Learn more</h4>
-  <p>Visit the <a href="./elements/button/">Popover</a> component page to learn 
+  <p>Visit the <a href="./elements/button/">Popover</a> component page to learn
     more about how to use a popover.</p>
 </rh-alert>
 
 <rh-alert info="warning">
   <h4 slot="header">Warning</h4>
-  <p>Avoid using a popover for critical information, a user will have a hard 
+  <p>Avoid using a popover for critical information, a user will have a hard
     time finding what they need if they have to trigger something first.</p>
 </rh-alert>
 
@@ -337,8 +337,8 @@ as a trigger to display the popover.
 
 ### Placement
 
-A form can span various grid columns when used on a page. To preserve 
-readability, it should span at least four grid columns but not exceed eight grid 
+A form can span various grid columns when used on a page. To preserve
+readability, it should span at least four grid columns but not exceed eight grid
 columns (or 750px).
 
 <uxdot-example width-adjustment="1000px">
@@ -359,14 +359,14 @@ columns (or 750px).
 
 ### Disabled state
 
-In some cases, a form element can be disabled if a user needs to make an input 
-somewhere else first. In this example, a user is **required** to select their 
-department first and then optionally select their job role afterwards. A user 
+In some cases, a form element can be disabled if a user needs to make an input
+somewhere else first. In this example, a user is **required** to select their
+department first and then optionally select their job role afterwards. A user
 can still submit a form successfully if they skip an optional form element.
 
 <rh-alert state="warning">
   <h4 slot="header">Warning</h4>
-  <p>Do not disable form elements that <strong>require</strong> input as a user 
+  <p>Do not disable form elements that <strong>require</strong> input as a user
     might skip over them leading to errors when the form is submitted.</p>
 </rh-alert>
 
@@ -379,16 +379,16 @@ can still submit a form successfully if they skip an optional form element.
 
 ### Error states
 
-When a user submits a form that results in errors, it is important to explain 
-what the errors are and how to resolve them. There are **two error states** that 
+When a user submits a form that results in errors, it is important to explain
+what the errors are and how to resolve them. There are **two error states** that
 can be displayed depending on how a user moves through the form.
 
 ### Error validation on loss of focus
 
-An error will be displayed after a user moves the focus away from a required 
-form element. This can also happen when a user inputs something with an invalid 
-format or leaves a required form element blank or incomplete. The error text and 
-icons will disappear when the errors are resolved and the focus is moved away 
+An error will be displayed after a user moves the focus away from a required
+form element. This can also happen when a user inputs something with an invalid
+format or leaves a required form element blank or incomplete. The error text and
+icons will disappear when the errors are resolved and the focus is moved away
 once again.
 
 <uxdot-example width-adjustment="360px">
@@ -400,11 +400,11 @@ once again.
 
 ### Error validation on submission
 
-Errors will be displayed if a user tries to submit a completed form with invalid 
-information or not filled out completely. When this happens, a [Danger severity 
-alert](/elements/alert/) is displayed stating there are errors that need to be 
-resolved. The alert is positioned below the title and body text, and has the 
-same width as the widest form element. The alert will disappear when the errors 
+Errors will be displayed if a user tries to submit a completed form with invalid
+information or not filled out completely. When this happens, a [Danger severity
+alert](/elements/alert/) is displayed stating there are errors that need to be
+resolved. The alert is positioned below the title and body text, and has the
+same width as the widest form element. The alert will disappear when the errors
 are resolved and the form is submitted again.
 
 <uxdot-example width-adjustment="360px">
@@ -418,8 +418,8 @@ are resolved and the form is submitted again.
 
 <rh-alert state="info">
   <h4 slot="header">See more</h4>
-  <p>Visit the <a href="./elements/button/">Button</a> and <a 
-    href="./elements/link/">Link</a> component pages to see available 
+  <p>Visit the <a href="./elements/button/">Button</a> and <a
+    href="./elements/link/">Link</a> component pages to see available
     interaction states.</p>
 </rh-alert>
 
@@ -445,7 +445,7 @@ Form fields and select lists share the same hover state.
 
 ### Focus
 
-When the focus is moved to a form field with placeholder text, the text will 
+When the focus is moved to a form field with placeholder text, the text will
 disappear and a blinking cursor will be visible.
 
 <uxdot-example width-adjustment="300px">
@@ -468,7 +468,7 @@ Form fields and select lists share the same active state.
 
 ### Tab order
 
-When the Tab key is pressed repeatedly, the focus highlights each form element 
+When the Tab key is pressed repeatedly, the focus highlights each form element
 in order, from top to bottom or left to right.
 
 <uxdot-example width-adjustment="1000px">
@@ -493,7 +493,7 @@ in order, from top to bottom or left to right.
 
 ## Responsive design
 
-The Default variant mostly remains the same on large and small screens, but the 
+The Default variant mostly remains the same on large and small screens, but the
 Horizontal variant will switch to the Default variant as screens get smaller.
 
 ### Desktop
@@ -514,7 +514,7 @@ Horizontal variant will switch to the Default variant as screens get smaller.
 
 ### Tablet
 
-As screens get smaller, the Horizontal variant will switch to the Default 
+As screens get smaller, the Horizontal variant will switch to the Default
 variant to reduce crowding.
 
 <uxdot-example width-adjustment="768px" variant="full" alignment="left" no-border>
@@ -564,8 +564,8 @@ Do not include two Primary buttons, use a combination of Primary and Link button
 
 ### Too many required fields
 
-If all inputs are required, **do not** add an asterisk next to every text label. 
-Instead, add text below the title stating **All fields are required**. If all 
+If all inputs are required, **do not** add an asterisk next to every text label.
+Instead, add text below the title stating **All fields are required**. If all
 inputs are optional, the text should state **All fields are optional** instead.
 
 <uxdot-example width-adjustment="360px" danger>
@@ -577,12 +577,12 @@ inputs are optional, the text should state **All fields are optional** instead.
 
 ### 12 columns
 
-The Container and Floating variants in both orientations should only span a 
+The Container and Floating variants in both orientations should only span a
 maximum of 8 grid columns.
 
 <rh-alert state="info">
   <h4 slot="header">Learn more</h4>
-  <p>Visit the <a href="./foundations/grid/">Grid</a> foundation page to learn 
+  <p>Visit the <a href="./foundations/grid/">Grid</a> foundation page to learn
     more about how to use the grid.</p>
 </rh-alert>
 
@@ -595,7 +595,7 @@ maximum of 8 grid columns.
 
 ### Rearranging data inputs and button groups
 
-Do not change the stacking order of data inputs and button groups, except in 
+Do not change the stacking order of data inputs and button groups, except in
 rare cases.
 
 <uxdot-example width-adjustment="360px" danger>
@@ -607,7 +607,7 @@ rare cases.
 
 ## Spacing
 
-A form banner uses [space tokens](/tokens/space/) to define spacing 
+A form banner uses [space tokens](/tokens/space/) to define spacing
 values between elements.
 
 ### Default
@@ -632,4 +632,4 @@ values between elements.
 {% spacerTokensTable headingLevel="4", tokens=spacerTokens %}{% endspacerTokensTable %}
 </rh-table>
 
-{% include 'partials/component/feedback.11ty.cjs' %}
+{% renderFile './docs/_includes/partials/component/feedback.11ty.cjs' %}

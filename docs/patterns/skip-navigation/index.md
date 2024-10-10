@@ -14,8 +14,8 @@ spacerTokens:
 
 ## Overview
 
-Skip navigation is a styled link that appears at the top of a page when the Tab 
-key is pressed. It bypasses the navigation and jumps users down to the main 
+Skip navigation is a styled link that appears at the top of a page when the Tab
+key is pressed. It bypasses the navigation and jumps users down to the main
 content when selected.
 
 ## Sample pattern
@@ -29,8 +29,8 @@ content when selected.
 
 ## Style
 
-Skip to main content is a styled link that consists of a text label and a 
-background container. Even though it looks like a Button, it functions more like 
+Skip to main content is a styled link that consists of a text label and a
+background container. Even though it looks like a Button, it functions more like
 a jump link.
 
 <uxdot-example color-palette="lighter" width-adjustment="129px" no-border>
@@ -42,7 +42,7 @@ a jump link.
 
 ## Usage
 
-A skip to main content link helps some users browse the web more effectively. It 
+A skip to main content link helps some users browse the web more effectively. It
 should be invisible on every page as a commitment to accessibility.
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
@@ -79,9 +79,9 @@ Don't apply the skip to main content link style to other components.
 
 ## Behavior
 
-When a user presses the Tab key upon page load, the skip to main content link 
-will appear centered at the top above the navigation. When a user presses the 
-Enter key, the page will move down and the focus indicator should highlight the 
+When a user presses the Tab key upon page load, the skip to main content link
+will appear centered at the top above the navigation. When a user presses the
+Enter key, the page will move down and the focus indicator should highlight the
 main content.
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
@@ -93,7 +93,7 @@ main content.
 
 ## Spacing
 
-A skip to main content link  uses [space tokens](/tokens/space/) to define spacing 
+A skip to main content link  uses [space tokens](/tokens/space/) to define spacing
 values between elements.
 
 <uxdot-example width-adjustment="1000px">
@@ -108,4 +108,4 @@ values between elements.
 {% spacerTokensTable headingLevel="4", tokens=spacerTokens %}{% endspacerTokensTable %}
 </rh-table>
 
-{% include 'partials/component/feedback.11ty.cjs' %}
+{% renderFile './docs/_includes/partials/component/feedback.11ty.cjs' %}

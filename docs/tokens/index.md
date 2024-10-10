@@ -25,7 +25,7 @@ tokenSearch: true
   rh-tile [slot="headline"] h3,
   rh-tile [slot="image"] {
      margin-block: 0 !important;
-  } 
+  }
 </style>
 
 ## Introduction
@@ -50,7 +50,7 @@ To install design tokens, please visit our dedicated repo for instructions.
 
 ## Token categories
 
-We want your feedback on our tokens. [Contact us][contact] if there are missing 
+We want your feedback on our tokens. [Contact us][contact] if there are missing
 values or if you have an idea for an output format or tool integration.
 
 <nav class="grid xs-two-columns sm-three-columns">
@@ -157,7 +157,7 @@ a color to be more accessible, or a font size to be more legible, these changes
 will propagate to every page which uses the updated `@rhds/tokens` package.
 
 Design tokens can also bring teams together under common practices. For example,
-designers, developers, engineers, etc. can all use the same tokens and work 
+designers, developers, engineers, etc. can all use the same tokens and work
 toward consistency even if a token is updated.
 
 <uxdot-example width-adjustment="739px">
@@ -168,7 +168,7 @@ toward consistency even if a token is updated.
 
 We are working toward a platform-agnostic and shareable resource for our
 collective design decisions. Our goal is to enable users to download, customize,
-and apply tokens to their designs and code without keeping track of so many 
+and apply tokens to their designs and code without keeping track of so many
 websites, libraries, and tools.
 
 <uxdot-example width-adjustment="396px">
@@ -190,14 +190,14 @@ proceeding from the general to the specific, e.g. `colour` (general), `surface`
 
 ### Aliases
 
-Some of our design tokens leverage an additional layer of abstraction called 
+Some of our design tokens leverage an additional layer of abstraction called
 **aliases**. Alias tokens point to a global token which holds their value.
 
-We use aliases to help systematize the desired values referenced by our tokens. 
-One benefit of this approach is that by using alias tokens, users can reference 
-semantic aliases instead of hard-coded values. Another benefit is that it 
-enables flexibility. If we need to update an alias and want those changes 
-applied across the design system, we only need to change that single alias in 
+We use aliases to help systematize the desired values referenced by our tokens.
+One benefit of this approach is that by using alias tokens, users can reference
+semantic aliases instead of hard-coded values. Another benefit is that it
+enables flexibility. If we need to update an alias and want those changes
+applied across the design system, we only need to change that single alias in
 order for it to propagate everywhere.
 
 <uxdot-example width-adjustment="602px">
@@ -206,9 +206,9 @@ order for it to propagate everywhere.
 
 ## Themes
 
-Themes are collections of design tokens that reference specific values. These 
-values change when a user switches themes. Using themes enables us to ship one 
-design system while serving multiple design languages that need to meet 
+Themes are collections of design tokens that reference specific values. These
+values change when a user switches themes. Using themes enables us to ship one
+design system while serving multiple design languages that need to meet
 different audience or brand requirements.
 
 <uxdot-example width-adjustment="870px">
@@ -220,4 +220,4 @@ different audience or brand requirements.
 [typography]: /tokens/typography/
 [contact]: mailto:design-system@redhat.com
 
-{% include 'partials/component/feedback.11ty.cjs' %}
+{% renderFile './docs/_includes/partials/component/feedback.11ty.cjs' %}

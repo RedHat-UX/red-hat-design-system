@@ -15,7 +15,7 @@ subnav:
 
 ## Usage
 
-Use a logo wall when you need to display multiple Red Hat and/or partner logos in a group. 
+Use a logo wall when you need to display multiple Red Hat and/or partner logos in a group.
 
 ## Variants
 
@@ -114,7 +114,7 @@ only the themable container which is the direct ancestor of the logo wall.
 
 See [theming developer docs](/theming/developers/) for more information.
 
-<rh-alert>`<rh-picture>` <rh-tag color="purple">Planned</rh-tag> is expected to help 
+<rh-alert>`<rh-picture>` <rh-tag color="purple">Planned</rh-tag> is expected to help
 with this case</rh-alert>
 
 ### Logo sizes
@@ -127,7 +127,7 @@ with this case</rh-alert>
       width="556"
       height="55">
     </uxdot-example>
-    <p>Because the size and shape of our partners’ logos can vary, make sure to size them similarly so that each partner is evenly represented.</p>  
+    <p>Because the size and shape of our partners’ logos can vary, make sure to size them similarly so that each partner is evenly represented.</p>
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="dont">
@@ -165,4 +165,4 @@ with this case</rh-alert>
   </uxdot-best-practice>
 </div>
 
-{% include 'partials/component/feedback.11ty.cjs' %}
+{% renderFile './docs/_includes/partials/component/feedback.11ty.cjs' %}

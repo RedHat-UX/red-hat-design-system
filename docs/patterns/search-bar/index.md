@@ -15,7 +15,7 @@ spacerTokens:
 
 ## Overview
 
-A Search bar is a horizontal grouping of a form field with placeholder text and 
+A Search bar is a horizontal grouping of a form field with placeholder text and
 a button. It allows a user to input text and then perform a search.
 
 ## Sample pattern
@@ -29,7 +29,7 @@ a button. It allows a user to input text and then perform a search.
 
 ## Style
 
-A search bar includes a narrow but wide form field with placeholder text and a 
+A search bar includes a narrow but wide form field with placeholder text and a
 red button that is placed on the right.
 
 <uxdot-example width-adjustment="872px">
@@ -41,8 +41,8 @@ red button that is placed on the right.
 
 #### Button
 
-A search bar includes a button so a user can perform a search. A call to action 
-link would only direct a user to a results page without actually performing a 
+A search bar includes a button so a user can perform a search. A call to action
+link would only direct a user to a results page without actually performing a
 search, so a button must be used instead.
 
 <rh-alert state="info">
@@ -85,12 +85,12 @@ For now, the light theme search bar can also be used in the dark theme.
 
 ## Usage
 
-A search bar is best used to give a user the ability to search for something and 
+A search bar is best used to give a user the ability to search for something and
 then display any relevant search results.
 
 #### Layout
 
-A search bar can be used in most layouts. It has no set width other than the 
+A search bar can be used in most layouts. It has no set width other than the
 boundaries of whatever container or grid it is placed in.
 
 <uxdot-example width-adjustment="872px">
@@ -102,9 +102,9 @@ boundaries of whatever container or grid it is placed in.
 
 #### Content
 
-The text within a search bar indicates how wide or narrow a search will be. If 
-the text is <em>*generic*</em> (Enter your search term), a user might expect to 
-search through an entire website. If the text is *specific* (Search all 
+The text within a search bar indicates how wide or narrow a search will be. If
+the text is <em>*generic*</em> (Enter your search term), a user might expect to
+search through an entire website. If the text is *specific* (Search all
 resources), a user might expect to search through an individual page.
 
 <uxdot-example width-adjustment="872px">
@@ -118,9 +118,9 @@ resources), a user might expect to search through an individual page.
 
 #### Form field
 
-When a user selects the form field to input text via cursor or keyboard, the 
-placeholder text will disappear, the form field will have focus, and a blinking 
-cursor will take its place. When a user starts typing, the text styling will 
+When a user selects the form field to input text via cursor or keyboard, the
+placeholder text will disappear, the form field will have focus, and a blinking
+cursor will take its place. When a user starts typing, the text styling will
 change.
 
 <rh-alert state="info">
@@ -137,8 +137,8 @@ change.
 
 #### Typeahead
 
-Typeahead allows a user to narrow down a displayed list of options when they 
-input text within a form field, it is recommended for lists with more than 10 
+Typeahead allows a user to narrow down a displayed list of options when they
+input text within a form field, it is recommended for lists with more than 10
 options.
 
 <uxdot-example width-adjustment="872px">
@@ -150,8 +150,8 @@ options.
 
 #### Errors
 
-If focus is moved from the form field to the button, an error will not be 
-displayed. However, if a user tries to perform a search without any text in the 
+If focus is moved from the form field to the button, an error will not be
+displayed. However, if a user tries to perform a search without any text in the
 form field, an error will be displayed.
 
 <rh-alert state="info">
@@ -197,8 +197,8 @@ A blue line appears at the bottom of the form field indicating it is selectable.
 
 #### Focus
 
-When the focus is moved to the form field via keyboard, the placeholder text 
-will disappear and a blinking cursor will take its place. When the focus is 
+When the focus is moved to the form field via keyboard, the placeholder text
+will disappear and a blinking cursor will take its place. When the focus is
 moved away, the placeholder text will be visible again.
 
 <uxdot-example width-adjustment="872px">
@@ -210,8 +210,8 @@ moved away, the placeholder text will be visible again.
 
 #### Active
 
-When the focus is moved to the form field via cursor, the placeholder text will 
-disappear and a blinking cursor will take its place. When the focus is moved 
+When the focus is moved to the form field via cursor, the placeholder text will
+disappear and a blinking cursor will take its place. When the focus is moved
 away, the placeholder text will be visible again.
 
 <uxdot-example width-adjustment="872px">
@@ -223,8 +223,8 @@ away, the placeholder text will be visible again.
 
 #### Tab order
 
-When the Tab key is pressed repeatedly, the focus will highlight the form field 
-first and then the button. A user can move the focus from the form field to the 
+When the Tab key is pressed repeatedly, the focus will highlight the form field
+first and then the button. A user can move the focus from the form field to the
 button without an error being displayed.
 
 <uxdot-example width-adjustment="872px">
@@ -249,8 +249,8 @@ button without an error being displayed.
 
 ## Responsive design
 
-A search bar mostly remains the same on large and small screens. While it can 
-stretch horizontally to fit any container or grid, only the form field stretches 
+A search bar mostly remains the same on large and small screens. While it can
+stretch horizontally to fit any container or grid, only the form field stretches
 whereas the button always stays the same size.
 
 #### Desktop
@@ -284,7 +284,7 @@ whereas the button always stays the same size.
 
 #### Long placeholder text
 
-Do not write placeholder text too long, it should be short and to the point 
+Do not write placeholder text too long, it should be short and to the point
 (maximum 30 characters).
 
 <uxdot-example width-adjustment="872px" danger>
@@ -307,7 +307,7 @@ Do not replace the button with a call to action.
 
 #### Different style or color
 
-Do not use a different button color or style when using a search bar on Red Hat 
+Do not use a different button color or style when using a search bar on Red Hat
 *marketing* websites.
 
 <uxdot-example width-adjustment="872px" danger>
@@ -319,8 +319,8 @@ Do not use a different button color or style when using a search bar on Red Hat
 
 #### Disabled
 
-Do not disable the button until a user inputs text in the form field. The button 
-should always be active and if a user tries to perform a search without any text 
+Do not disable the button until a user inputs text in the form field. The button
+should always be active and if a user tries to perform a search without any text
 in the form field, an error should be displayed instead.
 
 <uxdot-example width-adjustment="872px" danger>
@@ -348,7 +348,7 @@ Avoid using the search button on its own without a form field.
 
 #### Rearranging the component
 
-Do not rearrange a search bar by placing the button below the form field or 
+Do not rearrange a search bar by placing the button below the form field or
 changing its width.
 
 <uxdot-example width-adjustment="360px" danger>
@@ -360,7 +360,7 @@ changing its width.
 
 ## Spacing
 
-A search bar uses [space tokens](/tokens/space/) to define spacing values 
+A search bar uses [space tokens](/tokens/space/) to define spacing values
 between elements.
 
 <uxdot-example width-adjustment="872px">
@@ -375,4 +375,4 @@ between elements.
 </rh-table>
 
 
-{% include 'partials/component/feedback.11ty.cjs' %}
+{% renderFile './docs/_includes/partials/component/feedback.11ty.cjs' %}
