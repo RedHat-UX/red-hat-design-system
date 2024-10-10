@@ -1,5 +1,12 @@
 # @rhds/elements
 
+## 2.1.1
+
+### Patch Changes
+
+- 613e827: `<rh-code-block>`: ensure that syntax colours and styles are applied when the element upgrades
+- 955d393: `<rh-surface>`: corrected themed text color
+
 ## 2.1.0
 
 ### Minor Changes
@@ -25,9 +32,9 @@
 
   ```html
   <rh-subnav accessible-label="Customer service">
-   <a href="#" active>Help</a>
-   <a href="#">Contact Us</a>
-   <a href="#">FAQ</a>
+    <a href="#" active>Help</a>
+    <a href="#">Contact Us</a>
+    <a href="#">FAQ</a>
   </rh-subnav>
   ```
 
