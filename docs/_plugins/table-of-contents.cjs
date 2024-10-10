@@ -1,3 +1,4 @@
+/// <reference lib="ESNext.collection" />
 // @ts-check
 
 /** @license adapted from code (c) Jordan Shermer MIT license*/
@@ -7,13 +8,18 @@
 /** Attribute which if found on a heading means the heading is excluded */
 const ignoreAttribute = 'data-toc-exclude';
 
-const defaults = {
-  tags: ['h2'],
-  /** @type{string[]} */
-  ignoredElements: [],
-};
+/**
+ * @typedef {object} EleventyPage
+ */
 
-/** @typedef {{ Tools: import('@parse5/tools'), Parse5: import('parse5') } & typeof defaults} Options */
+/**
+ * @typedef {object} Options
+ * @property {string[]} tags
+ * @property {string[]} ignoredElements
+ * @property {import('@parse5/tools')} Tools
+ * @property {import('parse5')} Parse5
+ * @properry {EleventyPage} page
+ */
 
 /**
  * @param {Item} prev
@@ -33,6 +39,9 @@ function getParent(prev, current) {
 }
 
 class Item {
+  /** * @type {import('@parse5/tools')} */
+  static Tools;
+
   /** @type{Item[]} */
   children = [];
 
@@ -41,22 +50,24 @@ class Item {
 
   level = 0;
 
+  slug;
+
+  text;
+
   /**
-   * @param {Options} options
    * @param {import('@parse5/tools').Element} [element]
    */
-  constructor(options, element) {
-    this.options = options;
+  constructor(element) {
     if (element) {
-      const { getAttribute, getTextContent } = this.options.Tools;
+      const { getAttribute, getTextContent } = Item.Tools;
       this.slug = getAttribute(element, 'id');
       this.text = getTextContent(element).trim();
       this.level = parseInt(element.tagName.replace('h', '')) || 0;
     }
   }
 
-  getItem() {
-    const { createElement, setTextContent, appendChild } = this.options.Tools;
+  getNode() {
+    const { createElement, setTextContent, appendChild } = Item.Tools;
     const container = this.slug && this.text ? createElement('li') : createElement('span');
     if (this.slug && this.text) {
       const a = createElement('a', { href: `#${this.slug}` });
@@ -67,8 +78,8 @@ class Item {
       const details = createElement('ol', { slot: 'details' });
       const expanded = createElement('ol', { slot: 'expanded' });
       for (const child of this.children) {
-        appendChild(details, child.getItem());
-        appendChild(expanded, child.getItem());
+        appendChild(details, child.getNode());
+        appendChild(expanded, child.getNode());
       }
       appendChild(container, details);
       appendChild(container, expanded);
@@ -77,76 +88,53 @@ class Item {
   }
 }
 
-class Toc {
+/**
+ * @param {import('@11ty/eleventy').UserConfig} eleventyConfig
+ * @param {Partial<Options>} pluginOpts
+ */
+module.exports = function(eleventyConfig, pluginOpts = {}) {
   /**
-   * @param {string} htmlstring
-   * @param {Options} options
+   * @param {string} content
+   * @param {Partial<Options>} filterOpts
    */
-  constructor(htmlstring = '', options) {
-    this.html = htmlstring;
-    this.options = options;
-    this.root = new Item(this.options);
-    this.root.parent = this.root;
+  async function toc(content, filterOpts) {
+    const Parse5 = await import('parse5');
+    const Tools = await import('@parse5/tools');
+    Item.Tools = Tools;
 
-    this.parse();
-  }
+    const { tags = ['h2'], ignoredElements = [] } = {
+      ...pluginOpts,
+      ...filterOpts,
+      tags: filterOpts?.tags || pluginOpts?.tags,
+    };
 
-  parse() {
-    const { parse } = this.options.Parse5;
-    const { queryAll, hasAttribute, isElementNode } = this.options.Tools;
+    const root = new Item();
 
-    const document = parse(this.html);
+    root.parent = root;
 
-    const tagSet =
-      new Set(this.options.tags)
-          .difference(new Set(this.options.ignoredElements));
+    const document = Parse5.parse(content);
 
-    const headings = queryAll(document, node =>
-      isElementNode(node)
-      && tagSet.has(node.tagName)
-      && hasAttribute(node, 'id')
-      && !hasAttribute(node, ignoreAttribute));
+    const tagSet = new Set(tags).difference(new Set(ignoredElements));
 
-    let previous = this.root;
+    /** @type {IterableIterator<import('@parse5/tools').Element>} */
+    const headings = Tools.queryAll(document, node =>
+      Tools.isElementNode(node)
+       && tagSet.has(node.tagName)
+       && Tools.hasAttribute(node, 'id')
+       && !Tools.hasAttribute(node, ignoreAttribute));
+
+    let previous = root;
 
     for (const heading of headings) {
-      if (isElementNode(heading)) {
-        const current = new Item(this.options, heading);
-        const parent = getParent(previous, current);
-        current.parent = parent;
-        parent.children.push(current);
-        previous = current;
-      }
+      const current = new Item(heading);
+      const parent = getParent(previous, current);
+      current.parent = parent;
+      parent.children.push(current);
+      previous = current;
     }
+
+    return Parse5.serialize(root.getNode());
   }
 
-  serialize() {
-    const { serialize } = this.options.Parse5;
-    return serialize(this.root.getItem());
-  }
-}
-
-module.exports = {
-  initArguments: {},
-  configFunction: function(eleventyConfig, options = {}) {
-    eleventyConfig.addFilter('toc', /**
-                                     * @param {string} content
-                                     * @param {typeof defaults} opts
-                                     */
-                             async function(content, opts) {
-                               const Parse5 = await import('parse5');
-                               const Tools = await import('@parse5/tools');
-                               const toc = new Toc(content, {
-                                 ...defaults,
-                                 ...options,
-                                 ...opts,
-                                 tags: opts?.tags || options?.tags,
-                                 Parse5,
-                                 Tools,
-                                 page: this.page,
-                               });
-                               const html = toc.serialize();
-                               return html;
-                             });
-  },
+  eleventyConfig.addFilter('toc', toc);
 };

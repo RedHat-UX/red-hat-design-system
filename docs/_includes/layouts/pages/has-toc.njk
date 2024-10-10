@@ -3,15 +3,15 @@ layout: layouts/base.njk
 ---
 {%- set tagsForThisPageToc = tocTags or ['h2'] -%}
 {%- set table = content | toc(tags=tagsForThisPageToc) -%}
-<link data-helmet
-      rel="stylesheet"
-      href="/styles/pages/backpage.css">
+<link rel="stylesheet"
+      href="/styles/pages/backpage.css"
+      data-helmet>
 
-<link data-helmet
-      rel="stylesheet"
-      href="/assets/javascript/elements/uxdot-toc-lightdom.css">
+<link rel="stylesheet"
+      href="/assets/javascript/elements/uxdot-toc-lightdom.css"
+      data-helmet>
 
-<script data-helmet type="module">
+<script type="module" data-helmet>
   import '/assets/javascript/elements/uxdot-toc.js';
 </script>
 

@@ -138,7 +138,7 @@ module.exports = class ElementsPage {
     return [
       await this.#renderInstallation.call(this, ctx),
       await this.#renderLightdom(ctx),
-      html`<h2>Usage</h2>`,
+      html`<h2 id="usage">Usage</h2>`,
       await this.#getMainDemoContent(tagName),
       doc.fileExists && await this.renderFile(doc.filePath),
       await this.#renderCodeDocs.call(this,
@@ -155,13 +155,13 @@ module.exports = class ElementsPage {
     // TODO: revisit after implementing auto-loaded light-dom css
     if (ctx.doc.hasLightdom) {
       content += html`
-        <h3>Lightdom CSS</h3>
+        <h3 id="lightdom-css">Lightdom CSS</h3>
 
         <p>This element requires you to load "Lightdom CSS" stylesheets for styling
            deeply slotted elements.</p>
 
         <rh-alert state="info">
-          <h4 slot="header">Note</h4>
+          <h4 id="lightdom-css-note" slot="header">Note</h4>
           <p>Replace <code>/path/to/</code> with path to the CSS file, whether local or CDN.</p>
         </rh-alert>
 
@@ -174,10 +174,10 @@ module.exports = class ElementsPage {
     }
     if (ctx.doc.hasLightdomShim) {
       content += html`
-        <h3>Lightdom CSS shim</h3>
+        <h3 id="lightdom-css-shim">Lightdom CSS shim</h3>
 
         <rh-alert state="warning">
-          <h4 slot="header">Warning</h4>
+          <h4 id="lightdom-css-shim-warning" lot="header">Warning</h4>
           <p>Lightdom CSS shims are an optional, temporary solution for reducing CLS.
              Declarative Shadow DOM is the better solution, and once SSR tools are more widely
              available, Lightdom CSS shims will no longer be needed and will become deprecated.</p>
@@ -188,7 +188,7 @@ module.exports = class ElementsPage {
           before the element has fully initialized.</p>
 
         <rh-alert state="info">
-          <h4 slot="header">Note</h4>
+          <h4 id="lightdom-css-shim-note" slot="header">Note</h4>
           <p>Replace <code>/path/to/</code> with path to the CSS file, whether local or CDN.</p>
         </rh-alert>
 
@@ -237,7 +237,7 @@ module.exports = class ElementsPage {
       }
       </style>
       <section class="band">
-        <h2>Installation</h2>
+        <h2 id="installation">Installation</h2>
         <p>We recommend import maps when building pages with RHDS. Learn more about how to install on our <a href="/get-started/developers/installation/">getting started docs</a>.</p>
         <uxdot-installation-tabs>
           <rh-tab slot="tab">Red Hat CDN</rh-tab>
