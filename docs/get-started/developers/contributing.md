@@ -34,127 +34,144 @@ contributing to the Red Hat Design System.
 git clone git@github.com:RedHat-UX/red-hat-design-system.git
 ```
 
-4. Navigate into your project folder
+### 4. Navigate into your project folder
 
 ```shell rhcodeblock
 cd red-hat-design-system
 ```
 
-5. Run [Node Version Manager's][nodeversionmanagers] `use` command to switch to 
-    the projects [Node][node] version.
+### 5. Get the proper Node version
 
-    ```shell rhcodeblock
-    nvm use
-    ```
+Run [Node Version Manager's][nodeversionmanagers] `use` command to switch to 
+the projects [Node][node] version.
 
-    If prompted, follow the instructions for installing specific version of Node 
-    [used by this project][usedbythisproject] on your system, which will look 
-    similar to the following:
+```shell rhcodeblock
+nvm use
+```
 
-    > `You need to run "nvm install v20.10.0" to install it before using it.`
+If prompted, follow the instructions for installing specific version of Node 
+[used by this project][usedbythisproject] on your system, which will look 
+similar to the following:
 
-6. Install project dependencies, run `npm ci`
+> `You need to run "nvm install v20.10.0" to install it before using it.`
 
-    ```shell rhcodeblock
-    npm ci
-    ```
+### 6. Install dependencies 
+
+Install project dependencies, run `npm ci`
+
+```shell rhcodeblock
+npm ci
+```
 
 ## Development Servers
 
-1. Start the development servers `npm start`.
+RHDS repo comes with two dev servers, one for working on elements, the other 
+for working on patterns and docs.
 
-    ```shell rhcodeblock
-    npm start
-    ```
+### Running both servers
+Start the development servers `npm start`.
 
-    Two servers will start, if no other processes are using port `:8000` or 
-    `:8080` the element development server will load on `:8000` and the 
-    documentation server will load on `:8080`. The element server will auto open 
-    a browser window, the documentation server however will not.  
+```shell rhcodeblock
+npm start
+```
 
-2. To run these servers independently you can use the commands `npm run dev` and 
-   `npm run serve`.
+Two servers will start, if no other processes are using port `:8000` or 
+`:8080` the element development server will load on `:8000` and the 
+documentation server will load on `:8080`. The element server will auto open 
+a browser window, the documentation server however will not.  
 
-    ```shell rhcodeblock
-    npm run dev
-    ```
+### Running them separately
 
-    ```shell rhcodeblock
-    npm run serve
-    ```
+To run these servers independently you can use the commands `npm run dev` and 
+`npm run serve`.
+
+```shell rhcodeblock
+npm run dev
+```
+
+```shell rhcodeblock
+npm run serve
+```
 
 ## Creating a new element
 
-1. Run the new element generator command `npm run new`
+### 1. Scaffolding
+Run the new element generator command `npm run new`
 
-    ```shell rhcodeblock
-    npm run new
-    ```
+```shell rhcodeblock
+npm run new
+```
 
-2. You will be prompted for a element name.  For Red Hat Design System elements 
-   use prefix `rh-` followed by the elements name e.g: `rh-element-name`.
+### 2. Element name
+You will be prompted for a element name.  For Red Hat Design System elements 
+ use prefix `rh-` followed by the elements name e.g: `rh-element-name`.
 
-3. A new folder will be created in the `./elements/rh-element-name` directory 
-   with the name of the element you chose.
+### 3. Generated files
+A new folder will be created in the `./elements/rh-element-name` directory 
+ with the name of the element you chose.
 
-   The following files will also be created for you:
+ The following files will also be created for you:
 
-    - `./elements/rh-element-name/demo/rh-element-name.html`
-    - `./elements/rh-element-name/demo/rh-element-name.js`
-      <rh-tag color="red" variant="outline">Deprecated</rh-tag>
-    - `./elements/rh-element-name/demo/demo.css`
-      <rh-tag color="red" variant="outline">Deprecated</rh-tag>
-    - `./elements/rh-element-name/docs/rh-element.html`
-      <rh-tag color="red" variant="outline">Deprecated</rh-tag>
-    - Rename this file to `00-overview.md`
-    - `./elements/rh-element-name/test/rh-element-name.spec.ts`
-    - `./elements/rh-element-name/test/rh-element-name.e2e.ts`
-    - `./elements/rh-element-name/rh-element-name.ts`
-    - `./elements/rh-element-name/rh-element-name.css`
-    - `./elements/rh-element-name/README.md`
+- `./elements/rh-element-name/demo/rh-element-name.html`
+- `./elements/rh-element-name/demo/rh-element-name.js`
+  <rh-tag color="red" variant="outline">Deprecated</rh-tag>
+- `./elements/rh-element-name/demo/demo.css`
+  <rh-tag color="red" variant="outline">Deprecated</rh-tag>
+- `./elements/rh-element-name/docs/rh-element.html`
+  <rh-tag color="red" variant="outline">Deprecated</rh-tag>
+  - Rename this file to `00-overview.md`
+- `./elements/rh-element-name/test/rh-element-name.spec.ts`
+- `./elements/rh-element-name/test/rh-element-name.e2e.ts`
+- `./elements/rh-element-name/rh-element-name.ts`
+- `./elements/rh-element-name/rh-element-name.css`
+- `./elements/rh-element-name/README.md`
 
-4. For more information please read our [Wiki][wiki] page on
-   [adding new components][addingnewcomponents] 
+### 4. Develop your element
+
+For more information please read our [Wiki][wiki] page on [adding new 
+components][addingnewcomponents] 
 
 ## Testing
 
-1. To run all unit tests use command `npm test`
+To run all unit tests use command `npm test`
 
-    ```shell rhcodeblock
-    npm test
-    ```
+```shell rhcodeblock
+npm test
+```
 
-2. To run individual element unit tests use the test command with element test path flag
+To run individual element unit tests use the test command with element test path flag
 
-    ```shell rhcodeblock
-    npm run test -- -- ./elements/rh-element-name/test/rh-element-name.spec.ts
-    ```
+```shell rhcodeblock
+npm run test -- -- ./elements/rh-element-name/test/rh-element-name.spec.ts
+```
 
-3. The project uses [Mocha][mocha] and [Chai][chai] and are run via
-   [Web Test Runner][webtestrunner]
-4. For more detailed information about testing and how we write tests please see 
-   our [Testing][testing] page on the Wiki and our [introduction to testing RHDS 
-   components][introductiontotestingrhdscomponents] with Chai A11y aXe and
-   `a11ySnapshot`.
+The project uses [Mocha][mocha] and [Chai][chai] and are run via
+[Web Test Runner][webtestrunner]. For more detailed information about testing 
+and how we write tests please see our [Testing][testing] page on the Wiki and 
+our [introduction to testing RHDS 
+components][introductiontotestingrhdscomponents] with Chai A11y aXe and
+`a11ySnapshot`.
 
 ## Writing Code
 
-1.  Please read our Developer Guidelines section of our [Wiki][wiki]
-    - [Custom Element API Style Guide][customelementapistyleguide]
-    - [Shadow DOM][shadowdom]
-    - [HTML Formatting][htmlformatting]
-    - [CSS][css]
-    - [JSDoc][jsdoc]
+Please read our Developer Guidelines section of our [Wiki][wiki]
 
-## Contributing 
+  - [Custom Element API Style Guide][customelementapistyleguide]
+  - [Shadow DOM][shadowdom]
+  - [HTML Formatting][htmlformatting]
+  - [CSS][css]
+  - [JSDoc][jsdoc]
 
-1. When your code is ready to push to our repository, please open a Pull 
-   Request/Merge Request. You may first need to request access. Please reach out 
-   to us on Slack `#red-hat-design-system`
-   <rh-tag color="red" variant="outline">Internal Red Hat only</rh-tag> or
-   [open an issue][openanissue].
-2. Before pushing your code please read our
-   [Pull Request Review Guide][pullrequestreviewguide] on our [Wiki][wiki]
+## Contributing
+
+When your code is ready to push to our repository, please open a Pull 
+Request/Merge Request. You may first need to request access. Please reach out to 
+us on Slack `#red-hat-design-system`
+<rh-tag color="red" variant="outline">Internal Red Hat only</rh-tag> or
+[open an issue][openanissue].
+
+Before pushing your code please read our
+[Pull Request Review Guide][pullrequestreviewguide] on our [Wiki][wiki]
 
 <uxdot-feedback>
   <h2>Designers</h2>
