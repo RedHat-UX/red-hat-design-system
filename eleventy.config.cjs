@@ -49,7 +49,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy('docs/styles/**/*');
   eleventyConfig.addPassthroughCopy('docs/foundations/**/*.{css,js}');
 
-
   if (isLocal) {
     eleventyConfig.addPassthroughCopy({
       'node_modules/playground-elements/playground-*worker*': '.',
@@ -87,8 +86,8 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     'node_modules/@lit/reactive-element': '/assets/packages/@lit/reactive-element',
   });
-  eleventyConfig.addPassthroughCopy({ 'elements': 'assets/packages/@rhds/elements/elements/' });
-  eleventyConfig.addPassthroughCopy({ 'lib': 'assets/packages/@rhds/elements/lib/' });
+  eleventyConfig.addPassthroughCopy({ 'elements': '/assets/packages/@rhds/elements/elements/' });
+  eleventyConfig.addPassthroughCopy({ 'lib': '/assets/packages/@rhds/elements/lib/' });
   eleventyConfig.addPlugin(ImportMapPlugin, {
     nodemodulesPublicPath: '/assets/packages',
     manualImportMap: {
@@ -160,14 +159,6 @@ module.exports = function(eleventyConfig) {
   // RHDS Tokens docs
   eleventyConfig.addPlugin(DesignTokensPlugin);
 
-  eleventyConfig.addPassthroughCopy({
-    'node_modules/@rhds/tokens/css/global.css': '/assets/rhds.css',
-  });
-
-  eleventyConfig.addPassthroughCopy({
-    'node_modules/@lit/reactive-element': '/assets/packages/@lit/reactive-element',
-  });
-
   /** Generate and consume custom elements manifests */
   eleventyConfig.addPlugin(CustomElementsManifestPlugin, {
     renderTitleInOverview: false,
@@ -195,6 +186,13 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addPlugin(LitPlugin, {
     componentModules: [
+      'elements/rh-button/rh-button.js',
+      'elements/rh-tag/rh-tag.js',
+      'elements/rh-code-block/rh-code-block.js',
+      'elements/rh-icon/rh-icon.js',
+      'elements/rh-surface/rh-surface.js',
+      'elements/rh-skip-link/rh-skip-link.js',
+      'elements/rh-footer/rh-footer-universal.js',
       'docs/assets/javascript/elements/uxdot-masthead.js',
       'docs/assets/javascript/elements/uxdot-header.js',
       'docs/assets/javascript/elements/uxdot-sidenav.js',
@@ -207,16 +205,8 @@ module.exports = function(eleventyConfig) {
       'docs/assets/javascript/elements/uxdot-search.js',
       'docs/assets/javascript/elements/uxdot-toc.js',
       'docs/assets/javascript/elements/uxdot-pattern.js',
-      // Uses context API need to work around issues
-      // 'docs/assets/javascript/elements/uxdot-example.js',
-      // extends RhTabs so cant DSD yet
-      // 'docs/assets/javascript/elements/uxdot-installation-tabs.js',
-      'elements/rh-button/rh-button.js',
-      'elements/rh-tag/rh-tag.js',
-      'elements/rh-code-block/rh-code-block.js',
-      'elements/rh-icon/rh-icon.js',
-      'elements/rh-skip-link/rh-skip-link.js',
-      'elements/rh-footer/rh-footer-universal.js',
+      'docs/assets/javascript/elements/uxdot-example.js',
+      'docs/assets/javascript/elements/uxdot-installation-tabs.js',
     ],
   });
 

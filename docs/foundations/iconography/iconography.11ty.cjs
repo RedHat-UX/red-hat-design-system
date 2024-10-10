@@ -5,9 +5,8 @@ module.exports = class IconsPage {
   async data() {
     return {
       permalink: '/foundations/iconography/index.html',
-      layout: 'layouts/pages/basic.njk',
+      layout: 'layouts/pages/has-toc.njk',
       title: 'Iconography',
-      hasToc: true,
       order: 25,
       icons: await import('@rhds/icons'),
       tags: [
@@ -16,7 +15,8 @@ module.exports = class IconsPage {
     };
   }
 
-  async render({ icons }) {
+  async render(ctx) {
+    const { icons } = ctx;
     return html`
       <script type="module" src="icons.js" data-helmet></script>
 
@@ -54,33 +54,33 @@ module.exports = class IconsPage {
 
       <section>
         <h2 id="standard-icons">Standard icons</h2>
-        <ul class="icon-set">${this.renderIcons('standard', icons)}</ul>
+        <ul class="icon-set">${this.#renderIcons('standard', icons)}</ul>
       </section>
 
       <section>
         <h2 id="ui-icons">UI icons</h2>
-        <ul class="icon-set">${this.renderIcons('ui', icons)}</ul>
+        <ul class="icon-set">${this.#renderIcons('ui', icons)}</ul>
       </section>
 
       <section>
         <h2 id="micron-icons">Microns</h2>
-        <ul class="icon-set">${this.renderIcons('microns', icons)}</ul>
+        <ul class="icon-set">${this.#renderIcons('microns', icons)}</ul>
       </section>
 
       <section>
         <h2 id="social-icons">Social icons</h2>
-        <ul class="icon-set">${this.renderIcons('social', icons)}</ul>
+        <ul class="icon-set">${this.#renderIcons('social', icons)}</ul>
       </section>
 
-      ${await this.renderFile('./docs/_includes/partials/component/feedback.html', 'njk')}
+      ${await this.renderFile('./docs/_includes/partials/component/feedback.11ty.cjs', ctx)}
     `;
   }
 
-  renderIcons(set, icons) {
-    return Array.from(icons[set].keys(), icon => this.renderIcon({ icon, set })).join('');
+  #renderIcons(set, icons) {
+    return Array.from(icons[set].keys(), icon => this.#renderIcon({ icon, set })).join('');
   }
 
-  renderIcon({ set, icon }) {
+  #renderIcon({ set, icon }) {
     return html`
       <li>
         <rh-icon set="${set}" icon="${icon}"></rh-icon>

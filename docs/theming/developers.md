@@ -1,7 +1,7 @@
 ---
 title: Developers
+layout: layouts/pages/has-toc.njk
 order: 4
-hasToc: true
 ---
 
 <link rel="stylesheet"

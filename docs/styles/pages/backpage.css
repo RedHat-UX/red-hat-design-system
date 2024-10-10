@@ -157,18 +157,18 @@
       grid-template-areas:
         'header header'
         'content content';
-    }
 
-    article.has-toc {
-      grid-template-areas:
-        'header header'
-        'content aside';
+      &.has-toc {
+        grid-template-areas:
+          'header header'
+          'content aside';
 
-      & uxdot-toc {
-        max-width: 320px;
-        position: sticky;
-        height: max-content;
-        top: calc(var(--uxdot-masthead-max-height) + var(--rh-space-2xl) * 3);
+        & uxdot-toc {
+          max-width: 320px;
+          position: sticky;
+          height: max-content;
+          top: calc(var(--uxdot-masthead-max-height) + var(--rh-space-2xl) * 3);
+        }
       }
     }
   }

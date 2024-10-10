@@ -308,7 +308,7 @@ importElements:
 
 </section>
 <section aria-labelledby="aria__heading-mar-2021">
-  
+
   <h2 id="aria__heading-mar-2021">March 2021</h2>
 
   <h3>Added</h3>
@@ -365,7 +365,7 @@ importElements:
 
 </section>
 <section aria-labelledby="aria__heading-oct-2020">
-  
+
   <h2 id="aria__heading-oct-2020">October 2020</h2>
 
   <h3>Added</h3>
@@ -405,4 +405,4 @@ importElements:
 
 </section>
 
-{% include 'partials/component/feedback.html' %}
+{% renderFile './docs/_includes/partials/component/feedback.11ty.cjs' %}

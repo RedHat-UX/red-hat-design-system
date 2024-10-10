@@ -1,20 +1,16 @@
+import { isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 
 import { RhTabs } from '@rhds/elements/rh-tabs/rh-tabs.js';
 import { TabExpandEvent } from '@rhds/elements/rh-tabs/rh-tab.js';
 
 import '@rhds/elements/rh-alert/rh-alert.js';
+
 const TABS_KEY = 'rhds-installation-tabs-selected-index';
 
 @customElement('uxdot-installation-tabs')
 export class InstallationTabs extends RhTabs {
-  static stored = localStorage.getItem(TABS_KEY);
-
-  constructor() {
-    super();
-    this.box = 'box';
-    this.vertical = true;
-  }
+  static stored = !isServer && localStorage.getItem(TABS_KEY);
 
   async firstUpdated() {
     super.firstUpdated?.();
@@ -22,9 +18,6 @@ export class InstallationTabs extends RhTabs {
       this.querySelectorAll('rh-tab'),
       x => x.updateComplete,
     ));
-    for (const pre of this.querySelectorAll<HTMLElement>('rh-tab-panel > pre')) {
-      pre.style.maxWidth = '100cqw';
-    }
     if (InstallationTabs.stored !== null) {
       const index = parseInt(InstallationTabs.stored);
       if (!Number.isNaN(index)

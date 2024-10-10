@@ -63,10 +63,10 @@ h3,
   @container host (width > 300px) { padding: var(--rh-space-xl); }
 
   @container host (width > 540px) { padding: var(--rh-space-4xl); }
-}
 
-#content > * {
-  margin-inline: auto;
+  & > * {
+    margin-inline: auto;
+  }
 }
 
 #color-picker {

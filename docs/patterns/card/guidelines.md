@@ -3,7 +3,6 @@ title: Guidelines
 heading: Card
 sidenavTitle: Card
 layout: layouts/pages/pattern.njk
-hasToc: true
 order: 20
 tags:
   - cardPatterns
@@ -62,4 +61,4 @@ The recommended maximum character count for the elements of a card are listed be
 
 
 
-{% include 'partials/component/feedback.html' %}
+{% renderFile './docs/_includes/partials/component/feedback.11ty.cjs' %}

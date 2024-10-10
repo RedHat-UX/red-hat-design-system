@@ -7,8 +7,16 @@ importElements:
   - rh-tile
 ---
 
-<link rel="stylesheet" data-helmet href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
-<script type="module" data-helmet src="/assets/javascript/search-results.js"></script>
+<link
+  rel="stylesheet"
+  data-helmet
+  href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css"
+/>
+<script
+  type="module"
+  data-helmet
+  src="/assets/javascript/search-results.js"
+></script>
 
 <section aria-label="Search results" class="results-section">
   <div id="results" hidden></div>
@@ -19,16 +27,17 @@ importElements:
 <nav class="grid xs-two-columns sm-three-columns">
   {% for category in collections.tokenCategory %}
   <rh-tile>
-    <a slot="headline" href="{{ category.url }}"><h3>{{category.title | capitalize }}</h3></a>
+    <a slot="headline" href="{{ category.url }}"
+      ><h3>{{category.title | capitalize }}</h3></a
+    >
   </rh-tile>
-  {% endfor %}
-  {# there is a mismatch between the token categories as specified
-     and the token categories as designed.
-     for example "line-height" is a top-level category in the token specification
-     but it is categorized under 'typography' in the designs #}
+  {% endfor %} {# there is a mismatch between the token categories as specified
+  and the token categories as designed. for example "line-height" is a top-level
+  category in the token specification but it is categorized under 'typography'
+  in the designs #}
   <rh-tile>
     <a slot="headline" href="/tokens/font/#line-height"><h3>Line Height</h3></a>
   </rh-tile>
 </nav>
 
-{% include 'partials/component/feedback.html' %}
+{% renderFile './docs/_includes/partials/component/feedback.11ty.cjs' %}
