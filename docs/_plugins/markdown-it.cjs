@@ -48,13 +48,17 @@ function rhdsCodeBlock(md) {
     const rendered = orig.call(this, tokens, idx, options, env, slf);
     const token = tokens[idx];
 
+    const actions = ['copy'];
+    if (rendered.split('\n').map(x => x.trim()).filter(Boolean).length > 1) {
+      actions.push('wrap');
+    }
     const [lang, block, ...rest] = token.info.split(/\s+/);
     if (block?.replaceAll('-', '') === 'rhcodeblock') {
       const redactedToken = { ...token, info: `${lang} ${rest.join(' ')}` };
       return html`
         <rh-code-block full-height
                        dedent
-                       actions="wrap copy"
+                       actions="${actions.join(' ')}"
                        highlighting="prerendered"
                        ${slf.renderAttrs(redactedToken)}>${rendered}</rh-code-block>`.trim();
     } else {
