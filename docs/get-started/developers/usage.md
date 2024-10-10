@@ -30,7 +30,7 @@ Follow the steps below to learn how.
 We'll bootstrap our React app using [Vite][vite]. It's possible to use other 
 tools for this, but that is out of the scope of this tutorial.
 
-```js rhcodeblock
+```sh rhcodeblock
 npm create vite@latest
 ```
 
@@ -40,7 +40,7 @@ This command will ask you to provide the project name, framework, and variant.
 
 Use the following command:
 
-```js rhcodeblock
+```sh rhcodeblock
 npm install @lit-labs/react
 ```
 
@@ -90,14 +90,13 @@ you're using web components. Below is an example of importing `<rh-card>` to a
 file called `HelloWorld.vue`.
 
 ```js rhcodeblock
-
-  import "@rhds/elements/rh-card/rh-card.js";
-  export default {
-    name: "HelloWorld",
-    props: {
-      msg: String
-    }
-  };
+import "@rhds/elements/rh-card/rh-card.js";
+export default {
+  name: "HelloWorld",
+  props: {
+    msg: String
+  }
+};
 ```
 
 ## Other resources

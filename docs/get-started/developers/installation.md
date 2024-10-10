@@ -10,6 +10,12 @@ subnav:
   order: 10
 ---
 
+<script type="module" data-helmet>
+  import '/assets/javascript/elements/uxdot-example.js';
+  import '@rhds/elements/rh-code-block/rh-code-block.js';
+  import '@rhds/elements/rh-alert/rh-alert.js';
+</script>
+
 ## How to install
 
 There are three ways you can install the Red Hat Design System's web components: 
