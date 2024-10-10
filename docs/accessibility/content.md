@@ -82,7 +82,7 @@ Images and other non-text media that don’t add any meaningful information to a
 - While an alt attribute is required for all `<img>` elements, leaving its value empty (e.g., `alt=""` or just `alt`) for decorative images will hide them from assistive tech.
 - You can hide decorative inline `<svg>` elements (and other non-`<img>` media) from assistive tech with the `aria-hidden="true"` attribute.
 
-If an image is a page border, an abstract decoration, or if it's used more to improve layout than to provide additional context, it can typically be considered decorative.
+If an image is a page border, an abstract decoration, or if it’s used more to improve layout than to provide additional context, it can typically be considered decorative.
 
 If a non-text element’s contents are already described by adjacent text, then it may also be considered decorative in many cases—unless both the element and the text are necessary for a full understanding of the presented information. Images accompanying how-to instructions, images used to assist in visual identification of objects, and images that complement descriptions of a physical object (e.g., a piece of clothing being sold at an online store) may warrant descriptions beyond the visible text.
 
@@ -162,9 +162,42 @@ Microcopy comprises short words, phrases, or chunks of text used on the web or i
 
 Best practices for all microcopy:
 
-- Keep text short but descriptive. Use as few words as possible, but avoid non-informative or vague text, like “click here,” “learn more,” “read more,” etc.
-- Make the first word meaningful. For example, avoid starting with “a”, “the”, “for”, etc. In many cases, this practice allows screen reader users to navigate items alphabetically.
-- Keep the text consistent. Ensure that consistency is maintained on pages, sites, and entire user journeys.
+- Keep text short but descriptive
+- Use as few words as possible
+- Avoid non-informative or vague text, like “click here,” “learn more,” “read more,” etc.
+- Make the first word meaningful
+    - For example, avoid starting with “a”, “the”, “for”, etc
+    - In many cases, this practice allows screen reader users to navigate items alphabetically
+- Keep the text consistent.
+    - Ensure that consistency is maintained on pages, sites, and entire user journeys.
+
+### Creating emphasis
+
+When writing for the web, use bold and italic formatting sparingly. Remember: if everything is emphasized, nothing is emphasized.
+
+[Red Hat design guidelines](https://www.redhat.com/en/about/brand/standards/typography) mandate users employ either bold or italics—never both together.
+
+#### Bold
+
+The most effective way to highlight key points in text is by **using bold**. Bold text naturally draws the eye and makes specific parts stand out.
+
+However, the golden rule for bolding is moderation. Overusing bold can backfire—if everything is bold, nothing feels important. Instead, choose a few key words or a single, short sentence that encapsulates your main message.
+
+#### Italics
+
+Italics offer another useful option for formatting, though they’re not a substitute for bold. They can help distinguish a section of text from the rest, adding emphasis in a subtler way. 
+
+However, italics can be harder to read, especially for individuals with dyslexia. As with bolding, it’s best to use italics sparingly.
+
+#### Underlines
+
+On the web, avoid using underlines for any text that isn't a link, since it can be confusing to users. Instead of underlining text, consider bolding or italicizing it.
+
+Also, be cautious about using your site’s link color elsewhere—especially for text. Users may think blue text is a link even if it is not. Catch up on how to use [color accessibly](/accessibility/design/#color) on our [Design](/accessibility/design/) page.
+
+#### All caps
+
+Only use all caps for acronyms and abbreviations (like <abbr title="Red Hat Design System">RHDS</abbr> and <abbr title="Consumer Financial Protection Bureau">CFPB</abbr>). Do not use all caps for emphasis. Use bold or italics instead. For users with dyslexia, the variation in letter height between uppercase and lowercase is actually easier to read—especially when the copy is longer than two to three words.
 
 ### Link text
 
@@ -564,4 +597,4 @@ Languages such as Hebrew and Farsi run from right-to-left (RTL) instead of left-
 
 Avoid mixing bi-directional (BIDI) content within the same block-level elements (e.g., a paragraph) whenever possible.
 
-For more help, read the W3C's [article on bidirectional text in HTML](https://www.w3.org/International/articles/inline-bidi-markup/index.en.html).
+For more help, read the W3C’s [article on bidirectional text in HTML](https://www.w3.org/International/articles/inline-bidi-markup/index.en.html).
