@@ -1,8 +1,11 @@
 ## Keyboard interactions
 Each panel is a focus stop where `Enter` or `Space` expands or collapses each panel.
 
-<uxdot-example>
-  <img src="../accordion-keyboard-interactions.png" alt="Accordion keyboard interactions; pressing Tab will focus the top panel, pressing Tab again will move focus to the next panel underneath, and pressing Enter or Space will expand the panel">
+<uxdot-example width-adjustment="872px">
+  <img src="../accordion-keyboard-interactions.png" 
+      alt="Accordion keyboard interactions; pressing Tab will focus the top panel, pressing Tab again will move focus to the next panel underneath, and pressing Enter or Space will expand the panel"
+      width="872"
+      height="357">
 </uxdot-example>
 
 <rh-table>
@@ -34,15 +37,21 @@ Each panel is a focus stop where `Enter` or `Space` expands or collapses each pa
 
 {% include 'partials/accessibility/focusorder.md' %}
 
-<uxdot-example>
-  <img src="../accordion-focus-order.png" alt="Accordion showing the order how focus moves through the element when pressing Tab continuously">
+<uxdot-example width-adjustment="872px">
+  <img src="../accordion-focus-order.png" 
+      alt="Accordion showing the order how focus moves through the element when pressing Tab continuously"
+      width="872"
+      height="316">
 </uxdot-example>
 
 ## Touch targets
 Each panel is selectable instead of only title text or the chevrons.
 
-<uxdot-example>
-  <img src="../accordion-touch-targets.png" alt="Accordion showing touch target size examples for large and small sizes">
+<uxdot-example width-adjustment="872px">
+  <img src="../accordion-touch-targets.png" 
+      alt="Accordion showing touch target size examples for large and small sizes"
+      width="872"
+      height="536">>
 </uxdot-example>
 
 {% include 'partials/accessibility/ariaguide.md' %}

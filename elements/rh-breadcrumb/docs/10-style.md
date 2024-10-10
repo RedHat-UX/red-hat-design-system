@@ -6,7 +6,10 @@ Breadcrumb navigation is composed of links, text, and caret icons as separators.
 
 <figure>
   <uxdot-example width-adjustment="295px">
-    <img src="../breadcrumbs-anatomy.svg" alt="Anatomy of breadcrumbs with numbered annotations pointing to various parts">
+    <img src="../breadcrumbs-anatomy.svg"
+        alt="Anatomy of breadcrumbs with numbered annotations pointing to various parts"
+        width="296"
+        height="47">
   </uxdot-example>
   <figcaption>
      <ol>
@@ -23,11 +26,17 @@ Breadcrumbs are available in both light and dark themes.
 
 <div class="grid xs-two-columns">
   <uxdot-example width-adjustment="295px">
-    <img src="../breadcrumb-theme-light.svg" alt="Light theme breadcrumb with blue links and black text and separators">
+    <img src="../breadcrumb-theme-light.svg"
+        alt="Light theme breadcrumb with blue links and black text and separators"
+        width="296"
+        height="21">
   </uxdot-example>
 
   <uxdot-example width-adjustment="295px" color-palette="darkest">
-    <img src="../breadcrumb-theme-dark.svg" alt="Dark theme breadcrumb with light blue links and white text and separators">
+    <img src="../breadcrumb-theme-dark.svg"
+        alt="Dark theme breadcrumb with light blue links and white text and separators"
+        width="296"
+        height="21">
   </uxdot-example>
 </div>
 
@@ -36,7 +45,10 @@ Breadcrumbs are available in both light and dark themes.
 Breadcrumbs typically appear above the title of a page and below primary and/or secondary navigation.
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-    <img src="../breadcrumb-placement.svg" alt="partial view of Red Hat's homepage with primary and secondary navigation above breadcrumb navigation">
+    <img src="../breadcrumb-placement.svg"
+        alt="partial view of Red Hat's homepage with primary and secondary navigation above breadcrumb navigation"
+        width="1000"
+        height="445">
   </uxdot-example>
 
 ## Space
@@ -44,7 +56,10 @@ Breadcrumbs typically appear above the title of a page and below primary and/or 
 The space between parent pages or current pages and the separators is 16px. If a row of breadcrumbs has to wrap, the space between the lines is 8px. This remains the same across all breakpoints.
 
 <uxdot-example width-adjustment="162px">
- <img  src="../breadcrumb-space.svg" alt="Diagram of spacing for breadcrumbs"  />
+ <img src="../breadcrumb-space.svg"
+        alt="Diagram of spacing for breadcrumbs"
+        width="162"
+        height="50" />
 </uxdot-example>
 
 ## Interaction States
@@ -57,11 +72,17 @@ A breadcrumb link turns a darker or lighter shade of the default state’s blue 
 
 <div class="grid xs-two-columns">
   <uxdot-example width-adjustment="295px">
-    <img src="../breadcrumb-hover-light.svg" alt="Light theme breadcrumbs with dark blue, underlined links on hover and black text and separators">
+    <img src="../breadcrumb-hover-light.svg"
+        alt="Light theme breadcrumbs with dark blue, underlined links on hover and black text and separators"
+        width="296"
+        height="44">
   </uxdot-example>
 
   <uxdot-example width-adjustment="295px" color-palette="darkest">
-    <img src="../breadcrumb-hover-dark.svg" alt="Dark theme breadcrumbs with light blue, underlined links on hover and white text and separators">
+    <img src="../breadcrumb-hover-dark.svg"
+        alt="Dark theme breadcrumbs with light blue, underlined links on hover and white text and separators"
+        width="296"
+        height="44">
   </uxdot-example>
 </div>
 
@@ -71,11 +92,17 @@ The focus state of a breadcrumb link looks similar to the hover state, but it ad
 
 <div class="grid xs-two-columns">
   <uxdot-example width-adjustment="295px">
-    <img src="../breadcrumb-focus-light.svg" alt="Light theme breadcrumbs with one dark blue, underlined link in a focus ring">
+    <img src="../breadcrumb-focus-light.svg"
+        alt="Light theme breadcrumbs with one dark blue, underlined link in a focus ring"
+        width="296"
+        height="25">
   </uxdot-example>
 
   <uxdot-example width-adjustment="295px" color-palette="darkest">
-    <img src="../breadcrumb-focus-dark.svg" alt="Dark theme breadcrumbs with one light blue, underlined link in a focus ring">
+    <img src="../breadcrumb-focus-dark.svg"
+        alt="Dark theme breadcrumbs with one light blue, underlined link in a focus ring"
+        width="296"
+        height="25">
   </uxdot-example>
 </div>
 
@@ -88,11 +115,17 @@ The focus state of a breadcrumb link looks similar to the hover state, but it ad
 
 <div class="grid xs-two-columns">
   <uxdot-example width-adjustment="295px">
-    <img src="../breadcrumb-active-light.svg" alt="Light theme breadcrumbs with one dark blue, underlined link in a focus ring">
+    <img src="../breadcrumb-active-light.svg"
+        alt="Light theme breadcrumbs with one dark blue, underlined link in a focus ring"
+        width="296"
+        height="25">
   </uxdot-example>
 
   <uxdot-example width-adjustment="295px" color-palette="darkest">
-    <img src="../breadcrumb-active-dark.svg" alt="Dark theme breadcrumbs with one light blue, underlined link in a focus ring">
+    <img src="../breadcrumb-active-dark.svg"
+        alt="Dark theme breadcrumbs with one light blue, underlined link in a focus ring"
+        width="296"
+        height="25">
   </uxdot-example>
 </div>
 

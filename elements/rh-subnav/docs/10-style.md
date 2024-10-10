@@ -8,7 +8,10 @@ except for the active page accent.
 
 <figure>
   <uxdot-example width-adjustment="872px">
-    <img src="../subnav-anatomy.png" alt="Anatomy image showing a subnavigation with various annotation numbers">
+    <img src="../subnav-anatomy.png"
+        alt="Anatomy image showing a subnavigation with various annotation numbers"
+        width="872"
+        height="178">
   </uxdot-example>
   <figcaption>
     <ol>
@@ -28,7 +31,10 @@ except for the active page accent.
 A subnavigation is available in the light theme only right now.
 
 <uxdot-example width-adjustment="872px">
-  <img src="../subnav-theme-light.png" alt="Image of light theme desktop and mobile subnavigations">
+  <img src="../subnav-theme-light.png"
+        alt="Image of light theme desktop and mobile subnavigations"
+        width="872"
+        height="178">
 </uxdot-example>
 
 
@@ -37,7 +43,10 @@ A subnavigation is available in the light theme only right now.
 Each link container is the same height as the bar.
 
 <uxdot-example width-adjustment="872px">
-  <img src="../subnav-configuration.png" alt="Image of desktop and mobile subnavigations with various specs like height, width, and more">
+  <img src="../subnav-configuration.png"
+        alt="Image of desktop and mobile subnavigations with various specs like height, width, and more"
+        width="872"
+        height="203">
 </uxdot-example>
 
 
@@ -49,7 +58,10 @@ Each link container is the same height as the bar.
 </rh-alert>
 
 <uxdot-example width-adjustment="872px">
-  <img src="../subnav-space.png" alt="Image of desktop and mobile subnavigations with spacing values in between">
+  <img src="../subnav-space.png"
+        alt="Image of desktop and mobile subnavigations with spacing values in between"
+        width="872"
+        height="176">
 </uxdot-example>
 
 <rh-table>
@@ -71,7 +83,10 @@ Interactive elements include inactive links and overflow buttons.
 Inactive links and overflow buttons have the same hover state.
 
 <uxdot-example width-adjustment="872px">
-  <img src="../subnav-interaction-state-hover.png" alt="Image of light theme hover states">
+  <img src="../subnav-interaction-state-hover.png"
+        alt="Image of light theme hover states"
+        width="872"
+        height="176">
 </uxdot-example>
 
 
@@ -83,7 +98,10 @@ Inactive links and overflow buttons have the same hover state.
 </rh-alert>
 
 <uxdot-example width-adjustment="872px">
-  <img src="../subnav-interaction-state-focus.png" alt="Image of light theme focus states">
+  <img src="../subnav-interaction-state-focus.png"
+        alt="Image of light theme focus states"
+        width="872"
+        height="176">
 </uxdot-example>
 
 
@@ -95,5 +113,8 @@ Inactive links and overflow buttons have the same hover state.
 </rh-alert>
 
 <uxdot-example width-adjustment="872px">
-  <img src="../subnav-interaction-state-active.png" alt="Image of light theme active states">
+  <img src="../subnav-interaction-state-active.png"
+        alt="Image of light theme active states"
+        width="872"
+        height="176">
 </uxdot-example>

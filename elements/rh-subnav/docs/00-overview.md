@@ -3,7 +3,10 @@
 {{ tagName | getElementDescription }}
 
 <uxdot-example width-adjustment="872px">
-  <img src="./subnav-sample.png" alt="Image of a subnavigation; a horizontal row of links placed on a light gray bar">
+  <img src="./subnav-sample.png"
+        alt="Image of a subnavigation; a horizontal row of links placed on a light gray bar"
+        width="872"
+        height="178">
 </uxdot-example>
 
 

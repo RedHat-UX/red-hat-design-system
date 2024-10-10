@@ -1,11 +1,3 @@
-.band-example {
-  &::part(example) {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--rh-space-lg);
-  }
-}
-
 .code-tabs {
   border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
   border-radius: var(--rh-border-radius-default);

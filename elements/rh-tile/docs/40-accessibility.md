@@ -4,7 +4,10 @@ A user should have the ability to use the Tab key to navigate to a tile or into 
 
 
 <uxdot-example width-adjustment="880px">
-  <img src="../tile-keyboard-interactions.png" alt="Tile groups with labels showing which key to use for navigating">
+  <img src="../tile-keyboard-interactions.png"
+        alt="Tile groups with labels showing which key to use for navigating"
+        width="880"
+        height="756">
 </uxdot-example>
 
 
@@ -55,7 +58,10 @@ A user should have the ability to use the Tab key to navigate to a tile or into 
 A logical focus order helps keyboard users operate our websites. Elements need to receive focus in an order that preserves meaning, therefore the focus order should make sense and not jump around randomly. In tile groups, focus moves from left to right and top to bottom.
 
 <uxdot-example width-adjustment="880px">
-  <img src="../tile-focus-order.png" alt="Tile groups with numbers showing the focus order">
+  <img src="../tile-focus-order.png"
+        alt="Tile groups with numbers showing the focus order"
+        width="879"
+        height="597">
 </uxdot-example>
 
 

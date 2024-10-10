@@ -7,7 +7,10 @@ optional text label.
 
 <figure>
   <uxdot-example width-adjustment="299px">
-    <img src="../spinner-anatomy.png" alt="Anatomy of a spinner with annotations; number 1 is pointing to the track, number 2 is pointing to the indicator, and number 3 is pointing to the optional text label">
+    <img src="../spinner-anatomy.png"
+        alt="Anatomy of a spinner with annotations; number 1 is pointing to the track, number 2 is pointing to the indicator, and number 3 is pointing to the optional text label"
+        width="299"
+        height="103">
   </uxdot-example>
   <figcaption>
     <ol>
@@ -25,7 +28,10 @@ A spinner comes in large, medium, and small sizes. Each size includes an
 optional text label on the bottom.
 
 <uxdot-example width-adjustment="472px">
-  <img src="../spinner-sizes.png" alt="Small size, medium size, and large size spinners with their text labels below">
+  <img src="../spinner-sizes.png"
+        alt="Small size, medium size, and large size spinners with their text labels below"
+        width="472"
+        height="103">
 </uxdot-example>
 
 
@@ -67,14 +73,20 @@ A spinner is available in both light and dark themes.
 ### Light theme
 
 <uxdot-example width-adjustment="251px">
-  <img src="../spinner-theme-light.png" alt="Light theme spinner">
+  <img src="../spinner-theme-light.png"
+        alt="Light theme spinner"
+        width="251"
+        height="103">
 </uxdot-example>
 
 
 ### Dark theme
 
 <uxdot-example color-palette="darkest" width-adjustment="251px">
-  <img src="../spinner-theme-dark.png" alt="Dark theme spinner">
+  <img src="../spinner-theme-dark.png"
+        alt="Dark theme spinner"
+        width="251"
+        height="103">
 </uxdot-example>
 
 
@@ -87,7 +99,10 @@ viewport by default. This demonstrates that the whole container is loading
 rather than one specific area.
 
 <uxdot-example width-adjustment="872px">
-  <img src="../spinner-configuration-container.png" alt="Diagram of how a spinner should be horizontally and vertically centered within a container no matter its size or if a text label is included or not">
+  <img src="../spinner-configuration-container.png"
+        alt="Diagram of how a spinner should be horizontally and vertically centered within a container no matter its size or if a text label is included or not"
+        width="872"
+        height="359">
 </uxdot-example>
 
 
@@ -97,14 +112,20 @@ If a small size spinner is used within a button, it can be positioned to the
 left of the text as if it were an icon.
 
 <uxdot-example width-adjustment="107px">
-  <img src="../spinner-configuration-button.png" alt="Button with a small size spinner icon to the left as if it were an icon">
+  <img src="../spinner-configuration-button.png"
+        alt="Button with a small size spinner icon to the left as if it were an icon"
+        width="107"
+        height="36">
 </uxdot-example>
 
 
 ## Space
 
 <uxdot-example width-adjustment="632px">
-  <img src="../spinner-space.png" alt="Spacing between all spinner sizes and their text labels">  
+  <img src="../spinner-space.png"
+        alt="Spacing between all spinner sizes and their text labels"
+        width="632"
+        height="103">  
 </uxdot-example>
 
 <rh-table>

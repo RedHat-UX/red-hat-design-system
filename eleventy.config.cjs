@@ -11,7 +11,7 @@ const RHDSPlugin = require('./docs/_plugins/rhds.cjs');
 const DesignTokensPlugin = require('./docs/_plugins/tokens.cjs');
 const RHDSMarkdownItPlugin = require('./docs/_plugins/markdown-it.cjs');
 const ImportMapPlugin = require('./docs/_plugins/importMap.cjs');
-const LitPlugin = require('@lit-labs/eleventy-plugin-lit');
+const LitPlugin = require('./docs/_plugins/lit-ssr/lit.cjs');
 const HelmetPlugin = require('eleventy-plugin-helmet');
 
 const util = require('node:util');
@@ -34,7 +34,6 @@ module.exports = function(eleventyConfig) {
     await exec('npx tspc');
   });
 
-  eleventyConfig.addWatchTarget('docs/patterns/**/*.html');
   eleventyConfig.watchIgnores?.add('docs/assets/redhat/');
   eleventyConfig.watchIgnores?.add('**/*.spec.ts');
   eleventyConfig.watchIgnores?.add('**/*.d.ts');
@@ -48,8 +47,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy('docs/robots.txt');
   eleventyConfig.addPassthroughCopy('docs/assets/**/*');
   eleventyConfig.addPassthroughCopy('docs/styles/**/*');
-  eleventyConfig.addPassthroughCopy('docs/patterns/**/*.css');
-  eleventyConfig.addPassthroughCopy('docs/theming/**/*.css');
   eleventyConfig.addPassthroughCopy('docs/foundations/**/*.{css,js}');
 
 
@@ -59,8 +56,8 @@ module.exports = function(eleventyConfig) {
     });
   }
 
-  eleventyConfig.addWatchTarget('docs/patterns/**/*.(html|md)');
   eleventyConfig.addWatchTarget('docs/styles/');
+  eleventyConfig.addWatchTarget('docs/patterns/**/*.md');
 
   eleventyConfig.addGlobalData('isLocal', isLocal);
 
@@ -197,7 +194,6 @@ module.exports = function(eleventyConfig) {
   });
 
   eleventyConfig.addPlugin(LitPlugin, {
-    mode: 'worker',
     componentModules: [
       'docs/assets/javascript/elements/uxdot-masthead.js',
       'docs/assets/javascript/elements/uxdot-header.js',
@@ -210,7 +206,7 @@ module.exports = function(eleventyConfig) {
       'docs/assets/javascript/elements/uxdot-best-practice.js',
       'docs/assets/javascript/elements/uxdot-search.js',
       'docs/assets/javascript/elements/uxdot-toc.js',
-      // 'docs/assets/javascript/elements/uxdot-pattern.js',
+      'docs/assets/javascript/elements/uxdot-pattern.js',
       // Uses context API need to work around issues
       // 'docs/assets/javascript/elements/uxdot-example.js',
       // extends RhTabs so cant DSD yet

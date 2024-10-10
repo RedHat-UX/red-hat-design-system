@@ -10,9 +10,9 @@ importElements:
   - rh-table
 ---
 
-<link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
+<link data-helmet rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
 
-<style>
+<style data-helmet>
 
   /* this style allows for spacing of "sections" while only using headers */
   /* which are converted to uxdot-copy-permalink */

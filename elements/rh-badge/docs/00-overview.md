@@ -3,7 +3,10 @@
 {{ tagName | getElementDescription }}
 
 <uxdot-example width-adjustment="80px">
-  <img src="./badge-sample-element.svg" alt="Two badges; from left to right, one badge has a dark gray background with a white counter number and the other badge has a purple background with a white counter number.">
+  <img src="./badge-sample-element.svg" 
+      alt="Two badges; from left to right, one badge has a dark gray background with a white counter number and the other badge has a purple background with a white counter number."
+      width="80"
+      height="18">
 </uxdot-example>
 
 {% repoStatusList repoStatus=repoStatus %}

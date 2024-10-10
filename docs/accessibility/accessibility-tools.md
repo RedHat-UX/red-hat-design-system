@@ -4,7 +4,7 @@ sidenavTitle: Accessibility tools
 permalink: /accessibility/accessibility-tools/index.html
 tags:
   - accessibility
-order: 50
+order: 10
 importElements:
   - rh-blockquote
 ---
@@ -13,9 +13,9 @@ importElements:
 
 Automated tools can help you quickly identify many potential high-impact accessibility issues. Among such tools are free browser extensions like:
 
-  * Deque’s aXe DevTools
-  * WebAIM’s WAVE
-  * IBM's Equal Access Checker
+- Deque’s aXe DevTools
+- WebAIM’s WAVE
+- IBM's Equal Access Checker
 
 ### Deque aXe DevTools
 
@@ -58,7 +58,10 @@ Google's Chrome and Microsoft's Edge browsers have several accessibility tools b
 
 <figure>
   <uxdot-example width-adjustment="900px">
-    <img src="/assets/accessibility/lighthouse-audit.png" alt="Screenshot of a Lighthouse autdit with a score of 100%.">
+    <img src="/assets/accessibility/lighthouse-audit.png"
+      alt="Screenshot of a Lighthouse autdit with a score of 100%."
+      width="900"
+      height="251">
   </uxdot-example>
 </figure>
 
@@ -66,15 +69,18 @@ Running an accessibility audit in Lighthouse is recommended to catch errors dete
 
 Chrome and Edge also have an "Accessibility Pane" that lets users see information about the currently selected DOM node. This includes properties like:
 
-   * An element's role
-   * If an element is focusable
-   * If the element contains any `aria` attributes and their values
-   * An element's title
-   * ...and many other accessibility-related properties
+- An element's role
+- If an element is focusable
+- If the element contains any `aria` attributes and their values
+- An element's title
+- ...and many other accessibility-related properties
 
 <figure>
   <uxdot-example width-adjustment="893px">
-    <img src="/assets/accessibility/accessibility-pane.png" alt="Screenshot of the accessibility pane on a ux.redhat.com page with three numbers identifying key features.">
+    <img src="/assets/accessibility/accessibility-pane.png"
+      alt="Screenshot of the accessibility pane on a ux.redhat.com page with three numbers identifying key features."
+      width="893"
+      height="498">
   </uxdot-example>
   <figcaption>
     To view the Accessibility Pane, open DevTools then click:
@@ -90,7 +96,10 @@ Users can optionally check "Enable full-page accessibility tree" to change what'
 
 <figure>
   <uxdot-example width-adjustment="1167px">
-    <img src="/assets/accessibility/accessibility-tree-view.png" alt="Screenshot showing the rendered page content in the browser on the left and the same content in the accessibility tree view on the right in DevTools">
+    <img src="/assets/accessibility/accessibility-tree-view.png"
+      alt="Screenshot showing the rendered page content in the browser on the left and the same content in the accessibility tree view on the right in DevTools"
+      width="1167"
+      height="535">
   </uxdot-example>
   <figcaption>
     Inspecting the Alert (left) with the full-page accessibility tree enabled reveals its accessible properties (right).
@@ -109,7 +118,10 @@ One neat feature included within Firefox's accessibility inspector is the abilit
 
 <figure>
   <uxdot-example width-adjustment="994px">
-    <img src="/assets/accessibility/firefox-show-tab-order.png" alt="Screenshot of a page with 'Show Tabbing Order' checked. Each tab stop shows its tab stop number inside a pip.">
+    <img src="/assets/accessibility/firefox-show-tab-order.png"
+      alt="Screenshot of a page with 'Show Tabbing Order' checked. Each tab stop shows its tab stop number inside a pip."
+      width="994"
+      height="505">
   </uxdot-example>
   <figcaption>
     A page in Firefox with visually numbered tab stops via the Firefox feature, "Show Tabbing order".

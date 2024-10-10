@@ -5,7 +5,10 @@
 {{ tagName | getElementDescription }}
 
 <uxdot-example width-adjustment="296px">
-  <img src="breadcrumb-sample-element.svg" alt="Three placeholder breadcrumb links and a current page breadcrumb">
+  <img src="breadcrumb-sample-element.svg"
+        alt="Three placeholder breadcrumb links and a current page breadcrumb"
+        width="296"
+        height="21">
 </uxdot-example>
 
 {% repoStatusList repoStatus=repoStatus %}

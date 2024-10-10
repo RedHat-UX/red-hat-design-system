@@ -23,7 +23,10 @@ Cards can be used in light and dark themes. They act as a blank canvas where
 elements and styles can be placed inside.
 
 <uxdot-example width-adjustment="600px">
-  <img src="../card-style.svg" alt="A breakdown of the parts of a card">
+  <img src="../card-style.svg"
+        alt="A breakdown of the parts of a card"
+        width="600"
+        height="502">
 </uxdot-example>
 
 ## Theme
@@ -32,13 +35,19 @@ All card variants are available in light and dark theme.
 ### Light theme
 
 <uxdot-example width-adjustment="784px">
-  <img src="../card-theme-light.svg" alt="Card in light theme">
+  <img src="../card-theme-light.svg"
+        alt="Card in light theme"
+        width="752"
+        height="507">
 </uxdot-example>
 
 ### Dark theme
 
 <uxdot-example color-palette="darkest" width-adjustment="784px">
-  <img src="../card-theme-dark.svg" alt="Card in dark theme">
+  <img src="../card-theme-dark.svg"
+        alt="Card in dark theme"
+        width="752"
+        height="507">
 </uxdot-example>
 
 ### Color
@@ -103,11 +112,17 @@ tall.
 
 <div class="grid">
   <uxdot-example width-adjustment="360px">
-    <img src="../card-layout-1.svg" alt="Example of a card layout">
+    <img src="../card-layout-1.svg"
+        alt="Example of a card layout"
+        width="360"
+        height="502">
   </uxdot-example>
 
   <uxdot-example width-adjustment="360px">
-    <img src="../card-layout-2.svg" alt="Anatomy of a card layout">
+    <img src="../card-layout-2.svg"
+        alt="Anatomy of a card layout"
+        width="360"
+        height="502">
   </uxdot-example>
 
 </div>
@@ -137,13 +152,19 @@ Cards will get thinner or move below each other on smaller screens.
 ### Large screens
 
 <uxdot-example width-adjustment="784px" variant="full" no-border alignment="left">
-  <img src="../card-layout-desktop.svg" alt="Card layout on desktop">
+  <img src="../card-layout-desktop.svg"
+        alt="Card layout on desktop"
+        width="1000"
+        height="320">
 </uxdot-example>
 
 ### Small screens
 
 <uxdot-example width-adjustment="360px" variant="full" no-border alignment="left">
-  <img src="../card-layout-mobile.svg" alt="Card layout on mobile">
+  <img src="../card-layout-mobile.svg"
+        alt="Card layout on mobile"
+        width="360"
+        height="640">
 </uxdot-example>
 
 ## Spacing
@@ -165,12 +186,18 @@ become thinner, the container padding decreases.
 ### Desktop
 
 <uxdot-example width-adjustment="360px">
-  <img src="../card-spacing-desktop.svg" alt="Card spacing on desktop">
+  <img src="../card-spacing-desktop.svg"
+        alt="Card spacing on desktop"
+        width="360"
+        height="502">
 </uxdot-example>
 
 
 ### Mobile
 
 <uxdot-example width-adjustment="360px">
-  <img src="../card-spacing-mobile.svg" alt="Card spacing on mobile">
+  <img src="../card-spacing-mobile.svg"
+        alt="Card spacing on mobile"
+        width="360"
+        height="640">
 </uxdot-example>

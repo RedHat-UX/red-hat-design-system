@@ -49,13 +49,6 @@ crayons:
     grid-template-columns: repeat(auto-fill, minmax(245px, 1fr));
   }
 }
-/*
-@container section (min-width:747px) {
-  #crayons-grid {
-    grid-template-columns: repeat(auto-fill, minmax(352px, 1fr));
-  }
-}
-*/
 </style>
 
 ## Introduction
@@ -81,7 +74,10 @@ When colors are used together, they form relationships that communicate brand,
 hierarchy, state, and more.
 
 <uxdot-example width-adjustment="840px">
-  <img src="/assets/color/color-relationships.png" alt="Variants of several elements">
+  <img src="/assets/color/color-relationships.png"
+      alt="Variants of several elements"
+      width="840"
+      height="599">
 </uxdot-example>
 
 
@@ -98,7 +94,10 @@ To learn more about our color design tokens, go to the [Tokens](/tokens) section
 Our design system includes multiple sets of colors known as **"crayon" colors**. Crayon colors reference hard-coded values, but offer no information about usage. **Semantic** colors reference crayon colors and define how a color is used. Semantic naming is essential not just for color, but for all foundational styles.
 
 <uxdot-example width-adjustment="626px">
-  <img src="/assets/color/primitive-and-semantic-colors.png" alt="Example of how crayon color tokens are aliased to semantic tokens, which are used to style a button">
+  <img src="/assets/color/primitive-and-semantic-colors.png"
+      alt="Example of how crayon color tokens are aliased to semantic tokens, which are used to style a button"
+      width="626"
+      height="550">
 </uxdot-example>
 
 ## Color tokens

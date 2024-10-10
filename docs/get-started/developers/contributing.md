@@ -13,7 +13,7 @@ importElements:
   - rh-tag
 ---
 
-<style>
+<style data-helmet>
   rh-code-block + rh-code-block {
     margin-block-start: var(--rh-spacer-2xl, 32px);
   }

@@ -19,7 +19,10 @@ Links are navigational elements that allow a user to move between content, pages
 ## Sample pattern
 
 <uxdot-example width-adjustment="259px">
-  <img src="./example-links.svg" alt="Link component examples">
+  <img src="./example-links.svg"
+      alt="Link component examples"
+      width="259"
+      height="215">
 </uxdot-example>
 
 
@@ -33,7 +36,10 @@ View a live version of the Call to action link and see how it can be customized.
 ## Style
 
 <uxdot-example width-adjustment="630px">
-  <img src="./link-blueprint.svg" alt="Link component blueprint">
+  <img src="./link-blueprint.svg"
+      alt="Link component blueprint"
+      width="630"
+      height="158">
 </uxdot-example>
 
 
@@ -60,7 +66,10 @@ Each link variant has different styles depending on how they are used with or wi
 </rh-alert>
 
 <uxdot-example width-adjustment="584px">
-  <img src="./link-visual-elements.svg" alt="Link component visual elements">
+  <img src="./link-visual-elements.svg"
+      alt="Link component visual elements"
+      width="584"
+      height="136">
 </uxdot-example>
 
 
@@ -84,7 +93,10 @@ An Inline link can be applied to text used on its own at any size outside of a p
 </rh-alert>
 
 <uxdot-example width-adjustment="770px">
-  <img src="./theme-light.svg" alt="Link component, light theme">
+  <img src="./theme-light.svg"
+      alt="Link component, light theme"
+      width="770"
+      height="70">
 </uxdot-example>
 
 
@@ -96,7 +108,10 @@ An Inline link can be applied to text used on its own at any size outside of a p
 </rh-alert>
 
 <uxdot-example color-palette="darkest" width-adjustment="770px">
-  <img src="./theme-dark.svg" alt="Link component, dark theme"> 
+  <img src="./theme-dark.svg"
+      alt="Link component, dark theme"
+      width="770"
+      height="70"> 
 </uxdot-example>
 
 
@@ -105,7 +120,10 @@ An Inline link can be applied to text used on its own at any size outside of a p
 Links should be applied when a user needs to jump to content on the same page, visit a page within the same domain, or visit a page within another domain.
 
 <uxdot-example width-adjustment="752px">
-  <img src="./when-to-use.svg" alt="Link component usage">
+  <img src="./when-to-use.svg"
+      alt="Link component usage"
+      width="752"
+      height="285">
 </uxdot-example>
 
 
@@ -118,8 +136,11 @@ Links are navigational elements, so any text needs to **accurately communicate t
   <p>Link content needs to be written clearly in order to be understood, therefore write <strong>no more than four or five words</strong> per link.</p>
 </rh-alert>
 
-<uxdot-example width-adjustment="752px">
-  <img src="./usage-content.svg" alt="Link component usage, content">
+<uxdot-example width-adjustment="840px">
+  <img src="./usage-content.svg"
+      alt="Link component usage, content"
+      width="840"
+      height="222">
 </uxdot-example>  
 
 
@@ -148,7 +169,10 @@ Do not apply a link to an action that needs to be triggered instead, like submit
 </rh-alert>
 
 <uxdot-example width-adjustment="492px">
-  <img src="./usage-buttons.svg" alt="Link component usage, buttons">
+  <img src="./usage-buttons.svg"
+      alt="Link component usage, buttons"
+      width="492"
+      height="475">
 </uxdot-example>
 
 
@@ -174,7 +198,10 @@ A user will be directed to another domain if they select an Inline link with an 
 </rh-alert>
 
 <uxdot-example width-adjustment="508px">
-  <img src="./external-pages.svg" alt="Link component, internal vs. external pages">
+  <img src="./external-pages.svg"
+      alt="Link component, internal vs. external pages"
+      width="508"
+      height="85">
 </uxdot-example>
 
 
@@ -189,44 +216,68 @@ A user will be directed to another domain if they select an Inline link with an 
 ### Link
 
 <uxdot-example width-adjustment="772px">
-  <img src="./interaction-state-link-light.svg" alt="Link component interaction state, link (light theme)">
+  <img src="./interaction-state-link-light.svg"
+      alt="Link component interaction state, link (light theme)"
+      width="772"
+      height="70">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="772px">
-  <img src="./interaction-state-link-dark.svg" alt="Link component interaction state, link (dark theme)">
+  <img src="./interaction-state-link-dark.svg"
+      alt="Link component interaction state, link (dark theme)"
+      width="772"
+      height="70">
 </uxdot-example>
 
 
 ### Hover
 
 <uxdot-example width-adjustment="772px">
-  <img src="./interaction-state-hover-light.svg" alt="Link component interaction state, hover (light theme)">
+  <img src="./interaction-state-hover-light.svg"
+      alt="Link component interaction state, hover (light theme)"
+      width="788"
+      height="88">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="772px">
-  <img src="./interaction-state-hover-dark.svg" alt="Link component interaction state, hover (dark theme)">
+  <img src="./interaction-state-hover-dark.svg"
+      alt="Link component interaction state, hover (dark theme)"
+      width="788"
+      height="88">
 </uxdot-example>
 
 
 ### Focus
 
 <uxdot-example width-adjustment="772px">
-  <img src="./interaction-state-focus-light.svg" alt="Link component interaction state, focus (light theme)">
+  <img src="./interaction-state-focus-light.svg"
+      alt="Link component interaction state, focus (light theme)"
+      width="788"
+      height="86">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="772px">
-  <img src="./interaction-state-focus-dark.svg" alt="Link component interaction state, focus (dark theme)">
+  <img src="./interaction-state-focus-dark.svg"
+      alt="Link component interaction state, focus (dark theme)"
+      width="788"
+      height="86">
 </uxdot-example>
 
 
 ### Active
 
 <uxdot-example width-adjustment="772px">
-  <img src="./interaction-state-active-light.svg" alt="Link component interaction state, active (light theme)">
+  <img src="./interaction-state-active-light.svg"
+      alt="Link component interaction state, active (light theme)"
+      width="788"
+      height="88">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="772px">
-  <img src="./interaction-state-active-dark.svg" alt="Link component interaction state, active (dark theme)">
+  <img src="./interaction-state-active-dark.svg"
+      alt="Link component interaction state, active (dark theme)"
+      width="788"
+      height="88">
 </uxdot-example>
 
 
@@ -238,11 +289,17 @@ A user will be directed to another domain if they select an Inline link with an 
 </rh-alert>
 
 <uxdot-example width-adjustment="531px">
-  <img src="./interaction-state-visited-light.svg" alt="Link component interaction state, visited (light theme)">
+  <img src="./interaction-state-visited-light.svg"
+      alt="Link component interaction state, visited (light theme)"
+      width="531"
+      height="17">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="531px">
-  <img src="./interaction-state-visited-dark.svg" alt="Link component interaction state, visited (dark theme)">
+  <img src="./interaction-state-visited-dark.svg"
+      alt="Link component interaction state, visited (dark theme)"
+      width="531"
+      height="17">
 </uxdot-example>
 
 
@@ -251,7 +308,10 @@ A user will be directed to another domain if they select an Inline link with an 
 When the Tab key is pressed repeatedly, the focus highlights each Inline and Call to action link in order, from left to right and top to bottom.
 
 <uxdot-example width-adjustment="666px">
-  <img src="./tab-order.svg" alt="Link component tab order">
+  <img src="./tab-order.svg"
+      alt="Link component tab order"
+      width="666"
+      height="236">
 </uxdot-example>
 
 
@@ -290,19 +350,28 @@ Both link variants mostly remain the same on large and small screens. Inline lin
 ### Desktop
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="./responsive-design-desktop.svg" alt="Link component responsive design, desktop">
+  <img src="./responsive-design-desktop.svg"
+      alt="Link component responsive design, desktop"
+      width="1000"
+      height="178">
 </uxdot-example>
 
 ### Tablet
     
 <uxdot-example width-adjustment="768px" variant="full" alignment="left" no-border>
-  <img src="./responsive-design-tablet.svg" alt="Link component responsive design, tablet">
+  <img src="./responsive-design-tablet.svg"
+      alt="Link component responsive design, tablet"
+      width="768"
+      height="188">
 </uxdot-example>
   
 ### Mobile
 
 <uxdot-example width-adjustment="360px" variant="full" alignment="left" no-border>
-  <img src="./responsive-design-mobile.svg" alt="Link component responsive design, mobile">
+  <img src="./responsive-design-mobile.svg"
+      alt="Link component responsive design, mobile"
+      width="360"
+      height="236">
 </uxdot-example>
 
  
@@ -313,7 +382,10 @@ Both link variants mostly remain the same on large and small screens. Inline lin
 Do not apply lots of links to paragraph text otherwise a user will have trouble reading the content in its entirety before making a selection.
 
 <uxdot-example width-adjustment="561px" danger>
-  <img src="./link-best-practice-1.svg" alt="Link component best practice 1">
+  <img src="./link-best-practice-1.svg"
+      alt="Link component best practice 1"
+      width="561"
+      height="69">
 </uxdot-example>
 
 
@@ -322,7 +394,10 @@ Do not apply lots of links to paragraph text otherwise a user will have trouble 
 Do not use different link variants to direct a user to the same page.
 
 <uxdot-example width-adjustment="561px" danger>
-  <img src="./link-best-practice-2.svg" alt="Link component best practice 2">
+  <img src="./link-best-practice-2.svg"
+      alt="Link component best practice 2"
+      width="562"
+      height="92">
 </uxdot-example>
 
 
@@ -331,7 +406,10 @@ Do not use different link variants to direct a user to the same page.
 When writing link content, avoid ambiguous phrases or a full website URL. A user should have a clear idea of where they are being directed to before they make a selection.
 
 <uxdot-example width-adjustment="455px" danger>
-  <img src="./link-best-practice-3.svg" alt="Link component best practice 3">
+  <img src="./link-best-practice-3.svg"
+      alt="Link component best practice 3"
+      width="455"
+      height="70">
 </uxdot-example>
 
 
@@ -340,7 +418,10 @@ When writing link content, avoid ambiguous phrases or a full website URL. A user
 Do not apply links to long strings of text.
     
 <uxdot-example width-adjustment="561px" danger>
-  <img src="./link-best-practice-4.svg" alt="Link component best practice 4">
+  <img src="./link-best-practice-4.svg"
+      alt="Link component best practice 4"
+      width="561"
+      height="92">
 </uxdot-example>
 
 
@@ -354,7 +435,10 @@ Buttons have different use cases and should not be used to promote offers or oth
 </rh-alert>
 
 <uxdot-example width-adjustment="309px" danger>
-  <img src="./link-best-practice-5.svg" alt="Link component best practice 5">
+  <img src="./link-best-practice-5.svg"
+      alt="Link component best practice 5"
+      width="309"
+      height="36">
 </uxdot-example>    
 
 
@@ -368,7 +452,10 @@ Do not apply the external link icon to Call to action links.
 </rh-alert>
 
 <uxdot-example width-adjustment="398px" danger>
-  <img src="./link-best-practice-6.svg" alt="Link component best practice 6">
+  <img src="./link-best-practice-6.svg"
+      alt="Link component best practice 6"
+      width="398"
+      height="56">
 </uxdot-example>
 
 
@@ -377,7 +464,10 @@ Do not apply the external link icon to Call to action links.
 The Default call to action link arrow and the external link icon should not appear by themselves, they should always be connected to at least one word on the same line.
 
 <uxdot-example width-adjustment="360px" danger>
-  <img src="./link-best-practice-7.svg" alt="Link component best practice 7">
+  <img src="./link-best-practice-7.svg"
+      alt="Link component best practice 7"
+      width="360"
+      height="158">
 </uxdot-example>
 
 

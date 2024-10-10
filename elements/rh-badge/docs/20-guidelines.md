@@ -70,7 +70,10 @@ than the threshold will display a + at the end. For example, if `999` is the
 threshold, using `1,000` or larger will display `999+`.
 
 <uxdot-example width-adjustment="198px">
-  <img src="../badge-counter-number.svg" alt="Badges with various counter numbers; from left to right, a badge with 1, a badge with 50, a badge with 500, and a badge with 999+">
+  <img src="../badge-counter-number.svg" 
+      alt="Badges with various counter numbers; from left to right, a badge with 1, a badge with 50, a badge with 500, and a badge with 999+"
+      width="198"
+      height="18">
 </uxdot-example>
 
 
@@ -81,7 +84,10 @@ A badge is often found in filter toggles to indicate the number of selections
 that are made in a toolbar filter or select list.
 
 <uxdot-example width-adjustment="336px">
-  <img src="../badge-filtering.png" alt="A badge used in a filter dropdown and counting three selected checkboxes within a menu">
+  <img src="../badge-filtering.png" 
+      alt="A badge used in a filter dropdown and counting three selected checkboxes within a menu"
+      width="336"
+      height="184">
 </uxdot-example>
 
 ## Best practices
@@ -91,7 +97,10 @@ that are made in a toolbar filter or select list.
 Do not allow a badge to display a count over 999.
 
 <uxdot-example danger width-adjustment="74px">
-  <img src="../badge-best-practice-large-number-dont.svg" alt="A badge counting to 1,00,000 which is incorrect usage">
+  <img src="../badge-best-practice-large-number-dont.svg" 
+      alt="A badge counting to 1,00,000 which is incorrect usage"
+      width="74"
+      height="18">
 </uxdot-example>
 
 ### Two badges
@@ -101,6 +110,9 @@ might make it difficult to differentiate unread or actionable items associated
 with the badges.
 
 <uxdot-example danger width-adjustment="85px">
-  <img src="../badge-best-practice-two-badges-dont.svg" alt="Two badges with different background colors and no other unique visual cues which is incorrect usage">
+  <img src="../badge-best-practice-two-badges-dont.svg" 
+      alt="Two badges with different background colors and no other unique visual cues which is incorrect usage"
+      width="85"
+      height="18">
 </uxdot-example>
 
