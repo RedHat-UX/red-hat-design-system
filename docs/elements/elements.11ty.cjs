@@ -290,7 +290,7 @@ module.exports = class ElementsPage {
 
     // TODO: dsd
     return html`
-      <h${h}>${tagName}</h${h}>
+      <h${h} id="${tagName}-apis">${tagName}</h${h}>
 
       <p>${manifest.getDescription(tagName)}</p>
 

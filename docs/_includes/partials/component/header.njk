@@ -8,7 +8,7 @@
   {% set tabs = doc.tabs %}
   {% set demos = manifest.getDemos(doc.docsPage.tagName) %}
   {% set planned = doc.docsPage.tagName | isPlanned %}
-  {% set prettyName -%}{{ (doc.alias or doc.slug or element.slug) | deslugify }}{% endset %}
+  {% set prettyName -%}{{ doc.alias or ((element.tagName or element.slug or doc.slug) | deslugify) }}{% endset %}
   {% set headingContent -%}
     {{ prettyName }}
     {% if planned %}
@@ -29,7 +29,8 @@
 {% endif %}
 
 <uxdot-header {% if tabs %}has-subnav{% endif %} {% if tokenSearch %}has-search {% endif %}>
-  <h1 id="{{ headingId }}" class="page-title">{{ headingContent }}</h1>
+  {#- TODO: cheap hack here to fix data spaghetti from demos page -#}
+  <h1 id="{{ headingId }}" class="page-title">{{ headingContent | replace('Demos |', '') }}</h1>
   {% if tokenSearch %}{% include 'partials/component/token-search.html' %}{% endif %}
   {% if tabs %}
   <rh-subnav slot="subnav" accessible-label="{{ heading }}">
