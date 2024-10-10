@@ -11,7 +11,13 @@ function dedent(str) {
 }
 
 module.exports = class Feedback {
-  render({ doc, title, pfeconfig, relatedItems }) {
+  async render({
+    doc,
+    title,
+    pfeconfig,
+    relatedItems,
+  }) {
+    pfeconfig ??= await import('@patternfly/pfe-tools/config.js').then(x => x.getPfeConfig());
     const name = doc?.tagName ?? this.slugify(title);
     const related = [...new Set(relatedItems?.[name] ?? [])].map(x => {
       const slug = this.getTagNameSlug(x, pfeconfig);

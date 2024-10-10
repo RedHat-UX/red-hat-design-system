@@ -110,6 +110,8 @@ module.exports = class ElementsPage {
       </script>`}
 
       ${!isCodePage ? content : await this.#renderCodePage.call(this, ctx)}
+
+      ${await this.renderFile('./docs/_includes/partials/component/feedback.11ty.cjs', ctx)}
     `;
   }
 
@@ -139,7 +141,7 @@ module.exports = class ElementsPage {
       await this.#renderLightdom(ctx),
       html`<h2 id="usage">Usage</h2>`,
       await this.#getMainDemoContent(tagName),
-      doc.fileExists && await this.renderFile(doc.filePath),
+      doc.fileExists && await this.renderFile(doc.filePath, ctx),
       await this.#renderCodeDocs.call(this,
                                       doc.docsPage.tagName,
                                       { ...ctx, level: (ctx.level ?? 2) + 1 }),

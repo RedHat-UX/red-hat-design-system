@@ -403,7 +403,8 @@ module.exports = class TokensPage {
     }
   }
 
-  async render({ tokenCategory }) {
+  async render(ctx) {
+    const { tokenCategory } = ctx;
     const { exclude, include, path, slug } = tokenCategory;
     const name = path.split('.').pop();
     const tokens = resolveTokens(path);
@@ -417,7 +418,7 @@ module.exports = class TokensPage {
         import '@rhds/elements/rh-table/rh-table.js';
       </script>
       ${await this.#renderCategory({ tokens, name, path, slug, level: 1, exclude, include, seenPaths })}
-      ${await this.renderFile('./docs/_includes/partials/component/feedback.11ty.cjs')}
+      ${await this.renderFile('./docs/_includes/partials/component/feedback.11ty.cjs', ctx)}
     `;
   }
 };

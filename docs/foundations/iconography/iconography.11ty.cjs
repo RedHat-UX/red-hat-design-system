@@ -15,7 +15,8 @@ module.exports = class IconsPage {
     };
   }
 
-  async render({ icons }) {
+  async render(ctx) {
+    const { icons } = ctx;
     return html`
       <script type="module" src="icons.js" data-helmet></script>
 
@@ -71,7 +72,7 @@ module.exports = class IconsPage {
         <ul class="icon-set">${this.#renderIcons('social', icons)}</ul>
       </section>
 
-      ${await this.renderFile('./docs/_includes/partials/component/feedback.11ty.cjs')}
+      ${await this.renderFile('./docs/_includes/partials/component/feedback.11ty.cjs', ctx)}
     `;
   }
 
