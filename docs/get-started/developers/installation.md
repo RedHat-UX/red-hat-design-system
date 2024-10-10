@@ -34,38 +34,37 @@ If you have full control over the page you are using, add an import map to the
 responsible for the page's `<head>`, request that the page owner makes the 
 change on your behalf. 
 
-<rh-code-block>
-  <script type="text/html"><script type="importmap">
-    {
-      "imports": {
-        "@rhds/elements/": "https://www.redhatstatic.com/dx/v1-alpha/@rhds/elements@{{ pkg.version }}/elements/",
-        "@patternfly/elements/": "https://www.redhatstatic.com/dx/v1-alpha/@patternfly/elements@{{ pkg.devDependencies['@patternfly/elements'].version }}/"
-      }
+```html rhcodeblock
+<script type="importmap">
+  {
+    "imports": {
+      "@rhds/elements/": "https://www.redhatstatic.com/dx/v1-alpha/@rhds/elements@{{ pkg.version }}/elements/",
+      "@patternfly/elements/": "https://www.redhatstatic.com/dx/v1-alpha/@patternfly/elements@{{ pkg.devDependencies['@patternfly/elements'].version }}/"
     }
-  <</script><script type="text/html">/script></script>
-</rh-code-block>
+  }
+</script>
+```
 
 Once the import map is established, you can load the element with the following 
 module, containing a [bare module specifier][barespec]. The example below shows 
 how you'd load in <`rh-button>`.
 
-<rh-code-block>
-  <script type="text/html"><script type="module">
-    import '@rhds/elements/rh-button/rh-button.js';
-  <</script><script type="text/html">/script></script>
-</rh-code-block>
+```html rhcodeblock
+<script type="module">
+  import '@rhds/elements/rh-button/rh-button.js';
+</script>
+```
 
 Note that modules may be placed in the `<head>`. Since they are deferred by 
 default, they will not block rendering.
-
 
 ### NPM
 
 Install RHDS using your team's preferred NPM package manager.
 
-<rh-code-block>
-  <script type="text/bash">npm install @rhds/elements</script>
-</rh-code-block>
+```sh rhcodeblock
+npm install @rhds/elements
+```
 
 Once that's been accomplished, you will need to use a bundler to resolve the 
 bare module specifiers and optionally optimize the package for your site's 
@@ -89,27 +88,26 @@ scope of this page; read more about bundlers on their websites:
 Add an [import map][importmap] to the `<head>`, pointing to the CDN, or update 
 any existing import map.
 
-<rh-code-block>
-  <script type="text/html"><script type="importmap">
-    {
-    "imports": {
-      "@rhds/elements/": "https://jspm.dev/@rhds/elements/",
-      "@patternfly/elements/": "https://jspm.dev/@patternfly/elements/"
-      }
+```html rhcodeblock
+<script type="importmap">
+  {
+  "imports": {
+    "@rhds/elements/": "https://jspm.dev/@rhds/elements/",
+    "@patternfly/elements/": "https://jspm.dev/@patternfly/elements/"
     }
-  <</script><script type="text/html">/script></script>
-</rh-code-block>
-
+  }
+</script>
+```
 Once the import map is established, you can load the element with the following 
 module, containing a [bare module specifier][barespec]. The example below shows 
 how you'd load in <`rh-button>`.
 
-<rh-code-block>
-  <script type="text/html"><script type="module">
-    import '@rhds/elements/rh-button/rh-button.js';
-  <</script><script type="text/html">/script>
-  </script>
-</rh-code-block>
+
+```html rhcodeblock
+<script type="module">
+  import '@rhds/elements/rh-button/rh-button.js';
+</script>
+```
 
 Note that Modules may be placed in the `<head>`. Since they are deferred by 
 default, they will not block rendering.
@@ -120,7 +118,7 @@ Some elements require you to load "Lightdom CSS" stylesheets. This can also help
 to reduce [Cumulative Layout Shift (CLS)][cls] experience before the element has 
 fully initialized.
 
-```html
+```html rhcodeblock
 <link rel="stylesheet"
       href="https://www.redhatstatic.com/dx/v1/@rhds/elements@1.4.5/rh-footer/rh-footer-lightdom.css">
 ```
