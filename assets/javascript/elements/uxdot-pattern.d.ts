@@ -1,5 +1,5 @@
 import type { ColorPalette } from '@rhds/elements/lib/context/color/provider.js';
-import { LitElement } from 'lit';
+import { LitElement, type PropertyValues } from 'lit';
 import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
 import '@rhds/elements/rh-surface/rh-surface.js';
 import '@rhds/elements/rh-code-block/rh-code-block.js';
@@ -24,6 +24,7 @@ export declare class UxdotPattern extends LitElement {
     /** Which colour palettes should be allowed in the picker? (default: all) */
     allow: ColorPalette[];
     private on?;
-    ssrController: import("./uxdot-pattern-ssr-controller-server.js").UxdotPatternSSRControllerServer | import("./uxdot-pattern-ssr-controller-client.js").UxdotPatternSSRControllerClient;
+    ssr: import("./uxdot-pattern-ssr-controller-client.js").UxdotPatternSSRControllerClient | import("./uxdot-pattern-ssr-controller-server.js").UxdotPatternSSRControllerServer;
+    update(changed: PropertyValues<this>): void;
     render(): import("lit-html").TemplateResult<1>;
 }

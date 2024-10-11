@@ -1,6 +1,6 @@
 var _UxdotPattern_instances, _UxdotPattern_onChange;
 import { __classPrivateFieldGet, __decorate } from "tslib";
-import { LitElement, html, isServer } from 'lit';
+import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { colorContextConsumer, } from '@rhds/elements/lib/context/color/consumer.js';
@@ -26,11 +26,21 @@ let UxdotPattern = class UxdotPattern extends LitElement {
         this.fullHeight = false;
         /** Which colour palettes should be allowed in the picker? (default: all) */
         this.allow = paletteNames;
-        this.ssrController = new UxdotPatternSSRController(this);
+        this.ssr = new UxdotPatternSSRController(this);
+    }
+    update(changed) {
+        try {
+            super.update(changed);
+        }
+        catch (e) {
+            if (e.message.startsWith('Hydration')) {
+                this.updateComplete.then(() => this.requestUpdate());
+            }
+            throw e;
+        }
     }
     render() {
-        const target = isServer || (this.target === 'container') ? this.target
-            : this.getRootNode().getElementById(this.target);
+        const { allContent, htmlContent, cssContent, jsContent, hasJs, hasCss } = this.ssr;
         const actionsLabels = html `
       <span slot="action-label-copy">Copy to Clipboard</span>
       <span slot="action-label-copy" hidden data-code-block-state="active">Copied!</span>
@@ -47,41 +57,45 @@ let UxdotPattern = class UxdotPattern extends LitElement {
           <rh-context-picker id="picker"
                              @change="${__classPrivateFieldGet(this, _UxdotPattern_instances, "m", _UxdotPattern_onChange)}"
                              value="${this.colorPalette}"
-                             target="${target}"
+                             target="${this.target}"
                              allow="${this.allow}"></rh-context-picker>
         </form>
 
         <div id="description"><slot></slot></div>
 
-        <rh-surface id="content">${this.ssrController.allContent}</rh-surface>
+        <rh-surface id="content">${allContent}</rh-surface>
 
-        <rh-tabs class="code-tabs">
-          <rh-tab slot="tab" active>HTML</rh-tab>
-          <rh-tab-panel>
+        <rh-tabs id="code-tabs" class="code-tabs">
+          <rh-tab id="html-tab"
+                  slot="tab"
+                  active>HTML</rh-tab>
+          <rh-tab-panel id="html-panel">
             <rh-code-block highlighting="prerendered"
                            actions="copy wrap"
-                           ?full-height="${this.fullHeight}">
-              ${this.ssrController.htmlContent}
+                           .full-height="${this.fullHeight}">
+              ${htmlContent}
               ${actionsLabels}
             </rh-code-block>
           </rh-tab-panel>
-          <rh-tab slot="tab"
-                  ?disabled="${!this.ssrController.hasCss}">CSS</rh-tab>
-          <rh-tab-panel>
+          <rh-tab id="css-tab"
+                  slot="tab"
+                  .disabled="${!hasCss}">CSS</rh-tab>
+          <rh-tab-panel id="css-panel">
             <rh-code-block highlighting="prerendered"
                            actions="copy wrap"
-                           ?full-height="${this.fullHeight}">
-              ${this.ssrController.cssContent}
+                           .full-height="${this.fullHeight}">
+              ${cssContent}
               ${actionsLabels}
             </rh-code-block>
           </rh-tab-panel>
-          <rh-tab slot="tab"
-                  ?disabled="${!this.ssrController.hasJs}">JS</rh-tab>
-          <rh-tab-panel>
+          <rh-tab id="js-tab"
+                  slot="tab"
+                  .disabled="${!hasJs}">JS</rh-tab>
+          <rh-tab-panel id="js-panel">
             <rh-code-block highlighting="prerendered"
                            actions="copy wrap"
-                           ?full-height="${this.fullHeight}">
-              ${this.ssrController.jsContent}
+                           .full-height="${this.fullHeight}">
+              ${jsContent}
               ${actionsLabels}
             </rh-code-block>
           </rh-tab-panel>

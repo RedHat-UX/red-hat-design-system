@@ -1,20 +1,32 @@
-import { isServer } from 'lit';
 import { RHDSSSRController } from '@rhds/elements/lib/ssr-controller.js';
+import { noChange } from 'lit';
 /** Hydrate the results of SSR on the client */
 export class UxdotPatternSSRControllerClient extends RHDSSSRController {
-    constructor(host) {
-        super(host);
-        this.hasCss = false;
-        this.hasJs = false;
-        const { shadowRoot, hasUpdated } = this.host;
-        if (!isServer && shadowRoot && !hasUpdated) {
-            this.allContent || (this.allContent = shadowRoot.getElementById('content'));
-            this.htmlContent || (this.htmlContent = shadowRoot.querySelector('.language-html'));
-            this.jsContent || (this.jsContent = shadowRoot.querySelector('.language-js'));
-            this.cssContent || (this.cssContent = shadowRoot.querySelector('.language-css'));
-            this.hasCss = !this.cssContent?.textContent?.trim();
-            this.hasJs = !this.jsContent?.textContent?.trim();
+    constructor() {
+        super(...arguments);
+        this.allContent = noChange;
+        this.htmlContent = noChange;
+        this.jsContent = noChange;
+        this.cssContent = noChange;
+        this.hasCss = noChange;
+        this.hasJs = noChange;
+        this.hasWorkedAroundHydrationWoes = false;
+    }
+    hostUpdated() {
+        // workaround for awful terrible no good very bad ssr hydration lib problems
+        const containers = this.host.shadowRoot.querySelectorAll('#container');
+        if (containers.length > 1) {
+            const [, ...rest] = containers;
+            for (const bad of rest) {
+                bad.remove();
+            }
+            for (const sigh of this.host.shadowRoot.querySelectorAll('[defer-hydration]')) {
+                sigh.removeAttribute('defer-hydration');
+                sigh.requestUpdate?.();
+            }
+            this.host.requestUpdate();
         }
+        this.hasWorkedAroundHydrationWoes || (this.hasWorkedAroundHydrationWoes = (this.host.requestUpdate(), true));
     }
 }
 //# sourceMappingURL=uxdot-pattern-ssr-controller-client.js.map

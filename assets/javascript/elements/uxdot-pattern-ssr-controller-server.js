@@ -13,6 +13,23 @@ function dedent(str) {
     const match = stripped.match(/^\s+/);
     return match ? stripped.replace(new RegExp(`^${match[0]}`, 'gm'), '') : str;
 }
+function isScript(node) {
+    if (node.tagName === 'script') {
+        const type = Tools.getAttribute(node, 'type');
+        switch (type) {
+            case 'module':
+            case 'javascript':
+            case 'application/javascript':
+            case 'text/javascript':
+            case null:
+                return true;
+        }
+    }
+    return false;
+}
+function isStyle(node) {
+    return node.tagName === 'style';
+}
 export class UxdotPatternSSRControllerServer extends RHDSSSRController {
     constructor() {
         super(...arguments);
@@ -40,8 +57,8 @@ export class UxdotPatternSSRControllerServer extends RHDSSSRController {
 }
 _UxdotPatternSSRControllerServer_instances = new WeakSet(), _UxdotPatternSSRControllerServer_extractInlineContent = async function _UxdotPatternSSRControllerServer_extractInlineContent(kind, partial) {
     const prop = kind === 'js' ? 'jsSrc' : 'cssSrc';
-    const nodePred = kind === 'js' ? (node) => node.tagName === 'script'
-        : kind === 'css' ? (node) => node.tagName === 'style'
+    const nodePred = kind === 'js' ? isScript
+        : kind === 'css' ? isStyle
             : () => false;
     const baseUrl = pathToFileURL(this.page.inputPath);
     let content = !this.host[prop] ? ''
