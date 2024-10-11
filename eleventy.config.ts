@@ -54,7 +54,7 @@ export default function(eleventyConfig: UserConfig) {
   eleventyConfig.addPassthroughCopy('docs/robots.txt');
   eleventyConfig.addPassthroughCopy('docs/assets/**/*');
   eleventyConfig.addPassthroughCopy('docs/styles/**/*');
-  eleventyConfig.addPassthroughCopy('docs/foundations/**/*.{css,js}');
+  eleventyConfig.addPassthroughCopy('docs/**/*.{css,js}');
 
   if (isLocal) {
     eleventyConfig.addPassthroughCopy({
