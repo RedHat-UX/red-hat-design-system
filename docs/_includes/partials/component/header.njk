@@ -28,11 +28,12 @@
   {% if tabs %}
   <rh-subnav slot="subnav" accessible-label="{{ heading }}">
   {% for tab in tabs %}
-    {%- set href = tab.url or tab.href -%}
     {%- set pageUrl = (doc and doc.permalink | replace('index.html', '')) or page.url -%}
-    {%- set title = tab.data.title or tab.pageTitle -%}
-    {%- set active = href == pageUrl -%}
-    <a href="{{ href }}" {{ 'active' if active }} {{ 'hidden' if hidden }}>{{ title | capitalize }}</a>
+    {%- set title = tab.pageTitle or tab.data.title -%}
+    {%- set active = tab.url == pageUrl -%}
+    <a href="{{ tab.url }}"
+       {{- ' active' if active -}}
+       {{- ' hidden' if hidden -}}>{{ title | capitalize }}</a>
   {%- endfor -%}
   </rh-subnav>
   {% endif %}

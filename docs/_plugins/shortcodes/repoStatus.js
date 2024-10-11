@@ -223,7 +223,7 @@ function repoStatusChecklist({ repoStatus, heading = 'Status checklist', level =
  * Add the repoStatusList shortcode
  * @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig config
  */
-function RepoStatusList(eleventyConfig) {
+export function RepoStatusList(eleventyConfig) {
   eleventyConfig.addShortcode('repoStatusList', repoStatusList);
 }
 
@@ -231,7 +231,7 @@ function RepoStatusList(eleventyConfig) {
  * Add the repoStatusChecklist shortcode
  * @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig config
  */
-function RepoStatusChecklist(eleventyConfig) {
+export function RepoStatusChecklist(eleventyConfig) {
   eleventyConfig.addShortcode('repoStatusChecklist', repoStatusChecklist);
 }
 
@@ -239,8 +239,6 @@ function RepoStatusChecklist(eleventyConfig) {
  * Add the repoStatusTable shortcode
  * @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig config
  */
-function RepoStatusTable(eleventyConfig) {
+export function RepoStatusTable(eleventyConfig) {
   eleventyConfig.addShortcode('repoStatusTable', repoStatusTable);
 }
-
-module.exports = { RepoStatusList, RepoStatusChecklist, RepoStatusTable };

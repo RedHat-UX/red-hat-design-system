@@ -1,3 +1,6 @@
+import * as Parse5 from 'parse5';
+import * as Tools from '@parse5/tools';
+
 /// <reference lib="ESNext.collection" />
 // @ts-check
 
@@ -39,9 +42,6 @@ function getParent(prev, current) {
 }
 
 class Item {
-  /** * @type {import('@parse5/tools')} */
-  static Tools;
-
   /** @type{Item[]} */
   children = [];
 
@@ -59,15 +59,14 @@ class Item {
    */
   constructor(element) {
     if (element) {
-      const { getAttribute, getTextContent } = Item.Tools;
-      this.slug = getAttribute(element, 'id');
-      this.text = getTextContent(element).trim();
+      this.slug = Tools.getAttribute(element, 'id');
+      this.text = Tools.getTextContent(element).trim();
       this.level = parseInt(element.tagName.replace('h', '')) || 0;
     }
   }
 
   getNode() {
-    const { createElement, setTextContent, appendChild } = Item.Tools;
+    const { createElement, setTextContent, appendChild } = Tools;
     const container = this.slug && this.text ? createElement('li') : createElement('span');
     if (this.slug && this.text) {
       const a = createElement('a', { href: `#${this.slug}` });
@@ -92,16 +91,12 @@ class Item {
  * @param {import('@11ty/eleventy').UserConfig} eleventyConfig
  * @param {Partial<Options>} pluginOpts
  */
-module.exports = function(eleventyConfig, pluginOpts = {}) {
+export default function(eleventyConfig, pluginOpts = {}) {
   /**
    * @param {string} content
    * @param {Partial<Options>} filterOpts
    */
   async function toc(content, filterOpts) {
-    const Parse5 = await import('parse5');
-    const Tools = await import('@parse5/tools');
-    Item.Tools = Tools;
-
     const { tags = ['h2'], ignoredElements = [] } = {
       ...pluginOpts,
       ...filterOpts,

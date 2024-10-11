@@ -4,10 +4,11 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
-const path = require('node:path');
-const { pathToFileURL } = require('node:url');
-// eslint-disable-next-line no-redeclare
-const { Worker } = require('node:worker_threads');
+import { dirname, resolve as _resolve } from 'node:path';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+import { Worker } from 'node:worker_threads';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // Lit SSR includes comment markers to track the outer template from
 // the template we've generated here, but it's not possible for this
@@ -22,7 +23,7 @@ function trimOuterMarkers(renderedContent) {
  * @param {import('@11ty/eleventy').UserConfig} eleventyConfig
  * @param {{componentModules: string[]}} resolvedComponentModules
  */
-module.exports = function(eleventyConfig, { componentModules } = {}) {
+export default function(eleventyConfig, { componentModules } = {}) {
   if (componentModules === undefined || componentModules.length === 0) {
     // If there are no component modules, we could never have anything to
     // render.
@@ -30,7 +31,7 @@ module.exports = function(eleventyConfig, { componentModules } = {}) {
   }
 
   const resolvedComponentModules = componentModules.map(module =>
-    pathToFileURL(path.resolve(process.cwd(), module)).href);
+    pathToFileURL(_resolve(process.cwd(), module)).href);
 
   let worker;
 
@@ -38,7 +39,7 @@ module.exports = function(eleventyConfig, { componentModules } = {}) {
   let requestId = 0;
 
   eleventyConfig.on('eleventy.before', async function() {
-    worker = new Worker(path.resolve(__dirname, './worker/worker.js'));
+    worker = new Worker(_resolve(__dirname, './worker/worker.js'));
 
     worker.on('error', err => {
       // eslint-disable-next-line no-console
@@ -87,7 +88,8 @@ module.exports = function(eleventyConfig, { componentModules } = {}) {
   });
 
   eleventyConfig.addTransform('render-lit', async function(content) {
-    if (!this.page.outputPath.endsWith('.html')) {
+    const { outputPath, inputPath, fileSlug } = this.page;
+    if (!outputPath.endsWith('.html')) {
       return content;
     }
 
@@ -97,7 +99,7 @@ module.exports = function(eleventyConfig, { componentModules } = {}) {
         type: 'render-request',
         id: requestId++,
         content,
-        page: JSON.parse(JSON.stringify(this.page)),
+        page: JSON.parse(JSON.stringify({ outputPath, inputPath, fileSlug })),
       };
       worker.postMessage(message);
     });

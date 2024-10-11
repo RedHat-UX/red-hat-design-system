@@ -1,6 +1,6 @@
-const markdownItAnchor = require('markdown-it-anchor');
-const markdownItAttrs = require('markdown-it-attrs');
-const markdownItFootnote = require('markdown-it-footnote');
+import markdownItAnchor from 'markdown-it-anchor';
+import markdownItAttrs from 'markdown-it-attrs';
+import markdownItFootnote from 'markdown-it-footnote';
 
 /* eslint-disable lit-a11y/anchor-is-valid */
 /* eslint-disable lit-a11y/accessible-name */
@@ -68,7 +68,7 @@ function rhdsCodeBlock(md) {
 }
 
 /* @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
-module.exports = function(eleventyConfig) {
+export default function(eleventyConfig) {
   eleventyConfig.amendLibrary('md', /** @param {import('markdown-it')} md*/md => md
       .set({ html: true, breaks: false })
       .use(markdownItAnchor, { permalink: rhdsPermalink() })

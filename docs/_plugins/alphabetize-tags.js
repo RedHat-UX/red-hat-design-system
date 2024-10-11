@@ -1,4 +1,4 @@
-module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
+export default function(eleventyConfig, { tagsToAlphabetize }) {
   // Iterate over tags to sort
 
   if (!tagsToAlphabetize || tagsToAlphabetize?.length <= 0) {

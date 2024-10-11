@@ -1,7 +1,7 @@
 // for editor highlighting
 const html = String.raw;
 
-module.exports = class IconsPage {
+export default class IconsPage {
   async data() {
     return {
       permalink: '/foundations/iconography/index.html',

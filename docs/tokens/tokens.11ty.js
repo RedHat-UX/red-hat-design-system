@@ -1,9 +1,11 @@
 // @ts-check
-const { tokens: tokensMeta } = require('@rhds/tokens/meta.js');
+import tinycolor from 'tinycolor2';
+import { tokens as tokensMeta } from '@rhds/tokens/meta.js';
+import { createRequire } from 'node:module';
+const require = createRequire(import.meta.url);
 const tokensJSON = require('@rhds/tokens/json/rhds.tokens.json');
-const tinycolor = require('tinycolor2');
 
-const {
+import {
   capitalize,
   copyCell,
   resolveTokens,
@@ -11,10 +13,10 @@ const {
   isThemeColorToken,
   styleMap,
   classMap,
-} = require('../_plugins/tokensHelpers.cjs');
+} from '../_plugins/tokensHelpers.js';
 
 /* eslint-disable jsdoc/check-tag-names */
-/** @import {DesignToken} from '../_plugins/tokensHelpers.cjs' */
+/** @import {DesignToken} from '../_plugins/tokensHelpers.js' */
 /**
  * @typedef {object} Options
  * @property {typeof tokensJSON} tokens tokens to render
@@ -34,7 +36,7 @@ const {
 // for editor highlighting
 const html = String.raw;
 
-module.exports = class TokensPage {
+export default class TokensPage {
   data() {
     return {
       layout: 'layouts/pages/has-toc.njk',

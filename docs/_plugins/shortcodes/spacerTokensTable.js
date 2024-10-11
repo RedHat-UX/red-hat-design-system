@@ -1,10 +1,10 @@
-const { tokens: metaTokens } = require('@rhds/tokens/meta.js');
+import { tokens as metaTokens } from '@rhds/tokens/meta.js';
 
 /**
  * Reads token data from @rhds/tokens and outputs a table for specified tokens
  * @param {import('@11ty/eleventy').UserConfig} eleventyConfig  computed config
  */
-module.exports = function(eleventyConfig) {
+export default function(eleventyConfig) {
   eleventyConfig.addPairedShortcode(
     'spacerTokensTable',
     function(content, {
@@ -71,7 +71,7 @@ module.exports = function(eleventyConfig) {
         ${table}
         <div class="token-props-table palette-${palette} ${wrapperClass ?? ''}" ${!style ? ''
         : `style="${style}"}`.trim()}>${!headline ? ''
-        : `<h${headingLevel} id="${slugify(headline)}" class="image-title">${headline}</h${headingLevel}>`.trim()}          
+        : `<h${headingLevel} id="${slugify(headline)}" class="image-title">${headline}</h${headingLevel}>`.trim()}
           ${content}
         </div>
       `.trim();

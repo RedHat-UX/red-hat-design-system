@@ -1,29 +1,32 @@
-// @ts-check
 Error.stackTraceLimit = 50;
 
-const SyntaxHighlightPlugin = require('@11ty/eleventy-plugin-syntaxhighlight');
-const DirectoryOutputPlugin = require('@11ty/eleventy-plugin-directory-output');
-const AnchorsPlugin = require('@patternfly/pfe-tools/11ty/plugins/anchors.cjs');
-const CustomElementsManifestPlugin =
-  require('@patternfly/pfe-tools/11ty/plugins/custom-elements-manifest.cjs');
-const TOCPlugin = require('./docs/_plugins/table-of-contents.cjs');
-const RHDSPlugin = require('./docs/_plugins/rhds.cjs');
-const DesignTokensPlugin = require('./docs/_plugins/tokens.cjs');
-const RHDSMarkdownItPlugin = require('./docs/_plugins/markdown-it.cjs');
-const ImportMapPlugin = require('./docs/_plugins/importMap.cjs');
-const LitPlugin = require('./docs/_plugins/lit-ssr/lit.cjs');
-const HelmetPlugin = require('eleventy-plugin-helmet');
+import SyntaxHighlightPlugin from '@11ty/eleventy-plugin-syntaxhighlight';
+import DirectoryOutputPlugin from '@11ty/eleventy-plugin-directory-output';
+import AnchorsPlugin from '@patternfly/pfe-tools/11ty/plugins/anchors.cjs';
+import CustomElementsManifestPlugin from '@patternfly/pfe-tools/11ty/plugins/custom-elements-manifest.cjs';
+import HelmetPlugin from 'eleventy-plugin-helmet';
 
-const util = require('node:util');
-const exec = util.promisify(require('node:child_process').exec);
+import { EleventyRenderPlugin, type UserConfig } from '@11ty/eleventy';
+
+import TOCPlugin from './docs/_plugins/table-of-contents.js';
+import RHDSPlugin from './docs/_plugins/rhds.ts';
+import DesignTokensPlugin from './docs/_plugins/tokens.js';
+import RHDSMarkdownItPlugin from './docs/_plugins/markdown-it.js';
+import ImportMapPlugin from './docs/_plugins/importMap.js';
+import LitPlugin from './docs/_plugins/lit-ssr/lit.js';
+
+import { promisify } from 'node:util';
+import * as ChildProcess from 'node:child_process';
+
+const exec = promisify(ChildProcess.exec);
 
 const isWatch =
   process.argv.includes('--serve') || process.argv.includes('--watch');
 
 const isLocal = !(process.env.CI || process.env.DEPLOY_URL);
 
-/** @param {import('@11ty/eleventy').UserConfig} eleventyConfig */
-module.exports = function(eleventyConfig) {
+/** @param  eleventyConfig */
+export default function(eleventyConfig: UserConfig) {
   eleventyConfig.setQuietMode(true);
 
   eleventyConfig.on('eleventy.before', function({ runMode }) {
@@ -31,7 +34,11 @@ module.exports = function(eleventyConfig) {
   });
 
   eleventyConfig.on('eleventy.before', async function() {
-    await exec('npx tspc');
+    const { stderr } = await exec('npx tspc');
+    if (stderr) {
+      // eslint-disable-next-line no-console
+      console.error(stderr);
+    }
   });
 
   eleventyConfig.watchIgnores?.add('docs/assets/redhat/');
@@ -71,6 +78,7 @@ module.exports = function(eleventyConfig) {
     { title: 'Accessibility', url: '/accessibility', collection: 'accessibility' },
   ]);
 
+  eleventyConfig.addPlugin(EleventyRenderPlugin);
   eleventyConfig.addPlugin(HelmetPlugin);
   eleventyConfig.addPlugin(RHDSMarkdownItPlugin);
 
@@ -170,9 +178,9 @@ module.exports = function(eleventyConfig) {
   /** Add IDs to heading elements */
   eleventyConfig.addPlugin(AnchorsPlugin, {
     exclude: /\/elements\/.*\/demo\//,
-    formatter($, existingids) {
+    formatter($: import('cheerio').Cheerio<any>, existingids: string[]) {
       if (
-        !existingids.includes($.attr('id'))
+        !existingids.includes($.attr('id')!)
           && $.attr('slot')
           && $.closest('pf-card')
       ) {
@@ -210,16 +218,18 @@ module.exports = function(eleventyConfig) {
     ],
   });
 
-  !isWatch && !process.env.QUIET && eleventyConfig.addPlugin(DirectoryOutputPlugin, {
+  if (!isWatch && !process.env.QUIET) {
+    eleventyConfig.addPlugin(DirectoryOutputPlugin, {
     // Customize columns
-    columns: {
-      filesize: true, // Use `false` to disable
-      benchmark: true, // Use `false` to disable
-    },
+      columns: {
+        filesize: true, // Use `false` to disable
+        benchmark: true, // Use `false` to disable
+      },
 
-    // Will show in yellow if greater than this number of bytes
-    warningFileSize: 400 * 1000,
-  });
+      // Will show in yellow if greater than this number of bytes
+      warningFileSize: 400 * 1000,
+    });
+  }
 
   /**
    * Collections to organize by 'order' value in front matter, then alphabetical by title;
@@ -233,8 +243,20 @@ module.exports = function(eleventyConfig) {
     ],
   });
 
+  eleventyConfig.addExtension('11ty.ts', {
+    key: '11ty.js',
+    compile() {
+      return async function(
+        this: { defaultRenderer(data: unknown): Promise<string> },
+        data: unknown,
+      ) {
+        return this.defaultRenderer(data);
+      };
+    },
+  });
+
   return {
-    templateFormats: ['html', 'md', 'njk', '11ty.cjs'],
+    templateFormats: ['html', 'md', 'njk', '11ty.js', '11ty.cjs'],
     markdownTemplateEngine: 'njk',
     htmlTemplateEngine: 'njk',
     dir: {
@@ -242,3 +264,11 @@ module.exports = function(eleventyConfig) {
     },
   };
 };
+
+export class Renderer {
+  declare renderTemplate: (path: string, type: string) => Promise<string>;
+  declare renderFile: (path: string, data?: object) => Promise<string>;
+  declare highlight: (lang: string, content: string) => string;
+  declare dedent: (str: string) => string;
+  declare slugify: (str: string) => string;
+}

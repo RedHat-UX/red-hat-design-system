@@ -1,78 +1,71 @@
-const html = String.raw;
+import type { ElementDocsPageData } from '../../../_plugins/element-docs.js';
+import type { ClassMethod } from 'custom-elements-manifest';
+import type { FileOptions, ProjectManifest } from 'playground-elements/shared/worker-api.js';
 
-const { tokens } = require('@rhds/tokens');
-const { copyCell, getTokenHref } = require('../_plugins/tokensHelpers.cjs');
-const { join } = require('node:path');
-const { readFile } = require('node:fs/promises');
+import { tokens } from '@rhds/tokens/meta.js';
+import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { readFile } from 'node:fs/promises';
+import { copyCell, dedent, getTokenHref } from '../../../_plugins/tokensHelpers.js';
+import { Generator } from '@jspm/generator';
+import { AssetCache } from '@11ty/eleventy-fetch';
 
-const { AssetCache } = require('@11ty/eleventy-fetch');
+type FileEntry = [string, FileOptions & { inline: string }];
 
-function stringifyParams(method) {
+const html = String.raw; // for editor highlighting
+const { version: packageVersion } =
+  JSON.parse(await readFile(
+    fileURLToPath(import.meta.resolve('@rhds/elements')).replace('elements.js', 'package.json'),
+    'utf8',
+  ));
+
+function stringifyParams(method: ClassMethod) {
   return method.parameters?.map?.(p =>
     `${p.name}: ${p.type?.text ?? 'unknown'}`).join(', ') ?? '';
 }
 
-module.exports = class ElementsPage {
+interface EleventyPageRenderData {
+  page: {
+    outputPath: string;
+    inputPath: string;
+    url: string;
+  };
+}
+
+interface Context extends EleventyPageRenderData {
+  doc: ElementDocsPageData;
+  cdnVersion?: string;
+  level?: number;
+  tagName: string;
+  isLocal: boolean;
+  importMap: { imports: Record<string, string>; scopes: Record<string, Record<string, string>> };
+  playgrounds: Record<`rh-${string}`, ProjectManifest>;
+}
+
+export default class ElementsPage {
   static assetCache = new AssetCache('rhds-ux-dot-import-map-jspmio');
+
+  declare renderTemplate: (path: string, type: string) => Promise<string>;
+  declare renderFile: (path: string, data?: object) => Promise<string>;
+  declare highlight: (lang: string, content: string) => string;
+  declare dedent: (str: string) => string;
+  declare slugify: (str: string) => string;
 
   data() {
     return {
       layout: 'layouts/pages/has-toc.njk',
       permalink: ({ doc }) => doc.permalink,
       eleventyComputed: {
-        title: ({ doc }) => doc.pageTitle || doc.slug,
-      },
-      pagination: {
-        data: 'collections.elementDocs',
-        alias: 'doc',
-        size: 1,
+        title: ({ doc }) => doc.pageTitle,
+        tagName: ({ doc }) => doc.tagName,
       },
     };
   }
 
-  #actionsLabels = html`
-    <span slot="action-label-copy">Copy to Clipboard</span>
-    <span slot="action-label-copy" hidden data-code-block-state="active">Copied!</span>
-    <span slot="action-label-wrap">Wrap lines</span>
-    <span slot="action-label-wrap" hidden data-code-block-state="active">Overflow lines</span>
-  `;
-
-  /**
-   * Returns a string with common indent stripped from each line. Useful for templating HTML
-   * @param {string} str
-   */
-  dedent(str) {
-    const stripped = str.replace(/^\n/, '');
-    const match = stripped.match(/^\s+/);
-    return match ? stripped.replace(new RegExp(`^${match[0]}`, 'gm'), '') : str;
-  }
-
-  async generateImportMap(tagName) {
-    const { assetCache } = ElementsPage;
-    if (!assetCache.isCacheValid('1d')) {
-      const { Generator } = await import('@jspm/generator');
-      const generator = new Generator({
-        cache: false,
-        // prevent node from resolving @rhds/elements to cwd
-        // see https://discord.com/channels/570400367884501026/724211491087056916/1290733101923700737
-        baseUrl: 'about:blank',
-        defaultProvider: 'jspm.io',
-      });
-      await generator.install('@rhds/elements');
-      await assetCache.save(generator.getMap(), 'json');
-    }
-    const map = structuredClone(await assetCache.getCachedValue());
-    map.imports[`@rhds/elements/${tagName}/${tagName}.js`] = map.imports['@rhds/elements'].replace('elements.js', `${tagName}/${tagName}.js`);
-    delete map.imports['@rhds/elements'];
-    return JSON.stringify(map, null, 2);
-  }
-
-  async render(ctx) {
+  async render(ctx: Context) {
     const { doc } = ctx;
-    const { fileExists, filePath, isCodePage, tagName } = doc;
+    const { fileExists, filePath, isCodePage, isDemoPage, tagName, planned } = doc;
     const content = fileExists ? await this.renderFile(filePath, ctx) : '';
-    const planned = await this.isPlanned(tagName);
-
     const stylesheets = [
       '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css',
       '/styles/samp.css',
@@ -108,17 +101,46 @@ module.exports = class ElementsPage {
         import '@rhds/elements/${tagName}/${tagName}.js';
       </script>`}
 
-      ${!isCodePage ? content : await this.#renderCodePage.call(this, ctx)}
+      ${isCodePage ? await this.#renderCodePage(ctx)
+      : isDemoPage ? await this.#renderDemos(ctx)
+      : content}
 
       ${await this.renderFile('./docs/_includes/partials/component/feedback.11ty.cjs', ctx)}
     `;
+  }
+
+  #actionsLabels = html`
+    <span slot="action-label-copy">Copy to Clipboard</span>
+    <span slot="action-label-copy" hidden data-code-block-state="active">Copied!</span>
+    <span slot="action-label-wrap">Wrap lines</span>
+    <span slot="action-label-wrap" hidden data-code-block-state="active">Overflow lines</span>
+  `;
+
+  async #generateImportMap(tagName: string) {
+    const { assetCache } = ElementsPage;
+    if (!assetCache.isCacheValid('1d')) {
+      const generator = new Generator({
+        cache: false,
+        // prevent node from resolving @rhds/elements to cwd
+        // see https://discord.com/channels/570400367884501026/724211491087056916/1290733101923700737
+        baseUrl: 'about:blank',
+        defaultProvider: 'jspm.io',
+      });
+      await generator.install('@rhds/elements');
+      await assetCache.save(generator.getMap(), 'json');
+    }
+    const map = structuredClone(await assetCache.getCachedValue());
+    map.imports[`@rhds/elements/${tagName}/${tagName}.js`] =
+      map.imports['@rhds/elements'].replace('elements.js', `${tagName}/${tagName}.js`);
+    delete map.imports['@rhds/elements'];
+    return JSON.stringify(map, null, 2);
   }
 
   async #innerMD(content = '') {
     return (await this.renderTemplate(content.trim(), 'md')).trim();
   }
 
-  async #getMainDemoContent(tagName) {
+  async #getMainDemoContent(tagName: string) {
     try {
       const demoPath = join(process.cwd(), 'elements', tagName, 'demo', `${tagName}.html`);
       const demoContent = await readFile(demoPath, 'utf8');
@@ -132,7 +154,7 @@ module.exports = class ElementsPage {
     }
   }
 
-  async #renderCodePage(ctx) {
+  async #renderCodePage(ctx: Context) {
     const { doc } = ctx;
     const { tagName } = doc.docsPage;
     return [
@@ -149,7 +171,7 @@ module.exports = class ElementsPage {
     ].filter(Boolean).join('');
   }
 
-  async #renderLightdom(ctx) {
+  async #renderLightdom(ctx: Context) {
     const { docsPage } = ctx.doc;
     let content = '';
     // TODO: revisit after implementing auto-loaded light-dom css
@@ -202,10 +224,8 @@ module.exports = class ElementsPage {
     return content;
   }
 
-  async #renderInstallation({ doc, cdnVersion = 'v1-alpha' }) {
-    const { version: packageVersion } = require('../../package.json');
-
-    const jspmMap = await this.generateImportMap(doc.docsPage.tagName)
+  async #renderInstallation({ doc, cdnVersion = 'v1-alpha' }: Context) {
+    const jspmMap = await this.#generateImportMap(doc.docsPage.tagName)
         .catch(error => {
           console.warn(error); // eslint-disable-line no-console
           return `Could not generate import map using JSPM: ${error.message}`;
@@ -242,7 +262,7 @@ module.exports = class ElementsPage {
         <uxdot-installation-tabs>
           <rh-tab slot="tab">Red Hat CDN</rh-tab>
           <rh-tab-panel>
-            <rh-code-block actions="copy" highlighting="prerendered">${this.highlight('html', this.dedent(html`
+            <rh-code-block actions="copy" highlighting="prerendered">${this.highlight('html', dedent(html`
               <script type="importmap">
               {
                 "imports": {
@@ -255,12 +275,12 @@ module.exports = class ElementsPage {
           </rh-tab-panel>
           <rh-tab slot="tab">NPM</rh-tab>
           <rh-tab-panel>
-            <rh-code-block actions="copy" highlighting="prerendered">${this.highlight('shell', `npm install @rhds/elements`, 'shell')}${this.#actionsLabels}
+            <rh-code-block actions="copy" highlighting="prerendered">${this.highlight('shell', `npm install @rhds/elements`)}${this.#actionsLabels}
             </rh-code-block>
           </rh-tab-panel>
           <rh-tab slot="tab">JSPM</rh-tab>
           <rh-tab-panel>
-            <rh-code-block actions="copy" highlighting="prerendered">${this.highlight('html', this.dedent(html`
+            <rh-code-block actions="copy" highlighting="prerendered">${this.highlight('html', dedent(html`
               <script type="importmap">
               ${jspmMap}
               </script>`))}
@@ -271,7 +291,7 @@ module.exports = class ElementsPage {
 
         <p>Add it to your page with this import statement</p>
 
-        <rh-code-block actions="copy" highlighting="prerendered">${this.highlight('html', this.dedent(html`
+        <rh-code-block actions="copy" highlighting="prerendered">${this.highlight('html', dedent(html`
           <script type="module">
             import '@rhds/elements/${doc.docsPage.tagName}/${doc.docsPage.tagName}.js';
           </script>`))}
@@ -281,7 +301,7 @@ module.exports = class ElementsPage {
     `;
   }
 
-  async #renderCodeDocs(tagName, ctx) {
+  async #renderCodeDocs(tagName: string, ctx: Context) {
     const { docsPage } = ctx.doc;
     const { manifest } = docsPage;
 
@@ -305,7 +325,7 @@ module.exports = class ElementsPage {
     `;;
   }
 
-  async #renderSlots(tagName, ctx) {
+  async #renderSlots(tagName: string, ctx: Context) {
     const level = ctx.level ?? 2;
     const allSlots = ctx.doc.docsPage.manifest.getSlots(tagName) ?? [];
     const slots = allSlots.filter(x => !x.deprecated);
@@ -355,7 +375,7 @@ module.exports = class ElementsPage {
                     <td><code>${slot.name}</code></td>
                     <td>
                       ${await this.#innerMD(slot.description)}
-                      <em>Note: ${slot.name} is deprecated. ${await this.#innerMD(slot.deprecated)}</em>
+                      <em>Note: ${slot.name} is deprecated. ${await this.#innerMD(String(slot.deprecated ?? ''))}</em>
                     </td>
                   </tr>`))).join('')}
                 </tbody>
@@ -366,10 +386,9 @@ module.exports = class ElementsPage {
       </rh-accordion-panel>`;
   }
 
-  async #renderAttributes(tagName, ctx) {
+  async #renderAttributes(tagName: string, ctx: Context) {
     const level = ctx.level ?? 2;
-    const _attrs = (ctx.doc.docsPage.manifest.getAttributes(tagName) ?? [])
-        .filter(x => !x.static && x.privacy !== 'protected' && x.privacy !== 'private');
+    const _attrs = (ctx.doc.docsPage.manifest.getAttributes(tagName) ?? []);
     const deprecated = _attrs.filter(x => x.deprecated);
     const attributes = _attrs.filter(x => !x.deprecated);
     const count = _attrs.length;
@@ -438,7 +457,7 @@ module.exports = class ElementsPage {
     `;
   }
 
-  async #renderMethods(tagName, ctx) {
+  async #renderMethods(tagName: string, ctx: Context) {
     const level = ctx.level ?? 2;
     const allMethods = ctx.doc.docsPage.manifest.getMethods(tagName) ?? [];
     const deprecated = allMethods.filter(x => x.deprecated);
@@ -489,7 +508,7 @@ module.exports = class ElementsPage {
                     <td><code>${method.name}(${stringifyParams(method)})</code></td>
                     <td>
                       ${await this.#innerMD(method.description)}
-                      <em>Note: ${method.name} is deprecated. ${await this.#innerMD(method.deprecated)}</em>
+                      <em>Note: ${method.name} is deprecated. ${await this.#innerMD((method.deprecated ?? '').toString())}</em>
                     </td>
                   </tr>`))).join('')}
                 </tbody>
@@ -501,7 +520,7 @@ module.exports = class ElementsPage {
     `;
   }
 
-  async #renderEvents(tagName, ctx) {
+  async #renderEvents(tagName: string, ctx: Context) {
     const level = ctx.level ?? 2;
     const _events = ctx.doc.docsPage.manifest.getEvents(tagName) ?? [];
     const deprecated = _events.filter(x => x.deprecated);
@@ -551,7 +570,7 @@ module.exports = class ElementsPage {
                     <td><code>${event.name}</code></td>
                     <td>
                       ${await this.#innerMD(event.description)}
-                      <em>Note: ${event.name} is deprecated. ${await this.#innerMD(event.deprecated)}</em>
+                      <em>Note: ${event.name} is deprecated. ${await this.#innerMD((event.deprecated ?? '').toString())}</em>
                     </td>
                   </tr>`))).join('')}
                 </tbody>
@@ -563,7 +582,7 @@ module.exports = class ElementsPage {
     `;
   }
 
-  async #renderCssParts(tagName, ctx) {
+  async #renderCssParts(tagName: string, ctx: Context) {
     const level = ctx.level ?? 2;
     const allParts = ctx.doc.docsPage.manifest.getCssParts(tagName) ?? [];
     const parts = allParts.filter(x => !x.deprecated);
@@ -613,7 +632,7 @@ module.exports = class ElementsPage {
                     <td><code>${part.name}</code></td>
                     <td>
                       ${await this.#innerMD(part.description)}
-                      <em>Note: ${part.name} is deprecated. ${await this.#innerMD(part.deprecated)}</em>
+                      <em>Note: ${part.name} is deprecated. ${await this.#innerMD((part.deprecated ?? '').toString())}</em>
                     </td>
                   </tr>`))).join('')}
                 </tbody>
@@ -625,7 +644,7 @@ module.exports = class ElementsPage {
     `;
   }
 
-  async #renderCssCustomProperties(tagName, ctx) {
+  async #renderCssCustomProperties(tagName: string, ctx: Context) {
     const level = ctx.level ?? 2;
     const allCssProperties = (ctx.doc.docsPage.manifest.getCssCustomProperties(tagName) ?? [])
         .filter(x => !tokens.has(x.name));
@@ -689,7 +708,7 @@ module.exports = class ElementsPage {
     `;
   }
 
-  async #renderDesignTokens(tagName, ctx) {
+  async #renderDesignTokens(tagName: string, ctx: Context) {
     const designTokens = (ctx.doc.docsPage.manifest.getCssCustomProperties(tagName) ?? [])
         .filter(x => tokens.has(x.name));
     const count = designTokens.length;
@@ -725,4 +744,191 @@ module.exports = class ElementsPage {
       </rh-accordion-panel>
     `;
   }
+
+  async #renderDemos(ctx: Context) {
+    const entries: FileEntry[] = Object.entries(ctx.playgrounds[ctx.tagName]?.files ?? {});
+    return [
+      await this.#renderDemoHead(),
+      ...await this.#renderPlaygrounds(ctx, entries),
+    ].join('');
+  }
+
+  async #renderDemoHead() {
+    return html`
+      <style data-helmet>
+        playground-project {
+          height: 825px;
+          &:fullscreen {
+            height: 100vh;
+            & rh-card {
+              height: 100%;
+              &::part(body) {
+                flex: auto;
+              }
+            }
+            & playground-file-editor,
+            & playground-preview {
+              height: 100%;
+            }
+          }
+          &:not(:defined) { opacity: 0; }
+          display: flex;
+          flex-flow: column;
+          gap: var(--rh-space-sm);
+          --playground-code-background: var(--rh-color-surface-lighter);
+          & playground-preview {
+            border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle-on-light);
+            &::part(preview-toolbar) {
+              display: none;
+            }
+          }
+          & rh-card {
+            &::part(header),
+            &::part(body) { margin: 0; }
+            &::part(footer) {
+              margin-block: var(--rh-space-lg);
+              justify-content: end;
+            }
+            &::part(body) {
+              border-block-end: var(--rh-border-width-sm) solid var(--rh-color-border-subtle-on-light);
+            }
+            & rh-button[slot="footer"] {
+              display: inline-block;
+              margin-inline-end: auto;
+            }
+          }
+          & rh-tab-panel {
+            display: none !important;
+          }
+        }
+      </style>
+
+      <script type="module" data-helmet>
+        import '/assets/javascript/elements/uxdot-copy-button.js';
+        import '/assets/javascript/elements/uxdot-header.js';
+        import 'playground-elements';
+        import '@rhds/elements/rh-button/rh-button.js';
+        import '@rhds/elements/rh-card/rh-card.js';
+        import '@rhds/elements/rh-code-block/rh-code-block.js';
+        import '@rhds/elements/rh-cta/rh-cta.js';
+        import '@rhds/elements/rh-footer/rh-footer.js';
+        import '@rhds/elements/rh-subnav/rh-subnav.js';
+        import '@rhds/elements/rh-surface/rh-surface.js';
+        import '@rhds/elements/rh-tabs/rh-tabs.js';
+        import {TabExpandEvent} from '@rhds/elements/rh-tabs/rh-tab.js';
+        for (const tabs of document.querySelectorAll('.demo-fileswitcher')) {
+          tabs.addEventListener('expand', function(event) {
+            if (event instanceof TabExpandEvent && event.active) {
+              const { filename } = event.tab.dataset;
+              if (filename) {
+                const project = tabs.closest('playground-project');
+                const fileEditor = project.querySelector('playground-file-editor');
+                if (fileEditor) {
+                  fileEditor.filename = filename;
+                }
+              }
+            }
+          })
+        }
+        for (const playground of document.querySelectorAll('playground-project')) {
+          playground.addEventListener('click', function(event) {
+            if (event.target.dataset?.action === 'fullscreen') {
+              playground.requestFullscreen();
+            }
+          })
+        }
+      </script>
+    `;
+  }
+
+  /**
+   * Files to include with every demo playground e.g. import map, shared styles, etc.
+   * Some of these are generated by /scripts/playgrounds.ts
+   * @param ctx
+   * @param entries
+   */
+  async #renderPlaygroundsCommon(ctx: Context, entries: FileEntry[]) {
+    const { isLocal, importMap: { imports } } = ctx;
+    const baseUrl = process.env.DEPLOY_PRIME_URL || 'http://localhost:8080';
+    return html`${isLocal ? html`
+      <script type="sample/importmap">${JSON.stringify({ imports }, null, 2).replaceAll('"/assets', `"${baseUrl}/assets`)}</script>` : html`
+      <script type="sample/importmap">
+        {
+          "imports": {
+            "@patternfly/icons/": "https://ux.redhat.com/assets/packages/@patternfly/icons/"
+          }
+        }
+      </script>`}${entries.map(([filename, config]) => config.label ? '' : html`
+      <script type="sample/${filename.split('.').pop()}" filename="${filename}" ${!config.hidden ? '' : 'hidden'}>${
+      config.content?.replace('</' + 'script>', '&lt;/script>') ?? ''
+    }</script>`).join('')}
+    `;
+  }
+
+  async #renderPlaygrounds(ctx: Context, entries: FileEntry[]) {
+    const common = await this.#renderPlaygroundsCommon(ctx, entries);
+    return entries.map(([filename, config]) => this.#renderPlayground(
+      filename,
+      config,
+      ctx,
+      common,
+      entries
+          .filter(([, config]) => config.inline === filename)
+          .map(([s]) => s)
+
+    ));
+  };
+
+  #renderPlayground(
+    filename: string,
+    config: FileOptions,
+    ctx: Context,
+    common: string,
+    inlineResources: string[],
+  ) {
+    const { doc, tagName, isLocal } = ctx;
+    const { slug } = doc;
+    if (!config.label) {
+      return '';
+    } else {
+      const labelSlug = this.slugify(config.label);
+      const extension = filename.split('.').pop();
+      const demoSlug =
+        filename.split('.').shift()?.replace('demo/', '').replaceAll('/', '-') ?? '';
+      const projectId = `playground-${tagName}-${demoSlug}`;
+      const demoPageUrl = `/elements/${slug}/demo/${demoSlug === 'index' ? '' : `${labelSlug}/`}`;
+      const githubSourcePrefix = `https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements`;
+      const githubSourceUrl = `${githubSourcePrefix}/${tagName}/demo/${filename
+          .replace('demo/', '')
+          .replace('/index.html', '')
+          .replace('.html', '')
+          .replace('index', tagName)}.html`;
+
+      const content = config.content?.replace('</' + 'script>', '&lt;/script>') ?? '';
+      return html`
+        <h2 id="demo-${labelSlug}">${config.label}</h2>
+        <playground-project id="${projectId}" ${!isLocal ? '' : 'sandbox-base-url="http://localhost:8080"'}>
+          ${common}
+          <script type="sample/${extension}" filename="${filename}">${content}</script>
+          <playground-preview project="${projectId}" html-file="${filename}"></playground-preview>
+          <rh-card>
+            <rh-tabs slot="header" class="demo-fileswitcher">
+              <rh-tab slot="tab" data-filename="${filename}">HTML</rh-tab>
+              <rh-tab-panel hidden></rh-tab-panel>
+              ${inlineResources.map(subresourcename => html`
+              <rh-tab slot="tab" data-filename="${subresourcename}">${subresourcename.split('.').pop()?.toUpperCase() ?? ''}</rh-tab>
+              <rh-tab-panel hidden></rh-tab-panel>`).join('')}
+            </rh-tabs>
+            <playground-file-editor project="${projectId}"
+                                    filename="${filename}"
+                                    line-numbers></playground-file-editor>
+            <rh-button slot="footer" variant="tertiary" data-action="fullscreen" icon="expand">FullScreen</rh-button>
+            <rh-cta slot="footer" href="${githubSourceUrl}">View source on GitHub</rh-cta>
+            <rh-cta slot="footer" href="${demoPageUrl}">View In Own Tab</rh-cta>
+          </rh-card>
+        </playground-project>
+      `;
+    }
+  }
 };
+

@@ -1,7 +1,9 @@
+import { tokens as tokensMeta } from '@rhds/tokens/meta.js';
+import { createRequire } from 'node:module';
+const require = createRequire(import.meta.url);
 const tokensJSON = require('@rhds/tokens/json/rhds.tokens.json');
-const { tokens: tokensMeta } = require('@rhds/tokens/meta.js');
 
-const capitalize = x => `${x.at(0).toUpperCase()}${x.slice(1)}`;
+export const capitalize = x => `${x.at(0).toUpperCase()}${x.slice(1)}`;
 
 /* eslint-disable jsdoc/check-tag-names */
 /** @typedef {Exclude<ReturnType<typeof tokensMeta['get']>, undefined|null>} DesignToken */
@@ -20,19 +22,19 @@ function escapeDoubleQuotes(x) {
  * @param {object} options
  * @param {DesignToken[]} tokens
  */
-function getParentCollection(options, tokens) {
+export function getParentCollection(options, tokens) {
   const parent = options.parent ?? tokens;
   const key = options.path.split('.').pop();
   return { parent, key };
 }
 
 /** @param {DesignToken|CssCustomProperty} token*/
-function getVariableSyntax(token) {
+export function getVariableSyntax(token) {
   return `var(--${token.name}, ${escapeDoubleQuotes(token.$value ?? token.default)})`;
 }
 
 /** @param {DesignToken} token*/
-function copyCell(token) {
+export function copyCell(token) {
   const variable = getVariableSyntax(token);
   return /* html */`
     <td data-label="Copy">
@@ -47,7 +49,7 @@ function copyCell(token) {
 /** @param {DesignToken} token */
 function getTokenCategorySlug(token) {
   const name = `--${token.name}`.replace('----', '--');
-  const data = require('@rhds/tokens/meta.js').tokens.get(name);
+  const data = tokensMeta.get(name);
   if (!data) {
     throw new Error(`Could not find token ${name}`);
   } else {
@@ -56,12 +58,12 @@ function getTokenCategorySlug(token) {
 }
 
 /** @param {DesignToken} token */
-function getTokenHref(token) {
+export function getTokenHref(token) {
   return `https://ux.redhat.com/tokens/${getTokenCategorySlug(token)}/#${token.name}`;
 }
 
 /** @param {string} path */
-function resolveTokens(path) {
+export function resolveTokens(path) {
   let tokens = tokensJSON;
   for (const part of path.split('.')) {
     tokens = tokens[part];
@@ -70,49 +72,35 @@ function resolveTokens(path) {
 }
 
 /** @param {DesignToken} x */
-const getDocs = x => x?.$extensions?.['com.redhat.ux'];
+export const getDocs = x => x?.$extensions?.['com.redhat.ux'];
 
 /**
  * Returns a string with common indent stripped from each line. Useful for templating HTML
  * @param {string} str
  */
-function dedent(str) {
+export function dedent(str) {
   const stripped = str.replace(/^\n/, '');
   const match = stripped.match(/^\s+/);
   return match ? stripped.replace(new RegExp(`^${match[0]}`, 'gm'), '') : str;
 }
 
 /** @param {DesignToken} token */
-const isThemeColorToken = token =>
+export const isThemeColorToken = token =>
   token.$type === 'color' && Array.isArray(token.original?.$value);
 
 /**
  * Converts an object mapping css property names to values into a CSS rule for inlining into HTML
  * @param {object} objt
  */
-function styleMap(objt) {
+export function styleMap(objt) {
   return Object.entries(objt)
       .map(([k, v]) => `${k}: ${escapeDoubleQuotes(v)}`)
       .join(';');
 }
 
 /** @param {object} classInfo */
-function classMap(classInfo) {
+export function classMap(classInfo) {
   return Object.keys(classInfo)
       .filter(key => classInfo[key])
       .join(' ');
 }
-
-module.exports = {
-  capitalize,
-  copyCell,
-  getParentCollection,
-  getTokenHref,
-  getVariableSyntax,
-  resolveTokens,
-  getDocs,
-  dedent,
-  isThemeColorToken,
-  styleMap,
-  classMap,
-};

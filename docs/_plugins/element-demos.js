@@ -1,26 +1,31 @@
+import * as Parse5 from 'parse5';
+import * as Tools from '@parse5/tools';
+import { deslugify } from '@patternfly/pfe-tools/config.js';
+
 // @ts-check
-const { join } = require('node:path');
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // Rewrite DEMO lightdom css relative URLs
 const LIGHTDOM_HREF_RE = /href="\.(?<pathname>.*-lightdom.*\.css)"/g;
 const LIGHTDOM_PATH_RE = /href="\.(.*)"/;
 
 /** @param {import('@11ty/eleventy').UserConfig} eleventyConfig */
-module.exports = function(eleventyConfig) {
+export default function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy('docs/demo.{js,map,ts}');
 
   eleventyConfig.addTransform(
     'demo-subresources',
     /** @param {string} content the HTML content to replace */
-    async function demoPaths(content) {
+    function demoPaths(content) {
       const { outputPath, inputPath } = this;
       if (!outputPath) {
         return '';
       }
       const isNested = outputPath.match(/demo\/.+\/index\.html$/);
       if (inputPath === './docs/elements/demos.html') {
-        const Parse5 = await import('parse5');
-        const Tools = await import('@parse5/tools');
         const document = Parse5.parse(content);
         for (const node of Tools.queryAll(document, node =>
           Tools.isElementNode(node)
@@ -56,8 +61,8 @@ module.exports = function(eleventyConfig) {
           const { tagName } = tagNameMatch.groups;
 
           // does the tagName exist in the aliases object?
-          const { deslugify } = await import('@patternfly/pfe-tools/config.js');
-          const prefixedTagName = deslugify(tagName, join(__dirname, '../..'));
+          const prefixedTagName =
+          deslugify(tagName, join(__dirname, '../..'));
           const matches = content.match(LIGHTDOM_HREF_RE);
           if (matches) {
             for (const match of matches) {

@@ -1,12 +1,16 @@
-const { join } = require('node:path');
+import { dirname, join } from 'node:path';
+import { resolveTokens } from './tokensHelpers.js';
+import { fileURLToPath } from 'node:url';
+import { createRequire } from 'node:module';
+const require = createRequire(import.meta.url);
 const tokensJSON = require('@rhds/tokens/json/rhds.tokens.json');
-const { resolveTokens } = require('./tokensHelpers.cjs');
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 /**
  * @param {import('@11ty/eleventy').UserConfig} eleventyConfig
  * @param {PluginOptions} [pluginOptions]
  */
-module.exports = function RHDSPlugin(eleventyConfig, pluginOptions = { }) {
+export default function RHDSPlugin(eleventyConfig, pluginOptions = { }) {
   eleventyConfig.addPassthroughCopy('docs/tokens/**/*.{svg,jpe?g,png}');
 
   eleventyConfig.addGlobalData('tokens', tokensJSON);

@@ -1,21 +1,25 @@
 /// <reference lib="ESNext.Array"/>
 
-// @ts-check
-const fs = require('node:fs');
-const path = require('node:path');
-const exec = require('node:util').promisify(require('node:child_process').exec);
-const { writeFile, readFile } = require('node:fs/promises');
-const yaml = require('js-yaml');
-const _slugify = require('slugify');
-const slugify = typeof _slugify === 'function' ? _slugify : _slugify.default;
-const capitalize = require('capitalize');
-const { parse } = require('async-csv');
+import * as ChildProcess from 'node:child_process';
+import { readdirSync } from 'node:fs';
+import { join } from 'node:path';
+import { promisify } from 'node:util';
+import { writeFile } from 'node:fs/promises';
+import { makeDemoEnv } from '../../scripts/environment.js';
 
-const RHDSAlphabetizeTagsPlugin = require('./alphabetize-tags.cjs');
-const RHDSShortcodesPlugin = require('./shortcodes.cjs');
-const RHDSElementDocsPlugin = require('./element-docs.cjs');
-const RHDSElementDemosPlugin = require('./element-demos.cjs');
+import yaml from 'js-yaml';
+import slugify from 'slugify';
+import capitalize from 'capitalize';
 
+import RHDSAlphabetizeTagsPlugin from './alphabetize-tags.js';
+import RHDSShortcodesPlugin from './shortcodes.js';
+import RHDSElementDocsPlugin from './element-docs.ts';
+import RHDSElementDemosPlugin from './element-demos.js';
+
+import { getPfeConfig, type PfeConfig } from '@patternfly/pfe-tools/config.js';
+import { UserConfig } from '@11ty/eleventy';
+
+const exec = promisify(ChildProcess.exec);
 const cwd = process.cwd();
 
 /**
@@ -25,10 +29,10 @@ const cwd = process.cwd();
  */
 
 /**
- * @param {string} tagName e.g. pf-jazz-hands
- * @param {import("@patternfly/pfe-tools/config.js").PfeConfig} config pfe tools repo config
+ * @param  tagName e.g. pf-jazz-hands
+ * @param  config pfe tools repo config
  */
-function getTagNameSlug(tagName, config) {
+function getTagNameSlug(tagName: string, config: PfeConfig) {
   const name = config?.aliases?.[tagName] ?? tagName.replace(`${config?.tagPrefix ?? 'rh'}-`, '');
   return slugify(name, {
     strict: true,
@@ -60,11 +64,11 @@ const COPY_CONTENT_EXTENSIONS = [
 function getFilesToCopy() {
   // Copy element demo files
   const repoRoot = cwd;
-  const tagNames = fs.readdirSync(path.join(repoRoot, 'elements'), { withFileTypes: true })
+  const tagNames = readdirSync(join(repoRoot, 'elements'), { withFileTypes: true })
       .filter(ent => ent.isDirectory())
       .map(ent => ent.name);
 
-  const config = require('../../.pfe.config.json');
+  const config = getPfeConfig();
 
   // Copy all component and core files to _site
   return Object.fromEntries(tagNames.flatMap(tagName => {
@@ -76,16 +80,20 @@ function getFilesToCopy() {
   }));
 }
 
+interface Options {
+  tagsToAlphabetize: string[];
+}
+
 /**
- * @param {import('@11ty/eleventy').UserConfig} eleventyConfig user config
- * @param {{tagsToAlphabetize: string[]}} opts
+ * @param eleventyConfig user config
+ * @param opts
+ * @param opts.tagsToAlphabetize
  */
-module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
+export default function(eleventyConfig: UserConfig, { tagsToAlphabetize }: Options) {
   eleventyConfig.addDataExtension('yml, yaml', contents => yaml.load(contents));
 
-  eleventyConfig.addDataExtension('csv', contents => parse(contents));
-
   eleventyConfig.addPlugin(RHDSAlphabetizeTagsPlugin, { tagsToAlphabetize });
+
   eleventyConfig.addPlugin(RHDSShortcodesPlugin);
   eleventyConfig.addPlugin(RHDSElementDocsPlugin);
   eleventyConfig.addPlugin(RHDSElementDemosPlugin);
@@ -103,13 +111,13 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
 
   const filesToCopy = getFilesToCopy();
   eleventyConfig.addPassthroughCopy(filesToCopy, {
-    filter: /** @param {string} path pathname */path => !path.endsWith('.html'),
+    filter: (path: string) => !path.endsWith('.html'),
   });
 
   eleventyConfig.addJavaScriptFunction('getTagNameSlug', getTagNameSlug);
 
   eleventyConfig.addFilter('getPrettyElementName', function(tagName) {
-    const { pfeconfig } = eleventyConfig?.globalData ?? {};
+    const pfeconfig = getPfeConfig();
     const slug = getTagNameSlug(tagName, pfeconfig);
     const deslugify = eleventyConfig.getFilter('deslugify');
     return pfeconfig.aliases[tagName] || deslugify(slug);
@@ -122,11 +130,11 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
      * but a DocsPage instance, 11ty assigns it to this.ctx._
      * @see https://github.com/11ty/eleventy/blob/bf7c0c0cce1b2cb01561f57fdd33db001df4cb7e/src/Plugins/RenderPlugin.js#L89-L93
      */
-    const { docsPage } = this.ctx.doc;
+    const { docsPage } = this.ctx.doc ?? this.doc;
     return docsPage.description;
   });
 
-  eleventyConfig.addFilter('deslugify', /** @param {string} slug */ function(slug) {
+  eleventyConfig.addFilter('deslugify', function(slug: string) {
     return capitalize(slug.replace(/-/g, ' '));
   });
 
@@ -176,15 +184,14 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
   eleventyConfig.addWatchTarget('docs/patterns/**/patterns/*.html');
   eleventyConfig.addWatchTarget('docs/theming/**/patterns/*.html');
 
-  for (const tagName of fs.readdirSync(path.join(cwd, './elements/'))) {
-    const dir = path.join(cwd, './elements/', tagName, 'docs/');
+  for (const tagName of readdirSync(join(cwd, './elements/'))) {
+    const dir = join(cwd, './elements/', tagName, 'docs/');
     eleventyConfig.addWatchTarget(dir);
   }
 
   /** add the normalized pfe-tools config to global data */
   eleventyConfig.on('eleventy.before', async function() {
-    const config = await import('@patternfly/pfe-tools/config.js').then(m => m.getPfeConfig());
-    eleventyConfig.addGlobalData('pfeconfig', config);
+    eleventyConfig.addGlobalData('pfeconfig', getPfeConfig());
   });
 
   /** custom-elements.json */
@@ -196,8 +203,7 @@ module.exports = function(eleventyConfig, { tagsToAlphabetize }) {
 
   /** /assets/javascript/environment.js */
   eleventyConfig.on('eleventy.before', async function({ dir }) {
-    const outPath = path.join(dir.input, '..', 'lib', 'environment.js');
-    const { makeDemoEnv } = await import('../../scripts/environment.js');
+    const outPath = join(dir.input, '..', 'lib', 'environment.js');
     await writeFile(outPath, await makeDemoEnv(), 'utf8');
   });
 };

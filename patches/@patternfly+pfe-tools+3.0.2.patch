@@ -1,0 +1,33 @@
+diff --git a/node_modules/@patternfly/pfe-tools/11ty/plugins/custom-elements-manifest.cjs b/node_modules/@patternfly/pfe-tools/11ty/plugins/custom-elements-manifest.cjs
+index 03b4fee..c7465d8 100644
+--- a/node_modules/@patternfly/pfe-tools/11ty/plugins/custom-elements-manifest.cjs
++++ b/node_modules/@patternfly/pfe-tools/11ty/plugins/custom-elements-manifest.cjs
+@@ -1,5 +1,4 @@
+ // @ts-check
+-const { EleventyRenderPlugin } = require('@11ty/eleventy');
+ const { join } = require('node:path');
+ const { existsSync } = require('node:fs');
+ const { glob } = require('glob');
+@@ -13,8 +12,6 @@ const isDir = dir => stat(dir).then(x => x.isDirectory, () => false);
+  * @param {import('./types').PluginOptions} pluginOpts
+  */
+ module.exports = function configFunction(eleventyConfig, pluginOpts = {}) {
+-  eleventyConfig.addPlugin(EleventyRenderPlugin);
+-
+   eleventyConfig.addGlobalData('env', () => process.env);
+ 
+   eleventyConfig.addGlobalData('demos', async function demos() {
+diff --git a/node_modules/@patternfly/pfe-tools/dev-server/demo.css b/node_modules/@patternfly/pfe-tools/dev-server/demo.css
+index fa90fd5..50cd6eb 100644
+--- a/node_modules/@patternfly/pfe-tools/dev-server/demo.css
++++ b/node_modules/@patternfly/pfe-tools/dev-server/demo.css
+@@ -261,9 +261,6 @@ body.menu-open {
+ 
+ main {
+   grid-area: body;
+-  display: grid;
+-  height: 100%;
+-  width: 100%;
+   max-height: calc(100vh - var(--pf-demo-header-height));
+ }
+ 
