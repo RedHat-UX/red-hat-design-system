@@ -1,15 +1,14 @@
 ---
-layout: layouts/pages/basic.njk
 title: Usage
 heading: Color
 sidenavTitle: Color
-hasToc: true
+layout: layouts/pages/has-toc.njk
+permalink: /foundations/color/usage/index.html
 tags:
   - color
 subnav:
   collection: sortedColor
   order: 2
-permalink: /foundations/color/usage/index.html
 ---
 
 <script data-helmet type="module">
@@ -19,34 +18,37 @@ permalink: /foundations/color/usage/index.html
   import '@rhds/elements/rh-table/rh-table.js';
 </script>
 
-<link data-helmet rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
+<link rel="stylesheet"
+      href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css"
+      data-helmet>
 
 ## Using color
 
-Our color palette is designed to work across all digital properties,
-from websites to applications to ads and more. To view our colors as
-design tokens, go to the [Tokens](/tokens) section. If you have
-questions about how to apply the color palette, [contact
-us](https://github.com/RedHat-UX/red-hat-design-system/discussions).
+Our color palette is designed to work across all digital properties, from 
+websites to applications to ads and more. To view our colors as design tokens, 
+go to the [Tokens][tokens] section. If you have questions about how to apply the 
+color palette, [contact us][contactus].
 
 ### Brand red
 
-Our primary brand color is red. It is important to use it consistently
-and thoughtfully to maximize accessibility and build brand recognition.
-Red is a strong color; use it as an accent instead of filling large
-areas. If you need a color for danger or error states, use red-orange.
-To learn more about our Red Hat red color, go to the [Brand
-standards](https://www.redhat.com/en/about/brand/standards) website.
+Our primary brand color is red. It is important to use it consistently and 
+thoughtfully to maximize accessibility and build brand recognition. Red is a 
+strong color; use it as an accent instead of filling large areas. If you need a 
+color for danger or error states, use red-orange. To learn more about our Red 
+Hat red color, go to the [Brand standards][brandstandards] website.
 
 <rh-alert state="warning">
  <h4 slot="header">Usage warning</h4>
  <p>Do not apply the Red Hat red color to text in dark environments unless
-it meets <a href="https://www.w3.org/WAI/WCAG21/Understanding/">WCAG 2.1 AA</a>
-requirements.</p>
+   it meets <a href="https://www.w3.org/WAI/WCAG21/Understanding/">WCAG 2.1 AA</a>
+   requirements.</p>
 </rh-alert>
 
-<uxdot-example>
-  <img src="/assets/color/brand-red.png" alt="spectrum of brand red shades with examples of brand red being used">
+<uxdot-example width-adjustment="872px">
+  <img alt="spectrum of brand red shades with examples of brand red being used"
+       src="/assets/color/brand-red.png"
+       width="872"
+       height="266">
 </uxdot-example>
 
 ### Canvas
@@ -58,8 +60,11 @@ other colors as long as contrast is maintained throughout the entire
 design. If a custom canvas color is lighter or darker than the defaults,
 white or black may be used as surface colors.
 
-<uxdot-example>
-  <img src="/assets/color/canvas.png" alt="swatches of the default canvas colors for dark and light theme and examples of custom canvas colors">
+<uxdot-example width-adjustment="872px">
+  <img alt="swatches of the default canvas colors for dark and light theme and examples of custom canvas colors"
+       src="/assets/color/canvas.png"
+       width="872"
+       height="248">
 </uxdot-example>
 
 ### Surface
@@ -70,7 +75,10 @@ sections. For example, a card (white surface) can be placed in a section
 (light gray surface) on a canvas (white).
 
 <uxdot-example variant="full" no-border>
-  <img src="/assets/color/surface.png" alt="swatches of the default surface colors for dark and light theme and examples of a card in a section with a card">
+  <img alt="swatches of the default surface colors for dark and light theme and examples of a card in a section with a card"
+       src="/assets/color/surface.png"
+       width="1000"
+       height="682">
 </uxdot-example>
 
 ### Layering <rh-tag color="purple">Beta</rh-tag>
@@ -88,7 +96,10 @@ as well as how they stack to create depth and separate content.
 In the light theme, white and gray values alternate when stacked.
 
 <uxdot-example variant="full" no-border>
-  <img src="/assets/color/layering-light-theme.png" alt="A light gray card in a larger, white card, which sits in a light gray section">
+  <img alt="A light gray card in a larger, white card, which sits in a light gray section"
+       src="/assets/color/layering-light-theme.png"
+       width="1000"
+       height="560">
 </uxdot-example>
 
 
@@ -97,7 +108,10 @@ In the light theme, white and gray values alternate when stacked.
 In the dark theme, gray values should get one step lighter when stacked.
 
 <uxdot-example variant="full" no-border>
-  <img src="/assets/color/layering-dark-theme.png" alt="A dark gray card in a larger, darker gray card, which sits in an even dark gray section">
+  <img alt="A dark gray card in a larger, darker gray card, which sits in an even dark gray section"
+       src="/assets/color/layering-dark-theme.png"
+       width="1000"
+       height="560">
 </uxdot-example>
 
 
@@ -126,7 +140,10 @@ represented.
 </rh-alert>
 
 <uxdot-example variant="full" no-border>
-  <img src="/assets/color/text.png" alt="Dark and light theme examples of the seven types of semantic colors used by text">
+  <img alt="Dark and light theme examples of the seven types of semantic colors used by text"
+       src="/assets/color/text.png"
+       width="1000"
+       height="851">
 </uxdot-example>
 
 ### Icons
@@ -139,11 +156,13 @@ three categories of icons: Brand, Technology, and UI.
 3.  **UI** - may be different colors depending on how they are used
     within an element or pattern
 
-To learn more about icons, go to the [Brand
-standards](https://www.redhat.com/en/about/brand/standards) website.
+To learn more about icons, go to the [Brand standards][brandstandards] website.
 
 <uxdot-example variant="full" no-border>
-  <img src="/assets/color/icons.png" alt="Examples of the three icon categories">
+  <img alt="Examples of the three icon categories"
+       src="/assets/color/icons.png"
+       width="1000"
+       height="462">
 </uxdot-example>
 
 ### Interactivity
@@ -159,16 +178,18 @@ Certain colors are used to indicate that something is interactive.
 5.  **Red** - use sparingly for Primary calls to action only
 
 <uxdot-example variant="full" no-border>
-  <img src="/assets/color/interactivity.png" alt="Examples of elements using the five colors that denote interactivity">
+  <img alt="Examples of elements using the five colors that denote interactivity"
+       src="/assets/color/interactivity.png"
+       width="1000"
+       height="593">
 </uxdot-example>
 
 ### Status
 
-Status colors have assigned meanings and communicate information,
-states, or actions. Status colors are commonly used in elements and
-patterns like [alerts](/elements/alert), [badges](/elements/badge),
-[buttons](/elements/button), [forms](/patterns/form), and
-[toasts](/elements/alert/style/#toast).
+Status colors have assigned meanings and communicate information, states, or 
+actions. Status colors are commonly used in elements and patterns like 
+[alerts][alerts], [badges](/elements/badge), [buttons][buttons], [forms][forms], 
+and [toasts][toasts].
 
 
 <rh-alert state="warning">
@@ -177,7 +198,7 @@ patterns like [alerts](/elements/alert), [badges](/elements/badge),
 </rh-alert>
 
 <rh-table>
-  
+
 | Status                                     | Severity level | Use case                                                                         |
 | ------------------------------------------ | :------------: | -------------------------------------------------------------------------------- |
 | <rh-tag color="purple">Info</rh-tag>       | N/A            | Use `purple` to communicate helpful or important information.<br>*Note:* "Info" was previously called "note/tip." |
@@ -189,9 +210,11 @@ patterns like [alerts](/elements/alert), [badges](/elements/badge),
 
 </rh-table>
 
-
 <uxdot-example width-adjustment="648px">
-  <img src="/assets/color/status.png" alt="Alerts, a form field, and tags that use status colors">
+  <img alt="Alerts, a form field, and tags that use status colors"
+       src="/assets/color/status.png"
+       width="648"
+       height="489">
 </uxdot-example>
 
 ## Best practices
@@ -206,19 +229,25 @@ only after significant planning and consideration.
 Most projects do not need elements and patterns in a custom theme. If
 you need a custom theme for a campaign or special project, contact the
 Brand team first. If you need one or more custom design tokens, contact
-the [Design system](https://github.com/RedHat-UX/red-hat-design-system/discussions) team first. 
+the [Design system][designsystem] team first. 
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
     <uxdot-example slot="image" no-border variant="full" alignment="left">
-      <img src="/assets/color/best-practices-custom-themes-correct.svg" alt="Blue submit button, blue default call to action, black tooltip, and blue switch">
+      <img alt="Blue submit button, blue default call to action, black tooltip, and blue switch"
+           src="/assets/color/best-practices-custom-themes-correct.svg"
+           width="500"
+           height="264">
     </uxdot-example>
     <p>Use the color variants already available for elements and patterns.</p>
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="dont">
     <uxdot-example slot="image" no-border variant="full" alignment="left">
-      <img src="/assets/color/best-practices-custom-themes-wrong.svg" alt="Magenta button, brand red default call to action, green tooltip, and dark orange switch">
+      <img alt="Magenta button, brand red default call to action, green tooltip, and dark orange switch"
+           src="/assets/color/best-practices-custom-themes-wrong.svg"
+           width="500"
+           height="264">
     </uxdot-example>
     <p>Do not create your own colors, design tokens, or change the colors of existing elements and patterns.</p>
   </uxdot-best-practice>
@@ -235,13 +264,19 @@ using elements and patterns from the desaturated theme instead.
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
     <uxdot-example slot="image" no-border variant="full" alignment="left">
-      <img src="/assets/color/best-practices-sufficient-contrast-correct.svg" alt="Examples of a blue button against a light gray background and a red CTA against a black background">
+      <img alt="Examples of a blue button against a light gray background and a red CTA against a black background"
+           src="/assets/color/best-practices-sufficient-contrast-correct.svg"
+           width="500"
+           height="284">
     </uxdot-example>
     <p>Use a surface color token for background to ensure accessibility, or use a <a href="../accessibility/#tools">tool</a> to check proper contrast.</p>
   </uxdot-best-practice>
   <uxdot-best-practice variant="dont">
     <uxdot-example slot="image" no-border variant="full" alignment="left">
-      <img src="/assets/color/best-practices-sufficient-contrast-wrong.svg" alt="Examples of a blue button against a red background and a red CTA against a blue background">
+      <img alt="Examples of a blue button against a red background and a red CTA against a blue background"
+           src="/assets/color/best-practices-sufficient-contrast-wrong.svg"
+           width="500"
+           height="284">
     </uxdot-example>
     <p>Do not use a background color that has a similar hue, saturation, or lightness to foreground elements.</p>
   </uxdot-best-practice>
@@ -249,11 +284,23 @@ using elements and patterns from the desaturated theme instead.
 
 ## Resources
 
-- [Brand standards](https://www.redhat.com/en/about/brand/standards)
-- [WCAG 2.1](https://www.w3.org/WAI/WCAG21/Understanding/)
-- [WebAIM: Contrast and Color Accessibility](https://webaim.org/articles/contrast/)
+- [Brand standards][brandstandards]
+- [WCAG 2.1][wcag21]
+- [WebAIM: Contrast and Color Accessibility][aimcc]
 
 <uxdot-feedback>
   <h2>Foundations</h2>
   <p>To learn how to use our other foundations in your designs, visit the <a href="/foundations">foundations</a> section.</p>
 </uxdot-feedback>
+
+[alerts]: /elements/alert
+[badges]: /elements/badge
+[brandstandards]: https://www.redhat.com/en/about/brand/standards
+[buttons]: /elements/button
+[contactus]: https://github.com/RedHat-UX/red-hat-design-system/discussions
+[designsystem]: https://github.com/RedHat-UX/red-hat-design-system/discussions
+[forms]: /patterns/form
+[toasts]: /elements/alert/style/#toast
+[tokens]: /tokens
+[wcag21]: https://www.w3.org/WAI/WCAG21/Understanding/
+[aimcc]: https://webaim.org/articles/contrast/

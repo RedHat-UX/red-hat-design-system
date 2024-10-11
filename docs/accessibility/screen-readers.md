@@ -13,7 +13,7 @@ importElements:
       data-helmet
       href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
 
-<style>
+<style data-helmet>
   rh-tile [slot="headline"] {
     font-weight: var(--rh-font-weight-heading-bold, 700);
   }

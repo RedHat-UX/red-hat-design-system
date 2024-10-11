@@ -1,7 +1,6 @@
 ---
 title: Overview
 order: 1
-hasToc: false
 ---
 <style data-helmet>
   .card-grid {
@@ -11,24 +10,34 @@ hasToc: false
   }
 </style>
 
-<link rel="stylesheet" data-helmet href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
+<link rel="stylesheet"
+      href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css"
+      data-helmet>
 
 <script type="module" data-helmet>
   import '@rhds/elements/rh-cta/rh-cta.js';
   import '@rhds/elements/rh-tile/rh-tile.js';
 </script>
 
-The Red Hat Design System features a powerful, flexible, and easy-to-use theming system.
+The Red Hat Design System features a powerful, flexible, and easy-to-use theming 
+system.
 
 ## What is theming?
 
-We use theming to modify our elements and patterns so they fit a specific visual style. Themes can be applied to an element, a page, or a UI. A common theming use case is dark theme or dark mode.
+We use theming to modify our elements and patterns so they fit a specific visual 
+style. Themes can be applied to an element, a page, or a UI. A common theming 
+use case is dark theme or dark mode.
 
 ## How does it work?
 
-Our design system includes built-in branded and accessible defaults, so all you need to do if you want to create digital experiences that feel like Red Hat is to write a few lines of HTML.
+Our design system includes built-in branded and accessible defaults, so all you 
+need to do if you want to create digital experiences that feel like Red Hat is 
+to write a few lines of HTML.
 
-When we want to flex our design muscles, our elements include powerful theming primitives in the form of **slots**, **design tokens**, and **CSS shadow parts**. These primitives enable you to theme a single element, section, page, or entire app UI.
+When we want to flex our design muscles, our elements include powerful theming 
+primitives in the form of **slots**, **design tokens**, and **CSS shadow 
+parts**. These primitives enable you to theme a single element, section, page, 
+or entire app UI.
 
 <nav class="card-grid" aria-label="Theming pages">
   <rh-tile>

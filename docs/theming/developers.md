@@ -1,7 +1,7 @@
 ---
 title: Developers
+layout: layouts/pages/has-toc.njk
 order: 4
-hasToc: true
 ---
 
 <link rel="stylesheet"
@@ -56,10 +56,10 @@ A common pattern for a themeable container is the full-width band. For example,
 a `<rh-surface>` may be used as a full-width container and provide the 
 *Bordeaux* theme values to a set of 3 cards in a grid:
 
-{% uxdotPattern src="./docs/theming/patterns/band.html",
-                class="band-example",
-                target="band",
-                stacked=true %}{% enduxdotPattern %}
+<uxdot-pattern src="./patterns/band.html"
+               class="band-example"
+               target="band">
+</uxdot-pattern>
 
 ### The `color-palette` attribute
 

@@ -1,33 +1,72 @@
+@import url('/styles/rh-code-block-lightdom.css');
+
 :host {
+  container: host / inline-size;
   display: block;
-  container-name: host;
-  container-type: inline-size;
-  margin-block-end: var(--rh-space-2xl, 32px);
+  margin-block-start: var(--rh-space-2xl);
+  max-width: 56rem; /* warning: magic number */
 }
 
 #container {
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-areas: 'controls' 'example' 'code';
-  gap: var(--rh-space-2xl, 32px) var(--rh-space-4xl, 64px);
-  padding: var(--rh-space-2xl, 32px);
-  border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
-  border-radius: var(--rh-border-radius-default, 3px);
+  grid-template-columns: auto;
+  grid-template-areas: 'heading' 'controls' 'content' 'code';
+  gap: var(--rh-space-2xl) var(--rh-space-4xl);
+
+  @container host (width >= 530px) {
+    grid-template-columns: auto auto;
+    grid-template-areas:
+      'heading controls'
+      'content content'
+      'code code';
+  }
+
+  @container host (width >= 992px) {
+    grid-template-areas:
+      'heading heading'
+      'controls controls'
+      'content content'
+      'code code';
+  }
+}
+
+#heading {
+  grid-area: heading;
+  display: flex;
+  align-items: center;
+}
+
+#description { grid-area: content; }
+
+h3,
+::slotted(h2),
+::slotted(h3),
+::slotted(h4),
+::slotted(h5),
+::slotted(h6) {
+  margin-block: 0 !important;
+  font-size: var(--rh-font-size-body-text-lg) !important;
+}
+
+#content {
+  display: block;
+  resize: vertical;
+  overflow: auto;
+  grid-area: content;
+  padding: var(--rh-space-lg);
+  border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
+  border-radius: var(--rh-border-radius-default);
   background-color: var(--rh-color-surface);
   color: var(--rh-color-text-primary);
   border-color: var(--rh-color-border-subtle);
 
-  --rh-color-surface: inherit;
-}
+  @container host (width > 300px) { padding: var(--rh-space-xl); }
 
-#container h3,
-#container ::slotted(h2),
-#container ::slotted(h3),
-#container ::slotted(h4),
-#container ::slotted(h5),
-#container ::slotted(h6) {
-  margin-block: 0 var(--rh-space-lg, 16px) !important;
-  font-size: var(--rh-font-size-body-text-lg, 1.125rem) !important;
+  @container host (width > 540px) { padding: var(--rh-space-4xl); }
+
+  & > * {
+    margin-inline: auto;
+  }
 }
 
 #color-picker {
@@ -38,52 +77,21 @@
   gap: var(--rh-space-lg, 16px);
 }
 
-#example {
-  grid-area: example;
-}
-
-:host([stacked]) #example ::slotted(*) {
-  max-width: 100%;
-}
-
-#code {
+rh-tabs {
+  border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
+  border-radius: var(--rh-border-radius-default);
+  overflow: hidden;
   grid-area: code;
-  display: flex;
-  flex-direction: column;
-  gap: var(--rh-space-lg, 16px);
-}
 
-#container.noColorPicker {
-  grid-template-areas: 'example' 'code';
-}
-
-#color-picker.noColorPicker {
-  display: none !important;
-}
-
-#example slot[name='heading'] {
-  display: block;
-  grid-column: -1/1;
-}
-
-@container host (min-width: 992px) {
-  #container {
-    grid-template-columns: max-content auto;
-    grid-template-areas:
-      'controls controls'
-      'example code';
+  & rh-tab-panel {
+    padding: 0;
+    border-radius: 0;
   }
 
-  #container.noColorPicker {
-    grid-template-areas: 'example code';
-  }
+  & rh-code-block {
+    --rh-border-radius-default: 0;
+    --rh-border-width-sm: 0px;
 
-  #container.stacked {
-    grid-template-columns: 1fr;
-    grid-template-areas: 'controls' 'example' 'code';
-  }
-
-  #container.stacked.noColorPicker {
-    grid-template-areas: 'example' 'code';
+    border-width: 0;
   }
 }
