@@ -50,7 +50,7 @@ There is an alternate inline alert where the border covers all sides.
 
 ### Toast
 
-Same as the inline alert, at minimum, the status icon and title needs to be visible.
+Same as the inline alert, at minimum, the status icon and title need to be visible.
 
 <uxdot-example width-adjustment="456px">
   <img src="../alert-style-variant-toast.svg" 
@@ -86,13 +86,6 @@ Same as the inline alert, at minimum, the status icon and title needs to be visi
         height="640">
 </uxdot-example>
 
-<rh-table>
-{% spacerTokensTable 
-    caption='',
-    headingLevel="4",
-    tokens="--rh-space-md, --rh-space-lg, --rh-space-xl" %}
-{% endspacerTokensTable %}
-</rh-table>
 
 ## Interaction states
 
