@@ -17,17 +17,16 @@ index 03b4fee..c7465d8 100644
    eleventyConfig.addGlobalData('env', () => process.env);
  
    eleventyConfig.addGlobalData('demos', async function demos() {
-diff --git a/node_modules/@patternfly/pfe-tools/dev-server/demo.css b/node_modules/@patternfly/pfe-tools/dev-server/demo.css
-index fa90fd5..50cd6eb 100644
---- a/node_modules/@patternfly/pfe-tools/dev-server/demo.css
-+++ b/node_modules/@patternfly/pfe-tools/dev-server/demo.css
-@@ -261,9 +261,6 @@ body.menu-open {
- 
- main {
-   grid-area: body;
--  display: grid;
--  height: 100%;
--  width: 100%;
-   max-height: calc(100vh - var(--pf-demo-header-height));
- }
- 
+diff --git a/node_modules/@patternfly/pfe-tools/package.json b/node_modules/@patternfly/pfe-tools/package.json
+index 9d19722..bdb26d9 100644
+--- a/node_modules/@patternfly/pfe-tools/package.json
++++ b/node_modules/@patternfly/pfe-tools/package.json
+@@ -63,7 +63,7 @@
+     "**/*.{js,cjs,d.ts,map}"
+   ],
+   "peerDependencies": {
+-    "@11ty/eleventy": "^2.0.1",
++    "@11ty/eleventy": "^2.0.1 || ^3.0.0",
+     "@11ty/eleventy-plugin-directory-output": "^1.0.1",
+     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
+     "@changesets/cli": "^2.27.1",
