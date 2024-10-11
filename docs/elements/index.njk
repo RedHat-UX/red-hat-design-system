@@ -1,6 +1,6 @@
 ---
-layout: layouts/pages/basic.njk
 title: All elements
+layout: layouts/pages/has-toc.njk
 summaries:
   audio-player: Plays audio clips and includes other features
   jump-links: Moves users to specific content when a link is selected
@@ -10,12 +10,15 @@ summaries:
   breadcrumb: Keeps track of location as users move through pages
   footnote: Provides additional information or a source for content
   tile: A form of selection that can be used in place of a link, checkbox, or radio button
-hasToc: true
-importElements:
-  - rh-tile
 ---
 
-<link rel="stylesheet" data-helmet href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
+<link rel="stylesheet"
+      href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css"
+      data-helmet>
+
+<script type="module" data-helmet>
+  import '@rhds/elements/rh-tile/rh-tile.js';
+</script>
 
 <style data-helmet>
   rh-tile h3 {

@@ -3,7 +3,6 @@ title: Style
 heading: Logo wall
 sidenavTitle: Logo wall
 layout: layouts/pages/pattern.njk
-hasToc: true
 order: 20
 tags:
   - logowallPatterns
@@ -141,4 +140,4 @@ Interaction states are visual representations used to communicate the status of 
       height="114">
 </uxdot-example>
 
-{% include 'partials/component/feedback.html' %}
+{% renderFile './docs/_includes/partials/component/feedback.11ty.cjs' %}
