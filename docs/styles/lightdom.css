@@ -1,7 +1,8 @@
-@layer masthead, sidenav, permalink, repo-status-list, footer;
+@layer masthead, sidenav, permalink, repo-status-list, footer, code-block;
 
 @import url('../assets/javascript/elements/uxdot-masthead-lightdom.css') layer(masthead);
 @import url('../assets/javascript/elements/uxdot-sidenav-lightdom.css') layer(sidenav);
 @import url('../assets/javascript/elements/uxdot-copy-permalink-lightdom.css') layer(permalink);
 @import url('../assets/javascript/elements/uxdot-repo-status-list-lightdom.css') layer(repo-status-list);
 @import url('../assets/packages/@rhds/elements/elements/rh-footer/rh-footer-lightdom.css') layer(footer);
+@import url('../assets/packages/@rhds/elements/elements/rh-code-block/rh-code-block-lightdom.css') layer(code-block);
