@@ -1,6 +1,6 @@
 import type { ColorPalette } from '@rhds/elements/lib/context/color/provider.js';
 
-import { LitElement, html, isServer } from 'lit';
+import { LitElement, html, type PropertyValues } from 'lit';
 
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
@@ -56,11 +56,22 @@ export class UxdotPattern extends LitElement {
 
   @colorContextConsumer() private on?: ColorTheme;
 
-  ssrController = new UxdotPatternSSRController(this);
+  ssr = new UxdotPatternSSRController(this);
+
+  update(changed: PropertyValues<this>) {
+    try {
+      super.update(changed);
+    } catch (e) {
+      if ((e as any).message.startsWith('Hydration')) {
+        this.updateComplete.then(() =>
+          this.requestUpdate());
+      }
+      throw e;
+    }
+  }
 
   render() {
-    const target = isServer || (this.target === 'container') ? this.target
-      : (this.getRootNode() as Document).getElementById(this.target);
+    const { allContent, htmlContent, cssContent, jsContent, hasJs, hasCss } = this.ssr;
 
     const actionsLabels = html`
       <span slot="action-label-copy">Copy to Clipboard</span>
@@ -79,41 +90,45 @@ export class UxdotPattern extends LitElement {
           <rh-context-picker id="picker"
                              @change="${this.#onChange}"
                              value="${this.colorPalette}"
-                             target="${target}"
+                             target="${this.target}"
                              allow="${this.allow}"></rh-context-picker>
         </form>
 
         <div id="description"><slot></slot></div>
 
-        <rh-surface id="content">${this.ssrController.allContent}</rh-surface>
+        <rh-surface id="content">${allContent}</rh-surface>
 
-        <rh-tabs class="code-tabs">
-          <rh-tab slot="tab" active>HTML</rh-tab>
-          <rh-tab-panel>
+        <rh-tabs id="code-tabs" class="code-tabs">
+          <rh-tab id="html-tab"
+                  slot="tab"
+                  active>HTML</rh-tab>
+          <rh-tab-panel id="html-panel">
             <rh-code-block highlighting="prerendered"
                            actions="copy wrap"
-                           ?full-height="${this.fullHeight}">
-              ${this.ssrController.htmlContent}
+                           .full-height="${this.fullHeight}">
+              ${htmlContent}
               ${actionsLabels}
             </rh-code-block>
           </rh-tab-panel>
-          <rh-tab slot="tab"
-                  ?disabled="${!this.ssrController.hasCss}">CSS</rh-tab>
-          <rh-tab-panel>
+          <rh-tab id="css-tab"
+                  slot="tab"
+                  .disabled="${!hasCss}">CSS</rh-tab>
+          <rh-tab-panel id="css-panel">
             <rh-code-block highlighting="prerendered"
                            actions="copy wrap"
-                           ?full-height="${this.fullHeight}">
-              ${this.ssrController.cssContent}
+                           .full-height="${this.fullHeight}">
+              ${cssContent}
               ${actionsLabels}
             </rh-code-block>
           </rh-tab-panel>
-          <rh-tab slot="tab"
-                  ?disabled="${!this.ssrController.hasJs}">JS</rh-tab>
-          <rh-tab-panel>
+          <rh-tab id="js-tab"
+                  slot="tab"
+                  .disabled="${!hasJs}">JS</rh-tab>
+          <rh-tab-panel id="js-panel">
             <rh-code-block highlighting="prerendered"
                            actions="copy wrap"
-                           ?full-height="${this.fullHeight}">
-              ${this.ssrController.jsContent}
+                           .full-height="${this.fullHeight}">
+              ${jsContent}
               ${actionsLabels}
             </rh-code-block>
           </rh-tab-panel>
@@ -128,3 +143,4 @@ export class UxdotPattern extends LitElement {
     }
   }
 }
+

@@ -1,15 +1,19 @@
 ---
 layout: layouts/pages/basic.njk
 title: Get support
-hasToc: false
 tags:
   - support
-importElements:
-  - rh-tile
-  - rh-tag
 ---
 
-<link rel="stylesheet" data-helmet href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
+<link rel="stylesheet"
+      href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css"
+      data-helmet>
+
+<script type="module" data-helmet>
+  import '@rhds/elements/rh-tile/rh-tile.js';
+  import '@rhds/elements/rh-tag/rh-tag.js';
+</script>
+
 <style data-helmet>
   #contact-grid h3 {
     display: flex;
@@ -24,11 +28,10 @@ importElements:
 
 Find the best method for getting your question to the team.
 
-
 ## Connect on GitHub
 
-The best way to get help or feedback is through GitHub. This allows us to pull your GitHub issue or discussion into our workflow more easily.
-
+The best way to get help or feedback is through GitHub. This allows us to pull 
+your GitHub issue or discussion into our workflow more easily.
 
 ### Design system help
 
