@@ -2,9 +2,9 @@
 
 import * as ChildProcess from 'node:child_process';
 import { readdirSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, dirname } from 'node:path';
 import { promisify } from 'node:util';
-import { readFile, writeFile } from 'node:fs/promises';
+import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { makeDemoEnv } from '../../scripts/environment.js';
 
 import yaml from 'js-yaml';
@@ -96,6 +96,30 @@ interface Options {
  * @param opts.tagsToAlphabetize
  */
 export default function(eleventyConfig: UserConfig, { tagsToAlphabetize }: Options) {
+  eleventyConfig.on('eleventy.before', async ({ directories }) => {
+    const outPath = join(directories.output, 'assets/javascript/repoStatus.json');
+    await mkdir(dirname(outPath), { recursive: true });
+    await writeFile(outPath, JSON.stringify(repoStatus), 'utf8');
+  });
+
+  /** add the normalized pfe-tools config to global data */
+  eleventyConfig.on('eleventy.before', async function() {
+    eleventyConfig.addGlobalData('pfeconfig', getPfeConfig());
+  });
+
+  /** custom-elements.json */
+  eleventyConfig.on('eleventy.before', async function({ runMode }) {
+    if (runMode === 'watch') {
+      await exec('npx cem analyze');
+    }
+  });
+
+  /** /assets/javascript/environment.js */
+  eleventyConfig.on('eleventy.before', async function({ dir }) {
+    const outPath = join(dir.input, '..', 'lib', 'environment.js');
+    await writeFile(outPath, await makeDemoEnv(), 'utf8');
+  });
+
   eleventyConfig.addDataExtension('yml, yaml', contents => yaml.load(contents));
 
   eleventyConfig.addPlugin(RHDSAlphabetizeTagsPlugin, { tagsToAlphabetize });
@@ -182,29 +206,4 @@ export default function(eleventyConfig: UserConfig, { tagsToAlphabetize }: Optio
     const dir = join(cwd, './elements/', tagName, 'docs/');
     eleventyConfig.addWatchTarget(dir);
   }
-
-  /** add the normalized pfe-tools config to global data */
-  eleventyConfig.on('eleventy.before', async function() {
-    eleventyConfig.addGlobalData('pfeconfig', getPfeConfig());
-  });
-
-  eleventyConfig.on('eleventy.before', ({ directories }) =>
-    writeFile(
-      join(directories.output, 'assets/javascript/repoStatus.json'),
-      JSON.stringify(repoStatus),
-      'utf8',
-    ));
-
-  /** custom-elements.json */
-  eleventyConfig.on('eleventy.before', async function({ runMode }) {
-    if (runMode === 'watch') {
-      await exec('npx cem analyze');
-    }
-  });
-
-  /** /assets/javascript/environment.js */
-  eleventyConfig.on('eleventy.before', async function({ dir }) {
-    const outPath = join(dir.input, '..', 'lib', 'environment.js');
-    await writeFile(outPath, await makeDemoEnv(), 'utf8');
-  });
 };
