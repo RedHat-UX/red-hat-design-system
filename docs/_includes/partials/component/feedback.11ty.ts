@@ -12,7 +12,7 @@ export default class Feedback extends Renderer {
   }) {
     pfeconfig ??= await import('@patternfly/pfe-tools/config.js').then(x => x.getPfeConfig());
     const name = doc?.tagName ?? this.slugify(title);
-    const related = [...new Set(relatedItems?.[name] ?? [])].map(x => {
+    const related = [...new Set((relatedItems?.[name] ?? []) as string[])].map(x => {
       const slug = this.getTagNameSlug(x);
       return {
         name: x,
