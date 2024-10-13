@@ -1,30 +1,10 @@
-## Overview
-
-{{ tagName | getElementDescription }}
-
-<uxdot-example width-adjustment="220">
-  <img src="./skip-link.svg"
-        alt="Image of a skip link"
-        width="220"
-        height="56">
-</uxdot-example>
-
-
-{% repoStatusList repoStatus=repoStatus %}           
-
-
-## Sample element
-
-To show the skip link, click this paragraph and hit the "Tab" key on your keyboard to show the skip link.
-
-<rh-skip-link>
-  <a href="#demo">Skip to demo</a>
-</rh-skip-link>
-
+To show the skip link, click this top page header and press
+<kbd>Shift</kbd>+<kbd>Tab</kbd> on your keyboard.
 
 ## When to use
-  - When there are many navigation items preceding main content
-  - When there are blocks of content that are repeated on multiple pages
+- When there are many navigation items preceding main content
+- When there are blocks of content that are repeated on multiple pages
 
-
-{% repoStatusChecklist repoStatus=repoStatus %}
+<div id="overview-image-description" class="visually-hidden">
+  Image of a skip link element
+</div>

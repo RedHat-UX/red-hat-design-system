@@ -19,15 +19,15 @@ background with a drop shadow.
          height="276">
   </uxdot-example>
   <figcaption>
-    <ol>
-      <li>Status icon</li>
-      <li>Title</li>
-      <li>Body text</li>
-      <li>Action buttons</li>
-      <li>Close button</li>
-      <li>Color background</li>
-      <li>White background with drop shadow</li>
-    </ol>
+
+1.  Status icon
+2.  Title
+3.  Body text
+4.  Action buttons
+5.  Close button
+6.  Color background
+7.  White background with drop shadow
+
   </figcaption>
 </figure>
 
@@ -92,7 +92,7 @@ Same as the inline alert, at minimum, the status icon and title needs to be visi
        height="640">
 </uxdot-example>
 
-<uxdot-spacer-tokens-table tokens="--rh-space-md, --rh-space-lg, --rh-space-xl">
+<uxdot-spacer-tokens-table tokens="md, lg, xl">
 </uxdot-spacer-tokens-table>
 
 ## Interaction states

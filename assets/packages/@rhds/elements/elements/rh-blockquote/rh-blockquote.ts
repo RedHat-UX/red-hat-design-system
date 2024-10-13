@@ -11,7 +11,7 @@ import '@rhds/elements/rh-icon/rh-icon.js';
 import styles from './rh-blockquote.css';
 
 /**
- * A blockquote for displaying quote, author, and author title.
+ * A blockquote is a styled quotation and citation offset from other text styles on the page.
  *
  * @summary  Highlights quotations and citations with text styles
  *

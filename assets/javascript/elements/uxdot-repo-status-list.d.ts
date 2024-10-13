@@ -1,5 +1,6 @@
-import { LitElement } from 'lit';
-export declare class UxdotRepoStatusList extends LitElement {
+import { UxdotRepoElement } from './uxdot-repo.js';
+export declare class UxdotRepoStatusList extends UxdotRepoElement {
     static styles: CSSStyleSheet[];
+    element?: string;
     render(): import("lit-html").TemplateResult<1>;
 }

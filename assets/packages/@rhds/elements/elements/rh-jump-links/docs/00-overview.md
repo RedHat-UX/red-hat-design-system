@@ -5,13 +5,8 @@ anchor links. Selecting a link moves a user to content that corresponds with
 the link selected. A link is displayed as active when the content it links to 
 is visible in the browser window.
 
-
 ## Sample element
 
-<uxdot-example width-adjustment="128px">
-  <img src="./jump-links-sample.svg"
-        alt="Jump links sample component"
-        width="128"
-        height="307">
-</uxdot-example>
-
+<div id="overview-image-description" class="visually-hidden">
+  Jump links sample element
+</div>

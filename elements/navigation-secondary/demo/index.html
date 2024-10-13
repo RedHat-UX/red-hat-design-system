@@ -32,8 +32,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.4/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
@@ -82,7 +82,7 @@
     <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
   </head>
   <body unresolved="">
-    <main><rh-navigation-secondary id="navigation-secondary-demo" role="navigation">
+    <main><rh-navigation-secondary>
   <a href="#" slot="logo" id="logo-id" aria-current="page">
     Logo/Title
   </a>
@@ -98,9 +98,7 @@
               <li><a href="#">Link</a></li>
               <li><a href="#">Link</a></li>
             </ul>
-            <rh-cta slot="cta">
-              <a href="#">Section CTA</a>
-            </rh-cta>
+            <rh-cta slot="cta" href="#">Section CTA</rh-cta>
           </rh-navigation-secondary-menu-section>
           <rh-navigation-secondary-menu-section>
             <h3 slot="header">Section</h3>
@@ -109,9 +107,7 @@
               <li><a href="#">Link</a></li>
               <li><a href="#">Link</a></li>
             </ul>
-            <rh-cta slot="cta">
-              <a href="#">Section CTA</a>
-            </rh-cta>
+            <rh-cta slot="cta" href="#">Section CTA</rh-cta>
           </rh-navigation-secondary-menu-section>
         </rh-navigation-secondary-menu>
       </rh-navigation-secondary-dropdown>
@@ -134,41 +130,10 @@
     <li><a href="#">Link</a></li>
     <li><a href="#">Link</a></li>
   </ul>
-  <rh-cta slot="cta">
-    <a href="#">Call to Action</a>
-  </rh-cta>
+  <rh-cta slot="cta" href="#">Call to Action</rh-cta>
 </rh-navigation-secondary>
 
-<div id="space-holder">
-  <h2>Content Placeholder</h2>
-  <a href="#">Link placeholder</a>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt luctus odio, vitae accumsan tortor sagittis et. Integer facilisis rutrum suscipit. Morbi elementum purus vel varius tincidunt. Nulla fringilla lacus a nulla vehicula tincidunt. Praesent a turpis et elit laoreet ullamcorper et et metus. Praesent malesuada massa in tellus bibendum congue. Curabitur mollis purus et metus eleifend sagittis. Vivamus fringilla tincidunt sem id euismod. Maecenas a vestibulum nisl. Sed libero metus, ultrices in tortor facilisis, semper rhoncus nunc. Nullam ut diam et felis posuere lobortis vitae id leo. Sed hendrerit ex libero, a faucibus tellus maximus et. Aliquam erat volutpat. Phasellus vestibulum a lacus eget eleifend. Pellentesque ipsum nunc, scelerisque non neque id, bibendum vestibulum ante.</p>
-  <p>Maecenas venenatis sollicitudin leo, vitae tincidunt lectus dapibus vel. Integer quis sapien dui. Nulla sagittis dapibus suscipit. Pellentesque consequat dapibus lorem id feugiat. Fusce ornare sapien at lacus porta maximus. Praesent gravida faucibus tellus et lobortis. Praesent ullamcorper facilisis semper. Praesent lobortis enim lacus, ut facilisis ex tristique in. Sed lobortis tortor ut sem lacinia pharetra. Nunc a varius risus. Proin volutpat eget justo quis fermentum. Nunc quis vestibulum ipsum. Donec vulputate laoreet sapien id mattis. Phasellus non enim laoreet, euismod mauris vel, vulputate est.</p>
-  <p>Vivamus porta massa at nulla eleifend, a pellentesque eros dictum. Nam finibus nibh purus, in placerat nulla elementum at. Integer quis est condimentum, tempor mi ac, dapibus ante. Pellentesque fringilla hendrerit est, ut ultricies orci condimentum viverra. Aliquam a lacus consequat dolor vestibulum euismod eget quis ipsum. Pellentesque viverra, libero sed euismod consectetur, turpis nulla tristique massa, vel ultricies massa arcu sit amet mauris. Donec aliquet tortor ante, ut pulvinar odio gravida et. Proin laoreet et elit at tempus. In aliquam erat lacus, in volutpat neque faucibus a.</p>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt luctus odio, vitae accumsan tortor sagittis et. Integer facilisis rutrum suscipit. Morbi elementum purus vel varius tincidunt. Nulla fringilla lacus a nulla vehicula tincidunt. Praesent a turpis et elit laoreet ullamcorper et et metus. Praesent malesuada massa in tellus bibendum congue. Curabitur mollis purus et metus eleifend sagittis. Vivamus fringilla tincidunt sem id euismod. Maecenas a vestibulum nisl. Sed libero metus, ultrices in tortor facilisis, semper rhoncus nunc. Nullam ut diam et felis posuere lobortis vitae id leo. Sed hendrerit ex libero, a faucibus tellus maximus et. Aliquam erat volutpat. Phasellus vestibulum a lacus eget eleifend. Pellentesque ipsum nunc, scelerisque non neque id, bibendum vestibulum ante.</p>
-  <p>Maecenas venenatis sollicitudin leo, vitae tincidunt lectus dapibus vel. Integer quis sapien dui. Nulla sagittis dapibus suscipit. Pellentesque consequat dapibus lorem id feugiat. Fusce ornare sapien at lacus porta maximus. Praesent gravida faucibus tellus et lobortis. Praesent ullamcorper facilisis semper. Praesent lobortis enim lacus, ut facilisis ex tristique in. Sed lobortis tortor ut sem lacinia pharetra. Nunc a varius risus. Proin volutpat eget justo quis fermentum. Nunc quis vestibulum ipsum. Donec vulputate laoreet sapien id mattis. Phasellus non enim laoreet, euismod mauris vel, vulputate est.</p>
-  <p>Vivamus porta massa at nulla eleifend, a pellentesque eros dictum. Nam finibus nibh purus, in placerat nulla elementum at. Integer quis est condimentum, tempor mi ac, dapibus ante. Pellentesque fringilla hendrerit est, ut ultricies orci condimentum viverra. Aliquam a lacus consequat dolor vestibulum euismod eget quis ipsum. Pellentesque viverra, libero sed euismod consectetur, turpis nulla tristique massa, vel ultricies massa arcu sit amet mauris. Donec aliquet tortor ante, ut pulvinar odio gravida et. Proin laoreet et elit at tempus. In aliquam erat lacus, in volutpat neque faucibus a.</p>
-</div>
-
 <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-navigation-secondary/rh-navigation-secondary-lightdom.css">
-
-<style>
-  #navigation-secondary-demo {
-    padding: 0;
-  }
-
-  /* content space-holder that allows for overflow */
-  #space-holder {
-    min-height: 101vh;
-    padding: var(--_text-padding, var(--rh-space-lg, 16px));
-    @media screen and (min-width: 768px) {
-      --_text-padding: var(--rh-space-2xl, 32px);
-    }
-    @media screen and (min-width: 1440px) {
-      --_text-padding: var(--rh-space-4xl, 64px);
-    }
-  }
-</style>
 
 <script type="module">
   import '@rhds/elements/rh-navigation-secondary/rh-navigation-secondary.js';

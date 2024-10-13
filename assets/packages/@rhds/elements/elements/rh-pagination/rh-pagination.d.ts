@@ -20,9 +20,7 @@ import { LitElement } from 'lit';
 export declare class RhPagination extends LitElement {
     #private;
     static readonly version = "{{version}}";
-    /**
-     * Sets color theme based on parent context
-     */
+    /** Sets color theme based on parent context */
     private on?;
     static readonly styles: CSSStyleSheet[];
     /**

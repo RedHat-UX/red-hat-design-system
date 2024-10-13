@@ -60,7 +60,7 @@ export class UxdotExample extends LitElement {
     return html`
       <div id="container"
            part="container"
-           class="on ${classMap({ [on]: !!on })}"
+           class="on ${classMap({ [on]: !!on, widthAdjustment: widthAdjustment !== '100%' })}"
            style="--_width: ${widthAdjustment}; --_alignment: ${alignment}">
         <slot></slot>
       </div>

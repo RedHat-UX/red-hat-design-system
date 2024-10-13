@@ -2,7 +2,7 @@ import { LitElement } from 'lit';
 import { type ColorPalette } from '../../lib/context/color/provider.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
 /**
- * A blockquote for displaying quote, author, and author title.
+ * A blockquote is a styled quotation and citation offset from other text styles on the page.
  *
  * @summary  Highlights quotations and citations with text styles
  *
