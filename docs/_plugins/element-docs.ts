@@ -187,7 +187,7 @@ async function getDocsPageData(
 
 /** @param  eleventyConfig */
 export default function(eleventyConfig: UserConfig) {
-  eleventyConfig.addCollection('elementDocs', async function(api) {
+  eleventyConfig.addCollection('elementDocs', async function() {
     try {
       const docFilePaths = await Array.fromAsync(glob(`elements/*/docs/*.md`, { cwd }));
       // TODO: adding the code file in the next line is a temporary hack to add in a virtual

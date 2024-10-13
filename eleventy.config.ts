@@ -272,4 +272,6 @@ export class Renderer {
   declare highlight: (lang: string, content: string) => string;
   declare dedent: (str: string) => string;
   declare slugify: (str: string) => string;
+  declare deslugify: (str: string) => string;
+  declare getTagNameSlug: (str: string) => string
 }

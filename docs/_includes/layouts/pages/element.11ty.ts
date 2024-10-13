@@ -107,7 +107,7 @@ export default class ElementsPage {
       : isDemoPage ? await this.#renderDemos(ctx)
       : content}
 
-      ${await this.renderFile('./docs/_includes/partials/component/feedback.11ty.cjs', ctx)}
+      ${await this.renderFile('./docs/_includes/partials/component/feedback.11ty.ts', ctx)}
     `;
   }
 

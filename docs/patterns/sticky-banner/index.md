@@ -271,4 +271,4 @@ section.
 {% spacerTokensTable headingLevel="4", tokens=spacerTokens %}{% endspacerTokensTable %}
 </rh-table>
 
-{% renderFile './docs/_includes/partials/component/feedback.11ty.cjs' %}
+{% renderFile './docs/_includes/partials/component/feedback.11ty.ts' %}

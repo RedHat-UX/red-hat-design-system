@@ -227,7 +227,7 @@ palette, e.g. from `lightest` to `light`.
      visual tension.</p>
 </rh-alert>
 
-{% renderFile './docs/_includes/partials/component/feedback.11ty.cjs' %}
+{% renderFile './docs/_includes/partials/component/feedback.11ty.ts' %}
 
 [^1]: As the web platform [improves][wpt], the <abbr>RHDS</abbr> authors expect that eventually no JavaScript will be required for this feature.
 

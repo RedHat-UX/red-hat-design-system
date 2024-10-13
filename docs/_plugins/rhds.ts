@@ -16,7 +16,7 @@ import RHDSShortcodesPlugin from './shortcodes.js';
 import RHDSElementDocsPlugin from './element-docs.ts';
 import RHDSElementDemosPlugin from './element-demos.js';
 
-import { getPfeConfig, type PfeConfig } from '@patternfly/pfe-tools/config.js';
+import { getPfeConfig } from '@patternfly/pfe-tools/config.js';
 import { UserConfig } from '@11ty/eleventy';
 
 const exec = promisify(ChildProcess.exec);
@@ -28,12 +28,13 @@ const cwd = process.cwd();
  * inputPath the path to the page's input file (e.g. template or paginator)
  */
 
+const pfeconfig = getPfeConfig();
+
 /**
  * @param  tagName e.g. pf-jazz-hands
- * @param  config pfe tools repo config
  */
-function getTagNameSlug(tagName: string, config: PfeConfig) {
-  const name = config?.aliases?.[tagName] ?? tagName.replace(`${config?.tagPrefix ?? 'rh'}-`, '');
+function getTagNameSlug(tagName: string) {
+  const name = pfeconfig?.aliases?.[tagName] ?? tagName.replace(`${pfeconfig?.tagPrefix ?? 'rh'}-`, '');
   return slugify(name, {
     strict: true,
     lower: true,
@@ -72,7 +73,7 @@ function getFilesToCopy() {
 
   // Copy all component and core files to _site
   return Object.fromEntries(tagNames.flatMap(tagName => {
-    const slug = getTagNameSlug(tagName, config);
+    const slug = getTagNameSlug(tagName);
     return Object.entries({
       [`elements/${tagName}/demo/`]: `elements/${slug}/demo`,
       [`elements/${tagName}/docs/**/*.{${COPY_CONTENT_EXTENSIONS.join(',')}}`]: `elements/${slug}`,
@@ -117,8 +118,7 @@ export default function(eleventyConfig: UserConfig, { tagsToAlphabetize }: Optio
   eleventyConfig.addJavaScriptFunction('getTagNameSlug', getTagNameSlug);
 
   eleventyConfig.addFilter('getPrettyElementName', function(tagName) {
-    const pfeconfig = getPfeConfig();
-    const slug = getTagNameSlug(tagName, pfeconfig);
+    const slug = getTagNameSlug(tagName);
     const deslugify = eleventyConfig.getFilter('deslugify');
     return pfeconfig.aliases[tagName] || deslugify(slug);
   });

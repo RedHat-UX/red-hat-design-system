@@ -180,4 +180,4 @@ with this case</rh-alert>
   </uxdot-best-practice>
 </div>
 
-{% renderFile './docs/_includes/partials/component/feedback.11ty.cjs' %}
+{% renderFile './docs/_includes/partials/component/feedback.11ty.ts' %}

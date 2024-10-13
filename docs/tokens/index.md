@@ -232,4 +232,4 @@ different audience or brand requirements.
 [typography]: /tokens/typography/
 [contact]: mailto:design-system@redhat.com
 
-{% renderFile './docs/_includes/partials/component/feedback.11ty.cjs' %}
+{% renderFile './docs/_includes/partials/component/feedback.11ty.ts' %}

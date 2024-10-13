@@ -76,4 +76,4 @@ tags:
 To request a new foundation or if updates need to be made to an existing
 foundation, [contact us](mailto:digital-design-system@redhat.com).
 
-{% renderFile './docs/_includes/partials/component/feedback.11ty.cjs' %}
+{% renderFile './docs/_includes/partials/component/feedback.11ty.ts' %}

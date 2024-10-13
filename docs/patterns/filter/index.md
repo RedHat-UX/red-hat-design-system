@@ -291,4 +291,4 @@ values between elements.
 {% spacerTokensTable headingLevel="4", tokens="--rh-space-xs, --rh-space-sm,--rh-space-lg, --rh-space-xl" %}{% endspacerTokensTable %}
 </rh-table>
 
-{% renderFile './docs/_includes/partials/component/feedback.11ty.cjs' %}
+{% renderFile './docs/_includes/partials/component/feedback.11ty.ts' %}

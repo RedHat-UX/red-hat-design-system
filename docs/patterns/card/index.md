@@ -80,7 +80,7 @@ the colors used meet [color contrast guidelines][color-contrast].
 <uxdot-pattern src="./patterns/custom-themes.html">
 </uxdot-pattern>
 
-{% renderFile './docs/_includes/partials/component/feedback.11ty.cjs' %}
+{% renderFile './docs/_includes/partials/component/feedback.11ty.ts' %}
 
 [element]: /elements/card
 [css-props]: /elements/card/code/#css-custom-properties

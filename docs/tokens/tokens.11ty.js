@@ -420,7 +420,7 @@ export default class TokensPage {
         import '@rhds/elements/rh-table/rh-table.js';
       </script>
       ${await this.#renderCategory({ tokens, name, path, slug, level: 1, exclude, include, seenPaths })}
-      ${await this.renderFile('./docs/_includes/partials/component/feedback.11ty.cjs', ctx)}
+      ${await this.renderFile('./docs/_includes/partials/component/feedback.11ty.ts', ctx)}
     `;
   }
 };
