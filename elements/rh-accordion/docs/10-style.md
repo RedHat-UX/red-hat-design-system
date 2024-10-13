@@ -1,3 +1,7 @@
+<script type="module" data-helmet>
+  import '@uxdot/elements/uxdot-spacer-tokens-table.js';
+</script>
+
 ## Style
 
 Accordion panels include title text, a chevron icon, body text, and other 
@@ -144,9 +148,9 @@ an element or pattern.
 
 <rh-table>
 
-| Property             | Light theme | Dark theme |
-|----------------------|-------------|------------|
-| Color - panel header | \#F2F2F2    | \#292929   |
+| Property             | Light theme                       | Dark theme                    |
+| -------------------- | --------------------------------- | ----------------------------- |
+| Color - panel header | `--rh-color-surface-dark-lighter` | `--rh-color-surface-dark-alt` |
 
 </rh-table>
 
@@ -168,10 +172,10 @@ an element or pattern.
 
 <rh-table>
 
-| Property             | Light theme | Dark theme |
-|----------------------|-------------|------------|
-| Color - panel header | \#F2F2F2    | \#292929   |
-| Color - focus ring   | \#0066CC    | \#73BCF7   |
+| Property             | Light theme                           | Dark theme                            |
+| -------------------- | ------------------------------------- | ------------------------------------- |
+| Color - panel header | `--rh-color-surface-dark-lighter`     | `--rh-color-surface-dark-alt`         |
+| Color - focus ring   | `--rh-color-interative-primary-focus` | `--rh-color-interative-primary-focus` |
 
 </rh-table>
 
@@ -193,8 +197,8 @@ an element or pattern.
 
 <rh-table>
 
-| Property             | Light theme | Dark theme |
-|----------------------|-------------|------------|
-| Color - panel header | \#F2F2F2    | \#292929   |
+| Property             | Light theme                       | Dark theme                    |
+| -------------------- | --------------------------------- | ----------------------------- |
+| Color - panel header | `--rh-color-surface-dark-lighter` | `--rh-color-surface-dark-alt` |
 
 </rh-table>
