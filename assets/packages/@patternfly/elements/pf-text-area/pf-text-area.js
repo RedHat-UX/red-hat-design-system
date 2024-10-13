@@ -104,7 +104,7 @@ PfTextArea.shadowRootOptions = {
     ...LitElement.shadowRootOptions,
     delegatesFocus: true,
 };
-PfTextArea.version = "4.0.1";
+PfTextArea.version = "4.0.2";
 __decorate([
     property({ reflect: true, attribute: 'accessible-label' })
 ], PfTextArea.prototype, "accessibleLabel", void 0);

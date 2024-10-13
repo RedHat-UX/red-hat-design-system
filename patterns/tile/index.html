@@ -54,7 +54,7 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.2/core.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.4/core.js",
     "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
@@ -73,6 +73,7 @@
     "@patternfly/elements/": "/assets/packages/@patternfly/elements/",
     "@patternfly/icons/": "/assets/packages/@patternfly/icons/",
     "@patternfly/pfe-core/": "/assets/packages/@patternfly/pfe-core/",
+    "@uxdot/elements/": "/assets/javascript/elements/",
     "playground-elements": "https://cdn.jsdelivr.net/npm/playground-elements@0.18.1/+esm"
   },
   "scopes": {
@@ -106,9 +107,9 @@
 
   
   <script type="module">
-    import '/assets/javascript/elements/uxdot-copy-permalink.js';
-    import '/assets/javascript/elements/uxdot-sidenav.js';
-    import '/assets/javascript/elements/uxdot-example.js';
+    import '@uxdot/elements/uxdot-copy-permalink.js';
+    import '@uxdot/elements/uxdot-sidenav.js';
+    import '@uxdot/elements/uxdot-example.js';
   </script>
 
   <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.0/dist/es-module-shims.js"></script>
@@ -121,16 +122,16 @@
   import '@rhds/elements/rh-subnav/rh-subnav.js';
   import '@rhds/elements/rh-surface/rh-surface.js';
   import '@rhds/elements/rh-code-block/rh-code-block.js';
-  import "/assets/javascript/elements/uxdot-pattern.js";
+  import "@uxdot/elements/uxdot-pattern.js";
 </script><link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css"><link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css"><link rel="stylesheet" href="/styles/samp.css"><script type="module">
-  import '/assets/javascript/elements/uxdot-pattern.js';
+  import '@uxdot/elements/uxdot-pattern.js';
   import '@rhds/elements/rh-alert/rh-alert.js';
 </script><script type="module">
-  import '/assets/javascript/elements/uxdot-header.js';
+  import '@uxdot/elements/uxdot-header.js';
 </script><script type="module">
   import '@rhds/elements/rh-subnav/rh-subnav.js';
 </script><link rel="stylesheet" href="/styles/pages/backpage.css"><link rel="stylesheet" href="/assets/javascript/elements/uxdot-toc-lightdom.css"><script type="module">
-  import '/assets/javascript/elements/uxdot-toc.js';
+  import '@uxdot/elements/uxdot-toc.js';
 </script><script type="module">
   import '@rhds/elements/rh-footer/rh-footer-universal.js';
   import '@rhds/elements/rh-footer/rh-footer-copyright.js';
@@ -776,11 +777,6 @@
 
 
 
-
-
-
-
-
 <uxdot-header  has-subnav color-palette="lighter"><template shadowroot="open" shadowrootmode="open"><style>:host{--_uxdot-header-padding:var(--rh-space-2xl);display:block;container-type:inline-size;container-name:header;background-color:var(--rh-color-surface)}@container (min-width: 768px){:host{--_uxdot-header-padding:var(--rh-space-3xl)}}@container (min-width: 992px){:host{--_uxdot-header-padding:var(--rh-space-6xl)}}#container{display:block;max-width:1140px;padding-block-start:var(--_uxdot-header-padding,);padding-inline:var(--_uxdot-header-padding)}#container.hasSearch{display:grid;grid-template-columns:1fr;grid-template-areas:"heading" "search";gap:var(--rh-space-2xl)}#container:not(.hasSubnav){padding-block-end:var(--_uxdot-header-padding)}@container header (min-width: 992px){#container.hasSearch{grid-template-columns:1fr 1fr;grid-template-areas:"heading search"}}[part=heading]{grid-area:heading}::slotted([slot=search]){grid-area:search;display:flex;flex-direction:column;justify-content:space-around}::slotted(h1){font-family:var(--uxdot-heading-font-family,var(--rh-font-family-heading))!important;font-size:var(--uxdot-heading-heading-size,var(--rh-font-size-heading-2xl))!important;font-weight:var(--uxdot-heading-font-weight,var(--rh-font-weight-heading-regular))!important;line-height:var(--uxdot-heading-line-height,var(--rh-line-height-heading))!important;margin:0!important}::slotted([slot=subnav]){margin-block-start:var(--rh-space-2xl);padding-inline:calc(var(--_uxdot-header-padding) - var(--rh-space-2xl))}
 :host([color-palette^="dark"]) { --context: dark; }
 :host([color-palette^="light"]) { --context: light; }
@@ -816,7 +812,12 @@
   </h1>
   
   
-  <rh-subnav slot="subnav" accessible-label="Tile">
+  <rh-subnav   slot="subnav" accessible-label="Tile" color-palette="lighter"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}[part=container]{display:flex;background-color:var(--rh-color-surface);--_subnav-link-text-color:var(--rh-color-text-secondary);--_subnav-link-hover-text-color:var(--rh-color-text-primary);--_subnav-link-hover-border-end-color:var(--rh-color-border-subtle);--_subnav-link-active-border-end-color:var(--rh-color-accent-brand);--_subnav-link-visited-text-color:var(--rh-color-text-secondary);--_subnav-link-focus-outline-color:var(--rh-color-border-interactive);--_subnav-next-prev-button-text-color:var(--rh-color-text-secondary);--_subnav-next-prev-disabled-text-color:var(--rh-color-border-subtle);--_subnav-next-prev-hover-text-color:var(--rh-color-text-primary);--_subnav-next-prev-border-color:var(--rh-color-border-subtle)}[part=links]{display:flex;position:relative;bottom:0;overflow-x:auto;scrollbar-width:none;max-width:100%}::slotted(a){display:block!important;white-space:nowrap!important;padding:var(--rh-space-lg,16px) var(--rh-space-2xl,32px)!important;text-decoration:none!important;color:var(--_subnav-link-text-color,var(--rh-color-text-secondary))!important;position:relative!important}::slotted(a):after{content:""!important;position:absolute!important;inset:0!important;width:100%!important;border-block-end:var(--rh-border-width-lg,3px) solid #0000!important}::slotted(a:active),::slotted(a:hover),::slotted(a[active]){color:var(--_subnav-link-hover-text-color,var(--rh-color-text-secondary))!important}::slotted(a:hover):after{border-block-end-color:var(--_subnav-link-hover-border-end-color,var(--rh-color-border-subtle))!important}::slotted(a:active):after,::slotted(a[active]):after{border-block-end-color:var(--_subnav-link-active-border-end-color,var(--rh-color-accent-brand))!important}::slotted(a:focus-visible){outline:var(--rh-border-width-md,2px) solid var(--_subnav-link-focus-outline-color,var(--rh-color-interactive-primary-default))!important;outline-offset:-8px!important;border-radius:10px!important}::slotted(a:visited){color:var(--_subnav-link-visited-text-color,var(--rh-color-text-primary))!important}button{position:relative;padding:0 var(--rh-space-lg,16px);margin:0;background-color:initial;border:none;color:var(--_subnav-next-prev-button-text-color,var(--rh-color-text-secondary))}button:disabled{pointer-events:none;color:var(--_subnav-next-prev-disabled-text-color,var(--rh-color-gray-10,#f2f2f2))}button:hover{color:var(--_subnav-next-prev-hover-text-color,var(--rh-color-text-primary))}button:before{position:absolute;inset:0;content:"";border-block-end:var(--rh-border-width-lg,3px) solid #0000}button:hover:before{border-block-end-color:var(--_subnav-link-hover-border-end-color)}#previous{border-inline-end:var(--rh-border-width-sm,1px) solid var(--_subnav-next-prev-border-color,var(--rh-color-border-subtle))}#next{border-inline-start:var(--rh-border-width-sm,1px) solid var(--_subnav-next-prev-border-color,var(--rh-color-border-subtle))}</style><!--lit-part JjqcvvneScE=-->
+      <!--lit-node 0--><nav part="container" aria-label="Tile" class="  "><!--lit-part--><!--/lit-part-->
+        <!--lit-node 2--><slot part="links"
+              ></slot><!--lit-part--><!--/lit-part-->
+      </nav>
+    <!--/lit-part--></template>
   <a href="/patterns/tile/" active="">Overview</a><a href="/patterns/tile/examples/">Examples</a></rh-subnav>
   
 </uxdot-header>

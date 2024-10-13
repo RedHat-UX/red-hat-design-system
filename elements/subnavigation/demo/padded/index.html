@@ -32,7 +32,7 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.2/core.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.4/core.js",
     "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
@@ -51,6 +51,7 @@
     "@patternfly/elements/": "/assets/packages/@patternfly/elements/",
     "@patternfly/icons/": "/assets/packages/@patternfly/icons/",
     "@patternfly/pfe-core/": "/assets/packages/@patternfly/pfe-core/",
+    "@uxdot/elements/": "/assets/javascript/elements/",
     "playground-elements": "https://cdn.jsdelivr.net/npm/playground-elements@0.18.1/+esm"
   },
   "scopes": {
@@ -83,7 +84,12 @@
   <body unresolved="">
     <main><h2>In a container with padding</h2>
 <div class="padded">
-  <rh-subnav>
+  <rh-subnav color-palette="lighter"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}[part=container]{display:flex;background-color:var(--rh-color-surface);--_subnav-link-text-color:var(--rh-color-text-secondary);--_subnav-link-hover-text-color:var(--rh-color-text-primary);--_subnav-link-hover-border-end-color:var(--rh-color-border-subtle);--_subnav-link-active-border-end-color:var(--rh-color-accent-brand);--_subnav-link-visited-text-color:var(--rh-color-text-secondary);--_subnav-link-focus-outline-color:var(--rh-color-border-interactive);--_subnav-next-prev-button-text-color:var(--rh-color-text-secondary);--_subnav-next-prev-disabled-text-color:var(--rh-color-border-subtle);--_subnav-next-prev-hover-text-color:var(--rh-color-text-primary);--_subnav-next-prev-border-color:var(--rh-color-border-subtle)}[part=links]{display:flex;position:relative;bottom:0;overflow-x:auto;scrollbar-width:none;max-width:100%}::slotted(a){display:block!important;white-space:nowrap!important;padding:var(--rh-space-lg,16px) var(--rh-space-2xl,32px)!important;text-decoration:none!important;color:var(--_subnav-link-text-color,var(--rh-color-text-secondary))!important;position:relative!important}::slotted(a):after{content:""!important;position:absolute!important;inset:0!important;width:100%!important;border-block-end:var(--rh-border-width-lg,3px) solid #0000!important}::slotted(a:active),::slotted(a:hover),::slotted(a[active]){color:var(--_subnav-link-hover-text-color,var(--rh-color-text-secondary))!important}::slotted(a:hover):after{border-block-end-color:var(--_subnav-link-hover-border-end-color,var(--rh-color-border-subtle))!important}::slotted(a:active):after,::slotted(a[active]):after{border-block-end-color:var(--_subnav-link-active-border-end-color,var(--rh-color-accent-brand))!important}::slotted(a:focus-visible){outline:var(--rh-border-width-md,2px) solid var(--_subnav-link-focus-outline-color,var(--rh-color-interactive-primary-default))!important;outline-offset:-8px!important;border-radius:10px!important}::slotted(a:visited){color:var(--_subnav-link-visited-text-color,var(--rh-color-text-primary))!important}button{position:relative;padding:0 var(--rh-space-lg,16px);margin:0;background-color:initial;border:none;color:var(--_subnav-next-prev-button-text-color,var(--rh-color-text-secondary))}button:disabled{pointer-events:none;color:var(--_subnav-next-prev-disabled-text-color,var(--rh-color-gray-10,#f2f2f2))}button:hover{color:var(--_subnav-next-prev-hover-text-color,var(--rh-color-text-primary))}button:before{position:absolute;inset:0;content:"";border-block-end:var(--rh-border-width-lg,3px) solid #0000}button:hover:before{border-block-end-color:var(--_subnav-link-hover-border-end-color)}#previous{border-inline-end:var(--rh-border-width-sm,1px) solid var(--_subnav-next-prev-border-color,var(--rh-color-border-subtle))}#next{border-inline-start:var(--rh-border-width-sm,1px) solid var(--_subnav-next-prev-border-color,var(--rh-color-border-subtle))}</style><!--lit-part JjqcvvneScE=-->
+      <!--lit-node 0--><nav part="container" aria-label="subnavigation" class="  "><!--lit-part--><!--/lit-part-->
+        <!--lit-node 2--><slot part="links"
+              ></slot><!--lit-part--><!--/lit-part-->
+      </nav>
+    <!--/lit-part--></template>
     <a href="#">Users</a>
     <a href="#">Containers</a>
     <a href="#">Databases</a>

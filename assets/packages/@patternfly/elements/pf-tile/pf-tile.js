@@ -26,7 +26,7 @@ let PfTile = class PfTile extends LitElement {
     }
 };
 PfTile.styles = [styles];
-PfTile.version = "4.0.1";
+PfTile.version = "4.0.2";
 __decorate([
     property({ reflect: true, type: Boolean })
 ], PfTile.prototype, "selected", void 0);

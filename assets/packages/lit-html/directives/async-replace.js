@@ -1,7 +1,7 @@
-import{noChange as R}from"../lit-html.js";import{AsyncDirective as $t}from"../async-directive.js";import{PseudoWeakRef as Tt,Pauser as Et,forAwaitOf as ti}from"./private-async-helpers.js";import{directive as e}from"../directive.js";
+import{noChange as t}from"../lit-html.js";import{AsyncDirective as i}from"../async-directive.js";import{PseudoWeakRef as s,Pauser as r,forAwaitOf as e}from"./private-async-helpers.js";import{directive as n}from"../directive.js";
 /**
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
- */class kt extends $t{constructor(){super(...arguments),this.K=new Tt(this),this.X=new Et}render(t,i){return R}update(t,[i,s]){if(this.isConnected||this.disconnected(),i===this.J)return R;this.J=i;let r=0;const{K:e,X:n}=this;return ti(i,(async t=>{for(;n.get();)await n.get();const o=e.deref();if(void 0!==o){if(o.J!==i)return!1;void 0!==s&&(t=s(t,r)),o.commitValue(t,r),r++}return!0})),R}commitValue(t,i){this.setValue(t)}disconnected(){this.K.disconnect(),this.X.pause()}reconnected(){this.K.reconnect(this),this.X.resume()}}const Ot=e(kt);export{kt as AsyncReplaceDirective,Ot as asyncReplace};
+ */class o extends i{constructor(){super(...arguments),this._$CK=new s(this),this._$CX=new r}render(i,s){return t}update(i,[s,r]){if(this.isConnected||this.disconnected(),s===this._$CJ)return t;this._$CJ=s;let n=0;const{_$CK:o,_$CX:h}=this;return e(s,(async t=>{for(;h.get();)await h.get();const i=o.deref();if(void 0!==i){if(i._$CJ!==s)return!1;void 0!==r&&(t=r(t,n)),i.commitValue(t,n),n++}return!0})),t}commitValue(t,i){this.setValue(t)}disconnected(){this._$CK.disconnect(),this._$CX.pause()}reconnected(){this._$CK.reconnect(this),this._$CX.resume()}}const h=n(o);export{o as AsyncReplaceDirective,h as asyncReplace};
 //# sourceMappingURL=async-replace.js.map

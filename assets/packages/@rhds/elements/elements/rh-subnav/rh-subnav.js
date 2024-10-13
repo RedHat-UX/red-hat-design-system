@@ -1,7 +1,7 @@
 var _RhSubnav_instances, _RhSubnav_allLinkElements, _RhSubnav_overflow, _RhSubnav_allLinks_get, _RhSubnav_allLinks_set, _RhSubnav_firstLink_get, _RhSubnav_lastLink_get, _RhSubnav_onSlotchange, _RhSubnav_firstLastClasses, _RhSubnav_scrollLeft, _RhSubnav_scrollRight;
 var RhSubnav_1;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { query } from 'lit/decorators/query.js';
@@ -115,7 +115,7 @@ RhSubnav.scrollIconSet = 'ui';
 RhSubnav.instances = new Set();
 (() => {
     // on resize check for overflows to add or remove scroll buttons
-    globalThis.addEventListener('resize', () => {
+    !isServer && globalThis.addEventListener('resize', () => {
         // this appears to be an eslint bug.
         // `this` should refer to the class, but in the minified bundle, it is void
         const { instances } = RhSubnav_1;

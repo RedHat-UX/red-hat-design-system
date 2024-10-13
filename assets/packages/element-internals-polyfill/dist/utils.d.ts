@@ -98,7 +98,7 @@ export declare const throwIfNotFormAssociated: (ref: ICustomElement, message: st
  * @param method {'checkValidity'|'reportValidity'} - The original method
  * @returns {boolean} The form's validity state
  */
-export declare const overrideFormMethod: (form: HTMLFormElement, returnValue: boolean, method: 'checkValidity' | 'reportValidity') => boolean;
+export declare const overrideFormMethod: (form: HTMLFormElement, returnValue: boolean, method: "checkValidity" | "reportValidity") => boolean;
 /**
  * Will upgrade an ElementInternals instance by initializing the
  * instance's form and labels. This is called when the element is

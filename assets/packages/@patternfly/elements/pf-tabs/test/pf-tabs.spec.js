@@ -160,7 +160,7 @@ describe('<pf-tabs>', function () {
                 await setViewport({ width: 100, height: 640 });
             });
             beforeEach(nextFrame);
-            beforeEach(updateComplete);
+            beforeEach(nextFrame);
             beforeEach(nextFrame);
             beforeEach(updateComplete);
             it('should have visible scroll buttons if overflowed', function () {

@@ -147,7 +147,7 @@ _PfBackToTop_addScrollListener = function _PfBackToTop_addScrollListener() {
     __classPrivateFieldGet(this, _PfBackToTop_toggleVisibility, "f").call(this);
 };
 PfBackToTop.styles = [styles];
-PfBackToTop.version = "4.0.1";
+PfBackToTop.version = "4.0.2";
 __decorate([
     property({ reflect: true })
 ], PfBackToTop.prototype, "icon", void 0);

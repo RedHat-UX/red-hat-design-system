@@ -70,7 +70,7 @@ _PfTh_onClick = function _PfTh_onClick() {
     }
 };
 PfTh.styles = [styles];
-PfTh.version = "4.0.1";
+PfTh.version = "4.0.2";
 __decorate([
     property({ type: Boolean, reflect: true })
 ], PfTh.prototype, "sortable", void 0);

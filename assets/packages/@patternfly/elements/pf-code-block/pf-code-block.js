@@ -85,7 +85,7 @@ _PfCodeBlock_toggle = function _PfCodeBlock_toggle() {
     this.expanded = !this.expanded;
 };
 PfCodeBlock.styles = [styles];
-PfCodeBlock.version = "4.0.1";
+PfCodeBlock.version = "4.0.2";
 __decorate([
     property({ type: Boolean, reflect: true })
 ], PfCodeBlock.prototype, "expanded", void 0);

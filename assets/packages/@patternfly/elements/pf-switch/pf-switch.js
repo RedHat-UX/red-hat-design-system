@@ -102,7 +102,7 @@ _PfSwitch_updateLabels = function _PfSwitch_updateLabels() {
 };
 PfSwitch.styles = [styles];
 PfSwitch.formAssociated = true;
-PfSwitch.version = "4.0.1";
+PfSwitch.version = "4.0.2";
 __decorate([
     property({ reflect: true })
 ], PfSwitch.prototype, "label", void 0);

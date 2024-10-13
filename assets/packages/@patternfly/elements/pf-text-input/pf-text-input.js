@@ -123,7 +123,7 @@ PfTextInput.shadowRootOptions = {
     ...LitElement.shadowRootOptions,
     delegatesFocus: true,
 };
-PfTextInput.version = "4.0.1";
+PfTextInput.version = "4.0.2";
 __decorate([
     property({ type: Boolean, reflect: true, attribute: 'left-truncated' })
 ], PfTextInput.prototype, "leftTruncated", void 0);

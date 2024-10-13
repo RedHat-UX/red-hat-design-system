@@ -1,4 +1,4 @@
-import '/assets/javascript/elements/uxdot-copy-button.js';
+import '@uxdot/elements/uxdot-copy-button.js';
 import '@rhds/elements/rh-card/rh-card.js';
 import { ContextChangeEvent } from '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
 

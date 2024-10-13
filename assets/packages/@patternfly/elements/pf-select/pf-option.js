@@ -101,7 +101,7 @@ let PfOption = class PfOption extends LitElement {
 _PfOption_value = new WeakMap();
 _PfOption_internals = new WeakMap();
 PfOption.styles = [styles];
-PfOption.version = "4.0.1";
+PfOption.version = "4.0.2";
 __decorate([
     property({ type: Boolean, reflect: true })
 ], PfOption.prototype, "disabled", void 0);

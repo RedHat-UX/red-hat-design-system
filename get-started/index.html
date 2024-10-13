@@ -54,7 +54,7 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.2/core.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.4/core.js",
     "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
@@ -73,6 +73,7 @@
     "@patternfly/elements/": "/assets/packages/@patternfly/elements/",
     "@patternfly/icons/": "/assets/packages/@patternfly/icons/",
     "@patternfly/pfe-core/": "/assets/packages/@patternfly/pfe-core/",
+    "@uxdot/elements/": "/assets/javascript/elements/",
     "playground-elements": "https://cdn.jsdelivr.net/npm/playground-elements@0.18.1/+esm"
   },
   "scopes": {
@@ -104,9 +105,9 @@
 
   
   <script type="module">
-    import '/assets/javascript/elements/uxdot-copy-permalink.js';
-    import '/assets/javascript/elements/uxdot-sidenav.js';
-    import '/assets/javascript/elements/uxdot-example.js';
+    import '@uxdot/elements/uxdot-copy-permalink.js';
+    import '@uxdot/elements/uxdot-sidenav.js';
+    import '@uxdot/elements/uxdot-example.js';
   </script>
 
   <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.0/dist/es-module-shims.js"></script>
@@ -123,11 +124,9 @@
     font-size: var(--rh-font-size-heading-sm, 1.5rem);
   }
 </style><script type="module">
-  import '/assets/javascript/elements/uxdot-header.js';
-</script><script type="module">
-  import '@rhds/elements/rh-subnav/rh-subnav.js';
+  import '@uxdot/elements/uxdot-header.js';
 </script><link rel="stylesheet" href="/styles/pages/backpage.css"><script type="module">
-  import "/assets/javascript/elements/uxdot-feedback.js"
+  import "@uxdot/elements/uxdot-feedback.js"
   import '@rhds/elements/rh-cta/rh-cta.js';
   import '@rhds/elements/rh-footer/rh-footer.js';
   import '@rhds/elements/rh-alert/rh-alert.js';
@@ -775,14 +774,7 @@
 
 
 
-
-
-
-
-
-
-
-<uxdot-header  has-subnav color-palette="lighter"><template shadowroot="open" shadowrootmode="open"><style>:host{--_uxdot-header-padding:var(--rh-space-2xl);display:block;container-type:inline-size;container-name:header;background-color:var(--rh-color-surface)}@container (min-width: 768px){:host{--_uxdot-header-padding:var(--rh-space-3xl)}}@container (min-width: 992px){:host{--_uxdot-header-padding:var(--rh-space-6xl)}}#container{display:block;max-width:1140px;padding-block-start:var(--_uxdot-header-padding,);padding-inline:var(--_uxdot-header-padding)}#container.hasSearch{display:grid;grid-template-columns:1fr;grid-template-areas:"heading" "search";gap:var(--rh-space-2xl)}#container:not(.hasSubnav){padding-block-end:var(--_uxdot-header-padding)}@container header (min-width: 992px){#container.hasSearch{grid-template-columns:1fr 1fr;grid-template-areas:"heading search"}}[part=heading]{grid-area:heading}::slotted([slot=search]){grid-area:search;display:flex;flex-direction:column;justify-content:space-around}::slotted(h1){font-family:var(--uxdot-heading-font-family,var(--rh-font-family-heading))!important;font-size:var(--uxdot-heading-heading-size,var(--rh-font-size-heading-2xl))!important;font-weight:var(--uxdot-heading-font-weight,var(--rh-font-weight-heading-regular))!important;line-height:var(--uxdot-heading-line-height,var(--rh-line-height-heading))!important;margin:0!important}::slotted([slot=subnav]){margin-block-start:var(--rh-space-2xl);padding-inline:calc(var(--_uxdot-header-padding) - var(--rh-space-2xl))}
+<uxdot-header color-palette="lighter"><template shadowroot="open" shadowrootmode="open"><style>:host{--_uxdot-header-padding:var(--rh-space-2xl);display:block;container-type:inline-size;container-name:header;background-color:var(--rh-color-surface)}@container (min-width: 768px){:host{--_uxdot-header-padding:var(--rh-space-3xl)}}@container (min-width: 992px){:host{--_uxdot-header-padding:var(--rh-space-6xl)}}#container{display:block;max-width:1140px;padding-block-start:var(--_uxdot-header-padding,);padding-inline:var(--_uxdot-header-padding)}#container.hasSearch{display:grid;grid-template-columns:1fr;grid-template-areas:"heading" "search";gap:var(--rh-space-2xl)}#container:not(.hasSubnav){padding-block-end:var(--_uxdot-header-padding)}@container header (min-width: 992px){#container.hasSearch{grid-template-columns:1fr 1fr;grid-template-areas:"heading search"}}[part=heading]{grid-area:heading}::slotted([slot=search]){grid-area:search;display:flex;flex-direction:column;justify-content:space-around}::slotted(h1){font-family:var(--uxdot-heading-font-family,var(--rh-font-family-heading))!important;font-size:var(--uxdot-heading-heading-size,var(--rh-font-size-heading-2xl))!important;font-weight:var(--uxdot-heading-font-weight,var(--rh-font-weight-heading-regular))!important;line-height:var(--uxdot-heading-line-height,var(--rh-line-height-heading))!important;margin:0!important}::slotted([slot=subnav]){margin-block-start:var(--rh-space-2xl);padding-inline:calc(var(--_uxdot-header-padding) - var(--rh-space-2xl))}
 :host([color-palette^="dark"]) { --context: dark; }
 :host([color-palette^="light"]) { --context: light; }
 
@@ -806,7 +798,7 @@
 }</style><!--lit-part 65SaaoC+s1Q=-->
       <!--lit-node 0--><div id="container"
            part="container"
-           class=" hasSubnav ">
+           class="  ">
         <slot part="heading"></slot>
         <slot name="search" part="search"></slot>
       </div>
@@ -816,9 +808,6 @@
     
   </h1>
   
-  
-  <rh-subnav slot="subnav" accessible-label="">
-  </rh-subnav>
   
 </uxdot-header>
 

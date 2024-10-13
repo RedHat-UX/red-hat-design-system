@@ -1402,7 +1402,7 @@ const polyfillSupport = global.litHtmlPolyfillSupportDevMode
 polyfillSupport?.(Template, ChildPart);
 // IMPORTANT: do not change the property name or the assignment expression.
 // This line will be used in regexes to search for lit-html usage.
-(global.litHtmlVersions ??= []).push('3.2.0');
+(global.litHtmlVersions ??= []).push('3.2.1');
 if (global.litHtmlVersions.length > 1) {
     issueWarning('multiple-versions', `Multiple versions of Lit loaded. ` +
         `Loading multiple versions is not recommended.`);
