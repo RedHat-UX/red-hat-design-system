@@ -16,6 +16,11 @@ import './uxdot-copy-button.js';
 
 import styles from './uxdot-spacer-tokens-table.css';
 
+const assignBasename = (token: DesignToken) => ({
+  ...token,
+  baseName: token.name.replace(/^(--)?rh-space-/, ''),
+});
+
 /**
  * Reads token data from @rhds/tokens and outputs a table for specified tokens
  */
@@ -35,8 +40,8 @@ export class UxdotSpacerTokensTable extends LitElement {
   render() {
     const metaData = this.tokens
         .map(token => `--rh-space-${token.trim()}`.replace('--rh-space---rh-space-', ''))
-        .filter(Boolean)
-        .map(x => metaTokens.get(x as `--rh-${string}`));
+        .map(x => metaTokens.get(x as `--rh-${string}`))
+        .filter(Boolean);
 
     // TODO: remove lightdom after implementing auto-load
     return html`
@@ -53,7 +58,7 @@ export class UxdotSpacerTokensTable extends LitElement {
             </tr>
           </thead>
           <tbody>${metaData
-              .map(token => ({ ...token, baseName: token.name.replace(/^(--)?rh-space-/, '') }))
+              .map(assignBasename)
               .map(token => html`
             <tr>
               <td data-label="Example">
