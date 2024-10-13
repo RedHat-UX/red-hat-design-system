@@ -17,19 +17,19 @@ websites.
         height="796">
   </uxdot-example>
   <figcaption>
-    <ol>
-      <li>Website logo</li>
-      <li>Social media links</li>
-      <li>Divider line</li>
-      <li>Navigation title</li>
-      <li>Navigation link</li>
-      <li>Body text</li>
-      <li>Call to action</li>
-      <li>Language selector</li>
-      <li>Website-specific footer</li>
-      <li>redhat.com link</li>
-      <li>Universal footer</li>
-    </ol>
+
+1.  Website logo
+2.  Social media links
+3.  Divider line
+4.  Navigation title
+5.  Navigation link
+6.  Body text
+7.  Call to action
+8.  Language selector
+9.  Website-specific footer
+10. redhat.com link
+11. Universal footer
+
   </figcaption>
 </figure>
 
@@ -63,80 +63,32 @@ theme.
 ### Website-specific footer 
 
 <rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Property">Property</th>
-        <th scope="col" data-label="Current value">Current value</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Property">Color - social media icons</td>
-        <td data-label="Current value">#A3A3A3</td>
-      </tr>
-      <tr>
-        <td data-label="Property">Color - divider lines</td>
-        <td data-label="Current value">#707070</td>
-      </tr>
-      <tr>
-        <td data-label="Property">Border width - divider lines</td>
-        <td data-label="Current value">1px<br>0.0625rem</td>
-      </tr>
-      <tr>
-        <td data-label="Property">Color - titles and link text</td>
-        <td data-label="Current value">#FFFFFF</td>
-      </tr>
-      <tr>
-        <td data-label="Property">Color - body text</td>
-        <td data-label="Current value">#C7C7C7</td>
-      </tr>
-      <tr>
-        <td data-label="Property">Color - call to action</td>
-        <td data-label="Current value">#73BCF7</td>
-      </tr>
-      <tr>
-        <td data-label="Property">Color - language selector icons and text</td>
-        <td data-label="Current value">#C7C7C7</td>
-      </tr>
-      <tr>
-        <td data-label="Property">Color - background</td>
-        <td data-label="Current value">#292929</td>
-      </tr>
-    </tbody>
-  </table>
+
+| Property                                 | Token or value                |
+| ---------------------------------------- | ----------------------------- |
+| Color - social media icons               | `--rh-color-gray-40`          |
+| Color - divider lines                    | `--rh-color-gray-50`          |
+| Border width - divider lines             | `--rh-border-width-sm`        |
+| Color - titles and link text             | `--rh-color-white`            |
+| Color - body text                        | `--rh-color-gray-30`          |
+| Color - call to action                   | \#73BCF7                      |
+| Color - language selector icons and text | `--rh-color-gray-30`          |
+| Color - background                       | `--rh-color-surface-dark-alt` |
+
 </rh-table>
 
 
 ### Universal footer 
 
 <rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Property">Property</th>
-        <th scope="col" data-label="Current value">Current value</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Property">Color - social media icons</td>
-        <td data-label="Current value">#A3A3A3</td>
-      </tr>
-      <tr>
-        <td data-label="Property">Color - link text</td>
-        <td data-label="Current value">#FFFFFF</td>
-      </tr>
-      <tr>
-        <td data-label="Property">Color - body text</td>
-        <td data-label="Current value">#C7C7C7</td>
-      </tr>
-      <tr>
-        <td data-label="Property">Color - background</td>
-        <td data-label="Current value">#151515</td>
-      </tr>
-    </tbody>
-  </table>
+
+| Property                   | Current value                |
+| -------------------------- | ---------------------------- |
+| Color - social media icons | `--rh-color-gray-40`         |
+| Color - link text          | `--rh-color-white`           |
+| Color - body text          | `--rh-color-gray-30`         |
+| Color - background         | `--rh-color-surface-darkest` |
+
 </rh-table>
 
 
@@ -150,32 +102,14 @@ theme.
 </uxdot-example>
 
 <rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Property">Property</th>
-        <th scope="col" data-label="Current value">Current value</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Property">Color - link text</td>
-        <td data-label="Current value">#FFFFFF</td>
-      </tr>
-      <tr>
-        <td data-label="Property">Color - menu border</td>
-        <td data-label="Current value">#707070</td>
-      </tr>
-      <tr>
-        <td data-label="Property">Color - menu surface</td>
-        <td data-label="Current value">#151515</td>
-      </tr>
-      <tr>
-        <td data-label="Property">Border radius - menu surface</td>
-        <td data-label="Current value">8px<br>0.5rem</td>
-      </tr>
-    </tbody>
-  </table>
+
+| Property                     | Token or value               |
+| ---------------------------- | ---------------------------- |
+| Color - link text            | `--rh-color-white`           |
+| Color - menu border          | `--rh-color-gray-50`         |
+| Color - menu surface         | `--rh-color-surface-darkest` |
+| Border radius - menu surface | 8px 0.5rem                   |
+
 </rh-table>
 
 
@@ -244,36 +178,15 @@ maintain consistency.
 </uxdot-example>
 
 <rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Property">Property</th>
-        <th scope="col" data-label="Light theme">Light theme</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Property">Color - social media icons</td>
-        <td data-label="Light theme">#C7C7C7</td>
-      </tr>
-      <tr>
-        <td data-label="Property">Text decoration - link text</td>
-        <td data-label="Light theme">Underline</td>
-      </tr>
-      <tr>
-        <td data-label="Property">Color - call to action</td>
-        <td data-label="Light theme">#BEE1F4</td>
-      </tr>
-      <tr>
-        <td data-label="Property">Color - language selector icons and text</td>
-        <td data-label="Light theme">#FFFFFF</td>
-      </tr>
-      <tr>
-        <td data-label="Property">Color - Red Hat fedora</td>
-        <td data-label="Light theme">#C7C7C7</td>
-      </tr>
-    </tbody>
-  </table>
+
+| Property                                 | Token or value                             |
+| ---------------------------------------- | ------------------------------------------ |
+| Color - social media icons               | `--rh-color-interactive-secondary-default` |
+| Text decoration - link text              | Underline                                  |
+| Color - call to action                   | \#BEE1F4                                   |
+| Color - language selector icons and text | `--rh-color-white`                         |
+| Color - Red Hat fedora                   | `--rh-color-interactive-secondary-default` |
+
 </rh-table>
 
 
@@ -287,20 +200,11 @@ maintain consistency.
 </uxdot-example>
 
 <rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Property">Property</th>
-        <th scope="col" data-label="Light theme">Light theme</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Property">Text decoration - link text</td>
-        <td data-label="Light theme">Underline</td>
-      </tr>
-    </tbody>
-  </table>
+
+| Property                    | Light theme |
+|-----------------------------|-------------|
+| Text decoration - link text | Underline   |
+
 </rh-table>
 
 
@@ -319,20 +223,11 @@ maintain consistency.
 </uxdot-example>
 
 <rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Property">Property</th>
-        <th scope="col" data-label="Light theme">Light theme</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Property">Color - focus ring</td>
-        <td data-label="Light theme">#73BCF7</td>
-      </tr>
-    </tbody>
-  </table>
+
+| Property           | Light theme |
+|--------------------|-------------|
+| Color - focus ring | \#73BCF7    |
+
 </rh-table>
 
 ### Focus - language selector 
@@ -350,20 +245,11 @@ maintain consistency.
 </uxdot-example>
 
 <rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Property">Property</th>
-        <th scope="col" data-label="Light theme">Light theme</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Property">Color - focus ring</td>
-        <td data-label="Light theme">#73BCF7</td>
-      </tr>
-    </tbody>
-  </table>
+
+| Property           | Light theme |
+|--------------------|-------------|
+| Color - focus ring | \#73BCF7    |
+
 </rh-table>
 
 
@@ -382,20 +268,11 @@ maintain consistency.
 </uxdot-example>
 
 <rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Property">Property</th>
-        <th scope="col" data-label="Light theme">Light theme</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Property">Color - focus ring</td>
-        <td data-label="Light theme">#73BCF7</td>
-      </tr>
-    </tbody>
-  </table>
+
+| Property           | Light theme |
+|--------------------|-------------|
+| Color - focus ring | \#73BCF7    |
+
 </rh-table>
 
 ### Active - language selector 
@@ -413,18 +290,9 @@ maintain consistency.
 </uxdot-example>
 
 <rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Property">Property</th>
-        <th scope="col" data-label="Light theme">Light theme</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Property">Color - focus ring</td>
-        <td data-label="Light theme">#73BCF7</td>
-      </tr>
-    </tbody>
-  </table>
+
+| Property           | Light theme |
+|--------------------|-------------|
+| Color - focus ring | \#73BCF7    |
+
 </rh-table>
