@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
 
@@ -81,26 +81,30 @@ export class RhTable extends LitElement {
   }
 
   protected willUpdate(): void {
-    /**
-     * TEMPORARY: this fixes the need to access the parents color-palette in order to get the `lightest`
-     * value.  This fix will only update the component when switching between light and dark themes as
-     * thats when the consumer requests an update.  Switching between lighter -> light for example will
-     * not trigger the component to update at this time.
-     */
-    const selector = '[color-palette]';
-    function closestShadowRecurse(el: Element | Window | Document | null): Element | null {
-      if (!el || el === document || el === window) {
-        return null;
+    if (!isServer) {
+      /**
+       * TEMPORARY: this fixes the need to access the parents color-palette in order to get the `lightest`
+       * value.  This fix will only update the component when switching between light and dark themes as
+       * thats when the consumer requests an update.  Switching between lighter -> light for example will
+       * not trigger the component to update at this time.
+       *
+       * As well, this hack is not supported in SSR (likewise, context is not yet supported)
+       */
+      const selector = '[color-palette]';
+      function closestShadowRecurse(el: Element | Window | Document | null): Element | null {
+        if (!el || el === document || el === window) {
+          return null;
+        }
+        if ((el as Element).assignedSlot) {
+          el = (el as Element).assignedSlot;
+        }
+        const found = (el as Element).closest(selector);
+        return found ?
+        found
+        : closestShadowRecurse(((el as Element).getRootNode() as ShadowRoot).host);
       }
-      if ((el as Element).assignedSlot) {
-        el = (el as Element).assignedSlot;
-      }
-      const found = (el as Element).closest(selector);
-      return found ?
-      found
-      : closestShadowRecurse(((el as Element).getRootNode() as ShadowRoot).host);
+      this.#internalColorPalette = closestShadowRecurse(this)?.getAttribute('color-palette');
     }
-    this.#internalColorPalette = closestShadowRecurse(this)?.getAttribute('color-palette');
   }
 
   render() {
