@@ -207,6 +207,7 @@ export default function(eleventyConfig: UserConfig) {
       'docs/assets/javascript/elements/uxdot-repo-status-list.js',
       'docs/assets/javascript/elements/uxdot-search.js',
       'docs/assets/javascript/elements/uxdot-sidenav.js',
+      'docs/assets/javascript/elements/uxdot-spacer-tokens-table.js',
       'docs/assets/javascript/elements/uxdot-toc.js',
       'elements/rh-button/rh-button.js',
       'elements/rh-code-block/rh-code-block.js',
@@ -215,6 +216,7 @@ export default function(eleventyConfig: UserConfig) {
       'elements/rh-skip-link/rh-skip-link.js',
       'elements/rh-subnav/rh-subnav.js',
       'elements/rh-surface/rh-surface.js',
+      'elements/rh-table/rh-table.js',
       'elements/rh-tag/rh-tag.js',
     ],
   });
@@ -273,5 +275,5 @@ export class Renderer {
   declare dedent: (str: string) => string;
   declare slugify: (str: string) => string;
   declare deslugify: (str: string) => string;
-  declare getTagNameSlug: (str: string) => string
+  declare getTagNameSlug: (str: string) => string;
 }

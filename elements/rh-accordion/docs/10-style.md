@@ -100,14 +100,7 @@ Multiple panels can be expanded simultaneously even when nested.
       height="1336">
 </uxdot-example>
 
-<rh-table>
-{% spacerTokensTable 
-  headline="",
-  caption='',
-  headingLevel="4",
-  tokens="--rh-space-lg, --rh-space-xl, --rh-space-3xl" %}
-{% endspacerTokensTable %}
-</rh-table>  
+<uxdot-spacer-tokens-table tokens="lg, xl, 3xl"></uxdot-spacer-tokens-table>
 
 ## Interaction states 
 Interaction states are visual representations used to communicate the status of an element or pattern.

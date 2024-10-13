@@ -11,6 +11,10 @@
     "./react/*": "./react/*",
     "./*": "./elements/*"
   },
+  "imports": {
+    "#uxdot/*": "./*",
+    "#11ty-plugins/*": "./docs/_plugins/*"
+  },
   "contributors": [
     "Adam Johnson <adjohnso@redhat.com>",
     "Benny Powers <bennyp@redhat.com>",
@@ -315,6 +319,7 @@
     "@patternfly/pfe-tools": "^4.0.1",
     "@playwright/test": "^1.48.0",
     "@rollup/plugin-node-resolve": "^15.3.0",
+    "@stylistic/eslint-plugin-js": "^2.9.0",
     "@stylistic/stylelint-config": "^2.0.0",
     "@stylistic/stylelint-plugin": "^3.1.1",
     "@types/mocha": "^10.0.9",
