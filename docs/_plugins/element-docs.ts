@@ -1,5 +1,5 @@
 /// <reference lib="ESNext.Collection"/>
-import type { UserConfig } from '@11ty/eleventy'; docs.ts;
+import type { UserConfig } from '@11ty/eleventy';
 import type { TagStatus } from '#uxdot/docs/assets/javascript/elements/uxdot-repo.js';
 import slugify from 'slugify';
 import { basename, dirname, join, sep } from 'node:path';
