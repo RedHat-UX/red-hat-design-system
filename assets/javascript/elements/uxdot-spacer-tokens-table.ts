@@ -21,6 +21,11 @@ const assignBasename = (token: DesignToken) => ({
   baseName: token.name.replace(/^(--)?rh-space-/, ''),
 });
 
+const getToken = (name: string) => {
+  const tokenName = `--rh-space-${name.trim().replace('--rh-space-', '')}` as const;
+  return metaTokens.get(tokenName);
+};
+
 /**
  * Reads token data from @rhds/tokens and outputs a table for specified tokens
  */
@@ -39,8 +44,7 @@ export class UxdotSpacerTokensTable extends LitElement {
 
   render() {
     const metaData = this.tokens
-        .map(token => `--rh-space-${token.trim()}`.replace('--rh-space---rh-space-', ''))
-        .map(x => metaTokens.get(x as `--rh-${string}`))
+        .map(getToken)
         .filter(Boolean);
 
     // TODO: remove lightdom after implementing auto-load
