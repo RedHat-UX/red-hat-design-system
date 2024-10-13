@@ -304,7 +304,7 @@
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
-    "@11ty/eleventy-img": "^5.0.0",
+    "@11ty/eleventy-fetch": "^4.0.1",
     "@11ty/eleventy-plugin-rss": "^2.0.2",
     "@commitlint/cli": "^19.5.0",
     "@commitlint/config-conventional": "^19.5.0",
@@ -322,6 +322,7 @@
     "@stylistic/eslint-plugin-js": "^2.9.0",
     "@stylistic/stylelint-config": "^2.0.0",
     "@stylistic/stylelint-plugin": "^3.1.1",
+    "@types/js-yaml": "^4.0.9",
     "@types/mocha": "^10.0.9",
     "@web/rollup-plugin-import-meta-assets": "^2.2.1",
     "@webcomponents/template-shadowroot": "^0.2.1",

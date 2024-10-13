@@ -1,8 +1,9 @@
 /// <reference lib="ESNext.Collection"/>
-import type { UserConfig } from '@11ty/eleventy';
+import type { UserConfig } from '@11ty/eleventy'; docs.ts;
+import type { TagStatus } from '#uxdot/docs/assets/javascript/elements/uxdot-repo.js';
 import slugify from 'slugify';
 import { basename, dirname, join, sep } from 'node:path';
-import { glob, readFile, stat } from 'node:fs/promises';
+import { glob, readFile, readdir, stat } from 'node:fs/promises';
 import { deslugify, getPfeConfig } from '@patternfly/pfe-tools/config.js';
 import { getAllManifests } from '@patternfly/pfe-tools/custom-elements-manifest/custom-elements-manifest.js';
 import { DocsPage } from '@patternfly/pfe-tools/11ty/DocsPage.js';
@@ -24,8 +25,10 @@ interface ElementDocsPageTabData {
 }
 
 interface ElementDocsPageBasicData extends ElementDocsPageTabData {
+  description?: string;
   isCodePage: boolean;
   isDemoPage: boolean;
+  isOverviewPage: boolean;
   absPath: string;
   /** configured alias for this element e.g. `Call to Action` for `rh-cta` */
   alias?: string;
@@ -39,6 +42,8 @@ interface ElementDocsPageFileSystemData extends ElementDocsPageBasicData {
   hasLightdom: boolean;
   hasLightdomShim: boolean;
   siblingElements: string[];
+  overviewImageHref?: string;
+  mainDemoContent: string;
 }
 
 export interface ElementDocsPageData extends ElementDocsPageFileSystemData {
@@ -53,7 +58,8 @@ export interface ElementDocsPageData extends ElementDocsPageFileSystemData {
 
 const cwd = process.cwd();
 const pfeconfig = getPfeConfig();
-const repoStatus = yaml.load(await readFile(join(cwd, './docs/_data/repoStatus.yaml'), 'utf8'));
+const repoStatus: TagStatus[] =
+  yaml.load(await readFile(join(cwd, './docs/_data/repoStatus.yaml'), 'utf8')) as TagStatus[]; ;
 const isElementSource = (x: string) => x && x.startsWith('rh-') && !x.endsWith('.d.ts');
 const stripExtension = (x: string) => x?.split('.').shift();
 
@@ -94,10 +100,13 @@ function getTabData(filePath: string): ElementDocsPageTabData {
 
 function getBasicData(filePath: string): ElementDocsPageBasicData {
   const tabProps = getTabData(filePath);
+  const status = repoStatus.find(x => x.tagName === tabProps.tagName);
   return { ...tabProps,
     isCodePage: tabProps.pageSlug === 'code',
     isDemoPage: tabProps.pageSlug === 'demos',
+    isOverviewPage: tabProps.pageSlug === 'overview',
     absPath: join(cwd, filePath),
+    description: status?.description,
     alias: pfeconfig.aliases?.[tabProps.tagName],
     screenshotPath: `/elements/${tabProps.slug}/screenshot.png`,
     overviewHref: `/elements/${tabProps.slug}/`,
@@ -106,13 +115,23 @@ function getBasicData(filePath: string): ElementDocsPageBasicData {
 
 async function getFSData(props: ElementDocsPageBasicData): Promise<ElementDocsPageFileSystemData> {
   const elDir = join(cwd, 'elements', props.tagName);
+  const docsDir = join(elDir, 'docs');
+  const demoPath = join(elDir, 'demo', `${props.tagName}.html`);
   const allTSFiles = await Array.fromAsync(glob(`elements/${props.tagName}/*.ts`, { cwd }));
+  const hasDocs = await exists(docsDir);
+  const docsDirLs = hasDocs ? await readdir(docsDir) : null;
+  const _overviewImageHref = docsDirLs?.find(x => x.match(/overview.(png|svg)/));
+  const overviewImageHref =
+    _overviewImageHref && await exists(join(docsDir, _overviewImageHref)) ?
+      _overviewImageHref : undefined;
   return {
     ...props,
     fileExists: await exists(props.absPath),
     planned: await isPlanned(props.tagName),
     hasLightdom: await exists(join(elDir, `${props.tagName}-lightdom.css`)),
     hasLightdomShim: await exists(join(elDir, `${props.tagName}-lightdom-shim.css`)),
+    mainDemoContent: await exists(demoPath) ? await readFile(demoPath, 'utf8') : '',
+    overviewImageHref,
     siblingElements: allTSFiles
         .map(x => basename(x))
         .filter(isElementSource)
@@ -128,7 +147,7 @@ async function isPlanned(tagName: string) {
     }
   }
   const element = repoStatus.find(element => element.tagName === tagName);
-  return element?.libraries.find(library => library.name === 'RH Elements')?.status === 'Planned';
+  return element?.libraries.rhds === 'planned';
 }
 
 const isDocFor = (tagName: string) =>

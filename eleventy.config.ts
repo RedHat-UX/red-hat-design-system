@@ -34,10 +34,13 @@ export default function(eleventyConfig: UserConfig) {
   });
 
   eleventyConfig.on('eleventy.before', async function() {
-    const { stderr } = await exec('npx tspc');
+    const { stdout, stderr } = await exec('npx tspc || exit 0');
     if (stderr) {
       // eslint-disable-next-line no-console
       console.error(stderr);
+    } else {
+      // eslint-disable-next-line no-console
+      console.log(stdout);
     }
   });
 
@@ -204,6 +207,7 @@ export default function(eleventyConfig: UserConfig) {
       'docs/assets/javascript/elements/uxdot-installation-tabs.js',
       'docs/assets/javascript/elements/uxdot-masthead.js',
       'docs/assets/javascript/elements/uxdot-pattern.js',
+      'docs/assets/javascript/elements/uxdot-repo-status-checklist.js',
       'docs/assets/javascript/elements/uxdot-repo-status-list.js',
       'docs/assets/javascript/elements/uxdot-search.js',
       'docs/assets/javascript/elements/uxdot-sidenav.js',
@@ -276,4 +280,5 @@ export class Renderer {
   declare slugify: (str: string) => string;
   declare deslugify: (str: string) => string;
   declare getTagNameSlug: (str: string) => string;
+  declare getElementDocs: (str: string) => string;
 }
