@@ -23,7 +23,7 @@ order: 3
   import '@rhds/elements/rh-tag/rh-tag.js';
   import '@rhds/elements/rh-tile/rh-tile.js';
   document.getElementById('bordeaux-page-switch').addEventListener('change', function() {
-    document.body.classList.toggle('theme-bordeaux', this.checked);
+    document.documentElement.classList.toggle('theme-bordeaux', this.checked);
   });
 </script>
 
