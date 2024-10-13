@@ -1,3 +1,4 @@
+export const tokens: Map<`--rh-${string}`, string>;
 export interface Color {
     isLight: boolean;
     hex: string;

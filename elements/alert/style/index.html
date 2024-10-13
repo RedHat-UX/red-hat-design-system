@@ -54,8 +54,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.4/core.js",
     "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.4/core.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
@@ -133,6 +133,8 @@
       </script><script type="module">
         import '@rhds/elements/rh-alert/rh-alert.js';
       </script><script type="module">
+  import '@uxdot/elements/uxdot-spacer-tokens-table.js';
+</script><script type="module">
   import '@uxdot/elements/uxdot-feedback.js';
 </script><script type="module">
   import '@uxdot/elements/uxdot-header.js';
@@ -864,7 +866,8 @@
       
       
 
-      <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+      
+<uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button 
@@ -882,7 +885,10 @@
     <a href="#style">Style</a><a>
   </a></h2>
 </uxdot-copy-permalink>
-<p>An alert is a layout including an icon, title, text, actions, and a close button. It comes in a variety of colors depending on status. A toast is a variant of alert. Instead of having a background color, it has a white background with a drop shadow.</p>
+<p>An alert is a layout including an icon, title, text, actions, and a close
+button. It comes in a variety of colors depending on status. A toast is a
+variant of alert. Instead of having a background color, it has a white
+background with a drop shadow.</p>
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
@@ -910,8 +916,8 @@
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-    <img src="../alert-style-anatomy.svg" alt="Alert with numbers pointing to parts of the element" width="538" height="276">
-  </uxdot-example>    
+    <img alt="Alert with numbers pointing to parts of the element" src="../alert-style-anatomy.svg" width="538" height="276">
+  </uxdot-example>
   <figcaption>
     <ol>
       <li>Status icon</li>
@@ -924,7 +930,6 @@
     </ol>
   </figcaption>
 </figure>
-å
 <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
@@ -970,7 +975,7 @@
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-  <img src="../alert-style-variant-inline.svg" alt="Two examples of an inline alert" width="408" height="339">
+  <img alt="Two examples of an inline alert" src="../alert-style-variant-inline.svg" width="408" height="339">
 </uxdot-example>
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -999,7 +1004,7 @@
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-  <img src="../alert-style-variant-inline-alt.svg" alt="Two examples of an alternate design for inline alerts" width="408" height="339">
+  <img alt="Two examples of an alternate design for inline alerts" src="../alert-style-variant-inline-alt.svg" width="408" height="339">
 </uxdot-example>
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1028,7 +1033,7 @@
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-  <img src="../alert-style-variant-toast.svg" alt="Two examples of a toast alert" width="456" height="203">
+  <img alt="Two examples of a toast alert" src="../alert-style-variant-toast.svg" width="456" height="203">
 </uxdot-example>
 <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1056,7 +1061,7 @@
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-  <img src="../alert-style-spacing-1.svg" alt="Diagram of spacing for inline alerts" width="456" height="276">
+  <img alt="Diagram of spacing for inline alerts" src="../alert-style-spacing-1.svg" width="456" height="276">
 </uxdot-example>
 <uxdot-example   variant="full" no-border><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;container-type:inline-size;container-name:host;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{padding:var(--rh-space-2xl);display:flex;flex-direction:column;align-items:var(--_alignment,center);justify-content:center;border-width:var(--rh-border-width-sm);border-style:solid;border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);background-color:var(--rh-color-surface);color:var(--rh-color-text-primary)}::slotted(*){display:flex;flex-direction:column;align-items:var(--_alignment,center);justify-content:center;max-width:100%;height:auto;width:var(--_width,100%)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part DbmYZodZUIs=-->
       <!--lit-node 0--><div id="container"
@@ -1066,7 +1071,7 @@
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-  <img src="../alert-style-spacing-2.svg" alt="Diagram of spacing for toast alerts" width="1140" height="302">
+  <img alt="Diagram of spacing for toast alerts" src="../alert-style-spacing-2.svg" width="1140" height="302">
 </uxdot-example>
 <p><uxdot-example     width-adjustment="752px" alignment="left" variant="full" no-border><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;container-type:inline-size;container-name:host;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{padding:var(--rh-space-2xl);display:flex;flex-direction:column;align-items:var(--_alignment,center);justify-content:center;border-width:var(--rh-border-width-sm);border-style:solid;border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);background-color:var(--rh-color-surface);color:var(--rh-color-text-primary)}::slotted(*){display:flex;flex-direction:column;align-items:var(--_alignment,center);justify-content:center;max-width:100%;height:auto;width:var(--_width,100%)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part DbmYZodZUIs=-->
       <!--lit-node 0--><div id="container"
@@ -1076,51 +1081,38 @@
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-<img src="../alert-style-spacing-3.svg" alt="Diagram of spacing for alerts on mobile" width="752" height="640">
+<img alt="Diagram of spacing for alerts on mobile" src="../alert-style-spacing-3.svg" width="752" height="640">
 </uxdot-example></p>
-<rh-table>
-<table>
-          <caption></caption>
+<uxdot-spacer-tokens-table  tokens="--rh-space-md, --rh-space-lg, --rh-space-xl"><template shadowroot="open" shadowrootmode="open"><style>samp.space:not(.swatch){width:var(--samp-space-size);aspect-ratio:1/1;outline:var(--rh-border-width-sm) dashed var(--samp-space-color,var(--rh-color-surface-darkest));color:var(--samp-space-color,var(--rh-color-text-primary-on-light));position:relative;font-size:var(--rh-font-size-body-text-xs)}samp.space:not(.swatch),samp.space:not(.swatch) span{display:flex;justify-content:center;align-items:center}samp.space:not(.swatch) span{line-height:1rem;min-height:100%}samp.space:not(.swatch):before{content:"";width:var(--samp-space-size);aspect-ratio:1/1;background-color:var(--samp-space-color,var(--rh-color-surface-darkest));opacity:.125;z-index:-1;position:absolute}samp.space:not(.swatch) span.offset{position:absolute;left:calc(var(--samp-space-size) + 2px)}samp.space.xs:not(.swatch):before{opacity:1}samp.space.sm:not(.swatch){color:#c58c00}samp.space.sm:not(.swatch):before{opacity:1}samp.space.md:not(.swatch){color:#51a549}samp.length:not(.swatch){width:var(--samp-length-size);background-color:var(--rh-color-surface-darkest);opacity:var(--rh-opacity-60);display:block;border-bottom:2px solid var(--rh-color-border-strong-on-light);position:relative}samp.length:not(.swatch):after,samp.length:not(.swatch):before{content:" ";position:absolute;display:block;height:var(--rh-length-xs);width:0;inset-block:calc(var(--rh-length-xs)*-1);border-style:solid;border-inline-width:var(--rh-border-width-md) 0;border-color:var(--rh-color-border-interactive-on-light)}samp.length:not(.swatch):before{inset-inline:-2px 100%}samp.length:not(.swatch):after{inset-inline:100% 2px}samp.icon:not(.swatch){aspect-ratio:1;display:block;width:var(--samp-icon-size);border:var(--rh-border-width-md) dotted var(--rh-color-border-strong)}samp.font:not(.swatch){font-size:var(--samp-font-size,var(--rh-font-size-body-text-md));font-family:var(--samp-font-family,var(--rh-font-family-body-text));font-weight:var(--samp-font-weight,var(--rh-font-weight-body-text-regular))}samp.font.heading:not(.swatch){font-size:var(--samp-font-size,var(--rh-font-size-heading-md));font-family:var(--rh-font-family-heading)}samp.font.code:not(.swatch){font-family:var(--rh-font-family-code)}samp.color:not(.swatch){color:var(--samp-color)}samp.color:not(.swatch):not(.border,.text){aspect-ratio:1;height:var(--rh-length-xl);display:block;border-radius:100%;border:1px solid #0000;background:var(--samp-color)}samp.color:not(.swatch):not(.border,.text,.dark){border-color:var(--rh-color-border-strong-on-light)}samp.line-height:not(.swatch){line-height:var(--samp-line-height)}samp.box-shadow:not(.swatch){height:var(--rh-length-2xl);aspect-ratio:1;border-radius:var(--rh-border-radius-default);box-shadow:var(--samp-box-shadow);display:block}samp.border:not(.swatch){width:var(--rh-length-2xl);aspect-ratio:2;display:block;border-style:solid;border-width:var(--samp-space-size,var(--rh-border-width-md));border-color:var(--samp-color,var(--rh-color-border-strong-on-light));border-radius:var(--samp-radius,var(--rh-border-radius-default))}samp.border.sm:not(.swatch){border-width:var(--samp-space-size,var(--rh-border-width-sm))}samp.border.md:not(.swatch){border-width:var(--samp-space-size,var(--rh-border-width-md))}samp.border.lg:not(.swatch){border-width:var(--samp-space-size,var(--rh-border-width-lg))}samp.opacity:not(.swatch){opacity:var(--samp-opacity);background-color:#000;display:block;width:var(--rh-length-xl);aspect-ratio:1}samp.breakpoint:not(.swatch) img{max-height:var(--rh-length-3xl)}samp.swatch{width:max-content;border-radius:var(--rh-border-radius-pill);border-width:var(--rh-border-width-sm);border-style:solid;border-color:oklch(from var(--swatch-color) calc(l + var(--_offset)) c h);padding:var(--rh-space-xs) var(--rh-space-md);display:inline;position:relative}samp.swatch span{display:block;width:max-content;line-height:1;inset-block-end:4px}samp.swatch.color{transition-property:background-color,border-color;transition-duration:var(--rh-animation-speed);transition-timing-function:var(--rh-animation-timing);background-color:var(--swatch-color);font-family:var(--rh-font-family-body-text);font-size:var(--rh-font-size-body-text-sm)}samp.swatch.color.isLight{color:var(--rh-color-text-primary-on-light)}samp.swatch.color.isDark{color:var(--rh-color-text-primary-on-dark)}samp.swatch.font{color:var(--swatch-color);transition:color var(--rh-animation-speed) var(--rh-animation-timing);font-size:var(--rh-font-size-heading-lg);font-weight:var(--rh-font-weight-heading-bold);border-radius:var(--rh-border-radius-default);padding:var(--rh-space-sm) var(--rh-space-md)}samp.swatch.font span:last-child{font-size:var(--rh-font-size-body-text-md)}samp.swatch.border{border-color:var(--swatch-color);border-width:var(--rh-border-width-lg)}samp.swatch.icon{display:inline-flex;align-items:center;gap:var(--rh-space-xs)}samp.swatch.icon rh-icon{color:var(--swatch-color)}</style><!--lit-part CEtObvmuyBA=-->
+      <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
+      <!--lit-node 1--><rh-table  color-palette="light" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>*{box-sizing:border-box}:host{position:relative;display:block;width:100%;overflow:auto;scrollbar-color:var(--_scrollbar-track-color) var(--_scrollbar-thumb-color);color:var(--rh-color-text-primary);background-color:var(--rh-color-surface);--_scrollbar-size:0.625rem;--_scrollbar-thumb-color:var(--rh-color-gray-50,#707070);--_scrollbar-track-color:var(--rh-color-border-subtle);--_row-border:var(--rh-table-row-border,var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle-on-light,#c7c7c7));--_row-background-hover-color:var(--rh-table-row-background-hover-color,rgba(from var(--rh-color-gray-40,#a3a3a3) r g b/0.1));--_column-background-hover-color:var(--rh-table-column-background-hover-color,rgba(from var(--rh-color-blue-50,#0066cc) r g b/0.1))}:host::-webkit-scrollbar{width:var(--_scrollbar-size);height:var(--_scrollbar-size)}:host::-webkit-scrollbar,:host::-webkit-scrollbar-track{background-color:var(--_scrollbar-track-color)}:host::-webkit-scrollbar-thumb{background-color:var(--_scrollbar-thumb-color)}[slot]{display:block}.color-palette-dark,.color-palette-darker,.color-palette-darkest,.dark{--_row-background-hover-color:rgba(from var(--rh-color-white,#ffffff) r g b/0.1);--_column-background-hover-color:rgba(from var(--rh-color-blue-70,#003366) r g b/0.3)}::slotted([slot=summary]){display:block;padding:var(--rh-space-xl,24px) var(--rh-space-lg,16px) 0 var(--rh-space-lg,16px);color:var(--rh-color-text-secondary-on-light,#4d4d4d);font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text","Noto Sans Arabic","Noto Sans Hebrew","Noto Sans JP","Noto Sans KR","Noto Sans Malayalam","Noto Sans SC","Noto Sans TC","Noto Sans Thai",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-style:italic;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-body-text,1.5)}.dark ::slotted([slot=summary]){color:var(--rh-color-text-secondary-on-dark,#c7c7c7)}</style><!--lit-part YcLh+NwkpJQ=-->
+      <!--lit-node 0--><div id="container"
+           part="container"
+           class=" on light ">
+        <!--lit-node 1--><slot 
+              
+              
+              ></slot>
+        <slot id="summary" name="summary"></slot>
+      </div>
+    <!--/lit-part--></template>
+        <table>
+          <caption><!--lit-part--><!--/lit-part--></caption>
           <thead>
             <tr>
               <th scope="col" data-label="Example">Example</th>
               <th scope="col" data-label="Token">Token</th>
               <th scope="col" data-label="Description">Description</th>
+              <th scope="col"></th>
             </tr>
           </thead>
-            <tbody>
-              <tr>
-              <td data-label="Example">
-                <samp class="space size-8" style="--samp-space-size: 8px; --samp-space-color: #9bd917;">
-                  <span class="offset">8</span>
-                </samp>
-              </td>
-              <td data-label="Token">--rh-space-md</td>
-              <td data-label="Description">8px spacer</td>
-            </tr>
-<tr>
-              <td data-label="Example">
-                <samp class="space " style="--samp-space-size: 16px; --samp-space-color: #51a549;">
-                  <span class="">16</span>
-                </samp>
-              </td>
-              <td data-label="Token">--rh-space-lg</td>
-              <td data-label="Description">16px spacer</td>
-            </tr>
-<tr>
-              <td data-label="Example">
-                <samp class="space " style="--samp-space-size: 24px; --samp-space-color: #1b8793;">
-                  <span class="">24</span>
-                </samp>
-              </td>
-              <td data-label="Token">--rh-space-xl</td>
-              <td data-label="Description">24px spacer</td>
-            </tr>
-            </tbody>
-          </table>
-        <div class="token-props-table palette-light ">
-<p></p></div>
-</rh-table><p></p>
+          <tbody><!--lit-part--><!--/lit-part-->
+          </tbody>
+        </table>
+      </rh-table>
+      <slot></slot>
+    <!--/lit-part--></template>
+</uxdot-spacer-tokens-table>
 <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>

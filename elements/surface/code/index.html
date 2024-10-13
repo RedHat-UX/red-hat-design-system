@@ -54,8 +54,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.4/core.js",
     "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.4/core.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
@@ -1451,7 +1451,17 @@ are inappropriate.</p>
       <rh-accordion-panel>
         <section class="slots">
           
-          <rh-table>
+          <rh-table><template shadowroot="open" shadowrootmode="open"><style>*{box-sizing:border-box}:host{position:relative;display:block;width:100%;overflow:auto;scrollbar-color:var(--_scrollbar-track-color) var(--_scrollbar-thumb-color);color:var(--rh-color-text-primary);background-color:var(--rh-color-surface);--_scrollbar-size:0.625rem;--_scrollbar-thumb-color:var(--rh-color-gray-50,#707070);--_scrollbar-track-color:var(--rh-color-border-subtle);--_row-border:var(--rh-table-row-border,var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle-on-light,#c7c7c7));--_row-background-hover-color:var(--rh-table-row-background-hover-color,rgba(from var(--rh-color-gray-40,#a3a3a3) r g b/0.1));--_column-background-hover-color:var(--rh-table-column-background-hover-color,rgba(from var(--rh-color-blue-50,#0066cc) r g b/0.1))}:host::-webkit-scrollbar{width:var(--_scrollbar-size);height:var(--_scrollbar-size)}:host::-webkit-scrollbar,:host::-webkit-scrollbar-track{background-color:var(--_scrollbar-track-color)}:host::-webkit-scrollbar-thumb{background-color:var(--_scrollbar-thumb-color)}[slot]{display:block}.color-palette-dark,.color-palette-darker,.color-palette-darkest,.dark{--_row-background-hover-color:rgba(from var(--rh-color-white,#ffffff) r g b/0.1);--_column-background-hover-color:rgba(from var(--rh-color-blue-70,#003366) r g b/0.3)}::slotted([slot=summary]){display:block;padding:var(--rh-space-xl,24px) var(--rh-space-lg,16px) 0 var(--rh-space-lg,16px);color:var(--rh-color-text-secondary-on-light,#4d4d4d);font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text","Noto Sans Arabic","Noto Sans Hebrew","Noto Sans JP","Noto Sans KR","Noto Sans Malayalam","Noto Sans SC","Noto Sans TC","Noto Sans Thai",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-style:italic;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-body-text,1.5)}.dark ::slotted([slot=summary]){color:var(--rh-color-text-secondary-on-dark,#c7c7c7)}</style><!--lit-part YcLh+NwkpJQ=-->
+      <!--lit-node 0--><div id="container"
+           part="container"
+           class=" on light ">
+        <!--lit-node 1--><slot 
+              
+              
+              ></slot>
+        <slot id="summary" name="summary"></slot>
+      </div>
+    <!--/lit-part--></template>
             <table>
               <thead>
                 <tr>
@@ -1477,7 +1487,17 @@ are inappropriate.</p>
       </rh-accordion-header>
       <rh-accordion-panel>
         <section class="attributes">
-          <rh-table>
+          <rh-table><template shadowroot="open" shadowrootmode="open"><style>*{box-sizing:border-box}:host{position:relative;display:block;width:100%;overflow:auto;scrollbar-color:var(--_scrollbar-track-color) var(--_scrollbar-thumb-color);color:var(--rh-color-text-primary);background-color:var(--rh-color-surface);--_scrollbar-size:0.625rem;--_scrollbar-thumb-color:var(--rh-color-gray-50,#707070);--_scrollbar-track-color:var(--rh-color-border-subtle);--_row-border:var(--rh-table-row-border,var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle-on-light,#c7c7c7));--_row-background-hover-color:var(--rh-table-row-background-hover-color,rgba(from var(--rh-color-gray-40,#a3a3a3) r g b/0.1));--_column-background-hover-color:var(--rh-table-column-background-hover-color,rgba(from var(--rh-color-blue-50,#0066cc) r g b/0.1))}:host::-webkit-scrollbar{width:var(--_scrollbar-size);height:var(--_scrollbar-size)}:host::-webkit-scrollbar,:host::-webkit-scrollbar-track{background-color:var(--_scrollbar-track-color)}:host::-webkit-scrollbar-thumb{background-color:var(--_scrollbar-thumb-color)}[slot]{display:block}.color-palette-dark,.color-palette-darker,.color-palette-darkest,.dark{--_row-background-hover-color:rgba(from var(--rh-color-white,#ffffff) r g b/0.1);--_column-background-hover-color:rgba(from var(--rh-color-blue-70,#003366) r g b/0.3)}::slotted([slot=summary]){display:block;padding:var(--rh-space-xl,24px) var(--rh-space-lg,16px) 0 var(--rh-space-lg,16px);color:var(--rh-color-text-secondary-on-light,#4d4d4d);font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text","Noto Sans Arabic","Noto Sans Hebrew","Noto Sans JP","Noto Sans KR","Noto Sans Malayalam","Noto Sans SC","Noto Sans TC","Noto Sans Thai",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-style:italic;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-body-text,1.5)}.dark ::slotted([slot=summary]){color:var(--rh-color-text-secondary-on-dark,#c7c7c7)}</style><!--lit-part YcLh+NwkpJQ=-->
+      <!--lit-node 0--><div id="container"
+           part="container"
+           class=" on light ">
+        <!--lit-node 1--><slot 
+              
+              
+              ></slot>
+        <slot id="summary" name="summary"></slot>
+      </div>
+    <!--/lit-part--></template>
             <table>
               <thead>
                 <tr>
@@ -1563,7 +1583,17 @@ See <a href="#css-custom-properties">CSS Custom Properties</a> for default value
       <rh-accordion-panel>
         <section class="design-tokens">
           
-          <rh-table>
+          <rh-table><template shadowroot="open" shadowrootmode="open"><style>*{box-sizing:border-box}:host{position:relative;display:block;width:100%;overflow:auto;scrollbar-color:var(--_scrollbar-track-color) var(--_scrollbar-thumb-color);color:var(--rh-color-text-primary);background-color:var(--rh-color-surface);--_scrollbar-size:0.625rem;--_scrollbar-thumb-color:var(--rh-color-gray-50,#707070);--_scrollbar-track-color:var(--rh-color-border-subtle);--_row-border:var(--rh-table-row-border,var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle-on-light,#c7c7c7));--_row-background-hover-color:var(--rh-table-row-background-hover-color,rgba(from var(--rh-color-gray-40,#a3a3a3) r g b/0.1));--_column-background-hover-color:var(--rh-table-column-background-hover-color,rgba(from var(--rh-color-blue-50,#0066cc) r g b/0.1))}:host::-webkit-scrollbar{width:var(--_scrollbar-size);height:var(--_scrollbar-size)}:host::-webkit-scrollbar,:host::-webkit-scrollbar-track{background-color:var(--_scrollbar-track-color)}:host::-webkit-scrollbar-thumb{background-color:var(--_scrollbar-thumb-color)}[slot]{display:block}.color-palette-dark,.color-palette-darker,.color-palette-darkest,.dark{--_row-background-hover-color:rgba(from var(--rh-color-white,#ffffff) r g b/0.1);--_column-background-hover-color:rgba(from var(--rh-color-blue-70,#003366) r g b/0.3)}::slotted([slot=summary]){display:block;padding:var(--rh-space-xl,24px) var(--rh-space-lg,16px) 0 var(--rh-space-lg,16px);color:var(--rh-color-text-secondary-on-light,#4d4d4d);font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text","Noto Sans Arabic","Noto Sans Hebrew","Noto Sans JP","Noto Sans KR","Noto Sans Malayalam","Noto Sans SC","Noto Sans TC","Noto Sans Thai",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-style:italic;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-body-text,1.5)}.dark ::slotted([slot=summary]){color:var(--rh-color-text-secondary-on-dark,#c7c7c7)}</style><!--lit-part YcLh+NwkpJQ=-->
+      <!--lit-node 0--><div id="container"
+           part="container"
+           class=" on light ">
+        <!--lit-node 1--><slot 
+              
+              
+              ></slot>
+        <slot id="summary" name="summary"></slot>
+      </div>
+    <!--/lit-part--></template>
             <table>
               <thead>
                 <tr>

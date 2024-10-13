@@ -1,7 +1,7 @@
 var _RhTable_instances, _a, _RhTable_table_get, _RhTable_cols_get, _RhTable_rows_get, _RhTable_colHeaders_get, _RhTable_summary_get, _RhTable_internalColorPalette, _RhTable_logger, _RhTable_mo, _RhTable_onPointerleave, _RhTable_onPointerover, _RhTable_init, _RhTable_onSlotChange, _RhTable_onRequestSort, _RhTable_performSort;
 var RhTable_1;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
@@ -47,26 +47,30 @@ let RhTable = RhTable_1 = _a = class RhTable extends LitElement {
         __classPrivateFieldGet(this, _RhTable_mo, "f").observe(this, { childList: true });
     }
     willUpdate() {
-        /**
-         * TEMPORARY: this fixes the need to access the parents color-palette in order to get the `lightest`
-         * value.  This fix will only update the component when switching between light and dark themes as
-         * thats when the consumer requests an update.  Switching between lighter -> light for example will
-         * not trigger the component to update at this time.
-         */
-        const selector = '[color-palette]';
-        function closestShadowRecurse(el) {
-            if (!el || el === document || el === window) {
-                return null;
+        if (!isServer) {
+            /**
+             * TEMPORARY: this fixes the need to access the parents color-palette in order to get the `lightest`
+             * value.  This fix will only update the component when switching between light and dark themes as
+             * thats when the consumer requests an update.  Switching between lighter -> light for example will
+             * not trigger the component to update at this time.
+             *
+             * As well, this hack is not supported in SSR (likewise, context is not yet supported)
+             */
+            const selector = '[color-palette]';
+            function closestShadowRecurse(el) {
+                if (!el || el === document || el === window) {
+                    return null;
+                }
+                if (el.assignedSlot) {
+                    el = el.assignedSlot;
+                }
+                const found = el.closest(selector);
+                return found ?
+                    found
+                    : closestShadowRecurse(el.getRootNode().host);
             }
-            if (el.assignedSlot) {
-                el = el.assignedSlot;
-            }
-            const found = el.closest(selector);
-            return found ?
-                found
-                : closestShadowRecurse(el.getRootNode().host);
+            __classPrivateFieldSet(this, _RhTable_internalColorPalette, closestShadowRecurse(this)?.getAttribute('color-palette'), "f");
         }
-        __classPrivateFieldSet(this, _RhTable_internalColorPalette, closestShadowRecurse(this)?.getAttribute('color-palette'), "f");
     }
     render() {
         const { on = 'light' } = this;
