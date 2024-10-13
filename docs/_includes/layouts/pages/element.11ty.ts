@@ -85,7 +85,9 @@ export default class ElementsPage {
       </noscript>
 
       <script type="module" data-helmet>
-        import '/assets/javascript/elements/uxdot-copy-button.js';
+        import '@uxdot/elements/uxdot-copy-button.js';
+        import '@uxdot/elements/uxdot-copy-permalink.js';
+        import '@uxdot/elements/uxdot-best-practice.js';
         import '@rhds/elements/rh-alert/rh-alert.js';
         import '@rhds/elements/rh-cta/rh-cta.js';
         import '@rhds/elements/rh-surface/rh-surface.js';
@@ -232,7 +234,9 @@ export default class ElementsPage {
         });
 
     return html`
-      <script data-helmet type="module" src="/assets/javascript/elements/uxdot-installation-tabs.js"></script>
+      <script data-helmet type="module">
+        import "@uxdot/elements/uxdot-installation-tabs.js";
+      </script>
       <style data-helmet>${''/* NOTE: adapted from theming/developers.css - better to wrap the localhost behaviour? */}
       uxdot-installation-tabs {
         border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
@@ -804,8 +808,8 @@ export default class ElementsPage {
       </style>
 
       <script type="module" data-helmet>
-        import '/assets/javascript/elements/uxdot-copy-button.js';
-        import '/assets/javascript/elements/uxdot-header.js';
+        import '@uxdot/elements/uxdot-copy-button.js';
+        import '@uxdot/elements/uxdot-header.js';
         import 'playground-elements';
         import '@rhds/elements/rh-button/rh-button.js';
         import '@rhds/elements/rh-card/rh-card.js';

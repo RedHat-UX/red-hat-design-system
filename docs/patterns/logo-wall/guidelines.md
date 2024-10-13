@@ -11,15 +11,21 @@ subnav:
   order: 3
 ---
 
-<script data-helmet type="module" src="/assets/javascript/elements/uxdot-best-practice.js"></script>
+<script type="module" data-helmet>
+  import "@uxdot/elements/uxdot-best-practice.js";
+</script>
 
 ## Usage
 
-Use a logo wall when you need to display multiple Red Hat and/or partner logos in a group.
+Use a logo wall when you need to display multiple Red Hat and/or partner logos 
+in a group.
 
 ## Variants
 
-A logo wall is available in two styles: bordered and borderless. Both variants can be either interactive or static. However, it is recommended to use the bordered variant for interactive logos and the borderless variant for static logos.
+A logo wall is available in two styles: bordered and borderless. Both variants 
+can be either interactive or static. However, it is recommended to use the 
+bordered variant for interactive logos and the borderless variant for static 
+logos.
 
 ### Bordered
 
@@ -41,7 +47,9 @@ A logo wall is available in two styles: bordered and borderless. Both variants c
 
 ## Layout
 
-Ensure that all logos are at a size in which they are clearly legible. Use your best judgment to ensure that logos are neither too large nor too small and are proportionate to other elements on the page.
+Ensure that all logos are at a size in which they are clearly legible. Use your 
+best judgment to ensure that logos are neither too large nor too small and are 
+proportionate to other elements on the page.
 
 Here are some guidelines to follow if you’re unsure:
  - On desktop, there should be a maximum of 6 logos in a row.
@@ -49,19 +57,25 @@ Here are some guidelines to follow if you’re unsure:
 
 ### Responsive sizing
 
-Each logo is in a container. The size of each container and logo is determined by the designer but should abide by best practices. Designers should ensure that all logos are of a similar size and proportionate to each other. Logos are centered vertically and horizontally within the container.
+Each logo is in a container. The size of each container and logo is determined 
+by the designer but should abide by best practices. Designers should ensure that 
+all logos are of a similar size and proportionate to each other. Logos are 
+centered vertically and horizontally within the container.
 
 ### Bordered
-Logo sizes may decrease on smaller screens, however the container will retain 16px padding on all sides. Logos are horizontally and vertically aligned.
+Logo sizes may decrease on smaller screens, however the container will retain 
+16px padding on all sides. Logos are horizontally and vertically aligned.
 
 ### Borderless
-Logo sizes may decrease on smaller screens. Logo containers can adjust margins and padding for smaller screens. Logos are horizontally and vertically aligned.
+Logo sizes may decrease on smaller screens. Logo containers can adjust margins 
+and padding for smaller screens. Logos are horizontally and vertically aligned.
 
 ## Best practices
 
 ### Color contrast
 
-When displaying our partners' logos, it is essential to respect their brand identity by ensuring that their logos meet accessibility standards.
+When displaying our partners' logos, it is essential to respect their brand 
+identity by ensuring that their logos meet accessibility standards.
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
@@ -87,8 +101,9 @@ When displaying our partners' logos, it is essential to respect their brand iden
 
 ### Art Direction
 
-When alternating graphics depending on the color palette, You should be careful select
-only the themable container which is the direct ancestor of the logo wall.
+When alternating graphics depending on the color palette, You should be careful 
+select only the themable container which is the direct ancestor of the logo 
+wall.
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">

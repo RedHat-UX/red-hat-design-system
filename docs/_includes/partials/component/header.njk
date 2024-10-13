@@ -1,13 +1,18 @@
 {%- set tagName = tagName or doc.tagName or element.tagName or doc.docsPage.tagName -%}
 {%- set headingId = (heading if heading else title) | lower | slug -%}
-{%- set manifest = (doc and doc.docsPage and doc.docsPage.manifest) -%}
-{%- if manifest == (doc and doc.docsPage) -%}{% set manifest = null %}{% endif %}
-{% set prettyName -%}{{ (doc.alias or doc.slug or element.slug or '') | deslugify | capitalize }}{% endset %}
-{% set tabs = doc.tabs or (collections[subnav.collection or ''] | sort(attribute="data.subnav.order")) %}
-{% set demos = manifest and manifest.getDemos(doc.docsPage.tagName) %}
+{%- set manifest = doc and doc.docsPage and doc.docsPage.manifest -%}
+{%- if manifest == doc and doc.docsPage -%}
+  {% set manifest = null %}
+{% endif -%}
+{%- set prettyName -%}{{ (doc.alias or doc.slug or element.slug or '') | deslugify | capitalize }}{% endset %}
+{%- set tabs = doc.tabs -%}
+{%- if not tabs and subnav.collection -%}
+  {% set tabs = collections[subnav.collection] | sort(attribute = "data.subnav.order") %}
+{%- endif -%}
+{%- set demos = manifest and manifest.getDemos(doc.docsPage.tagName) -%}
 
 <script type="module" data-helmet>
-  import '/assets/javascript/elements/uxdot-header.js';
+  import '@uxdot/elements/uxdot-header.js';
 </script>
 
 {% if tabs %}

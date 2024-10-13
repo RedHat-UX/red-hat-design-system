@@ -1,5 +1,3 @@
-<script data-helmet type="module" src="/assets/javascript/elements/uxdot-best-practice.js"></script>
-
 <style data-helmet>
   .example {
     width: 100%;

@@ -12,7 +12,7 @@ subnav:
 ---
 
 <script data-helmet type="module">
-  import '/assets/javascript/elements/uxdot-best-practice.js';
+  import '@uxdot/elements/uxdot-best-practice.js';
   import '@rhds/elements/rh-alert/rh-alert.js';
   import '@rhds/elements/rh-tag/rh-tag.js';
   import '@rhds/elements/rh-table/rh-table.js';

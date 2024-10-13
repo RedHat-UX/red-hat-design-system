@@ -29,7 +29,7 @@ module.exports = class Feedback {
     }).sort((a, b) => a.text < b.text ? -1 : a.text > b.text ? 1 : 0);
     return dedent(html`
       <script type="module" data-helmet>
-        import '/assets/javascript/elements/uxdot-feedback.js';
+        import '@uxdot/elements/uxdot-feedback.js';
       </script>
       <uxdot-feedback>${!related.length ? html`
         <h2>Other libraries</h2>

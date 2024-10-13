@@ -6,7 +6,7 @@ layout: layouts/base.njk
       data-helmet>
 
 <script type="module" data-helmet>
-  import "/assets/javascript/elements/uxdot-feedback.js"
+  import "@uxdot/elements/uxdot-feedback.js"
   import '@rhds/elements/rh-cta/rh-cta.js';
   import '@rhds/elements/rh-footer/rh-footer.js';
   import '@rhds/elements/rh-alert/rh-alert.js';
@@ -16,7 +16,9 @@ layout: layouts/base.njk
 </script>
 
 {%- if tokenSearch %}
-<script type="module" src="/assets/javascript/elements/uxdot-search.js" data-helmet></script>
+<script type="module" data-helmet>
+  import "@uxdot/elements/uxdot-search.js";
+</script>
 <script type="module" src="/assets/javascript/tokens.js" data-helmet></script>
 {%- endif %}
 {% include 'partials/component/masthead.njk' %}

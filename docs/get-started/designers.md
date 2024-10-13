@@ -11,7 +11,7 @@ tags:
       data-helmet>
 
 <script type="module" data-helmet>
-  import '/assets/javascript/elements/uxdot-example.js';
+  import '@uxdot/elements/uxdot-example.js';
   import '@rhds/elements/rh-alert/rh-alert.js';
   import '@rhds/elements/rh-accordion/rh-accordion.js';
   import '@rhds/elements/rh-table/rh-table.js';
