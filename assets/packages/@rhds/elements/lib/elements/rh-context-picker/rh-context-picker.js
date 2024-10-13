@@ -85,8 +85,10 @@ let RhContextPicker = class RhContextPicker extends LitElement {
         }
         else if (this.target) {
             const root = this.getRootNode();
-            __classPrivateFieldSet(this, _RhContextPicker_target, root.getElementById(this.target), "f");
-            this.sync();
+            if (root instanceof Document || root instanceof ShadowRoot) {
+                __classPrivateFieldSet(this, _RhContextPicker_target, root.getElementById(this.target), "f");
+                this.sync();
+            }
         }
         else {
             __classPrivateFieldSet(this, _RhContextPicker_target, this.closest('rh-surface'), "f");
