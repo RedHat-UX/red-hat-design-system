@@ -215,6 +215,7 @@ export default function(eleventyConfig: UserConfig) {
       'docs/assets/javascript/elements/uxdot-pattern.js',
       'docs/assets/javascript/elements/uxdot-example.js',
       'docs/assets/javascript/elements/uxdot-installation-tabs.js',
+      'elements/rh-subnav/rh-subnav.js',
     ],
   });
 
