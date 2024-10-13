@@ -17,7 +17,7 @@ subnav:
 <link rel="stylesheet" data-helmet href="/styles/samp.css">
 
 <script type="module" data-helmet>
-  import '/assets/javascript/elements/uxdot-pattern.js';
+  import '@uxdot/elements/uxdot-pattern.js';
   import '@rhds/elements/rh-alert/rh-alert.js';
 </script>
 

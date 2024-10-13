@@ -30,7 +30,10 @@
   justify-content: center;
   max-width: 100%;
   height: auto;
-  width: var(--_width, 100%);
+}
+
+.widthAdjustment ::slotted(*) {
+  width: var(--_width)
 }
 
 :host([variant='full']) #container {

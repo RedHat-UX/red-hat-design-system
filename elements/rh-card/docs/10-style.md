@@ -169,13 +169,7 @@ Cards will get thinner or move below each other on smaller screens.
 
 ## Spacing
 
-<rh-table>
-{% spacerTokensTable
-   caption='',
-   headingLevel="3",
-   tokens="--rh-space-lg, --rh-space-xl, --rh-space-2xl, --rh-space-3xl" %}
-{% endspacerTokensTable %}
-</rh-table>
+<uxdot-spacer-tokens-table tokens="lg, xl, 2xl, 3xl"></uxdot-spacer-tokens-table>
 
 ### Container padding
 

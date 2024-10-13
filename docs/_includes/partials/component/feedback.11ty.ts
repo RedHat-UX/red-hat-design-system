@@ -1,16 +1,9 @@
+import { Renderer } from '../../../../eleventy.config.ts';
+import { dedent } from '../../../_plugins/tokensHelpers';
+
 const html = String.raw; // for editor highlighting
 
-/**
- * Returns a string with common indent stripped from each line. Useful for templating HTML
- * @param str indented string
- */
-function dedent(str) {
-  const stripped = str.replace(/^\n/, '');
-  const match = stripped.match(/^\s+/);
-  return match ? stripped.replace(new RegExp(`^${match[0]}`, 'gm'), '') : str;
-}
-
-module.exports = class Feedback {
+export default class Feedback extends Renderer {
   async render({
     doc,
     title,
@@ -19,8 +12,8 @@ module.exports = class Feedback {
   }) {
     pfeconfig ??= await import('@patternfly/pfe-tools/config.js').then(x => x.getPfeConfig());
     const name = doc?.tagName ?? this.slugify(title);
-    const related = [...new Set(relatedItems?.[name] ?? [])].map(x => {
-      const slug = this.getTagNameSlug(x, pfeconfig);
+    const related = [...new Set((relatedItems?.[name] ?? []) as string[])].map(x => {
+      const slug = this.getTagNameSlug(x);
       return {
         name: x,
         url: slug === x ? `/patterns/${slug}` : `/elements/${slug}`,
@@ -29,7 +22,7 @@ module.exports = class Feedback {
     }).sort((a, b) => a.text < b.text ? -1 : a.text > b.text ? 1 : 0);
     return dedent(html`
       <script type="module" data-helmet>
-        import '/assets/javascript/elements/uxdot-feedback.js';
+        import '@uxdot/elements/uxdot-feedback.js';
       </script>
       <uxdot-feedback>${!related.length ? html`
         <h2>Other libraries</h2>

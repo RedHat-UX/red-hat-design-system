@@ -286,8 +286,6 @@ values between elements.
        height="277">
 </uxdot-example>
 
-<rh-table>
-{% spacerTokensTable headingLevel="4", tokens="--rh-space-sm,--rh-space-lg, --rh-space-xl, --rh-space-3xl" %} {% endspacerTokensTable %}
-</rh-table>
+<uxdot-spacer-tokens-table tokens="sm,lg,xl,3xl"></uxdot-spacer-tokens-table>
 
-{% renderFile './docs/_includes/partials/component/feedback.11ty.cjs' %}
+{% renderFile './docs/_includes/partials/component/feedback.11ty.ts' %}

@@ -1,7 +1,10 @@
-// @ts-check
+import type { DesignToken } from '#11ty-plugins/tokensHelpers.js';
+
 import tinycolor from 'tinycolor2';
 import { tokens as tokensMeta } from '@rhds/tokens/meta.js';
 import { createRequire } from 'node:module';
+import { Renderer } from '#uxdot/eleventy.config.js';
+
 const require = createRequire(import.meta.url);
 const tokensJSON = require('@rhds/tokens/json/rhds.tokens.json');
 
@@ -13,30 +16,35 @@ import {
   isThemeColorToken,
   styleMap,
   classMap,
-} from '../_plugins/tokensHelpers.js';
+} from '#11ty-plugins/tokensHelpers.js';
 
-/* eslint-disable jsdoc/check-tag-names */
-/** @import {DesignToken} from '../_plugins/tokensHelpers.js' */
-/**
- * @typedef {object} Options
- * @property {typeof tokensJSON} tokens tokens to render
- * @property {string} name most-specific token attribute
- * @property {string} path tokens path
- * @property {string} slug tokens slug
- * @property {number} level heading level
- * @property {DesignToken} [parent] parent tokens
- * @property {DesignToken[]} [themeTokens] theme tokens in the category
- * @property {string[]} [exclude] token paths to exclude from render
- * @property {string[]} [include] token paths to include in render
- * @property {Set<string>} [seenPaths] which token paths have we already
- * rendered
- */
-/* eslint-enable jsdoc/check-tag-names */
+interface Options {
+  tokens: typeof tokensJSON;
+  name: string;
+  path: string;
+  slug: string;
+  level: number;
+  parent?: DesignToken;
+  themeTokens?: DesignToken[];
+  exclude?: string[];
+  include?: string[];
+  seenPaths?: Set<string>;
+}
+
+interface Data {
+  title: string;
+  tokenCategory: {
+    include: string[];
+    exclude: string[];
+    path: string;
+    slug: string;
+  };
+}
 
 // for editor highlighting
 const html = String.raw;
 
-export default class TokensPage {
+export default class TokensPage extends Renderer {
   data() {
     return {
       layout: 'layouts/pages/has-toc.njk',
@@ -58,8 +66,7 @@ export default class TokensPage {
 
   #themeTokensCardCount = 1;
 
-  /** @param {DesignToken} token */
-  #getTokenLightness(token) {
+  #getTokenLightness(token: DesignToken) {
     const meta = tokensMeta.get(`--${token.name}`);
     const value =
        meta?.$value
@@ -76,8 +83,7 @@ export default class TokensPage {
     return { isDark, isLight };
   }
 
-  /** @param {Options} options */
-  #getThemeTokens(options) {
+  #getThemeTokens(options: Options) {
     const parts = options.path?.split('.') ?? [];
     const themeTokens = [];
     if (parts.at(0) === 'color' && parts.length === 2) {
@@ -91,8 +97,11 @@ export default class TokensPage {
     return themeTokens;
   }
 
-  /** @param {Options} options */
-  async #renderTable(options) {
+  async #renderTable(options: Options) {
+    if (options.slug === 'space') {
+      return html`<uxdot-spacer-tokens-table></uxdot-spacer-tokens-table>`;
+    }
+
     const tokens = Object.values(options.tokens).filter(x => x.$value);
     const { name } = options;
     const example = getDocs(options.tokens)?.example ?? '';
@@ -261,8 +270,7 @@ export default class TokensPage {
       </rh-table>`.trim();
   }
 
-  /** @param {Options} options */
-  async #renderIncludes(options) {
+  async #renderIncludes(options: Options) {
     if (Array.isArray(options.include)) {
       const includes = await Promise.all(
         options.include.map(path => this.#renderCategory({
@@ -282,8 +290,7 @@ export default class TokensPage {
     }
   }
 
-  /** @param {Options} options */
-  #renderThemeTokensCard(options) {
+  #renderThemeTokensCard(options: Options) {
     const { level = 1 } = options;
     const themeTokens = this.#getThemeTokens(options);
     const slug = (this.#themeTokensCardCount++).toString();
@@ -319,8 +326,7 @@ export default class TokensPage {
     `;
   }
 
-  /** @param {Options} options */
-  async #renderChildren(options) {
+  async #renderChildren(options: Options) {
     const include = [];
     const parent = options.tokens;
     const level = (options.level ?? 1) + 1;
@@ -339,8 +345,7 @@ export default class TokensPage {
     return kids.join('\n');
   }
 
-  /** @param {Options} options */
-  async #renderContent(options) {
+  async #renderContent(options: Options) {
     const docs = getDocs(options.tokens);
     const heading = docs?.heading ?? capitalize(options.name.replace('-', ' '));
     const permalink = options.level === 1 ? '' : html`
@@ -360,8 +365,7 @@ export default class TokensPage {
     `;
   }
 
-  /** @param {Options} options */
-  async #renderCategory(options) {
+  async #renderCategory(options: Options) {
     if (options.seenPaths?.has(options.path)) {
       return '';
     }
@@ -405,22 +409,46 @@ export default class TokensPage {
     }
   }
 
-  async render(ctx) {
+  async render(ctx: Data) {
     const { tokenCategory } = ctx;
     const { exclude, include, path, slug } = tokenCategory;
-    const name = path.split('.').pop();
+    const name = path.split('.').pop()!;
     const tokens = resolveTokens(path);
-    const seenPaths = new Set();
+    const seenPaths = new Set<string>();
+    const options: Options = { tokens, name, path, slug, level: 1, exclude, include, seenPaths };
     return html`
       <link rel="stylesheet" data-helmet href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
       <link rel="stylesheet" data-helmet href="/styles/samp.css">
       <link rel="stylesheet" data-helmet href="/styles/tokens-pages.css">
-      <script type="module" data-helmet src="/assets/javascript/tokens-pages.js"></script>
       <script type="module" data-helmet>
-        import '@rhds/elements/rh-table/rh-table.js';
+        import '@uxdot/elements/uxdot-spacer-tokens-table.js';
+        import '@rhds/elements/rh-tooltip/rh-tooltip.js';
+        import '@rhds/elements/rh-card/rh-card.js';
+        import { ContextChangeEvent } from '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
+
+        document.addEventListener('change', function(event) {
+          if (event instanceof ContextChangeEvent) {
+            updateSwatches();
+          }
+        });
+
+        const swatches = document.querySelectorAll('.swatches .swatch');
+        async function updateSwatches() {
+          const tinycolor = await import('tinycolor2').then(x => x.default);
+          for (const swatch of swatches) {
+            const value = getComputedStyle(swatch).getPropertyValue('--swatch-color');
+            const color = tinycolor(value);
+            const isDark = color.isDark();
+            const isLight = color.isLight();
+            swatch.classList.toggle('isDark', isDark);
+            swatch.classList.toggle('isLight', isLight);
+          }
+        }
+
+        updateSwatches();
       </script>
-      ${await this.#renderCategory({ tokens, name, path, slug, level: 1, exclude, include, seenPaths })}
-      ${await this.renderFile('./docs/_includes/partials/component/feedback.11ty.cjs', ctx)}
+      ${await this.#renderCategory(options)}
+      ${await this.renderFile('./docs/_includes/partials/component/feedback.11ty.ts', ctx)}
     `;
   }
 };

@@ -4,18 +4,6 @@ layout: layouts/pages/has-toc.njk
 order: 40
 tags:
   - foundations
-spacerTokens:
-  - --rh-space-xs
-  - --rh-space-sm
-  - --rh-space-md
-  - --rh-space-lg
-  - --rh-space-xl
-  - --rh-space-2xl
-  - --rh-space-3xl
-  - --rh-space-4xl
-  - --rh-space-5xl
-  - --rh-space-6xl
-  - --rh-space-7xl
 ---
 
 <link rel="stylesheet"
@@ -66,9 +54,8 @@ spacerTokens:
   added based on design needs, so do not create any new spacers, combine 
   different spacers instead.
 
-  <rh-table>
-  {% spacerTokensTable headingLevel="4", tokens=spacerTokens %}{% endspacerTokensTable %}
-  </rh-table>
+  <uxdot-spacer-tokens-table tokens="xs, sm, md, lg, xl, 2xl, 3xl, 4xl, 5xl, 6xl, 7xl">
+  </uxdot-spacer-tokens-table>
 
   ### Applying spacers
 

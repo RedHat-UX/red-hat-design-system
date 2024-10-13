@@ -9,6 +9,7 @@ import { readFile } from 'node:fs/promises';
 import { copyCell, dedent, getTokenHref } from '../../../_plugins/tokensHelpers.js';
 import { Generator } from '@jspm/generator';
 import { AssetCache } from '@11ty/eleventy-fetch';
+import { Renderer } from '#uxdot/eleventy.config.js';
 
 type FileEntry = [string, FileOptions & { inline: string }];
 
@@ -42,14 +43,8 @@ interface Context extends EleventyPageRenderData {
   playgrounds: Record<`rh-${string}`, ProjectManifest>;
 }
 
-export default class ElementsPage {
+export default class ElementsPage extends Renderer {
   static assetCache = new AssetCache('rhds-ux-dot-import-map-jspmio');
-
-  declare renderTemplate: (path: string, type: string) => Promise<string>;
-  declare renderFile: (path: string, data?: object) => Promise<string>;
-  declare highlight: (lang: string, content: string) => string;
-  declare dedent: (str: string) => string;
-  declare slugify: (str: string) => string;
 
   data() {
     return {
@@ -64,7 +59,15 @@ export default class ElementsPage {
 
   async render(ctx: Context) {
     const { doc } = ctx;
-    const { fileExists, filePath, isCodePage, isDemoPage, tagName, planned } = doc;
+    const {
+      fileExists,
+      filePath,
+      isCodePage,
+      isDemoPage,
+      isOverviewPage,
+      tagName,
+      planned,
+    } = doc;
     const content = fileExists ? await this.renderFile(filePath, ctx) : '';
     const stylesheets = [
       '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css',
@@ -85,7 +88,11 @@ export default class ElementsPage {
       </noscript>
 
       <script type="module" data-helmet>
-        import '/assets/javascript/elements/uxdot-copy-button.js';
+        import '@uxdot/elements/uxdot-copy-button.js';
+        import '@uxdot/elements/uxdot-copy-permalink.js';
+        import '@uxdot/elements/uxdot-best-practice.js';
+        import '@uxdot/elements/uxdot-repo-status-checklist.js';
+        import '@uxdot/elements/uxdot-repo-status-list.js';
         import '@rhds/elements/rh-alert/rh-alert.js';
         import '@rhds/elements/rh-cta/rh-cta.js';
         import '@rhds/elements/rh-surface/rh-surface.js';
@@ -101,11 +108,12 @@ export default class ElementsPage {
         import '@rhds/elements/${tagName}/${tagName}.js';
       </script>`}
 
-      ${isCodePage ? await this.#renderCodePage(ctx)
+      ${isOverviewPage ? await this.#renderOverviewPage(content, ctx)
+      : isCodePage ? await this.#renderCodePage(ctx)
       : isDemoPage ? await this.#renderDemos(ctx)
       : content}
 
-      ${await this.renderFile('./docs/_includes/partials/component/feedback.11ty.cjs', ctx)}
+      ${await this.renderFile('./docs/_includes/partials/component/feedback.11ty.ts', ctx)}
     `;
   }
 
@@ -152,6 +160,26 @@ export default class ElementsPage {
     } catch {
       return '';
     }
+  }
+
+  async #renderOverviewPage(content: string, ctx: Context) {
+    const description = ctx.doc.docsPage.description ?? ctx.doc.description ?? '';
+    return html`${!ctx.doc.planned ? '' : html`
+      <h2 id="coming-soon">Coming soon!</h2>
+      <p>This element is currently in progress and not yet available for
+      use.</p>`}
+      <h2 id="overview">Overview</h2>
+      ${await this.renderTemplate(description, 'md')}
+      ${!ctx.doc.overviewImageHref ? '' : html`
+      <uxdot-example><img src="${ctx.doc.overviewImageHref}" aria-labelledby="overview-image-description"></uxdot-example>`}
+      <h2 id="status">Status</h2>
+      <uxdot-repo-status-list element="${ctx.tagName}"></uxdot-repo-status-list>
+      <h2 id="sample-element">Sample element</h2>
+      ${ctx.doc.mainDemoContent}
+      ${content}
+      <h2 id="status-checklist">Status checklist</h2>
+      <uxdot-repo-status-checklist element="${ctx.tagName}"></uxdot-repo-status-checklist>
+    `;
   }
 
   async #renderCodePage(ctx: Context) {
@@ -232,7 +260,9 @@ export default class ElementsPage {
         });
 
     return html`
-      <script data-helmet type="module" src="/assets/javascript/elements/uxdot-installation-tabs.js"></script>
+      <script data-helmet type="module">
+        import "@uxdot/elements/uxdot-installation-tabs.js";
+      </script>
       <style data-helmet>${''/* NOTE: adapted from theming/developers.css - better to wrap the localhost behaviour? */}
       uxdot-installation-tabs {
         border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
@@ -804,8 +834,8 @@ export default class ElementsPage {
       </style>
 
       <script type="module" data-helmet>
-        import '/assets/javascript/elements/uxdot-copy-button.js';
-        import '/assets/javascript/elements/uxdot-header.js';
+        import '@uxdot/elements/uxdot-copy-button.js';
+        import '@uxdot/elements/uxdot-header.js';
         import 'playground-elements';
         import '@rhds/elements/rh-button/rh-button.js';
         import '@rhds/elements/rh-card/rh-card.js';

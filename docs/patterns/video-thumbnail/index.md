@@ -245,10 +245,6 @@ values between elements.
        height="692">
 </uxdot-example>
 
-<rh-table>
-  {% spacerTokensTable headingLevel="4",
-                       tokens="--rh-space-xl" %}
-  {% endspacerTokensTable %}
-</rh-table>
+<uxdot-spacer-tokens-table tokens="xl"></uxdot-spacer-tokens-table>
 
-{% renderFile './docs/_includes/partials/component/feedback.11ty.cjs' %}
+{% renderFile './docs/_includes/partials/component/feedback.11ty.ts' %}

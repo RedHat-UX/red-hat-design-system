@@ -34,10 +34,13 @@ export default function(eleventyConfig: UserConfig) {
   });
 
   eleventyConfig.on('eleventy.before', async function() {
-    const { stderr } = await exec('npx tspc');
+    const { stdout, stderr } = await exec('npx tspc || exit 0');
     if (stderr) {
       // eslint-disable-next-line no-console
       console.error(stderr);
+    } else {
+      // eslint-disable-next-line no-console
+      console.log(stdout);
     }
   });
 
@@ -105,8 +108,7 @@ export default function(eleventyConfig: UserConfig) {
         'lit-html': '/assets/packages/lit-html/lit-html.js',
         'lit-html/': '/assets/packages/lit-html/',
         'prism-esm/': '/assets/packages/prism-esm/',
-        '@lit-labs/ssr-client/lit-element-hydrate-support.js':
-          '/assets/packages/@lit-labs/ssr-client/lit-element-hydrate-support.js',
+        '@lit-labs/ssr-client/lit-element-hydrate-support.js': '/assets/packages/@lit-labs/ssr-client/lit-element-hydrate-support.js',
         '@rhds/tokens': '/assets/packages/@rhds/tokens/js/tokens.js',
         '@rhds/tokens/css/': '/assets/packages/@rhds/tokens/css/',
         '@rhds/tokens/': '/assets/packages/@rhds/tokens/js/',
@@ -117,6 +119,7 @@ export default function(eleventyConfig: UserConfig) {
         '@patternfly/elements/': '/assets/packages/@patternfly/elements/',
         '@patternfly/icons/': '/assets/packages/@patternfly/icons/',
         '@patternfly/pfe-core/': '/assets/packages/@patternfly/pfe-core/',
+        '@uxdot/elements/': '/assets/javascript/elements/',
         'playground-elements': 'https://cdn.jsdelivr.net/npm/playground-elements@0.18.1/+esm',
       },
     },
@@ -194,27 +197,31 @@ export default function(eleventyConfig: UserConfig) {
 
   eleventyConfig.addPlugin(LitPlugin, {
     componentModules: [
-      'elements/rh-button/rh-button.js',
-      'elements/rh-tag/rh-tag.js',
-      'elements/rh-code-block/rh-code-block.js',
-      'elements/rh-icon/rh-icon.js',
-      'elements/rh-surface/rh-surface.js',
-      'elements/rh-skip-link/rh-skip-link.js',
-      'elements/rh-footer/rh-footer-universal.js',
-      'docs/assets/javascript/elements/uxdot-masthead.js',
-      'docs/assets/javascript/elements/uxdot-header.js',
-      'docs/assets/javascript/elements/uxdot-sidenav.js',
-      'docs/assets/javascript/elements/uxdot-hero.js',
-      'docs/assets/javascript/elements/uxdot-feedback.js',
-      'docs/assets/javascript/elements/uxdot-copy-permalink.js',
-      'docs/assets/javascript/elements/uxdot-copy-button.js',
-      'docs/assets/javascript/elements/uxdot-repo-status-list.js',
       'docs/assets/javascript/elements/uxdot-best-practice.js',
-      'docs/assets/javascript/elements/uxdot-search.js',
-      'docs/assets/javascript/elements/uxdot-toc.js',
-      'docs/assets/javascript/elements/uxdot-pattern.js',
+      'docs/assets/javascript/elements/uxdot-copy-button.js',
+      'docs/assets/javascript/elements/uxdot-copy-permalink.js',
       'docs/assets/javascript/elements/uxdot-example.js',
+      'docs/assets/javascript/elements/uxdot-feedback.js',
+      'docs/assets/javascript/elements/uxdot-header.js',
+      'docs/assets/javascript/elements/uxdot-hero.js',
       'docs/assets/javascript/elements/uxdot-installation-tabs.js',
+      'docs/assets/javascript/elements/uxdot-masthead.js',
+      'docs/assets/javascript/elements/uxdot-pattern.js',
+      'docs/assets/javascript/elements/uxdot-repo-status-checklist.js',
+      'docs/assets/javascript/elements/uxdot-repo-status-list.js',
+      'docs/assets/javascript/elements/uxdot-search.js',
+      'docs/assets/javascript/elements/uxdot-sidenav.js',
+      'docs/assets/javascript/elements/uxdot-spacer-tokens-table.js',
+      'docs/assets/javascript/elements/uxdot-toc.js',
+      'elements/rh-button/rh-button.js',
+      'elements/rh-code-block/rh-code-block.js',
+      'elements/rh-footer/rh-footer-universal.js',
+      'elements/rh-icon/rh-icon.js',
+      'elements/rh-skip-link/rh-skip-link.js',
+      'elements/rh-subnav/rh-subnav.js',
+      'elements/rh-surface/rh-surface.js',
+      'elements/rh-table/rh-table.js',
+      'elements/rh-tag/rh-tag.js',
     ],
   });
 
@@ -271,4 +278,7 @@ export class Renderer {
   declare highlight: (lang: string, content: string) => string;
   declare dedent: (str: string) => string;
   declare slugify: (str: string) => string;
+  declare deslugify: (str: string) => string;
+  declare getTagNameSlug: (str: string) => string;
+  declare getElementDocs: (str: string) => string;
 }

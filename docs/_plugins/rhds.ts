@@ -4,7 +4,7 @@ import * as ChildProcess from 'node:child_process';
 import { readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { promisify } from 'node:util';
-import { writeFile } from 'node:fs/promises';
+import { readFile, writeFile } from 'node:fs/promises';
 import { makeDemoEnv } from '../../scripts/environment.js';
 
 import yaml from 'js-yaml';
@@ -16,8 +16,13 @@ import RHDSShortcodesPlugin from './shortcodes.js';
 import RHDSElementDocsPlugin from './element-docs.ts';
 import RHDSElementDemosPlugin from './element-demos.js';
 
-import { getPfeConfig, type PfeConfig } from '@patternfly/pfe-tools/config.js';
+import { getPfeConfig } from '@patternfly/pfe-tools/config.js';
 import { UserConfig } from '@11ty/eleventy';
+
+const repoStatus = yaml.load(await readFile(
+  new URL('../_data/repoStatus.yaml', import.meta.url),
+  'utf8',
+));
 
 const exec = promisify(ChildProcess.exec);
 const cwd = process.cwd();
@@ -28,12 +33,13 @@ const cwd = process.cwd();
  * inputPath the path to the page's input file (e.g. template or paginator)
  */
 
+const pfeconfig = getPfeConfig();
+
 /**
  * @param  tagName e.g. pf-jazz-hands
- * @param  config pfe tools repo config
  */
-function getTagNameSlug(tagName: string, config: PfeConfig) {
-  const name = config?.aliases?.[tagName] ?? tagName.replace(`${config?.tagPrefix ?? 'rh'}-`, '');
+function getTagNameSlug(tagName: string) {
+  const name = pfeconfig?.aliases?.[tagName] ?? tagName.replace(`${pfeconfig?.tagPrefix ?? 'rh'}-`, '');
   return slugify(name, {
     strict: true,
     lower: true,
@@ -72,7 +78,7 @@ function getFilesToCopy() {
 
   // Copy all component and core files to _site
   return Object.fromEntries(tagNames.flatMap(tagName => {
-    const slug = getTagNameSlug(tagName, config);
+    const slug = getTagNameSlug(tagName);
     return Object.entries({
       [`elements/${tagName}/demo/`]: `elements/${slug}/demo`,
       [`elements/${tagName}/docs/**/*.{${COPY_CONTENT_EXTENSIONS.join(',')}}`]: `elements/${slug}`,
@@ -117,21 +123,9 @@ export default function(eleventyConfig: UserConfig, { tagsToAlphabetize }: Optio
   eleventyConfig.addJavaScriptFunction('getTagNameSlug', getTagNameSlug);
 
   eleventyConfig.addFilter('getPrettyElementName', function(tagName) {
-    const pfeconfig = getPfeConfig();
-    const slug = getTagNameSlug(tagName, pfeconfig);
+    const slug = getTagNameSlug(tagName);
     const deslugify = eleventyConfig.getFilter('deslugify');
     return pfeconfig.aliases[tagName] || deslugify(slug);
-  });
-
-  /** get the element overview from the manifest */
-  eleventyConfig.addFilter('getElementDescription', function getElementDescription() {
-    /**
-     * NB: since the data for this shortcode is no a POJO,
-     * but a DocsPage instance, 11ty assigns it to this.ctx._
-     * @see https://github.com/11ty/eleventy/blob/bf7c0c0cce1b2cb01561f57fdd33db001df4cb7e/src/Plugins/RenderPlugin.js#L89-L93
-     */
-    const { docsPage } = this.ctx.doc ?? this.doc;
-    return docsPage.description;
   });
 
   eleventyConfig.addFilter('deslugify', function(slug: string) {
@@ -193,6 +187,13 @@ export default function(eleventyConfig: UserConfig, { tagsToAlphabetize }: Optio
   eleventyConfig.on('eleventy.before', async function() {
     eleventyConfig.addGlobalData('pfeconfig', getPfeConfig());
   });
+
+  eleventyConfig.on('eleventy.before', ({ directories }) =>
+    writeFile(
+      join(directories.output, 'assets/javascript/repoStatus.json'),
+      JSON.stringify(repoStatus),
+      'utf8',
+    ));
 
   /** custom-elements.json */
   eleventyConfig.on('eleventy.before', async function({ runMode }) {
