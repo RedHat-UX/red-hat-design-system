@@ -188,7 +188,9 @@ export default async function(eleventyConfig: UserConfig, options?: Options) {
   eleventyConfig.addWatchTarget('docs/theming/**/patterns/*.html');
 
   for (const tagName of await readdir(join(cwd, './elements/'))) {
-    const dir = join(cwd, './elements/', tagName, 'docs/');
-    eleventyConfig.addWatchTarget(dir);
+    if (!tagName.includes('.')) {
+      const dir = join(cwd, './elements/', tagName, 'docs/');
+      eleventyConfig.addWatchTarget(dir);
+    }
   }
 };

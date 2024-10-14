@@ -4,9 +4,9 @@
   ],
   "include": [
     "./**/*.ts",
-    "../declaration.d.ts",
+    "../declaration.d.ts"
   ],
   "compilerOptions": {
     "composite": true
-  },
+  }
 }

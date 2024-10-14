@@ -121,9 +121,10 @@ export default async function(eleventyConfig: UserConfig) {
   eleventyConfig.addPassthroughCopy({
     'node_modules/@lit/reactive-element': '/assets/packages/@lit/reactive-element',
   });
-  eleventyConfig.addPassthroughCopy({ 'elements': '/assets/packages/@rhds/elements/elements/' });
-  eleventyConfig.addPassthroughCopy({ 'lib': '/assets/packages/@rhds/elements/lib/' });
-  eleventyConfig.addPassthroughCopy({ 'uxdot': '/assets/packages/@uxdot/elements/' });
+  const isNotTsbuild = (p: string) => !p.includes('.');
+  eleventyConfig.addPassthroughCopy({ 'elements': `/assets/packages/@rhds/elements/elements/` }, { filter: isNotTsbuild });
+  eleventyConfig.addPassthroughCopy({ 'lib': `/assets/packages/@rhds/elements/lib/` }, { filter: isNotTsbuild });
+  eleventyConfig.addPassthroughCopy({ 'uxdot': `/assets/packages/@uxdot/elements/` }, { filter: isNotTsbuild });
   eleventyConfig.addPlugin(ImportMapPlugin, {
     nodemodulesPublicPath: '/assets/packages',
     manualImportMap: {
@@ -249,6 +250,7 @@ export default async function(eleventyConfig: UserConfig) {
       'elements/rh-surface/rh-surface.js',
       'elements/rh-table/rh-table.js',
       'elements/rh-tag/rh-tag.js',
+      'elements/rh-cta/rh-cta.js',
     ],
   });
 

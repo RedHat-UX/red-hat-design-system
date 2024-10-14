@@ -18,17 +18,14 @@ span {
   flex-direction: row;
   align-items: center;
   gap: var(--rh-space-sm);
-  color: var(--_bp-color);
 }
 
-#do {
-  /* TODO: remove value after https://github.com/RedHat-UX/red-hat-design-tokens/pull/138 */
-  --_bp-color: var(--rh-color-status-success-on-light, #63993d);
+#do span {
+  color: var(--rh-color-status-success);
 }
 
-#dont {
-  /* TODO: remove value after https://github.com/RedHat-UX/red-hat-design-tokens/pull/138 */
-  --_bp-color: var(--rh-color-status-danger-on-light, #f0561d);
+#dont span {
+  color: var(--rh-color-status-danger);
 }
 
 ::slotted(uxdot-example) {

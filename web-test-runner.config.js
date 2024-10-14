@@ -4,7 +4,7 @@ import { litcssOptions } from './web-dev-server.config.js';
 export default {
   ...pfeTestRunnerConfig({
     litcssOptions,
-    tsconfig: 'tsconfig.json',
+    tsconfig: 'tsconfig.settings.json',
     files: ['elements/**/*.spec.ts'],
     importMapOptions: { },
   }),
