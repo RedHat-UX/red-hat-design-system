@@ -54,8 +54,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.4/core.js",
     "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.4/core.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
@@ -73,7 +73,7 @@
     "@patternfly/elements/": "/assets/packages/@patternfly/elements/",
     "@patternfly/icons/": "/assets/packages/@patternfly/icons/",
     "@patternfly/pfe-core/": "/assets/packages/@patternfly/pfe-core/",
-    "@uxdot/elements/": "/assets/javascript/elements/",
+    "@uxdot/elements/": "/assets/javascript/elements/uxdot/",
     "playground-elements": "https://cdn.jsdelivr.net/npm/playground-elements@0.18.1/+esm"
   },
   "scopes": {
@@ -138,7 +138,7 @@
   import '@uxdot/elements/uxdot-header.js';
 </script><script type="module">
   import '@rhds/elements/rh-subnav/rh-subnav.js';
-</script><link rel="stylesheet" href="/styles/pages/backpage.css"><link rel="stylesheet" href="/assets/javascript/elements/uxdot-toc-lightdom.css"><script type="module">
+</script><link rel="stylesheet" href="/styles/pages/backpage.css"><link rel="stylesheet" href="/assets/packages/@uxdot/elements/uxdot-toc-lightdom.css"><script type="module">
   import '@uxdot/elements/uxdot-toc.js';
 </script><script type="module">
   import '@rhds/elements/rh-footer/rh-footer-universal.js';
@@ -854,7 +854,7 @@
               ></slot><!--lit-part--><!--/lit-part-->
       </nav>
     <!--/lit-part--></template>
-  <a href="/elements/popover/">Overview</a><a href="/elements/popover/style/">Style</a><a href="/elements/popover/guidelines/" active="">Guidelines</a><a href="/elements/popover/demos/">Demos</a></rh-subnav>
+  <a href="/elements/popover/">Overview</a><a href="/elements/popover/style/">Style</a><a href="/elements/popover/guidelines/" active="">Guidelines</a></rh-subnav>
   
 </uxdot-header>
 
@@ -891,7 +891,7 @@
 
       
 
-      <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+      <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button 
@@ -911,7 +911,7 @@
 </uxdot-copy-permalink>
 <p>Use a popover to answer a question, explain something, or provide a user with
 guidance to help them complete a task.</p>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button 
@@ -938,7 +938,7 @@ tooltips are used for identification purposes.</li>
 only contain short descriptions or labels.</li>
 <li>On large screens, popovers appear on click whereas tooltips appear on hover.</li>
 </ul>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button 
@@ -1239,7 +1239,7 @@ well.</p>
     <!--/lit-part--></template>
   <img src="../popover-usage-content.svg" alt="Popover component usage, content" width="845" height="242">
 </uxdot-example>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button 
@@ -1568,7 +1568,7 @@ message creates a more helpful user experience.</p>
     </tbody>
   </table>
 </rh-table>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button 
@@ -1600,7 +1600,7 @@ orientation.</p>
     <!--/lit-part--></template>
   <img src="../popover-usage-orientation.svg" alt="Popover component usage, orientation" width="851" height="519">
 </uxdot-example>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button 
@@ -1630,7 +1630,7 @@ into the background.</p>
     <!--/lit-part--></template>
   <img src="../popover-usage-black.svg" alt="Popover component usage, black on black" width="392" height="258">
 </uxdot-example>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button 
@@ -1660,7 +1660,7 @@ even with the subtle drop shadow.</p>
     <!--/lit-part--></template>
   <img src="../popover-usage-white.svg" alt="Popover component usage, white on white" width="405" height="258">
 </uxdot-example>
-<uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+<uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button 
@@ -1678,7 +1678,7 @@ even with the subtle drop shadow.</p>
     <a href="#behavior">Behavior</a><a>
   </a></h2>
 </uxdot-copy-permalink>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button 
@@ -1710,7 +1710,7 @@ the popover, or press the <strong>Escape (esc)</strong> key.</p>
     <!--/lit-part--></template>
   <img src="../popover-behavior-trigger.svg" alt="Popover component behavior, trigger" width="845" height="251">
 </uxdot-example>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button 
@@ -1741,7 +1741,7 @@ popover.</p>
     <!--/lit-part--></template>
   <img src="../popover-behavior-form.svg" alt="Popover component behavior, form" width="406" height="282">
 </uxdot-example>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button 
@@ -1771,7 +1771,7 @@ still have different use cases (see <strong>Usage</strong>).</p>
     <!--/lit-part--></template>
   <img src="../popover-behavior-mobile.svg" alt="Popover component behavior, mobile" width="779" height="253">
 </uxdot-example>
-<uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+<uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button 
@@ -1942,7 +1942,7 @@ still have different use cases (see <strong>Usage</strong>).</p>
     </tbody>
   </table>
 </rh-table>
-<uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+<uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button 
@@ -2011,7 +2011,7 @@ popover and be able to interact with the links or close it.</p>
     </tbody>
   </table>
 </rh-table>
-<uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+<uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button 
@@ -2029,7 +2029,7 @@ popover and be able to interact with the links or close it.</p>
     <a href="#best-practices">Best practices</a><a>
   </a></h2>
 </uxdot-copy-permalink>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button 
@@ -2058,7 +2058,7 @@ popover and be able to interact with the links or close it.</p>
     <!--/lit-part--></template>
   <img src="../popover-best-practice-1.svg" alt="Popover component best practice 1" width="486" height="246">
 </uxdot-example>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button 
@@ -2087,7 +2087,7 @@ popover and be able to interact with the links or close it.</p>
     <!--/lit-part--></template>
   <img src="../popover-best-practice-2.svg" alt="Popover component best practice 2" width="445" height="370">
 </uxdot-example>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button 
@@ -2165,9 +2165,6 @@ popover and be able to interact with the links or close it.</p>
       
       
         
-      
-    
-      
       
     
   

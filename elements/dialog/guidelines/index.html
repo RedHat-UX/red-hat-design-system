@@ -54,8 +54,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.4/core.js",
     "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.4/core.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
@@ -73,7 +73,7 @@
     "@patternfly/elements/": "/assets/packages/@patternfly/elements/",
     "@patternfly/icons/": "/assets/packages/@patternfly/icons/",
     "@patternfly/pfe-core/": "/assets/packages/@patternfly/pfe-core/",
-    "@uxdot/elements/": "/assets/javascript/elements/",
+    "@uxdot/elements/": "/assets/javascript/elements/uxdot/",
     "playground-elements": "https://cdn.jsdelivr.net/npm/playground-elements@0.18.1/+esm"
   },
   "scopes": {
@@ -140,7 +140,7 @@
   import '@uxdot/elements/uxdot-header.js';
 </script><script type="module">
   import '@rhds/elements/rh-subnav/rh-subnav.js';
-</script><link rel="stylesheet" href="/styles/pages/backpage.css"><link rel="stylesheet" href="/assets/javascript/elements/uxdot-toc-lightdom.css"><script type="module">
+</script><link rel="stylesheet" href="/styles/pages/backpage.css"><link rel="stylesheet" href="/assets/packages/@uxdot/elements/uxdot-toc-lightdom.css"><script type="module">
   import '@uxdot/elements/uxdot-toc.js';
 </script><script type="module">
   import '@rhds/elements/rh-footer/rh-footer-universal.js';
@@ -841,7 +841,7 @@
               ></slot><!--lit-part--><!--/lit-part-->
       </nav>
     <!--/lit-part--></template>
-  <a href="/elements/dialog/">Overview</a><a href="/elements/dialog/style/">Style</a><a href="/elements/dialog/guidelines/" active="">Guidelines</a><a href="/elements/dialog/code/">Code</a><a href="/elements/dialog/accessibility/">Accessibility</a><a href="/elements/dialog/demos/">Demos</a><a href="/elements/dialog/demos/">Demos</a></rh-subnav>
+  <a href="/elements/dialog/">Overview</a><a href="/elements/dialog/style/">Style</a><a href="/elements/dialog/guidelines/" active="">Guidelines</a><a href="/elements/dialog/code/">Code</a><a href="/elements/dialog/accessibility/">Accessibility</a><a href="/elements/dialog/demos/">Demos</a></rh-subnav>
   
 </uxdot-header>
 
@@ -879,7 +879,7 @@
       
       
 
-      <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+      <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button 
@@ -905,7 +905,7 @@ are blocked from viewing page content and cannot return to their workflow until
 the dialog task is complete or the dialog is dismissed. A dialog can be
 effective when used correctly, but it should be used sparingly to limit
 disruption.</p>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button 
@@ -927,7 +927,7 @@ disruption.</p>
 several times on the same page, consider moving it to the main page instead. Do
 not use a dialog unless the information or task within is vital to user success
 and worth disrupting their workflow.</p>
-<uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+<uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button 
@@ -947,7 +947,7 @@ and worth disrupting their workflow.</p>
 </uxdot-copy-permalink>
 <p>There are two dialog container sizes. Choose a size that works best for the
 amount of available content.</p>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button 
@@ -977,7 +977,7 @@ like marketing pages.</p>
     <!--/lit-part--></template>
   <img src="../dialog-width-fixed.png" alt="A dialog container spanning a 12-column grid that is fixed in the center of the page" width="1000" height="640">
 </uxdot-example>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button 
@@ -1007,7 +1007,7 @@ grid like apps or dashboards.</p>
     <!--/lit-part--></template>
   <img src="../dialog-width-full.png" alt="A dialog container spanning a 6-column fluid grid that takes up the whole screen" width="1000" height="640">
 </uxdot-example>
-<uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+<uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button 
@@ -1026,7 +1026,7 @@ grid like apps or dashboards.</p>
   </a></h2>
 </uxdot-copy-permalink>
 <p>There are three available dialog variants depending on the intended function.</p>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button 
@@ -1077,7 +1077,7 @@ a <a href="https://ux.redhat.com/elements/button/">danger button</a> instead</li
     <!--/lit-part--></template>
   <img src="../dialog-confirmation-destructive.png" alt="Destructive confirmation dialog example with a red primary button" width="1000" height="322">
 </uxdot-example>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button 
@@ -1108,7 +1108,7 @@ and then provide actionable steps toward a solution.</p>
     <!--/lit-part--></template>
   <img src="../dialog-error.png" alt="Error dialog example with a blue primary button" width="1000" height="349">
 </uxdot-example>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button 
@@ -1147,7 +1147,7 @@ alert</a> instead</li>
     <!--/lit-part--></template>
   <img src="../dialog-passive.png" alt="Passive dialog example with a blue primary button" width="1000" height="322">
 </uxdot-example>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button 
@@ -1177,7 +1177,7 @@ width and include a close button.</p>
     <!--/lit-part--></template>
   <img src="../dialog-video-player.png" alt="A dialog video player spanning a 12-column grid with a white close button" width="1000" height="640">
 </uxdot-example>
-<uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+<uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button 
@@ -1198,7 +1198,7 @@ width and include a close button.</p>
 <p>Dialog content should be descriptive and specific so users can scan, understand
 the context of an action, and make a quick decision. A dialog includes three
 main content sections.</p>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button 
@@ -1219,7 +1219,7 @@ main content sections.</p>
 <p>A headline introduces the purpose of a dialog, sometimes as a question. Use
 important key words like <strong>permanently</strong> to describe an action and its
 consequences.</p>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button 
@@ -1242,7 +1242,7 @@ three lines or less, typically concerning changes to a workflow or access to
 information. Be mindful of adding interactive elements that would navigate users
 away from a dialog unless they are crucial yet helpful resources like
 documentation.</p>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button 
@@ -1263,7 +1263,7 @@ documentation.</p>
 <p>Buttons allow users to answer the headline prompt. Write button text labels as
 verbs to communicate their function and consequence. Button verbs can be pulled
 from the headline for better scannability.</p>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button 
@@ -1320,7 +1320,7 @@ from the headline for better scannability.</p>
     </tbody>
   </table>
 </rh-table>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button 
@@ -1353,7 +1353,7 @@ scroll horizontally.</p>
     <!--/lit-part--></template>
   <img src="../dialog-overflow.png" alt="Dialog with a long amount of content showing visible gradient at the bottom of the body text section" width="1000" height="586">
 </uxdot-example>
-<uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+<uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button 
@@ -1371,7 +1371,7 @@ scroll horizontally.</p>
     <a href="#layout">Layout</a><a>
   </a></h2>
 </uxdot-copy-permalink>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button 
@@ -1413,7 +1413,7 @@ the backdrop and viewport.</p>
     <!--/lit-part--></template>
   <img src="../dialog-placement-top.png" alt="Dialog with container horizontally centered, but positioned at the top of the page" width="1000" height="640">
 </uxdot-example>
-<uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+<uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button 
@@ -1431,7 +1431,7 @@ the backdrop and viewport.</p>
     <a href="#responsive-design">Responsive design</a><a>
   </a></h2>
 </uxdot-copy-permalink>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button 
@@ -1461,7 +1461,7 @@ breakpoints.</p>
     <!--/lit-part--></template>
   <img src="../dialog-breakpoint-large.png" alt="A dialog container on a large breakpoint" width="1000" height="640">
 </uxdot-example>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button 
@@ -1491,7 +1491,7 @@ full-width and become taller.</p>
     <!--/lit-part--></template>
   <img src="../dialog-breakpoint-small.png" alt="Two dialog containers on small breakpoints, one tablet size and one mobile size" width="968" height="640">
 </uxdot-example>
-<uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+<uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button 
@@ -1509,7 +1509,7 @@ full-width and become taller.</p>
     <a href="#best-practices">Best practices</a><a>
   </a></h2>
 </uxdot-copy-permalink>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button 
@@ -1540,7 +1540,7 @@ bring users back to their original workflow as quickly as possible.</p>
     <!--/lit-part--></template>
   <img src="../dialog-best-practice-1.png" alt="A dialog container with a three-panel accordion which is incorrect usage" width="872" height="543">
 </uxdot-example>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button 
@@ -1570,7 +1570,7 @@ action.</p>
     <!--/lit-part--></template>
   <img src="../dialog-best-practice-2.png" alt="A dialog container with vague text which is incorrect usage" width="872" height="357">
 </uxdot-example>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
       <!--lit-node 2--><button 
@@ -1649,9 +1649,6 @@ variants.</p>
       
       
         
-      
-    
-      
       
     
       

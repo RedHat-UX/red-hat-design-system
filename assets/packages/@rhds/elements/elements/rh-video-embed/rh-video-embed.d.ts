@@ -51,11 +51,11 @@ export declare class RhVideoEmbed extends LitElement {
     private _consentClicked;
     private _playClicked;
     private _playStarted;
-    get consentButton(): Element | null | undefined;
+    get consentButton(): HTMLElement | null | undefined;
     get consentClicked(): boolean;
     get focusableElement(): HTMLElement;
     get iframeElement(): HTMLIFrameElement | undefined;
-    get playButton(): Element | null | undefined;
+    get playButton(): HTMLElement | null | undefined;
     get playClicked(): boolean;
     get playStarted(): boolean;
     render(): import("lit-html").TemplateResult<1>;
