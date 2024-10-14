@@ -143,12 +143,16 @@ export class RhCta extends LitElement {
     const isDefault = !variant;
     const svg = isDefault;
     const iconOrSvg = isDefault || !!icon;
-    const follower = !iconOrSvg ? '' : variant !== 'brick' && icon ? html`<!--
-   --><rh-icon icon="${icon}" set="${iconSet ?? 'ui'}"></rh-icon>` : variant ? '' : html`<!--
-   --><rh-icon  set="ui" icon="arrow-right"></rh-icon>`;
+    const follower =
+      (variant !== 'brick' && icon) ?
+        html`<rh-icon .icon=${icon} .set=${iconSet ?? 'ui'}></rh-icon>`
+        : (variant === undefined) ?
+          html`<rh-icon set="ui" icon="arrow-right"></rh-icon>`
+          : html``;
     const iconContent =
-          (variant === 'brick' && icon) ? ''
-        : html`<rh-icon icon=${icon} set="${iconSet ?? 'ui'}"></rh-icon>`;
+          (variant === 'brick' && icon) ?
+            html`<rh-icon .icon=${icon} set="${iconSet ?? 'ui'}"></rh-icon>`
+            : html``;
     const linkContent =
         !href ? html`<slot></slot>${follower}`
       : html`<a href=${href}
