@@ -33,7 +33,7 @@
 }
 
 .widthAdjustment ::slotted(*) {
-  width: var(--_width)
+  width: var(--_width);
 }
 
 :host([variant='full']) #container {

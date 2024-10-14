@@ -5,10 +5,10 @@
   "include": [
     "./**/*",
     "../declaration.d.ts",
-    "../eleventy.config.ts",
+    "../eleventy.config.ts"
   ],
   "compilerOptions": {
     "composite": true,
     "noEmit": true
-  },
+  }
 }

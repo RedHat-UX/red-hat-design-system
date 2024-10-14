@@ -9,6 +9,6 @@
   ],
   "compilerOptions": {
     "composite": true,
-    "outDir": "../docs/assets/javascript/elements",
-  },
+    "outDir": "../docs/assets/javascript/elements"
+  }
 }
