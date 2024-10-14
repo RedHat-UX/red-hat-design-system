@@ -121,10 +121,13 @@ export default async function(eleventyConfig: UserConfig) {
   eleventyConfig.addPassthroughCopy({
     'node_modules/@lit/reactive-element': '/assets/packages/@lit/reactive-element',
   });
-  const isNotTsbuild = (p: string) => !p.includes('.');
-  eleventyConfig.addPassthroughCopy({ 'elements': `/assets/packages/@rhds/elements/elements/` }, { filter: isNotTsbuild });
-  eleventyConfig.addPassthroughCopy({ 'lib': `/assets/packages/@rhds/elements/lib/` }, { filter: isNotTsbuild });
-  eleventyConfig.addPassthroughCopy({ 'uxdot': `/assets/packages/@uxdot/elements/` }, { filter: isNotTsbuild });
+  eleventyConfig.addPassthroughCopy({
+    'elements': `/assets/packages/@rhds/elements/elements/`,
+    'lib': `/assets/packages/@rhds/elements/lib/`,
+    'uxdot': `/assets/packages/@uxdot/elements/`,
+  }, {
+    filter: (p: string) => !p.startsWith('tsconfig'),
+  });
   eleventyConfig.addPlugin(ImportMapPlugin, {
     nodemodulesPublicPath: '/assets/packages',
     manualImportMap: {
