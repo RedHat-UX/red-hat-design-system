@@ -1,9 +1,25 @@
-// @ts-check
 import { join } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { AssetCache } from '@11ty/eleventy-fetch';
-import chalk from 'chalk';
 import { Generator } from '@jspm/generator';
+import chalk from 'chalk';
+
+import type { UserConfig } from '@11ty/eleventy';
+
+export interface ImportMap {
+  imports?: Record<string, string>;
+  scopes?: Record<string, Record<string, string>>;
+}
+
+interface Options {
+  defaultProvider?: string;
+  inputMap?: ImportMap;
+  localPackages?: string[];
+  manualImportMap?: ImportMap;
+  cwd?: string;
+  assetCache?: AssetCache;
+  nodemodulesPublicPath?: string;
+}
 
 async function logPerf() {
   // We should log performance regressions
@@ -36,7 +52,6 @@ async function logPerf() {
  * [defaultProvider] jspm.io generator provider
  */
 
-/** @param {Options} opts */
 async function getCachedImportMap({
   defaultProvider,
   inputMap,
@@ -45,7 +60,7 @@ async function getCachedImportMap({
   cwd,
   assetCache,
   nodemodulesPublicPath,
-}) {
+}: Required<Options>) {
   if (assetCache.isCacheValid('1d')) {
     return assetCache.getCachedValue();
   } else {
@@ -99,17 +114,14 @@ async function getCachedImportMap({
   }
 }
 
-/**
- * @param {import('@11ty/eleventy').UserConfig} eleventyConfig
- * @param {Options} options
- */
-export default function(eleventyConfig, {
-  inputMap,
-  manualImportMap,
-  defaultProvider,
-  nodemodulesPublicPath,
-  localPackages = [],
-}) {
+export default function(eleventyConfig: UserConfig, opts?: Options) {
+  const {
+    inputMap = {},
+    manualImportMap = {},
+    defaultProvider = 'jspm.io',
+    nodemodulesPublicPath = '/assets/',
+    localPackages = [],
+  } = opts ?? {};
   const cwd = process.cwd();
 
   // copy over local packages
@@ -133,7 +145,7 @@ export default function(eleventyConfig, {
     });
   });
 
-  eleventyConfig.on('eleventy.beforeWatch', async function(changedFiles) {
+  eleventyConfig.on('eleventy.beforeWatch', async function(changedFiles: string[]) {
     const files =
       changedFiles.filter(x => x.match(/eleventy\.config\.c?js$|importMap\.c?js$/));
     if (files.length) {

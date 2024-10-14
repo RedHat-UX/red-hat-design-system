@@ -24,7 +24,7 @@
 <uxdot-header {% if tabs %}has-subnav{% endif %} {% if tokenSearch %}has-search {% endif %}>
   {#- TODO: cheap hack here to fix data spaghetti from demos page -#}
   <h1 id="{{ headingId }}" class="page-title">
-    {{ (prettyName or heading or title) | replace('Demos |', '') }}
+    {{ prettyName or heading or title }}
     {% if doc.planned %}
     <rh-tag icon="notification-fill" color="gray">Planned</rh-tag>
     {% endif %}

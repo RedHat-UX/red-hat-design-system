@@ -1,3 +1,4 @@
+import type { UserConfig } from '@11ty/eleventy';
 import { dirname, join } from 'node:path';
 import { resolveTokens } from './tokensHelpers.js';
 import { fileURLToPath } from 'node:url';
@@ -6,11 +7,11 @@ const require = createRequire(import.meta.url);
 const tokensJSON = require('@rhds/tokens/json/rhds.tokens.json');
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-/**
- * @param {import('@11ty/eleventy').UserConfig} eleventyConfig
- * @param {PluginOptions} [pluginOptions]
- */
-export default function RHDSPlugin(eleventyConfig, pluginOptions = { }) {
+interface PluginOptions {
+  assetsPath?: string;
+}
+
+export default function RHDSPlugin(eleventyConfig: UserConfig, pluginOptions?: PluginOptions) {
   eleventyConfig.addPassthroughCopy('docs/tokens/**/*.{svg,jpe?g,png}');
 
   eleventyConfig.addGlobalData('tokens', tokensJSON);
@@ -41,7 +42,7 @@ export default function RHDSPlugin(eleventyConfig, pluginOptions = { }) {
   });
 
   eleventyConfig.addPassthroughCopy({
-    [join(__dirname, '11ty', '*')]: pluginOptions.assetsPath ?? '/assets/',
+    [join(__dirname, '11ty', '*')]: pluginOptions?.assetsPath ?? '/assets/',
   });
 };
 

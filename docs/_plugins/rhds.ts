@@ -1,23 +1,19 @@
-/// <reference lib="ESNext.Array"/>
-
+import type { UserConfig } from '@11ty/eleventy';
 import * as ChildProcess from 'node:child_process';
-import { readdirSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, dirname } from 'node:path';
 import { promisify } from 'node:util';
-import { readFile, writeFile } from 'node:fs/promises';
-import { makeDemoEnv } from '../../scripts/environment.js';
+import { readdir, readFile, writeFile, mkdir } from 'node:fs/promises';
+import { makeDemoEnv } from '#scripts/environment.js';
 
 import yaml from 'js-yaml';
 import slugify from 'slugify';
-import capitalize from 'capitalize';
 
-import RHDSAlphabetizeTagsPlugin from './alphabetize-tags.js';
-import RHDSShortcodesPlugin from './shortcodes.js';
-import RHDSElementDocsPlugin from './element-docs.ts';
-import RHDSElementDemosPlugin from './element-demos.js';
+import RHDSAlphabetizeTagsPlugin from '#11ty-plugins/alphabetize-tags.js';
+import RHDSElementDocsPlugin from '#11ty-plugins/element-docs.js';
+import RHDSElementDemosPlugin from '#11ty-plugins/element-demos.js';
 
 import { getPfeConfig } from '@patternfly/pfe-tools/config.js';
-import { UserConfig } from '@11ty/eleventy';
+import { capitalize } from '#11ty-plugins/tokensHelpers.js';
 
 const repoStatus = yaml.load(await readFile(
   new URL('../_data/repoStatus.yaml', import.meta.url),
@@ -40,7 +36,7 @@ const pfeconfig = getPfeConfig();
  */
 function getTagNameSlug(tagName: string) {
   const name = pfeconfig?.aliases?.[tagName] ?? tagName.replace(`${pfeconfig?.tagPrefix ?? 'rh'}-`, '');
-  return slugify(name, {
+  return slugify.default(name, {
     strict: true,
     lower: true,
   });
@@ -67,14 +63,12 @@ const COPY_CONTENT_EXTENSIONS = [
 /**
  * Generate a map of files per package which should be copied to the site dir
  */
-function getFilesToCopy() {
+async function getFilesToCopy() {
   // Copy element demo files
   const repoRoot = cwd;
-  const tagNames = readdirSync(join(repoRoot, 'elements'), { withFileTypes: true })
+  const tagNames = (await readdir(join(repoRoot, 'elements'), { withFileTypes: true }))
       .filter(ent => ent.isDirectory())
       .map(ent => ent.name);
-
-  const config = getPfeConfig();
 
   // Copy all component and core files to _site
   return Object.fromEntries(tagNames.flatMap(tagName => {
@@ -90,17 +84,33 @@ interface Options {
   tagsToAlphabetize: string[];
 }
 
-/**
- * @param eleventyConfig user config
- * @param opts
- * @param opts.tagsToAlphabetize
- */
-export default function(eleventyConfig: UserConfig, { tagsToAlphabetize }: Options) {
-  eleventyConfig.addDataExtension('yml, yaml', contents => yaml.load(contents));
+export default async function(eleventyConfig: UserConfig, options?: Options) {
+  eleventyConfig.on('eleventy.before', async ({ directories }) => {
+    const outPath = join(directories.output, 'assets/javascript/repoStatus.json');
+    await mkdir(dirname(outPath), { recursive: true });
+    await writeFile(outPath, JSON.stringify(repoStatus), 'utf8');
+  });
 
-  eleventyConfig.addPlugin(RHDSAlphabetizeTagsPlugin, { tagsToAlphabetize });
+  /** add the normalized pfe-tools config to global data */
+  eleventyConfig.addGlobalData('pfeconfig', getPfeConfig());
 
-  eleventyConfig.addPlugin(RHDSShortcodesPlugin);
+  /** custom-elements.json */
+  eleventyConfig.on('eleventy.before', async function({ runMode }) {
+    if (runMode === 'watch') {
+      await exec('npx cem analyze');
+    }
+  });
+
+  /** /assets/javascript/environment.js */
+  eleventyConfig.on('eleventy.before', async function({ directories }) {
+    const outPath = join(directories.input, '..', 'lib', 'environment.js');
+    await writeFile(outPath, await makeDemoEnv(), 'utf8');
+  });
+
+  eleventyConfig.addDataExtension('yml, yaml', (contents: string) => yaml.load(contents));
+
+  eleventyConfig.addPlugin(RHDSAlphabetizeTagsPlugin, options);
+
   eleventyConfig.addPlugin(RHDSElementDocsPlugin);
   eleventyConfig.addPlugin(RHDSElementDemosPlugin);
 
@@ -115,24 +125,23 @@ export default function(eleventyConfig: UserConfig, { tagsToAlphabetize }: Optio
     'node_modules/@patternfly/icons/': '/assets/packages/@patternfly/icons/',
   });
 
-  const filesToCopy = getFilesToCopy();
-  eleventyConfig.addPassthroughCopy(filesToCopy, {
+  eleventyConfig.addPassthroughCopy(await getFilesToCopy(), {
     filter: (path: string) => !path.endsWith('.html'),
   });
 
   eleventyConfig.addJavaScriptFunction('getTagNameSlug', getTagNameSlug);
 
-  eleventyConfig.addFilter('getPrettyElementName', function(tagName) {
+  eleventyConfig.addFilter('getPrettyElementName', function(this, tagName) {
     const slug = getTagNameSlug(tagName);
     const deslugify = eleventyConfig.getFilter('deslugify');
-    return pfeconfig.aliases[tagName] || deslugify(slug);
+    return pfeconfig.aliases[tagName] || deslugify.call(this, slug);
   });
 
   eleventyConfig.addFilter('deslugify', function(slug: string) {
     return capitalize(slug.replace(/-/g, ' '));
   });
 
-  eleventyConfig.addFilter('makeSentenceCase', function(value) {
+  eleventyConfig.addFilter('makeSentenceCase', function(value: string) {
     return value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
   });
 
@@ -178,33 +187,10 @@ export default function(eleventyConfig: UserConfig, { tagsToAlphabetize }: Optio
   eleventyConfig.addWatchTarget('docs/patterns/**/patterns/*.html');
   eleventyConfig.addWatchTarget('docs/theming/**/patterns/*.html');
 
-  for (const tagName of readdirSync(join(cwd, './elements/'))) {
-    const dir = join(cwd, './elements/', tagName, 'docs/');
-    eleventyConfig.addWatchTarget(dir);
-  }
-
-  /** add the normalized pfe-tools config to global data */
-  eleventyConfig.on('eleventy.before', async function() {
-    eleventyConfig.addGlobalData('pfeconfig', getPfeConfig());
-  });
-
-  eleventyConfig.on('eleventy.before', ({ directories }) =>
-    writeFile(
-      join(directories.output, 'assets/javascript/repoStatus.json'),
-      JSON.stringify(repoStatus),
-      'utf8',
-    ));
-
-  /** custom-elements.json */
-  eleventyConfig.on('eleventy.before', async function({ runMode }) {
-    if (runMode === 'watch') {
-      await exec('npx cem analyze');
+  for (const tagName of await readdir(join(cwd, './elements/'))) {
+    if (!tagName.includes('.')) {
+      const dir = join(cwd, './elements/', tagName, 'docs/');
+      eleventyConfig.addWatchTarget(dir);
     }
-  });
-
-  /** /assets/javascript/environment.js */
-  eleventyConfig.on('eleventy.before', async function({ dir }) {
-    const outPath = join(dir.input, '..', 'lib', 'environment.js');
-    await writeFile(outPath, await makeDemoEnv(), 'utf8');
-  });
+  }
 };

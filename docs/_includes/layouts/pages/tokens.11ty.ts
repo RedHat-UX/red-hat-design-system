@@ -3,7 +3,7 @@ import type { DesignToken } from '#11ty-plugins/tokensHelpers.js';
 import tinycolor from 'tinycolor2';
 import { tokens as tokensMeta } from '@rhds/tokens/meta.js';
 import { createRequire } from 'node:module';
-import { Renderer } from '#uxdot/eleventy.config.js';
+import { Renderer } from '#eleventy.config';
 
 const require = createRequire(import.meta.url);
 const tokensJSON = require('@rhds/tokens/json/rhds.tokens.json');
@@ -19,7 +19,7 @@ import {
 } from '#11ty-plugins/tokensHelpers.js';
 
 interface Options {
-  tokens: typeof tokensJSON;
+  tokens: DesignToken;
   name: string;
   path: string;
   slug: string;
@@ -31,29 +31,37 @@ interface Options {
   seenPaths?: Set<string>;
 }
 
+interface TokenCategory {
+  include: string[];
+  exclude: string[];
+  path: string;
+  slug: string;
+  title: string;
+}
+
 interface Data {
   title: string;
-  tokenCategory: {
-    include: string[];
-    exclude: string[];
-    path: string;
-    slug: string;
-  };
+  tokenCategory: TokenCategory;
 }
 
 // for editor highlighting
 const html = String.raw;
 
-export default class TokensPage extends Renderer {
+interface Data {
+  title: string;
+  tokenCategory: TokenCategory;
+}
+
+export default class TokensPage extends Renderer<Data> {
   data() {
     return {
       layout: 'layouts/pages/has-toc.njk',
-      permalink: ({ tokenCategory }) => !tokenCategory?.slug ? null
-        : `/tokens/${tokenCategory.slug}/index.html`,
+      permalink: (data: Data): string | null => !data.tokenCategory?.slug ? null
+        : `/tokens/${data.tokenCategory.slug}/index.html`,
       eleventyComputed: {
-        title: ({ title, tokenCategory }) =>
-          title
-            || `${capitalize(tokenCategory.title || tokenCategory.slug)} tokens`,
+        title: (data: Data) =>
+          data.title
+            || `${capitalize(data.tokenCategory.title || data.tokenCategory.slug)} tokens`,
       },
       pagination: {
         size: 1,
@@ -67,15 +75,15 @@ export default class TokensPage extends Renderer {
   #themeTokensCardCount = 1;
 
   #getTokenLightness(token: DesignToken) {
-    const meta = tokensMeta.get(`--${token.name}`);
+    const meta = tokensMeta.get(`--${token.name as `rh-${string}`}`);
     const value =
        meta?.$value
     || !Array.isArray(meta?.original.$value) ? ''
-     : meta?.original.$value.find(x =>
+     : meta?.original.$value.find((x: string | number) =>
        x.toString().endsWith('lightest}')
         || x.toString().endsWith('light}'));
     const derefed =
-      `--rh-${value?.toString().replace(/{(.*)}/, '$1').replace(/\./g, '-')}`;
+      `--rh-${value?.toString().replace(/{(.*)}/, '$1').replace(/\./g, '-')}` as const;
     const derefedToken = meta?.$value ? meta : tokensMeta.get(derefed);
     const color = tinycolor(derefedToken?.$value?.toString());
     const isDark = color?.isDark();
@@ -102,7 +110,9 @@ export default class TokensPage extends Renderer {
       return html`<uxdot-spacer-tokens-table></uxdot-spacer-tokens-table>`;
     }
 
-    const tokens = Object.values(options.tokens).filter(x => x.$value);
+    const tokens = Object.values(options.tokens)
+        .filter((x: unknown): x is DesignToken =>
+          !!(typeof x === 'object' && x && '$value' in x && !!x.$value));
     const { name } = options;
     const example = getDocs(options.tokens)?.example ?? '';
 
@@ -270,7 +280,7 @@ export default class TokensPage extends Renderer {
       </rh-table>`.trim();
   }
 
-  async #renderIncludes(options: Options) {
+  async #renderIncludes(options: Options): Promise<string> {
     if (Array.isArray(options.include)) {
       const includes = await Promise.all(
         options.include.map(path => this.#renderCategory({
@@ -326,15 +336,15 @@ export default class TokensPage extends Renderer {
     `;
   }
 
-  async #renderChildren(options: Options) {
-    const include = [];
+  async #renderChildren(options: Options): Promise<string> {
+    const include: string[] = [];
     const parent = options.tokens;
     const level = (options.level ?? 1) + 1;
     const kids = await Promise.all(Object.entries(options.tokens)
         .filter(([key, value]) =>
           typeof value === 'object'
             && value !== null
-            && !value.$value
+            && !(value as Record<string, unknown>).$value
             && !key.startsWith('$')
             && !(options.exclude ?? []).includes(key))
         .map(([name, tokens]) => this.#renderCategory({
@@ -409,7 +419,7 @@ export default class TokensPage extends Renderer {
     }
   }
 
-  async render(ctx: Data) {
+  override async render(ctx: Data) {
     const { tokenCategory } = ctx;
     const { exclude, include, path, slug } = tokenCategory;
     const name = path.split('.').pop()!;

@@ -4,26 +4,28 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
-import { dirname, resolve as _resolve } from 'node:path';
+import type { UserConfig } from '@11ty/eleventy';
+import { dirname, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { Worker } from 'node:worker_threads';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
+interface Options {
+  componentModules?: string[];
+}
+
 // Lit SSR includes comment markers to track the outer template from
 // the template we've generated here, but it's not possible for this
 // outer template to be hydrated, so they serve no purpose.
-function trimOuterMarkers(renderedContent) {
+function trimOuterMarkers(renderedContent: string) {
   return renderedContent
       .replace(/^((<!--[^<>]*-->)|(<\?>)|\s)+/, '')
       .replace(/((<!--[^<>]*-->)|(<\?>)|\s)+$/, '');
 }
 
-/**
- * @param {import('@11ty/eleventy').UserConfig} eleventyConfig
- * @param {{componentModules: string[]}} resolvedComponentModules
- */
-export default function(eleventyConfig, { componentModules } = {}) {
+export default function(eleventyConfig: UserConfig, opts?: Options) {
+  const { componentModules } = opts ?? {};
   if (componentModules === undefined || componentModules.length === 0) {
     // If there are no component modules, we could never have anything to
     // render.
@@ -31,15 +33,15 @@ export default function(eleventyConfig, { componentModules } = {}) {
   }
 
   const resolvedComponentModules = componentModules.map(module =>
-    pathToFileURL(_resolve(process.cwd(), module)).href);
+    pathToFileURL(resolve(process.cwd(), module)).href);
 
-  let worker;
+  let worker: Worker;
 
   const requestIdResolveMap = new Map();
   let requestId = 0;
 
   eleventyConfig.on('eleventy.before', async function() {
-    worker = new Worker(_resolve(__dirname, './worker/worker.js'));
+    worker = new Worker(resolve(__dirname, './worker/worker.js'));
 
     worker.on('error', err => {
       // eslint-disable-next-line no-console
@@ -47,9 +49,9 @@ export default function(eleventyConfig, { componentModules } = {}) {
       throw err;
     });
 
-    let requestResolve;
-    const requestPromise = new Promise(resolve => {
-      requestResolve = resolve;
+    let requestResolve: (v?: unknown) => void;
+    const requestPromise = new Promise(_resolve => {
+      requestResolve = _resolve;
     });
 
     worker.on('message', message => {
@@ -61,13 +63,13 @@ export default function(eleventyConfig, { componentModules } = {}) {
 
         case 'render-response': {
           const { id, rendered } = message;
-          const resolve = requestIdResolveMap.get(id);
-          if (resolve === undefined) {
+          const _resolve = requestIdResolveMap.get(id);
+          if (_resolve === undefined) {
             throw new Error(
               '@lit-labs/eleventy-plugin-lit received invalid render-response message'
             );
           }
-          resolve(rendered);
+          _resolve(rendered);
           requestIdResolveMap.delete(id);
           break;
         }
@@ -87,14 +89,14 @@ export default function(eleventyConfig, { componentModules } = {}) {
     await worker.terminate();
   });
 
-  eleventyConfig.addTransform('render-lit', async function(content) {
+  eleventyConfig.addTransform('render-lit', async function(this, content) {
     const { outputPath, inputPath, fileSlug } = this.page;
     if (!outputPath.endsWith('.html')) {
       return content;
     }
 
-    const renderedContent = await new Promise(resolve => {
-      requestIdResolveMap.set(requestId, resolve);
+    const renderedContent: string = await new Promise(_resolve => {
+      requestIdResolveMap.set(requestId, _resolve);
       const message = {
         type: 'render-request',
         id: requestId++,
@@ -106,7 +108,6 @@ export default function(eleventyConfig, { componentModules } = {}) {
 
     const outerMarkersTrimmed = trimOuterMarkers(renderedContent);
     return outerMarkersTrimmed;
-  }
-  );
+  });
 };
 

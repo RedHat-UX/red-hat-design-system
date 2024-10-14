@@ -12,8 +12,10 @@
     "./*": "./elements/*"
   },
   "imports": {
-    "#uxdot/*": "./*",
-    "#11ty-plugins/*": "./docs/_plugins/*"
+    "#scripts/*": "./scripts/*",
+    "#uxdot/*": "./uxdot/*",
+    "#11ty-plugins/*": "./docs/_plugins/*",
+    "#eleventy.config": "./eleventy.config.ts"
   },
   "contributors": [
     "Adam Johnson <adjohnso@redhat.com>",
@@ -73,7 +75,7 @@
     "🚚-DIST": "❓ Publish packages",
     "prepublishOnly": "wireit",
     "⚙️--UTIL": "❓ Manages the repo",
-    "clean": "git clean -dfX -e node_modules",
+    "clean": "git clean -dfx -e node_modules -e .husky",
     "clean:nuke": "git clean -fX",
     "lint": "wireit"
   },
@@ -107,7 +109,7 @@
     },
     "serve": {
       "service": true,
-      "command": "tsx ./node_modules/.bin/eleventy --config=eleventy.config.ts --serve --incremental",
+      "command": "NODE_OPTIONS='--import tsx/esm' eleventy --config=eleventy.config.ts --serve --incremental",
       "dependencies": [
         "patch",
         "compile",
@@ -140,22 +142,20 @@
       ]
     },
     "compile": {
-      "command": "tspc",
+      "command": "tspc -b",
       "files": [
         "elements/**/*.ts",
-        "docs/assets/javascript/**/*.ts",
-        "docs/assets/javascript/**/*.css",
+        "uxdot/*.ts",
+        "uxdot/*.css",
         "lib/**/*.css",
         "lib/**/*.ts"
       ],
       "output": [
         "tsconfig.tsbuildinfo",
-        "elements/**/*.{d.ts,js,map}",
-        "lib/**/*.{d.ts,js,map}",
+        "elements/**/*.{d.ts,js,map,tsbuildinfo}",
+        "lib/**/*.{d.ts,js,map,tsbuildinfo}",
         "elements/rh-secondary-nav/test/fixtures.js",
-        "docs/assets/javascript/elements/*.js",
-        "docs/assets/javascript/**/*.d.ts",
-        "docs/assets/javascript/**/*.js.map",
+        "docs/assets/javascript/elements/*.{js,d.ts,map,tsbuildinfo}",
         "!elements/*/{demo,test}/**/*.js"
       ]
     },
@@ -192,7 +192,7 @@
         "scripts/copy-assets.ts"
       ],
       "output": [
-        "./*/*.css"
+        "./rh-*/*.css"
       ]
     },
     "analyze": {
@@ -208,7 +208,7 @@
       ]
     },
     "docs": {
-      "command": "tsx ./node_modules/.bin/eleventy --config=eleventy.config.ts",
+      "command": "NODE_OPTIONS='--import tsx/esm' eleventy --config=eleventy.config.ts",
       "dependencies": [
         "patch",
         "analyze",
@@ -238,10 +238,11 @@
       ]
     },
     "stylelint": {
-      "command": "stylelint 'elements/**/*.css' 'lib/**/*.css' 'docs/**/*.scss'",
+      "command": "stylelint 'elements/**/*.css' 'lib/**/*.css' 'docs/**/*.scss' 'docs/**/*.css' 'uxdot/**/*.css'",
       "files": [
         "docs/**/*.scss",
         "elements/**/*.css",
+        "uxdot/**/*.css",
         "lib/**/*.css"
       ]
     },
@@ -273,10 +274,13 @@
     },
     "watch:docs": {
       "service": true,
-      "command": "tsx ./node_modules/.bin/eleventy --serve --incremental --config=eleventy.config.ts",
+      "command": "NODE_OPTIONS='--import tsx/esm' eleventy --serve --incremental --config=eleventy.config.ts",
       "dependencies": [
         "analyze",
         "compile"
+      ],
+      "output": [
+        "_site"
       ]
     },
     "e2e": {
@@ -323,7 +327,10 @@
     "@stylistic/stylelint-config": "^2.0.0",
     "@stylistic/stylelint-plugin": "^3.1.1",
     "@types/js-yaml": "^4.0.9",
+    "@types/markdown-it-attrs": "^4.1.3",
+    "@types/markdown-it-footnote": "^3.0.4",
     "@types/mocha": "^10.0.9",
+    "@types/tinycolor2": "^1.4.6",
     "@web/rollup-plugin-import-meta-assets": "^2.2.1",
     "@webcomponents/template-shadowroot": "^0.2.1",
     "async-csv": "^2.1.3",

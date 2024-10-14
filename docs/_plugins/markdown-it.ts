@@ -1,3 +1,6 @@
+import type MarkdownIt from 'markdown-it';
+import type State from 'markdown-it/lib/rules_core/state_core.mjs';
+import type { UserConfig } from '@11ty/eleventy';
 import markdownItAnchor from 'markdown-it-anchor';
 import markdownItAttrs from 'markdown-it-attrs';
 import markdownItFootnote from 'markdown-it-footnote';
@@ -5,7 +8,15 @@ import markdownItFootnote from 'markdown-it-footnote';
 /* eslint-disable lit-a11y/anchor-is-valid */
 /* eslint-disable lit-a11y/accessible-name */
 
-const { makePermalink } = markdownItAnchor.permalink;
+const { makePermalink } = markdownItAnchor.permalink as unknown as {
+  makePermalink(callback: (
+    slug: string,
+    opts: markdownItAnchor.PermalinkOptions,
+    anchorOptions: markdownItAnchor.AnchorOptions,
+    state: State,
+    idx: number,
+  ) => void): () => markdownItAnchor.PermalinkGenerator;
+};
 
 // for editor highlighting
 const html = String.raw;
@@ -20,10 +31,10 @@ const html = String.raw;
  *   </h2>
  * </uxdot-copy-permalink>
  */
-const rhdsPermalink = makePermalink((slug, opts, anchorOpts, state, idx) => {
-  const headerOpen = state.tokens[idx];
+const rhdsPermalink = makePermalink((_slug, _opts, _anchorOpts, state, idx) => {
+  const headerOpen = state.tokens[idx] as { tag: string; attrs: [string, string][] };
   const inline = state.tokens[idx + 1];
-  const id = headerOpen.attrs.find(([k]) => k === 'id').at(1);
+  const id = headerOpen.attrs.find(([k]) => k === 'id')?.at(1);
 
   state.tokens.splice(idx, 2, Object.assign(new state.Token('html_block', '', 0), {
     content: html`
@@ -41,20 +52,18 @@ const rhdsPermalink = makePermalink((slug, opts, anchorOpts, state, idx) => {
   );
 });
 
-function rhdsCodeBlock(md) {
+function rhdsCodeBlock(md: MarkdownIt) {
   const orig = md.renderer.rules.fence;
   // custom renderer for fences
   md.renderer.rules.fence = function(tokens, idx, options, env, slf) {
-    const rendered = orig.call(this, tokens, idx, options, env, slf);
+    const rendered: string = orig?.call(this, tokens, idx, options, env, slf) ?? '';
     const token = tokens[idx];
-
-    const actions = ['copy'];
-    if (rendered.split('\n').map(x => x.trim()).filter(Boolean).length > 1) {
-      actions.push('wrap');
-    }
+    const hasMoreThan1Line = rendered.split('\n').map(x => x.trim()).filter(Boolean).length > 1;
+    const actions = ['copy', hasMoreThan1Line && 'wrap'].filter(x => !!x);
     const [lang, block, ...rest] = token.info.split(/\s+/);
+    const info = `${lang} ${rest.join(' ')}`;
     if (block?.replaceAll('-', '') === 'rhcodeblock') {
-      const redactedToken = { ...token, info: `${lang} ${rest.join(' ')}` };
+      const redactedToken = Object.assign(token, { info });
       return html`
         <rh-code-block full-height
                        dedent
@@ -67,9 +76,8 @@ function rhdsCodeBlock(md) {
   };
 }
 
-/* @param {import('@11ty/eleventy/src/UserConfig')} eleventyConfig */
-export default function(eleventyConfig) {
-  eleventyConfig.amendLibrary('md', /** @param {import('markdown-it')} md*/md => md
+export default function(eleventyConfig: UserConfig) {
+  eleventyConfig.amendLibrary('md', md => md
       .set({ html: true, breaks: false })
       .use(markdownItAnchor, { permalink: rhdsPermalink() })
       .use(markdownItFootnote)

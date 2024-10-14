@@ -98,7 +98,7 @@ export function styleMap(objt: object) {
 }
 
 /** generate a string of classes, given an object */
-export function classMap(classInfo: Record<string, string>) {
+export function classMap(classInfo: Record<string, string | boolean>) {
   return Object.keys(classInfo)
       .filter(key => classInfo[key])
       .join(' ');

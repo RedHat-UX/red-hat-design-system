@@ -1,4 +1,4 @@
-import type { ElementDocsPageData } from '../../../_plugins/element-docs.js';
+import type { ElementDocsPageData } from '#11ty-plugins/element-docs.js';
 import type { ClassMethod } from 'custom-elements-manifest';
 import type { FileOptions, ProjectManifest } from 'playground-elements/shared/worker-api.js';
 
@@ -6,10 +6,11 @@ import { tokens } from '@rhds/tokens/meta.js';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { readFile } from 'node:fs/promises';
-import { copyCell, dedent, getTokenHref } from '../../../_plugins/tokensHelpers.js';
+import { copyCell, dedent, getTokenHref } from '#11ty-plugins/tokensHelpers.js';
 import { Generator } from '@jspm/generator';
 import { AssetCache } from '@11ty/eleventy-fetch';
-import { Renderer } from '#uxdot/eleventy.config.js';
+import { Renderer } from '#eleventy.config';
+import type { ImportMap } from '#11ty-plugins/importMap.js';
 
 type FileEntry = [string, FileOptions & { inline: string }];
 
@@ -43,16 +44,16 @@ interface Context extends EleventyPageRenderData {
   playgrounds: Record<`rh-${string}`, ProjectManifest>;
 }
 
-export default class ElementsPage extends Renderer {
-  static assetCache = new AssetCache('rhds-ux-dot-import-map-jspmio');
+export default class ElementsPage extends Renderer<Context> {
+  static assetCache = new AssetCache<ImportMap>('rhds-ux-dot-import-map-jspmio');
 
   data() {
     return {
       layout: 'layouts/pages/has-toc.njk',
-      permalink: ({ doc }) => doc.permalink,
+      permalink: ({ doc }: Context) => doc.permalink,
       eleventyComputed: {
-        title: ({ doc }) => doc.pageTitle,
-        tagName: ({ doc }) => doc.tagName,
+        title: ({ doc }: Context) => doc.pageTitle,
+        tagName: ({ doc }: Context) => doc.tagName,
       },
     };
   }
@@ -138,9 +139,9 @@ export default class ElementsPage extends Renderer {
       await assetCache.save(generator.getMap(), 'json');
     }
     const map = structuredClone(await assetCache.getCachedValue());
-    map.imports[`@rhds/elements/${tagName}/${tagName}.js`] =
-      map.imports['@rhds/elements'].replace('elements.js', `${tagName}/${tagName}.js`);
-    delete map.imports['@rhds/elements'];
+    map.imports![`@rhds/elements/${tagName}/${tagName}.js`] =
+      map.imports!['@rhds/elements'].replace('elements.js', `${tagName}/${tagName}.js`);
+    delete map.imports!['@rhds/elements'];
     return JSON.stringify(map, null, 2);
   }
 
@@ -776,7 +777,8 @@ export default class ElementsPage extends Renderer {
   }
 
   async #renderDemos(ctx: Context) {
-    const entries: FileEntry[] = Object.entries(ctx.playgrounds[ctx.tagName]?.files ?? {});
+    const tagName = ctx.tagName as `rh-${string}`;
+    const entries = Object.entries(ctx.playgrounds[tagName]?.files ?? {}) as FileEntry[];
     return [
       await this.#renderDemoHead(),
       ...await this.#renderPlaygrounds(ctx, entries),

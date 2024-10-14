@@ -26,12 +26,12 @@ code {
   display: none;
 }
 
-:host(:state(rendered)) button:is(:focus, :active, :hover),
-:host(:state(rendered)) button:is(:focus, :active, :hover) code {
+:host(:state(--rendered)) button:is(:focus, :active, :hover),
+:host(:state(--rendered)) button:is(:focus, :active, :hover) code {
   background: var(--rh-color-interactive-primary-hover-on-dark);
   opacity: 1;
 }
 
-:host(:state(rendered)) :is(rh-icon, #caption) {
+:host(:state(--rendered)) :is(rh-icon, #caption) {
   display: initial;
 }
