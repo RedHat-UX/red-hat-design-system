@@ -26,7 +26,7 @@ const isWatch =
 const isLocal = !(process.env.CI || process.env.DEPLOY_URL);
 
 /** @param  eleventyConfig */
-export default function(eleventyConfig: UserConfig) {
+export default async function(eleventyConfig: UserConfig) {
   eleventyConfig.setQuietMode(true);
 
   eleventyConfig.on('eleventy.before', function({ runMode }) {
@@ -242,7 +242,7 @@ export default function(eleventyConfig: UserConfig) {
    * Collections to organize by 'order' value in front matter, then alphabetical by title;
    * instead of by date
    */
-  eleventyConfig.addPlugin(RHDSPlugin, {
+  await eleventyConfig.addPlugin(RHDSPlugin, {
     tagsToAlphabetize: [
       'component',
       'foundations',
