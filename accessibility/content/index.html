@@ -54,8 +54,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.4/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
@@ -1460,7 +1460,7 @@
 <li>While an alt attribute is required for all <code>&lt;img&gt;</code> elements, leaving its value empty (e.g., <code>alt=""</code> or just <code>alt</code>) for decorative images will hide them from assistive tech.</li>
 <li>You can hide decorative inline <code>&lt;svg&gt;</code> elements (and other non-<code>&lt;img&gt;</code> media) from assistive tech with the <code>aria-hidden="true"</code> attribute.</li>
 </ul>
-<p>If an image is a page border, an abstract decoration, or if it's used more to improve layout than to provide additional context, it can typically be considered decorative.</p>
+<p>If an image is a page border, an abstract decoration, or if it’s used more to improve layout than to provide additional context, it can typically be considered decorative.</p>
 <p>If a non-text element’s contents are already described by adjacent text, then it may also be considered decorative in many cases—unless both the element and the text are necessary for a full understanding of the presented information. Images accompanying how-to instructions, images used to assist in visual identification of objects, and images that complement descriptions of a physical object (e.g., a piece of clothing being sold at an online store) may warrant descriptions beyond the visible text.</p>
 <p>Images used within interactive controls like buttons or links are always meaningful, unless one of the following conditions is met:</p>
 <ul>
@@ -1934,10 +1934,120 @@ A common technique is labeling objects with ARIA attributes:</p>
 <p>Microcopy comprises short words, phrases, or chunks of text used on the web or in user interfaces.</p>
 <p>Best practices for all microcopy:</p>
 <ul>
-<li>Keep text short but descriptive. Use as few words as possible, but avoid non-informative or vague text, like “click here,” “learn more,” “read more,” etc.</li>
-<li>Make the first word meaningful. For example, avoid starting with “a”, “the”, “for”, etc. In many cases, this practice allows screen reader users to navigate items alphabetically.</li>
-<li>Keep the text consistent. Ensure that consistency is maintained on pages, sites, and entire user journeys.</li>
+<li>Keep text short but descriptive</li>
+<li>Use as few words as possible</li>
+<li>Avoid non-informative or vague text, like “click here,” “learn more,” “read more,” etc.</li>
+<li>Make the first word meaningful
+<ul>
+<li>For example, avoid starting with “a”, “the”, “for”, etc</li>
+<li>In many cases, this practice allows screen reader users to navigate items alphabetically</li>
 </ul>
+</li>
+<li>Keep the text consistent.
+<ul>
+<li>Ensure that consistency is maintained on pages, sites, and entire user journeys.</li>
+</ul>
+</li>
+</ul>
+<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+  <h3 id="creating-emphasis" tabindex="-1">
+    <a href="#creating-emphasis">Creating emphasis</a><a>
+  </a></h3>
+</uxdot-copy-permalink>
+<p>When writing for the web, use bold and italic formatting sparingly. Remember: if everything is emphasized, nothing is emphasized.</p>
+<p><a href="https://www.redhat.com/en/about/brand/standards/typography">Red Hat design guidelines</a> mandate users employ either bold or italics—never both together.</p>
+<uxdot-copy-permalink  class="h4"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+  <h4 id="bold" tabindex="-1">
+    <a href="#bold">Bold</a><a>
+  </a></h4>
+</uxdot-copy-permalink>
+<p>The most effective way to highlight key points in text is by <strong>using bold</strong>. Bold text naturally draws the eye and makes specific parts stand out.</p>
+<p>However, the golden rule for bolding is moderation. Overusing bold can backfire—if everything is bold, nothing feels important. Instead, choose a few key words or a single, short sentence that encapsulates your main message.</p>
+<uxdot-copy-permalink  class="h4"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+  <h4 id="italics" tabindex="-1">
+    <a href="#italics">Italics</a><a>
+  </a></h4>
+</uxdot-copy-permalink>
+<p>Italics offer another useful option for formatting, though they’re not a substitute for bold. They can help distinguish a section of text from the rest, adding emphasis in a subtler way.</p>
+<p>However, italics can be harder to read, especially for individuals with dyslexia. As with bolding, it’s best to use italics sparingly.</p>
+<uxdot-copy-permalink  class="h4"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+  <h4 id="underlines" tabindex="-1">
+    <a href="#underlines">Underlines</a><a>
+  </a></h4>
+</uxdot-copy-permalink>
+<p>On the web, avoid using underlines for any text that isn't a link, since it can be confusing to users. Instead of underlining text, consider bolding or italicizing it.</p>
+<p>Also, be cautious about using your site’s link color elsewhere—especially for text. Users may think blue text is a link even if it is not. Catch up on how to use <a href="/accessibility/design/#color">color accessibly</a> on our <a href="/accessibility/design/">Design</a> page.</p>
+<uxdot-copy-permalink  class="h4"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+  <h4 id="all-caps" tabindex="-1">
+    <a href="#all-caps">All caps</a><a>
+  </a></h4>
+</uxdot-copy-permalink>
+<p>Only use all caps for acronyms and abbreviations (like <abbr title="Red Hat Design System">RHDS</abbr> and <abbr title="Consumer Financial Protection Bureau">CFPB</abbr>). Do not use all caps for emphasis. Use bold or italics instead. For users with dyslexia, the variation in letter height between uppercase and lowercase is actually easier to read—especially when the copy is longer than two to three words.</p>
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
@@ -3774,7 +3884,7 @@ Always increment by only one heading at a time. Don’t skip levels when increme
 </uxdot-copy-permalink>
 <p>Languages such as Hebrew and Farsi run from right-to-left (RTL) instead of left-to-right (LTR). For content in such languages, apply the <code>dir="rtl"</code> attribute to the containing element. RTL elements may have unique layout considerations, especially when mixed with LTR content.</p>
 <p>Avoid mixing bi-directional (BIDI) content within the same block-level elements (e.g., a paragraph) whenever possible.</p>
-<p>For more help, read the W3C's <a href="https://www.w3.org/International/articles/inline-bidi-markup/index.en.html">article on bidirectional text in HTML</a>.</p>
+<p>For more help, read the W3C’s <a href="https://www.w3.org/International/articles/inline-bidi-markup/index.en.html">article on bidirectional text in HTML</a>.</p>
 
     <div id="edit-this-page">
   

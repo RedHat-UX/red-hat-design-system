@@ -54,8 +54,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.4/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
@@ -1020,7 +1020,7 @@
 </uxdot-copy-permalink>
 <p>The vast majority of pages will need only one skip link, unless it is a very complex page with many repeated elements. The purpose of a skip link is to help users navigate a page more quickly and easily. Adding too many skip links detracts from this goal. If you’d like users to be able to jump from one section to the other, consider using <a href="/elements/jump-links/">jump links</a> instead.</p>
 <div class="grid sm-two-columns">
-  <uxdot-best-practice  variant="do"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block:var(--rh-space-2xl)}#container{display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl)}span{font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xs);font-weight:var(--rh-font-weight-heading-medium);display:flex;flex-direction:row;align-items:center;gap:var(--rh-space-sm);color:var(--_bp-color)}#do{--_bp-color:var(--rh-color-status-success-on-light,#63993d)}#dont{--_bp-color:var(--rh-color-status-danger-on-light,#f0561d)}::slotted(uxdot-example){margin:0!important}figure{margin:0!important}</style><!--lit-part /OqYtWIsZqM=-->
+  <uxdot-best-practice  variant="do"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block:var(--rh-space-2xl)}#container{display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl)}span{font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xs);font-weight:var(--rh-font-weight-heading-medium);display:flex;flex-direction:row;align-items:center;gap:var(--rh-space-sm)}#do span{color:var(--rh-color-status-success)}#dont span{color:var(--rh-color-status-danger)}::slotted(uxdot-example){margin:0!important}figure{margin:0!important}</style><!--lit-part /OqYtWIsZqM=-->
       <figure id="container">
         <slot name="image"></slot>
         <!--lit-node 2--><figcaption id="do">
@@ -1046,7 +1046,7 @@
     </uxdot-example>
     <p>Use a skip link to help users avoid tabbing through multiple navigation items.</p>
   </uxdot-best-practice>
-  <uxdot-best-practice  variant="dont"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block:var(--rh-space-2xl)}#container{display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl)}span{font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xs);font-weight:var(--rh-font-weight-heading-medium);display:flex;flex-direction:row;align-items:center;gap:var(--rh-space-sm);color:var(--_bp-color)}#do{--_bp-color:var(--rh-color-status-success-on-light,#63993d)}#dont{--_bp-color:var(--rh-color-status-danger-on-light,#f0561d)}::slotted(uxdot-example){margin:0!important}figure{margin:0!important}</style><!--lit-part /OqYtWIsZqM=-->
+  <uxdot-best-practice  variant="dont"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block:var(--rh-space-2xl)}#container{display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl)}span{font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xs);font-weight:var(--rh-font-weight-heading-medium);display:flex;flex-direction:row;align-items:center;gap:var(--rh-space-sm)}#do span{color:var(--rh-color-status-success)}#dont span{color:var(--rh-color-status-danger)}::slotted(uxdot-example){margin:0!important}figure{margin:0!important}</style><!--lit-part /OqYtWIsZqM=-->
       <figure id="container">
         <slot name="image"></slot>
         <!--lit-node 2--><figcaption id="dont">
@@ -1093,7 +1093,7 @@
 </uxdot-copy-permalink>
 <p>“Main content” in a skip link’s text label refers to the content that appears immediately after the navigation. Ensure that users skip only the navigation, or adjust the element's text to give a more accurate description of what will be skipped.</p>
 <div class="grid sm-two-columns">
-  <uxdot-best-practice  variant="do"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block:var(--rh-space-2xl)}#container{display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl)}span{font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xs);font-weight:var(--rh-font-weight-heading-medium);display:flex;flex-direction:row;align-items:center;gap:var(--rh-space-sm);color:var(--_bp-color)}#do{--_bp-color:var(--rh-color-status-success-on-light,#63993d)}#dont{--_bp-color:var(--rh-color-status-danger-on-light,#f0561d)}::slotted(uxdot-example){margin:0!important}figure{margin:0!important}</style><!--lit-part /OqYtWIsZqM=-->
+  <uxdot-best-practice  variant="do"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block:var(--rh-space-2xl)}#container{display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl)}span{font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xs);font-weight:var(--rh-font-weight-heading-medium);display:flex;flex-direction:row;align-items:center;gap:var(--rh-space-sm)}#do span{color:var(--rh-color-status-success)}#dont span{color:var(--rh-color-status-danger)}::slotted(uxdot-example){margin:0!important}figure{margin:0!important}</style><!--lit-part /OqYtWIsZqM=-->
       <figure id="container">
         <slot name="image"></slot>
         <!--lit-node 2--><figcaption id="do">
@@ -1119,7 +1119,7 @@
     </uxdot-example>
     <p>Ensure that users skip only the navigation, or adjust the text of the skip link to give a more accurate description.</p>
   </uxdot-best-practice>
-  <uxdot-best-practice  variant="dont"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block:var(--rh-space-2xl)}#container{display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl)}span{font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xs);font-weight:var(--rh-font-weight-heading-medium);display:flex;flex-direction:row;align-items:center;gap:var(--rh-space-sm);color:var(--_bp-color)}#do{--_bp-color:var(--rh-color-status-success-on-light,#63993d)}#dont{--_bp-color:var(--rh-color-status-danger-on-light,#f0561d)}::slotted(uxdot-example){margin:0!important}figure{margin:0!important}</style><!--lit-part /OqYtWIsZqM=-->
+  <uxdot-best-practice  variant="dont"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block:var(--rh-space-2xl)}#container{display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl)}span{font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xs);font-weight:var(--rh-font-weight-heading-medium);display:flex;flex-direction:row;align-items:center;gap:var(--rh-space-sm)}#do span{color:var(--rh-color-status-success)}#dont span{color:var(--rh-color-status-danger)}::slotted(uxdot-example){margin:0!important}figure{margin:0!important}</style><!--lit-part /OqYtWIsZqM=-->
       <figure id="container">
         <slot name="image"></slot>
         <!--lit-node 2--><figcaption id="dont">
@@ -1166,7 +1166,7 @@
 </uxdot-copy-permalink>
 <p>To prevent the skip link from being visually distracting, hide a skip link until users navigate to it. The most accessible way to hide it is to position the skip link outside of the viewport, rather than using <code>display: none</code> or the <code>hidden</code> attribute in CSS.</p>
 <div class="grid sm-two-columns">
-  <uxdot-best-practice  variant="do"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block:var(--rh-space-2xl)}#container{display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl)}span{font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xs);font-weight:var(--rh-font-weight-heading-medium);display:flex;flex-direction:row;align-items:center;gap:var(--rh-space-sm);color:var(--_bp-color)}#do{--_bp-color:var(--rh-color-status-success-on-light,#63993d)}#dont{--_bp-color:var(--rh-color-status-danger-on-light,#f0561d)}::slotted(uxdot-example){margin:0!important}figure{margin:0!important}</style><!--lit-part /OqYtWIsZqM=-->
+  <uxdot-best-practice  variant="do"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block:var(--rh-space-2xl)}#container{display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl)}span{font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xs);font-weight:var(--rh-font-weight-heading-medium);display:flex;flex-direction:row;align-items:center;gap:var(--rh-space-sm)}#do span{color:var(--rh-color-status-success)}#dont span{color:var(--rh-color-status-danger)}::slotted(uxdot-example){margin:0!important}figure{margin:0!important}</style><!--lit-part /OqYtWIsZqM=-->
       <figure id="container">
         <slot name="image"></slot>
         <!--lit-node 2--><figcaption id="do">
@@ -1192,7 +1192,7 @@
     </uxdot-example>
     <p>Hide the skip link by default, until the user navigates to it.</p>
   </uxdot-best-practice>
-  <uxdot-best-practice  variant="dont"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block:var(--rh-space-2xl)}#container{display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl)}span{font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xs);font-weight:var(--rh-font-weight-heading-medium);display:flex;flex-direction:row;align-items:center;gap:var(--rh-space-sm);color:var(--_bp-color)}#do{--_bp-color:var(--rh-color-status-success-on-light,#63993d)}#dont{--_bp-color:var(--rh-color-status-danger-on-light,#f0561d)}::slotted(uxdot-example){margin:0!important}figure{margin:0!important}</style><!--lit-part /OqYtWIsZqM=-->
+  <uxdot-best-practice  variant="dont"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block:var(--rh-space-2xl)}#container{display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl)}span{font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xs);font-weight:var(--rh-font-weight-heading-medium);display:flex;flex-direction:row;align-items:center;gap:var(--rh-space-sm)}#do span{color:var(--rh-color-status-success)}#dont span{color:var(--rh-color-status-danger)}::slotted(uxdot-example){margin:0!important}figure{margin:0!important}</style><!--lit-part /OqYtWIsZqM=-->
       <figure id="container">
         <slot name="image"></slot>
         <!--lit-node 2--><figcaption id="dont">

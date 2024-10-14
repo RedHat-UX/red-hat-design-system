@@ -54,8 +54,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.4/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
@@ -1112,7 +1112,7 @@
 </uxdot-copy-permalink>
 <p>Breadcrumbs should not be used as the main navigation.</p>
 <div class="grid sm-two-columns">
-  <uxdot-best-practice  variant="do"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block:var(--rh-space-2xl)}#container{display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl)}span{font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xs);font-weight:var(--rh-font-weight-heading-medium);display:flex;flex-direction:row;align-items:center;gap:var(--rh-space-sm);color:var(--_bp-color)}#do{--_bp-color:var(--rh-color-status-success-on-light,#63993d)}#dont{--_bp-color:var(--rh-color-status-danger-on-light,#f0561d)}::slotted(uxdot-example){margin:0!important}figure{margin:0!important}</style><!--lit-part /OqYtWIsZqM=-->
+  <uxdot-best-practice  variant="do"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block:var(--rh-space-2xl)}#container{display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl)}span{font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xs);font-weight:var(--rh-font-weight-heading-medium);display:flex;flex-direction:row;align-items:center;gap:var(--rh-space-sm)}#do span{color:var(--rh-color-status-success)}#dont span{color:var(--rh-color-status-danger)}::slotted(uxdot-example){margin:0!important}figure{margin:0!important}</style><!--lit-part /OqYtWIsZqM=-->
       <figure id="container">
         <slot name="image"></slot>
         <!--lit-node 2--><figcaption id="do">
@@ -1138,7 +1138,7 @@
     </uxdot-example>
     <p>Do use breadcrumbs to supplement the primary or secondary navigation element.</p>
   </uxdot-best-practice>
-  <uxdot-best-practice  variant="dont"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block:var(--rh-space-2xl)}#container{display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl)}span{font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xs);font-weight:var(--rh-font-weight-heading-medium);display:flex;flex-direction:row;align-items:center;gap:var(--rh-space-sm);color:var(--_bp-color)}#do{--_bp-color:var(--rh-color-status-success-on-light,#63993d)}#dont{--_bp-color:var(--rh-color-status-danger-on-light,#f0561d)}::slotted(uxdot-example){margin:0!important}figure{margin:0!important}</style><!--lit-part /OqYtWIsZqM=-->
+  <uxdot-best-practice  variant="dont"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block:var(--rh-space-2xl)}#container{display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl)}span{font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xs);font-weight:var(--rh-font-weight-heading-medium);display:flex;flex-direction:row;align-items:center;gap:var(--rh-space-sm)}#do span{color:var(--rh-color-status-success)}#dont span{color:var(--rh-color-status-danger)}::slotted(uxdot-example){margin:0!important}figure{margin:0!important}</style><!--lit-part /OqYtWIsZqM=-->
       <figure id="container">
         <slot name="image"></slot>
         <!--lit-node 2--><figcaption id="dont">
@@ -1167,7 +1167,7 @@
 </div>
 <p>They should also not be used if there is only one level in the page hierarchy or if the current page is at the top of the page hierarchy.</p>
 <div class="grid sm-two-columns">
-  <uxdot-best-practice  variant="do"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block:var(--rh-space-2xl)}#container{display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl)}span{font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xs);font-weight:var(--rh-font-weight-heading-medium);display:flex;flex-direction:row;align-items:center;gap:var(--rh-space-sm);color:var(--_bp-color)}#do{--_bp-color:var(--rh-color-status-success-on-light,#63993d)}#dont{--_bp-color:var(--rh-color-status-danger-on-light,#f0561d)}::slotted(uxdot-example){margin:0!important}figure{margin:0!important}</style><!--lit-part /OqYtWIsZqM=-->
+  <uxdot-best-practice  variant="do"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block:var(--rh-space-2xl)}#container{display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl)}span{font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xs);font-weight:var(--rh-font-weight-heading-medium);display:flex;flex-direction:row;align-items:center;gap:var(--rh-space-sm)}#do span{color:var(--rh-color-status-success)}#dont span{color:var(--rh-color-status-danger)}::slotted(uxdot-example){margin:0!important}figure{margin:0!important}</style><!--lit-part /OqYtWIsZqM=-->
       <figure id="container">
         <slot name="image"></slot>
         <!--lit-node 2--><figcaption id="do">
@@ -1193,7 +1193,7 @@
     </uxdot-example>
     <p>Do use breadcrumbs if there are at least two levels in a page hierarchy.</p>
   </uxdot-best-practice>
-  <uxdot-best-practice  variant="dont"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block:var(--rh-space-2xl)}#container{display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl)}span{font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xs);font-weight:var(--rh-font-weight-heading-medium);display:flex;flex-direction:row;align-items:center;gap:var(--rh-space-sm);color:var(--_bp-color)}#do{--_bp-color:var(--rh-color-status-success-on-light,#63993d)}#dont{--_bp-color:var(--rh-color-status-danger-on-light,#f0561d)}::slotted(uxdot-example){margin:0!important}figure{margin:0!important}</style><!--lit-part /OqYtWIsZqM=-->
+  <uxdot-best-practice  variant="dont"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block:var(--rh-space-2xl)}#container{display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl)}span{font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xs);font-weight:var(--rh-font-weight-heading-medium);display:flex;flex-direction:row;align-items:center;gap:var(--rh-space-sm)}#do span{color:var(--rh-color-status-success)}#dont span{color:var(--rh-color-status-danger)}::slotted(uxdot-example){margin:0!important}figure{margin:0!important}</style><!--lit-part /OqYtWIsZqM=-->
       <figure id="container">
         <slot name="image"></slot>
         <!--lit-node 2--><figcaption id="dont">
@@ -1240,7 +1240,7 @@
 </uxdot-copy-permalink>
 <p>Breadcrumbs should be placed consistently above the page title and below the primary (and secondary nav, if it’s used). Any other location on the page is not a common spot for breadcrumbs and is thus less easily found and recognized as breadcrumbs.</p>
 <div class="grid sm-two-columns">
-  <uxdot-best-practice  variant="do"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block:var(--rh-space-2xl)}#container{display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl)}span{font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xs);font-weight:var(--rh-font-weight-heading-medium);display:flex;flex-direction:row;align-items:center;gap:var(--rh-space-sm);color:var(--_bp-color)}#do{--_bp-color:var(--rh-color-status-success-on-light,#63993d)}#dont{--_bp-color:var(--rh-color-status-danger-on-light,#f0561d)}::slotted(uxdot-example){margin:0!important}figure{margin:0!important}</style><!--lit-part /OqYtWIsZqM=-->
+  <uxdot-best-practice  variant="do"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block:var(--rh-space-2xl)}#container{display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl)}span{font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xs);font-weight:var(--rh-font-weight-heading-medium);display:flex;flex-direction:row;align-items:center;gap:var(--rh-space-sm)}#do span{color:var(--rh-color-status-success)}#dont span{color:var(--rh-color-status-danger)}::slotted(uxdot-example){margin:0!important}figure{margin:0!important}</style><!--lit-part /OqYtWIsZqM=-->
       <figure id="container">
         <slot name="image"></slot>
         <!--lit-node 2--><figcaption id="do">
@@ -1266,7 +1266,7 @@
     </uxdot-example>
     <p>Do place breadcrumbs in a familiar and consistent place for this type of navigation element.</p>
   </uxdot-best-practice>
-  <uxdot-best-practice  variant="dont"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block:var(--rh-space-2xl)}#container{display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl)}span{font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xs);font-weight:var(--rh-font-weight-heading-medium);display:flex;flex-direction:row;align-items:center;gap:var(--rh-space-sm);color:var(--_bp-color)}#do{--_bp-color:var(--rh-color-status-success-on-light,#63993d)}#dont{--_bp-color:var(--rh-color-status-danger-on-light,#f0561d)}::slotted(uxdot-example){margin:0!important}figure{margin:0!important}</style><!--lit-part /OqYtWIsZqM=-->
+  <uxdot-best-practice  variant="dont"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block:var(--rh-space-2xl)}#container{display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl)}span{font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xs);font-weight:var(--rh-font-weight-heading-medium);display:flex;flex-direction:row;align-items:center;gap:var(--rh-space-sm)}#do span{color:var(--rh-color-status-success)}#dont span{color:var(--rh-color-status-danger)}::slotted(uxdot-example){margin:0!important}figure{margin:0!important}</style><!--lit-part /OqYtWIsZqM=-->
       <figure id="container">
         <slot name="image"></slot>
         <!--lit-node 2--><figcaption id="dont">
@@ -1313,7 +1313,7 @@
 </uxdot-copy-permalink>
 <p>The page titles used in breadcrumbs should be consistent with what is used in the navigation and on the individual pages. Avoid changing the page titles in order to prevent user confusion.</p>
 <div class="grid sm-two-columns">
-  <uxdot-best-practice  variant="do"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block:var(--rh-space-2xl)}#container{display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl)}span{font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xs);font-weight:var(--rh-font-weight-heading-medium);display:flex;flex-direction:row;align-items:center;gap:var(--rh-space-sm);color:var(--_bp-color)}#do{--_bp-color:var(--rh-color-status-success-on-light,#63993d)}#dont{--_bp-color:var(--rh-color-status-danger-on-light,#f0561d)}::slotted(uxdot-example){margin:0!important}figure{margin:0!important}</style><!--lit-part /OqYtWIsZqM=-->
+  <uxdot-best-practice  variant="do"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block:var(--rh-space-2xl)}#container{display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl)}span{font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xs);font-weight:var(--rh-font-weight-heading-medium);display:flex;flex-direction:row;align-items:center;gap:var(--rh-space-sm)}#do span{color:var(--rh-color-status-success)}#dont span{color:var(--rh-color-status-danger)}::slotted(uxdot-example){margin:0!important}figure{margin:0!important}</style><!--lit-part /OqYtWIsZqM=-->
       <figure id="container">
         <slot name="image"></slot>
         <!--lit-node 2--><figcaption id="do">
@@ -1339,7 +1339,7 @@
     </uxdot-example>
     <p>Do keep the same page title in the heading and in breadcrumb navigation.</p>
   </uxdot-best-practice>
-  <uxdot-best-practice  variant="dont"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block:var(--rh-space-2xl)}#container{display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl)}span{font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xs);font-weight:var(--rh-font-weight-heading-medium);display:flex;flex-direction:row;align-items:center;gap:var(--rh-space-sm);color:var(--_bp-color)}#do{--_bp-color:var(--rh-color-status-success-on-light,#63993d)}#dont{--_bp-color:var(--rh-color-status-danger-on-light,#f0561d)}::slotted(uxdot-example){margin:0!important}figure{margin:0!important}</style><!--lit-part /OqYtWIsZqM=-->
+  <uxdot-best-practice  variant="dont"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block:var(--rh-space-2xl)}#container{display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl)}span{font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xs);font-weight:var(--rh-font-weight-heading-medium);display:flex;flex-direction:row;align-items:center;gap:var(--rh-space-sm)}#do span{color:var(--rh-color-status-success)}#dont span{color:var(--rh-color-status-danger)}::slotted(uxdot-example){margin:0!important}figure{margin:0!important}</style><!--lit-part /OqYtWIsZqM=-->
       <figure id="container">
         <slot name="image"></slot>
         <!--lit-node 2--><figcaption id="dont">
