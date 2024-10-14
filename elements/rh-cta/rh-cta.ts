@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer, noChange } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -13,6 +13,7 @@ import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/c
 import type { IconNameFor, IconSetName } from '@rhds/icons';
 
 import style from './rh-cta.css';
+import { state } from 'lit/decorators/state.js';
 
 function isSupportedContent(el: Element | null): el is HTMLAnchorElement | HTMLButtonElement {
   return el instanceof HTMLAnchorElement || el instanceof HTMLButtonElement;
@@ -72,8 +73,6 @@ function isSupportedContent(el: Element | null): el is HTMLAnchorElement | HTMLB
  */
 @customElement('rh-cta')
 export class RhCta extends LitElement {
-  static readonly version = '{{version}}';
-
   static readonly styles = [style];
 
   /**
@@ -120,7 +119,7 @@ export class RhCta extends LitElement {
   /**
    * Sets color theme based on parent context
    */
-  @colorContextConsumer() private on?: ColorTheme;
+  @colorContextConsumer() @state() private on?: ColorTheme;
 
   protected override async getUpdateComplete(): Promise<boolean> {
     if (this.icon || !this.variant) {
@@ -145,27 +144,30 @@ export class RhCta extends LitElement {
     const svg = isDefault;
     const iconOrSvg = isDefault || !!icon;
     const follower = !iconOrSvg ? '' : variant !== 'brick' && icon ? html`<!--
-   --><rh-icon icon=${icon} set=${iconSet ?? 'ui'}></rh-icon>` : variant ? '' : html`<!--
+   --><rh-icon icon="${icon}" set="${iconSet ?? 'ui'}"></rh-icon>` : variant ? '' : html`<!--
    --><rh-icon  set="ui" icon="arrow-right"></rh-icon>`;
+    const iconContent =
+          (variant === 'brick' && icon) ? ''
+        : html`<rh-icon icon=${icon} set="${iconSet ?? 'ui'}"></rh-icon>`;
+    const linkContent =
+        !href ? html`<slot></slot>${follower}`
+      : html`<a href=${href}
+                download="${ifDefined(download)}"
+                rel="${ifDefined(rel)}"
+                referrerpolicy="${ifDefined(referrerpolicy)}"
+                target="${ifDefined(target)}"><slot></slot>${follower}</a>`;
     return html`
       <span id="container"
             part="container"
             class=${classMap({ rtl, icon: !!icon, svg, on: true, [on]: true })}
-            @slotchange=${this.firstUpdated}>${variant === 'brick' && icon ? html`
-        <rh-icon icon=${icon}
-                 set="${iconSet ?? 'ui'}"></rh-icon>` : ''}${href ? html`
-        <a href=${href}
-           download="${ifDefined(download)}"
-           rel="${ifDefined(rel)}"
-           referrerpolicy="${ifDefined(referrerpolicy)}"
-           target="${ifDefined(target)}"><slot></slot>${follower}</a>`
-   : html`<slot></slot>${follower}`}
-      </span>
-    `;
+            @slotchange=${this.firstUpdated}>${iconContent}${linkContent}</span>`;
   }
 
   override firstUpdated() {
     const { href, variant } = this;
+    if (!isServer) {
+      this.removeAttribute('defer-hydration');
+    }
     const cta =
          this.shadowRoot?.querySelector('a')
       ?? this.shadowRoot?.querySelector('slot')?.assignedElements().find(isSupportedContent)
