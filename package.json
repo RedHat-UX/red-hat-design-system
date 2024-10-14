@@ -278,9 +278,6 @@
       "dependencies": [
         "analyze",
         "compile"
-      ],
-      "output": [
-        "_site"
       ]
     },
     "e2e": {
