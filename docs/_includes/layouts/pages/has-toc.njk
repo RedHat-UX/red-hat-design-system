@@ -3,16 +3,16 @@ layout: layouts/base.njk
 ---
 {%- set tagsForThisPageToc = tocTags or ['h2'] -%}
 {%- set table = content | toc(tags=tagsForThisPageToc) -%}
-<link data-helmet
-      rel="stylesheet"
-      href="/styles/pages/backpage.css">
+<link rel="stylesheet"
+      href="/styles/pages/backpage.css"
+      data-helmet>
 
-<link data-helmet
-      rel="stylesheet"
-      href="/assets/javascript/elements/uxdot-toc-lightdom.css">
+<link rel="stylesheet"
+      href="/assets/packages/@uxdot/elements/uxdot-toc-lightdom.css"
+      data-helmet>
 
-<script data-helmet type="module">
-  import '/assets/javascript/elements/uxdot-toc.js';
+<script type="module" data-helmet>
+  import '@uxdot/elements/uxdot-toc.js';
 </script>
 
 {% include 'partials/component/masthead.njk' %}

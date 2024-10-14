@@ -46,4 +46,4 @@ importElements:
   <h2 slot="heading">With 2x3 grid</h2>
 </uxdot-pattern>
 
-{% include 'partials/component/feedback.html' %}
+{% renderFile './docs/_includes/partials/component/feedback.11ty.ts' %}

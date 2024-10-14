@@ -44,9 +44,7 @@ const L2 = html`
 export class RhPagination extends LitElement {
   static readonly version = '{{version}}';
 
-  /**
-   * Sets color theme based on parent context
-   */
+  /** Sets color theme based on parent context */
   @colorContextConsumer() private on?: ColorTheme;
 
   static readonly styles = [styles];

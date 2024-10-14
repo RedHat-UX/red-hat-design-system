@@ -158,10 +158,4 @@ Each popover orientation contains the same amount of spacing in between the comp
         height="236">
 </uxdot-example>
 
-<rh-table>
- {% spacerTokensTable
-    caption='',
-    headingLevel="3",
-    tokens="--rh-space-lg, --rh-space-xl" %}
- {% endspacerTokensTable %}
-</rh-table>
+<uxdot-spacer-tokens-table tokens="lg, xl"></uxdot-spacer-tokens-table>

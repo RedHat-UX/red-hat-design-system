@@ -10,6 +10,12 @@ subnav:
   order: 10
 ---
 
+<script type="module" data-helmet>
+  import '@uxdot/elements/uxdot-example.js';
+  import '@rhds/elements/rh-code-block/rh-code-block.js';
+  import '@rhds/elements/rh-alert/rh-alert.js';
+</script>
+
 ## How to install
 
 There are three ways you can install the Red Hat Design System's web components: 
@@ -59,12 +65,11 @@ how you'd load in <`rh-button>`.
 Note that modules may be placed in the `<head>`. Since they are deferred by 
 default, they will not block rendering.
 
-
 ### NPM
 
 Install RHDS using your team's preferred NPM package manager.
 
-```shell rhcodeblock
+```sh rhcodeblock
 npm install @rhds/elements
 ```
 
@@ -90,7 +95,6 @@ scope of this page; read more about bundlers on their websites:
 Add an [import map][importmap] to the `<head>`, pointing to the CDN, or update 
 any existing import map.
 
-
 ```html rhcodeblock
 <script type="importmap">
   {
@@ -101,7 +105,6 @@ any existing import map.
   }
 </script>
 ```
-
 Once the import map is established, you can load the element with the following 
 module, containing a [bare module specifier][barespec]. The example below shows 
 how you'd load in <`rh-button>`.

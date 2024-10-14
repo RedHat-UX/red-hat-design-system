@@ -152,14 +152,7 @@ space values when buttons are grouped, go to the [Guidelines](./guidelines) page
         height="68">
 </uxdot-example>
 
-<rh-table>
-{% spacerTokensTable 
-  headline="",
-  caption='',
-  headingLevel="4",
-  tokens="--rh-space-sm, --rh-space-md, --rh-space-lg" %}
-{% endspacerTokensTable %}
-</rh-table>
+<uxdot-spacer-tokens-table tokens="sm, md, lg"></uxdot-spacer-tokens-table>
 
 ## Interaction states
 

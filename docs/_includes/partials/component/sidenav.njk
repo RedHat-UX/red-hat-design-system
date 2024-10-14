@@ -17,22 +17,25 @@
         {%- set active = '/elements/' === page.url -%}
         <uxdot-sidenav-dropdown-menu-item href="/elements/" {{ 'active' if active }}>All elements</uxdot-sidenav-dropdown-menu-item>
         {%- for tagName, docs in collections.elementDocs | groupby('tagName') -%}
-        {%- set fst = docs[0] -%}
-        {%- set slug = fst.slug -%}
-        {%- set href = '/elements/' + slug + '/' -%}
-        {%- set active = href === page.url -%}
-        {%- set name = (fst.alias) or (slug | deslugify) %}
-        {%- set planned = repoStatus | isPlanned(name) %}
+        {%- set doc = docs[0] -%}
+        {%- set slug = doc.slug -%}
+        {%- set href = '/elements/' + doc.slug + '/' -%}
+        {%- set active = page.url.startsWith(href) -%}
+        {%- set name = (doc.alias) or (doc.slug | deslugify) %}
         {% if not (tagName in comingSoonItems) %}
-        <uxdot-sidenav-dropdown-menu-item href="{{ href }}" {{ 'active' if active }}>
-          {{- fst.alias or (slug | deslugify) -}}
-          {%- if planned -%}<rh-tag icon="notification-fill" color="purple" size="compact">Planned</rh-tag>{%- endif -%}
+        <uxdot-sidenav-dropdown-menu-item data-slug="{{ slug }}"
+                                          data-doc-slug="{{ doc.slug }}"
+                                          data-page-url="{{ page.url }}"
+                                          href="{{ href }}"
+                                          {{ 'active' if active }}>
+          {{- doc.alias or (doc.slug | deslugify) -}}
+          {%- if doc.planned -%}<rh-tag icon="notification-fill" color="purple" size="compact">Planned</rh-tag>{%- endif -%}
         </uxdot-sidenav-dropdown-menu-item>
         {% endif %}
         {%- endfor -%}
         {% else %}
-        {% if link.collection === 'tokenCategory' %}
-        {%- set active = page.url === "/tokens/" %}
+        {% if link.collection == 'tokenCategory' %}
+        {%- set active = page.url == "/tokens/" %}
         <uxdot-sidenav-dropdown-menu-item href="/tokens/" {{ 'active' if active }}>Overview</uxdot-sidenav-dropdown-menu-item>
         {% endif -%}
 

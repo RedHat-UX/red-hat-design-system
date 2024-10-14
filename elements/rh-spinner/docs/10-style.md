@@ -128,15 +128,7 @@ left of the text as if it were an icon.
         height="103">  
 </uxdot-example>
 
-<rh-table>
-  {% spacerTokensTable 
-    headline="",
-    caption='',
-    headingLevel="3",
-    tokens="--rh-space-lg" %}
-  {% endspacerTokensTable %}
-</rh-table>
-
+<uxdot-spacer-tokens-table tokens="lg"></uxdot-spacer-tokens-table>
 
 ## Interaction states
 
