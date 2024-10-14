@@ -69,7 +69,6 @@ export class ColorContextProvider<
   // eslint-disable-next-line no-unused-private-class-members
   #style: CSSStyleDeclaration;
 
-
   #initialized = false;
 
   #logger: Logger;

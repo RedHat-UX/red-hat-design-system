@@ -54,10 +54,9 @@ export default async function(eleventyConfig: UserConfig) {
     eleventyConfig.addGlobalData('runMode', runMode);
   });
 
-  eleventyConfig.on('eleventy.before', async function() {
-    const { all } = await $({ all: true })`npx tspc -b`;
-    // eslint-disable-next-line no-console
-    console.log(all);
+  let watch;
+  eleventyConfig.on('eleventy.before', function() {
+    watch ||= $({ stdout: ['pipe'], stderr: ['pipe'] })`npx tspc -b --watch`;
   });
 
   eleventyConfig.watchIgnores?.add('docs/assets/redhat/');
@@ -66,6 +65,7 @@ export default async function(eleventyConfig: UserConfig) {
   eleventyConfig.watchIgnores?.add('**/*.js.map');
   eleventyConfig.watchIgnores?.add('elements/*/test/');
   eleventyConfig.watchIgnores?.add('lib/elements/*/test/');
+  eleventyConfig.watchIgnores?.add('**/*.tsbuildinfo');
   eleventyConfig.addPassthroughCopy('docs/patterns/**/*.{svg,jpg,jpeg,png}');
   eleventyConfig.addPassthroughCopy('elements/*/demo/**/*.{svg,jpg,jpeg,png}');
   eleventyConfig.addPassthroughCopy('docs/CNAME');
