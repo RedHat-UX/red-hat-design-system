@@ -96,14 +96,7 @@ The amount of space in all audio players remains the same on all breakpoints.
       height="504">
 </uxdot-example>
 
-<rh-table>
-  {% spacerTokensTable 
-      caption='',
-      headingLevel="3",
-      tokens="--rh-space-md, --rh-space-lg, --rh-space-xl, --rh-space-2xl" %}
-  {% endspacerTokensTable %}
-</rh-table>
-
+<uxdot-spacer-tokens-table tokens="md, lg, xl, 2xl"></uxdot-spacer-tokens-table>
 
 ## Interaction states
 Interaction states are visual representations used to communicate the status of an element or pattern.

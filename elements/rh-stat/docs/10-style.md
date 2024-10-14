@@ -134,7 +134,7 @@ elements are included, the order will change.
 
 Space values are the same for both Default and Large sizes and on all
 breakpoints. To see space values when statistics are used in a layout,
-go to the [Guidelines](../guidelines) page.
+go to the [Guidelines](/elements/statistic/guidelines/) page.
 
 <uxdot-example width-adjustment="800px">
   <img src="../stat-space.png"
@@ -143,18 +143,11 @@ go to the [Guidelines](../guidelines) page.
         height="271">
 </uxdot-example>
 
-<rh-table>
-{% spacerTokensTable 
-    headline='',
-    caption='',
-    tokens="--rh-space-md, --rh-space-xl" %}
-{% endspacerTokensTable %}
-</rh-table>
-
+<uxdot-spacer-tokens-table tokens="md, xl"></uxdot-spacer-tokens-table>
 
 ## Interaction states
 
 The optional call to action is the only interactive element. Go to the
-[Call to action](../../call-to-action) page to view the interaction
+[Call to action](/elements/call-to-action/) page to view the interaction
 states.
 

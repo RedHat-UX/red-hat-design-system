@@ -3,7 +3,6 @@ title: Examples
 heading: Logo wall
 sidenavTitle: Logo wall
 layout: layouts/pages/pattern.njk
-hasToc: true
 order: 20
 tags:
   - logowallPatterns
@@ -22,25 +21,29 @@ importElements:
 <link rel="stylesheet" data-helmet href="/styles/samp.css">
 <link rel="stylesheet" data-helmet href="../logo-wall-lightdom.css">
 
-## Within a promo band (bordered)
+<uxdot-pattern src="./patterns/1x1-grid.html"
+               css-src="./logo-wall-lightdom.css"
+               target="example-1x1-grid">
+  <h2 slot="heading">Within a promo band (bordered)</h2>
+</uxdot-pattern>
 
-{% uxdotPattern stacked=true, css='./logo-wall-lightdom.css', target="example-1x1-grid" %}
-{% include './patterns/1x1-grid.html' %}
-{% enduxdotPattern %}
 
-## Within a promo band (borderless)
-{% uxdotPattern stacked=true, css='./logo-wall-lightdom.css', target="example-1x1-grid-flat" %}
-{% include './patterns/1x1-grid-flat.html' %}
-{% enduxdotPattern %}
+<uxdot-pattern src="./patterns/1x1-grid-flat.html"
+               css-src="./logo-wall-lightdom.css"
+               target="example-1x1-grid-flat">
+  <h2 slot="heading">Within a promo band (borderless)</h2>
+</uxdot-pattern>
 
-## With 2x2 grid
-{% uxdotPattern stacked=true, css='./logo-wall-lightdom.css', target="example-2x2-grid" %}
-{% include './patterns/2x2-grid.html' %}
-{% enduxdotPattern %}
+<uxdot-pattern src="./patterns/2x2-grid.html"
+               css-src="./logo-wall-lightdom.css"
+               target="example-2x2-grid">
+  <h2 slot="heading">With 2x2 grid</h2>
+</uxdot-pattern>
 
-## With 2x3 grid
-{% uxdotPattern stacked=true, css='./logo-wall-lightdom.css', target="example-2x3-grid" %}
-{% include './patterns/2x3-grid.html' %}
-{% enduxdotPattern %}
+<uxdot-pattern src="./patterns/2x3-grid.html"
+               css-src="./logo-wall-lightdom.css"
+               target="example-2x3-grid">
+  <h2 slot="heading">With 2x3 grid</h2>
+</uxdot-pattern>
 
-{% include 'partials/component/feedback.html' %}
+{% renderFile './docs/_includes/partials/component/feedback.11ty.ts' %}

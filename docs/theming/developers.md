@@ -1,7 +1,7 @@
 ---
 title: Developers
+layout: layouts/pages/has-toc.njk
 order: 4
-hasToc: true
 ---
 
 <link rel="stylesheet"
@@ -18,7 +18,7 @@ hasToc: true
       href="../developers.css">
 
 <script type="module" data-helmet>
-  import '/assets/javascript/elements/uxdot-pattern.js';
+  import '@uxdot/elements/uxdot-pattern.js';
   import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
   import '@rhds/elements/rh-accordion/rh-accordion.js';
   import '@rhds/elements/rh-audio-player/rh-audio-player.js';
@@ -56,10 +56,10 @@ A common pattern for a themeable container is the full-width band. For example,
 a `<rh-surface>` may be used as a full-width container and provide the 
 *Bordeaux* theme values to a set of 3 cards in a grid:
 
-{% uxdotPattern src="./docs/theming/patterns/band.html",
-                class="band-example",
-                target="band",
-                stacked=true %}{% enduxdotPattern %}
+<uxdot-pattern src="./patterns/band.html"
+               class="band-example"
+               target="band">
+</uxdot-pattern>
 
 ### The `color-palette` attribute
 

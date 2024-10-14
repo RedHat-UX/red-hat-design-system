@@ -1,27 +1,19 @@
 ---
-layout: layouts/pages/basic.njk
 title: Spacing
+layout: layouts/pages/has-toc.njk
 order: 40
-hasToc: true
 tags:
   - foundations
-spacerTokens:
-  - --rh-space-xs
-  - --rh-space-sm
-  - --rh-space-md
-  - --rh-space-lg
-  - --rh-space-xl
-  - --rh-space-2xl
-  - --rh-space-3xl
-  - --rh-space-4xl
-  - --rh-space-5xl
-  - --rh-space-6xl
-  - --rh-space-7xl
 ---
-<link data-helmet rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
-<link data-helmet rel="stylesheet" href="/styles/samp.css">
 
-<script data-helmet type="module">
+<link rel="stylesheet"
+      href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css"
+      data-helmet>
+<link rel="stylesheet"
+      href="/styles/samp.css"
+      data-helmet>
+
+<script type="module" data-helmet>
   import '@rhds/elements/rh-table/rh-table.js';
 </script>
 
@@ -62,9 +54,8 @@ spacerTokens:
   added based on design needs, so do not create any new spacers, combine 
   different spacers instead.
 
-  <rh-table>
-  {% spacerTokensTable headingLevel="4", tokens=spacerTokens %}{% endspacerTokensTable %}
-  </rh-table>
+  <uxdot-spacer-tokens-table tokens="xs, sm, md, lg, xl, 2xl, 3xl, 4xl, 5xl, 6xl, 7xl">
+  </uxdot-spacer-tokens-table>
 
   ### Applying spacers
 
@@ -75,7 +66,10 @@ spacerTokens:
   layout or spacing between sections.
 
   <uxdot-example variant="full">
-    <img src="/assets/spacing/spacing-application-1.svg" alt="How to apply spacing">
+    <img src="/assets/spacing/spacing-application-1.svg"
+         alt="How to apply spacing"
+         width="1000"
+         height="566">
   </uxdot-example>
 
 </section>
@@ -88,7 +82,10 @@ spacerTokens:
   vertical rhythm and readability.
 
   <uxdot-example>
-    <img src="/assets/spacing/spacing-typography-1.png" alt="How to apply spacing to typography">
+    <img src="/assets/spacing/spacing-typography-1.png"
+         alt="How to apply spacing to typography"
+         width="1000"
+         height="421">
   </uxdot-example>
 
   ### Spacing between text styles
@@ -99,7 +96,10 @@ spacerTokens:
   won’t appear as if the styles are related to each other.
 
   <uxdot-example>
-    <img src="/assets/spacing/spacing-typography-2.svg" alt="Spacing between text styles">
+    <img src="/assets/spacing/spacing-typography-2.svg"
+         alt="Spacing between text styles"
+         width="1000"
+         height="720">
   </uxdot-example>
 
   ### Titles and headlines
@@ -116,8 +116,11 @@ spacerTokens:
   - The spacing between a *Card title* and body copy is 16px on desktop,
     tablet, and mobile
 
-  <uxdot-example>
-    <img src="/assets/spacing/spacing-typography-3.svg" alt="Headlines and body copy spacing guidelines">
+  <uxdot-example width-adjustment="1000px">
+    <img src="/assets/spacing/spacing-typography-3.svg"
+         alt="Headlines and body copy spacing guidelines"
+         width="1000"
+         height="523">
   </uxdot-example>
 
   ### Desktop scale
@@ -173,7 +176,10 @@ spacerTokens:
     desktop and tablet, and 24px on mobile
 
   <uxdot-example variant="full">
-    <img src="/assets/spacing/spacing-headlines-ctas.png" alt="How to apply spacing to headlines and calls to action">
+    <img src="/assets/spacing/spacing-headlines-ctas.png"
+         alt="How to apply spacing to headlines and calls to action"
+         width="1000"
+         height="814">
   </uxdot-example>
 
   ### Scale
@@ -212,7 +218,10 @@ spacerTokens:
     desktop, tablet, and mobile
 
   <uxdot-example variant="full">
-    <img src="/assets/spacing/spacing-headlines-buttons.svg" alt="How to apply spacing to headlines and buttons">
+    <img src="/assets/spacing/spacing-headlines-buttons.svg"
+         alt="How to apply spacing to headlines and buttons"
+         width="1000"
+         height="740">
   </uxdot-example>
 
   #### Scale
@@ -237,7 +246,10 @@ spacerTokens:
   ### Other examples
 
   <uxdot-example variant="full">
-    <img src="/assets/spacing/spacing-other-examples-1.svg" alt="Spacing on lists">
+    <img src="/assets/spacing/spacing-other-examples-1.svg"
+         alt="Spacing on lists"
+         width="1000"
+         height="741">
   </uxdot-example>
 
   ### Other use cases
@@ -264,7 +276,10 @@ spacerTokens:
   estate.
 
   <uxdot-example variant="full">
-    <img src="/assets/spacing/spacing-components-1.svg" alt="Spacing in search layout">
+    <img src="/assets/spacing/spacing-components-1.svg"
+         alt="Spacing in search layout"
+         width="1000"
+         height="388">
   </uxdot-example>
 
   ### Calls to action
@@ -277,20 +292,29 @@ spacerTokens:
   16px.
 
   <uxdot-example variant="full">
-    <img src="/assets/spacing/spacing-calls-to-action.svg" alt="Spacing within calls to action">
+    <img src="/assets/spacing/spacing-calls-to-action.svg"
+         alt="Spacing within calls to action"
+         width="1000"
+         height="218">
   </uxdot-example>
 
   The Brick style has a fixed top and bottom spacing of 16px, but the left and 
   right spacing can stretch to fit a certain amount of grid columns.
 
   <uxdot-example variant="full">
-    <img src="/assets/spacing/spacing-brick.svg" alt="Spacing within brick CTAs">
+    <img src="/assets/spacing/spacing-brick.svg"
+         alt="Spacing within brick CTAs"
+         width="1000"
+         height="340">
   </uxdot-example>
 
   The Default style needs 8px of spacing between the text and the arrow or icon.
 
   <uxdot-example variant="full">
-    <img src="/assets/spacing/spacing-cta-default.svg" alt="Spacing within default CTAs">
+    <img src="/assets/spacing/spacing-cta-default.svg"
+         alt="Spacing within default CTAs"
+         width="1000"
+         height="185">
   </uxdot-example>
 
   ### Accordion
@@ -299,7 +323,10 @@ spacerTokens:
   comfortable balance between text, horizontal rules, icons, and backgrounds.
 
   <uxdot-example variant="full">
-    <img src="/assets/spacing/spacing-accordion.svg" alt="Spacing within accordions">
+    <img src="/assets/spacing/spacing-accordion.svg"
+         alt="Spacing within accordions"
+         width="1000"
+         height="755">
   </uxdot-example>
 
   ### Tabs
@@ -311,7 +338,10 @@ spacerTokens:
   large spacer.
 
   <uxdot-example variant="full">
-    <img src="/assets/spacing/spacing-tabs.svg" alt="Spacing within tabs">
+    <img src="/assets/spacing/spacing-tabs.svg"
+         alt="Spacing within tabs"
+         width="1000"
+         height="470">
   </uxdot-example>
 
   ### Cards
@@ -321,11 +351,17 @@ spacerTokens:
   inside or outside.
 
   <uxdot-example variant="full">
-    <img src="/assets/spacing/spacing-cards.svg" alt="Spacing within cards">
+    <img src="/assets/spacing/spacing-cards.svg"
+         alt="Spacing within cards"
+         width="1000"
+         height="442">
   </uxdot-example>
 
   <uxdot-example variant="full">
-    <img src="/assets/spacing/spacing-cards-4-col.svg" alt="Spacing within 4 column cards">
+    <img src="/assets/spacing/spacing-cards-4-col.svg"
+         alt="Spacing within 4 column cards"
+         width="1000"
+         height="442">
   </uxdot-example>
 
   ### Scale
@@ -347,7 +383,10 @@ spacerTokens:
   Here’s how spacing is used in other components and patterns.
 
   <uxdot-example variant="full">
-    <img src="/assets/spacing/spacing-components-other.svg" alt="Spacing within other components">
+    <img src="/assets/spacing/spacing-components-other.svg"
+         alt="Spacing within other components"
+         width="1000"
+         height="923">
   </uxdot-example>
 
   ### Other use cases
@@ -375,7 +414,10 @@ spacerTokens:
   because there's a content area layout inside.
 
   <uxdot-example variant="full">
-    <img src="/assets/spacing/spacing-layouts.svg" alt="Spacing within layouts">
+    <img src="/assets/spacing/spacing-layouts.svg"
+         alt="Spacing within layouts"
+         width="1000"
+         height="598">
   </uxdot-example>
 
   ### Responsive design
@@ -387,32 +429,47 @@ spacerTokens:
   apart from each other.
 
   <uxdot-example variant="full" alignment="left">
-    <img src="/assets/spacing/spacing-layout-responsive.svg" alt="Spacing within the grid">
+    <img src="/assets/spacing/spacing-layout-responsive.svg"
+         alt="Spacing within the grid"
+         width="1000"
+         height="368">
   </uxdot-example>
 
   In the *tablet, landscape* breakpoint, the gutters in the grid are
   spaced 24px apart from each other.
 
   <uxdot-example variant="full" width-adjustment="992px" alignment="left" no-border>
-    <img src="/assets/spacing/spacing-layout-tablet-landscape.svg" alt="Spacing within a landscape tablet layout">
+    <img src="/assets/spacing/spacing-layout-tablet-landscape.svg"
+         alt="Spacing within a landscape tablet layout"
+         width="992"
+         height="392">
   </uxdot-example>
 
   In the *tablet, portrait* breakpoint, the gutters in the grid are spaced
   18px apart from each other.
 
   <uxdot-example  variant="full" width-adjustment="768px" alignment="left" no-border>
-    <img src="/assets/spacing/spacing-layout-tablet-portrait.svg" alt="Spacing within a portrait tablet layout">
+    <img src="/assets/spacing/spacing-layout-tablet-portrait.svg"
+         alt="Spacing within a portrait tablet layout"
+         width="768"
+         height="392">
   </uxdot-example>
 
   In the *mobile* breakpoint, the gutters in the grid are spaced 16px
   apart from each other.
 
   <uxdot-example variant="full" width-adjustment="576px" alignment="left" no-border>
-    <img src="/assets/spacing/spacing-layout-mobile.svg" alt="Spacing within a mobile landscape layout">
+    <img src="/assets/spacing/spacing-layout-mobile.svg"
+         alt="Spacing within a mobile landscape layout"
+         width="576"
+         height="392">
   </uxdot-example>
 
   <uxdot-example variant="full" width-adjustment="360px" alignment="left" no-border>
-    <img src="/assets/spacing/spacing-layout-mobile-portrait.svg" alt="Spacing within a mobile portrait layout">
+    <img src="/assets/spacing/spacing-layout-mobile-portrait.svg"
+         alt="Spacing within a mobile portrait layout"
+         width="360"
+         height="640">
   </uxdot-example>
 
   ### Other use cases
@@ -431,7 +488,10 @@ spacerTokens:
   new spacers.
 
   <uxdot-example variant="full">
-    <img src="/assets/spacing/spacing-best-practice-1.svg" alt="Use existing spacers">
+    <img src="/assets/spacing/spacing-best-practice-1.svg"
+         alt="Use existing spacers"
+         width="1000"
+         height="441">
   </uxdot-example>
 
 </section>

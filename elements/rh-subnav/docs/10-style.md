@@ -64,14 +64,7 @@ Each link container is the same height as the bar.
         height="176">
 </uxdot-example>
 
-<rh-table>
-{% spacerTokensTable headline="",
-    caption='',
-    headingLevel="4",
-    tokens="--rh-space-lg, --rh-space-2xl" %}
-{% endspacerTokensTable %}
-</rh-table>
-
+<uxdot-spacer-tokens-table tokens="lg, 2xl"></uxdot-spacer-tokens-table>
 
 ## Interaction states
 

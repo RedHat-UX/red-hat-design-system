@@ -1,17 +1,16 @@
 ---
-layout: layouts/pages/basic.njk
 title: Overview
 heading: Color
 sidenavTitle: Color
+layout: layouts/pages/has-toc.njk
 order: 10
-hasToc: true
+permalink: /foundations/color/index.html
 tags:
   - foundations
   - color
 subnav:
   collection: sortedColor
   order: 1
-permalink: /foundations/color/index.html
 crayons:
   - red
   - red-orange
@@ -24,38 +23,29 @@ crayons:
   - gray
 ---
 <style data-helmet>
-#crayons-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: var(--rh-space-2xl);
-  & .crayons-list {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-    & li {
-      padding: 0;
+  #crayons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    @container (min-width: 576px) and (max-width: 746px) {
+      grid-template-columns: repeat(auto-fill, minmax(245px, 1fr));
+    }
+    gap: var(--rh-space-2xl);
+    & .crayons-list {
       margin: 0;
-      & samp {
-        display: block;
-        font-size: var(--rh-font-size-body-text-md);
-        font-family: var(--rh-font-family-code);
-        padding: var(--rh-space-md) var(--rh-space-lg);
+      padding: 0;
+      list-style-type: none;
+      & li {
+        padding: 0;
+        margin: 0;
+        & samp {
+          display: block;
+          font-size: var(--rh-font-size-body-text-md);
+          font-family: var(--rh-font-family-code);
+          padding: var(--rh-space-md) var(--rh-space-lg);
+        }
       }
     }
   }
-}
-@container (min-width: 576px) and (max-width: 746px) {
-  #crayons-grid {
-    grid-template-columns: repeat(auto-fill, minmax(245px, 1fr));
-  }
-}
-/*
-@container section (min-width:747px) {
-  #crayons-grid {
-    grid-template-columns: repeat(auto-fill, minmax(352px, 1fr));
-  }
-}
-*/
 </style>
 
 ## Introduction
@@ -81,7 +71,10 @@ When colors are used together, they form relationships that communicate brand,
 hierarchy, state, and more.
 
 <uxdot-example width-adjustment="840px">
-  <img src="/assets/color/color-relationships.png" alt="Variants of several elements">
+  <img alt="Variants of several elements"
+       src="/assets/color/color-relationships.png"
+       width="840"
+       height="599">
 </uxdot-example>
 
 
@@ -92,13 +85,19 @@ changes at scale, making design language updates easy to implement.
 
 To learn more about our color design tokens, go to the [Tokens](/tokens) section.
 
-
 ### "Crayon" and semantic colors
 
-Our design system includes multiple sets of colors known as **"crayon" colors**. Crayon colors reference hard-coded values, but offer no information about usage. **Semantic** colors reference crayon colors and define how a color is used. Semantic naming is essential not just for color, but for all foundational styles.
+Our design system includes multiple sets of colors known as **"crayon" colors**. 
+Crayon colors reference hard-coded values, but offer no information about usage. 
+**Semantic** colors reference crayon colors and define how a color is used. 
+Semantic naming is essential not just for color, but for all foundational 
+styles.
 
 <uxdot-example width-adjustment="626px">
-  <img src="/assets/color/primitive-and-semantic-colors.png" alt="Example of how crayon color tokens are aliased to semantic tokens, which are used to style a button">
+  <img alt="Example of how crayon color tokens are aliased to semantic tokens, which are used to style a button"
+       src="/assets/color/primitive-and-semantic-colors.png"
+       width="626"
+       height="550">
 </uxdot-example>
 
 ## Color tokens

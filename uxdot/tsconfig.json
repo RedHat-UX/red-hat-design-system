@@ -1,0 +1,14 @@
+{
+  "extends": [
+    "../tsconfig.settings.json"
+  ],
+  "include": [
+    "./**/*",
+    "../declaration.d.ts",
+    "../docs/11ty-types.d.ts"
+  ],
+  "compilerOptions": {
+    "composite": true,
+    "outDir": "../docs/assets/javascript/elements",
+  },
+}

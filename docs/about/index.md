@@ -25,7 +25,7 @@ tags:
 </style>
 
 <script data-helmet type="module">
-  import '/assets/javascript/elements/uxdot-hero.js'
+  import '@uxdot/elements/uxdot-hero.js'
   import '@rhds/elements/rh-icon/rh-icon.js';
   import '@rhds/elements/rh-card/rh-card.js';
 </script>
@@ -85,7 +85,10 @@ and adapts to meet new challenges.
 <rh-cta href="https://www.redhat.com/en/about/brand/standards">Learn about the Red Hat brand</rh-cta>
 
 <uxdot-example variant="full" no-border alignment="left" width-adjustment="1140px">
- <img src="../assets/about/about-rhds-brand-standards.png" alt="the words 'brand standards' framed by elements and shapes in ReEd Hat colors">
+ <img src="../assets/about/about-rhds-brand-standards.png"
+      alt="the words 'brand standards' framed by elements and shapes in Red Hat colors"
+      width="1140"
+      height="286">
 </uxdot-example>
 
 ### Design tokens
@@ -98,7 +101,10 @@ help us assign consistent meanings that correspond with foundational guidelines.
 <rh-cta href="/tokens/">Learn about our tokens</rh-cta>
 
 <uxdot-example width-adjustment="807px">
- <img src="/tokens/images/design-tokens-intro.png" alt="Flow showing how a color like brand red becomes a token, how it is named, and how it is applied to a call to action">
+ <img src="/tokens/images/design-tokens-intro.png"
+      alt="Flow showing how a color like brand red becomes a token, how it is named, and how it is applied to a call to action"
+      width="807"
+      height="96">
 </uxdot-example>
 
 ## We build Web Components
@@ -111,7 +117,10 @@ framework or platform.
 <rh-cta href="/get-started/developers/#about-web-components">Learn about the benefits of Web Components</rh-cta>
 
 <uxdot-example width-adjustment="820px">
- <img src="../assets/about/about-rhds-web-components.svg" alt="Example of a card next to the Web Component's code">
+ <img src="../assets/about/about-rhds-web-components.svg"
+      alt="Example of a card next to the Web Component's code"
+      width="820"
+      height="281">
 </uxdot-example>
 
 ## We look for opportunities to align
@@ -141,7 +150,10 @@ upgraded easily, allowing for consistency, scalability, and flexibility.
 <rh-cta href="https://patternflyelements.org/">Visit PatternFly Elements</rh-cta>
 
 <uxdot-example width-adjustment="558px">
- <img src="../assets/about/about-rhds-pf-pfe.svg" alt="A back-to-top element that looks the same in RHDS, PatternFly, and PatternFly Elements">
+ <img src="../assets/about/about-rhds-pf-pfe.svg"
+      alt="A back-to-top element that looks the same in RHDS, PatternFly, and PatternFly Elements"
+      width="558"
+      height="58">
 </uxdot-example>
 
 ## We provide support

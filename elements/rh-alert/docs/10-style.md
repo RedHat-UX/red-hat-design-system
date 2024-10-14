@@ -1,29 +1,35 @@
+<script type="module" data-helmet>
+  import '@uxdot/elements/uxdot-spacer-tokens-table.js';
+</script>
+
 ## Style
 
-An alert is a layout including an icon, title, text, actions, and a close button. It comes in a variety of colors depending on status. A toast is a variant of alert. Instead of having a background color, it has a white background with a drop shadow.
+An alert is a layout including an icon, title, text, actions, and a close 
+button. It comes in a variety of colors depending on status. A toast is a 
+variant of alert. Instead of having a background color, it has a white 
+background with a drop shadow.
 
 ### Anatomy
 
 <figure>
   <uxdot-example width-adjustment="456px">
-    <img src="../alert-style-anatomy.svg" 
-        alt="Alert with numbers pointing to parts of the element" 
-        width="538"
-        height="276">
-  </uxdot-example>    
+    <img alt="Alert with numbers pointing to parts of the element"
+         src="../alert-style-anatomy.svg"
+         width="538"
+         height="276">
+  </uxdot-example>
   <figcaption>
-    <ol>
-      <li>Status icon</li>
-      <li>Title</li>
-      <li>Body text</li>
-      <li>Action buttons</li>
-      <li>Close button</li>
-      <li>Color background</li>
-      <li>White background with drop shadow</li>
-    </ol>
+
+1.  Status icon
+2.  Title
+3.  Body text
+4.  Action buttons
+5.  Close button
+6.  Color background
+7.  White background with drop shadow
+
   </figcaption>
 </figure>
-å
 
 ## Variants
 
@@ -32,10 +38,10 @@ An alert is a layout including an icon, title, text, actions, and a close button
 The default alert is inline. At minimum, the status icon and title needs to be visible.
 
 <uxdot-example width-adjustment="408px">
-  <img src="../alert-style-variant-inline.svg" 
-      alt="Two examples of an inline alert"
-      width="408"
-      height="339">
+  <img alt="Two examples of an inline alert"
+       src="../alert-style-variant-inline.svg"
+       width="408"
+       height="339">
 </uxdot-example>
 
 ### Inline alternate
@@ -43,10 +49,10 @@ The default alert is inline. At minimum, the status icon and title needs to be v
 There is an alternate inline alert where the border covers all sides.
 
 <uxdot-example width-adjustment="408px">
-  <img src="../alert-style-variant-inline-alt.svg" 
-      alt="Two examples of an alternate design for inline alerts"
-      width="408"
-      height="339">
+  <img alt="Two examples of an alternate design for inline alerts"
+       src="../alert-style-variant-inline-alt.svg"
+       width="408"
+       height="339">
 </uxdot-example>
 
 ### Toast
@@ -54,46 +60,40 @@ There is an alternate inline alert where the border covers all sides.
 Same as the inline alert, at minimum, the status icon and title needs to be visible.
 
 <uxdot-example width-adjustment="456px">
-  <img src="../alert-style-variant-toast.svg" 
-        alt="Two examples of a toast alert"
-        width="456"
-        height="203">
+  <img alt="Two examples of a toast alert"
+       src="../alert-style-variant-toast.svg"
+       width="456"
+       height="203">
 </uxdot-example>
-
 
 ## Space
 
 <uxdot-example width-adjustment="456px">
-  <img src="../alert-style-spacing-1.svg" 
-      alt="Diagram of spacing for inline alerts"
-      width="456"
-      height="276">
+  <img alt="Diagram of spacing for inline alerts"
+       src="../alert-style-spacing-1.svg"
+       width="456"
+       height="276">
 </uxdot-example>
 
 <uxdot-example variant="full" no-border>
-  <img src="../alert-style-spacing-2.svg" 
-      alt="Diagram of spacing for toast alerts"
-      width="1140"
-      height="302">
+  <img alt="Diagram of spacing for toast alerts"
+       src="../alert-style-spacing-2.svg"
+       width="1140"
+       height="302">
 </uxdot-example>
 
 <uxdot-example width-adjustment="752px"
                alignment="left"
                variant="full"
                no-border>
-  <img src="../alert-style-spacing-3.svg" 
-        alt="Diagram of spacing for alerts on mobile"
-        width="752"
-        height="640">
+  <img alt="Diagram of spacing for alerts on mobile"
+       src="../alert-style-spacing-3.svg"
+       width="752"
+       height="640">
 </uxdot-example>
 
-<rh-table>
-{% spacerTokensTable 
-    caption='',
-    headingLevel="4",
-    tokens="--rh-space-md, --rh-space-lg, --rh-space-xl" %}
-{% endspacerTokensTable %}
-</rh-table>
+<uxdot-spacer-tokens-table tokens="md, lg, xl">
+</uxdot-spacer-tokens-table>
 
 ## Interaction states
 

@@ -3,7 +3,6 @@ title: Overview
 heading: Tile
 sidenavTitle: Tile
 layout: layouts/pages/pattern.njk
-hasToc: true
 order: 120
 tags:
   - pattern
@@ -16,12 +15,10 @@ subnav:
 <link rel="stylesheet" data-helmet href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
 <link rel="stylesheet" data-helmet href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
 <link rel="stylesheet" data-helmet href="/styles/samp.css">
+
 <script type="module" data-helmet>
-  import '@rhds/elements/rh-tile/rh-tile.js';
-  import '@rhds/elements/rh-tile/rh-tile-group.js';
-  import '@rhds/elements/rh-cta/rh-cta.js';
-  import '@rhds/elements/rh-surface/rh-surface.js';
-  import '@rhds/elements/rh-code-block/rh-code-block.js';
+  import '@uxdot/elements/uxdot-pattern.js';
+  import '@rhds/elements/rh-alert/rh-alert.js';
 </script>
 
 ## Overview
@@ -53,7 +50,10 @@ Examples include:
 For more information, please see the docs on [theming][theming] and
 [`<rh-tile>` css custom properties][css-props].
 
-{% uxdotPattern stacked=true, target="custom-tiles" %}{% include './patterns/custom-themes.html' %}{% enduxdotPattern %}
+<uxdot-pattern src="./patterns/custom-themes.html"
+               target="custom-tiles">
+  <h3 id="custom-tiles">Custom tiles</h3>
+</uxdot-pattern>
 
 [element]: /elements/tile/
 [css-props]: /elements/tile/code/#css-custom-properties

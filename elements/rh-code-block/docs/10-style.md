@@ -65,9 +65,7 @@ Container spacing reduces as breakpoints get smaller.
         height="588">
 </uxdot-example>
 
-<rh-table>
-  {% spacerTokensTable tokens="--rh-space-lg, --rh-space-xl" %}{% endspacerTokensTable %}
-</rh-table>
+<uxdot-spacer-tokens-table tokens="lg, xl"></uxdot-spacer-tokens-table>
 
 ## Interaction states
 A code block includes only text and is not interactive right now.

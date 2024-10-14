@@ -61,14 +61,7 @@ All badges have the same height and border radius.
       height="49">
 </uxdot-example>
 
-<rh-table>
-{% spacerTokensTable 
-  headline="",
-  caption='',
-  headingLevel="4",
-  tokens="--rh-space-md" %}
-{% endspacerTokensTable %}
-</rh-table>
+<uxdot-spacer-tokens-table tokens="md"></uxdot-spacer-tokens-table>
 
 <rh-table>
   <table>

@@ -84,18 +84,19 @@ export class RhContextPicker extends LitElement {
            class="visually-hidden">${this.#internals.computedLabelText}</div>
       <div id="container"
            @input="${this.#onInput}"
-           class="on ${classMap({ [on]: true })}">
+           class="${classMap({ on: true, [on]: true })}">
         ${allow.map(palette => html`
         <label for="radio-${palette}" class="visually-hidden">${palette}</label>
         <rh-tooltip>
           <span slot="content">${palette}</span>
-          <input id="radio-${palette}" class="${classMap({ [palette]: true })}"
+          <input id="radio-${palette}"
+                 class="${classMap({ [palette]: true })}"
                  name="palette"
                  type="radio"
                  value="${palette}"
                  aria-describedby="host-label"
-                 ?checked="${value === palette}">`)}
-        </rh-tooltip>
+                 ?checked="${value === palette}">
+        </rh-tooltip>`)}
       </div>
     `;
   }
@@ -115,8 +116,10 @@ export class RhContextPicker extends LitElement {
       this.sync();
     } else if (this.target) {
       const root = this.getRootNode() as Document | ShadowRoot;
-      this.#target = root.getElementById(this.target);
-      this.sync();
+      if (root instanceof Document || root instanceof ShadowRoot) {
+        this.#target = root.getElementById(this.target);
+        this.sync();
+      }
     } else {
       this.#target = this.closest('rh-surface');
     }

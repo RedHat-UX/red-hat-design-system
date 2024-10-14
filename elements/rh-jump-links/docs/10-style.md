@@ -135,9 +135,4 @@ wrapped in a disclosure which is collapsed until a user expands the panel.
         height="259" />
 </uxdot-example>
 
-{% spacerTokensTable
-  caption='',
-  headingLevel="3",
-  tokens="--rh-space-sm, --rh-space-md, --rh-space-lg, --rh-space-xl" %}
-{% endspacerTokensTable %}
-
+<uxdot-spacer-tokens-table tokens="sm, md, lg, xl"></uxdot-spacer-tokens-table>
