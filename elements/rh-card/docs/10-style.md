@@ -213,12 +213,12 @@ become thinner, the container padding decreases.
         height="640">
 </uxdot-example>
 
-## Variants
-
-### Promo
+## Promo
 
 Promo cards are available in four different configurations: standard, featured, 
 full-width, and narrow.
+
+### Configurations
 
 #### Standard promo
 
@@ -275,8 +275,6 @@ promo, or full-width promo.
 
 ### Theme
 
-#### Promo
-
 The standard promo can set the `Lighter` or `Darker` color palettes. It can
 appear on either light or dark backgrounds.
 
@@ -299,14 +297,10 @@ palettes, and can appear on either light or dark backgrounds.
 
 ### Responsive Design
 
-#### Promo
-
 When promos are viewed on phone viewports or added to small containers, they 
 will use the [Narrow promo](/elements/card/style/#narrow-promo) configuration.
 
 ### Spacing
-
-#### Promo
 
 Except for narrow promos, spacing within the other promo configurations is a 
 little different from Card.

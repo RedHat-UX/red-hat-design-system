@@ -33,9 +33,9 @@ Default calls to action may be used.
 </rh-alert>
 
 
-### Variants
+### Patterns
 
-There are several card variants that can be used for a variety of use cases.
+There are several card patterns that can be used for a variety of use cases. To learn more, visit the <a href="/patterns/card/">Card patterns page</a>.
 
 <div class="card-grid grid xs-two-columns md-three-columns">
   <rh-card>
