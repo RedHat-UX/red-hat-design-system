@@ -65,7 +65,7 @@
       "ESNext.AsyncIterable",
       "ESNext.Disposable",
       "ScriptHost"
-    ],
+    ]
   },
   "references": [
     {
