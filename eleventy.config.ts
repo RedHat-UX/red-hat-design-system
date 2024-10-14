@@ -54,9 +54,10 @@ export default async function(eleventyConfig: UserConfig) {
     eleventyConfig.addGlobalData('runMode', runMode);
   });
 
-  let watch;
   eleventyConfig.on('eleventy.before', function({ runMode }) {
-    watch ||= runMode === 'watch' && $({ stdout: ['pipe'], stderr: ['pipe'] })`npx tspc -b --watch`;
+    (() => {
+      return runMode === 'watch' && $({ stdout: ['pipe'], stderr: ['pipe'] })`npx tspc -b --watch`;
+    })();
   });
 
   eleventyConfig.watchIgnores?.add('docs/assets/redhat/');
@@ -140,7 +141,7 @@ export default async function(eleventyConfig: UserConfig) {
         '@patternfly/elements/': '/assets/packages/@patternfly/elements/',
         '@patternfly/icons/': '/assets/packages/@patternfly/icons/',
         '@patternfly/pfe-core/': '/assets/packages/@patternfly/pfe-core/',
-        '@uxdot/elements/': '/assets/javascript/elements/uxdot/',
+        '@uxdot/elements/': '/assets/packages/@uxdot/elements/',
         'playground-elements': 'https://cdn.jsdelivr.net/npm/playground-elements@0.18.1/+esm',
       },
     },
@@ -220,22 +221,22 @@ export default async function(eleventyConfig: UserConfig) {
 
   eleventyConfig.addPlugin(LitPlugin, {
     componentModules: [
-      'docs/assets/javascript/elements/uxdot/uxdot-best-practice.js',
-      'docs/assets/javascript/elements/uxdot/uxdot-copy-button.js',
-      'docs/assets/javascript/elements/uxdot/uxdot-copy-permalink.js',
-      'docs/assets/javascript/elements/uxdot/uxdot-example.js',
-      'docs/assets/javascript/elements/uxdot/uxdot-feedback.js',
-      'docs/assets/javascript/elements/uxdot/uxdot-header.js',
-      'docs/assets/javascript/elements/uxdot/uxdot-hero.js',
-      'docs/assets/javascript/elements/uxdot/uxdot-installation-tabs.js',
-      'docs/assets/javascript/elements/uxdot/uxdot-masthead.js',
-      'docs/assets/javascript/elements/uxdot/uxdot-pattern.js',
-      'docs/assets/javascript/elements/uxdot/uxdot-repo-status-checklist.js',
-      'docs/assets/javascript/elements/uxdot/uxdot-repo-status-list.js',
-      'docs/assets/javascript/elements/uxdot/uxdot-search.js',
-      'docs/assets/javascript/elements/uxdot/uxdot-sidenav.js',
-      'docs/assets/javascript/elements/uxdot/uxdot-spacer-tokens-table.js',
-      'docs/assets/javascript/elements/uxdot/uxdot-toc.js',
+      'uxdot/uxdot-best-practice.js',
+      'uxdot/uxdot-copy-button.js',
+      'uxdot/uxdot-copy-permalink.js',
+      'uxdot/uxdot-example.js',
+      'uxdot/uxdot-feedback.js',
+      'uxdot/uxdot-header.js',
+      'uxdot/uxdot-hero.js',
+      'uxdot/uxdot-installation-tabs.js',
+      'uxdot/uxdot-masthead.js',
+      'uxdot/uxdot-pattern.js',
+      'uxdot/uxdot-repo-status-checklist.js',
+      'uxdot/uxdot-repo-status-list.js',
+      'uxdot/uxdot-search.js',
+      'uxdot/uxdot-sidenav.js',
+      'uxdot/uxdot-spacer-tokens-table.js',
+      'uxdot/uxdot-toc.js',
       'elements/rh-button/rh-button.js',
       'elements/rh-code-block/rh-code-block.js',
       'elements/rh-footer/rh-footer-universal.js',
