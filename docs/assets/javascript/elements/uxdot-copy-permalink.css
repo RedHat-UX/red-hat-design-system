@@ -21,7 +21,7 @@
   background: var(--rh-color-surface-light);
 }
 
-:host(:state(rendered)) #button {
+:host(:state(--rendered)) #button {
   display: flex;
 }
 

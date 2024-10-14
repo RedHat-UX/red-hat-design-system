@@ -35,7 +35,7 @@ export class UxdotCopyButton extends LitElement {
   }
 
   firstUpdated() {
-    this.#internals.states.add('rendered');
+    this.#internals.states.add('--rendered');
   }
 
   async #onClick() {
