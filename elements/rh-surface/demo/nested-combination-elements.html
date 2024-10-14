@@ -1,0 +1,13 @@
+<rh-surface color-palette="darkest">
+  <rh-card>
+    <p>The card has no color-palette. It's nested CTA should therefore inherit
+       context from the grandparent, rh-surface.</p>
+    <rh-cta href="#">Should be on dark</rh-cta>
+  </rh-card>
+</rh-surface>
+
+<script type="module">
+  import '@rhds/elements/rh-surface/rh-surface.js';
+  import '@rhds/elements/rh-card/rh-card.js';
+  import '@rhds/elements/rh-cta/rh-cta.js';
+</script>
