@@ -1,0 +1,32 @@
+:host {
+  display: block;
+  container-type: inline-size;
+  container-name: host;
+  margin-block-start: var(--rh-space-5xl);
+}
+
+#container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: var(--rh-space-3xl);
+  margin-block-end: var(--rh-space-3xl);
+}
+
+h2,
+::slotted(h2) {
+  font-family: var(--rh-font-family-heading);
+  font-size: var(--rh-font-size-heading-md) !important;
+  font-weight: var(--rh-font-weight-heading-medium);
+  line-height: var(--rh-line-height-heading);
+  margin: var(--rh-space-2xl) 0 !important;
+}
+
+p {
+  font-size: var(--rh-font-size-body-text-lg);
+}
+
+@container host (min-width: 576px) {
+  #container {
+    grid-template-columns: 1fr 1fr;
+  }
+}

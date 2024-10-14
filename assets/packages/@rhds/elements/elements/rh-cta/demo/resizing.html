@@ -1,0 +1,125 @@
+<section id="resize">
+  <div>
+    <rh-cta>
+      <a href="#default">Get product details</a>
+    </rh-cta>
+  </div>
+
+  <div>
+    <rh-cta icon="play-circle">
+      <a href="#default-video">Get product details</a>
+    </rh-cta>
+  </div>
+
+  <div>
+    <rh-cta variant="primary">
+      <a href="#primary">Get product details</a>
+    </rh-cta>
+  </div>
+
+  <div>
+    <rh-cta variant="primary" icon="play-circle">
+      <a href="#primary-video">Get product details</a>
+    </rh-cta>
+  </div>
+
+  <div>
+    <rh-cta variant="secondary">
+      <a href="#secondary">Get product details</a>
+    </rh-cta>
+  </div>
+
+  <div>
+    <rh-cta variant="brick">
+      <a href="#brick">Get product details</a>
+    </rh-cta>
+  </div>
+
+  <div>
+    <rh-cta variant="brick" icon="user">
+      <a href="#brick-icon">Get product details</a>
+    </rh-cta>
+  </div>
+
+  <p>No matter the container size, the arrow trailing the CTA message should never appear on a line by itself.</p>
+
+  <div>
+    <rh-cta><a href="#default">Default link cta with longer text</a></rh-cta>
+  </div>
+
+  <div dir="rtl">
+    <rh-cta>
+      <a href="#default">קריאה לפעולה בררית מחדל עם טקסט ארוך</a>
+    </rh-cta>
+  </div>
+
+  <p>Long words should break in the middle</p>
+
+  <div>
+    <rh-cta>
+      <a href="#default">Supercalifragilisticexpialidocious</a>
+    </rh-cta>
+  </div>
+
+  <div>
+    <rh-cta icon="play-circle">
+      <a href="#default-video">Supercalifragilisticexpialidocious</a>
+    </rh-cta>
+  </div>
+
+  <div>
+    <rh-cta variant="primary">
+      <a href="#primary">Supercalifragilisticexpialidocious</a>
+    </rh-cta>
+  </div>
+
+  <div>
+    <rh-cta variant="primary" icon="play-circle">
+      <a href="#primary-video">Supercalifragilisticexpialidocious</a>
+    </rh-cta>
+  </div>
+
+  <div>
+    <rh-cta variant="secondary">
+      <a href="#secondary">Supercalifragilisticexpialidocious</a>
+    </rh-cta>
+  </div>
+
+  <div>
+    <rh-cta variant="brick">
+      <a href="#brick">Supercalifragilisticexpialidocious</a>
+    </rh-cta>
+  </div>
+
+  <div>
+    <rh-cta variant="brick" icon="user">
+      <a href="#brick-icon">Supercalifragilisticexpialidocious</a>
+    </rh-cta>
+  </div>
+</section>
+
+<script type="module">
+  import '@rhds/elements/rh-cta/rh-cta.js';
+</script>
+
+<style>
+  #resize {
+    display: flex;
+    flex-flow: row wrap;
+    gap: var(--rh-space-lg, 16px);
+  }
+
+  #resize > p {
+    width: 100%;
+  }
+
+  #resize > div {
+    resize: horizontal;
+    overflow: auto;
+    display: flex;
+    width: 180px;
+    flex-flow: row nowrap;
+    border: 1px solid #dddddd;
+    padding: 10px;
+  }
+</style>

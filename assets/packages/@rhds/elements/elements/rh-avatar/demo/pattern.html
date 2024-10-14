@@ -1,0 +1,30 @@
+<figure>
+  <figcaption>Squares pattern</figcaption>
+  <rh-avatar name="Alonzo Church"
+             subtitle="Inventor of the Lambda Calculus"
+             pattern="squares"></rh-avatar>
+</figure>
+
+<figure>
+  <figcaption>Triangles pattern</figcaption>
+  <rh-avatar name="Alan Turing"
+             subtitle="Cryptographer"
+             pattern="triangles"></rh-avatar>
+</figure>
+
+<style>
+  figure {
+    display: grid;
+    grid-template: min-content 1fr / repeat(5, 1fr);
+    grid-auto-flow: column;
+    gap: var(--rh-space-lg, 16px);
+  }
+  figcaption {
+    grid-column: -1/1;
+  }
+</style>
+
+<script type="module">
+  import '@rhds/elements/rh-avatar/rh-avatar.js';
+</script>
+

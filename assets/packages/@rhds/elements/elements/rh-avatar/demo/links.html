@@ -1,0 +1,32 @@
+<figure>
+  <figcaption>Links applied to Name</figcaption>
+  <rh-avatar src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Jeannette_Wing%2C_Davos_2013.jpg/330px-Jeannette_Wing%2C_Davos_2013.jpg">
+    <a href="https://www.wikiwand.com/en/Jeannette_Wing">Jeannette Wing</a>
+    <span slot="subtitle">Avanessians Director of the Data Science Institute, Columbia University</span>
+  </rh-avatar>
+</figure>
+
+<figure>
+  <figcaption>Links applied to job details</figcaption>
+  <rh-avatar src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/George_Boole_color.jpg/330px-George_Boole_color.jpg">George Boole
+    <span slot="subtitle">Professor of Mathematics, </span>
+    <a slot="subtitle" href="https://www.wikiwand.com/en/Queen's_College,_Cork">Queen's College, Cork</a>
+  </rh-avatar>
+</figure>
+
+<style>
+  figure {
+    display: grid;
+    grid-template: min-content 1fr / repeat(5, 1fr);
+    grid-auto-flow: column;
+    gap: var(--rh-space-lg, 16px);
+  }
+  figcaption {
+    grid-column: -1/1;
+  }
+</style>
+
+<script type="module">
+  import '@rhds/elements/rh-avatar/rh-avatar.js';
+</script>
+

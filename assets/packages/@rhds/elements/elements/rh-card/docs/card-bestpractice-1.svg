@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="872" height="206" viewBox="0 0 872 206">
+  <g id="card-bestpractice-1" transform="translate(-424 -5596)">
+    <g id="Cards">
+      <g id="Rectangle" transform="translate(1090 5596)" fill="#fff" stroke="#d2d2d2" stroke-width="1">
+        <rect width="206" height="206" rx="3" stroke="none"/>
+        <rect x="0.5" y="0.5" width="205" height="205" rx="2.5" fill="none"/>
+      </g>
+      <g id="Rectangle-2" data-name="Rectangle" transform="translate(868 5596)" fill="#fff" stroke="#d2d2d2" stroke-width="1">
+        <rect width="206" height="206" rx="3" stroke="none"/>
+        <rect x="0.5" y="0.5" width="205" height="205" rx="2.5" fill="none"/>
+      </g>
+      <g id="Rectangle-3" data-name="Rectangle" transform="translate(646 5596)" fill="#fff" stroke="#d2d2d2" stroke-width="1">
+        <rect width="206" height="206" rx="3" stroke="none"/>
+        <rect x="0.5" y="0.5" width="205" height="205" rx="2.5" fill="none"/>
+      </g>
+      <g id="Rectangle-4" data-name="Rectangle" transform="translate(424 5596)" fill="#fff" stroke="#d2d2d2" stroke-width="1">
+        <rect width="206" height="206" rx="3" stroke="none"/>
+        <rect x="0.5" y="0.5" width="205" height="205" rx="2.5" fill="none"/>
+      </g>
+    </g>
+    <g id="Grid" transform="translate(5 -22)" opacity="0.03">
+      <rect id="Rectangle-5" data-name="Rectangle" width="58" height="206" transform="translate(1233 5618)" fill="blue"/>
+      <rect id="Rectangle-6" data-name="Rectangle" width="58" height="206" transform="translate(1159 5618)" fill="blue"/>
+      <rect id="Rectangle-7" data-name="Rectangle" width="58" height="206" transform="translate(1085 5618)" fill="blue"/>
+      <rect id="Rectangle-8" data-name="Rectangle" width="58" height="206" transform="translate(1011 5618)" fill="blue"/>
+      <rect id="Rectangle-9" data-name="Rectangle" width="58" height="206" transform="translate(937 5618)" fill="blue"/>
+      <rect id="Rectangle-10" data-name="Rectangle" width="58" height="206" transform="translate(863 5618)" fill="blue"/>
+      <rect id="Rectangle-11" data-name="Rectangle" width="58" height="206" transform="translate(789 5618)" fill="blue"/>
+      <rect id="Rectangle-12" data-name="Rectangle" width="58" height="206" transform="translate(715 5618)" fill="blue"/>
+      <rect id="Rectangle-13" data-name="Rectangle" width="58" height="206" transform="translate(641 5618)" fill="blue"/>
+      <rect id="Rectangle-14" data-name="Rectangle" width="58" height="206" transform="translate(567 5618)" fill="blue"/>
+      <rect id="Rectangle-15" data-name="Rectangle" width="58" height="206" transform="translate(493 5618)" fill="blue"/>
+      <rect id="Rectangle-16" data-name="Rectangle" width="58" height="206" transform="translate(419 5618)" fill="blue"/>
+    </g>
+  </g>
+</svg>

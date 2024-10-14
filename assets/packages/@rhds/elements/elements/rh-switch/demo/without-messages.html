@@ -1,0 +1,26 @@
+<section>
+  <form>
+    <fieldset>
+      <legend>Without messages</legend>
+      <rh-switch id="switch-a" accessible-label="Switch A" checked></rh-switch>
+      <rh-switch id="switch-b" accessible-label="Switch B" checked show-check-icon></rh-switch>
+    </fieldset>
+  </form>
+</section>
+
+<script type="module">
+  import '@rhds/elements/rh-switch/rh-switch.js';
+</script>
+
+<style>
+  section {
+    margin: 2rem;
+  }
+
+  fieldset {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    gap: var(--rh-space-lg, 16px);
+  }
+
+</style>

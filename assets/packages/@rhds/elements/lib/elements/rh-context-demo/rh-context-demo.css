@@ -1,0 +1,22 @@
+:host {
+  display: block;
+  min-height: 100%;
+  height: auto;
+  position: relative;
+}
+
+rh-surface,
+.on { color: var(--rh-color-text-primary); }
+
+#picker-container {
+  display: flex;
+  align-items: center;
+  margin-block-end: var(--rh-context-demo-padding, var(--rh-space-xl, 24px));
+  gap: var(--rh-space-lg, 16px);
+}
+
+#provider {
+  padding: var(--rh-context-demo-padding, var(--rh-space-xl, 24px));
+  position: absolute;
+  inset: 0;
+}

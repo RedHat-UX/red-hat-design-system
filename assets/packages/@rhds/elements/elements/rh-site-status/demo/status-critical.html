@@ -1,0 +1,33 @@
+<rh-site-status></rh-site-status>
+
+<script>
+  window.fetch = new Proxy(window.fetch, {
+    apply: (target, thisArg, [url, ...args]) => {
+      if (url === 'https://status.redhat.com/index.json') {
+        return Promise.resolve({
+          ok: true,
+          status: 200,
+          statusText: 'OK',
+          async json() {
+            await new Promise(r => setTimeout(r, 100_000));
+            return {
+              page: 'fake data',
+              components: ['fake data'],
+              incidents: 'fake data',
+              status: {
+                indicator: 'critical',
+                description: 'Critical Outage',
+              }
+            };
+          },
+        });
+      } else {
+        return target.apply(thisArg, [url, ...args]);
+      }
+    },
+  });
+</script>
+
+<script type="module">
+  import '@rhds/elements/rh-site-status/rh-site-status.js';
+</script>

@@ -1,0 +1,68 @@
+:host {
+  --_uxdot-header-padding: var(--rh-space-2xl);
+
+  display: block;
+  container-type: inline-size;
+  container-name: header;
+  background-color: var(--rh-color-surface);
+
+  @container (min-width: 768px) {
+    --_uxdot-header-padding: var(--rh-space-3xl);
+  }
+
+  @container (min-width: 992px) {
+    --_uxdot-header-padding: var(--rh-space-6xl);
+  }
+}
+
+#container {
+  display: block;
+  max-width: 1140px;
+  padding-block-start: var(--_uxdot-header-padding,);
+  padding-inline: var(--_uxdot-header-padding);
+
+  &.hasSearch {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: 'heading' 'search';
+    gap: var(--rh-space-2xl);
+  }
+
+  &:not(.hasSubnav) {
+    padding-block-end: var(--_uxdot-header-padding);
+  }
+
+  @container header (min-width: 992px) {
+    &.hasSearch {
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas: 'heading search';
+    }
+  }
+}
+
+[part='heading'] {
+  grid-area: heading;
+}
+
+::slotted([slot='search']) {
+  grid-area: search;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+::slotted(h1) {
+  font-family: var(--uxdot-heading-font-family, var(--rh-font-family-heading)) !important;
+  font-size: var(--uxdot-heading-heading-size, var(--rh-font-size-heading-2xl)) !important;
+  font-weight: var(--uxdot-heading-font-weight, var(--rh-font-weight-heading-regular)) !important;
+  line-height: var(--uxdot-heading-line-height, var(--rh-line-height-heading)) !important;
+  margin: 0 !important;
+}
+
+::slotted([slot='subnav']) {
+  margin-block-start: var(--rh-space-2xl);
+
+  /* take the header padding and minus the default padding (2xl), for mobile it should maximize
+  soace for the subnav, but for larger viewports it will align the first button text with header */
+  padding-inline: calc(var(--_uxdot-header-padding) - var(--rh-space-2xl));
+}

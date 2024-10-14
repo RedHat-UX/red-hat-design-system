@@ -1,0 +1,52 @@
+<section>
+  <h2>Default tooltip</h2>
+  <p>
+    <rh-tooltip>
+      <rh-timestamp></rh-timestamp>
+      <rh-timestamp slot="content" utc></rh-timestamp>
+    </rh-tooltip>
+  </p>
+  <p>
+    <rh-tooltip>
+      <rh-timestamp></rh-timestamp>
+      <rh-timestamp slot="content" utc display-suffix="Coordinated Universal Time"></rh-timestamp>
+    </rh-tooltip>
+  </p>
+</section>
+
+<section>
+  <h2>Custom tooltip</h2>
+  <p>
+    <rh-tooltip>
+      <rh-timestamp date="Tue Aug 09 2022 14:57:00 GMT-0400 (Eastern Daylight Time)"></rh-timestamp>
+      <span slot="content">Last updated on <rh-timestamp date="Tue Aug 09 2022 14:57:00 GMT-0400 (Eastern Daylight Time)" date-format="long" time-format="short" utc></rh-timestamp></span>
+    </rh-tooltip>
+  </p>
+  <p>
+    <rh-tooltip>
+      Halloween
+      <rh-timestamp slot="content" date="Mon Oct 31 2022 00:00:00 GMT-0400 (Eastern Daylight Time)" date-format="medium"></rh-timestamp>
+    </rh-tooltip>
+  </p>
+</section>
+
+<section>
+  <h2>Relative with tooltip</h2>
+  <p>
+    <rh-tooltip>
+      <rh-timestamp date="Tue Aug 09 2022 14:57:00 GMT-0400 (Eastern Daylight Time)" relative></rh-timestamp>
+      <rh-timestamp slot="content" date="Tue Aug 09 2022 14:57:00 GMT-0400 (Eastern Daylight Time)"></rh-timestamp>
+    </rh-tooltip>
+  </p>
+  <p>
+    <rh-tooltip>
+      <rh-timestamp date="Aug 09 2024 14:57:00 GMT-0400 (Eastern Daylight Time)" relative></rh-timestamp>
+      <rh-timestamp slot="content" date="Aug 09 2024 14:57:00 GMT-0400 (Eastern Daylight Time)"></rh-timestamp>
+    </rh-tooltip>
+  </p>
+</section>
+
+<script type="module">
+  import '@rhds/elements/rh-tooltip/rh-tooltip.js';
+  import '@rhds/elements/rh-timestamp/rh-timestamp.js';
+</script>

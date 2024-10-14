@@ -1,0 +1,17 @@
+:host {
+  display: block;
+
+  --rh-icon-size: var(--rh-footer--social-icon--size, var(--rh-size-icon-02, 24px));
+}
+
+[hidden] {
+  display: none !important;
+}
+
+::slotted(a) {
+  color: var(--_icon-color) !important;
+}
+
+::slotted(a:is(:hover, :focus-within)) {
+  color: var(--_icon-color-hover) !important;
+}

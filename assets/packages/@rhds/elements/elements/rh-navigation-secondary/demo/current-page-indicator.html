@@ -1,0 +1,166 @@
+<rh-navigation-secondary id="navigation-secondary-current-page"
+                         role="navigation">
+  <a href="#" slot="logo" id="logo-id" aria-current="page">
+    Logo/Title
+  </a>
+  <ul slot="nav" aria-labelledby="logo-id">
+    <li>
+      <rh-navigation-secondary-dropdown>
+        <a href="#dropdown-fallback-url" slot="link">Dropdown 1</a>
+        <rh-navigation-secondary-menu slot="menu">
+          <rh-navigation-secondary-menu-section>
+            <h3 slot="header">Section 1</h3>
+            <ul slot="links">
+              <li><a href="#">Dropdown 1 Link 1</a></li>
+              <li><a href="#">Dropdown 1 Link 2</a></li>
+              <li><a href="#">Dropdown 1 Link 3</a></li>
+            </ul>
+            <rh-cta slot="cta">
+              <a href="#">Dropdown 1 Section 1 CTA</a>
+            </rh-cta>
+          </rh-navigation-secondary-menu-section>
+          <rh-navigation-secondary-menu-section>
+            <h3 slot="header">Section 2</h3>
+            <ul slot="links">
+              <li><a href="#">Dropdown 1 Link 4</a></li>
+              <li><a href="#">Dropdown 1 Link 5</a></li>
+              <li><a href="#">Dropdown 1 Link 6</a></li>
+            </ul>
+            <rh-cta slot="cta">
+              <a href="#">Dropdown 1 Section 2 CTA</a>
+            </rh-cta>
+          </rh-navigation-secondary-menu-section>
+        </rh-navigation-secondary-menu>
+      </rh-navigation-secondary-dropdown>
+    </li>
+    <li>
+      <rh-navigation-secondary-dropdown>
+        <a href="#dropdown-fallback-url" slot="link">Dropdown 2</a>
+        <rh-navigation-secondary-menu slot="menu">
+          <ul>
+            <li><a href="#">Dropdown 2 Link 1</a></li>
+            <li><a href="#">Dropdown 2 Link 2</a></li>
+            <li><a href="#">Dropdown 2 Link 3</a></li>
+            <li><a href="#">Dropdown 2 Link 4</a></li>
+            <li><a href="#">Dropdown 2 Link 5</a></li>
+            <li><a href="#">Dropdown 2 Link 6</a></li>
+          </ul>
+        </rh-navigation-secondary-menu>
+      </rh-navigation-secondary-dropdown>
+    </li>
+    <li><a href="#">Link 1</a></li>
+    <li><a href="#">Link 2</a></li>
+  </ul>
+  <rh-cta slot="cta">
+    <a href="#">Call to Action</a>
+  </rh-cta>
+</rh-navigation-secondary>
+
+<div id="space-holder">
+  Move current page to:
+  <div class="option"><rh-button id="prev-link">Previous link</rh-button> <rh-button id="next-link">Next link</rh-button> </div>
+  <div class="option"><rh-button id="first-link">First link</rh-button></div>
+  <div class="option"><rh-button id="last-link">Last link</rh-button></div>
+
+  Current Page Indicator: <span id="currentPageText"></span>
+
+  <h2>Content Placeholder</h2>
+  <a href="#">Link placeholder</a>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt luctus odio, vitae accumsan tortor sagittis et. Integer facilisis rutrum suscipit. Morbi elementum purus vel varius tincidunt. Nulla fringilla lacus a nulla vehicula tincidunt. Praesent a turpis et elit laoreet ullamcorper et et metus. Praesent malesuada massa in tellus bibendum congue. Curabitur mollis purus et metus eleifend sagittis. Vivamus fringilla tincidunt sem id euismod. Maecenas a vestibulum nisl. Sed libero metus, ultrices in tortor facilisis, semper rhoncus nunc. Nullam ut diam et felis posuere lobortis vitae id leo. Sed hendrerit ex libero, a faucibus tellus maximus et. Aliquam erat volutpat. Phasellus vestibulum a lacus eget eleifend. Pellentesque ipsum nunc, scelerisque non neque id, bibendum vestibulum ante.</p>
+  <p>Maecenas venenatis sollicitudin leo, vitae tincidunt lectus dapibus vel. Integer quis sapien dui. Nulla sagittis dapibus suscipit. Pellentesque consequat dapibus lorem id feugiat. Fusce ornare sapien at lacus porta maximus. Praesent gravida faucibus tellus et lobortis. Praesent ullamcorper facilisis semper. Praesent lobortis enim lacus, ut facilisis ex tristique in. Sed lobortis tortor ut sem lacinia pharetra. Nunc a varius risus. Proin volutpat eget justo quis fermentum. Nunc quis vestibulum ipsum. Donec vulputate laoreet sapien id mattis. Phasellus non enim laoreet, euismod mauris vel, vulputate est.</p>
+  <p>Vivamus porta massa at nulla eleifend, a pellentesque eros dictum. Nam finibus nibh purus, in placerat nulla elementum at. Integer quis est condimentum, tempor mi ac, dapibus ante. Pellentesque fringilla hendrerit est, ut ultricies orci condimentum viverra. Aliquam a lacus consequat dolor vestibulum euismod eget quis ipsum. Pellentesque viverra, libero sed euismod consectetur, turpis nulla tristique massa, vel ultricies massa arcu sit amet mauris. Donec aliquet tortor ante, ut pulvinar odio gravida et. Proin laoreet et elit at tempus. In aliquam erat lacus, in volutpat neque faucibus a.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt luctus odio, vitae accumsan tortor sagittis et. Integer facilisis rutrum suscipit. Morbi elementum purus vel varius tincidunt. Nulla fringilla lacus a nulla vehicula tincidunt. Praesent a turpis et elit laoreet ullamcorper et et metus. Praesent malesuada massa in tellus bibendum congue. Curabitur mollis purus et metus eleifend sagittis. Vivamus fringilla tincidunt sem id euismod. Maecenas a vestibulum nisl. Sed libero metus, ultrices in tortor facilisis, semper rhoncus nunc. Nullam ut diam et felis posuere lobortis vitae id leo. Sed hendrerit ex libero, a faucibus tellus maximus et. Aliquam erat volutpat. Phasellus vestibulum a lacus eget eleifend. Pellentesque ipsum nunc, scelerisque non neque id, bibendum vestibulum ante.</p>
+  <p>Maecenas venenatis sollicitudin leo, vitae tincidunt lectus dapibus vel. Integer quis sapien dui. Nulla sagittis dapibus suscipit. Pellentesque consequat dapibus lorem id feugiat. Fusce ornare sapien at lacus porta maximus. Praesent gravida faucibus tellus et lobortis. Praesent ullamcorper facilisis semper. Praesent lobortis enim lacus, ut facilisis ex tristique in. Sed lobortis tortor ut sem lacinia pharetra. Nunc a varius risus. Proin volutpat eget justo quis fermentum. Nunc quis vestibulum ipsum. Donec vulputate laoreet sapien id mattis. Phasellus non enim laoreet, euismod mauris vel, vulputate est.</p>
+  <p>Vivamus porta massa at nulla eleifend, a pellentesque eros dictum. Nam finibus nibh purus, in placerat nulla elementum at. Integer quis est condimentum, tempor mi ac, dapibus ante. Pellentesque fringilla hendrerit est, ut ultricies orci condimentum viverra. Aliquam a lacus consequat dolor vestibulum euismod eget quis ipsum. Pellentesque viverra, libero sed euismod consectetur, turpis nulla tristique massa, vel ultricies massa arcu sit amet mauris. Donec aliquet tortor ante, ut pulvinar odio gravida et. Proin laoreet et elit at tempus. In aliquam erat lacus, in volutpat neque faucibus a.</p>
+</div>
+
+<link rel="stylesheet" href="../rh-navigation-secondary-lightdom.css">
+
+<style>
+  #navigation-secondary-current-page {
+    padding: 0;
+  }
+
+  /* content space-holder that allows for overflow */
+  #space-holder {
+    min-height: 101vh;
+    padding: var(--_text-padding, var(--rh-space-lg, 16px));
+    @media screen and (min-width: 768px) {
+      --_text-padding: var(--rh-space-2xl, 32px);
+    }
+
+    @media screen and (min-width: 1440px) {
+      --_text-padding: var(--rh-space-4xl, 64px);
+    }
+  }
+</style>
+
+<script type="module">
+  import '@rhds/elements/rh-navigation-secondary/rh-navigation-secondary.js';
+  import '@rhds/elements/rh-cta/rh-cta.js';
+  import '@rhds/elements/rh-card/rh-card.js';
+  import '@rhds/elements/rh-button/rh-button.js';
+
+  const links = document.querySelectorAll('rh-navigation-secondary [slot="logo"], rh-navigation-secondary [slot="nav"] a');
+  const [firstLink] = links;
+  const lastLink = [...links].pop();
+
+  const currentPageText = document.querySelector('#currentPageText');
+
+  const firstLinkButton = document.querySelector('rh-button#first-link');
+  const lastLinkButton = document.querySelector('rh-button#last-link');
+  const nextLinkButton = document.querySelector('rh-button#next-link');
+  const prevLinkButton = document.querySelector('rh-button#prev-link');
+
+  // on load set the current page to the first link using aria-current="page"
+  firstLink.setAttribute('aria-current', 'page');
+  currentPageText.textContent = firstLink.textContent;
+
+  firstLinkButton.addEventListener('click', () => {
+    resetCurrentPageIndex();
+    firstLink.setAttribute('aria-current', 'page');
+    currentPageText.textContent = firstLink.textContent;
+  });
+
+  lastLinkButton.addEventListener('click', () => {
+    resetCurrentPageIndex();
+    lastLink.setAttribute('aria-current', 'page');
+    currentPageText.textContent = lastLink.textContent;
+  });
+
+  nextLinkButton.addEventListener('click', () => {
+    const currentPageIndex = resetCurrentPageIndex();
+    const nextPage = links[currentPageIndex + 1] ?? firstLink;
+    // if there is no next page, set the next page to the first page
+    if (!nextPage) {
+      links[0].setAttribute('aria-current', 'page');
+    } else {
+      // set the next page to the current page
+      nextPage.setAttribute('aria-current', 'page');
+    }
+    currentPageText.textContent = nextPage.textContent;
+  });
+
+  prevLinkButton.addEventListener('click', () => {
+    const currentPageIndex = resetCurrentPageIndex();
+    const prevPage = links[currentPageIndex - 1] ?? lastLink;
+    // if there is no next page, set the next page to the first page
+    if (!prevPage) {
+      links[0].setAttribute('aria-current', 'page');
+    } else {
+      // set the next page to the current page
+      prevPage.setAttribute('aria-current', 'page');
+    }
+    currentPageText.textContent = prevPage.textContent;
+  });
+
+  function resetCurrentPageIndex() {
+    // get the current page
+    const currentPage = document.querySelector('rh-navigation-secondary [slot="logo"][aria-current="page"], rh-navigation-secondary [slot="nav"] a[aria-current="page"]');
+    // get the index of the current page
+    const currentPageIndex = Array.from(links).indexOf(currentPage);
+    // remove the current page
+    currentPage.removeAttribute('aria-current');
+    return currentPageIndex;
+  }
+</script>

@@ -1,0 +1,87 @@
+<rh-context-demo>
+  <form>
+    <fieldset>
+      <legend>Box Layout</legend>
+      <label>
+        <input type="radio" name="variant" value=""> None
+      </label>
+      <label>
+        <input type="radio" name="variant" value="inset" checked> Inset
+      </label>
+      <label>
+        <input type="radio" name="variant" value="box"> Box
+      </label>
+    </fieldset>
+    <fieldset>
+      <legend>Layout</legend>
+      <label>
+        <input type="checkbox" name="centered"> Centered
+      </label>
+      <label>
+        <input type="checkbox" name="vertical"> Vertical
+      </label>
+    </fieldset>
+  </form>
+
+  <rh-tabs>
+    <rh-tab id="users" slot="tab">Users</rh-tab>
+    <rh-tab-panel>
+      <p>The control of <a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-managing_users_and_groups">users and groups</a> is a core
+        element of Red Hat Enterprise Linux system administration. This chapter explains how to add, manage, and delete users and groups in the graphical user
+        interface and on the command line, and covers advanced topics, such as creating group directories. </p>
+      <rh-cta>
+        <a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-managing_users_and_groups">Read about user management</a>
+      </rh-cta>
+    </rh-tab-panel>
+    <rh-tab slot="tab">Containers</rh-tab>
+    <rh-tab-panel>
+      <p>Containers are technologies that allow the packaging and isolation of applications with their entire runtime environment—all of the files necessary to run. This makes it easy to move the contained application between environments (dev, test, production, etc.) while retaining full functionality. Containers are also an important part of <a href="/en/topics/security">IT security</a>. By <a href="/en/topics/security/container-security">building security into the container pipeline</a>&nbsp;and defending infrastructure, containers stay reliable, scalable, and trusted. You can also easily move the containerized application between public, private and hybrid cloud environments and data centers (or on-premises) with consistent behavior and functionality.</p>
+      <rh-cta>
+        <a href="https://www.redhat.com/en/topics/containers/whats-a-linux-container">Continue reading</a>
+      </rh-cta>
+    </rh-tab-panel>
+    <rh-tab slot="tab">Database</rh-tab>
+    <rh-tab-panel>
+      <p>Modern application development teams must use multiple cloud databases to access various features and capabilities. As database usage continues to increase, it is difficult using and manage this multitude of databases. Red Hat commissioned Forrester Consulting found that simplified managed database access solutions help decision-makers maximize the impact, mitigate the complexity of their database-as-a-service (DBaaS) solutions, and manage their diverse landscape of databases.</p>
+      <rh-cta>
+        <a href="https://www.redhat.com/rhdc/managed-files/cl-maximize-with-a-managed-database-access-solution-analyst-material-f32006-202208-en.pdf">Download</a>
+      </rh-cta>
+    </rh-tab-panel>
+    <rh-tab slot="tab">Servers</rh-tab>
+    <rh-tab-panel>Servers</rh-tab-panel>
+    <rh-tab slot="tab">Cloud</rh-tab>
+    <rh-tab-panel>Cloud</rh-tab-panel>
+  </rh-tabs>
+</rh-context-demo>
+
+<script type="module">
+  import '@rhds/elements/rh-cta/rh-cta.js';
+  import '@rhds/elements/rh-tabs/rh-tabs.js';
+  import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
+
+  const form = document.querySelector('form');
+  const tabs = document.querySelector('rh-tabs');
+
+  form.addEventListener('input', function sync(event) {
+    event?.preventDefault();
+    const data = Object.fromEntries(new FormData(form));
+    tabs.box = data.variant || undefined;
+    tabs.centered = 'centered' in data;
+    tabs.vertical = 'vertical' in data;
+  });
+</script>
+
+<style>
+  a {
+    color: var(--rh-color-interactive-primary-default);
+    &:hover { color: var(--rh-color-interactive-primary-hover); }
+    &:focus-within { color: var(--rh-color-interactive-primary-focus); }
+    &:active { color: var(--rh-color-interactive-primary-active); }
+    &:visited {
+      color: var(--rh-color-interactive-primary-visited);
+      &:hover { color: var(--rh-color-interactive-primary-visited-hover); }
+      &:focus-within { color: var(--rh-color-interactive-primary-visited-focus); }
+      &:active { color: var(--rh-color-interactive-primary-visited-active); }
+    }
+  }
+</style>

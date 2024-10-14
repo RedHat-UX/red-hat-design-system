@@ -1,0 +1,49 @@
+<div id="overflow">
+  <a id="top" href="#bottom">Go to bottom</a>
+  <p>Scroll down (50px) or press tab to see the back to top button</p>
+  <a id="bottom" href="#top">Go to top</a>
+  <rh-back-to-top scroll-distance="50" href="#top">Back to top</rh-back-to-top>
+</div>
+<script type="module">
+  import '@rhds/elements/rh-back-to-top/rh-back-to-top.js';
+</script>
+
+<style>
+  main {
+    display: block;
+    scroll-behavior: smooth;
+    max-height: calc(100dvh - var(--pf-demo-header-height)) !important;
+  }
+
+  #nav {
+    height: calc(100dvh - var(--pf-demo-header-height, 4.375rem)) !important;
+  }
+
+  #overflow {
+    /* scroll distance set to 50px */
+    min-height: calc(100dvh + 51px);
+    position: relative;
+  }
+
+  #bottom {
+    position: absolute;
+    bottom: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    main {
+      scroll-behavior: auto;
+    }
+  }
+</style>
+
+
+<script type="module">
+  /* add support for demo/fullscreen and dev server */
+  const b2t = document.querySelector('rh-back-to-top');
+  const main = document.querySelector('main');
+  // if main isn't scrollable use window
+  if (window.getComputedStyle(main).overflow === 'scroll') {
+    b2t.scrollableSelector = 'main';
+  }
+</script>

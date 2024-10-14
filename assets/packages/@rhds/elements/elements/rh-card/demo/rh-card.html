@@ -1,0 +1,24 @@
+<rh-card>
+  <h2 slot="header">Card</h2>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+     Nullam eleifend elit sed est egestas, a sollicitudin mauris
+     tincidunt. Pellentesque vel dapibus risus. Nullam aliquam
+     felis orci, eget cursus mi lacinia quis. Vivamus at felis sem.</p>
+  <rh-cta slot="footer" priority="primary">
+    <a href="#">Call to action</a>
+  </rh-cta>
+</rh-card>
+
+<style>
+  rh-card {
+    & h2 {
+      font-size: initial;
+    }
+  }
+</style>
+
+<script type="module">
+  import '@rhds/elements/rh-cta/rh-cta.js';
+  import '@rhds/elements/rh-card/rh-card.js';
+</script>
+

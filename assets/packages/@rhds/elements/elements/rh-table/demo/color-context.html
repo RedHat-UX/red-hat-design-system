@@ -1,0 +1,44 @@
+<rh-context-demo>
+  <rh-table>
+    <table>
+      <caption>Concerts</caption>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <thead>
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">Event<rh-sort-button></rh-sort-button></th>
+          <th scope="col">Venue<rh-sort-button></rh-sort-button></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>12 February</td>
+          <td>Waltz with Strauss</td>
+          <td>Main Hall</td>
+        </tr>
+        <tr>
+          <td>24 March</td>
+          <td>The Obelisks</td>
+          <td>West Wing</td>
+        </tr>
+        <tr>
+          <td>14 April</td>
+          <td>The What</td>
+          <td><a href="#">Main</a> Hall</td>
+        </tr>
+      </tbody>
+    </table>
+    <small slot="summary">Dates and venues subject to change.</small>
+  </rh-table>
+</rh-context-demo>
+
+<link rel="stylesheet" href="../rh-table-lightdom.css">
+
+<script type="module">
+  import '@rhds/elements/rh-table/rh-table.js';
+  import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
+</script>

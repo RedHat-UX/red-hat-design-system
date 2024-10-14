@@ -1,0 +1,93 @@
+<rh-card variant="promo">
+  <svg slot="image"
+       width="1920"
+       height="250"
+       role="img"
+       aria-label="sample image">
+    <rect fill="var(--rh-color-border-interactive-on-light, #0066cc)"
+      fill-opacity="0.1"
+      stroke="var(--rh-color-border-interactive-on-light, #0066cc)"
+      stroke-width="2px"
+      width="100%"
+      height="100%"
+      stroke-dasharray="4 4">
+  </svg>
+  <h2 slot="header">Promo</h2>
+  <p>Featured promo card has an image in the <code>image</code> slot,
+    a heading in the <code>header</code> slot, and a <abbr title="call to action">CTA</abbr>
+    in the <code>footer</code> slot, and body content.</p>
+  <rh-cta slot="footer" href="#">Call to action</rh-cta>
+</rh-card>
+
+<rh-card variant="promo" class="reverse">
+  <svg slot="image"
+       width="1920"
+       height="250"
+       role="img"
+       aria-label="sample image">
+    <rect fill="var(--rh-color-border-interactive-on-light, #0066cc)"
+      fill-opacity="0.1"
+      stroke="var(--rh-color-border-interactive-on-light, #0066cc)"
+      stroke-width="2px"
+      width="100%"
+      height="100%"
+      stroke-dasharray="4 4">
+  </svg>
+  <h2 slot="header">Promo reversed</h2>
+  <p>By selecting the <code>image</code>and <code>body</code> CSS Shadow Parts, you can reverse the <code>image</code> and <code>body</code> shadow parts and adjust column widths.</p>
+  <rh-cta slot="footer" href="#">Call to action</rh-cta>
+</rh-card>
+
+<rh-card variant="promo">
+  <h2 slot="header">Featured: no image is okay too</h2>
+  <p>Sometimes, you may not have an image to go with your card. By omitting the slotted image,
+    the promo reverts to a single column.</p>
+  <rh-cta slot="footer" href="#">Call to action</rh-cta>
+</rh-card>
+
+<rh-card variant="promo" color-palette="dark">
+  <svg slot="image"
+       width="1920"
+       height="250"
+       role="img"
+       aria-label="sample image">
+    <rect fill="var(--rh-color-blue-40, #4394E5)"
+      fill-opacity="0.1"
+      stroke="var(--rh-color-blue-40, #4394E5)"
+      stroke-width="2px"
+      width="100%"
+      height="100%"
+      stroke-dasharray="4 4">
+  </svg>
+  <h2 slot="header">Promo Dark</h2>
+  <p>Promos can have a dark color palette too. You can add the <code>color-palette</code> attribute or wrap them with <code>rh-surface</code>.</p>
+  <rh-cta slot="footer" href="#">Call to action</rh-cta>
+</rh-card>
+
+<script type="module">
+  import '@rhds/elements/rh-cta/rh-cta.js';
+  import '@rhds/elements/rh-card/rh-card.js';
+</script>
+
+<style>
+  main {
+    padding: var(--rh-space-lg, 16px);
+  }
+
+  rh-card[variant="promo"] {
+    container-name: promo;
+    container-type: inline-size;
+    margin-block-end: var(--rh-space-3xl, 48px);
+  }
+
+  @container promo (min-width: 768px) {
+    .reverse::part(container) {
+      grid-template-columns: 1fr 2fr;
+    }
+
+    .reverse::part(image) {
+      justify-self: start;
+      order: -10;
+    }
+  }
+</style>

@@ -1,0 +1,20 @@
+<rh-back-to-top visible="always" href="#top">Back to top</rh-back-to-top>
+
+<script type="module">
+  import '@rhds/elements/rh-back-to-top/rh-back-to-top.js';
+</script>
+
+<style>
+  main {
+    display: block;
+    scroll-behavior: smooth;
+    max-height: calc(100dvh - var(--pf-demo-header-height)) !important;
+  }
+  #bottom {
+    position: absolute;
+    bottom: 0;
+  }
+  #nav {
+    height: calc(100dvh - var(--pf-demo-header-height, 4.375rem)); !important;
+  }
+</style>

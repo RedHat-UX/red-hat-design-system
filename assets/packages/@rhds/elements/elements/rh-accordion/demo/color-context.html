@@ -1,0 +1,52 @@
+<rh-context-demo>
+  <rh-accordion>
+    <rh-accordion-header expanded>Item One</rh-accordion-header>
+    <rh-accordion-panel>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+      <rh-cta href="#">Call To Action</rh-cta>
+
+      <rh-accordion>
+
+        <rh-accordion-header expanded color-palette="lightest">Forced Palette</rh-accordion-header>
+        <rh-accordion-panel id="nested" color-palette="lightest">
+          <label> No matter the parent context, this panel should always be
+            <rh-context-picker target="nested" value="lightest"></rh-context-picker>
+          </label>
+          <rh-cta href="#">Call To Action</rh-cta>
+        </rh-accordion-panel>
+
+        <rh-accordion-header>Item Two</rh-accordion-header>
+        <rh-accordion-panel>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <rh-cta href="#">Call To Action</rh-cta>
+        </rh-accordion-panel>
+      </rh-accordion>
+    </rh-accordion-panel>
+
+    <rh-accordion-header>Item Two</rh-accordion-header>
+    <rh-accordion-panel>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </rh-accordion-panel>
+
+    <rh-accordion-header>Item Three</rh-accordion-header>
+    <rh-accordion-panel>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </rh-accordion-panel>
+  </rh-accordion>
+</rh-context-demo>
+
+<script type="module">
+  import '@rhds/elements/rh-accordion/rh-accordion.js';
+  import '@rhds/elements/rh-cta/rh-cta.js';
+
+  import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
+  import { ContextChangeEvent } from '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
+
+  document.getElementById('nested').addEventListener('change', function(event) {
+    if (event instanceof ContextChangeEvent) {
+      event.stopPropagation();
+    }
+  });
+</script>
+

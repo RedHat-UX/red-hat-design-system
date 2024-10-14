@@ -1,0 +1,59 @@
+<form>
+  <fieldset>
+    <legend>Reversed message</legend>
+    <rh-switch id="switch-a"
+               accessible-label="Switch A"
+               message-on="Message when on"
+               message-off="Message when off"
+               checked
+               reversed></rh-switch>
+  </fieldset>
+  <fieldset>
+    <legend>Reversed with label</legend>
+    <label for="switch-b">Switch B</label>
+    <rh-switch id="switch-b"
+               message-on="Message when on"
+               message-off="Message when off"
+               checked
+               reversed></rh-switch>
+  </fieldset>
+  <fieldset>
+    <legend>Reversed with slotted message</legend>
+    <rh-switch id="switch-a"
+               accessible-label="Switch A"
+               checked
+               reversed>
+      <span slot="message-on">Message when on</span>
+      <span slot="message-off">Message when off</span>
+    </rh-switch>
+  </fieldset>
+  <fieldset>
+    <legend>Reversed with label and slotted message</legend>
+    <label for="switch-b">Switch B</label>
+    <rh-switch id="switch-b"
+               checked
+               reversed>
+      <span slot="message-on">Message when on</span>
+      <span slot="message-off">Message when off</span>
+    </rh-switch>
+  </fieldset>
+</form>
+
+
+<script type="module">
+  import '@rhds/elements/rh-switch/rh-switch.js';
+</script>
+
+<style>
+  form {
+    margin: 2rem;
+    & fieldset {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr;
+      & label {
+        color: var(--rh-color-text-primary-on-light, #151515);
+      }
+    }
+  }
+</style>

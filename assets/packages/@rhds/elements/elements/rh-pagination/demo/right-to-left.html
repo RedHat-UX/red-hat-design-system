@@ -1,0 +1,32 @@
+<div id="rtl-pagination" dir="rtl">
+  <p>צריך להיראות יותר טוב</p>
+  <rh-pagination>
+    <span slot="go-to-page">עבור לדף</span>
+    <ol>
+      <li><a href="#">1</a></li>
+      <li><a href="#2">2</a></li>
+      <li><a href="#3">3</a></li>
+      <li><a href="#4">4</a></li>
+      <li><a href="#5">5</a></li>
+    </ol>
+  </rh-pagination>
+</div>
+
+<link rel="stylesheet" href="../rh-pagination-lightdom.css">
+
+<style>
+  #rtl-pagination {
+    gap: var(--rh-space-2xl, 32px);
+    padding: var(--rh-space-xl, 24px) var(--rh-space-4xl, 64px);
+    & rh-pagination {
+      justify-self: center;
+    }
+  }
+</style>
+
+<script type="module">
+  import '@rhds/elements/rh-button/rh-button.js';
+  import '@rhds/elements/rh-pagination/rh-pagination.js';
+</script>
+
+

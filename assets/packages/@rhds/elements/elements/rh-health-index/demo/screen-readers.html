@@ -1,0 +1,61 @@
+<section>
+  <h2>&lt;rh-health-index> element</h2>
+  <rh-health-index grade="A" size="sm">A</rh-health-index>
+  <rh-health-index grade="B" size="sm">B</rh-health-index>
+  <rh-health-index grade="C" size="sm">C</rh-health-index>
+  <rh-health-index grade="D" size="md">D</rh-health-index>
+  <rh-health-index grade="E" size="lg">E</rh-health-index>
+  <rh-health-index grade="F" size="xl">F</rh-health-index>
+</section>
+
+<section>
+  <h2>ARIA attrs for <abbr title="localization">l10n</abbr></h2>
+  <rh-health-index grade="A"
+      aria-label="בריאות מדורג מדרגות א עד ו"
+      aria-valuetext="דרגה א"
+      size="sm">A</rh-health-index>
+</section>
+
+<section>
+  <h2>Native &gt;meter> element</h2>
+  <meter min="1" max="6" value="1" aria-valuetext="Grade A" aria-label="Health graded A to F"></meter>
+  <meter min="1" max="6" value="2" aria-valuetext="Grade B" aria-label="Health graded A to F"></meter>
+  <meter min="1" max="6" value="3" aria-valuetext="Grade C" aria-label="Health graded A to F"></meter>
+  <meter min="1" max="6" value="4" aria-valuetext="Grade D" aria-label="Health graded A to F"></meter>
+  <meter min="1" max="6" value="5" aria-valuetext="Grade E" aria-label="Health graded A to F"></meter>
+  <meter min="1" max="6" value="6" aria-valuetext="Grade F" aria-label="Health graded A to F"></meter>
+</section>
+
+<section>
+  <h2>ARIA-attributes &gt;meter> element</h2>
+  <div role="meter" aria-valuemin="1" aria-valuemax="6" aria-valuenow="1" aria-valuetext="Grade A" aria-label="Health graded A to F">A</div>
+  <div role="meter" aria-valuemin="1" aria-valuemax="6" aria-valuenow="1" aria-valuetext="Grade B" aria-label="Health graded A to F">B</div>
+  <div role="meter" aria-valuemin="1" aria-valuemax="6" aria-valuenow="1" aria-valuetext="Grade C" aria-label="Health graded A to F">C</div>
+  <div role="meter" aria-valuemin="1" aria-valuemax="6" aria-valuenow="1" aria-valuetext="Grade D" aria-label="Health graded A to F">D</div>
+  <div role="meter" aria-valuemin="1" aria-valuemax="6" aria-valuenow="1" aria-valuetext="Grade E" aria-label="Health graded A to F">E</div>
+  <div role="meter" aria-valuemin="1" aria-valuemax="6" aria-valuenow="1" aria-valuetext="Grade F" aria-label="Health graded A to F">F</div>
+</section>
+
+<script type="module">
+  import '@rhds/elements/rh-health-index/rh-health-index.js';
+</script>
+
+<style>
+  section {
+    display: flex;
+    flex-flow: column;
+    gap: var(--rh-space-lg, 16px);
+  }
+  div[role="meter"] {
+    display: block;
+    height: 2em;
+    width: 5em;
+    background: linear-gradient(90deg, blue, red);
+    &::after {
+      color: white;
+      content: attr(aria-valuetext);
+    }
+  }
+</style>
+
+
