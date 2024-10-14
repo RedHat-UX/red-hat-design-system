@@ -56,7 +56,7 @@ export default async function(eleventyConfig: UserConfig) {
 
   let watch;
   eleventyConfig.on('eleventy.before', function({ runMode }) {
-    watch ||= run-mode === 'watch' && $({ stdout: ['pipe'], stderr: ['pipe'] })`npx tspc -b --watch`;
+    watch ||= runMode === 'watch' && $({ stdout: ['pipe'], stderr: ['pipe'] })`npx tspc -b --watch`;
   });
 
   eleventyConfig.watchIgnores?.add('docs/assets/redhat/');
