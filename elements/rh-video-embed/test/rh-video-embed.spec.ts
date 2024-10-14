@@ -89,7 +89,7 @@ describe('<rh-video-embed>', function() {
 
     it('thumbnail button is in a11y tree', async function() {
       const snapshot = await a11ySnapshot();
-      expect(snapshot).to.axContainName('fakethumbk');
+      expect(snapshot).to.axContainName('fakethumb');
     });
 
     it('shows thumbnail', function() {

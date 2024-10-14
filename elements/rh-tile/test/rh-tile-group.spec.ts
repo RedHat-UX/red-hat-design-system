@@ -93,8 +93,8 @@ describe('<rh-tile-group>', function() {
         it('has only one checked radio button', async function() {
           const snapshot = await a11ySnapshot();
           expect(snapshot)
-              .to.axContainQuery({ role: 'radio', name: 'Tile 1', focused: false, checked: false }).and
-              .to.axContainQuery({ role: 'radio', name: 'Tile 2', checked: true }).and
+              .to.axContainQuery({ role: 'radio', name: 'Tile 1', checked: false }).and
+              .to.axContainQuery({ role: 'radio', name: 'Tile 2', checked: true, focused: true }).and
               .to.axContainQuery({ role: 'radio', name: 'Tile 3', checked: false });
         });
       });
@@ -118,7 +118,7 @@ describe('<rh-tile-group>', function() {
         const snapshot = await a11ySnapshot();
         expect(snapshot)
             .to.axContainQuery({ role: 'radio', name: 'Tile 1', focused: true, checked: false }).and
-            .to.axContainQuery({ role: 'radio', name: 'carreau numéro 2', checked: true }).and
+            .to.axContainQuery({ role: 'radio', name: 'carreau numéro 2', checked: false }).and
             .to.axContainQuery({ role: 'radio', name: 'Tile 3', checked: false });
       });
     });

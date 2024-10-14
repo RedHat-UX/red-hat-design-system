@@ -74,7 +74,7 @@ describe('<rh-tile>', function() {
     it('has a checkbox', async function() {
       const snapshot = await a11ySnapshot();
       expect(snapshot).to.axContainRole('checkbox');
-      expect(snapshot.children).to.have.length(0);
+      expect(snapshot.children).to.have.length(1);
     });
 
     describe('pressing Enter', async function() {
