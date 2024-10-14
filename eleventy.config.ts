@@ -17,8 +17,7 @@ import RHDSMarkdownItPlugin from '#11ty-plugins/markdown-it.js';
 import ImportMapPlugin from '#11ty-plugins/importMap.js';
 import LitPlugin from '#11ty-plugins/lit-ssr/lit.js';
 
-import { promisify } from 'node:util';
-import * as ChildProcess from 'node:child_process';
+import { $ } from 'execa';
 
 export interface GlobalData {
   runMode: 'build' | 'watch' | 'serve';
@@ -43,8 +42,6 @@ export class Renderer<T> {
   render?(data: T & GlobalData): string | Promise<string>;
 }
 
-const exec = promisify(ChildProcess.exec);
-
 const isWatch =
   process.argv.includes('--serve') || process.argv.includes('--watch');
 
@@ -58,14 +55,9 @@ export default async function(eleventyConfig: UserConfig) {
   });
 
   eleventyConfig.on('eleventy.before', async function() {
-    const { stdout, stderr } = await exec('npx tspc -b');
-    if (stderr) {
-      // eslint-disable-next-line no-console
-      console.error(stderr);
-    } else {
-      // eslint-disable-next-line no-console
-      console.log(stdout);
-    }
+    const { all } = await $({ all: true })`npx tspc -b`;
+    // eslint-disable-next-line no-console
+    console.log(all);
   });
 
   eleventyConfig.watchIgnores?.add('docs/assets/redhat/');
