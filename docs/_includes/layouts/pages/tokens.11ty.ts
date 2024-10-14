@@ -3,7 +3,7 @@ import type { DesignToken } from '#11ty-plugins/tokensHelpers.js';
 import tinycolor from 'tinycolor2';
 import { tokens as tokensMeta } from '@rhds/tokens/meta.js';
 import { createRequire } from 'node:module';
-import { Renderer } from '#uxdot/eleventy.config.js';
+import { Renderer } from '#eleventy.config';
 
 const require = createRequire(import.meta.url);
 const tokensJSON = require('@rhds/tokens/json/rhds.tokens.json');
@@ -52,7 +52,7 @@ interface Data {
   tokenCategory: TokenCategory;
 }
 
-export default class TokensPage extends Renderer {
+export default class TokensPage extends Renderer<Data> {
   data() {
     return {
       layout: 'layouts/pages/has-toc.njk',
@@ -419,7 +419,7 @@ export default class TokensPage extends Renderer {
     }
   }
 
-  async render(ctx: Data) {
+  override async render(ctx: Data) {
     const { tokenCategory } = ctx;
     const { exclude, include, path, slug } = tokenCategory;
     const name = path.split('.').pop()!;

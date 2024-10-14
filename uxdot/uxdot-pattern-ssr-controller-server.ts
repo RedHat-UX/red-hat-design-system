@@ -108,11 +108,10 @@ export class UxdotPatternSSRControllerServer extends RHDSSSRController {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     delete globalThis.document;
-    const hl = await import('@11ty/eleventy-plugin-syntaxhighlight/src/HighlightPairedShortcode.js')
-        .then(m => m.default);
+    const { pairedShortcode } = await import('@11ty/eleventy-plugin-syntaxhighlight');
     // END workaround
     globalThis.document = shim;
-    return hl;
+    return pairedShortcode;
   }
 
   async ssrSetup() {

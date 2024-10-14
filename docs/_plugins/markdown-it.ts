@@ -1,4 +1,5 @@
 import type MarkdownIt from 'markdown-it';
+import type State from 'markdown-it/lib/rules_core/state_core.mjs';
 import type { UserConfig } from '@11ty/eleventy';
 import markdownItAnchor from 'markdown-it-anchor';
 import markdownItAttrs from 'markdown-it-attrs';
@@ -7,7 +8,15 @@ import markdownItFootnote from 'markdown-it-footnote';
 /* eslint-disable lit-a11y/anchor-is-valid */
 /* eslint-disable lit-a11y/accessible-name */
 
-const { makePermalink } = markdownItAnchor.permalink;
+const { makePermalink } = markdownItAnchor.permalink as unknown as {
+  makePermalink(callback: (
+    slug: string,
+    opts: markdownItAnchor.PermalinkOptions,
+    anchorOptions: markdownItAnchor.AnchorOptions,
+    state: State,
+    idx: number,
+  ) => void): () => markdownItAnchor.PermalinkGenerator;
+};
 
 // for editor highlighting
 const html = String.raw;

@@ -44,10 +44,10 @@ export default function(eleventyConfig: UserConfig, opts?: Options) {
       for (const currentWeight of Object.keys(weights).sort() as unknown as number[]) {
         // Sort by title alphabetically
         weights[currentWeight].sort(function(a, b) {
-          if (a.data.title < b.data.title) {
+          if ((a.data?.title ?? 0) < (b.data?.title ?? 0)) {
             return -1;
           }
-          if (a.data.title > b.data.title) {
+          if ((a.data?.title ?? 0) > (b.data?.title ?? 0)) {
             return 1;
           }
           return 0;

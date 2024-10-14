@@ -1,5 +1,3 @@
-/// <reference lib="ESNext.Array"/>
-
 import type { UserConfig } from '@11ty/eleventy';
 import * as ChildProcess from 'node:child_process';
 import { join, dirname } from 'node:path';
@@ -94,9 +92,7 @@ export default async function(eleventyConfig: UserConfig, options?: Options) {
   });
 
   /** add the normalized pfe-tools config to global data */
-  eleventyConfig.on('eleventy.before', async function() {
-    eleventyConfig.addGlobalData('pfeconfig', getPfeConfig());
-  });
+  eleventyConfig.addGlobalData('pfeconfig', getPfeConfig());
 
   /** custom-elements.json */
   eleventyConfig.on('eleventy.before', async function({ runMode }) {
@@ -106,8 +102,8 @@ export default async function(eleventyConfig: UserConfig, options?: Options) {
   });
 
   /** /assets/javascript/environment.js */
-  eleventyConfig.on('eleventy.before', async function({ dir }) {
-    const outPath = join(dir.input, '..', 'lib', 'environment.js');
+  eleventyConfig.on('eleventy.before', async function({ directories }) {
+    const outPath = join(directories.input, '..', 'lib', 'environment.js');
     await writeFile(outPath, await makeDemoEnv(), 'utf8');
   });
 
@@ -135,10 +131,10 @@ export default async function(eleventyConfig: UserConfig, options?: Options) {
 
   eleventyConfig.addJavaScriptFunction('getTagNameSlug', getTagNameSlug);
 
-  eleventyConfig.addFilter('getPrettyElementName', function(tagName: string) {
+  eleventyConfig.addFilter('getPrettyElementName', function(this, tagName) {
     const slug = getTagNameSlug(tagName);
     const deslugify = eleventyConfig.getFilter('deslugify');
-    return pfeconfig.aliases[tagName] || deslugify(slug);
+    return pfeconfig.aliases[tagName] || deslugify.call(this, slug);
   });
 
   eleventyConfig.addFilter('deslugify', function(slug: string) {

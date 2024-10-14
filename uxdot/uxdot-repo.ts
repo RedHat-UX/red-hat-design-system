@@ -65,13 +65,9 @@ export interface ComputedTagStatus extends Omit<TagStatus, 'libraries'> {
   libraries: ComputedLibraryStatus[];
 }
 
-const repoStatus: TagStatus[] = isServer ?
-    await import('node:fs/promises')
-        .then(({ readFile }) => readFile(new URL(`../../../_data/repoStatus.yaml`, import.meta.url), 'utf8'))
-        .then(text => import('js-yaml')
-            .then(yaml => yaml.default.load(text)))
-  : await fetch('/assets/javascript/repoStatus.json')
-      .then(x => x.json());
+const repoStatus: TagStatus[] =
+    isServer ? await import('./repoStatus.js').then(x => x.default)
+  : await fetch('/assets/javascript/repoStatus.json').then(x => x.json());
 
 export class UxdotRepoElement extends LitElement {
   private static libraries: Record<LibraryKey, string> = {

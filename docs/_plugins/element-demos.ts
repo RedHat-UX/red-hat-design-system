@@ -42,8 +42,7 @@ export default function(eleventyConfig: UserConfig) {
       return Parse5.serialize(document);
     }
     return content;
-  },
-  );
+  });
 
   eleventyConfig.addTransform('demo-lightdom-css', async function(this, content) {
     const { outputPath, inputPath } = this.page;

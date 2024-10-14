@@ -40,8 +40,8 @@ rules:
       ignoreTypes:
         - heading
         - actions
-        - rendered
         - pending
+        - --rendered
 
   selector-pseudo-element-no-unknown:
     - true

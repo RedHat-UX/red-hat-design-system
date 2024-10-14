@@ -1,23 +1,24 @@
-import { Renderer } from '../../../../eleventy.config.ts';
-import { dedent } from '../../../_plugins/tokensHelpers';
+import { Renderer, type GlobalData } from '#eleventy.config';
+import { dedent } from '#11ty-plugins/tokensHelpers.js';
+import type { ElementDocsPageData } from '#11ty-plugins/element-docs.js';
 
 const html = String.raw; // for editor highlighting
 
-export default class Feedback extends Renderer {
-  async render({
-    doc,
-    title,
-    pfeconfig,
-    relatedItems,
-  }) {
-    pfeconfig ??= await import('@patternfly/pfe-tools/config.js').then(x => x.getPfeConfig());
+interface Data {
+  title: string;
+  relatedItems: Record<string, string[]>;
+  doc: ElementDocsPageData;
+}
+
+export default class Feedback extends Renderer<Data> {
+  async render({ doc, title, relatedItems, pfeconfig }: Data & GlobalData) {
     const name = doc?.tagName ?? this.slugify(title);
     const related = [...new Set((relatedItems?.[name] ?? []) as string[])].map(x => {
       const slug = this.getTagNameSlug(x);
       return {
         name: x,
         url: slug === x ? `/patterns/${slug}` : `/elements/${slug}`,
-        text: pfeconfig.aliases[x] || this.deslugify(slug),
+        text: pfeconfig.aliases?.[x] || this.deslugify(slug),
       };
     }).sort((a, b) => a.text < b.text ? -1 : a.text > b.text ? 1 : 0);
     return dedent(html`

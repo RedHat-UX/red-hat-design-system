@@ -6,8 +6,8 @@ import chalk from 'chalk';
 
 import type { UserConfig } from '@11ty/eleventy';
 
-interface ImportMap {
-  imports: Record<string, string>;
+export interface ImportMap {
+  imports?: Record<string, string>;
   scopes?: Record<string, Record<string, string>>;
 }
 
@@ -60,7 +60,7 @@ async function getCachedImportMap({
   cwd,
   assetCache,
   nodemodulesPublicPath,
-}: Options) {
+}: Required<Options>) {
   if (assetCache.isCacheValid('1d')) {
     return assetCache.getCachedValue();
   } else {
@@ -116,10 +116,10 @@ async function getCachedImportMap({
 
 export default function(eleventyConfig: UserConfig, opts?: Options) {
   const {
-    inputMap,
-    manualImportMap,
-    defaultProvider,
-    nodemodulesPublicPath,
+    inputMap = {},
+    manualImportMap = {},
+    defaultProvider = 'jspm.io',
+    nodemodulesPublicPath = '/assets/',
     localPackages = [],
   } = opts ?? {};
   const cwd = process.cwd();

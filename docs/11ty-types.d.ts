@@ -1,7 +1,3 @@
-declare module '@11ty/eleventy-plugin-syntaxhighlight/src/HighlightPairedShortcode.js' {
-  export default function HighlightPairedShortcode(content: string, language: string, highlightLines: string, options: object): any
-}
-
 declare module '@11ty/eleventy-plugin-syntaxhighlight/src/getAttributes.js' {
   export default function getAttributes(...args: any[]): string
 }
@@ -80,12 +76,15 @@ declare module '@11ty/eleventy/src/UserConfig.js' {
     compile(inputContent: string): (this: CompileContext, data: unknown) => string | Promise<string>;
   }
 
-  interface EleventyEventHandlerOptions {
+  interface EleventyBeforeEventHandlerOptions {
     directories: EleventyData['directories'],
     /** @deprecated */
     dir: {input: string; output: string; includes: string, data: string; layouts: string;};
     outputMode: 'js'|'json'|'ndjson';
     runMode: 'build'|'serve'|'watch';
+  }
+
+  interface EleventyAfterEventHandlerOptions extends EleventyBeforeEventHandlerOptions {
     results?: {inputPath:string;outputPath:string; url:string;content:string}[];
   }
 
@@ -93,19 +92,30 @@ declare module '@11ty/eleventy/src/UserConfig.js' {
 
   type AddCollectionCallback = (api: CollectionApi) => CollectionItem[] | Promise<CollectionItem[]>;
 
-  type OnCallback = (opts: EleventyEventHandlerOptions) => void | Promise<void>;
+  type OnCallback<O = EleventyBeforeEventHandlerOptions> = (opts: O) => void | Promise<void>;
 
   export type PluginFunction<Opts = unknown> = (config: UserConfig, opts?: Opts) => void | Promise<void>
 
-  type FilterFunction<T = string, R = string> = (this: FilterContext, data: T, ...args: unknown[]) => R | Promise<R>;
+  type FilterFunction<T = string, R = string> = (this: FilterContext, data: T) => R | Promise<R>;
+  type FilterFunctionWithArgs<T = string, R = string> = (this: FilterContext, data: T, ...args: any[]) => R | Promise<R>;
+
+  type DataEntry =
+    | string
+    | number
+    | object
+    | Promise<string|number|object>
+    | (() => unknown)
+    | (() => Promise<unknown>);
 
   export default class UserConfig {
     addCollection(name: string, callback: AddCollectionCallback): void;
     addDataExtension(names: string, processor: (content: string) => unknown | Promise<unknown>): void;
     addExtension(extension: string, options: AddExtensionOptions): void;
     addFilter(name: string, filter: FilterFunction): void;
+    addFilter(name: string, filter: FilterFunctionWithArgs): void;
     addGlobalData(name: string, data: unknown | (() => unknown)): void;
     addJavaScriptFunction(name: string, filter: FilterFunction): void;
+    addJavaScriptFunction(name: string, filter: FilterFunctionWithArgs): void;
     addPassthroughCopy(items: string | Record<string, string>, copyOptions?: PassthroughCopyOptions): void;
     addPlugin<Opts>(Plugin:  PluginFunction<Opts> | {
       initֵArguments?: Opts;
@@ -115,9 +125,15 @@ declare module '@11ty/eleventy/src/UserConfig.js' {
     addWatchTarget(name: string, opts?: { resetConfig: boolean }): void;
     amendLibrary(md: 'md', callback: ((md: MarkdownIt) => MarkdownIt)): void;
     getFilter(name: string): FilterFunction;
-    globalData: Record<string, unknown | (() => unknown) | ((() => Promise<unknown>))>;
-    on(event: 'eleventy.before'| 'eleventy.beforeWatch' | 'eleventy.after', callback: OnCallback): void;
+    getFilter(name: string): FilterFunctionWithArgs;
+    globalData: { [key: string]: DataEntry };
+    on(event: 'eleventy.before', callback: OnCallback): void;
+    on(event: 'eleventy.after', callback: OnCallback<EleventyAfterEventHandlerOptions>): void;
+    on(event: 'eleventy.beforeWatch', callback: (changedFiles: string[]) => void | Promise<void>): void;
+    on(event: 'eleventy.contentMap', callback: (opts: ({ inputPathToUrl: Record<string, string>, urlToInputPath: Record<string, string> })) => void | Promise<void>): void;
+    on(event: 'eleventy.beforeConfig', callback: (config: UserConfig) => void | Promise<void>): void;
     setQuietMode(quiet: boolean): void;
+    javascriptFunctions: Record<string, (...args: unknown[]) => any>;
     watchIgnores: Set<string>;
   }
 }
@@ -162,7 +178,9 @@ declare module '@11ty/eleventy-plugin-syntaxhighlight' {
     errorOnInvalidLanguage: boolean;
   }>;
   export default Plugin;
+  export function pairedShortcode(content: string, language: string, highlightLines: string, options: object): string;
 }
+
 declare module '@11ty/eleventy-plugin-directory-output' {
   import { PluginFunction } from "@11ty/eleventy/src/UserConfig.js";
   const Plugin: PluginFunction<{
@@ -173,6 +191,30 @@ declare module '@11ty/eleventy-plugin-directory-output' {
   }>;
   export default Plugin;
 }
+
+declare module '@11ty/eleventy-fetch' {
+  import { PluginFunction } from "@11ty/eleventy/src/UserConfig.js";
+  type Duration = `${number}${'d'|'m'|'h'}`;
+  type CacheType = 'json' | 'buffer' | 'text';
+  function EleventyFetch<T = unknown>(url: string, options: {
+    directory: string;
+    removeUrlQueryParams: boolean;
+    type: CacheType;
+    duration: Duration;
+    fetchOptions: { headers: Record<string, string> };
+  }): Promise<T>;
+  export default EleventyFetch;
+  export class AssetCache<T=unknown> {
+    constructor(tag: string);
+    isCacheValid(time: Duration): boolean;
+    save(data:T, type: CacheType): Promise<void>;
+    getCachedValue(): Promise<T>
+    cache: {
+      destroy(): void;
+    }
+  }
+}
+
 declare module '@patternfly/pfe-tools/11ty/plugins/anchors.cjs' {
   import type { Cheerio } from 'cheerio';
   import type { AnyNode } from 'domhandler';
@@ -183,12 +225,14 @@ declare module '@patternfly/pfe-tools/11ty/plugins/anchors.cjs' {
   }>;
   export default AnchorsPlugin;
 }
+
 declare module '@patternfly/pfe-tools/11ty/plugins/custom-elements-manifest.cjs' {
   import type { PluginOptions } from '@patternfly/pfe-tools/11ty/plugins/types';
   import { PluginFunction } from "@11ty/eleventy/src/UserConfig.js";
   const Plugin: PluginFunction<PluginOptions>;
   export default Plugin;
 }
+
 declare module 'eleventy-plugin-helmet' {
   import { PluginFunction } from "@11ty/eleventy/src/UserConfig.js";
   const Plugin: PluginFunction;

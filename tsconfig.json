@@ -1,24 +1,18 @@
 {
-  "extends": [
-    "./tsconfig.settings.json"
-  ],
-  "include": [
-    "./elements",
-    "./lib",
-    "./declaration.d.ts",
-    "./docs/assets/javascript/elements/*.ts",
-  ],
-  "exclude": [
-    "**/node_modules/**/*",
-    "_site",
-    "scripts/*.js",
-    "elements/**/*.js",
-    "elements/*/test/**/*.js",
-    "elements/rh-secondary-nav/test/fixtures.js",
-    "docs",
-    "**/*.spec.ts",
-    "**/*.e2e.ts",
-    "lib/**/*.js",
-    "./*.config.js"
-  ],
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "./elements"
+    },
+    {
+      "path": "./lib"
+    },
+    {
+      "path": "./uxdot"
+    },
+    {
+      "path": "./docs"
+    },
+  ]
 }

@@ -24,7 +24,8 @@ function trimOuterMarkers(renderedContent: string) {
       .replace(/((<!--[^<>]*-->)|(<\?>)|\s)+$/, '');
 }
 
-export default function(eleventyConfig: UserConfig, { componentModules }: Options = {}) {
+export default function(eleventyConfig: UserConfig, opts?: Options) {
+  const { componentModules } = opts ?? {};
   if (componentModules === undefined || componentModules.length === 0) {
     // If there are no component modules, we could never have anything to
     // render.
@@ -107,7 +108,6 @@ export default function(eleventyConfig: UserConfig, { componentModules }: Option
 
     const outerMarkersTrimmed = trimOuterMarkers(renderedContent);
     return outerMarkersTrimmed;
-  }
-  );
+  });
 };
 

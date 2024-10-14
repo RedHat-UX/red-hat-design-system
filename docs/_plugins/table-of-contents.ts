@@ -1,11 +1,9 @@
+/** @license adapted from code (c) Jordan Shermer MIT license*/
+
+
 import type { UserConfig } from '@11ty/eleventy';
 import * as Parse5 from 'parse5';
 import * as Tools from '@parse5/tools';
-
-/// <reference lib="ESNext.collection" />
-
-/** @license adapted from code (c) Jordan Shermer MIT license*/
-
 
 /** Attribute which if found on a heading means the heading is excluded */
 const ignoreAttribute = 'data-toc-exclude';
@@ -34,13 +32,13 @@ function getParent(prev: Item, current: Item) {
 class Item {
   children: Item[] = [];
 
-  parent: Item;
+  parent!: Item;
 
   level = 0;
 
-  slug: string | null;
+  slug!: string | null;
 
-  text: string;
+  text!: string;
 
   constructor(element?: Tools.Element) {
     if (element) {
@@ -73,7 +71,7 @@ class Item {
 }
 
 export default function(eleventyConfig: UserConfig, pluginOpts: Partial<Options> = {}) {
-  eleventyConfig.addFilter('toc', async function toc(content: string, opts: Partial<Options>) {
+  eleventyConfig.addFilter('toc', async function toc(content: string, opts?: Partial<Options>) {
     const { tags = ['h2'], ignoredElements = [] } = {
       ...pluginOpts,
       ...opts,
@@ -105,7 +103,5 @@ export default function(eleventyConfig: UserConfig, pluginOpts: Partial<Options>
     }
 
     return Parse5.serialize(root.getNode());
-  }
-
-  );
+  });
 };
