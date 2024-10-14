@@ -313,7 +313,9 @@
   uxdot-header:has(rh-subnav) {
     position: sticky;
     top: -54px; /* masthead height (72px) + subnav height (56px) - header mobile height (182px) */
-    z-index: calc(var(--uxdot-masthead-z-index) - 1); /* z-index 1 under masthead to allow content to scroll under */
+
+    /* z-index 1 under masthead to allow content to scroll under */
+    z-index: calc(var(--uxdot-masthead-z-index) - 1);
 
     @container main (min-width: 768px) {
       top: -70px; /* masthead (72px) + subnav (56px) - header tablet (198px) */

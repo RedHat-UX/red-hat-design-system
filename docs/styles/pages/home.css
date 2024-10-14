@@ -1,4 +1,8 @@
 @layer page {
+  rh-tile p {
+    margin-block: 0;
+  }
+
   /* Homepage */
   .container {
     padding-block-start: var(--rh-space-4xl);
@@ -53,10 +57,6 @@
   #get-started > p {
     max-width: 100%; /* overrides base max width */
     margin: 0 auto var(--rh-space-3xl);
-  }
-
-  rh-tile p {
-    margin-block: 0;
   }
 
   #contribute::part(header),
