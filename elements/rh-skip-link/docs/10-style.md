@@ -69,15 +69,7 @@ A skip link should be centered and aligned with the top edge at all viewport siz
         height="56">
 </uxdot-example>
 
-
-<rh-table>
-{% spacerTokensTable 
-    caption='',
-    headingLevel="3",
-    tokens="--rh-space-lg, --rh-space-2xl" %}
-{% endspacerTokensTable %}
-</rh-table>
-
+<uxdot-spacer-tokens-table tokens="lg, 2xl"></uxdot-spacer-tokens-table>
 
 ## Interaction states
 

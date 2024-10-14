@@ -3,7 +3,6 @@ title: Overview
 heading: Logo wall
 sidenavTitle: Logo wall
 layout: layouts/pages/pattern.njk
-hasToc: true
 order: 75
 tags:
   - pattern
@@ -24,7 +23,7 @@ A logo wall is a visual arrangement of logos representing various brands, compan
 ## Sample Patterns
 
 <div class="grid">
-  <div> 
+  <div>
     <h3>Bordered</h3>
     <uxdot-example>
       <img src="./overview-sample-bordered.png"
@@ -48,4 +47,4 @@ A logo wall is a visual arrangement of logos representing various brands, compan
 
 Use a logo wall pattern when you need to display multiple logos in a group.
 
-{% include 'partials/component/feedback.html' %}
+{% renderFile './docs/_includes/partials/component/feedback.11ty.ts' %}

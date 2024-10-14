@@ -137,7 +137,6 @@ describe('<rh-back-to-top>', function() {
 
   describe('when rendered in an element with an overflowed height', function() {
     let element: RhBackToTop;
-    let snapshot: A11yTreeSnapshot;
 
     beforeEach(async function() {
       window.scrollTo({ top: 0, behavior: 'instant' });
@@ -149,14 +148,13 @@ describe('<rh-back-to-top>', function() {
         </div>
       `);
       element = container.querySelector('rh-back-to-top')!;
-      snapshot = await a11ySnapshot();
-
       await allUpdates(element);
     });
 
-    it('should be hidden on init', function() {
-      const { children } = snapshot;
-      expect(children).to.be.undefined;
+    it('should be hidden on init', async function() {
+      const snapshot = await a11ySnapshot();
+      expect(snapshot).to.not.axContainName('Back to top');
+      expect(snapshot).to.not.axContainRole('link');
     });
 
     describe('when scrolled 401px', function() {
@@ -165,11 +163,12 @@ describe('<rh-back-to-top>', function() {
         scrollableElement.scrollTo({ top: 401, behavior: 'instant' });
         await nextFrame();
         await allUpdates(element);
-        snapshot = await a11ySnapshot();
       });
 
-      it('should be visible', function() {
-        expect(snapshot.children?.map(takeProps(['name', 'role']))).to.deep.equal([{ role: 'link', name: 'Back to top' }]);
+      it('should be visible', async function() {
+        const snapshot = await a11ySnapshot();
+        expect(snapshot).to.axContainName('Back to top');
+        expect(snapshot).to.axContainRole('link');
       });
     });
   });

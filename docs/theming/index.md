@@ -1,7 +1,6 @@
 ---
 title: Overview
 order: 1
-hasToc: false
 ---
 <style data-helmet>
   .card-grid {
@@ -11,7 +10,9 @@ hasToc: false
   }
 </style>
 
-<link rel="stylesheet" data-helmet href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
+<link rel="stylesheet"
+      href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css"
+      data-helmet>
 
 <script type="module" data-helmet>
   import '@rhds/elements/rh-cta/rh-cta.js';

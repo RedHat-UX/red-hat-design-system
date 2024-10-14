@@ -124,7 +124,7 @@ export const litcssOptions = {
 };
 
 export default pfeDevServerConfig({
-  tsconfig: 'tsconfig.json',
+  tsconfig: 'tsconfig.settings.json',
   litcssOptions,
   importMapOptions: {
     typeScript: true,

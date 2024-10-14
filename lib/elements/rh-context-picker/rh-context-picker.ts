@@ -116,8 +116,10 @@ export class RhContextPicker extends LitElement {
       this.sync();
     } else if (this.target) {
       const root = this.getRootNode() as Document | ShadowRoot;
-      this.#target = root.getElementById(this.target);
-      this.sync();
+      if (root instanceof Document || root instanceof ShadowRoot) {
+        this.#target = root.getElementById(this.target);
+        this.sync();
+      }
     } else {
       this.#target = this.closest('rh-surface');
     }

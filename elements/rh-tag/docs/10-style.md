@@ -129,13 +129,7 @@ Tags have 8px of space in between each other in a row or when stacked.
         height="214">
 </uxdot-example>
 
-<rh-table>
-  {% spacerTokensTable 
-      headline='',
-      caption='',
-      tokens="--rh-space-xs, --rh-space-md" %}
-  {% endspacerTokensTable %}
-</rh-table>
+<uxdot-spacer-tokens-table tokens="xs, md"></uxdot-spacer-tokens-table>
 
 ## Interaction states
 

@@ -25,7 +25,7 @@ tags:
 </style>
 
 <script data-helmet type="module">
-  import '/assets/javascript/elements/uxdot-hero.js'
+  import '@uxdot/elements/uxdot-hero.js'
   import '@rhds/elements/rh-icon/rh-icon.js';
   import '@rhds/elements/rh-card/rh-card.js';
 </script>

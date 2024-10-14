@@ -1,25 +1,45 @@
+{%- set tagName = tagName or doc.tagName or element.tagName or doc.docsPage.tagName -%}
+{%- set headingId = (heading if heading else title) | lower | slug -%}
+{%- set manifest = doc and doc.docsPage and doc.docsPage.manifest -%}
+{%- if manifest == doc and doc.docsPage -%}
+  {% set manifest = null %}
+{% endif -%}
+{%- set prettyName -%}{{ (doc.alias or doc.slug or element.slug or '') | deslugify | capitalize }}{% endset %}
+{%- set tabs = doc.tabs -%}
+{%- if not tabs and subnav.collection -%}
+  {% set tabs = collections[subnav.collection] | sort(attribute = "data.subnav.order") %}
+{%- endif -%}
+{%- set demos = manifest and manifest.getDemos(doc.docsPage.tagName) -%}
+
 <script type="module" data-helmet>
-  import '/assets/javascript/elements/uxdot-header.js';
-  import '/assets/javascript/elements/uxdot-search.js';
+  import '@uxdot/elements/uxdot-header.js';
 </script>
 
-<uxdot-header {% if subnav.collection %}has-subnav{% endif %} {% if tokenSearch %}has-search {% endif %}>
-  <h1 id="{{ (heading if heading else title) | lower | slug }}" class="page-title">{{ heading if heading else title }}</h1>
+{% if tabs %}
+<script type="module" data-helmet>
+  import '@rhds/elements/rh-subnav/rh-subnav.js';
+</script>
+{% endif %}
 
-  {% if tokenSearch %}
-    <form slot="search" id="search-tokens" action="/tokens/search">
-      <uxdot-search id="search-input"
-        name="search"
-        aria-label="Search for tokens"
-        placeholder="Enter a token name"></uxdot-search>
-    </form>
-  {% endif %}
-
-  {% if subnav.collection %}
-    <rh-subnav slot="subnav" accessible-label="{{heading}}">{% for tab in collections[subnav.collection] | sort(attribute="data.subnav.order") %}
-      <a {{ 'active' if tab.url == page.url }} href="{{ tab.url }}">
-        {{ tab.data.title }}
-      </a>{% endfor %}
-    </rh-subnav>
+<uxdot-header {% if tabs %}has-subnav{% endif %} {% if tokenSearch %}has-search {% endif %}>
+  {#- TODO: cheap hack here to fix data spaghetti from demos page -#}
+  <h1 id="{{ headingId }}" class="page-title">
+    {{ prettyName or heading or title }}
+    {% if doc.planned %}
+    <rh-tag icon="notification-fill" color="gray">Planned</rh-tag>
+    {% endif %}
+  </h1>
+  {% if tokenSearch %}{% include 'partials/component/token-search.html' %}{% endif %}
+  {% if tabs %}
+  <rh-subnav slot="subnav" accessible-label="{{ heading }}">
+  {% for tab in tabs %}
+    {%- set pageUrl = (doc and doc.permalink | replace('index.html', '')) or page.url -%}
+    {%- set title = tab.pageTitle or tab.data.title -%}
+    {%- set active = tab.url == pageUrl -%}
+    <a href="{{ tab.url }}"
+       {{- ' active' if active -}}
+       {{- ' hidden' if hidden -}}>{{ title | capitalize }}</a>
+  {%- endfor -%}
+  </rh-subnav>
   {% endif %}
 </uxdot-header>

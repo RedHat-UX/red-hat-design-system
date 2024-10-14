@@ -1,86 +1,18 @@
 {
-  "include": [
-    "./elements",
-    "./docs/assets/javascript/elements",
-    "./lib",
-    "./declaration.d.ts"
-  ],
-  "exclude": [
-    "**/node_modules/**/*",
-    "_site",
-    "docs/**/*.js",
-    "scripts/*.js",
-    "elements/**/*.js",
-    "elements/*/test/**/*.js",
-    "elements/rh-secondary-nav/test/fixtures.js",
-    "**/*.spec.ts",
-    "**/*.e2e.ts",
-    "lib/**/*.js",
-    "./*.config.js"
-  ],
-  "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "baseUrl": ".",
-    "declaration": true,
-    "downlevelIteration": true,
-    "emitDeclarationOnly": false,
-    "experimentalDecorators": true,
-    "importHelpers": true,
-    "incremental": true,
-    "inlineSources": true,
-    "module": "nodenext",
-    "moduleResolution": "nodenext",
-    "verbatimModuleSyntax": true,
-    "noEmitOnError": false,
-    "rootDir": ".",
-    "sourceMap": true,
-    "strict": true,
-    "target": "es2020",
-    "skipLibCheck": true,
-    "useDefineForClassFields": false,
-    "typeRoots": [
-      "./node_modules/@types",
-      "./@types"
-    ],
-    "plugins": [
-      {
-        "transform": "typescript-transform-lit-css",
-        "inline": true,
-        "cssnano": true
-      },
-      {
-        "name": "typescript-lit-html-plugin"
-      },
-      {
-        "name": "ts-lit-plugin"
-      }
-    ],
-    "lib": [
-      "DOM.iterable",
-      "DOM",
-      "ES5",
-      "ES6",
-      "ES2020",
-      "ES2022",
-      "ES2015.Generator",
-      "ESNext.Collection",
-      "ESNext.AsyncIterable",
-      "ESNext.Disposable",
-      "ScriptHost"
-    ],
-    "paths": {
-      "@rhds/elements/*": [
-        "./elements/*"
-      ],
-      "@rhds/elements/lib/*": [
-        "./lib/*"
-      ],
-      "@rhds/tokens/color.*": [
-        "./node_modules/@rhds/tokens/js/color.*"
-      ],
-      "@rhds/tokens/css/*": [
-        "./node_modules/@rhds/tokens/css/*"
-      ]
-    }
-  }
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "./elements"
+    },
+    {
+      "path": "./lib"
+    },
+    {
+      "path": "./uxdot"
+    },
+    {
+      "path": "./docs"
+    },
+  ]
 }

@@ -220,10 +220,7 @@ Box tabs are separated by a 1px divider.
         height="388">
 </uxdot-example>
 
-<rh-table>
-{% spacerTokensTable headline="", caption='', headingLevel="4", tokens="--rh-space-md, --rh-space-lg, --rh-space-2xl" %} {% endspacerTokensTable %}
-</rh-table>
-
+<uxdot-spacer-tokens-table tokens="md, lg, 2xl"></uxdot-spacer-tokens-table>
 
 ## Interaction states
 

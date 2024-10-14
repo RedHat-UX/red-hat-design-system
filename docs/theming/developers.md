@@ -1,7 +1,7 @@
 ---
 title: Developers
+layout: layouts/pages/has-toc.njk
 order: 4
-hasToc: true
 ---
 
 <link rel="stylesheet"
@@ -18,7 +18,7 @@ hasToc: true
       href="../developers.css">
 
 <script type="module" data-helmet>
-  import '/assets/javascript/elements/uxdot-pattern.js';
+  import '@uxdot/elements/uxdot-pattern.js';
   import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
   import '@rhds/elements/rh-accordion/rh-accordion.js';
   import '@rhds/elements/rh-audio-player/rh-audio-player.js';
