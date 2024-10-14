@@ -1,4 +1,4 @@
-import type { ReactiveController, ReactiveElement } from 'lit';
+import { isServer, type ReactiveController, type ReactiveElement } from 'lit';
 import type { ContextCallback, ContextRequestEvent, UnknownContext } from '../event.js';
 
 import {
@@ -119,6 +119,12 @@ export class ColorContextProvider<
   }
 
   hostUpdated() {
+    if (!isServer) {
+      // This is definitely overkill, but it's the only
+      // way we've found so far to work around lit-ssr hydration woes
+      this.update();
+    }
+
     this.#initialized ||= (this.update(), true);
     if (this.#local && this.value !== this.#consumer.value) {
       this.#consumer.update(this.#local);
