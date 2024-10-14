@@ -69,7 +69,7 @@ export class ColorContextProvider<
   // eslint-disable-next-line no-unused-private-class-members
   #style: CSSStyleDeclaration;
 
-  // eslint-disable-next-line no-unused-private-class-members
+
   #initialized = false;
 
   #logger: Logger;
@@ -116,18 +116,21 @@ export class ColorContextProvider<
     }
     await this.host.updateComplete;
     this.update();
+    return true;
   }
 
-  hostUpdated() {
+  async hostUpdated() {
+    if (!this.#initialized) {
+      this.hostConnected();
+    }
+    this.#initialized ||= await this.hostConnected();
+    if (this.#local && this.value !== this.#consumer.value) {
+      this.#consumer.update(this.#local);
+      this.update();
+    }
     if (!isServer) {
       // This is definitely overkill, but it's the only
       // way we've found so far to work around lit-ssr hydration woes
-      this.update();
-    }
-
-    this.#initialized ||= (this.update(), true);
-    if (this.#local && this.value !== this.#consumer.value) {
-      this.#consumer.update(this.#local);
       this.update();
     }
   }
@@ -177,10 +180,8 @@ export class ColorContextProvider<
    * @param [force] override theme
    */
   public override async update(force?: ColorTheme) {
-    const { value } = this;
-
     for (const cb of this.#callbacks) {
-      cb(force ?? value);
+      cb(force ?? this.value);
     }
   }
 }
