@@ -3,11 +3,13 @@
     "./tsconfig.settings.json"
   ],
   "include": [
-    "./elements",
-    "./lib",
-    "./declaration.d.ts",
-    "./docs/assets/javascript/elements/*.ts",
+    "./docs/**/*.ts",
   ],
+  "compilerOptions": {
+    "noEmit": true,
+    "emitDeclarationOnly": false,
+    "declaration": false
+  },
   "exclude": [
     "**/node_modules/**/*",
     "_site",
@@ -15,7 +17,6 @@
     "elements/**/*.js",
     "elements/*/test/**/*.js",
     "elements/rh-secondary-nav/test/fixtures.js",
-    "docs",
     "**/*.spec.ts",
     "**/*.e2e.ts",
     "lib/**/*.js",

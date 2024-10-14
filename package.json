@@ -12,6 +12,7 @@
     "./*": "./elements/*"
   },
   "imports": {
+    "#scripts/*": "./scripts/*",
     "#uxdot/*": "./*",
     "#11ty-plugins/*": "./docs/_plugins/*"
   },
@@ -107,7 +108,7 @@
     },
     "serve": {
       "service": true,
-      "command": "tsx ./node_modules/.bin/eleventy --config=eleventy.config.ts --serve --incremental",
+      "command": "TSX_TSCONFIG_PATH=./tsconfig.docs.json tsx ./node_modules/.bin/eleventy --config=eleventy.config.ts --serve --incremental",
       "dependencies": [
         "patch",
         "compile",
@@ -208,7 +209,7 @@
       ]
     },
     "docs": {
-      "command": "tsx ./node_modules/.bin/eleventy --config=eleventy.config.ts",
+      "command": "TSX_TSCONFIG_PATH=./tsconfig.docs.json tsx ./node_modules/.bin/eleventy --config=eleventy.config.ts",
       "dependencies": [
         "patch",
         "analyze",
@@ -273,7 +274,7 @@
     },
     "watch:docs": {
       "service": true,
-      "command": "tsx ./node_modules/.bin/eleventy --serve --incremental --config=eleventy.config.ts",
+      "command": "TSX_TSCONFIG_PATH=./tsconfig.docs.json tsx ./node_modules/.bin/eleventy --serve --incremental --config=eleventy.config.ts",
       "dependencies": [
         "analyze",
         "compile"

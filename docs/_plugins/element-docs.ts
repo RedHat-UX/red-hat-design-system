@@ -6,9 +6,9 @@ import { basename, dirname, join, sep } from 'node:path';
 import { glob, readFile, readdir, stat } from 'node:fs/promises';
 import { deslugify, getPfeConfig } from '@patternfly/pfe-tools/config.js';
 import { getAllManifests } from '@patternfly/pfe-tools/custom-elements-manifest/custom-elements-manifest.js';
+import { capitalize } from '#11ty-plugins/tokensHelpers.js';
 import { DocsPage } from '@patternfly/pfe-tools/11ty/DocsPage.js';
 import yaml from 'js-yaml';
-import { capitalize } from './tokensHelpers';
 
 interface ElementDocsPageTabData {
   url: string;
@@ -47,6 +47,10 @@ interface ElementDocsPageFileSystemData extends ElementDocsPageBasicData {
 }
 
 export interface ElementDocsPageData extends ElementDocsPageFileSystemData {
+  data: {
+    order: number;
+    title: string;
+  };
   docsPage: DocsPage;
   tabs: ElementDocsPageTabData[];
   /** e.g. `footer` for `rh-footer` or `call-to-action` for `rh-cta` */
@@ -74,7 +78,7 @@ async function exists(path: string) {
 
 function getTagNameSlug(tagName: string) {
   const name = (pfeconfig?.aliases?.[tagName] ?? tagName).replace(`${pfeconfig?.tagPrefix ?? 'rh'}-`, '');
-  return slugify(name, {
+  return slugify.default(name, {
     strict: true,
     lower: true,
   });

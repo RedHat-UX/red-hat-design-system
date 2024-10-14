@@ -8,12 +8,12 @@ import HelmetPlugin from 'eleventy-plugin-helmet';
 
 import { EleventyRenderPlugin, type UserConfig } from '@11ty/eleventy';
 
-import TOCPlugin from './docs/_plugins/table-of-contents.js';
-import RHDSPlugin from './docs/_plugins/rhds.ts';
-import DesignTokensPlugin from './docs/_plugins/tokens.js';
-import RHDSMarkdownItPlugin from './docs/_plugins/markdown-it.js';
-import ImportMapPlugin from './docs/_plugins/importMap.js';
-import LitPlugin from './docs/_plugins/lit-ssr/lit.js';
+import TOCPlugin from '#11ty-plugins/table-of-contents.js';
+import RHDSPlugin from '#11ty-plugins/rhds.js';
+import DesignTokensPlugin from '#11ty-plugins/tokens.js';
+import RHDSMarkdownItPlugin from '#11ty-plugins/markdown-it.js';
+import ImportMapPlugin from '#11ty-plugins/importMap.js';
+import LitPlugin from '#11ty-plugins/lit-ssr/lit.js';
 
 import { promisify } from 'node:util';
 import * as ChildProcess from 'node:child_process';
@@ -108,7 +108,7 @@ export default async function(eleventyConfig: UserConfig) {
         'lit-html': '/assets/packages/lit-html/lit-html.js',
         'lit-html/': '/assets/packages/lit-html/',
         'prism-esm/': '/assets/packages/prism-esm/',
-        '@lit-labs/ssr-client/lit-element-hydrate-support.js': '/assets/packages/@lit-labs/ssr-client/lit-element-hydrate-support.js',
+        '@lit-labs/ssr-client/lit-element-hydrate-support.js': `/assets/packages/@lit-labs/ssr-client/lit-element-hydrate-support.js`,
         '@rhds/tokens': '/assets/packages/@rhds/tokens/js/tokens.js',
         '@rhds/tokens/css/': '/assets/packages/@rhds/tokens/css/',
         '@rhds/tokens/': '/assets/packages/@rhds/tokens/js/',
@@ -181,7 +181,7 @@ export default async function(eleventyConfig: UserConfig) {
   /** Add IDs to heading elements */
   eleventyConfig.addPlugin(AnchorsPlugin, {
     exclude: /\/elements\/.*\/demo\//,
-    formatter($: import('cheerio').Cheerio<any>, existingids: string[]) {
+    formatter($, existingids) {
       if (
         !existingids.includes($.attr('id')!)
           && $.attr('slot')
@@ -189,7 +189,9 @@ export default async function(eleventyConfig: UserConfig) {
       ) {
         return null;
       } else {
-        return eleventyConfig.getFilter('slug')($.text())
+        const slug = eleventyConfig.getFilter('slug') as (str: string) => string;
+        const text = $.text();
+        return slug(text)
             .replace(/[&,+()$~%.'":*?!<>{}]/g, '');
       }
     },
@@ -253,10 +255,7 @@ export default async function(eleventyConfig: UserConfig) {
   eleventyConfig.addExtension('11ty.ts', {
     key: '11ty.js',
     compile() {
-      return async function(
-        this: { defaultRenderer(data: unknown): Promise<string> },
-        data: unknown,
-      ) {
+      return async function(this, data) {
         return this.defaultRenderer(data);
       };
     },

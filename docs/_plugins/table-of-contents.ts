@@ -1,34 +1,24 @@
+import type { UserConfig } from '@11ty/eleventy';
 import * as Parse5 from 'parse5';
 import * as Tools from '@parse5/tools';
 
 /// <reference lib="ESNext.collection" />
-// @ts-check
 
 /** @license adapted from code (c) Jordan Shermer MIT license*/
 
-/* eslint-disable jsdoc/check-tag-names */
 
 /** Attribute which if found on a heading means the heading is excluded */
 const ignoreAttribute = 'data-toc-exclude';
 
-/**
- * @typedef {object} EleventyPage
- */
+type EleventyPage = object;
 
-/**
- * @typedef {object} Options
- * @property {string[]} tags
- * @property {string[]} ignoredElements
- * @property {import('@parse5/tools')} Tools
- * @property {import('parse5')} Parse5
- * @properry {EleventyPage} page
- */
+interface Options {
+  tags: string[];
+  ignoredElements: string[];
+  page: EleventyPage;
+}
 
-/**
- * @param {Item} prev
- * @param {Item} current
- */
-function getParent(prev, current) {
+function getParent(prev: Item, current: Item) {
   if (current.level > prev.level) {
     // child heading
     return prev;
@@ -42,22 +32,17 @@ function getParent(prev, current) {
 }
 
 class Item {
-  /** @type{Item[]} */
-  children = [];
+  children: Item[] = [];
 
-  /** @type{Item} */
-  parent;
+  parent: Item;
 
   level = 0;
 
-  slug;
+  slug: string | null;
 
-  text;
+  text: string;
 
-  /**
-   * @param {import('@parse5/tools').Element} [element]
-   */
-  constructor(element) {
+  constructor(element?: Tools.Element) {
     if (element) {
       this.slug = Tools.getAttribute(element, 'id');
       this.text = Tools.getTextContent(element).trim();
@@ -87,20 +72,12 @@ class Item {
   }
 }
 
-/**
- * @param {import('@11ty/eleventy').UserConfig} eleventyConfig
- * @param {Partial<Options>} pluginOpts
- */
-export default function(eleventyConfig, pluginOpts = {}) {
-  /**
-   * @param {string} content
-   * @param {Partial<Options>} filterOpts
-   */
-  async function toc(content, filterOpts) {
+export default function(eleventyConfig: UserConfig, pluginOpts: Partial<Options> = {}) {
+  eleventyConfig.addFilter('toc', async function toc(content: string, opts: Partial<Options>) {
     const { tags = ['h2'], ignoredElements = [] } = {
       ...pluginOpts,
-      ...filterOpts,
-      tags: filterOpts?.tags || pluginOpts?.tags,
+      ...opts,
+      tags: opts?.tags || pluginOpts?.tags,
     };
 
     const root = new Item();
@@ -111,8 +88,7 @@ export default function(eleventyConfig, pluginOpts = {}) {
 
     const tagSet = new Set(tags).difference(new Set(ignoredElements));
 
-    /** @type {IterableIterator<import('@parse5/tools').Element>} */
-    const headings = Tools.queryAll(document, node =>
+    const headings = Tools.queryAll<Tools.Element>(document, (node): node is Tools.Element =>
       Tools.isElementNode(node)
        && tagSet.has(node.tagName)
        && Tools.hasAttribute(node, 'id')
@@ -131,5 +107,5 @@ export default function(eleventyConfig, pluginOpts = {}) {
     return Parse5.serialize(root.getNode());
   }
 
-  eleventyConfig.addFilter('toc', toc);
+  );
 };

@@ -1,21 +1,21 @@
 /// <reference lib="ESNext.Array"/>
 
+import type { UserConfig } from '@11ty/eleventy';
 import * as ChildProcess from 'node:child_process';
 import { join, dirname } from 'node:path';
 import { promisify } from 'node:util';
 import { readdir, readFile, writeFile, mkdir } from 'node:fs/promises';
-import { makeDemoEnv } from '../../scripts/environment.js';
+import { makeDemoEnv } from '#scripts/environment.js';
 
 import yaml from 'js-yaml';
 import slugify from 'slugify';
-import capitalize from 'capitalize';
 
-import RHDSAlphabetizeTagsPlugin from './alphabetize-tags.js';
-import RHDSElementDocsPlugin from './element-docs.ts';
-import RHDSElementDemosPlugin from './element-demos.js';
+import RHDSAlphabetizeTagsPlugin from '#11ty-plugins/alphabetize-tags.js';
+import RHDSElementDocsPlugin from '#11ty-plugins/element-docs.js';
+import RHDSElementDemosPlugin from '#11ty-plugins/element-demos.js';
 
 import { getPfeConfig } from '@patternfly/pfe-tools/config.js';
-import { UserConfig } from '@11ty/eleventy';
+import { capitalize } from '#11ty-plugins/tokensHelpers.js';
 
 const repoStatus = yaml.load(await readFile(
   new URL('../_data/repoStatus.yaml', import.meta.url),
@@ -38,7 +38,7 @@ const pfeconfig = getPfeConfig();
  */
 function getTagNameSlug(tagName: string) {
   const name = pfeconfig?.aliases?.[tagName] ?? tagName.replace(`${pfeconfig?.tagPrefix ?? 'rh'}-`, '');
-  return slugify(name, {
+  return slugify.default(name, {
     strict: true,
     lower: true,
   });
@@ -86,12 +86,7 @@ interface Options {
   tagsToAlphabetize: string[];
 }
 
-/**
- * @param eleventyConfig user config
- * @param opts
- * @param opts.tagsToAlphabetize
- */
-export default async function(eleventyConfig: UserConfig, { tagsToAlphabetize }: Options) {
+export default async function(eleventyConfig: UserConfig, options?: Options) {
   eleventyConfig.on('eleventy.before', async ({ directories }) => {
     const outPath = join(directories.output, 'assets/javascript/repoStatus.json');
     await mkdir(dirname(outPath), { recursive: true });
@@ -118,7 +113,7 @@ export default async function(eleventyConfig: UserConfig, { tagsToAlphabetize }:
 
   eleventyConfig.addDataExtension('yml, yaml', (contents: string) => yaml.load(contents));
 
-  eleventyConfig.addPlugin(RHDSAlphabetizeTagsPlugin, { tagsToAlphabetize });
+  eleventyConfig.addPlugin(RHDSAlphabetizeTagsPlugin, options);
 
   eleventyConfig.addPlugin(RHDSElementDocsPlugin);
   eleventyConfig.addPlugin(RHDSElementDemosPlugin);
