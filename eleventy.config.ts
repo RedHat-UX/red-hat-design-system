@@ -1,5 +1,7 @@
 Error.stackTraceLimit = 50;
 
+import type { PfeConfig } from '@patternfly/pfe-tools/config.js';
+
 import SyntaxHighlightPlugin from '@11ty/eleventy-plugin-syntaxhighlight';
 import DirectoryOutputPlugin from '@11ty/eleventy-plugin-directory-output';
 import AnchorsPlugin from '@patternfly/pfe-tools/11ty/plugins/anchors.cjs';
@@ -8,15 +10,38 @@ import HelmetPlugin from 'eleventy-plugin-helmet';
 
 import { EleventyRenderPlugin, type UserConfig } from '@11ty/eleventy';
 
-import TOCPlugin from './docs/_plugins/table-of-contents.js';
-import RHDSPlugin from './docs/_plugins/rhds.ts';
-import DesignTokensPlugin from './docs/_plugins/tokens.js';
-import RHDSMarkdownItPlugin from './docs/_plugins/markdown-it.js';
-import ImportMapPlugin from './docs/_plugins/importMap.js';
-import LitPlugin from './docs/_plugins/lit-ssr/lit.js';
+import TOCPlugin from '#11ty-plugins/table-of-contents.js';
+import RHDSPlugin from '#11ty-plugins/rhds.js';
+import DesignTokensPlugin from '#11ty-plugins/tokens.js';
+import RHDSMarkdownItPlugin from '#11ty-plugins/markdown-it.js';
+import ImportMapPlugin from '#11ty-plugins/importMap.js';
+import LitPlugin from '#11ty-plugins/lit-ssr/lit.js';
 
 import { promisify } from 'node:util';
 import * as ChildProcess from 'node:child_process';
+
+export interface GlobalData {
+  runMode: 'build' | 'watch' | 'serve';
+  isLocal: boolean;
+  pfeconfig: PfeConfig;
+  sideNavDropdowns: {
+    title: string;
+    url: string;
+    collection: string;
+  }[];
+}
+
+export class Renderer<T> {
+  declare renderTemplate: (path: string, type: string) => Promise<string>;
+  declare renderFile: (path: string, data?: object) => Promise<string>;
+  declare highlight: (lang: string, content: string) => string;
+  declare dedent: (str: string) => string;
+  declare slugify: (str: string) => string;
+  declare deslugify: (str: string) => string;
+  declare getTagNameSlug: (str: string) => string;
+  declare getElementDocs: (str: string) => string;
+  render?(data: T & GlobalData): string | Promise<string>;
+}
 
 const exec = promisify(ChildProcess.exec);
 
@@ -25,8 +50,7 @@ const isWatch =
 
 const isLocal = !(process.env.CI || process.env.DEPLOY_URL);
 
-/** @param  eleventyConfig */
-export default function(eleventyConfig: UserConfig) {
+export default async function(eleventyConfig: UserConfig) {
   eleventyConfig.setQuietMode(true);
 
   eleventyConfig.on('eleventy.before', function({ runMode }) {
@@ -34,10 +58,13 @@ export default function(eleventyConfig: UserConfig) {
   });
 
   eleventyConfig.on('eleventy.before', async function() {
-    const { stderr } = await exec('npx tspc');
+    const { stdout, stderr } = await exec('npx tspc -b');
     if (stderr) {
       // eslint-disable-next-line no-console
       console.error(stderr);
+    } else {
+      // eslint-disable-next-line no-console
+      console.log(stdout);
     }
   });
 
@@ -94,8 +121,10 @@ export default function(eleventyConfig: UserConfig) {
   eleventyConfig.addPassthroughCopy({
     'node_modules/@lit/reactive-element': '/assets/packages/@lit/reactive-element',
   });
-  eleventyConfig.addPassthroughCopy({ 'elements': '/assets/packages/@rhds/elements/elements/' });
-  eleventyConfig.addPassthroughCopy({ 'lib': '/assets/packages/@rhds/elements/lib/' });
+  const isNotTsbuild = (p: string) => !p.includes('.');
+  eleventyConfig.addPassthroughCopy({ 'elements': `/assets/packages/@rhds/elements/elements/` }, { filter: isNotTsbuild });
+  eleventyConfig.addPassthroughCopy({ 'lib': `/assets/packages/@rhds/elements/lib/` }, { filter: isNotTsbuild });
+  eleventyConfig.addPassthroughCopy({ 'uxdot': `/assets/packages/@uxdot/elements/` }, { filter: isNotTsbuild });
   eleventyConfig.addPlugin(ImportMapPlugin, {
     nodemodulesPublicPath: '/assets/packages',
     manualImportMap: {
@@ -105,8 +134,7 @@ export default function(eleventyConfig: UserConfig) {
         'lit-html': '/assets/packages/lit-html/lit-html.js',
         'lit-html/': '/assets/packages/lit-html/',
         'prism-esm/': '/assets/packages/prism-esm/',
-        '@lit-labs/ssr-client/lit-element-hydrate-support.js':
-          '/assets/packages/@lit-labs/ssr-client/lit-element-hydrate-support.js',
+        '@lit-labs/ssr-client/lit-element-hydrate-support.js': `/assets/packages/@lit-labs/ssr-client/lit-element-hydrate-support.js`,
         '@rhds/tokens': '/assets/packages/@rhds/tokens/js/tokens.js',
         '@rhds/tokens/css/': '/assets/packages/@rhds/tokens/css/',
         '@rhds/tokens/': '/assets/packages/@rhds/tokens/js/',
@@ -117,6 +145,7 @@ export default function(eleventyConfig: UserConfig) {
         '@patternfly/elements/': '/assets/packages/@patternfly/elements/',
         '@patternfly/icons/': '/assets/packages/@patternfly/icons/',
         '@patternfly/pfe-core/': '/assets/packages/@patternfly/pfe-core/',
+        '@uxdot/elements/': '/assets/javascript/elements/uxdot/',
         'playground-elements': 'https://cdn.jsdelivr.net/npm/playground-elements@0.18.1/+esm',
       },
     },
@@ -178,7 +207,7 @@ export default function(eleventyConfig: UserConfig) {
   /** Add IDs to heading elements */
   eleventyConfig.addPlugin(AnchorsPlugin, {
     exclude: /\/elements\/.*\/demo\//,
-    formatter($: import('cheerio').Cheerio<any>, existingids: string[]) {
+    formatter($, existingids) {
       if (
         !existingids.includes($.attr('id')!)
           && $.attr('slot')
@@ -186,7 +215,9 @@ export default function(eleventyConfig: UserConfig) {
       ) {
         return null;
       } else {
-        return eleventyConfig.getFilter('slug')($.text())
+        const slug = eleventyConfig.getFilter('slug') as (str: string) => string;
+        const text = $.text();
+        return slug(text)
             .replace(/[&,+()$~%.'":*?!<>{}]/g, '');
       }
     },
@@ -194,48 +225,44 @@ export default function(eleventyConfig: UserConfig) {
 
   eleventyConfig.addPlugin(LitPlugin, {
     componentModules: [
+      'docs/assets/javascript/elements/uxdot/uxdot-best-practice.js',
+      'docs/assets/javascript/elements/uxdot/uxdot-copy-button.js',
+      'docs/assets/javascript/elements/uxdot/uxdot-copy-permalink.js',
+      'docs/assets/javascript/elements/uxdot/uxdot-example.js',
+      'docs/assets/javascript/elements/uxdot/uxdot-feedback.js',
+      'docs/assets/javascript/elements/uxdot/uxdot-header.js',
+      'docs/assets/javascript/elements/uxdot/uxdot-hero.js',
+      'docs/assets/javascript/elements/uxdot/uxdot-installation-tabs.js',
+      'docs/assets/javascript/elements/uxdot/uxdot-masthead.js',
+      'docs/assets/javascript/elements/uxdot/uxdot-pattern.js',
+      'docs/assets/javascript/elements/uxdot/uxdot-repo-status-checklist.js',
+      'docs/assets/javascript/elements/uxdot/uxdot-repo-status-list.js',
+      'docs/assets/javascript/elements/uxdot/uxdot-search.js',
+      'docs/assets/javascript/elements/uxdot/uxdot-sidenav.js',
+      'docs/assets/javascript/elements/uxdot/uxdot-spacer-tokens-table.js',
+      'docs/assets/javascript/elements/uxdot/uxdot-toc.js',
       'elements/rh-button/rh-button.js',
-      'elements/rh-tag/rh-tag.js',
       'elements/rh-code-block/rh-code-block.js',
-      'elements/rh-icon/rh-icon.js',
-      'elements/rh-surface/rh-surface.js',
-      'elements/rh-skip-link/rh-skip-link.js',
       'elements/rh-footer/rh-footer-universal.js',
-      'docs/assets/javascript/elements/uxdot-masthead.js',
-      'docs/assets/javascript/elements/uxdot-header.js',
-      'docs/assets/javascript/elements/uxdot-sidenav.js',
-      'docs/assets/javascript/elements/uxdot-hero.js',
-      'docs/assets/javascript/elements/uxdot-feedback.js',
-      'docs/assets/javascript/elements/uxdot-copy-permalink.js',
-      'docs/assets/javascript/elements/uxdot-copy-button.js',
-      'docs/assets/javascript/elements/uxdot-repo-status-list.js',
-      'docs/assets/javascript/elements/uxdot-best-practice.js',
-      'docs/assets/javascript/elements/uxdot-search.js',
-      'docs/assets/javascript/elements/uxdot-toc.js',
-      'docs/assets/javascript/elements/uxdot-pattern.js',
-      'docs/assets/javascript/elements/uxdot-example.js',
-      'docs/assets/javascript/elements/uxdot-installation-tabs.js',
+      'elements/rh-icon/rh-icon.js',
+      'elements/rh-skip-link/rh-skip-link.js',
+      'elements/rh-subnav/rh-subnav.js',
+      'elements/rh-surface/rh-surface.js',
+      'elements/rh-table/rh-table.js',
+      'elements/rh-tag/rh-tag.js',
+      'elements/rh-cta/rh-cta.js',
     ],
   });
 
   if (!isWatch && !process.env.QUIET) {
-    eleventyConfig.addPlugin(DirectoryOutputPlugin, {
-    // Customize columns
-      columns: {
-        filesize: true, // Use `false` to disable
-        benchmark: true, // Use `false` to disable
-      },
-
-      // Will show in yellow if greater than this number of bytes
-      warningFileSize: 400 * 1000,
-    });
+    eleventyConfig.addPlugin(DirectoryOutputPlugin);
   }
 
   /**
    * Collections to organize by 'order' value in front matter, then alphabetical by title;
    * instead of by date
    */
-  eleventyConfig.addPlugin(RHDSPlugin, {
+  await eleventyConfig.addPlugin(RHDSPlugin, {
     tagsToAlphabetize: [
       'component',
       'foundations',
@@ -246,10 +273,7 @@ export default function(eleventyConfig: UserConfig) {
   eleventyConfig.addExtension('11ty.ts', {
     key: '11ty.js',
     compile() {
-      return async function(
-        this: { defaultRenderer(data: unknown): Promise<string> },
-        data: unknown,
-      ) {
+      return async function(this, data) {
         return this.defaultRenderer(data);
       };
     },
@@ -265,10 +289,3 @@ export default function(eleventyConfig: UserConfig) {
   };
 };
 
-export class Renderer {
-  declare renderTemplate: (path: string, type: string) => Promise<string>;
-  declare renderFile: (path: string, data?: object) => Promise<string>;
-  declare highlight: (lang: string, content: string) => string;
-  declare dedent: (str: string) => string;
-  declare slugify: (str: string) => string;
-}

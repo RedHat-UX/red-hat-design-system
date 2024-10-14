@@ -9,7 +9,7 @@ order: 3
       href="../color-palettes.css">
 
 <script type="module" data-helmet>
-  import '/assets/javascript/elements/uxdot-pattern.js';
+  import '@uxdot/elements/uxdot-pattern.js';
   import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
   import '@rhds/elements/rh-accordion/rh-accordion.js';
   import '@rhds/elements/rh-audio-player/rh-audio-player.js';
@@ -23,9 +23,45 @@ order: 3
   import '@rhds/elements/rh-tag/rh-tag.js';
   import '@rhds/elements/rh-tile/rh-tile.js';
   document.getElementById('bordeaux-page-switch').addEventListener('change', function() {
-    document.body.classList.toggle('theme-bordeaux', this.checked);
+    document.documentElement.classList.toggle('theme-bordeaux', this.checked);
   });
 </script>
+
+<style>
+  .theme-bordeaux {
+    --bordeaux-darkest: #19050a;
+    --bordeaux-darker: #260710;
+    --bordeaux-dark: #330915;
+    --bordeaux-dark-alt: #290711;
+    --bordeaux-brand-dark: #7f1734;
+    --bordeaux-brand-light: #d52757;
+    --bordeaux-light: #a55d71;
+    --bordeaux-lighter: #d9b9c2;
+    --bordeaux-lightest: #f2e8eb;
+    --rh-color-surface-darkest: var(--bordeaux-darkest);
+    --rh-color-surface-darker: var(--bordeaux-darker);
+    --rh-color-surface-dark: var(--bordeaux-dark);
+    --rh-color-surface-dark-alt: var(--bordeaux-dark-alt);
+    --rh-color-surface-light: var(--bordeaux-light);
+    --rh-color-surface-lighter: var(--bordeaux-lighter);
+    --rh-color-surface-lightest: var(--bordeaux-lightest);
+    --rh-color-border-interactive-on-dark: var(--bordeaux-lightest);
+    --rh-color-border-interactive-on-light: var(--bordeaux-darkest);
+    --rh-color-interactive-primary-default-on-dark: var(--bordeaux-lighter);
+    --rh-color-interactive-primary-default-on-light: var(--bordeaux-darker);
+    --rh-color-interactive-primary-hover-on-dark: var(--bordeaux-light);
+    --rh-color-interactive-primary-hover-on-light: var(--bordeaux-dark);
+    --rh-color-interactive-primary-focus-on-dark: var(--bordeaux-light);
+    --rh-color-interactive-primary-focus-on-light: var(--bordeaux-dark);
+    --rh-color-interactive-primary-active-on-dark: var(--bordeaux-light);
+    --rh-color-interactive-primary-active-on-light: var(--bordeaux-dark);
+    --rh-color-border-subtle-on-dark: var(--bordeaux-lighter);
+    --rh-color-border-subtle-on-light: var(--bordeaux-darker);
+    --rh-color-icon-primary-on-light: var(--bordeaux-brand-dark);
+    --rh-color-icon-primary-on-dark: var(--bordeaux-brand-light);
+  }
+</style>
+
 
 Red Hat Design System is composed of tokens, elements, and patterns, each layer
 building on the last. Theming emerges as a design possibility from the
@@ -91,4 +127,4 @@ system if possible.
        src="/assets/theming/custom-theme.png">
 </uxdot-example>
 
-{% renderFile './docs/_includes/partials/component/feedback.11ty.cjs' %}
+{% renderFile './docs/_includes/partials/component/feedback.11ty.ts' %}

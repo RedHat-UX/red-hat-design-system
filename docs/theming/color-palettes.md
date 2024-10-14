@@ -15,7 +15,7 @@ order: 2
       href="../color-palettes.css">
 
 <script type="module" data-helmet>
-  import '/assets/javascript/elements/uxdot-pattern.js';
+  import '@uxdot/elements/uxdot-pattern.js';
   import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
   import '@rhds/elements/rh-accordion/rh-accordion.js';
   import '@rhds/elements/rh-audio-player/rh-audio-player.js';
@@ -227,7 +227,7 @@ palette, e.g. from `lightest` to `light`.
      visual tension.</p>
 </rh-alert>
 
-{% renderFile './docs/_includes/partials/component/feedback.11ty.cjs' %}
+{% renderFile './docs/_includes/partials/component/feedback.11ty.ts' %}
 
 [^1]: As the web platform [improves][wpt], the <abbr>RHDS</abbr> authors expect that eventually no JavaScript will be required for this feature.
 

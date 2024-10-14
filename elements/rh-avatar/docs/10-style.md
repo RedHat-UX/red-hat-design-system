@@ -165,13 +165,7 @@ Space values are the same for all variants and on all breakpoints.
       height="440">
 </uxdot-example>
 
-<rh-table>
-  {% spacerTokensTable 
-      headline='',
-      caption='',
-      tokens="--rh-space-lg" %}
-  {% endspacerTokensTable %}
-</rh-table>
+<uxdot-spacer-tokens-table tokens="lg"></uxdot-spacer-tokens-table>
 
 ## Interaction states
 

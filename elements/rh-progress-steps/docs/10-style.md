@@ -146,10 +146,4 @@ orientation.
         height="272">
 </uxdot-example>
 
-<rh-table>
-  {% spacerTokensTable
-    caption='',
-    headingLevel="3",
-    tokens="--rh-space-xl" %}
-  {% endspacerTokensTable %}
-</rh-table>
+<uxdot-spacer-tokens-table tokens="xl"></uxdot-spacer-tokens-table>

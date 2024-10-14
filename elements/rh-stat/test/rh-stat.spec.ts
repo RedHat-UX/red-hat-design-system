@@ -91,7 +91,7 @@ describe('<rh-stat>', function() {
 
       it('displays icon', function() {
         const rect = element.querySelector('[slot="icon"]')?.getBoundingClientRect();
-        expect(rect?.width).to.equal(parseInt(tokens.get('--rh-size-icon-06')));
+        expect(rect?.width).to.equal(parseInt(tokens.get('--rh-size-icon-06')!));
       });
     });
 

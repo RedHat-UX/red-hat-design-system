@@ -1,0 +1,12 @@
+{
+  "extends": [
+    "../tsconfig.settings.json"
+  ],
+  "include": [
+    "./**/*.ts",
+    "../declaration.d.ts",
+  ],
+  "compilerOptions": {
+    "composite": true
+  },
+}

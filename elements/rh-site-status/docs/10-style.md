@@ -121,15 +121,7 @@ Space values remain the same at all viewport sizes.
         height="1191">
 </uxdot-example>
 
-
-<rh-table>
-{% spacerTokensTable 
-    caption='',
-    headingLevel="4",
-    tokens="--rh-space-md, --rh-space-lg, --rh-space-2xl, --rh-space-3xl" %}
-{% endspacerTokensTable %}
-</rh-table>
-
+<uxdot-spacer-tokens-table tokens="md, lg, 2xl, 3xl"></uxdot-spacer-tokens-table>
 
 ## Interaction states
 

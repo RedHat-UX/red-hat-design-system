@@ -220,13 +220,7 @@ Space values are the same on all breakpoints for calls to action. To see space v
         height="88">
 </uxdot-example>
 
-<rh-table>
-  {% spacerTokensTable 
-      headline='',
-      caption='',
-      tokens="--rh-space-md, --rh-space-lg, --rh-space-xl" %}
-  {% endspacerTokensTable %}
-</rh-table>
+<uxdot-spacer-tokens-table tokens="md, lg, xl"></uxdot-spacer-tokens-table>
 
 ## Interaction states
 

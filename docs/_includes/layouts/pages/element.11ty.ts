@@ -1,4 +1,4 @@
-import type { ElementDocsPageData } from '../../../_plugins/element-docs.js';
+import type { ElementDocsPageData } from '#11ty-plugins/element-docs.js';
 import type { ClassMethod } from 'custom-elements-manifest';
 import type { FileOptions, ProjectManifest } from 'playground-elements/shared/worker-api.js';
 
@@ -6,9 +6,11 @@ import { tokens } from '@rhds/tokens/meta.js';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { readFile } from 'node:fs/promises';
-import { copyCell, dedent, getTokenHref } from '../../../_plugins/tokensHelpers.js';
+import { copyCell, dedent, getTokenHref } from '#11ty-plugins/tokensHelpers.js';
 import { Generator } from '@jspm/generator';
 import { AssetCache } from '@11ty/eleventy-fetch';
+import { Renderer } from '#eleventy.config';
+import type { ImportMap } from '#11ty-plugins/importMap.js';
 
 type FileEntry = [string, FileOptions & { inline: string }];
 
@@ -42,29 +44,31 @@ interface Context extends EleventyPageRenderData {
   playgrounds: Record<`rh-${string}`, ProjectManifest>;
 }
 
-export default class ElementsPage {
-  static assetCache = new AssetCache('rhds-ux-dot-import-map-jspmio');
-
-  declare renderTemplate: (path: string, type: string) => Promise<string>;
-  declare renderFile: (path: string, data?: object) => Promise<string>;
-  declare highlight: (lang: string, content: string) => string;
-  declare dedent: (str: string) => string;
-  declare slugify: (str: string) => string;
+export default class ElementsPage extends Renderer<Context> {
+  static assetCache = new AssetCache<ImportMap>('rhds-ux-dot-import-map-jspmio');
 
   data() {
     return {
       layout: 'layouts/pages/has-toc.njk',
-      permalink: ({ doc }) => doc.permalink,
+      permalink: ({ doc }: Context) => doc.permalink,
       eleventyComputed: {
-        title: ({ doc }) => doc.pageTitle,
-        tagName: ({ doc }) => doc.tagName,
+        title: ({ doc }: Context) => doc.pageTitle,
+        tagName: ({ doc }: Context) => doc.tagName,
       },
     };
   }
 
   async render(ctx: Context) {
     const { doc } = ctx;
-    const { fileExists, filePath, isCodePage, isDemoPage, tagName, planned } = doc;
+    const {
+      fileExists,
+      filePath,
+      isCodePage,
+      isDemoPage,
+      isOverviewPage,
+      tagName,
+      planned,
+    } = doc;
     const content = fileExists ? await this.renderFile(filePath, ctx) : '';
     const stylesheets = [
       '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css',
@@ -85,7 +89,11 @@ export default class ElementsPage {
       </noscript>
 
       <script type="module" data-helmet>
-        import '/assets/javascript/elements/uxdot-copy-button.js';
+        import '@uxdot/elements/uxdot-copy-button.js';
+        import '@uxdot/elements/uxdot-copy-permalink.js';
+        import '@uxdot/elements/uxdot-best-practice.js';
+        import '@uxdot/elements/uxdot-repo-status-checklist.js';
+        import '@uxdot/elements/uxdot-repo-status-list.js';
         import '@rhds/elements/rh-alert/rh-alert.js';
         import '@rhds/elements/rh-cta/rh-cta.js';
         import '@rhds/elements/rh-surface/rh-surface.js';
@@ -101,11 +109,12 @@ export default class ElementsPage {
         import '@rhds/elements/${tagName}/${tagName}.js';
       </script>`}
 
-      ${isCodePage ? await this.#renderCodePage(ctx)
+      ${isOverviewPage ? await this.#renderOverviewPage(content, ctx)
+      : isCodePage ? await this.#renderCodePage(ctx)
       : isDemoPage ? await this.#renderDemos(ctx)
       : content}
 
-      ${await this.renderFile('./docs/_includes/partials/component/feedback.11ty.cjs', ctx)}
+      ${await this.renderFile('./docs/_includes/partials/component/feedback.11ty.ts', ctx)}
     `;
   }
 
@@ -130,9 +139,9 @@ export default class ElementsPage {
       await assetCache.save(generator.getMap(), 'json');
     }
     const map = structuredClone(await assetCache.getCachedValue());
-    map.imports[`@rhds/elements/${tagName}/${tagName}.js`] =
-      map.imports['@rhds/elements'].replace('elements.js', `${tagName}/${tagName}.js`);
-    delete map.imports['@rhds/elements'];
+    map.imports![`@rhds/elements/${tagName}/${tagName}.js`] =
+      map.imports!['@rhds/elements'].replace('elements.js', `${tagName}/${tagName}.js`);
+    delete map.imports!['@rhds/elements'];
     return JSON.stringify(map, null, 2);
   }
 
@@ -152,6 +161,26 @@ export default class ElementsPage {
     } catch {
       return '';
     }
+  }
+
+  async #renderOverviewPage(content: string, ctx: Context) {
+    const description = ctx.doc.docsPage.description ?? ctx.doc.description ?? '';
+    return html`${!ctx.doc.planned ? '' : html`
+      <h2 id="coming-soon">Coming soon!</h2>
+      <p>This element is currently in progress and not yet available for
+      use.</p>`}
+      <h2 id="overview">Overview</h2>
+      ${await this.renderTemplate(description, 'md')}
+      ${!ctx.doc.overviewImageHref ? '' : html`
+      <uxdot-example><img src="${ctx.doc.overviewImageHref}" aria-labelledby="overview-image-description"></uxdot-example>`}
+      <h2 id="status">Status</h2>
+      <uxdot-repo-status-list element="${ctx.tagName}"></uxdot-repo-status-list>
+      <h2 id="sample-element">Sample element</h2>
+      ${ctx.doc.mainDemoContent}
+      ${content}
+      <h2 id="status-checklist">Status checklist</h2>
+      <uxdot-repo-status-checklist element="${ctx.tagName}"></uxdot-repo-status-checklist>
+    `;
   }
 
   async #renderCodePage(ctx: Context) {
@@ -199,19 +228,12 @@ export default class ElementsPage {
         <h3 id="lightdom-css-shim">Lightdom CSS shim</h3>
 
         <rh-alert state="warning">
-          <h4 id="lightdom-css-shim-warning" lot="header">Warning</h4>
-          <p>Lightdom CSS shims are an optional, temporary solution for reducing CLS.
-             Declarative Shadow DOM is the better solution, and once SSR tools are more widely
-             available, Lightdom CSS shims will no longer be needed and will become deprecated.</p>
-        </rh-alert>
-
-        <p>This element has an optional "Lightdom CSS" <em>shim</em> to help reduce
-          <a href="https://web.dev/cls/">Cumulative Layout Shift (CLS)</a> experience
-          before the element has fully initialized.</p>
-
-        <rh-alert state="info">
-          <h4 id="lightdom-css-shim-note" slot="header">Note</h4>
-          <p>Replace <code>/path/to/</code> with path to the CSS file, whether local or CDN.</p>
+          <h4 slot="header">Warning</h4>
+          <p>Lightdom CSS shims are an optional, temporary solution for reducing
+             <abbr title="cumulative layout shift">CLS</abbr>.
+             <a href="/get-started/developers/installation/#lightdom-css-shims">
+               Learn more about lightdom CSS shims
+             </a>.</p>
         </rh-alert>
 
         <rh-code-block actions="copy" highlighting="prerendered">
@@ -219,6 +241,11 @@ export default class ElementsPage {
           <link rel="stylesheet" href="/path/to/${docsPage.tagName}/${docsPage.tagName}-lightdom-shim.css">
           `.trim())}
         </rh-code-block>
+
+        <rh-alert state="info">
+          <h4 slot="header">Note</h4>
+          <p>Replace <code>/path/to/</code> with path to the CSS file, whether local or CDN.</p>
+        </rh-alert>
       `;
     }
     return content;
@@ -232,7 +259,9 @@ export default class ElementsPage {
         });
 
     return html`
-      <script data-helmet type="module" src="/assets/javascript/elements/uxdot-installation-tabs.js"></script>
+      <script data-helmet type="module">
+        import "@uxdot/elements/uxdot-installation-tabs.js";
+      </script>
       <style data-helmet>${''/* NOTE: adapted from theming/developers.css - better to wrap the localhost behaviour? */}
       uxdot-installation-tabs {
         border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
@@ -746,7 +775,8 @@ export default class ElementsPage {
   }
 
   async #renderDemos(ctx: Context) {
-    const entries: FileEntry[] = Object.entries(ctx.playgrounds[ctx.tagName]?.files ?? {});
+    const tagName = ctx.tagName as `rh-${string}`;
+    const entries = Object.entries(ctx.playgrounds[tagName]?.files ?? {}) as FileEntry[];
     return [
       await this.#renderDemoHead(),
       ...await this.#renderPlaygrounds(ctx, entries),
@@ -804,8 +834,8 @@ export default class ElementsPage {
       </style>
 
       <script type="module" data-helmet>
-        import '/assets/javascript/elements/uxdot-copy-button.js';
-        import '/assets/javascript/elements/uxdot-header.js';
+        import '@uxdot/elements/uxdot-copy-button.js';
+        import '@uxdot/elements/uxdot-header.js';
         import 'playground-elements';
         import '@rhds/elements/rh-button/rh-button.js';
         import '@rhds/elements/rh-card/rh-card.js';

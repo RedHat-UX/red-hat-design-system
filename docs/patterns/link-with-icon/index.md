@@ -17,8 +17,8 @@ positioned to the left or on top of a link, depending on orientation.
 ## Sample pattern
 
 <uxdot-example width-adjustment="484px">
-  <img src="./link-with-icon.svg"
-       alt="Link with icon"
+  <img alt="Link with icon"
+       src="./link-with-icon.svg"
        width="484"
        height="35">
 </uxdot-example>
@@ -31,8 +31,8 @@ near text. The icon chosen should represent what a user will get when they click
 on or tap the link. It acts as a functional addition instead of only visual.
 
 <uxdot-example width-adjustment="484px">
-  <img src="./link-with-icon-style.svg"
-       alt="Link with icon specs"
+  <img alt="Link with icon specs"
+       src="./link-with-icon-style.svg"
        width="484"
        height="65">
 </uxdot-example>
@@ -40,15 +40,15 @@ on or tap the link. It acts as a functional addition instead of only visual.
 ### Theme
 
 <uxdot-example width-adjustment="484px">
-  <img src="./link-with-icon-theme-light.svg"
-       alt="Link with icon theme light"
+  <img alt="Link with icon theme light"
+       src="./link-with-icon-theme-light.svg"
        width="484"
        height="145">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="484px">
-  <img src="./link-with-icon-theme-dark.svg"
-       alt="Link with icon theme dark"
+  <img alt="Link with icon theme dark"
+       src="./link-with-icon-theme-dark.svg"
        width="484"
        height="145">
 </uxdot-example>
@@ -64,8 +64,8 @@ own, but not in a paragraph of text.
 Don't increase the icon size because the link text size will appear smaller.
 
 <uxdot-example width-adjustment="484px" danger>
-  <img src="./link-with-icon-best-practices.svg"
-       alt="Link with icon icon size issue"
+  <img alt="Link with icon icon size issue"
+       src="./link-with-icon-best-practices.svg"
        width="516"
        height="67">
 </uxdot-example>
@@ -78,16 +78,16 @@ Link with icon can be used on large and small screens. When the width of the
 link exceeds the width of its container, the text will break to two lines.
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="./link-with-icon-responsive.svg"
-       alt="Link with icon responsive desktop"
+  <img alt="Link with icon responsive desktop"
+       src="./link-with-icon-responsive.svg"
        width="1000"
        height="273">
 </uxdot-example>
 
 <figure>
   <uxdot-example width-adjustment="360px" variant="full" alignment="left" no-border>
-    <img src="./link-with-icon-responsive-mobile.svg"
-         alt="Link with icon responsive mobile"
+    <img alt="Link with icon responsive mobile"
+         src="./link-with-icon-responsive-mobile.svg"
          width="360"
          height="640">
   </uxdot-example>
@@ -99,15 +99,15 @@ link exceeds the width of its container, the text will break to two lines.
 The icon and the link are always vertically-aligned.
 
 <uxdot-example width-adjustment="269px">
-  <img src="./link-with-icon-alignment-1.svg"
-       alt="Link with icon alignment"
+  <img alt="Link with icon alignment"
+       src="./link-with-icon-alignment-1.svg"
        width="269"
        height="35">
 </uxdot-example>
 
 <uxdot-example width-adjustment="269px">
-  <img src="./link-with-icon-alignment-2.svg"
-       alt="Link with icon alignment"
+  <img alt="Link with icon alignment"
+       src="./link-with-icon-alignment-2.svg"
        width="270"
        height="54">
 </uxdot-example>
@@ -123,14 +123,12 @@ Link with icon uses [space tokens](/tokens/space/) to define spacing values
 between elements.
 
 <uxdot-example width-adjustment="484px">
-  <img src="./link-with-icon-spacing.svg"
-       alt="Link with icon spacing"
+  <img alt="Link with icon spacing"
+       src="./link-with-icon-spacing.svg"
        width="484"
        height="231">
 </uxdot-example>
 
-<rh-table>
-{% spacerTokensTable tokens="--rh-space-lg" %}{% endspacerTokensTable %}
-</rh-table>
+<uxdot-spacer-tokens-table tokens="lg"></uxdot-spacer-tokens-table>
 
-{% renderFile './docs/_includes/partials/component/feedback.11ty.cjs' %}
+{% renderFile './docs/_includes/partials/component/feedback.11ty.ts' %}

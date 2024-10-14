@@ -11,7 +11,7 @@ subnav:
 ---
 
 <script type="module" data-helmet>
-  import '/assets/javascript/elements/uxdot-example.js';
+  import '@uxdot/elements/uxdot-example.js';
   import '@rhds/elements/rh-code-block/rh-code-block.js';
 </script>
 

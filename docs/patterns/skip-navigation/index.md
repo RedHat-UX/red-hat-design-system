@@ -4,9 +4,6 @@ layout: layouts/pages/has-toc.njk
 order: 90
 tags:
   - pattern
-spacerTokens:
-  - --rh-space-sm
-  - --rh-space-md
 ---
 
 <link rel="stylesheet" data-helmet href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
@@ -103,9 +100,6 @@ values between elements.
        height="72">
 </uxdot-example>
 
+<uxdot-spacer-tokens-table tokens="sm,md"></uxdot-spacer-tokens-table>
 
-<rh-table>
-{% spacerTokensTable headingLevel="4", tokens=spacerTokens %}{% endspacerTokensTable %}
-</rh-table>
-
-{% renderFile './docs/_includes/partials/component/feedback.11ty.cjs' %}
+{% renderFile './docs/_includes/partials/component/feedback.11ty.ts' %}

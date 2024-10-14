@@ -11,7 +11,7 @@ subnav:
 ---
 
 <script type="module" data-helmet>
-  import '/assets/javascript/elements/uxdot-example.js';
+  import '@uxdot/elements/uxdot-example.js';
   import '@rhds/elements/rh-code-block/rh-code-block.js';
   import '@rhds/elements/rh-alert/rh-alert.js';
 </script>
@@ -55,6 +55,7 @@ Once the import map is established, you can load the element with the following
 module, containing a [bare module specifier][barespec]. The example below shows 
 how you'd load in <`rh-button>`.
 
+
 ```html rhcodeblock
 <script type="module">
   import '@rhds/elements/rh-button/rh-button.js';
@@ -97,9 +98,9 @@ any existing import map.
 ```html rhcodeblock
 <script type="importmap">
   {
-  "imports": {
-    "@rhds/elements/": "https://jspm.dev/@rhds/elements/",
-    "@patternfly/elements/": "https://jspm.dev/@patternfly/elements/"
+    "imports": {
+      "@rhds/elements/": "https://jspm.dev/@rhds/elements/",
+      "@patternfly/elements/": "https://jspm.dev/@patternfly/elements/"
     }
   }
 </script>
@@ -120,13 +121,32 @@ default, they will not block rendering.
 
 ### Lightdom CSS
 
-Some elements require you to load "Lightdom CSS" stylesheets. This can also help 
-to reduce [Cumulative Layout Shift (CLS)][cls] experience before the element has 
-fully initialized.
+Some elements require you to load "Lightdom CSS" stylesheets, which are necessary 
+for styling deeply slotted child elements. In some cases, these may also help reduce 
+some [Cumulative Layout Shift (CLS)][cls] experience before the element has fully 
+initialized, but are not intended to be used without initializing the element or by 
+themselves to prevent CLS.
 
 ```html rhcodeblock
 <link rel="stylesheet"
       href="https://www.redhatstatic.com/dx/v1/@rhds/elements@1.4.5/rh-footer/rh-footer-lightdom.css">
+```
+
+<rh-alert>Note: a future version of RHDS will remove the requirement to manually
+load these stylesheets</rh-alert>
+
+### Lightdom CSS shims
+
+Some elements have provided an *optional* `-lightdom-shim.css` file to aid in limiting 
+[CLS][cls] as much as possible, by styling some parts of the element before it has fully 
+initialized (i.e., `:not(:defined)`). These "shims" are inherently different than the 
+required "Lightdom CSS" mentioned above, and are only a temporary stop-gap until 
+[Delcarative Shadow DOM][dsd] is more widely available; at which point the shims will 
+no longer be needed and will become deprecated.
+
+```html rhcodeblock
+<link rel="stylesheet"
+      href="https://www.redhatstatic.com/dx/v1/@rhds/elements@1.4.5/rh-cta/rh-cta-lightdom-shim.css">
 ```
 
 <uxdot-feedback>
@@ -142,3 +162,4 @@ fully initialized.
 [importmap]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap
 [barespec]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules
 [cls]: https://web.dev/cls/
+[dsd]: https://web.dev/articles/declarative-shadow-dom
