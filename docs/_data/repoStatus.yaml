@@ -3,7 +3,7 @@
 #
 # - tagName: rh-jazz-hands
 #   name: Jazz hands  - name should match the same format as sidenav, typically uppercase first word rest lower.
-#   type: element # hidden | coming-soon
+#   type: element # element | hidden | coming-soon
 #   overallStatus: ready # na | planned | ready
 #   libraries:  - Dict of 4 name/status key values pairs (Figma library, RH Elements, RH Shared Libs, Documentation)
 #     figma: ready # ready | planned | na
