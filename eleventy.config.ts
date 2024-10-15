@@ -19,6 +19,8 @@ import LitPlugin from '#11ty-plugins/lit-ssr/lit.js';
 
 import { $ } from 'execa';
 
+const $$ = $({ stdout: ['pipe'], stderr: ['pipe'] });
+
 export interface GlobalData {
   runMode: 'build' | 'watch' | 'serve';
   isLocal: boolean;
@@ -54,9 +56,11 @@ export default async function(eleventyConfig: UserConfig) {
     eleventyConfig.addGlobalData('runMode', runMode);
   });
 
-  let watch;
+  let typescriptWatchProcess;
   eleventyConfig.on('eleventy.before', function({ runMode }) {
-    watch ||= runMode === 'watch' && $({ stdout: ['pipe'], stderr: ['pipe'] })`npx tspc -b --watch`;
+    if (runMode !== 'build') {
+      typescriptWatchProcess ??= $$`npx tspc -b --watch`;
+    }
   });
 
   eleventyConfig.watchIgnores?.add('docs/assets/redhat/');
