@@ -104,13 +104,13 @@ creating themeable, responsive graphics.
 **Providers** define the **color palette** for themselves and their child
 elements. There are six color palettes in RHDS:
 
-<ol class="tile-grid">
-  <li><rh-tile color-palette="lightest">Lightest</rh-tile></li>
-  <li><rh-tile color-palette="lighter">Lighter</rh-tile></li>
-  <li><rh-tile color-palette="light">Light</rh-tile></li>
-  <li><rh-tile color-palette="dark">Dark</rh-tile></li>
-  <li><rh-tile color-palette="darker">Darker</rh-tile></li>
-  <li><rh-tile color-palette="darkest">Darkest</rh-tile></li>
+<ol class="color-palette-grid">
+  <li><rh-surface color-palette="lightest">Lightest</rh-surface></li>
+  <li><rh-surface color-palette="lighter">Lighter</rh-surface></li>
+  <li><rh-surface color-palette="light">Light</rh-surface></li>
+  <li><rh-surface color-palette="dark">Dark</rh-surface></li>
+  <li><rh-surface color-palette="darker">Darker</rh-surface></li>
+  <li><rh-surface color-palette="darkest">Darkest</rh-surface></li>
 </ol>
 
 Context providers typically use the `lightest` color palette as the default.
@@ -143,7 +143,7 @@ the color palette of it's containing surface. There are two backgrounds in RHDS:
 
   <li>
     <rh-card class="icon-card" color-palette="darkest">
-      <rh-icon slot="header" icon="umbrella"></rh-icon>
+      <rh-icon slot="header" icon="lighthouse"></rh-icon>
       <span slot="header">Dark</span>
     </rh-card></li>
 </ul>
