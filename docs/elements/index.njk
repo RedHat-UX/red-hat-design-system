@@ -42,7 +42,7 @@ summaries:
     {%- set doc = docs[0] -%}
     {%- set slug = doc.slug -%}
     {%- set title = tagName | getPrettyElementName | makeSentenceCase -%}
-    {%- set comingSoon = tagName in comingSoonItems  -%}
+    {%- set comingSoon = doc.comingSoon  -%}
     {%- set hiddenComponent = doc.hidden  -%}
     {%- set summary = doc.docsPage.summary -%}
     {% if not summary %}

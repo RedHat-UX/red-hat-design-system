@@ -3,7 +3,7 @@
 #
 # - tagName: rh-jazz-hands
 #   name: Jazz hands  - name should match the same format as sidenav, typically uppercase first word rest lower.
-#   type: element # hidden
+#   type: element # hidden | coming-soon
 #   overallStatus: ready # na | planned | ready
 #   libraries:  - Dict of 4 name/status key values pairs (Figma library, RH Elements, RH Shared Libs, Documentation)
 #     figma: ready # ready | planned | na
@@ -135,6 +135,15 @@
     rhds: ready
     shared: ready
     docs: ready
+- tagName: rh-footnote
+  name: Footnote
+  type: coming-soon
+  overallStatus: planned
+  libraries:
+    figma: na
+    rhds: na
+    shared: na
+    docs: na
 - tagName: rh-health-index
   name: Health index
   type: element
@@ -155,7 +164,7 @@
     docs: ready
 - tagName: rh-jump-links
   name: Jump links
-  type: element
+  type: coming-soon
   overallStatus: planned
   libraries:
     figma: na
