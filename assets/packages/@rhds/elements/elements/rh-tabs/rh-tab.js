@@ -54,7 +54,8 @@ let RhTab = class RhTab extends LitElement {
         this.addEventListener('focus', __classPrivateFieldGet(this, _RhTab_instances, "m", _RhTab_onFocus));
     }
     render() {
-        const { active, on = 'light' } = this;
+        const { on = 'light' } = this;
+        const active = this.ctx?.activeTab === this;
         const { box = false, vertical = false, firstTab, lastTab } = this.ctx ?? {};
         const first = firstTab === this;
         const last = lastTab === this;
