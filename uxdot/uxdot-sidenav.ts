@@ -18,14 +18,15 @@ export class UxdotSideNav extends LitElement {
 
   static styles = [styles];
 
-  @property({ type: Boolean, reflect: true }) accessor open = false;
+  @property({ type: Boolean, reflect: true })
+  accessor open = false;
 
-  @property() accessor trigger: string | undefined;
+  @property()
+  accessor trigger: string | undefined;
 
   #triggerElement: HTMLElement | null = null;
 
   #closeButton: HTMLElement | null = null;
-
 
   async connectedCallback() {
     super.connectedCallback();
@@ -149,9 +150,11 @@ export class UxdotSideNav extends LitElement {
 export class UxdotSideNavItem extends LitElement {
   static styles = [itemStyles];
 
-  @property({ type: Boolean, reflect: true }) active = false;
+  @property({ type: Boolean, reflect: true })
+  accessor active = false;
 
-  @property() href?: string;
+  @property()
+  accessor href: string | undefined;
 
   render() {
     const { active } = this;
@@ -165,7 +168,8 @@ export class UxdotSideNavItem extends LitElement {
 export class UxdotSideNavDropdown extends LitElement {
   static styles = [dropdownStyles];
 
-  @property({ type: Boolean, reflect: true }) expanded = false;
+  @property({ type: Boolean, reflect: true })
+  accessor expanded = false;
 
   connectedCallback() {
     super.connectedCallback();

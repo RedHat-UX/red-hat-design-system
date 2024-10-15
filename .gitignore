@@ -17,22 +17,21 @@ docs/_data/playgrounds.json
 docs/assets/javascript/elements/playground-elements.js
 docs/assets/javascript/elements/assets/playground-typescript-worker-*.js
 docs/assets/javascript/environment.js
+!docs/11ty-types.d.ts
+!docs/_plugins/lit-ssr/worker/*.js
 
 # Build artifacts
 elements.js
 elements/*/*.js
 elements/*/test/*.js
+!elements/**/demo/*.css
 uxdot/*.js
 react
 lib/**/*.js
-!elements/**/demo/*.css
 *.tsbuildinfo
 *.map
 *.d.ts
 !declaration.d.ts
-!docs/11ty-types.d.ts
-!./docs/11ty-types.d.ts
-!*/11ty-types.d.ts
 custom-elements.json
 test-results.xml
 rhds.min.js

@@ -109,10 +109,9 @@
     },
     "serve": {
       "service": true,
-      "command": "NODE_OPTIONS='--import tsx/esm' eleventy --config=eleventy.config.ts --serve --incremental",
+      "command": "TSX_TSCONFIG_PATH=tsconfig.settings.json NODE_OPTIONS='--import tsx/esm' eleventy --config=eleventy.config.ts --serve --incremental",
       "dependencies": [
         "patch",
-        "compile",
         "analyze",
         "playgrounds"
       ]
@@ -208,7 +207,7 @@
       ]
     },
     "docs": {
-      "command": "NODE_OPTIONS='--import tsx/esm' eleventy --config=eleventy.config.ts",
+      "command": "TSX_TSCONFIG_PATH=tsconfig.settings.json NODE_OPTIONS='--import tsx/esm' eleventy --config=eleventy.config.ts",
       "dependencies": [
         "patch",
         "analyze",
@@ -274,7 +273,7 @@
     },
     "watch:docs": {
       "service": true,
-      "command": "NODE_OPTIONS='--import tsx/esm' eleventy --serve --incremental --config=eleventy.config.ts",
+      "command": "TSX_TSCONFIG_PATH=tsconfig.settings.json NODE_OPTIONS='--import tsx/esm' eleventy --serve --incremental --config=eleventy.config.ts",
       "dependencies": [
         "analyze",
         "compile"
@@ -357,6 +356,7 @@
     "spandx": "^3.0.0",
     "stylelint-config-standard": "^36.0.1",
     "tinycolor2": "^1.6.0",
+    "ts-blank-space": "^0.4.1",
     "ts-patch": "^3.2.1",
     "tsx": "^4.19.1",
     "typescript": "^5.6.3",

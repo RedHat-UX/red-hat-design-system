@@ -4,6 +4,8 @@ declare module '@11ty/eleventy-plugin-syntaxhighlight/src/getAttributes.js' {
 
 declare module '@11ty/eleventy/src/UserConfig.js' {
   import type MarkdownIt from 'markdown-it';
+  import type { URLPattern } from 'urlpattern-polyfill';
+
   interface EleventyPage {
     url: string;
     fileSlug: string;
@@ -40,6 +42,7 @@ declare module '@11ty/eleventy/src/UserConfig.js' {
   }
 
   interface FilterContext extends Context { }
+
   interface TransformContext extends Context {
     inputPath: string;
     outputPath: string;
@@ -76,7 +79,7 @@ declare module '@11ty/eleventy/src/UserConfig.js' {
     compile(inputContent: string): (this: CompileContext, data: unknown) => string | Promise<string>;
   }
 
-  interface EleventyBeforeEventHandlerOptions {
+  interface BeforeEvent {
     directories: EleventyData['directories'],
     /** @deprecated */
     dir: {input: string; output: string; includes: string, data: string; layouts: string;};
@@ -84,15 +87,25 @@ declare module '@11ty/eleventy/src/UserConfig.js' {
     runMode: 'build'|'serve'|'watch';
   }
 
-  interface EleventyAfterEventHandlerOptions extends EleventyBeforeEventHandlerOptions {
+  interface AfterEvent extends BeforeEvent {
     results?: {inputPath:string;outputPath:string; url:string;content:string}[];
   }
+
+  interface ContentMapEvent {
+    inputPathToUrl: Record<string, string>;
+    urlToInputPath: Record<string, string>;
+  }
+
+  type EleventyEvent =
+    | BeforeEvent
+    | AfterEvent
+    | ContentMapEvent
+    | string[]
+    | UserConfig;
 
   type TransformCallback = (this: TransformContext, content: string) => string | Promise<string>;
 
   type AddCollectionCallback = (api: CollectionApi) => CollectionItem[] | Promise<CollectionItem[]>;
-
-  type OnCallback<O = EleventyBeforeEventHandlerOptions> = (opts: O) => void | Promise<void>;
 
   export type PluginFunction<Opts = unknown> = (config: UserConfig, opts?: Opts) => void | Promise<void>
 
@@ -106,6 +119,26 @@ declare module '@11ty/eleventy/src/UserConfig.js' {
     | Promise<string|number|object>
     | (() => unknown)
     | (() => Promise<unknown>);
+
+  interface ServerOptions {
+    liveReload: boolean;
+    domDiff: boolean;
+    port: number;
+    watch: string[];
+    showAllHosts: boolean
+    https: { key: string; cert: string; }
+    encoding: string;
+    showVersion: boolean;
+    indexFileName: string;
+    injectedScriptsFolder: string;
+    portReassignmentRetryCount: number;
+    folder: string;
+    /** @deprecated */
+    enabled: boolean;
+    /** @deprecated use domDiff */
+    domdiff: boolean;
+    onRequest: Record<string, (opts: { url: URL, pattern: URLPattern, patternGroups: string[] }) => string | Response | Promise<string | Response>>;
+  }
 
   export default class UserConfig {
     addCollection(name: string, callback: AddCollectionCallback): void;
@@ -127,12 +160,14 @@ declare module '@11ty/eleventy/src/UserConfig.js' {
     getFilter(name: string): FilterFunction;
     getFilter(name: string): FilterFunctionWithArgs;
     globalData: { [key: string]: DataEntry };
-    on(event: 'eleventy.before', callback: OnCallback): void;
-    on(event: 'eleventy.after', callback: OnCallback<EleventyAfterEventHandlerOptions>): void;
-    on(event: 'eleventy.beforeWatch', callback: (changedFiles: string[]) => void | Promise<void>): void;
-    on(event: 'eleventy.contentMap', callback: (opts: ({ inputPathToUrl: Record<string, string>, urlToInputPath: Record<string, string> })) => void | Promise<void>): void;
-    on(event: 'eleventy.beforeConfig', callback: (config: UserConfig) => void | Promise<void>): void;
+    on(event: 'eleventy.before',       callback: (event: BeforeEvent)     => void | Promise<void>): void;
+    on(event: 'eleventy.after',        callback: (event: AfterEvent)      => void | Promise<void>): void;
+    on(event: 'eleventy.contentMap',   callback: (event: ContentMapEvent) => void | Promise<void>): void;
+    on(event: 'eleventy.beforeWatch',  callback: (changedFiles: string[]) => void | Promise<void>): void;
+    on(event: 'eleventy.beforeConfig', callback: (config: UserConfig)     => void | Promise<void>): void;
+    on(event: string,                  callback: (event: any)             => void | Promise<void>): void;
     setQuietMode(quiet: boolean): void;
+    setServerOptions(options: Partial<ServerOptions>): void
     javascriptFunctions: Record<string, (...args: unknown[]) => any>;
     watchIgnores: Set<string>;
   }

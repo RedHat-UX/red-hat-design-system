@@ -94,6 +94,17 @@ export default async function(eleventyConfig: UserConfig, options?: Options) {
   /** add the normalized pfe-tools config to global data */
   eleventyConfig.addGlobalData('pfeconfig', getPfeConfig());
 
+  eleventyConfig.addGlobalData('sideNavDropdowns', [
+    { title: 'About', url: '/about', collection: 'about' },
+    { title: 'Get started', url: '/get-started', collection: 'getstarted' },
+    { title: 'Foundations', url: '/foundations', collection: 'foundations' },
+    { title: 'Tokens', url: '/tokens', collection: 'tokenCategory' },
+    { title: 'Elements', url: '/elements', collection: 'elementDocs' },
+    { title: 'Theming', url: '/theming', collection: 'theming' },
+    { title: 'Patterns', url: '/patterns', collection: 'pattern' },
+    { title: 'Accessibility', url: '/accessibility', collection: 'accessibility' },
+  ]);
+
   /** custom-elements.json */
   eleventyConfig.on('eleventy.before', async function({ runMode }) {
     if (runMode === 'watch') {

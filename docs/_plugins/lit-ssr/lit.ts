@@ -1,113 +1,163 @@
+/* eslint-disable no-console */
 /**
  * @license based on code from eleventy-plugin-lit
  * Copyright 2021 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
+import type { EleventyPage } from '@11ty/eleventy/src/UserConfig.js';
 import type { UserConfig } from '@11ty/eleventy';
-import { dirname, resolve } from 'node:path';
-import { fileURLToPath, pathToFileURL } from 'node:url';
-import { Worker } from 'node:worker_threads';
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
+import { Worker } from 'node:worker_threads';
+import { readFile, writeFile } from 'node:fs/promises';
+import tsBlankSpace from 'ts-blank-space';
+
+import chalk from 'chalk';
+
+import { register } from 'node:module';
+register('./lit-css-node.ts', import.meta.url);
+
+await writeFile(
+  new URL('./worker.js', import.meta.url),
+  tsBlankSpace(await readFile(new URL('./worker.ts', import.meta.url), 'utf8')),
+  'utf8',
+);
+
+export interface InitRequestMessage {
+  type: 'initialize-request';
+  imports: string[];
+  tsconfig: string;
+}
+
+export interface InitResponseMessage {
+  type: 'initialize-response';
+}
+
+export interface RenderRequestMessage {
+  type: 'render-request';
+  id: number;
+  content: string;
+  page: Pick<EleventyPage, 'inputPath' | 'outputPath'>;
+}
+
+export interface RenderResponseMessage {
+  type: 'render-response';
+  id: number;
+  rendered?: string;
+}
+
+export type Message =
+| InitRequestMessage
+| InitResponseMessage
+| RenderRequestMessage
+| RenderResponseMessage;
 
 interface Options {
   componentModules?: string[];
+  /** path from project root to tsconfig */
+  tsconfig?: string;
 }
 
-// Lit SSR includes comment markers to track the outer template from
-// the template we've generated here, but it's not possible for this
-// outer template to be hydrated, so they serve no purpose.
-function trimOuterMarkers(renderedContent: string) {
-  return renderedContent
-      .replace(/^((<!--[^<>]*-->)|(<\?>)|\s)+/, '')
-      .replace(/((<!--[^<>]*-->)|(<\?>)|\s)+$/, '');
+interface RenderPageOpts {
+  content: string;
+  page: Pick<EleventyPage, 'inputPath' | 'outputPath'>;
 }
 
-export default function(eleventyConfig: UserConfig, opts?: Options) {
-  const { componentModules } = opts ?? {};
-  if (componentModules === undefined || componentModules.length === 0) {
-    // If there are no component modules, we could never have anything to
-    // render.
-    return;
+class RenderTimeoutError extends Error {
+  constructor(public timeout: number, public outputPath: string) {
+    super(`${chalk.red`TIMEOUT`} ${outputPath} timed out after ${timeout}ms`);
   }
+}
 
-  const resolvedComponentModules = componentModules.map(module =>
-    pathToFileURL(resolve(process.cwd(), module)).href);
+let requestId = 0;
 
-  let worker: Worker;
+// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
+const requestIdResolveMap = new Map<number, Function>();
 
-  const requestIdResolveMap = new Map();
-  let requestId = 0;
-
-  eleventyConfig.on('eleventy.before', async function() {
-    worker = new Worker(resolve(__dirname, './worker/worker.js'));
-
-    worker.on('error', err => {
-      // eslint-disable-next-line no-console
-      console.error('Unexpected error while rendering lit component in worker thread', err);
-      throw err;
-    });
-
-    let requestResolve: (v?: unknown) => void;
-    const requestPromise = new Promise(_resolve => {
-      requestResolve = _resolve;
-    });
-
-    worker.on('message', message => {
-      switch (message.type) {
-        case 'initialize-response': {
-          requestResolve();
-          break;
-        }
-
-        case 'render-response': {
-          const { id, rendered } = message;
-          const _resolve = requestIdResolveMap.get(id);
-          if (_resolve === undefined) {
-            throw new Error(
-              '@lit-labs/eleventy-plugin-lit received invalid render-response message'
-            );
-          }
-          _resolve(rendered);
-          requestIdResolveMap.delete(id);
-          break;
-        }
-      }
-    });
-
-    const message = {
-      type: 'initialize-request',
-      imports: resolvedComponentModules,
-    };
-
-    worker.postMessage(message);
-    await requestPromise;
+async function initializeWorker(imports: string[], tsconfig = './tsconfig') {
+  let requestResolve: (value?: unknown) => void;
+  const requestPromise = new Promise(resolve => {
+    requestResolve = resolve;
   });
 
-  eleventyConfig.on('eleventy.after', async () => {
-    await worker.terminate();
+  const worker = new Worker(new URL('./worker.js', import.meta.url), {
+    env: {
+      NODE_OPTIONS: '--import tsx/esm',
+    },
   });
 
-  eleventyConfig.addTransform('render-lit', async function(this, content) {
-    const { outputPath, inputPath, fileSlug } = this.page;
-    if (!outputPath.endsWith('.html')) {
-      return content;
+  worker.on('error', err => {
+    console.error(
+      'Unexpected error while rendering lit component in worker thread',
+      err
+    );
+    throw err;
+  });
+
+  worker.postMessage({
+    type: 'initialize-request',
+    imports,
+    tsconfig,
+  } satisfies InitRequestMessage);
+
+  worker.on('message', message => {
+    switch (message.type) {
+      case 'initialize-response': return requestResolve();
+      case 'render-response': return onRenderResponse(message);
     }
-
-    const renderedContent: string = await new Promise(_resolve => {
-      requestIdResolveMap.set(requestId, _resolve);
-      const message = {
-        type: 'render-request',
-        id: requestId++,
-        content,
-        page: JSON.parse(JSON.stringify({ outputPath, inputPath, fileSlug })),
-      };
-      worker.postMessage(message);
-    });
-
-    const outerMarkersTrimmed = trimOuterMarkers(renderedContent);
-    return outerMarkersTrimmed;
   });
-};
 
+  await requestPromise;
+
+  return worker;
+}
+
+async function getRenderRequestPromise(worker: Worker, opts: RenderPageOpts) {
+  return new Promise<string>(resolve => {
+    const id = requestId++;
+    worker.postMessage({ type: 'render-request', id, ...opts } satisfies RenderRequestMessage);
+    requestIdResolveMap.set(id, resolve);
+  });
+}
+
+async function renderPage(worker: Worker, opts: RenderPageOpts) {
+  const start = performance.now();
+  const renderedContent = await getRenderRequestPromise(worker, opts);
+  const end = performance.now();
+  console.log(`Rendering took ${chalk.blue((end - start).toFixed(3))}ms for ${opts.page.outputPath}`);
+  return renderedContent;
+}
+
+function onRenderResponse({ id, rendered }: RenderResponseMessage) {
+  const resolve = requestIdResolveMap.get(id);
+  if (resolve === undefined) {
+    throw new Error(
+      '@lit-labs/eleventy-plugin-lit received invalid render-response message'
+    );
+  }
+  requestIdResolveMap.delete(id);
+  resolve(rendered);
+}
+
+export default async function(eleventyConfig: UserConfig, opts?: Options) {
+  const componentModules = opts?.componentModules ?? [];
+
+  // If there are no component modules, we could never have anything to
+  // render.
+  if (componentModules?.length) {
+    const worker = await initializeWorker(componentModules, opts?.tsconfig);
+
+    eleventyConfig.on('eleventy.after', async () => void await worker.terminate());
+
+    eleventyConfig.addTransform('render-lit', async function(this, content) {
+      const { outputPath, inputPath } = this.page;
+
+      if (!outputPath.endsWith('.html')) {
+        return content;
+      }
+
+      const rendered = await renderPage(worker, { content, page: { outputPath, inputPath } });
+      return rendered ?? content;
+    });
+  }
+}
