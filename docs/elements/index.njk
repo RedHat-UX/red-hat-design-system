@@ -43,16 +43,19 @@ summaries:
     {%- set slug = doc.slug -%}
     {%- set title = tagName | getPrettyElementName | makeSentenceCase -%}
     {%- set comingSoon = tagName in comingSoonItems  -%}
+    {%- set hiddenComponent = tagName in hiddenItems  -%}
     {%- set summary = doc.docsPage.summary -%}
     {% if not summary %}
       {%- set summary = summaries[slug] -%}
     {% endif %}
-    <rh-tile compact bleed {% if comingSoon %}disabled{% endif %}>
-      <uxdot-example slot="image" no-border transparent><img src="{{ doc.screenshotPath }}" alt="{{ title }}"></uxdot-example>
-      <h3 slot="headline"><a href="{{ doc.overviewHref | url }}">{{ title }}</a></h3>
-      <p>{{ summary }}</p>
-      {% if comingSoon %}<div slot="footer">Coming Soon</div>{% endif %}
-    </rh-tile>
+    {% if not hiddenComponent %}
+      <rh-tile compact bleed {% if comingSoon %}disabled{% endif %}>
+        <uxdot-example slot="image" no-border transparent><img src="{{ doc.screenshotPath }}" alt="{{ title }}"></uxdot-example>
+        <h3 slot="headline"><a href="{{ doc.overviewHref | url }}">{{ title }}</a></h3>
+        <p>{{ summary }}</p>
+        {% if comingSoon %}<div slot="footer">Coming Soon</div>{% endif %}
+      </rh-tile>
+    {% endif %}
   {% endfor %}
 </nav>
 </section>
