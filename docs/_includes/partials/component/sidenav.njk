@@ -23,7 +23,7 @@
         {%- set active = page.url.startsWith(href) -%}
         {%- set name = (doc.alias) or (doc.slug | deslugify) %}
         {%- set comingSoon = (tagName in comingSoonItems) -%}
-        {%- set hiddenComponent = (tagName in hiddenItems) -%}
+        {%- set hiddenComponent = doc.hidden -%}
         {% if not comingSoon and not hiddenComponent %}
         <uxdot-sidenav-dropdown-menu-item data-slug="{{ slug }}"
                                           data-doc-slug="{{ doc.slug }}"

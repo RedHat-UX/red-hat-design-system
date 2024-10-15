@@ -3,7 +3,7 @@
 #
 # - tagName: rh-jazz-hands
 #   name: Jazz hands  - name should match the same format as sidenav, typically uppercase first word rest lower.
-#   type: element
+#   type: element # hidden
 #   overallStatus: ready # na | planned | ready
 #   libraries:  - Dict of 4 name/status key values pairs (Figma library, RH Elements, RH Shared Libs, Documentation)
 #     figma: ready # ready | planned | na
@@ -162,6 +162,16 @@
     rhds: na
     shared: na
     docs: ready
+- tagName: rh-menu
+  name: Menu
+  type: hidden
+  description: A subcomponent of rh-audio-player, hidden from end users.
+  overallStatus: ready
+  libraries:
+    figma: ready
+    rhds: ready
+    shared: planned
+    docs: planned
 - tagName: rh-navigation-primary
   name: Navigation (primary)
   type: element
