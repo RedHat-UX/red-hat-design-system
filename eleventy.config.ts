@@ -17,8 +17,7 @@ import RHDSMarkdownItPlugin from '#11ty-plugins/markdown-it.js';
 import ImportMapPlugin from '#11ty-plugins/importMap.js';
 import LitPlugin from '#11ty-plugins/lit-ssr/lit.js';
 
-import { promisify } from 'node:util';
-import * as ChildProcess from 'node:child_process';
+import { $ } from 'execa';
 
 export interface GlobalData {
   runMode: 'build' | 'watch' | 'serve';
@@ -43,8 +42,6 @@ export class Renderer<T> {
   render?(data: T & GlobalData): string | Promise<string>;
 }
 
-const exec = promisify(ChildProcess.exec);
-
 const isWatch =
   process.argv.includes('--serve') || process.argv.includes('--watch');
 
@@ -57,15 +54,9 @@ export default async function(eleventyConfig: UserConfig) {
     eleventyConfig.addGlobalData('runMode', runMode);
   });
 
-  eleventyConfig.on('eleventy.before', async function() {
-    const { stdout, stderr } = await exec('npx tspc -b');
-    if (stderr) {
-      // eslint-disable-next-line no-console
-      console.error(stderr);
-    } else {
-      // eslint-disable-next-line no-console
-      console.log(stdout);
-    }
+  let watch;
+  eleventyConfig.on('eleventy.before', function({ runMode }) {
+    watch ||= runMode === 'watch' && $({ stdout: ['pipe'], stderr: ['pipe'] })`npx tspc -b --watch`;
   });
 
   eleventyConfig.watchIgnores?.add('docs/assets/redhat/');
@@ -74,6 +65,7 @@ export default async function(eleventyConfig: UserConfig) {
   eleventyConfig.watchIgnores?.add('**/*.js.map');
   eleventyConfig.watchIgnores?.add('elements/*/test/');
   eleventyConfig.watchIgnores?.add('lib/elements/*/test/');
+  eleventyConfig.watchIgnores?.add('**/*.tsbuildinfo');
   eleventyConfig.addPassthroughCopy('docs/patterns/**/*.{svg,jpg,jpeg,png}');
   eleventyConfig.addPassthroughCopy('elements/*/demo/**/*.{svg,jpg,jpeg,png}');
   eleventyConfig.addPassthroughCopy('docs/CNAME');
@@ -121,10 +113,13 @@ export default async function(eleventyConfig: UserConfig) {
   eleventyConfig.addPassthroughCopy({
     'node_modules/@lit/reactive-element': '/assets/packages/@lit/reactive-element',
   });
-  const isNotTsbuild = (p: string) => !p.includes('.');
-  eleventyConfig.addPassthroughCopy({ 'elements': `/assets/packages/@rhds/elements/elements/` }, { filter: isNotTsbuild });
-  eleventyConfig.addPassthroughCopy({ 'lib': `/assets/packages/@rhds/elements/lib/` }, { filter: isNotTsbuild });
-  eleventyConfig.addPassthroughCopy({ 'uxdot': `/assets/packages/@uxdot/elements/` }, { filter: isNotTsbuild });
+  eleventyConfig.addPassthroughCopy({
+    'elements': `/assets/packages/@rhds/elements/elements/`,
+    'lib': `/assets/packages/@rhds/elements/lib/`,
+    'uxdot': `/assets/packages/@uxdot/elements/`,
+  }, {
+    filter: (p: string) => !p.startsWith('tsconfig'),
+  });
   eleventyConfig.addPlugin(ImportMapPlugin, {
     nodemodulesPublicPath: '/assets/packages',
     manualImportMap: {
@@ -145,7 +140,7 @@ export default async function(eleventyConfig: UserConfig) {
         '@patternfly/elements/': '/assets/packages/@patternfly/elements/',
         '@patternfly/icons/': '/assets/packages/@patternfly/icons/',
         '@patternfly/pfe-core/': '/assets/packages/@patternfly/pfe-core/',
-        '@uxdot/elements/': '/assets/javascript/elements/uxdot/',
+        '@uxdot/elements/': '/assets/packages/@uxdot/elements/',
         'playground-elements': 'https://cdn.jsdelivr.net/npm/playground-elements@0.18.1/+esm',
       },
     },
@@ -225,22 +220,22 @@ export default async function(eleventyConfig: UserConfig) {
 
   eleventyConfig.addPlugin(LitPlugin, {
     componentModules: [
-      'docs/assets/javascript/elements/uxdot/uxdot-best-practice.js',
-      'docs/assets/javascript/elements/uxdot/uxdot-copy-button.js',
-      'docs/assets/javascript/elements/uxdot/uxdot-copy-permalink.js',
-      'docs/assets/javascript/elements/uxdot/uxdot-example.js',
-      'docs/assets/javascript/elements/uxdot/uxdot-feedback.js',
-      'docs/assets/javascript/elements/uxdot/uxdot-header.js',
-      'docs/assets/javascript/elements/uxdot/uxdot-hero.js',
-      'docs/assets/javascript/elements/uxdot/uxdot-installation-tabs.js',
-      'docs/assets/javascript/elements/uxdot/uxdot-masthead.js',
-      'docs/assets/javascript/elements/uxdot/uxdot-pattern.js',
-      'docs/assets/javascript/elements/uxdot/uxdot-repo-status-checklist.js',
-      'docs/assets/javascript/elements/uxdot/uxdot-repo-status-list.js',
-      'docs/assets/javascript/elements/uxdot/uxdot-search.js',
-      'docs/assets/javascript/elements/uxdot/uxdot-sidenav.js',
-      'docs/assets/javascript/elements/uxdot/uxdot-spacer-tokens-table.js',
-      'docs/assets/javascript/elements/uxdot/uxdot-toc.js',
+      'uxdot/uxdot-best-practice.js',
+      'uxdot/uxdot-copy-button.js',
+      'uxdot/uxdot-copy-permalink.js',
+      'uxdot/uxdot-example.js',
+      'uxdot/uxdot-feedback.js',
+      'uxdot/uxdot-header.js',
+      'uxdot/uxdot-hero.js',
+      'uxdot/uxdot-installation-tabs.js',
+      'uxdot/uxdot-masthead.js',
+      'uxdot/uxdot-pattern.js',
+      'uxdot/uxdot-repo-status-checklist.js',
+      'uxdot/uxdot-repo-status-list.js',
+      'uxdot/uxdot-search.js',
+      'uxdot/uxdot-sidenav.js',
+      'uxdot/uxdot-spacer-tokens-table.js',
+      'uxdot/uxdot-toc.js',
       'elements/rh-button/rh-button.js',
       'elements/rh-code-block/rh-code-block.js',
       'elements/rh-footer/rh-footer-universal.js',

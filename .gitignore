@@ -22,6 +22,7 @@ docs/assets/javascript/environment.js
 elements.js
 elements/*/*.js
 elements/*/test/*.js
+uxdot/*.js
 react
 lib/**/*.js
 !elements/**/demo/*.css
