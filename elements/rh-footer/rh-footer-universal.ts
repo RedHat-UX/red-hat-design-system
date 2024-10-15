@@ -45,7 +45,8 @@ export class RhFooterUniversal extends LitElement {
   static readonly styles = [style];
 
   @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'darker';
+  @property({ reflect: true, attribute: 'color-palette' })
+  accessor colorPalette: ColorPalette = 'darker';
 
   #slots = new SlotController(
     this,

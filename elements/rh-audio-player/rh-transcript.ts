@@ -29,17 +29,23 @@ import '@rhds/elements/rh-icon/rh-icon.js';
 export class RhTranscript extends LitElement {
   static readonly styles = [buttonStyles, panelStyles, styles];
 
-  @property() heading?: string;
+  @property()
+  accessor heading: string | undefined;
 
-  @property() label?: string;
+  @property()
+  accessor label: string | undefined;
 
-  @property({ reflect: true }) lang!: string;
+  @property({ reflect: true })
+  accessor lang!: string;
 
-  @state() private _label!: string;
+  @state()
+  private accessor _label!: string;
 
-  @state() private _autoscroll!: string;
+  @state()
+  private accessor _autoscroll!: string;
 
-  @state() private _download!: string;
+  @state()
+  private accessor _download!: string;
 
   @queryAssignedElements({ selector: 'rh-cue' })
   private _cues!: RhCue[];

@@ -32,15 +32,15 @@ const getToken = (name: string) => {
 @customElement('uxdot-spacer-tokens-table')
 export class UxdotSpacerTokensTable extends LitElement {
   static styles = [styles];
-  @property() caption = '';
+  @property() accessor caption = '';
 
-  @property({ attribute: 'color-palette' }) colorPalette = 'light';
+  @property({ attribute: 'color-palette' }) accessor colorPalette = 'light';
 
-  @property({ converter: StringListConverter }) tokens: string[] =
+  @property({ converter: StringListConverter }) accessor tokens: string[] =
     Array.from(allTokens.keys())
         .filter((x): x is `--rh-space-${string}` => x.startsWith('--rh-space'));
 
-  @state() metaData: DesignToken[] = [];
+  @state() accessor metaData: DesignToken[] = [];
 
   render() {
     const metaData = this.tokens

@@ -15,11 +15,8 @@ export class RhFooterLinks extends LitElement {
    * Cause the header slot to be visually hidden.
    * Setting this to true will not affect `aria-labelledby`.
    */
-  @property({
-    type: Boolean,
-    attribute: 'header-hidden',
-    reflect: true,
-  }) headerHidden = false;
+  @property({ type: Boolean, attribute: 'header-hidden', reflect: true })
+  accessor headerHidden = false;
 
   #logger = new Logger(this);
 

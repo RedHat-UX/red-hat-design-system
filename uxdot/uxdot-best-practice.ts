@@ -9,7 +9,7 @@ import styles from './uxdot-best-practice.css';
 export class UxdotBestPractice extends LitElement {
   static styles = [styles];
 
-  @property({ reflect: true }) variant: 'do' | 'dont' = 'do';
+  @property({ reflect: true }) accessor variant: 'do' | 'dont' = 'do';
 
   render() {
     const { variant } = this;

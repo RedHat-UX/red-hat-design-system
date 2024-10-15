@@ -49,14 +49,15 @@ const isAccordion = (x: EventTarget): x is RhAccordion =>
 export class RhAccordionHeader extends LitElement {
   static readonly styles = [styles];
 
-  @property({ type: Boolean, reflect: true }) expanded = false;
+  @property({ type: Boolean, reflect: true })
+  accessor expanded = false;
 
+  // @ts-expect-error: lit's types are wrong
   @consume({ context, subscribe: true })
-  @property({ attribute: false })
-  private ctx?: RhAccordionContext;
+  private accessor ctx: RhAccordionContext | undefined;
 
   @colorContextConsumer()
-  private on?: ColorTheme;
+  private accessor on: ColorTheme | undefined;
 
   #dir = new DirController(this);
 

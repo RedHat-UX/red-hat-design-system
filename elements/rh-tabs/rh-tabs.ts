@@ -48,27 +48,26 @@ export class RhTabs extends LitElement {
   /**
    * Label for the scroll left button
    */
-  @property({ reflect: true, attribute: 'label-scroll-left' }) labelScrollLeft = 'Scroll left';
+  @property({ reflect: true, attribute: 'label-scroll-left' })
+  accessor labelScrollLeft = 'Scroll left';
 
   /**
    * Label for the scroll right button
    */
-  @property({ reflect: true, attribute: 'label-scroll-right' }) labelScrollRight = 'Scroll right';
+  @property({ reflect: true, attribute: 'label-scroll-right' })
+  accessor labelScrollRight = 'Scroll right';
 
   /**
    * Tabs can be either [automatic](https://w3c.github.io/aria-practices/examples/tabs/tabs-automatic.html) activated
    * or [manual](https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html)
    */
-  @property({ reflect: true, type: Boolean }) manual = false;
+  @property({ reflect: true, type: Boolean })
+  accessor manual = false;
 
   /**
    * Index of the active tab
    */
   @property({ attribute: 'active-index', type: Number })
-  get activeIndex() {
-    return this.#activeIndex;
-  }
-
   set activeIndex(v: number) {
     this.#tabindex.atFocusedItemIndex = v;
     this.#activeIndex = v;
@@ -81,24 +80,35 @@ export class RhTabs extends LitElement {
     }
   }
 
-  @property({ attribute: false }) activeTab?: RhTab;
+  get activeIndex() {
+    return this.#activeIndex;
+  }
 
-  @colorContextConsumer() private on?: ColorTheme;
+  @property({ attribute: false })
+  accessor activeTab: RhTab | undefined;
+
+  @colorContextConsumer()
+  private accessor on: ColorTheme | undefined;
 
   /** Sets color context for child components, overrides parent context */
   @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
+  @property({ reflect: true, attribute: 'color-palette' })
+  accessor colorPalette: ColorPalette | undefined;
 
   /** Aligns tabs to the center */
-  @property({ reflect: true, type: Boolean }) centered? = false;
+  @property({ reflect: true, type: Boolean })
+  accessor centered = false;
 
   /** Sets tabs to a boxed style with or without an inset */
-  @property({ reflect: true }) box?: 'box' | 'inset';
+  @property({ reflect: true })
+  accessor box: 'box' | 'inset' | undefined;
 
   /** Sets the alignment of the tabs vertical */
-  @property({ reflect: true, type: Boolean }) vertical = false;
+  @property({ reflect: true, type: Boolean })
+  accessor vertical = false;
 
-  @query('[part="tabs"]') private tabList!: HTMLElement;
+  @query('[part="tabs"]')
+  private accessor tabList!: HTMLElement;
 
   get #ctx(): RhTabsContext {
     const { activeTab, manual, vertical } = this;
@@ -146,7 +156,9 @@ export class RhTabs extends LitElement {
     return this.tabs.at(-1);
   }
 
-  @provide({ context }) private ctx = this.#ctx;
+  // @ts-expect-error: lit's types are wrong
+  @provide({ context })
+  private accessor ctx = this.#ctx;
 
   override connectedCallback() {
     super.connectedCallback();

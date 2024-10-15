@@ -39,24 +39,30 @@ export class RhTag extends LitElement {
   /**
    * The icon to display in the label.
    */
-  @property({ reflect: true }) icon?: IconNameFor<IconSetName>;
+  @property({ reflect: true })
+  accessor icon: IconNameFor<IconSetName> | undefined;
 
   /**
    * Icon set to display in the label
    */
-  @property({ attribute: 'icon-set' }) iconSet: IconSetName = 'ui';
+  @property({ attribute: 'icon-set' })
+  accessor iconSet: IconSetName = 'ui';
 
   /** The variant of the label. */
-  @property() variant?: 'filled' | 'outline' | 'desaturated' = 'filled';
+  @property()
+  accessor variant: 'filled' | 'outline' | 'desaturated' = 'filled';
 
   /** The variant of the label. */
-  @property() size?: 'compact';
+  @property()
+  accessor size: 'compact' | undefined;
 
   /** optional href for linked tag. */
-  @property() href?: string;
+  @property()
+  accessor href: string | undefined;
 
   /** The color of the label. */
-  @property() color?:
+  @property()
+  accessor color:
     | 'red'
     | 'red-orange'
     | 'orange'
@@ -66,9 +72,11 @@ export class RhTag extends LitElement {
     | 'teal'
     | 'blue'
     | 'purple'
-    | 'gray';
+    | 'gray'
+    | undefined;
 
-  @colorContextConsumer() private on?: ColorTheme;
+  @colorContextConsumer()
+  private accessor on: ColorTheme | undefined;
 
   /** Represents the state of the anonymous and icon slots */
   #slots = new SlotController(this, 'icon', null);

@@ -31,30 +31,35 @@ export class UxdotPattern extends LitElement {
 
   /** Which color palette to apply to the demo surface */
   @property({ reflect: true, attribute: 'color-palette' })
-  colorPalette: ColorPalette = 'lightest';
+  accessor colorPalette: ColorPalette = 'lightest';
 
   /** The id of the element in shadow DOM which the color picker targets */
-  @property({ reflect: true }) target = 'content';
+  @property({ reflect: true })
+  accessor target = 'content';
 
   /** Path to the pattern source file, relative to the input file */
-  @property({ reflect: true }) src?: string;
+  @property({ reflect: true })
+  accessor src: string | undefined;
 
   /** Path to additional CSS file to include */
-  @property({ reflect: true, attribute: 'css-src' }) cssSrc?: string;
+  @property({ reflect: true, attribute: 'css-src' })
+  accessor cssSrc: string | undefined;
 
   /** Path to additional JS file to include */
-  @property({ reflect: true, attribute: 'js-src' }) jsSrc?: string;
+  @property({ reflect: true, attribute: 'js-src' })
+  accessor jsSrc: string | undefined;
 
   /** Should the color picker be hidden? */
-  @property({ type: Boolean, attribute: 'no-color-picker' }) noColorPicker = false;
+  @property({ type: Boolean, attribute: 'no-color-picker' })
+  accessor noColorPicker = false;
 
   /** Should the code blocks be expanded? */
-  @property({ type: Boolean, attribute: 'full-height' }) fullHeight = false;
+  @property({ type: Boolean, attribute: 'full-height' })
+  accessor fullHeight = false;
 
   /** Which colour palettes should be allowed in the picker? (default: all) */
-  @property({ converter: ColorPaletteListConverter }) allow = paletteNames;
-
-  @colorContextConsumer() private on?: ColorTheme;
+  @property({ converter: ColorPaletteListConverter })
+  accessor allow = paletteNames;
 
   ssr = new UxdotPatternSSRController(this);
 

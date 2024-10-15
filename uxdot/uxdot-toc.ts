@@ -9,7 +9,7 @@ import styles from './uxdot-toc.css';
 export class UxdotToc extends LitElement {
   static styles = [styles];
 
-  @property() summary?: string;
+  @property() accessor summary: string | undefined;
 
   render() {
     return html`

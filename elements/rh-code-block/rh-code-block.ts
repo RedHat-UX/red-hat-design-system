@@ -1,5 +1,6 @@
 import type { DirectiveResult } from 'lit-html/directive.js';
-import { CSSResult, LitElement, html, type PropertyValues } from 'lit';
+import type { CSSResult, ComplexAttributeConverter, PropertyValues } from 'lit';
+import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { styleMap } from 'lit/directives/style-map.js';
@@ -34,6 +35,15 @@ interface CodeLineHeightsInfo {
   sizer: HTMLElement;
   oneLinerHeight: number;
 }
+
+const DOMTokenListConverter: ComplexAttributeConverter = {
+  fromAttribute(value) {
+    return ((value ?? '').split(/\s+/) ?? []).map(x => x.trim()).filter(Boolean);
+  },
+  toAttribute(value) {
+    return Array.isArray(value) ? value.join(' ') : '';
+  },
+};
 
 /**
  * A code block is formatted text within a container.
@@ -83,27 +93,20 @@ export class RhCodeBlock extends LitElement {
 
   static styles = [style];
 
-  @property({
-    reflect: true,
-    converter: {
-      fromAttribute(value) {
-        return ((value ?? '').split(/\s+/) ?? []).map(x => x.trim()).filter(Boolean);
-      },
-      toAttribute(value) {
-        return Array.isArray(value) ? value.join(' ') : '';
-      },
-    },
-  }) actions: ('copy' | 'wrap')[] = [];
+  @property({ reflect: true, converter: DOMTokenListConverter })
+  accessor actions: ('copy' | 'wrap')[] = [];
 
   /**
    * When set to "client", `<rh-code-block>` will automatically highlight the source using Prism.js
    * When set to "Prerendered", `<rh-code-block>` will apply supported RHDS styles to children with
    * prismjs classnames in the element's root.
    */
-  @property() highlighting?: 'client' | 'prerendered';
+  @property()
+  accessor highlighting: 'client' | 'prerendered' | undefined;
 
   /** When set along with `highlighting="client"`, this grammar will be used to highlight source code */
-  @property() language?:
+  @property()
+  accessor language:
     | 'html'
     | 'css'
     | 'javascript'
@@ -111,24 +114,31 @@ export class RhCodeBlock extends LitElement {
     | 'bash'
     | 'ruby'
     | 'yaml'
-    | 'json';
+    | 'json'
+    | undefined;
 
   /** When set, the code block displays with compact spacing */
-  @property({ type: Boolean, reflect: true }) compact = false;
+  @property({ type: Boolean, reflect: true })
+  accessor compact = false;
 
   /** When set, the code block source code will be dedented */
-  @property({ type: Boolean, reflect: true }) dedent = false;
+  @property({ type: Boolean, reflect: true })
+  accessor dedent = false;
 
   /** When set, the code block is resizable */
-  @property({ type: Boolean, reflect: true }) resizable = false;
+  @property({ type: Boolean, reflect: true })
+  accessor resizable = false;
 
   /** When set, the code block occupies it's full height, without scrolling */
-  @property({ type: Boolean, reflect: true, attribute: 'full-height' }) fullHeight = false;
+  @property({ type: Boolean, reflect: true, attribute: 'full-height' })
+  accessor fullHeight = false;
 
   /** When set, lines in the code snippet wrap */
-  @property({ type: Boolean }) wrap = false;
+  @property({ type: Boolean })
+  accessor wrap = false;
 
-  @colorContextConsumer() private on?: ColorTheme;
+  @colorContextConsumer()
+  private accessor on: ColorTheme | undefined;
 
   #slots = new SlotController(
     this,

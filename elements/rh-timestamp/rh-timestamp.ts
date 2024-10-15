@@ -29,46 +29,50 @@ export class RhTimestamp extends LitElement {
   /**
    * Custom date formatting style. See [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#datestyle) for options.
    */
-  @property({ reflect: true, attribute: 'date-format' }) dateFormat?: DateTimeFormat;
+  @property({ reflect: true, attribute: 'date-format' })
+  accessor dateFormat: DateTimeFormat | undefined;
 
   /**
    * Custom time formatting style. See [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#timestyle) for options.
    */
-  @property({ reflect: true, attribute: 'time-format' }) timeFormat?: DateTimeFormat;
+  @property({ reflect: true, attribute: 'time-format' })
+  accessor timeFormat: DateTimeFormat | undefined;
 
   /**
    * Custom date and time formatting options. See [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#options) for a list of options.
    */
-  @property({ attribute: false }) customFormat?: object;
+  @property({ attribute: false })
+  accessor customFormat: object | undefined;
 
   /**
    * Text to display after the timestamp
    */
-  @property({ reflect: true, attribute: 'display-suffix' }) displaySuffix?: string;
+  @property({ reflect: true, attribute: 'display-suffix' })
+  accessor displaySuffix: string | undefined;
 
   /**
    * Overrides the runtime's default locale
    */
-  @property({ reflect: true }) locale?: string;
+  @property({ reflect: true })
+  accessor locale: string | undefined;
 
   /**
    * Formats a timestamp in realtive terms
    */
-  @property({ reflect: true, type: Boolean }) relative?: boolean;
+  @property({ reflect: true, type: Boolean })
+  accessor relative: boolean | undefined;
 
   /**
    * Sets the timezone as UTC
    */
-  @property({ reflect: true, type: Boolean }) utc?: boolean;
+  @property({ reflect: true, type: Boolean })
+  accessor utc: boolean | undefined;
 
   /**
    * Whether to use 12-hour time (as opposed to 24-hour time)
    */
-  @property({
-    reflect: true,
-    attribute: 'hour-12',
-    converter: BooleanStringConverter,
-  }) hour12?: boolean;
+  @property({ reflect: true, attribute: 'hour-12', converter: BooleanStringConverter })
+  accessor hour12: boolean | undefined;
 
   /**
    * A string value representing a date

@@ -141,7 +141,8 @@ export class RhSiteStatus extends LitElement {
   /**
    * Sets color theme based on parent context
    */
-  @colorContextConsumer() private on?: ColorTheme;
+  @colorContextConsumer()
+  private accessor on: ColorTheme | undefined;
 
   #status: Status | null = null;
 

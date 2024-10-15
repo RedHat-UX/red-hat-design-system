@@ -18,9 +18,9 @@ export class UxdotSideNav extends LitElement {
 
   static styles = [styles];
 
-  @property({ type: Boolean, reflect: true }) open = false;
+  @property({ type: Boolean, reflect: true }) accessor open = false;
 
-  @property() trigger?: string;
+  @property() accessor trigger: string | undefined;
 
   #triggerElement: HTMLElement | null = null;
 

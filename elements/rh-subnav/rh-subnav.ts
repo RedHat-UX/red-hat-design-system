@@ -54,7 +54,8 @@ export class RhSubnav extends LitElement {
   /**
    * Sets color theme based on parent context
    */
-  @colorContextConsumer() private on?: ColorTheme;
+  @colorContextConsumer()
+  private accessor on: ColorTheme | undefined;
 
   /**
    * Sets color palette, which affects the element's styles as well as descendants' color theme.
@@ -63,17 +64,21 @@ export class RhSubnav extends LitElement {
    * See [CSS Custom Properties](#css-custom-properties) for default values
    */
   @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette = 'lighter';
+  @property({ reflect: true, attribute: 'color-palette' })
+  accessor colorPalette = 'lighter';
 
   /**
    * Customize the default `aria-label` on the `<nav>` container.
    * Defaults to "subnavigation" if no attribute/property is set.
    */
-  @property({ attribute: 'accessible-label' }) accessibleLabel = 'subnavigation';
+  @property({ attribute: 'accessible-label' })
+  accessor accessibleLabel = 'subnavigation';
 
-  @queryAssignedElements() private links!: HTMLAnchorElement[];
+  @queryAssignedElements()
+  private accessor links!: HTMLAnchorElement[];
 
-  @query('[part="links"]') private linkList!: HTMLElement;
+  @query('[part="links"]')
+  private accessor linkList!: HTMLElement;
 
   #allLinkElements: HTMLAnchorElement[] = [];
 

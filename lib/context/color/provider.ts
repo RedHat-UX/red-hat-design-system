@@ -5,6 +5,7 @@ import {
   contextEvents,
   ColorContextController,
   type ColorContextOptions,
+  makeContextDecorator,
 } from './controller.js';
 
 import { ColorContextConsumer, type ColorTheme } from './consumer.js';
@@ -187,22 +188,17 @@ export class ColorContextProvider<
 
 /**
  * Makes this element a color context provider which updates its consumers when the decorated field changes
- * @param options options
  */
-export function colorContextProvider<T extends ReactiveElement>(options?: ColorContextOptions<T>) {
-  return function(proto: T, _propertyName: string) {
-    const propertyName = _propertyName as keyof T;
-    const klass = (proto.constructor as typeof ReactiveElement);
-    const propOpts = klass.getPropertyOptions(_propertyName);
-    const attribute = typeof propOpts.attribute === 'boolean' ? undefined : propOpts.attribute;
-    klass.addInitializer(instance => {
-      const controller = new ColorContextProvider(instance as T, {
-        propertyName,
-        attribute,
-        ...options,
-      });
-      // @ts-expect-error: this assignment is strictly for debugging purposes
-      instance.__DEBUG_colorContextProvider = controller;
+export const colorContextProvider = makeContextDecorator((klass, propertyName, options) => {
+  const propOpts = klass.getPropertyOptions(propertyName);
+  const attribute = typeof propOpts.attribute === 'boolean' ? undefined : propOpts.attribute;
+  klass.addInitializer(instance => {
+    const controller = new ColorContextProvider(instance, {
+      propertyName,
+      attribute,
+      ...options,
     });
-  };
-}
+    // @ts-expect-error: this assignment is strictly for debugging purposes
+    instance.__DEBUG_colorContextProvider = controller;
+  });
+});

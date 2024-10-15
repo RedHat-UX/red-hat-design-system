@@ -56,29 +56,34 @@ export class RhTile extends LitElement {
   /**
    * Whether image is full-width (i.e. bleeds into the padding)
    */
-  @property({ type: Boolean }) bleed = false;
+  @property({ type: Boolean })
+  accessor bleed = false;
 
   /**
    * Whether headline link text is a desaturated color instead of blue;
    * `true` sets headline color to white on dark tiles or black on light tiles
    */
-  @property({ type: Boolean }) desaturated = false;
+  @property({ type: Boolean })
+  accessor desaturated = false;
 
   /**
    * Reduces tile padding for more compact spaces
    */
-  @property({ type: Boolean }) compact = false;
+  @property({ type: Boolean })
+  accessor compact = false;
 
 
   /**
    * The icon to display in the tile
    */
-  @property({ reflect: true }) icon?: IconNameFor<IconSetName>;
+  @property({ reflect: true })
+  accessor icon: IconNameFor<IconSetName> | undefined;
 
   /**
    * Icon set to display in the tile
    */
-  @property({ attribute: 'icon-set' }) iconSet: IconSetName = 'standard';
+  @property({ attribute: 'icon-set' })
+  accessor iconSet: IconSetName = 'standard';
 
   /**
    * When checkable, the accessible (visually hidden) label for the form control
@@ -100,29 +105,35 @@ export class RhTile extends LitElement {
    *          </form>
    *          ```
    */
-  @property({ attribute: 'accessible-label' }) accessibleLabel?: string;
+  @property({ attribute: 'accessible-label' })
+  accessor accessibleLabel: string | undefined;
 
   /** Form name */
-  @property() name?: string;
+  @property()
+  accessor name: string | undefined;
 
   /** Form value */
-  @property() value?: string;
+  @property()
+  accessor value: string | undefined;
 
   /**
    * When true, tile behaves like a checkbox unless it is part of an
    * `<rh-tile-group radio>`, in which case it behaves like a radio button
    */
-  @property({ type: Boolean }) checkable = false;
+  @property({ type: Boolean })
+  accessor checkable = false;
 
   /**
    * If tile is checkable, whether it is currently checked
    */
-  @property({ type: Boolean, reflect: true }) checked = false;
+  @property({ type: Boolean, reflect: true })
+  accessor checked = false;
 
   /**
    * Whether tile interaction is disabled
    */
-  @property({ type: Boolean, reflect: true }) disabled = false;
+  @property({ type: Boolean, reflect: true })
+  accessor disabled = false;
 
   /**
    * Sets color palette, which affects the element's styles as well as descendants' color theme.
@@ -133,20 +144,26 @@ export class RhTile extends LitElement {
    * Tile always resets its context to `base`, unless explicitly provided with a `color-palette`.
    */
   @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
+  @property({ reflect: true, attribute: 'color-palette' })
+  accessor colorPalette: ColorPalette | undefined;
 
   /** When set to "private", the icon representing the link changes from an arrow to a padlock */
-  @property() link?: 'private' | 'public' | 'external';
+  @property()
+  accessor link: 'private' | 'public' | 'external' | undefined;
+
   /**
    * Sets color theme based on parent context
    */
-  @colorContextConsumer() private on?: ColorTheme;
+  @colorContextConsumer()
+  private accessor on: ColorTheme | undefined;
 
   // TODO(bennyp): https://lit.dev/docs/data/context/#content
-  @state() private disabledGroup = false;
+  @state()
+  private accessor disabledGroup = false;
 
   // TODO(bennyp): https://lit.dev/docs/data/context/#content
-  @state() private radioGroup = false;
+  @state()
+  private accessor radioGroup = false;
 
   #internals = InternalsController.of(this);
 

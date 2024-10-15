@@ -23,16 +23,20 @@ export class RhBackToTop extends LitElement {
   static readonly styles = [styles];
 
   /** Flag to always show back to top button, defaults to false. */
-  @property({ reflect: true, attribute: 'visible' }) visible?: 'always' | undefined;
+  @property({ reflect: true, attribute: 'visible' })
+  accessor visible: 'always' | undefined | undefined;
 
   /** Element selector to spy on for scrolling. Not passing a selector defaults to spying on window scroll events */
-  @property({ reflect: true, attribute: 'scrollable-selector' }) scrollableSelector?: string;
+  @property({ reflect: true, attribute: 'scrollable-selector' })
+  accessor scrollableSelector: string | undefined;
 
   /** Distance from the top of the scrollable element to trigger the visibility of the back to top button */
-  @property({ type: Number, attribute: 'scroll-distance' }) scrollDistance = 400;
+  @property({ type: Number, attribute: 'scroll-distance' })
+  accessor scrollDistance = 400;
 
   /** Page fragment link to target element, must include hash ex: #top */
-  @property({ reflect: true }) href?: string;
+  @property({ reflect: true })
+  accessor href: string | undefined;
 
   #scrollSpy = false;
 

@@ -24,11 +24,14 @@ import styles from './rh-audio-player-subscribe.css';
 export class RhAudioPlayerSubscribe extends LitElement {
   static readonly styles = [panelStyles, styles];
 
-  @property() heading?: string;
+  @property()
+  accessor heading: string | undefined;
 
-  @property() label?: string;
+  @property()
+  accessor label: string | undefined;
 
-  @queryAssignedElements({ slot: '' }) private body?: HTMLElement[];
+  @queryAssignedElements({ slot: '' })
+  private accessor body: HTMLElement[] | undefined;
 
   #headings = new HeadingLevelContextConsumer(this);
 

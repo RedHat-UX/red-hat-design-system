@@ -1,8 +1,7 @@
 import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
-import { state } from 'lit/decorators/state.js';
-import { query } from 'lit/decorators/query.js';
 import { classMap } from 'lit/directives/class-map.js';
+import { property } from 'lit/decorators/property.js';
 
 import { ComposedEvent } from '@patternfly/pfe-core';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
@@ -12,6 +11,8 @@ import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
 import { RhNavigationSecondaryMenu } from './rh-navigation-secondary-menu.js';
 
+import styles from './rh-navigation-secondary-dropdown.css';
+
 export class SecondaryNavDropdownExpandEvent extends ComposedEvent {
   constructor(
     public expanded: boolean,
@@ -20,12 +21,6 @@ export class SecondaryNavDropdownExpandEvent extends ComposedEvent {
     super('expand-request');
   }
 }
-
-// There is possibility of abstracting this component to a more 'generic' standalone component
-// in the future. Styles or functionality that are specific to rh-navigation-secondary are commented
-// on as such for any future abstraction.
-
-import styles from './rh-navigation-secondary-dropdown.css';
 
 /**
  * Upgrades a top level nav link to include dropdown functionality
@@ -46,9 +41,8 @@ export class RhNavigationSecondaryDropdown extends LitElement {
 
   #mo = new MutationObserver(this.#mutationsCallback.bind(this));
 
-  @query('#container') _container?: HTMLElement;
-
-  @state() expanded = false;
+  @property({ type: Boolean })
+  accessor expanded = false;
 
   connectedCallback(): void {
     super.connectedCallback();

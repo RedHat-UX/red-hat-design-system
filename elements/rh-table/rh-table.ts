@@ -23,8 +23,6 @@ import styles from './rh-table.css';
 export class RhTable extends LitElement {
   static readonly styles = [styles];
 
-  @colorContextConsumer() private on?: ColorTheme;
-
   private static getNodeContentForSort(
     columnIndexToSort: number,
     node: Element,
@@ -47,6 +45,9 @@ export class RhTable extends LitElement {
       return (b.content < a.content ? -1 : b.content > a.content ? 1 : 0);
     }
   }
+
+  @colorContextConsumer()
+  private accessor on: ColorTheme | undefined;
 
   get #table(): HTMLTableElement | undefined {
     return this.querySelector('table') as HTMLTableElement | undefined;

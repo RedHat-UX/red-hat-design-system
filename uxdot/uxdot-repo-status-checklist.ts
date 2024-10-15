@@ -12,7 +12,8 @@ import style from './uxdot-repo-status-list.css';
 export class UxdotRepoStatusChecklist extends UxdotRepoElement {
   static styles = [style];
 
-  @property() element?: string;
+  @property()
+  accessor element: string | undefined;
 
   render() {
     const status = this.getStatus(this.element!);

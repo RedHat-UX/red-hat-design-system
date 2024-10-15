@@ -26,16 +26,20 @@ export class RhAccordionPanel extends LitElement {
 
   static readonly styles = [styles];
 
-  @property({ type: Boolean, reflect: true }) expanded = false;
+  @property({ type: Boolean, reflect: true })
+  accessor expanded = false;
 
   @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
+  @property({ reflect: true, attribute: 'color-palette' })
+  accessor colorPalette: ColorPalette | undefined;
 
-  @colorContextConsumer() private on?: ColorTheme;
+  @colorContextConsumer()
+  private accessor on: ColorTheme | undefined;
 
+  // @ts-expect-error: lit's types are wrong
   @consume({ context, subscribe: true })
   @property({ attribute: false })
-  private ctx?: RhAccordionContext;
+  private accessor ctx: RhAccordionContext | undefined;
 
   connectedCallback() {
     super.connectedCallback();

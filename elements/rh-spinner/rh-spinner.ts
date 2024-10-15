@@ -23,12 +23,14 @@ export class RhSpinner extends LitElement {
   /**
    * Preset sizes for the spinner
    */
-  @property({ reflect: true }) size: 'sm' | 'md' | 'lg' = 'lg';
+  @property({ reflect: true })
+  accessor size: 'sm' | 'md' | 'lg' = 'lg';
 
   /**
    * Sets color theme based on parent context
    */
-  @colorContextConsumer() private on?: ColorTheme;
+  @colorContextConsumer()
+  private accessor on: ColorTheme | undefined;
 
   render() {
     const { on = '' } = this;

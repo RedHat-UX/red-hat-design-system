@@ -25,12 +25,14 @@ export class RhTileGroup extends LitElement {
   /**
    * Whether tile group interaction is disabled
    */
-  @property({ type: Boolean, reflect: true }) disabled = false;
+  @property({ type: Boolean, reflect: true })
+  accessor disabled = false;
 
   /**
    * If tile is checkable, whether only one tile can be checked
    */
-  @property({ type: Boolean, reflect: true }) radio = false;
+  @property({ type: Boolean, reflect: true })
+  accessor radio = false;
 
   /**
    * Sets color palette, which affects the element's styles as well as descendants' color theme.
@@ -41,12 +43,14 @@ export class RhTileGroup extends LitElement {
    * Tile group always resets its context to `base`, unless explicitly provided with a `color-palette`.
    */
   @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
+  @property({ reflect: true, attribute: 'color-palette' })
+  accessor colorPalette: ColorPalette | undefined;
 
   /**
    * Sets color theme based on parent context
    */
-  @colorContextConsumer() private on?: ColorTheme;
+  @colorContextConsumer()
+  private accessor on: ColorTheme | undefined;
 
   #tiles: RhTile[] = [];
 

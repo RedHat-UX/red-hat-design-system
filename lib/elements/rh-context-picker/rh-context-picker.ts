@@ -64,14 +64,17 @@ export class RhContextPicker extends LitElement {
   declare shadowRoot: ShadowRoot;
 
   /** ID of context element to toggle (same root) */
-  @property() target?: string | HTMLElement;
+  @property()
+  accessor target: string | HTMLElement | undefined;
 
-  @property() value: ColorPalette = 'darkest';
+  @property()
+  accessor value: ColorPalette = 'darkest';
 
-  @colorContextConsumer() private on?: ColorTheme;
+  @colorContextConsumer()
+  private accessor on: ColorTheme | undefined;
 
   @property({ converter: ColorPaletteListConverter })
-  allow = paletteNames;
+  accessor allow = paletteNames;
 
   #internals = InternalsController.of(this);
 

@@ -73,29 +73,29 @@ export class RhDialog extends LitElement {
    * The `variant` controls the width of the dialog.
    * There are three options: `small`, `medium` and `large`. The default is `large`.
    */
-  @property({ reflect: true }) variant?: 'small' | 'medium' | 'large';
+  @property({ reflect: true })
+  accessor variant: 'small' | 'medium' | 'large' | undefined;
 
   /**
    * `position="top"` aligns the dialog with the top of the page
    */
-  @property({ reflect: true }) position?: 'top';
+  @property({ reflect: true })
+  accessor position: 'top' | undefined;
 
-  @property({ type: Boolean, reflect: true }) open = false;
+  @property({ type: Boolean, reflect: true })
+  accessor open = false;
 
   /** Optional ID of the trigger element */
-  @property() trigger?: string;
+  @property()
+  accessor trigger: string | undefined;
 
-  @property({ reflect: true }) type?: 'video';
+  @property({ reflect: true })
+  accessor type: 'video' | undefined;
 
   /** @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/returnValue */
   public returnValue = '';
 
   #screenSize = new ScreenSizeController(this);
-
-  @query('#overlay') private overlay?: HTMLElement | null;
-  @query('#dialog') private dialog?: HTMLElement | null;
-  @query('#close-button') private closeButton?: HTMLElement | null;
-
   #headerId = getRandomId();
   #triggerElement: HTMLElement | null = null;
   #header: HTMLElement | null = null;
@@ -104,6 +104,15 @@ export class RhDialog extends LitElement {
   #cancelling = false;
 
   #slots = new SlotController(this, null, 'header', 'description', 'footer');
+
+  @query('#overlay')
+  private accessor overlay: HTMLElement | null | undefined;
+
+  @query('#dialog')
+  private accessor dialog: HTMLElement | null | undefined;
+
+  @query('#close-button')
+  private accessor closeButton: HTMLElement | null | undefined;
 
   connectedCallback() {
     super.connectedCallback();

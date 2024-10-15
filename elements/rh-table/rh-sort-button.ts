@@ -40,16 +40,16 @@ const paths = new Map(Object.entries({
 export class RhSortButton extends LitElement {
   static readonly styles = [styles];
 
-  @colorContextConsumer() private on?: ColorTheme;
-
   /** The button's sorting order */
-  @property({
-    reflect: true,
-    attribute: 'sort-direction',
-  }) sortDirection?: 'asc' | 'desc';
+  @property({ reflect: true, attribute: 'sort-direction' })
+  accessor sortDirection: 'asc' | 'desc' | undefined;
 
   /** The column name associated with this button (for screen readers) */
-  @property() column?: string;
+  @property()
+  accessor column: string | undefined;
+
+  @colorContextConsumer()
+  private accessor on: ColorTheme | undefined;
 
   render() {
     const { on = '' } = this;
@@ -57,7 +57,7 @@ export class RhSortButton extends LitElement {
       <button id="sort-button" part="sort-button" @click="${this.sort}" aria-label="Sort" class="${classMap({ [on]: !!on })}">
         <span class="visually-hidden">${!this.sortDirection ? '' : `(sort${!this.column ? '' : ` by ${this.column}`} in ${this.sortDirection === 'asc' ? 'ascending' : 'descending'} order)`}</span>
         <span id="sort-indicator" part="sort-indicator">
-          <svg fill="currentColor" 
+          <svg fill="currentColor"
                height="1em"
                width="1em"
                viewBox="0 0 320 512"

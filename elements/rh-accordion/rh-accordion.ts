@@ -68,26 +68,31 @@ export class RhAccordion extends LitElement {
   /**
    * Sets accordion header's accents position to inline or bottom
    */
-  @property({ attribute: true, reflect: true }) accents?: 'inline' | 'bottom';
+  @property({ attribute: true, reflect: true })
+  accessor accents: 'inline' | 'bottom' | undefined;
 
   /**
    * If this accordion uses large styles
    */
-  @property({ reflect: true, type: Boolean }) large = false;
+  @property({ reflect: true, type: Boolean })
+  accessor large = false;
 
   /**
    * If this accordion has a border
    */
-  @property({ reflect: true, type: Boolean }) bordered = true;
+  @property({ reflect: true, type: Boolean })
+  accessor bordered = true;
 
   /**
    * Color Palette for this accordion.
    * @see https://ux.redhat.com/theming/color-palettes/
    */
   @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
+  @property({ reflect: true, attribute: 'color-palette' })
+  accessor colorPalette: ColorPalette | undefined;
 
-  @colorContextConsumer() private on?: ColorTheme;
+  @colorContextConsumer()
+  private accessor on: ColorTheme | undefined;
 
   /**
    * Sets and reflects the currently expanded accordion 0-based indexes.
@@ -105,10 +110,6 @@ export class RhAccordion extends LitElement {
       return JSON.stringify(old) !== JSON.stringify(value);
     },
   })
-  get expandedIndex() {
-    return this.#expandedIndex;
-  }
-
   set expandedIndex(value) {
     this.#expandedIndex = value;
     this.#expanded = !!this.#expandedIndex.length;
@@ -121,6 +122,10 @@ export class RhAccordion extends LitElement {
         panel.hidden = !expanded;
       }
     });
+  }
+
+  get expandedIndex() {
+    return this.#expandedIndex;
   }
 
   /** All headers for this accordion */
@@ -143,7 +148,9 @@ export class RhAccordion extends LitElement {
 
   #mo = new MutationObserver(() => this.updateAccessibility());
 
-  @provide({ context }) private ctx = this.#makeContext();
+  // @ts-expect-error: lit's types are wrong
+  @provide({ context })
+  private accessor ctx = this.#makeContext();
 
   connectedCallback() {
     super.connectedCallback();

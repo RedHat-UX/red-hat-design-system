@@ -12,7 +12,7 @@ import style from './uxdot-repo-status-table.css';
 export class UxdotRepoStatusTable extends UxdotRepoElement {
   static styles = [style];
 
-  @property() element?: string;
+  @property() accessor element!: string;
 
   render() {
     const status = this.getStatus();

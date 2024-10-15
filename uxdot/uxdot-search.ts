@@ -19,14 +19,6 @@ export class UxdotSearch extends LitElement {
 
   static styles = [styles];
 
-  @property() placeholder?: string;
-
-  @property({ type: Array, attribute: false }) items: Item[] = [];
-
-  @property({ type: Boolean, state: true }) expanded = false;
-
-  @property({ type: Number, state: true }) activeIndex?: number;
-
   private static instances = new Set<UxdotSearch>();
 
   static {
@@ -37,6 +29,18 @@ export class UxdotSearch extends LitElement {
     });
   }
 
+  @property()
+  accessor placeholder: string | undefined;
+
+  @property({ type: Array, attribute: false })
+  accessor items: Item[] = [];
+
+  @property({ type: Boolean, state: true })
+  accessor expanded = false;
+
+  @property({ type: Number, state: true })
+  accessor activeIndex: number | undefined;
+
   #internals = !isServer ? this.attachInternals() : null;
 
   #ariaLabel = '';
@@ -46,14 +50,14 @@ export class UxdotSearch extends LitElement {
   }
 
   @property()
-  get value() {
-    return this.#input?.value ?? '';
-  }
-
   set value(value) {
     if (this.#input) {
       this.#input.value = value ?? '';
     }
+  }
+
+  get value() {
+    return this.#input?.value ?? '';
   }
 
   get #input() {

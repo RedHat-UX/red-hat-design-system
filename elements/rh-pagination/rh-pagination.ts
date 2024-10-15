@@ -44,9 +44,6 @@ const L2 = html`
 export class RhPagination extends LitElement {
   static readonly version = '{{version}}';
 
-  /** Sets color theme based on parent context */
-  @colorContextConsumer() private on?: ColorTheme;
-
   static readonly styles = [styles];
 
   /**
@@ -56,30 +53,43 @@ export class RhPagination extends LitElement {
    * it to a host attribute, so that lightdom CSS can target
    * the list items.
    */
-  @property({ reflect: true }) overflow: 'start' | 'end' | 'both' | null = null;
+  @property({ reflect: true })
+  accessor overflow: 'start' | 'end' | 'both' | null = null;
 
   /** Accessible label for the 'nav' element */
-  @property() label = 'Page navigation';
+  @property()
+  accessor label = 'Page navigation';
 
   /** Accessible label for the 'first page' button */
-  @property({ attribute: 'label-first' }) labelFirst = 'first page';
+  @property({ attribute: 'label-first' })
+  accessor labelFirst = 'first page';
 
   /** Accessible label for the 'previous page' button */
-  @property({ attribute: 'label-previous' }) labelPrevious = 'previous page';
+  @property({ attribute: 'label-previous' })
+  accessor labelPrevious = 'previous page';
 
   /** Accessible label for the 'next page' button */
-  @property({ attribute: 'label-next' }) labelNext = 'next page';
+  @property({ attribute: 'label-next' })
+  accessor labelNext = 'next page';
 
   /** Accessible label for the 'last page' button */
-  @property({ attribute: 'label-last' }) labelLast = 'last page';
+  @property({ attribute: 'label-last' })
+  accessor labelLast = 'last page';
 
   /** Change pagination size to small */
-  @property({ reflect: true }) size: 'sm' | null = null;
+  @property({ reflect: true })
+  accessor size: 'sm' | null = null;
 
   /** "Open" variant */
-  @property({ reflect: true }) variant?: 'open' | null = null;
+  @property({ reflect: true })
+  accessor variant: 'open' | null = null;
 
-  @query('input') private input?: HTMLInputElement;
+  @query('input')
+  private accessor input: HTMLInputElement | undefined;
+
+  /** Sets color theme based on parent context */
+  @colorContextConsumer()
+  private accessor on: ColorTheme | undefined;
 
   #dir = new DirController(this);
   #mo = new MutationObserver(() => this.#update());

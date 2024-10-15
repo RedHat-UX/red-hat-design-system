@@ -47,21 +47,27 @@ export class RhTab extends LitElement {
   static readonly styles = [styles];
 
   /** True when the tab is selected */
-  @property({ reflect: true, type: Boolean }) active = false;
+  @property({ reflect: true, type: Boolean })
+  accessor active = false;
 
   /** True when the tab is disabled */
-  @property({ reflect: true, type: Boolean }) disabled = false;
+  @property({ reflect: true, type: Boolean })
+  accessor disabled = false;
 
+  // @ts-expect-error: lit's types are wrong
   @consume({ context, subscribe: true })
   @property({ attribute: false })
-  private ctx?: RhTabsContext;
+  private accessor ctx: RhTabsContext | undefined;
 
   /** Sets color theme based on parent context */
-  @colorContextConsumer() private on?: ColorTheme;
+  @colorContextConsumer()
+  private accessor on: ColorTheme | undefined;
 
-  @queryAssignedElements({ slot: 'icon', flatten: true }) private icons!: HTMLElement[];
+  @queryAssignedElements({ slot: 'icon', flatten: true })
+  private accessor icons!: HTMLElement[];
 
-  @query('#button') private button!: HTMLButtonElement;
+  @query('#button')
+  private accessor button!: HTMLButtonElement;
 
   #internals = InternalsController.of(this, { role: 'tab' });
 

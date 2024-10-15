@@ -1,4 +1,7 @@
 import type { DirectiveResult } from 'lit/directive.js';
+import type { RenderInfo } from '@lit-labs/ssr';
+import type { UxdotPattern } from './uxdot-pattern.js';
+import type { EleventyPage } from '@11ty/eleventy/src/UserConfig.js';
 
 import { readFile } from 'node:fs/promises';
 import { join, dirname } from 'node:path';
@@ -8,7 +11,6 @@ import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
 import { RHDSSSRController } from '@rhds/elements/lib/ssr-controller.js';
 
 import * as Tools from '@parse5/tools';
-import type { UxdotPattern } from './uxdot-pattern.js';
 
 let HighlightPairedShortcode: (
   content: string,
@@ -48,11 +50,6 @@ function isStyle(node: Tools.Element) {
   return node.tagName === 'style';
 }
 
-interface EleventyPageData {
-  inputPath: string;
-  outputPath: string;
-}
-
 export class UxdotPatternSSRControllerServer extends RHDSSSRController {
   declare host: UxdotPattern;
   allContent?: DirectiveResult;
@@ -62,7 +59,7 @@ export class UxdotPatternSSRControllerServer extends RHDSSSRController {
   hasCss = false;
   hasJs = false;
   // this is set in the worker
-  page!: EleventyPageData;
+  page!: EleventyPage;
 
 
   async #extractInlineContent(kind: 'js' | 'css', partial: Tools.Node) {
@@ -114,7 +111,8 @@ export class UxdotPatternSSRControllerServer extends RHDSSSRController {
     return pairedShortcode;
   }
 
-  async ssrSetup() {
+  async ssrSetup(renderInfo: RenderInfo) {
+    this.page = (renderInfo as RenderInfo & { page: EleventyPage }).page;
     HighlightPairedShortcode ||= await this.#loadHighlighter();
     const allContent = await this.#getPatternContent();
     const partial = parseFragment(allContent);

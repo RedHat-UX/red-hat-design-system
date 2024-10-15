@@ -16,7 +16,8 @@ import styles from './rh-audio-player-scrolling-text-overflow.css';
 export class RhAudioPlayerScrollingTextOverflow extends LitElement {
   static readonly styles = [styles];
 
-  @colorContextConsumer() private on?: ColorTheme;
+  @colorContextConsumer()
+  private accessor on: ColorTheme | undefined;
 
   #scrolling = false;
 

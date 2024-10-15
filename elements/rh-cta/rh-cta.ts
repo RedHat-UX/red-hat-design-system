@@ -1,19 +1,19 @@
-import { LitElement, html, isServer, noChange } from 'lit';
+import type { IconNameFor, IconSetName } from '@rhds/icons';
+
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
+import { state } from 'lit/decorators/state.js';
+
 import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
-
 import { DirController } from '../../lib/DirController.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
-import type { IconNameFor, IconSetName } from '@rhds/icons';
-
 import style from './rh-cta.css';
-import { state } from 'lit/decorators/state.js';
 
 function isSupportedContent(el: Element | null): el is HTMLAnchorElement | HTMLButtonElement {
   return el instanceof HTMLAnchorElement || el instanceof HTMLButtonElement;
@@ -87,39 +87,39 @@ export class RhCta extends LitElement {
    *   - Default (no variant): Use for tertiary or the least important links. This variant is the
    *       lowest in hierarchy and can be used multiple times in the same container or layout.
    */
-  @property({ reflect: true }) variant?: 'primary' | 'secondary' | 'brick';
+  @property({ reflect: true })
+  accessor variant: 'primary' | 'secondary' | 'brick' | undefined;
 
-  /**
-   * When set, overrides the default slot. Use *instead* of a slotted anchor tag
-   */
-  @property({ reflect: true }) href?: string;
+  /** When set, overrides the default slot. Use *instead* of a slotted anchor tag */
+  @property({ reflect: true })
+  accessor href: string | undefined;
 
   /** when `href` is set, the link's `download` attribute */
-  @property() download?: string;
+  @property()
+  accessor download: string | undefined;
 
   /** when `href` is set, the link's `referrerpolicy` attribute */
-  @property() referrerpolicy?: string;
+  @property()
+  accessor referrerpolicy: string | undefined;
 
   /** when `href` is set, the link's `rel` attribute */
-  @property() rel?: string;
+  @property()
+  accessor rel: string | undefined;
 
   /** when `href` is set, the link's `target` attribute */
-  @property() target?: string;
+  @property()
+  accessor target: string | undefined;
 
-  /**
-   * Icon name
-   */
-  @property({ reflect: true }) icon?: IconNameFor<IconSetName>;
+  /** Icon name */
+  @property({ reflect: true })
+  accessor icon: IconNameFor<IconSetName> | undefined;
 
-  /**
-   * Icon set
-   */
-  @property({ attribute: 'icon-set' }) iconSet: IconSetName = 'ui';
+  /** Icon set */
+  @property({ attribute: 'icon-set' })
+  accessor iconSet: IconSetName = 'ui';
 
-  /**
-   * Sets color theme based on parent context
-   */
-  @colorContextConsumer() @state() private on?: ColorTheme;
+  @colorContextConsumer() @state()
+  private accessor on: ColorTheme | undefined;
 
   protected override async getUpdateComplete(): Promise<boolean> {
     if (this.icon || !this.variant) {

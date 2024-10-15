@@ -11,7 +11,8 @@ import styles from './rh-navigation-secondary-overlay.css';
 export class RhNavigationSecondaryOverlay extends LitElement {
   static readonly styles = [styles];
 
-  @property({ type: Boolean, reflect: true }) open = false;
+  @property({ type: Boolean, reflect: true })
+  accessor open = false;
 }
 
 declare global {

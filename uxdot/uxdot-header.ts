@@ -18,11 +18,11 @@ export class UxdotHeader extends LitElement {
 
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' })
-  colorPalette = 'lighter';
+  accessor colorPalette = 'lighter';
 
-  @property({ type: Boolean, attribute: 'has-subnav' }) hasSubnav = false;
+  @property({ type: Boolean, attribute: 'has-subnav' }) accessor hasSubnav = false;
 
-  @property({ type: Boolean, attribute: 'has-search' }) hasSearch = false;
+  @property({ type: Boolean, attribute: 'has-search' }) accessor hasSearch = false;
 
   render() {
     const { hasSubnav, hasSearch } = this;

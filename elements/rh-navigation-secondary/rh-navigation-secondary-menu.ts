@@ -36,20 +36,23 @@ export class RhNavigationSecondaryMenu extends LitElement {
    * Secondary nav menus are always represented on the lightest color palette.
    */
   @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'lightest';
+  @property({ reflect: true, attribute: 'color-palette' })
+  accessor colorPalette: ColorPalette = 'lightest';
 
   /**
    * Layout (default: full-width)
    * Secondary nav menus by default are always full-width, but can be set to fixed-width for special cases.
    */
-  @property({ reflect: true }) layout: 'fixed-width' | 'full-width' = 'full-width';
-
-  #screenSize = new ScreenSizeController(this);
+  @property({ reflect: true })
+  accessor layout: 'fixed-width' | 'full-width' = 'full-width';
 
   /**
    * `visible` toggles on click (default: false)
    */
-  @property({ type: Boolean }) visible = false;
+  @property({ type: Boolean })
+  accessor visible = false;
+
+  #screenSize = new ScreenSizeController(this);
 
   connectedCallback() {
     super.connectedCallback();

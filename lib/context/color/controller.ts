@@ -1,5 +1,6 @@
 import type { ColorTheme } from './consumer.js';
 import type { CSSResult, ReactiveController } from 'lit';
+import type { PropertyDecorator } from 'lit/decorators/property.js';
 
 import { ReactiveElement } from 'lit';
 
@@ -71,3 +72,63 @@ export abstract class ColorContextController<
     host.addController(this);
   }
 }
+
+
+type Initializer<T extends ReactiveElement> = (
+  klass: typeof ReactiveElement,
+  name: keyof T,
+  options?: ColorContextOptions<T>,
+) => void;
+
+function standard<T extends ReactiveElement, V>(
+  target: ClassAccessorDecoratorTarget<T, V>,
+  context:
+    | ClassSetterDecoratorContext<T, V>
+    | ClassGetterDecoratorContext<T, V>
+    | ClassAccessorDecoratorContext<T, V>,
+  initialize: Initializer<T>,
+  options?: ColorContextOptions<T>
+) {
+  const { kind } = context;
+  switch (kind) {
+    case 'setter':
+    case 'getter':
+    case 'accessor': return {
+      init(this: T, v: V): V {
+        initialize(
+          this.constructor as typeof ReactiveElement,
+          context.name as keyof T,
+          options,
+        );
+        return v;
+      },
+    } as ClassAccessorDecoratorResult<T, V>;
+  }
+}
+
+function legacy<T extends ReactiveElement>(
+  proto: T,
+  property: keyof T,
+  initialize: Initializer<T>,
+  options?: ColorContextOptions<T>,
+): void {
+  initialize(proto.constructor as typeof ReactiveElement, property, options);
+}
+
+export function makeContextDecorator<T extends ReactiveElement>(init: Initializer<T>) {
+  return (options?: ColorContextOptions<T>): PropertyDecorator => {
+    return function<U extends T, V>(
+      protoOrTgt: U | ClassAccessorDecoratorTarget<U, V>,
+      propOrCtx: keyof U | ClassAccessorDecoratorContext<U, V>,
+    ) {
+      if (typeof propOrCtx === 'object') {
+        const target = protoOrTgt as ClassAccessorDecoratorTarget<U, V>;
+        const context = propOrCtx as ClassAccessorDecoratorContext<U, V>;
+        return standard<U, V>(target, context, init as Initializer<U>, options);
+      } else {
+        return legacy<U>(protoOrTgt as U, propOrCtx, init as Initializer<U>, options);
+      }
+    } as PropertyDecorator;
+  };
+}
+

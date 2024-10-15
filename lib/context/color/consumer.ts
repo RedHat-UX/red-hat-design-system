@@ -4,6 +4,7 @@ import {
   contextEvents,
   ColorContextController,
   type ColorContextOptions,
+  makeContextDecorator,
 } from './controller.js';
 
 import { ContextRequestEvent } from '../event.js';
@@ -115,17 +116,10 @@ export class ColorContextConsumer<
 
 /**
  * Makes this element a color context consumer
- * @param options options
  */
-export function colorContextConsumer<
-  T extends ReactiveElement
->(options?: ColorContextOptions<T>) {
-  return function(proto: T, _propertyName: string | keyof T) {
-    const propertyName = _propertyName as keyof T;
-    (proto.constructor as typeof ReactiveElement).addInitializer(instance => {
-      const controller = new ColorContextConsumer(instance as T, { propertyName, ...options });
-      // @ts-expect-error: this assignment is strictly for debugging purposes
-      instance.__DEBUG_colorContextConsumer = controller;
-    });
-  };
-}
+export const colorContextConsumer = makeContextDecorator((klass, propertyName, options) =>
+  klass.addInitializer(instance => {
+    const controller = new ColorContextConsumer(instance, { propertyName, ...options });
+    // @ts-expect-error: this assignment is strictly for debugging purposes
+    instance.__DEBUG_colorContextConsumer = controller;
+  }));
