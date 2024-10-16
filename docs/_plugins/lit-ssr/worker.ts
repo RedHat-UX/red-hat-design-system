@@ -37,18 +37,20 @@ if (parentPort === null) {
 }
 
 class RHDSSSRableRenderer extends LitElementRenderer {
-  seenElements = new Set();
+  controllers: RHDSSSRController[];
+
+  constructor(tagName: string) {
+    super(tagName);
+    this.controllers = ssrControllerMap.get(this.element) ?? [];
+  }
+
   * renderShadow(renderInfo: RenderInfo & { page: EleventyPage }): RenderResult {
-    if (!this.seenElements.has(this.element)) {
-      this.seenElements.add(this);
-      const controllers = ssrControllerMap.get(this.element) ?? [];
-      yield Promise.resolve(controllers.map(async x => {
-        if (isRHDSSSRController(x)) {
-          await x.ssrSetup?.(renderInfo);
-        }
-        return [''];
-      }));
-    }
+    yield Promise.resolve(this.controllers.map(async x => {
+      if (isRHDSSSRController(x)) {
+        await x.ssrSetup?.(renderInfo);
+      }
+      return [''];
+    }));
     yield* super.renderShadow(renderInfo);
   }
 }

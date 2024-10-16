@@ -310,6 +310,7 @@
     "@commitlint/config-conventional": "^19.5.0",
     "@lit-labs/eleventy-plugin-lit": "^1.0.3",
     "@lit/reactive-element": "^2.0.4",
+    "@lit/ts-transformers": "^2.0.1",
     "@parse5/tools": "^0.5.0",
     "@patternfly/create-element": "^1.0.3",
     "@patternfly/elements": "^4.0.2",

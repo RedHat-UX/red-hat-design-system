@@ -50,7 +50,11 @@
       },
       {
         "name": "ts-lit-plugin"
-      }
+      },
+      {
+        "transform": "@lit/ts-transformers",
+        "import": "idiomaticDecoratorsTransformer"
+      },
     ],
     "lib": [
       "DOM.iterable",

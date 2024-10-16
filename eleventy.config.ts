@@ -216,13 +216,11 @@ export default async function(eleventyConfig: UserConfig) {
   eleventyConfig.addPlugin(LitPlugin, {
     tsconfig: './tsconfig.settings.json',
     componentModules: [
-      // dependencies which are double-registering in ssr, maybe b/c of tsx module cache / query params
       'elements/rh-button/rh-button.ts',
       'elements/rh-icon/rh-icon.ts',
       'elements/rh-surface/rh-surface.ts',
       'elements/rh-code-block/rh-code-block.ts',
       'elements/rh-table/rh-table.ts',
-      //
       'elements/rh-accordion/rh-accordion.ts',
       'elements/rh-cta/rh-cta.ts',
       'elements/rh-footer/rh-footer-universal.ts',
