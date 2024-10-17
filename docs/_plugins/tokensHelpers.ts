@@ -34,7 +34,8 @@ export function getParentCollection(options: {
 
 /** generate `var(--rh-xxx, xxx)` string, given a token or css property */
 export function getVariableSyntax(token: DesignToken | CssCustomProperty) {
-  return `var(--${token.name}, ${escapeDoubleQuotes(token.$value ?? token.default)})`;
+  const name = formatTokenVariableName(token.name);
+  return `var(${name}, ${escapeDoubleQuotes(token.$value ?? token.default)})`;
 }
 
 /** generate string of copy cell for 11ty templates */
@@ -42,15 +43,27 @@ export function copyCell(token: DesignToken) {
   return /* html */`
     <td data-label="Copy">
       <div>
-        <uxdot-copy-button copy="${getVariableSyntax(token)}"></uxdot-copy-button>
-        <uxdot-copy-button copy="${getTokenHref(token)}" icon="link"></uxdot-copy-button>
+        <uxdot-copy-button class="icon-only" copy="${getVariableSyntax(token)}">
+          <span slot="extra-content" class="visually-hidden">
+            Full CSS Variable
+          </span>
+        </uxdot-copy-button>
+        <uxdot-copy-button class="icon-only" copy="${getTokenHref(token)}" icon="link">
+          <span slot="extra-content" class="visually-hidden">
+            Permalink to this token
+          </span>
+        </uxdot-copy-button>
       </div>
     </td>
   `.trim();
 }
 
+function formatTokenVariableName(token: DesignToken) {
+  return `--${token}`.replace('----', '--') as `--rh-${string}`;
+}
+
 function getTokenCategorySlug(token: DesignToken) {
-  const name = `--${token.name}`.replace('----', '--') as `--rh-${string}`;
+  const name = formatTokenVariableName(token.name);
   const data = tokensMeta.get(name);
   if (!data) {
     throw new Error(`Could not find token ${name}`);
