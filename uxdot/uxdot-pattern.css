@@ -1,4 +1,4 @@
-@import url('/styles/rh-code-block-lightdom.css');
+@import url('/assets/packages/@rhds/elements/elements/rh-code-block/rh-code-block-lightdom.css');
 
 :host {
   container: host / inline-size;
