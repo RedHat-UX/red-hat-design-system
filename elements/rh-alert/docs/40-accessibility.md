@@ -28,7 +28,7 @@ A user should have the ability to navigate to and interact with alerts using the
       </tr>
       <tr>
         <td data-label="Key"><kbd>Enter</kbd></td>
-        <td data-label="Result">Selects the close button, action, or link/td>
+        <td data-label="Result">Selects the close button, an action button, or link/td>
       </tr>
     </tbody>
   </table>

@@ -62,7 +62,7 @@ footer ::slotted(rh-button[variant='link' i]) {
 #container {
   --_background-color: var(--rh-color-teal-10, #daf2f2);
   --_border-color: var(--rh-color-teal-50, #37a3a3);
-  --_header-color: var(--rh-color-teal-70, #004d4d);
+  --_header-color: var(--rh-color-text-primary-on-light, #151515);
   --_icon-color: var(--rh-color-teal-50, #37a3a3);
   --_font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
 
@@ -84,42 +84,36 @@ footer ::slotted(rh-button[variant='link' i]) {
 #container.neutral {
   --_border-color: var(--rh-color-status-neutral);
   --_icon-color: var(--rh-color-icon-status-neutral);
-  --_header-color: var(--rh-color-text-primary);
   --_background-color: var(--rh-color-surface-status-neutral);
 }
 
 #container.info {
   --_border-color: var(--rh-color-status-info);
   --_icon-color: var(--rh-color-icon-status-info);
-  --_header-color: var(--rh-color-purple-70);
   --_background-color: var(--rh-color-surface-status-info);
 }
 
 #container.success {
   --_border-color: var(--rh-color-status-success);
   --_icon-color: var(--rh-color-icon-status-success);
-  --_header-color: var(--rh-color-green-70);
   --_background-color: var(--rh-color-surface-status-success);
 }
 
 #container.caution {
   --_border-color: var(--rh-color-status-caution);
   --_icon-color: var(--rh-color-icon-status-caution);
-  --_header-color: var(--rh-color-orange-70);
   --_background-color: var(--rh-color-surface-status-caution);
 }
 
 #container.warning {
   --_border-color: var(--rh-color-status-warning);
   --_icon-color: var(--rh-color-icon-status-warning);
-  --_header-color: var(--rh-color-yellow-70);
   --_background-color: var(--rh-color-surface-status-warning);
 }
 
 #container.danger {
   --_border-color: var(--rh-color-status-danger);
   --_icon-color: var(--rh-color-icon-status-danger);
-  --_header-color: var(--rh-color-red-orange-70);
   --_background-color: var(--rh-color-surface-status-danger);
 }
 

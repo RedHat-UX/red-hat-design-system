@@ -10,18 +10,18 @@ Use an inline alert to communicate a short message about a specific user action 
 
 Use a toast alert to communicate a time-based update, confirmation, or other short message to a user without blocking their workflow. A toast alert overlays content in the top right corner of a page and disappears when a user closes it or when it times out. For example, use a toast alert to inform a user their information was submitted successfully.
 
-## Communicating severity
+## Status levels
 
-The five severity levels for alerts are Default, Info, Success, Warning, and Danger. Each level communicates a specific urgency.
+The status levels for alerts are Neutral, Info, Success, Warning, Caution, and Error. Each level communicates a specific message or severity.
 
 <rh-alert state="info">
   <h3 slot="header">Helpful tip</h3>
-  <p>Visit the <a href="/foundations/color">Color</a> page to learn more about using severity colors.</p>
+  <p>Go to the <a href="/foundations/color">Color</a> page to learn more about using status levels.</p>
 </rh-alert>
 
 <uxdot-example width-adjustment="928px">
   <img src="../alert-guidelines-severity.svg" 
-      alt="Examples of the different colors indicating alert severity" 
+      alt="Examples of the different colors indicating alert status" 
       width="928"
       height="704">
 </uxdot-example>
@@ -46,7 +46,7 @@ Depending on the message, an inline alert can be dismissible or not dismissible.
 
 ## Writing content
 
-Both alert variants have limited space therefore content should be short and concise. A user should be able to quickly scan the content and know what steps to take next.
+Both alert variants have limited space. Therefore content should be short and concise. A user should be able to quickly scan the content and know what steps to take next.
 
 <rh-table>
   <table>
@@ -64,9 +64,9 @@ Both alert variants have limited space therefore content should be short and con
         <td data-label="How to write">
           <ul>
             <li>Short and descriptive</li>
-            <li>Try and communicate the primary message using only title text</li>
+            <li>Try to communicate the primary message using only title text</li>
             <li>Must communicate severity</li>
-            <li>Write less words if there is body text</li>
+            <li>Write fewer words if there is body text</li>
             <li>Write more words if there is no body text</li>
           </ul>
         </td>
@@ -189,7 +189,7 @@ On large screens, inline alert height is determined by the amount of content inc
 
 ### Small screens
 
-On small screens, both alert variants will span one column and toast alerts will continue to stack.
+On small screens, both alert variants will span one column, and toast alerts will continue to stack.
 
 <uxdot-example alignment="left" variant="full" no-border>
   <img src="../alert-guidelines-responsive-small-screens.svg" 
