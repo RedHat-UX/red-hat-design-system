@@ -134,11 +134,22 @@
       </script><script type="module">
         import '@rhds/elements/rh-card/rh-card.js';
       </script><style>
-  .grid rh-card h4 {
+  .card-grid {
+    margin-block-end: var(--rh-space-4xl, 64px);
+  }
+
+  .card-grid rh-card {
+    height: auto;
+
+  .card-grid rh-card h4 {
     margin-block: 0;
   }
 
-  .grid rh-card::part(footer) {
+  .card-grid rh-card::part(body) {
+    margin-block: 0;
+  }
+
+  .card-grid rh-card::part(footer) {
     display: none;
   }
 </style><script type="module">
@@ -870,7 +881,7 @@
         </div>
       </div>
     <!--/lit-part--></template>
-      <ol slot="details"><li><a href="#usage">Usage</a></li><li><a href="#best-practices">Best practices</a></li><li><a href="#behavior">Behavior</a></li><li><a href="#interaction-states">Interaction states</a></li></ol><ol slot="expanded"><li><a href="#usage">Usage</a></li><li><a href="#best-practices">Best practices</a></li><li><a href="#behavior">Behavior</a></li><li><a href="#interaction-states">Interaction states</a></li></ol>
+      <ol slot="details"><li><a href="#usage">Usage</a></li><li><a href="#variants">Variants</a></li><li><a href="#best-practices">Best practices</a></li><li><a href="#behavior">Behavior</a></li><li><a href="#interaction-states">Interaction states</a></li></ol><ol slot="expanded"><li><a href="#usage">Usage</a></li><li><a href="#variants">Variants</a></li><li><a href="#best-practices">Best practices</a></li><li><a href="#behavior">Behavior</a></li><li><a href="#interaction-states">Interaction states</a></li></ol>
     </uxdot-toc>
   </div>
   
@@ -1191,12 +1202,12 @@ see the <a href="/patterns/card">card patterns page</a>.</p>
     <!--/lit-part--></template></rh-icon>
       </button>
     <!--/lit-part--></template>
-  <h3 id="variants" tabindex="-1">
-    <a href="#variants">Variants</a><a>
+  <h3 id="patterns" tabindex="-1">
+    <a href="#patterns">Patterns</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<p>There are several card variants that can be used for a variety of use cases.</p>
-<div class="grid sm-two-columns md-three-columns">
+<p>There are several card patterns that can be used for a variety of use cases. To learn more, visit the <a href="/patterns/card/">Card patterns page</a>.</p>
+<div class="card-grid grid xs-two-columns md-three-columns">
   <rh-card>
     <h4 slot="header">Basic</h4>
     <p>
@@ -1479,25 +1490,227 @@ place any other complex components in card layouts.</p>
     <!--/lit-part--></template></rh-icon>
       </button>
     <!--/lit-part--></template>
+  <h2 id="variants" tabindex="-1">
+    <a href="#variants">Variants</a><a>
+  </a></h2>
+</uxdot-copy-permalink>
+<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+  <h3 id="promo" tabindex="-1">
+    <a href="#promo">Promo</a><a>
+  </a></h3>
+</uxdot-copy-permalink>
+<p>A promo should display content related to the current experience but isn’t tied to the flow which the user is reading. It was established as a variant of card because it is also a container that uses similar patterns.</p>
+<uxdot-copy-permalink  class="h4"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+  <h4 id="standard-promo" tabindex="-1">
+    <a href="#standard-promo">Standard promo</a><a>
+  </a></h4>
+</uxdot-copy-permalink>
+<p>A standard promo should contain only a heading and a call to action, which allows its content to stay separate from the rest of the page without being too prominent.</p>
+<uxdot-copy-permalink  class="h4"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+  <h4 id="featured-promo" tabindex="-1">
+    <a href="#featured-promo">Featured promo</a><a>
+  </a></h4>
+</uxdot-copy-permalink>
+<p>A featured promo can contain a heading, additional body copy, call to action, and an image. This allows it to stand out more and give more information than a standard promo.</p>
+<uxdot-copy-permalink  class="h4"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+  <h4 id="full-width-promo" tabindex="-1">
+    <a href="#full-width-promo">Full-width promo</a><a>
+  </a></h4>
+</uxdot-copy-permalink>
+<p>A full-width promo is more interruptive than the other configurations. It’s best used on pages that have section bands.</p>
+<uxdot-copy-permalink  class="h4"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+  <h4 id="narrow-promo" tabindex="-1">
+    <a href="#narrow-promo">Narrow promo</a><a>
+  </a></h4>
+</uxdot-copy-permalink>
+<p>A narrow promo can be used if the promo content needs to fit in a small area, like in a sidebar.</p>
+<uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
   <h2 id="best-practices" tabindex="-1">
     <a href="#best-practices">Best practices</a><a>
   </a></h2>
 </uxdot-copy-permalink>
-<p>The minimum width of a card in any layout is four columns and the maximum
-number of cards that can be used in a row is three.</p>
-<uxdot-example   width-adjustment="872px" danger><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;container-type:inline-size;container-name:host;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{padding:var(--rh-space-2xl);display:flex;flex-direction:column;align-items:var(--_alignment,center);justify-content:center;border-width:var(--rh-border-width-sm);border-style:solid;border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);background-color:var(--rh-color-surface);color:var(--rh-color-text-primary)}::slotted(*){display:flex;flex-direction:column;align-items:var(--_alignment,center);justify-content:center;max-width:100%;height:auto}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part DbmYZodZUIs=-->
+<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+  <h3 id="card-width" tabindex="-1">
+    <a href="#card-width">Card width</a><a>
+  </a></h3>
+</uxdot-copy-permalink>
+<uxdot-best-practice  variant="do"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block:var(--rh-space-2xl)}#container{display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl)}span{font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xs);font-weight:var(--rh-font-weight-heading-medium);display:flex;flex-direction:row;align-items:center;gap:var(--rh-space-sm)}#do span{color:var(--rh-color-status-success)}#dont span{color:var(--rh-color-status-danger)}::slotted(uxdot-example){margin:0!important}figure{margin:0!important}</style><!--lit-part /OqYtWIsZqM=-->
+      <figure id="container">
+        <slot name="image"></slot>
+        <!--lit-node 2--><figcaption id="do">
+          <span><!--lit-node 4--><rh-icon    set="ui" size="md" icon="check-circle" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part 1yXX22gF5E4=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 32C7.178 32 0 24.822 0 16S7.178 0 16 0s16 7.178 16 16-7.178 16-16 16Zm0-30C8.28 2 2 8.28 2 16s6.28 14 14 14 14-6.28 14-14S23.72 2 16 2Z"/><path d="M14 21.792a1.49 1.49 0 0 1-1.06-.439l-4.647-4.646a1 1 0 1 1 1.414-1.414L14 19.586l8.293-8.293a1 1 0 1 1 1.414 1.414l-8.646 8.647a1.494 1.494 0 0 1-1.06.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon><!--lit-part-->Do<!--/lit-part--></span>
+          <slot></slot>
+        </figcaption>
+      </figure>
+    <!--/lit-part--></template>
+  <uxdot-example   width-adjustment="1012px" slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;container-type:inline-size;container-name:host;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{padding:var(--rh-space-2xl);display:flex;flex-direction:column;align-items:var(--_alignment,center);justify-content:center;border-width:var(--rh-border-width-sm);border-style:solid;border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);background-color:var(--rh-color-surface);color:var(--rh-color-text-primary)}::slotted(*){display:flex;flex-direction:column;align-items:var(--_alignment,center);justify-content:center;max-width:100%;height:auto}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part DbmYZodZUIs=-->
       <!--lit-node 0--><div id="container"
            part="container"
            class="on  widthAdjustment "
-           style="--_width: 872px; --_alignment: center">
+           style="--_width: 1012px; --_alignment: center">
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-  <img src="../card-bestpractice-1.svg" alt="Too many cards" width="872" height="206">
-</uxdot-example>
-<p>Don’t use a primary call to action in any card unless the primary action of a
-page is positioned inside of that card.</p>
-<uxdot-example   width-adjustment="360px" danger><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;container-type:inline-size;container-name:host;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{padding:var(--rh-space-2xl);display:flex;flex-direction:column;align-items:var(--_alignment,center);justify-content:center;border-width:var(--rh-border-width-sm);border-style:solid;border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);background-color:var(--rh-color-surface);color:var(--rh-color-text-primary)}::slotted(*){display:flex;flex-direction:column;align-items:var(--_alignment,center);justify-content:center;max-width:100%;height:auto}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part DbmYZodZUIs=-->
+    <img src="../card-best-practices-width-do.svg" alt="Three cards in a row" width="1012" height="187">
+  </uxdot-example>
+  <p>In a 12-column layout, use a minimum width of four columns for a card. The maximum number of cards that should be used in a row is three.</p>
+</uxdot-best-practice>
+<uxdot-best-practice  variant="dont"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block:var(--rh-space-2xl)}#container{display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl)}span{font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xs);font-weight:var(--rh-font-weight-heading-medium);display:flex;flex-direction:row;align-items:center;gap:var(--rh-space-sm)}#do span{color:var(--rh-color-status-success)}#dont span{color:var(--rh-color-status-danger)}::slotted(uxdot-example){margin:0!important}figure{margin:0!important}</style><!--lit-part /OqYtWIsZqM=-->
+      <figure id="container">
+        <slot name="image"></slot>
+        <!--lit-node 2--><figcaption id="dont">
+          <span><!--lit-node 4--><rh-icon    set="ui" size="md" icon="close-circle" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part 7SANv4gSl/4=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M21.707 10.293a1 1 0 0 0-1.414 0L16 14.586l-4.293-4.293a1 1 0 1 0-1.414 1.414L14.586 16l-4.293 4.293a1 1 0 1 0 1.414 1.414L16 17.414l4.293 4.293a.997.997 0 0 0 1.414 0 1 1 0 0 0 0-1.414L17.414 16l4.293-4.293a1 1 0 0 0 0-1.414Z"/><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm0 30C8.28 30 2 23.72 2 16S8.28 2 16 2s14 6.28 14 14-6.28 14-14 14Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon><!--lit-part-->Don&#39;t<!--/lit-part--></span>
+          <slot></slot>
+        </figcaption>
+      </figure>
+    <!--/lit-part--></template>
+  <uxdot-example   width-adjustment="1012px" slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;container-type:inline-size;container-name:host;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{padding:var(--rh-space-2xl);display:flex;flex-direction:column;align-items:var(--_alignment,center);justify-content:center;border-width:var(--rh-border-width-sm);border-style:solid;border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);background-color:var(--rh-color-surface);color:var(--rh-color-text-primary)}::slotted(*){display:flex;flex-direction:column;align-items:var(--_alignment,center);justify-content:center;max-width:100%;height:auto}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part DbmYZodZUIs=-->
+      <!--lit-node 0--><div id="container"
+           part="container"
+           class="on  widthAdjustment "
+           style="--_width: 1012px; --_alignment: center">
+        <slot></slot>
+      </div>
+    <!--/lit-part--></template>
+    <img src="../card-best-practices-width-dont.svg" alt="Four cards in a row" width="1012" height="187">
+  </uxdot-example>
+  <p>Do not make cards narrower than 4 columns. This may not give enough space for content within the card.</p>
+</uxdot-best-practice>
+<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+  <h3 id="call-to-action-variants-in-cards" tabindex="-1">
+    <a href="#call-to-action-variants-in-cards">Call to action variants in cards</a><a>
+  </a></h3>
+</uxdot-copy-permalink>
+<div class="grid sm-two-columns">
+  <uxdot-best-practice  variant="do"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block:var(--rh-space-2xl)}#container{display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl)}span{font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xs);font-weight:var(--rh-font-weight-heading-medium);display:flex;flex-direction:row;align-items:center;gap:var(--rh-space-sm)}#do span{color:var(--rh-color-status-success)}#dont span{color:var(--rh-color-status-danger)}::slotted(uxdot-example){margin:0!important}figure{margin:0!important}</style><!--lit-part /OqYtWIsZqM=-->
+      <figure id="container">
+        <slot name="image"></slot>
+        <!--lit-node 2--><figcaption id="do">
+          <span><!--lit-node 4--><rh-icon    set="ui" size="md" icon="check-circle" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part 1yXX22gF5E4=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 32C7.178 32 0 24.822 0 16S7.178 0 16 0s16 7.178 16 16-7.178 16-16 16Zm0-30C8.28 2 2 8.28 2 16s6.28 14 14 14 14-6.28 14-14S23.72 2 16 2Z"/><path d="M14 21.792a1.49 1.49 0 0 1-1.06-.439l-4.647-4.646a1 1 0 1 1 1.414-1.414L14 19.586l8.293-8.293a1 1 0 1 1 1.414 1.414l-8.646 8.647a1.494 1.494 0 0 1-1.06.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon><!--lit-part-->Do<!--/lit-part--></span>
+          <slot></slot>
+        </figcaption>
+      </figure>
+    <!--/lit-part--></template>
+    <uxdot-example   width-adjustment="360px" slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;container-type:inline-size;container-name:host;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{padding:var(--rh-space-2xl);display:flex;flex-direction:column;align-items:var(--_alignment,center);justify-content:center;border-width:var(--rh-border-width-sm);border-style:solid;border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);background-color:var(--rh-color-surface);color:var(--rh-color-text-primary)}::slotted(*){display:flex;flex-direction:column;align-items:var(--_alignment,center);justify-content:center;max-width:100%;height:auto}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part DbmYZodZUIs=-->
       <!--lit-node 0--><div id="container"
            part="container"
            class="on  widthAdjustment "
@@ -1505,11 +1718,25 @@ page is positioned inside of that card.</p>
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-  <img src="../card-bestpractice-2.svg" alt="Card width error" width="360" height="326">
-</uxdot-example>
-<p>Don’t use multiple calls to action in one card. Instead, distribute them to
-other cards.</p>
-<uxdot-example  width-adjustment="360px"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;container-type:inline-size;container-name:host;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{padding:var(--rh-space-2xl);display:flex;flex-direction:column;align-items:var(--_alignment,center);justify-content:center;border-width:var(--rh-border-width-sm);border-style:solid;border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);background-color:var(--rh-color-surface);color:var(--rh-color-text-primary)}::slotted(*){display:flex;flex-direction:column;align-items:var(--_alignment,center);justify-content:center;max-width:100%;height:auto}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part DbmYZodZUIs=-->
+      <img src="../card-best-practices-cta-variants-do.svg" alt="Card with a default call to action" width="360" height="223">
+    </uxdot-example>
+    <p>Use secondary or default calls to action in most cards.</p>
+  </uxdot-best-practice>
+  <uxdot-best-practice  variant="dont"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block:var(--rh-space-2xl)}#container{display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl)}span{font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xs);font-weight:var(--rh-font-weight-heading-medium);display:flex;flex-direction:row;align-items:center;gap:var(--rh-space-sm)}#do span{color:var(--rh-color-status-success)}#dont span{color:var(--rh-color-status-danger)}::slotted(uxdot-example){margin:0!important}figure{margin:0!important}</style><!--lit-part /OqYtWIsZqM=-->
+      <figure id="container">
+        <slot name="image"></slot>
+        <!--lit-node 2--><figcaption id="dont">
+          <span><!--lit-node 4--><rh-icon    set="ui" size="md" icon="close-circle" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part 7SANv4gSl/4=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M21.707 10.293a1 1 0 0 0-1.414 0L16 14.586l-4.293-4.293a1 1 0 1 0-1.414 1.414L14.586 16l-4.293 4.293a1 1 0 1 0 1.414 1.414L16 17.414l4.293 4.293a.997.997 0 0 0 1.414 0 1 1 0 0 0 0-1.414L17.414 16l4.293-4.293a1 1 0 0 0 0-1.414Z"/><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm0 30C8.28 30 2 23.72 2 16S8.28 2 16 2s14 6.28 14 14-6.28 14-14 14Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon><!--lit-part-->Don&#39;t<!--/lit-part--></span>
+          <slot></slot>
+        </figcaption>
+      </figure>
+    <!--/lit-part--></template>
+    <uxdot-example   width-adjustment="360px" slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;container-type:inline-size;container-name:host;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{padding:var(--rh-space-2xl);display:flex;flex-direction:column;align-items:var(--_alignment,center);justify-content:center;border-width:var(--rh-border-width-sm);border-style:solid;border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);background-color:var(--rh-color-surface);color:var(--rh-color-text-primary)}::slotted(*){display:flex;flex-direction:column;align-items:var(--_alignment,center);justify-content:center;max-width:100%;height:auto}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part DbmYZodZUIs=-->
       <!--lit-node 0--><div id="container"
            part="container"
            class="on  widthAdjustment "
@@ -1517,8 +1744,155 @@ other cards.</p>
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-  <img src="../card-bestpractice-3.svg" alt="Multiple calls to action" width="360" height="326">
-</uxdot-example>
+      <img src="../card-best-practices-cta-variants-dont.svg" alt="Card with a primary call to action" width="360" height="252">
+    </uxdot-example>
+    <p>Do not use a primary call to action in any card unless the primary action for the whole page is positioned inside of that card.</p>
+  </uxdot-best-practice>
+</div>
+<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+  <h3 id="number-of-calls-to-actions-in-cards" tabindex="-1">
+    <a href="#number-of-calls-to-actions-in-cards">Number of calls to actions in cards</a><a>
+  </a></h3>
+</uxdot-copy-permalink>
+<div class="grid sm-two-columns">
+  <uxdot-best-practice  variant="do"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block:var(--rh-space-2xl)}#container{display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl)}span{font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xs);font-weight:var(--rh-font-weight-heading-medium);display:flex;flex-direction:row;align-items:center;gap:var(--rh-space-sm)}#do span{color:var(--rh-color-status-success)}#dont span{color:var(--rh-color-status-danger)}::slotted(uxdot-example){margin:0!important}figure{margin:0!important}</style><!--lit-part /OqYtWIsZqM=-->
+      <figure id="container">
+        <slot name="image"></slot>
+        <!--lit-node 2--><figcaption id="do">
+          <span><!--lit-node 4--><rh-icon    set="ui" size="md" icon="check-circle" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part 1yXX22gF5E4=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 32C7.178 32 0 24.822 0 16S7.178 0 16 0s16 7.178 16 16-7.178 16-16 16Zm0-30C8.28 2 2 8.28 2 16s6.28 14 14 14 14-6.28 14-14S23.72 2 16 2Z"/><path d="M14 21.792a1.49 1.49 0 0 1-1.06-.439l-4.647-4.646a1 1 0 1 1 1.414-1.414L14 19.586l8.293-8.293a1 1 0 1 1 1.414 1.414l-8.646 8.647a1.494 1.494 0 0 1-1.06.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon><!--lit-part-->Do<!--/lit-part--></span>
+          <slot></slot>
+        </figcaption>
+      </figure>
+    <!--/lit-part--></template>
+    <uxdot-example   width-adjustment="360px" slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;container-type:inline-size;container-name:host;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{padding:var(--rh-space-2xl);display:flex;flex-direction:column;align-items:var(--_alignment,center);justify-content:center;border-width:var(--rh-border-width-sm);border-style:solid;border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);background-color:var(--rh-color-surface);color:var(--rh-color-text-primary)}::slotted(*){display:flex;flex-direction:column;align-items:var(--_alignment,center);justify-content:center;max-width:100%;height:auto}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part DbmYZodZUIs=-->
+      <!--lit-node 0--><div id="container"
+           part="container"
+           class="on  widthAdjustment "
+           style="--_width: 360px; --_alignment: center">
+        <slot></slot>
+      </div>
+    <!--/lit-part--></template>
+      <img src="../card-best-practices-cta-number-do.svg" alt="Card with a secondary call to action and a default call to action" width="360" height="303">
+    </uxdot-example>
+    <p>Use up to two calls to action in a card. They can be two different variants.</p>
+  </uxdot-best-practice>
+  <uxdot-best-practice  variant="dont"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block:var(--rh-space-2xl)}#container{display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl)}span{font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xs);font-weight:var(--rh-font-weight-heading-medium);display:flex;flex-direction:row;align-items:center;gap:var(--rh-space-sm)}#do span{color:var(--rh-color-status-success)}#dont span{color:var(--rh-color-status-danger)}::slotted(uxdot-example){margin:0!important}figure{margin:0!important}</style><!--lit-part /OqYtWIsZqM=-->
+      <figure id="container">
+        <slot name="image"></slot>
+        <!--lit-node 2--><figcaption id="dont">
+          <span><!--lit-node 4--><rh-icon    set="ui" size="md" icon="close-circle" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part 7SANv4gSl/4=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M21.707 10.293a1 1 0 0 0-1.414 0L16 14.586l-4.293-4.293a1 1 0 1 0-1.414 1.414L14.586 16l-4.293 4.293a1 1 0 1 0 1.414 1.414L16 17.414l4.293 4.293a.997.997 0 0 0 1.414 0 1 1 0 0 0 0-1.414L17.414 16l4.293-4.293a1 1 0 0 0 0-1.414Z"/><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm0 30C8.28 30 2 23.72 2 16S8.28 2 16 2s14 6.28 14 14-6.28 14-14 14Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon><!--lit-part-->Don&#39;t<!--/lit-part--></span>
+          <slot></slot>
+        </figcaption>
+      </figure>
+    <!--/lit-part--></template>
+    <uxdot-example   width-adjustment="360px" slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;container-type:inline-size;container-name:host;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{padding:var(--rh-space-2xl);display:flex;flex-direction:column;align-items:var(--_alignment,center);justify-content:center;border-width:var(--rh-border-width-sm);border-style:solid;border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);background-color:var(--rh-color-surface);color:var(--rh-color-text-primary)}::slotted(*){display:flex;flex-direction:column;align-items:var(--_alignment,center);justify-content:center;max-width:100%;height:auto}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part DbmYZodZUIs=-->
+      <!--lit-node 0--><div id="container"
+           part="container"
+           class="on  widthAdjustment "
+           style="--_width: 360px; --_alignment: center">
+        <slot></slot>
+      </div>
+    <!--/lit-part--></template>
+      <img src="../card-best-practices-cta-number-dont.svg" alt="Card with three call to actions" width="360" height="354">
+    </uxdot-example>
+    <p>Do not use more than two calls to action in a card. This could make it harder for the user to understand what action to take next.</p>
+  </uxdot-best-practice>
+</div>
+<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+  <h3 id="promo-1" tabindex="-1">
+    <a href="#promo-1">Promo</a><a>
+  </a></h3>
+</uxdot-copy-permalink>
+<div class="grid sm-two-columns">
+  <uxdot-best-practice  variant="do"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block:var(--rh-space-2xl)}#container{display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl)}span{font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xs);font-weight:var(--rh-font-weight-heading-medium);display:flex;flex-direction:row;align-items:center;gap:var(--rh-space-sm)}#do span{color:var(--rh-color-status-success)}#dont span{color:var(--rh-color-status-danger)}::slotted(uxdot-example){margin:0!important}figure{margin:0!important}</style><!--lit-part /OqYtWIsZqM=-->
+      <figure id="container">
+        <slot name="image"></slot>
+        <!--lit-node 2--><figcaption id="do">
+          <span><!--lit-node 4--><rh-icon    set="ui" size="md" icon="check-circle" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part 1yXX22gF5E4=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 32C7.178 32 0 24.822 0 16S7.178 0 16 0s16 7.178 16 16-7.178 16-16 16Zm0-30C8.28 2 2 8.28 2 16s6.28 14 14 14 14-6.28 14-14S23.72 2 16 2Z"/><path d="M14 21.792a1.49 1.49 0 0 1-1.06-.439l-4.647-4.646a1 1 0 1 1 1.414-1.414L14 19.586l8.293-8.293a1 1 0 1 1 1.414 1.414l-8.646 8.647a1.494 1.494 0 0 1-1.06.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon><!--lit-part-->Do<!--/lit-part--></span>
+          <slot></slot>
+        </figcaption>
+      </figure>
+    <!--/lit-part--></template>
+    <uxdot-example   width-adjustment="546px" slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;container-type:inline-size;container-name:host;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{padding:var(--rh-space-2xl);display:flex;flex-direction:column;align-items:var(--_alignment,center);justify-content:center;border-width:var(--rh-border-width-sm);border-style:solid;border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);background-color:var(--rh-color-surface);color:var(--rh-color-text-primary)}::slotted(*){display:flex;flex-direction:column;align-items:var(--_alignment,center);justify-content:center;max-width:100%;height:auto}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part DbmYZodZUIs=-->
+      <!--lit-node 0--><div id="container"
+           part="container"
+           class="on  widthAdjustment "
+           style="--_width: 546px; --_alignment: center">
+        <slot></slot>
+      </div>
+    <!--/lit-part--></template>
+      <img src="../card-best-practices-promo-do.svg" alt="One featured promo below lorem ipsum text" width="546" height="312">
+    </uxdot-example>
+    <p>Because promo is used for special promotional content only, promos should typically appear individually.</p>
+  </uxdot-best-practice>
+  <uxdot-best-practice  variant="dont"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block:var(--rh-space-2xl)}#container{display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl)}span{font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xs);font-weight:var(--rh-font-weight-heading-medium);display:flex;flex-direction:row;align-items:center;gap:var(--rh-space-sm)}#do span{color:var(--rh-color-status-success)}#dont span{color:var(--rh-color-status-danger)}::slotted(uxdot-example){margin:0!important}figure{margin:0!important}</style><!--lit-part /OqYtWIsZqM=-->
+      <figure id="container">
+        <slot name="image"></slot>
+        <!--lit-node 2--><figcaption id="dont">
+          <span><!--lit-node 4--><rh-icon    set="ui" size="md" icon="close-circle" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{line-height:0;aspect-ratio:1/1;display:inline-flex;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{width:12px}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part 7SANv4gSl/4=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M21.707 10.293a1 1 0 0 0-1.414 0L16 14.586l-4.293-4.293a1 1 0 1 0-1.414 1.414L14.586 16l-4.293 4.293a1 1 0 1 0 1.414 1.414L16 17.414l4.293 4.293a.997.997 0 0 0 1.414 0 1 1 0 0 0 0-1.414L17.414 16l4.293-4.293a1 1 0 0 0 0-1.414Z"/><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm0 30C8.28 30 2 23.72 2 16S8.28 2 16 2s14 6.28 14 14-6.28 14-14 14Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon><!--lit-part-->Don&#39;t<!--/lit-part--></span>
+          <slot></slot>
+        </figcaption>
+      </figure>
+    <!--/lit-part--></template>
+    <uxdot-example   width-adjustment="546px" slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;container-type:inline-size;container-name:host;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{padding:var(--rh-space-2xl);display:flex;flex-direction:column;align-items:var(--_alignment,center);justify-content:center;border-width:var(--rh-border-width-sm);border-style:solid;border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);background-color:var(--rh-color-surface);color:var(--rh-color-text-primary)}::slotted(*){display:flex;flex-direction:column;align-items:var(--_alignment,center);justify-content:center;max-width:100%;height:auto}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part DbmYZodZUIs=-->
+      <!--lit-node 0--><div id="container"
+           part="container"
+           class="on  widthAdjustment "
+           style="--_width: 546px; --_alignment: center">
+        <slot></slot>
+      </div>
+    <!--/lit-part--></template>
+      <img src="../card-best-practices-promo-dont.svg" alt="Three narrow promos in a group" width="546" height="312">
+    </uxdot-example>
+    <p>Do not group multiple promos together as if they were a regular card group.</p>
+  </uxdot-best-practice>
+</div>
 <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
