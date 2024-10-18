@@ -38,6 +38,7 @@ interface ElementDocsPageBasicData extends ElementDocsPageTabData {
 
 interface ElementDocsPageFileSystemData extends ElementDocsPageBasicData {
   planned: boolean;
+  hidden: boolean;
   fileExists: boolean;
   hasLightdom: boolean;
   hasLightdomShim: boolean;
@@ -135,6 +136,7 @@ async function getFSData(props: ElementDocsPageBasicData): Promise<ElementDocsPa
     ...props,
     fileExists: await exists(props.absPath),
     planned: await isPlanned(props.tagName),
+    hidden: await isHidden(props.tagName),
     hasLightdom: await exists(join(elDir, `${props.tagName}-lightdom.css`)),
     hasLightdomShim: await exists(join(elDir, `${props.tagName}-lightdom-shim.css`)),
     mainDemoContent: await exists(demoPath) ? await readFile(demoPath, 'utf8') : '',
@@ -155,6 +157,11 @@ async function isPlanned(tagName: string) {
   }
   const element = repoStatus.find(element => element.tagName === tagName);
   return element?.libraries.rhds === 'planned';
+}
+
+async function isHidden(tagName: string) {
+  const element = repoStatus.find(element => element.tagName === tagName);
+  return element?.type === 'hidden';
 }
 
 const isDocFor = (tagName: string) =>
