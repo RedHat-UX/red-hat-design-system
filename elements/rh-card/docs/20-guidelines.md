@@ -21,6 +21,7 @@
 
 ## Usage
 
+
 Cards are used to display basic content or long paragraphs of text. Secondary and
 Default calls to action may be used.
 
@@ -30,6 +31,7 @@ For examples of patterns which use or modify Card,
 see the [card patterns page](/patterns/card).
 
 </rh-alert>
+
 
 ### Patterns
 
