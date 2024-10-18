@@ -22,13 +22,13 @@
 ## Usage
 
 
-Cards are used to display basic content or long paragraphs of text. Secondary and 
+Cards are used to display basic content or long paragraphs of text. Secondary and
 Default calls to action may be used.
 
 <rh-alert state="info">
 
-  For examples of patterns which use or modify Card,
-  see the [card patterns page](/patterns/card).
+For examples of patterns which use or modify Card,
+see the [card patterns page](/patterns/card).
 
 </rh-alert>
 
@@ -152,15 +152,14 @@ There are several card patterns that can be used for a variety of use cases. To 
 
 </div>
 
+### Content cards
 
-### Content
-
-Cards have the potential to contain lots of content, like a combination of 
-text, links, images, multimedia, etc. Ensure content serves the use case, but 
-keep things simple at the same time. Don’t use too much content in one card, 
-distribute extra content to other cards or somewhere else on the page. A 
-[Sticky card](/patterns/sticky-card/) is a kind of card that can 
-contain similar content, but it sticks to the side of a page and it’s always 
+Cards have the potential to contain lots of content, like a combination of
+text, links, images, multimedia, etc. Ensure content serves the use case, but
+keep things simple at the same time. Don’t use too much content in one card,
+distribute extra content to other cards or somewhere else on the page. A
+[Sticky card](/patterns/sticky-card/) is a kind of card that can
+contain similar content, but it sticks to the side of a page and it’s always
 present until a user dismisses it.
 
 ### Character count
@@ -198,10 +197,10 @@ The recommended maximum character count for the elements of a card are listed be
 
 ### Grouping
 
-Different card styles can sometimes be grouped together. They can be arranged 
-in a grid horizontally or vertically, depending on available space or screen 
-size. Be sure to only group cards together that have similar styles or 
-content. For example, grouping a basic card with a pricing card will look bad 
+Different card styles can sometimes be grouped together. They can be arranged
+in a grid horizontally or vertically, depending on available space or screen
+size. Be sure to only group cards together that have similar styles or
+content. For example, grouping a basic card with a pricing card will look bad
 because they’re not very similar.
 
 <uxdot-example width-adjustment="784px">
@@ -211,20 +210,20 @@ because they’re not very similar.
         height="513">
 </uxdot-example>
 
-These cards can be grouped together because they have similar styles and 
+These cards can be grouped together because they have similar styles and
 content {.footnote}
 
 ### Layout
 
-Cards are small layouts that should be arranged on a grid and not float 
-randomly in larger layouts. Cards have a minimum width of four columns and a 
+Cards are small layouts that should be arranged on a grid and not float
+randomly in larger layouts. Cards have a minimum width of four columns and a
 maximum width of six columns.
 
 ### Other components
 
-Cards can include complex components if necessary. For example, the 
-[Filter](/patterns/filter/) pattern requires an Accordion or a 
-[Disclosure](/patterns/disclosure/) to sort a content set. Don't 
+Cards can include complex components if necessary. For example, the
+[Filter](/patterns/filter/) pattern requires an Accordion or a
+[Disclosure](/patterns/disclosure/) to sort a content set. Don't
 place any other complex components in card layouts.
 
 <uxdot-example width-adjustment="664px">
@@ -356,9 +355,9 @@ A narrow promo can be used if the promo content needs to fit in a small area, li
 
 ### Vertical height
 
-The vertical height of cards depends on how much content is placed inside. If 
-there are multiple cards in a row, the vertical height of each of them will be 
-determined by the tallest card. Don’t place inconsistent amounts of content in 
+The vertical height of cards depends on how much content is placed inside. If
+there are multiple cards in a row, the vertical height of each of them will be
+determined by the tallest card. Don’t place inconsistent amounts of content in
 cards, as this will impact how scannable the group will appear to users.
 
 <uxdot-example width-adjustment="784px">
@@ -370,8 +369,8 @@ cards, as this will impact how scannable the group will appear to users.
 
 ### Interactivity
 
-If a card contains only one link destination, the entire container and any 
-elements inside should all be interactive. Otherwise, each interactive element 
+If a card contains only one link destination, the entire container and any
+elements inside should all be interactive. Otherwise, each interactive element
 should continue to be interactive, but not the card container.
 
 <uxdot-example width-adjustment="784px">
@@ -383,6 +382,6 @@ should continue to be interactive, but not the card container.
 
 ## Interaction states
 
-Since cards can consist of a variety of elements, refer to the specific 
-interaction states that are assigned to each style and component for more 
+Since cards can consist of a variety of elements, refer to the specific
+interaction states that are assigned to each style and component for more
 information.
