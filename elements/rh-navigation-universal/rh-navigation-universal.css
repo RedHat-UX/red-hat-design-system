@@ -1,0 +1,18 @@
+:host {
+  display: block;
+}
+
+#container {
+  background-color: var(--rh-color-surface-darkest, #151515);
+  padding-inline: var(--rh-space-lg, 16px);
+}
+
+::slotted(ul) {
+  border-block-end: 1px solid var(--rh-color-gray-50, #707070);
+  margin-block: 0;
+  padding-inline-start: 0;
+}
+
+:host([variant='bordered']) ::slotted(ul) {
+  text-align: end;
+}
