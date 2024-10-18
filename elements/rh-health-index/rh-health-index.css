@@ -15,8 +15,9 @@
   line-height: var(--_box-size);
   text-transform: uppercase;
 
-  /* sizing */
+  /* size & positioning */
   --_box-size: var(--rh-space-xl, 24px);
+  --_z-index: var(--rh-health-index-z-index, 10);
 
   /* colors */
   --_color-text-active: var(--rh-color-gray-95, #151515);
@@ -52,7 +53,7 @@
 
 .box.active {
   color: var(--_color-text-active);
-  z-index: 10;
+  z-index: var(--_z-index);
 }
 
 :is(.sm,.md) .box.active {
@@ -120,7 +121,7 @@
   display: block;
   content: '';
   min-height: var(--rh-length-xs, 4px);
-  z-index: 10;
+  z-index: var(--_z-index);
   background-color: var(--_color-20);
 }
 
