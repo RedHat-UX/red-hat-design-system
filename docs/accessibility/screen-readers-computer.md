@@ -146,7 +146,7 @@ To start and stop Narrator, press <kbd>Windows-Ctrl-Enter</kbd> on your keyboard
 
 - Orca is included with many Linux distros.
 - Commonly paired with: Firefox
-- Keyboard shortcuts (from Accessibility Support)
+- [Keyboard shortcuts](https://a11ysupport.io/learn/at/orca) (from Accessibility Support)
 
 ### Getting started
 
