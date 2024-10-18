@@ -1,9 +1,20 @@
 <style data-helmet>
-  .grid rh-card h4 {
+  .card-grid {
+    margin-block-end: var(--rh-space-4xl, 64px);
+  }
+
+  .card-grid rh-card {
+    height: auto;
+
+  .card-grid rh-card h4 {
     margin-block: 0;
   }
 
-  .grid rh-card::part(footer) {
+  .card-grid rh-card::part(body) {
+    margin-block: 0;
+  }
+
+  .card-grid rh-card::part(footer) {
     display: none;
   }
 </style>
@@ -20,11 +31,11 @@ see the [card patterns page](/patterns/card).
 
 </rh-alert>
 
-### Variants
+### Patterns
 
-There are several card variants that can be used for a variety of use cases.
+There are several card patterns that can be used for a variety of use cases. To learn more, visit the <a href="/patterns/card/">Card patterns page</a>.
 
-<div class="grid sm-two-columns md-three-columns">
+<div class="card-grid grid xs-two-columns md-three-columns">
   <rh-card>
     <h4 slot="header">Basic</h4>
     <p>
@@ -220,37 +231,123 @@ place any other complex components in card layouts.
         height="513">
 </uxdot-example>
 
+## Variants
+
+### Promo
+
+A promo should display content related to the current experience but isn’t tied to the flow which the user is reading. It was established as a variant of card because it is also a container that uses similar patterns.
+
+#### Standard promo
+
+A standard promo should contain only a heading and a call to action, which allows its content to stay separate from the rest of the page without being too prominent.
+
+#### Featured promo
+
+A featured promo can contain a heading, additional body copy, call to action, and an image. This allows it to stand out more and give more information than a standard promo.
+
+#### Full-width promo
+
+A full-width promo is more interruptive than the other configurations. It’s best used on pages that have section bands.
+
+#### Narrow promo
+
+A narrow promo can be used if the promo content needs to fit in a small area, like in a sidebar.
+
 ## Best practices
 
-The minimum width of a card in any layout is four columns and the maximum
-number of cards that can be used in a row is three.
+### Card width
 
-<uxdot-example width-adjustment="872px" danger>
-  <img src="../card-bestpractice-1.svg"
-        alt="Too many cards"
-        width="872"
-        height="206">
-</uxdot-example>
+<uxdot-best-practice variant="do">
+  <uxdot-example width-adjustment="1012px" slot="image">
+    <img src="../card-best-practices-width-do.svg"
+          alt="Three cards in a row"
+          width="1012"
+          height="187">
+  </uxdot-example>
+  <p>In a 12-column layout, use a minimum width of four columns for a card. The maximum number of cards that should be used in a row is three.</p>
+</uxdot-best-practice>
 
-Don’t use a primary call to action in any card unless the primary action of a
-page is positioned inside of that card.
+<uxdot-best-practice variant="dont">
+  <uxdot-example width-adjustment="1012px" slot="image">
+    <img src="../card-best-practices-width-dont.svg"
+          alt="Four cards in a row"
+          width="1012"
+          height="187">
+  </uxdot-example>
+  <p>Do not make cards narrower than 4 columns. This may not give enough space for content within the card.</p>
+</uxdot-best-practice>
 
-<uxdot-example width-adjustment="360px" danger>
-  <img src="../card-bestpractice-2.svg"
-        alt="Card width error"
-        width="360"
-        height="326">
-</uxdot-example>
+### Call to action variants in cards
 
-Don’t use multiple calls to action in one card. Instead, distribute them to
-other cards.
+<div class="grid sm-two-columns">
+  <uxdot-best-practice variant="do">
+    <uxdot-example width-adjustment="360px" slot="image">
+      <img src="../card-best-practices-cta-variants-do.svg"
+            alt="Card with a default call to action"
+            width="360"
+            height="223">
+    </uxdot-example>
+    <p>Use secondary or default calls to action in most cards.</p>
+  </uxdot-best-practice>
 
-<uxdot-example width-adjustment="360px">
-  <img src="../card-bestpractice-3.svg"
-        alt="Multiple calls to action"
-        width="360"
-        height="326">
-</uxdot-example>
+  <uxdot-best-practice variant="dont">
+    <uxdot-example width-adjustment="360px" slot="image">
+      <img src="../card-best-practices-cta-variants-dont.svg"
+            alt="Card with a primary call to action"
+            width="360"
+            height="252">
+    </uxdot-example>
+    <p>Do not use a primary call to action in any card unless the primary action for the whole page is positioned inside of that card.</p>
+  </uxdot-best-practice>
+</div>
+
+### Number of calls to actions in cards
+
+<div class="grid sm-two-columns">
+  <uxdot-best-practice variant="do">
+    <uxdot-example width-adjustment="360px" slot="image">
+      <img src="../card-best-practices-cta-number-do.svg"
+            alt="Card with a secondary call to action and a default call to action"
+            width="360"
+            height="303">
+    </uxdot-example>
+    <p>Use up to two calls to action in a card. They can be two different variants.</p>
+  </uxdot-best-practice>
+
+  <uxdot-best-practice variant="dont">
+    <uxdot-example width-adjustment="360px" slot="image">
+      <img src="../card-best-practices-cta-number-dont.svg"
+            alt="Card with three call to actions"
+            width="360"
+            height="354">
+    </uxdot-example>
+    <p>Do not use more than two calls to action in a card. This could make it harder for the user to understand what action to take next.</p>
+  </uxdot-best-practice>
+</div>
+
+### Promo
+
+<div class="grid sm-two-columns">
+  <uxdot-best-practice variant="do">
+    <uxdot-example width-adjustment="546px" slot="image">
+      <img src="../card-best-practices-promo-do.svg"
+            alt="One featured promo below lorem ipsum text"
+            width="546"
+            height="312">
+    </uxdot-example>
+    <p>Because promo is used for special promotional content only, promos should typically appear individually.</p>
+  </uxdot-best-practice>
+
+  <uxdot-best-practice variant="dont">
+    <uxdot-example width-adjustment="546px" slot="image">
+      <img src="../card-best-practices-promo-dont.svg"
+            alt="Three narrow promos in a group"
+            width="546"
+            height="312">
+    </uxdot-example>
+    <p>Do not group multiple promos together as if they were a regular card group.</p>
+  </uxdot-best-practice>
+</div>
 
 ## Behavior
 
