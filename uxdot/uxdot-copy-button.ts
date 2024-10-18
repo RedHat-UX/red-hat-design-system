@@ -28,7 +28,9 @@ export class UxdotCopyButton extends LitElement {
         <span id="caption" slot="content">${this.copy ?? 'Click to copy'}</span>
         <button @click="${this.#onClick}">
           <code><slot></slot></code>
-          <rh-icon set="ui" icon="${this.icon}"></rh-icon>
+          <slot name="extra-content"></slot>
+          <span class="visually-hidden">Click to copy</span>
+          <rh-icon aria-hidden="true" set="ui" .icon="${this.icon}"></rh-icon>
         </button>
       </rh-tooltip>
     `;
