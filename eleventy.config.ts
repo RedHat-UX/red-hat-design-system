@@ -18,10 +18,6 @@ import RHDSMarkdownItPlugin from '#11ty-plugins/markdown-it.js';
 import ImportMapPlugin from '#11ty-plugins/importMap.js';
 import LitPlugin from '#11ty-plugins/lit-ssr/lit.js';
 
-import { $ } from 'execa';
-
-const $$ = $({ stdout: ['pipe'], stderr: ['pipe'] });
-
 export interface GlobalData {
   runMode: 'build' | 'watch' | 'serve';
   isLocal: boolean;
@@ -55,13 +51,6 @@ export default async function(eleventyConfig: UserConfig) {
 
   eleventyConfig.on('eleventy.before', function({ runMode }) {
     eleventyConfig.addGlobalData('runMode', runMode);
-  });
-
-  let typescriptWatchProcess;
-  eleventyConfig.on('eleventy.before', function({ runMode }) {
-    if (runMode !== 'build') {
-      typescriptWatchProcess ??= $$`npx tspc -b --watch`;
-    }
   });
 
   eleventyConfig.watchIgnores?.add('docs/assets/redhat/');

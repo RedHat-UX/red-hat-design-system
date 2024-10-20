@@ -6,51 +6,44 @@
  */
 
 import type { LitElement, ReactiveController } from 'lit';
-import type { EleventyPage } from '@11ty/eleventy/src/UserConfig.js';
 import type { RenderInfo } from '@lit-labs/ssr';
 import type { RenderResult } from '@lit-labs/ssr/lib/render-result.js';
 import type { RHDSSSRController } from '@rhds/elements/lib/ssr-controller.ts';
-import type {
-  Message,
-  RenderRequestMessage,
-  InitRequestMessage,
-  RenderResponseMessage,
-  InitResponseMessage,
-} from './lit.js';
+import type { RenderResponseMessage, InitResponseMessage } from './lit.js';
+
+import { register } from 'node:module';
+import { resolve } from 'node:path';
+import { pathToFileURL, fileURLToPath } from 'node:url';
+import { parentPort, workerData } from 'node:worker_threads';
 
 import { register as registerTS } from 'tsx/esm/api';
-import { register } from 'node:module';
-
-import { resolve } from 'node:path';
-import { pathToFileURL } from 'node:url';
-import { parentPort } from 'worker_threads';
 import { render } from '@lit-labs/ssr';
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { collectResult } from '@lit-labs/ssr/lib/render-result.js';
 
 import { LitElementRenderer } from '@lit-labs/ssr/lib/lit-element-renderer.js';
 
-let ssrControllerMap: WeakMap<LitElement, RHDSSSRController[]>;
-
-if (parentPort === null) {
-  throw new Error('worker.js must be run in a worker thread');
-}
-
 class RHDSSSRableRenderer extends LitElementRenderer {
-  controllers: RHDSSSRController[];
-
-  constructor(tagName: string) {
-    super(tagName);
-    this.controllers = ssrControllerMap.get(this.element) ?? [];
+  static isRHDSSSRController(controller: ReactiveController): controller is RHDSSSRController {
+    return !!(controller as RHDSSSRController).isRHDSSSRController;
   }
 
-  * renderShadow(renderInfo: RenderInfo & { page: EleventyPage }): RenderResult {
-    yield Promise.resolve(this.controllers.map(async x => {
-      if (isRHDSSSRController(x)) {
-        await x.ssrSetup?.(renderInfo);
+  * setupSSRControllers(renderInfo: RenderInfo) {
+    const controllers =
+      (this.element as LitElement & { _$EO: ReactiveController[] })._$EO ?? [];
+    console.log(`RENDERSHADOW ${this.tagName}`, { controllers });
+    for (const controller of controllers ?? []) {
+      if (RHDSSSRableRenderer.isRHDSSSRController(controller) && controller.ssrSetup) {
+        console.log('FOUND CONTROLLER');
+        yield controller.ssrSetup(renderInfo)
+            .catch(e => console.error(e));
       }
-      return [''];
-    }));
+    }
+    console.log(`RENDERSHADOW ${this.tagName} done with controllers`);
+  }
+
+  * renderShadow(renderInfo: RenderInfo) {
+    yield* this.setupSSRControllers(renderInfo);
     yield* super.renderShadow(renderInfo);
   }
 }
@@ -64,49 +57,55 @@ function trimOuterMarkers(renderedContent: string) {
       .replace(/((<!--[^<>]*-->)|(<\?>)|\s)+$/, '');
 }
 
-function isRHDSSSRController(controller: ReactiveController): controller is RHDSSSRController {
-  return !!(controller as RHDSSSRController).isRHDSSSRController;
-}
-
-async function importModule(bareSpec: string) {
-  const spec = pathToFileURL(resolve(process.cwd(), bareSpec)).href.replace('.js', '.ts');
-  try {
-    await import(spec);
-  } catch (e) {
-    console.log(`${spec.replace(`file://${process.cwd()}`, '')}: ${(e as Error).message}`, e);
-    throw e;
-  }
-}
-
-async function renderPage({ id, content, page }: RenderRequestMessage) {
-  const renderInfo = { elementRenderers: [RHDSSSRableRenderer], page } as unknown as RenderInfo;
-  const type = 'render-response' as const;
-  let rendered: string | undefined;
-  try {
-    rendered = trimOuterMarkers(await collectResult(render(unsafeHTML(content), renderInfo)));
-  } catch (e) {
-    console.error(e);
-    rendered = undefined;
-  }
-  parentPort!.postMessage({ type, id, rendered } satisfies RenderResponseMessage);
+if (parentPort === null) {
+  throw new Error('worker.js must only be run in a worker thread');
 }
 
 let initialized = false;
 
-async function initialize({ imports, tsconfig }: InitRequestMessage) {
-  registerTS({ tsconfig });
-  register('./lit-css-node.ts', import.meta.url);
-  ({ ssrControllerMap } = await import('@rhds/elements/lib/ssr-controller.ts'));
-  if (!initialized) {
-    await Promise.all(imports.map(importModule));
-    parentPort!.postMessage({ type: 'initialize-response' } satisfies InitResponseMessage);
-  }
-  initialized = true;
-}
-
-parentPort.on('message', async (message: Message) => {
+parentPort.on('message', async message => {
   switch (message.type) {
-    case 'initialize-request': return initialize(message);
-    case 'render-request': return renderPage(message);
+    case 'initialize-request': {
+      if (!initialized) {
+        const { tsconfig } = workerData;
+        registerTS({ tsconfig });
+        register('./lit-css-node.ts', import.meta.url);
+        await Promise.all(workerData.imports.map(async function importModule(bareSpec: string) {
+          const spec = pathToFileURL(resolve(process.cwd(), bareSpec)).href.replace('.js', '.ts');
+          try {
+            await import(spec);
+          } catch (e) {
+            console.log(`${resolve(process.cwd(), fileURLToPath(spec))}: ${(e as Error).message}`, e);
+            throw e;
+          }
+        })).then(() => {
+          parentPort!.postMessage({
+            type: 'initialize-response',
+          } satisfies InitResponseMessage);
+        });
+      }
+      initialized = true;
+      break;
+    }
+
+    case 'render-request': {
+      console.log(message);
+      let rendered: string | undefined;
+      try {
+        const done = await collectResult(render(unsafeHTML(message.content), {
+          elementRenderers: [RHDSSSRableRenderer],
+          page: message.page,
+        } as unknown as RenderInfo));
+        rendered = trimOuterMarkers(done);
+      } catch (e) {
+        console.error(e);
+      }
+      parentPort!.postMessage({
+        type: 'render-response',
+        page: message.page,
+        rendered,
+      } satisfies RenderResponseMessage);
+      break;
+    }
   }
 });
