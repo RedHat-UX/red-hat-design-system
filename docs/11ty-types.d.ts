@@ -120,6 +120,14 @@ declare module '@11ty/eleventy/src/UserConfig.js' {
     | (() => unknown)
     | (() => Promise<unknown>);
 
+  interface EleventyDevServerResponse {
+    body: string;
+    status: number;
+    headers?: {
+      [key: string]: string | undefined,
+    };
+  }
+
   interface ServerOptions {
     liveReload: boolean;
     domDiff: boolean;
@@ -137,7 +145,18 @@ declare module '@11ty/eleventy/src/UserConfig.js' {
     enabled: boolean;
     /** @deprecated use domDiff */
     domdiff: boolean;
-    onRequest: Record<string, (opts: { url: URL, pattern: URLPattern, patternGroups: string[] }) => string | Response | Promise<string | Response>>;
+    onRequest: Record<string, (opts: {
+      url: URL;
+      pattern: URLPattern;
+      patternGroups: Record<string|number, string>;
+    }) =>
+        | undefined
+        | string
+        | EleventyDevServerResponse
+        | Promise<
+            | undefined
+            | string
+            | EleventyDevServerResponse>>;
   }
 
   export default class UserConfig {

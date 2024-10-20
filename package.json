@@ -323,6 +323,7 @@
     "@stylistic/eslint-plugin-js": "^2.9.0",
     "@stylistic/stylelint-config": "^2.0.0",
     "@stylistic/stylelint-plugin": "^3.1.1",
+    "@swc/core": "^1.7.36",
     "@types/js-yaml": "^4.0.9",
     "@types/markdown-it-attrs": "^4.1.3",
     "@types/markdown-it-footnote": "^3.0.4",
