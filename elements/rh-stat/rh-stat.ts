@@ -33,32 +33,26 @@ export class RhStat extends LitElement {
 
   static readonly styles = [styles];
 
-  @colorContextConsumer()
-  private accessor on: ColorTheme | undefined;
+  @colorContextConsumer() private on?: ColorTheme;
 
   /**
    * The icon to display in the statistic
    */
-  @property({ reflect: true })
-  accessor icon: IconNameFor<IconSetName> | undefined;
+  @property({ reflect: true }) icon?: IconNameFor<IconSetName>;
 
   /**
    * Icon set to display in the statistic
    */
-  @property({ attribute: 'icon-set' })
-  accessor iconSet: IconSetName = 'standard';
+  @property({ attribute: 'icon-set' }) iconSet: IconSetName = 'standard';
 
   /** Whether the title or statistic should be displayed on top in the statistic */
-  @property({ reflect: true, type: String })
-  accessor top: 'default' | 'statistic' = 'default';
+  @property({ reflect: true, type: String }) top: 'default' | 'statistic' = 'default';
 
   /** The size of the statistic */
-  @property({ reflect: true, type: String })
-  accessor size: 'default' | 'large' = 'default';
+  @property({ reflect: true, type: String }) size: 'default' | 'large' = 'default';
 
   /** Whether the statistic is in a mobile view or not for styling */
-  @property({ type: Boolean, reflect: true, attribute: 'is-mobile' })
-  accessor isMobile = false;
+  @property({ type: Boolean, reflect: true, attribute: 'is-mobile' }) isMobile = false;
 
   #screenSize = new ScreenSizeController(this);
 

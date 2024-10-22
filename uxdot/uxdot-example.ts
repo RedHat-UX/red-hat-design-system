@@ -25,35 +25,35 @@ export class UxdotExample extends LitElement {
    */
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' })
-  accessor colorPalette: ColorPalette | undefined;
+  colorPalette?: ColorPalette;
 
   /**
    * Sets color theme based on parent context
    */
-  @colorContextConsumer() private accessor on: ColorTheme | undefined;
+  @colorContextConsumer() private on?: ColorTheme;
 
   /* force a transparent background */
   @property({ type: Boolean })
-  accessor transparent = false;
+  transparent = false;
 
   /* full width variant with no padding */
   @property({ type: String, reflect: true })
-  accessor variant: 'full' | undefined;
+  variant?: 'full';
 
   /* width in pixels, defaults to 100% */
   @property({ type: String, attribute: 'width-adjustment' })
-  accessor widthAdjustment = '100%';
+  widthAdjustment = '100%';
 
   /* display a border around the example content */
   @property({ type: Boolean, attribute: 'no-border' })
-  accessor noBorder = false;
+  noBorder = false;
 
   /* danger status */
   @property({ type: Boolean, reflect: true })
-  accessor danger = false;
+  danger = false;
 
   @property({ type: String })
-  accessor alignment = 'center';
+  alignment = 'center';
 
   render() {
     const { on = '', widthAdjustment, alignment } = this;

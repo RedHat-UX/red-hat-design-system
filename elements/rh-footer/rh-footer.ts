@@ -8,14 +8,14 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
 import '@rhds/elements/rh-accordion/rh-accordion.js';
 
+export { RhFooterUniversal } from './rh-footer-universal.js';
 import './rh-footer-social-link.js';
 import './rh-footer-links.js';
 import './rh-footer-block.js';
 
+import style from './rh-footer.css';
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
-
-import style from './rh-footer.css';
 
 function isHeaderTagName(tagName: string) {
   return !!tagName.match(/^H[1-6]$/i);
@@ -80,8 +80,7 @@ export class RhFooter extends LitElement {
   #compact = false;
 
   @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' })
-  accessor colorPalette: ColorPalette = 'darker';
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'darker';
 
   /**
    * ScreenSizeController effects callback to set #compact is true when viewport
@@ -219,6 +218,3 @@ declare global {
     'rh-footer': RhFooter;
   }
 }
-
-export { RhFooterUniversal } from './rh-footer-universal.js';
-

@@ -20,8 +20,7 @@ export class RhTabPanel extends LitElement {
   /**
    * Sets color theme based on parent context
    */
-  @colorContextConsumer()
-  private accessor on: ColorTheme | undefined;
+  @colorContextConsumer() private on?: ColorTheme;
 
   #internals = this.attachInternals();
 

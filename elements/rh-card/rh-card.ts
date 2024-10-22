@@ -52,23 +52,19 @@ export class RhCard extends LitElement {
    * Card always resets its context to `base`, unless explicitly provided with a `color-palette`.
    */
   @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' })
-  accessor colorPalette: ColorPalette | undefined;
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   /**
    * Change the style of the card to be a "Promo"
    */
-  @property({ reflect: true })
-  accessor variant: 'promo' | undefined = undefined;
+  @property({ reflect: true }) variant?: 'promo';
 
   /**
    * Change a promo with an image + body + footer to use the `full-width` style
    */
-  @property({ reflect: true, attribute: 'full-width', type: Boolean })
-  accessor fullWidth = false;
+  @property({ reflect: true, attribute: 'full-width', type: Boolean }) fullWidth? = false;
 
-  @colorContextConsumer()
-  private accessor on: ColorTheme | undefined;
+  @colorContextConsumer() private on?: ColorTheme;
 
   #slots = new SlotController(this, 'header', 'image', null, 'footer');
 

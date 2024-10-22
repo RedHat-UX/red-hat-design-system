@@ -44,15 +44,12 @@ export class RhTooltip extends LitElement {
   static readonly styles = [styles];
 
   /** The position of the tooltip, relative to the invoking content */
-  @property()
-  accessor position: Placement = 'top';
+  @property() position: Placement = 'top';
 
   /** Tooltip content. Overridden by the content slot */
-  @property()
-  accessor content: string | undefined;
+  @property() content?: string;
 
-  @colorContextConsumer()
-  private accessor on: ColorTheme | undefined;
+  @colorContextConsumer() private on?: ColorTheme;
 
   #float = new FloatingDOMController(this, {
     content: (): HTMLElement | undefined | null => this.shadowRoot?.querySelector('#tooltip'),

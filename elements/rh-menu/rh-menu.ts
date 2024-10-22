@@ -29,9 +29,9 @@ export class RhMenu extends LitElement {
 
   static shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
 
-  @queryAssignedElements() private accessor _menuItems!: HTMLElement[];
+  @queryAssignedElements() private _menuItems!: HTMLElement[];
 
-  @colorContextConsumer() private accessor on: ColorTheme | undefined;
+  @colorContextConsumer() private on?: ColorTheme;
 
   #tabindex = RovingTabindexController.of<HTMLElement>(this, {
     getItems: () => this.getItems(this._menuItems),

@@ -84,12 +84,10 @@ export class RhAudioPlayer extends LitElement {
   };
 
   /**  Audio's series name, e.g. Podcast series. */
-  @property({ reflect: true })
-  accessor mediaseries: string | undefined;
+  @property({ reflect: true }) mediaseries?: string;
 
   /**  Audio's title, e.g. Podcast episode title. */
-  @property({ reflect: true })
-  accessor mediatitle: string | undefined;
+  @property({ reflect: true }) mediatitle?: string;
 
   /**
    * Layout:
@@ -98,52 +96,43 @@ export class RhAudioPlayer extends LitElement {
    *   - `compact-wide`: like compact but full width
    *   - `full`: maximal controls and artwork
    */
-  @property({ reflect: true })
-  accessor layout: 'mini' | 'compact' | 'compact-wide' | 'full' = 'mini';
+  @property({ reflect: true }) layout: 'mini' | 'compact' | 'compact-wide' | 'full' = 'mini';
 
   /** URL to audio's artwork */
-  @property({ reflect: true })
-  accessor poster: string | undefined;
+  @property({ reflect: true }) poster?: string;
 
   /** Playback volume */
-  @property({ reflect: true, type: Number })
-  accessor volume = 0.5;
+  @property({ reflect: true, type: Number }) volume = 0.5;
 
   /** Playback rate */
-  @property({ reflect: true, type: Number })
-  accessor playbackRate = 1;
+  @property({ reflect: true, type: Number }) playbackRate = 1;
 
-  @property({ reflect: true, type: Boolean })
-  accessor expanded = false;
+  @property({ reflect: true, type: Boolean }) expanded = false;
 
-  @property({ reflect: true })
-  accessor lang!: string;
+  @property({ reflect: true }) lang!: string;
 
-  @property({ attribute: false })
-  accessor microcopy = {};
+  @property({ attribute: false }) microcopy = {};
 
   /** Element's color palette */
   @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' })
-  accessor colorPalette: ColorPalette | undefined;
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
-  @colorContextConsumer()
-  private accessor on: ColorTheme | undefined;
+  @colorContextConsumer() private on?: ColorTheme;
 
   @queryAssignedElements({ slot: 'series' })
-  private accessor _mediaseries: HTMLElement[] | undefined;
+  private _mediaseries?: HTMLElement[];
 
   @queryAssignedElements({ slot: 'title' })
-  private accessor _mediatitle: HTMLElement[] | undefined;
+  private _mediatitle?: HTMLElement[];
 
   @queryAssignedElements({ slot: 'transcript', selector: 'rh-transcript' })
-  private accessor _transcripts: RhTranscript[] | undefined;
+  private _transcripts?: RhTranscript[];
 
   @queryAssignedElements({ slot: 'about', selector: 'rh-audio-player-about' })
-  private accessor _abouts: RhAudioPlayerAbout[] | undefined;
+  private _abouts?: RhAudioPlayerAbout[];
 
   @queryAssignedElements({ slot: 'subscribe', selector: 'rh-audio-player-subscribe' })
-  private accessor _subscribe: RhAudioPlayerSubscribe[] | undefined;
+  private _subscribe?: RhAudioPlayerSubscribe[];
 
   get #duration() {
     return this.#mediaElement?.duration ?? 0;

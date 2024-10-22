@@ -13,8 +13,7 @@ export class RhFooterSocialLink extends LitElement {
   static readonly styles = style;
 
   /** Icon for this social link e.g. `'facebook'` */
-  @property()
-  accessor icon: IconNameFor<'social'> | undefined;
+  @property() icon?: IconNameFor<'social'>;
 
   #logger = new Logger(this);
 

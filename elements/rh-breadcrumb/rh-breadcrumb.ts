@@ -42,20 +42,17 @@ export class RhBreadcrumb extends LitElement {
    * Customize the default `aria-label` on the `<nav>` container.
    * Defaults to "Breadcrumb" if no attribute/property is set.
    */
-  @property({ attribute: 'accessible-label' })
-  accessor accessibleLabel: string | undefined;
+  @property({ attribute: 'accessible-label' }) accessibleLabel?: string;
 
   /**
    * Sets variants to breadcrumbs
    */
-  @property({ reflect: true })
-  accessor variant: 'subtle' | undefined;
+  @property({ reflect: true }) variant?: 'subtle';
 
   /**
    * Sets color theme based on parent context
    */
-  @colorContextConsumer()
-  private accessor on: ColorTheme | undefined;
+  @colorContextConsumer() private on?: ColorTheme;
 
   static readonly styles = [styles];
 

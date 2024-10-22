@@ -25,11 +25,12 @@ import styles from './rh-badge.css';
 export class RhBadge extends LitElement {
   static readonly styles = [styles];
 
+  @colorContextConsumer() private on?: string;
+
   /**
    * Denotes the state-of-affairs this badge represents
    */
-  @property({ reflect: true })
-  accessor state:
+  @property({ reflect: true }) state:
     | 'danger'
     | 'warning'
     | 'caution'
@@ -47,18 +48,13 @@ export class RhBadge extends LitElement {
    * You can pair it with `threshold` attribute to add a `+` sign
    * if the number exceeds the threshold value.
    */
-  @property({ reflect: true, type: Number })
-  accessor number: number | undefined;
+  @property({ reflect: true, type: Number }) number?: number;
 
   /**
    * Sets a threshold for the numeric value and adds `+` sign if
    * the numeric value exceeds the threshold value.
    */
-  @property({ reflect: true, type: Number })
-  accessor threshold: number | undefined;
-
-  @colorContextConsumer()
-  private accessor on: string | undefined;
+  @property({ reflect: true, type: Number }) threshold?: number;
 
   /** Ensures that state is consistent, regardless of input */
   @observes('state', { waitFor: 'updated' })

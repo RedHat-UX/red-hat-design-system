@@ -12,9 +12,9 @@ import styles from './uxdot-copy-permalink.css';
 export class UxdotCopyPermalink extends LitElement {
   static styles = [styles];
 
-  @property({ attribute: 'copy-button-label' }) accessor copyButtonLabel = 'Copy link to clipboard';
+  @property({ attribute: 'copy-button-label' }) copyButtonLabel = 'Copy link to clipboard';
 
-  @property({ attribute: 'copied-text' }) accessor copiedText = 'Link copied';
+  @property({ attribute: 'copied-text' }) copiedText = 'Link copied';
 
   #internals = this.attachInternals();
 

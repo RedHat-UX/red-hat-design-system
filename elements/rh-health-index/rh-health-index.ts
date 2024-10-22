@@ -23,21 +23,18 @@ export class RhHealthIndex extends LitElement {
    * Sets the size of the health index
    * Defaults to `md`
    */
-  @property({ reflect: true })
-  accessor size: 'sm' | 'md' | 'lg' | 'xl' = 'md';
+  @property({ reflect: true }) size: 'sm' | 'md' | 'lg' | 'xl' = 'md';
 
   /**
    * Sets the health grade
    * Defaults to `A`
    */
-  @property({ reflect: true })
-  accessor grade: 'A' | 'B' | 'C' | 'D' | 'E' | 'F' = 'A';
+  @property({ reflect: true }) grade: 'A' | 'B' | 'C' | 'D' | 'E' | 'F' = 'A';
 
   /**
    * Sets color theme based on parent context
    */
-  @colorContextConsumer()
-  private accessor on: ColorTheme | undefined;
+  @colorContextConsumer() private on?: ColorTheme;
 
   // TODO: use I18nController to support officially supported languages.
   #internals = InternalsController.of(this, {

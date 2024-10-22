@@ -18,15 +18,13 @@ export class RhContextDemo extends LitElement {
 
   static formAssociated = true;
 
-  @property()
-  accessor value: ColorPalette = 'darkest';
+  @property() value: ColorPalette = 'darkest';
 
-  @property()
-  accessor label = 'Color Palette';
+  @property() label = 'Color Palette';
 
   @colorContextProvider()
   @property({ attribute: 'color-palette', reflect: true })
-  accessor colorPalette = this.value;
+  colorPalette = this.value;
 
   #internals = this.attachInternals();
 

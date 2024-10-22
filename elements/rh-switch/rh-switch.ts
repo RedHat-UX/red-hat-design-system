@@ -30,35 +30,27 @@ export class RhSwitch extends LitElement {
   static readonly formAssociated = true;
 
   /** invisible, accessible label for screen readers */
-  @property({ reflect: true, attribute: 'accessible-label' })
-  accessor accessibleLabel: string | undefined;
+  @property({ reflect: true, attribute: 'accessible-label' }) accessibleLabel?: string;
 
   /** Message to display when the switch is on (i.e. checked) */
-  @property({ reflect: true, attribute: 'message-on' })
-  accessor messageOn: string | undefined;
+  @property({ reflect: true, attribute: 'message-on' }) messageOn?: string;
 
   /** Message to display when the switch is off (i.e. unchecked) */
-  @property({ reflect: true, attribute: 'message-off' })
-  accessor messageOff: string | undefined;
+  @property({ reflect: true, attribute: 'message-off' }) messageOff?: string;
 
   /** If the checkmark icon should be displayed when the switch is on */
-  @property({ reflect: true, type: Boolean, attribute: 'show-check-icon' })
-  accessor showCheckIcon = false;
+  @property({ reflect: true, type: Boolean, attribute: 'show-check-icon' }) showCheckIcon = false;
 
   /** If the switch is on */
-  @property({ reflect: true, type: Boolean })
-  accessor checked = false;
+  @property({ reflect: true, type: Boolean }) checked = false;
 
   /** If the switch is disabled */
-  @property({ reflect: true, type: Boolean })
-  accessor disabled = false;
+  @property({ reflect: true, type: Boolean }) disabled = false;
 
   /** If the switch is reversed: message first, then control */
-  @property({ reflect: true, type: Boolean })
-  accessor reversed = false;
+  @property({ reflect: true, type: Boolean }) reversed = false;
 
-  @colorContextConsumer()
-  private accessor on: ColorTheme | undefined;
+  @colorContextConsumer() private on?: ColorTheme;
 
   #internals = InternalsController.of(this, { role: 'switch' });
 

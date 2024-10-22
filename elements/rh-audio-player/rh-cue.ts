@@ -65,24 +65,19 @@ export class RhCue extends LitElement {
   static readonly styles = [styles];
 
   /** Start time, in mm:ss.ms */
-  @property()
-  accessor start: string | undefined;
+  @property() start?: string;
 
   /** End time, in mm:ss.ms */
-  @property()
-  accessor end: string | undefined;
+  @property() end?: string;
 
   /** Text of this cue. Overridden by `text` slot */
-  @property()
-  accessor text: string | undefined;
+  @property() text?: string;
 
   /** Name of voice speaking this text. Overridden by `voice` slot */
-  @property({ reflect: true })
-  accessor voice: string | undefined;
+  @property({ reflect: true }) voice?: string;
 
   /** Whether this cue is active right now */
-  @property({ type: Boolean, reflect: true })
-  accessor active = false;
+  @property({ type: Boolean, reflect: true }) active = false;
 
   #headings = new HeadingLevelContextConsumer(this);
 

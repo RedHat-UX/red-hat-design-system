@@ -25,19 +25,15 @@ export class RhAudioPlayerAbout extends LitElement {
   static readonly styles = [panelStyles, styles];
 
   /** Default label content */
-  @property()
-  accessor label: string | undefined;
+  @property() label?: string;
 
   /** Series this track belongs to, if applicable */
-  @property({ attribute: 'series' })
-  accessor mediaseries: string | undefined;
+  @property({ attribute: 'series' }) mediaseries?: string;
 
   /** Title of audio track */
-  @property({ attribute: 'mediatitle' })
-  accessor mediatitle: string | undefined;
+  @property({ attribute: 'mediatitle' }) mediatitle?: string;
 
-  @queryAssignedElements()
-  private accessor content: HTMLElement[] | undefined;
+  @queryAssignedElements() private content?: HTMLElement[];
 
   #headings = new HeadingLevelContextConsumer(this);
 

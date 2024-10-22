@@ -76,19 +76,16 @@ export class RhIcon extends LitElement {
           .then(mod => mod.default.cloneNode(true));
 
   /** Icon set */
-  @property({ type: String, reflect: true })
-  accessor set: IconSetName | undefined;
+  @property({ type: String, reflect: true }) set?: IconSetName;
 
   /** Icon name */
-  @property({ type: String, reflect: true })
-  accessor icon: IconNameFor<IconSetName> | undefined;
+  @property({ type: String, reflect: true }) icon?: IconNameFor<IconSetName>;
 
   /**
    * Defines a string value that labels the icon element.
    * Adds role="img" to element.
    */
-  @property({ attribute: 'accessible-label' })
-  accessor accessibleLabel: string | undefined;
+  @property({ attribute: 'accessible-label' }) accessibleLabel?: string;
 
   /**
    * Controls how eager the element will be to load the icon data
@@ -96,12 +93,10 @@ export class RhIcon extends LitElement {
    * - `idle`: wait for the browser to attain an idle state before loading
    * - `lazy` (default): wait for the element to enter the viewport before loading
    */
-  @property()
-  accessor loading: 'idle' | 'lazy' | 'eager' = 'lazy';
+  @property() loading?: 'idle' | 'lazy' | 'eager' = 'lazy';
 
   /** Icon content. Any value that lit can render */
-  @state()
-  private accessor content: unknown | undefined;
+  @state() private content?: unknown;
 
   #intersecting = false;
 

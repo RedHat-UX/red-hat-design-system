@@ -3,6 +3,7 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { state } from 'lit/decorators/state.js';
+import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 
 import { ComposedEvent } from '@patternfly/pfe-core';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
@@ -83,33 +84,7 @@ export class RhNavigationSecondary extends LitElement {
   }
 
 
-  /**
-   * Color palette darker | lighter (default: lighter)
-   */
-  @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' })
-  accessor colorPalette: NavPalette = 'lighter';
-
-  /**
-   * Customize the default `aria-label` on the `<nav>` container.
-   * Defaults to "secondary" if no attribute/property is set.
-   */
-  @property({ attribute: 'accessible-label' })
-  accessor accessibleLabel = 'secondary';
-
-  /**
-   * `mobileMenuExpanded` property is toggled when the mobile menu button is clicked,
-   * a focusout event occurs, or on an overlay click event.  It also switches state
-   * when the viewport changes breakpoints depending on if a dropdown is open or not.
-   */
-  @state()
-  private accessor mobileMenuExpanded = false;
-
-  @state()
-  private accessor overlayOpen = false;
-
   #logger = new Logger(this);
-
   #logoCopy: HTMLElement | null = null;
 
   /** Is the element in an RTL context? */
@@ -119,6 +94,29 @@ export class RhNavigationSecondary extends LitElement {
   #compact = false;
 
   #internals = InternalsController.of(this, { role: 'navigation' });
+
+  /**
+   * Color palette darker | lighter (default: lighter)
+   */
+  @colorContextProvider()
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette: NavPalette = 'lighter';
+
+  @queryAssignedElements({ slot: 'nav' }) private _nav?: HTMLElement[];
+
+  /**
+   * Customize the default `aria-label` on the `<nav>` container.
+   * Defaults to "secondary" if no attribute/property is set.
+   */
+  @property({ attribute: 'accessible-label' }) accessibleLabel = 'secondary';
+
+  /**
+   * `mobileMenuExpanded` property is toggled when the mobile menu button is clicked,
+   * a focusout event occurs, or on an overlay click event.  It also switches state
+   * when the viewport changes breakpoints depending on if a dropdown is open or not.
+   */
+  @state() private mobileMenuExpanded = false;
+
+  @state() private overlayOpen = false;
 
   /**
    * ScreenSizeController effects callback to set #compact

@@ -21,8 +21,7 @@ export class RhSkipLink extends LitElement {
 
   static readonly styles = [styles];
 
-  @property({ reflect: true })
-  accessor href: string | undefined;
+  @property({ reflect: true }) href?: string;
 
   render() {
     return this.href ?

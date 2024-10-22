@@ -39,35 +39,28 @@ export class RhAvatar extends LitElement {
    *
    * It will be displayed instead of a random pattern.
    */
-  @property({ reflect: true })
-  accessor src: string | undefined;
+  @property({ reflect: true }) src?: string;
 
   /**
    * The user's name, either given name and family name, or username.
    *
    * When displaying a pattern, the name will be used to seed the pattern generator.
    */
-  @property({ reflect: true })
-  accessor name: string | undefined;
+  @property({ reflect: true }) name?: string;
 
   /** The auxiliary information about the user, e.g. job title */
-  @property({ reflect: true })
-  accessor subtitle: string | undefined;
+  @property({ reflect: true }) subtitle?: string;
 
   /** The type of pattern to display. */
-  @property({ reflect: true })
-  accessor layout: 'inline' | 'block' | undefined;
+  @property({ reflect: true }) layout?: 'inline' | 'block';
 
   /** The type of pattern to display. */
-  @property({ reflect: true })
-  accessor pattern: 'squares' | 'triangles' | undefined;
+  @property({ reflect: true }) pattern?: 'squares' | 'triangles';
 
   /** When true, hides the title and subtitle */
-  @property({ reflect: true, type: Boolean })
-  accessor plain = false;
+  @property({ reflect: true, type: Boolean }) plain = false;
 
-  @colorContextConsumer()
-  private accessor on: ColorTheme | undefined;
+  @colorContextConsumer() @property() private on?: ColorTheme;
 
   #style?: CSSStyleDeclaration;
 

@@ -63,31 +63,23 @@ export class RhVideoEmbed extends LitElement {
   /**
    * Add to `rh-video-embed` when a video requires consent for cookies
    */
-  @property({ type: Boolean, attribute: 'require-consent' })
-  accessor requireConsent = false;
+  @property({ type: Boolean, attribute: 'require-consent' }) requireConsent = false;
 
   /**
    * Boolean flag to flip with JavaScript when cookie consent has been granted or revoked.
    * See the Require Consent demo for reference.
    */
-  @property({ type: Boolean })
-  accessor consented = false;
+  @property({ type: Boolean }) consented = false;
 
   /**
    * Sets color theme based on parent context
    */
-  @colorContextConsumer()
-  private accessor on: ColorTheme | undefined;
+  @colorContextConsumer() private on?: ColorTheme;
 
   // TODO(bennyp): https://lit.dev/docs/data/context/#content
-  @state()
-  private accessor _consentClicked = false;
-
-  @state()
-  private accessor _playClicked = false;
-
-  @state()
-  private accessor _playStarted = false;
+  @state() private _consentClicked = false;
+  @state() private _playClicked = false;
+  @state() private _playStarted = false;
 
   #slots = new SlotController(this, 'caption', 'thumbnail', null);
   #iframe: HTMLIFrameElement | undefined;

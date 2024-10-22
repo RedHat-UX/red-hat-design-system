@@ -149,7 +149,7 @@ export class RhAlert extends LitElement {
    *  - `success` - Indicates a success state, like if a process was completed without errors.
    */
   @property({ reflect: true })
-  accessor state:
+  state:
     | 'danger'
     | 'warning'
     | 'caution'
@@ -169,8 +169,7 @@ export class RhAlert extends LitElement {
    * update, or confirmation, like the result of a user action that cannot
    * be presented within a specific layout or component.
    */
-  @property({ reflect: true })
-  accessor variant: 'alternate' | 'toast' | 'inline' | undefined;
+  @property({ reflect: true }) variant?: 'alternate' | 'toast' | 'inline';
 
   /**
    * Alert variants have different rules regarding their ability to be dismissed by a user.
@@ -178,8 +177,7 @@ export class RhAlert extends LitElement {
    * Warning and Danger Inline alerts can be dismissed by a user resolving the issues caused by the alert.
    * All Toast alerts can be dismissed by a user selecting the close button or waiting for them to time out.
    */
-  @property({ reflect: true, type: Boolean })
-  accessor dismissable = false;
+  @property({ reflect: true, type: Boolean }) dismissable = false;
 
   #slots = new SlotController(this, 'header', null, 'actions');
 

@@ -16,9 +16,9 @@ import styles from './uxdot-copy-button.css';
 export class UxdotCopyButton extends LitElement {
   static styles = [styles];
 
-  @property() accessor copy: string | undefined;
+  @property() copy?: string;
 
-  @property() accessor icon: IconNameFor<'ui'> = 'copy';
+  @property() icon?: IconNameFor<'ui'> = 'copy';
 
   #internals = this.attachInternals();
 

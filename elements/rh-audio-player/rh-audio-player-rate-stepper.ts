@@ -25,16 +25,13 @@ export class RhAudioPlayerRateStepper extends LitElement {
   private static pbrFixed = 2;
 
   /** Playback rate */
-  @property({ reflect: true, type: Number, attribute: 'playback-rate' })
-  accessor playbackRate = 1;
+  @property({ reflect: true, type: Number, attribute: 'playback-rate' }) playbackRate = 1;
 
   /** Playback rate */
-  @property({ reflect: true, type: Boolean })
-  accessor disabled = false;
+  @property({ reflect: true, type: Boolean }) disabled = false;
 
   /** Playback rate */
-  @property()
-  accessor label: string | undefined;
+  @property() label?: string;
 
   #dir = new DirController(this);
 

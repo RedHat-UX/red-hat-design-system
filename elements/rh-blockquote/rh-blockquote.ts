@@ -24,8 +24,7 @@ import styles from './rh-blockquote.css';
 export class RhBlockquote extends LitElement {
   static readonly styles = styles;
 
-  @property({ type: String })
-  accessor title = 'Blockquote';
+  @property({ type: String }) title = 'Blockquote';
 
   /**
    * Set the colorPalette of the blockquote. Possible values are:
@@ -33,30 +32,26 @@ export class RhBlockquote extends LitElement {
    * - `darkest`
    */
   @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' })
-  accessor colorPalette: ColorPalette | undefined;
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
+
+  @colorContextConsumer() private on?: ColorTheme;
 
   /**
    * Set the alignment of the blockquote. Possible values are:
    * - `left` (default)
    * - `center`
    */
-  @property({ reflect: true })
-  accessor align: 'center' | 'inline-start' = 'inline-start';
+  @property({ reflect: true }) align: 'center' | 'inline-start' = 'inline-start';
 
   /** Optional highlight attribute that, when present, shows a highlight on side of blockquote. */
-  @property({ reflect: true, type: Boolean })
-  accessor highlight = false;
+  @property({ reflect: true, type: Boolean }) highlight = false;
 
   /**
    * Set the text size of the blockquote. Possible values are:
    * - `default`
    * - `large`
    */
-  @property({ reflect: true })
-  accessor size: 'default' | 'large' = 'default';
-
-  @colorContextConsumer() private accessor on: ColorTheme | undefined;
+  @property({ reflect: true }) size: 'default' | 'large' = 'default';
 
   render() {
     const { highlight, on = 'light' } = this;

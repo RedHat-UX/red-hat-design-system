@@ -35,35 +35,30 @@ export class RhButton extends LitElement {
   };
 
   /** Disables the button */
-  @property({ reflect: true, type: Boolean })
-  accessor disabled = false;
+  @property({ reflect: true, type: Boolean }) disabled = false;
 
   /**
    * button type
    * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#type
    */
-  @property({ reflect: true })
-  accessor type: 'button' | 'submit' | 'reset' | undefined;
+  @property({ reflect: true }) type?: 'button' | 'submit' | 'reset';
 
   /** Accessible name for the button, use when the button does not have slotted text */
-  @property()
-  accessor label: string | undefined;
+  @property() label?: string;
 
   /** Form value for the button */
-  @property()
-  accessor value: string | undefined;
+  @property() value?: string;
 
   /** Form name for the button */
-  @property()
-  accessor name: string | undefined;
+  @property() name?: string;
 
   /** Shorthand for the `icon` slot, the value is icon name */
-  @property()
-  accessor icon: IconNameFor<IconSetName> | undefined;
+  @property() icon?: IconNameFor<IconSetName>;
 
   /** Icon set for the `icon` property - 'ui' by default */
-  @property({ attribute: 'icon-set' })
-  accessor iconSet: IconSetName | undefined;
+  @property({ attribute: 'icon-set' }) iconSet?: IconSetName;
+
+  @query('button') private _button!: HTMLButtonElement;
 
   /**
    * Changes the style of the button.
@@ -75,8 +70,7 @@ export class RhButton extends LitElement {
    *   toolbars or data lists.
    * - Tertiary: Tertiary buttons are flexible and can be used as needed.
    */
-  @property({ reflect: true })
-  accessor variant:
+  @property({ reflect: true }) variant:
     | 'primary'
     | 'secondary'
     | 'tertiary'
@@ -88,14 +82,9 @@ export class RhButton extends LitElement {
    * destructive or difficult/impossible to undo, like deleting or removing
    * user data.
    */
-  @property({ type: Boolean, reflect: true })
-  accessor danger = false;
+  @property({ type: Boolean, reflect: true }) danger = false;
 
-  @colorContextConsumer()
-  private accessor on: ColorTheme | undefined;
-
-  @query('button')
-  private accessor _button!: HTMLButtonElement;
+  @colorContextConsumer() private on?: ColorTheme;
 
   get #hasIcon() {
     return this.variant === 'play' || this.variant === 'close' || !!this.icon;
