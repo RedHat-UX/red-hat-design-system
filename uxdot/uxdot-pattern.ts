@@ -62,7 +62,8 @@ export class UxdotPattern extends LitElement {
     try {
       super.update(changed);
     } catch (e) {
-      if ((e as any).message.startsWith('Hydration')) {
+      if (e instanceof Error && e.message.startsWith('Hydration')) {
+        // eslint-disable-next-line no-console
         console.warn(e);
         this.updateComplete.then(() =>
           this.requestUpdate());

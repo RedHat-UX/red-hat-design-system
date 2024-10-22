@@ -77,13 +77,9 @@ for await (const message of getEachMessage() as AsyncIterableIterator<RenderRequ
     const { page, content } = message;
     const tpl = html(new UnsafeHTMLStringsArray(content));
     const result = render(tpl, { elementRenderers, page } as unknown as RenderInfo);
-    try {
-      const rendered = await collectResult(result);
-      const end = performance.now();
-      await sendMessage({ page, rendered, durationMs: end - start });
-    } catch (e) {
-      console.log(...Object.keys(e.message));
-    }
+    const rendered = await collectResult(result);
+    const end = performance.now();
+    await sendMessage({ page, rendered, durationMs: end - start });
   }
 }
 
