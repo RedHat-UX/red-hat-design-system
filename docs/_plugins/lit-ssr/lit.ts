@@ -2,8 +2,7 @@ import type { EleventyPage } from '@11ty/eleventy/src/UserConfig.js';
 import type { UserConfig } from '@11ty/eleventy';
 
 import { $, execa, type ResultPromise } from 'execa';
-import { cp, glob, mkdir, readFile, writeFile } from 'node:fs/promises';
-import { dirname, join, relative } from 'node:path';
+import { readFile, writeFile } from 'node:fs/promises';
 
 import tsBlankSpace from 'ts-blank-space';
 import chalk from 'chalk';
@@ -63,34 +62,6 @@ export default async function(eleventyConfig: UserConfig, opts?: Options) {
       const result = (await proc);
       // eslint-disable-next-line no-console
       console.log(result.all);
-    });
-
-    eleventyConfig.on('eleventy.after', async function({ runMode }) {
-      const cwd = process.cwd();
-      const pkgsDir = join(cwd, '_site/assets/packages');
-      switch (runMode) {
-        case 'build':
-          await $`npx tspc -b elements`;
-          await mkdir(join(pkgsDir, '@rhds/elements/elements'), { recursive: true });
-          await mkdir(join(pkgsDir, '@rhds/elements/lib'), { recursive: true });
-          await mkdir(join(pkgsDir, '@uxdot/elements'), { recursive: true });
-          for await (const file of glob('./{elements,lib}/**/*.{js,d.ts,map,css}')) {
-            const outDir = join(pkgsDir, '@rhds/elements');
-            const rel = relative(cwd, file);
-            const out = join(outDir, dirname(rel));
-            const from = join(cwd, rel);
-            const to = join(outDir, rel);
-            await mkdir(out, { recursive: true });
-            await cp(from, to);
-          }
-          for await (const file of glob('./uxdot/*.{js,d.ts,map,css}')) {
-            const rel = relative(join(cwd, 'uxdot'), file);
-            const outDir = join(pkgsDir, '@uxdot/elements');
-            const from = join(cwd, 'uxdot', rel);
-            const to = join(outDir, rel);
-            await cp(from, to);
-          }
-      }
     });
 
     eleventyConfig.addTransform('render-lit', async function(this, content) {
