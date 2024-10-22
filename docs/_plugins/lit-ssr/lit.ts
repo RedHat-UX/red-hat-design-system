@@ -61,6 +61,7 @@ export default async function(eleventyConfig: UserConfig, opts?: Options) {
     eleventyConfig.on('eleventy.after', async function() {
       proc.disconnect();
       const result = (await proc);
+      // eslint-disable-next-line no-console
       console.log(result.all);
     });
 
