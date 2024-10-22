@@ -63,10 +63,12 @@ export class UxdotPattern extends LitElement {
       super.update(changed);
     } catch (e) {
       if ((e as any).message.startsWith('Hydration')) {
+        console.warn(e);
         this.updateComplete.then(() =>
           this.requestUpdate());
+      } else {
+        throw e;
       }
-      throw e;
     }
   }
 
