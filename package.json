@@ -264,17 +264,6 @@
         "docs/_data/playgrounds.json"
       ]
     },
-    "watch:compile": {
-      "service": true,
-      "command": "tspc --watch"
-    },
-    "watch:docs": {
-      "service": true,
-      "command": "TSX_TSCONFIG_PATH=tsconfig.settings.json NODE_OPTIONS='--import tsx/esm' eleventy --serve --incremental --config=eleventy.config.ts",
-      "dependencies": [
-        "analyze"
-      ]
-    },
     "e2e": {
       "command": "playwright test",
       "dependencies": [
