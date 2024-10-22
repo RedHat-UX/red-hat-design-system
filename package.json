@@ -94,7 +94,14 @@
         "patch",
         "analyze",
         "playgrounds",
-        "watch:docs"
+        "11ty-dev"
+      ]
+    },
+    "11ty-dev": {
+      "service": true,
+      "command": "NODE_OPTIONS='--import tsx/esm' eleventy --serve --incremental --config=eleventy.config.ts",
+      "dependencies": [
+        "analyze"
       ]
     },
     "dev": {
@@ -121,7 +128,6 @@
         "react-wrappers",
         "entrypoint",
         "copy-assets",
-        "docs",
         "compile"
       ]
     },
