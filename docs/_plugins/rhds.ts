@@ -84,12 +84,6 @@ interface Options {
 }
 
 export default async function(eleventyConfig: UserConfig, options?: Options) {
-  eleventyConfig.on('eleventy.before', async ({ directories }) => {
-    const outPath = join(directories.output, 'assets/javascript/repoStatus.json');
-    await mkdir(dirname(outPath), { recursive: true });
-    await writeFile(outPath, JSON.stringify(repoStatus), 'utf8');
-  });
-
   /** add the normalized pfe-tools config to global data */
   eleventyConfig.addGlobalData('pfeconfig', getPfeConfig());
 
@@ -103,6 +97,19 @@ export default async function(eleventyConfig: UserConfig, options?: Options) {
     { title: 'Patterns', url: '/patterns', collection: 'pattern' },
     { title: 'Accessibility', url: '/accessibility', collection: 'accessibility' },
   ]);
+
+  eleventyConfig.on('eleventy.before', async ({ directories }) => {
+    const outPath = join(directories.output, 'assets/javascript/repoStatus.json');
+    await mkdir(dirname(outPath), { recursive: true });
+    await writeFile(outPath, JSON.stringify(repoStatus), 'utf8');
+  });
+
+  eleventyConfig.on('eleventy.before', async function({ runMode }) {
+    switch (runMode) {
+      case 'build':
+        await $`npx tspc -b elements --clean`;
+    }
+  });
 
   /** custom-elements.json */
   eleventyConfig.on('eleventy.before', async function({ runMode }) {
@@ -164,7 +171,7 @@ export default async function(eleventyConfig: UserConfig, options?: Options) {
     const pkgsDir = join(cwd, '_site/assets/packages');
     switch (runMode) {
       case 'build':
-        await $`npx tspc -b elements`;
+        await $`npx tspc -b uxdot`;
         await mkdir(join(pkgsDir, '@uxdot/elements'), { recursive: true });
         for await (const file of glob('./uxdot/*.{js,d.ts,map,css}')) {
           const rel = relative(join(cwd, 'uxdot'), file);

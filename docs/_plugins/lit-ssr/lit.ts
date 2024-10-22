@@ -44,7 +44,6 @@ export default async function(eleventyConfig: UserConfig, opts?: Options) {
   // render.
   if (imports?.length) {
     eleventyConfig.on('eleventy.before', async function() {
-      await $`npx tspc -b elements --clean`;
       await redactTSFileInPlace('./worker.ts');
       const $$ = execa({
         node: true,
