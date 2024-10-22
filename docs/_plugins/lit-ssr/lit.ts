@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 /**
  * @license based on code from eleventy-plugin-lit
  * Copyright 2021 Google LLC
@@ -14,8 +13,6 @@ import tsBlankSpace from 'ts-blank-space';
 
 import { register } from 'node:module';
 
-import chalk from 'chalk';
-
 export interface InitRequestMessage {
   type: 'initialize-request';
   imports: string[];
@@ -30,12 +27,14 @@ export interface RenderRequestMessage {
   type: 'render-request';
   content: string;
   page: Pick<EleventyPage, 'inputPath' | 'outputPath'>;
+  id: number;
 }
 
 export interface RenderResponseMessage {
   type: 'render-response';
   page: Pick<EleventyPage, 'inputPath' | 'outputPath'>;
   rendered?: string;
+  id: number;
 }
 
 export type Message =
@@ -50,12 +49,11 @@ interface Options {
   tsconfig?: string;
 }
 
-interface RenderPageOpts {
-  content: string;
-  page: Pick<EleventyPage, 'inputPath' | 'outputPath'>;
+async function redactTSFileInPlace(path: string) {
+  const inURL = new URL(path, import.meta.url);
+  const outURL = new URL(path.replace('.ts', '.js'), import.meta.url);
+  await writeFile(outURL, tsBlankSpace(await readFile(inURL, 'utf8')), 'utf8');
 }
-
-let worker: Worker;
 
 export default async function(eleventyConfig: UserConfig, opts?: Options) {
   const imports = opts?.componentModules ?? [];
@@ -64,34 +62,22 @@ export default async function(eleventyConfig: UserConfig, opts?: Options) {
   // If there are no component modules, we could never have anything to
   // render.
   if (imports?.length) {
+    let worker: Worker;
+
+    let initialized: Promise<void>;
+
+    let requestId = 0;
+
+    const renderRequestResolveMap = new Map<number, (content?: string) => void>();
+
     eleventyConfig.on('eleventy.before', async function() {
-      const start = performance.now();
+      await redactTSFileInPlace('./worker.ts');
       register('./lit-css-node.ts', import.meta.url);
-      let requestResolve: (value?: unknown) => void;
-      const requestPromise = new Promise(resolve => {
-        requestResolve = resolve;
+
+      let initializedResolve: (value?: void) => void;
+      initialized = new Promise<void>(resolve => {
+        initializedResolve = resolve;
       });
-
-      await writeFile(
-        new URL('./worker.js', import.meta.url),
-        tsBlankSpace(await readFile(new URL('./worker.ts', import.meta.url), 'utf8')),
-        'utf8',
-      );
-
-      const renderRequestResolveMap = new Map<string, (content?: string) => void>();
-
-      async function renderPage(opts: RenderPageOpts) {
-        console.log(opts);
-        const { content, page } = opts;
-        return new Promise<string>(resolve => {
-          renderRequestResolveMap.set(page.outputPath, resolve as (content?: string) => void);
-          worker.postMessage({
-            type: 'render-request',
-            content,
-            page,
-          } satisfies RenderRequestMessage);
-        });
-      }
 
       worker ??= new Worker(new URL('./worker.js', import.meta.url), {
         workerData: {
@@ -100,53 +86,55 @@ export default async function(eleventyConfig: UserConfig, opts?: Options) {
         },
       });
 
-      worker.on('error', function(evt: ErrorEvent) {
-        const { error } = evt;
+      worker.on('error', function(error: Error) {
+        // eslint-disable-next-line no-console
         console.error(
           'Unexpected error while rendering lit component in worker thread',
-          evt.error
+          error.message
         );
         throw error;
       });
 
       worker.on('message', function(message: Message) {
-        console.log(message);
         switch (message.type) {
+          case 'initialize-response': return initializedResolve();
           case 'render-response': {
-            const resolve = renderRequestResolveMap.get(message.page.outputPath);
+            const resolve = renderRequestResolveMap.get(message.id);
             if (!resolve) {
               throw new Error('lit-ssr received invalid render-response message');
             }
             resolve(message.rendered);
+            renderRequestResolveMap.delete(message.id);
             break;
-          } case 'initialize-response':
-            return requestResolve();
+          }
         }
       });
 
       worker.postMessage({ type: 'initialize-request' });
+    });
 
-      await requestPromise;
+    eleventyConfig.on('eleventy.after', async () => void await worker.terminate());
 
-      const d = (performance.now() - start).toFixed(2);
-      console.log(`Initialized in ${d}`);
+    eleventyConfig.addTransform('render-lit', async function(this, content) {
+      await initialized;
+      const { outputPath, inputPath } = this.page;
 
-      eleventyConfig.on('eleventy.after', async () => void await worker.terminate());
+      if (!outputPath.endsWith('.html')) {
+        return content;
+      }
 
-      eleventyConfig.addTransform('render-lit', async function(this, content) {
-        const { outputPath, inputPath } = this.page;
-
-        if (!outputPath.endsWith('.html')) {
-          return content;
-        }
-
-        const start = performance.now();
-        const rendered = await renderPage({ content, page: { outputPath, inputPath } });
-        const prefix = rendered ? 'Rendering took' : `Rendering ${chalk.red('FAILED')}`;
-        const d = (performance.now() - start).toFixed(2);
-        console.log(`${prefix} ${chalk.blue(d)}ms for ${outputPath}`);
-        return rendered ?? content;
+      const rendered = new Promise<string>(resolve => {
+        const page = { outputPath, inputPath };
+        const type = 'render-request' as const;
+        renderRequestResolveMap.set(requestId, resolve as (content?: string) => void);
+        worker.postMessage({
+          type,
+          content,
+          page,
+          id: requestId++,
+        } satisfies RenderRequestMessage);
       });
+      return rendered ?? content;
     });
   }
 }

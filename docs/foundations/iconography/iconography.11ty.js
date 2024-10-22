@@ -18,7 +18,7 @@ export default class IconsPage {
   async render(ctx) {
     const { icons } = ctx;
     return html`
-      <script type="module" src="icons.js" data-helmet></script>
+      <script type="module" src="./icons.js" data-helmet></script>
 
       <style data-helmet>
         .icon-set {
@@ -81,11 +81,11 @@ export default class IconsPage {
   }
 
   #renderIcon({ set, icon }) {
+    const label = `Copy icon HTML for ${set} ${icon}`;
     return html`
       <li>
         <rh-icon set="${set}" icon="${icon}"></rh-icon>
-        <rh-button accessible-label="Copy icon HTML for ${set} ${icon}"
-                   variant="link">${icon}</rh-button>
+        <rh-button accessible-label="${label}" variant="link">${icon}</rh-button>
       </li>
     `;
   }

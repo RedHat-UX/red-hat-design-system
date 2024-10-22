@@ -11,11 +11,6 @@ const $$ = $({ stdout: ['pipe'], stderr: ['pipe'] });
 import { transformFile } from '@swc/core';
 import { transform } from '@pwrs/lit-css';
 
-interface Options {
-  /** path to tsconfig */
-  tsconfig: string;
-}
-
 const cwd = process.cwd();
 
 async function transformSource(sourcefile: string) {
@@ -47,6 +42,7 @@ async function transformSource(sourcefile: string) {
   } catch (e) {
     // eslint-disable-next-line no-console
     console.log(`Error transforming ${sourcefile}`);
+    // eslint-disable-next-line no-console
     console.log(e);
     const body = JSON.stringify(e);
     return {
@@ -78,7 +74,7 @@ async function transformCss(args: { patternGroups: Record<string, string> }) {
   }
 }
 
-export default function(eleventyConfig: UserConfig, opts?: Options) {
+export default function(eleventyConfig: UserConfig) {
   eleventyConfig.on('eleventy.before', async function({ runMode }: BeforeEvent) {
     switch (runMode) {
       case 'build': await $$`npx tspc -b`;
