@@ -206,9 +206,9 @@ export default async function(eleventyConfig: UserConfig) {
     tsconfig: './tsconfig.docsssr.json',
     componentModules: [
       'elements/rh-button/rh-button.ts',
-      'elements/rh-icon/rh-icon.ts',
-      'elements/rh-surface/rh-surface.ts',
-      'elements/rh-code-block/rh-code-block.ts',
+      // 'elements/rh-icon/rh-icon.ts',
+      // 'elements/rh-surface/rh-surface.ts',
+      // 'elements/rh-code-block/rh-code-block.ts',
       'elements/rh-table/rh-table.ts',
       'elements/rh-accordion/rh-accordion.ts',
       'elements/rh-cta/rh-cta.ts',

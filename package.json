@@ -92,7 +92,6 @@
       "command": "web-dev-server --open --watch",
       "dependencies": [
         "patch",
-        "compile",
         "analyze",
         "playgrounds",
         "watch:docs"
@@ -103,7 +102,6 @@
       "command": "web-dev-server --watch",
       "dependencies": [
         "patch",
-        "compile",
         "analyze"
       ]
     },
@@ -119,12 +117,12 @@
     "build": {
       "dependencies": [
         "patch",
-        "compile",
         "analyze",
         "react-wrappers",
         "entrypoint",
         "copy-assets",
-        "docs"
+        "docs",
+        "compile"
       ]
     },
     "build:test": {
@@ -211,8 +209,7 @@
       "dependencies": [
         "patch",
         "analyze",
-        "playgrounds",
-        "compile"
+        "playgrounds"
       ],
       "files": [
         "docs"
@@ -275,8 +272,7 @@
       "service": true,
       "command": "TSX_TSCONFIG_PATH=tsconfig.settings.json NODE_OPTIONS='--import tsx/esm' eleventy --serve --incremental --config=eleventy.config.ts",
       "dependencies": [
-        "analyze",
-        "compile"
+        "analyze"
       ]
     },
     "e2e": {
