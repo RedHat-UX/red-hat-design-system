@@ -1,12 +1,7 @@
 import type { UserConfig } from '@11ty/eleventy';
-import type { BeforeEvent } from '@11ty/eleventy/src/UserConfig.js';
 
 import { readFile } from 'node:fs/promises';
 import { basename, join } from 'node:path';
-
-import { $ } from 'execa';
-
-const $$ = $({ stdout: ['pipe'], stderr: ['pipe'] });
 
 import { transformFile } from '@swc/core';
 import { transform } from '@pwrs/lit-css';
@@ -24,9 +19,13 @@ async function transformSource(sourcefile: string) {
           syntax: 'typescript',
           decorators: true,
         },
+        target: 'es2022',
+        keepClassNames: true,
         transform: {
+          legacyDecorator: true,
+          useDefineForClassFields: false,
           decoratorMetadata: true,
-          decoratorVersion: '2022-03',
+          decoratorVersion: '2021-12',
         },
       },
     });
@@ -75,12 +74,6 @@ async function transformCss(args: { patternGroups: Record<string, string> }) {
 }
 
 export default function(eleventyConfig: UserConfig) {
-  eleventyConfig.on('eleventy.before', async function({ runMode }: BeforeEvent) {
-    switch (runMode) {
-      case 'build': await $$`npx tspc -b`;
-    }
-  });
-
   eleventyConfig.addExtension('11ty.ts', {
     key: '11ty.js',
     compile() {

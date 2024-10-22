@@ -203,7 +203,7 @@ export default async function(eleventyConfig: UserConfig) {
   });
 
   eleventyConfig.addPlugin(LitPlugin, {
-    tsconfig: './tsconfig.settings.json',
+    tsconfig: './tsconfig.docsssr.json',
     componentModules: [
       'elements/rh-button/rh-button.ts',
       'elements/rh-icon/rh-icon.ts',

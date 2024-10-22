@@ -82,7 +82,7 @@ for await (const message of getEachMessage() as AsyncIterableIterator<RenderRequ
       const end = performance.now();
       await sendMessage({ page, rendered, durationMs: end - start });
     } catch (e) {
-      console.log(e);
+      console.log(...Object.keys(e.message));
     }
   }
 }

@@ -38,7 +38,7 @@ export default async function(eleventyConfig: UserConfig, opts?: Options) {
   const imports = opts?.componentModules ?? [];
   const tsconfig = opts?.tsconfig ?? './tsconfig.json';
 
-  let proc: ResultPromise<{ node: true; ipc: true; stdout: 'inherit'; stderr: 'inherit' }>;
+  let proc: ResultPromise<{ node: true; ipc: true; all: true }>;
 
   // If there are no component modules, we could never have anything to
   // render.
@@ -47,8 +47,7 @@ export default async function(eleventyConfig: UserConfig, opts?: Options) {
       await redactTSFileInPlace('./worker.ts');
       const $ = execa({
         node: true,
-        stdout: 'inherit',
-        stderr: 'inherit',
+        all: true,
         ipcInput: {
           imports,
           tsconfig,
@@ -57,10 +56,16 @@ export default async function(eleventyConfig: UserConfig, opts?: Options) {
       proc = $`docs/_plugins/lit-ssr/worker.js`;
     });
 
+    eleventyConfig.on('eleventy.after', async function() {
+      proc.disconnect();
+      const result = (await proc);
+      console.log(result.all);
+    });
+
     eleventyConfig.addTransform('render-lit', async function(this, content) {
       const { outputPath, inputPath } = this.page;
 
-      if (!outputPath.endsWith('.html') || outputPath === ('./_site/foundations/iconography/index.html')) {
+      if (!outputPath.endsWith('.html')) {
         return content;
       }
 
@@ -71,12 +76,14 @@ export default async function(eleventyConfig: UserConfig, opts?: Options) {
       }) as RenderResponseMessage;
       if (message.rendered) {
         const { durationMs, rendered, page } = message;
-        const color =
+        if (durationMs > 1000) {
+          const color =
             durationMs > 5000 ? chalk.red
           : durationMs > 1000 ? chalk.yellow
           : durationMs > 100 ? chalk.blue
           : chalk.green;
-        console.log(`${color(durationMs.toFixed(2).padEnd(8))} Rendered ${page.outputPath} in`);
+          console.log(`${color(durationMs.toFixed(2).padEnd(8))} Rendered ${page.outputPath} in`);
+        }
         return trimOuterMarkers(rendered);
       } else {
         return content;
