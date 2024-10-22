@@ -97,13 +97,7 @@ export default async function(eleventyConfig: UserConfig) {
   eleventyConfig.addPassthroughCopy({
     'node_modules/@lit/reactive-element': '/assets/packages/@lit/reactive-element',
   });
-  eleventyConfig.addPassthroughCopy({
-    'elements': `/assets/packages/@rhds/elements/elements/`,
-    'lib': `/assets/packages/@rhds/elements/lib/`,
-    'uxdot': `/assets/packages/@uxdot/elements/`,
-  }, {
-    filter: (p: string) => !p.startsWith('tsconfig'),
-  });
+
   eleventyConfig.addPlugin(ImportMapPlugin, {
     nodemodulesPublicPath: '/assets/packages',
     manualImportMap: {
@@ -206,9 +200,9 @@ export default async function(eleventyConfig: UserConfig) {
     tsconfig: './tsconfig.docsssr.json',
     componentModules: [
       'elements/rh-button/rh-button.ts',
-      // 'elements/rh-icon/rh-icon.ts',
-      // 'elements/rh-surface/rh-surface.ts',
-      // 'elements/rh-code-block/rh-code-block.ts',
+      'elements/rh-icon/rh-icon.ts',
+      'elements/rh-surface/rh-surface.ts',
+      'elements/rh-code-block/rh-code-block.ts',
       'elements/rh-table/rh-table.ts',
       'elements/rh-accordion/rh-accordion.ts',
       'elements/rh-cta/rh-cta.ts',

@@ -209,8 +209,7 @@
       "dependencies": [
         "patch",
         "analyze",
-        "playgrounds",
-        "compile"
+        "playgrounds"
       ],
       "files": [
         "docs"
