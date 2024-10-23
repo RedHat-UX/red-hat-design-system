@@ -26,7 +26,6 @@ export class UxdotSideNav extends LitElement {
 
   #closeButton: HTMLElement | null = null;
 
-
   async connectedCallback() {
     super.connectedCallback();
 
@@ -149,9 +148,11 @@ export class UxdotSideNav extends LitElement {
 export class UxdotSideNavItem extends LitElement {
   static styles = [itemStyles];
 
-  @property({ type: Boolean, reflect: true }) active = false;
+  @property({ type: Boolean, reflect: true })
+  active = false;
 
-  @property() href?: string;
+  @property()
+  href: string | undefined;
 
   render() {
     const { active } = this;
@@ -165,7 +166,8 @@ export class UxdotSideNavItem extends LitElement {
 export class UxdotSideNavDropdown extends LitElement {
   static styles = [dropdownStyles];
 
-  @property({ type: Boolean, reflect: true }) expanded = false;
+  @property({ type: Boolean, reflect: true })
+  expanded = false;
 
   connectedCallback() {
     super.connectedCallback();

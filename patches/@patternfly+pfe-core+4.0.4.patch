@@ -1,0 +1,46 @@
+diff --git a/node_modules/@patternfly/pfe-core/decorators/observes.js b/node_modules/@patternfly/pfe-core/decorators/observes.js
+index d2a82be..67be76d 100644
+--- a/node_modules/@patternfly/pfe-core/decorators/observes.js
++++ b/node_modules/@patternfly/pfe-core/decorators/observes.js
+@@ -13,18 +13,30 @@ import { PropertyObserverController, } from '@patternfly/pfe-core/controllers/pr
+  */
+ export function observes(propertyName, options) {
+     return function (proto, methodName) {
+-        const callback = proto[methodName];
+-        if (typeof callback !== 'function') {
+-            throw new Error('@observes must decorate a class method');
++        if (typeof methodName === 'object') {
++            methodName.addInitializer(function() {
++                this.constructor.addInitializer(instance => {
++                    instance.addController(new PropertyObserverController(instance, {
++                        ...options,
++                        propertyName,
++                        callback: proto,
++                    }));
++                });
++            });
++        } else {
++            const callback = proto[methodName];
++            if (typeof callback !== 'function') {
++                throw new Error('@observes must decorate a class method');
++            }
++            const klass = proto.constructor;
++            klass.addInitializer(instance => {
++                instance.addController(new PropertyObserverController(instance, {
++                    ...options,
++                    propertyName,
++                    callback,
++                }));
++            });
+         }
+-        const klass = proto.constructor;
+-        klass.addInitializer(instance => {
+-            instance.addController(new PropertyObserverController(instance, {
+-                ...options,
+-                propertyName,
+-                callback,
+-            }));
+-        });
+     };
+ }
+ //# sourceMappingURL=observes.js.map

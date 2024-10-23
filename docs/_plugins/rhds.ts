@@ -1,9 +1,9 @@
 import type { UserConfig } from '@11ty/eleventy';
-import * as ChildProcess from 'node:child_process';
-import { join, dirname } from 'node:path';
-import { promisify } from 'node:util';
-import { readdir, readFile, writeFile, mkdir } from 'node:fs/promises';
+import { join, dirname, relative } from 'node:path';
+import { cp, glob, readdir, readFile, writeFile, mkdir } from 'node:fs/promises';
 import { makeDemoEnv } from '#scripts/environment.js';
+
+import { $ } from 'execa';
 
 import yaml from 'js-yaml';
 import slugify from 'slugify';
@@ -19,9 +19,6 @@ const repoStatus = yaml.load(await readFile(
   new URL('../_data/repoStatus.yaml', import.meta.url),
   'utf8',
 ));
-
-const exec = promisify(ChildProcess.exec);
-const cwd = process.cwd();
 
 /**
  * EleventyTransformContext the `this` binding for transform functions
@@ -60,6 +57,8 @@ const COPY_CONTENT_EXTENSIONS = [
   'd.ts',
 ];
 
+const cwd = process.cwd();
+
 /**
  * Generate a map of files per package which should be copied to the site dir
  */
@@ -85,19 +84,57 @@ interface Options {
 }
 
 export default async function(eleventyConfig: UserConfig, options?: Options) {
+  /** add the normalized pfe-tools config to global data */
+  eleventyConfig.addGlobalData('pfeconfig', getPfeConfig());
+
+  eleventyConfig.addGlobalData('sideNavDropdowns', [
+    { title: 'About', url: '/about', collection: 'about' },
+    { title: 'Get started', url: '/get-started', collection: 'getstarted' },
+    { title: 'Foundations', url: '/foundations', collection: 'foundations' },
+    { title: 'Tokens', url: '/tokens', collection: 'tokenCategory' },
+    { title: 'Elements', url: '/elements', collection: 'elementDocs' },
+    { title: 'Theming', url: '/theming', collection: 'theming' },
+    { title: 'Patterns', url: '/patterns', collection: 'pattern' },
+    { title: 'Accessibility', url: '/accessibility', collection: 'accessibility' },
+  ]);
+
+  eleventyConfig.addDataExtension('yml, yaml', (contents: string) => yaml.load(contents));
+
+  eleventyConfig.addPlugin(RHDSAlphabetizeTagsPlugin, options);
+  eleventyConfig.addPlugin(RHDSElementDocsPlugin);
+  eleventyConfig.addPlugin(RHDSElementDemosPlugin);
+
+  eleventyConfig.addPassthroughCopy('docs/demo.{js,map,ts}');
+  eleventyConfig.addPassthroughCopy('docs/theming/**/*.css');
+
+  eleventyConfig.addPassthroughCopy({
+    'node_modules/element-internals-polyfill': '/assets/packages/element-internals-polyfill',
+    // ensure icons are copied to the assets dir.
+    'node_modules/@patternfly/icons/': '/assets/packages/@patternfly/icons/',
+  });
+
+  eleventyConfig.addPassthroughCopy(await getFilesToCopy(), {
+    filter: (path: string) => !path.endsWith('.html'),
+  });
+
   eleventyConfig.on('eleventy.before', async ({ directories }) => {
     const outPath = join(directories.output, 'assets/javascript/repoStatus.json');
     await mkdir(dirname(outPath), { recursive: true });
     await writeFile(outPath, JSON.stringify(repoStatus), 'utf8');
   });
 
-  /** add the normalized pfe-tools config to global data */
-  eleventyConfig.addGlobalData('pfeconfig', getPfeConfig());
+  eleventyConfig.on('eleventy.before', async function({ runMode }) {
+    switch (runMode) {
+      case 'build':
+        await $`npx tspc -b elements --clean`;
+        await $`npx tspc -b lib --clean`;
+    }
+  });
 
   /** custom-elements.json */
   eleventyConfig.on('eleventy.before', async function({ runMode }) {
     if (runMode === 'watch') {
-      await exec('npx cem analyze');
+      await $`npx cem analyze`;
     }
   });
 
@@ -107,26 +144,41 @@ export default async function(eleventyConfig: UserConfig, options?: Options) {
     await writeFile(outPath, await makeDemoEnv(), 'utf8');
   });
 
-  eleventyConfig.addDataExtension('yml, yaml', (contents: string) => yaml.load(contents));
-
-  eleventyConfig.addPlugin(RHDSAlphabetizeTagsPlugin, options);
-
-  eleventyConfig.addPlugin(RHDSElementDocsPlugin);
-  eleventyConfig.addPlugin(RHDSElementDemosPlugin);
-
-  eleventyConfig.addPassthroughCopy('docs/demo.{js,map,ts}');
-
-  eleventyConfig.addPassthroughCopy({
-    'node_modules/element-internals-polyfill': '/assets/packages/element-internals-polyfill',
+  eleventyConfig.on('eleventy.after', async function({ runMode }) {
+    const cwd = process.cwd();
+    const pkgsDir = join(cwd, '_site/assets/packages');
+    switch (runMode) {
+      case 'build':
+        await $`npx tspc -b elements`;
+        await mkdir(join(pkgsDir, '@rhds/elements/elements'), { recursive: true });
+        await mkdir(join(pkgsDir, '@rhds/elements/lib'), { recursive: true });
+        for await (const file of glob('./{elements,lib}/**/*.{js,d.ts,map,css}')) {
+          const rel = relative(cwd, file);
+          const outDir = join(pkgsDir, '@rhds/elements');
+          const out = join(outDir, dirname(rel));
+          const from = join(cwd, rel);
+          const to = join(outDir, rel);
+          await mkdir(out, { recursive: true });
+          await cp(from, to);
+        }
+    }
   });
 
-  // ensure icons are copied to the assets dir.
-  eleventyConfig.addPassthroughCopy({
-    'node_modules/@patternfly/icons/': '/assets/packages/@patternfly/icons/',
-  });
-
-  eleventyConfig.addPassthroughCopy(await getFilesToCopy(), {
-    filter: (path: string) => !path.endsWith('.html'),
+  eleventyConfig.on('eleventy.after', async function({ runMode }) {
+    const cwd = process.cwd();
+    const pkgsDir = join(cwd, '_site/assets/packages');
+    switch (runMode) {
+      case 'build':
+        await $`npx tspc -b uxdot`;
+        await mkdir(join(pkgsDir, '@uxdot/elements'), { recursive: true });
+        for await (const file of glob('./uxdot/*.{js,d.ts,map,css}')) {
+          const rel = relative(join(cwd, 'uxdot'), file);
+          const outDir = join(pkgsDir, '@uxdot/elements');
+          const from = join(cwd, 'uxdot', rel);
+          const to = join(outDir, rel);
+          await cp(from, to);
+        }
+    }
   });
 
   eleventyConfig.addJavaScriptFunction('getTagNameSlug', getTagNameSlug);

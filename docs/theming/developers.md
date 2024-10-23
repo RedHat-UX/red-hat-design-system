@@ -305,7 +305,7 @@ import {
 
 @customElement('rh-consumer')
 export class RhConsumer extends LitElement {
-  @colorContextConsumer() private on?: ColorTheme;       // 2
+  @colorContextConsumer() private accessor on: ColorTheme | undefined;       // 2
 
   render() {
     const { on = 'light' } = this;                       // 3

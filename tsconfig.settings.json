@@ -41,6 +41,10 @@
     ],
     "plugins": [
       {
+        "transform": "@lit/ts-transformers",
+        "import": "idiomaticDecoratorsTransformer"
+      },
+      {
         "transform": "typescript-transform-lit-css",
         "inline": true,
         "cssnano": true
