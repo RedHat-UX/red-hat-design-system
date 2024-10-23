@@ -101,7 +101,6 @@ export default async function(eleventyConfig: UserConfig, options?: Options) {
   eleventyConfig.addDataExtension('yml, yaml', (contents: string) => yaml.load(contents));
 
   eleventyConfig.addPlugin(RHDSAlphabetizeTagsPlugin, options);
-
   eleventyConfig.addPlugin(RHDSElementDocsPlugin);
   eleventyConfig.addPlugin(RHDSElementDemosPlugin);
 
@@ -128,6 +127,7 @@ export default async function(eleventyConfig: UserConfig, options?: Options) {
     switch (runMode) {
       case 'build':
         await $`npx tspc -b elements --clean`;
+        await $`npx tspc -b lib --clean`;
     }
   });
 
