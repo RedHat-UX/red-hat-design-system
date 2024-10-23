@@ -56,11 +56,7 @@ async function transformSource(sourcefile: string) {
 
 async function transformCss(args: { patternGroups: Record<string, string> }) {
   if (!args.patternGroups.path.includes('lightdom')) {
-    const filePath = join(
-      cwd,
-        args.patternGroups.scope === 'uxdot' ? 'uxdot' : '.',
-      `${args.patternGroups.path}.css`,
-    );
+    const filePath = join(cwd, args.patternGroups.scope === 'uxdot' ? 'uxdot' : '.', `${args.patternGroups.path}.css`);
     const css = await readFile(filePath, 'utf8');
     const body = await transform({ css, filePath });
     return {
@@ -69,6 +65,13 @@ async function transformCss(args: { patternGroups: Record<string, string> }) {
       headers: {
         'Content-Type': 'text/javascript',
       },
+    };
+  } else {
+    const filePath = join(cwd, args.patternGroups.scope === 'uxdot' ? 'uxdot' : '.', `${args.patternGroups.path}.css`);
+    const body = await readFile(filePath, 'utf8');
+    return {
+      body,
+      status: 200,
     };
   }
 }

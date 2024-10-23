@@ -98,6 +98,26 @@ export default async function(eleventyConfig: UserConfig, options?: Options) {
     { title: 'Accessibility', url: '/accessibility', collection: 'accessibility' },
   ]);
 
+  eleventyConfig.addDataExtension('yml, yaml', (contents: string) => yaml.load(contents));
+
+  eleventyConfig.addPlugin(RHDSAlphabetizeTagsPlugin, options);
+
+  eleventyConfig.addPlugin(RHDSElementDocsPlugin);
+  eleventyConfig.addPlugin(RHDSElementDemosPlugin);
+
+  eleventyConfig.addPassthroughCopy('docs/demo.{js,map,ts}');
+  eleventyConfig.addPassthroughCopy('docs/theming/**/*.css');
+
+  eleventyConfig.addPassthroughCopy({
+    'node_modules/element-internals-polyfill': '/assets/packages/element-internals-polyfill',
+    // ensure icons are copied to the assets dir.
+    'node_modules/@patternfly/icons/': '/assets/packages/@patternfly/icons/',
+  });
+
+  eleventyConfig.addPassthroughCopy(await getFilesToCopy(), {
+    filter: (path: string) => !path.endsWith('.html'),
+  });
+
   eleventyConfig.on('eleventy.before', async ({ directories }) => {
     const outPath = join(directories.output, 'assets/javascript/repoStatus.json');
     await mkdir(dirname(outPath), { recursive: true });
@@ -124,28 +144,6 @@ export default async function(eleventyConfig: UserConfig, options?: Options) {
     await writeFile(outPath, await makeDemoEnv(), 'utf8');
   });
 
-  eleventyConfig.addDataExtension('yml, yaml', (contents: string) => yaml.load(contents));
-
-  eleventyConfig.addPlugin(RHDSAlphabetizeTagsPlugin, options);
-
-  eleventyConfig.addPlugin(RHDSElementDocsPlugin);
-  eleventyConfig.addPlugin(RHDSElementDemosPlugin);
-
-  eleventyConfig.addPassthroughCopy('docs/demo.{js,map,ts}');
-
-  eleventyConfig.addPassthroughCopy({
-    'node_modules/element-internals-polyfill': '/assets/packages/element-internals-polyfill',
-  });
-
-  // ensure icons are copied to the assets dir.
-  eleventyConfig.addPassthroughCopy({
-    'node_modules/@patternfly/icons/': '/assets/packages/@patternfly/icons/',
-  });
-
-  eleventyConfig.addPassthroughCopy(await getFilesToCopy(), {
-    filter: (path: string) => !path.endsWith('.html'),
-  });
-
   eleventyConfig.on('eleventy.after', async function({ runMode }) {
     const cwd = process.cwd();
     const pkgsDir = join(cwd, '_site/assets/packages');
@@ -155,8 +153,8 @@ export default async function(eleventyConfig: UserConfig, options?: Options) {
         await mkdir(join(pkgsDir, '@rhds/elements/elements'), { recursive: true });
         await mkdir(join(pkgsDir, '@rhds/elements/lib'), { recursive: true });
         for await (const file of glob('./{elements,lib}/**/*.{js,d.ts,map,css}')) {
-          const outDir = join(pkgsDir, '@rhds/elements');
           const rel = relative(cwd, file);
+          const outDir = join(pkgsDir, '@rhds/elements');
           const out = join(outDir, dirname(rel));
           const from = join(cwd, rel);
           const to = join(outDir, rel);
