@@ -8,7 +8,7 @@ import { transform } from '@pwrs/lit-css';
 
 const cwd = process.cwd();
 
-async function transformSource(sourcefile: string) {
+async function transformTypescriptSource(sourcefile: string) {
   try {
     const { code: body, map } = await transformFile(sourcefile, {
       filename: basename(sourcefile),
@@ -54,28 +54,6 @@ async function transformSource(sourcefile: string) {
   }
 }
 
-async function transformCss(args: { patternGroups: Record<string, string> }) {
-  if (!args.patternGroups.path.includes('lightdom')) {
-    const filePath = join(cwd, args.patternGroups.scope === 'uxdot' ? 'uxdot' : '.', `${args.patternGroups.path}.css`);
-    const css = await readFile(filePath, 'utf8');
-    const body = await transform({ css, filePath });
-    return {
-      body,
-      status: 200,
-      headers: {
-        'Content-Type': 'text/javascript',
-      },
-    };
-  } else {
-    const filePath = join(cwd, args.patternGroups.scope === 'uxdot' ? 'uxdot' : '.', `${args.patternGroups.path}.css`);
-    const body = await readFile(filePath, 'utf8');
-    return {
-      body,
-      status: 200,
-    };
-  }
-}
-
 export default function(eleventyConfig: UserConfig) {
   eleventyConfig.addExtension('11ty.ts', {
     key: '11ty.js',
@@ -88,18 +66,35 @@ export default function(eleventyConfig: UserConfig) {
 
   eleventyConfig.setServerOptions({
     onRequest: {
-      '/assets/packages/@:scope/elements/:path*.css': transformCss,
+      '/assets/packages/@:scope/elements/:path*.css': async function transformCss(
+        args: { patternGroups: Record<string, string> },
+      ) {
+        const filePath = join(cwd, args.patternGroups.scope === 'uxdot' ? 'uxdot' : '.', `${args.patternGroups.path}.css`);
+        const css = await readFile(filePath, 'utf8');
+        if (args.patternGroups.path.includes('lightdom')) {
+          return { body: css, status: 200 };
+        } else {
+          return {
+            body: await transform({ css, filePath }),
+            status: 200,
+            headers: {
+              'Content-Type': 'text/javascript',
+            },
+          };
+        }
+      },
+
       '/assets/packages/@:scope/:pkg/:path*.js': async function({
         patternGroups: { scope, path, pkg },
       }) {
         switch (scope) {
           case 'rhds':
             switch (pkg) {
-              case 'elements': return transformSource(join(cwd, `${path}.ts`));
+              case 'elements': return transformTypescriptSource(join(cwd, `${path}.ts`));
               default: return;
             }
           case 'uxdot':
-            return transformSource(join(cwd, 'uxdot', `${path}.ts`));
+            return transformTypescriptSource(join(cwd, 'uxdot', `${path}.ts`));
           default:
             return;
         }
