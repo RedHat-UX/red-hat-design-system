@@ -1,33 +1,23 @@
 import type { UserConfig } from '@11ty/eleventy';
 
 import { readFile } from 'node:fs/promises';
-import { basename, join } from 'node:path';
+import { join } from 'node:path';
 
-import { transformFile } from '@swc/core';
+import { transform as esbuildTransform } from 'esbuild';
 import { transform } from '@pwrs/lit-css';
 
 const cwd = process.cwd();
 
+const tsconfigRaw = await readFile(new URL('../../tsconfig.docsssr.json', import.meta.url), 'utf8');
+
 async function transformTypescriptSource(sourcefile: string) {
   try {
-    const { code: body, map } = await transformFile(sourcefile, {
-      filename: basename(sourcefile),
-      sourceMaps: true,
-      inlineSourcesContent: true,
-      jsc: {
-        parser: {
-          syntax: 'typescript',
-          decorators: true,
-        },
-        target: 'es2022',
-        keepClassNames: true,
-        transform: {
-          legacyDecorator: true,
-          useDefineForClassFields: false,
-          decoratorMetadata: true,
-          decoratorVersion: '2021-12',
-        },
-      },
+    const { code: body, map } = await esbuildTransform(await readFile(sourcefile, 'utf8'), {
+      loader: 'ts',
+      sourcemap: true,
+      target: 'es2022',
+      sourcefile,
+      tsconfigRaw,
     });
 
     return {
