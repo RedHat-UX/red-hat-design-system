@@ -37,3 +37,8 @@ subnav:
 </uxdot-pattern>
 
 <rh-cta href="/elements/tile/demos/#demo-accented-tiles">View accented tile demo</rh-cta>
+
+<uxdot-pattern src="./patterns/tile-with-tag.html">
+  <h2 id="accented-tile" slot="heading">Tile with tag</h2>
+</uxdot-pattern>
+
