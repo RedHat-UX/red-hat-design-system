@@ -21,13 +21,6 @@ subnav:
   import '@rhds/elements/rh-blockquote/rh-blockquote.js';
 </script>
 
-<link rel="stylesheet"
-      href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css"
-      data-helmet>
-<link rel="stylesheet"
-      href="/styles/samp.css"
-      data-helmet>
-
 <uxdot-pattern src="./patterns/accented-tile.html">
   <h2 id="accented-tile" slot="heading">Accented tile</h2>
   <p>The accented tile pattern should be used to draw attention to a specific 
