@@ -31,7 +31,7 @@ rh-navigation-universal > ul > li > a,
 }
 
 #nav-universal-details-content li {
-  color: var(--rh-color-text-primary);
+  color: var(--rh-color-gray-95, #151515);
 }
 
 rh-navigation-universal > ul > li > a {
