@@ -30,6 +30,10 @@ rh-navigation-universal > ul > li > a,
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
 }
 
+#nav-universal-details-content li {
+  color: var(--rh-color-text-primary);
+}
+
 rh-navigation-universal > ul > li > a {
   display: inline-block;
   padding: var(--rh-space-md, 8px);
