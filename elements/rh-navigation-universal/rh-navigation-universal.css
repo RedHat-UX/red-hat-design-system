@@ -2,6 +2,10 @@
   display: block;
 }
 
+[hidden] {
+  display: none;
+}
+
 #container {
   background-color: var(--rh-color-surface-darkest, #151515);
   padding-inline: var(--rh-space-lg, 16px);

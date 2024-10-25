@@ -12,6 +12,7 @@ import styles from './rh-navigation-universal.css';
  * @slot - Place an unordered list (`<ul>`) of links into the slot
  * @csspart container - container element for slotted universal navigation
  */
+
 @customElement('rh-navigation-universal')
 export class RhNavigationUniversal extends LitElement {
   /**
@@ -21,19 +22,82 @@ export class RhNavigationUniversal extends LitElement {
   @property({ attribute: 'accessible-label' }) accessibleLabel?: string;
 
   /**
+   * Customize the default "All Red Hat" text in the `<summary>` element.
+   * Only relevant for the bordered variant.
+   */
+  @property({ attribute: 'summary-label' }) summaryLabel?: string;
+
+  /**
    * Sets the variant to bordered, pushes the navigation to the right, adds borders on hover
    */
   @property({ reflect: true }) variant?: 'bordered';
 
   static readonly styles = [styles];
 
+  firstUpdated() {
+    if (this.variant === 'bordered') {
+      this.#appendListItem();
+    }
+  }
+
   render() {
     const label = this.accessibleLabel ? this.accessibleLabel : 'Universal Navigation';
     return html`
       <nav aria-label="${label}" id="container" part="container">
         <slot></slot>
+        <slot hidden name="details-content"></slot>
       </nav>
     `;
+  }
+
+  #findUnorderedList(): HTMLUListElement | null {
+    const slot = this.shadowRoot?.querySelector('slot');
+
+    const content = slot?.assignedElements().find(node => {
+      return node.nodeName.toLowerCase() === 'ul';
+    });
+
+    if (!(content instanceof HTMLUListElement)) {
+      return null;
+    }
+
+    return content;
+  }
+
+  #getDetailsContentHTML(): any { // TODO: Fix `any`
+    const slot = this.shadowRoot?.querySelector<HTMLSlotElement>('slot[name="details-content"]');
+
+    const fragment = document.createDocumentFragment();
+    const nodes = slot?.assignedNodes();
+    if (!nodes) {
+      return;
+    }
+
+    for (const node of nodes) {
+      if (node.nodeType === Node.ELEMENT_NODE) {
+        fragment.appendChild(node.cloneNode(true));
+      }
+    }
+
+    return fragment;
+  }
+
+  #appendListItem(): void {
+    const summaryLabel = this.summaryLabel ? this.summaryLabel : 'All Red Hat';
+    const ul = this.#findUnorderedList();
+    const li = document.createElement('li');
+    const allRedHatContent = `
+      <details id="nav-universal-details">
+        <summary id="nav-universal-summary">
+          <span id="nav-universal-summary-shift">${summaryLabel}</span>
+        </summary>
+        <div id="nav-universal-details-content"></div>
+      </details>
+    `;
+    li.innerHTML = allRedHatContent;
+    const getDetailsContentEl = li.querySelector('#nav-universal-details-content');
+    getDetailsContentEl?.appendChild(this.#getDetailsContentHTML());
+    ul?.appendChild(li);
   }
 }
 
