@@ -100,6 +100,6 @@ The background color of the button turns to a darker blue on hover. It also has 
   <img src="../back-to-top-focus-hover-active.svg" 
     alt="A back to top button with a dark blue background and a blue focus ring around it"
     width="94"
-    height="30">>
+    height="30">
 </uxdot-example>
 
