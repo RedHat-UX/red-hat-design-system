@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-`<rh-navigation-secondary>`: corrected style regression
+`<rh-navigation-secondary>`: corrected style regression in dark color palettes
