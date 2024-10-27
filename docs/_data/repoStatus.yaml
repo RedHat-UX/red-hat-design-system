@@ -140,10 +140,10 @@
   type: element
   overallStatus: planned
   libraries:
-    figma: na
-    rhds: na
-    shared: na
-    docs: na
+    figma: planned
+    rhds: planned
+    shared: planned
+    docs: planned
 - tagName: rh-health-index
   name: Health index
   type: element
