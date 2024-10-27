@@ -1629,30 +1629,49 @@ function resetCurrentPageIndex() {
   return currentPageIndex;
 }
 </script>
-      <script type="sample/css" filename="demo/rh-navigation-secondary-dark-variant-inline-0.css">/* Dark demo overriding the grid of dropdowns */
-#custom-grid::part(sections) {
-  display: block;
-  grid: unset;
-}
+      <script type="sample/css" filename="demo/rh-navigation-secondary-dark-variant-inline-0.css">/* tile lightdom used in custom grid */
+@import url(../../../rh-tile/rh-tile-lightdom.css);
 
-/* Dark demo with long logo text */
-@media screen and (min-width: 358px) {
+/* long logo text pattern */
+@media (min-width: 358px) {
   rh-navigation-secondary {
     --rh-navigation-secondary-logo-max-width: 13.4em;
   }
 }
 
-/* dark variant must be on a dark background as per design spec */
-#navigation-secondary-dark {
-  padding: 0;
+/* custom grid pattern in grid dropdown */
+/* Dark demo overriding the grid of dropdowns */
+rh-navigation-secondary-menu#custom-grid::part(sections) {
+  display: block;
+  grid: unset;
+}
+
+#custom-grid {
+  & .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--rh-space-lg);
+    margin-block: var(--rh-space-2xl);
+
+    & .grid-item:last-child {
+      padding: var(--rh-space-2xl);
+    }
+
+    @media (min-width: 992px) {
+      grid-template-columns: repeat(auto-fill, minmax(296px, 1fr));
+      & .grid-item:last-child {
+        grid-column: span 3;
+      }
+    }
+  }
 }
 
 /* content space-holder that allows for overflow */
 #space-holder {
   min-height: 101vh;
   padding: var(--_text-padding, var(--rh-space-lg, 16px));
-  background-color: var(--rh-color-surface-darker, #1f1f1f);
-  color: var(--rh-color-text-primary-on-dark, #ffffff);
+  background-color: var(--rh-color-surface, #1f1f1f);
+  color: var(--rh-color-text-primary, #ffffff);
   @media screen and (min-width: 768px) {
     --_text-padding: var(--rh-space-2xl, 32px);
   }
@@ -1668,6 +1687,8 @@ function resetCurrentPageIndex() {
       <script type="sample/js" filename="demo/rh-navigation-secondary-dark-variant-inline-1.js">import '@rhds/elements/rh-navigation-secondary/rh-navigation-secondary.js';
 import '@rhds/elements/rh-cta/rh-cta.js';
 import '@rhds/elements/rh-card/rh-card.js';
+import '@rhds/elements/rh-tile/rh-tile.js';
+import '@rhds/elements/rh-surface/rh-surface.js';
 </script>
       <script type="sample/css" filename="demo/rh-navigation-secondary-long-logo-text-inline-0.css">#navigation-secondary-long-text {
   padding: 0;
@@ -2819,30 +2840,49 @@ function resetCurrentPageIndex() {
   return currentPageIndex;
 }
 </script>
-      <script type="sample/css" filename="demo/rh-navigation-secondary-dark-variant-inline-0.css">/* Dark demo overriding the grid of dropdowns */
-#custom-grid::part(sections) {
-  display: block;
-  grid: unset;
-}
+      <script type="sample/css" filename="demo/rh-navigation-secondary-dark-variant-inline-0.css">/* tile lightdom used in custom grid */
+@import url(../../../rh-tile/rh-tile-lightdom.css);
 
-/* Dark demo with long logo text */
-@media screen and (min-width: 358px) {
+/* long logo text pattern */
+@media (min-width: 358px) {
   rh-navigation-secondary {
     --rh-navigation-secondary-logo-max-width: 13.4em;
   }
 }
 
-/* dark variant must be on a dark background as per design spec */
-#navigation-secondary-dark {
-  padding: 0;
+/* custom grid pattern in grid dropdown */
+/* Dark demo overriding the grid of dropdowns */
+rh-navigation-secondary-menu#custom-grid::part(sections) {
+  display: block;
+  grid: unset;
+}
+
+#custom-grid {
+  & .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--rh-space-lg);
+    margin-block: var(--rh-space-2xl);
+
+    & .grid-item:last-child {
+      padding: var(--rh-space-2xl);
+    }
+
+    @media (min-width: 992px) {
+      grid-template-columns: repeat(auto-fill, minmax(296px, 1fr));
+      & .grid-item:last-child {
+        grid-column: span 3;
+      }
+    }
+  }
 }
 
 /* content space-holder that allows for overflow */
 #space-holder {
   min-height: 101vh;
   padding: var(--_text-padding, var(--rh-space-lg, 16px));
-  background-color: var(--rh-color-surface-darker, #1f1f1f);
-  color: var(--rh-color-text-primary-on-dark, #ffffff);
+  background-color: var(--rh-color-surface, #1f1f1f);
+  color: var(--rh-color-text-primary, #ffffff);
   @media screen and (min-width: 768px) {
     --_text-padding: var(--rh-space-2xl, 32px);
   }
@@ -2858,6 +2898,8 @@ function resetCurrentPageIndex() {
       <script type="sample/js" filename="demo/rh-navigation-secondary-dark-variant-inline-1.js">import '@rhds/elements/rh-navigation-secondary/rh-navigation-secondary.js';
 import '@rhds/elements/rh-cta/rh-cta.js';
 import '@rhds/elements/rh-card/rh-card.js';
+import '@rhds/elements/rh-tile/rh-tile.js';
+import '@rhds/elements/rh-surface/rh-surface.js';
 </script>
       <script type="sample/css" filename="demo/rh-navigation-secondary-long-logo-text-inline-0.css">#navigation-secondary-long-text {
   padding: 0;
@@ -4154,30 +4196,49 @@ function resetCurrentPageIndex() {
   return currentPageIndex;
 }
 </script>
-      <script type="sample/css" filename="demo/rh-navigation-secondary-dark-variant-inline-0.css">/* Dark demo overriding the grid of dropdowns */
-#custom-grid::part(sections) {
-  display: block;
-  grid: unset;
-}
+      <script type="sample/css" filename="demo/rh-navigation-secondary-dark-variant-inline-0.css">/* tile lightdom used in custom grid */
+@import url(../../../rh-tile/rh-tile-lightdom.css);
 
-/* Dark demo with long logo text */
-@media screen and (min-width: 358px) {
+/* long logo text pattern */
+@media (min-width: 358px) {
   rh-navigation-secondary {
     --rh-navigation-secondary-logo-max-width: 13.4em;
   }
 }
 
-/* dark variant must be on a dark background as per design spec */
-#navigation-secondary-dark {
-  padding: 0;
+/* custom grid pattern in grid dropdown */
+/* Dark demo overriding the grid of dropdowns */
+rh-navigation-secondary-menu#custom-grid::part(sections) {
+  display: block;
+  grid: unset;
+}
+
+#custom-grid {
+  & .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--rh-space-lg);
+    margin-block: var(--rh-space-2xl);
+
+    & .grid-item:last-child {
+      padding: var(--rh-space-2xl);
+    }
+
+    @media (min-width: 992px) {
+      grid-template-columns: repeat(auto-fill, minmax(296px, 1fr));
+      & .grid-item:last-child {
+        grid-column: span 3;
+      }
+    }
+  }
 }
 
 /* content space-holder that allows for overflow */
 #space-holder {
   min-height: 101vh;
   padding: var(--_text-padding, var(--rh-space-lg, 16px));
-  background-color: var(--rh-color-surface-darker, #1f1f1f);
-  color: var(--rh-color-text-primary-on-dark, #ffffff);
+  background-color: var(--rh-color-surface, #1f1f1f);
+  color: var(--rh-color-text-primary, #ffffff);
   @media screen and (min-width: 768px) {
     --_text-padding: var(--rh-space-2xl, 32px);
   }
@@ -4193,6 +4254,8 @@ function resetCurrentPageIndex() {
       <script type="sample/js" filename="demo/rh-navigation-secondary-dark-variant-inline-1.js">import '@rhds/elements/rh-navigation-secondary/rh-navigation-secondary.js';
 import '@rhds/elements/rh-cta/rh-cta.js';
 import '@rhds/elements/rh-card/rh-card.js';
+import '@rhds/elements/rh-tile/rh-tile.js';
+import '@rhds/elements/rh-surface/rh-surface.js';
 </script>
       <script type="sample/css" filename="demo/rh-navigation-secondary-long-logo-text-inline-0.css">#navigation-secondary-long-text {
   padding: 0;
@@ -5386,30 +5449,49 @@ function resetCurrentPageIndex() {
   return currentPageIndex;
 }
 </script>
-      <script type="sample/css" filename="demo/rh-navigation-secondary-dark-variant-inline-0.css">/* Dark demo overriding the grid of dropdowns */
-#custom-grid::part(sections) {
-  display: block;
-  grid: unset;
-}
+      <script type="sample/css" filename="demo/rh-navigation-secondary-dark-variant-inline-0.css">/* tile lightdom used in custom grid */
+@import url(../../../rh-tile/rh-tile-lightdom.css);
 
-/* Dark demo with long logo text */
-@media screen and (min-width: 358px) {
+/* long logo text pattern */
+@media (min-width: 358px) {
   rh-navigation-secondary {
     --rh-navigation-secondary-logo-max-width: 13.4em;
   }
 }
 
-/* dark variant must be on a dark background as per design spec */
-#navigation-secondary-dark {
-  padding: 0;
+/* custom grid pattern in grid dropdown */
+/* Dark demo overriding the grid of dropdowns */
+rh-navigation-secondary-menu#custom-grid::part(sections) {
+  display: block;
+  grid: unset;
+}
+
+#custom-grid {
+  & .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--rh-space-lg);
+    margin-block: var(--rh-space-2xl);
+
+    & .grid-item:last-child {
+      padding: var(--rh-space-2xl);
+    }
+
+    @media (min-width: 992px) {
+      grid-template-columns: repeat(auto-fill, minmax(296px, 1fr));
+      & .grid-item:last-child {
+        grid-column: span 3;
+      }
+    }
+  }
 }
 
 /* content space-holder that allows for overflow */
 #space-holder {
   min-height: 101vh;
   padding: var(--_text-padding, var(--rh-space-lg, 16px));
-  background-color: var(--rh-color-surface-darker, #1f1f1f);
-  color: var(--rh-color-text-primary-on-dark, #ffffff);
+  background-color: var(--rh-color-surface, #1f1f1f);
+  color: var(--rh-color-text-primary, #ffffff);
   @media screen and (min-width: 768px) {
     --_text-padding: var(--rh-space-2xl, 32px);
   }
@@ -5425,6 +5507,8 @@ function resetCurrentPageIndex() {
       <script type="sample/js" filename="demo/rh-navigation-secondary-dark-variant-inline-1.js">import '@rhds/elements/rh-navigation-secondary/rh-navigation-secondary.js';
 import '@rhds/elements/rh-cta/rh-cta.js';
 import '@rhds/elements/rh-card/rh-card.js';
+import '@rhds/elements/rh-tile/rh-tile.js';
+import '@rhds/elements/rh-surface/rh-surface.js';
 </script>
       <script type="sample/css" filename="demo/rh-navigation-secondary-long-logo-text-inline-0.css">#navigation-secondary-long-text {
   padding: 0;
@@ -5742,7 +5826,7 @@ select) {
     </li>
     <li>
       <rh-navigation-secondary-dropdown>
-        <a href="#" slot="link">w/ Sections</a>
+        <a href="#" slot="link">Fixed Width</a>
         <rh-navigation-secondary-menu slot="menu" layout="fixed-width">
           <rh-navigation-secondary-menu-section>
             <h3 slot="header">
@@ -5774,7 +5858,7 @@ select) {
     </li>
     <li>
       <rh-navigation-secondary-dropdown>
-        <a href="#" slot="link">Other examples</a>
+        <a href="#" slot="link">Composition</a>
         <rh-navigation-secondary-menu slot="menu">
           <rh-card>
             <h2 slot="header">Hello world</h2>
@@ -5829,29 +5913,43 @@ select) {
     </li>
     <li>
       <rh-navigation-secondary-dropdown>
-        <a href="#" slot="link">Override Grid</a>
+        <a href="#" slot="link">Grid</a>
         <rh-navigation-secondary-menu slot="menu" id="custom-grid">
-          <div><h3>Grid</h3></div>
-          <div class="pfe-l-grid pfe-m-gutters pfe-m-all-4-col">
-            <div><a href="#">Item</a></div>
-            <div><a href="#">Item</a></div>
-            <div><a href="#">Item</a></div>
-            <div><a href="#">Item</a></div>
-            <div><a href="#">Item</a></div>
-            <div><a href="#">Item</a></div>
+          <h3>Custom Grid</h3>
+          <div class="grid">
+            <div class="grid-item">
+              <rh-tile>
+                <img slot="image" src="https://fakeimg.pl/296x50" alt="296 X 50 placeholder image">
+                <div slot="title">Title</div>
+                <h2 slot="headline"><a href="#top">Link</a></h2>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                <div slot="footer">Suspendisse eu turpis elementum</div>
+              </rh-tile>
+            </div>
+            <div class="grid-item">
+              <rh-tile>
+                <img slot="image" src="https://fakeimg.pl/296x50" alt="296 X 50 placeholder image">
+                <div slot="title">Title</div>
+                <h2 slot="headline"><a href="#top">Link</a></h2>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                <div slot="footer">Suspendisse eu turpis elementum</div>
+              </rh-tile>
+            </div>
+            <div class="grid-item">
+              <rh-tile>
+                <img slot="image" src="https://fakeimg.pl/296x50" alt="296 X 50 placeholder image">
+                <div slot="title">Title</div>
+                <h2 slot="headline"><a href="#top">Link</a></h2>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                <div slot="footer">Suspendisse eu turpis elementum</div>
+              </rh-tile>
+            </div>
+            <rh-surface color-palette="lighter" class="grid-item">
+              <h4>Content Placeholder</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt luctus odio, vitae accumsan tortor sagittis et. Integer facilisis rutrum suscipit. Morbi elementum purus vel varius tincidunt. Nulla fringilla lacus a nulla vehicula tincidunt. Praesent a turpis et elit</p>
+            </rh-surface>
           </div>
-          <div><h3>Bootstrap Style Columns</h3></div>
-          <div class="pfe-l-grid pfe-m-gutters">
-            <div class="pfe-l-grid__item">Default Item</div>
-            <div class="pfe-l-grid__item pfe-m-2-col"><code>pfe-m-2-col</code></div>
-            <div class="pfe-l-grid__item pfe-m-10-col"><code>pfe-m-10-col</code></div>
-            <div class="pfe-l-grid__item pfe-m-4-col"><code>pfe-m-4-col</code></div>
-            <div class="pfe-l-grid__item pfe-m-4-col"><code>pfe-m-4-col</code></div>
-            <div class="pfe-l-grid__item pfe-m-4-col"><code>pfe-m-4-col</code></div>
-            <div class="pfe-l-grid__item pfe-m-6-col pfe-m-3-col-on-md"><code>pfe-m-6-col pfe-m-3-col-on-md</code></div>
-            <div class="pfe-l-grid__item pfe-m-6-col pfe-m-3-col-on-md pfe-m-startat-7-col-on-md"><code>pfe-m-6-col pfe-m-3-col-on-md pfe-m-startat-7-col-on-md</code></div>
-            <div class="pfe-l-grid__item pfe-m-6-col pfe-m-3-col-on-md"><code>pfe-m-6-col pfe-m-3-col-on-md</code></div>
-          </div>
+
         </rh-navigation-secondary-menu>
       </rh-navigation-secondary-dropdown>
     </li>
@@ -5861,7 +5959,7 @@ select) {
   </rh-cta>
 </rh-navigation-secondary>
 
-<div id="space-holder">
+<rh-surface id="space-holder" color-palette="darkest">
   <h2>Content Placeholder</h2>
   <a href="#">Link placeholder</a>
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt luctus odio, vitae accumsan tortor sagittis et. Integer facilisis rutrum suscipit. Morbi elementum purus vel varius tincidunt. Nulla fringilla lacus a nulla vehicula tincidunt. Praesent a turpis et elit laoreet ullamcorper et et metus. Praesent malesuada massa in tellus bibendum congue. Curabitur mollis purus et metus eleifend sagittis. Vivamus fringilla tincidunt sem id euismod. Maecenas a vestibulum nisl. Sed libero metus, ultrices in tortor facilisis, semper rhoncus nunc. Nullam ut diam et felis posuere lobortis vitae id leo. Sed hendrerit ex libero, a faucibus tellus maximus et. Aliquam erat volutpat. Phasellus vestibulum a lacus eget eleifend. Pellentesque ipsum nunc, scelerisque non neque id, bibendum vestibulum ante.</p>
@@ -5870,7 +5968,7 @@ select) {
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt luctus odio, vitae accumsan tortor sagittis et. Integer facilisis rutrum suscipit. Morbi elementum purus vel varius tincidunt. Nulla fringilla lacus a nulla vehicula tincidunt. Praesent a turpis et elit laoreet ullamcorper et et metus. Praesent malesuada massa in tellus bibendum congue. Curabitur mollis purus et metus eleifend sagittis. Vivamus fringilla tincidunt sem id euismod. Maecenas a vestibulum nisl. Sed libero metus, ultrices in tortor facilisis, semper rhoncus nunc. Nullam ut diam et felis posuere lobortis vitae id leo. Sed hendrerit ex libero, a faucibus tellus maximus et. Aliquam erat volutpat. Phasellus vestibulum a lacus eget eleifend. Pellentesque ipsum nunc, scelerisque non neque id, bibendum vestibulum ante.</p>
   <p>Maecenas venenatis sollicitudin leo, vitae tincidunt lectus dapibus vel. Integer quis sapien dui. Nulla sagittis dapibus suscipit. Pellentesque consequat dapibus lorem id feugiat. Fusce ornare sapien at lacus porta maximus. Praesent gravida faucibus tellus et lobortis. Praesent ullamcorper facilisis semper. Praesent lobortis enim lacus, ut facilisis ex tristique in. Sed lobortis tortor ut sem lacinia pharetra. Nunc a varius risus. Proin volutpat eget justo quis fermentum. Nunc quis vestibulum ipsum. Donec vulputate laoreet sapien id mattis. Phasellus non enim laoreet, euismod mauris vel, vulputate est.</p>
   <p>Vivamus porta massa at nulla eleifend, a pellentesque eros dictum. Nam finibus nibh purus, in placerat nulla elementum at. Integer quis est condimentum, tempor mi ac, dapibus ante. Pellentesque fringilla hendrerit est, ut ultricies orci condimentum viverra. Aliquam a lacus consequat dolor vestibulum euismod eget quis ipsum. Pellentesque viverra, libero sed euismod consectetur, turpis nulla tristique massa, vel ultricies massa arcu sit amet mauris. Donec aliquet tortor ante, ut pulvinar odio gravida et. Proin laoreet et elit at tempus. In aliquam erat lacus, in volutpat neque faucibus a.</p>
-</div>
+</rh-surface>
 
 <link rel="stylesheet" href="../rh-navigation-secondary-lightdom.css"><!--playground-hide--><link rel="stylesheet" href="../rh-navigation-secondary-dark-variant-inline-0.css">
 <script type="module" src="../rh-navigation-secondary-dark-variant-inline-1.js">&lt;/script>
@@ -6704,30 +6802,49 @@ function resetCurrentPageIndex() {
   return currentPageIndex;
 }
 </script>
-      <script type="sample/css" filename="demo/rh-navigation-secondary-dark-variant-inline-0.css">/* Dark demo overriding the grid of dropdowns */
-#custom-grid::part(sections) {
-  display: block;
-  grid: unset;
-}
+      <script type="sample/css" filename="demo/rh-navigation-secondary-dark-variant-inline-0.css">/* tile lightdom used in custom grid */
+@import url(../../../rh-tile/rh-tile-lightdom.css);
 
-/* Dark demo with long logo text */
-@media screen and (min-width: 358px) {
+/* long logo text pattern */
+@media (min-width: 358px) {
   rh-navigation-secondary {
     --rh-navigation-secondary-logo-max-width: 13.4em;
   }
 }
 
-/* dark variant must be on a dark background as per design spec */
-#navigation-secondary-dark {
-  padding: 0;
+/* custom grid pattern in grid dropdown */
+/* Dark demo overriding the grid of dropdowns */
+rh-navigation-secondary-menu#custom-grid::part(sections) {
+  display: block;
+  grid: unset;
+}
+
+#custom-grid {
+  & .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--rh-space-lg);
+    margin-block: var(--rh-space-2xl);
+
+    & .grid-item:last-child {
+      padding: var(--rh-space-2xl);
+    }
+
+    @media (min-width: 992px) {
+      grid-template-columns: repeat(auto-fill, minmax(296px, 1fr));
+      & .grid-item:last-child {
+        grid-column: span 3;
+      }
+    }
+  }
 }
 
 /* content space-holder that allows for overflow */
 #space-holder {
   min-height: 101vh;
   padding: var(--_text-padding, var(--rh-space-lg, 16px));
-  background-color: var(--rh-color-surface-darker, #1f1f1f);
-  color: var(--rh-color-text-primary-on-dark, #ffffff);
+  background-color: var(--rh-color-surface, #1f1f1f);
+  color: var(--rh-color-text-primary, #ffffff);
   @media screen and (min-width: 768px) {
     --_text-padding: var(--rh-space-2xl, 32px);
   }
@@ -6743,6 +6860,8 @@ function resetCurrentPageIndex() {
       <script type="sample/js" filename="demo/rh-navigation-secondary-dark-variant-inline-1.js">import '@rhds/elements/rh-navigation-secondary/rh-navigation-secondary.js';
 import '@rhds/elements/rh-cta/rh-cta.js';
 import '@rhds/elements/rh-card/rh-card.js';
+import '@rhds/elements/rh-tile/rh-tile.js';
+import '@rhds/elements/rh-surface/rh-surface.js';
 </script>
       <script type="sample/css" filename="demo/rh-navigation-secondary-long-logo-text-inline-0.css">#navigation-secondary-long-text {
   padding: 0;
@@ -7929,30 +8048,49 @@ function resetCurrentPageIndex() {
   return currentPageIndex;
 }
 </script>
-      <script type="sample/css" filename="demo/rh-navigation-secondary-dark-variant-inline-0.css">/* Dark demo overriding the grid of dropdowns */
-#custom-grid::part(sections) {
-  display: block;
-  grid: unset;
-}
+      <script type="sample/css" filename="demo/rh-navigation-secondary-dark-variant-inline-0.css">/* tile lightdom used in custom grid */
+@import url(../../../rh-tile/rh-tile-lightdom.css);
 
-/* Dark demo with long logo text */
-@media screen and (min-width: 358px) {
+/* long logo text pattern */
+@media (min-width: 358px) {
   rh-navigation-secondary {
     --rh-navigation-secondary-logo-max-width: 13.4em;
   }
 }
 
-/* dark variant must be on a dark background as per design spec */
-#navigation-secondary-dark {
-  padding: 0;
+/* custom grid pattern in grid dropdown */
+/* Dark demo overriding the grid of dropdowns */
+rh-navigation-secondary-menu#custom-grid::part(sections) {
+  display: block;
+  grid: unset;
+}
+
+#custom-grid {
+  & .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--rh-space-lg);
+    margin-block: var(--rh-space-2xl);
+
+    & .grid-item:last-child {
+      padding: var(--rh-space-2xl);
+    }
+
+    @media (min-width: 992px) {
+      grid-template-columns: repeat(auto-fill, minmax(296px, 1fr));
+      & .grid-item:last-child {
+        grid-column: span 3;
+      }
+    }
+  }
 }
 
 /* content space-holder that allows for overflow */
 #space-holder {
   min-height: 101vh;
   padding: var(--_text-padding, var(--rh-space-lg, 16px));
-  background-color: var(--rh-color-surface-darker, #1f1f1f);
-  color: var(--rh-color-text-primary-on-dark, #ffffff);
+  background-color: var(--rh-color-surface, #1f1f1f);
+  color: var(--rh-color-text-primary, #ffffff);
   @media screen and (min-width: 768px) {
     --_text-padding: var(--rh-space-2xl, 32px);
   }
@@ -7968,6 +8106,8 @@ function resetCurrentPageIndex() {
       <script type="sample/js" filename="demo/rh-navigation-secondary-dark-variant-inline-1.js">import '@rhds/elements/rh-navigation-secondary/rh-navigation-secondary.js';
 import '@rhds/elements/rh-cta/rh-cta.js';
 import '@rhds/elements/rh-card/rh-card.js';
+import '@rhds/elements/rh-tile/rh-tile.js';
+import '@rhds/elements/rh-surface/rh-surface.js';
 </script>
       <script type="sample/css" filename="demo/rh-navigation-secondary-long-logo-text-inline-0.css">#navigation-secondary-long-text {
   padding: 0;
@@ -9234,30 +9374,49 @@ function resetCurrentPageIndex() {
   return currentPageIndex;
 }
 </script>
-      <script type="sample/css" filename="demo/rh-navigation-secondary-dark-variant-inline-0.css">/* Dark demo overriding the grid of dropdowns */
-#custom-grid::part(sections) {
-  display: block;
-  grid: unset;
-}
+      <script type="sample/css" filename="demo/rh-navigation-secondary-dark-variant-inline-0.css">/* tile lightdom used in custom grid */
+@import url(../../../rh-tile/rh-tile-lightdom.css);
 
-/* Dark demo with long logo text */
-@media screen and (min-width: 358px) {
+/* long logo text pattern */
+@media (min-width: 358px) {
   rh-navigation-secondary {
     --rh-navigation-secondary-logo-max-width: 13.4em;
   }
 }
 
-/* dark variant must be on a dark background as per design spec */
-#navigation-secondary-dark {
-  padding: 0;
+/* custom grid pattern in grid dropdown */
+/* Dark demo overriding the grid of dropdowns */
+rh-navigation-secondary-menu#custom-grid::part(sections) {
+  display: block;
+  grid: unset;
+}
+
+#custom-grid {
+  & .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--rh-space-lg);
+    margin-block: var(--rh-space-2xl);
+
+    & .grid-item:last-child {
+      padding: var(--rh-space-2xl);
+    }
+
+    @media (min-width: 992px) {
+      grid-template-columns: repeat(auto-fill, minmax(296px, 1fr));
+      & .grid-item:last-child {
+        grid-column: span 3;
+      }
+    }
+  }
 }
 
 /* content space-holder that allows for overflow */
 #space-holder {
   min-height: 101vh;
   padding: var(--_text-padding, var(--rh-space-lg, 16px));
-  background-color: var(--rh-color-surface-darker, #1f1f1f);
-  color: var(--rh-color-text-primary-on-dark, #ffffff);
+  background-color: var(--rh-color-surface, #1f1f1f);
+  color: var(--rh-color-text-primary, #ffffff);
   @media screen and (min-width: 768px) {
     --_text-padding: var(--rh-space-2xl, 32px);
   }
@@ -9273,6 +9432,8 @@ function resetCurrentPageIndex() {
       <script type="sample/js" filename="demo/rh-navigation-secondary-dark-variant-inline-1.js">import '@rhds/elements/rh-navigation-secondary/rh-navigation-secondary.js';
 import '@rhds/elements/rh-cta/rh-cta.js';
 import '@rhds/elements/rh-card/rh-card.js';
+import '@rhds/elements/rh-tile/rh-tile.js';
+import '@rhds/elements/rh-surface/rh-surface.js';
 </script>
       <script type="sample/css" filename="demo/rh-navigation-secondary-long-logo-text-inline-0.css">#navigation-secondary-long-text {
   padding: 0;

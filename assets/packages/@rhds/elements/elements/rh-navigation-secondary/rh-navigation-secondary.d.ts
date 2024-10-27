@@ -36,6 +36,10 @@ export declare class RhNavigationSecondary extends LitElement {
      * Color palette darker | lighter (default: lighter)
      */
     colorPalette: NavPalette;
+    /**
+     * Sets color theme based on parent context
+     */
+    private on?;
     private _nav?;
     /**
      * Customize the default `aria-label` on the `<nav>` container.
