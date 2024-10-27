@@ -1,13 +1,12 @@
 ---
 layout: layouts/pages/basic.njk
-title: Oops!
+title: Page not found (404 error)
 permalink: 404.html
 ---
 
 <div class="centered feature-box">
-  <h1 class="section-headline">404 error</h1>
-  <h2 class="pfe-headline-alpha">This is embarrassing, we can’t find that page</h2>
-  <h3 class="pfe-headline-gamma" style="margin-top:48px;">Try one of these popular links instead</h3>
+  <h2 class="pfe-headline-alpha">This is embarrassing. We can’t find that page.</h2>
+  <p class="pfe-headline-gamma" style="margin-top:48px;">Try one of these popular links instead:</p>
   <ul class="inline-list">
     <li><a href="/about">About this website</a></li>
     <li><a href="/get-started">Get started</a></li>
@@ -21,10 +20,12 @@ permalink: 404.html
 
 <section aria-labelledby="aria__contact-us">
   <h2 id="aria__contact-us">Contact us</h2>
-  <p>If you feel that you reached this page in error, <a href="../get-started">contact us</a> and we'll point you in the right direction.</p>
+  <p>If you feel that you reached this page in error, <a href="mailto:design-system@redhat.com">email us</a> and we'll point you in the right direction.</p>
 
   <uxdot-feedback>
-    <h3 slot="header">Feedback or requests</h3>
-    <p slot="content">Do you have any feedback? Or do you need to request something? Create an issue in our <a href="https://github.com/patternfly/patternfly-elements">GitHub repo</a> if so.</p>
+<!--
+    <h2 slot="header">Feedback or requests</h2>
+    <p slot="content">Do you have any feedback? Or do you need to request something? Create an issue in our <a href="https://github.com/RedHat-UX/red-hat-design-system/issues/new/choose">GitHub repo</a> if so.</p>
+-->
   </uxdot-feedback>
 </section>
