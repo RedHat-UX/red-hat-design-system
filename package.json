@@ -15,6 +15,7 @@
     "#scripts/*": "./scripts/*",
     "#uxdot/*": "./uxdot/*",
     "#11ty-plugins/*": "./docs/_plugins/*",
+    "#11ty-data/*": "./docs/_data/*",
     "#eleventy.config": "./eleventy.config.ts"
   },
   "contributors": [
