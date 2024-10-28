@@ -94,6 +94,6 @@ Same as the inline alert, at minimum, the status icon and title need to be visib
 
 ## Interaction states
 
-Refer to these documentation pages for interaction states.
+Refer to these documentation pages for interaction states:
 
 - [Button](/elements/button/style/#interaction-states)
