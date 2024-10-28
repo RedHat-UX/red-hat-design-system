@@ -53,8 +53,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.4/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
@@ -1006,8 +1006,16 @@ import '@rhds/elements/rh-button/rh-button.js';
   gap: var(--rh-space-lg, 16px);
 }
 </script>
-      <script type="sample/js" filename="demo/rh-alert-toast-inline-1.js">import '@rhds/elements/rh-alert/rh-alert.js';
-import '@rhds/elements/rh-button/rh-button.js';
+      <script type="sample/js" filename="demo/rh-alert-toast-inline-1.js">import '@rhds/elements/rh-button/rh-button.js';
+import { RhAlert } from '@rhds/elements/rh-alert/rh-alert.js';
+let i = 0;
+document.getElementById('create-toast')
+  .addEventListener('click', function() {
+    RhAlert.toast({
+      message: `New toast ${++i}`,
+      heading: 'Toast!',
+    });
+  });
 </script>
       <script type="sample/css" filename="demo/reset.css" hidden="">/* Box sizing rules */
 *,
@@ -1436,8 +1444,16 @@ import '@rhds/elements/rh-button/rh-button.js';
   gap: var(--rh-space-lg, 16px);
 }
 </script>
-      <script type="sample/js" filename="demo/rh-alert-toast-inline-1.js">import '@rhds/elements/rh-alert/rh-alert.js';
-import '@rhds/elements/rh-button/rh-button.js';
+      <script type="sample/js" filename="demo/rh-alert-toast-inline-1.js">import '@rhds/elements/rh-button/rh-button.js';
+import { RhAlert } from '@rhds/elements/rh-alert/rh-alert.js';
+let i = 0;
+document.getElementById('create-toast')
+  .addEventListener('click', function() {
+    RhAlert.toast({
+      message: `New toast ${++i}`,
+      heading: 'Toast!',
+    });
+  });
 </script>
       <script type="sample/css" filename="demo/reset.css" hidden="">/* Box sizing rules */
 *,
@@ -1918,8 +1934,16 @@ import '@rhds/elements/rh-button/rh-button.js';
   gap: var(--rh-space-lg, 16px);
 }
 </script>
-      <script type="sample/js" filename="demo/rh-alert-toast-inline-1.js">import '@rhds/elements/rh-alert/rh-alert.js';
-import '@rhds/elements/rh-button/rh-button.js';
+      <script type="sample/js" filename="demo/rh-alert-toast-inline-1.js">import '@rhds/elements/rh-button/rh-button.js';
+import { RhAlert } from '@rhds/elements/rh-alert/rh-alert.js';
+let i = 0;
+document.getElementById('create-toast')
+  .addEventListener('click', function() {
+    RhAlert.toast({
+      message: `New toast ${++i}`,
+      heading: 'Toast!',
+    });
+  });
 </script>
       <script type="sample/css" filename="demo/reset.css" hidden="">/* Box sizing rules */
 *,
@@ -2350,8 +2374,16 @@ import '@rhds/elements/rh-button/rh-button.js';
   gap: var(--rh-space-lg, 16px);
 }
 </script>
-      <script type="sample/js" filename="demo/rh-alert-toast-inline-1.js">import '@rhds/elements/rh-alert/rh-alert.js';
-import '@rhds/elements/rh-button/rh-button.js';
+      <script type="sample/js" filename="demo/rh-alert-toast-inline-1.js">import '@rhds/elements/rh-button/rh-button.js';
+import { RhAlert } from '@rhds/elements/rh-alert/rh-alert.js';
+let i = 0;
+document.getElementById('create-toast')
+  .addEventListener('click', function() {
+    RhAlert.toast({
+      message: `New toast ${++i}`,
+      heading: 'Toast!',
+    });
+  });
 </script>
       <script type="sample/css" filename="demo/reset.css" hidden="">/* Box sizing rules */
 *,
@@ -2816,8 +2848,16 @@ import '@rhds/elements/rh-button/rh-button.js';
   gap: var(--rh-space-lg, 16px);
 }
 </script>
-      <script type="sample/js" filename="demo/rh-alert-toast-inline-1.js">import '@rhds/elements/rh-alert/rh-alert.js';
-import '@rhds/elements/rh-button/rh-button.js';
+      <script type="sample/js" filename="demo/rh-alert-toast-inline-1.js">import '@rhds/elements/rh-button/rh-button.js';
+import { RhAlert } from '@rhds/elements/rh-alert/rh-alert.js';
+let i = 0;
+document.getElementById('create-toast')
+  .addEventListener('click', function() {
+    RhAlert.toast({
+      message: `New toast ${++i}`,
+      heading: 'Toast!',
+    });
+  });
 </script>
       <script type="sample/css" filename="demo/reset.css" hidden="">/* Box sizing rules */
 *,
@@ -3290,8 +3330,16 @@ import '@rhds/elements/rh-button/rh-button.js';
   gap: var(--rh-space-lg, 16px);
 }
 </script>
-      <script type="sample/js" filename="demo/rh-alert-toast-inline-1.js">import '@rhds/elements/rh-alert/rh-alert.js';
-import '@rhds/elements/rh-button/rh-button.js';
+      <script type="sample/js" filename="demo/rh-alert-toast-inline-1.js">import '@rhds/elements/rh-button/rh-button.js';
+import { RhAlert } from '@rhds/elements/rh-alert/rh-alert.js';
+let i = 0;
+document.getElementById('create-toast')
+  .addEventListener('click', function() {
+    RhAlert.toast({
+      message: `New toast ${++i}`,
+      heading: 'Toast!',
+    });
+  });
 </script>
       <script type="sample/css" filename="demo/reset.css" hidden="">/* Box sizing rules */
 *,
@@ -3772,8 +3820,16 @@ import '@rhds/elements/rh-button/rh-button.js';
   gap: var(--rh-space-lg, 16px);
 }
 </script>
-      <script type="sample/js" filename="demo/rh-alert-toast-inline-1.js">import '@rhds/elements/rh-alert/rh-alert.js';
-import '@rhds/elements/rh-button/rh-button.js';
+      <script type="sample/js" filename="demo/rh-alert-toast-inline-1.js">import '@rhds/elements/rh-button/rh-button.js';
+import { RhAlert } from '@rhds/elements/rh-alert/rh-alert.js';
+let i = 0;
+document.getElementById('create-toast')
+  .addEventListener('click', function() {
+    RhAlert.toast({
+      message: `New toast ${++i}`,
+      heading: 'Toast!',
+    });
+  });
 </script>
       <script type="sample/css" filename="demo/reset.css" hidden="">/* Box sizing rules */
 *,
@@ -4262,8 +4318,16 @@ import '@rhds/elements/rh-button/rh-button.js';
   gap: var(--rh-space-lg, 16px);
 }
 </script>
-      <script type="sample/js" filename="demo/rh-alert-toast-inline-1.js">import '@rhds/elements/rh-alert/rh-alert.js';
-import '@rhds/elements/rh-button/rh-button.js';
+      <script type="sample/js" filename="demo/rh-alert-toast-inline-1.js">import '@rhds/elements/rh-button/rh-button.js';
+import { RhAlert } from '@rhds/elements/rh-alert/rh-alert.js';
+let i = 0;
+document.getElementById('create-toast')
+  .addEventListener('click', function() {
+    RhAlert.toast({
+      message: `New toast ${++i}`,
+      heading: 'Toast!',
+    });
+  });
 </script>
       <script type="sample/css" filename="demo/reset.css" hidden="">/* Box sizing rules */
 *,
@@ -4542,6 +4606,8 @@ select) {
     <rh-button slot="actions" variant="link" data-action="dismiss">Dismiss</rh-button>
     <rh-button slot="actions" variant="link" data-action="confirm">Confirm</rh-button>
   </rh-alert>
+
+  <rh-button id="create-toast">Create Animated Toast</rh-button>
 </section><!--playground-hide--><link rel="stylesheet" href="../rh-alert-toast-inline-0.css">
 <script type="module" src="../rh-alert-toast-inline-1.js">&lt;/script>
 <link rel="stylesheet" href="/styles/demo/styles.css"><!--playground-hide-end--></script>

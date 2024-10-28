@@ -46,6 +46,8 @@
     <rh-button slot="actions" variant="link" data-action="dismiss">Dismiss</rh-button>
     <rh-button slot="actions" variant="link" data-action="confirm">Confirm</rh-button>
   </rh-alert>
+
+  <rh-button id="create-toast">Create Animated Toast</rh-button>
 </section>
 
 <style>
@@ -58,6 +60,14 @@
 </style>
 
 <script type="module">
-  import '@rhds/elements/rh-alert/rh-alert.js';
   import '@rhds/elements/rh-button/rh-button.js';
+  import { RhAlert } from '@rhds/elements/rh-alert/rh-alert.js';
+  let i = 0;
+  document.getElementById('create-toast')
+    .addEventListener('click', function() {
+      RhAlert.toast({
+        message: `New toast ${++i}`,
+        heading: 'Toast!',
+      });
+    });
 </script>
