@@ -92,9 +92,6 @@ Same as the inline alert, at minimum, the status icon and title need to be visib
        height="640">
 </uxdot-example>
 
-<uxdot-spacer-tokens-table tokens="md, lg, xl">
-</uxdot-spacer-tokens-table>
-
 ## Interaction states
 
 Refer to these documentation pages for interaction states.
