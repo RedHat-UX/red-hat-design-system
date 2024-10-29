@@ -26,8 +26,8 @@ const ICONS = new Map(Object.entries({
   neutral: 'minus-circle-fill',
   info: 'information-fill',
   success: 'check-circle-fill',
-  caution: 'warning-fill',
-  warning: 'error-fill',
+  caution: 'error-fill',
+  warning: 'warning-fill',
   danger: 'ban-fill',
 }));
 
