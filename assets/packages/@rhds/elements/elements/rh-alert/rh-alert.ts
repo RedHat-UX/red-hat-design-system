@@ -23,12 +23,12 @@ interface ToastOptions {
 }
 
 const ICONS = new Map(Object.entries({
-  neutral: 'notification-fill',
+  neutral: 'minus-circle-fill',
+  info: 'information-fill',
   success: 'check-circle-fill',
-  caution: 'warning-fill',
+  caution: 'error-fill',
   warning: 'warning-fill',
-  danger: 'error-fill',
-  note: 'information-fill',
+  danger: 'ban-fill',
 }));
 
 export class AlertCloseEvent extends Event {
@@ -131,7 +131,7 @@ export class RhAlert extends LitElement {
   private get icon() {
     const state = this.state.toLowerCase() as this['state'];
     switch (state) {
-      case 'info': return ICONS.get('note');
+      case 'note': return ICONS.get('info');
       case 'default': return ICONS.get('neutral');
       case 'error': return ICONS.get('danger');
       default: return ICONS.get(state);
@@ -219,7 +219,7 @@ export class RhAlert extends LitElement {
     const hasActions = _isServer || this.#slots.hasSlotted('actions');
     const hasBody =
       _isServer || this.#slots.hasSlotted(SlotController.default as unknown as string);
-    const { variant = '' } = this;
+    const { variant = 'inline' } = this;
     const state = this.#aliasState(this.state);
     return html`
       <rh-surface id="container"
