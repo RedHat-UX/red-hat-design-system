@@ -1,4 +1,4 @@
 ---
 "@rhds/elements": patch
 ---
-`<rh-alert>`: corrected colours, typography, and layouts
+`<rh-alert>`: corrected typography and layouts
