@@ -107,6 +107,7 @@ action is required, otherwise use a logo wall.
 <uxdot-pattern src="./patterns/logo-text-and-cta.html">
 </uxdot-pattern>
 
+## Title bar card
 <uxdot-pattern src="./patterns/title-bar.html">
   <h2 id="title-bar-card" slot="heading">Title bar card</h2>
 
