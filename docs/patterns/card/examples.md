@@ -40,39 +40,39 @@ text may be used to describe the asset.
   <h3 id="title-and-link-top" slot="heading">Title and Link - Top</h3>
 </uxdot-pattern>
 
-<uxdot-pattern src="./patterns/avatars.html">
-  <h2 id="avatars-card" slot="heading">Avatars card</h2>
+## Avatars card
 
   Use to highlight a group of people who engage in an event. A label
   should be included, but including text is optional.
 
   Use the [`<rh-avatar>`](/elements/avatar/) element to element to present
   the list of users.
-
+  
+<uxdot-pattern src="./patterns/avatars.html">
 </uxdot-pattern>
 
-<uxdot-pattern src="./patterns/fast-facts.html">
-  <h2 id="fast-facts-card" slot="heading">Fast facts card</h2>
+## Fast facts card
 
   Use to display quick facts or short data points under a label. A Secondary
   call to action may be used or not.
 
+<uxdot-pattern src="./patterns/fast-facts.html">
 </uxdot-pattern>
 
-<uxdot-pattern src="./patterns/icon.html">
-  <h2 id="icon-card" slot="heading">Icon card</h2>
+## Icon card
 
   Use to add an icon to the basic style above the text. Secondary and Default
   calls to action may be used.
 
+<uxdot-pattern src="./patterns/icon.html">
 </uxdot-pattern>
 
-<uxdot-pattern src="./patterns/image.html">
-  <h2 id="image-card" slot="heading">Image card</h2>
+## Image card
 
   Use to add an image to the basic style above the text.
   Secondary and Default calls to action may be used.
 
+<uxdot-pattern src="./patterns/image.html">
 </uxdot-pattern>
 
 ## List cards
@@ -109,8 +109,6 @@ action is required, otherwise use a logo wall.
 
 ## Title bar card
 <uxdot-pattern src="./patterns/title-bar.html">
-  <h2 id="title-bar-card" slot="heading">Title bar card</h2>
-
   Use to add a small icon and a label group to the header section. A larger
   icon or a logo may be used.
 
