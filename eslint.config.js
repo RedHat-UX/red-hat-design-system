@@ -18,6 +18,7 @@ export default tseslint.config(
       '**/*.(spec|e2e).js',
       'react',
       'elements/**/*.js',
+      'uxdot/**/*.js',
       'lib/**/*.js',
 
       'docs/demo.js',
