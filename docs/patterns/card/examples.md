@@ -47,7 +47,7 @@ text may be used to describe the asset.
 
   Use the [`<rh-avatar>`](/elements/avatar/) element to element to present
   the list of users.
-  
+
 <uxdot-pattern src="./patterns/avatars.html">
 </uxdot-pattern>
 
@@ -108,13 +108,12 @@ action is required, otherwise use a logo wall.
 </uxdot-pattern>
 
 ## Title bar card
-<uxdot-pattern src="./patterns/title-bar.html">
   Use to add a small icon and a label group to the header section. A larger
   icon or a logo may be used.
 
   Alternative title bar styles can be achieved by selecting [card's `header`
   CSS Shadow Part](/elements/card/code/#parts).
-
+<uxdot-pattern src="./patterns/title-bar.html">
 </uxdot-pattern>
 
 ## Quote cards
