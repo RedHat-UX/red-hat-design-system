@@ -35,28 +35,18 @@ There are several card patterns that can be used for a variety of use cases. To 
   </rh-tile>
 
   <rh-tile>
-    <h4 slot="headline"><a href="#top">Avatars</a></h4>
+    <h4 slot="headline"><a href="/patterns/card/examples/#avatars-card">Avatars</a></h4>
     <p>
       Use to highlight a group of people who engage in an event. A label should be 
       included, but including text is optional.
     </p>
   </rh-tile>
 
-<!--missing from patterns-->
   <rh-tile>
-    <h4 slot="headline"><a href="#top">Basic</a></h4>
+    <h4 slot="headline"><a href="/elements/card/demos/#demo-card">Basic</a></h4>
     <p>
       Use to display basic content or long paragraphs of text. Secondary and 
       Default calls to action may be used.
-    </p>
-  </rh-tile>
-
-  <!--missing from patterns-->
-  <rh-tile>
-    <h4 slot="headline"><a href="#top">Data</a></h4>
-    <p>
-      Use to display quick facts or short data points under a label. A Secondary 
-      call to action may be used or not.
     </p>
   </rh-tile>
 
@@ -92,33 +82,6 @@ There are several card patterns that can be used for a variety of use cases. To 
     </p>
   </rh-tile>
 
-  <!--missing from patterns-->
-<rh-tile>
-    <h4 slot="headline"><a href="#top">Logo slider</a></h4>
-    <p>
-      Use to display more content about a company when expanded on hover or tap. A 
-      title and text should be included.
-    </p>
-  </rh-tile>
-
-  <!--missing from patterns-->
-  <rh-tile>
-    <h4 slot="headline"><a href="#top">Name slider</a></h4>
-    <p>
-      Use to display more content about a person when the tray expands. A title 
-      and text should be included.
-    </p>
-  </rh-tile>
-
-  <!--missing from patterns-->
-  <rh-tile>
-    <h4 slot="headline"><a href="#top">Pricing</a></h4>
-    <p>
-      Use to outline the pricing and benefits of something. Elements may be 
-      removed or rearranged depending on content needs.
-    </p>
-  </rh-tile>
-
   <rh-tile>
     <h4 slot="headline"><a href="/patterns/card/examples/#quote-cards">Quote</a></h4>
     <p>
@@ -135,12 +98,10 @@ There are several card patterns that can be used for a variety of use cases. To 
     </p>
   </rh-tile>
 
-  <!--missing from patterns-->
   <rh-tile>
-    <h4 slot="headline"><a href="#top">Video</a></h4>
+    <h4 slot="headline"><a href="/elements/video-embed/demos/#demo-card-with-video">Video</a></h4>
     <p>
-      Use to trigger a video that will play in a [Modal dialog]({{ 
-      '/elements/dialog' }}). Different layout configurations may be used.
+      Use to display a video in a card.
     </p>
   </rh-tile>
 </nav>
