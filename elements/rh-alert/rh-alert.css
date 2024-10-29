@@ -83,9 +83,8 @@ footer ::slotted(rh-button[variant='link' i]) {
   }
 
   & #description {
-    font-size: var(--rh-font-size-body-text-sm, 0.875rem) !important;
-
     & > ::slotted(*) {
+      font-size: var(--rh-font-size-body-text-sm, 0.875rem) !important;
       margin-block: 0 !important;
       padding: 0 !important;
     }
