@@ -16,7 +16,6 @@ import RHDSPlugin from '#11ty-plugins/rhds.js';
 import DesignTokensPlugin from '#11ty-plugins/tokens.js';
 import RHDSMarkdownItPlugin from '#11ty-plugins/markdown-it.js';
 import ImportMapPlugin from '#11ty-plugins/importMap.js';
-import LitPlugin from '#11ty-plugins/lit-ssr/lit.js';
 
 export interface GlobalData {
   runMode: 'build' | 'watch' | 'serve';
@@ -196,8 +195,12 @@ export default async function(eleventyConfig: UserConfig) {
     },
   });
 
-  eleventyConfig.addPlugin(LitPlugin, {
-    tsconfig: './tsconfig.docsssr.json',
+  if (!isWatch && !process.env.QUIET) {
+    eleventyConfig.addPlugin(DirectoryOutputPlugin);
+  }
+
+  await eleventyConfig.addPlugin(RHDSPlugin, {
+    tsconfig: './tsconfig.settings.json',
     componentModules: [
       'elements/rh-button/rh-button.ts',
       'elements/rh-icon/rh-icon.ts',
@@ -227,23 +230,13 @@ export default async function(eleventyConfig: UserConfig) {
       'uxdot/uxdot-spacer-tokens-table.ts',
       'uxdot/uxdot-toc.ts',
     ],
-  });
-
-  if (!isWatch && !process.env.QUIET) {
-    eleventyConfig.addPlugin(DirectoryOutputPlugin);
-  }
-
-  /**
-   * Collections to organize by 'order' value in front matter, then alphabetical by title;
-   * instead of by date
-   */
-  await eleventyConfig.addPlugin(RHDSPlugin, {
     tagsToAlphabetize: [
       'component',
       'foundations',
       'getstarted',
     ],
   });
+
   return {
     templateFormats: ['html', 'md', 'njk', '11ty.js', '11ty.cjs'],
     markdownTemplateEngine: 'njk',

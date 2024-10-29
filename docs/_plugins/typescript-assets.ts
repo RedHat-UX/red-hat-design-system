@@ -8,7 +8,10 @@ import { transform } from '@pwrs/lit-css';
 
 const cwd = process.cwd();
 
-const tsconfigRaw = await readFile(new URL('../../tsconfig.docsssr.json', import.meta.url), 'utf8');
+const tsconfigRaw = await readFile(new URL(
+  '../../tsconfig.settings.json',
+  import.meta.url,
+), 'utf8');
 
 async function transformTypescriptSource(sourcefile: string) {
   try {

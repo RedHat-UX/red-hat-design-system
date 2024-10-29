@@ -11,6 +11,7 @@ import slugify from 'slugify';
 import RHDSAlphabetizeTagsPlugin from '#11ty-plugins/alphabetize-tags.js';
 import RHDSElementDocsPlugin from '#11ty-plugins/element-docs.js';
 import RHDSElementDemosPlugin from '#11ty-plugins/element-demos.js';
+import LitSSRPlugin from '#11ty-plugins/lit-ssr/lit.js';
 
 import { getPfeConfig } from '@patternfly/pfe-tools/config.js';
 import { capitalize } from '#11ty-plugins/tokensHelpers.js';
@@ -81,6 +82,14 @@ async function getFilesToCopy() {
 
 interface Options {
   tagsToAlphabetize: string[];
+  componentModules: string[];
+  tsconfig: string;
+}
+
+
+async function clean() {
+  await $`npx tspc -b elements --clean`;
+  await $`npx tspc -b lib --clean`;
 }
 
 export default async function(eleventyConfig: UserConfig, options?: Options) {
@@ -99,10 +108,6 @@ export default async function(eleventyConfig: UserConfig, options?: Options) {
   ]);
 
   eleventyConfig.addDataExtension('yml, yaml', (contents: string) => yaml.load(contents));
-
-  eleventyConfig.addPlugin(RHDSAlphabetizeTagsPlugin, options);
-  eleventyConfig.addPlugin(RHDSElementDocsPlugin);
-  eleventyConfig.addPlugin(RHDSElementDemosPlugin);
 
   eleventyConfig.addPassthroughCopy('docs/demo.{js,map,ts}');
   eleventyConfig.addPassthroughCopy('docs/theming/**/*.css');
@@ -123,11 +128,16 @@ export default async function(eleventyConfig: UserConfig, options?: Options) {
     await writeFile(outPath, JSON.stringify(repoStatus), 'utf8');
   });
 
+  let hasCleanedSinceWatchStarted = false;
   eleventyConfig.on('eleventy.before', async function({ runMode }) {
     switch (runMode) {
       case 'build':
-        await $`npx tspc -b elements --clean`;
-        await $`npx tspc -b lib --clean`;
+        return clean();
+      default:
+        if (!hasCleanedSinceWatchStarted) {
+          hasCleanedSinceWatchStarted = true;
+          return await clean();
+        }
     }
   });
 
@@ -245,4 +255,9 @@ export default async function(eleventyConfig: UserConfig, options?: Options) {
       eleventyConfig.addWatchTarget(dir);
     }
   }
+
+  eleventyConfig.addPlugin(RHDSAlphabetizeTagsPlugin, options);
+  eleventyConfig.addPlugin(RHDSElementDocsPlugin);
+  eleventyConfig.addPlugin(RHDSElementDemosPlugin);
+  eleventyConfig.addPlugin(LitSSRPlugin, options);
 };
