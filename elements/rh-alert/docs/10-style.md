@@ -35,7 +35,7 @@ background with a drop shadow.
 
 ### Inline
 
-The default alert is inline. At minimum, the status icon and title needs to be visible.
+The default alert is inline. At minimum, the status icon and title need to be visible.
 
 <uxdot-example width-adjustment="408px">
   <img alt="Two examples of an inline alert"
@@ -57,7 +57,7 @@ There is an alternate inline alert where the border covers all sides.
 
 ### Toast
 
-Same as the inline alert, at minimum, the status icon and title needs to be visible.
+Same as the inline alert, at minimum, the status icon and title need to be visible.
 
 <uxdot-example width-adjustment="456px">
   <img alt="Two examples of a toast alert"
@@ -92,11 +92,8 @@ Same as the inline alert, at minimum, the status icon and title needs to be visi
        height="640">
 </uxdot-example>
 
-<uxdot-spacer-tokens-table tokens="md, lg, xl">
-</uxdot-spacer-tokens-table>
-
 ## Interaction states
 
-Refer to these documentation pages for interaction states.
+Refer to these documentation pages for interaction states:
 
 - [Button](/elements/button/style/#interaction-states)
