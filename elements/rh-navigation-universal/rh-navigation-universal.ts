@@ -1,6 +1,10 @@
+import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
+
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
+
+import '@rhds/elements/rh-icon/rh-icon.js';
 
 import styles from './rh-navigation-universal.css';
 
@@ -34,6 +38,8 @@ export class RhNavigationUniversal extends LitElement {
 
   static readonly styles = [styles];
 
+  #slots = new SlotController(this, 'personalization-link', null, 'details-content');
+
   firstUpdated() {
     if (this.variant === 'bordered') {
       this.#appendListItem();
@@ -42,16 +48,26 @@ export class RhNavigationUniversal extends LitElement {
 
   render() {
     const label = this.accessibleLabel ? this.accessibleLabel : 'Universal Navigation';
+    const personalizationHtml = html`
+      <div id="personalization"
+           ?hidden="${this.#slots.isEmpty('personalization-link')}"
+           part="personalization">
+        <rh-icon set="ui" icon="information-fill"></rh-icon>
+        <slot name="personalization-link"></slot>
+        <rh-icon set="ui" icon="caret-right"></rh-icon>
+      </div>
+    `;
     return html`
       <nav aria-label="${label}" id="container" part="container">
-        <slot></slot>
+        ${this.variant === 'bordered' ? personalizationHtml : ''}
+        <slot id="nav-universal-default-slot"></slot>
         <slot hidden name="details-content"></slot>
       </nav>
     `;
   }
 
   #findUnorderedList(): HTMLUListElement | null {
-    const slot = this.shadowRoot?.querySelector('slot');
+    const slot = this.shadowRoot?.querySelector('slot:not(slot[name])');
 
     const content = slot?.assignedElements().find(node => {
       return node.nodeName.toLowerCase() === 'ul';

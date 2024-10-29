@@ -1,18 +1,72 @@
 :host {
+  background-color: var(--rh-color-surface-darkest, #151515);
   display: block;
 }
 
 [hidden] {
-  display: none;
+  display: none !important;
 }
 
 #container {
-  background-color: var(--rh-color-surface-darkest, #151515);
-  padding-inline: var(--rh-space-lg, 16px);
+  border-block-end: 1px solid var(--rh-color-gray-50, #707070);
+  margin-inline: var(--rh-space-lg, 16px);
+  display: flex;
+  justify-content: end;
+}
+
+#personalization {
+  color: white;
+  display: none;
+}
+
+@container nav-universal (min-width: 1200px) {
+  :host([variant='bordered']) #container {
+    justify-content: space-between;
+  }
+
+  #personalization {
+    align-items: center;
+    display: inline-flex;
+  }
+
+  #personalization[hidden] ~ ::slotted(ul) {
+    margin-inline-start: auto;
+  }
+}
+
+#personalization ::slotted(a) {
+  color: white;
+  line-height: 1;
+  text-decoration: none;
+}
+
+#personalization ::slotted(a:hover),
+#personalization:focus-within ::slotted(a) {
+  text-decoration: underline;
+}
+
+#personalization ::slotted(a:focus) {
+  outline: 0;
+}
+
+#personalization:focus-within {
+  outline: var(--rh-border-width-sm, 1px) dashed var(--rh-color-white, #ffffff);
+}
+
+#personalization rh-icon[icon='information-fill'] {
+  width: 14px;
+  height: 14px;
+  margin-inline-end: 8px;
+}
+
+#personalization rh-icon[icon='caret-right'] {
+  width: 9px;
+  height: 9px;
+  margin-inline-start: 6px;
+  margin-block-start: 2px;
 }
 
 ::slotted(ul) {
-  border-block-end: 1px solid var(--rh-color-gray-50, #707070);
   margin-block: 0;
   padding-inline-start: 0;
 }

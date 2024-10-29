@@ -129,3 +129,12 @@ rh-navigation-universal[variant='bordered'] {
     text-decoration: none;
   }
 }
+
+rh-navigation-universal[variant='bordered'] [slot='personalization-link'] a {
+  color: white;
+  text-decoration: none;
+}
+
+rh-navigation-universal[variant='bordered'] [slot='personalization-link'] a:is(:hover, :focus) {
+  text-decoration: underline;
+}
