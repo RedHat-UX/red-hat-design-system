@@ -41,7 +41,9 @@ cue to communicate meaning.
 Consider how these elements look to a color blind user:
 
 <figure>
-  <img alt="Dialog with a gray leave button, a form field with a gray bottom border, and progress steps in gray without labels" src="/assets/color/color-a11y-using-color-alone.svg">
+  <uxdot-example width-adjustment="1012px">
+    <img alt="Dialog with a gray leave button, a form field with a gray bottom border, and progress steps in gray without labels" src="/assets/color/color-a11y-using-color-alone.svg">
+  </uxdot-example>
   <figcaption>
     A simulation of what a color blind user might see when only color is used to communicate meaning.
   </figcaption>
@@ -107,7 +109,7 @@ underlines at your discretion.
 
 <uxdot-example width-adjustment=”100%” variant="full" alignment="left" no-border>
   <img alt="Contrast ratio of a blue link in a paragraph with black text"
-       src="/assets/color/color-a11y-contrast-links.svg">
+       src="/assets/color/color-a11y-color-contrast-links.svg">
 </uxdot-example>
 
 ### Graphical objects and UI components
