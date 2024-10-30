@@ -45,7 +45,7 @@ export class RhNavigationUniversal extends LitElement {
   }
 
   protected override async getUpdateComplete(): Promise<boolean> {
-    if (this.variant === 'bordered') {
+    if (!this.#slots.isEmpty('personalization-link')) {
       await import('@rhds/elements/rh-icon/rh-icon.js');
     }
     return super.getUpdateComplete();
