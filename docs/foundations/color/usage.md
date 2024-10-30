@@ -12,9 +12,8 @@ subnav:
 ---
 
 <script data-helmet type="module">
-  import '@uxdot/elements/uxdot-best-practice.js';
+  /*import '@uxdot/elements/uxdot-best-practice.js';*/
   import '@rhds/elements/rh-alert/rh-alert.js';
-  import '@rhds/elements/rh-tag/rh-tag.js';
   import '@rhds/elements/rh-table/rh-table.js';
 </script>
 
@@ -22,15 +21,29 @@ subnav:
       href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css"
       data-helmet>
 
+<style>
+  td ul {
+    margin-block: 0;
+  }
+  figcaption { 
+    margin-block-start: var(--rh-space-lg);
+    color: var(--rh-color-text-secondary-on-light);
+    font-size: var(--rh-font-size-body-text-sm);
+  }
+  figure uxdot-example {
+    margin-block-start: var(--rh-space-2xl);
+  }
+</style>
+
 ## Our color palette
 
 Our color palette was built to be extensive and flexible. Applying color thoughtfully and consistently helps us deliver accessible, cohesive, and recognizable experiences for our users.
 
-[Contact us](/standards) if you have design system questions or visit the [Brand standards](https://www.redhat.com/en/about/brand/standards) website if you have brand questions.
+[Contact us](/support) if you have design system questions or visit the [Brand standards website](https://www.redhat.com/en/about/brand/standards) if you have brand questions.
 
-### Brand red
+## Brand red
 
-Red is our primary brand color. Red is also a strong color, **so use it as an accent**, not to fill large areas.
+Red is our primary brand color. Red is also a strong color, so **use it as an accent**, not to fill large areas.
 
 <uxdot-example width-adjustment="948px">
   <img alt="Examples of brand red being used in logos, illustrations, and text"
@@ -64,7 +77,7 @@ For more bespoke websites or interfaces, other colors may be used as long as col
        src="/assets/color/color-usage-backgrounds-canvas.svg">
 </uxdot-example>
 
-### Surface <rh-tag color="purple">Beta</rh-tag>
+### Surface
 
 Surface is a container background that applies a theme to any child elements. If you need more control over the default theme in specific areas, go to the [Surface](/elements/surface/) element page to learn more.
 
@@ -73,19 +86,28 @@ Surface is a container background that applies a theme to any child elements. If
   <p>To learn more about theming, go to the <a href="/theming">Theming</a> section.</p>
 </rh-alert>
 
-<uxdot-example width-adjustment="1004px">
-  <figure>
+<figure>
+  <uxdot-example width-adjustment="1004px">
     <img alt="Examples of cards using each surface color"
         src="/assets/color/color-usage-surface.svg">
-    <figcaption>Examples of how Surface is theming child elements within a Card component</figcaption>
-  </figure>
-</uxdot-example>
+  </uxdot-example>
+  <figcaption>Examples of how Surface is theming child elements within a Card component</figcaption>
+</figure>
 
-### Layering <rh-tag color="purple">Beta</rh-tag>
+### Layering
 
 Layering is stacking colors to establish hierarchy and separate content. Colors like white and black can stack if there is a gray border visible. Surface or container colors can stack if there is a layer of white or black in between.
 
-<!-- add layering images-->
+<div class="grid sm-two-columns">
+  <uxdot-example width-adjustment="418px">
+    <img alt=""
+        src="/assets/color/color-usage-layering-theme-light.svg">
+  </uxdot-example>
+  <uxdot-example color-palette="darkest" width-adjustment="418px">
+    <img alt=""
+        src="/assets/color/color-usage-layering-theme-dark.svg">
+  </uxdot-example>
+</div>
 
 ## Basic text
 
@@ -96,11 +118,9 @@ Color is applied to basic text depending on content, hierarchy, theme, and more.
 3. **Secondary** - use for small text like captions
 4. **Custom** - use a variety of colors to advertise a campaign or bespoke experience
 
-<uxdot-example variant="full" no-border>
+<uxdot-example variant="full" no-border width-adjustment="1140px">
   <img alt="Dark and light theme examples of the four types of semantic colors used by text"
-       src="/assets/color/color-usage-basic-text.svg"
-       width="1000"
-       height="560">
+       src="/assets/color/color-usage-basic-text.svg">
 </uxdot-example>
 
 ## Icons
@@ -111,11 +131,9 @@ Color is applied to icons depending on category, status, theme, etc. Some icon c
 2.  **Technology** - always black, gray, red, and white
 3.  **UI and microns** - may be different colors depending on how they are used within an element or pattern
 
-<uxdot-example variant="full" no-border>
+<uxdot-example variant="full" no-border width-adjustment="1140px">
   <img alt="Examples of the icon categories"
-       src="/assets/color/color-usage-icons.svg"
-       width="1000"
-       height="462">
+       src="/assets/color/color-usage-icons.svg">
 </uxdot-example>
 
 ## Interactivity
@@ -134,15 +152,13 @@ Color can be used to indicate that something is interactive or selectable. All t
   <p>Most links have underlines for accessibility reasons, but some do not. To learn more about when to add underlines to links, <a href="/support">contact</a> the design system team.</p>
 </rh-alert>
 
-<uxdot-example variant="full" no-border>
+<uxdot-example variant="full" no-border width-adjustment="1140px">
   <img alt="Examples of elements using the colors and styles that denote interactivity"
-       src="/assets/color/color-usage-interactivity.svg"
-       width="1000"
-       height="593">
+       src="/assets/color/color-usage-interactivity.svg">
 </uxdot-example>
 
 
-### Status
+## Status
 
 Status has its own severity levels, color palettes, and meanings assigned to each.
 
@@ -183,73 +199,101 @@ Status has its own severity levels, color palettes, and meanings assigned to eac
             <li>Positive or healthy</li>
           </ul>
         </td>
-        
+      </tr>
+      <tr>
+        <td>Neutral</td>
+        <td>0</td>
+        <td>Gray</td>
+        <td>
+          <ul>
+            <li>An action is not available or will have no impact</li>
+            <li>Disabled or neutral</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>Warning</td>
+        <td>1</td>
+        <td>Yellow</td>
+        <td>
+          <ul>
+            <li>How to avoid a destructive action or error</li>
+            <li>Negative</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>Caution</td>
+        <td>2</td>
+        <td>Orange</td>
+        <td>
+          <ul>
+            <li>Non-destructive action or fixable error</li>
+            <li>Negative</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>Error</td>
+        <td>3</td>
+        <td>Red orange</td>
+        <td>
+          <ul>
+            <li>Destructive action or critical error</li>
+            <li>Negative</li>
+          </ul>
+        </td>
       </tr>
     </tbody>
   </table>
-
-| Status                                     | Severity level | Use case                                                                         |
-| ------------------------------------------ | :------------: | -------------------------------------------------------------------------------- |
-| <rh-tag color="purple">Info</rh-tag>       | N/A            | Use `purple` to communicate helpful or important information.<br>*Note:* "Info" was previously called "note/tip." |
-| <rh-tag color="green">Success</rh-tag>     | 0              | Use `green` to communicate a success state.                                      |
-| <rh-tag color="gray">Neutral</rh-tag>      | 0              | Use `gray` to communicate information that will have no impact on a user.        |
-| <rh-tag color="yellow">Warning</rh-tag>    | 1              | Use `yellow` to communicate that a destructive action might occur if an issue is not resolved. |
-| <rh-tag color="orange">Caution</rh-tag>    | 2              | Use `orange` to communicate that an issue can be avoided.                        |
-| <rh-tag color="red-orange">Danger</rh-tag> | 3              | Use `red-orange` to communicate a destructive action or critical error.          |
-
 </rh-table>
 
-<uxdot-example width-adjustment="648px">
-  <img alt="Alerts, a form field, and tags that use status colors"
-       src="/assets/color/status.png"
-       width="648"
-       height="489">
+<uxdot-example width-adjustment="816px">
+  <img alt="Alerts, buttons, health index, site status, and tags that use status colors"
+       src="/assets/color/color-usage-status.svg">
 </uxdot-example>
 
-<!--
+## Resources
+
+- [Brand standards](https://www.redhat.com/en/about/brand/standards)
+- [Theming](/theming)
+- [Iconography foundations](/foundations/iconography/)
+- [Icon element](/elements/icon)
+- [WCAG 2.1](https://www.w3.org/WAI/WCAG21/Understanding/)
+- [WebAIM: Contrast and Color Accessibility](https://webaim.org/articles/contrast/)
+
+
 ## Best practices
 
-The design system's guidelines and best practices are more than just 
-suggestions. By following them scrupulously, you will ensure that your project 
-aligns with branding and accessibility guidelines. Diverge from the guidelines 
-only after significant planning and consideration.
+Follow these guidelines and best practices as best you can.
 
-### Custom themes
+### Custom theming
 
-Most projects do not need elements and patterns in a custom theme. If
-you need a custom theme for a campaign or special project, contact the
-Brand team first. If you need one or more custom design tokens, contact
-the [Design system][designsystem] team first. 
+If you need support for a custom theme including custom design tokens, [contact us](/support). 
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
-    <uxdot-example slot="image" no-border variant="full" alignment="left">
-      <img alt="Blue submit button, blue default call to action, black tooltip, and blue switch"
-           src="/assets/color/best-practices-custom-themes-correct.svg"
+    <uxdot-example slot="image" width-adjustment="418px">
+      <img alt="Blue button, blue default call to action, black tooltip, gray tag, blue back to top, and blue switch"
+           src="/assets/color/color-usage-best-practices-1-do.svg"
            width="500"
            height="264">
     </uxdot-example>
-    <p>Use the color variants already available for elements and patterns.</p>
+    <p>Use light or dark theme elements as best you can.</p>
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="dont">
-    <uxdot-example slot="image" no-border variant="full" alignment="left">
-      <img alt="Magenta button, brand red default call to action, green tooltip, and dark orange switch"
-           src="/assets/color/best-practices-custom-themes-wrong.svg"
-           width="500"
-           height="264">
+    <uxdot-example slot="image" width-adjustment="418px">
+      <img alt="Purple button, teal default call to action, blue tooltip, brand red tag, green back to top, and orange switch"
+           src="/assets/color/color-usage-best-practices-1-dont.svg">
     </uxdot-example>
-    <p>Do not create your own colors, design tokens, or change the colors of existing elements and patterns.</p>
+    <p>Do not create your own theme or change the colors of elements.</p>
   </uxdot-best-practice>
 </div>
 
-### Sufficient contrast
+### Maintaining contrast
 
-Using colors with the same hue, saturation, and lightness is acceptable,
-but do not put them near or on top of each other as doing so will cause
-vibration resulting in a poor user experience. If you have a large
-section of color or an image background with low contrast, consider
-using elements and patterns from the desaturated theme instead.
+Ensure backgrounds have adequate contrast when other elements are placed on top.
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
@@ -259,7 +303,7 @@ using elements and patterns from the desaturated theme instead.
            width="500"
            height="284">
     </uxdot-example>
-    <p>Use a surface color token for background to ensure accessibility, or use a <a href="../accessibility/#tools">tool</a> to check proper contrast.</p>
+    <p>Place foreground elements on background colors with enough contrast.</p>
   </uxdot-best-practice>
   <uxdot-best-practice variant="dont">
     <uxdot-example slot="image" no-border variant="full" alignment="left">
@@ -268,30 +312,11 @@ using elements and patterns from the desaturated theme instead.
            width="500"
            height="284">
     </uxdot-example>
-    <p>Do not use a background color that has a similar hue, saturation, or lightness to foreground elements.</p>
+    <p>Do not place foreground elements on background colors with insufficient contrast.</p>
   </uxdot-best-practice>
 </div>
--->
-
-## Resources
-
-- [Brand standards][brandstandards]
-- [WCAG 2.1][wcag21]
-- [WebAIM: Contrast and Color Accessibility][aimcc]
 
 <uxdot-feedback>
   <h2>Foundations</h2>
   <p>To learn how to use our other foundations in your designs, visit the <a href="/foundations">foundations</a> section.</p>
 </uxdot-feedback>
-
-[alerts]: /elements/alert
-[badges]: /elements/badge
-[brandstandards]: https://www.redhat.com/en/about/brand/standards
-[buttons]: /elements/button
-[contactus]: https://github.com/RedHat-UX/red-hat-design-system/discussions
-[designsystem]: https://github.com/RedHat-UX/red-hat-design-system/discussions
-[forms]: /patterns/form
-[toasts]: /elements/alert/style/#toast
-[tokens]: /tokens
-[wcag21]: https://www.w3.org/WAI/WCAG21/Understanding/
-[aimcc]: https://webaim.org/articles/contrast/
