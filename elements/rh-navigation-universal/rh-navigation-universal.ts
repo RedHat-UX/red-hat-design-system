@@ -4,8 +4,6 @@ import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
-import '@rhds/elements/rh-icon/rh-icon.js';
-
 import styles from './rh-navigation-universal.css';
 
 /**
@@ -44,6 +42,13 @@ export class RhNavigationUniversal extends LitElement {
     if (this.variant === 'bordered') {
       this.#appendListItem();
     }
+  }
+
+  protected override async getUpdateComplete(): Promise<boolean> {
+    if (this.variant === 'bordered') {
+      await import('@rhds/elements/rh-icon/rh-icon.js');
+    }
+    return super.getUpdateComplete();
   }
 
   render() {
