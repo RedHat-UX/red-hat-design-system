@@ -1,5 +1,5 @@
 import { isServer, LitElement } from 'lit';
-const repoStatus = isServer ? await import('./repoStatus.js').then(x => x.default)
+const repoStatus = isServer ? await import('#11ty-data/repoStatus.js').then(x => x.default)
     : await fetch('/assets/javascript/repoStatus.json').then(x => x.json());
 export class UxdotRepoElement extends LitElement {
     static getStatus(status) {

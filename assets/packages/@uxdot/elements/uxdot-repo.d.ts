@@ -1,22 +1,13 @@
+import type { RepoStatusRecord } from '#11ty-data/repoStatus.js';
 import { LitElement } from 'lit';
 type Color = 'purple' | 'green' | 'orange' | 'gray' | 'cyan';
 type Variant = 'filled' | 'outline';
 type Icon = string;
 type LibraryKey = 'figma' | 'rhds' | 'shared' | 'docs';
-type StatusKey = 'planned' | 'inProgress' | 'ready' | 'deprecated' | 'na' | 'beta' | 'experimental' | 'new';
-type OverallStatusKey = 'ready' | 'new' | 'planned';
 interface LibraryStatus {
     key: LibraryKey;
     name: string;
     status: string;
-}
-export interface TagStatus {
-    tagName: string;
-    name: string;
-    type: string;
-    description?: string;
-    overallStatus: OverallStatusKey;
-    libraries: Record<LibraryKey, StatusKey>;
 }
 interface ComputedLibraryStatus extends LibraryStatus {
     name: string;
@@ -26,7 +17,7 @@ interface ComputedLibraryStatus extends LibraryStatus {
     status: string;
     description: string;
 }
-export interface ComputedTagStatus extends Omit<TagStatus, 'libraries'> {
+export interface ComputedTagStatus extends Omit<RepoStatusRecord, 'libraries'> {
     color: Color;
     variant: Variant;
     icon: Icon;
