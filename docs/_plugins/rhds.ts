@@ -16,10 +16,7 @@ import LitSSRPlugin from '#11ty-plugins/lit-ssr/lit.js';
 import { getPfeConfig } from '@patternfly/pfe-tools/config.js';
 import { capitalize } from '#11ty-plugins/tokensHelpers.js';
 
-const repoStatus = yaml.load(await readFile(
-  new URL('../_data/repoStatus.yaml', import.meta.url),
-  'utf8',
-));
+import repoStatus from '#11ty-data/repoStatus.js';
 
 /**
  * EleventyTransformContext the `this` binding for transform functions
@@ -124,8 +121,12 @@ export default async function(eleventyConfig: UserConfig, options?: Options) {
 
   eleventyConfig.on('eleventy.before', async ({ directories }) => {
     const outPath = join(directories.output, 'assets/javascript/repoStatus.json');
-    await mkdir(dirname(outPath), { recursive: true });
-    await writeFile(outPath, JSON.stringify(repoStatus), 'utf8');
+    switch (runMode) {
+      case 'watch':
+      case 'build':
+        await mkdir(dirname(outPath), { recursive: true });
+        await writeFile(outPath, JSON.stringify(repoStatus), 'utf8');
+    }
   });
 
   let hasCleanedSinceWatchStarted = false;

@@ -1,3 +1,4 @@
+import type { RepoStatus, RepoStatusRecord } from '#11ty-data/repoStatus.js';
 import { isServer, LitElement } from 'lit';
 
 type Color = 'purple' | 'green' | 'orange' | 'gray' | 'cyan';
@@ -9,21 +10,6 @@ type LibraryKey =
 | 'rhds'
 | 'shared'
 | 'docs';
-
-type StatusKey =
-| 'planned'
-| 'inProgress'
-| 'ready'
-| 'deprecated'
-| 'na'
-| 'beta'
-| 'experimental'
-| 'new';
-
-type OverallStatusKey =
-| 'ready'
-| 'new'
-| 'planned';
 
 interface Status {
   pretty: string;
@@ -39,15 +25,6 @@ interface LibraryStatus {
   status: string;
 }
 
-export interface TagStatus {
-  tagName: string;
-  name: string;
-  type: string;
-  description?: string;
-  overallStatus: OverallStatusKey;
-  libraries: Record<LibraryKey, StatusKey>;
-}
-
 interface ComputedLibraryStatus extends LibraryStatus {
   name: string;
   color: Color;
@@ -57,7 +34,7 @@ interface ComputedLibraryStatus extends LibraryStatus {
   description: string;
 }
 
-export interface ComputedTagStatus extends Omit<TagStatus, 'libraries'> {
+export interface ComputedTagStatus extends Omit<RepoStatusRecord, 'libraries'> {
   color: Color;
   variant: Variant;
   icon: Icon;
@@ -65,8 +42,8 @@ export interface ComputedTagStatus extends Omit<TagStatus, 'libraries'> {
   libraries: ComputedLibraryStatus[];
 }
 
-const repoStatus: TagStatus[] =
-    isServer ? await import('./repoStatus.js').then(x => x.default)
+const repoStatus: RepoStatusRecord[] =
+    isServer ? await import('#11ty-data/repoStatus.js').then(x => x.default)
   : await fetch('/assets/javascript/repoStatus.json').then(x => x.json());
 
 export class UxdotRepoElement extends LitElement {
@@ -77,7 +54,7 @@ export class UxdotRepoElement extends LitElement {
     docs: 'Documentation',
   };
 
-  private static legend: Record<StatusKey, Status> = {
+  private static legend: Record<RepoStatus, Status> = {
     planned: {
       pretty: 'Planned',
       description: 'Ready to be worked on or ready to be released',
@@ -133,7 +110,7 @@ export class UxdotRepoElement extends LitElement {
     },
   };
 
-  private static checklist: Record<LibraryKey, Record<StatusKey, string>> = {
+  private static checklist: Record<LibraryKey, Record<RepoStatus, string>> = {
     figma: {
       ready: 'Component is available in the Figma library',
       inProgress: 'Component will be added to the Figma library when finished',
@@ -178,8 +155,8 @@ export class UxdotRepoElement extends LitElement {
 
   private static allStatus: ComputedTagStatus[] = repoStatus.map(UxdotRepoElement.getStatus);
 
-  private static getStatus(status: TagStatus) {
-    const libraries = Object.entries(status.libraries) as [LibraryKey, StatusKey][];
+  private static getStatus(status: RepoStatusRecord) {
+    const libraries = Object.entries(status.libraries) as [LibraryKey, RepoStatus][];
     const overall = UxdotRepoElement.legend[status.overallStatus];
     return {
       ...status!,
