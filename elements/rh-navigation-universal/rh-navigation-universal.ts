@@ -67,7 +67,7 @@ export class RhNavigationUniversal extends LitElement {
   }
 
   #findUnorderedList(): HTMLUListElement | null {
-    const slot = this.shadowRoot?.querySelector('slot:not(slot[name])');
+    const slot = this.shadowRoot?.querySelector<HTMLSlotElement>('slot:not(slot[name])');
 
     const content = slot?.assignedElements().find(node => {
       return node.nodeName.toLowerCase() === 'ul';
