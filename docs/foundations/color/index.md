@@ -81,8 +81,8 @@ To learn more about our color design tokens, go to the [Tokens](/tokens) section
 
 Our design system includes two sets of tokens:
 
-- <strong>Crayon tokens</strong> - reference hard-coded values and offer no information about usage
-- <strong>Semantic tokens</strong> - reference crayon colors and define how a color should be used
+- **Crayon tokens** - reference hard-coded values and offer no information about usage
+- **Semantic tokens** - reference crayon colors and define how a color should be used
 
 <rh-alert state="info">
   <h4 slot="header">Helpful tip</h4>

@@ -22,182 +22,171 @@ subnav:
       href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css"
       data-helmet>
 
-## Using color
+## Our color palette
 
-Our color palette is designed to work across all digital properties, from 
-websites to applications to ads and more. To view our colors as design tokens, 
-go to the [Tokens][tokens] section. If you have questions about how to apply the 
-color palette, [contact us][contactus].
+Our color palette was built to be extensive and flexible. Applying color thoughtfully and consistently helps us deliver accessible, cohesive, and recognizable experiences for our users.
+
+[Contact us](/standards) if you have design system questions or visit the [Brand standards](https://www.redhat.com/en/about/brand/standards) website if you have brand questions.
 
 ### Brand red
 
-Our primary brand color is red. It is important to use it consistently and 
-thoughtfully to maximize accessibility and build brand recognition. Red is a 
-strong color; use it as an accent instead of filling large areas. If you need a 
-color for danger or error states, use red-orange. To learn more about our Red 
-Hat red color, go to the [Brand standards][brandstandards] website.
+Red is our primary brand color. Red is also a strong color, **so use it as an accent**, not to fill large areas.
 
-<rh-alert state="warning">
- <h4 slot="header">Usage warning</h4>
- <p>Do not apply the Red Hat red color to text in dark environments unless
-   it meets <a href="https://www.w3.org/WAI/WCAG21/Understanding/">WCAG 2.1 AA</a>
-   requirements.</p>
-</rh-alert>
-
-<uxdot-example width-adjustment="872px">
-  <img alt="spectrum of brand red shades with examples of brand red being used"
-       src="/assets/color/brand-red.png"
-       width="872"
-       height="266">
+<uxdot-example width-adjustment="948px">
+  <img alt="Examples of brand red being used in logos, illustrations, and text"
+       src="/assets/color/color-usage-brand-red.svg">
 </uxdot-example>
+
+### Red orange
+
+For danger or error states, use `red orange`.
+
+<uxdot-example width-adjustment="652px">
+  <img alt="Examples of red orange used in alert, buttons, tag, and site status"
+       src="/assets/color/color-usage-red-orange.svg">
+</uxdot-example>
+
+## Backgrounds
 
 ### Canvas
 
-A canvas is a background color and it determines what theme is used. The
-default canvas colors are white and black, but there might be situations
-where grays or even custom colors are needed. It is acceptable to use
-other colors as long as contrast is maintained throughout the entire
-design. If a custom canvas color is lighter or darker than the defaults,
-white or black may be used as surface colors.
+Canvas is the bottom-most infinite container that holds all containers, elements, etc. The default canvas colors for light and dark themes are white and black respectively, but some gray colors can also be used.
 
-<uxdot-example width-adjustment="872px">
+For more bespoke websites or interfaces, other colors may be used as long as color contrast and other accessibility requirements are maintained.
+
+<rh-alert state="info">
+  <h4 slot="header">Helpful tip</h4>
+  <p>Components like Card and other containers include more colors and can be placed on top of a canvas.</p>
+</rh-alert>
+
+<uxdot-example width-adjustment="1004px">
   <img alt="swatches of the default canvas colors for dark and light theme and examples of custom canvas colors"
-       src="/assets/color/canvas.png"
-       width="872"
-       height="248">
+       src="/assets/color/color-usage-backgrounds-canvas.svg">
 </uxdot-example>
 
-### Surface
+### Surface <rh-tag color="purple">Beta</rh-tag>
 
-A surface is a container background color that sits on top of a canvas.
-Surface colors are used as backgrounds for elements, patterns, and large
-sections. For example, a card (white surface) can be placed in a section
-(light gray surface) on a canvas (white).
+Surface is a container background that applies a theme to any child elements. If you need more control over the default theme in specific areas, go to the [Surface](/elements/surface/) element page to learn more.
 
-<uxdot-example variant="full" no-border>
-  <img alt="swatches of the default surface colors for dark and light theme and examples of a card in a section with a card"
-       src="/assets/color/surface.png"
-       width="1000"
-       height="682">
+<rh-alert state="info">
+  <h4 slot="header">Helpful tip</h4>
+  <p>To learn more about theming, go to the <a href="/theming">Theming</a> section.</p>
+</rh-alert>
+
+<uxdot-example width-adjustment="1004px">
+  <figure>
+    <img alt="Examples of cards using each surface color"
+        src="/assets/color/color-usage-surface.svg">
+    <figcaption>Examples of how Surface is theming child elements within a Card component</figcaption>
+  </figure>
 </uxdot-example>
 
 ### Layering <rh-tag color="purple">Beta</rh-tag>
 
-Layering is the relationship between the canvas color and surface colors
-as well as how they stack to create depth and separate content.
+Layering is stacking colors to establish hierarchy and separate content. Colors like white and black can stack if there is a gray border visible. Surface or container colors can stack if there is a layer of white or black in between.
 
-<rh-alert state="info">
-  <h4 slot="header">Update from the team</h4>
-  <p>The design system team is working on creating best practices for layering in the near future. <a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">Contact us</a> if you would like to contribute.</p>
-</rh-alert>
+<!-- add layering images-->
 
-#### Light theme
+## Basic text
 
-In the light theme, white and gray values alternate when stacked.
+Color is applied to basic text depending on content, hierarchy, theme, and more. These are general guidelines, not all use cases are represented.
+
+1. **Brand** - use sparingly to add a brand accent to text
+2. **Primary** - use for headings and body text in most layouts and components
+3. **Secondary** - use for small text like captions
+4. **Custom** - use a variety of colors to advertise a campaign or bespoke experience
 
 <uxdot-example variant="full" no-border>
-  <img alt="A light gray card in a larger, white card, which sits in a light gray section"
-       src="/assets/color/layering-light-theme.png"
+  <img alt="Dark and light theme examples of the four types of semantic colors used by text"
+       src="/assets/color/color-usage-basic-text.svg"
        width="1000"
        height="560">
 </uxdot-example>
 
+## Icons
 
-#### Dark theme
+Color is applied to icons depending on category, status, theme, etc. Some icon colors will not change when switching themes. These are general guidelines, not all use cases are represented.
 
-In the dark theme, gray values should get one step lighter when stacked.
-
-<uxdot-example variant="full" no-border>
-  <img alt="A dark gray card in a larger, darker gray card, which sits in an even dark gray section"
-       src="/assets/color/layering-dark-theme.png"
-       width="1000"
-       height="560">
-</uxdot-example>
-
-
-### Text
-
-Text may be different colors depending on content, hierarchy, and theme.
-Our accessible colors help promote text legibility and readability.
-These are general usage guidelines; there may be other situations not
-represented.
-
-1.  **Custom** - use to represent a temporary campaign or custom design
-2.  **Brand** - use to communicate our brand or add a brand accent
-3.  **Primary** - use for large text including headlines and body text
-    as well as small link text in dark environments (white)
-4.  **Secondary** - use for small text including annotations, captions,
-    and footnotes
-5.  **Links** - use for small or large text that is linked
-6.  **Interactive** - use for styled text within calls to action,
-    buttons, or other interactive elements
-7.  **Status** - use for text that needs to communicate a particular
-    status
-
-<rh-alert state="warning">
-  <h4 slot="header">Usage Warning</h4>
-  <p>Do not apply the Red Hat red color to text in dark environments unless it meets <a href="https://www.w3.org/WAI/WCAG21/Understanding/">WCAG 2.1 AA</a> requirements.</p>
-</rh-alert>
-
-<uxdot-example variant="full" no-border>
-  <img alt="Dark and light theme examples of the seven types of semantic colors used by text"
-       src="/assets/color/text.png"
-       width="1000"
-       height="851">
-</uxdot-example>
-
-### Icons
-
-Icons may be different colors depending on usage and theme. There are
-three categories of icons: Brand, Technology, and UI.
-
-1.  **Brand** - monochromatic and usually red, black, or white
+1.  **Standard** - monochromatic and usually red, black, or white
 2.  **Technology** - always black, gray, red, and white
-3.  **UI** - may be different colors depending on how they are used
-    within an element or pattern
-
-To learn more about icons, go to the [Brand standards][brandstandards] website.
+3.  **UI and microns** - may be different colors depending on how they are used within an element or pattern
 
 <uxdot-example variant="full" no-border>
-  <img alt="Examples of the three icon categories"
-       src="/assets/color/icons.png"
+  <img alt="Examples of the icon categories"
+       src="/assets/color/color-usage-icons.svg"
        width="1000"
        height="462">
 </uxdot-example>
 
-### Interactivity
+## Interactivity
 
-Certain colors are used to indicate that something is interactive.
+Color can be used to indicate that something is interactive or selectable. All text links require an underline except in certain rare edge cases.
 
-1.  **Blue** - use for inline links, Default calls to action, or Primary
-    button surfaces
-2.  **Purple** - use for visited inline links
-3.  **Gray** - use for secondary or small links (using white is also
-    acceptable in dark environments)
-4.  **Red-orange** - use for destructive actions (and errors)
-5.  **Red** - use sparingly for Primary calls to action only
+1. **Blue** - a common color used for inline links, buttons, and more
+2. **Purple** - a common color used for the visited state or linked text in certain components
+3. **Red** - use sparingly for primary calls to action or linked text in certain components
+4. **Gray** - use for secondary text, the disabled state, or linked text in certain components
+5. **Black and white** - use for linked text in navigation components or linked header text in navigation menus
+6. **Other colors** - use for linked text in components with a more broad color palette like Tag
+
+<rh-alert state="info">
+  <h4 slot="header">Helpful tip</h4>
+  <p>Most links have underlines for accessibility reasons, but some do not. To learn more about when to add underlines to links, <a href="/support">contact</a> the design system team.</p>
+</rh-alert>
 
 <uxdot-example variant="full" no-border>
-  <img alt="Examples of elements using the five colors that denote interactivity"
-       src="/assets/color/interactivity.png"
+  <img alt="Examples of elements using the colors and styles that denote interactivity"
+       src="/assets/color/color-usage-interactivity.svg"
        width="1000"
        height="593">
 </uxdot-example>
 
+
 ### Status
 
-Status colors have assigned meanings and communicate information, states, or 
-actions. Status colors are commonly used in elements and patterns like 
-[alerts][alerts], [badges](/elements/badge), [buttons][buttons], [forms][forms], 
-and [toasts][toasts].
+Status has its own severity levels, color palettes, and meanings assigned to each.
 
-
-<rh-alert state="warning">
-  <h4 slot="header">Usage Warning</h4>
-  <p>The red-orange color is reserved for danger or error states. Do not use it anywhere else.</p>
+<rh-alert state="info">
+  <h4 slot="header">Helpful tip</h4>
+  <p>In general, when communicating status, red and red orange are considered danger or error state colors. It is not recommended to use those colors anywhere else.</p>
 </rh-alert>
 
 <rh-table>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Status name</th>
+        <th scope="col">Severity level</th>
+        <th scope="col">Color palette</th>
+        <th scope="col">Meaning</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Info</td>
+        <td>0</td>
+        <td>Purple</td>
+        <td>
+          <ul>
+            <li>Helpful information before an action</li>
+            <li>Positive</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>Success</td>
+        <td>0</td>
+        <td>Green</td>
+        <td>
+          <ul>
+            <li>Success state or an action was successful</li>
+            <li>Positive or healthy</li>
+          </ul>
+        </td>
+        
+      </tr>
+    </tbody>
+  </table>
 
 | Status                                     | Severity level | Use case                                                                         |
 | ------------------------------------------ | :------------: | -------------------------------------------------------------------------------- |
@@ -217,6 +206,7 @@ and [toasts][toasts].
        height="489">
 </uxdot-example>
 
+<!--
 ## Best practices
 
 The design system's guidelines and best practices are more than just 
@@ -281,6 +271,7 @@ using elements and patterns from the desaturated theme instead.
     <p>Do not use a background color that has a similar hue, saturation, or lightness to foreground elements.</p>
   </uxdot-best-practice>
 </div>
+-->
 
 ## Resources
 
