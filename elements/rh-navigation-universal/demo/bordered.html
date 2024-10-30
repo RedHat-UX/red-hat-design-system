@@ -6,52 +6,54 @@
     <li><a href="https://cloud.redhat.com/">Console</a></li>
     <li><a href="https://developers.redhat.com/">Developers</a></li>
     <li><a href="https://www.redhat.com/en/products/trials">Start a trial</a></li>
+    <li>
+      <rh-navigation-universal-dropdown>
+        <ul>
+          <li>For customers
+            <ul>
+              <li><a href="https://access.redhat.com/">Customer support</a></li>
+              <li><a href="https://access.redhat.com/management">Subscription management</a></li>
+              <li><a href="https://access.redhat.com/support/cases">Support cases</a></li>
+              <li><a href="https://catalog.redhat.com/">Red Hat Ecosystem Catalog</a></li>
+              <li><a href="https://catalog.redhat.com/partners">Find a partner</a></li>
+            </ul>
+          </li>
+          <li>For partners
+            <ul>
+              <li><a href="https://connect.redhat.com/partner-admin/dashboard">Partner portal</a></li>
+              <li><a href="https://connect.redhat.com/en/support">Partner support</a></li>
+              <li><a href="https://connect.redhat.com/">Become a partner </a></li>
+            </ul>
+          </li>
+          <li>Try, buy, &amp; sell
+            <ul>
+              <li><a href="https://marketplace.redhat.com/en-us">Red Hat Marketplace</a></li>
+              <li><a href="https://www.redhat.com/en/store">Red Hat Store</a></li>
+              <li><a href="https://www.redhat.com/en/contact">Contact sales</a></li>
+              <li><a href="https://www.redhat.com/en/products/trials">Start a trial</a></li>
+            </ul>
+          </li>
+          <li>Learning resources
+            <ul>
+              <li><a href="https://docs.redhat.com/en">Documentation</a></li>
+              <li><a href="https://www.redhat.com/en/services/training-and-certification">Training and certification </a></li>
+              <li><a href="https://cloud.redhat.com/learn">Hybrid cloud learning hub</a></li>
+              <li><a href="https://www.redhat.com/en/interactive-labs">Interactive labs</a></li>
+              <li><a href="https://learn.redhat.com/">Learning community</a></li>
+              <li><a href="https://tv.redhat.com">Red Hat TV</a></li>
+            </ul>
+          </li>
+          <li>Open source communities
+            <ul>
+              <li><a href="https://www.ansible.com/community">Ansible</a></li>
+              <li><a href="https://access.redhat.com/accelerators">Global advocacy</a></li>
+              <li><a href="https://www.redhat.com/en/about/our-community-contributions">How we contribute</a></li>
+            </ul>
+          </li>
+        </ul>
+      </rh-navigation-universal-dropdown>
+    </li>
   </ul>
-  <div slot="details-content">
-    <ul>
-      <li>For customers
-        <ul>
-          <li><a href="https://access.redhat.com/">Customer support</a></li>
-          <li><a href="https://access.redhat.com/management">Subscription management</a></li>
-          <li><a href="https://access.redhat.com/support/cases">Support cases</a></li>
-          <li><a href="https://catalog.redhat.com/">Red Hat Ecosystem Catalog</a></li>
-          <li><a href="https://catalog.redhat.com/partners">Find a partner</a></li>
-        </ul>
-      </li>
-      <li>For partners
-        <ul>
-          <li><a href="https://connect.redhat.com/partner-admin/dashboard">Partner portal</a></li>
-          <li><a href="https://connect.redhat.com/en/support">Partner support</a></li>
-          <li><a href="https://connect.redhat.com/">Become a partner </a></li>
-        </ul>
-      </li>
-      <li>Try, buy, &amp; sell
-        <ul>
-          <li><a href="https://marketplace.redhat.com/en-us">Red Hat Marketplace</a></li>
-          <li><a href="https://www.redhat.com/en/store">Red Hat Store</a></li>
-          <li><a href="https://www.redhat.com/en/contact">Contact sales</a></li>
-          <li><a href="https://www.redhat.com/en/products/trials">Start a trial</a></li>
-        </ul>
-      </li>
-      <li>Learning resources
-        <ul>
-          <li><a href="https://docs.redhat.com/en">Documentation</a></li>
-          <li><a href="https://www.redhat.com/en/services/training-and-certification">Training and certification </a></li>
-          <li><a href="https://cloud.redhat.com/learn">Hybrid cloud learning hub</a></li>
-          <li><a href="https://www.redhat.com/en/interactive-labs">Interactive labs</a></li>
-          <li><a href="https://learn.redhat.com/">Learning community</a></li>
-          <li><a href="https://tv.redhat.com">Red Hat TV</a></li>
-        </ul>
-      </li>
-      <li>Open source communities
-        <ul>
-          <li><a href="https://www.ansible.com/community">Ansible</a></li>
-          <li><a href="https://access.redhat.com/accelerators">Global advocacy</a></li>
-          <li><a href="https://www.redhat.com/en/about/our-community-contributions">How we contribute</a></li>
-        </ul>
-      </li>
-    </ul>
-  </div>
 </rh-navigation-universal>
 
 <link rel="stylesheet" href="../rh-navigation-universal-lightdom.css">
@@ -62,43 +64,43 @@
 
 <style>
   /* Sample styles for `<details>` dropdown links: */
-  [slot="details-content"] ul {
+  rh-navigation-universal-dropdown ul {
     padding-inline-start: 0;
   }
 
   @container nav-universal (min-width: 576px) {
-    [slot="details-content"] > ul {
+    rh-navigation-universal-dropdown > ul {
       column-count: 2;
     }
   }
 
-  [slot="details-content"] li {
+  rh-navigation-universal-dropdown li {
     font-size: var(--rh-font-size-body-text-md, 1rem) !important;
     list-style-type: none;
   }
 
-  [slot="details-content"] > ul > li {
+  rh-navigation-universal-dropdown > ul > li {
     break-inside: avoid;
     font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif) !important;
     padding-block-start: 19px;
   }
 
-  [slot="details-content"] > ul > li > ul {
+  rh-navigation-universal-dropdown > ul > li > ul {
     margin-block-end: var(--rh-space-lg, 16px);
     padding-block-start: var(--rh-space-md, 8px);
   }
 
-  [slot="details-content"] > ul > li > ul > li {
+  rh-navigation-universal-dropdown > ul > li > ul > li {
     line-height: var(--rh-line-height-body-text, 1.5);
   }
 
-  [slot="details-content"] > ul > li > ul a {
+  rh-navigation-universal-dropdown > ul > li > ul a {
     display: block;
     padding-block: var(--rh-space-xs, 4px);
     text-decoration: none;
   }
 
-  [slot="details-content"] > ul > li > ul :is(a:hover, a:focus) {
+  rh-navigation-universal-dropdown > ul > li > ul :is(a:hover, a:focus) {
     text-decoration: underline;
   }
 </style>
