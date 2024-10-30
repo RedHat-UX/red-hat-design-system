@@ -17,17 +17,6 @@ header {
   margin-block-end: var(--rh-space-xs, 4px);
 }
 
-header ::slotted(*) {
-  font-family: var(--_font-family) !important;
-  font-size: var(--rh-font-size-body-text-sm, 0.875rem) !important;
-  font-weight: var(--rh-font-weight-heading-bold, 700) !important;
-  margin: 0 !important;
-}
-
-header ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  padding-block: 2px var(--rh-space-xs, 4px) !important;  /* 2px is a non standard value */
-}
-
 footer.hasActions {
   margin-block-start: var(--rh-space-lg, 16px);
 }
@@ -62,23 +51,44 @@ footer ::slotted(rh-button[variant='link' i]) {
 #container {
   --_background-color: var(--rh-color-teal-10, #daf2f2);
   --_border-color: var(--rh-color-teal-50, #37a3a3);
-  --_header-color: var(--rh-color-text-primary-on-light, #151515);
   --_icon-color: var(--rh-color-teal-50, #37a3a3);
-  --_font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
 
   border-width: var(--rh-border-width-md, 2px);
   border-style: solid;
-  border-block-start-color: var(--_border-color);
-  border-inline-start-color: var(--_border-inline-color, transparent);
-  border-block-end-color: var(--_border-block-end-color, transparent);
-  border-inline-end-color: var(--_border-inline-color, transparent);
+  border-color: var(--_border-color);
+  border-inline-start-color: transparent;
+  border-block-end-color: transparent;
+  border-inline-end-color: transparent;
   background-color: var(--_background-color);
   box-shadow: var(--_box-shadow, none);
   padding: var(--rh-space-lg, 16px);
   display: grid;
   grid-template-columns: min-content 1fr;
   gap: var(--rh-space-xs, 4px);
-  font-family: var(--_font-family);
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-weight: var(--rh-font-weight-body-text-regular, 400);
+  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+  line-height: var(--rh-line-height-body-text, 1.5);
+
+  & header ::slotted(*) {
+    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif) !important;
+    font-weight: var(--rh-font-weight-body-text-medium, 500) !important;
+    font-size: var(--rh-font-size-body-text-sm, 0.875rem) !important;
+    line-height: var(--rh-line-height-body-text, 1.5) !important;
+    margin: 0 !important;
+  }
+
+  & header ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+    padding-block: 2px var(--rh-space-xs, 4px) !important;  /* 2px is a non standard value */
+  }
+
+  & #description {
+    & > ::slotted(*) {
+      font-size: var(--rh-font-size-body-text-sm, 0.875rem) !important;
+      margin-block: 0 !important;
+      padding: 0 !important;
+    }
+  }
 }
 
 #container.neutral {
@@ -117,15 +127,20 @@ footer ::slotted(rh-button[variant='link' i]) {
   --_background-color: var(--rh-color-surface-status-danger);
 }
 
+/*************************
+ **      VARIANTS       **
+ *************************/
+
 #container.toast {
   --_background-color: var(--rh-color-surface-lightest, #ffffff);
   --_max-width: 550px;
-  --_box-shadow: var(--rh-box-shadow-lg, 0 6px 8px 2px rgba(21, 21, 21, 0.3));
+  --_box-shadow: var(--rh-box-shadow-xl, 0 8px 24px 3px rgba(21, 21, 21, 0.35));
 }
 
 #container.alternate {
-  --_border-inline-color: var(--_border-color);
-  --_border-block-end-color: var(--_border-color);
+  border-inline-start-color: var(--_border-color);
+  border-block-end-color: var(--_border-color);
+  border-inline-end-color: var(--_border-color);
 }
 
 #left-column {
@@ -143,7 +158,7 @@ footer ::slotted(rh-button[variant='link' i]) {
 }
 
 #header {
-  color: var(--_header-color);
+  color: var(--rh-color-text-primary);
   flex: 1 1 auto;
 }
 
@@ -167,13 +182,4 @@ footer ::slotted(rh-button[variant='link' i]) {
 
 #close-button:hover {
   color: var(--rh-color-text-primary);
-}
-
-#description {
-  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
-}
-
-#description > ::slotted(*) {
-  margin-block: 0 !important;
-  padding: 0 !important;
 }
