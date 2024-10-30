@@ -17,6 +17,8 @@ import styles from './rh-navigation-universal.css';
 
 @customElement('rh-navigation-universal')
 export class RhNavigationUniversal extends LitElement {
+  static readonly styles = [styles];
+
   /**
    * Customize the default `aria-label` on the `<nav>` container.
    * Defaults to "Universal Navigation" if no attribute/property is set.
@@ -34,22 +36,7 @@ export class RhNavigationUniversal extends LitElement {
    */
   @property({ reflect: true }) variant?: 'bordered';
 
-  static readonly styles = [styles];
-
   #slots = new SlotController(this, 'personalization-link', null, 'details-content');
-
-  firstUpdated() {
-    if (this.variant === 'bordered') {
-      this.#appendListItem();
-    }
-  }
-
-  protected override async getUpdateComplete(): Promise<boolean> {
-    if (!this.#slots.isEmpty('personalization-link')) {
-      await import('@rhds/elements/rh-icon/rh-icon.js');
-    }
-    return super.getUpdateComplete();
-  }
 
   render() {
     const label = this.accessibleLabel ? this.accessibleLabel : 'Universal Navigation';
@@ -69,6 +56,19 @@ export class RhNavigationUniversal extends LitElement {
         <slot hidden name="details-content"></slot>
       </nav>
     `;
+  }
+
+  firstUpdated() {
+    if (this.variant === 'bordered') {
+      this.#appendListItem();
+    }
+  }
+
+  protected override async getUpdateComplete(): Promise<boolean> {
+    if (!this.#slots.isEmpty('personalization-link')) {
+      await import('@rhds/elements/rh-icon/rh-icon.js');
+    }
+    return super.getUpdateComplete();
   }
 
   #findUnorderedList(): HTMLUListElement | null {
