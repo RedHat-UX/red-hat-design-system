@@ -5,7 +5,7 @@ import styles from './rh-navigation-universal-dropdown.css';
 
 /**
  * A universal navigation dropdown is an element that is slotted into
- * the universal navigation. It uses the `<details>` and `<summary>`
+ * the universal navigation. It uses the details and summary
  * elements to create a dropdown menu inside universal navigation.
  * @summary A dropdown sub component for universal navigation.
  * @slot - Place content to display in the dropdown.

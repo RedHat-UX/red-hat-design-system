@@ -23,10 +23,9 @@ export class RhNavigationUniversal extends LitElement {
   static readonly styles = [styles];
 
   /**
-   * Customize the default `aria-label` on the `<nav>` container.
-   * Defaults to "Universal Navigation" if no attribute/property is set.
+   * Set a custom value for `aria-label` on the `<nav>` container
    */
-  @property({ attribute: 'accessible-label' }) accessibleLabel?: string;
+  @property({ attribute: 'accessible-label' }) accessibleLabel = 'Universal Navigation';
 
   /**
    * Sets the variant to bordered, pushes the navigation to the right, adds borders on hover
@@ -36,7 +35,6 @@ export class RhNavigationUniversal extends LitElement {
   #slots = new SlotController(this, 'personalization-link', null);
 
   render() {
-    const label = this.accessibleLabel ? this.accessibleLabel : 'Universal Navigation';
     const personalizationHtml = html`
       <div id="personalization"
            ?hidden="${this.#slots.isEmpty('personalization-link')}"
@@ -47,7 +45,7 @@ export class RhNavigationUniversal extends LitElement {
       </div>
     `;
     return html`
-      <nav aria-label="${label}" id="container" part="container">
+      <nav aria-label="${this.accessibleLabel}" id="container" part="container">
         ${this.variant === 'bordered' ? personalizationHtml : ''}
         <slot id="nav-universal-default-slot"></slot>
       </nav>
