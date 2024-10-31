@@ -7,6 +7,7 @@ rh-navigation-universal {
 
 rh-navigation-universal > ul > li {
   display: inline;
+  color: var(--rh-color-gray-20, #e0e0e0);
 }
 
 rh-navigation-universal-dropdown > ul > li {
