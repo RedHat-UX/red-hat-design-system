@@ -22,234 +22,298 @@ subnav:
       href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css"
       data-helmet>
 
-## Using color
+## Our color palette
 
-Our color palette is designed to work across all digital properties, from 
-websites to applications to ads and more. To view our colors as design tokens, 
-go to the [Tokens][tokens] section. If you have questions about how to apply the 
-color palette, [contact us][contactus].
+Our color palette was built to be extensive and flexible. Applying color 
+thoughtfully and consistently helps us deliver accessible, cohesive, and 
+recognizable experiences for our users.
+
+[Contact us][contactus] if you have design system questions or [visit the brand 
+standards page][brandstandards] if you have brand questions.
 
 ### Brand red
 
-Our primary brand color is red. It is important to use it consistently and 
-thoughtfully to maximize accessibility and build brand recognition. Red is a 
-strong color; use it as an accent instead of filling large areas. If you need a 
-color for danger or error states, use red-orange. To learn more about our Red 
-Hat red color, go to the [Brand standards][brandstandards] website.
+Red is our primary brand color. Red is also a strong color, so **use it as an 
+accent**, not to fill large areas.
 
-<rh-alert state="warning">
- <h4 slot="header">Usage warning</h4>
- <p>Do not apply the Red Hat red color to text in dark environments unless
-   it meets <a href="https://www.w3.org/WAI/WCAG21/Understanding/">WCAG 2.1 AA</a>
-   requirements.</p>
-</rh-alert>
-
-<uxdot-example width-adjustment="872px">
-  <img alt="spectrum of brand red shades with examples of brand red being used"
-       src="/assets/color/brand-red.png"
-       width="872"
-       height="266">
+<uxdot-example width-adjustment="948px">
+  <img src="/assets/foundations/foundations-color-usage-brand-red.svg" 
+      alt="spectrum of brand red shades with examples of brand red being used"
+      width="948px"
+      height="300px">
 </uxdot-example>
+
+### Red orange
+
+For danger or error states, use `red orange`.
+
+## Backgrounds
 
 ### Canvas
 
-A canvas is a background color and it determines what theme is used. The
-default canvas colors are white and black, but there might be situations
-where grays or even custom colors are needed. It is acceptable to use
-other colors as long as contrast is maintained throughout the entire
-design. If a custom canvas color is lighter or darker than the defaults,
-white or black may be used as surface colors.
+Canvas is the bottom-most infinite container that holds all containers, 
+elements, etc. The default canvas colors for light and dark themes are `white` 
+and `black` respectively, but some gray colors can also be used.
 
-<uxdot-example width-adjustment="872px">
-  <img alt="swatches of the default canvas colors for dark and light theme and examples of custom canvas colors"
-       src="/assets/color/canvas.png"
-       width="872"
-       height="248">
+For more bespoke websites or interfaces, other colors may be used as long as 
+color contrast and other accessibility requirements are maintained.
+
+<rh-alert state="note">
+  <h4 slot="header">Helpful tip</h4>
+  <p>Elements like Card and other containers include more colors and can be 
+     placed on top of a canvas.</p>
+</rh-alert>
+
+<uxdot-example no-border variant="full">
+  <img src="/assets/foundations/foundations-color-usage-canvas.svg" 
+      alt="swatches of the default canvas colors for dark and light theme and examples of custom canvas colors"
+      width="1004"
+      height="292">
 </uxdot-example>
 
-### Surface
+### Surface <rh-tag color="teal">Beta</rh-tag>
 
-A surface is a container background color that sits on top of a canvas.
-Surface colors are used as backgrounds for elements, patterns, and large
-sections. For example, a card (white surface) can be placed in a section
-(light gray surface) on a canvas (white).
+Surface is a container background that applies a theme to any child elements. If 
+you need more control over the default theme in specific areas, go to the 
+[Surface](/elements/surface/) element page to learn more.
 
-<uxdot-example variant="full" no-border>
-  <img alt="swatches of the default surface colors for dark and light theme and examples of a card in a section with a card"
-       src="/assets/color/surface.png"
-       width="1000"
-       height="682">
-</uxdot-example>
+<rh-alert state="note">
+  <h4 slot="header">Helpful tip</h4>
+  <p>To learn more about theming, go to the <a href="/theming/">Theming</a>
+     section.</p>
+</rh-alert>
+
+
+  <figure>
+    <uxdot-example width-adjustment="1004px" no-border>
+    <img src="/assets/foundations/foundations-color-usage-surface.svg"
+        alt="examples of tile elements which apply a surface"
+        width="1004"
+        height="644">
+    </uxdot-example>      
+    <figcaption>Examples of how Surface is theming child elements within a Card 
+                element</figcaption>
+  </figure>
+
 
 ### Layering <rh-tag color="purple">Beta</rh-tag>
 
-Layering is the relationship between the canvas color and surface colors
-as well as how they stack to create depth and separate content.
+Layering is stacking colors to establish hierarchy and separate content. Colors 
+like white and black can stack if there is a gray border visible. Surface or 
+container colors can stack if there is a layer of white or black in between.
 
-<rh-alert state="info">
-  <h4 slot="header">Update from the team</h4>
-  <p>The design system team is working on creating best practices for layering in the near future. <a href="https://github.com/RedHat-UX/red-hat-design-system/discussions">Contact us</a> if you would like to contribute.</p>
-</rh-alert>
+<div class="grid sm-two-columns">
+  <uxdot-example width-adjustment="418px">
+    <img src="/assets/foundations/foundations-color-usage-layering-light.svg"
+      alt="Light background with alternating stacking contexts"
+      width="418"
+      height="240">
+  </uxdot-example>
 
-#### Light theme
+  <uxdot-example color-palette="darkest">
+    <img src="/assets/foundations/foundations-color-usage-layering-dark.svg"
+      alt="Dark background with alternating stacking contexts"
+      width="418"
+      height="240">
+  </uxdot-example>
+</div>
 
-In the light theme, white and gray values alternate when stacked.
+### Basic text
 
-<uxdot-example variant="full" no-border>
-  <img alt="A light gray card in a larger, white card, which sits in a light gray section"
-       src="/assets/color/layering-light-theme.png"
-       width="1000"
-       height="560">
-</uxdot-example>
+Color is applied to basic text depending on content, hierarchy, theme, and more. 
+These are general guidelines, not all use cases are represented.
 
+1. **Brand** - use sparingly to add a brand accent to text
+1. **Primary** - use for headings and body text in most layouts and components
+1. **Secondary** - use for small text like captions
+1. **Custom** - use a variety of colors to advertise a campaign or bespoke experience
 
-#### Dark theme
-
-In the dark theme, gray values should get one step lighter when stacked.
-
-<uxdot-example variant="full" no-border>
-  <img alt="A dark gray card in a larger, darker gray card, which sits in an even dark gray section"
-       src="/assets/color/layering-dark-theme.png"
-       width="1000"
-       height="560">
-</uxdot-example>
-
-
-### Text
-
-Text may be different colors depending on content, hierarchy, and theme.
-Our accessible colors help promote text legibility and readability.
-These are general usage guidelines; there may be other situations not
-represented.
-
-1.  **Custom** - use to represent a temporary campaign or custom design
-2.  **Brand** - use to communicate our brand or add a brand accent
-3.  **Primary** - use for large text including headlines and body text
-    as well as small link text in dark environments (white)
-4.  **Secondary** - use for small text including annotations, captions,
-    and footnotes
-5.  **Links** - use for small or large text that is linked
-6.  **Interactive** - use for styled text within calls to action,
-    buttons, or other interactive elements
-7.  **Status** - use for text that needs to communicate a particular
-    status
-
-<rh-alert state="warning">
-  <h4 slot="header">Usage Warning</h4>
-  <p>Do not apply the Red Hat red color to text in dark environments unless it meets <a href="https://www.w3.org/WAI/WCAG21/Understanding/">WCAG 2.1 AA</a> requirements.</p>
-</rh-alert>
-
-<uxdot-example variant="full" no-border>
-  <img alt="Dark and light theme examples of the seven types of semantic colors used by text"
-       src="/assets/color/text.png"
-       width="1000"
-       height="851">
-</uxdot-example>
+<div class="grid gapless xs-two-columns">
+  <uxdot-example width-adjustment="570px" no-border>
+    <img src="/assets/foundations/foundations-color-usage-basic-text-light.svg" 
+        alt=""
+        width="570" 
+        height="511">
+  </uxdot-example>
+    <uxdot-example width-adjustment="570px" color-palette="darkest" no-border>
+    <img src="/assets/foundations/foundations-color-usage-basic-text-dark.svg" 
+        alt=""
+        width="570" 
+        height="511">
+  </uxdot-example>
+</div>
 
 ### Icons
 
-Icons may be different colors depending on usage and theme. There are
-three categories of icons: Brand, Technology, and UI.
+Color is applied to icons depending on category, status, theme, etc. Some icon 
+colors will not change when switching themes. These are general guidelines, not 
+all use cases are represented.
 
-1.  **Brand** - monochromatic and usually red, black, or white
-2.  **Technology** - always black, gray, red, and white
-3.  **UI** - may be different colors depending on how they are used
-    within an element or pattern
+1. **Standard** - monochromatic and usually red, black, or white
+1. **Technology** - always black, gray, red, and white
+1. **UI** - can be a variety of colors depending on where they are used
 
-To learn more about icons, go to the [Brand standards][brandstandards] website.
+<div class="grid gapless xs-two-columns">
+  <uxdot-example width-adjustment="570px" no-border>
+    <img src="/assets/foundations/foundations-color-usage-icons-light.svg" 
+        alt=""
+        width="570"
+        height="502">
+  </uxdot-example>
 
-<uxdot-example variant="full" no-border>
-  <img alt="Examples of the three icon categories"
-       src="/assets/color/icons.png"
-       width="1000"
-       height="462">
-</uxdot-example>
+  <uxdot-example width-adjustment="570px" no-border color-palette="darkest">
+    <img src="/assets/foundations/foundations-color-usage-icons-dark.svg" 
+        alt=""
+        width="570"
+        height="502">
+  </uxdot-example>
+</div>
 
 ### Interactivity
 
-Certain colors are used to indicate that something is interactive.
+Color can be used to indicate that something is interactive or selectable. All 
+text links require an underline except in certain rare edge cases.
 
-1.  **Blue** - use for inline links, Default calls to action, or Primary
-    button surfaces
-2.  **Purple** - use for visited inline links
-3.  **Gray** - use for secondary or small links (using white is also
-    acceptable in dark environments)
-4.  **Red-orange** - use for destructive actions (and errors)
-5.  **Red** - use sparingly for Primary calls to action only
+1. **Blue** - a common color used for inline links, buttons, and more
+1. **Purple** - a common color used for the visited state or linked text in certain components
+1. **Red** - use sparingly for primary calls to action or linked text in certain components
+1. **Gray** - use for secondary text, the disabled state, or linked text in certain components
+1. **Black and white** - use for linked text in navigation components or linked header text in navigation menus
+1. **Other colors** - use for linked text in components with a more broad color palette like Tag
 
-<uxdot-example variant="full" no-border>
-  <img alt="Examples of elements using the five colors that denote interactivity"
-       src="/assets/color/interactivity.png"
-       width="1000"
-       height="593">
-</uxdot-example>
+<rh-alert state="note">
+  <h4 slot="header">Helpful tip</h4>
+  <p>Most links have underlines for accessibility reasons, but some do not. To 
+     learn more about when to add underlines to links, <a 
+        href="https://github.com/RedHat-UX/red-hat-design-system/discussions">contact</a> 
+     the design system team.</p>
+</rh-alert>
+
+<div class="grid gapless xs-two-columns">
+  <uxdot-example width-adjustment="570px" no-border>
+    <img src="/assets/foundations/foundations-color-usage-interactivity-light.svg"
+        alt=""
+        width="570"
+        height="854">
+  </uxdot-example>
+  <uxdot-example width-adjustment="570px" no-border color-palette="darkest">
+    <img src="/assets/foundations/foundations-color-usage-interactivity-dark.svg"
+        alt=""
+        width="570"
+        height="854">
+  </uxdot-example>
+</div>
 
 ### Status
 
-Status colors have assigned meanings and communicate information, states, or 
-actions. Status colors are commonly used in elements and patterns like 
-[alerts][alerts], [badges](/elements/badge), [buttons][buttons], [forms][forms], 
-and [toasts][toasts].
+Status has its own severity levels, color palettes, and meanings assigned to each.
 
 
-<rh-alert state="warning">
-  <h4 slot="header">Usage Warning</h4>
-  <p>The red-orange color is reserved for danger or error states. Do not use it anywhere else.</p>
+<rh-alert state="note">
+  <h4 slot="header">Helpful tip</h4>
+  <p>In general, when communicating status, red and red orange are considered 
+     danger or error state colors. It is not recommended to use those colors 
+     anywhere else.</p>
 </rh-alert>
 
 <rh-table>
 
-| Status                                     | Severity level | Use case                                                                         |
-| ------------------------------------------ | :------------: | -------------------------------------------------------------------------------- |
-| <rh-tag color="purple">Info</rh-tag>       | N/A            | Use `purple` to communicate helpful or important information.<br>*Note:* "Info" was previously called "note/tip." |
-| <rh-tag color="green">Success</rh-tag>     | 0              | Use `green` to communicate a success state.                                      |
-| <rh-tag color="gray">Neutral</rh-tag>      | 0              | Use `gray` to communicate information that will have no impact on a user.        |
-| <rh-tag color="yellow">Warning</rh-tag>    | 1              | Use `yellow` to communicate that a destructive action might occur if an issue is not resolved. |
-| <rh-tag color="orange">Caution</rh-tag>    | 2              | Use `orange` to communicate that an issue can be avoided.                        |
-| <rh-tag color="red-orange">Danger</rh-tag> | 3              | Use `red-orange` to communicate a destructive action or critical error.          |
+| Status name | Severity level |  Status                                         | Use case                                                                                        |
+| ----------- | :------------: | ----------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| Info        | 0              |  <rh-tag color="purple">Purple</rh-tag>         | <ul><li>Helpful information before an action</li><li>Positive</li></ul>                         |
+| Success     | 0              |  <rh-tag color="green">Green</rh-tag>           | <ul><li>Success state or an action was successful</li><li>Positive or healthy</li></ul>         |
+| Neutral     | 0              |  <rh-tag color="gray">Gray</rh-tag>             | <ul><li>An action is not available or will have no impact</li><li>Disabled or neutral</li></ul> |
+| Warning     | 1              |  <rh-tag color="yellow">Yellow</rh-tag>         | <ul><li>How to avoid a destructive action or error</li><li>Negative</li></ul>                   |
+| Caution     | 2              |  <rh-tag color="orange">Orange</rh-tag>         | <ul><li>Non-destructive action or fixable error</li><li>Negative</li></ul>                      |
+| Danger      | 3              |  <rh-tag color="red-orange">Red orange</rh-tag> | <ul><li>Destructive action or critical errorr</li><li>Negative</li></ul>                        |
 
 </rh-table>
 
-<uxdot-example width-adjustment="648px">
-  <img alt="Alerts, a form field, and tags that use status colors"
-       src="/assets/color/status.png"
-       width="648"
-       height="489">
+<uxdot-example width-adjustment="816px">
+  <img src="/assets/foundations/foundations-color-usage-status.svg"
+      alt=""
+      width="816"
+      height="452">
 </uxdot-example>
+
+## Resources
+
+- [Brand standards][brandstandards]
+- [Theming][theming]
+- [Iconography foundations][iconography]
+- [Icon element][rhicon]
+- [WCAG 2.1][wcag21]
+- [WebAIM: Contrast and Color Accessibility][aimcc]
 
 ## Best practices
 
-The design system's guidelines and best practices are more than just 
-suggestions. By following them scrupulously, you will ensure that your project 
-aligns with branding and accessibility guidelines. Diverge from the guidelines 
-only after significant planning and consideration.
+Follow these guidelines and best practices as best you can.
 
 ### Custom themes
 
-Most projects do not need elements and patterns in a custom theme. If
-you need a custom theme for a campaign or special project, contact the
-Brand team first. If you need one or more custom design tokens, contact
-the [Design system][designsystem] team first. 
+If you need support for a custom theme including custom design tokens,
+[contact us][contactus].
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
     <uxdot-example slot="image" no-border variant="full" alignment="left">
-      <img alt="Blue submit button, blue default call to action, black tooltip, and blue switch"
-           src="/assets/color/best-practices-custom-themes-correct.svg"
-           width="500"
-           height="264">
+      <svg viewBox="0 0 500 284"
+           fill="none"
+           xmlns="http://www.w3.org/2000/svg">
+        <title>Blue submit button, blue default call to action, black tooltip, and blue switch</title>
+        <path d="M0 132H500V281C500 282.657 498.657 284 497 284H2.99999C1.34314 284 0 282.657 0 281V132Z"
+              fill="#FCE3E3" />
+        <rect x="174"
+              y="180"
+              width="152"
+              height="56"
+              rx="4"
+              fill="#EE0000" />
+        <path d="M212.512 214.176C211.68 214.176 210.907 214.032 210.192 213.744C209.477 213.445 208.848 213.035 208.304 212.512C207.76 211.979 207.333 211.365 207.024 210.672C206.725 209.968 206.576 209.211 206.576 208.4C206.576 207.589 206.725 206.837 207.024 206.144C207.333 205.44 207.755 204.827 208.288 204.304C208.821 203.771 209.445 203.36 210.16 203.072C210.885 202.773 211.659 202.624 212.48 202.624C213.408 202.624 214.283 202.811 215.104 203.184C215.925 203.547 216.603 204.059 217.136 204.72L215.52 206.208C215.136 205.728 214.683 205.365 214.16 205.12C213.637 204.875 213.077 204.752 212.48 204.752C211.979 204.752 211.515 204.848 211.088 205.04C210.661 205.221 210.288 205.477 209.968 205.808C209.648 206.128 209.397 206.512 209.216 206.96C209.045 207.397 208.96 207.877 208.96 208.4C208.96 208.923 209.051 209.408 209.232 209.856C209.413 210.304 209.664 210.693 209.984 211.024C210.315 211.344 210.693 211.6 211.12 211.792C211.557 211.973 212.032 212.064 212.544 212.064C213.077 212.064 213.557 211.968 213.984 211.776C214.411 211.573 214.768 211.296 215.056 210.944C215.355 210.581 215.552 210.176 215.648 209.728H212.336V207.712H218.128V208.416C218.128 209.248 217.984 210.016 217.696 210.72C217.419 211.413 217.029 212.021 216.528 212.544C216.027 213.056 215.435 213.456 214.752 213.744C214.069 214.032 213.323 214.176 212.512 214.176ZM223.647 214.16C222.815 214.16 222.058 213.968 221.375 213.584C220.703 213.2 220.17 212.683 219.775 212.032C219.38 211.381 219.183 210.651 219.183 209.84C219.183 209.029 219.37 208.299 219.743 207.648C220.127 206.997 220.644 206.48 221.295 206.096C221.946 205.712 222.671 205.52 223.471 205.52C224.271 205.52 224.98 205.717 225.599 206.112C226.218 206.507 226.703 207.04 227.055 207.712C227.418 208.384 227.599 209.147 227.599 210V210.576H221.423C221.519 210.907 221.674 211.205 221.887 211.472C222.111 211.739 222.383 211.947 222.703 212.096C223.034 212.245 223.386 212.32 223.759 212.32C224.132 212.32 224.474 212.261 224.783 212.144C225.103 212.027 225.375 211.861 225.599 211.648L227.039 212.96C226.527 213.376 225.999 213.68 225.455 213.872C224.922 214.064 224.319 214.16 223.647 214.16ZM221.391 209.008H225.439C225.364 208.677 225.226 208.389 225.023 208.144C224.831 207.888 224.596 207.691 224.319 207.552C224.052 207.403 223.754 207.328 223.423 207.328C223.082 207.328 222.772 207.397 222.495 207.536C222.218 207.675 221.983 207.872 221.791 208.128C221.61 208.373 221.476 208.667 221.391 209.008ZM232.66 214.128C231.732 214.128 231.028 213.92 230.548 213.504C230.078 213.077 229.844 212.459 229.844 211.648V207.488H228.132V205.664H229.844V203.536L232.036 203.04V205.664H234.42V207.488H232.036V211.2C232.036 211.584 232.121 211.861 232.292 212.032C232.462 212.192 232.761 212.272 233.188 212.272C233.401 212.272 233.593 212.261 233.764 212.24C233.945 212.208 234.142 212.155 234.356 212.08V213.888C234.132 213.963 233.849 214.021 233.508 214.064C233.177 214.107 232.894 214.128 232.66 214.128ZM241.828 214.16C241.06 214.16 240.35 214.064 239.7 213.872C239.049 213.669 238.484 213.381 238.004 213.008L239.092 211.552C239.572 211.872 240.03 212.112 240.468 212.272C240.916 212.432 241.358 212.512 241.796 212.512C242.286 212.512 242.676 212.432 242.964 212.272C243.262 212.101 243.412 211.883 243.412 211.616C243.412 211.403 243.326 211.232 243.156 211.104C242.996 210.976 242.734 210.885 242.372 210.832L240.772 210.592C239.94 210.464 239.31 210.197 238.884 209.792C238.457 209.376 238.244 208.832 238.244 208.16C238.244 207.616 238.382 207.152 238.66 206.768C238.948 206.373 239.348 206.069 239.86 205.856C240.382 205.632 241.001 205.52 241.716 205.52C242.324 205.52 242.916 205.605 243.492 205.776C244.078 205.947 244.628 206.208 245.14 206.56L244.084 207.984C243.625 207.696 243.188 207.488 242.772 207.36C242.356 207.232 241.934 207.168 241.508 207.168C241.113 207.168 240.793 207.243 240.548 207.392C240.313 207.541 240.196 207.739 240.196 207.984C240.196 208.208 240.281 208.384 240.452 208.512C240.622 208.64 240.916 208.731 241.332 208.784L242.916 209.024C243.748 209.141 244.382 209.408 244.82 209.824C245.257 210.229 245.476 210.757 245.476 211.408C245.476 211.941 245.316 212.416 244.996 212.832C244.676 213.237 244.244 213.563 243.7 213.808C243.156 214.043 242.532 214.16 241.828 214.16ZM250.363 214.128C249.435 214.128 248.731 213.92 248.251 213.504C247.782 213.077 247.547 212.459 247.547 211.648V207.488H245.835V205.664H247.547V203.536L249.739 203.04V205.664H252.123V207.488H249.739V211.2C249.739 211.584 249.824 211.861 249.995 212.032C250.166 212.192 250.464 212.272 250.891 212.272C251.104 212.272 251.296 212.261 251.467 212.24C251.648 212.208 251.846 212.155 252.059 212.08V213.888C251.835 213.963 251.552 214.021 251.211 214.064C250.88 214.107 250.598 214.128 250.363 214.128ZM255.848 214.144C255.251 214.144 254.723 214.037 254.264 213.824C253.805 213.6 253.448 213.296 253.192 212.912C252.936 212.528 252.808 212.085 252.808 211.584C252.808 210.784 253.107 210.165 253.704 209.728C254.312 209.28 255.144 209.056 256.2 209.056C256.925 209.056 257.608 209.168 258.248 209.392V208.784C258.248 208.304 258.099 207.941 257.8 207.696C257.501 207.451 257.064 207.328 256.488 207.328C256.136 207.328 255.757 207.387 255.352 207.504C254.947 207.611 254.477 207.781 253.944 208.016L253.144 206.4C253.805 206.101 254.435 205.877 255.032 205.728C255.64 205.579 256.248 205.504 256.856 205.504C257.976 205.504 258.845 205.776 259.464 206.32C260.093 206.853 260.408 207.611 260.408 208.592V214H258.248V213.408C257.907 213.664 257.539 213.851 257.144 213.968C256.749 214.085 256.317 214.144 255.848 214.144ZM254.888 211.536C254.888 211.856 255.027 212.112 255.304 212.304C255.581 212.485 255.949 212.576 256.408 212.576C256.771 212.576 257.107 212.533 257.416 212.448C257.725 212.352 258.003 212.213 258.248 212.032V210.816C257.981 210.709 257.704 210.629 257.416 210.576C257.128 210.523 256.819 210.496 256.488 210.496C255.987 210.496 255.592 210.592 255.304 210.784C255.027 210.965 254.888 211.216 254.888 211.536ZM262.067 214V205.664H264.259V206.592C264.526 206.229 264.846 205.952 265.219 205.76C265.592 205.568 266.014 205.472 266.483 205.472C266.888 205.483 267.192 205.547 267.395 205.664V207.584C267.235 207.509 267.059 207.456 266.867 207.424C266.675 207.381 266.478 207.36 266.275 207.36C265.848 207.36 265.459 207.467 265.107 207.68C264.755 207.893 264.472 208.197 264.259 208.592V214H262.067ZM272.55 214.128C271.622 214.128 270.918 213.92 270.438 213.504C269.969 213.077 269.734 212.459 269.734 211.648V207.488H268.022V205.664H269.734V203.536L271.926 203.04V205.664H274.31V207.488H271.926V211.2C271.926 211.584 272.012 211.861 272.182 212.032C272.353 212.192 272.652 212.272 273.078 212.272C273.292 212.272 273.484 212.261 273.654 212.24C273.836 212.208 274.033 212.155 274.246 212.08V213.888C274.022 213.963 273.74 214.021 273.398 214.064C273.068 214.107 272.785 214.128 272.55 214.128ZM279.366 214.16C278.534 214.16 277.777 213.968 277.094 213.584C276.422 213.2 275.889 212.683 275.494 212.032C275.099 211.381 274.902 210.651 274.902 209.84C274.902 209.029 275.089 208.299 275.462 207.648C275.846 206.997 276.363 206.48 277.014 206.096C277.665 205.712 278.39 205.52 279.19 205.52C279.99 205.52 280.699 205.717 281.318 206.112C281.937 206.507 282.422 207.04 282.774 207.712C283.137 208.384 283.318 209.147 283.318 210V210.576H277.142C277.238 210.907 277.393 211.205 277.606 211.472C277.83 211.739 278.102 211.947 278.422 212.096C278.753 212.245 279.105 212.32 279.478 212.32C279.851 212.32 280.193 212.261 280.502 212.144C280.822 212.027 281.094 211.861 281.318 211.648L282.758 212.96C282.246 213.376 281.718 213.68 281.174 213.872C280.641 214.064 280.038 214.16 279.366 214.16ZM277.11 209.008H281.158C281.083 208.677 280.945 208.389 280.742 208.144C280.55 207.888 280.315 207.691 280.038 207.552C279.771 207.403 279.473 207.328 279.142 207.328C278.801 207.328 278.491 207.397 278.214 207.536C277.937 207.675 277.702 207.872 277.51 208.128C277.329 208.373 277.195 208.667 277.11 209.008ZM288.579 214.112C287.79 214.112 287.075 213.92 286.435 213.536C285.795 213.152 285.283 212.64 284.899 212C284.526 211.349 284.339 210.624 284.339 209.824C284.339 209.024 284.526 208.304 284.899 207.664C285.283 207.013 285.801 206.501 286.451 206.128C287.102 205.744 287.833 205.552 288.643 205.552C289.059 205.552 289.459 205.611 289.843 205.728C290.227 205.835 290.585 205.995 290.915 206.208V202.8L293.107 202.432V214H290.947V213.312C290.265 213.845 289.475 214.112 288.579 214.112ZM288.931 212.24C289.337 212.24 289.705 212.176 290.035 212.048C290.377 211.909 290.67 211.707 290.915 211.44V208.192C290.67 207.947 290.377 207.755 290.035 207.616C289.694 207.477 289.326 207.408 288.931 207.408C288.473 207.408 288.057 207.515 287.683 207.728C287.321 207.931 287.033 208.219 286.819 208.592C286.606 208.955 286.499 209.365 286.499 209.824C286.499 210.283 286.606 210.693 286.819 211.056C287.033 211.419 287.321 211.707 287.683 211.92C288.057 212.133 288.473 212.24 288.931 212.24Z"
+              fill="white" />
+        <path d="M0 3C0 1.34314 1.34315 0 3 0H497C498.657 0 500 1.34315 500 3V132H0V3Z"
+              fill="#F2F2F2" />
+        <rect x="208"
+              y="48"
+              width="84"
+              height="36"
+              rx="4"
+              fill="#0066CC" />
+        <path d="M229.04 72.176C228.165 72.176 227.355 72.0213 226.608 71.712C225.861 71.392 225.141 70.912 224.448 70.272L225.2 69.376C225.872 70.0053 226.501 70.4533 227.088 70.72C227.685 70.9867 228.347 71.12 229.072 71.12C229.648 71.12 230.16 71.024 230.608 70.832C231.067 70.6293 231.424 70.3573 231.68 70.016C231.936 69.6747 232.064 69.2853 232.064 68.848C232.064 68.2827 231.877 67.856 231.504 67.568C231.131 67.2693 230.485 67.04 229.568 66.88L227.76 66.576C226.736 66.3947 225.984 66.0853 225.504 65.648C225.035 65.2 224.8 64.6027 224.8 63.856C224.8 63.2267 224.96 62.672 225.28 62.192C225.611 61.7013 226.064 61.3173 226.64 61.04C227.216 60.7627 227.883 60.624 228.64 60.624C229.472 60.624 230.245 60.7413 230.96 60.976C231.675 61.2 232.379 61.5573 233.072 62.048L232.432 63.008C231.856 62.5707 231.248 62.24 230.608 62.016C229.968 61.7813 229.317 61.664 228.656 61.664C228.133 61.664 227.669 61.7547 227.264 61.936C226.869 62.1173 226.555 62.3627 226.32 62.672C226.096 62.9813 225.984 63.3333 225.984 63.728C225.984 64.2187 226.149 64.6027 226.48 64.88C226.811 65.1573 227.349 65.3547 228.096 65.472L229.888 65.776C231.083 65.9893 231.947 66.336 232.48 66.816C233.024 67.2853 233.296 67.9413 233.296 68.784C233.296 69.4347 233.109 70.016 232.736 70.528C232.373 71.04 231.872 71.4453 231.232 71.744C230.592 72.032 229.861 72.176 229.04 72.176ZM237.953 72.128C237.398 72.128 236.907 72.0053 236.481 71.76C236.054 71.5147 235.718 71.1733 235.473 70.736C235.238 70.2987 235.121 69.7973 235.121 69.232V64.192H236.305V68.896C236.305 69.5893 236.491 70.1387 236.865 70.544C237.238 70.9493 237.745 71.152 238.385 71.152C238.822 71.152 239.211 71.0507 239.553 70.848C239.905 70.6453 240.198 70.352 240.433 69.968V64.192H241.601V72H240.433V70.736C240.134 71.1947 239.777 71.5413 239.361 71.776C238.955 72.0107 238.486 72.128 237.953 72.128ZM243.997 72V60.56L245.165 60.32V65.264C245.464 64.8907 245.826 64.6027 246.253 64.4C246.68 64.1973 247.154 64.096 247.677 64.096C248.36 64.096 248.968 64.2773 249.501 64.64C250.045 64.992 250.477 65.472 250.797 66.08C251.117 66.6773 251.277 67.3493 251.277 68.096C251.277 68.8427 251.112 69.52 250.781 70.128C250.461 70.736 250.024 71.2213 249.469 71.584C248.925 71.936 248.306 72.112 247.613 72.112C247.122 72.112 246.664 72.016 246.237 71.824C245.821 71.6213 245.458 71.3387 245.149 70.976V72H243.997ZM247.389 71.104C247.912 71.104 248.376 70.976 248.781 70.72C249.197 70.4533 249.522 70.096 249.757 69.648C250.002 69.1893 250.125 68.6773 250.125 68.112C250.125 67.536 250.002 67.024 249.757 66.576C249.522 66.128 249.197 65.776 248.781 65.52C248.376 65.2533 247.912 65.12 247.389 65.12C246.93 65.12 246.504 65.216 246.109 65.408C245.725 65.5893 245.41 65.8507 245.165 66.192V70.016C245.421 70.3573 245.741 70.624 246.125 70.816C246.52 71.008 246.941 71.104 247.389 71.104ZM253.325 72V64.192H254.493V65.408C254.792 64.96 255.133 64.624 255.517 64.4C255.901 64.176 256.333 64.064 256.813 64.064C257.368 64.064 257.853 64.2027 258.269 64.48C258.685 64.7467 259 65.1147 259.213 65.584C259.522 65.0827 259.89 64.704 260.317 64.448C260.754 64.192 261.256 64.064 261.821 64.064C262.344 64.064 262.802 64.1867 263.197 64.432C263.602 64.6773 263.917 65.0187 264.141 65.456C264.365 65.8827 264.477 66.384 264.477 66.96V72H263.309V67.248C263.309 66.5653 263.138 66.0267 262.797 65.632C262.456 65.2373 261.986 65.04 261.389 65.04C260.984 65.04 260.616 65.1413 260.285 65.344C259.965 65.5467 259.682 65.856 259.437 66.272C259.458 66.3787 259.474 66.4907 259.485 66.608C259.496 66.7253 259.501 66.8427 259.501 66.96V72H258.333V67.248C258.333 66.5653 258.157 66.0267 257.805 65.632C257.464 65.2373 256.994 65.04 256.397 65.04C255.597 65.04 254.962 65.424 254.493 66.192V72H253.325ZM266.825 72V64.192H267.993V72H266.825ZM267.417 62.256C267.182 62.256 266.979 62.176 266.809 62.016C266.649 61.8453 266.569 61.648 266.569 61.424C266.569 61.2 266.649 61.008 266.809 60.848C266.979 60.6773 267.182 60.592 267.417 60.592C267.651 60.592 267.849 60.6773 268.009 60.848C268.179 61.008 268.265 61.2 268.265 61.424C268.265 61.648 268.179 61.8453 268.009 62.016C267.849 62.176 267.651 62.256 267.417 62.256ZM273.364 72.16C272.692 72.16 272.18 72 271.828 71.68C271.486 71.3493 271.316 70.8747 271.316 70.256V65.152H269.7V64.192H271.316V62.048L272.484 61.776V64.192H274.724V65.152H272.484V69.952C272.484 70.368 272.569 70.6667 272.74 70.848C272.921 71.0293 273.214 71.12 273.62 71.12C273.822 71.12 274.004 71.104 274.164 71.072C274.324 71.04 274.51 70.9867 274.724 70.912V71.952C274.51 72.0267 274.286 72.08 274.052 72.112C273.817 72.144 273.588 72.16 273.364 72.16Z"
+              fill="white" />
+      </svg>
     </uxdot-example>
-    <p>Use the color variants already available for elements and patterns.</p>
+    <p>Place foreground elements on background colors with enough contrast.</p>
   </uxdot-best-practice>
-
   <uxdot-best-practice variant="dont">
     <uxdot-example slot="image" no-border variant="full" alignment="left">
-      <img alt="Magenta button, brand red default call to action, green tooltip, and dark orange switch"
-           src="/assets/color/best-practices-custom-themes-wrong.svg"
-           width="500"
-           height="264">
+      <svg viewBox="0 0 500 284"
+           fill="none"
+           xmlns="http://www.w3.org/2000/svg">
+        <title>Magenta button, brand red default call to action, green tooltip, and dark orange switch</title>
+        <path d="M0 132H500V281C500 282.657 498.657 284 497 284H2.99999C1.34314 284 0 282.657 0 281V132Z"
+              fill="#0066CC" />
+        <rect x="174"
+              y="180"
+              width="152"
+              height="56"
+              rx="4"
+              fill="#EE0000" />
+        <path d="M212.512 214.176C211.68 214.176 210.907 214.032 210.192 213.744C209.477 213.445 208.848 213.035 208.304 212.512C207.76 211.979 207.333 211.365 207.024 210.672C206.725 209.968 206.576 209.211 206.576 208.4C206.576 207.589 206.725 206.837 207.024 206.144C207.333 205.44 207.755 204.827 208.288 204.304C208.821 203.771 209.445 203.36 210.16 203.072C210.885 202.773 211.659 202.624 212.48 202.624C213.408 202.624 214.283 202.811 215.104 203.184C215.925 203.547 216.603 204.059 217.136 204.72L215.52 206.208C215.136 205.728 214.683 205.365 214.16 205.12C213.637 204.875 213.077 204.752 212.48 204.752C211.979 204.752 211.515 204.848 211.088 205.04C210.661 205.221 210.288 205.477 209.968 205.808C209.648 206.128 209.397 206.512 209.216 206.96C209.045 207.397 208.96 207.877 208.96 208.4C208.96 208.923 209.051 209.408 209.232 209.856C209.413 210.304 209.664 210.693 209.984 211.024C210.315 211.344 210.693 211.6 211.12 211.792C211.557 211.973 212.032 212.064 212.544 212.064C213.077 212.064 213.557 211.968 213.984 211.776C214.411 211.573 214.768 211.296 215.056 210.944C215.355 210.581 215.552 210.176 215.648 209.728H212.336V207.712H218.128V208.416C218.128 209.248 217.984 210.016 217.696 210.72C217.419 211.413 217.029 212.021 216.528 212.544C216.027 213.056 215.435 213.456 214.752 213.744C214.069 214.032 213.323 214.176 212.512 214.176ZM223.647 214.16C222.815 214.16 222.058 213.968 221.375 213.584C220.703 213.2 220.17 212.683 219.775 212.032C219.38 211.381 219.183 210.651 219.183 209.84C219.183 209.029 219.37 208.299 219.743 207.648C220.127 206.997 220.644 206.48 221.295 206.096C221.946 205.712 222.671 205.52 223.471 205.52C224.271 205.52 224.98 205.717 225.599 206.112C226.218 206.507 226.703 207.04 227.055 207.712C227.418 208.384 227.599 209.147 227.599 210V210.576H221.423C221.519 210.907 221.674 211.205 221.887 211.472C222.111 211.739 222.383 211.947 222.703 212.096C223.034 212.245 223.386 212.32 223.759 212.32C224.132 212.32 224.474 212.261 224.783 212.144C225.103 212.027 225.375 211.861 225.599 211.648L227.039 212.96C226.527 213.376 225.999 213.68 225.455 213.872C224.922 214.064 224.319 214.16 223.647 214.16ZM221.391 209.008H225.439C225.364 208.677 225.226 208.389 225.023 208.144C224.831 207.888 224.596 207.691 224.319 207.552C224.052 207.403 223.754 207.328 223.423 207.328C223.082 207.328 222.772 207.397 222.495 207.536C222.218 207.675 221.983 207.872 221.791 208.128C221.61 208.373 221.476 208.667 221.391 209.008ZM232.66 214.128C231.732 214.128 231.028 213.92 230.548 213.504C230.078 213.077 229.844 212.459 229.844 211.648V207.488H228.132V205.664H229.844V203.536L232.036 203.04V205.664H234.42V207.488H232.036V211.2C232.036 211.584 232.121 211.861 232.292 212.032C232.462 212.192 232.761 212.272 233.188 212.272C233.401 212.272 233.593 212.261 233.764 212.24C233.945 212.208 234.142 212.155 234.356 212.08V213.888C234.132 213.963 233.849 214.021 233.508 214.064C233.177 214.107 232.894 214.128 232.66 214.128ZM241.828 214.16C241.06 214.16 240.35 214.064 239.7 213.872C239.049 213.669 238.484 213.381 238.004 213.008L239.092 211.552C239.572 211.872 240.03 212.112 240.468 212.272C240.916 212.432 241.358 212.512 241.796 212.512C242.286 212.512 242.676 212.432 242.964 212.272C243.262 212.101 243.412 211.883 243.412 211.616C243.412 211.403 243.326 211.232 243.156 211.104C242.996 210.976 242.734 210.885 242.372 210.832L240.772 210.592C239.94 210.464 239.31 210.197 238.884 209.792C238.457 209.376 238.244 208.832 238.244 208.16C238.244 207.616 238.382 207.152 238.66 206.768C238.948 206.373 239.348 206.069 239.86 205.856C240.382 205.632 241.001 205.52 241.716 205.52C242.324 205.52 242.916 205.605 243.492 205.776C244.078 205.947 244.628 206.208 245.14 206.56L244.084 207.984C243.625 207.696 243.188 207.488 242.772 207.36C242.356 207.232 241.934 207.168 241.508 207.168C241.113 207.168 240.793 207.243 240.548 207.392C240.313 207.541 240.196 207.739 240.196 207.984C240.196 208.208 240.281 208.384 240.452 208.512C240.622 208.64 240.916 208.731 241.332 208.784L242.916 209.024C243.748 209.141 244.382 209.408 244.82 209.824C245.257 210.229 245.476 210.757 245.476 211.408C245.476 211.941 245.316 212.416 244.996 212.832C244.676 213.237 244.244 213.563 243.7 213.808C243.156 214.043 242.532 214.16 241.828 214.16ZM250.363 214.128C249.435 214.128 248.731 213.92 248.251 213.504C247.782 213.077 247.547 212.459 247.547 211.648V207.488H245.835V205.664H247.547V203.536L249.739 203.04V205.664H252.123V207.488H249.739V211.2C249.739 211.584 249.824 211.861 249.995 212.032C250.166 212.192 250.464 212.272 250.891 212.272C251.104 212.272 251.296 212.261 251.467 212.24C251.648 212.208 251.846 212.155 252.059 212.08V213.888C251.835 213.963 251.552 214.021 251.211 214.064C250.88 214.107 250.598 214.128 250.363 214.128ZM255.848 214.144C255.251 214.144 254.723 214.037 254.264 213.824C253.805 213.6 253.448 213.296 253.192 212.912C252.936 212.528 252.808 212.085 252.808 211.584C252.808 210.784 253.107 210.165 253.704 209.728C254.312 209.28 255.144 209.056 256.2 209.056C256.925 209.056 257.608 209.168 258.248 209.392V208.784C258.248 208.304 258.099 207.941 257.8 207.696C257.501 207.451 257.064 207.328 256.488 207.328C256.136 207.328 255.757 207.387 255.352 207.504C254.947 207.611 254.477 207.781 253.944 208.016L253.144 206.4C253.805 206.101 254.435 205.877 255.032 205.728C255.64 205.579 256.248 205.504 256.856 205.504C257.976 205.504 258.845 205.776 259.464 206.32C260.093 206.853 260.408 207.611 260.408 208.592V214H258.248V213.408C257.907 213.664 257.539 213.851 257.144 213.968C256.749 214.085 256.317 214.144 255.848 214.144ZM254.888 211.536C254.888 211.856 255.027 212.112 255.304 212.304C255.581 212.485 255.949 212.576 256.408 212.576C256.771 212.576 257.107 212.533 257.416 212.448C257.725 212.352 258.003 212.213 258.248 212.032V210.816C257.981 210.709 257.704 210.629 257.416 210.576C257.128 210.523 256.819 210.496 256.488 210.496C255.987 210.496 255.592 210.592 255.304 210.784C255.027 210.965 254.888 211.216 254.888 211.536ZM262.067 214V205.664H264.259V206.592C264.526 206.229 264.846 205.952 265.219 205.76C265.592 205.568 266.014 205.472 266.483 205.472C266.888 205.483 267.192 205.547 267.395 205.664V207.584C267.235 207.509 267.059 207.456 266.867 207.424C266.675 207.381 266.478 207.36 266.275 207.36C265.848 207.36 265.459 207.467 265.107 207.68C264.755 207.893 264.472 208.197 264.259 208.592V214H262.067ZM272.55 214.128C271.622 214.128 270.918 213.92 270.438 213.504C269.969 213.077 269.734 212.459 269.734 211.648V207.488H268.022V205.664H269.734V203.536L271.926 203.04V205.664H274.31V207.488H271.926V211.2C271.926 211.584 272.012 211.861 272.182 212.032C272.353 212.192 272.652 212.272 273.078 212.272C273.292 212.272 273.484 212.261 273.654 212.24C273.836 212.208 274.033 212.155 274.246 212.08V213.888C274.022 213.963 273.74 214.021 273.398 214.064C273.068 214.107 272.785 214.128 272.55 214.128ZM279.366 214.16C278.534 214.16 277.777 213.968 277.094 213.584C276.422 213.2 275.889 212.683 275.494 212.032C275.099 211.381 274.902 210.651 274.902 209.84C274.902 209.029 275.089 208.299 275.462 207.648C275.846 206.997 276.363 206.48 277.014 206.096C277.665 205.712 278.39 205.52 279.19 205.52C279.99 205.52 280.699 205.717 281.318 206.112C281.937 206.507 282.422 207.04 282.774 207.712C283.137 208.384 283.318 209.147 283.318 210V210.576H277.142C277.238 210.907 277.393 211.205 277.606 211.472C277.83 211.739 278.102 211.947 278.422 212.096C278.753 212.245 279.105 212.32 279.478 212.32C279.851 212.32 280.193 212.261 280.502 212.144C280.822 212.027 281.094 211.861 281.318 211.648L282.758 212.96C282.246 213.376 281.718 213.68 281.174 213.872C280.641 214.064 280.038 214.16 279.366 214.16ZM277.11 209.008H281.158C281.083 208.677 280.945 208.389 280.742 208.144C280.55 207.888 280.315 207.691 280.038 207.552C279.771 207.403 279.473 207.328 279.142 207.328C278.801 207.328 278.491 207.397 278.214 207.536C277.937 207.675 277.702 207.872 277.51 208.128C277.329 208.373 277.195 208.667 277.11 209.008ZM288.579 214.112C287.79 214.112 287.075 213.92 286.435 213.536C285.795 213.152 285.283 212.64 284.899 212C284.526 211.349 284.339 210.624 284.339 209.824C284.339 209.024 284.526 208.304 284.899 207.664C285.283 207.013 285.801 206.501 286.451 206.128C287.102 205.744 287.833 205.552 288.643 205.552C289.059 205.552 289.459 205.611 289.843 205.728C290.227 205.835 290.585 205.995 290.915 206.208V202.8L293.107 202.432V214H290.947V213.312C290.265 213.845 289.475 214.112 288.579 214.112ZM288.931 212.24C289.337 212.24 289.705 212.176 290.035 212.048C290.377 211.909 290.67 211.707 290.915 211.44V208.192C290.67 207.947 290.377 207.755 290.035 207.616C289.694 207.477 289.326 207.408 288.931 207.408C288.473 207.408 288.057 207.515 287.683 207.728C287.321 207.931 287.033 208.219 286.819 208.592C286.606 208.955 286.499 209.365 286.499 209.824C286.499 210.283 286.606 210.693 286.819 211.056C287.033 211.419 287.321 211.707 287.683 211.92C288.057 212.133 288.473 212.24 288.931 212.24Z"
+              fill="white" />
+        <path d="M0 3C0 1.34314 1.34315 0 3 0H497C498.657 0 500 1.34315 500 3V132H0V3Z"
+              fill="#A60000" />
+        <rect x="208"
+              y="48"
+              width="84"
+              height="36"
+              rx="4"
+              fill="#0066CC" />
+        <path d="M229.04 72.176C228.165 72.176 227.355 72.0213 226.608 71.712C225.861 71.392 225.141 70.912 224.448 70.272L225.2 69.376C225.872 70.0053 226.501 70.4533 227.088 70.72C227.685 70.9867 228.347 71.12 229.072 71.12C229.648 71.12 230.16 71.024 230.608 70.832C231.067 70.6293 231.424 70.3573 231.68 70.016C231.936 69.6747 232.064 69.2853 232.064 68.848C232.064 68.2827 231.877 67.856 231.504 67.568C231.131 67.2693 230.485 67.04 229.568 66.88L227.76 66.576C226.736 66.3947 225.984 66.0853 225.504 65.648C225.035 65.2 224.8 64.6027 224.8 63.856C224.8 63.2267 224.96 62.672 225.28 62.192C225.611 61.7013 226.064 61.3173 226.64 61.04C227.216 60.7627 227.883 60.624 228.64 60.624C229.472 60.624 230.245 60.7413 230.96 60.976C231.675 61.2 232.379 61.5573 233.072 62.048L232.432 63.008C231.856 62.5707 231.248 62.24 230.608 62.016C229.968 61.7813 229.317 61.664 228.656 61.664C228.133 61.664 227.669 61.7547 227.264 61.936C226.869 62.1173 226.555 62.3627 226.32 62.672C226.096 62.9813 225.984 63.3333 225.984 63.728C225.984 64.2187 226.149 64.6027 226.48 64.88C226.811 65.1573 227.349 65.3547 228.096 65.472L229.888 65.776C231.083 65.9893 231.947 66.336 232.48 66.816C233.024 67.2853 233.296 67.9413 233.296 68.784C233.296 69.4347 233.109 70.016 232.736 70.528C232.373 71.04 231.872 71.4453 231.232 71.744C230.592 72.032 229.861 72.176 229.04 72.176ZM237.953 72.128C237.398 72.128 236.907 72.0053 236.481 71.76C236.054 71.5147 235.718 71.1733 235.473 70.736C235.238 70.2987 235.121 69.7973 235.121 69.232V64.192H236.305V68.896C236.305 69.5893 236.491 70.1387 236.865 70.544C237.238 70.9493 237.745 71.152 238.385 71.152C238.822 71.152 239.211 71.0507 239.553 70.848C239.905 70.6453 240.198 70.352 240.433 69.968V64.192H241.601V72H240.433V70.736C240.134 71.1947 239.777 71.5413 239.361 71.776C238.955 72.0107 238.486 72.128 237.953 72.128ZM243.997 72V60.56L245.165 60.32V65.264C245.464 64.8907 245.826 64.6027 246.253 64.4C246.68 64.1973 247.154 64.096 247.677 64.096C248.36 64.096 248.968 64.2773 249.501 64.64C250.045 64.992 250.477 65.472 250.797 66.08C251.117 66.6773 251.277 67.3493 251.277 68.096C251.277 68.8427 251.112 69.52 250.781 70.128C250.461 70.736 250.024 71.2213 249.469 71.584C248.925 71.936 248.306 72.112 247.613 72.112C247.122 72.112 246.664 72.016 246.237 71.824C245.821 71.6213 245.458 71.3387 245.149 70.976V72H243.997ZM247.389 71.104C247.912 71.104 248.376 70.976 248.781 70.72C249.197 70.4533 249.522 70.096 249.757 69.648C250.002 69.1893 250.125 68.6773 250.125 68.112C250.125 67.536 250.002 67.024 249.757 66.576C249.522 66.128 249.197 65.776 248.781 65.52C248.376 65.2533 247.912 65.12 247.389 65.12C246.93 65.12 246.504 65.216 246.109 65.408C245.725 65.5893 245.41 65.8507 245.165 66.192V70.016C245.421 70.3573 245.741 70.624 246.125 70.816C246.52 71.008 246.941 71.104 247.389 71.104ZM253.325 72V64.192H254.493V65.408C254.792 64.96 255.133 64.624 255.517 64.4C255.901 64.176 256.333 64.064 256.813 64.064C257.368 64.064 257.853 64.2027 258.269 64.48C258.685 64.7467 259 65.1147 259.213 65.584C259.522 65.0827 259.89 64.704 260.317 64.448C260.754 64.192 261.256 64.064 261.821 64.064C262.344 64.064 262.802 64.1867 263.197 64.432C263.602 64.6773 263.917 65.0187 264.141 65.456C264.365 65.8827 264.477 66.384 264.477 66.96V72H263.309V67.248C263.309 66.5653 263.138 66.0267 262.797 65.632C262.456 65.2373 261.986 65.04 261.389 65.04C260.984 65.04 260.616 65.1413 260.285 65.344C259.965 65.5467 259.682 65.856 259.437 66.272C259.458 66.3787 259.474 66.4907 259.485 66.608C259.496 66.7253 259.501 66.8427 259.501 66.96V72H258.333V67.248C258.333 66.5653 258.157 66.0267 257.805 65.632C257.464 65.2373 256.994 65.04 256.397 65.04C255.597 65.04 254.962 65.424 254.493 66.192V72H253.325ZM266.825 72V64.192H267.993V72H266.825ZM267.417 62.256C267.182 62.256 266.979 62.176 266.809 62.016C266.649 61.8453 266.569 61.648 266.569 61.424C266.569 61.2 266.649 61.008 266.809 60.848C266.979 60.6773 267.182 60.592 267.417 60.592C267.651 60.592 267.849 60.6773 268.009 60.848C268.179 61.008 268.265 61.2 268.265 61.424C268.265 61.648 268.179 61.8453 268.009 62.016C267.849 62.176 267.651 62.256 267.417 62.256ZM273.364 72.16C272.692 72.16 272.18 72 271.828 71.68C271.486 71.3493 271.316 70.8747 271.316 70.256V65.152H269.7V64.192H271.316V62.048L272.484 61.776V64.192H274.724V65.152H272.484V69.952C272.484 70.368 272.569 70.6667 272.74 70.848C272.921 71.0293 273.214 71.12 273.62 71.12C273.822 71.12 274.004 71.104 274.164 71.072C274.324 71.04 274.51 70.9867 274.724 70.912V71.952C274.51 72.0267 274.286 72.08 274.052 72.112C273.817 72.144 273.588 72.16 273.364 72.16Z"
+              fill="white" />
+      </svg>
     </uxdot-example>
-    <p>Do not create your own colors, design tokens, or change the colors of existing elements and patterns.</p>
+    <p>Do not place foreground elements on background colors with insufficient contrast.</p>
   </uxdot-best-practice>
 </div>
 
@@ -264,29 +328,33 @@ using elements and patterns from the desaturated theme instead.
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
     <uxdot-example slot="image" no-border variant="full" alignment="left">
-      <img alt="Examples of a blue button against a light gray background and a red CTA against a black background"
-           src="/assets/color/best-practices-sufficient-contrast-correct.svg"
-           width="500"
-           height="284">
+      <svg viewBox="0 0 546 348" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <title>Examples of a blue button against a light gray background and a red CTA against a black background</title>
+        <path d="M0 164H546V345C546 346.657 544.657 348 543 348H2.99998C1.34313 348 0 346.657 0 345V164Z" fill="#FCE3E3"/>
+        <rect x="197" y="228" width="152" height="56" rx="3" fill="#EE0000"/>
+        <path d="M235.512 262.176C234.68 262.176 233.907 262.032 233.192 261.744C232.477 261.445 231.848 261.035 231.304 260.512C230.76 259.979 230.333 259.365 230.024 258.672C229.725 257.968 229.576 257.211 229.576 256.4C229.576 255.589 229.725 254.837 230.024 254.144C230.333 253.44 230.755 252.827 231.288 252.304C231.821 251.771 232.445 251.36 233.16 251.072C233.885 250.773 234.659 250.624 235.48 250.624C236.408 250.624 237.283 250.811 238.104 251.184C238.925 251.547 239.603 252.059 240.136 252.72L238.52 254.208C238.136 253.728 237.683 253.365 237.16 253.12C236.637 252.875 236.077 252.752 235.48 252.752C234.979 252.752 234.515 252.848 234.088 253.04C233.661 253.221 233.288 253.477 232.968 253.808C232.648 254.128 232.397 254.512 232.216 254.96C232.045 255.397 231.96 255.877 231.96 256.4C231.96 256.923 232.051 257.408 232.232 257.856C232.413 258.304 232.664 258.693 232.984 259.024C233.315 259.344 233.693 259.6 234.12 259.792C234.557 259.973 235.032 260.064 235.544 260.064C236.077 260.064 236.557 259.968 236.984 259.776C237.411 259.573 237.768 259.296 238.056 258.944C238.355 258.581 238.552 258.176 238.648 257.728H235.336V255.712H241.128V256.416C241.128 257.248 240.984 258.016 240.696 258.72C240.419 259.413 240.029 260.021 239.528 260.544C239.027 261.056 238.435 261.456 237.752 261.744C237.069 262.032 236.323 262.176 235.512 262.176ZM246.647 262.16C245.815 262.16 245.058 261.968 244.375 261.584C243.703 261.2 243.17 260.683 242.775 260.032C242.38 259.381 242.183 258.651 242.183 257.84C242.183 257.029 242.37 256.299 242.743 255.648C243.127 254.997 243.644 254.48 244.295 254.096C244.946 253.712 245.671 253.52 246.471 253.52C247.271 253.52 247.98 253.717 248.599 254.112C249.218 254.507 249.703 255.04 250.055 255.712C250.418 256.384 250.599 257.147 250.599 258V258.576H244.423C244.519 258.907 244.674 259.205 244.887 259.472C245.111 259.739 245.383 259.947 245.703 260.096C246.034 260.245 246.386 260.32 246.759 260.32C247.132 260.32 247.474 260.261 247.783 260.144C248.103 260.027 248.375 259.861 248.599 259.648L250.039 260.96C249.527 261.376 248.999 261.68 248.455 261.872C247.922 262.064 247.319 262.16 246.647 262.16ZM244.391 257.008H248.439C248.364 256.677 248.226 256.389 248.023 256.144C247.831 255.888 247.596 255.691 247.319 255.552C247.052 255.403 246.754 255.328 246.423 255.328C246.082 255.328 245.772 255.397 245.495 255.536C245.218 255.675 244.983 255.872 244.791 256.128C244.61 256.373 244.476 256.667 244.391 257.008ZM255.66 262.128C254.732 262.128 254.028 261.92 253.548 261.504C253.078 261.077 252.844 260.459 252.844 259.648V255.488H251.132V253.664H252.844V251.536L255.036 251.04V253.664H257.42V255.488H255.036V259.2C255.036 259.584 255.121 259.861 255.292 260.032C255.462 260.192 255.761 260.272 256.188 260.272C256.401 260.272 256.593 260.261 256.764 260.24C256.945 260.208 257.142 260.155 257.356 260.08V261.888C257.132 261.963 256.849 262.021 256.508 262.064C256.177 262.107 255.894 262.128 255.66 262.128ZM264.828 262.16C264.06 262.16 263.35 262.064 262.7 261.872C262.049 261.669 261.484 261.381 261.004 261.008L262.092 259.552C262.572 259.872 263.03 260.112 263.468 260.272C263.916 260.432 264.358 260.512 264.796 260.512C265.286 260.512 265.676 260.432 265.964 260.272C266.262 260.101 266.412 259.883 266.412 259.616C266.412 259.403 266.326 259.232 266.156 259.104C265.996 258.976 265.734 258.885 265.372 258.832L263.772 258.592C262.94 258.464 262.31 258.197 261.884 257.792C261.457 257.376 261.244 256.832 261.244 256.16C261.244 255.616 261.382 255.152 261.66 254.768C261.948 254.373 262.348 254.069 262.86 253.856C263.382 253.632 264.001 253.52 264.716 253.52C265.324 253.52 265.916 253.605 266.492 253.776C267.078 253.947 267.628 254.208 268.14 254.56L267.084 255.984C266.625 255.696 266.188 255.488 265.772 255.36C265.356 255.232 264.934 255.168 264.508 255.168C264.113 255.168 263.793 255.243 263.548 255.392C263.313 255.541 263.196 255.739 263.196 255.984C263.196 256.208 263.281 256.384 263.452 256.512C263.622 256.64 263.916 256.731 264.332 256.784L265.916 257.024C266.748 257.141 267.382 257.408 267.82 257.824C268.257 258.229 268.476 258.757 268.476 259.408C268.476 259.941 268.316 260.416 267.996 260.832C267.676 261.237 267.244 261.563 266.7 261.808C266.156 262.043 265.532 262.16 264.828 262.16ZM273.363 262.128C272.435 262.128 271.731 261.92 271.251 261.504C270.782 261.077 270.547 260.459 270.547 259.648V255.488H268.835V253.664H270.547V251.536L272.739 251.04V253.664H275.123V255.488H272.739V259.2C272.739 259.584 272.824 259.861 272.995 260.032C273.166 260.192 273.464 260.272 273.891 260.272C274.104 260.272 274.296 260.261 274.467 260.24C274.648 260.208 274.846 260.155 275.059 260.08V261.888C274.835 261.963 274.552 262.021 274.211 262.064C273.88 262.107 273.598 262.128 273.363 262.128ZM278.848 262.144C278.251 262.144 277.723 262.037 277.264 261.824C276.805 261.6 276.448 261.296 276.192 260.912C275.936 260.528 275.808 260.085 275.808 259.584C275.808 258.784 276.107 258.165 276.704 257.728C277.312 257.28 278.144 257.056 279.2 257.056C279.925 257.056 280.608 257.168 281.248 257.392V256.784C281.248 256.304 281.099 255.941 280.8 255.696C280.501 255.451 280.064 255.328 279.488 255.328C279.136 255.328 278.757 255.387 278.352 255.504C277.947 255.611 277.477 255.781 276.944 256.016L276.144 254.4C276.805 254.101 277.435 253.877 278.032 253.728C278.64 253.579 279.248 253.504 279.856 253.504C280.976 253.504 281.845 253.776 282.464 254.32C283.093 254.853 283.408 255.611 283.408 256.592V262H281.248V261.408C280.907 261.664 280.539 261.851 280.144 261.968C279.749 262.085 279.317 262.144 278.848 262.144ZM277.888 259.536C277.888 259.856 278.027 260.112 278.304 260.304C278.581 260.485 278.949 260.576 279.408 260.576C279.771 260.576 280.107 260.533 280.416 260.448C280.725 260.352 281.003 260.213 281.248 260.032V258.816C280.981 258.709 280.704 258.629 280.416 258.576C280.128 258.523 279.819 258.496 279.488 258.496C278.987 258.496 278.592 258.592 278.304 258.784C278.027 258.965 277.888 259.216 277.888 259.536ZM285.067 262V253.664H287.259V254.592C287.526 254.229 287.846 253.952 288.219 253.76C288.592 253.568 289.014 253.472 289.483 253.472C289.888 253.483 290.192 253.547 290.395 253.664V255.584C290.235 255.509 290.059 255.456 289.867 255.424C289.675 255.381 289.478 255.36 289.275 255.36C288.848 255.36 288.459 255.467 288.107 255.68C287.755 255.893 287.472 256.197 287.259 256.592V262H285.067ZM295.55 262.128C294.622 262.128 293.918 261.92 293.438 261.504C292.969 261.077 292.734 260.459 292.734 259.648V255.488H291.022V253.664H292.734V251.536L294.926 251.04V253.664H297.31V255.488H294.926V259.2C294.926 259.584 295.012 259.861 295.182 260.032C295.353 260.192 295.652 260.272 296.078 260.272C296.292 260.272 296.484 260.261 296.654 260.24C296.836 260.208 297.033 260.155 297.246 260.08V261.888C297.022 261.963 296.74 262.021 296.398 262.064C296.068 262.107 295.785 262.128 295.55 262.128ZM302.366 262.16C301.534 262.16 300.777 261.968 300.094 261.584C299.422 261.2 298.889 260.683 298.494 260.032C298.099 259.381 297.902 258.651 297.902 257.84C297.902 257.029 298.089 256.299 298.462 255.648C298.846 254.997 299.363 254.48 300.014 254.096C300.665 253.712 301.39 253.52 302.19 253.52C302.99 253.52 303.699 253.717 304.318 254.112C304.937 254.507 305.422 255.04 305.774 255.712C306.137 256.384 306.318 257.147 306.318 258V258.576H300.142C300.238 258.907 300.393 259.205 300.606 259.472C300.83 259.739 301.102 259.947 301.422 260.096C301.753 260.245 302.105 260.32 302.478 260.32C302.851 260.32 303.193 260.261 303.502 260.144C303.822 260.027 304.094 259.861 304.318 259.648L305.758 260.96C305.246 261.376 304.718 261.68 304.174 261.872C303.641 262.064 303.038 262.16 302.366 262.16ZM300.11 257.008H304.158C304.083 256.677 303.945 256.389 303.742 256.144C303.55 255.888 303.315 255.691 303.038 255.552C302.771 255.403 302.473 255.328 302.142 255.328C301.801 255.328 301.491 255.397 301.214 255.536C300.937 255.675 300.702 255.872 300.51 256.128C300.329 256.373 300.195 256.667 300.11 257.008ZM311.579 262.112C310.79 262.112 310.075 261.92 309.435 261.536C308.795 261.152 308.283 260.64 307.899 260C307.526 259.349 307.339 258.624 307.339 257.824C307.339 257.024 307.526 256.304 307.899 255.664C308.283 255.013 308.801 254.501 309.451 254.128C310.102 253.744 310.833 253.552 311.643 253.552C312.059 253.552 312.459 253.611 312.843 253.728C313.227 253.835 313.585 253.995 313.915 254.208V250.8L316.107 250.432V262H313.947V261.312C313.265 261.845 312.475 262.112 311.579 262.112ZM311.931 260.24C312.337 260.24 312.705 260.176 313.035 260.048C313.377 259.909 313.67 259.707 313.915 259.44V256.192C313.67 255.947 313.377 255.755 313.035 255.616C312.694 255.477 312.326 255.408 311.931 255.408C311.473 255.408 311.057 255.515 310.683 255.728C310.321 255.931 310.033 256.219 309.819 256.592C309.606 256.955 309.499 257.365 309.499 257.824C309.499 258.283 309.606 258.693 309.819 259.056C310.033 259.419 310.321 259.707 310.683 259.92C311.057 260.133 311.473 260.24 311.931 260.24Z" fill="white"/>
+        <path d="M0 3C0 1.34314 1.34315 0 3 0H543C544.657 0 546 1.34315 546 3V164H0V3Z" fill="#F2F2F2"/>
+        <rect x="231" y="64" width="84" height="36" rx="3" fill="#0066CC"/>
+        <path d="M252.04 88.176C251.165 88.176 250.355 88.0213 249.608 87.712C248.861 87.392 248.141 86.912 247.448 86.272L248.2 85.376C248.872 86.0053 249.501 86.4533 250.088 86.72C250.685 86.9867 251.347 87.12 252.072 87.12C252.648 87.12 253.16 87.024 253.608 86.832C254.067 86.6293 254.424 86.3573 254.68 86.016C254.936 85.6747 255.064 85.2853 255.064 84.848C255.064 84.2827 254.877 83.856 254.504 83.568C254.131 83.2693 253.485 83.04 252.568 82.88L250.76 82.576C249.736 82.3947 248.984 82.0853 248.504 81.648C248.035 81.2 247.8 80.6027 247.8 79.856C247.8 79.2267 247.96 78.672 248.28 78.192C248.611 77.7013 249.064 77.3173 249.64 77.04C250.216 76.7627 250.883 76.624 251.64 76.624C252.472 76.624 253.245 76.7413 253.96 76.976C254.675 77.2 255.379 77.5573 256.072 78.048L255.432 79.008C254.856 78.5707 254.248 78.24 253.608 78.016C252.968 77.7813 252.317 77.664 251.656 77.664C251.133 77.664 250.669 77.7547 250.264 77.936C249.869 78.1173 249.555 78.3627 249.32 78.672C249.096 78.9813 248.984 79.3333 248.984 79.728C248.984 80.2187 249.149 80.6027 249.48 80.88C249.811 81.1573 250.349 81.3547 251.096 81.472L252.888 81.776C254.083 81.9893 254.947 82.336 255.48 82.816C256.024 83.2853 256.296 83.9413 256.296 84.784C256.296 85.4347 256.109 86.016 255.736 86.528C255.373 87.04 254.872 87.4453 254.232 87.744C253.592 88.032 252.861 88.176 252.04 88.176ZM260.953 88.128C260.398 88.128 259.907 88.0053 259.481 87.76C259.054 87.5147 258.718 87.1733 258.473 86.736C258.238 86.2987 258.121 85.7973 258.121 85.232V80.192H259.305V84.896C259.305 85.5893 259.491 86.1387 259.865 86.544C260.238 86.9493 260.745 87.152 261.385 87.152C261.822 87.152 262.211 87.0507 262.553 86.848C262.905 86.6453 263.198 86.352 263.433 85.968V80.192H264.601V88H263.433V86.736C263.134 87.1947 262.777 87.5413 262.361 87.776C261.955 88.0107 261.486 88.128 260.953 88.128ZM266.997 88V76.56L268.165 76.32V81.264C268.464 80.8907 268.826 80.6027 269.253 80.4C269.68 80.1973 270.154 80.096 270.677 80.096C271.36 80.096 271.968 80.2773 272.501 80.64C273.045 80.992 273.477 81.472 273.797 82.08C274.117 82.6773 274.277 83.3493 274.277 84.096C274.277 84.8427 274.112 85.52 273.781 86.128C273.461 86.736 273.024 87.2213 272.469 87.584C271.925 87.936 271.306 88.112 270.613 88.112C270.122 88.112 269.664 88.016 269.237 87.824C268.821 87.6213 268.458 87.3387 268.149 86.976V88H266.997ZM270.389 87.104C270.912 87.104 271.376 86.976 271.781 86.72C272.197 86.4533 272.522 86.096 272.757 85.648C273.002 85.1893 273.125 84.6773 273.125 84.112C273.125 83.536 273.002 83.024 272.757 82.576C272.522 82.128 272.197 81.776 271.781 81.52C271.376 81.2533 270.912 81.12 270.389 81.12C269.93 81.12 269.504 81.216 269.109 81.408C268.725 81.5893 268.41 81.8507 268.165 82.192V86.016C268.421 86.3573 268.741 86.624 269.125 86.816C269.52 87.008 269.941 87.104 270.389 87.104ZM276.325 88V80.192H277.493V81.408C277.792 80.96 278.133 80.624 278.517 80.4C278.901 80.176 279.333 80.064 279.813 80.064C280.368 80.064 280.853 80.2027 281.269 80.48C281.685 80.7467 282 81.1147 282.213 81.584C282.522 81.0827 282.89 80.704 283.317 80.448C283.754 80.192 284.256 80.064 284.821 80.064C285.344 80.064 285.802 80.1867 286.197 80.432C286.602 80.6773 286.917 81.0187 287.141 81.456C287.365 81.8827 287.477 82.384 287.477 82.96V88H286.309V83.248C286.309 82.5653 286.138 82.0267 285.797 81.632C285.456 81.2373 284.986 81.04 284.389 81.04C283.984 81.04 283.616 81.1413 283.285 81.344C282.965 81.5467 282.682 81.856 282.437 82.272C282.458 82.3787 282.474 82.4907 282.485 82.608C282.496 82.7253 282.501 82.8427 282.501 82.96V88H281.333V83.248C281.333 82.5653 281.157 82.0267 280.805 81.632C280.464 81.2373 279.994 81.04 279.397 81.04C278.597 81.04 277.962 81.424 277.493 82.192V88H276.325ZM289.825 88V80.192H290.993V88H289.825ZM290.417 78.256C290.182 78.256 289.979 78.176 289.809 78.016C289.649 77.8453 289.569 77.648 289.569 77.424C289.569 77.2 289.649 77.008 289.809 76.848C289.979 76.6773 290.182 76.592 290.417 76.592C290.651 76.592 290.849 76.6773 291.009 76.848C291.179 77.008 291.265 77.2 291.265 77.424C291.265 77.648 291.179 77.8453 291.009 78.016C290.849 78.176 290.651 78.256 290.417 78.256ZM296.364 88.16C295.692 88.16 295.18 88 294.828 87.68C294.486 87.3493 294.316 86.8747 294.316 86.256V81.152H292.7V80.192H294.316V78.048L295.484 77.776V80.192H297.724V81.152H295.484V85.952C295.484 86.368 295.569 86.6667 295.74 86.848C295.921 87.0293 296.214 87.12 296.62 87.12C296.822 87.12 297.004 87.104 297.164 87.072C297.324 87.04 297.51 86.9867 297.724 86.912V87.952C297.51 88.0267 297.286 88.08 297.052 88.112C296.817 88.144 296.588 88.16 296.364 88.16Z" fill="white"/>
+      </svg>
     </uxdot-example>
-    <p>Use a surface color token for background to ensure accessibility, or use a <a href="../accessibility/#tools">tool</a> to check proper contrast.</p>
+    <p>Place foreground elements on background colors with enough contrast.</p>
   </uxdot-best-practice>
   <uxdot-best-practice variant="dont">
     <uxdot-example slot="image" no-border variant="full" alignment="left">
-      <img alt="Examples of a blue button against a red background and a red CTA against a blue background"
-           src="/assets/color/best-practices-sufficient-contrast-wrong.svg"
-           width="500"
-           height="284">
+      <svg viewBox="0 0 546 348" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <title>Examples of a blue button against a red background and a red CTA against a blue background</title>
+        <path d="M0 164H546V345C546 346.657 544.657 348 543 348H2.99998C1.34313 348 0 346.657 0 345V164Z" fill="#0066CC"/>
+        <rect x="197" y="228" width="152" height="56" rx="3" fill="#EE0000"/>
+        <path d="M235.512 262.176C234.68 262.176 233.907 262.032 233.192 261.744C232.477 261.445 231.848 261.035 231.304 260.512C230.76 259.979 230.333 259.365 230.024 258.672C229.725 257.968 229.576 257.211 229.576 256.4C229.576 255.589 229.725 254.837 230.024 254.144C230.333 253.44 230.755 252.827 231.288 252.304C231.821 251.771 232.445 251.36 233.16 251.072C233.885 250.773 234.659 250.624 235.48 250.624C236.408 250.624 237.283 250.811 238.104 251.184C238.925 251.547 239.603 252.059 240.136 252.72L238.52 254.208C238.136 253.728 237.683 253.365 237.16 253.12C236.637 252.875 236.077 252.752 235.48 252.752C234.979 252.752 234.515 252.848 234.088 253.04C233.661 253.221 233.288 253.477 232.968 253.808C232.648 254.128 232.397 254.512 232.216 254.96C232.045 255.397 231.96 255.877 231.96 256.4C231.96 256.923 232.051 257.408 232.232 257.856C232.413 258.304 232.664 258.693 232.984 259.024C233.315 259.344 233.693 259.6 234.12 259.792C234.557 259.973 235.032 260.064 235.544 260.064C236.077 260.064 236.557 259.968 236.984 259.776C237.411 259.573 237.768 259.296 238.056 258.944C238.355 258.581 238.552 258.176 238.648 257.728H235.336V255.712H241.128V256.416C241.128 257.248 240.984 258.016 240.696 258.72C240.419 259.413 240.029 260.021 239.528 260.544C239.027 261.056 238.435 261.456 237.752 261.744C237.069 262.032 236.323 262.176 235.512 262.176ZM246.647 262.16C245.815 262.16 245.058 261.968 244.375 261.584C243.703 261.2 243.17 260.683 242.775 260.032C242.38 259.381 242.183 258.651 242.183 257.84C242.183 257.029 242.37 256.299 242.743 255.648C243.127 254.997 243.644 254.48 244.295 254.096C244.946 253.712 245.671 253.52 246.471 253.52C247.271 253.52 247.98 253.717 248.599 254.112C249.218 254.507 249.703 255.04 250.055 255.712C250.418 256.384 250.599 257.147 250.599 258V258.576H244.423C244.519 258.907 244.674 259.205 244.887 259.472C245.111 259.739 245.383 259.947 245.703 260.096C246.034 260.245 246.386 260.32 246.759 260.32C247.132 260.32 247.474 260.261 247.783 260.144C248.103 260.027 248.375 259.861 248.599 259.648L250.039 260.96C249.527 261.376 248.999 261.68 248.455 261.872C247.922 262.064 247.319 262.16 246.647 262.16ZM244.391 257.008H248.439C248.364 256.677 248.226 256.389 248.023 256.144C247.831 255.888 247.596 255.691 247.319 255.552C247.052 255.403 246.754 255.328 246.423 255.328C246.082 255.328 245.772 255.397 245.495 255.536C245.218 255.675 244.983 255.872 244.791 256.128C244.61 256.373 244.476 256.667 244.391 257.008ZM255.66 262.128C254.732 262.128 254.028 261.92 253.548 261.504C253.078 261.077 252.844 260.459 252.844 259.648V255.488H251.132V253.664H252.844V251.536L255.036 251.04V253.664H257.42V255.488H255.036V259.2C255.036 259.584 255.121 259.861 255.292 260.032C255.462 260.192 255.761 260.272 256.188 260.272C256.401 260.272 256.593 260.261 256.764 260.24C256.945 260.208 257.142 260.155 257.356 260.08V261.888C257.132 261.963 256.849 262.021 256.508 262.064C256.177 262.107 255.894 262.128 255.66 262.128ZM264.828 262.16C264.06 262.16 263.35 262.064 262.7 261.872C262.049 261.669 261.484 261.381 261.004 261.008L262.092 259.552C262.572 259.872 263.03 260.112 263.468 260.272C263.916 260.432 264.358 260.512 264.796 260.512C265.286 260.512 265.676 260.432 265.964 260.272C266.262 260.101 266.412 259.883 266.412 259.616C266.412 259.403 266.326 259.232 266.156 259.104C265.996 258.976 265.734 258.885 265.372 258.832L263.772 258.592C262.94 258.464 262.31 258.197 261.884 257.792C261.457 257.376 261.244 256.832 261.244 256.16C261.244 255.616 261.382 255.152 261.66 254.768C261.948 254.373 262.348 254.069 262.86 253.856C263.382 253.632 264.001 253.52 264.716 253.52C265.324 253.52 265.916 253.605 266.492 253.776C267.078 253.947 267.628 254.208 268.14 254.56L267.084 255.984C266.625 255.696 266.188 255.488 265.772 255.36C265.356 255.232 264.934 255.168 264.508 255.168C264.113 255.168 263.793 255.243 263.548 255.392C263.313 255.541 263.196 255.739 263.196 255.984C263.196 256.208 263.281 256.384 263.452 256.512C263.622 256.64 263.916 256.731 264.332 256.784L265.916 257.024C266.748 257.141 267.382 257.408 267.82 257.824C268.257 258.229 268.476 258.757 268.476 259.408C268.476 259.941 268.316 260.416 267.996 260.832C267.676 261.237 267.244 261.563 266.7 261.808C266.156 262.043 265.532 262.16 264.828 262.16ZM273.363 262.128C272.435 262.128 271.731 261.92 271.251 261.504C270.782 261.077 270.547 260.459 270.547 259.648V255.488H268.835V253.664H270.547V251.536L272.739 251.04V253.664H275.123V255.488H272.739V259.2C272.739 259.584 272.824 259.861 272.995 260.032C273.166 260.192 273.464 260.272 273.891 260.272C274.104 260.272 274.296 260.261 274.467 260.24C274.648 260.208 274.846 260.155 275.059 260.08V261.888C274.835 261.963 274.552 262.021 274.211 262.064C273.88 262.107 273.598 262.128 273.363 262.128ZM278.848 262.144C278.251 262.144 277.723 262.037 277.264 261.824C276.805 261.6 276.448 261.296 276.192 260.912C275.936 260.528 275.808 260.085 275.808 259.584C275.808 258.784 276.107 258.165 276.704 257.728C277.312 257.28 278.144 257.056 279.2 257.056C279.925 257.056 280.608 257.168 281.248 257.392V256.784C281.248 256.304 281.099 255.941 280.8 255.696C280.501 255.451 280.064 255.328 279.488 255.328C279.136 255.328 278.757 255.387 278.352 255.504C277.947 255.611 277.477 255.781 276.944 256.016L276.144 254.4C276.805 254.101 277.435 253.877 278.032 253.728C278.64 253.579 279.248 253.504 279.856 253.504C280.976 253.504 281.845 253.776 282.464 254.32C283.093 254.853 283.408 255.611 283.408 256.592V262H281.248V261.408C280.907 261.664 280.539 261.851 280.144 261.968C279.749 262.085 279.317 262.144 278.848 262.144ZM277.888 259.536C277.888 259.856 278.027 260.112 278.304 260.304C278.581 260.485 278.949 260.576 279.408 260.576C279.771 260.576 280.107 260.533 280.416 260.448C280.725 260.352 281.003 260.213 281.248 260.032V258.816C280.981 258.709 280.704 258.629 280.416 258.576C280.128 258.523 279.819 258.496 279.488 258.496C278.987 258.496 278.592 258.592 278.304 258.784C278.027 258.965 277.888 259.216 277.888 259.536ZM285.067 262V253.664H287.259V254.592C287.526 254.229 287.846 253.952 288.219 253.76C288.592 253.568 289.014 253.472 289.483 253.472C289.888 253.483 290.192 253.547 290.395 253.664V255.584C290.235 255.509 290.059 255.456 289.867 255.424C289.675 255.381 289.478 255.36 289.275 255.36C288.848 255.36 288.459 255.467 288.107 255.68C287.755 255.893 287.472 256.197 287.259 256.592V262H285.067ZM295.55 262.128C294.622 262.128 293.918 261.92 293.438 261.504C292.969 261.077 292.734 260.459 292.734 259.648V255.488H291.022V253.664H292.734V251.536L294.926 251.04V253.664H297.31V255.488H294.926V259.2C294.926 259.584 295.012 259.861 295.182 260.032C295.353 260.192 295.652 260.272 296.078 260.272C296.292 260.272 296.484 260.261 296.654 260.24C296.836 260.208 297.033 260.155 297.246 260.08V261.888C297.022 261.963 296.74 262.021 296.398 262.064C296.068 262.107 295.785 262.128 295.55 262.128ZM302.366 262.16C301.534 262.16 300.777 261.968 300.094 261.584C299.422 261.2 298.889 260.683 298.494 260.032C298.099 259.381 297.902 258.651 297.902 257.84C297.902 257.029 298.089 256.299 298.462 255.648C298.846 254.997 299.363 254.48 300.014 254.096C300.665 253.712 301.39 253.52 302.19 253.52C302.99 253.52 303.699 253.717 304.318 254.112C304.937 254.507 305.422 255.04 305.774 255.712C306.137 256.384 306.318 257.147 306.318 258V258.576H300.142C300.238 258.907 300.393 259.205 300.606 259.472C300.83 259.739 301.102 259.947 301.422 260.096C301.753 260.245 302.105 260.32 302.478 260.32C302.851 260.32 303.193 260.261 303.502 260.144C303.822 260.027 304.094 259.861 304.318 259.648L305.758 260.96C305.246 261.376 304.718 261.68 304.174 261.872C303.641 262.064 303.038 262.16 302.366 262.16ZM300.11 257.008H304.158C304.083 256.677 303.945 256.389 303.742 256.144C303.55 255.888 303.315 255.691 303.038 255.552C302.771 255.403 302.473 255.328 302.142 255.328C301.801 255.328 301.491 255.397 301.214 255.536C300.937 255.675 300.702 255.872 300.51 256.128C300.329 256.373 300.195 256.667 300.11 257.008ZM311.579 262.112C310.79 262.112 310.075 261.92 309.435 261.536C308.795 261.152 308.283 260.64 307.899 260C307.526 259.349 307.339 258.624 307.339 257.824C307.339 257.024 307.526 256.304 307.899 255.664C308.283 255.013 308.801 254.501 309.451 254.128C310.102 253.744 310.833 253.552 311.643 253.552C312.059 253.552 312.459 253.611 312.843 253.728C313.227 253.835 313.585 253.995 313.915 254.208V250.8L316.107 250.432V262H313.947V261.312C313.265 261.845 312.475 262.112 311.579 262.112ZM311.931 260.24C312.337 260.24 312.705 260.176 313.035 260.048C313.377 259.909 313.67 259.707 313.915 259.44V256.192C313.67 255.947 313.377 255.755 313.035 255.616C312.694 255.477 312.326 255.408 311.931 255.408C311.473 255.408 311.057 255.515 310.683 255.728C310.321 255.931 310.033 256.219 309.819 256.592C309.606 256.955 309.499 257.365 309.499 257.824C309.499 258.283 309.606 258.693 309.819 259.056C310.033 259.419 310.321 259.707 310.683 259.92C311.057 260.133 311.473 260.24 311.931 260.24Z" fill="white"/>
+        <path d="M0 3C0 1.34314 1.34315 0 3 0H543C544.657 0 546 1.34315 546 3V164H0V3Z" fill="#A60000"/>
+        <rect x="231" y="64" width="84" height="36" rx="3" fill="#0066CC"/>
+        <path d="M252.04 88.176C251.165 88.176 250.355 88.0213 249.608 87.712C248.861 87.392 248.141 86.912 247.448 86.272L248.2 85.376C248.872 86.0053 249.501 86.4533 250.088 86.72C250.685 86.9867 251.347 87.12 252.072 87.12C252.648 87.12 253.16 87.024 253.608 86.832C254.067 86.6293 254.424 86.3573 254.68 86.016C254.936 85.6747 255.064 85.2853 255.064 84.848C255.064 84.2827 254.877 83.856 254.504 83.568C254.131 83.2693 253.485 83.04 252.568 82.88L250.76 82.576C249.736 82.3947 248.984 82.0853 248.504 81.648C248.035 81.2 247.8 80.6027 247.8 79.856C247.8 79.2267 247.96 78.672 248.28 78.192C248.611 77.7013 249.064 77.3173 249.64 77.04C250.216 76.7627 250.883 76.624 251.64 76.624C252.472 76.624 253.245 76.7413 253.96 76.976C254.675 77.2 255.379 77.5573 256.072 78.048L255.432 79.008C254.856 78.5707 254.248 78.24 253.608 78.016C252.968 77.7813 252.317 77.664 251.656 77.664C251.133 77.664 250.669 77.7547 250.264 77.936C249.869 78.1173 249.555 78.3627 249.32 78.672C249.096 78.9813 248.984 79.3333 248.984 79.728C248.984 80.2187 249.149 80.6027 249.48 80.88C249.811 81.1573 250.349 81.3547 251.096 81.472L252.888 81.776C254.083 81.9893 254.947 82.336 255.48 82.816C256.024 83.2853 256.296 83.9413 256.296 84.784C256.296 85.4347 256.109 86.016 255.736 86.528C255.373 87.04 254.872 87.4453 254.232 87.744C253.592 88.032 252.861 88.176 252.04 88.176ZM260.953 88.128C260.398 88.128 259.907 88.0053 259.481 87.76C259.054 87.5147 258.718 87.1733 258.473 86.736C258.238 86.2987 258.121 85.7973 258.121 85.232V80.192H259.305V84.896C259.305 85.5893 259.491 86.1387 259.865 86.544C260.238 86.9493 260.745 87.152 261.385 87.152C261.822 87.152 262.211 87.0507 262.553 86.848C262.905 86.6453 263.198 86.352 263.433 85.968V80.192H264.601V88H263.433V86.736C263.134 87.1947 262.777 87.5413 262.361 87.776C261.955 88.0107 261.486 88.128 260.953 88.128ZM266.997 88V76.56L268.165 76.32V81.264C268.464 80.8907 268.826 80.6027 269.253 80.4C269.68 80.1973 270.154 80.096 270.677 80.096C271.36 80.096 271.968 80.2773 272.501 80.64C273.045 80.992 273.477 81.472 273.797 82.08C274.117 82.6773 274.277 83.3493 274.277 84.096C274.277 84.8427 274.112 85.52 273.781 86.128C273.461 86.736 273.024 87.2213 272.469 87.584C271.925 87.936 271.306 88.112 270.613 88.112C270.122 88.112 269.664 88.016 269.237 87.824C268.821 87.6213 268.458 87.3387 268.149 86.976V88H266.997ZM270.389 87.104C270.912 87.104 271.376 86.976 271.781 86.72C272.197 86.4533 272.522 86.096 272.757 85.648C273.002 85.1893 273.125 84.6773 273.125 84.112C273.125 83.536 273.002 83.024 272.757 82.576C272.522 82.128 272.197 81.776 271.781 81.52C271.376 81.2533 270.912 81.12 270.389 81.12C269.93 81.12 269.504 81.216 269.109 81.408C268.725 81.5893 268.41 81.8507 268.165 82.192V86.016C268.421 86.3573 268.741 86.624 269.125 86.816C269.52 87.008 269.941 87.104 270.389 87.104ZM276.325 88V80.192H277.493V81.408C277.792 80.96 278.133 80.624 278.517 80.4C278.901 80.176 279.333 80.064 279.813 80.064C280.368 80.064 280.853 80.2027 281.269 80.48C281.685 80.7467 282 81.1147 282.213 81.584C282.522 81.0827 282.89 80.704 283.317 80.448C283.754 80.192 284.256 80.064 284.821 80.064C285.344 80.064 285.802 80.1867 286.197 80.432C286.602 80.6773 286.917 81.0187 287.141 81.456C287.365 81.8827 287.477 82.384 287.477 82.96V88H286.309V83.248C286.309 82.5653 286.138 82.0267 285.797 81.632C285.456 81.2373 284.986 81.04 284.389 81.04C283.984 81.04 283.616 81.1413 283.285 81.344C282.965 81.5467 282.682 81.856 282.437 82.272C282.458 82.3787 282.474 82.4907 282.485 82.608C282.496 82.7253 282.501 82.8427 282.501 82.96V88H281.333V83.248C281.333 82.5653 281.157 82.0267 280.805 81.632C280.464 81.2373 279.994 81.04 279.397 81.04C278.597 81.04 277.962 81.424 277.493 82.192V88H276.325ZM289.825 88V80.192H290.993V88H289.825ZM290.417 78.256C290.182 78.256 289.979 78.176 289.809 78.016C289.649 77.8453 289.569 77.648 289.569 77.424C289.569 77.2 289.649 77.008 289.809 76.848C289.979 76.6773 290.182 76.592 290.417 76.592C290.651 76.592 290.849 76.6773 291.009 76.848C291.179 77.008 291.265 77.2 291.265 77.424C291.265 77.648 291.179 77.8453 291.009 78.016C290.849 78.176 290.651 78.256 290.417 78.256ZM296.364 88.16C295.692 88.16 295.18 88 294.828 87.68C294.486 87.3493 294.316 86.8747 294.316 86.256V81.152H292.7V80.192H294.316V78.048L295.484 77.776V80.192H297.724V81.152H295.484V85.952C295.484 86.368 295.569 86.6667 295.74 86.848C295.921 87.0293 296.214 87.12 296.62 87.12C296.822 87.12 297.004 87.104 297.164 87.072C297.324 87.04 297.51 86.9867 297.724 86.912V87.952C297.51 88.0267 297.286 88.08 297.052 88.112C296.817 88.144 296.588 88.16 296.364 88.16Z" fill="white"/>
+      </svg>
     </uxdot-example>
-    <p>Do not use a background color that has a similar hue, saturation, or lightness to foreground elements.</p>
+    <p>Do not place foreground elements on background colors with insufficient contrast.</p>
   </uxdot-best-practice>
 </div>
-
-## Resources
-
-- [Brand standards][brandstandards]
-- [WCAG 2.1][wcag21]
-- [WebAIM: Contrast and Color Accessibility][aimcc]
 
 <uxdot-feedback>
   <h2>Foundations</h2>
@@ -304,3 +372,6 @@ using elements and patterns from the desaturated theme instead.
 [tokens]: /tokens
 [wcag21]: https://www.w3.org/WAI/WCAG21/Understanding/
 [aimcc]: https://webaim.org/articles/contrast/
+[theming]: /theming/
+[iconography]: /foundations/iconography/
+[rhicon]: /elements/icon/
