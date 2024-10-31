@@ -1,26 +1,13 @@
-<style data-helmet>
-  .card-grid {
-    margin-block-end: var(--rh-space-4xl, 64px);
-  }
+<link rel="stylesheet"
+      href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css"
+      data-helmet>
 
-  .card-grid rh-card {
-    height: auto;
+<script type="module" data-helmet>
+  import '@rhds/elements/rh-tile/rh-tile.js';
+</script>
 
-  .card-grid rh-card h4 {
-    margin-block: 0;
-  }
-
-  .card-grid rh-card::part(body) {
-    margin-block: 0;
-  }
-
-  .card-grid rh-card::part(footer) {
-    display: none;
-  }
-</style>
 
 ## Usage
-
 
 Cards are used to display basic content or long paragraphs of text. Secondary and
 Default calls to action may be used.
@@ -37,120 +24,87 @@ see the [card patterns page](/patterns/card).
 
 There are several card patterns that can be used for a variety of use cases. To learn more, visit the <a href="/patterns/card/">Card patterns page</a>.
 
-<div class="card-grid grid xs-two-columns md-three-columns">
-  <rh-card>
-    <h4 slot="header">Basic</h4>
-    <p>
-      Use to display basic content or long paragraphs of text. Secondary and 
-      Default calls to action may be used.
-    </p>
-  </rh-card>
+<nav class="grid xs-two-columns sm-three-columns" aria-label="card patterns">
 
-  <rh-card>
-    <h4 slot="header">List</h4>
-    <p>
-      Use to display a short amount of content using various list styles. 
-      Secondary and Default calls to action may be used.
-    </p>
-  </rh-card>
-
-  <rh-card>
-    <h4 slot="header">Data</h4>
-    <p>
-      Use to display quick facts or short data points under a label. A Secondary 
-      call to action may be used or not.
-    </p>
-  </rh-card>
-
-  <rh-card>
-    <h4 slot="header">Logo</h4>
-    <p>
-      Use to display a customer logo in a variety of arrangements. A call to 
-      action is required, otherwise use a logo wall.
-    </p>
-  </rh-card>
-
-  <rh-card>
-    <h4 slot="header">Bar</h4>
-    <p>
-      Use to add a small icon and a label group to the header section. A larger 
-      icon or a logo may be used.
-    </p>
-  </rh-card>
-
-  <rh-card>
-    <h4 slot="header">Icon</h4>
-    <p>
-      Use to add an icon to the basic style above the text. Secondary and Default 
-      calls to action may be used.
-    </p>
-  </rh-card>
-
-  <rh-card>
-    <h4 slot="header">Image</h4>
-    <p>
-      Use to add an image to the basic style above the text. Secondary and Default 
-      calls to action may be used.
-    </p>
-  </rh-card>
-
-  <rh-card>
-    <h4 slot="header">Asset</h4>
+  <rh-tile>
+    <h4 slot="headline"><a href="/patterns/card/examples/#asset-cards">Asset</a></h4>
     <p>
       Use to display that an asset can be downloaded. An icon and label group or 
       text may be used to describe the asset.
     </p>
-  </rh-card>
+  </rh-tile>
 
-  <rh-card>
-    <h4 slot="header">Quote</h4>
-    <p>
-      Use to display a short quote with attribution text. Logos, images, and a 
-      Secondary call to action may be used or not.
-    </p>
-  </rh-card>
-
-  <rh-card>
-    <h4 slot="header">Avatars</h4>
+  <rh-tile>
+    <h4 slot="headline"><a href="/patterns/card/examples/#avatars-card">Avatars</a></h4>
     <p>
       Use to highlight a group of people who engage in an event. A label should be 
       included, but including text is optional.
     </p>
-  </rh-card>
+  </rh-tile>
 
-  <rh-card>
-    <h4 slot="header">Video</h4>
+  <rh-tile>
+    <h4 slot="headline"><a href="/elements/card/demos/#demo-card">Basic</a></h4>
     <p>
-      Use to trigger a video that will play in a [Modal dialog]({{ 
-      '/elements/dialog' }}). Different layout configurations may be used.
+      Use to display basic content or long paragraphs of text. Secondary and 
+      Default calls to action may be used.
     </p>
-  </rh-card>
+  </rh-tile>
 
-  <rh-card>
-    <h4 slot="header">Pricing</h4>
+  <rh-tile>
+    <h4 slot="headline"><a href="/patterns/card/examples/#icon-card">Icon</a></h4>
     <p>
-      Use to outline the pricing and benefits of something. Elements may be 
-      removed or rearranged depending on content needs.
+      Use to add an icon to the basic style above the text. Secondary and Default 
+      calls to action may be used.
     </p>
-  </rh-card>
+  </rh-tile>
 
-  <rh-card>
-    <h4 slot="header">Logo slider</h4>
+  <rh-tile>
+    <h4 slot="headline"><a href="/patterns/card/examples/#image-card">Image</a></h4>
     <p>
-      Use to display more content about a company when expanded on hover or tap. A 
-      title and text should be included.
+      Use to add an image to the basic style above the text. Secondary and Default 
+      calls to action may be used.
     </p>
-  </rh-card>
+  </rh-tile>
 
-  <rh-card>
-    <h4 slot="header">Name slider</h4>
+  <rh-tile>
+    <h4 slot="headline"><a href="/patterns/card/examples/#list-cards">List</a></h4>
     <p>
-      Use to display more content about a person when the tray expands. A title 
-      and text should be included.
+      Use to display a short amount of content using various list styles. 
+      Secondary and Default calls to action may be used.
     </p>
-  </rh-card>
+  </rh-tile>
 
-</div>
+  <rh-tile>
+    <h4 slot="headline"><a href="/patterns/card/examples/#logo-cards">Logo</a></h4>
+    <p>
+      Use to display a customer logo in a variety of arrangements. A call to 
+      action is required, otherwise use a logo wall.
+    </p>
+  </rh-tile>
+
+  <rh-tile>
+    <h4 slot="headline"><a href="/patterns/card/examples/#quote-cards">Quote</a></h4>
+    <p>
+      Use to display a short quote with attribution text. Logos, images, and a 
+      Secondary call to action may be used or not.
+    </p>
+  </rh-tile>
+
+  <rh-tile>
+    <h4 slot="headline"><a href="/patterns/card/examples/#title-bar-card">Title bar</a></h4>
+    <p>
+      Use to add a small icon and a label group to the header section. A larger 
+      icon or a logo may be used.
+    </p>
+  </rh-tile>
+
+  <rh-tile>
+    <h4 slot="headline"><a href="/elements/video-embed/demos/#demo-card-with-video">Video</a></h4>
+    <p>
+      Use to display a video in a card.
+    </p>
+  </rh-tile>
+</nav>
 
 ### Content cards
 
