@@ -70,7 +70,7 @@ details[open] summary:before {
 }
 
 #details-content {
-  background-color: var(--rh-color-surface);
+  background-color: var(--rh-color-surface-lightest, #ffffff);
   box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
   color: var(--rh-color-text-primary);
   inset-block-start: 41px;
