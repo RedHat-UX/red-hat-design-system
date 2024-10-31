@@ -231,14 +231,14 @@ Ensure backgrounds have adequate contrast when other elements are placed on top.
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
     <uxdot-example slot="image" alignment="left" variant="full" no-border width-adjustment="546px">
-        <img src="/assets/color/best-practices-sufficient-contrast-correct.svg" 
+        <img src="/assets/color/color-usage-best-practice-2-do.svg" 
             alt="Examples of a blue button against a light gray background and a red CTA against a black background">
     </uxdot-example>
     <p>Place foreground elements on background colors with enough contrast.</p>
   </uxdot-best-practice>
   <uxdot-best-practice variant="dont">
     <uxdot-example slot="image" alignment="left" variant="full" no-border width-adjustment="546px">
-        <img src="/assets/color//best-practices-sufficient-contrast-wrong.svg" 
+        <img src="/assets/color/color-usage-best-practice-2-dont.svg" 
             alt="Examples of a blue button against a red background and a red CTA against a blue background">
     </uxdot-example>
     <p>Do not place foreground elements on background colors with insufficient contrast.</p>
