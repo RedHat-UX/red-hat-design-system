@@ -28,7 +28,7 @@ export class RhNavigationUniversal extends LitElement {
   @property({ attribute: 'accessible-label' }) accessibleLabel = 'Universal Navigation';
 
   /**
-   * Sets the variant to bordered, pushes the navigation to the right, adds borders on hover
+   * Sets the variant to bordered, adds a top border on hover
    */
   @property({ reflect: true }) variant?: 'bordered';
 
