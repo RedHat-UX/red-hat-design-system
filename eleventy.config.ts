@@ -86,7 +86,7 @@ export default async function(eleventyConfig: UserConfig) {
   }
 
   eleventyConfig.addWatchTarget('docs/styles/');
-  eleventyConfig.addWatchTarget('docs/patterns/**/*.md');
+  eleventyConfig.addWatchTarget('docs/**/*.md');
 
   eleventyConfig.addGlobalData('isLocal', isLocal);
 
