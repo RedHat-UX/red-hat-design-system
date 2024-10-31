@@ -27,6 +27,13 @@ There are several card patterns that can be used for a variety of use cases. To 
 <nav class="grid xs-two-columns sm-three-columns" aria-label="card patterns">
 
   <rh-tile>
+    <h4 slot="headline"><a href="/patterns/card/examples/#accented-cards">Accented</a></h4>
+    <p>
+      Use to highlight a single card or set of cards in a group or row.
+    </p>
+  </rh-tile>
+
+  <rh-tile>
     <h4 slot="headline"><a href="/patterns/card/examples/#asset-cards">Asset</a></h4>
     <p>
       Use to display that an asset can be downloaded. An icon and label group or 
