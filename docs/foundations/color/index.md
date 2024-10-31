@@ -75,7 +75,7 @@ When colors are used together, they communicate brand, hierarchy, state, and mor
 
 Design tokens are how we communicate and translate our design decisions to code. Changes can be made at scale, so any elements or patterns using our tokens will always be current.
 
-### Crayon and Semantic colors
+To learn more, go to the [Tokens][tokens] section.
 
 ### Crayon and semantic tokens
 
@@ -120,3 +120,5 @@ Our design system includes two sets of tokens:
   <h2>Foundations</h2>
   <p>To learn how to use our other foundations in your designs, visit the <a href="/foundations">foundations</a> section.</p>
 </uxdot-feedback>
+
+[tokens]: /tokens

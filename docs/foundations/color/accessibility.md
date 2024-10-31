@@ -107,7 +107,7 @@ contrast, links in all states must be underlined. Links isolated within visually
 distinct sections (like navigation menus) or links with additional visual cues (like call to action arrows) are **exempt from this requirement**, although you can still add 
 underlines at your discretion.
 
-<uxdot-example width-adjustment=”100%” variant="full" alignment="left" no-border>
+<uxdot-example width-adjustment=”797px">
   <img alt="Contrast ratio of a blue link in a paragraph with black text"
        src="/assets/color/color-a11y-color-contrast-links.svg">
 </uxdot-example>
@@ -126,9 +126,9 @@ text must be at least 3:1.
 
 You can layer colors on light or dark backgrounds. However, layering colors on top of other colors will cause vibration. For more information about layering colors, follow [WCAG 2.1 AA][wcag21aa] requirements.
 
-<uxdot-example width-adjustment=”100%” variant="full" alignment="left" no-border>
+<uxdot-example width-adjustment=”1140px” variant="full" alignment="left" no-border>
   <img alt="Red call to action on a white background, blue button on a light gray background, and a light red-orange button on a black background"
-       src="/assets/color/color-a11y-contrast-layering.svg">
+       src="/assets/color/color-a11y-color-contrast-layering.svg">
 </uxdot-example>
 
 <uxdot-feedback>
