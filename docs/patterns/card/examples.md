@@ -24,7 +24,14 @@ subnav:
 <link rel="stylesheet" data-helmet href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
 <link rel="stylesheet" data-helmet href="/styles/samp.css">
 
+## Accented cards
+
+Use to highlight a single card or set of cards in a group or row.
+
+<uxdot-pattern src="./patterns/accented.html"></uxdot-pattern>
+
 ## Asset cards
+
 Use to display that an asset can be downloaded. An icon and label group or
 text may be used to describe the asset.
 
