@@ -1,4 +1,4 @@
-@layer masthead, sidenav, code-block, permalink, repo-status-list, footer;
+@layer masthead, sidenav, permalink, repo-status-list, footer, code-block;
 
 @import url('/assets/packages/@uxdot/elements/uxdot-masthead-lightdom.css') layer(masthead);
 @import url('/assets/packages/@uxdot/elements/uxdot-sidenav-lightdom.css') layer(sidenav);

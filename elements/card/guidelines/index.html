@@ -53,8 +53,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.4/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
@@ -133,26 +133,9 @@
         import '@rhds/elements/rh-tag/rh-tag.js';
       </script><script type="module">
         import '@rhds/elements/rh-card/rh-card.js';
-      </script><style>
-  .card-grid {
-    margin-block-end: var(--rh-space-4xl, 64px);
-  }
-
-  .card-grid rh-card {
-    height: auto;
-
-  .card-grid rh-card h4 {
-    margin-block: 0;
-  }
-
-  .card-grid rh-card::part(body) {
-    margin-block: 0;
-  }
-
-  .card-grid rh-card::part(footer) {
-    display: none;
-  }
-</style><script type="module">
+      </script><link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css"><script type="module">
+  import '@rhds/elements/rh-tile/rh-tile.js';
+</script><script type="module">
   import '@uxdot/elements/uxdot-feedback.js';
 </script><script type="module">
   import '@uxdot/elements/uxdot-header.js';
@@ -200,7 +183,7 @@
       </div>
     <!--/lit-part--></template></rh-icon>
   </a>
-  <a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v2.1.0" slot="links" title="Version 2.1.0" aria-label="Version 2.1.0">v2.1.0</a>
+  <a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v2.1.1" slot="links" title="Version 2.1.1" aria-label="Version 2.1.1">v2.1.1</a>
 </uxdot-masthead>
 
 <uxdot-sidenav  trigger="hamburger"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{--_padding-start:var(--uxdot-sidenav-padding-start,var(--rh-space-2xl));--_padding-end:var(--uxdot-sidenav-padding-end,var(--rh-space-2xl));--_max-height:100dvh;width:100%;height:var(--_max-height);top:0;z-index:var(--uxdot-sidenav-z-index,5)}:host([open]){display:block!important;position:fixed!important}:host(:not([open])){display:none}[part=close-button]{color:var(--rh-color-text-primary);background-color:initial;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}#container{position:relative;background-color:var(--rh-color-surface-lightest);overflow-y:scroll;width:auto;height:100dvh}#close-button-container{padding-inline:var(--rh-space-md);padding-block:var(--rh-space-lg);max-height:var(--uxdot-masthead-max-height,72px)}#close-button:focus{outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive);border-radius:var(--rh-border-radius-default,3px)}[part=nav]{padding-block:var(--rh-space-lg,16px)}[part=overlay]{--_gray-90-rgb:var(--rh-color-gray-90-rgb);display:none;background-color:rgb(var(--_gray-90-rgb)/var(--rh-opacity-60));position:fixed;top:0;height:100dvh;width:100dvw;z-index:-1}::slotted(ul){padding-inline:0;padding-block:var(--_padding-start) calc(var(--_padding-end) + var(--rh-font-size-body-text-lg)*1.5 + var(--rh-space-lg)*2);list-style:none;margin-block:0!important;height:var(--_max-height);overflow-y:scroll;background-color:var(--rh-color-surface-lightest)}:host([open]) [part=overlay]{display:block}@media (min-width:320px){:host{--uxdot-sidenav-width:320px;width:var(--uxdot-sidenav-width);box-shadow:var(--rh-box-shadow-lg)}#container{width:var(--uxdot-sidenav-width,320px)}}@media (min-width:576px){#close-button-container{padding:var(--rh-space-lg)}}@media (min-width:992px){:host{--uxdot-sidenav-z-index:1;position:fixed;top:var(--uxdot-masthead-max-height,72px);height:calc(var(--_max-height) - var(--uxdot-masthead-max-height, 72px));box-shadow:unset}:host(:not([open])){display:block}#close-button-container{display:none}:host([open]) [part=overlay]{display:none}}</style><!--lit-part F9UNgxNq0pA=-->
@@ -856,6 +839,7 @@
       
 
       
+
 <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
@@ -1165,105 +1149,83 @@ see the <a href="/patterns/card">card patterns page</a>.</p>
   </a></h3>
 </uxdot-copy-permalink>
 <p>There are several card patterns that can be used for a variety of use cases. To learn more, visit the <a href="/patterns/card/">Card patterns page</a>.</p>
-<div class="card-grid grid xs-two-columns md-three-columns">
-  <rh-card>
-    <h4 slot="header">Basic</h4>
+<nav class="grid xs-two-columns sm-three-columns" aria-label="card patterns">
+  <rh-tile>
+    <h4 slot="headline"><a href="/patterns/card/examples/#accented-cards">Accented</a></h4>
     <p>
-      Use to display basic content or long paragraphs of text. Secondary and 
-      Default calls to action may be used.
+      Use to highlight a single card or set of cards in a group or row.
     </p>
-  </rh-card>
-  <rh-card>
-    <h4 slot="header">List</h4>
-    <p>
-      Use to display a short amount of content using various list styles. 
-      Secondary and Default calls to action may be used.
-    </p>
-  </rh-card>
-  <rh-card>
-    <h4 slot="header">Data</h4>
-    <p>
-      Use to display quick facts or short data points under a label. A Secondary 
-      call to action may be used or not.
-    </p>
-  </rh-card>
-  <rh-card>
-    <h4 slot="header">Logo</h4>
-    <p>
-      Use to display a customer logo in a variety of arrangements. A call to 
-      action is required, otherwise use a logo wall.
-    </p>
-  </rh-card>
-  <rh-card>
-    <h4 slot="header">Bar</h4>
-    <p>
-      Use to add a small icon and a label group to the header section. A larger 
-      icon or a logo may be used.
-    </p>
-  </rh-card>
-  <rh-card>
-    <h4 slot="header">Icon</h4>
-    <p>
-      Use to add an icon to the basic style above the text. Secondary and Default 
-      calls to action may be used.
-    </p>
-  </rh-card>
-  <rh-card>
-    <h4 slot="header">Image</h4>
-    <p>
-      Use to add an image to the basic style above the text. Secondary and Default 
-      calls to action may be used.
-    </p>
-  </rh-card>
-  <rh-card>
-    <h4 slot="header">Asset</h4>
+  </rh-tile>
+  <rh-tile>
+    <h4 slot="headline"><a href="/patterns/card/examples/#asset-cards">Asset</a></h4>
     <p>
       Use to display that an asset can be downloaded. An icon and label group or 
       text may be used to describe the asset.
     </p>
-  </rh-card>
-  <rh-card>
-    <h4 slot="header">Quote</h4>
-    <p>
-      Use to display a short quote with attribution text. Logos, images, and a 
-      Secondary call to action may be used or not.
-    </p>
-  </rh-card>
-  <rh-card>
-    <h4 slot="header">Avatars</h4>
+  </rh-tile>
+  <rh-tile>
+    <h4 slot="headline"><a href="/patterns/card/examples/#avatars-card">Avatars</a></h4>
     <p>
       Use to highlight a group of people who engage in an event. A label should be 
       included, but including text is optional.
     </p>
-  </rh-card>
-  <rh-card>
-    <h4 slot="header">Video</h4>
+  </rh-tile>
+  <rh-tile>
+    <h4 slot="headline"><a href="/elements/card/demos/#demo-card">Basic</a></h4>
     <p>
-      Use to trigger a video that will play in a [Modal dialog](/elements/dialog). Different layout configurations may be used.
+      Use to display basic content or long paragraphs of text. Secondary and 
+      Default calls to action may be used.
     </p>
-  </rh-card>
-  <rh-card>
-    <h4 slot="header">Pricing</h4>
+  </rh-tile>
+  <rh-tile>
+    <h4 slot="headline"><a href="/patterns/card/examples/#icon-card">Icon</a></h4>
     <p>
-      Use to outline the pricing and benefits of something. Elements may be 
-      removed or rearranged depending on content needs.
+      Use to add an icon to the basic style above the text. Secondary and Default 
+      calls to action may be used.
     </p>
-  </rh-card>
-  <rh-card>
-    <h4 slot="header">Logo slider</h4>
+  </rh-tile>
+  <rh-tile>
+    <h4 slot="headline"><a href="/patterns/card/examples/#image-card">Image</a></h4>
     <p>
-      Use to display more content about a company when expanded on hover or tap. A 
-      title and text should be included.
+      Use to add an image to the basic style above the text. Secondary and Default 
+      calls to action may be used.
     </p>
-  </rh-card>
-  <rh-card>
-    <h4 slot="header">Name slider</h4>
+  </rh-tile>
+  <rh-tile>
+    <h4 slot="headline"><a href="/patterns/card/examples/#list-cards">List</a></h4>
     <p>
-      Use to display more content about a person when the tray expands. A title 
-      and text should be included.
+      Use to display a short amount of content using various list styles. 
+      Secondary and Default calls to action may be used.
     </p>
-  </rh-card>
-</div>
+  </rh-tile>
+  <rh-tile>
+    <h4 slot="headline"><a href="/patterns/card/examples/#logo-cards">Logo</a></h4>
+    <p>
+      Use to display a customer logo in a variety of arrangements. A call to 
+      action is required, otherwise use a logo wall.
+    </p>
+  </rh-tile>
+  <rh-tile>
+    <h4 slot="headline"><a href="/patterns/card/examples/#quote-cards">Quote</a></h4>
+    <p>
+      Use to display a short quote with attribution text. Logos, images, and a 
+      Secondary call to action may be used or not.
+    </p>
+  </rh-tile>
+  <rh-tile>
+    <h4 slot="headline"><a href="/patterns/card/examples/#title-bar-card">Title bar</a></h4>
+    <p>
+      Use to add a small icon and a label group to the header section. A larger 
+      icon or a logo may be used.
+    </p>
+  </rh-tile>
+  <rh-tile>
+    <h4 slot="headline"><a href="/elements/video-embed/demos/#demo-card-with-video">Video</a></h4>
+    <p>
+      Use to display a video in a card.
+    </p>
+  </rh-tile>
+</nav>
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{display:flex;margin-block-end:var(--rh-space-lg);align-items:center}#signifier{display:var(--perma-signifier-display,none)}#button{height:1.75rem;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;align-items:center}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){display:flex;margin-block-end:0!important;align-items:center;color:inherit;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
