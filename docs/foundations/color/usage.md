@@ -72,7 +72,7 @@ For more bespoke websites or interfaces, other colors may be used as long as col
 
 <rh-alert state="info">
   <h4 slot="header">Helpful tip</h4>
-  <p>Components like Card and other containers include more colors and can be placed on top of a canvas.</p>
+  <p>Elements like Card and other containers include more colors and can be placed on top of a canvas.</p>
 </rh-alert>
 
 <uxdot-example width-adjustment="1004px">
