@@ -2,7 +2,7 @@ import type { UserConfig } from '@11ty/eleventy';
 import * as ChildProcess from 'node:child_process';
 import { join, dirname } from 'node:path';
 import { promisify } from 'node:util';
-import { readdir, readFile, writeFile, mkdir } from 'node:fs/promises';
+import { readdir, writeFile, mkdir } from 'node:fs/promises';
 import { makeDemoEnv } from '#scripts/environment.js';
 
 import yaml from 'js-yaml';
@@ -15,10 +15,7 @@ import RHDSElementDemosPlugin from '#11ty-plugins/element-demos.js';
 import { getPfeConfig } from '@patternfly/pfe-tools/config.js';
 import { capitalize } from '#11ty-plugins/tokensHelpers.js';
 
-const repoStatus = yaml.load(await readFile(
-  new URL('../_data/repoStatus.yaml', import.meta.url),
-  'utf8',
-));
+import repoStatus from '#11ty-data/repoStatus.js';
 
 const exec = promisify(ChildProcess.exec);
 const cwd = process.cwd();
@@ -85,10 +82,14 @@ interface Options {
 }
 
 export default async function(eleventyConfig: UserConfig, options?: Options) {
-  eleventyConfig.on('eleventy.before', async ({ directories }) => {
+  eleventyConfig.on('eleventy.before', async ({ runMode, directories }) => {
     const outPath = join(directories.output, 'assets/javascript/repoStatus.json');
-    await mkdir(dirname(outPath), { recursive: true });
-    await writeFile(outPath, JSON.stringify(repoStatus), 'utf8');
+    switch (runMode) {
+      case 'watch':
+      case 'build':
+        await mkdir(dirname(outPath), { recursive: true });
+        await writeFile(outPath, JSON.stringify(repoStatus), 'utf8');
+    }
   });
 
   /** add the normalized pfe-tools config to global data */

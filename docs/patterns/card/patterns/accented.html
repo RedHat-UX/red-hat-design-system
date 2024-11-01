@@ -1,0 +1,31 @@
+<rh-card class="example-accented-card">
+  <h2 slot="header">Card</h2>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+     Nullam eleifend elit sed est egestas, a sollicitudin mauris
+     tincidunt. Pellentesque vel dapibus risus. Nullam aliquam
+     felis orci, eget cursus mi lacinia quis. Vivamus at felis sem.</p>
+  <rh-cta slot="footer" priority="primary">
+    <a href="#">Call to action</a>
+  </rh-cta>
+</rh-card>
+
+<style>
+  .example-accented-card {
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      z-index: 2;
+      display: block;
+      inset-block-start: 0;
+      inset-inline: 0;
+      width: calc(100% + var(--rh-border-width-sm));
+      border-block-start-color: var(--rh-color-brand-red);
+      border-block-start-width: var(--rh-border-width-lg);
+      border-block-start-style: solid;
+      border-start-start-radius: var(--rh-border-radius-default);
+      border-start-end-radius: var(--rh-border-radius-default);
+      pointer-events: none;
+    }
+  }
+</style>
