@@ -184,6 +184,15 @@
     rhds: ready
     shared: ready
     docs: ready
+- tagName: rh-navigation-universal
+  name: Navigation (universal)
+  type: element
+  overallStatus: ready
+  libraries:
+    figma: ready
+    rhds: ready
+    shared: planned
+    docs: planned
 - tagName: rh-pagination
   name: Pagination
   type: element
