@@ -25,7 +25,7 @@ A logo wall is a visual arrangement of logos representing various brands, compan
 <div class="grid">
   <div>
     <h3>Bordered</h3>
-    <uxdot-example>
+    <uxdot-example width-adjustment="1010px">
       <img src="./overview-sample-bordered.png"
       alt="An example of a bordered logo wall with 6 logos each inside of a bordered container."
       width="1010"
@@ -34,7 +34,7 @@ A logo wall is a visual arrangement of logos representing various brands, compan
   </div>
   <div>
     <h3>Borderless</h3>
-    <uxdot-example>
+    <uxdot-example width-adjustment="1010px"s>
       <img src="./overview-sample-borderless.png"
       alt="An example of a borderless logo wall with 6 logos."
       width="1010"
