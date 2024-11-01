@@ -75,7 +75,7 @@ If red text cannot be used, use dark gray or black text against lighter backgrou
 
 #### Red text WCAG requirements
 
-WCAG 2.0 level AA requires a contrast ratio of at least 4.5:1 for normal text and 3:1 for large text. WCAG 2.1 requires a contrast ratio of at least 3:1 for graphics and UI components like form input borders. Use the table below to confirm you are using color contrast correctly before using red text.
+WCAG 2.0 level AA requires a contrast ratio of at least 4.5:1 for normal text and 3:1 for large text. WCAG 2.1 requires a contrast ratio of at least 3:1 for graphics and UI elements like form input borders. Use the table below to confirm you are using color contrast correctly before using red text.
 
 The font sizes that are considered normal and large are as follows:
 
@@ -87,7 +87,7 @@ The font sizes that are considered normal and large are as follows:
 
 <rh-table>
 
-| Background color      | Contrast ratio | Normal text | Large text | Objects and UI components |
+| Background color      | Contrast ratio | Normal text | Large text | Objects and UI elements |
 | --------------------- | -------------- | ----------- | ---------- | ------------------------- |
 | `white` (`#fff`)      | {{ p(4.35) }}  | {{ p() }}   | {{ p() }}  | {{ p() }}                 |
 | `gray-10` (`#f2f2f2`) | {{ p(4.04) }}  | {{ f() }}   | {{ p() }}  | {{ p() }}                 |
@@ -112,9 +112,9 @@ underlines at your discretion.
        src="/assets/color/color-a11y-color-contrast-links.svg">
 </uxdot-example>
 
-### Graphical objects and UI components
+### Graphical objects and UI elements
 
-Graphical objects and UI components like charts and infographics should have a 
+Graphical objects and UI elements like charts and infographics should have a 
 contrast ratio of at least 3:1. If color is the only way to distinguish between 
 inline controls and surrounding text, the contrast ratio between the control and 
 text must be at least 3:1.

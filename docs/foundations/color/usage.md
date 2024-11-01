@@ -94,7 +94,7 @@ Surface is a container background that applies a theme to any child elements. If
     <img alt="Examples of cards using each surface color"
         src="/assets/color/color-usage-surface.svg">
   </uxdot-example>
-  <figcaption>Examples of how Surface is theming child elements within a Card component</figcaption>
+  <figcaption>Examples of how Surface is theming child elements within a Card</figcaption>
 </figure>
 
 ### Layering
@@ -117,7 +117,7 @@ Layering is stacking colors to establish hierarchy and separate content. Colors 
 Color is applied to basic text depending on content, hierarchy, theme, and more. These are general guidelines, not all use cases are represented.
 
 1. **Brand** - use sparingly to add a brand accent to text
-2. **Primary** - use for headings and body text in most layouts and components
+2. **Primary** - use for headings and body text in most layouts, elements, and patterns
 3. **Secondary** - use for small text like captions
 4. **Custom** - use a variety of colors to advertise a campaign or bespoke experience
 
@@ -144,11 +144,11 @@ Color is applied to icons depending on category, status, theme, etc. Some icon c
 Color can be used to indicate that something is interactive or selectable. All text links require an underline except in certain rare edge cases.
 
 1. **Blue** - a common color used for inline links, buttons, and more
-2. **Purple** - a common color used for the visited state or linked text in certain components
-3. **Red** - use sparingly for primary calls to action or linked text in certain components
-4. **Gray** - use for secondary text, the disabled state, or linked text in certain components
-5. **Black and white** - use for linked text in navigation components or linked header text in navigation menus
-6. **Other colors** - use for linked text in components with a more broad color palette like Tag
+2. **Purple** - a common color used for the visited state or linked text in certain elements
+3. **Red** - use sparingly for primary calls to action or linked text in certain elements
+4. **Gray** - use for secondary text, the disabled state, or linked text in certain elements
+5. **Black and white** - use for linked text in navigation elements or linked header text in navigation menus
+6. **Other colors** - use for linked text in elements with a more broad color palette like Tag
 
 <rh-alert state="info">
   <h4 slot="header">Helpful tip</h4>
