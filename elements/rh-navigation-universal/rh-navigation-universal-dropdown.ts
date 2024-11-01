@@ -1,5 +1,6 @@
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
+import { query } from 'lit/decorators/query.js';
 
 import styles from './rh-navigation-universal-dropdown.css';
 
@@ -16,9 +17,12 @@ import styles from './rh-navigation-universal-dropdown.css';
 export class RhNavigationUniversalDropdown extends LitElement {
   static readonly styles = [styles];
 
+  @query('details') private detailsEl!: HTMLDetailsElement;
+  @query('summary') private summaryEl!: HTMLElement;
+
   render() {
     return html`
-      <details>
+      <details @keydown=${this.#closeDetails}>
         <summary>
           <span id="summary-shift">
             <slot name="summary-label">All Red Hat</slot>
@@ -29,6 +33,16 @@ export class RhNavigationUniversalDropdown extends LitElement {
         </div>
       </details>
     `;
+  }
+
+  #closeDetails(event: KeyboardEvent): void {
+    if (!this.detailsEl.hasAttribute('open')) {
+      return;
+    }
+    if (event.code === 'Escape') {
+      this.summaryEl.focus();
+      this.detailsEl.removeAttribute('open');
+    }
   }
 }
 
