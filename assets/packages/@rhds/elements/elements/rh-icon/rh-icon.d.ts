@@ -12,9 +12,8 @@ export declare class IconResolveErrorEvent extends ErrorEvent {
 }
 /**
  * Icons represents general concepts and can support text as a decorative
- * element. The icon element, `<rh-icon>`, is a container that allows users to
- * add icons of varying dimensions in the same area without shifting surrounding
- * content.
+ * element. The icon element is a container that allows users to add icons of
+ * varying dimensions in the same area without shifting surrounding content.
  * @summary Decorative element which supports related content
  * @slot - Slotted content is used as a fallback in case the icon doesn't load
  * @fires load - Fired when an icon is loaded and rendered
