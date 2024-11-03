@@ -134,8 +134,8 @@ export default pfeDevServerConfig({
   importMapOptions: {
     typeScript: true,
     ignore: [
-      /@rhds\/elements/,
       /^\./,
+      /^@rhds\/icons/,
     ],
     inputMap: { imports },
   },

@@ -1,5 +1,5 @@
 diff --git a/node_modules/@jspm/generator/dist/generator-b8f1de6d.js b/node_modules/@jspm/generator/dist/generator-b8f1de6d.js
-index f7a63ef..0731d4a 100644
+index f7a63ef..6170f5e 100644
 --- a/node_modules/@jspm/generator/dist/generator-b8f1de6d.js
 +++ b/node_modules/@jspm/generator/dist/generator-b8f1de6d.js
 @@ -218,6 +218,7 @@ async function createTsAnalysis(source, url) {
@@ -18,7 +18,7 @@ index f7a63ef..0731d4a 100644
                          onlyRemoveTypeImports: true
                      }
                  ]
-@@ -2934,9 +2936,15 @@ class TraceMap {
+@@ -2934,9 +2936,14 @@ class TraceMap {
     * @param {} parentUrl URL of the parent context for the specifier.
     * @param {} seen Cache for optimisation.
     */ async visit(specifier, opts, parentUrl = this.baseUrl.href, seen = new Set()) {
@@ -27,7 +27,6 @@ index f7a63ef..0731d4a 100644
 -        if ((_this_opts_ignore = this.opts.ignore) === null || _this_opts_ignore === void 0 ? void 0 : _this_opts_ignore.includes(specifier)) return;
 +        if (Array.isArray(this.opts.ignore)) {
 +            for (const specOrRegexp of this.opts.ignore) {
-+                console.log(specOrRegexp, specOrRegexp?.test(specifier))
 +                if ((specOrRegexp instanceof RegExp && specOrRegexp.test(specifier))
 +                    || typeof specOrRegexp === 'string' && specifier === specOrRegexp)
 +                    return;
