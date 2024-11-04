@@ -29,7 +29,13 @@ register('./lit-css-node.ts', import.meta.url);
 
 await Promise.all(imports.map(async function importModule(bareSpec: string) {
   const spec = pathToFileURL(resolve(process.cwd(), bareSpec)).href.replace('.js', '.ts');
-  await import(spec);
+  try {
+    await import(spec);
+  } catch (e) {
+    // eslint-disable-next-line no-console
+    console.error(spec, e);
+    throw e;
+  }
 }));
 
 class RHDSSSRableRenderer extends LitElementRenderer {

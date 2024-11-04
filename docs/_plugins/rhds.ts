@@ -1,6 +1,6 @@
 import type { UserConfig } from '@11ty/eleventy';
 import { join, dirname, relative } from 'node:path';
-import { cp, glob, readdir, readFile, writeFile, mkdir } from 'node:fs/promises';
+import { cp, glob, readdir, writeFile, mkdir } from 'node:fs/promises';
 import { makeDemoEnv } from '#scripts/environment.js';
 
 import { $ } from 'execa';
