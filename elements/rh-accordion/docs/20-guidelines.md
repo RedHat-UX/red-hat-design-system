@@ -211,7 +211,7 @@ smaller.
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
-    <uxdot-example width-adjustment="482px" slot="image">
+    <uxdot-example width-adjustment="482px" slot="image" color-palette="darkest">
       <img src="../accordion-best-practices-mixing-themes-do.svg"
             alt="Dark theme accordion against a dark background">
     </uxdot-example>
@@ -219,11 +219,11 @@ smaller.
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="dont">
-    <uxdot-example width-adjustment="482px" slot="image">
+    <uxdot-example width-adjustment="482px" slot="image" color-palette="darkest">
       <img src="../accordion-best-practices-mixing-themes-dont.svg"
             alt="Light theme accordion against a light background">
     </uxdot-example>
-    <p>Do not use a light theme accordion in a dark theme environment and vice versa. In this example, the light theme accordion’s title isn’t showing because the accordion is in in a dark theme container.</p>
+    <p>Do not use a light theme accordion in a dark theme environment and vice versa because it may cause accessibility and usability issues.</p>
   </uxdot-best-practice>
 </div>
 
