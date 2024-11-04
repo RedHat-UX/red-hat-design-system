@@ -173,7 +173,9 @@ smaller.
   <uxdot-best-practice variant="do">
     <uxdot-example width-adjustment="482px" slot="image">
       <img src="../accordion-best-practices-one-panel-do.svg"
-            alt="Two accordion panels">
+            alt="Two accordion panels"
+            width="482"
+            height="117">
     </uxdot-example>
     <p>Use accordion in groups of two or more.</p>
   </uxdot-best-practice>
@@ -181,7 +183,9 @@ smaller.
   <uxdot-best-practice variant="dont">
     <uxdot-example width-adjustment="482px" slot="image">
       <img src="../accordion-best-practices-one-panel-dont.svg"
-            alt="One accordion panel">
+            alt="One accordion panel"
+            width="482"
+            height="117">
     </uxdot-example>
     <p>Do not display one panel only.</p>
   </uxdot-best-practice>
@@ -192,7 +196,9 @@ smaller.
 <uxdot-best-practice variant="do">
   <uxdot-example slot="image" width-adjustment="1012px">
     <img src="../accordion-best-practices-text-readability-do.svg" 
-        alt="Text in an expanded accordion has a limited width and does not fill wide accordion">
+        alt="Text in an expanded accordion has a limited width and does not fill wide accordion"
+        width="1012"
+        height="280">
   </uxdot-example>
 
   <p>The text in a panel should be limited to a maximum width of 750px, which maintains optimal readability.</p>
@@ -201,7 +207,9 @@ smaller.
 <uxdot-best-practice variant="dont">
   <uxdot-example slot="image" width-adjustment="1012px">
     <img  src="../accordion-best-practices-text-readability-dont.svg" 
-        alt="Text in an expanded accordion fills wide accordion">
+        alt="Text in an expanded accordion fills wide accordion"
+        width="1012"
+        height="280">
   </uxdot-example>
 
   <p>Do not allow text within panels to fill the entire width of a panel, if the text would exceed a width of 750px.</p>
@@ -211,17 +219,21 @@ smaller.
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
-    <uxdot-example width-adjustment="482px" slot="image" color-palette="darkest">
+    <uxdot-example slot="image" color-palette="darkest" width-adjustment="256px">
       <img src="../accordion-best-practices-mixing-themes-do.svg"
-            alt="Dark theme accordion against a dark background">
+            alt="Dark theme accordion against a dark background"
+            width="482"
+            height="256">
     </uxdot-example>
     <p>An accordion group should match the theme of the container it’s in. This ensures that all of the text is visible and has adequate color contrast.</p>
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="dont">
-    <uxdot-example width-adjustment="482px" slot="image" color-palette="darkest">
+    <uxdot-example slot="image" color-palette="darkest" width-adjustment="256px">
       <img src="../accordion-best-practices-mixing-themes-dont.svg"
-            alt="Light theme accordion against a light background">
+            alt="Light theme accordion against a light background"
+            width="482"
+            height="256">
     </uxdot-example>
     <p>Do not use a light theme accordion in a dark theme environment and vice versa because it may cause accessibility and usability issues.</p>
   </uxdot-best-practice>
