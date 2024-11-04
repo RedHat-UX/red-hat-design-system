@@ -6,6 +6,10 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--rh-space-2xl);
+
+  &.gapless {
+    gap: 0;
+  }
 }
 
 @container container (min-width: 576px) {

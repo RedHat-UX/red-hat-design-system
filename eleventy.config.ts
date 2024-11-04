@@ -77,7 +77,7 @@ export default async function(eleventyConfig: UserConfig) {
   eleventyConfig.addPassthroughCopy('docs/robots.txt');
   eleventyConfig.addPassthroughCopy('docs/assets/**/*');
   eleventyConfig.addPassthroughCopy('docs/styles/**/*');
-  eleventyConfig.addPassthroughCopy('docs/foundations/**/*.{css,js}');
+  eleventyConfig.addPassthroughCopy('docs/**/*.{css,js}');
 
   if (isLocal) {
     eleventyConfig.addPassthroughCopy({
@@ -86,7 +86,7 @@ export default async function(eleventyConfig: UserConfig) {
   }
 
   eleventyConfig.addWatchTarget('docs/styles/');
-  eleventyConfig.addWatchTarget('docs/patterns/**/*.md');
+  eleventyConfig.addWatchTarget('docs/**/*.md');
 
   eleventyConfig.addGlobalData('isLocal', isLocal);
 
