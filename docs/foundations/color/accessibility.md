@@ -70,7 +70,7 @@ Red is our primary brand color. It has many applications, but on the web, it doe
 If red text cannot be used, use dark gray or black text against lighter backgrounds, or light gray or white text against darker backgrounds. If you have questions about using our other red colors, contact the Brand team.
 
 <uxdot-example width-adjustment=”100%” variant="full" alignment="left" no-border>
-  <img alt="Several examples of red text over light and dark themed backgrounds showing some that pass and some that fail. There is also an example of dark gray text and black text against a light background as well as an example of light gray text and white text on a dark background." src="/assets/color/color-a11y-contrast-red-text-on-bgs.png">
+  <img alt="Several examples of red text over light and dark themed backgrounds showing some that pass and some that fail. There is also an example of dark gray text and black text against a light background as well as an example of light gray text and white text on a dark background." src="/assets/color/color-a11y-red-text-on-bgs.svg">
 </uxdot-example>
 
 #### Red text WCAG requirements
