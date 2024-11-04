@@ -119,7 +119,7 @@ export default async function(eleventyConfig: UserConfig, options?: Options) {
     filter: (path: string) => !path.endsWith('.html'),
   });
 
-  eleventyConfig.on('eleventy.before', async ({ directories }) => {
+  eleventyConfig.on('eleventy.before', async ({ directories, runMode }) => {
     const outPath = join(directories.output, 'assets/javascript/repoStatus.json');
     switch (runMode) {
       case 'watch':
