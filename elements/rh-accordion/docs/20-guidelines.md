@@ -219,7 +219,7 @@ smaller.
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
-    <uxdot-example slot="image" color-palette="darkest" width-adjustment="256px">
+    <uxdot-example slot="image" color-palette="darkest" width-adjustment="482px">
       <img src="../accordion-best-practices-mixing-themes-do.svg"
             alt="Dark theme accordion against a dark background"
             width="482"
@@ -229,7 +229,7 @@ smaller.
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="dont">
-    <uxdot-example slot="image" color-palette="darkest" width-adjustment="256px">
+    <uxdot-example slot="image" color-palette="darkest" width-adjustment="482px">
       <img src="../accordion-best-practices-mixing-themes-dont.svg"
             alt="Light theme accordion against a light background"
             width="482"
