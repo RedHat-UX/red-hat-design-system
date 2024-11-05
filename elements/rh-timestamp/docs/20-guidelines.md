@@ -258,8 +258,24 @@ Just like text, a timestamp will break to two lines as breakpoints get smaller.
 
 ### Headings
 
-Do not apply a timestamp to headings.
+<div class="grid sm-two-columns">
+  <uxdot-best-practice variant="do">
+    <uxdot-example width-adjustment="482px" slot="image">
+      <img src="../timestamp-best-practices-headings-do.svg"
+            alt="Timestamp below a heading and using body copy styles"
+            width="482"
+            height="143">
+    </uxdot-example>
+    <p>Use timestamp as part of the body copy.</p>
+  </uxdot-best-practice>
 
-<uxdot-example danger>
-  <h2><rh-timestamp></rh-timestamp></h2>
-</uxdot-example>
+  <uxdot-best-practice variant="dont">
+    <uxdot-example width-adjustment="482px" slot="image">
+      <img src="../timestamp-best-practices-headings-dont.svg"
+            alt="Timestamp within heading and using heading style"
+            width="482"
+            height="143">
+    </uxdot-example>
+    <p>Do not apply a timestamp to headings.</p>
+  </uxdot-best-practice>
+</div>
