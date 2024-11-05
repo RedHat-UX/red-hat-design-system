@@ -71,12 +71,9 @@ The amount of space in a dialog reduces as breakpoints get smaller.
         height="640">
 </uxdot-example>
 
-<rh-table>
-{% spacerTokensTable 
-    headingLevel="4",
-    tokens="--rh-space-md, --rh-space-lg,  --rh-space-xl, --rh-space-2xl",
-    style="margin-block-start:var(--rh-space-xl);" %}{% endspacerTokensTable %}
-</rh-table>
+<uxdot-spacer-tokens-table tokens="md, lg, xl, 2xl"
+                           style="margin-block-start:var(--rh-space-xl);">
+</uxdot-spacer-tokens-table>
 
 ## Interaction states
 

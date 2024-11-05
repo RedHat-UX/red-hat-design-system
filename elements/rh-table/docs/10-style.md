@@ -95,13 +95,7 @@ A table has equal spacing within columns, rows, and in between divider lines. Th
         height="624">
 </uxdot-example>
 
-<rh-table>
-  {% spacerTokensTable 
-      caption='',
-      headingLevel="3",
-      tokens="--rh-space-lg" %}
-  {% endspacerTokensTable %}
-</rh-table>
+<uxdot-spacer-tokens-table tokens="lg"></uxdot-spacer-tokens-table>
 
 ## Interaction states
 

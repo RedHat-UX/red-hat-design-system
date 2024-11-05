@@ -1,7 +1,6 @@
 ---
-layout: layouts/pages/basic.njk
+layout: layouts/pages/has-toc.njk
 title: Release notes
-hasToc: true
 ---
 
 <link data-helmet
@@ -62,34 +61,32 @@ Released October 1, 2024
 
 <rh-table>
 
-| Change                              | Type    | Notes |
-| ----------------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Theming: added theming tokens to most elements | {{i()}} | New theming tokens allow page-level and container-level colour palettes on patterns and elements. |
-| `<rh-alert>`: added new `state` colors | {{i()}} | Added `info`, `neutral`, and `caution`. Deprecated `note` (aliasing `info`), `default` (aliasing `neutral`), and `error` (aliasing `danger`). |
-| `<rh-accordion>`: improved accessibility | {{i()}} | Removed arrow-key keyboard navigation in favor of tab navigation through accordion sets. |
-| `<rh-badge>`: added new `state` colors | {{i()}} | Added `danger`, `warning`, `caution`, `neutral`, and `info`. Deprecated `critical` (aliasing `danger`), `important` (aliasing `caution`), `moderate` (aliasing `warning`), and `note` (aliasing `info`). |
-| `<rh-button>`: added `icon-set` attribute | {{i()}} | Added `icon-set="..."` attribute, which corresponds to `<rh-icon set="...">`. |
-| `<rh-card>`: added header background theming API | {{i()}} | Using `--rh-card-header-background-on-light` and `--rh-card-header-background-on-dark` CSS custom props allows for theming the card header's background. |
-| `<rh-code-block>`: added syntax highlighting | {{i()}} | Code blocks now have optional Red Hat color-themed syntax highlighting via client side or server side (prerendered prismjs code-blocks). |
-| `<rh-table>`: improved responsive layout API | {{i()}} | Added auto-generated table cell headings for responsive layout on small screens. |
-| `<rh-tag>`: added new tag colors | {{i()}} | Added `red-orange`, `yellow`, and `teal` colors. Deprecated `cyan`, aliasing it to `teal`. |
-| `<rh-tag>`: added `destaurated` variant | {{i()}} | Added `variant="desaturated"` to reduce visual prominence or to better fit a specific theme or visual style. |
-| `<rh-tag>`: added `size` attribute | {{i()}} | Added `size="compact"` for areas where space is limited. |
-| `<rh-tag>`: added optional `href` attribute | {{i()}} | Adding `href` attribute to `<rh-tag>` removes the need for slotting an anchor element (`<a>`) on linked tags. |
-| `<rh-tile>`: added `private` and `external` link variants | {{i()}} |  Using `link="private"` or `link="external"` indicates whether the link is private or external and changes the tile icon from an arrow to a padlock or external link icons respectively. |
-| `<rh-skip-link>`: added optional `href` attribute | {{i()}} | Adding `href` attribute to `<rh-skip-link>` removes the need for slotting an anchor element (`<a>`). |
-| `<rh-audio-player>`: added mini playback control | {{p()}} | Mini layout now has playback control. |
-| `<rh-navigation-secondary>`: improved accessibility | {{p()}} | Removed arrow-key keyboard navigation in favor of tab navigation through navigation items and added `accessible-label` attribute to explicitly label landmark. |
-| `<rh-subnav>`: improved accessibility | {{p()}} | Removed arrow-key keyboard navigation in favor of tab navigation through navigation items and added `accessible-label` attribute to explicitly label landmark. |
-| `<rh-table>`: added container query support | {{p()}} | Tables now adjust to the size of their containing element, not the viewport size. |
-| `<rh-tabs>`: added container query support | {{p()}} | Tabs now adjust to the size of their containing element, not the viewport size. |
-| `<rh-tabs>`: added advanced layout support | {{p()}} | Tabs can now participate in advanced layouts, like `display: subgrid`. |
+| Change                                                    | Type    | Notes                                                                                                                                                                                                    |
+| --------------------------------------------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Theming: added theming tokens to most elements            | {{i()}} | New theming tokens allow page-level and container-level colour palettes on patterns and elements.                                                                                                        |
+| `<rh-alert>`: added new `state` colors                    | {{i()}} | Added `info`, `neutral`, and `caution`. Deprecated `note` (aliasing `info`), `default` (aliasing `neutral`), and `error` (aliasing `danger`).                                                            |
+| `<rh-accordion>`: improved accessibility                  | {{i()}} | Removed arrow-key keyboard navigation in favor of tab navigation through accordion sets.                                                                                                                 |
+| `<rh-badge>`: added new `state` colors                    | {{i()}} | Added `danger`, `warning`, `caution`, `neutral`, and `info`. Deprecated `critical` (aliasing `danger`), `important` (aliasing `caution`), `moderate` (aliasing `warning`), and `note` (aliasing `info`). |
+| `<rh-button>`: added `icon-set` attribute                 | {{i()}} | Added `icon-set="..."` attribute, which corresponds to `<rh-icon set="...">`.                                                                                                                            |
+| `<rh-card>`: added header background theming API          | {{i()}} | Using `--rh-card-header-background-on-light` and `--rh-card-header-background-on-dark` CSS custom props allows for theming the card header's background.                                                 |
+| `<rh-code-block>`: added syntax highlighting              | {{i()}} | Code blocks now have optional Red Hat color-themed syntax highlighting via client side or server side (prerendered prismjs code-blocks).                                                                 |
+| `<rh-table>`: improved responsive layout API              | {{i()}} | Added auto-generated table cell headings for responsive layout on small screens.                                                                                                                         |
+| `<rh-tag>`: added new tag colors                          | {{i()}} | Added `red-orange`, `yellow`, and `teal` colors. Deprecated `cyan`, aliasing it to `teal`.                                                                                                               |
+| `<rh-tag>`: added `destaurated` variant                   | {{i()}} | Added `variant="desaturated"` to reduce visual prominence or to better fit a specific theme or visual style.                                                                                             |
+| `<rh-tag>`: added `size` attribute                        | {{i()}} | Added `size="compact"` for areas where space is limited.                                                                                                                                                 |
+| `<rh-tag>`: added optional `href` attribute               | {{i()}} | Adding `href` attribute to `<rh-tag>` removes the need for slotting an anchor element (`<a>`) on linked tags.                                                                                            |
+| `<rh-tile>`: added `private` and `external` link variants | {{i()}} |  Using `link="private"` or `link="external"` indicates whether the link is private or external and changes the tile icon from an arrow to a padlock or external link icons respectively.                 |
+| `<rh-skip-link>`: added optional `href` attribute         | {{i()}} | Adding `href` attribute to `<rh-skip-link>` removes the need for slotting an anchor element (`<a>`).                                                                                                     |
+| `<rh-audio-player>`: added mini playback control          | {{p()}} | Mini layout now has playback control.                                                                                                                                                                    |
+| `<rh-navigation-secondary>`: improved accessibility       | {{p()}} | Removed arrow-key keyboard navigation in favor of tab navigation through navigation items and added `accessible-label` attribute to explicitly label landmark.                                           |
+| `<rh-subnav>`: improved accessibility                     | {{p()}} | Removed arrow-key keyboard navigation in favor of tab navigation through navigation items and added `accessible-label` attribute to explicitly label landmark.                                           |
+| `<rh-table>`: added container query support               | {{p()}} | Tables now adjust to the size of their containing element, not the viewport size.                                                                                                                        |
+| `<rh-tabs>`: added container query support                | {{p()}} | Tabs now adjust to the size of their containing element, not the viewport size.                                                                                                                          |
+| `<rh-tabs>`: added advanced layout support                | {{p()}} | Tabs can now participate in advanced layouts, like `display: subgrid`.                                                                                                                                   |
 
 </rh-table>
 
-<rh-cta><a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v2.1.0">View all version 2.1 release notes</a></rh-cta>
-
-</section>
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v2.1.0">View all version 2.1 release notes</rh-cta>
 
 </section>
 

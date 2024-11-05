@@ -1,52 +1,14 @@
 ---
-layout: layouts/base.njk
+layout: layouts/pages/has-toc.njk
 ---
-<link data-helmet
-      rel="stylesheet"
-      href="/styles/pages/backpage.css">
 
 <script data-helmet type="module">
   import '@rhds/elements/rh-cta/rh-cta.js';
-  import '@rhds/elements/rh-footer/rh-footer.js';
   import '@rhds/elements/rh-alert/rh-alert.js';
   import '@rhds/elements/rh-subnav/rh-subnav.js';
   import '@rhds/elements/rh-surface/rh-surface.js';
   import '@rhds/elements/rh-code-block/rh-code-block.js';
-  import "/assets/javascript/elements/uxdot-feedback.js";
-  import "/assets/javascript/elements/uxdot-pattern.js";
+  import "@uxdot/elements/uxdot-pattern.js";
 </script>
-{% if tokenSearch %}
-<script data-helmet
-        type="module"
-        src="/assets/javascript/elements/uxdot-search.js"></script>
-<script data-helmet
-        type="module"
-        src="/assets/javascript/tokens.js"></script>
-{% endif %}
-{% include 'partials/component/masthead.njk' %}
-{% include 'partials/component/sidenav.njk' %}
-{%- if hasToc -%}
-  {%- set tagsForThisPageToc = tocTags or ['h2'] -%}
-  {%- set table = content | toc(tags=tagsForThisPageToc) -%}
-{%- endif -%}
-<rh-surface id="main"
-            role="main"
-            color-palette="lightest">
-  <article {{ "class=has-toc" if table.length > 0 }}>
-  {% include 'partials/component/header.njk' %}
-  {% if table.length > 0 %}
-  <div class="aside">
-    <uxdot-toc summary="On this page">
-      {{ table | safe }}
-    </uxdot-toc>
-  </div>
-  {% endif %}
-  <div class="container">
-    {{ content | safe }}
-    {% include "partials/component/edit-this-page.njk" %}
-  </div>
 
-  </article>
-  {% include "partials/component/back-to-top.njk" %}
-</rh-surface>
-{% include 'partials/component/footer.njk' %}
+{{ content | safe }}

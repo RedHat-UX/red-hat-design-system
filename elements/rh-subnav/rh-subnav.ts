@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { query } from 'lit/decorators/query.js';
@@ -8,7 +8,7 @@ import { property } from 'lit/decorators/property.js';
 import { OverflowController } from '@patternfly/pfe-core/controllers/overflow-controller.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+import { colorContextProvider } from '../../lib/context/color/provider.js';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 
@@ -39,14 +39,16 @@ export class RhSubnav extends LitElement {
 
   static {
     // on resize check for overflows to add or remove scroll buttons
-    globalThis.addEventListener('resize', () => {
+    if (!isServer) {
+      globalThis.addEventListener('resize', () => {
       // this appears to be an eslint bug.
       // `this` should refer to the class, but in the minified bundle, it is void
-      const { instances } = RhSubnav;
-      for (const instance of instances) {
-        instance.#overflow.onScroll();
-      }
-    }, { capture: false });
+        const { instances } = RhSubnav;
+        for (const instance of instances) {
+          instance.#overflow.onScroll();
+        }
+      }, { capture: false });
+    }
   }
 
   /**

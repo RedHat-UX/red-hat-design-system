@@ -1,12 +1,3 @@
----js
-{
-  isPlanned: function(repoStatus, name) {
-    const element = repoStatus.find(element => element.name === name);
-    return element && element.libraries.find(library => library.name === 'RH Elements').status === "Planned";
-  }
-}
----
-
 {%- set extraPageClasses = bodyClasses or "" -%}
 {%- if title -%}
   {% set extraPageClasses = extraPageClasses + ' page-' + title | slug -%}
@@ -18,7 +9,6 @@
     {% include "../partials/meta.html" %}
 
     <link rel="stylesheet" href="/styles/styles.css">
-    <link rel="stylesheet" href="/styles/rh-code-block-lightdom.css">
 
    {# On browsers that don't yet support native declarative shadow DOM, a
       paint can occur after some or all pre-rendered HTML has been parsed,

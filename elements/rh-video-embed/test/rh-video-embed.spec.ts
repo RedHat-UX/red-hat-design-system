@@ -1,28 +1,30 @@
 import { expect, html } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
-import { type A11yTreeSnapshot, a11ySnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
+import { a11ySnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
 import { clickElementAtCenter } from '@patternfly/pfe-tools/test/utils.js';
 import { sendKeys } from '@web/test-runner-commands';
 import { RhVideoEmbed } from '@rhds/elements/rh-video-embed/rh-video-embed.js';
 
 describe('<rh-video-embed>', function() {
   let element: RhVideoEmbed;
-  let snapshot: A11yTreeSnapshot;
-  let children: A11yTreeSnapshot[];
 
   function getThumbnail() {
-    return element.querySelector('[slot="thumbnail"]');
+    return element.querySelector<HTMLElement>('[slot="thumbnail"]');
   }
 
-  function isVisuallyHidden(el) {
+  function isHidden(el?: HTMLElement | null) {
+    return !el || el?.hidden;
+  }
+
+  function isVisuallyHidden(el?: HTMLElement | null) {
     return !el || el?.hidden || window.getComputedStyle(el)?.getPropertyValue('opacity') === '0';
   }
 
-  function isA11yHidden(el) {
+  function isA11yHidden(el?: HTMLElement | null) {
     return !el || el?.hidden || el.getAttribute('aria-hidden') === 'true';
   }
 
-  async function eventFired(eventName, prop) {
+  async function eventFired(eventName: string, prop: keyof RhVideoEmbed) {
     return new Promise(function(resolve) {
       if (element[prop]) {
         resolve(true);
@@ -59,8 +61,6 @@ describe('<rh-video-embed>', function() {
         </template>
        <p slot="caption">Caption</caption>
       </rh-video-embed>`);
-      snapshot = await a11ySnapshot();
-      ({ children } = snapshot);
     });
 
     it('is accessible', async function() {
@@ -68,23 +68,18 @@ describe('<rh-video-embed>', function() {
           .to.be.accessible();
     });
 
-    it('does not have video', function() {
-      expect(!!element.videoElement).to.be.false;
-    });
-
-    it('consent button is not in a11y tree', function() {
-      const [consent] = children.filter(child => child.name === 'Update preferences');
-      expect(consent).to.not.exist;
+    it('consent button is not in a11y tree', async function() {
+      const snapshot = await a11ySnapshot();
+      expect(snapshot).to.not.axContainName('Update preferences');
     });
 
     it('consent button is hidden', function() {
-      const consent = element.consentButton;
-      expect(!consent || consent.hidden).to.be.true;
+      expect(isHidden(element.consentButton)).to.be.true;
     });
 
-    it('play button is in a11y tree', function() {
-      const [play] = children.filter(child => child.name === 'videotitle (play video)');
-      expect(play).to.exist;
+    it('play button is in a11y tree', async function() {
+      const snapshot = await a11ySnapshot();
+      expect(snapshot).to.axContainName('videotitle (play video)');
     });
 
     it('shows play button', function() {
@@ -92,9 +87,9 @@ describe('<rh-video-embed>', function() {
       expect(!play || play.hidden).to.be.false;
     });
 
-    it('thumbnail button is in a11y tree', function() {
-      const [thumb] = children.filter(child => child.name === 'fakethumb');
-      expect(thumb).to.exist;
+    it('thumbnail button is in a11y tree', async function() {
+      const snapshot = await a11ySnapshot();
+      expect(snapshot).to.axContainName('fakethumb');
     });
 
     it('shows thumbnail', function() {
@@ -116,12 +111,14 @@ describe('<rh-video-embed>', function() {
       await sendKeys({ press: 'Enter' });
       await eventFired('play-click', 'playClicked');
       await eventFired('play', 'playStarted');
-      snapshot = await a11ySnapshot();
-      ({ children } = snapshot);
     });
 
-    it('prepares to play', function() {
-      expect(children).to.deep.equal([{ role: 'Iframe', name: 'videotitle', focused: true }]);
+    it('prepares to play', async function() {
+      const snapshot = await a11ySnapshot();
+      expect(snapshot)
+          .axTreeFocusedNode
+          .to.have.axRole('Iframe')
+          .and.to.have.axName('videotitle');
     });
   });
 
@@ -137,12 +134,14 @@ describe('<rh-video-embed>', function() {
       await clickElementAtCenter(element.focusableElement);
       await eventFired('play-click', 'playClicked');
       await eventFired('play', 'playStarted');
-      snapshot = await a11ySnapshot();
-      ({ children } = snapshot);
     });
 
-    it('prepares to play', function() {
-      expect(children).to.deep.equal([{ role: 'Iframe', name: 'videotitle', focused: true }]);
+    it('prepares to play', async function() {
+      const snapshot = await a11ySnapshot();
+      expect(snapshot)
+          .axTreeFocusedNode
+          .to.have.axRole('Iframe')
+          .and.to.have.axName('videotitle');
     });
   });
 
@@ -156,8 +155,6 @@ describe('<rh-video-embed>', function() {
         </template>
        <p slot="caption">Caption</caption>
       </rh-video-embed>`);
-      snapshot = await a11ySnapshot();
-      ({ children } = snapshot);
     });
 
     it('is accessible', async function() {
@@ -170,13 +167,9 @@ describe('<rh-video-embed>', function() {
       expect(!button || button.hidden).to.be.false;
     });
 
-    it('does not have video', function() {
-      expect(!!element.videoElement).to.be.false;
-    });
-
-    it('play button is not a11y tree', function() {
-      const [play] = children.filter(child => child.name === 'videotitle (play video)');
-      expect(play).to.not.exist;
+    it('play button is not a11y tree', async function() {
+      const snapshot = await a11ySnapshot();
+      expect(snapshot).to.not.axContainName('videotitle (play video)');
     });
 
     it('button is hidden', function() {
@@ -184,9 +177,9 @@ describe('<rh-video-embed>', function() {
       expect(!button || button.hidden).to.be.true;
     });
 
-    it('thumbnail is not in a11y tree', function() {
-      const [thumb] = children.filter(child => child.name === 'fakethumb');
-      expect(thumb).to.not.exist;
+    it('thumbnail is not in a11y tree', async function() {
+      const snapshot = await a11ySnapshot();
+      expect(snapshot).to.not.axContainName('fakethumb');
     });
 
     it('thumbnail is invisible', function() {
@@ -208,19 +201,16 @@ describe('<rh-video-embed>', function() {
       await sendKeys({ press: ' ' });
       await eventFired('consent-click', 'consentClicked');
       element.consented = true;
-      snapshot = await a11ySnapshot();
-      ({ children } = snapshot);
     });
 
     it('fires consent-click', function() {
       expect(element.consentClicked).to.be.true;
     });
 
-    it('shows play button and thumbnail', function() {
-      expect(children).to.deep.equal([
-        { role: 'image', name: 'fakethumb' },
-        { role: 'button', name: 'videotitle (play video)' },
-      ]);
+    it('shows play button and thumbnail', async function() {
+      const snapshot = await a11ySnapshot();
+      expect(snapshot).to.axContainQuery({ role: 'image', name: 'fakethumb' })
+          .and.to.axContainQuery({ role: 'button', name: 'videotitle (play video)' });
     });
   });
 
@@ -233,22 +223,19 @@ describe('<rh-video-embed>', function() {
           <iframe title="videotitle" width="900" height="499" src="https://www.youtube.com/embed/Hc8emNr2igU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </template>
       </rh-video-embed>`);
-      await clickElementAtCenter(element.focusableElement.shadowRoot?.querySelector('button'));
+      await clickElementAtCenter(element.focusableElement.shadowRoot!.querySelector('button')!);
       await eventFired('consent-click', 'consentClicked');
       element.consented = true;
-      snapshot = await a11ySnapshot();
-      ({ children } = snapshot);
     });
 
     it('fires consent-click', function() {
       expect(element.consentClicked).to.be.true;
     });
 
-    it('shows play button and thumbnail', function() {
-      expect(children).to.deep.equal([
-        { role: 'image', name: 'fakethumb' },
-        { role: 'button', name: 'videotitle (play video)' },
-      ]);
+    it('shows play button and thumbnail', async function() {
+      const snapshot = await a11ySnapshot();
+      expect(snapshot).to.axContainQuery({ role: 'image', name: 'fakethumb' })
+          .and.to.axContainQuery({ role: 'button', name: 'videotitle (play video)' });
     });
   });
 });

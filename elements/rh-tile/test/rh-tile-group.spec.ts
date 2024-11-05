@@ -51,19 +51,11 @@ describe('<rh-tile-group>', function() {
     });
 
     it('exposes radio roles to the ax tree', async function() {
-      // TODO(bennypowers): write some query helpers for snapshots
       const snapshot = await a11ySnapshot();
-      const [fst, snd, thd] = snapshot.children;
-      expect(fst.name).to.equal('Tile 1');
-      expect(fst.role).to.equal('radio');
-      expect(fst.focused).to.be.true;
-      expect(fst.checked).to.be.false;
-      expect(snd.name).to.equal('Tile 2');
-      expect(snd.role).to.equal('radio');
-      expect(snd.checked).to.be.false;
-      expect(thd.name).to.equal('Tile 3');
-      expect(thd.role).to.equal('radio');
-      expect(thd.checked).to.be.false;
+      expect(snapshot)
+          .to.axContainQuery({ role: 'radio', name: 'Tile 1', focused: true, checked: false }).and
+          .to.axContainQuery({ role: 'radio', name: 'Tile 2', checked: false }).and
+          .to.axContainQuery({ role: 'radio', name: 'Tile 3', checked: false });
     });
 
     it('sets focus', function() {
@@ -99,16 +91,11 @@ describe('<rh-tile-group>', function() {
               .to.equal(tile2);
         });
         it('has only one checked radio button', async function() {
-          // TODO(bennypowers): write snapshot query helpers
           const snapshot = await a11ySnapshot();
-          function reduceRadios(count: number, node: typeof snapshot): number {
-            return count
-                   + ((node.role === 'radio' && node.checked) ? 1 : 0)
-                    + (node.children?.reduce(reduceRadios, 0) ?? 0);
-          }
-          const checkedRadios = snapshot.children.reduce(reduceRadios, 0);
-
-          expect(checkedRadios).to.equal(1);
+          expect(snapshot)
+              .to.axContainQuery({ role: 'radio', name: 'Tile 1', checked: false }).and
+              .to.axContainQuery({ role: 'radio', name: 'Tile 2', checked: true, focused: true }).and
+              .to.axContainQuery({ role: 'radio', name: 'Tile 3', checked: false });
         });
       });
     });
@@ -128,19 +115,11 @@ describe('<rh-tile-group>', function() {
       });
 
       it('has radio roles', async function() {
-        // TODO(bennypowers): write some query helpers for snapshots
         const snapshot = await a11ySnapshot();
-        const [fst, snd, thd] = snapshot.children;
-        expect(fst.name).to.equal('Tile 1');
-        expect(fst.role).to.equal('radio');
-        expect(fst.focused).to.be.true;
-        expect(fst.checked).to.be.false;
-        expect(snd.name).to.equal('carreau numéro 2');
-        expect(snd.role).to.equal('radio');
-        expect(snd.checked).to.be.false;
-        expect(thd.name).to.equal('Tile 3');
-        expect(thd.role).to.equal('radio');
-        expect(thd.checked).to.be.false;
+        expect(snapshot)
+            .to.axContainQuery({ role: 'radio', name: 'Tile 1', focused: true, checked: false }).and
+            .to.axContainQuery({ role: 'radio', name: 'carreau numéro 2', checked: false }).and
+            .to.axContainQuery({ role: 'radio', name: 'Tile 3', checked: false });
       });
     });
   });

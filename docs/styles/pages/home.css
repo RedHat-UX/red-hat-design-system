@@ -1,4 +1,8 @@
 @layer page {
+  rh-tile p {
+    margin-block: 0;
+  }
+
   /* Homepage */
   .container {
     padding-block-start: var(--rh-space-4xl);
@@ -43,11 +47,6 @@
     container-name: get-started container;
   }
 
-  rh-tile > h2 {
-    font-size: var(--rh-font-size-heading-xs) !important;
-    margin-block-start: var(--rh-space-2xl) !important;
-  }
-
   #get-started > h2 {
     font-size: var(--rh-font-size-heading-lg);
     font-weight: var(--rh-font-weight-heading-medium);
@@ -58,13 +57,6 @@
   #get-started > p {
     max-width: 100%; /* overrides base max width */
     margin: 0 auto var(--rh-space-3xl);
-  }
-
-  @container get-started (min-width: 768px) {
-    rh-tile h2 {
-      font-size: var(--rh-font-size-heading-sm) !important;
-      margin-block-start: var(--rh-space-2xl) !important;
-    }
   }
 
   #contribute::part(header),

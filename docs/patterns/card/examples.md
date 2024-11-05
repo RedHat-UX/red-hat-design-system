@@ -3,7 +3,6 @@ title: Examples
 heading: Card
 sidenavTitle: Card
 layout: layouts/pages/pattern.njk
-hasToc: true
 order: 20
 tags:
   - cardPatterns
@@ -25,8 +24,15 @@ subnav:
 <link rel="stylesheet" data-helmet href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
 <link rel="stylesheet" data-helmet href="/styles/samp.css">
 
+## Accented cards
+
+Use to highlight a single card or set of cards in a group or row.
+
+<uxdot-pattern src="./patterns/accented.html"></uxdot-pattern>
+
 ## Asset cards
-Use to display that an asset can be downloaded. An icon and label group or 
+
+Use to display that an asset can be downloaded. An icon and label group or
 text may be used to describe the asset.
 
 <uxdot-pattern src="./patterns/asset-text-and-cta.html">
@@ -41,8 +47,7 @@ text may be used to describe the asset.
   <h3 id="title-and-link-top" slot="heading">Title and Link - Top</h3>
 </uxdot-pattern>
 
-<uxdot-pattern src="./patterns/avatars.html">
-  <h2 id="avatars-card" slot="heading">Avatars card</h2>
+## Avatars card
 
   Use to highlight a group of people who engage in an event. A label
   should be included, but including text is optional.
@@ -50,34 +55,35 @@ text may be used to describe the asset.
   Use the [`<rh-avatar>`](/elements/avatar/) element to element to present
   the list of users.
 
+<uxdot-pattern src="./patterns/avatars.html">
 </uxdot-pattern>
 
-<uxdot-pattern src="./patterns/fast-facts.html">
-  <h2 id="fast-facts-card" slot="heading">Fast facts card</h2>
+## Fast facts card
 
-  Use to display quick facts or short data points under a label. A Secondary 
+  Use to display quick facts or short data points under a label. A Secondary
   call to action may be used or not.
 
+<uxdot-pattern src="./patterns/fast-facts.html">
 </uxdot-pattern>
 
-<uxdot-pattern src="./patterns/icon.html">
-  <h2 id="icon-card" slot="heading">Icon card</h2>
+## Icon card
 
-  Use to add an icon to the basic style above the text. Secondary and Default 
+  Use to add an icon to the basic style above the text. Secondary and Default
   calls to action may be used.
 
+<uxdot-pattern src="./patterns/icon.html">
 </uxdot-pattern>
 
-<uxdot-pattern src="./patterns/image.html">
-  <h2 id="image-card" slot="heading">Image card</h2>
+## Image card
 
   Use to add an image to the basic style above the text.
   Secondary and Default calls to action may be used.
 
+<uxdot-pattern src="./patterns/image.html">
 </uxdot-pattern>
 
 ## List cards
-Use to display a short amount of content using various list styles. 
+Use to display a short amount of content using various list styles.
 Secondary and Default calls to action may be used.
 
 <uxdot-pattern src="./patterns/list-flat.html">
@@ -97,7 +103,7 @@ Secondary and Default calls to action may be used.
 </uxdot-pattern>
 
 ## Logo cards
-Use to display a customer logo in a variety of arrangements. A call to 
+Use to display a customer logo in a variety of arrangements. A call to
 action is required, otherwise use a logo wall.
 
 <uxdot-pattern src="./patterns/logo-cta.html">
@@ -108,20 +114,18 @@ action is required, otherwise use a logo wall.
 <uxdot-pattern src="./patterns/logo-text-and-cta.html">
 </uxdot-pattern>
 
-<uxdot-pattern src="./patterns/title-bar.html">
-  <h2 id="title-bar-card" slot="heading">Title bar card</h2>
-
+## Title bar card
   Use to add a small icon and a label group to the header section. A larger
   icon or a logo may be used.
 
   Alternative title bar styles can be achieved by selecting [card's `header`
   CSS Shadow Part](/elements/card/code/#parts).
-
+<uxdot-pattern src="./patterns/title-bar.html">
 </uxdot-pattern>
 
 ## Quote cards
 
-Use to display a short quote with attribution text. Logos, images, and a 
+Use to display a short quote with attribution text. Logos, images, and a
 Secondary call to action may be used or not.
 
 <uxdot-pattern src="./patterns/quote.html">
@@ -132,7 +136,7 @@ Secondary call to action may be used or not.
   <h3 id="logo-and-quote" slot="heading">Logo and quote</h3>
 </uxdot-pattern>
 
-{% include 'partials/component/feedback.html' %}
+{% renderFile './docs/_includes/partials/component/feedback.11ty.ts' %}
 
 [element]: /elements/card
 [css-props]: /elements/card/code/#css-custom-properties

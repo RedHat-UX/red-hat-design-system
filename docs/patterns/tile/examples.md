@@ -3,7 +3,6 @@ title: Examples
 heading: Tile
 sidenavTitle: Tile
 layout: layouts/pages/pattern.njk
-hasToc: true
 order: 20
 tags:
   - tilePatterns
@@ -22,13 +21,6 @@ subnav:
   import '@rhds/elements/rh-blockquote/rh-blockquote.js';
 </script>
 
-<link rel="stylesheet"
-      href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css"
-      data-helmet>
-<link rel="stylesheet"
-      href="/styles/samp.css"
-      data-helmet>
-
 <uxdot-pattern src="./patterns/accented-tile.html">
   <h2 id="accented-tile" slot="heading">Accented tile</h2>
   <p>The accented tile pattern should be used to draw attention to a specific 
@@ -38,3 +30,8 @@ subnav:
 </uxdot-pattern>
 
 <rh-cta href="/elements/tile/demos/#demo-accented-tiles">View accented tile demo</rh-cta>
+
+<uxdot-pattern src="./patterns/tile-with-tag.html">
+  <h2 id="accented-tile" slot="heading">Tile with tag</h2>
+</uxdot-pattern>
+

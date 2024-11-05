@@ -89,7 +89,7 @@ export class RhVideoEmbed extends LitElement {
   }
 
   get consentButton() {
-    return this.shadowRoot?.querySelector('#consent-button');
+    return this.shadowRoot?.querySelector<HTMLElement>('#consent-button');
   }
 
   get consentClicked() {
@@ -113,7 +113,7 @@ export class RhVideoEmbed extends LitElement {
   }
 
   get playButton() {
-    return this.shadowRoot?.querySelector('#play');
+    return this.shadowRoot?.querySelector<HTMLElement>('#play');
   }
 
   get playClicked() {

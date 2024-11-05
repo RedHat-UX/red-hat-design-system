@@ -1,4 +1,4 @@
-import type { ReactiveController, ReactiveElement } from 'lit';
+import { isServer, type ReactiveController, type ReactiveElement } from 'lit';
 
 import {
   contextEvents,
@@ -67,6 +67,14 @@ export class ColorContextConsumer<
     await this.host.updateComplete;
     this.host.dispatchEvent(event);
     this.#override = null;
+  }
+
+  hostUpdated() {
+    if (!isServer && !this.host.hasUpdated) {
+      // This is definitely overkill, but it's the only
+      // way we've found so far to work around lit-ssr hydration woes
+      this.hostConnected();
+    }
   }
 
   /** When a consumer disconnects, it's removed from the list of consumers. */

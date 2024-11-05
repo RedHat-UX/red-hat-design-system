@@ -26,9 +26,9 @@ export default tseslint.config(
       'docs/core',
       'docs/components',
       'docs/assets/playgrounds',
-      'docs/assets/javascript/elements/*.js.map',
-      'docs/assets/javascript/elements/*.d.ts',
-      'docs/assets/javascript/elements/*.js',
+      'docs/assets/javascript/elements/uxdot/*.js.map',
+      'docs/assets/javascript/elements/uxdot/*.d.ts',
+      'docs/assets/javascript/elements/uxdot/*.js',
       'node_modules',
 
       '!core/*/demo/*.js',

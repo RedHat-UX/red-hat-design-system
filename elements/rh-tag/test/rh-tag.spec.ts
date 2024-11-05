@@ -3,24 +3,18 @@ import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
 import { RhTag } from '../rh-tag.js';
 import { tokens } from '@rhds/tokens';
 
-import Color from 'colorjs.io';
-
 describe('<rh-tag>', async function() {
   let element: RhTag;
   let styles: CSSStyleDeclaration;
   let beforeStyles: CSSStyleDeclaration;
   let container: HTMLElement;
 
-  function getStyles(element) {
+  function getStyles(element: HTMLElement) {
     return getComputedStyle(element);
   }
 
-  function getBeforeStyles(element) {
+  function getBeforeStyles(element: HTMLElement) {
     return getComputedStyle(element, '::before');
-  }
-
-  function normalizeColor(color?: string | number) {
-    return new Color(color as string).toString();
   }
 
   describe('default', async function() {
@@ -47,17 +41,17 @@ describe('<rh-tag>', async function() {
 
     it('should have correct background color', function() {
       expect(styles.getPropertyValue('background-color'))
-          .to.be.colored(tokens.get('--rh-color-surface-lighter'));
+          .to.be.colored(tokens.get('--rh-color-surface-lighter')!);
     });
 
     it('should have correct border color', function() {
       expect(beforeStyles.getPropertyValue('border-color'))
-          .to.be.colored(tokens.get('--rh-color-gray-60'));
+          .to.be.colored(tokens.get('--rh-color-gray-60')!);
     });
 
     it('should have correct text color', function() {
       expect(styles.getPropertyValue('color'))
-          .to.be.colored(tokens.get('--rh-color-gray-70'));
+          .to.be.colored(tokens.get('--rh-color-gray-70')!);
     });
   });
 
@@ -73,17 +67,17 @@ describe('<rh-tag>', async function() {
 
     it('should have correct background color', function() {
       expect(styles.getPropertyValue('background-color'))
-          .to.be.colored(tokens.get('--rh-color-red-10'));
+          .to.be.colored(tokens.get('--rh-color-red-10')!);
     });
 
     it('should have correct border color', function() {
       expect(beforeStyles.getPropertyValue('border-color'))
-          .to.be.colored(tokens.get('--rh-color-red-60'));
+          .to.be.colored(tokens.get('--rh-color-red-60')!);
     });
 
     it('should have correct text color', function() {
       expect(styles.getPropertyValue('color'))
-          .to.be.colored(tokens.get('--rh-color-red-70'));
+          .to.be.colored(tokens.get('--rh-color-red-70')!);
     });
   });
 
