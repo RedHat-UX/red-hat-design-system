@@ -29,20 +29,20 @@ logos.
 
 ### Bordered
 
-<uxdot-example width-adjustment="1120px">
+<uxdot-example width-adjustment="1010px">
   <img src="../guidelines-variants-bordered.png"
       alt="An example of a bordered logo wall with 6 logos each inside of a bordered container."
       width="1120"
-      height="55">
+      height="110">
 </uxdot-example>
 
 ### Borderless
 
-<uxdot-example width-adjustment="1120px">
+<uxdot-example width-adjustment="1010px">
   <img src="../guidelines-variants-borderless.png"
       alt="An example of a borderless logo wall with 6 logos."
-      width="1120"
-      height="55">
+      width="1113"
+      height="110">
 </uxdot-example>
 
 ## Layout
