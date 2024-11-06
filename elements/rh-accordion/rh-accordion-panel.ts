@@ -1,6 +1,5 @@
 import { html, LitElement } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
-
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
@@ -8,12 +7,12 @@ import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/c
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
-
-import styles from './rh-accordion-panel.css';
+import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 
 import { consume } from '@lit/context';
 import { context, type RhAccordionContext } from './context.js';
 
+import styles from './rh-accordion-panel.css';
 /**
  * Accordion Panel
  *
@@ -54,6 +53,11 @@ export class RhAccordionPanel extends LitElement {
         <slot class="body"></slot>
       </div>
     `;
+  }
+
+  @observes('expanded')
+  private expandedChanged() {
+    this.hidden = !this.expanded;
   }
 }
 

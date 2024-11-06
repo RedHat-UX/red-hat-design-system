@@ -9,16 +9,16 @@ import { property } from 'lit/decorators/property.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 
+import { HeadingLevelController } from '@rhds/elements/lib/context/headings/controller.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
+
 import { DirController } from '../../lib/DirController.js';
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
 import { consume } from '@lit/context';
-
 import { context } from './context.js';
 
 import styles from './rh-accordion-header.css';
-import { HeadingLevelController } from '@rhds/elements/lib/context/headings/controller.js';
 
 export class AccordionHeaderChangeEvent extends Event {
   declare target: RhAccordionHeader;
@@ -49,6 +49,12 @@ const isAccordion = (x: EventTarget): x is RhAccordion =>
 export class RhAccordionHeader extends LitElement {
   static readonly styles = [styles];
 
+  // Allow focus to apply to shadow button
+  static override readonly shadowRootOptions: ShadowRootInit = {
+    ...LitElement.shadowRootOptions,
+    delegatesFocus: true,
+  };
+
   @property({ type: Boolean, reflect: true }) expanded = false;
 
   @consume({ context, subscribe: true })
@@ -67,12 +73,14 @@ export class RhAccordionHeader extends LitElement {
 
   #heading = new HeadingLevelController(this);
 
+  #belongsTo?: RhAccordion | null;
+
   override connectedCallback() {
     super.connectedCallback();
     this.id ||= getRandomId(this.localName);
-    const accordion = this.closest('rh-accordion');
+    this.#belongsTo = this.closest<RhAccordion>('rh-accordion');
     const heading = this.closest('h1,h2,h3,h4,h5,h6');
-    if (heading && accordion?.contains(heading)) {
+    if (heading && this.#belongsTo?.contains(heading)) {
       this.#internals.ariaLevel = heading.localName.replace('h', '');
       heading.replaceWith(this);
     } else {
@@ -104,16 +112,20 @@ export class RhAccordionHeader extends LitElement {
     `;
   }
 
-  #onClick(event: MouseEvent) {
-    const accordion = event.composedPath().find(isAccordion);
+  #onClick() {
+    this.expanded = !this.expanded;
+  }
+
+  #dispatchChange(accordion?: RhAccordion | null) {
     if (accordion) {
-      this.dispatchEvent(new AccordionHeaderChangeEvent(!this.expanded, this, accordion));
+      this.dispatchEvent(new AccordionHeaderChangeEvent(this.expanded, this, accordion));
     }
   }
 
   @observes('expanded')
   private expandedChanged() {
     this.#internals.ariaExpanded = String(!!this.expanded) as 'true' | 'false';
+    this.#dispatchChange(this.#belongsTo);
   }
 }
 
