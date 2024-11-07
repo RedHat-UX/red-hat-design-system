@@ -98,15 +98,6 @@ export class RhButton extends LitElement {
     }
   }
 
-  connectedCallback(): void {
-    super.connectedCallback();
-
-    // button should be focusable when disabled
-    if (this.disabled || this.#internals.formDisabled) {
-      this.#internals.ariaDisabled = 'true';
-    }
-  }
-
   override render() {
     const { danger, variant, on = 'light' } = this;
     const hasIcon = this.#hasIcon;
@@ -122,7 +113,8 @@ export class RhButton extends LitElement {
               part="button"
               type="${ifDefined(this.type)}"
               value="${ifDefined(this.value)}"
-              @click="${this.#onClick}"">
+              @click="${this.#onClick}"
+              aria-disabled=${String(!!this.disabled || !!this.#internals.formDisabled) as 'true' | 'false'}>
         <span aria-hidden="true">
           <slot id="icon"
                 part="icon"
