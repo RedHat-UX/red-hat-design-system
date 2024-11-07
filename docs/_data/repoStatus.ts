@@ -200,6 +200,18 @@ export default [
     },
   },
   {
+    tagName: 'rh-disclosure',
+    name: 'Disclosure',
+    type: 'element',
+    overallStatus: 'ready',
+    libraries: {
+      figma: 'ready',
+      rhds: 'ready',
+      shared: 'ready',
+      docs: 'ready',
+    },
+  },
+  {
     tagName: 'rh-footer',
     name: 'Footer',
     type: 'element',
