@@ -373,5 +373,5 @@ Vertical tabs switch to horizontal tabs with overflow buttons on small breakpoin
         height="56">
   </uxdot-example>
 
-  <p>Do not make overflow buttons visible if all tabs can comfortably fit and are visible.</p>
+  <p>Do not make overflow buttons visible if all tabs can comfortably fit.</p>
 </uxdot-best-practice>
