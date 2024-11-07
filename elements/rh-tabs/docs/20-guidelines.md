@@ -280,49 +280,98 @@ Vertical tabs switch to horizontal tabs with overflow buttons on small breakpoin
 
 ## Best practices
 
-### Not enough tabs
+### Minimum number of tabs
 
-There should be at least two tabs minimum.
+<div class="grid sm-two-columns">
+  <uxdot-best-practice variant="do">
+    <uxdot-example width-adjustment="426px" slot="image">
+      <img src="../tabs-best-practices-not-enough-tabs-do.svg"
+            alt="Groups of two tabs shown in the open and box variants"
+            width="426"
+            height="176">
+    </uxdot-example>
+    <p>There should always be at least two tabs.</p>
+  </uxdot-best-practice>
 
-<uxdot-example width-adjustment="872px" danger>
-  <img src="../tabs-best-practice-1.png"
-        alt="Image of horizontal open and box tabs with one tab each which is incorrect usage"
-        width="872"
-        height="178">
-</uxdot-example>
+  <uxdot-best-practice variant="dont">
+    <uxdot-example width-adjustment="426px" slot="image">
+      <img src="../tabs-best-practices-not-enough-tabs-dont.svg"
+            alt="One tab shown in the open and box variants"
+            width="426"
+            height="176">
+    </uxdot-example>
+    <p>Do not use only one tab.</p>
+  </uxdot-best-practice>
+</div>
 
+### Using many tabs
 
-### Too many tabs
+<uxdot-best-practice variant="do">
+  <uxdot-example slot="image" width-adjustment="1012px">
+    <img src="../tabs-best-practices-many-tabs-do.svg" 
+        alt="Group of five box tabs at a large breakpoint"
+        width="1012"
+        height="56">
+  </uxdot-example>
 
-Be careful about displaying too many tabs, some of them will become hidden even at large breakpoints.
+  <p>Use a reasonable number of tabs.</p>
+</uxdot-best-practice>
 
-<uxdot-example width-adjustment="872px" danger>
-  <img src="../tabs-best-practice-2.png"
-        alt="Image of horizontal tabs with five tabs and overflow buttons which is incorrect usage"
-        width="872"
-        height="57">
-</uxdot-example>
+<uxdot-best-practice variant="dont">
+  <uxdot-example slot="image" width-adjustment="1012px">
+    <img  src="../tabs-best-practices-many-tabs-dont.svg" 
+        alt="Group of six box tabs that overflow at a large breakpoint"
+        width="1012"
+        height="56">
+  </uxdot-example>
 
+  <p>Do not use too many tabs. In the horizontal orientation, be aware that including a lot of tabs may mean that the overflow layout will be triggered.</p>
+</uxdot-best-practice>
 
-### Extra spacing
+### Spacing and width
 
-Do not add extra spacing or stretch the width of tabs.
+<uxdot-best-practice variant="do">
+  <uxdot-example slot="image" width-adjustment="1012px">
+    <img src="../tabs-best-practices-spacing-do.svg" 
+        alt="Group of three tabs using the open variant's default styles"
+        width="1012"
+        height="56">
+  </uxdot-example>
 
-<uxdot-example width-adjustment="872px" danger>
-  <img src="../tabs-best-practice-3.png"
-        alt="Image of horizontal tabs with three tabs that are stretched which is incorrect usage"
-        width="872"
-        height="57">
-</uxdot-example>
+  <p>Retain the default spacing for tabs.</p>
+</uxdot-best-practice>
 
+<uxdot-best-practice variant="dont">
+  <uxdot-example slot="image" width-adjustment="1012px">
+    <img  src="../tabs-best-practices-spacing-dont.svg" 
+        alt="Group of three open variant tabs using very large padding"
+        width="1012"
+        height="56">
+  </uxdot-example>
+
+  <p>Do not add extra spacing or stretch the width of tabs.</p>
+</uxdot-best-practice>
 
 ### Overflow buttons
 
-Overflow buttons should not be visible if all tabs are visible.
+<uxdot-best-practice variant="do">
+  <uxdot-example slot="image" width-adjustment="568px">
+    <img src="../tabs-best-practices-overflow-buttons-do.svg" 
+        alt="Group of three open variant tabs flanked by overflow buttons"
+        width="568"
+        height="56">
+  </uxdot-example>
 
-<uxdot-example width-adjustment="872px" danger>
-  <img src="../tabs-best-practice-4.png"
-        alt="Image of horizontal tabs with three visible tabs and overflow buttons which is incorrect usage"
-        width="872"
-        height="57">
-</uxdot-example>
+  <p>Use overflow buttons if not all of the tabs can fit.</p>
+</uxdot-best-practice>
+
+<uxdot-best-practice variant="dont">
+  <uxdot-example slot="image" width-adjustment="568px">
+    <img  src="../tabs-best-practices-overflow-buttons-dont.svg" 
+        alt="Group of two open variant tabs flanked by overflow buttons"
+        width="568"
+        height="56">
+  </uxdot-example>
+
+  <p>Do not make overflow buttons visible if all tabs can comfortably fit and are visible.</p>
+</uxdot-best-practice>
