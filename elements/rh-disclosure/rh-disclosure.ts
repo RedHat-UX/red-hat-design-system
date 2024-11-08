@@ -8,7 +8,7 @@ import styles from './rh-disclosure.css';
  * @slot - Place the details, summary, and `.details-content` div here.
  */
 @customElement('rh-disclosure')
-class RhDisclosure extends LitElement {
+export class RhDisclosure extends LitElement {
   static readonly styles = [styles];
 
   render() {
