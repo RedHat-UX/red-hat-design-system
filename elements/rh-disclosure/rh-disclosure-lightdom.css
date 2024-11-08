@@ -1,6 +1,6 @@
 rh-disclosure {
   & details {
-    border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+    border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle, #c7c7c7);
     font-family: var(--rh-font-family-body-text);
 
     & .details-content {
@@ -42,7 +42,7 @@ rh-disclosure {
     box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
 
     & summary {
-      border-inline-color: var(--rh-color-accent-brand);
+      border-inline-color: var(--rh-color-brand-red-on-light, #ee0000);
 
       & rh-icon[icon='caret-down'] {
         transform: rotate(-180deg);
@@ -50,7 +50,7 @@ rh-disclosure {
     }
 
     & .details-content {
-      border-inline-color: var(--rh-color-accent-brand);
+      border-inline-color: var(--rh-color-brand-red-on-light, #ee0000);
     }
   }
 }
