@@ -4,7 +4,6 @@ rh-disclosure {
     font-family: var(--rh-font-family-body-text);
 
     & .details-content {
-      border-inline-start: var(--rh-border-width-lg, 3px) solid transparent;
       font-size: var(--rh-font-size-body-text-md, 1rem);
       line-height: var(--rh-line-height-body-text, 1.5);
       padding: var(--rh-space-xl, 24px);
@@ -18,7 +17,6 @@ rh-disclosure {
 
   & summary {
     align-items: center;
-    border-inline-start: var(--rh-border-width-lg, 3px) solid transparent;
     cursor: pointer;
     display: flex;
     font-size: var(--rh-font-size-body-text-md, 1rem);
@@ -40,17 +38,21 @@ rh-disclosure {
 
   details[open] {
     box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
+    position: relative;
+
+    &:before {
+      content: '';
+      border-inline-start: 3px solid var(--rh-color-brand-red-on-light, #ee0000);
+      position: absolute;
+      z-index: 1;
+      inset-inline-start: -1px;
+      inset-block: -1px;
+    }
 
     & summary {
-      border-inline-color: var(--rh-color-brand-red-on-light, #ee0000);
-
       & rh-icon[icon='caret-down'] {
         transform: rotate(-180deg);
       }
-    }
-
-    & .details-content {
-      border-inline-color: var(--rh-color-brand-red-on-light, #ee0000);
     }
   }
 }
