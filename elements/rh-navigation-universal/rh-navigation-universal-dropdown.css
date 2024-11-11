@@ -76,11 +76,11 @@ details[open] summary:before {
   padding: var(--rh-space-xl, 24px);
   position: absolute;
   text-align: start;
-  width: 300px;
+  inline-size: 300px;
 }
 
 @container nav-universal (min-width: 576px) {
   #details-content {
-    width: 500px;
+    inline-size: 500px;
   }
 }
