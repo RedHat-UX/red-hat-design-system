@@ -33,6 +33,7 @@ async function importModule(bareSpec: string) {
 
 await Promise
     .allSettled(imports.map(importModule))
+    // eslint-disable-next-line no-console
     .catch(console.error);
 
 class RHDSSSRableRenderer extends LitElementRenderer {
@@ -74,6 +75,13 @@ class UnsafeHTMLStringsArray extends Array {
   }
 }
 
+/**
+ * Render a page using lit-ssr
+ *
+ * @param opts
+ * @param opts.page
+ * @param opts.content
+ */
 export default async function renderPage({
   page,
   content,
