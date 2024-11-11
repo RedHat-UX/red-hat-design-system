@@ -11,18 +11,20 @@ import styles from './rh-disclosure.css';
 export class RhDisclosure extends LitElement {
   static readonly styles = [styles];
 
-  #details!: HTMLDetailsElement;
-  #summary!: HTMLElement;
+  #details?: HTMLDetailsElement;
+  #summary?: HTMLElement;
 
-  connectedCallback() {
-    super.connectedCallback();
+  firstUpdated() {
     this.#details = this.querySelector<HTMLDetailsElement>('details')!;
     this.#summary = this.querySelector<HTMLElement>('details summary')!;
-    this.#details.addEventListener('keydown', this.#closeDetails.bind(this));
+    this.#details?.addEventListener('keydown', this.#closeDetails.bind(this));
   }
 
   disconnectedCallback() {
-    this.#details.removeEventListener('keydown', this.#closeDetails.bind(this));
+    if (this.#details) {
+      this.#details.removeEventListener('keydown', this.#closeDetails.bind(this));
+    }
+    super.disconnectedCallback();
   }
 
   render() {
@@ -32,12 +34,14 @@ export class RhDisclosure extends LitElement {
   }
 
   #closeDetails(event: KeyboardEvent): void {
-    if (this.#details.open === false) {
+    if (this.#details?.open === false) {
       return;
     }
     if (event.code === 'Escape') {
-      this.#details.open = false;
-      this.#summary.focus();
+      if (this.#details) {
+        this.#details.open = false;
+      }
+      this.#summary?.focus();
     }
   }
 }
