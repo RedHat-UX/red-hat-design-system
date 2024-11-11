@@ -342,6 +342,7 @@
     "markdownlint-cli2": "^0.14.0",
     "parse5": "^7.2.0",
     "patch-package": "^8.0.0",
+    "piscina": "^4.7.0",
     "playground-elements": "^0.19.1",
     "postcss-pxtorem": "^6.1.0",
     "query-selector-shadow-dom": "^1.0.1",

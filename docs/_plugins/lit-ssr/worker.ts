@@ -1,7 +1,7 @@
 import type { LitElement, ReactiveController } from 'lit';
 import type { RenderInfo, RenderResult } from '@lit-labs/ssr';
 import type { RHDSSSRController } from '@rhds/elements/lib/ssr-controller.ts';
-import type { RenderRequestMessage } from './lit.js';
+import type { RenderRequestMessage, RenderResponseMessage } from './lit.js';
 
 import { LitElementRenderer } from '@lit-labs/ssr/lib/lit-element-renderer.js';
 
@@ -14,29 +14,26 @@ import { pathToFileURL } from 'node:url';
 import { html } from 'lit';
 import { render } from '@lit-labs/ssr';
 import { collectResult } from '@lit-labs/ssr/lib/render-result.js';
+import Piscina from 'piscina';
 
-import { getEachMessage, getOneMessage, sendMessage } from 'execa';
-
-const msg = await getOneMessage();
-
-const { imports, tsconfig } = msg as {
+interface WorkerInitData {
   imports: string[];
   tsconfig: string;
-};
+}
+
+const { imports, tsconfig } = Piscina.workerData as WorkerInitData;
 
 registerTS({ tsconfig });
 register('./lit-css-node.ts', import.meta.url);
 
-await Promise.all(imports.map(async function importModule(bareSpec: string) {
+async function importModule(bareSpec: string) {
   const spec = pathToFileURL(resolve(process.cwd(), bareSpec)).href.replace('.js', '.ts');
-  try {
-    await import(spec);
-  } catch (e) {
-    // eslint-disable-next-line no-console
-    console.error(spec, e);
-    throw e;
-  }
-}));
+  await import(spec);
+}
+
+await Promise
+    .allSettled(imports.map(importModule))
+    .catch(console.error);
 
 class RHDSSSRableRenderer extends LitElementRenderer {
   static isRHDSSSRController(ctrl: ReactiveController): ctrl is RHDSSSRController {
@@ -77,15 +74,15 @@ class UnsafeHTMLStringsArray extends Array {
   }
 }
 
-for await (const message of getEachMessage() as AsyncIterableIterator<RenderRequestMessage>) {
-  if (message.content) {
-    const start = performance.now();
-    const { page, content } = message;
-    const tpl = html(new UnsafeHTMLStringsArray(content));
-    const result = render(tpl, { elementRenderers, page } as unknown as RenderInfo);
-    const rendered = await collectResult(result);
-    const end = performance.now();
-    await sendMessage({ page, rendered, durationMs: end - start });
-  }
+export default async function renderPage({
+  page,
+  content,
+}: RenderRequestMessage): Promise<RenderResponseMessage> {
+  const start = performance.now();
+  const tpl = html(new UnsafeHTMLStringsArray(content));
+  const result = render(tpl, { elementRenderers, page } as unknown as RenderInfo);
+  const rendered = await collectResult(result);
+  const end = performance.now();
+  return { page, rendered, durationMs: end - start };
 }
 

@@ -1,9 +1,9 @@
 import type { EleventyPage } from '@11ty/eleventy/src/UserConfig.js';
 import type { UserConfig } from '@11ty/eleventy';
 
-import { $, execa, type ResultPromise } from 'execa';
 import { readFile, writeFile } from 'node:fs/promises';
 
+import { Piscina } from 'piscina';
 import tsBlankSpace from 'ts-blank-space';
 import chalk from 'chalk';
 
@@ -34,35 +34,37 @@ async function redactTSFileInPlace(path: string) {
 
 register('./lit-css-node.ts', import.meta.url);
 
+function isRenderMessage(x: unknown): x is RenderResponseMessage {
+  return !!x
+    && typeof x === 'object'
+    && 'page' in x
+    && !!x.page
+    && typeof x.page === 'object';
+}
+
 export default async function(eleventyConfig: UserConfig, opts?: Options) {
   const imports = opts?.componentModules ?? [];
   const tsconfig = opts?.tsconfig ?? './tsconfig.json';
 
-  let proc: ResultPromise<{ node: true; ipc: true; all: true }>;
+  let pool: Piscina;
 
   // If there are no component modules, we could never have anything to
   // render.
   if (imports?.length) {
     eleventyConfig.on('eleventy.before', async function() {
       await redactTSFileInPlace('./worker.ts');
-      const $$ = execa({
-        node: true,
-        all: true,
-        ipcInput: {
+      const filename = new URL('worker.js', import.meta.url).pathname;
+      pool = new Piscina({
+        filename,
+        workerData: {
           imports,
           tsconfig,
         },
       });
-      proc = $$`docs/_plugins/lit-ssr/worker.js`;
     });
 
-    eleventyConfig.on('eleventy.after', async function({ runMode }) {
-      switch (runMode) {
-        case 'build':
-          proc.disconnect();
-          // eslint-disable-next-line no-console
-          console.log((await proc).all);
-      }
+    eleventyConfig.on('eleventy.after', async function() {
+      return pool.close();
     });
 
     eleventyConfig.addTransform('render-lit', async function(this, content) {
@@ -73,10 +75,7 @@ export default async function(eleventyConfig: UserConfig, opts?: Options) {
       }
 
       const page = { outputPath, inputPath };
-      proc.sendMessage({ page, content });
-      const message = await proc.getOneMessage({
-        filter: msg => (msg as RenderResponseMessage).page?.outputPath === outputPath,
-      }) as RenderResponseMessage;
+      const message = await pool.run({ page, content });
       if (message.rendered) {
         const { durationMs, rendered, page } = message;
         if (durationMs > 1000) {
