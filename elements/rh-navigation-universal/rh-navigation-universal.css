@@ -20,7 +20,7 @@
 }
 
 @container nav-universal (min-width: 1200px) {
-  :host([variant='bordered']) #container {
+  #container {
     justify-content: space-between;
   }
 
@@ -69,8 +69,5 @@
 ::slotted(ul) {
   margin-block: 0 !important;
   padding-inline-start: 0 !important;
-}
-
-:host([variant='bordered']) ::slotted(ul) {
   text-align: end;
 }

@@ -24,9 +24,7 @@ export class RhNavigationUniversalDropdown extends LitElement {
     return html`
       <details @keydown=${this.#closeDetails}>
         <summary>
-          <span id="summary-shift">
-            <slot name="summary-label">All Red Hat</slot>
-          </span>
+          <slot name="summary-label">All Red Hat</slot>
         </summary>
         <div id="details-content">
           <slot></slot>

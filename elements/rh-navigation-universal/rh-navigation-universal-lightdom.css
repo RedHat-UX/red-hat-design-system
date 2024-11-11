@@ -19,6 +19,7 @@ rh-navigation-universal > ul > li:not(:last-child) {
 }
 
 rh-navigation-universal > ul > li > a {
+  border-block-start: var(--rh-border-width-lg, 3px) solid transparent;
   color: var(--rh-color-white, #ffffff);
   display: inline-block;
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
@@ -28,8 +29,8 @@ rh-navigation-universal > ul > li > a {
 }
 
 rh-navigation-universal > ul > li > a:hover {
+  border-block-start-color: var(--rh-color-border-subtle);
   cursor: pointer;
-  text-decoration: underline;
 }
 
 rh-navigation-universal > ul > li > a:focus-visible {
@@ -37,25 +38,17 @@ rh-navigation-universal > ul > li > a:focus-visible {
   outline-offset: -1px;
 }
 
-rh-navigation-universal[variant='bordered'] > ul > li > a {
-  border-block-start: var(--rh-border-width-lg, 3px) solid transparent;
+rh-navigation-universal-dropdown :is(p, a, li) {
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
 }
 
-rh-navigation-universal[variant='bordered'] [slot='personalization-link'] a {
+/* stylelint-disable-next-line no-descending-specificity */
+rh-navigation-universal [slot='personalization-link'] a {
   color: white;
   text-decoration: none;
 }
 
-rh-navigation-universal[variant='bordered'] > ul > li > a:hover {
-  border-block-start-color: var(--rh-color-border-subtle);
-  text-decoration: none;
-}
-
-rh-navigation-universal[variant='bordered'] [slot='personalization-link'] a:is(:hover, :focus) {
+rh-navigation-universal [slot='personalization-link'] a:is(:hover, :focus) {
   text-decoration: underline;
-}
-
-rh-navigation-universal-dropdown :is(p, a, li) {
-  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
-  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
 }

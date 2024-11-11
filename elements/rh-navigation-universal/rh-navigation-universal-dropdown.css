@@ -1,5 +1,6 @@
 :host {
   display: inline-block;
+  line-height: 1;
 }
 
 details {
@@ -16,6 +17,7 @@ summary {
   padding: var(--rh-space-md, 8px);
   position: relative;
   user-select: none;
+  padding-inline-end: var(--rh-space-xl, 24px);
 }
 
 summary::-webkit-details-marker,
@@ -35,27 +37,23 @@ summary:focus-visible {
   outline-offset: -1px;
 }
 
-#summary-shift {
-  inset-inline-start: -16px;
-  padding-inline-start: var(--rh-space-lg, 16px);
-  position: relative;
-}
-
-#summary-shift:after {
+summary:after {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M18.7 5.3c-.4-.4-1-.4-1.4 0L10 12.6 2.7 5.3c-.4-.4-1-.4-1.4 0-.4.4-.4 1 0 1.4s7.6 7.7 7.6 7.7c.3.3.7.4 1.1.4s.8-.1 1.1-.4l7.6-7.7c.4-.4.4-1 0-1.4Z' style='fill:%23fff'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-size: var(--_rh-navigation-universal-caret-size);
   content: '';
   display: inline-block;
-  height: var(--_rh-navigation-universal-caret-size);
-  inset-block-start: var(--rh-space-xs, 4px);
-  inset-inline-end: -18px;
+  block-size: var(--_rh-navigation-universal-caret-size);
+  inline-size: var(--_rh-navigation-universal-caret-size);
+  inset-block-start: 10px;
+  inset-inline-end: var(--rh-space-xs, 4px);
   position: absolute;
-  width: var(--_rh-navigation-universal-caret-size);
+  transition: 0.2s;
+  will-change: rotate;
 }
 
-details[open] #summary-shift:after {
-  rotate: 180deg;
+details[open] summary:after {
+  rotate: -180deg;
 }
 
 /* https://penote.com/html5/closing-html-details-tag-on-click-outside-with-only-css/ */
@@ -73,8 +71,8 @@ details[open] summary:before {
   background-color: var(--rh-color-surface-lightest, #ffffff);
   box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
   color: var(--rh-color-text-primary);
-  inset-block-start: 41px;
-  inset-inline-end: -1px;
+  inset-block-start: 38px;
+  inset-inline-end: 0;
   padding: var(--rh-space-xl, 24px);
   position: absolute;
   text-align: start;

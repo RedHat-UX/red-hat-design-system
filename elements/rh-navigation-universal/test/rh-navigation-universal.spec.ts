@@ -32,7 +32,7 @@ describe('<rh-navigation-universal>', function() {
     let element: RhNavigationUniversal;
     beforeEach(async function() {
       element = await createFixture<RhNavigationUniversal>(html`
-        <rh-navigation-universal variant="bordered" accessible-label="Global Nav">
+        <rh-navigation-universal accessible-label="Global Nav">
           <ul>
             <li><a href="https://access.redhat.com/">Support</a></li>
             <li><a href="https://docs.redhat.com/en">Documentation</a></li>
