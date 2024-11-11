@@ -56,11 +56,13 @@ export default async function(eleventyConfig: UserConfig, opts?: Options) {
       proc = $$`docs/_plugins/lit-ssr/worker.js`;
     });
 
-    eleventyConfig.on('eleventy.after', async function() {
-      proc.disconnect();
-      const result = (await proc);
-      // eslint-disable-next-line no-console
-      console.log(result.all);
+    eleventyConfig.on('eleventy.after', async function({ runMode }) {
+      switch (runMode) {
+        case 'build':
+          proc.disconnect();
+          // eslint-disable-next-line no-console
+          console.log((await proc).all);
+      }
     });
 
     eleventyConfig.addTransform('render-lit', async function(this, content) {
