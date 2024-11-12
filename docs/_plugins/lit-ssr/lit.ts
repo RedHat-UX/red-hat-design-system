@@ -34,14 +34,11 @@ async function redactTSFileInPlace(path: string) {
 
 register('./lit-css-node.ts', import.meta.url);
 
-function isRenderMessage(x: unknown): x is RenderResponseMessage {
-  return !!x
-    && typeof x === 'object'
-    && 'page' in x
-    && !!x.page
-    && typeof x.page === 'object';
-}
-
+/**
+ * Eleventy plugin to server-render lit elements directly from typescript source
+ * @param eleventyConfig
+ * @param opts
+ */
 export default async function(eleventyConfig: UserConfig, opts?: Options) {
   const imports = opts?.componentModules ?? [];
   const tsconfig = opts?.tsconfig ?? './tsconfig.json';
