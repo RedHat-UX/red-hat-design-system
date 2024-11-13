@@ -27,6 +27,8 @@ rh-disclosure {
     padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
 
     & rh-icon[icon='caret-down'] {
+      inline-size: var(--rh-space-lg, 16px);
+      block-size: var(--rh-space-lg, 16px);
       transition: 0.2s;
       will-change: rotate;
     }
@@ -50,10 +52,8 @@ rh-disclosure {
       inset-block: -1px;
     }
 
-    & summary {
-      & rh-icon[icon='caret-down'] {
-        transform: rotate(-180deg);
-      }
+    & > summary rh-icon[icon='caret-down'] {
+      transform: rotate(-180deg);
     }
   }
 }
