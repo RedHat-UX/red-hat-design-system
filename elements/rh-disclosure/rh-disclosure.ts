@@ -7,6 +7,7 @@ import styles from './rh-disclosure.css';
  * @summary A disclosure is a widget that enables content to be either collapsed (hidden) or expanded (visible).
  * @slot - Place the `details`, `summary`, and `.details-content` elements in the default slot.
  */
+
 @customElement('rh-disclosure')
 export class RhDisclosure extends LitElement {
   static readonly styles = [styles];
@@ -17,12 +18,12 @@ export class RhDisclosure extends LitElement {
   firstUpdated() {
     this.#details = this.querySelector<HTMLDetailsElement>('details')!;
     this.#summary = this.querySelector<HTMLElement>('details summary')!;
-    this.#details?.addEventListener('keydown', this.#closeDetails.bind(this));
+    this.#details?.addEventListener('keydown', this.#handleKeyDown.bind(this));
   }
 
   disconnectedCallback() {
     if (this.#details) {
-      this.#details.removeEventListener('keydown', this.#closeDetails.bind(this));
+      this.#details.removeEventListener('keydown', this.#handleKeyDown.bind(this));
     }
     super.disconnectedCallback();
   }
@@ -33,14 +34,16 @@ export class RhDisclosure extends LitElement {
     `;
   }
 
-  #closeDetails(event: KeyboardEvent): void {
-    if (this.#details?.open === false) {
-      return;
-    }
+  #handleKeyDown(event: KeyboardEvent): void {
     if (event.code === 'Escape') {
-      if (this.#details) {
-        this.#details.open = false;
-      }
+      event.stopPropagation();
+      this.#closeDetails();
+    }
+  }
+
+  #closeDetails(): void {
+    if (this.#details?.open) {
+      this.#details.open = false;
       this.#summary?.focus();
     }
   }

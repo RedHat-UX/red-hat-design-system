@@ -1,0 +1,44 @@
+<rh-disclosure>
+  <details>
+    <summary>
+      <rh-icon set="ui" icon="caret-down"></rh-icon>
+      This is the top level disclosure
+    </summary>
+    <div class="details-content"> <!-- `.details-content` class required -->
+      <p>Be sure to test the ESC key + focus when nesting disclosures together. Lorem ipsum dolor <a href="#">fake link</a> adipisicing, elit.</p>
+
+      <rh-disclosure>
+        <details>
+          <summary>
+            <rh-icon set="ui" icon="caret-down"></rh-icon>
+            Be sure to open this disclosure
+          </summary>
+          <div class="details-content"> <!-- `.details-content` class required -->
+            <p>You can hit escape to test focus and see which details element closes!</p>
+
+            <rh-disclosure>
+              <details>
+                <summary>
+                  <rh-icon set="ui" icon="caret-down"></rh-icon>
+                  Third nested disclosure
+                </summary>
+                <div class="details-content"> <!-- `.details-content` class required -->
+                  <p>This is nesting! <a href="#">fake link 2</a> and more text.</p>
+                </div>
+              </details>
+            </rh-disclosure>
+
+          </div>
+        </details>
+      </rh-disclosure>
+
+    </div>
+  </details>
+</rh-disclosure>
+
+<link rel="stylesheet" href="../rh-disclosure-lightdom.css">
+
+<script type="module">
+  import '@rhds/elements/rh-disclosure/rh-disclosure.js';
+  import '@rhds/elements/rh-icon/rh-icon.js';
+</script>
