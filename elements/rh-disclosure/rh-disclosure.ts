@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 
 import styles from './rh-disclosure.css';
@@ -18,11 +18,13 @@ export class RhDisclosure extends LitElement {
   firstUpdated() {
     this.#details = this.querySelector<HTMLDetailsElement>('details')!;
     this.#summary = this.querySelector<HTMLElement>('details summary')!;
-    this.#details?.addEventListener('keydown', this.#handleKeyDown.bind(this));
+    if (!isServer) {
+      this.#details?.addEventListener('keydown', this.#handleKeyDown.bind(this));
+    }
   }
 
   disconnectedCallback() {
-    if (this.#details) {
+    if (!isServer && this.#details) {
       this.#details.removeEventListener('keydown', this.#handleKeyDown.bind(this));
     }
     super.disconnectedCallback();
