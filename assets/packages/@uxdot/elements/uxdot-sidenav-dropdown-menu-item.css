@@ -1,5 +1,0 @@
-a {
-  text-transform: capitalize;
-  padding: var(--rh-space-md) 0 var(--rh-space-md) var(--rh-space-lg);
-  font-size: var(--rh-font-size-body-text-md);
-}

@@ -1,1 +1,0 @@
-const t = document.createElement('template');t.innerHTML=`<!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36"><circle cx="18" cy="18" r="14.625"/></svg>`;export default t.content.cloneNode(true);
