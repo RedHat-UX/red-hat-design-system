@@ -1,0 +1,8 @@
+<svg id="_8px-with-number" data-name="8px-with-number" xmlns="http://www.w3.org/2000/svg" width="8" height="9" viewBox="0 0 8 9">
+  <rect id="Rectangle" width="8" height="8" transform="translate(0 1)" fill="#fff"/>
+  <g id="Rectangle-2" data-name="Rectangle" transform="translate(0 1)" fill="rgba(155,217,23,0.1)" stroke="#9bd917" stroke-width="1" stroke-dasharray="3 2">
+    <rect width="8" height="8" stroke="none"/>
+    <rect x="0.5" y="0.5" width="7" height="7" fill="none"/>
+  </g>
+  <text id="_8" data-name="8" transform="translate(2 7)" fill="#a8d747" font-size="6.5" font-family="RedHatMono-Medium, Red Hat Mono" font-weight="500"><tspan x="0" y="0">8</tspan></text>
+</svg>

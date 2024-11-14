@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="340" height="200" viewBox="0 0 340 200">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="14" height="14" fill="none"/>
+    </clipPath>
+    <filter id="Rectangle" x="2" y="4" width="336" height="94" filterUnits="userSpaceOnUse">
+      <feOffset dy="2" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feFlood flood-color="#151515" flood-opacity="0.2"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <clipPath id="clip-navigation-secondary">
+      <rect width="340" height="200"/>
+    </clipPath>
+  </defs>
+  <g id="navigation-secondary" clip-path="url(#clip-navigation-secondary)">
+    <rect width="340" height="200" fill="#fff"/>
+    <g id="Image" transform="translate(-424 -667)">
+      <rect id="Rectangle-2" data-name="Rectangle" width="340" height="200" transform="translate(424 667)" fill="#fff"/>
+      <g id="Stack" transform="translate(0 8)">
+        <g id="Tablet_landscape_-_dark_theme" data-name="Tablet, landscape - dark theme" transform="translate(432 769)">
+          <rect id="Rectangle-3" data-name="Rectangle" width="324" height="82" fill="#3c3f42"/>
+          <rect id="Rectangle-4" data-name="Rectangle" width="324" height="1" transform="translate(0 81)" fill="#6a6e73"/>
+          <g id="Default_light_blue_-_dark_theme" data-name="Default, light blue - dark theme" transform="translate(197 28)">
+            <g id="Call_to_action" data-name="Call to action">
+              <g id="Arrow_icon_-_light_blue" data-name="Arrow icon - light blue" transform="translate(89 7)" clip-path="url(#clip-path)">
+                <path id="Arrow" d="M7,0,5.6,1.4,10.3,6H0V8H10.3L5.6,12.6,7,14l7-7Z" fill="#73bcf7"/>
+              </g>
+              <g id="Text">
+                <rect id="Rectangle-5" data-name="Rectangle" width="81" height="27" fill="none"/>
+                <text id="Start_trial" data-name="Start trial" transform="translate(0 20)" fill="#73bcf7" font-size="18" font-family="RedHatDisplay-Bold, Red Hat Display" font-weight="700"><tspan x="0" y="0">Start trial</tspan></text>
+              </g>
+            </g>
+          </g>
+          <text id="Red_Hat_Enterprise_Linux" data-name="Red Hat
+Enterprise Linux" transform="translate(24 34)" fill="#fff" font-size="18" font-family="RedHatDisplay-Medium, Red Hat Display" font-weight="500" letter-spacing="0.01em"><tspan x="0" y="0">Red Hat</tspan><tspan x="0" y="27">Enterprise Linux</tspan></text>
+        </g>
+        <g id="Tablet_landscape_-_light_theme" data-name="Tablet, landscape - light theme" transform="translate(432 667)">
+          <g transform="matrix(1, 0, 0, 1, -8, -8)" filter="url(#Rectangle)">
+            <rect id="Rectangle-6" data-name="Rectangle" width="324" height="82" transform="translate(8 8)" fill="#f0f0f0"/>
+          </g>
+          <g id="Default_blue_-_light_theme" data-name="Default, blue - light theme" transform="translate(179 28)">
+            <g id="Call_to_action-2" data-name="Call to action">
+              <g id="Arrow_icon_-_blue" data-name="Arrow icon - blue" transform="translate(107 7)" clip-path="url(#clip-path)">
+                <path id="Arrow-2" data-name="Arrow" d="M7,0,5.6,1.4,10.3,6H0V8H10.3L5.6,12.6,7,14l7-7Z" fill="#06c"/>
+              </g>
+              <g id="Text-2" data-name="Text" transform="translate(0 2)">
+                <rect id="Rectangle-7" data-name="Rectangle" width="99" height="27" transform="translate(0 -2)" fill="none"/>
+                <text id="Get_started" data-name="Get started" transform="translate(0 18)" fill="#06c" font-size="18" font-family="RedHatDisplay-Bold, Red Hat Display" font-weight="700"><tspan x="0" y="0">Get started</tspan></text>
+              </g>
+            </g>
+          </g>
+          <text id="Red_Hat_OpenShift" data-name="Red Hat
+OpenShift" transform="translate(24 34)" fill="#151515" font-size="18" font-family="RedHatDisplay-Medium, Red Hat Display" font-weight="500" letter-spacing="0.01em"><tspan x="0" y="0">Red Hat</tspan><tspan x="0" y="27">OpenShift</tspan></text>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

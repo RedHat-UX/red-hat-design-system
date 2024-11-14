@@ -1,0 +1,5095 @@
+{
+  "rh-animation-speed": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhanimationspeed"
+    ],
+    "body": [
+      "var(--rh-animation-speed${1:, 0.3s})$2"
+    ]
+  },
+  "rh-animation-timing": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhanimationtiming"
+    ],
+    "body": [
+      "var(--rh-animation-timing${1:, cubic-bezier(0.465, 0.183, 0.153, 0.946)})$2"
+    ]
+  },
+  "rh-border-width-sm": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhborderwidthsm"
+    ],
+    "body": [
+      "var(--rh-border-width-sm${1:, 1px})$2"
+    ],
+    "description": "1px border width; Example: Secondary CTA or Button"
+  },
+  "rh-border-width-md": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhborderwidthmd"
+    ],
+    "body": [
+      "var(--rh-border-width-md${1:, 2px})$2"
+    ],
+    "description": "2px border width: Example: Alert"
+  },
+  "rh-border-width-lg": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhborderwidthlg"
+    ],
+    "body": [
+      "var(--rh-border-width-lg${1:, 3px})$2"
+    ],
+    "description": "3px border width: Example: Expanded Accordion panel"
+  },
+  "rh-border-radius-sharp": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhborderradiussharp"
+    ],
+    "body": [
+      "var(--rh-border-radius-sharp${1:, 0.0px})$2"
+    ],
+    "description": "Border radius reset"
+  },
+  "rh-border-radius-default": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhborderradiusdefault"
+    ],
+    "body": [
+      "var(--rh-border-radius-default${1:, 3px})$2"
+    ],
+    "description": "3px border radius; Example: Card"
+  },
+  "rh-border-radius-pill": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhborderradiuspill"
+    ],
+    "body": [
+      "var(--rh-border-radius-pill${1:, 64px})$2"
+    ],
+    "description": "Pill border radius; Example: Label"
+  },
+  "rh-breakpoint-2xs-max": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhbreakpoint2xsmax"
+    ],
+    "body": [
+      "var(--rh-breakpoint-2xs-max${1:, 575px})$2"
+    ],
+    "description": "Mobile portrait (max-width)"
+  },
+  "rh-breakpoint-xs": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhbreakpointxs"
+    ],
+    "body": [
+      "var(--rh-breakpoint-xs${1:, 576px})$2"
+    ],
+    "description": "Mobile portrait"
+  },
+  "rh-breakpoint-xs-max": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhbreakpointxsmax"
+    ],
+    "body": [
+      "var(--rh-breakpoint-xs-max${1:, 767px})$2"
+    ],
+    "description": "Mobile landscape (max-width)"
+  },
+  "rh-breakpoint-sm": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhbreakpointsm"
+    ],
+    "body": [
+      "var(--rh-breakpoint-sm${1:, 768px})$2"
+    ],
+    "description": "Mobile landscape"
+  },
+  "rh-breakpoint-sm-max": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhbreakpointsmmax"
+    ],
+    "body": [
+      "var(--rh-breakpoint-sm-max${1:, 991px})$2"
+    ],
+    "description": "Mobile landscape (max-width)"
+  },
+  "rh-breakpoint-md": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhbreakpointmd"
+    ],
+    "body": [
+      "var(--rh-breakpoint-md${1:, 992px})$2"
+    ],
+    "description": "Tablet portrait"
+  },
+  "rh-breakpoint-md-max": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhbreakpointmdmax"
+    ],
+    "body": [
+      "var(--rh-breakpoint-md-max${1:, 1199px})$2"
+    ],
+    "description": "Tablet portrait (max-width)"
+  },
+  "rh-breakpoint-lg": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhbreakpointlg"
+    ],
+    "body": [
+      "var(--rh-breakpoint-lg${1:, 1200px})$2"
+    ],
+    "description": "Tablet landscape"
+  },
+  "rh-breakpoint-lg-max": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhbreakpointlgmax"
+    ],
+    "body": [
+      "var(--rh-breakpoint-lg-max${1:, 1439px})$2"
+    ],
+    "description": "Tablet landscape (max-width)"
+  },
+  "rh-breakpoint-xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhbreakpointxl"
+    ],
+    "body": [
+      "var(--rh-breakpoint-xl${1:, 1440px})$2"
+    ],
+    "description": "Desktop small"
+  },
+  "rh-breakpoint-xl-max": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhbreakpointxlmax"
+    ],
+    "body": [
+      "var(--rh-breakpoint-xl-max${1:, 1679px})$2"
+    ],
+    "description": "Desktop small (max-width)"
+  },
+  "rh-breakpoint-2xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhbreakpoint2xl"
+    ],
+    "body": [
+      "var(--rh-breakpoint-2xl${1:, 1680px})$2"
+    ],
+    "description": "Desktop large"
+  },
+  "rh-color-accent-base": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloraccentbase"
+    ],
+    "body": [
+      "var(--rh-color-accent-base)$2"
+    ],
+    "description": "Responsive `accent-base` color value. Typically read only - use a themable container e.g. `<rh-surface>` Resolves to `--rh-color-accent-base-on-light` on a themable container with a light color palette and `--rh-color-accent-base-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-accent-base-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloraccentbaseonlight",
+      "0066cc"
+    ],
+    "body": [
+      "var(--rh-color-accent-base-on-light${1:, #0066cc})$2"
+    ],
+    "description": "Inline link (light theme)"
+  },
+  "rh-color-accent-base-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloraccentbaseondark",
+      "92c5f9"
+    ],
+    "body": [
+      "var(--rh-color-accent-base-on-dark${1:, #92c5f9})$2"
+    ],
+    "description": "Inline link (dark theme)"
+  },
+  "rh-color-accent-brand": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloraccentbrand"
+    ],
+    "body": [
+      "var(--rh-color-accent-brand)$2"
+    ],
+    "description": "Responsive `accent-brand` color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-accent-brand-on-light` on a themable container with a light color palette and `--rh-color-accent-brand-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-accent-brand-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloraccentbrandonlight",
+      "ee0000"
+    ],
+    "body": [
+      "var(--rh-color-accent-brand-on-light${1:, #ee0000})$2"
+    ],
+    "description": "Brand red (light theme)"
+  },
+  "rh-color-accent-brand-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloraccentbrandondark",
+      "ee0000"
+    ],
+    "body": [
+      "var(--rh-color-accent-brand-on-dark${1:, #ee0000})$2"
+    ],
+    "description": "Brand red (dark theme)"
+  },
+  "rh-color-border-strong": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorborderstrong"
+    ],
+    "body": [
+      "var(--rh-color-border-strong)$2"
+    ],
+    "description": "Responsive `border-strong` color value. Typically read only - use a themable container e.g. `<rh-surface>` Resolves to `--rh-color-border-strong-on-light` on a themable container with a light color palette and `--rh-color-border-strong-on-dark` on a themable container with a dark color palette"
+  },
+  "rh-color-border-strong-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorborderstrongonlight",
+      "151515"
+    ],
+    "body": [
+      "var(--rh-color-border-strong-on-light${1:, #151515})$2"
+    ],
+    "description": "Strong border color (light theme)"
+  },
+  "rh-color-border-strong-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorborderstrongondark",
+      "ffffff"
+    ],
+    "body": [
+      "var(--rh-color-border-strong-on-dark${1:, #ffffff})$2"
+    ],
+    "description": "Strong border color (dark theme)"
+  },
+  "rh-color-border-subtle": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorbordersubtle"
+    ],
+    "body": [
+      "var(--rh-color-border-subtle)$2"
+    ],
+    "description": "Responsive `border-subtle` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-subtle-on-light` on a themable container with a light color palette and `--rh-color-border-subtle-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-border-subtle-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorbordersubtleonlight",
+      "c7c7c7"
+    ],
+    "body": [
+      "var(--rh-color-border-subtle-on-light${1:, #c7c7c7})$2"
+    ],
+    "description": "Subtle border color (light theme)"
+  },
+  "rh-color-border-subtle-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorbordersubtleondark",
+      "707070"
+    ],
+    "body": [
+      "var(--rh-color-border-subtle-on-dark${1:, #707070})$2"
+    ],
+    "description": "Subtle border color (dark theme)"
+  },
+  "rh-color-border-interactive": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorborderinteractive"
+    ],
+    "body": [
+      "var(--rh-color-border-interactive)$2"
+    ],
+    "description": "Responsive `border-interactive` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-interactive-on-light` on a themable container with a light color palette and `--rh-color-border-interactive-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-border-interactive-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorborderinteractiveonlight",
+      "0066cc"
+    ],
+    "body": [
+      "var(--rh-color-border-interactive-on-light${1:, #0066cc})$2"
+    ],
+    "description": "Interactive border color (light theme)"
+  },
+  "rh-color-border-interactive-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorborderinteractiveondark",
+      "92c5f9"
+    ],
+    "body": [
+      "var(--rh-color-border-interactive-on-dark${1:, #92c5f9})$2"
+    ],
+    "description": "Interactive border color (dark theme)"
+  },
+  "rh-color-border-destructive": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorborderdestructive"
+    ],
+    "body": [
+      "var(--rh-color-border-destructive)$2"
+    ],
+    "description": "Responsive `border-destructive` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-destructive-on-light` on a themable container with a light color palette and `--rh-color-border-destructive-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-border-destructive-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorborderdestructiveonlight",
+      "b1380b"
+    ],
+    "body": [
+      "var(--rh-color-border-destructive-on-light${1:, #b1380b})$2"
+    ],
+    "description": "Destructive border color (light theme)"
+  },
+  "rh-color-border-destructive-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorborderdestructiveondark",
+      "f0561d"
+    ],
+    "body": [
+      "var(--rh-color-border-destructive-on-dark${1:, #f0561d})$2"
+    ],
+    "description": "Destructive border color (dark theme)"
+  },
+  "rh-color-border-status-danger": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorborderstatusdanger"
+    ],
+    "body": [
+      "var(--rh-color-border-status-danger)$2"
+    ],
+    "description": "Responsive `border-danger` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-danger-on-light` on a themable container with a light color palette and `--rh-color-border-danger-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-border-status-danger-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorborderstatusdangeronlight",
+      "b1380b"
+    ],
+    "body": [
+      "var(--rh-color-border-status-danger-on-light${1:, #b1380b})$2"
+    ],
+    "description": "Danger border color (light theme)"
+  },
+  "rh-color-border-status-danger-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorborderstatusdangerondark",
+      "f0561d"
+    ],
+    "body": [
+      "var(--rh-color-border-status-danger-on-dark${1:, #f0561d})$2"
+    ],
+    "description": "Danger border color (dark theme)"
+  },
+  "rh-color-border-status-caution": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorborderstatuscaution"
+    ],
+    "body": [
+      "var(--rh-color-border-status-caution)$2"
+    ],
+    "description": "Responsive `border-caution` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-caution-on-light` on a themable container with a light color palette and `--rh-color-border-caution-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-border-status-caution-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorborderstatuscautiononlight",
+      "ca6c0f"
+    ],
+    "body": [
+      "var(--rh-color-border-status-caution-on-light${1:, #ca6c0f})$2"
+    ],
+    "description": "Caution border color (light theme)"
+  },
+  "rh-color-border-status-caution-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorborderstatuscautionondark",
+      "f5921b"
+    ],
+    "body": [
+      "var(--rh-color-border-status-caution-on-dark${1:, #f5921b})$2"
+    ],
+    "description": "Caution border color (dark theme)"
+  },
+  "rh-color-border-status-warning": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorborderstatuswarning"
+    ],
+    "body": [
+      "var(--rh-color-border-status-warning)$2"
+    ],
+    "description": "Responsive `border-warning` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-warning-on-light` on a themable container with a light color palette and `--rh-color-border-warning-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-border-status-warning-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorborderstatuswarningonlight",
+      "dca614"
+    ],
+    "body": [
+      "var(--rh-color-border-status-warning-on-light${1:, #dca614})$2"
+    ],
+    "description": "Warning border color (light theme)"
+  },
+  "rh-color-border-status-warning-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorborderstatuswarningondark",
+      "ffcc17"
+    ],
+    "body": [
+      "var(--rh-color-border-status-warning-on-dark${1:, #ffcc17})$2"
+    ],
+    "description": "Warning border color (dark theme)"
+  },
+  "rh-color-border-status-neutral": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorborderstatusneutral"
+    ],
+    "body": [
+      "var(--rh-color-border-status-neutral)$2"
+    ],
+    "description": "Responsive `border-neutral` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-neutral-on-light` on a themable container with a light color palette and `--rh-color-border-neutral-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-border-status-neutral-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorborderstatusneutralonlight",
+      "4d4d4d"
+    ],
+    "body": [
+      "var(--rh-color-border-status-neutral-on-light${1:, #4d4d4d})$2"
+    ],
+    "description": "Neutral border color (light theme)"
+  },
+  "rh-color-border-status-neutral-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorborderstatusneutralondark",
+      "c7c7c7"
+    ],
+    "body": [
+      "var(--rh-color-border-status-neutral-on-dark${1:, #c7c7c7})$2"
+    ],
+    "description": "Neutral border color (dark theme)"
+  },
+  "rh-color-border-status-info": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorborderstatusinfo"
+    ],
+    "body": [
+      "var(--rh-color-border-status-info)$2"
+    ],
+    "description": "Responsive `border-info` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-info-on-light` on a themable container with a light color palette and `--rh-color-border-info-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-border-status-info-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorborderstatusinfoonlight",
+      "5e40be"
+    ],
+    "body": [
+      "var(--rh-color-border-status-info-on-light${1:, #5e40be})$2"
+    ],
+    "description": "Info border color (light theme)"
+  },
+  "rh-color-border-status-info-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorborderstatusinfoondark",
+      "b6a6e9"
+    ],
+    "body": [
+      "var(--rh-color-border-status-info-on-dark${1:, #b6a6e9})$2"
+    ],
+    "description": "Info border color (dark theme)"
+  },
+  "rh-color-border-status-success": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorborderstatussuccess"
+    ],
+    "body": [
+      "var(--rh-color-border-status-success)$2"
+    ],
+    "description": "Responsive `border-success` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-success-on-light` on a themable container with a light color palette and `--rh-color-border-success-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-border-status-success-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorborderstatussuccessonlight",
+      "3d7317"
+    ],
+    "body": [
+      "var(--rh-color-border-status-success-on-light${1:, #3d7317})$2"
+    ],
+    "description": "Success border color (light theme)"
+  },
+  "rh-color-border-status-success-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorborderstatussuccessondark",
+      "87bb62"
+    ],
+    "body": [
+      "var(--rh-color-border-status-success-on-dark${1:, #87bb62})$2"
+    ],
+    "description": "Success border color (dark theme)"
+  },
+  "rh-color-brand-red": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorbrandred"
+    ],
+    "body": [
+      "var(--rh-color-brand-red)$2"
+    ],
+    "description": "Responsive `brand-red` color value. Typically read only - use a themable container e.g. `<rh-surface>` Resolves to `--rh-color-brand-red-on-light` on a themable container with a light color palette and `--rh-color-brand-red-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-brand-red-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorbrandredonlight",
+      "ee0000"
+    ],
+    "body": [
+      "var(--rh-color-brand-red-on-light${1:, #ee0000})$2"
+    ],
+    "description": "Brand red on light background"
+  },
+  "rh-color-brand-red-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorbrandredondark",
+      "ee0000"
+    ],
+    "body": [
+      "var(--rh-color-brand-red-on-dark${1:, #ee0000})$2"
+    ],
+    "description": "Brand red on dark background"
+  },
+  "rh-color-brand-red-lightest": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorbrandredlightest",
+      "fbc5c5"
+    ],
+    "body": [
+      "var(--rh-color-brand-red-lightest${1:, #fbc5c5})$2"
+    ],
+    "description": "Lightest brand red"
+  },
+  "rh-color-brand-red-lighter": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorbrandredlighter",
+      "f9a8a8"
+    ],
+    "body": [
+      "var(--rh-color-brand-red-lighter${1:, #f9a8a8})$2"
+    ],
+    "description": "lighter brand red"
+  },
+  "rh-color-brand-red-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorbrandredlight",
+      "f56e6e"
+    ],
+    "body": [
+      "var(--rh-color-brand-red-light${1:, #f56e6e})$2"
+    ],
+    "description": "Light brand red"
+  },
+  "rh-color-brand-red-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorbrandreddark",
+      "a60000"
+    ],
+    "body": [
+      "var(--rh-color-brand-red-dark${1:, #a60000})$2"
+    ],
+    "description": "Dark brand red/Brand red hover"
+  },
+  "rh-color-brand-red-darker": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorbrandreddarker",
+      "5f0000"
+    ],
+    "body": [
+      "var(--rh-color-brand-red-darker${1:, #5f0000})$2"
+    ],
+    "description": "Darker brand red"
+  },
+  "rh-color-brand-red-darkest": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorbrandreddarkest",
+      "5f0000"
+    ],
+    "body": [
+      "var(--rh-color-brand-red-darkest${1:, #5f0000})$2"
+    ],
+    "description": "Darkest brand red"
+  },
+  "rh-color-green-10": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgreen10",
+      "e9f7df"
+    ],
+    "body": [
+      "var(--rh-color-green-10${1:, #e9f7df})$2"
+    ],
+    "description": "Alert - success background"
+  },
+  "rh-color-green-20": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgreen20",
+      "d1f1bb"
+    ],
+    "body": [
+      "var(--rh-color-green-20${1:, #d1f1bb})$2"
+    ],
+    "description": "Label - Filled (Green) border color"
+  },
+  "rh-color-green-30": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgreen30",
+      "afdc8f"
+    ],
+    "body": [
+      "var(--rh-color-green-30${1:, #afdc8f})$2"
+    ]
+  },
+  "rh-color-green-40": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgreen40",
+      "87bb62"
+    ],
+    "body": [
+      "var(--rh-color-green-40${1:, #87bb62})$2"
+    ]
+  },
+  "rh-color-green-50": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgreen50",
+      "63993d"
+    ],
+    "body": [
+      "var(--rh-color-green-50${1:, #63993d})$2"
+    ]
+  },
+  "rh-color-green-60": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgreen60",
+      "3d7317"
+    ],
+    "body": [
+      "var(--rh-color-green-60${1:, #3d7317})$2"
+    ],
+    "description": "Alert - Success accent"
+  },
+  "rh-color-green-70": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgreen70",
+      "204d00"
+    ],
+    "body": [
+      "var(--rh-color-green-70${1:, #204d00})$2"
+    ],
+    "description": "Alert - Success title text"
+  },
+  "rh-color-green-10-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgreen10hsl"
+    ],
+    "body": [
+      "var(--rh-color-green-10-hsl${1:, 95.00000000000003 60.00000000000004% 92.15686274509804%})$2"
+    ]
+  },
+  "rh-color-green-10-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgreen10rgb"
+    ],
+    "body": [
+      "var(--rh-color-green-10-rgb${1:, 233 247 223})$2"
+    ]
+  },
+  "rh-color-green-20-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgreen20hsl"
+    ],
+    "body": [
+      "var(--rh-color-green-20-hsl${1:, 95.55555555555556 65.85365853658536% 83.92156862745097%})$2"
+    ]
+  },
+  "rh-color-green-20-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgreen20rgb"
+    ],
+    "body": [
+      "var(--rh-color-green-20-rgb${1:, 209 241 187})$2"
+    ]
+  },
+  "rh-color-green-30-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgreen30hsl"
+    ],
+    "body": [
+      "var(--rh-color-green-30-hsl${1:, 95.06493506493506 52.380952380952394% 71.17647058823529%})$2"
+    ]
+  },
+  "rh-color-green-30-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgreen30rgb"
+    ],
+    "body": [
+      "var(--rh-color-green-30-rgb${1:, 175 220 143})$2"
+    ]
+  },
+  "rh-color-green-40-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgreen40hsl"
+    ],
+    "body": [
+      "var(--rh-color-green-40-hsl${1:, 95.05617977528091 39.55555555555555% 55.88235294117647%})$2"
+    ]
+  },
+  "rh-color-green-40-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgreen40rgb"
+    ],
+    "body": [
+      "var(--rh-color-green-40-rgb${1:, 135 187 98})$2"
+    ]
+  },
+  "rh-color-green-50-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgreen50hsl"
+    ],
+    "body": [
+      "var(--rh-color-green-50-hsl${1:, 95.21739130434783 42.99065420560747% 41.96078431372549%})$2"
+    ]
+  },
+  "rh-color-green-50-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgreen50rgb"
+    ],
+    "body": [
+      "var(--rh-color-green-50-rgb${1:, 99 153 61})$2"
+    ]
+  },
+  "rh-color-green-60-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgreen60hsl"
+    ],
+    "body": [
+      "var(--rh-color-green-60-hsl${1:, 95.21739130434783 66.66666666666667% 27.058823529411764%})$2"
+    ]
+  },
+  "rh-color-green-60-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgreen60rgb"
+    ],
+    "body": [
+      "var(--rh-color-green-60-rgb${1:, 61 115 23})$2"
+    ]
+  },
+  "rh-color-green-70-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgreen70hsl"
+    ],
+    "body": [
+      "var(--rh-color-green-70-hsl${1:, 95.06493506493506 100% 15.098039215686274%})$2"
+    ]
+  },
+  "rh-color-green-70-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgreen70rgb"
+    ],
+    "body": [
+      "var(--rh-color-green-70-rgb${1:, 32 77 0})$2"
+    ]
+  },
+  "rh-color-orange-10": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolororange10",
+      "ffe8cc"
+    ],
+    "body": [
+      "var(--rh-color-orange-10${1:, #ffe8cc})$2"
+    ],
+    "description": "Label - Filled (Orange) background color"
+  },
+  "rh-color-orange-20": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolororange20",
+      "fccb8f"
+    ],
+    "body": [
+      "var(--rh-color-orange-20${1:, #fccb8f})$2"
+    ]
+  },
+  "rh-color-orange-30": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolororange30",
+      "f8ae54"
+    ],
+    "body": [
+      "var(--rh-color-orange-30${1:, #f8ae54})$2"
+    ],
+    "description": "Label - Filled (Orange) border color"
+  },
+  "rh-color-orange-40": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolororange40",
+      "f5921b"
+    ],
+    "body": [
+      "var(--rh-color-orange-40${1:, #f5921b})$2"
+    ],
+    "description": "Label - Filled (Orange) accent color"
+  },
+  "rh-color-orange-50": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolororange50",
+      "ca6c0f"
+    ],
+    "body": [
+      "var(--rh-color-orange-50${1:, #ca6c0f})$2"
+    ],
+    "description": "Label - Filled (Orange) accent color"
+  },
+  "rh-color-orange-60": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolororange60",
+      "9e4a06"
+    ],
+    "body": [
+      "var(--rh-color-orange-60${1:, #9e4a06})$2"
+    ]
+  },
+  "rh-color-orange-70": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolororange70",
+      "732e00"
+    ],
+    "body": [
+      "var(--rh-color-orange-70${1:, #732e00})$2"
+    ],
+    "description": "Label - Filled (Orange) text color"
+  },
+  "rh-color-orange-10-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolororange10hsl"
+    ],
+    "body": [
+      "var(--rh-color-orange-10-hsl${1:, 32.941176470588225 100% 90%})$2"
+    ]
+  },
+  "rh-color-orange-10-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolororange10rgb"
+    ],
+    "body": [
+      "var(--rh-color-orange-10-rgb${1:, 255 232 204})$2"
+    ]
+  },
+  "rh-color-orange-20-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolororange20hsl"
+    ],
+    "body": [
+      "var(--rh-color-orange-20-hsl${1:, 33.02752293577981 94.78260869565219% 77.45098039215686%})$2"
+    ]
+  },
+  "rh-color-orange-20-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolororange20rgb"
+    ],
+    "body": [
+      "var(--rh-color-orange-20-rgb${1:, 252 203 143})$2"
+    ]
+  },
+  "rh-color-orange-30-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolororange30hsl"
+    ],
+    "body": [
+      "var(--rh-color-orange-30-hsl${1:, 32.926829268292686 92.13483146067415% 65.09803921568627%})$2"
+    ]
+  },
+  "rh-color-orange-30-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolororange30rgb"
+    ],
+    "body": [
+      "var(--rh-color-orange-30-rgb${1:, 248 174 84})$2"
+    ]
+  },
+  "rh-color-orange-40-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolororange40hsl"
+    ],
+    "body": [
+      "var(--rh-color-orange-40-hsl${1:, 32.752293577981646 91.5966386554622% 53.333333333333336%})$2"
+    ]
+  },
+  "rh-color-orange-40-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolororange40rgb"
+    ],
+    "body": [
+      "var(--rh-color-orange-40-rgb${1:, 245 146 27})$2"
+    ]
+  },
+  "rh-color-orange-50-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolororange50hsl"
+    ],
+    "body": [
+      "var(--rh-color-orange-50-hsl${1:, 29.83957219251337 86.17511520737327% 42.549019607843135%})$2"
+    ]
+  },
+  "rh-color-orange-50-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolororange50rgb"
+    ],
+    "body": [
+      "var(--rh-color-orange-50-rgb${1:, 202 108 15})$2"
+    ]
+  },
+  "rh-color-orange-60-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolororange60hsl"
+    ],
+    "body": [
+      "var(--rh-color-orange-60-hsl${1:, 26.842105263157904 92.68292682926828% 32.15686274509804%})$2"
+    ]
+  },
+  "rh-color-orange-60-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolororange60rgb"
+    ],
+    "body": [
+      "var(--rh-color-orange-60-rgb${1:, 158 74 6})$2"
+    ]
+  },
+  "rh-color-orange-70-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolororange70hsl"
+    ],
+    "body": [
+      "var(--rh-color-orange-70-hsl${1:, 24 100% 22.54901960784314%})$2"
+    ]
+  },
+  "rh-color-orange-70-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolororange70rgb"
+    ],
+    "body": [
+      "var(--rh-color-orange-70-rgb${1:, 115 46 0})$2"
+    ]
+  },
+  "rh-color-icon-primary": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloriconprimary"
+    ],
+    "body": [
+      "var(--rh-color-icon-primary)$2"
+    ],
+    "description": "Responsive `icon-primary` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-icon-primary-on-light` on a themable container with a light color palette and `--rh-color-icon-primary-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-icon-primary-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloriconprimaryonlight",
+      "ee0000"
+    ],
+    "body": [
+      "var(--rh-color-icon-primary-on-light${1:, #ee0000})$2"
+    ]
+  },
+  "rh-color-icon-primary-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloriconprimaryondark",
+      "ee0000"
+    ],
+    "body": [
+      "var(--rh-color-icon-primary-on-dark${1:, #ee0000})$2"
+    ]
+  },
+  "rh-color-icon-secondary": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloriconsecondary"
+    ],
+    "body": [
+      "var(--rh-color-icon-secondary)$2"
+    ],
+    "description": "Responsive `icon-secondary` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-icon-secondary-on-light` on a themable container with a light color palette and `--rh-color-icon-secondary-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-icon-secondary-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloriconsecondaryonlight",
+      "151515"
+    ],
+    "body": [
+      "var(--rh-color-icon-secondary-on-light${1:, #151515})$2"
+    ]
+  },
+  "rh-color-icon-secondary-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloriconsecondaryondark",
+      "ffffff"
+    ],
+    "body": [
+      "var(--rh-color-icon-secondary-on-dark${1:, #ffffff})$2"
+    ]
+  },
+  "rh-color-icon-subtle": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloriconsubtle",
+      "707070"
+    ],
+    "body": [
+      "var(--rh-color-icon-subtle${1:, #707070})$2"
+    ]
+  },
+  "rh-color-icon-subtle-hover": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloriconsubtlehover",
+      "a3a3a3"
+    ],
+    "body": [
+      "var(--rh-color-icon-subtle-hover${1:, #a3a3a3})$2"
+    ]
+  },
+  "rh-color-icon-status-danger": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloriconstatusdanger"
+    ],
+    "body": [
+      "var(--rh-color-icon-status-danger)$2"
+    ],
+    "description": "Responsive `icon-status-danger` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-icon-status-danger-on-light` on a themable container with a light color palette and `--rh-color-icon-status-danger-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-icon-status-danger-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloriconstatusdangeronlight",
+      "b1380b"
+    ],
+    "body": [
+      "var(--rh-color-icon-status-danger-on-light${1:, #b1380b})$2"
+    ],
+    "description": "Danger status icon color (light theme)"
+  },
+  "rh-color-icon-status-danger-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloriconstatusdangerondark",
+      "f0561d"
+    ],
+    "body": [
+      "var(--rh-color-icon-status-danger-on-dark${1:, #f0561d})$2"
+    ],
+    "description": "Danger status icon color (dark theme)"
+  },
+  "rh-color-icon-status-caution": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloriconstatuscaution"
+    ],
+    "body": [
+      "var(--rh-color-icon-status-caution)$2"
+    ],
+    "description": "Responsive `icon-status-caution` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-icon-status-caution-on-light` on a themable container with a light color palette and `--rh-color-icon-status-caution-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-icon-status-caution-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloriconstatuscautiononlight",
+      "ca6c0f"
+    ],
+    "body": [
+      "var(--rh-color-icon-status-caution-on-light${1:, #ca6c0f})$2"
+    ],
+    "description": "Caution status icon color (light theme)"
+  },
+  "rh-color-icon-status-caution-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloriconstatuscautionondark",
+      "f5921b"
+    ],
+    "body": [
+      "var(--rh-color-icon-status-caution-on-dark${1:, #f5921b})$2"
+    ],
+    "description": "Caution status icon color (dark theme)"
+  },
+  "rh-color-icon-status-warning": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloriconstatuswarning"
+    ],
+    "body": [
+      "var(--rh-color-icon-status-warning)$2"
+    ],
+    "description": "Responsive `icon-status-warning` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-icon-status-warning-on-light` on a themable container with a light color palette and `--rh-color-icon-status-warning-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-icon-status-warning-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloriconstatuswarningonlight",
+      "dca614"
+    ],
+    "body": [
+      "var(--rh-color-icon-status-warning-on-light${1:, #dca614})$2"
+    ],
+    "description": "Warning status icon color (light theme)"
+  },
+  "rh-color-icon-status-warning-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloriconstatuswarningondark",
+      "ffcc17"
+    ],
+    "body": [
+      "var(--rh-color-icon-status-warning-on-dark${1:, #ffcc17})$2"
+    ],
+    "description": "Warning status icon color (dark theme)"
+  },
+  "rh-color-icon-status-default": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloriconstatusdefault"
+    ],
+    "body": [
+      "var(--rh-color-icon-status-default)$2"
+    ],
+    "description": "Responsive `icon-status-default` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-icon-status-default-on-light` on a themable container with a light color palette and `--rh-color-icon-status-default-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-icon-status-default-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloriconstatusdefaultonlight",
+      "4d4d4d"
+    ],
+    "body": [
+      "var(--rh-color-icon-status-default-on-light${1:, #4d4d4d})$2"
+    ],
+    "description": "Default status icon color (light theme)"
+  },
+  "rh-color-icon-status-default-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloriconstatusdefaultondark",
+      "4d4d4d"
+    ],
+    "body": [
+      "var(--rh-color-icon-status-default-on-dark${1:, #4d4d4d})$2"
+    ],
+    "description": "Default status icon color (dark theme)"
+  },
+  "rh-color-icon-status-neutral": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloriconstatusneutral"
+    ],
+    "body": [
+      "var(--rh-color-icon-status-neutral)$2"
+    ],
+    "description": "Responsive `icon-status-neutral` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-icon-status-neutral-on-light` on a themable container with a light color palette and `--rh-color-icon-status-neutral-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-icon-status-neutral-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloriconstatusneutralonlight",
+      "4d4d4d"
+    ],
+    "body": [
+      "var(--rh-color-icon-status-neutral-on-light${1:, #4d4d4d})$2"
+    ],
+    "description": "Neutral status icon color (light theme)"
+  },
+  "rh-color-icon-status-neutral-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloriconstatusneutralondark",
+      "c7c7c7"
+    ],
+    "body": [
+      "var(--rh-color-icon-status-neutral-on-dark${1:, #c7c7c7})$2"
+    ],
+    "description": "Neutral status icon color (dark theme)"
+  },
+  "rh-color-icon-status-info": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloriconstatusinfo"
+    ],
+    "body": [
+      "var(--rh-color-icon-status-info)$2"
+    ],
+    "description": "Responsive `icon-status-info` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-icon-status-info-on-light` on a themable container with a light color palette and `--rh-color-icon-status-info-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-icon-status-info-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloriconstatusinfoonlight",
+      "5e40be"
+    ],
+    "body": [
+      "var(--rh-color-icon-status-info-on-light${1:, #5e40be})$2"
+    ],
+    "description": "Info status icon color (light theme)"
+  },
+  "rh-color-icon-status-info-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloriconstatusinfoondark",
+      "b6a6e9"
+    ],
+    "body": [
+      "var(--rh-color-icon-status-info-on-dark${1:, #b6a6e9})$2"
+    ],
+    "description": "Info status icon color (dark theme)"
+  },
+  "rh-color-icon-status-success": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloriconstatussuccess"
+    ],
+    "body": [
+      "var(--rh-color-icon-status-success)$2"
+    ],
+    "description": "Responsive `icon-status-success` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-icon-status-success-on-light` on a themable container with a light color palette and `--rh-color-icon-status-success-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-icon-status-success-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloriconstatussuccessonlight",
+      "3d7317"
+    ],
+    "body": [
+      "var(--rh-color-icon-status-success-on-light${1:, #3d7317})$2"
+    ],
+    "description": "Success status icon color (light theme)"
+  },
+  "rh-color-icon-status-success-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloriconstatussuccessondark",
+      "87bb62"
+    ],
+    "body": [
+      "var(--rh-color-icon-status-success-on-dark${1:, #87bb62})$2"
+    ],
+    "description": "Success status icon color (dark theme)"
+  },
+  "rh-color-canvas-white": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorcanvaswhite",
+      "ffffff"
+    ],
+    "body": [
+      "var(--rh-color-canvas-white${1:, #ffffff})$2"
+    ],
+    "description": "Primary canvas (light theme)"
+  },
+  "rh-color-canvas-black": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorcanvasblack",
+      "151515"
+    ],
+    "body": [
+      "var(--rh-color-canvas-black${1:, #151515})$2"
+    ],
+    "description": "Primary canvas (dark theme)"
+  },
+  "rh-color-canvas-white-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorcanvaswhitehsl"
+    ],
+    "body": [
+      "var(--rh-color-canvas-white-hsl${1:, 0 0% 100%})$2"
+    ]
+  },
+  "rh-color-canvas-white-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorcanvaswhitergb"
+    ],
+    "body": [
+      "var(--rh-color-canvas-white-rgb${1:, 255 255 255})$2"
+    ]
+  },
+  "rh-color-canvas-black-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorcanvasblackhsl"
+    ],
+    "body": [
+      "var(--rh-color-canvas-black-hsl${1:, 0 0% 0%})$2"
+    ]
+  },
+  "rh-color-canvas-black-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorcanvasblackrgb"
+    ],
+    "body": [
+      "var(--rh-color-canvas-black-rgb${1:, 0 0 0})$2"
+    ]
+  },
+  "rh-color-blue-10": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorblue10",
+      "e0f0ff"
+    ],
+    "body": [
+      "var(--rh-color-blue-10${1:, #e0f0ff})$2"
+    ],
+    "description": "Alert - Info background"
+  },
+  "rh-color-blue-20": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorblue20",
+      "b9dafc"
+    ],
+    "body": [
+      "var(--rh-color-blue-20${1:, #b9dafc})$2"
+    ],
+    "description": "Label - Filled (Blue) border color"
+  },
+  "rh-color-blue-30": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorblue30",
+      "92c5f9"
+    ],
+    "body": [
+      "var(--rh-color-blue-30${1:, #92c5f9})$2"
+    ],
+    "description": "Inline link (dark theme)"
+  },
+  "rh-color-blue-40": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorblue40",
+      "4394e5"
+    ],
+    "body": [
+      "var(--rh-color-blue-40${1:, #4394e5})$2"
+    ],
+    "description": "Alert - Info accent"
+  },
+  "rh-color-blue-50": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorblue50",
+      "0066cc"
+    ],
+    "body": [
+      "var(--rh-color-blue-50${1:, #0066cc})$2"
+    ],
+    "description": "Label - Filled (Blue) accent color"
+  },
+  "rh-color-blue-60": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorblue60",
+      "004d99"
+    ],
+    "body": [
+      "var(--rh-color-blue-60${1:, #004d99})$2"
+    ],
+    "description": "Inline link hover (light theme)"
+  },
+  "rh-color-blue-70": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorblue70",
+      "003366"
+    ],
+    "body": [
+      "var(--rh-color-blue-70${1:, #003366})$2"
+    ],
+    "description": "Alert - Info title text"
+  },
+  "rh-color-blue-10-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorblue10hsl"
+    ],
+    "body": [
+      "var(--rh-color-blue-10-hsl${1:, 209.03225806451616 100% 93.92156862745098%})$2"
+    ]
+  },
+  "rh-color-blue-10-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorblue10rgb"
+    ],
+    "body": [
+      "var(--rh-color-blue-10-rgb${1:, 224 240 255})$2"
+    ]
+  },
+  "rh-color-blue-20-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorblue20hsl"
+    ],
+    "body": [
+      "var(--rh-color-blue-20-hsl${1:, 210.44776119402988 91.78082191780825% 85.68627450980392%})$2"
+    ]
+  },
+  "rh-color-blue-20-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorblue20rgb"
+    ],
+    "body": [
+      "var(--rh-color-blue-20-rgb${1:, 185 218 252})$2"
+    ]
+  },
+  "rh-color-blue-30-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorblue30hsl"
+    ],
+    "body": [
+      "var(--rh-color-blue-30-hsl${1:, 210.29126213592232 89.56521739130436% 77.45098039215685%})$2"
+    ]
+  },
+  "rh-color-blue-30-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorblue30rgb"
+    ],
+    "body": [
+      "var(--rh-color-blue-30-rgb${1:, 146 197 249})$2"
+    ]
+  },
+  "rh-color-blue-40-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorblue40hsl"
+    ],
+    "body": [
+      "var(--rh-color-blue-40-hsl${1:, 210 75.70093457943923% 58.03921568627452%})$2"
+    ]
+  },
+  "rh-color-blue-40-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorblue40rgb"
+    ],
+    "body": [
+      "var(--rh-color-blue-40-rgb${1:, 67 148 229})$2"
+    ]
+  },
+  "rh-color-blue-50-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorblue50hsl"
+    ],
+    "body": [
+      "var(--rh-color-blue-50-hsl${1:, 210 100% 40%})$2"
+    ]
+  },
+  "rh-color-blue-50-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorblue50rgb"
+    ],
+    "body": [
+      "var(--rh-color-blue-50-rgb${1:, 0 102 204})$2"
+    ]
+  },
+  "rh-color-blue-60-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorblue60hsl"
+    ],
+    "body": [
+      "var(--rh-color-blue-60-hsl${1:, 209.80392156862746 100% 30%})$2"
+    ]
+  },
+  "rh-color-blue-60-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorblue60rgb"
+    ],
+    "body": [
+      "var(--rh-color-blue-60-rgb${1:, 0 77 153})$2"
+    ]
+  },
+  "rh-color-blue-70-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorblue70hsl"
+    ],
+    "body": [
+      "var(--rh-color-blue-70-hsl${1:, 210 100% 20%})$2"
+    ]
+  },
+  "rh-color-blue-70-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorblue70rgb"
+    ],
+    "body": [
+      "var(--rh-color-blue-70-rgb${1:, 0 51 102})$2"
+    ]
+  },
+  "rh-color-white": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorwhite",
+      "ffffff"
+    ],
+    "body": [
+      "var(--rh-color-white${1:, #ffffff})$2"
+    ],
+    "description": "Lightest surface (light theme) or primary text (dark theme)"
+  },
+  "rh-color-gray-10": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray10",
+      "f2f2f2"
+    ],
+    "body": [
+      "var(--rh-color-gray-10${1:, #f2f2f2})$2"
+    ],
+    "description": "Tertiary surface (light theme)"
+  },
+  "rh-color-gray-20": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray20",
+      "e0e0e0"
+    ],
+    "body": [
+      "var(--rh-color-gray-20${1:, #e0e0e0})$2"
+    ],
+    "description": "Secondary surface (light theme)"
+  },
+  "rh-color-gray-30": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray30",
+      "c7c7c7"
+    ],
+    "body": [
+      "var(--rh-color-gray-30${1:, #c7c7c7})$2"
+    ],
+    "description": "Subtle borders (light theme)"
+  },
+  "rh-color-gray-40": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray40",
+      "a3a3a3"
+    ],
+    "body": [
+      "var(--rh-color-gray-40${1:, #a3a3a3})$2"
+    ],
+    "description": "Subtle icon (hover state)"
+  },
+  "rh-color-gray-50": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray50",
+      "707070"
+    ],
+    "body": [
+      "var(--rh-color-gray-50${1:, #707070})$2"
+    ],
+    "description": "Subtle icon"
+  },
+  "rh-color-gray-60": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray60",
+      "4d4d4d"
+    ],
+    "body": [
+      "var(--rh-color-gray-60${1:, #4d4d4d})$2"
+    ],
+    "description": "Secondary text (light theme)"
+  },
+  "rh-color-gray-70": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray70",
+      "383838"
+    ],
+    "body": [
+      "var(--rh-color-gray-70${1:, #383838})$2"
+    ],
+    "description": "Tertiary surface (dark theme)"
+  },
+  "rh-color-gray-80": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray80",
+      "292929"
+    ],
+    "body": [
+      "var(--rh-color-gray-80${1:, #292929})$2"
+    ],
+    "description": "Alternative tertiary surface (not available for use with context provider)"
+  },
+  "rh-color-gray-90": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray90",
+      "1f1f1f"
+    ],
+    "body": [
+      "var(--rh-color-gray-90${1:, #1f1f1f})$2"
+    ],
+    "description": "Secondary surface (dark theme)"
+  },
+  "rh-color-gray-95": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray95",
+      "151515"
+    ],
+    "body": [
+      "var(--rh-color-gray-95${1:, #151515})$2"
+    ],
+    "description": "Primary surface (dark theme) or primary text (light theme)"
+  },
+  "rh-color-gray-10-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray10hsl"
+    ],
+    "body": [
+      "var(--rh-color-gray-10-hsl${1:, 0 0% 94.90196078431372%})$2"
+    ]
+  },
+  "rh-color-gray-10-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray10rgb"
+    ],
+    "body": [
+      "var(--rh-color-gray-10-rgb${1:, 242 242 242})$2"
+    ]
+  },
+  "rh-color-gray-20-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray20hsl"
+    ],
+    "body": [
+      "var(--rh-color-gray-20-hsl${1:, 0 0% 87.84313725490196%})$2"
+    ]
+  },
+  "rh-color-gray-20-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray20rgb"
+    ],
+    "body": [
+      "var(--rh-color-gray-20-rgb${1:, 224 224 224})$2"
+    ]
+  },
+  "rh-color-gray-30-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray30hsl"
+    ],
+    "body": [
+      "var(--rh-color-gray-30-hsl${1:, 0 0% 78.03921568627452%})$2"
+    ]
+  },
+  "rh-color-gray-30-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray30rgb"
+    ],
+    "body": [
+      "var(--rh-color-gray-30-rgb${1:, 199 199 199})$2"
+    ]
+  },
+  "rh-color-gray-40-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray40hsl"
+    ],
+    "body": [
+      "var(--rh-color-gray-40-hsl${1:, 0 0% 63.921568627450974%})$2"
+    ]
+  },
+  "rh-color-gray-40-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray40rgb"
+    ],
+    "body": [
+      "var(--rh-color-gray-40-rgb${1:, 163 163 163})$2"
+    ]
+  },
+  "rh-color-gray-50-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray50hsl"
+    ],
+    "body": [
+      "var(--rh-color-gray-50-hsl${1:, 0 0% 43.92156862745098%})$2"
+    ]
+  },
+  "rh-color-gray-50-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray50rgb"
+    ],
+    "body": [
+      "var(--rh-color-gray-50-rgb${1:, 112 112 112})$2"
+    ]
+  },
+  "rh-color-gray-60-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray60hsl"
+    ],
+    "body": [
+      "var(--rh-color-gray-60-hsl${1:, 0 0% 30.19607843137255%})$2"
+    ]
+  },
+  "rh-color-gray-60-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray60rgb"
+    ],
+    "body": [
+      "var(--rh-color-gray-60-rgb${1:, 77 77 77})$2"
+    ]
+  },
+  "rh-color-gray-70-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray70hsl"
+    ],
+    "body": [
+      "var(--rh-color-gray-70-hsl${1:, 0 0% 21.96078431372549%})$2"
+    ]
+  },
+  "rh-color-gray-70-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray70rgb"
+    ],
+    "body": [
+      "var(--rh-color-gray-70-rgb${1:, 56 56 56})$2"
+    ]
+  },
+  "rh-color-gray-80-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray80hsl"
+    ],
+    "body": [
+      "var(--rh-color-gray-80-hsl${1:, 0 0% 16.07843137254902%})$2"
+    ]
+  },
+  "rh-color-gray-80-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray80rgb"
+    ],
+    "body": [
+      "var(--rh-color-gray-80-rgb${1:, 41 41 41})$2"
+    ]
+  },
+  "rh-color-gray-90-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray90hsl"
+    ],
+    "body": [
+      "var(--rh-color-gray-90-hsl${1:, 0 0% 12.156862745098039%})$2"
+    ]
+  },
+  "rh-color-gray-90-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray90rgb"
+    ],
+    "body": [
+      "var(--rh-color-gray-90-rgb${1:, 31 31 31})$2"
+    ]
+  },
+  "rh-color-gray-95-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray95hsl"
+    ],
+    "body": [
+      "var(--rh-color-gray-95-hsl${1:, 0 0% 8.235294117647058%})$2"
+    ]
+  },
+  "rh-color-gray-95-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorgray95rgb"
+    ],
+    "body": [
+      "var(--rh-color-gray-95-rgb${1:, 21 21 21})$2"
+    ]
+  },
+  "rh-color-black": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorblack",
+      "000000"
+    ],
+    "body": [
+      "var(--rh-color-black${1:, #000000})$2"
+    ],
+    "description": "Brand black (avoid using)"
+  },
+  "rh-color-purple-10": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorpurple10",
+      "ece6ff"
+    ],
+    "body": [
+      "var(--rh-color-purple-10${1:, #ece6ff})$2"
+    ],
+    "description": "Label - Filled (Purple) background color"
+  },
+  "rh-color-purple-20": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorpurple20",
+      "d0c5f4"
+    ],
+    "body": [
+      "var(--rh-color-purple-20${1:, #d0c5f4})$2"
+    ],
+    "description": "Inline link visited hover (dark theme)"
+  },
+  "rh-color-purple-30": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorpurple30",
+      "b6a6e9"
+    ],
+    "body": [
+      "var(--rh-color-purple-30${1:, #b6a6e9})$2"
+    ]
+  },
+  "rh-color-purple-40": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorpurple40",
+      "876fd4"
+    ],
+    "body": [
+      "var(--rh-color-purple-40${1:, #876fd4})$2"
+    ],
+    "description": "Inline link visited (dark theme)"
+  },
+  "rh-color-purple-50": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorpurple50",
+      "5e40be"
+    ],
+    "body": [
+      "var(--rh-color-purple-50${1:, #5e40be})$2"
+    ]
+  },
+  "rh-color-purple-60": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorpurple60",
+      "3d2785"
+    ],
+    "body": [
+      "var(--rh-color-purple-60${1:, #3d2785})$2"
+    ],
+    "description": "Inline link visited (light theme)"
+  },
+  "rh-color-purple-70": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorpurple70",
+      "21134d"
+    ],
+    "body": [
+      "var(--rh-color-purple-70${1:, #21134d})$2"
+    ],
+    "description": "Inline link visited hover (light theme)"
+  },
+  "rh-color-purple-10-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorpurple10hsl"
+    ],
+    "body": [
+      "var(--rh-color-purple-10-hsl${1:, 254.4 100% 95.09803921568627%})$2"
+    ]
+  },
+  "rh-color-purple-10-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorpurple10rgb"
+    ],
+    "body": [
+      "var(--rh-color-purple-10-rgb${1:, 236 230 255})$2"
+    ]
+  },
+  "rh-color-purple-20-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorpurple20hsl"
+    ],
+    "body": [
+      "var(--rh-color-purple-20-hsl${1:, 254.0425531914893 68.11594202898556% 86.47058823529412%})$2"
+    ]
+  },
+  "rh-color-purple-20-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorpurple20rgb"
+    ],
+    "body": [
+      "var(--rh-color-purple-20-rgb${1:, 208 197 244})$2"
+    ]
+  },
+  "rh-color-purple-30-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorpurple30hsl"
+    ],
+    "body": [
+      "var(--rh-color-purple-30-hsl${1:, 254.32835820895522 60.36036036036033% 78.23529411764706%})$2"
+    ]
+  },
+  "rh-color-purple-30-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorpurple30rgb"
+    ],
+    "body": [
+      "var(--rh-color-purple-30-rgb${1:, 182 166 233})$2"
+    ]
+  },
+  "rh-color-purple-40-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorpurple40hsl"
+    ],
+    "body": [
+      "var(--rh-color-purple-40-hsl${1:, 254.25742574257427 54.010695187165794% 63.33333333333333%})$2"
+    ]
+  },
+  "rh-color-purple-40-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorpurple40rgb"
+    ],
+    "body": [
+      "var(--rh-color-purple-40-rgb${1:, 135 111 212})$2"
+    ]
+  },
+  "rh-color-purple-50-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorpurple50hsl"
+    ],
+    "body": [
+      "var(--rh-color-purple-50-hsl${1:, 254.2857142857143 49.60629921259843% 49.80392156862745%})$2"
+    ]
+  },
+  "rh-color-purple-50-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorpurple50rgb"
+    ],
+    "body": [
+      "var(--rh-color-purple-50-rgb${1:, 94 64 190})$2"
+    ]
+  },
+  "rh-color-purple-60-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorpurple60hsl"
+    ],
+    "body": [
+      "var(--rh-color-purple-60-hsl${1:, 254.0425531914894 54.65116279069767% 33.72549019607843%})$2"
+    ]
+  },
+  "rh-color-purple-60-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorpurple60rgb"
+    ],
+    "body": [
+      "var(--rh-color-purple-60-rgb${1:, 61 39 133})$2"
+    ]
+  },
+  "rh-color-purple-70-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorpurple70hsl"
+    ],
+    "body": [
+      "var(--rh-color-purple-70-hsl${1:, 254.48275862068965 60.416666666666664% 18.823529411764707%})$2"
+    ]
+  },
+  "rh-color-purple-70-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorpurple70rgb"
+    ],
+    "body": [
+      "var(--rh-color-purple-70-rgb${1:, 33 19 77})$2"
+    ]
+  },
+  "rh-color-red-orange-10": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorredorange10",
+      "ffe3d9"
+    ],
+    "body": [
+      "var(--rh-color-red-orange-10${1:, #ffe3d9})$2"
+    ]
+  },
+  "rh-color-red-orange-20": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorredorange20",
+      "fbbea8"
+    ],
+    "body": [
+      "var(--rh-color-red-orange-20${1:, #fbbea8})$2"
+    ]
+  },
+  "rh-color-red-orange-30": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorredorange30",
+      "f89b78"
+    ],
+    "body": [
+      "var(--rh-color-red-orange-30${1:, #f89b78})$2"
+    ]
+  },
+  "rh-color-red-orange-40": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorredorange40",
+      "f4784a"
+    ],
+    "body": [
+      "var(--rh-color-red-orange-40${1:, #f4784a})$2"
+    ]
+  },
+  "rh-color-red-orange-50": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorredorange50",
+      "f0561d"
+    ],
+    "body": [
+      "var(--rh-color-red-orange-50${1:, #f0561d})$2"
+    ]
+  },
+  "rh-color-red-orange-60": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorredorange60",
+      "b1380b"
+    ],
+    "body": [
+      "var(--rh-color-red-orange-60${1:, #b1380b})$2"
+    ]
+  },
+  "rh-color-red-orange-70": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorredorange70",
+      "731f00"
+    ],
+    "body": [
+      "var(--rh-color-red-orange-70${1:, #731f00})$2"
+    ]
+  },
+  "rh-color-red-orange-10-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorredorange10hsl"
+    ],
+    "body": [
+      "var(--rh-color-red-orange-10-hsl${1:, 15.789473684210513 100% 92.54901960784314%})$2"
+    ]
+  },
+  "rh-color-red-orange-10-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorredorange10rgb"
+    ],
+    "body": [
+      "var(--rh-color-red-orange-10-rgb${1:, 255 227 217})$2"
+    ]
+  },
+  "rh-color-red-orange-20-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorredorange20hsl"
+    ],
+    "body": [
+      "var(--rh-color-red-orange-20-hsl${1:, 15.903614457831333 91.20879120879121% 82.15686274509804%})$2"
+    ]
+  },
+  "rh-color-red-orange-20-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorredorange20rgb"
+    ],
+    "body": [
+      "var(--rh-color-red-orange-20-rgb${1:, 251 190 168})$2"
+    ]
+  },
+  "rh-color-red-orange-30-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorredorange30hsl"
+    ],
+    "body": [
+      "var(--rh-color-red-orange-30-hsl${1:, 16.406249999999996 90.14084507042254% 72.15686274509804%})$2"
+    ]
+  },
+  "rh-color-red-orange-30-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorredorange30rgb"
+    ],
+    "body": [
+      "var(--rh-color-red-orange-30-rgb${1:, 248 155 120})$2"
+    ]
+  },
+  "rh-color-red-orange-40-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorredorange40hsl"
+    ],
+    "body": [
+      "var(--rh-color-red-orange-40-hsl${1:, 16.235294117647054 88.54166666666671% 62.35294117647059%})$2"
+    ]
+  },
+  "rh-color-red-orange-40-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorredorange40rgb"
+    ],
+    "body": [
+      "var(--rh-color-red-orange-40-rgb${1:, 244 120 74})$2"
+    ]
+  },
+  "rh-color-red-orange-50-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorredorange50hsl"
+    ],
+    "body": [
+      "var(--rh-color-red-orange-50-hsl${1:, 16.208530805687207 87.55186721991701% 52.74509803921569%})$2"
+    ]
+  },
+  "rh-color-red-orange-50-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorredorange50rgb"
+    ],
+    "body": [
+      "var(--rh-color-red-orange-50-rgb${1:, 240 86 29})$2"
+    ]
+  },
+  "rh-color-red-orange-60-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorredorange60hsl"
+    ],
+    "body": [
+      "var(--rh-color-red-orange-60-hsl${1:, 16.265060240963855 88.29787234042554% 36.86274509803921%})$2"
+    ]
+  },
+  "rh-color-red-orange-60-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorredorange60rgb"
+    ],
+    "body": [
+      "var(--rh-color-red-orange-60-rgb${1:, 177 56 11})$2"
+    ]
+  },
+  "rh-color-red-orange-70-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorredorange70hsl"
+    ],
+    "body": [
+      "var(--rh-color-red-orange-70-hsl${1:, 16.17391304347826 100% 22.54901960784314%})$2"
+    ]
+  },
+  "rh-color-red-orange-70-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorredorange70rgb"
+    ],
+    "body": [
+      "var(--rh-color-red-orange-70-rgb${1:, 115 31 0})$2"
+    ]
+  },
+  "rh-color-red-10": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred10",
+      "fce3e3"
+    ],
+    "body": [
+      "var(--rh-color-red-10${1:, #fce3e3})$2"
+    ]
+  },
+  "rh-color-red-20": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred20",
+      "fbc5c5"
+    ],
+    "body": [
+      "var(--rh-color-red-20${1:, #fbc5c5})$2"
+    ],
+    "description": "Lightest brand red"
+  },
+  "rh-color-red-30": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred30",
+      "f9a8a8"
+    ],
+    "body": [
+      "var(--rh-color-red-30${1:, #f9a8a8})$2"
+    ],
+    "description": "Lighter brand red"
+  },
+  "rh-color-red-40": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred40",
+      "f56e6e"
+    ],
+    "body": [
+      "var(--rh-color-red-40${1:, #f56e6e})$2"
+    ],
+    "description": "Light brand red"
+  },
+  "rh-color-red-50": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred50",
+      "ee0000"
+    ],
+    "body": [
+      "var(--rh-color-red-50${1:, #ee0000})$2"
+    ],
+    "description": "Brand red (light and dark theme)"
+  },
+  "rh-color-red-60": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred60",
+      "a60000"
+    ],
+    "body": [
+      "var(--rh-color-red-60${1:, #a60000})$2"
+    ],
+    "description": "Dark brand red"
+  },
+  "rh-color-red-70": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred70",
+      "5f0000"
+    ],
+    "body": [
+      "var(--rh-color-red-70${1:, #5f0000})$2"
+    ],
+    "description": "Darker brand red"
+  },
+  "rh-color-red-10-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred10hsl"
+    ],
+    "body": [
+      "var(--rh-color-red-10-hsl${1:, 0 80.64516129032265% 93.92156862745098%})$2"
+    ]
+  },
+  "rh-color-red-10-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred10rgb"
+    ],
+    "body": [
+      "var(--rh-color-red-10-rgb${1:, 252 227 227})$2"
+    ]
+  },
+  "rh-color-red-20-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred20hsl"
+    ],
+    "body": [
+      "var(--rh-color-red-20-hsl${1:, 0 87.09677419354838% 87.84313725490196%})$2"
+    ]
+  },
+  "rh-color-red-20-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred20rgb"
+    ],
+    "body": [
+      "var(--rh-color-red-20-rgb${1:, 251 197 197})$2"
+    ]
+  },
+  "rh-color-red-30-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred30hsl"
+    ],
+    "body": [
+      "var(--rh-color-red-30-hsl${1:, 0 87.0967741935484% 81.76470588235294%})$2"
+    ]
+  },
+  "rh-color-red-30-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred30rgb"
+    ],
+    "body": [
+      "var(--rh-color-red-30-rgb${1:, 249 168 168})$2"
+    ]
+  },
+  "rh-color-red-40-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred40hsl"
+    ],
+    "body": [
+      "var(--rh-color-red-40-hsl${1:, 0 87.09677419354841% 69.6078431372549%})$2"
+    ]
+  },
+  "rh-color-red-40-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred40rgb"
+    ],
+    "body": [
+      "var(--rh-color-red-40-rgb${1:, 245 110 110})$2"
+    ]
+  },
+  "rh-color-red-50-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred50hsl"
+    ],
+    "body": [
+      "var(--rh-color-red-50-hsl${1:, 0 100% 46.666666666666664%})$2"
+    ]
+  },
+  "rh-color-red-50-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred50rgb"
+    ],
+    "body": [
+      "var(--rh-color-red-50-rgb${1:, 238 0 0})$2"
+    ]
+  },
+  "rh-color-red-60-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred60hsl"
+    ],
+    "body": [
+      "var(--rh-color-red-60-hsl${1:, 0 100% 32.549019607843135%})$2"
+    ]
+  },
+  "rh-color-red-60-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred60rgb"
+    ],
+    "body": [
+      "var(--rh-color-red-60-rgb${1:, 166 0 0})$2"
+    ]
+  },
+  "rh-color-red-70-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred70hsl"
+    ],
+    "body": [
+      "var(--rh-color-red-70-hsl${1:, 0 100% 18.627450980392158%})$2"
+    ]
+  },
+  "rh-color-red-70-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred70rgb"
+    ],
+    "body": [
+      "var(--rh-color-red-70-rgb${1:, 95 0 0})$2"
+    ]
+  },
+  "rh-color-teal-10": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorteal10",
+      "daf2f2"
+    ],
+    "body": [
+      "var(--rh-color-teal-10${1:, #daf2f2})$2"
+    ],
+    "description": "Alert - Default background"
+  },
+  "rh-color-teal-20": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorteal20",
+      "b9e5e5"
+    ],
+    "body": [
+      "var(--rh-color-teal-20${1:, #b9e5e5})$2"
+    ]
+  },
+  "rh-color-teal-30": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorteal30",
+      "9ad8d8"
+    ],
+    "body": [
+      "var(--rh-color-teal-30${1:, #9ad8d8})$2"
+    ],
+    "description": "Label (Cyan) border color"
+  },
+  "rh-color-teal-40": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorteal40",
+      "63bdbd"
+    ],
+    "body": [
+      "var(--rh-color-teal-40${1:, #63bdbd})$2"
+    ]
+  },
+  "rh-color-teal-50": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorteal50",
+      "37a3a3"
+    ],
+    "body": [
+      "var(--rh-color-teal-50${1:, #37a3a3})$2"
+    ],
+    "description": "Alert - Default accent"
+  },
+  "rh-color-teal-60": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorteal60",
+      "147878"
+    ],
+    "body": [
+      "var(--rh-color-teal-60${1:, #147878})$2"
+    ]
+  },
+  "rh-color-teal-70": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorteal70",
+      "004d4d"
+    ],
+    "body": [
+      "var(--rh-color-teal-70${1:, #004d4d})$2"
+    ],
+    "description": "Alert - Default title text"
+  },
+  "rh-color-teal-10-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorteal10hsl"
+    ],
+    "body": [
+      "var(--rh-color-teal-10-hsl${1:, 180 47.99999999999998% 90.19607843137254%})$2"
+    ]
+  },
+  "rh-color-teal-10-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorteal10rgb"
+    ],
+    "body": [
+      "var(--rh-color-teal-10-rgb${1:, 218 242 242})$2"
+    ]
+  },
+  "rh-color-teal-20-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorteal20hsl"
+    ],
+    "body": [
+      "var(--rh-color-teal-20-hsl${1:, 180 45.833333333333336% 81.17647058823529%})$2"
+    ]
+  },
+  "rh-color-teal-20-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorteal20rgb"
+    ],
+    "body": [
+      "var(--rh-color-teal-20-rgb${1:, 185 229 229})$2"
+    ]
+  },
+  "rh-color-teal-30-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorteal30hsl"
+    ],
+    "body": [
+      "var(--rh-color-teal-30-hsl${1:, 180 44.28571428571429% 72.54901960784314%})$2"
+    ]
+  },
+  "rh-color-teal-30-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorteal30rgb"
+    ],
+    "body": [
+      "var(--rh-color-teal-30-rgb${1:, 154 216 216})$2"
+    ]
+  },
+  "rh-color-teal-40-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorteal40hsl"
+    ],
+    "body": [
+      "var(--rh-color-teal-40-hsl${1:, 180 40.54054054054054% 56.470588235294116%})$2"
+    ]
+  },
+  "rh-color-teal-40-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorteal40rgb"
+    ],
+    "body": [
+      "var(--rh-color-teal-40-rgb${1:, 99 189 189})$2"
+    ]
+  },
+  "rh-color-teal-50-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorteal50hsl"
+    ],
+    "body": [
+      "var(--rh-color-teal-50-hsl${1:, 180 49.54128440366972% 42.745098039215684%})$2"
+    ]
+  },
+  "rh-color-teal-50-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorteal50rgb"
+    ],
+    "body": [
+      "var(--rh-color-teal-50-rgb${1:, 55 163 163})$2"
+    ]
+  },
+  "rh-color-teal-60-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorteal60hsl"
+    ],
+    "body": [
+      "var(--rh-color-teal-60-hsl${1:, 180 71.42857142857142% 27.450980392156865%})$2"
+    ]
+  },
+  "rh-color-teal-60-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorteal60rgb"
+    ],
+    "body": [
+      "var(--rh-color-teal-60-rgb${1:, 20 120 120})$2"
+    ]
+  },
+  "rh-color-teal-70-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorteal70hsl"
+    ],
+    "body": [
+      "var(--rh-color-teal-70-hsl${1:, 180 100% 15.098039215686274%})$2"
+    ]
+  },
+  "rh-color-teal-70-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorteal70rgb"
+    ],
+    "body": [
+      "var(--rh-color-teal-70-rgb${1:, 0 77 77})$2"
+    ]
+  },
+  "rh-color-yellow-10": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloryellow10",
+      "fff4cc"
+    ],
+    "body": [
+      "var(--rh-color-yellow-10${1:, #fff4cc})$2"
+    ],
+    "description": "Alert - Warning background"
+  },
+  "rh-color-yellow-20": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloryellow20",
+      "ffe072"
+    ],
+    "body": [
+      "var(--rh-color-yellow-20${1:, #ffe072})$2"
+    ]
+  },
+  "rh-color-yellow-30": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloryellow30",
+      "ffcc17"
+    ],
+    "body": [
+      "var(--rh-color-yellow-30${1:, #ffcc17})$2"
+    ]
+  },
+  "rh-color-yellow-40": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloryellow40",
+      "dca614"
+    ],
+    "body": [
+      "var(--rh-color-yellow-40${1:, #dca614})$2"
+    ],
+    "description": "Alert - Warning accent"
+  },
+  "rh-color-yellow-50": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloryellow50",
+      "b98412"
+    ],
+    "body": [
+      "var(--rh-color-yellow-50${1:, #b98412})$2"
+    ]
+  },
+  "rh-color-yellow-60": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloryellow60",
+      "96640f"
+    ],
+    "body": [
+      "var(--rh-color-yellow-60${1:, #96640f})$2"
+    ]
+  },
+  "rh-color-yellow-70": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloryellow70",
+      "73480b"
+    ],
+    "body": [
+      "var(--rh-color-yellow-70${1:, #73480b})$2"
+    ],
+    "description": "Alert - Warning title text"
+  },
+  "rh-color-yellow-10-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloryellow10hsl"
+    ],
+    "body": [
+      "var(--rh-color-yellow-10-hsl${1:, 47.058823529411775 100% 90%})$2"
+    ]
+  },
+  "rh-color-yellow-10-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloryellow10rgb"
+    ],
+    "body": [
+      "var(--rh-color-yellow-10-rgb${1:, 255 244 204})$2"
+    ]
+  },
+  "rh-color-yellow-20-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloryellow20hsl"
+    ],
+    "body": [
+      "var(--rh-color-yellow-20-hsl${1:, 46.80851063829787 100% 72.35294117647058%})$2"
+    ]
+  },
+  "rh-color-yellow-20-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloryellow20rgb"
+    ],
+    "body": [
+      "var(--rh-color-yellow-20-rgb${1:, 255 224 114})$2"
+    ]
+  },
+  "rh-color-yellow-30-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloryellow30hsl"
+    ],
+    "body": [
+      "var(--rh-color-yellow-30-hsl${1:, 46.81034482758621 100% 54.509803921568626%})$2"
+    ]
+  },
+  "rh-color-yellow-30-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloryellow30rgb"
+    ],
+    "body": [
+      "var(--rh-color-yellow-30-rgb${1:, 255 204 23})$2"
+    ]
+  },
+  "rh-color-yellow-40-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloryellow40hsl"
+    ],
+    "body": [
+      "var(--rh-color-yellow-40-hsl${1:, 43.79999999999999 83.33333333333334% 47.05882352941176%})$2"
+    ]
+  },
+  "rh-color-yellow-40-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloryellow40rgb"
+    ],
+    "body": [
+      "var(--rh-color-yellow-40-rgb${1:, 220 166 20})$2"
+    ]
+  },
+  "rh-color-yellow-50-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloryellow50hsl"
+    ],
+    "body": [
+      "var(--rh-color-yellow-50-hsl${1:, 40.95808383233534 82.26600985221675% 39.80392156862745%})$2"
+    ]
+  },
+  "rh-color-yellow-50-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloryellow50rgb"
+    ],
+    "body": [
+      "var(--rh-color-yellow-50-rgb${1:, 185 132 18})$2"
+    ]
+  },
+  "rh-color-yellow-60-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloryellow60hsl"
+    ],
+    "body": [
+      "var(--rh-color-yellow-60-hsl${1:, 37.77777777777777 81.81818181818181% 32.35294117647059%})$2"
+    ]
+  },
+  "rh-color-yellow-60-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloryellow60rgb"
+    ],
+    "body": [
+      "var(--rh-color-yellow-60-rgb${1:, 150 100 15})$2"
+    ]
+  },
+  "rh-color-yellow-70-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloryellow70hsl"
+    ],
+    "body": [
+      "var(--rh-color-yellow-70-hsl${1:, 35.192307692307686 82.53968253968253% 24.705882352941178%})$2"
+    ]
+  },
+  "rh-color-yellow-70-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloryellow70rgb"
+    ],
+    "body": [
+      "var(--rh-color-yellow-70-rgb${1:, 115 72 11})$2"
+    ]
+  },
+  "rh-color-interactive-primary-default": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractiveprimarydefault"
+    ],
+    "body": [
+      "var(--rh-color-interactive-primary-default)$2"
+    ],
+    "description": "Responsive `interactive-primary` (e.g. link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-primary-default-on-light` on a themable container with a light color palette and `--rh-color-interactive-primary-default-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-interactive-primary-default-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractiveprimarydefaultonlight",
+      "0066cc"
+    ],
+    "body": [
+      "var(--rh-color-interactive-primary-default-on-light${1:, #0066cc})$2"
+    ],
+    "description": "Primary interactive - default (Light theme)"
+  },
+  "rh-color-interactive-primary-default-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractiveprimarydefaultondark",
+      "92c5f9"
+    ],
+    "body": [
+      "var(--rh-color-interactive-primary-default-on-dark${1:, #92c5f9})$2"
+    ],
+    "description": "Primary interactive - default (Dark theme)"
+  },
+  "rh-color-interactive-primary-hover": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractiveprimaryhover"
+    ],
+    "body": [
+      "var(--rh-color-interactive-primary-hover)$2"
+    ],
+    "description": "Responsive `interactive-primary` (e.g. link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-primary-hover-on-light` on a themable container with a light color palette\n     and to `--rh-color-interactive-primary-hover-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-interactive-primary-hover-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractiveprimaryhoveronlight",
+      "003366"
+    ],
+    "body": [
+      "var(--rh-color-interactive-primary-hover-on-light${1:, #003366})$2"
+    ],
+    "description": "Primary interactive - hover (Light theme)"
+  },
+  "rh-color-interactive-primary-hover-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractiveprimaryhoverondark",
+      "b9dafc"
+    ],
+    "body": [
+      "var(--rh-color-interactive-primary-hover-on-dark${1:, #b9dafc})$2"
+    ],
+    "description": "Primary interactive - hover (Dark theme)"
+  },
+  "rh-color-interactive-primary-active": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractiveprimaryactive"
+    ],
+    "body": [
+      "var(--rh-color-interactive-primary-active)$2"
+    ],
+    "description": "Responsive `interactive-primary` (e.g. link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-primary-active-on-light` on a themable container with a light color palette\n     and to `--rh-color-interactive-primary-active-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-interactive-primary-active-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractiveprimaryactiveonlight",
+      "003366"
+    ],
+    "body": [
+      "var(--rh-color-interactive-primary-active-on-light${1:, #003366})$2"
+    ],
+    "description": "Primary interactive - active (Light theme)"
+  },
+  "rh-color-interactive-primary-active-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractiveprimaryactiveondark",
+      "b9dafc"
+    ],
+    "body": [
+      "var(--rh-color-interactive-primary-active-on-dark${1:, #b9dafc})$2"
+    ],
+    "description": "Primary interactive - active (Dark theme)"
+  },
+  "rh-color-interactive-primary-focus": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractiveprimaryfocus"
+    ],
+    "body": [
+      "var(--rh-color-interactive-primary-focus)$2"
+    ],
+    "description": "Responsive `interactive-primary` (e.g. link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-primary-focus-on-light` on a themable container with a light color palette\n     and to `--rh-color-interactive-primary-focus-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-interactive-primary-focus-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractiveprimaryfocusonlight",
+      "003366"
+    ],
+    "body": [
+      "var(--rh-color-interactive-primary-focus-on-light${1:, #003366})$2"
+    ],
+    "description": "Primary interactive - focus (Light theme)"
+  },
+  "rh-color-interactive-primary-focus-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractiveprimaryfocusondark",
+      "b9dafc"
+    ],
+    "body": [
+      "var(--rh-color-interactive-primary-focus-on-dark${1:, #b9dafc})$2"
+    ],
+    "description": "Primary interactive - focus (Dark theme)"
+  },
+  "rh-color-interactive-primary-visited-default": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractiveprimaryvisiteddefault"
+    ],
+    "body": [
+      "var(--rh-color-interactive-primary-visited-default)$2"
+    ],
+    "description": "Responsive `interactive-primary-visited` (e.g. visited link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-primary-visited-default-on-light` on a themable container with a light color palette and `--rh-color-interactive-primary-visited-default-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-interactive-primary-visited-default-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractiveprimaryvisiteddefaultonlight",
+      "5e40be"
+    ],
+    "body": [
+      "var(--rh-color-interactive-primary-visited-default-on-light${1:, #5e40be})$2"
+    ],
+    "description": "Primary interactive visited - default (Light theme)"
+  },
+  "rh-color-interactive-primary-visited-default-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractiveprimaryvisiteddefaultondark",
+      "b6a6e9"
+    ],
+    "body": [
+      "var(--rh-color-interactive-primary-visited-default-on-dark${1:, #b6a6e9})$2"
+    ],
+    "description": "Primary interactive visited - default (Dark theme)"
+  },
+  "rh-color-interactive-primary-visited-hover": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractiveprimaryvisitedhover"
+    ],
+    "body": [
+      "var(--rh-color-interactive-primary-visited-hover)$2"
+    ],
+    "description": "Responsive `interactive-primary-visited` (e.g. visited link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-primary-visited-hover-on-light` on a themable container with a light color palette\n     and to `--rh-color-interactive-primary-visited-hover-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-interactive-primary-visited-hover-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractiveprimaryvisitedhoveronlight",
+      "21134d"
+    ],
+    "body": [
+      "var(--rh-color-interactive-primary-visited-hover-on-light${1:, #21134d})$2"
+    ],
+    "description": "Primary interactive visited - hover (Light theme)"
+  },
+  "rh-color-interactive-primary-visited-hover-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractiveprimaryvisitedhoverondark",
+      "ece6ff"
+    ],
+    "body": [
+      "var(--rh-color-interactive-primary-visited-hover-on-dark${1:, #ece6ff})$2"
+    ],
+    "description": "Primary interactive visited - hover (Dark theme)"
+  },
+  "rh-color-interactive-primary-visited-active": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractiveprimaryvisitedactive"
+    ],
+    "body": [
+      "var(--rh-color-interactive-primary-visited-active)$2"
+    ],
+    "description": "Responsive `interactive-primary-visited` (e.g. visited link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-primary-visited-active-on-light` on a themable container with a light color palette\n     and to `--rh-color-interactive-primary-visited-active-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-interactive-primary-visited-active-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractiveprimaryvisitedactiveonlight",
+      "21134d"
+    ],
+    "body": [
+      "var(--rh-color-interactive-primary-visited-active-on-light${1:, #21134d})$2"
+    ],
+    "description": "Primary interactive visited - active (Light theme)"
+  },
+  "rh-color-interactive-primary-visited-active-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractiveprimaryvisitedactiveondark",
+      "ece6ff"
+    ],
+    "body": [
+      "var(--rh-color-interactive-primary-visited-active-on-dark${1:, #ece6ff})$2"
+    ],
+    "description": "Primary interactive visited - active (Dark theme)"
+  },
+  "rh-color-interactive-primary-visited-focus": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractiveprimaryvisitedfocus"
+    ],
+    "body": [
+      "var(--rh-color-interactive-primary-visited-focus)$2"
+    ],
+    "description": "Responsive `interactive-primary-visited` (e.g. visited link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-primary-visited-focus-on-light` on a themable container with a light color palette\n     and to `--rh-color-interactive-primary-visited-focus-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-interactive-primary-visited-focus-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractiveprimaryvisitedfocusonlight",
+      "21134d"
+    ],
+    "body": [
+      "var(--rh-color-interactive-primary-visited-focus-on-light${1:, #21134d})$2"
+    ],
+    "description": "Primary interactive visited - focus (Light theme)"
+  },
+  "rh-color-interactive-primary-visited-focus-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractiveprimaryvisitedfocusondark",
+      "ece6ff"
+    ],
+    "body": [
+      "var(--rh-color-interactive-primary-visited-focus-on-dark${1:, #ece6ff})$2"
+    ],
+    "description": "Primary interactive visited - focus (Dark theme)"
+  },
+  "rh-color-interactive-secondary-default": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractivesecondarydefault"
+    ],
+    "body": [
+      "var(--rh-color-interactive-secondary-default)$2"
+    ],
+    "description": "Responsive `interactive-secondary` (e.g. link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-secondary-default-on-light` on a themable container with a light color palette and `--rh-color-interactive-secondary-default-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-interactive-secondary-default-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractivesecondarydefaultonlight",
+      "4d4d4d"
+    ],
+    "body": [
+      "var(--rh-color-interactive-secondary-default-on-light${1:, #4d4d4d})$2"
+    ],
+    "description": "Secondary interactive - default (Light theme)"
+  },
+  "rh-color-interactive-secondary-default-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractivesecondarydefaultondark",
+      "c7c7c7"
+    ],
+    "body": [
+      "var(--rh-color-interactive-secondary-default-on-dark${1:, #c7c7c7})$2"
+    ],
+    "description": "Secondary interactive - default (Dark theme)"
+  },
+  "rh-color-interactive-secondary-hover": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractivesecondaryhover"
+    ],
+    "body": [
+      "var(--rh-color-interactive-secondary-hover)$2"
+    ],
+    "description": "Responsive `interactive-secondary` (e.g. link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-secondary-hover-on-light` on a themable container with a light color palette\n     and to `--rh-color-interactive-secondary-hover-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-interactive-secondary-hover-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractivesecondaryhoveronlight",
+      "4d4d4d"
+    ],
+    "body": [
+      "var(--rh-color-interactive-secondary-hover-on-light${1:, #4d4d4d})$2"
+    ],
+    "description": "Secondary interactive - hover (Light theme)"
+  },
+  "rh-color-interactive-secondary-hover-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractivesecondaryhoverondark",
+      "c7c7c7"
+    ],
+    "body": [
+      "var(--rh-color-interactive-secondary-hover-on-dark${1:, #c7c7c7})$2"
+    ],
+    "description": "Secondary interactive - hover (Dark theme)"
+  },
+  "rh-color-interactive-secondary-active": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractivesecondaryactive"
+    ],
+    "body": [
+      "var(--rh-color-interactive-secondary-active)$2"
+    ],
+    "description": "Responsive `interactive-secondary` (e.g. link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-secondary-active-on-light` on a themable container with a light color palette\n     and to `--rh-color-interactive-secondary-active-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-interactive-secondary-active-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractivesecondaryactiveonlight",
+      "4d4d4d"
+    ],
+    "body": [
+      "var(--rh-color-interactive-secondary-active-on-light${1:, #4d4d4d})$2"
+    ],
+    "description": "Secondary interactive - active (Light theme)"
+  },
+  "rh-color-interactive-secondary-active-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractivesecondaryactiveondark",
+      "c7c7c7"
+    ],
+    "body": [
+      "var(--rh-color-interactive-secondary-active-on-dark${1:, #c7c7c7})$2"
+    ],
+    "description": "Secondary interactive - active (Dark theme)"
+  },
+  "rh-color-interactive-secondary-focus": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractivesecondaryfocus"
+    ],
+    "body": [
+      "var(--rh-color-interactive-secondary-focus)$2"
+    ],
+    "description": "Responsive `interactive-secondary` (e.g. link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-secondary-focus-on-light` on a themable container with a light color palette\n     and to `--rh-color-interactive-secondary-focus-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-interactive-secondary-focus-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractivesecondaryfocusonlight",
+      "4d4d4d"
+    ],
+    "body": [
+      "var(--rh-color-interactive-secondary-focus-on-light${1:, #4d4d4d})$2"
+    ],
+    "description": "Secondary interactive - focus (Light theme)"
+  },
+  "rh-color-interactive-secondary-focus-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractivesecondaryfocusondark",
+      "c7c7c7"
+    ],
+    "body": [
+      "var(--rh-color-interactive-secondary-focus-on-dark${1:, #c7c7c7})$2"
+    ],
+    "description": "Secondary interactive - focus (Dark theme)"
+  },
+  "rh-color-interactive-secondary-visited-default": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractivesecondaryvisiteddefault"
+    ],
+    "body": [
+      "var(--rh-color-interactive-secondary-visited-default)$2"
+    ],
+    "description": "Responsive `interactive-secondary-visited` (e.g. visited link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-secondary-visited-default-on-light` on a themable container with a light color palette and `--rh-color-interactive-secondary-visited-default-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-interactive-secondary-visited-default-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractivesecondaryvisiteddefaultonlight",
+      "4d4d4d"
+    ],
+    "body": [
+      "var(--rh-color-interactive-secondary-visited-default-on-light${1:, #4d4d4d})$2"
+    ],
+    "description": "Secondary interactive visited - default (Light theme)"
+  },
+  "rh-color-interactive-secondary-visited-default-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractivesecondaryvisiteddefaultondark",
+      "c7c7c7"
+    ],
+    "body": [
+      "var(--rh-color-interactive-secondary-visited-default-on-dark${1:, #c7c7c7})$2"
+    ],
+    "description": "Secondary interactive visited - default (Dark theme)"
+  },
+  "rh-color-interactive-secondary-visited-hover": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractivesecondaryvisitedhover"
+    ],
+    "body": [
+      "var(--rh-color-interactive-secondary-visited-hover)$2"
+    ],
+    "description": "Responsive `interactive-secondary-visited` (e.g. visited link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-secondary-visited-hover-on-light` on a themable container with a light color palette\n     and to `--rh-color-interactive-secondary-visited-hover-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-interactive-secondary-visited-hover-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractivesecondaryvisitedhoveronlight",
+      "4d4d4d"
+    ],
+    "body": [
+      "var(--rh-color-interactive-secondary-visited-hover-on-light${1:, #4d4d4d})$2"
+    ],
+    "description": "Secondary interactive visited - hover (Light theme)"
+  },
+  "rh-color-interactive-secondary-visited-hover-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractivesecondaryvisitedhoverondark",
+      "c7c7c7"
+    ],
+    "body": [
+      "var(--rh-color-interactive-secondary-visited-hover-on-dark${1:, #c7c7c7})$2"
+    ],
+    "description": "Secondary interactive visited - hover (Dark theme)"
+  },
+  "rh-color-interactive-secondary-visited-active": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractivesecondaryvisitedactive"
+    ],
+    "body": [
+      "var(--rh-color-interactive-secondary-visited-active)$2"
+    ],
+    "description": "Responsive `interactive-secondary-visited` (e.g. visited link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-secondary-visited-active-on-light` on a themable container with a light color palette\n     and to `--rh-color-interactive-secondary-visited-active-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-interactive-secondary-visited-active-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractivesecondaryvisitedactiveonlight",
+      "4d4d4d"
+    ],
+    "body": [
+      "var(--rh-color-interactive-secondary-visited-active-on-light${1:, #4d4d4d})$2"
+    ],
+    "description": "Secondary interactive visited - active (Light theme)"
+  },
+  "rh-color-interactive-secondary-visited-active-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractivesecondaryvisitedactiveondark",
+      "c7c7c7"
+    ],
+    "body": [
+      "var(--rh-color-interactive-secondary-visited-active-on-dark${1:, #c7c7c7})$2"
+    ],
+    "description": "Secondary interactive visited - active (Dark theme)"
+  },
+  "rh-color-interactive-secondary-visited-focus": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractivesecondaryvisitedfocus"
+    ],
+    "body": [
+      "var(--rh-color-interactive-secondary-visited-focus)$2"
+    ],
+    "description": "Responsive `interactive-secondary-visited` (e.g. visited link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-secondary-visited-focus-on-light` on a themable container with a light color palette\n     and to `--rh-color-interactive-secondary-visited-focus-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-interactive-secondary-visited-focus-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractivesecondaryvisitedfocusonlight",
+      "4d4d4d"
+    ],
+    "body": [
+      "var(--rh-color-interactive-secondary-visited-focus-on-light${1:, #4d4d4d})$2"
+    ],
+    "description": "Secondary interactive visited - focus (Light theme)"
+  },
+  "rh-color-interactive-secondary-visited-focus-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractivesecondaryvisitedfocusondark",
+      "c7c7c7"
+    ],
+    "body": [
+      "var(--rh-color-interactive-secondary-visited-focus-on-dark${1:, #c7c7c7})$2"
+    ],
+    "description": "Secondary interactive visited - focus (Dark theme)"
+  },
+  "rh-color-interactive-blue-lightest": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractivebluelightest",
+      "b9dafc"
+    ],
+    "body": [
+      "var(--rh-color-interactive-blue-lightest${1:, #b9dafc})$2"
+    ],
+    "description": "Inline link hover (dark theme)"
+  },
+  "rh-color-interactive-blue-lighter": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractivebluelighter",
+      "92c5f9"
+    ],
+    "body": [
+      "var(--rh-color-interactive-blue-lighter${1:, #92c5f9})$2"
+    ],
+    "description": "Inline link (dark theme)"
+  },
+  "rh-color-interactive-blue-darker": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractivebluedarker",
+      "0066cc"
+    ],
+    "body": [
+      "var(--rh-color-interactive-blue-darker${1:, #0066cc})$2"
+    ],
+    "description": "Inline link (light theme)"
+  },
+  "rh-color-interactive-blue-darkest": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractivebluedarkest",
+      "003366"
+    ],
+    "body": [
+      "var(--rh-color-interactive-blue-darkest${1:, #003366})$2"
+    ],
+    "description": "Inline link hover (light theme)"
+  },
+  "rh-color-interactive-purple-lightest": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractivepurplelightest",
+      "ece6ff"
+    ],
+    "body": [
+      "var(--rh-color-interactive-purple-lightest${1:, #ece6ff})$2"
+    ],
+    "description": "Inline link visited hover (dark theme)"
+  },
+  "rh-color-interactive-purple-lighter": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractivepurplelighter",
+      "b6a6e9"
+    ],
+    "body": [
+      "var(--rh-color-interactive-purple-lighter${1:, #b6a6e9})$2"
+    ],
+    "description": "Inline link visited (dark theme)"
+  },
+  "rh-color-interactive-purple-darker": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractivepurpledarker",
+      "5e40be"
+    ],
+    "body": [
+      "var(--rh-color-interactive-purple-darker${1:, #5e40be})$2"
+    ],
+    "description": "Inline link visited (light theme)"
+  },
+  "rh-color-interactive-purple-darkest": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorinteractivepurpledarkest",
+      "ece6ff"
+    ],
+    "body": [
+      "var(--rh-color-interactive-purple-darkest${1:, #ece6ff})$2"
+    ],
+    "description": "Inline link visited hover (light theme)"
+  },
+  "rh-color-status-danger": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorstatusdanger"
+    ],
+    "body": [
+      "var(--rh-color-status-danger)$2"
+    ],
+    "description": "Responsive `status-danger` color value. Typically read-only – use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-status-danger-on-light` on a themable container with a light color palette and `--rh-color-status-danger-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-status-danger-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorstatusdangeronlight",
+      "b1380b"
+    ],
+    "body": [
+      "var(--rh-color-status-danger-on-light${1:, #b1380b})$2"
+    ],
+    "description": "Danger status color (light theme)"
+  },
+  "rh-color-status-danger-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorstatusdangerondark",
+      "f0561d"
+    ],
+    "body": [
+      "var(--rh-color-status-danger-on-dark${1:, #f0561d})$2"
+    ],
+    "description": "Danger status color (dark theme)"
+  },
+  "rh-color-status-caution": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorstatuscaution"
+    ],
+    "body": [
+      "var(--rh-color-status-caution)$2"
+    ],
+    "description": "Responsive `status-caution` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-status-caution-on-light` on a themable container with a light color palette and `--rh-color-status-caution-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-status-caution-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorstatuscautiononlight",
+      "ca6c0f"
+    ],
+    "body": [
+      "var(--rh-color-status-caution-on-light${1:, #ca6c0f})$2"
+    ],
+    "description": "Caution status color (light theme)"
+  },
+  "rh-color-status-caution-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorstatuscautionondark",
+      "f5921b"
+    ],
+    "body": [
+      "var(--rh-color-status-caution-on-dark${1:, #f5921b})$2"
+    ],
+    "description": "Caution status color (dark theme)"
+  },
+  "rh-color-status-warning": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorstatuswarning"
+    ],
+    "body": [
+      "var(--rh-color-status-warning)$2"
+    ],
+    "description": "Responsive `status-warning` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-status-warning-on-light` on a themable container with a light color palette and `--rh-color-status-warning-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-status-warning-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorstatuswarningonlight",
+      "dca614"
+    ],
+    "body": [
+      "var(--rh-color-status-warning-on-light${1:, #dca614})$2"
+    ],
+    "description": "Warning status color (light theme)"
+  },
+  "rh-color-status-warning-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorstatuswarningondark",
+      "ffcc17"
+    ],
+    "body": [
+      "var(--rh-color-status-warning-on-dark${1:, #ffcc17})$2"
+    ],
+    "description": "Warning status color (dark theme)"
+  },
+  "rh-color-status-neutral": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorstatusneutral"
+    ],
+    "body": [
+      "var(--rh-color-status-neutral)$2"
+    ],
+    "description": "Responsive `status-neutral` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-status-neutral-on-light` on a themable container with a light color palette and `--rh-color-status-neutral-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-status-neutral-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorstatusneutralonlight",
+      "4d4d4d"
+    ],
+    "body": [
+      "var(--rh-color-status-neutral-on-light${1:, #4d4d4d})$2"
+    ],
+    "description": "Neutral accent color (light theme)"
+  },
+  "rh-color-status-neutral-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorstatusneutralondark",
+      "c7c7c7"
+    ],
+    "body": [
+      "var(--rh-color-status-neutral-on-dark${1:, #c7c7c7})$2"
+    ],
+    "description": "Neutral accent color (dark theme)"
+  },
+  "rh-color-status-note": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorstatusnote"
+    ],
+    "body": [
+      "var(--rh-color-status-note)$2"
+    ],
+    "description": "Responsive `status-note` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-status-note-on-light` on a themable container with a light color palette and `--rh-color-status-note-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-status-note-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorstatusnoteonlight",
+      "5e40be"
+    ],
+    "body": [
+      "var(--rh-color-status-note-on-light${1:, #5e40be})$2"
+    ],
+    "description": "Note/tip status color (light theme)"
+  },
+  "rh-color-status-note-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorstatusnoteondark",
+      "b6a6e9"
+    ],
+    "body": [
+      "var(--rh-color-status-note-on-dark${1:, #b6a6e9})$2"
+    ],
+    "description": "Note/tip status color (dark theme)"
+  },
+  "rh-color-status-info": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorstatusinfo"
+    ],
+    "body": [
+      "var(--rh-color-status-info)$2"
+    ],
+    "description": "Responsive `status-info` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-status-info-on-light` on a themable container with a light color palette and `--rh-color-status-info-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-status-info-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorstatusinfoonlight",
+      "5e40be"
+    ],
+    "body": [
+      "var(--rh-color-status-info-on-light${1:, #5e40be})$2"
+    ],
+    "description": "Info status color (light theme)"
+  },
+  "rh-color-status-info-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorstatusinfoondark",
+      "b6a6e9"
+    ],
+    "body": [
+      "var(--rh-color-status-info-on-dark${1:, #b6a6e9})$2"
+    ],
+    "description": "Info status color (dark theme)"
+  },
+  "rh-color-status-success": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorstatussuccess"
+    ],
+    "body": [
+      "var(--rh-color-status-success)$2"
+    ],
+    "description": "Responsive `status-success` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-status-success-on-light` on a themable container with a light color palette and `--rh-color-status-success-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-status-success-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorstatussuccessonlight",
+      "3d7317"
+    ],
+    "body": [
+      "var(--rh-color-status-success-on-light${1:, #3d7317})$2"
+    ],
+    "description": "Success status color (light theme)"
+  },
+  "rh-color-status-success-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorstatussuccessondark",
+      "87bb62"
+    ],
+    "body": [
+      "var(--rh-color-status-success-on-dark${1:, #87bb62})$2"
+    ],
+    "description": "Success status color (dark theme)"
+  },
+  "rh-color-surface": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorsurface"
+    ],
+    "body": [
+      "var(--rh-color-surface)$2"
+    ],
+    "description": "Responsive `surface` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to the surface color corresponding to the surface' color palette."
+  },
+  "rh-color-surface-lightest": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorsurfacelightest",
+      "ffffff"
+    ],
+    "body": [
+      "var(--rh-color-surface-lightest${1:, #ffffff})$2"
+    ],
+    "description": "Primary surface (light theme)"
+  },
+  "rh-color-surface-lighter": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorsurfacelighter",
+      "f2f2f2"
+    ],
+    "body": [
+      "var(--rh-color-surface-lighter${1:, #f2f2f2})$2"
+    ],
+    "description": "Tertiary surface (light theme)"
+  },
+  "rh-color-surface-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorsurfacelight",
+      "e0e0e0"
+    ],
+    "body": [
+      "var(--rh-color-surface-light${1:, #e0e0e0})$2"
+    ],
+    "description": "Secondary surface (light theme)"
+  },
+  "rh-color-surface-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorsurfacedark",
+      "383838"
+    ],
+    "body": [
+      "var(--rh-color-surface-dark${1:, #383838})$2"
+    ],
+    "description": "Tertiary surface (dark theme)"
+  },
+  "rh-color-surface-dark-alt": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorsurfacedarkalt",
+      "292929"
+    ],
+    "body": [
+      "var(--rh-color-surface-dark-alt${1:, #292929})$2"
+    ],
+    "description": "Alternative tertiary surface (not available for use with context provider)"
+  },
+  "rh-color-surface-darker": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorsurfacedarker",
+      "1f1f1f"
+    ],
+    "body": [
+      "var(--rh-color-surface-darker${1:, #1f1f1f})$2"
+    ],
+    "description": "Secondary surface (dark theme)"
+  },
+  "rh-color-surface-darkest": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorsurfacedarkest",
+      "151515"
+    ],
+    "body": [
+      "var(--rh-color-surface-darkest${1:, #151515})$2"
+    ],
+    "description": "Primary surface (dark theme)"
+  },
+  "rh-color-surface-status-danger": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorsurfacestatusdanger"
+    ],
+    "body": [
+      "var(--rh-color-surface-status-danger)$2"
+    ],
+    "description": "Responsive `surface-status-danger` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-surface-status-danger-on-light` on a themable container with a light color palette and `--rh-color-surface-status-danger-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-surface-status-danger-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorsurfacestatusdangeronlight",
+      "ffe3d9"
+    ],
+    "body": [
+      "var(--rh-color-surface-status-danger-on-light${1:, #ffe3d9})$2"
+    ],
+    "description": "Danger status surface color (light theme)"
+  },
+  "rh-color-surface-status-danger-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorsurfacestatusdangerondark",
+      "ffe3d9"
+    ],
+    "body": [
+      "var(--rh-color-surface-status-danger-on-dark${1:, #ffe3d9})$2"
+    ],
+    "description": "Danger status surface color (dark theme)"
+  },
+  "rh-color-surface-status-caution": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorsurfacestatuscaution"
+    ],
+    "body": [
+      "var(--rh-color-surface-status-caution)$2"
+    ],
+    "description": "Responsive `surface-status-caution` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-surface-status-caution-on-light` on a themable container with a light color palette and `--rh-color-surface-status-caution-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-surface-status-caution-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorsurfacestatuscautiononlight",
+      "ffe8cc"
+    ],
+    "body": [
+      "var(--rh-color-surface-status-caution-on-light${1:, #ffe8cc})$2"
+    ],
+    "description": "Caution status surface color (light theme)"
+  },
+  "rh-color-surface-status-caution-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorsurfacestatuscautionondark",
+      "ffe8cc"
+    ],
+    "body": [
+      "var(--rh-color-surface-status-caution-on-dark${1:, #ffe8cc})$2"
+    ],
+    "description": "Caution status surface color (dark theme)"
+  },
+  "rh-color-surface-status-warning": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorsurfacestatuswarning"
+    ],
+    "body": [
+      "var(--rh-color-surface-status-warning)$2"
+    ],
+    "description": "Responsive `surface-status-warning` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-surface-status-warning-on-light` on a themable container with a light color palette and `--rh-color-surface-status-warning-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-surface-status-warning-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorsurfacestatuswarningonlight",
+      "fff4cc"
+    ],
+    "body": [
+      "var(--rh-color-surface-status-warning-on-light${1:, #fff4cc})$2"
+    ],
+    "description": "Warning status surface color (light theme)"
+  },
+  "rh-color-surface-status-warning-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorsurfacestatuswarningondark",
+      "73480b"
+    ],
+    "body": [
+      "var(--rh-color-surface-status-warning-on-dark${1:, #73480b})$2"
+    ],
+    "description": "Warning status surface color (dark theme)"
+  },
+  "rh-color-surface-status-default": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorsurfacestatusdefault"
+    ],
+    "body": [
+      "var(--rh-color-surface-status-default)$2"
+    ],
+    "description": "Responsive `surface-status-default` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-surface-status-default-on-light` on a themable container with a light color palette and `--rh-color-surface-status-default-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-surface-status-default-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorsurfacestatusdefaultonlight",
+      "f2f2f2"
+    ],
+    "body": [
+      "var(--rh-color-surface-status-default-on-light${1:, #f2f2f2})$2"
+    ],
+    "description": "Default status surface color (light theme)"
+  },
+  "rh-color-surface-status-default-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorsurfacestatusdefaultondark",
+      "f2f2f2"
+    ],
+    "body": [
+      "var(--rh-color-surface-status-default-on-dark${1:, #f2f2f2})$2"
+    ],
+    "description": "Default status surface color (dark theme)"
+  },
+  "rh-color-surface-status-neutral": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorsurfacestatusneutral"
+    ],
+    "body": [
+      "var(--rh-color-surface-status-neutral)$2"
+    ],
+    "description": "Responsive `surface-status-neutral` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-surface-status-neutral-on-light` on a themable container with a light color palette and `--rh-color-surface-status-neutral-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-surface-status-neutral-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorsurfacestatusneutralonlight",
+      "f2f2f2"
+    ],
+    "body": [
+      "var(--rh-color-surface-status-neutral-on-light${1:, #f2f2f2})$2"
+    ],
+    "description": "Neutral status surface color (light theme)"
+  },
+  "rh-color-surface-status-neutral-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorsurfacestatusneutralondark",
+      "f2f2f2"
+    ],
+    "body": [
+      "var(--rh-color-surface-status-neutral-on-dark${1:, #f2f2f2})$2"
+    ],
+    "description": "Neutral status surface color (dark theme)"
+  },
+  "rh-color-surface-status-info": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorsurfacestatusinfo"
+    ],
+    "body": [
+      "var(--rh-color-surface-status-info)$2"
+    ],
+    "description": "Responsive `surface-status-info` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-surface-status-info-on-light` on a themable container with a light color palette and `--rh-color-surface-status-info-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-surface-status-info-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorsurfacestatusinfoonlight",
+      "ece6ff"
+    ],
+    "body": [
+      "var(--rh-color-surface-status-info-on-light${1:, #ece6ff})$2"
+    ],
+    "description": "Info status surface color (light theme)"
+  },
+  "rh-color-surface-status-info-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorsurfacestatusinfoondark",
+      "ece6ff"
+    ],
+    "body": [
+      "var(--rh-color-surface-status-info-on-dark${1:, #ece6ff})$2"
+    ],
+    "description": "Info status surface color (dark theme)"
+  },
+  "rh-color-surface-status-success": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorsurfacestatussuccess"
+    ],
+    "body": [
+      "var(--rh-color-surface-status-success)$2"
+    ],
+    "description": "Responsive `surface-status-success` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-surface-status-success-on-light` on a themable container with a light color palette and `--rh-color-surface-status-success-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-surface-status-success-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorsurfacestatussuccessonlight",
+      "e9f7df"
+    ],
+    "body": [
+      "var(--rh-color-surface-status-success-on-light${1:, #e9f7df})$2"
+    ],
+    "description": "Success status surface color (light theme)"
+  },
+  "rh-color-surface-status-success-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorsurfacestatussuccessondark",
+      "e9f7df"
+    ],
+    "body": [
+      "var(--rh-color-surface-status-success-on-dark${1:, #e9f7df})$2"
+    ],
+    "description": "Success status surface color (dark theme)"
+  },
+  "rh-color-text-primary": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolortextprimary"
+    ],
+    "body": [
+      "var(--rh-color-text-primary)$2"
+    ],
+    "description": "Responsive `text-primary` color value. Typically read only - use a themable container e.g. `<rh-surface>` Resolves to `--rh-color-text-primary-on-light` on a themable container with a light color palette and `--rh-color-text-primary-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-text-primary-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolortextprimaryonlight",
+      "151515"
+    ],
+    "body": [
+      "var(--rh-color-text-primary-on-light${1:, #151515})$2"
+    ],
+    "description": "Primary text color for light theme"
+  },
+  "rh-color-text-primary-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolortextprimaryondark",
+      "ffffff"
+    ],
+    "body": [
+      "var(--rh-color-text-primary-on-dark${1:, #ffffff})$2"
+    ],
+    "description": "Primary text color for dark theme"
+  },
+  "rh-color-text-secondary": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolortextsecondary"
+    ],
+    "body": [
+      "var(--rh-color-text-secondary)$2"
+    ],
+    "description": "Responsive `text-secondary` color value. Typically read only - use a themable container e.g. `<rh-surface>` Resolves to `--rh-color-text-secondary-on-light` on a themable container with a light color palette and `--rh-color-text-secondary-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-text-secondary-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolortextsecondaryonlight",
+      "4d4d4d"
+    ],
+    "body": [
+      "var(--rh-color-text-secondary-on-light${1:, #4d4d4d})$2"
+    ],
+    "description": "Secondary text color for light theme"
+  },
+  "rh-color-text-secondary-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolortextsecondaryondark",
+      "c7c7c7"
+    ],
+    "body": [
+      "var(--rh-color-text-secondary-on-dark${1:, #c7c7c7})$2"
+    ],
+    "description": "Secondary text color for dark theme"
+  },
+  "rh-color-text-brand": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolortextbrand"
+    ],
+    "body": [
+      "var(--rh-color-text-brand)$2"
+    ],
+    "description": "Responsive `text-brand` color value. Typically read only - use a themable container e.g. `<rh-surface>` Resolves to `--rh-color-text-brand-on-light` on a themable container with a light color palette and `--rh-color-text-brand-on-dark` on a themable container with a dark color palette."
+  },
+  "rh-color-text-brand-on-light": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolortextbrandonlight",
+      "ee0000"
+    ],
+    "body": [
+      "var(--rh-color-text-brand-on-light${1:, #ee0000})$2"
+    ],
+    "description": "Brand text color for light theme"
+  },
+  "rh-color-text-brand-on-dark": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolortextbrandondark",
+      "ee0000"
+    ],
+    "body": [
+      "var(--rh-color-text-brand-on-dark${1:, #ee0000})$2"
+    ],
+    "description": "Brand text color for dark theme"
+  },
+  "rh-color-white-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorwhitehsl"
+    ],
+    "body": [
+      "var(--rh-color-white-hsl${1:, 0 0% 100%})$2"
+    ]
+  },
+  "rh-color-white-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorwhitergb"
+    ],
+    "body": [
+      "var(--rh-color-white-rgb${1:, 255 255 255})$2"
+    ]
+  },
+  "rh-color-black-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorblackhsl"
+    ],
+    "body": [
+      "var(--rh-color-black-hsl${1:, 0 0% 0%})$2"
+    ]
+  },
+  "rh-color-black-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorblackrgb"
+    ],
+    "body": [
+      "var(--rh-color-black-rgb${1:, 0 0 0})$2"
+    ]
+  },
+  "rh-font-family-heading": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontfamilyheading"
+    ],
+    "body": [
+      "var(--rh-font-family-heading${1:, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif})$2"
+    ],
+    "description": "Heading font family"
+  },
+  "rh-font-family-body-text": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontfamilybodytext"
+    ],
+    "body": [
+      "var(--rh-font-family-body-text${1:, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif})$2"
+    ],
+    "description": "Body text font family"
+  },
+  "rh-font-family-code": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontfamilycode"
+    ],
+    "body": [
+      "var(--rh-font-family-code${1:, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace})$2"
+    ],
+    "description": "Code font family"
+  },
+  "rh-font-size-body-text-xs": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontsizebodytextxs"
+    ],
+    "body": [
+      "var(--rh-font-size-body-text-xs${1:, 0.75rem})$2"
+    ],
+    "description": "12px font size"
+  },
+  "rh-font-size-body-text-sm": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontsizebodytextsm"
+    ],
+    "body": [
+      "var(--rh-font-size-body-text-sm${1:, 0.875rem})$2"
+    ],
+    "description": "14px font size"
+  },
+  "rh-font-size-body-text-md": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontsizebodytextmd"
+    ],
+    "body": [
+      "var(--rh-font-size-body-text-md${1:, 1rem})$2"
+    ],
+    "description": "16px font size"
+  },
+  "rh-font-size-body-text-lg": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontsizebodytextlg"
+    ],
+    "body": [
+      "var(--rh-font-size-body-text-lg${1:, 1.125rem})$2"
+    ],
+    "description": "18px font size"
+  },
+  "rh-font-size-body-text-xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontsizebodytextxl"
+    ],
+    "body": [
+      "var(--rh-font-size-body-text-xl${1:, 1.25rem})$2"
+    ],
+    "description": "20px font size"
+  },
+  "rh-font-size-body-text-2xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontsizebodytext2xl"
+    ],
+    "body": [
+      "var(--rh-font-size-body-text-2xl${1:, 1.5rem})$2"
+    ],
+    "description": "24px font size"
+  },
+  "rh-font-size-code-xs": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontsizecodexs"
+    ],
+    "body": [
+      "var(--rh-font-size-code-xs${1:, 0.75rem})$2"
+    ],
+    "description": "12px font size"
+  },
+  "rh-font-size-code-sm": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontsizecodesm"
+    ],
+    "body": [
+      "var(--rh-font-size-code-sm${1:, 0.875rem})$2"
+    ],
+    "description": "14px font size"
+  },
+  "rh-font-size-code-md": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontsizecodemd"
+    ],
+    "body": [
+      "var(--rh-font-size-code-md${1:, 1rem})$2"
+    ],
+    "description": "16px font size"
+  },
+  "rh-font-size-code-lg": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontsizecodelg"
+    ],
+    "body": [
+      "var(--rh-font-size-code-lg${1:, 1.125rem})$2"
+    ],
+    "description": "18px font size"
+  },
+  "rh-font-size-code-xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontsizecodexl"
+    ],
+    "body": [
+      "var(--rh-font-size-code-xl${1:, 1.25rem})$2"
+    ],
+    "description": "20px font size"
+  },
+  "rh-font-size-code-2xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontsizecode2xl"
+    ],
+    "body": [
+      "var(--rh-font-size-code-2xl${1:, 1.5rem})$2"
+    ],
+    "description": "24px font size"
+  },
+  "rh-font-size-heading-xs": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontsizeheadingxs"
+    ],
+    "body": [
+      "var(--rh-font-size-heading-xs${1:, 1.25rem})$2"
+    ],
+    "description": "h6 heading font size"
+  },
+  "rh-font-size-heading-sm": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontsizeheadingsm"
+    ],
+    "body": [
+      "var(--rh-font-size-heading-sm${1:, 1.5rem})$2"
+    ],
+    "description": "h5 heading font size"
+  },
+  "rh-font-size-heading-md": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontsizeheadingmd"
+    ],
+    "body": [
+      "var(--rh-font-size-heading-md${1:, 1.75rem})$2"
+    ],
+    "description": "h4 heading font size"
+  },
+  "rh-font-size-heading-lg": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontsizeheadinglg"
+    ],
+    "body": [
+      "var(--rh-font-size-heading-lg${1:, 2.25rem})$2"
+    ],
+    "description": "h3 heading font size"
+  },
+  "rh-font-size-heading-xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontsizeheadingxl"
+    ],
+    "body": [
+      "var(--rh-font-size-heading-xl${1:, 2.5rem})$2"
+    ],
+    "description": "h2 heading font size"
+  },
+  "rh-font-size-heading-2xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontsizeheading2xl"
+    ],
+    "body": [
+      "var(--rh-font-size-heading-2xl${1:, 3rem})$2"
+    ],
+    "description": "h1 heading font size"
+  },
+  "rh-font-weight-body-text-regular": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontweightbodytextregular"
+    ],
+    "body": [
+      "var(--rh-font-weight-body-text-regular${1:, 400})$2"
+    ],
+    "description": "Regular font weight"
+  },
+  "rh-font-weight-body-text-medium": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontweightbodytextmedium"
+    ],
+    "body": [
+      "var(--rh-font-weight-body-text-medium${1:, 500})$2"
+    ],
+    "description": "Medium font weight"
+  },
+  "rh-font-weight-code-regular": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontweightcoderegular"
+    ],
+    "body": [
+      "var(--rh-font-weight-code-regular${1:, 400})$2"
+    ],
+    "description": "Regular font weight"
+  },
+  "rh-font-weight-code-medium": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontweightcodemedium"
+    ],
+    "body": [
+      "var(--rh-font-weight-code-medium${1:, 500})$2"
+    ],
+    "description": "Medium font weight"
+  },
+  "rh-font-weight-heading-regular": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontweightheadingregular"
+    ],
+    "body": [
+      "var(--rh-font-weight-heading-regular${1:, 300})$2"
+    ],
+    "description": "Regular font weight for headings"
+  },
+  "rh-font-weight-heading-medium": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontweightheadingmedium"
+    ],
+    "body": [
+      "var(--rh-font-weight-heading-medium${1:, 500})$2"
+    ],
+    "description": "Medium font weight for headings"
+  },
+  "rh-font-weight-heading-bold": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontweightheadingbold"
+    ],
+    "body": [
+      "var(--rh-font-weight-heading-bold${1:, 700})$2"
+    ],
+    "description": "Bold font weight for headings"
+  },
+  "rh-letter-spacing-body-text": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhletterspacingbodytext"
+    ],
+    "body": [
+      "var(--rh-letter-spacing-body-text${1:, 0.0125rem})$2"
+    ],
+    "description": "Extra letter spacing for small body text sizes"
+  },
+  "rh-line-height-heading": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhlineheightheading"
+    ],
+    "body": [
+      "var(--rh-line-height-heading${1:, 1.3})$2"
+    ],
+    "description": "Line height for headings"
+  },
+  "rh-line-height-body-text": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhlineheightbodytext"
+    ],
+    "body": [
+      "var(--rh-line-height-body-text${1:, 1.5})$2"
+    ],
+    "description": "Line height for body text"
+  },
+  "rh-line-height-code": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhlineheightcode"
+    ],
+    "body": [
+      "var(--rh-line-height-code${1:, 1.5})$2"
+    ],
+    "description": "Line height for code"
+  },
+  "rh-size-icon-01": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhsizeicon01"
+    ],
+    "body": [
+      "var(--rh-size-icon-01${1:, 16px})$2"
+    ],
+    "description": "16px icon box"
+  },
+  "rh-size-icon-02": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhsizeicon02"
+    ],
+    "body": [
+      "var(--rh-size-icon-02${1:, 24px})$2"
+    ],
+    "description": "24px icon box"
+  },
+  "rh-size-icon-03": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhsizeicon03"
+    ],
+    "body": [
+      "var(--rh-size-icon-03${1:, 32px})$2"
+    ],
+    "description": "32px icon box"
+  },
+  "rh-size-icon-04": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhsizeicon04"
+    ],
+    "body": [
+      "var(--rh-size-icon-04${1:, 40px})$2"
+    ],
+    "description": "40px icon box"
+  },
+  "rh-size-icon-05": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhsizeicon05"
+    ],
+    "body": [
+      "var(--rh-size-icon-05${1:, 48px})$2"
+    ],
+    "description": "48px icon box"
+  },
+  "rh-size-icon-06": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhsizeicon06"
+    ],
+    "body": [
+      "var(--rh-size-icon-06${1:, 64px})$2"
+    ],
+    "description": "64px icon box"
+  },
+  "rh-size-icon-07": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhsizeicon07"
+    ],
+    "body": [
+      "var(--rh-size-icon-07${1:, 80px})$2"
+    ],
+    "description": "80px icon box"
+  },
+  "rh-size-icon-08": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhsizeicon08"
+    ],
+    "body": [
+      "var(--rh-size-icon-08${1:, 96px})$2"
+    ],
+    "description": "96px icon box"
+  },
+  "rh-size-icon-09": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhsizeicon09"
+    ],
+    "body": [
+      "var(--rh-size-icon-09${1:, 128px})$2"
+    ],
+    "description": "128px icon box"
+  },
+  "rh-media-xs": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhmediaxs"
+    ],
+    "body": [
+      "var(--rh-media-xs${1:, (min-width: 576px)})$2"
+    ],
+    "description": "Mobile portrait"
+  },
+  "rh-media-sm": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhmediasm"
+    ],
+    "body": [
+      "var(--rh-media-sm${1:, (min-width: 768px)})$2"
+    ],
+    "description": "Mobile landscape"
+  },
+  "rh-media-md": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhmediamd"
+    ],
+    "body": [
+      "var(--rh-media-md${1:, (min-width: 992px)})$2"
+    ],
+    "description": "Tablet portrait"
+  },
+  "rh-media-lg": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhmedialg"
+    ],
+    "body": [
+      "var(--rh-media-lg${1:, (min-width: 1200px)})$2"
+    ],
+    "description": "Tablet landscape"
+  },
+  "rh-media-xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhmediaxl"
+    ],
+    "body": [
+      "var(--rh-media-xl${1:, (min-width: 1440px)})$2"
+    ],
+    "description": "Desktop small"
+  },
+  "rh-media-2xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhmedia2xl"
+    ],
+    "body": [
+      "var(--rh-media-2xl${1:, (min-width: 1680px)})$2"
+    ],
+    "description": "Desktop Large"
+  },
+  "rh-opacity-0": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhopacity0"
+    ],
+    "body": [
+      "var(--rh-opacity-0${1:, 0%})$2"
+    ],
+    "description": "0% opacity"
+  },
+  "rh-opacity-10": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhopacity10"
+    ],
+    "body": [
+      "var(--rh-opacity-10${1:, 10%})$2"
+    ],
+    "description": "10% opacity"
+  },
+  "rh-opacity-20": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhopacity20"
+    ],
+    "body": [
+      "var(--rh-opacity-20${1:, 20%})$2"
+    ],
+    "description": "20% opacity"
+  },
+  "rh-opacity-30": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhopacity30"
+    ],
+    "body": [
+      "var(--rh-opacity-30${1:, 30%})$2"
+    ],
+    "description": "30% opacity"
+  },
+  "rh-opacity-40": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhopacity40"
+    ],
+    "body": [
+      "var(--rh-opacity-40${1:, 40%})$2"
+    ],
+    "description": "40% opacity"
+  },
+  "rh-opacity-50": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhopacity50"
+    ],
+    "body": [
+      "var(--rh-opacity-50${1:, 50%})$2"
+    ],
+    "description": "50% opacity"
+  },
+  "rh-opacity-60": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhopacity60"
+    ],
+    "body": [
+      "var(--rh-opacity-60${1:, 60%})$2"
+    ],
+    "description": "60% opacity"
+  },
+  "rh-opacity-70": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhopacity70"
+    ],
+    "body": [
+      "var(--rh-opacity-70${1:, 70%})$2"
+    ],
+    "description": "70% opacity"
+  },
+  "rh-opacity-80": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhopacity80"
+    ],
+    "body": [
+      "var(--rh-opacity-80${1:, 80%})$2"
+    ],
+    "description": "80% opacity"
+  },
+  "rh-opacity-90": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhopacity90"
+    ],
+    "body": [
+      "var(--rh-opacity-90${1:, 90%})$2"
+    ],
+    "description": "90% opacity"
+  },
+  "rh-opacity-100": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhopacity100"
+    ],
+    "body": [
+      "var(--rh-opacity-100${1:, 100%})$2"
+    ],
+    "description": "100% opacity"
+  },
+  "rh-box-shadow-sm": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhboxshadowsm"
+    ],
+    "body": [
+      "var(--rh-box-shadow-sm${1:, 0 2px 4px 0 rgba(21, 21, 21, 0.2)})$2"
+    ],
+    "description": "Small box shadow"
+  },
+  "rh-box-shadow-md": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhboxshadowmd"
+    ],
+    "body": [
+      "var(--rh-box-shadow-md${1:, 0 4px 6px 1px rgba(21, 21, 21, 0.25)})$2"
+    ],
+    "description": "Medium box shadow"
+  },
+  "rh-box-shadow-lg": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhboxshadowlg"
+    ],
+    "body": [
+      "var(--rh-box-shadow-lg${1:, 0 6px 8px 2px rgba(21, 21, 21, 0.3)})$2"
+    ],
+    "description": "Large box shadow"
+  },
+  "rh-box-shadow-xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhboxshadowxl"
+    ],
+    "body": [
+      "var(--rh-box-shadow-xl${1:, 0 8px 24px 3px rgba(21, 21, 21, 0.35)})$2"
+    ],
+    "description": "Extra large box shadow"
+  },
+  "rh-length-4xs": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhlength4xs"
+    ],
+    "body": [
+      "var(--rh-length-4xs${1:, 1px})$2"
+    ],
+    "description": "1px length token"
+  },
+  "rh-length-3xs": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhlength3xs"
+    ],
+    "body": [
+      "var(--rh-length-3xs${1:, 2px})$2"
+    ],
+    "description": "2px length token"
+  },
+  "rh-length-2xs": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhlength2xs"
+    ],
+    "body": [
+      "var(--rh-length-2xs${1:, 3px})$2"
+    ],
+    "description": "3px length token"
+  },
+  "rh-length-xs": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhlengthxs"
+    ],
+    "body": [
+      "var(--rh-length-xs${1:, 4px})$2"
+    ],
+    "description": "4px length token"
+  },
+  "rh-length-sm": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhlengthsm"
+    ],
+    "body": [
+      "var(--rh-length-sm${1:, 6px})$2"
+    ],
+    "description": "6px length token"
+  },
+  "rh-length-md": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhlengthmd"
+    ],
+    "body": [
+      "var(--rh-length-md${1:, 8px})$2"
+    ],
+    "description": "8px length token"
+  },
+  "rh-length-lg": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhlengthlg"
+    ],
+    "body": [
+      "var(--rh-length-lg${1:, 16px})$2"
+    ],
+    "description": "16px length token"
+  },
+  "rh-length-xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhlengthxl"
+    ],
+    "body": [
+      "var(--rh-length-xl${1:, 24px})$2"
+    ],
+    "description": "24px length token"
+  },
+  "rh-length-2xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhlength2xl"
+    ],
+    "body": [
+      "var(--rh-length-2xl${1:, 32px})$2"
+    ],
+    "description": "32px length token"
+  },
+  "rh-length-3xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhlength3xl"
+    ],
+    "body": [
+      "var(--rh-length-3xl${1:, 48px})$2"
+    ],
+    "description": "48px length token"
+  },
+  "rh-length-4xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhlength4xl"
+    ],
+    "body": [
+      "var(--rh-length-4xl${1:, 64px})$2"
+    ],
+    "description": "64px length token"
+  },
+  "rh-length-5xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhlength5xl"
+    ],
+    "body": [
+      "var(--rh-length-5xl${1:, 80px})$2"
+    ],
+    "description": "80px length token"
+  },
+  "rh-length-6xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhlength6xl"
+    ],
+    "body": [
+      "var(--rh-length-6xl${1:, 96px})$2"
+    ],
+    "description": "96px length token"
+  },
+  "rh-length-7xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhlength7xl"
+    ],
+    "body": [
+      "var(--rh-length-7xl${1:, 128px})$2"
+    ],
+    "description": "128px length token"
+  },
+  "rh-space-xs": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhspacexs"
+    ],
+    "body": [
+      "var(--rh-space-xs${1:, 4px})$2"
+    ],
+    "description": "4px spacer"
+  },
+  "rh-space-sm": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhspacesm"
+    ],
+    "body": [
+      "var(--rh-space-sm${1:, 6px})$2"
+    ],
+    "description": "6px spacer"
+  },
+  "rh-space-md": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhspacemd"
+    ],
+    "body": [
+      "var(--rh-space-md${1:, 8px})$2"
+    ],
+    "description": "8px spacer"
+  },
+  "rh-space-lg": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhspacelg"
+    ],
+    "body": [
+      "var(--rh-space-lg${1:, 16px})$2"
+    ],
+    "description": "16px spacer"
+  },
+  "rh-space-xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhspacexl"
+    ],
+    "body": [
+      "var(--rh-space-xl${1:, 24px})$2"
+    ],
+    "description": "24px spacer"
+  },
+  "rh-space-2xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhspace2xl"
+    ],
+    "body": [
+      "var(--rh-space-2xl${1:, 32px})$2"
+    ],
+    "description": "32px spacer"
+  },
+  "rh-space-3xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhspace3xl"
+    ],
+    "body": [
+      "var(--rh-space-3xl${1:, 48px})$2"
+    ],
+    "description": "48px spacer"
+  },
+  "rh-space-4xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhspace4xl"
+    ],
+    "body": [
+      "var(--rh-space-4xl${1:, 64px})$2"
+    ],
+    "description": "64px spacer"
+  },
+  "rh-space-5xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhspace5xl"
+    ],
+    "body": [
+      "var(--rh-space-5xl${1:, 80px})$2"
+    ],
+    "description": "80px spacer"
+  },
+  "rh-space-6xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhspace6xl"
+    ],
+    "body": [
+      "var(--rh-space-6xl${1:, 96px})$2"
+    ],
+    "description": "96px spacer"
+  },
+  "rh-space-7xl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhspace7xl"
+    ],
+    "body": [
+      "var(--rh-space-7xl${1:, 128px})$2"
+    ],
+    "description": "128px spacer"
+  }
+}

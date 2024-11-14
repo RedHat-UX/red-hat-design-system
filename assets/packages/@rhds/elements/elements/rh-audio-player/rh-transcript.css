@@ -1,0 +1,34 @@
+.panel-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  border: 1px solid var(--_static-border-color);
+  color: var(--_static-text-color);
+  background-color: var(--_static-surface-color);
+}
+
+label,
+#download-tooltip {
+  flex: 0 0 auto;
+}
+
+#download-tooltip {
+  margin-inline-start: var(--rh-space-md, 8px);
+
+  --rh-icon-size: 18px;
+}
+
+#cues {
+  display: block;
+  max-height: 240px;
+  overflow-y: auto;
+  border: 1px solid var(--_static-border-color);
+  padding: var(--_player-padding, var(--rh-space-md, 8px));
+  color: var(--_static-text-color);
+  background-color: var(--_static-surface-color);
+}
+
+button,
+rh-icon {
+  color: inherit;
+}

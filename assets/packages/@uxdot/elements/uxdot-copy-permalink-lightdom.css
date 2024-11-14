@@ -1,0 +1,12 @@
+uxdot-copy-permalink > :is(h1,h2,h3,h4,h5,h6) > a {
+  position: relative;
+  color: inherit;
+  text-decoration: inherit;
+}
+
+uxdot-copy-permalink > :is(h1,h2,h3,h4,h5,h6) > a:hover:before {
+  display: block;
+  content: '#';
+  position: absolute;
+  inset-inline-start: -1em;
+}

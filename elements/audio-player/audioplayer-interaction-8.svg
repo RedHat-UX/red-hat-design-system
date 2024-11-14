@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="555" height="79" viewBox="0 0 555 79">
+  <defs>
+    <filter id="Cursor" x="414.5" y="52.5" width="21" height="26" filterUnits="userSpaceOnUse">
+      <feOffset dy="2" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feFlood flood-opacity="0.251"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Cursor-2" x="19.5" y="52.5" width="21" height="26" filterUnits="userSpaceOnUse">
+      <feOffset dy="2" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1.5" result="blur-2"/>
+      <feFlood flood-opacity="0.251"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <filter id="Cursor-3" x="272.5" y="52.5" width="21" height="26" filterUnits="userSpaceOnUse">
+      <feOffset dy="2" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1.5" result="blur-3"/>
+      <feFlood flood-opacity="0.251"/>
+      <feComposite operator="in" in2="blur-3"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="audioplayer-interaction-8" transform="translate(-583 -5724)">
+    <g id="Audio_player" data-name="Audio player" transform="translate(223 5533)">
+      <rect id="Rectangle" width="555" height="48" rx="3" transform="translate(360 222)" fill="#3c3f42"/>
+      <g id="Button">
+        <rect id="Rectangle-2" data-name="Rectangle" width="32" height="32" transform="translate(875 230)" fill="none"/>
+        <path id="Icon" d="M20.368,9.7h-2.16c-.144-.429-.288-.714-.432-1.143l1.44-1.429a.432.432,0,0,0,0-.571l-2.3-2.286a.441.441,0,0,0-.576,0L14.9,5.7a9.971,9.971,0,0,0-1.152-.429V3.129a.38.38,0,0,0-.432-.429H10.144a.44.44,0,0,0-.432.429V5.271a4.325,4.325,0,0,0-1.152.571L7.12,4.414a.441.441,0,0,0-.576,0L4.24,6.557a.432.432,0,0,0,0,.571L5.68,8.557c-.144.429-.288.714-.432,1.143H3.232a.38.38,0,0,0-.432.429v3.143a.38.38,0,0,0,.432.429h2.16c.144.429.288.714.432,1.143l-1.44,1.429a.432.432,0,0,0,0,.571l2.3,2.286a.441.441,0,0,0,.576,0L8.7,17.7a9.971,9.971,0,0,0,1.152.429v2.143a.38.38,0,0,0,.432.429h3.168a.38.38,0,0,0,.432-.429V18.129c.432-.143.72-.286,1.152-.429l1.44,1.429a.441.441,0,0,0,.576,0l2.3-2.286a.432.432,0,0,0,0-.571l-1.44-1.429a9.793,9.793,0,0,0,.432-1.143h2.016a.38.38,0,0,0,.432-.429V10.129C20.8,9.668,20.512,9.7,20.368,9.7Zm-5.76,2a2.877,2.877,0,0,1-2.88,2.857A2.756,2.756,0,0,1,8.992,11.7a2.756,2.756,0,0,1,2.736-2.857A2.877,2.877,0,0,1,14.608,11.7Z" transform="translate(879.2 234.3)" fill="#d2d2d2"/>
+      </g>
+      <g id="Bar">
+        <rect id="Rectangle-3" data-name="Rectangle" width="64" height="6" rx="3" transform="translate(803 243)" fill="#8a8d90"/>
+        <path id="Rectangle-4" data-name="Rectangle" d="M3,0H32a0,0,0,0,1,0,0V6a0,0,0,0,1,0,0H3A3,3,0,0,1,0,3V3A3,3,0,0,1,3,0Z" transform="translate(803 243)" fill="#e00"/>
+      </g>
+      <g id="Focus_indicator" data-name="Focus indicator" transform="translate(395)">
+        <g id="Rectangle-5" data-name="Rectangle" transform="translate(408 243)" fill="none" stroke="#2261c5" stroke-width="2">
+          <rect width="64" height="6" rx="3" stroke="none"/>
+          <rect x="-1" y="-1" width="66" height="8" rx="4" fill="none"/>
+        </g>
+      </g>
+      <g id="Ellipse" transform="translate(827 238)" fill="#fff" stroke="#b8bbbe" stroke-width="1">
+        <circle cx="8" cy="8" r="8" stroke="none"/>
+        <circle cx="8" cy="8" r="7.5" fill="none"/>
+      </g>
+      <g id="Button-2" data-name="Button">
+        <rect id="Rectangle-6" data-name="Rectangle" width="32" height="32" transform="translate(763 230)" fill="none"/>
+        <path id="Icon-2" data-name="Icon" d="M12.814,2.036a.891.891,0,0,0-.867,0L6.313,6.323H2.267A.943.943,0,0,0,1.4,7.21V14.6a.943.943,0,0,0,.867.887H6.313l5.635,4.287c.144,0,.289.148.433.148a.523.523,0,0,0,.433-.148.816.816,0,0,0,.433-.739V2.775A.816.816,0,0,0,12.814,2.036Zm5.779,8.871L20.183,9.28a.915.915,0,0,0,0-1.183.864.864,0,0,0-1.156,0L17.438,9.724,15.849,8.1a.864.864,0,0,0-1.156,0,.915.915,0,0,0,0,1.183l1.589,1.626-1.589,1.626a.915.915,0,0,0,0,1.183,1.086,1.086,0,0,0,.578.3,1.086,1.086,0,0,0,.578-.3l1.589-1.626,1.589,1.626a1.086,1.086,0,0,0,.578.3,1.086,1.086,0,0,0,.578-.3.915.915,0,0,0,0-1.183Z" transform="translate(768.6 235.075)" fill="#d2d2d2"/>
+      </g>
+      <rect id="Rectangle-7" data-name="Rectangle" width="32" height="32" rx="3" transform="translate(763 230)" fill="#fff" opacity="0.3"/>
+      <g id="Focus_indicator-2" data-name="Focus indicator" transform="translate(395)">
+        <g id="Rectangle-8" data-name="Rectangle" transform="translate(368 230)" fill="none" stroke="#2261c5" stroke-width="2">
+          <rect width="32" height="32" rx="3" stroke="none"/>
+          <rect x="-1" y="-1" width="34" height="34" rx="4" fill="none"/>
+        </g>
+      </g>
+      <g id="Cursor-4" data-name="Cursor" transform="translate(779 246)">
+        <g transform="matrix(1, 0, 0, 1, -419, -55)" filter="url(#Cursor)">
+          <g id="Cursor-5" data-name="Cursor" transform="translate(419 55)">
+            <path d="M 0.5 15.79290008544922 L 0.5 1.207100033760071 L 10.79290008544922 11.5 L 5 11.5 L 4.792890071868896 11.5 L 4.646450042724609 11.64645004272461 L 0.5 15.79290008544922 Z" stroke="none"/>
+            <path d="M 1 14.58578014373779 L 4.292890071868896 11.29288959503174 L 4.585790157318115 11 L 5 11 L 9.585780143737793 11 L 1 2.414220094680786 L 1 14.58578014373779 M -8.881784197001252e-16 17 L -8.881784197001252e-16 0 L 12 12 L 5 12 L -8.881784197001252e-16 17 Z" stroke="none" fill="#fff"/>
+          </g>
+        </g>
+      </g>
+      <path id="Path_3" data-name="Path 3" d="M3.15-9.8H2.52L.574-8.932v.924l1.568-.7V0H3.15ZM5.4-4.9l.7.224a4.746,4.746,0,0,1,2.142-.56,2.187,2.187,0,0,1,2.45,2.17A2.26,2.26,0,0,1,8.288-.728a3.649,3.649,0,0,1-2.7-1.148l-.63.686A4.664,4.664,0,0,0,8.288.14a3.167,3.167,0,0,0,3.43-3.248,2.921,2.921,0,0,0-3.29-2.94,4.844,4.844,0,0,0-2.1.518l.154-3.388H11.2V-9.8H5.628ZM14.1-7.238a.753.753,0,0,0-.742.77.75.75,0,0,0,.742.756.747.747,0,0,0,.728-.756A.751.751,0,0,0,14.1-7.238Zm0,5.824a.753.753,0,0,0-.742.77A.75.75,0,0,0,14.1.112a.747.747,0,0,0,.728-.756A.751.751,0,0,0,14.1-1.414ZM20.4.14c2.212,0,3.808-2.016,3.808-5.04S22.6-9.94,20.4-9.94,16.59-7.924,16.59-4.9,18.2.14,20.4.14Zm0-.91c-1.666,0-2.814-1.568-2.814-4.13S18.732-9.03,20.4-9.03s2.814,1.568,2.814,4.13S22.078-.77,20.4-.77Zm9.38.91c2.212,0,3.808-2.016,3.808-5.04s-1.61-5.04-3.808-5.04S25.97-7.924,25.97-4.9,27.58.14,29.778.14Zm0-.91c-1.666,0-2.814-1.568-2.814-4.13s1.148-4.13,2.814-4.13,2.814,1.568,2.814,4.13S31.458-.77,29.778-.77Z" transform="translate(721 251)" fill="#fff"/>
+      <g id="Bar-2" data-name="Bar">
+        <rect id="Rectangle-9" data-name="Rectangle" width="305" height="6" rx="3" transform="translate(408 243)" fill="#8a8d90"/>
+        <path id="Rectangle-10" data-name="Rectangle" d="M3,0H229a0,0,0,0,1,0,0V6a0,0,0,0,1,0,0H3A3,3,0,0,1,0,3V3A3,3,0,0,1,3,0Z" transform="translate(408 243)" fill="#e00"/>
+      </g>
+      <g id="Focus_indicator-3" data-name="Focus indicator">
+        <g id="Rectangle-11" data-name="Rectangle" transform="translate(408 243)" fill="none" stroke="#2261c5" stroke-width="2">
+          <rect width="305" height="6" rx="3" stroke="none"/>
+          <rect x="-1" y="-1" width="307" height="8" rx="4" fill="none"/>
+        </g>
+      </g>
+      <g id="Ellipse-2" data-name="Ellipse" transform="translate(629 238)" fill="#fff" stroke="#b8bbbe" stroke-width="1">
+        <circle cx="8" cy="8" r="8" stroke="none"/>
+        <circle cx="8" cy="8" r="7.5" fill="none"/>
+      </g>
+      <g id="Button-3" data-name="Button">
+        <rect id="Rectangle-12" data-name="Rectangle" width="32" height="32" transform="translate(368 230)" fill="none"/>
+        <path id="Icon-3" data-name="Icon" d="M17.929,10.6,3.812,2.546a.977.977,0,0,0-.941,0,.889.889,0,0,0-.471.805V19.459a.889.889,0,0,0,.471.805.567.567,0,0,0,.471.161.567.567,0,0,0,.471-.161L17.929,12.21a.924.924,0,0,0,0-1.611Z" transform="translate(373.6 234.575)" fill="#d2d2d2"/>
+      </g>
+      <rect id="Rectangle-13" data-name="Rectangle" width="32" height="32" rx="3" transform="translate(368 230)" fill="#fff" opacity="0.3"/>
+      <g id="Focus_indicator-4" data-name="Focus indicator">
+        <g id="Rectangle-14" data-name="Rectangle" transform="translate(368 230)" fill="none" stroke="#2261c5" stroke-width="2">
+          <rect width="32" height="32" rx="3" stroke="none"/>
+          <rect x="-1" y="-1" width="34" height="34" rx="4" fill="none"/>
+        </g>
+      </g>
+      <g id="Cursor-6" data-name="Cursor" transform="translate(384 246)">
+        <g transform="matrix(1, 0, 0, 1, -24, -55)" filter="url(#Cursor-2)">
+          <g id="Cursor-7" data-name="Cursor" transform="translate(24 55)">
+            <path d="M 0.5 15.79290008544922 L 0.5 1.207100033760071 L 10.79290008544922 11.5 L 5 11.5 L 4.792890071868896 11.5 L 4.646450042724609 11.64645004272461 L 0.5 15.79290008544922 Z" stroke="none"/>
+            <path d="M 1 14.58578014373779 L 4.292890071868896 11.29288959503174 L 4.585790157318115 11 L 5 11 L 9.585780143737793 11 L 1 2.414220094680786 L 1 14.58578014373779 M -8.881784197001252e-16 17 L -8.881784197001252e-16 0 L 12 12 L 5 12 L -8.881784197001252e-16 17 Z" stroke="none" fill="#fff"/>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="Cursor-8" data-name="Cursor" transform="translate(860 5779)">
+      <g transform="matrix(1, 0, 0, 1, -277, -55)" filter="url(#Cursor-3)">
+        <g id="Cursor-9" data-name="Cursor" transform="translate(277 55)">
+          <path d="M 0.5 15.79290008544922 L 0.5 1.207100033760071 L 10.79290008544922 11.5 L 5 11.5 L 4.792890071868896 11.5 L 4.646450042724609 11.64645004272461 L 0.5 15.79290008544922 Z" stroke="none"/>
+          <path d="M 1 14.58578014373779 L 4.292890071868896 11.29288959503174 L 4.585790157318115 11 L 5 11 L 9.585780143737793 11 L 1 2.414220094680786 L 1 14.58578014373779 M -8.881784197001252e-16 17 L -8.881784197001252e-16 0 L 12 12 L 5 12 L -8.881784197001252e-16 17 Z" stroke="none" fill="#fff"/>
+        </g>
+      </g>
+    </g>
+    <g id="Tooltip" transform="translate(127 2260)">
+      <path id="Polygon" d="M6,0l6,6H0Z" transform="translate(739 3504) rotate(180)" fill="#fff"/>
+      <rect id="Rectangle-15" data-name="Rectangle" width="52" height="34" rx="3" transform="translate(707 3464)" fill="#fff"/>
+      <path id="Path_4" data-name="Path 4" d="M-17.458,0h6.314V-.882H-16.17l3.29-3.64c1.05-1.162,1.526-1.778,1.526-2.856,0-1.47-1.26-2.548-3.038-2.548A4.612,4.612,0,0,0-17.584-8.54l.588.7a3.6,3.6,0,0,1,2.59-1.19,1.843,1.843,0,0,1,2.058,1.708c0,.742-.336,1.26-1.218,2.254L-17.458-.742Zm7.812,0h6.314V-.882H-8.358l3.29-3.64C-4.018-5.684-3.542-6.3-3.542-7.378c0-1.47-1.26-2.548-3.038-2.548A4.612,4.612,0,0,0-9.772-8.54l.588.7a3.6,3.6,0,0,1,2.59-1.19A1.843,1.843,0,0,1-4.536-7.322c0,.742-.336,1.26-1.218,2.254L-9.646-.742ZM-.994-7.238a.753.753,0,0,0-.742.77.75.75,0,0,0,.742.756.747.747,0,0,0,.728-.756A.751.751,0,0,0-.994-7.238Zm0,5.824a.753.753,0,0,0-.742.77A.75.75,0,0,0-.994.112.747.747,0,0,0-.266-.644.751.751,0,0,0-.994-1.414ZM8.05-2.688a2.519,2.519,0,0,0-2.2-2.352A2.363,2.363,0,0,0,7.686-7.266,2.861,2.861,0,0,0,4.564-9.954,4.348,4.348,0,0,0,1.316-8.54l.672.672A3.278,3.278,0,0,1,4.55-9.058,1.975,1.975,0,0,1,6.678-7.21,1.69,1.69,0,0,1,4.886-5.446H3.766v.868H4.928A1.939,1.939,0,0,1,7.042-2.716c0,1.162-.994,1.974-2.436,1.974A3.578,3.578,0,0,1,1.862-1.9l-.672.658A4.723,4.723,0,0,0,4.62.14C6.608.14,8.05-1.05,8.05-2.688ZM13.538.14c2.212,0,3.808-2.016,3.808-5.04s-1.61-5.04-3.808-5.04S9.73-7.924,9.73-4.9,11.34.14,13.538.14Zm0-.91c-1.666,0-2.814-1.568-2.814-4.13s1.148-4.13,2.814-4.13,2.814,1.568,2.814,4.13S15.218-.77,13.538-.77Z" transform="translate(733 3486)" fill="#151515"/>
+    </g>
+  </g>
+</svg>

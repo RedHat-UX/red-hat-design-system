@@ -1,0 +1,45 @@
+<svg width="340" height="200" viewBox="0 0 340 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="340" height="200" rx="8" fill="#F2F2F2" />
+  <line x1="95" y1="38" x2="95" stroke="#4394E5" stroke-width="2" stroke-dasharray="2 2" />
+  <line y1="99" x2="19" y2="99" stroke="#4394E5" stroke-width="2" stroke-dasharray="2 2" />
+  <rect x="19.5877" y="39.5877" width="141.491" height="120.825" rx="3.5" fill="white" stroke="#C7C7C7" />
+  <rect x="32.1404" y="52.1404" width="31.5439" height="31.5439" fill="#F56E6E" />
+  <rect x="31.7537" y="96.0842" width="106.077" height="9.10361" fill="#151515" />
+  <rect x="31.7537" y="120.624" width="106.077" height="9.10361" fill="#151515" />
+  <rect x="31.7537" y="108.354" width="117.159" height="9.10361" fill="#151515" />
+  <rect x="31.7537" y="139.227" width="53.4342" height="8.70175" fill="#0066CC" />
+  <rect x="18.0877" y="37.9841" width="144.491" height="124.032" stroke="#4394E5" stroke-width="2" />
+  <rect x="17" y="37" width="4.17544" height="3.96825" fill="white" stroke="#4394E5" stroke-width="2" />
+  <rect x="17" y="159.032" width="4.17544" height="3.96825" fill="white" stroke="#4394E5" stroke-width="2" />
+  <rect x="159.491" y="37" width="4.17544" height="3.96825" fill="white" stroke="#4394E5" stroke-width="2" />
+  <rect x="159.491" y="159.032" width="4.17544" height="3.96825" fill="white" stroke="#4394E5" stroke-width="2" />
+  <rect x="179.482" y="39.5877" width="141.491" height="120.825" rx="3.5" fill="white" stroke="#C7C7C7" />
+  <rect x="192.035" y="52.1404" width="31.5439" height="31.5439" fill="#F56E6E" />
+  <rect x="192.035" y="95.6491" width="103.333" height="9.78947" fill="#151515" />
+  <rect x="192.035" y="120.667" width="76.1404" height="8.70175" fill="#151515" />
+  <rect x="192.035" y="108.702" width="92.4561" height="8.70175" fill="#151515" />
+  <rect x="192.035" y="139.158" width="53.2982" height="8.70175" fill="#0066CC" />
+  <rect x="177.982" y="37.9841" width="144.491" height="124.032" stroke="#4394E5" stroke-width="2" />
+  <rect x="176.895" y="37" width="4.17544" height="3.96825" fill="white" stroke="#4394E5" stroke-width="2" />
+  <rect x="176.895" y="159.032" width="4.17544" height="3.96825" fill="white" stroke="#4394E5" stroke-width="2" />
+  <rect x="319.386" y="37" width="4.17544" height="3.96825" fill="white" stroke="#4394E5" stroke-width="2" />
+  <rect x="319.386" y="159.032" width="4.17544" height="3.96825" fill="white" stroke="#4394E5" stroke-width="2" />
+  <g filter="url(#filter0_d_333_603)">
+    <path d="M161 177V160L173 172H166L161 177Z" fill="#151515" />
+    <path d="M161.5 175.793V161.207L171.793 171.5H166H165.793L165.646 171.646L161.5 175.793Z" stroke="white" />
+  </g>
+  <defs>
+    <filter id="filter0_d_333_603" x="157" y="158" width="20" height="25" filterUnits="userSpaceOnUse"
+      color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix" />
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+        result="hardAlpha" />
+      <feOffset dy="2" />
+      <feGaussianBlur stdDeviation="2" />
+      <feComposite in2="hardAlpha" operator="out" />
+      <feColorMatrix type="matrix" values="0 0 0 0 0.0823529 0 0 0 0 0.0823529 0 0 0 0 0.0823529 0 0 0 0.2 0" />
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_333_603" />
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_333_603" result="shape" />
+    </filter>
+  </defs>
+</svg>

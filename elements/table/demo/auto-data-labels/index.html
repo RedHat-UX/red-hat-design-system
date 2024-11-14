@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/assets/logo-red-hat.svg">
+    <title>Auto Data Labels | Red Hat Design System</title>
+
+    <link rel="preconnect" href="https://ga.jspm.io">
+
+    <link rel="stylesheet" href="/styles/demo/styles.css" media="all">
+
+    <script type="importmap">{
+  "imports": {
+    "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
+    "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
+    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
+    "lit-html": "/assets/packages/lit-html/lit-html.js",
+    "tslib": "/assets/packages/tslib/tslib.es6.mjs",
+    "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
+    "lit-element": "/assets/packages/lit-element/index.js",
+    "prism-esm": "/assets/packages/prism-esm/prism.js",
+    "lit": "/assets/packages/lit/index.js",
+    "@rhds/tokens/css/color-context-provider.css.js": "/assets/packages/@rhds/tokens/css/color-context-provider.css.js",
+    "@rhds/tokens/css/color-context-consumer.css.js": "/assets/packages/@rhds/tokens/css/color-context-consumer.css.js",
+    "lit/decorators/custom-element.js": "/assets/packages/lit/decorators/custom-element.js",
+    "lit/decorators/property.js": "/assets/packages/lit/decorators/property.js",
+    "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
+    "lit/static-html.js": "/assets/packages/lit/static-html.js",
+    "@lit/context": "/assets/packages/@lit/context/index.js",
+    "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
+    "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.4/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
+    "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
+    "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
+    "lit/": "/assets/packages/lit/",
+    "lit-html/": "/assets/packages/lit-html/",
+    "prism-esm/": "/assets/packages/prism-esm/",
+    "@lit-labs/ssr-client/lit-element-hydrate-support.js": "/assets/packages/@lit-labs/ssr-client/lit-element-hydrate-support.js",
+    "@rhds/tokens/css/": "/assets/packages/@rhds/tokens/css/",
+    "@rhds/tokens/": "/assets/packages/@rhds/tokens/js/",
+    "@rhds/elements/lib/": "/assets/packages/@rhds/elements/lib/",
+    "@rhds/elements/": "/assets/packages/@rhds/elements/elements/",
+    "@rhds/icons/": "/assets/packages/@rhds/icons/",
+    "@rhds/icons/icons.js": "/assets/packages/@rhds/icons/icons.js",
+    "@patternfly/elements/": "/assets/packages/@patternfly/elements/",
+    "@patternfly/icons/": "/assets/packages/@patternfly/icons/",
+    "@patternfly/pfe-core/": "/assets/packages/@patternfly/pfe-core/",
+    "@uxdot/elements/": "/assets/packages/@uxdot/elements/",
+    "playground-elements": "https://cdn.jsdelivr.net/npm/playground-elements@0.18.1/+esm"
+  },
+  "scopes": {
+    "/assets/packages/": {
+      "@floating-ui/utils": "https://ga.jspm.io/npm:@floating-ui/utils@0.2.8/dist/floating-ui.utils.mjs",
+      "@floating-ui/utils/dom": "https://ga.jspm.io/npm:@floating-ui/utils@0.2.8/dist/floating-ui.utils.dom.mjs",
+      "@lit/reactive-element/decorators/": "/assets/packages/@lit/reactive-element/decorators/",
+      "lit-element/lit-element.js": "/assets/packages/lit-element/lit-element.js",
+      "lit-html/": "/assets/packages/lit-html/",
+      "lit/": "/assets/packages/lit/"
+    }
+  }
+}</script>
+    <script type="module">
+      // dsd polyfill needs to happen before hydration attempts
+      // lit-element-hydrate-support needs to be included before lit is loaded
+      import '/assets/javascript/dsd-polyfill.js';
+      import '@lit-labs/ssr-client/lit-element-hydrate-support.js';
+      import 'element-internals-polyfill';
+      // include these, which are often internal to elements, to avoid SSR defer-hydration bugs
+      import '@rhds/elements/rh-icon/rh-icon.js';
+      import '@rhds/elements/rh-surface/rh-surface.js';
+      // load up the demo and picker
+      import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
+      import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
+    </script>
+
+    <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
+  </head>
+  <body unresolved="">
+    <main><h2>Basic table</h2>
+<rh-table><template shadowroot="open" shadowrootmode="open"><style>* {
+  box-sizing: border-box;
+}
+
+:host {
+  position: relative;
+  display: block;
+  width: 100%;
+  overflow: auto;
+  scrollbar-color: var(--_scrollbar-track-color) var(--_scrollbar-thumb-color);
+  color: var(--rh-color-text-primary);
+  background-color: var(--rh-color-surface);
+
+  --_scrollbar-size: calc(10 / 16 * 1rem);
+  --_scrollbar-thumb-color: var(--rh-color-gray-50, #707070);
+  --_scrollbar-track-color: var(--rh-color-border-subtle);
+  --_row-border:
+    var(--rh-table-row-border,
+      var(--rh-border-width-sm, 1px)
+      solid
+      var(--rh-color-border-subtle-on-light, #c7c7c7));
+  --_row-background-hover-color:
+    var(--rh-table-row-background-hover-color,
+      rgba(from var(--rh-color-gray-40, #a3a3a3) r g b / 0.1));
+  --_column-background-hover-color:
+    var(--rh-table-column-background-hover-color,
+      rgba(from var(--rh-color-blue-50, #0066cc) r g b / 0.1));
+}
+
+:host::-webkit-scrollbar {
+  width: var(--_scrollbar-size);
+  height: var(--_scrollbar-size);
+}
+
+:host::-webkit-scrollbar,
+:host::-webkit-scrollbar-track {
+  background-color: var(--_scrollbar-track-color);
+}
+
+:host::-webkit-scrollbar-thumb {
+  background-color: var(--_scrollbar-thumb-color);
+}
+
+[slot] {
+  display: block;
+}
+
+.color-palette-dark,
+.color-palette-darker,
+.color-palette-darkest,
+.dark {
+  --_row-background-hover-color: rgba(from var(--rh-color-white, #ffffff) r g b / 0.1);
+  --_column-background-hover-color: rgba(from var(--rh-color-blue-70, #003366) r g b / 0.3);
+}
+
+/* @todo: should I move these styles to light dom css file? */
+::slotted([slot='summary']) {
+  display: block;
+  padding: var(--rh-space-xl, 24px) var(--rh-space-lg, 16px) 0 var(--rh-space-lg, 16px);
+  color: var(--rh-color-text-secondary-on-light, #4d4d4d);
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-size: var(--rh-font-size-body-text-md, 1rem);
+  font-style: italic;
+  font-weight: var(--rh-font-weight-body-text-regular, 400);
+  line-height: var(--rh-line-height-body-text, 1.5);
+}
+
+.dark ::slotted([slot='summary']) {
+  color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
+}
+</style><!--lit-part YcLh+NwkpJQ=-->
+      <!--lit-node 0--><div id="container"
+           part="container"
+           class=" on light ">
+        <!--lit-node 1--><slot 
+              
+              
+              ></slot>
+        <slot id="summary" name="summary"></slot>
+      </div>
+    <!--/lit-part--></template>
+  <table>
+    <col>
+    <col>
+    <col>
+    <thead>
+      <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Event</th>
+        <th scope="col">Venue</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>12 February</td>
+        <td>
+          <a href="">Waltz with Strauss</a>
+        </td>
+        <td>Main Hall</td>
+      </tr>
+      <tr>
+        <td>24 March</td>
+        <td>The Obelisks</td>
+        <td>West Wing</td>
+      </tr>
+      <tr>
+        <td data-label="Custom 1">14 April</td>
+        <td data-label="Custom 2">The What</td>
+        <td data-label="Custom 3">Main Hall</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
+
+<h2>Table with <code>rowspans</code></h2>
+<rh-table><template shadowroot="open" shadowrootmode="open"><style>* {
+  box-sizing: border-box;
+}
+
+:host {
+  position: relative;
+  display: block;
+  width: 100%;
+  overflow: auto;
+  scrollbar-color: var(--_scrollbar-track-color) var(--_scrollbar-thumb-color);
+  color: var(--rh-color-text-primary);
+  background-color: var(--rh-color-surface);
+
+  --_scrollbar-size: calc(10 / 16 * 1rem);
+  --_scrollbar-thumb-color: var(--rh-color-gray-50, #707070);
+  --_scrollbar-track-color: var(--rh-color-border-subtle);
+  --_row-border:
+    var(--rh-table-row-border,
+      var(--rh-border-width-sm, 1px)
+      solid
+      var(--rh-color-border-subtle-on-light, #c7c7c7));
+  --_row-background-hover-color:
+    var(--rh-table-row-background-hover-color,
+      rgba(from var(--rh-color-gray-40, #a3a3a3) r g b / 0.1));
+  --_column-background-hover-color:
+    var(--rh-table-column-background-hover-color,
+      rgba(from var(--rh-color-blue-50, #0066cc) r g b / 0.1));
+}
+
+:host::-webkit-scrollbar {
+  width: var(--_scrollbar-size);
+  height: var(--_scrollbar-size);
+}
+
+:host::-webkit-scrollbar,
+:host::-webkit-scrollbar-track {
+  background-color: var(--_scrollbar-track-color);
+}
+
+:host::-webkit-scrollbar-thumb {
+  background-color: var(--_scrollbar-thumb-color);
+}
+
+[slot] {
+  display: block;
+}
+
+.color-palette-dark,
+.color-palette-darker,
+.color-palette-darkest,
+.dark {
+  --_row-background-hover-color: rgba(from var(--rh-color-white, #ffffff) r g b / 0.1);
+  --_column-background-hover-color: rgba(from var(--rh-color-blue-70, #003366) r g b / 0.3);
+}
+
+/* @todo: should I move these styles to light dom css file? */
+::slotted([slot='summary']) {
+  display: block;
+  padding: var(--rh-space-xl, 24px) var(--rh-space-lg, 16px) 0 var(--rh-space-lg, 16px);
+  color: var(--rh-color-text-secondary-on-light, #4d4d4d);
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-size: var(--rh-font-size-body-text-md, 1rem);
+  font-style: italic;
+  font-weight: var(--rh-font-weight-body-text-regular, 400);
+  line-height: var(--rh-line-height-body-text, 1.5);
+}
+
+.dark ::slotted([slot='summary']) {
+  color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
+}
+</style><!--lit-part YcLh+NwkpJQ=-->
+      <!--lit-node 0--><div id="container"
+           part="container"
+           class=" on light ">
+        <!--lit-node 1--><slot 
+              
+              
+              ></slot>
+        <slot id="summary" name="summary"></slot>
+      </div>
+    <!--/lit-part--></template>
+  <table>
+    <col>
+    <col>
+    <col>
+    <thead>
+      <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Event</th>
+        <th scope="col">Venue</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>12 February</td>
+        <td rowspan="2">
+          <a href="">Waltz with Strauss</a>
+        </td>
+        <td>Main Hall</td>
+      </tr>
+      <tr>
+        <td>24 March</td>
+        <td>West Wing</td>
+      </tr>
+      <tr>
+        <td data-label="Custom 1">14 April</td>
+        <td data-label="Custom 2">The What</td>
+        <td data-label="Custom 3">Main Hall</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
+
+<h2>Table with <code>colspans</code></h2>
+<rh-table><template shadowroot="open" shadowrootmode="open"><style>* {
+  box-sizing: border-box;
+}
+
+:host {
+  position: relative;
+  display: block;
+  width: 100%;
+  overflow: auto;
+  scrollbar-color: var(--_scrollbar-track-color) var(--_scrollbar-thumb-color);
+  color: var(--rh-color-text-primary);
+  background-color: var(--rh-color-surface);
+
+  --_scrollbar-size: calc(10 / 16 * 1rem);
+  --_scrollbar-thumb-color: var(--rh-color-gray-50, #707070);
+  --_scrollbar-track-color: var(--rh-color-border-subtle);
+  --_row-border:
+    var(--rh-table-row-border,
+      var(--rh-border-width-sm, 1px)
+      solid
+      var(--rh-color-border-subtle-on-light, #c7c7c7));
+  --_row-background-hover-color:
+    var(--rh-table-row-background-hover-color,
+      rgba(from var(--rh-color-gray-40, #a3a3a3) r g b / 0.1));
+  --_column-background-hover-color:
+    var(--rh-table-column-background-hover-color,
+      rgba(from var(--rh-color-blue-50, #0066cc) r g b / 0.1));
+}
+
+:host::-webkit-scrollbar {
+  width: var(--_scrollbar-size);
+  height: var(--_scrollbar-size);
+}
+
+:host::-webkit-scrollbar,
+:host::-webkit-scrollbar-track {
+  background-color: var(--_scrollbar-track-color);
+}
+
+:host::-webkit-scrollbar-thumb {
+  background-color: var(--_scrollbar-thumb-color);
+}
+
+[slot] {
+  display: block;
+}
+
+.color-palette-dark,
+.color-palette-darker,
+.color-palette-darkest,
+.dark {
+  --_row-background-hover-color: rgba(from var(--rh-color-white, #ffffff) r g b / 0.1);
+  --_column-background-hover-color: rgba(from var(--rh-color-blue-70, #003366) r g b / 0.3);
+}
+
+/* @todo: should I move these styles to light dom css file? */
+::slotted([slot='summary']) {
+  display: block;
+  padding: var(--rh-space-xl, 24px) var(--rh-space-lg, 16px) 0 var(--rh-space-lg, 16px);
+  color: var(--rh-color-text-secondary-on-light, #4d4d4d);
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-size: var(--rh-font-size-body-text-md, 1rem);
+  font-style: italic;
+  font-weight: var(--rh-font-weight-body-text-regular, 400);
+  line-height: var(--rh-line-height-body-text, 1.5);
+}
+
+.dark ::slotted([slot='summary']) {
+  color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
+}
+</style><!--lit-part YcLh+NwkpJQ=-->
+      <!--lit-node 0--><div id="container"
+           part="container"
+           class=" on light ">
+        <!--lit-node 1--><slot 
+              
+              
+              ></slot>
+        <slot id="summary" name="summary"></slot>
+      </div>
+    <!--/lit-part--></template>
+  <table>
+    <col>
+    <col>
+    <col>
+    <thead>
+      <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Event</th>
+        <th scope="col">Venue</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>12 February</td>
+        <td>
+          <a href="">Waltz with Strauss</a>
+        </td>
+        <td>Main Hall</td>
+      </tr>
+      <tr>
+        <td>24 March</td>
+        <td colspan="2">The Obelisks in the West Wing</td>
+      </tr>
+      <tr>
+        <td>14 April</td>
+        <td>The What</td>
+        <td>Main Hall</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
+
+<h2>Table with a complicated <code>thead</code></h2>
+<rh-table><template shadowroot="open" shadowrootmode="open"><style>* {
+  box-sizing: border-box;
+}
+
+:host {
+  position: relative;
+  display: block;
+  width: 100%;
+  overflow: auto;
+  scrollbar-color: var(--_scrollbar-track-color) var(--_scrollbar-thumb-color);
+  color: var(--rh-color-text-primary);
+  background-color: var(--rh-color-surface);
+
+  --_scrollbar-size: calc(10 / 16 * 1rem);
+  --_scrollbar-thumb-color: var(--rh-color-gray-50, #707070);
+  --_scrollbar-track-color: var(--rh-color-border-subtle);
+  --_row-border:
+    var(--rh-table-row-border,
+      var(--rh-border-width-sm, 1px)
+      solid
+      var(--rh-color-border-subtle-on-light, #c7c7c7));
+  --_row-background-hover-color:
+    var(--rh-table-row-background-hover-color,
+      rgba(from var(--rh-color-gray-40, #a3a3a3) r g b / 0.1));
+  --_column-background-hover-color:
+    var(--rh-table-column-background-hover-color,
+      rgba(from var(--rh-color-blue-50, #0066cc) r g b / 0.1));
+}
+
+:host::-webkit-scrollbar {
+  width: var(--_scrollbar-size);
+  height: var(--_scrollbar-size);
+}
+
+:host::-webkit-scrollbar,
+:host::-webkit-scrollbar-track {
+  background-color: var(--_scrollbar-track-color);
+}
+
+:host::-webkit-scrollbar-thumb {
+  background-color: var(--_scrollbar-thumb-color);
+}
+
+[slot] {
+  display: block;
+}
+
+.color-palette-dark,
+.color-palette-darker,
+.color-palette-darkest,
+.dark {
+  --_row-background-hover-color: rgba(from var(--rh-color-white, #ffffff) r g b / 0.1);
+  --_column-background-hover-color: rgba(from var(--rh-color-blue-70, #003366) r g b / 0.3);
+}
+
+/* @todo: should I move these styles to light dom css file? */
+::slotted([slot='summary']) {
+  display: block;
+  padding: var(--rh-space-xl, 24px) var(--rh-space-lg, 16px) 0 var(--rh-space-lg, 16px);
+  color: var(--rh-color-text-secondary-on-light, #4d4d4d);
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-size: var(--rh-font-size-body-text-md, 1rem);
+  font-style: italic;
+  font-weight: var(--rh-font-weight-body-text-regular, 400);
+  line-height: var(--rh-line-height-body-text, 1.5);
+}
+
+.dark ::slotted([slot='summary']) {
+  color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
+}
+</style><!--lit-part YcLh+NwkpJQ=-->
+      <!--lit-node 0--><div id="container"
+           part="container"
+           class=" on light ">
+        <!--lit-node 1--><slot 
+              
+              
+              ></slot>
+        <slot id="summary" name="summary"></slot>
+      </div>
+    <!--/lit-part--></template>
+  <table>
+    <col>
+    <col>
+    <col>
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th id="th-when-where" scope="col" colspan="2">When &amp; where</th>
+      </tr>
+      <tr>
+        <th id="th-event" scope="col">Event</th>
+        <th id="th-date" scope="col">Date</th>
+        <th id="th-venue" scope="col">Venue</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th headers="th-event" id="th-event-waltz" scope="row">
+          <a href="">Waltz with Strauss</a>
+        
+        </th><td headers="th-event-waltz th-when-where th-date">12 February</td>
+        <td headers="th-event-waltz th-when-where th-venue">Main Hall</td>
+      </tr>
+      <tr>
+        <th headers="th-event" id="th-event-obelisks" scope="row">The Obelisks
+        </th><td headers="th-event-obelisks th-when-where th-date">24 March</td>
+        <td headers="th-event-obelisks th-when-where th-venue">West Wing</td>
+      </tr>
+      <tr>
+        <th headers="th-event" id="th-event-thewhat" scope="row" data-label="Custom event">The What
+        </th><td headers="th-event-thewhat th-when-where th-date" data-label="Custom date">14 April</td>
+        <td headers="th-event-thewhat th-when-where th-venue" data-label="Custom location">Main Hall</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
+
+<link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
+
+<script type="module">
+  import '@rhds/elements/rh-table/rh-table.js';
+</script>
+</main></body>
+</html>

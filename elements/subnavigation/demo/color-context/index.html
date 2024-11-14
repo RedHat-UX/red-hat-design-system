@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/assets/logo-red-hat.svg">
+    <title>Color Context | Red Hat Design System</title>
+
+    <link rel="preconnect" href="https://ga.jspm.io">
+
+    <link rel="stylesheet" href="/styles/demo/styles.css" media="all">
+
+    <script type="importmap">{
+  "imports": {
+    "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
+    "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
+    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
+    "lit-html": "/assets/packages/lit-html/lit-html.js",
+    "tslib": "/assets/packages/tslib/tslib.es6.mjs",
+    "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
+    "lit-element": "/assets/packages/lit-element/index.js",
+    "prism-esm": "/assets/packages/prism-esm/prism.js",
+    "lit": "/assets/packages/lit/index.js",
+    "@rhds/tokens/css/color-context-provider.css.js": "/assets/packages/@rhds/tokens/css/color-context-provider.css.js",
+    "@rhds/tokens/css/color-context-consumer.css.js": "/assets/packages/@rhds/tokens/css/color-context-consumer.css.js",
+    "lit/decorators/custom-element.js": "/assets/packages/lit/decorators/custom-element.js",
+    "lit/decorators/property.js": "/assets/packages/lit/decorators/property.js",
+    "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
+    "lit/static-html.js": "/assets/packages/lit/static-html.js",
+    "@lit/context": "/assets/packages/@lit/context/index.js",
+    "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
+    "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.4/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
+    "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
+    "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
+    "lit/": "/assets/packages/lit/",
+    "lit-html/": "/assets/packages/lit-html/",
+    "prism-esm/": "/assets/packages/prism-esm/",
+    "@lit-labs/ssr-client/lit-element-hydrate-support.js": "/assets/packages/@lit-labs/ssr-client/lit-element-hydrate-support.js",
+    "@rhds/tokens/css/": "/assets/packages/@rhds/tokens/css/",
+    "@rhds/tokens/": "/assets/packages/@rhds/tokens/js/",
+    "@rhds/elements/lib/": "/assets/packages/@rhds/elements/lib/",
+    "@rhds/elements/": "/assets/packages/@rhds/elements/elements/",
+    "@rhds/icons/": "/assets/packages/@rhds/icons/",
+    "@rhds/icons/icons.js": "/assets/packages/@rhds/icons/icons.js",
+    "@patternfly/elements/": "/assets/packages/@patternfly/elements/",
+    "@patternfly/icons/": "/assets/packages/@patternfly/icons/",
+    "@patternfly/pfe-core/": "/assets/packages/@patternfly/pfe-core/",
+    "@uxdot/elements/": "/assets/packages/@uxdot/elements/",
+    "playground-elements": "https://cdn.jsdelivr.net/npm/playground-elements@0.18.1/+esm"
+  },
+  "scopes": {
+    "/assets/packages/": {
+      "@floating-ui/utils": "https://ga.jspm.io/npm:@floating-ui/utils@0.2.8/dist/floating-ui.utils.mjs",
+      "@floating-ui/utils/dom": "https://ga.jspm.io/npm:@floating-ui/utils@0.2.8/dist/floating-ui.utils.dom.mjs",
+      "@lit/reactive-element/decorators/": "/assets/packages/@lit/reactive-element/decorators/",
+      "lit-element/lit-element.js": "/assets/packages/lit-element/lit-element.js",
+      "lit-html/": "/assets/packages/lit-html/",
+      "lit/": "/assets/packages/lit/"
+    }
+  }
+}</script>
+    <script type="module">
+      // dsd polyfill needs to happen before hydration attempts
+      // lit-element-hydrate-support needs to be included before lit is loaded
+      import '/assets/javascript/dsd-polyfill.js';
+      import '@lit-labs/ssr-client/lit-element-hydrate-support.js';
+      import 'element-internals-polyfill';
+      // include these, which are often internal to elements, to avoid SSR defer-hydration bugs
+      import '@rhds/elements/rh-icon/rh-icon.js';
+      import '@rhds/elements/rh-surface/rh-surface.js';
+      // load up the demo and picker
+      import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
+      import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
+    </script>
+
+    <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
+  </head>
+  <body unresolved="">
+    <main><rh-context-demo>
+  <rh-subnav color-palette="lighter"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+}
+
+[part='container'] {
+  display: flex;
+  background-color: var(--rh-color-surface);
+
+  --_subnav-link-text-color: var(--rh-color-text-secondary);
+  --_subnav-link-hover-text-color: var(--rh-color-text-primary);
+  --_subnav-link-hover-border-end-color: var(--rh-color-border-subtle);
+  --_subnav-link-active-border-end-color: var(--rh-color-accent-brand);
+  --_subnav-link-visited-text-color: var(--rh-color-text-secondary);
+  --_subnav-link-focus-outline-color: var(--rh-color-border-interactive);
+  --_subnav-next-prev-button-text-color: var(--rh-color-text-secondary);
+  --_subnav-next-prev-disabled-text-color: var(--rh-color-border-subtle);
+  --_subnav-next-prev-hover-text-color: var(--rh-color-text-primary);
+  --_subnav-next-prev-border-color: var(--rh-color-border-subtle);
+}
+
+[part='links'] {
+  display: flex;
+  position: relative;
+  bottom: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  max-width: 100%;
+}
+
+::slotted(a) {
+  display: block !important;
+  white-space: nowrap !important;
+  padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px) !important;
+  text-decoration: none !important;
+  color:
+    var(--_subnav-link-text-color,
+      var(--rh-color-text-secondary)) !important;
+  position: relative !important;
+}
+
+::slotted(a):after {
+  content: '' !important;
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  border-block-end: var(--rh-border-width-lg, 3px) solid transparent !important;
+}
+
+::slotted(a:hover),
+::slotted(a:active),
+::slotted(a[active]) {
+  color:
+    var(--_subnav-link-hover-text-color,
+      var(--rh-color-text-secondary)) !important;
+}
+
+::slotted(a:hover):after {
+  border-block-end-color:
+    var(--_subnav-link-hover-border-end-color,
+      var(--rh-color-border-subtle)) !important;
+}
+
+::slotted(a:active):after,
+::slotted(a[active]):after {
+  border-block-end-color:
+    var(--_subnav-link-active-border-end-color,
+      var(--rh-color-accent-brand)) !important;
+}
+
+::slotted(a:focus-visible) {
+  outline:
+    var(--rh-border-width-md, 2px)
+    solid
+    var(--_subnav-link-focus-outline-color,
+      var(--rh-color-interactive-primary-default)) !important;
+  outline-offset: -8px !important;
+  border-radius: 10px !important;
+}
+
+::slotted(a:visited) {
+  color:
+    var(--_subnav-link-visited-text-color,
+      var(--rh-color-text-primary)) !important;
+}
+
+button {
+  position: relative;
+  padding: 0 var(--rh-space-lg, 16px);
+  margin: 0;
+  background-color: transparent;
+  border: none;
+  color:
+    var(--_subnav-next-prev-button-text-color,
+      var(--rh-color-text-secondary));
+}
+
+button:disabled {
+  pointer-events: none;
+  color: var(--_subnav-next-prev-disabled-text-color, var(--rh-color-gray-10, #f2f2f2));
+}
+
+button:hover {
+  color: var(--_subnav-next-prev-hover-text-color, var(--rh-color-text-primary));
+}
+
+button:before {
+  position: absolute;
+  inset: 0;
+  content: '';
+  border-block-end: var(--rh-border-width-lg, 3px) solid transparent;
+}
+
+button:hover:before {
+  border-block-end-color: var(--_subnav-link-hover-border-end-color);
+}
+
+#previous {
+  border-inline-end:
+    var(--rh-border-width-sm, 1px)
+    solid
+    var(--_subnav-next-prev-border-color, var(--rh-color-border-subtle));
+}
+
+#next {
+  border-inline-start:
+    var(--rh-border-width-sm, 1px)
+    solid
+    var(--_subnav-next-prev-border-color, var(--rh-color-border-subtle));
+}
+</style><!--lit-part JjqcvvneScE=-->
+      <!--lit-node 0--><nav part="container" aria-label="subnavigation" class="  "><!--lit-part--><!--/lit-part-->
+        <!--lit-node 2--><slot part="links"
+              ></slot><!--lit-part--><!--/lit-part-->
+      </nav>
+    <!--/lit-part--></template>
+    <a href="#">Users</a>
+    <a href="#">Containers</a>
+    <a href="#">Databases</a>
+    <a href="#" active="">Servers</a>
+    <a href="#">System</a>
+    <a href="#"><rh-icon     slot="icon" icon="data" set="ui" size="sm"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  line-height: 0;
+  aspect-ratio: 1/1;
+  display: inline-flex;
+  place-content: center;
+}
+
+#container {
+  display: contents;
+}
+
+svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
+  fill: currentcolor;
+  aspect-ratio: 1/1;
+}
+
+.standard svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
+}
+
+.microns svg {
+  width: 12px;
+}
+</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part E65hbQkpc38=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M23 7c0-3.86-3.14-7-7-7S9 3.14 9 7s3.14 7 7 7 7-3.14 7-7Zm-7 5c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5Zm9 6c-3.86 0-7 3.14-7 7s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7Zm0 12c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5ZM3 0a1 1 0 0 0-1 1v12a1 1 0 0 0 2 0V1a1 1 0 0 0-1-1Zm0 18a1 1 0 0 0-1 1v12a1 1 0 0 0 2 0V19a1 1 0 0 0-1-1Zm9 0a1 1 0 0 0-1 1v12a1 1 0 0 0 2 0V19a1 1 0 0 0-1-1Zm17-4a1 1 0 0 0 1-1V1a1 1 0 0 0-2 0v12a1 1 0 0 0 1 1Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon> Network</a>
+    <a href="#">Cloud</a>
+  </rh-subnav>
+</rh-context-demo>
+
+<link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-subnav/rh-subnav-lightdom.css">
+
+<script type="module">
+  import '@rhds/elements/rh-subnav/rh-subnav.js';
+  import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
+</script>
+</main></body>
+</html>

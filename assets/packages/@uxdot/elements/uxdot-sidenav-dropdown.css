@@ -1,0 +1,3 @@
+:host {
+  z-index: var(--uxdot-sidenav-z-index, 102);
+}

@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/assets/logo-red-hat.svg">
+    <title>Proxy | Red Hat Design System</title>
+
+    <link rel="preconnect" href="https://ga.jspm.io">
+
+    <link rel="stylesheet" href="/styles/demo/styles.css" media="all">
+
+    <script type="importmap">{
+  "imports": {
+    "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
+    "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
+    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
+    "lit-html": "/assets/packages/lit-html/lit-html.js",
+    "tslib": "/assets/packages/tslib/tslib.es6.mjs",
+    "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
+    "lit-element": "/assets/packages/lit-element/index.js",
+    "prism-esm": "/assets/packages/prism-esm/prism.js",
+    "lit": "/assets/packages/lit/index.js",
+    "@rhds/tokens/css/color-context-provider.css.js": "/assets/packages/@rhds/tokens/css/color-context-provider.css.js",
+    "@rhds/tokens/css/color-context-consumer.css.js": "/assets/packages/@rhds/tokens/css/color-context-consumer.css.js",
+    "lit/decorators/custom-element.js": "/assets/packages/lit/decorators/custom-element.js",
+    "lit/decorators/property.js": "/assets/packages/lit/decorators/property.js",
+    "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
+    "lit/static-html.js": "/assets/packages/lit/static-html.js",
+    "@lit/context": "/assets/packages/@lit/context/index.js",
+    "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
+    "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.4/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
+    "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
+    "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
+    "lit/": "/assets/packages/lit/",
+    "lit-html/": "/assets/packages/lit-html/",
+    "prism-esm/": "/assets/packages/prism-esm/",
+    "@lit-labs/ssr-client/lit-element-hydrate-support.js": "/assets/packages/@lit-labs/ssr-client/lit-element-hydrate-support.js",
+    "@rhds/tokens/css/": "/assets/packages/@rhds/tokens/css/",
+    "@rhds/tokens/": "/assets/packages/@rhds/tokens/js/",
+    "@rhds/elements/lib/": "/assets/packages/@rhds/elements/lib/",
+    "@rhds/elements/": "/assets/packages/@rhds/elements/elements/",
+    "@rhds/icons/": "/assets/packages/@rhds/icons/",
+    "@rhds/icons/icons.js": "/assets/packages/@rhds/icons/icons.js",
+    "@patternfly/elements/": "/assets/packages/@patternfly/elements/",
+    "@patternfly/icons/": "/assets/packages/@patternfly/icons/",
+    "@patternfly/pfe-core/": "/assets/packages/@patternfly/pfe-core/",
+    "@uxdot/elements/": "/assets/packages/@uxdot/elements/",
+    "playground-elements": "https://cdn.jsdelivr.net/npm/playground-elements@0.18.1/+esm"
+  },
+  "scopes": {
+    "/assets/packages/": {
+      "@floating-ui/utils": "https://ga.jspm.io/npm:@floating-ui/utils@0.2.8/dist/floating-ui.utils.mjs",
+      "@floating-ui/utils/dom": "https://ga.jspm.io/npm:@floating-ui/utils@0.2.8/dist/floating-ui.utils.dom.mjs",
+      "@lit/reactive-element/decorators/": "/assets/packages/@lit/reactive-element/decorators/",
+      "lit-element/lit-element.js": "/assets/packages/lit-element/lit-element.js",
+      "lit-html/": "/assets/packages/lit-html/",
+      "lit/": "/assets/packages/lit/"
+    }
+  }
+}</script>
+    <script type="module">
+      // dsd polyfill needs to happen before hydration attempts
+      // lit-element-hydrate-support needs to be included before lit is loaded
+      import '/assets/javascript/dsd-polyfill.js';
+      import '@lit-labs/ssr-client/lit-element-hydrate-support.js';
+      import 'element-internals-polyfill';
+      // include these, which are often internal to elements, to avoid SSR defer-hydration bugs
+      import '@rhds/elements/rh-icon/rh-icon.js';
+      import '@rhds/elements/rh-surface/rh-surface.js';
+      // load up the demo and picker
+      import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
+      import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
+    </script>
+
+    <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
+  </head>
+  <body unresolved="">
+    <main><template id="rh-navigation-secondary-spandx-template">
+  <style>
+    /* Fix for websites with base font-size not set to 1rem */
+    :root {
+      --rh-font-size-text-xl: 1.125em;
+      --rh-line-height-body-text: 150%;
+      --rh-font-size-body-text-xs: 0.75em;
+      --rh-font-size-body-text-sm: 0.875em;
+      --rh-font-size-body-text-md: 1em;
+      --rh-font-size-body-text-lg: 1.125em;
+      --rh-font-size-code-xs: 0.75em;
+
+      --rh-footer-link-header-mobile-font-size: 0.875em;
+    }
+
+    rh-alert,
+    rh-blockquote,
+    rh-cta,
+    rh-dialog,
+    rh-footer,
+    rh-navigation-secondary,
+    rh-stat,
+    rh-tooltip,
+    rh-pagination {
+      font-size: initial;
+    }
+
+    rh-footer::part(links-accordion-header) {
+      --rh-footer-link-header-font-size: 0.875em;
+    }
+  </style>
+  <link href="/elements/rh-navigation-secondary/rh-navigation-secondary-lightdom.css" rel="stylesheet">
+  <rh-navigation-secondary role="navigation">
+    <a href="#" slot="logo" id="logo-id" aria-current="page">
+      Red Hat Ansible Automation Platform
+    </a>
+    <ul slot="nav" aria-labelledby="logo-id">
+      <li>
+        <rh-navigation-secondary-dropdown>
+          <a href="#" slot="link">Explore</a>
+          <rh-navigation-secondary-menu slot="menu">
+            <rh-navigation-secondary-menu-section>
+              <h3 slot="header" id="ansible-platform">
+                <a href="#">Why Red Hat Ansible Automation Platforms</a>
+              </h3>
+              <ul slot="links" aria-labelledby="ansible-platform">
+                <li>
+                  <a href="#">
+                    Integrations
+                    <rh-icon set="ui" icon="arrow-right" size="sm" loading="idle"></rh-icon>
+                  </a>
+                </li>
+                <li><a href="#">Custom success stories</a></li>
+                <li>
+                  <a href="#">
+                    What is ansible
+                    <rh-icon set="ui" icon="arrow-right" size="sm" loading="idle"></rh-icon>
+                  </a>
+                </li>
+                <li><a href="#">Why choose Red Hat for automation?</a></li>
+                <li><a href="#">Edge automation with Red Hat Ansible Automation Platform</a></li>
+              </ul>
+              <rh-cta slot="cta">
+                <a href="#">Section Level CTA</a>
+              </rh-cta>
+            </rh-navigation-secondary-menu-section>
+            <rh-navigation-secondary-menu-section>
+              <p slot="header">
+                <a href="#">Additional Features</a>
+              </p>
+              <ul slot="links">
+                <li><a href="#">Automation execution environments</a></li>
+                <li><a href="#">Automation controller</a></li>
+                <li>
+                  <a href="#">
+                    Automation mesh
+                    <rh-icon set="ui" icon="arrow-right" size="sm" loading="idle"></rh-icon>
+                  </a>
+                </li>
+                <li><a href="#">Ansible Content Collections</a></li>
+                <li>
+                  <a href="#">
+                    Automation Hub
+                    <rh-icon set="ui" icon="arrow-right" size="sm" loading="idle"></rh-icon>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    Red Hat Insights for Red Hat Ansible Automation Platform
+                    <rh-icon set="ui" icon="arrow-right" size="sm" loading="idle"></rh-icon>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    Automation services catalog
+                    <rh-icon set="ui" icon="arrow-right" size="sm" loading="idle"></rh-icon>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    Ansible content tools
+                    <rh-icon set="ui" icon="arrow-right" size="sm" loading="idle"></rh-icon>
+                  </a>
+                </li>
+              </ul>
+              <rh-cta slot="cta">
+                <a href="#">Section Level CTA</a>
+              </rh-cta>
+            </rh-navigation-secondary-menu-section>
+            <rh-navigation-secondary-menu-section>
+              <h3 slot="header">
+                <a href="#">Additional Features</a>
+              </h3>
+              <ul slot="links">
+                <li><a href="#">Automation execution environments</a></li>
+                <li><a href="#">Automation controller</a></li>
+                <li>
+                  <a href="#">
+                    Automation mesh
+                    <rh-icon set="ui" icon="arrow-right" size="sm" loading="idle"></rh-icon>
+                  </a>
+                </li>
+                <li><a href="#">Ansible Content Collections</a></li>
+                <li>
+                  <a href="#">
+                    Automation Hub
+                    <rh-icon set="ui" icon="arrow-right" size="sm" loading="idle"></rh-icon>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    Red Hat Insights for Red Hat Ansible Automation Platform
+                    <rh-icon set="ui" icon="arrow-right" size="sm" loading="idle"></rh-icon>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    Automation services catalog
+                    <rh-icon set="ui" icon="arrow-right" size="sm" loading="idle"></rh-icon>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    Ansible content tools
+                    <rh-icon set="ui" icon="arrow-right" size="sm" loading="idle"></rh-icon>
+                  </a>
+                </li>
+              </ul>
+              <rh-cta slot="cta">
+                <a href="#">Section Level CTA</a>
+              </rh-cta>
+            </rh-navigation-secondary-menu-section>
+          </rh-navigation-secondary-menu>
+        </rh-navigation-secondary-dropdown>
+      </li>
+       <li>
+        <rh-navigation-secondary-dropdown>
+          <a href="#" slot="link">Use cases</a>
+          <rh-navigation-secondary-menu slot="menu">
+            <ul>
+              <li>
+                <a href="#">
+                  Infrastructure
+                  <rh-icon set="ui" icon="arrow-right" size="sm" loading="idle"></rh-icon>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  Applications
+                  <rh-icon set="ui" icon="arrow-right" size="sm" loading="idle"></rh-icon>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  Networks
+                  <rh-icon set="ui" icon="arrow-right" size="sm" loading="idle"></rh-icon>
+                </a>
+              </li>
+            </ul>
+            <ul>
+              <li>
+                <a href="#">
+                  Containers
+                  <rh-icon set="ui" icon="arrow-right" size="sm" loading="idle"></rh-icon>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  Security
+                  <rh-icon set="ui" icon="arrow-right" size="sm" loading="idle"></rh-icon>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  Cloud
+                  <rh-icon set="ui" icon="arrow-right" size="sm" loading="idle"></rh-icon>
+                </a>
+              </li>
+            </ul>
+          </rh-navigation-secondary-menu>
+        </rh-navigation-secondary-dropdown>
+       </li>
+      <li><a href="#">Documentation</a></li>
+      <li><a href="#">Extra Placeholder</a></li>
+    </ul>
+    <rh-cta slot="cta">
+      <a href="#">Get started</a>
+    </rh-cta>
+  </rh-navigation-secondary>
+</template>
+
+<template id="rh-navigation-secondary-spandx-template-dark">
+  <rh-navigation-secondary color-palette="dark" role="navigation">
+    <a href="#" slot="logo" id="logo-id">
+      Red Hat Ansible Automation Platform
+    </a>
+    <ul slot="nav" aria-labelledby="logo-id">
+      <li>
+        <rh-navigation-secondary-dropdown>
+          <a href="#" slot="link">Explore</a>
+          <rh-navigation-secondary-menu slot="menu" layout="fixed-width">
+            <ul>
+              <li>
+                <a href="#">
+                  Integrations
+                  <rh-icon set="ui" icon="arrow-right" size="sm" loading="idle"></rh-icon>
+                </a>
+              </li>
+              <li><a href="#">Custom success stories</a></li>
+              <li>
+                <a href="#">
+                  What is ansible
+                  <rh-icon set="ui" icon="arrow-right" size="sm" loading="idle"></rh-icon>
+                </a>
+              </li>
+              <li><a href="#">Why choose Red Hat for automation?</a></li>
+              <li><a href="#">Edge automation with Red Hat Ansible Automation Platform</a></li>
+            </ul>
+          </rh-navigation-secondary-menu>
+        </rh-navigation-secondary-dropdown>
+      </li>
+      <li>
+        <rh-navigation-secondary-dropdown>
+          <a href="#" slot="link">w/ Sections</a>
+          <rh-navigation-secondary-menu slot="menu" layout="fixed-width">
+            <rh-navigation-secondary-menu-section>
+              <h3 slot="header">
+                <a href="#">Why Red Hat Ansible Automation Platforms</a>
+              </h3>
+              <ul slot="links">
+                <li>
+                  <a href="#">
+                    Integrations
+                    <rh-icon set="ui" icon="arrow-right" size="sm" loading="idle"></rh-icon>
+                  </a>
+                </li>
+                <li><a href="#">Custom success stories</a></li>
+                <li>
+                  <a href="#">
+                    What is ansible
+                    <rh-icon set="ui" icon="arrow-right" size="sm" loading="idle"></rh-icon>
+                  </a>
+                </li>
+                <li><a href="#">Why choose Red Hat for automation?</a></li>
+                <li><a href="#">Edge automation with Red Hat Ansible Automation Platform</a></li>
+              </ul>
+              <rh-cta slot="cta">
+                <a href="#">Section Level CTA</a>
+              </rh-cta>
+            </rh-navigation-secondary-menu-section>
+          </rh-navigation-secondary-menu>
+        </rh-navigation-secondary-dropdown>
+      </li>
+      <li>
+        <rh-navigation-secondary-dropdown>
+          <a href="#" slot="link">Other ex.</a>
+          <rh-navigation-secondary-menu slot="menu">
+            <pf-card>
+              <h2 slot="header">Hello world</h2>
+              <p>First Card</p>
+            </pf-card>
+
+            <pf-card>
+              <h2 slot="header">Hello world</h2>
+              <p>Card</p>
+            </pf-card>
+
+            <pf-card>
+              <h2 slot="header">Hello world</h2>
+              <p>Card</p>
+            </pf-card>
+
+            <pf-card>
+              <h2 slot="header">Hello world</h2>
+              <p>Card</p>
+            </pf-card>
+
+            <pf-card>
+              <h2 slot="header">Hello world</h2>
+              <p>Card</p>
+            </pf-card>
+
+            <pf-card>
+              <h2 slot="header">Hello world</h2>
+              <p>Card</p>
+            </pf-card>
+
+            <pf-card>
+              <h2 slot="header">Hello world</h2>
+              <p>Card</p>
+            </pf-card>
+
+            <pf-card>
+              <h2 slot="header">Hello world</h2>
+              <p>Card</p>
+            </pf-card>
+
+            <pf-card>
+              <h2 slot="header">Hello world</h2>
+              <p>Card</p>
+            </pf-card>
+
+            <pf-card>
+              <h2 slot="header">Hello world</h2>
+              <p>Card</p>
+            </pf-card>
+
+            <pf-card>
+              <h2 slot="header">Hello world</h2>
+              <p>Card</p>
+            </pf-card>
+
+            <pf-card>
+              <h2 slot="header">Hello world</h2>
+              <p>Last Card</p>
+            </pf-card>
+
+          </rh-navigation-secondary-menu>
+        </rh-navigation-secondary-dropdown>
+        </li>
+      <li>
+        <rh-navigation-secondary-dropdown>
+          <a href="#" slot="link">Override Grid</a>
+          <rh-navigation-secondary-menu slot="menu" id="custom-grid">
+            <div><h3>Grid</h3></div>
+            <div class="pfe-l-grid pfe-m-gutters pfe-m-all-4-col">
+              <div><a href="#">Item</a></div>
+              <div><a href="#">Item</a></div>
+              <div><a href="#">Item</a></div>
+              <div><a href="#">Item</a></div>
+              <div><a href="#">Item</a></div>
+              <div><a href="#">Item</a></div>
+            </div>
+            <div><h3>Bootstrap Style Columns</h3></div>
+            <div class="pfe-l-grid pfe-m-gutters">
+              <div class="pfe-l-grid__item">Default Item</div>
+              <div class="pfe-l-grid__item pfe-m-2-col"><code>pfe-m-2-col</code></div>
+              <div class="pfe-l-grid__item pfe-m-10-col"><code>pfe-m-10-col</code></div>
+              <div class="pfe-l-grid__item pfe-m-4-col"><code>pfe-m-4-col</code></div>
+              <div class="pfe-l-grid__item pfe-m-4-col"><code>pfe-m-4-col</code></div>
+              <div class="pfe-l-grid__item pfe-m-4-col"><code>pfe-m-4-col</code></div>
+              <div class="pfe-l-grid__item pfe-m-6-col pfe-m-3-col-on-md"><code>pfe-m-6-col pfe-m-3-col-on-md</code></div>
+              <div class="pfe-l-grid__item pfe-m-6-col pfe-m-3-col-on-md pfe-m-startat-7-col-on-md"><code>pfe-m-6-col pfe-m-3-col-on-md pfe-m-startat-7-col-on-md</code></div>
+              <div class="pfe-l-grid__item pfe-m-6-col pfe-m-3-col-on-md"><code>pfe-m-6-col pfe-m-3-col-on-md</code></div>
+            </div>
+          </rh-navigation-secondary-menu>
+        </rh-navigation-secondary-dropdown>
+      </li>
+      <li><a href="#">Extra Link</a></li>
+    </ul>
+    <rh-cta slot="cta">
+      <a href="#">Get started</a>
+    </rh-cta>
+  </rh-navigation-secondary>
+</template>
+
+<script type="module">
+  import '@rhds/elements/rh-cta/rh-cta.js';
+  import '@rhds/elements/rh-navigation-secondary/rh-navigation-secondary.js';
+  const tpl = document.getElementById('rh-navigation-secondary-spandx-template');
+  const nav = document.querySelector('pfe-navigation');
+  const navlight = document.querySelector('.pfe-nav-light-dom');
+  const secondaryNav = tpl.content.cloneNode(true);
+  navlight.parentNode.insertBefore(secondaryNav, navlight.nextSibling);
+
+  function throttle(func, timeFrame) {
+    let lastTime = 0;
+    return function() {
+      const now = new Date();
+      if (now - lastTime >= timeFrame) {
+        func();
+        lastTime = now;
+      }
+    };
+  }
+
+  function calculateLayout() {
+    const scrollDistance = document.documentElement.scrollTop;
+    if (scrollDistance <= 40) {
+      if (nav.style.zIndex === 103) {
+        return;
+      }
+      nav.style.cssText = 'z-index: 103 !important';
+    } else {
+      if (nav.style.zIndex === 101) {
+        return;
+      }
+      nav.style.cssText = 'z-index: 101 !important';
+    }
+  }
+
+  document.addEventListener('scroll', throttle(calculateLayout, 20));
+</script>
+</main></body>
+</html>

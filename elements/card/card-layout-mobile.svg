@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="640" viewBox="0 0 360 640">
+  <g id="card-layout-mobile" transform="translate(-360 -9121)">
+    <g id="Cards">
+      <g id="Rectangle" transform="translate(376 9457)" fill="#fff" stroke="#d2d2d2" stroke-width="1">
+        <rect width="328" height="304" rx="3" stroke="none"/>
+        <rect x="0.5" y="0.5" width="327" height="303" rx="2.5" fill="none"/>
+      </g>
+      <g id="Rectangle-2" data-name="Rectangle" transform="translate(376 9121)" fill="#fff" stroke="#d2d2d2" stroke-width="1">
+        <rect width="328" height="304" rx="3" stroke="none"/>
+        <rect x="0.5" y="0.5" width="327" height="303" rx="2.5" fill="none"/>
+      </g>
+    </g>
+    <g id="Grid" opacity="0.03">
+      <rect id="Rectangle-3" data-name="Rectangle" width="16" height="640" transform="translate(704 9121)" fill="blue" opacity="0.75"/>
+      <rect id="Rectangle-4" data-name="Rectangle" width="328" height="640" transform="translate(376 9121)" fill="red" opacity="0.75"/>
+      <rect id="Rectangle-5" data-name="Rectangle" width="16" height="640" transform="translate(360 9121)" fill="blue" opacity="0.75"/>
+    </g>
+  </g>
+</svg>
