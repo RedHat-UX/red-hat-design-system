@@ -1,52 +1,47 @@
 import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
+import { query } from 'lit/decorators/query.js';
+
+import '@rhds/elements/rh-icon/rh-icon.js';
 
 import styles from './rh-disclosure.css';
 
 /**
  * @summary A disclosure is a widget that enables content to be either collapsed (hidden) or expanded (visible).
- * @slot - Place the `details`, `summary`, and `.details-content` elements in the default slot.
+ * @slot - Place the content you want to disclose in the default slot. This content is hidden by default.
+ * @slot summary-label - The title of the disclosure
+ * @csspart caret - The caret icon in the shadow DOM
  */
 
 @customElement('rh-disclosure')
 export class RhDisclosure extends LitElement {
   static readonly styles = [styles];
 
-  #details?: HTMLDetailsElement;
-  #summary?: HTMLElement;
-
-  firstUpdated() {
-    this.#details = this.querySelector<HTMLDetailsElement>('details')!;
-    this.#summary = this.querySelector<HTMLElement>('details summary')!;
-    if (!isServer) {
-      this.#details?.addEventListener('keydown', this.#handleKeyDown.bind(this));
-    }
-  }
-
-  disconnectedCallback() {
-    if (!isServer && this.#details) {
-      this.#details.removeEventListener('keydown', this.#handleKeyDown.bind(this));
-    }
-    super.disconnectedCallback();
-  }
+  @query('details') private detailsEl!: HTMLDetailsElement;
+  @query('summary') private summaryEl!: HTMLElement;
 
   render() {
     return html`
-      <slot></slot>
+      <details @keydown=${!isServer && this.#closeDetails}>
+        <summary>
+          <rh-icon part="caret" id="caret" set="ui" icon="caret-down"></rh-icon>
+          <slot name="summary-label">Panel Title</slot>
+        </summary>
+        <div id="details-content">
+          <slot></slot>
+        </div>
+      </details>
     `;
   }
 
-  #handleKeyDown(event: KeyboardEvent): void {
+  #closeDetails(event: KeyboardEvent): void {
+    if (!this.detailsEl.hasAttribute('open')) {
+      return;
+    }
     if (event.code === 'Escape') {
       event.stopPropagation();
-      this.#closeDetails();
-    }
-  }
-
-  #closeDetails(): void {
-    if (this.#details?.open) {
-      this.#details.open = false;
-      this.#summary?.focus();
+      this.detailsEl.removeAttribute('open');
+      this.summaryEl.focus();
     }
   }
 }

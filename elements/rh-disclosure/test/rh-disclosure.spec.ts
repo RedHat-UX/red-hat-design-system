@@ -24,14 +24,10 @@ describe('<rh-disclosure>', function() {
     beforeEach(async function() {
       element = await createFixture<RhDisclosure>(html`
         <rh-disclosure>
-          <details>
-            <summary>
-              Summary title
-            </summary>
-            <div class="details-content">
-              Details content goes here.
-            </div>
-          </details>
+          <span slot="summary-label">
+            Summary title
+          </span>
+          <p>Details content goes here.</p>
         </rh-disclosure>
       `);
       await element.updateComplete;
