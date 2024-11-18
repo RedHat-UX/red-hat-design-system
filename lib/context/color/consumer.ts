@@ -67,13 +67,16 @@ export class ColorContextConsumer<
     await this.host.updateComplete;
     this.host.dispatchEvent(event);
     this.#override = null;
-  }
-
-  hostUpdated() {
-    if (!isServer && !this.host.hasUpdated) {
-      // This is definitely overkill, but it's the only
-      // way we've found so far to work around lit-ssr hydration woes
-      this.hostConnected();
+    if (!isServer) {
+      // this is overkill, but so far the only way we've found to properly hydrate color context
+      // consumers. Anyone who can do it better get's a sticker ;)
+      if (this.value) {
+        const { value } = this;
+        await this.host.updateComplete;
+        this.update(null);
+        await this.host.updateComplete;
+        this.update(value);
+      }
     }
   }
 
