@@ -10,5 +10,10 @@
   ],
   "compilerOptions": {
     "composite": true
-  }
+  },
+  "references": [
+    {
+      "path": "../elements"
+    }
+  ]
 }
