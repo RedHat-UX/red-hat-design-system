@@ -22,7 +22,7 @@ rh-disclosure {
     display: flex;
     font-size: var(--rh-font-size-body-text-md, 1rem);
     font-weight: var(--rh-font-weight-body-text-medium, 500);
-    gap: var(--rh-length-sm, 6px);
+    gap: var(--rh-space-md, 8px);
     list-style: none;
     padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
 
