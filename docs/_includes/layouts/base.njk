@@ -10,19 +10,19 @@
 
     <link rel="stylesheet" href="/styles/styles.css">
 
-   {# On browsers that don't yet support native declarative shadow DOM, a
-      paint can occur after some or all pre-rendered HTML has been parsed,
-      but before the declarative shadow DOM polyfill has taken effect. This
-      paint is undesirable because it won't include any component shadow DOM.
-      To prevent layout shifts that can result from this render, we use a
-      "dsd-pending" attribute to ensure we only paint after we know
-      shadow DOM is active. #}
+    {#- On browsers that don't yet support native declarative shadow DOM, a
+       paint can occur after some or all pre-rendered HTML has been parsed,
+       but before the declarative shadow DOM polyfill has taken effect. This
+       paint is undesirable because it won't include any component shadow DOM.
+       To prevent layout shifts that can result from this render, we use a
+       "dsd-pending" attribute to ensure we only paint after we know
+       shadow DOM is active. -#}
     <style>
       body[dsd-pending] {
         display: none;
       }
     </style>
-    {# if javascript is turned off we want to ensure the page renders #}
+    {#- if javascript is turned off we want to ensure the page renders -#}
     <noscript>
       <style type="text/css">
         body[dsd-pending] {
@@ -30,7 +30,6 @@
         }
       </style>
     </noscript>
-
     {% include "../partials/javascript/global.html" %}
   </head>
 

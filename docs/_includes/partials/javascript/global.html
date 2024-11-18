@@ -1,26 +1,51 @@
-  <script type="importmap">{{ importMap | dump(2) | safe }}</script>
+    <script type="importmap">{{ importMap | dump(2) | safe }}</script>
 
-  {# dsd polyfill needs to happen before hydration attempts #}
-  <script type="module">
-    import '/assets/javascript/dsd-polyfill.js';
-  </script>
+    {#- dsd polyfill needs to happen before hydration attempts -#}
+    <script type="module">
+      import '/assets/javascript/dsd-polyfill.js';
+    </script>
 
-  {# lit-element-hydrate-support needs to be included before lit is loaded #}
-  <script type="module">
-    import '@lit-labs/ssr-client/lit-element-hydrate-support.js';
-  </script>
+    {#- lit-element-hydrate-support needs to be included before lit is loaded -#}
+    <script type="module">
+      import '@lit-labs/ssr-client/lit-element-hydrate-support.js';
+    </script>
 
-  {# load all components #}
-  {% for tag in importElements %}
+    {#- load all components -#}
+    {% for tag in importElements %}
     <script type="module">import '@rhds/elements/{{tag}}/{{tag}}.js';</script>
-  {% endfor %}
+    {% endfor %}
 
-  {# only load components that need hydrated (aka interactivity) #}
-  <script type="module">
-    import '@uxdot/elements/uxdot-copy-permalink.js';
-    import '@uxdot/elements/uxdot-sidenav.js';
-    import '@uxdot/elements/uxdot-example.js';
-  </script>
+    {#- only load components that need hydrated (aka interactivity) -#}
+    <script type="module">
+      import '@uxdot/elements/uxdot-copy-permalink.js';
+      import '@uxdot/elements/uxdot-example.js';
+      import '@uxdot/elements/uxdot-masthead.js';
+      import '@uxdot/elements/uxdot-sidenav.js';
+    </script>
+
+    {#- pre-roll the color palette system, depending on user browser pref.
+        conceptually, this belongs in uxdot-masthead.ts, but we place it here to improve
+        the perceived performance -#}
+    <style>
+      :root {
+        background-color: var(--rh-color-surface);
+        @media (prefers-color-scheme: dark) {
+          --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+          --context: dark;
+        }
+      }
+    </style>
+
+    <script type="module">
+      const masthead = document.querySelector('uxdot-masthead');
+      const medialist = matchMedia('(prefers-color-scheme: dark)');
+      medialist.addEventListener('change', onChangePreference);
+      function onChangePreference() {
+        masthead.isDarkMode = medialist.matches;
+      }
+      await masthead.updateComplete;
+      onChangePreference();
+    </script>
 
     <script async src="https://ga.jspm.io/npm:es-module-shims@1.10.1/dist/es-module-shims.js"></script>
 

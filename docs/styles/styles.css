@@ -296,16 +296,6 @@
   }
 
   /**
-   * position masthead as fixed
-   * z-index: to float above scroll page content
-  */
-  uxdot-masthead {
-    position: fixed;
-    inset: 0;
-    z-index: var(--uxdot-masthead-z-index);
-  }
-
-  /**
    * Sticky header pattern
    * progressive enhancement sticky, using :has()
    * z-index: of masthead + 1
