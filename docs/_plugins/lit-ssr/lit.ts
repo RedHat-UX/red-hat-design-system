@@ -58,6 +58,8 @@ export default async function(eleventyConfig: UserConfig, opts?: Options) {
           tsconfig,
         },
       });
+
+      pool.on('error', console.error);
     });
 
     eleventyConfig.on('eleventy.after', async function() {
@@ -82,7 +84,7 @@ export default async function(eleventyConfig: UserConfig, opts?: Options) {
           : durationMs > 100 ? chalk.blue
           : chalk.green;
           // eslint-disable-next-line no-console
-          console.log(`${color(durationMs.toFixed(2).padEnd(8))} Rendered ${page.outputPath} in`);
+          console.log(`${color(durationMs.toFixed(2).padEnd(8))}ms to render ${page.outputPath}`);
         }
         return trimOuterMarkers(rendered);
       } else {
