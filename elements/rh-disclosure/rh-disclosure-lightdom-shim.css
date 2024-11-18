@@ -1,0 +1,8 @@
+/**
+ * WARNING: Using this stylesheet acknoledges this component requires JavaScript
+ * If you are OK with a FOUC, you do not need to link this file in your app
+ * 👇 Hides all content in the default slot
+*/
+rh-disclosure:not(:defined) *:not([slot]) {
+  display: none;
+}

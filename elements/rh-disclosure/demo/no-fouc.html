@@ -1,0 +1,25 @@
+<rh-disclosure>
+  <span slot="summary-label">
+    No flash of unstyled content
+  </span>
+  <p>This demo includes a <a href="https://ux.redhat.com/get-started/developers/installation/#lightdom-css-shims">lightdom shim</a> CSS file that hides all content that's not in a slot until this component's JavaScript loads.</p>
+  <ul>
+    <li>Pros:
+      <ul>
+        <li>No flash of unstyled content during page load</li>
+        <li>Less/no cumulative layout shift</li>
+      </ul>
+    </li>
+    <li>Cons:
+      <ul>
+        <li>If, for whatever reason, JavaScript fails to load, all content in the default slot will be hidden to end users.</li>
+      </ul>
+    </li>
+  </ul>
+</rh-disclosure>
+
+<link rel="stylesheet" href="../rh-disclosure-lightdom-shim.css">
+
+<script type="module">
+  import '@rhds/elements/rh-disclosure/rh-disclosure.js';
+</script>
