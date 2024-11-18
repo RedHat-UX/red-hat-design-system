@@ -59,6 +59,7 @@ export default async function(eleventyConfig: UserConfig, opts?: Options) {
         },
       });
 
+      // eslint-disable-next-line no-console
       pool.on('error', console.error);
     });
 
