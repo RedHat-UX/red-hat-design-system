@@ -2,12 +2,6 @@
   display: block;
 }
 
-details {
-  /* stylelint-disable-next-line rhds/token-values */
-  border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle, #c7c7c7);
-  font-family: var(--rh-font-family-body-text);
-}
-
 summary {
   align-items: center;
   cursor: pointer;
@@ -16,11 +10,18 @@ summary {
   font-weight: var(--rh-font-weight-body-text-medium, 500);
   gap: var(--rh-space-md, 8px);
   list-style: none;
-  padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
+  position: relative;
 
   &::-webkit-details-marker,
   &::marker {
     display: none;
+  }
+
+  &:before {
+    content: '';
+    inset-block: -16px;
+    inset-inline: -24px;
+    position: absolute;
   }
 
   & ::slotted([slot='summary-label']) {
@@ -40,15 +41,15 @@ summary {
 #details-content {
   font-size: var(--rh-font-size-body-text-md, 1rem);
   line-height: var(--rh-line-height-body-text, 1.5);
-  padding: var(--rh-space-xl, 24px);
-  padding-block-start: var(--rh-space-lg, 16px);
+  padding-block: var(--rh-space-xl, 24px);
+  padding-block-end: var(--rh-space-md, 8px);
 }
 
 ::slotted(:is(p, h1, h2, h3, h4, h5, h6):first-of-type) {
   margin-block-start: 0;
 }
 
-details[open] {
+:host:has(details[open]) {
   box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
   position: relative;
 
@@ -60,7 +61,9 @@ details[open] {
     inset-inline-start: -1px;
     inset-block: -1px;
   }
+}
 
+details[open] {
   #caret {
     transform: rotate(-180deg);
   }
