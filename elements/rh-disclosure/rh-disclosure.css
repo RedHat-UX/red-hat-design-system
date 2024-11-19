@@ -24,6 +24,10 @@ summary {
     position: absolute;
   }
 
+  &:focus {
+    outline-offset: var(--rh-space-lg, 16px);
+  }
+
   & ::slotted([slot='summary']) {
     font-family: var(--rh-font-family-body-text);
     font-size: var(--rh-font-size-body-text-md, 1rem) !important;
