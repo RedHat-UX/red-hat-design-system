@@ -9,7 +9,7 @@ Place the following markup on your page:
 
 ```html
 <rh-disclosure>
-  <span slot="summary-label">
+  <span slot="summary">
     Collapsed panel title
   </span>
   <p>Lorem ipsum dolor sit amet consectetur adipisicing, elit. Velit distinctio, nesciunt nobis sit.</p>

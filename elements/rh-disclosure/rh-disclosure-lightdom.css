@@ -6,7 +6,7 @@ rh-disclosure {
   padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
 }
 
-rh-disclosure > [slot='summary-label'] {
+rh-disclosure > [slot='summary'] {
   display: block;
   font-size: var(--rh-font-size-body-text-md, 1rem);
   font-weight: var(--rh-font-weight-body-text-medium, 500);

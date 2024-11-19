@@ -9,7 +9,7 @@ import styles from './rh-disclosure.css';
 /**
  * @summary A disclosure is a widget that enables content to be either collapsed (hidden) or expanded (visible).
  * @slot - Place the content you want to disclose in the default slot. This content is hidden by default.
- * @slot summary-label - The title of the disclosure
+ * @slot summary - The title of the disclosure
  * @csspart caret - The caret icon in the shadow DOM
  */
 
@@ -25,7 +25,7 @@ export class RhDisclosure extends LitElement {
       <details @keydown=${!isServer && this.#closeDetails}>
         <summary>
           <rh-icon part="caret" id="caret" set="ui" icon="caret-down"></rh-icon>
-          <slot name="summary-label">Panel Title</slot>
+          <slot name="summary">Panel Title</slot>
         </summary>
         <div id="details-content">
           <slot></slot>

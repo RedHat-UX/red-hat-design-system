@@ -24,7 +24,7 @@ summary {
     position: absolute;
   }
 
-  & ::slotted([slot='summary-label']) {
+  & ::slotted([slot='summary']) {
     font-family: var(--rh-font-family-body-text);
     font-size: var(--rh-font-size-body-text-md, 1rem) !important;
     font-weight: var(--rh-font-weight-body-text-medium, 500);

@@ -8,7 +8,7 @@ A disclosure is a widget that enables content to be either collapsed (hidden) or
 
 ```html
 <rh-disclosure>
-  <span slot="summary-label">
+  <span slot="summary">
     Collapsed panel title
   </span>
   <p>Lorem ipsum dolor sit amet consectetur adipisicing, elit.</p>
