@@ -25,7 +25,7 @@ export class RhDisclosure extends LitElement {
       <details @keydown=${!isServer && this.#closeDetails}>
         <summary>
           <rh-icon part="caret" id="caret" set="ui" icon="caret-down"></rh-icon>
-          <slot name="summary">Panel Title</slot>
+          <slot name="summary"></slot>
         </summary>
         <div id="details-content">
           <slot></slot>
