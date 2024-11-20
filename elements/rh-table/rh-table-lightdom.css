@@ -1,3 +1,8 @@
+@property --_rhds-lightdom {
+  inherits: false;
+  syntax: string;
+}
+
 rh-table {
   --_rhds-lightdom: rh-table;
 
