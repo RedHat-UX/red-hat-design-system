@@ -1,8 +1,14 @@
-/**
- * WARNING: Using this stylesheet acknoledges this component requires JavaScript
- * If you are OK with a FOUC, you do not need to link this file in your app
- * 👇 Hides all content in the default slot
-*/
-rh-disclosure:not(:defined) *:not([slot]) {
-  display: none;
+rh-disclosure {
+  /* stylelint-disable-next-line rhds/token-values */
+  border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle, #c7c7c7);
+  display: block;
+  font-family: var(--rh-font-family-body-text);
+  padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
+}
+
+rh-disclosure > [slot='summary'] {
+  display: block;
+  font-size: var(--rh-font-size-body-text-md, 1rem);
+  font-weight: var(--rh-font-weight-body-text-medium, 500);
+  font-family: var(--rh-font-family-body-text);
 }
