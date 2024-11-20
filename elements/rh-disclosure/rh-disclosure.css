@@ -3,12 +3,9 @@
 }
 
 summary {
-  align-items: center;
   cursor: pointer;
-  display: flex;
   font-size: var(--rh-font-size-body-text-md, 1rem);
   font-weight: var(--rh-font-weight-body-text-medium, 500);
-  gap: var(--rh-space-md, 8px);
   list-style: none;
   position: relative;
 
@@ -40,6 +37,9 @@ summary {
   block-size: var(--rh-space-lg, 16px);
   transition: 0.2s;
   will-change: rotate;
+  position: relative;
+  inset-block-start: 3px;
+  margin-inline-end: var(--rh-space-md, 8px);
 }
 
 #details-content {
