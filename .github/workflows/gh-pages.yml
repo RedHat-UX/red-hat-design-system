@@ -23,7 +23,7 @@ jobs:
         run: npm ci --prefer-offline
 
       - name: Build
-        run: npm run build
+        run: npm run docs
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
