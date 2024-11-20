@@ -22,7 +22,14 @@ summary {
   }
 
   &:focus {
-    outline-offset: var(--rh-space-lg, 16px);
+    outline: 0;
+  }
+
+  &:focus:before {
+    outline: var(--rh-border-width-md, 2px) solid;
+    /* stylelint-disable-next-line rhds/token-values */
+    outline-color: var(--rh-color-interactive-primary-focus, #003366);
+    outline-offset: -2px;
   }
 
   & ::slotted([slot='summary']) {
