@@ -1,3 +1,5 @@
+import type { ColorTheme } from '@rhds/elements/lib/context/color/consumer.js';
+
 import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -6,7 +8,8 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import { RequestSortEvent, RhSortButton } from './rh-sort-button.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { colorContextConsumer } from '@rhds/elements/lib/context/color/consumer.js';
+import { LightdomCSSController } from '@rhds/elements/lib/LightdomCSSController.js';
 
 import styles from './rh-table.css';
 
@@ -67,6 +70,8 @@ export class RhTable extends LitElement {
   get #summary(): HTMLElement | undefined {
     return this.querySelector('[slot="summary"]') as HTMLElement | undefined;
   }
+
+  #lightdom = new LightdomCSSController(this, import.meta.url);
 
   #internalColorPalette?: string | null;
 

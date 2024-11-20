@@ -1,4 +1,6 @@
 rh-table {
+  --_rhds-lightdom: rh-table;
+
   container: host / inline-size;
 
   & thead {
