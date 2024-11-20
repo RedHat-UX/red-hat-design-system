@@ -22,6 +22,11 @@ export class RhDisclosure extends LitElement {
    */
   @property({ type: Boolean, reflect: true }) open = false;
 
+  /**
+   * Sets the disclosure title via an attribute
+   */
+  @property({ reflect: true }) summary?: string;
+
   @query('details') private detailsEl!: HTMLDetailsElement;
   @query('summary') private summaryEl!: HTMLElement;
 
@@ -33,7 +38,7 @@ export class RhDisclosure extends LitElement {
         @toggle="${this.#onToggle}">
         <summary>
           <rh-icon part="caret" id="caret" set="ui" icon="caret-down"></rh-icon>
-          <slot name="summary"></slot>
+          <slot name="summary">${this.summary}</slot>
         </summary>
         <div id="details-content">
           <slot></slot>
