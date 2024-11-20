@@ -7,10 +7,17 @@ import '@rhds/elements/rh-icon/rh-icon.js';
 
 import styles from './rh-disclosure.css';
 
+export class DisclosureToggleEvent extends Event {
+  constructor() {
+    super('toggle', { bubbles: true, cancelable: true });
+  }
+}
+
 /**
  * @summary A disclosure is a widget that enables content to be either collapsed (hidden) or expanded (visible).
  * @slot - Place the content you want to disclose in the default slot. This content is hidden by default.
  * @slot summary - The title of the disclosure
+ * @fires {DisclosureToggleEvent} toggle - Fires when a user opens or closes a disclosure.
  * @csspart caret - The caret icon in the shadow DOM
  */
 @customElement('rh-disclosure')
@@ -49,6 +56,8 @@ export class RhDisclosure extends LitElement {
 
   #onToggle(): void {
     this.open = this.detailsEl.open;
+    const event = new DisclosureToggleEvent();
+    this.dispatchEvent(event);
   }
 
   #onKeydown(event: KeyboardEvent): void {
@@ -67,11 +76,14 @@ export class RhDisclosure extends LitElement {
       if (document.activeElement?.matches(preventEscElements)) {
         return;
       }
-      this.#closeDetails();
+      this.#closeDisclosure();
     }
   }
 
-  #closeDetails(): void {
+  #closeDisclosure(): void {
+    if (!this.open) {
+      return;
+    }
     this.detailsEl.open = false;
     this.open = false;
     this.summaryEl.focus();
