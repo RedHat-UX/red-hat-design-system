@@ -250,6 +250,7 @@ export default async function(eleventyConfig: UserConfig) {
       'elements/rh-table/rh-table.js',
       'elements/rh-tag/rh-tag.js',
       'elements/rh-cta/rh-cta.js',
+      'elements/rh-navigation-secondary-dsd/rh-navigation-secondary-dsd.js',
     ],
   });
 

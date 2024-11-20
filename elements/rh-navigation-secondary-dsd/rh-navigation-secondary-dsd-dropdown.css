@@ -1,0 +1,93 @@
+:host {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+details {
+  border-inline-start: var(--rh-border-width-lg) solid transparent;
+  border-inline-end: var(--rh-border-width-sm) solid transparent;
+  width: 100%;
+
+  & > summary {
+    --rh-icon-size: 12px;
+
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    height: max-content;
+    color: var(--_nav-link-color) !important;
+    font-size: var(--rh-font-size-body-text-md, 1rem);
+    font-weight: 400;
+    padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
+    text-decoration: none !important;
+    text-align: center;
+    justify-content: space-between;
+
+    &::marker {
+      display: none;
+    }
+  }
+
+  #details-content {
+    background-color: var(--rh-color-surface-lightest);
+  }
+
+  &[open] {
+    border-inline-start-color: var(--rh-color-text-brand-on-light);
+    border-inline-end-color: var(--rh-color-border-subtle-on-light);
+    box-shadow: var(--rh-box-shadow-sm);
+
+    & summary {
+      rh-icon {
+        rotate: 180deg;
+      }
+    }
+  }
+}
+
+:host(:defined) {
+  & details {
+    @container (min-width: 992px) {
+      height: 100%;
+    }
+
+    & > summary {
+      @container (min-width: 992px) {
+        display: flex;
+        height: 100%;
+        align-items: center;
+        padding-block: 0;
+        padding-inline: var(--rh-space-md);
+        gap: var(--rh-space-sm);
+      }
+    }
+
+    & > #details-content {
+      @container (min-width: 992px) {
+        position: absolute;
+        inset-inline: 0;
+        padding: 0;
+        box-shadow: var(--rh-box-shadow-sm);
+        max-height: calc(100vh - var(--rh-space-4xl) - var(--_nav-min-height));
+        /* stylelint-disable-next-line rhds/no-unknown-token-name */
+        z-index: var(--rh-navigation-secondary-z-index, 103);
+      }
+    }
+
+    &[open] {
+      @container (min-width: 992px) {
+        border-inline-start-color: transparent;
+        border-inline-end-color: transparent;
+        box-shadow: unset;
+      }
+
+      & summary {
+        @container (min-width: 992px) {
+          background-color: var(--rh-color-surface-lightest);
+        }
+      }
+    }
+  }
+}

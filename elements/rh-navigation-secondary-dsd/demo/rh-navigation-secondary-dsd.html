@@ -1,0 +1,93 @@
+<rh-navigation-secondary-dsd>
+  <a href="#" slot="logo" id="logo-id" aria-current="page">
+    Red Hat Ansible Automation Platform
+  </a>
+  <ul slot="nav" aria-labelledby="logo-id">
+    <li>
+      <rh-navigation-secondary-dsd-dropdown>
+        <span slot="summary">Dropdown</span>
+        <rh-navigation-secondary-dsd-menu visible>
+          <rh-navigation-secondary-dsd-menu-section>
+            <h3 slot="header">Section</h3>
+            <ul slot="links">
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+            </ul>
+            <rh-cta slot="cta" href="#">Section CTA</rh-cta>
+          </rh-navigation-secondary-dsd-menu-section>
+          <rh-navigation-secondary-dsd-menu-section>
+            <h3 slot="header">Section</h3>
+            <ul slot="links">
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+            </ul>
+            <rh-cta slot="cta" href="#">Section CTA</rh-cta>
+          </rh-navigation-secondary-dsd-menu-section>
+        </rh-navigation-secondary-dsd-menu>
+      </rh-navigation-secondary-dsd-dropdown>
+    </li>
+    <li>
+      <rh-navigation-secondary-dsd-dropdown>
+        <span slot="summary">Dropdown 2</span>
+        <rh-navigation-secondary-dsd-menu visible>
+          <ul>
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+          </ul>
+        </rh-navigation-secondary-dsd-menu>
+      </rh-navigation-secondary-dsd-dropdown>
+    </li>
+    <li><a href="#">Link</a></li>
+    <li><a href="#">Link</a></li>
+  </ul>
+  <rh-cta slot="cta" href="#">Call to Action</rh-cta>
+</rh-navigation-secondary-dsd>
+
+<div id="lipsum">
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sagittis, ex eget congue consectetur, odio lorem tincidunt risus, eget viverra mauris nunc id quam. In eu risus et tortor luctus vehicula. Suspendisse scelerisque posuere est at imperdiet. Aliquam ut tempor ante. Sed ac egestas mauris, in pretium diam. Nam et faucibus felis. Fusce in porttitor sem. Proin commodo mi enim, sed molestie nunc dictum accumsan. Integer a suscipit lorem, a ornare turpis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam non ornare arcu. Donec vitae rhoncus metus, eget bibendum diam. Ut tincidunt arcu non risus maximus accumsan. Praesent vel purus purus.
+  </p>
+  <p>
+    Vestibulum fringilla augue a lorem maximus imperdiet. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse et augue sit amet arcu aliquam fringilla. Mauris vehicula, lacus non ultricies laoreet, purus mauris hendrerit quam, nec tincidunt velit leo id neque. Nam consectetur mauris pulvinar mattis posuere. Proin in nisl sed mauris dignissim vehicula. Nulla ut elit sodales, tempor ante ut, rutrum ipsum. Pellentesque tempus in nisl a egestas. Fusce ornare urna et orci vehicula, in euismod libero cursus. Cras non interdum sem, ut condimentum quam. Nam vestibulum quam massa, cursus interdum diam facilisis quis. Praesent ut quam ut augue varius tempor.
+  </p>
+  <p>
+    Nunc ac hendrerit justo, a placerat urna. Nam finibus posuere leo eget vulputate. In lectus nisi, porta vitae orci in, pharetra consectetur leo. Cras ultricies orci et dolor hendrerit tincidunt. Etiam eget mauris neque. Ut a sollicitudin enim. Curabitur at risus ultrices, faucibus elit sit amet, dictum odio. Mauris tristique viverra massa, at bibendum eros vulputate nec.
+  </p>
+  <p>
+    Nam risus sapien, lacinia id massa sit amet, faucibus finibus nisi. Mauris interdum scelerisque sapien. Vestibulum tincidunt ac turpis sed tristique. Integer ac magna quis neque venenatis tristique. Vivamus elementum dolor quis massa sollicitudin tincidunt. Nulla accumsan, nibh eu rutrum porta, libero leo vehicula odio, ut luctus enim nibh tempor mauris. Suspendisse pellentesque erat varius erat efficitur, id condimentum sapien congue. Quisque sit amet magna rutrum, posuere lorem vel, auctor dolor. Donec et magna libero. Mauris ut lacinia magna. Donec dignissim sapien id sem eleifend fermentum. Nullam semper eros ac mattis lobortis. Nulla facilisi.
+  </p>
+  <p>
+    In hac habitasse platea dictumst. Fusce sed tempor metus. Proin condimentum turpis at eros posuere, sed vestibulum turpis faucibus. Sed ornare urna odio, vitae suscipit enim tempor eu. Fusce vitae magna ac augue accumsan facilisis. In hac habitasse platea dictumst. Proin vehicula risus sed odio finibus, at semper lectus consequat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Integer neque tortor, lacinia sit amet sagittis eget, scelerisque et nunc. Cras congue luctus cursus. Sed vitae ipsum dui. In non risus porttitor libero dapibus interdum at ut lacus. Sed finibus suscipit rhoncus. Aliquam erat volutpat. Sed nec accumsan dolor.
+  </p>
+</div>
+
+
+
+<link rel="stylesheet" href="../rh-navigation-secondary-dsd-lightdom.css">
+<style>
+   #lipsum {
+    margin-block: 0;
+    margin-inline: auto;
+    padding: var(--rh-space-lg);
+    max-width: 60rem;
+    line-height: var(--rh-line-height-body-text);
+
+    p {
+      margin: var(--rh-space-lg);
+    }
+  }
+</style>
+
+<script type="module">
+  import '@rhds/elements/rh-navigation-secondary-dsd/rh-navigation-secondary-dsd.js';
+  import '@rhds/elements/rh-cta/rh-cta.js';
+  import '@rhds/elements/rh-surface/rh-surface.js';
+</script>
+
+

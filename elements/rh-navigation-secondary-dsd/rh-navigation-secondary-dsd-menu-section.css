@@ -1,0 +1,39 @@
+:host {
+  display: block;
+}
+
+section {
+  & slot[name='header']::slotted(:is(h1,h2,h3,h4,h5,h6)) {
+    font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif) !important;
+    padding: 0 !important;
+    font-size: var(--rh-font-size-body-text-md, 1rem) !important;
+    font-weight: 500 !important;
+    margin: 0 0 var(--rh-space-lg, 16px) !important;
+
+    @container (min-width: 992px) {
+      padding: 0 !important;
+    }
+  }
+
+  & slot[name='links']::slotted(:is(ul, ol)) {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: var(--rh-font-size-body-text-md, 1rem);
+
+    @container (min-width: 992px) {
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+  }
+
+  & slot[name='cta']::slotted(*) {
+    padding: var(--rh-space-xl, 24px) 0 0;
+
+    &:last-of-type {
+      padding: var(--rh-space-xl, 24px) 0;
+    }
+  }
+}
