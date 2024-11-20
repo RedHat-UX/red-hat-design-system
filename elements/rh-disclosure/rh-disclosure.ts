@@ -52,8 +52,21 @@ export class RhDisclosure extends LitElement {
   }
 
   #onKeydown(event: KeyboardEvent): void {
+    const preventEscElements = `
+      input:not([type='hidden']):not([type='radio']):not([inert]):not([inert] *):not([tabindex^='-']):not(:disabled),
+      input[type='radio']:not([inert]):not([inert] *):not([tabindex^='-']):not(:disabled),
+      select:not([inert]):not([inert] *):not([tabindex^='-']):not(:disabled),
+      textarea:not([inert]):not([inert] *):not([tabindex^='-']):not(:disabled),
+      iframe:not([inert]):not([inert] *):not([tabindex^='-']),
+      audio[controls]:not([inert]):not([inert] *):not([tabindex^='-']),
+      video[controls]:not([inert]):not([inert] *):not([tabindex^='-']),
+      [contenteditable]:not([inert]):not([inert] *):not([tabindex^='-'])
+    `;
     if (event.code === 'Escape') {
       event.stopPropagation();
+      if (document.activeElement?.matches(preventEscElements)) {
+        return;
+      }
       this.#closeDetails();
     }
   }
