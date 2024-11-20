@@ -87,7 +87,8 @@
         margin-inline-end: var(--_inline-padding);
         padding-inline: 16px;
 
-        &::marker {
+        &::marker,
+        &::-webkit-details-marker {
           display: none;
         }
       }
