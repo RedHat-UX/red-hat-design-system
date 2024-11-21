@@ -71,6 +71,7 @@ export class RhTable extends LitElement {
     return this.querySelector('[slot="summary"]') as HTMLElement | undefined;
   }
 
+  // eslint-disable-next-line no-unused-private-class-members
   #lightdom = new LightdomCSSController(this, import.meta.url);
 
   #internalColorPalette?: string | null;
