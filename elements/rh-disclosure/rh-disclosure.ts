@@ -69,16 +69,25 @@ export class RhDisclosure extends LitElement {
       iframe:not([inert]):not([inert] *):not([tabindex^='-']),
       audio[controls]:not([inert]):not([inert] *):not([tabindex^='-']),
       video[controls]:not([inert]):not([inert] *):not([tabindex^='-']),
-      [contenteditable]:not([inert]):not([inert] *):not([tabindex^='-'])
+      [contenteditable]:not([inert]):not([inert] *):not([tabindex^='-']),
+      rh-audio-player:not([inert]):not([inert] *):not([tabindex^='-']):not(:disabled),
+      rh-dialog:not([inert]):not([inert] *):not([tabindex^='-']):not(:disabled)
     `;
+
     if (event.code === 'Escape') {
       event.stopPropagation();
-      if (document.activeElement?.matches(preventEscElements)) {
-        return;
+
+      const escapeGuardElement =
+        event.composedPath().reverse().find((element: EventTarget | null) => {
+          return (element instanceof Element && element.matches(preventEscElements));
+        });
+
+      if (!escapeGuardElement) {
+        this.#closeDisclosure();
       }
-      this.#closeDisclosure();
     }
   }
+
 
   #closeDisclosure(): void {
     if (!this.open) {
