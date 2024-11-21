@@ -123,17 +123,21 @@ export const litcssOptions = {
   ],
 };
 
+const imports = {
+  ...await resolveLocal('./lib/**/*.ts'),
+  ...await resolveLocal('./**/*.ts', './elements'),
+};
+
 export default pfeDevServerConfig({
   tsconfig: 'tsconfig.settings.json',
   litcssOptions,
   importMapOptions: {
     typeScript: true,
-    inputMap: {
-      imports: {
-        ...await resolveLocal('./lib/**/*.ts'),
-        ...await resolveLocal('./**/*.ts', './elements'),
-      },
-    },
+    ignore: [
+      /^\./,
+      /^@rhds\/icons/,
+    ],
+    inputMap: { imports },
   },
   middleware: [
     async function(ctx, next) {
@@ -188,5 +192,4 @@ export default pfeDevServerConfig({
     },
   ],
 });
-
 
