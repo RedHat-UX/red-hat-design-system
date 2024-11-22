@@ -18,6 +18,7 @@ export default tseslint.config(
       '**/*.(spec|e2e).js',
       'react',
       'elements/**/*.js',
+      'uxdot/**/*.js',
       'lib/**/*.js',
 
       'docs/demo.js',
@@ -26,6 +27,7 @@ export default tseslint.config(
       'docs/core',
       'docs/components',
       'docs/assets/playgrounds',
+      'docs/_plugins/lit-ssr/worker.js',
       'docs/assets/javascript/elements/uxdot/*.js.map',
       'docs/assets/javascript/elements/uxdot/*.d.ts',
       'docs/assets/javascript/elements/uxdot/*.js',
