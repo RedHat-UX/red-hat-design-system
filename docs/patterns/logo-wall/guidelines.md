@@ -29,20 +29,20 @@ logos.
 
 ### Bordered
 
-<uxdot-example>
+<uxdot-example width-adjustment="1010px">
   <img src="../guidelines-variants-bordered.png"
       alt="An example of a bordered logo wall with 6 logos each inside of a bordered container."
-      width="560"
-      height="55">
+      width="1120"
+      height="110">
 </uxdot-example>
 
 ### Borderless
 
-<uxdot-example>
+<uxdot-example width-adjustment="1010px">
   <img src="../guidelines-variants-borderless.png"
       alt="An example of a borderless logo wall with 6 logos."
-      width="556"
-      height="55">
+      width="1113"
+      height="110">
 </uxdot-example>
 
 ## Layout
@@ -79,7 +79,7 @@ identity by ensuring that their logos meet accessibility standards.
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
-    <uxdot-example slot="image" alignment="left">
+    <uxdot-example slot="image" alignment="left" width-adjustment="556px">
       <img src="../guidelines-bestpractices-contrast-do.svg"
       alt="Examples of two Red Hat logos in dark and light themes against background colors that ensure enough color contrast."
       width="556"
@@ -89,7 +89,7 @@ identity by ensuring that their logos meet accessibility standards.
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="dont">
-    <uxdot-example slot="image" alignment="left">
+    <uxdot-example slot="image" alignment="left" width-adjustment="556px">
       <img src="../guidelines-bestpractices-contrast-dont.svg"
       alt="Examples of two Red Hat logos in dark and light themes against background colors that do not provide enough contrast."
       width="556"
@@ -107,7 +107,7 @@ wall.
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
-    <uxdot-example slot="image" alignment="left">
+    <uxdot-example slot="image" alignment="left" width-adjustment="556px">
       <img src="../guidelines-bestpractices-contrast-do.svg"
       alt="Examples of two Red Hat logos in dark and light themes against background colors that ensure enough color contrast."
       width="556"
@@ -117,7 +117,7 @@ wall.
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="dont">
-    <uxdot-example slot="image" alignment="left">
+    <uxdot-example slot="image" alignment="left" width-adjustment="556px">
       <img src="../guidelines-bestpractices-contrast-dont.svg"
       alt="Examples of two Red Hat logos in dark and light themes against background colors that do not provide enough contrast."
       width="556"
@@ -136,7 +136,7 @@ with this case</rh-alert>
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
-    <uxdot-example slot="image" alignment="left">
+    <uxdot-example slot="image" alignment="left" width-adjustment="556px">
       <img src="../guidelines-bestpractices-sizing-do.png"
       alt="Example of a borderless logo wall with similarly sized logos that represent each partner evenly."
       width="556"
@@ -146,7 +146,7 @@ with this case</rh-alert>
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="dont">
-    <uxdot-example slot="image" alignment="left">
+    <uxdot-example slot="image" alignment="left" width-adjustment="556px">
       <img src="../guidelines-bestpractices-sizing-dont.png"
       alt="Example of a borderless logo wall in which the sizes of logos varies and disproportionately represents each partner."
       width="559"
@@ -160,7 +160,7 @@ with this case</rh-alert>
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
-    <uxdot-example slot="image" alignment="left">
+    <uxdot-example slot="image" alignment="left" width-adjustment="556px">
       <img src="../guidelines-bestpractices-align-do.png"
       alt="Example of a borderless logo wall in which each logo is horizontally and vertically aligned in its container."
       width="556"
@@ -170,7 +170,7 @@ with this case</rh-alert>
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="dont">
-    <uxdot-example slot="image" alignment="left">
+    <uxdot-example slot="image" alignment="left" width-adjustment="556px">
       <img src="../guidelines-bestpractices-align-dont.png"
       alt="Example of a borderless logo wall in which each logo is aligned to the bottom of the container."
       width="556"

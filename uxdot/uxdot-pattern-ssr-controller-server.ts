@@ -1,4 +1,7 @@
 import type { DirectiveResult } from 'lit/directive.js';
+import type { RenderInfo } from '@lit-labs/ssr';
+
+import { URL } from 'node:url';
 
 import { readFile } from 'node:fs/promises';
 import { join, dirname } from 'node:path';
@@ -53,6 +56,10 @@ interface EleventyPageData {
   outputPath: string;
 }
 
+interface RHDSRenderInfo extends RenderInfo {
+  page: EleventyPageData;
+}
+
 export class UxdotPatternSSRControllerServer extends RHDSSSRController {
   declare host: UxdotPattern;
   allContent?: DirectiveResult;
@@ -61,16 +68,13 @@ export class UxdotPatternSSRControllerServer extends RHDSSSRController {
   jsContent?: DirectiveResult;
   hasCss = false;
   hasJs = false;
-  // this is set in the worker
-  page!: EleventyPageData;
 
 
-  async #extractInlineContent(kind: 'js' | 'css', partial: Tools.Node) {
+  async #extractInlineContent(kind: 'js' | 'css', partial: Tools.Node, baseUrl: URL) {
     const prop = kind === 'js' ? 'jsSrc' as const : 'cssSrc' as const;
     const nodePred = kind === 'js' ? isScript
                    : kind === 'css' ? isStyle
                    : () => false;
-    const baseUrl = pathToFileURL(this.page.inputPath);
     let content = !this.host[prop] ? ''
                   : await readFile(new URL(this.host[prop], baseUrl.href), 'utf-8');
     for (const scriptTag of Tools.queryAll(partial, node =>
@@ -81,12 +85,12 @@ export class UxdotPatternSSRControllerServer extends RHDSSSRController {
     return content.trim();
   }
 
-  async #getPatternContent() {
+  async #getPatternContent(renderInfo: RHDSRenderInfo) {
     const { src } = this.host;
     if (!src) {
       return '';
     } else {
-      return readFile(join(dirname(this.page.inputPath), src), 'utf8');
+      return readFile(join(dirname(renderInfo.page.inputPath), src), 'utf8');
     }
   }
 
@@ -114,16 +118,17 @@ export class UxdotPatternSSRControllerServer extends RHDSSSRController {
     return pairedShortcode;
   }
 
-  async ssrSetup() {
+  async ssrSetup(renderInfo: RHDSRenderInfo) {
     HighlightPairedShortcode ||= await this.#loadHighlighter();
-    const allContent = await this.#getPatternContent();
+    const allContent = await this.#getPatternContent(renderInfo);
     const partial = parseFragment(allContent);
+    const baseUrl = pathToFileURL(renderInfo.page.inputPath);
 
     // NB: the css and js content functions *mutate* the partial,
     //     so it's important that the HTML content is serialized last, and that
     //     the entire content is printed as the runtime portion of the pattern.
-    const cssContent = await this.#extractInlineContent('css', partial);
-    const jsContent = await this.#extractInlineContent('js', partial);
+    const cssContent = await this.#extractInlineContent('css', partial, baseUrl);
+    const jsContent = await this.#extractInlineContent('js', partial, baseUrl);
     const htmlContent = serialize(partial).trim();
 
     this.hasCss = !!cssContent.length;
