@@ -153,37 +153,74 @@ Columns can be sorted in ascending or descending order. Sorting controls are loc
 
 ## Best practices
 
-### One-column table
+### Number of columns
 
-A table should display at least two columns.
+<uxdot-best-practice variant="do">
+  <uxdot-example slot="image" width-adjustment="1012px">
+    <img src="../table-best-practices-col-number-do.svg" 
+        alt="Table with two columns"
+        width="1012"
+        height="197">
+  </uxdot-example>
 
-<uxdot-example width-adjustment="872px" danger>
-  <img src="../table-best-practices-1.png"
-        alt="Image of table with one column which is incorrect usage"
-        width="872"
-        height="224">
-</uxdot-example>
+  <p>A table should display at least two columns.</p>
+</uxdot-best-practice>
 
+<uxdot-best-practice variant="dont">
+  <uxdot-example slot="image" width-adjustment="1012px">
+    <img  src="../table-best-practices-col-number-dont.svg" 
+        alt="Table with one column"
+        width="1012"
+        height="197">
+  </uxdot-example>
 
-### Large cell height
+  <p>Avoid having a table with only one column.</p>
+</uxdot-best-practice>
 
-In some edge cases, a table can have large cell height if there are more element types than just text.
+### Cell padding and height
 
-<uxdot-example width-adjustment="872px" danger>
-  <img src="../table-best-practices-2.png"
-        alt="Image of table with lots of vertical padding which is incorrect usage"
-        width="872"
-        height="320">
-</uxdot-example>
+<uxdot-best-practice variant="do">
+  <uxdot-example slot="image" width-adjustment="1012px">
+    <img src="../table-best-practices-cell-height-do.svg" 
+        alt="Table with four columns and three rows that use the default cell padding"
+        width="1012"
+        height="141">
+  </uxdot-example>
 
+  <p>Keep the table’s default padding to make it easy for users to view the table’s content. In some edge cases, a table can have large cell height if there are more element types than just text.</p>
+</uxdot-best-practice>
 
-### Wrong size
+<uxdot-best-practice variant="dont">
+  <uxdot-example slot="image" width-adjustment="1012px">
+    <img  src="../table-best-practices-cell-height-dont.svg" 
+        alt="Table with four columns and three rows, with large cell padding"
+        width="1012"
+        height="269">
+  </uxdot-example>
 
-Do not use the small viewport size table on large viewports.
+  <p>Don’t add extra padding to increase the cell height if it’s not necessary for the content.</p>
+</uxdot-best-practice>
 
-<uxdot-example width-adjustment="872px" danger>
-  <img src="../table-best-practices-3.png"
-        alt="Image of small viewport table used on a large viewport which is incorrect usage"
-        width="872"
-        height="336">
-</uxdot-example>
+### Table size
+
+<uxdot-best-practice variant="do">
+  <uxdot-example slot="image" width-adjustment="360px">
+    <img src="../table-best-practices-size-do.svg" 
+        alt="small viewport version of the table in a 360 pixel container"
+        width="360"
+        height="384">
+  </uxdot-example>
+
+  <p>Use the right configuration for the table’s container or viewport size.</p>
+</uxdot-best-practice>
+
+<uxdot-best-practice variant="dont">
+  <uxdot-example slot="image" width-adjustment="1012px">
+    <img  src="../table-best-practices-size-dont.svg" 
+        alt="small viewport version of the table in a 1012 pixel container"
+        width="1012"
+        height="384">
+  </uxdot-example>
+
+  <p>Do not use the small viewport size configuration in large containers or viewports.</p>
+</uxdot-best-practice>
