@@ -61,6 +61,7 @@ export class RhTooltip extends LitElement {
     super.connectedCallback();
     ENTER_EVENTS.forEach(evt => this.addEventListener(evt, this.show));
     EXIT_EVENTS.forEach(evt => this.addEventListener(evt, this.hide));
+    document.addEventListener('keydown', this.#onKeydown);
   }
 
   override render() {
@@ -100,6 +101,12 @@ export class RhTooltip extends LitElement {
   async hide() {
     await this.#float.hide();
   }
+
+  #onKeydown = (event: KeyboardEvent): void => {
+    if (event.key === 'Escape') {
+      this.hide();
+    }
+  };
 }
 
 declare global {
