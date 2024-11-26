@@ -88,12 +88,6 @@ span {
   text-align: start;
 }
 
-[part='container'] {
-  display: flex;
-  gap: var(--rh-space-xl, 24px);
-  container-type: inline-size;
-}
-
 #header-container {
   display: flex;
   gap: var(--rh-space-md, 8px);
@@ -121,7 +115,6 @@ span {
   rotate: calc(var(--_isRTL, -1) * 180deg);
 }
 
-#button:hover,
 #button:active,
 #button:focus {
   background-color: var(--rh-color-surface);
@@ -131,6 +124,11 @@ span {
 #button:focus span,
 #button:active span {
   color: var(--_active-text-color);
+}
+
+#button:hover {
+  &.light { background-color: var(--rh-color-surface-lighter); }
+  &.dark { background-color: var(--rh-color-surface-dark-alt); }
 }
 
 .toggle,
