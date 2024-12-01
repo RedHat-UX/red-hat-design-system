@@ -81,7 +81,7 @@ export class RhAccordionHeader extends LitElement {
   }
 
   render() {
-    const { expanded, on = '' } = this;
+    const { expanded, on = 'light' } = this;
     const { accents, large = false } = this.ctx ?? {};
     const rtl = this.#dir.dir === 'rtl';
     return html`
