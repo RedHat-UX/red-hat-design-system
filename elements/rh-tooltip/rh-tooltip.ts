@@ -6,7 +6,6 @@ import { styleMap } from 'lit/directives/style-map.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
-import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import {
   FloatingDOMController,
   type Placement,
@@ -58,8 +57,6 @@ export class RhTooltip extends LitElement {
 
   #initialized = false;
 
-  #tooltipContentID = getRandomId('tooltip-content');
-
   override connectedCallback(): void {
     super.connectedCallback();
     ENTER_EVENTS.forEach(evt => this.addEventListener(evt, this.show));
@@ -80,10 +77,10 @@ export class RhTooltip extends LitElement {
                                [anchor]: !!anchor,
                                [alignment]: !!alignment })}">
         <div class="display-c">
-          <slot id="invoker" @slotchange=${this.#handleInvokerSlotChange}></slot>
+          <slot id="invoker"></slot>
         </div>
         <div class="display-c" aria-hidden="${String(!open) as 'true' | 'false'}">
-          <slot id="tooltip" name="content" @slotchange=${this.#handleTooltipSlotChange}>${this.content}</slot>
+          <slot id="tooltip" name="content">${this.content}</slot>
         </div>
       </div>
     `;
@@ -110,69 +107,6 @@ export class RhTooltip extends LitElement {
       this.hide();
     }
   };
-
-  #handleInvokerSlotChange(): void {
-    const invokerSlot = this.shadowRoot?.querySelector<HTMLSlotElement>('#invoker');
-    if (!invokerSlot) {
-      return;
-    }
-
-    const assignedNodes = invokerSlot.assignedElements({ flatten: true });
-
-    const focusableSelector = `
-      a[href]:not([inert]):not([inert] *):not([tabindex^="-"]),
-      input:not([type="hidden"]):not([type="radio"]):not([inert]):not([inert] *):not([tabindex^="-"]):not(:disabled),
-      input[type="radio"]:not([inert]):not([inert] *):not([tabindex^="-"]):not(:disabled),
-      select:not([inert]):not([inert] *):not([tabindex^="-"]):not(:disabled),
-      textarea:not([inert]):not([inert] *):not([tabindex^="-"]):not(:disabled),
-      button:not([inert]):not([inert] *):not([tabindex^="-"]):not(:disabled)
-    `;
-
-    const findFocusableElement = (node: Element): HTMLElement | null => {
-      if (node.matches(focusableSelector)) {
-        return node as HTMLElement;
-      }
-
-      if (node.tagName.toLowerCase().startsWith('rh-')) {
-        setTimeout(() => {
-          const shadowFocusable = node.shadowRoot?.querySelector(focusableSelector);
-          shadowFocusable?.setAttribute('aria-describedby', this.#tooltipContentID);
-          return;
-        }, 50);
-      }
-
-      return null;
-    };
-
-    let invokerElement: HTMLElement | undefined;
-
-    for (const node of assignedNodes) {
-      const focusableElement = findFocusableElement(node);
-      if (focusableElement) {
-        invokerElement = focusableElement;
-        break;
-      }
-    }
-
-    if (invokerElement) {
-      invokerElement.setAttribute('aria-describedby', this.#tooltipContentID);
-    }
-  }
-
-  #handleTooltipSlotChange(): void {
-    const tooltipSlot = this.shadowRoot?.querySelector<HTMLSlotElement>('#tooltip');
-    if (!tooltipSlot) {
-      return;
-    }
-
-    const assignedNodes = tooltipSlot.assignedElements({ flatten: true });
-    const tooltipContent = assignedNodes[0] as HTMLElement | undefined;
-
-    if (tooltipContent) {
-      tooltipContent.setAttribute('id', this.#tooltipContentID);
-      tooltipContent.setAttribute('role', 'tooltip');
-    }
-  }
 }
 
 declare global {
