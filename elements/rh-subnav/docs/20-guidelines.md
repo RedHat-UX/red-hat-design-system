@@ -225,30 +225,6 @@ labels.
 
 <uxdot-best-practice variant="dont">
   <uxdot-example slot="image" width-adjustment="1012px">
-    <img  src="../subnav-best-practices-nav-order-dont" 
-        alt="Subnavigation positioned above primary nav"
-        width="1012"
-        height="134">
-  </uxdot-example>
-
-  <p>Do not position the subnavigation above the primary navigation.</p>
-</uxdot-best-practice>
-
-### Navigation order
-
-<uxdot-best-practice variant="do">
-  <uxdot-example slot="image" width-adjustment="1012px">
-    <img src="../subnav-best-practices-nav-order-do.svg" 
-        alt="Subnavigation positioned below primary nav"
-        width="1012"
-        height="134">
-  </uxdot-example>
-
-  <p>Subnavigation should always appear below the primary navigation.</p>
-</uxdot-best-practice>
-
-<uxdot-best-practice variant="dont">
-  <uxdot-example slot="image" width-adjustment="1012px">
     <img  src="../subnav-best-practices-nav-order-dont.svg" 
         alt="Subnavigation positioned above primary nav"
         width="1012"
@@ -262,7 +238,7 @@ labels.
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
-    <uxdot-example slot="image" color-palette="darkest" width-adjustment="418px">
+    <uxdot-example slot="image" width-adjustment="418px">
       <img src="../subnav-best-practices-min-links-do.svg"
             alt="Subnavigation with two links"
             width="418"
@@ -272,7 +248,7 @@ labels.
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="dont">
-    <uxdot-example slot="image" color-palette="darkest" width-adjustment="418px">
+    <uxdot-example slot="image" width-adjustment="418px">
       <img src="../subnav-best-practices-min-links-dont.svg"
             alt="Subnavigation with one link"
             width="418"
@@ -292,7 +268,7 @@ labels.
         height="56">
   </uxdot-example>
 
-  <p>Use a reasonable number of links.</p>
+  <p>There is no specific maximum number of links, but use a reasonable number of links.</p>
 </uxdot-best-practice>
 
 <uxdot-best-practice variant="dont">
@@ -351,5 +327,5 @@ labels.
         height="56">
   </uxdot-example>
 
-  <p>Do not add extra spacing or stretch the width of links.</p>
+  <p>Do not make overflow buttons visible if all links can comfortably fit and are visible.</p>
 </uxdot-best-practice>
