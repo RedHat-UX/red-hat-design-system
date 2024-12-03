@@ -1,4 +1,4 @@
-import { html, LitElement } from 'lit';
+import { html, LitElement, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -43,6 +43,19 @@ export class RhTooltip extends LitElement {
 
   static readonly styles = [styles];
 
+  private static instances = new Set<RhTooltip>();
+
+  static {
+    if (!isServer) {
+      globalThis.addEventListener('keydown', (event: KeyboardEvent) => {
+        const { instances } = RhTooltip;
+        for (const instance of instances) {
+          instance.#onKeydown(event);
+        }
+      });
+    }
+  }
+
   /** The position of the tooltip, relative to the invoking content */
   @property() position: Placement = 'top';
 
@@ -61,7 +74,7 @@ export class RhTooltip extends LitElement {
     super.connectedCallback();
     ENTER_EVENTS.forEach(evt => this.addEventListener(evt, this.show));
     EXIT_EVENTS.forEach(evt => this.addEventListener(evt, this.hide));
-    document.addEventListener('keydown', this.#onKeydown);
+    RhTooltip.instances.add(this);
   }
 
   override render() {
