@@ -74,11 +74,12 @@ export class ColorContextConsumer<
       // This is definitely overkill, but it's the only
       // way we've found so far to work around lit-ssr hydration woes
       const original = this.host[this.#propertyName] as keyof T;
-      this.hostConnected();
-      await this.host.updateComplete;
-      this.#propertyValue = '__LIT_SSR_WORKAROUND__' as ColorTheme;
-      await this.host.updateComplete;
-      this.#propertyValue = original as ColorTheme;
+      if (original) {
+        await this.host.updateComplete;
+        this.#propertyValue = '__LIT_SSR_WORKAROUND__' as ColorTheme;
+        await this.host.updateComplete;
+        this.#propertyValue = original as ColorTheme;
+      }
     }
   }
 
