@@ -14,6 +14,7 @@ import { query } from 'lit/decorators/query.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 import '@rhds/elements/rh-surface/rh-surface.js';
+import '@rhds/elements/rh-button/rh-button.js';
 
 export class DialogCancelEvent extends Event {
   constructor() {
@@ -60,11 +61,13 @@ async function pauseYoutube(iframe: HTMLIFrameElement) {
  * @cssprop {<number>} --rh-dialog-video-aspect-ratio
  * @cssprop {<color>} [--rh-dialog-close-button-color=var(--rh-color-icon-secondary-on-dark, #ffffff)]
  *           Sets the dialog close button color.
+ * @cssprop {<color>} [--rh-dialog-backdrop-background-color=rgba(3, 3, 3, 0.62)]
+ *          Sets the background color for the native HTML dialog element's `backdrop` pseudo-element
+ * @cssprop {<color>} [--rh-dialog-overlay-background-color=transparent]
+ *          Deprecated. Sets the background color for the `#overlay` `<div>`. Use `--rh-dialog-backdrop-background-color` instead.
  */
 @customElement('rh-dialog')
 export class RhDialog extends LitElement {
-  static readonly version = '{{version}}';
-
   static readonly styles = [styles];
 
   protected static closeOnOutsideClick = true;
@@ -80,11 +83,19 @@ export class RhDialog extends LitElement {
    */
   @property({ reflect: true }) position?: 'top';
 
+  /**
+   * Use `accessible-label="My custom label"` to add an `aria-label` to the `<dialog>` element.
+   * Defaults to the name of the dialog trigger if no attribute is set and no headings exist in the modal.
+   * See Dialog's Accessibility page for more info.
+   */
+  @property({ attribute: 'accessible-label' }) accessibleLabel?: string;
+
   @property({ type: Boolean, reflect: true }) open = false;
 
   /** Optional ID of the trigger element */
   @property() trigger?: string;
 
+  /** Use `type="video"` to embed a video player into a dialog. */
   @property({ reflect: true }) type?: 'video';
 
   /** @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/returnValue */
@@ -92,9 +103,13 @@ export class RhDialog extends LitElement {
 
   #screenSize = new ScreenSizeController(this);
 
-  @query('#overlay') private overlay?: HTMLElement | null;
-  @query('#dialog') private dialog?: HTMLElement | null;
-  @query('#close-button') private closeButton?: HTMLElement | null;
+  @query('#dialog') private dialog!: HTMLDialogElement;
+  @query('#content') private content!: HTMLElement;
+  @query('#close-button') private closeButton!: HTMLElement;
+
+  get videoColorPalette() {
+    return this.type === 'video' ? 'dark' : 'lightest';
+  }
 
   #headerId = getRandomId();
   #triggerElement: HTMLElement | null = null;
@@ -102,69 +117,63 @@ export class RhDialog extends LitElement {
   #body: Element[] = [];
   #headings: Element[] = [];
   #cancelling = false;
+  #lastTabbable: HTMLElement = this.closeButton;
 
   #slots = new SlotController(this, null, 'header', 'description', 'footer');
 
   connectedCallback() {
     super.connectedCallback();
-    this.addEventListener('keydown', this.onKeydown);
+    this.addEventListener('keydown', this.#onKeyDown);
     this.addEventListener('click', this.onClick);
-  }
-
-  render() {
-    const headerId = (this.#header || this.#headings.length) ? this.#headerId : undefined;
-    const headerLabel = this.#triggerElement ? this.#triggerElement.innerText : undefined;
-    const hasHeader = this.#slots.hasSlotted('header');
-    const hasDescription = this.#slots.hasSlotted('description');
-    const hasFooter = this.#slots.hasSlotted('footer');
-
-    const { mobile } = this.#screenSize;
-    return html`
-      <rh-surface id="rhds-wrapper"
-                           class="${classMap({ mobile })}"
-                           color-palette="lightest">
-        <section ?hidden=${!this.open}>
-          <div id="overlay" part="overlay" ?hidden=${!this.open}></div>
-          <div id="dialog"
-               part="dialog"
-               tabindex="0"
-               role="dialog"
-               aria-labelledby=${ifDefined(headerId)}
-               aria-label=${ifDefined(headerLabel)}
-               ?hidden="${!this.open}">
-            <div id="container">
-              <div id="content" part="content" class=${classMap({ hasHeader, hasDescription, hasFooter })}>
-                <header part="header">
-                  <slot name="header"></slot>
-                  <div part="description" ?hidden=${!hasDescription}>
-                    <slot name="description"></slot>
-                  </div>
-                </header>
-                <slot></slot>
-                <footer ?hidden=${!hasFooter} part="footer">
-                  <slot name="footer"></slot>
-                </footer>
-              </div>
-              <button id="close-button"
-                      part="close-button"
-                      aria-label="Close dialog"
-                      @keydown=${this.onKeydown}
-                      @click=${this.close}>
-                <svg fill="currentColor" viewBox="0 0 352 512">
-                  <path d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path>
-                </svg>
-              </button>
-            </div>
-          </div>
-        </section>
-      </rh-surface>
-    `;
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
-    this.removeEventListener('keydown', this.onKeydown);
+    this.removeEventListener('keydown', this.#onKeyDown);
     this.#triggerElement?.removeEventListener('click', this.onTriggerClick);
+  }
+
+  render() {
+    const headerId = (this.#header || this.#headings.length) ? this.#headerId : undefined;
+    const triggerLabel = this.#triggerElement ? this.#triggerElement.innerText : undefined;
+    const hasHeader = this.#slots.hasSlotted('header');
+    const hasDescription = this.#slots.hasSlotted('description');
+    const hasFooter = this.#slots.hasSlotted('footer');
+    const { mobile } = this.#screenSize;
+    return html`
+      <rh-surface id="rhds-wrapper"
+                  class="${classMap({ mobile })}"
+                  color-palette="${this.videoColorPalette}">
+        <!-- @deprecated: 👇 use public vars for the backdrop pseudo-element instead. -->
+        <div id="overlay" part="overlay" ?hidden=${!this.open}></div>
+        <dialog id="dialog"
+                part="dialog"
+                aria-labelledby=${ifDefined(this.accessibleLabel ? undefined : headerId)}
+                aria-label=${ifDefined(this.accessibleLabel ? this.accessibleLabel : (!headerId ? triggerLabel : undefined))}>
+          <div id="content" part="content" class=${classMap({ hasHeader, hasDescription, hasFooter })}>
+            <rh-button variant="close"
+                       id="close-button"
+                       part="close-button"
+                       type="button"
+                       @click=${this.close}>
+              <span class="visually-hidden">Close Dialog</span>
+            </rh-button>
+            <div part="header" ?hidden=${!hasHeader}>
+              <slot name="header"></slot>
+              <div part="description" ?hidden=${!hasDescription}>
+                <slot name="description"></slot>
+              </div>
+            </div>
+            <div part="body">
+              <slot></slot>
+            </div>
+            <div ?hidden=${!hasFooter} part="footer">
+              <slot name="footer"></slot>
+            </div>
+          </div>
+        </dialog>
+      </rh-surface>
+    `;
   }
 
   @initializer()
@@ -207,8 +216,8 @@ export class RhDialog extends LitElement {
       // This prevents background scroll
       document.body.style.overflow = 'hidden';
       await this.updateComplete;
-      // Set the focus to the container
-      this.dialog?.focus();
+      // <dialog>'s automatically set focus to the first focusable element in the modal,
+      // no need to set it here.
       this.dispatchEvent(new DialogOpenEvent(this.#triggerElement));
     } else {
       // Return scrollability
@@ -217,10 +226,6 @@ export class RhDialog extends LitElement {
       const event = this.#cancelling ? new DialogCancelEvent() : new DialogCloseEvent();
 
       await this.updateComplete;
-
-      if (this.#triggerElement) {
-        this.#triggerElement.focus();
-      }
 
       this.dispatchEvent(event);
     }
@@ -241,29 +246,73 @@ export class RhDialog extends LitElement {
   }
 
   @bound private onClick(event: MouseEvent) {
-    const { open, overlay, dialog } = this;
+    const { open, content } = this;
     if (open) {
       const path = event.composedPath();
       const { closeOnOutsideClick } = this.constructor as typeof RhDialog;
 
-      if (closeOnOutsideClick && path.includes(overlay!) && !path.includes(dialog!)) {
+      if (closeOnOutsideClick && !path.includes(content!)) {
         event.preventDefault();
         this.cancel();
       }
     }
   }
 
-  @bound private onKeydown(event: KeyboardEvent) {
+  #trapFocus() {
+    // https://github.com/KittyGiraudel/focusable-selectors
+    // TODO: Add RHDS focusable elements (?)
+    const notInert = ':not([inert]):not([inert] *)';
+    const notNegTabIndex = ':not([tabindex^="-"])';
+    const notDisabled = ':not(:disabled)';
+    const focusableSelectorList = [
+      `a[href]${notInert}${notNegTabIndex}`,
+      `area[href]${notInert}${notNegTabIndex}`,
+      `input:not([type="hidden"]):not([type="radio"])${notInert}${notNegTabIndex}${notDisabled}`,
+      `input[type="radio"]${notInert}${notNegTabIndex}${notDisabled}`,
+      `select${notInert}${notNegTabIndex}${notDisabled}`,
+      `textarea${notInert}${notNegTabIndex}${notDisabled}`,
+      `button${notInert}${notNegTabIndex}${notDisabled}`,
+      `details${notInert} > summary:first-of-type${notNegTabIndex}`,
+      `details:not(:has(> summary))${notInert}${notNegTabIndex}`,
+      `iframe${notInert}${notNegTabIndex}`,
+      `audio[controls]${notInert}${notNegTabIndex}`,
+      `video[controls]${notInert}${notNegTabIndex}`,
+      `[contenteditable]${notInert}${notNegTabIndex}`,
+      `[tabindex]${notInert}${notNegTabIndex}`,
+    ];
+
+    const focusableSlottedElements =
+      this.querySelectorAll<HTMLElement>(focusableSelectorList.join(','));
+    const hasLastElement = focusableSlottedElements.length > 0;
+    this.#lastTabbable = hasLastElement ?
+          focusableSlottedElements[focusableSlottedElements.length - 1] : this.closeButton;
+  }
+
+  #handleTab(event: KeyboardEvent) {
+    // No focusable elements except close button:
+    if (this.#lastTabbable === this.closeButton) {
+      event.preventDefault();
+      this.closeButton.focus();
+      return;
+    }
+    // With focusable elements in dialog:
+    if (document.activeElement === this.#lastTabbable) {
+      event.preventDefault();
+      this.closeButton.focus();
+    }
+  }
+
+  #handleShiftTab(event: KeyboardEvent) {
+    if (document.activeElement === this && this.shadowRoot?.activeElement === this.closeButton) {
+      event.preventDefault();
+      this.#lastTabbable.focus();
+    }
+  }
+
+  #onKeyDown(event: KeyboardEvent) {
     switch (event.key) {
-      case 'Tab':
-        if (event.target === this.closeButton) {
-          event.preventDefault();
-          this.dialog?.focus();
-        }
-        return;
       case 'Escape':
       case 'Esc':
-        event.preventDefault();
         this.cancel();
         return;
       case 'Enter':
@@ -272,11 +321,18 @@ export class RhDialog extends LitElement {
           this.showModal();
         }
         return;
+      case 'Tab':
+        if (event.shiftKey) {
+          this.#handleShiftTab(event);
+          return;
+        }
+        this.#handleTab(event);
     }
   }
 
   private async cancel() {
     this.#cancelling = true;
+    this.close();
     this.open = false;
     await this.updateComplete;
     this.#cancelling = false;
@@ -294,7 +350,12 @@ export class RhDialog extends LitElement {
    * ```
    */
   @bound toggle() {
-    this.open = !this.open;
+    if (!this.open) {
+      this.showModal();
+      this.open = true;
+    } else {
+      this.close();
+    }
   }
 
   /**
@@ -304,6 +365,8 @@ export class RhDialog extends LitElement {
    * ```
    */
   @bound show() {
+    this.dialog?.showModal();
+    this.#trapFocus();
     this.open = true;
   }
 
@@ -324,6 +387,7 @@ export class RhDialog extends LitElement {
       this.returnValue = returnValue;
     }
 
+    this.dialog?.close();
     this.open = false;
   }
 }

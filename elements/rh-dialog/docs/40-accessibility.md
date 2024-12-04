@@ -63,8 +63,24 @@ Only the close button and any interactive elements are selectable.
 
 ### Backdrop
 
-A dialog will not close by users clicking or tapping the backdrop or outside of the container.
+A dialog will close by users clicking or tapping the backdrop or outside of the container.
 
+
+## Accessible labels
+
+Each dialog needs an accessible name. If a dialog has a heading tag in the `header` or default slot, this component will automatically apply an appropriate ID to the heading tag and an `aria-labelledby` attribute to the `<dialog>`.
+
+Users can optionally provide an `accessible-label` attribute which overrides the built-in `aria-labelledby` functionality:
+
+```html
+<rh-dialog accessible-label="Page Properties" trigger="first-modal-trigger">
+  ...
+</rh-dialog>
+```
+
+The `accessible-label` attribute assigns an `aria-label` to the `<dialog>` element.
+
+If neither an `accessible-label` nor any headings exist, the `aria-label` on the `<dialog>` will default to the text of the dialog's trigger.
 
 
 ## Additional guidelines
