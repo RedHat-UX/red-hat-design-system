@@ -10,6 +10,7 @@ tokenSearch: true
 
 <script type="module" data-helmet>
   import '@rhds/elements/rh-tile/rh-tile.js';
+  import '@rhds/elements/rh-card/rh-card.js';
   import '@rhds/elements/rh-code-block/rh-code-block.js';
 </script>
 
