@@ -1,5 +1,13 @@
+<script type="module" data-helmet>
+  import '@uxdot/elements/uxdot-masthead.js';
+</script>
+
 <uxdot-masthead role="banner">
-  <button slot="hamburger" id="hamburger" aria-controls="sidebar" aria-expanded="false" aria-label="Expand Main Navigation">
+  <button slot="hamburger"
+          id="hamburger"
+          aria-controls="sidebar"
+          aria-expanded="false"
+          aria-label="Expand Main Navigation">
     <rh-icon set="ui" icon="menu-bars" size="lg"></rh-icon>
   </button>
   <a href="/" slot="logo">
@@ -9,5 +17,8 @@
     <span class="display-xs">Contribute on Github</span>
     <rh-icon set="social" icon="github" size="lg"></rh-icon>
   </a>
-  <a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v{{ pkg.version }}" slot="links" title="Version {{pkg.version}}" aria-label="Version {{pkg.version}}">v{{ pkg.version }}</a>
+  <a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v{{ pkg.version }}"
+     slot="links"
+     title="Version {{pkg.version}}"
+     aria-label="Version {{pkg.version}}">v{{ pkg.version }}</a>
 </uxdot-masthead>

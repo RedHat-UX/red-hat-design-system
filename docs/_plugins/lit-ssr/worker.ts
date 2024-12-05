@@ -26,6 +26,9 @@ const { imports, tsconfig } = Piscina.workerData as WorkerInitData;
 registerTS({ tsconfig });
 register('./lit-css-node.ts', import.meta.url);
 
+// @ts-expect-error: DOM shim
+globalThis.ElementInternals = class ElementInternals {};
+
 async function importModule(bareSpec: string) {
   const spec = pathToFileURL(resolve(process.cwd(), bareSpec)).href.replace('.js', '.ts');
   await import(spec);
