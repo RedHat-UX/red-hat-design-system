@@ -56,11 +56,6 @@
   position: relative;
 }
 
-:host([width]) [part='dialog'],
-:host([variant]) [part='dialog'] {
-  margin-inline: 0;
-}
-
 :host([width='small']) [part='dialog'],
 :host([variant='small']) [part='dialog'] {
   --_box-width: 35rem;
