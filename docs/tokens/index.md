@@ -15,7 +15,7 @@ tokenSearch: true
 </script>
 
 <style data-helmet>
-.page-overvie .container .grid {
+  .page-overvie .container .grid {
     margin-block: var(--rh-space--2xl, 32px);
   }
 
@@ -26,6 +26,10 @@ tokenSearch: true
   rh-tile [slot="headline"] h3,
   rh-tile [slot="image"] {
      margin-block: 0 !important;
+  }
+
+  rh-card {
+    height: auto;
   }
 </style>
 
@@ -52,13 +56,13 @@ To install design tokens, please visit our dedicated repo for instructions.
 
 ## Types of tokens
 
-<div class="grid xs-two-columns sm-three-columns">
+<div id="token-types" class="grid xs-two-columns sm-three-columns">
   <rh-card>
     <h3 slot="header">Global tokens</h3>
     <p>Global tokens represent the foundations of our design language and should
     have context-agnostic names. These can be used and are inherited by other
     token types.</p>
-    <p>Example: <code>--rh-brand-red-500</code></p>
+    <p>Example:<br><code>--rh-brand-red-500</code></p>
   </rh-card>
 
   <rh-card>
@@ -66,7 +70,7 @@ To install design tokens, please visit our dedicated repo for instructions.
     <p>Semantic tokens represent context or abstraction. They communicate the purpose
     of a token and are effective when a value with a single intent is used
     multiple times.</p>
-    <p>Example: <code>--rh-color-surface-lightest</code></p>
+    <p>Example:<br><code>--rh-color-surface-lightest</code></p>
   </rh-card>
 
   <rh-card>
@@ -74,7 +78,7 @@ To install design tokens, please visit our dedicated repo for instructions.
     <p>Element tokens link semantic tokens to specific elements. They are
     prefixed with the element name and ship in the @rhds/elements package,
     rather than @rhds/tokens.</p>
-    <p>Example: <code>--rh-cta-color-primary</code></p>
+    <p>Example:<br><code>--rh-cta-color-primary</code></p>
   </rh-card>
 </div>
 
