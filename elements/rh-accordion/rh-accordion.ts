@@ -17,6 +17,9 @@ import { RhAccordionPanel } from './rh-accordion-panel.js';
 
 import { context, type RhAccordionContext } from './context.js';
 
+export * from './rh-accordion-header.js';
+export * from './rh-accordion-panel.js';
+
 import styles from './rh-accordion.css';
 
 export class AccordionExpandEvent extends ComposedEvent {
@@ -111,16 +114,6 @@ export class RhAccordion extends LitElement {
 
   set expandedIndex(value) {
     this.#expandedIndex = value;
-    this.#expanded = !!this.#expandedIndex.length;
-    this.headers.forEach((header, i) => {
-      const expanded = this.#expandedIndexSet.has(i);
-      header.expanded = expanded;
-      const panel = this.panels[i];
-      if (panel) {
-        panel.expanded = expanded;
-        panel.hidden = !expanded;
-      }
-    });
   }
 
   /** All headers for this accordion */
@@ -170,14 +163,14 @@ export class RhAccordion extends LitElement {
     return c && results.every(Boolean);
   }
 
-  override firstUpdated() {
-    this.headers.forEach((header, index) => {
-      if (header.expanded) {
-        this.#expandedIndexSet.add(index);
+  @observes('expandedIndex')
+  private updateExpanded() {
+    this.#expandedIndex.forEach(headerIndex => {
+      if (!this.headers[headerIndex]) {
+        return;
       }
+      this.#expand(headerIndex);
     });
-    this.expandedIndex = [...this.#expandedIndexSet];
-    this.#expanded = !!this.#expandedIndex.length;
   }
 
   @observes('accents')
@@ -205,25 +198,47 @@ export class RhAccordion extends LitElement {
 
   #expand(index: number) {
     // If this index is not already listed in the expandedSets array, add it
-    this.expandedIndex = [...this.#expandedIndexSet.add(index)];
+    if (this.#expandedIndexSet.has(index)) {
+      return;
+    }
+
+    this.#expandedIndexSet.add(index);
+
+    const header = this.headers[index];
+    const panel = this.panels[index];
+
+    if (header && panel) {
+      header.expanded = true;
+      panel.expanded = true;
+    }
   }
 
   #collapse(index: number) {
-    if (this.#expandedIndexSet.delete(index)) {
-      this.expandedIndex = [...this.#expandedIndexSet];
+    if (!this.#expandedIndexSet.has(index)) {
+      return;
     }
+
+    const header = this.headers[index];
+    const panel = this.panels[index];
+    if (header && panel) {
+      header.expanded = false;
+      panel.expanded = false;
+    }
+    this.#expandedIndexSet.delete(index);
   }
 
   #onChange(event: AccordionHeaderChangeEvent) {
     if (RhAccordion.isAccordionChangeEvent(event)) {
       const index = this.#getIndex(event.target);
+
       if (event.expanded) {
-        this.expand(index, event.accordion);
-      } else {
-        this.collapse(index);
+        this.#expand(index);
+      }
+
+      if (!event.expanded) {
+        this.#collapse(index);
       }
     }
-    this.requestUpdate('expandedIndex');
   }
 
   #allHeaders(accordion: RhAccordion = this): RhAccordionHeader[] {
@@ -279,9 +294,9 @@ export class RhAccordion extends LitElement {
     const header = headers[index];
 
     if (!header.expanded) {
-      await this.expand(index);
+      await this.#expand(index);
     } else {
-      await this.collapse(index);
+      await this.#collapse(index);
     }
   }
 
