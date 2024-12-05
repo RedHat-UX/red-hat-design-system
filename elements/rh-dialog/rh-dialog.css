@@ -52,8 +52,7 @@
   max-inline-size: var(--_box-width, min(90%, 1140px));
   overflow-y: auto;
   overscroll-behavior: contain;
-  padding: var(--rh-space-xl, 24px);
-  padding-block-end: var(--rh-space-2xl, 32px); /* NOTE: don't cut off box-shadow at the bottom */
+  padding: 0;
   position: relative;
 }
 
@@ -77,6 +76,10 @@
   --_box-width: 70rem;
 }
 
+[part='content'] {
+  padding: var(--rh-space-xl, 24px);
+}
+
 [part='header'] {
   background-color: var(--rh-color-surface);
   padding-block-end: var(--rh-space-sm, 6px);
@@ -89,7 +92,7 @@
 }
 
 @media (min-width: 1200px) {
-  [part='dialog'] {
+  [part='content'] {
     padding: var(--rh-space-2xl, 32px);
   }
 

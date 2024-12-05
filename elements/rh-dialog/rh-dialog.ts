@@ -107,10 +107,6 @@ export class RhDialog extends LitElement {
   @query('#content') private content!: HTMLElement;
   @query('#close-button') private closeButton!: HTMLElement;
 
-  get videoColorPalette() {
-    return this.type === 'video' ? 'dark' : 'lightest';
-  }
-
   #headerId = getRandomId();
   #triggerElement: HTMLElement | null = null;
   #header: HTMLElement | null = null;
@@ -141,16 +137,19 @@ export class RhDialog extends LitElement {
     const hasFooter = this.#slots.hasSlotted('footer');
     const { mobile } = this.#screenSize;
     return html`
-      <rh-surface id="rhds-wrapper"
-                  class="${classMap({ mobile })}"
-                  color-palette="${this.videoColorPalette}">
+      <div id="rhds-wrapper" class="${classMap({ mobile })}">
         <!-- @deprecated: 👇 use public vars for the backdrop pseudo-element instead. -->
-        <div id="overlay" part="overlay" ?hidden=${!this.open}></div>
-        <dialog id="dialog"
-                part="dialog"
-                aria-labelledby=${ifDefined(this.accessibleLabel ? undefined : headerId)}
-                aria-label=${ifDefined(this.accessibleLabel ? this.accessibleLabel : (!headerId ? triggerLabel : undefined))}>
-          <div id="content" part="content" class=${classMap({ hasHeader, hasDescription, hasFooter })}>
+        <div id="overlay"
+             part="overlay"
+             ?hidden=${!this.open}>
+        </div>
+        <rh-surface class=${classMap({ hasHeader, hasDescription, hasFooter })}
+                    ?hidden=${!this.open}
+                    color-palette="${ifDefined(this.type === 'video' ? undefined : 'lightest')}">
+          <dialog id="dialog"
+                  part="dialog"
+                  aria-labelledby=${ifDefined(this.accessibleLabel ? undefined : headerId)}
+                  aria-label=${ifDefined(this.accessibleLabel ? this.accessibleLabel : (!headerId ? triggerLabel : undefined))}>
             <rh-button variant="close"
                        id="close-button"
                        part="close-button"
@@ -158,21 +157,23 @@ export class RhDialog extends LitElement {
                        @click=${this.close}>
               <span class="visually-hidden">Close Dialog</span>
             </rh-button>
-            <div part="header" ?hidden=${!hasHeader}>
-              <slot name="header"></slot>
-              <div part="description" ?hidden=${!hasDescription}>
-                <slot name="description"></slot>
+            <div id="content" part="content">
+              <div part="header" ?hidden=${!hasHeader}>
+                <slot name="header"></slot>
+                <div part="description" ?hidden=${!hasDescription}>
+                  <slot name="description"></slot>
+                </div>
+              </div>
+              <div part="body">
+                <slot></slot>
+              </div>
+              <div ?hidden=${!hasFooter} part="footer">
+                <slot name="footer"></slot>
               </div>
             </div>
-            <div part="body">
-              <slot></slot>
-            </div>
-            <div ?hidden=${!hasFooter} part="footer">
-              <slot name="footer"></slot>
-            </div>
-          </div>
-        </dialog>
-      </rh-surface>
+          </dialog>
+        </rh-surface>
+      </div>
     `;
   }
 
@@ -216,8 +217,6 @@ export class RhDialog extends LitElement {
       // This prevents background scroll
       document.body.style.overflow = 'hidden';
       await this.updateComplete;
-      // <dialog>'s automatically set focus to the first focusable element in the modal,
-      // no need to set it here.
       this.dispatchEvent(new DialogOpenEvent(this.#triggerElement));
     } else {
       // Return scrollability
@@ -240,9 +239,11 @@ export class RhDialog extends LitElement {
     }
   }
 
-  @bound private onTriggerClick(event: MouseEvent) {
+  @bound private async onTriggerClick(event: MouseEvent) {
     event.preventDefault();
     this.showModal();
+    await this.updateComplete;
+    this.closeButton?.focus();
   }
 
   @bound private onClick(event: MouseEvent) {
