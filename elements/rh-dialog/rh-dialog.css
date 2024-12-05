@@ -39,12 +39,12 @@
 }
 
 [part='dialog'] {
-  background-color: var(--rh-color-surface-lightest, #ffffff);
+  background-color: var(--rh-color-surface);
   border-radius: var(--rh-border-radius-default, 3px);
   border: 0;
   box-shadow: var(--rh-box-shadow-xl, 0 8px 24px 3px rgba(21, 21, 21, 0.35));
   box-sizing: border-box;
-  color: var(--rh-color-text-primary-on-light, #151515);
+  color: var(--rh-color-text-primary);
   font-family: inherit;
   inline-size: 100%;
   margin-inline: auto;
@@ -78,7 +78,7 @@
 }
 
 [part='header'] {
-  background-color: var(--rh-color-surface-lightest, #ffffff);
+  background-color: var(--rh-color-surface);
   padding-block-end: var(--rh-space-sm, 6px);
   position: sticky;
   top: calc(-1 * var(--rh-space-xl, 24px));
@@ -113,7 +113,7 @@
 }
 
 [part='close-button'] {
-  color: var(--rh-color-icon-subtle, #707070);
+  color: var(--rh-color-icon-secondary);
   cursor: pointer;
   display: block;
   inset-block-start: var(--rh-length-xs, 4px);
@@ -159,7 +159,6 @@
 }
 
 :host([type='video']) [part='close-button'] {
-  color: var(--rh-color-icon-secondary-on-dark, #ffffff);
   inset-inline-end: var(--offset-right);
   inset-block-start: var(--offset-top);
 }
@@ -174,7 +173,6 @@
 }
 
 :host([type='video']) [part='content'] {
-  background-color: var(--rh-color-surface-darkest, #151515);
   overflow: hidden;
   padding: 0;
 }
