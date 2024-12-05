@@ -365,7 +365,7 @@ export default class TokensPage extends Renderer<Data> {
         </h${options.level}>
       </uxdot-copy-permalink>`;
 
-    const description = options.tokens._?.$description ?? options.tokens.$description ?? '';
+    const description = `${options.tokens.$description ?? ''}\n\n${options.tokens._?.$description ?? ''}`.trim();
     return html`
       ${permalink}
       <div class="description">${await this.renderTemplate(description, 'md')}</div>
