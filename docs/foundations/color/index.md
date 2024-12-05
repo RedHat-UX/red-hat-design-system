@@ -77,12 +77,12 @@ Design tokens are how we communicate and translate our design decisions to code.
 
 To learn more, go to the [Tokens][tokens] section.
 
-### Crayon and semantic tokens
+### Primitive and semantic tokens
 
 Our design system includes two sets of tokens:
 
-- **Crayon tokens** - reference hard-coded values and offer no information about usage
-- **Semantic tokens** - reference crayon colors and define how a color should be used
+- **Primitive tokens** reference hard-coded values and offer no information about usage
+- **Semantic tokens** reference primitive colors and define how a color should be used
 
 <rh-alert state="info">
   <h4 slot="header">Helpful tip</h4>
@@ -90,13 +90,13 @@ Our design system includes two sets of tokens:
 </rh-alert>
 
 <uxdot-example width-adjustment="730px">
-  <img alt="Diagram showing how crayon color tokens are aliased to semantic tokens, which are used to style a button"
+  <img alt="Diagram showing how primitive color tokens are aliased to semantic tokens, which are used to style a button"
        src="/assets/color/color-semantic-tokens.svg"
        width="840"
        height="599">
 </uxdot-example>
 
-### Color palette tokens
+### Primitive color palette tokens
 
 <section id="crayons-grid">
 {%- for crayon in crayons -%}
