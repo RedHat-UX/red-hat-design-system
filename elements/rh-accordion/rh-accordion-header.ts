@@ -81,26 +81,24 @@ export class RhAccordionHeader extends LitElement {
   }
 
   render() {
-    const { expanded, on = '' } = this;
+    const { expanded, on = 'light' } = this;
     const { accents, large = false } = this.ctx ?? {};
     const rtl = this.#dir.dir === 'rtl';
     return html`
-      <div id="container" class="${classMap({ on: true, [on]: !!on, rtl, large, expanded })}">
-        <button id="button"
-                class="toggle"
-                @click="${this.#onClick}">
-          <span id="header-container" class="${classMap({ [accents ?? '']: !!accents })}">
-            <span id="header-text" part="text"><slot></slot></span>
-            <span part="accents"><slot name="accents"></slot></span>
-          </span>
-          <svg id="icon"
-               role="presentation"
-               xmlns="http://www.w3.org/2000/svg"
-               viewBox="0 0 448 512">
-            <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
-          </svg>
-        </button>
-      </div>
+      <button id="button"
+              class="${classMap({ on: true, toggle: true, [on]: !!on, rtl, large, expanded })}"
+              @click="${this.#onClick}">
+        <span id="header-container" class="${classMap({ [accents ?? '']: !!accents })}">
+          <span id="header-text" part="text"><slot></slot></span>
+          <span part="accents"><slot name="accents"></slot></span>
+        </span>
+        <svg id="icon"
+             role="presentation"
+             xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 448 512">
+          <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
+        </svg>
+      </button>
     `;
   }
 

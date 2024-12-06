@@ -22,8 +22,6 @@ import { context, type RhAccordionContext } from './context.js';
  */
 @customElement('rh-accordion-panel')
 export class RhAccordionPanel extends LitElement {
-  static readonly version = '{{version}}';
-
   static readonly styles = [styles];
 
   @property({ type: Boolean, reflect: true }) expanded = false;
