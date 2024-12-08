@@ -70,6 +70,17 @@ export class RhTooltip extends LitElement {
 
   #initialized = false;
 
+  get #content() {
+    if (!this.#float.open || isServer) {
+      return '';
+    } else {
+      return this.content || (this.shadowRoot
+          ?.getElementById('content') as HTMLSlotElement)
+          ?.assignedNodes().map(x => x.textContent ?? '')
+          ?.join(' ');
+    }
+  }
+
   override connectedCallback(): void {
     super.connectedCallback();
     ENTER_EVENTS.forEach(evt => this.addEventListener(evt, this.show));
@@ -85,17 +96,18 @@ export class RhTooltip extends LitElement {
       <div id="container"
            style="${styleMap(styles)}"
            class="${classMap({ open,
-                              'initialized': !!this.#initialized,
+                               initialized: !!this.#initialized,
                                [on]: !!on,
                                [anchor]: !!anchor,
                                [alignment]: !!alignment })}">
-        <div class="display-c">
-          <slot id="invoker"></slot>
+        <div id="invoker">
+          <slot id="invoker-slot"></slot>
         </div>
-        <div class="display-c" aria-hidden="${String(!open) as 'true' | 'false'}">
-          <slot id="tooltip" name="content">${this.content}</slot>
+        <div id="tooltip" role="status">
+          <slot id="content" name="content">${this.content}</slot>
         </div>
       </div>
+      <div class="visually-hidden" aria-live="polite">${open ? this.#content : ''}</div>
     `;
   }
 

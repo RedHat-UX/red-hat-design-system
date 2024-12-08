@@ -85,6 +85,18 @@
   opacity: 1;
 }
 
+.visually-hidden {
+  border: 0 !important;
+  clip: rect(0, 0, 0, 0) !important;
+  block-size: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  white-space: nowrap !important;
+  inline-size: 1px !important;
+}
+
 /* PLAIN */
 .left #tooltip:after { inset-inline-start: calc(-0.5 * var(--_floating-arrow-size)); }
 .top #tooltip:after { inset-block-start: calc(100% - 0.5 * var(--_floating-arrow-size)); }
