@@ -299,9 +299,12 @@ A narrow promo can be used if the promo content needs to fit in a small area, li
 ### Vertical height
 
 The vertical height of cards depends on how much content is placed inside. If
-there are multiple cards in a row, the vertical height of each of them will be
+there are multiple cards in a row, the vertical height of each of them may be
 determined by the tallest card. Don’t place inconsistent amounts of content in
 cards, as this will impact how scannable the group will appear to users.
+
+Authors may choose to have cards fill the maximum vertical space in a row or
+not, depending on whether they want that or not.
 
 <uxdot-example width-adjustment="784px">
   <img alt="Card height behavior"
