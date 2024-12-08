@@ -77,12 +77,24 @@
       var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-darkest, #151515)));
 }
 
-.c {
+.display-c {
   display: contents;
 }
 
 .open #tooltip {
   opacity: 1;
+}
+
+.visually-hidden {
+  border: 0 !important;
+  clip: rect(0, 0, 0, 0) !important;
+  block-size: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  white-space: nowrap !important;
+  inline-size: 1px !important;
 }
 
 /* PLAIN */
