@@ -32,11 +32,17 @@ export class ColorContextConsumer extends ColorContextController {
         this.host.dispatchEvent(event);
         __classPrivateFieldSet(this, _ColorContextConsumer_override, null, "f");
     }
-    hostUpdated() {
+    async hostUpdated() {
         if (!isServer && !this.host.hasUpdated) {
             // This is definitely overkill, but it's the only
             // way we've found so far to work around lit-ssr hydration woes
-            this.hostConnected();
+            const original = __classPrivateFieldGet(this, _ColorContextConsumer_instances, "a", _ColorContextConsumer_propertyValue_get);
+            if (original) {
+                await this.host.updateComplete;
+                __classPrivateFieldSet(this, _ColorContextConsumer_instances, '__LIT_SSR_WORKAROUND__', "a", _ColorContextConsumer_propertyValue_set);
+                await this.host.updateComplete;
+                __classPrivateFieldSet(this, _ColorContextConsumer_instances, original, "a", _ColorContextConsumer_propertyValue_set);
+            }
         }
     }
     /** When a consumer disconnects, it's removed from the list of consumers. */

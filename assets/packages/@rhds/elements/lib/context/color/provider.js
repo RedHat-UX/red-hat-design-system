@@ -52,10 +52,10 @@ export class ColorContextProvider extends ColorContextController {
     async hostConnected() {
         this.host.addEventListener('context-request', e => __classPrivateFieldGet(this, _ColorContextProvider_instances, "m", _ColorContextProvider_onChildContextRequestEvent).call(this, e));
         __classPrivateFieldGet(this, _ColorContextProvider_mo, "f").observe(this.host, { attributes: true, attributeFilter: [__classPrivateFieldGet(this, _ColorContextProvider_attribute, "f")] });
+        await this.host.updateComplete;
         for (const [host, fired] of contextEvents) {
             host.dispatchEvent(fired);
         }
-        await this.host.updateComplete;
         this.update();
         return true;
     }

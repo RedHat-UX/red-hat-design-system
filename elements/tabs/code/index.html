@@ -9649,7 +9649,6 @@ with a content panel below or to the right of the component.</p>
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_active-text-color: var(--rh-color-text-primary);
   --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
@@ -9694,17 +9693,16 @@ a {
   border-inline-start-color: var(--rh-color-border-subtle);
 }
 
-#button,
-#button:before,
-#button:after {
-  background-color: var(--rh-color-surface);
-}
-
 #icon {
   width: 16px;
   height: 16px;
   will-change: rotate;
   transition: rotate 0.2s ease-in 0s;
+}
+
+span {
+  overflow: hidden;
+  text-align: start;
 }
 
 #button {
@@ -9717,36 +9715,60 @@ a {
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
   font-size: var(--_font-size);
   color: var(--rh-color-text-primary);
-}
 
-#button #icon {
-  fill: currentcolor;
-}
+  & #icon {
+    fill: currentcolor;
+  }
 
-#button:after {
-  inset-block-start: -1px;
-  width: var(--rh-border-width-lg, 3px);
-  background-color: var(--_after-background-color);
-}
+  &:is(:hover,:active,:focus) {
+    &.light { background-color: var(--rh-color-surface-lighter); }
+    &.dark { background-color: var(--rh-color-surface-dark-alt); }
 
-span {
-  overflow: hidden;
-  text-align: start;
-}
+    & span {
+      color: var(--rh-color-text-primary);
+    }
+  }
 
-[part='container'] {
-  display: flex;
-  gap: var(--rh-space-xl, 24px);
-  container-type: inline-size;
+  &:focus {
+    outline: 2px solid var(--rh-color-interactive-primary-default);
+  }
+
+  &,
+  &:before,
+  &:after {
+    background-color: var(--rh-color-surface);
+  }
+
+  &:after {
+    inset-block-start: -1px;
+    width: var(--rh-border-width-lg, 3px);
+    background-color: var(--_after-background-color);
+  }
+
+  &.expanded {
+    --_after-background-color: var(--rh-color-accent-brand);
+
+    & #icon {
+      rotate: calc(var(--_isRTL, -1) * 180deg);
+    }
+
+    &.on.light {
+      --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
+    }
+
+    &.on.dark {
+      --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+    }
+  }
 }
 
 #header-container {
   display: flex;
   gap: var(--rh-space-md, 8px);
-}
 
-#header-container.bottom {
-  flex-direction: column;
+  &.bottom {
+    flex-direction: column;
+  }
 }
 
 #header-text {
@@ -9759,54 +9781,26 @@ span {
   gap: var(--rh-space-md, 8px);
 }
 
-.expanded #button {
-  --_after-background-color: var(--rh-color-accent-brand);
-}
-
-.expanded #button #icon {
-  rotate: calc(var(--_isRTL, -1) * 180deg);
-}
-
-#button:hover,
-#button:active,
-#button:focus {
-  background-color: var(--rh-color-surface);
-}
-
-#button:hover span,
-#button:focus span,
-#button:active span {
-  color: var(--_active-text-color);
-}
-
-.toggle,
-.toggle:before,
-.toggle:after {
-  padding: 0;
-  margin: 0;
-}
-
 .toggle {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border: 0;
-}
 
-.toggle:after {
-  content: '';
-  position: absolute;
-  inset-block: 0;
-  inset-inline-start: 0;
-}
+  &,
+  &:before,
+  &:after {
+    padding: 0;
+    margin: 0;
+  }
 
-.expanded.on.light {
-  --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
-}
-
-.expanded.on.dark {
-  --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+  &:after {
+    content: '';
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+  }
 }
 
 @container (min-width: 576px) {
@@ -9814,23 +9808,21 @@ span {
     flex-direction: row;
   }
 }
-</style><!--lit-part srZtrN9VNO8=-->
-      <!--lit-node 0--><div id="container" class=" on expanded ">
-        <!--lit-node 1--><button id="button"
-                class="toggle"
-                >
-          <!--lit-node 2--><span id="header-container" class="  ">
-            <span id="header-text" part="text"><slot></slot></span>
-            <span part="accents"><slot name="accents"></slot></span>
-          </span>
-          <svg id="icon"
-               role="presentation"
-               xmlns="http://www.w3.org/2000/svg"
-               viewBox="0 0 448 512">
-            <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
-          </svg>
-        </button>
-      </div>
+</style><!--lit-part Fb0Ua0Ev9dU=-->
+      <!--lit-node 0--><button id="button"
+              class=" on toggle light expanded "
+              >
+        <!--lit-node 1--><span id="header-container" class="  ">
+          <span id="header-text" part="text"><slot></slot></span>
+          <span part="accents"><slot name="accents"></slot></span>
+        </span>
+        <svg id="icon"
+             role="presentation"
+             xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 448 512">
+          <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
+        </svg>
+      </button>
     <!--/lit-part--></template>Slots
         <rh-badge>2</rh-badge>
         
@@ -10035,7 +10027,6 @@ span {
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_active-text-color: var(--rh-color-text-primary);
   --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
@@ -10080,17 +10071,16 @@ a {
   border-inline-start-color: var(--rh-color-border-subtle);
 }
 
-#button,
-#button:before,
-#button:after {
-  background-color: var(--rh-color-surface);
-}
-
 #icon {
   width: 16px;
   height: 16px;
   will-change: rotate;
   transition: rotate 0.2s ease-in 0s;
+}
+
+span {
+  overflow: hidden;
+  text-align: start;
 }
 
 #button {
@@ -10103,36 +10093,60 @@ a {
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
   font-size: var(--_font-size);
   color: var(--rh-color-text-primary);
-}
 
-#button #icon {
-  fill: currentcolor;
-}
+  & #icon {
+    fill: currentcolor;
+  }
 
-#button:after {
-  inset-block-start: -1px;
-  width: var(--rh-border-width-lg, 3px);
-  background-color: var(--_after-background-color);
-}
+  &:is(:hover,:active,:focus) {
+    &.light { background-color: var(--rh-color-surface-lighter); }
+    &.dark { background-color: var(--rh-color-surface-dark-alt); }
 
-span {
-  overflow: hidden;
-  text-align: start;
-}
+    & span {
+      color: var(--rh-color-text-primary);
+    }
+  }
 
-[part='container'] {
-  display: flex;
-  gap: var(--rh-space-xl, 24px);
-  container-type: inline-size;
+  &:focus {
+    outline: 2px solid var(--rh-color-interactive-primary-default);
+  }
+
+  &,
+  &:before,
+  &:after {
+    background-color: var(--rh-color-surface);
+  }
+
+  &:after {
+    inset-block-start: -1px;
+    width: var(--rh-border-width-lg, 3px);
+    background-color: var(--_after-background-color);
+  }
+
+  &.expanded {
+    --_after-background-color: var(--rh-color-accent-brand);
+
+    & #icon {
+      rotate: calc(var(--_isRTL, -1) * 180deg);
+    }
+
+    &.on.light {
+      --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
+    }
+
+    &.on.dark {
+      --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+    }
+  }
 }
 
 #header-container {
   display: flex;
   gap: var(--rh-space-md, 8px);
-}
 
-#header-container.bottom {
-  flex-direction: column;
+  &.bottom {
+    flex-direction: column;
+  }
 }
 
 #header-text {
@@ -10145,54 +10159,26 @@ span {
   gap: var(--rh-space-md, 8px);
 }
 
-.expanded #button {
-  --_after-background-color: var(--rh-color-accent-brand);
-}
-
-.expanded #button #icon {
-  rotate: calc(var(--_isRTL, -1) * 180deg);
-}
-
-#button:hover,
-#button:active,
-#button:focus {
-  background-color: var(--rh-color-surface);
-}
-
-#button:hover span,
-#button:focus span,
-#button:active span {
-  color: var(--_active-text-color);
-}
-
-.toggle,
-.toggle:before,
-.toggle:after {
-  padding: 0;
-  margin: 0;
-}
-
 .toggle {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border: 0;
-}
 
-.toggle:after {
-  content: '';
-  position: absolute;
-  inset-block: 0;
-  inset-inline-start: 0;
-}
+  &,
+  &:before,
+  &:after {
+    padding: 0;
+    margin: 0;
+  }
 
-.expanded.on.light {
-  --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
-}
-
-.expanded.on.dark {
-  --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+  &:after {
+    content: '';
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+  }
 }
 
 @container (min-width: 576px) {
@@ -10200,23 +10186,21 @@ span {
     flex-direction: row;
   }
 }
-</style><!--lit-part srZtrN9VNO8=-->
-      <!--lit-node 0--><div id="container" class=" on expanded ">
-        <!--lit-node 1--><button id="button"
-                class="toggle"
-                >
-          <!--lit-node 2--><span id="header-container" class="  ">
-            <span id="header-text" part="text"><slot></slot></span>
-            <span part="accents"><slot name="accents"></slot></span>
-          </span>
-          <svg id="icon"
-               role="presentation"
-               xmlns="http://www.w3.org/2000/svg"
-               viewBox="0 0 448 512">
-            <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
-          </svg>
-        </button>
-      </div>
+</style><!--lit-part Fb0Ua0Ev9dU=-->
+      <!--lit-node 0--><button id="button"
+              class=" on toggle light expanded "
+              >
+        <!--lit-node 1--><span id="header-container" class="  ">
+          <span id="header-text" part="text"><slot></slot></span>
+          <span part="accents"><slot name="accents"></slot></span>
+        </span>
+        <svg id="icon"
+             role="presentation"
+             xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 448 512">
+          <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
+        </svg>
+      </button>
     <!--/lit-part--></template>Attributes
         <rh-badge>8</rh-badge>
         
@@ -10474,7 +10458,6 @@ or <a href="https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html"
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_active-text-color: var(--rh-color-text-primary);
   --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
@@ -10519,17 +10502,16 @@ a {
   border-inline-start-color: var(--rh-color-border-subtle);
 }
 
-#button,
-#button:before,
-#button:after {
-  background-color: var(--rh-color-surface);
-}
-
 #icon {
   width: 16px;
   height: 16px;
   will-change: rotate;
   transition: rotate 0.2s ease-in 0s;
+}
+
+span {
+  overflow: hidden;
+  text-align: start;
 }
 
 #button {
@@ -10542,36 +10524,60 @@ a {
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
   font-size: var(--_font-size);
   color: var(--rh-color-text-primary);
-}
 
-#button #icon {
-  fill: currentcolor;
-}
+  & #icon {
+    fill: currentcolor;
+  }
 
-#button:after {
-  inset-block-start: -1px;
-  width: var(--rh-border-width-lg, 3px);
-  background-color: var(--_after-background-color);
-}
+  &:is(:hover,:active,:focus) {
+    &.light { background-color: var(--rh-color-surface-lighter); }
+    &.dark { background-color: var(--rh-color-surface-dark-alt); }
 
-span {
-  overflow: hidden;
-  text-align: start;
-}
+    & span {
+      color: var(--rh-color-text-primary);
+    }
+  }
 
-[part='container'] {
-  display: flex;
-  gap: var(--rh-space-xl, 24px);
-  container-type: inline-size;
+  &:focus {
+    outline: 2px solid var(--rh-color-interactive-primary-default);
+  }
+
+  &,
+  &:before,
+  &:after {
+    background-color: var(--rh-color-surface);
+  }
+
+  &:after {
+    inset-block-start: -1px;
+    width: var(--rh-border-width-lg, 3px);
+    background-color: var(--_after-background-color);
+  }
+
+  &.expanded {
+    --_after-background-color: var(--rh-color-accent-brand);
+
+    & #icon {
+      rotate: calc(var(--_isRTL, -1) * 180deg);
+    }
+
+    &.on.light {
+      --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
+    }
+
+    &.on.dark {
+      --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+    }
+  }
 }
 
 #header-container {
   display: flex;
   gap: var(--rh-space-md, 8px);
-}
 
-#header-container.bottom {
-  flex-direction: column;
+  &.bottom {
+    flex-direction: column;
+  }
 }
 
 #header-text {
@@ -10584,54 +10590,26 @@ span {
   gap: var(--rh-space-md, 8px);
 }
 
-.expanded #button {
-  --_after-background-color: var(--rh-color-accent-brand);
-}
-
-.expanded #button #icon {
-  rotate: calc(var(--_isRTL, -1) * 180deg);
-}
-
-#button:hover,
-#button:active,
-#button:focus {
-  background-color: var(--rh-color-surface);
-}
-
-#button:hover span,
-#button:focus span,
-#button:active span {
-  color: var(--_active-text-color);
-}
-
-.toggle,
-.toggle:before,
-.toggle:after {
-  padding: 0;
-  margin: 0;
-}
-
 .toggle {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border: 0;
-}
 
-.toggle:after {
-  content: '';
-  position: absolute;
-  inset-block: 0;
-  inset-inline-start: 0;
-}
+  &,
+  &:before,
+  &:after {
+    padding: 0;
+    margin: 0;
+  }
 
-.expanded.on.light {
-  --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
-}
-
-.expanded.on.dark {
-  --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+  &:after {
+    content: '';
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+  }
 }
 
 @container (min-width: 576px) {
@@ -10639,23 +10617,21 @@ span {
     flex-direction: row;
   }
 }
-</style><!--lit-part srZtrN9VNO8=-->
-      <!--lit-node 0--><div id="container" class=" on expanded ">
-        <!--lit-node 1--><button id="button"
-                class="toggle"
-                >
-          <!--lit-node 2--><span id="header-container" class="  ">
-            <span id="header-text" part="text"><slot></slot></span>
-            <span part="accents"><slot name="accents"></slot></span>
-          </span>
-          <svg id="icon"
-               role="presentation"
-               xmlns="http://www.w3.org/2000/svg"
-               viewBox="0 0 448 512">
-            <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
-          </svg>
-        </button>
-      </div>
+</style><!--lit-part Fb0Ua0Ev9dU=-->
+      <!--lit-node 0--><button id="button"
+              class=" on toggle light expanded "
+              >
+        <!--lit-node 1--><span id="header-container" class="  ">
+          <span id="header-text" part="text"><slot></slot></span>
+          <span part="accents"><slot name="accents"></slot></span>
+        </span>
+        <svg id="icon"
+             role="presentation"
+             xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 448 512">
+          <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
+        </svg>
+      </button>
     <!--/lit-part--></template>Methods
         <rh-badge>1</rh-badge>
         
@@ -10857,7 +10833,6 @@ span {
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_active-text-color: var(--rh-color-text-primary);
   --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
@@ -10902,17 +10877,16 @@ a {
   border-inline-start-color: var(--rh-color-border-subtle);
 }
 
-#button,
-#button:before,
-#button:after {
-  background-color: var(--rh-color-surface);
-}
-
 #icon {
   width: 16px;
   height: 16px;
   will-change: rotate;
   transition: rotate 0.2s ease-in 0s;
+}
+
+span {
+  overflow: hidden;
+  text-align: start;
 }
 
 #button {
@@ -10925,36 +10899,60 @@ a {
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
   font-size: var(--_font-size);
   color: var(--rh-color-text-primary);
-}
 
-#button #icon {
-  fill: currentcolor;
-}
+  & #icon {
+    fill: currentcolor;
+  }
 
-#button:after {
-  inset-block-start: -1px;
-  width: var(--rh-border-width-lg, 3px);
-  background-color: var(--_after-background-color);
-}
+  &:is(:hover,:active,:focus) {
+    &.light { background-color: var(--rh-color-surface-lighter); }
+    &.dark { background-color: var(--rh-color-surface-dark-alt); }
 
-span {
-  overflow: hidden;
-  text-align: start;
-}
+    & span {
+      color: var(--rh-color-text-primary);
+    }
+  }
 
-[part='container'] {
-  display: flex;
-  gap: var(--rh-space-xl, 24px);
-  container-type: inline-size;
+  &:focus {
+    outline: 2px solid var(--rh-color-interactive-primary-default);
+  }
+
+  &,
+  &:before,
+  &:after {
+    background-color: var(--rh-color-surface);
+  }
+
+  &:after {
+    inset-block-start: -1px;
+    width: var(--rh-border-width-lg, 3px);
+    background-color: var(--_after-background-color);
+  }
+
+  &.expanded {
+    --_after-background-color: var(--rh-color-accent-brand);
+
+    & #icon {
+      rotate: calc(var(--_isRTL, -1) * 180deg);
+    }
+
+    &.on.light {
+      --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
+    }
+
+    &.on.dark {
+      --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+    }
+  }
 }
 
 #header-container {
   display: flex;
   gap: var(--rh-space-md, 8px);
-}
 
-#header-container.bottom {
-  flex-direction: column;
+  &.bottom {
+    flex-direction: column;
+  }
 }
 
 #header-text {
@@ -10967,54 +10965,26 @@ span {
   gap: var(--rh-space-md, 8px);
 }
 
-.expanded #button {
-  --_after-background-color: var(--rh-color-accent-brand);
-}
-
-.expanded #button #icon {
-  rotate: calc(var(--_isRTL, -1) * 180deg);
-}
-
-#button:hover,
-#button:active,
-#button:focus {
-  background-color: var(--rh-color-surface);
-}
-
-#button:hover span,
-#button:focus span,
-#button:active span {
-  color: var(--_active-text-color);
-}
-
-.toggle,
-.toggle:before,
-.toggle:after {
-  padding: 0;
-  margin: 0;
-}
-
 .toggle {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border: 0;
-}
 
-.toggle:after {
-  content: '';
-  position: absolute;
-  inset-block: 0;
-  inset-inline-start: 0;
-}
+  &,
+  &:before,
+  &:after {
+    padding: 0;
+    margin: 0;
+  }
 
-.expanded.on.light {
-  --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
-}
-
-.expanded.on.dark {
-  --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+  &:after {
+    content: '';
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+  }
 }
 
 @container (min-width: 576px) {
@@ -11022,23 +10992,21 @@ span {
     flex-direction: row;
   }
 }
-</style><!--lit-part srZtrN9VNO8=-->
-      <!--lit-node 0--><div id="container" class=" on ">
-        <!--lit-node 1--><button id="button"
-                class="toggle"
-                >
-          <!--lit-node 2--><span id="header-container" class="  ">
-            <span id="header-text" part="text"><slot></slot></span>
-            <span part="accents"><slot name="accents"></slot></span>
-          </span>
-          <svg id="icon"
-               role="presentation"
-               xmlns="http://www.w3.org/2000/svg"
-               viewBox="0 0 448 512">
-            <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
-          </svg>
-        </button>
-      </div>
+</style><!--lit-part Fb0Ua0Ev9dU=-->
+      <!--lit-node 0--><button id="button"
+              class=" on toggle light "
+              >
+        <!--lit-node 1--><span id="header-container" class="  ">
+          <span id="header-text" part="text"><slot></slot></span>
+          <span part="accents"><slot name="accents"></slot></span>
+        </span>
+        <svg id="icon"
+             role="presentation"
+             xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 448 512">
+          <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
+        </svg>
+      </button>
     <!--/lit-part--></template>Events
         <rh-badge>0</rh-badge>
         
@@ -11144,7 +11112,6 @@ span {
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_active-text-color: var(--rh-color-text-primary);
   --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
@@ -11189,17 +11156,16 @@ a {
   border-inline-start-color: var(--rh-color-border-subtle);
 }
 
-#button,
-#button:before,
-#button:after {
-  background-color: var(--rh-color-surface);
-}
-
 #icon {
   width: 16px;
   height: 16px;
   will-change: rotate;
   transition: rotate 0.2s ease-in 0s;
+}
+
+span {
+  overflow: hidden;
+  text-align: start;
 }
 
 #button {
@@ -11212,36 +11178,60 @@ a {
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
   font-size: var(--_font-size);
   color: var(--rh-color-text-primary);
-}
 
-#button #icon {
-  fill: currentcolor;
-}
+  & #icon {
+    fill: currentcolor;
+  }
 
-#button:after {
-  inset-block-start: -1px;
-  width: var(--rh-border-width-lg, 3px);
-  background-color: var(--_after-background-color);
-}
+  &:is(:hover,:active,:focus) {
+    &.light { background-color: var(--rh-color-surface-lighter); }
+    &.dark { background-color: var(--rh-color-surface-dark-alt); }
 
-span {
-  overflow: hidden;
-  text-align: start;
-}
+    & span {
+      color: var(--rh-color-text-primary);
+    }
+  }
 
-[part='container'] {
-  display: flex;
-  gap: var(--rh-space-xl, 24px);
-  container-type: inline-size;
+  &:focus {
+    outline: 2px solid var(--rh-color-interactive-primary-default);
+  }
+
+  &,
+  &:before,
+  &:after {
+    background-color: var(--rh-color-surface);
+  }
+
+  &:after {
+    inset-block-start: -1px;
+    width: var(--rh-border-width-lg, 3px);
+    background-color: var(--_after-background-color);
+  }
+
+  &.expanded {
+    --_after-background-color: var(--rh-color-accent-brand);
+
+    & #icon {
+      rotate: calc(var(--_isRTL, -1) * 180deg);
+    }
+
+    &.on.light {
+      --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
+    }
+
+    &.on.dark {
+      --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+    }
+  }
 }
 
 #header-container {
   display: flex;
   gap: var(--rh-space-md, 8px);
-}
 
-#header-container.bottom {
-  flex-direction: column;
+  &.bottom {
+    flex-direction: column;
+  }
 }
 
 #header-text {
@@ -11254,54 +11244,26 @@ span {
   gap: var(--rh-space-md, 8px);
 }
 
-.expanded #button {
-  --_after-background-color: var(--rh-color-accent-brand);
-}
-
-.expanded #button #icon {
-  rotate: calc(var(--_isRTL, -1) * 180deg);
-}
-
-#button:hover,
-#button:active,
-#button:focus {
-  background-color: var(--rh-color-surface);
-}
-
-#button:hover span,
-#button:focus span,
-#button:active span {
-  color: var(--_active-text-color);
-}
-
-.toggle,
-.toggle:before,
-.toggle:after {
-  padding: 0;
-  margin: 0;
-}
-
 .toggle {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border: 0;
-}
 
-.toggle:after {
-  content: '';
-  position: absolute;
-  inset-block: 0;
-  inset-inline-start: 0;
-}
+  &,
+  &:before,
+  &:after {
+    padding: 0;
+    margin: 0;
+  }
 
-.expanded.on.light {
-  --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
-}
-
-.expanded.on.dark {
-  --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+  &:after {
+    content: '';
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+  }
 }
 
 @container (min-width: 576px) {
@@ -11309,23 +11271,21 @@ span {
     flex-direction: row;
   }
 }
-</style><!--lit-part srZtrN9VNO8=-->
-      <!--lit-node 0--><div id="container" class=" on expanded ">
-        <!--lit-node 1--><button id="button"
-                class="toggle"
-                >
-          <!--lit-node 2--><span id="header-container" class="  ">
-            <span id="header-text" part="text"><slot></slot></span>
-            <span part="accents"><slot name="accents"></slot></span>
-          </span>
-          <svg id="icon"
-               role="presentation"
-               xmlns="http://www.w3.org/2000/svg"
-               viewBox="0 0 448 512">
-            <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
-          </svg>
-        </button>
-      </div>
+</style><!--lit-part Fb0Ua0Ev9dU=-->
+      <!--lit-node 0--><button id="button"
+              class=" on toggle light expanded "
+              >
+        <!--lit-node 1--><span id="header-container" class="  ">
+          <span id="header-text" part="text"><slot></slot></span>
+          <span part="accents"><slot name="accents"></slot></span>
+        </span>
+        <svg id="icon"
+             role="presentation"
+             xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 448 512">
+          <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
+        </svg>
+      </button>
     <!--/lit-part--></template>CSS Shadow Parts
         <rh-badge>4</rh-badge>
         
@@ -11539,7 +11499,6 @@ span {
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_active-text-color: var(--rh-color-text-primary);
   --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
@@ -11584,17 +11543,16 @@ a {
   border-inline-start-color: var(--rh-color-border-subtle);
 }
 
-#button,
-#button:before,
-#button:after {
-  background-color: var(--rh-color-surface);
-}
-
 #icon {
   width: 16px;
   height: 16px;
   will-change: rotate;
   transition: rotate 0.2s ease-in 0s;
+}
+
+span {
+  overflow: hidden;
+  text-align: start;
 }
 
 #button {
@@ -11607,36 +11565,60 @@ a {
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
   font-size: var(--_font-size);
   color: var(--rh-color-text-primary);
-}
 
-#button #icon {
-  fill: currentcolor;
-}
+  & #icon {
+    fill: currentcolor;
+  }
 
-#button:after {
-  inset-block-start: -1px;
-  width: var(--rh-border-width-lg, 3px);
-  background-color: var(--_after-background-color);
-}
+  &:is(:hover,:active,:focus) {
+    &.light { background-color: var(--rh-color-surface-lighter); }
+    &.dark { background-color: var(--rh-color-surface-dark-alt); }
 
-span {
-  overflow: hidden;
-  text-align: start;
-}
+    & span {
+      color: var(--rh-color-text-primary);
+    }
+  }
 
-[part='container'] {
-  display: flex;
-  gap: var(--rh-space-xl, 24px);
-  container-type: inline-size;
+  &:focus {
+    outline: 2px solid var(--rh-color-interactive-primary-default);
+  }
+
+  &,
+  &:before,
+  &:after {
+    background-color: var(--rh-color-surface);
+  }
+
+  &:after {
+    inset-block-start: -1px;
+    width: var(--rh-border-width-lg, 3px);
+    background-color: var(--_after-background-color);
+  }
+
+  &.expanded {
+    --_after-background-color: var(--rh-color-accent-brand);
+
+    & #icon {
+      rotate: calc(var(--_isRTL, -1) * 180deg);
+    }
+
+    &.on.light {
+      --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
+    }
+
+    &.on.dark {
+      --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+    }
+  }
 }
 
 #header-container {
   display: flex;
   gap: var(--rh-space-md, 8px);
-}
 
-#header-container.bottom {
-  flex-direction: column;
+  &.bottom {
+    flex-direction: column;
+  }
 }
 
 #header-text {
@@ -11649,54 +11631,26 @@ span {
   gap: var(--rh-space-md, 8px);
 }
 
-.expanded #button {
-  --_after-background-color: var(--rh-color-accent-brand);
-}
-
-.expanded #button #icon {
-  rotate: calc(var(--_isRTL, -1) * 180deg);
-}
-
-#button:hover,
-#button:active,
-#button:focus {
-  background-color: var(--rh-color-surface);
-}
-
-#button:hover span,
-#button:focus span,
-#button:active span {
-  color: var(--_active-text-color);
-}
-
-.toggle,
-.toggle:before,
-.toggle:after {
-  padding: 0;
-  margin: 0;
-}
-
 .toggle {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border: 0;
-}
 
-.toggle:after {
-  content: '';
-  position: absolute;
-  inset-block: 0;
-  inset-inline-start: 0;
-}
+  &,
+  &:before,
+  &:after {
+    padding: 0;
+    margin: 0;
+  }
 
-.expanded.on.light {
-  --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
-}
-
-.expanded.on.dark {
-  --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+  &:after {
+    content: '';
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+  }
 }
 
 @container (min-width: 576px) {
@@ -11704,23 +11658,21 @@ span {
     flex-direction: row;
   }
 }
-</style><!--lit-part srZtrN9VNO8=-->
-      <!--lit-node 0--><div id="container" class=" on expanded ">
-        <!--lit-node 1--><button id="button"
-                class="toggle"
-                >
-          <!--lit-node 2--><span id="header-container" class="  ">
-            <span id="header-text" part="text"><slot></slot></span>
-            <span part="accents"><slot name="accents"></slot></span>
-          </span>
-          <svg id="icon"
-               role="presentation"
-               xmlns="http://www.w3.org/2000/svg"
-               viewBox="0 0 448 512">
-            <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
-          </svg>
-        </button>
-      </div>
+</style><!--lit-part Fb0Ua0Ev9dU=-->
+      <!--lit-node 0--><button id="button"
+              class=" on toggle light expanded "
+              >
+        <!--lit-node 1--><span id="header-container" class="  ">
+          <span id="header-text" part="text"><slot></slot></span>
+          <span part="accents"><slot name="accents"></slot></span>
+        </span>
+        <svg id="icon"
+             role="presentation"
+             xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 448 512">
+          <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
+        </svg>
+      </button>
     <!--/lit-part--></template>CSS Custom Properties
         <rh-badge>2</rh-badge>
         
@@ -11932,7 +11884,6 @@ span {
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_active-text-color: var(--rh-color-text-primary);
   --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
@@ -11977,17 +11928,16 @@ a {
   border-inline-start-color: var(--rh-color-border-subtle);
 }
 
-#button,
-#button:before,
-#button:after {
-  background-color: var(--rh-color-surface);
-}
-
 #icon {
   width: 16px;
   height: 16px;
   will-change: rotate;
   transition: rotate 0.2s ease-in 0s;
+}
+
+span {
+  overflow: hidden;
+  text-align: start;
 }
 
 #button {
@@ -12000,36 +11950,60 @@ a {
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
   font-size: var(--_font-size);
   color: var(--rh-color-text-primary);
-}
 
-#button #icon {
-  fill: currentcolor;
-}
+  & #icon {
+    fill: currentcolor;
+  }
 
-#button:after {
-  inset-block-start: -1px;
-  width: var(--rh-border-width-lg, 3px);
-  background-color: var(--_after-background-color);
-}
+  &:is(:hover,:active,:focus) {
+    &.light { background-color: var(--rh-color-surface-lighter); }
+    &.dark { background-color: var(--rh-color-surface-dark-alt); }
 
-span {
-  overflow: hidden;
-  text-align: start;
-}
+    & span {
+      color: var(--rh-color-text-primary);
+    }
+  }
 
-[part='container'] {
-  display: flex;
-  gap: var(--rh-space-xl, 24px);
-  container-type: inline-size;
+  &:focus {
+    outline: 2px solid var(--rh-color-interactive-primary-default);
+  }
+
+  &,
+  &:before,
+  &:after {
+    background-color: var(--rh-color-surface);
+  }
+
+  &:after {
+    inset-block-start: -1px;
+    width: var(--rh-border-width-lg, 3px);
+    background-color: var(--_after-background-color);
+  }
+
+  &.expanded {
+    --_after-background-color: var(--rh-color-accent-brand);
+
+    & #icon {
+      rotate: calc(var(--_isRTL, -1) * 180deg);
+    }
+
+    &.on.light {
+      --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
+    }
+
+    &.on.dark {
+      --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+    }
+  }
 }
 
 #header-container {
   display: flex;
   gap: var(--rh-space-md, 8px);
-}
 
-#header-container.bottom {
-  flex-direction: column;
+  &.bottom {
+    flex-direction: column;
+  }
 }
 
 #header-text {
@@ -12042,54 +12016,26 @@ span {
   gap: var(--rh-space-md, 8px);
 }
 
-.expanded #button {
-  --_after-background-color: var(--rh-color-accent-brand);
-}
-
-.expanded #button #icon {
-  rotate: calc(var(--_isRTL, -1) * 180deg);
-}
-
-#button:hover,
-#button:active,
-#button:focus {
-  background-color: var(--rh-color-surface);
-}
-
-#button:hover span,
-#button:focus span,
-#button:active span {
-  color: var(--_active-text-color);
-}
-
-.toggle,
-.toggle:before,
-.toggle:after {
-  padding: 0;
-  margin: 0;
-}
-
 .toggle {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border: 0;
-}
 
-.toggle:after {
-  content: '';
-  position: absolute;
-  inset-block: 0;
-  inset-inline-start: 0;
-}
+  &,
+  &:before,
+  &:after {
+    padding: 0;
+    margin: 0;
+  }
 
-.expanded.on.light {
-  --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
-}
-
-.expanded.on.dark {
-  --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+  &:after {
+    content: '';
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+  }
 }
 
 @container (min-width: 576px) {
@@ -12097,23 +12043,21 @@ span {
     flex-direction: row;
   }
 }
-</style><!--lit-part srZtrN9VNO8=-->
-      <!--lit-node 0--><div id="container" class=" on expanded ">
-        <!--lit-node 1--><button id="button"
-                class="toggle"
-                >
-          <!--lit-node 2--><span id="header-container" class="  ">
-            <span id="header-text" part="text"><slot></slot></span>
-            <span part="accents"><slot name="accents"></slot></span>
-          </span>
-          <svg id="icon"
-               role="presentation"
-               xmlns="http://www.w3.org/2000/svg"
-               viewBox="0 0 448 512">
-            <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
-          </svg>
-        </button>
-      </div>
+</style><!--lit-part Fb0Ua0Ev9dU=-->
+      <!--lit-node 0--><button id="button"
+              class=" on toggle light expanded "
+              >
+        <!--lit-node 1--><span id="header-container" class="  ">
+          <span id="header-text" part="text"><slot></slot></span>
+          <span part="accents"><slot name="accents"></slot></span>
+        </span>
+        <svg id="icon"
+             role="presentation"
+             xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 448 512">
+          <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
+        </svg>
+      </button>
     <!--/lit-part--></template>Design Tokens
         <rh-badge>14</rh-badge>
       </rh-accordion-header>
@@ -18802,7 +18746,6 @@ svg {
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_active-text-color: var(--rh-color-text-primary);
   --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
@@ -18847,17 +18790,16 @@ a {
   border-inline-start-color: var(--rh-color-border-subtle);
 }
 
-#button,
-#button:before,
-#button:after {
-  background-color: var(--rh-color-surface);
-}
-
 #icon {
   width: 16px;
   height: 16px;
   will-change: rotate;
   transition: rotate 0.2s ease-in 0s;
+}
+
+span {
+  overflow: hidden;
+  text-align: start;
 }
 
 #button {
@@ -18870,36 +18812,60 @@ a {
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
   font-size: var(--_font-size);
   color: var(--rh-color-text-primary);
-}
 
-#button #icon {
-  fill: currentcolor;
-}
+  & #icon {
+    fill: currentcolor;
+  }
 
-#button:after {
-  inset-block-start: -1px;
-  width: var(--rh-border-width-lg, 3px);
-  background-color: var(--_after-background-color);
-}
+  &:is(:hover,:active,:focus) {
+    &.light { background-color: var(--rh-color-surface-lighter); }
+    &.dark { background-color: var(--rh-color-surface-dark-alt); }
 
-span {
-  overflow: hidden;
-  text-align: start;
-}
+    & span {
+      color: var(--rh-color-text-primary);
+    }
+  }
 
-[part='container'] {
-  display: flex;
-  gap: var(--rh-space-xl, 24px);
-  container-type: inline-size;
+  &:focus {
+    outline: 2px solid var(--rh-color-interactive-primary-default);
+  }
+
+  &,
+  &:before,
+  &:after {
+    background-color: var(--rh-color-surface);
+  }
+
+  &:after {
+    inset-block-start: -1px;
+    width: var(--rh-border-width-lg, 3px);
+    background-color: var(--_after-background-color);
+  }
+
+  &.expanded {
+    --_after-background-color: var(--rh-color-accent-brand);
+
+    & #icon {
+      rotate: calc(var(--_isRTL, -1) * 180deg);
+    }
+
+    &.on.light {
+      --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
+    }
+
+    &.on.dark {
+      --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+    }
+  }
 }
 
 #header-container {
   display: flex;
   gap: var(--rh-space-md, 8px);
-}
 
-#header-container.bottom {
-  flex-direction: column;
+  &.bottom {
+    flex-direction: column;
+  }
 }
 
 #header-text {
@@ -18912,54 +18878,26 @@ span {
   gap: var(--rh-space-md, 8px);
 }
 
-.expanded #button {
-  --_after-background-color: var(--rh-color-accent-brand);
-}
-
-.expanded #button #icon {
-  rotate: calc(var(--_isRTL, -1) * 180deg);
-}
-
-#button:hover,
-#button:active,
-#button:focus {
-  background-color: var(--rh-color-surface);
-}
-
-#button:hover span,
-#button:focus span,
-#button:active span {
-  color: var(--_active-text-color);
-}
-
-.toggle,
-.toggle:before,
-.toggle:after {
-  padding: 0;
-  margin: 0;
-}
-
 .toggle {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border: 0;
-}
 
-.toggle:after {
-  content: '';
-  position: absolute;
-  inset-block: 0;
-  inset-inline-start: 0;
-}
+  &,
+  &:before,
+  &:after {
+    padding: 0;
+    margin: 0;
+  }
 
-.expanded.on.light {
-  --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
-}
-
-.expanded.on.dark {
-  --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+  &:after {
+    content: '';
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+  }
 }
 
 @container (min-width: 576px) {
@@ -18967,23 +18905,21 @@ span {
     flex-direction: row;
   }
 }
-</style><!--lit-part srZtrN9VNO8=-->
-      <!--lit-node 0--><div id="container" class=" on expanded ">
-        <!--lit-node 1--><button id="button"
-                class="toggle"
-                >
-          <!--lit-node 2--><span id="header-container" class="  ">
-            <span id="header-text" part="text"><slot></slot></span>
-            <span part="accents"><slot name="accents"></slot></span>
-          </span>
-          <svg id="icon"
-               role="presentation"
-               xmlns="http://www.w3.org/2000/svg"
-               viewBox="0 0 448 512">
-            <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
-          </svg>
-        </button>
-      </div>
+</style><!--lit-part Fb0Ua0Ev9dU=-->
+      <!--lit-node 0--><button id="button"
+              class=" on toggle light expanded "
+              >
+        <!--lit-node 1--><span id="header-container" class="  ">
+          <span id="header-text" part="text"><slot></slot></span>
+          <span part="accents"><slot name="accents"></slot></span>
+        </span>
+        <svg id="icon"
+             role="presentation"
+             xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 448 512">
+          <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
+        </svg>
+      </button>
     <!--/lit-part--></template>Slots
         <rh-badge>1</rh-badge>
         
@@ -19184,7 +19120,6 @@ span {
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_active-text-color: var(--rh-color-text-primary);
   --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
@@ -19229,17 +19164,16 @@ a {
   border-inline-start-color: var(--rh-color-border-subtle);
 }
 
-#button,
-#button:before,
-#button:after {
-  background-color: var(--rh-color-surface);
-}
-
 #icon {
   width: 16px;
   height: 16px;
   will-change: rotate;
   transition: rotate 0.2s ease-in 0s;
+}
+
+span {
+  overflow: hidden;
+  text-align: start;
 }
 
 #button {
@@ -19252,36 +19186,60 @@ a {
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
   font-size: var(--_font-size);
   color: var(--rh-color-text-primary);
-}
 
-#button #icon {
-  fill: currentcolor;
-}
+  & #icon {
+    fill: currentcolor;
+  }
 
-#button:after {
-  inset-block-start: -1px;
-  width: var(--rh-border-width-lg, 3px);
-  background-color: var(--_after-background-color);
-}
+  &:is(:hover,:active,:focus) {
+    &.light { background-color: var(--rh-color-surface-lighter); }
+    &.dark { background-color: var(--rh-color-surface-dark-alt); }
 
-span {
-  overflow: hidden;
-  text-align: start;
-}
+    & span {
+      color: var(--rh-color-text-primary);
+    }
+  }
 
-[part='container'] {
-  display: flex;
-  gap: var(--rh-space-xl, 24px);
-  container-type: inline-size;
+  &:focus {
+    outline: 2px solid var(--rh-color-interactive-primary-default);
+  }
+
+  &,
+  &:before,
+  &:after {
+    background-color: var(--rh-color-surface);
+  }
+
+  &:after {
+    inset-block-start: -1px;
+    width: var(--rh-border-width-lg, 3px);
+    background-color: var(--_after-background-color);
+  }
+
+  &.expanded {
+    --_after-background-color: var(--rh-color-accent-brand);
+
+    & #icon {
+      rotate: calc(var(--_isRTL, -1) * 180deg);
+    }
+
+    &.on.light {
+      --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
+    }
+
+    &.on.dark {
+      --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+    }
+  }
 }
 
 #header-container {
   display: flex;
   gap: var(--rh-space-md, 8px);
-}
 
-#header-container.bottom {
-  flex-direction: column;
+  &.bottom {
+    flex-direction: column;
+  }
 }
 
 #header-text {
@@ -19294,54 +19252,26 @@ span {
   gap: var(--rh-space-md, 8px);
 }
 
-.expanded #button {
-  --_after-background-color: var(--rh-color-accent-brand);
-}
-
-.expanded #button #icon {
-  rotate: calc(var(--_isRTL, -1) * 180deg);
-}
-
-#button:hover,
-#button:active,
-#button:focus {
-  background-color: var(--rh-color-surface);
-}
-
-#button:hover span,
-#button:focus span,
-#button:active span {
-  color: var(--_active-text-color);
-}
-
-.toggle,
-.toggle:before,
-.toggle:after {
-  padding: 0;
-  margin: 0;
-}
-
 .toggle {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border: 0;
-}
 
-.toggle:after {
-  content: '';
-  position: absolute;
-  inset-block: 0;
-  inset-inline-start: 0;
-}
+  &,
+  &:before,
+  &:after {
+    padding: 0;
+    margin: 0;
+  }
 
-.expanded.on.light {
-  --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
-}
-
-.expanded.on.dark {
-  --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+  &:after {
+    content: '';
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+  }
 }
 
 @container (min-width: 576px) {
@@ -19349,23 +19279,21 @@ span {
     flex-direction: row;
   }
 }
-</style><!--lit-part srZtrN9VNO8=-->
-      <!--lit-node 0--><div id="container" class=" on ">
-        <!--lit-node 1--><button id="button"
-                class="toggle"
-                >
-          <!--lit-node 2--><span id="header-container" class="  ">
-            <span id="header-text" part="text"><slot></slot></span>
-            <span part="accents"><slot name="accents"></slot></span>
-          </span>
-          <svg id="icon"
-               role="presentation"
-               xmlns="http://www.w3.org/2000/svg"
-               viewBox="0 0 448 512">
-            <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
-          </svg>
-        </button>
-      </div>
+</style><!--lit-part Fb0Ua0Ev9dU=-->
+      <!--lit-node 0--><button id="button"
+              class=" on toggle light "
+              >
+        <!--lit-node 1--><span id="header-container" class="  ">
+          <span id="header-text" part="text"><slot></slot></span>
+          <span part="accents"><slot name="accents"></slot></span>
+        </span>
+        <svg id="icon"
+             role="presentation"
+             xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 448 512">
+          <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
+        </svg>
+      </button>
     <!--/lit-part--></template>Attributes
         <rh-badge>0</rh-badge>
         
@@ -19471,7 +19399,6 @@ span {
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_active-text-color: var(--rh-color-text-primary);
   --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
@@ -19516,17 +19443,16 @@ a {
   border-inline-start-color: var(--rh-color-border-subtle);
 }
 
-#button,
-#button:before,
-#button:after {
-  background-color: var(--rh-color-surface);
-}
-
 #icon {
   width: 16px;
   height: 16px;
   will-change: rotate;
   transition: rotate 0.2s ease-in 0s;
+}
+
+span {
+  overflow: hidden;
+  text-align: start;
 }
 
 #button {
@@ -19539,36 +19465,60 @@ a {
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
   font-size: var(--_font-size);
   color: var(--rh-color-text-primary);
-}
 
-#button #icon {
-  fill: currentcolor;
-}
+  & #icon {
+    fill: currentcolor;
+  }
 
-#button:after {
-  inset-block-start: -1px;
-  width: var(--rh-border-width-lg, 3px);
-  background-color: var(--_after-background-color);
-}
+  &:is(:hover,:active,:focus) {
+    &.light { background-color: var(--rh-color-surface-lighter); }
+    &.dark { background-color: var(--rh-color-surface-dark-alt); }
 
-span {
-  overflow: hidden;
-  text-align: start;
-}
+    & span {
+      color: var(--rh-color-text-primary);
+    }
+  }
 
-[part='container'] {
-  display: flex;
-  gap: var(--rh-space-xl, 24px);
-  container-type: inline-size;
+  &:focus {
+    outline: 2px solid var(--rh-color-interactive-primary-default);
+  }
+
+  &,
+  &:before,
+  &:after {
+    background-color: var(--rh-color-surface);
+  }
+
+  &:after {
+    inset-block-start: -1px;
+    width: var(--rh-border-width-lg, 3px);
+    background-color: var(--_after-background-color);
+  }
+
+  &.expanded {
+    --_after-background-color: var(--rh-color-accent-brand);
+
+    & #icon {
+      rotate: calc(var(--_isRTL, -1) * 180deg);
+    }
+
+    &.on.light {
+      --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
+    }
+
+    &.on.dark {
+      --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+    }
+  }
 }
 
 #header-container {
   display: flex;
   gap: var(--rh-space-md, 8px);
-}
 
-#header-container.bottom {
-  flex-direction: column;
+  &.bottom {
+    flex-direction: column;
+  }
 }
 
 #header-text {
@@ -19581,54 +19531,26 @@ span {
   gap: var(--rh-space-md, 8px);
 }
 
-.expanded #button {
-  --_after-background-color: var(--rh-color-accent-brand);
-}
-
-.expanded #button #icon {
-  rotate: calc(var(--_isRTL, -1) * 180deg);
-}
-
-#button:hover,
-#button:active,
-#button:focus {
-  background-color: var(--rh-color-surface);
-}
-
-#button:hover span,
-#button:focus span,
-#button:active span {
-  color: var(--_active-text-color);
-}
-
-.toggle,
-.toggle:before,
-.toggle:after {
-  padding: 0;
-  margin: 0;
-}
-
 .toggle {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border: 0;
-}
 
-.toggle:after {
-  content: '';
-  position: absolute;
-  inset-block: 0;
-  inset-inline-start: 0;
-}
+  &,
+  &:before,
+  &:after {
+    padding: 0;
+    margin: 0;
+  }
 
-.expanded.on.light {
-  --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
-}
-
-.expanded.on.dark {
-  --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+  &:after {
+    content: '';
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+  }
 }
 
 @container (min-width: 576px) {
@@ -19636,23 +19558,21 @@ span {
     flex-direction: row;
   }
 }
-</style><!--lit-part srZtrN9VNO8=-->
-      <!--lit-node 0--><div id="container" class=" on ">
-        <!--lit-node 1--><button id="button"
-                class="toggle"
-                >
-          <!--lit-node 2--><span id="header-container" class="  ">
-            <span id="header-text" part="text"><slot></slot></span>
-            <span part="accents"><slot name="accents"></slot></span>
-          </span>
-          <svg id="icon"
-               role="presentation"
-               xmlns="http://www.w3.org/2000/svg"
-               viewBox="0 0 448 512">
-            <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
-          </svg>
-        </button>
-      </div>
+</style><!--lit-part Fb0Ua0Ev9dU=-->
+      <!--lit-node 0--><button id="button"
+              class=" on toggle light "
+              >
+        <!--lit-node 1--><span id="header-container" class="  ">
+          <span id="header-text" part="text"><slot></slot></span>
+          <span part="accents"><slot name="accents"></slot></span>
+        </span>
+        <svg id="icon"
+             role="presentation"
+             xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 448 512">
+          <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
+        </svg>
+      </button>
     <!--/lit-part--></template>Methods
         <rh-badge>0</rh-badge>
         
@@ -19758,7 +19678,6 @@ span {
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_active-text-color: var(--rh-color-text-primary);
   --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
@@ -19803,17 +19722,16 @@ a {
   border-inline-start-color: var(--rh-color-border-subtle);
 }
 
-#button,
-#button:before,
-#button:after {
-  background-color: var(--rh-color-surface);
-}
-
 #icon {
   width: 16px;
   height: 16px;
   will-change: rotate;
   transition: rotate 0.2s ease-in 0s;
+}
+
+span {
+  overflow: hidden;
+  text-align: start;
 }
 
 #button {
@@ -19826,36 +19744,60 @@ a {
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
   font-size: var(--_font-size);
   color: var(--rh-color-text-primary);
-}
 
-#button #icon {
-  fill: currentcolor;
-}
+  & #icon {
+    fill: currentcolor;
+  }
 
-#button:after {
-  inset-block-start: -1px;
-  width: var(--rh-border-width-lg, 3px);
-  background-color: var(--_after-background-color);
-}
+  &:is(:hover,:active,:focus) {
+    &.light { background-color: var(--rh-color-surface-lighter); }
+    &.dark { background-color: var(--rh-color-surface-dark-alt); }
 
-span {
-  overflow: hidden;
-  text-align: start;
-}
+    & span {
+      color: var(--rh-color-text-primary);
+    }
+  }
 
-[part='container'] {
-  display: flex;
-  gap: var(--rh-space-xl, 24px);
-  container-type: inline-size;
+  &:focus {
+    outline: 2px solid var(--rh-color-interactive-primary-default);
+  }
+
+  &,
+  &:before,
+  &:after {
+    background-color: var(--rh-color-surface);
+  }
+
+  &:after {
+    inset-block-start: -1px;
+    width: var(--rh-border-width-lg, 3px);
+    background-color: var(--_after-background-color);
+  }
+
+  &.expanded {
+    --_after-background-color: var(--rh-color-accent-brand);
+
+    & #icon {
+      rotate: calc(var(--_isRTL, -1) * 180deg);
+    }
+
+    &.on.light {
+      --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
+    }
+
+    &.on.dark {
+      --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+    }
+  }
 }
 
 #header-container {
   display: flex;
   gap: var(--rh-space-md, 8px);
-}
 
-#header-container.bottom {
-  flex-direction: column;
+  &.bottom {
+    flex-direction: column;
+  }
 }
 
 #header-text {
@@ -19868,54 +19810,26 @@ span {
   gap: var(--rh-space-md, 8px);
 }
 
-.expanded #button {
-  --_after-background-color: var(--rh-color-accent-brand);
-}
-
-.expanded #button #icon {
-  rotate: calc(var(--_isRTL, -1) * 180deg);
-}
-
-#button:hover,
-#button:active,
-#button:focus {
-  background-color: var(--rh-color-surface);
-}
-
-#button:hover span,
-#button:focus span,
-#button:active span {
-  color: var(--_active-text-color);
-}
-
-.toggle,
-.toggle:before,
-.toggle:after {
-  padding: 0;
-  margin: 0;
-}
-
 .toggle {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border: 0;
-}
 
-.toggle:after {
-  content: '';
-  position: absolute;
-  inset-block: 0;
-  inset-inline-start: 0;
-}
+  &,
+  &:before,
+  &:after {
+    padding: 0;
+    margin: 0;
+  }
 
-.expanded.on.light {
-  --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
-}
-
-.expanded.on.dark {
-  --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+  &:after {
+    content: '';
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+  }
 }
 
 @container (min-width: 576px) {
@@ -19923,23 +19837,21 @@ span {
     flex-direction: row;
   }
 }
-</style><!--lit-part srZtrN9VNO8=-->
-      <!--lit-node 0--><div id="container" class=" on ">
-        <!--lit-node 1--><button id="button"
-                class="toggle"
-                >
-          <!--lit-node 2--><span id="header-container" class="  ">
-            <span id="header-text" part="text"><slot></slot></span>
-            <span part="accents"><slot name="accents"></slot></span>
-          </span>
-          <svg id="icon"
-               role="presentation"
-               xmlns="http://www.w3.org/2000/svg"
-               viewBox="0 0 448 512">
-            <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
-          </svg>
-        </button>
-      </div>
+</style><!--lit-part Fb0Ua0Ev9dU=-->
+      <!--lit-node 0--><button id="button"
+              class=" on toggle light "
+              >
+        <!--lit-node 1--><span id="header-container" class="  ">
+          <span id="header-text" part="text"><slot></slot></span>
+          <span part="accents"><slot name="accents"></slot></span>
+        </span>
+        <svg id="icon"
+             role="presentation"
+             xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 448 512">
+          <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
+        </svg>
+      </button>
     <!--/lit-part--></template>Events
         <rh-badge>0</rh-badge>
         
@@ -20045,7 +19957,6 @@ span {
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_active-text-color: var(--rh-color-text-primary);
   --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
@@ -20090,17 +20001,16 @@ a {
   border-inline-start-color: var(--rh-color-border-subtle);
 }
 
-#button,
-#button:before,
-#button:after {
-  background-color: var(--rh-color-surface);
-}
-
 #icon {
   width: 16px;
   height: 16px;
   will-change: rotate;
   transition: rotate 0.2s ease-in 0s;
+}
+
+span {
+  overflow: hidden;
+  text-align: start;
 }
 
 #button {
@@ -20113,36 +20023,60 @@ a {
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
   font-size: var(--_font-size);
   color: var(--rh-color-text-primary);
-}
 
-#button #icon {
-  fill: currentcolor;
-}
+  & #icon {
+    fill: currentcolor;
+  }
 
-#button:after {
-  inset-block-start: -1px;
-  width: var(--rh-border-width-lg, 3px);
-  background-color: var(--_after-background-color);
-}
+  &:is(:hover,:active,:focus) {
+    &.light { background-color: var(--rh-color-surface-lighter); }
+    &.dark { background-color: var(--rh-color-surface-dark-alt); }
 
-span {
-  overflow: hidden;
-  text-align: start;
-}
+    & span {
+      color: var(--rh-color-text-primary);
+    }
+  }
 
-[part='container'] {
-  display: flex;
-  gap: var(--rh-space-xl, 24px);
-  container-type: inline-size;
+  &:focus {
+    outline: 2px solid var(--rh-color-interactive-primary-default);
+  }
+
+  &,
+  &:before,
+  &:after {
+    background-color: var(--rh-color-surface);
+  }
+
+  &:after {
+    inset-block-start: -1px;
+    width: var(--rh-border-width-lg, 3px);
+    background-color: var(--_after-background-color);
+  }
+
+  &.expanded {
+    --_after-background-color: var(--rh-color-accent-brand);
+
+    & #icon {
+      rotate: calc(var(--_isRTL, -1) * 180deg);
+    }
+
+    &.on.light {
+      --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
+    }
+
+    &.on.dark {
+      --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+    }
+  }
 }
 
 #header-container {
   display: flex;
   gap: var(--rh-space-md, 8px);
-}
 
-#header-container.bottom {
-  flex-direction: column;
+  &.bottom {
+    flex-direction: column;
+  }
 }
 
 #header-text {
@@ -20155,54 +20089,26 @@ span {
   gap: var(--rh-space-md, 8px);
 }
 
-.expanded #button {
-  --_after-background-color: var(--rh-color-accent-brand);
-}
-
-.expanded #button #icon {
-  rotate: calc(var(--_isRTL, -1) * 180deg);
-}
-
-#button:hover,
-#button:active,
-#button:focus {
-  background-color: var(--rh-color-surface);
-}
-
-#button:hover span,
-#button:focus span,
-#button:active span {
-  color: var(--_active-text-color);
-}
-
-.toggle,
-.toggle:before,
-.toggle:after {
-  padding: 0;
-  margin: 0;
-}
-
 .toggle {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border: 0;
-}
 
-.toggle:after {
-  content: '';
-  position: absolute;
-  inset-block: 0;
-  inset-inline-start: 0;
-}
+  &,
+  &:before,
+  &:after {
+    padding: 0;
+    margin: 0;
+  }
 
-.expanded.on.light {
-  --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
-}
-
-.expanded.on.dark {
-  --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+  &:after {
+    content: '';
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+  }
 }
 
 @container (min-width: 576px) {
@@ -20210,23 +20116,21 @@ span {
     flex-direction: row;
   }
 }
-</style><!--lit-part srZtrN9VNO8=-->
-      <!--lit-node 0--><div id="container" class=" on ">
-        <!--lit-node 1--><button id="button"
-                class="toggle"
-                >
-          <!--lit-node 2--><span id="header-container" class="  ">
-            <span id="header-text" part="text"><slot></slot></span>
-            <span part="accents"><slot name="accents"></slot></span>
-          </span>
-          <svg id="icon"
-               role="presentation"
-               xmlns="http://www.w3.org/2000/svg"
-               viewBox="0 0 448 512">
-            <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
-          </svg>
-        </button>
-      </div>
+</style><!--lit-part Fb0Ua0Ev9dU=-->
+      <!--lit-node 0--><button id="button"
+              class=" on toggle light "
+              >
+        <!--lit-node 1--><span id="header-container" class="  ">
+          <span id="header-text" part="text"><slot></slot></span>
+          <span part="accents"><slot name="accents"></slot></span>
+        </span>
+        <svg id="icon"
+             role="presentation"
+             xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 448 512">
+          <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
+        </svg>
+      </button>
     <!--/lit-part--></template>CSS Shadow Parts
         <rh-badge>0</rh-badge>
         
@@ -20332,7 +20236,6 @@ span {
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_active-text-color: var(--rh-color-text-primary);
   --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
@@ -20377,17 +20280,16 @@ a {
   border-inline-start-color: var(--rh-color-border-subtle);
 }
 
-#button,
-#button:before,
-#button:after {
-  background-color: var(--rh-color-surface);
-}
-
 #icon {
   width: 16px;
   height: 16px;
   will-change: rotate;
   transition: rotate 0.2s ease-in 0s;
+}
+
+span {
+  overflow: hidden;
+  text-align: start;
 }
 
 #button {
@@ -20400,36 +20302,60 @@ a {
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
   font-size: var(--_font-size);
   color: var(--rh-color-text-primary);
-}
 
-#button #icon {
-  fill: currentcolor;
-}
+  & #icon {
+    fill: currentcolor;
+  }
 
-#button:after {
-  inset-block-start: -1px;
-  width: var(--rh-border-width-lg, 3px);
-  background-color: var(--_after-background-color);
-}
+  &:is(:hover,:active,:focus) {
+    &.light { background-color: var(--rh-color-surface-lighter); }
+    &.dark { background-color: var(--rh-color-surface-dark-alt); }
 
-span {
-  overflow: hidden;
-  text-align: start;
-}
+    & span {
+      color: var(--rh-color-text-primary);
+    }
+  }
 
-[part='container'] {
-  display: flex;
-  gap: var(--rh-space-xl, 24px);
-  container-type: inline-size;
+  &:focus {
+    outline: 2px solid var(--rh-color-interactive-primary-default);
+  }
+
+  &,
+  &:before,
+  &:after {
+    background-color: var(--rh-color-surface);
+  }
+
+  &:after {
+    inset-block-start: -1px;
+    width: var(--rh-border-width-lg, 3px);
+    background-color: var(--_after-background-color);
+  }
+
+  &.expanded {
+    --_after-background-color: var(--rh-color-accent-brand);
+
+    & #icon {
+      rotate: calc(var(--_isRTL, -1) * 180deg);
+    }
+
+    &.on.light {
+      --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
+    }
+
+    &.on.dark {
+      --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+    }
+  }
 }
 
 #header-container {
   display: flex;
   gap: var(--rh-space-md, 8px);
-}
 
-#header-container.bottom {
-  flex-direction: column;
+  &.bottom {
+    flex-direction: column;
+  }
 }
 
 #header-text {
@@ -20442,54 +20368,26 @@ span {
   gap: var(--rh-space-md, 8px);
 }
 
-.expanded #button {
-  --_after-background-color: var(--rh-color-accent-brand);
-}
-
-.expanded #button #icon {
-  rotate: calc(var(--_isRTL, -1) * 180deg);
-}
-
-#button:hover,
-#button:active,
-#button:focus {
-  background-color: var(--rh-color-surface);
-}
-
-#button:hover span,
-#button:focus span,
-#button:active span {
-  color: var(--_active-text-color);
-}
-
-.toggle,
-.toggle:before,
-.toggle:after {
-  padding: 0;
-  margin: 0;
-}
-
 .toggle {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border: 0;
-}
 
-.toggle:after {
-  content: '';
-  position: absolute;
-  inset-block: 0;
-  inset-inline-start: 0;
-}
+  &,
+  &:before,
+  &:after {
+    padding: 0;
+    margin: 0;
+  }
 
-.expanded.on.light {
-  --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
-}
-
-.expanded.on.dark {
-  --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+  &:after {
+    content: '';
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+  }
 }
 
 @container (min-width: 576px) {
@@ -20497,23 +20395,21 @@ span {
     flex-direction: row;
   }
 }
-</style><!--lit-part srZtrN9VNO8=-->
-      <!--lit-node 0--><div id="container" class=" on ">
-        <!--lit-node 1--><button id="button"
-                class="toggle"
-                >
-          <!--lit-node 2--><span id="header-container" class="  ">
-            <span id="header-text" part="text"><slot></slot></span>
-            <span part="accents"><slot name="accents"></slot></span>
-          </span>
-          <svg id="icon"
-               role="presentation"
-               xmlns="http://www.w3.org/2000/svg"
-               viewBox="0 0 448 512">
-            <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
-          </svg>
-        </button>
-      </div>
+</style><!--lit-part Fb0Ua0Ev9dU=-->
+      <!--lit-node 0--><button id="button"
+              class=" on toggle light "
+              >
+        <!--lit-node 1--><span id="header-container" class="  ">
+          <span id="header-text" part="text"><slot></slot></span>
+          <span part="accents"><slot name="accents"></slot></span>
+        </span>
+        <svg id="icon"
+             role="presentation"
+             xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 448 512">
+          <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
+        </svg>
+      </button>
     <!--/lit-part--></template>CSS Custom Properties
         <rh-badge>0</rh-badge>
         
@@ -20619,7 +20515,6 @@ span {
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_active-text-color: var(--rh-color-text-primary);
   --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
@@ -20664,17 +20559,16 @@ a {
   border-inline-start-color: var(--rh-color-border-subtle);
 }
 
-#button,
-#button:before,
-#button:after {
-  background-color: var(--rh-color-surface);
-}
-
 #icon {
   width: 16px;
   height: 16px;
   will-change: rotate;
   transition: rotate 0.2s ease-in 0s;
+}
+
+span {
+  overflow: hidden;
+  text-align: start;
 }
 
 #button {
@@ -20687,36 +20581,60 @@ a {
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
   font-size: var(--_font-size);
   color: var(--rh-color-text-primary);
-}
 
-#button #icon {
-  fill: currentcolor;
-}
+  & #icon {
+    fill: currentcolor;
+  }
 
-#button:after {
-  inset-block-start: -1px;
-  width: var(--rh-border-width-lg, 3px);
-  background-color: var(--_after-background-color);
-}
+  &:is(:hover,:active,:focus) {
+    &.light { background-color: var(--rh-color-surface-lighter); }
+    &.dark { background-color: var(--rh-color-surface-dark-alt); }
 
-span {
-  overflow: hidden;
-  text-align: start;
-}
+    & span {
+      color: var(--rh-color-text-primary);
+    }
+  }
 
-[part='container'] {
-  display: flex;
-  gap: var(--rh-space-xl, 24px);
-  container-type: inline-size;
+  &:focus {
+    outline: 2px solid var(--rh-color-interactive-primary-default);
+  }
+
+  &,
+  &:before,
+  &:after {
+    background-color: var(--rh-color-surface);
+  }
+
+  &:after {
+    inset-block-start: -1px;
+    width: var(--rh-border-width-lg, 3px);
+    background-color: var(--_after-background-color);
+  }
+
+  &.expanded {
+    --_after-background-color: var(--rh-color-accent-brand);
+
+    & #icon {
+      rotate: calc(var(--_isRTL, -1) * 180deg);
+    }
+
+    &.on.light {
+      --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
+    }
+
+    &.on.dark {
+      --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+    }
+  }
 }
 
 #header-container {
   display: flex;
   gap: var(--rh-space-md, 8px);
-}
 
-#header-container.bottom {
-  flex-direction: column;
+  &.bottom {
+    flex-direction: column;
+  }
 }
 
 #header-text {
@@ -20729,54 +20647,26 @@ span {
   gap: var(--rh-space-md, 8px);
 }
 
-.expanded #button {
-  --_after-background-color: var(--rh-color-accent-brand);
-}
-
-.expanded #button #icon {
-  rotate: calc(var(--_isRTL, -1) * 180deg);
-}
-
-#button:hover,
-#button:active,
-#button:focus {
-  background-color: var(--rh-color-surface);
-}
-
-#button:hover span,
-#button:focus span,
-#button:active span {
-  color: var(--_active-text-color);
-}
-
-.toggle,
-.toggle:before,
-.toggle:after {
-  padding: 0;
-  margin: 0;
-}
-
 .toggle {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border: 0;
-}
 
-.toggle:after {
-  content: '';
-  position: absolute;
-  inset-block: 0;
-  inset-inline-start: 0;
-}
+  &,
+  &:before,
+  &:after {
+    padding: 0;
+    margin: 0;
+  }
 
-.expanded.on.light {
-  --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
-}
-
-.expanded.on.dark {
-  --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+  &:after {
+    content: '';
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+  }
 }
 
 @container (min-width: 576px) {
@@ -20784,23 +20674,21 @@ span {
     flex-direction: row;
   }
 }
-</style><!--lit-part srZtrN9VNO8=-->
-      <!--lit-node 0--><div id="container" class=" on expanded ">
-        <!--lit-node 1--><button id="button"
-                class="toggle"
-                >
-          <!--lit-node 2--><span id="header-container" class="  ">
-            <span id="header-text" part="text"><slot></slot></span>
-            <span part="accents"><slot name="accents"></slot></span>
-          </span>
-          <svg id="icon"
-               role="presentation"
-               xmlns="http://www.w3.org/2000/svg"
-               viewBox="0 0 448 512">
-            <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
-          </svg>
-        </button>
-      </div>
+</style><!--lit-part Fb0Ua0Ev9dU=-->
+      <!--lit-node 0--><button id="button"
+              class=" on toggle light expanded "
+              >
+        <!--lit-node 1--><span id="header-container" class="  ">
+          <span id="header-text" part="text"><slot></slot></span>
+          <span part="accents"><slot name="accents"></slot></span>
+        </span>
+        <svg id="icon"
+             role="presentation"
+             xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 448 512">
+          <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
+        </svg>
+      </button>
     <!--/lit-part--></template>Design Tokens
         <rh-badge>1</rh-badge>
       </rh-accordion-header>
@@ -21496,7 +21384,6 @@ svg {
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_active-text-color: var(--rh-color-text-primary);
   --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
@@ -21541,17 +21428,16 @@ a {
   border-inline-start-color: var(--rh-color-border-subtle);
 }
 
-#button,
-#button:before,
-#button:after {
-  background-color: var(--rh-color-surface);
-}
-
 #icon {
   width: 16px;
   height: 16px;
   will-change: rotate;
   transition: rotate 0.2s ease-in 0s;
+}
+
+span {
+  overflow: hidden;
+  text-align: start;
 }
 
 #button {
@@ -21564,36 +21450,60 @@ a {
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
   font-size: var(--_font-size);
   color: var(--rh-color-text-primary);
-}
 
-#button #icon {
-  fill: currentcolor;
-}
+  & #icon {
+    fill: currentcolor;
+  }
 
-#button:after {
-  inset-block-start: -1px;
-  width: var(--rh-border-width-lg, 3px);
-  background-color: var(--_after-background-color);
-}
+  &:is(:hover,:active,:focus) {
+    &.light { background-color: var(--rh-color-surface-lighter); }
+    &.dark { background-color: var(--rh-color-surface-dark-alt); }
 
-span {
-  overflow: hidden;
-  text-align: start;
-}
+    & span {
+      color: var(--rh-color-text-primary);
+    }
+  }
 
-[part='container'] {
-  display: flex;
-  gap: var(--rh-space-xl, 24px);
-  container-type: inline-size;
+  &:focus {
+    outline: 2px solid var(--rh-color-interactive-primary-default);
+  }
+
+  &,
+  &:before,
+  &:after {
+    background-color: var(--rh-color-surface);
+  }
+
+  &:after {
+    inset-block-start: -1px;
+    width: var(--rh-border-width-lg, 3px);
+    background-color: var(--_after-background-color);
+  }
+
+  &.expanded {
+    --_after-background-color: var(--rh-color-accent-brand);
+
+    & #icon {
+      rotate: calc(var(--_isRTL, -1) * 180deg);
+    }
+
+    &.on.light {
+      --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
+    }
+
+    &.on.dark {
+      --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+    }
+  }
 }
 
 #header-container {
   display: flex;
   gap: var(--rh-space-md, 8px);
-}
 
-#header-container.bottom {
-  flex-direction: column;
+  &.bottom {
+    flex-direction: column;
+  }
 }
 
 #header-text {
@@ -21606,54 +21516,26 @@ span {
   gap: var(--rh-space-md, 8px);
 }
 
-.expanded #button {
-  --_after-background-color: var(--rh-color-accent-brand);
-}
-
-.expanded #button #icon {
-  rotate: calc(var(--_isRTL, -1) * 180deg);
-}
-
-#button:hover,
-#button:active,
-#button:focus {
-  background-color: var(--rh-color-surface);
-}
-
-#button:hover span,
-#button:focus span,
-#button:active span {
-  color: var(--_active-text-color);
-}
-
-.toggle,
-.toggle:before,
-.toggle:after {
-  padding: 0;
-  margin: 0;
-}
-
 .toggle {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border: 0;
-}
 
-.toggle:after {
-  content: '';
-  position: absolute;
-  inset-block: 0;
-  inset-inline-start: 0;
-}
+  &,
+  &:before,
+  &:after {
+    padding: 0;
+    margin: 0;
+  }
 
-.expanded.on.light {
-  --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
-}
-
-.expanded.on.dark {
-  --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+  &:after {
+    content: '';
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+  }
 }
 
 @container (min-width: 576px) {
@@ -21661,23 +21543,21 @@ span {
     flex-direction: row;
   }
 }
-</style><!--lit-part srZtrN9VNO8=-->
-      <!--lit-node 0--><div id="container" class=" on expanded ">
-        <!--lit-node 1--><button id="button"
-                class="toggle"
-                >
-          <!--lit-node 2--><span id="header-container" class="  ">
-            <span id="header-text" part="text"><slot></slot></span>
-            <span part="accents"><slot name="accents"></slot></span>
-          </span>
-          <svg id="icon"
-               role="presentation"
-               xmlns="http://www.w3.org/2000/svg"
-               viewBox="0 0 448 512">
-            <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
-          </svg>
-        </button>
-      </div>
+</style><!--lit-part Fb0Ua0Ev9dU=-->
+      <!--lit-node 0--><button id="button"
+              class=" on toggle light expanded "
+              >
+        <!--lit-node 1--><span id="header-container" class="  ">
+          <span id="header-text" part="text"><slot></slot></span>
+          <span part="accents"><slot name="accents"></slot></span>
+        </span>
+        <svg id="icon"
+             role="presentation"
+             xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 448 512">
+          <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
+        </svg>
+      </button>
     <!--/lit-part--></template>Slots
         <rh-badge>2</rh-badge>
         
@@ -21882,7 +21762,6 @@ span {
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_active-text-color: var(--rh-color-text-primary);
   --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
@@ -21927,17 +21806,16 @@ a {
   border-inline-start-color: var(--rh-color-border-subtle);
 }
 
-#button,
-#button:before,
-#button:after {
-  background-color: var(--rh-color-surface);
-}
-
 #icon {
   width: 16px;
   height: 16px;
   will-change: rotate;
   transition: rotate 0.2s ease-in 0s;
+}
+
+span {
+  overflow: hidden;
+  text-align: start;
 }
 
 #button {
@@ -21950,36 +21828,60 @@ a {
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
   font-size: var(--_font-size);
   color: var(--rh-color-text-primary);
-}
 
-#button #icon {
-  fill: currentcolor;
-}
+  & #icon {
+    fill: currentcolor;
+  }
 
-#button:after {
-  inset-block-start: -1px;
-  width: var(--rh-border-width-lg, 3px);
-  background-color: var(--_after-background-color);
-}
+  &:is(:hover,:active,:focus) {
+    &.light { background-color: var(--rh-color-surface-lighter); }
+    &.dark { background-color: var(--rh-color-surface-dark-alt); }
 
-span {
-  overflow: hidden;
-  text-align: start;
-}
+    & span {
+      color: var(--rh-color-text-primary);
+    }
+  }
 
-[part='container'] {
-  display: flex;
-  gap: var(--rh-space-xl, 24px);
-  container-type: inline-size;
+  &:focus {
+    outline: 2px solid var(--rh-color-interactive-primary-default);
+  }
+
+  &,
+  &:before,
+  &:after {
+    background-color: var(--rh-color-surface);
+  }
+
+  &:after {
+    inset-block-start: -1px;
+    width: var(--rh-border-width-lg, 3px);
+    background-color: var(--_after-background-color);
+  }
+
+  &.expanded {
+    --_after-background-color: var(--rh-color-accent-brand);
+
+    & #icon {
+      rotate: calc(var(--_isRTL, -1) * 180deg);
+    }
+
+    &.on.light {
+      --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
+    }
+
+    &.on.dark {
+      --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+    }
+  }
 }
 
 #header-container {
   display: flex;
   gap: var(--rh-space-md, 8px);
-}
 
-#header-container.bottom {
-  flex-direction: column;
+  &.bottom {
+    flex-direction: column;
+  }
 }
 
 #header-text {
@@ -21992,54 +21894,26 @@ span {
   gap: var(--rh-space-md, 8px);
 }
 
-.expanded #button {
-  --_after-background-color: var(--rh-color-accent-brand);
-}
-
-.expanded #button #icon {
-  rotate: calc(var(--_isRTL, -1) * 180deg);
-}
-
-#button:hover,
-#button:active,
-#button:focus {
-  background-color: var(--rh-color-surface);
-}
-
-#button:hover span,
-#button:focus span,
-#button:active span {
-  color: var(--_active-text-color);
-}
-
-.toggle,
-.toggle:before,
-.toggle:after {
-  padding: 0;
-  margin: 0;
-}
-
 .toggle {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border: 0;
-}
 
-.toggle:after {
-  content: '';
-  position: absolute;
-  inset-block: 0;
-  inset-inline-start: 0;
-}
+  &,
+  &:before,
+  &:after {
+    padding: 0;
+    margin: 0;
+  }
 
-.expanded.on.light {
-  --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
-}
-
-.expanded.on.dark {
-  --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+  &:after {
+    content: '';
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+  }
 }
 
 @container (min-width: 576px) {
@@ -22047,23 +21921,21 @@ span {
     flex-direction: row;
   }
 }
-</style><!--lit-part srZtrN9VNO8=-->
-      <!--lit-node 0--><div id="container" class=" on expanded ">
-        <!--lit-node 1--><button id="button"
-                class="toggle"
-                >
-          <!--lit-node 2--><span id="header-container" class="  ">
-            <span id="header-text" part="text"><slot></slot></span>
-            <span part="accents"><slot name="accents"></slot></span>
-          </span>
-          <svg id="icon"
-               role="presentation"
-               xmlns="http://www.w3.org/2000/svg"
-               viewBox="0 0 448 512">
-            <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
-          </svg>
-        </button>
-      </div>
+</style><!--lit-part Fb0Ua0Ev9dU=-->
+      <!--lit-node 0--><button id="button"
+              class=" on toggle light expanded "
+              >
+        <!--lit-node 1--><span id="header-container" class="  ">
+          <span id="header-text" part="text"><slot></slot></span>
+          <span part="accents"><slot name="accents"></slot></span>
+        </span>
+        <svg id="icon"
+             role="presentation"
+             xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 448 512">
+          <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
+        </svg>
+      </button>
     <!--/lit-part--></template>Attributes
         <rh-badge>2</rh-badge>
         
@@ -22278,7 +22150,6 @@ span {
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_active-text-color: var(--rh-color-text-primary);
   --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
@@ -22323,17 +22194,16 @@ a {
   border-inline-start-color: var(--rh-color-border-subtle);
 }
 
-#button,
-#button:before,
-#button:after {
-  background-color: var(--rh-color-surface);
-}
-
 #icon {
   width: 16px;
   height: 16px;
   will-change: rotate;
   transition: rotate 0.2s ease-in 0s;
+}
+
+span {
+  overflow: hidden;
+  text-align: start;
 }
 
 #button {
@@ -22346,36 +22216,60 @@ a {
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
   font-size: var(--_font-size);
   color: var(--rh-color-text-primary);
-}
 
-#button #icon {
-  fill: currentcolor;
-}
+  & #icon {
+    fill: currentcolor;
+  }
 
-#button:after {
-  inset-block-start: -1px;
-  width: var(--rh-border-width-lg, 3px);
-  background-color: var(--_after-background-color);
-}
+  &:is(:hover,:active,:focus) {
+    &.light { background-color: var(--rh-color-surface-lighter); }
+    &.dark { background-color: var(--rh-color-surface-dark-alt); }
 
-span {
-  overflow: hidden;
-  text-align: start;
-}
+    & span {
+      color: var(--rh-color-text-primary);
+    }
+  }
 
-[part='container'] {
-  display: flex;
-  gap: var(--rh-space-xl, 24px);
-  container-type: inline-size;
+  &:focus {
+    outline: 2px solid var(--rh-color-interactive-primary-default);
+  }
+
+  &,
+  &:before,
+  &:after {
+    background-color: var(--rh-color-surface);
+  }
+
+  &:after {
+    inset-block-start: -1px;
+    width: var(--rh-border-width-lg, 3px);
+    background-color: var(--_after-background-color);
+  }
+
+  &.expanded {
+    --_after-background-color: var(--rh-color-accent-brand);
+
+    & #icon {
+      rotate: calc(var(--_isRTL, -1) * 180deg);
+    }
+
+    &.on.light {
+      --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
+    }
+
+    &.on.dark {
+      --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+    }
+  }
 }
 
 #header-container {
   display: flex;
   gap: var(--rh-space-md, 8px);
-}
 
-#header-container.bottom {
-  flex-direction: column;
+  &.bottom {
+    flex-direction: column;
+  }
 }
 
 #header-text {
@@ -22388,54 +22282,26 @@ span {
   gap: var(--rh-space-md, 8px);
 }
 
-.expanded #button {
-  --_after-background-color: var(--rh-color-accent-brand);
-}
-
-.expanded #button #icon {
-  rotate: calc(var(--_isRTL, -1) * 180deg);
-}
-
-#button:hover,
-#button:active,
-#button:focus {
-  background-color: var(--rh-color-surface);
-}
-
-#button:hover span,
-#button:focus span,
-#button:active span {
-  color: var(--_active-text-color);
-}
-
-.toggle,
-.toggle:before,
-.toggle:after {
-  padding: 0;
-  margin: 0;
-}
-
 .toggle {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border: 0;
-}
 
-.toggle:after {
-  content: '';
-  position: absolute;
-  inset-block: 0;
-  inset-inline-start: 0;
-}
+  &,
+  &:before,
+  &:after {
+    padding: 0;
+    margin: 0;
+  }
 
-.expanded.on.light {
-  --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
-}
-
-.expanded.on.dark {
-  --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+  &:after {
+    content: '';
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+  }
 }
 
 @container (min-width: 576px) {
@@ -22443,23 +22309,21 @@ span {
     flex-direction: row;
   }
 }
-</style><!--lit-part srZtrN9VNO8=-->
-      <!--lit-node 0--><div id="container" class=" on ">
-        <!--lit-node 1--><button id="button"
-                class="toggle"
-                >
-          <!--lit-node 2--><span id="header-container" class="  ">
-            <span id="header-text" part="text"><slot></slot></span>
-            <span part="accents"><slot name="accents"></slot></span>
-          </span>
-          <svg id="icon"
-               role="presentation"
-               xmlns="http://www.w3.org/2000/svg"
-               viewBox="0 0 448 512">
-            <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
-          </svg>
-        </button>
-      </div>
+</style><!--lit-part Fb0Ua0Ev9dU=-->
+      <!--lit-node 0--><button id="button"
+              class=" on toggle light "
+              >
+        <!--lit-node 1--><span id="header-container" class="  ">
+          <span id="header-text" part="text"><slot></slot></span>
+          <span part="accents"><slot name="accents"></slot></span>
+        </span>
+        <svg id="icon"
+             role="presentation"
+             xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 448 512">
+          <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
+        </svg>
+      </button>
     <!--/lit-part--></template>Methods
         <rh-badge>0</rh-badge>
         
@@ -22565,7 +22429,6 @@ span {
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_active-text-color: var(--rh-color-text-primary);
   --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
@@ -22610,17 +22473,16 @@ a {
   border-inline-start-color: var(--rh-color-border-subtle);
 }
 
-#button,
-#button:before,
-#button:after {
-  background-color: var(--rh-color-surface);
-}
-
 #icon {
   width: 16px;
   height: 16px;
   will-change: rotate;
   transition: rotate 0.2s ease-in 0s;
+}
+
+span {
+  overflow: hidden;
+  text-align: start;
 }
 
 #button {
@@ -22633,36 +22495,60 @@ a {
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
   font-size: var(--_font-size);
   color: var(--rh-color-text-primary);
-}
 
-#button #icon {
-  fill: currentcolor;
-}
+  & #icon {
+    fill: currentcolor;
+  }
 
-#button:after {
-  inset-block-start: -1px;
-  width: var(--rh-border-width-lg, 3px);
-  background-color: var(--_after-background-color);
-}
+  &:is(:hover,:active,:focus) {
+    &.light { background-color: var(--rh-color-surface-lighter); }
+    &.dark { background-color: var(--rh-color-surface-dark-alt); }
 
-span {
-  overflow: hidden;
-  text-align: start;
-}
+    & span {
+      color: var(--rh-color-text-primary);
+    }
+  }
 
-[part='container'] {
-  display: flex;
-  gap: var(--rh-space-xl, 24px);
-  container-type: inline-size;
+  &:focus {
+    outline: 2px solid var(--rh-color-interactive-primary-default);
+  }
+
+  &,
+  &:before,
+  &:after {
+    background-color: var(--rh-color-surface);
+  }
+
+  &:after {
+    inset-block-start: -1px;
+    width: var(--rh-border-width-lg, 3px);
+    background-color: var(--_after-background-color);
+  }
+
+  &.expanded {
+    --_after-background-color: var(--rh-color-accent-brand);
+
+    & #icon {
+      rotate: calc(var(--_isRTL, -1) * 180deg);
+    }
+
+    &.on.light {
+      --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
+    }
+
+    &.on.dark {
+      --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+    }
+  }
 }
 
 #header-container {
   display: flex;
   gap: var(--rh-space-md, 8px);
-}
 
-#header-container.bottom {
-  flex-direction: column;
+  &.bottom {
+    flex-direction: column;
+  }
 }
 
 #header-text {
@@ -22675,54 +22561,26 @@ span {
   gap: var(--rh-space-md, 8px);
 }
 
-.expanded #button {
-  --_after-background-color: var(--rh-color-accent-brand);
-}
-
-.expanded #button #icon {
-  rotate: calc(var(--_isRTL, -1) * 180deg);
-}
-
-#button:hover,
-#button:active,
-#button:focus {
-  background-color: var(--rh-color-surface);
-}
-
-#button:hover span,
-#button:focus span,
-#button:active span {
-  color: var(--_active-text-color);
-}
-
-.toggle,
-.toggle:before,
-.toggle:after {
-  padding: 0;
-  margin: 0;
-}
-
 .toggle {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border: 0;
-}
 
-.toggle:after {
-  content: '';
-  position: absolute;
-  inset-block: 0;
-  inset-inline-start: 0;
-}
+  &,
+  &:before,
+  &:after {
+    padding: 0;
+    margin: 0;
+  }
 
-.expanded.on.light {
-  --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
-}
-
-.expanded.on.dark {
-  --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+  &:after {
+    content: '';
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+  }
 }
 
 @container (min-width: 576px) {
@@ -22730,23 +22588,21 @@ span {
     flex-direction: row;
   }
 }
-</style><!--lit-part srZtrN9VNO8=-->
-      <!--lit-node 0--><div id="container" class=" on expanded ">
-        <!--lit-node 1--><button id="button"
-                class="toggle"
-                >
-          <!--lit-node 2--><span id="header-container" class="  ">
-            <span id="header-text" part="text"><slot></slot></span>
-            <span part="accents"><slot name="accents"></slot></span>
-          </span>
-          <svg id="icon"
-               role="presentation"
-               xmlns="http://www.w3.org/2000/svg"
-               viewBox="0 0 448 512">
-            <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
-          </svg>
-        </button>
-      </div>
+</style><!--lit-part Fb0Ua0Ev9dU=-->
+      <!--lit-node 0--><button id="button"
+              class=" on toggle light expanded "
+              >
+        <!--lit-node 1--><span id="header-container" class="  ">
+          <span id="header-text" part="text"><slot></slot></span>
+          <span part="accents"><slot name="accents"></slot></span>
+        </span>
+        <svg id="icon"
+             role="presentation"
+             xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 448 512">
+          <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
+        </svg>
+      </button>
     <!--/lit-part--></template>Events
         <rh-badge>1</rh-badge>
         
@@ -22948,7 +22804,6 @@ span {
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_active-text-color: var(--rh-color-text-primary);
   --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
@@ -22993,17 +22848,16 @@ a {
   border-inline-start-color: var(--rh-color-border-subtle);
 }
 
-#button,
-#button:before,
-#button:after {
-  background-color: var(--rh-color-surface);
-}
-
 #icon {
   width: 16px;
   height: 16px;
   will-change: rotate;
   transition: rotate 0.2s ease-in 0s;
+}
+
+span {
+  overflow: hidden;
+  text-align: start;
 }
 
 #button {
@@ -23016,36 +22870,60 @@ a {
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
   font-size: var(--_font-size);
   color: var(--rh-color-text-primary);
-}
 
-#button #icon {
-  fill: currentcolor;
-}
+  & #icon {
+    fill: currentcolor;
+  }
 
-#button:after {
-  inset-block-start: -1px;
-  width: var(--rh-border-width-lg, 3px);
-  background-color: var(--_after-background-color);
-}
+  &:is(:hover,:active,:focus) {
+    &.light { background-color: var(--rh-color-surface-lighter); }
+    &.dark { background-color: var(--rh-color-surface-dark-alt); }
 
-span {
-  overflow: hidden;
-  text-align: start;
-}
+    & span {
+      color: var(--rh-color-text-primary);
+    }
+  }
 
-[part='container'] {
-  display: flex;
-  gap: var(--rh-space-xl, 24px);
-  container-type: inline-size;
+  &:focus {
+    outline: 2px solid var(--rh-color-interactive-primary-default);
+  }
+
+  &,
+  &:before,
+  &:after {
+    background-color: var(--rh-color-surface);
+  }
+
+  &:after {
+    inset-block-start: -1px;
+    width: var(--rh-border-width-lg, 3px);
+    background-color: var(--_after-background-color);
+  }
+
+  &.expanded {
+    --_after-background-color: var(--rh-color-accent-brand);
+
+    & #icon {
+      rotate: calc(var(--_isRTL, -1) * 180deg);
+    }
+
+    &.on.light {
+      --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
+    }
+
+    &.on.dark {
+      --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+    }
+  }
 }
 
 #header-container {
   display: flex;
   gap: var(--rh-space-md, 8px);
-}
 
-#header-container.bottom {
-  flex-direction: column;
+  &.bottom {
+    flex-direction: column;
+  }
 }
 
 #header-text {
@@ -23058,54 +22936,26 @@ span {
   gap: var(--rh-space-md, 8px);
 }
 
-.expanded #button {
-  --_after-background-color: var(--rh-color-accent-brand);
-}
-
-.expanded #button #icon {
-  rotate: calc(var(--_isRTL, -1) * 180deg);
-}
-
-#button:hover,
-#button:active,
-#button:focus {
-  background-color: var(--rh-color-surface);
-}
-
-#button:hover span,
-#button:focus span,
-#button:active span {
-  color: var(--_active-text-color);
-}
-
-.toggle,
-.toggle:before,
-.toggle:after {
-  padding: 0;
-  margin: 0;
-}
-
 .toggle {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border: 0;
-}
 
-.toggle:after {
-  content: '';
-  position: absolute;
-  inset-block: 0;
-  inset-inline-start: 0;
-}
+  &,
+  &:before,
+  &:after {
+    padding: 0;
+    margin: 0;
+  }
 
-.expanded.on.light {
-  --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
-}
-
-.expanded.on.dark {
-  --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+  &:after {
+    content: '';
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+  }
 }
 
 @container (min-width: 576px) {
@@ -23113,23 +22963,21 @@ span {
     flex-direction: row;
   }
 }
-</style><!--lit-part srZtrN9VNO8=-->
-      <!--lit-node 0--><div id="container" class=" on expanded ">
-        <!--lit-node 1--><button id="button"
-                class="toggle"
-                >
-          <!--lit-node 2--><span id="header-container" class="  ">
-            <span id="header-text" part="text"><slot></slot></span>
-            <span part="accents"><slot name="accents"></slot></span>
-          </span>
-          <svg id="icon"
-               role="presentation"
-               xmlns="http://www.w3.org/2000/svg"
-               viewBox="0 0 448 512">
-            <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
-          </svg>
-        </button>
-      </div>
+</style><!--lit-part Fb0Ua0Ev9dU=-->
+      <!--lit-node 0--><button id="button"
+              class=" on toggle light expanded "
+              >
+        <!--lit-node 1--><span id="header-container" class="  ">
+          <span id="header-text" part="text"><slot></slot></span>
+          <span part="accents"><slot name="accents"></slot></span>
+        </span>
+        <svg id="icon"
+             role="presentation"
+             xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 448 512">
+          <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
+        </svg>
+      </button>
     <!--/lit-part--></template>CSS Shadow Parts
         <rh-badge>3</rh-badge>
         
@@ -23339,7 +23187,6 @@ span {
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_active-text-color: var(--rh-color-text-primary);
   --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
@@ -23384,17 +23231,16 @@ a {
   border-inline-start-color: var(--rh-color-border-subtle);
 }
 
-#button,
-#button:before,
-#button:after {
-  background-color: var(--rh-color-surface);
-}
-
 #icon {
   width: 16px;
   height: 16px;
   will-change: rotate;
   transition: rotate 0.2s ease-in 0s;
+}
+
+span {
+  overflow: hidden;
+  text-align: start;
 }
 
 #button {
@@ -23407,36 +23253,60 @@ a {
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
   font-size: var(--_font-size);
   color: var(--rh-color-text-primary);
-}
 
-#button #icon {
-  fill: currentcolor;
-}
+  & #icon {
+    fill: currentcolor;
+  }
 
-#button:after {
-  inset-block-start: -1px;
-  width: var(--rh-border-width-lg, 3px);
-  background-color: var(--_after-background-color);
-}
+  &:is(:hover,:active,:focus) {
+    &.light { background-color: var(--rh-color-surface-lighter); }
+    &.dark { background-color: var(--rh-color-surface-dark-alt); }
 
-span {
-  overflow: hidden;
-  text-align: start;
-}
+    & span {
+      color: var(--rh-color-text-primary);
+    }
+  }
 
-[part='container'] {
-  display: flex;
-  gap: var(--rh-space-xl, 24px);
-  container-type: inline-size;
+  &:focus {
+    outline: 2px solid var(--rh-color-interactive-primary-default);
+  }
+
+  &,
+  &:before,
+  &:after {
+    background-color: var(--rh-color-surface);
+  }
+
+  &:after {
+    inset-block-start: -1px;
+    width: var(--rh-border-width-lg, 3px);
+    background-color: var(--_after-background-color);
+  }
+
+  &.expanded {
+    --_after-background-color: var(--rh-color-accent-brand);
+
+    & #icon {
+      rotate: calc(var(--_isRTL, -1) * 180deg);
+    }
+
+    &.on.light {
+      --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
+    }
+
+    &.on.dark {
+      --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+    }
+  }
 }
 
 #header-container {
   display: flex;
   gap: var(--rh-space-md, 8px);
-}
 
-#header-container.bottom {
-  flex-direction: column;
+  &.bottom {
+    flex-direction: column;
+  }
 }
 
 #header-text {
@@ -23449,54 +23319,26 @@ span {
   gap: var(--rh-space-md, 8px);
 }
 
-.expanded #button {
-  --_after-background-color: var(--rh-color-accent-brand);
-}
-
-.expanded #button #icon {
-  rotate: calc(var(--_isRTL, -1) * 180deg);
-}
-
-#button:hover,
-#button:active,
-#button:focus {
-  background-color: var(--rh-color-surface);
-}
-
-#button:hover span,
-#button:focus span,
-#button:active span {
-  color: var(--_active-text-color);
-}
-
-.toggle,
-.toggle:before,
-.toggle:after {
-  padding: 0;
-  margin: 0;
-}
-
 .toggle {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border: 0;
-}
 
-.toggle:after {
-  content: '';
-  position: absolute;
-  inset-block: 0;
-  inset-inline-start: 0;
-}
+  &,
+  &:before,
+  &:after {
+    padding: 0;
+    margin: 0;
+  }
 
-.expanded.on.light {
-  --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
-}
-
-.expanded.on.dark {
-  --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+  &:after {
+    content: '';
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+  }
 }
 
 @container (min-width: 576px) {
@@ -23504,23 +23346,21 @@ span {
     flex-direction: row;
   }
 }
-</style><!--lit-part srZtrN9VNO8=-->
-      <!--lit-node 0--><div id="container" class=" on expanded ">
-        <!--lit-node 1--><button id="button"
-                class="toggle"
-                >
-          <!--lit-node 2--><span id="header-container" class="  ">
-            <span id="header-text" part="text"><slot></slot></span>
-            <span part="accents"><slot name="accents"></slot></span>
-          </span>
-          <svg id="icon"
-               role="presentation"
-               xmlns="http://www.w3.org/2000/svg"
-               viewBox="0 0 448 512">
-            <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
-          </svg>
-        </button>
-      </div>
+</style><!--lit-part Fb0Ua0Ev9dU=-->
+      <!--lit-node 0--><button id="button"
+              class=" on toggle light expanded "
+              >
+        <!--lit-node 1--><span id="header-container" class="  ">
+          <span id="header-text" part="text"><slot></slot></span>
+          <span part="accents"><slot name="accents"></slot></span>
+        </span>
+        <svg id="icon"
+             role="presentation"
+             xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 448 512">
+          <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
+        </svg>
+      </button>
     <!--/lit-part--></template>CSS Custom Properties
         <rh-badge>6</rh-badge>
         
@@ -23760,7 +23600,6 @@ span {
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_active-text-color: var(--rh-color-text-primary);
   --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
@@ -23805,17 +23644,16 @@ a {
   border-inline-start-color: var(--rh-color-border-subtle);
 }
 
-#button,
-#button:before,
-#button:after {
-  background-color: var(--rh-color-surface);
-}
-
 #icon {
   width: 16px;
   height: 16px;
   will-change: rotate;
   transition: rotate 0.2s ease-in 0s;
+}
+
+span {
+  overflow: hidden;
+  text-align: start;
 }
 
 #button {
@@ -23828,36 +23666,60 @@ a {
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
   font-size: var(--_font-size);
   color: var(--rh-color-text-primary);
-}
 
-#button #icon {
-  fill: currentcolor;
-}
+  & #icon {
+    fill: currentcolor;
+  }
 
-#button:after {
-  inset-block-start: -1px;
-  width: var(--rh-border-width-lg, 3px);
-  background-color: var(--_after-background-color);
-}
+  &:is(:hover,:active,:focus) {
+    &.light { background-color: var(--rh-color-surface-lighter); }
+    &.dark { background-color: var(--rh-color-surface-dark-alt); }
 
-span {
-  overflow: hidden;
-  text-align: start;
-}
+    & span {
+      color: var(--rh-color-text-primary);
+    }
+  }
 
-[part='container'] {
-  display: flex;
-  gap: var(--rh-space-xl, 24px);
-  container-type: inline-size;
+  &:focus {
+    outline: 2px solid var(--rh-color-interactive-primary-default);
+  }
+
+  &,
+  &:before,
+  &:after {
+    background-color: var(--rh-color-surface);
+  }
+
+  &:after {
+    inset-block-start: -1px;
+    width: var(--rh-border-width-lg, 3px);
+    background-color: var(--_after-background-color);
+  }
+
+  &.expanded {
+    --_after-background-color: var(--rh-color-accent-brand);
+
+    & #icon {
+      rotate: calc(var(--_isRTL, -1) * 180deg);
+    }
+
+    &.on.light {
+      --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
+    }
+
+    &.on.dark {
+      --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+    }
+  }
 }
 
 #header-container {
   display: flex;
   gap: var(--rh-space-md, 8px);
-}
 
-#header-container.bottom {
-  flex-direction: column;
+  &.bottom {
+    flex-direction: column;
+  }
 }
 
 #header-text {
@@ -23870,54 +23732,26 @@ span {
   gap: var(--rh-space-md, 8px);
 }
 
-.expanded #button {
-  --_after-background-color: var(--rh-color-accent-brand);
-}
-
-.expanded #button #icon {
-  rotate: calc(var(--_isRTL, -1) * 180deg);
-}
-
-#button:hover,
-#button:active,
-#button:focus {
-  background-color: var(--rh-color-surface);
-}
-
-#button:hover span,
-#button:focus span,
-#button:active span {
-  color: var(--_active-text-color);
-}
-
-.toggle,
-.toggle:before,
-.toggle:after {
-  padding: 0;
-  margin: 0;
-}
-
 .toggle {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border: 0;
-}
 
-.toggle:after {
-  content: '';
-  position: absolute;
-  inset-block: 0;
-  inset-inline-start: 0;
-}
+  &,
+  &:before,
+  &:after {
+    padding: 0;
+    margin: 0;
+  }
 
-.expanded.on.light {
-  --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
-}
-
-.expanded.on.dark {
-  --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+  &:after {
+    content: '';
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+  }
 }
 
 @container (min-width: 576px) {
@@ -23925,23 +23759,21 @@ span {
     flex-direction: row;
   }
 }
-</style><!--lit-part srZtrN9VNO8=-->
-      <!--lit-node 0--><div id="container" class=" on expanded ">
-        <!--lit-node 1--><button id="button"
-                class="toggle"
-                >
-          <!--lit-node 2--><span id="header-container" class="  ">
-            <span id="header-text" part="text"><slot></slot></span>
-            <span part="accents"><slot name="accents"></slot></span>
-          </span>
-          <svg id="icon"
-               role="presentation"
-               xmlns="http://www.w3.org/2000/svg"
-               viewBox="0 0 448 512">
-            <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
-          </svg>
-        </button>
-      </div>
+</style><!--lit-part Fb0Ua0Ev9dU=-->
+      <!--lit-node 0--><button id="button"
+              class=" on toggle light expanded "
+              >
+        <!--lit-node 1--><span id="header-container" class="  ">
+          <span id="header-text" part="text"><slot></slot></span>
+          <span part="accents"><slot name="accents"></slot></span>
+        </span>
+        <svg id="icon"
+             role="presentation"
+             xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 448 512">
+          <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
+        </svg>
+      </button>
     <!--/lit-part--></template>Design Tokens
         <rh-badge>16</rh-badge>
       </rh-accordion-header>

@@ -39,7 +39,6 @@ let RhAccordionPanel = class RhAccordionPanel extends LitElement {
     `;
     }
 };
-RhAccordionPanel.version = '{{version}}';
 RhAccordionPanel.styles = [styles];
 __decorate([
     property({ type: Boolean, reflect: true })

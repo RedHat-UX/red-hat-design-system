@@ -109,11 +109,15 @@ let RhAccordion = RhAccordion_1 = _a = class RhAccordion extends LitElement {
         this.updateAccessibility();
     }
     render() {
-        const { on = 'light' } = this;
+        const { on } = this;
         const expanded = __classPrivateFieldGet(this, _RhAccordion_expanded, "f");
         return html `
       <div id="container"
-           class="${classMap({ on: true, [on]: true, expanded })}"><slot></slot></div>
+           class="${classMap({
+            on: true,
+            [on ?? 'light']: true,
+            expanded,
+        })}"><slot></slot></div>
     `;
     }
     async getUpdateComplete() {

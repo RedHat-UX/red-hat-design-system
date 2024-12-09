@@ -22,7 +22,7 @@ export declare class ColorContextConsumer<T extends ReactiveElement> extends Col
     constructor(host: T, options?: ColorContextConsumerOptions<T> | undefined);
     /** When a consumer connects, it requests colour context from the closest provider. */
     hostConnected(): Promise<void>;
-    hostUpdated(): void;
+    hostUpdated(): Promise<void>;
     /** When a consumer disconnects, it's removed from the list of consumers. */
     hostDisconnected(): void;
     /**

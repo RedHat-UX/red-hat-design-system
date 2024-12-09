@@ -12,7 +12,7 @@ import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 import { consume } from '@lit/context';
 import { context } from './context.js';
 import { css } from "lit";
-const styles = css `:host{--_padding-block-start:var(--rh-space-lg,16px);--_padding-inline-end:var(--rh-space-xl,24px);--_padding-block-end:var(--rh-space-lg,16px);--_padding-inline-start:var(--rh-space-xl,24px);--_active-text-color:var(--rh-color-text-primary);--_font-size:var(--rh-font-size-body-text-lg,1.125rem);--_after-background-color:#0000;--_expanded-background-color:var(--rh-color-accent-brand);--_isRTL:-1}#heading{font-size:100%;padding:0;margin:0;color:var(--rh-color-text-primary);background-color:var(--rh-color-surface);font-weight:var(--rh-font-weight-heading-medium,500)}a,button{cursor:pointer}.rtl{--_isRTL:1}.large{--_padding-block-start:var(--rh-space-lg,16px);--_padding-inline-end:var(--rh-space-xl,24px);--_padding-block-end:var(--rh-space-lg,16px);--_padding-inline-start:var(--rh-space-xl,24px)}:host([expanded]){border-inline-end:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle)}:host(.animating) #button,:host([expanded]) #button{border-inline-end-color:var(--rh-color-border-subtle);border-inline-start-color:var(--rh-color-border-subtle)}#button,#button:after,#button:before{background-color:var(--rh-color-surface)}#icon{width:16px;height:16px;will-change:rotate;transition:rotate .2s ease-in 0s}#button{width:100%;padding:var(--_padding-block-start) var(--_padding-inline-end) var(--_padding-block-end) var(--_padding-inline-start);font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text","Noto Sans Arabic","Noto Sans Hebrew","Noto Sans JP","Noto Sans KR","Noto Sans Malayalam","Noto Sans SC","Noto Sans TC","Noto Sans Thai",Helvetica,Arial,sans-serif);font-size:var(--_font-size);color:var(--rh-color-text-primary)}#button #icon{fill:currentcolor}#button:after{inset-block-start:-1px;width:var(--rh-border-width-lg,3px);background-color:var(--_after-background-color)}span{overflow:hidden;text-align:start}[part=container]{display:flex;gap:var(--rh-space-xl,24px);container-type:inline-size}#header-container{display:flex;gap:var(--rh-space-md,8px)}#header-container.bottom{flex-direction:column}#header-text{font-weight:var(--rh-font-weight-heading-bold,700)}[part=accents]{display:flex;flex-wrap:wrap;gap:var(--rh-space-md,8px)}.expanded #button{--_after-background-color:var(--rh-color-accent-brand)}.expanded #button #icon{rotate:calc(var(--_isRTL, -1)*180deg)}#button:active,#button:focus,#button:hover{background-color:var(--rh-color-surface)}#button:active span,#button:focus span,#button:hover span{color:var(--_active-text-color)}.toggle,.toggle:after,.toggle:before{padding:0;margin:0}.toggle{position:relative;display:flex;align-items:center;justify-content:space-between;border:0}.toggle:after{content:"";position:absolute;inset-block:0;inset-inline-start:0}.expanded.on.light{--rh-color-surface:var(--rh-color-surface-lightest,#fff)}.expanded.on.dark{--rh-color-surface:var(--rh-color-surface-darkest,#151515)}@container (min-width: 576px){#header-container:not(.bottom){flex-direction:row}}`;
+const styles = css `:host{--_padding-block-start:var(--rh-space-lg,16px);--_padding-inline-end:var(--rh-space-xl,24px);--_padding-block-end:var(--rh-space-lg,16px);--_padding-inline-start:var(--rh-space-xl,24px);--_font-size:var(--rh-font-size-body-text-lg,1.125rem);--_after-background-color:#0000;--_expanded-background-color:var(--rh-color-accent-brand);--_isRTL:-1}#heading{font-size:100%;padding:0;margin:0;color:var(--rh-color-text-primary);background-color:var(--rh-color-surface);font-weight:var(--rh-font-weight-heading-medium,500)}a,button{cursor:pointer}.rtl{--_isRTL:1}.large{--_padding-block-start:var(--rh-space-lg,16px);--_padding-inline-end:var(--rh-space-xl,24px);--_padding-block-end:var(--rh-space-lg,16px);--_padding-inline-start:var(--rh-space-xl,24px)}:host([expanded]){border-inline-end:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle)}:host(.animating) #button,:host([expanded]) #button{border-inline-end-color:var(--rh-color-border-subtle);border-inline-start-color:var(--rh-color-border-subtle)}#icon{width:16px;height:16px;will-change:rotate;transition:rotate .2s ease-in 0s}span{overflow:hidden;text-align:start}#button{width:100%;padding:var(--_padding-block-start) var(--_padding-inline-end) var(--_padding-block-end) var(--_padding-inline-start);font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text","Noto Sans Arabic","Noto Sans Hebrew","Noto Sans JP","Noto Sans KR","Noto Sans Malayalam","Noto Sans SC","Noto Sans TC","Noto Sans Thai",Helvetica,Arial,sans-serif);font-size:var(--_font-size);color:var(--rh-color-text-primary)}#button #icon{fill:currentcolor}#button.light:is(:hover,:active,:focus){background-color:var(--rh-color-surface-lighter)}#button.dark:is(:hover,:active,:focus){background-color:var(--rh-color-surface-dark-alt)}#button:is(:hover,:active,:focus) span{color:var(--rh-color-text-primary)}#button:focus{outline:2px solid var(--rh-color-interactive-primary-default)}#button,#button:after,#button:before{background-color:var(--rh-color-surface)}#button:after{inset-block-start:-1px;width:var(--rh-border-width-lg,3px);background-color:var(--_after-background-color)}#button.expanded{--_after-background-color:var(--rh-color-accent-brand)}#button.expanded #icon{rotate:calc(var(--_isRTL, -1)*180deg)}#button.expanded.on.light{--rh-color-surface:var(--rh-color-surface-lightest,#fff)}#button.expanded.on.dark{--rh-color-surface:var(--rh-color-surface-darkest,#151515)}#header-container{display:flex;gap:var(--rh-space-md,8px)}#header-container.bottom{flex-direction:column}#header-text{font-weight:var(--rh-font-weight-heading-bold,700)}[part=accents]{display:flex;flex-wrap:wrap;gap:var(--rh-space-md,8px)}.toggle{position:relative;display:flex;align-items:center;justify-content:space-between;border:0}.toggle,.toggle:after,.toggle:before{padding:0;margin:0}.toggle:after{content:"";position:absolute;inset-block:0;inset-inline-start:0}@container (min-width: 576px){#header-container:not(.bottom){flex-direction:row}}`;
 import { HeadingLevelController } from '@rhds/elements/lib/context/headings/controller.js';
 export class AccordionHeaderChangeEvent extends Event {
     constructor(expanded, toggle, accordion) {
@@ -60,26 +60,24 @@ let RhAccordionHeader = class RhAccordionHeader extends LitElement {
         }
     }
     render() {
-        const { expanded, on = '' } = this;
+        const { expanded, on = 'light' } = this;
         const { accents, large = false } = this.ctx ?? {};
         const rtl = __classPrivateFieldGet(this, _RhAccordionHeader_dir, "f").dir === 'rtl';
         return html `
-      <div id="container" class="${classMap({ on: true, [on]: !!on, rtl, large, expanded })}">
-        <button id="button"
-                class="toggle"
-                @click="${__classPrivateFieldGet(this, _RhAccordionHeader_instances, "m", _RhAccordionHeader_onClick)}">
-          <span id="header-container" class="${classMap({ [accents ?? '']: !!accents })}">
-            <span id="header-text" part="text"><slot></slot></span>
-            <span part="accents"><slot name="accents"></slot></span>
-          </span>
-          <svg id="icon"
-               role="presentation"
-               xmlns="http://www.w3.org/2000/svg"
-               viewBox="0 0 448 512">
-            <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
-          </svg>
-        </button>
-      </div>
+      <button id="button"
+              class="${classMap({ on: true, toggle: true, [on]: !!on, rtl, large, expanded })}"
+              @click="${__classPrivateFieldGet(this, _RhAccordionHeader_instances, "m", _RhAccordionHeader_onClick)}">
+        <span id="header-container" class="${classMap({ [accents ?? '']: !!accents })}">
+          <span id="header-text" part="text"><slot></slot></span>
+          <span part="accents"><slot name="accents"></slot></span>
+        </span>
+        <svg id="icon"
+             role="presentation"
+             xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 448 512">
+          <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
+        </svg>
+      </button>
     `;
     }
     expandedChanged() {
