@@ -1,0 +1,32 @@
+<rh-tile compact bleed>
+  <rh-icon slot="icon" set="standard" icon="mug"></rh-icon>
+  <svg slot="image" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 120">
+    <title>A placeholder image in a card header slot</title>
+    <rect x="0"
+          y="0"
+          width="320"
+          height="120"
+          fill="var(--rh-color-interactive-primary-default)"
+          fill-opacity="0.2"
+          stroke="var(--rh-color-interactive-primary-hover)"
+          stroke-width="1"
+          stroke-dasharray="1 1"
+    />
+  </svg>
+  <h2 slot="headline"><a href="#top">Compact link tile</a></h2>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit set est egestat, a sollicitudn mauris tincidunt.</p>
+</rh-tile>
+
+
+<script type="module">
+  import '@rhds/elements/rh-tile/rh-tile.js';
+</script>
+
+<link rel="stylesheet" href="../rh-tile-lightdom.css">
+
+<style>
+  rh-tile rh-icon {
+    color: var(--rh-color-brand-red);
+  }
+</style>
+
