@@ -74,20 +74,17 @@ span {
     fill: currentcolor;
   }
 
-  &:hover.light { background-color: var(--rh-color-surface-lighter); }
-  &:hover.dark { background-color: var(--rh-color-surface-dark-alt); }
+  &:is(:hover,:active,:focus) {
+    &.light { background-color: var(--rh-color-surface-lighter); }
+    &.dark { background-color: var(--rh-color-surface-dark-alt); }
 
-  &:active,
-  &:focus {
-    background-color: var(--rh-color-surface);
-  }
-
-  &:hover,
-  &:focus,
-  &:active {
     & span {
       color: var(--rh-color-text-primary);
     }
+  }
+
+  &:focus {
+    outline: 2px solid var(--rh-color-interactive-primary-default);
   }
 
   &,
