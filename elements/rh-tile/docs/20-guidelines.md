@@ -157,65 +157,146 @@ The vertical height of a tile will increase as more content is added. The vertic
 
 ## Best practices
 
+### One action per tile
+
+<div class="grid sm-two-columns">
+  <uxdot-best-practice variant="do">
+    <uxdot-example width-adjustment="360px" slot="image">
+      <img src="../tile-best-practices-actions-1-do.svg"
+            alt="Link tile with one link and selectable tile with radio button"
+            width="360"
+            height="520">
+    </uxdot-example>
+    <p>Each tile should go to only one destination or have one action.</p>
+  </uxdot-best-practice>
+
+  <uxdot-best-practice variant="dont">
+    <uxdot-example width-adjustment="360px" slot="image">
+      <img src="../tile-best-practices-actions-1-dont.svg"
+            alt="Link tile with a CTA and a selectable tile with a 'Learn more' link"
+            width="360"
+            height="520">
+    </uxdot-example>
+    <p>Do not use a tile if you need to include more than one link or action.</p>
+  </uxdot-best-practice>
+</div>
+
 ### Link tile actions
 
-Do not use a link tile if it needs to link to more than one destination.
+<div class="grid sm-two-columns">
+  <uxdot-best-practice variant="do">
+    <uxdot-example width-adjustment="360px" slot="image">
+      <img src="../tile-best-practices-actions-2-do.svg"
+            alt="Link tile with a link to the 'Talk to a Red Hatter' form and description"
+            width="360"
+            height="191">
+    </uxdot-example>
+    <p>Link tiles should navigate users to another page or section.</p>
+  </uxdot-best-practice>
 
-<uxdot-example width-adjustment="360px" danger>
-  <img src="../best-practices-link-tile-actions-1.png"
-        alt="Example of an incorrectly used link tile with a call to action in the body"
-        width="360"
-        height="316">
-</uxdot-example> 
+  <uxdot-best-practice variant="dont">
+    <uxdot-example width-adjustment="360px" slot="image">
+      <img src="../tile-best-practices-actions-2-dont.svg"
+            alt="Link tile that uses 'Submit' as the heading text"
+            width="360"
+            height="191">
+    </uxdot-example>
+    <p>A link tile should not be used as a button.</p>
+  </uxdot-best-practice>
+</div>
 
+### Tile variants in groups
 
-A link tile should not be used as a button. A link tile is akin to a call to action and should navigate a user somewhere else.
+<uxdot-best-practice variant="do">
+  <uxdot-example slot="image" width-adjustment="752px">
+    <img src="../tile-best-practices-variants-in-groups-do.svg" 
+        alt="Two selectable tiles in a group"
+        width="752"
+        height="218">
+  </uxdot-example>
 
-<uxdot-example width-adjustment="360px" danger>
-  <img src="../best-practices-link-tile-actions-2.png"
-        alt="Example of an incorrectly used link tile with “submit” as a heading and no other text"
-        width="360"
-        height="121">
-</uxdot-example>
+  <p>Use the same variants for a tile group.</p>
+</uxdot-best-practice>
 
-
-### Tile groups
-
-Do not use different variants of a tile in one tile group.
-
-<uxdot-example width-adjustment="750px" danger>
-  <img src="../best-practices-tile-groups-1.png"
-        alt="Example of an incorrectly styled tile group with a default link tile and a compact link tile"
+<uxdot-best-practice variant="dont">
+  <uxdot-example slot="image" width-adjustment="750px">
+    <img  src="../tile-best-practices-variants-in-groups-dont.svg" 
+        alt="A default link tile and a compact link tile in a group"
         width="750"
         height="325">
-</uxdot-example>
+  </uxdot-example>
 
-When grouped, use the same number of content slots to make them easy to scan.
+  <p>Avoid using different variants or sub-variants in one tile group.</p>
+</uxdot-best-practice>
 
-<uxdot-example width-adjustment="750px" danger>
-  <img src="../best-practices-tile-groups-2.png"
-        alt="Example of an incorrectly styled tile group with one tile that has only text and a second tile that includes a logo and a title"
+### Tile content
+
+<uxdot-best-practice variant="do">
+  <uxdot-example slot="image" width-adjustment="750px">
+    <img src="../tile-best-practices-tile-content-do.svg" 
+        alt="Two link tiles with headings and body copy"
+        width="750"
+        height="278">
+  </uxdot-example>
+
+  <p>When grouped, use the same number of content slots to make them easy to scan.</p>
+</uxdot-best-practice>
+
+<uxdot-best-practice variant="dont">
+  <uxdot-example slot="image" width-adjustment="750px">
+    <img  src="../tile-best-practices-tile-content-dont.svg" 
+        alt="One link tile with a heading and body copy and one link tile with an image, title, heading, and body copy"
         width="750"
         height="392">
-</uxdot-example>
+  </uxdot-example>
 
-If tiles have images, the images should have the same height. This will help the headings of each tile align vertically which also helps users scan more easily.
+  <p>Do not use a different number of content slots in grouped tiles.</p>
+</uxdot-best-practice>
 
-<uxdot-example width-adjustment="750px" danger>
-  <img src="../best-practices-tile-groups-3.png"
-        alt="Example of an incorrectly styled tile group with two tiles using different image heights"
+### Image sizes
+
+<uxdot-best-practice variant="do">
+  <uxdot-example slot="image" width-adjustment="750px">
+    <img src="../tile-best-practices-image-sizes-do.png" 
+        alt="Two link tiles with images that have the same height"
+        width="750"
+        height="320">
+  </uxdot-example>
+
+  <p>If grouped tiles have images, the images should have the same height. This will keep the headings of each tile aligned, which helps users scan more easily.</p>
+</uxdot-best-practice>
+
+<uxdot-best-practice variant="dont">
+  <uxdot-example slot="image" width-adjustment="750px">
+    <img  src="../tile-best-practices-image-sizes-dont.png" 
+        alt="Two link tiles, one with a large image and one with a small image"
         width="750"
         height="399">
-</uxdot-example>
+  </uxdot-example>
 
+  <p>Images for tiles in a group should not be different heights.</p>
+</uxdot-best-practice>
 
 ### Footer content
 
-The footer of a link tile or selectable tile should not include calls to action, links, or buttons, but it can include non-interactive elements, like tags or badges. Ideally, footer content should be able to fit on one line, but it can wrap to two when necessary.
+<div class="grid sm-two-columns">
+  <uxdot-best-practice variant="do">
+    <uxdot-example width-adjustment="360px" slot="image">
+      <img src="../tile-best-practices-footer-content-do.svg"
+            alt="Link tile with a tag in the footer"
+            width="360"
+            height="285">
+    </uxdot-example>
+    <p>The footer of a tile can include non-interactive elements, like unlinked tags or badges. Ideally, footer content should be able to fit on one line, but it can wrap to two when necessary.</p>
+  </uxdot-best-practice>
 
-<uxdot-example width-adjustment="360px" danger>
-  <img src="../best-practices-tile-footer-content.png"
-        alt="Example of incorrectly adding a link in the footer of a link tile"
-        width="360"
-        height="250">
-</uxdot-example>
+  <uxdot-best-practice variant="dont">
+    <uxdot-example width-adjustment="360px" slot="image">
+      <img src="../tile-best-practices-footer-content-dont.svg"
+            alt="Link tile with a link in the footer"
+            width="360"
+            height="285">
+    </uxdot-example>
+    <p>Do not use a tile if you need to include more than one link or action.</p>
+  </uxdot-best-practice>
+</div>
