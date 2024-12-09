@@ -5,7 +5,8 @@
   "include": [
     "./**/*",
     "../declaration.d.ts",
-    "../eleventy.config.ts"
+    "../eleventy.config.ts",
+    "./11ty-types.d.ts"
   ],
   "compilerOptions": {
     "composite": true,

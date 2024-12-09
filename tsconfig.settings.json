@@ -1,19 +1,13 @@
 {
-  "include": [
-    "./docs/11ty-types.d.ts",
-    "./declaration.d.ts"
-  ],
   "exclude": [
     "**/node_modules/**/*",
+    "./*.config.js",
+    "./elements/**/*.e2e.ts",
+    "./elements/**/*.js",
+    "./elements/**/*.spec.ts",
+    "./lib/**/*.js",
     "_site",
-    "scripts/*.js",
-    "elements/**/*.js",
-    "elements/*/test/**/*.js",
-    "elements/rh-secondary-nav/test/fixtures.js",
-    "**/*.spec.ts",
-    "**/*.e2e.ts",
-    "lib/**/*.js",
-    "./*.config.js"
+    "scripts/*.js"
   ],
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
@@ -35,11 +29,11 @@
     "target": "es2020",
     "skipLibCheck": true,
     "useDefineForClassFields": false,
-    "typeRoots": [
-      "./node_modules/@types",
-      "./@types"
-    ],
     "plugins": [
+      {
+        "transform": "@lit/ts-transformers",
+        "import": "idiomaticDecoratorsTransformer"
+      },
       {
         "transform": "typescript-transform-lit-css",
         "inline": true,
@@ -66,13 +60,5 @@
       "ESNext.Disposable",
       "ScriptHost"
     ]
-  },
-  "references": [
-    {
-      "path": "./docs"
-    },
-    {
-      "path": "./uxdot"
-    }
-  ]
+  }
 }
