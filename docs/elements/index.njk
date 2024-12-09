@@ -24,6 +24,14 @@ summaries:
   rh-tile h3 {
     margin: 0 !important;
   }
+  rh-tile p {
+    margin-block: 0 0 !important;
+  }
+  uxdot-example {
+    height: 216px;
+    display: flex;
+    justify-content: center;
+  }
 </style>
 
 {# NOTE: all images in this view need to be 340 by 200 px in order to maintain same ratio. #}
@@ -49,7 +57,7 @@ summaries:
       {%- set summary = summaries[slug] -%}
     {% endif %}
     {% if not hiddenComponent %}
-      <rh-tile compact bleed {% if comingSoon %}disabled{% endif %}>
+      <rh-tile id="tile-{{ tagName }}" compact bleed {% if comingSoon %}disabled{% endif %}>
         <uxdot-example slot="image" no-border transparent><img src="{{ doc.screenshotPath }}" alt="{{ title }}"></uxdot-example>
         <h3 slot="headline"><a href="{{ doc.overviewHref | url }}">{{ title }}</a></h3>
         <p>{{ summary }}</p>
@@ -62,7 +70,7 @@ summaries:
 
 <section aria-labelledby="aria__heading-make-a-request">
   <h2 id="aria__heading-make-a-request">Make a request</h2>
-  To request a new element or if updates need to be made to an existing element, <a href="https://github.com/RedHat-UX/red-hat-design-system/issues/new/choose" target="_blank">create a GitHub issue</a>.
+  <p>To request a new element or if updates need to be made to an existing element, <a href="https://github.com/RedHat-UX/red-hat-design-system/issues/new/choose">create a GitHub issue</a> or <a href="/support">contact us</a>.</p>
 </section>
 
 <uxdot-feedback>
