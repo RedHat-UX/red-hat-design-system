@@ -19,7 +19,11 @@
 #inner,
 #content {
   display: flex;
-  flex-flow: column;
+  flex-direction: column;
+}
+
+.compact #inner {
+  flex-direction: row;
 }
 
 #outer,

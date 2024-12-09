@@ -1,0 +1,23 @@
+<rh-tile compact desaturated>
+  <h2 slot="headline"><a href="#top">Compact link tile</a></h2>
+  <rh-icon slot="icon" set="standard" icon="mug"></rh-icon>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit set est egestat, a sollicitudn mauris tincidunt.</p>
+</rh-tile>
+
+<script type="module">
+  import '@rhds/elements/rh-tile/rh-tile.js';
+</script>
+
+<link rel="stylesheet" href="../rh-tile-lightdom.css">
+
+<style>
+  rh-tile {
+    max-width: 360px;
+    margin-inline-end: var(--rh-space-md, 8px);
+    margin-block-end: var(--rh-space-md, 8px);
+    & rh-icon {
+      color: var(--rh-color-brand-red);
+    }
+  }
+</style>
+
