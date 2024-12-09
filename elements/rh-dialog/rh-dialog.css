@@ -121,13 +121,8 @@
 }
 
 [part='close-button']::part(button) {
-  padding: var(--rh-space-xl, 24px);
-}
-
-@media (min-width: 1200px) {
-  [part='close-button']::part(button) {
-    padding: var(--rh-space-2xl, 32px);
-  }
+  block-size: var(--rh-length-xl, 24px);
+  inline-size: var(--rh-length-xl, 24px);
 }
 
 :host([position='top']) #dialog {
@@ -154,11 +149,6 @@
 :host([type='video']) [part='close-button'] {
   inset-inline-end: var(--offset-right);
   inset-block-start: var(--offset-top);
-}
-
-:host([type='video']) #close-button::part(button) {
-  padding-inline: var(--rh-space-md, 8px);
-  padding-block: var(--rh-space-lg, 16px);
 }
 
 :host([type='video']) #close-button::part(icon) {
