@@ -64,17 +64,18 @@ export class RhTooltip extends LitElement {
   }
 
   private static initAnnouncer() {
-    this.announcer = document.createElement('div');
-    this.announcer.setAttribute('aria-live', 'polite');
-    // apply `.visually-hidden` styles
-    this.announcer.style.position = 'fixed';
-    this.announcer.style.insetInlineStart = '0';
-    this.announcer.style.insetBlockStart = '0';
-    this.announcer.style.overflow = 'hidden';
-    this.announcer.style.clip = 'rect(0,0,0,0)';
-    this.announcer.style.whiteSpace = 'nowrap';
-    this.announcer.style.border = '0';
-    document.body.append(this.announcer);
+    document.body.append((this.announcer = Object.assign(document.createElement('div'), {
+      ariaLive: 'polite',
+      // apply `.visually-hidden` styles
+      style: /* css */`
+        position: fixed;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        clip: rect(0,0,0,0);
+        white-space: nowrap;
+        border: 0;`,
+    })));
   }
 
   /** The position of the tooltip, relative to the invoking content */
