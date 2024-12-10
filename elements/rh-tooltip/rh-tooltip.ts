@@ -53,7 +53,29 @@ export class RhTooltip extends LitElement {
           instance.#onKeydown(event);
         }
       });
+      this.initAnnouncer();
     }
+  }
+
+  private static announcer: HTMLElement;
+
+  private static announce(message: string) {
+    this.announcer.innerText = message;
+  }
+
+  private static initAnnouncer() {
+    this.announcer = document.createElement('div');
+    // equivalent to aria-live="polite"
+    this.announcer.role = 'status';
+    // apply `.visually-hidden` styles
+    this.announcer.style.position = 'fixed';
+    this.announcer.style.insetInlineStart = '0';
+    this.announcer.style.insetBlockStart = '0';
+    this.announcer.style.overflow = 'hidden';
+    this.announcer.style.clip = 'rect(0,0,0,0)';
+    this.announcer.style.whiteSpace = 'nowrap';
+    this.announcer.style.border = '0';
+    document.body.append(this.announcer);
   }
 
   /** The position of the tooltip, relative to the invoking content */
@@ -107,7 +129,6 @@ export class RhTooltip extends LitElement {
           <slot id="content" name="content">${this.content}</slot>
         </div>
       </div>
-      <div class="visually-hidden" aria-live="polite">${open ? this.#content : ''}</div>
     `;
   }
 
@@ -120,11 +141,13 @@ export class RhTooltip extends LitElement {
       : { mainAxis: 15, alignmentAxis: -4 };
     await this.#float.show({ offset, placement });
     this.#initialized ||= true;
+    RhTooltip.announce(this.#content);
   }
 
   /** Hide the tooltip */
   async hide() {
     await this.#float.hide();
+    RhTooltip.announcer.innerText = '';
   }
 
   #onKeydown = (event: KeyboardEvent): void => {
