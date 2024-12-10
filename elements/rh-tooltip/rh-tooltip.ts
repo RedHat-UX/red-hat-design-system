@@ -53,7 +53,7 @@ export class RhTooltip extends LitElement {
           instance.#onKeydown(event);
         }
       });
-      RhTooltip.initAnnouncer();
+      this.initAnnouncer();
     }
   }
 
@@ -65,8 +65,7 @@ export class RhTooltip extends LitElement {
 
   private static initAnnouncer() {
     this.announcer = document.createElement('div');
-    // equivalent to aria-live="polite"
-    this.announcer.role = 'status';
+    this.announcer.setAttribute('aria-live', 'polite');
     // apply `.visually-hidden` styles
     this.announcer.style.position = 'fixed';
     this.announcer.style.insetInlineStart = '0';
