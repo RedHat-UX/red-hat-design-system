@@ -1,4 +1,4 @@
-import { html, LitElement } from 'lit';
+import { html, LitElement, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -43,6 +43,19 @@ export class RhTooltip extends LitElement {
 
   static readonly styles = [styles];
 
+  private static instances = new Set<RhTooltip>();
+
+  static {
+    if (!isServer) {
+      globalThis.addEventListener('keydown', (event: KeyboardEvent) => {
+        const { instances } = RhTooltip;
+        for (const instance of instances) {
+          instance.#onKeydown(event);
+        }
+      });
+    }
+  }
+
   /** The position of the tooltip, relative to the invoking content */
   @property() position: Placement = 'top';
 
@@ -57,10 +70,22 @@ export class RhTooltip extends LitElement {
 
   #initialized = false;
 
+  get #content() {
+    if (!this.#float.open || isServer) {
+      return '';
+    } else {
+      return this.content || (this.shadowRoot
+          ?.getElementById('content') as HTMLSlotElement)
+          ?.assignedNodes().map(x => x.textContent ?? '')
+          ?.join(' ');
+    }
+  }
+
   override connectedCallback(): void {
     super.connectedCallback();
     ENTER_EVENTS.forEach(evt => this.addEventListener(evt, this.show));
     EXIT_EVENTS.forEach(evt => this.addEventListener(evt, this.hide));
+    RhTooltip.instances.add(this);
   }
 
   override render() {
@@ -71,17 +96,18 @@ export class RhTooltip extends LitElement {
       <div id="container"
            style="${styleMap(styles)}"
            class="${classMap({ open,
-                              'initialized': !!this.#initialized,
+                               initialized: !!this.#initialized,
                                [on]: !!on,
                                [anchor]: !!anchor,
                                [alignment]: !!alignment })}">
-        <div class="c" role="tooltip" aria-labelledby="tooltip">
-          <slot id="invoker"></slot>
+        <div id="invoker">
+          <slot id="invoker-slot"></slot>
         </div>
-        <div class="c" aria-hidden="${String(!open) as 'true' | 'false'}">
-          <slot id="tooltip" name="content">${this.content}</slot>
+        <div id="tooltip" role="status">
+          <slot id="content" name="content">${this.content}</slot>
         </div>
       </div>
+      <div class="visually-hidden" aria-live="polite">${open ? this.#content : ''}</div>
     `;
   }
 
@@ -100,6 +126,12 @@ export class RhTooltip extends LitElement {
   async hide() {
     await this.#float.hide();
   }
+
+  #onKeydown = (event: KeyboardEvent): void => {
+    if (event.key === 'Escape') {
+      this.hide();
+    }
+  };
 }
 
 declare global {
