@@ -56,10 +56,8 @@ describe('<rh-tooltip>', function() {
       beforeEach(() => sendMouseToTooltip(element));
       it('content should be available to assistive technology', async function() {
         await sendMouseToTooltip(element);
-        const snapshot = await a11ySnapshot();
-        expect(snapshot.children?.length).to.equal(1);
-        expect(snapshot.children?.at(0)?.role).to.equal('text');
-        expect(snapshot.children?.at(0)?.name).to.equal(content);
+        expect(await a11ySnapshot())
+            .to.have.axQuery({ role: 'text', name: content });
       });
     });
   });
