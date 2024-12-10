@@ -53,7 +53,7 @@ export class RhTooltip extends LitElement {
           instance.#onKeydown(event);
         }
       });
-      this.initAnnouncer();
+      RhTooltip.initAnnouncer();
     }
   }
 
