@@ -53,8 +53,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.4/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
@@ -103,16 +103,6 @@
   
     <script type="module">import '@rhds/elements/rh-table/rh-table.js';</script>
   
-    <script type="module">import '@rhds/elements/rh-card/rh-card.js';</script>
-  
-    <script type="module">import '@rhds/elements/rh-cta/rh-cta.js';</script>
-  
-    <script type="module">import '@rhds/elements/rh-surface/rh-surface.js';</script>
-  
-    <script type="module">import '@rhds/elements/rh-avatar/rh-avatar.js';</script>
-  
-    <script type="module">import '@rhds/elements/rh-accordion/rh-accordion.js';</script>
-  
 
   
   <script type="module">
@@ -133,6 +123,11 @@
   import '@rhds/elements/rh-code-block/rh-code-block.js';
   import "@uxdot/elements/uxdot-pattern.js";
 </script><script type="module">
+  import '@rhds/elements/rh-accordion/rh-accordion.js';
+  import '@rhds/elements/rh-avatar/rh-avatar.js';
+  import '@rhds/elements/rh-card/rh-card.js';
+  import '@rhds/elements/rh-cta/rh-cta.js';
+  import '@rhds/elements/rh-surface/rh-surface.js';
   import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
 </script><link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css"><link rel="stylesheet" href="/styles/samp.css"><script type="module">
   import '@uxdot/elements/uxdot-feedback.js';
@@ -5162,7 +5157,8 @@ svg {
     <a href="#character-count">Character count</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<p>The recommended maximum character count for the elements of a card are listed below and include spaces.</p>
+<p>The recommended maximum character count for the elements of a card are listed
+below and include spaces.</p>
 <rh-table><template shadowroot="open" shadowrootmode="open"><style>* {
   box-sizing: border-box;
 }
@@ -5244,32 +5240,12 @@ svg {
         <slot id="summary" name="summary"></slot>
       </div>
     <!--/lit-part--></template>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Element">Element</th>
-        <th scope="col" data-label="Character count">Character count</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Element">Title</td>
-        <td data-label="Character count">20</td>
-      </tr>
-      <tr>
-        <td data-label="Element">Headline</td>
-        <td data-label="Character count">50</td>
-      </tr>
-      <tr>
-        <td data-label="Element">Body text</td>
-        <td data-label="Character count">165</td>
-      </tr>
-      <tr>
-        <td data-label="Element">Footer</td>
-        <td data-label="Character count">55</td>
-      </tr>
-    </tbody>
-  </table>
+<p>Element     Character count</p>
+<hr>
+<p>Title       20
+Headline    50
+Body text   165
+Footer      55</p>
 </rh-table>
 
 <uxdot-feedback><template shadowroot="open" shadowrootmode="open"><style>:host {

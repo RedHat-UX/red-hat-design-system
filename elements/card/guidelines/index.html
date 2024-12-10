@@ -53,8 +53,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.4/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
@@ -5990,32 +5990,12 @@ svg {
         <slot id="summary" name="summary"></slot>
       </div>
     <!--/lit-part--></template>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Element" style="width: 50%">Element</th>
-        <th scope="col" data-label="Character count">Character count</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Element">Title</td>
-        <td data-label="Character count">20</td>
-      </tr>
-      <tr>
-        <td data-label="Element">Headline</td>
-        <td data-label="Character count">50</td>
-      </tr>
-      <tr>
-        <td data-label="Element">Body text</td>
-        <td data-label="Character count">165</td>
-      </tr>
-      <tr>
-        <td data-label="Element">Footer</td>
-        <td data-label="Character count">55</td>
-      </tr>
-    </tbody>
-  </table>
+<p>Element     Character count</p>
+<hr>
+<p>Title       20
+Headline    50
+Body text   165
+Footer      55</p>
 </rh-table>
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: flex;
@@ -6172,7 +6152,7 @@ because they’re not very similar.</p>
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-  <img src="../card-usage-grouping.svg" alt="Grouping of a card" width="784" height="513">
+  <img alt="Grouping of a card" src="../card-usage-grouping.svg" width="784" height="513">
 </uxdot-example>
 <p class="footnote">These cards can be grouped together because they have similar styles and
 content</p>
@@ -6409,7 +6389,7 @@ place any other complex components in card layouts.</p>
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-  <img src="../card-usage-other.svg" alt="Alternative card usage" width="664" height="513">
+  <img alt="Alternative card usage" src="../card-usage-other.svg" width="664" height="513">
 </uxdot-example>
 <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: flex;
@@ -7173,7 +7153,7 @@ svg {
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-    <img src="../card-best-practices-width-do.svg" alt="Three cards in a row" width="1012" height="187">
+    <img alt="Three cards in a row" src="../card-best-practices-width-do.svg" width="1012" height="187">
   </uxdot-example>
   <p>In a 12-column layout, use a minimum width of four columns for a card. The maximum number of cards that should be used in a row is three.</p>
 </uxdot-best-practice>
@@ -7326,7 +7306,7 @@ svg {
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-    <img src="../card-best-practices-width-dont.svg" alt="Four cards in a row" width="1012" height="187">
+    <img alt="Four cards in a row" src="../card-best-practices-width-dont.svg" width="1012" height="187">
   </uxdot-example>
   <p>Do not make cards narrower than 4 columns. This may not give enough space for content within the card.</p>
 </uxdot-best-practice>
@@ -7556,7 +7536,7 @@ svg {
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-      <img src="../card-best-practices-cta-variants-do.svg" alt="Card with a default call to action" width="360" height="223">
+      <img alt="Card with a default call to action" src="../card-best-practices-cta-variants-do.svg" width="360" height="223">
     </uxdot-example>
     <p>Use secondary or default calls to action in most cards.</p>
   </uxdot-best-practice>
@@ -7709,7 +7689,7 @@ svg {
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-      <img src="../card-best-practices-cta-variants-dont.svg" alt="Card with a primary call to action" width="360" height="252">
+      <img alt="Card with a primary call to action" src="../card-best-practices-cta-variants-dont.svg" width="360" height="252">
     </uxdot-example>
     <p>Do not use a primary call to action in any card unless the primary action for the whole page is positioned inside of that card.</p>
   </uxdot-best-practice>
@@ -7940,7 +7920,7 @@ svg {
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-      <img src="../card-best-practices-cta-number-do.svg" alt="Card with a secondary call to action and a default call to action" width="360" height="303">
+      <img alt="Card with a secondary call to action and a default call to action" src="../card-best-practices-cta-number-do.svg" width="360" height="303">
     </uxdot-example>
     <p>Use up to two calls to action in a card. They can be two different variants.</p>
   </uxdot-best-practice>
@@ -8093,7 +8073,7 @@ svg {
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-      <img src="../card-best-practices-cta-number-dont.svg" alt="Card with three call to actions" width="360" height="354">
+      <img alt="Card with three call to actions" src="../card-best-practices-cta-number-dont.svg" width="360" height="354">
     </uxdot-example>
     <p>Do not use more than two calls to action in a card. This could make it harder for the user to understand what action to take next.</p>
   </uxdot-best-practice>
@@ -8324,7 +8304,7 @@ svg {
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-      <img src="../card-best-practices-promo-do.svg" alt="One featured promo below lorem ipsum text" width="546" height="312">
+      <img alt="One featured promo below lorem ipsum text" src="../card-best-practices-promo-do.svg" width="546" height="312">
     </uxdot-example>
     <p>Because promo is used for special promotional content only, promos should typically appear individually.</p>
   </uxdot-best-practice>
@@ -8477,7 +8457,7 @@ svg {
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-      <img src="../card-best-practices-promo-dont.svg" alt="Three narrow promos in a group" width="546" height="312">
+      <img alt="Three narrow promos in a group" src="../card-best-practices-promo-dont.svg" width="546" height="312">
     </uxdot-example>
     <p>Do not group multiple promos together as if they were a regular card group.</p>
   </uxdot-best-practice>
@@ -8635,9 +8615,11 @@ svg {
   </a></h3>
 </uxdot-copy-permalink>
 <p>The vertical height of cards depends on how much content is placed inside. If
-there are multiple cards in a row, the vertical height of each of them will be
+there are multiple cards in a row, the vertical height of each of them may be
 determined by the tallest card. Don’t place inconsistent amounts of content in
 cards, as this will impact how scannable the group will appear to users.</p>
+<p>Authors may choose to have cards fill the maximum vertical space in a row or
+not, depending on whether they want that or not.</p>
 <uxdot-example  width-adjustment="784px"><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: block;
   container-type: inline-size;
@@ -8712,7 +8694,7 @@ cards, as this will impact how scannable the group will appear to users.</p>
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-  <img src="../card-behavior-height.svg" alt="Card height behavior" width="784" height="536">
+  <img alt="Card height behavior" src="../card-behavior-height.svg" width="784" height="536">
 </uxdot-example>
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: flex;
@@ -8867,7 +8849,7 @@ should continue to be interactive, but not the card container.</p>
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-  <img src="../card-behavior-interaction.svg" alt="Card interaction" width="786" height="335">
+  <img alt="Card interaction" src="../card-behavior-interaction.svg" width="786" height="335">
 </uxdot-example>
 <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: flex;
