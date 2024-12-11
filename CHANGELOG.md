@@ -1,5 +1,13 @@
 # @rhds/elements
 
+## 2.1.2
+
+### Patch Changes
+
+- 33535ef: `<rh-accordion>`: restore missing hover colors
+- af13796: `<rh-accordion>`: corrected accordion header text font weight
+- eb9cb2f: `<rh-button>`: improved accessibility by allowing focus when disabled'
+
 ## 2.1.1
 
 ### Patch Changes
