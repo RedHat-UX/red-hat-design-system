@@ -6,6 +6,7 @@ import {
   colorContextConsumer,
   type ColorTheme,
 } from '@rhds/elements/lib/context/color/consumer.js';
+
 import {
   colorContextProvider,
   type ColorPalette,
@@ -37,4 +38,3 @@ export class ContextProviderConsumer extends ReactiveElement {
   @property({ reflect: true })
   on?: ColorTheme;
 }
-
