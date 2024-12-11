@@ -120,6 +120,14 @@ export class RhIcon extends LitElement {
     `;
   }
 
+  updated() {
+    // this is a workaround for an apparent webkit / lit-ssr bug
+    const [, ...duplicateContainers] = this.shadowRoot?.querySelectorAll('#container') ?? [];
+    for (const dupe of duplicateContainers) {
+      dupe.remove();
+    }
+  }
+
   #getContent() {
     if (isServer) {
       const { set = 'standard', icon } = this;
