@@ -107,14 +107,14 @@ export class RhSwitch extends LitElement {
 
   render() {
     const rtl = this.#dir.dir === 'rtl';
-    const { on = 'light', reversed, checked } = this;
+    const { on, reversed, checked } = this;
     const slots = html`
       <slot class="message" name="message-on" ?hidden="${!this.checked}"><span aria-hidden="true">${this.messageOn}</span></slot>
       <slot class="message" name="message-off" ?hidden="${this.checked}"><span aria-hidden="true">${this.messageOff}</span></slot>`;
     return html`
       <div id="container"
            part="container"
-           class="${classMap({ checked, on: true, [on]: true, rtl })}">
+           class="${classMap({ checked, on: true, [on ?? '']: !!on, rtl })}">
         ${reversed ? slots : ''}
         <div id="switch"
              part="switch">
