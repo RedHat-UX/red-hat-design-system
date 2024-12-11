@@ -16,6 +16,8 @@ import { classMap } from 'lit/directives/class-map.js';
  * elements. Use surface only when other containers like card or accordion
  * are inappropriate.
  *
+ * @summary Provides background color context for elements placed on top
+ *
  * @slot - The `<rh-surface>` element has a single anonymous slot which accepts any content and does not provide additional layout styling
  *
  * @example A surface providing a theme to a spinner
