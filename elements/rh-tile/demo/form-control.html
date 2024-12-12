@@ -18,9 +18,11 @@
   form.addEventListener('submit', function(event) {
     event.preventDefault();
     const data = new FormData(form);
-    form.output.value = JSON.stringify(Array.from(data.entries()).reduce((acc, [k, v]) => ({
-      ...acc, [k]: k in acc ? [acc[k], v].flat() : v,
-    }), {}), null, 2);
+    const mergedFormData = Array.from(data.entries())
+      .reduce((acc, [k, v]) => ({
+        ...acc, [k]: k in acc ? [acc[k], v].flat() : v,
+      }), {});
+    form.output.value = JSON.stringify(mergedFormData, null, 2);
   });
 </script>
 
