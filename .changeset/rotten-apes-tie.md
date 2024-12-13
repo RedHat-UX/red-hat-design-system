@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-`<rh-cta>`: corrected `:active` and `:focus` styles
+`<rh-cta>`: improved accessibility by correcting active and focus styles
