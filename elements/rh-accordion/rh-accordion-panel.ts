@@ -21,8 +21,6 @@ import styles from './rh-accordion-panel.css';
  */
 @customElement('rh-accordion-panel')
 export class RhAccordionPanel extends LitElement {
-  static readonly version = '{{version}}';
-
   static readonly styles = [styles];
 
   @property({ type: Boolean, reflect: true }) expanded = false;
