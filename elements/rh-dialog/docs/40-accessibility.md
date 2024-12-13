@@ -37,7 +37,7 @@ A dialog can be opened by pressing `Enter` when the dialog trigger has focus. Wh
 
 ## Focus order
 
-When a dialog opens, the close dialog button recieves focus by default. Users have the ability to tab through each focusable element in the dialog. When the last focusable element in the dialog is reached, focus returns to the close dialog button—effectively trapping focus inside the dialog.
+When a dialog opens, the close dialog button receives focus by default. Users have the ability to tab through each focusable element in the dialog. When the last focusable element in the dialog is reached, focus returns to the close dialog button—effectively trapping focus inside the dialog.
 
 ### Changing focus order depending on content
 
