@@ -68,7 +68,7 @@ A dialog will close by users clicking or tapping the backdrop or outside of the 
 
 ## Accessible labels
 
-Each dialog needs an accessible name. If a dialog has a heading tag in the `header` or default slot, this component will automatically apply an appropriate ID to the heading tag and an `aria-labelledby` attribute to the `<dialog>`.
+Each dialog needs an accessible name. If a dialog has a heading tag in the `header` or default slot, it will automatically be used as the accessible name of the dialog.
 
 Users can optionally provide an `accessible-label` attribute which overrides the built-in `aria-labelledby` functionality:
 
