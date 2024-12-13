@@ -162,6 +162,7 @@ a:focus-within,
 
 :host(:active) #container {
   background-color: var(--_background-color);
+  color: var(--_active-color);
 
   --_background-color:
     var(--rh-cta-background-color,
