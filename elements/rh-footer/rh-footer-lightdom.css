@@ -95,26 +95,26 @@ rh-footer:not(:defined) {
   min-height: var(--rh-footer-nojs-min-height, 750px);
 }
 
-rh-footer-universal:not(:defined):before {
-  grid-area: global;
+rh-footer:not(:defined),
+rh-footer-universal:not(:defined) {
+  overflow-y: scroll;
+
+  & > :not([slot='logo'], rh-footer-universal) {
+    animation: 5s ease 0s deopacitize-footer;
+  }
 }
 
-/* Adding styles to logo */
-rh-footer:not(:defined) > [slot='logo'] {
-  padding: var(--rh-space-2xl, 32px) var(--_section-side-gap);
+:is(rh-footer, rh-footer-universal):defined {
+  & > :not([slot='logo'], rh-footer-universal) {
+    opacity: 1;
+    animation-duration: 0s;
+  }
 }
 
-/* A11y hide child components */
-rh-footer:not(:defined) > :not([slot='logo'], rh-footer-universal),
-rh-footer-universal:not(:defined) > * {
-  border: 0;
-  clip: rect(1px, 1px, 1px, 1px);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
+@keyframes deopacitize-footer {
+  0% { opacity: 0; }
+  99% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 rh-footer-universal:not(:defined) {
@@ -122,6 +122,10 @@ rh-footer-universal:not(:defined) {
   display: block;
   width: 100%;
   min-height: 176px;
+
+  &:before {
+    grid-area: global;
+  }
 }
 
 rh-footer-universal rh-footer-copyright {
