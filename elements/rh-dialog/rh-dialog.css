@@ -111,7 +111,7 @@
 }
 
 [part='close-button'] {
-  color: var(--rh-color-icon-secondary);
+  color: var(--rh-dialog-close-button-color, var(--rh-color-icon-secondary));
   cursor: pointer;
   display: block;
   inset-block-start: var(--rh-length-xs, 4px);
