@@ -284,7 +284,9 @@ a:focus-within,
     var(--rh-cta-focus-background-color,
       var(--rh-color-brand-red-dark, #a60000));
   --_focus-border-color: var(--rh-cta-focus-border-color, var(--rh-color-brand-red-dark, #a60000));
-  --_focus-color: var(--rh-cta-focus-color, var(--rh-color-text-primary-on-dark, #ffffff)) !important;
+  --_focus-color:
+    var(--rh-cta-focus-color,
+      var(--rh-color-text-primary-on-dark, #ffffff)) !important;
   --_focus-inner-border-color:
     var(--rh-cta-focus-inner-border-color,
       var(--rh-color-text-primary-on-dark, #ffffff));
