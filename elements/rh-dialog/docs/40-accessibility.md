@@ -80,7 +80,7 @@ If there is no slotted heading, users should provide an `accessible-label` attri
 
 The `accessible-label` attribute assigns an `aria-label` to the `<dialog>` element.
 
-If neither an `accessible-label` nor any headings exist, the `aria-label` on the `<dialog>` will default to the text of the dialog's trigger.
+If neither an `accessible-label` nor any headings exist, the accessible name of the dialog will fall back to the text of the dialog's trigger.
 
 
 ## Additional guidelines
