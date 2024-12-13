@@ -259,81 +259,6 @@ export class RhDialog extends LitElement {
     }
   }
 
-  #trapFocus() {
-    // https://github.com/KittyGiraudel/focusable-selectors
-    const notInert = ':not([inert]):not([inert] *)';
-    const notNegTabIndex = ':not([tabindex^="-"])';
-    const notDisabled = ':not(:disabled)';
-    const focusableSelectorList = [
-      `a[href]${notInert}${notNegTabIndex}`,
-      `area[href]${notInert}${notNegTabIndex}`,
-      `input:not([type="hidden"]):not([type="radio"])${notInert}${notNegTabIndex}${notDisabled}`,
-      `input[type="radio"]${notInert}${notNegTabIndex}${notDisabled}`,
-      `select${notInert}${notNegTabIndex}${notDisabled}`,
-      `textarea${notInert}${notNegTabIndex}${notDisabled}`,
-      `button${notInert}${notNegTabIndex}${notDisabled}`,
-      `details${notInert} > summary:first-of-type${notNegTabIndex}`,
-      `details:not(:has(> summary))${notInert}${notNegTabIndex}`,
-      `iframe${notInert}${notNegTabIndex}`,
-      `audio[controls]${notInert}${notNegTabIndex}`,
-      `video[controls]${notInert}${notNegTabIndex}`,
-      `[contenteditable]${notInert}${notNegTabIndex}`,
-      `[tabindex]${notInert}${notNegTabIndex}`,
-      `rh-accordion${notInert}${notNegTabIndex}${notDisabled}`,
-      `rh-accordion-header${notInert}${notNegTabIndex}${notDisabled}`,
-      `rh-accordion-panel${notInert}${notNegTabIndex}${notDisabled}`,
-      `rh-alert${notInert}${notNegTabIndex}${notDisabled}`,
-      `rh-audio-player${notInert}${notNegTabIndex}${notDisabled}`,
-      `rh-avatar${notInert}${notNegTabIndex}${notDisabled}`,
-      `rh-back-to-top${notInert}${notNegTabIndex}${notDisabled}`,
-      // rh-badge not interactive
-      // rh-blockquote not interactive
-      `rh-breadcrumb${notInert}${notNegTabIndex}${notDisabled}`,
-      `rh-button${notInert}${notNegTabIndex}${notDisabled}`,
-      `rh-card${notInert}${notNegTabIndex}${notDisabled}`,
-      `rh-code-block${notInert}${notNegTabIndex}${notDisabled}`,
-      `rh-cta${notInert}${notNegTabIndex}${notDisabled}`,
-      `rh-dialog${notInert}${notNegTabIndex}${notDisabled}`,
-      `rh-footer${notInert}${notNegTabIndex}${notDisabled}`,
-      `rh-footer-block${notInert}${notNegTabIndex}${notDisabled}`,
-      `rh-footer-copyright${notInert}${notNegTabIndex}${notDisabled}`,
-      `rh-footer-links${notInert}${notNegTabIndex}${notDisabled}`,
-      `rh-footer-social-link${notInert}${notNegTabIndex}${notDisabled}`,
-      `rh-footer-universal${notInert}${notNegTabIndex}${notDisabled}`,
-      // rh-health-index not interactive
-      // rh-icon not interactive
-      `rh-navigation-secondary${notInert}${notNegTabIndex}${notDisabled}`,
-      `rh-navigation-secondary-dropdown${notInert}${notNegTabIndex}${notDisabled}`,
-      `rh-navigation-secondary-menu-section${notInert}${notNegTabIndex}${notDisabled}`,
-      `rh-navigation-secondary-menu${notInert}${notNegTabIndex}${notDisabled}`,
-      `rh-navigation-secondary-overlay${notInert}${notNegTabIndex}${notDisabled}`,
-      `rh-pagination${notInert}${notNegTabIndex}${notDisabled}`,
-      `rh-site-status${notInert}${notNegTabIndex}${notDisabled}`,
-      `rh-skip-link${notInert}${notNegTabIndex}${notDisabled}`,
-      // rh-spinner not interactive
-      // rh-stat not interactive
-      `rh-subnav${notInert}${notNegTabIndex}${notDisabled}`,
-      // rh-surface not interactive
-      `rh-switch${notInert}${notNegTabIndex}${notDisabled}`,
-      `rh-table${notInert}${notNegTabIndex}${notDisabled}`,
-      `rh-tabs${notInert}${notNegTabIndex}${notDisabled}`,
-      `rh-tab${notInert}${notNegTabIndex}${notDisabled}`,
-      `rh-tab-panel${notInert}${notNegTabIndex}${notDisabled}`,
-      `rh-tag${notInert}${notNegTabIndex}${notDisabled}`,
-      `rh-tile${notInert}${notNegTabIndex}${notDisabled}`,
-      `rh-tile-group${notInert}${notNegTabIndex}${notDisabled}`,
-      // rh-timestamp not interactive
-      `rh-tooltip${notInert}${notNegTabIndex}${notDisabled}`,
-      `rh-video-embed${notInert}${notNegTabIndex}${notDisabled}`,
-    ];
-
-    const focusableSlottedElements =
-      this.querySelectorAll<HTMLElement>(focusableSelectorList.join(','));
-    const hasLastElement = focusableSlottedElements.length > 0;
-    this.#lastTabbable = hasLastElement ?
-          focusableSlottedElements[focusableSlottedElements.length - 1] : this.closeButton;
-  }
-
   #handleTab(event: KeyboardEvent) {
     // No focusable elements except close button:
     if (this.#lastTabbable === this.closeButton) {
@@ -412,7 +337,6 @@ export class RhDialog extends LitElement {
    */
   @bound show() {
     this.dialog?.showModal();
-    this.#trapFocus();
     this.open = true;
   }
 
