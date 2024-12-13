@@ -84,7 +84,7 @@ export class RhDialog extends LitElement {
   @property({ reflect: true }) position?: 'top';
 
   /**
-   * Use `accessible-label="My custom label"` to add an `aria-label` to the `<dialog>` element.
+   * Use `accessible-label="My custom label"` to specify the dialog's accessible name.
    * Defaults to the name of the dialog trigger if no attribute is set and no headings exist in the modal.
    * See Dialog's Accessibility page for more info.
    */
