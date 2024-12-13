@@ -4,7 +4,7 @@
 
 `<rh-dialog>`: Dialog now uses the native HTML `<dialog>` element internally.
 
-Note: `#overlay` is now deprecated in favor of a public variable on the CSS psuedo-element `::backdrop`:
+Note: the `overlay` CSS shadow part is now deprecated in favor of the `--rh-dialog-backdrop-background-color` CSS custom property.
 
 Before:
 
