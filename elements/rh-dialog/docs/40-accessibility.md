@@ -70,7 +70,7 @@ A dialog will close by users clicking or tapping the backdrop or outside of the 
 
 Each dialog needs an accessible name. If a dialog has a heading tag in the `header` or default slot, it will automatically be used as the accessible name of the dialog.
 
-Users can optionally provide an `accessible-label` attribute which overrides the built-in `aria-labelledby` functionality:
+If there is no slotted heading, users should provide an `accessible-label` attribute, the value of which will be used as the accessible name:
 
 ```html
 <rh-dialog accessible-label="Page Properties" trigger="first-modal-trigger">
