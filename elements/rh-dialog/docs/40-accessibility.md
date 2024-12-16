@@ -37,7 +37,12 @@ A dialog can be opened by pressing `Enter` when the dialog trigger has focus. Wh
 
 ## Focus order
 
-When a dialog opens, the close dialog button receives focus by default. Users have the ability to tab through each focusable element in the dialog. When the last focusable element in the dialog is reached, focus returns to the close dialog button—effectively trapping focus inside the dialog.
+When a dialog opens, the close dialog button receives focus by default. Users have the ability to tab through each focusable element in the dialog. Depending on the browser, reaching the last focusable element may either:
+
+  1. Loop focus back to the close button
+  1. Move to focusable elements within the browser’s chrome
+
+While the dialog is open, interactive elements on the underlying page cannot be focused.
 
 ### Changing focus order depending on content
 
@@ -77,8 +82,6 @@ If there is no slotted heading, users should provide an `accessible-label` attri
   ...
 </rh-dialog>
 ```
-
-The `accessible-label` attribute assigns an `aria-label` to the `<dialog>` element.
 
 If neither an `accessible-label` nor any headings exist, the accessible name of the dialog will fall back to the text of the dialog's trigger.
 
