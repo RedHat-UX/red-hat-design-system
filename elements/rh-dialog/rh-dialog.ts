@@ -162,16 +162,20 @@ export class RhDialog extends LitElement {
               <span class="visually-hidden">Close Dialog</span>
             </rh-button>
             <div id="content" part="content">
-              <div part="header" ?hidden=${!hasHeader}>
+              <div id="header"
+                   part="header"
+                   ?hidden=${!hasHeader}>
                 <slot name="header"></slot>
                 <div part="description" ?hidden=${!hasDescription}>
                   <slot name="description"></slot>
                 </div>
               </div>
-              <div part="body">
+              <div id="body" part="body">
                 <slot></slot>
               </div>
-              <div ?hidden=${!hasFooter} part="footer">
+              <div id="footer"
+                   part="footer"
+                   ?hidden=${!hasFooter}>
                 <slot name="footer"></slot>
               </div>
             </div>
