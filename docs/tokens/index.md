@@ -10,11 +10,12 @@ tokenSearch: true
 
 <script type="module" data-helmet>
   import '@rhds/elements/rh-tile/rh-tile.js';
+  import '@rhds/elements/rh-card/rh-card.js';
   import '@rhds/elements/rh-code-block/rh-code-block.js';
 </script>
 
 <style data-helmet>
-.page-overvie .container .grid {
+  .page-overvie .container .grid {
     margin-block: var(--rh-space--2xl, 32px);
   }
 
@@ -25,6 +26,10 @@ tokenSearch: true
   rh-tile [slot="headline"] h3,
   rh-tile [slot="image"] {
      margin-block: 0 !important;
+  }
+
+  rh-card {
+    height: auto;
   }
 </style>
 
@@ -48,6 +53,34 @@ websites, libraries, and tools.
 To install design tokens, please visit our dedicated repo for instructions.
 
 <rh-cta href="https://github.com/redhat-ux/red-hat-design-tokens">Install our design tokens</rh-cta>
+
+## Types of tokens
+
+<div id="token-types" class="grid xs-two-columns sm-three-columns">
+  <rh-card>
+    <h3 slot="header">Global tokens</h3>
+    <p>Global tokens represent the foundations of our design language and should
+    have context-agnostic names. These can be used and are inherited by other
+    token types.</p>
+    <p>Example:<br><code>--rh-brand-red-500</code></p>
+  </rh-card>
+
+  <rh-card>
+    <h3 slot="header">Semantic tokens</h3>
+    <p>Semantic tokens represent context or abstraction. They communicate the purpose
+    of a token and are effective when a value with a single intent is used
+    multiple times.</p>
+    <p>Example:<br><code>--rh-color-surface-lightest</code></p>
+  </rh-card>
+
+  <rh-card>
+    <h3 slot="header">Element tokens</h3>
+    <p>Element tokens link semantic tokens to specific elements. They are
+    prefixed with the element name and ship in the @rhds/elements package,
+    rather than @rhds/tokens.</p>
+    <p>Example:<br><code>--rh-cta-color-primary</code></p>
+  </rh-card>
+</div>
 
 ## Token categories
 
@@ -126,34 +159,6 @@ values or if you have an idea for an output format or tool integration.
     <a slot="headline" href="font/"><h3>Typography</h3></a>
   </rh-tile>
 </nav>
-
-## Types of tokens
-
-<div class="grid">
-  <div>
-    <h3>Global tokens</h3>
-    <p>Global tokens represent the foundations of our design language and should
-    have context-agnostic names. These can be used and are inherited by other
-    token types.</p>
-    <code>--rh-brand-red-500</code>
-  </div>
-
-  <div>
-    <h3>Semantic tokens</h3>
-    <p>Semantic tokens represent context or abstraction. They communicate the purpose
-    of a token and are effective when a value with a single intent is used
-    multiple times.</p>
-    <code>--rh-color-surface-lightest</code>
-  </div>
-
-  <div>
-    <h3>Element tokens</h3>
-    <p>Element tokens link semantic tokens to specific elements. They are
-    prefixed with the element name and ship in the @rhds/elements package,
-    rather than @rhds/tokens.</p>
-    <code>--rh-cta-color-primary</code>
-  </div>
-</div>
 
 ## Why we need tokens
 
