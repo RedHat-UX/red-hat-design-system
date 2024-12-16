@@ -46,25 +46,26 @@ async function pauseYoutube(iframe: HTMLIFrameElement) {
  * A dialog displays important information to users without requiring them to navigate away from the page.
  * @summary Communicates information requiring user input or action
  * @fires {DialogOpenEvent} open - Fires when a user clicks on the trigger or manually opens a dialog.
- * @fires {DialogCloseEvent} close - Fires when either a user clicks on either the close button or the overlay or manually closes a dialog.
- * @fires {DialogCancelEvent} cancel
+ * @fires {DialogCloseEvent} close - Fires when either a user clicks on either the close button or manually closes a dialog.
+ * @fires {DialogCancelEvent} cancel - Fires when a user clicks outside the dialog or hits ESC on their keyboard.
  * @slot - The default slot can contain any type of content. When the header is not present this unnamed slot appear at the top of the dialog window (to the left of the close button). Otherwise it will appear beneath the header.
  * @slot header - The header is an optional slot that appears at the top of the dialog window. It should be a header tag (h2-h6).
  * @slot footer - Optional footer content. Good place to put action buttons.
- * @csspart overlay - The dialog overlay which lies under the dialog and above the page body
+ * @csspart overlay - @deprecated in favor of the backdrop pseudo-element. The dialog overlay which lies under the dialog and above the page body
  * @csspart dialog - The dialog element
  * @csspart content - The container for the dialog content
  * @csspart header - The container for the optional dialog header
  * @csspart description - The container for the optional dialog description in the header
  * @csspart close-button - The dialog's close button
  * @csspart footer - Actions footer container
- * @cssprop {<number>} --rh-dialog-video-aspect-ratio
+ * @cssprop {<number>} [--rh-dialog-video-aspect-ratio=16/9]
+ *          Aspect ratio for the video inside the dialog
  * @cssprop {<color>} [--rh-dialog-close-button-color=var(--rh-color-icon-secondary-on-dark, #ffffff)]
- *           Sets the dialog close button color.
+ *          Sets the dialog close button color.
  * @cssprop {<color>} [--rh-dialog-backdrop-background-color=rgba(3, 3, 3, 0.62)]
  *          Sets the background color for the native HTML dialog element's `backdrop` pseudo-element
- * @cssprop {<color>} [--rh-dialog-overlay-background-color=transparent]
- *          Deprecated. Sets the background color for the `#overlay` `<div>`. Use `--rh-dialog-backdrop-background-color` instead.
+ * @cssprop {<color>} [--rh-dialog-overlay-background-color=transparent] @deprecated
+ *          Sets the background color for the `#overlay` `<div>`. Use `--rh-dialog-backdrop-background-color` instead.
  */
 @customElement('rh-dialog')
 export class RhDialog extends LitElement {
@@ -90,6 +91,9 @@ export class RhDialog extends LitElement {
    */
   @property({ attribute: 'accessible-label' }) accessibleLabel?: string;
 
+  /**
+   * `open` / `open="open"` declaratively opens the dialog
+   */
   @property({ type: Boolean, reflect: true }) open = false;
 
   /** Optional ID of the trigger element */
