@@ -114,10 +114,8 @@ rh-audio-player-rate-stepper {
   width: auto;
 }
 
-svg.scrubber {
-  fill: var(--_text-color);
-  height: var(--_svg-size);
-  width: var(--_svg-size);
+.scrubber {
+  color: var(--_text-color);
   padding: var(--_icon-padding);
 }
 
@@ -353,7 +351,8 @@ input[type='range'] {
 #full-play-tooltip,
 #mute-tooltip,
 #close-tooltip,
-#menu-tooltip {
+#menu-tooltip,
+.scrubber {
   --rh-icon-size: var(--rh-size-icon-02, 24px);
 }
 
