@@ -48,8 +48,6 @@ export class UxdotSpacerTokensTable extends LitElement {
         .filter(Boolean);
 
     return html`
-      <!-- TODO: remove lightdom after implementing auto-load-->
-      <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
       <rh-table color-palette="${this.colorPalette}">
         <table>
           <caption>${this.caption}</caption>
