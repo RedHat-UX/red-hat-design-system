@@ -7275,20 +7275,19 @@ a:focus-within,
 
 :host(:is(:focus, :focus-within)) #container {
   --_background-color: var(--rh-cta-focus-background-color);
+  --_color: var(--_focus-color);
+  --_text-decoration: var(--_focus-text-decoration);
 
   border-color: var(--_focus-border-color);
   background-color:
     var(--_focus-container-background-color,
       var(--_focus-background-color));
-  color: var(--rh-cta-focus-color);
+  color: var(--rh-cta-focus-color, var(--_color));
   outline:
     var(--rh-border-width-md, 2px)
     solid
     var(--rh-cta-focus-container-outline-color, var(--rh-cta-focus-outline-color));
   outline-offset: 2px;
-
-  --_color: var(--_focus-color);
-  --_text-decoration: var(--_focus-text-decoration);
 }
 
 :host(:is(:focus, :focus-within)) #container:after {
@@ -7322,6 +7321,7 @@ a:focus-within,
 
 :host(:active) #container {
   background-color: var(--_background-color);
+  color: var(--_active-color);
 
   --_background-color:
     var(--rh-cta-background-color,
@@ -7434,6 +7434,7 @@ a:focus-within,
   --_background-color: var(--rh-cta-background-color, var(--rh-color-brand-red));
   --_border-color: var(--rh-cta-border-color, var(--rh-color-brand-red));
   --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
+  --_active-color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
   --_hover-background-color:
     var(--rh-cta-hover-background-color,
       var(--rh-color-brand-red-dark, #a60000));
@@ -7443,14 +7444,18 @@ a:focus-within,
     var(--rh-cta-focus-background-color,
       var(--rh-color-brand-red-dark, #a60000));
   --_focus-border-color: var(--rh-cta-focus-border-color, var(--rh-color-brand-red-dark, #a60000));
-  --_focus-color: var(--rh-cta-focus-color, var(--rh-color-text-primary-on-dark, #ffffff));
-  --_focus-inner-border-color: var(--rh-cta-focus-inner-border-color, var(--rh-color-text-primary));
+  --_focus-color:
+    var(--rh-cta-focus-color,
+      var(--rh-color-text-primary-on-dark, #ffffff)) !important;
+  --_focus-inner-border-color:
+    var(--rh-cta-focus-inner-border-color,
+      var(--rh-color-text-primary-on-dark, #ffffff));
   --_active-background-color:
     var(--rh-cta-active-background-color,
       var(--rh-color-brand-red-dark, #a60000));
   --_active-inner-border-color:
     var(--rh-cta-active-inner-border-color,
-      var(--rh-color-text-primary));
+      var(--rh-color-text-primary-on-dark, #ffffff));
 }
 
 /*****************************************************************************
@@ -7462,7 +7467,7 @@ a:focus-within,
 
   --_background-color: var(--rh-cta-background-color, transparent);
   --_border-color: var(--rh-cta-border-color, var(--rh-color-border-strong));
-  --_color: var(--rh-cta-color, var(--rh-color-text-primary));
+  --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-light, #151515));
   --_hover-background-color:
     var(--rh-cta-hover-background-color,
       var(--rh-color-surface-darkest,
@@ -7481,7 +7486,7 @@ a:focus-within,
   --_focus-inner-border-color:
     var(--rh-cta-focus-inner-border-color,
       var(--rh-color-border-strong));
-  --_active-color: var(--rh-cta-active-color, var(--rh-color-text-primary));
+  --_active-color: var(--rh-cta-active-color, var(--rh-color-text-primary-on-light, #151515));
   --_active-background-color: var(--rh-cta-active-background-color, var(--rh-color-border-strong));
   --_active-inner-border-color:
     var(--rh-cta-active-inner-border-color,
@@ -7489,6 +7494,7 @@ a:focus-within,
       #e0e0e0));
 
   &.dark {
+    --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
     --_hover-background-color:
       var(--rh-cta-hover-background-color,
         var(--rh-color-surface-lightest,
@@ -7498,7 +7504,8 @@ a:focus-within,
         var(--rh-color-surface-dark,
         #383838));
     --_hover-color: var(--rh-cta-hover-color, var(--rh-color-text-primary-on-light, #151515));
-    --_focus-color: var(--rh-cta-focus-color, var(--rh-color-text-primary));
+    --_focus-color: var(--rh-cta-focus-color, var(--rh-color-text-primary-on-light, #151515));
+    --_active-color: var(--rh-cta-active-color, var(--rh-color-text-primary-on-dark, #ffffff));
     --_active-background-color:
       var(--rh-cta-active-background-color,
         var(--rh-color-surface-lightest,
@@ -7740,20 +7747,19 @@ a:focus-within,
 
 :host(:is(:focus, :focus-within)) #container {
   --_background-color: var(--rh-cta-focus-background-color);
+  --_color: var(--_focus-color);
+  --_text-decoration: var(--_focus-text-decoration);
 
   border-color: var(--_focus-border-color);
   background-color:
     var(--_focus-container-background-color,
       var(--_focus-background-color));
-  color: var(--rh-cta-focus-color);
+  color: var(--rh-cta-focus-color, var(--_color));
   outline:
     var(--rh-border-width-md, 2px)
     solid
     var(--rh-cta-focus-container-outline-color, var(--rh-cta-focus-outline-color));
   outline-offset: 2px;
-
-  --_color: var(--_focus-color);
-  --_text-decoration: var(--_focus-text-decoration);
 }
 
 :host(:is(:focus, :focus-within)) #container:after {
@@ -7787,6 +7793,7 @@ a:focus-within,
 
 :host(:active) #container {
   background-color: var(--_background-color);
+  color: var(--_active-color);
 
   --_background-color:
     var(--rh-cta-background-color,
@@ -7899,6 +7906,7 @@ a:focus-within,
   --_background-color: var(--rh-cta-background-color, var(--rh-color-brand-red));
   --_border-color: var(--rh-cta-border-color, var(--rh-color-brand-red));
   --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
+  --_active-color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
   --_hover-background-color:
     var(--rh-cta-hover-background-color,
       var(--rh-color-brand-red-dark, #a60000));
@@ -7908,14 +7916,18 @@ a:focus-within,
     var(--rh-cta-focus-background-color,
       var(--rh-color-brand-red-dark, #a60000));
   --_focus-border-color: var(--rh-cta-focus-border-color, var(--rh-color-brand-red-dark, #a60000));
-  --_focus-color: var(--rh-cta-focus-color, var(--rh-color-text-primary-on-dark, #ffffff));
-  --_focus-inner-border-color: var(--rh-cta-focus-inner-border-color, var(--rh-color-text-primary));
+  --_focus-color:
+    var(--rh-cta-focus-color,
+      var(--rh-color-text-primary-on-dark, #ffffff)) !important;
+  --_focus-inner-border-color:
+    var(--rh-cta-focus-inner-border-color,
+      var(--rh-color-text-primary-on-dark, #ffffff));
   --_active-background-color:
     var(--rh-cta-active-background-color,
       var(--rh-color-brand-red-dark, #a60000));
   --_active-inner-border-color:
     var(--rh-cta-active-inner-border-color,
-      var(--rh-color-text-primary));
+      var(--rh-color-text-primary-on-dark, #ffffff));
 }
 
 /*****************************************************************************
@@ -7927,7 +7939,7 @@ a:focus-within,
 
   --_background-color: var(--rh-cta-background-color, transparent);
   --_border-color: var(--rh-cta-border-color, var(--rh-color-border-strong));
-  --_color: var(--rh-cta-color, var(--rh-color-text-primary));
+  --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-light, #151515));
   --_hover-background-color:
     var(--rh-cta-hover-background-color,
       var(--rh-color-surface-darkest,
@@ -7946,7 +7958,7 @@ a:focus-within,
   --_focus-inner-border-color:
     var(--rh-cta-focus-inner-border-color,
       var(--rh-color-border-strong));
-  --_active-color: var(--rh-cta-active-color, var(--rh-color-text-primary));
+  --_active-color: var(--rh-cta-active-color, var(--rh-color-text-primary-on-light, #151515));
   --_active-background-color: var(--rh-cta-active-background-color, var(--rh-color-border-strong));
   --_active-inner-border-color:
     var(--rh-cta-active-inner-border-color,
@@ -7954,6 +7966,7 @@ a:focus-within,
       #e0e0e0));
 
   &.dark {
+    --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
     --_hover-background-color:
       var(--rh-cta-hover-background-color,
         var(--rh-color-surface-lightest,
@@ -7963,7 +7976,8 @@ a:focus-within,
         var(--rh-color-surface-dark,
         #383838));
     --_hover-color: var(--rh-cta-hover-color, var(--rh-color-text-primary-on-light, #151515));
-    --_focus-color: var(--rh-cta-focus-color, var(--rh-color-text-primary));
+    --_focus-color: var(--rh-cta-focus-color, var(--rh-color-text-primary-on-light, #151515));
+    --_active-color: var(--rh-cta-active-color, var(--rh-color-text-primary-on-dark, #ffffff));
     --_active-background-color:
       var(--rh-cta-active-background-color,
         var(--rh-color-surface-lightest,
@@ -10279,20 +10293,19 @@ a:focus-within,
 
 :host(:is(:focus, :focus-within)) #container {
   --_background-color: var(--rh-cta-focus-background-color);
+  --_color: var(--_focus-color);
+  --_text-decoration: var(--_focus-text-decoration);
 
   border-color: var(--_focus-border-color);
   background-color:
     var(--_focus-container-background-color,
       var(--_focus-background-color));
-  color: var(--rh-cta-focus-color);
+  color: var(--rh-cta-focus-color, var(--_color));
   outline:
     var(--rh-border-width-md, 2px)
     solid
     var(--rh-cta-focus-container-outline-color, var(--rh-cta-focus-outline-color));
   outline-offset: 2px;
-
-  --_color: var(--_focus-color);
-  --_text-decoration: var(--_focus-text-decoration);
 }
 
 :host(:is(:focus, :focus-within)) #container:after {
@@ -10326,6 +10339,7 @@ a:focus-within,
 
 :host(:active) #container {
   background-color: var(--_background-color);
+  color: var(--_active-color);
 
   --_background-color:
     var(--rh-cta-background-color,
@@ -10438,6 +10452,7 @@ a:focus-within,
   --_background-color: var(--rh-cta-background-color, var(--rh-color-brand-red));
   --_border-color: var(--rh-cta-border-color, var(--rh-color-brand-red));
   --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
+  --_active-color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
   --_hover-background-color:
     var(--rh-cta-hover-background-color,
       var(--rh-color-brand-red-dark, #a60000));
@@ -10447,14 +10462,18 @@ a:focus-within,
     var(--rh-cta-focus-background-color,
       var(--rh-color-brand-red-dark, #a60000));
   --_focus-border-color: var(--rh-cta-focus-border-color, var(--rh-color-brand-red-dark, #a60000));
-  --_focus-color: var(--rh-cta-focus-color, var(--rh-color-text-primary-on-dark, #ffffff));
-  --_focus-inner-border-color: var(--rh-cta-focus-inner-border-color, var(--rh-color-text-primary));
+  --_focus-color:
+    var(--rh-cta-focus-color,
+      var(--rh-color-text-primary-on-dark, #ffffff)) !important;
+  --_focus-inner-border-color:
+    var(--rh-cta-focus-inner-border-color,
+      var(--rh-color-text-primary-on-dark, #ffffff));
   --_active-background-color:
     var(--rh-cta-active-background-color,
       var(--rh-color-brand-red-dark, #a60000));
   --_active-inner-border-color:
     var(--rh-cta-active-inner-border-color,
-      var(--rh-color-text-primary));
+      var(--rh-color-text-primary-on-dark, #ffffff));
 }
 
 /*****************************************************************************
@@ -10466,7 +10485,7 @@ a:focus-within,
 
   --_background-color: var(--rh-cta-background-color, transparent);
   --_border-color: var(--rh-cta-border-color, var(--rh-color-border-strong));
-  --_color: var(--rh-cta-color, var(--rh-color-text-primary));
+  --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-light, #151515));
   --_hover-background-color:
     var(--rh-cta-hover-background-color,
       var(--rh-color-surface-darkest,
@@ -10485,7 +10504,7 @@ a:focus-within,
   --_focus-inner-border-color:
     var(--rh-cta-focus-inner-border-color,
       var(--rh-color-border-strong));
-  --_active-color: var(--rh-cta-active-color, var(--rh-color-text-primary));
+  --_active-color: var(--rh-cta-active-color, var(--rh-color-text-primary-on-light, #151515));
   --_active-background-color: var(--rh-cta-active-background-color, var(--rh-color-border-strong));
   --_active-inner-border-color:
     var(--rh-cta-active-inner-border-color,
@@ -10493,6 +10512,7 @@ a:focus-within,
       #e0e0e0));
 
   &.dark {
+    --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
     --_hover-background-color:
       var(--rh-cta-hover-background-color,
         var(--rh-color-surface-lightest,
@@ -10502,7 +10522,8 @@ a:focus-within,
         var(--rh-color-surface-dark,
         #383838));
     --_hover-color: var(--rh-cta-hover-color, var(--rh-color-text-primary-on-light, #151515));
-    --_focus-color: var(--rh-cta-focus-color, var(--rh-color-text-primary));
+    --_focus-color: var(--rh-cta-focus-color, var(--rh-color-text-primary-on-light, #151515));
+    --_active-color: var(--rh-cta-active-color, var(--rh-color-text-primary-on-dark, #ffffff));
     --_active-background-color:
       var(--rh-cta-active-background-color,
         var(--rh-color-surface-lightest,
@@ -10744,20 +10765,19 @@ a:focus-within,
 
 :host(:is(:focus, :focus-within)) #container {
   --_background-color: var(--rh-cta-focus-background-color);
+  --_color: var(--_focus-color);
+  --_text-decoration: var(--_focus-text-decoration);
 
   border-color: var(--_focus-border-color);
   background-color:
     var(--_focus-container-background-color,
       var(--_focus-background-color));
-  color: var(--rh-cta-focus-color);
+  color: var(--rh-cta-focus-color, var(--_color));
   outline:
     var(--rh-border-width-md, 2px)
     solid
     var(--rh-cta-focus-container-outline-color, var(--rh-cta-focus-outline-color));
   outline-offset: 2px;
-
-  --_color: var(--_focus-color);
-  --_text-decoration: var(--_focus-text-decoration);
 }
 
 :host(:is(:focus, :focus-within)) #container:after {
@@ -10791,6 +10811,7 @@ a:focus-within,
 
 :host(:active) #container {
   background-color: var(--_background-color);
+  color: var(--_active-color);
 
   --_background-color:
     var(--rh-cta-background-color,
@@ -10903,6 +10924,7 @@ a:focus-within,
   --_background-color: var(--rh-cta-background-color, var(--rh-color-brand-red));
   --_border-color: var(--rh-cta-border-color, var(--rh-color-brand-red));
   --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
+  --_active-color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
   --_hover-background-color:
     var(--rh-cta-hover-background-color,
       var(--rh-color-brand-red-dark, #a60000));
@@ -10912,14 +10934,18 @@ a:focus-within,
     var(--rh-cta-focus-background-color,
       var(--rh-color-brand-red-dark, #a60000));
   --_focus-border-color: var(--rh-cta-focus-border-color, var(--rh-color-brand-red-dark, #a60000));
-  --_focus-color: var(--rh-cta-focus-color, var(--rh-color-text-primary-on-dark, #ffffff));
-  --_focus-inner-border-color: var(--rh-cta-focus-inner-border-color, var(--rh-color-text-primary));
+  --_focus-color:
+    var(--rh-cta-focus-color,
+      var(--rh-color-text-primary-on-dark, #ffffff)) !important;
+  --_focus-inner-border-color:
+    var(--rh-cta-focus-inner-border-color,
+      var(--rh-color-text-primary-on-dark, #ffffff));
   --_active-background-color:
     var(--rh-cta-active-background-color,
       var(--rh-color-brand-red-dark, #a60000));
   --_active-inner-border-color:
     var(--rh-cta-active-inner-border-color,
-      var(--rh-color-text-primary));
+      var(--rh-color-text-primary-on-dark, #ffffff));
 }
 
 /*****************************************************************************
@@ -10931,7 +10957,7 @@ a:focus-within,
 
   --_background-color: var(--rh-cta-background-color, transparent);
   --_border-color: var(--rh-cta-border-color, var(--rh-color-border-strong));
-  --_color: var(--rh-cta-color, var(--rh-color-text-primary));
+  --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-light, #151515));
   --_hover-background-color:
     var(--rh-cta-hover-background-color,
       var(--rh-color-surface-darkest,
@@ -10950,7 +10976,7 @@ a:focus-within,
   --_focus-inner-border-color:
     var(--rh-cta-focus-inner-border-color,
       var(--rh-color-border-strong));
-  --_active-color: var(--rh-cta-active-color, var(--rh-color-text-primary));
+  --_active-color: var(--rh-cta-active-color, var(--rh-color-text-primary-on-light, #151515));
   --_active-background-color: var(--rh-cta-active-background-color, var(--rh-color-border-strong));
   --_active-inner-border-color:
     var(--rh-cta-active-inner-border-color,
@@ -10958,6 +10984,7 @@ a:focus-within,
       #e0e0e0));
 
   &.dark {
+    --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
     --_hover-background-color:
       var(--rh-cta-hover-background-color,
         var(--rh-color-surface-lightest,
@@ -10967,7 +10994,8 @@ a:focus-within,
         var(--rh-color-surface-dark,
         #383838));
     --_hover-color: var(--rh-cta-hover-color, var(--rh-color-text-primary-on-light, #151515));
-    --_focus-color: var(--rh-cta-focus-color, var(--rh-color-text-primary));
+    --_focus-color: var(--rh-cta-focus-color, var(--rh-color-text-primary-on-light, #151515));
+    --_active-color: var(--rh-cta-active-color, var(--rh-color-text-primary-on-dark, #ffffff));
     --_active-background-color:
       var(--rh-cta-active-background-color,
         var(--rh-color-surface-lightest,
@@ -13277,20 +13305,19 @@ a:focus-within,
 
 :host(:is(:focus, :focus-within)) #container {
   --_background-color: var(--rh-cta-focus-background-color);
+  --_color: var(--_focus-color);
+  --_text-decoration: var(--_focus-text-decoration);
 
   border-color: var(--_focus-border-color);
   background-color:
     var(--_focus-container-background-color,
       var(--_focus-background-color));
-  color: var(--rh-cta-focus-color);
+  color: var(--rh-cta-focus-color, var(--_color));
   outline:
     var(--rh-border-width-md, 2px)
     solid
     var(--rh-cta-focus-container-outline-color, var(--rh-cta-focus-outline-color));
   outline-offset: 2px;
-
-  --_color: var(--_focus-color);
-  --_text-decoration: var(--_focus-text-decoration);
 }
 
 :host(:is(:focus, :focus-within)) #container:after {
@@ -13324,6 +13351,7 @@ a:focus-within,
 
 :host(:active) #container {
   background-color: var(--_background-color);
+  color: var(--_active-color);
 
   --_background-color:
     var(--rh-cta-background-color,
@@ -13436,6 +13464,7 @@ a:focus-within,
   --_background-color: var(--rh-cta-background-color, var(--rh-color-brand-red));
   --_border-color: var(--rh-cta-border-color, var(--rh-color-brand-red));
   --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
+  --_active-color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
   --_hover-background-color:
     var(--rh-cta-hover-background-color,
       var(--rh-color-brand-red-dark, #a60000));
@@ -13445,14 +13474,18 @@ a:focus-within,
     var(--rh-cta-focus-background-color,
       var(--rh-color-brand-red-dark, #a60000));
   --_focus-border-color: var(--rh-cta-focus-border-color, var(--rh-color-brand-red-dark, #a60000));
-  --_focus-color: var(--rh-cta-focus-color, var(--rh-color-text-primary-on-dark, #ffffff));
-  --_focus-inner-border-color: var(--rh-cta-focus-inner-border-color, var(--rh-color-text-primary));
+  --_focus-color:
+    var(--rh-cta-focus-color,
+      var(--rh-color-text-primary-on-dark, #ffffff)) !important;
+  --_focus-inner-border-color:
+    var(--rh-cta-focus-inner-border-color,
+      var(--rh-color-text-primary-on-dark, #ffffff));
   --_active-background-color:
     var(--rh-cta-active-background-color,
       var(--rh-color-brand-red-dark, #a60000));
   --_active-inner-border-color:
     var(--rh-cta-active-inner-border-color,
-      var(--rh-color-text-primary));
+      var(--rh-color-text-primary-on-dark, #ffffff));
 }
 
 /*****************************************************************************
@@ -13464,7 +13497,7 @@ a:focus-within,
 
   --_background-color: var(--rh-cta-background-color, transparent);
   --_border-color: var(--rh-cta-border-color, var(--rh-color-border-strong));
-  --_color: var(--rh-cta-color, var(--rh-color-text-primary));
+  --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-light, #151515));
   --_hover-background-color:
     var(--rh-cta-hover-background-color,
       var(--rh-color-surface-darkest,
@@ -13483,7 +13516,7 @@ a:focus-within,
   --_focus-inner-border-color:
     var(--rh-cta-focus-inner-border-color,
       var(--rh-color-border-strong));
-  --_active-color: var(--rh-cta-active-color, var(--rh-color-text-primary));
+  --_active-color: var(--rh-cta-active-color, var(--rh-color-text-primary-on-light, #151515));
   --_active-background-color: var(--rh-cta-active-background-color, var(--rh-color-border-strong));
   --_active-inner-border-color:
     var(--rh-cta-active-inner-border-color,
@@ -13491,6 +13524,7 @@ a:focus-within,
       #e0e0e0));
 
   &.dark {
+    --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
     --_hover-background-color:
       var(--rh-cta-hover-background-color,
         var(--rh-color-surface-lightest,
@@ -13500,7 +13534,8 @@ a:focus-within,
         var(--rh-color-surface-dark,
         #383838));
     --_hover-color: var(--rh-cta-hover-color, var(--rh-color-text-primary-on-light, #151515));
-    --_focus-color: var(--rh-cta-focus-color, var(--rh-color-text-primary));
+    --_focus-color: var(--rh-cta-focus-color, var(--rh-color-text-primary-on-light, #151515));
+    --_active-color: var(--rh-cta-active-color, var(--rh-color-text-primary-on-dark, #ffffff));
     --_active-background-color:
       var(--rh-cta-active-background-color,
         var(--rh-color-surface-lightest,
@@ -13742,20 +13777,19 @@ a:focus-within,
 
 :host(:is(:focus, :focus-within)) #container {
   --_background-color: var(--rh-cta-focus-background-color);
+  --_color: var(--_focus-color);
+  --_text-decoration: var(--_focus-text-decoration);
 
   border-color: var(--_focus-border-color);
   background-color:
     var(--_focus-container-background-color,
       var(--_focus-background-color));
-  color: var(--rh-cta-focus-color);
+  color: var(--rh-cta-focus-color, var(--_color));
   outline:
     var(--rh-border-width-md, 2px)
     solid
     var(--rh-cta-focus-container-outline-color, var(--rh-cta-focus-outline-color));
   outline-offset: 2px;
-
-  --_color: var(--_focus-color);
-  --_text-decoration: var(--_focus-text-decoration);
 }
 
 :host(:is(:focus, :focus-within)) #container:after {
@@ -13789,6 +13823,7 @@ a:focus-within,
 
 :host(:active) #container {
   background-color: var(--_background-color);
+  color: var(--_active-color);
 
   --_background-color:
     var(--rh-cta-background-color,
@@ -13901,6 +13936,7 @@ a:focus-within,
   --_background-color: var(--rh-cta-background-color, var(--rh-color-brand-red));
   --_border-color: var(--rh-cta-border-color, var(--rh-color-brand-red));
   --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
+  --_active-color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
   --_hover-background-color:
     var(--rh-cta-hover-background-color,
       var(--rh-color-brand-red-dark, #a60000));
@@ -13910,14 +13946,18 @@ a:focus-within,
     var(--rh-cta-focus-background-color,
       var(--rh-color-brand-red-dark, #a60000));
   --_focus-border-color: var(--rh-cta-focus-border-color, var(--rh-color-brand-red-dark, #a60000));
-  --_focus-color: var(--rh-cta-focus-color, var(--rh-color-text-primary-on-dark, #ffffff));
-  --_focus-inner-border-color: var(--rh-cta-focus-inner-border-color, var(--rh-color-text-primary));
+  --_focus-color:
+    var(--rh-cta-focus-color,
+      var(--rh-color-text-primary-on-dark, #ffffff)) !important;
+  --_focus-inner-border-color:
+    var(--rh-cta-focus-inner-border-color,
+      var(--rh-color-text-primary-on-dark, #ffffff));
   --_active-background-color:
     var(--rh-cta-active-background-color,
       var(--rh-color-brand-red-dark, #a60000));
   --_active-inner-border-color:
     var(--rh-cta-active-inner-border-color,
-      var(--rh-color-text-primary));
+      var(--rh-color-text-primary-on-dark, #ffffff));
 }
 
 /*****************************************************************************
@@ -13929,7 +13969,7 @@ a:focus-within,
 
   --_background-color: var(--rh-cta-background-color, transparent);
   --_border-color: var(--rh-cta-border-color, var(--rh-color-border-strong));
-  --_color: var(--rh-cta-color, var(--rh-color-text-primary));
+  --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-light, #151515));
   --_hover-background-color:
     var(--rh-cta-hover-background-color,
       var(--rh-color-surface-darkest,
@@ -13948,7 +13988,7 @@ a:focus-within,
   --_focus-inner-border-color:
     var(--rh-cta-focus-inner-border-color,
       var(--rh-color-border-strong));
-  --_active-color: var(--rh-cta-active-color, var(--rh-color-text-primary));
+  --_active-color: var(--rh-cta-active-color, var(--rh-color-text-primary-on-light, #151515));
   --_active-background-color: var(--rh-cta-active-background-color, var(--rh-color-border-strong));
   --_active-inner-border-color:
     var(--rh-cta-active-inner-border-color,
@@ -13956,6 +13996,7 @@ a:focus-within,
       #e0e0e0));
 
   &.dark {
+    --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
     --_hover-background-color:
       var(--rh-cta-hover-background-color,
         var(--rh-color-surface-lightest,
@@ -13965,7 +14006,8 @@ a:focus-within,
         var(--rh-color-surface-dark,
         #383838));
     --_hover-color: var(--rh-cta-hover-color, var(--rh-color-text-primary-on-light, #151515));
-    --_focus-color: var(--rh-cta-focus-color, var(--rh-color-text-primary));
+    --_focus-color: var(--rh-cta-focus-color, var(--rh-color-text-primary-on-light, #151515));
+    --_active-color: var(--rh-cta-active-color, var(--rh-color-text-primary-on-dark, #ffffff));
     --_active-background-color:
       var(--rh-cta-active-background-color,
         var(--rh-color-surface-lightest,
@@ -16320,20 +16362,19 @@ a:focus-within,
 
 :host(:is(:focus, :focus-within)) #container {
   --_background-color: var(--rh-cta-focus-background-color);
+  --_color: var(--_focus-color);
+  --_text-decoration: var(--_focus-text-decoration);
 
   border-color: var(--_focus-border-color);
   background-color:
     var(--_focus-container-background-color,
       var(--_focus-background-color));
-  color: var(--rh-cta-focus-color);
+  color: var(--rh-cta-focus-color, var(--_color));
   outline:
     var(--rh-border-width-md, 2px)
     solid
     var(--rh-cta-focus-container-outline-color, var(--rh-cta-focus-outline-color));
   outline-offset: 2px;
-
-  --_color: var(--_focus-color);
-  --_text-decoration: var(--_focus-text-decoration);
 }
 
 :host(:is(:focus, :focus-within)) #container:after {
@@ -16367,6 +16408,7 @@ a:focus-within,
 
 :host(:active) #container {
   background-color: var(--_background-color);
+  color: var(--_active-color);
 
   --_background-color:
     var(--rh-cta-background-color,
@@ -16479,6 +16521,7 @@ a:focus-within,
   --_background-color: var(--rh-cta-background-color, var(--rh-color-brand-red));
   --_border-color: var(--rh-cta-border-color, var(--rh-color-brand-red));
   --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
+  --_active-color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
   --_hover-background-color:
     var(--rh-cta-hover-background-color,
       var(--rh-color-brand-red-dark, #a60000));
@@ -16488,14 +16531,18 @@ a:focus-within,
     var(--rh-cta-focus-background-color,
       var(--rh-color-brand-red-dark, #a60000));
   --_focus-border-color: var(--rh-cta-focus-border-color, var(--rh-color-brand-red-dark, #a60000));
-  --_focus-color: var(--rh-cta-focus-color, var(--rh-color-text-primary-on-dark, #ffffff));
-  --_focus-inner-border-color: var(--rh-cta-focus-inner-border-color, var(--rh-color-text-primary));
+  --_focus-color:
+    var(--rh-cta-focus-color,
+      var(--rh-color-text-primary-on-dark, #ffffff)) !important;
+  --_focus-inner-border-color:
+    var(--rh-cta-focus-inner-border-color,
+      var(--rh-color-text-primary-on-dark, #ffffff));
   --_active-background-color:
     var(--rh-cta-active-background-color,
       var(--rh-color-brand-red-dark, #a60000));
   --_active-inner-border-color:
     var(--rh-cta-active-inner-border-color,
-      var(--rh-color-text-primary));
+      var(--rh-color-text-primary-on-dark, #ffffff));
 }
 
 /*****************************************************************************
@@ -16507,7 +16554,7 @@ a:focus-within,
 
   --_background-color: var(--rh-cta-background-color, transparent);
   --_border-color: var(--rh-cta-border-color, var(--rh-color-border-strong));
-  --_color: var(--rh-cta-color, var(--rh-color-text-primary));
+  --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-light, #151515));
   --_hover-background-color:
     var(--rh-cta-hover-background-color,
       var(--rh-color-surface-darkest,
@@ -16526,7 +16573,7 @@ a:focus-within,
   --_focus-inner-border-color:
     var(--rh-cta-focus-inner-border-color,
       var(--rh-color-border-strong));
-  --_active-color: var(--rh-cta-active-color, var(--rh-color-text-primary));
+  --_active-color: var(--rh-cta-active-color, var(--rh-color-text-primary-on-light, #151515));
   --_active-background-color: var(--rh-cta-active-background-color, var(--rh-color-border-strong));
   --_active-inner-border-color:
     var(--rh-cta-active-inner-border-color,
@@ -16534,6 +16581,7 @@ a:focus-within,
       #e0e0e0));
 
   &.dark {
+    --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
     --_hover-background-color:
       var(--rh-cta-hover-background-color,
         var(--rh-color-surface-lightest,
@@ -16543,7 +16591,8 @@ a:focus-within,
         var(--rh-color-surface-dark,
         #383838));
     --_hover-color: var(--rh-cta-hover-color, var(--rh-color-text-primary-on-light, #151515));
-    --_focus-color: var(--rh-cta-focus-color, var(--rh-color-text-primary));
+    --_focus-color: var(--rh-cta-focus-color, var(--rh-color-text-primary-on-light, #151515));
+    --_active-color: var(--rh-cta-active-color, var(--rh-color-text-primary-on-dark, #ffffff));
     --_active-background-color:
       var(--rh-cta-active-background-color,
         var(--rh-color-surface-lightest,
@@ -16785,20 +16834,19 @@ a:focus-within,
 
 :host(:is(:focus, :focus-within)) #container {
   --_background-color: var(--rh-cta-focus-background-color);
+  --_color: var(--_focus-color);
+  --_text-decoration: var(--_focus-text-decoration);
 
   border-color: var(--_focus-border-color);
   background-color:
     var(--_focus-container-background-color,
       var(--_focus-background-color));
-  color: var(--rh-cta-focus-color);
+  color: var(--rh-cta-focus-color, var(--_color));
   outline:
     var(--rh-border-width-md, 2px)
     solid
     var(--rh-cta-focus-container-outline-color, var(--rh-cta-focus-outline-color));
   outline-offset: 2px;
-
-  --_color: var(--_focus-color);
-  --_text-decoration: var(--_focus-text-decoration);
 }
 
 :host(:is(:focus, :focus-within)) #container:after {
@@ -16832,6 +16880,7 @@ a:focus-within,
 
 :host(:active) #container {
   background-color: var(--_background-color);
+  color: var(--_active-color);
 
   --_background-color:
     var(--rh-cta-background-color,
@@ -16944,6 +16993,7 @@ a:focus-within,
   --_background-color: var(--rh-cta-background-color, var(--rh-color-brand-red));
   --_border-color: var(--rh-cta-border-color, var(--rh-color-brand-red));
   --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
+  --_active-color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
   --_hover-background-color:
     var(--rh-cta-hover-background-color,
       var(--rh-color-brand-red-dark, #a60000));
@@ -16953,14 +17003,18 @@ a:focus-within,
     var(--rh-cta-focus-background-color,
       var(--rh-color-brand-red-dark, #a60000));
   --_focus-border-color: var(--rh-cta-focus-border-color, var(--rh-color-brand-red-dark, #a60000));
-  --_focus-color: var(--rh-cta-focus-color, var(--rh-color-text-primary-on-dark, #ffffff));
-  --_focus-inner-border-color: var(--rh-cta-focus-inner-border-color, var(--rh-color-text-primary));
+  --_focus-color:
+    var(--rh-cta-focus-color,
+      var(--rh-color-text-primary-on-dark, #ffffff)) !important;
+  --_focus-inner-border-color:
+    var(--rh-cta-focus-inner-border-color,
+      var(--rh-color-text-primary-on-dark, #ffffff));
   --_active-background-color:
     var(--rh-cta-active-background-color,
       var(--rh-color-brand-red-dark, #a60000));
   --_active-inner-border-color:
     var(--rh-cta-active-inner-border-color,
-      var(--rh-color-text-primary));
+      var(--rh-color-text-primary-on-dark, #ffffff));
 }
 
 /*****************************************************************************
@@ -16972,7 +17026,7 @@ a:focus-within,
 
   --_background-color: var(--rh-cta-background-color, transparent);
   --_border-color: var(--rh-cta-border-color, var(--rh-color-border-strong));
-  --_color: var(--rh-cta-color, var(--rh-color-text-primary));
+  --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-light, #151515));
   --_hover-background-color:
     var(--rh-cta-hover-background-color,
       var(--rh-color-surface-darkest,
@@ -16991,7 +17045,7 @@ a:focus-within,
   --_focus-inner-border-color:
     var(--rh-cta-focus-inner-border-color,
       var(--rh-color-border-strong));
-  --_active-color: var(--rh-cta-active-color, var(--rh-color-text-primary));
+  --_active-color: var(--rh-cta-active-color, var(--rh-color-text-primary-on-light, #151515));
   --_active-background-color: var(--rh-cta-active-background-color, var(--rh-color-border-strong));
   --_active-inner-border-color:
     var(--rh-cta-active-inner-border-color,
@@ -16999,6 +17053,7 @@ a:focus-within,
       #e0e0e0));
 
   &.dark {
+    --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
     --_hover-background-color:
       var(--rh-cta-hover-background-color,
         var(--rh-color-surface-lightest,
@@ -17008,7 +17063,8 @@ a:focus-within,
         var(--rh-color-surface-dark,
         #383838));
     --_hover-color: var(--rh-cta-hover-color, var(--rh-color-text-primary-on-light, #151515));
-    --_focus-color: var(--rh-cta-focus-color, var(--rh-color-text-primary));
+    --_focus-color: var(--rh-cta-focus-color, var(--rh-color-text-primary-on-light, #151515));
+    --_active-color: var(--rh-cta-active-color, var(--rh-color-text-primary-on-dark, #ffffff));
     --_active-background-color:
       var(--rh-cta-active-background-color,
         var(--rh-color-surface-lightest,
@@ -19313,20 +19369,19 @@ a:focus-within,
 
 :host(:is(:focus, :focus-within)) #container {
   --_background-color: var(--rh-cta-focus-background-color);
+  --_color: var(--_focus-color);
+  --_text-decoration: var(--_focus-text-decoration);
 
   border-color: var(--_focus-border-color);
   background-color:
     var(--_focus-container-background-color,
       var(--_focus-background-color));
-  color: var(--rh-cta-focus-color);
+  color: var(--rh-cta-focus-color, var(--_color));
   outline:
     var(--rh-border-width-md, 2px)
     solid
     var(--rh-cta-focus-container-outline-color, var(--rh-cta-focus-outline-color));
   outline-offset: 2px;
-
-  --_color: var(--_focus-color);
-  --_text-decoration: var(--_focus-text-decoration);
 }
 
 :host(:is(:focus, :focus-within)) #container:after {
@@ -19360,6 +19415,7 @@ a:focus-within,
 
 :host(:active) #container {
   background-color: var(--_background-color);
+  color: var(--_active-color);
 
   --_background-color:
     var(--rh-cta-background-color,
@@ -19472,6 +19528,7 @@ a:focus-within,
   --_background-color: var(--rh-cta-background-color, var(--rh-color-brand-red));
   --_border-color: var(--rh-cta-border-color, var(--rh-color-brand-red));
   --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
+  --_active-color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
   --_hover-background-color:
     var(--rh-cta-hover-background-color,
       var(--rh-color-brand-red-dark, #a60000));
@@ -19481,14 +19538,18 @@ a:focus-within,
     var(--rh-cta-focus-background-color,
       var(--rh-color-brand-red-dark, #a60000));
   --_focus-border-color: var(--rh-cta-focus-border-color, var(--rh-color-brand-red-dark, #a60000));
-  --_focus-color: var(--rh-cta-focus-color, var(--rh-color-text-primary-on-dark, #ffffff));
-  --_focus-inner-border-color: var(--rh-cta-focus-inner-border-color, var(--rh-color-text-primary));
+  --_focus-color:
+    var(--rh-cta-focus-color,
+      var(--rh-color-text-primary-on-dark, #ffffff)) !important;
+  --_focus-inner-border-color:
+    var(--rh-cta-focus-inner-border-color,
+      var(--rh-color-text-primary-on-dark, #ffffff));
   --_active-background-color:
     var(--rh-cta-active-background-color,
       var(--rh-color-brand-red-dark, #a60000));
   --_active-inner-border-color:
     var(--rh-cta-active-inner-border-color,
-      var(--rh-color-text-primary));
+      var(--rh-color-text-primary-on-dark, #ffffff));
 }
 
 /*****************************************************************************
@@ -19500,7 +19561,7 @@ a:focus-within,
 
   --_background-color: var(--rh-cta-background-color, transparent);
   --_border-color: var(--rh-cta-border-color, var(--rh-color-border-strong));
-  --_color: var(--rh-cta-color, var(--rh-color-text-primary));
+  --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-light, #151515));
   --_hover-background-color:
     var(--rh-cta-hover-background-color,
       var(--rh-color-surface-darkest,
@@ -19519,7 +19580,7 @@ a:focus-within,
   --_focus-inner-border-color:
     var(--rh-cta-focus-inner-border-color,
       var(--rh-color-border-strong));
-  --_active-color: var(--rh-cta-active-color, var(--rh-color-text-primary));
+  --_active-color: var(--rh-cta-active-color, var(--rh-color-text-primary-on-light, #151515));
   --_active-background-color: var(--rh-cta-active-background-color, var(--rh-color-border-strong));
   --_active-inner-border-color:
     var(--rh-cta-active-inner-border-color,
@@ -19527,6 +19588,7 @@ a:focus-within,
       #e0e0e0));
 
   &.dark {
+    --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
     --_hover-background-color:
       var(--rh-cta-hover-background-color,
         var(--rh-color-surface-lightest,
@@ -19536,7 +19598,8 @@ a:focus-within,
         var(--rh-color-surface-dark,
         #383838));
     --_hover-color: var(--rh-cta-hover-color, var(--rh-color-text-primary-on-light, #151515));
-    --_focus-color: var(--rh-cta-focus-color, var(--rh-color-text-primary));
+    --_focus-color: var(--rh-cta-focus-color, var(--rh-color-text-primary-on-light, #151515));
+    --_active-color: var(--rh-cta-active-color, var(--rh-color-text-primary-on-dark, #ffffff));
     --_active-background-color:
       var(--rh-cta-active-background-color,
         var(--rh-color-surface-lightest,
@@ -19778,20 +19841,19 @@ a:focus-within,
 
 :host(:is(:focus, :focus-within)) #container {
   --_background-color: var(--rh-cta-focus-background-color);
+  --_color: var(--_focus-color);
+  --_text-decoration: var(--_focus-text-decoration);
 
   border-color: var(--_focus-border-color);
   background-color:
     var(--_focus-container-background-color,
       var(--_focus-background-color));
-  color: var(--rh-cta-focus-color);
+  color: var(--rh-cta-focus-color, var(--_color));
   outline:
     var(--rh-border-width-md, 2px)
     solid
     var(--rh-cta-focus-container-outline-color, var(--rh-cta-focus-outline-color));
   outline-offset: 2px;
-
-  --_color: var(--_focus-color);
-  --_text-decoration: var(--_focus-text-decoration);
 }
 
 :host(:is(:focus, :focus-within)) #container:after {
@@ -19825,6 +19887,7 @@ a:focus-within,
 
 :host(:active) #container {
   background-color: var(--_background-color);
+  color: var(--_active-color);
 
   --_background-color:
     var(--rh-cta-background-color,
@@ -19937,6 +20000,7 @@ a:focus-within,
   --_background-color: var(--rh-cta-background-color, var(--rh-color-brand-red));
   --_border-color: var(--rh-cta-border-color, var(--rh-color-brand-red));
   --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
+  --_active-color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
   --_hover-background-color:
     var(--rh-cta-hover-background-color,
       var(--rh-color-brand-red-dark, #a60000));
@@ -19946,14 +20010,18 @@ a:focus-within,
     var(--rh-cta-focus-background-color,
       var(--rh-color-brand-red-dark, #a60000));
   --_focus-border-color: var(--rh-cta-focus-border-color, var(--rh-color-brand-red-dark, #a60000));
-  --_focus-color: var(--rh-cta-focus-color, var(--rh-color-text-primary-on-dark, #ffffff));
-  --_focus-inner-border-color: var(--rh-cta-focus-inner-border-color, var(--rh-color-text-primary));
+  --_focus-color:
+    var(--rh-cta-focus-color,
+      var(--rh-color-text-primary-on-dark, #ffffff)) !important;
+  --_focus-inner-border-color:
+    var(--rh-cta-focus-inner-border-color,
+      var(--rh-color-text-primary-on-dark, #ffffff));
   --_active-background-color:
     var(--rh-cta-active-background-color,
       var(--rh-color-brand-red-dark, #a60000));
   --_active-inner-border-color:
     var(--rh-cta-active-inner-border-color,
-      var(--rh-color-text-primary));
+      var(--rh-color-text-primary-on-dark, #ffffff));
 }
 
 /*****************************************************************************
@@ -19965,7 +20033,7 @@ a:focus-within,
 
   --_background-color: var(--rh-cta-background-color, transparent);
   --_border-color: var(--rh-cta-border-color, var(--rh-color-border-strong));
-  --_color: var(--rh-cta-color, var(--rh-color-text-primary));
+  --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-light, #151515));
   --_hover-background-color:
     var(--rh-cta-hover-background-color,
       var(--rh-color-surface-darkest,
@@ -19984,7 +20052,7 @@ a:focus-within,
   --_focus-inner-border-color:
     var(--rh-cta-focus-inner-border-color,
       var(--rh-color-border-strong));
-  --_active-color: var(--rh-cta-active-color, var(--rh-color-text-primary));
+  --_active-color: var(--rh-cta-active-color, var(--rh-color-text-primary-on-light, #151515));
   --_active-background-color: var(--rh-cta-active-background-color, var(--rh-color-border-strong));
   --_active-inner-border-color:
     var(--rh-cta-active-inner-border-color,
@@ -19992,6 +20060,7 @@ a:focus-within,
       #e0e0e0));
 
   &.dark {
+    --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
     --_hover-background-color:
       var(--rh-cta-hover-background-color,
         var(--rh-color-surface-lightest,
@@ -20001,7 +20070,8 @@ a:focus-within,
         var(--rh-color-surface-dark,
         #383838));
     --_hover-color: var(--rh-cta-hover-color, var(--rh-color-text-primary-on-light, #151515));
-    --_focus-color: var(--rh-cta-focus-color, var(--rh-color-text-primary));
+    --_focus-color: var(--rh-cta-focus-color, var(--rh-color-text-primary-on-light, #151515));
+    --_active-color: var(--rh-cta-active-color, var(--rh-color-text-primary-on-dark, #ffffff));
     --_active-background-color:
       var(--rh-cta-active-background-color,
         var(--rh-color-surface-lightest,
@@ -22304,20 +22374,19 @@ a:focus-within,
 
 :host(:is(:focus, :focus-within)) #container {
   --_background-color: var(--rh-cta-focus-background-color);
+  --_color: var(--_focus-color);
+  --_text-decoration: var(--_focus-text-decoration);
 
   border-color: var(--_focus-border-color);
   background-color:
     var(--_focus-container-background-color,
       var(--_focus-background-color));
-  color: var(--rh-cta-focus-color);
+  color: var(--rh-cta-focus-color, var(--_color));
   outline:
     var(--rh-border-width-md, 2px)
     solid
     var(--rh-cta-focus-container-outline-color, var(--rh-cta-focus-outline-color));
   outline-offset: 2px;
-
-  --_color: var(--_focus-color);
-  --_text-decoration: var(--_focus-text-decoration);
 }
 
 :host(:is(:focus, :focus-within)) #container:after {
@@ -22351,6 +22420,7 @@ a:focus-within,
 
 :host(:active) #container {
   background-color: var(--_background-color);
+  color: var(--_active-color);
 
   --_background-color:
     var(--rh-cta-background-color,
@@ -22463,6 +22533,7 @@ a:focus-within,
   --_background-color: var(--rh-cta-background-color, var(--rh-color-brand-red));
   --_border-color: var(--rh-cta-border-color, var(--rh-color-brand-red));
   --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
+  --_active-color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
   --_hover-background-color:
     var(--rh-cta-hover-background-color,
       var(--rh-color-brand-red-dark, #a60000));
@@ -22472,14 +22543,18 @@ a:focus-within,
     var(--rh-cta-focus-background-color,
       var(--rh-color-brand-red-dark, #a60000));
   --_focus-border-color: var(--rh-cta-focus-border-color, var(--rh-color-brand-red-dark, #a60000));
-  --_focus-color: var(--rh-cta-focus-color, var(--rh-color-text-primary-on-dark, #ffffff));
-  --_focus-inner-border-color: var(--rh-cta-focus-inner-border-color, var(--rh-color-text-primary));
+  --_focus-color:
+    var(--rh-cta-focus-color,
+      var(--rh-color-text-primary-on-dark, #ffffff)) !important;
+  --_focus-inner-border-color:
+    var(--rh-cta-focus-inner-border-color,
+      var(--rh-color-text-primary-on-dark, #ffffff));
   --_active-background-color:
     var(--rh-cta-active-background-color,
       var(--rh-color-brand-red-dark, #a60000));
   --_active-inner-border-color:
     var(--rh-cta-active-inner-border-color,
-      var(--rh-color-text-primary));
+      var(--rh-color-text-primary-on-dark, #ffffff));
 }
 
 /*****************************************************************************
@@ -22491,7 +22566,7 @@ a:focus-within,
 
   --_background-color: var(--rh-cta-background-color, transparent);
   --_border-color: var(--rh-cta-border-color, var(--rh-color-border-strong));
-  --_color: var(--rh-cta-color, var(--rh-color-text-primary));
+  --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-light, #151515));
   --_hover-background-color:
     var(--rh-cta-hover-background-color,
       var(--rh-color-surface-darkest,
@@ -22510,7 +22585,7 @@ a:focus-within,
   --_focus-inner-border-color:
     var(--rh-cta-focus-inner-border-color,
       var(--rh-color-border-strong));
-  --_active-color: var(--rh-cta-active-color, var(--rh-color-text-primary));
+  --_active-color: var(--rh-cta-active-color, var(--rh-color-text-primary-on-light, #151515));
   --_active-background-color: var(--rh-cta-active-background-color, var(--rh-color-border-strong));
   --_active-inner-border-color:
     var(--rh-cta-active-inner-border-color,
@@ -22518,6 +22593,7 @@ a:focus-within,
       #e0e0e0));
 
   &.dark {
+    --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
     --_hover-background-color:
       var(--rh-cta-hover-background-color,
         var(--rh-color-surface-lightest,
@@ -22527,7 +22603,8 @@ a:focus-within,
         var(--rh-color-surface-dark,
         #383838));
     --_hover-color: var(--rh-cta-hover-color, var(--rh-color-text-primary-on-light, #151515));
-    --_focus-color: var(--rh-cta-focus-color, var(--rh-color-text-primary));
+    --_focus-color: var(--rh-cta-focus-color, var(--rh-color-text-primary-on-light, #151515));
+    --_active-color: var(--rh-cta-active-color, var(--rh-color-text-primary-on-dark, #ffffff));
     --_active-background-color:
       var(--rh-cta-active-background-color,
         var(--rh-color-surface-lightest,
@@ -22769,20 +22846,19 @@ a:focus-within,
 
 :host(:is(:focus, :focus-within)) #container {
   --_background-color: var(--rh-cta-focus-background-color);
+  --_color: var(--_focus-color);
+  --_text-decoration: var(--_focus-text-decoration);
 
   border-color: var(--_focus-border-color);
   background-color:
     var(--_focus-container-background-color,
       var(--_focus-background-color));
-  color: var(--rh-cta-focus-color);
+  color: var(--rh-cta-focus-color, var(--_color));
   outline:
     var(--rh-border-width-md, 2px)
     solid
     var(--rh-cta-focus-container-outline-color, var(--rh-cta-focus-outline-color));
   outline-offset: 2px;
-
-  --_color: var(--_focus-color);
-  --_text-decoration: var(--_focus-text-decoration);
 }
 
 :host(:is(:focus, :focus-within)) #container:after {
@@ -22816,6 +22892,7 @@ a:focus-within,
 
 :host(:active) #container {
   background-color: var(--_background-color);
+  color: var(--_active-color);
 
   --_background-color:
     var(--rh-cta-background-color,
@@ -22928,6 +23005,7 @@ a:focus-within,
   --_background-color: var(--rh-cta-background-color, var(--rh-color-brand-red));
   --_border-color: var(--rh-cta-border-color, var(--rh-color-brand-red));
   --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
+  --_active-color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
   --_hover-background-color:
     var(--rh-cta-hover-background-color,
       var(--rh-color-brand-red-dark, #a60000));
@@ -22937,14 +23015,18 @@ a:focus-within,
     var(--rh-cta-focus-background-color,
       var(--rh-color-brand-red-dark, #a60000));
   --_focus-border-color: var(--rh-cta-focus-border-color, var(--rh-color-brand-red-dark, #a60000));
-  --_focus-color: var(--rh-cta-focus-color, var(--rh-color-text-primary-on-dark, #ffffff));
-  --_focus-inner-border-color: var(--rh-cta-focus-inner-border-color, var(--rh-color-text-primary));
+  --_focus-color:
+    var(--rh-cta-focus-color,
+      var(--rh-color-text-primary-on-dark, #ffffff)) !important;
+  --_focus-inner-border-color:
+    var(--rh-cta-focus-inner-border-color,
+      var(--rh-color-text-primary-on-dark, #ffffff));
   --_active-background-color:
     var(--rh-cta-active-background-color,
       var(--rh-color-brand-red-dark, #a60000));
   --_active-inner-border-color:
     var(--rh-cta-active-inner-border-color,
-      var(--rh-color-text-primary));
+      var(--rh-color-text-primary-on-dark, #ffffff));
 }
 
 /*****************************************************************************
@@ -22956,7 +23038,7 @@ a:focus-within,
 
   --_background-color: var(--rh-cta-background-color, transparent);
   --_border-color: var(--rh-cta-border-color, var(--rh-color-border-strong));
-  --_color: var(--rh-cta-color, var(--rh-color-text-primary));
+  --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-light, #151515));
   --_hover-background-color:
     var(--rh-cta-hover-background-color,
       var(--rh-color-surface-darkest,
@@ -22975,7 +23057,7 @@ a:focus-within,
   --_focus-inner-border-color:
     var(--rh-cta-focus-inner-border-color,
       var(--rh-color-border-strong));
-  --_active-color: var(--rh-cta-active-color, var(--rh-color-text-primary));
+  --_active-color: var(--rh-cta-active-color, var(--rh-color-text-primary-on-light, #151515));
   --_active-background-color: var(--rh-cta-active-background-color, var(--rh-color-border-strong));
   --_active-inner-border-color:
     var(--rh-cta-active-inner-border-color,
@@ -22983,6 +23065,7 @@ a:focus-within,
       #e0e0e0));
 
   &.dark {
+    --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
     --_hover-background-color:
       var(--rh-cta-hover-background-color,
         var(--rh-color-surface-lightest,
@@ -22992,7 +23075,8 @@ a:focus-within,
         var(--rh-color-surface-dark,
         #383838));
     --_hover-color: var(--rh-cta-hover-color, var(--rh-color-text-primary-on-light, #151515));
-    --_focus-color: var(--rh-cta-focus-color, var(--rh-color-text-primary));
+    --_focus-color: var(--rh-cta-focus-color, var(--rh-color-text-primary-on-light, #151515));
+    --_active-color: var(--rh-cta-active-color, var(--rh-color-text-primary-on-dark, #ffffff));
     --_active-background-color:
       var(--rh-cta-active-background-color,
         var(--rh-color-surface-lightest,
@@ -25743,20 +25827,19 @@ a:focus-within,
 
 :host(:is(:focus, :focus-within)) #container {
   --_background-color: var(--rh-cta-focus-background-color);
+  --_color: var(--_focus-color);
+  --_text-decoration: var(--_focus-text-decoration);
 
   border-color: var(--_focus-border-color);
   background-color:
     var(--_focus-container-background-color,
       var(--_focus-background-color));
-  color: var(--rh-cta-focus-color);
+  color: var(--rh-cta-focus-color, var(--_color));
   outline:
     var(--rh-border-width-md, 2px)
     solid
     var(--rh-cta-focus-container-outline-color, var(--rh-cta-focus-outline-color));
   outline-offset: 2px;
-
-  --_color: var(--_focus-color);
-  --_text-decoration: var(--_focus-text-decoration);
 }
 
 :host(:is(:focus, :focus-within)) #container:after {
@@ -25790,6 +25873,7 @@ a:focus-within,
 
 :host(:active) #container {
   background-color: var(--_background-color);
+  color: var(--_active-color);
 
   --_background-color:
     var(--rh-cta-background-color,
@@ -25902,6 +25986,7 @@ a:focus-within,
   --_background-color: var(--rh-cta-background-color, var(--rh-color-brand-red));
   --_border-color: var(--rh-cta-border-color, var(--rh-color-brand-red));
   --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
+  --_active-color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
   --_hover-background-color:
     var(--rh-cta-hover-background-color,
       var(--rh-color-brand-red-dark, #a60000));
@@ -25911,14 +25996,18 @@ a:focus-within,
     var(--rh-cta-focus-background-color,
       var(--rh-color-brand-red-dark, #a60000));
   --_focus-border-color: var(--rh-cta-focus-border-color, var(--rh-color-brand-red-dark, #a60000));
-  --_focus-color: var(--rh-cta-focus-color, var(--rh-color-text-primary-on-dark, #ffffff));
-  --_focus-inner-border-color: var(--rh-cta-focus-inner-border-color, var(--rh-color-text-primary));
+  --_focus-color:
+    var(--rh-cta-focus-color,
+      var(--rh-color-text-primary-on-dark, #ffffff)) !important;
+  --_focus-inner-border-color:
+    var(--rh-cta-focus-inner-border-color,
+      var(--rh-color-text-primary-on-dark, #ffffff));
   --_active-background-color:
     var(--rh-cta-active-background-color,
       var(--rh-color-brand-red-dark, #a60000));
   --_active-inner-border-color:
     var(--rh-cta-active-inner-border-color,
-      var(--rh-color-text-primary));
+      var(--rh-color-text-primary-on-dark, #ffffff));
 }
 
 /*****************************************************************************
@@ -25930,7 +26019,7 @@ a:focus-within,
 
   --_background-color: var(--rh-cta-background-color, transparent);
   --_border-color: var(--rh-cta-border-color, var(--rh-color-border-strong));
-  --_color: var(--rh-cta-color, var(--rh-color-text-primary));
+  --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-light, #151515));
   --_hover-background-color:
     var(--rh-cta-hover-background-color,
       var(--rh-color-surface-darkest,
@@ -25949,7 +26038,7 @@ a:focus-within,
   --_focus-inner-border-color:
     var(--rh-cta-focus-inner-border-color,
       var(--rh-color-border-strong));
-  --_active-color: var(--rh-cta-active-color, var(--rh-color-text-primary));
+  --_active-color: var(--rh-cta-active-color, var(--rh-color-text-primary-on-light, #151515));
   --_active-background-color: var(--rh-cta-active-background-color, var(--rh-color-border-strong));
   --_active-inner-border-color:
     var(--rh-cta-active-inner-border-color,
@@ -25957,6 +26046,7 @@ a:focus-within,
       #e0e0e0));
 
   &.dark {
+    --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
     --_hover-background-color:
       var(--rh-cta-hover-background-color,
         var(--rh-color-surface-lightest,
@@ -25966,7 +26056,8 @@ a:focus-within,
         var(--rh-color-surface-dark,
         #383838));
     --_hover-color: var(--rh-cta-hover-color, var(--rh-color-text-primary-on-light, #151515));
-    --_focus-color: var(--rh-cta-focus-color, var(--rh-color-text-primary));
+    --_focus-color: var(--rh-cta-focus-color, var(--rh-color-text-primary-on-light, #151515));
+    --_active-color: var(--rh-cta-active-color, var(--rh-color-text-primary-on-dark, #ffffff));
     --_active-background-color:
       var(--rh-cta-active-background-color,
         var(--rh-color-surface-lightest,
@@ -26208,20 +26299,19 @@ a:focus-within,
 
 :host(:is(:focus, :focus-within)) #container {
   --_background-color: var(--rh-cta-focus-background-color);
+  --_color: var(--_focus-color);
+  --_text-decoration: var(--_focus-text-decoration);
 
   border-color: var(--_focus-border-color);
   background-color:
     var(--_focus-container-background-color,
       var(--_focus-background-color));
-  color: var(--rh-cta-focus-color);
+  color: var(--rh-cta-focus-color, var(--_color));
   outline:
     var(--rh-border-width-md, 2px)
     solid
     var(--rh-cta-focus-container-outline-color, var(--rh-cta-focus-outline-color));
   outline-offset: 2px;
-
-  --_color: var(--_focus-color);
-  --_text-decoration: var(--_focus-text-decoration);
 }
 
 :host(:is(:focus, :focus-within)) #container:after {
@@ -26255,6 +26345,7 @@ a:focus-within,
 
 :host(:active) #container {
   background-color: var(--_background-color);
+  color: var(--_active-color);
 
   --_background-color:
     var(--rh-cta-background-color,
@@ -26367,6 +26458,7 @@ a:focus-within,
   --_background-color: var(--rh-cta-background-color, var(--rh-color-brand-red));
   --_border-color: var(--rh-cta-border-color, var(--rh-color-brand-red));
   --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
+  --_active-color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
   --_hover-background-color:
     var(--rh-cta-hover-background-color,
       var(--rh-color-brand-red-dark, #a60000));
@@ -26376,14 +26468,18 @@ a:focus-within,
     var(--rh-cta-focus-background-color,
       var(--rh-color-brand-red-dark, #a60000));
   --_focus-border-color: var(--rh-cta-focus-border-color, var(--rh-color-brand-red-dark, #a60000));
-  --_focus-color: var(--rh-cta-focus-color, var(--rh-color-text-primary-on-dark, #ffffff));
-  --_focus-inner-border-color: var(--rh-cta-focus-inner-border-color, var(--rh-color-text-primary));
+  --_focus-color:
+    var(--rh-cta-focus-color,
+      var(--rh-color-text-primary-on-dark, #ffffff)) !important;
+  --_focus-inner-border-color:
+    var(--rh-cta-focus-inner-border-color,
+      var(--rh-color-text-primary-on-dark, #ffffff));
   --_active-background-color:
     var(--rh-cta-active-background-color,
       var(--rh-color-brand-red-dark, #a60000));
   --_active-inner-border-color:
     var(--rh-cta-active-inner-border-color,
-      var(--rh-color-text-primary));
+      var(--rh-color-text-primary-on-dark, #ffffff));
 }
 
 /*****************************************************************************
@@ -26395,7 +26491,7 @@ a:focus-within,
 
   --_background-color: var(--rh-cta-background-color, transparent);
   --_border-color: var(--rh-cta-border-color, var(--rh-color-border-strong));
-  --_color: var(--rh-cta-color, var(--rh-color-text-primary));
+  --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-light, #151515));
   --_hover-background-color:
     var(--rh-cta-hover-background-color,
       var(--rh-color-surface-darkest,
@@ -26414,7 +26510,7 @@ a:focus-within,
   --_focus-inner-border-color:
     var(--rh-cta-focus-inner-border-color,
       var(--rh-color-border-strong));
-  --_active-color: var(--rh-cta-active-color, var(--rh-color-text-primary));
+  --_active-color: var(--rh-cta-active-color, var(--rh-color-text-primary-on-light, #151515));
   --_active-background-color: var(--rh-cta-active-background-color, var(--rh-color-border-strong));
   --_active-inner-border-color:
     var(--rh-cta-active-inner-border-color,
@@ -26422,6 +26518,7 @@ a:focus-within,
       #e0e0e0));
 
   &.dark {
+    --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
     --_hover-background-color:
       var(--rh-cta-hover-background-color,
         var(--rh-color-surface-lightest,
@@ -26431,7 +26528,8 @@ a:focus-within,
         var(--rh-color-surface-dark,
         #383838));
     --_hover-color: var(--rh-cta-hover-color, var(--rh-color-text-primary-on-light, #151515));
-    --_focus-color: var(--rh-cta-focus-color, var(--rh-color-text-primary));
+    --_focus-color: var(--rh-cta-focus-color, var(--rh-color-text-primary-on-light, #151515));
+    --_active-color: var(--rh-cta-active-color, var(--rh-color-text-primary-on-dark, #ffffff));
     --_active-background-color:
       var(--rh-cta-active-background-color,
         var(--rh-color-surface-lightest,
