@@ -80,41 +80,74 @@ it loads.
 
 ## Best practices
 
-### Bad placement
+### Placement
 
-Do not align a spinner away from the horizontal and vertical center. Keeping it 
-centered helps users understand that the whole area is loading instead of one 
-specific part.
+<div class="grid sm-two-columns">
+  <uxdot-best-practice variant="do">
+    <uxdot-example width-adjustment="426px" slot="image">
+      <img src="../spinner-best-practices-placement-do.svg"
+            alt="spinner horizontally and vertically centered in a blank container"
+            width="426"
+            height="200">
+    </uxdot-example>
+    <p>Keep the spinner centered to help users understand that the whole area is loading.</p>
+  </uxdot-best-practice>
 
-<uxdot-example width-adjustment="360px" danger>
-  <img src="../spinner-best-practice-1.png"
-        alt="A spinner not horizontally or vertically centered in a container which is incorrect usage"
-        width="360"
-        height="360">
-</uxdot-example>
+  <uxdot-best-practice variant="dont">
+    <uxdot-example width-adjustment="426px" slot="image">
+      <img src="../spinner-best-practices-placement-dont.svg"
+            alt="spinner in the top right quadrant of a blank container"
+            width="426"
+            height="200">
+    </uxdot-example>
+    <p>Do not align a spinner away from the horizontal and vertical center.</p>
+  </uxdot-best-practice>
+</div>
 
+### Text orientation
 
-### Cut off by browser window
+<div class="grid sm-two-columns">
+  <uxdot-best-practice variant="do">
+    <uxdot-example width-adjustment="224px" slot="image">
+      <img src="../spinner-best-practices-text-orientation-do.svg"
+            alt="Text label below the spinner"
+            width="224"
+            height="80">
+    </uxdot-example>
+    <p>Keep the spinner always positioned above the text label.</p>
+  </uxdot-best-practice>
 
-A tooltip should not be cut off by the browser window. Change the orientation if 
-it does.
+  <uxdot-best-practice variant="dont">
+    <uxdot-example width-adjustment="280px" slot="image">
+      <img src="../spinner-best-practices-text-orientation-dont.svg"
+            alt="Text label to the right of the spinner"
+            width="280"
+            height="80">
+    </uxdot-example>
+    <p>Do not change the orientation of the text label relative to the spinner.</p>
+  </uxdot-best-practice>
+</div>
 
-<uxdot-example width-adjustment="768px" danger>
-  <img src="../spinner-best-practice-2.png"
-        alt="A small spinner used in a large container which is incorrect usage"
-        width="768"
-        height="480">
-</uxdot-example>
+### Spinner size
 
+<div class="grid sm-two-columns">
+  <uxdot-best-practice variant="do">
+    <uxdot-example width-adjustment="426px" slot="image">
+      <img src="../spinner-best-practices-spinner-size-do.svg"
+            alt="Large spinner in the center of a desktop-sized screen"
+            width="426"
+            height="193">
+    </uxdot-example>
+    <p>Use a spinner size that’s proportional to the size of its container.</p>
+  </uxdot-best-practice>
 
-### Wrong orientation
-
-Do not change the orientation, the spinner is always positioned on top of the 
-text label.
-
-<uxdot-example width-adjustment="583px" danger>
-  <img src="../spinner-best-practice-3.png"
-        alt="Two spinners with different orientations which is incorrect usage"
-        width="583"
-        height="77">
-</uxdot-example>
+  <uxdot-best-practice variant="dont">
+    <uxdot-example width-adjustment="426px" slot="image">
+      <img src="../spinner-best-practices-spinner-size-dont.svg"
+            alt="Small spinner in the center of a desktop-sized screen"
+            width="426"
+            height="193">
+    </uxdot-example>
+    <p>Avoid using a small spinner for large containers or large spinners for small containers.</p>
+  </uxdot-best-practice>
+</div>
