@@ -61,7 +61,7 @@
   max-inline-size: var(--_box-width, min(90%, 1140px));
   overflow-y: auto;
   overscroll-behavior: contain;
-  padding: 0;
+  padding: var(--rh-space-xl, 24px);
   position: relative;
 }
 
@@ -81,13 +81,23 @@
 }
 
 #content {
-  padding: var(--rh-space-xl, 24px);
   margin-block-start: calc(-1 * var(--offset-top));
 }
 
 #header {
   background-color: var(--rh-color-surface);
-  inset-block-start: calc(-1 * var(--offset-top));
+  inset-block-start: 0;
+  position: relative;
+
+  &:before {
+    background-color: var(--rh-color-surface);
+    block-size: 100%;
+    content: '';
+    inline-size: 100%;
+    inset-block-start: calc(-1 * var(--offset-top));
+    position: absolute;
+    z-index: -1;
+  }
 
   @media (min-height: 768px) {
     position: sticky;
@@ -112,11 +122,7 @@
     --offset: var(--rh-space-2xl, 32px);
   }
 
-  :host(:not[type='video']) #dialog:has(#header[hidden]) #close-button {
-    --offset-top: var(--rh-space-xl, 24px);
-  }
-
-  #content {
+  #dialog {
     padding: var(--rh-space-2xl, 32px);
   }
 
@@ -126,11 +132,6 @@
 
   #header[hidden] + #body {
     max-inline-size: calc(100% - var(--rh-space-2xl, 32px));
-  }
-
-  #header,
-  #body {
-    padding-inline-end: calc(var(--offset-right) * 2);
   }
 }
 
@@ -152,10 +153,10 @@
 #close-button {
   color: var(--rh-dialog-close-button-color, var(--rh-color-icon-secondary));
   cursor: pointer;
-  display: flex;
-  justify-content: end;
-  margin-inline-end: var(--offset-right);
-  inset-block-start: var(--offset-top);
+  display: block;
+  inset-block-start: 0;
+  margin-inline-start: auto;
+  max-inline-size: var(--rh-length-xl, 24px);
   position: sticky;
   z-index: 500;
 }
