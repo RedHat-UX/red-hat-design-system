@@ -161,7 +161,9 @@
 }
 
 #close-button::part(button) {
+  background-color: var(--rh-color-surface);
   block-size: var(--rh-length-xl, 24px);
+  border-radius: var(--rh-border-radius-default, 3px);
   inline-size: var(--rh-length-xl, 24px);
 }
 
@@ -208,6 +210,10 @@
 
 :host([type='video']) #rhds-wrapper.mobile #close-button {
   --offset-right: var(--rh-space-sm, 6px);
+}
+
+:host([type='video']) #close-button::part(button) {
+  background-color: transparent;
 }
 
 :host([type='video']) #close-button::part(icon) {
