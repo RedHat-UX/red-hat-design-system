@@ -19,6 +19,7 @@ summary {
     inset-block: -16px;
     inset-inline: -24px;
     position: absolute;
+    z-index: 2;
   }
 
   &:active,
