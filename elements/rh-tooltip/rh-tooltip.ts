@@ -69,8 +69,8 @@ export class RhTooltip extends LitElement {
       // apply `.visually-hidden` styles
       style: /* css */`
         position: fixed;
-        top: 0;
-        left: 0;
+        inset-block-start: 0;
+        inset-inline-start: 0;
         overflow: hidden;
         clip: rect(0,0,0,0);
         white-space: nowrap;
