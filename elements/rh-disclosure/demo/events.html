@@ -1,0 +1,26 @@
+<form id="disclosure-events">
+  <rh-disclosure summary="Collapsed panel title">
+    <p>Lorem ipsum dolor <a href="#">sit amet consectetur</a> adipisicing, elit. Velit distinctio, nesciunt nobis sit, a dolor, non numquam rerum recusandae, deserunt enim assumenda quidem. Id impedit necessitatibus obcaecati ratione reprehenderit laborum?</p>
+  </rh-disclosure>
+
+  <fieldset>
+    <legend>Events Fired</legend>
+    <output name="events">No events yet</output>
+  </fieldset>
+</form>
+
+<link rel="stylesheet" href="../rh-disclosure-lightdom-shim.css">
+
+<script type="module">
+  import '@rhds/elements/rh-disclosure/rh-disclosure.js';
+
+  const disclosure = document.querySelector('rh-disclosure');
+  const form = document.getElementById('disclosure-events');
+  const events = [];
+  form.addEventListener('submit', e => e.preventDefault());
+  const onDisclosureEvent = event => {
+    events.push(event.type);
+    form.elements.events.value = events.join(', ');
+  };
+  disclosure.addEventListener('toggle', onDisclosureEvent);
+</script>
