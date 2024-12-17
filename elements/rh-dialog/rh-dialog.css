@@ -87,8 +87,15 @@
 
 #header {
   background-color: var(--rh-color-surface);
-  position: sticky;
   inset-block-start: calc(-1 * var(--offset-top));
+
+  @media (min-height: 768px) {
+    position: sticky;
+  }
+
+  @media (min-width: 768px) and (min-height: 576px) {
+    position: sticky;
+  }
 }
 
 #header[hidden] + #body {
