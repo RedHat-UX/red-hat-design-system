@@ -55,8 +55,7 @@ summary {
 #details-content {
   font-size: var(--rh-font-size-body-text-md, 1rem);
   line-height: var(--rh-line-height-body-text, 1.5);
-  padding-block: var(--rh-space-xl, 24px);
-  padding-block-end: var(--rh-space-md, 8px);
+  padding-block: var(--rh-space-2xl, 32px) var(--rh-space-md, 8px);
 }
 
 ::slotted(:is(p, h1, h2, h3, h4, h5, h6):first-of-type) {
