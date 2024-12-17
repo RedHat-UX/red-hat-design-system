@@ -1,51 +1,61 @@
 :host {
   display: block;
-  background-color: var(--rh-color-surface-darkest);
-  color: var(--rh-color-text-primary-on-dark);
-  height: max-content;
-  container-type: inline-size;
-  container-name: host;
+
+  /**
+   * position masthead as fixed
+   * z-index: to float above scroll page content
+   */
+  position: fixed;
+  inset-inline: 0;
+  z-index: var(--uxdot-masthead-z-index);
 }
 
 #container {
   display: grid;
   column-gap: var(--rh-space-lg);
-  grid-template-columns: max-content 1fr max-content;
+  grid-template-areas: 'hamburger logo color links';
+  grid-template-columns: max-content 1fr max-content max-content;
   max-height: var(--uxdot-masthead-max-height, 72px);
-  margin-inline: var(--rh-space-md);
-  margin-block: var(--rh-space-lg);
+  padding-inline: var(--rh-space-md);
+  padding-block: var(--rh-space-lg);
+  background-color: var(--rh-color-surface);
+
+  @container (width >= 576px) {
+    gap: var(--rh-space-lg);
+    padding: var(--rh-space-lg);
+  }
 }
 
-slot[name='hamburger'] {
+#hamburger {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--rh-space-md);
   justify-content: center;
+
+  &::slotted(button) {
+    color: var(--rh-color-text-primary-on-dark);
+    background-color: transparent;
+    border: none;
+    margin: 0;
+    padding: var(--rh-space-md);
+    line-height: 0 !important;
+  }
+
+  &:hover::slotted(button),
+  &::slotted(button:hover),
+  &::slotted(button:active),
+  &::slotted(button:focus) {
+    color: var(--rh-color-icon-subtle-hover);
+  }
+
+  &::slotted(button:focus) {
+    outline: var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);
+    border-radius: var(--rh-border-radius-default);
+  }
 }
 
-slot[name='hamburger']::slotted(button) {
-  color: var(--rh-color-text-primary-on-dark);
-  background-color: transparent;
-  border: none;
-  margin: 0;
-  padding: var(--rh-space-md);
-  line-height: 0 !important;
-}
-
-slot[name='hamburger']:hover::slotted(button),
-slot[name='hamburger']::slotted(button:hover),
-slot[name='hamburger']::slotted(button:active),
-slot[name='hamburger']::slotted(button:focus) {
-  color: var(--rh-color-icon-subtle-hover);
-}
-
-slot[name='hamburger']::slotted(button:focus) {
-  outline: var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);
-  border-radius: var(--rh-border-radius-default);
-}
-
-slot[name='logo']::slotted(a) {
+#logo::slotted(a) {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -53,38 +63,38 @@ slot[name='logo']::slotted(a) {
   gap: var(--rh-space-md);
 }
 
-slot[name='links'] {
+#color {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+#links {
   --rh-icon-size: 24px;
 
   display: flex;
   flex-direction: row;
   column-gap: var(--rh-space-lg);
-}
 
-slot[name='links']::slotted(a) {
-  display: flex;
-  flex-direction: row;
-  gap: var(--rh-space-lg);
-  align-items: center;
-}
-
-@container (min-width: 576px) {
-  #container {
+  &::slotted(a) {
+    display: flex;
+    flex-direction: row;
     gap: var(--rh-space-lg);
-    margin: var(--rh-space-lg);
+    align-items: center;
   }
 }
 
-@container (min-width: 992px) {
+@container (width >= 992px) {
   #container {
-    grid-template-columns: 1fr max-content;
+    grid-template-areas: 'logo color links';
+    grid-template-columns: 1fr max-content max-content;
   }
 
-  slot[name='hamburger'] {
+  #hamburger {
     display: none;
   }
 
-  slot[name='logo']::slotted(a) {
+  #logo::slotted(a) {
     margin-inline-start: var(--rh-space-lg);
   }
 }
