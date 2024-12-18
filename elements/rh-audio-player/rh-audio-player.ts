@@ -29,7 +29,6 @@ import buttonStyles from './rh-audio-player-button.css';
 import rangeStyles from './rh-audio-player-range-styles.css';
 import styles from './rh-audio-player.css';
 
-import '@rhds/elements/rh-surface/rh-surface.js';
 import '@rhds/elements/rh-tooltip/rh-tooltip.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
 
@@ -366,8 +365,8 @@ export class RhAudioPlayer extends LitElement {
     const accentColor = !!this.#styles?.getPropertyValue('--rh-audio-player-background-color');
 
     return html`
-      <rh-surface id="container"
-          color-palette="${ifDefined(this.colorPalette)}"
+      <div id="container"
+          color-palette="${ifDefined(this.colorPalette ?? this.on)}"
           class="${classMap({
               [on]: true,
               [dir]: true,
@@ -586,7 +585,7 @@ export class RhAudioPlayer extends LitElement {
                 @transcriptdownload=${this.#onTranscriptDownload}>
           </slot>
         </div>
-      </rh-surface>
+      </div>
     `;
   }
 
