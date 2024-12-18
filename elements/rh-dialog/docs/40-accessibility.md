@@ -37,17 +37,22 @@ A dialog can be opened by pressing `Enter` when the dialog trigger has focus. Wh
 
 ## Focus order
 
+When a dialog opens, the close dialog button receives focus by default. Users have the ability to tab through each focusable element in the dialog. Depending on the browser, reaching the last focusable element may either:
+
+  1. Loop focus back to the close button
+  1. Move to focusable elements within the browser’s chrome
+
+While the dialog is open, interactive elements on the underlying page cannot be focused.
+
+### Changing focus order depending on content
+
 When a dialog opens, the element that should receive focus depends on the content and size of the modal. To help you decide where to place focus, follow these guidelines:
 
-- If the dialog contains semantic elements like lists or tables that are necessary to perceive in order to better understand dialog content, place focus on a static element at the start of the content
-  - The element that receives focus in this way must have `tabindex=“-1”`
 - If the dialog includes an irreversible action like deleting data, place focus on the least destructive action
 - If the dialog includes actions that simply provide additional information like `OK` or `Continue` buttons, place focus on the action that is likely to be most frequently used
-- If none of the above apply, place focus on the first focusable element
-- If placing focus on an element causes the beginning of dialog content to scroll out of view, place focus on a static element at the top instead
-  - The element that receives focus in this way must have `tabindex=“-1”`
+- If none of the above apply, focus is automatically placed on the close dialog button
 
-
+To move focus away from the close dialog button, listen for the [`open` event](https://ux.redhat.com/elements/dialog/code/#rh-dialog-apis) and move focus to the appropriate element in the lightdom via the [`focus()` method](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus).
 
 ## Touch targets
 
@@ -63,8 +68,22 @@ Only the close button and any interactive elements are selectable.
 
 ### Backdrop
 
-A dialog will not close by users clicking or tapping the backdrop or outside of the container.
+A dialog will close by users clicking or tapping the backdrop or outside of the container.
 
+
+## Accessible labels
+
+Each dialog needs an accessible name. If a dialog has a heading tag in the `header` or default slot, it will automatically be used as the accessible name of the dialog.
+
+If there is no slotted heading, users should provide an `accessible-label` attribute, the value of which will be used as the accessible name:
+
+```html
+<rh-dialog accessible-label="Page Properties" trigger="first-modal-trigger">
+  ...
+</rh-dialog>
+```
+
+If neither an `accessible-label` nor any headings exist, the accessible name of the dialog will fall back to the text of the dialog's trigger.
 
 
 ## Additional guidelines
