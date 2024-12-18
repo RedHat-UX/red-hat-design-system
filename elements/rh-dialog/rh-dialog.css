@@ -87,7 +87,7 @@
 #header {
   background-color: var(--rh-color-surface);
   inset-block-start: 0;
-  padding-block-end: var(--rh-space-lg, 16px);
+  margin-block-end: var(--rh-space-lg, 16px);
   position: relative;
 
   &:before {
@@ -100,12 +100,25 @@
     z-index: -1;
   }
 
+  &:after {
+    background-color: var(--rh-color-surface);
+    block-size: var(--rh-space-lg, 16px);
+    content: '';
+    inline-size: 100%;
+    position: absolute;
+    z-index: -1;
+  }
+
   @media (min-height: 768px) {
     position: sticky;
   }
 
   @media (min-width: 768px) and (min-height: 576px) {
     position: sticky;
+  }
+
+  @media (min-width: 1200px) {
+    margin-block-end: var(--rh-space-xl, 24px);
   }
 }
 
