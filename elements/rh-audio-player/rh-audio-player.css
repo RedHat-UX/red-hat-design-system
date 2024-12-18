@@ -446,8 +446,20 @@ rh-menu > button:focus {
 #play,
 #full-play {
   border-radius: 50%;
-  background-color: var(--_surface-color);
-  color: var(--rh-audio-player-icon-background-color, var(--_text-color));
+  background-color: var(--rh-color-surface-darkest, #151515);
+  color:
+    var(--rh-audio-player-icon-background-color,
+      var(--rh-color-text-primary-on-dark, #ffffff));
+}
+
+.dark {
+  #play,
+  #full-play {
+    background-color: var(--rh-color-surface-lightest, #ffffff);
+    color:
+      var(--rh-audio-player-icon-background-color,
+        var(--rh-color-text-primary-on-light, #151515));
+  }
 }
 
 .expanded {
