@@ -231,7 +231,7 @@ export class RhTile extends LitElement {
               </div>
             </div>
             <slot id="body"></slot>
-            <div id="footer">
+            <div id="footer" class="${classMap({ empty: this.#slots.isEmpty('footer') })}">
               <slot id="footer-text" name="footer"></slot>${this.#renderLinkIcon()}
             </div>
           </div>

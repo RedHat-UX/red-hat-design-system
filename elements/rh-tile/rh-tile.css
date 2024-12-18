@@ -224,6 +224,12 @@
   justify-content: space-between;
   align-items: flex-end;
   margin-block-start: auto;
+
+  &.empty {
+    position: absolute;
+    inset-block-end: var(--_padding);
+    inset-inline-end: var(--_padding);
+  }
 }
 
 #input-outer {
