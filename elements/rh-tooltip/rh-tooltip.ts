@@ -65,7 +65,7 @@ export class RhTooltip extends LitElement {
 
   private static initAnnouncer() {
     document.body.append((this.announcer = Object.assign(document.createElement('div'), {
-      ariaLive: 'polite',
+      role: 'status',
       // apply `.visually-hidden` styles
       style: /* css */`
         position: fixed;
