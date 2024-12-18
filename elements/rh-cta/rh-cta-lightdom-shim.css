@@ -70,6 +70,7 @@ rh-cta:not(:defined):hover {
 
 rh-cta:not(:defined):active {
   background-color: var(--rh-cta-active-background-color);
+  color: var(--rh-cta-active-color);
 }
 
 rh-cta[variant='primary']:not(:defined) {
