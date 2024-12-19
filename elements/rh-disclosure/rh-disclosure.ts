@@ -2,6 +2,9 @@ import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { query } from 'lit/decorators/query.js';
+import { classMap } from 'lit/directives/class-map.js';
+
+import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 
@@ -22,6 +25,9 @@ export class DisclosureToggleEvent extends Event {
  */
 @customElement('rh-disclosure')
 export class RhDisclosure extends LitElement {
+  /** Sets color theme based on parent context */
+  @colorContextConsumer() private on?: ColorTheme;
+
   static readonly styles = [styles];
 
   /**
@@ -38,8 +44,10 @@ export class RhDisclosure extends LitElement {
   @query('summary') private summaryEl!: HTMLElement;
 
   render() {
+    const { on = '' } = this;
     return html`
       <details
+        class=${classMap({ [on]: !!on })}
         ?open="${this.open}"
         @keydown="${this.#onKeydown}"
         @toggle="${this.#onToggle}">

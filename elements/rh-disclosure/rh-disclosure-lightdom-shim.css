@@ -3,6 +3,9 @@ rh-disclosure {
   border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle, #c7c7c7);
   display: block;
   font-family: var(--rh-font-family-body-text);
+}
+
+rh-disclosure:not(:defined) {
   padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
 }
 
