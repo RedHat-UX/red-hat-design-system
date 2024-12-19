@@ -443,22 +443,29 @@ rh-menu > button:focus {
   text-align: right;
 }
 
-#play,
-#full-play {
-  border-radius: 50%;
-  background-color: var(--rh-color-surface-darkest, #151515);
-  color:
-    var(--rh-audio-player-icon-background-color,
-      var(--rh-color-text-primary-on-dark, #ffffff));
+#full-play::part(button) {
+  width: var(--_button-size);
+  height: var(--_button-size);
+}
+
+#play::part(button) {
+  --rh-icon-size: var(--rh-size-icon-01, 16px);
+
+  width: var(--_button-size);
+  height: var(--_button-size);
+}
+
+#play::part(button),
+#full-play::part(button) {
+  /* danger! overwriting an rh-button internal var, do what I say not as I do. */
+  --_play-background-color: var(--rh-color-surface-darkest, #151515);
 }
 
 .dark {
-  #play,
-  #full-play {
-    background-color: var(--rh-color-surface-lightest, #ffffff);
-    color:
-      var(--rh-audio-player-icon-background-color,
-        var(--rh-color-text-primary-on-light, #151515));
+  #play::part(button),
+  #full-play::part(button) {
+    /* danger! overwriting an rh-button internal var, do what I say not as I do. */
+    --_play-background-color: var(--rh-color-surface-lightest, #ffffff);
   }
 }
 
