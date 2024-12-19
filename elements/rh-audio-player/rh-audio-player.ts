@@ -367,7 +367,6 @@ export class RhAudioPlayer extends LitElement {
 
     return html`
       <div id="container"
-          color-palette="${ifDefined(this.colorPalette ?? this.on)}"
           class="${classMap({
               [on]: true,
               [dir]: true,
