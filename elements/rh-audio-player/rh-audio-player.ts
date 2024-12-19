@@ -29,7 +29,6 @@ import buttonStyles from './rh-audio-player-button.css';
 import rangeStyles from './rh-audio-player-range-styles.css';
 import styles from './rh-audio-player.css';
 
-import '@rhds/elements/rh-button/rh-button.js';
 import '@rhds/elements/rh-tooltip/rh-tooltip.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
 
@@ -388,13 +387,14 @@ export class RhAudioPlayer extends LitElement {
              aria-label="Media Controls">${!poster ? '' : html`
           <div id="poster"><img .src="${poster}" aria-hidden="true"></div>`}
           <rh-tooltip id="play-tooltip">
-            <rh-button variant="play" id="play"
+            <button id="play"
                     aria-label="${playlabel}"
                     class="toolbar-button"
                     ?disabled=${!this.#mediaElement || playdisabled}
                     @click=${this.#onPlayClick}
                     @focus=${this.#onPlayFocus}>
-            </rh-button>
+              <rh-icon set="ui" icon="${this.paused ? 'play-fill' : 'pause-fill'}"></rh-icon>
+            </button>
             <span slot="content">${playlabel}</span>
           </rh-tooltip>
 
@@ -488,13 +488,14 @@ export class RhAudioPlayer extends LitElement {
           </rh-tooltip>
 
           <rh-tooltip id="full-play-tooltip">
-            <rh-button variant="play" id="full-play"
+            <button id="full-play"
                     aria-label="${playlabel}"
                     class="toolbar-button"
                     ?disabled=${!this.#mediaElement || playdisabled}
                     @click=${this.#onPlayClick}
                     @focus=${this.#onPlayFocus}>
-            </rh-button>
+              <rh-icon set="ui" icon="${this.paused ? 'play-fill' : 'pause-fill'}"></rh-icon>
+            </button>
             <span slot="content">${playlabel}</span>
           </rh-tooltip>
 
