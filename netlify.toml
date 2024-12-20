@@ -5,7 +5,7 @@
 
 [[redirects]]
   from = '/v1/*'
-  to = 'https://v1--red-hat-design-system.netlify.app/:splat'
+  to = 'https://v1.4.5--red-hat-design-system.netlify.app/:splat'
   status = 200
   force = true
 
