@@ -2,6 +2,12 @@
   command = "npm run docs"
 
 [[redirects]]
+  from = '/v1/*'
+  to = 'https://release-v1.4.5--red-hat-design-system.netlify.app/:splat'
+  status = 200
+  force = true  
+
+[[redirects]]
   from = '/components/accordion/*'
   to = '/elements/accordion/:splat'
 [[redirects]]
