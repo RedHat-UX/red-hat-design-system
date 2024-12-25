@@ -6483,8 +6483,236 @@ svg {
     <a href="#large-number">Large number</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<p>Do not allow a badge to display a count over 999.</p>
-<uxdot-example   danger width-adjustment="74px"><template shadowroot="open" shadowrootmode="open"><style>:host {
+<div class="grid sm-two-columns">
+  <uxdot-best-practice  variant="do"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  margin-block: var(--rh-space-2xl);
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rh-space-2xl);
+  margin-block: var(--rh-space-2xl);
+}
+
+span {
+  font-family: var(--rh-font-family-heading);
+  font-size: var(--rh-font-size-heading-xs);
+  font-weight: var(--rh-font-weight-heading-medium);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--rh-space-md);
+}
+
+#do span {
+  color: var(--rh-color-status-success);
+}
+
+#dont span {
+  color: var(--rh-color-status-danger);
+}
+
+::slotted(uxdot-example) {
+  margin: 0 !important;
+}
+
+figure {
+  margin: 0 !important;
+}
+</style><!--lit-part /OqYtWIsZqM=-->
+      <figure id="container">
+        <slot name="image"></slot>
+        <!--lit-node 2--><figcaption id="do">
+          <span><!--lit-node 4--><rh-icon    set="ui" size="md" icon="check-circle-fill" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
+  line-height: 0;
+  aspect-ratio: 1/1;
+  display: inline-flex;
+  place-content: center;
+}
+
+#container {
+  display: contents;
+}
+
+svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
+  fill: currentcolor;
+  aspect-ratio: 1/1;
+}
+
+.standard svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
+}
+
+.microns svg {
+  width: 12px;
+}
+</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part dS1mROSl53E=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm7.795 12.796-8.646 8.646c-.317.317-.733.475-1.149.475s-.832-.158-1.149-.475l-4.646-4.646a1.126 1.126 0 0 1 1.59-1.592L14 19.41l8.205-8.205a1.124 1.124 0 1 1 1.59 1.592Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon><!--lit-part-->Do<!--/lit-part--></span>
+          <slot></slot>
+        </figcaption>
+      </figure>
+    <!--/lit-part--></template>
+    <uxdot-example   width-adjustment="46px" slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  container-type: inline-size;
+  container-name: host;
+  margin-block-end: var(--rh-space-2xl);
+}
+
+:host([transparent]) {
+  --rh-color-surface: transparent;
+}
+
+#container {
+  padding: var(--rh-space-2xl);
+  display: flex;
+  flex-direction: column;
+  align-items: var(--_alignment, center);
+  justify-content: center;
+  border-width: var(--rh-border-width-sm);
+  border-style: solid;
+  border-color: var(--rh-color-border-subtle);
+  border-radius: var(--rh-border-radius-default);
+  background-color: var(--rh-color-surface);
+  color: var(--rh-color-text-primary);
+}
+
+::slotted(*) {
+  display: flex;
+  flex-direction: column;
+  align-items: var(--_alignment, center);
+  justify-content: center;
+  max-width: 100%;
+  height: auto;
+}
+
+.widthAdjustment ::slotted(*) {
+  width: var(--_width);
+}
+
+:host([variant='full']) #container {
+  padding: 0;
+}
+
+:host([danger]) #container {
+  --rh-color-border-subtle: var(--rh-color-border-destructive);
+
+  background-image: url('/assets/best-practices-danger-icon.svg');
+  background-position-x: 8px;
+  background-position-y: 8px;
+  background-repeat: no-repeat;
+}
+
+:host([no-border]:not([danger])) #container {
+  border: none;
+}
+
+@container host (min-width: 576px) {
+  #container {
+    padding: var(--rh-space-3xl);
+  }
+}
+
+@container host (min-width: 768px) {
+  #container {
+    padding: var(--rh-space-4xl);
+  }
+}
+</style><!--lit-part DbmYZodZUIs=-->
+      <!--lit-node 0--><div id="container"
+           part="container"
+           class="on  widthAdjustment "
+           style="--_width: 46px; --_alignment: center">
+        <slot></slot>
+      </div>
+    <!--/lit-part--></template>
+      <img src="../badge-best-practices-large-number-do.svg" alt="999+ in a gray badge" width="46" height="18">
+    </uxdot-example>
+    <p>A value threshold for the number displayed in a badge should be established, and any number that’s larger should be shown as the threshold value with a plus sign.</p>
+  </uxdot-best-practice>
+  <uxdot-best-practice  variant="dont"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  margin-block: var(--rh-space-2xl);
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rh-space-2xl);
+  margin-block: var(--rh-space-2xl);
+}
+
+span {
+  font-family: var(--rh-font-family-heading);
+  font-size: var(--rh-font-size-heading-xs);
+  font-weight: var(--rh-font-weight-heading-medium);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--rh-space-md);
+}
+
+#do span {
+  color: var(--rh-color-status-success);
+}
+
+#dont span {
+  color: var(--rh-color-status-danger);
+}
+
+::slotted(uxdot-example) {
+  margin: 0 !important;
+}
+
+figure {
+  margin: 0 !important;
+}
+</style><!--lit-part /OqYtWIsZqM=-->
+      <figure id="container">
+        <slot name="image"></slot>
+        <!--lit-node 2--><figcaption id="dont">
+          <span><!--lit-node 4--><rh-icon    set="ui" size="md" icon="close-circle-fill" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
+  line-height: 0;
+  aspect-ratio: 1/1;
+  display: inline-flex;
+  place-content: center;
+}
+
+#container {
+  display: contents;
+}
+
+svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
+  fill: currentcolor;
+  aspect-ratio: 1/1;
+}
+
+.standard svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
+}
+
+.microns svg {
+  width: 12px;
+}
+</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part iKtDDm471k4=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm5.796 20.204c.438.44.438 1.152 0 1.592a1.122 1.122 0 0 1-1.592-.001L16 17.593l-4.204 4.204a1.122 1.122 0 0 1-1.592-.001 1.128 1.128 0 0 1 0-1.59L14.408 16l-4.204-4.204a1.126 1.126 0 0 1 1.592-1.592L16 14.408l4.204-4.204a1.126 1.126 0 0 1 1.592 1.592L17.592 16l4.204 4.204Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon><!--lit-part-->Don&#39;t<!--/lit-part--></span>
+          <slot></slot>
+        </figcaption>
+      </figure>
+    <!--/lit-part--></template>
+    <uxdot-example   width-adjustment="74px" slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: block;
   container-type: inline-size;
   container-name: host;
@@ -6558,8 +6786,11 @@ svg {
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-  <img src="../badge-best-practice-large-number-dont.svg" alt="A badge counting to 1,00,000 which is incorrect usage" width="74" height="18">
-</uxdot-example>
+      <img src="../badge-best-practices-large-number-dont.svg" alt="1,000,000 in a gray badge" width="74" height="18">
+    </uxdot-example>
+    <p>Do not allow a badge to display a value over 999.</p>
+  </uxdot-best-practice>
+</div>
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: flex;
   margin-block-end: var(--rh-space-lg);
@@ -6636,10 +6867,236 @@ svg {
     <a href="#two-badges">Two badges</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<p>Be careful using two badges. Using color only and the lack of other visual cues
-might make it difficult to differentiate unread or actionable items associated
-with the badges.</p>
-<uxdot-example   danger width-adjustment="85px"><template shadowroot="open" shadowrootmode="open"><style>:host {
+<div class="grid sm-two-columns">
+  <uxdot-best-practice  variant="do"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  margin-block: var(--rh-space-2xl);
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rh-space-2xl);
+  margin-block: var(--rh-space-2xl);
+}
+
+span {
+  font-family: var(--rh-font-family-heading);
+  font-size: var(--rh-font-size-heading-xs);
+  font-weight: var(--rh-font-weight-heading-medium);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--rh-space-md);
+}
+
+#do span {
+  color: var(--rh-color-status-success);
+}
+
+#dont span {
+  color: var(--rh-color-status-danger);
+}
+
+::slotted(uxdot-example) {
+  margin: 0 !important;
+}
+
+figure {
+  margin: 0 !important;
+}
+</style><!--lit-part /OqYtWIsZqM=-->
+      <figure id="container">
+        <slot name="image"></slot>
+        <!--lit-node 2--><figcaption id="do">
+          <span><!--lit-node 4--><rh-icon    set="ui" size="md" icon="check-circle-fill" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
+  line-height: 0;
+  aspect-ratio: 1/1;
+  display: inline-flex;
+  place-content: center;
+}
+
+#container {
+  display: contents;
+}
+
+svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
+  fill: currentcolor;
+  aspect-ratio: 1/1;
+}
+
+.standard svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
+}
+
+.microns svg {
+  width: 12px;
+}
+</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part dS1mROSl53E=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm7.795 12.796-8.646 8.646c-.317.317-.733.475-1.149.475s-.832-.158-1.149-.475l-4.646-4.646a1.126 1.126 0 0 1 1.59-1.592L14 19.41l8.205-8.205a1.124 1.124 0 1 1 1.59 1.592Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon><!--lit-part-->Do<!--/lit-part--></span>
+          <slot></slot>
+        </figcaption>
+      </figure>
+    <!--/lit-part--></template>
+    <uxdot-example   width-adjustment="171px" slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  container-type: inline-size;
+  container-name: host;
+  margin-block-end: var(--rh-space-2xl);
+}
+
+:host([transparent]) {
+  --rh-color-surface: transparent;
+}
+
+#container {
+  padding: var(--rh-space-2xl);
+  display: flex;
+  flex-direction: column;
+  align-items: var(--_alignment, center);
+  justify-content: center;
+  border-width: var(--rh-border-width-sm);
+  border-style: solid;
+  border-color: var(--rh-color-border-subtle);
+  border-radius: var(--rh-border-radius-default);
+  background-color: var(--rh-color-surface);
+  color: var(--rh-color-text-primary);
+}
+
+::slotted(*) {
+  display: flex;
+  flex-direction: column;
+  align-items: var(--_alignment, center);
+  justify-content: center;
+  max-width: 100%;
+  height: auto;
+}
+
+.widthAdjustment ::slotted(*) {
+  width: var(--_width);
+}
+
+:host([variant='full']) #container {
+  padding: 0;
+}
+
+:host([danger]) #container {
+  --rh-color-border-subtle: var(--rh-color-border-destructive);
+
+  background-image: url('/assets/best-practices-danger-icon.svg');
+  background-position-x: 8px;
+  background-position-y: 8px;
+  background-repeat: no-repeat;
+}
+
+:host([no-border]:not([danger])) #container {
+  border: none;
+}
+
+@container host (min-width: 576px) {
+  #container {
+    padding: var(--rh-space-3xl);
+  }
+}
+
+@container host (min-width: 768px) {
+  #container {
+    padding: var(--rh-space-4xl);
+  }
+}
+</style><!--lit-part DbmYZodZUIs=-->
+      <!--lit-node 0--><div id="container"
+           part="container"
+           class="on  widthAdjustment "
+           style="--_width: 171px; --_alignment: center">
+        <slot></slot>
+      </div>
+    <!--/lit-part--></template>
+      <img src="../badge-best-practices-two-badges-do.svg" alt="Gray badge labeled as 'Unread' and yellow badge labeled as 'Flagged'" width="171" height="18">
+    </uxdot-example>
+    <p>Use at least one visual cue other than color when using two badges side by side.</p>
+  </uxdot-best-practice>
+  <uxdot-best-practice  variant="dont"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  margin-block: var(--rh-space-2xl);
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rh-space-2xl);
+  margin-block: var(--rh-space-2xl);
+}
+
+span {
+  font-family: var(--rh-font-family-heading);
+  font-size: var(--rh-font-size-heading-xs);
+  font-weight: var(--rh-font-weight-heading-medium);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--rh-space-md);
+}
+
+#do span {
+  color: var(--rh-color-status-success);
+}
+
+#dont span {
+  color: var(--rh-color-status-danger);
+}
+
+::slotted(uxdot-example) {
+  margin: 0 !important;
+}
+
+figure {
+  margin: 0 !important;
+}
+</style><!--lit-part /OqYtWIsZqM=-->
+      <figure id="container">
+        <slot name="image"></slot>
+        <!--lit-node 2--><figcaption id="dont">
+          <span><!--lit-node 4--><rh-icon    set="ui" size="md" icon="close-circle-fill" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
+  line-height: 0;
+  aspect-ratio: 1/1;
+  display: inline-flex;
+  place-content: center;
+}
+
+#container {
+  display: contents;
+}
+
+svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
+  fill: currentcolor;
+  aspect-ratio: 1/1;
+}
+
+.standard svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
+}
+
+.microns svg {
+  width: 12px;
+}
+</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part iKtDDm471k4=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm5.796 20.204c.438.44.438 1.152 0 1.592a1.122 1.122 0 0 1-1.592-.001L16 17.593l-4.204 4.204a1.122 1.122 0 0 1-1.592-.001 1.128 1.128 0 0 1 0-1.59L14.408 16l-4.204-4.204a1.126 1.126 0 0 1 1.592-1.592L16 14.408l4.204-4.204a1.126 1.126 0 0 1 1.592 1.592L17.592 16l4.204 4.204Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon><!--lit-part-->Don&#39;t<!--/lit-part--></span>
+          <slot></slot>
+        </figcaption>
+      </figure>
+    <!--/lit-part--></template>
+    <uxdot-example   width-adjustment="85px" slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: block;
   container-type: inline-size;
   container-name: host;
@@ -6713,8 +7170,11 @@ with the badges.</p>
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-  <img src="../badge-best-practice-two-badges-dont.svg" alt="Two badges with different background colors and no other unique visual cues which is incorrect usage" width="85" height="18">
-</uxdot-example>
+      <img src="../badge-best-practices-two-badges-dont.svg" alt="Gray badge next to yellow badge" width="85" height="18">
+    </uxdot-example>
+    <p>Do not use only color to associate two consecutive badges with two different meanings.</p>
+  </uxdot-best-practice>
+</div>
 
 
       
