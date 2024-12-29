@@ -261,22 +261,50 @@ The Full player will change to the Compact player and the Compact player will ch
 
 ## Best practices 
 
-### Full player 
-Be careful when using the Full player near too many other elements.
+### Full player
 
-<uxdot-example width-adjustment="712px" danger>
-  <img src="../audio-player-best-practice-1.png" 
-      alt="Image of the Full player used near lots of other elements"
-      width="712"
-      height="382">
-</uxdot-example>
+<uxdot-best-practice variant="do">
+  <uxdot-example slot="image" width-adjustment="716px">
+    <img src="../audio-player-best-practices-full-player-do.png" 
+        alt="Heading, compact audio player, and a default call to action"
+        width="716"
+        height="187">
+  </uxdot-example>
 
-### Contextual menu 
-Do not alter contextual menu theming.
+  <p>Use the compact or mini size if a player needs to appear near other elements.</p>
+</uxdot-best-practice>
 
-<uxdot-example width-adjustment="712px" danger>
-  <img src="../audio-player-best-practice-2.png"
-      alt="Image of Compact players with contextual menus that are a different theme than the audio player which is incorrect usage"
-      width="712"
-      height="482">
-</uxdot-example>
+<uxdot-best-practice variant="dont">
+  <uxdot-example slot="image" width-adjustment="1012px">
+    <img  src="../audio-player-best-practices-full-player-dont.png" 
+        alt="Heading, full player, and a call to action in a group next to a card"
+        width="1012"
+        height="352">
+  </uxdot-example>
+
+  <p>Avoid using the full player near too many other elements.</p>
+</uxdot-best-practice>
+
+### Contextual menu
+
+<uxdot-best-practice variant="do">
+  <uxdot-example slot="image" width-adjustment="794px">
+    <img src="../audio-player-best-practices-contextual-menu-do.png" 
+        alt="Light theme contextual menu paired with light theme player and dark theme contextual menu paired with dark theme player"
+        width="794"
+        height="480">
+  </uxdot-example>
+
+  <p>Retain the theming of the contextual menu that’s built into the audio player.</p>
+</uxdot-best-practice>
+
+<uxdot-best-practice variant="dont">
+  <uxdot-example slot="image" width-adjustment="794px">
+    <img  src="../audio-player-best-practices-contextual-menu-dont.png" 
+        alt="Dark theme contextual menu paired with light theme player and purple theme contextual menu paired with dark theme player"
+        width="794"
+        height="480">
+  </uxdot-example>
+
+  <p>Do not alter contextual menu theming.</p>
+</uxdot-best-practice>
