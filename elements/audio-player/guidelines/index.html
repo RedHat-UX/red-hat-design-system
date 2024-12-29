@@ -53,8 +53,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.4/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
@@ -9733,8 +9733,82 @@ svg {
     <a href="#full-player">Full player</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<p>Be careful when using the Full player near too many other elements.</p>
-<uxdot-example   width-adjustment="712px" danger><template shadowroot="open" shadowrootmode="open"><style>:host {
+<uxdot-best-practice  variant="do"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  margin-block: var(--rh-space-2xl);
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rh-space-2xl);
+  margin-block: var(--rh-space-2xl);
+}
+
+span {
+  font-family: var(--rh-font-family-heading);
+  font-size: var(--rh-font-size-heading-xs);
+  font-weight: var(--rh-font-weight-heading-medium);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--rh-space-md);
+}
+
+#do span {
+  color: var(--rh-color-status-success);
+}
+
+#dont span {
+  color: var(--rh-color-status-danger);
+}
+
+::slotted(uxdot-example) {
+  margin: 0 !important;
+}
+
+figure {
+  margin: 0 !important;
+}
+</style><!--lit-part /OqYtWIsZqM=-->
+      <figure id="container">
+        <slot name="image"></slot>
+        <!--lit-node 2--><figcaption id="do">
+          <span><!--lit-node 4--><rh-icon    set="ui" size="md" icon="check-circle-fill" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
+  line-height: 0;
+  aspect-ratio: 1/1;
+  display: inline-flex;
+  place-content: center;
+}
+
+#container {
+  display: contents;
+}
+
+svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
+  fill: currentcolor;
+  aspect-ratio: 1/1;
+}
+
+.standard svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
+}
+
+.microns svg {
+  width: 12px;
+}
+</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part dS1mROSl53E=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm7.795 12.796-8.646 8.646c-.317.317-.733.475-1.149.475s-.832-.158-1.149-.475l-4.646-4.646a1.126 1.126 0 0 1 1.59-1.592L14 19.41l8.205-8.205a1.124 1.124 0 1 1 1.59 1.592Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon><!--lit-part-->Do<!--/lit-part--></span>
+          <slot></slot>
+        </figcaption>
+      </figure>
+    <!--/lit-part--></template>
+  <uxdot-example   slot="image" width-adjustment="716px"><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: block;
   container-type: inline-size;
   container-name: host;
@@ -9804,12 +9878,167 @@ svg {
       <!--lit-node 0--><div id="container"
            part="container"
            class="on  widthAdjustment "
-           style="--_width: 712px; --_alignment: center">
+           style="--_width: 716px; --_alignment: center">
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-  <img src="../audio-player-best-practice-1.png" alt="Image of the Full player used near lots of other elements" width="712" height="382">
-</uxdot-example>
+    <img src="../audio-player-best-practices-full-player-do.png" alt="Heading, compact audio player, and a default call to action" width="716" height="187">
+  </uxdot-example>
+  <p>Use the compact or mini size if a player needs to appear near other elements.</p>
+</uxdot-best-practice>
+<uxdot-best-practice  variant="dont"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  margin-block: var(--rh-space-2xl);
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rh-space-2xl);
+  margin-block: var(--rh-space-2xl);
+}
+
+span {
+  font-family: var(--rh-font-family-heading);
+  font-size: var(--rh-font-size-heading-xs);
+  font-weight: var(--rh-font-weight-heading-medium);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--rh-space-md);
+}
+
+#do span {
+  color: var(--rh-color-status-success);
+}
+
+#dont span {
+  color: var(--rh-color-status-danger);
+}
+
+::slotted(uxdot-example) {
+  margin: 0 !important;
+}
+
+figure {
+  margin: 0 !important;
+}
+</style><!--lit-part /OqYtWIsZqM=-->
+      <figure id="container">
+        <slot name="image"></slot>
+        <!--lit-node 2--><figcaption id="dont">
+          <span><!--lit-node 4--><rh-icon    set="ui" size="md" icon="close-circle-fill" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
+  line-height: 0;
+  aspect-ratio: 1/1;
+  display: inline-flex;
+  place-content: center;
+}
+
+#container {
+  display: contents;
+}
+
+svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
+  fill: currentcolor;
+  aspect-ratio: 1/1;
+}
+
+.standard svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
+}
+
+.microns svg {
+  width: 12px;
+}
+</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part iKtDDm471k4=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm5.796 20.204c.438.44.438 1.152 0 1.592a1.122 1.122 0 0 1-1.592-.001L16 17.593l-4.204 4.204a1.122 1.122 0 0 1-1.592-.001 1.128 1.128 0 0 1 0-1.59L14.408 16l-4.204-4.204a1.126 1.126 0 0 1 1.592-1.592L16 14.408l4.204-4.204a1.126 1.126 0 0 1 1.592 1.592L17.592 16l4.204 4.204Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon><!--lit-part-->Don&#39;t<!--/lit-part--></span>
+          <slot></slot>
+        </figcaption>
+      </figure>
+    <!--/lit-part--></template>
+  <uxdot-example   slot="image" width-adjustment="1012px"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  container-type: inline-size;
+  container-name: host;
+  margin-block-end: var(--rh-space-2xl);
+}
+
+:host([transparent]) {
+  --rh-color-surface: transparent;
+}
+
+#container {
+  padding: var(--rh-space-2xl);
+  display: flex;
+  flex-direction: column;
+  align-items: var(--_alignment, center);
+  justify-content: center;
+  border-width: var(--rh-border-width-sm);
+  border-style: solid;
+  border-color: var(--rh-color-border-subtle);
+  border-radius: var(--rh-border-radius-default);
+  background-color: var(--rh-color-surface);
+  color: var(--rh-color-text-primary);
+}
+
+::slotted(*) {
+  display: flex;
+  flex-direction: column;
+  align-items: var(--_alignment, center);
+  justify-content: center;
+  max-width: 100%;
+  height: auto;
+}
+
+.widthAdjustment ::slotted(*) {
+  width: var(--_width);
+}
+
+:host([variant='full']) #container {
+  padding: 0;
+}
+
+:host([danger]) #container {
+  --rh-color-border-subtle: var(--rh-color-border-destructive);
+
+  background-image: url('/assets/best-practices-danger-icon.svg');
+  background-position-x: 8px;
+  background-position-y: 8px;
+  background-repeat: no-repeat;
+}
+
+:host([no-border]:not([danger])) #container {
+  border: none;
+}
+
+@container host (min-width: 576px) {
+  #container {
+    padding: var(--rh-space-3xl);
+  }
+}
+
+@container host (min-width: 768px) {
+  #container {
+    padding: var(--rh-space-4xl);
+  }
+}
+</style><!--lit-part DbmYZodZUIs=-->
+      <!--lit-node 0--><div id="container"
+           part="container"
+           class="on  widthAdjustment "
+           style="--_width: 1012px; --_alignment: center">
+        <slot></slot>
+      </div>
+    <!--/lit-part--></template>
+    <img src="../audio-player-best-practices-full-player-dont.png" alt="Heading, full player, and a call to action in a group next to a card" width="1012" height="352">
+  </uxdot-example>
+  <p>Avoid using the full player near too many other elements.</p>
+</uxdot-best-practice>
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: flex;
   margin-block-end: var(--rh-space-lg);
@@ -9886,8 +10115,82 @@ svg {
     <a href="#contextual-menu">Contextual menu</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<p>Do not alter contextual menu theming.</p>
-<uxdot-example   width-adjustment="712px" danger><template shadowroot="open" shadowrootmode="open"><style>:host {
+<uxdot-best-practice  variant="do"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  margin-block: var(--rh-space-2xl);
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rh-space-2xl);
+  margin-block: var(--rh-space-2xl);
+}
+
+span {
+  font-family: var(--rh-font-family-heading);
+  font-size: var(--rh-font-size-heading-xs);
+  font-weight: var(--rh-font-weight-heading-medium);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--rh-space-md);
+}
+
+#do span {
+  color: var(--rh-color-status-success);
+}
+
+#dont span {
+  color: var(--rh-color-status-danger);
+}
+
+::slotted(uxdot-example) {
+  margin: 0 !important;
+}
+
+figure {
+  margin: 0 !important;
+}
+</style><!--lit-part /OqYtWIsZqM=-->
+      <figure id="container">
+        <slot name="image"></slot>
+        <!--lit-node 2--><figcaption id="do">
+          <span><!--lit-node 4--><rh-icon    set="ui" size="md" icon="check-circle-fill" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
+  line-height: 0;
+  aspect-ratio: 1/1;
+  display: inline-flex;
+  place-content: center;
+}
+
+#container {
+  display: contents;
+}
+
+svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
+  fill: currentcolor;
+  aspect-ratio: 1/1;
+}
+
+.standard svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
+}
+
+.microns svg {
+  width: 12px;
+}
+</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part dS1mROSl53E=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm7.795 12.796-8.646 8.646c-.317.317-.733.475-1.149.475s-.832-.158-1.149-.475l-4.646-4.646a1.126 1.126 0 0 1 1.59-1.592L14 19.41l8.205-8.205a1.124 1.124 0 1 1 1.59 1.592Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon><!--lit-part-->Do<!--/lit-part--></span>
+          <slot></slot>
+        </figcaption>
+      </figure>
+    <!--/lit-part--></template>
+  <uxdot-example   slot="image" width-adjustment="794px"><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: block;
   container-type: inline-size;
   container-name: host;
@@ -9957,13 +10260,167 @@ svg {
       <!--lit-node 0--><div id="container"
            part="container"
            class="on  widthAdjustment "
-           style="--_width: 712px; --_alignment: center">
+           style="--_width: 794px; --_alignment: center">
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-  <img src="../audio-player-best-practice-2.png" alt="Image of Compact players with contextual menus that are a different theme than the audio player which is incorrect usage" width="712" height="482">
-</uxdot-example>
+    <img src="../audio-player-best-practices-contextual-menu-do.png" alt="Light theme contextual menu paired with light theme player and dark theme contextual menu paired with dark theme player" width="794" height="480">
+  </uxdot-example>
+  <p>Retain the theming of the contextual menu that’s built into the audio player.</p>
+</uxdot-best-practice>
+<uxdot-best-practice  variant="dont"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  margin-block: var(--rh-space-2xl);
+}
 
+#container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rh-space-2xl);
+  margin-block: var(--rh-space-2xl);
+}
+
+span {
+  font-family: var(--rh-font-family-heading);
+  font-size: var(--rh-font-size-heading-xs);
+  font-weight: var(--rh-font-weight-heading-medium);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--rh-space-md);
+}
+
+#do span {
+  color: var(--rh-color-status-success);
+}
+
+#dont span {
+  color: var(--rh-color-status-danger);
+}
+
+::slotted(uxdot-example) {
+  margin: 0 !important;
+}
+
+figure {
+  margin: 0 !important;
+}
+</style><!--lit-part /OqYtWIsZqM=-->
+      <figure id="container">
+        <slot name="image"></slot>
+        <!--lit-node 2--><figcaption id="dont">
+          <span><!--lit-node 4--><rh-icon    set="ui" size="md" icon="close-circle-fill" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
+  line-height: 0;
+  aspect-ratio: 1/1;
+  display: inline-flex;
+  place-content: center;
+}
+
+#container {
+  display: contents;
+}
+
+svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
+  fill: currentcolor;
+  aspect-ratio: 1/1;
+}
+
+.standard svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
+}
+
+.microns svg {
+  width: 12px;
+}
+</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part iKtDDm471k4=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm5.796 20.204c.438.44.438 1.152 0 1.592a1.122 1.122 0 0 1-1.592-.001L16 17.593l-4.204 4.204a1.122 1.122 0 0 1-1.592-.001 1.128 1.128 0 0 1 0-1.59L14.408 16l-4.204-4.204a1.126 1.126 0 0 1 1.592-1.592L16 14.408l4.204-4.204a1.126 1.126 0 0 1 1.592 1.592L17.592 16l4.204 4.204Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon><!--lit-part-->Don&#39;t<!--/lit-part--></span>
+          <slot></slot>
+        </figcaption>
+      </figure>
+    <!--/lit-part--></template>
+  <uxdot-example   slot="image" width-adjustment="794px"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  container-type: inline-size;
+  container-name: host;
+  margin-block-end: var(--rh-space-2xl);
+}
+
+:host([transparent]) {
+  --rh-color-surface: transparent;
+}
+
+#container {
+  padding: var(--rh-space-2xl);
+  display: flex;
+  flex-direction: column;
+  align-items: var(--_alignment, center);
+  justify-content: center;
+  border-width: var(--rh-border-width-sm);
+  border-style: solid;
+  border-color: var(--rh-color-border-subtle);
+  border-radius: var(--rh-border-radius-default);
+  background-color: var(--rh-color-surface);
+  color: var(--rh-color-text-primary);
+}
+
+::slotted(*) {
+  display: flex;
+  flex-direction: column;
+  align-items: var(--_alignment, center);
+  justify-content: center;
+  max-width: 100%;
+  height: auto;
+}
+
+.widthAdjustment ::slotted(*) {
+  width: var(--_width);
+}
+
+:host([variant='full']) #container {
+  padding: 0;
+}
+
+:host([danger]) #container {
+  --rh-color-border-subtle: var(--rh-color-border-destructive);
+
+  background-image: url('/assets/best-practices-danger-icon.svg');
+  background-position-x: 8px;
+  background-position-y: 8px;
+  background-repeat: no-repeat;
+}
+
+:host([no-border]:not([danger])) #container {
+  border: none;
+}
+
+@container host (min-width: 576px) {
+  #container {
+    padding: var(--rh-space-3xl);
+  }
+}
+
+@container host (min-width: 768px) {
+  #container {
+    padding: var(--rh-space-4xl);
+  }
+}
+</style><!--lit-part DbmYZodZUIs=-->
+      <!--lit-node 0--><div id="container"
+           part="container"
+           class="on  widthAdjustment "
+           style="--_width: 794px; --_alignment: center">
+        <slot></slot>
+      </div>
+    <!--/lit-part--></template>
+    <img src="../audio-player-best-practices-contextual-menu-dont.png" alt="Dark theme contextual menu paired with light theme player and purple theme contextual menu paired with dark theme player" width="794" height="480">
+  </uxdot-example>
+  <p>Do not alter contextual menu theming.</p>
+</uxdot-best-practice>
 
       
 <uxdot-feedback><template shadowroot="open" shadowrootmode="open"><style>:host {
