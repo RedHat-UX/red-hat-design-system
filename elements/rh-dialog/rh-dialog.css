@@ -160,7 +160,11 @@
 }
 
 #body ::slotted(p) {
-  margin-block: 0 var(--rh-space-xl, 24px) !important;
+  margin-block: 0 var(--rh-space-lg, 16px) !important;
+}
+
+#body ::slotted(p:last-of-type) {
+  margin-block-end: var(--rh-space-xl, 24px) !important;
 }
 
 #close-button {
