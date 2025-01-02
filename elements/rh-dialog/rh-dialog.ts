@@ -71,8 +71,6 @@ async function pauseYoutube(iframe: HTMLIFrameElement) {
 export class RhDialog extends LitElement {
   static readonly styles = [styles];
 
-  protected static closeOnOutsideClick = true;
-
   /**
    * The `variant` controls the width of the dialog.
    * There are three options: `small`, `medium` and `large`. The default is `large`.
@@ -257,9 +255,8 @@ export class RhDialog extends LitElement {
     const { open, content } = this;
     if (open) {
       const path = event.composedPath();
-      const { closeOnOutsideClick } = this.constructor as typeof RhDialog;
 
-      if (closeOnOutsideClick && !path.includes(content!)) {
+      if (!path.includes(content!)) {
         event.preventDefault();
         this.cancel();
       }
