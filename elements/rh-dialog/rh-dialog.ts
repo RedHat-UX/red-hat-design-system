@@ -296,7 +296,7 @@ export class RhDialog extends LitElement {
    * dialog.toggle();
    * ```
    */
-  @bound toggle() {
+  toggle() {
     if (!this.open) {
       this.showModal();
       this.open = true;
@@ -311,12 +311,12 @@ export class RhDialog extends LitElement {
    * dialog.show();
    * ```
    */
-  @bound show() {
+  show() {
     this.dialog?.showModal();
     this.open = true;
   }
 
-  @bound showModal() {
+  showModal() {
     // TODO: non-modal mode
     this.show();
   }
@@ -328,7 +328,7 @@ export class RhDialog extends LitElement {
    *          dialog.close();
    *          ```
    */
-  @bound close(returnValue?: string) {
+  close(returnValue?: string) {
     if (typeof returnValue === 'string') {
       this.returnValue = returnValue;
     }
