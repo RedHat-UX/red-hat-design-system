@@ -115,7 +115,6 @@ export class RhDialog extends LitElement {
   #body: Element[] = [];
   #headings: Element[] = [];
   #cancelling = false;
-  #lastTabbable: HTMLElement = this.closeButton;
 
   #slots = new SlotController(this, null, 'header', 'description', 'footer');
 
@@ -263,27 +262,6 @@ export class RhDialog extends LitElement {
     }
   }
 
-  #handleTab(event: KeyboardEvent) {
-    // No focusable elements except close button:
-    if (this.#lastTabbable === this.closeButton) {
-      event.preventDefault();
-      this.closeButton.focus();
-      return;
-    }
-    // With focusable elements in dialog:
-    if (document.activeElement === this.#lastTabbable) {
-      event.preventDefault();
-      this.closeButton.focus();
-    }
-  }
-
-  #handleShiftTab(event: KeyboardEvent) {
-    if (document.activeElement === this && this.shadowRoot?.activeElement === this.closeButton) {
-      event.preventDefault();
-      this.#lastTabbable.focus();
-    }
-  }
-
   #onKeyDown(event: KeyboardEvent) {
     switch (event.key) {
       case 'Escape':
@@ -296,12 +274,6 @@ export class RhDialog extends LitElement {
           this.showModal();
         }
         return;
-      case 'Tab':
-        if (event.shiftKey) {
-          this.#handleShiftTab(event);
-          return;
-        }
-        this.#handleTab(event);
     }
   }
 
