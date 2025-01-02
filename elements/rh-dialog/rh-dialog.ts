@@ -122,7 +122,7 @@ export class RhDialog extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     this.addEventListener('keydown', this.#onKeyDown);
-    this.addEventListener('click', this.onClick);
+    this.addEventListener('click', this.#onClick);
   }
 
   disconnectedCallback() {
@@ -251,7 +251,7 @@ export class RhDialog extends LitElement {
     this.closeButton?.focus();
   }
 
-  @bound private onClick(event: MouseEvent) {
+  #onClick(event: MouseEvent) {
     const { open, content } = this;
     if (open) {
       const path = event.composedPath();
