@@ -129,7 +129,6 @@ export class RhDialog extends LitElement {
 
   disconnectedCallback() {
     super.disconnectedCallback();
-    this.removeEventListener('keydown', this.#onKeyDown);
     this.#triggerElement?.removeEventListener('click', this.onTriggerClick);
   }
 
