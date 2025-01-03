@@ -501,7 +501,8 @@ alignment="left">
           width="576"
           height="56">
   </uxdot-example>
-  <p>Use a maximum of three calls to action in one group. This helps mitigate [choice paralysis][paralysis].</p>
+  <p>Use a maximum of three calls to action in one group. This helps mitigate <a href="https://www.shopify.com/partners/blog/choice-paralysis">choice 
+paralysis</a>.</p>
 </uxdot-best-practice>
 
 <uxdot-best-practice variant="dont">
@@ -537,5 +538,3 @@ alignment="left">
     <p>Do not add extra spacing or stretch the width of any variant, except for bricks.</p>
   </uxdot-best-practice>
 </div>
-
-[paralysis]: https://www.shopify.com/partners/blog/choice-paralysis
