@@ -376,97 +376,166 @@ alignment="left">
 
 ## Best practices
 
-### Changing styles
+### Variant styles
 
-Do not change the styles of any variant.
+<div class="grid sm-two-columns">
+  <uxdot-best-practice variant="do">
+    <uxdot-example width-adjustment="401px" slot="image">
+      <img src="../cta-best-practices-variant-styles-do.svg"
+            alt="Three call to action variants using the built-in options"
+            width="401"
+            height="56">
+    </uxdot-example>
+    <p>Retain the default styles for each variant.</p>
+  </uxdot-best-practice>
 
-<uxdot-example width-adjustment="407px" danger>
-  <img src="../cta-best-practice-1.png"
-        alt="Image of several 
-    variants with brand new styles which is incorrect usage"
-        width="407"
-        height="56">
-</uxdot-example>
+  <uxdot-best-practice variant="dont">
+    <uxdot-example width-adjustment="401px" slot="image">
+      <img src="../cta-best-practices-variant-styles-dont.svg"
+            alt="Primary CTA with arrow icon, brick CTA with icon on right, default CTA without arrow icon"
+            width="401"
+            height="56">
+    </uxdot-example>
+    <p>Do not change the styles of any variant.</p>
+  </uxdot-best-practice>
+</div>
 
 ### Primary variants
 
-Do not use more than one Primary variant on any page.
+<div class="grid sm-two-columns">
+  <uxdot-best-practice variant="do">
+    <uxdot-example width-adjustment="325px" slot="image">
+      <img src="../cta-best-practices-primary-do.svg"
+            alt="Primary CTA and secondary CTA in a group"
+            width="325"
+            height="56">
+    </uxdot-example>
+    <p>Use only one primary call to action on each page.</p>
+  </uxdot-best-practice>
 
-<uxdot-example width-adjustment="407px" danger>
-  <img src="../cta-best-practice-2.png"
-        alt="Image of two Primary 
-    variants in one row which is incorrect usage"
-        width="331"
-        height="56">
-</uxdot-example>
+  <uxdot-best-practice variant="dont">
+    <uxdot-example width-adjustment="325px" slot="image">
+      <img src="../cta-best-practices-primary-dont.svg"
+            alt="Two primary CTAs in a group"
+            width="325"
+            height="56">
+    </uxdot-example>
+    <p>Do not use more than one primary variant on any page.</p>
+  </uxdot-best-practice>
+</div>
 
 ### Brick variants
 
-Do not group different Brick variants together, use one variant per grid.
+<uxdot-best-practice variant="do">
+  <uxdot-example width-adjustment="816px" slot="image">
+    <img src="../cta-best-practices-brick-do.svg"
+          alt="Four brick CTAs with icons on the left"
+          width="816"
+          height="56">
+  </uxdot-example>
+  <p>Use one configuration per grid of brick calls to action.</p>
+</uxdot-best-practice>
 
-<uxdot-example width-adjustment="407px" danger>
-  <img src="../cta-best-practice-3.png"
-        alt="Image of Brick 
-    variants in one row with and without icons which is incorrect usage"
-        width="816"
-        height="88">
-</uxdot-example>
-
+<uxdot-best-practice variant="dont">
+  <uxdot-example width-adjustment="816px" slot="image">
+    <img src="../cta-best-practices-brick-dont.svg"
+          alt="Four brick CTAs with no icon, an icon on the left, or an icon above the text"
+          width="816"
+          height="88">
+  </uxdot-example>
+  <p>Do not group different brick variants together.</p>
+</uxdot-best-practice>
 
 ### Grouping
 
-Do not group more than two different variants together.	
+<div class="grid sm-two-columns">
+  <uxdot-best-practice variant="do">
+    <uxdot-example width-adjustment="449px" slot="image">
+      <img src="../cta-best-practices-grouping-do.svg"
+            alt="One primary CTA grouped with two secondary CTAs"
+            width="449"
+            height="56">
+    </uxdot-example>
+    <p>Use up to two different variants in a call to action group.</p>
+  </uxdot-best-practice>
 
-<uxdot-example width-adjustment="483px" danger>
-  <img src="../cta-best-practice-4.png"
-        alt="Image of Primary, 
-    Secondary, and Default variants in one row which is incorrect usage"
-        width="483"
-        height="56">
-</uxdot-example>
+  <uxdot-best-practice variant="dont">
+    <uxdot-example width-adjustment="433px" slot="image">
+      <img src="../cta-best-practices-grouping-dont.svg"
+            alt="One primary CTA, one secondary CTA, and a default CTA in a group"
+            width="433"
+            height="56">
+    </uxdot-example>
+    <p>Do not group more than two different variants together.</p>
+  </uxdot-best-practice>
+</div>
 
+### Hierarchy
 
-### Changing heirarchy
+<uxdot-best-practice variant="do">
+  <uxdot-example width-adjustment="630px" slot="image">
+    <img src="../cta-best-practices-hierarchy-do.svg"
+          alt="Primary CTA before two secondary CTAs"
+          width="630"
+          height="56">
+  </uxdot-example>
+  <p>Variants that are higher in hierarchy should start from the left. (Hierarchy should be reversed when using right-to-left languages.)</p>
+</uxdot-best-practice>
 
-Do not change the hierarchy, variants that are higher in hierarchy should start 
-first on the left.
+<uxdot-best-practice variant="dont">
+  <uxdot-example width-adjustment="630px" slot="image">
+    <img src="../cta-best-practices-hierarchy-dont.svg"
+          alt="Two secondary CTAs before a primary CTA"
+          width="630"
+          height="88">
+  </uxdot-example>
+  <p>Do not change the hierarchy.</p>
+</uxdot-best-practice>
 
-<rh-alert state="info">
-  <h4 slot="header">Helpful tip</h4>
-  <p>Hierarchy should be reversed when using right-to-left languages.</p>
-  </rh-alert>
+### Number of choices
 
-<uxdot-example width-adjustment="533px" danger>
-  <img src="../cta-best-practice-5.png"
-        alt="Image of the Primary 
-    variant last in a row which is incorrect usage"
-        width="533"
-        height="56">
-</uxdot-example>
+<uxdot-best-practice variant="do">
+  <uxdot-example width-adjustment="576px" slot="image">
+    <img src="../cta-best-practices-choices-do.svg"
+          alt="Three CTAs in a group"
+          width="576"
+          height="56">
+  </uxdot-example>
+  <p>Use a maximum of three calls to action in one group. This helps mitigate [choice paralysis][paralysis].</p>
+</uxdot-best-practice>
 
-### Too many options
-
-Do not group more than three variants together otherwise the risk of [choice 
-paralysis][paralysis]{target="_blank"} greatly increases.
-
-<uxdot-example width-adjustment="659px" danger>
-  <img src="../cta-best-practice-6.png"
-        alt="Image of two rows of 
-    calls to action with four variants in each row which is incorrect usage"
-        width="659"
-        height="212">
-</uxdot-example>
+<uxdot-best-practice variant="dont">
+  <uxdot-example width-adjustment="985px" slot="image">
+    <img src="../cta-best-practices-choices-dont.svg"
+          alt="Five CTAs in a group"
+          width="985"
+          height="88">
+  </uxdot-example>
+  <p>Do not group more than three calls to action together.</p>
+</uxdot-best-practice>
 
 ### Stretching
 
-Do not add extra spacing or stretch the width of any variant except for Bricks.
+<div class="grid sm-two-columns">
+  <uxdot-best-practice variant="do">
+    <uxdot-example width-adjustment="296px" slot="image">
+      <img src="../cta-best-practices-stretching-do.svg"
+            alt="Primary and secondary CTAs using the default width"
+            width="296"
+            height="56">
+    </uxdot-example>
+    <p>The width of calls to action should automatically adjust based on the text inside.</p>
+  </uxdot-best-practice>
 
-<uxdot-example width-adjustment="672px" danger>
-  <img src="../cta-best-practice-7.png"
-        alt="Image of Primary and 
-    Secondary variants stretched which is incorrect usage"
-        width="672"
-        height="56">
-</uxdot-example>
+  <uxdot-best-practice variant="dont">
+    <uxdot-example width-adjustment="482px" slot="image">
+      <img src="../cta-best-practices-stretching-dont.svg"
+            alt="Primary and secondary CTAs that have been stretched to fill the container"
+            width="482"
+            height="56">
+    </uxdot-example>
+    <p>Do not add extra spacing or stretch the width of any variant, except for bricks.</p>
+  </uxdot-best-practice>
+</div>
 
 [paralysis]: https://www.shopify.com/partners/blog/choice-paralysis
