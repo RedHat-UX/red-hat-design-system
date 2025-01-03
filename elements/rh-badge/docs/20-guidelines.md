@@ -94,25 +94,49 @@ that are made in a toolbar filter or select list.
 
 ### Large number
 
-Do not allow a badge to display a count over 999.
+<div class="grid sm-two-columns">
+  <uxdot-best-practice variant="do">
+    <uxdot-example width-adjustment="46px" slot="image">
+      <img src="../badge-best-practices-large-number-do.svg"
+            alt="999+ in a gray badge"
+            width="46"
+            height="18">
+    </uxdot-example>
+    <p>A value threshold for the number displayed in a badge should be established, and any number that’s larger should be shown as the threshold value with a plus sign.</p>
+  </uxdot-best-practice>
 
-<uxdot-example danger width-adjustment="74px">
-  <img src="../badge-best-practice-large-number-dont.svg" 
-      alt="A badge counting to 1,00,000 which is incorrect usage"
-      width="74"
-      height="18">
-</uxdot-example>
+  <uxdot-best-practice variant="dont">
+    <uxdot-example width-adjustment="74px" slot="image">
+      <img src="../badge-best-practices-large-number-dont.svg"
+            alt="1,000,000 in a gray badge"
+            width="74"
+            height="18">
+    </uxdot-example>
+    <p>Do not allow a badge to display a value over 999.</p>
+  </uxdot-best-practice>
+</div>
 
 ### Two badges
 
-Be careful using two badges. Using color only and the lack of other visual cues 
-might make it difficult to differentiate unread or actionable items associated 
-with the badges.
+<div class="grid sm-two-columns">
+  <uxdot-best-practice variant="do">
+    <uxdot-example width-adjustment="171px" slot="image">
+      <img src="../badge-best-practices-two-badges-do.svg"
+            alt="Gray badge labeled as 'Unread' and yellow badge labeled as 'Flagged'"
+            width="171"
+            height="18">
+    </uxdot-example>
+    <p>Use at least one visual cue other than color when using two badges side by side.</p>
+  </uxdot-best-practice>
 
-<uxdot-example danger width-adjustment="85px">
-  <img src="../badge-best-practice-two-badges-dont.svg" 
-      alt="Two badges with different background colors and no other unique visual cues which is incorrect usage"
-      width="85"
-      height="18">
-</uxdot-example>
+  <uxdot-best-practice variant="dont">
+    <uxdot-example width-adjustment="85px" slot="image">
+      <img src="../badge-best-practices-two-badges-dont.svg"
+            alt="Gray badge next to yellow badge"
+            width="85"
+            height="18">
+    </uxdot-example>
+    <p>Do not use only color to associate two consecutive badges with two different meanings.</p>
+  </uxdot-best-practice>
+</div>
 
