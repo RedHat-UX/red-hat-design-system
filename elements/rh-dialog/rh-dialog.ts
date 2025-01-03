@@ -145,7 +145,7 @@ export class RhDialog extends LitElement {
         </div>
         <rh-surface class=${classMap({ hasHeader, hasDescription, hasFooter })}
                     ?hidden=${!this.open}
-                    color-palette="${ifDefined(this.type === 'video' ? undefined : 'lightest')}">
+                    color-palette="lightest">
           <dialog id="dialog"
                   part="dialog"
                   aria-labelledby=${ifDefined(this.accessibleLabel ? undefined : headerId)}
