@@ -63,7 +63,7 @@ span,
   order: 1;
   color: var(--_accent-color);
   font-size: var(--rh-font-size-body-text-xl, 1.25rem);
-  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
   font-weight: var(--rh-font-weight-body-text-regular, 400);
   text-transform: uppercase;
 }
@@ -72,21 +72,21 @@ span,
   order: 2;
   color: var(--_accent-color);
   font-size: var(--rh-font-size-heading-lg, 2.25rem);
-  font-weight: var(--rh-font-weight-heading-regular, 300);
-  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-weight: var(--rh-font-weight-heading-regular, 400);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
 }
 
 #content {
   order: 3;
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
-  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
   margin-top: var(--rh-space-sm, 6px);
 }
 
 #cta {
   order: 4;
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
-  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
   margin-top: var(--rh-space-lg, 16px);
 }
 
