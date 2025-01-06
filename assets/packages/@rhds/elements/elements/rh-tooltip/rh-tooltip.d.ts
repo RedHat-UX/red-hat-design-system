@@ -25,6 +25,10 @@ export declare class RhTooltip extends LitElement {
     #private;
     static readonly version = "{{version}}";
     static readonly styles: CSSStyleSheet[];
+    private static instances;
+    private static announcer;
+    private static announce;
+    private static initAnnouncer;
     /** The position of the tooltip, relative to the invoking content */
     position: Placement;
     /** Tooltip content. Overridden by the content slot */

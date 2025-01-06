@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="/assets/logo-red-hat.svg">
-    <title>Bottom | Red Hat Design System</title>
+    <title>Content Attributes | Red Hat Design System</title>
 
     <link rel="preconnect" href="https://ga.jspm.io">
 
@@ -82,7 +82,8 @@
     <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
   </head>
   <body unresolved="">
-    <main><rh-tooltip  position="bottom"><template shadowroot="open" shadowrootmode="open"><style>:host {
+    <main><rh-tooltip  content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+    labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices."><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: inline;
 }
 
@@ -206,7 +207,8 @@
           <slot id="invoker-slot"></slot>
         </div>
         <div id="tooltip" role="status">
-          <slot id="content" name="content"><!--lit-part--><!--/lit-part--></slot>
+          <slot id="content" name="content"><!--lit-part-->Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+    labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.<!--/lit-part--></slot>
         </div>
       </div>
     <!--/lit-part--></template>
@@ -798,9 +800,7 @@ svg {
         </span>
         <!--lit-node 4--><span aria-hidden="false"><slot id="text" ></slot></span>
       </button>
-    <!--/lit-part--></template>Bottom Tooltip</rh-button>
-  <span slot="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-    labore et dolore magna aliqua. Mi eget mauris pharetra et ultrices.</span>
+    <!--/lit-part--></template>Tooltip</rh-button>
 </rh-tooltip>
 
 <script type="module">
