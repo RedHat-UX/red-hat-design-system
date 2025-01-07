@@ -194,6 +194,12 @@ export class RhTile extends LitElement {
     const { bleed, compact, checkable, checked, colorPalette, desaturated, on = 'light' } = this;
     const disabled = this.disabledGroup || this.disabled || this.#internals.formDisabled;
     const hasSlottedIcon = this.#slots.hasSlotted('icon');
+    const linkIcon =
+        this.checkable ? ''
+      : this.disabled ? 'ban'
+      : this.link === 'private' ? 'lock'
+      : this.link === 'external' ? 'external-link'
+                                 : 'arrow-right';
     return html`
       <div id="outer" class="${classMap({
             bleed,
@@ -211,7 +217,10 @@ export class RhTile extends LitElement {
               ?hidden="${this.checkable}"
         ></slot>
         <div id="inner">
-          <slot id="icon" name="icon" ?hidden="${this.icon === undefined && !hasSlottedIcon}">
+          <slot id="icon"
+                class="${classMap({ compact, checkable })}"
+                name="icon"
+                ?hidden="${this.icon === undefined && !hasSlottedIcon}">
             ${this.icon !== undefined ?
               html`<rh-icon icon="${ifDefined(this.icon)}" set="${this.iconSet}"></rh-icon>`
               : html``}
@@ -232,29 +241,12 @@ export class RhTile extends LitElement {
             </div>
             <slot id="body"></slot>
             <div id="footer">
-              <slot id="footer-text" name="footer"></slot>${this.#renderLinkIcon()}
+              <slot id="footer-text" name="footer"></slot><rh-icon set="ui" icon="${linkIcon}"></rh-icon>
             </div>
           </div>
         </div>
       </div>
     `;
-  }
-
-  #renderLinkIcon() {
-    if (this.checkable) {
-      return '';
-    } else if (this.disabled) {
-      return html`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
-        <rect width="48" height="48" fill="none"/>
-        <path d="m24,7c-9.37,0-17,7.63-17,17s7.63,17,17,17,17-7.63,17-17S33.37,7,24,7Zm15,17c0,3.52-1.23,6.76-3.27,9.32L14.68,12.27c2.56-2.04,5.8-3.27,9.32-3.27,8.27,0,15,6.73,15,15Zm-30,0c0-4.03,1.61-7.69,4.2-10.38l21.18,21.18c-2.7,2.6-6.35,4.2-10.38,4.2-8.27,0-15-6.73-15-15Z"/>
-      </svg>`;
-    } else if (this.link === 'private') {
-      return html`<rh-icon set="ui" icon="lock"></rh-icon>`;
-    } else if (this.link === 'external') {
-      return html`<rh-icon set="microns" icon="external-link"></rh-icon>`;
-    } else {
-      return html`<rh-icon set="ui" icon="arrow-right"></rh-icon>`;
-    }
   }
 
   async formDisabledCallback() {

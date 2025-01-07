@@ -1,7 +1,7 @@
 :host {
-  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-body-text-md, 1rem);
-  font-weight: var(--rh-font-weight-heading-regular, 300);
+  font-weight: var(--rh-font-weight-heading-regular, 400);
   line-height: var(--rh-line-height-body-text, 1.5);
 }
 
@@ -92,16 +92,24 @@
     & > *,
     &::slotted(*) {
       max-width: 100%;
-      margin: 0 var(--_padding);
+      margin-block: 0 var(--_padding);
     }
   }
 
   & #icon {
+    --_size: var(--rh-size-icon-05, 48px);
+
+    &:is(.compact, .checkable) {
+      --_size: var(--rh-size-icon-03, 32px);
+      --_padding: var(--rh-space-lg, 16px);
+    }
+
     & > *,
     &::slotted(*) {
       width: 100%;
-      margin: 0 0 var(--_padding);
-      max-width: var(--rh-size-icon-05, 48px);
+      margin: 0 var(--_padding) 0 0;
+      max-width: var(--_size);
+      max-height: var(--_size);
     }
   }
 
@@ -182,12 +190,6 @@
     & #content {
       flex: 1 1 auto;
       width: 100%;
-    }
-
-    & ::slotted([slot='icon']) {
-      margin-inline-end: var(--_margin);
-      max-width: var(--rh-size-icon-03, 32px);
-      max-height: var(--rh-size-icon-03, 32px);
     }
 
     & ::slotted([slot='headline']) {
