@@ -1,5 +1,19 @@
 # @rhds/elements
 
+## 2.1.1
+
+### Patch Changes
+
+- f63c46d: **Color Context**: prevent errors in certain SSR scenarios
+- 249a596: `<rh-alert>`: corrected typography and layouts
+- 613e827: `<rh-code-block>`: ensure that syntax colours and styles are applied when the element upgrades
+- 0d70e3f: `<rh-tabs>`: corrects active tab styles in SSR scenarios
+- 7bf5841: `<rh-navigation-secondary>`: corrected style regression in dark color palettes
+- 955d393: `<rh-surface>`: corrected themed text color
+- 3ef5687: `<rh-alert>`: change heading color for all states of alert to make them all the same
+- 557ede4: `<rh-table>`: better SSR support
+- f63c46d: `<rh-cta>`: fix some errors when hydrating in SSR scenarios
+
 ## 2.1.0
 
 ### Minor Changes
@@ -25,9 +39,9 @@
 
   ```html
   <rh-subnav accessible-label="Customer service">
-   <a href="#" active>Help</a>
-   <a href="#">Contact Us</a>
-   <a href="#">FAQ</a>
+    <a href="#" active>Help</a>
+    <a href="#">Contact Us</a>
+    <a href="#">FAQ</a>
   </rh-subnav>
   ```
 

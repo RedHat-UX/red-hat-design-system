@@ -110,10 +110,10 @@ export class ColorContextProvider<
   async hostConnected() {
     this.host.addEventListener('context-request', e => this.#onChildContextRequestEvent(e));
     this.#mo.observe(this.host, { attributes: true, attributeFilter: [this.#attribute] });
+    await this.host.updateComplete;
     for (const [host, fired] of contextEvents) {
       host.dispatchEvent(fired);
     }
-    await this.host.updateComplete;
     this.update();
     return true;
   }

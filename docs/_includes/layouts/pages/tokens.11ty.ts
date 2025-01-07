@@ -365,9 +365,10 @@ export default class TokensPage extends Renderer<Data> {
         </h${options.level}>
       </uxdot-copy-permalink>`;
 
+    const description = `${options.tokens.$description ?? ''}\n\n${options.tokens._?.$description ?? ''}`.trim();
     return html`
       ${permalink}
-      <div class="description">${await this.renderTemplate(options.tokens.$description ?? '', 'md')}</div>
+      <div class="description">${await this.renderTemplate(description, 'md')}</div>
       ${this.#renderThemeTokensCard(options)}
       ${await this.#renderTable(options)}
       ${await this.#renderChildren(options)}

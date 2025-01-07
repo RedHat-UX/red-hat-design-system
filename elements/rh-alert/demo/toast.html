@@ -1,6 +1,6 @@
 <section id="alert-variant-toast">
   <rh-alert variant="toast">
-    <h3 slot="header">Default</h3>
+    <h3 slot="header">Neutral</h3>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
       egestas, a sollicitudin mauris tincidunt.</p>
     <rh-button slot="actions" variant="secondary" data-action="confirm">Confirm</rh-button>
@@ -46,6 +46,16 @@
     <rh-button slot="actions" variant="link" data-action="dismiss">Dismiss</rh-button>
     <rh-button slot="actions" variant="link" data-action="confirm">Confirm</rh-button>
   </rh-alert>
+
+  <rh-alert state="caution" variant="toast">
+    <h3 slot="header">Caution</h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
+      egestas, a sollicitudin mauris tincidunt.</p>
+    <rh-button slot="actions" variant="link" data-action="dismiss">Dismiss</rh-button>
+    <rh-button slot="actions" variant="link" data-action="confirm">Confirm</rh-button>
+  </rh-alert>
+
+  <rh-button id="create-toast">Create Animated Toast</rh-button>
 </section>
 
 <style>
@@ -58,6 +68,14 @@
 </style>
 
 <script type="module">
-  import '@rhds/elements/rh-alert/rh-alert.js';
   import '@rhds/elements/rh-button/rh-button.js';
+  import { RhAlert } from '@rhds/elements/rh-alert/rh-alert.js';
+  let i = 0;
+  document.getElementById('create-toast')
+    .addEventListener('click', function() {
+      RhAlert.toast({
+        message: `New toast ${++i}`,
+        heading: 'Toast!',
+      });
+    });
 </script>

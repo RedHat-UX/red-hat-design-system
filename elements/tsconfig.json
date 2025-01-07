@@ -9,9 +9,5 @@
   ],
   "compilerOptions": {
     "composite": true
-  },
-  "exclude": [
-    "./**/*.spec.ts",
-    "./**/*.e2e.ts"
-  ]
+  }
 }

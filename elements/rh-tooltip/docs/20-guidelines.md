@@ -86,35 +86,74 @@ A tooltip can generally be used on both large and small breakpoints if the conte
 
 ### White on white 
 
-Do not use a dark theme tooltip in light theme environments.
+<div class="grid sm-two-columns">
+  <uxdot-best-practice variant="do">
+    <uxdot-example width-adjustment="202px" slot="image">
+      <img src="../tooltip-best-practices-white-on-white-do.svg"
+            alt="Light theme tooltip against a light background"
+            width="202"
+            height="87">
+    </uxdot-example>
+    <p>Use the tooltip that corresponds with the theme of the container it’s in.</p>
+  </uxdot-best-practice>
 
-<uxdot-example width-adjustment="199px" danger>
-  <img src="../tooltip-best-practice-1.png"
-        alt="A dark theme or white tooltip used on a white background is incorrect usage"
-        width="199"
-        height="82">
-</uxdot-example>
+  <uxdot-best-practice variant="dont">
+    <uxdot-example width-adjustment="202px" slot="image">
+      <img src="../tooltip-best-practices-white-on-white-dont.svg"
+            alt="Dark theme tooltip against a light background"
+            width="202"
+            height="87">
+    </uxdot-example>
+    <p>Do not use a dark theme tooltip in light theme environments and vice versa.</p>
+  </uxdot-best-practice>
+</div>
 
 
 ### Cut off by browser window 
 
-A tooltip should not be cut off by the browser window. Change the orientation if it does.
+<div class="grid sm-two-columns">
+  <uxdot-best-practice variant="do">
+    <uxdot-example width-adjustment="360px" slot="image">
+      <img src="../tooltip-best-practice-position-do.svg"
+            alt="Tooltip fits in the bounds of a form container"
+            width="360"
+            height="308">
+    </uxdot-example>
+    <p>Place the tooltip so that the whole element is visible.</p>
+  </uxdot-best-practice>
 
-<uxdot-example width-adjustment="360px" danger>
-  <img src="../tooltip-best-practice-2.png"
-        alt="If using the top orientation will cause the tooltip to get cut off, that is incorrect usage"
-        width="360"
-        height="309">
-</uxdot-example>
+  <uxdot-best-practice variant="dont">
+    <uxdot-example width-adjustment="360px" slot="image">
+      <img src="../tooltip-best-practice-position-dont.svg"
+            alt="Tooltip is cut off by the edge of a form container"
+            width="360"
+            height="308">
+    </uxdot-example>
+    <p>A tooltip should not be cut off by the browser window. Change the orientation if it does.</p>
+  </uxdot-best-practice>
+</div>
 
 
 ### Unnecessary pairing 
 
-Do not add a tooltip to interface elements or actions that do not require further explanation.
+<div class="grid sm-two-columns">
+  <uxdot-best-practice variant="do">
+    <uxdot-example width-adjustment="85px" slot="image">
+      <img src="../tooltip-best-practice-pairing-do.svg"
+            alt="Tooltip that says 'Settings' above an icon"
+            width="85"
+            height="127">
+    </uxdot-example>
+    <p>Tooltips should be used if a user might need to know more information to understand the page or to complete an action.</p>
+  </uxdot-best-practice>
 
-<uxdot-example width-adjustment="205px" danger>
-  <img src="../tooltip-best-practice-3.png"
-        alt="Pairing a tooltip with an element that already has adequate descriptive text is incorrect usage"
-        width="205"
-        height="130">
-</uxdot-example>
+  <uxdot-best-practice variant="dont">
+    <uxdot-example width-adjustment="186px" slot="image">
+      <img src="../tooltip-best-practice-pairing-dont.svg"
+            alt="Tooltip that says 'Click here to get started' above a call to action that says 'Get started'"
+            width="186"
+            height="127">
+    </uxdot-example>
+    <p>Do not add a tooltip to interface elements or actions that do not require further explanation.</p>
+  </uxdot-best-practice>
+</div>

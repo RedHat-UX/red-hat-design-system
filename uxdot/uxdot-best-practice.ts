@@ -13,7 +13,7 @@ export class UxdotBestPractice extends LitElement {
 
   render() {
     const { variant } = this;
-    const icon = variant === 'do' ? 'check-circle' : 'close-circle';
+    const icon = variant === 'do' ? 'check-circle-fill' : 'close-circle-fill';
     const title = variant === 'do' ? 'Do' : 'Don\'t';
     return html`
       <figure id="container">
