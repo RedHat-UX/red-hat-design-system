@@ -25,15 +25,39 @@
 </rh-tile>
 
 <rh-tile compact bleed>
-  <img slot="image" src="https://fakeimg.pl/300x50" alt="300 X 50 placeholder image">
-  <rh-icon set="standard" icon="cloud-automation"></rh-icon>
+  <svg slot="image" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 50">
+    <title>A placeholder image in a tile image slot</title>
+    <rect x="0"
+          y="0"
+          width="300"
+          height="50"
+          fill="var(--rh-color-interactive-primary-default)"
+          fill-opacity="0.2"
+          stroke="var(--rh-color-interactive-primary-hover)"
+          stroke-width="1"
+          stroke-dasharray="1 1"
+    />
+  </svg>
+  <rh-icon slot="icon" set="standard" icon="cloud-automation"></rh-icon>
   <h2 slot="headline"><a href="#top">Link</a></h2>
   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
   <div slot="footer">Suspendisse eu turpis elementum</div>
 </rh-tile>
 
 <rh-tile compact>
-  <img slot="image" src="https://fakeimg.pl/296x50" alt="300 X 50 placeholder image">
+  <svg slot="image" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 296 50">
+    <title>A placeholder image in a tile image slot</title>
+    <rect x="0"
+          y="0"
+          width="296"
+          height="50"
+          fill="var(--rh-color-interactive-primary-default)"
+          fill-opacity="0.2"
+          stroke="var(--rh-color-interactive-primary-hover)"
+          stroke-width="1"
+          stroke-dasharray="1 1"
+    />
+  </svg>
   <h2 slot="headline"><a href="#top">Link</a></h2>
   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
   <div slot="footer">Suspendisse eu turpis elementum</div>
@@ -41,7 +65,19 @@
 
 <rh-tile compact bleed>
   <a href="#top" slot="image">
-    <img src="https://fakeimg.pl/300x50" alt="300 X 50 placeholder image">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 50">
+      <title>A placeholder image in a tile image slot</title>
+      <rect x="0"
+            y="0"
+            width="300"
+            height="50"
+            fill="var(--rh-color-interactive-primary-default)"
+            fill-opacity="0.2"
+            stroke="var(--rh-color-interactive-primary-hover)"
+            stroke-width="1"
+            stroke-dasharray="1 1"
+      />
+    </svg>
   </a>
 </rh-tile>
 
