@@ -382,11 +382,17 @@ export class RhCodeBlock extends LitElement {
   }
 
   async #copy() {
-    await navigator.clipboard.writeText(
-      Array.from(
+    let content: string;
+    if (this.highlighting === 'prerendered') {
+      content = this.querySelector('pre')?.textContent ?? '';
+    } else {
+      content = Array.from(
         this.querySelectorAll('script'),
         x => x.textContent,
-      ).join('')
+      ).join('');
+    }
+    await navigator.clipboard.writeText(
+      content
     );
     // TODO: handle slotted fabs
     const slot = this.shadowRoot?.querySelector<HTMLSlotElement>('slot[name="action-label-copy"]');
