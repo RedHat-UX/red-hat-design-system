@@ -45,6 +45,10 @@ rh-icon {
   text-align: center;
 }
 
+:host([align='center']) #quote ::slotted(*) {
+  max-width: none !important;
+}
+
 :host([size='large']) {
   font-size: var(--rh-font-size-body-text-2xl, 1.5rem);
   line-height: var(--rh-line-height-heading, 1.3);
