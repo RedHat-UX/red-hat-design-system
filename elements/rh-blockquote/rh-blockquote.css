@@ -1,7 +1,7 @@
 :host {
   color: var(--rh-color-text-primary);
   margin: 0 auto;
-  text-align: left;
+  text-align: start;
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
   line-height: var(--rh-line-height-body-text, 1.5);
@@ -46,7 +46,7 @@ rh-icon {
 }
 
 :host([align='center']) #quote ::slotted(*) {
-  max-width: none !important;
+  max-inline-size: none !important;
 }
 
 :host([size='large']) {
