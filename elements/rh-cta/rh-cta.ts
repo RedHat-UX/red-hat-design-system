@@ -157,10 +157,16 @@ export class RhCta extends LitElement {
   }
 
   override firstUpdated() {
-    const { href, variant } = this;
+    // workaround for lit-ssr bugs
     if (!isServer) {
       this.removeAttribute('defer-hydration');
+      const [, ...duplicateContainers] = this.shadowRoot?.querySelectorAll('#container') ?? [];
+      for (const dupe of duplicateContainers) {
+        dupe.remove();
+      }
     }
+    // TODO: remove in next major version, recommend static HTML audits instead
+    const { href, variant } = this;
     const cta =
          this.shadowRoot?.querySelector('a')
       ?? this.shadowRoot?.querySelector('slot')?.assignedElements().find(isSupportedContent)
