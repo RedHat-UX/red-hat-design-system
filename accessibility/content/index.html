@@ -5727,6 +5727,28 @@ svg {
   color: inherit;
 }
 
+#content::slotted(:is(code[class*='language-'], pre[class*='language-'])) {
+  color: var(--_code-color);
+  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: var(--rh-line-height-code, 1.5);
+  tab-size: 4;
+  hyphens: none;
+  background: transparent;
+}
+
+:host([highlighting='prerendered']) {
+  .wrap {
+    #content::slotted(pre[class*='language-']) {
+      white-space: pre-wrap;
+    }
+  }
+}
+
 #content::slotted(rh-tag) {
   width: var(--rh-size-icon-06, 64px);
 }
@@ -6258,6 +6280,28 @@ svg {
   white-space: var(--_code-white-space, pre);
   word-wrap: var(--_code-word-wrap, initial);
   color: inherit;
+}
+
+#content::slotted(:is(code[class*='language-'], pre[class*='language-'])) {
+  color: var(--_code-color);
+  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: var(--rh-line-height-code, 1.5);
+  tab-size: 4;
+  hyphens: none;
+  background: transparent;
+}
+
+:host([highlighting='prerendered']) {
+  .wrap {
+    #content::slotted(pre[class*='language-']) {
+      white-space: pre-wrap;
+    }
+  }
 }
 
 #content::slotted(rh-tag) {
@@ -6935,6 +6979,28 @@ svg {
   white-space: var(--_code-white-space, pre);
   word-wrap: var(--_code-word-wrap, initial);
   color: inherit;
+}
+
+#content::slotted(:is(code[class*='language-'], pre[class*='language-'])) {
+  color: var(--_code-color);
+  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: var(--rh-line-height-code, 1.5);
+  tab-size: 4;
+  hyphens: none;
+  background: transparent;
+}
+
+:host([highlighting='prerendered']) {
+  .wrap {
+    #content::slotted(pre[class*='language-']) {
+      white-space: pre-wrap;
+    }
+  }
 }
 
 #content::slotted(rh-tag) {
@@ -7873,6 +7939,28 @@ svg {
   color: inherit;
 }
 
+#content::slotted(:is(code[class*='language-'], pre[class*='language-'])) {
+  color: var(--_code-color);
+  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: var(--rh-line-height-code, 1.5);
+  tab-size: 4;
+  hyphens: none;
+  background: transparent;
+}
+
+:host([highlighting='prerendered']) {
+  .wrap {
+    #content::slotted(pre[class*='language-']) {
+      white-space: pre-wrap;
+    }
+  }
+}
+
 #content::slotted(rh-tag) {
   width: var(--rh-size-icon-06, 64px);
 }
@@ -8626,6 +8714,28 @@ svg {
   color: inherit;
 }
 
+#content::slotted(:is(code[class*='language-'], pre[class*='language-'])) {
+  color: var(--_code-color);
+  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: var(--rh-line-height-code, 1.5);
+  tab-size: 4;
+  hyphens: none;
+  background: transparent;
+}
+
+:host([highlighting='prerendered']) {
+  .wrap {
+    #content::slotted(pre[class*='language-']) {
+      white-space: pre-wrap;
+    }
+  }
+}
+
 #content::slotted(rh-tag) {
   width: var(--rh-size-icon-06, 64px);
 }
@@ -9303,6 +9413,28 @@ svg {
   white-space: var(--_code-white-space, pre);
   word-wrap: var(--_code-word-wrap, initial);
   color: inherit;
+}
+
+#content::slotted(:is(code[class*='language-'], pre[class*='language-'])) {
+  color: var(--_code-color);
+  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: var(--rh-line-height-code, 1.5);
+  tab-size: 4;
+  hyphens: none;
+  background: transparent;
+}
+
+:host([highlighting='prerendered']) {
+  .wrap {
+    #content::slotted(pre[class*='language-']) {
+      white-space: pre-wrap;
+    }
+  }
 }
 
 #content::slotted(rh-tag) {
@@ -10057,6 +10189,28 @@ A common technique is labeling objects with ARIA attributes:</p>
   white-space: var(--_code-white-space, pre);
   word-wrap: var(--_code-word-wrap, initial);
   color: inherit;
+}
+
+#content::slotted(:is(code[class*='language-'], pre[class*='language-'])) {
+  color: var(--_code-color);
+  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: var(--rh-line-height-code, 1.5);
+  tab-size: 4;
+  hyphens: none;
+  background: transparent;
+}
+
+:host([highlighting='prerendered']) {
+  .wrap {
+    #content::slotted(pre[class*='language-']) {
+      white-space: pre-wrap;
+    }
+  }
 }
 
 #content::slotted(rh-tag) {
@@ -11151,6 +11305,28 @@ svg {
   color: inherit;
 }
 
+#content::slotted(:is(code[class*='language-'], pre[class*='language-'])) {
+  color: var(--_code-color);
+  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: var(--rh-line-height-code, 1.5);
+  tab-size: 4;
+  hyphens: none;
+  background: transparent;
+}
+
+:host([highlighting='prerendered']) {
+  .wrap {
+    #content::slotted(pre[class*='language-']) {
+      white-space: pre-wrap;
+    }
+  }
+}
+
 #content::slotted(rh-tag) {
   width: var(--rh-size-icon-06, 64px);
 }
@@ -11924,6 +12100,28 @@ svg {
   color: inherit;
 }
 
+#content::slotted(:is(code[class*='language-'], pre[class*='language-'])) {
+  color: var(--_code-color);
+  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: var(--rh-line-height-code, 1.5);
+  tab-size: 4;
+  hyphens: none;
+  background: transparent;
+}
+
+:host([highlighting='prerendered']) {
+  .wrap {
+    #content::slotted(pre[class*='language-']) {
+      white-space: pre-wrap;
+    }
+  }
+}
+
 #content::slotted(rh-tag) {
   width: var(--rh-size-icon-06, 64px);
 }
@@ -12612,6 +12810,28 @@ svg {
   white-space: var(--_code-white-space, pre);
   word-wrap: var(--_code-word-wrap, initial);
   color: inherit;
+}
+
+#content::slotted(:is(code[class*='language-'], pre[class*='language-'])) {
+  color: var(--_code-color);
+  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: var(--rh-line-height-code, 1.5);
+  tab-size: 4;
+  hyphens: none;
+  background: transparent;
+}
+
+:host([highlighting='prerendered']) {
+  .wrap {
+    #content::slotted(pre[class*='language-']) {
+      white-space: pre-wrap;
+    }
+  }
 }
 
 #content::slotted(rh-tag) {
@@ -13381,6 +13601,28 @@ svg {
   color: inherit;
 }
 
+#content::slotted(:is(code[class*='language-'], pre[class*='language-'])) {
+  color: var(--_code-color);
+  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: var(--rh-line-height-code, 1.5);
+  tab-size: 4;
+  hyphens: none;
+  background: transparent;
+}
+
+:host([highlighting='prerendered']) {
+  .wrap {
+    #content::slotted(pre[class*='language-']) {
+      white-space: pre-wrap;
+    }
+  }
+}
+
 #content::slotted(rh-tag) {
   width: var(--rh-size-icon-06, 64px);
 }
@@ -13912,6 +14154,28 @@ svg {
   white-space: var(--_code-white-space, pre);
   word-wrap: var(--_code-word-wrap, initial);
   color: inherit;
+}
+
+#content::slotted(:is(code[class*='language-'], pre[class*='language-'])) {
+  color: var(--_code-color);
+  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: var(--rh-line-height-code, 1.5);
+  tab-size: 4;
+  hyphens: none;
+  background: transparent;
+}
+
+:host([highlighting='prerendered']) {
+  .wrap {
+    #content::slotted(pre[class*='language-']) {
+      white-space: pre-wrap;
+    }
+  }
 }
 
 #content::slotted(rh-tag) {
@@ -14556,6 +14820,28 @@ Always increment by only one heading at a time. Don’t skip levels when increme
   white-space: var(--_code-white-space, pre);
   word-wrap: var(--_code-word-wrap, initial);
   color: inherit;
+}
+
+#content::slotted(:is(code[class*='language-'], pre[class*='language-'])) {
+  color: var(--_code-color);
+  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: var(--rh-line-height-code, 1.5);
+  tab-size: 4;
+  hyphens: none;
+  background: transparent;
+}
+
+:host([highlighting='prerendered']) {
+  .wrap {
+    #content::slotted(pre[class*='language-']) {
+      white-space: pre-wrap;
+    }
+  }
 }
 
 #content::slotted(rh-tag) {
@@ -15244,6 +15530,28 @@ Always increment by only one heading at a time. Don’t skip levels when increme
   color: inherit;
 }
 
+#content::slotted(:is(code[class*='language-'], pre[class*='language-'])) {
+  color: var(--_code-color);
+  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: var(--rh-line-height-code, 1.5);
+  tab-size: 4;
+  hyphens: none;
+  background: transparent;
+}
+
+:host([highlighting='prerendered']) {
+  .wrap {
+    #content::slotted(pre[class*='language-']) {
+      white-space: pre-wrap;
+    }
+  }
+}
+
 #content::slotted(rh-tag) {
   width: var(--rh-size-icon-06, 64px);
 }
@@ -15918,6 +16226,28 @@ Always increment by only one heading at a time. Don’t skip levels when increme
   white-space: var(--_code-white-space, pre);
   word-wrap: var(--_code-word-wrap, initial);
   color: inherit;
+}
+
+#content::slotted(:is(code[class*='language-'], pre[class*='language-'])) {
+  color: var(--_code-color);
+  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: var(--rh-line-height-code, 1.5);
+  tab-size: 4;
+  hyphens: none;
+  background: transparent;
+}
+
+:host([highlighting='prerendered']) {
+  .wrap {
+    #content::slotted(pre[class*='language-']) {
+      white-space: pre-wrap;
+    }
+  }
 }
 
 #content::slotted(rh-tag) {
@@ -16670,6 +17000,28 @@ svg {
   white-space: var(--_code-white-space, pre);
   word-wrap: var(--_code-word-wrap, initial);
   color: inherit;
+}
+
+#content::slotted(:is(code[class*='language-'], pre[class*='language-'])) {
+  color: var(--_code-color);
+  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: var(--rh-line-height-code, 1.5);
+  tab-size: 4;
+  hyphens: none;
+  background: transparent;
+}
+
+:host([highlighting='prerendered']) {
+  .wrap {
+    #content::slotted(pre[class*='language-']) {
+      white-space: pre-wrap;
+    }
+  }
 }
 
 #content::slotted(rh-tag) {
@@ -17432,6 +17784,28 @@ svg {
   white-space: var(--_code-white-space, pre);
   word-wrap: var(--_code-word-wrap, initial);
   color: inherit;
+}
+
+#content::slotted(:is(code[class*='language-'], pre[class*='language-'])) {
+  color: var(--_code-color);
+  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: var(--rh-line-height-code, 1.5);
+  tab-size: 4;
+  hyphens: none;
+  background: transparent;
+}
+
+:host([highlighting='prerendered']) {
+  .wrap {
+    #content::slotted(pre[class*='language-']) {
+      white-space: pre-wrap;
+    }
+  }
 }
 
 #content::slotted(rh-tag) {
@@ -18206,6 +18580,28 @@ svg {
   color: inherit;
 }
 
+#content::slotted(:is(code[class*='language-'], pre[class*='language-'])) {
+  color: var(--_code-color);
+  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: var(--rh-line-height-code, 1.5);
+  tab-size: 4;
+  hyphens: none;
+  background: transparent;
+}
+
+:host([highlighting='prerendered']) {
+  .wrap {
+    #content::slotted(pre[class*='language-']) {
+      white-space: pre-wrap;
+    }
+  }
+}
+
 #content::slotted(rh-tag) {
   width: var(--rh-size-icon-06, 64px);
 }
@@ -18897,6 +19293,28 @@ svg {
   white-space: var(--_code-white-space, pre);
   word-wrap: var(--_code-word-wrap, initial);
   color: inherit;
+}
+
+#content::slotted(:is(code[class*='language-'], pre[class*='language-'])) {
+  color: var(--_code-color);
+  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: var(--rh-line-height-code, 1.5);
+  tab-size: 4;
+  hyphens: none;
+  background: transparent;
+}
+
+:host([highlighting='prerendered']) {
+  .wrap {
+    #content::slotted(pre[class*='language-']) {
+      white-space: pre-wrap;
+    }
+  }
 }
 
 #content::slotted(rh-tag) {
@@ -20763,6 +21181,28 @@ svg {
   white-space: var(--_code-white-space, pre);
   word-wrap: var(--_code-word-wrap, initial);
   color: inherit;
+}
+
+#content::slotted(:is(code[class*='language-'], pre[class*='language-'])) {
+  color: var(--_code-color);
+  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: var(--rh-line-height-code, 1.5);
+  tab-size: 4;
+  hyphens: none;
+  background: transparent;
+}
+
+:host([highlighting='prerendered']) {
+  .wrap {
+    #content::slotted(pre[class*='language-']) {
+      white-space: pre-wrap;
+    }
+  }
 }
 
 #content::slotted(rh-tag) {

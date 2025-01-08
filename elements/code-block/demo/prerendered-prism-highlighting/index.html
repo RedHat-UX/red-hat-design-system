@@ -83,7 +83,7 @@
   </head>
   <body unresolved="">
     <main><rh-context-demo>
-  <rh-code-block  highlighting="prerendered" actions><template shadowroot="open" shadowrootmode="open"><style>:host {
+  <rh-code-block   highlighting="prerendered" actions="copy wrap"><template shadowroot="open" shadowrootmode="open"><style>:host {
   --rh-code-block-callout-size: var(--rh-size-icon-02, 24px);
   --_aspect-ratio: 1;
   --_badge-size: var(--rh-code-block-callout-size);
@@ -210,6 +210,28 @@
   white-space: var(--_code-white-space, pre);
   word-wrap: var(--_code-word-wrap, initial);
   color: inherit;
+}
+
+#content::slotted(:is(code[class*='language-'], pre[class*='language-'])) {
+  color: var(--_code-color);
+  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: var(--rh-line-height-code, 1.5);
+  tab-size: 4;
+  hyphens: none;
+  background: transparent;
+}
+
+:host([highlighting='prerendered']) {
+  .wrap {
+    #content::slotted(pre[class*='language-']) {
+      white-space: pre-wrap;
+    }
+  }
 }
 
 #content::slotted(rh-tag) {
@@ -435,7 +457,7 @@
 }
 </style><!--lit-part Aza9CGL4AXg=-->
       <!--lit-node 0--><div id="container"
-           class=" on "
+           class=" on actions "
            >
         <!--lit-node 1--><div id="content-lines" tabindex="0">
           <div id="sizers" aria-hidden="true"></div>
@@ -452,7 +474,291 @@
         <!--lit-node 8--><div id="actions"
              
              >
-        <!-- <slot name="actions"> --><!--lit-part--><!--/lit-part-->
+        <!-- <slot name="actions"> --><!--lit-part--><!--lit-part y/FIibIbx4Q=-->
+          <!--lit-node 0--><rh-tooltip defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: inline;
+}
+
+#container {
+  display: inline-flex;
+  position: relative;
+  max-width: 100%;
+
+  /* WARNING: properties containing `__`are deprecated and will be removed */
+  --_floating-arrow-size:
+    var(--rh-tooltip-arrow-size,
+      var(--rh-tooltip__arrow--Width, 11px));
+}
+
+#tooltip,
+#tooltip:after {
+  position: absolute;
+}
+
+#tooltip {
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 10000;
+  transition: opacity 300ms cubic-bezier(0.54, 1.5, 0.38, 1.11) 0s;
+  text-align: var(--_text-alignment, center);
+  word-break: break-word;
+  translate: var(--_floating-content-translate);
+  width: max-content;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  will-change: opacity;
+  line-height: var(--rh-line-height-body-text, 1.5);
+  box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
+  max-width: var(--rh-tooltip-max-width, var(--rh-tooltip--MaxWidth, 18.75rem));
+  border-radius: var(--rh-border-radius-default, 3px);
+
+  /* WARNING: properties containing `__`are deprecated and will be removed */
+  padding:
+    var(--rh-tooltip-content-padding-block-start,
+      var(--rh-tooltip__content--PaddingTop, var(--rh-space-lg, 16px)))
+    var(--rh-tooltip-content-padding-inline-end,
+      var(--rh-tooltip__content--PaddingRight, var(--rh-space-lg, 16px)))
+    var(--rh-tooltip-content-padding-block-end,
+      var(--rh-tooltip__content--PaddingBottom, var(--rh-space-lg, 16px)))
+    var(--rh-tooltip-content-padding-inline-start,
+      var(--rh-tooltip__content--PaddingLeft, var(--rh-space-lg, 16px)));
+
+  /* WARNING: properties containing `__`are deprecated and will be removed */
+  font-size:
+    var(--rh-tooltip-content-font-size,
+      var(--rh-tooltip__content--FontSize, var(--rh-font-size-body-text-sm, 0.875rem)));
+
+  /* WARNING: properties containing `__`are deprecated and will be removed */
+  color:
+    var(--rh-tooltip-content-color,
+      var(--rh-tooltip__content--Color, var(--rh-color-text-primary-on-dark, #ffffff)));
+  background-color:
+    var(--rh-tooltip-content-background-color,
+      var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-darkest, #151515)));
+}
+
+.initialized #tooltip {
+  display: block;
+}
+
+#tooltip:after {
+  display: block;
+  content: '';
+  rotate: 45deg;
+  width: var(--_floating-arrow-size);
+  height: var(--_floating-arrow-size);
+  will-change: left top right bottom;
+  background-color:
+    var(--rh-tooltip-content-background-color,
+      var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-darkest, #151515)));
+}
+
+.open #tooltip {
+  opacity: 1;
+}
+
+/* PLAIN */
+.left #tooltip:after { inset-inline-start: calc(-0.5 * var(--_floating-arrow-size)); }
+.top #tooltip:after { inset-block-start: calc(100% - 0.5 * var(--_floating-arrow-size)); }
+.right #tooltip:after { inset-inline-end: calc(100% - 0.5 * var(--_floating-arrow-size)); }
+.bottom #tooltip:after { inset-block-end: calc(100% - 0.5 * var(--_floating-arrow-size)); }
+
+/* CENTER */
+.left.center #tooltip:after { inset-block-start: calc(50% - 0.5 * var(--_floating-arrow-size)); }
+.top.center #tooltip:after { inset-inline-end: calc(50% - 0.5 * var(--_floating-arrow-size)); }
+.right.center #tooltip:after { inset-block-start: calc(50% - 0.5 * var(--_floating-arrow-size)); }
+.bottom.center #tooltip:after { inset-inline-end: calc(50% - 0.5 * var(--_floating-arrow-size)); }
+
+/* START */
+.left.start #tooltip:after { inset-block-start: var(--_floating-arrow-size); }
+.top.start #tooltip:after { inset-inline-start: var(--_floating-arrow-size); }
+.right.start #tooltip:after { inset-block-start: var(--_floating-arrow-size); }
+.bottom.start #tooltip:after { inset-inline-start: var(--_floating-arrow-size); }
+
+/* END */
+.left.end #tooltip:after { inset-block-end: var(--_floating-arrow-size); }
+.top.end #tooltip:after { inset-inline-end: var(--_floating-arrow-size); }
+.right.end #tooltip:after { inset-block-end: var(--_floating-arrow-size); }
+.bottom.end #tooltip:after { inset-inline-end: var(--_floating-arrow-size); }
+
+:host([position='left']),
+:host([position='right']) {
+  --_text-alignment: 'start';
+}
+
+.dark {
+  --rh-tooltip-content-background-color: var(--rh-color-surface-lightest, #ffffff);
+  --rh-tooltip-content-color: var(--rh-color-text-primary-on-light, #151515);
+}
+</style><!--lit-part eUcF9UlFv54=-->
+      <!--lit-node 0--><div id="container"
+           style=""
+           class=" center ">
+        <div id="invoker">
+          <slot id="invoker-slot"></slot>
+        </div>
+        <div id="tooltip" role="status">
+          <slot id="content" name="content"><!--lit-part--><!--/lit-part--></slot>
+        </div>
+      </div>
+    <!--/lit-part--></template>
+            <!--lit-node 1--><slot slot="content" name="action-label-copy"></slot>
+            <!--lit-node 2--><button id="action-copy"
+                    class="shadow-fab"
+                    data-code-block-action="copy">
+              <!--lit-part oofmfSq9+90=-->
+      <svg xmlns="http://www.w3.org/2000/svg"
+           version="1.1"
+           viewBox="0 0 20 20">
+        <path fill="currentColor" d="M12 0H2C.9 0 0 .9 0 2v10h1V2c0-.6.4-1 1-1h10V0z"/>
+        <path fill="currentColor" d="M18 20H8c-1.1 0-2-.9-2-2V8c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2zM8 7c-.6 0-1 .4-1 1v10c0 .6.4 1 1 1h10c.6 0 1-.4 1-1V8c0-.6-.4-1-1-1H8z"/>
+      </svg>
+    <!--/lit-part-->
+            </button>
+          </rh-tooltip><!--/lit-part--><!--lit-part y/FIibIbx4Q=-->
+          <!--lit-node 0--><rh-tooltip defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: inline;
+}
+
+#container {
+  display: inline-flex;
+  position: relative;
+  max-width: 100%;
+
+  /* WARNING: properties containing `__`are deprecated and will be removed */
+  --_floating-arrow-size:
+    var(--rh-tooltip-arrow-size,
+      var(--rh-tooltip__arrow--Width, 11px));
+}
+
+#tooltip,
+#tooltip:after {
+  position: absolute;
+}
+
+#tooltip {
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 10000;
+  transition: opacity 300ms cubic-bezier(0.54, 1.5, 0.38, 1.11) 0s;
+  text-align: var(--_text-alignment, center);
+  word-break: break-word;
+  translate: var(--_floating-content-translate);
+  width: max-content;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  will-change: opacity;
+  line-height: var(--rh-line-height-body-text, 1.5);
+  box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
+  max-width: var(--rh-tooltip-max-width, var(--rh-tooltip--MaxWidth, 18.75rem));
+  border-radius: var(--rh-border-radius-default, 3px);
+
+  /* WARNING: properties containing `__`are deprecated and will be removed */
+  padding:
+    var(--rh-tooltip-content-padding-block-start,
+      var(--rh-tooltip__content--PaddingTop, var(--rh-space-lg, 16px)))
+    var(--rh-tooltip-content-padding-inline-end,
+      var(--rh-tooltip__content--PaddingRight, var(--rh-space-lg, 16px)))
+    var(--rh-tooltip-content-padding-block-end,
+      var(--rh-tooltip__content--PaddingBottom, var(--rh-space-lg, 16px)))
+    var(--rh-tooltip-content-padding-inline-start,
+      var(--rh-tooltip__content--PaddingLeft, var(--rh-space-lg, 16px)));
+
+  /* WARNING: properties containing `__`are deprecated and will be removed */
+  font-size:
+    var(--rh-tooltip-content-font-size,
+      var(--rh-tooltip__content--FontSize, var(--rh-font-size-body-text-sm, 0.875rem)));
+
+  /* WARNING: properties containing `__`are deprecated and will be removed */
+  color:
+    var(--rh-tooltip-content-color,
+      var(--rh-tooltip__content--Color, var(--rh-color-text-primary-on-dark, #ffffff)));
+  background-color:
+    var(--rh-tooltip-content-background-color,
+      var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-darkest, #151515)));
+}
+
+.initialized #tooltip {
+  display: block;
+}
+
+#tooltip:after {
+  display: block;
+  content: '';
+  rotate: 45deg;
+  width: var(--_floating-arrow-size);
+  height: var(--_floating-arrow-size);
+  will-change: left top right bottom;
+  background-color:
+    var(--rh-tooltip-content-background-color,
+      var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-darkest, #151515)));
+}
+
+.open #tooltip {
+  opacity: 1;
+}
+
+/* PLAIN */
+.left #tooltip:after { inset-inline-start: calc(-0.5 * var(--_floating-arrow-size)); }
+.top #tooltip:after { inset-block-start: calc(100% - 0.5 * var(--_floating-arrow-size)); }
+.right #tooltip:after { inset-inline-end: calc(100% - 0.5 * var(--_floating-arrow-size)); }
+.bottom #tooltip:after { inset-block-end: calc(100% - 0.5 * var(--_floating-arrow-size)); }
+
+/* CENTER */
+.left.center #tooltip:after { inset-block-start: calc(50% - 0.5 * var(--_floating-arrow-size)); }
+.top.center #tooltip:after { inset-inline-end: calc(50% - 0.5 * var(--_floating-arrow-size)); }
+.right.center #tooltip:after { inset-block-start: calc(50% - 0.5 * var(--_floating-arrow-size)); }
+.bottom.center #tooltip:after { inset-inline-end: calc(50% - 0.5 * var(--_floating-arrow-size)); }
+
+/* START */
+.left.start #tooltip:after { inset-block-start: var(--_floating-arrow-size); }
+.top.start #tooltip:after { inset-inline-start: var(--_floating-arrow-size); }
+.right.start #tooltip:after { inset-block-start: var(--_floating-arrow-size); }
+.bottom.start #tooltip:after { inset-inline-start: var(--_floating-arrow-size); }
+
+/* END */
+.left.end #tooltip:after { inset-block-end: var(--_floating-arrow-size); }
+.top.end #tooltip:after { inset-inline-end: var(--_floating-arrow-size); }
+.right.end #tooltip:after { inset-block-end: var(--_floating-arrow-size); }
+.bottom.end #tooltip:after { inset-inline-end: var(--_floating-arrow-size); }
+
+:host([position='left']),
+:host([position='right']) {
+  --_text-alignment: 'start';
+}
+
+.dark {
+  --rh-tooltip-content-background-color: var(--rh-color-surface-lightest, #ffffff);
+  --rh-tooltip-content-color: var(--rh-color-text-primary-on-light, #151515);
+}
+</style><!--lit-part eUcF9UlFv54=-->
+      <!--lit-node 0--><div id="container"
+           style=""
+           class=" center ">
+        <div id="invoker">
+          <slot id="invoker-slot"></slot>
+        </div>
+        <div id="tooltip" role="status">
+          <slot id="content" name="content"><!--lit-part--><!--/lit-part--></slot>
+        </div>
+      </div>
+    <!--/lit-part--></template>
+            <!--lit-node 1--><slot slot="content" name="action-label-wrap"></slot>
+            <!--lit-node 2--><button id="action-wrap"
+                    class="shadow-fab"
+                    data-code-block-action="wrap">
+              <!--lit-part QaLR3wefoKc=-->
+      <svg xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 20 20">
+        <path d="M19 0c.313.039.781-.077 1 .057V20c-.313-.039-.781.077-1-.057V0ZM10.82 4.992C9.877 4.996 8.31 5.57 8.174 6c1.21.03 2.432-.073 3.635.08 2.181.383 3.677 2.796 3.066 4.922-.41 1.753-2.108 2.995-3.877 3.014L11 14H5.207l2.682-2.682-.707-.707L3.293 14.5l3.889 3.889.707-.707L5.207 15h5.736l.004-.008c1.444.005 2.896-.59 3.832-1.722 1.65-1.82 1.612-4.85-.08-6.63A5 5 0 0 0 11 5a1.948 1.948 0 0 0-.18-.008z"/>
+        <path d="M4 5h7c-.039.313.077.781-.057 1H4V5ZM0 0c.313.039.781-.077 1 .057V20c-.313-.039-.781.077-1-.057V0Z"/>
+      </svg>
+    <!--/lit-part-->
+            </button>
+          </rh-tooltip><!--/lit-part--><!--/lit-part-->
         <!-- </slot> -->
         </div>
 
@@ -473,6 +779,10 @@
 
       <!--lit-node 17--><slot name="legend" hidden></slot>
     <!--/lit-part--></template>
+  <span slot="action-label-copy">Copy to Clipboard</span>
+  <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>
+  <span slot="action-label-wrap">Toggle word wrap</span>
+  <span slot="action-label-wrap" hidden="" data-code-block-state="active">Toggle overflow</span>
     <pre class="language-html"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
@@ -497,7 +807,7 @@
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span></code></pre>
   </rh-code-block>
 
-  <rh-code-block  highlighting="prerendered" actions><template shadowroot="open" shadowrootmode="open"><style>:host {
+  <rh-code-block   highlighting="prerendered" actions="copy wrap"><template shadowroot="open" shadowrootmode="open"><style>:host {
   --rh-code-block-callout-size: var(--rh-size-icon-02, 24px);
   --_aspect-ratio: 1;
   --_badge-size: var(--rh-code-block-callout-size);
@@ -624,6 +934,28 @@
   white-space: var(--_code-white-space, pre);
   word-wrap: var(--_code-word-wrap, initial);
   color: inherit;
+}
+
+#content::slotted(:is(code[class*='language-'], pre[class*='language-'])) {
+  color: var(--_code-color);
+  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: var(--rh-line-height-code, 1.5);
+  tab-size: 4;
+  hyphens: none;
+  background: transparent;
+}
+
+:host([highlighting='prerendered']) {
+  .wrap {
+    #content::slotted(pre[class*='language-']) {
+      white-space: pre-wrap;
+    }
+  }
 }
 
 #content::slotted(rh-tag) {
@@ -849,7 +1181,7 @@
 }
 </style><!--lit-part Aza9CGL4AXg=-->
       <!--lit-node 0--><div id="container"
-           class=" on "
+           class=" on actions "
            >
         <!--lit-node 1--><div id="content-lines" tabindex="0">
           <div id="sizers" aria-hidden="true"></div>
@@ -866,7 +1198,291 @@
         <!--lit-node 8--><div id="actions"
              
              >
-        <!-- <slot name="actions"> --><!--lit-part--><!--/lit-part-->
+        <!-- <slot name="actions"> --><!--lit-part--><!--lit-part y/FIibIbx4Q=-->
+          <!--lit-node 0--><rh-tooltip defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: inline;
+}
+
+#container {
+  display: inline-flex;
+  position: relative;
+  max-width: 100%;
+
+  /* WARNING: properties containing `__`are deprecated and will be removed */
+  --_floating-arrow-size:
+    var(--rh-tooltip-arrow-size,
+      var(--rh-tooltip__arrow--Width, 11px));
+}
+
+#tooltip,
+#tooltip:after {
+  position: absolute;
+}
+
+#tooltip {
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 10000;
+  transition: opacity 300ms cubic-bezier(0.54, 1.5, 0.38, 1.11) 0s;
+  text-align: var(--_text-alignment, center);
+  word-break: break-word;
+  translate: var(--_floating-content-translate);
+  width: max-content;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  will-change: opacity;
+  line-height: var(--rh-line-height-body-text, 1.5);
+  box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
+  max-width: var(--rh-tooltip-max-width, var(--rh-tooltip--MaxWidth, 18.75rem));
+  border-radius: var(--rh-border-radius-default, 3px);
+
+  /* WARNING: properties containing `__`are deprecated and will be removed */
+  padding:
+    var(--rh-tooltip-content-padding-block-start,
+      var(--rh-tooltip__content--PaddingTop, var(--rh-space-lg, 16px)))
+    var(--rh-tooltip-content-padding-inline-end,
+      var(--rh-tooltip__content--PaddingRight, var(--rh-space-lg, 16px)))
+    var(--rh-tooltip-content-padding-block-end,
+      var(--rh-tooltip__content--PaddingBottom, var(--rh-space-lg, 16px)))
+    var(--rh-tooltip-content-padding-inline-start,
+      var(--rh-tooltip__content--PaddingLeft, var(--rh-space-lg, 16px)));
+
+  /* WARNING: properties containing `__`are deprecated and will be removed */
+  font-size:
+    var(--rh-tooltip-content-font-size,
+      var(--rh-tooltip__content--FontSize, var(--rh-font-size-body-text-sm, 0.875rem)));
+
+  /* WARNING: properties containing `__`are deprecated and will be removed */
+  color:
+    var(--rh-tooltip-content-color,
+      var(--rh-tooltip__content--Color, var(--rh-color-text-primary-on-dark, #ffffff)));
+  background-color:
+    var(--rh-tooltip-content-background-color,
+      var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-darkest, #151515)));
+}
+
+.initialized #tooltip {
+  display: block;
+}
+
+#tooltip:after {
+  display: block;
+  content: '';
+  rotate: 45deg;
+  width: var(--_floating-arrow-size);
+  height: var(--_floating-arrow-size);
+  will-change: left top right bottom;
+  background-color:
+    var(--rh-tooltip-content-background-color,
+      var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-darkest, #151515)));
+}
+
+.open #tooltip {
+  opacity: 1;
+}
+
+/* PLAIN */
+.left #tooltip:after { inset-inline-start: calc(-0.5 * var(--_floating-arrow-size)); }
+.top #tooltip:after { inset-block-start: calc(100% - 0.5 * var(--_floating-arrow-size)); }
+.right #tooltip:after { inset-inline-end: calc(100% - 0.5 * var(--_floating-arrow-size)); }
+.bottom #tooltip:after { inset-block-end: calc(100% - 0.5 * var(--_floating-arrow-size)); }
+
+/* CENTER */
+.left.center #tooltip:after { inset-block-start: calc(50% - 0.5 * var(--_floating-arrow-size)); }
+.top.center #tooltip:after { inset-inline-end: calc(50% - 0.5 * var(--_floating-arrow-size)); }
+.right.center #tooltip:after { inset-block-start: calc(50% - 0.5 * var(--_floating-arrow-size)); }
+.bottom.center #tooltip:after { inset-inline-end: calc(50% - 0.5 * var(--_floating-arrow-size)); }
+
+/* START */
+.left.start #tooltip:after { inset-block-start: var(--_floating-arrow-size); }
+.top.start #tooltip:after { inset-inline-start: var(--_floating-arrow-size); }
+.right.start #tooltip:after { inset-block-start: var(--_floating-arrow-size); }
+.bottom.start #tooltip:after { inset-inline-start: var(--_floating-arrow-size); }
+
+/* END */
+.left.end #tooltip:after { inset-block-end: var(--_floating-arrow-size); }
+.top.end #tooltip:after { inset-inline-end: var(--_floating-arrow-size); }
+.right.end #tooltip:after { inset-block-end: var(--_floating-arrow-size); }
+.bottom.end #tooltip:after { inset-inline-end: var(--_floating-arrow-size); }
+
+:host([position='left']),
+:host([position='right']) {
+  --_text-alignment: 'start';
+}
+
+.dark {
+  --rh-tooltip-content-background-color: var(--rh-color-surface-lightest, #ffffff);
+  --rh-tooltip-content-color: var(--rh-color-text-primary-on-light, #151515);
+}
+</style><!--lit-part eUcF9UlFv54=-->
+      <!--lit-node 0--><div id="container"
+           style=""
+           class=" center ">
+        <div id="invoker">
+          <slot id="invoker-slot"></slot>
+        </div>
+        <div id="tooltip" role="status">
+          <slot id="content" name="content"><!--lit-part--><!--/lit-part--></slot>
+        </div>
+      </div>
+    <!--/lit-part--></template>
+            <!--lit-node 1--><slot slot="content" name="action-label-copy"></slot>
+            <!--lit-node 2--><button id="action-copy"
+                    class="shadow-fab"
+                    data-code-block-action="copy">
+              <!--lit-part oofmfSq9+90=-->
+      <svg xmlns="http://www.w3.org/2000/svg"
+           version="1.1"
+           viewBox="0 0 20 20">
+        <path fill="currentColor" d="M12 0H2C.9 0 0 .9 0 2v10h1V2c0-.6.4-1 1-1h10V0z"/>
+        <path fill="currentColor" d="M18 20H8c-1.1 0-2-.9-2-2V8c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2zM8 7c-.6 0-1 .4-1 1v10c0 .6.4 1 1 1h10c.6 0 1-.4 1-1V8c0-.6-.4-1-1-1H8z"/>
+      </svg>
+    <!--/lit-part-->
+            </button>
+          </rh-tooltip><!--/lit-part--><!--lit-part y/FIibIbx4Q=-->
+          <!--lit-node 0--><rh-tooltip defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: inline;
+}
+
+#container {
+  display: inline-flex;
+  position: relative;
+  max-width: 100%;
+
+  /* WARNING: properties containing `__`are deprecated and will be removed */
+  --_floating-arrow-size:
+    var(--rh-tooltip-arrow-size,
+      var(--rh-tooltip__arrow--Width, 11px));
+}
+
+#tooltip,
+#tooltip:after {
+  position: absolute;
+}
+
+#tooltip {
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 10000;
+  transition: opacity 300ms cubic-bezier(0.54, 1.5, 0.38, 1.11) 0s;
+  text-align: var(--_text-alignment, center);
+  word-break: break-word;
+  translate: var(--_floating-content-translate);
+  width: max-content;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  will-change: opacity;
+  line-height: var(--rh-line-height-body-text, 1.5);
+  box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
+  max-width: var(--rh-tooltip-max-width, var(--rh-tooltip--MaxWidth, 18.75rem));
+  border-radius: var(--rh-border-radius-default, 3px);
+
+  /* WARNING: properties containing `__`are deprecated and will be removed */
+  padding:
+    var(--rh-tooltip-content-padding-block-start,
+      var(--rh-tooltip__content--PaddingTop, var(--rh-space-lg, 16px)))
+    var(--rh-tooltip-content-padding-inline-end,
+      var(--rh-tooltip__content--PaddingRight, var(--rh-space-lg, 16px)))
+    var(--rh-tooltip-content-padding-block-end,
+      var(--rh-tooltip__content--PaddingBottom, var(--rh-space-lg, 16px)))
+    var(--rh-tooltip-content-padding-inline-start,
+      var(--rh-tooltip__content--PaddingLeft, var(--rh-space-lg, 16px)));
+
+  /* WARNING: properties containing `__`are deprecated and will be removed */
+  font-size:
+    var(--rh-tooltip-content-font-size,
+      var(--rh-tooltip__content--FontSize, var(--rh-font-size-body-text-sm, 0.875rem)));
+
+  /* WARNING: properties containing `__`are deprecated and will be removed */
+  color:
+    var(--rh-tooltip-content-color,
+      var(--rh-tooltip__content--Color, var(--rh-color-text-primary-on-dark, #ffffff)));
+  background-color:
+    var(--rh-tooltip-content-background-color,
+      var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-darkest, #151515)));
+}
+
+.initialized #tooltip {
+  display: block;
+}
+
+#tooltip:after {
+  display: block;
+  content: '';
+  rotate: 45deg;
+  width: var(--_floating-arrow-size);
+  height: var(--_floating-arrow-size);
+  will-change: left top right bottom;
+  background-color:
+    var(--rh-tooltip-content-background-color,
+      var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-darkest, #151515)));
+}
+
+.open #tooltip {
+  opacity: 1;
+}
+
+/* PLAIN */
+.left #tooltip:after { inset-inline-start: calc(-0.5 * var(--_floating-arrow-size)); }
+.top #tooltip:after { inset-block-start: calc(100% - 0.5 * var(--_floating-arrow-size)); }
+.right #tooltip:after { inset-inline-end: calc(100% - 0.5 * var(--_floating-arrow-size)); }
+.bottom #tooltip:after { inset-block-end: calc(100% - 0.5 * var(--_floating-arrow-size)); }
+
+/* CENTER */
+.left.center #tooltip:after { inset-block-start: calc(50% - 0.5 * var(--_floating-arrow-size)); }
+.top.center #tooltip:after { inset-inline-end: calc(50% - 0.5 * var(--_floating-arrow-size)); }
+.right.center #tooltip:after { inset-block-start: calc(50% - 0.5 * var(--_floating-arrow-size)); }
+.bottom.center #tooltip:after { inset-inline-end: calc(50% - 0.5 * var(--_floating-arrow-size)); }
+
+/* START */
+.left.start #tooltip:after { inset-block-start: var(--_floating-arrow-size); }
+.top.start #tooltip:after { inset-inline-start: var(--_floating-arrow-size); }
+.right.start #tooltip:after { inset-block-start: var(--_floating-arrow-size); }
+.bottom.start #tooltip:after { inset-inline-start: var(--_floating-arrow-size); }
+
+/* END */
+.left.end #tooltip:after { inset-block-end: var(--_floating-arrow-size); }
+.top.end #tooltip:after { inset-inline-end: var(--_floating-arrow-size); }
+.right.end #tooltip:after { inset-block-end: var(--_floating-arrow-size); }
+.bottom.end #tooltip:after { inset-inline-end: var(--_floating-arrow-size); }
+
+:host([position='left']),
+:host([position='right']) {
+  --_text-alignment: 'start';
+}
+
+.dark {
+  --rh-tooltip-content-background-color: var(--rh-color-surface-lightest, #ffffff);
+  --rh-tooltip-content-color: var(--rh-color-text-primary-on-light, #151515);
+}
+</style><!--lit-part eUcF9UlFv54=-->
+      <!--lit-node 0--><div id="container"
+           style=""
+           class=" center ">
+        <div id="invoker">
+          <slot id="invoker-slot"></slot>
+        </div>
+        <div id="tooltip" role="status">
+          <slot id="content" name="content"><!--lit-part--><!--/lit-part--></slot>
+        </div>
+      </div>
+    <!--/lit-part--></template>
+            <!--lit-node 1--><slot slot="content" name="action-label-wrap"></slot>
+            <!--lit-node 2--><button id="action-wrap"
+                    class="shadow-fab"
+                    data-code-block-action="wrap">
+              <!--lit-part QaLR3wefoKc=-->
+      <svg xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 20 20">
+        <path d="M19 0c.313.039.781-.077 1 .057V20c-.313-.039-.781.077-1-.057V0ZM10.82 4.992C9.877 4.996 8.31 5.57 8.174 6c1.21.03 2.432-.073 3.635.08 2.181.383 3.677 2.796 3.066 4.922-.41 1.753-2.108 2.995-3.877 3.014L11 14H5.207l2.682-2.682-.707-.707L3.293 14.5l3.889 3.889.707-.707L5.207 15h5.736l.004-.008c1.444.005 2.896-.59 3.832-1.722 1.65-1.82 1.612-4.85-.08-6.63A5 5 0 0 0 11 5a1.948 1.948 0 0 0-.18-.008z"/>
+        <path d="M4 5h7c-.039.313.077.781-.057 1H4V5ZM0 0c.313.039.781-.077 1 .057V20c-.313-.039-.781.077-1-.057V0Z"/>
+      </svg>
+    <!--/lit-part-->
+            </button>
+          </rh-tooltip><!--/lit-part--><!--/lit-part-->
         <!-- </slot> -->
         </div>
 
@@ -887,6 +1503,10 @@
 
       <!--lit-node 17--><slot name="legend" hidden></slot>
     <!--/lit-part--></template>
+  <span slot="action-label-copy">Copy to Clipboard</span>
+  <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>
+  <span slot="action-label-wrap">Toggle word wrap</span>
+  <span slot="action-label-wrap" hidden="" data-code-block-state="active">Toggle overflow</span>
     <pre class="language-css"><code class="language-css"><span class="token selector">rh-card.avatar-card</span> <span class="token punctuation">{</span>
   <span class="token property">width</span><span class="token punctuation">:</span> 360px<span class="token punctuation">;</span>
   <span class="token selector">&amp;::part(body)</span> <span class="token punctuation">{</span>
@@ -906,7 +1526,7 @@
 <span class="token punctuation">}</span></code></pre>
   </rh-code-block>
 
-  <rh-code-block  highlighting="prerendered" actions><template shadowroot="open" shadowrootmode="open"><style>:host {
+  <rh-code-block   highlighting="prerendered" actions="copy wrap"><template shadowroot="open" shadowrootmode="open"><style>:host {
   --rh-code-block-callout-size: var(--rh-size-icon-02, 24px);
   --_aspect-ratio: 1;
   --_badge-size: var(--rh-code-block-callout-size);
@@ -1033,6 +1653,28 @@
   white-space: var(--_code-white-space, pre);
   word-wrap: var(--_code-word-wrap, initial);
   color: inherit;
+}
+
+#content::slotted(:is(code[class*='language-'], pre[class*='language-'])) {
+  color: var(--_code-color);
+  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: var(--rh-line-height-code, 1.5);
+  tab-size: 4;
+  hyphens: none;
+  background: transparent;
+}
+
+:host([highlighting='prerendered']) {
+  .wrap {
+    #content::slotted(pre[class*='language-']) {
+      white-space: pre-wrap;
+    }
+  }
 }
 
 #content::slotted(rh-tag) {
@@ -1258,7 +1900,7 @@
 }
 </style><!--lit-part Aza9CGL4AXg=-->
       <!--lit-node 0--><div id="container"
-           class=" on "
+           class=" on actions "
            >
         <!--lit-node 1--><div id="content-lines" tabindex="0">
           <div id="sizers" aria-hidden="true"></div>
@@ -1275,7 +1917,291 @@
         <!--lit-node 8--><div id="actions"
              
              >
-        <!-- <slot name="actions"> --><!--lit-part--><!--/lit-part-->
+        <!-- <slot name="actions"> --><!--lit-part--><!--lit-part y/FIibIbx4Q=-->
+          <!--lit-node 0--><rh-tooltip defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: inline;
+}
+
+#container {
+  display: inline-flex;
+  position: relative;
+  max-width: 100%;
+
+  /* WARNING: properties containing `__`are deprecated and will be removed */
+  --_floating-arrow-size:
+    var(--rh-tooltip-arrow-size,
+      var(--rh-tooltip__arrow--Width, 11px));
+}
+
+#tooltip,
+#tooltip:after {
+  position: absolute;
+}
+
+#tooltip {
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 10000;
+  transition: opacity 300ms cubic-bezier(0.54, 1.5, 0.38, 1.11) 0s;
+  text-align: var(--_text-alignment, center);
+  word-break: break-word;
+  translate: var(--_floating-content-translate);
+  width: max-content;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  will-change: opacity;
+  line-height: var(--rh-line-height-body-text, 1.5);
+  box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
+  max-width: var(--rh-tooltip-max-width, var(--rh-tooltip--MaxWidth, 18.75rem));
+  border-radius: var(--rh-border-radius-default, 3px);
+
+  /* WARNING: properties containing `__`are deprecated and will be removed */
+  padding:
+    var(--rh-tooltip-content-padding-block-start,
+      var(--rh-tooltip__content--PaddingTop, var(--rh-space-lg, 16px)))
+    var(--rh-tooltip-content-padding-inline-end,
+      var(--rh-tooltip__content--PaddingRight, var(--rh-space-lg, 16px)))
+    var(--rh-tooltip-content-padding-block-end,
+      var(--rh-tooltip__content--PaddingBottom, var(--rh-space-lg, 16px)))
+    var(--rh-tooltip-content-padding-inline-start,
+      var(--rh-tooltip__content--PaddingLeft, var(--rh-space-lg, 16px)));
+
+  /* WARNING: properties containing `__`are deprecated and will be removed */
+  font-size:
+    var(--rh-tooltip-content-font-size,
+      var(--rh-tooltip__content--FontSize, var(--rh-font-size-body-text-sm, 0.875rem)));
+
+  /* WARNING: properties containing `__`are deprecated and will be removed */
+  color:
+    var(--rh-tooltip-content-color,
+      var(--rh-tooltip__content--Color, var(--rh-color-text-primary-on-dark, #ffffff)));
+  background-color:
+    var(--rh-tooltip-content-background-color,
+      var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-darkest, #151515)));
+}
+
+.initialized #tooltip {
+  display: block;
+}
+
+#tooltip:after {
+  display: block;
+  content: '';
+  rotate: 45deg;
+  width: var(--_floating-arrow-size);
+  height: var(--_floating-arrow-size);
+  will-change: left top right bottom;
+  background-color:
+    var(--rh-tooltip-content-background-color,
+      var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-darkest, #151515)));
+}
+
+.open #tooltip {
+  opacity: 1;
+}
+
+/* PLAIN */
+.left #tooltip:after { inset-inline-start: calc(-0.5 * var(--_floating-arrow-size)); }
+.top #tooltip:after { inset-block-start: calc(100% - 0.5 * var(--_floating-arrow-size)); }
+.right #tooltip:after { inset-inline-end: calc(100% - 0.5 * var(--_floating-arrow-size)); }
+.bottom #tooltip:after { inset-block-end: calc(100% - 0.5 * var(--_floating-arrow-size)); }
+
+/* CENTER */
+.left.center #tooltip:after { inset-block-start: calc(50% - 0.5 * var(--_floating-arrow-size)); }
+.top.center #tooltip:after { inset-inline-end: calc(50% - 0.5 * var(--_floating-arrow-size)); }
+.right.center #tooltip:after { inset-block-start: calc(50% - 0.5 * var(--_floating-arrow-size)); }
+.bottom.center #tooltip:after { inset-inline-end: calc(50% - 0.5 * var(--_floating-arrow-size)); }
+
+/* START */
+.left.start #tooltip:after { inset-block-start: var(--_floating-arrow-size); }
+.top.start #tooltip:after { inset-inline-start: var(--_floating-arrow-size); }
+.right.start #tooltip:after { inset-block-start: var(--_floating-arrow-size); }
+.bottom.start #tooltip:after { inset-inline-start: var(--_floating-arrow-size); }
+
+/* END */
+.left.end #tooltip:after { inset-block-end: var(--_floating-arrow-size); }
+.top.end #tooltip:after { inset-inline-end: var(--_floating-arrow-size); }
+.right.end #tooltip:after { inset-block-end: var(--_floating-arrow-size); }
+.bottom.end #tooltip:after { inset-inline-end: var(--_floating-arrow-size); }
+
+:host([position='left']),
+:host([position='right']) {
+  --_text-alignment: 'start';
+}
+
+.dark {
+  --rh-tooltip-content-background-color: var(--rh-color-surface-lightest, #ffffff);
+  --rh-tooltip-content-color: var(--rh-color-text-primary-on-light, #151515);
+}
+</style><!--lit-part eUcF9UlFv54=-->
+      <!--lit-node 0--><div id="container"
+           style=""
+           class=" center ">
+        <div id="invoker">
+          <slot id="invoker-slot"></slot>
+        </div>
+        <div id="tooltip" role="status">
+          <slot id="content" name="content"><!--lit-part--><!--/lit-part--></slot>
+        </div>
+      </div>
+    <!--/lit-part--></template>
+            <!--lit-node 1--><slot slot="content" name="action-label-copy"></slot>
+            <!--lit-node 2--><button id="action-copy"
+                    class="shadow-fab"
+                    data-code-block-action="copy">
+              <!--lit-part oofmfSq9+90=-->
+      <svg xmlns="http://www.w3.org/2000/svg"
+           version="1.1"
+           viewBox="0 0 20 20">
+        <path fill="currentColor" d="M12 0H2C.9 0 0 .9 0 2v10h1V2c0-.6.4-1 1-1h10V0z"/>
+        <path fill="currentColor" d="M18 20H8c-1.1 0-2-.9-2-2V8c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2zM8 7c-.6 0-1 .4-1 1v10c0 .6.4 1 1 1h10c.6 0 1-.4 1-1V8c0-.6-.4-1-1-1H8z"/>
+      </svg>
+    <!--/lit-part-->
+            </button>
+          </rh-tooltip><!--/lit-part--><!--lit-part y/FIibIbx4Q=-->
+          <!--lit-node 0--><rh-tooltip defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: inline;
+}
+
+#container {
+  display: inline-flex;
+  position: relative;
+  max-width: 100%;
+
+  /* WARNING: properties containing `__`are deprecated and will be removed */
+  --_floating-arrow-size:
+    var(--rh-tooltip-arrow-size,
+      var(--rh-tooltip__arrow--Width, 11px));
+}
+
+#tooltip,
+#tooltip:after {
+  position: absolute;
+}
+
+#tooltip {
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 10000;
+  transition: opacity 300ms cubic-bezier(0.54, 1.5, 0.38, 1.11) 0s;
+  text-align: var(--_text-alignment, center);
+  word-break: break-word;
+  translate: var(--_floating-content-translate);
+  width: max-content;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  will-change: opacity;
+  line-height: var(--rh-line-height-body-text, 1.5);
+  box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
+  max-width: var(--rh-tooltip-max-width, var(--rh-tooltip--MaxWidth, 18.75rem));
+  border-radius: var(--rh-border-radius-default, 3px);
+
+  /* WARNING: properties containing `__`are deprecated and will be removed */
+  padding:
+    var(--rh-tooltip-content-padding-block-start,
+      var(--rh-tooltip__content--PaddingTop, var(--rh-space-lg, 16px)))
+    var(--rh-tooltip-content-padding-inline-end,
+      var(--rh-tooltip__content--PaddingRight, var(--rh-space-lg, 16px)))
+    var(--rh-tooltip-content-padding-block-end,
+      var(--rh-tooltip__content--PaddingBottom, var(--rh-space-lg, 16px)))
+    var(--rh-tooltip-content-padding-inline-start,
+      var(--rh-tooltip__content--PaddingLeft, var(--rh-space-lg, 16px)));
+
+  /* WARNING: properties containing `__`are deprecated and will be removed */
+  font-size:
+    var(--rh-tooltip-content-font-size,
+      var(--rh-tooltip__content--FontSize, var(--rh-font-size-body-text-sm, 0.875rem)));
+
+  /* WARNING: properties containing `__`are deprecated and will be removed */
+  color:
+    var(--rh-tooltip-content-color,
+      var(--rh-tooltip__content--Color, var(--rh-color-text-primary-on-dark, #ffffff)));
+  background-color:
+    var(--rh-tooltip-content-background-color,
+      var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-darkest, #151515)));
+}
+
+.initialized #tooltip {
+  display: block;
+}
+
+#tooltip:after {
+  display: block;
+  content: '';
+  rotate: 45deg;
+  width: var(--_floating-arrow-size);
+  height: var(--_floating-arrow-size);
+  will-change: left top right bottom;
+  background-color:
+    var(--rh-tooltip-content-background-color,
+      var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-darkest, #151515)));
+}
+
+.open #tooltip {
+  opacity: 1;
+}
+
+/* PLAIN */
+.left #tooltip:after { inset-inline-start: calc(-0.5 * var(--_floating-arrow-size)); }
+.top #tooltip:after { inset-block-start: calc(100% - 0.5 * var(--_floating-arrow-size)); }
+.right #tooltip:after { inset-inline-end: calc(100% - 0.5 * var(--_floating-arrow-size)); }
+.bottom #tooltip:after { inset-block-end: calc(100% - 0.5 * var(--_floating-arrow-size)); }
+
+/* CENTER */
+.left.center #tooltip:after { inset-block-start: calc(50% - 0.5 * var(--_floating-arrow-size)); }
+.top.center #tooltip:after { inset-inline-end: calc(50% - 0.5 * var(--_floating-arrow-size)); }
+.right.center #tooltip:after { inset-block-start: calc(50% - 0.5 * var(--_floating-arrow-size)); }
+.bottom.center #tooltip:after { inset-inline-end: calc(50% - 0.5 * var(--_floating-arrow-size)); }
+
+/* START */
+.left.start #tooltip:after { inset-block-start: var(--_floating-arrow-size); }
+.top.start #tooltip:after { inset-inline-start: var(--_floating-arrow-size); }
+.right.start #tooltip:after { inset-block-start: var(--_floating-arrow-size); }
+.bottom.start #tooltip:after { inset-inline-start: var(--_floating-arrow-size); }
+
+/* END */
+.left.end #tooltip:after { inset-block-end: var(--_floating-arrow-size); }
+.top.end #tooltip:after { inset-inline-end: var(--_floating-arrow-size); }
+.right.end #tooltip:after { inset-block-end: var(--_floating-arrow-size); }
+.bottom.end #tooltip:after { inset-inline-end: var(--_floating-arrow-size); }
+
+:host([position='left']),
+:host([position='right']) {
+  --_text-alignment: 'start';
+}
+
+.dark {
+  --rh-tooltip-content-background-color: var(--rh-color-surface-lightest, #ffffff);
+  --rh-tooltip-content-color: var(--rh-color-text-primary-on-light, #151515);
+}
+</style><!--lit-part eUcF9UlFv54=-->
+      <!--lit-node 0--><div id="container"
+           style=""
+           class=" center ">
+        <div id="invoker">
+          <slot id="invoker-slot"></slot>
+        </div>
+        <div id="tooltip" role="status">
+          <slot id="content" name="content"><!--lit-part--><!--/lit-part--></slot>
+        </div>
+      </div>
+    <!--/lit-part--></template>
+            <!--lit-node 1--><slot slot="content" name="action-label-wrap"></slot>
+            <!--lit-node 2--><button id="action-wrap"
+                    class="shadow-fab"
+                    data-code-block-action="wrap">
+              <!--lit-part QaLR3wefoKc=-->
+      <svg xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 20 20">
+        <path d="M19 0c.313.039.781-.077 1 .057V20c-.313-.039-.781.077-1-.057V0ZM10.82 4.992C9.877 4.996 8.31 5.57 8.174 6c1.21.03 2.432-.073 3.635.08 2.181.383 3.677 2.796 3.066 4.922-.41 1.753-2.108 2.995-3.877 3.014L11 14H5.207l2.682-2.682-.707-.707L3.293 14.5l3.889 3.889.707-.707L5.207 15h5.736l.004-.008c1.444.005 2.896-.59 3.832-1.722 1.65-1.82 1.612-4.85-.08-6.63A5 5 0 0 0 11 5a1.948 1.948 0 0 0-.18-.008z"/>
+        <path d="M4 5h7c-.039.313.077.781-.057 1H4V5ZM0 0c.313.039.781-.077 1 .057V20c-.313-.039-.781.077-1-.057V0Z"/>
+      </svg>
+    <!--/lit-part-->
+            </button>
+          </rh-tooltip><!--/lit-part--><!--/lit-part-->
         <!-- </slot> -->
         </div>
 
@@ -1296,6 +2222,10 @@
 
       <!--lit-node 17--><slot name="legend" hidden></slot>
     <!--/lit-part--></template>
+  <span slot="action-label-copy">Copy to Clipboard</span>
+  <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>
+  <span slot="action-label-wrap">Toggle word wrap</span>
+  <span slot="action-label-wrap" hidden="" data-code-block-state="active">Toggle overflow</span>
     <pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">extends</span><span class="token punctuation">:</span>
   <span class="token punctuation">-</span> stylelint<span class="token punctuation">-</span>config<span class="token punctuation">-</span>standard
   <span class="token punctuation">-</span> <span class="token string">'@stylistic/stylelint-config'</span>

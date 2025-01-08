@@ -1,19 +1,5 @@
 import { css } from 'lit';
 const styles = css `
-  & code[class*="language-"],
-  & pre[class*="language-"] {
-    color: var(--_code-color);
-    font-family: var(--rh-font-family-code, RedHatMono, "Red Hat Mono", "Courier New", Courier, monospace);
-    text-align: left;
-    white-space: pre;
-    word-spacing: normal;
-    word-break: normal;
-    word-wrap: normal;
-    line-height: var(--rh-line-height-code, 1.5);
-    tab-size: 4;
-    hyphens: none;
-    background: transparent;
-  }
 
   & pre[class*="language-"]::selection,
   & pre[class*="language-"] ::selection,

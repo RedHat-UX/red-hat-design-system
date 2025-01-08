@@ -8697,6 +8697,28 @@ slot[name='icon'] {
   color: inherit;
 }
 
+#content::slotted(:is(code[class*='language-'], pre[class*='language-'])) {
+  color: var(--_code-color);
+  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: var(--rh-line-height-code, 1.5);
+  tab-size: 4;
+  hyphens: none;
+  background: transparent;
+}
+
+:host([highlighting='prerendered']) {
+  .wrap {
+    #content::slotted(pre[class*='language-']) {
+      white-space: pre-wrap;
+    }
+  }
+}
+
 #content::slotted(rh-tag) {
   width: var(--rh-size-icon-06, 64px);
 }
@@ -9860,6 +9882,28 @@ slot[name='icon'] {
   white-space: var(--_code-white-space, pre);
   word-wrap: var(--_code-word-wrap, initial);
   color: inherit;
+}
+
+#content::slotted(:is(code[class*='language-'], pre[class*='language-'])) {
+  color: var(--_code-color);
+  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: var(--rh-line-height-code, 1.5);
+  tab-size: 4;
+  hyphens: none;
+  background: transparent;
+}
+
+:host([highlighting='prerendered']) {
+  .wrap {
+    #content::slotted(pre[class*='language-']) {
+      white-space: pre-wrap;
+    }
+  }
 }
 
 #content::slotted(rh-tag) {
@@ -11045,6 +11089,28 @@ slot[name='icon'] {
   color: inherit;
 }
 
+#content::slotted(:is(code[class*='language-'], pre[class*='language-'])) {
+  color: var(--_code-color);
+  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: var(--rh-line-height-code, 1.5);
+  tab-size: 4;
+  hyphens: none;
+  background: transparent;
+}
+
+:host([highlighting='prerendered']) {
+  .wrap {
+    #content::slotted(pre[class*='language-']) {
+      white-space: pre-wrap;
+    }
+  }
+}
+
 #content::slotted(rh-tag) {
   width: var(--rh-size-icon-06, 64px);
 }
@@ -11899,6 +11965,28 @@ all children while maintaining the proper <a href="https://developer.mozilla.org
   color: inherit;
 }
 
+#content::slotted(:is(code[class*='language-'], pre[class*='language-'])) {
+  color: var(--_code-color);
+  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: var(--rh-line-height-code, 1.5);
+  tab-size: 4;
+  hyphens: none;
+  background: transparent;
+}
+
+:host([highlighting='prerendered']) {
+  .wrap {
+    #content::slotted(pre[class*='language-']) {
+      white-space: pre-wrap;
+    }
+  }
+}
+
 #content::slotted(rh-tag) {
   width: var(--rh-size-icon-06, 64px);
 }
@@ -12662,6 +12750,28 @@ Read more about the design considerations for contrasting sections on the
   white-space: var(--_code-white-space, pre);
   word-wrap: var(--_code-word-wrap, initial);
   color: inherit;
+}
+
+#content::slotted(:is(code[class*='language-'], pre[class*='language-'])) {
+  color: var(--_code-color);
+  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: var(--rh-line-height-code, 1.5);
+  tab-size: 4;
+  hyphens: none;
+  background: transparent;
+}
+
+:host([highlighting='prerendered']) {
+  .wrap {
+    #content::slotted(pre[class*='language-']) {
+      white-space: pre-wrap;
+    }
+  }
 }
 
 #content::slotted(rh-tag) {
@@ -14096,6 +14206,28 @@ rectangle.</p>
   color: inherit;
 }
 
+#content::slotted(:is(code[class*='language-'], pre[class*='language-'])) {
+  color: var(--_code-color);
+  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: var(--rh-line-height-code, 1.5);
+  tab-size: 4;
+  hyphens: none;
+  background: transparent;
+}
+
+:host([highlighting='prerendered']) {
+  .wrap {
+    #content::slotted(pre[class*='language-']) {
+      white-space: pre-wrap;
+    }
+  }
+}
+
 #content::slotted(rh-tag) {
   width: var(--rh-size-icon-06, 64px);
 }
@@ -14858,6 +14990,28 @@ developers should carefully choose the graphic that matches the background.</p>
   white-space: var(--_code-white-space, pre);
   word-wrap: var(--_code-word-wrap, initial);
   color: inherit;
+}
+
+#content::slotted(:is(code[class*='language-'], pre[class*='language-'])) {
+  color: var(--_code-color);
+  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: var(--rh-line-height-code, 1.5);
+  tab-size: 4;
+  hyphens: none;
+  background: transparent;
+}
+
+:host([highlighting='prerendered']) {
+  .wrap {
+    #content::slotted(pre[class*='language-']) {
+      white-space: pre-wrap;
+    }
+  }
 }
 
 #content::slotted(rh-tag) {
@@ -15957,6 +16111,28 @@ themable graphics.</p>
   white-space: var(--_code-white-space, pre);
   word-wrap: var(--_code-word-wrap, initial);
   color: inherit;
+}
+
+#content::slotted(:is(code[class*='language-'], pre[class*='language-'])) {
+  color: var(--_code-color);
+  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: var(--rh-line-height-code, 1.5);
+  tab-size: 4;
+  hyphens: none;
+  background: transparent;
+}
+
+:host([highlighting='prerendered']) {
+  .wrap {
+    #content::slotted(pre[class*='language-']) {
+      white-space: pre-wrap;
+    }
+  }
 }
 
 #content::slotted(rh-tag) {
@@ -17376,6 +17552,28 @@ attribute <code>color-palette</code> which is the type <code>ColorPalette</code>
   white-space: var(--_code-white-space, pre);
   word-wrap: var(--_code-word-wrap, initial);
   color: inherit;
+}
+
+#content::slotted(:is(code[class*='language-'], pre[class*='language-'])) {
+  color: var(--_code-color);
+  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: var(--rh-line-height-code, 1.5);
+  tab-size: 4;
+  hyphens: none;
+  background: transparent;
+}
+
+:host([highlighting='prerendered']) {
+  .wrap {
+    #content::slotted(pre[class*='language-']) {
+      white-space: pre-wrap;
+    }
+  }
 }
 
 #content::slotted(rh-tag) {
@@ -18876,6 +19074,28 @@ slot[name='icon'] {
   color: inherit;
 }
 
+#content::slotted(:is(code[class*='language-'], pre[class*='language-'])) {
+  color: var(--_code-color);
+  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: var(--rh-line-height-code, 1.5);
+  tab-size: 4;
+  hyphens: none;
+  background: transparent;
+}
+
+:host([highlighting='prerendered']) {
+  .wrap {
+    #content::slotted(pre[class*='language-']) {
+      white-space: pre-wrap;
+    }
+  }
+}
+
 #content::slotted(rh-tag) {
   width: var(--rh-size-icon-06, 64px);
 }
@@ -20019,6 +20239,28 @@ slot[name='icon'] {
   color: inherit;
 }
 
+#content::slotted(:is(code[class*='language-'], pre[class*='language-'])) {
+  color: var(--_code-color);
+  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: var(--rh-line-height-code, 1.5);
+  tab-size: 4;
+  hyphens: none;
+  background: transparent;
+}
+
+:host([highlighting='prerendered']) {
+  .wrap {
+    #content::slotted(pre[class*='language-']) {
+      white-space: pre-wrap;
+    }
+  }
+}
+
 #content::slotted(rh-tag) {
   width: var(--rh-size-icon-06, 64px);
 }
@@ -20701,6 +20943,28 @@ and applies values to the theming tokens, depending on the context received.</p>
   white-space: var(--_code-white-space, pre);
   word-wrap: var(--_code-word-wrap, initial);
   color: inherit;
+}
+
+#content::slotted(:is(code[class*='language-'], pre[class*='language-'])) {
+  color: var(--_code-color);
+  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: var(--rh-line-height-code, 1.5);
+  tab-size: 4;
+  hyphens: none;
+  background: transparent;
+}
+
+:host([highlighting='prerendered']) {
+  .wrap {
+    #content::slotted(pre[class*='language-']) {
+      white-space: pre-wrap;
+    }
+  }
 }
 
 #content::slotted(rh-tag) {
@@ -22308,6 +22572,28 @@ your page markup declares a custom surface with some classes:</p>
   color: inherit;
 }
 
+#content::slotted(:is(code[class*='language-'], pre[class*='language-'])) {
+  color: var(--_code-color);
+  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: var(--rh-line-height-code, 1.5);
+  tab-size: 4;
+  hyphens: none;
+  background: transparent;
+}
+
+:host([highlighting='prerendered']) {
+  .wrap {
+    #content::slotted(pre[class*='language-']) {
+      white-space: pre-wrap;
+    }
+  }
+}
+
 #content::slotted(rh-tag) {
   width: var(--rh-size-icon-06, 64px);
 }
@@ -22983,6 +23269,28 @@ your page markup declares a custom surface with some classes:</p>
   white-space: var(--_code-white-space, pre);
   word-wrap: var(--_code-word-wrap, initial);
   color: inherit;
+}
+
+#content::slotted(:is(code[class*='language-'], pre[class*='language-'])) {
+  color: var(--_code-color);
+  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: var(--rh-line-height-code, 1.5);
+  tab-size: 4;
+  hyphens: none;
+  background: transparent;
+}
+
+:host([highlighting='prerendered']) {
+  .wrap {
+    #content::slotted(pre[class*='language-']) {
+      white-space: pre-wrap;
+    }
+  }
 }
 
 #content::slotted(rh-tag) {
@@ -23663,6 +23971,28 @@ similarly to how elements import <code>@rhds/tokens/css/color-context-consumer.c
   white-space: var(--_code-white-space, pre);
   word-wrap: var(--_code-word-wrap, initial);
   color: inherit;
+}
+
+#content::slotted(:is(code[class*='language-'], pre[class*='language-'])) {
+  color: var(--_code-color);
+  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: var(--rh-line-height-code, 1.5);
+  tab-size: 4;
+  hyphens: none;
+  background: transparent;
+}
+
+:host([highlighting='prerendered']) {
+  .wrap {
+    #content::slotted(pre[class*='language-']) {
+      white-space: pre-wrap;
+    }
+  }
 }
 
 #content::slotted(rh-tag) {
