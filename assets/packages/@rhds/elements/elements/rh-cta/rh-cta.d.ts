@@ -80,17 +80,11 @@ export declare class RhCta extends LitElement {
     rel?: string;
     /** when `href` is set, the link's `target` attribute */
     target?: string;
-    /**
-     * Icon name
-     */
+    /** Icon name */
     icon?: IconNameFor<IconSetName>;
-    /**
-     * Icon set
-     */
+    /** Icon set */
     iconSet: IconSetName;
-    /**
-     * Sets color theme based on parent context
-     */
+    /** Sets color theme based on parent context */
     private on?;
     protected getUpdateComplete(): Promise<boolean>;
     render(): import("lit-html").TemplateResult<1>;

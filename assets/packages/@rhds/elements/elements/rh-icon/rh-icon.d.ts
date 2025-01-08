@@ -48,6 +48,7 @@ export declare class RhIcon extends LitElement {
     private content?;
     connectedCallback(): void;
     render(): TemplateResult;
+    updated(): void;
     disconnectedCallback(): void;
     private iconChanged;
     private accessibleLabelChanged;

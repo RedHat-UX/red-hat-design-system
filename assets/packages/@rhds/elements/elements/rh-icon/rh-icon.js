@@ -72,6 +72,13 @@ let RhIcon = RhIcon_1 = _a = class RhIcon extends LitElement {
       </div>
     `;
     }
+    updated() {
+        // this is a workaround for an apparent webkit / lit-ssr bug
+        const [, ...duplicateContainers] = this.shadowRoot?.querySelectorAll('#container') ?? [];
+        for (const dupe of duplicateContainers) {
+            dupe.remove();
+        }
+    }
     disconnectedCallback() {
         super.disconnectedCallback();
         RhIcon_1.io.unobserve(this);
