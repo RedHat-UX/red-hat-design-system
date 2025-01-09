@@ -53,7 +53,7 @@ also include the following optional elements:
 ## Theme
 
 A blockquote is available on both light and dark backgrounds, and uses [themable
-tokens][/theming/color-palettes] to respond to it's color context.
+tokens](/theming/customizing/) to respond to it's color context.
 
 <rh-table>
 
