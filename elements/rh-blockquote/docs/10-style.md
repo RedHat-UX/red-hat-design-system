@@ -39,14 +39,14 @@ also include the following optional elements:
 
 <rh-table>
 
-| Size              | Element               | Current value |
-|-------------------|-----------------------|---------------|
-| Default           | Text size - quotation | 20px, 1.25rem |
-| Default           | 30 (1.5)              |               |
-| Large             | 28px, 1.75rem         |               |
-| Large             | 36.4 (1.3)            |               |
-| Default and Large | 14px, 0.875rem        |               |
-| Default and Large | 21 (1.5)              |               |
+| Size              | Element                 | Current value  |
+|-------------------|-------------------------|----------------|
+| Default           | Text size - quotation   | 20px, 1.25rem  |
+| Default           | Line height - quotation | 30 (1.5)       |
+| Large             | Text size - quotation   | 28px, 1.75rem  |
+| Large             | Line height - quotation | 36.4 (1.3)     |
+| Default and Large | Text size - citation    | 14px, 0.875rem |
+| Default and Large | Line height - citation  | 21 (1.5)       |
 
 </rh-table>
 
