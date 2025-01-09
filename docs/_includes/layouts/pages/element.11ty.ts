@@ -900,7 +900,7 @@ export default class ElementsPage extends Renderer<Context> {
     const { tagName } = ctx;
     const iconAlert = (tagName !== 'rh-icon') ? '' : html`<rh-alert state="info">
         <h2 slot="header">Looking for the icons?</h2>
-        <p> Head over to our <a href="/foundations/iconography/">foundations iconography</a> page to explore the full collection.</p>
+        <p> Head over to our <a href="/foundations/iconography/">Foundations: Iconography</a> page to explore the full collection.</p>
       </rh-alert>
       `;
     return [
