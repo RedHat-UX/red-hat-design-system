@@ -19,6 +19,11 @@ blockquote {
   margin: 0;
 }
 
+figure {
+  display: block;
+  max-inline-size: 752px;
+}
+
 blockquote ::slotted(p) {
   margin: 0;
   margin-block-end: var(--rh-length-lg, 16px);
@@ -45,6 +50,10 @@ rh-icon {
 
 :host([align='center']) {
   text-align: center;
+}
+
+:host([align='center']) figure {
+  margin-inline: auto;
 }
 
 :host([align='center']) #quote ::slotted(*) {
