@@ -1,5 +1,5 @@
 ---
-"@rhds/elements": patch
+"@rhds/elements": minor
 ---
 
-`<rh-blockquote>`: make quote content centered when `align="center"`
+`<rh-blockquote>`: fix center alignment, blockquote font size and update Style docs
