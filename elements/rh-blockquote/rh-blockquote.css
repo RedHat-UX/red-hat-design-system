@@ -25,6 +25,7 @@ figure {
 }
 
 blockquote ::slotted(p) {
+  font-size: var(--rh-font-size-body-text-xl, 1.25rem) !important;
   margin: 0;
   margin-block-end: var(--rh-length-lg, 16px);
 }
@@ -60,14 +61,14 @@ rh-icon {
   max-inline-size: none !important;
 }
 
-:host([size='large']) {
-  font-size: var(--rh-font-size-body-text-2xl, 1.5rem);
+:host([size='large']) #quote ::slotted(*) {
+  font-size: var(--rh-font-size-body-text-2xl, 1.5rem) !important;
   line-height: var(--rh-line-height-heading, 1.3);
 }
 
-  :host([size='large']) {
 @media (min-width: 768px) {
-    font-size: var(--rh-font-size-heading-md, 1.75rem);
+  :host([size='large']) #quote ::slotted(*) {
+    font-size: var(--rh-font-size-heading-md, 1.75rem) !important;
   }
 }
 
