@@ -106,18 +106,18 @@ A minimum width is hard to determine because a blockquote can be placed in a var
 
 ### Maximum width
 
-The maximum width of a blockquote anywhere is <code>750px</code> to avoid reader fatigue.
+The maximum width of a blockquote anywhere is <code>752px</code> to avoid reader fatigue.
 
 <uxdot-example width-adjustment="1000px" variant="full" no-border alignment="left">
   <img src="../blockquote-max-width-a.png" 
-      alt="Image of default size blockquote left aligned with a maximum width of 750px" 
+      alt="Image of default size blockquote left aligned with a maximum width of 752px" 
       width="1000" 
       height="177">
 </uxdot-example>
 
 <uxdot-example width-adjustment="1000px" variant="full" no-border alignment="left">
   <img src="../blockquote-max-width-b.png" 
-      alt="Image of large size blockquote vertically centered with a maximum width of 750px"
+      alt="Image of large size blockquote vertically centered with a maximum width of 752px"
       width="1000"
       height="205">
 </uxdot-example>
