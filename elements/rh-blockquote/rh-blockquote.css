@@ -20,7 +20,8 @@ blockquote {
 }
 
 blockquote ::slotted(p) {
-  margin: var(--rh-length-lg, 16px) 0;
+  margin: 0;
+  margin-block-end: var(--rh-length-lg, 16px);
 }
 
 figcaption {
@@ -35,6 +36,7 @@ figcaption p {
 
 #author {
   font-weight: var(--rh-font-weight-heading-bold, 700);
+  margin-block-start: var(--rh-space-lg, 16px);
 }
 
 rh-icon {
