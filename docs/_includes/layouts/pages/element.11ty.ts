@@ -897,16 +897,24 @@ export default class ElementsPage extends Renderer<Context> {
 
   async #renderPlaygrounds(ctx: Context, entries: FileEntry[]) {
     const common = await this.#renderPlaygroundsCommon(ctx, entries);
-    return entries.map(([filename, config]) => this.#renderPlayground(
-      filename,
-      config,
-      ctx,
-      common,
-      entries
-          .filter(([, config]) => config.inline === filename)
-          .map(([s]) => s)
-
-    ));
+    const { tagName } = ctx;
+    const iconAlert = (tagName !== 'rh-icon') ? '' : html`<rh-alert state="info">
+        <h2 slot="header">Looking for the icons?</h2>
+        <p> Head over to our <a href="/foundations/iconography/">foundations iconography</a> page to explore the full collection.</p>
+      </rh-alert>
+      `;
+    return [
+      iconAlert,
+      entries.map(([filename, config]) => this.#renderPlayground(
+        filename,
+        config,
+        ctx,
+        common,
+        entries
+            .filter(([, config]) => config.inline === filename)
+            .map(([s]) => s)
+      )),
+    ].join('');
   };
 
   #renderPlayground(
