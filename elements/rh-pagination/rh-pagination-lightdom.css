@@ -22,11 +22,11 @@ rh-pagination li > a {
   display: grid;
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-body-text-xl, 1.25rem);
-  height: var(--_link-size);
+  block-size: var(--_link-size);
   place-content: center;
   position: relative;
   text-decoration: none;
-  width: var(--_link-size);
+  inline-size: var(--_link-size);
 }
 
 rh-pagination[size='sm'] li > a {
@@ -51,7 +51,7 @@ rh-pagination li > a[aria-current]:after {
   inset-inline-start: -1px;
   position: absolute;
   inset-block-start: -1px;
-  width: 104%;
+  inline-size: 104%;
 }
 
 rh-pagination li > a:hover:after,
@@ -105,8 +105,8 @@ rh-pagination:is([overflow='start'], [overflow='both']) li:first-child {
 rh-pagination:is([overflow='end'], [overflow='both']) li:last-child:before,
 rh-pagination:is([overflow='start'], [overflow='both']) li:first-child:after {
   content: '…';
-  width: var(--_link-size);
-  height: var(--_link-size);
+  inline-size: var(--_link-size);
+  block-size: var(--_link-size);
   padding-inline-end: 4px;
   display: flex;
   align-items: center;

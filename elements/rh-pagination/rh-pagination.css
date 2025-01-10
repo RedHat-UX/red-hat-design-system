@@ -2,7 +2,7 @@
   --_stepper-size: var(--rh-length-3xl, 48px);
 
   display: block;
-  min-height: 4em;
+  min-block-size: 4em;
 }
 
 :host([size='sm']) {
@@ -61,39 +61,39 @@
 .visually-hidden {
   border: 0;
   clip: rect(0, 0, 0, 0);
-  height: 1px;
+  block-size: 1px;
   margin: -1px;
   overflow: hidden;
   padding: 0;
   position: absolute;
   white-space: nowrap;
-  width: 1px;
+  inline-size: 1px;
 }
 
 @container pagination (min-width: 344px) {
   .xxs-visually-hidden {
     border: 0;
     clip: rect(0, 0, 0, 0);
-    height: 1px;
+    block-size: 1px;
     margin: -1px;
     overflow: hidden;
     padding: 0;
     position: absolute;
     white-space: nowrap;
-    width: 1px;
+    inline-size: 1px;
   }
 }
 
 @container pagination (min-width: 768px) {
   .sm-visually-visible {
     clip: auto;
-    height: auto;
+    block-size: auto;
     margin: 0;
     overflow: visible;
     padding: 0;
     position: static;
     white-space: normal;
-    width: auto;
+    inline-size: auto;
   }
 }
 
@@ -118,11 +118,11 @@ svg {
   display: grid;
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-heading-xs, 1.25rem);
-  height: var(--_stepper-size);
+  block-size: var(--_stepper-size);
   place-content: center;
   position: relative;
   text-decoration: none;
-  width: var(--_stepper-size);
+  inline-size: var(--_stepper-size);
 }
 
 .stepper:focus {
@@ -137,10 +137,10 @@ svg {
 .stepper:focus:after {
   border-block-start-style: solid;
   content: '';
-  left: -1px;
+  inset-inline-start: -1px;
   position: absolute;
-  top: -1px;
-  width: 104%;
+  inset-block-start: -1px;
+  inline-size: 104%;
 }
 
 .stepper:hover:after,
@@ -155,7 +155,7 @@ svg {
 }
 
 .stepper svg {
-  height: 14px;
+  block-size: 14px;
 }
 
 :is(#next, #last) svg,
@@ -179,8 +179,8 @@ svg {
 }
 
 input {
-  height: var(--rh-length-2xl, 32px);
-  width: var(--rh-length-4xl, 64px);
+  block-size: var(--rh-length-2xl, 32px);
+  inline-size: var(--rh-length-4xl, 64px);
   font-size: var(--rh-font-size-body-text-md, 1rem);
   background: var(--rh-color-surface-lightest, #ffffff);
   /* stylelint-disable-next-line */
@@ -219,7 +219,7 @@ input:invalid:focus {
 
 #numeric-end {
   display: block;
-  width: 100%;
+  inline-size: 100%;
 }
 
 #numeric {
@@ -230,13 +230,13 @@ input:invalid:focus {
   gap: 0.5em;
   margin-block: 0;
   margin-inline: 0 var(--rh-space-lg, 16px);
-  min-height: var(--_stepper-size);
-  width: 100%;
+  min-block-size: var(--_stepper-size);
+  inline-size: 100%;
 }
 
 #numeric input {
   align-self: stretch;
-  height: auto;
+  block-size: auto;
 }
 
 #numeric a {
