@@ -20,17 +20,23 @@
   gap: var(--rh-space-2xl, 32px) calc(var(--rh-space-xs, 4px) / 2);
   flex-wrap: wrap;
 
-  --rh-pagination-accent-color: var(--rh-color-interactive-primary-default);
+  /* stylelint-disable-next-line */
+  --rh-pagination-accent-color: var(--rh-color-interactive-primary-default, #0066cc);
   --_numeric-a-color: var(--rh-pagination-accent-color);
-  --_numeric-a-color-hover: var(--rh-color-interactive-primary-hover);
+  /* stylelint-disable-next-line */
+  --_numeric-a-color-hover: var(--rh-color-interactive-primary-hover, #003366);
   --_numeric-a-color-focus: var(--rh-pagination-accent-color);
   --_numeric-a-color-focus-outline: var(--rh-pagination-accent-color);
-  --_numeric-a-color-visited: var(--rh-color-interactive-primary-visited-default);
-  --_numeric-a-color-visited-hover: var(--rh-color-interactive-primary-visited-hover);
+  /* stylelint-disable-next-line */
+  --_numeric-a-color-visited: var(--rh-color-interactive-primary-visited-default, #5e40be);
+  /* stylelint-disable-next-line */
+  --_numeric-a-color-visited-hover: var(--rh-color-interactive-primary-visited-hover, #21134d);
   --_list-a-bg-color: var(--rh-color-surface-lighter, #f2f2f2);
-  --_list-a-current-page-border-color: var(--rh-color-border-subtle);
+  /* stylelint-disable-next-line */
+  --_list-a-current-page-border-color: var(--rh-color-border-subtle, #c7c7c7);
   --_list-a-current-page-bg-color: var(--rh-color-surface-lightest, #ffffff);
-  --_list-a-text-color: var(--rh-color-text-primary);
+  /* stylelint-disable-next-line */
+  --_list-a-text-color: var(--rh-color-text-primary, #151515);
   --_stepper-bg-color: var(--rh-color-surface-lighter, #f2f2f2);
   --_stepper-hover-focus-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_border-top-hover-color: var(--rh-color-gray-60, #4d4d4d);
@@ -177,7 +183,8 @@ input {
   width: var(--rh-length-4xl, 64px);
   font-size: var(--rh-font-size-body-text-md, 1rem);
   background: var(--rh-color-surface-lightest, #ffffff);
-  border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+  /* stylelint-disable-next-line */
+  border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle, #c7c7c7);
   border-block-end-color: var(--rh-color-gray-40, #a3a3a3);
   box-sizing: border-box;
   padding-block: var(--rh-space-sm, 6px);
