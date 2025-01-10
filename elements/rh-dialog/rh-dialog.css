@@ -215,7 +215,9 @@
 
   aspect-ratio: var(--_aspect-ratio);
   background-color: var(--rh-dialog-overlay-background-color);
-  max-inline-size: min(90%, calc(90vh * var(--_aspect-ratio) + var(--offset-top)));
+  max-inline-size:
+    var(--_box-width,
+      min(90%, calc(90vh * var(--_aspect-ratio) + var(--offset-top))));
   padding: 0;
 }
 
