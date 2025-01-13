@@ -1,14 +1,6 @@
   <script type="importmap">{{ importMap | dump(2) | safe }}</script>
 
-  {# dsd polyfill needs to happen before hydration attempts #}
-  <script type="module">
-    import '/assets/javascript/dsd-polyfill.js';
-  </script>
-
-  {# lit-element-hydrate-support needs to be included before lit is loaded #}
-  <script type="module">
-    import '@lit-labs/ssr-client/lit-element-hydrate-support.js';
-  </script>
+  {% include 'partials/javascript/dsd-init.html' %}
 
   {# load all components #}
   {% for tag in importElements %}
@@ -17,6 +9,7 @@
 
   {# only load components that need hydrated (aka interactivity) #}
   <script type="module">
+    import '@rhds/elements/rh-button/rh-button.js';
     import '@uxdot/elements/uxdot-copy-permalink.js';
     import '@uxdot/elements/uxdot-sidenav.js';
     import '@uxdot/elements/uxdot-example.js';
