@@ -4,11 +4,13 @@ title: Overview
 order: 00
 tags:
   - getstarted
-importElements:
-  - rh-tile
 ---
 
 <link data-helmet rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
+
+<script type="module" data-helmet>
+  import '@rhds/elements/rh-tile/rh-tile.js';
+</script>
 
 <style data-helmet>
   #get-started-nav {
