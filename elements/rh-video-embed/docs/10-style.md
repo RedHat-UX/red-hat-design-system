@@ -22,7 +22,7 @@ The video embed element consists of a semitransparent play button with a video t
 
 ## Theme
 
-The video embed element is available in both light and dark themes. It can include either a light or a dark play button, depending on the thumbnail image underneath. If an image is lighter, use a dark play button for accessibility and vice versa.
+The video embed element is available in both light and dark themes. It can include either a light or a dark play button, depending on the thumbnail image underneath. If an image is lighter, use a dark play button for accessibility and vice versa. The user is currently responsible for preventing color contrast issues between the video thumbnail and the play button.
 
 <div class="grid xs-two-columns">
   <uxdot-example width-adjustment="420px">
