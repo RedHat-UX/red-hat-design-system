@@ -286,51 +286,92 @@ content will also get rearranged.
 
 ## Best practices
 
-### Reversing the order
+### Order
 
-Do not reverse the order of footers, the website-specific footer should always 
-be on top.
+<uxdot-best-practice variant="do">
+  <uxdot-example width-adjustment="992px" slot="image">
+    <img src="../footer-best-practices-order-do.svg"
+          alt="Website-specific footer above the universal footer"
+          width="992"
+          height="741">
+  </uxdot-example>
+  <p>Keep the website-specific footer on top.</p>
+</uxdot-best-practice>
 
-<uxdot-example width-adjustment="968px" danger>
-  <img src="../footer-best-practice-1.png"
-        alt="Image of the global footer on top of the website-specific footer which is incorrect usage"
-        width="1000"
-        height="796">
-</uxdot-example>
+<uxdot-best-practice variant="dont">
+  <uxdot-example width-adjustment="992px" slot="image">
+    <img src="../footer-best-practices-order-dont.svg"
+          alt="Universal footer above the website-specific footer"
+          width="992"
+          height="741">
+  </uxdot-example>
+  <p>Do not reverse the order of the website-specific footer and the universal footer.</p>
+</uxdot-best-practice>
 
+### Using accordions
 
-### Replacing columns
+<uxdot-best-practice variant="do">
+  <uxdot-example width-adjustment="360px" slot="image">
+    <img src="../footer-best-practices-using-accordions-do.svg"
+          alt="Four accordions in a website-specific footer at a 360 pixel breakpoint"
+          width="360"
+          height="1106">
+  </uxdot-example>
+  <p>Organize footer links in accordions for small breakpoints only.</p>
+</uxdot-best-practice>
 
-Do not replace columns with an accordion if there is still adequate space.
+<uxdot-best-practice variant="dont">
+  <uxdot-example width-adjustment="992px" slot="image">
+    <img src="../footer-best-practices-using-accordions-dont.svg"
+          alt="Four accordions in a website-specific footer at a 992 pixel breakpoint"
+          width="992"
+          height="635">
+  </uxdot-example>
+  <p>Do not replace columns with an accordion if there is still adequate space.</p>
+</uxdot-best-practice>
 
-<uxdot-example width-adjustment="968px" danger>
-  <img src="../footer-best-practice-2.png"
-        alt="Image of a desktop footer with an accordion replacing four columns of links which is incorrect usage"
-        width="1000"
-        height="796">
-</uxdot-example>
+### Footer types
 
+<div class="grid sm-two-columns">
+  <uxdot-best-practice variant="do">
+    <uxdot-example width-adjustment="295px" slot="image">
+      <img src="../footer-best-practices-footer-types-do.svg"
+            alt="Wireframe of a webpage that shows both the website-specific footer and universal footer"
+            width="295"
+            height="360">
+    </uxdot-example>
+    <p>The universal footer should always be present, even if there’s a website-specific footer.</p>
+  </uxdot-best-practice>
 
-### Website-specific footer
+  <uxdot-best-practice variant="dont">
+    <uxdot-example width-adjustment="295px" slot="image">
+      <img src="../footer-best-practices-footer-types-dont.svg"
+            alt="Wireframe of a webpage that includes only the website-specific footer"
+            width="295"
+            height="360">
+    </uxdot-example>
+    <p>Do not use the website-specific footer without the universal footer.</p>
+  </uxdot-best-practice>
+</div>
 
-Do not use the website-specific footer without the universal footer.
+### Universal footer
 
-<uxdot-example width-adjustment="968px" danger>
-  <img src="../footer-best-practice-3.png"
-        alt="Image of a footer missing the universal footer which is incorrect usage"
-        width="1000"
-        height="796">
-</uxdot-example>
+<uxdot-best-practice variant="do">
+  <uxdot-example width-adjustment="992px" slot="image">
+    <img src="../footer-best-practices-universal-footer-do.svg"
+          alt="Universal footer with gray logo, left-aligned links and text, and copyright information"
+          width="992"
+          height="178">
+  </uxdot-example>
+  <p>The universal footer should look the same across all Red Hat websites.</p>
+</uxdot-best-practice>
 
-
-### Custom universal footer
-
-Do not create your own custom universal footer by changing, deleting, or 
-rearranging any elements.
-
-<uxdot-example width-adjustment="968px" danger>
-  <img src="../footer-best-practice-4.png"
-        alt="Image of a universal footer with a new design which is incorrect usage"
-        width="1000"
-        height="104">
-</uxdot-example>
+<uxdot-best-practice variant="dont">
+  <uxdot-example width-adjustment="992px" slot="image">
+    <img src="../footer-best-practices-universal-footer-dont.svg"
+          alt="Universal footer with red logo, right-aligned links and text, and no copyright information"
+          width="992"
+          height="134">
+  </uxdot-example>
+  <p>Do not create your own custom universal footer by changing, deleting, or rearranging any elements.</p>
+</uxdot-best-practice>
