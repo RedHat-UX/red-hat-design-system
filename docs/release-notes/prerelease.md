@@ -2,15 +2,16 @@
 layout: layouts/pages/basic.njk
 title: Beta release notes
 permalink: "/prerelease-notes/index.html"
-importElements:
-  - rh-table
 ---
 
 <link rel="stylesheet" data-helmet href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
 
+<script type="module" data-helmet>
+  import '@rhds/elements/rh-table/rh-table.js';
+</script>
+
 <section aria-labelledby="aria__heading-beta-release-notes">
   <h2 id="aria__heading-beta-release-notes">Beta release notes</h2>
-
   <a href="/release-notes">Return to Release notes</a>
 </section>
 

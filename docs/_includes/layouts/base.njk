@@ -31,11 +31,27 @@
       </style>
     </noscript>
 
-    {# ensure ssr-support modules are loaded first #}
+    <script type="importmap">{{ importMap | dump(2) | safe }}</script>
+
+    {# ensure SSR support modules are loaded first #}
+    {% include 'partials/javascript/dsd-init.html' %}
+
+    {# load all components #}
+    {% for tag in importElements %}
+      <script type="module">import '@rhds/elements/{{tag}}/{{tag}}.js';</script>
+    {% endfor %}
+
+    {# only load components that need hydrated (aka interactivity) #}
     <script type="module">
-      import '/assets/javascript/ssr-support.js';
+      import '@rhds/elements/rh-button/rh-button.js';
+      import '@uxdot/elements/uxdot-copy-permalink.js';
+      import '@uxdot/elements/uxdot-sidenav.js';
+      import '@uxdot/elements/uxdot-example.js';
     </script>
-    {% include "../partials/javascript/global.html" %}
+
+    <script async src="https://ga.jspm.io/npm:es-module-shims@1.8.0/dist/es-module-shims.js"></script>
+
+
   </head>
 
   <body dsd-pending class="{{ extraPageClasses }}">

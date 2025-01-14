@@ -23,7 +23,10 @@ tags:
     <link rel="stylesheet" href="/styles/demo/styles.css" media="all">
 
     <script type="importmap">{{ importMap | dump(2) | safe }}</script>
+
+    {# ensure SSR support modules are loaded first #}
     {% include 'partials/javascript/dsd-init.html' %}
+
     <script type="module">
       // load up the demo and picker
       import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
