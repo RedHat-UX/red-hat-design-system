@@ -31,7 +31,7 @@
       </style>
     </noscript>
 
-      <script type="importmap">{
+    <script type="importmap">{
   "imports": {
     "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
@@ -87,28 +87,34 @@
   }
 }</script>
 
-  
-  <script type="module">
-    import '/assets/javascript/dsd-polyfill.js';
+    
+      <script type="module">
+    // although we load these ssr support modules elsewhere, we still
+    // need them here to ensure no double-rendering on webkit
+    import '/assets/javascript/ssr-support.js';
+    // include these, which are often internal to elements,
+    // and are definitely required by context-picker and context-demo
+    // to avoid SSR defer-hydration bugs and SSR double-rendering bugs
+    import '@rhds/elements/rh-icon/rh-icon.js';
+    import '@rhds/elements/rh-surface/rh-surface.js';
+    import '@rhds/elements/rh-button/rh-button.js';
+    import '@rhds/elements/rh-tooltip/rh-tooltip.js';
+    import '@rhds/elements/rh-tag/rh-tag.js';
   </script>
 
-  
-  <script type="module">
-    import '@lit-labs/ssr-client/lit-element-hydrate-support.js';
-  </script>
 
-  
-  
+    
+    
 
-  
-  <script type="module">
-    import '@uxdot/elements/uxdot-copy-permalink.js';
-    import '@uxdot/elements/uxdot-sidenav.js';
-    import '@uxdot/elements/uxdot-example.js';
-  </script>
+    
+    <script type="module">
+      import '@rhds/elements/rh-button/rh-button.js';
+      import '@uxdot/elements/uxdot-copy-permalink.js';
+      import '@uxdot/elements/uxdot-sidenav.js';
+      import '@uxdot/elements/uxdot-example.js';
+    </script>
 
-  <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.0/dist/es-module-shims.js"></script>
-
+    <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.0/dist/es-module-shims.js"></script>
 
 
   <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css"><link rel="stylesheet" href="/styles/samp.css"><link rel="stylesheet" href="/styles/pages/code.css"><noscript>
@@ -118,6 +124,9 @@
         }
         </style>
       </noscript><script type="module">
+        // although we load these ssr support modules elsewhere, we still
+        // need them here to ensure no double-rendering on webkit
+        import '/assets/javascript/ssr-support.js';
         import '@uxdot/elements/uxdot-copy-button.js';
         import '@uxdot/elements/uxdot-copy-permalink.js';
         import '@uxdot/elements/uxdot-best-practice.js';
@@ -164,6 +173,9 @@
 </script><script type="module">
   import '@rhds/elements/rh-subnav/rh-subnav.js';
 </script><link rel="stylesheet" href="/styles/pages/backpage.css"><link rel="stylesheet" href="/assets/packages/@uxdot/elements/uxdot-toc-lightdom.css"><script type="module">
+  // although we load these ssr support modules elsewhere, we still
+  // need them here to ensure no double-rendering on webkit
+  import '/assets/javascript/ssr-support.js';
   import '@uxdot/elements/uxdot-toc.js';
 </script><script type="module">
   import '@rhds/elements/rh-footer/rh-footer-universal.js';
