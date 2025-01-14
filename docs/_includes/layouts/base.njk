@@ -31,6 +31,10 @@
       </style>
     </noscript>
 
+    {# ensure ssr-support modules are loaded first #}
+    <script type="module">
+      import '/assets/javascript/ssr-support.js';
+    </script>
     {% include "../partials/javascript/global.html" %}
   </head>
 
