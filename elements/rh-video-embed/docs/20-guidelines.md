@@ -60,8 +60,6 @@ The video’s width will dynamically adjust with its parent container. The video
 
 ### Play button
 
-Display the play button in a consistent, predictable spot for all videos.
-
 <div class="grid xs-two-columns">
   <uxdot-best-practice variant="do">
     <uxdot-example color-palette="lightest" width-adjustment="420px" slot="image">
@@ -86,8 +84,6 @@ Display the play button in a consistent, predictable spot for all videos.
 
 
 ### Aspect Ratio
-
-A video embed element and should have the same aspect ratio as the video it’s displaying.
 
 <div class="grid xs-two-columns">
   <uxdot-best-practice variant="do">
