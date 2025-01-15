@@ -52,7 +52,7 @@ export class RhDisclosure extends LitElement {
           @keydown="${this.#onKeydown}"
           @toggle="${this.#onToggle}">
         <summary>
-          <rh-icon part="caret" id="caret" set="ui" icon="caret-down"></rh-icon>
+          <rh-icon id="caret" set="ui" icon="caret-down"></rh-icon>
           <slot name="summary">${this.summary}</slot>
         </summary>
         <div id="details-content">
