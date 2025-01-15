@@ -1,6 +1,7 @@
 <div id="overflow">
   <a id="top" href="#bottom">Go to bottom</a>
-  <p>Scroll down or press tab to see the back to top button</p>
+  <p>Scroll down to see the back to top button</p>
+  <p>View your browser's console to see errors and warnings.</p>
   <a id="bottom" href="#top">Go to top</a>
   <rh-back-to-top></rh-back-to-top>
   <rh-back-to-top id="two" scrollable-selector scroll-distance></rh-back-to-top>
@@ -22,8 +23,8 @@
   }
 
   #overflow {
-    /* scroll distance set to 50px */
-    min-height: calc(100dvh + 51px);
+    /* Default scroll distance = 400px */
+    min-height: calc(100dvh + 401px);
     position: relative;
   }
 
@@ -43,7 +44,7 @@
 <script type="module">
   /* add support for demo/fullscreen and dev server */
   const b2t = document.querySelector('rh-back-to-top:not(#two)');
-  const main = document.querySelector('main');
+  const main = document.querySelector('main, [role="main"]');
   // if main isn't scrollable use window
   if (window.getComputedStyle(main).overflow === 'scroll') {
     b2t.scrollableSelector = 'main';
