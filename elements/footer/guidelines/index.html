@@ -8601,13 +8601,86 @@ svg {
     <!--/lit-part--></template></rh-icon>
       </button>
     <!--/lit-part--></template>
-  <h3 id="reversing-the-order" tabindex="-1">
-    <a href="#reversing-the-order">Reversing the order</a><a>
+  <h3 id="order" tabindex="-1">
+    <a href="#order">Order</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<p>Do not reverse the order of footers, the website-specific footer should always
-be on top.</p>
-<uxdot-example   width-adjustment="968px" danger><template shadowroot="open" shadowrootmode="open"><style>:host {
+<uxdot-best-practice  variant="do"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  margin-block: var(--rh-space-2xl);
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rh-space-2xl);
+  margin-block: var(--rh-space-2xl);
+}
+
+span {
+  font-family: var(--rh-font-family-heading);
+  font-size: var(--rh-font-size-heading-xs);
+  font-weight: var(--rh-font-weight-heading-medium);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--rh-space-md);
+}
+
+#do span {
+  color: var(--rh-color-status-success);
+}
+
+#dont span {
+  color: var(--rh-color-status-danger);
+}
+
+::slotted(uxdot-example) {
+  margin: 0 !important;
+}
+
+figure {
+  margin: 0 !important;
+}
+</style><!--lit-part /OqYtWIsZqM=-->
+      <figure id="container">
+        <slot name="image"></slot>
+        <!--lit-node 2--><figcaption id="do">
+          <span><!--lit-node 4--><rh-icon    set="ui" size="md" icon="check-circle-fill" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
+  line-height: 0;
+  aspect-ratio: 1/1;
+  display: inline-flex;
+  place-content: center;
+}
+
+#container {
+  display: contents;
+}
+
+svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
+  fill: currentcolor;
+  aspect-ratio: 1/1;
+}
+
+.standard svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
+}
+
+.microns svg {
+  width: 12px;
+}
+</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part dS1mROSl53E=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm7.795 12.796-8.646 8.646c-.317.317-.733.475-1.149.475s-.832-.158-1.149-.475l-4.646-4.646a1.126 1.126 0 0 1 1.59-1.592L14 19.41l8.205-8.205a1.124 1.124 0 1 1 1.59 1.592Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon><!--lit-part-->Do<!--/lit-part--></span>
+          <slot></slot>
+        </figcaption>
+      </figure>
+    <!--/lit-part--></template>
+  <uxdot-example   width-adjustment="992px" slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: block;
   container-type: inline-size;
   container-name: host;
@@ -8677,12 +8750,167 @@ be on top.</p>
       <!--lit-node 0--><div id="container"
            part="container"
            class="on  widthAdjustment "
-           style="--_width: 968px; --_alignment: center">
+           style="--_width: 992px; --_alignment: center">
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-  <img src="../footer-best-practice-1.png" alt="Image of the global footer on top of the website-specific footer which is incorrect usage" width="1000" height="796">
-</uxdot-example>
+    <img src="../footer-best-practices-order-do.svg" alt="Website-specific footer above the universal footer" width="992" height="741">
+  </uxdot-example>
+  <p>Keep the website-specific footer on top.</p>
+</uxdot-best-practice>
+<uxdot-best-practice  variant="dont"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  margin-block: var(--rh-space-2xl);
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rh-space-2xl);
+  margin-block: var(--rh-space-2xl);
+}
+
+span {
+  font-family: var(--rh-font-family-heading);
+  font-size: var(--rh-font-size-heading-xs);
+  font-weight: var(--rh-font-weight-heading-medium);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--rh-space-md);
+}
+
+#do span {
+  color: var(--rh-color-status-success);
+}
+
+#dont span {
+  color: var(--rh-color-status-danger);
+}
+
+::slotted(uxdot-example) {
+  margin: 0 !important;
+}
+
+figure {
+  margin: 0 !important;
+}
+</style><!--lit-part /OqYtWIsZqM=-->
+      <figure id="container">
+        <slot name="image"></slot>
+        <!--lit-node 2--><figcaption id="dont">
+          <span><!--lit-node 4--><rh-icon    set="ui" size="md" icon="close-circle-fill" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
+  line-height: 0;
+  aspect-ratio: 1/1;
+  display: inline-flex;
+  place-content: center;
+}
+
+#container {
+  display: contents;
+}
+
+svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
+  fill: currentcolor;
+  aspect-ratio: 1/1;
+}
+
+.standard svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
+}
+
+.microns svg {
+  width: 12px;
+}
+</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part iKtDDm471k4=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm5.796 20.204c.438.44.438 1.152 0 1.592a1.122 1.122 0 0 1-1.592-.001L16 17.593l-4.204 4.204a1.122 1.122 0 0 1-1.592-.001 1.128 1.128 0 0 1 0-1.59L14.408 16l-4.204-4.204a1.126 1.126 0 0 1 1.592-1.592L16 14.408l4.204-4.204a1.126 1.126 0 0 1 1.592 1.592L17.592 16l4.204 4.204Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon><!--lit-part-->Don&#39;t<!--/lit-part--></span>
+          <slot></slot>
+        </figcaption>
+      </figure>
+    <!--/lit-part--></template>
+  <uxdot-example   width-adjustment="992px" slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  container-type: inline-size;
+  container-name: host;
+  margin-block-end: var(--rh-space-2xl);
+}
+
+:host([transparent]) {
+  --rh-color-surface: transparent;
+}
+
+#container {
+  padding: var(--rh-space-2xl);
+  display: flex;
+  flex-direction: column;
+  align-items: var(--_alignment, center);
+  justify-content: center;
+  border-width: var(--rh-border-width-sm);
+  border-style: solid;
+  border-color: var(--rh-color-border-subtle);
+  border-radius: var(--rh-border-radius-default);
+  background-color: var(--rh-color-surface);
+  color: var(--rh-color-text-primary);
+}
+
+::slotted(*) {
+  display: flex;
+  flex-direction: column;
+  align-items: var(--_alignment, center);
+  justify-content: center;
+  max-width: 100%;
+  height: auto;
+}
+
+.widthAdjustment ::slotted(*) {
+  width: var(--_width);
+}
+
+:host([variant='full']) #container {
+  padding: 0;
+}
+
+:host([danger]) #container {
+  --rh-color-border-subtle: var(--rh-color-border-destructive);
+
+  background-image: url('/assets/best-practices-danger-icon.svg');
+  background-position-x: 8px;
+  background-position-y: 8px;
+  background-repeat: no-repeat;
+}
+
+:host([no-border]:not([danger])) #container {
+  border: none;
+}
+
+@container host (min-width: 576px) {
+  #container {
+    padding: var(--rh-space-3xl);
+  }
+}
+
+@container host (min-width: 768px) {
+  #container {
+    padding: var(--rh-space-4xl);
+  }
+}
+</style><!--lit-part DbmYZodZUIs=-->
+      <!--lit-node 0--><div id="container"
+           part="container"
+           class="on  widthAdjustment "
+           style="--_width: 992px; --_alignment: center">
+        <slot></slot>
+      </div>
+    <!--/lit-part--></template>
+    <img src="../footer-best-practices-order-dont.svg" alt="Universal footer above the website-specific footer" width="992" height="741">
+  </uxdot-example>
+  <p>Do not reverse the order of the website-specific footer and the universal footer.</p>
+</uxdot-best-practice>
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: flex;
   margin-block-end: var(--rh-space-lg);
@@ -8755,12 +8983,86 @@ svg {
     <!--/lit-part--></template></rh-icon>
       </button>
     <!--/lit-part--></template>
-  <h3 id="replacing-columns" tabindex="-1">
-    <a href="#replacing-columns">Replacing columns</a><a>
+  <h3 id="using-accordions" tabindex="-1">
+    <a href="#using-accordions">Using accordions</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<p>Do not replace columns with an accordion if there is still adequate space.</p>
-<uxdot-example   width-adjustment="968px" danger><template shadowroot="open" shadowrootmode="open"><style>:host {
+<uxdot-best-practice  variant="do"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  margin-block: var(--rh-space-2xl);
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rh-space-2xl);
+  margin-block: var(--rh-space-2xl);
+}
+
+span {
+  font-family: var(--rh-font-family-heading);
+  font-size: var(--rh-font-size-heading-xs);
+  font-weight: var(--rh-font-weight-heading-medium);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--rh-space-md);
+}
+
+#do span {
+  color: var(--rh-color-status-success);
+}
+
+#dont span {
+  color: var(--rh-color-status-danger);
+}
+
+::slotted(uxdot-example) {
+  margin: 0 !important;
+}
+
+figure {
+  margin: 0 !important;
+}
+</style><!--lit-part /OqYtWIsZqM=-->
+      <figure id="container">
+        <slot name="image"></slot>
+        <!--lit-node 2--><figcaption id="do">
+          <span><!--lit-node 4--><rh-icon    set="ui" size="md" icon="check-circle-fill" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
+  line-height: 0;
+  aspect-ratio: 1/1;
+  display: inline-flex;
+  place-content: center;
+}
+
+#container {
+  display: contents;
+}
+
+svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
+  fill: currentcolor;
+  aspect-ratio: 1/1;
+}
+
+.standard svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
+}
+
+.microns svg {
+  width: 12px;
+}
+</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part dS1mROSl53E=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm7.795 12.796-8.646 8.646c-.317.317-.733.475-1.149.475s-.832-.158-1.149-.475l-4.646-4.646a1.126 1.126 0 0 1 1.59-1.592L14 19.41l8.205-8.205a1.124 1.124 0 1 1 1.59 1.592Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon><!--lit-part-->Do<!--/lit-part--></span>
+          <slot></slot>
+        </figcaption>
+      </figure>
+    <!--/lit-part--></template>
+  <uxdot-example   width-adjustment="360px" slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: block;
   container-type: inline-size;
   container-name: host;
@@ -8830,12 +9132,167 @@ svg {
       <!--lit-node 0--><div id="container"
            part="container"
            class="on  widthAdjustment "
-           style="--_width: 968px; --_alignment: center">
+           style="--_width: 360px; --_alignment: center">
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-  <img src="../footer-best-practice-2.png" alt="Image of a desktop footer with an accordion replacing four columns of links which is incorrect usage" width="1000" height="796">
-</uxdot-example>
+    <img src="../footer-best-practices-using-accordions-do.svg" alt="Four accordions in a website-specific footer at a 360 pixel breakpoint" width="360" height="1106">
+  </uxdot-example>
+  <p>Organize footer links in accordions for small breakpoints only.</p>
+</uxdot-best-practice>
+<uxdot-best-practice  variant="dont"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  margin-block: var(--rh-space-2xl);
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rh-space-2xl);
+  margin-block: var(--rh-space-2xl);
+}
+
+span {
+  font-family: var(--rh-font-family-heading);
+  font-size: var(--rh-font-size-heading-xs);
+  font-weight: var(--rh-font-weight-heading-medium);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--rh-space-md);
+}
+
+#do span {
+  color: var(--rh-color-status-success);
+}
+
+#dont span {
+  color: var(--rh-color-status-danger);
+}
+
+::slotted(uxdot-example) {
+  margin: 0 !important;
+}
+
+figure {
+  margin: 0 !important;
+}
+</style><!--lit-part /OqYtWIsZqM=-->
+      <figure id="container">
+        <slot name="image"></slot>
+        <!--lit-node 2--><figcaption id="dont">
+          <span><!--lit-node 4--><rh-icon    set="ui" size="md" icon="close-circle-fill" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
+  line-height: 0;
+  aspect-ratio: 1/1;
+  display: inline-flex;
+  place-content: center;
+}
+
+#container {
+  display: contents;
+}
+
+svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
+  fill: currentcolor;
+  aspect-ratio: 1/1;
+}
+
+.standard svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
+}
+
+.microns svg {
+  width: 12px;
+}
+</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part iKtDDm471k4=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm5.796 20.204c.438.44.438 1.152 0 1.592a1.122 1.122 0 0 1-1.592-.001L16 17.593l-4.204 4.204a1.122 1.122 0 0 1-1.592-.001 1.128 1.128 0 0 1 0-1.59L14.408 16l-4.204-4.204a1.126 1.126 0 0 1 1.592-1.592L16 14.408l4.204-4.204a1.126 1.126 0 0 1 1.592 1.592L17.592 16l4.204 4.204Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon><!--lit-part-->Don&#39;t<!--/lit-part--></span>
+          <slot></slot>
+        </figcaption>
+      </figure>
+    <!--/lit-part--></template>
+  <uxdot-example   width-adjustment="992px" slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  container-type: inline-size;
+  container-name: host;
+  margin-block-end: var(--rh-space-2xl);
+}
+
+:host([transparent]) {
+  --rh-color-surface: transparent;
+}
+
+#container {
+  padding: var(--rh-space-2xl);
+  display: flex;
+  flex-direction: column;
+  align-items: var(--_alignment, center);
+  justify-content: center;
+  border-width: var(--rh-border-width-sm);
+  border-style: solid;
+  border-color: var(--rh-color-border-subtle);
+  border-radius: var(--rh-border-radius-default);
+  background-color: var(--rh-color-surface);
+  color: var(--rh-color-text-primary);
+}
+
+::slotted(*) {
+  display: flex;
+  flex-direction: column;
+  align-items: var(--_alignment, center);
+  justify-content: center;
+  max-width: 100%;
+  height: auto;
+}
+
+.widthAdjustment ::slotted(*) {
+  width: var(--_width);
+}
+
+:host([variant='full']) #container {
+  padding: 0;
+}
+
+:host([danger]) #container {
+  --rh-color-border-subtle: var(--rh-color-border-destructive);
+
+  background-image: url('/assets/best-practices-danger-icon.svg');
+  background-position-x: 8px;
+  background-position-y: 8px;
+  background-repeat: no-repeat;
+}
+
+:host([no-border]:not([danger])) #container {
+  border: none;
+}
+
+@container host (min-width: 576px) {
+  #container {
+    padding: var(--rh-space-3xl);
+  }
+}
+
+@container host (min-width: 768px) {
+  #container {
+    padding: var(--rh-space-4xl);
+  }
+}
+</style><!--lit-part DbmYZodZUIs=-->
+      <!--lit-node 0--><div id="container"
+           part="container"
+           class="on  widthAdjustment "
+           style="--_width: 992px; --_alignment: center">
+        <slot></slot>
+      </div>
+    <!--/lit-part--></template>
+    <img src="../footer-best-practices-using-accordions-dont.svg" alt="Four accordions in a website-specific footer at a 992 pixel breakpoint" width="992" height="635">
+  </uxdot-example>
+  <p>Do not replace columns with an accordion if there is still adequate space.</p>
+</uxdot-best-practice>
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: flex;
   margin-block-end: var(--rh-space-lg);
@@ -8908,12 +9365,87 @@ svg {
     <!--/lit-part--></template></rh-icon>
       </button>
     <!--/lit-part--></template>
-  <h3 id="website-specific-footer-1" tabindex="-1">
-    <a href="#website-specific-footer-1">Website-specific footer</a><a>
+  <h3 id="footer-types" tabindex="-1">
+    <a href="#footer-types">Footer types</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<p>Do not use the website-specific footer without the universal footer.</p>
-<uxdot-example   width-adjustment="968px" danger><template shadowroot="open" shadowrootmode="open"><style>:host {
+<div class="grid sm-two-columns">
+  <uxdot-best-practice  variant="do"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  margin-block: var(--rh-space-2xl);
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rh-space-2xl);
+  margin-block: var(--rh-space-2xl);
+}
+
+span {
+  font-family: var(--rh-font-family-heading);
+  font-size: var(--rh-font-size-heading-xs);
+  font-weight: var(--rh-font-weight-heading-medium);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--rh-space-md);
+}
+
+#do span {
+  color: var(--rh-color-status-success);
+}
+
+#dont span {
+  color: var(--rh-color-status-danger);
+}
+
+::slotted(uxdot-example) {
+  margin: 0 !important;
+}
+
+figure {
+  margin: 0 !important;
+}
+</style><!--lit-part /OqYtWIsZqM=-->
+      <figure id="container">
+        <slot name="image"></slot>
+        <!--lit-node 2--><figcaption id="do">
+          <span><!--lit-node 4--><rh-icon    set="ui" size="md" icon="check-circle-fill" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
+  line-height: 0;
+  aspect-ratio: 1/1;
+  display: inline-flex;
+  place-content: center;
+}
+
+#container {
+  display: contents;
+}
+
+svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
+  fill: currentcolor;
+  aspect-ratio: 1/1;
+}
+
+.standard svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
+}
+
+.microns svg {
+  width: 12px;
+}
+</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part dS1mROSl53E=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm7.795 12.796-8.646 8.646c-.317.317-.733.475-1.149.475s-.832-.158-1.149-.475l-4.646-4.646a1.126 1.126 0 0 1 1.59-1.592L14 19.41l8.205-8.205a1.124 1.124 0 1 1 1.59 1.592Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon><!--lit-part-->Do<!--/lit-part--></span>
+          <slot></slot>
+        </figcaption>
+      </figure>
+    <!--/lit-part--></template>
+    <uxdot-example   width-adjustment="295px" slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: block;
   container-type: inline-size;
   container-name: host;
@@ -8983,12 +9515,168 @@ svg {
       <!--lit-node 0--><div id="container"
            part="container"
            class="on  widthAdjustment "
-           style="--_width: 968px; --_alignment: center">
+           style="--_width: 295px; --_alignment: center">
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-  <img src="../footer-best-practice-3.png" alt="Image of a footer missing the universal footer which is incorrect usage" width="1000" height="796">
-</uxdot-example>
+      <img src="../footer-best-practices-footer-types-do.svg" alt="Wireframe of a webpage that shows both the website-specific footer and universal footer" width="295" height="360">
+    </uxdot-example>
+    <p>The universal footer should always be present, even if there’s a website-specific footer.</p>
+  </uxdot-best-practice>
+  <uxdot-best-practice  variant="dont"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  margin-block: var(--rh-space-2xl);
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rh-space-2xl);
+  margin-block: var(--rh-space-2xl);
+}
+
+span {
+  font-family: var(--rh-font-family-heading);
+  font-size: var(--rh-font-size-heading-xs);
+  font-weight: var(--rh-font-weight-heading-medium);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--rh-space-md);
+}
+
+#do span {
+  color: var(--rh-color-status-success);
+}
+
+#dont span {
+  color: var(--rh-color-status-danger);
+}
+
+::slotted(uxdot-example) {
+  margin: 0 !important;
+}
+
+figure {
+  margin: 0 !important;
+}
+</style><!--lit-part /OqYtWIsZqM=-->
+      <figure id="container">
+        <slot name="image"></slot>
+        <!--lit-node 2--><figcaption id="dont">
+          <span><!--lit-node 4--><rh-icon    set="ui" size="md" icon="close-circle-fill" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
+  line-height: 0;
+  aspect-ratio: 1/1;
+  display: inline-flex;
+  place-content: center;
+}
+
+#container {
+  display: contents;
+}
+
+svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
+  fill: currentcolor;
+  aspect-ratio: 1/1;
+}
+
+.standard svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
+}
+
+.microns svg {
+  width: 12px;
+}
+</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part iKtDDm471k4=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm5.796 20.204c.438.44.438 1.152 0 1.592a1.122 1.122 0 0 1-1.592-.001L16 17.593l-4.204 4.204a1.122 1.122 0 0 1-1.592-.001 1.128 1.128 0 0 1 0-1.59L14.408 16l-4.204-4.204a1.126 1.126 0 0 1 1.592-1.592L16 14.408l4.204-4.204a1.126 1.126 0 0 1 1.592 1.592L17.592 16l4.204 4.204Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon><!--lit-part-->Don&#39;t<!--/lit-part--></span>
+          <slot></slot>
+        </figcaption>
+      </figure>
+    <!--/lit-part--></template>
+    <uxdot-example   width-adjustment="295px" slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  container-type: inline-size;
+  container-name: host;
+  margin-block-end: var(--rh-space-2xl);
+}
+
+:host([transparent]) {
+  --rh-color-surface: transparent;
+}
+
+#container {
+  padding: var(--rh-space-2xl);
+  display: flex;
+  flex-direction: column;
+  align-items: var(--_alignment, center);
+  justify-content: center;
+  border-width: var(--rh-border-width-sm);
+  border-style: solid;
+  border-color: var(--rh-color-border-subtle);
+  border-radius: var(--rh-border-radius-default);
+  background-color: var(--rh-color-surface);
+  color: var(--rh-color-text-primary);
+}
+
+::slotted(*) {
+  display: flex;
+  flex-direction: column;
+  align-items: var(--_alignment, center);
+  justify-content: center;
+  max-width: 100%;
+  height: auto;
+}
+
+.widthAdjustment ::slotted(*) {
+  width: var(--_width);
+}
+
+:host([variant='full']) #container {
+  padding: 0;
+}
+
+:host([danger]) #container {
+  --rh-color-border-subtle: var(--rh-color-border-destructive);
+
+  background-image: url('/assets/best-practices-danger-icon.svg');
+  background-position-x: 8px;
+  background-position-y: 8px;
+  background-repeat: no-repeat;
+}
+
+:host([no-border]:not([danger])) #container {
+  border: none;
+}
+
+@container host (min-width: 576px) {
+  #container {
+    padding: var(--rh-space-3xl);
+  }
+}
+
+@container host (min-width: 768px) {
+  #container {
+    padding: var(--rh-space-4xl);
+  }
+}
+</style><!--lit-part DbmYZodZUIs=-->
+      <!--lit-node 0--><div id="container"
+           part="container"
+           class="on  widthAdjustment "
+           style="--_width: 295px; --_alignment: center">
+        <slot></slot>
+      </div>
+    <!--/lit-part--></template>
+      <img src="../footer-best-practices-footer-types-dont.svg" alt="Wireframe of a webpage that includes only the website-specific footer" width="295" height="360">
+    </uxdot-example>
+    <p>Do not use the website-specific footer without the universal footer.</p>
+  </uxdot-best-practice>
+</div>
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: flex;
   margin-block-end: var(--rh-space-lg);
@@ -9061,13 +9749,86 @@ svg {
     <!--/lit-part--></template></rh-icon>
       </button>
     <!--/lit-part--></template>
-  <h3 id="custom-universal-footer" tabindex="-1">
-    <a href="#custom-universal-footer">Custom universal footer</a><a>
+  <h3 id="universal-footer-2" tabindex="-1">
+    <a href="#universal-footer-2">Universal footer</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<p>Do not create your own custom universal footer by changing, deleting, or
-rearranging any elements.</p>
-<uxdot-example   width-adjustment="968px" danger><template shadowroot="open" shadowrootmode="open"><style>:host {
+<uxdot-best-practice  variant="do"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  margin-block: var(--rh-space-2xl);
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rh-space-2xl);
+  margin-block: var(--rh-space-2xl);
+}
+
+span {
+  font-family: var(--rh-font-family-heading);
+  font-size: var(--rh-font-size-heading-xs);
+  font-weight: var(--rh-font-weight-heading-medium);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--rh-space-md);
+}
+
+#do span {
+  color: var(--rh-color-status-success);
+}
+
+#dont span {
+  color: var(--rh-color-status-danger);
+}
+
+::slotted(uxdot-example) {
+  margin: 0 !important;
+}
+
+figure {
+  margin: 0 !important;
+}
+</style><!--lit-part /OqYtWIsZqM=-->
+      <figure id="container">
+        <slot name="image"></slot>
+        <!--lit-node 2--><figcaption id="do">
+          <span><!--lit-node 4--><rh-icon    set="ui" size="md" icon="check-circle-fill" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
+  line-height: 0;
+  aspect-ratio: 1/1;
+  display: inline-flex;
+  place-content: center;
+}
+
+#container {
+  display: contents;
+}
+
+svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
+  fill: currentcolor;
+  aspect-ratio: 1/1;
+}
+
+.standard svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
+}
+
+.microns svg {
+  width: 12px;
+}
+</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part dS1mROSl53E=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm7.795 12.796-8.646 8.646c-.317.317-.733.475-1.149.475s-.832-.158-1.149-.475l-4.646-4.646a1.126 1.126 0 0 1 1.59-1.592L14 19.41l8.205-8.205a1.124 1.124 0 1 1 1.59 1.592Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon><!--lit-part-->Do<!--/lit-part--></span>
+          <slot></slot>
+        </figcaption>
+      </figure>
+    <!--/lit-part--></template>
+  <uxdot-example   width-adjustment="992px" slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: block;
   container-type: inline-size;
   container-name: host;
@@ -9137,12 +9898,167 @@ rearranging any elements.</p>
       <!--lit-node 0--><div id="container"
            part="container"
            class="on  widthAdjustment "
-           style="--_width: 968px; --_alignment: center">
+           style="--_width: 992px; --_alignment: center">
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-  <img src="../footer-best-practice-4.png" alt="Image of a universal footer with a new design which is incorrect usage" width="1000" height="104">
-</uxdot-example>
+    <img src="../footer-best-practices-universal-footer-do.svg" alt="Universal footer with gray logo, left-aligned links and text, and copyright information" width="992" height="178">
+  </uxdot-example>
+  <p>The universal footer should look the same across all Red Hat websites.</p>
+</uxdot-best-practice>
+<uxdot-best-practice  variant="dont"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  margin-block: var(--rh-space-2xl);
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rh-space-2xl);
+  margin-block: var(--rh-space-2xl);
+}
+
+span {
+  font-family: var(--rh-font-family-heading);
+  font-size: var(--rh-font-size-heading-xs);
+  font-weight: var(--rh-font-weight-heading-medium);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--rh-space-md);
+}
+
+#do span {
+  color: var(--rh-color-status-success);
+}
+
+#dont span {
+  color: var(--rh-color-status-danger);
+}
+
+::slotted(uxdot-example) {
+  margin: 0 !important;
+}
+
+figure {
+  margin: 0 !important;
+}
+</style><!--lit-part /OqYtWIsZqM=-->
+      <figure id="container">
+        <slot name="image"></slot>
+        <!--lit-node 2--><figcaption id="dont">
+          <span><!--lit-node 4--><rh-icon    set="ui" size="md" icon="close-circle-fill" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
+  line-height: 0;
+  aspect-ratio: 1/1;
+  display: inline-flex;
+  place-content: center;
+}
+
+#container {
+  display: contents;
+}
+
+svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
+  fill: currentcolor;
+  aspect-ratio: 1/1;
+}
+
+.standard svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
+}
+
+.microns svg {
+  width: 12px;
+}
+</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part iKtDDm471k4=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm5.796 20.204c.438.44.438 1.152 0 1.592a1.122 1.122 0 0 1-1.592-.001L16 17.593l-4.204 4.204a1.122 1.122 0 0 1-1.592-.001 1.128 1.128 0 0 1 0-1.59L14.408 16l-4.204-4.204a1.126 1.126 0 0 1 1.592-1.592L16 14.408l4.204-4.204a1.126 1.126 0 0 1 1.592 1.592L17.592 16l4.204 4.204Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon><!--lit-part-->Don&#39;t<!--/lit-part--></span>
+          <slot></slot>
+        </figcaption>
+      </figure>
+    <!--/lit-part--></template>
+  <uxdot-example   width-adjustment="992px" slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  container-type: inline-size;
+  container-name: host;
+  margin-block-end: var(--rh-space-2xl);
+}
+
+:host([transparent]) {
+  --rh-color-surface: transparent;
+}
+
+#container {
+  padding: var(--rh-space-2xl);
+  display: flex;
+  flex-direction: column;
+  align-items: var(--_alignment, center);
+  justify-content: center;
+  border-width: var(--rh-border-width-sm);
+  border-style: solid;
+  border-color: var(--rh-color-border-subtle);
+  border-radius: var(--rh-border-radius-default);
+  background-color: var(--rh-color-surface);
+  color: var(--rh-color-text-primary);
+}
+
+::slotted(*) {
+  display: flex;
+  flex-direction: column;
+  align-items: var(--_alignment, center);
+  justify-content: center;
+  max-width: 100%;
+  height: auto;
+}
+
+.widthAdjustment ::slotted(*) {
+  width: var(--_width);
+}
+
+:host([variant='full']) #container {
+  padding: 0;
+}
+
+:host([danger]) #container {
+  --rh-color-border-subtle: var(--rh-color-border-destructive);
+
+  background-image: url('/assets/best-practices-danger-icon.svg');
+  background-position-x: 8px;
+  background-position-y: 8px;
+  background-repeat: no-repeat;
+}
+
+:host([no-border]:not([danger])) #container {
+  border: none;
+}
+
+@container host (min-width: 576px) {
+  #container {
+    padding: var(--rh-space-3xl);
+  }
+}
+
+@container host (min-width: 768px) {
+  #container {
+    padding: var(--rh-space-4xl);
+  }
+}
+</style><!--lit-part DbmYZodZUIs=-->
+      <!--lit-node 0--><div id="container"
+           part="container"
+           class="on  widthAdjustment "
+           style="--_width: 992px; --_alignment: center">
+        <slot></slot>
+      </div>
+    <!--/lit-part--></template>
+    <img src="../footer-best-practices-universal-footer-dont.svg" alt="Universal footer with red logo, right-aligned links and text, and no copyright information" width="992" height="134">
+  </uxdot-example>
+  <p>Do not create your own custom universal footer by changing, deleting, or rearranging any elements.</p>
+</uxdot-best-practice>
 
 
       
