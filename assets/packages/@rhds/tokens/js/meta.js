@@ -19418,7 +19418,7 @@ export const tokens = new Map([
           "example": "Display"
         }
       },
-      "$value": "RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif",
+      "$value": "RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif",
       "attributes": {
         "category": "typography",
         "type": "font-family",
@@ -19437,14 +19437,6 @@ export const tokens = new Map([
         "$value": [
           "RedHatDisplay",
           "Red Hat Display",
-          "Noto Sans Arabic",
-          "Noto Sans Hebrew",
-          "Noto Sans JP",
-          "Noto Sans KR",
-          "Noto Sans Malayalam",
-          "Noto Sans SC",
-          "Noto Sans TC",
-          "Noto Sans Thai",
           "Helvetica",
           "Arial",
           "sans-serif"
@@ -19472,7 +19464,7 @@ export const tokens = new Map([
           "example": "Body text"
         }
       },
-      "$value": "RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif",
+      "$value": "RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif",
       "attributes": {
         "category": "typography",
         "type": "font-family",
@@ -19491,14 +19483,6 @@ export const tokens = new Map([
         "$value": [
           "RedHatText",
           "Red Hat Text",
-          "Noto Sans Arabic",
-          "Noto Sans Hebrew",
-          "Noto Sans JP",
-          "Noto Sans KR",
-          "Noto Sans Malayalam",
-          "Noto Sans SC",
-          "Noto Sans TC",
-          "Noto Sans Thai",
           "Helvetica",
           "Arial",
           "sans-serif"
@@ -19560,6 +19544,342 @@ export const tokens = new Map([
         "font",
         "family",
         "code"
+      ]
+    }
+  ],
+  [
+    "--rh-font-family-lang-ar",
+    {
+      "$description": "Arabic font family",
+      "$extensions": {
+        "com.redhat.ux": {
+          "example": "Arabic"
+        }
+      },
+      "$value": "'Noto Sans Arabic'",
+      "attributes": {
+        "category": "typography",
+        "type": "font-family",
+        "item": "lang-ar"
+      },
+      "filePath": "tokens/font/family.yml",
+      "isSource": true,
+      "$type": "fontFamily",
+      "original": {
+        "$description": "Arabic font family",
+        "$extensions": {
+          "com.redhat.ux": {
+            "example": "Arabic"
+          }
+        },
+        "$value": [
+          "Noto Sans Arabic"
+        ],
+        "attributes": {
+          "category": "typography",
+          "type": "font-family"
+        },
+        "$type": "fontFamily"
+      },
+      "name": "rh-font-family-lang-ar",
+      "path": [
+        "font",
+        "family",
+        "lang-ar"
+      ]
+    }
+  ],
+  [
+    "--rh-font-family-lang-he",
+    {
+      "$description": "Hebrew font family",
+      "$extensions": {
+        "com.redhat.ux": {
+          "example": "Hebrew"
+        }
+      },
+      "$value": "'Noto Sans Hebrew'",
+      "attributes": {
+        "category": "typography",
+        "type": "font-family",
+        "item": "lang-he"
+      },
+      "filePath": "tokens/font/family.yml",
+      "isSource": true,
+      "$type": "fontFamily",
+      "original": {
+        "$description": "Hebrew font family",
+        "$extensions": {
+          "com.redhat.ux": {
+            "example": "Hebrew"
+          }
+        },
+        "$value": [
+          "Noto Sans Hebrew"
+        ],
+        "attributes": {
+          "category": "typography",
+          "type": "font-family"
+        },
+        "$type": "fontFamily"
+      },
+      "name": "rh-font-family-lang-he",
+      "path": [
+        "font",
+        "family",
+        "lang-he"
+      ]
+    }
+  ],
+  [
+    "--rh-font-family-lang-ja",
+    {
+      "$description": "Japanese font family",
+      "$extensions": {
+        "com.redhat.ux": {
+          "example": "Japanese"
+        }
+      },
+      "$value": "'Noto Sans JP'",
+      "attributes": {
+        "category": "typography",
+        "type": "font-family",
+        "item": "lang-ja"
+      },
+      "filePath": "tokens/font/family.yml",
+      "isSource": true,
+      "$type": "fontFamily",
+      "original": {
+        "$description": "Japanese font family",
+        "$extensions": {
+          "com.redhat.ux": {
+            "example": "Japanese"
+          }
+        },
+        "$value": [
+          "Noto Sans JP"
+        ],
+        "attributes": {
+          "category": "typography",
+          "type": "font-family"
+        },
+        "$type": "fontFamily"
+      },
+      "name": "rh-font-family-lang-ja",
+      "path": [
+        "font",
+        "family",
+        "lang-ja"
+      ]
+    }
+  ],
+  [
+    "--rh-font-family-lang-ko",
+    {
+      "$description": "Korean font family",
+      "$extensions": {
+        "com.redhat.ux": {
+          "example": "Korean"
+        }
+      },
+      "$value": "'Noto Sans KR'",
+      "attributes": {
+        "category": "typography",
+        "type": "font-family",
+        "item": "lang-ko"
+      },
+      "filePath": "tokens/font/family.yml",
+      "isSource": true,
+      "$type": "fontFamily",
+      "original": {
+        "$description": "Korean font family",
+        "$extensions": {
+          "com.redhat.ux": {
+            "example": "Korean"
+          }
+        },
+        "$value": [
+          "Noto Sans KR"
+        ],
+        "attributes": {
+          "category": "typography",
+          "type": "font-family"
+        },
+        "$type": "fontFamily"
+      },
+      "name": "rh-font-family-lang-ko",
+      "path": [
+        "font",
+        "family",
+        "lang-ko"
+      ]
+    }
+  ],
+  [
+    "--rh-font-family-lang-hi",
+    {
+      "$description": "Malayalam font family",
+      "$extensions": {
+        "com.redhat.ux": {
+          "example": "Malayalam"
+        }
+      },
+      "$value": "'Noto Sans Malayalam'",
+      "attributes": {
+        "category": "typography",
+        "type": "font-family",
+        "item": "lang-hi"
+      },
+      "filePath": "tokens/font/family.yml",
+      "isSource": true,
+      "$type": "fontFamily",
+      "original": {
+        "$description": "Malayalam font family",
+        "$extensions": {
+          "com.redhat.ux": {
+            "example": "Malayalam"
+          }
+        },
+        "$value": [
+          "Noto Sans Malayalam"
+        ],
+        "attributes": {
+          "category": "typography",
+          "type": "font-family"
+        },
+        "$type": "fontFamily"
+      },
+      "name": "rh-font-family-lang-hi",
+      "path": [
+        "font",
+        "family",
+        "lang-hi"
+      ]
+    }
+  ],
+  [
+    "--rh-font-family-lang-th",
+    {
+      "$description": "Thai font family",
+      "$extensions": {
+        "com.redhat.ux": {
+          "example": "Thai"
+        }
+      },
+      "$value": "'Noto Sans Thai'",
+      "attributes": {
+        "category": "typography",
+        "type": "font-family",
+        "item": "lang-th"
+      },
+      "filePath": "tokens/font/family.yml",
+      "isSource": true,
+      "$type": "fontFamily",
+      "original": {
+        "$description": "Thai font family",
+        "$extensions": {
+          "com.redhat.ux": {
+            "example": "Thai"
+          }
+        },
+        "$value": [
+          "Noto Sans Thai"
+        ],
+        "attributes": {
+          "category": "typography",
+          "type": "font-family"
+        },
+        "$type": "fontFamily"
+      },
+      "name": "rh-font-family-lang-th",
+      "path": [
+        "font",
+        "family",
+        "lang-th"
+      ]
+    }
+  ],
+  [
+    "--rh-font-family-lang-zh-cn",
+    {
+      "$description": "Simplified Chinese font family",
+      "$extensions": {
+        "com.redhat.ux": {
+          "example": "Simplified Chinese"
+        }
+      },
+      "$value": "'Noto Sans SC'",
+      "attributes": {
+        "category": "typography",
+        "type": "font-family",
+        "item": "lang-zh-cn"
+      },
+      "filePath": "tokens/font/family.yml",
+      "isSource": true,
+      "$type": "fontFamily",
+      "original": {
+        "$description": "Simplified Chinese font family",
+        "$extensions": {
+          "com.redhat.ux": {
+            "example": "Simplified Chinese"
+          }
+        },
+        "$value": [
+          "Noto Sans SC"
+        ],
+        "attributes": {
+          "category": "typography",
+          "type": "font-family"
+        },
+        "$type": "fontFamily"
+      },
+      "name": "rh-font-family-lang-zh-cn",
+      "path": [
+        "font",
+        "family",
+        "lang-zh-cn"
+      ]
+    }
+  ],
+  [
+    "--rh-font-family-lang-zh-hk",
+    {
+      "$description": "Traditional Chinese font family",
+      "$extensions": {
+        "com.redhat.ux": {
+          "example": "Traditional Chinese"
+        }
+      },
+      "$value": "'Noto Sans TC'",
+      "attributes": {
+        "category": "typography",
+        "type": "font-family",
+        "item": "lang-zh-hk"
+      },
+      "filePath": "tokens/font/family.yml",
+      "isSource": true,
+      "$type": "fontFamily",
+      "original": {
+        "$description": "Traditional Chinese font family",
+        "$extensions": {
+          "com.redhat.ux": {
+            "example": "Traditional Chinese"
+          }
+        },
+        "$value": [
+          "Noto Sans TC"
+        ],
+        "attributes": {
+          "category": "typography",
+          "type": "font-family"
+        },
+        "$type": "fontFamily"
+      },
+      "name": "rh-font-family-lang-zh-hk",
+      "path": [
+        "font",
+        "family",
+        "lang-zh-hk"
       ]
     }
   ],
@@ -20267,7 +20587,7 @@ export const tokens = new Map([
     "--rh-font-weight-heading-regular",
     {
       "$description": "Regular font weight for headings",
-      "$value": 300,
+      "$value": 400,
       "attributes": {
         "category": "typography",
         "type": "weight",
@@ -20279,7 +20599,7 @@ export const tokens = new Map([
       "$type": "fontWeight",
       "original": {
         "$description": "Regular font weight for headings",
-        "$value": 300,
+        "$value": 400,
         "attributes": {
           "category": "typography"
         },

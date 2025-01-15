@@ -562,11 +562,27 @@
   --rh-color-black-hsl: 0 0% 0%;
   --rh-color-black-rgb: 0 0 0;
   /* Heading font family */
-  --rh-font-family-heading: RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif;
+  --rh-font-family-heading: RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif;
   /* Body text font family */
-  --rh-font-family-body-text: RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif;
+  --rh-font-family-body-text: RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif;
   /* Code font family */
   --rh-font-family-code: RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace;
+  /* Arabic font family */
+  --rh-font-family-lang-ar: 'Noto Sans Arabic';
+  /* Hebrew font family */
+  --rh-font-family-lang-he: 'Noto Sans Hebrew';
+  /* Japanese font family */
+  --rh-font-family-lang-ja: 'Noto Sans JP';
+  /* Korean font family */
+  --rh-font-family-lang-ko: 'Noto Sans KR';
+  /* Malayalam font family */
+  --rh-font-family-lang-hi: 'Noto Sans Malayalam';
+  /* Thai font family */
+  --rh-font-family-lang-th: 'Noto Sans Thai';
+  /* Simplified Chinese font family */
+  --rh-font-family-lang-zh-cn: 'Noto Sans SC';
+  /* Traditional Chinese font family */
+  --rh-font-family-lang-zh-hk: 'Noto Sans TC';
   /* 12px font size */
   --rh-font-size-body-text-xs: 0.75rem;
   /* 14px font size */
@@ -612,7 +628,7 @@
   /* Medium font weight */
   --rh-font-weight-code-medium: 500;
   /* Regular font weight for headings */
-  --rh-font-weight-heading-regular: 300;
+  --rh-font-weight-heading-regular: 400;
   /* Medium font weight for headings */
   --rh-font-weight-heading-medium: 500;
   /* Bold font weight for headings */

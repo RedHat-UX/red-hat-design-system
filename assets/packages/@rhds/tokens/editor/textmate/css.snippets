@@ -1505,13 +1505,37 @@ snippet rhcolorblackrgb
   var(--rh-color-black-rgb${1:, 0 0 0})$2
 # Heading font family
 snippet rhfontfamilyheading
-  var(--rh-font-family-heading${1:, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif})$2
+  var(--rh-font-family-heading${1:, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif})$2
 # Body text font family
 snippet rhfontfamilybodytext
-  var(--rh-font-family-body-text${1:, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif})$2
+  var(--rh-font-family-body-text${1:, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif})$2
 # Code font family
 snippet rhfontfamilycode
   var(--rh-font-family-code${1:, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace})$2
+# Arabic font family
+snippet rhfontfamilylangar
+  var(--rh-font-family-lang-ar${1:, 'Noto Sans Arabic'})$2
+# Hebrew font family
+snippet rhfontfamilylanghe
+  var(--rh-font-family-lang-he${1:, 'Noto Sans Hebrew'})$2
+# Japanese font family
+snippet rhfontfamilylangja
+  var(--rh-font-family-lang-ja${1:, 'Noto Sans JP'})$2
+# Korean font family
+snippet rhfontfamilylangko
+  var(--rh-font-family-lang-ko${1:, 'Noto Sans KR'})$2
+# Malayalam font family
+snippet rhfontfamilylanghi
+  var(--rh-font-family-lang-hi${1:, 'Noto Sans Malayalam'})$2
+# Thai font family
+snippet rhfontfamilylangth
+  var(--rh-font-family-lang-th${1:, 'Noto Sans Thai'})$2
+# Simplified Chinese font family
+snippet rhfontfamilylangzhcn
+  var(--rh-font-family-lang-zh-cn${1:, 'Noto Sans SC'})$2
+# Traditional Chinese font family
+snippet rhfontfamilylangzhhk
+  var(--rh-font-family-lang-zh-hk${1:, 'Noto Sans TC'})$2
 # 12px font size
 snippet rhfontsizebodytextxs
   var(--rh-font-size-body-text-xs${1:, 0.75rem})$2
@@ -1580,7 +1604,7 @@ snippet rhfontweightcodemedium
   var(--rh-font-weight-code-medium${1:, 500})$2
 # Regular font weight for headings
 snippet rhfontweightheadingregular
-  var(--rh-font-weight-heading-regular${1:, 300})$2
+  var(--rh-font-weight-heading-regular${1:, 400})$2
 # Medium font weight for headings
 snippet rhfontweightheadingmedium
   var(--rh-font-weight-heading-medium${1:, 500})$2

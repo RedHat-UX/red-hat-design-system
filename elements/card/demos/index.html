@@ -53,8 +53,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.4/core.js",
     "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.4/core.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
@@ -272,7 +272,7 @@ a,
   border-end-end-radius: var(--rh-border-radius-default, 3px) !important;
   clip: rect(0, 0, 0, 0) !important;
   color: var(--rh-color-interactive-primary-default-on-light, #0066cc) !important;
-  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif) !important;
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif) !important;
   font-size: var(--rh-font-size-body-text-md, 1rem) !important;
   font-weight: var(--rh-font-weight-heading-bold, 700) !important;
   height: 1px !important;
@@ -2027,7 +2027,7 @@ a {
     var(--rh-tag-padding-block-end, var(--rh-space-xs, 4px))
     var(--rh-tag-padding-inline-start, var(--rh-space-md, 8px));
   gap: var(--rh-space-xs, 4px);
-  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
   font-weight: var(--rh-font-weight-body-text-regular, 400);
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
   line-height: var(--rh-line-height-body-text, 1.5);
@@ -2459,7 +2459,7 @@ a {
     var(--rh-tag-padding-block-end, var(--rh-space-xs, 4px))
     var(--rh-tag-padding-inline-start, var(--rh-space-md, 8px));
   gap: var(--rh-space-xs, 4px);
-  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
   font-weight: var(--rh-font-weight-body-text-regular, 400);
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
   line-height: var(--rh-line-height-body-text, 1.5);
@@ -2829,7 +2829,7 @@ a {
     var(--rh-tag-padding-block-end, var(--rh-space-xs, 4px))
     var(--rh-tag-padding-inline-start, var(--rh-space-md, 8px));
   gap: var(--rh-space-xs, 4px);
-  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
   font-weight: var(--rh-font-weight-body-text-regular, 400);
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
   line-height: var(--rh-line-height-body-text, 1.5);
@@ -5133,14 +5133,14 @@ import '@rhds/elements/rh-card/rh-card.js';
       <script type="sample/css" filename="demo/rh-card-color-context-inline-0.css">rh-context-demo::part(demo) {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-  gap: var(--rh-space-lg, 16px);
+  gap: var(--rh-space-lg);
 }
 
 rh-card {
   &.full {
     &::part(header) { margin: 0; }
     & :is(h1, h2, h3, h4, h5, h6)[slot="header"] {
-      padding-inline: var(--rh-space-xl, 24px);
+      padding-inline: var(--rh-space-xl);
     }
     & img {
       display: block;
@@ -5149,16 +5149,16 @@ rh-card {
     }
   }
   &.bar {
-    --rh-card-header-background-on-light: var(--rh-color-surface-light, #e0e0e0);
-    --rh-card-header-background-on-dark: var(--rh-color-surface-dark, #383838);
+    --rh-card-header-background-on-light: var(--rh-color-surface-light);
+    --rh-card-header-background-on-dark: var(--rh-color-surface-dark);
     &::part(header) {
       margin: 0;
-      padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
+      padding: var(--rh-space-lg) var(--rh-space-2xl);
       flex-direction: row;
-      gap: var(--rh-space-lg, 16px);
-      font-weight: var(--rh-font-weight-heading-regular, 300);
-      font-size: var(--rh-font-size-body-text-md, 1rem);
-      font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+      gap: var(--rh-space-lg);
+      font-weight: var(--rh-font-weight-heading-regular);
+      font-size: var(--rh-font-size-body-text-md);
+      font-family: var(--rh-font-family-body-text);
       text-transform: uppercase; /* deprecated? */
     }
   }
@@ -5262,16 +5262,16 @@ rh-card[variant="promo"] {
 </script>
       <script type="sample/css" filename="demo/rh-card-sticky-pattern-inline-0.css">#card-pattern-sticky {
   display: grid;
-  gap: var(--rh-space-md, 16px);
+  gap: var(--rh-space-md);
   grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
   & rh-card {
     &::part(header) {
-      gap: var(--rh-space-xl, 24px);
+      gap: var(--rh-space-xl);
       flex-flow: column;
     }
     & .title {
-      font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-      font-size: var(--rh-font-size-body-text-md, 1rem);
+      font-family: var(--rh-font-family-body-text);
+      font-size: var(--rh-font-size-body-text-md);
       text-transform: uppercase;
     }
     & > p {
@@ -5307,13 +5307,13 @@ import '@rhds/elements/rh-card/rh-card.js';
     }
     & h2 {
       text-transform: uppercase;
-      font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-      font-size: var(--rh-font-size-body-text-md, 1rem);
-      font-weight: var(--rh-font-weight-body-text-regular, 400);
+      font-family: var(--rh-font-family-body-text);
+      font-size: var(--rh-font-size-body-text-md);
+      font-weight: var(--rh-font-weight-body-text-regular);
     }
     & svg {
       align-self: center;
-      margin-block-end: var(--rh-space-2xl, 32px);
+      margin-block-end: var(--rh-space-2xl);
     }
   }
 }
@@ -5337,20 +5337,20 @@ rh-card {
 }
 
 rh-card.bar {
-  --rh-card-heading-font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-  --rh-card-heading-font-weight: var(--rh-font-weight-body-text-regular, 400);
-  --rh-card-heading-font-size: var(--rh-font-size-body-text-md, 1rem);
+  --rh-card-heading-font-family: var(--rh-font-family-body-text);
+  --rh-card-heading-font-weight: var(--rh-font-weight-body-text-regular);
+  --rh-card-heading-font-size: var(--rh-font-size-body-text-md);
   &::part(header) {
     margin: 0;
-    padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
-    background-color: var(--_header-bg, var(--rh-color-surface-light, #e0e0e0));
+    padding: var(--rh-space-lg) var(--rh-space-xl);
+    background-color: var(--_header-bg, var(--rh-color-surface-light));
     text-transform: uppercase;
   }
 }
 
 rh-card.image {
-  --rh-card-heading-font-weight: var(--rh-font-weight-heading-medium, 500);
-  --rh-card-heading-font-size: var(--rh-font-size-heading-md, 1.75rem);
+  --rh-card-heading-font-weight: var(--rh-font-weight-heading-medium);
+  --rh-card-heading-font-size: var(--rh-font-size-heading-md);
   &::part(header) {
     margin: 0;
   }
@@ -5364,7 +5364,7 @@ rh-card.image {
   &.heading {
     & h2 {
       margin-block-start: 0;
-      margin-block-end: var(--rh-space-lg, 16px);
+      margin-block-end: var(--rh-space-lg);
     }
   }
 }
@@ -7907,7 +7907,7 @@ a:after,
   position: relative;
   white-space: nowrap;
   color: var(--_color);
-  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   font-weight: 600; /* WARNING: not a token value */
   line-height: var(--rh-line-height-body-text, 1.5);
@@ -8229,7 +8229,7 @@ a:focus-within,
 
   & #container {
     border-style: solid;
-    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
     font-weight: var(--rh-font-weight-body-text-regular, 400);
     display: flex;
     flex-flow: row wrap;
@@ -8379,7 +8379,7 @@ a:after,
   position: relative;
   white-space: nowrap;
   color: var(--_color);
-  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   font-weight: 600; /* WARNING: not a token value */
   line-height: var(--rh-line-height-body-text, 1.5);
@@ -8701,7 +8701,7 @@ a:focus-within,
 
   & #container {
     border-style: solid;
-    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
     font-weight: var(--rh-font-weight-body-text-regular, 400);
     display: flex;
     flex-flow: row wrap;
@@ -8828,14 +8828,14 @@ import '@rhds/elements/rh-card/rh-card.js';
       <script type="sample/css" filename="demo/rh-card-color-context-inline-0.css">rh-context-demo::part(demo) {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-  gap: var(--rh-space-lg, 16px);
+  gap: var(--rh-space-lg);
 }
 
 rh-card {
   &.full {
     &::part(header) { margin: 0; }
     & :is(h1, h2, h3, h4, h5, h6)[slot="header"] {
-      padding-inline: var(--rh-space-xl, 24px);
+      padding-inline: var(--rh-space-xl);
     }
     & img {
       display: block;
@@ -8844,16 +8844,16 @@ rh-card {
     }
   }
   &.bar {
-    --rh-card-header-background-on-light: var(--rh-color-surface-light, #e0e0e0);
-    --rh-card-header-background-on-dark: var(--rh-color-surface-dark, #383838);
+    --rh-card-header-background-on-light: var(--rh-color-surface-light);
+    --rh-card-header-background-on-dark: var(--rh-color-surface-dark);
     &::part(header) {
       margin: 0;
-      padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
+      padding: var(--rh-space-lg) var(--rh-space-2xl);
       flex-direction: row;
-      gap: var(--rh-space-lg, 16px);
-      font-weight: var(--rh-font-weight-heading-regular, 300);
-      font-size: var(--rh-font-size-body-text-md, 1rem);
-      font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+      gap: var(--rh-space-lg);
+      font-weight: var(--rh-font-weight-heading-regular);
+      font-size: var(--rh-font-size-body-text-md);
+      font-family: var(--rh-font-family-body-text);
       text-transform: uppercase; /* deprecated? */
     }
   }
@@ -8957,16 +8957,16 @@ rh-card[variant="promo"] {
 </script>
       <script type="sample/css" filename="demo/rh-card-sticky-pattern-inline-0.css">#card-pattern-sticky {
   display: grid;
-  gap: var(--rh-space-md, 16px);
+  gap: var(--rh-space-md);
   grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
   & rh-card {
     &::part(header) {
-      gap: var(--rh-space-xl, 24px);
+      gap: var(--rh-space-xl);
       flex-flow: column;
     }
     & .title {
-      font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-      font-size: var(--rh-font-size-body-text-md, 1rem);
+      font-family: var(--rh-font-family-body-text);
+      font-size: var(--rh-font-size-body-text-md);
       text-transform: uppercase;
     }
     & > p {
@@ -9002,13 +9002,13 @@ import '@rhds/elements/rh-card/rh-card.js';
     }
     & h2 {
       text-transform: uppercase;
-      font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-      font-size: var(--rh-font-size-body-text-md, 1rem);
-      font-weight: var(--rh-font-weight-body-text-regular, 400);
+      font-family: var(--rh-font-family-body-text);
+      font-size: var(--rh-font-size-body-text-md);
+      font-weight: var(--rh-font-weight-body-text-regular);
     }
     & svg {
       align-self: center;
-      margin-block-end: var(--rh-space-2xl, 32px);
+      margin-block-end: var(--rh-space-2xl);
     }
   }
 }
@@ -9032,20 +9032,20 @@ rh-card {
 }
 
 rh-card.bar {
-  --rh-card-heading-font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-  --rh-card-heading-font-weight: var(--rh-font-weight-body-text-regular, 400);
-  --rh-card-heading-font-size: var(--rh-font-size-body-text-md, 1rem);
+  --rh-card-heading-font-family: var(--rh-font-family-body-text);
+  --rh-card-heading-font-weight: var(--rh-font-weight-body-text-regular);
+  --rh-card-heading-font-size: var(--rh-font-size-body-text-md);
   &::part(header) {
     margin: 0;
-    padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
-    background-color: var(--_header-bg, var(--rh-color-surface-light, #e0e0e0));
+    padding: var(--rh-space-lg) var(--rh-space-xl);
+    background-color: var(--_header-bg, var(--rh-color-surface-light));
     text-transform: uppercase;
   }
 }
 
 rh-card.image {
-  --rh-card-heading-font-weight: var(--rh-font-weight-heading-medium, 500);
-  --rh-card-heading-font-size: var(--rh-font-size-heading-md, 1.75rem);
+  --rh-card-heading-font-weight: var(--rh-font-weight-heading-medium);
+  --rh-card-heading-font-size: var(--rh-font-size-heading-md);
   &::part(header) {
     margin: 0;
   }
@@ -9059,7 +9059,7 @@ rh-card.image {
   &.heading {
     & h2 {
       margin-block-start: 0;
-      margin-block-end: var(--rh-space-lg, 16px);
+      margin-block-end: var(--rh-space-lg);
     }
   }
 }
@@ -11658,7 +11658,7 @@ a:after,
   position: relative;
   white-space: nowrap;
   color: var(--_color);
-  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   font-weight: 600; /* WARNING: not a token value */
   line-height: var(--rh-line-height-body-text, 1.5);
@@ -11980,7 +11980,7 @@ a:focus-within,
 
   & #container {
     border-style: solid;
-    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
     font-weight: var(--rh-font-weight-body-text-regular, 400);
     display: flex;
     flex-flow: row wrap;
@@ -12130,7 +12130,7 @@ a:after,
   position: relative;
   white-space: nowrap;
   color: var(--_color);
-  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   font-weight: 600; /* WARNING: not a token value */
   line-height: var(--rh-line-height-body-text, 1.5);
@@ -12452,7 +12452,7 @@ a:focus-within,
 
   & #container {
     border-style: solid;
-    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
     font-weight: var(--rh-font-weight-body-text-regular, 400);
     display: flex;
     flex-flow: row wrap;
@@ -12579,14 +12579,14 @@ import '@rhds/elements/rh-card/rh-card.js';
       <script type="sample/css" filename="demo/rh-card-color-context-inline-0.css">rh-context-demo::part(demo) {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-  gap: var(--rh-space-lg, 16px);
+  gap: var(--rh-space-lg);
 }
 
 rh-card {
   &.full {
     &::part(header) { margin: 0; }
     & :is(h1, h2, h3, h4, h5, h6)[slot="header"] {
-      padding-inline: var(--rh-space-xl, 24px);
+      padding-inline: var(--rh-space-xl);
     }
     & img {
       display: block;
@@ -12595,16 +12595,16 @@ rh-card {
     }
   }
   &.bar {
-    --rh-card-header-background-on-light: var(--rh-color-surface-light, #e0e0e0);
-    --rh-card-header-background-on-dark: var(--rh-color-surface-dark, #383838);
+    --rh-card-header-background-on-light: var(--rh-color-surface-light);
+    --rh-card-header-background-on-dark: var(--rh-color-surface-dark);
     &::part(header) {
       margin: 0;
-      padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
+      padding: var(--rh-space-lg) var(--rh-space-2xl);
       flex-direction: row;
-      gap: var(--rh-space-lg, 16px);
-      font-weight: var(--rh-font-weight-heading-regular, 300);
-      font-size: var(--rh-font-size-body-text-md, 1rem);
-      font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+      gap: var(--rh-space-lg);
+      font-weight: var(--rh-font-weight-heading-regular);
+      font-size: var(--rh-font-size-body-text-md);
+      font-family: var(--rh-font-family-body-text);
       text-transform: uppercase; /* deprecated? */
     }
   }
@@ -12708,16 +12708,16 @@ rh-card[variant="promo"] {
 </script>
       <script type="sample/css" filename="demo/rh-card-sticky-pattern-inline-0.css">#card-pattern-sticky {
   display: grid;
-  gap: var(--rh-space-md, 16px);
+  gap: var(--rh-space-md);
   grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
   & rh-card {
     &::part(header) {
-      gap: var(--rh-space-xl, 24px);
+      gap: var(--rh-space-xl);
       flex-flow: column;
     }
     & .title {
-      font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-      font-size: var(--rh-font-size-body-text-md, 1rem);
+      font-family: var(--rh-font-family-body-text);
+      font-size: var(--rh-font-size-body-text-md);
       text-transform: uppercase;
     }
     & > p {
@@ -12753,13 +12753,13 @@ import '@rhds/elements/rh-card/rh-card.js';
     }
     & h2 {
       text-transform: uppercase;
-      font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-      font-size: var(--rh-font-size-body-text-md, 1rem);
-      font-weight: var(--rh-font-weight-body-text-regular, 400);
+      font-family: var(--rh-font-family-body-text);
+      font-size: var(--rh-font-size-body-text-md);
+      font-weight: var(--rh-font-weight-body-text-regular);
     }
     & svg {
       align-self: center;
-      margin-block-end: var(--rh-space-2xl, 32px);
+      margin-block-end: var(--rh-space-2xl);
     }
   }
 }
@@ -12783,20 +12783,20 @@ rh-card {
 }
 
 rh-card.bar {
-  --rh-card-heading-font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-  --rh-card-heading-font-weight: var(--rh-font-weight-body-text-regular, 400);
-  --rh-card-heading-font-size: var(--rh-font-size-body-text-md, 1rem);
+  --rh-card-heading-font-family: var(--rh-font-family-body-text);
+  --rh-card-heading-font-weight: var(--rh-font-weight-body-text-regular);
+  --rh-card-heading-font-size: var(--rh-font-size-body-text-md);
   &::part(header) {
     margin: 0;
-    padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
-    background-color: var(--_header-bg, var(--rh-color-surface-light, #e0e0e0));
+    padding: var(--rh-space-lg) var(--rh-space-xl);
+    background-color: var(--_header-bg, var(--rh-color-surface-light));
     text-transform: uppercase;
   }
 }
 
 rh-card.image {
-  --rh-card-heading-font-weight: var(--rh-font-weight-heading-medium, 500);
-  --rh-card-heading-font-size: var(--rh-font-size-heading-md, 1.75rem);
+  --rh-card-heading-font-weight: var(--rh-font-weight-heading-medium);
+  --rh-card-heading-font-size: var(--rh-font-size-heading-md);
   &::part(header) {
     margin: 0;
   }
@@ -12810,7 +12810,7 @@ rh-card.image {
   &.heading {
     & h2 {
       margin-block-start: 0;
-      margin-block-end: var(--rh-space-lg, 16px);
+      margin-block-end: var(--rh-space-lg);
     }
   }
 }
@@ -15402,7 +15402,7 @@ a:after,
   position: relative;
   white-space: nowrap;
   color: var(--_color);
-  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   font-weight: 600; /* WARNING: not a token value */
   line-height: var(--rh-line-height-body-text, 1.5);
@@ -15724,7 +15724,7 @@ a:focus-within,
 
   & #container {
     border-style: solid;
-    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
     font-weight: var(--rh-font-weight-body-text-regular, 400);
     display: flex;
     flex-flow: row wrap;
@@ -15874,7 +15874,7 @@ a:after,
   position: relative;
   white-space: nowrap;
   color: var(--_color);
-  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   font-weight: 600; /* WARNING: not a token value */
   line-height: var(--rh-line-height-body-text, 1.5);
@@ -16196,7 +16196,7 @@ a:focus-within,
 
   & #container {
     border-style: solid;
-    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
     font-weight: var(--rh-font-weight-body-text-regular, 400);
     display: flex;
     flex-flow: row wrap;
@@ -16323,14 +16323,14 @@ import '@rhds/elements/rh-card/rh-card.js';
       <script type="sample/css" filename="demo/rh-card-color-context-inline-0.css">rh-context-demo::part(demo) {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-  gap: var(--rh-space-lg, 16px);
+  gap: var(--rh-space-lg);
 }
 
 rh-card {
   &.full {
     &::part(header) { margin: 0; }
     & :is(h1, h2, h3, h4, h5, h6)[slot="header"] {
-      padding-inline: var(--rh-space-xl, 24px);
+      padding-inline: var(--rh-space-xl);
     }
     & img {
       display: block;
@@ -16339,16 +16339,16 @@ rh-card {
     }
   }
   &.bar {
-    --rh-card-header-background-on-light: var(--rh-color-surface-light, #e0e0e0);
-    --rh-card-header-background-on-dark: var(--rh-color-surface-dark, #383838);
+    --rh-card-header-background-on-light: var(--rh-color-surface-light);
+    --rh-card-header-background-on-dark: var(--rh-color-surface-dark);
     &::part(header) {
       margin: 0;
-      padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
+      padding: var(--rh-space-lg) var(--rh-space-2xl);
       flex-direction: row;
-      gap: var(--rh-space-lg, 16px);
-      font-weight: var(--rh-font-weight-heading-regular, 300);
-      font-size: var(--rh-font-size-body-text-md, 1rem);
-      font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+      gap: var(--rh-space-lg);
+      font-weight: var(--rh-font-weight-heading-regular);
+      font-size: var(--rh-font-size-body-text-md);
+      font-family: var(--rh-font-family-body-text);
       text-transform: uppercase; /* deprecated? */
     }
   }
@@ -16452,16 +16452,16 @@ rh-card[variant="promo"] {
 </script>
       <script type="sample/css" filename="demo/rh-card-sticky-pattern-inline-0.css">#card-pattern-sticky {
   display: grid;
-  gap: var(--rh-space-md, 16px);
+  gap: var(--rh-space-md);
   grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
   & rh-card {
     &::part(header) {
-      gap: var(--rh-space-xl, 24px);
+      gap: var(--rh-space-xl);
       flex-flow: column;
     }
     & .title {
-      font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-      font-size: var(--rh-font-size-body-text-md, 1rem);
+      font-family: var(--rh-font-family-body-text);
+      font-size: var(--rh-font-size-body-text-md);
       text-transform: uppercase;
     }
     & > p {
@@ -16497,13 +16497,13 @@ import '@rhds/elements/rh-card/rh-card.js';
     }
     & h2 {
       text-transform: uppercase;
-      font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-      font-size: var(--rh-font-size-body-text-md, 1rem);
-      font-weight: var(--rh-font-weight-body-text-regular, 400);
+      font-family: var(--rh-font-family-body-text);
+      font-size: var(--rh-font-size-body-text-md);
+      font-weight: var(--rh-font-weight-body-text-regular);
     }
     & svg {
       align-self: center;
-      margin-block-end: var(--rh-space-2xl, 32px);
+      margin-block-end: var(--rh-space-2xl);
     }
   }
 }
@@ -16527,20 +16527,20 @@ rh-card {
 }
 
 rh-card.bar {
-  --rh-card-heading-font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-  --rh-card-heading-font-weight: var(--rh-font-weight-body-text-regular, 400);
-  --rh-card-heading-font-size: var(--rh-font-size-body-text-md, 1rem);
+  --rh-card-heading-font-family: var(--rh-font-family-body-text);
+  --rh-card-heading-font-weight: var(--rh-font-weight-body-text-regular);
+  --rh-card-heading-font-size: var(--rh-font-size-body-text-md);
   &::part(header) {
     margin: 0;
-    padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
-    background-color: var(--_header-bg, var(--rh-color-surface-light, #e0e0e0));
+    padding: var(--rh-space-lg) var(--rh-space-xl);
+    background-color: var(--_header-bg, var(--rh-color-surface-light));
     text-transform: uppercase;
   }
 }
 
 rh-card.image {
-  --rh-card-heading-font-weight: var(--rh-font-weight-heading-medium, 500);
-  --rh-card-heading-font-size: var(--rh-font-size-heading-md, 1.75rem);
+  --rh-card-heading-font-weight: var(--rh-font-weight-heading-medium);
+  --rh-card-heading-font-size: var(--rh-font-size-heading-md);
   &::part(header) {
     margin: 0;
   }
@@ -16554,7 +16554,7 @@ rh-card.image {
   &.heading {
     & h2 {
       margin-block-start: 0;
-      margin-block-end: var(--rh-space-lg, 16px);
+      margin-block-end: var(--rh-space-lg);
     }
   }
 }
@@ -19122,7 +19122,7 @@ a:after,
   position: relative;
   white-space: nowrap;
   color: var(--_color);
-  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   font-weight: 600; /* WARNING: not a token value */
   line-height: var(--rh-line-height-body-text, 1.5);
@@ -19444,7 +19444,7 @@ a:focus-within,
 
   & #container {
     border-style: solid;
-    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
     font-weight: var(--rh-font-weight-body-text-regular, 400);
     display: flex;
     flex-flow: row wrap;
@@ -19594,7 +19594,7 @@ a:after,
   position: relative;
   white-space: nowrap;
   color: var(--_color);
-  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   font-weight: 600; /* WARNING: not a token value */
   line-height: var(--rh-line-height-body-text, 1.5);
@@ -19916,7 +19916,7 @@ a:focus-within,
 
   & #container {
     border-style: solid;
-    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
     font-weight: var(--rh-font-weight-body-text-regular, 400);
     display: flex;
     flex-flow: row wrap;
@@ -20043,14 +20043,14 @@ import '@rhds/elements/rh-card/rh-card.js';
       <script type="sample/css" filename="demo/rh-card-color-context-inline-0.css">rh-context-demo::part(demo) {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-  gap: var(--rh-space-lg, 16px);
+  gap: var(--rh-space-lg);
 }
 
 rh-card {
   &.full {
     &::part(header) { margin: 0; }
     & :is(h1, h2, h3, h4, h5, h6)[slot="header"] {
-      padding-inline: var(--rh-space-xl, 24px);
+      padding-inline: var(--rh-space-xl);
     }
     & img {
       display: block;
@@ -20059,16 +20059,16 @@ rh-card {
     }
   }
   &.bar {
-    --rh-card-header-background-on-light: var(--rh-color-surface-light, #e0e0e0);
-    --rh-card-header-background-on-dark: var(--rh-color-surface-dark, #383838);
+    --rh-card-header-background-on-light: var(--rh-color-surface-light);
+    --rh-card-header-background-on-dark: var(--rh-color-surface-dark);
     &::part(header) {
       margin: 0;
-      padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
+      padding: var(--rh-space-lg) var(--rh-space-2xl);
       flex-direction: row;
-      gap: var(--rh-space-lg, 16px);
-      font-weight: var(--rh-font-weight-heading-regular, 300);
-      font-size: var(--rh-font-size-body-text-md, 1rem);
-      font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+      gap: var(--rh-space-lg);
+      font-weight: var(--rh-font-weight-heading-regular);
+      font-size: var(--rh-font-size-body-text-md);
+      font-family: var(--rh-font-family-body-text);
       text-transform: uppercase; /* deprecated? */
     }
   }
@@ -20172,16 +20172,16 @@ rh-card[variant="promo"] {
 </script>
       <script type="sample/css" filename="demo/rh-card-sticky-pattern-inline-0.css">#card-pattern-sticky {
   display: grid;
-  gap: var(--rh-space-md, 16px);
+  gap: var(--rh-space-md);
   grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
   & rh-card {
     &::part(header) {
-      gap: var(--rh-space-xl, 24px);
+      gap: var(--rh-space-xl);
       flex-flow: column;
     }
     & .title {
-      font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-      font-size: var(--rh-font-size-body-text-md, 1rem);
+      font-family: var(--rh-font-family-body-text);
+      font-size: var(--rh-font-size-body-text-md);
       text-transform: uppercase;
     }
     & > p {
@@ -20217,13 +20217,13 @@ import '@rhds/elements/rh-card/rh-card.js';
     }
     & h2 {
       text-transform: uppercase;
-      font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-      font-size: var(--rh-font-size-body-text-md, 1rem);
-      font-weight: var(--rh-font-weight-body-text-regular, 400);
+      font-family: var(--rh-font-family-body-text);
+      font-size: var(--rh-font-size-body-text-md);
+      font-weight: var(--rh-font-weight-body-text-regular);
     }
     & svg {
       align-self: center;
-      margin-block-end: var(--rh-space-2xl, 32px);
+      margin-block-end: var(--rh-space-2xl);
     }
   }
 }
@@ -20247,20 +20247,20 @@ rh-card {
 }
 
 rh-card.bar {
-  --rh-card-heading-font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-  --rh-card-heading-font-weight: var(--rh-font-weight-body-text-regular, 400);
-  --rh-card-heading-font-size: var(--rh-font-size-body-text-md, 1rem);
+  --rh-card-heading-font-family: var(--rh-font-family-body-text);
+  --rh-card-heading-font-weight: var(--rh-font-weight-body-text-regular);
+  --rh-card-heading-font-size: var(--rh-font-size-body-text-md);
   &::part(header) {
     margin: 0;
-    padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
-    background-color: var(--_header-bg, var(--rh-color-surface-light, #e0e0e0));
+    padding: var(--rh-space-lg) var(--rh-space-xl);
+    background-color: var(--_header-bg, var(--rh-color-surface-light));
     text-transform: uppercase;
   }
 }
 
 rh-card.image {
-  --rh-card-heading-font-weight: var(--rh-font-weight-heading-medium, 500);
-  --rh-card-heading-font-size: var(--rh-font-size-heading-md, 1.75rem);
+  --rh-card-heading-font-weight: var(--rh-font-weight-heading-medium);
+  --rh-card-heading-font-size: var(--rh-font-size-heading-md);
   &::part(header) {
     margin: 0;
   }
@@ -20274,7 +20274,7 @@ rh-card.image {
   &.heading {
     & h2 {
       margin-block-start: 0;
-      margin-block-end: var(--rh-space-lg, 16px);
+      margin-block-end: var(--rh-space-lg);
     }
   }
 }
@@ -22833,7 +22833,7 @@ a:after,
   position: relative;
   white-space: nowrap;
   color: var(--_color);
-  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   font-weight: 600; /* WARNING: not a token value */
   line-height: var(--rh-line-height-body-text, 1.5);
@@ -23155,7 +23155,7 @@ a:focus-within,
 
   & #container {
     border-style: solid;
-    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
     font-weight: var(--rh-font-weight-body-text-regular, 400);
     display: flex;
     flex-flow: row wrap;
@@ -23305,7 +23305,7 @@ a:after,
   position: relative;
   white-space: nowrap;
   color: var(--_color);
-  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   font-weight: 600; /* WARNING: not a token value */
   line-height: var(--rh-line-height-body-text, 1.5);
@@ -23627,7 +23627,7 @@ a:focus-within,
 
   & #container {
     border-style: solid;
-    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
     font-weight: var(--rh-font-weight-body-text-regular, 400);
     display: flex;
     flex-flow: row wrap;
@@ -23754,14 +23754,14 @@ import '@rhds/elements/rh-card/rh-card.js';
       <script type="sample/css" filename="demo/rh-card-color-context-inline-0.css">rh-context-demo::part(demo) {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-  gap: var(--rh-space-lg, 16px);
+  gap: var(--rh-space-lg);
 }
 
 rh-card {
   &.full {
     &::part(header) { margin: 0; }
     & :is(h1, h2, h3, h4, h5, h6)[slot="header"] {
-      padding-inline: var(--rh-space-xl, 24px);
+      padding-inline: var(--rh-space-xl);
     }
     & img {
       display: block;
@@ -23770,16 +23770,16 @@ rh-card {
     }
   }
   &.bar {
-    --rh-card-header-background-on-light: var(--rh-color-surface-light, #e0e0e0);
-    --rh-card-header-background-on-dark: var(--rh-color-surface-dark, #383838);
+    --rh-card-header-background-on-light: var(--rh-color-surface-light);
+    --rh-card-header-background-on-dark: var(--rh-color-surface-dark);
     &::part(header) {
       margin: 0;
-      padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
+      padding: var(--rh-space-lg) var(--rh-space-2xl);
       flex-direction: row;
-      gap: var(--rh-space-lg, 16px);
-      font-weight: var(--rh-font-weight-heading-regular, 300);
-      font-size: var(--rh-font-size-body-text-md, 1rem);
-      font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+      gap: var(--rh-space-lg);
+      font-weight: var(--rh-font-weight-heading-regular);
+      font-size: var(--rh-font-size-body-text-md);
+      font-family: var(--rh-font-family-body-text);
       text-transform: uppercase; /* deprecated? */
     }
   }
@@ -23883,16 +23883,16 @@ rh-card[variant="promo"] {
 </script>
       <script type="sample/css" filename="demo/rh-card-sticky-pattern-inline-0.css">#card-pattern-sticky {
   display: grid;
-  gap: var(--rh-space-md, 16px);
+  gap: var(--rh-space-md);
   grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
   & rh-card {
     &::part(header) {
-      gap: var(--rh-space-xl, 24px);
+      gap: var(--rh-space-xl);
       flex-flow: column;
     }
     & .title {
-      font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-      font-size: var(--rh-font-size-body-text-md, 1rem);
+      font-family: var(--rh-font-family-body-text);
+      font-size: var(--rh-font-size-body-text-md);
       text-transform: uppercase;
     }
     & > p {
@@ -23928,13 +23928,13 @@ import '@rhds/elements/rh-card/rh-card.js';
     }
     & h2 {
       text-transform: uppercase;
-      font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-      font-size: var(--rh-font-size-body-text-md, 1rem);
-      font-weight: var(--rh-font-weight-body-text-regular, 400);
+      font-family: var(--rh-font-family-body-text);
+      font-size: var(--rh-font-size-body-text-md);
+      font-weight: var(--rh-font-weight-body-text-regular);
     }
     & svg {
       align-self: center;
-      margin-block-end: var(--rh-space-2xl, 32px);
+      margin-block-end: var(--rh-space-2xl);
     }
   }
 }
@@ -23958,20 +23958,20 @@ rh-card {
 }
 
 rh-card.bar {
-  --rh-card-heading-font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-  --rh-card-heading-font-weight: var(--rh-font-weight-body-text-regular, 400);
-  --rh-card-heading-font-size: var(--rh-font-size-body-text-md, 1rem);
+  --rh-card-heading-font-family: var(--rh-font-family-body-text);
+  --rh-card-heading-font-weight: var(--rh-font-weight-body-text-regular);
+  --rh-card-heading-font-size: var(--rh-font-size-body-text-md);
   &::part(header) {
     margin: 0;
-    padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
-    background-color: var(--_header-bg, var(--rh-color-surface-light, #e0e0e0));
+    padding: var(--rh-space-lg) var(--rh-space-xl);
+    background-color: var(--_header-bg, var(--rh-color-surface-light));
     text-transform: uppercase;
   }
 }
 
 rh-card.image {
-  --rh-card-heading-font-weight: var(--rh-font-weight-heading-medium, 500);
-  --rh-card-heading-font-size: var(--rh-font-size-heading-md, 1.75rem);
+  --rh-card-heading-font-weight: var(--rh-font-weight-heading-medium);
+  --rh-card-heading-font-size: var(--rh-font-size-heading-md);
   &::part(header) {
     margin: 0;
   }
@@ -23985,7 +23985,7 @@ rh-card.image {
   &.heading {
     & h2 {
       margin-block-start: 0;
-      margin-block-end: var(--rh-space-lg, 16px);
+      margin-block-end: var(--rh-space-lg);
     }
   }
 }
@@ -26534,7 +26534,7 @@ a:after,
   position: relative;
   white-space: nowrap;
   color: var(--_color);
-  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   font-weight: 600; /* WARNING: not a token value */
   line-height: var(--rh-line-height-body-text, 1.5);
@@ -26856,7 +26856,7 @@ a:focus-within,
 
   & #container {
     border-style: solid;
-    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
     font-weight: var(--rh-font-weight-body-text-regular, 400);
     display: flex;
     flex-flow: row wrap;
@@ -27006,7 +27006,7 @@ a:after,
   position: relative;
   white-space: nowrap;
   color: var(--_color);
-  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   font-weight: 600; /* WARNING: not a token value */
   line-height: var(--rh-line-height-body-text, 1.5);
@@ -27328,7 +27328,7 @@ a:focus-within,
 
   & #container {
     border-style: solid;
-    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
     font-weight: var(--rh-font-weight-body-text-regular, 400);
     display: flex;
     flex-flow: row wrap;
@@ -27455,14 +27455,14 @@ import '@rhds/elements/rh-card/rh-card.js';
       <script type="sample/css" filename="demo/rh-card-color-context-inline-0.css">rh-context-demo::part(demo) {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-  gap: var(--rh-space-lg, 16px);
+  gap: var(--rh-space-lg);
 }
 
 rh-card {
   &.full {
     &::part(header) { margin: 0; }
     & :is(h1, h2, h3, h4, h5, h6)[slot="header"] {
-      padding-inline: var(--rh-space-xl, 24px);
+      padding-inline: var(--rh-space-xl);
     }
     & img {
       display: block;
@@ -27471,16 +27471,16 @@ rh-card {
     }
   }
   &.bar {
-    --rh-card-header-background-on-light: var(--rh-color-surface-light, #e0e0e0);
-    --rh-card-header-background-on-dark: var(--rh-color-surface-dark, #383838);
+    --rh-card-header-background-on-light: var(--rh-color-surface-light);
+    --rh-card-header-background-on-dark: var(--rh-color-surface-dark);
     &::part(header) {
       margin: 0;
-      padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
+      padding: var(--rh-space-lg) var(--rh-space-2xl);
       flex-direction: row;
-      gap: var(--rh-space-lg, 16px);
-      font-weight: var(--rh-font-weight-heading-regular, 300);
-      font-size: var(--rh-font-size-body-text-md, 1rem);
-      font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+      gap: var(--rh-space-lg);
+      font-weight: var(--rh-font-weight-heading-regular);
+      font-size: var(--rh-font-size-body-text-md);
+      font-family: var(--rh-font-family-body-text);
       text-transform: uppercase; /* deprecated? */
     }
   }
@@ -27584,16 +27584,16 @@ rh-card[variant="promo"] {
 </script>
       <script type="sample/css" filename="demo/rh-card-sticky-pattern-inline-0.css">#card-pattern-sticky {
   display: grid;
-  gap: var(--rh-space-md, 16px);
+  gap: var(--rh-space-md);
   grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
   & rh-card {
     &::part(header) {
-      gap: var(--rh-space-xl, 24px);
+      gap: var(--rh-space-xl);
       flex-flow: column;
     }
     & .title {
-      font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-      font-size: var(--rh-font-size-body-text-md, 1rem);
+      font-family: var(--rh-font-family-body-text);
+      font-size: var(--rh-font-size-body-text-md);
       text-transform: uppercase;
     }
     & > p {
@@ -27629,13 +27629,13 @@ import '@rhds/elements/rh-card/rh-card.js';
     }
     & h2 {
       text-transform: uppercase;
-      font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-      font-size: var(--rh-font-size-body-text-md, 1rem);
-      font-weight: var(--rh-font-weight-body-text-regular, 400);
+      font-family: var(--rh-font-family-body-text);
+      font-size: var(--rh-font-size-body-text-md);
+      font-weight: var(--rh-font-weight-body-text-regular);
     }
     & svg {
       align-self: center;
-      margin-block-end: var(--rh-space-2xl, 32px);
+      margin-block-end: var(--rh-space-2xl);
     }
   }
 }
@@ -27659,20 +27659,20 @@ rh-card {
 }
 
 rh-card.bar {
-  --rh-card-heading-font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-  --rh-card-heading-font-weight: var(--rh-font-weight-body-text-regular, 400);
-  --rh-card-heading-font-size: var(--rh-font-size-body-text-md, 1rem);
+  --rh-card-heading-font-family: var(--rh-font-family-body-text);
+  --rh-card-heading-font-weight: var(--rh-font-weight-body-text-regular);
+  --rh-card-heading-font-size: var(--rh-font-size-body-text-md);
   &::part(header) {
     margin: 0;
-    padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
-    background-color: var(--_header-bg, var(--rh-color-surface-light, #e0e0e0));
+    padding: var(--rh-space-lg) var(--rh-space-xl);
+    background-color: var(--_header-bg, var(--rh-color-surface-light));
     text-transform: uppercase;
   }
 }
 
 rh-card.image {
-  --rh-card-heading-font-weight: var(--rh-font-weight-heading-medium, 500);
-  --rh-card-heading-font-size: var(--rh-font-size-heading-md, 1.75rem);
+  --rh-card-heading-font-weight: var(--rh-font-weight-heading-medium);
+  --rh-card-heading-font-size: var(--rh-font-size-heading-md);
   &::part(header) {
     margin: 0;
   }
@@ -27686,7 +27686,7 @@ rh-card.image {
   &.heading {
     & h2 {
       margin-block-start: 0;
-      margin-block-end: var(--rh-space-lg, 16px);
+      margin-block-end: var(--rh-space-lg);
     }
   }
 }
@@ -30254,7 +30254,7 @@ a:after,
   position: relative;
   white-space: nowrap;
   color: var(--_color);
-  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   font-weight: 600; /* WARNING: not a token value */
   line-height: var(--rh-line-height-body-text, 1.5);
@@ -30576,7 +30576,7 @@ a:focus-within,
 
   & #container {
     border-style: solid;
-    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
     font-weight: var(--rh-font-weight-body-text-regular, 400);
     display: flex;
     flex-flow: row wrap;
@@ -30726,7 +30726,7 @@ a:after,
   position: relative;
   white-space: nowrap;
   color: var(--_color);
-  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   font-weight: 600; /* WARNING: not a token value */
   line-height: var(--rh-line-height-body-text, 1.5);
@@ -31048,7 +31048,7 @@ a:focus-within,
 
   & #container {
     border-style: solid;
-    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
     font-weight: var(--rh-font-weight-body-text-regular, 400);
     display: flex;
     flex-flow: row wrap;
@@ -31175,14 +31175,14 @@ import '@rhds/elements/rh-card/rh-card.js';
       <script type="sample/css" filename="demo/rh-card-color-context-inline-0.css">rh-context-demo::part(demo) {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-  gap: var(--rh-space-lg, 16px);
+  gap: var(--rh-space-lg);
 }
 
 rh-card {
   &.full {
     &::part(header) { margin: 0; }
     & :is(h1, h2, h3, h4, h5, h6)[slot="header"] {
-      padding-inline: var(--rh-space-xl, 24px);
+      padding-inline: var(--rh-space-xl);
     }
     & img {
       display: block;
@@ -31191,16 +31191,16 @@ rh-card {
     }
   }
   &.bar {
-    --rh-card-header-background-on-light: var(--rh-color-surface-light, #e0e0e0);
-    --rh-card-header-background-on-dark: var(--rh-color-surface-dark, #383838);
+    --rh-card-header-background-on-light: var(--rh-color-surface-light);
+    --rh-card-header-background-on-dark: var(--rh-color-surface-dark);
     &::part(header) {
       margin: 0;
-      padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
+      padding: var(--rh-space-lg) var(--rh-space-2xl);
       flex-direction: row;
-      gap: var(--rh-space-lg, 16px);
-      font-weight: var(--rh-font-weight-heading-regular, 300);
-      font-size: var(--rh-font-size-body-text-md, 1rem);
-      font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+      gap: var(--rh-space-lg);
+      font-weight: var(--rh-font-weight-heading-regular);
+      font-size: var(--rh-font-size-body-text-md);
+      font-family: var(--rh-font-family-body-text);
       text-transform: uppercase; /* deprecated? */
     }
   }
@@ -31304,16 +31304,16 @@ rh-card[variant="promo"] {
 </script>
       <script type="sample/css" filename="demo/rh-card-sticky-pattern-inline-0.css">#card-pattern-sticky {
   display: grid;
-  gap: var(--rh-space-md, 16px);
+  gap: var(--rh-space-md);
   grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
   & rh-card {
     &::part(header) {
-      gap: var(--rh-space-xl, 24px);
+      gap: var(--rh-space-xl);
       flex-flow: column;
     }
     & .title {
-      font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-      font-size: var(--rh-font-size-body-text-md, 1rem);
+      font-family: var(--rh-font-family-body-text);
+      font-size: var(--rh-font-size-body-text-md);
       text-transform: uppercase;
     }
     & > p {
@@ -31349,13 +31349,13 @@ import '@rhds/elements/rh-card/rh-card.js';
     }
     & h2 {
       text-transform: uppercase;
-      font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-      font-size: var(--rh-font-size-body-text-md, 1rem);
-      font-weight: var(--rh-font-weight-body-text-regular, 400);
+      font-family: var(--rh-font-family-body-text);
+      font-size: var(--rh-font-size-body-text-md);
+      font-weight: var(--rh-font-weight-body-text-regular);
     }
     & svg {
       align-self: center;
-      margin-block-end: var(--rh-space-2xl, 32px);
+      margin-block-end: var(--rh-space-2xl);
     }
   }
 }
@@ -31379,20 +31379,20 @@ rh-card {
 }
 
 rh-card.bar {
-  --rh-card-heading-font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-  --rh-card-heading-font-weight: var(--rh-font-weight-body-text-regular, 400);
-  --rh-card-heading-font-size: var(--rh-font-size-body-text-md, 1rem);
+  --rh-card-heading-font-family: var(--rh-font-family-body-text);
+  --rh-card-heading-font-weight: var(--rh-font-weight-body-text-regular);
+  --rh-card-heading-font-size: var(--rh-font-size-body-text-md);
   &::part(header) {
     margin: 0;
-    padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
-    background-color: var(--_header-bg, var(--rh-color-surface-light, #e0e0e0));
+    padding: var(--rh-space-lg) var(--rh-space-xl);
+    background-color: var(--_header-bg, var(--rh-color-surface-light));
     text-transform: uppercase;
   }
 }
 
 rh-card.image {
-  --rh-card-heading-font-weight: var(--rh-font-weight-heading-medium, 500);
-  --rh-card-heading-font-size: var(--rh-font-size-heading-md, 1.75rem);
+  --rh-card-heading-font-weight: var(--rh-font-weight-heading-medium);
+  --rh-card-heading-font-size: var(--rh-font-size-heading-md);
   &::part(header) {
     margin: 0;
   }
@@ -31406,7 +31406,7 @@ rh-card.image {
   &.heading {
     & h2 {
       margin-block-start: 0;
-      margin-block-end: var(--rh-space-lg, 16px);
+      margin-block-end: var(--rh-space-lg);
     }
   }
 }
@@ -33962,7 +33962,7 @@ a:after,
   position: relative;
   white-space: nowrap;
   color: var(--_color);
-  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   font-weight: 600; /* WARNING: not a token value */
   line-height: var(--rh-line-height-body-text, 1.5);
@@ -34284,7 +34284,7 @@ a:focus-within,
 
   & #container {
     border-style: solid;
-    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
     font-weight: var(--rh-font-weight-body-text-regular, 400);
     display: flex;
     flex-flow: row wrap;
@@ -34434,7 +34434,7 @@ a:after,
   position: relative;
   white-space: nowrap;
   color: var(--_color);
-  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   font-weight: 600; /* WARNING: not a token value */
   line-height: var(--rh-line-height-body-text, 1.5);
@@ -34756,7 +34756,7 @@ a:focus-within,
 
   & #container {
     border-style: solid;
-    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
     font-weight: var(--rh-font-weight-body-text-regular, 400);
     display: flex;
     flex-flow: row wrap;
@@ -34883,14 +34883,14 @@ import '@rhds/elements/rh-card/rh-card.js';
       <script type="sample/css" filename="demo/rh-card-color-context-inline-0.css">rh-context-demo::part(demo) {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-  gap: var(--rh-space-lg, 16px);
+  gap: var(--rh-space-lg);
 }
 
 rh-card {
   &.full {
     &::part(header) { margin: 0; }
     & :is(h1, h2, h3, h4, h5, h6)[slot="header"] {
-      padding-inline: var(--rh-space-xl, 24px);
+      padding-inline: var(--rh-space-xl);
     }
     & img {
       display: block;
@@ -34899,16 +34899,16 @@ rh-card {
     }
   }
   &.bar {
-    --rh-card-header-background-on-light: var(--rh-color-surface-light, #e0e0e0);
-    --rh-card-header-background-on-dark: var(--rh-color-surface-dark, #383838);
+    --rh-card-header-background-on-light: var(--rh-color-surface-light);
+    --rh-card-header-background-on-dark: var(--rh-color-surface-dark);
     &::part(header) {
       margin: 0;
-      padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
+      padding: var(--rh-space-lg) var(--rh-space-2xl);
       flex-direction: row;
-      gap: var(--rh-space-lg, 16px);
-      font-weight: var(--rh-font-weight-heading-regular, 300);
-      font-size: var(--rh-font-size-body-text-md, 1rem);
-      font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+      gap: var(--rh-space-lg);
+      font-weight: var(--rh-font-weight-heading-regular);
+      font-size: var(--rh-font-size-body-text-md);
+      font-family: var(--rh-font-family-body-text);
       text-transform: uppercase; /* deprecated? */
     }
   }
@@ -35012,16 +35012,16 @@ rh-card[variant="promo"] {
 </script>
       <script type="sample/css" filename="demo/rh-card-sticky-pattern-inline-0.css">#card-pattern-sticky {
   display: grid;
-  gap: var(--rh-space-md, 16px);
+  gap: var(--rh-space-md);
   grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
   & rh-card {
     &::part(header) {
-      gap: var(--rh-space-xl, 24px);
+      gap: var(--rh-space-xl);
       flex-flow: column;
     }
     & .title {
-      font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-      font-size: var(--rh-font-size-body-text-md, 1rem);
+      font-family: var(--rh-font-family-body-text);
+      font-size: var(--rh-font-size-body-text-md);
       text-transform: uppercase;
     }
     & > p {
@@ -35057,13 +35057,13 @@ import '@rhds/elements/rh-card/rh-card.js';
     }
     & h2 {
       text-transform: uppercase;
-      font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-      font-size: var(--rh-font-size-body-text-md, 1rem);
-      font-weight: var(--rh-font-weight-body-text-regular, 400);
+      font-family: var(--rh-font-family-body-text);
+      font-size: var(--rh-font-size-body-text-md);
+      font-weight: var(--rh-font-weight-body-text-regular);
     }
     & svg {
       align-self: center;
-      margin-block-end: var(--rh-space-2xl, 32px);
+      margin-block-end: var(--rh-space-2xl);
     }
   }
 }
@@ -35087,20 +35087,20 @@ rh-card {
 }
 
 rh-card.bar {
-  --rh-card-heading-font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-  --rh-card-heading-font-weight: var(--rh-font-weight-body-text-regular, 400);
-  --rh-card-heading-font-size: var(--rh-font-size-body-text-md, 1rem);
+  --rh-card-heading-font-family: var(--rh-font-family-body-text);
+  --rh-card-heading-font-weight: var(--rh-font-weight-body-text-regular);
+  --rh-card-heading-font-size: var(--rh-font-size-body-text-md);
   &::part(header) {
     margin: 0;
-    padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
-    background-color: var(--_header-bg, var(--rh-color-surface-light, #e0e0e0));
+    padding: var(--rh-space-lg) var(--rh-space-xl);
+    background-color: var(--_header-bg, var(--rh-color-surface-light));
     text-transform: uppercase;
   }
 }
 
 rh-card.image {
-  --rh-card-heading-font-weight: var(--rh-font-weight-heading-medium, 500);
-  --rh-card-heading-font-size: var(--rh-font-size-heading-md, 1.75rem);
+  --rh-card-heading-font-weight: var(--rh-font-weight-heading-medium);
+  --rh-card-heading-font-size: var(--rh-font-size-heading-md);
   &::part(header) {
     margin: 0;
   }
@@ -35114,7 +35114,7 @@ rh-card.image {
   &.heading {
     & h2 {
       margin-block-start: 0;
-      margin-block-end: var(--rh-space-lg, 16px);
+      margin-block-end: var(--rh-space-lg);
     }
   }
 }
@@ -37684,7 +37684,7 @@ a:after,
   position: relative;
   white-space: nowrap;
   color: var(--_color);
-  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   font-weight: 600; /* WARNING: not a token value */
   line-height: var(--rh-line-height-body-text, 1.5);
@@ -38006,7 +38006,7 @@ a:focus-within,
 
   & #container {
     border-style: solid;
-    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
     font-weight: var(--rh-font-weight-body-text-regular, 400);
     display: flex;
     flex-flow: row wrap;
@@ -38156,7 +38156,7 @@ a:after,
   position: relative;
   white-space: nowrap;
   color: var(--_color);
-  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   font-weight: 600; /* WARNING: not a token value */
   line-height: var(--rh-line-height-body-text, 1.5);
@@ -38478,7 +38478,7 @@ a:focus-within,
 
   & #container {
     border-style: solid;
-    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
     font-weight: var(--rh-font-weight-body-text-regular, 400);
     display: flex;
     flex-flow: row wrap;
@@ -38605,14 +38605,14 @@ import '@rhds/elements/rh-card/rh-card.js';
       <script type="sample/css" filename="demo/rh-card-color-context-inline-0.css">rh-context-demo::part(demo) {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-  gap: var(--rh-space-lg, 16px);
+  gap: var(--rh-space-lg);
 }
 
 rh-card {
   &.full {
     &::part(header) { margin: 0; }
     & :is(h1, h2, h3, h4, h5, h6)[slot="header"] {
-      padding-inline: var(--rh-space-xl, 24px);
+      padding-inline: var(--rh-space-xl);
     }
     & img {
       display: block;
@@ -38621,16 +38621,16 @@ rh-card {
     }
   }
   &.bar {
-    --rh-card-header-background-on-light: var(--rh-color-surface-light, #e0e0e0);
-    --rh-card-header-background-on-dark: var(--rh-color-surface-dark, #383838);
+    --rh-card-header-background-on-light: var(--rh-color-surface-light);
+    --rh-card-header-background-on-dark: var(--rh-color-surface-dark);
     &::part(header) {
       margin: 0;
-      padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
+      padding: var(--rh-space-lg) var(--rh-space-2xl);
       flex-direction: row;
-      gap: var(--rh-space-lg, 16px);
-      font-weight: var(--rh-font-weight-heading-regular, 300);
-      font-size: var(--rh-font-size-body-text-md, 1rem);
-      font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+      gap: var(--rh-space-lg);
+      font-weight: var(--rh-font-weight-heading-regular);
+      font-size: var(--rh-font-size-body-text-md);
+      font-family: var(--rh-font-family-body-text);
       text-transform: uppercase; /* deprecated? */
     }
   }
@@ -38734,16 +38734,16 @@ rh-card[variant="promo"] {
 </script>
       <script type="sample/css" filename="demo/rh-card-sticky-pattern-inline-0.css">#card-pattern-sticky {
   display: grid;
-  gap: var(--rh-space-md, 16px);
+  gap: var(--rh-space-md);
   grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
   & rh-card {
     &::part(header) {
-      gap: var(--rh-space-xl, 24px);
+      gap: var(--rh-space-xl);
       flex-flow: column;
     }
     & .title {
-      font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-      font-size: var(--rh-font-size-body-text-md, 1rem);
+      font-family: var(--rh-font-family-body-text);
+      font-size: var(--rh-font-size-body-text-md);
       text-transform: uppercase;
     }
     & > p {
@@ -38779,13 +38779,13 @@ import '@rhds/elements/rh-card/rh-card.js';
     }
     & h2 {
       text-transform: uppercase;
-      font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-      font-size: var(--rh-font-size-body-text-md, 1rem);
-      font-weight: var(--rh-font-weight-body-text-regular, 400);
+      font-family: var(--rh-font-family-body-text);
+      font-size: var(--rh-font-size-body-text-md);
+      font-weight: var(--rh-font-weight-body-text-regular);
     }
     & svg {
       align-self: center;
-      margin-block-end: var(--rh-space-2xl, 32px);
+      margin-block-end: var(--rh-space-2xl);
     }
   }
 }
@@ -38809,20 +38809,20 @@ rh-card {
 }
 
 rh-card.bar {
-  --rh-card-heading-font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-  --rh-card-heading-font-weight: var(--rh-font-weight-body-text-regular, 400);
-  --rh-card-heading-font-size: var(--rh-font-size-body-text-md, 1rem);
+  --rh-card-heading-font-family: var(--rh-font-family-body-text);
+  --rh-card-heading-font-weight: var(--rh-font-weight-body-text-regular);
+  --rh-card-heading-font-size: var(--rh-font-size-body-text-md);
   &::part(header) {
     margin: 0;
-    padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
-    background-color: var(--_header-bg, var(--rh-color-surface-light, #e0e0e0));
+    padding: var(--rh-space-lg) var(--rh-space-xl);
+    background-color: var(--_header-bg, var(--rh-color-surface-light));
     text-transform: uppercase;
   }
 }
 
 rh-card.image {
-  --rh-card-heading-font-weight: var(--rh-font-weight-heading-medium, 500);
-  --rh-card-heading-font-size: var(--rh-font-size-heading-md, 1.75rem);
+  --rh-card-heading-font-weight: var(--rh-font-weight-heading-medium);
+  --rh-card-heading-font-size: var(--rh-font-size-heading-md);
   &::part(header) {
     margin: 0;
   }
@@ -38836,7 +38836,7 @@ rh-card.image {
   &.heading {
     & h2 {
       margin-block-start: 0;
-      margin-block-end: var(--rh-space-lg, 16px);
+      margin-block-end: var(--rh-space-lg);
     }
   }
 }
@@ -41496,7 +41496,7 @@ a:after,
   position: relative;
   white-space: nowrap;
   color: var(--_color);
-  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   font-weight: 600; /* WARNING: not a token value */
   line-height: var(--rh-line-height-body-text, 1.5);
@@ -41818,7 +41818,7 @@ a:focus-within,
 
   & #container {
     border-style: solid;
-    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
     font-weight: var(--rh-font-weight-body-text-regular, 400);
     display: flex;
     flex-flow: row wrap;
@@ -41968,7 +41968,7 @@ a:after,
   position: relative;
   white-space: nowrap;
   color: var(--_color);
-  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   font-weight: 600; /* WARNING: not a token value */
   line-height: var(--rh-line-height-body-text, 1.5);
@@ -42290,7 +42290,7 @@ a:focus-within,
 
   & #container {
     border-style: solid;
-    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
     font-weight: var(--rh-font-weight-body-text-regular, 400);
     display: flex;
     flex-flow: row wrap;
@@ -42417,14 +42417,14 @@ import '@rhds/elements/rh-card/rh-card.js';
       <script type="sample/css" filename="demo/rh-card-color-context-inline-0.css">rh-context-demo::part(demo) {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-  gap: var(--rh-space-lg, 16px);
+  gap: var(--rh-space-lg);
 }
 
 rh-card {
   &.full {
     &::part(header) { margin: 0; }
     & :is(h1, h2, h3, h4, h5, h6)[slot="header"] {
-      padding-inline: var(--rh-space-xl, 24px);
+      padding-inline: var(--rh-space-xl);
     }
     & img {
       display: block;
@@ -42433,16 +42433,16 @@ rh-card {
     }
   }
   &.bar {
-    --rh-card-header-background-on-light: var(--rh-color-surface-light, #e0e0e0);
-    --rh-card-header-background-on-dark: var(--rh-color-surface-dark, #383838);
+    --rh-card-header-background-on-light: var(--rh-color-surface-light);
+    --rh-card-header-background-on-dark: var(--rh-color-surface-dark);
     &::part(header) {
       margin: 0;
-      padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
+      padding: var(--rh-space-lg) var(--rh-space-2xl);
       flex-direction: row;
-      gap: var(--rh-space-lg, 16px);
-      font-weight: var(--rh-font-weight-heading-regular, 300);
-      font-size: var(--rh-font-size-body-text-md, 1rem);
-      font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+      gap: var(--rh-space-lg);
+      font-weight: var(--rh-font-weight-heading-regular);
+      font-size: var(--rh-font-size-body-text-md);
+      font-family: var(--rh-font-family-body-text);
       text-transform: uppercase; /* deprecated? */
     }
   }
@@ -42546,16 +42546,16 @@ rh-card[variant="promo"] {
 </script>
       <script type="sample/css" filename="demo/rh-card-sticky-pattern-inline-0.css">#card-pattern-sticky {
   display: grid;
-  gap: var(--rh-space-md, 16px);
+  gap: var(--rh-space-md);
   grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
   & rh-card {
     &::part(header) {
-      gap: var(--rh-space-xl, 24px);
+      gap: var(--rh-space-xl);
       flex-flow: column;
     }
     & .title {
-      font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-      font-size: var(--rh-font-size-body-text-md, 1rem);
+      font-family: var(--rh-font-family-body-text);
+      font-size: var(--rh-font-size-body-text-md);
       text-transform: uppercase;
     }
     & > p {
@@ -42591,13 +42591,13 @@ import '@rhds/elements/rh-card/rh-card.js';
     }
     & h2 {
       text-transform: uppercase;
-      font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-      font-size: var(--rh-font-size-body-text-md, 1rem);
-      font-weight: var(--rh-font-weight-body-text-regular, 400);
+      font-family: var(--rh-font-family-body-text);
+      font-size: var(--rh-font-size-body-text-md);
+      font-weight: var(--rh-font-weight-body-text-regular);
     }
     & svg {
       align-self: center;
-      margin-block-end: var(--rh-space-2xl, 32px);
+      margin-block-end: var(--rh-space-2xl);
     }
   }
 }
@@ -42621,20 +42621,20 @@ rh-card {
 }
 
 rh-card.bar {
-  --rh-card-heading-font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-  --rh-card-heading-font-weight: var(--rh-font-weight-body-text-regular, 400);
-  --rh-card-heading-font-size: var(--rh-font-size-body-text-md, 1rem);
+  --rh-card-heading-font-family: var(--rh-font-family-body-text);
+  --rh-card-heading-font-weight: var(--rh-font-weight-body-text-regular);
+  --rh-card-heading-font-size: var(--rh-font-size-body-text-md);
   &::part(header) {
     margin: 0;
-    padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
-    background-color: var(--_header-bg, var(--rh-color-surface-light, #e0e0e0));
+    padding: var(--rh-space-lg) var(--rh-space-xl);
+    background-color: var(--_header-bg, var(--rh-color-surface-light));
     text-transform: uppercase;
   }
 }
 
 rh-card.image {
-  --rh-card-heading-font-weight: var(--rh-font-weight-heading-medium, 500);
-  --rh-card-heading-font-size: var(--rh-font-size-heading-md, 1.75rem);
+  --rh-card-heading-font-weight: var(--rh-font-weight-heading-medium);
+  --rh-card-heading-font-size: var(--rh-font-size-heading-md);
   &::part(header) {
     margin: 0;
   }
@@ -42648,7 +42648,7 @@ rh-card.image {
   &.heading {
     & h2 {
       margin-block-start: 0;
-      margin-block-end: var(--rh-space-lg, 16px);
+      margin-block-end: var(--rh-space-lg);
     }
   }
 }
@@ -45232,7 +45232,7 @@ a:after,
   position: relative;
   white-space: nowrap;
   color: var(--_color);
-  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   font-weight: 600; /* WARNING: not a token value */
   line-height: var(--rh-line-height-body-text, 1.5);
@@ -45554,7 +45554,7 @@ a:focus-within,
 
   & #container {
     border-style: solid;
-    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
     font-weight: var(--rh-font-weight-body-text-regular, 400);
     display: flex;
     flex-flow: row wrap;
@@ -45704,7 +45704,7 @@ a:after,
   position: relative;
   white-space: nowrap;
   color: var(--_color);
-  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   font-weight: 600; /* WARNING: not a token value */
   line-height: var(--rh-line-height-body-text, 1.5);
@@ -46026,7 +46026,7 @@ a:focus-within,
 
   & #container {
     border-style: solid;
-    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
     font-weight: var(--rh-font-weight-body-text-regular, 400);
     display: flex;
     flex-flow: row wrap;
@@ -46251,7 +46251,7 @@ p {
 <rh-footer-universal color-palette="darker"><template shadowroot="open" shadowrootmode="open"><style>:host {
   /* apply sensible defaults based on redhat standards. */
   color: var(--rh-color-white, #ffffff);
-  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
   line-height: var(--rh-line-height-body-text, 1.5);
   font-weight: var(--_font-weight);
   font-size: initial;
@@ -46276,7 +46276,7 @@ footer,
 }
 
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif) !important;
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif) !important;
   line-height: var(--rh-line-height-heading, 1.3) !important;
 }
 

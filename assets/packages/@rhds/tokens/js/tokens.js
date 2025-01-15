@@ -1682,15 +1682,47 @@ export const tokens = new Map([
   ],
   [
     "--rh-font-family-heading",
-    "RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif"
+    "RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif"
   ],
   [
     "--rh-font-family-body-text",
-    "RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif"
+    "RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif"
   ],
   [
     "--rh-font-family-code",
     "RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace"
+  ],
+  [
+    "--rh-font-family-lang-ar",
+    "'Noto Sans Arabic'"
+  ],
+  [
+    "--rh-font-family-lang-he",
+    "'Noto Sans Hebrew'"
+  ],
+  [
+    "--rh-font-family-lang-ja",
+    "'Noto Sans JP'"
+  ],
+  [
+    "--rh-font-family-lang-ko",
+    "'Noto Sans KR'"
+  ],
+  [
+    "--rh-font-family-lang-hi",
+    "'Noto Sans Malayalam'"
+  ],
+  [
+    "--rh-font-family-lang-th",
+    "'Noto Sans Thai'"
+  ],
+  [
+    "--rh-font-family-lang-zh-cn",
+    "'Noto Sans SC'"
+  ],
+  [
+    "--rh-font-family-lang-zh-hk",
+    "'Noto Sans TC'"
   ],
   [
     "--rh-font-size-body-text-xs",
@@ -1782,7 +1814,7 @@ export const tokens = new Map([
   ],
   [
     "--rh-font-weight-heading-regular",
-    300
+    400
   ],
   [
     "--rh-font-weight-heading-medium",

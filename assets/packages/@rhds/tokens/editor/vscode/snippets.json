@@ -4228,7 +4228,7 @@
       "rhfontfamilyheading"
     ],
     "body": [
-      "var(--rh-font-family-heading${1:, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif})$2"
+      "var(--rh-font-family-heading${1:, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif})$2"
     ],
     "description": "Heading font family"
   },
@@ -4238,7 +4238,7 @@
       "rhfontfamilybodytext"
     ],
     "body": [
-      "var(--rh-font-family-body-text${1:, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif})$2"
+      "var(--rh-font-family-body-text${1:, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif})$2"
     ],
     "description": "Body text font family"
   },
@@ -4251,6 +4251,86 @@
       "var(--rh-font-family-code${1:, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace})$2"
     ],
     "description": "Code font family"
+  },
+  "rh-font-family-lang-ar": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontfamilylangar"
+    ],
+    "body": [
+      "var(--rh-font-family-lang-ar${1:, 'Noto Sans Arabic'})$2"
+    ],
+    "description": "Arabic font family"
+  },
+  "rh-font-family-lang-he": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontfamilylanghe"
+    ],
+    "body": [
+      "var(--rh-font-family-lang-he${1:, 'Noto Sans Hebrew'})$2"
+    ],
+    "description": "Hebrew font family"
+  },
+  "rh-font-family-lang-ja": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontfamilylangja"
+    ],
+    "body": [
+      "var(--rh-font-family-lang-ja${1:, 'Noto Sans JP'})$2"
+    ],
+    "description": "Japanese font family"
+  },
+  "rh-font-family-lang-ko": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontfamilylangko"
+    ],
+    "body": [
+      "var(--rh-font-family-lang-ko${1:, 'Noto Sans KR'})$2"
+    ],
+    "description": "Korean font family"
+  },
+  "rh-font-family-lang-hi": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontfamilylanghi"
+    ],
+    "body": [
+      "var(--rh-font-family-lang-hi${1:, 'Noto Sans Malayalam'})$2"
+    ],
+    "description": "Malayalam font family"
+  },
+  "rh-font-family-lang-th": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontfamilylangth"
+    ],
+    "body": [
+      "var(--rh-font-family-lang-th${1:, 'Noto Sans Thai'})$2"
+    ],
+    "description": "Thai font family"
+  },
+  "rh-font-family-lang-zh-cn": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontfamilylangzhcn"
+    ],
+    "body": [
+      "var(--rh-font-family-lang-zh-cn${1:, 'Noto Sans SC'})$2"
+    ],
+    "description": "Simplified Chinese font family"
+  },
+  "rh-font-family-lang-zh-hk": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhfontfamilylangzhhk"
+    ],
+    "body": [
+      "var(--rh-font-family-lang-zh-hk${1:, 'Noto Sans TC'})$2"
+    ],
+    "description": "Traditional Chinese font family"
   },
   "rh-font-size-body-text-xs": {
     "scope": "css,scss",
@@ -4478,7 +4558,7 @@
       "rhfontweightheadingregular"
     ],
     "body": [
-      "var(--rh-font-weight-heading-regular${1:, 300})$2"
+      "var(--rh-font-weight-heading-regular${1:, 400})$2"
     ],
     "description": "Regular font weight for headings"
   },
