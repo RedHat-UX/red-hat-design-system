@@ -47,10 +47,10 @@ export class RhDisclosure extends LitElement {
     const { on = '' } = this;
     return html`
       <details
-        class=${classMap({ [on]: !!on })}
-        ?open="${this.open}"
-        @keydown="${this.#onKeydown}"
-        @toggle="${this.#onToggle}">
+          class=${classMap({ [on]: !!on })}
+          ?open="${this.open}"
+          @keydown="${this.#onKeydown}"
+          @toggle="${this.#onToggle}">
         <summary>
           <rh-icon part="caret" id="caret" set="ui" icon="caret-down"></rh-icon>
           <slot name="summary">${this.summary}</slot>
