@@ -301,6 +301,8 @@
     "@commitlint/cli": "^19.5.0",
     "@commitlint/config-conventional": "^19.5.0",
     "@lit-labs/eleventy-plugin-lit": "^1.0.3",
+    "@lit-labs/ssr": "^3.2.2",
+    "@lit-labs/ssr-client": "^1.1.7",
     "@lit/reactive-element": "^2.0.4",
     "@lit/ts-transformers": "^2.0.1",
     "@parse5/tools": "^0.5.0",
