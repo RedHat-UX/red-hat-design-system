@@ -40,7 +40,7 @@
 <script type="module">
   /* add support for demo/fullscreen and dev server */
   const b2t = document.querySelector('rh-back-to-top');
-  const main = document.querySelector('main');
+  const main = document.querySelector('main, [role="main"]');
   // if main isn't scrollable use window
   if (window.getComputedStyle(main).overflow === 'scroll') {
     b2t.scrollableSelector = 'main';
