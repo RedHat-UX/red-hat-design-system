@@ -1,17 +1,21 @@
-import { isServer, type ReactiveController, type ReactiveElement } from 'lit';
-import type { ContextCallback, ContextRequestEvent, UnknownContext } from '../event.js';
+import type { ReactiveElement } from 'lit';
+import type { ContextCallback, ContextEvent } from '@lit/context';
 
-import {
-  contextEvents,
-  ColorContextController,
-  type ColorContextOptions,
-} from './controller.js';
+import { ContextProvider } from '@lit/context';
+
+import { context, type ColorContextOptions, type UnknownContext } from './controller.js';
+
+import { isServer } from 'lit';
+
+import { ColorContextController } from './controller.js';
 
 import { ColorContextConsumer, type ColorTheme } from './consumer.js';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import styles from '@rhds/tokens/css/color-context-provider.css.js';
+
+import { StyleController } from '@patternfly/pfe-core/controllers/style-controller.js';
 
 /**
  * A `ColorPalette` is a collection of specific color values
@@ -42,9 +46,7 @@ export interface ColorContextProviderOptions<T extends ReactiveElement>
  * `ColorContextProvider` is responsible to derive a context value from CSS and provide it to its
  * descendents.
  */
-export class ColorContextProvider<
-  T extends ReactiveElement
-> extends ColorContextController<T> implements ReactiveController {
+export class ColorContextProvider extends ContextProvider<typeof context> {
   static contexts = new Map(Object.entries({
     darkest: 'dark' as const,
     darker: 'dark' as const,
@@ -53,6 +55,9 @@ export class ColorContextProvider<
     lighter: 'light' as const,
     lightest: 'light' as const,
   }));
+
+  /** The last-known color context on the host */
+  protected last: ColorTheme | null = null;
 
   #attribute: string;
 
@@ -66,14 +71,12 @@ export class ColorContextProvider<
    * Cached (live) computed style declaration
    * @see https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle
    */
-  // eslint-disable-next-line no-unused-private-class-members
-  #style: CSSStyleDeclaration;
 
   #initialized = false;
 
   #logger: Logger;
 
-  #consumer: ColorContextConsumer<T>;
+  #consumer: ColorContextConsumer;
 
   get local() {
     return this.#local;
@@ -88,14 +91,15 @@ export class ColorContextProvider<
     return this.#local ?? this.#consumer.value;
   }
 
-  constructor(host: T, options?: ColorContextProviderOptions<T>) {
+  constructor(protected host: T, options?: ColorContextProviderOptions<T>) {
+    super(host, { context });
+    this.#styles = new StyleController(host, styles);
+    this.#logger = new Logger(host);
+    host.addController(this);
     const { attribute = 'color-palette' } = options ?? {};
-    super(host, styles);
     this.#consumer = new ColorContextConsumer(host, {
       callback: value => this.update(value),
     });
-    this.#logger = new Logger(host);
-    this.#style = window.getComputedStyle(host);
     this.#attribute = attribute;
     if (this.#attribute !== 'color-palette') {
       this.#logger.warn('color context currently supports the `color-palette` attribute only.');
@@ -110,9 +114,8 @@ export class ColorContextProvider<
   async hostConnected() {
     this.host.addEventListener('context-request', e => this.#onChildContextRequestEvent(e));
     this.#mo.observe(this.host, { attributes: true, attributeFilter: [this.#attribute] });
-    await this.host.updateComplete;
-    for (const [host, fired] of contextEvents) {
-      host.dispatchEvent(fired);
+    if (!isServer) {
+      await this.host.updateComplete;
     }
     this.update();
     return true;
@@ -122,10 +125,11 @@ export class ColorContextProvider<
     if (!this.#initialized) {
       this.hostConnected();
     }
-    this.#initialized ||= await this.hostConnected();
+    this.#initialized ||= isServer || await this.hostConnected();
     if (this.#local && this.value !== this.#consumer.value) {
       this.#consumer.update(this.#local);
       this.update();
+      console.log(this.host.localName, this.value);
     }
     if (!isServer) {
       // This is definitely overkill, but it's the only
@@ -147,8 +151,8 @@ export class ColorContextProvider<
    * @param event some event
    */
   #isColorContextEvent(
-    event: ContextRequestEvent<UnknownContext>
-  ): event is ContextRequestEvent<typeof ColorContextController.context> {
+    event: ContextEvent<UnknownContext>
+  ): event is ContextEvent<typeof ColorContextController.context> {
     return event.composedPath().at(0) !== this.host
       && event.context === ColorContextController.context;
   }
@@ -159,7 +163,7 @@ export class ColorContextProvider<
    * and add its callback to the Set of children if it requests multiple updates
    * @param event context-request event
    */
-  async #onChildContextRequestEvent(event: ContextRequestEvent<UnknownContext>) {
+  async #onChildContextRequestEvent(event: ContextEvent<UnknownContext>) {
     // only handle ContextEvents relevant to colour context
     if (this.#isColorContextEvent(event)) {
       event.stopPropagation();
