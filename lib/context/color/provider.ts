@@ -1,21 +1,15 @@
 import type { ReactiveElement } from 'lit';
-import type { ContextCallback, ContextEvent } from '@lit/context';
+import type { ColorTheme } from './consumer.js';
 
 import { ContextProvider } from '@lit/context';
 
-import { context, type ColorContextOptions, type UnknownContext } from './controller.js';
-
-import { isServer } from 'lit';
-
-import { ColorContextController } from './controller.js';
-
-import { ColorContextConsumer, type ColorTheme } from './consumer.js';
-
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
-import styles from '@rhds/tokens/css/color-context-provider.css.js';
-
 import { StyleController } from '@patternfly/pfe-core/controllers/style-controller.js';
+
+import { context } from './context.js';
+
+import styles from '@rhds/tokens/css/color-context-provider.css.js';
 
 /**
  * A `ColorPalette` is a collection of specific color values
@@ -36,8 +30,7 @@ export type ColorPalette = (
   | 'darkest'
 );
 
-export interface ColorContextProviderOptions<T extends ReactiveElement>
-  extends ColorContextOptions<T> {
+export interface ColorContextProviderOptions {
   /** Attribute to set context. Providers only */
   attribute?: string;
 }
@@ -47,7 +40,7 @@ export interface ColorContextProviderOptions<T extends ReactiveElement>
  * descendents.
  */
 export class ColorContextProvider extends ContextProvider<typeof context> {
-  static contexts = new Map(Object.entries({
+  static readonly contexts = new Map(Object.entries({
     darkest: 'dark' as const,
     darker: 'dark' as const,
     dark: 'dark' as const,
@@ -61,45 +54,20 @@ export class ColorContextProvider extends ContextProvider<typeof context> {
 
   #attribute: string;
 
-  /** Cache of context callbacks. Call each to update consumers */
-  #callbacks = new Set<ContextCallback<ColorTheme | null>>();
-
   /** Mutation observer which updates consumers when `color-palette` attribute change. */
   #mo = new MutationObserver(() => this.update());
 
-  /**
-   * Cached (live) computed style declaration
-   * @see https://developer.mozilla.org/en-US/docs/Web/API/Window/getComputedStyle
-   */
-
-  #initialized = false;
-
   #logger: Logger;
 
-  #consumer: ColorContextConsumer;
-
-  get local() {
-    return this.#local;
-  }
-
   get #local() {
-    return ColorContextProvider
-        .contexts.get(this.host.getAttribute(this.#attribute) ?? '');
+    return ColorContextProvider.contexts.get(this.host.getAttribute(this.#attribute) ?? '');
   }
 
-  get value(): ColorTheme {
-    return this.#local ?? this.#consumer.value;
-  }
-
-  constructor(protected host: T, options?: ColorContextProviderOptions<T>) {
+  constructor(protected host: ReactiveElement, options?: ColorContextProviderOptions) {
     super(host, { context });
-    this.#styles = new StyleController(host, styles);
+    new StyleController(host, styles);
     this.#logger = new Logger(host);
-    host.addController(this);
     const { attribute = 'color-palette' } = options ?? {};
-    this.#consumer = new ColorContextConsumer(host, {
-      callback: value => this.update(value),
-    });
     this.#attribute = attribute;
     if (this.#attribute !== 'color-palette') {
       this.#logger.warn('color context currently supports the `color-palette` attribute only.');
@@ -112,80 +80,23 @@ export class ColorContextProvider extends ContextProvider<typeof context> {
      * in case this context provider upgraded after and is closer to a given consumer.
      */
   async hostConnected() {
-    this.host.addEventListener('context-request', e => this.#onChildContextRequestEvent(e));
+    super.hostConnected();
     this.#mo.observe(this.host, { attributes: true, attributeFilter: [this.#attribute] });
-    if (!isServer) {
-      await this.host.updateComplete;
-    }
-    this.update();
-    return true;
-  }
-
-  async hostUpdated() {
-    if (!this.#initialized) {
-      this.hostConnected();
-    }
-    this.#initialized ||= isServer || await this.hostConnected();
-    if (this.#local && this.value !== this.#consumer.value) {
-      this.#consumer.update(this.#local);
-      this.update();
-      console.log(this.host.localName, this.value);
-    }
-    if (!isServer) {
-      // This is definitely overkill, but it's the only
-      // way we've found so far to work around lit-ssr hydration woes
-      this.update();
-    }
   }
 
   /**
    * When a context provider disconnects, it disconnects its mutation observer
    */
   hostDisconnected() {
-    this.#callbacks.forEach(x => this.#callbacks.delete(x));
     this.#mo.disconnect();
-  }
-
-  /**
-   * Was the context event fired requesting our colour-context context?
-   * @param event some event
-   */
-  #isColorContextEvent(
-    event: ContextEvent<UnknownContext>
-  ): event is ContextEvent<typeof ColorContextController.context> {
-    return event.composedPath().at(0) !== this.host
-      && event.context === ColorContextController.context;
-  }
-
-  /**
-   * Provider part of context API
-   * When a child connects, claim its context-request event
-   * and add its callback to the Set of children if it requests multiple updates
-   * @param event context-request event
-   */
-  async #onChildContextRequestEvent(event: ContextEvent<UnknownContext>) {
-    // only handle ContextEvents relevant to colour context
-    if (this.#isColorContextEvent(event)) {
-      event.stopPropagation();
-
-      // Run the callback to initialize the child's colour-context
-      event.callback(this.value);
-
-      // Cache the callback for future updates, if requested
-      if (event.subscribe) {
-        this.#callbacks.add(event.callback);
-      }
-    }
   }
 
   /**
    * Calls the context callback for all consumers
    * @param [force] override theme
    */
-  public override async update(force?: ColorTheme) {
-    for (const cb of this.#callbacks) {
-      cb(force ?? this.value);
-    }
+  public update(force?: ColorTheme) {
+    this.setValue(force ?? this.#local ?? null);
   }
 }
 
@@ -193,20 +104,26 @@ export class ColorContextProvider extends ContextProvider<typeof context> {
  * Makes this element a color context provider which updates its consumers when the decorated field changes
  * @param options options
  */
-export function colorContextProvider<T extends ReactiveElement>(options?: ColorContextOptions<T>) {
-  return function(proto: T, _propertyName: string) {
-    const propertyName = _propertyName as keyof T;
+export function colorContextProvider(options?: ColorContextProviderOptions) {
+  return (proto: ReactiveElement, propertyName: string) => {
+    const controllers = new WeakMap();
+    const values = new Map();
     const klass = (proto.constructor as typeof ReactiveElement);
-    const propOpts = klass.getPropertyOptions(_propertyName);
+    const propOpts = klass.getPropertyOptions(propertyName);
     const attribute = typeof propOpts.attribute === 'boolean' ? undefined : propOpts.attribute;
-    klass.addInitializer(instance => {
-      const controller = new ColorContextProvider(instance as T, {
-        propertyName,
-        attribute,
-        ...options,
-      });
-      // @ts-expect-error: this assignment is strictly for debugging purposes
-      instance.__DEBUG_colorContextProvider = controller;
+    klass.addInitializer((instance: ReactiveElement) => {
+      controllers.set(instance, new ColorContextProvider(instance, { attribute, ...options }));
+    });
+    Object.defineProperty(proto, propertyName, {
+      get(this: ReactiveElement) {
+        return values.get(this);
+      },
+      set(this: ReactiveElement, value: ColorTheme) {
+        controllers.get(this)!.setValue(value);
+        values.set(this, value);
+      },
+      enumerable: true,
+      configurable: true,
     });
   };
 }
