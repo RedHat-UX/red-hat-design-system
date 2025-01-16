@@ -24,14 +24,15 @@ export type ColorTheme = (
  * The consumer has no direct access to the context, it must receive it from the provider.
  */
 export class ColorContextConsumer extends ContextConsumer<typeof context, ReactiveElement> {
-  /** The last-known color context on the host */
-  protected last: ColorTheme | null = null;
-
   constructor(
     host: ReactiveElement,
     callback: (value: ContextType<typeof context>, dispose?: () => void) => void,
   ) {
-    super(host, { callback, context, subscribe: true });
+    super(host, {
+      callback,
+      context,
+      subscribe: true,
+    });
     new StyleController(host, styles);
   }
 }
@@ -44,6 +45,7 @@ export function colorContextConsumer<T extends ReactiveElement>() {
   return function(proto: T, key: string | keyof T) {
     (proto.constructor as typeof ReactiveElement).addInitializer((instance: ReactiveElement) => {
       new ColorContextConsumer(instance, (value: ColorTheme | null) => {
+        console.log(`${instance.id ?? instance.localName} receiving`, { key, value });
         (instance as T)[key as keyof T] = value as T[keyof T];
       });
     });

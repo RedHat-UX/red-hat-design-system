@@ -43,6 +43,8 @@ import styles from './rh-card.css';
 export class RhCard extends LitElement {
   static styles = [styles];
 
+  @property({ reflect: true }) id = '';
+
   /**
    * Sets color palette, which affects the element's styles as well as descendants' color theme.
    * Overrides parent color context.
@@ -69,6 +71,7 @@ export class RhCard extends LitElement {
   #slots = new SlotController(this, 'header', 'image', null, 'footer');
 
   #isPromo = this.variant === 'promo';
+
   #isStandardPromo = false;
 
   willUpdate() {

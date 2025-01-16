@@ -75,6 +75,8 @@ function isSupportedContent(el: Element | null): el is HTMLAnchorElement | HTMLB
 export class RhCta extends LitElement {
   static readonly styles = [style];
 
+  @property({ reflect: true }) id = '';
+
   /**
    * Indicates the importance of this call-to-action in the context of the page.
    * Will also influence how the call-to-action is styled.
