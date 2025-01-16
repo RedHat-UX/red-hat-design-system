@@ -33,21 +33,21 @@
   main {
     display: block;
     scroll-behavior: smooth;
-    max-height: calc(100dvh - var(--pf-demo-header-height)) !important;
+    max-block-size: calc(100svb - var(--pf-demo-header-height)) !important;
   }
 
   #nav {
-    height: calc(100dvh - var(--pf-demo-header-height, 4.375rem)) !important;
+    block-size: calc(100svb - var(--pf-demo-header-height, 4.375rem)) !important;
   }
 
   #overflow {
-    min-height: calc(100dvh + 401px);
+    min-block-size: calc(100svb + 401px);
     position: relative;
   }
 
   #bottom {
     position: absolute;
-    bottom: 0;
+    inset-block-end: 0;
   }
 
   @media (prefers-reduced-motion: reduce) {

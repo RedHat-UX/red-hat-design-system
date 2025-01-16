@@ -32,15 +32,15 @@
   /* override to place rh-back-to-top in context of page elements */
   rh-back-to-top {
     position: sticky;
-    float: right;
+    float: inline-end;
   }
 
   /* Addtional styles for demo page layout */
   #mock {
-    --_nav-height: 70px;
-    --_footer-height: 400px;
-    --_hero-height: 300px;
-    --_content-width: 60rem;
+    --_nav-block-size: 70px;
+    --_footer-block-size: 400px;
+    --_hero-block-size: 300px;
+    --_content-inline-size: 60rem;
 
     scroll-behavior: smooth;
   }
@@ -49,22 +49,22 @@
   }
   #mock .nav {
     background-color: #151515;
-    height: var(--_nav-height);
+    block-size: var(--_nav-block-size);
     color: #ffffff;
   }
   #mock .main {
     position: relative;
     margin: 0 auto;
-    max-width: var(--_content-width);
+    max-inline-size: var(--_content-inline-size);
     margin-block: var(--rh-spacer-2xl, 32px);
     padding: var(--rh-spacer-2xl, 32px);
-    min-height: calc(100dvh - var(--_nav-height) - var(--_hero-height));
+    min-block-size: calc(100svb - var(--_nav-block-size) - var(--_hero-block-size));
 
   }
   #mock .hero {
     display: flex;
     justify-content: space-evenly;
-    height: var(--_hero-height);
+    block-size: var(--_hero-block-size);
     background-color: var(--rh-color-surface-lighter, #f2f2f2);
     padding-inline: var(--rh-spacer-2xl, 32px);
     flex-direction: column;
@@ -75,18 +75,18 @@
     flex-direction: column;
     padding-inline: var(--rh-spacer-2xl, 32px);
     margin: 0 auto;
-    max-width: var(--_content-width);
+    max-inline-size: var(--_content-inline-size);
   }
   #mock .footer {
     position: static;
     background-color: #151515;
-    height: var(--_footer-height);
+    block-size: var(--_footer-block-size);
     margin-block-start: var(--rh-space-6xl, 96px);
     color: #ffffff;
   }
   #mock #bottom {
     position: absolute;
-    bottom: 0;
+    inset-block-end: 0;
   }
 
   @media (prefers-reduced-motion: reduce) {
