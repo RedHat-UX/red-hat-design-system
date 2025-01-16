@@ -17,7 +17,7 @@
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In quis tellus nec erat sodales ultrices. Morbi fringilla, purus ut cursus volutpat, dui ipsum varius massa, a lobortis mauris mi et justo. Integer lobortis sed magna in aliquet. Pellentesque suscipit elit enim, in consectetur metus tincidunt eu. In quam dolor, bibendum ac lorem et, blandit lacinia lorem. Praesent bibendum magna vel finibus facilisis. Cras eleifend est sed nisi malesuada, vitae varius sem venenatis. Nam maximus ligula bibendum quam porttitor tempor. Cras in lacus in lacus consectetur placerat lobortis ac velit. Pellentesque venenatis leo sit amet neque commodo pulvinar. Integer quis nulla ac eros luctus scelerisque. Pellentesque interdum sapien eros. Integer id velit sed eros fringilla porttitor.</p>
       <a id="bottom" href="#focusable-element-bottom">Focusable element</a>
     </div>
-    <rh-back-to-top scrollable-selector="#mock" href="#top">Back to top</rh-back-to-top>
+    <rh-back-to-top scrollable-selector="#mock" href="#top" visible="always">Back to top</rh-back-to-top>
     <div class="footer"></div>
   </div>
 
@@ -43,9 +43,6 @@
     --_content-width: 60rem;
 
     scroll-behavior: smooth;
-    height: calc(100vh - calc(24px * 2) - var(--pf-demo-header-height));
-    overflow-y: scroll;
-    border: var(--rh-border-width-md, 2px) solid var(--rh-color-border-subtle-on-light, #c7c7c7);
   }
   #mock .page-body {
     position: relative;
