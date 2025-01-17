@@ -88,7 +88,7 @@ summary {
 
   &:before {
     content: '';
-    border-inline-start: 3px solid var(--rh-color-brand-red);
+    border-inline-start: 3px solid var(--rh-color-brand-red-on-light, #ee0000);
     position: absolute;
     z-index: 1;
     inset-inline-start: -1px;
