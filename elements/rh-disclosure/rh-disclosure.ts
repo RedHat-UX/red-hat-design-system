@@ -5,6 +5,7 @@ import { query } from 'lit/decorators/query.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 
@@ -31,6 +32,18 @@ export class RhDisclosure extends LitElement {
   static readonly styles = [styles];
 
   /**
+   * Set the colorPalette of the disclosure. Possible values are:
+   * - `lightest` (default)
+   * - `lighter`
+   * - `light`
+   * - `dark`
+   * - `darker`
+   * - `darkest`
+   */
+  @colorContextProvider()
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
+
+  /**
    * Sets the disclosure to be in its open state
    */
   @property({ type: Boolean, reflect: true }) open = false;
@@ -44,10 +57,10 @@ export class RhDisclosure extends LitElement {
   @query('summary') private summaryEl!: HTMLElement;
 
   render() {
-    const { on = '' } = this;
+    const { on = 'light' } = this;
     return html`
       <details
-          class=${classMap({ [on]: !!on })}
+          class=${classMap({ on: true, [on]: true })}
           ?open="${this.open}"
           @keydown="${this.#onKeydown}"
           @toggle="${this.#onToggle}">
