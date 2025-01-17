@@ -1,11 +1,18 @@
 :host {
-  /* stylelint-disable-next-line rhds/token-values */
-  border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle, #c7c7c7);
+  --rh-color-border-subtle: var(--rh-color-gray-30, #c7c7c7);
+
+  border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
   display: block;
   font-family: var(--rh-font-family-body-text);
 }
 
+:host:has(.on.dark) {
+  --rh-color-border-subtle: var(--rh-color-gray-50, #707070);
+}
+
 summary {
+  background-color: var(--rh-color-surface);
+  color: var(--rh-color-text-primary);
   cursor: pointer;
   font-size: var(--rh-font-size-body-text-md, 1rem);
   font-weight: var(--rh-font-weight-body-text-medium, 500);
@@ -21,14 +28,13 @@ summary {
   &:hover,
   &:active,
   &:focus {
-    background-color: var(--rh-color-surface-lighter);
+    background-color: var(--rh-color-surface-lighter, #f2f2f2);
   }
 
   &:active,
   &:focus {
     outline: var(--rh-border-width-md, 2px) solid;
-    /* stylelint-disable-next-line rhds/token-values */
-    outline-color: var(--rh-color-interactive-primary-default, #0066cc);
+    outline-color: var(--rh-color-interactive-primary-default);
     outline-offset: -2px;
     position: relative;
     z-index: 2;
@@ -41,11 +47,11 @@ summary {
   }
 }
 
-.dark summary {
+.on.dark summary {
   &:hover,
   &:active,
   &:focus {
-    background-color: var(--rh-color-surface-dark-alt);
+    background-color: var(--rh-color-surface-dark-alt, #292929);
   }
 }
 
@@ -60,6 +66,8 @@ summary {
 }
 
 #details-content {
+  background-color: var(--rh-color-surface);
+  color: var(--rh-color-text-primary);
   font-size: var(--rh-font-size-body-text-md, 1rem);
   line-height: var(--rh-line-height-body-text, 1.5);
   padding-block: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
@@ -80,8 +88,7 @@ summary {
 
   &:before {
     content: '';
-    /* stylelint-disable-next-line rhds/token-values */
-    border-inline-start: 3px solid var(--rh-color-brand-red, #ee0000);
+    border-inline-start: 3px solid var(--rh-color-brand-red);
     position: absolute;
     z-index: 1;
     inset-inline-start: -1px;

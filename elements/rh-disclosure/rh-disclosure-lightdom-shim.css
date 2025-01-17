@@ -1,6 +1,7 @@
 rh-disclosure:not(:defined) {
-  /* stylelint-disable-next-line rhds/token-values */
-  border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle, #c7c7c7);
+  --rh-color-border-subtle: var(--rh-color-gray-30, #c7c7c7);
+
+  border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
   box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
   display: block;
   font-family: var(--rh-font-family-body-text);
