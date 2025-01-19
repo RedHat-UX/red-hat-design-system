@@ -5,6 +5,8 @@ import type { RenderRequestMessage, RenderResponseMessage } from './lit.js';
 
 import { LitElementRenderer } from '@lit-labs/ssr/lib/lit-element-renderer.js';
 
+import '@patternfly/pfe-core/ssr-shims.js';
+
 import { register } from 'node:module';
 import { register as registerTS } from 'tsx/esm/api';
 
@@ -93,4 +95,3 @@ export default async function renderPage({
   const end = performance.now();
   return { page, rendered, durationMs: end - start };
 }
-

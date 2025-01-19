@@ -1,6 +1,6 @@
 import type { ReactiveElement } from 'lit';
 
-import { ContextConsumer, type ContextType } from '@lit/context';
+import { ContextConsumer } from '@lit/context';
 import { StyleController } from '@patternfly/pfe-core/controllers/style-controller.js';
 
 import { context } from './context.js';
@@ -23,17 +23,19 @@ export type ColorTheme = (
  * by the closest color context provider.
  * The consumer has no direct access to the context, it must receive it from the provider.
  */
-export class ColorContextConsumer extends ContextConsumer<typeof context, ReactiveElement> {
+export class ColorContextConsumer<
+  T extends ReactiveElement
+> extends ContextConsumer<typeof context, T> {
   constructor(
-    host: ReactiveElement,
-    callback: (value: ContextType<typeof context>, dispose?: () => void) => void,
+    host: T,
+    key: keyof T
   ) {
-    super(host, {
-      callback,
-      context,
-      subscribe: true,
-    });
     new StyleController(host, styles);
+    super(host, { callback: v => this.update(v, key), context, subscribe: true });
+  }
+
+  update(value: ColorTheme | null, key: keyof T) {
+    this.host[key as 'ariaLabel'] = value;
   }
 }
 
@@ -44,10 +46,7 @@ export class ColorContextConsumer extends ContextConsumer<typeof context, Reacti
 export function colorContextConsumer<T extends ReactiveElement>() {
   return function(proto: T, key: string | keyof T) {
     (proto.constructor as typeof ReactiveElement).addInitializer((instance: ReactiveElement) => {
-      new ColorContextConsumer(instance, (value: ColorTheme | null) => {
-        console.log(`${instance.id ?? instance.localName} receiving`, { key, value });
-        (instance as T)[key as keyof T] = value as T[keyof T];
-      });
+      new ColorContextConsumer(instance as T, key as keyof T);
     });
   };
 }

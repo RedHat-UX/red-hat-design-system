@@ -1,4 +1,6 @@
-import { ReactiveElement } from 'lit';
+import type { ColorTheme } from './consumer.js';
+
+import { isServer, ReactiveElement } from 'lit';
 
 import { ContextProvider } from '@lit/context';
 
@@ -7,7 +9,6 @@ import { StyleController } from '@patternfly/pfe-core/controllers/style-controll
 import { context } from './context.js';
 
 import styles from '@rhds/tokens/css/color-context-provider.css.js';
-import type { ColorTheme } from './consumer.js';
 
 /**
  * A `ColorPalette` is a collection of specific color values
@@ -28,13 +29,24 @@ export type ColorPalette = (
   | 'darkest'
 );
 
+const controllers = new WeakMap<ReactiveElement, ColorContextProvider>();
+const values = new WeakMap<ReactiveElement, ColorTheme | null>();
+
 /**
  * `ColorContextProvider` is responsible to derive a context value from CSS and provide it to its
  * descendents.
  */
 class ColorContextProvider extends ContextProvider<typeof context> {
-  constructor(protected host: ReactiveElement) {
-    super(host, { context });
+  constructor(protected host: ReactiveElement, initialValue?: ColorTheme | null) {
+    super(host, { context, initialValue });
+  }
+
+  update(palette?: ColorPalette | null) {
+    // @ts-expect-error: blahy
+    palette ??= this.host.colorPalette ?? null as ColorPalette | null;
+    const background = paletteBackgroundMap.get(palette!) ?? null;
+    this.setValue(background, isServer);
+    values.set(this.host, background);
   }
 }
 
@@ -47,36 +59,35 @@ const paletteBackgroundMap = new Map(Object.entries({
   lightest: 'light' as const,
 }));
 
-
 /**
  * Makes this element a color context provider which updates its consumers when the decorated field changes
  * @param options options
  */
 export function colorContextProvider() {
-  return (proto: ReactiveElement, key: string) => {
-    const controllers = new WeakMap<ReactiveElement, ColorContextProvider>();
-    const values = new Map<ReactiveElement, ColorTheme | null>();
+  return (proto: ReactiveElement, key: 'colorPalette') => {
+    if (key !== 'colorPalette') {
+      throw new Error('color context only supports the `colorPalette` property.');
+    }
     const klass = (proto.constructor as typeof ReactiveElement);
     const propOpts = klass.getPropertyOptions(key);
     const attribute = typeof propOpts.attribute === 'boolean' ? undefined : propOpts.attribute;
     if (attribute !== 'color-palette') {
-      throw new Error('color context currently supports the `color-palette` attribute only.');
+      throw new Error('color context only supports the `color-palette` attribute.');
     }
     klass.addInitializer((instance: ReactiveElement) => {
-      controllers.set(instance, new ColorContextProvider(instance));
       new StyleController(instance, styles);
+      const controller = new ColorContextProvider(instance);
+      controllers.set(instance, controller);
+      controller.update();
     });
+    const orig = Object.getOwnPropertyDescriptor(proto, key);
     Object.defineProperty(proto, key, {
       get(this: ReactiveElement) {
         return values.get(this);
       },
-      set(this: ReactiveElement, value: ColorPalette) {
-        const background = paletteBackgroundMap.get(value) ?? null;
-        if (this.id === 'card-d' || this.outerHTML?.includes('card-d')) {
-          console.log({ value, background });
-        }
-        controllers.get(this)!.setValue(background);
-        values.set(this, background);
+      set(this: ReactiveElement, palette: ColorPalette) {
+        controllers.get(this)!.update(palette);
+        orig?.set?.call(this, palette);
       },
       enumerable: true,
       configurable: true,

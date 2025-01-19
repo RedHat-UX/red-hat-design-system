@@ -13,6 +13,8 @@ import RHDSElementDocsPlugin from '#11ty-plugins/element-docs.js';
 import RHDSElementDemosPlugin from '#11ty-plugins/element-demos.js';
 import LitSSRPlugin from '#11ty-plugins/lit-ssr/lit.js';
 
+import '@patternfly/pfe-core/ssr-shims.js';
+
 import { getPfeConfig } from '@patternfly/pfe-tools/config.js';
 import { capitalize } from '#11ty-plugins/tokensHelpers.js';
 
