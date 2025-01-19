@@ -1,7 +1,7 @@
 import type { RhAccordion } from './rh-accordion.js';
 import type { RhAccordionContext } from './context.js';
 
-import { html, LitElement } from 'lit';
+import { html, isServer, LitElement } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
@@ -71,17 +71,10 @@ export class RhAccordionHeader extends LitElement {
   override connectedCallback() {
     super.connectedCallback();
     this.id ||= getRandomId(this.localName);
-    const accordion = this.closest('rh-accordion');
-    const heading = this.closest('h1,h2,h3,h4,h5,h6');
-    if (heading && accordion?.contains(heading)) {
-      this.#internals.ariaLevel = heading.localName.replace('h', '');
-      heading.replaceWith(this);
-    } else {
-      this.#internals.ariaLevel = Math.max(2, this.#heading.level).toString();
-    }
+    this.#initDom();
   }
 
-  render() {
+  override render() {
     const { expanded, on = 'light' } = this;
     const { accents, large = false } = this.ctx ?? {};
     const rtl = this.#dir.dir === 'rtl';
@@ -101,6 +94,20 @@ export class RhAccordionHeader extends LitElement {
         </svg>
       </button>
     `;
+  }
+
+  #initDom() {
+    if (!isServer) {
+      // TODO: replace with context?
+      const accordion = this.closest('rh-accordion');
+      const heading = this.closest('h1,h2,h3,h4,h5,h6');
+      if (heading && accordion?.contains(heading)) {
+        this.#internals.ariaLevel = heading.localName.replace('h', '');
+        heading.replaceWith(this);
+      } else {
+        this.#internals.ariaLevel = Math.max(2, this.#heading.level).toString();
+      }
+    }
   }
 
   #onClick(event: MouseEvent) {
