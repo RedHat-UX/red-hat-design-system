@@ -1,5 +1,5 @@
 import type { DirectiveResult } from 'lit-html/directive.js';
-import { CSSResult, LitElement, html, type PropertyValues } from 'lit';
+import { CSSResult, LitElement, html, isServer, type PropertyValues } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { styleMap } from 'lit/directives/style-map.js';
@@ -149,8 +149,10 @@ export class RhCodeBlock extends LitElement {
 
   override connectedCallback() {
     super.connectedCallback();
-    this.#ro.observe(this);
-    this.#onSlotChange();
+    if (!isServer) {
+      this.#ro.observe(this);
+      this.#onSlotChange();
+    }
   }
 
   override disconnectedCallback() {
