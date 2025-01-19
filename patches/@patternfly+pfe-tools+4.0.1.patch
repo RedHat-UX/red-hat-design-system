@@ -11,3 +11,54 @@ index ad61e24..40579d3 100644
              }), options));
          },
      };
+diff --git a/node_modules/@patternfly/pfe-tools/ssr/ssr.d.ts b/node_modules/@patternfly/pfe-tools/ssr/ssr.d.ts
+index b72548d..f4fa234 100644
+--- a/node_modules/@patternfly/pfe-tools/ssr/ssr.d.ts
++++ b/node_modules/@patternfly/pfe-tools/ssr/ssr.d.ts
+@@ -1,4 +1,5 @@
+ /**
++ * composes the `unsafeHTML`, `html`, `render`, and `collectResult` functions from lit ssr
+  * @param input html partial
+  */
+ export declare function ssr(input: string): Promise<string>;
+diff --git a/node_modules/@patternfly/pfe-tools/ssr/ssr.js b/node_modules/@patternfly/pfe-tools/ssr/ssr.js
+index 5ddd0d2..112545a 100644
+--- a/node_modules/@patternfly/pfe-tools/ssr/ssr.js
++++ b/node_modules/@patternfly/pfe-tools/ssr/ssr.js
+@@ -1,8 +1,8 @@
+-import { render } from '@lit-labs/ssr';
++import { render, html } from '@lit-labs/ssr';
+ import { collectResult } from '@lit-labs/ssr/lib/render-result.js';
+-import { html } from 'lit';
+ import { unsafeHTML } from 'lit/directives/unsafe-html.js';
+ /**
++ * composes the `unsafeHTML`, `html`, `render`, and `collectResult` functions from lit ssr
+  * @param input html partial
+  */
+ export async function ssr(input) {
+diff --git a/node_modules/@patternfly/pfe-tools/ssr/ssr.js.map b/node_modules/@patternfly/pfe-tools/ssr/ssr.js.map
+index df66b5b..de18fcd 100644
+--- a/node_modules/@patternfly/pfe-tools/ssr/ssr.js.map
++++ b/node_modules/@patternfly/pfe-tools/ssr/ssr.js.map
+@@ -1 +1 @@
+-{"version":3,"file":"ssr.js","sourceRoot":"","sources":["ssr.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,MAAM,EAAE,MAAM,eAAe,CAAC;AACvC,OAAO,EAAE,aAAa,EAAE,MAAM,oCAAoC,CAAC;AACnE,OAAO,EAAE,IAAI,EAAE,MAAM,KAAK,CAAC;AAC3B,OAAO,EAAE,UAAU,EAAE,MAAM,+BAA+B,CAAC;AAE3D;;GAEG;AACH,MAAM,CAAC,KAAK,UAAU,GAAG,CAAC,KAAa;IACrC,OAAO,aAAa,CAAC,MAAM,CAAC,IAAI,CAAA,GAAG,UAAU,CAAC,KAAK,CAAC,EAAE,CAAC,CAAC,CAAC;AAC3D,CAAC","sourcesContent":["import { render } from '@lit-labs/ssr';\nimport { collectResult } from '@lit-labs/ssr/lib/render-result.js';\nimport { html } from 'lit';\nimport { unsafeHTML } from 'lit/directives/unsafe-html.js';\n\n/**\n * @param input html partial\n */\nexport async function ssr(input: string): Promise<string> {\n  return collectResult(render(html`${unsafeHTML(input)}`));\n}\n"]}
+\ No newline at end of file
++{"version":3,"file":"ssr.js","sourceRoot":"","sources":["ssr.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,MAAM,EAAE,IAAI,EAAE,MAAM,eAAe,CAAC;AAC7C,OAAO,EAAE,aAAa,EAAE,MAAM,oCAAoC,CAAC;AACnE,OAAO,EAAE,UAAU,EAAE,MAAM,+BAA+B,CAAC;AAE3D;;;GAGG;AACH,MAAM,CAAC,KAAK,UAAU,GAAG,CAAC,KAAa;IACrC,OAAO,aAAa,CAAC,MAAM,CAAC,IAAI,CAAA,GAAG,UAAU,CAAC,KAAK,CAAC,EAAE,CAAC,CAAC,CAAC;AAC3D,CAAC","sourcesContent":["import { render, html } from '@lit-labs/ssr';\nimport { collectResult } from '@lit-labs/ssr/lib/render-result.js';\nimport { unsafeHTML } from 'lit/directives/unsafe-html.js';\n\n/**\n * composes the `unsafeHTML`, `html`, `render`, and `collectResult` functions from lit ssr\n * @param input html partial\n */\nexport async function ssr(input: string): Promise<string> {\n  return collectResult(render(html`${unsafeHTML(input)}`));\n}\n"]}
+\ No newline at end of file
+diff --git a/node_modules/@patternfly/pfe-tools/ssr/ssr.ts b/node_modules/@patternfly/pfe-tools/ssr/ssr.ts
+new file mode 100644
+index 0000000..4239b6c
+--- /dev/null
++++ b/node_modules/@patternfly/pfe-tools/ssr/ssr.ts
+@@ -0,0 +1,11 @@
++import { render, html } from '@lit-labs/ssr';
++import { collectResult } from '@lit-labs/ssr/lib/render-result.js';
++import { unsafeHTML } from 'lit/directives/unsafe-html.js';
++
++/**
++ * composes the `unsafeHTML`, `html`, `render`, and `collectResult` functions from lit ssr
++ * @param input html partial
++ */
++export async function ssr(input: string): Promise<string> {
++  return collectResult(render(html`${unsafeHTML(input)}`));
++}
