@@ -32,7 +32,7 @@
   justify-items: flex-start;
   overflow: hidden;
   border-radius: var(--_border-radius, var(--rh-border-width-lg, 3px));
-  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif) !important;
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif) !important;
   line-height: var(--rh-line-height-body-text, 1.5);
   border-style: solid;
   border-width: var(--rh-border-width-sm, 1px);
@@ -83,7 +83,7 @@
 
 #header ::slotted(:is(h1, h2, h3, h4, h5, h6)),
 #body ::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
 }
 
 #image ::slotted(*) {
@@ -96,7 +96,7 @@
   flex-direction: column;
   gap: var(--rh-space-lg, 16px);
   box-sizing: border-box;
-  font-family: var(--rh-card-heading-font-family, var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif)) !important;
+  font-family: var(--rh-card-heading-font-family, var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif)) !important;
   font-size: var(--rh-card-heading-font-size, var(--rh-font-size-heading-sm, 1.5rem));
   font-weight:
     var(--rh-card-heading-font-weight,
@@ -209,7 +209,7 @@
 }
 
 .promo #header ::slotted(*) {
-  font-family: var(--rh-card-heading-font-family, var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif)) !important;
+  font-family: var(--rh-card-heading-font-family, var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif)) !important;
   font-size: var(--_promo-heading-size) !important;
   font-weight: var(--_promo-heading-font-weight) !important;
   margin-block: 0 var(--_promo-heading-margin-block-end) !important;
@@ -235,7 +235,7 @@
 }
 
 .promo.standard #body ::slotted(:not([slot])) {
-  font-family: var(--rh-card-heading-font-family, var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif)) !important;
+  font-family: var(--rh-card-heading-font-family, var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif)) !important;
   font-size: var(--rh-font-size-body-text-xl, 1.25rem) !important;
   font-weight: var(--rh-font-weight-body-text-medium, 500);
   line-height: var(--rh-line-height-heading, 1.3) !important;

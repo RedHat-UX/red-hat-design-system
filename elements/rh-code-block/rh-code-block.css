@@ -127,6 +127,28 @@
   color: inherit;
 }
 
+#content::slotted(:is(code[class*='language-'], pre[class*='language-'])) {
+  color: var(--_code-color);
+  font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: var(--rh-line-height-code, 1.5);
+  tab-size: 4;
+  hyphens: none;
+  background: transparent;
+}
+
+:host([highlighting='prerendered']) {
+  .wrap {
+    #content::slotted(pre[class*='language-']) {
+      white-space: pre-wrap;
+    }
+  }
+}
+
 #content::slotted(rh-tag) {
   width: var(--rh-size-icon-06, 64px);
 }
@@ -204,7 +226,7 @@
   inset-block-end: var(--_code-secondary-spacer);
   margin-block: var(--_code-secondary-spacer);
   color: var(--rh-color-text-primary);
-  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
   font-weight: var(--rh-font-weight-body-text-regular, 400);
   line-height: var(--rh-line-height-body-text, 1.5);
