@@ -96,9 +96,9 @@ export class RhAccordion extends LitElement {
    * Sets and reflects the currently expanded accordion 0-based indexes.
    * Use commas to separate multiple indexes.
    * ```html
-   * <pf-accordion expanded-index="1,2">
+   * <rh-accordion expanded-index="1,2">
    *   ...
-   * </pf-accordion>
+   * </rh-accordion>
    * ```
    */
   @property({
