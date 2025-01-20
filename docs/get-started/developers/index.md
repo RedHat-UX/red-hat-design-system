@@ -11,10 +11,12 @@ subnav:
   collection: sortedDevelopers
   order: 00
 order: 20
-importElements:
-  - rh-card
-  - rh-cta
 ---
+
+<script type="module" data-helmet>
+  import '@rhds/elements/rh-card/rh-card.js';
+  import '@rhds/elements/rh-cta/rh-cta.js';
+</script>
 
 <style data-helmet>
   .grid > rh-card {

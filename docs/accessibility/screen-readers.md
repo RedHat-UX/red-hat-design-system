@@ -5,9 +5,11 @@ permalink: /accessibility/screen-readers/index.html
 tags:
   - accessibility
 order: 100
-importElements:
-  - rh-tile
 ---
+
+<script type="module" data-helmet>
+  import '@rhds/elements/rh-tile/rh-tile.js';
+</script>
 
 <link rel="stylesheet"
       data-helmet

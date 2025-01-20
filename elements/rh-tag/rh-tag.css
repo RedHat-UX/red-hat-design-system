@@ -13,7 +13,7 @@ a {
     var(--rh-tag-padding-block-end, var(--rh-space-xs, 4px))
     var(--rh-tag-padding-inline-start, var(--rh-space-md, 8px));
   gap: var(--rh-space-xs, 4px);
-  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
   font-weight: var(--rh-font-weight-body-text-regular, 400);
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
   line-height: var(--rh-line-height-body-text, 1.5);
