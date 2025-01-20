@@ -128,59 +128,130 @@ index 3fae8f3..2a45c34 100644
      hasContent: boolean;
      elements: Element[];
 diff --git a/node_modules/@patternfly/pfe-core/controllers/slot-controller.js b/node_modules/@patternfly/pfe-core/controllers/slot-controller.js
-index 7162155..8d545ae 100644
+index 7162155..c213d1e 100644
 --- a/node_modules/@patternfly/pfe-core/controllers/slot-controller.js
 +++ b/node_modules/@patternfly/pfe-core/controllers/slot-controller.js
-@@ -1,5 +1,6 @@
- var _SlotController_instances, _a, _SlotController_nodes, _SlotController_logger, _SlotController_firstUpdated, _SlotController_mo, _SlotController_slotNames, _SlotController_deprecations, _SlotController_onSlotChange, _SlotController_onMutation, _SlotController_getChildrenForSlot, _SlotController_initSlot;
+@@ -1,6 +1,8 @@
+-var _SlotController_instances, _a, _SlotController_nodes, _SlotController_logger, _SlotController_firstUpdated, _SlotController_mo, _SlotController_slotNames, _SlotController_deprecations, _SlotController_onSlotChange, _SlotController_onMutation, _SlotController_getChildrenForSlot, _SlotController_initSlot;
++var _SlotController_instances, _a, _SlotController_nodes, _SlotController_logger, _SlotController_firstUpdated, _SlotController_slotNames, _SlotController_ssrHintHasSlotted, _SlotController_deprecations, _SlotController_onSlotChange, _SlotController_getSlotElement, _SlotController_getChildrenForSlot, _SlotController_initSlot;
  import { __classPrivateFieldGet, __classPrivateFieldSet } from "tslib";
 +import { isServer } from 'lit';
  import { Logger } from './logger.js';
++const trim = (s) => s.trim();
  function isObjectConfigSpread(config) {
      return config.length === 1 && typeof config[0] === 'object' && config[0] !== null;
-@@ -44,7 +45,8 @@ export class SlotController {
-                 ?? __classPrivateFieldGet(this, _SlotController_instances, "m", _SlotController_getChildrenForSlot).call(this, name);
-             const selector = slotName ? `slot[name="${slotName}"]` : 'slot:not([name])';
-             const slot = this.host.shadowRoot?.querySelector?.(selector) ?? null;
+ }
+@@ -18,37 +20,35 @@ export class SlotController {
+         _SlotController_nodes.set(this, new Map());
+         _SlotController_logger.set(this, void 0);
+         _SlotController_firstUpdated.set(this, false);
+-        _SlotController_mo.set(this, new MutationObserver(records => __classPrivateFieldGet(this, _SlotController_onMutation, "f").call(this, records)));
+         _SlotController_slotNames.set(this, void 0);
++        _SlotController_ssrHintHasSlotted.set(this, []);
+         _SlotController_deprecations.set(this, {});
+         _SlotController_onSlotChange.set(this, (event) => {
+-            const slotName = event.target.name;
+-            __classPrivateFieldGet(this, _SlotController_initSlot, "f").call(this, slotName);
+-            this.host.requestUpdate();
+-        });
+-        _SlotController_onMutation.set(this, async (records) => {
+-            const changed = [];
+-            for (const { addedNodes, removedNodes } of records) {
+-                for (const node of [...addedNodes, ...removedNodes]) {
+-                    if (node instanceof HTMLElement && node.slot) {
+-                        __classPrivateFieldGet(this, _SlotController_initSlot, "f").call(this, node.slot);
+-                        changed.push(node.slot);
+-                    }
+-                }
++            if (event.target instanceof HTMLSlotElement) {
++                __classPrivateFieldGet(this, _SlotController_initSlot, "f").call(this, event.target.name);
++                this.host.requestUpdate();
+             }
+-            this.host.requestUpdate();
+         });
+         _SlotController_initSlot.set(this, (slotName) => {
+-            const name = slotName || _a.default;
+-            const elements = __classPrivateFieldGet(this, _SlotController_nodes, "f").get(name)?.slot?.assignedElements?.()
+-                ?? __classPrivateFieldGet(this, _SlotController_instances, "m", _SlotController_getChildrenForSlot).call(this, name);
+-            const selector = slotName ? `slot[name="${slotName}"]` : 'slot:not([name])';
+-            const slot = this.host.shadowRoot?.querySelector?.(selector) ?? null;
 -            const hasContent = !!elements.length;
-+            const nodes = slot?.assignedNodes?.();
-+            const hasContent = !!elements.length || !!nodes?.filter(x => x.textContent?.trim()).length;
-             __classPrivateFieldGet(this, _SlotController_nodes, "f").set(name, { elements, name: slotName ?? '', hasContent, slot });
+-            __classPrivateFieldGet(this, _SlotController_nodes, "f").set(name, { elements, name: slotName ?? '', hasContent, slot });
++            const slotId = slotName || _a.default;
++            const name = slotName ?? '';
++            const elements = __classPrivateFieldGet(this, _SlotController_instances, "m", _SlotController_getChildrenForSlot).call(this, slotId);
++            const slot = __classPrivateFieldGet(this, _SlotController_instances, "m", _SlotController_getSlotElement).call(this, slotId);
++            const hasContent = isServer ? __classPrivateFieldGet(this, _SlotController_ssrHintHasSlotted, "f").includes(slotName ?? 'default')
++                : !!elements.length || !!slot?.assignedNodes?.()?.filter(x => x.textContent?.trim()).length;
++            __classPrivateFieldGet(this, _SlotController_nodes, "f").set(slotId, { elements, name, hasContent, slot });
              __classPrivateFieldGet(this, _SlotController_logger, "f").debug(slotName, hasContent);
          });
-@@ -117,11 +119,20 @@ export class SlotController {
-      * @example this.hasSlotted('header');
-      */
-     hasSlotted(...names) {
--        const slotNames = Array.from(names, x => x == null ? _a.default : x);
--        if (!slotNames.length) {
--            slotNames.push(_a.default);
-+        if (isServer) {
-+            return this.host
-+                .getAttribute('ssr-hint-has-slotted')
-+                ?.split(',')
-+                .map(name => name.trim())
-+                .some(name => names.includes(name === 'default' ? null : name)) ?? false;
-+        }
-+        else {
-+            const slotNames = Array.from(names, x => x == null ? _a.default : x);
-+            if (!slotNames.length) {
-+                slotNames.push(_a.default);
-+            }
-+            return slotNames.some(x => __classPrivateFieldGet(this, _SlotController_nodes, "f").get(x)?.hasContent ?? false);
++        host.addController(this);
+         __classPrivateFieldSet(this, _SlotController_logger, new Logger(this.host), "f");
++        host.constructor
++            .createProperty('ssrHintHasSlotted', { attribute: 'ssr-hint-has-slotted' });
++        __classPrivateFieldSet(this, _SlotController_ssrHintHasSlotted, this.host
++            // @ts-expect-error: this is a ponyfill for ::has-slotted, is not intended as a public API
++            .ssrHintHasSlotted
++            ?.split(',')?.map(trim) ?? [], "f");
++        // Map the defined slots into an object that is easier to query
++        __classPrivateFieldGet(this, _SlotController_nodes, "f").clear();
+         if (isObjectConfigSpread(config)) {
+             const [{ slots, deprecations }] = config;
+             __classPrivateFieldSet(this, _SlotController_slotNames, slots, "f");
+@@ -61,18 +61,14 @@ export class SlotController {
+         else {
+             __classPrivateFieldSet(this, _SlotController_slotNames, [null], "f");
          }
--        return slotNames.some(x => __classPrivateFieldGet(this, _SlotController_nodes, "f").get(x)?.hasContent ?? false);
+-        host.addController(this);
+-    }
+-    async hostConnected() {
+-        this.host.addEventListener('slotchange', __classPrivateFieldGet(this, _SlotController_onSlotChange, "f"));
+-        __classPrivateFieldSet(this, _SlotController_firstUpdated, false, "f");
+-        __classPrivateFieldGet(this, _SlotController_mo, "f").observe(this.host, { childList: true });
+-        // Map the defined slots into an object that is easier to query
+-        __classPrivateFieldGet(this, _SlotController_nodes, "f").clear();
+         // Loop over the properties provided by the schema
+         __classPrivateFieldGet(this, _SlotController_slotNames, "f").forEach(__classPrivateFieldGet(this, _SlotController_initSlot, "f"));
+         Object.values(__classPrivateFieldGet(this, _SlotController_deprecations, "f")).forEach(__classPrivateFieldGet(this, _SlotController_initSlot, "f"));
+         this.host.requestUpdate();
++    }
++    async hostConnected() {
++        this.host.addEventListener('slotchange', __classPrivateFieldGet(this, _SlotController_onSlotChange, "f"));
++        __classPrivateFieldSet(this, _SlotController_firstUpdated, false, "f");
+         // insurance for framework integrations
+         await this.host.updateComplete;
+         this.host.requestUpdate();
+@@ -84,7 +80,7 @@ export class SlotController {
+         }
+     }
+     hostDisconnected() {
+-        __classPrivateFieldGet(this, _SlotController_mo, "f").disconnect();
++        this.host.removeEventListener('slotchange', __classPrivateFieldGet(this, _SlotController_onSlotChange, "f"));
      }
      /**
-      * Whether or not all the requested slots are empty.
-@@ -135,8 +146,13 @@ export class SlotController {
+      * Given a slot name or slot names, returns elements assigned to the requested slots as an array.
+@@ -134,9 +130,25 @@ export class SlotController {
+         return !this.hasSlotted(...names);
      }
  }
- _a = SlotController, _SlotController_nodes = new WeakMap(), _SlotController_logger = new WeakMap(), _SlotController_firstUpdated = new WeakMap(), _SlotController_mo = new WeakMap(), _SlotController_slotNames = new WeakMap(), _SlotController_deprecations = new WeakMap(), _SlotController_onSlotChange = new WeakMap(), _SlotController_onMutation = new WeakMap(), _SlotController_initSlot = new WeakMap(), _SlotController_instances = new WeakSet(), _SlotController_getChildrenForSlot = function _SlotController_getChildrenForSlot(name) {
+-_a = SlotController, _SlotController_nodes = new WeakMap(), _SlotController_logger = new WeakMap(), _SlotController_firstUpdated = new WeakMap(), _SlotController_mo = new WeakMap(), _SlotController_slotNames = new WeakMap(), _SlotController_deprecations = new WeakMap(), _SlotController_onSlotChange = new WeakMap(), _SlotController_onMutation = new WeakMap(), _SlotController_initSlot = new WeakMap(), _SlotController_instances = new WeakSet(), _SlotController_getChildrenForSlot = function _SlotController_getChildrenForSlot(name) {
 -    const children = Array.from(this.host.children);
 -    return children.filter(isSlot(name));
++_a = SlotController, _SlotController_nodes = new WeakMap(), _SlotController_logger = new WeakMap(), _SlotController_firstUpdated = new WeakMap(), _SlotController_slotNames = new WeakMap(), _SlotController_ssrHintHasSlotted = new WeakMap(), _SlotController_deprecations = new WeakMap(), _SlotController_onSlotChange = new WeakMap(), _SlotController_initSlot = new WeakMap(), _SlotController_instances = new WeakSet(), _SlotController_getSlotElement = function _SlotController_getSlotElement(slotId) {
++    if (isServer) {
++        return null;
++    }
++    else {
++        const selector = slotId === _a.default ? 'slot:not([name])' : `slot[name="${slotId}"]`;
++        return this.host.shadowRoot?.querySelector?.(selector) ?? null;
++    }
++}, _SlotController_getChildrenForSlot = function _SlotController_getChildrenForSlot(name) {
 +    if (isServer) {
 +        return [];
++    }
++    else if (__classPrivateFieldGet(this, _SlotController_nodes, "f").has(name)) {
++        return __classPrivateFieldGet(this, _SlotController_nodes, "f").get(name).slot?.assignedElements?.();
 +    }
 +    else {
 +        const children = Array.from(this.host.children);
