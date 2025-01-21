@@ -53,8 +53,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.4/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
@@ -4147,7 +4147,36 @@ a {
     <!--/lit-part--></template>
         
         
-        <uxdot-sidenav-dropdown-menu-item  href="/accessibility/accessibility-tools/"><template shadowroot="open" shadowrootmode="open"><style>:host,
+        <uxdot-sidenav-dropdown-menu-item  href="/accessibility/"><template shadowroot="open" shadowrootmode="open"><style>:host,
+a {
+  display: block;
+}
+
+a {
+  padding: var(--rh-space-lg) var(--rh-space-2xl);
+  font-size: var(--rh-font-size-body-text-lg);
+  text-decoration: none !important;
+  color: var(--rh-color-text-primary-on-light) !important;
+  border-inline-start: var(--rh-border-width-lg) solid transparent;
+}
+
+a:hover {
+  background: var(--rh-color-surface-lighter);
+  border-inline-start-color: var(--rh-color-border-subtle-on-light);
+}
+
+a.active {
+  background: var(--rh-color-surface-lighter);
+  border-inline-start-color: var(--rh-color-accent-brand-on-light);
+}
+a {
+  text-transform: capitalize;
+  padding: var(--rh-space-md) 0 var(--rh-space-md) var(--rh-space-lg);
+  font-size: var(--rh-font-size-body-text-md);
+}
+</style><!--lit-part BpIOZLGP/0w=-->
+      <!--lit-node 0--><a class="  " href="/accessibility/"><slot></slot></a>
+    <!--/lit-part--></template>Fundamentals</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item  href="/accessibility/accessibility-tools/"><template shadowroot="open" shadowrootmode="open"><style>:host,
 a {
   display: block;
 }
@@ -4350,36 +4379,7 @@ a {
 }
 </style><!--lit-part BpIOZLGP/0w=-->
       <!--lit-node 0--><a class="  " href="/accessibility/development/"><slot></slot></a>
-    <!--/lit-part--></template>Development</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item  href="/accessibility/"><template shadowroot="open" shadowrootmode="open"><style>:host,
-a {
-  display: block;
-}
-
-a {
-  padding: var(--rh-space-lg) var(--rh-space-2xl);
-  font-size: var(--rh-font-size-body-text-lg);
-  text-decoration: none !important;
-  color: var(--rh-color-text-primary-on-light) !important;
-  border-inline-start: var(--rh-border-width-lg) solid transparent;
-}
-
-a:hover {
-  background: var(--rh-color-surface-lighter);
-  border-inline-start-color: var(--rh-color-border-subtle-on-light);
-}
-
-a.active {
-  background: var(--rh-color-surface-lighter);
-  border-inline-start-color: var(--rh-color-accent-brand-on-light);
-}
-a {
-  text-transform: capitalize;
-  padding: var(--rh-space-md) 0 var(--rh-space-md) var(--rh-space-lg);
-  font-size: var(--rh-font-size-body-text-md);
-}
-</style><!--lit-part BpIOZLGP/0w=-->
-      <!--lit-node 0--><a class="  " href="/accessibility/"><slot></slot></a>
-    <!--/lit-part--></template>Fundamentals</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item  href="/accessibility/manual-testing/"><template shadowroot="open" shadowrootmode="open"><style>:host,
+    <!--/lit-part--></template>Development</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item  href="/accessibility/manual-testing/"><template shadowroot="open" shadowrootmode="open"><style>:host,
 a {
   display: block;
 }
