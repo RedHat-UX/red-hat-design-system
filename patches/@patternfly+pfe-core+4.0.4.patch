@@ -118,7 +118,7 @@ index b0e31b2..c4941a0 100644
 +{"version":3,"file":"scroll-spy-controller.js","sourceRoot":"","sources":["scroll-spy-controller.ts"],"names":[],"mappings":"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","sourcesContent":["import type { ReactiveController, ReactiveControllerHost } from 'lit';\n\nexport interface ScrollSpyControllerOptions extends IntersectionObserverInit {\n  /**\n   * Tag names of legal link children.\n   * Legal children must have an `href` property/attribute pair, like `<a>`.\n   */\n  tagNames: string[];\n\n  /**\n   * Attribute to set on the active link element.\n   * @default 'active'\n   */\n  activeAttribute?: string;\n\n  /**\n   * The root node to query content for\n   * @default the host's root node\n   */\n  rootNode?: Node;\n  /**\n   * function to call on link children to get their URL hash (i.e. id to scroll to)\n   * @default el => el.getAttribute('href');\n   */\n  getHash?: (el: Element) => string | null;\n}\n\nexport class ScrollSpyController implements ReactiveController {\n  #tagNames: string[];\n  #activeAttribute: string;\n\n  #io?: IntersectionObserver;\n\n  /** Which link's targets have already scrolled past? */\n  #passedLinks = new Set<Element>();\n\n  /** Ignore intersections? */\n  #force = false;\n\n  /** Has the intersection observer found an element? */\n  #intersected = false;\n\n  #root: ScrollSpyControllerOptions['root'];\n  #rootMargin?: string;\n  #threshold: number | number[];\n\n  #getRootNode: () => Node | null;\n  #getHash: (el: Element) => string | null;\n\n  get #linkChildren(): Element[] {\n    return Array.from(this.host.querySelectorAll(this.#tagNames.join(',')))\n        .filter(this.#getHash);\n  }\n\n  get root(): Element | Document | null | undefined {\n    return this.#root;\n  }\n\n  set root(v) {\n    this.#root = v;\n    this.#io?.disconnect();\n    this.#initIo();\n  }\n\n  get rootMargin(): string | undefined {\n    return this.#rootMargin;\n  }\n\n  set rootMargin(v) {\n    this.#rootMargin = v;\n    this.#io?.disconnect();\n    this.#initIo();\n  }\n\n  get threshold(): number | number[] {\n    return this.#threshold;\n  }\n\n  set threshold(v) {\n    this.#threshold = v;\n    this.#io?.disconnect();\n    this.#initIo();\n  }\n\n  constructor(\n    private host: ReactiveControllerHost & HTMLElement,\n    options: ScrollSpyControllerOptions,\n  ) {\n    host.addController(this);\n    this.#tagNames = options.tagNames;\n    this.#root = options.root;\n    this.#rootMargin = options.rootMargin;\n    this.#activeAttribute = options.activeAttribute ?? 'active';\n    this.#threshold = options.threshold ?? 0.85;\n    this.#getRootNode = () => options.rootNode ?? host.getRootNode?.() ?? null;\n    this.#getHash = options?.getHash ?? ((el: Element) => el.getAttribute('href'));\n  }\n\n  hostConnected(): void {\n    this.#initIo();\n  }\n\n  #initIo() {\n    const rootNode = this.#getRootNode();\n    if (rootNode instanceof Document || rootNode instanceof ShadowRoot) {\n      const { rootMargin, threshold, root } = this;\n      this.#io = new IntersectionObserver(r => this.#onIo(r), { root, rootMargin, threshold });\n      this.#linkChildren\n          .map(x => this.#getHash(x))\n          .filter((x): x is string => !!x)\n          .map(x => rootNode.getElementById(x.replace('#', '')))\n          .filter((x): x is HTMLElement => !!x)\n          .forEach(target => this.#io?.observe(target));\n    }\n  }\n\n  #markPassed(link: Element, force: boolean) {\n    if (force) {\n      this.#passedLinks.add(link);\n    } else {\n      this.#passedLinks.delete(link);\n    }\n  }\n\n  #setActive(link?: EventTarget | null) {\n    for (const child of this.#linkChildren) {\n      child.toggleAttribute(this.#activeAttribute, child === link);\n    }\n  }\n\n  async #nextIntersection() {\n    this.#intersected = false;\n    // safeguard the loop\n    setTimeout(() => this.#intersected = false, 3000);\n    while (!this.#intersected) {\n      await new Promise(requestAnimationFrame);\n    }\n  }\n\n  async #onIo(entries: IntersectionObserverEntry[]) {\n    if (!this.#force) {\n      for (const { target, boundingClientRect, intersectionRect } of entries) {\n        const selector = `:is(${this.#tagNames.join(',')})[href=\"#${target.id}\"]`;\n        const link = this.host.querySelector(selector);\n        if (link) {\n          this.#markPassed(link, boundingClientRect.top < intersectionRect.top);\n        }\n      }\n      const link = [...this.#passedLinks];\n      const last = link.at(-1);\n      this.#setActive(last ?? this.#linkChildren.at(0));\n    }\n    this.#intersected = true;\n  }\n\n  /**\n   * Explicitly set the active item\n   * @param link usually an `<a>`\n   */\n  public async setActive(link: EventTarget | null): Promise<void> {\n    this.#force = true;\n    this.#setActive(link);\n    let sawActive = false;\n    for (const child of this.#linkChildren) {\n      this.#markPassed(child, !sawActive);\n      if (child === link) {\n        sawActive = true;\n      }\n    }\n    await this.#nextIntersection();\n    this.#force = false;\n  }\n}\n"]}
 \ No newline at end of file
 diff --git a/node_modules/@patternfly/pfe-core/controllers/slot-controller.d.ts b/node_modules/@patternfly/pfe-core/controllers/slot-controller.d.ts
-index 3fae8f3..2a45c34 100644
+index 3fae8f3..08c94e8 100644
 --- a/node_modules/@patternfly/pfe-core/controllers/slot-controller.d.ts
 +++ b/node_modules/@patternfly/pfe-core/controllers/slot-controller.d.ts
 @@ -1,4 +1,4 @@
@@ -127,29 +127,60 @@ index 3fae8f3..2a45c34 100644
  interface AnonymousSlot {
      hasContent: boolean;
      elements: Element[];
+@@ -25,16 +25,18 @@ export interface SlotsConfig {
+      */
+     deprecations?: Record<string, string>;
+ }
++export type SlotControllerArgs = [SlotsConfig] | (string | null)[];
+ export declare class SlotController implements ReactiveController {
+     #private;
+     host: ReactiveElement;
+     static default: symbol;
+     /** @deprecated use `default` */
+     static anonymous: symbol;
+-    constructor(host: ReactiveElement, ...config: ([SlotsConfig] | (string | null)[]));
++    private static singletons;
++    constructor(host: ReactiveElement, ...args: SlotControllerArgs);
+     hostConnected(): Promise<void>;
+-    hostUpdated(): void;
+     hostDisconnected(): void;
++    hostUpdated(): void;
+     /**
+      * Given a slot name or slot names, returns elements assigned to the requested slots as an array.
+      * If no value is provided, it returns all children not assigned to a slot (without a slot attribute).
 diff --git a/node_modules/@patternfly/pfe-core/controllers/slot-controller.js b/node_modules/@patternfly/pfe-core/controllers/slot-controller.js
-index 7162155..c213d1e 100644
+index 7162155..a9d2362 100644
 --- a/node_modules/@patternfly/pfe-core/controllers/slot-controller.js
 +++ b/node_modules/@patternfly/pfe-core/controllers/slot-controller.js
-@@ -1,6 +1,8 @@
+@@ -1,7 +1,7 @@
 -var _SlotController_instances, _a, _SlotController_nodes, _SlotController_logger, _SlotController_firstUpdated, _SlotController_mo, _SlotController_slotNames, _SlotController_deprecations, _SlotController_onSlotChange, _SlotController_onMutation, _SlotController_getChildrenForSlot, _SlotController_initSlot;
-+var _SlotController_instances, _a, _SlotController_nodes, _SlotController_logger, _SlotController_firstUpdated, _SlotController_slotNames, _SlotController_ssrHintHasSlotted, _SlotController_deprecations, _SlotController_onSlotChange, _SlotController_getSlotElement, _SlotController_getChildrenForSlot, _SlotController_initSlot;
++var _SlotController_instances, _a, _SlotController_nodes, _SlotController_slotMapInitialized, _SlotController_slotNames, _SlotController_ssrHintHasSlotted, _SlotController_deprecations, _SlotController_mo, _SlotController_initialize, _SlotController_initSlotMap, _SlotController_getSlotElement, _SlotController_getChildrenForSlot;
  import { __classPrivateFieldGet, __classPrivateFieldSet } from "tslib";
+-import { Logger } from './logger.js';
+-function isObjectConfigSpread(config) {
 +import { isServer } from 'lit';
- import { Logger } from './logger.js';
-+const trim = (s) => s.trim();
- function isObjectConfigSpread(config) {
++function isObjectSpread(config) {
      return config.length === 1 && typeof config[0] === 'object' && config[0] !== null;
  }
-@@ -18,37 +20,35 @@ export class SlotController {
+ /**
+@@ -12,80 +12,48 @@ function isObjectConfigSpread(config) {
+ const isSlot = (n) => (child) => n === SlotController.default ? !child.hasAttribute('slot')
+     : child.getAttribute('slot') === n;
+ export class SlotController {
+-    constructor(host, ...config) {
++    constructor(host, ...args) {
+         _SlotController_instances.add(this);
+         this.host = host;
          _SlotController_nodes.set(this, new Map());
-         _SlotController_logger.set(this, void 0);
-         _SlotController_firstUpdated.set(this, false);
+-        _SlotController_logger.set(this, void 0);
+-        _SlotController_firstUpdated.set(this, false);
 -        _SlotController_mo.set(this, new MutationObserver(records => __classPrivateFieldGet(this, _SlotController_onMutation, "f").call(this, records)));
-         _SlotController_slotNames.set(this, void 0);
+-        _SlotController_slotNames.set(this, void 0);
++        _SlotController_slotMapInitialized.set(this, false);
++        _SlotController_slotNames.set(this, []);
 +        _SlotController_ssrHintHasSlotted.set(this, []);
          _SlotController_deprecations.set(this, {});
-         _SlotController_onSlotChange.set(this, (event) => {
+-        _SlotController_onSlotChange.set(this, (event) => {
 -            const slotName = event.target.name;
 -            __classPrivateFieldGet(this, _SlotController_initSlot, "f").call(this, slotName);
 -            this.host.requestUpdate();
@@ -163,13 +194,10 @@ index 7162155..c213d1e 100644
 -                        changed.push(node.slot);
 -                    }
 -                }
-+            if (event.target instanceof HTMLSlotElement) {
-+                __classPrivateFieldGet(this, _SlotController_initSlot, "f").call(this, event.target.name);
-+                this.host.requestUpdate();
-             }
+-            }
 -            this.host.requestUpdate();
-         });
-         _SlotController_initSlot.set(this, (slotName) => {
+-        });
+-        _SlotController_initSlot.set(this, (slotName) => {
 -            const name = slotName || _a.default;
 -            const elements = __classPrivateFieldGet(this, _SlotController_nodes, "f").get(name)?.slot?.assignedElements?.()
 -                ?? __classPrivateFieldGet(this, _SlotController_instances, "m", _SlotController_getChildrenForSlot).call(this, name);
@@ -177,68 +205,100 @@ index 7162155..c213d1e 100644
 -            const slot = this.host.shadowRoot?.querySelector?.(selector) ?? null;
 -            const hasContent = !!elements.length;
 -            __classPrivateFieldGet(this, _SlotController_nodes, "f").set(name, { elements, name: slotName ?? '', hasContent, slot });
-+            const slotId = slotName || _a.default;
-+            const name = slotName ?? '';
-+            const elements = __classPrivateFieldGet(this, _SlotController_instances, "m", _SlotController_getChildrenForSlot).call(this, slotId);
-+            const slot = __classPrivateFieldGet(this, _SlotController_instances, "m", _SlotController_getSlotElement).call(this, slotId);
-+            const hasContent = isServer ? __classPrivateFieldGet(this, _SlotController_ssrHintHasSlotted, "f").includes(slotName ?? 'default')
-+                : !!elements.length || !!slot?.assignedNodes?.()?.filter(x => x.textContent?.trim()).length;
-+            __classPrivateFieldGet(this, _SlotController_nodes, "f").set(slotId, { elements, name, hasContent, slot });
-             __classPrivateFieldGet(this, _SlotController_logger, "f").debug(slotName, hasContent);
-         });
+-            __classPrivateFieldGet(this, _SlotController_logger, "f").debug(slotName, hasContent);
+-        });
+-        __classPrivateFieldSet(this, _SlotController_logger, new Logger(this.host), "f");
+-        if (isObjectConfigSpread(config)) {
+-            const [{ slots, deprecations }] = config;
+-            __classPrivateFieldSet(this, _SlotController_slotNames, slots, "f");
+-            __classPrivateFieldSet(this, _SlotController_deprecations, deprecations ?? {}, "f");
++        _SlotController_mo.set(this, new MutationObserver(__classPrivateFieldGet(this, _SlotController_instances, "m", _SlotController_initSlotMap).bind(this)));
++        const singleton = _a.singletons.get(host);
++        if (singleton) {
++            __classPrivateFieldGet(singleton, _SlotController_instances, "m", _SlotController_initialize).call(singleton, ...args);
++            return singleton;
+         }
+-        else if (config.length >= 1) {
+-            __classPrivateFieldSet(this, _SlotController_slotNames, config, "f");
+-            __classPrivateFieldSet(this, _SlotController_deprecations, {}, "f");
+-        }
+-        else {
++        __classPrivateFieldGet(this, _SlotController_instances, "m", _SlotController_initialize).call(this, ...args);
 +        host.addController(this);
-         __classPrivateFieldSet(this, _SlotController_logger, new Logger(this.host), "f");
-+        host.constructor
-+            .createProperty('ssrHintHasSlotted', { attribute: 'ssr-hint-has-slotted' });
-+        __classPrivateFieldSet(this, _SlotController_ssrHintHasSlotted, this.host
-+            // @ts-expect-error: this is a ponyfill for ::has-slotted, is not intended as a public API
-+            .ssrHintHasSlotted
-+            ?.split(',')?.map(trim) ?? [], "f");
-+        // Map the defined slots into an object that is easier to query
-+        __classPrivateFieldGet(this, _SlotController_nodes, "f").clear();
-         if (isObjectConfigSpread(config)) {
-             const [{ slots, deprecations }] = config;
-             __classPrivateFieldSet(this, _SlotController_slotNames, slots, "f");
-@@ -61,18 +61,14 @@ export class SlotController {
-         else {
++        _a.singletons.set(host, this);
++        if (!__classPrivateFieldGet(this, _SlotController_slotNames, "f").length) {
              __classPrivateFieldSet(this, _SlotController_slotNames, [null], "f");
          }
 -        host.addController(this);
--    }
--    async hostConnected() {
+     }
+     async hostConnected() {
 -        this.host.addEventListener('slotchange', __classPrivateFieldGet(this, _SlotController_onSlotChange, "f"));
 -        __classPrivateFieldSet(this, _SlotController_firstUpdated, false, "f");
--        __classPrivateFieldGet(this, _SlotController_mo, "f").observe(this.host, { childList: true });
--        // Map the defined slots into an object that is easier to query
--        __classPrivateFieldGet(this, _SlotController_nodes, "f").clear();
-         // Loop over the properties provided by the schema
-         __classPrivateFieldGet(this, _SlotController_slotNames, "f").forEach(__classPrivateFieldGet(this, _SlotController_initSlot, "f"));
-         Object.values(__classPrivateFieldGet(this, _SlotController_deprecations, "f")).forEach(__classPrivateFieldGet(this, _SlotController_initSlot, "f"));
-         this.host.requestUpdate();
-+    }
-+    async hostConnected() {
-+        this.host.addEventListener('slotchange', __classPrivateFieldGet(this, _SlotController_onSlotChange, "f"));
-+        __classPrivateFieldSet(this, _SlotController_firstUpdated, false, "f");
+         __classPrivateFieldGet(this, _SlotController_mo, "f").observe(this.host, { childList: true });
++        __classPrivateFieldSet(this, _SlotController_ssrHintHasSlotted, this.host
++            // @ts-expect-error: this is a ponyfill for ::has-slotted, is not intended as a public API
++            .ssrHintHasSlotted
++            ?? [], "f");
+         // Map the defined slots into an object that is easier to query
+         __classPrivateFieldGet(this, _SlotController_nodes, "f").clear();
+-        // Loop over the properties provided by the schema
+-        __classPrivateFieldGet(this, _SlotController_slotNames, "f").forEach(__classPrivateFieldGet(this, _SlotController_initSlot, "f"));
+-        Object.values(__classPrivateFieldGet(this, _SlotController_deprecations, "f")).forEach(__classPrivateFieldGet(this, _SlotController_initSlot, "f"));
+-        this.host.requestUpdate();
++        __classPrivateFieldGet(this, _SlotController_instances, "m", _SlotController_initSlotMap).call(this);
          // insurance for framework integrations
          await this.host.updateComplete;
          this.host.requestUpdate();
-@@ -84,7 +80,7 @@ export class SlotController {
-         }
      }
+-    hostUpdated() {
+-        if (!__classPrivateFieldGet(this, _SlotController_firstUpdated, "f")) {
+-            __classPrivateFieldGet(this, _SlotController_slotNames, "f").forEach(__classPrivateFieldGet(this, _SlotController_initSlot, "f"));
+-            __classPrivateFieldSet(this, _SlotController_firstUpdated, true, "f");
+-        }
+-    }
      hostDisconnected() {
--        __classPrivateFieldGet(this, _SlotController_mo, "f").disconnect();
-+        this.host.removeEventListener('slotchange', __classPrivateFieldGet(this, _SlotController_onSlotChange, "f"));
+         __classPrivateFieldGet(this, _SlotController_mo, "f").disconnect();
      }
++    hostUpdated() {
++        if (!__classPrivateFieldGet(this, _SlotController_slotMapInitialized, "f")) {
++            __classPrivateFieldGet(this, _SlotController_instances, "m", _SlotController_initSlotMap).call(this);
++        }
++    }
      /**
       * Given a slot name or slot names, returns elements assigned to the requested slots as an array.
-@@ -134,9 +130,25 @@ export class SlotController {
+      * If no value is provided, it returns all children not assigned to a slot (without a slot attribute).
+@@ -134,11 +102,52 @@ export class SlotController {
          return !this.hasSlotted(...names);
      }
  }
 -_a = SlotController, _SlotController_nodes = new WeakMap(), _SlotController_logger = new WeakMap(), _SlotController_firstUpdated = new WeakMap(), _SlotController_mo = new WeakMap(), _SlotController_slotNames = new WeakMap(), _SlotController_deprecations = new WeakMap(), _SlotController_onSlotChange = new WeakMap(), _SlotController_onMutation = new WeakMap(), _SlotController_initSlot = new WeakMap(), _SlotController_instances = new WeakSet(), _SlotController_getChildrenForSlot = function _SlotController_getChildrenForSlot(name) {
 -    const children = Array.from(this.host.children);
 -    return children.filter(isSlot(name));
-+_a = SlotController, _SlotController_nodes = new WeakMap(), _SlotController_logger = new WeakMap(), _SlotController_firstUpdated = new WeakMap(), _SlotController_slotNames = new WeakMap(), _SlotController_ssrHintHasSlotted = new WeakMap(), _SlotController_deprecations = new WeakMap(), _SlotController_onSlotChange = new WeakMap(), _SlotController_initSlot = new WeakMap(), _SlotController_instances = new WeakSet(), _SlotController_getSlotElement = function _SlotController_getSlotElement(slotId) {
++_a = SlotController, _SlotController_nodes = new WeakMap(), _SlotController_slotMapInitialized = new WeakMap(), _SlotController_slotNames = new WeakMap(), _SlotController_ssrHintHasSlotted = new WeakMap(), _SlotController_deprecations = new WeakMap(), _SlotController_mo = new WeakMap(), _SlotController_instances = new WeakSet(), _SlotController_initialize = function _SlotController_initialize(...config) {
++    if (isObjectSpread(config)) {
++        const [{ slots, deprecations }] = config;
++        __classPrivateFieldSet(this, _SlotController_slotNames, slots, "f");
++        __classPrivateFieldSet(this, _SlotController_deprecations, deprecations ?? {}, "f");
++    }
++    else if (config.length >= 1) {
++        __classPrivateFieldSet(this, _SlotController_slotNames, config, "f");
++        __classPrivateFieldSet(this, _SlotController_deprecations, {}, "f");
++    }
++}, _SlotController_initSlotMap = function _SlotController_initSlotMap() {
++    // Loop over the properties provided by the schema
++    for (const slotName of __classPrivateFieldGet(this, _SlotController_slotNames, "f")
++        .concat(Object.values(__classPrivateFieldGet(this, _SlotController_deprecations, "f")))) {
++        const slotId = slotName || _a.default;
++        const name = slotName ?? '';
++        const elements = __classPrivateFieldGet(this, _SlotController_instances, "m", _SlotController_getChildrenForSlot).call(this, slotId);
++        const slot = __classPrivateFieldGet(this, _SlotController_instances, "m", _SlotController_getSlotElement).call(this, slotId);
++        const hasContent = isServer ? __classPrivateFieldGet(this, _SlotController_ssrHintHasSlotted, "f").includes(slotName)
++            : !!elements.length || !!slot?.assignedNodes?.()?.filter(x => x.textContent?.trim()).length;
++        __classPrivateFieldGet(this, _SlotController_nodes, "f").set(slotId, { elements, name, hasContent, slot });
++    }
++    this.host.requestUpdate();
++    __classPrivateFieldSet(this, _SlotController_slotMapInitialized, true, "f");
++}, _SlotController_getSlotElement = function _SlotController_getSlotElement(slotId) {
 +    if (isServer) {
 +        return null;
 +    }
@@ -260,6 +320,10 @@ index 7162155..c213d1e 100644
  };
  SlotController.default = Symbol('default slot');
  /** @deprecated use `default` */
+ SlotController.anonymous = _a.default;
++SlotController.singletons = new WeakMap();
+ //# sourceMappingURL=slot-controller.js.map
+\ No newline at end of file
 diff --git a/node_modules/@patternfly/pfe-core/controllers/slot-controller.js.map b/node_modules/@patternfly/pfe-core/controllers/slot-controller.js.map
 index d6c09da..0e0aefd 100644
 --- a/node_modules/@patternfly/pfe-core/controllers/slot-controller.js.map
@@ -318,6 +382,52 @@ index f65ac96..ab4cad3 100644
                }
              },
              {
+diff --git a/node_modules/@patternfly/pfe-core/decorators/slots.d.ts b/node_modules/@patternfly/pfe-core/decorators/slots.d.ts
+new file mode 100644
+index 0000000..b8ac911
+--- /dev/null
++++ b/node_modules/@patternfly/pfe-core/decorators/slots.d.ts
+@@ -0,0 +1,8 @@
++import type { ReactiveElement } from 'lit';
++import { type SlotControllerArgs } from '../controllers/slot-controller.js';
++/**
++ * Enable ssr hints for element
++ * @param args a spread of slot names, or a config object.
++ * @see SlotController constructor args
++ */
++export declare function slots<T extends typeof ReactiveElement>(...args: SlotControllerArgs): (klass: T) => void;
+diff --git a/node_modules/@patternfly/pfe-core/decorators/slots.js b/node_modules/@patternfly/pfe-core/decorators/slots.js
+new file mode 100644
+index 0000000..ce85da3
+--- /dev/null
++++ b/node_modules/@patternfly/pfe-core/decorators/slots.js
+@@ -0,0 +1,25 @@
++import { SlotController } from '../controllers/slot-controller.js';
++/**
++ * Enable ssr hints for element
++ * @param args a spread of slot names, or a config object.
++ * @see SlotController constructor args
++ */
++export function slots(...args) {
++    return function (klass) {
++        klass.createProperty('ssrHintHasSlotted', {
++            attribute: 'ssr-hint-has-slotted',
++            converter: {
++                fromAttribute(slots) {
++                    return (slots ?? '')
++                        .split(/[, ]/)
++                        .map(x => x.trim())
++                        .map(x => x === 'default' ? null : x);
++                },
++            },
++        });
++        klass.addInitializer(instance => {
++            new SlotController(instance, ...args);
++        });
++    };
++}
++//# sourceMappingURL=slots.js.map
+\ No newline at end of file
 diff --git a/node_modules/@patternfly/pfe-core/functions/context.js b/node_modules/@patternfly/pfe-core/functions/context.js
 index e46eac0..feff5a4 100644
 --- a/node_modules/@patternfly/pfe-core/functions/context.js
