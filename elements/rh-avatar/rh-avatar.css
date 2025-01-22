@@ -9,15 +9,23 @@
 
 #container {
   display: grid;
-  color: var(--rh-color-text-secondary-on-light, #4d4d4d);
+  color:
+    light-dark(var(--rh-color-text-secondary-on-light, #4d4d4d),
+      var(--rh-color-text-secondary-on-dark, #c7c7c7));
 
   --_colors:
-    var(--rh-avatar-colors,
+    light-dark(var(--rh-avatar-colors,
       var(--rh-color-blue-30, #92c5f9)
       var(--rh-color-teal-50, #37a3a3)
       var(--rh-color-green-60, #3d7317)
       var(--rh-color-red-40, #f56e6e)
-      var(--rh-color-purple-60, #3d2785));
+      var(--rh-color-purple-60, #3d2785)),
+      var(--rh-avatar-colors,
+      var(--rh-color-blue-50, #0066cc)
+      var(--rh-color-teal-70, #004d4d)
+      var(--rh-color-green-70, #204d00)
+      var(--rh-color-red-50, #ee0000)
+      var(--rh-color-purple-70, #21134d)));
 
   column-gap: var(--rh-space-lg, 16px);
   width: min-content;
@@ -67,36 +75,23 @@ slot {
 }
 
 ::slotted(a) {
-  color: var(--rh-color-interactive-primary-default-on-light, #0066cc);
+  color:
+    light-dark(var(--rh-color-interactive-primary-default-on-light, #0066cc),
+      var(--rh-color-interactive-primary-default-on-dark, #92c5f9));
   text-decoration: none;
 }
 
 ::slotted(a:visited) {
-  color: var(--rh-color-interactive-primary-visited-default-on-light, #5e40be);
+  color:
+    light-dark(var(--rh-color-interactive-primary-visited-default-on-light, #5e40be),
+      var(--rh-color-interactive-primary-visited-default-on-dark, #b6a6e9));
 }
 
 ::slotted(a:active),
-::slotted(a:hover) { color: var(--rh-color-interactive-primary-hover-on-light, #003366); }
-
-.dark ::slotted(a) { color: var(--rh-color-interactive-primary-default-on-dark, #92c5f9); }
-
-.dark ::slotted(a:visited) {
-  color: var(--rh-color-interactive-primary-visited-default-on-dark, #b6a6e9);
-}
-
-.dark ::slotted(a:active),
-.dark ::slotted(a:hover) { color: var(--rh-color-interactive-primary-hover-on-dark, #b9dafc); }
-
-#container.dark {
-  color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
-
-  --_colors:
-    var(--rh-avatar-colors,
-      var(--rh-color-blue-50, #0066cc)
-      var(--rh-color-teal-70, #004d4d)
-      var(--rh-color-green-70, #204d00)
-      var(--rh-color-red-50, #ee0000)
-      var(--rh-color-purple-70, #21134d));
+::slotted(a:hover) {
+  color:
+    light-dark(var(--rh-color-interactive-primary-hover-on-light, #003366),
+      var(--rh-color-interactive-primary-hover-on-dark, #b9dafc));
 }
 
 img,
@@ -131,4 +126,26 @@ svg {
 
 :host([plain]) #container {
   column-gap: 0;
+}
+
+#default {
+  & .st1 {
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    fill: light-dark(#f0f0f0, #212427);
+  }
+
+  & .st2 {
+    fill: light-dark(#b8bbbe, #4f5255);
+  }
+
+  & .st3 {
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    fill: light-dark(#d2d2d2, #6a6e73);
+  }
+
+  & .st4 {
+    fill: light-dark(#d2d2d2, #6a6e73);
+  }
 }
