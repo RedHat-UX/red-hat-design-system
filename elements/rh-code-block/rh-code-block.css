@@ -74,8 +74,101 @@
 }
 
 #container {
-  --_code-background-color: var(--rh-color-surface-lighter, #f2f2f2);
+  --_code-background-color:
+    light-dark(var(--rh-color-surface-lighter, #f2f2f2),
+      var(--rh-color-surface-dark-alt, #292929));
   --_code-main-spacer: var(--rh-space-xl, 24px);
+  --_cdata-color: var(--rh-color-text-secondary);
+  --_comment-color: var(--rh-color-text-secondary);
+  --_comment-block-color: var(--rh-color-text-secondary);
+  --_doctype-color: var(--rh-color-text-secondary);
+  --_default-color:
+    light-dark(var(--rh-color-gray-95, #151515),
+      var(--rh-color-gray-20, #e0e0e0));
+  --_selected-text-background:
+    light-dark(var(--rh-color-blue-10, #e0f0ff),
+      var(--rh-color-gray-95, #151515));
+  --_punctuation-color:
+    light-dark(var(--rh-color-gray-40, #a3a3a3),
+      var(--rh-color-gray-20, #e0e0e0));
+  --_namespace-color:
+    light-dark(var(--rh-color-gray-95, #151515),
+      var(--rh-color-red-40, #f56e6e));
+  --_property-color:
+    light-dark(var(--rh-color-purple-50, #5e40be),
+      var(--rh-color-yellow-40, #dca614));
+  --_tag-color:
+    light-dark(var(--rh-color-purple-50, #5e40be),
+      var(--rh-color-red-10, #fce3e3));
+  --_boolean-color:
+    light-dark(var(--rh-color-purple-50, #5e40be),
+      var(--rh-color-orange-40, #f5921b));
+  --_number-color:
+    light-dark(var(--rh-color-purple-50, #5e40be),
+      var(--rh-color-orange-40, #f5921b));
+  --_constant-color:
+    light-dark(var(--rh-color-purple-50, #5e40be),
+      var(--rh-color-yellow-40, #dca614));
+  --_symbol-color:
+    light-dark(var(--rh-color-purple-50, #5e40be),
+      var(--rh-color-yellow-40, #dca614));
+  --_deleted-color:
+    light-dark(var(--rh-color-purple-50, #5e40be),
+      var(--rh-color-red-40, #f56e6e));
+  --_function-name-color:
+    light-dark(var(--rh-color-purple-50, #5e40be),
+      var(--rh-color-teal-20, #b9e5e5));
+  --_selector-color:
+    light-dark(var(--rh-color-teal-60, #147878),
+      var(--rh-color-purple-30, #b6a6e9));
+  --_attr-name-color:
+    light-dark(var(--rh-color-teal-60, #147878),
+      var(--rh-color-red-40, #f56e6e));
+  --_string-color:
+    light-dark(var(--rh-color-teal-60, #147878),
+      var(--rh-color-green-40, #87bb62));
+  --_character-color:
+    light-dark(var(--rh-color-teal-60, #147878),
+      var(--rh-color-green-40, #87bb62));
+  --_built-in-color:
+    light-dark(var(--rh-color-teal-60, #147878),
+      var(--rh-color-purple-30, #b6a6e9));
+  --_inserted-color:
+    light-dark(var(--rh-color-teal-60, #147878),
+      var(--rh-color-green-40, #87bb62));
+  --_operator-color:
+    light-dark(var(--rh-color-yellow-60, #96640f),
+      var(--rh-color-blue-40, #4394e5));
+  --_entity-color:
+    light-dark(var(--rh-color-yellow-60, #96640f),
+      var(--rh-color-blue-40, #4394e5));
+  --_url-color:
+    light-dark(var(--rh-color-yellow-60, #96640f),
+      var(--rh-color-blue-40, #4394e5));
+  --_at-rule-color:
+    light-dark(var(--rh-color-blue-60, #004d99),
+      var(--rh-color-purple-30, #b6a6e9));
+  --_attr-value-color:
+    light-dark(var(--rh-color-blue-60, #004d99),
+      var(--rh-color-green-40, #87bb62));
+  --_keyword-color:
+    light-dark(var(--rh-color-blue-60, #004d99),
+      var(--rh-color-purple-30, #b6a6e9));
+  --_function-color:
+    light-dark(var(--rh-color-red-60, #a60000),
+      var(--rh-color-orange-40, #f5921b));
+  --_class-name-color:
+    light-dark(var(--rh-color-red-60, #a60000),
+      var(--rh-color-yellow-40, #dca614));
+  --_regex-color:
+    light-dark(var(--rh-color-orange-60, #9e4a06),
+      var(--rh-color-green-40, #87bb62));
+  --_important-color:
+    light-dark(var(--rh-color-orange-60, #9e4a06),
+      var(--rh-color-purple-30, #b6a6e9));
+  --_variable-color:
+    light-dark(var(--rh-color-orange-60, #9e4a06),
+      var(--rh-color-green-40, #87bb62));
 
   display: grid;
   place-items: center;
@@ -98,10 +191,6 @@
     linear-gradient(var(--_gradient-angle, 0deg),
       var(--_code-background-color) 0%,
       transparent 100%);
-}
-
-#container.dark {
-  --_code-background-color: var(--rh-color-surface-dark-alt, #292929);
 }
 
 #container.expandable {
@@ -293,78 +382,6 @@
   grid-template-columns: max-content auto;
   margin-block: var(--rh-space-lg, 16px);
   gap: var(--rh-space-md, 8px);
-}
-
-.on {
-  --_cdata-color: var(--rh-color-text-secondary);
-  --_comment-color: var(--rh-color-text-secondary);
-  --_comment-block-color: var(--rh-color-text-secondary);
-  --_doctype-color: var(--rh-color-text-secondary);
-}
-
-.on,
-.on.light {
-  --_default-color: var(--rh-color-gray-95, #151515);
-  --_selected-text-background: var(--rh-color-blue-10, #e0f0ff);
-  --_punctuation-color: var(--rh-color-gray-40, #a3a3a3);
-  --_namespace-color: var(--rh-color-gray-95, #151515);
-  --_property-color: var(--rh-color-purple-50, #5e40be);
-  --_tag-color: var(--rh-color-purple-50, #5e40be);
-  --_boolean-color: var(--rh-color-purple-50, #5e40be);
-  --_number-color: var(--rh-color-purple-50, #5e40be);
-  --_constant-color: var(--rh-color-purple-50, #5e40be);
-  --_symbol-color: var(--rh-color-purple-50, #5e40be);
-  --_deleted-color: var(--rh-color-purple-50, #5e40be);
-  --_function-name-color: var(--rh-color-purple-50, #5e40be);
-  --_selector-color: var(--rh-color-teal-60, #147878);
-  --_attr-name-color: var(--rh-color-teal-60, #147878);
-  --_string-color: var(--rh-color-teal-60, #147878);
-  --_character-color: var(--rh-color-teal-60, #147878);
-  --_built-in-color: var(--rh-color-teal-60, #147878);
-  --_inserted-color: var(--rh-color-teal-60, #147878);
-  --_operator-color: var(--rh-color-yellow-60, #96640f);
-  --_entity-color: var(--rh-color-yellow-60, #96640f);
-  --_url-color: var(--rh-color-yellow-60, #96640f);
-  --_at-rule-color: var(--rh-color-blue-60, #004d99);
-  --_attr-value-color: var(--rh-color-blue-60, #004d99);
-  --_keyword-color: var(--rh-color-blue-60, #004d99);
-  --_function-color: var(--rh-color-red-60, #a60000);
-  --_class-name-color: var(--rh-color-red-60, #a60000);
-  --_regex-color: var(--rh-color-orange-60, #9e4a06);
-  --_important-color: var(--rh-color-orange-60, #9e4a06);
-  --_variable-color: var(--rh-color-orange-60, #9e4a06);
-}
-
-.on.dark {
-  --_default-color: var(--rh-color-gray-20, #e0e0e0);
-  --_selected-text-background: var(--rh-color-gray-95, #151515);
-  --_punctuation-color: var(--rh-color-gray-20, #e0e0e0);
-  --_namespace-color: var(--rh-color-red-40, #f56e6e);
-  --_property-color: var(--rh-color-yellow-40, #dca614);
-  --_tag-color: var(--rh-color-red-10, #fce3e3);
-  --_boolean-color: var(--rh-color-orange-40, #f5921b);
-  --_number-color: var(--rh-color-orange-40, #f5921b);
-  --_constant-color: var(--rh-color-yellow-40, #dca614);
-  --_symbol-color: var(--rh-color-yellow-40, #dca614);
-  --_deleted-color: var(--rh-color-red-40, #f56e6e);
-  --_function-name-color: var(--rh-color-teal-20, #b9e5e5);
-  --_selector-color: var(--rh-color-purple-30, #b6a6e9);
-  --_attr-name-color: var(--rh-color-red-40, #f56e6e);
-  --_string-color: var(--rh-color-green-40, #87bb62);
-  --_character-color: var(--rh-color-green-40, #87bb62);
-  --_built-in-color: var(--rh-color-purple-30, #b6a6e9);
-  --_inserted-color: var(--rh-color-green-40, #87bb62);
-  --_operator-color: var(--rh-color-blue-40, #4394e5);
-  --_entity-color: var(--rh-color-blue-40, #4394e5);
-  --_url-color: var(--rh-color-blue-40, #4394e5);
-  --_at-rule-color: var(--rh-color-purple-30, #b6a6e9);
-  --_attr-value-color: var(--rh-color-green-40, #87bb62);
-  --_keyword-color: var(--rh-color-purple-30, #b6a6e9);
-  --_function-color: var(--rh-color-orange-40, #f5921b);
-  --_class-name-color: var(--rh-color-yellow-40, #dca614);
-  --_regex-color: var(--rh-color-green-40, #87bb62);
-  --_important-color: var(--rh-color-purple-30, #b6a6e9);
-  --_variable-color: var(--rh-color-green-40, #87bb62);
 }
 
 :host([highlighting='client']) #content::slotted(:is(script, pre)) {
