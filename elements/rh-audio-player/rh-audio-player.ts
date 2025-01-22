@@ -6,10 +6,8 @@ import { property } from 'lit/decorators/property.js';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { styleMap } from 'lit/directives/style-map.js';
-import { ifDefined } from 'lit/directives/if-defined.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+import { type ColorPalette } from '../../lib/context/color/provider.js';
 
 import { FloatingDOMController } from '@patternfly/pfe-core/controllers/floating-dom-controller.js';
 
@@ -114,10 +112,7 @@ export class RhAudioPlayer extends LitElement {
   @property({ attribute: false }) microcopy = {};
 
   /** Element's color palette */
-  @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
-
-  @colorContextConsumer() private on?: ColorTheme;
 
   @queryAssignedElements({ slot: 'series' })
   private _mediaseries?: HTMLElement[];
@@ -340,7 +335,7 @@ export class RhAudioPlayer extends LitElement {
   }
 
   render() {
-    const { expanded, mediatitle, on = 'light', layout, poster } = this;
+    const { expanded, mediatitle, layout, poster } = this;
     const { dir } = this.#dir;
     const { open, styles = {} } = this.#menufloat;
     const showMenu = this.#hasMenu;
@@ -366,14 +361,11 @@ export class RhAudioPlayer extends LitElement {
     const accentColor = !!this.#styles?.getPropertyValue('--rh-audio-player-background-color');
 
     return html`
-      <rh-surface id="container"
-          color-palette="${ifDefined(this.colorPalette)}"
+      <div id="container"
           class="${classMap({
-              [on]: true,
               [dir]: true,
               [layout]: true,
               expanded,
-              'on': true,
               'mediatitle': mediatitle !== undefined,
               'poster': poster !== undefined,
               'show-menu': showMenu,
@@ -600,7 +592,7 @@ export class RhAudioPlayer extends LitElement {
                 @transcriptdownload=${this.#onTranscriptDownload}>
           </slot>
         </div>
-      </rh-surface>
+      </div>
     `;
   }
 
