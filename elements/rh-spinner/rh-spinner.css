@@ -34,7 +34,7 @@ circle {
 circle.dash {
   transform-origin: 50% 50%;
   animation: rh-spinner-animation-dash 1.4s ease-out infinite;
-  stroke: var(--rh-color-accent-base-on-light, #0066cc);
+  stroke: var(--rh-color-accent-base);
   stroke-dasharray: 283;
   stroke-dashoffset: 280;
   transform: rotate(-90deg);
@@ -79,7 +79,7 @@ circle.track {
 }
 
 circle.dash.dark {
-  stroke: var(--rh-color-accent-base-on-dark, #92c5f9);
+  stroke: var(--rh-color-accent-base);
 }
 
 circle.track.dark {
