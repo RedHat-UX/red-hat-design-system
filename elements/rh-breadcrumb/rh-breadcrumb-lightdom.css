@@ -12,18 +12,27 @@ rh-breadcrumb ol {
 }
 
 rh-breadcrumb > ol > li {
-  background-image: var(--_breadcrumb-caret-image-default);
-  background-position: calc(100% - 14px) center;
-  background-repeat: no-repeat;
-  background-size: 10px;
-  display: inline-block;
+  display: inline-flex;
   margin-block-end: var(--rh-space-md, 8px);
-  padding-inline-end: var(--rh-breadcrumb-li-padding-inline-end, 42px);
+  padding-inline-end: var(--rh-breadcrumb-li-padding-inline-end, var(--rh-space-lg, 16px));
   vertical-align: bottom;
+  align-items: center;
+  gap: var(--rh-space-lg, 16px);
 }
 
-rh-breadcrumb[variant='subtle'] > ol > li {
-  background-image: var(--_breadcrumb-caret-image-subtle);
+rh-breadcrumb > ol > li:not(:first-of-type):before {
+  display: inline-block;
+  background-color: var(--rh-color-icon-secondary);
+  mask-image: var(--_breadcrumb-caret-image-default);
+  mask-position: center center;
+  mask-repeat: no-repeat;
+  height: var(--rh-font-size-body-text-sm, 0.875rem);
+  width: var(--rh-font-size-body-text-sm, 0.875rem);
+  content: '';
+}
+
+rh-breadcrumb[variant='subtle'] > ol > li:not(:first-of-type):before {
+  background-color: var(--rh-color-icon-subtle, #707070);
 }
 
 rh-breadcrumb > ol > li:first-child {
