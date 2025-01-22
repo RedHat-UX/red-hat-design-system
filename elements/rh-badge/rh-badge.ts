@@ -4,7 +4,6 @@ import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit-html/directives/class-map.js';
 import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 
-import { colorContextConsumer } from '@rhds/elements/lib/context/color/consumer.js';
 
 import styles from './rh-badge.css';
 
@@ -24,8 +23,6 @@ import styles from './rh-badge.css';
 @customElement('rh-badge')
 export class RhBadge extends LitElement {
   static readonly styles = [styles];
-
-  @colorContextConsumer() private on?: string;
 
   /**
    * Denotes the state-of-affairs this badge represents
@@ -80,7 +77,7 @@ export class RhBadge extends LitElement {
   }
 
   override render() {
-    const { threshold, number, textContent, on = 'light', state = 'neutral' } = this;
+    const { threshold, number, textContent, state = 'neutral' } = this;
     const displayText =
         (threshold && number && (threshold < number)) ? `${threshold.toString()}+`
       : (number != null) ? number.toString()
@@ -88,8 +85,6 @@ export class RhBadge extends LitElement {
 
     return html`
       <span class="${classMap({
-        on: true,
-        [on]: true,
         [state]: true,
       })}">${displayText}</span>
     `;
