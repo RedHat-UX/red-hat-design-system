@@ -8,7 +8,6 @@ import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
 import { DirController } from '../../lib/DirController.js';
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
 import styles from './rh-switch.css';
 
@@ -49,8 +48,6 @@ export class RhSwitch extends LitElement {
 
   /** If the switch is reversed: message first, then control */
   @property({ reflect: true, type: Boolean }) reversed = false;
-
-  @colorContextConsumer() private on?: ColorTheme;
 
   #internals = InternalsController.of(this, { role: 'switch' });
 
@@ -107,14 +104,14 @@ export class RhSwitch extends LitElement {
 
   render() {
     const rtl = this.#dir.dir === 'rtl';
-    const { on = 'light', reversed, checked } = this;
+    const { reversed, checked } = this;
     const slots = html`
       <slot class="message" name="message-on" ?hidden="${!this.checked}"><span aria-hidden="true">${this.messageOn}</span></slot>
       <slot class="message" name="message-off" ?hidden="${this.checked}"><span aria-hidden="true">${this.messageOff}</span></slot>`;
     return html`
       <div id="container"
            part="container"
-           class="${classMap({ checked, on: true, [on]: true, rtl })}">
+           class="${classMap({ checked, rtl })}">
         ${reversed ? slots : ''}
         <div id="switch"
              part="switch">
