@@ -21,8 +21,9 @@ import {
 
 import { DirController } from '../../lib/DirController.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+
+import { type ColorPalette } from '../../lib/context/color/provider.js';
+
 export class SecondaryNavOverlayChangeEvent extends ComposedEvent {
   constructor(
     public open: boolean,
@@ -31,11 +32,6 @@ export class SecondaryNavOverlayChangeEvent extends ComposedEvent {
     super('overlay-change');
   }
 }
-
-export type NavPalette = Extract<ColorPalette, (
-  | 'lighter'
-  | 'dark'
-)>;
 
 import styles from './rh-navigation-secondary.css';
 
@@ -96,16 +92,26 @@ export class RhNavigationSecondary extends LitElement {
 
   #internals = InternalsController.of(this, { role: 'navigation' });
 
-  /**
-   * Color palette darker | lighter (default: lighter)
-   */
-  @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette: NavPalette = 'lighter';
+  get #computedPalette() {
+    switch (this.colorPalette) {
+      case 'lighter':
+      case 'dark':
+        return this.colorPalette;
+      case 'light':
+      case 'lightest':
+        return 'lighter';
+      case 'darker':
+      case 'darkest':
+        return 'dark';
+    }
+  }
 
   /**
-   * Sets color theme based on parent context
+   * Color palette dark | lighter (default: lighter)
    */
-  @colorContextConsumer() private on?: ColorTheme;
+
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'lighter';
+
 
   @queryAssignedElements({ slot: 'nav' }) private _nav?: HTMLElement[];
 
@@ -164,14 +170,13 @@ export class RhNavigationSecondary extends LitElement {
   }
 
   render() {
-    const { on = '' } = this;
     const expanded = this.mobileMenuExpanded;
     const rtl = this.#dir.dir === 'rtl';
     // CTA must always be 'lightest' on mobile screens
-    const dropdownPalette = this.#compact ? 'lightest' : this.colorPalette;
+    const dropdownPalette = this.#compact ? 'lightest' : this.#computedPalette;
     return html`
       <div part="nav"
-           class="${classMap({ [on]: !!on, on: true, compact: this.#compact, rtl })}">
+           class="${classMap({ compact: this.#compact, rtl })}">
         ${this.#logoCopy}
         <div id="container" part="container" class="${classMap({ expanded })}">
           <slot name="logo" id="logo"></slot>

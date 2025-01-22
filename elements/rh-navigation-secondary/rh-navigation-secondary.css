@@ -15,17 +15,12 @@
   --_button-font-color: var(--rh-color-text-primary);
   --_nav-max-height: var(--_max-height, max-content);
   --_nav-min-height: var(--_min-height, 80px);
-  --_current-active-child-border-color: var(--rh-color-brand-red);
-  --_border-color: transparent;
+  --_current-active-child-border-color:
+    light-dark(var(--rh-color-brand-red),
+      var(--rh-color-brand-red));
+  --_border-color: light-dark(transparent, var(--rh-color-border-subtle));
 
   z-index: var(--rh-navigation-secondary-z-index, 102);
-}
-
-.on.dark {
-  --_current-active-child-border-color: var(--rh-color-brand-red);
-  --_border-color: var(--rh-color-border-subtle);
-  --_button-font-color: var(--rh-color-text-primary);
-  --_chevron-color: var(--rh-color-text-primary);
 }
 
 nav {
@@ -46,7 +41,7 @@ nav.rtl {
   position: absolute;
   width: 100%;
   z-index: var(--rh-navigation-secondary-z-index, 102);
-  background-color: var(--rh-color-surface);
+  background-color: light-dark(var(--rh-color-surface-lighter), var(--rh-color-surface-dark));
   gap: 0 var(--rh-space-lg, 16px);
   grid-template-rows:
     minmax(var(--_nav-min-height), var(--_nav-max-height))
