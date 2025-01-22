@@ -100,7 +100,9 @@ button {
   --_overflow-button-text-color: var(--rh-color-text-secondary);
 
   /* Non Standard usage of crayon token */
-  --_overflow-button-disabled-text-color: var(--rh-color-gray-40, #a3a3a3);
+  --_overflow-button-disabled-text-color:
+    light-dark(var(--rh-color-gray-40, #a3a3a3),
+      var(--rh-color-gray-50, #707070));
   --_overflow-button-hover-text-color: var(--rh-color-text-primary);
 
   @container (min-width: 768px) {
@@ -159,6 +161,41 @@ button {
     &.overflow {
       --_panel-padding: var(--rh-space-lg, 16px);
     }
+
+    background-color: var(--rh-color-surface);
+    color: var(--rh-color-text-primary);
+
+    &.palette-light {
+      --rh-color-surface: var(--rh-color-surface-light, #e0e0e0);
+    }
+
+    &.palette-lighter {
+      --rh-color-surface: var(--rh-color-surface-lighter, #f2f2f2);
+    }
+
+    &.palette-lightest {
+      --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
+    }
+
+    &.palette-dark {
+      --rh-color-surface: var(--rh-color-surface-dark, #383838);
+    }
+
+    &.palette-darker {
+      --rh-color-surface: var(--rh-color-surface-darker, #1f1f1f);
+    }
+
+    &.palette-darkest {
+      --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+    }
+
+    &:is(.palette-light, .palette-lighter, .palette-lightest) {
+      color-scheme: light;
+    }
+
+    &:is(.palette-dark, .palette-darker, .palette-darkest) {
+      color-scheme: dark;
+    }
   }
 
   &:not(.vertical) {
@@ -169,14 +206,6 @@ button {
         }
       }
     }
-  }
-
-  &.dark {
-    --_border-color: var(--rh-tabs-border-color, var(--rh-color-border-subtle));
-    --_arrow-color: var(--rh-color-accent-base);
-    --_overflow-button-text-color: var(--rh-color-text-secondary);
-    --_overflow-button-disabled-text-color: var(--rh-color-gray-50, #707070);
-    --_overflow-button-hover-text-color: var(--rh-color-text-primary);
   }
 }
 

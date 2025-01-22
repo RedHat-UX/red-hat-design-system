@@ -86,7 +86,9 @@ slot[name='icon'] {
 
   /* When button is box */
   &.box {
-    --_inactive-tab-background-color: var(--rh-color-surface-lighter, #f2f2f2);
+    --_inactive-tab-background-color:
+      light-dark(var(--rh-color-surface-lighter, #f2f2f2),
+        var(--rh-color-surface-dark-alt, #292929));
   }
 
   /* When button is vertical format */
@@ -385,17 +387,6 @@ slot[name='icon'] {
             var(--rh-color-interactive-secondary-default);
         }
       }
-    }
-  }
-
-  /* When button is in a dark context */
-  &.dark {
-    --_button-text-color: var(--rh-tabs-link-color, var(--rh-color-text-secondary));
-    --_button-focus-outline-color: var(--rh-color-border-interactive);
-    --_inactive-tab-background-color: var(--rh-color-surface-dark-alt, #292929);
-
-    &.active {
-      --_button-text-color: var(--rh-tabs-link-color, var(--rh-color-text-primary));
     }
   }
 }
