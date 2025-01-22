@@ -4,7 +4,6 @@ import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { styleMap } from 'lit/directives/style-map.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
 import {
   FloatingDOMController,
@@ -84,8 +83,6 @@ export class RhTooltip extends LitElement {
   /** Tooltip content. Overridden by the content slot */
   @property() content?: string;
 
-  @colorContextConsumer() private on?: ColorTheme;
-
   #float = new FloatingDOMController(this, {
     content: (): HTMLElement | undefined | null => this.shadowRoot?.querySelector('#tooltip'),
   });
@@ -111,7 +108,6 @@ export class RhTooltip extends LitElement {
   }
 
   override render() {
-    const { on = '' } = this;
     const { alignment, anchor, open, styles } = this.#float;
 
     return html`
@@ -119,7 +115,6 @@ export class RhTooltip extends LitElement {
            style="${styleMap(styles)}"
            class="${classMap({ open,
                                initialized: !!this.#initialized,
-                               [on]: !!on,
                                [anchor]: !!anchor,
                                [alignment]: !!alignment })}">
         <div id="invoker">
