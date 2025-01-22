@@ -5,8 +5,6 @@ import { classMap } from 'lit/directives/class-map.js';
 
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-
 import styles from './rh-health-index.css';
 
 /**
@@ -31,11 +29,6 @@ export class RhHealthIndex extends LitElement {
    */
   @property({ reflect: true }) grade: 'A' | 'B' | 'C' | 'D' | 'E' | 'F' = 'A';
 
-  /**
-   * Sets color theme based on parent context
-   */
-  @colorContextConsumer() private on?: ColorTheme;
-
   // TODO: use I18nController to support officially supported languages.
   #internals = InternalsController.of(this, {
     role: 'meter',
@@ -57,13 +50,13 @@ export class RhHealthIndex extends LitElement {
   }
 
   override render() {
-    const { on, size } = this;
+    const { size } = this;
     const grades = [...RhHealthIndex.grades].map(x => x.toLowerCase());
     const grade = this.grade.toLowerCase();
     return html`
       <div id="container"
            aria-hidden="true"
-           class="${classMap({ [size ?? '']: !!size, [on ?? '']: !!on })}">
+           class="${classMap({ [size ?? '']: !!size })}">
         <div id="grade" ?hidden="${size !== 'md'}">${grade}</div>${size === 'sm' ? html`
         <div class="box active ${grade}">${grade}</div>` : grades.map(letter => html`
         <div class="box ${classMap({ [letter]: true, active: letter === grade })}">
