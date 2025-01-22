@@ -5,6 +5,38 @@
   &.expanded {
     box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
   }
+
+  &.palette-light {
+    --rh-color-surface: var(--rh-color-surface-light, #e0e0e0);
+  }
+
+  &.palette-lighter {
+    --rh-color-surface: var(--rh-color-surface-lighter, #f2f2f2);
+  }
+
+  &.palette-lightest {
+    --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
+  }
+
+  &.palette-dark {
+    --rh-color-surface: var(--rh-color-surface-dark, #383838);
+  }
+
+  &.palette-darker {
+    --rh-color-surface: var(--rh-color-surface-darker, #1f1f1f);
+  }
+
+  &.palette-darkest {
+    --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+  }
+
+  &:is(.palette-light, .palette-lighter, .palette-lightest) {
+    color-scheme: light;
+  }
+
+  &:is(.palette-dark, .palette-darker, .palette-darkest) {
+    color-scheme: dark;
+  }
 }
 
 ::slotted(rh-accordion-header:first-child) {
