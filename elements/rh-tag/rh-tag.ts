@@ -3,8 +3,6 @@ import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 
 import type { IconNameFor, IconSetName } from '@rhds/icons';
@@ -68,13 +66,11 @@ export class RhTag extends LitElement {
     | 'purple'
     | 'gray';
 
-  @colorContextConsumer() private on?: ColorTheme;
-
   /** Represents the state of the anonymous and icon slots */
   #slots = new SlotController(this, 'icon', null);
 
   override render() {
-    const { icon, size, variant = 'filled', color = 'gray', on = 'light' } = this;
+    const { icon, size, variant = 'filled', color = 'gray' } = this;
     const hasIcon = !!icon || this.#slots.hasSlotted('icon');
     return html`
       <span id="container"
@@ -82,8 +78,6 @@ export class RhTag extends LitElement {
               hasIcon,
               compact: size === 'compact',
               teal: color === 'cyan' || color === 'teal',
-              on: true,
-              [on]: true,
               [variant]: true,
               [color]: true })}">
         <slot name="icon" part="icon">
