@@ -1,13 +1,11 @@
 import type { ColorPalette } from '@rhds/elements/lib/context/color/provider.js';
 import type { Color } from '@rhds/tokens';
-import type { ColorTheme } from '@rhds/elements/lib/context/color/consumer.js';
 
 import { html, LitElement, type ComplexAttributeConverter } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 
-import { colorContextConsumer } from '@rhds/elements/lib/context/color/consumer.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
 import {
@@ -68,8 +66,6 @@ export class RhContextPicker extends LitElement {
 
   @property() value: ColorPalette = 'darkest';
 
-  @colorContextConsumer() private on?: ColorTheme;
-
   @property({ converter: ColorPaletteListConverter })
   allow = paletteNames;
 
@@ -78,13 +74,12 @@ export class RhContextPicker extends LitElement {
   #target: HTMLElement | null = null;
 
   render() {
-    const { allow, on = 'dark', value } = this;
+    const { allow, value } = this;
     return html`
       <div id="host-label"
            class="visually-hidden">${this.#internals.computedLabelText}</div>
       <div id="container"
-           @input="${this.#onInput}"
-           class="${classMap({ on: true, [on]: true })}">
+           @input="${this.#onInput}">
         ${allow.map(palette => html`
         <label for="radio-${palette}" class="visually-hidden">${palette}</label>
         <rh-tooltip>

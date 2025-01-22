@@ -5,9 +5,6 @@
   position: relative;
 }
 
-rh-surface,
-.on { color: var(--rh-color-text-primary); }
-
 #picker-container {
   display: flex;
   align-items: center;
