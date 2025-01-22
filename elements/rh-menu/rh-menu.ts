@@ -1,12 +1,9 @@
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
-import { classMap } from 'lit/directives/class-map.js';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
-
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
 import styles from './rh-menu.css';
 
@@ -30,8 +27,6 @@ export class RhMenu extends LitElement {
   static shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
 
   @queryAssignedElements() private _menuItems!: HTMLElement[];
-
-  @colorContextConsumer() private on?: ColorTheme;
 
   #tabindex = RovingTabindexController.of<HTMLElement>(this, {
     getItems: () => this.getItems(this._menuItems),
@@ -57,10 +52,8 @@ export class RhMenu extends LitElement {
   }
 
   render() {
-    const { on = 'light' } = this;
     return html`
       <slot part="menu"
-            class="${classMap({ on: true, [on]: true })}"
             @slotchange="${this.#onSlotchange}"></slot>
     `;
   }
