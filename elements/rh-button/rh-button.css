@@ -56,8 +56,7 @@ button {
     outline:
       var(--rh-border-width-md, 2px)
       solid
-      light-dark(var(--rh-color-interactive-primary-default-on-light, #0066cc),
-        var(--rh-color-interactive-primary-default-on-dark, #92c5f9));
+      var(--rh-color-interactive-primary-default);
 
     &:after {
       border-width: var(--_border-width, var(--rh-border-width-md, 2px));
@@ -124,37 +123,21 @@ button {
   }
 
   &.secondary {
-    --_color:
-      light-dark(var(--rh-color-interactive-primary-default-on-light, #0066cc),
-        var(--rh-color-interactive-primary-default-on-dark, #92c5f9));
+    --_color: var(--rh-color-interactive-primary-default);
     --_background-color: transparent;
-    --_border-color:
-      light-dark(var(--rh-color-interactive-primary-default-on-light, #0066cc),
-        var(--rh-color-interactive-primary-default-on-dark, #92c5f9));
+    --_border-color: var(--rh-color-interactive-primary-default);
     --_border-width: var(--rh-border-width-sm, 1px);
-    --_active-color:
-      light-dark(var(--rh-color-interactive-primary-default-on-light, #0066cc),
-        var(--rh-color-interactive-primary-default-on-dark, #92c5f9));
+    --_active-color: var(--rh-color-interactive-primary-default);
     --_active-background-color: transparent;
-    --_active-border-color:
-      light-dark(var(--rh-color-interactive-primary-default-on-light, #0066cc),
-        var(--rh-color-interactive-primary-default-on-dark, #92c5f9));
+    --_active-border-color: var(--rh-color-interactive-primary-default);
     --_active-border-width: var(--rh-border-width-md, 2px);
-    --_focus-color:
-      light-dark(var(--rh-color-interactive-primary-default-on-light, #0066cc),
-        var(--rh-color-interactive-primary-default-on-dark, #92c5f9));
+    --_focus-color: var(--rh-color-interactive-primary-default);
     --_focus-background-color: transparent;
-    --_focus-border-color:
-      light-dark(var(--rh-color-interactive-primary-default-on-light, #0066cc),
-        var(--rh-color-interactive-primary-default-on-dark, #92c5f9));
+    --_focus-border-color: var(--rh-color-interactive-primary-default);
     --_focus-border-width: var(--rh-border-width-md, 2px);
-    --_hover-color:
-      light-dark(var(--rh-color-interactive-primary-default-on-light, #0066cc),
-        var(--rh-color-interactive-primary-default-on-dark, #92c5f9));
+    --_hover-color: var(--rh-color-interactive-primary-default);
     --_hover-background-color: transparent;
-    --_hover-border-color:
-      light-dark(var(--rh-color-interactive-primary-default-on-light, #0066cc),
-        var(--rh-color-interactive-primary-default-on-dark, #92c5f9));
+    --_hover-border-color: var(--rh-color-interactive-primary-default);
     --_hover-border-width: var(--rh-border-width-md, 2px);
 
     &.danger {
@@ -174,44 +157,26 @@ button {
   }
 
   &.tertiary {
-    --_color:
-      light-dark(var(--rh-color-text-primary-on-light, #151515),
-        var(--rh-color-text-primary-on-dark, #ffffff));
+    --_color: var(--rh-color-text-primary);
     --_background-color: transparent;
-    --_border-color:
-      light-dark(var(--rh-color-border-strong-on-light, #151515),
-        var(--rh-color-text-primary-on-dark, #ffffff));
+    --_border-color: var(--rh-color-border-strong);
     --_border-width: var(--rh-border-width-sm, 1px);
-    --_active-color:
-      light-dark(var(--rh-color-text-primary-on-light, #151515),
-        var(--rh-color-text-primary-on-dark, #ffffff));
+    --_active-color: var(--rh-color-text-primary);
     --_active-background-color: transparent;
-    --_active-border-color:
-      light-dark(var(--rh-color-border-strong-on-light, #151515),
-        var(--rh-color-border-strong-on-dark, #ffffff));
+    --_active-border-color: var(--rh-color-border-strong);
     --_active-border-width: var(--rh-border-width-md, 2px);
-    --_focus-color:
-      light-dark(var(--rh-color-text-primary-on-light, #151515),
-        var(--rh-color-text-primary-on-dark, #ffffff));
+    --_focus-color: var(--rh-color-text-primary);
     --_focus-background-color: transparent;
-    --_focus-border-color:
-      light-dark(var(--rh-color-border-strong-on-light, #151515),
-        var(--rh-color-border-strong-on-dark, #ffffff));
+    --_focus-border-color: var(--rh-color-border-strong);
     --_focus-border-width: var(--rh-border-width-md, 2px);
-    --_hover-color:
-      light-dark(var(--rh-color-text-primary-on-light, #151515),
-        var(--rh-color-text-primary-on-dark, #ffffff));
+    --_hover-color: var(--rh-color-text-primary);
     --_hover-background-color: transparent;
-    --_hover-border-color:
-      light-dark(var(--rh-color-border-strong-on-light, #151515),
-        var(--rh-color-border-strong-on-dark, #ffffff));
+    --_hover-border-color: var(--rh-color-border-strong);
     --_hover-border-width: var(--rh-border-width-md, 2px);
   }
 
   &.link {
-    --_color:
-      light-dark(var(--rh-color-interactive-primary-default-on-light, #0066cc),
-        var(--rh-color-interactive-primary-default-on-dark, #92c5f9));
+    --_color: var(--rh-color-interactive-primary-default);
     --_background-color: transparent;
     --_border-color: transparent;
     --_active-color:
@@ -222,9 +187,7 @@ button {
       light-dark(var(--rh-color-blue-70, #003366),
         var(--rh-color-interactive-primary-hover-on-dark, #b9dafc));
     --_focus-background-color: transparent;
-    --_focus-outline-color:
-      light-dark(var(--rh-color-interactive-primary-default-on-light, #0066cc),
-        var(--rh-color-interactive-primary-default-on-dark, #92c5f9));
+    --_focus-outline-color: var(--rh-color-interactive-primary-default);
     --_hover-color:
       light-dark(var(--rh-color-blue-70, #003366),
         var(--rh-color-interactive-primary-hover-on-dark, #b9dafc));
@@ -238,9 +201,7 @@ button {
   }
 
   &.close {
-    --_color:
-      light-dark(var(--rh-color-text-secondary-on-light, #4d4d4d),
-        var(--rh-color-text-secondary-on-dark, #c7c7c7));
+    --_color: var(--rh-color-text-secondary);
     --_background-color: transparent;
     --_active-color: var(--rh-color-icon-secondary-on-light, #151515);
     --_active-background-color: transparent;
@@ -259,9 +220,7 @@ button {
   &.play {
     --_gray-90-rgb: var(--rh-color-gray-90-rgb, 31 31 31);
     --_white-rgb: 255 255 255;
-    --_color:
-      light-dark(var(--rh-color-icon-secondary-on-dark, #ffffff),
-        var(--rh-color-icon-secondary-on-light, #151515));
+    --_color: var(--rh-color-icon-secondary-on-dark);
     --_background-color:
       light-dark(rgb(var(--_gray-90-rgb) / var(--rh-opacity-50, 50%)),
         rgb(var(--_white-rgb) / var(--rh-opacity-50, 50%)));
@@ -271,9 +230,7 @@ button {
     --_focus-background-color:
       light-dark(rgb(var(--_gray-90-rgb) / var(--rh-opacity-80, 80%)),
         rgb(var(--_white-rgb) / var(--rh-opacity-80, 80%)));
-    --_focus-outline-color:
-      light-dark(var(--rh-color-interactive-primary-default-on-light, #0066cc),
-        var(--rh-color-interactive-primary-default-on-dark, #92c5f9));
+    --_focus-outline-color: var(--rh-color-interactive-primary-default);
     --_hover-background-color:
       light-dark(rgb(var(--_gray-90-rgb) / var(--rh-opacity-80, 80%)),
         rgb(var(--_white-rgb) / var(--rh-opacity-80, 80%)));

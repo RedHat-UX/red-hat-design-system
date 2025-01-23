@@ -24,16 +24,12 @@ span {
 
   &.caution {
     background-color: var(--rh-color-status-caution);
-    color:
-      light-dark(var(--rh-color-text-primary-on-light, #151515),
-        var(--rh-color-text-primary-on-light, #151515));
+    color: var(--rh-color-text-primary-on-light, #151515);
   }
 
   &.warning {
     background-color: var(--rh-color-status-warning);
-    color:
-      light-dark(var(--rh-color-text-primary-on-light, #151515),
-        var(--rh-color-text-primary-on-light, #151515));
+    color: var(--rh-color-text-primary-on-light, #151515);
   }
 
   &.danger { background-color: var(--rh-color-status-danger); }

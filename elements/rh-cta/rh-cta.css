@@ -319,15 +319,11 @@ a:focus-within,
     light-dark(var(--rh-cta-focus-background-color, var(--rh-color-surface-lighter, #f2f2f2)),
       var(--rh-cta-focus-background-color, var(--rh-color-surface-dark, #383838)));
   --_focus-border-color: var(--rh-cta-focus-border-color, var(--rh-color-border-strong));
-  --_focus-color:
-    light-dark(var(--rh-cta-focus-color, var(--rh-color-surface-darkest, #151515)),
-      var(--rh-cta-focus-color, var(--rh-color-text-primary-on-light, #151515)));
+  --_focus-color: var(--rh-color-text-primary);
   --_focus-inner-border-color:
     var(--rh-cta-focus-inner-border-color,
       var(--rh-color-border-strong));
-  --_active-color:
-    light-dark(var(--rh-cta-active-color, var(--rh-color-text-primary-on-light, #151515)),
-      var(--rh-cta-active-color, var(--rh-color-text-primary-on-dark, #ffffff)));
+  --_active-color: var(--rh-cta-active-color, var(--rh-color-text-primary));
   --_active-background-color:
     light-dark(var(--rh-cta-active-background-color, var(--rh-color-border-strong)),
       var(--rh-cta-active-background-color, var(--rh-color-surface-lightest, #ffffff)));

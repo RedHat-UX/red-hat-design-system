@@ -9,9 +9,7 @@
 
 #container {
   display: grid;
-  color:
-    light-dark(var(--rh-color-text-secondary-on-light, #4d4d4d),
-      var(--rh-color-text-secondary-on-dark, #c7c7c7));
+  color: var(--rh-color-text-secondary);
 
   --_colors:
     light-dark(var(--rh-avatar-colors,
@@ -75,23 +73,17 @@ slot {
 }
 
 ::slotted(a) {
-  color:
-    light-dark(var(--rh-color-interactive-primary-default-on-light, #0066cc),
-      var(--rh-color-interactive-primary-default-on-dark, #92c5f9));
+  color: var(--rh-color-interactive-primary-default);
   text-decoration: none;
 }
 
 ::slotted(a:visited) {
-  color:
-    light-dark(var(--rh-color-interactive-primary-visited-default-on-light, #5e40be),
-      var(--rh-color-interactive-primary-visited-default-on-dark, #b6a6e9));
+  color: var(--rh-color-interactive-primary-visited-default);
 }
 
 ::slotted(a:active),
 ::slotted(a:hover) {
-  color:
-    light-dark(var(--rh-color-interactive-primary-hover-on-light, #003366),
-      var(--rh-color-interactive-primary-hover-on-dark, #b9dafc));
+  color: var(--rh-color-interactive-primary-hover);
 }
 
 img,

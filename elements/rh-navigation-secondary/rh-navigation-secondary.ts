@@ -35,7 +35,6 @@ export class SecondaryNavOverlayChangeEvent extends ComposedEvent {
 
 import styles from './rh-navigation-secondary.css';
 
-
 /* TODO: Abstract this out to a shareable function, should RTI handle something similar? */
 function focusableChildElements(parent: HTMLElement): NodeListOf<HTMLElement> {
   return parent.querySelectorAll(`a,
@@ -183,7 +182,7 @@ export class RhNavigationSecondary extends LitElement {
           <button aria-controls="container"
                   aria-expanded="${String(expanded) as 'true' | 'false'}"
                   @click="${this.#toggleMobileMenu}"><slot name="mobile-menu">Menu</slot></button>
-          <rh-surface color-palette="${dropdownPalette}">
+          <rh-surface color-palette="${dropdownPalette ?? 'lightest'}">
             <slot name="nav"></slot>
             <div id="cta" part="cta">
               <slot name="cta"></slot>

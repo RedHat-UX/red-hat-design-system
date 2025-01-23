@@ -3,7 +3,6 @@
   border: 0;
   color: var(--rh-color-text-primary);
 }
-=
 
 #sort-button:after {
   content: '';
