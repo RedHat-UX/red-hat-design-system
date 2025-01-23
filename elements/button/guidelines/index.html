@@ -35,8 +35,8 @@
   "imports": {
     "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
-    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
@@ -53,8 +53,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.4/core.js",
     "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.4/core.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
@@ -8082,12 +8082,87 @@ svg {
     <!--/lit-part--></template></rh-icon>
       </button>
     <!--/lit-part--></template>
-  <h3 id="more-than-one-line-of-text" tabindex="-1">
-    <a href="#more-than-one-line-of-text">More than one line of text</a><a>
+  <h3 id="lines-of-text" tabindex="-1">
+    <a href="#lines-of-text">Lines of text</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<p>Buttons should never have more than one line of text.</p>
-<uxdot-example   width-adjustment="80px" danger><template shadowroot="open" shadowrootmode="open"><style>:host {
+<div class="grid sm-two-columns">
+  <uxdot-best-practice  variant="do"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  margin-block: var(--rh-space-2xl);
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rh-space-2xl);
+  margin-block: var(--rh-space-2xl);
+}
+
+span {
+  font-family: var(--rh-font-family-heading);
+  font-size: var(--rh-font-size-heading-xs);
+  font-weight: var(--rh-font-weight-heading-medium);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--rh-space-md);
+}
+
+#do span {
+  color: var(--rh-color-status-success);
+}
+
+#dont span {
+  color: var(--rh-color-status-danger);
+}
+
+::slotted(uxdot-example) {
+  margin: 0 !important;
+}
+
+figure {
+  margin: 0 !important;
+}
+</style><!--lit-part /OqYtWIsZqM=-->
+      <figure id="container">
+        <slot name="image"></slot>
+        <!--lit-node 2--><figcaption id="do">
+          <span><!--lit-node 4--><rh-icon    set="ui" size="md" icon="check-circle-fill" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
+  line-height: 0;
+  aspect-ratio: 1/1;
+  display: inline-flex;
+  place-content: center;
+}
+
+#container {
+  display: contents;
+}
+
+svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
+  fill: currentcolor;
+  aspect-ratio: 1/1;
+}
+
+.standard svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
+}
+
+.microns svg {
+  width: 12px;
+}
+</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part dS1mROSl53E=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm7.795 12.796-8.646 8.646c-.317.317-.733.475-1.149.475s-.832-.158-1.149-.475l-4.646-4.646a1.126 1.126 0 0 1 1.59-1.592L14 19.41l8.205-8.205a1.124 1.124 0 1 1 1.59 1.592Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon><!--lit-part-->Do<!--/lit-part--></span>
+          <slot></slot>
+        </figcaption>
+      </figure>
+    <!--/lit-part--></template>
+    <uxdot-example   width-adjustment="97px" slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: block;
   container-type: inline-size;
   container-name: host;
@@ -8157,12 +8232,168 @@ svg {
       <!--lit-node 0--><div id="container"
            part="container"
            class="on  widthAdjustment "
-           style="--_width: 80px; --_alignment: center">
+           style="--_width: 97px; --_alignment: center">
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-  <img src="../button-best-practice-1.png" alt="Image of a button with two lines of text which is incorrect usage" width="80" height="60">
-</uxdot-example>
+      <img src="../button-best-practices-text-lines-do.svg" alt="Button with 'Add item' text on one line" width="97" height="60">
+    </uxdot-example>
+    <p>Keep the button’s text on one line.</p>
+  </uxdot-best-practice>
+  <uxdot-best-practice  variant="dont"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  margin-block: var(--rh-space-2xl);
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rh-space-2xl);
+  margin-block: var(--rh-space-2xl);
+}
+
+span {
+  font-family: var(--rh-font-family-heading);
+  font-size: var(--rh-font-size-heading-xs);
+  font-weight: var(--rh-font-weight-heading-medium);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--rh-space-md);
+}
+
+#do span {
+  color: var(--rh-color-status-success);
+}
+
+#dont span {
+  color: var(--rh-color-status-danger);
+}
+
+::slotted(uxdot-example) {
+  margin: 0 !important;
+}
+
+figure {
+  margin: 0 !important;
+}
+</style><!--lit-part /OqYtWIsZqM=-->
+      <figure id="container">
+        <slot name="image"></slot>
+        <!--lit-node 2--><figcaption id="dont">
+          <span><!--lit-node 4--><rh-icon    set="ui" size="md" icon="close-circle-fill" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
+  line-height: 0;
+  aspect-ratio: 1/1;
+  display: inline-flex;
+  place-content: center;
+}
+
+#container {
+  display: contents;
+}
+
+svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
+  fill: currentcolor;
+  aspect-ratio: 1/1;
+}
+
+.standard svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
+}
+
+.microns svg {
+  width: 12px;
+}
+</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part iKtDDm471k4=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm5.796 20.204c.438.44.438 1.152 0 1.592a1.122 1.122 0 0 1-1.592-.001L16 17.593l-4.204 4.204a1.122 1.122 0 0 1-1.592-.001 1.128 1.128 0 0 1 0-1.59L14.408 16l-4.204-4.204a1.126 1.126 0 0 1 1.592-1.592L16 14.408l4.204-4.204a1.126 1.126 0 0 1 1.592 1.592L17.592 16l4.204 4.204Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon><!--lit-part-->Don&#39;t<!--/lit-part--></span>
+          <slot></slot>
+        </figcaption>
+      </figure>
+    <!--/lit-part--></template>
+    <uxdot-example   width-adjustment="64px" slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  container-type: inline-size;
+  container-name: host;
+  margin-block-end: var(--rh-space-2xl);
+}
+
+:host([transparent]) {
+  --rh-color-surface: transparent;
+}
+
+#container {
+  padding: var(--rh-space-2xl);
+  display: flex;
+  flex-direction: column;
+  align-items: var(--_alignment, center);
+  justify-content: center;
+  border-width: var(--rh-border-width-sm);
+  border-style: solid;
+  border-color: var(--rh-color-border-subtle);
+  border-radius: var(--rh-border-radius-default);
+  background-color: var(--rh-color-surface);
+  color: var(--rh-color-text-primary);
+}
+
+::slotted(*) {
+  display: flex;
+  flex-direction: column;
+  align-items: var(--_alignment, center);
+  justify-content: center;
+  max-width: 100%;
+  height: auto;
+}
+
+.widthAdjustment ::slotted(*) {
+  width: var(--_width);
+}
+
+:host([variant='full']) #container {
+  padding: 0;
+}
+
+:host([danger]) #container {
+  --rh-color-border-subtle: var(--rh-color-border-destructive);
+
+  background-image: url('/assets/best-practices-danger-icon.svg');
+  background-position-x: 8px;
+  background-position-y: 8px;
+  background-repeat: no-repeat;
+}
+
+:host([no-border]:not([danger])) #container {
+  border: none;
+}
+
+@container host (min-width: 576px) {
+  #container {
+    padding: var(--rh-space-3xl);
+  }
+}
+
+@container host (min-width: 768px) {
+  #container {
+    padding: var(--rh-space-4xl);
+  }
+}
+</style><!--lit-part DbmYZodZUIs=-->
+      <!--lit-node 0--><div id="container"
+           part="container"
+           class="on  widthAdjustment "
+           style="--_width: 64px; --_alignment: center">
+        <slot></slot>
+      </div>
+    <!--/lit-part--></template>
+      <img src="../button-best-practices-text-lines-dont.svg" alt="Button with 'Add item' text breaking to two lines" width="64" height="60">
+    </uxdot-example>
+    <p>Do not use more than one line of text.</p>
+  </uxdot-best-practice>
+</div>
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: flex;
   margin-block-end: var(--rh-space-lg);
@@ -8235,12 +8466,87 @@ svg {
     <!--/lit-part--></template></rh-icon>
       </button>
     <!--/lit-part--></template>
-  <h3 id="multiple-buttons" tabindex="-1">
-    <a href="#multiple-buttons">Multiple buttons</a><a>
+  <h3 id="variants-in-button-groups" tabindex="-1">
+    <a href="#variants-in-button-groups">Variants in button groups</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<p>Do not use multiple Danger or Primary buttons in the same area.</p>
-<uxdot-example   width-adjustment="544px" danger><template shadowroot="open" shadowrootmode="open"><style>:host {
+<div class="grid sm-two-columns">
+  <uxdot-best-practice  variant="do"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  margin-block: var(--rh-space-2xl);
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rh-space-2xl);
+  margin-block: var(--rh-space-2xl);
+}
+
+span {
+  font-family: var(--rh-font-family-heading);
+  font-size: var(--rh-font-size-heading-xs);
+  font-weight: var(--rh-font-weight-heading-medium);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--rh-space-md);
+}
+
+#do span {
+  color: var(--rh-color-status-success);
+}
+
+#dont span {
+  color: var(--rh-color-status-danger);
+}
+
+::slotted(uxdot-example) {
+  margin: 0 !important;
+}
+
+figure {
+  margin: 0 !important;
+}
+</style><!--lit-part /OqYtWIsZqM=-->
+      <figure id="container">
+        <slot name="image"></slot>
+        <!--lit-node 2--><figcaption id="do">
+          <span><!--lit-node 4--><rh-icon    set="ui" size="md" icon="check-circle-fill" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
+  line-height: 0;
+  aspect-ratio: 1/1;
+  display: inline-flex;
+  place-content: center;
+}
+
+#container {
+  display: contents;
+}
+
+svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
+  fill: currentcolor;
+  aspect-ratio: 1/1;
+}
+
+.standard svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
+}
+
+.microns svg {
+  width: 12px;
+}
+</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part dS1mROSl53E=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm7.795 12.796-8.646 8.646c-.317.317-.733.475-1.149.475s-.832-.158-1.149-.475l-4.646-4.646a1.126 1.126 0 0 1 1.59-1.592L14 19.41l8.205-8.205a1.124 1.124 0 1 1 1.59 1.592Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon><!--lit-part-->Do<!--/lit-part--></span>
+          <slot></slot>
+        </figcaption>
+      </figure>
+    <!--/lit-part--></template>
+    <uxdot-example   width-adjustment="482px" slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: block;
   container-type: inline-size;
   container-name: host;
@@ -8310,12 +8616,168 @@ svg {
       <!--lit-node 0--><div id="container"
            part="container"
            class="on  widthAdjustment "
-           style="--_width: 544px; --_alignment: center">
+           style="--_width: 482px; --_alignment: center">
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-  <img src="../button-best-practice-2.png" alt="Image of two danger and two primary button groups which is incorrect usage" width="544" height="36">
-</uxdot-example>
+      <img src="../button-best-practices-variants-in-groups-do.svg" alt="Button group with a primary button and a secondary button and another button group with a danger button and a link button" width="482" height="104">
+    </uxdot-example>
+    <p>Use one primary or primary danger button per button group.</p>
+  </uxdot-best-practice>
+  <uxdot-best-practice  variant="dont"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  margin-block: var(--rh-space-2xl);
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rh-space-2xl);
+  margin-block: var(--rh-space-2xl);
+}
+
+span {
+  font-family: var(--rh-font-family-heading);
+  font-size: var(--rh-font-size-heading-xs);
+  font-weight: var(--rh-font-weight-heading-medium);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--rh-space-md);
+}
+
+#do span {
+  color: var(--rh-color-status-success);
+}
+
+#dont span {
+  color: var(--rh-color-status-danger);
+}
+
+::slotted(uxdot-example) {
+  margin: 0 !important;
+}
+
+figure {
+  margin: 0 !important;
+}
+</style><!--lit-part /OqYtWIsZqM=-->
+      <figure id="container">
+        <slot name="image"></slot>
+        <!--lit-node 2--><figcaption id="dont">
+          <span><!--lit-node 4--><rh-icon    set="ui" size="md" icon="close-circle-fill" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
+  line-height: 0;
+  aspect-ratio: 1/1;
+  display: inline-flex;
+  place-content: center;
+}
+
+#container {
+  display: contents;
+}
+
+svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
+  fill: currentcolor;
+  aspect-ratio: 1/1;
+}
+
+.standard svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
+}
+
+.microns svg {
+  width: 12px;
+}
+</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part iKtDDm471k4=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm5.796 20.204c.438.44.438 1.152 0 1.592a1.122 1.122 0 0 1-1.592-.001L16 17.593l-4.204 4.204a1.122 1.122 0 0 1-1.592-.001 1.128 1.128 0 0 1 0-1.59L14.408 16l-4.204-4.204a1.126 1.126 0 0 1 1.592-1.592L16 14.408l4.204-4.204a1.126 1.126 0 0 1 1.592 1.592L17.592 16l4.204 4.204Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon><!--lit-part-->Don&#39;t<!--/lit-part--></span>
+          <slot></slot>
+        </figcaption>
+      </figure>
+    <!--/lit-part--></template>
+    <uxdot-example   width-adjustment="240px" slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  container-type: inline-size;
+  container-name: host;
+  margin-block-end: var(--rh-space-2xl);
+}
+
+:host([transparent]) {
+  --rh-color-surface: transparent;
+}
+
+#container {
+  padding: var(--rh-space-2xl);
+  display: flex;
+  flex-direction: column;
+  align-items: var(--_alignment, center);
+  justify-content: center;
+  border-width: var(--rh-border-width-sm);
+  border-style: solid;
+  border-color: var(--rh-color-border-subtle);
+  border-radius: var(--rh-border-radius-default);
+  background-color: var(--rh-color-surface);
+  color: var(--rh-color-text-primary);
+}
+
+::slotted(*) {
+  display: flex;
+  flex-direction: column;
+  align-items: var(--_alignment, center);
+  justify-content: center;
+  max-width: 100%;
+  height: auto;
+}
+
+.widthAdjustment ::slotted(*) {
+  width: var(--_width);
+}
+
+:host([variant='full']) #container {
+  padding: 0;
+}
+
+:host([danger]) #container {
+  --rh-color-border-subtle: var(--rh-color-border-destructive);
+
+  background-image: url('/assets/best-practices-danger-icon.svg');
+  background-position-x: 8px;
+  background-position-y: 8px;
+  background-repeat: no-repeat;
+}
+
+:host([no-border]:not([danger])) #container {
+  border: none;
+}
+
+@container host (min-width: 576px) {
+  #container {
+    padding: var(--rh-space-3xl);
+  }
+}
+
+@container host (min-width: 768px) {
+  #container {
+    padding: var(--rh-space-4xl);
+  }
+}
+</style><!--lit-part DbmYZodZUIs=-->
+      <!--lit-node 0--><div id="container"
+           part="container"
+           class="on  widthAdjustment "
+           style="--_width: 240px; --_alignment: center">
+        <slot></slot>
+      </div>
+    <!--/lit-part--></template>
+      <img src="../button-best-practices-variants-in-groups-dont.svg" alt="Button group with two primary buttons and a second button group with two primary danger buttons" width="240" height="104">
+    </uxdot-example>
+    <p>Do not use multiple primary or primary danger buttons in the same button group.</p>
+  </uxdot-best-practice>
+</div>
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: flex;
   margin-block-end: var(--rh-space-lg);
@@ -8392,8 +8854,83 @@ svg {
     <a href="#text-labels">Text labels</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<p>Do not write button text labels that are expressive or ambiguous.</p>
-<uxdot-example   width-adjustment="358px" danger><template shadowroot="open" shadowrootmode="open"><style>:host {
+<div class="grid sm-two-columns">
+  <uxdot-best-practice  variant="do"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  margin-block: var(--rh-space-2xl);
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rh-space-2xl);
+  margin-block: var(--rh-space-2xl);
+}
+
+span {
+  font-family: var(--rh-font-family-heading);
+  font-size: var(--rh-font-size-heading-xs);
+  font-weight: var(--rh-font-weight-heading-medium);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--rh-space-md);
+}
+
+#do span {
+  color: var(--rh-color-status-success);
+}
+
+#dont span {
+  color: var(--rh-color-status-danger);
+}
+
+::slotted(uxdot-example) {
+  margin: 0 !important;
+}
+
+figure {
+  margin: 0 !important;
+}
+</style><!--lit-part /OqYtWIsZqM=-->
+      <figure id="container">
+        <slot name="image"></slot>
+        <!--lit-node 2--><figcaption id="do">
+          <span><!--lit-node 4--><rh-icon    set="ui" size="md" icon="check-circle-fill" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
+  line-height: 0;
+  aspect-ratio: 1/1;
+  display: inline-flex;
+  place-content: center;
+}
+
+#container {
+  display: contents;
+}
+
+svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
+  fill: currentcolor;
+  aspect-ratio: 1/1;
+}
+
+.standard svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
+}
+
+.microns svg {
+  width: 12px;
+}
+</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part dS1mROSl53E=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm7.795 12.796-8.646 8.646c-.317.317-.733.475-1.149.475s-.832-.158-1.149-.475l-4.646-4.646a1.126 1.126 0 0 1 1.59-1.592L14 19.41l8.205-8.205a1.124 1.124 0 1 1 1.59 1.592Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon><!--lit-part-->Do<!--/lit-part--></span>
+          <slot></slot>
+        </figcaption>
+      </figure>
+    <!--/lit-part--></template>
+    <uxdot-example   width-adjustment="84px" slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: block;
   container-type: inline-size;
   container-name: host;
@@ -8463,12 +9000,168 @@ svg {
       <!--lit-node 0--><div id="container"
            part="container"
            class="on  widthAdjustment "
-           style="--_width: 358px; --_alignment: center">
+           style="--_width: 84px; --_alignment: center">
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-  <img src="../button-best-practice-3.png" alt="Image of two buttons; one has expressive language and the other has ambiguous language which is incorrect usage" width="358" height="36">
-</uxdot-example>
+      <img src="../button-best-practices-labels-do.svg" alt="Secondary button with 'Edit' text and primary button with `Submit` text" width="84" height="104">
+    </uxdot-example>
+    <p>Label buttons clearly and succinctly.</p>
+  </uxdot-best-practice>
+  <uxdot-best-practice  variant="dont"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  margin-block: var(--rh-space-2xl);
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rh-space-2xl);
+  margin-block: var(--rh-space-2xl);
+}
+
+span {
+  font-family: var(--rh-font-family-heading);
+  font-size: var(--rh-font-size-heading-xs);
+  font-weight: var(--rh-font-weight-heading-medium);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--rh-space-md);
+}
+
+#do span {
+  color: var(--rh-color-status-success);
+}
+
+#dont span {
+  color: var(--rh-color-status-danger);
+}
+
+::slotted(uxdot-example) {
+  margin: 0 !important;
+}
+
+figure {
+  margin: 0 !important;
+}
+</style><!--lit-part /OqYtWIsZqM=-->
+      <figure id="container">
+        <slot name="image"></slot>
+        <!--lit-node 2--><figcaption id="dont">
+          <span><!--lit-node 4--><rh-icon    set="ui" size="md" icon="close-circle-fill" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
+  line-height: 0;
+  aspect-ratio: 1/1;
+  display: inline-flex;
+  place-content: center;
+}
+
+#container {
+  display: contents;
+}
+
+svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
+  fill: currentcolor;
+  aspect-ratio: 1/1;
+}
+
+.standard svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
+}
+
+.microns svg {
+  width: 12px;
+}
+</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part iKtDDm471k4=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm5.796 20.204c.438.44.438 1.152 0 1.592a1.122 1.122 0 0 1-1.592-.001L16 17.593l-4.204 4.204a1.122 1.122 0 0 1-1.592-.001 1.128 1.128 0 0 1 0-1.59L14.408 16l-4.204-4.204a1.126 1.126 0 0 1 1.592-1.592L16 14.408l4.204-4.204a1.126 1.126 0 0 1 1.592 1.592L17.592 16l4.204 4.204Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon><!--lit-part-->Don&#39;t<!--/lit-part--></span>
+          <slot></slot>
+        </figcaption>
+      </figure>
+    <!--/lit-part--></template>
+    <uxdot-example   width-adjustment="120px" slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  container-type: inline-size;
+  container-name: host;
+  margin-block-end: var(--rh-space-2xl);
+}
+
+:host([transparent]) {
+  --rh-color-surface: transparent;
+}
+
+#container {
+  padding: var(--rh-space-2xl);
+  display: flex;
+  flex-direction: column;
+  align-items: var(--_alignment, center);
+  justify-content: center;
+  border-width: var(--rh-border-width-sm);
+  border-style: solid;
+  border-color: var(--rh-color-border-subtle);
+  border-radius: var(--rh-border-radius-default);
+  background-color: var(--rh-color-surface);
+  color: var(--rh-color-text-primary);
+}
+
+::slotted(*) {
+  display: flex;
+  flex-direction: column;
+  align-items: var(--_alignment, center);
+  justify-content: center;
+  max-width: 100%;
+  height: auto;
+}
+
+.widthAdjustment ::slotted(*) {
+  width: var(--_width);
+}
+
+:host([variant='full']) #container {
+  padding: 0;
+}
+
+:host([danger]) #container {
+  --rh-color-border-subtle: var(--rh-color-border-destructive);
+
+  background-image: url('/assets/best-practices-danger-icon.svg');
+  background-position-x: 8px;
+  background-position-y: 8px;
+  background-repeat: no-repeat;
+}
+
+:host([no-border]:not([danger])) #container {
+  border: none;
+}
+
+@container host (min-width: 576px) {
+  #container {
+    padding: var(--rh-space-3xl);
+  }
+}
+
+@container host (min-width: 768px) {
+  #container {
+    padding: var(--rh-space-4xl);
+  }
+}
+</style><!--lit-part DbmYZodZUIs=-->
+      <!--lit-node 0--><div id="container"
+           part="container"
+           class="on  widthAdjustment "
+           style="--_width: 120px; --_alignment: center">
+        <slot></slot>
+      </div>
+    <!--/lit-part--></template>
+      <img src="../button-best-practices-labels-dont.svg" alt="Secondary button with 'Click here' text and primary button with 'Submit now!' text" width="120" height="104">
+    </uxdot-example>
+    <p>Do not write button text labels that are expressive or ambiguous.</p>
+  </uxdot-best-practice>
+</div>
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: flex;
   margin-block-end: var(--rh-space-lg);
@@ -8545,8 +9238,83 @@ svg {
     <a href="#danger-button">Danger button</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<p>Do not use a Danger button for non-destructive purposes.</p>
-<uxdot-example   width-adjustment="680px" danger><template shadowroot="open" shadowrootmode="open"><style>:host {
+<div class="grid sm-two-columns">
+  <uxdot-best-practice  variant="do"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  margin-block: var(--rh-space-2xl);
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rh-space-2xl);
+  margin-block: var(--rh-space-2xl);
+}
+
+span {
+  font-family: var(--rh-font-family-heading);
+  font-size: var(--rh-font-size-heading-xs);
+  font-weight: var(--rh-font-weight-heading-medium);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--rh-space-md);
+}
+
+#do span {
+  color: var(--rh-color-status-success);
+}
+
+#dont span {
+  color: var(--rh-color-status-danger);
+}
+
+::slotted(uxdot-example) {
+  margin: 0 !important;
+}
+
+figure {
+  margin: 0 !important;
+}
+</style><!--lit-part /OqYtWIsZqM=-->
+      <figure id="container">
+        <slot name="image"></slot>
+        <!--lit-node 2--><figcaption id="do">
+          <span><!--lit-node 4--><rh-icon    set="ui" size="md" icon="check-circle-fill" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
+  line-height: 0;
+  aspect-ratio: 1/1;
+  display: inline-flex;
+  place-content: center;
+}
+
+#container {
+  display: contents;
+}
+
+svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
+  fill: currentcolor;
+  aspect-ratio: 1/1;
+}
+
+.standard svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
+}
+
+.microns svg {
+  width: 12px;
+}
+</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part dS1mROSl53E=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm7.795 12.796-8.646 8.646c-.317.317-.733.475-1.149.475s-.832-.158-1.149-.475l-4.646-4.646a1.126 1.126 0 0 1 1.59-1.592L14 19.41l8.205-8.205a1.124 1.124 0 1 1 1.59 1.592Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon><!--lit-part-->Do<!--/lit-part--></span>
+          <slot></slot>
+        </figcaption>
+      </figure>
+    <!--/lit-part--></template>
+    <uxdot-example   width-adjustment="482px" slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: block;
   container-type: inline-size;
   container-name: host;
@@ -8616,12 +9384,168 @@ svg {
       <!--lit-node 0--><div id="container"
            part="container"
            class="on  widthAdjustment "
-           style="--_width: 680px; --_alignment: center">
+           style="--_width: 482px; --_alignment: center">
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-  <img src="../button-best-practice-4.png" alt="Image of a search bar using a danger button which is incorrect usage" width="680" height="36">
-</uxdot-example>
+      <img src="../button-best-practices-danger-do.svg" alt="Danger button labeld 'Reset layout' below explanatory copy and next to a 'Cancel' link button" width="482" height="143">
+    </uxdot-example>
+    <p>Use a danger button for destructive actions only.</p>
+  </uxdot-best-practice>
+  <uxdot-best-practice  variant="dont"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  margin-block: var(--rh-space-2xl);
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rh-space-2xl);
+  margin-block: var(--rh-space-2xl);
+}
+
+span {
+  font-family: var(--rh-font-family-heading);
+  font-size: var(--rh-font-size-heading-xs);
+  font-weight: var(--rh-font-weight-heading-medium);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--rh-space-md);
+}
+
+#do span {
+  color: var(--rh-color-status-success);
+}
+
+#dont span {
+  color: var(--rh-color-status-danger);
+}
+
+::slotted(uxdot-example) {
+  margin: 0 !important;
+}
+
+figure {
+  margin: 0 !important;
+}
+</style><!--lit-part /OqYtWIsZqM=-->
+      <figure id="container">
+        <slot name="image"></slot>
+        <!--lit-node 2--><figcaption id="dont">
+          <span><!--lit-node 4--><rh-icon    set="ui" size="md" icon="close-circle-fill" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
+  line-height: 0;
+  aspect-ratio: 1/1;
+  display: inline-flex;
+  place-content: center;
+}
+
+#container {
+  display: contents;
+}
+
+svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
+  fill: currentcolor;
+  aspect-ratio: 1/1;
+}
+
+.standard svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
+}
+
+.microns svg {
+  width: 12px;
+}
+</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part iKtDDm471k4=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm5.796 20.204c.438.44.438 1.152 0 1.592a1.122 1.122 0 0 1-1.592-.001L16 17.593l-4.204 4.204a1.122 1.122 0 0 1-1.592-.001 1.128 1.128 0 0 1 0-1.59L14.408 16l-4.204-4.204a1.126 1.126 0 0 1 1.592-1.592L16 14.408l4.204-4.204a1.126 1.126 0 0 1 1.592 1.592L17.592 16l4.204 4.204Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon><!--lit-part-->Don&#39;t<!--/lit-part--></span>
+          <slot></slot>
+        </figcaption>
+      </figure>
+    <!--/lit-part--></template>
+    <uxdot-example   width-adjustment="482px" slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  container-type: inline-size;
+  container-name: host;
+  margin-block-end: var(--rh-space-2xl);
+}
+
+:host([transparent]) {
+  --rh-color-surface: transparent;
+}
+
+#container {
+  padding: var(--rh-space-2xl);
+  display: flex;
+  flex-direction: column;
+  align-items: var(--_alignment, center);
+  justify-content: center;
+  border-width: var(--rh-border-width-sm);
+  border-style: solid;
+  border-color: var(--rh-color-border-subtle);
+  border-radius: var(--rh-border-radius-default);
+  background-color: var(--rh-color-surface);
+  color: var(--rh-color-text-primary);
+}
+
+::slotted(*) {
+  display: flex;
+  flex-direction: column;
+  align-items: var(--_alignment, center);
+  justify-content: center;
+  max-width: 100%;
+  height: auto;
+}
+
+.widthAdjustment ::slotted(*) {
+  width: var(--_width);
+}
+
+:host([variant='full']) #container {
+  padding: 0;
+}
+
+:host([danger]) #container {
+  --rh-color-border-subtle: var(--rh-color-border-destructive);
+
+  background-image: url('/assets/best-practices-danger-icon.svg');
+  background-position-x: 8px;
+  background-position-y: 8px;
+  background-repeat: no-repeat;
+}
+
+:host([no-border]:not([danger])) #container {
+  border: none;
+}
+
+@container host (min-width: 576px) {
+  #container {
+    padding: var(--rh-space-3xl);
+  }
+}
+
+@container host (min-width: 768px) {
+  #container {
+    padding: var(--rh-space-4xl);
+  }
+}
+</style><!--lit-part DbmYZodZUIs=-->
+      <!--lit-node 0--><div id="container"
+           part="container"
+           class="on  widthAdjustment "
+           style="--_width: 482px; --_alignment: center">
+        <slot></slot>
+      </div>
+    <!--/lit-part--></template>
+      <img src="../button-best-practices-danger-dont.svg" alt="Danger button labeled 'Search' next to a text input field" width="482" height="143">
+    </uxdot-example>
+    <p>Do not use a danger button for non-destructive actions.</p>
+  </uxdot-best-practice>
+</div>
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: flex;
   margin-block-end: var(--rh-space-lg);
@@ -8694,13 +9618,87 @@ svg {
     <!--/lit-part--></template></rh-icon>
       </button>
     <!--/lit-part--></template>
-  <h3 id="button-as-a-call-to-action" tabindex="-1">
-    <a href="#button-as-a-call-to-action">Button as a call to action</a><a>
+  <h3 id="buttons-vs.-calls-to-action" tabindex="-1">
+    <a href="#buttons-vs.-calls-to-action">Buttons vs. calls to action</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<p>Do not use buttons as links or change the Primary button styling, use a link or
-call to action instead.</p>
-<uxdot-example   width-adjustment="433px" danger><template shadowroot="open" shadowrootmode="open"><style>:host {
+<div class="grid sm-two-columns">
+  <uxdot-best-practice  variant="do"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  margin-block: var(--rh-space-2xl);
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rh-space-2xl);
+  margin-block: var(--rh-space-2xl);
+}
+
+span {
+  font-family: var(--rh-font-family-heading);
+  font-size: var(--rh-font-size-heading-xs);
+  font-weight: var(--rh-font-weight-heading-medium);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--rh-space-md);
+}
+
+#do span {
+  color: var(--rh-color-status-success);
+}
+
+#dont span {
+  color: var(--rh-color-status-danger);
+}
+
+::slotted(uxdot-example) {
+  margin: 0 !important;
+}
+
+figure {
+  margin: 0 !important;
+}
+</style><!--lit-part /OqYtWIsZqM=-->
+      <figure id="container">
+        <slot name="image"></slot>
+        <!--lit-node 2--><figcaption id="do">
+          <span><!--lit-node 4--><rh-icon    set="ui" size="md" icon="check-circle-fill" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
+  line-height: 0;
+  aspect-ratio: 1/1;
+  display: inline-flex;
+  place-content: center;
+}
+
+#container {
+  display: contents;
+}
+
+svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
+  fill: currentcolor;
+  aspect-ratio: 1/1;
+}
+
+.standard svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
+}
+
+.microns svg {
+  width: 12px;
+}
+</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part dS1mROSl53E=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm7.795 12.796-8.646 8.646c-.317.317-.733.475-1.149.475s-.832-.158-1.149-.475l-4.646-4.646a1.126 1.126 0 0 1 1.59-1.592L14 19.41l8.205-8.205a1.124 1.124 0 1 1 1.59 1.592Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon><!--lit-part-->Do<!--/lit-part--></span>
+          <slot></slot>
+        </figcaption>
+      </figure>
+    <!--/lit-part--></template>
+    <uxdot-example   width-adjustment="482px" slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: block;
   container-type: inline-size;
   container-name: host;
@@ -8770,13 +9768,552 @@ call to action instead.</p>
       <!--lit-node 0--><div id="container"
            part="container"
            class="on  widthAdjustment "
-           style="--_width: 433px; --_alignment: center">
+           style="--_width: 482px; --_alignment: center">
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-  <img src="../button-best-practice-5.png" alt="Image of text styles with a button underneath that resembles a call to action which is incorrect usage" width="433" height="269">
-</uxdot-example>
+      <img src="../button-best-practices-buttons-vs-ctas-do.svg" alt="Blue primary button below supporting copy" width="482" height="197">
+    </uxdot-example>
+    <p>Use buttons for actions, and retain the primary button styling to make them look different from calls to action.</p>
+  </uxdot-best-practice>
+  <uxdot-best-practice  variant="dont"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  margin-block: var(--rh-space-2xl);
+}
 
+#container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rh-space-2xl);
+  margin-block: var(--rh-space-2xl);
+}
+
+span {
+  font-family: var(--rh-font-family-heading);
+  font-size: var(--rh-font-size-heading-xs);
+  font-weight: var(--rh-font-weight-heading-medium);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--rh-space-md);
+}
+
+#do span {
+  color: var(--rh-color-status-success);
+}
+
+#dont span {
+  color: var(--rh-color-status-danger);
+}
+
+::slotted(uxdot-example) {
+  margin: 0 !important;
+}
+
+figure {
+  margin: 0 !important;
+}
+</style><!--lit-part /OqYtWIsZqM=-->
+      <figure id="container">
+        <slot name="image"></slot>
+        <!--lit-node 2--><figcaption id="dont">
+          <span><!--lit-node 4--><rh-icon    set="ui" size="md" icon="close-circle-fill" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
+  line-height: 0;
+  aspect-ratio: 1/1;
+  display: inline-flex;
+  place-content: center;
+}
+
+#container {
+  display: contents;
+}
+
+svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
+  fill: currentcolor;
+  aspect-ratio: 1/1;
+}
+
+.standard svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
+}
+
+.microns svg {
+  width: 12px;
+}
+</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part iKtDDm471k4=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm5.796 20.204c.438.44.438 1.152 0 1.592a1.122 1.122 0 0 1-1.592-.001L16 17.593l-4.204 4.204a1.122 1.122 0 0 1-1.592-.001 1.128 1.128 0 0 1 0-1.59L14.408 16l-4.204-4.204a1.126 1.126 0 0 1 1.592-1.592L16 14.408l4.204-4.204a1.126 1.126 0 0 1 1.592 1.592L17.592 16l4.204 4.204Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon><!--lit-part-->Don&#39;t<!--/lit-part--></span>
+          <slot></slot>
+        </figcaption>
+      </figure>
+    <!--/lit-part--></template>
+    <uxdot-example   width-adjustment="482px" slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  container-type: inline-size;
+  container-name: host;
+  margin-block-end: var(--rh-space-2xl);
+}
+
+:host([transparent]) {
+  --rh-color-surface: transparent;
+}
+
+#container {
+  padding: var(--rh-space-2xl);
+  display: flex;
+  flex-direction: column;
+  align-items: var(--_alignment, center);
+  justify-content: center;
+  border-width: var(--rh-border-width-sm);
+  border-style: solid;
+  border-color: var(--rh-color-border-subtle);
+  border-radius: var(--rh-border-radius-default);
+  background-color: var(--rh-color-surface);
+  color: var(--rh-color-text-primary);
+}
+
+::slotted(*) {
+  display: flex;
+  flex-direction: column;
+  align-items: var(--_alignment, center);
+  justify-content: center;
+  max-width: 100%;
+  height: auto;
+}
+
+.widthAdjustment ::slotted(*) {
+  width: var(--_width);
+}
+
+:host([variant='full']) #container {
+  padding: 0;
+}
+
+:host([danger]) #container {
+  --rh-color-border-subtle: var(--rh-color-border-destructive);
+
+  background-image: url('/assets/best-practices-danger-icon.svg');
+  background-position-x: 8px;
+  background-position-y: 8px;
+  background-repeat: no-repeat;
+}
+
+:host([no-border]:not([danger])) #container {
+  border: none;
+}
+
+@container host (min-width: 576px) {
+  #container {
+    padding: var(--rh-space-3xl);
+  }
+}
+
+@container host (min-width: 768px) {
+  #container {
+    padding: var(--rh-space-4xl);
+  }
+}
+</style><!--lit-part DbmYZodZUIs=-->
+      <!--lit-node 0--><div id="container"
+           part="container"
+           class="on  widthAdjustment "
+           style="--_width: 482px; --_alignment: center">
+        <slot></slot>
+      </div>
+    <!--/lit-part--></template>
+      <img src="../button-best-practices-buttons-vs-ctas-dont.svg" alt="Brand red primary button below supporting copy" width="482" height="197">
+    </uxdot-example>
+    <p>Do not use buttons as links or change the style of a primary button to look more like a call to action.</p>
+  </uxdot-best-practice>
+</div>
+<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: flex;
+  margin-block-end: var(--rh-space-lg);
+  align-items: center;
+}
+
+#signifier {
+  display: var(--perma-signifier-display, none);
+}
+
+#button {
+  height: 1.75rem;
+  background: none;
+  border: none;
+  border-radius: var(--rh-border-radius-default);
+  display: none;
+  align-items: center;
+}
+
+#button:is(:hover, :focus) {
+  background: var(--rh-color-surface-light);
+}
+
+:host(:state(--rendered)) #button {
+  display: flex;
+}
+
+::slotted(:is(h1, h2, h3, h4, h5, h6)) {
+  display: flex;
+  margin-block-end: 0 !important;
+  align-items: center;
+  color: inherit;
+  text-decoration: inherit;
+}
+</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
+  line-height: 0;
+  aspect-ratio: 1/1;
+  display: inline-flex;
+  place-content: center;
+}
+
+#container {
+  display: contents;
+}
+
+svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
+  fill: currentcolor;
+  aspect-ratio: 1/1;
+}
+
+.standard svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
+}
+
+.microns svg {
+  width: 12px;
+}
+</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+  <h3 id="button-icons" tabindex="-1">
+    <a href="#button-icons">Button icons</a><a>
+  </a></h3>
+</uxdot-copy-permalink>
+<div class="grid sm-two-columns">
+  <uxdot-best-practice  variant="do"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  margin-block: var(--rh-space-2xl);
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rh-space-2xl);
+  margin-block: var(--rh-space-2xl);
+}
+
+span {
+  font-family: var(--rh-font-family-heading);
+  font-size: var(--rh-font-size-heading-xs);
+  font-weight: var(--rh-font-weight-heading-medium);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--rh-space-md);
+}
+
+#do span {
+  color: var(--rh-color-status-success);
+}
+
+#dont span {
+  color: var(--rh-color-status-danger);
+}
+
+::slotted(uxdot-example) {
+  margin: 0 !important;
+}
+
+figure {
+  margin: 0 !important;
+}
+</style><!--lit-part /OqYtWIsZqM=-->
+      <figure id="container">
+        <slot name="image"></slot>
+        <!--lit-node 2--><figcaption id="do">
+          <span><!--lit-node 4--><rh-icon    set="ui" size="md" icon="check-circle-fill" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
+  line-height: 0;
+  aspect-ratio: 1/1;
+  display: inline-flex;
+  place-content: center;
+}
+
+#container {
+  display: contents;
+}
+
+svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
+  fill: currentcolor;
+  aspect-ratio: 1/1;
+}
+
+.standard svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
+}
+
+.microns svg {
+  width: 12px;
+}
+</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part dS1mROSl53E=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm7.795 12.796-8.646 8.646c-.317.317-.733.475-1.149.475s-.832-.158-1.149-.475l-4.646-4.646a1.126 1.126 0 0 1 1.59-1.592L14 19.41l8.205-8.205a1.124 1.124 0 1 1 1.59 1.592Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon><!--lit-part-->Do<!--/lit-part--></span>
+          <slot></slot>
+        </figcaption>
+      </figure>
+    <!--/lit-part--></template>
+    <uxdot-example   width-adjustment="121x" slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  container-type: inline-size;
+  container-name: host;
+  margin-block-end: var(--rh-space-2xl);
+}
+
+:host([transparent]) {
+  --rh-color-surface: transparent;
+}
+
+#container {
+  padding: var(--rh-space-2xl);
+  display: flex;
+  flex-direction: column;
+  align-items: var(--_alignment, center);
+  justify-content: center;
+  border-width: var(--rh-border-width-sm);
+  border-style: solid;
+  border-color: var(--rh-color-border-subtle);
+  border-radius: var(--rh-border-radius-default);
+  background-color: var(--rh-color-surface);
+  color: var(--rh-color-text-primary);
+}
+
+::slotted(*) {
+  display: flex;
+  flex-direction: column;
+  align-items: var(--_alignment, center);
+  justify-content: center;
+  max-width: 100%;
+  height: auto;
+}
+
+.widthAdjustment ::slotted(*) {
+  width: var(--_width);
+}
+
+:host([variant='full']) #container {
+  padding: 0;
+}
+
+:host([danger]) #container {
+  --rh-color-border-subtle: var(--rh-color-border-destructive);
+
+  background-image: url('/assets/best-practices-danger-icon.svg');
+  background-position-x: 8px;
+  background-position-y: 8px;
+  background-repeat: no-repeat;
+}
+
+:host([no-border]:not([danger])) #container {
+  border: none;
+}
+
+@container host (min-width: 576px) {
+  #container {
+    padding: var(--rh-space-3xl);
+  }
+}
+
+@container host (min-width: 768px) {
+  #container {
+    padding: var(--rh-space-4xl);
+  }
+}
+</style><!--lit-part DbmYZodZUIs=-->
+      <!--lit-node 0--><div id="container"
+           part="container"
+           class="on  widthAdjustment "
+           style="--_width: 121x; --_alignment: center">
+        <slot></slot>
+      </div>
+    <!--/lit-part--></template>
+      <img src="../button-best-practices-icons-do.svg" alt="Button with one icon to the left of the text" width="121" height="36">
+    </uxdot-example>
+    <p>Use only one icon in a button.</p>
+  </uxdot-best-practice>
+  <uxdot-best-practice  variant="dont"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  margin-block: var(--rh-space-2xl);
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rh-space-2xl);
+  margin-block: var(--rh-space-2xl);
+}
+
+span {
+  font-family: var(--rh-font-family-heading);
+  font-size: var(--rh-font-size-heading-xs);
+  font-weight: var(--rh-font-weight-heading-medium);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--rh-space-md);
+}
+
+#do span {
+  color: var(--rh-color-status-success);
+}
+
+#dont span {
+  color: var(--rh-color-status-danger);
+}
+
+::slotted(uxdot-example) {
+  margin: 0 !important;
+}
+
+figure {
+  margin: 0 !important;
+}
+</style><!--lit-part /OqYtWIsZqM=-->
+      <figure id="container">
+        <slot name="image"></slot>
+        <!--lit-node 2--><figcaption id="dont">
+          <span><!--lit-node 4--><rh-icon    set="ui" size="md" icon="close-circle-fill" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
+  line-height: 0;
+  aspect-ratio: 1/1;
+  display: inline-flex;
+  place-content: center;
+}
+
+#container {
+  display: contents;
+}
+
+svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
+  fill: currentcolor;
+  aspect-ratio: 1/1;
+}
+
+.standard svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
+}
+
+.microns svg {
+  width: 12px;
+}
+</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part iKtDDm471k4=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm5.796 20.204c.438.44.438 1.152 0 1.592a1.122 1.122 0 0 1-1.592-.001L16 17.593l-4.204 4.204a1.122 1.122 0 0 1-1.592-.001 1.128 1.128 0 0 1 0-1.59L14.408 16l-4.204-4.204a1.126 1.126 0 0 1 1.592-1.592L16 14.408l4.204-4.204a1.126 1.126 0 0 1 1.592 1.592L17.592 16l4.204 4.204Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon><!--lit-part-->Don&#39;t<!--/lit-part--></span>
+          <slot></slot>
+        </figcaption>
+      </figure>
+    <!--/lit-part--></template>
+    <uxdot-example   width-adjustment="145px" slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  container-type: inline-size;
+  container-name: host;
+  margin-block-end: var(--rh-space-2xl);
+}
+
+:host([transparent]) {
+  --rh-color-surface: transparent;
+}
+
+#container {
+  padding: var(--rh-space-2xl);
+  display: flex;
+  flex-direction: column;
+  align-items: var(--_alignment, center);
+  justify-content: center;
+  border-width: var(--rh-border-width-sm);
+  border-style: solid;
+  border-color: var(--rh-color-border-subtle);
+  border-radius: var(--rh-border-radius-default);
+  background-color: var(--rh-color-surface);
+  color: var(--rh-color-text-primary);
+}
+
+::slotted(*) {
+  display: flex;
+  flex-direction: column;
+  align-items: var(--_alignment, center);
+  justify-content: center;
+  max-width: 100%;
+  height: auto;
+}
+
+.widthAdjustment ::slotted(*) {
+  width: var(--_width);
+}
+
+:host([variant='full']) #container {
+  padding: 0;
+}
+
+:host([danger]) #container {
+  --rh-color-border-subtle: var(--rh-color-border-destructive);
+
+  background-image: url('/assets/best-practices-danger-icon.svg');
+  background-position-x: 8px;
+  background-position-y: 8px;
+  background-repeat: no-repeat;
+}
+
+:host([no-border]:not([danger])) #container {
+  border: none;
+}
+
+@container host (min-width: 576px) {
+  #container {
+    padding: var(--rh-space-3xl);
+  }
+}
+
+@container host (min-width: 768px) {
+  #container {
+    padding: var(--rh-space-4xl);
+  }
+}
+</style><!--lit-part DbmYZodZUIs=-->
+      <!--lit-node 0--><div id="container"
+           part="container"
+           class="on  widthAdjustment "
+           style="--_width: 145px; --_alignment: center">
+        <slot></slot>
+      </div>
+    <!--/lit-part--></template>
+      <img src="../button-best-practices-icons-dont.svg" alt="Button with icons to the left and right of the text" width="145" height="36">
+    </uxdot-example>
+    <p>Do not use more than one icon in a button.</p>
+  </uxdot-best-practice>
+</div>
 
       
 <uxdot-feedback><template shadowroot="open" shadowrootmode="open"><style>:host {
