@@ -352,13 +352,12 @@ button[disabled] {
   pointer-events: none;
   cursor: default;
 
-  --_color: var(--rh-color-text-secondary-on-light, #4d4d4d);
-  --_background-color: var(--rh-color-surface-light, #e0e0e0);
-
-  &.dark {
-    --_color: var(--rh-color-gray-40, #a3a3a3);
-    --_background-color: var(--rh-color-surface-dark, #383838);
-  }
+  --_color:
+    light-dark(var(--rh-color-text-secondary-on-light, #4d4d4d),
+      var(--rh-color-gray-40, #a3a3a3));
+  --_background-color:
+    light-dark(var(--rh-color-surface-light, #e0e0e0),
+      var(--rh-color-surface-dark, #383838));
 }
 
 :host(:disabled) button:after {

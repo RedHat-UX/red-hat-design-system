@@ -89,12 +89,10 @@
   }
 }
 
-.expanded.on.light {
-  --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
-}
-
-.expanded.on.dark {
-  --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+.expanded {
+  --rh-color-surface:
+    light-dark(var(--rh-color-surface-lightest, #ffffff),
+      var(--rh-color-surface-darkest, #151515));
 }
 
 .body:after {

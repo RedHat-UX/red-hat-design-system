@@ -39,19 +39,13 @@
 }
 
 .shadow-fab:is(:hover, :focus, :active) {
-  background:
-    var(--_code-action-hover-focus-active-background,
-      var(--rh-color-surface-light, #e0e0e0));
+  background: var(--rh-color-surface);
 }
 
 .shadow-fab svg {
   width: var(--rh-size-icon-02, 24px);
   height: var(--rh-size-icon-02, 24px);
   color: var(--rh-color-text-primary);
-}
-
-.dark .shadow-fab {
-  --_code-action-hover-focus-active-background: var(--rh-color-surface-dark, #383838);
 }
 
 #container,

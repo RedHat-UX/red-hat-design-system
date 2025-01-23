@@ -146,8 +146,8 @@ figcaption ::slotted(p) {
   background-color: var(--_video-play-btn-interactive-bkg-color);
 }
 
-.dark #play::part(icon) {
-  color: var(--rh-color-surface-lightest, #ffffff);
+#play::part(icon) {
+  color: var(--rh-color-surface);
 }
 
 #play[hidden],
