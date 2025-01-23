@@ -89,7 +89,7 @@ rh-navigation-secondary {
   }
 
   &[color-palette^='light'] {
-    color-scheme: light;
+    color-scheme: only light;
   }
 
   &[color-palette^='dark'] {
@@ -99,7 +99,7 @@ rh-navigation-secondary {
     background-color: var(--rh-color-surface-dark, #383838);
     border-block-end-color: var(--rh-color-border-subtle-on-dark, #707070);
     box-shadow: none;
-    color-scheme: dark;
+    color-scheme: only dark;
 
     & > [slot='logo']:hover {
       color: var(--_logo-link-color);

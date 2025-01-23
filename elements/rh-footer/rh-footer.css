@@ -7,7 +7,7 @@
   font-size: initial;
   display: flex;
   flex-direction: column;
-  color-scheme: dark;
+  color-scheme: only dark;
 }
 
 footer,

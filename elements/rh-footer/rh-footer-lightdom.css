@@ -1,7 +1,7 @@
 :is(rh-footer, rh-footer-universal) {
   --rh-footer-section-side-gap: var(--rh-space-lg, 16px);
 
-  color-scheme: dark;
+  color-scheme: only dark;
 
   & a {
     color: var(--rh-color-interactive-primary-default);

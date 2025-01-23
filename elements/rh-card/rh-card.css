@@ -69,11 +69,11 @@
   }
 
   &:is(.palette-light, .palette-lighter, .palette-lightest) {
-    color-scheme: light;
+    color-scheme: only light;
   }
 
   &:is(.palette-dark, .palette-darker, .palette-darkest) {
-    color-scheme: dark;
+    color-scheme: only dark;
   }
 }
 

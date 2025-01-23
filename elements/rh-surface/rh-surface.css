@@ -6,13 +6,13 @@
 :host([color-palette^='dark']) {
   --context: dark;
 
-  color-scheme: dark;
+  color-scheme: only dark;
 }
 
 :host([color-palette^='light']) {
   --context: light;
 
-  color-scheme: light;
+  color-scheme: only light;
 }
 
 :host([color-palette='lightest']) {

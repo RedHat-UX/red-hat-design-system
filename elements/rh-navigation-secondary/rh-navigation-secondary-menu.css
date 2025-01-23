@@ -1,6 +1,6 @@
 :host {
   display: block;
-  color-scheme: light;
+  color-scheme: only light;
 }
 
 #container {

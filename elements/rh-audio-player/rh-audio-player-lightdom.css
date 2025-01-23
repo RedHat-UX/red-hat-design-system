@@ -10,11 +10,11 @@ rh-audio-player {
   color: var(--rh-audio-player-text-color, var(--rh-color-text-primary));
 
   &[color-palette^='light'] {
-    color-scheme: light;
+    color-scheme: only light;
   }
 
   &[color-palette^='dark'] {
-    color-scheme: dark;
+    color-scheme: only dark;
 
     & > * {
       background-color:

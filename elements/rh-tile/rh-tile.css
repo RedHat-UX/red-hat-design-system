@@ -62,11 +62,11 @@
   color: var(--rh-tile-text-color, var(--rh-color-text-primary));
 
   &:is(.palette-lightest, .palette-lighter, .palette-light) {
-    color-scheme: light;
+    color-scheme: only light;
   }
 
   &:is(.palette-darkest, .palette-darker, .palette-dark) {
-    color-scheme: dark;
+    color-scheme: only dark;
   }
 
   &.palette-lightest { --rh-color-surface: var(--rh-color-surface-lightest, #ffffff); }
