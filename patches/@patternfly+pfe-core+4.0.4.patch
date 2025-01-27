@@ -311,7 +311,7 @@ index 7162155..a9d2362 100644
 +        return [];
 +    }
 +    else if (__classPrivateFieldGet(this, _SlotController_nodes, "f").has(name)) {
-+        return __classPrivateFieldGet(this, _SlotController_nodes, "f").get(name).slot?.assignedElements?.();
++        return __classPrivateFieldGet(this, _SlotController_nodes, "f").get(name).slot?.assignedElements?.() ?? [];
 +    }
 +    else {
 +        const children = Array.from(this.host.children);
