@@ -98,10 +98,12 @@
 
   & #icon {
     --_size: var(--rh-size-icon-05, 48px);
+    margin-block-end: var(--rh-space-2xl, 32px);
 
     &:is(.compact, .checkable) {
       --_size: var(--rh-size-icon-03, 32px);
       --_padding: var(--rh-space-lg, 16px);
+      margin-block-end: initial;
     }
 
     & > *,
