@@ -2,10 +2,12 @@
 title: Fundamentals
 tags:
   - accessibility
-order: 75
-importElements:
-  - rh-blockquote
+order: 1
 ---
+
+<script type="module" data-helmet>
+  import '@rhds/elements/rh-blockquote/rh-blockquote.js';
+</script>
 
 <style>
   rh-blockquote {

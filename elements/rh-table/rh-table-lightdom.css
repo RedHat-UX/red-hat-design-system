@@ -57,7 +57,7 @@ rh-table {
   }
 
   & caption {
-    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
     font-size: var(--rh-font-size-body-text-lg, 1.125rem);
     font-weight: var(--rh-font-weight-heading-bold, 700);
     line-height: var(--rh-line-height-body-text, 1.5);

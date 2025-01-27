@@ -71,7 +71,7 @@ accommodate mixed-language content. For more technical details, go to the
 <rh-table>
 
 | Language | Font family                  |
-|----------|------------------------------|
+| -------- | ---------------------------- |
 | Chinese  | Noto Sans Simplified Chinese |
 | Japanese | Noto Sans Japanese           |
 | Korean   | Noto Sans Korean             |
