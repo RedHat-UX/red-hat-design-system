@@ -5,9 +5,11 @@ permalink: /accessibility/accessibility-tools/index.html
 tags:
   - accessibility
 order: 10
-importElements:
-  - rh-blockquote
 ---
+
+<script type="module" data-helmet>
+  import '@rhds/elements/rh-blockquote/rh-blockquote.js';
+</script>
 
 ## Automated Accessibility Tools
 

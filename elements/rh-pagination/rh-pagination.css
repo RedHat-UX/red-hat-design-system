@@ -110,7 +110,7 @@ svg {
   border: var(--rh-border-width-sm, 1px) solid transparent;
   color: var(--rh-pagination-stepper-color, var(--rh-color-gray-50, #707070));
   display: grid;
-  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-heading-xs, 1.25rem);
   block-size: var(--_stepper-size);
   place-content: center;

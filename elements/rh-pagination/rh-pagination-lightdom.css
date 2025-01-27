@@ -20,7 +20,7 @@ rh-pagination li > a {
   border: var(--rh-border-width-sm, 1px) solid transparent;
   color: var(--_list-a-text-color);
   display: grid;
-  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-body-text-xl, 1.25rem);
   block-size: var(--_link-size);
   place-content: center;
