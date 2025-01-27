@@ -314,7 +314,7 @@
     "@patternfly/pfe-tools": "^4.0.1",
     "@playwright/test": "^1.48.0",
     "@rollup/plugin-node-resolve": "^15.3.0",
-    "@stylistic/eslint-plugin-js": "^2.9.0",
+    "@stylistic/eslint-plugin-js": "^3.0.0",
     "@stylistic/stylelint-config": "^2.0.0",
     "@stylistic/stylelint-plugin": "^3.1.1",
     "@types/js-yaml": "^4.0.9",
