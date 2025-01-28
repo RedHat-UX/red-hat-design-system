@@ -1,5 +1,20 @@
 # @rhds/elements
 
+## 2.1.2
+
+### Patch Changes
+
+- 8dd9a5f: `<rh-tooltip>`: make tooltip content available to assistive technology
+- a37b594: `<rh-cta>`: workaround for Safari which sometimes double-renders icons
+- 64dab19: `<rh-code-block>`: enables copy and word wrap action for prerendered content
+- 33535ef: `<rh-accordion>`: restore missing hover colors
+- af13796: `<rh-accordion>`: corrected accordion header text font weight
+- 518a2dc: `<rh-cta>`: improved accessibility by correcting active and focus styles
+- 8d51411: Use non-localized font stacks (see [`@rhds/tokens` v2.1.1 release notes](https://github.com/RedHat-UX/red-hat-design-tokens/releases/tag/v2.1.1))
+- a37b594: `<rh-icon>`: workaround for Safari which sometimes double-renders icons
+- 8d51411: Bump version of `@rhds/tokens`
+- eb9cb2f: `<rh-button>`: improved accessibility by allowing focus when disabled'
+
 ## 2.1.1
 
 ### Patch Changes
