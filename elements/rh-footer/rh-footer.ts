@@ -1,5 +1,4 @@
 import { LitElement, html } from 'lit';
-import { property } from 'lit/decorators/property.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
 
@@ -14,7 +13,7 @@ import './rh-footer-links.js';
 import './rh-footer-block.js';
 
 import style from './rh-footer.css';
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 
 function isHeaderTagName(tagName: string) {
@@ -79,8 +78,8 @@ export class RhFooter extends LitElement {
 
   #compact = false;
 
-  @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'darker';
+  // @colorContextProvider()
+  // @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'darker';
 
   /**
    * ScreenSizeController effects callback to set #compact is true when viewport

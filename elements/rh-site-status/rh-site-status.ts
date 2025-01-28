@@ -4,8 +4,6 @@ import { classMap } from 'lit/directives/class-map.js';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-
 import '@rhds/elements/rh-icon/rh-icon.js';
 import '@rhds/elements/rh-spinner/rh-spinner.js';
 
@@ -138,10 +136,6 @@ export class RhSiteStatus extends LitElement {
     },
   };
 
-  /**
-   * Sets color theme based on parent context
-   */
-  @colorContextConsumer() private on?: ColorTheme;
 
   #status: Status | null = null;
 
@@ -187,11 +181,10 @@ export class RhSiteStatus extends LitElement {
   }
 
   protected override render() {
-    const { on = 'light' } = this;
     const loading = this.#loading;
     const { icon, status } = this.#icon;
     return html`
-      <div id="container" class="${classMap({ on: true, [on]: true, loading })}">
+      <div id="container" class="${classMap({ loading })}">
         <a href="https://status.redhat.com/"
            aria-busy="${String(this.#loading) as 'true' | 'false'}"
            aria-live="polite">${this.#loading ? html`

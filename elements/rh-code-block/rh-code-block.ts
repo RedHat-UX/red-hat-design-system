@@ -8,7 +8,6 @@ import { ifDefined } from 'lit-html/directives/if-defined.js';
 
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 
-import { type ColorTheme, colorContextConsumer } from '../../lib/context/color/consumer.js';
 
 import style from './rh-code-block.css';
 
@@ -128,7 +127,6 @@ export class RhCodeBlock extends LitElement {
   /** When set, lines in the code snippet wrap */
   @property({ type: Boolean }) wrap = false;
 
-  @colorContextConsumer() private on?: ColorTheme;
 
   #slots = new SlotController(
     this,
@@ -159,14 +157,13 @@ export class RhCodeBlock extends LitElement {
   }
 
   render() {
-    const { on = '', fullHeight, wrap, resizable, compact } = this;
+    const { fullHeight, wrap, resizable, compact } = this;
     const expandable = this.#lineHeights.length > 5;
     const truncated = expandable && !fullHeight;
     const actions = !!this.actions.length;
     return html`
       <div id="container"
-           class="${classMap({ on: true, [on]: !!on,
-                               actions,
+           class="${classMap({ actions,
                                compact,
                                expandable,
                                fullHeight,

@@ -9,8 +9,6 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import { DirController } from '../../lib/DirController.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-
 import type { IconNameFor, IconSetName } from '@rhds/icons';
 
 import style from './rh-cta.css';
@@ -112,8 +110,6 @@ export class RhCta extends LitElement {
   /** Icon set */
   @property({ attribute: 'icon-set' }) iconSet: IconSetName = 'ui';
 
-  /** Sets color theme based on parent context */
-  @colorContextConsumer() @state() private on?: ColorTheme;
 
   protected override async getUpdateComplete(): Promise<boolean> {
     if (this.icon || !this.variant) {
@@ -131,7 +127,7 @@ export class RhCta extends LitElement {
     const {
       download, href, referrerpolicy, rel, target,
       icon, iconSet,
-      on = 'light', variant,
+      variant,
     } = this;
     const rtl = this.#dir.dir === 'rtl';
     const isDefault = !variant;
@@ -152,7 +148,7 @@ export class RhCta extends LitElement {
     return html`
       <span id="container"
             part="container"
-            class=${classMap({ rtl, icon: !!icon, svg, on: true, [on]: true })}
+            class=${classMap({ rtl, icon: !!icon, svg })}
             @slotchange=${this.firstUpdated}>${iconContent}${linkContent}</span>`;
   }
 

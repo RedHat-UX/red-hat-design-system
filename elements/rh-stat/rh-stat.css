@@ -7,15 +7,13 @@ div {
   height: 100%;
   display: flex;
 
-  --_accent-color: var(--rh-color-text-brand-on-light, #ee0000);
+  --_accent-color:
+    light-dark(var(--rh-color-text-brand-on-light, #ee0000),
+      var(--rh-color-text-primary-on-dark, #ffffff));
 
   flex-direction: column;
   align-items: center;
   place-content: center space-around;
-}
-
-.dark {
-  --_accent-color: var(--rh-color-text-primary-on-dark, #ffffff);
 }
 
 span,
@@ -25,7 +23,9 @@ span,
 }
 
 .hasIcon #icon {
-  color: var(--rh-color-icon-secondary-on-light, #151515);
+  color:
+    light-dark(var(--rh-color-icon-secondary-on-light, #151515),
+      var(--rh-color-icon-secondary-on-dark, #ffffff));
 }
 
 .md {
@@ -53,10 +53,6 @@ span,
   color: currentcolor;
   fill: currentcolor;
   margin-bottom: 16px;
-}
-
-.dark #icon {
-  color: var(--rh-color-icon-secondary-on-dark, #ffffff);
 }
 
 #title {

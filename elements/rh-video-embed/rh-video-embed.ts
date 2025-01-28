@@ -8,8 +8,6 @@ import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller
 import '@rhds/elements/rh-button/rh-button.js';
 import '@rhds/elements/rh-surface/rh-surface.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-
 import styles from './rh-video-embed.css';
 
 export class ConsentClickEvent extends Event {
@@ -72,11 +70,6 @@ export class RhVideoEmbed extends LitElement {
    */
   @property({ type: Boolean }) consented = false;
 
-  /**
-   * Sets color theme based on parent context
-   */
-  @colorContextConsumer() private on?: ColorTheme;
-
   // TODO(bennyp): https://lit.dev/docs/data/context/#content
   @state() private _consentClicked = false;
   @state() private _playClicked = false;
@@ -126,7 +119,7 @@ export class RhVideoEmbed extends LitElement {
   }
 
   render() {
-    const { playClicked, on = '' } = this;
+    const { playClicked } = this;
     const hasCaption = this.#slots.hasSlotted('caption');
     const hasThumbnail = this.#slots.hasSlotted('thumbnail');
     const playLabel = this.iframeElement && this.iframeElement.title ? `${this.iframeElement.title} (play video)` : 'Play video';
@@ -134,7 +127,7 @@ export class RhVideoEmbed extends LitElement {
       'video' : 'thumbnail';
 
     return html`
-      <figure part="figure" class="${classMap({ on: true, [show]: !!show, [on]: !!on })}">
+      <figure part="figure" class="${classMap({ [show]: !!show })}">
         <div part="video" id="video">
           <div aria-hidden="${show !== 'thumbnail'}">
             <slot id="thumbnail" name="thumbnail"></slot>
