@@ -57,7 +57,7 @@
 }
 
 :host([layout='block']) :is(img, canvas, svg),
-:host(:not([plain])) #container.mobile :is(img, canvas, svg) {
+#container.mobile :is(img, canvas, svg) {
   margin-block-end: var(--rh-space-lg, 16px);
 }
 
