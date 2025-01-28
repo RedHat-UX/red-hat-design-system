@@ -112,7 +112,7 @@ export class RhCard extends LitElement {
     const computedPalette = this.#computedPalette;
     const computedContext = this.#computedContext;
     const on = computedContext ?? this.on ?? 'light';
-    const { variant = '' } = this;
+    const { variant = '', fullWidth = '' } = this;
     const hasHeader = this.#slots.hasSlotted('header');
     const hasFooter = this.#slots.hasSlotted('footer');
     const hasImage = this.#slots.hasSlotted('image');
@@ -137,6 +137,7 @@ export class RhCard extends LitElement {
             'on': true,
             [on]: true,
             [variant]: !!variant,
+            'full-width': fullWidth,
             [`palette-${computedPalette}`]: !!computedPalette,
             'palette': !!this.colorPalette,
             'has-body': hasBody,
