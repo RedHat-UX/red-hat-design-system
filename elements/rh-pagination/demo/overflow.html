@@ -1,12 +1,14 @@
-<rh-pagination>
-  <ol>
-    <li><a href="#">1</a></li>
-    <li><a href="#2">2</a></li>
-    <li><a href="#3">3</a></li>
-    <li><a href="#4">4</a></li>
-    <li><a href="#5">5</a></li>
-  </ol>
-</rh-pagination>
+<rh-surface color-palette="lightest">
+  <rh-pagination>
+    <ol>
+      <li><a href="#">1</a></li>
+      <li><a href="#2">2</a></li>
+      <li><a href="#3">3</a></li>
+      <li><a href="#4">4</a></li>
+      <li><a href="#5">5</a></li>
+    </ol>
+  </rh-pagination>
+</rh-surface>
 
 <p>Paginators with 5 or fewer pages should not overflow, meaning all links should be visible.
   Once a paginator has more than 5 pages, then it must overflow, meaning some links will be hidden.
@@ -43,6 +45,7 @@
 
 <script type="module">
   import '@rhds/elements/rh-button/rh-button.js';
+  import '@rhds/elements/rh-surface/rh-surface.js';
   import '@rhds/elements/rh-pagination/rh-pagination.js';
 
   const $ = s => document.querySelector(s);
