@@ -4,20 +4,22 @@ title: Overview
 order: 00
 tags:
   - getstarted
-importElements:
-  - rh-tile
 ---
 
 <link data-helmet rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
 
+<script type="module" data-helmet>
+  import '@rhds/elements/rh-tile/rh-tile.js';
+</script>
+
 <style data-helmet>
   #get-started-nav {
-    margin-block-start: var(--rh-space-2xl, 32px);
+    margin-block-start: var(--rh-space-2xl);
   }
 
   #get-started-nav figcaption {
-    font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
-    font-size: var(--rh-font-size-heading-sm, 1.5rem);
+    font-family: var(--rh-font-family-heading);
+    font-size: var(--rh-font-size-heading-sm);
   }
 </style>
 
