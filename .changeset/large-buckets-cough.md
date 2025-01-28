@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-`<rh-back-to-top>`: make sure element shows up in each back to top demo
+`<rh-back-to-top>`: remove user-facing errors and warnings from missing attributes/values from the console
