@@ -16,11 +16,22 @@
   padding: var(--rh-space-lg, 16px);
   text-align: center;
   container: announcement / inline-size;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
 }
 
 /* dark theme */
 #container.dark {
   background-color: var(--rh-color-surface-dark-alt, #292929);
+}
+
+#row {
+  grid-column: 2;
+}
+
+#header-actions {
+  grid-column: 3;
+  justify-self: end;
 }
 
 #body {
