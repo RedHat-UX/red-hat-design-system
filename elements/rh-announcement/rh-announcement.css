@@ -12,7 +12,7 @@
 #container {
   background-color: var(--rh-color-surface-lightest, #ffffff); /* Default (light) background */
   color: var(--rh-color-text-primary); /* Default (light) color */
-  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
   inline-size: 100%;
   line-height: var(--rh-line-height-body-text, 1.5);
   padding: var(--rh-space-lg, 16px);
