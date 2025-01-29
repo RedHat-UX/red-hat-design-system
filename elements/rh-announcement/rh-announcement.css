@@ -10,14 +10,14 @@
 #container {
   background-color: var(--rh-color-surface-lightest, #ffffff); /* Default (light) background */
   color: var(--rh-color-text-primary); /* Default (light) color */
+  container: announcement / inline-size;
+  display: grid;
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+  grid-template-columns: 1fr auto 1fr;
   inline-size: 100%;
   line-height: var(--rh-line-height-body-text, 1.5);
   padding: var(--rh-space-lg, 16px);
   text-align: center;
-  container: announcement / inline-size;
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
 }
 
 /* dark theme */
