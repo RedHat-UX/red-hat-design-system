@@ -1,6 +1,4 @@
 :host {
-  --_background-color: var(--rh-color-white, #ffffff);
-
   display: flex;
   position: relative;
 }
