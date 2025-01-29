@@ -8,8 +8,8 @@
 }
 
 #container {
-  background-color: var(--rh-color-surface-lightest, #ffffff); /* Default (light) background */
-  color: var(--rh-color-text-primary); /* Default (light) color */
+  background-color: var(--rh-color-surface);
+  color: var(--rh-color-text-primary);
   container: announcement / inline-size;
   display: grid;
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
@@ -20,7 +20,6 @@
   text-align: center;
 }
 
-/* dark theme */
 #container.dark {
   background-color: var(--rh-color-surface-dark-alt, #292929);
 }
