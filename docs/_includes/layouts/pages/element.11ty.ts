@@ -6,7 +6,8 @@ import { tokens } from '@rhds/tokens/meta.js';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { readFile } from 'node:fs/promises';
-import { copyCell, dedent, getTokenHref } from '#11ty-plugins/tokensHelpers.js';
+import { capitalize, copyCell, dedent, getTokenHref } from '#11ty-plugins/tokensHelpers.js';
+import { getPfeConfig } from '@patternfly/pfe-tools/config.js';
 import { Generator } from '@jspm/generator';
 import { AssetCache } from '@11ty/eleventy-fetch';
 import { Renderer } from '#eleventy.config';
@@ -15,6 +16,7 @@ import type { ImportMap } from '#11ty-plugins/importMap.js';
 type FileEntry = [string, FileOptions & { inline: string }];
 
 const html = String.raw; // for editor highlighting
+const pfeconfig = getPfeConfig();
 const { version: packageVersion } =
   JSON.parse(await readFile(
     fileURLToPath(import.meta.resolve('@rhds/elements')).replace('elements.js', 'package.json'),
@@ -52,23 +54,17 @@ export default class ElementsPage extends Renderer<Context> {
       layout: 'layouts/pages/has-toc.njk',
       permalink: ({ doc }: Context) => doc.permalink,
       eleventyComputed: {
-        title: ({ doc }: Context) => doc.pageTitle,
+        title: ({ doc }: Context) => `${doc.pageTitle} | ${pfeconfig.aliases[doc.tagName] ?? capitalize(doc.tagName.replace('rh-', '').replaceAll('-', ' '))}`,
         tagName: ({ doc }: Context) => doc.tagName,
       },
     };
   }
 
   async render(ctx: Context) {
-    const { doc } = ctx;
-    const {
-      fileExists,
-      filePath,
-      isCodePage,
-      isDemoPage,
-      isOverviewPage,
-      tagName,
-      planned,
-    } = doc;
+    const { fileExists, filePath, pageSlug, planned, tagName } = ctx.doc;
+    const isCodePage = pageSlug === 'code';
+    const isDemoPage = pageSlug === 'demos';
+    const isOverviewPage = pageSlug === 'overview';
     const content = fileExists ? await this.renderFile(filePath, ctx) : '';
     const stylesheets = [
       '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css',
