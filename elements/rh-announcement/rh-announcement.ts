@@ -21,25 +21,23 @@ export class AnnouncementCloseEvent extends Event {
 /**
  * Announcements are flexible surfaces used to group information in a full width banner layout, traditionally across the top of a page.
  * They are used to announce new features, promos, or news.
- * @summary     Arranges content and interactive elements in a layout
- * @slot        image
- *              If this slot is used, we expect an image tag with a width and height set.
- *              An icon, svg, or use of the icon component are also valid in this region.
- * @slot        Any content that is not designated for the header or footer slot, will go to this slot.
- * @slot        cta
- *              If this slot is used, we expect a rh-cta component.
- * @csspart     container
- *              The container for the banner. Contains the image, body, and cta.
- * @csspart     row
- *              The row for the banner. Contains the image and content divs.
- * @csspart     image
- *              The image for the banner. Contains the image slot.
- * @csspart     content
- *              The content container. Contains the body and cta slots.
- * @csspart     body
- *              The body for the banner. Contains the default slot.
- * @csspart     cta
- *              The cta for the banner. Contains the cta slot.
+ * @summary Arranges content and interactive elements in a layout
+ * @slot    image
+ *          If this slot is used, we expect an image tag with a width and height set.
+ *          An icon, svg, or use of the icon component are also valid in this region.
+ * @slot    Any content that is not designated for the header or footer slot, will go to this slot.
+ * @slot    cta
+ *          If this slot is used, we expect a rh-cta component.
+ * @csspart row
+ *          The row for the banner. Contains the image and content divs.
+ * @csspart image
+ *          The image for the banner. Contains the image slot.
+ * @csspart content
+ *          The content container. Contains the body and cta slots.
+ * @csspart body
+ *          The body for the banner. Contains the default slot.
+ * @csspart cta
+ *          The cta for the banner. Contains the cta slot.
  */
 
 @customElement('rh-announcement')
@@ -79,7 +77,6 @@ export class RhAnnouncement extends LitElement {
     const { dismissable, imgleft, on = '', colorPalette = 'lightest' } = this;
     return html`
       <div id="container"
-           part="container"
            class="${classMap({ on: true, [on]: !!on, [colorPalette]: true, dismissable, imgleft, empty: this.#slots.isEmpty(null) })}">
         <div id="row" part="row">
           <div id="image"

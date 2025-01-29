@@ -8,7 +8,7 @@
 }
 
 #container {
-  background-color: var(--rh-color-surface);
+  background: var(--rh-color-surface);
   color: var(--rh-color-text-primary);
   container: announcement / inline-size;
   display: grid;
