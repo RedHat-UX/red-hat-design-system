@@ -1,124 +1,68 @@
-diff --git a/node_modules/@patternfly/pfe-core/controllers/css-variable-controller.d.ts b/node_modules/@patternfly/pfe-core/controllers/css-variable-controller.d.ts
-index 7b93c6b..7c0d971 100644
---- a/node_modules/@patternfly/pfe-core/controllers/css-variable-controller.d.ts
-+++ b/node_modules/@patternfly/pfe-core/controllers/css-variable-controller.d.ts
-@@ -1,9 +1,9 @@
- import type { ReactiveElement, ReactiveController } from 'lit';
- export declare class CssVariableController implements ReactiveController {
-     host: ReactiveElement;
--    style: CSSStyleDeclaration;
-+    style?: CSSStyleDeclaration;
-     constructor(host: ReactiveElement);
-     private parseProperty;
-     getVariable(name: string): string | null;
--    hostConnected?(): void;
-+    hostConnected(): void;
- }
-diff --git a/node_modules/@patternfly/pfe-core/controllers/css-variable-controller.js b/node_modules/@patternfly/pfe-core/controllers/css-variable-controller.js
-index 0429f6c..62a9944 100644
---- a/node_modules/@patternfly/pfe-core/controllers/css-variable-controller.js
-+++ b/node_modules/@patternfly/pfe-core/controllers/css-variable-controller.js
-@@ -1,13 +1,19 @@
- export class CssVariableController {
-     constructor(host) {
-         this.host = host;
--        this.style = window.getComputedStyle(host);
-+        if (this.host.isConnected) {
-+            this.hostConnected();
-+        }
-     }
-     parseProperty(name) {
-         return name.substring(0, 2) !== '--' ? `--${name}` : name;
-     }
-     getVariable(name) {
--        return this.style.getPropertyValue(this.parseProperty(name)).trim() || null;
-+        return this.style?.getPropertyValue(this.parseProperty(name)).trim() || null;
-     }
-+    hostConnected() {
-+        this.style = window.getComputedStyle(this.host);
+diff --git a/node_modules/@patternfly/pfe-core/controllers/slot-controller-server.d.ts b/node_modules/@patternfly/pfe-core/controllers/slot-controller-server.d.ts
+new file mode 100644
+index 0000000..4723455
+--- /dev/null
++++ b/node_modules/@patternfly/pfe-core/controllers/slot-controller-server.d.ts
+@@ -0,0 +1,17 @@
++import type { ReactiveElement } from 'lit';
++import { type SlotControllerArgs, type SlotControllerPublicAPI } from './slot-controller.js';
++export declare class SlotController implements SlotControllerPublicAPI {
++    host: ReactiveElement;
++    static default: symbol;
++    /** @deprecated use `default` */
++    static anonymous: symbol;
++    static property: "ssrHintHasSlotted";
++    static attribute: "ssr-hint-has-slotted";
++    static anonymousAttribute: "ssr-hint-has-slotted-anonymous";
++    constructor(host: ReactiveElement, ..._: SlotControllerArgs);
++    hostConnected?(): Promise<void>;
++    private fromAttribute;
++    getSlotted<T extends Element = Element>(..._: string[]): T[];
++    hasSlotted(...names: (string | null)[]): boolean;
++    isEmpty(...names: (string | null)[]): boolean;
++}
+diff --git a/node_modules/@patternfly/pfe-core/controllers/slot-controller-server.js b/node_modules/@patternfly/pfe-core/controllers/slot-controller-server.js
+new file mode 100644
+index 0000000..5da25fa
+--- /dev/null
++++ b/node_modules/@patternfly/pfe-core/controllers/slot-controller-server.js
+@@ -0,0 +1,33 @@
++var _a;
++import {} from './slot-controller.js';
++export class SlotController {
++    constructor(host, ..._) {
++        this.host = host;
++        host.addController(this);
 +    }
-+    ;
- }
- //# sourceMappingURL=css-variable-controller.js.map
-\ No newline at end of file
-diff --git a/node_modules/@patternfly/pfe-core/controllers/css-variable-controller.js.map b/node_modules/@patternfly/pfe-core/controllers/css-variable-controller.js.map
-index 197e9a6..578d0fd 100644
---- a/node_modules/@patternfly/pfe-core/controllers/css-variable-controller.js.map
-+++ b/node_modules/@patternfly/pfe-core/controllers/css-variable-controller.js.map
-@@ -1 +1 @@
--{"version":3,"file":"css-variable-controller.js","sourceRoot":"","sources":["css-variable-controller.ts"],"names":[],"mappings":"AAEA,MAAM,OAAO,qBAAqB;IAGhC,YAAmB,IAAqB;QAArB,SAAI,GAAJ,IAAI,CAAiB;QACtC,IAAI,CAAC,KAAK,GAAG,MAAM,CAAC,gBAAgB,CAAC,IAAI,CAAC,CAAC;IAC7C,CAAC;IAEO,aAAa,CAAC,IAAY;QAChC,OAAO,IAAI,CAAC,SAAS,CAAC,CAAC,EAAE,CAAC,CAAC,KAAK,IAAI,CAAC,CAAC,CAAC,KAAK,IAAI,EAAE,CAAC,CAAC,CAAC,IAAI,CAAC;IAC5D,CAAC;IAED,WAAW,CAAC,IAAY;QACtB,OAAO,IAAI,CAAC,KAAK,CAAC,gBAAgB,CAAC,IAAI,CAAC,aAAa,CAAC,IAAI,CAAC,CAAC,CAAC,IAAI,EAAE,IAAI,IAAI,CAAC;IAC9E,CAAC;CAGF","sourcesContent":["import type { ReactiveElement, ReactiveController } from 'lit';\n\nexport class CssVariableController implements ReactiveController {\n  style: CSSStyleDeclaration;\n\n  constructor(public host: ReactiveElement) {\n    this.style = window.getComputedStyle(host);\n  }\n\n  private parseProperty(name: string) {\n    return name.substring(0, 2) !== '--' ? `--${name}` : name;\n  }\n\n  getVariable(name: string): string | null {\n    return this.style.getPropertyValue(this.parseProperty(name)).trim() || null;\n  }\n\n  hostConnected?(): void;\n}\n"]}
-\ No newline at end of file
-+{"version":3,"file":"css-variable-controller.js","sourceRoot":"","sources":["css-variable-controller.ts"],"names":[],"mappings":"AAEA,MAAM,OAAO,qBAAqB;IAGhC,YAAmB,IAAqB;QAArB,SAAI,GAAJ,IAAI,CAAiB;QACtC,IAAI,IAAI,CAAC,IAAI,CAAC,WAAW,EAAE,CAAC;YAC1B,IAAI,CAAC,aAAa,EAAE,CAAC;QACvB,CAAC;IACH,CAAC;IAEO,aAAa,CAAC,IAAY;QAChC,OAAO,IAAI,CAAC,SAAS,CAAC,CAAC,EAAE,CAAC,CAAC,KAAK,IAAI,CAAC,CAAC,CAAC,KAAK,IAAI,EAAE,CAAC,CAAC,CAAC,IAAI,CAAC;IAC5D,CAAC;IAED,WAAW,CAAC,IAAY;QACtB,OAAO,IAAI,CAAC,KAAK,EAAE,gBAAgB,CAAC,IAAI,CAAC,aAAa,CAAC,IAAI,CAAC,CAAC,CAAC,IAAI,EAAE,IAAI,IAAI,CAAC;IAC/E,CAAC;IAED,aAAa;QACX,IAAI,CAAC,KAAK,GAAG,MAAM,CAAC,gBAAgB,CAAC,IAAI,CAAC,IAAI,CAAC,CAAC;IAClD,CAAC;IAAA,CAAC;CACH","sourcesContent":["import type { ReactiveElement, ReactiveController } from 'lit';\n\nexport class CssVariableController implements ReactiveController {\n  style?: CSSStyleDeclaration;\n\n  constructor(public host: ReactiveElement) {\n    if (this.host.isConnected) {\n      this.hostConnected();\n    }\n  }\n\n  private parseProperty(name: string) {\n    return name.substring(0, 2) !== '--' ? `--${name}` : name;\n  }\n\n  getVariable(name: string): string | null {\n    return this.style?.getPropertyValue(this.parseProperty(name)).trim() || null;\n  }\n\n  hostConnected(): void {\n    this.style = window.getComputedStyle(this.host);\n  };\n}\n"]}
-\ No newline at end of file
-diff --git a/node_modules/@patternfly/pfe-core/controllers/light-dom-controller.d.ts b/node_modules/@patternfly/pfe-core/controllers/light-dom-controller.d.ts
-index d31b514..4bf8ba4 100644
---- a/node_modules/@patternfly/pfe-core/controllers/light-dom-controller.d.ts
-+++ b/node_modules/@patternfly/pfe-core/controllers/light-dom-controller.d.ts
-@@ -1,4 +1,4 @@
--import type { ReactiveController, ReactiveElement } from 'lit';
-+import { type ReactiveController, type ReactiveElement } from 'lit';
- export interface Options {
-     observe?: boolean | MutationObserverInit;
-     emptyWarning?: string;
-diff --git a/node_modules/@patternfly/pfe-core/controllers/light-dom-controller.js b/node_modules/@patternfly/pfe-core/controllers/light-dom-controller.js
-index e256eb6..3c82ece 100644
---- a/node_modules/@patternfly/pfe-core/controllers/light-dom-controller.js
-+++ b/node_modules/@patternfly/pfe-core/controllers/light-dom-controller.js
-@@ -1,3 +1,4 @@
-+import { isServer } from 'lit';
- import { Logger } from './logger.js';
- export class LightDOMController {
-     constructor(host, initializer, options) {
-@@ -31,8 +32,13 @@ export class LightDOMController {
-      * Returns a boolean statement of whether or not this component contains any light DOM.
-      */
-     hasLightDOM() {
--        return !!(this.host.children.length > 0
--            || (this.host.textContent ?? '').trim().length > 0);
-+        if (isServer) {
-+            return false;
-+        }
-+        else {
-+            return !!(this.host.children.length > 0
-+                || (this.host.textContent ?? '').trim().length > 0);
-+        }
-     }
- }
- //# sourceMappingURL=light-dom-controller.js.map
-\ No newline at end of file
-diff --git a/node_modules/@patternfly/pfe-core/controllers/light-dom-controller.js.map b/node_modules/@patternfly/pfe-core/controllers/light-dom-controller.js.map
-index 02f424a..b6d1bf9 100644
---- a/node_modules/@patternfly/pfe-core/controllers/light-dom-controller.js.map
-+++ b/node_modules/@patternfly/pfe-core/controllers/light-dom-controller.js.map
-@@ -1 +1 @@
--{"version":3,"file":"light-dom-controller.js","sourceRoot":"","sources":["light-dom-controller.ts"],"names":[],"mappings":"AAEA,OAAO,EAAE,MAAM,EAAE,MAAM,aAAa,CAAC;AAOrC,MAAM,OAAO,kBAAkB;IAK7B,YACU,IAAqB,EAC7B,WAAuB,EACf,OAA6B;QAF7B,SAAI,GAAJ,IAAI,CAAiB;QAErB,YAAO,GAAP,OAAO,CAAsB;QAErC,IAAI,CAAC,WAAW,GAAG,WAAW,CAAC,IAAI,CAAC,IAAI,CAAC,CAAC;QAC1C,IAAI,CAAC,EAAE,GAAG,IAAI,gBAAgB,CAAC,IAAI,CAAC,WAAW,CAAC,CAAC;QACjD,IAAI,CAAC,MAAM,GAAG,IAAI,MAAM,CAAC,IAAI,CAAC,IAAI,CAAC,CAAC;QACpC,IAAI,CAAC,aAAa,CAAC,IAAI,CAAC,CAAC;IAC3B,CAAC;IAED,aAAa;QACX,IAAI,IAAI,CAAC,WAAW,EAAE,EAAE,CAAC;YACvB,IAAI,CAAC,WAAW,EAAE,CAAC;QACrB,CAAC;aAAM,IAAI,IAAI,CAAC,OAAO,EAAE,YAAY,EAAE,CAAC;YACtC,IAAI,CAAC,MAAM,CAAC,IAAI,CAAC,IAAI,CAAC,OAAO,EAAE,YAAY,CAAC,CAAC;QAC/C,CAAC;QAED,IAAI,CAAC,YAAY,EAAE,CAAC;IACtB,CAAC;IAED,gBAAgB;QACd,IAAI,CAAC,EAAE,CAAC,UAAU,EAAE,CAAC;IACvB,CAAC;IAEO,YAAY;QAClB,IAAI,IAAI,CAAC,OAAO,EAAE,OAAO,IAAI,IAAI,EAAE,CAAC;YAClC,8CAA8C;YAC9C,IAAI,CAAC,EAAE,CAAC,OAAO,CACb,IAAI,CAAC,IAAI,EACP,OAAO,IAAI,CAAC,OAAO,EAAE,OAAO,KAAK,QAAQ,CAAC,CAAC,CAAC,EAAE,SAAS,EAAE,IAAI,EAAE;gBACjE,CAAC,CAAC,IAAI,CAAC,OAAO,EAAE,OAA+B,CAChD,CAAC;QACJ,CAAC;IACH,CAAC;IAED;;OAEG;IACH,WAAW;QACT,OAAO,CAAC,CAAC,CACP,IAAI,CAAC,IAAI,CAAC,QAAQ,CAAC,MAAM,GAAG,CAAC;eAC1B,CAAC,IAAI,CAAC,IAAI,CAAC,WAAW,IAAI,EAAE,CAAC,CAAC,IAAI,EAAE,CAAC,MAAM,GAAG,CAAC,CACnD,CAAC;IACJ,CAAC;CACF","sourcesContent":["import type { ReactiveController, ReactiveElement } from 'lit';\n\nimport { Logger } from './logger.js';\n\nexport interface Options {\n  observe?: boolean | MutationObserverInit;\n  emptyWarning?: string;\n}\n\nexport class LightDOMController implements ReactiveController {\n  private mo: MutationObserver;\n  private logger: Logger;\n  private initializer: () => void;\n\n  constructor(\n    private host: ReactiveElement,\n    initializer: () => void,\n    private options?: Options | undefined,\n  ) {\n    this.initializer = initializer.bind(host);\n    this.mo = new MutationObserver(this.initializer);\n    this.logger = new Logger(this.host);\n    host.addController(this);\n  }\n\n  hostConnected(): void {\n    if (this.hasLightDOM()) {\n      this.initializer();\n    } else if (this.options?.emptyWarning) {\n      this.logger.warn(this.options?.emptyWarning);\n    }\n\n    this.initObserver();\n  }\n\n  hostDisconnected(): void {\n    this.mo.disconnect();\n  }\n\n  private initObserver() {\n    if (this.options?.observe ?? true) {\n      // Use the provided options, or their defaults\n      this.mo.observe(\n        this.host,\n          typeof this.options?.observe !== 'object' ? { childList: true }\n        : this.options?.observe as MutationObserverInit\n      );\n    }\n  }\n\n  /**\n   * Returns a boolean statement of whether or not this component contains any light DOM.\n   */\n  hasLightDOM(): boolean {\n    return !!(\n      this.host.children.length > 0\n      || (this.host.textContent ?? '').trim().length > 0\n    );\n  }\n}\n"]}
-\ No newline at end of file
-+{"version":3,"file":"light-dom-controller.js","sourceRoot":"","sources":["light-dom-controller.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,QAAQ,EAAiD,MAAM,KAAK,CAAC;AAE9E,OAAO,EAAE,MAAM,EAAE,MAAM,aAAa,CAAC;AAOrC,MAAM,OAAO,kBAAkB;IAK7B,YACU,IAAqB,EAC7B,WAAuB,EACf,OAA6B;QAF7B,SAAI,GAAJ,IAAI,CAAiB;QAErB,YAAO,GAAP,OAAO,CAAsB;QAErC,IAAI,CAAC,WAAW,GAAG,WAAW,CAAC,IAAI,CAAC,IAAI,CAAC,CAAC;QAC1C,IAAI,CAAC,EAAE,GAAG,IAAI,gBAAgB,CAAC,IAAI,CAAC,WAAW,CAAC,CAAC;QACjD,IAAI,CAAC,MAAM,GAAG,IAAI,MAAM,CAAC,IAAI,CAAC,IAAI,CAAC,CAAC;QACpC,IAAI,CAAC,aAAa,CAAC,IAAI,CAAC,CAAC;IAC3B,CAAC;IAED,aAAa;QACX,IAAI,IAAI,CAAC,WAAW,EAAE,EAAE,CAAC;YACvB,IAAI,CAAC,WAAW,EAAE,CAAC;QACrB,CAAC;aAAM,IAAI,IAAI,CAAC,OAAO,EAAE,YAAY,EAAE,CAAC;YACtC,IAAI,CAAC,MAAM,CAAC,IAAI,CAAC,IAAI,CAAC,OAAO,EAAE,YAAY,CAAC,CAAC;QAC/C,CAAC;QAED,IAAI,CAAC,YAAY,EAAE,CAAC;IACtB,CAAC;IAED,gBAAgB;QACd,IAAI,CAAC,EAAE,CAAC,UAAU,EAAE,CAAC;IACvB,CAAC;IAEO,YAAY;QAClB,IAAI,IAAI,CAAC,OAAO,EAAE,OAAO,IAAI,IAAI,EAAE,CAAC;YAClC,8CAA8C;YAC9C,IAAI,CAAC,EAAE,CAAC,OAAO,CACb,IAAI,CAAC,IAAI,EACP,OAAO,IAAI,CAAC,OAAO,EAAE,OAAO,KAAK,QAAQ,CAAC,CAAC,CAAC,EAAE,SAAS,EAAE,IAAI,EAAE;gBACjE,CAAC,CAAC,IAAI,CAAC,OAAO,EAAE,OAA+B,CAChD,CAAC;QACJ,CAAC;IACH,CAAC;IAED;;OAEG;IACH,WAAW;QACT,IAAI,QAAQ,EAAE,CAAC;YACb,OAAO,KAAK,CAAC;QACf,CAAC;aAAM,CAAC;YACN,OAAO,CAAC,CAAC,CACP,IAAI,CAAC,IAAI,CAAC,QAAQ,CAAC,MAAM,GAAG,CAAC;mBAC1B,CAAC,IAAI,CAAC,IAAI,CAAC,WAAW,IAAI,EAAE,CAAC,CAAC,IAAI,EAAE,CAAC,MAAM,GAAG,CAAC,CACnD,CAAC;QACJ,CAAC;IACH,CAAC;CACF","sourcesContent":["import { isServer, type ReactiveController, type ReactiveElement } from 'lit';\n\nimport { Logger } from './logger.js';\n\nexport interface Options {\n  observe?: boolean | MutationObserverInit;\n  emptyWarning?: string;\n}\n\nexport class LightDOMController implements ReactiveController {\n  private mo: MutationObserver;\n  private logger: Logger;\n  private initializer: () => void;\n\n  constructor(\n    private host: ReactiveElement,\n    initializer: () => void,\n    private options?: Options | undefined,\n  ) {\n    this.initializer = initializer.bind(host);\n    this.mo = new MutationObserver(this.initializer);\n    this.logger = new Logger(this.host);\n    host.addController(this);\n  }\n\n  hostConnected(): void {\n    if (this.hasLightDOM()) {\n      this.initializer();\n    } else if (this.options?.emptyWarning) {\n      this.logger.warn(this.options?.emptyWarning);\n    }\n\n    this.initObserver();\n  }\n\n  hostDisconnected(): void {\n    this.mo.disconnect();\n  }\n\n  private initObserver() {\n    if (this.options?.observe ?? true) {\n      // Use the provided options, or their defaults\n      this.mo.observe(\n        this.host,\n          typeof this.options?.observe !== 'object' ? { childList: true }\n        : this.options?.observe as MutationObserverInit\n      );\n    }\n  }\n\n  /**\n   * Returns a boolean statement of whether or not this component contains any light DOM.\n   */\n  hasLightDOM(): boolean {\n    if (isServer) {\n      return false;\n    } else {\n      return !!(\n        this.host.children.length > 0\n        || (this.host.textContent ?? '').trim().length > 0\n      );\n    }\n  }\n}\n"]}
-\ No newline at end of file
-diff --git a/node_modules/@patternfly/pfe-core/controllers/scroll-spy-controller.js b/node_modules/@patternfly/pfe-core/controllers/scroll-spy-controller.js
-index fd5a7dc..fa8dae5 100644
---- a/node_modules/@patternfly/pfe-core/controllers/scroll-spy-controller.js
-+++ b/node_modules/@patternfly/pfe-core/controllers/scroll-spy-controller.js
-@@ -48,7 +48,7 @@ export class ScrollSpyController {
-         __classPrivateFieldSet(this, _ScrollSpyController_rootMargin, options.rootMargin, "f");
-         __classPrivateFieldSet(this, _ScrollSpyController_activeAttribute, options.activeAttribute ?? 'active', "f");
-         __classPrivateFieldSet(this, _ScrollSpyController_threshold, options.threshold ?? 0.85, "f");
--        __classPrivateFieldSet(this, _ScrollSpyController_getRootNode, () => options.rootNode ?? host.getRootNode(), "f");
-+        __classPrivateFieldSet(this, _ScrollSpyController_getRootNode, () => options.rootNode ?? host.getRootNode?.() ?? null, "f");
-         __classPrivateFieldSet(this, _ScrollSpyController_getHash, options?.getHash ?? ((el) => el.getAttribute('href')), "f");
-     }
-     hostConnected() {
-diff --git a/node_modules/@patternfly/pfe-core/controllers/scroll-spy-controller.js.map b/node_modules/@patternfly/pfe-core/controllers/scroll-spy-controller.js.map
-index b0e31b2..c4941a0 100644
---- a/node_modules/@patternfly/pfe-core/controllers/scroll-spy-controller.js.map
-+++ b/node_modules/@patternfly/pfe-core/controllers/scroll-spy-controller.js.map
-@@ -1 +1 @@
--{"version":3,"file":"scroll-spy-controller.js","sourceRoot":"","sources":["scroll-spy-controller.ts"],"names":[],"mappings":"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","sourcesContent":["import type { ReactiveController, ReactiveControllerHost } from 'lit';\n\nexport interface ScrollSpyControllerOptions extends IntersectionObserverInit {\n  /**\n   * Tag names of legal link children.\n   * Legal children must have an `href` property/attribute pair, like `<a>`.\n   */\n  tagNames: string[];\n\n  /**\n   * Attribute to set on the active link element.\n   * @default 'active'\n   */\n  activeAttribute?: string;\n\n  /**\n   * The root node to query content for\n   * @default the host's root node\n   */\n  rootNode?: Node;\n  /**\n   * function to call on link children to get their URL hash (i.e. id to scroll to)\n   * @default el => el.getAttribute('href');\n   */\n  getHash?: (el: Element) => string | null;\n}\n\nexport class ScrollSpyController implements ReactiveController {\n  #tagNames: string[];\n  #activeAttribute: string;\n\n  #io?: IntersectionObserver;\n\n  /** Which link's targets have already scrolled past? */\n  #passedLinks = new Set<Element>();\n\n  /** Ignore intersections? */\n  #force = false;\n\n  /** Has the intersection observer found an element? */\n  #intersected = false;\n\n  #root: ScrollSpyControllerOptions['root'];\n  #rootMargin?: string;\n  #threshold: number | number[];\n\n  #getRootNode: () => Node;\n  #getHash: (el: Element) => string | null;\n\n  get #linkChildren(): Element[] {\n    return Array.from(this.host.querySelectorAll(this.#tagNames.join(',')))\n        .filter(this.#getHash);\n  }\n\n  get root(): Element | Document | null | undefined {\n    return this.#root;\n  }\n\n  set root(v) {\n    this.#root = v;\n    this.#io?.disconnect();\n    this.#initIo();\n  }\n\n  get rootMargin(): string | undefined {\n    return this.#rootMargin;\n  }\n\n  set rootMargin(v) {\n    this.#rootMargin = v;\n    this.#io?.disconnect();\n    this.#initIo();\n  }\n\n  get threshold(): number | number[] {\n    return this.#threshold;\n  }\n\n  set threshold(v) {\n    this.#threshold = v;\n    this.#io?.disconnect();\n    this.#initIo();\n  }\n\n  constructor(\n    private host: ReactiveControllerHost & HTMLElement,\n    options: ScrollSpyControllerOptions,\n  ) {\n    host.addController(this);\n    this.#tagNames = options.tagNames;\n    this.#root = options.root;\n    this.#rootMargin = options.rootMargin;\n    this.#activeAttribute = options.activeAttribute ?? 'active';\n    this.#threshold = options.threshold ?? 0.85;\n    this.#getRootNode = () => options.rootNode ?? host.getRootNode();\n    this.#getHash = options?.getHash ?? ((el: Element) => el.getAttribute('href'));\n  }\n\n  hostConnected(): void {\n    this.#initIo();\n  }\n\n  #initIo() {\n    const rootNode = this.#getRootNode();\n    if (rootNode instanceof Document || rootNode instanceof ShadowRoot) {\n      const { rootMargin, threshold, root } = this;\n      this.#io = new IntersectionObserver(r => this.#onIo(r), { root, rootMargin, threshold });\n      this.#linkChildren\n          .map(x => this.#getHash(x))\n          .filter((x): x is string => !!x)\n          .map(x => rootNode.getElementById(x.replace('#', '')))\n          .filter((x): x is HTMLElement => !!x)\n          .forEach(target => this.#io?.observe(target));\n    }\n  }\n\n  #markPassed(link: Element, force: boolean) {\n    if (force) {\n      this.#passedLinks.add(link);\n    } else {\n      this.#passedLinks.delete(link);\n    }\n  }\n\n  #setActive(link?: EventTarget | null) {\n    for (const child of this.#linkChildren) {\n      child.toggleAttribute(this.#activeAttribute, child === link);\n    }\n  }\n\n  async #nextIntersection() {\n    this.#intersected = false;\n    // safeguard the loop\n    setTimeout(() => this.#intersected = false, 3000);\n    while (!this.#intersected) {\n      await new Promise(requestAnimationFrame);\n    }\n  }\n\n  async #onIo(entries: IntersectionObserverEntry[]) {\n    if (!this.#force) {\n      for (const { target, boundingClientRect, intersectionRect } of entries) {\n        const selector = `:is(${this.#tagNames.join(',')})[href=\"#${target.id}\"]`;\n        const link = this.host.querySelector(selector);\n        if (link) {\n          this.#markPassed(link, boundingClientRect.top < intersectionRect.top);\n        }\n      }\n      const link = [...this.#passedLinks];\n      const last = link.at(-1);\n      this.#setActive(last ?? this.#linkChildren.at(0));\n    }\n    this.#intersected = true;\n  }\n\n  /**\n   * Explicitly set the active item\n   * @param link usually an `<a>`\n   */\n  public async setActive(link: EventTarget | null): Promise<void> {\n    this.#force = true;\n    this.#setActive(link);\n    let sawActive = false;\n    for (const child of this.#linkChildren) {\n      this.#markPassed(child, !sawActive);\n      if (child === link) {\n        sawActive = true;\n      }\n    }\n    await this.#nextIntersection();\n    this.#force = false;\n  }\n}\n"]}
-\ No newline at end of file
-+{"version":3,"file":"scroll-spy-controller.js","sourceRoot":"","sources":["scroll-spy-controller.ts"],"names":[],"mappings":"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","sourcesContent":["import type { ReactiveController, ReactiveControllerHost } from 'lit';\n\nexport interface ScrollSpyControllerOptions extends IntersectionObserverInit {\n  /**\n   * Tag names of legal link children.\n   * Legal children must have an `href` property/attribute pair, like `<a>`.\n   */\n  tagNames: string[];\n\n  /**\n   * Attribute to set on the active link element.\n   * @default 'active'\n   */\n  activeAttribute?: string;\n\n  /**\n   * The root node to query content for\n   * @default the host's root node\n   */\n  rootNode?: Node;\n  /**\n   * function to call on link children to get their URL hash (i.e. id to scroll to)\n   * @default el => el.getAttribute('href');\n   */\n  getHash?: (el: Element) => string | null;\n}\n\nexport class ScrollSpyController implements ReactiveController {\n  #tagNames: string[];\n  #activeAttribute: string;\n\n  #io?: IntersectionObserver;\n\n  /** Which link's targets have already scrolled past? */\n  #passedLinks = new Set<Element>();\n\n  /** Ignore intersections? */\n  #force = false;\n\n  /** Has the intersection observer found an element? */\n  #intersected = false;\n\n  #root: ScrollSpyControllerOptions['root'];\n  #rootMargin?: string;\n  #threshold: number | number[];\n\n  #getRootNode: () => Node | null;\n  #getHash: (el: Element) => string | null;\n\n  get #linkChildren(): Element[] {\n    return Array.from(this.host.querySelectorAll(this.#tagNames.join(',')))\n        .filter(this.#getHash);\n  }\n\n  get root(): Element | Document | null | undefined {\n    return this.#root;\n  }\n\n  set root(v) {\n    this.#root = v;\n    this.#io?.disconnect();\n    this.#initIo();\n  }\n\n  get rootMargin(): string | undefined {\n    return this.#rootMargin;\n  }\n\n  set rootMargin(v) {\n    this.#rootMargin = v;\n    this.#io?.disconnect();\n    this.#initIo();\n  }\n\n  get threshold(): number | number[] {\n    return this.#threshold;\n  }\n\n  set threshold(v) {\n    this.#threshold = v;\n    this.#io?.disconnect();\n    this.#initIo();\n  }\n\n  constructor(\n    private host: ReactiveControllerHost & HTMLElement,\n    options: ScrollSpyControllerOptions,\n  ) {\n    host.addController(this);\n    this.#tagNames = options.tagNames;\n    this.#root = options.root;\n    this.#rootMargin = options.rootMargin;\n    this.#activeAttribute = options.activeAttribute ?? 'active';\n    this.#threshold = options.threshold ?? 0.85;\n    this.#getRootNode = () => options.rootNode ?? host.getRootNode?.() ?? null;\n    this.#getHash = options?.getHash ?? ((el: Element) => el.getAttribute('href'));\n  }\n\n  hostConnected(): void {\n    this.#initIo();\n  }\n\n  #initIo() {\n    const rootNode = this.#getRootNode();\n    if (rootNode instanceof Document || rootNode instanceof ShadowRoot) {\n      const { rootMargin, threshold, root } = this;\n      this.#io = new IntersectionObserver(r => this.#onIo(r), { root, rootMargin, threshold });\n      this.#linkChildren\n          .map(x => this.#getHash(x))\n          .filter((x): x is string => !!x)\n          .map(x => rootNode.getElementById(x.replace('#', '')))\n          .filter((x): x is HTMLElement => !!x)\n          .forEach(target => this.#io?.observe(target));\n    }\n  }\n\n  #markPassed(link: Element, force: boolean) {\n    if (force) {\n      this.#passedLinks.add(link);\n    } else {\n      this.#passedLinks.delete(link);\n    }\n  }\n\n  #setActive(link?: EventTarget | null) {\n    for (const child of this.#linkChildren) {\n      child.toggleAttribute(this.#activeAttribute, child === link);\n    }\n  }\n\n  async #nextIntersection() {\n    this.#intersected = false;\n    // safeguard the loop\n    setTimeout(() => this.#intersected = false, 3000);\n    while (!this.#intersected) {\n      await new Promise(requestAnimationFrame);\n    }\n  }\n\n  async #onIo(entries: IntersectionObserverEntry[]) {\n    if (!this.#force) {\n      for (const { target, boundingClientRect, intersectionRect } of entries) {\n        const selector = `:is(${this.#tagNames.join(',')})[href=\"#${target.id}\"]`;\n        const link = this.host.querySelector(selector);\n        if (link) {\n          this.#markPassed(link, boundingClientRect.top < intersectionRect.top);\n        }\n      }\n      const link = [...this.#passedLinks];\n      const last = link.at(-1);\n      this.#setActive(last ?? this.#linkChildren.at(0));\n    }\n    this.#intersected = true;\n  }\n\n  /**\n   * Explicitly set the active item\n   * @param link usually an `<a>`\n   */\n  public async setActive(link: EventTarget | null): Promise<void> {\n    this.#force = true;\n    this.#setActive(link);\n    let sawActive = false;\n    for (const child of this.#linkChildren) {\n      this.#markPassed(child, !sawActive);\n      if (child === link) {\n        sawActive = true;\n      }\n    }\n    await this.#nextIntersection();\n    this.#force = false;\n  }\n}\n"]}
++    fromAttribute(slots) {
++        return (slots ?? '')
++            .split(/[, ]/)
++            .map(x => x.trim());
++    }
++    getSlotted(..._) {
++        return [];
++    }
++    hasSlotted(...names) {
++        const attr = this.host.getAttribute(_a.attribute);
++        const anon = this.host.hasAttribute(_a.anonymousAttribute);
++        const hints = new Set(this.fromAttribute(attr));
++        return names.every(x => x === null ? anon : hints.has(x));
++    }
++    isEmpty(...names) {
++        return !this.hasSlotted(...names);
++    }
++}
++_a = SlotController;
++SlotController.default = Symbol('default slot');
++/** @deprecated use `default` */
++SlotController.anonymous = _a.default;
++SlotController.property = 'ssrHintHasSlotted';
++SlotController.attribute = 'ssr-hint-has-slotted';
++SlotController.anonymousAttribute = 'ssr-hint-has-slotted-anonymous';
++//# sourceMappingURL=slot-controller-server.js.map
 \ No newline at end of file
 diff --git a/node_modules/@patternfly/pfe-core/controllers/slot-controller.d.ts b/node_modules/@patternfly/pfe-core/controllers/slot-controller.d.ts
-index 3fae8f3..08c94e8 100644
+index 3fae8f3..784dd4e 100644
 --- a/node_modules/@patternfly/pfe-core/controllers/slot-controller.d.ts
 +++ b/node_modules/@patternfly/pfe-core/controllers/slot-controller.d.ts
 @@ -1,4 +1,4 @@
@@ -127,19 +71,71 @@ index 3fae8f3..08c94e8 100644
  interface AnonymousSlot {
      hasContent: boolean;
      elements: Element[];
-@@ -25,16 +25,18 @@ export interface SlotsConfig {
+@@ -9,8 +9,9 @@ interface NamedSlot extends AnonymousSlot {
+     initialized: true;
+ }
+ export type Slot = NamedSlot | AnonymousSlot;
++export type SlotName = string | null;
+ export interface SlotsConfig {
+-    slots: (string | null)[];
++    slots: SlotName[];
+     /**
+      * Object mapping new slot name keys to deprecated slot name values
+      * @example `pf-modal--header` is deprecated in favour of `header`
+@@ -25,16 +26,58 @@ export interface SlotsConfig {
       */
      deprecations?: Record<string, string>;
  }
-+export type SlotControllerArgs = [SlotsConfig] | (string | null)[];
- export declare class SlotController implements ReactiveController {
+-export declare class SlotController implements ReactiveController {
++export type SlotControllerArgs = [SlotsConfig] | SlotName[];
++export declare function isObjectSpread(config: SlotControllerArgs): config is [SlotsConfig];
++export declare class SlotControllerPublicAPI implements ReactiveController {
++    static default: symbol;
++    host: ReactiveElement;
++    constructor(host: ReactiveElement, ...args: SlotControllerArgs);
++    hostConnected?(): Promise<void>;
++    hostDisconnected?(): void;
++    hostUpdated?(): void;
++    /**
++     * Given a slot name or slot names, returns elements assigned to the requested slots as an array.
++     * If no value is provided, it returns all children not assigned to a slot (without a slot attribute).
++     * @param slotNames slots to query
++     * @example Get header-slotted elements
++     *          ```js
++     *          this.getSlotted('header')
++     *          ```
++     * @example Get header- and footer-slotted elements
++     *          ```js
++     *          this.getSlotted('header', 'footer')
++     *          ```
++     * @example Get default-slotted elements
++     *          ```js
++     *          this.getSlotted();
++     *          ```
++     */
++    getSlotted<T extends Element = Element>(...slotNames: string[]): T[];
++    /**
++     * Returns a boolean statement of whether or not any of those slots exists in the light DOM.
++     * @param names The slot names to check.
++     * @example this.hasSlotted('header');
++     */
++    hasSlotted(...names: (string | null | undefined)[]): boolean;
++    /**
++     * Whether or not all the requested slots are empty.
++     * @param  names The slot names to query.  If no value is provided, it returns the default slot.
++     * @example this.isEmpty('header', 'footer');
++     * @example this.isEmpty();
++     * @returns
++     */
++    isEmpty(...names: (string | null | undefined)[]): boolean;
++}
++export declare class SlotController implements SlotControllerPublicAPI {
      #private;
      host: ReactiveElement;
      static default: symbol;
      /** @deprecated use `default` */
      static anonymous: symbol;
 -    constructor(host: ReactiveElement, ...config: ([SlotsConfig] | (string | null)[]));
-+    private static singletons;
 +    constructor(host: ReactiveElement, ...args: SlotControllerArgs);
      hostConnected(): Promise<void>;
 -    hostUpdated(): void;
@@ -149,7 +145,7 @@ index 3fae8f3..08c94e8 100644
       * Given a slot name or slot names, returns elements assigned to the requested slots as an array.
       * If no value is provided, it returns all children not assigned to a slot (without a slot attribute).
 diff --git a/node_modules/@patternfly/pfe-core/controllers/slot-controller.js b/node_modules/@patternfly/pfe-core/controllers/slot-controller.js
-index 7162155..a9d2362 100644
+index 7162155..43c66c0 100644
 --- a/node_modules/@patternfly/pfe-core/controllers/slot-controller.js
 +++ b/node_modules/@patternfly/pfe-core/controllers/slot-controller.js
 @@ -1,7 +1,7 @@
@@ -159,11 +155,11 @@ index 7162155..a9d2362 100644
 -import { Logger } from './logger.js';
 -function isObjectConfigSpread(config) {
 +import { isServer } from 'lit';
-+function isObjectSpread(config) {
++export function isObjectSpread(config) {
      return config.length === 1 && typeof config[0] === 'object' && config[0] !== null;
  }
  /**
-@@ -12,80 +12,48 @@ function isObjectConfigSpread(config) {
+@@ -12,80 +12,42 @@ function isObjectConfigSpread(config) {
  const isSlot = (n) => (child) => n === SlotController.default ? !child.hasAttribute('slot')
      : child.getAttribute('slot') === n;
  export class SlotController {
@@ -212,20 +208,15 @@ index 7162155..a9d2362 100644
 -            const [{ slots, deprecations }] = config;
 -            __classPrivateFieldSet(this, _SlotController_slotNames, slots, "f");
 -            __classPrivateFieldSet(this, _SlotController_deprecations, deprecations ?? {}, "f");
-+        _SlotController_mo.set(this, new MutationObserver(__classPrivateFieldGet(this, _SlotController_instances, "m", _SlotController_initSlotMap).bind(this)));
-+        const singleton = _a.singletons.get(host);
-+        if (singleton) {
-+            __classPrivateFieldGet(singleton, _SlotController_instances, "m", _SlotController_initialize).call(singleton, ...args);
-+            return singleton;
-         }
+-        }
 -        else if (config.length >= 1) {
 -            __classPrivateFieldSet(this, _SlotController_slotNames, config, "f");
 -            __classPrivateFieldSet(this, _SlotController_deprecations, {}, "f");
 -        }
 -        else {
++        _SlotController_mo.set(this, new MutationObserver(__classPrivateFieldGet(this, _SlotController_instances, "m", _SlotController_initSlotMap).bind(this)));
 +        __classPrivateFieldGet(this, _SlotController_instances, "m", _SlotController_initialize).call(this, ...args);
 +        host.addController(this);
-+        _a.singletons.set(host, this);
 +        if (!__classPrivateFieldGet(this, _SlotController_slotNames, "f").length) {
              __classPrivateFieldSet(this, _SlotController_slotNames, [null], "f");
          }
@@ -267,7 +258,7 @@ index 7162155..a9d2362 100644
      /**
       * Given a slot name or slot names, returns elements assigned to the requested slots as an array.
       * If no value is provided, it returns all children not assigned to a slot (without a slot attribute).
-@@ -134,11 +102,52 @@ export class SlotController {
+@@ -134,9 +96,49 @@ export class SlotController {
          return !this.hasSlotted(...names);
      }
  }
@@ -311,7 +302,7 @@ index 7162155..a9d2362 100644
 +        return [];
 +    }
 +    else if (__classPrivateFieldGet(this, _SlotController_nodes, "f").has(name)) {
-+        return __classPrivateFieldGet(this, _SlotController_nodes, "f").get(name).slot?.assignedElements?.() ?? [];
++        return (__classPrivateFieldGet(this, _SlotController_nodes, "f").get(name).slot?.assignedElements?.() ?? []);
 +    }
 +    else {
 +        const children = Array.from(this.host.children);
@@ -320,240 +311,67 @@ index 7162155..a9d2362 100644
  };
  SlotController.default = Symbol('default slot');
  /** @deprecated use `default` */
- SlotController.anonymous = _a.default;
-+SlotController.singletons = new WeakMap();
- //# sourceMappingURL=slot-controller.js.map
-\ No newline at end of file
-diff --git a/node_modules/@patternfly/pfe-core/controllers/slot-controller.js.map b/node_modules/@patternfly/pfe-core/controllers/slot-controller.js.map
-index d6c09da..0e0aefd 100644
---- a/node_modules/@patternfly/pfe-core/controllers/slot-controller.js.map
-+++ b/node_modules/@patternfly/pfe-core/controllers/slot-controller.js.map
-@@ -1 +1 @@
--{"version":3,"file":"slot-controller.js","sourceRoot":"","sources":["slot-controller.ts"],"names":[],"mappings":"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","sourcesContent":["import type { ReactiveController, ReactiveElement } from 'lit';\n\nimport { Logger } from './logger.js';\n\ninterface AnonymousSlot {\n  hasContent: boolean;\n  elements: Element[];\n  slot: HTMLSlotElement | null;\n}\n\ninterface NamedSlot extends AnonymousSlot {\n  name: string;\n  initialized: true;\n}\n\nexport type Slot = NamedSlot | AnonymousSlot;\n\nexport interface SlotsConfig {\n  slots: (string | null)[];\n  /**\n   * Object mapping new slot name keys to deprecated slot name values\n   * @example `pf-modal--header` is deprecated in favour of `header`\n   * ```js\n   * new SlotController(this, {\n   *   slots: ['header'],\n   *   deprecations: {\n   *     'header': 'pf-modal--header'\n   *   }\n   * })\n   * ```\n   */\n  deprecations?: Record<string, string>;\n}\n\nfunction isObjectConfigSpread(\n  config: ([SlotsConfig] | (string | null)[]),\n): config is [SlotsConfig] {\n  return config.length === 1 && typeof config[0] === 'object' && config[0] !== null;\n}\n\n/**\n * If it's a named slot, return its children,\n * for the default slot, look for direct children not assigned to a slot\n * @param n slot name\n */\nconst isSlot =\n  <T extends Element = Element>(n: string | typeof SlotController.default) =>\n    (child: Element): child is T =>\n        n === SlotController.default ? !child.hasAttribute('slot')\n      : child.getAttribute('slot') === n;\n\nexport class SlotController implements ReactiveController {\n  public static default = Symbol('default slot') satisfies symbol as symbol;\n\n  /** @deprecated use `default` */\n  public static anonymous: symbol = this.default;\n\n  #nodes = new Map<string | typeof SlotController.default, Slot>();\n\n  #logger: Logger;\n\n  #firstUpdated = false;\n\n  #mo = new MutationObserver(records => this.#onMutation(records));\n\n  #slotNames: (string | null)[];\n\n  #deprecations: Record<string, string> = {};\n\n  constructor(public host: ReactiveElement, ...config: ([SlotsConfig] | (string | null)[])) {\n    this.#logger = new Logger(this.host);\n\n    if (isObjectConfigSpread(config)) {\n      const [{ slots, deprecations }] = config;\n      this.#slotNames = slots;\n      this.#deprecations = deprecations ?? {};\n    } else if (config.length >= 1) {\n      this.#slotNames = config;\n      this.#deprecations = {};\n    } else {\n      this.#slotNames = [null];\n    }\n\n\n    host.addController(this);\n  }\n\n  async hostConnected(): Promise<void> {\n    this.host.addEventListener('slotchange', this.#onSlotChange as EventListener);\n    this.#firstUpdated = false;\n    this.#mo.observe(this.host, { childList: true });\n    // Map the defined slots into an object that is easier to query\n    this.#nodes.clear();\n    // Loop over the properties provided by the schema\n    this.#slotNames.forEach(this.#initSlot);\n    Object.values(this.#deprecations).forEach(this.#initSlot);\n    this.host.requestUpdate();\n    // insurance for framework integrations\n    await this.host.updateComplete;\n    this.host.requestUpdate();\n  }\n\n  hostUpdated(): void {\n    if (!this.#firstUpdated) {\n      this.#slotNames.forEach(this.#initSlot);\n      this.#firstUpdated = true;\n    }\n  }\n\n  hostDisconnected(): void {\n    this.#mo.disconnect();\n  }\n\n  /**\n   * Given a slot name or slot names, returns elements assigned to the requested slots as an array.\n   * If no value is provided, it returns all children not assigned to a slot (without a slot attribute).\n   * @param slotNames slots to query\n   * @example Get header-slotted elements\n   *          ```js\n   *          this.getSlotted('header')\n   *          ```\n   * @example Get header- and footer-slotted elements\n   *          ```js\n   *          this.getSlotted('header', 'footer')\n   *          ```\n   * @example Get default-slotted elements\n   *          ```js\n   *          this.getSlotted();\n   *          ```\n   */\n  getSlotted<T extends Element = Element>(...slotNames: string[]): T[] {\n    if (!slotNames.length) {\n      return (this.#nodes.get(SlotController.default)?.elements ?? []) as T[];\n    } else {\n      return slotNames.flatMap(slotName =>\n        this.#nodes.get(slotName)?.elements ?? []) as T[];\n    }\n  }\n\n  /**\n   * Returns a boolean statement of whether or not any of those slots exists in the light DOM.\n   * @param names The slot names to check.\n   * @example this.hasSlotted('header');\n   */\n  hasSlotted(...names: (string | null | undefined)[]): boolean {\n    const slotNames = Array.from(names, x => x == null ? SlotController.default : x);\n    if (!slotNames.length) {\n      slotNames.push(SlotController.default);\n    }\n    return slotNames.some(x => this.#nodes.get(x)?.hasContent ?? false);\n  }\n\n  /**\n   * Whether or not all the requested slots are empty.\n   * @param  names The slot names to query.  If no value is provided, it returns the default slot.\n   * @example this.isEmpty('header', 'footer');\n   * @example this.isEmpty();\n   * @returns\n   */\n  isEmpty(...names: (string | null | undefined)[]): boolean {\n    return !this.hasSlotted(...names);\n  }\n\n  #onSlotChange = (event: Event & { target: HTMLSlotElement }) => {\n    const slotName = event.target.name;\n    this.#initSlot(slotName);\n    this.host.requestUpdate();\n  };\n\n  #onMutation = async (records: MutationRecord[]) => {\n    const changed = [];\n    for (const { addedNodes, removedNodes } of records) {\n      for (const node of [...addedNodes, ...removedNodes]) {\n        if (node instanceof HTMLElement && node.slot) {\n          this.#initSlot(node.slot);\n          changed.push(node.slot);\n        }\n      }\n    }\n    this.host.requestUpdate();\n  };\n\n  #getChildrenForSlot<T extends Element = Element>(\n    name: string | typeof SlotController.default,\n  ): T[] {\n    const children = Array.from(this.host.children) as T[];\n    return children.filter(isSlot(name));\n  }\n\n  #initSlot = (slotName: string | null) => {\n    const name = slotName || SlotController.default;\n    const elements = this.#nodes.get(name)?.slot?.assignedElements?.()\n      ?? this.#getChildrenForSlot(name);\n    const selector = slotName ? `slot[name=\"${slotName}\"]` : 'slot:not([name])';\n    const slot = this.host.shadowRoot?.querySelector?.<HTMLSlotElement>(selector) ?? null;\n    const hasContent = !!elements.length;\n    this.#nodes.set(name, { elements, name: slotName ?? '', hasContent, slot });\n    this.#logger.debug(slotName, hasContent);\n  };\n}\n"]}
-\ No newline at end of file
-+{"version":3,"file":"slot-controller.js","sourceRoot":"","sources":["slot-controller.ts"],"names":[],"mappings":"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","sourcesContent":["import { isServer, type ReactiveController, type ReactiveElement } from 'lit';\n\nimport { Logger } from './logger.js';\n\ninterface AnonymousSlot {\n  hasContent: boolean;\n  elements: Element[];\n  slot: HTMLSlotElement | null;\n}\n\ninterface NamedSlot extends AnonymousSlot {\n  name: string;\n  initialized: true;\n}\n\nexport type Slot = NamedSlot | AnonymousSlot;\n\nexport interface SlotsConfig {\n  slots: (string | null)[];\n  /**\n   * Object mapping new slot name keys to deprecated slot name values\n   * @example `pf-modal--header` is deprecated in favour of `header`\n   * ```js\n   * new SlotController(this, {\n   *   slots: ['header'],\n   *   deprecations: {\n   *     'header': 'pf-modal--header'\n   *   }\n   * })\n   * ```\n   */\n  deprecations?: Record<string, string>;\n}\n\nfunction isObjectConfigSpread(\n  config: ([SlotsConfig] | (string | null)[]),\n): config is [SlotsConfig] {\n  return config.length === 1 && typeof config[0] === 'object' && config[0] !== null;\n}\n\n/**\n * If it's a named slot, return its children,\n * for the default slot, look for direct children not assigned to a slot\n * @param n slot name\n */\nconst isSlot =\n  <T extends Element = Element>(n: string | typeof SlotController.default) =>\n    (child: Element): child is T =>\n        n === SlotController.default ? !child.hasAttribute('slot')\n      : child.getAttribute('slot') === n;\n\nexport class SlotController implements ReactiveController {\n  public static default = Symbol('default slot') satisfies symbol as symbol;\n\n  /** @deprecated use `default` */\n  public static anonymous: symbol = this.default;\n\n  #nodes = new Map<string | typeof SlotController.default, Slot>();\n\n  #logger: Logger;\n\n  #firstUpdated = false;\n\n  #mo = new MutationObserver(records => this.#onMutation(records));\n\n  #slotNames: (string | null)[];\n\n  #deprecations: Record<string, string> = {};\n\n  constructor(public host: ReactiveElement, ...config: ([SlotsConfig] | (string | null)[])) {\n    this.#logger = new Logger(this.host);\n\n    if (isObjectConfigSpread(config)) {\n      const [{ slots, deprecations }] = config;\n      this.#slotNames = slots;\n      this.#deprecations = deprecations ?? {};\n    } else if (config.length >= 1) {\n      this.#slotNames = config;\n      this.#deprecations = {};\n    } else {\n      this.#slotNames = [null];\n    }\n\n\n    host.addController(this);\n  }\n\n  async hostConnected(): Promise<void> {\n    this.host.addEventListener('slotchange', this.#onSlotChange as EventListener);\n    this.#firstUpdated = false;\n    this.#mo.observe(this.host, { childList: true });\n    // Map the defined slots into an object that is easier to query\n    this.#nodes.clear();\n    // Loop over the properties provided by the schema\n    this.#slotNames.forEach(this.#initSlot);\n    Object.values(this.#deprecations).forEach(this.#initSlot);\n    this.host.requestUpdate();\n    // insurance for framework integrations\n    await this.host.updateComplete;\n    this.host.requestUpdate();\n  }\n\n  hostUpdated(): void {\n    if (!this.#firstUpdated) {\n      this.#slotNames.forEach(this.#initSlot);\n      this.#firstUpdated = true;\n    }\n  }\n\n  hostDisconnected(): void {\n    this.#mo.disconnect();\n  }\n\n  /**\n   * Given a slot name or slot names, returns elements assigned to the requested slots as an array.\n   * If no value is provided, it returns all children not assigned to a slot (without a slot attribute).\n   * @param slotNames slots to query\n   * @example Get header-slotted elements\n   *          ```js\n   *          this.getSlotted('header')\n   *          ```\n   * @example Get header- and footer-slotted elements\n   *          ```js\n   *          this.getSlotted('header', 'footer')\n   *          ```\n   * @example Get default-slotted elements\n   *          ```js\n   *          this.getSlotted();\n   *          ```\n   */\n  getSlotted<T extends Element = Element>(...slotNames: string[]): T[] {\n    if (!slotNames.length) {\n      return (this.#nodes.get(SlotController.default)?.elements ?? []) as T[];\n    } else {\n      return slotNames.flatMap(slotName =>\n        this.#nodes.get(slotName)?.elements ?? []) as T[];\n    }\n  }\n\n  /**\n   * Returns a boolean statement of whether or not any of those slots exists in the light DOM.\n   * @param names The slot names to check.\n   * @example this.hasSlotted('header');\n   */\n  hasSlotted(...names: (string | null | undefined)[]): boolean {\n    if (isServer) {\n      return this.host\n          .getAttribute('ssr-hint-has-slotted')\n          ?.split(',')\n          .map(name => name.trim())\n          .some(name => names.includes(name === 'default' ? null : name)) ?? false;\n    } else {\n      const slotNames = Array.from(names, x => x == null ? SlotController.default : x);\n      if (!slotNames.length) {\n        slotNames.push(SlotController.default);\n      }\n      return slotNames.some(x => this.#nodes.get(x)?.hasContent ?? false);\n    }\n  }\n\n  /**\n   * Whether or not all the requested slots are empty.\n   * @param  names The slot names to query.  If no value is provided, it returns the default slot.\n   * @example this.isEmpty('header', 'footer');\n   * @example this.isEmpty();\n   * @returns\n   */\n  isEmpty(...names: (string | null | undefined)[]): boolean {\n    return !this.hasSlotted(...names);\n  }\n\n  #onSlotChange = (event: Event & { target: HTMLSlotElement }) => {\n    const slotName = event.target.name;\n    this.#initSlot(slotName);\n    this.host.requestUpdate();\n  };\n\n  #onMutation = async (records: MutationRecord[]) => {\n    const changed = [];\n    for (const { addedNodes, removedNodes } of records) {\n      for (const node of [...addedNodes, ...removedNodes]) {\n        if (node instanceof HTMLElement && node.slot) {\n          this.#initSlot(node.slot);\n          changed.push(node.slot);\n        }\n      }\n    }\n    this.host.requestUpdate();\n  };\n\n  #getChildrenForSlot<T extends Element = Element>(\n    name: string | typeof SlotController.default,\n  ): T[] {\n    if (isServer) {\n      return [];\n    } else {\n      const children = Array.from(this.host.children) as T[];\n      return children.filter(isSlot(name));\n    }\n  }\n\n  #initSlot = (slotName: string | null) => {\n    const name = slotName || SlotController.default;\n    const elements = this.#nodes.get(name)?.slot?.assignedElements?.()\n      ?? this.#getChildrenForSlot(name);\n    const selector = slotName ? `slot[name=\"${slotName}\"]` : 'slot:not([name])';\n    const slot = this.host.shadowRoot?.querySelector?.<HTMLSlotElement>(selector) ?? null;\n    const nodes = slot?.assignedNodes?.();\n    const hasContent = !!elements.length || !!nodes?.filter(x => x.textContent?.trim()).length;\n    this.#nodes.set(name, { elements, name: slotName ?? '', hasContent, slot });\n    this.#logger.debug(slotName, hasContent);\n  };\n}\n"]}
-\ No newline at end of file
-diff --git a/node_modules/@patternfly/pfe-core/custom-elements.json b/node_modules/@patternfly/pfe-core/custom-elements.json
-index f65ac96..ab4cad3 100644
---- a/node_modules/@patternfly/pfe-core/custom-elements.json
-+++ b/node_modules/@patternfly/pfe-core/custom-elements.json
-@@ -2709,7 +2709,7 @@
-               "kind": "field",
-               "name": "style",
-               "type": {
--                "text": "CSSStyleDeclaration"
-+                "text": "CSSStyleDeclaration | undefined"
-               }
-             },
-             {
-@@ -2785,13 +2785,13 @@
-               ]
-             },
-             {
--              "kind": "field",
--              "name": "host",
--              "default": "host"
-+              "kind": "method",
-+              "name": "hostConnected"
-             },
-             {
-               "kind": "field",
--              "name": "style"
-+              "name": "host",
-+              "default": "host"
-             }
-           ]
+diff --git a/node_modules/@patternfly/pfe-core/decorators/observes.js b/node_modules/@patternfly/pfe-core/decorators/observes.js
+index d2a82be..5c38c6f 100644
+--- a/node_modules/@patternfly/pfe-core/decorators/observes.js
++++ b/node_modules/@patternfly/pfe-core/decorators/observes.js
+@@ -13,18 +13,30 @@ import { PropertyObserverController, } from '@patternfly/pfe-core/controllers/pr
+  */
+ export function observes(propertyName, options) {
+     return function (proto, methodName) {
+-        const callback = proto[methodName];
+-        if (typeof callback !== 'function') {
+-            throw new Error('@observes must decorate a class method');
++        if (typeof methodName === 'object') {
++            methodName.addInitializer(function() {
++                this.constructor.addInitializer(instance => {
++                    instance.addController(new PropertyObserverController(instance, {
++                        ...options,
++                        propertyName,
++                        callback: proto,
++                    }));
++                });
++            });
++        } else {
++            const callback = proto[methodName];
++            if (typeof callback !== 'function') {
++                throw new Error('@observes must decorate a class method');
++            }
++            const klass = proto.constructor;
++            klass.addInitializer(instance => {
++                instance.addController(new PropertyObserverController(instance, {
++                    ...options,
++                    propertyName,
++                    callback,
++                }));
++            });
          }
-@@ -2820,7 +2820,7 @@
-               "kind": "field",
-               "name": "style",
-               "type": {
--                "text": "CSSStyleDeclaration"
-+                "text": "CSSStyleDeclaration | undefined"
-               }
-             },
-             {
-@@ -8665,7 +8665,7 @@
-               "name": "#getRootNode",
-               "privacy": "private",
-               "type": {
--                "text": "() => Node"
-+                "text": "() => Node | null"
-               }
-             },
-             {
-diff --git a/node_modules/@patternfly/pfe-core/decorators/slots.d.ts b/node_modules/@patternfly/pfe-core/decorators/slots.d.ts
-new file mode 100644
-index 0000000..b8ac911
---- /dev/null
-+++ b/node_modules/@patternfly/pfe-core/decorators/slots.d.ts
-@@ -0,0 +1,8 @@
-+import type { ReactiveElement } from 'lit';
-+import { type SlotControllerArgs } from '../controllers/slot-controller.js';
-+/**
-+ * Enable ssr hints for element
-+ * @param args a spread of slot names, or a config object.
-+ * @see SlotController constructor args
-+ */
-+export declare function slots<T extends typeof ReactiveElement>(...args: SlotControllerArgs): (klass: T) => void;
-diff --git a/node_modules/@patternfly/pfe-core/decorators/slots.js b/node_modules/@patternfly/pfe-core/decorators/slots.js
-new file mode 100644
-index 0000000..ce85da3
---- /dev/null
-+++ b/node_modules/@patternfly/pfe-core/decorators/slots.js
-@@ -0,0 +1,25 @@
-+import { SlotController } from '../controllers/slot-controller.js';
-+/**
-+ * Enable ssr hints for element
-+ * @param args a spread of slot names, or a config object.
-+ * @see SlotController constructor args
-+ */
-+export function slots(...args) {
-+    return function (klass) {
-+        klass.createProperty('ssrHintHasSlotted', {
-+            attribute: 'ssr-hint-has-slotted',
-+            converter: {
-+                fromAttribute(slots) {
-+                    return (slots ?? '')
-+                        .split(/[, ]/)
-+                        .map(x => x.trim())
-+                        .map(x => x === 'default' ? null : x);
-+                },
-+            },
-+        });
-+        klass.addInitializer(instance => {
-+            new SlotController(instance, ...args);
-+        });
-+    };
-+}
-+//# sourceMappingURL=slots.js.map
-\ No newline at end of file
-diff --git a/node_modules/@patternfly/pfe-core/functions/context.js b/node_modules/@patternfly/pfe-core/functions/context.js
-index e46eac0..feff5a4 100644
---- a/node_modules/@patternfly/pfe-core/functions/context.js
-+++ b/node_modules/@patternfly/pfe-core/functions/context.js
-@@ -6,6 +6,11 @@ function makeContextRoot() {
-     if (!isServer) {
-         root.attach(document.body);
-     }
-+    else {
-+        root.attach(
-+        // @ts-expect-error: enable context root in ssr
-+        globalThis.litServerRoot);
-+    }
-     return root;
- }
- /**
-diff --git a/node_modules/@patternfly/pfe-core/functions/context.js.map b/node_modules/@patternfly/pfe-core/functions/context.js.map
-index 3774125..11f9bc1 100644
---- a/node_modules/@patternfly/pfe-core/functions/context.js.map
-+++ b/node_modules/@patternfly/pfe-core/functions/context.js.map
-@@ -1 +1 @@
--{"version":3,"file":"context.js","sourceRoot":"","sources":["context.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,WAAW,EAAE,aAAa,EAAgB,MAAM,cAAc,CAAC;AACxE,OAAO,EAAE,QAAQ,EAAE,MAAM,KAAK,CAAC;AAE/B,IAAI,IAAiB,CAAC;AAEtB,SAAS,eAAe;IACtB,MAAM,IAAI,GAAG,IAAI,WAAW,EAAE,CAAC;IAC/B,IAAI,CAAC,QAAQ,EAAE,CAAC;QACd,IAAI,CAAC,MAAM,CAAC,QAAQ,CAAC,IAAI,CAAC,CAAC;IAC7B,CAAC;IACD,OAAO,IAAI,CAAC;AACd,CAAC;AAED;;;;;GAKG;AACH,MAAM,UAAU,qBAAqB,CACnC,GAAG,IAAsC;IAEzC,IAAI,KAAJ,IAAI,GAAK,eAAe,EAAE,EAAC;IAC3B,OAAO,aAAa,CAAI,GAAG,IAAI,CAAC,CAAC;AACnC,CAAC","sourcesContent":["import { ContextRoot, createContext, type Context } from '@lit/context';\nimport { isServer } from 'lit';\n\nlet root: ContextRoot;\n\nfunction makeContextRoot() {\n  const root = new ContextRoot();\n  if (!isServer) {\n    root.attach(document.body);\n  }\n  return root;\n}\n\n/**\n * In order to prevent late-upgrading-context-consumers from 'missing'\n * their rightful context providers, we must set up a `ContextRoot` on the body.\n * Always use this function when creating contexts that are shared with child elements.\n * @param args createContext args\n */\nexport function createContextWithRoot<T>(\n  ...args: Parameters<typeof createContext>\n): Context<unknown, T> {\n  root ??= makeContextRoot();\n  return createContext<T>(...args);\n}\n"]}
-\ No newline at end of file
-+{"version":3,"file":"context.js","sourceRoot":"","sources":["context.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,WAAW,EAAE,aAAa,EAAgB,MAAM,cAAc,CAAC;AACxE,OAAO,EAAE,QAAQ,EAAE,MAAM,KAAK,CAAC;AAE/B,IAAI,IAAiB,CAAC;AAEtB,SAAS,eAAe;IACtB,MAAM,IAAI,GAAG,IAAI,WAAW,EAAE,CAAC;IAC/B,IAAI,CAAC,QAAQ,EAAE,CAAC;QACd,IAAI,CAAC,MAAM,CAAC,QAAQ,CAAC,IAAI,CAAC,CAAC;IAC7B,CAAC;SAAM,CAAC;QACN,IAAI,CAAC,MAAM;QACT,+CAA+C;QAC/C,UAAU,CAAC,aAAa,CACzB,CAAC;IACJ,CAAC;IACD,OAAO,IAAI,CAAC;AACd,CAAC;AAED;;;;;GAKG;AACH,MAAM,UAAU,qBAAqB,CACnC,GAAG,IAAsC;IAEzC,IAAI,KAAJ,IAAI,GAAK,eAAe,EAAE,EAAC;IAC3B,OAAO,aAAa,CAAI,GAAG,IAAI,CAAC,CAAC;AACnC,CAAC","sourcesContent":["import { ContextRoot, createContext, type Context } from '@lit/context';\nimport { isServer } from 'lit';\n\nlet root: ContextRoot;\n\nfunction makeContextRoot() {\n  const root = new ContextRoot();\n  if (!isServer) {\n    root.attach(document.body);\n  } else {\n    root.attach(\n      // @ts-expect-error: enable context root in ssr\n      globalThis.litServerRoot,\n    );\n  }\n  return root;\n}\n\n/**\n * In order to prevent late-upgrading-context-consumers from 'missing'\n * their rightful context providers, we must set up a `ContextRoot` on the body.\n * Always use this function when creating contexts that are shared with child elements.\n * @param args createContext args\n */\nexport function createContextWithRoot<T>(\n  ...args: Parameters<typeof createContext>\n): Context<unknown, T> {\n  root ??= makeContextRoot();\n  return createContext<T>(...args);\n}\n"]}
-\ No newline at end of file
-diff --git a/node_modules/@patternfly/pfe-core/ssr-shims.d.ts b/node_modules/@patternfly/pfe-core/ssr-shims.d.ts
-index f463291..cb0ff5c 100644
---- a/node_modules/@patternfly/pfe-core/ssr-shims.d.ts
-+++ b/node_modules/@patternfly/pfe-core/ssr-shims.d.ts
-@@ -1,17 +1 @@
--declare class ObserverShim {
--    observe(): void;
--    disconnect(): void;
--}
--declare class MiniHTMLElement {
--    tagName: string;
--    innerHTML: string;
--    constructor(tagName: string);
--}
--declare class MiniHTMLTemplateElement extends MiniHTMLElement {
--    content: {
--        cloneNode: () => string;
--    };
--}
--declare class MiniDocument {
--    createElement(tagName: string): MiniHTMLElement;
--}
-+export {};
-diff --git a/node_modules/@patternfly/pfe-core/ssr-shims.js b/node_modules/@patternfly/pfe-core/ssr-shims.js
-index c8fe51d..1584acc 100644
---- a/node_modules/@patternfly/pfe-core/ssr-shims.js
-+++ b/node_modules/@patternfly/pfe-core/ssr-shims.js
-@@ -1,4 +1,5 @@
--"use strict";
-+var _a;
-+import { installWindowOnGlobal } from '@lit-labs/ssr/lib/dom-shim.js';
- class ObserverShim {
-     observe() {
-         void 0;
-@@ -19,32 +20,7 @@ class MiniHTMLTemplateElement extends MiniHTMLElement {
-         this.content = { cloneNode: () => this.innerHTML };
-     }
- }
--class MiniDocument {
--    createElement(tagName) {
--        switch (tagName) {
--            case 'template':
--                return new MiniHTMLTemplateElement(tagName);
--            default:
--                return new MiniHTMLElement(tagName);
--        }
--    }
--}
--// @ts-expect-error: this runs in node
--globalThis.window ?? (globalThis.window = globalThis);
--// @ts-expect-error: this runs in node
--globalThis.document ?? (globalThis.document = new MiniDocument());
--// @ts-expect-error: this runs in node
--globalThis.navigator ?? (globalThis.navigator = { userAgent: '' });
--// @ts-expect-error: this runs in node
--globalThis.ErrorEvent ?? (globalThis.ErrorEvent = Event);
--// @ts-expect-error: this runs in node
--globalThis.IntersectionObserver ?? (globalThis.IntersectionObserver = ObserverShim);
--// @ts-expect-error: this runs in node
--globalThis.MutationObserver ?? (globalThis.MutationObserver = ObserverShim);
--// @ts-expect-error: this runs in node
--globalThis.ResizeObserver ?? (globalThis.ResizeObserver = ObserverShim);
--// @ts-expect-error: this runs in node
--globalThis.getComputedStyle ?? (globalThis.getComputedStyle = function () {
-+function getComputedStyle() {
-     return {
-         getPropertyPriority() {
-             return '';
-@@ -53,5 +29,25 @@ globalThis.getComputedStyle ?? (globalThis.getComputedStyle = function () {
-             return '';
-         },
+-        const klass = proto.constructor;
+-        klass.addInitializer(instance => {
+-            instance.addController(new PropertyObserverController(instance, {
+-                ...options,
+-                propertyName,
+-                callback,
+-            }));
+-        });
      };
-+}
-+;
-+// @ts-expect-error: opt in to event support in ssr
-+globalThis.litSsrCallConnectedCallback = true;
-+installWindowOnGlobal({
-+    ErrorEvent: Event,
-+    IntersectionObserver: ObserverShim,
-+    MutationObserver: ObserverShim,
-+    ResizeObserver: ObserverShim,
-+    getComputedStyle,
- });
-+// @ts-expect-error: this runs in node
-+(_a = globalThis.navigator).userAgent ?? (_a.userAgent = '@lit-labs/ssr');
-+globalThis.document.createElement = function createElement(tagName) {
-+    switch (tagName) {
-+        case 'template':
-+            return new MiniHTMLTemplateElement(tagName);
-+        default:
-+            return new MiniHTMLElement(tagName);
-+    }
-+};
- //# sourceMappingURL=ssr-shims.js.map
+ }
+ //# sourceMappingURL=observes.js.map
 \ No newline at end of file
-diff --git a/node_modules/@patternfly/pfe-core/ssr-shims.js.map b/node_modules/@patternfly/pfe-core/ssr-shims.js.map
-index 8ef66dc..5a05b91 100644
---- a/node_modules/@patternfly/pfe-core/ssr-shims.js.map
-+++ b/node_modules/@patternfly/pfe-core/ssr-shims.js.map
-@@ -1 +1 @@
--{"version":3,"file":"ssr-shims.js","sourceRoot":"","sources":["ssr-shims.ts"],"names":[],"mappings":";AAAA,MAAM,YAAY;IAChB,OAAO;QACL,KAAK,CAAC,CAAC;IACT,CAAC;IAED,UAAU;QACR,KAAK,CAAC,CAAC;IACT,CAAC;CACF;AAED,MAAM,eAAe;IAEnB,YAAmB,OAAe;QAAf,YAAO,GAAP,OAAO,CAAQ;QADlC,cAAS,GAAG,EAAE,CAAC;IACuB,CAAC;CACxC;AAED,MAAM,uBAAwB,SAAQ,eAAe;IAArD;;QACE,YAAO,GAAG,EAAE,SAAS,EAAE,GAAW,EAAE,CAAC,IAAI,CAAC,SAAS,EAAE,CAAC;IACxD,CAAC;CAAA;AAED,MAAM,YAAY;IAChB,aAAa,CAAC,OAAe;QAC3B,QAAQ,OAAO,EAAE,CAAC;YAChB,KAAK,UAAU;gBACb,OAAO,IAAI,uBAAuB,CAAC,OAAO,CAAC,CAAC;YAC9C;gBACE,OAAO,IAAI,eAAe,CAAC,OAAO,CAAC,CAAC;QACxC,CAAC;IACH,CAAC;CACF;AAED,sCAAsC;AACtC,UAAU,CAAC,MAAM,KAAjB,UAAU,CAAC,MAAM,GAAK,UAAU,EAAC;AACjC,sCAAsC;AACtC,UAAU,CAAC,QAAQ,KAAnB,UAAU,CAAC,QAAQ,GAAK,IAAI,YAAY,EAAE,EAAC;AAC3C,sCAAsC;AACtC,UAAU,CAAC,SAAS,KAApB,UAAU,CAAC,SAAS,GAAK,EAAE,SAAS,EAAE,EAAE,EAAE,EAAC;AAC3C,sCAAsC;AACtC,UAAU,CAAC,UAAU,KAArB,UAAU,CAAC,UAAU,GAAK,KAAK,EAAC;AAChC,sCAAsC;AACtC,UAAU,CAAC,oBAAoB,KAA/B,UAAU,CAAC,oBAAoB,GAAK,YAAY,EAAC;AACjD,sCAAsC;AACtC,UAAU,CAAC,gBAAgB,KAA3B,UAAU,CAAC,gBAAgB,GAAK,YAAY,EAAC;AAC7C,sCAAsC;AACtC,UAAU,CAAC,cAAc,KAAzB,UAAU,CAAC,cAAc,GAAK,YAAY,EAAC;AAC3C,sCAAsC;AACtC,UAAU,CAAC,gBAAgB,KAA3B,UAAU,CAAC,gBAAgB,GAAK;IAC9B,OAAO;QACL,mBAAmB;YACjB,OAAO,EAAE,CAAC;QACZ,CAAC;QACD,gBAAgB;YACd,OAAO,EAAE,CAAC;QACZ,CAAC;KACF,CAAC;AACJ,CAAC,EAEA","sourcesContent":["class ObserverShim {\n  observe(): void {\n    void 0;\n  }\n\n  disconnect(): void {\n    void 0;\n  }\n}\n\nclass MiniHTMLElement {\n  innerHTML = '';\n  constructor(public tagName: string) { }\n}\n\nclass MiniHTMLTemplateElement extends MiniHTMLElement {\n  content = { cloneNode: (): string => this.innerHTML };\n}\n\nclass MiniDocument {\n  createElement(tagName: string): MiniHTMLElement {\n    switch (tagName) {\n      case 'template':\n        return new MiniHTMLTemplateElement(tagName);\n      default:\n        return new MiniHTMLElement(tagName);\n    }\n  }\n}\n\n// @ts-expect-error: this runs in node\nglobalThis.window ??= globalThis;\n// @ts-expect-error: this runs in node\nglobalThis.document ??= new MiniDocument();\n// @ts-expect-error: this runs in node\nglobalThis.navigator ??= { userAgent: '' };\n// @ts-expect-error: this runs in node\nglobalThis.ErrorEvent ??= Event;\n// @ts-expect-error: this runs in node\nglobalThis.IntersectionObserver ??= ObserverShim;\n// @ts-expect-error: this runs in node\nglobalThis.MutationObserver ??= ObserverShim;\n// @ts-expect-error: this runs in node\nglobalThis.ResizeObserver ??= ObserverShim;\n// @ts-expect-error: this runs in node\nglobalThis.getComputedStyle ??= function() {\n  return {\n    getPropertyPriority() {\n      return '';\n    },\n    getPropertyValue() {\n      return '';\n    },\n  };\n}\n\n;\n\n"]}
-\ No newline at end of file
-+{"version":3,"file":"ssr-shims.js","sourceRoot":"","sources":["ssr-shims.ts"],"names":[],"mappings":";AAAA,OAAO,EAAE,qBAAqB,EAAE,MAAM,+BAA+B,CAAC;AAEtE,MAAM,YAAY;IAChB,OAAO;QACL,KAAK,CAAC,CAAC;IACT,CAAC;IAED,UAAU;QACR,KAAK,CAAC,CAAC;IACT,CAAC;CACF;AAED,MAAM,eAAe;IAEnB,YAAmB,OAAe;QAAf,YAAO,GAAP,OAAO,CAAQ;QADlC,cAAS,GAAG,EAAE,CAAC;IACuB,CAAC;CACxC;AAED,MAAM,uBAAwB,SAAQ,eAAe;IAArD;;QACE,YAAO,GAAG,EAAE,SAAS,EAAE,GAAW,EAAE,CAAC,IAAI,CAAC,SAAS,EAAE,CAAC;IACxD,CAAC;CAAA;AAED,SAAS,gBAAgB;IACvB,OAAO;QACL,mBAAmB;YACjB,OAAO,EAAE,CAAC;QACZ,CAAC;QACD,gBAAgB;YACd,OAAO,EAAE,CAAC;QACZ,CAAC;KACF,CAAC;AACJ,CAAC;AAAA,CAAC;AAEF,mDAAmD;AACnD,UAAU,CAAC,2BAA2B,GAAG,IAAI,CAAC;AAE9C,qBAAqB,CAAC;IACpB,UAAU,EAAE,KAAK;IACjB,oBAAoB,EAAE,YAAY;IAClC,gBAAgB,EAAE,YAAY;IAC9B,cAAc,EAAE,YAAY;IAC5B,gBAAgB;CACjB,CAAC,CAAC;AAEH,sCAAsC;AACtC,MAAA,UAAU,CAAC,SAAS,EAAC,SAAS,QAAT,SAAS,GAAK,eAAe,EAAC;AAEnD,UAAU,CAAC,QAAQ,CAAC,aAAa,GAAG,SAAS,aAAa,CAAC,OAAe;IACxE,QAAQ,OAAO,EAAE,CAAC;QAChB,KAAK,UAAU;YACb,OAAO,IAAI,uBAAuB,CAAC,OAAO,CAA2B,CAAC;QACxE;YACE,OAAO,IAAI,eAAe,CAAC,OAAO,CAAgB,CAAC;IACvD,CAAC;AACH,CAAC,CAAC","sourcesContent":["import { installWindowOnGlobal } from '@lit-labs/ssr/lib/dom-shim.js';\n\nclass ObserverShim {\n  observe(): void {\n    void 0;\n  }\n\n  disconnect(): void {\n    void 0;\n  }\n}\n\nclass MiniHTMLElement {\n  innerHTML = '';\n  constructor(public tagName: string) { }\n}\n\nclass MiniHTMLTemplateElement extends MiniHTMLElement {\n  content = { cloneNode: (): string => this.innerHTML };\n}\n\nfunction getComputedStyle() {\n  return {\n    getPropertyPriority() {\n      return '';\n    },\n    getPropertyValue() {\n      return '';\n    },\n  };\n};\n\n// @ts-expect-error: opt in to event support in ssr\nglobalThis.litSsrCallConnectedCallback = true;\n\ninstallWindowOnGlobal({\n  ErrorEvent: Event,\n  IntersectionObserver: ObserverShim,\n  MutationObserver: ObserverShim,\n  ResizeObserver: ObserverShim,\n  getComputedStyle,\n});\n\n// @ts-expect-error: this runs in node\nglobalThis.navigator.userAgent ??= '@lit-labs/ssr';\n\nglobalThis.document.createElement = function createElement(tagName: string): HTMLElement {\n  switch (tagName) {\n    case 'template':\n      return new MiniHTMLTemplateElement(tagName) as unknown as HTMLElement;\n    default:\n      return new MiniHTMLElement(tagName) as HTMLElement;\n  }\n};\n"]}
-\ No newline at end of file
+diff --git a/node_modules/@patternfly/pfe-core/package.json b/node_modules/@patternfly/pfe-core/package.json
+index 55fdb01..c772d45 100644
+--- a/node_modules/@patternfly/pfe-core/package.json
++++ b/node_modules/@patternfly/pfe-core/package.json
+@@ -32,7 +32,11 @@
+     "./controllers/property-observer-controller.js": "./controllers/property-observer-controller.js",
+     "./controllers/roving-tabindex-controller.js": "./controllers/roving-tabindex-controller.js",
+     "./controllers/scroll-spy-controller.js": "./controllers/scroll-spy-controller.js",
+-    "./controllers/slot-controller.js": "./controllers/slot-controller.js",
++    "./controllers/slot-controller.js": {
++      "node": "./controllers/slot-controller-server.js",
++      "import": "./controllers/slot-controller.js",
++      "default": "./controllers/slot-controller.js"
++    },
+     "./controllers/style-controller.js": "./controllers/style-controller.js",
+     "./controllers/timestamp-controller.js": "./controllers/timestamp-controller.js",
+     "./controllers/tabs-controller.js": "./controllers/tabs-controller.js",
