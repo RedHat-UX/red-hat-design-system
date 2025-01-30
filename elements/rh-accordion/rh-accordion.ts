@@ -169,6 +169,8 @@ export class RhAccordion extends LitElement {
 
   @observes('expandedIndex')
   private updateExpanded() {
+    // close all first
+    this.collapseAll();
     this.#expandedIndex.forEach(headerIndex => {
       if (!this.headers[headerIndex]) {
         return;
