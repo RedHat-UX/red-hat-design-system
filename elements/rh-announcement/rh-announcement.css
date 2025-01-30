@@ -86,12 +86,12 @@
 }
 
 @container announcement (max-width: 767px) {
-  #container:not(.imgleft) #body {
+  #container:not(.inline-start) #body {
     padding-block: var(--rh-space-lg, 16px) var(--rh-space-md, 8px);
     padding-inline-end: var(--rh-space-lg, 16px);
   }
 
-  #container.imgleft #row {
+  #container.inline-start #row {
     display: flex;
   }
 
@@ -99,20 +99,20 @@
     font-size: var(--rh-font-size-body-text-md, 1rem);
   }
 
-  #container.imgleft #content {
+  #container.inline-start #content {
     text-align: start;
   }
 
-  #container.imgleft.dismissable #content {
+  #container.inline-start.dismissable #content {
     margin-inline-end: var(--rh-space-2xl, 32px);
   }
 
-  #container.imgleft #image {
+  #container.inline-start #image {
     align-items: flex-start;
     flex: 1;
   }
 
-  #container.imgleft #cta {
+  #container.inline-start #cta {
     padding-inline-start: var(--rh-space-lg, 16px);
   }
 }

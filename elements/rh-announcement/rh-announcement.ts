@@ -50,9 +50,11 @@ export class RhAnnouncement extends LitElement {
   @property({ reflect: true, type: Boolean }) dismissable = false;
 
   /**
-   * Keep the image on the left-hand side of the main announcement content
+   * Set the position of the image in the announcement on mobile viewports. Possible values are:
+   * - `inline-start`
    */
-  @property({ reflect: true, type: Boolean }) imgleft = false;
+  @property({ reflect: true, attribute: 'image-position' })
+  imagePosition?: 'inline-start';
 
   /**
    * Sets color theme based on parent context
@@ -64,8 +66,6 @@ export class RhAnnouncement extends LitElement {
    * Overrides parent color context.
    * Your theme will influence these colors so check there first if you are seeing inconsistencies.
    * See [CSS Custom Properties](#css-custom-properties) for default values
-   *
-   * Card always resets its context to `base`, unless explicitly provided with a `color-palette`.
    */
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' })
@@ -74,10 +74,18 @@ export class RhAnnouncement extends LitElement {
   #slots = new SlotController(this, 'image', null, 'cta');
 
   render() {
-    const { dismissable, imgleft, on = '', colorPalette = 'lightest' } = this;
+    const { dismissable, on = '' } = this;
+    const imagePosInlineStart = this.imagePosition === 'inline-start';
+
     return html`
       <div id="container"
-           class="${classMap({ on: true, [on]: !!on, [colorPalette]: true, dismissable, imgleft, empty: this.#slots.isEmpty(null) })}">
+           class="${classMap({
+              on,
+              [on]: !!on,
+              dismissable,
+              'inline-start': imagePosInlineStart,
+              'empty': this.#slots.isEmpty(null),
+            })}">
         <div id="row" part="row">
           <div id="image"
                part="image"
