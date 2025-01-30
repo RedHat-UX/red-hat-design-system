@@ -1,10 +1,13 @@
-import { contextEvents, HeadingLevelController } from './controller.js';
+import type { HeadingLevelContextOptions } from './context.js';
+import type { ReactiveElement } from 'lit';
 
-import {
-  ContextRequestEvent,
-  type UnknownContext,
-  type ContextCallback,
-} from '../event.js';
+import { isServer } from 'lit';
+
+import { ContextProvider } from '@lit/context';
+
+import { context } from './context.js';
+
+export { wrap } from './context.js';
 
 const SELECTORS = `H1,H2,H3,H4,H5,H6`;
 
@@ -30,18 +33,35 @@ function canQuery(node: Node): node is Document | ShadowRoot {
  * Determines which heading level immediately precedes the host element,
  * and provides templates for shadow headings.
  */
-export class HeadingLevelContextProvider extends HeadingLevelController {
-  /** Cache of context callbacks. Call each to update consumers */
-  #callbacks = new Set<ContextCallback<number>>();
+export class HeadingLevelContextProvider extends ContextProvider<typeof context, ReactiveElement> {
+  get level(): number {
+    return this.value.level;
+  }
+
+  set level(lvl: string | number | undefined | null) {
+    const level = typeof lvl === 'string' ? parseInt(lvl) : lvl;
+    if (typeof level === 'number' && !Number.isNaN(level)) {
+      const { offset } = this.value;
+      this.setValue({ level, offset });
+    }
+  }
+
+  constructor(
+    host: ReactiveElement,
+    /** Heading level preceding component document, as in 1 for <h1>, 2 for <h2> etc. */
+    protected options?: HeadingLevelContextOptions,
+  ) {
+    super(host, { context, initialValue: {
+      offset: options?.offset ?? 1,
+      level: options?.level ?? 1,
+    } });
+  }
 
   hostConnected() {
-    this.host.addEventListener('context-request', e => this.#onChildContextRequestEvent(e));
-    for (const [host, fired] of contextEvents) {
-      host.dispatchEvent(fired);
+    super.hostConnected();
+    if (!isServer) {
+      this.level = this.#computeLevelFromChildren();
     }
-    this.level =
-      this.host.getAttribute(this.options?.attribute ?? '')
-      ?? this.#computeLevelFromChildren();
   }
 
   #computeLevelFromChildren() {
@@ -56,29 +76,6 @@ export class HeadingLevelContextProvider extends HeadingLevelController {
         const els = [...root.querySelectorAll(`${SELECTORS},${localName}`)];
         const lastHeadingBeforeHost = els.slice(0, els.indexOf(host)).pop();
         return getLevel(lastHeadingBeforeHost);
-      }
-    }
-  }
-
-  /** Was the context event fired requesting our colour-context context? */
-  #isHeadingContextRequestEvent(
-    event: ContextRequestEvent<UnknownContext>
-  ): event is ContextRequestEvent<typeof HeadingLevelController.context> {
-    return event.target !== this.host && event.context === HeadingLevelController.context;
-  }
-
-  async #onChildContextRequestEvent(event: ContextRequestEvent<UnknownContext>) {
-    // only handle ContextRequestEvents relevant to colour context
-    if (this.#isHeadingContextRequestEvent(event)) {
-      // claim the context-request event for ourselves (required by context protocol)
-      event.stopPropagation();
-
-      // Run the callback to initialize the child's value
-      event.callback(this.level);
-
-      // Cache the callback for future updates, if requested
-      if (event.subscribe) {
-        this.#callbacks.add(event.callback);
       }
     }
   }

@@ -9,7 +9,7 @@ import '@rhds/elements/rh-avatar/rh-avatar.js';
 import panelStyles from './rh-audio-player-panel.css';
 import styles from './rh-audio-player-about.css';
 
-import { HeadingLevelContextConsumer } from '../../lib/context/headings/consumer.js';
+import { HeadingLevelContextConsumer, wrap } from '../../lib/context/headings/consumer.js';
 
 /**
  * Audio Player About Panel
@@ -42,7 +42,7 @@ export class RhAudioPlayerAbout extends LitElement {
   override render() {
     const { label, mediaseries, mediatitle } = this;
     const hasContent = (this.content?.length ?? 0) >= 1;
-    const heading = this.#headings.wrap(mediatitle ?? '');
+    const heading = wrap.call(this.#headings, mediatitle ?? '');
 
     return html`
       <rh-audio-player-scrolling-text-overflow id="title" part="heading">

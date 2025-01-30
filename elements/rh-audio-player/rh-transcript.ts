@@ -6,8 +6,7 @@ import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js
 
 import { RhCue, getFormattedTime } from './rh-cue.js';
 
-import { HeadingLevelContextConsumer } from '@rhds/elements/lib/context/headings/consumer.js';
-import { HeadingLevelContextProvider } from '@rhds/elements/lib/context/headings/provider.js';
+import { HeadingLevelContextProvider, wrap } from '@rhds/elements/lib/context/headings/provider.js';
 
 import buttonStyles from './rh-audio-player-button.css';
 import panelStyles from './rh-audio-player-panel.css';
@@ -48,10 +47,7 @@ export class RhTranscript extends LitElement {
 
   #duration?: number;
 
-  #headings = new HeadingLevelContextProvider(this, {
-    offset: 0,
-    parent: new HeadingLevelContextConsumer(this),
-  });
+  #headings = new HeadingLevelContextProvider(this, { offset: 0 });
 
   set autoscrollLabel(label: string) {
     this._autoscroll = label;
@@ -84,7 +80,7 @@ export class RhTranscript extends LitElement {
   render() {
     return html`
       <rh-audio-player-scrolling-text-overflow part="heading">
-        <slot name="heading">${this.#headings.wrap(this.menuLabel)}</slot>
+        <slot name="heading">${wrap.call(this.#headings, this.menuLabel)}</slot>
       </rh-audio-player-scrolling-text-overflow>
       <div class="panel-toolbar" part="toolbar">${this._cues.length < 0 ? '' : html`
         <label>
