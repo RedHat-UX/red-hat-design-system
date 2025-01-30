@@ -84,15 +84,11 @@ export class RhAnnouncement extends LitElement {
                class="${classMap({ empty: !this.#slots.hasSlotted('image') })}">
             <slot name="image"></slot>
           </div>
-          <div id="content" part="content">
-            <div id="body"
-                 part="body"
-                 class="${classMap({ empty: this.#slots.isEmpty(null) })}">
+          <div id="content">
+            <div id="body" class="${classMap({ empty: this.#slots.isEmpty(null) })}">
               <slot></slot>
             </div>
-            <div id="cta"
-                 part="cta"
-                 class="${classMap({ empty: !this.#slots.hasSlotted('cta') })}">
+            <div id="cta" class="${classMap({ empty: !this.#slots.hasSlotted('cta') })}">
               <slot name="cta"></slot>
             </div>
           </div>
