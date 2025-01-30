@@ -1,4 +1,3 @@
-import { slots } from '@patternfly/pfe-core/decorators/slots.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
@@ -41,7 +40,6 @@ import styles from './rh-card.css';
  *              The font weight for headings in the header and body
  */
 @customElement('rh-card')
-@slots('header', 'image', null, 'footer')
 export class RhCard extends LitElement {
   static styles = [styles];
 
@@ -70,7 +68,7 @@ export class RhCard extends LitElement {
 
   @colorContextConsumer() private on?: ColorTheme;
 
-  #slots = new SlotController(this);
+  #slots = new SlotController(this, 'header', 'image', null, 'footer');
 
   #isPromo = this.variant === 'promo';
 
