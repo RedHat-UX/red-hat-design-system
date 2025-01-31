@@ -82,7 +82,7 @@ The recommended maximum character and line counts for the elements of a dialog a
 
 ### Overflow content
 
-When dialog content is taller than the dialog container height, the default behavior keeps the header fixed while  the body and footer sections scroll vertically. To make both the header and footer fixed, refer to the <a href="../dialog/code/">“Code” subpage</a>. 
+When dialog content is taller than the dialog container height, the default behavior keeps the header fixed while  the body and footer sections scroll vertically. To make both the header and footer fixed, refer to the <a href="../code/">“Code” subpage</a>. 
 
 The content will visibly fade at the end of the scrolling section to indicate there is additional content out of view. Dialog content should never scroll horizontally.
 
