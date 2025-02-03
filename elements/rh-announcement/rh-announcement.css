@@ -91,6 +91,10 @@
     }
   }
 
+  #container.inline-start #image {
+    align-items: center;
+  }
+
   #image,
   #cta {
     flex-shrink: 0;
