@@ -46,8 +46,11 @@
     background-color: var(--rh-color-surface-dark-alt, #292929);
   }
 
-  &.inline-start #content {
-    text-align: start;
+  &.inline-start,
+  &.block-start {
+    #content {
+      text-align: start;
+    }
   }
 
   &.inline-start.dismissable #content {
@@ -118,5 +121,19 @@
   #container:not(.inline-start) #body {
     padding-block: var(--rh-space-lg, 16px) var(--rh-space-md, 8px);
     padding-inline-end: var(--rh-space-lg, 16px);
+  }
+
+  #container {
+    &.block-start #row {
+      display: block;
+    }
+
+    &.block-start #image {
+      justify-content: flex-start;
+    }
+
+    &.block-start #body {
+      padding-inline-start: 0;
+    }
   }
 }

@@ -36,6 +36,11 @@ rh-announcement[image-position='inline-start']:not(:defined) {
   grid-template-columns: auto 2fr;
 }
 
+rh-announcement[image-position='block-start']:not(:defined) {
+  display: block;
+  text-align: start;
+}
+
 rh-announcement:not(:defined) :is(img, svg) {
   display: block;
   flex-shrink: 0;
@@ -62,7 +67,8 @@ rh-announcement:not(:defined) rh-cta:not(:defined) {
     margin-inline: auto;
   }
 
-  rh-announcement[image-position='inline-start']:not(:defined) {
+  rh-announcement[image-position='inline-start']:not(:defined),
+  rh-announcement[image-position='block-start']:not(:defined) {
     align-items: center;
     display: flex;
   }

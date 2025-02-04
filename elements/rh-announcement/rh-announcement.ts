@@ -52,9 +52,10 @@ export class RhAnnouncement extends LitElement {
   /**
    * Set the position of the image in the announcement on mobile viewports. Possible values are:
    * - `inline-start`
+   * - `block-start`
    */
   @property({ reflect: true, attribute: 'image-position' })
-  imagePosition?: 'inline-start';
+  imagePosition?: 'inline-start' | 'block-start';
 
   /**
    * Sets color theme based on parent context
@@ -76,6 +77,7 @@ export class RhAnnouncement extends LitElement {
   render() {
     const { dismissable, on = '' } = this;
     const imagePosInlineStart = this.imagePosition === 'inline-start';
+    const imagePosBlockStart = this.imagePosition === 'block-start';
 
     return html`
       <div id="container"
@@ -84,6 +86,7 @@ export class RhAnnouncement extends LitElement {
               [on]: !!on,
               dismissable,
               'inline-start': imagePosInlineStart,
+              'block-start': imagePosBlockStart,
               'empty': this.#slots.isEmpty(null),
             })}">
         <div id="row" part="row">
