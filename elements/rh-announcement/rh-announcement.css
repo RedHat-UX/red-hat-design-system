@@ -46,17 +46,16 @@
     background-color: var(--rh-color-surface-dark-alt, #292929);
   }
 
-  &.dismissable #content,
+  &.inline-start #content {
+    text-align: start;
+  }
+
   &.inline-start.dismissable #content {
     margin-inline-end: var(--rh-space-2xl, 32px);
   }
 
   &.inline-start #row {
     display: flex;
-  }
-
-  &.inline-start #content {
-    text-align: start;
   }
 
   &.inline-start #image {
@@ -80,6 +79,10 @@
   #content {
     align-items: center;
     display: flex;
+  }
+
+  #container.dismissable #content {
+    margin-inline-end: var(--rh-space-2xl, 32px);
   }
 
   #body {
