@@ -28,6 +28,8 @@ export class AnnouncementCloseEvent extends Event {
  * @slot    Any content that is not designated for the header or footer slot, will go to this slot.
  * @slot    cta
  *          If this slot is used, we expect a rh-cta component.
+ * @fires   {AnnouncementCloseEvent} close
+ *          When a user clicks the close/dismiss button on an announcement.
  * @csspart row
  *          The row for the banner. Contains the image and content divs.
  * @csspart image
