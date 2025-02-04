@@ -32,12 +32,6 @@ export class AnnouncementCloseEvent extends Event {
  *          The row for the banner. Contains the image and content divs.
  * @csspart image
  *          The image for the banner. Contains the image slot.
- * @csspart content
- *          The content container. Contains the body and cta slots.
- * @csspart body
- *          The body for the banner. Contains the default slot.
- * @csspart cta
- *          The cta for the banner. Contains the cta slot.
  */
 
 @customElement('rh-announcement')
