@@ -54,7 +54,7 @@
   text-align: center;
 
   &.dark {
-    background-color: var(--rh-color-surface-dark-alt, #292929);
+    --rh-color-surface: var(--rh-color-surface-dark-alt, #292929);
   }
 
   &.inline-start,
