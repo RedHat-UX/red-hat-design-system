@@ -73,10 +73,6 @@
       align-items: flex-start;
       flex: 1;
     }
-
-    #cta {
-      padding-inline-start: var(--rh-space-lg, 16px);
-    }
   }
 }
 
