@@ -1,6 +1,5 @@
 :host {
   display: flex;
-  position: relative;
 }
 
 .empty {
@@ -14,6 +13,18 @@
 #header-actions {
   grid-column: 3;
   justify-self: end;
+}
+
+#close-button {
+  inset-block-start: calc(var(--rh-space-md, 8px)  * -1);
+  inset-inline-end: calc(var(--rh-space-md, 8px)  * -1);
+  position: relative;
+
+  &::part(button) {
+    block-size: var(--rh-length-lg, 16px);
+    inline-size: var(--rh-length-lg, 16px);
+    padding: var(--rh-space-lg, 16px);
+  }
 }
 
 #body {
