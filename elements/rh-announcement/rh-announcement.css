@@ -16,8 +16,8 @@
 }
 
 #close-button {
-  inset-block-start: calc(var(--rh-space-md, 8px)  * -1);
-  inset-inline-end: calc(var(--rh-space-md, 8px)  * -1);
+  inset-block-start: calc(var(--rh-space-md, 8px) * -1);
+  inset-inline-end: calc(var(--rh-space-md, 8px) * -1);
   position: relative;
 
   &::part(button) {
