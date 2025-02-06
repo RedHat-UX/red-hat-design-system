@@ -23,9 +23,9 @@
 }
 
 #rhds-wrapper {
-  --offset: var(--rh-space-xl, 24px);
-  --offset-top: var(--offset);
-  --offset-right: var(--offset);
+  --_offset: var(--rh-space-xl, 24px);
+  --_offset-top: var(--_offset);
+  --_offset-right: var(--_offset);
 
   display: contents;
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
@@ -81,7 +81,7 @@
 }
 
 #content {
-  margin-block-start: calc(-1 * var(--offset-top));
+  margin-block-start: calc(-1 * var(--_offset-top));
 }
 
 #header {
@@ -95,7 +95,7 @@
     block-size: 100%;
     content: '';
     inline-size: 100%;
-    inset-block-start: calc(-1 * var(--offset-top));
+    inset-block-start: calc(-1 * var(--_offset-top));
     position: absolute;
     z-index: -1;
   }
@@ -133,7 +133,7 @@
 
 @media (min-width: 1200px) {
   #rhds-wrapper {
-    --offset: var(--rh-space-2xl, 32px);
+    --_offset: var(--rh-space-2xl, 32px);
   }
 
   #dialog {
@@ -141,7 +141,7 @@
   }
 
   #content:has(#header[hidden]) {
-    --offset-top: var(--rh-space-xl, 24px);
+    --_offset-top: var(--rh-space-xl, 24px);
   }
 
   #header[hidden] + #body {
@@ -207,7 +207,7 @@
 }
 
 :host([type='video']) #rhds-wrapper {
-  --offset: var(--rh-space-md, 8px);
+  --_offset: var(--rh-space-md, 8px);
 }
 
 :host([type='video'][open]) #dialog {
@@ -217,19 +217,19 @@
   background-color: var(--rh-dialog-overlay-background-color);
   max-inline-size:
     var(--_box-width,
-      min(90%, calc(90vh * var(--_aspect-ratio) + var(--offset-top))));
+      min(90%, calc(90vh * var(--_aspect-ratio) + var(--_offset-top))));
   padding: 0;
 }
 
 :host([type='video']) #close-button {
-  inset-inline-end: var(--offset-right);
-  inset-block-start: var(--offset-top);
+  inset-inline-end: var(--_offset-right);
+  inset-block-start: var(--_offset-top);
   margin-inline-end: 0;
   position: absolute;
 }
 
 :host([type='video']) #rhds-wrapper.mobile #close-button {
-  --offset-right: var(--rh-space-sm, 6px);
+  --_offset-right: var(--rh-space-sm, 6px);
 }
 
 :host([type='video']) #close-button::part(button) {
