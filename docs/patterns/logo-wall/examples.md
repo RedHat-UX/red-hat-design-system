@@ -9,12 +9,11 @@ tags:
 subnav:
   collection: logowallPatterns
   order: 4
-importElements:
-  - rh-cta
-  - rh-surface
 ---
 
 <script type="module" data-helmet>
+  import '@rhds/elements/rh-surface/rh-surface.js';
+  import '@rhds/elements/rh-cta/rh-cta.js';
   import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
 </script>
 

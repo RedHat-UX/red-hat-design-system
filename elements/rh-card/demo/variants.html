@@ -145,20 +145,20 @@
   }
 
   rh-card.bar {
-    --rh-card-heading-font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-    --rh-card-heading-font-weight: var(--rh-font-weight-body-text-regular, 400);
-    --rh-card-heading-font-size: var(--rh-font-size-body-text-md, 1rem);
+    --rh-card-heading-font-family: var(--rh-font-family-body-text);
+    --rh-card-heading-font-weight: var(--rh-font-weight-body-text-regular);
+    --rh-card-heading-font-size: var(--rh-font-size-body-text-md);
     &::part(header) {
       margin: 0;
-      padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
-      background-color: var(--_header-bg, var(--rh-color-surface-light, #e0e0e0));
+      padding: var(--rh-space-lg) var(--rh-space-xl);
+      background-color: var(--_header-bg, var(--rh-color-surface-light));
       text-transform: uppercase;
     }
   }
 
   rh-card.image {
-    --rh-card-heading-font-weight: var(--rh-font-weight-heading-medium, 500);
-    --rh-card-heading-font-size: var(--rh-font-size-heading-md, 1.75rem);
+    --rh-card-heading-font-weight: var(--rh-font-weight-heading-medium);
+    --rh-card-heading-font-size: var(--rh-font-size-heading-md);
     &::part(header) {
       margin: 0;
     }
@@ -172,7 +172,7 @@
     &.heading {
       & h2 {
         margin-block-start: 0;
-        margin-block-end: var(--rh-space-lg, 16px);
+        margin-block-end: var(--rh-space-lg);
       }
     }
   }

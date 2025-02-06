@@ -89,6 +89,9 @@ export default class ElementsPage extends Renderer<Context> {
       </noscript>
 
       <script type="module" data-helmet>
+        // although we load these ssr support modules elsewhere, we still
+        // need them here to ensure no double-rendering on webkit
+        import '/assets/javascript/ssr-support.js';
         import '@uxdot/elements/uxdot-copy-button.js';
         import '@uxdot/elements/uxdot-copy-permalink.js';
         import '@uxdot/elements/uxdot-best-practice.js';
@@ -961,4 +964,3 @@ export default class ElementsPage extends Renderer<Context> {
     }
   }
 };
-
