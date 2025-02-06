@@ -73,6 +73,10 @@
       align-items: flex-start;
       flex: 1;
     }
+
+    #cta {
+      padding-inline-start: var(--rh-space-lg, 16px);
+    }
   }
 }
 
@@ -98,8 +102,14 @@
     }
   }
 
-  #container.inline-start #image {
-    align-items: center;
+  #container.inline-start {
+    #image {
+      align-items: center;
+    }
+
+    #cta {
+      padding-inline-start: 0;
+    }
   }
 
   #image,
