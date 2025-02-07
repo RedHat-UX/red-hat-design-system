@@ -16,7 +16,7 @@ A dialog is commonly used for short tasks. If users need to perform a task sever
 A video dialog should have the same aspect ratio as the video and include a close button.
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../dialog-patterns-video-player.svg"
+  <img src="../dialog-patterns-video-player.png"
         alt="Dialog with an embedded video player spanning the entire container"
         width="1000"
         height="600">
