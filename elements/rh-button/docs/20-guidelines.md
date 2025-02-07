@@ -232,9 +232,9 @@ Group buttons logically into sets based on hierarchy and usage.
 
 ### Space in groups
 
-The standard spacing between each button is `16px`, even for Danger 
-buttons. If buttons are stacked, the spacing between each button should be 
-`8px`.
+The standard spacing between each button is `--rh-space-lg`, even for Danger 
+buttons. If buttons are stacked vertically, the spacing between each button should be 
+`--rh-space-md`.
 
 <uxdot-example width-adjustment="508px">
   <img src="../button-layout-spacing.png"
