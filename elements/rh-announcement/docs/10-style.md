@@ -1,92 +1,96 @@
 ## Style 
 
-An announcement consists of an image, a short blurb of text and a CTA.
+An announcement is a layout with various slots for content and images. Inline or background images may be included depending on the message or campaign.
 
 ## Anatomy
 
 <figure>
-  <uxdot-example width-adjustment="555px">
+  <uxdot-example variant="full" no-border>
     <img src="../announcement-anatomy.svg" alt="Anatomy of a announcement component with numbered annotations.">
   </uxdot-example>
   <figcaption>
-    <ol>
-      <li>Thumbnail</li>
-      <li>Play button</li>
-      <li>Caption</li>
+    <ol style="font-size: var(--rh-font-size-body-text-sm, 0.875rem);">
+      <li>Background image</li>
+      <li>Inline image</li>
+      <li>Body text</li>
+      <li>Call to action</li>
+      <li>Close button</li>
     </ol>
   </figcaption>
 </figure>
 
 ## Theme
 
-The announcement element is available on both light and dark [backgrounds](/theming/color-palettes/#backgrounds).
+An announcement is available in both light and dark themes.
 
-<div class="grid xs-two-columns">
-  <uxdot-example width-adjustment="420px">
-    <img src="../announcement-theme-light.svg" alt="rh-announcement element on a light background">
-  </uxdot-example>
+### Light theme
 
-  <uxdot-example width-adjustment="420px" color-palette="darkest">
-    <img src="../announcement-theme-dark.svg" alt="rh-announcement element on a dark background">
-  </uxdot-example>
-</div>
+<uxdot-example variant="full" no-border>
+  <img src="../announcement-theme-light.svg" alt="rh-announcement element on a light background">
+</uxdot-example>
+
+### Dark theme
+
+<uxdot-example variant="full" no-border>
+  <img src="../announcement-theme-dark.svg" alt="rh-announcement element on a dark background">
+</uxdot-example>
+
+### Changing the background color
+
+An announcement background color can be changed, but ensure accessibility guidelines like color contrast are maintained.
+
+<uxdot-example width-adjustment="1012px">
+ <img src="../announcement-style-theme-change.svg" alt="An announcement component with a purple background and white text">
+</uxdot-example>
+
+### Icons
+
+An announcement uses our [Icon](/elements/icon/) element and one icon from our repo.
+
+<rh-table>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col" data-label="icon-preview">Icon preview</th>
+        <th scope="col" data-label="icon-name">Icon name</th>
+        <th scope="col" data-label="html-code">HTML code</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td data-label="icon-preview">
+            <rh-icon set="microns" icon="close"></rh-icon>
+          </td>
+          <td data-label="icon-name">close</td>
+          <td data-label="html-code">
+            <code>&lt;rh-icon set=&quot;microns&quot; icon=&quot;close&quot;&gt;&lt;/rh-icon&gt;</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+</rh-table>
 
 ## Configuration
 
+You may use the inline image slot two different ways within an announcement.
+
+  - If you are using an inline image like a logo or icon, it has a max height of 48px
+  - If you are using a more horizontal text logo, it should be around 20px - 25px tall
+
+  <uxdot-example variant="full" no-border>
+    <img src="../announcement-style-configuration.svg" alt="Two light announcements on a gray background. One has a 48px image and the other has a 20-25px textd logo.">
+  </uxdot-example>
+
 ## Space
 
-Space values remain the same at all viewport sizes.
-
-<uxdot-example width-adjustment="555px">
- <img  src="../announcement-space.svg" alt="Diagram of spacing for announcement">
+<uxdot-example variant="full" no-border>
+ <img src="../announcement-style-space.svg" alt="Diagram of spacing for announcement at mobile, tablet and desktop viewports">
 </uxdot-example>
 
 
-## States
+## Interaction states
 
-Interaction states are visual representations used to communicate the status of an element or pattern.
+Refer to these documentation pages for interaction states.
 
-### Hover
-
-Description goes here.
-
-<div class="grid xs-two-columns">
-  <uxdot-example width-adjustment="420px">
-    <img src="../announcement-hover-light.svg" alt="rh-announcement showing hover styles">
-  </uxdot-example>
-
-  <uxdot-example width-adjustment="420px" color-palette="darkest">
-    <img src="../announcement-hover-dark.svg" alt="rh-announcement showing hover styles on a dark background">
-  </uxdot-example>
-</div>
-
-### Focus
-
-Focus description goes here.
-
-<div class="grid xs-two-columns">
-  <uxdot-example width-adjustment="420px">
-    <img src="../announcement-focus-light.svg"
-         alt="rh-announcement showing hover styles">
-  </uxdot-example>
-
-  <uxdot-example width-adjustment="420px" color-palette="darkest">
-    <img src="../announcement-focus-dark.svg"
-         alt="rh-announcement showing hover styles on a dark background">
-  </uxdot-example>
-</div>
-
-### Active
-
-Active description goes here.
-
-<div class="grid xs-two-columns">
-  <uxdot-example width-adjustment="420px">
-    <img src="../announcement-active-light.svg"
-         alt="rh-announcement showing active styles">
-  </uxdot-example>
-  <uxdot-example width-adjustment="420px" color-palette="darkest">
-    <img src="../announcement-active-dark.svg"
-         alt="rh-announcement showing active styles on a dark background">
-  </uxdot-example>
-</div>
+  - [Button](/elements/button/)
+  - [Call to action](elements/call-to-action/)
