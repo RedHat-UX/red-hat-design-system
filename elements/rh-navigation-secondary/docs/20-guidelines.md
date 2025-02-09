@@ -26,6 +26,7 @@ The [primary navigation](../../navigation-primary) includes links to the most im
 If a secondary navigation is used on a product page, Slot 1 should display the product name as linked text. When writing content for Slot 1, consider the following:
 
 - If product name text is long, it needs to break to two lines
+- A product name should not be so long that it breaks to three lines
 - If product name text is short and there are fewer links and menus, it can remain on one line
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
@@ -290,73 +291,72 @@ As breakpoints get smaller, Slot 2 will collapse into an accordion within a menu
 
 ## Best practices
   
-### Incorrect ordering
+### Navigation order
 
-Do not position the secondary navigation above the primary navigation.
+<div class="grid sm-two-columns">
+  <uxdot-best-practice variant="do">
+    <uxdot-example width-adjustment="482px" slot="image">
+      <img src="../secondary-nav-best-practices-nav-order-do.svg"
+            alt="Primary navigation above a secondary navigation"
+            width="482"
+            height="152">
+    </uxdot-example>
+    <p>The secondary navigation always appears below primary navigation when both are used.</p>
+  </uxdot-best-practice>
 
-<uxdot-example width-adjustment="872px" danger>
-  <img src="../nav-secondary-best-practice-1.png"
-        alt="Image of a secondary navigation on top of a primary navigation which is incorrect usage"
-        width="1000"
-        height="170">
-</uxdot-example>
+  <uxdot-best-practice variant="dont">
+    <uxdot-example width-adjustment="482px" slot="image">
+      <img src="../secondary-nav-best-practices-nav-order-dont.svg"
+            alt="Secondary navigation above primary navigation"
+            width="482"
+            height="152">
+    </uxdot-example>
+    <p>Do not position the secondary navigation above the primary navigation.</p>
+  </uxdot-best-practice>
+</div>
 
+### Theme matching
 
-### Theme mismatch
+<div class="grid sm-two-columns">
+  <uxdot-best-practice variant="do">
+    <uxdot-example width-adjustment="482px" slot="image">
+      <img src="../secondary-nav-best-practices-theme-do.svg"
+            alt="Light theme secondary navigation used on a snippet of a light theme page"
+            width="482"
+            height="200">
+    </uxdot-example>
+    <p>Use a light theme secondary navigation in a light theme environment and vice versa.</p>
+  </uxdot-best-practice>
 
-Do not use a dark theme secondary navigation in light environments and vice versa.
+  <uxdot-best-practice variant="dont">
+    <uxdot-example width-adjustment="482px" slot="image">
+      <img src="../secondary-nav-best-practices-theme-dont.svg"
+            alt="Light theme secondary navigation used on a snippet of a dark theme page"
+            width="482"
+            height="200">
+    </uxdot-example>
+    <p>Do not use a light theme secondary navigation in a dark environment and vice versa.</p>
+  </uxdot-best-practice>
+</div>
 
-<uxdot-example width-adjustment="872px" danger>
-  <img src="../nav-secondary-best-practice-2.png"
-        alt="Image of a dark theme secondary navigation in a light theme environment which is incorrect usage"
-        width="1000"
-        height="393">
-</uxdot-example>
+### Number of slots
 
+<uxdot-best-practice variant="do">
+  <uxdot-example width-adjustment="482px" slot="image">
+    <img src="../secondary-nav-best-practices-slot-number-do.svg"
+          alt="Secondary navigation with three slots"
+          width="482"
+          height="79">
+  </uxdot-example>
+  <p>Three is the maximum number of slots.</p>
+</uxdot-best-practice>
 
-### Content overload
-
-Do not use too many links or menus in Slot 2.
-
-<uxdot-example width-adjustment="872px" danger>
-  <img src="../nav-secondary-best-practice-3.png"
-        alt="Image of a secondary navigation with way more than five links and menus which is incorrect usage"
-        width="1000"
-        height="98">
-</uxdot-example>
-
-
-### Adding slots
-
-Do not add more slots than provided, three is the maximum.
-
-<uxdot-example width-adjustment="872px" danger>
-  <img src="../nav-secondary-best-practice-4.png"
-        alt="Image of a secondary navigation with four dotted line boxes for slots which is incorrect usage"
-        width="1000"
-        height="98">
-</uxdot-example>
-
-  
-### Slot 1 text
-
-Slot 1 text should never break to three lines.
-
-<uxdot-example width-adjustment="872px" danger>
-  <img src="../nav-secondary-best-practice-5.png"
-        alt="Image of a secondary navigation, but the product name logo in slot 1 is three lines which is incorrect usage"
-        width="1000"
-        height="125">
-</uxdot-example>
-
-  
-### Missing navigation
-
-At least one link or menu in Slot 2 must be visible.
-
-<uxdot-example width-adjustment="872px" danger>
-  <img src="../nav-secondary-best-practice-6.png"
-        alt="Image of a secondary navigation with no links or menus in slot 2 which is incorrect usage"
-        width="1000"
-        height="98">
-</uxdot-example>
+<uxdot-best-practice variant="dont">
+  <uxdot-example width-adjustment="482px" slot="image">
+    <img src="../secondary-nav-best-practices-slot-number-dont.svg"
+          alt="Secondary navigation with four slots"
+          width="482"
+          height="79">
+  </uxdot-example>
+  <p>Do not add more slots than the three provided.</p>
+</uxdot-best-practice>
