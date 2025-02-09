@@ -1,13 +1,7 @@
 :host {
-  --rh-color-border-subtle: var(--rh-color-gray-30, #c7c7c7);
-
   border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
   display: block;
   font-family: var(--rh-font-family-body-text);
-}
-
-:host:has(.on.dark) {
-  --rh-color-border-subtle: var(--rh-color-gray-50, #707070);
 }
 
 summary {
@@ -88,7 +82,7 @@ summary {
 
   &:before {
     content: '';
-    border-inline-start: 3px solid var(--rh-color-brand-red-on-light, #ee0000);
+    border-inline-start: 3px solid var(--rh-color-brand-red);
     position: absolute;
     z-index: 1;
     inset-inline-start: -1px;
