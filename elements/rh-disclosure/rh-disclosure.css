@@ -76,9 +76,13 @@ summary {
   margin-block-end: 0 !important;
 }
 
-:host:has(details[open]) {
+details[open] {
   box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
   position: relative;
+
+  & #caret {
+    transform: rotate(-180deg);
+  }
 
   &:before {
     content: '';
@@ -87,11 +91,5 @@ summary {
     z-index: 1;
     inset-inline-start: -1px;
     inset-block: -1px;
-  }
-}
-
-details[open] {
-  #caret {
-    transform: rotate(-180deg);
   }
 }
