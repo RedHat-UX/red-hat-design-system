@@ -10,7 +10,7 @@ rh-disclosure:not(:defined) {
 
   &:before {
     content: '';
-    border-inline-start: 3px solid var(--rh-color-brand-red-on-light, #ee0000);
+    border-inline-start: 3px solid var(--rh-color-brand-red);
     position: absolute;
     z-index: 1;
     inset-inline-start: -1px;
