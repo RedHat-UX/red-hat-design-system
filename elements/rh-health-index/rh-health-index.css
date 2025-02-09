@@ -13,7 +13,6 @@
   font-size: var(--rh-font-size-body-text-md, 1rem);
   font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace);
   line-height: var(--_box-size);
-  text-transform: uppercase;
 
   /* sizing */
   --_box-size: var(--rh-space-xl, 24px);
