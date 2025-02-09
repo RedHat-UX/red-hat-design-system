@@ -32,6 +32,11 @@ a {
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
+
+  /* --rh-media-sm */
+  @media (min-width: 768px) {
+    font-size: 110%;
+  }
 }
 
 :host([expanded]) {
