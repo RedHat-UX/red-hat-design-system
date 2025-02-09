@@ -31,6 +31,18 @@ export class RhDisclosure extends LitElement {
 
   static readonly styles = [styles];
 
+  private static readonly preventEscElements = [
+    'input:not([type="hidden"])',
+    'select',
+    'textarea',
+    'iframe',
+    'audio[controls]',
+    'video[controls]',
+    '[contenteditable]',
+    'rh-audio-player',
+    'rh-dialog',
+  ].map(x => `${x}:not([inert]):not([inert] *):not([tabindex^='-']):not(:disabled)`).join(',');
+
   /**
    * Set the colorPalette of the disclosure. Possible values are:
    * - `lightest` (default)
@@ -82,25 +94,12 @@ export class RhDisclosure extends LitElement {
   }
 
   #onKeydown(event: KeyboardEvent): void {
-    const preventEscElements = `
-      input:not([type='hidden']):not([type='radio']):not([inert]):not([inert] *):not([tabindex^='-']):not(:disabled),
-      input[type='radio']:not([inert]):not([inert] *):not([tabindex^='-']):not(:disabled),
-      select:not([inert]):not([inert] *):not([tabindex^='-']):not(:disabled),
-      textarea:not([inert]):not([inert] *):not([tabindex^='-']):not(:disabled),
-      iframe:not([inert]):not([inert] *):not([tabindex^='-']),
-      audio[controls]:not([inert]):not([inert] *):not([tabindex^='-']),
-      video[controls]:not([inert]):not([inert] *):not([tabindex^='-']),
-      [contenteditable]:not([inert]):not([inert] *):not([tabindex^='-']),
-      rh-audio-player:not([inert]):not([inert] *):not([tabindex^='-']):not(:disabled),
-      rh-dialog:not([inert]):not([inert] *):not([tabindex^='-']):not(:disabled)
-    `;
-
     if (event.code === 'Escape') {
       event.stopPropagation();
 
       const escapeGuardElement =
         event.composedPath().reverse().find((element: EventTarget | null) => {
-          return (element instanceof Element && element.matches(preventEscElements));
+          return (element instanceof Element && element.matches(RhDisclosure.preventEscElements));
         });
 
       if (!escapeGuardElement) {
