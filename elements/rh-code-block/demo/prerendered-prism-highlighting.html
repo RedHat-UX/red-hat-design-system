@@ -1,5 +1,9 @@
 <rh-context-demo>
-  <rh-code-block highlighting="prerendered">
+  <rh-code-block highlighting="prerendered" actions="copy wrap">
+  <span slot="action-label-copy">Copy to Clipboard</span>
+  <span slot="action-label-copy" hidden data-code-block-state="active">Copied!</span>
+  <span slot="action-label-wrap">Toggle word wrap</span>
+  <span slot="action-label-wrap" hidden data-code-block-state="active">Toggle overflow</span>
     <pre class="language-html"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
@@ -24,7 +28,11 @@
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span></code></pre>
   </rh-code-block>
 
-  <rh-code-block highlighting="prerendered">
+  <rh-code-block highlighting="prerendered" actions="copy wrap">
+  <span slot="action-label-copy">Copy to Clipboard</span>
+  <span slot="action-label-copy" hidden data-code-block-state="active">Copied!</span>
+  <span slot="action-label-wrap">Toggle word wrap</span>
+  <span slot="action-label-wrap" hidden data-code-block-state="active">Toggle overflow</span>
     <pre class="language-css"><code class="language-css"><span class="token selector">rh-card.avatar-card</span> <span class="token punctuation">{</span>
   <span class="token property">width</span><span class="token punctuation">:</span> 360px<span class="token punctuation">;</span>
   <span class="token selector">&amp;::part(body)</span> <span class="token punctuation">{</span>
@@ -44,7 +52,11 @@
 <span class="token punctuation">}</span></code></pre>
   </rh-code-block>
 
-  <rh-code-block highlighting="prerendered">
+  <rh-code-block highlighting="prerendered" actions="copy wrap">
+  <span slot="action-label-copy">Copy to Clipboard</span>
+  <span slot="action-label-copy" hidden data-code-block-state="active">Copied!</span>
+  <span slot="action-label-wrap">Toggle word wrap</span>
+  <span slot="action-label-wrap" hidden data-code-block-state="active">Toggle overflow</span>
     <pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">extends</span><span class="token punctuation">:</span>
   <span class="token punctuation">-</span> stylelint<span class="token punctuation">-</span>config<span class="token punctuation">-</span>standard
   <span class="token punctuation">-</span> <span class="token string">'@stylistic/stylelint-config'</span>
