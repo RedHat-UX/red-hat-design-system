@@ -2,7 +2,7 @@
   line-height: var(--rh-line-height-body-text, 1.5);
   font-weight: var(--rh-font-weight-body-text-regular, 400);
   font-size: var(--rh-font-size-code-md, 1rem);
-  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
 }
 
 [hidden] {
@@ -139,7 +139,7 @@ rh-audio-player-rate-stepper {
 
 ::slotted([slot='title']) {
   font-size: var(--rh-font-size-body-text-xl, 1.25rem) !important;
-  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif) !important;
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif) !important;
   font-weight: var(--rh-font-weight-heading-medium, 500) !important;
   line-height: var(--rh-line-height-heading, 1.3) !important;
   margin: 0 0 var(--rh-space-lg, 16px) !important;
@@ -147,7 +147,7 @@ rh-audio-player-rate-stepper {
 }
 
 #mediatitle {
-  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-heading-xs, 1.25rem);
   font-weight: var(--rh-font-weight-heading-medium, 500);
   height: 26px;
@@ -159,7 +159,7 @@ rh-audio-player-rate-stepper {
   height: 18px;
   line-height: 1;
   font-weight: var(--rh-font-weight-body-text-regular, 400);
-  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
   letter-spacing: var(--rh-letter-spacing-body-text, 0.0125rem);
   margin: 0 0 var(--rh-space-md, 8px);
   color: var(--_secondary-text-color);
@@ -424,7 +424,7 @@ rh-menu > button {
   background-color: var(--_static-overlay-color);
   font-size: var(--rh-font-size-body-text-md, 1rem);
   line-height: var(--rh-line-height-body-text, 1.5);
-  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
 }
 
 rh-menu > button:hover {

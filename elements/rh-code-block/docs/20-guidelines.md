@@ -57,24 +57,50 @@ Container spacing and code text size reduces as breakpoints get smaller.
 
 ## Best practices
 
-### Different font
+### Font family
 
-Do not use a different font than `--rh-font-family-code`.
+<uxdot-best-practice variant="do">
+  <uxdot-example slot="image" width-adjustment="768px">
+    <img src="../code-block-best-practices-font-family-do.svg" 
+        alt="Code block text using Red Hat Mono"
+        width="768"
+        height="192">
+  </uxdot-example>
 
-<uxdot-example width-adjustment="872px" danger>
-  <img src="../code-block-best-practice-1.png"
-        alt="Image of a code block showing the Red Hat Text font used for code text which is incorrect usage"
-        width="872"
-        height="285">
-</uxdot-example>
+  <p>Use <code>--rh-font-family-code</code>.</p>
+</uxdot-best-practice>
 
-### Different styling
+<uxdot-best-practice variant="dont">
+  <uxdot-example slot="image" width-adjustment="768px">
+    <img  src="../code-block-best-practices-font-family-dont.svg" 
+        alt="Code block text using Red Hat Text"
+        width="768"
+        height="192">
+  </uxdot-example>
 
-Do not change any of the code block styling.
+  <p>Do not use a different font family token than <code>--rh-font-family-code</code>.</p>
+</uxdot-best-practice>
 
-<uxdot-example width-adjustment="872px" danger>
-  <img src="../code-block-best-practice-2.png"
-        alt="Image of a code block showing different styles which is incorrect usage"
-        width="872"
-        height="285">
-</uxdot-example>
+### Customizing
+
+<uxdot-best-practice variant="do">
+  <uxdot-example slot="image" width-adjustment="768px">
+    <img src="../code-block-best-practices-customizing-do.svg" 
+        alt="Code block using default styling"
+        width="768"
+        height="192">
+  </uxdot-example>
+
+  <p>Use the available options for customizing code block. (Adjusting syntax highlighting is ok.)</p>
+</uxdot-best-practice>
+
+<uxdot-best-practice variant="dont">
+  <uxdot-example slot="image" width-adjustment="768px">
+    <img  src="../code-block-best-practices-customizing-dont.svg" 
+        alt="Code block with white background and black border"
+        width="768"
+        height="192">
+  </uxdot-example>
+
+  <p>Do not change the code block styling, especially if it will look like other text containers on the same page.</p>
+</uxdot-best-practice>
