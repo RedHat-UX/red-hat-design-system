@@ -31,9 +31,9 @@ describe('when the element loads', function() {
              height="48"
              role="img"
              aria-label="Sample image">
-          <rect fill="var(--rh-color-border-interactive-on-light, #0066cc)"
+          <rect fill="var(--rh-color-border-interactive)"
             fill-opacity="0.1"
-            stroke="var(--rh-color-border-interactive-on-light, #0066cc)"
+            stroke="var(--rh-color-border-interactive)"
             stroke-width="2px"
             width="100%"
             height="100%"
