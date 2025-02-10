@@ -1,4 +1,4 @@
-import { expect, html } from '@open-wc/testing';
+import { expect, html, oneEvent } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
 
 import { RhAnnouncement } from '@rhds/elements/rh-announcement/rh-announcement.js';
@@ -23,9 +23,10 @@ describe('<rh-announcement>', function() {
 
 describe('when the element loads', function() {
   let element: RhAnnouncement;
+  let elementCloseButton: HTMLButtonElement | undefined | null;
   beforeEach(async function() {
     element = await createFixture<RhAnnouncement>(html`
-      <rh-announcement>
+      <rh-announcement dismissible image-position="inline-start">
         <svg slot="image"
              width="80"
              height="48"
@@ -51,10 +52,31 @@ describe('when the element loads', function() {
       </rh-announcement>
     `);
     await element.updateComplete;
+    elementCloseButton = element.shadowRoot?.querySelector('#close-button');
   });
 
   it('should be accessible', async function() {
     await expect(element)
         .to.be.accessible();
+  });
+
+  it('should send a close event on close button click', async function() {
+    const eventPromise = oneEvent(element, 'close');
+    elementCloseButton?.click();
+    const event = await eventPromise;
+
+    expect(event).to.be.an.instanceOf(Event);
+    expect(event.type).to.equal('close');
+    expect(element.isConnected).to.be.false;
+  });
+
+
+  it('should remove the rh-announcement from DOM after close button click', async function() {
+    const parent = element.parentElement;
+
+    elementCloseButton?.click();
+    await element.updateComplete;
+
+    expect(parent?.contains(element)).to.be.false;
   });
 });
