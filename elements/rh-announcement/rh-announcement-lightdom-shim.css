@@ -22,14 +22,6 @@ rh-announcement[color-palette*='dark']:not(:defined) {
   background-color: var(--rh-color-surface-dark-alt, #292929);
 }
 
-rh-announcement[color-palette*='dark']:not(:defined) p {
-  color: var(--rh-color-white, #ffffff);
-}
-
-rh-announcement[color-palette*='dark']:not(:defined) a {
-  color: var(--rh-color-interactive-primary-default-on-dark, #92c5f9);
-}
-
 rh-announcement[image-position='inline-start']:not(:defined) {
   align-items: start;
   display: grid;
