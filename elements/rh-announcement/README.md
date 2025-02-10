@@ -22,10 +22,17 @@ promoting an event or advertising an organizational or product announcement.
 
 ### Attributes
 
-`dismissable`
+`dismissible`
 
 - If this attribute is added, a close button will appear in the top right 
   corner. Clicking this will hide the banner.
+
+`image-position`
+
+- Change the position of the image on mobile viewports. Possible values are:
+  * `inline-start`
+  * `block-start`
+
 
 ### Basic Announcement Banner
 
@@ -40,11 +47,13 @@ promoting an event or advertising an organizational or product announcement.
 ```
 
 ### Announcement Banner using attributes
-- dismissable
-- dark color pallette
+
+- `dismissible`
+- `image-position="inline-start"`
+- dark color palette
 
 ```html
-<rh-announcement dismissable color-palette="dark">
+<rh-announcement dismissible image-position="inline-start" color-palette="dark">
   <img slot="image"
        alt="summit logo"
        src="/images/summit.png">
