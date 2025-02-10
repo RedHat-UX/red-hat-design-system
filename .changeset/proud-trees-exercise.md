@@ -13,8 +13,6 @@ promoting an event or advertising an organizational or product announcement.
        alt="summit logo"
        src="/images/summit.png">
   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit adipisicing elit adipisicing elit.</p>
-  <rh-cta slot="cta">
-    <a href="#">Learn More</a>
-  </rh-cta>
+  <rh-cta slot="cta" href="#">Learn More</rh-cta>
 </rh-announcement>
 ```

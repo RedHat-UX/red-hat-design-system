@@ -47,9 +47,7 @@ describe('when the element loads', function() {
           </text>
         </svg>
         <p>Main content</p>
-        <rh-cta slot="cta">
-          <a href="#">CTA Text</a>
-        </rh-cta>
+        <rh-cta slot="cta" href="#">CTA Text</rh-cta>
       </rh-announcement>
     `);
     await element.updateComplete;
