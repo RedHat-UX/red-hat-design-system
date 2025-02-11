@@ -3,8 +3,6 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
-import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
-
 import '@rhds/elements/rh-icon/rh-icon.js';
 
 import styles from './rh-back-to-top.css';
@@ -40,8 +38,6 @@ export class RhBackToTop extends LitElement {
 
   #scrollElement?: Element | Window;
 
-  #logger = new Logger(this);
-
   get #rootNode(): Document | ShadowRoot {
     const root = this.getRootNode();
     if (root instanceof Document || root instanceof ShadowRoot) {
@@ -55,14 +51,8 @@ export class RhBackToTop extends LitElement {
     super.connectedCallback();
     this.#addScrollListener();
 
-    // warn if missing href attribute
-    if (!this.href) {
-      this.#logger.warn(`missing href attribute text fragment`);
-    }
-    // warn if missing hash in href attribute
     if (this.href && this.href.charAt(0) !== '#') {
       this.href = `#${this.href}`;
-      this.#logger.warn(`missing hash in href attribute text fragment`);
     }
   }
 
@@ -96,8 +86,8 @@ export class RhBackToTop extends LitElement {
   #addScrollListener() {
     this.#removeScrollListener();
 
+    // scrollable-selector attribute cannot be empty:
     if (this.scrollableSelector?.trim() === '') {
-      this.#logger.error(`scrollable-selector attribute cannot be empty`);
       return;
     }
 
@@ -105,7 +95,6 @@ export class RhBackToTop extends LitElement {
     if (this.#scrollSpy && this.scrollableSelector) {
       const scrollableElement = this.#rootNode.querySelector(this.scrollableSelector);
       if (!scrollableElement) {
-        this.#logger.error(`unable to find element with selector ${this.scrollableSelector}`);
         return;
       }
       this.#scrollElement = scrollableElement;
