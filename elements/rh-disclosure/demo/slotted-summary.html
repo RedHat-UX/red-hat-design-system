@@ -1,14 +1,17 @@
-<rh-disclosure>
-  <span slot="summary" class="icon">
-    This is a slotted summary with extra markup <rh-icon set="ui" icon="like"></rh-icon>
-  </span>
-  <p>Instead of using <code>&lt;rh-disclosure summary="Hello world"&gt;</code>, users can slot content into a <code>summary</code> slot and include additional HTML if needed.</p>
-  <p>Also note that slotted <code>summary</code> content will render on the page if/when JavaScript fails to load.</p>
-</rh-disclosure>
+<rh-surface color-palette="lightest">
+  <rh-disclosure>
+    <span slot="summary" class="icon">
+      This is a slotted summary with extra markup <rh-icon set="ui" icon="like"></rh-icon>
+    </span>
+    <p>Instead of using <code>&lt;rh-disclosure summary="Hello world"&gt;</code>, users can slot content into a <code>summary</code> slot and include additional HTML if needed.</p>
+    <p>Also note that slotted <code>summary</code> content will render on the page if/when JavaScript fails to load.</p>
+  </rh-disclosure>
+</rh-surface>
 
 <link rel="stylesheet" href="../rh-disclosure-lightdom-shim.css">
 
 <script type="module">
+  import '@rhds/elements/rh-surface/rh-surface.js';
   import '@rhds/elements/rh-disclosure/rh-disclosure.js';
   import '@rhds/elements/rh-icon/rh-icon.js';
 </script>
