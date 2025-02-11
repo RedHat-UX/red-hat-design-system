@@ -2,4 +2,6 @@
 "@rhds/elements": patch
 ---
 
-Removed css that force headings to be in all caps
+`<rh-tile>`:  
+`<rh-stat>`:  
+`<rh-health-index>`: no longer force headings to be in all caps
