@@ -30,7 +30,7 @@ export type ColorPalette = (
 );
 
 const controllers = new WeakMap<ReactiveElement, ColorContextProvider>();
-const values = new WeakMap<ReactiveElement, ColorTheme | null>();
+const values = new WeakMap<ReactiveElement, ColorPalette | null>();
 
 /**
  * `ColorContextProvider` is responsible to derive a context value from CSS and provide it to its
@@ -46,7 +46,7 @@ class ColorContextProvider extends ContextProvider<typeof context> {
     palette ??= this.host.colorPalette ?? null as ColorPalette | null;
     const background = paletteBackgroundMap.get(palette!) ?? null;
     this.setValue(background, isServer);
-    values.set(this.host, background);
+    values.set(this.host, palette ?? null);
   }
 }
 
