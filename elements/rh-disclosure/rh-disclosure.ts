@@ -32,16 +32,25 @@ export class RhDisclosure extends LitElement {
   static readonly styles = [styles];
 
   private static readonly preventEscElements = [
-    'input:not([type="hidden"])',
-    'select',
-    'textarea',
-    'iframe',
-    'audio[controls]',
-    'video[controls]',
-    '[contenteditable]',
-    'rh-audio-player',
-    'rh-dialog',
-  ].map(x => `${x}:not([inert]):not([inert] *):not([tabindex^='-']):not(:disabled)`).join(',');
+    'input:not([type="hidden"]):not([type="radio"])',
+
+    // Elements that need the :disabled selector:
+    ...[
+      'input[type="radio"]',
+      'select',
+      'textarea',
+      'rh-audio-player',
+      'rh-dialog',
+    ].map(selector => `${selector}:not([inert]):not([inert] *):not([tabindex^='-']):not(:disabled)`),
+
+    // Elements that don't need the :disabled selector:
+    ...[
+      'iframe',
+      'audio[controls]',
+      'video[controls]',
+      '[contenteditable]',
+    ].map(selector => `${selector}:not([inert]):not([inert] *):not([tabindex^='-'])`),
+  ].join(',');
 
   /**
    * Set the colorPalette of the disclosure. Possible values are:
