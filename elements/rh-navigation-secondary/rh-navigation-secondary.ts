@@ -23,6 +23,9 @@ import { DirController } from '../../lib/DirController.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+
+import styles from './rh-navigation-secondary.css';
+
 export class SecondaryNavOverlayChangeEvent extends ComposedEvent {
   constructor(
     public open: boolean,
@@ -36,9 +39,6 @@ export type NavPalette = Extract<ColorPalette, (
   | 'lighter'
   | 'dark'
 )>;
-
-import styles from './rh-navigation-secondary.css';
-
 
 /* TODO: Abstract this out to a shareable function, should RTI handle something similar? */
 function focusableChildElements(parent: HTMLElement): NodeListOf<HTMLElement> {
