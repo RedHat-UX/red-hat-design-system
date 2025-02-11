@@ -69,11 +69,11 @@ centered.
 
 ### Stacking
 
-There is `48px` of space when avatar groups are stacked vertically.
+There should be a spacing of `--rh-space-3xl` between avatar groups that are stacked vertically.
 
 <uxdot-example width-adjustment="385px">
   <img src="../avatar-usage-stacking.png" 
-      alt="Image of three avatar groups stacked vertically with 48 pixel of space in between"
+      alt="Image of three avatar groups stacked vertically"
       width="385"
       height="288">
 </uxdot-example>
