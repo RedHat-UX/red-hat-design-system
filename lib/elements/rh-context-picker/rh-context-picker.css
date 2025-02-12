@@ -70,6 +70,11 @@ input:focus {
   outline: var(--thumb-color) solid 4px;
 }
 
+label,
+rh-tooltip span {
+  text-transform: capitalize;
+}
+
 .visually-hidden {
   position: fixed;
   top: 0;
