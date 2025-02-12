@@ -1,0 +1,54 @@
+rh-navigation-universal {
+  --_rh-navigation-universal-caret-size: 12px;
+
+  container-name: nav-universal;
+  container-type: inline-size;
+}
+
+rh-navigation-universal > ul > li {
+  display: inline;
+  color: var(--rh-color-gray-20, #e0e0e0);
+}
+
+rh-navigation-universal-dropdown > ul > li {
+  color: var(--rh-color-gray-95, #151515);
+}
+
+rh-navigation-universal > ul > li:not(:last-child) {
+  border-inline-end: var(--rh-border-width-sm, 1px) solid var(--rh-color-gray-50, #707070);
+}
+
+rh-navigation-universal > ul > li > a {
+  border-block-start: var(--rh-border-width-lg, 3px) solid transparent;
+  color: var(--rh-color-white, #ffffff);
+  display: inline-block;
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+  padding: var(--rh-space-md, 8px);
+  text-decoration: none;
+}
+
+rh-navigation-universal > ul > li > a:hover {
+  border-block-start-color: var(--rh-color-border-subtle);
+  cursor: pointer;
+}
+
+rh-navigation-universal > ul > li > a:focus-visible {
+  outline: var(--rh-border-width-sm, 1px) dashed var(--rh-color-white, #ffffff);
+  outline-offset: -1px;
+}
+
+rh-navigation-universal-dropdown :is(p, a, li) {
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+rh-navigation-universal [slot='personalization-link'] a {
+  color: white;
+  text-decoration: none;
+}
+
+rh-navigation-universal [slot='personalization-link'] a:is(:hover, :focus) {
+  text-decoration: underline;
+}
