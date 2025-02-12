@@ -3,5 +3,6 @@
 ---
 
 `<rh-tile>`:  
-`<rh-stat>`:  
-`<rh-health-index>`: no longer force headings to be in all caps
+`<rh-stat>`: 
+`<rh-card>`: 
+`<rh-icon>`: no longer force headings to be in all caps
