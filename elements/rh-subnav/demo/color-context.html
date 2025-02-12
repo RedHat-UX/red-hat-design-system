@@ -1,5 +1,26 @@
-<rh-context-demo>
+<div class="grid">
+<rh-context-demo allow="lightest,lighter,light" color-palette="lightest">
+  <rh-subnav color-palette="lightest">
+    <a href="#">Users</a>
+    <a href="#">Containers</a>
+    <a href="#">Databases</a>
+    <a href="#" active>Servers</a>
+    <a href="#">System</a>
+    <a href="#"><rh-icon slot="icon" icon="data" set="ui" size="sm"></rh-icon> Network</a>
+    <a href="#">Cloud</a>
+  </rh-subnav>
+
   <rh-subnav>
+    <a href="#">Users</a>
+    <a href="#">Containers</a>
+    <a href="#">Databases</a>
+    <a href="#" active>Servers</a>
+    <a href="#">System</a>
+    <a href="#"><rh-icon slot="icon" icon="data" set="ui" size="sm"></rh-icon> Network</a>
+    <a href="#">Cloud</a>
+  </rh-subnav>
+
+  <rh-subnav color-palette="light">
     <a href="#">Users</a>
     <a href="#">Containers</a>
     <a href="#">Databases</a>
@@ -10,7 +31,56 @@
   </rh-subnav>
 </rh-context-demo>
 
+<rh-context-demo allow="darkest, darker, dark">
+  <rh-subnav color-palette="dark">
+    <a href="#">Users</a>
+    <a href="#">Containers</a>
+    <a href="#">Databases</a>
+    <a href="#" active>Servers</a>
+    <a href="#">System</a>
+    <a href="#"><rh-icon slot="icon" icon="data" set="ui" size="sm"></rh-icon> Network</a>
+    <a href="#">Cloud</a>
+  </rh-subnav>
+
+  <rh-subnav color-palette="darker">
+    <a href="#">Users</a>
+    <a href="#">Containers</a>
+    <a href="#">Databases</a>
+    <a href="#" active>Servers</a>
+    <a href="#">System</a>
+    <a href="#"><rh-icon slot="icon" icon="data" set="ui" size="sm"></rh-icon> Network</a>
+    <a href="#">Cloud</a>
+  </rh-subnav>
+
+  <rh-subnav color-palette="darkest">
+    <a href="#">Users</a>
+    <a href="#">Containers</a>
+    <a href="#">Databases</a>
+    <a href="#" active>Servers</a>
+    <a href="#">System</a>
+    <a href="#"><rh-icon slot="icon" icon="data" set="ui" size="sm"></rh-icon> Network</a>
+    <a href="#">Cloud</a>
+  </rh-subnav>
+
+</rh-context-demo>
+</div>
 <link rel="stylesheet" href="../rh-subnav-lightdom.css">
+
+<style>
+  #light,
+  #dark {
+    padding: var(--rh-space-2xl);
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+
+    & rh-context-demo::part(provider) {
+      height: auto;
+    }
+  }
+</style>
 
 <script type="module">
   import '@rhds/elements/rh-subnav/rh-subnav.js';
