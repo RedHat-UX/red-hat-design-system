@@ -17,8 +17,6 @@ export class UxdotRepoStatusChecklist extends UxdotRepoElement {
   render() {
     const status = this.getStatus(this.element!);
     return html`
-      <!-- TODO: remove lightdom after implementing auto-load-->
-      <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
       <div id="container">
         <rh-table>
           <table>
