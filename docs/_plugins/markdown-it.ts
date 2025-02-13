@@ -69,7 +69,15 @@ function rhdsCodeBlock(md: MarkdownIt) {
                        dedent
                        actions="${actions.join(' ')}"
                        highlighting="prerendered"
-                       ${slf.renderAttrs(redactedToken)}>${rendered}</rh-code-block>`.trim();
+                       ${slf.renderAttrs(redactedToken)}>
+          <span slot="action-label-copy">Copy to Clipboard</span>
+          <span slot="action-label-copy" hidden="" data-code-block-state="active">Copied!</span>
+          ${!hasMoreThan1Line ? '' : html`
+            <span slot="action-label-wrap">Toggle word wrap</span>
+            <span slot="action-label-wrap" hidden="" data-code-block-state="active">Toggle overflow</span>
+          `}
+          ${rendered}
+        </rh-code-block>`.trim();
     } else {
       return rendered;
     }
