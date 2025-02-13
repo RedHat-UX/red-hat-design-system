@@ -9,7 +9,6 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { DirController } from '../../lib/DirController.js';
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
 import styles from './rh-pagination.css';
 
@@ -44,8 +43,6 @@ const L2 = html`
 export class RhPagination extends LitElement {
   static readonly version = '{{version}}';
 
-  /** Sets color theme based on parent context */
-  @colorContextConsumer() private on?: ColorTheme;
 
   static readonly styles = [styles];
 
@@ -114,7 +111,6 @@ export class RhPagination extends LitElement {
   }
 
   render() {
-    const { on = '' } = this;
     const { dir } = this.#dir;
     const { label, labelFirst, labelPrevious, labelNext, labelLast } = this;
     const firstHref = this.#currentLink === this.#firstLink ? undefined : this.#firstLink?.href;
@@ -125,7 +121,7 @@ export class RhPagination extends LitElement {
 
     return html`
       <div id="container" part="container"
-           class=${classMap({ [dir]: true, [on]: !!on })}>
+           class=${classMap({ [dir]: true })}>
         <a id="first" class="stepper" href=${ifDefined(firstHref)} ?inert=${!firstHref} aria-label=${labelFirst}>${L2}</a>
         <a id="prev" class="stepper" href=${ifDefined(prevHref)} ?inert=${!prevHref} aria-label=${labelPrevious}>${L1}</a>
         <nav aria-label=${label}>

@@ -3,8 +3,7 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { html, LitElement } from 'lit';
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+import { type ColorPalette } from '../../lib/context/color/provider.js';
 
 import styles from './rh-card.css';
 
@@ -51,7 +50,6 @@ export class RhCard extends LitElement {
    *
    * Card always resets its context to `base`, unless explicitly provided with a `color-palette`.
    */
-  @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   /**
@@ -64,7 +62,6 @@ export class RhCard extends LitElement {
    */
   @property({ reflect: true, attribute: 'full-width', type: Boolean }) fullWidth? = false;
 
-  @colorContextConsumer() private on?: ColorTheme;
 
   #slots = new SlotController(this, 'header', 'image', null, 'footer');
 
@@ -100,18 +97,11 @@ export class RhCard extends LitElement {
     }
   }
 
-  get #computedContext() {
-    return this.colorPalette ?
-      this.colorPalette?.includes('light') ? 'light' : 'dark'
-      : undefined;
-  }
 
   override render() {
     const promo = this.variant === 'promo';
     const standard = this.#isStandardPromo;
     const computedPalette = this.#computedPalette;
-    const computedContext = this.#computedContext;
-    const on = computedContext ?? this.on ?? 'light';
     const { variant = '' } = this;
     const hasHeader = this.#slots.hasSlotted('header');
     const hasFooter = this.#slots.hasSlotted('footer');
@@ -134,8 +124,6 @@ export class RhCard extends LitElement {
           part="container"
           class="${classMap({
             standard,
-            'on': true,
-            [on]: true,
             [variant]: !!variant,
             [`palette-${computedPalette}`]: !!computedPalette,
             'palette': !!this.colorPalette,

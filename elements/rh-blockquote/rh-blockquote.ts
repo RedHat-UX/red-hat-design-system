@@ -3,8 +3,7 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+import { type ColorPalette } from '../../lib/context/color/provider.js';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 
@@ -31,10 +30,7 @@ export class RhBlockquote extends LitElement {
    * - `lightest` (default)
    * - `darkest`
    */
-  @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
-
-  @colorContextConsumer() private on?: ColorTheme;
 
   /**
    * Set the alignment of the blockquote. Possible values are:
@@ -54,9 +50,9 @@ export class RhBlockquote extends LitElement {
   @property({ reflect: true }) size: 'default' | 'large' = 'default';
 
   render() {
-    const { highlight, on = 'light' } = this;
+    const { highlight } = this;
     return html`
-      <figure id="container" class="${classMap({ highlight, on: true, [on]: true })}">
+      <figure id="container" class="${classMap({ highlight })}">
         <rh-icon set="standard" icon="quotemark-open"></rh-icon>
         <blockquote id="quote">
           <slot></slot>

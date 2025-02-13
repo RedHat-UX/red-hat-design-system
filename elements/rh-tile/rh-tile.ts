@@ -13,8 +13,7 @@ import type { IconNameFor, IconSetName } from '@rhds/icons';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+import { type ColorPalette } from '../../lib/context/color/provider.js';
 
 import styles from './rh-tile.css';
 
@@ -132,15 +131,10 @@ export class RhTile extends LitElement {
    *
    * Tile always resets its context to `base`, unless explicitly provided with a `color-palette`.
    */
-  @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   /** When set to "private", the icon representing the link changes from an arrow to a padlock */
   @property() link?: 'private' | 'public' | 'external';
-  /**
-   * Sets color theme based on parent context
-   */
-  @colorContextConsumer() private on?: ColorTheme;
 
   // TODO(bennyp): https://lit.dev/docs/data/context/#content
   @state() private disabledGroup = false;
@@ -191,7 +185,7 @@ export class RhTile extends LitElement {
   }
 
   render() {
-    const { bleed, compact, checkable, checked, colorPalette, desaturated, on = 'light' } = this;
+    const { bleed, compact, checkable, checked, colorPalette, desaturated } = this;
     const disabled = this.disabledGroup || this.disabled || this.#internals.formDisabled;
     const hasSlottedIcon = this.#slots.hasSlotted('icon');
     return html`
@@ -202,8 +196,6 @@ export class RhTile extends LitElement {
             checked,
             desaturated,
             disabled,
-            on: true,
-            [on]: true,
             [`palette-${colorPalette}`]: !!colorPalette,
           })}">
         <slot id="image"
