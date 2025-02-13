@@ -292,7 +292,7 @@
     "lit": "^3.2.1",
     "prism-esm": "^1.29.0-fix.6",
     "tslib": "^2.7.0",
-    "web-dev-server-plugin-lit-css": "^3.0.1"
+    "web-dev-server-plugin-lit-css": "^3.0.2"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
@@ -300,8 +300,8 @@
     "@11ty/eleventy-plugin-rss": "^2.0.2",
     "@commitlint/cli": "^19.5.0",
     "@commitlint/config-conventional": "^19.5.0",
-    "@lit-labs/eleventy-plugin-lit": "^1.0.3",
-    "@lit-labs/ssr": "^3.2.2",
+    "@lit-labs/eleventy-plugin-lit": "^1.0.4",
+    "@lit-labs/ssr": "^3.3.0",
     "@lit-labs/ssr-client": "^1.1.7",
     "@lit/reactive-element": "^2.0.4",
     "@lit/ts-transformers": "^2.0.1",
@@ -356,7 +356,7 @@
     "ts-patch": "^3.2.1",
     "tsx": "^4.19.1",
     "typescript": "^5.6.3",
-    "typescript-transform-lit-css": "^2.0.0",
+    "typescript-transform-lit-css": "^2.0.1",
     "wireit": "^0.14.9"
   },
   "optionalDependencies": {

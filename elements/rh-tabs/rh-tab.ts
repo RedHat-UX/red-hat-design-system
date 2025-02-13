@@ -1,6 +1,6 @@
 import type { RhTabsContext } from './context.js';
 
-import { html, LitElement } from 'lit';
+import { html, isServer, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
@@ -79,6 +79,7 @@ export class RhTab extends LitElement {
     const { box = false, vertical = false, firstTab, lastTab } = this.ctx ?? {};
     const first = firstTab === this;
     const last = lastTab === this;
+    // TODO: slotted hints for this.icons
     return html`
       <div id="button"
            part="button"
@@ -86,7 +87,7 @@ export class RhTab extends LitElement {
            class="${classMap({ active, box, vertical, first, last, on: true, [on]: true })}">
         <slot name="icon"
               part="icon"
-              ?hidden="${!this.icons.length}"
+              ?hidden="${isServer || !this.icons.length}"
               @slotchange="${() => this.requestUpdate()}"></slot>
         <slot part="text"></slot>
       </div>

@@ -1,4 +1,4 @@
-import { LitElement, html, type TemplateResult } from 'lit';
+import { LitElement, html, isServer, type TemplateResult } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
@@ -145,11 +145,13 @@ export class RhAccordion extends LitElement {
 
   @provide({ context }) private ctx = this.#makeContext();
 
-  connectedCallback() {
+  override connectedCallback() {
     super.connectedCallback();
     this.addEventListener('change', this.#onChange as EventListener);
-    this.#mo.observe(this, { childList: true });
-    this.updateAccessibility();
+    if (!isServer) {
+      this.updateAccessibility();
+      this.#mo.observe(this, { childList: true });
+    }
   }
 
   override render(): TemplateResult {
@@ -262,6 +264,10 @@ export class RhAccordion extends LitElement {
    * open
    */
   public updateAccessibility() {
+    if (isServer) {
+      return;
+    }
+
     const { headers } = this;
 
     // For each header in the accordion, attach the aria connections

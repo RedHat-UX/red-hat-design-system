@@ -76,8 +76,10 @@ export class RhTable extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.#init();
-    this.#mo.observe(this, { childList: true });
+    if (!isServer) {
+      this.#init();
+      this.#mo.observe(this, { childList: true });
+    }
   }
 
   protected willUpdate(): void {

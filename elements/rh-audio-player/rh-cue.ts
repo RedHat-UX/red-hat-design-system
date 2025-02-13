@@ -2,7 +2,7 @@ import { LitElement, html, nothing } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
-import { HeadingLevelContextConsumer } from '../../lib/context/headings/consumer.js';
+import { HeadingLevelContextConsumer, wrap } from '../../lib/context/headings/consumer.js';
 
 import styles from './rh-cue.css';
 
@@ -105,7 +105,7 @@ export class RhCue extends LitElement {
 
   render() {
     const { start, voice } = this;
-    return html`${!this.#hasVoice ? nothing : this.#headings.wrap(this.#linkTemplate(html`
+    return html`${!this.#hasVoice ? nothing : wrap.call(this.#headings, this.#linkTemplate(html`
       <span id="start">${start}</span> - <span id="voice">${voice}</span>`, true))}${this.#linkTemplate(html`
       <slot></slot>
     `)}`;
