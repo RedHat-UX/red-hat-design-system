@@ -292,8 +292,7 @@ Brick variants are flexible and can stretch to fit different column widths.
 
 ### Space in groups
   
-Horizontal and vertical spacing between Primary and Secondary variants is 
-`24px`.
+Horizontal and vertical spacing between Primary and Secondary variants should use the `--rh-space-xl` token.
 
 <rh-alert state="info">
   <h4 slot="header">Helpful tip</h4>
@@ -309,7 +308,7 @@ Horizontal and vertical spacing between Primary and Secondary variants is
         height="256">
 </uxdot-example>
 
-Horizontal and vertical spacing between the Default variant is `24px`.
+Horizontal and vertical spacing between Default variants should use the `--rh-space-xl` token.
 
 <uxdot-example width-adjustment="705px">
   <img src="../cta-layout-space-in-groups-2.png"
