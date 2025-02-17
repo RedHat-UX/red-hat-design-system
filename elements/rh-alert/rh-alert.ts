@@ -198,6 +198,13 @@ export class RhAlert extends LitElement {
       _isServer || this.#slots.hasSlotted(SlotController.default as unknown as string);
     const { variant = 'inline' } = this;
     const state = this.#aliasState(this.state);
+    // this click listener delegates events from the footer slot
+    // as such it doest not require a key listener.
+    // eslint-disable-next-line lit-a11y/click-events-have-key-events
+    const footer = html`<footer class="${classMap({ hasActions })}"
+                  @click="${this.#onActionsClick}">
+            <slot name="actions"></slot>
+          </footer>`;
     return html`
       <rh-surface id="container"
                   class="${classMap({
@@ -229,10 +236,7 @@ export class RhAlert extends LitElement {
           <div id="description">
             <slot></slot>
           </div>
-          <footer class="${classMap({ hasActions })}"
-                  @click="${this.#onActionsClick}">
-            <slot name="actions"></slot>
-          </footer>
+          ${footer}
         </div>
       </rh-surface>
     `;
