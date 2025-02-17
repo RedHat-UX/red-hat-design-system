@@ -9,6 +9,22 @@ import { RhAlert } from '@rhds/elements/rh-alert/rh-alert.js';
 RhAlert.toast({ /*...*/ });
 ```
 
+The full list of options for the `toast` method is:
+
+<rh-table>
+
+| Option               | Type                                | Description                                                                                    |
+| -------------------- | ----------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `message` (required) | lit-html renderable value           | Alert body content. Can be any value which lit-html can render. Simple strings are preferable |
+| `heading`            | `string`                            | Alert heading content. Must be a simple string.                                                |
+| `state`              | See alert's `state` attribute       | Alert `state` attribute                                                                        |
+| `persistent`         | `boolean`                           | Whether the alert should remain on screen until the user explicitly dismisses it               |
+| `actions`            | Array of one or two actions objects | One or more optional body actions                                                              |
+
+</rh-table>
+
+Actions objects have two keys, `text` for the action button text, and `action` e.g. `dismiss` or `confirm`, which is applied to the `close` event as the `action` property.
+
 ### Toasted alert content
 
 When toasting, you must provide body content for the alert. This content can
