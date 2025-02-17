@@ -1,0 +1,293 @@
+:host {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  container: inline-size;
+}
+
+:host([hide]) {
+  display: none;
+}
+
+@container (min-width: 320px) {
+  :host([hide='xs']) {
+    display: flex;
+  }
+}
+
+@container (min-width: 567px) {
+  :host([hide='sm']) {
+    display: flex;
+  }
+}
+
+@container (min-width: 768px) {
+  :host([hide='md']) {
+    display: flex;
+  }
+}
+
+@container (min-width: 992px) {
+  :host([hide='lg']) {
+    display: flex;
+  }
+}
+
+@container (min-width: 1200px) {
+  :host([hide='xl']) {
+    display: flex;
+  }
+}
+
+:host(:is(:focus, :focus-visible)) {
+  outline: none;
+  outline-style: none;
+}
+
+::slotted(a:focus-visible) {
+  outline-offset: -2px;
+  outline:
+    var(--rh-border-width-md)
+    solid
+    var(--rh-color-interactive-primary-default);
+  border-radius: var(--rh-border-radius-default);
+}
+
+details {
+  display: flex;
+  align-items: center;
+  width: -webkit-fill-available;
+  width: -moz-available;
+  width: fill-available;
+  height: 100%;
+
+  & summary {
+    --rh-icon-size: var(--rh-size-icon-02);
+    --rh-avatar-size: var(--rh-size-icon-04);
+
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    color: var(--rh-color-text-primary) !important;
+    text-decoration: none !important;
+    text-align: center;
+    text-wrap: nowrap;
+    place-items: center;
+    gap: var(--rh-space-md);
+    width: -webkit-fill-available;
+    width: -moz-available;
+    width: fill-available;
+    height: 100%;
+    padding-inline: calc(var(--rh-space-sm) + var(--rh-space-xs));
+    border-block-start: var(--rh-border-width-lg) solid transparent;
+
+    &:is(:focus-visible, :hover:focus-visible) {
+      outline-offset: -2px;
+      outline:
+        var(--rh-border-width-md)
+        solid
+        var(--rh-color-interactive-primary-default);
+      border-radius: var(--rh-border-radius-default);
+    }
+
+    &::marker,
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    @container (min-width: 1200px) {
+      border-block-start-width: var(--rh-border-width-lg);
+    }
+  }
+
+  #details-content {
+    background-color: var(--rh-color-surface-lightest);
+  }
+
+  &.icon-only {
+    & summary {
+      flex-direction: row;
+      gap: var(--rh-space-xs);
+      align-items: center;
+    }
+  }
+
+  &.column {
+    & summary {
+      font-size: var(--rh-font-size-body-text-sm);
+      font-weight: 400;
+      gap: var(--rh-space-xs);
+      justify-content: center;
+      flex-direction: column;
+    }
+  }
+
+  &.row {
+    & summary {
+      gap: var(--rh-space-md);
+      align-items: center;
+      flex-direction: row;
+    }
+  }
+
+  &[open] {
+    background-color: var(--rh-color-surface-lightest);
+    color: var(--rh-color-text-primary-on-light);
+
+    /* stylelint-disable-next-line selector-pseudo-element-no-unknown */
+    &::details-content {
+      display: contents;
+
+      & > * {
+        box-sizing: border-box;
+      }
+    }
+
+    & summary {
+      &:focus-visible {
+        outline-color: var(--rh-color-interactive-primary-default-on-light);
+      }
+    }
+  }
+
+  &:is(.column, .icon-only) {
+    rh-icon {
+      aspect-ratio: unset;
+    }
+  }
+
+  &.standalone {
+    display: contents;
+
+    & > * {
+      box-sizing: border-box;
+    }
+
+    & summary {
+      border-block-start-width: var(--rh-border-width-lg);
+    }
+
+    rh-navigation-item-menu {
+      box-shadow: var(--rh-box-shadow-sm);
+    }
+  }
+
+  &:not(.icon-only, .column, .standalone) {
+    --rh-icon-size: var(--rh-size-icon-01);
+
+    &[open] {
+      & summary {
+        rh-icon {
+          rotate: 180deg;
+        }
+      }
+    }
+
+    &.compact {
+      flex-direction: column;
+      align-items: flex-start;
+      border-inline-start: var(--rh-border-width-lg) solid transparent;
+      border-inline-end: var(--rh-border-width-sm) solid transparent;
+
+      & summary {
+        --rh-icon-size: var(--rh-size-icon-01);
+
+        flex-direction: row;
+        justify-content: space-between;
+        padding: var(--rh-space-lg) var(--rh-space-xl);
+      }
+
+      & #details-content {
+        padding: var(--rh-space-lg) var(--rh-space-xl);
+        width: -webkit-fill-available;
+        width: -moz-available;
+        width: fill-available;
+      }
+
+      &[open] {
+        border-inline-start-color: var(--rh-color-text-brand-on-light);
+        border-inline-end-color: var(--rh-color-border-subtle-on-light);
+      }
+    }
+  }
+
+  &:is(:not(.compact), .compact.standalone) {
+    &[open] {
+      & > summary {
+        background-color: var(--rh-color-surface-lightest) !important;
+        color: var(--rh-color-text-primary-on-light) !important;
+      }
+    }
+
+    &:is(:hover, :focus, [open]) {
+      & > summary {
+        border-block-start-color: var(--rh-color-accent-brand);
+        position: relative;
+        z-index: 2;
+      }
+    }
+
+    & #details-content {
+      position: absolute;
+      inset-block-start: calc(100% - var(--rh-border-width-sm));
+      inset-inline-start: 0;
+      width: -webkit-fill-available;
+      width: -moz-available;
+      width: fill-available;
+      z-index: 1;
+      height: auto;
+    }
+
+    &:is(.start,.end) {
+      & #details-content {
+        width: auto;
+      }
+    }
+
+    &.start {
+      & #details-content {
+        inset-inline-start: calc(var(--_x) - var(--_content-width) + var(--_width));
+      }
+    }
+
+    &.end {
+      & #details-content {
+        inset-inline-start: calc(var(--_x) - var(--_content-width) + var(--_width));
+      }
+    }
+  }
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &.link {
+    & ::slotted(a) {
+      padding-inline: var(--rh-space-lg);
+    }
+  }
+}
+
+@container (min-width: 1200px) {
+  :host {
+    border-block-start: none;
+  }
+
+  details {
+    display: contents;
+
+    & > * {
+      box-sizing: border-box;
+    }
+  }
+
+  ::slotted(a) {
+    border-block-start: var(--rh-border-width-lg) solid transparent;
+  }
+
+  ::slotted(a:hover) {
+    border-block-start-color: var(--rh-color-accent-brand);
+  }
+}
