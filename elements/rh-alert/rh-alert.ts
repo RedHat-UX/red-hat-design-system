@@ -17,7 +17,6 @@ import consumerStyles from '@rhds/tokens/css/color-context-consumer.css.js';
 
 interface AlertAction {
   action: 'dismiss' | 'confirm' | string;
-  variant: 'link' | 'secondary';
   text: string;
 }
 
@@ -280,7 +279,9 @@ function renderToasts() {
     heading,
     message,
     persistent,
-  }) => html`
+  }) => {
+    const [firstAction, secondAction] = actions ?? [];
+    return html`
     <rh-alert id="${id}"
               state="${state}"
               class="${classMap({ persistent })}"
@@ -290,13 +291,14 @@ function renderToasts() {
       <h3 slot="header">${heading}</h3>
       ${!message ? '' : typeof message !== 'string' ? message : html`
       <p class="text" ?hidden="${!message}">${message}</p>`}
-      ${actions?.map(({ text, action }, i, a) => html`
+      ${[firstAction, secondAction].filter(x => !!x).map(action => html`
       <rh-button slot="actions"
-                 variant=${a.length === 2 && i === 0 ? 'secondary' : 'link'}
-                 data-action="${action}">${text}</rh-button>
+                 variant=${action === firstAction ? 'secondary' : 'link'}
+                 data-action="${action.action}">${action.text}</rh-button>
       `) ?? []}
     </rh-alert>
-  `), toaster);
+  `;
+  }), toaster);
 }
 
 /**
