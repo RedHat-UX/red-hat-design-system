@@ -22,7 +22,7 @@ import { InternalsController } from '@patternfly/pfe-core/controllers/internals-
 
 import {
   RhNavigationItem,
-  RhNavigationItemEvent,
+  RhNavigationItemExpandEvent,
 } from '@rhds/elements/rh-navigation-item/rh-navigation-item.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
 import '@rhds/elements/rh-surface/rh-surface.js';
@@ -50,7 +50,7 @@ export class RhNavigationPrimary extends LitElement {
 
   #dir = new DirController(this);
 
-  #openHamburgerDropdowns = new Set<RhNavigationItem>();
+  #openPrimaryDropdowns = new Set<RhNavigationItem>();
   #openSecondaryDropdowns = new Set<RhNavigationItem>();
 
   #overlayOpen = false;
@@ -108,7 +108,7 @@ export class RhNavigationPrimary extends LitElement {
     super.connectedCallback();
     if (!isServer) {
       this.#ro?.observe(this);
-      this.addEventListener('expand-request', this.#onExpandRequest);
+      this.addEventListener('expand', this.#onExpand);
       this.#upgradeAccessibility();
       this.#internals.ariaLabel = this.accessibleLabel;
     }
@@ -185,23 +185,15 @@ export class RhNavigationPrimary extends LitElement {
     //
   }
 
-  async #onExpandRequest(event: Event) {
-    if (event instanceof RhNavigationItemEvent) {
+  async #onExpand(event: Event) {
+    if (event instanceof RhNavigationItemExpandEvent) {
       // if the event came from a secondary link in a compact mode we'll want to close the hamburger first if it is open
-      const [slottedSecondary] = this.#slots.getSlotted('secondary');
-      const secondaryLinks = slottedSecondary.querySelectorAll('rh-navigation-item');
-      const secondaryEventToggle =
-          Array.from(secondaryLinks).find(node => node.isEqualNode(event.toggle));
+      const slottedSecondary = this.#slots.getSlotted('secondary');
+      const secondaryEventToggle = slottedSecondary.find(node => node.isEqualNode(event.toggle));
 
       if (event.open) {
-        // close all open hamburger dropdowns
-        this.#openHamburgerDropdowns.forEach((dropdown: RhNavigationItem) => {
-          dropdown.close();
-        });
-        // close all secondary dropdowns
-        this.#openSecondaryDropdowns.forEach((dropdown: RhNavigationItem) => {
-          dropdown.close();
-        });
+        this.#closePrimaryDropdowns();
+        this.#closeSecondaryDropdowns();
 
         if (secondaryEventToggle) {
           if (this.compact) {
@@ -209,16 +201,30 @@ export class RhNavigationPrimary extends LitElement {
           }
           this.#openSecondaryDropdowns.add(event.toggle);
         } else {
-          this.#openHamburgerDropdowns.add(event.toggle);
+          this.#openPrimaryDropdowns.add(event.toggle);
         }
       } else {
         if (secondaryEventToggle) {
           this.#openSecondaryDropdowns.delete(event.toggle);
         } else {
-          this.#openHamburgerDropdowns.delete(event.toggle);
+          this.#openPrimaryDropdowns.delete(event.toggle);
         }
       }
     }
+  }
+
+  #closePrimaryDropdowns() {
+    // close all open dropdowns in primary slot
+    this.#openPrimaryDropdowns.forEach((dropdown: RhNavigationItem) => {
+      dropdown.close();
+    });
+  }
+
+  #closeSecondaryDropdowns() {
+    // close all open dropdowns in secondary slot
+    this.#openSecondaryDropdowns.forEach((dropdown: RhNavigationItem) => {
+      dropdown.close();
+    });
   }
 
   async #openHamburger() {
@@ -235,15 +241,11 @@ export class RhNavigationPrimary extends LitElement {
     if (event.newState === 'open') {
       // if any secondary link dropdowns are open, close them
       if (this.#openSecondaryDropdowns.size > 0) {
-        this.#openSecondaryDropdowns.forEach((dropdown: RhNavigationItem) => {
-          dropdown.close();
-        });
+        this.#closeSecondaryDropdowns();
       }
     } else {
-      if (this.#openHamburgerDropdowns.size > 0) {
-        this.#openHamburgerDropdowns.forEach((dropdown: RhNavigationItem) => {
-          dropdown.close();
-        });
+      if (this.#openPrimaryDropdowns.size > 0) {
+        this.#closePrimaryDropdowns();
       }
     }
   }
@@ -256,7 +258,7 @@ export class RhNavigationPrimary extends LitElement {
     }
     // transistion into compact
     if (!oldVal && newVal) {
-      if (this.#openHamburgerDropdowns.size === 0) {
+      if (this.#openPrimaryDropdowns.size === 0) {
         this.#closeHamburger();
       }
     }
@@ -280,12 +282,12 @@ export class RhNavigationPrimary extends LitElement {
   }
 
   close(): void {
-    for (const dropdown of this.#openHamburgerDropdowns) {
+    for (const dropdown of this.#openPrimaryDropdowns) {
       // close all dropdowns in set
       dropdown.close();
-      this.#openHamburgerDropdowns.delete(dropdown);
+      this.#openPrimaryDropdowns.delete(dropdown);
     }
-  }  
+  }
 }
 
 declare global {

@@ -23,12 +23,12 @@ import './rh-navigation-item-menu.js';
 
 import styles from './rh-navigation-item.css';
 
-export class RhNavigationItemEvent extends ComposedEvent {
+export class RhNavigationItemExpandEvent extends ComposedEvent {
   constructor(
     public open: boolean,
     public toggle: RhNavigationItem,
   ) {
-    super('expand-request');
+    super('expand');
   }
 }
 
