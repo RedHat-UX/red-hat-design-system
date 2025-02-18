@@ -8367,7 +8367,7 @@ slot[name='icon'] {
       <span class="token string-property property">"@floating-ui/dom"</span><span class="token operator">:</span> <span class="token string">"https://ga.jspm.io/npm:@floating-ui/dom@1.6.13/dist/floating-ui.dom.mjs"</span><span class="token punctuation">,</span>
       <span class="token string-property property">"@floating-ui/utils"</span><span class="token operator">:</span> <span class="token string">"https://ga.jspm.io/npm:@floating-ui/utils@0.2.9/dist/floating-ui.utils.mjs"</span><span class="token punctuation">,</span>
       <span class="token string-property property">"@floating-ui/utils/dom"</span><span class="token operator">:</span> <span class="token string">"https://ga.jspm.io/npm:@floating-ui/utils@0.2.9/dist/floating-ui.utils.dom.mjs"</span><span class="token punctuation">,</span>
-      <span class="token string-property property">"@lit/context"</span><span class="token operator">:</span> <span class="token string">"https://ga.jspm.io/npm:@lit/context@1.1.3/development/index.js"</span><span class="token punctuation">,</span>
+      <span class="token string-property property">"@lit/context"</span><span class="token operator">:</span> <span class="token string">"https://ga.jspm.io/npm:@lit/context@1.1.4/development/index.js"</span><span class="token punctuation">,</span>
       <span class="token string-property property">"@lit/reactive-element"</span><span class="token operator">:</span> <span class="token string">"https://ga.jspm.io/npm:@lit/reactive-element@2.0.4/development/reactive-element.js"</span><span class="token punctuation">,</span>
       <span class="token string-property property">"@lit/reactive-element/decorators/"</span><span class="token operator">:</span> <span class="token string">"https://ga.jspm.io/npm:@lit/reactive-element@2.0.4/development/decorators/"</span><span class="token punctuation">,</span>
       <span class="token string-property property">"@patternfly/pfe-core"</span><span class="token operator">:</span> <span class="token string">"https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.4/core.js"</span><span class="token punctuation">,</span>
@@ -8377,8 +8377,8 @@ slot[name='icon'] {
       <span class="token string-property property">"@rhds/elements/"</span><span class="token operator">:</span> <span class="token string">"https://ga.jspm.io/npm:@rhds/elements@2.1.1/elements/"</span><span class="token punctuation">,</span>
       <span class="token string-property property">"@rhds/icons"</span><span class="token operator">:</span> <span class="token string">"https://ga.jspm.io/npm:@rhds/icons@1.1.2/icons.js"</span><span class="token punctuation">,</span>
       <span class="token string-property property">"@rhds/icons/ui/"</span><span class="token operator">:</span> <span class="token string">"https://ga.jspm.io/npm:@rhds/icons@1.1.2/ui/"</span><span class="token punctuation">,</span>
-      <span class="token string-property property">"@rhds/tokens/css/"</span><span class="token operator">:</span> <span class="token string">"https://ga.jspm.io/npm:@rhds/tokens@2.1.1/css/"</span><span class="token punctuation">,</span>
-      <span class="token string-property property">"@rhds/tokens/media.js"</span><span class="token operator">:</span> <span class="token string">"https://ga.jspm.io/npm:@rhds/tokens@2.1.1/js/media.js"</span><span class="token punctuation">,</span>
+      <span class="token string-property property">"@rhds/tokens/css/"</span><span class="token operator">:</span> <span class="token string">"https://ga.jspm.io/npm:@rhds/tokens@2.2.0/css/"</span><span class="token punctuation">,</span>
+      <span class="token string-property property">"@rhds/tokens/media.js"</span><span class="token operator">:</span> <span class="token string">"https://ga.jspm.io/npm:@rhds/tokens@2.2.0/js/media.js"</span><span class="token punctuation">,</span>
       <span class="token string-property property">"lit"</span><span class="token operator">:</span> <span class="token string">"https://ga.jspm.io/npm:lit@3.2.1/index.js"</span><span class="token punctuation">,</span>
       <span class="token string-property property">"lit-element/lit-element.js"</span><span class="token operator">:</span> <span class="token string">"https://ga.jspm.io/npm:lit-element@4.1.1/development/lit-element.js"</span><span class="token punctuation">,</span>
       <span class="token string-property property">"lit-html"</span><span class="token operator">:</span> <span class="token string">"https://ga.jspm.io/npm:lit-html@3.2.1/development/lit-html.js"</span><span class="token punctuation">,</span>
@@ -11084,6 +11084,14 @@ p {
   font-size: initial;
   display: flex;
   flex-direction: column;
+}
+
+:host,
+::slotted(rh-footer-universal) {
+  --_fallback-animation: nothing-doing !important;
+  --_fallback-opacity: 1 !important;
+
+  overflow-y: initial;
 }
 
 footer,

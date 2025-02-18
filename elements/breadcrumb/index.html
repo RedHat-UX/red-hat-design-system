@@ -7701,6 +7701,14 @@ p {
   flex-direction: column;
 }
 
+:host,
+::slotted(rh-footer-universal) {
+  --_fallback-animation: nothing-doing !important;
+  --_fallback-opacity: 1 !important;
+
+  overflow-y: initial;
+}
+
 footer,
 .global-base {
   --_icon-color: var(--rh-footer-icon-color, var(--rh-color-gray-40, #a3a3a3));
