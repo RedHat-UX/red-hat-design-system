@@ -1,0 +1,152 @@
+rh-navigation-universal {
+  container: nav-universal / inline-size;
+
+  & a {
+    &:is(:focus-visible, :hover:focus-visible) {
+      outline-offset: 2px;
+      outline:
+        var(--rh-border-width-md)
+        solid
+        var(--rh-color-interactive-primary-default);
+      border-radius: var(--rh-border-radius-default);
+    }
+  }
+
+  & > ul {
+    display: flex;
+    height: 100%;
+
+    & > :not(li:last-of-type) {
+      display: none;
+    }
+
+    & > li {
+      display: flex;
+      flex-direction: row;
+      place-items: center;
+      height: 100%;
+      color: var(--rh-color-text-secondary-on-light);
+
+      &:not(:first-of-type):before {
+        content: '';
+        height: 21px; /* non standard value */
+        border-inline-start: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
+      }
+
+      /* stylelint-disable-next-line no-descending-specificity */
+      & > a {
+        border-block-start: var(--rh-border-width-lg) solid transparent;
+        color: var(--rh-color-text-primary);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+        font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+        font-size: var(--rh-font-size-body-text-sm);
+        padding-inline: var(--rh-space-lg);
+        text-decoration: none;
+
+        &:hover {
+          border-block-start-color: var(--rh-color-text-brand);
+          cursor: pointer;
+        }
+
+        &:is(:focus-visible, :hover:focus-visible) {
+          outline-offset: -2px;
+        }
+
+        & [slot='personalization-link'] a {
+          color: white;
+          text-decoration: none;
+
+          &:is(:hover, :focus) {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+
+    @container nav-universal (min-width: 1200px) {
+      & > :not(li:last-of-type) {
+        display: flex;
+      }
+    }
+  }
+
+  & [slot='events']:not(:empty) {
+    display: flex;
+    flex-direction: row;
+    place-items: center;
+
+    @container nav-universal (min-width: 576px) {
+      padding-inline-end: var(--rh-space-lg);
+    }
+
+    @container nav-universal (min-width: 1200px) {
+      padding-inline-end: 0;
+
+      &:after {
+        content: '';
+        height: 22px; /* non standard value */
+        padding-inline-start: var(--rh-space-lg);
+        border-inline-end: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
+      }
+    }
+  }
+
+  & rh-navigation-universal-dropdown {
+    & :is(p, a, li) {
+      font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+      font-size: var(--rh-font-size-body-text-sm);
+    }
+
+    /* stylelint-disable-next-line no-descending-specificity */
+    & a:is(:focus-visible, :hover:focus-visible) {
+      outline-offset: 2px;
+      outline:
+        var(--rh-border-width-md)
+        solid
+        var(--rh-color-interactive-primary-default-on-light);
+      border-radius: var(--rh-border-radius-default);
+    }
+
+    /* stylelint-disable-next-line no-descending-specificity */
+    & > ul {
+      padding-inline-start: 0;
+      padding-block: var(--rh-space-xl);
+
+      @container nav-universal (min-width: 576px) {
+        column-count: 2;
+      }
+
+      /* stylelint-disable-next-line no-descending-specificity */
+      & > li {
+        color: var(--rh-color-text-primary-on-light);
+        font-size: var(--rh-font-size-body-text-md) !important;
+        list-style-type: none;
+        break-inside: avoid;
+        font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif) !important;
+
+        & > ul {
+          margin-block-end: var(--rh-space-lg);
+          padding-block-start: var(--rh-space-md);
+
+          & > li {
+            line-height: var(--rh-line-height-body-text);
+            padding-block: var(--rh-space-xs);
+          }
+
+          /* stylelint-disable-next-line no-descending-specificity */
+          & a {
+            text-decoration: none;
+
+            /* stylelint-disable-next-line no-descending-specificity */
+            &:is(:hover, :focus) {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+  }
+}

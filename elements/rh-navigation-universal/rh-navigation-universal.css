@@ -1,0 +1,122 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+:host {
+  --_universal-height: 59px;
+
+  background-color: var(--rh-color-surface);
+  display: block;
+  height: var(--_universal-height);
+  container: nav-universal / inline-size;
+  position: relative;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+#container {
+  border-block-end: 1px solid var(--rh-color-border-subtle);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  height: 100%;
+  margin-inline: var(--rh-navigation-universal-margin-inline, var(--rh-space-lg));
+
+  @container nav-universal (min-width: 576px) {
+    display: grid;
+    grid-template-columns: 1fr max-content max-content;
+    grid-template-areas: 'personalization events nav';
+  }
+
+  @container nav-universal (min-width: 1200px) {
+    margin-inline: var(--rh-navigation-universal-margin-inline, var(--rh-space-2xl));
+  }
+}
+
+#personalization {
+  grid-area: personalization;
+  color: var(--rh-color-text-primary) !important;
+  display: none;
+  padding-inline-end: var(--rh-space-2xl);
+
+  @container nav-universal (min-width: 1200px) {
+    align-items: center;
+    display: inline-flex;
+
+    &[hidden] ~ ::slotted(ul) {
+      margin-inline-start: auto;
+    }
+  }
+
+  &:is(:focus-visible, :hover:focus-visible) {
+    outline-offset: 2px;
+    outline:
+      var(--rh-border-width-md)
+      solid
+      var(--rh-color-interactive-primary-default);
+    border-radius: var(--rh-border-radius-default);
+  }
+
+  & ::slotted(a) {
+    color: var(--rh-color-text-primary) !important;
+    line-height: 1.25;
+    text-decoration: none;
+  }
+
+  & ::slotted(a:hover),
+  #personalization:focus-within ::slotted(a) {
+    text-decoration: underline;
+  }
+
+  & ::slotted(a:focus) {
+    outline: 0;
+  }
+
+  & rh-icon {
+    &[icon='information-fill'] {
+      inline-size: 14px;
+      block-size: 14px;
+      margin-inline-end: 8px;
+    }
+
+    &[icon='caret-right'] {
+      inline-size: 9px;
+      block-size: 9px;
+      margin-inline-start: 6px;
+      margin-block-start: 2px;
+    }
+  }
+}
+
+#events {
+  grid-area: events;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+}
+
+#nav {
+  grid-area: nav;
+  display: none;
+
+  @container nav-universal (min-width: 576px) {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+}
+
+::slotted(ul) {
+  display: flex;
+  flex-direction: row;
+  place-items: center;
+  list-style: none;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: end;
+}

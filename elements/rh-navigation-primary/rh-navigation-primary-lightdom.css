@@ -1,0 +1,7 @@
+rh-navigation-primary {
+  container: navigation-primary / inline-size;
+
+  & [slot='universal']:empty {
+    display: none;
+  }
+}

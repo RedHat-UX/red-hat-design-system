@@ -1,0 +1,17 @@
+:host {
+  display: block;
+  padding: var(--rh-space-lg) var(--rh-space-3xl);
+
+  @container (min-width: 1200px) {
+    box-shadow: var(--rh-box-shadow-sm);
+  }
+}
+
+#container {
+  color: var(--rh-color-text-primary);
+
+  @container (min-width: 992px) {
+    margin: 0 auto;
+    max-width: 1440px;
+  }
+}
