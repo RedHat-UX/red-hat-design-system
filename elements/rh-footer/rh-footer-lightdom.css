@@ -3,6 +3,10 @@
   text-decoration: none;
 }
 
+:is(rh-footer, rh-footer-universal) :is(h1,h2,h3,h4,h5,h6) {
+  color: var(--rh-color-text-primary-on-dark, white);
+}
+
 :is(rh-footer, rh-footer-universal) a:hover {
   color: var(--rh-color-interactive-primary-hover-on-dark, #b9dafc);
   text-decoration: underline;
@@ -95,26 +99,24 @@ rh-footer:not(:defined) {
   min-height: var(--rh-footer-nojs-min-height, 750px);
 }
 
-rh-footer:not(:defined),
-rh-footer-universal:not(:defined) {
+:is(rh-footer, rh-footer-universal) {
   overflow-y: scroll;
-
-  & > :not([slot='logo'], rh-footer-universal) {
-    animation: 5s ease 0s deopacitize-footer;
-  }
 }
 
-:is(rh-footer, rh-footer-universal):defined {
+:is(rh-footer, rh-footer-universal) {
   & > :not([slot='logo'], rh-footer-universal) {
-    opacity: 1;
-    animation-duration: 0s;
+    animation-name: var(--_fallback-animation, deopacitize-footer);
+    animation-duration: 5s;
+    animation-timing-function: ease;
+    animation-delay: 0s;
+    opacity: var(--_fallback-opacity);
   }
 }
 
 @keyframes deopacitize-footer {
-  0% { opacity: 0; }
-  99% { opacity: 0; }
-  100% { opacity: 1; }
+  0% { --_fallback-opacity: 0; }
+  99% { --_fallback-opacity: 0; }
+  100% { --_fallback-opacity: 1; }
 }
 
 rh-footer-universal:not(:defined) {
