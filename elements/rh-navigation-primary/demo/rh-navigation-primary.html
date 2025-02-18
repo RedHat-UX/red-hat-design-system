@@ -65,61 +65,47 @@
       </li>
     </ul>
   </rh-navigation-universal>
-  <ul slot="nav">
-    <li>
-      <rh-navigation-item variant="dropdown" summary="Products">
-        Products Content
-      </rh-navigation-item>
-    </li>
-    <li>
-      <rh-navigation-item variant="dropdown" summary="Solutions">
-        Solutions Content
-      </rh-navigation-item>
-    </li>
-    <li>
-      <rh-navigation-item variant="dropdown" summary="Training & Services">
-        Training & Services Content
-      </rh-navigation-item>
-    </li>
-    <li>
-      <rh-navigation-item variant="dropdown" summary="Resources">
-        Resources Content
-      </rh-navigation-item>
-    </li>
-    <li>
-      <rh-navigation-item variant="dropdown" summary="Partners">
-        Partners Content
-      </rh-navigation-item>
-    </li>
-    <li>
-      <rh-navigation-item variant="dropdown" summary="About">
-        About Content
-      </rh-navigation-item>
-    </li>
-  </ul>
-  <ul slot="secondary-links">
-    <li>
-      <rh-navigation-item variant="dropdown" standalone summary="Search" layout="column" icon="search" icon-set="ui">
-        Search Content
-      </rh-navigation-item>
-    </li>
-    <li>
-      <rh-navigation-item variant="dropdown" standalone summary="For You" hide="md" layout="column" icon="document" icon-set="ui">
-        For You Content
-      </rh-navigation-item>
-    </li>
-    <li>
-      <rh-navigation-item variant="dropdown" standalone summary="English" hide="sm" layout="column" icon="globe-abstract">
-        Translation Content
-      </rh-navigation-item>
-    </li>
-    <li>
-      <rh-navigation-item variant="dropdown" standalone layout="icon-only">
-        <rh-avatar slot="icon" plain layout="inline"></rh-avatar>
-        Account Content
-      </rh-navigation-item>
-    </li>
-  </ul>
+
+  <rh-navigation-item variant="dropdown" summary="Products">
+    Products Content
+  </rh-navigation-item>
+
+  <rh-navigation-item variant="dropdown" summary="Solutions">
+    Solutions Content
+  </rh-navigation-item>
+
+  <rh-navigation-item variant="dropdown" summary="Training & Services">
+    Training & Services Content
+  </rh-navigation-item>
+
+  <rh-navigation-item variant="dropdown" summary="Resources">
+    Resources Content
+  </rh-navigation-item>
+
+  <rh-navigation-item variant="dropdown" summary="Partners">
+    Partners Content
+  </rh-navigation-item>
+
+  <rh-navigation-item variant="dropdown" summary="About">
+    About Content
+  </rh-navigation-item>
+
+  <rh-navigation-item variant="dropdown" slot="secondary" standalone summary="Search" layout="column" icon="search" icon-set="ui">
+    Search Content
+  </rh-navigation-item>
+
+  <rh-navigation-item variant="dropdown" slot="secondary" standalone summary="For You" hide="md" layout="column" icon="document" icon-set="ui">
+    For You Content
+  </rh-navigation-item>
+
+  <rh-navigation-item variant="dropdown" slot="secondary" standalone summary="English" hide="sm" layout="column" icon="globe-abstract">
+    Translation Content
+  </rh-navigation-item>
+
+  <rh-navigation-item variant="dropdown" slot="secondary" standalone layout="icon-only">
+    <rh-avatar slot="icon" plain layout="inline"></rh-avatar>
+    Account Content
+  </rh-navigation-item>
 </rh-navigation-primary>
 
 <link rel="stylesheet" href="../rh-navigation-primary-lightdom.css">

@@ -69,70 +69,52 @@
       </li>
     </ul>
   </rh-navigation-universal>
-  <ul slot="nav">
-    <li>
-      <rh-navigation-item variant="dropdown">
-        <span slot="summary">Products</span>
-        Products Content
-      </rh-navigation-item>
-    </li>
-    <li>
-      <rh-navigation-item variant="dropdown">
-        <span slot="summary">Solutions</span>
-        Solutions Content
-      </rh-navigation-item>
-    </li>
-    <li>
-      <rh-navigation-item variant="dropdown">
-        <span slot="summary">Training & Services</span>
-        Training & Services Content
-      </rh-navigation-item>
-    </li>
-    <li>
-      <rh-navigation-item variant="dropdown">
-        <span slot="summary">Resources</span>
-        Resources Content
-      </rh-navigation-item>
-    </li>
-    <li>
-      <rh-navigation-item variant="dropdown">
-        <span slot="summary">Partners</span>
-        Partners Content
-      </rh-navigation-item>
-    </li>
-    <li>
-      <rh-navigation-item variant="dropdown">
-        <span slot="summary">About</span>
-        About Content
-      </rh-navigation-item>
-    </li>
-  </ul>
-  <ul slot="secondary-links">
-    <li>
-      <rh-navigation-item variant="dropdown" standalone layout="column" icon="search" icon-set="ui">
-        <span slot="summary">Search</span>
-        Search Content
-      </rh-navigation-item>
-    </li>
-    <li>
-      <rh-navigation-item variant="dropdown" standalone hide="md" layout="column" icon="document" icon-set="ui">
-        <span slot="summary">For You</span>
-        For You Content
-      </rh-navigation-item>
-    </li>
-    <li>
-      <rh-navigation-item variant="dropdown" standalone layout="column" icon="globe-abstract">
-        <span slot="summary">English</span>
-        Translation Content
-      </rh-navigation-item>
-    </li>
-    <li>
-      <rh-navigation-item variant="dropdown" standalone layout="icon-only">
-        <rh-avatar slot="icon" plain layout="inline"></rh-avatar>
-        Account Content
-      </rh-navigation-item>
-    </li>
-  </ul>
+  <rh-navigation-item variant="dropdown">
+    <span slot="summary">Products</span>
+    Products Content
+  </rh-navigation-item>
+
+  <rh-navigation-item variant="dropdown">
+    <span slot="summary">Solutions</span>
+    Solutions Content
+  </rh-navigation-item>
+
+  <rh-navigation-item variant="dropdown">
+    <span slot="summary">Training & Services</span>
+    Training & Services Content
+  </rh-navigation-item>
+
+  <rh-navigation-item>
+    <a href="#resources">Resources</a>
+  </rh-navigation-item>
+
+  <rh-navigation-item>
+    <a href="#partners">Partners</a>
+  </rh-navigation-item>
+
+  <rh-navigation-item>
+    <a href="#about">About</a>
+  </rh-navigation-item>
+
+  <rh-navigation-item slot="secondary" variant="dropdown" standalone layout="column" icon="search" icon-set="ui">
+    <span slot="summary">Search</span>
+    Search Content
+  </rh-navigation-item>
+
+  <rh-navigation-item slot="secondary" variant="dropdown" standalone hide="md" layout="column" icon="document" icon-set="ui">
+    <span slot="summary">For You</span>
+    For You Content
+  </rh-navigation-item>
+
+  <rh-navigation-item slot="secondary" variant="dropdown" standalone layout="column" icon="globe-abstract">
+    <span slot="summary">English</span>
+    Translation Content
+  </rh-navigation-item>
+
+  <rh-navigation-item slot="secondary" variant="dropdown" standalone variant="icon">
+    <rh-avatar slot="icon" plain layout="inline"></rh-avatar>
+    Account Content
+  </rh-navigation-item>
 </rh-navigation-primary>
 </rh-context-demo>
 

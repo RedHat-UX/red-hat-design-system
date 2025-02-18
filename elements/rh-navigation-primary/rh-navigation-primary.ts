@@ -58,7 +58,7 @@ export class RhNavigationPrimary extends LitElement {
   #ro?: ResizeObserver;
 
   #slots = new SlotController(
-    this, 'universal', 'logo', 'mobile-menu', 'nav', 'secondary-links');
+    this, 'universal', 'logo', 'summary', 'secondary', null);
 
   @provide({ context }) private ctx = this.#makeContext();
 
@@ -83,7 +83,7 @@ export class RhNavigationPrimary extends LitElement {
 
   /**
    * Customize the default `aria-label` on the `<nav>` container.
-   * Defaults to "secondary" if no attribute/property is set.
+   * Defaults to "main" if no attribute/property is set.
    */
   @property({ attribute: 'accessible-label' }) accessibleLabel = 'main';
 
@@ -143,15 +143,15 @@ export class RhNavigationPrimary extends LitElement {
           </div>
           <details id="hamburger" @toggle="${this.#hamburgerToggle}">
             <summary>
-              <slot name="mobile-menu">Menu</slot>
+              <slot name="summary">Menu</slot>
               <rh-icon icon="caret-down-fill" set="microns"></rh-icon>
             </summary>
-            <rh-surface id="nav-container" color-palette="${dropdownPalette}">
-              <slot name="nav"></slot>
+            <rh-surface id="details-content" color-palette="${dropdownPalette}" role="list">
+              <slot></slot>
             </rh-surface>
           </details>
-          <div id="secondary-links">
-            <slot name="secondary-links"></slot>
+          <div id="secondary-links" role="list">
+            <slot name="secondary"></slot>
           </div>
         </div>
       </nav>
@@ -178,8 +178,6 @@ export class RhNavigationPrimary extends LitElement {
   #upgradeAccessibility(): void {
     // remove role="navigation" from host on upgrade
     this.removeAttribute('role');
-    // remove aria-labelledby from slotted `<ul>` on upgrade
-    this.querySelector(':is([slot="nav"]):is(ul)')?.removeAttribute('aria-labelledby');
     this.#internals.ariaLabel = this.accessibleLabel;
   }
 
@@ -190,7 +188,7 @@ export class RhNavigationPrimary extends LitElement {
   async #onExpandRequest(event: Event) {
     if (event instanceof RhNavigationItemEvent) {
       // if the event came from a secondary link in a compact mode we'll want to close the hamburger first if it is open
-      const [slottedSecondary] = this.#slots.getSlotted('secondary-links');
+      const [slottedSecondary] = this.#slots.getSlotted('secondary');
       const secondaryLinks = slottedSecondary.querySelectorAll('rh-navigation-item');
       const secondaryEventToggle =
           Array.from(secondaryLinks).find(node => node.isEqualNode(event.toggle));

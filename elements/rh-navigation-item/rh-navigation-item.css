@@ -266,6 +266,20 @@ details {
   &.link {
     & ::slotted(a) {
       padding-inline: var(--rh-space-lg);
+      display: flex;
+      align-items: center;
+      height: 100%;
+      color: var(--rh-color-text-primary) !important;
+      text-decoration: none !important;
+    }
+
+    & ::slotted(a:focus-visible) {
+      outline-offset: -2px;
+      outline:
+        var(--rh-border-width-md)
+        solid
+        var(--rh-color-interactive-primary-default);
+      border-radius: var(--rh-border-radius-default);
     }
   }
 }

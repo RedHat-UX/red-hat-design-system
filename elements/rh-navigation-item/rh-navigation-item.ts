@@ -11,6 +11,7 @@ import { ifDefined } from 'lit-html/directives/if-defined.js';
 import { consume } from '@lit/context';
 import { context, type RhNavigationItemContext } from './context.js';
 
+import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { ComposedEvent } from '@patternfly/pfe-core/core.js';
 
@@ -40,6 +41,8 @@ export class RhNavigationItem extends LitElement {
   #highlight = false;
 
   #mo = new MutationObserver(this.#mutationsCallback.bind(this));
+
+  #internals = InternalsController.of(this, { role: 'listitem' });
 
   @query('details')
   private _details!: HTMLDetailsElement;
