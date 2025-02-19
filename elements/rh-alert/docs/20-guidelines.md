@@ -145,8 +145,46 @@ A toast alert slides in from the top right corner of a page and then disappears 
        height="291">
 </uxdot-example>
 
-For more information on how to toast alerts using JavaScript, please read the
-[code page](../code/#toasting-alerts).
+Content authors should avoid writing toast alerts in HTML, and instead use the
+`toast()` JavaScript method to toast alerts, which handles the grouping,
+animations, persistence, and other necessary features of the toasted alert
+pattern.
+
+<uxdot-best-practice variant="do">
+  <uxdot-example slot="image" alignment="left" variant="full" no-border>
+
+```js rhcodeblock
+import { RhAlert } from '@rhds/elements/rh-alert/rh-alert.js';
+
+RhAlert.toast({
+  state: 'caution',
+  message: 'Toast alerts using JavaScript',
+});
+```
+
+  </uxdot-example>
+
+Use the JavaScript API to toast alerts.
+
+</uxdot-best-practice>
+
+<uxdot-best-practice variant="dont">
+  <uxdot-example slot="image" alignment="left" variant="full" no-border>
+
+```html rhcodeblock
+<rh-alert variant="toast">
+  <p>Writing toasted alerts explicitly in HTML</p>
+</rh-alert>
+```
+
+  </uxdot-example>
+
+Write toast variant alerts in HTML.
+
+</uxdot-best-practice>
+
+For more information on how to toast alerts using JavaScript,
+please read the [code page][codepage].
 
 ## Behavior
 
@@ -226,3 +264,4 @@ On small screens, both alert variants will span one column, and toast alerts wil
   <p>Do not use an inline alert for toast alert use cases and vice versa.</p>
 </uxdot-best-practice>
 
+[codepage]: ../code/#toasting-alerts
