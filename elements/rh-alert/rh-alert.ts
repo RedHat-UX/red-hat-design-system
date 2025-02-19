@@ -291,18 +291,44 @@ function renderToasts() {
               class="${classMap({ persistent })}"
               variant="toast"
               role="status"
-              aria-live="polite">
+              aria-live="polite"
+              @focusin="${manageAlertAnimation}"
+              @focusout="${manageAlertAnimation}"
+              @mouseenter="${manageAlertAnimation}"
+              @mouseleave="${manageAlertAnimation}">
       <h3 slot="header">${heading}</h3>
       ${!message ? '' : typeof message !== 'string' ? message : html`
       <p class="text" ?hidden="${!message}">${message}</p>`}
       ${[firstAction, secondAction].filter(x => !!x).map(action => html`
       <rh-button slot="actions"
-                 variant=${action === firstAction ? 'secondary' : 'link'}
+                 variant="${action === firstAction ? 'secondary' : 'link'}"
                  data-action="${action.action}">${action.text}</rh-button>
       `) ?? []}
     </rh-alert>
   `;
   }), toaster);
+}
+
+async function manageAlertAnimation(event: Event) {
+  const alert =
+      event.target instanceof RhAlert ? event.target
+    : event.target instanceof Element ? event.target.closest('rh-alert')
+    : null;
+  if (!alert) {
+    return;
+  }
+  for (const animation of alert.getAnimations() ?? []) {
+    switch (event.type) {
+      case 'focusin':
+      case 'mouseenter':
+        return animation.pause();
+      case 'focusout':
+      case 'mouseleave':
+        if (!alert.matches(':focus-within')) {
+          return animation.play();
+        }
+    }
+  }
 }
 
 /**
