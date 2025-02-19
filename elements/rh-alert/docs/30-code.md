@@ -1,8 +1,9 @@
 ## Toasting Alerts
 The `toast` variant of alert is intended specifically and only to be used when
 toasting alerts. To toast an alert, use the static `toast()` method on the
-`RhAlert` constructor. The argument to `toast()` is an object with at least a
-`message` property, and several other options.
+`RhAlert` constructor. [Avoid](../guidelines/#toast) writing your own
+`<rh-alert variant="toast">` in HTML. The argument to `toast()` is an object
+with at least a `message` property, and several other options.
 
 ```js rhcodeblock
 import { RhAlert } from '@rhds/elements/rh-alert/rh-alert.js';
@@ -23,7 +24,9 @@ The full list of options for the `toast` method is:
 
 </rh-table>
 
-Actions objects have two keys, `text` for the action button text, and `action` e.g. `dismiss` or `confirm`, which is applied to the `close` event as the `action` property.
+Actions objects have two keys, `text` for the action button text, and `action` 
+e.g. `dismiss` or `confirm`, which is applied to the `close` event as the 
+`action` property.
 
 ### Toasted alert content
 
@@ -102,7 +105,7 @@ await RhAlert.toast({
 ### Persistent toasted alerts
 
 Toasted alerts can be timed or persistent. Timed alerts remain on screen for
-eight seconds before disappearing. Persistent alerts remain on screen until the  
+eight seconds before disappearing. Persistent alerts remain on screen until the
 user explicitly dismisses them. To make your toasted alert persistent, use the
 `persistent: true` option.
 
