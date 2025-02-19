@@ -181,3 +181,7 @@ document.addEventListener('close', function(event) {
   }
 });
 ```
+
+<style data-helmet>
+rh-code-block + rh-code-block { margin-block-start: var(--rh-space-xl); }
+</style>
