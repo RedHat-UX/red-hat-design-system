@@ -7,7 +7,8 @@ with at least a `message` property, and several other options.
 
 ```js rhcodeblock
 import { RhAlert } from '@rhds/elements/rh-alert/rh-alert.js';
-RhAlert.toast({ /*...*/ });
+
+RhAlert.toast({ state: 'success', message: 'Saved!' });
 ```
 
 The full list of options for the `toast` method is:
