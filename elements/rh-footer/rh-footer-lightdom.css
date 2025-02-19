@@ -31,6 +31,7 @@
 }
 
 :is(rh-footer, rh-footer-universal) :is(h1, h2, h3, h4, h5, h6) {
+  color: var(--rh-color-text-primary-on-dark, #ffffff);
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
   line-height: var(--rh-line-height-heading, 1.3);
 }
@@ -65,6 +66,16 @@ rh-footer-universal [slot^='links'] a {
  */
 :is(rh-footer, rh-footer-universal) {
   --rh-footer-section-side-gap: var(--rh-space-lg, 16px);
+
+  overflow-y: scroll;
+
+  & > :not([slot='logo'], rh-footer-universal) {
+    animation-name: var(--_fallback-animation, deopacitize-footer);
+    animation-duration: 5s;
+    animation-timing-function: ease;
+    animation-delay: 0s;
+    opacity: var(--_fallback-opacity);
+  }
 }
 
 /* (min-width: --rh-breakpoint-sm) */
@@ -95,26 +106,10 @@ rh-footer:not(:defined) {
   min-height: var(--rh-footer-nojs-min-height, 750px);
 }
 
-rh-footer-universal:not(:defined):before {
-  grid-area: global;
-}
-
-/* Adding styles to logo */
-rh-footer:not(:defined) > [slot='logo'] {
-  padding: var(--rh-space-2xl, 32px) var(--_section-side-gap);
-}
-
-/* A11y hide child components */
-rh-footer:not(:defined) > :not([slot='logo'], rh-footer-universal),
-rh-footer-universal:not(:defined) > * {
-  border: 0;
-  clip: rect(1px, 1px, 1px, 1px);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
+@keyframes deopacitize-footer {
+  0% { --_fallback-opacity: 0; }
+  99% { --_fallback-opacity: 0; }
+  100% { --_fallback-opacity: 1; }
 }
 
 rh-footer-universal:not(:defined) {
@@ -122,6 +117,10 @@ rh-footer-universal:not(:defined) {
   display: block;
   width: 100%;
   min-height: 176px;
+
+  &:before {
+    grid-area: global;
+  }
 }
 
 rh-footer-universal rh-footer-copyright {

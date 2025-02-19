@@ -58,14 +58,12 @@ The video’s width will dynamically adjust with its parent container. The video
 
 ## Best Practices
 
-### Play button
-
-Display the play button in a consistent, predictable spot for all videos.
+### Play button position
 
 <div class="grid xs-two-columns">
   <uxdot-best-practice variant="do">
     <uxdot-example color-palette="lightest" width-adjustment="420px" slot="image">
-      <img src="../guidelines-best-practice-1-do.svg"
+      <img src="../video-player-best-practices-btn-position-do.png"
         alt="Video with vertically and horizontally centered play button"
         width="420"
         height="236">
@@ -75,7 +73,7 @@ Display the play button in a consistent, predictable spot for all videos.
 
   <uxdot-best-practice variant="dont">
     <uxdot-example color-palette="lightest" width-adjustment="420px" slot="image">
-      <img src="../guidelines-best-practice-1-dont.svg"
+      <img src="../video-player-best-practices-btn-position-dont.png"
         alt="Video with play button in the bottom right"
         width="420"
         height="236">
@@ -84,16 +82,37 @@ Display the play button in a consistent, predictable spot for all videos.
   </uxdot-best-practice>
 </div>
 
-
-### Aspect Ratio
-
-A video embed element and should have the same aspect ratio as the video it’s displaying.
+### Play button theme
 
 <div class="grid xs-two-columns">
   <uxdot-best-practice variant="do">
     <uxdot-example color-palette="lightest" width-adjustment="420px" slot="image">
-      <img src="../guidelines-best-practice-2-do.svg"
-        alt="Video embed with a correct, 16:9 aspect ratio"
+      <img src="../video-player-best-practices-btn-theme-do.png"
+        alt="Light theme play button layered on a light-colored thumbnail image"
+        width="420"
+        height="236">
+    </uxdot-example>
+    <p>A light theme play button should be used if the thumbnail image has a light color palette, and a dark theme play button should be used against dark thumbnails.</p>
+  </uxdot-best-practice>
+
+  <uxdot-best-practice variant="dont">
+    <uxdot-example color-palette="lightest" width-adjustment="420px" slot="image">
+      <img src="../video-player-best-practices-btn-theme-dont.png"
+        alt="Dark theme play button layered on a light-colored thumbnail image"
+        width="420"
+        height="236">
+    </uxdot-example>
+    <p>Do not use a dark theme play button over a thumbnail with mostly light colors, and vice versa.</p>
+  </uxdot-best-practice>
+</div>
+
+### Aspect Ratio
+
+<div class="grid xs-two-columns">
+  <uxdot-best-practice variant="do">
+    <uxdot-example color-palette="lightest" width-adjustment="420px" slot="image">
+      <img src="../video-player-best-practices-aspect-ratio-do.png"
+        alt="Video embed with a correctly resized thumbnail image"
         width="420"
         height="237">
     </uxdot-example>
@@ -102,8 +121,8 @@ A video embed element and should have the same aspect ratio as the video it’s 
 
   <uxdot-best-practice variant="dont">
     <uxdot-example color-palette="lightest" width-adjustment="420px" slot="image">
-      <img src="../guidelines-best-practice-2-dont.svg"
-        alt="Video embed with a very narrow aspect ratio"
+      <img src="../video-player-best-practices-aspect-ratio-dont.png"
+        alt="Video embed with a narrow aspect ratio, causing the thumbnail to look distorted"
         width="420"
         height="184">
     </uxdot-example>
