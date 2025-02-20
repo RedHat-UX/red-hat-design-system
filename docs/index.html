@@ -3,16 +3,8 @@ layout: layouts/base.njk
 title: Home
 ---
 
-<script type="module" data-helmet>
-  import '@rhds/elements/rh-surface/rh-surface.js';
-  import '@rhds/elements/rh-cta/rh-cta.js';
-  import '@rhds/elements/rh-card/rh-card.js';
-  import '@rhds/elements/rh-footer/rh-footer.js';
-  import '@rhds/elements/rh-tag/rh-tag.js';
-  import '@rhds/elements/rh-tile/rh-tile.js';
-</script>
-
 <link rel="stylesheet" data-helmet href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
+
 <style data-helmet>
   #main {
     --main-padding: var(--rh-space-lg);
@@ -25,7 +17,6 @@ title: Home
     @media (min-width: 576px) { --main-padding: var(--rh-space-2xl); }
     @media (min-width: 768px) { --main-padding: var(--rh-space-3xl); }
     @media (min-width: 992px) { --main-padding: var(--rh-space-6xl); }
-
   }
 
   h2 {
@@ -40,6 +31,7 @@ title: Home
     margin-block-end: calc(10 * var(--rh-space-lg));
     grid-template-areas: 'h i' 'p i';
     gap: var(--rh-space-4xl) var(--rh-space-5xl);
+
     & h1 {
       grid-area: h;
       font-size: var(--rh-font-size-heading-2xl);
@@ -49,9 +41,11 @@ title: Home
       color: var(--rh-color-brand-red);
       margin: 0;
     }
+
     & img {
       grid-area: i;
     }
+
     & p {
       grid-area: p;
       margin: 0;
@@ -63,11 +57,14 @@ title: Home
   rh-card {
     --rh-color-border-subtle-on-light: transparent;
     --rh-color-border-subtle-on-dark: transparent;
+
     & p { margin: 0; }
+
     & rh-icon {
       width: var(--rh-size-icon-05);
       color: var(--rh-color-icon-primary);
     }
+
     &.nav {
       margin-block-start: var(--rh-space-4xl);
       width: calc(100% - 2 * var(--nav-padding));
@@ -80,6 +77,10 @@ title: Home
       & > h2 {
         font-size: var(--rh-font-size-heading-xl);
         font-weight: var(--rh-font-weight-heading-normal);
+      }
+
+      & [slot=image] {
+        max-width: initial;
       }
 
       &::part(container) {
@@ -111,15 +112,22 @@ title: Home
         align-self: start;
         grid-area: footer;
       }
-      & [slot=image] {
-        max-width: initial;
-      }
     }
   }
 </style>
 
+<script type="module" data-helmet>
+  import '@rhds/elements/rh-surface/rh-surface.js';
+  import '@rhds/elements/rh-cta/rh-cta.js';
+  import '@rhds/elements/rh-card/rh-card.js';
+  import '@rhds/elements/rh-footer/rh-footer.js';
+  import '@rhds/elements/rh-tag/rh-tag.js';
+  import '@rhds/elements/rh-tile/rh-tile.js';
+</script>
+
 {% include 'partials/component/masthead.njk' %}
 {% include 'partials/component/sidenav.njk' %}
+
 <rh-surface id="main"
             role="main"
             color-palette="lightest">
