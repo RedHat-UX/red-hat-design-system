@@ -20,6 +20,7 @@ tags:
 
 <script data-helmet type="module">
   import '@rhds/elements/rh-tile/rh-tile.js';
+  import '@rhds/elements/rh-tag/rh-tag.js';
 </script>
 
 {# NOTE: all images in this view need to be 340 by 200 px in order to maintain same ratio. #}
@@ -47,6 +48,12 @@ for the future, read the [source deck][sourcedeck].
                 src="{{pattern.data['pattern-info'].thumbnail}}">
         </uxdot-example>
         <h3 slot="headline"><a href="{{pattern.url}}" slot="headline">{{pattern.data.title}}</a></h3>
+        {%- if pattern.data['pattern-info'].status == 'deprecated' -%}
+        <rh-tag slot="footer" variant="filled" color="orange" icon="close-circle-fill">Deprecated</rh-tag>
+        {%- endif -%}
+        {%- if pattern.data['pattern-info'].status == 'planned' -%}
+        <rh-tag slot="footer" color="purple" variant="filled" icon="notification-fill">Planned</rh-tag>
+        {%- endif -%}
     </rh-tile>
     {%- endfor -%}
 </nav>
