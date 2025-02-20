@@ -15,33 +15,29 @@ title: Home
 <link rel="stylesheet" data-helmet href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
 <style data-helmet>
   #main {
+    --main-padding: var(--rh-space-lg);
+
+    max-width: var(--container-max-width);
     container: container / inline-size;
-    padding: var(--rh-space-lg);
+    padding-inline: var(--main-padding);
+    padding-block: calc(var(--uxdot-masthead-max-height) + var(--main-padding));
 
-    @media (min-width: 576px) {
-      padding-inline: var(--rh-space-2xl);
-      padding-block-end: var(--rh-space-2xl);
-    }
-
-    @media (min-width: 768px) {
-      padding-inline: var(--rh-space-3xl);
-      padding-block-end: var(--rh-space-3xl);
-    }
-
-    @media (min-width: 992px) {
-      padding-inline: var(--rh-space-6xl);
-      padding-block: calc(2 * var(--rh-space-6xl));
-    }
+    @media (min-width: 576px) { --main-padding: var(--rh-space-2xl); }
+    @media (min-width: 768px) { --main-padding: var(--rh-space-3xl); }
+    @media (min-width: 992px) { --main-padding: var(--rh-space-6xl); }
   }
 
   #hero {
     display: grid;
-    margin-block-end: 161px;
+    margin-block-end: calc(10 * var(--rh-space-lg));
     grid-template-areas: 'h i' 'p i';
     gap: var(--rh-space-4xl) var(--rh-space-5xl);
     & h1 {
       grid-area: h;
       font-size: var(--rh-font-size-heading-2xl);
+      font-weight: var(--rh-font-weight-heading-regular);
+      font-family: var(--rh-font-family-heading);
+      max-width: 546px;
       color: var(--rh-color-brand-red);
       margin: 0;
     }
@@ -51,45 +47,66 @@ title: Home
     & p {
       grid-area: p;
       margin: 0;
+      font-size: var(--rh-font-size-body-text-xl);
+      line-height: var(--rh-line-height-body-text);
     }
+  }
+
+  h2 {
+    font-size: var(--rh-font-size-heading-md);
+    font-weight: var(--rh-font-weight-heading-bold);
+    line-height: var(--rh-line-height-heading);
+    margin: 0;
   }
 
   rh-card {
     --rh-color-border-subtle-on-light: transparent;
     --rh-color-border-subtle-on-dark: transparent;
-    &.start {
-      & rh-icon {
-        width: var(--rh-size-icon-05);
-        color: var(--rh-color-icon-primary);
-      }
+    & p { margin: 0; }
+    & rh-icon {
+      width: var(--rh-size-icon-05);
+      color: var(--rh-color-icon-primary);
     }
-    &.home-nav {
-      margin-block-end: var(--rh-space-4xl);
-      & p { margin: 0; }
-      &:last-of-type { margin-block-end: none; }
+    &.nav {
+      margin-block-start: var(--rh-space-4xl);
+      width: calc(100% - 2 * var(--nav-padding));
+
+      --nav-padding: var(--rh-space-4xl);
+      @media (min-width: 576px) { --nav-padding: var(--rh-space-lg); }
+      @media (min-width: 768px) { --nav-padding: var(--rh-space-2xl); }
+      @media (min-width: 992px) { --nav-padding: var(--rh-space-4xl); }
+
       &::part(container) {
         display: grid;
         background: linear-gradient(90deg, var(--rh-color-gray-10) 0%, white 100%);
         border-radius: 48px 16px;
-        padding: var(--rh-space-4xl);
+        padding: var(--nav-padding);
         grid-template-rows: min-content min-content min-content;
         grid-template-areas:
             'header image'
             'body image'
             'footer image';
       }
-      &::part(image) { grid-area: image; }
+      &::part(image) {
+        grid-area: image;
+      }
       &::part(header) {
+        margin: 0;
         grid-area: header;
         align-self: end;
       }
       &::part(body) {
+        margin: 0;
         grid-area: body;
         align-self: center;
       }
       &::part(footer) {
+        margin: 0;
         align-self: start;
         grid-area: footer;
+      }
+      & [slot=image] {
+        max-width: initial;
       }
     }
   }
@@ -136,14 +153,14 @@ title: Home
   </div>
 
   <div class="grid sm-two-columns">
-    <rh-tile>
+    <rh-tile compact>
       <img alt="hexagon composed of two opposing angle brackets, one black, one styled blue and green"
            src="/assets/home/web-components.svg"
            slot="icon">
       <h3 slot="headline"><a href="/get-started/developers/#about-web-components">Why we build with Web Components</a></h3>
       <p>Our elements are built on Web Component standards. They work across modern browsers and any frameworks that support HTML.</p>
     </rh-tile>
-    <rh-tile>
+    <rh-tile compact>
       <img alt="stylized butterfly in light blue"
            src="/assets/home/patternfly.svg"
            slot="icon">
@@ -152,7 +169,7 @@ title: Home
     </rh-tile>
   </div>
 
-  <rh-card class="home-nav">
+  <rh-card class="nav">
     <h2 slot="header">Foundations</h2>
     <p>Design language principles for better layouts</p>
     <img slot="image"
@@ -163,7 +180,7 @@ title: Home
     <rh-cta slot="footer" href="/foundations/">Explore foundations</rh-cta>
   </rh-card>
 
-  <rh-card class="home-nav">
+  <rh-card class="nav">
     <h2 slot="header">Elements</h2>
     <p>Interface building blocks for better experiences</p>
     <img slot="image"
@@ -174,7 +191,7 @@ title: Home
     <rh-cta slot="footer" href="/elements/">Explore elements</rh-cta>
   </rh-card>
 
-  <rh-card class="home-nav">
+  <rh-card class="nav">
     <h2 slot="header">Design/code status</h2>
     <p>The status of elements and patterns at a glance</p>
     <img slot="image"
@@ -185,7 +202,7 @@ title: Home
     <rh-cta slot="footer" href="/design-code-status/">View the design/code status</rh-cta>
   </rh-card>
 
-  <rh-card class="home-nav">
+  <rh-card class="nav">
     <h2 slot="header">Release notes</h2>
     <p>Track any changes and major releases to RHDS</p>
     <img slot="image"
@@ -196,7 +213,7 @@ title: Home
     <rh-cta slot="footer" href="/release-notes/">Read the release notes</rh-cta>
   </rh-card>
 
-  <rh-card class="home-nav">
+  <rh-card class="nav">
     <h2 slot="header">Contribute</h2>
     <p>Help us grow and improve our system together</p>
     <img slot="image"
@@ -209,6 +226,7 @@ title: Home
 
   {% include "partials/component/back-to-top.njk" %}
 </rh-surface>
+
 {% include 'partials/component/footer.njk' %}
 
 
