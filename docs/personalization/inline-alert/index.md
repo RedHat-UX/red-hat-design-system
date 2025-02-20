@@ -46,6 +46,6 @@ alternate, and either can be used.
 
 An inline alert can be displayed to any appropriate audience group.
 
-
+[alertelement]: /elements/alert/
 
 {% renderFile './docs/personalization/_feedback.md' %}
