@@ -1,15 +1,11 @@
 ---
-layout: layouts/pages/basic.njk
+layout: layouts/pages/pattern.njk
 title: Overview
 heading: Personalization Patterns
 sidenavTitle: All Personalization Patterns
 order: 0
 tags:
   - personalization
-  - personalizationPatterns
-subnav:
-  collection: personalizationPatterns
-  order: 1
 ---
 
 <link data-helmet
@@ -55,6 +51,19 @@ for the future, read the [source deck][sourcedeck].
     {%- endfor -%}
 </nav>
 
+## Getting started with personalization
+
+Before jumping into personalization, have answers to these questions ready first.
+
+-   What audience are you trying to target?
+-   How large is the audience?
+    -   Reference the [Go/No go estimator][gonogoestimator]
+        to calculate and determine the viability of your project.
+-   What do you want that audience to do?
+-   What would success look like for this audience?
+-   What type of experience(s) do you want to use?
+-   Are any tests or personalizations already running on the page you
+    are working on?
 
 ## Custom patterns
 
@@ -71,3 +80,4 @@ Custom patterns are not pre-established targeting opportunities. If you are inte
 [feedbackform]: https://docs.google.com/forms/d/e/1FAIpQLSft-6oHhI5d2wO-oEeBuT23wiYPpxOH2UKLH9ZkRswjby2CSg/viewform?usp=sf_link
 [feedbackemail]: mailto:digital-design-system@redhat.com
 [patternspage]: /patterns/
+[gonogoestimator]: https://docs.google.com/document/d/1hutgW-tyti73C64XnO4_ftpO83R81KEquEV4AeGqvWA/edit?usp=sharing
