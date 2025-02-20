@@ -25,6 +25,14 @@ title: Home
     @media (min-width: 576px) { --main-padding: var(--rh-space-2xl); }
     @media (min-width: 768px) { --main-padding: var(--rh-space-3xl); }
     @media (min-width: 992px) { --main-padding: var(--rh-space-6xl); }
+
+  }
+
+  h2 {
+    font-size: var(--rh-font-size-heading-md);
+    font-weight: var(--rh-font-weight-heading-bold);
+    line-height: var(--rh-line-height-heading);
+    margin: 0;
   }
 
   #hero {
@@ -52,13 +60,6 @@ title: Home
     }
   }
 
-  h2 {
-    font-size: var(--rh-font-size-heading-md);
-    font-weight: var(--rh-font-weight-heading-bold);
-    line-height: var(--rh-line-height-heading);
-    margin: 0;
-  }
-
   rh-card {
     --rh-color-border-subtle-on-light: transparent;
     --rh-color-border-subtle-on-dark: transparent;
@@ -75,6 +76,11 @@ title: Home
       @media (min-width: 576px) { --nav-padding: var(--rh-space-lg); }
       @media (min-width: 768px) { --nav-padding: var(--rh-space-2xl); }
       @media (min-width: 992px) { --nav-padding: var(--rh-space-4xl); }
+
+      & > h2 {
+        font-size: var(--rh-font-size-heading-xl);
+        font-weight: var(--rh-font-weight-heading-normal);
+      }
 
       &::part(container) {
         display: grid;
