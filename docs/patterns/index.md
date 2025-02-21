@@ -28,7 +28,7 @@ tags:
 
 <style data-helmet>
   #patterns-nav {
-    margin-block: var(--rh-space--2xl);
+    margin-block: var(--rh-space--2xl, 32px);
   }
 </style>
 
