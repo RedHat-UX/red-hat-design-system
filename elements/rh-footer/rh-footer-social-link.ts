@@ -1,6 +1,6 @@
 import type { IconNameFor } from '@rhds/icons';
 
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
@@ -15,6 +15,12 @@ export class RhFooterSocialLink extends LitElement {
   /** Icon for this social link e.g. `'facebook'` */
   @property() icon?: IconNameFor<'social'>;
 
+  /** Social link address */
+  @property() href?: string;
+
+  /** Textual label for the social link e.g. "Instagram" */
+  @property({ attribute: 'accessible-label' }) accessibleLabel?: string;
+
   #logger = new Logger(this);
 
   connectedCallback() {
@@ -23,12 +29,18 @@ export class RhFooterSocialLink extends LitElement {
   }
 
   render() {
-    return html`<slot></slot>`;
+    return html`
+      <a href="${this.href}" aria-label="${this.accessibleLabel}">
+        <slot>
+          <rh-icon set="social" icon="${this.icon}"></rh-icon>
+        </slot>
+      </a>
+    `;
   }
 
   updated() {
-    const oldDiv = this.querySelector('a');
-    if (oldDiv) {
+    let oldDiv;
+    if (!isServer && (oldDiv = this.querySelector('a'))) {
       const newDiv = oldDiv.cloneNode(true) as Element;
       // remove the _rendered content
       newDiv.querySelectorAll('[_rendered]').forEach(i => i.remove());
