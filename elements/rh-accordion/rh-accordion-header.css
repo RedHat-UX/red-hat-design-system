@@ -3,7 +3,6 @@
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
   --_isRTL: -1;
@@ -32,11 +31,6 @@ a {
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-
-  /* --rh-media-sm */
-  @media (min-width: 768px) {
-    font-size: 110%;
-  }
 }
 
 :host([expanded]) {
@@ -72,7 +66,7 @@ span {
     var(--_padding-block-end)
     var(--_padding-inline-start);
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
-  font-size: var(--_font-size);
+  font-size: var(--_header-font-size);
   color: var(--rh-color-text-primary);
 
   & #icon {
