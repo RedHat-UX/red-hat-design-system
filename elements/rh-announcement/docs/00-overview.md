@@ -1,6 +1,7 @@
 ## When to use
 
-Display an important message across many pages or page types
+  - Display an important message across many pages or page types
+  - Only to be implemented through the personalization program
 
 <div id="overview-image-description" class="visually-hidden">
   Example of a announcement banner
