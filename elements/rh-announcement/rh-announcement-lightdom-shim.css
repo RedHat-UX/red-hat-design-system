@@ -19,7 +19,7 @@ rh-announcement[image-position='inline-start']:not(:defined) p {
 }
 
 rh-announcement[color-palette*='dark']:not(:defined) {
-  background-color: var(--rh-color-surface-dark-alt, #292929);
+  background-color: var(--rh-color-surface);
 }
 
 rh-announcement[image-position='inline-start']:not(:defined) {

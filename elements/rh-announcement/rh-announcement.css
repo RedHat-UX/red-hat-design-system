@@ -53,10 +53,6 @@
   padding: var(--rh-space-lg, 16px);
   text-align: center;
 
-  &.dark {
-    --rh-color-surface: var(--rh-color-surface-dark-alt, #292929);
-  }
-
   &.inline-start,
   &.block-start {
     #content {
