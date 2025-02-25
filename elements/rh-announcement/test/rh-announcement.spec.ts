@@ -1,7 +1,7 @@
 import { expect, html, oneEvent } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
 
-import { RhAnnouncement } from '@rhds/elements/rh-announcement/rh-announcement.js';
+import { AnnouncementCloseEvent, RhAnnouncement } from '@rhds/elements/rh-announcement/rh-announcement.js';
 
 describe('<rh-announcement>', function() {
   describe('simply instantiating', function() {
@@ -21,7 +21,7 @@ describe('<rh-announcement>', function() {
   });
 });
 
-describe('when the element loads', function() {
+describe('with `dismissable` and `image-position` attributes, a slotted image, and a slotted cta', function() {
   let element: RhAnnouncement;
   let elementCloseButton: HTMLButtonElement | undefined | null;
   beforeEach(async function() {
@@ -60,23 +60,21 @@ describe('when the element loads', function() {
         .to.be.accessible();
   });
 
-  it('should send a close event on close button click', async function() {
-    const eventPromise = oneEvent(element, 'close');
-    elementCloseButton?.click();
-    const event = await eventPromise;
+  describe('clicking the close button', function() {
+    let event: Event;
+    beforeEach(async function() {
+      const eventPromise = oneEvent(element, 'close');
+      elementCloseButton?.click();
+      event = await eventPromise;
+    });
 
-    expect(event).to.be.an.instanceOf(Event);
-    expect(event.type).to.equal('close');
-    expect(element.isConnected).to.be.false;
-  });
+    it('should send a close event', function() {
+      expect(event).to.be.an.instanceOf(AnnouncementCloseEvent);
+      expect(event.type).to.equal('close');
+    });
 
-
-  it('should remove the rh-announcement from DOM after close button click', async function() {
-    const parent = element.parentElement;
-
-    elementCloseButton?.click();
-    await element.updateComplete;
-
-    expect(parent?.contains(element)).to.be.false;
+    it('should remove the rh-announcement from DOM', function() {
+      expect(element.isConnected).to.be.false;
+    });
   });
 });
