@@ -1,0 +1,13 @@
+:host {
+  display: block;
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+legend {
+  margin-block-end: var(--rh-space-md, 8px);
+}

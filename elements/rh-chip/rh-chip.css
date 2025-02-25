@@ -1,0 +1,37 @@
+:host {
+  display: inline-block;
+}
+
+label {
+  outline: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+  border-radius: var(--rh-border-radius-pill, 64px);
+  display: flex;
+  margin-inline-end: var(--rh-space-md, 8px);
+  padding: var(--rh-space-xs, 4px) var(--rh-space-md, 8px);
+
+  &:hover,
+  &:focus-within {
+    cursor: pointer;
+    outline-width: var(--rh-border-width-md, 2px);
+  }
+
+  &:has(input:checked) {
+    background-color: var(--rh-color-interactive-primary-default);
+    color: var(--rh-color-white, #ffffff);
+    outline-color: var(--rh-color-border-interactive);
+  }
+
+  &:has(input:checked:focus-visible) {
+    outline-offset: var(--rh-border-width-md, 2px);
+  }
+}
+
+input {
+  appearance: none;
+  inline-size: 8px;
+  margin: 0;
+
+  &:focus {
+    outline: 0;
+  }
+}
