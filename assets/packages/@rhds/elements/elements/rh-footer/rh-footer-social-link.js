@@ -1,11 +1,15 @@
 var _RhFooterSocialLink_logger;
 import { __classPrivateFieldGet, __decorate } from "tslib";
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { css } from "lit";
-const style = css `:host{display:block;--rh-icon-size:var(--rh-footer--social-icon--size,var(--rh-size-icon-02,24px))}[hidden]{display:none!important}::slotted(a){color:var(--_icon-color)!important}::slotted(a:is(:hover,:focus-within)){color:var(--_icon-color-hover)!important}`;
+const style = css `:host{display:block;--rh-icon-size:var(--rh-footer--social-icon--size,var(--rh-size-icon-02,24px))}[hidden]{display:none!important}::slotted(a),a{color:var(--_icon-color)!important}::slotted(a:is(:hover,:focus-within)),a:is(:hover,:focus-within){color:var(--_icon-color-hover)!important}`;
+/**
+ * Social media links for Red Hat Footer
+ * @slot - Optional icon for social link. Use only when suitable icon is unavailable with `<rh-icon>`
+ */
 let RhFooterSocialLink = class RhFooterSocialLink extends LitElement {
     constructor() {
         super(...arguments);
@@ -16,11 +20,17 @@ let RhFooterSocialLink = class RhFooterSocialLink extends LitElement {
         this.setAttribute('role', 'listitem');
     }
     render() {
-        return html `<slot></slot>`;
+        return html `
+      <a href="${this.href}" aria-label="${this.accessibleLabel}">
+        <slot>
+          <rh-icon set="social" icon="${this.icon}"></rh-icon>
+        </slot>
+      </a>
+    `;
     }
     updated() {
-        const oldDiv = this.querySelector('a');
-        if (oldDiv) {
+        let oldDiv;
+        if (!isServer && (oldDiv = this.querySelector('a'))) {
             const newDiv = oldDiv.cloneNode(true);
             // remove the _rendered content
             newDiv.querySelectorAll('[_rendered]').forEach(i => i.remove());
@@ -42,6 +52,12 @@ RhFooterSocialLink.styles = style;
 __decorate([
     property()
 ], RhFooterSocialLink.prototype, "icon", void 0);
+__decorate([
+    property()
+], RhFooterSocialLink.prototype, "href", void 0);
+__decorate([
+    property({ attribute: 'accessible-label' })
+], RhFooterSocialLink.prototype, "accessibleLabel", void 0);
 RhFooterSocialLink = __decorate([
     customElement('rh-footer-social-link')
 ], RhFooterSocialLink);
