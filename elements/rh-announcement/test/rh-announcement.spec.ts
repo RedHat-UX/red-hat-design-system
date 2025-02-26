@@ -26,7 +26,7 @@ describe('with `dismissable` and `image-position` attributes, a slotted image, a
   let elementCloseButton: HTMLButtonElement | undefined | null;
   beforeEach(async function() {
     element = await createFixture<RhAnnouncement>(html`
-      <rh-announcement dismissible image-position="inline-start">
+      <rh-announcement dismissable image-position="inline-start">
         <svg slot="image"
              width="80"
              height="48"

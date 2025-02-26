@@ -22,7 +22,7 @@ promoting an event or advertising an organizational or product announcement.
 
 ### Attributes
 
-`dismissible`
+`dismissable`
 
 - If this attribute is added, a close button will appear in the top right 
   corner. Clicking this will hide the banner.
@@ -48,12 +48,12 @@ promoting an event or advertising an organizational or product announcement.
 
 ### Announcement Banner using attributes
 
-- `dismissible`
+- `dismissable`
 - `image-position="inline-start"`
 - dark color palette
 
 ```html
-<rh-announcement dismissible image-position="inline-start" color-palette="dark">
+<rh-announcement dismissable image-position="inline-start" color-palette="dark">
   <img slot="image"
        alt="summit logo"
        src="/images/summit.png">
