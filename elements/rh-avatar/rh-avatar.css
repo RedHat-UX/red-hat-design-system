@@ -44,7 +44,7 @@
 }
 
 :host([layout='block']) #container,
-#container.mobile {
+:host(:not([plain])) #container.mobile {
   text-align: center;
   place-items: center;
   gap: 0;
