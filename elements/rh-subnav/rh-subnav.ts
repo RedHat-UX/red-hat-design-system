@@ -8,7 +8,7 @@ import { property } from 'lit/decorators/property.js';
 import { OverflowController } from '@patternfly/pfe-core/controllers/overflow-controller.js';
 
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-import { colorContextProvider } from '../../lib/context/color/provider.js';
+import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 
@@ -63,7 +63,7 @@ export class RhSubnav extends LitElement {
    * See [CSS Custom Properties](#css-custom-properties) for default values
    */
   @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette = 'lighter';
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   /**
    * Customize the default `aria-label` on the `<nav>` container.
@@ -109,9 +109,9 @@ export class RhSubnav extends LitElement {
   render() {
     const { scrollIconSet, scrollIconLeft, scrollIconRight } = this.constructor as typeof RhSubnav;
     const { showScrollButtons } = this.#overflow;
-    const { on = '' } = this;
+    const { on = 'light' } = this;
     return html`
-      <nav part="container" aria-label="${this.accessibleLabel}" class="${classMap({ [on]: !!on })}">${!showScrollButtons ? '' : html`
+      <nav part="container" aria-label="${this.accessibleLabel}" class="${classMap({ on: true, [on]: !!on })}">${!showScrollButtons ? '' : html`
         <button id="previous" tabindex="-1" aria-hidden="true"
                 ?disabled="${!this.#overflow.overflowLeft}"
                 @click="${this.#scrollLeft}">
