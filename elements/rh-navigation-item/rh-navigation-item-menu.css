@@ -4,10 +4,11 @@
 
 #container {
   color: var(--rh-color-text-primary);
-  padding: var(--rh-space-lg) var(--rh-space-3xl);
+  padding: var(--rh-space-2xl);
 
   @container (min-width: 992px) {
     margin: 0 auto;
     max-width: 1440px;
+    padding: var(--rh-space-3xl) var(--rh-space-2xl);
   }
 }

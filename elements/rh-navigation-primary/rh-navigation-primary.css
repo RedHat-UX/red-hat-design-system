@@ -36,7 +36,7 @@
     }
 
     &.dark {
-      --_menu-background: var(--rh-color-surface-dark);
+      --_menu-background: var(--rh-color-surface-darker);
     }
   }
 }

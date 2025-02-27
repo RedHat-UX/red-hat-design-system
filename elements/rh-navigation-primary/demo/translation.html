@@ -61,59 +61,112 @@
     For You Content
   </rh-navigation-item>
 
-  <rh-navigation-item slot="dropdowns" variant="dropdown" standalone>
-    <rh-avatar slot="icon" plain layout="inline"></rh-avatar>
-    <span slot="summary">Mein Red Hat</span>
-    <!-- Mock content -->
-    <div class="grid">
-      <div class="profile">
-        <rh-avatar>
+    <rh-navigation-item slot="dropdowns" variant="dropdown" standalone>
+      <rh-avatar slot="icon" plain layout="inline"></rh-avatar>
+      <span slot="summary">My Red Hat</span>
+      <!-- Mock content -->
+      <div class="grid">
+        <div class="profile">
+          <rh-avatar>
           Mr. Roboto
           <span slot="subtitle">AI UX Engineer, </span>
-          <a slot="subtitle" href="#">Red Hat</a>
-        </rh-avatar>
+            <a slot="subtitle" href="#">Red Hat</a>
+          </rh-avatar>
+          <div>Login: jdoe@redhat.com</div>
+          <div>Account number: 0123456</div>
+          <div>jdoe+alias@redhat.com</div>
+          <div>
+            <select>
+              <option>English</option>
+              <option>French</option>
+              <option>German</option>
+            </select>
+          </div>
+          <div>
+            <rh-button danger>Log out</rh-button>
+          </div>
+        </div>
+        <div class="content-column">
+          <ul>
+            <li>
+              <a href="#">Account details</a>
+              <p>Edit your contact info, password, location preferences, and errata notifications.</p>
+            </li>
+            <li>
+              <a href="#">Community profile</a>
+              <p>Fill out your public profile and control what content you follow.</p>
+            </li>
+            <li>
+              <a href="#">My Red Hat </a>
+              <p>Get a customized view of resources to help you use our products, solutions, and services.</p>
+            </li>
+            <li>
+              <a href="#">Training & certification</a>
+              <p>Access your Red Hat Learning Subscription, courses, and exams.</p>
+            </li>
+          </ul>
+        </div>
+        <div class="content-column">
+          <ul>
+            <li>
+              <a href="#">Subscriptions</a>
+              <p>Manage your subscriptions.</p>
+            </li>
+            <li>
+              <a href="#">Support Cases</a>
+              <p>Manage your support tickets.</p>
+            </li>
+            <li>
+              <a href="#">User management</a>
+              <p>Manage users in your organization.</p>
+            </li>
+            <li>
+              <a href="#">Activate Red Hat</a>
+              <p>Activate your subscription to gain access to updates and support.</p>
+            </li>
+          </ul>
+        </div>
       </div>
-      <div class="content-ipsum">
-        <ul>
-          <li>
-            <a href="#">All Red Hat products</a>
-          </li>
-          <li>
-            <a href="#">Tech topics</a>
-          </li>
-          <li>
-            <a href="#">Red Hat resources</a>
-          </li>
-        </ul>
-      </div>
-      <div class="content-ipsum">
-        <ul>
-          <li>
-            <a href="#">Link 1</a>
-          </li>
-          <li>
-            <a href="#">Link 2</a>
-          </li>
-          <li>
-            <a href="#">Link 3</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <!-- Mock content end -->
-  </rh-navigation-item>
+      <!-- Mock content end -->
+    </rh-navigation-item>
 </rh-navigation-primary>
 
 <link rel="stylesheet" href="../rh-navigation-primary-lightdom.css">
 
 <style>
-  /* grid for mock content */
+  /* styles for mock content */
   .grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    gap: var(--rh-space-4xl);
 
     & rh-avatar {
       display: block;
+    }
+
+    & .profile {
+      & div {
+        margin-inline-start: var(--rh-space-4xl);
+        margin-block: var(--rh-space-md);
+        line-height: var(--rh-line-height-body-text);
+      }
+    }
+
+    .content-column {
+      max-width: 320px;
+    }
+
+    & select {
+      width: 100%;
+    }
+
+    & ul {
+      display: flex;
+      flex-direction: column;
+      gap: var(--rh-space-2xl);
+      list-style: none;
+      margin: 0;
+      padding: 0;
     }
   }
 

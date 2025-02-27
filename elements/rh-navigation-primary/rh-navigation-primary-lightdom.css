@@ -7,6 +7,7 @@ rh-navigation-item {
 
   & a {
     color: var(--rh-color-interactive-primary-default);
+    text-decoration: none;
 
     &:hover {
       color: var(--rh-color-interactive-primary-hover);

@@ -167,21 +167,23 @@ details[open] {
 }
 
 details:not(.standalone) {
+  border-inline-start: var(--rh-border-width-lg) solid transparent;
   border-inline-end: var(--rh-border-width-sm) solid transparent;
 
   @container (min-width: 1200px) {
     border-inline: var(--rh-border-width-sm) solid transparent;
-  }
 
-  &:has(summary:hover) {
-    border-block-start-color: var(--rh-color-accent-brand);
+    &:has(summary:hover) {
+      border-block-start-color: var(--rh-color-accent-brand);
+    }
   }
 
   &[open] {
     border-inline-end-color: var(--rh-color-border-subtle);
-    border-block-start-color: var(--rh-color-accent-brand);
+    border-inline-start-color: var(--rh-color-accent-brand);
 
     @container (min-width: 1200px) {
+      border-block-start-color: var(--rh-color-accent-brand);
       border-inline-start-color: var(--rh-color-border-subtle);
 
       &.dark {
