@@ -24,7 +24,7 @@ import styles from './rh-button.css';
  * @slot - Contains button text
  */
 @customElement('rh-button')
-colorContextConsumer
+@colorContextConsumer
 export class RhButton extends LitElement {
   static readonly styles = [styles];
 
