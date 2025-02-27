@@ -64,7 +64,7 @@
   }
 
   &.dark {
-    --_background-color: var(--rh-color-surface-dark);
+    --_background-color: var(--rh-color-surface-darker);
   }
 }
 

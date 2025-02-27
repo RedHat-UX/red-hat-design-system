@@ -55,6 +55,13 @@
   border-block-end: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
 }
 
+.dark {
+  & #bar {
+    border-block-end-color: transparent;
+    box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
+  }
+}
+
 #logo {
   grid-area: logo;
   display: flex;
@@ -96,10 +103,22 @@
 
 #hamburger {
   display: flex;
+  grid-area: hamburger;
   height: 100%;
   place-items: center;
+  align-content: center;
 
   & summary {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    gap: var(--rh-space-lg);
+    height: max-content;
+    width: max-content;
+    align-items: center;
+    padding: var(--rh-space-md) var(--rh-space-lg);
+    border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
+    border-radius: var(--rh-border-radius-pill);
     margin-inline-start: 0;
 
     &:is(:focus-visible, :hover:focus-visible) {
@@ -110,6 +129,28 @@
         var(--rh-color-interactive-primary-default);
       border-radius: var(--rh-border-radius-pill);
     }
+
+    &:before {
+      --_mask: conic-gradient(transparent 0 0);
+
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      padding: var(--rh-border-width-md);
+      background: var(--_active-item-color);
+      mask: var(--_mask) content-box exclude, var(--_mask);
+      z-index: 1;
+    }
+  }
+
+  &::marker,
+  &::-webkit-details-marker {
+    display: none;
+  }
+
+  & #details-content {
+    display: none;
   }
 }
 
@@ -153,46 +194,6 @@
 
 .compact {
   #hamburger {
-    grid-area: hamburger;
-    height: 100%;
-    place-items: center;
-    align-content: center;
-
-    & summary {
-      position: relative;
-      cursor: pointer;
-      display: flex;
-      gap: var(--rh-space-lg);
-      height: max-content;
-      width: max-content;
-      align-items: center;
-      padding: var(--rh-space-md) var(--rh-space-lg);
-      border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
-      border-radius: var(--rh-border-radius-pill);
-
-      &::marker,
-      &::-webkit-details-marker {
-        display: none;
-      }
-
-      &:before {
-        --_mask: conic-gradient(transparent 0 0);
-
-        content: '';
-        position: absolute;
-        inset: -1px;
-        border-radius: inherit;
-        padding: var(--rh-border-width-md);
-        background: var(--_active-item-color);
-        mask: var(--_mask) content-box exclude, var(--_mask);
-        z-index: 1;
-      }
-    }
-
-    & #details-content {
-      display: none;
-    }
-
     &[open] {
       & summary {
         &:before {

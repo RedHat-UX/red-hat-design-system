@@ -3,7 +3,13 @@ rh-navigation-primary {
 }
 
 rh-navigation-item {
+  color: var(--rh-color-text-primary);
+
   & a {
-    color: var(--rh-color-text-primary);
+    color: var(--rh-color-interactive-primary-default);
+
+    &:hover {
+      color: var(--rh-color-interactive-primary-hover);
+    }
   }
 }
