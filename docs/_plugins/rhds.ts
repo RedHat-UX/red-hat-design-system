@@ -249,6 +249,11 @@ export default async function(eleventyConfig: UserConfig, options?: Options) {
 
   eleventyConfig.addWatchTarget('docs/patterns/**/patterns/*.html');
   eleventyConfig.addWatchTarget('docs/theming/**/patterns/*.html');
+  eleventyConfig.setServerOptions({
+    watch: [
+      'elements/*/*.css',
+    ],
+  });
 
   for (const tagName of await readdir(join(cwd, './elements/'))) {
     if (!tagName.includes('.')) {
