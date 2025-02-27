@@ -36,7 +36,7 @@ If one element has the same function as another, both should be labeled the same
 When considering methods of communication or feedback, do not use color alone. Ensure there is a text label, icon, underline, or other visual cue to communicate meaning. Consider how the following elements would look to a color blind user.
 
 <uxdot-example width-adjustment="872px" no-border>
-  <img src="/assets/color/using-color-alone.svg"
+  <img src="/assets/color/color-a11y-using-color-alone.svg"
       alt="Dialog with a red-orange Leave button, a form field with a red bottom border, and progress steps without labels"
       width="872"
       height="537">
