@@ -45,9 +45,7 @@
   display: block;
 }
 
-.color-palette-dark,
-.color-palette-darker,
-.color-palette-darkest {
+.dark {
   --_row-background-hover-color: rgba(from var(--rh-color-white, #ffffff) r g b / 0.1);
   --_column-background-hover-color: rgba(from var(--rh-color-blue-70, #003366) r g b / 0.3);
 }

@@ -1,14 +1,13 @@
-import type { ColorPalette } from '@rhds/elements/lib/context/color/provider.js';
-
 import { LitElement, html, type PropertyValues } from 'lit';
 
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
 import {
-  colorContextConsumer,
-  type ColorTheme,
-} from '@rhds/elements/lib/context/color/consumer.js';
+  colorContextProvider,
+  type ColorPalette,
+} from '@rhds/elements/lib/context/color/provider.js';
+import { colorContextConsumer } from '@rhds/elements/lib/context/color/consumer.js';
 
 import {
   ColorPaletteListConverter,
@@ -26,10 +25,12 @@ import { UxdotPatternSSRController } from './uxdot-pattern-ssr-controller.js';
 import styles from './uxdot-pattern.css';
 
 @customElement('uxdot-pattern')
+@colorContextConsumer
 export class UxdotPattern extends LitElement {
   static styles = [styles];
 
   /** Which color palette to apply to the demo surface */
+  @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' })
   colorPalette: ColorPalette = 'lightest';
 
@@ -53,8 +54,6 @@ export class UxdotPattern extends LitElement {
 
   /** Which colour palettes should be allowed in the picker? (default: all) */
   @property({ converter: ColorPaletteListConverter }) allow = paletteNames;
-
-  @colorContextConsumer() private on?: ColorTheme;
 
   ssr = new UxdotPatternSSRController(this);
 
@@ -146,4 +145,3 @@ export class UxdotPattern extends LitElement {
     }
   }
 }
-

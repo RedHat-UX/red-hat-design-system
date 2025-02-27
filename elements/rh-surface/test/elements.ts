@@ -13,15 +13,14 @@ import {
 } from '@rhds/elements/lib/context/color/provider.js';
 
 @customElement('test-context-consumer')
+@colorContextConsumer
 export class ContextConsumer extends ReactiveElement {
-  @colorContextConsumer()
-  @property({ reflect: true })
-  on?: ColorTheme;
+  @property({ reflect: true }) on?: ColorTheme;
 }
 
 @customElement('test-context-consumer-provider')
+@colorContextConsumer
 export class ContextConsumerProvider extends ReactiveElement {
-  @colorContextConsumer()
   @property({ reflect: true })
   on?: ColorTheme;
 
@@ -30,11 +29,10 @@ export class ContextConsumerProvider extends ReactiveElement {
 }
 
 @customElement('test-context-provider-consumer')
+@colorContextConsumer
 export class ContextProviderConsumer extends ReactiveElement {
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
-  @colorContextConsumer()
-  @property({ reflect: true })
-  on?: ColorTheme;
+  @property({ reflect: true }) on?: ColorTheme;
 }

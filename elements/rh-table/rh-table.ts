@@ -107,15 +107,11 @@ export class RhTable extends LitElement {
   }
 
   render() {
-    const { on = 'light' } = this;
+    const dark = !!this.#internalColorPalette?.startsWith('dark');
     return html`
       <div id="container"
            part="container"
-           class="${classMap({
-             on: true,
-             [on]: true,
-             [`color-palette-${this.#internalColorPalette}`]: !!this.#internalColorPalette,
-           })}">
+           class="${classMap({ dark })}">
         <slot @pointerleave="${this.#onPointerleave}"
               @pointerover="${this.#onPointerover}"
               @request-sort="${this.#onRequestSort}"
