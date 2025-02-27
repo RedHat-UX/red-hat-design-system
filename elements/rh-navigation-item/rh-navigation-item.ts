@@ -36,7 +36,7 @@ export class RhNavigationItemExpandEvent extends ComposedEvent {
 export class RhNavigationItem extends LitElement {
   static readonly styles = [styles];
 
-  #slots = new SlotController(this, { slots: ['link', 'menu'] });
+  #slots = new SlotController(this, { slots: ['summary', null] });
 
   #highlight = false;
 
@@ -95,7 +95,6 @@ export class RhNavigationItem extends LitElement {
     const classes = {
       'highlight': !!this.#highlight,
       'hide': !!this.hide,
-      [hide]: true,
       [variant]: true,
       'standalone': standalone,
       'on': true,
