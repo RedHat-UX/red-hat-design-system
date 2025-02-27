@@ -265,7 +265,7 @@
   }
 }
 
-@container navigation-primary (min-width: 1680px) {
+@container navigation-primary (min-width: 1440px) {
   #secondary {
     #links {
       display: block;
