@@ -77,7 +77,7 @@ details {
 }
 
 summary {
-  --rh-icon-size: var(--rh-size-icon-02);
+  --rh-icon-size: var(--rh-size-icon-01);
   --rh-avatar-size: var(--rh-size-icon-02);
 
   list-style: none;
@@ -116,8 +116,11 @@ summary {
     &[icon='caret-down'] {
       color: var(--rh-color-icon-subtle);
       transition: rotate 0.2s;
-      will-change: rotate;
     }
+  }
+
+  ::slotted(rh-icon) {
+    margin-block: var(--rh-space-xs);
   }
 }
 
@@ -219,7 +222,7 @@ details.standalone {
 
   & summary {
     position: relative;
-    gap: var(--rh-space-lg);
+    gap: var(--rh-space-md);
     height: max-content;
     width: max-content;
     align-items: center;

@@ -91,6 +91,7 @@ export class RhNavigationPrimary extends LitElement {
     super();
     if (!isServer) {
       // TODO: Perf look into debouncing the resize observer
+      // or look into using style observer: https://www.bram.us/2025/02/24/solved-by-styleobserver-element-matchcontainer/?ref=dailydev
       this.#ro = new ResizeObserver(entries => {
         for (const entry of entries) {
           const [contentBoxSize] = entry.contentBoxSize;
@@ -142,8 +143,8 @@ export class RhNavigationPrimary extends LitElement {
           <details id="hamburger" @toggle="${this.#hamburgerToggle}">
             <summary>
               <rh-icon icon="menu-bars" set="ui"></rh-icon>
-              <slot name="summary">Menu</slot>
-              <rh-icon icon="caret-down" set="microns"></rh-icon>
+              <slot name="summary" id="summary">Menu</slot>
+              <rh-icon icon="caret-down" set="microns" aria-labelledby="summary"></rh-icon>
             </summary>
             <div id="details-content" role="list">
               <slot></slot>

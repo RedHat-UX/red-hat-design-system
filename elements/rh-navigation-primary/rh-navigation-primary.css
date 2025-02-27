@@ -112,7 +112,7 @@
     position: relative;
     cursor: pointer;
     display: flex;
-    gap: var(--rh-space-lg);
+    gap: var(--rh-space-md);
     height: max-content;
     width: max-content;
     align-items: center;
@@ -143,8 +143,22 @@
       z-index: 1;
     }
 
+    slot[name='summary'] {
+      display: none;
+    }
+
     rh-icon[icon='caret-down'] {
       color: var(--rh-color-icon-subtle);
+    }
+
+    rh-icon[icon='menu-bars'] {
+      margin-block: var(--rh-space-xs);
+    }
+
+    @container (min-width: 992px) {
+      slot[name='summary'] {
+        display: contents;
+      }
     }
   }
 
