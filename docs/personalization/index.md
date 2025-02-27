@@ -16,6 +16,12 @@ tags:
   #patterns-nav {
     margin-block: var(--rh-space--2xl, 32px);
   }
+  rh-tile h3 {
+    margin: 0 !important;
+  }
+  rh-tile p {
+    margin-block: 0 0 !important;
+  }
 </style>
 
 <script data-helmet type="module">
@@ -38,22 +44,23 @@ Current personalization patterns use the following assets.
 - [Foundations](/foundations/) and [elements](/elements/) from the Red Hat Design System
 - Icons using our [Icon](/elements/icon/) element
 
-<nav id="patterns-nav" class="grid xs-two-columns sm-three-columns">
+<nav id="patterns-nav" class="grid xs-two-columns sm-two-columns">
     {%- for pattern in collections['personalization-pattern'] -%}
     {%- set alt = pattern.data['pattern-info']['thumbnail-alt'] or pattern.data.title -%}
-    <rh-tile compact bleed>
-        <uxdot-example slot="image" no-border transparent>
+    <rh-tile >
+        <uxdot-example slot="image" no-border transparent variant="full">
             <img alt="{{alt}}"
-                width="340"
-                height="200"
+                width="482"
+                height="286"
                 src="{{pattern.data['pattern-info'].thumbnail}}">
         </uxdot-example>
         <h3 slot="headline"><a href="{{pattern.url}}">{{pattern.data.title}}</a></h3>
+        <p>{{pattern.data['pattern-info'].summary}}</p>
         {%- if pattern.data['pattern-info'].status == 'deprecated' -%}
-        <rh-tag slot="footer" variant="filled" color="orange" icon="close-circle-fill">Deprecated</rh-tag>
+          <rh-tag slot="footer" variant="filled" color="orange" icon="close-circle-fill">Deprecated</rh-tag>
         {%- endif -%}
         {%- if pattern.data['pattern-info'].status == 'planned' -%}
-        <rh-tag slot="footer" color="purple" variant="filled" icon="notification-fill">Planned</rh-tag>
+          <rh-tag slot="footer" color="purple" variant="filled" icon="notification-fill">Planned</rh-tag>
         {%- endif -%}
     </rh-tile>
     {%- endfor -%}

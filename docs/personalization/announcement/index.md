@@ -5,9 +5,10 @@ sidenavTitle: Announcement
 layout: layouts/pages/pattern.njk
 order: 30
 pattern-info:
-    thumbnail: /assets/patterns/all-patterns-announcement.png
+    thumbnail: /assets/patterns/all-patterns-announcement.svg
     thumbnail-alt: Announcement pattern
-    status: ready  
+    summary: Displays an important message across pages
+    status: ready
 tags:
   - personalization
   - personalization-pattern
