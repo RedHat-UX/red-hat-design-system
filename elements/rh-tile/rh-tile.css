@@ -96,7 +96,6 @@
   }
 
   & ::slotted([slot='title']) {
-    text-transform: uppercase;
     font-size: var(--rh-font-size-body-text-md, 1rem) !important;
   }
 
