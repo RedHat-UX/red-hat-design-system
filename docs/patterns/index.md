@@ -64,7 +64,7 @@ create uniform, accessible experiences.
       <img alt="{{ title }}"
            src="/assets/patterns/all-patterns-{{ slug }}.png">
     </uxdot-example>
-    <a slot="headline" href="{{ pattern.url }}"><h3>{{ title }}</h3></a>
+    <h3 slot="headline"><a href="{{ pattern.url }}">{{ title }}</a></h3>
     <p slot="footer">{{ summary }}</p>
   </rh-tile>
   {%- endif -%}
