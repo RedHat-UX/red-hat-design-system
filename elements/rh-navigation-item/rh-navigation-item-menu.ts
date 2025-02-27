@@ -23,7 +23,7 @@ export class RhNavigationItemMenu extends LitElement {
    * Color palette restricted to color-palette lightest
    */
   @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'lightest';
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   /**
    * Sets color theme based on parent context

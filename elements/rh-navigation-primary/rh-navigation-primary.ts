@@ -58,7 +58,7 @@ export class RhNavigationPrimary extends LitElement {
   #ro?: ResizeObserver;
 
   #slots = new SlotController(
-    this, 'universal', 'logo', 'summary', 'secondary', null);
+    this, 'logo', 'summary', 'links', 'dropdowns', null);
 
   @provide({ context }) private ctx = this.#makeContext();
 
@@ -95,7 +95,7 @@ export class RhNavigationPrimary extends LitElement {
         for (const entry of entries) {
           const [contentBoxSize] = entry.contentBoxSize;
           const oldState = this.compact;
-          const newState = contentBoxSize.inlineSize <= 1200;
+          const newState = contentBoxSize.inlineSize < 1200;
           if (oldState !== newState) {
             this.compact = newState;
           }
@@ -116,17 +116,15 @@ export class RhNavigationPrimary extends LitElement {
 
   render() {
     const rtl = this.#dir.dir === 'rtl';
-    const dropdownPalette = this.compact ? 'lightest' : this.colorPalette;
     const { on = '' } = this;
     const classes = { compact: this.compact, rtl, on: true, [on]: !!on };
     return html`
       <nav id="container" class="${classMap(classes)}">
         <div id="bar">
-          <div id="universal" ?hidden="${this.#slots.isEmpty('universal') ?? true}"><slot name="universal"></slot></div>
           <div id="logo">
             <slot name="logo">
               <a href="/">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 613 145">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 613 145" height="30" width="125">
                   <defs>
                     <style>
                       .cls-1{fill:var(--rh-color-brand-red);}
@@ -143,15 +141,18 @@ export class RhNavigationPrimary extends LitElement {
           </div>
           <details id="hamburger" @toggle="${this.#hamburgerToggle}">
             <summary>
+              <rh-icon icon="menu-bars" set="ui"></rh-icon>
               <slot name="summary">Menu</slot>
-              <rh-icon icon="caret-down-fill" set="microns"></rh-icon>
+              <rh-icon icon="caret-down" set="microns"></rh-icon>
             </summary>
-            <rh-surface id="details-content" color-palette="${dropdownPalette}" role="list">
+            <div id="details-content" role="list">
               <slot></slot>
-            </rh-surface>
+            </div>
           </details>
-          <div id="secondary-links" role="list">
-            <slot name="secondary"></slot>
+          <div id="secondary" role="list">
+            <div id="event"><slot name="event"></slot></div>
+            <div id="links"><slot name="links"></slot></div>
+            <div id="dropdowns"><slot name="dropdowns"></slot></div>
           </div>
         </div>
       </nav>
@@ -188,7 +189,7 @@ export class RhNavigationPrimary extends LitElement {
   async #onExpand(event: Event) {
     if (event instanceof RhNavigationItemExpandEvent) {
       // if the event came from a secondary link in a compact mode we'll want to close the hamburger first if it is open
-      const slottedSecondary = this.#slots.getSlotted('secondary');
+      const slottedSecondary = this.#slots.getSlotted('links', 'dropdowns');
       const secondaryEventToggle = slottedSecondary.find(node => node.isEqualNode(event.toggle));
 
       if (event.open) {
@@ -256,7 +257,7 @@ export class RhNavigationPrimary extends LitElement {
     if (oldVal && !newVal) {
       this.#openHamburger();
     }
-    // transistion into compact
+    // transition into compact
     if (!oldVal && newVal) {
       if (this.#openPrimaryDropdowns.size === 0) {
         this.#closeHamburger();

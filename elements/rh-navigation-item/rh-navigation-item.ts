@@ -57,8 +57,6 @@ export class RhNavigationItem extends LitElement {
 
   @property() variant?: 'link' | 'dropdown' = 'link';
 
-  @property({ reflect: true }) layout?: 'column' | 'row' | 'icon-only' = undefined;
-
   @property({ reflect: true }) hide?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' = undefined;
 
   @property({ reflect: true, type: Boolean }) standalone = false;
@@ -92,32 +90,31 @@ export class RhNavigationItem extends LitElement {
   }
 
   render() {
-    const { hide = '', layout = '', variant = '', standalone } = this;
+    const { hide = '', variant = '', standalone, on = '' } = this;
     const { compact = true } = this.ctx ?? {};
     const classes = {
       'highlight': !!this.#highlight,
       'hide': !!this.hide,
       [hide]: true,
       [variant]: true,
-      [layout]: true,
       'standalone': standalone,
+      'on': true,
+      [on]: !!on,
       compact,
     };
     return html`
       ${this.variant === 'dropdown' ? html`
         <details @toggle="${this.#detailsToggle}" class="${classMap(classes)}">
-          <summary>
-            ${this.layout !== undefined || this.standalone ? html`
-              ${this.icon ?
-                html`<rh-icon icon="${this.icon}" set="${ifDefined(this.iconSet)}"></rh-icon>`
-                : html`<slot name="icon"></slot>`}
-            ` : ``}
-            ${this.layout !== 'icon-only' ? html`<slot name="summary">${this.summary}</slot>` : html``}
-            ${this.layout !== undefined || this.standalone ? html`` : html`
-              <rh-icon icon="caret-down" set="microns"></rh-icon>
-            `}
+          <summary>            
+            ${this.standalone ? html`
+              <slot name="icon">
+                ${this.icon ? html`<rh-icon icon="${this.icon}" set="${ifDefined(this.iconSet)}"></rh-icon>` : html``}
+              </slot>
+              ` : html``}
+            <slot name="summary">${this.summary}</slot>
+            <rh-icon icon="caret-down" set="microns"></rh-icon>
           </summary>
-          <rh-navigation-item-menu id="details-content" color-palette="lightest">
+          <rh-navigation-item-menu id="details-content">
             <slot></slot>
           </rh-navigation-item-menu>
         </details>
@@ -131,7 +128,7 @@ export class RhNavigationItem extends LitElement {
 
   #detailsToggle() {
     this._open = this._details.open;
-    this.dispatchEvent(new RhNavigationItemEvent(this._open, this));
+    this.dispatchEvent(new RhNavigationItemExpandEvent(this._open, this));
   }
 
   #mutationsCallback() {

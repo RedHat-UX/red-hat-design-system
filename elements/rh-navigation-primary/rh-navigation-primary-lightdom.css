@@ -1,7 +1,9 @@
 rh-navigation-primary {
   container: navigation-primary / inline-size;
+}
 
-  & [slot='universal']:empty {
-    display: none;
+rh-navigation-item {
+  & a {
+    color: var(--rh-color-text-primary);
   }
 }
