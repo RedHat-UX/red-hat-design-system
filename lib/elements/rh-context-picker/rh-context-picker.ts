@@ -18,7 +18,7 @@ import {
 
 import '@rhds/elements/rh-tooltip/rh-tooltip.js';
 
-import { colorContextProvider, type ColorPalette } from '../../context/color/provider.js';
+import type { ColorPalette } from '../../context/color/provider.js';
 import { colorContextConsumer } from '../../context/color/consumer.js';
 
 import style from './rh-context-picker.css';
@@ -67,7 +67,6 @@ export class RhContextPicker extends LitElement {
   /** ID of context element to toggle (same root) */
   @property() target?: string | HTMLElement;
 
-  @colorContextProvider()
   @property() value: ColorPalette = 'darkest';
 
   @property({ converter: ColorPaletteListConverter })

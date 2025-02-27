@@ -6,10 +6,10 @@
   base,
   layout;
 
+@import url('/node_modules/@rhds/tokens/css/global.css') layer(tokens);
+@import url('/node_modules/@rhds/tokens/css/color-context-consumer.css') layer(tokens);
 @import url('../reset.css') layer(reset);
 @import url('../fonts.css') layer(fonts);
-@import url('/assets/packages/@rhds/tokens/css/global.css') layer(tokens);
-@import url('/assets/packages/@rhds/tokens/css/color-context-consumer.css') layer(tokens);
 @import url('../typography.css') layer(typography);
 
 @layer base {
