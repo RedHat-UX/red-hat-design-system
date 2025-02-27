@@ -142,6 +142,10 @@
       mask: var(--_mask) content-box exclude, var(--_mask);
       z-index: 1;
     }
+
+    rh-icon[icon='caret-down'] {
+      color: var(--rh-color-icon-subtle);
+    }
   }
 
   &::marker,

@@ -114,6 +114,7 @@ summary {
     aspect-ratio: unset;
 
     &[icon='caret-down'] {
+      color: var(--rh-color-icon-subtle);
       transition: rotate 0.2s;
       will-change: rotate;
     }
