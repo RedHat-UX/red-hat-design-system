@@ -4,6 +4,9 @@ import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
+import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
 import styles from './rh-accordion-panel.css';
@@ -23,6 +26,11 @@ export class RhAccordionPanel extends LitElement {
 
   @property({ type: Boolean, reflect: true }) expanded = false;
 
+  @colorContextProvider()
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
+
+  @colorContextConsumer() private on?: ColorTheme;
+
   @consume({ context, subscribe: true })
   @property({ attribute: false })
   private ctx?: RhAccordionContext;
@@ -34,11 +42,11 @@ export class RhAccordionPanel extends LitElement {
   }
 
   override render() {
-    const { expanded } = this;
+    const { on = '', expanded } = this;
     const { large = false } = this.ctx ?? {};
     return html`
       <div id="container"
-           class="${classMap({ large, expanded, content: true })}"
+           class="${classMap({ on: true, [on]: !!on, large, expanded, content: true })}"
            part="container"
            tabindex="-1">
         <slot class="body"></slot>

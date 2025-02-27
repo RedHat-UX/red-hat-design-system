@@ -11,6 +11,7 @@ import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { DirController } from '../../lib/DirController.js';
+import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
 import { consume } from '@lit/context';
 
@@ -54,6 +55,9 @@ export class RhAccordionHeader extends LitElement {
   @property({ attribute: false })
   private ctx?: RhAccordionContext;
 
+  @colorContextConsumer()
+  private on?: ColorTheme;
+
   #dir = new DirController(this);
 
   #internals = InternalsController.of(this, {
@@ -77,12 +81,12 @@ export class RhAccordionHeader extends LitElement {
   }
 
   render() {
-    const { expanded } = this;
+    const { expanded, on = 'light' } = this;
     const { accents, large = false } = this.ctx ?? {};
     const rtl = this.#dir.dir === 'rtl';
     return html`
       <button id="button"
-              class="${classMap({ toggle: true, rtl, large, expanded })}"
+              class="${classMap({ on: true, toggle: true, [on]: !!on, rtl, large, expanded })}"
               @click="${this.#onClick}">
         <span id="header-container" class="${classMap({ [accents ?? '']: !!accents })}">
           <span id="header-text" part="text"><slot></slot></span>

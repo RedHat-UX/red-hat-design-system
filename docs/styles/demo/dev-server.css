@@ -2,15 +2,14 @@
   reset,
   fonts,
   tokens,
-  color-scheme,
   typography,
   base,
   layout;
 
 @import url('../reset.css') layer(reset);
 @import url('../fonts.css') layer(fonts);
-@import url('/node_modules/@rhds/tokens/css/global.css') layer(tokens);
-@import url('../color-scheme.css') layer(color-scheme);
+@import url('/assets/packages/@rhds/tokens/css/global.css') layer(tokens);
+@import url('/assets/packages/@rhds/tokens/css/color-context-consumer.css') layer(tokens);
 @import url('../typography.css') layer(typography);
 
 @layer base {

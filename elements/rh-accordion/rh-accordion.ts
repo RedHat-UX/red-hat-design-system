@@ -6,7 +6,8 @@ import { property } from 'lit/decorators/property.js';
 import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 import { provide } from '@lit/context';
 
-import { type ColorPalette } from '../../lib/context/color/provider.js';
+import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
 import { NumberListConverter, ComposedEvent } from '@patternfly/pfe-core';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
@@ -83,8 +84,10 @@ export class RhAccordion extends LitElement {
    * Color Palette for this accordion.
    * @see https://ux.redhat.com/theming/color-palettes/
    */
+  @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
+  @colorContextConsumer() private on?: ColorTheme;
 
   /**
    * Sets and reflects the currently expanded accordion 0-based indexes.
@@ -140,21 +143,6 @@ export class RhAccordion extends LitElement {
 
   #mo = new MutationObserver(() => this.updateAccessibility());
 
-
-  get #computedPalette() {
-    switch (this.colorPalette) {
-      case 'lightest':
-      case 'lighter':
-      case 'darkest':
-        return this.colorPalette;
-      case 'light':
-        return 'lighter';
-      case 'darker':
-      case 'dark':
-        return 'darkest';
-    }
-  }
-
   @provide({ context }) private ctx = this.#makeContext();
 
   connectedCallback() {
@@ -165,13 +153,14 @@ export class RhAccordion extends LitElement {
   }
 
   override render(): TemplateResult {
+    const { on } = this;
     const expanded = this.#expanded;
-    const computedPalette = this.#computedPalette;
     return html`
       <div id="container"
            class="${classMap({
+             on: true,
+             [on ?? 'light']: true,
              expanded,
-             [`palette-${computedPalette}`]: !!computedPalette,
            })}"><slot></slot></div>
     `;
   }
