@@ -9,6 +9,9 @@ import { ComposedEvent } from '@patternfly/pfe-core';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
+import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+
 import '@rhds/elements/rh-surface/rh-surface.js';
 
 import './rh-navigation-secondary-menu-section.js';
@@ -21,8 +24,6 @@ import {
 
 import { DirController } from '../../lib/DirController.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
-
-import { type ColorPalette } from '../../lib/context/color/provider.js';
 
 export class SecondaryNavOverlayChangeEvent extends ComposedEvent {
   constructor(
@@ -65,6 +66,7 @@ function focusableChildElements(parent: HTMLElement): NodeListOf<HTMLElement> {
  * @cssprop {<integer>} [--rh-navigation-secondary-overlay-z-index=-1] - z-index of the navigation-secondary-overlay
  */
 @customElement('rh-navigation-secondary')
+@colorContextConsumer
 export class RhNavigationSecondary extends LitElement {
   static readonly styles = [styles];
 
@@ -102,13 +104,15 @@ export class RhNavigationSecondary extends LitElement {
       case 'darker':
       case 'darkest':
         return 'dark';
+      default:
+        return 'lightest';
     }
   }
 
   /**
    * Color palette dark | lighter (default: lighter)
    */
-
+  @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'lighter';
 
 
@@ -182,7 +186,7 @@ export class RhNavigationSecondary extends LitElement {
           <button aria-controls="container"
                   aria-expanded="${String(expanded) as 'true' | 'false'}"
                   @click="${this.#toggleMobileMenu}"><slot name="mobile-menu">Menu</slot></button>
-          <rh-surface color-palette="${dropdownPalette ?? 'lightest'}">
+          <rh-surface color-palette="${dropdownPalette}">
             <slot name="nav"></slot>
             <div id="cta" part="cta">
               <slot name="cta"></slot>

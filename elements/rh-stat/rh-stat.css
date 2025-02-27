@@ -23,9 +23,7 @@ span,
 }
 
 .hasIcon #icon {
-  color:
-    light-dark(var(--rh-color-icon-secondary-on-light, #151515),
-      var(--rh-color-icon-secondary-on-dark, #ffffff));
+  color: var(--rh-color-icon-secondary);
 }
 
 .md {

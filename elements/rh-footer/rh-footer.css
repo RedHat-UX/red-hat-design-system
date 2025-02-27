@@ -7,7 +7,7 @@
   font-size: initial;
   display: flex;
   flex-direction: column;
-  color-scheme: only dark;
+  color-scheme: only dark !important;
 }
 
 :host,

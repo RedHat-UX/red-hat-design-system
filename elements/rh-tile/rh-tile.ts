@@ -13,7 +13,8 @@ import type { IconNameFor, IconSetName } from '@rhds/icons';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 
-import { type ColorPalette } from '../../lib/context/color/provider.js';
+import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 
 import styles from './rh-tile.css';
 
@@ -45,6 +46,7 @@ export class TileSelectEvent extends Event {
  * @cssprop [--rh-tile-border-color=var(--rh-color-border-subtle-on-light, #c7c7c7)] - Color of tile border.<br>Could cause accessibility issues; prefer to use `--rh-color-border-subtle-on-light` and `--rh-color-border-subtle-on-dark` for theming.
  */
 @customElement('rh-tile')
+@colorContextConsumer
 export class RhTile extends LitElement {
   static readonly styles = [styles];
 
@@ -131,6 +133,7 @@ export class RhTile extends LitElement {
    *
    * Tile always resets its context to `base`, unless explicitly provided with a `color-palette`.
    */
+  @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   /** When set to "private", the icon representing the link changes from an arrow to a padlock */
@@ -185,19 +188,11 @@ export class RhTile extends LitElement {
   }
 
   render() {
-    const { bleed, compact, checkable, checked, colorPalette, desaturated } = this;
+    const { bleed, compact, checkable, checked, desaturated } = this;
     const disabled = this.disabledGroup || this.disabled || this.#internals.formDisabled;
     const hasSlottedIcon = this.#slots.hasSlotted('icon');
     return html`
-      <div id="outer" class="${classMap({
-            bleed,
-            checkable,
-            compact,
-            checked,
-            desaturated,
-            disabled,
-            [`palette-${colorPalette}`]: !!colorPalette,
-          })}">
+      <div id="outer" class="${classMap({ bleed, checkable, compact, checked, desaturated, disabled })}">
         <slot id="image"
               name="image"
               ?hidden="${this.checkable}"

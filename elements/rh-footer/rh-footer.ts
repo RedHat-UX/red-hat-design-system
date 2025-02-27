@@ -4,10 +4,12 @@ import { classMap } from 'lit/directives/class-map.js';
 
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
+
+export { RhFooterUniversal } from './rh-footer-universal.js';
+
 import '@rhds/elements/rh-icon/rh-icon.js';
 import '@rhds/elements/rh-accordion/rh-accordion.js';
 
-export { RhFooterUniversal } from './rh-footer-universal.js';
 import './rh-footer-social-link.js';
 import './rh-footer-links.js';
 import './rh-footer-block.js';
@@ -77,9 +79,6 @@ export class RhFooter extends LitElement {
   #logger = new Logger(this);
 
   #compact = false;
-
-  // @colorContextProvider()
-  // @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'darker';
 
   /**
    * ScreenSizeController effects callback to set #compact is true when viewport

@@ -3,7 +3,7 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { ContextChangeEvent } from '../rh-context-picker/rh-context-picker.js';
 
-import { type ColorPalette } from '../../context/color/provider.js';
+import { colorContextProvider, type ColorPalette } from '../../context/color/provider.js';
 
 import '@rhds/elements/rh-surface/rh-surface.js';
 
@@ -21,6 +21,7 @@ export class RhContextDemo extends LitElement {
 
   @property() label = 'Color Palette';
 
+  @colorContextProvider()
   @property({ attribute: 'color-palette', reflect: true })
   colorPalette = this.value;
 
@@ -28,7 +29,6 @@ export class RhContextDemo extends LitElement {
 
   protected override render() {
     const { value = 'darkest' } = this;
-    const on = this.value.replace(/est|er/, '');
     return html`
       <rh-surface id="provider"
                   color-palette="${value}"

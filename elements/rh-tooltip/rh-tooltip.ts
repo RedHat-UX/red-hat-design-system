@@ -10,6 +10,8 @@ import {
   type Placement,
 } from '@patternfly/pfe-core/controllers/floating-dom-controller.js';
 
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
+
 import styles from './rh-tooltip.css';
 
 const ENTER_EVENTS = ['focusin', 'tap', 'click', 'mouseenter'];
@@ -37,6 +39,7 @@ const EXIT_EVENTS = ['focusout', 'blur', 'mouseleave'];
  * @cssprop {<absolute-size> | <relative-size> | <length> | <percentage>} [--rh-tooltip-content-font-size=0.875rem]
  */
 @customElement('rh-tooltip')
+@colorContextConsumer
 export class RhTooltip extends LitElement {
   static readonly version = '{{version}}';
 

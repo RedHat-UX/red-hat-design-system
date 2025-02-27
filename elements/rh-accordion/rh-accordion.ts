@@ -46,6 +46,7 @@ export class AccordionCollapseEvent extends ComposedEvent {
  * @attr  [accents=inline] Position accents in the header either inline or bottom
  */
 @customElement('rh-accordion')
+@colorContextConsumer
 export class RhAccordion extends LitElement {
   static readonly styles = [styles];
 
@@ -86,8 +87,6 @@ export class RhAccordion extends LitElement {
    */
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
-
-  @colorContextConsumer() private on?: ColorTheme;
 
   /**
    * Sets and reflects the currently expanded accordion 0-based indexes.
@@ -153,15 +152,8 @@ export class RhAccordion extends LitElement {
   }
 
   override render(): TemplateResult {
-    const { on } = this;
-    const expanded = this.#expanded;
     return html`
-      <div id="container"
-           class="${classMap({
-             on: true,
-             [on ?? 'light']: true,
-             expanded,
-           })}"><slot></slot></div>
+      <div id="container" class="${classMap({ expanded: this.#expanded })}"><slot></slot></div>
     `;
   }
 

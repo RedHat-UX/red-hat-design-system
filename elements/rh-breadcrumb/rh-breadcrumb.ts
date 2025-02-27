@@ -2,6 +2,7 @@ import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 
 import styles from './rh-breadcrumb.css';
 
@@ -35,6 +36,7 @@ import styles from './rh-breadcrumb.css';
  */
 
 @customElement('rh-breadcrumb')
+@colorContextConsumer
 export class RhBreadcrumb extends LitElement {
   /**
    * Customize the default `aria-label` on the `<nav>` container.

@@ -9,6 +9,8 @@ import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 
 import type { IconNameFor, IconSetName } from '@rhds/icons';
 
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
+
 import styles from './rh-stat.css';
 
 /**
@@ -26,9 +28,8 @@ import styles from './rh-stat.css';
  *
  */
 @customElement('rh-stat')
+@colorContextConsumer
 export class RhStat extends LitElement {
-  static readonly version = '{{version}}';
-
   static readonly styles = [styles];
 
   /**

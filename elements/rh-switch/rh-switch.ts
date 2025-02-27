@@ -9,6 +9,8 @@ import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
 import { DirController } from '../../lib/DirController.js';
 
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
+
 import styles from './rh-switch.css';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
@@ -23,6 +25,7 @@ import '@rhds/elements/rh-icon/rh-icon.js';
  * @slot message-off - message content when unchecked. Overrides the `message-off` attribute.
  */
 @customElement('rh-switch')
+@colorContextConsumer
 export class RhSwitch extends LitElement {
   static readonly styles = [styles];
 

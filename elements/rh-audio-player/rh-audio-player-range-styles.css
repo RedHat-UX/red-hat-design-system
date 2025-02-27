@@ -41,10 +41,8 @@ input[type='range'] {
   --_track-height: var(--rh-length-xs, 4px);
   --_thumb-disabled-color: light-dark(rgb(0 0 0 / 0.5), rgb(255 255 255 / 0.5));
   --_track-color: light-dark(rgb(0 0 0 / 0.5), rgb(255 255 255 / 0.5));
-  --_interactive-color:
-    light-dark(var(--rh-color-border-interactive),
-      var(--rh-color-border-interactive));
-  --_accent-color: light-dark(var(--rh-color-accent-brand), var(--rh-color-accent-brand));
+  --_interactive-color: var(--rh-color-border-interactive);
+  --_accent-color: var(--rh-color-accent-brand);
   --_outline: var(--rh-border-width-md, 2px) solid var(--_interactive-color);
   --_thumb-color: var(--rh-audio-player-range-thumb-color, var(--_accent-color));
   --_progress-color: var(--rh-audio-player-range-progress-color, var(--_accent-color));

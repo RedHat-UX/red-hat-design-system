@@ -9,18 +9,10 @@ rh-audio-player {
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
   color: var(--rh-audio-player-text-color, var(--rh-color-text-primary));
 
-  &[color-palette^='light'] {
-    color-scheme: only light;
-  }
-
-  &[color-palette^='dark'] {
-    color-scheme: only dark;
-
-    & > * {
-      background-color:
-        var(--rh-audio-player-background-color,
-          var(--rh-color-surface-darkest, #151515));
-    }
+  &[color-palette^='dark'] > * {
+    background-color:
+      var(--rh-audio-player-background-color,
+        var(--rh-color-surface-darkest, #151515));
   }
 }
 

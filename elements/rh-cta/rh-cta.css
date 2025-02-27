@@ -239,27 +239,19 @@ a:focus-within,
   --_focus-container-background-color:
     light-dark(var(--rh-cta-focus-container-background-color, #0066cc1a),
       var(--rh-cta-focus-container-background-color, #73bcf740));
-  --_focus-border-color:
-    light-dark(var(--rh-cta-focus-border-color, transparent),
-      var(--rh-cta-focus-border-color, transparent));
+  --_focus-border-color: var(--rh-cta-focus-border-color, transparent);
   --_focus-color:
     var(--rh-cta-focus-color,
       var(--rh-color-interactive-primary-default));
-  --_focus-inner-border-color:
-    light-dark(var(--rh-cta-focus-inner-border-color, transparent),
-      var(--rh-cta-focus-inner-border-color, transparent));
-  --_focus-text-decoration:
-    light-dark(var(--rh-cta-focus-text-decoration, none),
-      var(--rh-cta-focus-text-decoration, none));
+  --_focus-inner-border-color: var(--rh-cta-focus-inner-border-color, transparent);
+  --_focus-text-decoration: var(--rh-cta-focus-text-decoration, none);
 
   /* --rh-color-border-interactive-on-light with 10% opacity */
   --_active-container-background-color:
     light-dark(var(--rh-cta-active-container-background-color, #0066cc1a),
       var(--rh-cta-active-container-background-color, #73bcf740));
   --_active-inner-border-color: var(--rh-cta-active-inner-border-color, transparent);
-  --_active-text-decoration:
-    light-dark(var(--rh-cta-active-text-decoration, none),
-      var(--rh-cta-active-text-decoration, none));
+  --_active-text-decoration: var(--rh-cta-active-text-decoration, none);
 }
 
 /*****************************************************************************
@@ -351,7 +343,7 @@ a:focus-within,
     justify-content: center;
     align-items: center;
 
-    --_background-color: var(--rh-cta-background-color, transparent));
+    --_background-color: var(--rh-cta-background-color, transparent);
     --_border-color: var(--rh-cta-border-color, var(--rh-color-border-subtle));
     --_color: var(--rh-cta-color, var(--rh-color-interactive-primary-default));
     --_hover-background-color:

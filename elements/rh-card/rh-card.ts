@@ -3,7 +3,9 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { html, LitElement } from 'lit';
-import { type ColorPalette } from '../../lib/context/color/provider.js';
+
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
+import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
 import styles from './rh-card.css';
 
@@ -39,6 +41,7 @@ import styles from './rh-card.css';
  *              The font weight for headings in the header and body
  */
 @customElement('rh-card')
+@colorContextConsumer
 export class RhCard extends LitElement {
   static styles = [styles];
 
@@ -50,6 +53,7 @@ export class RhCard extends LitElement {
    *
    * Card always resets its context to `base`, unless explicitly provided with a `color-palette`.
    */
+  @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   /**

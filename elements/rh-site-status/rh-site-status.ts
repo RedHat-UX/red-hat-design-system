@@ -15,6 +15,8 @@ import '@rhds/icons/ui/warning.js';
 import '@rhds/icons/ui/error.js';
 import '@rhds/icons/ui/error-fill.js';
 
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
+
 import styles from './rh-site-status.css';
 
 type Impact = 'none' | 'minor' | 'major' | 'critical';
@@ -123,6 +125,7 @@ const isStatusPageResponse = (data: unknown): data is SummaryResponse => {
  * @slot - loading-text - Text to display while loading the status defaults to "Loading"
  */
 @customElement('rh-site-status')
+@colorContextConsumer
 export class RhSiteStatus extends LitElement {
   static readonly styles = [styles];
 

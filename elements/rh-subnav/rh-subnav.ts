@@ -6,8 +6,10 @@ import { property } from 'lit/decorators/property.js';
 
 import { OverflowController } from '@patternfly/pfe-core/controllers/overflow-controller.js';
 
-
 import '@rhds/elements/rh-icon/rh-icon.js';
+
+import { colorContextProvider } from '../../lib/context/color/provider.js';
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 
 import styles from './rh-subnav.css';
 
@@ -20,6 +22,7 @@ import styles from './rh-subnav.css';
  * @csspart links     - `<slot>` element
  */
 @customElement('rh-subnav')
+@colorContextConsumer
 export class RhSubnav extends LitElement {
   static readonly styles = [styles];
 
@@ -55,6 +58,7 @@ export class RhSubnav extends LitElement {
    * Your theme will influence these colors so check there first if you are seeing inconsistencies.
    * See [CSS Custom Properties](#css-custom-properties) for default values
    */
+  @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette = 'lighter';
 
   /**

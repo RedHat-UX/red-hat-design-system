@@ -1,4 +1,3 @@
-import type { ColorPalette } from '@rhds/elements/lib/context/color/provider.js';
 import type { Color } from '@rhds/tokens';
 
 import { html, LitElement, type ComplexAttributeConverter } from 'lit';
@@ -18,6 +17,9 @@ import {
 } from '@rhds/tokens/color.js';
 
 import '@rhds/elements/rh-tooltip/rh-tooltip.js';
+
+import { colorContextProvider, type ColorPalette } from '../../context/color/provider.js';
+import { colorContextConsumer } from '../../context/color/consumer.js';
 
 import style from './rh-context-picker.css';
 
@@ -54,6 +56,7 @@ export const paletteMap = new Map<ColorPalette, Color>(Object.entries({
 export const paletteNames = Array.from(paletteMap, ([name]) => name);
 
 @customElement('rh-context-picker')
+@colorContextConsumer
 export class RhContextPicker extends LitElement {
   static formAssociated = true;
 
@@ -64,6 +67,7 @@ export class RhContextPicker extends LitElement {
   /** ID of context element to toggle (same root) */
   @property() target?: string | HTMLElement;
 
+  @colorContextProvider()
   @property() value: ColorPalette = 'darkest';
 
   @property({ converter: ColorPaletteListConverter })

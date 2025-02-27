@@ -1,7 +1,6 @@
 import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { state } from 'lit/decorators/state.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
@@ -10,6 +9,8 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { DirController } from '../../lib/DirController.js';
 
 import type { IconNameFor, IconSetName } from '@rhds/icons';
+
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 
 import style from './rh-cta.css';
 
@@ -70,6 +71,7 @@ function isSupportedContent(el: Element | null): el is HTMLAnchorElement | HTMLB
  *              Sets the cta text decoration on active
  */
 @customElement('rh-cta')
+@colorContextConsumer
 export class RhCta extends LitElement {
   static readonly styles = [style];
 

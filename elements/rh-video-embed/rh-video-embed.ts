@@ -8,6 +8,8 @@ import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller
 import '@rhds/elements/rh-button/rh-button.js';
 import '@rhds/elements/rh-surface/rh-surface.js';
 
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
+
 import styles from './rh-video-embed.css';
 
 export class ConsentClickEvent extends Event {
@@ -51,6 +53,7 @@ export class VideoPlayEvent extends Event {
  * @csspart caption - The container for the caption
  */
 @customElement('rh-video-embed')
+@colorContextConsumer
 export class RhVideoEmbed extends LitElement {
   static readonly styles = [styles];
 
@@ -123,13 +126,14 @@ export class RhVideoEmbed extends LitElement {
     const hasCaption = this.#slots.hasSlotted('caption');
     const hasThumbnail = this.#slots.hasSlotted('thumbnail');
     const playLabel = this.iframeElement && this.iframeElement.title ? `${this.iframeElement.title} (play video)` : 'Play video';
-    const show = this.#showConsent ? 'consent' : !!playClicked || !hasThumbnail ?
-      'video' : 'thumbnail';
+    const consent = !this.#showConsent;
+    const video = consent && !!playClicked || !hasThumbnail;
+    const thumbnail = consent && !playClicked && !!hasThumbnail;
 
     return html`
-      <figure part="figure" class="${classMap({ [show]: !!show })}">
+      <figure part="figure" class="${classMap({ consent, video, thumbnail })}">
         <div part="video" id="video">
-          <div aria-hidden="${show !== 'thumbnail'}">
+          <div aria-hidden="${String(thumbnail)}">
             <slot id="thumbnail" name="thumbnail"></slot>
           </div>
           <slot @slotchange="${this.#copyIframe}"></slot>
@@ -165,10 +169,12 @@ export class RhVideoEmbed extends LitElement {
               </div>
             </rh-surface>
           ` : ''}
-          <rh-button part="play" id="play" variant="play"
-            ?hidden="${show !== 'thumbnail'}"
-            @click="${this.#handlePlayClick}"
-            @keyup="${this.#handlePlayKeyup}">
+          <rh-button part="play"
+                     id="play"
+                     variant="play"
+                     ?hidden="${thumbnail}"
+                     @click="${this.#handlePlayClick}"
+                     @keyup="${this.#handlePlayKeyup}">
             <span class="visually-hidden"><slot name="play-button-text">${playLabel}</slot></span>
           </rh-button>
         </div>

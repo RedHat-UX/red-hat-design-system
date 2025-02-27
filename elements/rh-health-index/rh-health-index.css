@@ -15,7 +15,7 @@
   --_color-text-inactive:
     light-dark(var(--rh-color-gray-70, #383838),
       var(--_color-25, var(--_color-20)));
-  --_color-text: light-dark(var(--_color-text-inactive), var(--_color-text-inactive));
+  --_color-text: var(--_color-text-inactive);
   --_color-fill:
     light-dark(var(--rh-color-surface-lightest, #ffffff),
       var(--rh-color-surface-darkest, #151515));

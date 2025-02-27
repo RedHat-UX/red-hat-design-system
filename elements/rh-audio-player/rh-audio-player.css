@@ -76,21 +76,13 @@ button {
       var(--rh-audio-player-secondary-text-color,
         var(--rh-color-text-primary));
     --_range-track-color: rgb(255 255 255 / 0.5);
-    --_secondary-opacity:
-      light-dark(var(--rh-audio-player-secondary-opacity, 0.75),
-        var(--rh-audio-player-secondary-opacity, 0.75));
+    --_secondary-opacity: var(--rh-audio-player-secondary-opacity, 0.75);
     --_static-border-color: transparent;
     --_static-overlay-focus-color: rgba(80, 80, 80, 0.5);
     --_static-overlay-color: rgba(0, 0, 0, 0.5);
-    --_static-highlight-color:
-      light-dark(var(--rh-color-interactive-primary-hover),
-        var(--rh-color-interactive-primary-hover));
-    --_static-surface-color:
-      light-dark(var(--rh-color-surface-lightest, #ffffff),
-        var(--rh-color-surface-lightest, #ffffff));
-    --_static-surface-focus-color:
-      light-dark(var(--rh-color-surface-light, #e0e0e0),
-        var(--rh-color-surface-light, #e0e0e0));
+    --_static-highlight-color: var(--rh-color-interactive-primary-hover);
+    --_static-surface-color: var(--rh-color-surface-lightest, #ffffff);
+    --_static-surface-focus-color: var(--rh-color-surface-light, #e0e0e0);
   }
 
   &.show-menu {

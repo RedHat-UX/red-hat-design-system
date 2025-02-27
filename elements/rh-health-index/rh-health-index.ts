@@ -5,6 +5,8 @@ import { classMap } from 'lit/directives/class-map.js';
 
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
+
 import styles from './rh-health-index.css';
 
 /**
@@ -12,6 +14,7 @@ import styles from './rh-health-index.css';
  * @summary     Displays a health grade for a particular item or package
  */
 @customElement('rh-health-index')
+@colorContextConsumer
 export class RhHealthIndex extends LitElement {
   static readonly styles = [styles];
 

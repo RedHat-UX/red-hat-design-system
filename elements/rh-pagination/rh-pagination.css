@@ -38,9 +38,7 @@
   --_stepper-bg-color:
     light-dark(var(--rh-color-surface-lighter, #f2f2f2),
       var(--rh-color-surface-dark-alt, #292929));
-  --_stepper-hover-focus-color:
-    light-dark(var(--rh-color-text-primary-on-dark, #ffffff),
-      var(--rh-color-text-primary-on-dark, #ffffff));
+  --_stepper-hover-focus-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_border-top-hover-color:
     light-dark(var(--rh-color-gray-60, #4d4d4d),
       var(--rh-color-border-subtle-on-light, #c7c7c7));

@@ -39,9 +39,7 @@ figure,
 }
 
 figure {
-  --_video-focus-border-color:
-    light-dark(var(--rh-color-border-interactive),
-      var(--rh-color-border-interactive));
+  --_video-focus-border-color: var(--rh-color-border-interactive);
   --_video-play-btn-bkg-color:
     light-dark(rgb(31 31 31 / var(--rh-opacity-50, 50%)),
       rgb(255 255 255 / var(--rh-opacity-20, 20%)));

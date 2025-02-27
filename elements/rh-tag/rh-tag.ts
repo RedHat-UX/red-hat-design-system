@@ -1,15 +1,17 @@
 import { html, LitElement } from 'lit';
-import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
+import { classMap } from 'lit/directives/class-map.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 
 import type { IconNameFor, IconSetName } from '@rhds/icons';
 import '@rhds/elements/rh-icon/rh-icon.js';
 
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
+
 import styles from './rh-tag.css';
-import { ifDefined } from 'lit/directives/if-defined.js';
 
 /**
  * A tag is a caption added to an element for better clarity and user convenience.
@@ -31,6 +33,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
  *
  */
 @customElement('rh-tag')
+@colorContextConsumer
 export class RhTag extends LitElement {
   static readonly styles = [styles];
 

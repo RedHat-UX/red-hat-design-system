@@ -47,38 +47,6 @@
     light-dark(var(--_card-background, var(--rh-color-surface-lightest, #ffffff)),
       var(--_card-background, var(--rh-color-surface-darkest, #151515)));
   color: var(--rh-color-text-primary);
-
-  &.palette-light {
-    --_card-background: var(--rh-color-surface-light, #e0e0e0);
-  }
-
-  &.palette-lighter {
-    --_card-background: var(--rh-color-surface-lighter, #f2f2f2);
-  }
-
-  &.palette-lightest {
-    --_card-background: var(--rh-color-surface-lightest, #ffffff);
-  }
-
-  &.palette-dark {
-    --_card-background: var(--rh-color-surface-dark, #383838);
-  }
-
-  &.palette-darker {
-    --_card-background: var(--rh-color-surface-darker, #1f1f1f);
-  }
-
-  &.palette-darkest {
-    --_card-background: var(--rh-color-surface-darkest, #151515);
-  }
-
-  &:is(.palette-light, .palette-lighter, .palette-lightest) {
-    color-scheme: only light;
-  }
-
-  &:is(.palette-dark, .palette-darker, .palette-darkest) {
-    color-scheme: only dark;
-  }
 }
 
 #header,
