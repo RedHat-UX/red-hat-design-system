@@ -19,4 +19,5 @@ rh-surface,
   padding: var(--rh-context-demo-padding, var(--rh-space-xl, 24px));
   position: absolute;
   inset: 0;
+  height: max-content;
 }
