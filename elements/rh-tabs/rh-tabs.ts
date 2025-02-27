@@ -14,14 +14,15 @@ import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
 import { RhTab, TabExpandEvent } from './rh-tab.js';
 import { RhTabPanel } from './rh-tab-panel.js';
+
 import '@rhds/elements/rh-icon/rh-icon.js';
 
 import { DirController } from '../../lib/DirController.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
-
 import { context, type RhTabsContext } from './context.js';
+
+import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 
 import styles from './rh-tabs.css';
 
@@ -42,6 +43,7 @@ export { RhTab };
  * @cssprop {<length>} [--rh-tabs-inset=auto] - Tabs inset
  */
 @customElement('rh-tabs')
+@colorContextConsumer
 export class RhTabs extends LitElement {
   static readonly styles = [styles];
 
@@ -82,8 +84,6 @@ export class RhTabs extends LitElement {
   }
 
   @property({ attribute: false }) activeTab?: RhTab;
-
-  @colorContextConsumer() private on?: ColorTheme;
 
   /** Sets color context for child components, overrides parent context */
   @colorContextProvider()
@@ -171,11 +171,11 @@ export class RhTabs extends LitElement {
   }
 
   override render() {
-    const { on = '', vertical = false, box = false, centered = false } = this;
+    const { vertical = false, box = false, centered = false } = this;
     const inset = this.box === 'inset' ? 'inset' : '';
     const rtl = this.#dir.dir === 'rtl';
     return html`
-      <div id="rhds-container" class="${classMap({ on: true, [on]: !!on, rtl, vertical, box, inset, centered })}">
+      <div id="rhds-container" class="${classMap({ rtl, vertical, box, inset, centered })}">
         <div part="container" class="${classMap({ overflow: this.#overflow.showScrollButtons })}">
           <div part="tabs-container">${!this.#overflow.showScrollButtons ? '' : html`
             <button id="previous-tab" tabindex="-1"

@@ -21,6 +21,7 @@ import { context, type RhAccordionContext } from './context.js';
  *       The content of the accordion panel can be any basic markup including but not limited to div, paragraph, or nested accordion panels.
  */
 @customElement('rh-accordion-panel')
+@colorContextConsumer
 export class RhAccordionPanel extends LitElement {
   static readonly styles = [styles];
 
@@ -28,8 +29,6 @@ export class RhAccordionPanel extends LitElement {
 
   @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
-
-  @colorContextConsumer() private on?: ColorTheme;
 
   @consume({ context, subscribe: true })
   @property({ attribute: false })
@@ -42,11 +41,11 @@ export class RhAccordionPanel extends LitElement {
   }
 
   override render() {
-    const { on = '', expanded } = this;
+    const { expanded } = this;
     const { large = false } = this.ctx ?? {};
     return html`
       <div id="container"
-           class="${classMap({ on: true, [on]: !!on, large, expanded, content: true })}"
+           class="${classMap({ large, expanded, content: true })}"
            part="container"
            tabindex="-1">
         <slot class="body"></slot>

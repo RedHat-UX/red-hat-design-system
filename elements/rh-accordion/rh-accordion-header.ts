@@ -46,6 +46,7 @@ const isAccordion = (x: EventTarget): x is RhAccordion =>
  * @fires {AccordionHeaderChangeEvent} change - when the open panels change
  */
 @customElement('rh-accordion-header')
+@colorContextConsumer
 export class RhAccordionHeader extends LitElement {
   static readonly styles = [styles];
 
@@ -54,9 +55,6 @@ export class RhAccordionHeader extends LitElement {
   @consume({ context, subscribe: true })
   @property({ attribute: false })
   private ctx?: RhAccordionContext;
-
-  @colorContextConsumer()
-  private on?: ColorTheme;
 
   #dir = new DirController(this);
 
@@ -81,12 +79,12 @@ export class RhAccordionHeader extends LitElement {
   }
 
   render() {
-    const { expanded, on = 'light' } = this;
+    const { expanded } = this;
     const { accents, large = false } = this.ctx ?? {};
     const rtl = this.#dir.dir === 'rtl';
     return html`
       <button id="button"
-              class="${classMap({ on: true, toggle: true, [on]: !!on, rtl, large, expanded })}"
+              class="${classMap({ toggle: true, rtl, large, expanded })}"
               @click="${this.#onClick}">
         <span id="header-container" class="${classMap({ [accents ?? '']: !!accents })}">
           <span id="header-text" part="text"><slot></slot></span>

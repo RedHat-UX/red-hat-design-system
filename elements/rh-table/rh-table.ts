@@ -6,7 +6,7 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import { RequestSortEvent, RhSortButton } from './rh-sort-button.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 
 import styles from './rh-table.css';
 
@@ -20,10 +20,9 @@ import styles from './rh-table.css';
  * @cssprop [--rh-table-row-border=1px solid #c7c7c7] - row border
  */
 @customElement('rh-table')
+@colorContextConsumer
 export class RhTable extends LitElement {
   static readonly styles = [styles];
-
-  @colorContextConsumer() private on?: ColorTheme;
 
   private static getNodeContentForSort(
     columnIndexToSort: number,
@@ -108,15 +107,11 @@ export class RhTable extends LitElement {
   }
 
   render() {
-    const { on = 'light' } = this;
+    const dark = !!this.#internalColorPalette?.startsWith('dark');
     return html`
       <div id="container"
            part="container"
-           class="${classMap({
-             on: true,
-             [on]: true,
-             [`color-palette-${this.#internalColorPalette}`]: !!this.#internalColorPalette,
-           })}">
+           class="${classMap({ dark })}">
         <slot @pointerleave="${this.#onPointerleave}"
               @pointerover="${this.#onPointerover}"
               @request-sort="${this.#onRequestSort}"
