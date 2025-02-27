@@ -25,17 +25,16 @@
 <style>
   #card-pattern-sticky {
     display: grid;
-    gap: var(--rh-space-md, 16px);
+    gap: var(--rh-space-md);
     grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
     & rh-card {
       &::part(header) {
-        gap: var(--rh-space-xl, 24px);
+        gap: var(--rh-space-xl);
         flex-flow: column;
       }
       & .title {
-        font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-        font-size: var(--rh-font-size-body-text-md, 1rem);
-        text-transform: uppercase;
+        font-family: var(--rh-font-family-body-text);
+        font-size: var(--rh-font-size-body-text-md);
       }
       & > p {
         margin-block: 0;

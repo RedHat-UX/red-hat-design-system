@@ -1,6 +1,5 @@
 /// <reference lib="ESNext.Collection"/>
 import type { UserConfig } from '@11ty/eleventy';
-import type { TagStatus } from '#uxdot/uxdot-repo.js';
 import slugify from 'slugify';
 import { basename, dirname, join, sep } from 'node:path';
 import { glob, readFile, readdir, stat } from 'node:fs/promises';
@@ -8,7 +7,8 @@ import { deslugify, getPfeConfig } from '@patternfly/pfe-tools/config.js';
 import { getAllManifests } from '@patternfly/pfe-tools/custom-elements-manifest/custom-elements-manifest.js';
 import { capitalize } from '#11ty-plugins/tokensHelpers.js';
 import { DocsPage } from '@patternfly/pfe-tools/11ty/DocsPage.js';
-import yaml from 'js-yaml';
+
+import repoStatus from '#11ty-data/repoStatus.js';
 
 interface ElementDocsPageTabData {
   url: string;
@@ -38,6 +38,7 @@ interface ElementDocsPageBasicData extends ElementDocsPageTabData {
 
 interface ElementDocsPageFileSystemData extends ElementDocsPageBasicData {
   planned: boolean;
+  hidden: boolean;
   fileExists: boolean;
   hasLightdom: boolean;
   hasLightdomShim: boolean;
@@ -63,8 +64,6 @@ export interface ElementDocsPageData extends ElementDocsPageFileSystemData {
 
 const cwd = process.cwd();
 const pfeconfig = getPfeConfig();
-const repoStatus: TagStatus[] =
-  yaml.load(await readFile(join(cwd, './docs/_data/repoStatus.yaml'), 'utf8')) as TagStatus[]; ;
 const isElementSource = (x: string) => x && x.startsWith('rh-') && !x.endsWith('.d.ts');
 const stripExtension = (x: string) => x?.split('.').shift();
 
@@ -135,6 +134,7 @@ async function getFSData(props: ElementDocsPageBasicData): Promise<ElementDocsPa
     ...props,
     fileExists: await exists(props.absPath),
     planned: await isPlanned(props.tagName),
+    hidden: await isHidden(props.tagName),
     hasLightdom: await exists(join(elDir, `${props.tagName}-lightdom.css`)),
     hasLightdomShim: await exists(join(elDir, `${props.tagName}-lightdom-shim.css`)),
     mainDemoContent: await exists(demoPath) ? await readFile(demoPath, 'utf8') : '',
@@ -155,6 +155,11 @@ async function isPlanned(tagName: string) {
   }
   const element = repoStatus.find(element => element.tagName === tagName);
   return element?.libraries.rhds === 'planned';
+}
+
+async function isHidden(tagName: string) {
+  const element = repoStatus.find(element => element.tagName === tagName);
+  return element?.type === 'hidden';
 }
 
 const isDocFor = (tagName: string) =>

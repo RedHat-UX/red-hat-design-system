@@ -1,6 +1,6 @@
 {
   "name": "@rhds/elements",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Red Hat Design System Elements",
   "type": "module",
   "license": "MIT",
@@ -15,6 +15,7 @@
     "#scripts/*": "./scripts/*",
     "#uxdot/*": "./uxdot/*",
     "#11ty-plugins/*": "./docs/_plugins/*",
+    "#11ty-data/*": "./docs/_data/*",
     "#eleventy.config": "./eleventy.config.ts"
   },
   "contributors": [
@@ -92,10 +93,16 @@
       "command": "web-dev-server --open --watch",
       "dependencies": [
         "patch",
-        "compile",
         "analyze",
         "playgrounds",
-        "watch:docs"
+        "11ty-dev"
+      ]
+    },
+    "11ty-dev": {
+      "service": true,
+      "command": "NODE_OPTIONS='--import tsx/esm' eleventy --serve --incremental --config=eleventy.config.ts",
+      "dependencies": [
+        "analyze"
       ]
     },
     "dev": {
@@ -103,16 +110,14 @@
       "command": "web-dev-server --watch",
       "dependencies": [
         "patch",
-        "compile",
         "analyze"
       ]
     },
     "serve": {
       "service": true,
-      "command": "NODE_OPTIONS='--import tsx/esm' eleventy --config=eleventy.config.ts --serve --incremental",
+      "command": "TSX_TSCONFIG_PATH=tsconfig.settings.json NODE_OPTIONS='--import tsx/esm' eleventy --config=eleventy.config.ts --serve --incremental",
       "dependencies": [
         "patch",
-        "compile",
         "analyze",
         "playgrounds"
       ]
@@ -120,12 +125,11 @@
     "build": {
       "dependencies": [
         "patch",
-        "compile",
         "analyze",
         "react-wrappers",
         "entrypoint",
         "copy-assets",
-        "docs"
+        "compile"
       ]
     },
     "build:test": {
@@ -208,12 +212,11 @@
       ]
     },
     "docs": {
-      "command": "NODE_OPTIONS='--import tsx/esm' eleventy --config=eleventy.config.ts",
+      "command": "TSX_TSCONFIG_PATH=tsconfig.settings.json NODE_OPTIONS='--import tsx/esm' eleventy --config=eleventy.config.ts",
       "dependencies": [
         "patch",
         "analyze",
-        "playgrounds",
-        "compile"
+        "playgrounds"
       ],
       "files": [
         "docs"
@@ -268,18 +271,6 @@
         "docs/_data/playgrounds.json"
       ]
     },
-    "watch:compile": {
-      "service": true,
-      "command": "tspc --watch"
-    },
-    "watch:docs": {
-      "service": true,
-      "command": "NODE_OPTIONS='--import tsx/esm' eleventy --serve --incremental --config=eleventy.config.ts",
-      "dependencies": [
-        "analyze",
-        "compile"
-      ]
-    },
     "e2e": {
       "command": "playwright test",
       "dependencies": [
@@ -293,15 +284,13 @@
     }
   },
   "dependencies": {
-    "@11ty/eleventy-upgrade-help": "^3.0.1",
     "@lit/context": "^1.1.3",
     "@patternfly/pfe-core": "^4.0.4",
     "@rhds/icons": "^1.1.2",
-    "@rhds/tokens": "^2.1.0",
+    "@rhds/tokens": "^2.1.1",
     "lit": "^3.2.1",
     "prism-esm": "^1.29.0-fix.6",
-    "tslib": "^2.7.0",
-    "web-dev-server-plugin-lit-css": "^3.0.1"
+    "tslib": "^2.7.0"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
@@ -310,7 +299,10 @@
     "@commitlint/cli": "^19.5.0",
     "@commitlint/config-conventional": "^19.5.0",
     "@lit-labs/eleventy-plugin-lit": "^1.0.3",
+    "@lit-labs/ssr": "^3.2.2",
+    "@lit-labs/ssr-client": "^1.1.7",
     "@lit/reactive-element": "^2.0.4",
+    "@lit/ts-transformers": "^2.0.1",
     "@parse5/tools": "^0.5.0",
     "@patternfly/create-element": "^1.0.3",
     "@patternfly/elements": "^4.0.2",
@@ -350,6 +342,7 @@
     "markdownlint-cli2": "^0.14.0",
     "parse5": "^7.2.0",
     "patch-package": "^8.0.0",
+    "piscina": "^4.7.0",
     "playground-elements": "^0.19.1",
     "postcss-pxtorem": "^6.1.0",
     "query-selector-shadow-dom": "^1.0.1",
@@ -357,15 +350,17 @@
     "spandx": "^3.0.0",
     "stylelint-config-standard": "^36.0.1",
     "tinycolor2": "^1.6.0",
+    "ts-blank-space": "^0.4.1",
     "ts-patch": "^3.2.1",
     "tsx": "^4.19.1",
     "typescript": "^5.6.3",
     "typescript-transform-lit-css": "^2.0.0",
+    "web-dev-server-plugin-lit-css": "^3.0.1",
     "wireit": "^0.14.9"
   },
   "optionalDependencies": {
     "@esbuild/darwin-arm64": "^0.24.0",
     "@esbuild/linux-x64": "^0.24.0",
-    "@rollup/rollup-darwin-x64": "4.14.2"
+    "@rollup/rollup-darwin-x64": "4.34.8"
   }
 }
