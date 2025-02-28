@@ -14,8 +14,8 @@
   "imports": {
     "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
-    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
@@ -32,8 +32,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.5/core.js",
     "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
-    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.4/core.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
@@ -92,7 +92,10 @@
   </head>
   <body unresolved="">
     <main><rh-tile bleed="">
-  <img slot="image" src="https://fakeimg.pl/300x200" alt="300 X 200 placeholder image">
+  <svg slot="image" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 200" width="100%">
+    <title>300 X 200 placeholder image</title>
+    <rect x="0" y="0" width="99%" height="99%" fill="none" stroke="var(--rh-color-icon-primary)" stroke-width="1" stroke-dasharray="1 1"></rect>
+  </svg>
   <div slot="title">Title</div>
   <h2 slot="headline"><a href="#top">Link</a></h2>
   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -100,7 +103,10 @@
 </rh-tile>
 
 <rh-tile bleed="">
-  <img slot="image" src="https://fakeimg.pl/300x170" alt="300 X 170 placeholder image">
+  <svg slot="image" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 170" width="100%">
+    <title>300 X 170 placeholder image</title>
+    <rect x="0" y="0" width="99%" height="99%" fill="none" stroke="var(--rh-color-icon-primary)" stroke-width="1" stroke-dasharray="1 1"></rect>
+  </svg>
   <rh-icon    slot="headline" set="standard" icon="cloud-automation"><template shadowroot="open" shadowrootmode="open"><style>:host {
   line-height: 0;
   aspect-ratio: 1/1;
