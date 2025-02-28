@@ -115,4 +115,6 @@
 [[redirects]]
   from = '/components/video-thumbnail/*'
   to = '/patterns/video-thumbnail/'
-
+[[redirects]]
+  from = '/foundations/personalization/*'
+  to = '/personalization/:splat'
