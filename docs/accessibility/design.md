@@ -35,7 +35,7 @@ If one element has the same function as another, both should be labeled the same
 
 When considering methods of communication or feedback, do not use color alone. Ensure there is a text label, icon, underline, or other visual cue to communicate meaning. Consider how the following elements would look to a color blind user.
 
-<uxdot-example width-adjustment="872px" no-border>
+<uxdot-example width-adjustment="1012px" no-border>
   <img src="/assets/color/color-a11y-using-color-alone.svg"
       alt="Dialog with a red-orange Leave button, a form field with a red bottom border, and progress steps without labels"
       width="872"
@@ -87,7 +87,7 @@ Non-color cues must be also used to signify when an object or component receives
 
 It is acceptable to layer colors with the same hue, saturation, or lightness on white, black, or gray. However, layering them near or on top of each other might cause vibration. If you need to layer colors, follow [WCAG 2.1 AA](https://www.w3.org/WAI/WCAG21/Understanding/) requirements.
 
-<uxdot-example width-adjustment="872px" no-border>
+<uxdot-example width-adjustment=”1140px” no-border>
   <img src="/assets/color/color-a11y-color-contrast-layering.svg"
       alt="Red CTA against a white background, blue button against a light gray background, and a light red-orange button against a black background"
       width="872"
