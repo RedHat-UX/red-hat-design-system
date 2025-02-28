@@ -137,8 +137,12 @@
   /* styles for mock content */
   .grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: var(--rh-space-4xl);
+
+    @container (min-width: 768px) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
 
     & rh-avatar {
       display: block;

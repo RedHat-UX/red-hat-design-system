@@ -155,7 +155,7 @@
       margin-block: var(--rh-space-xs);
     }
 
-    @container (min-width: 992px) {
+    @container navigation-primary (min-width: 992px) {
       slot[name='summary'] {
         display: contents;
       }

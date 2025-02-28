@@ -241,8 +241,8 @@ export class RhNavigationPrimary extends LitElement {
 
   #hamburgerToggle(event: ToggleEvent) {
     if (event.newState === 'open') {
-      // if any secondary link dropdowns are open, close them
-      if (this.#openSecondaryDropdowns.size > 0) {
+      // if we are compact mode and any secondary link dropdowns are open, close them
+      if (this.compact && this.#openSecondaryDropdowns.size > 0) {
         this.#closeSecondaryDropdowns();
       }
     } else {
