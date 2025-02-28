@@ -1,0 +1,16 @@
+rh-navigation-primary {
+  container: navigation-primary / inline-size;
+}
+
+rh-navigation-item {
+  color: var(--rh-color-text-primary);
+
+  & a {
+    color: var(--rh-color-interactive-primary-default);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--rh-color-interactive-primary-hover);
+    }
+  }
+}
