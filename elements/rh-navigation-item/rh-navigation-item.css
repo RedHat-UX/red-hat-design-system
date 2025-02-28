@@ -260,10 +260,6 @@
   }
 
   &:not(.standalone) {
-    &:is(:hover, :focus-within, :has(details[open])) {
-      border-image: var(--_active-item-color) 1 stretch;
-    }
-
     details {
       border-inline-start: var(--rh-border-width-lg) solid transparent;
       border-inline-end: var(--rh-border-width-sm) solid transparent;
@@ -300,6 +296,12 @@
           padding: 0 var(--rh-space-lg);
           width: auto;
         }
+      }
+    }
+
+    @container (min-width: 1200px) {
+      &:is(:hover, :focus-within, :has(details[open])) {
+        border-image: var(--_active-item-color) 1 stretch;
       }
     }
   }
