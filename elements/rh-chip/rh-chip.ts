@@ -28,7 +28,6 @@ export class ChipCheckedEvent extends CustomEvent<{ checked: boolean }> {
  * @fires {ChipCheckedEvent} chip-checked - when chip is checked/unchecked
  * @csspart chip - The main chip container
  * @slot - Place the label of the checkbox here
- * @cssprop [--rh-chip-xyz-XYZ-xyz=none] - Example variable description
  */
 @customElement('rh-chip')
 export class RhChip extends LitElement {
