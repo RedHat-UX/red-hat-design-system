@@ -102,26 +102,26 @@ export class RhNavigationItem extends LitElement {
       compact,
     };
     return html`
-      ${this.variant === 'dropdown' ? html`
-        <details @toggle="${this.#detailsToggle}" class="${classMap(classes)}">
-          <summary>            
-            ${this.standalone ? html`
-              <slot name="icon">
-                ${this.icon ? html`<rh-icon icon="${this.icon}" set="${ifDefined(this.iconSet)}"></rh-icon>` : html``}
-              </slot>
-              ` : html``}
-            <slot name="summary">${this.summary}</slot>
-            <rh-icon icon="caret-down" set="microns"></rh-icon>
-          </summary>
-          <rh-navigation-item-menu id="details-content">
-            <slot></slot>
-          </rh-navigation-item-menu>
-        </details>
-      ` : html`
-        <div id="container" class="${classMap(classes)}">
+      <div id="container" class="${classMap(classes)}">
+        ${this.variant === 'dropdown' ? html`
+          <details @toggle="${this.#detailsToggle}">
+            <summary>            
+              ${this.standalone ? html`
+                <slot name="icon">
+                  ${this.icon ? html`<rh-icon icon="${this.icon}" set="${ifDefined(this.iconSet)}"></rh-icon>` : html``}
+                </slot>
+                ` : html``}
+              <slot name="summary">${this.summary}</slot>
+              <rh-icon icon="caret-down" set="microns"></rh-icon>
+            </summary>
+            <rh-navigation-item-menu id="details-content">
+              <slot></slot>
+            </rh-navigation-item-menu>
+          </details>
+        ` : html`
           <slot></slot>
+        `}
         </div>
-      `}
     `;
   }
 
