@@ -1,0 +1,23 @@
+<rh-chip-group size="sm">
+  <span slot="accessible-label">Filter by: (small)</span>
+  <rh-chip>Option 1</rh-chip>
+  <rh-chip>Option 2</rh-chip>
+  <rh-chip>Option 3</rh-chip>
+</rh-chip-group>
+
+<rh-chip-group size="lg">
+  <span slot="accessible-label">Filter by: (large)</span>
+  <rh-chip>Option 1</rh-chip>
+  <rh-chip>Option 2</rh-chip>
+  <rh-chip>Option 3</rh-chip>
+</rh-chip-group>
+
+<script type="module">
+  import '@rhds/elements/rh-chip/rh-chip-group.js';
+</script>
+
+<style>
+  rh-chip-group:not(:first-of-type) {
+    margin-block: 2rem;
+  }
+</style>

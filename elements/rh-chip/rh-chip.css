@@ -24,6 +24,28 @@ label {
   &:has(input:checked:focus-visible) {
     outline-offset: var(--rh-border-width-md, 2px);
   }
+
+  &.size-sm {
+    padding-block: 0;
+  }
+
+  &.size-lg {
+    padding-inline: 16px;
+  }
+
+  &.color-light-blue {
+    background-color: var(--rh-color-blue-10, #e0f0ff);
+    outline-color: var(--rh-color-blue-30, #92c5f9);
+
+    &:hover,
+    &:focus-within {
+      outline-color: var(--rh-color-blue-40, #4394e5);
+
+      &:has(input:checked) {
+        outline-color: var(--rh-color-border-interactive);
+      }
+    }
+  }
 }
 
 input {

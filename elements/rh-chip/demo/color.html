@@ -1,0 +1,23 @@
+<rh-chip-group>
+  <span slot="accessible-label">Filter by: (default/white)</span>
+  <rh-chip>Option 1</rh-chip>
+  <rh-chip>Option 2</rh-chip>
+  <rh-chip>Option 3</rh-chip>
+</rh-chip-group>
+
+<rh-chip-group color="light-blue">
+  <span slot="accessible-label">Filter by: (light blue)</span>
+  <rh-chip>Option 1</rh-chip>
+  <rh-chip>Option 2</rh-chip>
+  <rh-chip>Option 3</rh-chip>
+</rh-chip-group>
+
+<script type="module">
+  import '@rhds/elements/rh-chip/rh-chip-group.js';
+</script>
+
+<style>
+  rh-chip-group:not(:first-of-type) {
+    margin-block: 2rem;
+  }
+</style>

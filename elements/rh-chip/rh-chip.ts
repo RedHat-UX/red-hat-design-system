@@ -1,7 +1,11 @@
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
+import { classMap } from 'lit/directives/class-map.js';
 import { property } from 'lit/decorators/property.js';
 import { query } from 'lit/decorators/query.js';
+import { consume } from '@lit/context';
+
+import { context, type RhChipGroupContext } from './context.js';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 
@@ -42,10 +46,15 @@ export class RhChip extends LitElement {
 
   @query('input[type="checkbox"]') private _checkbox!: HTMLInputElement;
 
+  @consume({ context, subscribe: true })
+  @property({ attribute: false })
+  private ctx?: RhChipGroupContext;
+
   render() {
     const attrName = this.chipName ? this.chipName : 'chip-checkbox';
+    const { size, color } = this.ctx ?? {};
     return html`
-      <label part="chip">
+      <label part="chip" class=${classMap({ [`size-${size}`]: !!size, [`color-${color}`]: !!color })}>
         <slot></slot>
         <input type="checkbox" name=${attrName}
                @input=${this.#onChecked} ?checked=${this.checked}>
