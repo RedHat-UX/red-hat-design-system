@@ -1,0 +1,39 @@
+<rh-announcement dismissable>
+  <svg slot="image"
+       width="80"
+       height="48"
+       role="img"
+       aria-label="Sample image">
+    <rect fill="var(--rh-color-border-interactive)"
+      fill-opacity="0.1"
+      stroke="var(--rh-color-border-interactive)"
+      stroke-width="2px"
+      width="100%"
+      height="100%"
+      stroke-dasharray="4 4">
+    </rect>
+    <text x="17"
+          y="30"
+          style="font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace); font-size: var(--rh-font-size-body-text-md, 1rem);"
+          fill="var(--rh-color-blue-50, #0066CC)">
+            Image
+    </text>
+  </svg>
+  <p>Click the close button to fire the <code>close</code> event.</p>
+  <rh-cta slot="cta" href="#">Learn More</rh-cta>
+</rh-announcement>
+
+<link rel="stylesheet" href="../rh-announcement-lightdom-shim.css">
+
+<script type="module">
+  import '@rhds/elements/rh-cta/rh-cta.js';
+  import '@rhds/elements/rh-announcement/rh-announcement.js';
+
+  const getAnnouncement = document.querySelector('rh-announcement');
+  getAnnouncement.addEventListener('close', closeEvent);
+
+  // Replace with custom close event logic:
+  function closeEvent() {
+    window.alert('Close event fired.')
+  }
+</script>
