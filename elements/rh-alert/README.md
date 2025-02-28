@@ -18,7 +18,7 @@ An alert consists of the following slots:
 An alert consists of the following attributes:
 
 `dismissable`
-- The dismissable attribute adds a close button to the top right of the alert allowing the user to dismiss the alert. Clicking the close button dispatches a `close` event, then removes the alert from the page.
+- The `dismissable` attribute adds a close button to the top right of the alert allowing the user to dismiss the alert. Clicking the close button dispatches a `close` event, then removes the alert from the page.
 
 An alert has the following events:
 
@@ -39,44 +39,68 @@ import '@rhds/elements/rh-alert/rh-alert.js';
 ```
 ## Usage
 
-### Basic Alert 
+### Basic Alert
+
 ```html
-<rh-alert state="default">
-    <h3 slot="header">Default</h3>
-    <p>Example Alert</p>
-    <button slot="actions" data-action="dismiss">Dismiss</button>
-    <button slot="actions" data-action="confirm">Confirm</button>
+<rh-alert>
+  <h3 slot="header">Default</h3>
+  <p>Example Alert</p>
+  <rh-button variant="secondary" slot="actions" data-action="dismiss">Dismiss</rh-button>
+  <rh-button variant="link" slot="actions" data-action="confirm">Confirm</rh-button>
 </rh-alert>
 ```
 
 ### Info Alert (also available `success`, `warning`, `danger`, and `error`)
+
 ```html
 <rh-alert state="info">
-    <h3 slot="header">Info</h3>
-    <p>Example Alert</p>
-    <button slot="actions" data-action="dismiss">Dismiss</button>
-    <button slot="actions" data-action="confirm">Confirm</button>
+  <h3 slot="header">Info</h3>
+  <p>Example Alert</p>
+  <rh-button variant="secondary" slot="actions" data-action="dismiss">Dismiss</rh-button>
+  <rh-button variant="link" slot="actions" data-action="confirm">Confirm</rh-button>
 </rh-alert>
 ```
 
-### Inline Alert 
+### Inline Alert
 ```html
-<rh-alert variant>
-    <h3 slot="header">Default</h3>
-    <p>Example Alert</p>
-    <button slot="actions" data-action="dismiss">Dismiss</button>
-    <button slot="actions" data-action="confirm">Confirm</button>
+<rh-alert variant="inline">
+  <h3 slot="header">Default</h3>
+  <p>Example Alert</p>
+  <rh-button variant="secondary" slot="actions" data-action="dismiss">Dismiss</rh-button>
+  <rh-button variant="link" slot="actions" data-action="confirm">Confirm</rh-button>
 </rh-alert>
 ```
 
 ### Toast Alert
-```html
-<rh-alert toast>
-    <h3 slot="header">Default</h3>
-    <p>Example Alert</p>
-    <button slot="actions" data-action="dismiss">Dismiss</button>
-    <button slot="actions" data-action="confirm">Confirm</button>
-</rh-alert>
+
+Alerts may be toasted using the `toast()` function. A toasted alert has a
+unique style, a drop shadow, and either disappears after eight seconds, or can persist until the user dismisses it.
+
+```js
+import { RhAlert } from '@rhds/elements/rh-alert/rh-alert.js';
+
+await RhAlert.toast({
+  heading: 'Toast alert',
+  message: 'Example toasted alert',
+  actions: [
+    { variant: 'secondary', action: 'confirm', text: 'Confirm' },
+    { action: 'dismiss', text: 'Dismiss' }
+  ],
+});
+```
+
+You can respond to the various actions by listening for the `close` event
+
+```js
+document.addEventListener('close', function(event) {
+  if (event.target instanceof RhAlert) {
+    switch (event.reason) {
+      case 'close': // handle alert close ("X" button)
+      case 'dismiss': // handle alert dismiss (data-action="dismiss")
+      case 'confirm': // handle alert confirm (data-action="confirm")
+    }
+  }
+})
 ```
 
 ### Adding an Event Listener to a Basic Alert
