@@ -1,12 +1,11 @@
 diff --git a/node_modules/@rhds/tokens/css/color-context-consumer.css b/node_modules/@rhds/tokens/css/color-context-consumer.css
-index b762a34..4f062eb 100644
+index b762a34..98e3a78 100644
 --- a/node_modules/@rhds/tokens/css/color-context-consumer.css
 +++ b/node_modules/@rhds/tokens/css/color-context-consumer.css
-@@ -4,122 +4,177 @@
-  * @license Copyright (c) 2022 Red Hat UX MIT License
+@@ -5,121 +5,171 @@
   */
  
--
+ 
 -.on,
 -.on.light {
 -  --rh-color-accent-base: var(--rh-color-accent-base-on-light, #0066cc);
@@ -65,12 +64,8 @@ index b762a34..4f062eb 100644
 -  --rh-color-text-secondary: var(--rh-color-text-secondary-on-light, #4d4d4d);
 -  --rh-color-text-brand: var(--rh-color-text-brand-on-light, #ee0000);
 -
-+:root {
-+  --rh-color-surface: light-dark(
-+    var(--rh-color-surface-lightest, #ffffff),
-+    var(--rh-color-surface-darkest, #151515));
- }
- 
+-}
+-
 -.on.dark {
 -  --rh-color-accent-base: var(--rh-color-accent-base-on-dark, #92c5f9);
 -  --rh-color-accent-brand: var(--rh-color-accent-brand-on-dark, #ee0000);
@@ -131,176 +126,176 @@ index b762a34..4f062eb 100644
 +:root,
 +:host {
 +  --rh-color-accent-base:
-+    light-dark(var(--rh-color-accent-base-on-light),
-+      var(--rh-color-accent-base-on-dark));
++    light-dark(var(--rh-color-accent-base-on-light, #0066cc),
++      var(--rh-color-accent-base-on-dark, #92c5f9));
 +  --rh-color-accent-brand:
-+    light-dark(var(--rh-color-accent-brand-on-light),
-+      var(--rh-color-accent-brand-on-dark));
++    light-dark(var(--rh-color-accent-brand-on-light, #ee0000),
++      var(--rh-color-accent-brand-on-dark, #ee0000));
 +  --rh-color-border-strong:
-+    light-dark(var(--rh-color-border-strong-on-light),
-+      var(--rh-color-border-strong-on-dark));
++    light-dark(var(--rh-color-border-strong-on-light, #151515),
++      var(--rh-color-border-strong-on-dark, #ffffff));
 +  --rh-color-border-subtle:
-+    light-dark(var(--rh-color-border-subtle-on-light),
-+      var(--rh-color-border-subtle-on-dark));
++    light-dark(var(--rh-color-border-subtle-on-light, #c7c7c7),
++      var(--rh-color-border-subtle-on-dark, #707070));
 +  --rh-color-border-interactive:
-+    light-dark(var(--rh-color-border-interactive-on-light),
-+      var(--rh-color-border-interactive-on-dark));
++    light-dark(var(--rh-color-border-interactive-on-light, #0066cc),
++      var(--rh-color-border-interactive-on-dark, #92c5f9));
 +  --rh-color-border-destructive:
-+    light-dark(var(--rh-color-border-destructive-on-light),
-+      var(--rh-color-border-destructive-on-dark));
++    light-dark(var(--rh-color-border-destructive-on-light, #b1380b),
++      var(--rh-color-border-destructive-on-dark, #f0561d));
 +  --rh-color-border-status-danger:
-+    light-dark(var(--rh-color-border-status-danger-on-light),
-+      var(--rh-color-border-status-danger-on-dark));
++    light-dark(var(--rh-color-border-status-danger-on-light, #b1380b),
++      var(--rh-color-border-status-danger-on-dark, #f0561d));
 +  --rh-color-border-status-caution:
-+    light-dark(var(--rh-color-border-status-caution-on-light),
-+      var(--rh-color-border-status-caution-on-dark));
++    light-dark(var(--rh-color-border-status-caution-on-light, #ca6c0f),
++      var(--rh-color-border-status-caution-on-dark, #f5921b));
 +  --rh-color-border-status-warning:
-+    light-dark(var(--rh-color-border-status-warning-on-light),
-+      var(--rh-color-border-status-warning-on-dark));
++    light-dark(var(--rh-color-border-status-warning-on-light, #dca614),
++      var(--rh-color-border-status-warning-on-dark, #ffcc17));
 +  --rh-color-border-status-neutral:
-+    light-dark(var(--rh-color-border-status-neutral-on-light),
-+      var(--rh-color-border-status-neutral-on-dark));
++    light-dark(var(--rh-color-border-status-neutral-on-light, #4d4d4d),
++      var(--rh-color-border-status-neutral-on-dark, #c7c7c7));
 +  --rh-color-border-status-info:
-+    light-dark(var(--rh-color-border-status-info-on-light),
-+      var(--rh-color-border-status-info-on-dark));
++    light-dark(var(--rh-color-border-status-info-on-light, #5e40be),
++      var(--rh-color-border-status-info-on-dark, #b6a6e9));
 +  --rh-color-border-status-success:
-+    light-dark(var(--rh-color-border-status-success-on-light),
-+      var(--rh-color-border-status-success-on-dark));
++    light-dark(var(--rh-color-border-status-success-on-light, #3d7317),
++      var(--rh-color-border-status-success-on-dark, #87bb62));
 +  --rh-color-brand-red:
-+    light-dark(var(--rh-color-brand-red-on-light),
-+      var(--rh-color-brand-red-on-dark));
++    light-dark(var(--rh-color-brand-red-on-light, #ee0000),
++      var(--rh-color-brand-red-on-dark, #ee0000));
 +  --rh-color-icon-primary:
-+    light-dark(var(--rh-color-icon-primary-on-light),
-+      var(--rh-color-icon-primary-on-dark));
++    light-dark(var(--rh-color-icon-primary-on-light, #ee0000),
++      var(--rh-color-icon-primary-on-dark, #ee0000));
 +  --rh-color-icon-secondary:
-+    light-dark(var(--rh-color-icon-secondary-on-light),
-+      var(--rh-color-icon-secondary-on-dark));
++    light-dark(var(--rh-color-icon-secondary-on-light, #151515),
++      var(--rh-color-icon-secondary-on-dark, #ffffff));
 +  --rh-color-icon-status-danger:
-+    light-dark(var(--rh-color-icon-status-danger-on-light),
-+      var(--rh-color-icon-status-danger-on-dark));
++    light-dark(var(--rh-color-icon-status-danger-on-light, #b1380b),
++      var(--rh-color-icon-status-danger-on-dark, #f0561d));
 +  --rh-color-icon-status-caution:
-+    light-dark(var(--rh-color-icon-status-caution-on-light),
-+      var(--rh-color-icon-status-caution-on-dark));
++    light-dark(var(--rh-color-icon-status-caution-on-light, #ca6c0f),
++      var(--rh-color-icon-status-caution-on-dark, #f5921b));
 +  --rh-color-icon-status-warning:
-+    light-dark(var(--rh-color-icon-status-warning-on-light),
-+      var(--rh-color-icon-status-warning-on-dark));
++    light-dark(var(--rh-color-icon-status-warning-on-light, #dca614),
++      var(--rh-color-icon-status-warning-on-dark, #ffcc17));
 +  --rh-color-icon-status-default:
-+    light-dark(var(--rh-color-icon-status-default-on-light),
-+      var(--rh-color-icon-status-default-on-dark));
++    light-dark(var(--rh-color-icon-status-default-on-light, #4d4d4d),
++      var(--rh-color-icon-status-default-on-dark, #4d4d4d));
 +  --rh-color-icon-status-neutral:
-+    light-dark(var(--rh-color-icon-status-neutral-on-light),
-+      var(--rh-color-icon-status-neutral-on-dark));
++    light-dark(var(--rh-color-icon-status-neutral-on-light, #4d4d4d),
++      var(--rh-color-icon-status-neutral-on-dark, #c7c7c7));
 +  --rh-color-icon-status-info:
-+    light-dark(var(--rh-color-icon-status-info-on-light),
-+      var(--rh-color-icon-status-info-on-dark));
++    light-dark(var(--rh-color-icon-status-info-on-light, #5e40be),
++      var(--rh-color-icon-status-info-on-dark, #b6a6e9));
 +  --rh-color-icon-status-success:
-+    light-dark(var(--rh-color-icon-status-success-on-light),
-+      var(--rh-color-icon-status-success-on-dark));
++    light-dark(var(--rh-color-icon-status-success-on-light, #3d7317),
++      var(--rh-color-icon-status-success-on-dark, #87bb62));
 +  --rh-color-interactive-primary-default:
-+    light-dark(var(--rh-color-interactive-primary-default-on-light),
-+      var(--rh-color-interactive-primary-default-on-dark));
++    light-dark(var(--rh-color-interactive-primary-default-on-light, #0066cc),
++      var(--rh-color-interactive-primary-default-on-dark, #92c5f9));
 +  --rh-color-interactive-primary-hover:
-+    light-dark(var(--rh-color-interactive-primary-hover-on-light),
-+      var(--rh-color-interactive-primary-hover-on-dark));
++    light-dark(var(--rh-color-interactive-primary-hover-on-light, #003366),
++      var(--rh-color-interactive-primary-hover-on-dark, #b9dafc));
 +  --rh-color-interactive-primary-active:
-+    light-dark(var(--rh-color-interactive-primary-active-on-light),
-+      var(--rh-color-interactive-primary-active-on-dark));
++    light-dark(var(--rh-color-interactive-primary-active-on-light, #003366),
++      var(--rh-color-interactive-primary-active-on-dark, #b9dafc));
 +  --rh-color-interactive-primary-focus:
-+    light-dark(var(--rh-color-interactive-primary-focus-on-light),
-+      var(--rh-color-interactive-primary-focus-on-dark));
++    light-dark(var(--rh-color-interactive-primary-focus-on-light, #003366),
++      var(--rh-color-interactive-primary-focus-on-dark, #b9dafc));
 +  --rh-color-interactive-primary-visited-default:
-+    light-dark(var(--rh-color-interactive-primary-visited-default-on-light),
-+      var(--rh-color-interactive-primary-visited-default-on-dark));
++    light-dark(var(--rh-color-interactive-primary-visited-default-on-light, #5e40be),
++      var(--rh-color-interactive-primary-visited-default-on-dark, #b6a6e9));
 +  --rh-color-interactive-primary-visited-hover:
-+    light-dark(var(--rh-color-interactive-primary-visited-hover-on-light),
-+      var(--rh-color-interactive-primary-visited-hover-on-dark));
++    light-dark(var(--rh-color-interactive-primary-visited-hover-on-light, #21134d),
++      var(--rh-color-interactive-primary-visited-hover-on-dark, #ece6ff));
 +  --rh-color-interactive-primary-visited-active:
-+    light-dark(var(--rh-color-interactive-primary-visited-active-on-light),
-+      var(--rh-color-interactive-primary-visited-active-on-dark));
++    light-dark(var(--rh-color-interactive-primary-visited-active-on-light, #21134d),
++      var(--rh-color-interactive-primary-visited-active-on-dark, #ece6ff));
 +  --rh-color-interactive-primary-visited-focus:
-+    light-dark(var(--rh-color-interactive-primary-visited-focus-on-light),
-+      var(--rh-color-interactive-primary-visited-focus-on-dark));
++    light-dark(var(--rh-color-interactive-primary-visited-focus-on-light, #21134d),
++      var(--rh-color-interactive-primary-visited-focus-on-dark, #ece6ff));
 +  --rh-color-interactive-secondary-default:
-+    light-dark(var(--rh-color-interactive-secondary-default-on-light),
-+      var(--rh-color-interactive-secondary-default-on-dark));
++    light-dark(var(--rh-color-interactive-secondary-default-on-light, #4d4d4d),
++      var(--rh-color-interactive-secondary-default-on-dark, #c7c7c7));
 +  --rh-color-interactive-secondary-hover:
-+    light-dark(var(--rh-color-interactive-secondary-hover-on-light),
-+      var(--rh-color-interactive-secondary-hover-on-dark));
++    light-dark(var(--rh-color-interactive-secondary-hover-on-light, #4d4d4d),
++      var(--rh-color-interactive-secondary-hover-on-dark, #c7c7c7));
 +  --rh-color-interactive-secondary-active:
-+    light-dark(var(--rh-color-interactive-secondary-active-on-light),
-+      var(--rh-color-interactive-secondary-active-on-dark));
++    light-dark(var(--rh-color-interactive-secondary-active-on-light, #4d4d4d),
++      var(--rh-color-interactive-secondary-active-on-dark, #c7c7c7));
 +  --rh-color-interactive-secondary-focus:
-+    light-dark(var(--rh-color-interactive-secondary-focus-on-light),
-+      var(--rh-color-interactive-secondary-focus-on-dark));
++    light-dark(var(--rh-color-interactive-secondary-focus-on-light, #4d4d4d),
++      var(--rh-color-interactive-secondary-focus-on-dark, #c7c7c7));
 +  --rh-color-interactive-secondary-visited-default:
-+    light-dark(var(--rh-color-interactive-secondary-visited-default-on-light),
-+      var(--rh-color-interactive-secondary-visited-default-on-dark));
++    light-dark(var(--rh-color-interactive-secondary-visited-default-on-light, #4d4d4d),
++      var(--rh-color-interactive-secondary-visited-default-on-dark, #c7c7c7));
 +  --rh-color-interactive-secondary-visited-hover:
-+    light-dark(var(--rh-color-interactive-secondary-visited-hover-on-light),
-+      var(--rh-color-interactive-secondary-visited-hover-on-dark));
++    light-dark(var(--rh-color-interactive-secondary-visited-hover-on-light, #4d4d4d),
++      var(--rh-color-interactive-secondary-visited-hover-on-dark, #c7c7c7));
 +  --rh-color-interactive-secondary-visited-active:
-+    light-dark(var(--rh-color-interactive-secondary-visited-active-on-light),
-+      var(--rh-color-interactive-secondary-visited-active-on-dark));
++    light-dark(var(--rh-color-interactive-secondary-visited-active-on-light, #4d4d4d),
++      var(--rh-color-interactive-secondary-visited-active-on-dark, #c7c7c7));
 +  --rh-color-interactive-secondary-visited-focus:
-+    light-dark(var(--rh-color-interactive-secondary-visited-focus-on-light),
-+      var(--rh-color-interactive-secondary-visited-focus-on-dark));
++    light-dark(var(--rh-color-interactive-secondary-visited-focus-on-light, #4d4d4d),
++      var(--rh-color-interactive-secondary-visited-focus-on-dark, #c7c7c7));
 +  --rh-color-status-danger:
-+    light-dark(var(--rh-color-status-danger-on-light),
-+      var(--rh-color-status-danger-on-dark));
++    light-dark(var(--rh-color-status-danger-on-light, #b1380b),
++      var(--rh-color-status-danger-on-dark, #f0561d));
 +  --rh-color-status-caution:
-+    light-dark(var(--rh-color-status-caution-on-light),
-+      var(--rh-color-status-caution-on-dark));
++    light-dark(var(--rh-color-status-caution-on-light, #ca6c0f),
++      var(--rh-color-status-caution-on-dark, #f5921b));
 +  --rh-color-status-warning:
-+    light-dark(var(--rh-color-status-warning-on-light),
-+      var(--rh-color-status-warning-on-dark));
++    light-dark(var(--rh-color-status-warning-on-light, #dca614),
++      var(--rh-color-status-warning-on-dark, #ffcc17));
 +  --rh-color-status-neutral:
-+    light-dark(var(--rh-color-status-neutral-on-light),
-+      var(--rh-color-status-neutral-on-dark));
++    light-dark(var(--rh-color-status-neutral-on-light, #4d4d4d),
++      var(--rh-color-status-neutral-on-dark, #c7c7c7));
 +  --rh-color-status-note:
-+    light-dark(var(--rh-color-status-note-on-light),
-+      var(--rh-color-status-note-on-dark));
++    light-dark(var(--rh-color-status-note-on-light, #5e40be),
++      var(--rh-color-status-note-on-dark, #b6a6e9));
 +  --rh-color-status-info:
-+    light-dark(var(--rh-color-status-info-on-light),
-+      var(--rh-color-status-info-on-dark));
++    light-dark(var(--rh-color-status-info-on-light, #5e40be),
++      var(--rh-color-status-info-on-dark, #b6a6e9));
 +  --rh-color-status-success:
-+    light-dark(var(--rh-color-status-success-on-light),
-+      var(--rh-color-status-success-on-dark));
++    light-dark(var(--rh-color-status-success-on-light, #3d7317),
++      var(--rh-color-status-success-on-dark, #87bb62));
 +  --rh-color-surface-status-danger:
-+    light-dark(var(--rh-color-surface-status-danger-on-light),
-+      var(--rh-color-surface-status-danger-on-dark));
++    light-dark(var(--rh-color-surface-status-danger-on-light, #ffe3d9),
++      var(--rh-color-surface-status-danger-on-dark, #ffe3d9));
 +  --rh-color-surface-status-caution:
-+    light-dark(var(--rh-color-surface-status-caution-on-light),
-+      var(--rh-color-surface-status-caution-on-dark));
++    light-dark(var(--rh-color-surface-status-caution-on-light, #ffe8cc),
++      var(--rh-color-surface-status-caution-on-dark, #ffe8cc));
 +  --rh-color-surface-status-warning:
-+    light-dark(var(--rh-color-surface-status-warning-on-light),
-+      var(--rh-color-surface-status-warning-on-dark));
++    light-dark(var(--rh-color-surface-status-warning-on-light, #fff4cc),
++      var(--rh-color-surface-status-warning-on-dark, #73480b));
 +  --rh-color-surface-status-default:
-+    light-dark(var(--rh-color-surface-status-default-on-light),
-+      var(--rh-color-surface-status-default-on-dark));
++    light-dark(var(--rh-color-surface-status-default-on-light, #f2f2f2),
++      var(--rh-color-surface-status-default-on-dark, #f2f2f2));
 +  --rh-color-surface-status-neutral:
-+    light-dark(var(--rh-color-surface-status-neutral-on-light),
-+      var(--rh-color-surface-status-neutral-on-dark));
++    light-dark(var(--rh-color-surface-status-neutral-on-light, #f2f2f2),
++      var(--rh-color-surface-status-neutral-on-dark, #f2f2f2));
 +  --rh-color-surface-status-info:
-+    light-dark(var(--rh-color-surface-status-info-on-light),
-+      var(--rh-color-surface-status-info-on-dark));
++    light-dark(var(--rh-color-surface-status-info-on-light, #ece6ff),
++      var(--rh-color-surface-status-info-on-dark, #ece6ff));
 +  --rh-color-surface-status-success:
-+    light-dark(var(--rh-color-surface-status-success-on-light),
-+      var(--rh-color-surface-status-success-on-dark));
++    light-dark(var(--rh-color-surface-status-success-on-light, #e9f7df),
++      var(--rh-color-surface-status-success-on-dark, #e9f7df));
 +  --rh-color-text-primary:
-+    light-dark(var(--rh-color-text-primary-on-light),
-+      var(--rh-color-text-primary-on-dark));
++    light-dark(var(--rh-color-text-primary-on-light, #151515),
++      var(--rh-color-text-primary-on-dark, #ffffff));
 +  --rh-color-text-secondary:
-+    light-dark(var(--rh-color-text-secondary-on-light),
-+      var(--rh-color-text-secondary-on-dark));
++    light-dark(var(--rh-color-text-secondary-on-light, #4d4d4d),
++      var(--rh-color-text-secondary-on-dark, #c7c7c7));
 +  --rh-color-text-brand:
-+    light-dark(var(--rh-color-text-brand-on-light),
-+      var(--rh-color-text-brand-on-dark));
++    light-dark(var(--rh-color-text-brand-on-light, #ee0000),
++      var(--rh-color-text-brand-on-dark, #ee0000));
  }
 diff --git a/node_modules/@rhds/tokens/css/color-context-consumer.css.js b/node_modules/@rhds/tokens/css/color-context-consumer.css.js
-index f3c26d8..99e246a 100644
+index f3c26d8..c45f060 100644
 --- a/node_modules/@rhds/tokens/css/color-context-consumer.css.js
 +++ b/node_modules/@rhds/tokens/css/color-context-consumer.css.js
-@@ -5,122 +5,178 @@
+@@ -5,122 +5,173 @@
   */
  import { css } from 'lit';
  export default css `
@@ -362,12 +357,8 @@ index f3c26d8..99e246a 100644
 -  --rh-color-text-secondary: var(--rh-color-text-secondary-on-light, #4d4d4d);
 -  --rh-color-text-brand: var(--rh-color-text-brand-on-light, #ee0000);
 -
-+:root {
-+  --rh-color-surface: light-dark(
-+    var(--rh-color-surface-lightest, #ffffff),
-+    var(--rh-color-surface-darkest, #151515));
- }
- 
+-}
+-
 -.on.dark {
 -  --rh-color-accent-base: var(--rh-color-accent-base-on-dark, #92c5f9);
 -  --rh-color-accent-brand: var(--rh-color-accent-brand-on-dark, #ee0000);
@@ -424,181 +415,181 @@ index f3c26d8..99e246a 100644
 -  --rh-color-text-primary: var(--rh-color-text-primary-on-dark, #ffffff);
 -  --rh-color-text-secondary: var(--rh-color-text-secondary-on-dark, #c7c7c7);
 -  --rh-color-text-brand: var(--rh-color-text-brand-on-dark, #ee0000);
--
+ 
 +:root,
 +:host {
 +  --rh-color-accent-base:
-+    light-dark(var(--rh-color-accent-base-on-light),
-+      var(--rh-color-accent-base-on-dark));
++    light-dark(var(--rh-color-accent-base-on-light, #0066cc),
++      var(--rh-color-accent-base-on-dark, #92c5f9));
 +  --rh-color-accent-brand:
-+    light-dark(var(--rh-color-accent-brand-on-light),
-+      var(--rh-color-accent-brand-on-dark));
++    light-dark(var(--rh-color-accent-brand-on-light, #ee0000),
++      var(--rh-color-accent-brand-on-dark, #ee0000));
 +  --rh-color-border-strong:
-+    light-dark(var(--rh-color-border-strong-on-light),
-+      var(--rh-color-border-strong-on-dark));
++    light-dark(var(--rh-color-border-strong-on-light, #151515),
++      var(--rh-color-border-strong-on-dark, #ffffff));
 +  --rh-color-border-subtle:
-+    light-dark(var(--rh-color-border-subtle-on-light),
-+      var(--rh-color-border-subtle-on-dark));
++    light-dark(var(--rh-color-border-subtle-on-light, #c7c7c7),
++      var(--rh-color-border-subtle-on-dark, #707070));
 +  --rh-color-border-interactive:
-+    light-dark(var(--rh-color-border-interactive-on-light),
-+      var(--rh-color-border-interactive-on-dark));
++    light-dark(var(--rh-color-border-interactive-on-light, #0066cc),
++      var(--rh-color-border-interactive-on-dark, #92c5f9));
 +  --rh-color-border-destructive:
-+    light-dark(var(--rh-color-border-destructive-on-light),
-+      var(--rh-color-border-destructive-on-dark));
++    light-dark(var(--rh-color-border-destructive-on-light, #b1380b),
++      var(--rh-color-border-destructive-on-dark, #f0561d));
 +  --rh-color-border-status-danger:
-+    light-dark(var(--rh-color-border-status-danger-on-light),
-+      var(--rh-color-border-status-danger-on-dark));
++    light-dark(var(--rh-color-border-status-danger-on-light, #b1380b),
++      var(--rh-color-border-status-danger-on-dark, #f0561d));
 +  --rh-color-border-status-caution:
-+    light-dark(var(--rh-color-border-status-caution-on-light),
-+      var(--rh-color-border-status-caution-on-dark));
++    light-dark(var(--rh-color-border-status-caution-on-light, #ca6c0f),
++      var(--rh-color-border-status-caution-on-dark, #f5921b));
 +  --rh-color-border-status-warning:
-+    light-dark(var(--rh-color-border-status-warning-on-light),
-+      var(--rh-color-border-status-warning-on-dark));
++    light-dark(var(--rh-color-border-status-warning-on-light, #dca614),
++      var(--rh-color-border-status-warning-on-dark, #ffcc17));
 +  --rh-color-border-status-neutral:
-+    light-dark(var(--rh-color-border-status-neutral-on-light),
-+      var(--rh-color-border-status-neutral-on-dark));
++    light-dark(var(--rh-color-border-status-neutral-on-light, #4d4d4d),
++      var(--rh-color-border-status-neutral-on-dark, #c7c7c7));
 +  --rh-color-border-status-info:
-+    light-dark(var(--rh-color-border-status-info-on-light),
-+      var(--rh-color-border-status-info-on-dark));
++    light-dark(var(--rh-color-border-status-info-on-light, #5e40be),
++      var(--rh-color-border-status-info-on-dark, #b6a6e9));
 +  --rh-color-border-status-success:
-+    light-dark(var(--rh-color-border-status-success-on-light),
-+      var(--rh-color-border-status-success-on-dark));
++    light-dark(var(--rh-color-border-status-success-on-light, #3d7317),
++      var(--rh-color-border-status-success-on-dark, #87bb62));
 +  --rh-color-brand-red:
-+    light-dark(var(--rh-color-brand-red-on-light),
-+      var(--rh-color-brand-red-on-dark));
++    light-dark(var(--rh-color-brand-red-on-light, #ee0000),
++      var(--rh-color-brand-red-on-dark, #ee0000));
 +  --rh-color-icon-primary:
-+    light-dark(var(--rh-color-icon-primary-on-light),
-+      var(--rh-color-icon-primary-on-dark));
++    light-dark(var(--rh-color-icon-primary-on-light, #ee0000),
++      var(--rh-color-icon-primary-on-dark, #ee0000));
 +  --rh-color-icon-secondary:
-+    light-dark(var(--rh-color-icon-secondary-on-light),
-+      var(--rh-color-icon-secondary-on-dark));
++    light-dark(var(--rh-color-icon-secondary-on-light, #151515),
++      var(--rh-color-icon-secondary-on-dark, #ffffff));
 +  --rh-color-icon-status-danger:
-+    light-dark(var(--rh-color-icon-status-danger-on-light),
-+      var(--rh-color-icon-status-danger-on-dark));
++    light-dark(var(--rh-color-icon-status-danger-on-light, #b1380b),
++      var(--rh-color-icon-status-danger-on-dark, #f0561d));
 +  --rh-color-icon-status-caution:
-+    light-dark(var(--rh-color-icon-status-caution-on-light),
-+      var(--rh-color-icon-status-caution-on-dark));
++    light-dark(var(--rh-color-icon-status-caution-on-light, #ca6c0f),
++      var(--rh-color-icon-status-caution-on-dark, #f5921b));
 +  --rh-color-icon-status-warning:
-+    light-dark(var(--rh-color-icon-status-warning-on-light),
-+      var(--rh-color-icon-status-warning-on-dark));
++    light-dark(var(--rh-color-icon-status-warning-on-light, #dca614),
++      var(--rh-color-icon-status-warning-on-dark, #ffcc17));
 +  --rh-color-icon-status-default:
-+    light-dark(var(--rh-color-icon-status-default-on-light),
-+      var(--rh-color-icon-status-default-on-dark));
++    light-dark(var(--rh-color-icon-status-default-on-light, #4d4d4d),
++      var(--rh-color-icon-status-default-on-dark, #4d4d4d));
 +  --rh-color-icon-status-neutral:
-+    light-dark(var(--rh-color-icon-status-neutral-on-light),
-+      var(--rh-color-icon-status-neutral-on-dark));
++    light-dark(var(--rh-color-icon-status-neutral-on-light, #4d4d4d),
++      var(--rh-color-icon-status-neutral-on-dark, #c7c7c7));
 +  --rh-color-icon-status-info:
-+    light-dark(var(--rh-color-icon-status-info-on-light),
-+      var(--rh-color-icon-status-info-on-dark));
++    light-dark(var(--rh-color-icon-status-info-on-light, #5e40be),
++      var(--rh-color-icon-status-info-on-dark, #b6a6e9));
 +  --rh-color-icon-status-success:
-+    light-dark(var(--rh-color-icon-status-success-on-light),
-+      var(--rh-color-icon-status-success-on-dark));
++    light-dark(var(--rh-color-icon-status-success-on-light, #3d7317),
++      var(--rh-color-icon-status-success-on-dark, #87bb62));
 +  --rh-color-interactive-primary-default:
-+    light-dark(var(--rh-color-interactive-primary-default-on-light),
-+      var(--rh-color-interactive-primary-default-on-dark));
++    light-dark(var(--rh-color-interactive-primary-default-on-light, #0066cc),
++      var(--rh-color-interactive-primary-default-on-dark, #92c5f9));
 +  --rh-color-interactive-primary-hover:
-+    light-dark(var(--rh-color-interactive-primary-hover-on-light),
-+      var(--rh-color-interactive-primary-hover-on-dark));
++    light-dark(var(--rh-color-interactive-primary-hover-on-light, #003366),
++      var(--rh-color-interactive-primary-hover-on-dark, #b9dafc));
 +  --rh-color-interactive-primary-active:
-+    light-dark(var(--rh-color-interactive-primary-active-on-light),
-+      var(--rh-color-interactive-primary-active-on-dark));
++    light-dark(var(--rh-color-interactive-primary-active-on-light, #003366),
++      var(--rh-color-interactive-primary-active-on-dark, #b9dafc));
 +  --rh-color-interactive-primary-focus:
-+    light-dark(var(--rh-color-interactive-primary-focus-on-light),
-+      var(--rh-color-interactive-primary-focus-on-dark));
++    light-dark(var(--rh-color-interactive-primary-focus-on-light, #003366),
++      var(--rh-color-interactive-primary-focus-on-dark, #b9dafc));
 +  --rh-color-interactive-primary-visited-default:
-+    light-dark(var(--rh-color-interactive-primary-visited-default-on-light),
-+      var(--rh-color-interactive-primary-visited-default-on-dark));
++    light-dark(var(--rh-color-interactive-primary-visited-default-on-light, #5e40be),
++      var(--rh-color-interactive-primary-visited-default-on-dark, #b6a6e9));
 +  --rh-color-interactive-primary-visited-hover:
-+    light-dark(var(--rh-color-interactive-primary-visited-hover-on-light),
-+      var(--rh-color-interactive-primary-visited-hover-on-dark));
++    light-dark(var(--rh-color-interactive-primary-visited-hover-on-light, #21134d),
++      var(--rh-color-interactive-primary-visited-hover-on-dark, #ece6ff));
 +  --rh-color-interactive-primary-visited-active:
-+    light-dark(var(--rh-color-interactive-primary-visited-active-on-light),
-+      var(--rh-color-interactive-primary-visited-active-on-dark));
++    light-dark(var(--rh-color-interactive-primary-visited-active-on-light, #21134d),
++      var(--rh-color-interactive-primary-visited-active-on-dark, #ece6ff));
 +  --rh-color-interactive-primary-visited-focus:
-+    light-dark(var(--rh-color-interactive-primary-visited-focus-on-light),
-+      var(--rh-color-interactive-primary-visited-focus-on-dark));
++    light-dark(var(--rh-color-interactive-primary-visited-focus-on-light, #21134d),
++      var(--rh-color-interactive-primary-visited-focus-on-dark, #ece6ff));
 +  --rh-color-interactive-secondary-default:
-+    light-dark(var(--rh-color-interactive-secondary-default-on-light),
-+      var(--rh-color-interactive-secondary-default-on-dark));
++    light-dark(var(--rh-color-interactive-secondary-default-on-light, #4d4d4d),
++      var(--rh-color-interactive-secondary-default-on-dark, #c7c7c7));
 +  --rh-color-interactive-secondary-hover:
-+    light-dark(var(--rh-color-interactive-secondary-hover-on-light),
-+      var(--rh-color-interactive-secondary-hover-on-dark));
++    light-dark(var(--rh-color-interactive-secondary-hover-on-light, #4d4d4d),
++      var(--rh-color-interactive-secondary-hover-on-dark, #c7c7c7));
 +  --rh-color-interactive-secondary-active:
-+    light-dark(var(--rh-color-interactive-secondary-active-on-light),
-+      var(--rh-color-interactive-secondary-active-on-dark));
++    light-dark(var(--rh-color-interactive-secondary-active-on-light, #4d4d4d),
++      var(--rh-color-interactive-secondary-active-on-dark, #c7c7c7));
 +  --rh-color-interactive-secondary-focus:
-+    light-dark(var(--rh-color-interactive-secondary-focus-on-light),
-+      var(--rh-color-interactive-secondary-focus-on-dark));
++    light-dark(var(--rh-color-interactive-secondary-focus-on-light, #4d4d4d),
++      var(--rh-color-interactive-secondary-focus-on-dark, #c7c7c7));
 +  --rh-color-interactive-secondary-visited-default:
-+    light-dark(var(--rh-color-interactive-secondary-visited-default-on-light),
-+      var(--rh-color-interactive-secondary-visited-default-on-dark));
++    light-dark(var(--rh-color-interactive-secondary-visited-default-on-light, #4d4d4d),
++      var(--rh-color-interactive-secondary-visited-default-on-dark, #c7c7c7));
 +  --rh-color-interactive-secondary-visited-hover:
-+    light-dark(var(--rh-color-interactive-secondary-visited-hover-on-light),
-+      var(--rh-color-interactive-secondary-visited-hover-on-dark));
++    light-dark(var(--rh-color-interactive-secondary-visited-hover-on-light, #4d4d4d),
++      var(--rh-color-interactive-secondary-visited-hover-on-dark, #c7c7c7));
 +  --rh-color-interactive-secondary-visited-active:
-+    light-dark(var(--rh-color-interactive-secondary-visited-active-on-light),
-+      var(--rh-color-interactive-secondary-visited-active-on-dark));
++    light-dark(var(--rh-color-interactive-secondary-visited-active-on-light, #4d4d4d),
++      var(--rh-color-interactive-secondary-visited-active-on-dark, #c7c7c7));
 +  --rh-color-interactive-secondary-visited-focus:
-+    light-dark(var(--rh-color-interactive-secondary-visited-focus-on-light),
-+      var(--rh-color-interactive-secondary-visited-focus-on-dark));
++    light-dark(var(--rh-color-interactive-secondary-visited-focus-on-light, #4d4d4d),
++      var(--rh-color-interactive-secondary-visited-focus-on-dark, #c7c7c7));
 +  --rh-color-status-danger:
-+    light-dark(var(--rh-color-status-danger-on-light),
-+      var(--rh-color-status-danger-on-dark));
++    light-dark(var(--rh-color-status-danger-on-light, #b1380b),
++      var(--rh-color-status-danger-on-dark, #f0561d));
 +  --rh-color-status-caution:
-+    light-dark(var(--rh-color-status-caution-on-light),
-+      var(--rh-color-status-caution-on-dark));
++    light-dark(var(--rh-color-status-caution-on-light, #ca6c0f),
++      var(--rh-color-status-caution-on-dark, #f5921b));
 +  --rh-color-status-warning:
-+    light-dark(var(--rh-color-status-warning-on-light),
-+      var(--rh-color-status-warning-on-dark));
++    light-dark(var(--rh-color-status-warning-on-light, #dca614),
++      var(--rh-color-status-warning-on-dark, #ffcc17));
 +  --rh-color-status-neutral:
-+    light-dark(var(--rh-color-status-neutral-on-light),
-+      var(--rh-color-status-neutral-on-dark));
++    light-dark(var(--rh-color-status-neutral-on-light, #4d4d4d),
++      var(--rh-color-status-neutral-on-dark, #c7c7c7));
 +  --rh-color-status-note:
-+    light-dark(var(--rh-color-status-note-on-light),
-+      var(--rh-color-status-note-on-dark));
++    light-dark(var(--rh-color-status-note-on-light, #5e40be),
++      var(--rh-color-status-note-on-dark, #b6a6e9));
 +  --rh-color-status-info:
-+    light-dark(var(--rh-color-status-info-on-light),
-+      var(--rh-color-status-info-on-dark));
++    light-dark(var(--rh-color-status-info-on-light, #5e40be),
++      var(--rh-color-status-info-on-dark, #b6a6e9));
 +  --rh-color-status-success:
-+    light-dark(var(--rh-color-status-success-on-light),
-+      var(--rh-color-status-success-on-dark));
++    light-dark(var(--rh-color-status-success-on-light, #3d7317),
++      var(--rh-color-status-success-on-dark, #87bb62));
 +  --rh-color-surface-status-danger:
-+    light-dark(var(--rh-color-surface-status-danger-on-light),
-+      var(--rh-color-surface-status-danger-on-dark));
++    light-dark(var(--rh-color-surface-status-danger-on-light, #ffe3d9),
++      var(--rh-color-surface-status-danger-on-dark, #ffe3d9));
 +  --rh-color-surface-status-caution:
-+    light-dark(var(--rh-color-surface-status-caution-on-light),
-+      var(--rh-color-surface-status-caution-on-dark));
++    light-dark(var(--rh-color-surface-status-caution-on-light, #ffe8cc),
++      var(--rh-color-surface-status-caution-on-dark, #ffe8cc));
 +  --rh-color-surface-status-warning:
-+    light-dark(var(--rh-color-surface-status-warning-on-light),
-+      var(--rh-color-surface-status-warning-on-dark));
++    light-dark(var(--rh-color-surface-status-warning-on-light, #fff4cc),
++      var(--rh-color-surface-status-warning-on-dark, #73480b));
 +  --rh-color-surface-status-default:
-+    light-dark(var(--rh-color-surface-status-default-on-light),
-+      var(--rh-color-surface-status-default-on-dark));
++    light-dark(var(--rh-color-surface-status-default-on-light, #f2f2f2),
++      var(--rh-color-surface-status-default-on-dark, #f2f2f2));
 +  --rh-color-surface-status-neutral:
-+    light-dark(var(--rh-color-surface-status-neutral-on-light),
-+      var(--rh-color-surface-status-neutral-on-dark));
++    light-dark(var(--rh-color-surface-status-neutral-on-light, #f2f2f2),
++      var(--rh-color-surface-status-neutral-on-dark, #f2f2f2));
 +  --rh-color-surface-status-info:
-+    light-dark(var(--rh-color-surface-status-info-on-light),
-+      var(--rh-color-surface-status-info-on-dark));
++    light-dark(var(--rh-color-surface-status-info-on-light, #ece6ff),
++      var(--rh-color-surface-status-info-on-dark, #ece6ff));
 +  --rh-color-surface-status-success:
-+    light-dark(var(--rh-color-surface-status-success-on-light),
-+      var(--rh-color-surface-status-success-on-dark));
++    light-dark(var(--rh-color-surface-status-success-on-light, #e9f7df),
++      var(--rh-color-surface-status-success-on-dark, #e9f7df));
 +  --rh-color-text-primary:
-+    light-dark(var(--rh-color-text-primary-on-light),
-+      var(--rh-color-text-primary-on-dark));
++    light-dark(var(--rh-color-text-primary-on-light, #151515),
++      var(--rh-color-text-primary-on-dark, #ffffff));
 +  --rh-color-text-secondary:
-+    light-dark(var(--rh-color-text-secondary-on-light),
-+      var(--rh-color-text-secondary-on-dark));
++    light-dark(var(--rh-color-text-secondary-on-light, #4d4d4d),
++      var(--rh-color-text-secondary-on-dark, #c7c7c7));
 +  --rh-color-text-brand:
-+    light-dark(var(--rh-color-text-brand-on-light),
-+      var(--rh-color-text-brand-on-dark));
++    light-dark(var(--rh-color-text-brand-on-light, #ee0000),
++      var(--rh-color-text-brand-on-dark, #ee0000));
  }`;
  //# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY29sb3ItY29udGV4dC1jb25zdW1lci5jc3MuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJjb2xvci1jb250ZXh0LWNvbnN1bWVyLmNzcy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTs7OztHQUlHO0FBRUgsT0FBTyxFQUFFLEdBQUcsRUFBRSxNQUFNLEtBQUssQ0FBQztBQUFDLGVBQWUsR0FBRyxDQUFBOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0VBc0gzQyxDQUFDIn0=
 diff --git a/node_modules/@rhds/tokens/css/color-context-consumer.css.ts b/node_modules/@rhds/tokens/css/color-context-consumer.css.ts
-index 955c86f..1e90477 100644
+index 955c86f..b362e9e 100644
 --- a/node_modules/@rhds/tokens/css/color-context-consumer.css.ts
 +++ b/node_modules/@rhds/tokens/css/color-context-consumer.css.ts
-@@ -5,121 +5,177 @@
+@@ -5,121 +5,171 @@
   */
  
  import { css } from 'lit'; export default css`
@@ -660,12 +651,8 @@ index 955c86f..1e90477 100644
 -  --rh-color-text-secondary: var(--rh-color-text-secondary-on-light, #4d4d4d);
 -  --rh-color-text-brand: var(--rh-color-text-brand-on-light, #ee0000);
 -
-+:root {
-+  --rh-color-surface: light-dark(
-+    var(--rh-color-surface-lightest, #ffffff),
-+    var(--rh-color-surface-darkest, #151515));
- }
- 
+-}
+-
 -.on.dark {
 -  --rh-color-accent-base: var(--rh-color-accent-base-on-dark, #92c5f9);
 -  --rh-color-accent-brand: var(--rh-color-accent-brand-on-dark, #ee0000);
@@ -726,170 +713,170 @@ index 955c86f..1e90477 100644
 +:root,
 +:host {
 +  --rh-color-accent-base:
-+    light-dark(var(--rh-color-accent-base-on-light),
-+      var(--rh-color-accent-base-on-dark));
++    light-dark(var(--rh-color-accent-base-on-light, #0066cc),
++      var(--rh-color-accent-base-on-dark, #92c5f9));
 +  --rh-color-accent-brand:
-+    light-dark(var(--rh-color-accent-brand-on-light),
-+      var(--rh-color-accent-brand-on-dark));
++    light-dark(var(--rh-color-accent-brand-on-light, #ee0000),
++      var(--rh-color-accent-brand-on-dark, #ee0000));
 +  --rh-color-border-strong:
-+    light-dark(var(--rh-color-border-strong-on-light),
-+      var(--rh-color-border-strong-on-dark));
++    light-dark(var(--rh-color-border-strong-on-light, #151515),
++      var(--rh-color-border-strong-on-dark, #ffffff));
 +  --rh-color-border-subtle:
-+    light-dark(var(--rh-color-border-subtle-on-light),
-+      var(--rh-color-border-subtle-on-dark));
++    light-dark(var(--rh-color-border-subtle-on-light, #c7c7c7),
++      var(--rh-color-border-subtle-on-dark, #707070));
 +  --rh-color-border-interactive:
-+    light-dark(var(--rh-color-border-interactive-on-light),
-+      var(--rh-color-border-interactive-on-dark));
++    light-dark(var(--rh-color-border-interactive-on-light, #0066cc),
++      var(--rh-color-border-interactive-on-dark, #92c5f9));
 +  --rh-color-border-destructive:
-+    light-dark(var(--rh-color-border-destructive-on-light),
-+      var(--rh-color-border-destructive-on-dark));
++    light-dark(var(--rh-color-border-destructive-on-light, #b1380b),
++      var(--rh-color-border-destructive-on-dark, #f0561d));
 +  --rh-color-border-status-danger:
-+    light-dark(var(--rh-color-border-status-danger-on-light),
-+      var(--rh-color-border-status-danger-on-dark));
++    light-dark(var(--rh-color-border-status-danger-on-light, #b1380b),
++      var(--rh-color-border-status-danger-on-dark, #f0561d));
 +  --rh-color-border-status-caution:
-+    light-dark(var(--rh-color-border-status-caution-on-light),
-+      var(--rh-color-border-status-caution-on-dark));
++    light-dark(var(--rh-color-border-status-caution-on-light, #ca6c0f),
++      var(--rh-color-border-status-caution-on-dark, #f5921b));
 +  --rh-color-border-status-warning:
-+    light-dark(var(--rh-color-border-status-warning-on-light),
-+      var(--rh-color-border-status-warning-on-dark));
++    light-dark(var(--rh-color-border-status-warning-on-light, #dca614),
++      var(--rh-color-border-status-warning-on-dark, #ffcc17));
 +  --rh-color-border-status-neutral:
-+    light-dark(var(--rh-color-border-status-neutral-on-light),
-+      var(--rh-color-border-status-neutral-on-dark));
++    light-dark(var(--rh-color-border-status-neutral-on-light, #4d4d4d),
++      var(--rh-color-border-status-neutral-on-dark, #c7c7c7));
 +  --rh-color-border-status-info:
-+    light-dark(var(--rh-color-border-status-info-on-light),
-+      var(--rh-color-border-status-info-on-dark));
++    light-dark(var(--rh-color-border-status-info-on-light, #5e40be),
++      var(--rh-color-border-status-info-on-dark, #b6a6e9));
 +  --rh-color-border-status-success:
-+    light-dark(var(--rh-color-border-status-success-on-light),
-+      var(--rh-color-border-status-success-on-dark));
++    light-dark(var(--rh-color-border-status-success-on-light, #3d7317),
++      var(--rh-color-border-status-success-on-dark, #87bb62));
 +  --rh-color-brand-red:
-+    light-dark(var(--rh-color-brand-red-on-light),
-+      var(--rh-color-brand-red-on-dark));
++    light-dark(var(--rh-color-brand-red-on-light, #ee0000),
++      var(--rh-color-brand-red-on-dark, #ee0000));
 +  --rh-color-icon-primary:
-+    light-dark(var(--rh-color-icon-primary-on-light),
-+      var(--rh-color-icon-primary-on-dark));
++    light-dark(var(--rh-color-icon-primary-on-light, #ee0000),
++      var(--rh-color-icon-primary-on-dark, #ee0000));
 +  --rh-color-icon-secondary:
-+    light-dark(var(--rh-color-icon-secondary-on-light),
-+      var(--rh-color-icon-secondary-on-dark));
++    light-dark(var(--rh-color-icon-secondary-on-light, #151515),
++      var(--rh-color-icon-secondary-on-dark, #ffffff));
 +  --rh-color-icon-status-danger:
-+    light-dark(var(--rh-color-icon-status-danger-on-light),
-+      var(--rh-color-icon-status-danger-on-dark));
++    light-dark(var(--rh-color-icon-status-danger-on-light, #b1380b),
++      var(--rh-color-icon-status-danger-on-dark, #f0561d));
 +  --rh-color-icon-status-caution:
-+    light-dark(var(--rh-color-icon-status-caution-on-light),
-+      var(--rh-color-icon-status-caution-on-dark));
++    light-dark(var(--rh-color-icon-status-caution-on-light, #ca6c0f),
++      var(--rh-color-icon-status-caution-on-dark, #f5921b));
 +  --rh-color-icon-status-warning:
-+    light-dark(var(--rh-color-icon-status-warning-on-light),
-+      var(--rh-color-icon-status-warning-on-dark));
++    light-dark(var(--rh-color-icon-status-warning-on-light, #dca614),
++      var(--rh-color-icon-status-warning-on-dark, #ffcc17));
 +  --rh-color-icon-status-default:
-+    light-dark(var(--rh-color-icon-status-default-on-light),
-+      var(--rh-color-icon-status-default-on-dark));
++    light-dark(var(--rh-color-icon-status-default-on-light, #4d4d4d),
++      var(--rh-color-icon-status-default-on-dark, #4d4d4d));
 +  --rh-color-icon-status-neutral:
-+    light-dark(var(--rh-color-icon-status-neutral-on-light),
-+      var(--rh-color-icon-status-neutral-on-dark));
++    light-dark(var(--rh-color-icon-status-neutral-on-light, #4d4d4d),
++      var(--rh-color-icon-status-neutral-on-dark, #c7c7c7));
 +  --rh-color-icon-status-info:
-+    light-dark(var(--rh-color-icon-status-info-on-light),
-+      var(--rh-color-icon-status-info-on-dark));
++    light-dark(var(--rh-color-icon-status-info-on-light, #5e40be),
++      var(--rh-color-icon-status-info-on-dark, #b6a6e9));
 +  --rh-color-icon-status-success:
-+    light-dark(var(--rh-color-icon-status-success-on-light),
-+      var(--rh-color-icon-status-success-on-dark));
++    light-dark(var(--rh-color-icon-status-success-on-light, #3d7317),
++      var(--rh-color-icon-status-success-on-dark, #87bb62));
 +  --rh-color-interactive-primary-default:
-+    light-dark(var(--rh-color-interactive-primary-default-on-light),
-+      var(--rh-color-interactive-primary-default-on-dark));
++    light-dark(var(--rh-color-interactive-primary-default-on-light, #0066cc),
++      var(--rh-color-interactive-primary-default-on-dark, #92c5f9));
 +  --rh-color-interactive-primary-hover:
-+    light-dark(var(--rh-color-interactive-primary-hover-on-light),
-+      var(--rh-color-interactive-primary-hover-on-dark));
++    light-dark(var(--rh-color-interactive-primary-hover-on-light, #003366),
++      var(--rh-color-interactive-primary-hover-on-dark, #b9dafc));
 +  --rh-color-interactive-primary-active:
-+    light-dark(var(--rh-color-interactive-primary-active-on-light),
-+      var(--rh-color-interactive-primary-active-on-dark));
++    light-dark(var(--rh-color-interactive-primary-active-on-light, #003366),
++      var(--rh-color-interactive-primary-active-on-dark, #b9dafc));
 +  --rh-color-interactive-primary-focus:
-+    light-dark(var(--rh-color-interactive-primary-focus-on-light),
-+      var(--rh-color-interactive-primary-focus-on-dark));
++    light-dark(var(--rh-color-interactive-primary-focus-on-light, #003366),
++      var(--rh-color-interactive-primary-focus-on-dark, #b9dafc));
 +  --rh-color-interactive-primary-visited-default:
-+    light-dark(var(--rh-color-interactive-primary-visited-default-on-light),
-+      var(--rh-color-interactive-primary-visited-default-on-dark));
++    light-dark(var(--rh-color-interactive-primary-visited-default-on-light, #5e40be),
++      var(--rh-color-interactive-primary-visited-default-on-dark, #b6a6e9));
 +  --rh-color-interactive-primary-visited-hover:
-+    light-dark(var(--rh-color-interactive-primary-visited-hover-on-light),
-+      var(--rh-color-interactive-primary-visited-hover-on-dark));
++    light-dark(var(--rh-color-interactive-primary-visited-hover-on-light, #21134d),
++      var(--rh-color-interactive-primary-visited-hover-on-dark, #ece6ff));
 +  --rh-color-interactive-primary-visited-active:
-+    light-dark(var(--rh-color-interactive-primary-visited-active-on-light),
-+      var(--rh-color-interactive-primary-visited-active-on-dark));
++    light-dark(var(--rh-color-interactive-primary-visited-active-on-light, #21134d),
++      var(--rh-color-interactive-primary-visited-active-on-dark, #ece6ff));
 +  --rh-color-interactive-primary-visited-focus:
-+    light-dark(var(--rh-color-interactive-primary-visited-focus-on-light),
-+      var(--rh-color-interactive-primary-visited-focus-on-dark));
++    light-dark(var(--rh-color-interactive-primary-visited-focus-on-light, #21134d),
++      var(--rh-color-interactive-primary-visited-focus-on-dark, #ece6ff));
 +  --rh-color-interactive-secondary-default:
-+    light-dark(var(--rh-color-interactive-secondary-default-on-light),
-+      var(--rh-color-interactive-secondary-default-on-dark));
++    light-dark(var(--rh-color-interactive-secondary-default-on-light, #4d4d4d),
++      var(--rh-color-interactive-secondary-default-on-dark, #c7c7c7));
 +  --rh-color-interactive-secondary-hover:
-+    light-dark(var(--rh-color-interactive-secondary-hover-on-light),
-+      var(--rh-color-interactive-secondary-hover-on-dark));
++    light-dark(var(--rh-color-interactive-secondary-hover-on-light, #4d4d4d),
++      var(--rh-color-interactive-secondary-hover-on-dark, #c7c7c7));
 +  --rh-color-interactive-secondary-active:
-+    light-dark(var(--rh-color-interactive-secondary-active-on-light),
-+      var(--rh-color-interactive-secondary-active-on-dark));
++    light-dark(var(--rh-color-interactive-secondary-active-on-light, #4d4d4d),
++      var(--rh-color-interactive-secondary-active-on-dark, #c7c7c7));
 +  --rh-color-interactive-secondary-focus:
-+    light-dark(var(--rh-color-interactive-secondary-focus-on-light),
-+      var(--rh-color-interactive-secondary-focus-on-dark));
++    light-dark(var(--rh-color-interactive-secondary-focus-on-light, #4d4d4d),
++      var(--rh-color-interactive-secondary-focus-on-dark, #c7c7c7));
 +  --rh-color-interactive-secondary-visited-default:
-+    light-dark(var(--rh-color-interactive-secondary-visited-default-on-light),
-+      var(--rh-color-interactive-secondary-visited-default-on-dark));
++    light-dark(var(--rh-color-interactive-secondary-visited-default-on-light, #4d4d4d),
++      var(--rh-color-interactive-secondary-visited-default-on-dark, #c7c7c7));
 +  --rh-color-interactive-secondary-visited-hover:
-+    light-dark(var(--rh-color-interactive-secondary-visited-hover-on-light),
-+      var(--rh-color-interactive-secondary-visited-hover-on-dark));
++    light-dark(var(--rh-color-interactive-secondary-visited-hover-on-light, #4d4d4d),
++      var(--rh-color-interactive-secondary-visited-hover-on-dark, #c7c7c7));
 +  --rh-color-interactive-secondary-visited-active:
-+    light-dark(var(--rh-color-interactive-secondary-visited-active-on-light),
-+      var(--rh-color-interactive-secondary-visited-active-on-dark));
++    light-dark(var(--rh-color-interactive-secondary-visited-active-on-light, #4d4d4d),
++      var(--rh-color-interactive-secondary-visited-active-on-dark, #c7c7c7));
 +  --rh-color-interactive-secondary-visited-focus:
-+    light-dark(var(--rh-color-interactive-secondary-visited-focus-on-light),
-+      var(--rh-color-interactive-secondary-visited-focus-on-dark));
++    light-dark(var(--rh-color-interactive-secondary-visited-focus-on-light, #4d4d4d),
++      var(--rh-color-interactive-secondary-visited-focus-on-dark, #c7c7c7));
 +  --rh-color-status-danger:
-+    light-dark(var(--rh-color-status-danger-on-light),
-+      var(--rh-color-status-danger-on-dark));
++    light-dark(var(--rh-color-status-danger-on-light, #b1380b),
++      var(--rh-color-status-danger-on-dark, #f0561d));
 +  --rh-color-status-caution:
-+    light-dark(var(--rh-color-status-caution-on-light),
-+      var(--rh-color-status-caution-on-dark));
++    light-dark(var(--rh-color-status-caution-on-light, #ca6c0f),
++      var(--rh-color-status-caution-on-dark, #f5921b));
 +  --rh-color-status-warning:
-+    light-dark(var(--rh-color-status-warning-on-light),
-+      var(--rh-color-status-warning-on-dark));
++    light-dark(var(--rh-color-status-warning-on-light, #dca614),
++      var(--rh-color-status-warning-on-dark, #ffcc17));
 +  --rh-color-status-neutral:
-+    light-dark(var(--rh-color-status-neutral-on-light),
-+      var(--rh-color-status-neutral-on-dark));
++    light-dark(var(--rh-color-status-neutral-on-light, #4d4d4d),
++      var(--rh-color-status-neutral-on-dark, #c7c7c7));
 +  --rh-color-status-note:
-+    light-dark(var(--rh-color-status-note-on-light),
-+      var(--rh-color-status-note-on-dark));
++    light-dark(var(--rh-color-status-note-on-light, #5e40be),
++      var(--rh-color-status-note-on-dark, #b6a6e9));
 +  --rh-color-status-info:
-+    light-dark(var(--rh-color-status-info-on-light),
-+      var(--rh-color-status-info-on-dark));
++    light-dark(var(--rh-color-status-info-on-light, #5e40be),
++      var(--rh-color-status-info-on-dark, #b6a6e9));
 +  --rh-color-status-success:
-+    light-dark(var(--rh-color-status-success-on-light),
-+      var(--rh-color-status-success-on-dark));
++    light-dark(var(--rh-color-status-success-on-light, #3d7317),
++      var(--rh-color-status-success-on-dark, #87bb62));
 +  --rh-color-surface-status-danger:
-+    light-dark(var(--rh-color-surface-status-danger-on-light),
-+      var(--rh-color-surface-status-danger-on-dark));
++    light-dark(var(--rh-color-surface-status-danger-on-light, #ffe3d9),
++      var(--rh-color-surface-status-danger-on-dark, #ffe3d9));
 +  --rh-color-surface-status-caution:
-+    light-dark(var(--rh-color-surface-status-caution-on-light),
-+      var(--rh-color-surface-status-caution-on-dark));
++    light-dark(var(--rh-color-surface-status-caution-on-light, #ffe8cc),
++      var(--rh-color-surface-status-caution-on-dark, #ffe8cc));
 +  --rh-color-surface-status-warning:
-+    light-dark(var(--rh-color-surface-status-warning-on-light),
-+      var(--rh-color-surface-status-warning-on-dark));
++    light-dark(var(--rh-color-surface-status-warning-on-light, #fff4cc),
++      var(--rh-color-surface-status-warning-on-dark, #73480b));
 +  --rh-color-surface-status-default:
-+    light-dark(var(--rh-color-surface-status-default-on-light),
-+      var(--rh-color-surface-status-default-on-dark));
++    light-dark(var(--rh-color-surface-status-default-on-light, #f2f2f2),
++      var(--rh-color-surface-status-default-on-dark, #f2f2f2));
 +  --rh-color-surface-status-neutral:
-+    light-dark(var(--rh-color-surface-status-neutral-on-light),
-+      var(--rh-color-surface-status-neutral-on-dark));
++    light-dark(var(--rh-color-surface-status-neutral-on-light, #f2f2f2),
++      var(--rh-color-surface-status-neutral-on-dark, #f2f2f2));
 +  --rh-color-surface-status-info:
-+    light-dark(var(--rh-color-surface-status-info-on-light),
-+      var(--rh-color-surface-status-info-on-dark));
++    light-dark(var(--rh-color-surface-status-info-on-light, #ece6ff),
++      var(--rh-color-surface-status-info-on-dark, #ece6ff));
 +  --rh-color-surface-status-success:
-+    light-dark(var(--rh-color-surface-status-success-on-light),
-+      var(--rh-color-surface-status-success-on-dark));
++    light-dark(var(--rh-color-surface-status-success-on-light, #e9f7df),
++      var(--rh-color-surface-status-success-on-dark, #e9f7df));
 +  --rh-color-text-primary:
-+    light-dark(var(--rh-color-text-primary-on-light),
-+      var(--rh-color-text-primary-on-dark));
++    light-dark(var(--rh-color-text-primary-on-light, #151515),
++      var(--rh-color-text-primary-on-dark, #ffffff));
 +  --rh-color-text-secondary:
-+    light-dark(var(--rh-color-text-secondary-on-light),
-+      var(--rh-color-text-secondary-on-dark));
++    light-dark(var(--rh-color-text-secondary-on-light, #4d4d4d),
++      var(--rh-color-text-secondary-on-dark, #c7c7c7));
 +  --rh-color-text-brand:
-+    light-dark(var(--rh-color-text-brand-on-light),
-+      var(--rh-color-text-brand-on-dark));
++    light-dark(var(--rh-color-text-brand-on-light, #ee0000),
++      var(--rh-color-text-brand-on-dark, #ee0000));
  }`;
 diff --git a/node_modules/@rhds/tokens/css/color-context-provider.css b/node_modules/@rhds/tokens/css/color-context-provider.css
 index 1a06109..0dd7ca6 100644
@@ -936,24 +923,3 @@ index cf07c55..473f7f6 100644
  
  :host([color-palette="lightest"]) {
    --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
-diff --git a/node_modules/@rhds/tokens/js/meta.d.ts b/node_modules/@rhds/tokens/js/meta.d.ts
-new file mode 100644
-index 0000000..0b29637
---- /dev/null
-+++ b/node_modules/@rhds/tokens/js/meta.d.ts
-@@ -0,0 +1,6 @@
-+/**
-+ * Do not edit directly, this file was auto-generated.
-+ */
-+
-+import { DesignToken } from 'style-dictionary';
-+export const tokens = new Map<`--rh-${string}`, DesignToken>;
-diff --git a/node_modules/@rhds/tokens/js/types.d.ts b/node_modules/@rhds/tokens/js/types.d.ts
-index 15de35f..a083c94 100644
---- a/node_modules/@rhds/tokens/js/types.d.ts
-+++ b/node_modules/@rhds/tokens/js/types.d.ts
-@@ -1,3 +1,4 @@
-+export const tokens: Map<`--rh-${string}`, string>;
- export interface Color {
-     isLight: boolean;
-     hex: string;
