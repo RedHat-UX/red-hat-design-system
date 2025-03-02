@@ -11,14 +11,14 @@ import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { DirController } from '../../lib/DirController.js';
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { HeadingLevelContextConsumer } from '../../lib/context/headings/consumer.js';
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 
 import { consume } from '@lit/context';
 
 import { context } from './context.js';
 
 import styles from './rh-accordion-header.css';
-import { HeadingLevelController } from '@rhds/elements/lib/context/headings/controller.js';
 
 export class AccordionHeaderChangeEvent extends Event {
   declare target: RhAccordionHeader;
@@ -63,7 +63,7 @@ export class RhAccordionHeader extends LitElement {
     ariaLevel: '2',
   });
 
-  #heading = new HeadingLevelController(this);
+  #heading = new HeadingLevelContextConsumer(this);
 
   override connectedCallback() {
     super.connectedCallback();

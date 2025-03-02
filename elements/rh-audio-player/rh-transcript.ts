@@ -48,10 +48,9 @@ export class RhTranscript extends LitElement {
 
   #duration?: number;
 
-  #headings = new HeadingLevelContextProvider(this, {
-    offset: 0,
-    parent: new HeadingLevelContextConsumer(this),
-  });
+  #headingsProvider = new HeadingLevelContextProvider(this, { offset: 0 });
+
+  #headings = new HeadingLevelContextConsumer(this);
 
   set autoscrollLabel(label: string) {
     this._autoscroll = label;
