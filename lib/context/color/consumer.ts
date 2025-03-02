@@ -1,4 +1,4 @@
-import { isServer, type ReactiveController, type ReactiveElement } from 'lit';
+import type { ReactiveElement } from 'lit';
 
 import styles from '@rhds/tokens/css/color-context-consumer.css.js';
 
