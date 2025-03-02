@@ -1,4 +1,4 @@
-import type { DesignToken } from '#11ty-plugins/tokensHelpers.js';
+import type { DesignToken } from '@rhds/tokens';
 
 import { tokens as metaTokens } from '@rhds/tokens/meta.js';
 import { tokens as allTokens } from '@rhds/tokens';
@@ -16,7 +16,7 @@ import './uxdot-copy-button.js';
 
 import styles from './uxdot-spacer-tokens-table.css';
 
-const assignBasename = (token: DesignToken) => ({
+const assignBasename = (token: DesignToken) => !token.name ? token : ({
   ...token,
   baseName: token.name.replace(/^(--)?rh-space-/, ''),
 });
