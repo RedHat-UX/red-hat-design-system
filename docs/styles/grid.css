@@ -18,7 +18,12 @@
   @container container (min-width: 768px) {
     &.sm-two-columns { --uxdot-grid-repeat: 2; }
     &.sm-three-columns { --uxdot-grid-repeat: 3; }
-    &.sm-four-columns { --uxdot-grid-repeat: 4; }
+
+    &.sm-four-columns {
+      --uxdot-grid-repeat: 4;
+
+      gap: var(--rh-space-3xl);
+    }
   }
 
   @container container (min-width: 992px) {

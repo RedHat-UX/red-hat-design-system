@@ -65,6 +65,14 @@ title: Home
       color: var(--rh-color-icon-primary);
     }
 
+    &.start {
+      &::part(header),
+      &::part(footer),
+      &::part(body) {
+        margin-inline: 0;
+      }
+    }
+
     &.nav {
       margin-block-start: var(--rh-space-4xl);
       width: calc(100% - 2 * var(--nav-padding));
