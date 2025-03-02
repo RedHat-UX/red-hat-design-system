@@ -1,0 +1,55 @@
+<rh-announcement image-position="inline-start">
+  <svg slot="image"
+       width="80"
+       height="48"
+       role="img"
+       aria-label="Sample image">
+    <rect fill="var(--rh-color-border-interactive)"
+      fill-opacity="0.1"
+      stroke="var(--rh-color-border-interactive)"
+      stroke-width="2px"
+      width="100%"
+      height="100%"
+      stroke-dasharray="4 4">
+    </rect>
+    <text x="17"
+          y="30"
+          style="font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace); font-size: var(--rh-font-size-body-text-md, 1rem);"
+          fill="var(--rh-color-blue-50, #0066CC)">
+            Image
+    </text>
+  </svg>
+  <p>On mobile viewports, the image will stay to the left (inline-start) of this main body content.</p>
+  <rh-cta slot="cta" href="#">Learn More</rh-cta>
+</rh-announcement>
+
+<rh-announcement image-position="block-start" color-palette="dark">
+  <svg slot="image"
+       width="80"
+       height="48"
+       role="img"
+       aria-label="Sample image">
+    <rect fill="var(--rh-color-gray-60, #4D4D4D)"
+      stroke="var(--rh-color-border-subtle)"
+      stroke-width="2px"
+      width="100%"
+      height="100%"
+      stroke-dasharray="4 4">
+    </rect>
+    <text x="17"
+          y="30"
+          style="font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace); font-size: var(--rh-font-size-body-text-md, 1rem);"
+          fill="var(--rh-color-text-secondary)">
+            Image
+    </text>
+  </svg>
+  <p>In this <code>block-start</code> version, the image stays on top of the body content on mobile viewports.</p>
+  <rh-cta slot="cta" href="#">Learn More</rh-cta>
+</rh-announcement>
+
+<link rel="stylesheet" href="../rh-announcement-lightdom-shim.css">
+
+<script type="module">
+  import '@rhds/elements/rh-cta/rh-cta.js';
+  import '@rhds/elements/rh-announcement/rh-announcement.js';
+</script>

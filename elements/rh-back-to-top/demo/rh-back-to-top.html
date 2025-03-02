@@ -1,7 +1,18 @@
 <div id="overflow">
+  <p>Scroll down to reveal the back to top element</p>
   <rh-back-to-top href="#">Back to top</rh-back-to-top>
 </div>
 
 <script type="module">
   import '@rhds/elements/rh-back-to-top/rh-back-to-top.js';
 </script>
+
+<style>
+  #overflow {
+    min-block-size: calc(100dvh + 401px);
+  }
+
+  p {
+    font-weight: bold;
+  }
+</style>
