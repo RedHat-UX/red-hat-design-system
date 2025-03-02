@@ -25,8 +25,8 @@ class RendersText extends LitElement {
   get on() {
     const color = this.#style.getPropertyValue('color');
     return TinyColor.equals(color, dark) ? 'dark'
-      : TinyColor.equals(color, light) ? 'light'
-      : (console.log(color), 'nothing');
+         : TinyColor.equals(color, light) ? 'light'
+         : 'nothing';
   }
 
   #style = getComputedStyle(this);
