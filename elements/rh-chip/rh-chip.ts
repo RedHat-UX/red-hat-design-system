@@ -55,7 +55,7 @@ export class RhChip extends LitElement {
    */
   @property({ reflect: true, attribute: 'chip-value' }) chipValue?: string;
 
-  @query('input[type="checkbox"]') private _checkbox!: HTMLInputElement;
+  @query('input') private chipInput!: HTMLInputElement;
 
   @consume({ context, subscribe: true })
   @property({ attribute: false })
@@ -79,7 +79,7 @@ export class RhChip extends LitElement {
   }
 
   #onChecked() {
-    this.checked = this._checkbox.checked;
+    this.checked = this.chipInput.checked;
     this.dispatchEvent(new ChipCheckedEvent(this.checked));
   }
 }
