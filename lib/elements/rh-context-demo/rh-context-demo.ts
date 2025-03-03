@@ -4,7 +4,8 @@ import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit-html/directives/class-map.js';
 
 import { colorContextProvider, type ColorPalette } from '../../context/color/provider.js';
-import { ContextChangeEvent } from '../rh-context-picker/rh-context-picker.js';
+import { ColorPaletteListConverter, ContextChangeEvent, paletteNames }
+  from '../rh-context-picker/rh-context-picker.js';
 
 import '@rhds/elements/rh-surface/rh-surface.js';
 
@@ -26,18 +27,22 @@ export class RhContextDemo extends LitElement {
   @property({ attribute: 'color-palette', reflect: true })
   colorPalette = this.value;
 
+  @property({ converter: ColorPaletteListConverter })
+  allow = paletteNames;
+
   #internals = this.attachInternals();
 
   protected override render() {
     const { value = 'darkest' } = this;
     const on = this.value.replace(/est|er/, '');
     return html`
-      <rh-surface id="provider"
+      <rh-surface id="provider" part="provider"
                   color-palette="${value}"
                   @change="${this.#onChange}">
           <div id="picker-container" class="${classMap({ on: true, [on]: true })}">
             <rh-context-picker id="picker"
                                .value="${this.value}"
+                               .allow="${this.allow}"
                                target="provider"></rh-context-picker>
             <label for="picker">${this.label}</label>
             <slot name="controls"></slot>
