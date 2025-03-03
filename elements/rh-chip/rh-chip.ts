@@ -48,12 +48,12 @@ export class RhChip extends LitElement {
   /**
    * Set a custom string for the input's `name` attribute. Defaults to `chip-checkbox`.
    */
-  @property({ reflect: true, attribute: 'chip-name' }) chipName?: string;
+  @property({ reflect: true, attribute: 'name' }) chipName?: string;
 
   /**
    * Set a custom string for the input's `value` attribute. Defaults to `on`.
    */
-  @property({ reflect: true, attribute: 'chip-value' }) chipValue?: string;
+  @property({ reflect: true, attribute: 'value' }) chipValue?: string;
 
   @query('input') private chipInput!: HTMLInputElement;
 
