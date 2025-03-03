@@ -46,6 +46,27 @@ label {
       }
     }
   }
+
+  &.dark {
+    &:has(input:checked) {
+      background-color: var(--rh-color-blue-50, #0066cc);
+      outline-color: var(--rh-color-blue-50, #0066cc);
+    }
+
+    &.color-light-blue {
+      background-color: var(--rh-color-interactive-primary-hover-on-light, #003366);
+      outline-color: var(--rh-color-blue-50, #0066cc);
+
+      &:hover,
+      &:focus-within {
+        outline-color: var(--rh-color-blue-40, #4394e5);
+
+        &:has(input:checked) {
+          outline-color: var(--rh-color-blue-50, #0066cc);
+        }
+      }
+    }
+  }
 }
 
 input {
