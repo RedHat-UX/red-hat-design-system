@@ -209,7 +209,8 @@
   }
 }
 
-.compact {
+/* todo clean up to not use a max-width */
+@container navigation-primary (max-width: 1199px) {
   #hamburger {
     &[open] {
       & summary {
@@ -256,24 +257,64 @@
 
 /* &:not(.compact)  */
 @container navigation-primary (min-width: 1200px) {
-  #hamburger {
-    grid-area: nav;
-    display: contents;
+  #container {
+    &:not(.compact) {
+      #hamburger {
+        grid-area: nav;
+        display: contents;
 
-    & > * {
-      box-sizing: border-box;
+        & > * {
+          box-sizing: border-box;
+        }
+
+        & summary {
+          display: none;
+        }
+
+        #details-content {
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-start;
+          align-items: center;
+          height: 100%;
+        }
+      }
     }
 
-    & summary {
-      display: none;
-    }
+    /* JS has failed load mobile menu */
+    &.compact {
+      #hamburger {
+        &[open] {
+          & #details-content {
+            position: absolute;
+            inset-block-start: 100%;
+            inset-inline-start: 0;
+            z-index: var(--_nav-container-z-index);
+            display: flex;
+            flex-direction: column;
+            background-color: var(--_menu-background);
+            width: -webkit-fill-available;
+            width: -moz-available;
+            width: fill-available;
+            padding: var(--rh-space-lg);
+            box-shadow: var(--rh-box-shadow-sm);
+            border-end-end-radius: calc(var(--rh-border-radius-default) * 2);
+            border-end-start-radius: calc(var(--rh-border-radius-default) * 2);
 
-    #details-content {
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-start;
-      align-items: center;
-      height: 100%;
+            & ::slotted(rh-navigation-item) {
+              border-block-start: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
+            }
+
+            & ::slotted(rh-navigation-item:nth-last-child(1 of :not([slot]))) {
+              border-block-end: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
+            }
+
+            @container navigation-primary (min-width: 320px) {
+              padding: var(--rh-space-2xl);
+            }
+          }
+        }
+      }
     }
   }
 }
@@ -281,45 +322,7 @@
 @container navigation-primary (min-width: 1440px) {
   #secondary {
     #links {
-      display: block;
-      height: 100%;
-      justify-items: center;
-      align-content: center;
-    }
-
-    slot[name='links']::slotted(a) {
-      padding-inline: var(--rh-space-lg);
-      color: var(--rh-color-text-primary) !important;
-      text-decoration: none !important;
-    }
-
-    slot[name='links']::slotted(a:hover) {
-      text-decoration: underline !important;
-    }
-
-    slot[name='links']::slotted(a:nth-child(1 of a)) {
-      padding-inline-start: 0;
-    }
-
-    slot[name='links']::slotted(a:nth-last-child(1 of a)) {
-      padding-inline-end: 0;
-    }
-
-    slot[name='links']::slotted(a:focus-visible) {
-      outline-offset: 2px;
-      outline:
-        var(--rh-border-width-md)
-        solid
-        var(--rh-color-interactive-primary-default);
-      border-radius: var(--rh-border-radius-default);
-    }
-
-    slot[name='links']::slotted(a:hover) {
-      /* styles here */
-    }
-
-    slot[name='links']::slotted(a:not(:last-of-type)) {
-      border-inline-end: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
+      display: inline-flex;
     }
   }
 }

@@ -1,16 +1,26 @@
-rh-navigation-primary {
-  container: navigation-primary / inline-size;
-}
-
 rh-navigation-item {
-  color: var(--rh-color-text-primary);
+  color: var(--rh-color-text-primary) !important;
 
   & a {
-    color: var(--rh-color-interactive-primary-default);
+    color: var(--rh-color-interactive-primary-default) !important;
     text-decoration: none;
 
     &:hover {
-      color: var(--rh-color-interactive-primary-hover);
+      color: var(--rh-color-interactive-primary-hover) !important;
+    }
+  }
+
+  &[slot='links'] {
+    padding-inline: var(--rh-space-lg);
+    border-inline-end: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
+
+    &:nth-child(1 of rh-navigation-item[slot='links']) {
+      padding-inline-start: 0;
+    }
+
+    &:nth-last-child(1 of rh-navigation-item[slot='links']) {
+      border-inline-end-color: transparent;
+      padding-inline-end: 0;
     }
   }
 }

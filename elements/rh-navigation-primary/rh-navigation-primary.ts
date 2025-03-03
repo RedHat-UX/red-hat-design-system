@@ -128,8 +128,8 @@ export class RhNavigationPrimary extends LitElement {
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 613 145" height="30" width="125">
                   <defs>
                     <style>
-                      .cls-1{fill:var(--rh-color-brand-red);}
-                      .cls-2{fill:var(--rh-color-text-primary);}
+                      .cls-1{fill:var(--rh-color-brand-red, #ee0000);}
+                      .cls-2{fill:var(--rh-color-text-primary, #151515);}
                     </style>
                   </defs>
                   <title>RedHat-Logo</title>
