@@ -1,5 +1,4 @@
 import { LitElement, html, isServer } from 'lit';
-import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { query } from 'lit/decorators/query.js';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
@@ -7,10 +6,10 @@ import { property } from 'lit/decorators/property.js';
 
 import { OverflowController } from '@patternfly/pfe-core/controllers/overflow-controller.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-import { colorContextProvider } from '../../lib/context/color/provider.js';
-
 import '@rhds/elements/rh-icon/rh-icon.js';
+
+import { colorContextProvider } from '../../lib/context/color/provider.js';
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 
 import styles from './rh-subnav.css';
 
@@ -23,6 +22,7 @@ import styles from './rh-subnav.css';
  * @csspart links     - `<slot>` element
  */
 @customElement('rh-subnav')
+@colorContextConsumer
 export class RhSubnav extends LitElement {
   static readonly styles = [styles];
 
@@ -51,10 +51,6 @@ export class RhSubnav extends LitElement {
     }
   }
 
-  /**
-   * Sets color theme based on parent context
-   */
-  @colorContextConsumer() private on?: ColorTheme;
 
   /**
    * Sets color palette, which affects the element's styles as well as descendants' color theme.
@@ -109,9 +105,8 @@ export class RhSubnav extends LitElement {
   render() {
     const { scrollIconSet, scrollIconLeft, scrollIconRight } = this.constructor as typeof RhSubnav;
     const { showScrollButtons } = this.#overflow;
-    const { on = '' } = this;
     return html`
-      <nav part="container" aria-label="${this.accessibleLabel}" class="${classMap({ [on]: !!on })}">${!showScrollButtons ? '' : html`
+      <nav part="container" aria-label="${this.accessibleLabel}">${!showScrollButtons ? '' : html`
         <button id="previous" tabindex="-1" aria-hidden="true"
                 ?disabled="${!this.#overflow.overflowLeft}"
                 @click="${this.#scrollLeft}">

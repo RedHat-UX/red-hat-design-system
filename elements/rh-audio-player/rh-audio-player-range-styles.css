@@ -39,8 +39,8 @@ input[type='range'] {
   --_thumb-radius: calc((var(--_thumb-height, 16px) * 0.5) - 1px);
   --_clip-edges: 0.125em;
   --_track-height: var(--rh-length-xs, 4px);
-  --_thumb-disabled-color: rgb(0 0 0 / 0.5);
-  --_track-color: rgb(0 0 0 / 0.5);
+  --_thumb-disabled-color: light-dark(rgb(0 0 0 / 0.5), rgb(255 255 255 / 0.5));
+  --_track-color: light-dark(rgb(0 0 0 / 0.5), rgb(255 255 255 / 0.5));
   --_interactive-color: var(--rh-color-border-interactive);
   --_accent-color: var(--rh-color-accent-brand);
   --_outline: var(--rh-border-width-md, 2px) solid var(--_interactive-color);
@@ -55,13 +55,6 @@ input[type='range'][hidden] {
 .rtl input[type='range'] {
   --_box-fill-color: var(--_track-color);
   --_track-fill-color: var(--_progress-color);
-}
-
-.dark input[type='range'] {
-  --_thumb-disabled-color: rgb(255 255 255 / 0.5);
-  --_track-color: rgb(255 255 255 / 0.5);
-  --_interactive-color: var(--rh-color-border-interactive);
-  --_accent-color: var(--rh-color-accent-brand);
 }
 
 input[type='range']:focus {

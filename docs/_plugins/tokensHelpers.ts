@@ -1,15 +1,11 @@
 import type { CssCustomProperty } from 'custom-elements-manifest';
-import { tokens as tokensMeta } from '@rhds/tokens/meta.js';
+import { tokens as tokensMeta, type DesignToken } from '@rhds/tokens/meta.js';
 import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);
 const tokensJSON = require('@rhds/tokens/json/rhds.tokens.json');
 
 export const capitalize = (x: string): string => `${x.at(0)?.toUpperCase() ?? ''}${x.slice(1)}`;
-
-type MapValue<T> = T extends Map<infer _, infer V> ? V : never;
-
-export type DesignToken = MapValue<typeof tokensMeta>;
 
 /* eslint-disable jsdoc/require-param */
 
@@ -34,8 +30,8 @@ export function getParentCollection(options: {
 
 /** generate `var(--rh-xxx, xxx)` string, given a token or css property */
 export function getVariableSyntax(token: DesignToken | CssCustomProperty) {
-  const name = formatTokenVariableName(token.name);
-  return `var(${name}, ${escapeDoubleQuotes(token.$value ?? token.default)})`;
+  const name = formatTokenVariableName(token);
+  return `var(${name}, ${escapeDoubleQuotes((token as DesignToken).$value ?? token.default)})`;
 }
 
 /** generate string of copy cell for 11ty templates */
@@ -59,11 +55,11 @@ export function copyCell(token: DesignToken) {
 }
 
 function formatTokenVariableName(token: DesignToken) {
-  return `--${token}`.replace('----', '--') as `--rh-${string}`;
+  return `--${token.name}`.replace('----', '--') as `--rh-${string}`;
 }
 
 function getTokenCategorySlug(token: DesignToken) {
-  const name = formatTokenVariableName(token.name);
+  const name = formatTokenVariableName(token);
   const data = tokensMeta.get(name);
   if (!data) {
     throw new Error(`Could not find token ${name}`);

@@ -1,6 +1,9 @@
-import { ContextRequestEvent } from '../event.js';
+import { context } from './provider.js';
 
-import { contextEvents, HeadingLevelController } from './controller.js';
+import { html, type LitElement, type TemplateResult } from 'lit';
+
+import { ContextConsumer } from '@lit/context';
+import { ifDefined } from 'lit-html/directives/if-defined.js';
 
 export interface HeadingTemplateOptions {
   id?: string;
@@ -8,45 +11,44 @@ export interface HeadingTemplateOptions {
   level?: number;
 }
 
+export interface HeadingLevelTemplateOptions {
+  id?: string;
+  hidden?: boolean;
+}
+
 /**
  * Determines which heading level immediately precedes the host element,
  * and provides templates for shadow headings.
  */
-export class HeadingLevelContextConsumer extends HeadingLevelController {
-  #dispose?: () => void;
+export class HeadingLevelContextConsumer extends ContextConsumer<typeof context, LitElement> {
+  offset = 0;
 
-  /** When a consumer connects, it requests context from the closest provider. */
-  hostConnected() {
-    const { context } = HeadingLevelController;
-    const event = new ContextRequestEvent<typeof context>(
-      context,
-      e => this.#contextCallback(e),
-      true,
-    );
-    this.host.dispatchEvent(event);
-    contextEvents.set(this.host, event);
+  constructor(host: LitElement) {
+    super(host, { context });
   }
 
-  /** When a consumer disconnects, it's removed from the list of consumers. */
-  hostDisconnected() {
-    this.#dispose?.();
-    this.#dispose = undefined;
-    contextEvents.delete(this.host);
+  get level() {
+    return this.value?.level ?? 2;
   }
 
-  /** Register the dispose callback for hosts that requested multiple updates, then update the colour-context */
-  #contextCallback(value: number, dispose?: () => void) {
-    // protect against changing providers
-    if (dispose && dispose !== this.#dispose) {
-      this.#dispose?.();
-      this.#dispose = dispose;
+  /**
+   * Wraps any renderable content in a heading, based on heading level
+   * @param content DOM content to wrap in a header
+   * @param options id, hidden
+   */
+  wrap(content: unknown, options?: HeadingLevelTemplateOptions): TemplateResult {
+    const level = this.value?.level ?? 0;
+    const offset = this.value?.offset ?? 0;
+    const offsetLevel = Math.max(1, level + offset);
+    const id = options?.id;
+    const hidden = options?.hidden ?? false;
+    switch (offsetLevel) {
+      case 1: return html`<h1 ?hidden=${hidden} id="${ifDefined(id)}">${content}</h1>`;
+      case 2: return html`<h2 ?hidden=${hidden} id="${ifDefined(id)}">${content}</h2>`;
+      case 3: return html`<h3 ?hidden=${hidden} id="${ifDefined(id)}">${content}</h3>`;
+      case 4: return html`<h4 ?hidden=${hidden} id="${ifDefined(id)}">${content}</h4>`;
+      case 5: return html`<h5 ?hidden=${hidden} id="${ifDefined(id)}">${content}</h5>`;
+      default: return html`<h6 ?hidden=${hidden} id="${ifDefined(id)}">${content}</h6>`;
     }
-    this.update(value);
-  }
-
-  /** Sets the heading level on the host and any children that requested multiple updates */
-  public update(next: number) {
-    this.level = next;
-    this.host.requestUpdate();
   }
 }

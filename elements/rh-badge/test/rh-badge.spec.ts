@@ -16,15 +16,15 @@ describe('<rh-badge>', function() {
   it(`should have a background color '--rh-color-status-neutral-on-light' when state is unset`, async function() {
     const element = await createFixture <RhBadge>(html`<rh-badge></rh-badge>`);
     // NB: querying shadow root in tests is bad, mmkay?
-    const styles = getComputedStyle(element.shadowRoot!.querySelector('.on')!);
-    expect(styles.backgroundColor).to.be.colored(tokens.get('--rh-color-status-neutral-on-light')!);
+    const styles = getComputedStyle(element.shadowRoot!.querySelector('span')!);
+    expect(styles.backgroundColor).to.be.colored(tokens.get('--rh-color-status-neutral-on-light') as string);
   });
 });
 
 it('should have a pill shape and padding on left and right only', async function() {
   const element = await createFixture<RhBadge>(html`<rh-badge></rh-badge>`);
   // NB: querying shadow root in tests is bad, mmkay?
-  const elStyles = getComputedStyle(element.shadowRoot!.querySelector('.on')!);
+  const elStyles = getComputedStyle(element.shadowRoot!.querySelector('span')!);
 
   expect(elStyles.getPropertyValue('border-radius')).to.equal('64px');
   expect(elStyles.getPropertyValue('padding-top')).to.equal('0px');
@@ -40,21 +40,21 @@ for (const [state, token] of Object.entries({
   caution: '--rh-color-status-caution',
   warning: '--rh-color-status-warning',
   danger: '--rh-color-status-danger',
-})) {
+}) as [string, `--rh-${string}`][]) {
   describe(`state="${state}"`, function() {
     let element: RhBadge;
     let styles: CSSStyleDeclaration;
     beforeEach(async function() {
       element = await createFixture<RhBadge>(html`
-        <rh-badge state="${state}"></rh-badge>
+        <rh-badge state="${state}">0</rh-badge>
       `);
     });
     beforeEach(async function() {
       // NB: querying shadow root in tests is bad, mmkay?
-      styles = getComputedStyle(element.shadowRoot!.querySelector('.on')!);
+      styles = getComputedStyle(element.shadowRoot!.querySelector('span')!);
     });
     it(`should have a background color '${token}-on-light'`, async function() {
-      expect(styles.backgroundColor).to.be.colored(tokens.get(`${token}-on-light`)!);
+      expect(styles.backgroundColor).to.be.colored(tokens.get(`${token}-on-light`) as string);
     });
     describe('on a dark background', function() {
       beforeEach(async function() {
@@ -63,7 +63,7 @@ for (const [state, token] of Object.entries({
         `);
       });
       it(`should have a background color '${token}-on-dark'`, async function() {
-        expect(styles.backgroundColor).to.be.colored(tokens.get(`${token}-on-dark`)!);
+        expect(styles.backgroundColor).to.be.colored(tokens.get(`${token}-on-dark`) as string);
       });
     });
   });
