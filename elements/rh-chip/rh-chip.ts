@@ -1,6 +1,7 @@
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { property } from 'lit/decorators/property.js';
 import { query } from 'lit/decorators/query.js';
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
@@ -45,9 +46,14 @@ export class RhChip extends LitElement {
   @property({ type: Boolean, reflect: true }) checked = false;
 
   /**
-   * Set a custom value for the input's `name` attribute, defaults to `chip-checkbox`.
+   * Set a custom string for the input's `name` attribute. Defaults to `chip-checkbox`.
    */
   @property({ reflect: true, attribute: 'chip-name' }) chipName?: string;
+
+  /**
+   * Set a custom string for the input's `value` attribute. Defaults to `on`.
+   */
+  @property({ reflect: true, attribute: 'chip-value' }) chipValue?: string;
 
   @query('input[type="checkbox"]') private _checkbox!: HTMLInputElement;
 
@@ -62,8 +68,11 @@ export class RhChip extends LitElement {
     return html`
       <label part="chip" class=${classMap({ on: true, [on]: true, [`size-${size}`]: !!size, [`color-${color}`]: !!color })}>
         <slot></slot>
-        <input type="checkbox" name=${attrName}
-               @change=${this.#onChecked} ?checked=${this.checked}>
+        <input type="checkbox"
+               name=${attrName}
+               value=${ifDefined(this.chipValue)}
+               @change=${this.#onChecked}
+               ?checked=${this.checked}>
         <rh-icon id="close-icon" set="microns" icon="close"></rh-icon>
       </label>
     `;
