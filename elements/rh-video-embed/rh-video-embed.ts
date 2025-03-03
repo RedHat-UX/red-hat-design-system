@@ -126,7 +126,7 @@ export class RhVideoEmbed extends LitElement {
     const hasCaption = this.#slots.hasSlotted('caption');
     const hasThumbnail = this.#slots.hasSlotted('thumbnail');
     const playLabel = this.iframeElement && this.iframeElement.title ? `${this.iframeElement.title} (play video)` : 'Play video';
-    const consent = !this.#showConsent;
+    const consent = this.#showConsent;
     const video = consent && !!playClicked || !hasThumbnail;
     const thumbnail = consent && !playClicked && !!hasThumbnail;
 
