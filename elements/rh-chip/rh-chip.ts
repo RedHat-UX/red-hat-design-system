@@ -63,7 +63,7 @@ export class RhChip extends LitElement {
       <label part="chip" class=${classMap({ on: true, [on]: true, [`size-${size}`]: !!size, [`color-${color}`]: !!color })}>
         <slot></slot>
         <input type="checkbox" name=${attrName}
-               @input=${this.#onChecked} ?checked=${this.checked}>
+               @change=${this.#onChecked} ?checked=${this.checked}>
         <rh-icon id="close-icon" set="microns" icon="close"></rh-icon>
       </label>
     `;
