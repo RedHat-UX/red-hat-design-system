@@ -12,7 +12,9 @@ span {
   font-weight: 700;
   line-height: var(--rh-line-height-body-text, 1.5);
   padding-inline: var(--_badge-padding, var(--rh-space-md, 8px));
-  color: var(--rh-color-text-primary);
+  color:
+    light-dark(var(--rh-color-text-primary-on-dark, #ffffff),
+      var(--rh-color-text-primary-on-light, #151515));
 
   &.neutral { background-color: var(--rh-color-status-neutral); }
 
