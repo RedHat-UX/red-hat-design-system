@@ -151,12 +151,13 @@ export class RhPagination extends LitElement {
           </slot>
         </span>
         <input inputmode="numeric"
-            required
-            min=1 max=${this.#links?.length ?? 1}
-            aria-labelledby="go-to-page"
-            @change=${this.#onChange}
-            @keyup=${this.#onKeyup}
-            .value=${currentPage}>
+               required
+               min=1
+               max="${this.#links?.length ?? 1}"
+               aria-labelledby="go-to-page"
+               @change="${this.#onChange}"
+               @keyup="${this.#onKeyup}"
+               .value="${currentPage}">
         <slot name="out-of">of</slot>
         <a href=${ifDefined(lastHref)}>${this.#links?.length}</a>
       </div>

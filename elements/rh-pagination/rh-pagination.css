@@ -186,6 +186,7 @@ input {
   box-sizing: border-box;
   padding-block: var(--rh-space-sm, 6px);
   padding-inline: var(--rh-space-md, 8px);
+  color: var(--rh-color-text-primary-on-light, #151515);
 }
 
 input:focus {
