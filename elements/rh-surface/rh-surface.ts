@@ -1,7 +1,6 @@
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { classMap } from 'lit/directives/class-map.js';
 
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
@@ -25,6 +24,7 @@ import styles from './rh-surface.css';
  *          ```
  */
 @customElement('rh-surface')
+@colorContextProvider()
 export class RhSurface extends LitElement {
   static readonly styles = [styles];
 
@@ -35,14 +35,10 @@ export class RhSurface extends LitElement {
    * Your theme will influence these colors so check there first if you are seeing inconsistencies.
    * See [CSS Custom Properties](#css-custom-properties) for default values
    */
-  @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   render() {
-    const { colorPalette = 'lightest' } = this;
-    return html`<slot id="slot"
-                      class="${classMap({ [colorPalette]: true })}"
-                      @slotchange=${this.#onSlotchange}></slot>`;
+    return html`<slot id="slot" @slotchange=${this.#onSlotchange}></slot>`;
   }
 
   #onSlotchange() {

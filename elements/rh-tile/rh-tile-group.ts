@@ -19,6 +19,7 @@ import styles from './rh-tile-group.css';
  * @slot - Put one or more `rh-tile` elements in this slot
  */
 @customElement('rh-tile-group')
+@colorContextProvider()
 @colorContextConsumer
 export class RhTileGroup extends LitElement {
   static readonly styles = [styles];
@@ -41,7 +42,6 @@ export class RhTileGroup extends LitElement {
    *
    * Tile group always resets its context to `base`, unless explicitly provided with a `color-palette`.
    */
-  @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   #tiles: RhTile[] = [];

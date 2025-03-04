@@ -41,6 +41,7 @@ import styles from './rh-card.css';
  *              The font weight for headings in the header and body
  */
 @customElement('rh-card')
+@colorContextProvider()
 @colorContextConsumer
 export class RhCard extends LitElement {
   static styles = [styles];
@@ -53,7 +54,6 @@ export class RhCard extends LitElement {
    *
    * Card always resets its context to `base`, unless explicitly provided with a `color-palette`.
    */
-  @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   /**

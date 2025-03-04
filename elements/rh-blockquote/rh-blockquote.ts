@@ -21,6 +21,7 @@ import styles from './rh-blockquote.css';
  *
  */
 @customElement('rh-blockquote')
+@colorContextProvider()
 @colorContextConsumer
 export class RhBlockquote extends LitElement {
   static readonly styles = styles;
@@ -32,7 +33,6 @@ export class RhBlockquote extends LitElement {
    * - `lightest` (default)
    * - `darkest`
    */
-  @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   /**

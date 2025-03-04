@@ -1,41 +1,39 @@
-import { LitElement, type PropertyValues, html } from 'lit';
+import type { ColorPalette } from '../../context/color/provider.js';
+
+import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { ContextChangeEvent } from '../rh-context-picker/rh-context-picker.js';
+import { observes } from '@patternfly/pfe-core/decorators.js';
+import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
-import { colorContextProvider, type ColorPalette } from '../../context/color/provider.js';
+import { ContextChangeEvent } from '../rh-context-picker/rh-context-picker.js';
 
 import '@rhds/elements/rh-surface/rh-surface.js';
 
 import style from './rh-context-demo.css';
 
-import consumerStyles from '@rhds/tokens/css/color-context-consumer.css.js';
-
 @customElement('rh-context-demo')
 export class RhContextDemo extends LitElement {
-  static readonly styles = [style, consumerStyles];
+  static readonly styles = [style];
 
   static formAssociated = true;
 
-  @property() value: ColorPalette = 'darkest';
-
   @property() label = 'Color Palette';
 
-  @colorContextProvider()
   @property({ attribute: 'color-palette', reflect: true })
-  colorPalette = this.value;
+  colorPalette: ColorPalette = 'darkest';
 
-  #internals = this.attachInternals();
+  #internals = InternalsController.of(this);
 
   protected override render() {
-    const { value = 'darkest' } = this;
+    const { colorPalette } = this;
     return html`
       <rh-surface id="provider"
-                  color-palette="${value}"
+                  color-palette="${colorPalette}"
                   @change="${this.#onChange}">
           <div id="picker-container">
             <rh-context-picker id="picker"
-                               .value="${this.value}"
+                               .value="${colorPalette}"
                                target="provider"></rh-context-picker>
             <label for="picker">${this.label}</label>
             <slot name="controls"></slot>
@@ -45,13 +43,9 @@ export class RhContextDemo extends LitElement {
     `;
   }
 
-  protected override willUpdate(changed: PropertyValues<this>) {
-    if (changed.has('colorPalette')) {
-      this.value = this.colorPalette;
-    }
-    if (changed.has('value')) {
-      this.colorPalette = this.value;
-    }
+  @observes('colorPalette')
+  protected colorPaletteChanged() {
+    this.#setValue(this.colorPalette);
   }
 
   protected formStateRestoreCallback(state: string) {
@@ -72,7 +66,9 @@ export class RhContextDemo extends LitElement {
   #setValue(value: ColorPalette) {
     if (value) {
       this.#internals.setFormValue(value);
-      this.value = value;
+      if (this.colorPalette !== value) {
+        this.colorPalette = value;
+      }
     }
   }
 }

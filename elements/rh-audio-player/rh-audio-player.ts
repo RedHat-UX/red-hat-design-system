@@ -58,6 +58,7 @@ import '@rhds/elements/rh-icon/rh-icon.js';
  * @csspart transcript - transcript panel
  */
 @customElement('rh-audio-player')
+@colorContextProvider()
 @colorContextConsumer
 export class RhAudioPlayer extends LitElement {
   static readonly styles = [buttonStyles, styles, rangeStyles];
@@ -114,7 +115,6 @@ export class RhAudioPlayer extends LitElement {
   @property({ attribute: false }) microcopy = {};
 
   /** Element's color palette */
-  @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   @queryAssignedElements({ slot: 'series' })

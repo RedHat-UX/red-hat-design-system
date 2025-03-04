@@ -42,14 +42,14 @@ export class ContextConsumer extends RendersText { }
 
 @customElement('test-context-consumer-provider')
 @colorContextConsumer
+@colorContextProvider()
 export class ContextConsumerProvider extends RendersText {
-  @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 }
 
 @customElement('test-context-provider-consumer')
+@colorContextProvider()
 @colorContextConsumer
 export class ContextProviderConsumer extends RendersText {
-  @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 }

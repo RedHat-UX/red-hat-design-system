@@ -28,6 +28,7 @@ import styles from './rh-navigation-secondary-menu.css';
  *           max-width for menu content
  */
 @customElement('rh-navigation-secondary-menu')
+@colorContextProvider()
 export class RhNavigationSecondaryMenu extends LitElement {
   static readonly styles = [styles];
 
@@ -35,7 +36,6 @@ export class RhNavigationSecondaryMenu extends LitElement {
    * Color palette (default: lightest)
    * Secondary nav menus are always represented on the lightest color palette.
    */
-  @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'lightest';
 
   /**

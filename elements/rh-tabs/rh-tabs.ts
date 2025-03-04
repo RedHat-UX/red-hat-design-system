@@ -43,6 +43,7 @@ export { RhTab };
  * @cssprop {<length>} [--rh-tabs-inset=auto] - Tabs inset
  */
 @customElement('rh-tabs')
+@colorContextProvider()
 @colorContextConsumer
 export class RhTabs extends LitElement {
   static readonly styles = [styles];
@@ -86,7 +87,6 @@ export class RhTabs extends LitElement {
   @property({ attribute: false }) activeTab?: RhTab;
 
   /** Sets color context for child components, overrides parent context */
-  @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   /** Aligns tabs to the center */

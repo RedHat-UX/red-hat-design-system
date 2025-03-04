@@ -41,10 +41,10 @@ import './rh-footer-copyright.js';
  * @csspart tertiary
  */
 @customElement('rh-footer-universal')
+@colorContextProvider()
 export class RhFooterUniversal extends LitElement {
   static readonly styles = [style];
 
-  @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'darker';
 
   #slots = new SlotController(

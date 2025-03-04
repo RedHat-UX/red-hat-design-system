@@ -46,6 +46,7 @@ export class TileSelectEvent extends Event {
  * @cssprop [--rh-tile-border-color=var(--rh-color-border-subtle-on-light, #c7c7c7)] - Color of tile border.<br>Could cause accessibility issues; prefer to use `--rh-color-border-subtle-on-light` and `--rh-color-border-subtle-on-dark` for theming.
  */
 @customElement('rh-tile')
+@colorContextProvider()
 @colorContextConsumer
 export class RhTile extends LitElement {
   static readonly styles = [styles];
@@ -133,7 +134,6 @@ export class RhTile extends LitElement {
    *
    * Tile always resets its context to `base`, unless explicitly provided with a `color-palette`.
    */
-  @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   /** When set to "private", the icon representing the link changes from an arrow to a padlock */

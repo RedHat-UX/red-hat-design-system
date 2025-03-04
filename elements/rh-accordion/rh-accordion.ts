@@ -6,7 +6,7 @@ import { property } from 'lit/decorators/property.js';
 import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 import { provide } from '@lit/context';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
 import { NumberListConverter, ComposedEvent } from '@patternfly/pfe-core';
@@ -46,6 +46,7 @@ export class AccordionCollapseEvent extends ComposedEvent {
  * @attr  [accents=inline] Position accents in the header either inline or bottom
  */
 @customElement('rh-accordion')
+@colorContextProvider()
 @colorContextConsumer
 export class RhAccordion extends LitElement {
   static readonly styles = [styles];
@@ -85,7 +86,6 @@ export class RhAccordion extends LitElement {
    * Color Palette for this accordion.
    * @see https://ux.redhat.com/theming/color-palettes/
    */
-  @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   /**

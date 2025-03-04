@@ -8,7 +8,7 @@ import { OverflowController } from '@patternfly/pfe-core/controllers/overflow-co
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 
-import { colorContextProvider } from '../../lib/context/color/provider.js';
+import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 
 import styles from './rh-subnav.css';
@@ -22,6 +22,7 @@ import styles from './rh-subnav.css';
  * @csspart links     - `<slot>` element
  */
 @customElement('rh-subnav')
+@colorContextProvider()
 @colorContextConsumer
 export class RhSubnav extends LitElement {
   static readonly styles = [styles];
@@ -58,8 +59,7 @@ export class RhSubnav extends LitElement {
    * Your theme will influence these colors so check there first if you are seeing inconsistencies.
    * See [CSS Custom Properties](#css-custom-properties) for default values
    */
-  @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette = 'lighter';
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette = 'lighter';
 
   /**
    * Customize the default `aria-label` on the `<nav>` container.

@@ -66,6 +66,7 @@ function focusableChildElements(parent: HTMLElement): NodeListOf<HTMLElement> {
  * @cssprop {<integer>} [--rh-navigation-secondary-overlay-z-index=-1] - z-index of the navigation-secondary-overlay
  */
 @customElement('rh-navigation-secondary')
+@colorContextProvider()
 @colorContextConsumer
 export class RhNavigationSecondary extends LitElement {
   static readonly styles = [styles];
@@ -112,7 +113,6 @@ export class RhNavigationSecondary extends LitElement {
   /**
    * Color palette dark | lighter (default: lighter)
    */
-  @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'lighter';
 
 
