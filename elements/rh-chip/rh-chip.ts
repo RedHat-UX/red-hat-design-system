@@ -73,7 +73,7 @@ export class RhChip extends LitElement {
                value=${ifDefined(this.chipValue)}
                @change=${this.#onChecked}
                ?checked=${this.checked}>
-        <rh-icon id="close-icon" set="microns" icon="close"></rh-icon>
+        <rh-icon id="close-icon" set="ui" icon="close-circle"></rh-icon>
       </label>
     `;
   }
