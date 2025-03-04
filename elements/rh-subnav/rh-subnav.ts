@@ -10,10 +10,11 @@ import { OverflowController } from '@patternfly/pfe-core/controllers/overflow-co
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 import { colorContextProvider } from '../../lib/context/color/provider.js';
 
+import { DirController } from '../../lib/DirController.js';
+
 import '@rhds/elements/rh-icon/rh-icon.js';
 
 import styles from './rh-subnav.css';
-
 
 /**
  * A subnavigation allows users to navigate between a small number of page links.
@@ -25,15 +26,6 @@ import styles from './rh-subnav.css';
 @customElement('rh-subnav')
 export class RhSubnav extends LitElement {
   static readonly styles = [styles];
-
-  /** Icon name to use for the scroll left button */
-  protected static readonly scrollIconLeft = 'caret-left';
-
-  /** Icon name to use for the scroll right button */
-  protected static readonly scrollIconRight = 'caret-right';
-
-  /** Icon set to use for the scroll buttons */
-  protected static readonly scrollIconSet = 'ui';
 
   private static instances = new Set<RhSubnav>();
 
@@ -79,6 +71,8 @@ export class RhSubnav extends LitElement {
 
   #overflow = new OverflowController(this);
 
+  #dir = new DirController(this);
+
   get #allLinks() {
     return this.#allLinkElements;
   }
@@ -107,31 +101,33 @@ export class RhSubnav extends LitElement {
   }
 
   render() {
-    const { scrollIconSet, scrollIconLeft, scrollIconRight } = this.constructor as typeof RhSubnav;
-    const { showScrollButtons } = this.#overflow;
     const { on = '' } = this;
+    const rtl = this.#dir.dir === 'rtl';
     return html`
-      <nav part="container" aria-label="${this.accessibleLabel}" class="${classMap({ [on]: !!on })}">${!showScrollButtons ? '' : html`
-        <button id="previous" tabindex="-1" aria-hidden="true"
-                ?disabled="${!this.#overflow.overflowLeft}"
-                @click="${this.#scrollLeft}">
-          <rh-icon icon="${scrollIconLeft}"
-                   set="${scrollIconSet}"
-                   loading="eager"></rh-icon>
-        </button>`}
+      <nav part="container" aria-label="${this.accessibleLabel}" class="${classMap({ rtl: !!rtl, on: on, [on]: !!on })}">
+        ${!this.#overflow.showScrollButtons ? '' : html`
+          <button id="previous" tabindex="-1" aria-hidden="true"
+                  ?disabled="${!this.#overflow.overflowLeft}"
+                  @click="${() => !rtl ? this.#overflow.scrollLeft() : this.#overflow.scrollRight()}">
+            <rh-icon set="ui" icon="caret-left" loading="eager"></rh-icon>
+          </button>
+        `}
         <slot part="links"
-              @slotchange="${this.#onSlotchange}"></slot>${!showScrollButtons ? '' : html`
-        <button id="next" tabindex="-1" aria-hidden="true"
+              @slotchange="${this.#onSlotchange}"></slot>
+        ${!this.#overflow.showScrollButtons ? '' : html`
+          <button id="next" tabindex="-1" aria-hidden="true"
                 ?disabled="${!this.#overflow.overflowRight}"
-                @click="${this.#scrollRight}">
-          <rh-icon icon="${scrollIconRight}" set="${scrollIconSet}" loading="eager"></rh-icon>
-        </button>`}
+                @click="${() => !rtl ? this.#overflow.scrollRight() : this.#overflow.scrollLeft()}">
+          <rh-icon set="ui" icon="caret-right" loading="eager"></rh-icon>
+          </button>
+        `}
       </nav>
     `;
   }
 
   firstUpdated() {
     this.linkList.addEventListener('scroll', this.#overflow.onScroll.bind(this));
+    this.#onSlotchange();
   }
 
   #onSlotchange() {
@@ -143,14 +139,6 @@ export class RhSubnav extends LitElement {
   #firstLastClasses() {
     this.#firstLink.classList.add('first');
     this.#lastLink.classList.add('last');
-  }
-
-  #scrollLeft() {
-    this.#overflow.scrollLeft();
-  }
-
-  #scrollRight() {
-    this.#overflow.scrollRight();
   }
 }
 
