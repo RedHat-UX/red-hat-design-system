@@ -32,8 +32,8 @@ export class RhJumpLinks extends LitElement {
   });
 
   #spy = new ScrollSpyController(this, {
-    rootMargin: `0px 0px 0px 0px`,
-    tagNames: ['rh-jump-links-item'],
+    rootMargin: '0px 0px 0px 0px',
+    tagNames: ['rh-jump-links-list', 'rh-jump-links-item'],
   });
 
   override connectedCallback(): void {
@@ -63,7 +63,8 @@ export class RhJumpLinks extends LitElement {
     }
   }
 
-  #setActiveItem(item: RhJumpLinksItem) {
+  async #setActiveItem(item: RhJumpLinksItem) {
+    await this.updateComplete;
     this.#spy.setActive(item);
   }
 }

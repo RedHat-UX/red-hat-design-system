@@ -43,6 +43,7 @@ export class RhJumpLinksItem extends LitElement {
   @observes('active')
   protected activeChanged(): void {
     this.#internals.ariaCurrent = this.active ? 'location' : null;
+    this.dispatchEvent(new Event('active-changed', { bubbles: true }));
   }
 
   #onClick() {
