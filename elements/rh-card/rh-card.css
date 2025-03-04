@@ -47,6 +47,9 @@
     light-dark(var(--_card-background, var(--rh-color-surface-lightest, #ffffff)),
       var(--_card-background, var(--rh-color-surface-darkest, #151515)));
   color: var(--rh-color-text-primary);
+
+  &.lighter { background-color: var(--rh-color-surface-lighter, #f2f2f2); }
+  &.darker { background-color: var(--rh-color-surface-darker, #1f1f1f); }
 }
 
 #header,

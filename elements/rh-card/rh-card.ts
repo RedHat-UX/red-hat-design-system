@@ -9,6 +9,8 @@ import { colorSchemeProvider, type ColorPalette } from '../../lib/context/color/
 
 import styles from './rh-card.css';
 
+const PALETTE_RE = /(er|est)+/g;
+
 /**
  * Cards are flexible surfaces used to group information in a small layout. They give small previews of information or provide secondary content in relation to the content it's near. Several cards can be used together to group related information.
  * @summary     Arranges content and interactive elements in a layout
@@ -41,7 +43,7 @@ import styles from './rh-card.css';
  *              The font weight for headings in the header and body
  */
 @customElement('rh-card')
-@colorSchemeProvider()
+@colorSchemeProvider('lightest', 'lighter', 'darker', 'darkest')
 @colorSchemeConsumer
 export class RhCard extends LitElement {
   static styles = [styles];
@@ -51,8 +53,6 @@ export class RhCard extends LitElement {
    * Overrides parent color context.
    * Your theme will influence these colors so check there first if you are seeing inconsistencies.
    * See [CSS Custom Properties](#css-custom-properties) for default values
-   *
-   * Card always resets its context to `base`, unless explicitly provided with a `color-palette`.
    */
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
@@ -83,9 +83,9 @@ export class RhCard extends LitElement {
 
   get #computedPalette() {
     if (this.#isStandardPromo) {
-      return `${this.colorPalette}er`.replace(/(er|est){1,2}/, 'er') as 'lighter' | 'darker';
+      return `${`${this.colorPalette ?? 'lightest'}`.replace(PALETTE_RE, '')}er` as 'lighter' | 'darker';
     } else if (this.#isPromo) {
-      return `${this.colorPalette}est`.replace(/(er|est){1,2}/, 'est') as 'lightest' | 'darkest';
+      return `${`${this.colorPalette ?? 'lightest'}`.replace(PALETTE_RE, '')}est` as 'lightest' | 'darkest';
     } else {
       switch (this.colorPalette) {
         case 'lightest':
@@ -129,7 +129,7 @@ export class RhCard extends LitElement {
           class="${classMap({
             standard,
             [variant]: !!variant,
-            [`palette-${computedPalette}`]: !!computedPalette,
+            [computedPalette ?? '']: !!computedPalette,
             'palette': !!this.colorPalette,
             'has-body': hasBody,
             'has-header': hasHeader,
