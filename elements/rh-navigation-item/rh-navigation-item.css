@@ -231,7 +231,9 @@
       }
 
       :hover {
-        border-color: var(--rh-color-interactive-primary-default);
+        &:before {
+          --_mask: conic-gradient(#000000 0 0);
+        }
       }
 
       &[open] {
@@ -323,15 +325,26 @@
     }
   }
 
-  & ::slotted(a) {
-    display: flex;
-    color: var(--rh-color-text-primary) !important;
-    text-decoration: none !important;
-  }
-
   &.link {
     display: inline-block;
     height: fit-content;
+    border-block-start: none;
+
+    & ::slotted(a:hover) {
+      display: flex;
+      color: var(--rh-color-interactive-primary-default) !important;
+      text-decoration: none !important;
+    }
+
+    & ::slotted(a) {
+      display: flex;
+      color: var(--rh-color-text-primary) !important;
+      text-decoration: none !important;
+    }
+
+    &:has(::slotted(a:active)) {
+      background-color: var(--_background-color);
+    }
 
     & ::slotted(a:is(:focus-visible, :hover:focus-visible)) {
       outline-offset: 2px;
