@@ -66,7 +66,6 @@ export class RhCard extends LitElement {
    */
   @property({ reflect: true, attribute: 'full-width', type: Boolean }) fullWidth? = false;
 
-
   #slots = new SlotController(this, 'header', 'image', null, 'footer');
 
   #isPromo = this.variant === 'promo';
