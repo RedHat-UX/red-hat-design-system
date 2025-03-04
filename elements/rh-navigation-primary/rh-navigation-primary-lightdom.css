@@ -12,16 +12,31 @@ rh-navigation-item {
   }
 
   &[slot='links'] {
-    padding-inline: var(--rh-space-md);
-    border-inline-end: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
+    & a {
+      padding-inline: var(--rh-space-md);
+      margin-inline: var(--rh-space-md);
+    }
+
+    &:after {
+      content: '';
+      height: 100%;
+      border-inline-end: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
+    }
 
     &:nth-child(1 of rh-navigation-item[slot='links']) {
-      padding-inline-start: 0;
+      & a {
+        margin-inline-start: 0;
+      }
     }
 
     &:nth-last-child(1 of rh-navigation-item[slot='links']) {
-      border-inline-end-color: transparent;
-      padding-inline-end: 0;
+      &:after {
+        border-inline-end-color: transparent;
+      }
+
+      & a {
+        margin-inline-end: 0;
+      }
     }
   }
 }
