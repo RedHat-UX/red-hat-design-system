@@ -39,9 +39,9 @@ less effort and greater cross-property consistency.
 <a id="what-are-color-palettes"></a>
 <a id="how-color-palettes-work"></a>
 
-<abbr title="red hat design system">RHDS</abbr> defines six color palettes They 
-range from lightest to darkest, and those are the two palettes you will use the 
-most for the majority of your projects.
+<abbr title="red hat design system">RHDS</abbr> defines six color palettes
+ranging from `lightest` to `darkest`, and those are the two palettes you will
+use the most for the majority of your projects.
 
 <uxdot-pattern id="elements-grid" src="./patterns/collage.html"></uxdot-pattern>
 
@@ -66,12 +66,13 @@ on their current color palette. For example `<rh-surface>`, `<rh-card>`, and
 `<rh-accordion>` can define their own color palette, while `<rh-cta>` and
 `<rh-badge>` cannot.
 
-Elements which have this ability are called **color scheme providers**. They
-usually implement a default color palette (e.g. `lightest`). Color scheme
-providers must also possess an optional `color-palette` attribute. When it is
-set to one of the six color palette values, any child elements which consume a
-background type will respond to the change. Setting the `color-palette`
-attribute will override any parent's color scheme.
+Elements which have this ability are called **color scheme providers** 
+(previously referred to as **color context providers**). They usually implement 
+a default color palette (e.g. `lightest`). Color scheme providers must also 
+possess an optional `color-palette` attribute. When it is set to one of the six 
+color palette values, any child elements which consume a background type will 
+respond to the change. Setting the `color-palette` attribute will override any 
+parent's color scheme.
 
 There are six color palettes in RHDS:
 
@@ -103,11 +104,12 @@ remain the same.
 <a id="backgrounds-and-theme-tokens"></a>
 <a id="backgrounds"></a>
 
-Color schemes are rendering modes for elements that change their foreground and 
-background colors. There are two color schemes: `light` and `dark`, each 
-corresponding to three of the six color palettes. Elements which respond to 
-their color scheme by changing their colors are called **color scheme 
-consumers**.
+Color schemes (previously referred to as **backgrounds**) are rendering modes 
+for elements that change their foreground and background colors. There are two 
+color schemes: `light` and `dark`, each corresponding to three of the six color 
+palettes. Elements which respond to their color scheme by changing their colors 
+are called **color scheme consumers** (previously referred to as **color context 
+consumers**).
 
 <div class="surface-grid">
   <rh-card class="icon-card" color-palette="lightest">
