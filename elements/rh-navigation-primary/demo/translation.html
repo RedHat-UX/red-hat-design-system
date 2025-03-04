@@ -1,5 +1,6 @@
 <rh-navigation-primary color-palette="lightest" role="navigation">
   <span slot="summary">Speisekarte</span>
+
   <rh-navigation-item variant="dropdown">
     <span slot="summary">KI</span>
     AI Content
@@ -25,7 +26,7 @@
     Partners Content
   </rh-navigation-item>
 
-  <rh-navigation-item slot="event">
+  <rh-navigation-item slot="event" standalone>
     <a href="#summit">
       <svg width="64" height="35" viewBox="0 0 64 35" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M61.9356 1.34412H2.06356C1.08623 1.34412 0.293945 2.1364 0.293945 3.11373V27.8382C0.293945 28.8156 1.08623 29.6079 2.06356 29.6079H26.4849C26.9543 29.6079 27.4044 29.7943 27.7363 30.1262L30.7477 33.1377C31.4388 33.8287 32.5591 33.8288 33.2502 33.1379L36.263 30.126C36.5948 29.7942 37.0449 29.6079 37.5141 29.6079H61.9356C62.913 29.6079 63.7053 28.8156 63.7053 27.8382V3.11373C63.7053 2.1364 62.913 1.34412 61.9356 1.34412Z" fill="#EE0000"/>
@@ -45,9 +46,15 @@
     </a>
   </rh-navigation-item>
 
-  <rh-navigation-item slot="links"><a href="#docs">Entwickler</a></rh-navigation-item>
-  <rh-navigation-item slot="links"><a href="#support">Dokumente</a></rh-navigation-item>
-  <rh-navigation-item slot="links"><a href="#console">Unterstützung</a></rh-navigation-item>
+  <rh-navigation-item slot="links" standalone>
+    <a href="#docs">Entwickler</a>
+  </rh-navigation-item>
+  <rh-navigation-item slot="links" standalone>
+    <a href="#support">Dokumente</a>
+  </rh-navigation-item>
+  <rh-navigation-item slot="links" standalone>
+    <a href="#console">Unterstützung</a>
+  </rh-navigation-item>
 
   <rh-navigation-item slot="dropdowns" hide="sm" variant="dropdown" standalone>
     <rh-icon slot="icon" icon="search" set="ui"></rh-icon>
@@ -61,74 +68,74 @@
     For You Content
   </rh-navigation-item>
 
-    <rh-navigation-item slot="dropdowns" variant="dropdown" standalone>
-      <rh-avatar slot="icon" plain layout="inline"></rh-avatar>
-      <span slot="summary">My Red Hat</span>
-      <!-- Mock content -->
-      <div class="grid">
-        <div class="profile">
-          <rh-avatar>
-          Mr. Roboto
-          <span slot="subtitle">AI UX Engineer, </span>
-            <a slot="subtitle" href="#">Red Hat</a>
-          </rh-avatar>
-          <div>Login: jdoe@redhat.com</div>
-          <div>Account number: 0123456</div>
-          <div>jdoe+alias@redhat.com</div>
-          <div>
-            <select>
-              <option>English</option>
-              <option>French</option>
-              <option>German</option>
-            </select>
-          </div>
-          <div>
-            <rh-button danger>Log out</rh-button>
-          </div>
+  <rh-navigation-item slot="dropdowns" variant="dropdown" standalone>
+    <rh-avatar slot="icon" plain layout="inline"></rh-avatar>
+    <span slot="summary">My Red Hat</span>
+    <!-- Mock content -->
+    <div class="grid">
+      <div class="profile">
+        <rh-avatar>
+        Mr. Roboto
+        <span slot="subtitle">AI UX Engineer, </span>
+          <a slot="subtitle" href="#">Red Hat</a>
+        </rh-avatar>
+        <div>Login: jdoe@redhat.com</div>
+        <div>Account number: 0123456</div>
+        <div>jdoe+alias@redhat.com</div>
+        <div>
+          <select>
+            <option>English</option>
+            <option>French</option>
+            <option>German</option>
+          </select>
         </div>
-        <div class="content-column">
-          <ul>
-            <li>
-              <a href="#">Account details</a>
-              <p>Edit your contact info, password, location preferences, and errata notifications.</p>
-            </li>
-            <li>
-              <a href="#">Community profile</a>
-              <p>Fill out your public profile and control what content you follow.</p>
-            </li>
-            <li>
-              <a href="#">My Red Hat </a>
-              <p>Get a customized view of resources to help you use our products, solutions, and services.</p>
-            </li>
-            <li>
-              <a href="#">Training & certification</a>
-              <p>Access your Red Hat Learning Subscription, courses, and exams.</p>
-            </li>
-          </ul>
-        </div>
-        <div class="content-column">
-          <ul>
-            <li>
-              <a href="#">Subscriptions</a>
-              <p>Manage your subscriptions.</p>
-            </li>
-            <li>
-              <a href="#">Support Cases</a>
-              <p>Manage your support tickets.</p>
-            </li>
-            <li>
-              <a href="#">User management</a>
-              <p>Manage users in your organization.</p>
-            </li>
-            <li>
-              <a href="#">Activate Red Hat</a>
-              <p>Activate your subscription to gain access to updates and support.</p>
-            </li>
-          </ul>
+        <div>
+          <rh-button danger>Log out</rh-button>
         </div>
       </div>
-      <!-- Mock content end -->
-    </rh-navigation-item>
+      <div class="content-column">
+        <ul>
+          <li>
+            <a href="#">Account details</a>
+            <p>Edit your contact info, password, location preferences, and errata notifications.</p>
+          </li>
+          <li>
+            <a href="#">Community profile</a>
+            <p>Fill out your public profile and control what content you follow.</p>
+          </li>
+          <li>
+            <a href="#">My Red Hat </a>
+            <p>Get a customized view of resources to help you use our products, solutions, and services.</p>
+          </li>
+          <li>
+            <a href="#">Training & certification</a>
+            <p>Access your Red Hat Learning Subscription, courses, and exams.</p>
+          </li>
+        </ul>
+      </div>
+      <div class="content-column">
+        <ul>
+          <li>
+            <a href="#">Subscriptions</a>
+            <p>Manage your subscriptions.</p>
+          </li>
+          <li>
+            <a href="#">Support Cases</a>
+            <p>Manage your support tickets.</p>
+          </li>
+          <li>
+            <a href="#">User management</a>
+            <p>Manage users in your organization.</p>
+          </li>
+          <li>
+            <a href="#">Activate Red Hat</a>
+            <p>Activate your subscription to gain access to updates and support.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- Mock content end -->
+  </rh-navigation-item>
 </rh-navigation-primary>
 
 <link rel="stylesheet" href="../rh-navigation-primary-lightdom.css">

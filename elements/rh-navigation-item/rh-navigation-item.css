@@ -341,26 +341,29 @@
   }
 
   &.link {
-    display: inline-block;
-    height: fit-content;
-    border-block-start: none;
+    display: block;
+    height: 100%;
+    justify-items: center;
+    align-content: center;
 
-    &:has(:focus-within) {
-      background-color: var(--_background-color);
+    &:hover {
+      @container (min-width: 1200px) {
+        border-image: var(--_active-item-color) 1;
+      }
     }
 
     & ::slotted(a) {
       display: flex;
       color: var(--rh-color-text-primary) !important;
       text-decoration: none !important;
+      height: 100%;
+      align-items: center;
     }
 
-    & ::slotted(a:hover) {
-      display: flex;
+    & ::slotted(a:active) {
       background-color: var(--_background-color);
       color: var(--rh-color-interactive-primary-default) !important;
       text-decoration: none !important;
-      border-radius: var(--rh-border-width-lg);
     }
 
     & ::slotted(a:is(:focus-visible, :hover:focus-visible, :active)) {
@@ -370,6 +373,32 @@
         solid
         var(--rh-color-interactive-primary-default);
       border-radius: var(--rh-border-radius-default);
+    }
+
+    &.standalone {
+      display: inline-block;
+      height: fit-content;
+      border-block-start: none;
+
+      & ::slotted(a) {
+        height: auto;
+        align-items: center;
+        padding: var(--rh-space-md) !important;
+      }
+
+      & ::slotted(a:hover) {
+        display: flex;
+        background-color: var(--_background-color);
+        color: var(--rh-color-interactive-primary-default) !important;
+        text-decoration: none !important;
+        border-radius: var(--rh-border-width-lg);
+      }
+
+      &:has(:focus-within) {
+        & ::slotted(a) {
+          background-color: var(--_background-color);
+        }
+      }
     }
   }
 }
