@@ -1,61 +1,73 @@
+:is(rh-footer, rh-footer-universal) a {
+  color: var(--rh-color-interactive-primary-default);
+  text-decoration: none;
+}
+
+:is(rh-footer, rh-footer-universal) a:hover {
+  color: var(--rh-color-interactive-primary-hover);
+  text-decoration: underline;
+}
+
+:is(rh-footer, rh-footer-universal) a:is(:focus, :focus-within) {
+  color: var(--rh-color-interactive-primary-hover);
+  text-decoration: underline;
+}
+
+:is(rh-footer, rh-footer-universal) a:visited {
+  color: var(--rh-color-interactive-primary-hover);
+  text-decoration: none;
+}
+
+/* ensure links fully wrap img tags */
+:is(rh-footer, rh-footer-universal) a[slot^='logo'] {
+  display: block;
+}
+
+:is(rh-footer) a[slot^='logo'] > img {
+  display: block;
+  width: auto;
+  height: 100%;
+  height: var(--rh-size-icon-04, 40px);
+}
+
+:is(rh-footer, rh-footer-universal) :is(h1, h2, h3, h4, h5, h6) {
+  color: var(--rh-color-text-primary);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
+  line-height: var(--rh-line-height-heading, 1.3);
+}
+
+rh-footer [slot='links']:is(h1, h2, h3, h4, h5):nth-of-type(n+5) {
+  --_link-header-margin: calc(var(--rh-space-2xl, 32px) - var(--rh-space-lg, 16px));
+}
+
+rh-footer [slot^='links'] a {
+  gap: var(--rh-footer-links-gap, var(--rh-space-md, 8px));
+}
+
+:is(rh-footer, rh-footer-universal) [slot^='links'] li {
+  margin: 0;
+  padding: 0;
+  display: contents;
+}
+
+:is(rh-footer, rh-footer-universal) [slot^='links'] a {
+  display: block;
+  color: var(--rh-color-text-primary) !important;
+  font-size: var(--rh-footer-link-font-size, var(--rh-font-size-body-text-sm, 0.875rem));
+  width: fit-content;
+}
+
+rh-footer-universal [slot^='links'] a {
+  font-size: inherit;
+}
+
+/**
+ * Section side gap
+ */
 :is(rh-footer, rh-footer-universal) {
-  /** Section side gap */
   --rh-footer-section-side-gap: var(--rh-space-lg, 16px);
 
-  @media screen and (min-width: 768px) {
-    --rh-footer-section-side-gap: var(--rh-space-2xl, 32px);
-  }
-
-  @media screen and (min-width: 1440px) {
-    --rh-footer-section-side-gap: var(--rh-space-4xl, 64px);
-  }
-
   overflow-y: scroll;
-  color-scheme: only dark;
-
-  & a {
-    color: var(--rh-color-interactive-primary-default);
-    text-decoration: none;
-
-    &:hover {
-      color: var(--rh-color-interactive-primary-hover);
-      text-decoration: underline;
-    }
-
-    &:is(:focus, :focus-within) {
-      color: var(--rh-color-interactive-primary-hover);
-      text-decoration: underline;
-    }
-
-    &:visited {
-      color: var(--rh-color-interactive-primary-hover);
-      text-decoration: none;
-    }
-
-    /* ensure links fully wrap img tags */
-    &[slot^='logo'] {
-      display: block;
-    }
-  }
-
-  &:is(h1, h2, h3, h4, h5, h6) {
-    color: var(--rh-color-text-primary-on-dark, #ffffff);
-    font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
-    line-height: var(--rh-line-height-heading, 1.3);
-  }
-
-  & [slot^='links'] li {
-    margin: 0;
-    padding: 0;
-    display: contents;
-  }
-
-  & [slot^='links'] a {
-    display: block;
-    color: var(--rh-color-text-primary) !important;
-    font-size: var(--rh-footer-link-font-size, var(--rh-font-size-body-text-sm, 0.875rem));
-    width: fit-content;
-  }
 
   & > :not([slot='logo'], rh-footer-universal) {
     animation-name: var(--_fallback-animation, deopacitize-footer);
@@ -66,22 +78,17 @@
   }
 }
 
-rh-footer-universal [slot^='links'] a {
-  font-size: inherit;
+/* (min-width: --rh-breakpoint-sm) */
+@media screen and (min-width: 768px) {
+  :is(rh-footer, rh-footer-universal) {
+    --rh-footer-section-side-gap: var(--rh-space-2xl, 32px);
+  }
 }
 
-rh-footer a[slot^='logo'] > img {
-  display: block;
-  width: auto;
-  height: 100%;
-  height: var(--rh-size-icon-04, 40px);
-
-  & [slot='links']:is(h1, h2, h3, h4, h5):nth-of-type(n+5) {
-    --_link-header-margin: calc(var(--rh-space-2xl, 32px) - var(--rh-space-lg, 16px));
-  }
-
-  & [slot^='links'] a {
-    gap: var(--rh-footer-links-gap, var(--rh-space-md, 8px));
+/* (min-width: --rh-breakpoint-xl) */
+@media screen and (min-width: 1440px) {
+  :is(rh-footer, rh-footer-universal) {
+    --rh-footer-section-side-gap: var(--rh-space-4xl, 64px);
   }
 }
 
