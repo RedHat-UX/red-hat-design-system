@@ -37,7 +37,7 @@ When considering methods of communication or feedback, do not use color alone. E
 
 <uxdot-example width-adjustment="1012px">
   <img src="/assets/color/color-a11y-using-color-alone.svg"
-      alt="Dialog with a red-orange Leave button, a form field with a red bottom border, and progress steps without labels"
+      alt="Dialog with example form elements like a red-orange Leave button, a form field with a red bottom border, and progress steps without labels"
       width="872"
       height="537">
 </uxdot-example>
@@ -52,7 +52,7 @@ Small foreground text (non-bold text under 24px and bold text under 19px) must h
 
 <uxdot-example width-adjustment="872px">
   <img src="/assets/color/contrast-text.png"
-      alt="Contrast ratios for dark gray sections with black text that uses different weights and fonts"
+      alt="Contrast ratio examples for dark gray sections with black text that use different weights and fonts"
       width="872"
       height="576">
 </uxdot-example>
