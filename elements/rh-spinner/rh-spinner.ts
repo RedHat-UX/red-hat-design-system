@@ -2,7 +2,7 @@ import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
-import { colorContextConsumer } from '../../lib/context/color/consumer.js';
+import { colorSchemeConsumer } from '../../lib/context/color/consumer.js';
 
 import styles from './rh-spinner.css';
 
@@ -16,7 +16,7 @@ export type SpinnerSize = RhSpinner['size'];
  * @slot - Optional text label below the animated circle.
  */
 @customElement('rh-spinner')
-@colorContextConsumer
+@colorSchemeConsumer
 export class RhSpinner extends LitElement {
   static readonly styles = [styles];
 

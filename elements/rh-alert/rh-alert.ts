@@ -7,7 +7,7 @@ import { repeat } from 'lit/directives/repeat.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
-import { colorContextConsumer } from '../../lib/context/color/consumer.js';
+import { colorSchemeConsumer } from '../../lib/context/color/consumer.js';
 
 import '@rhds/elements/rh-surface/rh-surface.js';
 import '@rhds/elements/rh-button/rh-button.js';
@@ -53,7 +53,7 @@ export class AlertCloseEvent extends Event {
  *
  */
 @customElement('rh-alert')
-@colorContextConsumer
+@colorSchemeConsumer
 export class RhAlert extends LitElement {
   static readonly styles = [styles];
 

@@ -9,8 +9,8 @@ import { ComposedEvent } from '@patternfly/pfe-core';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
-import { colorContextConsumer } from '../../lib/context/color/consumer.js';
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+import { colorSchemeConsumer } from '../../lib/context/color/consumer.js';
+import { colorSchemeProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
 import '@rhds/elements/rh-surface/rh-surface.js';
 
@@ -66,8 +66,8 @@ function focusableChildElements(parent: HTMLElement): NodeListOf<HTMLElement> {
  * @cssprop {<integer>} [--rh-navigation-secondary-overlay-z-index=-1] - z-index of the navigation-secondary-overlay
  */
 @customElement('rh-navigation-secondary')
-@colorContextProvider()
-@colorContextConsumer
+@colorSchemeProvider()
+@colorSchemeConsumer
 export class RhNavigationSecondary extends LitElement {
   static readonly styles = [styles];
 

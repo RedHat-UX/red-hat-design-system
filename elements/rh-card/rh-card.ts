@@ -4,8 +4,8 @@ import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { html, LitElement } from 'lit';
 
-import { colorContextConsumer } from '../../lib/context/color/consumer.js';
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+import { colorSchemeConsumer } from '../../lib/context/color/consumer.js';
+import { colorSchemeProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
 import styles from './rh-card.css';
 
@@ -41,8 +41,8 @@ import styles from './rh-card.css';
  *              The font weight for headings in the header and body
  */
 @customElement('rh-card')
-@colorContextProvider()
-@colorContextConsumer
+@colorSchemeProvider()
+@colorSchemeConsumer
 export class RhCard extends LitElement {
   static styles = [styles];
 

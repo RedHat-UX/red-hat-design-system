@@ -6,10 +6,10 @@
         import { LitElement, html } from 'lit';
         import { customElement } from 'lit/decorators/custom-element.js';
         import { classMap } from 'lit/directives/class-map.js';  // 1
-        import { backgroundConsumer } from '@rhds/elements/lib/context/color/consumer.js';
+        import { colorSchemeConsumer } from '@rhds/elements/lib/context/color/consumer.js';
 
         @customElement('rh-consumer')
-        @backgroundConsumer
+        @colorSchemeConsumer
         export class RhConsumer extends LitElement {
           render() {
             return html`<div id="container"></div>`;

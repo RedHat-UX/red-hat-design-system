@@ -7,7 +7,7 @@ import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+import { colorSchemeProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
 import styles from './rh-navigation-secondary-menu.css';
 
@@ -28,7 +28,7 @@ import styles from './rh-navigation-secondary-menu.css';
  *           max-width for menu content
  */
 @customElement('rh-navigation-secondary-menu')
-@colorContextProvider()
+@colorSchemeProvider()
 export class RhNavigationSecondaryMenu extends LitElement {
   static readonly styles = [styles];
 

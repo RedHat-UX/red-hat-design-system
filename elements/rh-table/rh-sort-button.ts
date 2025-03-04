@@ -4,7 +4,7 @@ import { property } from 'lit/decorators/property.js';
 
 import { ComposedEvent } from '@patternfly/pfe-core';
 
-import { colorContextConsumer } from '../../lib/context/color/consumer.js';
+import { colorSchemeConsumer } from '../../lib/context/color/consumer.js';
 
 import styles from './rh-sort-button.css';
 
@@ -36,7 +36,7 @@ const paths = new Map(Object.entries({
  * @fires {RequestSortEvent} request-sort - when the button is clicked
  */
 @customElement('rh-sort-button')
-@colorContextConsumer
+@colorSchemeConsumer
 export class RhSortButton extends LitElement {
   static readonly styles = [styles];
 

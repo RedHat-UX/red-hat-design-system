@@ -8,7 +8,7 @@ import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller
 import '@rhds/elements/rh-button/rh-button.js';
 import '@rhds/elements/rh-surface/rh-surface.js';
 
-import { colorContextConsumer } from '../../lib/context/color/consumer.js';
+import { colorSchemeConsumer } from '../../lib/context/color/consumer.js';
 
 import styles from './rh-video-embed.css';
 
@@ -53,7 +53,7 @@ export class VideoPlayEvent extends Event {
  * @csspart caption - The container for the caption
  */
 @customElement('rh-video-embed')
-@colorContextConsumer
+@colorSchemeConsumer
 export class RhVideoEmbed extends LitElement {
   static readonly styles = [styles];
 

@@ -4,13 +4,10 @@ import { property } from 'lit/decorators/property.js';
 
 import TinyColor from 'tinycolor2';
 
-import { colorContextConsumer } from '@rhds/elements/lib/context/color/consumer.js';
-
-import {
-  colorContextProvider,
-  type ColorPalette,
-} from '@rhds/elements/lib/context/color/provider.js';
 import { tokens } from '@rhds/tokens';
+
+import { colorSchemeConsumer } from '../../../lib/context/color/consumer.js';
+import { colorSchemeProvider, type ColorPalette } from '../../../lib/context/color/provider.js';
 
 const dark = tokens.get('--rh-color-text-primary-on-dark') as string;
 const light = tokens.get('--rh-color-text-primary-on-light') as string;
@@ -37,19 +34,19 @@ class RendersText extends LitElement {
 }
 
 @customElement('test-context-consumer')
-@colorContextConsumer
+@colorSchemeConsumer
 export class ContextConsumer extends RendersText { }
 
 @customElement('test-context-consumer-provider')
-@colorContextConsumer
-@colorContextProvider()
+@colorSchemeConsumer
+@colorSchemeProvider()
 export class ContextConsumerProvider extends RendersText {
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 }
 
 @customElement('test-context-provider-consumer')
-@colorContextProvider()
-@colorContextConsumer
+@colorSchemeProvider()
+@colorSchemeConsumer
 export class ContextProviderConsumer extends RendersText {
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 }

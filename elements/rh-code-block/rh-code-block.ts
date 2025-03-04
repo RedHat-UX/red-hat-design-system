@@ -8,7 +8,7 @@ import { ifDefined } from 'lit-html/directives/if-defined.js';
 
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 
-import { colorContextConsumer } from '../../lib/context/color/consumer.js';
+import { colorSchemeConsumer } from '../../lib/context/color/consumer.js';
 
 import style from './rh-code-block.css';
 
@@ -52,7 +52,7 @@ interface CodeLineHeightsInfo {
  *                and legend text in the `<dd>` elements
  */
 @customElement('rh-code-block')
-@colorContextConsumer
+@colorSchemeConsumer
 export class RhCodeBlock extends LitElement {
   private static actionIcons = new Map([
     ['wrap', html`

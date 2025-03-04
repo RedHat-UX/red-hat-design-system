@@ -9,7 +9,7 @@ import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller
 import type { IconNameFor, IconSetName } from '@rhds/icons';
 import '@rhds/elements/rh-icon/rh-icon.js';
 
-import { colorContextConsumer } from '../../lib/context/color/consumer.js';
+import { colorSchemeConsumer } from '../../lib/context/color/consumer.js';
 
 import styles from './rh-tag.css';
 
@@ -33,7 +33,7 @@ import styles from './rh-tag.css';
  *
  */
 @customElement('rh-tag')
-@colorContextConsumer
+@colorSchemeConsumer
 export class RhTag extends LitElement {
   static readonly styles = [styles];
 

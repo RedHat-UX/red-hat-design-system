@@ -7,7 +7,7 @@ import { query } from 'lit/decorators/query.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
-import { colorContextConsumer } from '../../lib/context/color/consumer.js';
+import { colorSchemeConsumer } from '../../lib/context/color/consumer.js';
 
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
@@ -24,7 +24,7 @@ import styles from './rh-button.css';
  * @slot - Contains button text
  */
 @customElement('rh-button')
-@colorContextConsumer
+@colorSchemeConsumer
 export class RhButton extends LitElement {
   static readonly styles = [styles];
 

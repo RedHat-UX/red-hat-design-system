@@ -5,8 +5,8 @@ import { classMap } from 'lit/directives/class-map.js';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 
-import { colorContextConsumer } from '../../lib/context/color/consumer.js';
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+import { colorSchemeConsumer } from '../../lib/context/color/consumer.js';
+import { colorSchemeProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
 import styles from './rh-blockquote.css';
 
@@ -21,8 +21,8 @@ import styles from './rh-blockquote.css';
  *
  */
 @customElement('rh-blockquote')
-@colorContextProvider()
-@colorContextConsumer
+@colorSchemeProvider()
+@colorSchemeConsumer
 export class RhBlockquote extends LitElement {
   static readonly styles = styles;
 

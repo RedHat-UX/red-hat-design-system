@@ -8,8 +8,8 @@ import { OverflowController } from '@patternfly/pfe-core/controllers/overflow-co
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
-import { colorContextConsumer } from '../../lib/context/color/consumer.js';
+import { colorSchemeProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+import { colorSchemeConsumer } from '../../lib/context/color/consumer.js';
 
 import styles from './rh-subnav.css';
 
@@ -22,8 +22,8 @@ import styles from './rh-subnav.css';
  * @csspart links     - `<slot>` element
  */
 @customElement('rh-subnav')
-@colorContextProvider()
-@colorContextConsumer
+@colorSchemeProvider()
+@colorSchemeConsumer
 export class RhSubnav extends LitElement {
   static readonly styles = [styles];
 

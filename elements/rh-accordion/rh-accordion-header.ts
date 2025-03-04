@@ -12,7 +12,7 @@ import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { DirController } from '../../lib/DirController.js';
 import { HeadingLevelContextConsumer } from '../../lib/context/headings/consumer.js';
-import { colorContextConsumer } from '../../lib/context/color/consumer.js';
+import { colorSchemeConsumer } from '../../lib/context/color/consumer.js';
 
 import { consume } from '@lit/context';
 
@@ -46,7 +46,7 @@ const isAccordion = (x: EventTarget): x is RhAccordion =>
  * @fires {AccordionHeaderChangeEvent} change - when the open panels change
  */
 @customElement('rh-accordion-header')
-@colorContextConsumer
+@colorSchemeConsumer
 export class RhAccordionHeader extends LitElement {
   static readonly styles = [styles];
 

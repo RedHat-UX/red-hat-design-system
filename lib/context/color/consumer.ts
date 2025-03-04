@@ -10,14 +10,15 @@ import styles from '@rhds/tokens/css/color-context-consumer.css.js';
 export type ColorTheme = (
   | 'dark'
   | 'light'
-  | 'saturated'
 );
 
 /**
- * Makes this element a color context consumer
- * @param klass element constructor. call before registering
+ * Makes this element a [background type](https://ux.redhat.com/theming/color-palettes/) consumer.
+ *
+ * @param klass element constructor
+ * @see https://ux.redhat.com/theming/color-palettes/
  */
-export function colorContextConsumer(klass: typeof ReactiveElement) {
+export function colorSchemeConsumer(klass: typeof ReactiveElement) {
   klass.styles = [
     ...Array.isArray(klass.styles) ? klass.styles : klass.styles ? [klass.styles] : [],
     styles,

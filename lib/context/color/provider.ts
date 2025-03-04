@@ -2,7 +2,6 @@ import { type ReactiveElement } from 'lit';
 
 import styles from '@rhds/tokens/css/color-context-provider.css.js';
 
-
 const Palettes = Object.freeze([
   'light',
   'lighter',
@@ -14,10 +13,11 @@ const Palettes = Object.freeze([
 
 /**
  * A `ColorPalette` is a collection of specific color values
- * Choosing a palette sets both color properties and, if the component is a context provider,
- * implies a color theme for descendents.
+ * Choosing a palette sets both color properties and, if the component is a
+ * color palette provider, implies a background type ('dark' or 'light') for
+ * descendents.
  *
- * `ColorPalette` is associated with the `color-palette` attribute
+ * `ColorPalette` must be associated with the `color-palette` attribute
  */
 export type ColorPalette = typeof Palettes[number];
 
@@ -28,19 +28,21 @@ interface ColorPaletteElement extends ReactiveElement {
 type Constructor<T> = new(...args: any[]) => T;
 
 /**
- * Makes this element a color context provider which updates its consumers when the decorated field changes
+ * Makes this element a [color scheme provider](https://ux.redhat.com/themeing/color-palettes)
+ *
  * @param supportedPalettes list of supported color palettes
+ * @see https://ux.redhat.com/themeing/color-palettes
  */
-export function colorContextProvider<T extends ColorPaletteElement>(
-  ...supportedPalettes: ColorPalette[]
-) {
+export function colorSchemeProvider(...supportedPalettes: ColorPalette[]) {
   if (!supportedPalettes.length) {
     supportedPalettes = [...Palettes];
   }
-  return function(klass: Constructor<T> & typeof ReactiveElement) {
-    const { attribute, reflect } = klass.properties.colorPalette ?? {};
+  return function(klass: Constructor<ColorPaletteElement> & typeof ReactiveElement) {
+    const { attribute, reflect } = klass.properties?.colorPalette
+        ?? klass.getPropertyOptions('colorPalette')
+        ?? {};
     if (attribute !== 'color-palette' || !reflect) {
-      throw new Error('@colorContextProvider requires the `color-palette` attribute.');
+      throw new Error('@colorSchemeProvider requires the `color-palette` attribute.');
     }
     klass.styles = [
       ...Array.isArray(klass.styles) ? klass.styles : klass.styles ? [klass.styles] : [],

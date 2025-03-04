@@ -21,8 +21,8 @@ import { DirController } from '../../lib/DirController.js';
 
 import { context, type RhTabsContext } from './context.js';
 
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
-import { colorContextConsumer } from '../../lib/context/color/consumer.js';
+import { colorSchemeProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+import { colorSchemeConsumer } from '../../lib/context/color/consumer.js';
 
 import styles from './rh-tabs.css';
 
@@ -43,8 +43,8 @@ export { RhTab };
  * @cssprop {<length>} [--rh-tabs-inset=auto] - Tabs inset
  */
 @customElement('rh-tabs')
-@colorContextProvider()
-@colorContextConsumer
+@colorSchemeProvider()
+@colorSchemeConsumer
 export class RhTabs extends LitElement {
   static readonly styles = [styles];
 

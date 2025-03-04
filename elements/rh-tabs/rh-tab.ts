@@ -14,7 +14,7 @@ import { InternalsController } from '@patternfly/pfe-core/controllers/internals-
 
 import { context } from './context.js';
 
-import { colorContextConsumer } from '../../lib/context/color/consumer.js';
+import { colorSchemeConsumer } from '../../lib/context/color/consumer.js';
 
 import styles from './rh-tab.css';
 
@@ -43,7 +43,7 @@ export class TabExpandEvent extends Event {
  * @fires { TabExpandEvent } expand - when a tab expands
  */
 @customElement('rh-tab')
-@colorContextConsumer
+@colorSchemeConsumer
 export class RhTab extends LitElement {
   static readonly styles = [styles];
 
