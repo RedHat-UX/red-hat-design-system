@@ -52,7 +52,7 @@
   width: -moz-available;
   width: fill-available;
   max-height: var(--_navbar-height);
-  box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
+  box-shadow: var(--rh-box-shadow-sm);
 }
 
 .dark {

@@ -3,6 +3,7 @@ rh-navigation-item {
 
   & a {
     color: var(--rh-color-interactive-primary-default) !important;
+    padding: var(--rh-space-xs) var(--rh-space-sm);
     text-decoration: none;
 
     &:hover {
@@ -11,7 +12,7 @@ rh-navigation-item {
   }
 
   &[slot='links'] {
-    padding-inline: var(--rh-space-lg);
+    padding-inline: var(--rh-space-md);
     border-inline-end: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
 
     &:nth-child(1 of rh-navigation-item[slot='links']) {
