@@ -31,12 +31,9 @@ export class RhJumpLinksItem extends LitElement {
 
   render(): TemplateResult<1> {
     return html`
-      <a href="${ifDefined(this.href)}"
-         @focus="${this.#onFocus}"
-         @click="${this.#onClick}">
+      <a href="${ifDefined(this.href)}" @click="${this.#onClick}">
         <slot></slot>
       </a>
-      <slot name="subsection"></slot>
     `;
   }
 
@@ -48,10 +45,6 @@ export class RhJumpLinksItem extends LitElement {
 
   #onClick() {
     this.dispatchEvent(new Event('select', { bubbles: true }));
-  }
-
-  #onFocus() {
-    this.dispatchEvent(new Event('focus', { bubbles: true }));
   }
 }
 
