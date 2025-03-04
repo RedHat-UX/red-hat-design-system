@@ -48,11 +48,12 @@ styles][alertstyles].
 
 Alert styles can be used for the following kinds of announcement content.
 
--   **Important cross-website announcements** - For top-tier press
+-   **Important cross-website announcements** &#8212; For top-tier press
     releases, company announcements, and important product launches, use
     a red or yellow background.
--   Single-page announcements - For global updates or important in-page
+-   Single-page announcements &#8212; For global updates or important in-page
     content, use a green or blue background.
 
+[alertstyles]: /elements/alert/style/
 
 {% renderFile './docs/personalization/_feedback.md' %}

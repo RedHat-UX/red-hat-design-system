@@ -83,6 +83,6 @@ To learn more, go to the Implementation page for the pattern you are interested 
 
 </uxdot-feedback>
 
-[feedbackform]: https://docs.google.com/forms/d/e/1FAIpQLSft-6oHhI5d2wO-oEeBuT23wiYPpxOH2UKLH9ZkRswjby2CSg/viewform?usp=sf_link
+[feedbackform]: https://url.corp.redhat.com/rhds-work-intake
 [feedbackemail]: mailto:digital-design-system@redhat.com
 [patternspage]: /patterns/
