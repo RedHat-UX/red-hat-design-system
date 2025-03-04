@@ -19,6 +19,11 @@ label {
     background-color: var(--rh-color-interactive-primary-default);
     color: var(--rh-color-white, #ffffff);
     outline-color: var(--rh-color-border-interactive);
+
+    &:hover {
+      background-color: var(--rh-color-interactive-primary-hover-on-light, #003366);
+      outline-color: var(--rh-color-interactive-primary-hover-on-light, #003366);
+    }
   }
 
   &:has(input:checked:focus-visible) {
@@ -40,10 +45,6 @@ label {
     &:hover,
     &:focus-within {
       outline-color: var(--rh-color-blue-40, #4394e5);
-
-      &:has(input:checked) {
-        outline-color: var(--rh-color-border-interactive);
-      }
     }
   }
 
@@ -51,20 +52,16 @@ label {
     &:has(input:checked) {
       background-color: var(--rh-color-blue-50, #0066cc);
       outline-color: var(--rh-color-blue-50, #0066cc);
+
+      &:hover {
+        background-color: var(--rh-color-interactive-primary-hover-on-light, #003366);
+        outline-color: var(--rh-color-interactive-primary-hover-on-light, #003366);
+      }
     }
 
     &.color-light-blue {
       background-color: var(--rh-color-interactive-primary-hover-on-light, #003366);
       outline-color: var(--rh-color-blue-50, #0066cc);
-
-      &:hover,
-      &:focus-within {
-        outline-color: var(--rh-color-blue-40, #4394e5);
-
-        &:has(input:checked) {
-          outline-color: var(--rh-color-blue-50, #0066cc);
-        }
-      }
     }
   }
 }
