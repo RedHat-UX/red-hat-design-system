@@ -2,6 +2,14 @@
   display: inline-block;
 }
 
+#close-icon {
+  display: none;
+}
+
+input:checked + #close-icon {
+  display: inline-block;
+}
+
 label {
   outline: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
   border-radius: var(--rh-border-radius-pill, 64px);
