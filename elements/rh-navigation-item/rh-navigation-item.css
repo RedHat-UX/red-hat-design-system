@@ -132,6 +132,12 @@
     border-inline: var(--rh-border-width-sm) solid transparent;
     cursor: pointer;
 
+    /* stylelint-disable-next-line no-descending-specificity */
+    &:active {
+      background-color: var(--_background-color);
+    }
+
+    /* stylelint-disable-next-line no-descending-specificity */
     &:is(:focus-visible, :hover:focus-visible) {
       outline-offset: -2px;
       outline:
