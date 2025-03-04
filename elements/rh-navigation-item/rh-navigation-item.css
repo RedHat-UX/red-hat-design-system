@@ -113,7 +113,7 @@
   }
 
   summary {
-    --rh-icon-size: var(--rh-size-icon-01);
+    --rh-icon-size: 18px /* non standard value */;
     --rh-avatar-size: var(--rh-size-icon-02);
 
     list-style: none;
