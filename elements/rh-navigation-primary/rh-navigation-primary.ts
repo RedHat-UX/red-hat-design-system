@@ -92,6 +92,7 @@ export class RhNavigationPrimary extends LitElement {
     if (!isServer) {
       // TODO: Perf look into debouncing the resize observer
       // or look into using style observer: https://www.bram.us/2025/02/24/solved-by-styleobserver-element-matchcontainer/?ref=dailydev
+      // lea verou style observer: https://github.com/LeaVerou/style-observer/
       this.#ro = new ResizeObserver(entries => {
         for (const entry of entries) {
           const [contentBoxSize] = entry.contentBoxSize;

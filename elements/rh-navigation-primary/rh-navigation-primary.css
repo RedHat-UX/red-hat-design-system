@@ -52,12 +52,12 @@
   width: -moz-available;
   width: fill-available;
   max-height: var(--_navbar-height);
-  border-block-end: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
+  box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
 }
 
 .dark {
   & #bar {
-    box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
+    box-shadow: 0 4px 6px 1px rgba(0, 0, 0, 0.6); /* Non standard dropshadow */
   }
 }
 

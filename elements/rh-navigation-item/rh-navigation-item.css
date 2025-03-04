@@ -75,7 +75,7 @@
   width: 100%;
   justify-items: center;
   align-content: center;
-  border-block-start: var(--rh-border-width-lg) solid transparent;
+  border-block-start: 4px solid transparent; /* Non standard border width */
 
   details {
     width: 100%;
@@ -169,7 +169,7 @@
       position: absolute;
       inset-block-start: 100%;
       inset-inline-start: 0;
-      z-index: 1;
+      z-index: -1;
       width: 100%;
       background-color: var(--_background-color);
       box-shadow: var(--rh-box-shadow-sm);
@@ -241,7 +241,7 @@
           position: absolute;
           inset-block-start: 100%;
           inset-inline-start: 0;
-          z-index: 1;
+          z-index: -1;
           width: 100%;
           background-color: var(--_background-color);
           border-end-end-radius: calc(var(--rh-border-radius-default) * 2);
@@ -263,14 +263,25 @@
     details {
       border-inline-start: var(--rh-border-width-lg) solid transparent;
       border-inline-end: var(--rh-border-width-sm) solid transparent;
+      justify-items: unset;
+      align-content: unset;
 
       @container (min-width: 1200px) {
-        border-inline: var(--rh-border-width-sm) solid transparent;
+        /* TODO: remove */
+
+        /* border-inline: var(--rh-border-width-sm) solid transparent; */
+
+        border-inline: none;
       }
 
       &[open] {
         border-inline-end-color: var(--rh-color-border-subtle);
         border-inline-start-color: var(--rh-color-accent-brand);
+        height: calc(100% + 10px);
+
+        & summary {
+          height: calc(100% - 10px);
+        }
 
         @container (min-width: 1200px) {
           border-block-start-color: var(--rh-color-accent-brand);
