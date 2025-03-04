@@ -8,12 +8,10 @@
   display: none !important;
 }
 
-a,
 ::slotted(a) {
   color: var(--_icon-color) !important;
 }
 
-a:is(:hover, :focus-within),
 ::slotted(a:is(:hover, :focus-within)) {
   color: var(--_icon-color-hover) !important;
 }
