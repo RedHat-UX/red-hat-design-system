@@ -70,12 +70,18 @@ label {
 }
 
 #close-icon {
-  display: none;
+  inline-size: 0;
+  block-size: 0;
+  opacity: 0;
+  transition-property: inline-size, block-size, opacity, margin-inline-start;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+  transition-behavior: allow-discrete;
 }
 
 input {
   appearance: none;
-  inline-size: 8px;
+  cursor: pointer;
   margin: 0;
 
   &:focus {
@@ -83,6 +89,16 @@ input {
   }
 
   &:checked + #close-icon {
-    display: inline-block;
+    block-size: auto;
+    inline-size: auto;
+    margin-inline-start: 8px;
+    opacity: 1;
+
+    @starting-style {
+      block-size: 0;
+      inline-size: 0;
+      margin-inline-start: 0;
+      opacity: 0;
+    }
   }
 }
