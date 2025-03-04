@@ -1,5 +1,10 @@
 import { html, LitElement, type TemplateResult } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
+import { property } from 'lit/decorators/property.js';
+
+import { observes } from '@patternfly/pfe-core/decorators/observes.js';
+
+import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
 import style from './rh-jump-links-list.css';
 
@@ -9,10 +14,30 @@ import style from './rh-jump-links-list.css';
 export class RhJumpLinksList extends LitElement {
   static readonly styles: CSSStyleSheet[] = [style];
 
+  #internals = InternalsController.of(this, { role: 'listitem' });
+
+  /** Whether this item is active. */
+  @property({ type: Boolean, reflect: true }) active = false;
+
+  @observes('active')
+  protected activeChanged(): void {
+    this.#internals.ariaCurrent = this.active ? 'location' : null;
+  }
+
   render(): TemplateResult<1> {
     // TODO: add label
-    // eslint-disable-next-line lit-a11y/accessible-name
-    return html`<div id="container" role="listbox"><slot></slot></div>`;
+
+    return html`
+      <slot name="parent"></slot>
+      <div id="container" role="list">
+        <slot @active-changed="${this.#onMo}"></slot>
+      </div>
+    `;
+  }
+
+  #onMo(event: Event) {
+    console.log(event);
+    this.active = !!this.querySelector('[active]');
   }
 }
 

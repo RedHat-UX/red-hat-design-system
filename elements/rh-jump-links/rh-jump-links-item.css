@@ -1,3 +1,34 @@
 :host {
   display: block;
+  position: relative;
+  padding-block: var(--rh-space-md, 8px);
+  padding-inline: var(--rh-space-lg, 16px);
+  border-inline-start:
+    var(--_border-override,
+      var(--rh-length-4xs, 1px) solid var(--rh-color-border-subtle));
+
+  & a {
+    color: var(--rh-color-interactive-secondary-default);
+    text-decoration: none;
+    &:hover { color: var(--rh-color-interactive-secondary-hover); }
+    &:focus { color: var(--rh-color-interactive-secondary-focus); }
+  }
+}
+
+:host([active]) {
+  &:before {
+    border-inline-start:
+      var(--_border-override,
+        var(--rh-length-xs, 4px) solid var(--rh-color-brand-red));
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    inset-inline-start: 0;
+    inset-block: 0;
+  }
+
+  & a {
+    color: var(--rh-color-interactive-secondary-active);
+  }
 }
