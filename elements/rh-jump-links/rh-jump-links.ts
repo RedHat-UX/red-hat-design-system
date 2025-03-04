@@ -38,7 +38,7 @@ export class RhJumpLinks extends LitElement {
 
   override connectedCallback(): void {
     super.connectedCallback();
-    this.role = 'listbox';
+    this.role = 'nav';
     this.addEventListener('select', this.#onSelect);
   }
 
@@ -51,9 +51,9 @@ export class RhJumpLinks extends LitElement {
 
   render(): TemplateResult<1> {
     return html`
-      <nav id="container">
+      <div id="container" role="list">
         <slot></slot>
-      </nav>
+      </div>
     `;
   }
 
