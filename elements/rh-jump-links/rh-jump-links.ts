@@ -6,7 +6,6 @@ import { ScrollSpyController } from '@patternfly/pfe-core/controllers/scroll-spy
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 
 import { RhJumpLinksItem } from './rh-jump-links-item.js';
-import { RhJumpLinksList } from './rh-jump-links-list.js';
 
 import style from './rh-jump-links.css';
 
@@ -27,13 +26,14 @@ export class RhJumpLinks extends LitElement {
 
   #tabindex = RovingTabindexController.of(this, {
     getItems: () => Array.from(
-      this.querySelectorAll('rh-jump-links-item, rh-jump-links-list'),
-    ) as (RhJumpLinksItem | RhJumpLinksList)[],
+      this.querySelectorAll('rh-jump-links-item'),
+      x => x.shadowRoot?.querySelector('a')
+    ) as HTMLAnchorElement[],
   });
 
   #spy = new ScrollSpyController(this, {
     rootMargin: '0px 0px 0px 0px',
-    tagNames: ['rh-jump-links-list', 'rh-jump-links-item'],
+    tagNames: ['rh-jump-links-item'],
   });
 
   override connectedCallback(): void {
