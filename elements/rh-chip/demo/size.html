@@ -1,13 +1,13 @@
 <rh-surface color-palette="lightest">
   <rh-chip-group size="sm">
-    <span slot="accessible-label">Filter by: (small)</span>
+    <span slot="accessible-label">Filter by (small):</span>
     <rh-chip>Automation</rh-chip>
     <rh-chip>Security</rh-chip>
     <rh-chip>Containers</rh-chip>
   </rh-chip-group>
 
   <rh-chip-group size="lg">
-    <span slot="accessible-label">Filter by: (large)</span>
+    <span slot="accessible-label">Filter by (large):</span>
     <rh-chip>Open Source</rh-chip>
     <rh-chip>ARO</rh-chip>
     <rh-chip>RHEL</rh-chip>
@@ -20,6 +20,10 @@
 </script>
 
 <style>
+  rh-surface {
+    margin: var(--rh-space-xs, 4px);
+  }
+
   rh-chip-group:not(:first-of-type) {
     margin-block: 2rem;
   }

@@ -1,13 +1,13 @@
 <rh-surface color-palette="lightest">
   <rh-chip-group>
-    <span slot="accessible-label">Filter by: (default/white)</span>
+    <span slot="accessible-label">Filter by (default/white):</span>
     <rh-chip>AI &amp; Robotics</rh-chip>
     <rh-chip>Arts &amp; Culture</rh-chip>
     <rh-chip>Education</rh-chip>
   </rh-chip-group>
 
   <rh-chip-group color="light-blue">
-    <span slot="accessible-label">Filter by: (light blue)</span>
+    <span slot="accessible-label">Filter by (light blue):</span>
     <rh-chip>Hardware</rh-chip>
     <rh-chip>Healthcare</rh-chip>
     <rh-chip>Sustainability</rh-chip>
@@ -20,6 +20,10 @@
 </script>
 
 <style>
+  rh-surface {
+    margin: var(--rh-space-xs, 4px);
+  }
+
   rh-chip-group:not(:first-of-type) {
     margin-block: 2rem;
   }
