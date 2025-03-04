@@ -5,10 +5,6 @@ import { property } from 'lit/decorators/property.js';
 import { ScrollSpyController } from '@patternfly/pfe-core/controllers/scroll-spy-controller.js';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 
-import '@rhds/elements/rh-icon/rh-icon.js';
-
-import { RhDisclosure } from '@rhds/elements/rh-disclosure/rh-disclosure.js';
-
 import { RhJumpLinksItem } from './rh-jump-links-item.js';
 import { RhJumpLinksList } from './rh-jump-links-list.js';
 
@@ -23,12 +19,6 @@ import style from './rh-jump-links.css';
 export class RhJumpLinks extends LitElement {
   static readonly styles: CSSStyleSheet[] = [style];
 
-  /** Whether the element features a disclosure widget around the nav items */
-  @property({ reflect: true, type: Boolean }) expandable = false;
-
-  /** Whether the expandable element's disclosure widget is expanded */
-  @property({ reflect: true, type: Boolean }) expanded = false;
-
   /** Whether the layout of children is vertical or horizontal. */
   @property() layout: 'horizontal' | 'vertical' = 'horizontal';
 
@@ -37,7 +27,7 @@ export class RhJumpLinks extends LitElement {
 
   #tabindex = RovingTabindexController.of<RhJumpLinksItem | RhJumpLinksList>(this, {
     getItems: () => Array.from(
-      this.querySelectorAll('rh-jump-links-item, rh-jump-links-list') ?? [],
+      this.querySelectorAll('rh-jump-links-item, rh-jump-links-list'),
     ),
   });
 
@@ -48,6 +38,7 @@ export class RhJumpLinks extends LitElement {
 
   override connectedCallback(): void {
     super.connectedCallback();
+    this.role = 'listbox';
     this.addEventListener('select', this.#onSelect);
   }
 
@@ -60,15 +51,8 @@ export class RhJumpLinks extends LitElement {
 
   render(): TemplateResult<1> {
     return html`
-      <nav id="container">${this.expandable ? html`
-        <rh-disclosure summary="${this.label}" ?open="${this.expanded}" @toggle="${this.#onToggle}">
-          <slot></slot>
-        </rh-disclosure>
-        ` : html`
-        <span id="label">${this.label}</span>
-        <div role="listbox" aria-labelledby="label">
-          <slot></slot>
-        </div>`}
+      <nav id="container">
+        <slot></slot>
       </nav>
     `;
   }
@@ -81,13 +65,6 @@ export class RhJumpLinks extends LitElement {
 
   #setActiveItem(item: RhJumpLinksItem) {
     this.#spy.setActive(item);
-  }
-
-  #onToggle(event: Event) {
-    if (event.target instanceof RhDisclosure) {
-      this.expanded = event.target.open;
-    }
-    this.dispatchEvent(new Event('toggle'));
   }
 }
 
