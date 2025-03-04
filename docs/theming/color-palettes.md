@@ -35,74 +35,45 @@ easier and to improve customers' digital experiences. Authors and developers who
 adopt the color palette system will produce accessible, branded experiences with
 less effort and greater cross-property consistency.
 
-## What are color palettes
+## Color palettes
+<a id="what-are-color-palettes"></a>
+<a id="how-color-palettes-work"></a>
 
-<abbr title="red hat design system">RHDS</abbr> defines six color palettes They range from lightest to darkest, and those
-are the two palettes you will use the most for the majority of your projects.
+<abbr title="red hat design system">RHDS</abbr> defines six color palettes They 
+range from lightest to darkest, and those are the two palettes you will use the 
+most for the majority of your projects.
 
-<uxdot-pattern id="elements-grid" src="./patterns/collage.html">
-</uxdot-pattern>
+<uxdot-pattern id="elements-grid" src="./patterns/collage.html"></uxdot-pattern>
 
-### How color palettes work
+Understanding color palettes, color schemes, and theming work together is
+important not only in terms of design guidelines but also for accessibility
+compliance, and to enable positive experiences for all our users. We've
+developed our theming system with web standards in mind, and aiming to use CSS
+over JavaScript as much as possible. The following explains how the theming
+system works.
 
 <abbr title="red hat design system">RHDS</abbr>' color palette system is an
 *HTML* and *CSS* system with some supporting JavaScript[^1].
-The color palette system has two main parts: **providers** and **consumers**.
-Providers actively define a color palette, while consumers passively accept
-their background color from the nearest provider ancestor.
 
 <rh-card class="pullquote-card right">
   <rh-blockquote>HTML design systems help teams ship better digital experiences,
     faster.</rh-blockquote>
 </rh-card>
 
-Color palettes allow for the creation of different experiences using the same
-design system. When a color palette is changed, elements change including color,
-space, text, and more. Layouts, content, and imagery usually stay the same.
+Some design system elements may define their own color palettes. Elements that
+have this ability also pass on a specific color scheme to their children, based
+on their current color palette. For example `<rh-surface>`, `<rh-card>`, and
+`<rh-accordion>` can define their own color palette, while `<rh-cta>` and
+`<rh-badge>` cannot.
 
-## Choosing a color palette
+Elements which have this ability are called **color scheme providers**. They
+usually implement a default color palette (e.g. `lightest`). Color scheme
+providers must also possess an optional `color-palette` attribute. When it is
+set to one of the six color palette values, any child elements which consume a
+background type will respond to the change. Setting the `color-palette`
+attribute will override any parent's color scheme.
 
-How you choose a color palette is based on content, user experience, and
-accessibility needs.
-
-### Lightest color palette
-
-The lightest color palette is the default and has lots of use cases.
-
-### Darkest color palette
-
-The darkest color palette can be used for highlighting content with dark colors
-or if a brighter interface would otherwise disrupt the user experience. Most
-light elements and patterns have dark counterparts.
-
-<rh-alert state="warning">
-  <h4 slot="header">Brand red and accessibility</h4>
-
-  Do not apply the Red Hat red color to text in dark environments unless it
-  meets [WCAG 2.1 AA][wcag21aa] requirements.
-
-</rh-alert>
-
-## Illustrations and imagery
-
-Illustrations and imagery should align to the color palette. The light color
-palette should feature imagery with light colors and vice versa. Imagery with
-high contrast is only acceptable if it has a transparent background. If you
-cannot find color-palette-specific imagery, contact the Brand team. Developers
-have a number of [art-direction][artdirection] techniques at their disposal for
-creating themeable, responsive graphics.
-
-<uxdot-example>
-  <img alt="correct uses of an illustration with a transparent background and one illustration incorrectly using a white background on a surface with a dark color palette area"
-       src="/assets/theming/illustrations-and-imagery.png">
-</uxdot-example>
-
-## Backgrounds and theme tokens
-
-### Color palettes
-
-**Providers** define the **color palette** for themselves and their child
-elements. There are six color palettes in RHDS:
+There are six color palettes in RHDS:
 
 <ol class="color-palette-grid">
   <li><rh-surface color-palette="lightest">Lightest</rh-surface></li>
@@ -123,36 +94,36 @@ use this HTML:
                full-height="">
 </uxdot-pattern>
 
-A color palette provider is a **surface** on which a particular color palette is
-active, as well as a **container** for themeable consumer elements.
+Color palettes allow for the creation of different experiences using the same 
+design system. Changing an element's color palette can affect its colors and 
+backgrounds, but usually spacing, typography, layouts, content, and imagery 
+remain the same.
 
-### Backgrounds
+## Color schemes
+<a id="backgrounds-and-theme-tokens"></a>
+<a id="backgrounds"></a>
 
-Consumers are elements which automatically adapt to their background surface.
-Color **Consumers** adopt a **background** color based on the palette of the
-surface they are on. In other words, the background of a consumer corresponds to
-the color palette of it's containing surface. There are two backgrounds in RHDS:
+Color schemes are rendering modes for elements that change their foreground and 
+background colors. There are two color schemes: `light` and `dark`, each 
+corresponding to three of the six color palettes. Elements which respond to 
+their color scheme by changing their colors are called **color scheme 
+consumers**.
 
-<ul class="surface-grid">
-  <li>
-    <rh-card class="icon-card" color-palette="lightest">
-      <rh-icon slot="header" icon="sun"></rh-icon>
-      <span slot="header">Light</span>
-    </rh-card>
-  </li>
+<div class="surface-grid">
+  <rh-card class="icon-card" color-palette="lightest">
+    <rh-icon slot="header" icon="light-mode"></rh-icon>
+    <h3 slot="header">Light</h3>
+    <p>Corresponding color palettes: <code>light</code>, <code>lighter</code>, <code>lightest</code>.</p>
+  </rh-card>
+  <rh-card class="icon-card" color-palette="darkest">
+    <rh-icon slot="header" icon="dark-mode"></rh-icon>
+    <h3 slot="header">Dark</h3>
+    <p>Corresponding color palettes: <code>dark</code>, <code>darker</code>, <code>darkest</code>.</p>
+  </rh-card>
+</div>
 
-  <li>
-    <rh-card class="icon-card" color-palette="darkest">
-      <rh-icon slot="header" icon="lighthouse"></rh-icon>
-      <span slot="header">Dark</span>
-    </rh-card></li>
-</ul>
-
-These backgrounds don't represent a specific colour, but rather they indicate
-whether the background is light or dark. This is so things like icons, text,
-and border colours can be chosen which will contrast enough with the background
-to remain legible. In other words, the background is the *color context* in
-which a consumer finds itself.
+Being aware of which elements are rendering in which color scheme is important 
+to ensure that things like icons, text, and border colours remain legible.
 
 <rh-alert>Page authors *do not need to and should not customize* colors of
   consumer elements, but instead should set custom values for [theme
@@ -226,6 +197,43 @@ palette, e.g. from `lightest` to `light`.
      environments and vice versa. This is useful to focus attention or create
      visual tension.</p>
 </rh-alert>
+
+## Choosing a color palette
+
+How you choose a color palette is based on content, user experience, and
+accessibility needs.
+
+### Lightest color palette
+
+The lightest color palette is the default and has lots of use cases.
+
+### Darkest color palette
+
+The darkest color palette can be used for highlighting content with dark colors
+or if a brighter interface would otherwise disrupt the user experience. Most
+light elements and patterns have dark counterparts.
+
+<rh-alert state="warning">
+  <h4 slot="header">Brand red and accessibility</h4>
+
+  Do not apply the Red Hat red color to text in dark environments unless it
+  meets [WCAG 2.1 AA][wcag21aa] requirements.
+
+</rh-alert>
+
+## Illustrations and imagery
+
+Illustrations and imagery should align to the color palette. The light color
+palette should feature imagery with light colors and vice versa. Imagery with
+high contrast is only acceptable if it has a transparent background. If you
+cannot find color-palette-specific imagery, contact the Brand team. Developers
+have a number of [art-direction][artdirection] techniques at their disposal for
+creating themeable, responsive graphics.
+
+<uxdot-example>
+  <img alt="correct uses of an illustration with a transparent background and one illustration incorrectly using a white background on a surface with a dark color palette area"
+       src="/assets/theming/illustrations-and-imagery.png">
+</uxdot-example>
 
 {% renderFile './docs/_includes/partials/component/feedback.11ty.ts' %}
 

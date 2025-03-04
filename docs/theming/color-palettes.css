@@ -31,7 +31,9 @@
 }
 
 .icon-card {
-  --rh-icon-size: var(--rh-size-icon-07);
+  & rh-icon {
+    width: var(--rh-size-icon-07);
+  }
 }
 
 .color-palette-grid rh-surface {

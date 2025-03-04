@@ -44,13 +44,108 @@ and elements. In other words, theming is the developer’s process of
 orchestrating design tokens with elements, particularly by way of themeable 
 container elements.
 
+## How theming works
+
+### Color Scheme Providers
+<a id="providers"></a>
+
+<rh-alert state=info>[Read more about color palettes and schemes][palettes] in the theming overview.</rh-alert>
+
+To make your element a color scheme provider:
+
+1. Import the provider decorator from the `lib` directory.
+2. Add the `@colorSchemeProvider()` decorator to the element's class.
+3. Add a reflecting `colorPalette` property with `color-palette` attribute.
+
+```ts rhcodeblock
+import { LitElement } from 'lit';
+import { customElement } from 'lit/decorators/custom-element.js';
+import { property } from 'lit/decorators/property.js';
+
+import {
+  colorSchemeProvider,                                     // 1
+  type ColorPalette,
+} from '@rhds/elements/lib/context/color/provider.js';
+
+@customElement('rh-provider')
+@colorSchemeProvider()                                     // 2
+export class RhProvider extends LitElement {
+  @property({ reflect: true, attribute: 'color-palette' }) // 3
+  colorPalette?: ColorPalette;
+}
+```
+
+If the element only allows a subset of color palettes, you may pass them to the
+decorator to limit which palettes can be applied.
+
+```ts rhcodeblock
+@customElement('rh-subset-provider')
+@colorSchemeProvider('darker', 'lighter')
+export class RhSubsetProvider extends LitElement { /*...*/ }
+```
+
+#### Color Scheme Consumers
+<a id="consumers"></a>
+
+Color scheme consumers are elements which cannot set their own color scheme,
+but instead passively consume it from their parents. Elements such as
+`<rh-cta>`, `<rh-badge>` and `<rh-tag>` are examples of consumers.
+
+To make your element a color context consumer:
+
+1. Import the `@colorSchemeConsumer` decorator from the `lib` directory.
+2. Add the `@colorSchemeConsuemr` decorator to the element's class.
+3. Use computed theming tokens to color your element
+3. When needed, override scheme values using [`light-dark()`][lightdark]
+
+<rh-tabs class="code-tabs">
+  <rh-tab slot="tab">TypeScript</rh-tab>
+  <rh-tab-panel>
+
+```ts rhcodeblock
+import { LitElement, html } from 'lit';
+import { customElement } from 'lit/decorators/custom-element.js';
+import { colorSchemeConsumer } from '@rhds/elements/lib/context/color/consumer.js'; // 1
+
+@customElement('rh-consumer')
+@colorSchemeConsumer                                                                // 2
+export class RhConsumer extends LitElement {
+  render() {
+    return html`<div id="container"></div>`;
+  }
+}
+```
+
+  </rh-tab-panel>
+  <rh-tab slot="tab">CSS</rh-tab>
+  <rh-tab-panel>
+
+```css rhcodeblock
+#container {
+  color: var(--rh-color-text-primary);
+  background: var(--rh-color-surface);
+}
+```
+
+  </rh-tab-panel>
+</rh-tabs>
+
+The `@colorSchemeConsumer` decorator applies a stylesheet from `@rhds/tokens` to 
+the element’s shadow root. which uses [`light-dark()`][lightdark] to compute 
+theming tokens depending on the color scheme.
+
+```css rhcodeblock
+--rh-color-text-primary: light-dark(
+  var(--rh-color-text-primary-on-light, #151515)
+  var(--rh-color-text-primary-on-dark, #ffffff)
+);
+```
+
 ### Themeable containers
 
-In <abbr>RHDS</abbr>, special provider elements such as `<rh-surface>`, 
-`<rh-card>`, `<rh-tabs>`, and others are considered themeable containers. A 
-themeable container is an element that can have custom classes attached, which 
-provide values for the relevant CSS color properties in a [custom 
-theme][themes].
+In <abbr>RHDS</abbr>, elements such as `<rh-surface>`, `<rh-card>`, `<rh-tabs>`, 
+and others are considered themeable containers. Developers can provide custom 
+values for theming tokens on those elements in a [custom theme][themes].
 
 A common pattern for a themeable container is the full-width band. For example, 
 a `<rh-surface>` may be used as a full-width container and provide the 
@@ -60,21 +155,6 @@ a `<rh-surface>` may be used as a full-width container and provide the
                class="band-example"
                target="band">
 </uxdot-pattern>
-
-### The `color-palette` attribute
-
-The `color-palette` attribute is a fundamental aspect of the theming system. The 
-attribute is available on specially designated provider elements that actively 
-define a [color palette][palettes], while their children passively accept their 
-background color and text color. The `color-palette` can be set to six possible 
-values:
-
-  * `lightest`
-  * `lighter`
-  * `light`
-  * `dark`
-  * `darker`
-  * `darkest`
 
 ### Theming whole pages
 
@@ -132,7 +212,9 @@ The ideal order of operations is as follows:
 1. Use theme tokens to customize the target e.g. `--rh-color-interactive-primary-default-on-light`
 1. Use element CSS Shadow Parts for greater control
 
-<rh-alert state="caution">Avoid setting values for CSS custom properties beginning with an underscore (`_`). These should be considered "private" and may change at any time without warning.</rh-alert>
+<rh-alert state="caution">Avoid setting values for CSS custom properties 
+  beginning with an underscore (`_`). These should be considered "private" and 
+  may change at any time without warning.</rh-alert>
 
 ## Art Direction
 
@@ -205,195 +287,6 @@ themable graphics.
 
 <rh-cta href="https://github.com/orgs/RedHat-UX/discussions/1780">Join the discussion</rh-cta>
 
-## How theming works
-
-We've developed our theming system with web standards in mind, aiming to use
-CSS over JavaScript as much as possible. At the current state of browser technology,
-we found that some JavaScript is required for the system to work correctly.
-But we soon expect to be able to remove all (or nearly all) of that 
-JavaScript and have the theming system work entirely (or almost entirely) 
-through plain CSS. The following explains how the system currently operates, how
-element authors can hook into it, and what the future holds for theming.
-
-### Current implementation - Context Protocol
-
-<abbr title="Red Hat Design System">RHDS</abbr>’s theming system is primarily 
-about styles. It currently relies on JavaScript to work, via the [context 
-protocol][contextprotocol] developed by the web components community to support 
-passing data between components.
-
-Our system utilizes this protocol with the setting of the `color-palette` 
-attribute on a provider element, which makes its context data (in our case, 
-`light` or `dark`) available to its children. By doing so we ensure accessible 
-colors are applied given any possible change in context value higher up in the 
-<abbr title="Document Object Model">DOM</abbr> tree. 
-
-This is important not only for helping us maintain our design guidelines but
-also for accessibility compliance and enabling great experiences for all our 
-users.
-
-The context protocol is enabled by two [reactive controllers][controllers]: the
-[provider controller][providersrc] and the [consumer controller][consumersrc].
-The provider and consumer controllers work together. The provider supplies the
-context data, while the consumer receives and uses it within child elements.
-Custom elements can implement the consumer, the provider, or both, depending
-on the needs of that particular element.
-
-#### Providers
-
-Custom Elements that implement the provider controller are elements that provide
-their own context, overriding that of their parent. Elements such as
-`<rh-surface>`, `<rh-card>`, and `<rh-accordion>` are examples of such context
-providers. If a provider contains a set `color-palette` attribute, it will
-override any parent context and pass its context on to its children.
-
-To make your element a color context provider:
-
-1. First import the provider controller.
-2. Then add the `@colorContextProvider()` decorator to a property with the
-   attribute `color-palette` which is the type `ColorPalette`.
-
-```ts rhcodeblock
-import { LitElement } from 'lit';
-import { customElement } from 'lit/decorators/custom-element.js';
-import { property } from 'lit/decorators/property.js';
-
-import {
-  colorContextProvider,                                    // 1
-  type ColorPalette,
-} from '@rhds/elements/lib/context/color/provider.js';
-
-@customElement('rh-provider')
-export class RhProvider extends LitElement {
-  @colorContextProvider()                                  // 2
-  @property({ reflect: true, attribute: 'color-palette' })
-  colorPalette?: ColorPalette;
-}
-```
-
-Read “[What are color palettes][palettes]” for more information about the six
-available `color-palettes`.
-
-#### Consumers
-
-Context consumers are elements that passively consume the parent context.
-Elements such as `<rh-cta>`, `<rh-badge>` and `<rh-tag>` are examples of
-consumers.
-
-To make your element a color context consumer:
-
-1. First `import` the [classMap Lit directive](https://lit.dev/docs/templates/directives/#classmap),
-   and the consumer controller.
-2. Then add the `@colorContextConsumer()` decorator to a private property of
-   `on` which is the type of `ColorTheme`.
-3. Add a classMap that implements the shadow class in your render method.
-4. Use the theming tokens in your element’s shadow styles, being sure
-   to select the element that has the `.on.light`/`.on.dark` classes.
-
-<rh-tabs class="code-tabs">
-  <rh-tab slot="tab">TypeScript</rh-tab>
-  <rh-tab-panel>
-
-```ts rhcodeblock
-import { LitElement, html } from 'lit';
-import { customElement } from 'lit/decorators/custom-element.js';
-import { classMap } from 'lit/directives/class-map.js';  // 1
-import {
-  colorContextConsumer,
-  type ColorTheme,
-} from '@rhds/elements/lib/context/color/consumer.js';
-
-@customElement('rh-consumer')
-export class RhConsumer extends LitElement {
-  @colorContextConsumer() private accessor on: ColorTheme | undefined;       // 2
-
-  render() {
-    const { on = 'light' } = this;                       // 3
-    return html`
-      <div id="container"
-           class="${classMap({ on: true, [on]: true })}">
-      </div>`;
-  }
-}
-```
-
-  </rh-tab-panel>
-  <rh-tab slot="tab">CSS</rh-tab>
-  <rh-tab-panel>
-
-```css rhcodeblock
-#container {
-  color: var(--rh-color-text-primary);
-  background: var(--rh-color-surface);
-}
-```
-
-  </rh-tab-panel>
-</rh-tabs>
-
-What the `@colorContextConsumer` decorator does, in addition to participating in
-the context event system, is apply a stylesheet from
-`@rhds/tokens/css/color-context-consumer.css.js` to the element’s shadow root.
-That stylesheet selects well-known class names `.on.light` and `.on.dark`,
-and applies values to the theming tokens, depending on the context received.
-
-```css rhcodeblock
-.on.light {
-  --rh-color-text-primary: var(--rh-color-text-primary-on-light, #151515);
-   /* etc... */
-}
-
-.on.dark {
-  --rh-color-text-primary: var(--rh-color-text-primary-on-dark, #ffffff);
-   /* etc... */
-}
-```
-
-For more information on the significance of the context values (i.e.
-`ColorTheme`), read “[Background][backgrounds]”.
-
-### Future state - style queries  <rh-tag color="purple" icon="notification-fill">Planned</rh-tag>
-
-In the not-so-distant future, we will be able to replace the context protocol
-completely and remove this code by implementing the web standard [container
-style queries][stylequeries].
-
-In anticipation of this upcoming browser feature, we attempt to ensure that our
-theming system as implemented today using context can easily be replaced with
-style queries in the near future.
-
-<rh-alert>Note: the examples in this section are hypothetical. The final markup
-and styles may not be the same.</rh-alert>
-
-In addition to reducing the JavaScript payload of the design system, style
-queries will allow authors to attach surface styles to any element. For example,
-your page markup declares a custom surface with some classes:
-
-```html rhcodeblock
-<div class="custom-surface dark">
-  <rh-cta href="#">GO!</rh-cta>
-</div>
-```
-
-And your document CSS sets the desired color context:
-
-```css rhcodeblock
-.custom-surface {
-  container: surface;
-  &.dark { --rh-background-context: dark; }
-  &.light { --rh-background-context: light; }
-}
-```
-
-And you would declare the import a shared stylesheet that activates the theming system,
-similarly to how elements import `@rhds/tokens/css/color-context-consumer.css.js`.
-
-```css rhcodeblock
-@container style (--rh-context-background: dark) {
-  --rh-color-text-primary: var(--rh-color-text-primary-on-dark)
-}
-```
-
 [backgrounds]: /theming/color-palettes/#backgrounds
 [consumersrc]: https://github.com/RedHat-UX/red-hat-design-system/blob/main/lib/context/color/consumer.ts
 [contextprotocol]: https://github.com/webcomponents-cg/community-protocols/blob/main/proposals/context.md
@@ -403,6 +296,6 @@ similarly to how elements import `@rhds/tokens/css/color-context-consumer.css.js
 [palettes]: /theming/color-palettes/
 [patterns]: /patterns/
 [providersrc]: https://github.com/RedHat-UX/red-hat-design-system/blob/main/lib/context/color/provider.ts
-[stylequeries]: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_size_and_style_queries#container_style_queries_2
 [themes]: /theming/customizing/#custom-themes
 [tokens]: /tokens/
+[lightdark]: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark
