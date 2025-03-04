@@ -25,10 +25,10 @@ export class RhJumpLinks extends LitElement {
   /** Accessible label for nav */
   @property() label?: string;
 
-  #tabindex = RovingTabindexController.of<RhJumpLinksItem | RhJumpLinksList>(this, {
+  #tabindex = RovingTabindexController.of(this, {
     getItems: () => Array.from(
       this.querySelectorAll('rh-jump-links-item, rh-jump-links-list'),
-    ),
+    ) as (RhJumpLinksItem | RhJumpLinksList)[],
   });
 
   #spy = new ScrollSpyController(this, {
