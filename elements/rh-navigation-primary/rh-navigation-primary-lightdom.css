@@ -3,7 +3,7 @@ rh-navigation-item {
 
   & a {
     color: var(--rh-color-interactive-primary-default) !important;
-    padding: var(--rh-space-xs) var(--rh-space-sm);
+    padding: var(--rh-space-md);
     text-decoration: none;
 
     &:hover {
