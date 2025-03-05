@@ -77,6 +77,8 @@ the relevant color properties in the design system. For example, a _Bordeaux_
 theme might look like this:
 
 <uxdot-pattern class="card-snippet-grid"
+               full-height
+               active-tab="css"
                src="./patterns/card-bordeaux.html">
 </uxdot-pattern>
 

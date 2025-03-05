@@ -18,6 +18,7 @@
 
 <style>
   .theme-bordeaux {
+    /* first, define some custom theme colors */
     --bordeaux-darkest: #19050a;
     --bordeaux-darker: #260710;
     --bordeaux-dark: #330915;
@@ -27,6 +28,8 @@
     --bordeaux-light: #a55d71;
     --bordeaux-lighter: #d9b9c2;
     --bordeaux-lightest: #f2e8eb;
+
+    /* next, apply those colours to RHDS' theming tokens */
     --rh-color-surface-darkest: var(--bordeaux-darkest);
     --rh-color-surface-darker: var(--bordeaux-darker);
     --rh-color-surface-dark: var(--bordeaux-dark);
@@ -51,6 +54,7 @@
   }
 
   .list-with-dividers {
+    margin-block-end: var(--rh-space-lg);
     & ul {
       display: flex;
       flex-flow: column;
