@@ -35,9 +35,9 @@ If one element has the same function as another, both should be labeled the same
 
 When considering methods of communication or feedback, do not use color alone. Ensure there is a text label, icon, underline, or other visual cue to communicate meaning. Consider how the following elements would look to a color blind user.
 
-<uxdot-example width-adjustment="872px" no-border>
-  <img src="/assets/color/using-color-alone.png"
-      alt="Dialog with a red-orange Leave button, a form field with a red bottom border, and progress steps without labels"
+<uxdot-example width-adjustment="1012px">
+  <img src="/assets/color/color-a11y-using-color-alone.svg"
+      alt="Dialog with example form elements like a red-orange Leave button, a form field with a red bottom border, and progress steps without labels"
       width="872"
       height="537">
 </uxdot-example>
@@ -50,9 +50,9 @@ We strive to adhere to [WCAG 2.1 AA contrast ratio standards](https://www.w3.org
 
 Small foreground text (non-bold text under 24px and bold text under 19px) must have a contrast ratio of 4.5:1 and large foreground text (non-bold text of at least 24px and bold text of at least 19px) must have a contrast ratio of 3:1.
 
-<uxdot-example width-adjustment="872px" no-border>
+<uxdot-example width-adjustment="872px">
   <img src="/assets/color/contrast-text.png"
-      alt="Contrast ratios for dark gray sections with black text that uses different weights and fonts"
+      alt="Contrast ratio examples for dark gray sections with black text that use different weights and fonts"
       width="872"
       height="576">
 </uxdot-example>
@@ -70,7 +70,7 @@ That said, you still _can_ underline the above, at your discretion.
 
 If, for some reason, color is the only way you can distinguish links within a text block, the contrast ratio between the link and surrounding text _must_ be at least 3:1 in both visited and unvisited states. And underlines or other non-color cues _must also_ then be used to signify when the link receives hover and focus.
 
-<uxdot-example width-adjustment="708px" no-border>
+<uxdot-example width-adjustment="708px">
   <img src="/assets/color/contrast-links.png"
       alt="Contrast ratio of a blue link next to black text and an example of a link's darker blue, underlined hover state"
       width="708"
@@ -87,8 +87,8 @@ Non-color cues must be also used to signify when an object or component receives
 
 It is acceptable to layer colors with the same hue, saturation, or lightness on white, black, or gray. However, layering them near or on top of each other might cause vibration. If you need to layer colors, follow [WCAG 2.1 AA](https://www.w3.org/WAI/WCAG21/Understanding/) requirements.
 
-<uxdot-example width-adjustment="872px" no-border>
-  <img src="/assets/color/contrast-layering.png"
+<uxdot-example width-adjustment=”1140px”>
+  <img src="/assets/color/color-a11y-color-contrast-layering.svg"
       alt="Red CTA against a white background, blue button against a light gray background, and a light red-orange button against a black background"
       width="872"
       height="250">
