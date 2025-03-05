@@ -77,6 +77,10 @@ the relevant color properties in the design system in their page's <abbr
 _Bordeaux_ theme. We'll write a CSS rule which selects for the `theme-bordeaux` 
 class, and in that rule we'll set the values of <abbr title="red hat design 
   system">RHDS</abbr> theming tokens to our custom theme colors.
+In the following example, you can see how we first define some custom theme 
+colours as CSS custom properties beginning with `--bordeaux-`, then we use those 
+values in our custom theme by applying them to RHDS theming tokens, i.e. tokens 
+that look like `--rh-color-*-on-(light|dark)`.
 
 <uxdot-pattern class="card-snippet-grid"
                full-height

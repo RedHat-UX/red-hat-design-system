@@ -131,6 +131,7 @@ to ensure that things like icons, text, and border colours remain legible.
   colors of consumer elements, but instead should set custom values for [theme
   tokens][theming].</rh-alert>
 
+<rh-card>
 
 <uxdot-best-practice variant="do">
 
@@ -155,6 +156,10 @@ Customize theming tokens for themed containers
 Avoid customizing element CSS directly
 
 </uxdot-best-practice>
+
+</rh-card>
+
+See the [customizing](./customizing/) page for a more detailed example.
 
 
 Color palette containers can be nested, such that child elements will always 
