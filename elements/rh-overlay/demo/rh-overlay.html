@@ -1,12 +1,23 @@
 <rh-overlay></rh-overlay>
 
+<rh-button>Open Overlay</rh-button>
+
 <script type="module">
   import '@rhds/elements/rh-overlay/rh-overlay.js';
+  import '@rhds/elements/rh-button/rh-button.js';
 </script>
 
-<style>
-rh-overlay {
-  /* insert demo styles */
-}
-</style>
+
+<script>
+  const overlay = document.querySelector('rh-overlay');
+  const button = document.querySelector('rh-button');
+  button.addEventListener('click', function() {
+    console.log('click');
+    overlay.open = true;
+  });
+
+  overlay.addEventListener('click', function() {
+    this.open = false;
+  })
+</script>
 

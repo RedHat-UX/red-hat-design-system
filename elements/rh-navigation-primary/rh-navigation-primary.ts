@@ -209,6 +209,7 @@ export class RhNavigationPrimary extends LitElement {
       const secondaryEventToggle = slottedSecondary.find(node => node.isEqualNode(event.toggle));
 
       if (event.open) {
+        this.#closeOverlay();
         this.#closePrimaryDropdowns();
         this.#closeSecondaryDropdowns();
 
@@ -227,7 +228,6 @@ export class RhNavigationPrimary extends LitElement {
         } else {
           this.#openPrimaryDropdowns.delete(event.toggle);
         }
-        this.#closeOverlay();
       }
     }
   }
@@ -262,12 +262,16 @@ export class RhNavigationPrimary extends LitElement {
       if (this.compact && this.#openSecondaryDropdowns.size > 0) {
         this.#closeSecondaryDropdowns();
       }
-      this.#openOverlay();
+      if (this.compact) {
+        this.#openOverlay();
+      }
     } else {
       if (this.#openPrimaryDropdowns.size > 0) {
         this.#closePrimaryDropdowns();
       }
-      this.#closeOverlay();
+      if (this.compact && this.#openSecondaryDropdowns.size === 0) {
+        this.#closeOverlay();
+      }
     }
   }
 

@@ -4,7 +4,7 @@
   inset-block-start: 0;
   width: 100dvw;
   height: 100dvh;
-  z-index: var(--rh-overlay-z-index, -1);
+  z-index: var(--rh-overlay-z-index, 1);
 }
 
 :host([open]) {
