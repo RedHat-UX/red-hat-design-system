@@ -1,7 +1,8 @@
-import { LitElement, html, type PropertyValues } from 'lit';
+import { LitElement, html, isServer, type PropertyValues } from 'lit';
 
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
 import {
   colorSchemeProvider,
@@ -20,9 +21,60 @@ import '@rhds/elements/rh-surface/rh-surface.js';
 import '@rhds/elements/rh-code-block/rh-code-block.js';
 import '@rhds/elements/rh-tabs/rh-tabs.js';
 
+import { type RhTab, TabExpandEvent } from '@rhds/elements/rh-tabs/rh-tab.js';
+
 import { UxdotPatternSSRController } from './uxdot-pattern-ssr-controller.js';
 
 import styles from './uxdot-pattern.css';
+import type { RhTabs } from '@rhds/elements/rh-tabs/rh-tabs.js';
+
+function isLitElement(e: Element): e is LitElement {
+  return 'updateComplete' in e;
+}
+
+function isRhTab(e: Element): e is RhTab {
+  return e.localName === 'rh-tab';
+}
+
+function isRhTabs(e: Element): e is RhTabs {
+  return e.localName === 'rh-tabs';
+}
+
+async function forceProperty(e: LitElement, key: PropertyKey) {
+  if (key === 'activeIndex' && isRhTabs(e)) {
+    await e.updateComplete;
+    const i = e.activeIndex;
+    e.activeIndex = -1;
+    await e.updateComplete;
+    e.activeIndex = i;
+  }
+  // if (key === 'active' && isRhTab(e)) {
+  //  await e.updateComplete;
+  //  e.active = !e.active;
+  //  e.active = !e.active;
+  // }
+  e.requestUpdate(key, Symbol());
+  await e.updateComplete;
+  e.requestUpdate(key, Symbol());
+}
+
+async function forceUpdate(e: LitElement) {
+  e.requestUpdate();
+  await e.updateComplete;
+  for (const [key] of (e.constructor as typeof LitElement).elementProperties) {
+    forceProperty(e, key);
+  }
+}
+
+function forceHydration(node: Element) {
+  for (const e of node.shadowRoot?.querySelectorAll('*') ?? []) {
+    e.removeAttribute('defer-hydration');
+    forceHydration(e);
+    if (isLitElement(e)) {
+      forceUpdate(e);
+    }
+  }
+}
 
 @customElement('uxdot-pattern')
 @colorSchemeProvider()
@@ -52,8 +104,13 @@ export class UxdotPattern extends LitElement {
   /** Should the code blocks be expanded? */
   @property({ type: Boolean, attribute: 'full-height' }) fullHeight = false;
 
+  /** Should the code blocks be expanded? */
+  @property({ reflect: true, attribute: 'active-tab' }) activeTab?: 'html' | 'css' | 'js';
+
   /** Which colour palettes should be allowed in the picker? (default: all) */
   @property({ converter: ColorPaletteListConverter }) allow = paletteNames;
+
+  #picked = false;
 
   ssr = new UxdotPatternSSRController(this);
 
@@ -64,8 +121,7 @@ export class UxdotPattern extends LitElement {
       if (e instanceof Error && e.message.startsWith('Hydration')) {
         // eslint-disable-next-line no-console
         console.warn(e);
-        this.updateComplete.then(() =>
-          this.requestUpdate());
+        forceHydration(this);
       } else {
         throw e;
       }
@@ -73,6 +129,7 @@ export class UxdotPattern extends LitElement {
   }
 
   render() {
+    const { activeTab = 'html' } = this;
     const { allContent, htmlContent, cssContent, jsContent, hasJs, hasCss } = this.ssr;
 
     const actionsLabels = html`
@@ -100,36 +157,33 @@ export class UxdotPattern extends LitElement {
 
         <rh-surface id="content">${allContent}</rh-surface>
 
-        <rh-tabs id="code-tabs" class="code-tabs">
-          <rh-tab id="html-tab"
-                  slot="tab"
-                  active>HTML</rh-tab>
+        <rh-tabs id="code-tabs"
+                 class="code-tabs"
+                 active-index="${ifDefined(!this.#picked ? ['html', 'css', 'js'].indexOf(activeTab) : undefined)}"
+                 @expand="${this.#onExpand}">
+          <rh-tab id="html-tab" slot="tab" >HTML</rh-tab>
           <rh-tab-panel id="html-panel">
             <rh-code-block highlighting="prerendered"
                            actions="copy wrap"
-                           .full-height="${this.fullHeight}">
+                           ?full-height="${this.fullHeight}">
               ${htmlContent}
               ${actionsLabels}
             </rh-code-block>
           </rh-tab-panel>
-          <rh-tab id="css-tab"
-                  slot="tab"
-                  .disabled="${!hasCss}">CSS</rh-tab>
+          <rh-tab id="css-tab" slot="tab" .disabled="${!hasCss}" >CSS</rh-tab>
           <rh-tab-panel id="css-panel">
             <rh-code-block highlighting="prerendered"
                            actions="copy wrap"
-                           .full-height="${this.fullHeight}">
+                           ?full-height="${this.fullHeight}">
               ${cssContent}
               ${actionsLabels}
             </rh-code-block>
           </rh-tab-panel>
-          <rh-tab id="js-tab"
-                  slot="tab"
-                  .disabled="${!hasJs}">JS</rh-tab>
+          <rh-tab id="js-tab" slot="tab" .disabled="${!hasJs}" >JS</rh-tab>
           <rh-tab-panel id="js-panel">
             <rh-code-block highlighting="prerendered"
                            actions="copy wrap"
-                           .full-height="${this.fullHeight}">
+                           ?full-height="${this.fullHeight}">
               ${jsContent}
               ${actionsLabels}
             </rh-code-block>
@@ -137,6 +191,12 @@ export class UxdotPattern extends LitElement {
         </rh-tabs>
       </div>
     `;
+  }
+
+  #onExpand(event: Event) {
+    if (!isServer && event instanceof TabExpandEvent) {
+      this.#picked = true;
+    }
   }
 
   #onChange(event: Event) {
