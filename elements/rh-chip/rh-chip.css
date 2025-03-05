@@ -1,0 +1,112 @@
+:host {
+  display: inline-block;
+}
+
+label {
+  outline: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+  border-radius: var(--rh-border-radius-pill, 64px);
+  display: flex;
+  margin-inline-end: var(--rh-space-md, 8px);
+  padding: var(--rh-space-xs, 4px) var(--rh-space-md, 8px);
+
+  &:hover,
+  &:focus-within {
+    cursor: pointer;
+    outline-width: var(--rh-border-width-md, 2px);
+  }
+
+  &:has(input[aria-disabled='true']) {
+    background-color: var(--rh-color-status-neutral-on-dark, #c7c7c7);
+    color: var(--rh-color-text-secondary);
+    pointer-events: none;
+  }
+
+  &:has(input:checked) {
+    background-color: var(--rh-color-interactive-primary-default);
+    color: var(--rh-color-white, #ffffff);
+    outline-color: var(--rh-color-border-interactive);
+
+    &:hover {
+      background-color: var(--rh-color-interactive-primary-hover-on-light, #003366);
+      outline-color: var(--rh-color-interactive-primary-hover-on-light, #003366);
+    }
+  }
+
+  &:has(input:checked:focus-visible),
+  &:has(input[aria-disabled='true']:focus-visible) {
+    outline-offset: var(--rh-border-width-md, 2px);
+  }
+
+  &.size-sm {
+    padding-block: 0;
+  }
+
+  &.size-lg {
+    padding-inline: 16px;
+  }
+
+  &.color-light-blue {
+    background-color: var(--rh-color-blue-10, #e0f0ff);
+    outline-color: var(--rh-color-blue-30, #92c5f9);
+
+    &:hover,
+    &:focus-within {
+      outline-color: var(--rh-color-blue-40, #4394e5);
+    }
+  }
+
+  &.dark {
+    &:has(input[aria-disabled='true']) {
+      color: var(--rh-color-interactive-secondary-default-on-light, #4d4d4d);
+    }
+
+    &:has(input:checked) {
+      background-color: var(--rh-color-blue-50, #0066cc);
+      outline-color: var(--rh-color-blue-50, #0066cc);
+
+      &:hover {
+        background-color: var(--rh-color-interactive-primary-hover-on-light, #003366);
+        outline-color: var(--rh-color-interactive-primary-hover-on-light, #003366);
+      }
+    }
+
+    &.color-light-blue {
+      background-color: var(--rh-color-interactive-primary-hover-on-light, #003366);
+      outline-color: var(--rh-color-blue-50, #0066cc);
+    }
+  }
+}
+
+#close-icon {
+  inline-size: 0;
+  block-size: 0;
+  opacity: 0;
+  transition-property: inline-size, block-size, opacity, margin-inline-start;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+  transition-behavior: allow-discrete;
+}
+
+input {
+  appearance: none;
+  cursor: pointer;
+  margin: 0;
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:checked + #close-icon {
+    block-size: auto;
+    inline-size: auto;
+    margin-inline-start: 8px;
+    opacity: 1;
+
+    @starting-style {
+      block-size: 0;
+      inline-size: 0;
+      margin-inline-start: 0;
+      opacity: 0;
+    }
+  }
+}
