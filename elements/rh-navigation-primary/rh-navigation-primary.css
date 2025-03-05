@@ -13,7 +13,7 @@
       var(--rh-color-purple-40),
       var(--rh-color-purple-60)));
   --_navbar-height: 78px;
-  --_nav-container-z-index: 3;
+  --_nav-container-z-index: -1;
 
   display: block;
   container: navigation-primary / inline-size;

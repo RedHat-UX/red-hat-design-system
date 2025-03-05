@@ -209,7 +209,6 @@ export class RhNavigationPrimary extends LitElement {
       const secondaryEventToggle = slottedSecondary.find(node => node.isEqualNode(event.toggle));
 
       if (event.open) {
-        this.#closeOverlay();
         this.#closePrimaryDropdowns();
         this.#closeSecondaryDropdowns();
 
@@ -228,8 +227,18 @@ export class RhNavigationPrimary extends LitElement {
         } else {
           this.#openPrimaryDropdowns.delete(event.toggle);
         }
+
+        if (!this.compact
+            && this.#openPrimaryDropdowns.size === 0
+            && this.#openSecondaryDropdowns.size === 0) {
+          this.#closeOverlay();
+        }
       }
     }
+  }
+
+  async #onFocusout(event: FocusEvent) {
+    /* TODO close dropdowns and overlay on focus leaving. */
   }
 
   #closePrimaryDropdowns() {
