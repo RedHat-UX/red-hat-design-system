@@ -26,6 +26,7 @@ import {
 } from '@rhds/elements/rh-navigation-item/rh-navigation-item.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
 import '@rhds/elements/rh-surface/rh-surface.js';
+import '@rhds/elements/rh-overlay/rh-overlay.js';
 
 import styles from './rh-navigation-primary.css';
 
@@ -53,8 +54,6 @@ export class RhNavigationPrimary extends LitElement {
   #openPrimaryDropdowns = new Set<RhNavigationItem>();
   #openSecondaryDropdowns = new Set<RhNavigationItem>();
 
-  #overlayOpen = false;
-
   #ro?: ResizeObserver;
 
   #slots = new SlotController(
@@ -65,7 +64,7 @@ export class RhNavigationPrimary extends LitElement {
   @state() compact = true; // we should start in compact mode (mobile first)
 
   @state()
-  private _overlayState = false;
+  private _overlayOpen = false;
 
   @query('#hamburger')
   private _hamburger!: HTMLDetailsElement;
@@ -159,7 +158,7 @@ export class RhNavigationPrimary extends LitElement {
         </div>
       </nav>
       <rh-overlay
-        .open="${this.#overlayOpen}"
+        .open="${this._overlayOpen}"
         @click="${this.#onOverlayClick}">
       </rh-overlay>
     `;
@@ -184,8 +183,23 @@ export class RhNavigationPrimary extends LitElement {
     this.#internals.ariaLabel = this.accessibleLabel;
   }
 
+  #openOverlay() {
+    this._overlayOpen = true;
+  }
+
+  #closeOverlay() {
+    this._overlayOpen = false;
+  }
+
   #onOverlayClick() {
-    //
+    this.#closePrimaryDropdowns();
+    this.#closeSecondaryDropdowns();
+
+    if (this.compact) {
+      this.#closeHamburger();
+    }
+
+    this.#closeOverlay();
   }
 
   async #onExpand(event: Event) {
@@ -206,12 +220,14 @@ export class RhNavigationPrimary extends LitElement {
         } else {
           this.#openPrimaryDropdowns.add(event.toggle);
         }
+        this.#openOverlay();
       } else {
         if (secondaryEventToggle) {
           this.#openSecondaryDropdowns.delete(event.toggle);
         } else {
           this.#openPrimaryDropdowns.delete(event.toggle);
         }
+        this.#closeOverlay();
       }
     }
   }
@@ -246,10 +262,12 @@ export class RhNavigationPrimary extends LitElement {
       if (this.compact && this.#openSecondaryDropdowns.size > 0) {
         this.#closeSecondaryDropdowns();
       }
+      this.#openOverlay();
     } else {
       if (this.#openPrimaryDropdowns.size > 0) {
         this.#closePrimaryDropdowns();
       }
+      this.#closeOverlay();
     }
   }
 

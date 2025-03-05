@@ -29,6 +29,7 @@
   width: -moz-available;
   width: fill-available;
   height: var(--_navbar-height);
+  z-index: 1;
 
   &.on {
     &.light {

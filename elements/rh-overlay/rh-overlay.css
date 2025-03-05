@@ -1,0 +1,16 @@
+:host {
+  position: fixed;
+  background-color: rgb(var(--rh-color-gray-90-rgb) / 0.8);
+  inset-block-start: 0;
+  width: 100dvw;
+  height: 100dvh;
+  z-index: var(--rh-overlay-z-index, -1);
+}
+
+:host([open]) {
+  display: block;
+}
+
+:host(:not([open])) {
+  display: none;
+}
