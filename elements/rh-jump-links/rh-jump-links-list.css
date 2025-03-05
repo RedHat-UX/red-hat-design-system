@@ -7,7 +7,6 @@
 }
 
 #container {
-  padding-block: var(--rh-space-md, 8px);
   padding-inline: var(--rh-space-lg, 16px);
 }
 

@@ -1,4 +1,4 @@
-import { html, LitElement, type TemplateResult } from 'lit';
+import { html, isServer, LitElement, type TemplateResult } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
@@ -24,22 +24,28 @@ export class RhJumpLinks extends LitElement {
   /** Accessible label for nav */
   @property() label?: string;
 
-  #tabindex = RovingTabindexController.of(this, {
-    getItems: () => Array.from(
-      this.querySelectorAll('rh-jump-links-item'),
-      x => x.shadowRoot?.querySelector('a')
-    ) as HTMLAnchorElement[],
-  });
-
   #spy = new ScrollSpyController(this, {
     rootMargin: '0px 0px 0px 0px',
     tagNames: ['rh-jump-links-item'],
+    onIntersection: () => {
+      for (const list of this.querySelectorAll('rh-jump-links-list')) {
+        list.active = !!list.querySelector('rh-jump-links-item[active]');
+      }
+    },
   });
 
   override connectedCallback(): void {
     super.connectedCallback();
     this.role = 'nav';
     this.addEventListener('select', this.#onSelect);
+    if (!isServer) {
+      RovingTabindexController.of(this, {
+        getItems: () => Array.from(
+          this.querySelectorAll('rh-jump-links-item'),
+          x => x.shadowRoot?.querySelector('a')
+        ).filter(x => !!x) as HTMLAnchorElement[],
+      });
+    }
   }
 
   override firstUpdated(): void {
