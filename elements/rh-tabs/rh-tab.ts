@@ -12,9 +12,9 @@ import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-
 import { context } from './context.js';
+
+import { colorSchemeConsumer } from '../../lib/context/color/consumer.js';
 
 import styles from './rh-tab.css';
 
@@ -43,6 +43,7 @@ export class TabExpandEvent extends Event {
  * @fires { TabExpandEvent } expand - when a tab expands
  */
 @customElement('rh-tab')
+@colorSchemeConsumer
 export class RhTab extends LitElement {
   static readonly styles = [styles];
 
@@ -56,8 +57,6 @@ export class RhTab extends LitElement {
   @property({ attribute: false })
   private ctx?: RhTabsContext;
 
-  /** Sets color theme based on parent context */
-  @colorContextConsumer() private on?: ColorTheme;
 
   @queryAssignedElements({ slot: 'icon', flatten: true }) private icons!: HTMLElement[];
 
@@ -74,7 +73,6 @@ export class RhTab extends LitElement {
   }
 
   render() {
-    const { on = 'light' } = this;
     const active = this.ctx?.activeTab === this;
     const { box = false, vertical = false, firstTab, lastTab } = this.ctx ?? {};
     const first = firstTab === this;
@@ -83,7 +81,7 @@ export class RhTab extends LitElement {
       <div id="button"
            part="button"
            ?disabled="${this.disabled}"
-           class="${classMap({ active, box, vertical, first, last, on: true, [on]: true })}">
+           class="${classMap({ active, box, vertical, first, last })}">
         <slot name="icon"
               part="icon"
               ?hidden="${!this.icons.length}"

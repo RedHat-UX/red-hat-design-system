@@ -14,7 +14,9 @@
   padding: 0;
   margin: 0;
   color: var(--rh-color-text-primary);
-  background-color: var(--rh-color-surface);
+  background-color:
+    light-dark(var(--rh-color-surface-lightest),
+      var(--rh-color-surface-darkest));
   font-weight: var(--rh-font-weight-body-text-medium, 500);
 }
 
@@ -75,8 +77,11 @@ span {
   }
 
   &:is(:hover,:active,:focus) {
-    &.light { background-color: var(--rh-color-surface-lighter); }
-    &.dark { background-color: var(--rh-color-surface-dark-alt); }
+    /**
+     * override surface color in order to use dark-alt
+     * FIXME: dark-alt should be replaced with oklch color transforms
+     */
+    background-color: light-dark(var(--rh-color-surface-lighter), var(--rh-color-surface-dark-alt));
 
     & span {
       color: var(--rh-color-text-primary);
@@ -104,14 +109,6 @@ span {
 
     & #icon {
       rotate: calc(var(--_isRTL, -1) * 180deg);
-    }
-
-    &.on.light {
-      --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
-    }
-
-    &.on.dark {
-      --rh-color-surface: var(--rh-color-surface-darkest, #151515);
     }
   }
 }
