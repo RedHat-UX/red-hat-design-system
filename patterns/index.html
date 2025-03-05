@@ -53,8 +53,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.5/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
@@ -123,7 +123,13 @@
 
   <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css"><style>
   #patterns-nav {
-    margin-block: var(--rh-space--2xl);
+    margin-block: var(--rh-space--2xl, 32px);
+  }
+    rh-tile h3 {
+    margin: 0 !important;
+  }
+  rh-tile p {
+    margin-block: 0 0 !important;
   }
 </style><script type="module">
   import '@rhds/elements/rh-tile/rh-tile.js';
@@ -909,36 +915,7 @@ a {
 }
 </style><!--lit-part BpIOZLGP/0w=-->
       <!--lit-node 0--><a class="  " href="/foundations/iconography/"><slot></slot></a>
-    <!--/lit-part--></template>Iconography</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item  href="/foundations/personalization/"><template shadowroot="open" shadowrootmode="open"><style>:host,
-a {
-  display: block;
-}
-
-a {
-  padding: var(--rh-space-lg) var(--rh-space-2xl);
-  font-size: var(--rh-font-size-body-text-lg);
-  text-decoration: none !important;
-  color: var(--rh-color-text-primary-on-light) !important;
-  border-inline-start: var(--rh-border-width-lg) solid transparent;
-}
-
-a:hover {
-  background: var(--rh-color-surface-lighter);
-  border-inline-start-color: var(--rh-color-border-subtle-on-light);
-}
-
-a.active {
-  background: var(--rh-color-surface-lighter);
-  border-inline-start-color: var(--rh-color-accent-brand-on-light);
-}
-a {
-  text-transform: capitalize;
-  padding: var(--rh-space-md) 0 var(--rh-space-md) var(--rh-space-lg);
-  font-size: var(--rh-font-size-body-text-md);
-}
-</style><!--lit-part BpIOZLGP/0w=-->
-      <!--lit-node 0--><a class="  " href="/foundations/personalization/"><slot></slot></a>
-    <!--/lit-part--></template>Personalization patterns</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item  href="/foundations/spacing/"><template shadowroot="open" shadowrootmode="open"><style>:host,
+    <!--/lit-part--></template>Iconography</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item  href="/foundations/spacing/"><template shadowroot="open" shadowrootmode="open"><style>:host,
 a {
   display: block;
 }
@@ -4096,6 +4073,86 @@ a {
       <slot></slot>
     <!--/lit-part--></template>
     <details>
+      <summary>Personalization</summary>
+      <uxdot-sidenav-dropdown-menu><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  padding-inline-start: var(--rh-space-2xl);
+}
+</style><!--lit-part kHJJur9OVoU=-->
+      <slot></slot>
+    <!--/lit-part--></template>
+        
+        
+        <uxdot-sidenav-dropdown-menu-item  href="/personalization/"><template shadowroot="open" shadowrootmode="open"><style>:host,
+a {
+  display: block;
+}
+
+a {
+  padding: var(--rh-space-lg) var(--rh-space-2xl);
+  font-size: var(--rh-font-size-body-text-lg);
+  text-decoration: none !important;
+  color: var(--rh-color-text-primary-on-light) !important;
+  border-inline-start: var(--rh-border-width-lg) solid transparent;
+}
+
+a:hover {
+  background: var(--rh-color-surface-lighter);
+  border-inline-start-color: var(--rh-color-border-subtle-on-light);
+}
+
+a.active {
+  background: var(--rh-color-surface-lighter);
+  border-inline-start-color: var(--rh-color-accent-brand-on-light);
+}
+a {
+  text-transform: capitalize;
+  padding: var(--rh-space-md) 0 var(--rh-space-md) var(--rh-space-lg);
+  font-size: var(--rh-font-size-body-text-md);
+}
+</style><!--lit-part BpIOZLGP/0w=-->
+      <!--lit-node 0--><a class="  " href="/personalization/"><slot></slot></a>
+    <!--/lit-part--></template>All Personalization Patterns</uxdot-sidenav-dropdown-menu-item><uxdot-sidenav-dropdown-menu-item  href="/personalization/announcement/"><template shadowroot="open" shadowrootmode="open"><style>:host,
+a {
+  display: block;
+}
+
+a {
+  padding: var(--rh-space-lg) var(--rh-space-2xl);
+  font-size: var(--rh-font-size-body-text-lg);
+  text-decoration: none !important;
+  color: var(--rh-color-text-primary-on-light) !important;
+  border-inline-start: var(--rh-border-width-lg) solid transparent;
+}
+
+a:hover {
+  background: var(--rh-color-surface-lighter);
+  border-inline-start-color: var(--rh-color-border-subtle-on-light);
+}
+
+a.active {
+  background: var(--rh-color-surface-lighter);
+  border-inline-start-color: var(--rh-color-accent-brand-on-light);
+}
+a {
+  text-transform: capitalize;
+  padding: var(--rh-space-md) 0 var(--rh-space-md) var(--rh-space-lg);
+  font-size: var(--rh-font-size-body-text-md);
+}
+</style><!--lit-part BpIOZLGP/0w=-->
+      <!--lit-node 0--><a class="  " href="/personalization/announcement/"><slot></slot></a>
+    <!--/lit-part--></template>Announcement</uxdot-sidenav-dropdown-menu-item>
+      </uxdot-sidenav-dropdown-menu>
+    </details>
+  </uxdot-sidenav-dropdown>
+
+  <uxdot-sidenav-dropdown><template shadowroot="open" shadowrootmode="open"><style>:host {
+  z-index: var(--uxdot-sidenav-z-index, 102);
+}
+</style><!--lit-part kHJJur9OVoU=-->
+      <slot></slot>
+    <!--/lit-part--></template>
+    <details>
       <summary>Accessibility</summary>
       <uxdot-sidenav-dropdown-menu><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: block;
@@ -4919,8 +4976,8 @@ create uniform, accessible experiences.</p>
     <!--/lit-part--></template>
       <img alt="Card" src="/assets/patterns/all-patterns-card.png">
     </uxdot-example>
-    <a slot="headline" href="/patterns/card/"><h3 id="card">Card</h3></a>
-    <p slot="footer">Arranges content and interactive elements in a layout</p>
+    <h3 slot="headline"><a href="/patterns/card/">Card</a></h3>
+    <p>Arranges content and interactive elements in a layout</p>
   </rh-tile><rh-tile>
     <uxdot-example  slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: block;
@@ -4998,8 +5055,8 @@ create uniform, accessible experiences.</p>
     <!--/lit-part--></template>
       <img alt="Disclosure" src="/assets/patterns/all-patterns-disclosure.png">
     </uxdot-example>
-    <a slot="headline" href="/patterns/disclosure/"><h3 id="disclosure">Disclosure</h3></a>
-    <p slot="footer">Toggles the visibility of a content panel</p>
+    <h3 slot="headline"><a href="/patterns/disclosure/">Disclosure</a></h3>
+    <p>Toggles the visibility of a content panel</p>
   </rh-tile><rh-tile>
     <uxdot-example  slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: block;
@@ -5077,8 +5134,8 @@ create uniform, accessible experiences.</p>
     <!--/lit-part--></template>
       <img alt="Filter" src="/assets/patterns/all-patterns-filter.png">
     </uxdot-example>
-    <a slot="headline" href="/patterns/filter/"><h3 id="filter">Filter</h3></a>
-    <p slot="footer">Sorts data by predetermined sections and tags</p>
+    <h3 slot="headline"><a href="/patterns/filter/">Filter</a></h3>
+    <p>Sorts data by predetermined sections and tags</p>
   </rh-tile><rh-tile>
     <uxdot-example  slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: block;
@@ -5156,8 +5213,8 @@ create uniform, accessible experiences.</p>
     <!--/lit-part--></template>
       <img alt="Form" src="/assets/patterns/all-patterns-form.png">
     </uxdot-example>
-    <a slot="headline" href="/patterns/form/"><h3 id="form">Form</h3></a>
-    <p slot="footer">Collects information from a user through inputs</p>
+    <h3 slot="headline"><a href="/patterns/form/">Form</a></h3>
+    <p>Collects information from a user through inputs</p>
   </rh-tile><rh-tile>
     <uxdot-example  slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: block;
@@ -5235,8 +5292,8 @@ create uniform, accessible experiences.</p>
     <!--/lit-part--></template>
       <img alt="Link with icon" src="/assets/patterns/all-patterns-link-with-icon.png">
     </uxdot-example>
-    <a slot="headline" href="/patterns/link-with-icon/"><h3 id="link-with-icon">Link with icon</h3></a>
-    <p slot="footer">Adds additional context or decoration to a link</p>
+    <h3 slot="headline"><a href="/patterns/link-with-icon/">Link with icon</a></h3>
+    <p>Adds additional context or decoration to a link</p>
   </rh-tile><rh-tile>
     <uxdot-example  slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: block;
@@ -5314,8 +5371,8 @@ create uniform, accessible experiences.</p>
     <!--/lit-part--></template>
       <img alt="Link" src="/assets/patterns/all-patterns-link.png">
     </uxdot-example>
-    <a slot="headline" href="/patterns/link/"><h3 id="link">Link</h3></a>
-    <p slot="footer">Directs users to other domains or pages</p>
+    <h3 slot="headline"><a href="/patterns/link/">Link</a></h3>
+    <p>Directs users to other domains or pages</p>
   </rh-tile><rh-tile>
     <uxdot-example  slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: block;
@@ -5393,8 +5450,8 @@ create uniform, accessible experiences.</p>
     <!--/lit-part--></template>
       <img alt="Logo wall" src="/assets/patterns/all-patterns-logo-wall.png">
     </uxdot-example>
-    <a slot="headline" href="/patterns/logo-wall/"><h3 id="logo-wall">Logo wall</h3></a>
-    <p slot="footer">Visual arrangement of logos representing various brands, companies, or organizations</p>
+    <h3 slot="headline"><a href="/patterns/logo-wall/">Logo wall</a></h3>
+    <p>Visual arrangement of logos representing various brands, companies, or organizations</p>
   </rh-tile><rh-tile>
     <uxdot-example  slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: block;
@@ -5472,8 +5529,8 @@ create uniform, accessible experiences.</p>
     <!--/lit-part--></template>
       <img alt="Search bar" src="/assets/patterns/all-patterns-search-bar.png">
     </uxdot-example>
-    <a slot="headline" href="/patterns/search-bar/"><h3 id="search-bar">Search bar</h3></a>
-    <p slot="footer">Performs a search and displays relevant content</p>
+    <h3 slot="headline"><a href="/patterns/search-bar/">Search bar</a></h3>
+    <p>Performs a search and displays relevant content</p>
   </rh-tile><rh-tile>
     <uxdot-example  slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: block;
@@ -5551,8 +5608,8 @@ create uniform, accessible experiences.</p>
     <!--/lit-part--></template>
       <img alt="Skip navigation" src="/assets/patterns/all-patterns-skip-navigation.png">
     </uxdot-example>
-    <a slot="headline" href="/patterns/skip-navigation/"><h3 id="skip-navigation">Skip navigation</h3></a>
-    <p slot="footer">Moves a user down to content by keyboard input</p>
+    <h3 slot="headline"><a href="/patterns/skip-navigation/">Skip navigation</a></h3>
+    <p>Moves a user down to content by keyboard input</p>
   </rh-tile><rh-tile>
     <uxdot-example  slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: block;
@@ -5630,8 +5687,8 @@ create uniform, accessible experiences.</p>
     <!--/lit-part--></template>
       <img alt="Sticky banner" src="/assets/patterns/all-patterns-sticky-banner.png">
     </uxdot-example>
-    <a slot="headline" href="/patterns/sticky-banner/"><h3 id="sticky-banner">Sticky banner</h3></a>
-    <p slot="footer">Anchors an offer to the bottom edge of a page</p>
+    <h3 slot="headline"><a href="/patterns/sticky-banner/">Sticky banner</a></h3>
+    <p>Anchors an offer to the bottom edge of a page</p>
   </rh-tile><rh-tile>
     <uxdot-example  slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: block;
@@ -5709,8 +5766,8 @@ create uniform, accessible experiences.</p>
     <!--/lit-part--></template>
       <img alt="Sticky card" src="/assets/patterns/all-patterns-sticky-card.png">
     </uxdot-example>
-    <a slot="headline" href="/patterns/sticky-card/"><h3 id="sticky-card">Sticky card</h3></a>
-    <p slot="footer">Anchors an offer to the right edge of a page</p>
+    <h3 slot="headline"><a href="/patterns/sticky-card/">Sticky card</a></h3>
+    <p>Anchors an offer to the right edge of a page</p>
   </rh-tile><rh-tile>
     <uxdot-example  slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: block;
@@ -5788,8 +5845,8 @@ create uniform, accessible experiences.</p>
     <!--/lit-part--></template>
       <img alt="Tabs" src="/assets/patterns/all-patterns-examples.png">
     </uxdot-example>
-    <a slot="headline" href="/patterns/tabs/examples/"><h3 id="tabs">Tabs</h3></a>
-    <p slot="footer"></p>
+    <h3 slot="headline"><a href="/patterns/tabs/examples/">Tabs</a></h3>
+    <p></p>
   </rh-tile><rh-tile>
     <uxdot-example  slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: block;
@@ -5867,8 +5924,8 @@ create uniform, accessible experiences.</p>
     <!--/lit-part--></template>
       <img alt="Tile" src="/assets/patterns/all-patterns-tile.png">
     </uxdot-example>
-    <a slot="headline" href="/patterns/tile/"><h3 id="tile">Tile</h3></a>
-    <p slot="footer">Style Tiles to differentiate them from other page elements</p>
+    <h3 slot="headline"><a href="/patterns/tile/">Tile</a></h3>
+    <p>Style Tiles to differentiate them from other page elements</p>
   </rh-tile><rh-tile>
     <uxdot-example  slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: block;
@@ -5946,8 +6003,8 @@ create uniform, accessible experiences.</p>
     <!--/lit-part--></template>
       <img alt="Video thumbnail" src="/assets/patterns/all-patterns-video-thumbnail.png">
     </uxdot-example>
-    <a slot="headline" href="/patterns/video-thumbnail/"><h3 id="video-thumbnail">Video thumbnail</h3></a>
-    <p slot="footer">Overlays a button that indicates video playback</p>
+    <h3 slot="headline"><a href="/patterns/video-thumbnail/">Video thumbnail</a></h3>
+    <p>Overlays a button that indicates video playback</p>
   </rh-tile></nav>
 <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: flex;
