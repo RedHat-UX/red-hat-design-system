@@ -127,15 +127,41 @@ consumers**).
 Being aware of which elements are rendering in which color scheme is important 
 to ensure that things like icons, text, and border colours remain legible.
 
-<rh-alert>Page authors *do not need to and should not customize* colors of
-  consumer elements, but instead should set custom values for [theme
-  tokens][theming]. Color palette containers can be nested, such that child
-  elements will always adopt the color theme corresponding to the nearest
-  container's palette.</rh-alert>
+<rh-alert>Page authors *do not need to and should not* directly customize the
+  colors of consumer elements, but instead should set custom values for [theme
+  tokens][theming].</rh-alert>
 
-Extending our card example from above, if our page author then adds an
+
+<uxdot-best-practice variant="do">
+
+```css rhcodeblock {slot=image}
+.custom-theme-card {
+  --rh-color-interactive-primary-default-on-light: var(--my-theme-darkblue);
+  --rh-color-interactive-primary-default-on-dark: var(--my-theme-lightblue);
+}
+```
+
+Customize theming tokens for themed containers
+
+</uxdot-best-practice>
+<uxdot-best-practice variant="dont">
+
+```css rhcodeblock {slot=image}
+.custom-cta {
+  color: var(--my-theme-darkblue);
+}
+```
+
+Avoid customizing element CSS directly
+
+</uxdot-best-practice>
+
+
+Color palette containers can be nested, such that child elements will always 
+adopt the color theme corresponding to the nearest container's palette.
+Extending our card example from above, if you add an
 `<rh-cta>` to the card, it will *automatically* adopt the dark color theme. The
-page author need not and should not customize the CTA.
+page author need not and should not customize the CTA's colours.
 
 <uxdot-pattern class="card-snippet-grid"
                src="./patterns/card-child-consumers.html"
