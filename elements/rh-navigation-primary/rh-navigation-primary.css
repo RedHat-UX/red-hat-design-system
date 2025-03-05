@@ -143,6 +143,11 @@
       z-index: 1;
     }
 
+    &::marker,
+    &::-webkit-details-marker {
+      display: none;
+    }
+
     slot[name='summary'] {
       display: none;
     }
@@ -160,11 +165,6 @@
         display: contents;
       }
     }
-  }
-
-  &::marker,
-  &::-webkit-details-marker {
-    display: none;
   }
 
   & #details-content {

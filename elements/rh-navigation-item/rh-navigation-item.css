@@ -379,15 +379,16 @@
       display: inline-block;
       height: fit-content;
       border-block-start: none;
+      padding: var(--rh-space-md);
 
       & ::slotted(a) {
+        display: inline-flex;
         height: auto;
         align-items: center;
         padding: var(--rh-space-md) !important;
       }
 
       & ::slotted(a:hover) {
-        display: flex;
         background-color: var(--_background-color);
         color: var(--rh-color-interactive-primary-default) !important;
         text-decoration: none !important;

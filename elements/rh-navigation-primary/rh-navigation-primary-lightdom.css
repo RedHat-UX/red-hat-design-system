@@ -17,12 +17,11 @@ rh-navigation-primary {
       }
     }
 
-    &[slot='links'] {
-      & a {
-        padding-inline: var(--rh-space-md);
-        margin-inline: var(--rh-space-md);
-      }
+    &[slot='event']::part(container) {
+      padding: 0;
+    }
 
+    &[slot='links'] {
       &:after {
         content: '';
         height: 100%;

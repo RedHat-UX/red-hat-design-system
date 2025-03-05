@@ -102,7 +102,7 @@ export class RhNavigationItem extends LitElement {
       compact,
     };
     return html`
-      <div id="container" class="${classMap(classes)}">
+      <div id="container" class="${classMap(classes)}" part="container">
         ${this.variant === 'dropdown' ? html`
           <details @toggle="${this.#detailsToggle}">
             <summary>            
