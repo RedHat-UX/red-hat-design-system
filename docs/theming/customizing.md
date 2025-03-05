@@ -62,7 +62,6 @@ order: 3
   }
 </style>
 
-
 Red Hat Design System is composed of tokens, elements, and patterns, each layer
 building on the last. Theming emerges as a design possibility from the
 composition of those smaller pieces. By setting custom values for themeable
@@ -72,9 +71,12 @@ and to both the `light` and `dark` backgrounds.
 
 ## Custom themes
 
-To create a custom theme, designers and developers need only set the values for
-the relevant color properties in the design system. For example, a _Bordeaux_
-theme might look like this:
+To create a custom theme, designers and developers need only set the values for 
+the relevant color properties in the design system in their page's <abbr 
+  title="Cascading style sheets">CSS</abbr>. For example, let's create a custom 
+_Bordeaux_ theme. We'll write a CSS rule which selects for the `theme-bordeaux` 
+class, and in that rule we'll set the values of <abbr title="red hat design 
+  system">RHDS</abbr> theming tokens to our custom theme colors.
 
 <uxdot-pattern class="card-snippet-grid"
                full-height
@@ -82,7 +84,7 @@ theme might look like this:
                src="./patterns/card-bordeaux.html">
 </uxdot-pattern>
 
-<rh-alert>When writing themes, use the semantic, themeable tokens such as
+<rh-alert>When writing themes, override the semantic, themeable tokens such as
 `--rh-color-interactive-primary-default-on-light` rather than the crayon tokens
 e.g. `--rh-color-purple-10`.</rh-alert>
 
@@ -95,6 +97,10 @@ you from their `-on-light` and `-on-dark` versions.
 
 </rh-alert>
 
+### Customizing entire pages
+
+To customize entire page, we can apply the `theme-bordeaux` class to the body element.
+
 <rh-card>
   <label for="bordeaux-page-switch">
     What would it look like to set that theme on an entire page?
@@ -104,10 +110,7 @@ you from their `-on-light` and `-on-dark` versions.
              message-off="Raleigh"></rh-switch>
 </rh-card>
 
-- set token values on `:root` for whole pages, or on a selector for a class
-(e.g. 3-card promo band)
-- brag about your customizations! did other teams use it, or something similar?
-  maybe it should be added upstream to the design system?
+Have you written a custom theme for RHDS? Brag about it! Let us know in slack, show it off on your blog.
 
 ## When to use custom themes
 
