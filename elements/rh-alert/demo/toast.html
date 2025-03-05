@@ -1,81 +1,57 @@
-<section id="alert-variant-toast">
-  <rh-alert variant="toast">
-    <h3 slot="header">Neutral</h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
-      egestas, a sollicitudin mauris tincidunt.</p>
-    <rh-button slot="actions" variant="secondary" data-action="confirm">Confirm</rh-button>
-    <rh-button slot="actions" variant="link" data-action="dismiss">Cancel</rh-button>
-  </rh-alert>
-
-  <rh-alert state="info" variant="toast">
-    <h3 slot="header">Info</h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
-      egestas, a sollicitudin mauris tincidunt.</p>
-    <rh-button slot="actions" variant="secondary" data-action="confirm">Confirm</rh-button>
-    <rh-button slot="actions" variant="link" data-action="dismiss">Cancel</rh-button>
-  </rh-alert>
-
-  <rh-alert state="success" variant="toast">
-    <h3 slot="header">Success</h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
-      egestas, a sollicitudin mauris tincidunt.</p>
-    <rh-button slot="actions" variant="secondary" data-action="confirm">Confirm</rh-button>
-    <rh-button slot="actions" variant="link" data-action="dismiss">Cancel</rh-button>
-  </rh-alert>
-
-  <rh-alert state="warning" variant="toast">
-    <h3 slot="header">Warning</h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
-      egestas, a sollicitudin mauris tincidunt.</p>
-    <rh-button slot="actions" variant="secondary" data-action="confirm">Confirm</rh-button>
-    <rh-button slot="actions" variant="link" data-action="dismiss">Cancel</rh-button>
-  </rh-alert>
-
-  <rh-alert state="danger" variant="toast">
-    <h3 slot="header">Danger</h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
-      egestas, a sollicitudin mauris tincidunt.</p>
-    <rh-button slot="actions" variant="secondary" data-action="confirm">Confirm</rh-button>
-    <rh-button slot="actions" variant="link" data-action="dismiss">Cancel</rh-button>
-  </rh-alert>
-
-  <rh-alert state="error" variant="toast">
-    <h3 slot="header">Error</h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
-      egestas, a sollicitudin mauris tincidunt.</p>
-    <rh-button slot="actions" variant="link" data-action="dismiss">Dismiss</rh-button>
-    <rh-button slot="actions" variant="link" data-action="confirm">Confirm</rh-button>
-  </rh-alert>
-
-  <rh-alert state="caution" variant="toast">
-    <h3 slot="header">Caution</h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
-      egestas, a sollicitudin mauris tincidunt.</p>
-    <rh-button slot="actions" variant="link" data-action="dismiss">Dismiss</rh-button>
-    <rh-button slot="actions" variant="link" data-action="confirm">Confirm</rh-button>
-  </rh-alert>
-
-  <rh-button id="create-toast">Create Animated Toast</rh-button>
-</section>
+<form id="alert-variant-toast">
+  <fieldset>
+    <legend>Alert State</legend>
+    <label><input type="radio" name="state" value="neutral">Neutral</label>
+    <label><input type="radio" name="state" value="info">Info</label>
+    <label><input type="radio" name="state" value="success">Success</label>
+    <label><input type="radio" name="state" value="caution">Caution</label>
+    <label><input type="radio" name="state" value="warning">Warning</label>
+    <label><input type="radio" name="state" value="danger">Danger</label>
+  </fieldset>
+  <fieldset>
+    <legend>Persistence</legend>
+    <label><input type="checkbox" name="persistent">Persistent</label>
+  </fieldset>
+  <fieldset>
+    <legend>Actions</legend>
+    <label><input type="radio" name="actions" value="none">No actions</label>
+    <label><input type="radio" name="actions" value="primary">Single action</label>
+    <label><input type="radio" name="actions" value="secondary">Secondary action</label>
+  </fieldset>
+  <rh-button>Toast alert</rh-button>
+</form>
 
 <style>
   #alert-variant-toast {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, max(40vh, 40%)));
-    grid-auto-rows: min-content;
     gap: var(--rh-space-lg, 16px);
+    padding: var(--rh-space-lg, 16px);
+    width: max-content;
   }
 </style>
 
 <script type="module">
-  import '@rhds/elements/rh-button/rh-button.js';
   import { RhAlert } from '@rhds/elements/rh-alert/rh-alert.js';
+  import '@rhds/elements/rh-button/rh-button.js';
   let i = 0;
-  document.getElementById('create-toast')
-    .addEventListener('click', function() {
-      RhAlert.toast({
-        message: `New toast ${++i}`,
-        heading: 'Toast!',
-      });
+  document.addEventListener('close', e => console.log(e.action));
+  document.getElementById('alert-variant-toast').addEventListener('submit', async function(event) {
+    event.preventDefault();
+    const data = new FormData(event.target);
+    const persistent = data.has('persistent');
+    const state = data.get('state') ?? 'info';
+    const [a, ...rest] = state;
+    await RhAlert.toast({
+      state,
+      persistent,
+      message: `${++i}: Lorem ipsum dolor sit amet, consectetur adipiscing elit.`,
+      heading: `${a.toUpperCase()}${rest.join('')}${persistent ? ` - persistent`:''}`,
+      actions: data.get('actions') === 'primary' ? [
+          { action: 'dismiss', text: 'Dismiss' },
+        ] : data.get('actions') === 'secondary' ? [
+          { action: 'confirm', text: 'Confirm' },
+          { action: 'dismiss', text: 'Dismiss' },
+        ] : undefined,
     });
+  });
 </script>
