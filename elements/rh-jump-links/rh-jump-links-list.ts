@@ -30,14 +30,9 @@ export class RhJumpLinksList extends LitElement {
     return html`
       <slot name="parent"></slot>
       <div id="container" role="list">
-        <slot @active-changed="${this.#onMo}"></slot>
+        <slot></slot>
       </div>
     `;
-  }
-
-  #onMo(event: Event) {
-    console.log(event);
-    this.active = !!this.querySelector('[active]');
   }
 }
 
