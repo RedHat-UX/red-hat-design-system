@@ -46,6 +46,11 @@ export class RhChip extends LitElement {
   @property({ type: Boolean, reflect: true }) checked = false;
 
   /**
+   * Whether the chip is disabled.
+   */
+  @property({ type: Boolean, reflect: true }) disabled = false;
+
+  /**
    * Set a custom string for the input's `name` attribute. Defaults to `chip-checkbox`.
    */
   @property({ reflect: true, attribute: 'name' }) chipName?: string;
@@ -72,15 +77,30 @@ export class RhChip extends LitElement {
                name=${attrName}
                value=${ifDefined(this.chipValue)}
                @change=${this.#onChecked}
-               ?checked=${this.checked}>
+               @keydown=${this.#handleKeydown}
+               ?checked=${!this.disabled && this.checked}
+               aria-disabled=${!!this.disabled}>
         <rh-icon id="close-icon" set="ui" icon="close-circle"></rh-icon>
       </label>
     `;
   }
 
-  #onChecked() {
+  #onChecked(event: Event) {
+    if (this.disabled) {
+      event.preventDefault();
+      (event.target as HTMLInputElement).checked = this.checked;
+      return;
+    }
+
     this.checked = this.chipInput.checked;
     this.dispatchEvent(new ChipCheckedEvent(this.checked));
+  }
+
+  #handleKeydown(event: KeyboardEvent) {
+    // Prevent checking via keyboard when disabled
+    if (this.disabled && event.key === 'Spacebar') {
+      event.preventDefault();
+    }
   }
 }
 
