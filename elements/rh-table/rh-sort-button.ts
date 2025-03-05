@@ -3,17 +3,17 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 
-import { ComposedEvent } from '@patternfly/pfe-core';
-
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
 import styles from './rh-sort-button.css';
 
 const DIRECTIONS_OPPOSITES = { asc: 'desc', desc: 'asc' } as const;
 
-export class RequestSortEvent extends ComposedEvent {
+export class RequestSortEvent extends Event {
   constructor(public direction: 'asc' | 'desc') {
     super('request-sort', {
+      bubbles: true,
+      composed: true,
       cancelable: true,
     });
   }
