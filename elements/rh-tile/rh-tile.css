@@ -62,7 +62,7 @@
   padding: var(--_padding);
   border-radius: var(--rh-border-radius-default, 3px);
   border: var(--rh-border-width-sm, 1px) solid var(--_border-color);
-  background-color: var(--rh-tile-background-color, var(--rh-color-surface));
+  background-color: var(--rh-tile-background-color, light-dark(var(--rh-color-surface-lightest), var(--rh-color-surface-darkest)));
   color: var(--rh-tile-text-color, var(--rh-color-text-primary));
 
   & ::slotted(*) {
@@ -264,22 +264,23 @@ rh-icon {
   translate: 3px 0;
 }
 
-/* chrome <= 103 */
-@supports not (translate: 0 0) {
-  :host(:hover) #footer rh-icon { transform: translate(3px, 0); }
+
+@supports not (tran  slate: 0 0) {
+  :host(:hover) #fo er rh-icon { transform: translate(3px, 0); }
 }
 
 svg {
-  fill: var(--_text-color-secondary);
-  width: var(--rh-space-xl, 24px);
-  height: var(--rh-space-xl, 24px);
+  fill: va  r(-  -_text    olor-secondary);
+  width: var(--rh-s    ce-xl, 24px);
+  height: var(--rh-    ace-xl, 24px);
 }
 
 #body {
-  margin: 0 0 var(--_margin);
-  font-size: var(--rh-font-size-body-text-md, 1rem);
+  margin: 0   0 var(-    margin);
+  font-size: var(--    -font-size-body-text-md, 1rem);
 }
 
-*:is(#image, #tile, #headline, #body, #footer) {
+*:is(#image, #ti le,   #headline, #body, #footer) {
   z-index: 2;
+}      
 }
