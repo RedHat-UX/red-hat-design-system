@@ -10,7 +10,7 @@
   --_panel-body-padding-inline-start: var(--rh-space-xl, 24px);
 }
 
-:host ::slotted(*) {
+::slotted(*:not(rh-accordion)) {
   display: block;
   margin: unset;
   background-color: transparent;
@@ -52,7 +52,7 @@
 
 #container {
   border-inline-end: 1px solid var(--rh-color-border-subtle);
-  background-color: var(--rh-color-surface);
+  background-color: var(--_accordion-background);
 }
 
 .body:after {

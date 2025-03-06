@@ -9,17 +9,6 @@
   --_isRTL: -1;
 }
 
-#heading {
-  font-size: 100%;
-  padding: 0;
-  margin: 0;
-  color: var(--rh-color-text-primary);
-  background-color:
-    light-dark(var(--rh-color-surface-lightest),
-      var(--rh-color-surface-darkest));
-  font-weight: var(--rh-font-weight-body-text-medium, 500);
-}
-
 button,
 a {
   cursor: pointer;
@@ -62,6 +51,9 @@ span {
 }
 
 #button {
+  color: var(--rh-color-text-primary);
+  background-color: var(--_accordion-background);
+  font-weight: var(--rh-font-weight-body-text-medium, 500);
   width: 100%;
   padding:
     var(--_padding-block-start)
@@ -90,12 +82,6 @@ span {
 
   &:focus {
     outline: 2px solid var(--rh-color-interactive-primary-default);
-  }
-
-  &,
-  &:before,
-  &:after {
-    background-color: var(--rh-color-surface);
   }
 
   &:after {
