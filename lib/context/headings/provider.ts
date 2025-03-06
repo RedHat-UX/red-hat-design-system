@@ -35,7 +35,8 @@ export class HeadingLevelContextProvider extends HeadingLevelController {
   #callbacks = new Set<ContextCallback<number>>();
 
   hostConnected() {
-    this.host.addEventListener('context-request', e => this.#onChildContextRequestEvent(e));
+    this.host.addEventListener('context-request', e =>
+      this.#onChildContextRequestEvent(e as ContextRequestEvent<any>));
     for (const [host, fired] of contextEvents) {
       host.dispatchEvent(fired);
     }

@@ -108,7 +108,8 @@ export class ColorContextProvider<
      * in case this context provider upgraded after and is closer to a given consumer.
      */
   async hostConnected() {
-    this.host.addEventListener('context-request', e => this.#onChildContextRequestEvent(e));
+    this.host.addEventListener('context-request', e =>
+      this.#onChildContextRequestEvent(e as ContextRequestEvent<any>));
     this.#mo.observe(this.host, { attributes: true, attributeFilter: [this.#attribute] });
     await this.host.updateComplete;
     for (const [host, fired] of contextEvents) {

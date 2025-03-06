@@ -1,0 +1,271 @@
+---
+layout: layouts/base.njk
+title: Home
+---
+
+<link rel="stylesheet" data-helmet href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
+
+<style data-helmet>
+  #container {
+    --main-padding: var(--rh-space-lg);
+
+    max-width: var(--container-max-width);
+    container: container / inline-size;
+    padding-inline: var(--main-padding);
+    padding-block-start: calc(var(--uxdot-masthead-max-height) + var(--main-padding));
+    padding-block-end: 6rem;
+
+    @media (min-width: 576px) { --main-padding: var(--rh-space-2xl); }
+    @media (min-width: 768px) { --main-padding: var(--rh-space-3xl); }
+    @media (min-width: 992px) { --main-padding: var(--rh-space-6xl); }
+  }
+
+  h2 {
+    font-size: var(--rh-font-size-heading-md);
+    font-weight: var(--rh-font-weight-heading-medium);
+    line-height: var(--rh-line-height-heading);
+    margin: 0;
+  }
+
+  #hero {
+    display: grid;
+    margin-block-end: calc(10 * var(--rh-space-lg));
+    grid-template-areas: 'h i' 'p i';
+    gap: var(--rh-space-3xl) var(--rh-space-5xl);
+
+    & h1 {
+      grid-area: h;
+      font-size: 4rem; /* TODO(coreyvickery): add bigger heading tokens */
+      font-weight: var(--rh-font-weight-heading-regular);
+      font-family: var(--rh-font-family-heading);
+      line-height: var(--rh-line-height-heading);
+      max-width: 546px;
+      color: var(--rh-color-brand-red);
+      margin: 0;
+    }
+
+    & img {
+      grid-area: i;
+    }
+
+    & p {
+      grid-area: p;
+      margin: 0;
+      font-size: var(--rh-font-size-body-text-xl);
+      line-height: var(--rh-line-height-body-text);
+    }
+  }
+
+  rh-card {
+    --rh-color-border-subtle-on-light: transparent;
+    --rh-color-border-subtle-on-dark: transparent;
+
+    & p { margin: 0; }
+
+    & rh-icon {
+      width: var(--rh-size-icon-05);
+      color: var(--rh-color-icon-primary);
+    }
+
+    &.start {
+      margin-block-end: var(--rh-space-2xl);
+      &::part(header),
+      &::part(footer),
+      &::part(body) {
+        margin-inline: 0;
+      }
+    }
+
+    &.nav {
+      --nav-padding: var(--rh-space-4xl);
+
+      margin-block: var(--rh-space-4xl) calc(6 * var(--rh-space-lg));
+      &:last-of-type { margin-block-end: 0; }
+      width: calc(100% - 2 * var(--nav-padding));
+
+      @media (min-width: 576px) { --nav-padding: var(--rh-space-lg); }
+      @media (min-width: 768px) { --nav-padding: var(--rh-space-2xl); }
+      @media (min-width: 992px) { --nav-padding: var(--rh-space-4xl); }
+
+      & > h2 {
+        font-size: var(--rh-font-size-heading-xl) !important;
+        font-weight: var(--rh-font-weight-heading-normal);
+      }
+
+      & [slot=image] {
+        max-width: initial;
+      }
+
+      &::part(container) {
+        display: grid;
+        background: linear-gradient(90deg, var(--rh-color-gray-10) 0%, white 100%);
+        background-repeat: no-repeat;
+        border-radius: 48px 16px;
+        padding: var(--nav-padding);
+        grid-template-rows: 1fr auto 1fr;
+        grid-template-areas:
+            'header image'
+            'body image'
+            'footer image';
+      }
+      &::part(image) {
+        grid-area: image;
+        justify-self: end;
+      }
+      &::part(header) {
+        margin: 0;
+        grid-area: header;
+        align-self: end;
+      }
+      &::part(body) {
+        margin-inline: 0;
+        margin-block: var(--rh-space-lg) var(--rh-space-2xl);
+        grid-area: body;
+        align-self: center;
+      }
+      &::part(footer) {
+        margin: 0;
+        align-self: start;
+        grid-area: footer;
+      }
+    }
+  }
+
+  .tiles {
+    margin-bottom: calc(10 * var(--rh-space-lg));
+    & p {
+      margin: 0;
+      font-size: var(--rh-font-size-body-text-sm);
+    }
+  }
+</style>
+
+<script type="module" data-helmet>
+  import '@rhds/elements/rh-surface/rh-surface.js';
+  import '@rhds/elements/rh-cta/rh-cta.js';
+  import '@rhds/elements/rh-card/rh-card.js';
+  import '@rhds/elements/rh-footer/rh-footer.js';
+  import '@rhds/elements/rh-tag/rh-tag.js';
+  import '@rhds/elements/rh-tile/rh-tile.js';
+</script>
+
+{% include 'partials/component/masthead.njk' %}
+{% include 'partials/component/sidenav.njk' %}
+
+<rh-surface id="main"
+            role="main"
+            color-palette="lightest">
+  <div id="container">
+    <header id="hero">
+      <h1>Digital experiences that look and feel like Red Hat</h1>
+      <p>RHDS is Red Hat’s open source design system for branded digital experiences. Our system includes design language, elements, developer tools, and more to help you create and ship
+        digital experiences that <strong>look and feel like Red Hat.</strong></p>
+      <img alt="a woman sits cross-legged on a low office chair, smiling at the screen of the black laptop on her knee. floating graphics surround her head: a cloud, a stylized representation of a website"
+           src="/assets/home/hero-image.png"
+           width="464"
+           height="438">
+    </header>
+
+    <h2>Start here or explore more below</h2>
+
+    <div class="grid sm-four-columns">
+      <rh-card class="start">
+        <rh-icon slot="header" icon="install"></rh-icon>
+        <h3 slot="header" id="installation">Installation</h3>
+        <p><a href="/get-started/developers/installation/">Installing RHDS</a> is easy using CDN, NPM, or JSPM</p>
+      </rh-card>
+      <rh-card class="start">
+        <rh-icon slot="header" icon="run-pipeline"></rh-icon>
+        <h3 slot="header" id="onboarding">Onboarding</h3>
+        <p>Our <a href="/get-started/">role-specific pages</a> guide you through using RHDS</p>
+      </rh-card>
+      <rh-card class="start">
+        <rh-icon slot="header" icon="toolbox"></rh-icon>
+        <h3 slot="header" id="installation">Design tokens</h3>
+        <p>The <a href="/tokens/">single source of truth</a> for our design decisions</p>
+      </rh-card>
+      <rh-card class="start">
+        <rh-icon slot="header" icon="wheelchair-accessible"></rh-icon>
+        <h3 slot="header" id="accessibility">Accessibility</h3>
+        <p>Learn about our accessibility <a href="/accessibility/">policies and best practices</a></p>
+      </rh-card>
+    </div>
+
+    <div class="tiles grid sm-two-columns">
+      <rh-tile compact>
+        <img alt="hexagon composed of two opposing angle brackets, one black, one styled blue and green"
+             src="/assets/home/web-components.svg"
+             slot="icon">
+        <h3 slot="headline"><a href="/get-started/developers/#about-web-components">Why we build with Web Components</a></h3>
+        <p>Our elements are built on Web Component standards. They work across modern browsers and any frameworks that support HTML.</p>
+      </rh-tile>
+      <rh-tile compact>
+        <img alt="stylized butterfly in light blue"
+             src="/assets/home/patternfly.svg"
+             slot="icon">
+        <h3 slot="headline"><a href="https://patternflyelements.org">Building products? Check out Patternfly</a></h3>
+        <p>PatternFly is Red Hat’s open source product design system, it enables teams to create consistent and scalable products.</p>
+      </rh-tile>
+    </div>
+
+    <rh-card class="nav">
+      <h2 slot="header">Foundations</h2>
+      <p>Design language principles for better layouts</p>
+      <img slot="image"
+           alt="a stylized molecule on a red background"
+           src="/assets/home/section-1.png"
+           width="460"
+           height="320">
+      <rh-cta slot="footer" href="/foundations/">Explore foundations</rh-cta>
+    </rh-card>
+
+    <rh-card class="nav">
+      <h2 slot="header">Elements</h2>
+      <p>Interface building blocks for better experiences</p>
+      <img slot="image"
+           alt="stylized schematic of a website with oversized cursor overlayed"
+           src="/assets/home/section-2.png"
+           width="460"
+           height="320">
+      <rh-cta slot="footer" href="/elements/">Explore elements</rh-cta>
+    </rh-card>
+
+    <rh-card class="nav">
+      <h2 slot="header">Design/code status</h2>
+      <p>The status of elements and patterns at a glance</p>
+      <img slot="image"
+           alt="stylized nested list on a grey background"
+           src="/assets/home/section-3.png"
+           width="460"
+           height="320">
+      <rh-cta slot="footer" href="/design-code-status/">View the design/code status</rh-cta>
+    </rh-card>
+
+    <rh-card class="nav">
+      <h2 slot="header">Release notes</h2>
+      <p>Track any changes and major releases to RHDS</p>
+      <img slot="image"
+           alt="opposing speech bubbled on a teal background"
+           src="/assets/home/section-4.png"
+           width="460"
+           height="320">
+      <rh-cta slot="footer" href="/release-notes/">Read the release notes</rh-cta>
+    </rh-card>
+
+    <rh-card class="nav">
+      <h2 slot="header">Contribute</h2>
+      <p>Help us grow and improve our system together</p>
+      <img slot="image"
+           alt="three generic person avatars in a range of shades"
+           src="/assets/home/section-5.png"
+           width="460"
+           height="320">
+      <rh-cta slot="footer" href="https://github.com/RedHat-UX/red-hat-design-system/">Learn how to contribute</rh-cta>
+    </rh-card>
+  </div>
+  {% include "partials/component/back-to-top.njk" %}
+</rh-surface>
+
+{% include 'partials/component/footer.njk' %}
+
+
