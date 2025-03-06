@@ -13,7 +13,9 @@
 }
 
 rh-icon {
-  color: currentcolor;
+  color:
+    light-dark(var(--rh-color-icon-secondary-on-dark, #ffffff),
+      var(--rh-color-icon-secondary-on-light, #151515));
 }
 
 button {
