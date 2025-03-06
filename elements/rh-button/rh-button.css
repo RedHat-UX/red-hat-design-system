@@ -65,12 +65,6 @@ button {
     }
   }
 
-  &:hover {
-    --_color: var(--_hover-color);
-    --_background-color: var(--_hover-background-color);
-    --_border-width: var(--_hover-border-width);
-  }
-
   &.hasIcon {
     position: relative;
     display: flex;
@@ -269,6 +263,12 @@ button {
       white-space: nowrap !important;
       border: 0 !important;
     }
+  }
+
+  &:hover {
+    --_color: var(--_hover-color);
+    --_background-color: var(--_hover-background-color);
+    --_border-width: var(--_hover-border-width);
   }
 
   & > span {
