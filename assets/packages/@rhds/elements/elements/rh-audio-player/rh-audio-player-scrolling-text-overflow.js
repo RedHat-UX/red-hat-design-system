@@ -1,7 +1,6 @@
 var _RhAudioPlayerScrollingTextOverflow_instances, _RhAudioPlayerScrollingTextOverflow_scrolling, _RhAudioPlayerScrollingTextOverflow_style, _RhAudioPlayerScrollingTextOverflow_isScrollable_get;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
-import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 import { css } from "lit";
@@ -12,7 +11,7 @@ const styles = css `:host{display:flex;overflow:hidden;flex-direction:column;ali
  * @cssprop [--rh-audio-player-scrolling-text-overflow-background-color=var(--rh-color-surface-lightest, #ffffff)]
  *          color of fade effect (should match background)
  */
-let RhAudioPlayerScrollingTextOverflow = class RhAudioPlayerScrollingTextOverflow extends LitElement {
+export class RhAudioPlayerScrollingTextOverflow extends LitElement {
     constructor() {
         super(...arguments);
         _RhAudioPlayerScrollingTextOverflow_instances.add(this);
@@ -55,11 +54,8 @@ let RhAudioPlayerScrollingTextOverflow = class RhAudioPlayerScrollingTextOverflo
             this.requestUpdate();
         }
     }
-};
-_RhAudioPlayerScrollingTextOverflow_scrolling = new WeakMap();
-_RhAudioPlayerScrollingTextOverflow_style = new WeakMap();
-_RhAudioPlayerScrollingTextOverflow_instances = new WeakSet();
-_RhAudioPlayerScrollingTextOverflow_isScrollable_get = function _RhAudioPlayerScrollingTextOverflow_isScrollable_get() {
+}
+_RhAudioPlayerScrollingTextOverflow_scrolling = new WeakMap(), _RhAudioPlayerScrollingTextOverflow_style = new WeakMap(), _RhAudioPlayerScrollingTextOverflow_instances = new WeakSet(), _RhAudioPlayerScrollingTextOverflow_isScrollable_get = function _RhAudioPlayerScrollingTextOverflow_isScrollable_get() {
     const outer = this.shadowRoot?.getElementById('outer');
     return (outer?.scrollWidth ?? 0) > (outer?.clientWidth ?? 0);
 };
@@ -67,8 +63,5 @@ RhAudioPlayerScrollingTextOverflow.styles = [styles];
 __decorate([
     colorContextConsumer()
 ], RhAudioPlayerScrollingTextOverflow.prototype, "on", void 0);
-RhAudioPlayerScrollingTextOverflow = __decorate([
-    customElement('rh-audio-player-scrolling-text-overflow')
-], RhAudioPlayerScrollingTextOverflow);
-export { RhAudioPlayerScrollingTextOverflow };
+customElements.define("rh-audio-player-scrolling-text-overflow", RhAudioPlayerScrollingTextOverflow);
 //# sourceMappingURL=rh-audio-player-scrolling-text-overflow.js.map

@@ -46,12 +46,3 @@ export declare class ContextRequestEvent<T extends UnknownContext> extends Event
     readonly subscribe?: boolean | undefined;
     constructor(context: T, callback: ContextCallback<ContextType<T>>, subscribe?: boolean | undefined);
 }
-declare global {
-    interface HTMLElementEventMap {
-        /**
-         * A 'context-request' event can be emitted by any element which desires
-         * a context value to be injected by an external provider.
-         */
-        'context-request': ContextRequestEvent<Context<unknown, unknown>>;
-    }
-}

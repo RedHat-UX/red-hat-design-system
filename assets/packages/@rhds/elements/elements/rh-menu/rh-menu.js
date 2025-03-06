@@ -1,9 +1,7 @@
 var _RhMenu_instances, _RhMenu_tabindex, _RhMenu_onSlotchange;
 import { __classPrivateFieldGet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
-import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
-import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 import { colorContextConsumer } from '../../lib/context/color/consumer.js';
@@ -20,13 +18,16 @@ export class MenuToggleEvent extends Event {
  * Menu
  * @slot - menu items
  */
-let RhMenu = class RhMenu extends LitElement {
+export class RhMenu extends LitElement {
     constructor() {
         super(...arguments);
         _RhMenu_instances.add(this);
         _RhMenu_tabindex.set(this, RovingTabindexController.of(this, {
             getItems: () => this.getItems(this._menuItems),
         }));
+    }
+    get _menuItems() {
+        return this.renderRoot?.querySelector(`slot:not([name])`)?.assignedElements() ?? [];
     }
     /**
      * override or set to add items to the roving tab index controller
@@ -58,10 +59,8 @@ let RhMenu = class RhMenu extends LitElement {
     focus() {
         __classPrivateFieldGet(this, _RhMenu_tabindex, "f").items[__classPrivateFieldGet(this, _RhMenu_tabindex, "f").atFocusedItemIndex]?.focus();
     }
-};
-_RhMenu_tabindex = new WeakMap();
-_RhMenu_instances = new WeakSet();
-_RhMenu_onSlotchange = function _RhMenu_onSlotchange() {
+}
+_RhMenu_tabindex = new WeakMap(), _RhMenu_instances = new WeakSet(), _RhMenu_onSlotchange = function _RhMenu_onSlotchange() {
     for (const item of this._menuItems ?? []) {
         item.setAttribute('role', 'menuitem');
     }
@@ -69,13 +68,7 @@ _RhMenu_onSlotchange = function _RhMenu_onSlotchange() {
 RhMenu.styles = [styles];
 RhMenu.shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
 __decorate([
-    queryAssignedElements()
-], RhMenu.prototype, "_menuItems", void 0);
-__decorate([
     colorContextConsumer()
 ], RhMenu.prototype, "on", void 0);
-RhMenu = __decorate([
-    customElement('rh-menu')
-], RhMenu);
-export { RhMenu };
+customElements.define("rh-menu", RhMenu);
 //# sourceMappingURL=rh-menu.js.map

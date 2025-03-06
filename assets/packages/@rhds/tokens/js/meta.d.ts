@@ -1,6 +1,3 @@
-/**
- * Do not edit directly, this file was auto-generated.
- */
-
-import { DesignToken } from 'style-dictionary';
-export const tokens = new Map<`--rh-${string}`, DesignToken>;
+import { ValuesMap } from './types.js';
+export type * from './types.js';
+export declare const tokens: DesignTokensMap;

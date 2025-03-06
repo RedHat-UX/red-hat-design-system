@@ -2,8 +2,6 @@ var _RhTag_slots;
 import { __classPrivateFieldGet, __decorate } from "tslib";
 import { html, LitElement } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
-import { customElement } from 'lit/decorators/custom-element.js';
-import { property } from 'lit/decorators/property.js';
 import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
@@ -29,17 +27,17 @@ import { ifDefined } from 'lit/directives/if-defined.js';
  *           The padding at the end of the direction parallel to the flow of the text.
  *
  */
-let RhTag = class RhTag extends LitElement {
+export class RhTag extends LitElement {
     constructor() {
         super(...arguments);
+        /** Represents the state of the anonymous and icon slots */
+        _RhTag_slots.set(this, new SlotController(this, 'icon', null));
         /**
          * Icon set to display in the label
          */
         this.iconSet = 'ui';
         /** The variant of the label. */
         this.variant = 'filled';
-        /** Represents the state of the anonymous and icon slots */
-        _RhTag_slots.set(this, new SlotController(this, 'icon', null));
     }
     render() {
         const { icon, size, variant = 'filled', color = 'gray', on = 'light' } = this;
@@ -65,32 +63,19 @@ let RhTag = class RhTag extends LitElement {
       </span>
     `;
     }
-};
+}
 _RhTag_slots = new WeakMap();
+RhTag.properties = {
+    icon: { reflect: true },
+    iconSet: { attribute: 'icon-set' },
+    variant: {},
+    size: {},
+    href: {},
+    color: {}
+};
 RhTag.styles = [styles];
-__decorate([
-    property({ reflect: true })
-], RhTag.prototype, "icon", void 0);
-__decorate([
-    property({ attribute: 'icon-set' })
-], RhTag.prototype, "iconSet", void 0);
-__decorate([
-    property()
-], RhTag.prototype, "variant", void 0);
-__decorate([
-    property()
-], RhTag.prototype, "size", void 0);
-__decorate([
-    property()
-], RhTag.prototype, "href", void 0);
-__decorate([
-    property()
-], RhTag.prototype, "color", void 0);
 __decorate([
     colorContextConsumer()
 ], RhTag.prototype, "on", void 0);
-RhTag = __decorate([
-    customElement('rh-tag')
-], RhTag);
-export { RhTag };
+customElements.define("rh-tag", RhTag);
 //# sourceMappingURL=rh-tag.js.map

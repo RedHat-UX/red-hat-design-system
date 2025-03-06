@@ -1,6 +1,6 @@
 {
   "name": "@rhds/icons",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "Red Hat Icons",
   "main": "icons.js",
   "module": "icons.js",
@@ -121,7 +121,10 @@
     },
     "serve": {
       "service": true,
-      "command": "eleventy --serve"
+      "command": "eleventy --serve",
+      "dependencies": [
+        "compile"
+      ]
     }
   }
 }

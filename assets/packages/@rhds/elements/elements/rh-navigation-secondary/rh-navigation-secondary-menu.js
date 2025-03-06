@@ -1,8 +1,6 @@
 var _RhNavigationSecondaryMenu_screenSize;
-import { __classPrivateFieldGet, __decorate } from "tslib";
+import { __classPrivateFieldGet } from "tslib";
 import { html, LitElement } from 'lit';
-import { customElement } from 'lit/decorators/custom-element.js';
-import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
@@ -24,9 +22,10 @@ const styles = css `:host{display:block}#container{position:relative;color:var(-
  * @cssprop  {<length>} [--rh-navigation-secondary-menu-content-max-width=1136px]
  *           max-width for menu content
  */
-let RhNavigationSecondaryMenu = class RhNavigationSecondaryMenu extends LitElement {
+export class RhNavigationSecondaryMenu extends LitElement {
     constructor() {
         super(...arguments);
+        _RhNavigationSecondaryMenu_screenSize.set(this, new ScreenSizeController(this));
         /**
          * Color palette (default: lightest)
          * Secondary nav menus are always represented on the lightest color palette.
@@ -37,7 +36,6 @@ let RhNavigationSecondaryMenu = class RhNavigationSecondaryMenu extends LitEleme
          * Secondary nav menus by default are always full-width, but can be set to fixed-width for special cases.
          */
         this.layout = 'full-width';
-        _RhNavigationSecondaryMenu_screenSize.set(this, new ScreenSizeController(this));
         /**
          * `visible` toggles on click (default: false)
          */
@@ -65,21 +63,13 @@ let RhNavigationSecondaryMenu = class RhNavigationSecondaryMenu extends LitEleme
       </div>
     `;
     }
-};
+}
 _RhNavigationSecondaryMenu_screenSize = new WeakMap();
+RhNavigationSecondaryMenu.properties = {
+    colorPalette: { reflect: true, attribute: 'color-palette' },
+    layout: { reflect: true },
+    visible: { type: Boolean }
+};
 RhNavigationSecondaryMenu.styles = [styles];
-__decorate([
-    colorContextProvider(),
-    property({ reflect: true, attribute: 'color-palette' })
-], RhNavigationSecondaryMenu.prototype, "colorPalette", void 0);
-__decorate([
-    property({ reflect: true })
-], RhNavigationSecondaryMenu.prototype, "layout", void 0);
-__decorate([
-    property({ type: Boolean })
-], RhNavigationSecondaryMenu.prototype, "visible", void 0);
-RhNavigationSecondaryMenu = __decorate([
-    customElement('rh-navigation-secondary-menu')
-], RhNavigationSecondaryMenu);
-export { RhNavigationSecondaryMenu };
+customElements.define("rh-navigation-secondary-menu", RhNavigationSecondaryMenu);
 //# sourceMappingURL=rh-navigation-secondary-menu.js.map

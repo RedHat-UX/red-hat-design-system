@@ -1,5 +1,6 @@
 var _SlotController_instances, _a, _SlotController_nodes, _SlotController_logger, _SlotController_firstUpdated, _SlotController_mo, _SlotController_slotNames, _SlotController_deprecations, _SlotController_onSlotChange, _SlotController_onMutation, _SlotController_getChildrenForSlot, _SlotController_initSlot;
 import { __classPrivateFieldGet, __classPrivateFieldSet } from "tslib";
+import { isServer } from 'lit';
 import { Logger } from './logger.js';
 function isObjectConfigSpread(config) {
     return config.length === 1 && typeof config[0] === 'object' && config[0] !== null;
@@ -44,7 +45,8 @@ export class SlotController {
                 ?? __classPrivateFieldGet(this, _SlotController_instances, "m", _SlotController_getChildrenForSlot).call(this, name);
             const selector = slotName ? `slot[name="${slotName}"]` : 'slot:not([name])';
             const slot = this.host.shadowRoot?.querySelector?.(selector) ?? null;
-            const hasContent = !!elements.length;
+            const nodes = slot?.assignedNodes?.();
+            const hasContent = !!elements.length || !!nodes?.filter(x => x.textContent?.trim()).length;
             __classPrivateFieldGet(this, _SlotController_nodes, "f").set(name, { elements, name: slotName ?? '', hasContent, slot });
             __classPrivateFieldGet(this, _SlotController_logger, "f").debug(slotName, hasContent);
         });
@@ -117,11 +119,20 @@ export class SlotController {
      * @example this.hasSlotted('header');
      */
     hasSlotted(...names) {
-        const slotNames = Array.from(names, x => x == null ? _a.default : x);
-        if (!slotNames.length) {
-            slotNames.push(_a.default);
+        if (isServer) {
+            return this.host
+                .getAttribute('ssr-hint-has-slotted')
+                ?.split(',')
+                .map(name => name.trim())
+                .some(name => names.includes(name === 'default' ? null : name)) ?? false;
         }
-        return slotNames.some(x => __classPrivateFieldGet(this, _SlotController_nodes, "f").get(x)?.hasContent ?? false);
+        else {
+            const slotNames = Array.from(names, x => x == null ? _a.default : x);
+            if (!slotNames.length) {
+                slotNames.push(_a.default);
+            }
+            return slotNames.some(x => __classPrivateFieldGet(this, _SlotController_nodes, "f").get(x)?.hasContent ?? false);
+        }
     }
     /**
      * Whether or not all the requested slots are empty.

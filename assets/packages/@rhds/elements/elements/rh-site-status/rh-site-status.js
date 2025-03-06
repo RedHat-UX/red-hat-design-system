@@ -1,8 +1,6 @@
 var _RhSiteStatus_instances, _a, _RhSiteStatus_status, _RhSiteStatus_component, _RhSiteStatus_loading, _RhSiteStatus_logger, _RhSiteStatus_domain, _RhSiteStatus_icon_get, _RhSiteStatus_text_get, _RhSiteStatus_fetch;
-var RhSiteStatus_1;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
-import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { colorContextConsumer } from '../../lib/context/color/consumer.js';
@@ -58,7 +56,7 @@ const isStatusPageResponse = (data) => {
  * @summary Communicates operational status of a website or domain
  * @slot - loading-text - Text to display while loading the status defaults to "Loading"
  */
-let RhSiteStatus = RhSiteStatus_1 = _a = class RhSiteStatus extends LitElement {
+export class RhSiteStatus extends LitElement {
     constructor() {
         super(...arguments);
         _RhSiteStatus_instances.add(this);
@@ -93,14 +91,8 @@ let RhSiteStatus = RhSiteStatus_1 = _a = class RhSiteStatus extends LitElement {
       </div>
     `;
     }
-};
-_RhSiteStatus_status = new WeakMap();
-_RhSiteStatus_component = new WeakMap();
-_RhSiteStatus_loading = new WeakMap();
-_RhSiteStatus_logger = new WeakMap();
-_RhSiteStatus_domain = new WeakMap();
-_RhSiteStatus_instances = new WeakSet();
-_RhSiteStatus_icon_get = function _RhSiteStatus_icon_get() {
+}
+_a = RhSiteStatus, _RhSiteStatus_status = new WeakMap(), _RhSiteStatus_component = new WeakMap(), _RhSiteStatus_loading = new WeakMap(), _RhSiteStatus_logger = new WeakMap(), _RhSiteStatus_domain = new WeakMap(), _RhSiteStatus_instances = new WeakSet(), _RhSiteStatus_icon_get = function _RhSiteStatus_icon_get() {
     const status = __classPrivateFieldGet(this, _RhSiteStatus_component, "f")?.status ?? __classPrivateFieldGet(this, _RhSiteStatus_status, "f")?.indicator;
     switch (status) {
         case 'none':
@@ -115,8 +107,7 @@ _RhSiteStatus_icon_get = function _RhSiteStatus_icon_get() {
         default:
             return { icon: 'error-fill', status: 'danger' };
     }
-};
-_RhSiteStatus_text_get = function _RhSiteStatus_text_get() {
+}, _RhSiteStatus_text_get = function _RhSiteStatus_text_get() {
     if (__classPrivateFieldGet(this, _RhSiteStatus_component, "f")) {
         return __classPrivateFieldGet(this, _RhSiteStatus_component, "f").description ?? __classPrivateFieldGet(this, _RhSiteStatus_component, "f").status;
     }
@@ -127,10 +118,9 @@ _RhSiteStatus_text_get = function _RhSiteStatus_text_get() {
     else {
         return 'Error loading status';
     }
-};
-_RhSiteStatus_fetch = async function _RhSiteStatus_fetch() {
+}, _RhSiteStatus_fetch = async function _RhSiteStatus_fetch() {
     try {
-        const { dataURI, fetchOptions } = RhSiteStatus_1;
+        const { dataURI, fetchOptions } = _a;
         const data = await fetch(dataURI, fetchOptions)
             .then(getSummaryOrThrow);
         const [component] = data.components
@@ -159,8 +149,5 @@ RhSiteStatus.fetchOptions = {
 __decorate([
     colorContextConsumer()
 ], RhSiteStatus.prototype, "on", void 0);
-RhSiteStatus = RhSiteStatus_1 = __decorate([
-    customElement('rh-site-status')
-], RhSiteStatus);
-export { RhSiteStatus };
+customElements.define("rh-site-status", RhSiteStatus);
 //# sourceMappingURL=rh-site-status.js.map

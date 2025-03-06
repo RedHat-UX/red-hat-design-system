@@ -1,9 +1,6 @@
 var _RhVideoEmbed_instances, _RhVideoEmbed_slots, _RhVideoEmbed_iframe, _RhVideoEmbed_showConsent_get, _RhVideoEmbed_copyIframe, _RhVideoEmbed_handleConsentClick, _RhVideoEmbed_handleConsentKeyup, _RhVideoEmbed_handlePlayClick, _RhVideoEmbed_handlePlayKeyup, _RhVideoEmbed_playVideo;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
-import { property } from 'lit/decorators/property.js';
-import { customElement } from 'lit/decorators/custom-element.js';
-import { state } from 'lit/decorators/state.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import '@rhds/elements/rh-button/rh-button.js';
@@ -45,10 +42,12 @@ export class VideoPlayEvent extends Event {
  * @csspart play - The play button on top of the thumbnail
  * @csspart caption - The container for the caption
  */
-let RhVideoEmbed = class RhVideoEmbed extends LitElement {
+export class RhVideoEmbed extends LitElement {
     constructor() {
         super(...arguments);
         _RhVideoEmbed_instances.add(this);
+        _RhVideoEmbed_slots.set(this, new SlotController(this, 'caption', 'thumbnail', null));
+        _RhVideoEmbed_iframe.set(this, void 0);
         /**
          * Add to `rh-video-embed` when a video requires consent for cookies
          */
@@ -62,8 +61,6 @@ let RhVideoEmbed = class RhVideoEmbed extends LitElement {
         this._consentClicked = false;
         this._playClicked = false;
         this._playStarted = false;
-        _RhVideoEmbed_slots.set(this, new SlotController(this, 'caption', 'thumbnail', null));
-        _RhVideoEmbed_iframe.set(this, void 0);
     }
     get consentButton() {
         return this.shadowRoot?.querySelector('#consent-button');
@@ -153,14 +150,10 @@ let RhVideoEmbed = class RhVideoEmbed extends LitElement {
       </figure>
     `;
     }
-};
-_RhVideoEmbed_slots = new WeakMap();
-_RhVideoEmbed_iframe = new WeakMap();
-_RhVideoEmbed_instances = new WeakSet();
-_RhVideoEmbed_showConsent_get = function _RhVideoEmbed_showConsent_get() {
+}
+_RhVideoEmbed_slots = new WeakMap(), _RhVideoEmbed_iframe = new WeakMap(), _RhVideoEmbed_instances = new WeakSet(), _RhVideoEmbed_showConsent_get = function _RhVideoEmbed_showConsent_get() {
     return this.requireConsent && !this.consented;
-};
-_RhVideoEmbed_copyIframe = function _RhVideoEmbed_copyIframe() {
+}, _RhVideoEmbed_copyIframe = function _RhVideoEmbed_copyIframe() {
     const template = this.querySelector('template');
     const node = template ? document.importNode(template.content, true) : undefined;
     const iframe = node ?
@@ -176,12 +169,10 @@ _RhVideoEmbed_copyIframe = function _RhVideoEmbed_copyIframe() {
     }
     __classPrivateFieldSet(this, _RhVideoEmbed_iframe, iframe, "f");
     __classPrivateFieldGet(this, _RhVideoEmbed_instances, "m", _RhVideoEmbed_playVideo).call(this);
-};
-_RhVideoEmbed_handleConsentClick = function _RhVideoEmbed_handleConsentClick() {
+}, _RhVideoEmbed_handleConsentClick = function _RhVideoEmbed_handleConsentClick() {
     this._consentClicked = true;
     this.dispatchEvent(new ConsentClickEvent());
-};
-_RhVideoEmbed_handleConsentKeyup = function _RhVideoEmbed_handleConsentKeyup(event) {
+}, _RhVideoEmbed_handleConsentKeyup = function _RhVideoEmbed_handleConsentKeyup(event) {
     switch (event.key) {
         case ' ':
         case 'Enter':
@@ -189,15 +180,13 @@ _RhVideoEmbed_handleConsentKeyup = function _RhVideoEmbed_handleConsentKeyup(eve
             this.dispatchEvent(new ConsentClickEvent());
             break;
     }
-};
-_RhVideoEmbed_handlePlayClick = function _RhVideoEmbed_handlePlayClick() {
+}, _RhVideoEmbed_handlePlayClick = function _RhVideoEmbed_handlePlayClick() {
     if (!this.playClicked) {
         this._playClicked = true;
         this.dispatchEvent(new VideoClickEvent());
         __classPrivateFieldGet(this, _RhVideoEmbed_instances, "m", _RhVideoEmbed_playVideo).call(this);
     }
-};
-_RhVideoEmbed_handlePlayKeyup = function _RhVideoEmbed_handlePlayKeyup(event) {
+}, _RhVideoEmbed_handlePlayKeyup = function _RhVideoEmbed_handlePlayKeyup(event) {
     switch (event.key) {
         case ' ':
         case 'Enter':
@@ -208,8 +197,7 @@ _RhVideoEmbed_handlePlayKeyup = function _RhVideoEmbed_handlePlayKeyup(event) {
             }
             break;
     }
-};
-_RhVideoEmbed_playVideo = function _RhVideoEmbed_playVideo() {
+}, _RhVideoEmbed_playVideo = function _RhVideoEmbed_playVideo() {
     if (!__classPrivateFieldGet(this, _RhVideoEmbed_instances, "a", _RhVideoEmbed_showConsent_get) && this.playClicked && this.iframeElement) {
         this.appendChild(this.iframeElement);
         this.iframeElement?.focus();
@@ -217,31 +205,20 @@ _RhVideoEmbed_playVideo = function _RhVideoEmbed_playVideo() {
         this.dispatchEvent(new VideoPlayEvent());
     }
 };
+RhVideoEmbed.properties = {
+    requireConsent: { type: Boolean, attribute: 'require-consent' },
+    consented: { type: Boolean },
+    _consentClicked: { state: true },
+    _playClicked: { state: true },
+    _playStarted: { state: true }
+};
 RhVideoEmbed.styles = [styles];
 RhVideoEmbed.shadowRootOptions = {
     ...LitElement.shadowRootOptions,
     delegatesFocus: true,
 };
 __decorate([
-    property({ type: Boolean, attribute: 'require-consent' })
-], RhVideoEmbed.prototype, "requireConsent", void 0);
-__decorate([
-    property({ type: Boolean })
-], RhVideoEmbed.prototype, "consented", void 0);
-__decorate([
     colorContextConsumer()
 ], RhVideoEmbed.prototype, "on", void 0);
-__decorate([
-    state()
-], RhVideoEmbed.prototype, "_consentClicked", void 0);
-__decorate([
-    state()
-], RhVideoEmbed.prototype, "_playClicked", void 0);
-__decorate([
-    state()
-], RhVideoEmbed.prototype, "_playStarted", void 0);
-RhVideoEmbed = __decorate([
-    customElement('rh-video-embed')
-], RhVideoEmbed);
-export { RhVideoEmbed };
+customElements.define("rh-video-embed", RhVideoEmbed);
 //# sourceMappingURL=rh-video-embed.js.map

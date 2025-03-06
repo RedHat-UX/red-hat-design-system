@@ -1,8 +1,6 @@
 var _RhCue_instances, _RhCue_headings, _RhCue_hasVoice_get, _RhCue_linkTemplate, _RhCue_onClick;
-import { __classPrivateFieldGet, __decorate } from "tslib";
+import { __classPrivateFieldGet } from "tslib";
 import { LitElement, html, nothing } from 'lit';
-import { customElement } from 'lit/decorators/custom-element.js';
-import { property } from 'lit/decorators/property.js';
 import { HeadingLevelContextConsumer } from '../../lib/context/headings/consumer.js';
 import { css } from "lit";
 const styles = css `:host{display:inline;font-size:var(--rh-font-size-body-text-md,1rem)}:host([voice]){display:block}:host(:first-of-type),:host(:first-of-type)>:first-child{margin-block-start:0}:host(:last-of-type),:host(:last-of-type)>:last-child{margin-block-end:0}a{text-decoration:none;color:currentcolor}a[id$=text]{border-block-end:1px dotted #0000}a[id$=text]:hover{background-color:var(--_static-surface-color);border-block-end-color:var(--_static-underline-color)}a[active][id$=text]{color:var(--_static-text-color);background-color:var(--_static-highlight-color)}a:empty{display:none}h1,h2,h3,h4,h5,h6{font-size:var(--rh-font-size-body-text-md,1rem)!important;margin-block-end:0}#voice{font-family:var(--rh-font-family-heading,RedHatDisplay,"Red Hat Display",Helvetica,Arial,sans-serif)}#start{font-family:var(--rh-font-family-code,RedHatMono,"Red Hat Mono","Courier New",Courier,monospace)}a #start{text-decoration:underline}a:hover #start{text-decoration:none}`;
@@ -52,13 +50,13 @@ export const getSeconds = (str) => {
  * @slot - text of cue
  * @fires cueseek - when user clicks a time cue
  */
-let RhCue = class RhCue extends LitElement {
+export class RhCue extends LitElement {
     constructor() {
         super(...arguments);
         _RhCue_instances.add(this);
+        _RhCue_headings.set(this, new HeadingLevelContextConsumer(this));
         /** Whether this cue is active right now */
         this.active = false;
-        _RhCue_headings.set(this, new HeadingLevelContextConsumer(this));
     }
     get startTime() {
         return this.start ? getSeconds(this.start) : undefined;
@@ -82,13 +80,10 @@ let RhCue = class RhCue extends LitElement {
       <slot></slot>
     `)}`;
     }
-};
-_RhCue_headings = new WeakMap();
-_RhCue_instances = new WeakSet();
-_RhCue_hasVoice_get = function _RhCue_hasVoice_get() {
+}
+_RhCue_headings = new WeakMap(), _RhCue_instances = new WeakSet(), _RhCue_hasVoice_get = function _RhCue_hasVoice_get() {
     return !!this.voice && this.voice.trim()?.length > 0;
-};
-_RhCue_linkTemplate = function _RhCue_linkTemplate(content = nothing, heading = false) {
+}, _RhCue_linkTemplate = function _RhCue_linkTemplate(content = nothing, heading = false) {
     const id = [
         this.id,
         this.startTime && `t${this.startTime}-`,
@@ -100,28 +95,16 @@ _RhCue_linkTemplate = function _RhCue_linkTemplate(content = nothing, heading = 
          href="#${id}"
          ?active="${this.active && !heading}"
          @click=${__classPrivateFieldGet(this, _RhCue_instances, "m", _RhCue_onClick)}>${content}</a>`;
-};
-_RhCue_onClick = function _RhCue_onClick() {
+}, _RhCue_onClick = function _RhCue_onClick() {
     this.dispatchEvent(new Event('cueseek', { bubbles: true }));
 };
+RhCue.properties = {
+    start: {},
+    end: {},
+    text: {},
+    voice: { reflect: true },
+    active: { type: Boolean, reflect: true }
+};
 RhCue.styles = [styles];
-__decorate([
-    property()
-], RhCue.prototype, "start", void 0);
-__decorate([
-    property()
-], RhCue.prototype, "end", void 0);
-__decorate([
-    property()
-], RhCue.prototype, "text", void 0);
-__decorate([
-    property({ reflect: true })
-], RhCue.prototype, "voice", void 0);
-__decorate([
-    property({ type: Boolean, reflect: true })
-], RhCue.prototype, "active", void 0);
-RhCue = __decorate([
-    customElement('rh-cue')
-], RhCue);
-export { RhCue };
+customElements.define("rh-cue", RhCue);
 //# sourceMappingURL=rh-cue.js.map

@@ -1,12 +1,7 @@
 var _RhNavigationSecondary_instances, _a, _RhNavigationSecondary_logger, _RhNavigationSecondary_logoCopy, _RhNavigationSecondary_dir, _RhNavigationSecondary_compact, _RhNavigationSecondary_internals, _RhNavigationSecondary_screenSize, _RhNavigationSecondary_onExpandRequest, _RhNavigationSecondary_onFocusout, _RhNavigationSecondary_onOverlayClick, _RhNavigationSecondary_onKeydown, _RhNavigationSecondary_onKeyup, _RhNavigationSecondary_onTabKeyup, _RhNavigationSecondary_onTabKeydown, _RhNavigationSecondary_getDropdownIndex, _RhNavigationSecondary_dropdownByIndex, _RhNavigationSecondary_expand, _RhNavigationSecondary_allDropdowns, _RhNavigationSecondary_closeDropdown, _RhNavigationSecondary_openDropdown, _RhNavigationSecondary_onOverlayChange, _RhNavigationSecondary_upgradeAccessibility, _RhNavigationSecondary_toggleMobileMenu;
-var RhNavigationSecondary_1;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
-import { customElement } from 'lit/decorators/custom-element.js';
-import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
-import { state } from 'lit/decorators/state.js';
-import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 import { ComposedEvent } from '@patternfly/pfe-core';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
@@ -55,7 +50,7 @@ function focusableChildElements(parent) {
  * @cssprop {<integer>} [--rh-navigation-secondary-z-index=102] - z-index of the navigation-secondary
  * @cssprop {<integer>} [--rh-navigation-secondary-overlay-z-index=-1] - z-index of the navigation-secondary-overlay
  */
-let RhNavigationSecondary = RhNavigationSecondary_1 = _a = class RhNavigationSecondary extends LitElement {
+export class RhNavigationSecondary extends LitElement {
     constructor() {
         super(...arguments);
         _RhNavigationSecondary_instances.add(this);
@@ -66,6 +61,20 @@ let RhNavigationSecondary = RhNavigationSecondary_1 = _a = class RhNavigationSec
         /** Compact mode  */
         _RhNavigationSecondary_compact.set(this, false);
         _RhNavigationSecondary_internals.set(this, InternalsController.of(this, { role: 'navigation' }));
+        /**
+         * ScreenSizeController effects callback to set #compact
+         * When viewport size changes,
+         *  - If viewport is mobile, open mobile menu
+         *  - otherwise, close mobile menu and close overlay
+         */
+        _RhNavigationSecondary_screenSize.set(this, new ScreenSizeController(this, 'md', {
+            onChange: matches => {
+                __classPrivateFieldSet(this, _RhNavigationSecondary_compact, !matches, "f");
+                const dropdownsOpen = __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_allDropdowns).call(this).some(x => x.expanded);
+                this.mobileMenuExpanded = __classPrivateFieldGet(this, _RhNavigationSecondary_compact, "f") && dropdownsOpen;
+                this.overlayOpen = dropdownsOpen;
+            },
+        }));
         /**
          * Color palette darker | lighter (default: lighter)
          */
@@ -82,20 +91,9 @@ let RhNavigationSecondary = RhNavigationSecondary_1 = _a = class RhNavigationSec
          */
         this.mobileMenuExpanded = false;
         this.overlayOpen = false;
-        /**
-         * ScreenSizeController effects callback to set #compact
-         * When viewport size changes,
-         *  - If viewport is mobile, open mobile menu
-         *  - otherwise, close mobile menu and close overlay
-         */
-        _RhNavigationSecondary_screenSize.set(this, new ScreenSizeController(this, 'md', {
-            onChange: matches => {
-                __classPrivateFieldSet(this, _RhNavigationSecondary_compact, !matches, "f");
-                const dropdownsOpen = __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_allDropdowns).call(this).some(x => x.expanded);
-                this.mobileMenuExpanded = __classPrivateFieldGet(this, _RhNavigationSecondary_compact, "f") && dropdownsOpen;
-                this.overlayOpen = dropdownsOpen;
-            },
-        }));
+    }
+    get _nav() {
+        return this.renderRoot?.querySelector(`slot[name=nav]`)?.assignedElements() ?? [];
     }
     /**
      * Checks if passed in element is a RhNavigationSecondaryDropdown
@@ -106,7 +104,7 @@ let RhNavigationSecondary = RhNavigationSecondary_1 = _a = class RhNavigationSec
     }
     async connectedCallback() {
         super.connectedCallback();
-        RhNavigationSecondary_1.instances.add(this);
+        _a.instances.add(this);
         __classPrivateFieldSet(this, _RhNavigationSecondary_compact, !__classPrivateFieldGet(this, _RhNavigationSecondary_screenSize, "f").matches.has('md'), "f");
         this.addEventListener('expand-request', __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_onExpandRequest));
         this.addEventListener('overlay-change', __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_onOverlayChange));
@@ -116,7 +114,7 @@ let RhNavigationSecondary = RhNavigationSecondary_1 = _a = class RhNavigationSec
     }
     disconnectedCallback() {
         super.disconnectedCallback();
-        RhNavigationSecondary_1.instances.delete(this);
+        _a.instances.delete(this);
     }
     render() {
         const { on = '' } = this;
@@ -156,7 +154,7 @@ let RhNavigationSecondary = RhNavigationSecondary_1 = _a = class RhNavigationSec
     open(index) {
         if (index != null) {
             const dropdown = __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_dropdownByIndex).call(this, index);
-            if (dropdown && RhNavigationSecondary_1.isDropdown(dropdown)) {
+            if (dropdown && _a.isDropdown(dropdown)) {
                 this.close();
                 __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_expand).call(this, index);
                 dropdown?.querySelector('a')?.focus();
@@ -171,15 +169,8 @@ let RhNavigationSecondary = RhNavigationSecondary_1 = _a = class RhNavigationSec
         __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_allDropdowns).call(this)
             .forEach(dropdown => __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_closeDropdown).call(this, dropdown));
     }
-};
-_RhNavigationSecondary_logger = new WeakMap();
-_RhNavigationSecondary_logoCopy = new WeakMap();
-_RhNavigationSecondary_dir = new WeakMap();
-_RhNavigationSecondary_compact = new WeakMap();
-_RhNavigationSecondary_internals = new WeakMap();
-_RhNavigationSecondary_screenSize = new WeakMap();
-_RhNavigationSecondary_instances = new WeakSet();
-_RhNavigationSecondary_onExpandRequest = function _RhNavigationSecondary_onExpandRequest(event) {
+}
+_a = RhNavigationSecondary, _RhNavigationSecondary_logger = new WeakMap(), _RhNavigationSecondary_logoCopy = new WeakMap(), _RhNavigationSecondary_dir = new WeakMap(), _RhNavigationSecondary_compact = new WeakMap(), _RhNavigationSecondary_internals = new WeakMap(), _RhNavigationSecondary_screenSize = new WeakMap(), _RhNavigationSecondary_instances = new WeakSet(), _RhNavigationSecondary_onExpandRequest = function _RhNavigationSecondary_onExpandRequest(event) {
     if (event instanceof SecondaryNavDropdownExpandEvent) {
         const index = __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_getDropdownIndex).call(this, event.target);
         if (index === null || index === undefined) {
@@ -193,8 +184,7 @@ _RhNavigationSecondary_onExpandRequest = function _RhNavigationSecondary_onExpan
             this.dispatchEvent(new SecondaryNavOverlayChangeEvent(event.expanded, event.toggle));
         }
     }
-};
-_RhNavigationSecondary_onFocusout = function _RhNavigationSecondary_onFocusout(event) {
+}, _RhNavigationSecondary_onFocusout = function _RhNavigationSecondary_onFocusout(event) {
     const target = event.relatedTarget;
     if (target?.closest('rh-navigation-secondary') === this || target === null) {
         // if the focus is still inside the rh-navigation-secondary exit
@@ -207,15 +197,13 @@ _RhNavigationSecondary_onFocusout = function _RhNavigationSecondary_onFocusout(e
         this.close();
         this.overlayOpen = false;
     }
-};
-_RhNavigationSecondary_onOverlayClick = function _RhNavigationSecondary_onOverlayClick() {
+}, _RhNavigationSecondary_onOverlayClick = function _RhNavigationSecondary_onOverlayClick() {
     this.close();
     this.overlayOpen = false;
     if (!__classPrivateFieldGet(this, _RhNavigationSecondary_screenSize, "f").matches.has('md')) {
         this.mobileMenuExpanded = false;
     }
-};
-_RhNavigationSecondary_onKeydown = function _RhNavigationSecondary_onKeydown(event) {
+}, _RhNavigationSecondary_onKeydown = function _RhNavigationSecondary_onKeydown(event) {
     switch (event.key) {
         case 'Escape': {
             if (!__classPrivateFieldGet(this, _RhNavigationSecondary_screenSize, "f").matches.has('md')) {
@@ -232,8 +220,7 @@ _RhNavigationSecondary_onKeydown = function _RhNavigationSecondary_onKeydown(eve
         default:
             break;
     }
-};
-_RhNavigationSecondary_onKeyup = function _RhNavigationSecondary_onKeyup(event) {
+}, _RhNavigationSecondary_onKeyup = function _RhNavigationSecondary_onKeyup(event) {
     switch (event.key) {
         case 'Tab':
             __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_onTabKeyup).call(this, event);
@@ -241,8 +228,7 @@ _RhNavigationSecondary_onKeyup = function _RhNavigationSecondary_onKeyup(event) 
         default:
             break;
     }
-};
-_RhNavigationSecondary_onTabKeyup = function _RhNavigationSecondary_onTabKeyup(event) {
+}, _RhNavigationSecondary_onTabKeyup = function _RhNavigationSecondary_onTabKeyup(event) {
     if (!this.mobileMenuExpanded) {
         return;
     }
@@ -251,8 +237,7 @@ _RhNavigationSecondary_onTabKeyup = function _RhNavigationSecondary_onTabKeyup(e
         __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_toggleMobileMenu).call(this);
         this.overlayOpen = false;
     }
-};
-_RhNavigationSecondary_onTabKeydown = function _RhNavigationSecondary_onTabKeydown(event) {
+}, _RhNavigationSecondary_onTabKeydown = function _RhNavigationSecondary_onTabKeydown(event) {
     // target is the element we are leaving with tab press
     const target = event.target;
     // get target parent dropdown
@@ -288,97 +273,75 @@ _RhNavigationSecondary_onTabKeydown = function _RhNavigationSecondary_onTabKeydo
             this.overlayOpen = false;
         }
     }
-};
-_RhNavigationSecondary_getDropdownIndex = function _RhNavigationSecondary_getDropdownIndex(element) {
-    if (!RhNavigationSecondary_1.isDropdown(element)) {
+}, _RhNavigationSecondary_getDropdownIndex = function _RhNavigationSecondary_getDropdownIndex(element) {
+    if (!_a.isDropdown(element)) {
         __classPrivateFieldGet(this, _RhNavigationSecondary_logger, "f").warn('The getDropdownIndex method expects to receive a dropdown element.');
         return;
     }
     const dropdowns = __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_allDropdowns).call(this);
     const index = dropdowns.findIndex(dropdown => dropdown.id === element.id);
     return index;
-};
-_RhNavigationSecondary_dropdownByIndex = function _RhNavigationSecondary_dropdownByIndex(index) {
+}, _RhNavigationSecondary_dropdownByIndex = function _RhNavigationSecondary_dropdownByIndex(index) {
     const dropdowns = __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_allDropdowns).call(this);
     if (dropdowns[index] === undefined) {
         __classPrivateFieldGet(this, _RhNavigationSecondary_logger, "f").error('This dropdown index does not exist.');
         return;
     }
     return dropdowns[index];
-};
-_RhNavigationSecondary_expand = function _RhNavigationSecondary_expand(index) {
+}, _RhNavigationSecondary_expand = function _RhNavigationSecondary_expand(index) {
     if (index == null) {
         return;
     }
     const dropdown = __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_dropdownByIndex).call(this, index);
-    if (dropdown && RhNavigationSecondary_1.isDropdown(dropdown)) {
+    if (dropdown && _a.isDropdown(dropdown)) {
         __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_openDropdown).call(this, dropdown);
     }
-};
-_RhNavigationSecondary_allDropdowns = function _RhNavigationSecondary_allDropdowns() {
+}, _RhNavigationSecondary_allDropdowns = function _RhNavigationSecondary_allDropdowns() {
     return Array.from(this.querySelectorAll('rh-navigation-secondary-dropdown'));
-};
-_RhNavigationSecondary_closeDropdown = function _RhNavigationSecondary_closeDropdown(dropdown) {
+}, _RhNavigationSecondary_closeDropdown = function _RhNavigationSecondary_closeDropdown(dropdown) {
     if (dropdown.expanded === false) {
         return;
     }
     dropdown.expanded = false;
-};
-_RhNavigationSecondary_openDropdown = function _RhNavigationSecondary_openDropdown(dropdown) {
+}, _RhNavigationSecondary_openDropdown = function _RhNavigationSecondary_openDropdown(dropdown) {
     if (dropdown.expanded === true) {
         return;
     }
     dropdown.expanded = true;
-};
-_RhNavigationSecondary_onOverlayChange = function _RhNavigationSecondary_onOverlayChange(event) {
+}, _RhNavigationSecondary_onOverlayChange = function _RhNavigationSecondary_onOverlayChange(event) {
     if (event instanceof SecondaryNavOverlayChangeEvent) {
         if (this.contains(event.toggle)) {
             this.overlayOpen = event.open;
         }
     }
-};
-_RhNavigationSecondary_upgradeAccessibility = function _RhNavigationSecondary_upgradeAccessibility() {
+}, _RhNavigationSecondary_upgradeAccessibility = function _RhNavigationSecondary_upgradeAccessibility() {
     // remove role="navigation" from host on upgrade
     this.removeAttribute('role');
     // remove aria-labelledby from slotted `<ul>` on upgrade
     this.querySelector(':is([slot="nav"]):is(ul)')?.removeAttribute('aria-labelledby');
     __classPrivateFieldGet(this, _RhNavigationSecondary_internals, "f").ariaLabel = this.accessibleLabel;
-};
-_RhNavigationSecondary_toggleMobileMenu = function _RhNavigationSecondary_toggleMobileMenu() {
+}, _RhNavigationSecondary_toggleMobileMenu = function _RhNavigationSecondary_toggleMobileMenu() {
     this.mobileMenuExpanded = !this.mobileMenuExpanded;
     this.dispatchEvent(new SecondaryNavOverlayChangeEvent(this.mobileMenuExpanded, this));
+};
+RhNavigationSecondary.properties = {
+    colorPalette: { reflect: true, attribute: 'color-palette' },
+    accessibleLabel: { attribute: 'accessible-label' },
+    mobileMenuExpanded: { state: true },
+    overlayOpen: { state: true }
 };
 RhNavigationSecondary.styles = [styles];
 RhNavigationSecondary.instances = new Set();
 (() => {
     globalThis.addEventListener('keyup', (event) => {
-        const { instances } = RhNavigationSecondary_1;
+        const { instances } = _a;
         for (const instance of instances) {
             __classPrivateFieldGet(instance, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_onKeyup).call(instance, event);
         }
     }, { capture: false });
 })();
 __decorate([
-    colorContextProvider(),
-    property({ reflect: true, attribute: 'color-palette' })
-], RhNavigationSecondary.prototype, "colorPalette", void 0);
-__decorate([
     colorContextConsumer()
 ], RhNavigationSecondary.prototype, "on", void 0);
-__decorate([
-    queryAssignedElements({ slot: 'nav' })
-], RhNavigationSecondary.prototype, "_nav", void 0);
-__decorate([
-    property({ attribute: 'accessible-label' })
-], RhNavigationSecondary.prototype, "accessibleLabel", void 0);
-__decorate([
-    state()
-], RhNavigationSecondary.prototype, "mobileMenuExpanded", void 0);
-__decorate([
-    state()
-], RhNavigationSecondary.prototype, "overlayOpen", void 0);
-RhNavigationSecondary = RhNavigationSecondary_1 = __decorate([
-    customElement('rh-navigation-secondary')
-], RhNavigationSecondary);
-export { RhNavigationSecondary };
+customElements.define("rh-navigation-secondary", RhNavigationSecondary);
 //# sourceMappingURL=rh-navigation-secondary.js.map

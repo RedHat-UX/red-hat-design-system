@@ -1,8 +1,6 @@
 var _RhTimestamp_timestamp;
-import { __classPrivateFieldGet, __decorate } from "tslib";
+import { __classPrivateFieldGet } from "tslib";
 import { LitElement, html } from 'lit';
-import { customElement } from 'lit/decorators/custom-element.js';
-import { property } from 'lit/decorators/property.js';
 import { TimestampController, } from '@patternfly/pfe-core/controllers/timestamp-controller.js';
 import { css } from "lit";
 const styles = css `:host{display:inline}time{text-decoration:var(--_timestamp-text-decoration,none);text-underline-offset:var(--_timestamp-text-underline-offset,initial)}`;
@@ -16,14 +14,11 @@ const BooleanStringConverter = {
  *
  * @summary Displays a line of text with date and time values
  */
-let RhTimestamp = class RhTimestamp extends LitElement {
+export class RhTimestamp extends LitElement {
     constructor() {
         super(...arguments);
         _RhTimestamp_timestamp.set(this, new TimestampController(this));
     }
-    /**
-     * A string value representing a date
-     */
     get date() {
         return __classPrivateFieldGet(this, _RhTimestamp_timestamp, "f").localeString;
     }
@@ -53,42 +48,23 @@ let RhTimestamp = class RhTimestamp extends LitElement {
       <time datetime="${__classPrivateFieldGet(this, _RhTimestamp_timestamp, "f").isoString}">${__classPrivateFieldGet(this, _RhTimestamp_timestamp, "f").time}</time>
     `;
     }
-};
+}
 _RhTimestamp_timestamp = new WeakMap();
-RhTimestamp.styles = [styles];
-__decorate([
-    property({ reflect: true, attribute: 'date-format' })
-], RhTimestamp.prototype, "dateFormat", void 0);
-__decorate([
-    property({ reflect: true, attribute: 'time-format' })
-], RhTimestamp.prototype, "timeFormat", void 0);
-__decorate([
-    property({ attribute: false })
-], RhTimestamp.prototype, "customFormat", void 0);
-__decorate([
-    property({ reflect: true, attribute: 'display-suffix' })
-], RhTimestamp.prototype, "displaySuffix", void 0);
-__decorate([
-    property({ reflect: true })
-], RhTimestamp.prototype, "locale", void 0);
-__decorate([
-    property({ reflect: true, type: Boolean })
-], RhTimestamp.prototype, "relative", void 0);
-__decorate([
-    property({ reflect: true, type: Boolean })
-], RhTimestamp.prototype, "utc", void 0);
-__decorate([
-    property({
+RhTimestamp.properties = {
+    dateFormat: { reflect: true, attribute: 'date-format' },
+    timeFormat: { reflect: true, attribute: 'time-format' },
+    customFormat: { attribute: false },
+    displaySuffix: { reflect: true, attribute: 'display-suffix' },
+    locale: { reflect: true },
+    relative: { reflect: true, type: Boolean },
+    utc: { reflect: true, type: Boolean },
+    hour12: {
         reflect: true,
         attribute: 'hour-12',
         converter: BooleanStringConverter,
-    })
-], RhTimestamp.prototype, "hour12", void 0);
-__decorate([
-    property({ reflect: true })
-], RhTimestamp.prototype, "date", null);
-RhTimestamp = __decorate([
-    customElement('rh-timestamp')
-], RhTimestamp);
-export { RhTimestamp };
+    },
+    date: { reflect: true }
+};
+RhTimestamp.styles = [styles];
+customElements.define("rh-timestamp", RhTimestamp);
 //# sourceMappingURL=rh-timestamp.js.map

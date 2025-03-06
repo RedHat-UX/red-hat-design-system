@@ -1,8 +1,6 @@
 var _RhContextPicker_instances, _RhContextPicker_internals, _RhContextPicker_target, _RhContextPicker_onInput, _RhContextPicker_setValue;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { html, LitElement } from 'lit';
-import { customElement } from 'lit/decorators/custom-element.js';
-import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { colorContextConsumer } from '@rhds/elements/lib/context/color/consumer.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
@@ -38,14 +36,14 @@ export const paletteMap = new Map(Object.entries({
     darkest,
 }));
 export const paletteNames = Array.from(paletteMap, ([name]) => name);
-let RhContextPicker = class RhContextPicker extends LitElement {
+export class RhContextPicker extends LitElement {
     constructor() {
         super(...arguments);
         _RhContextPicker_instances.add(this);
-        this.value = 'darkest';
-        this.allow = paletteNames;
         _RhContextPicker_internals.set(this, InternalsController.of(this));
         _RhContextPicker_target.set(this, null);
+        this.value = 'darkest';
+        this.allow = paletteNames;
     }
     render() {
         const { allow, on = 'dark', value } = this;
@@ -104,11 +102,8 @@ let RhContextPicker = class RhContextPicker extends LitElement {
             __classPrivateFieldGet(this, _RhContextPicker_target, "f")?.setAttribute('color-palette', this.value);
         }
     }
-};
-_RhContextPicker_internals = new WeakMap();
-_RhContextPicker_target = new WeakMap();
-_RhContextPicker_instances = new WeakSet();
-_RhContextPicker_onInput = function _RhContextPicker_onInput(event) {
+}
+_RhContextPicker_internals = new WeakMap(), _RhContextPicker_target = new WeakMap(), _RhContextPicker_instances = new WeakSet(), _RhContextPicker_onInput = function _RhContextPicker_onInput(event) {
     if (event.target instanceof HTMLInputElement && event.target.checked) {
         event.stopPropagation();
         const { value } = event.target;
@@ -116,30 +111,22 @@ _RhContextPicker_onInput = function _RhContextPicker_onInput(event) {
             __classPrivateFieldGet(this, _RhContextPicker_instances, "m", _RhContextPicker_setValue).call(this, value);
         }
     }
-};
-_RhContextPicker_setValue = function _RhContextPicker_setValue(value) {
+}, _RhContextPicker_setValue = function _RhContextPicker_setValue(value) {
     __classPrivateFieldGet(this, _RhContextPicker_internals, "f").setFormValue(value);
     if (value !== this.value && this.dispatchEvent(new ContextChangeEvent(value, __classPrivateFieldGet(this, _RhContextPicker_target, "f")))) {
         this.value = value;
         this.sync();
     }
 };
+RhContextPicker.properties = {
+    target: {},
+    value: {},
+    allow: { converter: ColorPaletteListConverter }
+};
 RhContextPicker.formAssociated = true;
 RhContextPicker.styles = [style];
 __decorate([
-    property()
-], RhContextPicker.prototype, "target", void 0);
-__decorate([
-    property()
-], RhContextPicker.prototype, "value", void 0);
-__decorate([
     colorContextConsumer()
 ], RhContextPicker.prototype, "on", void 0);
-__decorate([
-    property({ converter: ColorPaletteListConverter })
-], RhContextPicker.prototype, "allow", void 0);
-RhContextPicker = __decorate([
-    customElement('rh-context-picker')
-], RhContextPicker);
-export { RhContextPicker };
+customElements.define("rh-context-picker", RhContextPicker);
 //# sourceMappingURL=rh-context-picker.js.map

@@ -77,7 +77,7 @@ export class ContextConsumer {
         }
     }
     dispatchRequest() {
-        this.host.dispatchEvent(new ContextRequestEvent(this.context, this._callback, this.subscribe));
+        this.host.dispatchEvent(new ContextRequestEvent(this.context, this.host, this._callback, this.subscribe));
     }
 }
 //# sourceMappingURL=context-consumer.js.map

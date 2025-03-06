@@ -1,10 +1,6 @@
 var _RhAudioPlayer_instances, _a, _RhAudioPlayer_duration_get, _RhAudioPlayer_readyState_get, _RhAudioPlayer_isMobileSafari, _RhAudioPlayer_paused, _RhAudioPlayer_unmutedVolume, _RhAudioPlayer_styles, _RhAudioPlayer_headings, _RhAudioPlayer_mediaElement, _RhAudioPlayer_lastMediaElement, _RhAudioPlayer_dir, _RhAudioPlayer_width, _RhAudioPlayer_resizeObserver, _RhAudioPlayer_translation, _RhAudioPlayer_menufloat, _RhAudioPlayer_listeners, _RhAudioPlayer_isMini_get, _RhAudioPlayer_isFull_get, _RhAudioPlayer_isCompact_get, _RhAudioPlayer_panels_get, _RhAudioPlayer_hasMenu_get, _RhAudioPlayer_menuOpen_get, _RhAudioPlayer_menuOpen_set, _RhAudioPlayer_mediaEnd_get, _RhAudioPlayer_mediaStart_get, _RhAudioPlayer_elapsedText_get, _RhAudioPlayer_transcript_get, _RhAudioPlayer_about_get, _RhAudioPlayer_subscribe_get, _RhAudioPlayer_loadLanguage, _RhAudioPlayer_getMenuItems, _RhAudioPlayer_updateMenuLabels, _RhAudioPlayer_updateTranscriptLabels, _RhAudioPlayer_cleanUpListeners, _RhAudioPlayer_initMediaElement, _RhAudioPlayer_onCanplay, _RhAudioPlayer_onCanplaythrough, _RhAudioPlayer_onCueseek, _RhAudioPlayer_onDurationchange, _RhAudioPlayer_onEnded, _RhAudioPlayer_onLoadeddata, _RhAudioPlayer_onLoadedmetadata, _RhAudioPlayer_onMuteButton, _RhAudioPlayer_onPause, _RhAudioPlayer_onPlay, _RhAudioPlayer_onPlaybackRateChange, _RhAudioPlayer_onPlaybackRateSelect, _RhAudioPlayer_onPlayClick, _RhAudioPlayer_onPlayFocus, _RhAudioPlayer_onPlaying, _RhAudioPlayer_onSeeked, _RhAudioPlayer_onSeeking, _RhAudioPlayer_onTimeSlider, _RhAudioPlayer_onTimeupdate, _RhAudioPlayer_onMenuToggle, _RhAudioPlayer_onPanelChange, _RhAudioPlayer_onTitleChange, _RhAudioPlayer_onVolumechange, _RhAudioPlayer_onVolumeSlider, _RhAudioPlayer_selectOpenPanel, _RhAudioPlayer_lastActiveMenuItem, _RhAudioPlayer_onCloseKeydown, _RhAudioPlayer_onMenuKeydown, _RhAudioPlayer_onMenuFocusout, _RhAudioPlayer_positionMenu, _RhAudioPlayer_showMenu, _RhAudioPlayer_unsetTabindexFromMenuItems, _RhAudioPlayer_hideMenu, _RhAudioPlayer_onTranscriptDownload, _RhAudioPlayer_onWindowClick;
-var RhAudioPlayer_1;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
-import { customElement } from 'lit/decorators/custom-element.js';
-import { property } from 'lit/decorators/property.js';
-import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { styleMap } from 'lit/directives/style-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
@@ -53,24 +49,10 @@ import '@rhds/elements/rh-icon/rh-icon.js';
  * @csspart subscribe - subscribe panel
  * @csspart transcript - transcript panel
  */
-let RhAudioPlayer = RhAudioPlayer_1 = _a = class RhAudioPlayer extends LitElement {
+export class RhAudioPlayer extends LitElement {
     constructor() {
         super(...arguments);
         _RhAudioPlayer_instances.add(this);
-        /**
-         * Layout:
-         *   - `mini` (default): minimal controls: play/pause, range; volume and other controls hidden behind menu
-         *   - `compact`: artwork and more controls: time, skip, volume
-         *   - `compact-wide`: like compact but full width
-         *   - `full`: maximal controls and artwork
-         */
-        this.layout = 'mini';
-        /** Playback volume */
-        this.volume = 0.5;
-        /** Playback rate */
-        this.playbackRate = 1;
-        this.expanded = false;
-        this.microcopy = {};
         _RhAudioPlayer_isMobileSafari.set(this, window.navigator.userAgent.match(/(iPhone|iPad|Mobile).*(AppleWebkit|Safari)/i));
         _RhAudioPlayer_paused.set(this, true);
         _RhAudioPlayer_unmutedVolume.set(this, this.volume);
@@ -90,10 +72,10 @@ let RhAudioPlayer = RhAudioPlayer_1 = _a = class RhAudioPlayer extends LitElemen
         }));
         _RhAudioPlayer_translation.set(this, new I18nController(this, {
             'en': {
-                ...RhAudioPlayer_1.enUS,
+                ..._a.enUS,
             },
             'en-US': {
-                ...RhAudioPlayer_1.enUS,
+                ..._a.enUS,
             }, ...this.microcopy ?? {},
         }));
         _RhAudioPlayer_menufloat.set(this, new FloatingDOMController(this, {
@@ -125,6 +107,35 @@ let RhAudioPlayer = RhAudioPlayer_1 = _a = class RhAudioPlayer extends LitElemen
                 __classPrivateFieldGet(this, _RhAudioPlayer_instances, "m", _RhAudioPlayer_hideMenu).call(this);
             }
         });
+        /**
+         * Layout:
+         *   - `mini` (default): minimal controls: play/pause, range; volume and other controls hidden behind menu
+         *   - `compact`: artwork and more controls: time, skip, volume
+         *   - `compact-wide`: like compact but full width
+         *   - `full`: maximal controls and artwork
+         */
+        this.layout = 'mini';
+        /** Playback volume */
+        this.volume = 0.5;
+        /** Playback rate */
+        this.playbackRate = 1;
+        this.expanded = false;
+        this.microcopy = {};
+    }
+    get _mediaseries() {
+        return this.renderRoot?.querySelector(`slot[name=series]`)?.assignedElements() ?? [];
+    }
+    get _mediatitle() {
+        return this.renderRoot?.querySelector(`slot[name=title]`)?.assignedElements() ?? [];
+    }
+    get _transcripts() {
+        return this.renderRoot?.querySelector(`slot[name=transcript]`)?.assignedElements()?.filter(node => node.matches('rh-transcript')) ?? [];
+    }
+    get _abouts() {
+        return this.renderRoot?.querySelector(`slot[name=about]`)?.assignedElements()?.filter(node => node.matches('rh-audio-player-about')) ?? [];
+    }
+    get _subscribe() {
+        return this.renderRoot?.querySelector(`slot[name=subscribe]`)?.assignedElements()?.filter(node => node.matches('rh-audio-player-subscribe')) ?? [];
     }
     /** elapsed time in seconds */
     get currentTime() {
@@ -159,7 +170,7 @@ let RhAudioPlayer = RhAudioPlayer_1 = _a = class RhAudioPlayer extends LitElemen
     }
     connectedCallback() {
         super.connectedCallback();
-        RhAudioPlayer_1.instances.add(this);
+        _a.instances.add(this);
         this.addEventListener('cueseek', __classPrivateFieldGet(this, _RhAudioPlayer_instances, "m", _RhAudioPlayer_onCueseek));
         __classPrivateFieldGet(this, _RhAudioPlayer_instances, "m", _RhAudioPlayer_initMediaElement).call(this);
         __classPrivateFieldGet(this, _RhAudioPlayer_instances, "m", _RhAudioPlayer_loadLanguage).call(this);
@@ -167,7 +178,7 @@ let RhAudioPlayer = RhAudioPlayer_1 = _a = class RhAudioPlayer extends LitElemen
     }
     disconnectedCallback() {
         __classPrivateFieldGet(this, _RhAudioPlayer_instances, "m", _RhAudioPlayer_cleanUpListeners).call(this);
-        RhAudioPlayer_1.instances.delete(this);
+        _a.instances.delete(this);
         super.disconnectedCallback();
     }
     render() {
@@ -509,55 +520,31 @@ let RhAudioPlayer = RhAudioPlayer_1 = _a = class RhAudioPlayer extends LitElemen
     forward(by = 15) {
         this.seekFromCurrentTime(by);
     }
-};
-_RhAudioPlayer_isMobileSafari = new WeakMap();
-_RhAudioPlayer_paused = new WeakMap();
-_RhAudioPlayer_unmutedVolume = new WeakMap();
-_RhAudioPlayer_styles = new WeakMap();
-_RhAudioPlayer_headings = new WeakMap();
-_RhAudioPlayer_mediaElement = new WeakMap();
-_RhAudioPlayer_lastMediaElement = new WeakMap();
-_RhAudioPlayer_dir = new WeakMap();
-_RhAudioPlayer_width = new WeakMap();
-_RhAudioPlayer_resizeObserver = new WeakMap();
-_RhAudioPlayer_translation = new WeakMap();
-_RhAudioPlayer_menufloat = new WeakMap();
-_RhAudioPlayer_listeners = new WeakMap();
-_RhAudioPlayer_lastActiveMenuItem = new WeakMap();
-_RhAudioPlayer_onWindowClick = new WeakMap();
-_RhAudioPlayer_instances = new WeakSet();
-_RhAudioPlayer_duration_get = function _RhAudioPlayer_duration_get() {
+}
+_a = RhAudioPlayer, _RhAudioPlayer_isMobileSafari = new WeakMap(), _RhAudioPlayer_paused = new WeakMap(), _RhAudioPlayer_unmutedVolume = new WeakMap(), _RhAudioPlayer_styles = new WeakMap(), _RhAudioPlayer_headings = new WeakMap(), _RhAudioPlayer_mediaElement = new WeakMap(), _RhAudioPlayer_lastMediaElement = new WeakMap(), _RhAudioPlayer_dir = new WeakMap(), _RhAudioPlayer_width = new WeakMap(), _RhAudioPlayer_resizeObserver = new WeakMap(), _RhAudioPlayer_translation = new WeakMap(), _RhAudioPlayer_menufloat = new WeakMap(), _RhAudioPlayer_listeners = new WeakMap(), _RhAudioPlayer_lastActiveMenuItem = new WeakMap(), _RhAudioPlayer_onWindowClick = new WeakMap(), _RhAudioPlayer_instances = new WeakSet(), _RhAudioPlayer_duration_get = function _RhAudioPlayer_duration_get() {
     return __classPrivateFieldGet(this, _RhAudioPlayer_mediaElement, "f")?.duration ?? 0;
-};
-_RhAudioPlayer_readyState_get = function _RhAudioPlayer_readyState_get() {
+}, _RhAudioPlayer_readyState_get = function _RhAudioPlayer_readyState_get() {
     return __classPrivateFieldGet(this, _RhAudioPlayer_mediaElement, "f")?.readyState ?? 0;
-};
-_RhAudioPlayer_isMini_get = function _RhAudioPlayer_isMini_get() {
+}, _RhAudioPlayer_isMini_get = function _RhAudioPlayer_isMini_get() {
     return !__classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_isFull_get) && !__classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_isCompact_get);
-};
-_RhAudioPlayer_isFull_get = function _RhAudioPlayer_isFull_get() {
+}, _RhAudioPlayer_isFull_get = function _RhAudioPlayer_isFull_get() {
     return this.layout === 'full';
-};
-_RhAudioPlayer_isCompact_get = function _RhAudioPlayer_isCompact_get() {
+}, _RhAudioPlayer_isCompact_get = function _RhAudioPlayer_isCompact_get() {
     return !!this.layout?.startsWith('compact');
-};
-_RhAudioPlayer_panels_get = function _RhAudioPlayer_panels_get() {
+}, _RhAudioPlayer_panels_get = function _RhAudioPlayer_panels_get() {
     return [
         { id: 'about', panel: __classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_about_get) },
         { id: 'subscribe', panel: __classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_subscribe_get) },
         { id: 'transcript', panel: __classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_transcript_get) },
     ].filter(x => !!x.panel);
-};
-_RhAudioPlayer_hasMenu_get = function _RhAudioPlayer_hasMenu_get() {
+}, _RhAudioPlayer_hasMenu_get = function _RhAudioPlayer_hasMenu_get() {
     return (__classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_panels_get).length > 1
         || !!this.mediaseries
         || !!this.mediatitle
         || (this._abouts?.length ?? 0) > 0);
-};
-_RhAudioPlayer_menuOpen_get = function _RhAudioPlayer_menuOpen_get() {
+}, _RhAudioPlayer_menuOpen_get = function _RhAudioPlayer_menuOpen_get() {
     return __classPrivateFieldGet(this, _RhAudioPlayer_menufloat, "f").open;
-};
-_RhAudioPlayer_menuOpen_set = function _RhAudioPlayer_menuOpen_set(open) {
+}, _RhAudioPlayer_menuOpen_set = function _RhAudioPlayer_menuOpen_set(open) {
     if (open) {
         __classPrivateFieldGet(this, _RhAudioPlayer_instances, "m", _RhAudioPlayer_showMenu).call(this);
         __classPrivateFieldSet(this, _RhAudioPlayer_width, this.offsetWidth, "f");
@@ -567,39 +554,31 @@ _RhAudioPlayer_menuOpen_set = function _RhAudioPlayer_menuOpen_set(open) {
         __classPrivateFieldGet(this, _RhAudioPlayer_instances, "m", _RhAudioPlayer_hideMenu).call(this);
         __classPrivateFieldGet(this, _RhAudioPlayer_resizeObserver, "f").unobserve(this);
     }
-};
-_RhAudioPlayer_mediaEnd_get = function _RhAudioPlayer_mediaEnd_get() {
+}, _RhAudioPlayer_mediaEnd_get = function _RhAudioPlayer_mediaEnd_get() {
     return (__classPrivateFieldGet(this, _RhAudioPlayer_mediaElement, "f")?.seekable?.end?.length || -1) > 0
         && __classPrivateFieldGet(this, _RhAudioPlayer_mediaElement, "f")?.seekable?.end(0) ?
         __classPrivateFieldGet(this, _RhAudioPlayer_mediaElement, "f")?.seekable?.end(0)
         : false;
-};
-_RhAudioPlayer_mediaStart_get = function _RhAudioPlayer_mediaStart_get() {
+}, _RhAudioPlayer_mediaStart_get = function _RhAudioPlayer_mediaStart_get() {
     return __classPrivateFieldGet(this, _RhAudioPlayer_mediaElement, "f")?.seekable?.start(0) ?
         __classPrivateFieldGet(this, _RhAudioPlayer_mediaElement, "f")?.seekable?.start(0)
         : 0;
-};
-_RhAudioPlayer_elapsedText_get = function _RhAudioPlayer_elapsedText_get() {
+}, _RhAudioPlayer_elapsedText_get = function _RhAudioPlayer_elapsedText_get() {
     return getFormattedTime(this.currentTime || 0);
-};
-_RhAudioPlayer_transcript_get = function _RhAudioPlayer_transcript_get() {
+}, _RhAudioPlayer_transcript_get = function _RhAudioPlayer_transcript_get() {
     const [t] = this._transcripts ?? [];
     return t ?? this.shadowRoot?.querySelector('rh-transcript');
-};
-_RhAudioPlayer_about_get = function _RhAudioPlayer_about_get() {
+}, _RhAudioPlayer_about_get = function _RhAudioPlayer_about_get() {
     const [a = this.shadowRoot?.querySelector('rh-audio-player-about')] = this._abouts ?? [];
     return a;
-};
-_RhAudioPlayer_subscribe_get = function _RhAudioPlayer_subscribe_get() {
+}, _RhAudioPlayer_subscribe_get = function _RhAudioPlayer_subscribe_get() {
     return this._subscribe?.[0];
-};
-_RhAudioPlayer_loadLanguage = async function _RhAudioPlayer_loadLanguage(lang = __classPrivateFieldGet(this, _RhAudioPlayer_translation, "f").language) {
+}, _RhAudioPlayer_loadLanguage = async function _RhAudioPlayer_loadLanguage(lang = __classPrivateFieldGet(this, _RhAudioPlayer_translation, "f").language) {
     const url = new URL(`./i18n/${lang}.json`, import.meta.url);
     await __classPrivateFieldGet(this, _RhAudioPlayer_translation, "f").loadTranslation(url, lang);
     __classPrivateFieldGet(this, _RhAudioPlayer_instances, "m", _RhAudioPlayer_updateMenuLabels).call(this);
     __classPrivateFieldGet(this, _RhAudioPlayer_instances, "m", _RhAudioPlayer_updateTranscriptLabels).call(this);
-};
-_RhAudioPlayer_getMenuItems = function _RhAudioPlayer_getMenuItems(items) {
+}, _RhAudioPlayer_getMenuItems = function _RhAudioPlayer_getMenuItems(items) {
     const ministepperid = 'mini-playback-rate';
     if (__classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_isMini_get)) {
         return [
@@ -613,8 +592,7 @@ _RhAudioPlayer_getMenuItems = function _RhAudioPlayer_getMenuItems(items) {
     else {
         return items;
     }
-};
-_RhAudioPlayer_updateMenuLabels = function _RhAudioPlayer_updateMenuLabels() {
+}, _RhAudioPlayer_updateMenuLabels = function _RhAudioPlayer_updateMenuLabels() {
     if (__classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_about_get)?.menuLabel) {
         __classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_about_get).menuLabel = __classPrivateFieldGet(this, _RhAudioPlayer_translation, "f").get('about');
     }
@@ -624,21 +602,18 @@ _RhAudioPlayer_updateMenuLabels = function _RhAudioPlayer_updateMenuLabels() {
     if (__classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_transcript_get)?.menuLabel) {
         __classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_transcript_get).menuLabel = __classPrivateFieldGet(this, _RhAudioPlayer_translation, "f").get('transcript');
     }
-};
-_RhAudioPlayer_updateTranscriptLabels = function _RhAudioPlayer_updateTranscriptLabels() {
+}, _RhAudioPlayer_updateTranscriptLabels = function _RhAudioPlayer_updateTranscriptLabels() {
     if (__classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_transcript_get)?.autoscrollLabel) {
         __classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_transcript_get).autoscrollLabel = __classPrivateFieldGet(this, _RhAudioPlayer_translation, "f").get('autoscroll');
     }
     if (__classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_transcript_get)?.downloadLabel) {
         __classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_transcript_get).downloadLabel = __classPrivateFieldGet(this, _RhAudioPlayer_translation, "f").get('download');
     }
-};
-_RhAudioPlayer_cleanUpListeners = function _RhAudioPlayer_cleanUpListeners() {
+}, _RhAudioPlayer_cleanUpListeners = function _RhAudioPlayer_cleanUpListeners() {
     for (const [event, listener] of __classPrivateFieldGet(this, _RhAudioPlayer_listeners, "f")) {
         __classPrivateFieldGet(this, _RhAudioPlayer_lastMediaElement, "f")?.removeEventListener(event, listener);
     }
-};
-_RhAudioPlayer_initMediaElement = function _RhAudioPlayer_initMediaElement(slotchangeevent) {
+}, _RhAudioPlayer_initMediaElement = function _RhAudioPlayer_initMediaElement(slotchangeevent) {
     if (slotchangeevent) {
         __classPrivateFieldGet(this, _RhAudioPlayer_instances, "m", _RhAudioPlayer_cleanUpListeners).call(this);
         __classPrivateFieldSet(this, _RhAudioPlayer_lastMediaElement, this.querySelector('audio') ?? undefined, "f");
@@ -652,14 +627,11 @@ _RhAudioPlayer_initMediaElement = function _RhAudioPlayer_initMediaElement(slotc
             __classPrivateFieldGet(this, _RhAudioPlayer_mediaElement, "f").addEventListener(event, listener);
         }
     }
-};
-_RhAudioPlayer_onCanplay = function _RhAudioPlayer_onCanplay() {
+}, _RhAudioPlayer_onCanplay = function _RhAudioPlayer_onCanplay() {
     this.volume = __classPrivateFieldGet(this, _RhAudioPlayer_mediaElement, "f")?.volume || 0.5;
-};
-_RhAudioPlayer_onCanplaythrough = function _RhAudioPlayer_onCanplaythrough() {
+}, _RhAudioPlayer_onCanplaythrough = function _RhAudioPlayer_onCanplaythrough() {
     this.requestUpdate();
-};
-_RhAudioPlayer_onCueseek = function _RhAudioPlayer_onCueseek(event) {
+}, _RhAudioPlayer_onCueseek = function _RhAudioPlayer_onCueseek(event) {
     const target = event.target;
     const cue = target;
     const start = cue?.startTime;
@@ -667,50 +639,40 @@ _RhAudioPlayer_onCueseek = function _RhAudioPlayer_onCueseek(event) {
         this.seek(start);
     }
     __classPrivateFieldGet(this, _RhAudioPlayer_instances, "m", _RhAudioPlayer_onTimeupdate).call(this);
-};
-_RhAudioPlayer_onDurationchange = function _RhAudioPlayer_onDurationchange() {
+}, _RhAudioPlayer_onDurationchange = function _RhAudioPlayer_onDurationchange() {
     this.requestUpdate();
     __classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_transcript_get)?.setDuration(this.duration);
-};
-_RhAudioPlayer_onEnded = function _RhAudioPlayer_onEnded() {
+}, _RhAudioPlayer_onEnded = function _RhAudioPlayer_onEnded() {
     __classPrivateFieldSet(this, _RhAudioPlayer_paused, true, "f");
-};
-_RhAudioPlayer_onLoadeddata = function _RhAudioPlayer_onLoadeddata() {
+}, _RhAudioPlayer_onLoadeddata = function _RhAudioPlayer_onLoadeddata() {
     this.requestUpdate();
-};
-_RhAudioPlayer_onLoadedmetadata = function _RhAudioPlayer_onLoadedmetadata() {
+}, _RhAudioPlayer_onLoadedmetadata = function _RhAudioPlayer_onLoadedmetadata() {
     this.requestUpdate();
-};
-_RhAudioPlayer_onMuteButton = function _RhAudioPlayer_onMuteButton() {
+}, _RhAudioPlayer_onMuteButton = function _RhAudioPlayer_onMuteButton() {
     return !this.muted ? this.mute() : this.unmute();
-};
-_RhAudioPlayer_onPause = function _RhAudioPlayer_onPause() {
+}, _RhAudioPlayer_onPause = function _RhAudioPlayer_onPause() {
     __classPrivateFieldSet(this, _RhAudioPlayer_paused, true, "f");
     this.requestUpdate();
-};
-_RhAudioPlayer_onPlay = function _RhAudioPlayer_onPlay() {
+}, _RhAudioPlayer_onPlay = function _RhAudioPlayer_onPlay() {
     __classPrivateFieldSet(this, _RhAudioPlayer_paused, false, "f");
     this.requestUpdate();
-};
-_RhAudioPlayer_onPlaybackRateChange = function _RhAudioPlayer_onPlaybackRateChange() {
+}, _RhAudioPlayer_onPlaybackRateChange = function _RhAudioPlayer_onPlaybackRateChange() {
     if (!__classPrivateFieldGet(this, _RhAudioPlayer_mediaElement, "f") || this.playbackRate !== __classPrivateFieldGet(this, _RhAudioPlayer_mediaElement, "f").playbackRate) {
         this.playbackRate = __classPrivateFieldGet(this, _RhAudioPlayer_mediaElement, "f")?.playbackRate || 1;
     }
-};
-_RhAudioPlayer_onPlaybackRateSelect = function _RhAudioPlayer_onPlaybackRateSelect(event) {
+}, _RhAudioPlayer_onPlaybackRateSelect = function _RhAudioPlayer_onPlaybackRateSelect(event) {
     if (event instanceof RhAudioPlayerRateSelectEvent && __classPrivateFieldGet(this, _RhAudioPlayer_mediaElement, "f")) {
         this.playbackRate = event.playbackRate;
         __classPrivateFieldGet(this, _RhAudioPlayer_mediaElement, "f").playbackRate = event.playbackRate;
     }
-};
-_RhAudioPlayer_onPlayClick = 
+}, _RhAudioPlayer_onPlayClick = 
 /**
  * handles play button click by toggling play / pause
  */
 async function _RhAudioPlayer_onPlayClick(event) {
     const target = event?.target;
     const tooltip = target?.parentElement?.closest('rh-tooltip');
-    for (const instance of RhAudioPlayer_1.instances) {
+    for (const instance of _a.instances) {
         if (instance !== this) {
             instance.pause();
         }
@@ -722,45 +684,36 @@ async function _RhAudioPlayer_onPlayClick(event) {
         this.pause();
     }
     setTimeout(() => tooltip?.show(), 10);
-};
-_RhAudioPlayer_onPlayFocus = function _RhAudioPlayer_onPlayFocus() {
+}, _RhAudioPlayer_onPlayFocus = function _RhAudioPlayer_onPlayFocus() {
     for (const id of ['mediaseries', 'mediatitle']) {
         const scroller = this.shadowRoot?.querySelector(`#${id}`);
         scroller?.startScrolling();
     }
-};
-_RhAudioPlayer_onPlaying = function _RhAudioPlayer_onPlaying() {
+}, _RhAudioPlayer_onPlaying = function _RhAudioPlayer_onPlaying() {
     __classPrivateFieldSet(this, _RhAudioPlayer_paused, false, "f");
     this.requestUpdate();
-};
-_RhAudioPlayer_onSeeked = function _RhAudioPlayer_onSeeked() {
+}, _RhAudioPlayer_onSeeked = function _RhAudioPlayer_onSeeked() {
     this.requestUpdate();
-};
-_RhAudioPlayer_onSeeking = function _RhAudioPlayer_onSeeking() {
+}, _RhAudioPlayer_onSeeking = function _RhAudioPlayer_onSeeking() {
     this.requestUpdate();
-};
-_RhAudioPlayer_onTimeSlider = function _RhAudioPlayer_onTimeSlider(event) {
+}, _RhAudioPlayer_onTimeSlider = function _RhAudioPlayer_onTimeSlider(event) {
     if (__classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_mediaEnd_get)) {
         const percent = parseFloat(event.target.value) ?? 0;
         const seconds = this.duration * (percent / 100);
         this.seek(seconds);
     }
-};
-_RhAudioPlayer_onTimeupdate = function _RhAudioPlayer_onTimeupdate() {
+}, _RhAudioPlayer_onTimeupdate = function _RhAudioPlayer_onTimeupdate() {
     __classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_transcript_get)?.setActiveCues(this.currentTime);
     this.requestUpdate();
-};
-_RhAudioPlayer_onMenuToggle = function _RhAudioPlayer_onMenuToggle(event) {
+}, _RhAudioPlayer_onMenuToggle = function _RhAudioPlayer_onMenuToggle(event) {
     event.preventDefault();
     __classPrivateFieldSet(this, _RhAudioPlayer_instances, !__classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_menuOpen_get), "a", _RhAudioPlayer_menuOpen_set);
     event.stopPropagation();
-};
-_RhAudioPlayer_onPanelChange = function _RhAudioPlayer_onPanelChange() {
+}, _RhAudioPlayer_onPanelChange = function _RhAudioPlayer_onPanelChange() {
     __classPrivateFieldGet(this, _RhAudioPlayer_instances, "m", _RhAudioPlayer_updateMenuLabels).call(this);
     __classPrivateFieldGet(this, _RhAudioPlayer_instances, "m", _RhAudioPlayer_updateTranscriptLabels).call(this);
     __classPrivateFieldGet(this, _RhAudioPlayer_instances, "m", _RhAudioPlayer_onTitleChange).call(this);
-};
-_RhAudioPlayer_onTitleChange = function _RhAudioPlayer_onTitleChange() {
+}, _RhAudioPlayer_onTitleChange = function _RhAudioPlayer_onTitleChange() {
     const mediatitle = this._mediatitle?.[0]?.textContent ?? '';
     const mediaseries = this._mediaseries?.[0]?.textContent ?? '';
     if (mediatitle.length > 0) {
@@ -775,8 +728,7 @@ _RhAudioPlayer_onTitleChange = function _RhAudioPlayer_onTitleChange() {
     if (__classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_about_get) && this.mediatitle) {
         __classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_about_get).mediatitle = this.mediatitle;
     }
-};
-_RhAudioPlayer_onVolumechange = function _RhAudioPlayer_onVolumechange() {
+}, _RhAudioPlayer_onVolumechange = function _RhAudioPlayer_onVolumechange() {
     if (__classPrivateFieldGet(this, _RhAudioPlayer_mediaElement, "f")) {
         const { volume } = __classPrivateFieldGet(this, _RhAudioPlayer_mediaElement, "f");
         if (volume > 0) {
@@ -784,14 +736,12 @@ _RhAudioPlayer_onVolumechange = function _RhAudioPlayer_onVolumechange() {
         }
         this.volume = Math.max(0, Math.min(10, __classPrivateFieldGet(this, _RhAudioPlayer_mediaElement, "f").volume));
     }
-};
-_RhAudioPlayer_onVolumeSlider = function _RhAudioPlayer_onVolumeSlider(event) {
+}, _RhAudioPlayer_onVolumeSlider = function _RhAudioPlayer_onVolumeSlider(event) {
     const level = parseFloat(event.target.value || '-1');
     if (__classPrivateFieldGet(this, _RhAudioPlayer_mediaElement, "f")) {
         __classPrivateFieldGet(this, _RhAudioPlayer_mediaElement, "f").volume = Math.max(0, Math.min(10, level / 100));
     }
-};
-_RhAudioPlayer_selectOpenPanel = function _RhAudioPlayer_selectOpenPanel(panel) {
+}, _RhAudioPlayer_selectOpenPanel = function _RhAudioPlayer_selectOpenPanel(panel) {
     const panels = [__classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_about_get), __classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_subscribe_get), __classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_transcript_get)];
     panels.forEach(item => item?.toggleAttribute('hidden', panel !== item));
     this.expanded = !!panel && panels.includes(panel);
@@ -811,8 +761,7 @@ _RhAudioPlayer_selectOpenPanel = function _RhAudioPlayer_selectOpenPanel(panel) 
             }
         }, 1000);
     }, 1);
-};
-_RhAudioPlayer_onCloseKeydown = 
+}, _RhAudioPlayer_onCloseKeydown = 
 /**
  * hides panel with Escape key
  * @param event {KeyboardEvent}
@@ -821,8 +770,7 @@ async function _RhAudioPlayer_onCloseKeydown(event) {
     if (event.key === 'Escape') {
         __classPrivateFieldGet(this, _RhAudioPlayer_instances, "m", _RhAudioPlayer_selectOpenPanel).call(this);
     }
-};
-_RhAudioPlayer_onMenuKeydown = 
+}, _RhAudioPlayer_onMenuKeydown = 
 /**
  * hides menu with Escape key
  */
@@ -831,22 +779,19 @@ async function _RhAudioPlayer_onMenuKeydown(event) {
         await __classPrivateFieldGet(this, _RhAudioPlayer_instances, "m", _RhAudioPlayer_hideMenu).call(this);
         this.shadowRoot?.querySelector('#menu-button')?.focus();
     }
-};
-_RhAudioPlayer_onMenuFocusout = function _RhAudioPlayer_onMenuFocusout(event) {
+}, _RhAudioPlayer_onMenuFocusout = function _RhAudioPlayer_onMenuFocusout(event) {
     const { relatedTarget } = event;
     if (relatedTarget instanceof HTMLElement
         && relatedTarget.closest('rh-menu') !== this.shadowRoot?.getElementById('menu')) {
         setTimeout(() => __classPrivateFieldGet(this, _RhAudioPlayer_instances, "m", _RhAudioPlayer_hideMenu).call(this), 300);
     }
-};
-_RhAudioPlayer_positionMenu = async function _RhAudioPlayer_positionMenu() {
+}, _RhAudioPlayer_positionMenu = async function _RhAudioPlayer_positionMenu() {
     await this.updateComplete;
     const placement = 'bottom-start';
     const mainAxis = 0;
     const offset = { mainAxis: mainAxis, alignmentAxis: 0 };
     await __classPrivateFieldGet(this, _RhAudioPlayer_menufloat, "f").show({ offset: offset, placement: placement });
-};
-_RhAudioPlayer_showMenu = async function _RhAudioPlayer_showMenu() {
+}, _RhAudioPlayer_showMenu = async function _RhAudioPlayer_showMenu() {
     const menu = this.shadowRoot?.getElementById('menu');
     const button = this.shadowRoot?.getElementById('menu-button');
     if (!menu || !button) {
@@ -858,20 +803,17 @@ _RhAudioPlayer_showMenu = async function _RhAudioPlayer_showMenu() {
         menu.activateItem(__classPrivateFieldGet(this, _RhAudioPlayer_lastActiveMenuItem, "f"));
     }
     window.addEventListener('click', __classPrivateFieldGet(this, _RhAudioPlayer_onWindowClick, "f"));
-};
-_RhAudioPlayer_unsetTabindexFromMenuItems = function _RhAudioPlayer_unsetTabindexFromMenuItems() {
+}, _RhAudioPlayer_unsetTabindexFromMenuItems = function _RhAudioPlayer_unsetTabindexFromMenuItems() {
     const menu = this.shadowRoot?.getElementById('menu');
     __classPrivateFieldSet(this, _RhAudioPlayer_lastActiveMenuItem, menu?.activeItem, "f");
     for (const item of menu?.querySelectorAll('[tabindex]') ?? []) {
         item.tabIndex = -1;
     }
-};
-_RhAudioPlayer_hideMenu = async function _RhAudioPlayer_hideMenu() {
+}, _RhAudioPlayer_hideMenu = async function _RhAudioPlayer_hideMenu() {
     __classPrivateFieldGet(this, _RhAudioPlayer_instances, "m", _RhAudioPlayer_unsetTabindexFromMenuItems).call(this);
     window.removeEventListener('click', __classPrivateFieldGet(this, _RhAudioPlayer_onWindowClick, "f"));
     await __classPrivateFieldGet(this, _RhAudioPlayer_menufloat, "f").hide();
-};
-_RhAudioPlayer_onTranscriptDownload = function _RhAudioPlayer_onTranscriptDownload() {
+}, _RhAudioPlayer_onTranscriptDownload = function _RhAudioPlayer_onTranscriptDownload() {
     const transcript = __classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_transcript_get)?.downloadText;
     const label = __classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_transcript_get)?.label;
     const a = document.createElement('a');
@@ -887,6 +829,18 @@ _RhAudioPlayer_onTranscriptDownload = function _RhAudioPlayer_onTranscriptDownlo
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
+};
+RhAudioPlayer.properties = {
+    mediaseries: { reflect: true },
+    mediatitle: { reflect: true },
+    layout: { reflect: true },
+    poster: { reflect: true },
+    volume: { reflect: true, type: Number },
+    playbackRate: { reflect: true, type: Number },
+    expanded: { reflect: true, type: Boolean },
+    lang: { reflect: true },
+    microcopy: { attribute: false },
+    colorPalette: { reflect: true, attribute: 'color-palette' }
 };
 RhAudioPlayer.styles = [buttonStyles, styles, rangeStyles];
 RhAudioPlayer.instances = new Set();
@@ -909,56 +863,7 @@ RhAudioPlayer.enUS = {
     'download': 'Download',
 };
 __decorate([
-    property({ reflect: true })
-], RhAudioPlayer.prototype, "mediaseries", void 0);
-__decorate([
-    property({ reflect: true })
-], RhAudioPlayer.prototype, "mediatitle", void 0);
-__decorate([
-    property({ reflect: true })
-], RhAudioPlayer.prototype, "layout", void 0);
-__decorate([
-    property({ reflect: true })
-], RhAudioPlayer.prototype, "poster", void 0);
-__decorate([
-    property({ reflect: true, type: Number })
-], RhAudioPlayer.prototype, "volume", void 0);
-__decorate([
-    property({ reflect: true, type: Number })
-], RhAudioPlayer.prototype, "playbackRate", void 0);
-__decorate([
-    property({ reflect: true, type: Boolean })
-], RhAudioPlayer.prototype, "expanded", void 0);
-__decorate([
-    property({ reflect: true })
-], RhAudioPlayer.prototype, "lang", void 0);
-__decorate([
-    property({ attribute: false })
-], RhAudioPlayer.prototype, "microcopy", void 0);
-__decorate([
-    colorContextProvider(),
-    property({ reflect: true, attribute: 'color-palette' })
-], RhAudioPlayer.prototype, "colorPalette", void 0);
-__decorate([
     colorContextConsumer()
 ], RhAudioPlayer.prototype, "on", void 0);
-__decorate([
-    queryAssignedElements({ slot: 'series' })
-], RhAudioPlayer.prototype, "_mediaseries", void 0);
-__decorate([
-    queryAssignedElements({ slot: 'title' })
-], RhAudioPlayer.prototype, "_mediatitle", void 0);
-__decorate([
-    queryAssignedElements({ slot: 'transcript', selector: 'rh-transcript' })
-], RhAudioPlayer.prototype, "_transcripts", void 0);
-__decorate([
-    queryAssignedElements({ slot: 'about', selector: 'rh-audio-player-about' })
-], RhAudioPlayer.prototype, "_abouts", void 0);
-__decorate([
-    queryAssignedElements({ slot: 'subscribe', selector: 'rh-audio-player-subscribe' })
-], RhAudioPlayer.prototype, "_subscribe", void 0);
-RhAudioPlayer = RhAudioPlayer_1 = __decorate([
-    customElement('rh-audio-player')
-], RhAudioPlayer);
-export { RhAudioPlayer };
+customElements.define("rh-audio-player", RhAudioPlayer);
 //# sourceMappingURL=rh-audio-player.js.map

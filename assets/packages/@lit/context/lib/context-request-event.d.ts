@@ -23,6 +23,7 @@ export type ContextCallback<ValueType> = (value: ValueType, unsubscribe?: () => 
  */
 export interface ContextRequest<C extends Context<unknown, unknown>> {
     readonly context: C;
+    readonly contextTarget: Element;
     readonly callback: ContextCallback<ContextType<C>>;
     readonly subscribe?: boolean;
 }
@@ -41,14 +42,16 @@ export interface ContextRequest<C extends Context<unknown, unknown>> {
  */
 export declare class ContextRequestEvent<C extends Context<unknown, unknown>> extends Event implements ContextRequest<C> {
     readonly context: C;
+    readonly contextTarget: Element;
     readonly callback: ContextCallback<ContextType<C>>;
     readonly subscribe?: boolean;
     /**
      *
      * @param context the context key to request
+     * @param contextTarget the original context target of the requester
      * @param callback the callback that should be invoked when the context with the specified key is available
      * @param subscribe when, true indicates we want to subscribe to future updates
      */
-    constructor(context: C, callback: ContextCallback<ContextType<C>>, subscribe?: boolean);
+    constructor(context: C, contextTarget: Element, callback: ContextCallback<ContextType<C>>, subscribe?: boolean);
 }
 //# sourceMappingURL=context-request-event.d.ts.map

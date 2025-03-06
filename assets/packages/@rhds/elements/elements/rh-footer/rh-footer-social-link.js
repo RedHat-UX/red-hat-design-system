@@ -1,12 +1,10 @@
 var _RhFooterSocialLink_logger;
-import { __classPrivateFieldGet, __decorate } from "tslib";
+import { __classPrivateFieldGet } from "tslib";
 import { LitElement, html } from 'lit';
-import { customElement } from 'lit/decorators/custom-element.js';
-import { property } from 'lit/decorators/property.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { css } from "lit";
 const style = css `:host{display:block;--rh-icon-size:var(--rh-footer--social-icon--size,var(--rh-size-icon-02,24px))}[hidden]{display:none!important}::slotted(a){color:var(--_icon-color)!important}::slotted(a:is(:hover,:focus-within)){color:var(--_icon-color-hover)!important}`;
-let RhFooterSocialLink = class RhFooterSocialLink extends LitElement {
+export class RhFooterSocialLink extends LitElement {
     constructor() {
         super(...arguments);
         _RhFooterSocialLink_logger.set(this, new Logger(this));
@@ -36,14 +34,11 @@ let RhFooterSocialLink = class RhFooterSocialLink extends LitElement {
             oldDiv.parentNode?.replaceChild(newDiv, oldDiv);
         }
     }
-};
+}
 _RhFooterSocialLink_logger = new WeakMap();
+RhFooterSocialLink.properties = {
+    icon: {}
+};
 RhFooterSocialLink.styles = style;
-__decorate([
-    property()
-], RhFooterSocialLink.prototype, "icon", void 0);
-RhFooterSocialLink = __decorate([
-    customElement('rh-footer-social-link')
-], RhFooterSocialLink);
-export { RhFooterSocialLink };
+customElements.define("rh-footer-social-link", RhFooterSocialLink);
 //# sourceMappingURL=rh-footer-social-link.js.map

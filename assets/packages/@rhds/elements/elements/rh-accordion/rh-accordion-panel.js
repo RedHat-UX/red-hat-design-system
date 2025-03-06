@@ -1,8 +1,6 @@
 import { __decorate } from "tslib";
 import { html, LitElement } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
-import { customElement } from 'lit/decorators/custom-element.js';
-import { property } from 'lit/decorators/property.js';
 import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 import { colorContextProvider } from '../../lib/context/color/provider.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
@@ -16,7 +14,7 @@ import { context } from './context.js';
  * @slot
  *       The content of the accordion panel can be any basic markup including but not limited to div, paragraph, or nested accordion panels.
  */
-let RhAccordionPanel = class RhAccordionPanel extends LitElement {
+export class RhAccordionPanel extends LitElement {
     constructor() {
         super(...arguments);
         this.expanded = false;
@@ -38,24 +36,15 @@ let RhAccordionPanel = class RhAccordionPanel extends LitElement {
       </div>
     `;
     }
+}
+RhAccordionPanel.properties = {
+    expanded: { type: Boolean, reflect: true },
+    colorPalette: { reflect: true, attribute: 'color-palette' },
+    ctx: { attribute: false }
 };
 RhAccordionPanel.styles = [styles];
 __decorate([
-    property({ type: Boolean, reflect: true })
-], RhAccordionPanel.prototype, "expanded", void 0);
-__decorate([
-    colorContextProvider(),
-    property({ reflect: true, attribute: 'color-palette' })
-], RhAccordionPanel.prototype, "colorPalette", void 0);
-__decorate([
     colorContextConsumer()
 ], RhAccordionPanel.prototype, "on", void 0);
-__decorate([
-    consume({ context, subscribe: true }),
-    property({ attribute: false })
-], RhAccordionPanel.prototype, "ctx", void 0);
-RhAccordionPanel = __decorate([
-    customElement('rh-accordion-panel')
-], RhAccordionPanel);
-export { RhAccordionPanel };
+customElements.define("rh-accordion-panel", RhAccordionPanel);
 //# sourceMappingURL=rh-accordion-panel.js.map

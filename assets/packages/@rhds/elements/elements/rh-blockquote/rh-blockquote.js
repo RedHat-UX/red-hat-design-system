@@ -1,7 +1,5 @@
 import { __decorate } from "tslib";
 import { LitElement, html } from 'lit';
-import { customElement } from 'lit/decorators/custom-element.js';
-import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 import { colorContextProvider } from '../../lib/context/color/provider.js';
@@ -18,7 +16,7 @@ const styles = css `:host{color:var(--rh-color-text-primary);margin:0 auto;text-
  * @slot title   - Provide an author title for the blockquote
  *
  */
-let RhBlockquote = class RhBlockquote extends LitElement {
+export class RhBlockquote extends LitElement {
     constructor() {
         super(...arguments);
         this.title = 'Blockquote';
@@ -52,29 +50,17 @@ let RhBlockquote = class RhBlockquote extends LitElement {
       </figure>
     `;
     }
+}
+RhBlockquote.properties = {
+    title: { type: String },
+    colorPalette: { reflect: true, attribute: 'color-palette' },
+    align: { reflect: true },
+    highlight: { reflect: true, type: Boolean },
+    size: { reflect: true }
 };
 RhBlockquote.styles = styles;
 __decorate([
-    property({ type: String })
-], RhBlockquote.prototype, "title", void 0);
-__decorate([
-    colorContextProvider(),
-    property({ reflect: true, attribute: 'color-palette' })
-], RhBlockquote.prototype, "colorPalette", void 0);
-__decorate([
     colorContextConsumer()
 ], RhBlockquote.prototype, "on", void 0);
-__decorate([
-    property({ reflect: true })
-], RhBlockquote.prototype, "align", void 0);
-__decorate([
-    property({ reflect: true, type: Boolean })
-], RhBlockquote.prototype, "highlight", void 0);
-__decorate([
-    property({ reflect: true })
-], RhBlockquote.prototype, "size", void 0);
-RhBlockquote = __decorate([
-    customElement('rh-blockquote')
-], RhBlockquote);
-export { RhBlockquote };
+customElements.define("rh-blockquote", RhBlockquote);
 //# sourceMappingURL=rh-blockquote.js.map

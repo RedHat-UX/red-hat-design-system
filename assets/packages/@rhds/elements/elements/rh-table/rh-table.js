@@ -1,8 +1,6 @@
 var _RhTable_instances, _a, _RhTable_table_get, _RhTable_cols_get, _RhTable_rows_get, _RhTable_colHeaders_get, _RhTable_summary_get, _RhTable_internalColorPalette, _RhTable_logger, _RhTable_mo, _RhTable_onPointerleave, _RhTable_onPointerover, _RhTable_init, _RhTable_onSlotChange, _RhTable_onRequestSort, _RhTable_performSort;
-var RhTable_1;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html, isServer } from 'lit';
-import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { RequestSortEvent, RhSortButton } from './rh-sort-button.js';
@@ -18,7 +16,7 @@ const styles = css `*{box-sizing:border-box}:host{position:relative;display:bloc
  * @cssprop {<color>} [--rh-table-column-background-hover-color=0 102 204 / 10%] - column hover background color
  * @cssprop [--rh-table-row-border=1px solid #c7c7c7] - row border
  */
-let RhTable = RhTable_1 = _a = class RhTable extends LitElement {
+export class RhTable extends LitElement {
     constructor() {
         super(...arguments);
         _RhTable_instances.add(this);
@@ -94,33 +92,23 @@ let RhTable = RhTable_1 = _a = class RhTable extends LitElement {
         super.disconnectedCallback();
         __classPrivateFieldGet(this, _RhTable_mo, "f").disconnect();
     }
-};
-_RhTable_internalColorPalette = new WeakMap();
-_RhTable_logger = new WeakMap();
-_RhTable_mo = new WeakMap();
-_RhTable_instances = new WeakSet();
-_RhTable_table_get = function _RhTable_table_get() {
+}
+_a = RhTable, _RhTable_internalColorPalette = new WeakMap(), _RhTable_logger = new WeakMap(), _RhTable_mo = new WeakMap(), _RhTable_instances = new WeakSet(), _RhTable_table_get = function _RhTable_table_get() {
     return this.querySelector('table');
-};
-_RhTable_cols_get = function _RhTable_cols_get() {
+}, _RhTable_cols_get = function _RhTable_cols_get() {
     return this.querySelectorAll('col');
-};
-_RhTable_rows_get = function _RhTable_rows_get() {
+}, _RhTable_rows_get = function _RhTable_rows_get() {
     return this.querySelectorAll('tbody > tr');
-};
-_RhTable_colHeaders_get = function _RhTable_colHeaders_get() {
+}, _RhTable_colHeaders_get = function _RhTable_colHeaders_get() {
     return this.querySelectorAll('thead > tr > th');
-};
-_RhTable_summary_get = function _RhTable_summary_get() {
+}, _RhTable_summary_get = function _RhTable_summary_get() {
     return this.querySelector('[slot="summary"]');
-};
-_RhTable_onPointerleave = function _RhTable_onPointerleave() {
+}, _RhTable_onPointerleave = function _RhTable_onPointerleave() {
     if (!__classPrivateFieldGet(this, _RhTable_instances, "a", _RhTable_cols_get)) {
         return;
     }
     __classPrivateFieldGet(this, _RhTable_instances, "a", _RhTable_cols_get).forEach(col => col.classList.remove('active'));
-};
-_RhTable_onPointerover = function _RhTable_onPointerover(event) {
+}, _RhTable_onPointerover = function _RhTable_onPointerover(event) {
     if (!__classPrivateFieldGet(this, _RhTable_instances, "a", _RhTable_cols_get)) {
         return;
     }
@@ -142,8 +130,7 @@ _RhTable_onPointerover = function _RhTable_onPointerover(event) {
         const { cellIndex } = target;
         col.classList.toggle('active', index === cellIndex);
     });
-};
-_RhTable_init = function _RhTable_init() {
+}, _RhTable_init = function _RhTable_init() {
     if (__classPrivateFieldGet(this, _RhTable_instances, "a", _RhTable_table_get) && __classPrivateFieldGet(this, _RhTable_instances, "a", _RhTable_summary_get)) {
         __classPrivateFieldGet(this, _RhTable_instances, "a", _RhTable_table_get).setAttribute('aria-describedby', 'summary');
     }
@@ -168,11 +155,9 @@ _RhTable_init = function _RhTable_init() {
             });
         }
     }
-};
-_RhTable_onSlotChange = function _RhTable_onSlotChange() {
+}, _RhTable_onSlotChange = function _RhTable_onSlotChange() {
     __classPrivateFieldGet(this, _RhTable_instances, "m", _RhTable_init).call(this);
-};
-_RhTable_onRequestSort = function _RhTable_onRequestSort(event) {
+}, _RhTable_onRequestSort = function _RhTable_onRequestSort(event) {
     if (event instanceof RequestSortEvent) {
         for (const button of this.querySelectorAll('rh-sort-button')) {
             const header = button.closest('th');
@@ -189,8 +174,7 @@ _RhTable_onRequestSort = function _RhTable_onRequestSort(event) {
             __classPrivateFieldGet(this, _RhTable_instances, "m", _RhTable_performSort).call(this, event.target, event.direction);
         }
     }
-};
-_RhTable_performSort = function _RhTable_performSort(button, direction) {
+}, _RhTable_performSort = function _RhTable_performSort(button, direction) {
     const header = button.closest('th');
     const children = header?.parentElement?.children;
     if (children) {
@@ -200,8 +184,8 @@ _RhTable_performSort = function _RhTable_performSort(button, direction) {
             return;
         }
         Array
-            .from(__classPrivateFieldGet(this, _RhTable_instances, "a", _RhTable_rows_get), node => RhTable_1.getNodeContentForSort(columnIndexToSort, node))
-            .sort((a, b) => RhTable_1.sortByContent(direction, a, b))
+            .from(__classPrivateFieldGet(this, _RhTable_instances, "a", _RhTable_rows_get), node => _a.getNodeContentForSort(columnIndexToSort, node))
+            .sort((a, b) => _a.sortByContent(direction, a, b))
             .forEach(({ node }, index) => {
             if (!__classPrivateFieldGet(this, _RhTable_instances, "a", _RhTable_rows_get)) {
                 return;
@@ -218,8 +202,5 @@ RhTable.styles = [styles];
 __decorate([
     colorContextConsumer()
 ], RhTable.prototype, "on", void 0);
-RhTable = RhTable_1 = __decorate([
-    customElement('rh-table')
-], RhTable);
-export { RhTable };
+customElements.define("rh-table", RhTable);
 //# sourceMappingURL=rh-table.js.map

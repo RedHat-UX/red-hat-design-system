@@ -1,7 +1,5 @@
 import { __decorate } from "tslib";
 import { LitElement, html } from 'lit';
-import { customElement } from 'lit/decorators/custom-element.js';
-import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 import { css } from "lit";
@@ -34,7 +32,7 @@ const styles = css `:host{--_breadcrumb-caret-image-default:var(--rh-breadcrumb-
  * @cssprop --rh-breadcrumb-caret-image-subtle
  *          The `subtle` variant background image separating each breadcrumb item
  */
-let RhBreadcrumb = class RhBreadcrumb extends LitElement {
+export class RhBreadcrumb extends LitElement {
     render() {
         const { on = '' } = this;
         const label = this.accessibleLabel ? this.accessibleLabel : 'Breadcrumb';
@@ -44,19 +42,14 @@ let RhBreadcrumb = class RhBreadcrumb extends LitElement {
       </nav>
     `;
     }
+}
+RhBreadcrumb.properties = {
+    accessibleLabel: { attribute: 'accessible-label' },
+    variant: { reflect: true }
 };
 RhBreadcrumb.styles = [styles];
 __decorate([
-    property({ attribute: 'accessible-label' })
-], RhBreadcrumb.prototype, "accessibleLabel", void 0);
-__decorate([
-    property({ reflect: true })
-], RhBreadcrumb.prototype, "variant", void 0);
-__decorate([
     colorContextConsumer()
 ], RhBreadcrumb.prototype, "on", void 0);
-RhBreadcrumb = __decorate([
-    customElement('rh-breadcrumb')
-], RhBreadcrumb);
-export { RhBreadcrumb };
+customElements.define("rh-breadcrumb", RhBreadcrumb);
 //# sourceMappingURL=rh-breadcrumb.js.map

@@ -1,7 +1,5 @@
 import { __decorate } from "tslib";
 import { LitElement, html, svg } from 'lit';
-import { customElement } from 'lit/decorators/custom-element.js';
-import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { ComposedEvent } from '@patternfly/pfe-core';
 import { colorContextConsumer } from '../../lib/context/color/consumer.js';
@@ -32,7 +30,7 @@ const paths = new Map(Object.entries({
  *
  * @fires {RequestSortEvent} request-sort - when the button is clicked
  */
-let RhSortButton = class RhSortButton extends LitElement {
+export class RhSortButton extends LitElement {
     render() {
         const { on = '' } = this;
         return html `
@@ -59,22 +57,17 @@ let RhSortButton = class RhSortButton extends LitElement {
         const next = DIRECTIONS_OPPOSITES[this.sortDirection ?? 'asc'];
         this.dispatchEvent(new RequestSortEvent(next));
     }
+}
+RhSortButton.properties = {
+    sortDirection: {
+        reflect: true,
+        attribute: 'sort-direction',
+    },
+    column: {}
 };
 RhSortButton.styles = [styles];
 __decorate([
     colorContextConsumer()
 ], RhSortButton.prototype, "on", void 0);
-__decorate([
-    property({
-        reflect: true,
-        attribute: 'sort-direction',
-    })
-], RhSortButton.prototype, "sortDirection", void 0);
-__decorate([
-    property()
-], RhSortButton.prototype, "column", void 0);
-RhSortButton = __decorate([
-    customElement('rh-sort-button')
-], RhSortButton);
-export { RhSortButton };
+customElements.define("rh-sort-button", RhSortButton);
 //# sourceMappingURL=rh-sort-button.js.map

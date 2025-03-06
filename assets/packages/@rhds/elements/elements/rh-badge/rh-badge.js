@@ -1,7 +1,5 @@
 import { __decorate } from "tslib";
 import { LitElement, html } from 'lit';
-import { customElement } from 'lit/decorators/custom-element.js';
-import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit-html/directives/class-map.js';
 import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 import { colorContextConsumer } from '@rhds/elements/lib/context/color/consumer.js';
@@ -20,7 +18,7 @@ const styles = css `span{display:inline-flex;align-items:center;justify-content:
  * @summary Annotates information like a label or object
  *
  */
-let RhBadge = class RhBadge extends LitElement {
+export class RhBadge extends LitElement {
     constructor() {
         super(...arguments);
         /**
@@ -70,25 +68,18 @@ let RhBadge = class RhBadge extends LitElement {
         })}">${displayText}</span>
     `;
     }
+}
+RhBadge.properties = {
+    state: { reflect: true },
+    number: { reflect: true, type: Number },
+    threshold: { reflect: true, type: Number }
 };
 RhBadge.styles = [styles];
 __decorate([
     colorContextConsumer()
 ], RhBadge.prototype, "on", void 0);
 __decorate([
-    property({ reflect: true })
-], RhBadge.prototype, "state", void 0);
-__decorate([
-    property({ reflect: true, type: Number })
-], RhBadge.prototype, "number", void 0);
-__decorate([
-    property({ reflect: true, type: Number })
-], RhBadge.prototype, "threshold", void 0);
-__decorate([
     observes('state', { waitFor: 'updated' })
 ], RhBadge.prototype, "stateChanged", null);
-RhBadge = __decorate([
-    customElement('rh-badge')
-], RhBadge);
-export { RhBadge };
+customElements.define("rh-badge", RhBadge);
 //# sourceMappingURL=rh-badge.js.map

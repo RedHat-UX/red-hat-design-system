@@ -1,4 +1,4 @@
-import type { DesignToken } from '#11ty-plugins/tokensHelpers.js';
+import type { DesignToken } from '@rhds/tokens';
 import { LitElement } from 'lit';
 import '@rhds/elements/rh-table/rh-table.js';
 import './uxdot-copy-button.js';

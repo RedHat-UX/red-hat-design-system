@@ -1,10 +1,7 @@
 var _RhTabs_instances, _RhTabs_ctx_get, _RhTabs_activeIndex, _RhTabs_overflow, _RhTabs_tabs, _RhTabs_tabindex, _RhTabs_dir, _RhTabs_firstTab_get, _RhTabs_lastTab_get, _RhTabs_onSlotchange, _RhTabs_onExpand;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { html, LitElement } from 'lit';
-import { customElement } from 'lit/decorators/custom-element.js';
-import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
-import { query } from 'lit/decorators/query.js';
 import { provide } from '@lit/context';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 import { TabsAriaController } from '@patternfly/pfe-core/controllers/tabs-aria-controller.js';
@@ -35,10 +32,23 @@ export { RhTab };
  * @cssprop {<color>} [--rh-tabs-border-color=#c7c7c7] - Tabs Border color
  * @cssprop {<length>} [--rh-tabs-inset=auto] - Tabs inset
  */
-let RhTabs = class RhTabs extends LitElement {
+export class RhTabs extends LitElement {
     constructor() {
         super(...arguments);
         _RhTabs_instances.add(this);
+        _RhTabs_activeIndex.set(this, -1);
+        _RhTabs_overflow.set(this, new OverflowController(this));
+        _RhTabs_tabs.set(this, new TabsAriaController(this, {
+            isTab: (x) => x.localName === 'rh-tab',
+            isPanel: (x) => x.localName === 'rh-tab-panel',
+            isActiveTab: x => x.active,
+        }));
+        _RhTabs_tabindex.set(this, RovingTabindexController.of(this, {
+            getItemsContainer: () => this.tabList,
+            getItems: () => this.tabs ?? [],
+        }));
+        _RhTabs_dir.set(this, new DirController(this));
+        this.ctx = __classPrivateFieldGet(this, _RhTabs_instances, "a", _RhTabs_ctx_get);
         /**
          * Label for the scroll left button
          */
@@ -56,23 +66,7 @@ let RhTabs = class RhTabs extends LitElement {
         this.centered = false;
         /** Sets the alignment of the tabs vertical */
         this.vertical = false;
-        _RhTabs_activeIndex.set(this, -1);
-        _RhTabs_overflow.set(this, new OverflowController(this));
-        _RhTabs_tabs.set(this, new TabsAriaController(this, {
-            isTab: (x) => x.localName === 'rh-tab',
-            isPanel: (x) => x.localName === 'rh-tab-panel',
-            isActiveTab: x => x.active,
-        }));
-        _RhTabs_tabindex.set(this, RovingTabindexController.of(this, {
-            getItemsContainer: () => this.tabList,
-            getItems: () => this.tabs ?? [],
-        }));
-        _RhTabs_dir.set(this, new DirController(this));
-        this.ctx = __classPrivateFieldGet(this, _RhTabs_instances, "a", _RhTabs_ctx_get);
     }
-    /**
-     * Index of the active tab
-     */
     get activeIndex() {
         return __classPrivateFieldGet(this, _RhTabs_activeIndex, "f");
     }
@@ -86,6 +80,9 @@ let RhTabs = class RhTabs extends LitElement {
             }
             __classPrivateFieldGet(this, _RhTabs_tabs, "f").panelFor(tab)?.toggleAttribute('hidden', !tab.active);
         }
+    }
+    get tabList() {
+        return this.renderRoot?.querySelector("[part=\"tabs\"]") ?? null;
     }
     get canShowScrollButtons() {
         return !this.vertical;
@@ -164,79 +161,46 @@ let RhTabs = class RhTabs extends LitElement {
         }
         __classPrivateFieldGet(this, _RhTabs_overflow, "f").update();
     }
-};
-_RhTabs_activeIndex = new WeakMap();
-_RhTabs_overflow = new WeakMap();
-_RhTabs_tabs = new WeakMap();
-_RhTabs_tabindex = new WeakMap();
-_RhTabs_dir = new WeakMap();
-_RhTabs_instances = new WeakSet();
-_RhTabs_ctx_get = function _RhTabs_ctx_get() {
+}
+_RhTabs_activeIndex = new WeakMap(), _RhTabs_overflow = new WeakMap(), _RhTabs_tabs = new WeakMap(), _RhTabs_tabindex = new WeakMap(), _RhTabs_dir = new WeakMap(), _RhTabs_instances = new WeakSet(), _RhTabs_ctx_get = function _RhTabs_ctx_get() {
     const { activeTab, manual, vertical } = this;
     const box = this.box === null || this.box === '' ? 'box' : this.box;
     const firstTab = __classPrivateFieldGet(this, _RhTabs_instances, "a", _RhTabs_firstTab_get);
     const lastTab = __classPrivateFieldGet(this, _RhTabs_instances, "a", _RhTabs_lastTab_get);
     return { activeTab, box, firstTab, lastTab, manual, vertical };
-};
-_RhTabs_firstTab_get = function _RhTabs_firstTab_get() {
+}, _RhTabs_firstTab_get = function _RhTabs_firstTab_get() {
     const [tab] = this.tabs;
     return tab;
-};
-_RhTabs_lastTab_get = function _RhTabs_lastTab_get() {
+}, _RhTabs_lastTab_get = function _RhTabs_lastTab_get() {
     return this.tabs.at(-1);
-};
-_RhTabs_onSlotchange = function _RhTabs_onSlotchange() {
+}, _RhTabs_onSlotchange = function _RhTabs_onSlotchange() {
     __classPrivateFieldGet(this, _RhTabs_overflow, "f").init(this.tabList, this.tabs);
-};
-_RhTabs_onExpand = function _RhTabs_onExpand(event) {
+}, _RhTabs_onExpand = function _RhTabs_onExpand(event) {
     if (event instanceof TabExpandEvent
         && !event.defaultPrevented && this.tabs.includes(event.tab)) {
         this.select(event.tab);
     }
 };
+RhTabs.properties = {
+    labelScrollLeft: { reflect: true, attribute: 'label-scroll-left' },
+    labelScrollRight: { reflect: true, attribute: 'label-scroll-right' },
+    manual: { reflect: true, type: Boolean },
+    activeIndex: { attribute: 'active-index', type: Number },
+    activeTab: { attribute: false },
+    colorPalette: { reflect: true, attribute: 'color-palette' },
+    centered: { reflect: true, type: Boolean },
+    box: { reflect: true },
+    vertical: { reflect: true, type: Boolean }
+};
 RhTabs.styles = [styles];
-__decorate([
-    property({ reflect: true, attribute: 'label-scroll-left' })
-], RhTabs.prototype, "labelScrollLeft", void 0);
-__decorate([
-    property({ reflect: true, attribute: 'label-scroll-right' })
-], RhTabs.prototype, "labelScrollRight", void 0);
-__decorate([
-    property({ reflect: true, type: Boolean })
-], RhTabs.prototype, "manual", void 0);
-__decorate([
-    property({ attribute: 'active-index', type: Number })
-], RhTabs.prototype, "activeIndex", null);
-__decorate([
-    property({ attribute: false })
-], RhTabs.prototype, "activeTab", void 0);
 __decorate([
     colorContextConsumer()
 ], RhTabs.prototype, "on", void 0);
-__decorate([
-    colorContextProvider(),
-    property({ reflect: true, attribute: 'color-palette' })
-], RhTabs.prototype, "colorPalette", void 0);
-__decorate([
-    property({ reflect: true, type: Boolean })
-], RhTabs.prototype, "centered", void 0);
-__decorate([
-    property({ reflect: true })
-], RhTabs.prototype, "box", void 0);
-__decorate([
-    property({ reflect: true, type: Boolean })
-], RhTabs.prototype, "vertical", void 0);
-__decorate([
-    query('[part="tabs"]')
-], RhTabs.prototype, "tabList", void 0);
 __decorate([
     provide({ context })
 ], RhTabs.prototype, "ctx", void 0);
 __decorate([
     observes('activeTab')
 ], RhTabs.prototype, "activeTabChanged", null);
-RhTabs = __decorate([
-    customElement('rh-tabs')
-], RhTabs);
-export { RhTabs };
+customElements.define("rh-tabs", RhTabs);
 //# sourceMappingURL=rh-tabs.js.map

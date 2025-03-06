@@ -1,9 +1,6 @@
 var _RhTooltip_instances, _RhTooltip_float, _RhTooltip_initialized, _RhTooltip_content_get, _RhTooltip_onKeydown;
-var RhTooltip_1;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { html, LitElement, isServer } from 'lit';
-import { customElement } from 'lit/decorators/custom-element.js';
-import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { styleMap } from 'lit/directives/style-map.js';
 import { colorContextConsumer } from '../../lib/context/color/consumer.js';
@@ -33,12 +30,10 @@ const EXIT_EVENTS = ['focusout', 'blur', 'mouseleave'];
  * @cssprop {<length>} [--rh-tooltip-content-padding-inline-start=16px]
  * @cssprop {<absolute-size> | <relative-size> | <length> | <percentage>} [--rh-tooltip-content-font-size=0.875rem]
  */
-let RhTooltip = RhTooltip_1 = class RhTooltip extends LitElement {
+export class RhTooltip extends LitElement {
     constructor() {
         super(...arguments);
         _RhTooltip_instances.add(this);
-        /** The position of the tooltip, relative to the invoking content */
-        this.position = 'top';
         _RhTooltip_float.set(this, new FloatingDOMController(this, {
             content: () => this.shadowRoot?.querySelector('#tooltip'),
         }));
@@ -48,6 +43,8 @@ let RhTooltip = RhTooltip_1 = class RhTooltip extends LitElement {
                 this.hide();
             }
         });
+        /** The position of the tooltip, relative to the invoking content */
+        this.position = 'top';
     }
     static announce(message) {
         this.announcer.innerText = message;
@@ -70,7 +67,7 @@ let RhTooltip = RhTooltip_1 = class RhTooltip extends LitElement {
         super.connectedCallback();
         ENTER_EVENTS.forEach(evt => this.addEventListener(evt, this.show));
         EXIT_EVENTS.forEach(evt => this.addEventListener(evt, this.hide));
-        RhTooltip_1.instances.add(this);
+        RhTooltip.instances.add(this);
     }
     render() {
         const { on = '' } = this;
@@ -100,19 +97,15 @@ let RhTooltip = RhTooltip_1 = class RhTooltip extends LitElement {
             : { mainAxis: 15, alignmentAxis: -4 };
         await __classPrivateFieldGet(this, _RhTooltip_float, "f").show({ offset, placement });
         __classPrivateFieldSet(this, _RhTooltip_initialized, __classPrivateFieldGet(this, _RhTooltip_initialized, "f") || true, "f");
-        RhTooltip_1.announce(__classPrivateFieldGet(this, _RhTooltip_instances, "a", _RhTooltip_content_get));
+        RhTooltip.announce(__classPrivateFieldGet(this, _RhTooltip_instances, "a", _RhTooltip_content_get));
     }
     /** Hide the tooltip */
     async hide() {
         await __classPrivateFieldGet(this, _RhTooltip_float, "f").hide();
-        RhTooltip_1.announcer.innerText = '';
+        RhTooltip.announcer.innerText = '';
     }
-};
-_RhTooltip_float = new WeakMap();
-_RhTooltip_initialized = new WeakMap();
-_RhTooltip_onKeydown = new WeakMap();
-_RhTooltip_instances = new WeakSet();
-_RhTooltip_content_get = function _RhTooltip_content_get() {
+}
+_RhTooltip_float = new WeakMap(), _RhTooltip_initialized = new WeakMap(), _RhTooltip_onKeydown = new WeakMap(), _RhTooltip_instances = new WeakSet(), _RhTooltip_content_get = function _RhTooltip_content_get() {
     if (!__classPrivateFieldGet(this, _RhTooltip_float, "f").open || isServer) {
         return '';
     }
@@ -123,31 +116,26 @@ _RhTooltip_content_get = function _RhTooltip_content_get() {
             ?.join(' ');
     }
 };
+RhTooltip.properties = {
+    position: {},
+    content: {}
+};
 RhTooltip.version = '{{version}}';
 RhTooltip.styles = [styles];
 RhTooltip.instances = new Set();
 (() => {
     if (!isServer) {
         globalThis.addEventListener('keydown', (event) => {
-            const { instances } = RhTooltip_1;
+            const { instances } = RhTooltip;
             for (const instance of instances) {
                 __classPrivateFieldGet(instance, _RhTooltip_onKeydown, "f").call(instance, event);
             }
         });
-        RhTooltip_1.initAnnouncer();
+        RhTooltip.initAnnouncer();
     }
 })();
 __decorate([
-    property()
-], RhTooltip.prototype, "position", void 0);
-__decorate([
-    property()
-], RhTooltip.prototype, "content", void 0);
-__decorate([
     colorContextConsumer()
 ], RhTooltip.prototype, "on", void 0);
-RhTooltip = RhTooltip_1 = __decorate([
-    customElement('rh-tooltip')
-], RhTooltip);
-export { RhTooltip };
+customElements.define("rh-tooltip", RhTooltip);
 //# sourceMappingURL=rh-tooltip.js.map

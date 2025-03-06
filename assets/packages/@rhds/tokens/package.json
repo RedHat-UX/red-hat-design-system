@@ -1,6 +1,6 @@
 {
   "name": "@rhds/tokens",
-  "version": "2.1.1",
+  "version": "2.2.4",
   "description": "Red Hat Design System Tokens",
   "scripts": {
     "build": "wireit",
@@ -15,6 +15,7 @@
   "type": "module",
   "main": "js/tokens.cjs",
   "module": "js/tokens.js",
+  "types": "js/types.d.ts",
   "exports": {
     ".": {
       "import": "./js/tokens.js",
@@ -23,7 +24,8 @@
     },
     "./meta.js": {
       "import": "./js/meta.js",
-      "require": "./js/meta.cjs"
+      "require": "./js/meta.cjs",
+      "types": "./js/meta.d.ts"
     },
     "./json/*": {
       "require": "./json/*"
@@ -164,8 +166,12 @@
       ]
     }
   },
+  "peerDependencies": {
+    "lit": "^3.0.0"
+  },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0-alpha.18 || ^3.0.0",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
     "@changesets/cli": "^2.27.7",
     "@eslint/eslintrc": "^3.1.0",
     "@eslint/js": "^9.9.1",
@@ -179,8 +185,11 @@
     "deepmerge": "^4.3.1",
     "eslint": "^9.9.1",
     "globals": "^15.9.0",
+    "highlight.js": "^11.10.0",
     "markdown-it": "^14.1.0",
+    "postcss-value-parser": "^4.2.0",
     "style-dictionary": "^4.1.0",
+    "stylelint": "^16.9.0",
     "tap-difflet": "^0.7.2",
     "tape-describe": "^1.0.3",
     "tape-es": "^1.2.17",
@@ -189,11 +198,5 @@
     "vsce": "^2.15.0",
     "wireit": "^0.14.8",
     "yaml": "^2.5.0"
-  },
-  "dependencies": {
-    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
-    "highlight.js": "^11.10.0",
-    "postcss-value-parser": "^4.2.0",
-    "stylelint": "^16.9.0"
   }
 }

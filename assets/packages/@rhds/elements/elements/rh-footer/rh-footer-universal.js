@@ -1,9 +1,7 @@
 var _RhFooterUniversal_slots;
-import { __classPrivateFieldGet, __decorate } from "tslib";
+import { __classPrivateFieldGet } from "tslib";
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { LitElement, html } from 'lit';
-import { customElement } from 'lit/decorators/custom-element.js';
-import { property } from 'lit/decorators/property.js';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { colorContextProvider } from '../../lib/context/color/provider.js';
@@ -37,11 +35,11 @@ import './rh-footer-copyright.js';
  * @slot    tertiary
  * @csspart tertiary
  */
-let RhFooterUniversal = class RhFooterUniversal extends LitElement {
+export class RhFooterUniversal extends LitElement {
     constructor() {
         super(...arguments);
-        this.colorPalette = 'darker';
         _RhFooterUniversal_slots.set(this, new SlotController(this, 'primary-start', 'primary-end', 'secondary-start', 'secondary-end', 'links-primary', 'links-secondary', 'tertiary'));
+        this.colorPalette = 'darker';
     }
     render() {
         const hasTertiary = __classPrivateFieldGet(this, _RhFooterUniversal_slots, "f").hasSlotted('tertiary');
@@ -124,15 +122,11 @@ let RhFooterUniversal = class RhFooterUniversal extends LitElement {
       </footer>
     `;
     }
-};
+}
 _RhFooterUniversal_slots = new WeakMap();
+RhFooterUniversal.properties = {
+    colorPalette: { reflect: true, attribute: 'color-palette' }
+};
 RhFooterUniversal.styles = [style];
-__decorate([
-    colorContextProvider(),
-    property({ reflect: true, attribute: 'color-palette' })
-], RhFooterUniversal.prototype, "colorPalette", void 0);
-RhFooterUniversal = __decorate([
-    customElement('rh-footer-universal')
-], RhFooterUniversal);
-export { RhFooterUniversal };
+customElements.define("rh-footer-universal", RhFooterUniversal);
 //# sourceMappingURL=rh-footer-universal.js.map

@@ -1,9 +1,6 @@
 var _RhHealthIndex_internals;
-var RhHealthIndex_1;
 import { __classPrivateFieldGet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
-import { customElement } from 'lit/decorators/custom-element.js';
-import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { colorContextConsumer } from '../../lib/context/color/consumer.js';
@@ -13,9 +10,18 @@ const styles = css `:host{display:inline-block}[hidden]{display:none!important}#
  * Health index displays a health grade (A–F) for a particular item or package.
  * @summary     Displays a health grade for a particular item or package
  */
-let RhHealthIndex = RhHealthIndex_1 = class RhHealthIndex extends LitElement {
+export class RhHealthIndex extends LitElement {
     constructor() {
         super(...arguments);
+        // TODO: use I18nController to support officially supported languages.
+        _RhHealthIndex_internals.set(this, InternalsController.of(this, {
+            role: 'meter',
+            ariaValueMin: '1',
+            ariaValueMax: '6',
+            ariaValueText: 'Grade A',
+            ariaLabel: 'Health graded A through F',
+            ariaRoleDescription: 'Level indicator',
+        }));
         /**
          * Sets the size of the health index
          * Defaults to `md`
@@ -26,28 +32,19 @@ let RhHealthIndex = RhHealthIndex_1 = class RhHealthIndex extends LitElement {
          * Defaults to `A`
          */
         this.grade = 'A';
-        // TODO: use I18nController to support officially supported languages.
-        _RhHealthIndex_internals.set(this, InternalsController.of(this, {
-            role: 'meter',
-            ariaValueMin: '1',
-            ariaValueMax: '6',
-            ariaValueText: 'Grade A',
-            ariaLabel: 'Health graded A through F',
-            ariaRoleDescription: 'Level indicator',
-        }));
     }
     willUpdate(changed) {
         this.grade = this.grade.toUpperCase();
         if (changed.has('grade')) {
             const { grade } = this;
-            const gradeNumeral = (RhHealthIndex_1.grades.indexOf(grade) + 1);
+            const gradeNumeral = (RhHealthIndex.grades.indexOf(grade) + 1);
             __classPrivateFieldGet(this, _RhHealthIndex_internals, "f").ariaValueNow = gradeNumeral.toString();
             __classPrivateFieldGet(this, _RhHealthIndex_internals, "f").ariaValueText = `Grade ${grade}`;
         }
     }
     render() {
         const { on, size } = this;
-        const grades = [...RhHealthIndex_1.grades].map(x => x.toLowerCase());
+        const grades = [...RhHealthIndex.grades].map(x => x.toLowerCase());
         const grade = this.grade.toLowerCase();
         return html `
       <div id="container"
@@ -61,21 +58,16 @@ let RhHealthIndex = RhHealthIndex_1 = class RhHealthIndex extends LitElement {
       </div>
     `;
     }
-};
+}
 _RhHealthIndex_internals = new WeakMap();
+RhHealthIndex.properties = {
+    size: { reflect: true },
+    grade: { reflect: true }
+};
 RhHealthIndex.styles = [styles];
 RhHealthIndex.grades = 'ABCDEF';
 __decorate([
-    property({ reflect: true })
-], RhHealthIndex.prototype, "size", void 0);
-__decorate([
-    property({ reflect: true })
-], RhHealthIndex.prototype, "grade", void 0);
-__decorate([
     colorContextConsumer()
 ], RhHealthIndex.prototype, "on", void 0);
-RhHealthIndex = RhHealthIndex_1 = __decorate([
-    customElement('rh-health-index')
-], RhHealthIndex);
-export { RhHealthIndex };
+customElements.define("rh-health-index", RhHealthIndex);
 //# sourceMappingURL=rh-health-index.js.map

@@ -1,9 +1,7 @@
 var _UxdotSideNav_instances, _UxdotSideNav_triggerElement, _UxdotSideNav_closeButton, _UxdotSideNav_onTriggerClick, _UxdotSideNav_onClick, _UxdotSideNav_onKeydownCloseButton, _UxdotSideNav_onKeydown, _UxdotSideNav_onKeyup, _UxdotSideNav_onTabKeyup, _UxdotSideNavDropdown_instances, _UxdotSideNavDropdown_onClick;
-import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
+import { __classPrivateFieldGet, __classPrivateFieldSet } from "tslib";
 import { LitElement, html, isServer } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
-import { customElement } from 'lit/decorators/custom-element.js';
-import { property } from 'lit/decorators/property.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
 import { css } from "lit";
 const styles = css `:host{--_padding-start:var(--uxdot-sidenav-padding-start,var(--rh-space-2xl));--_padding-end:var(--uxdot-sidenav-padding-end,var(--rh-space-2xl));--_max-height:100dvh;width:100%;height:var(--_max-height);top:0;z-index:var(--uxdot-sidenav-z-index,5)}:host([open]){display:block!important;position:fixed!important}:host(:not([open])){display:none}[part=close-button]{color:var(--rh-color-text-primary);background-color:initial;border:none;margin:0;padding:var(--rh-space-md);line-height:0!important}#container{position:relative;background-color:var(--rh-color-surface-lightest);overflow-y:scroll;width:auto;height:100dvh}#close-button-container{padding-inline:var(--rh-space-md);padding-block:var(--rh-space-lg);max-height:var(--uxdot-masthead-max-height,72px)}#close-button:focus{outline:var(--rh-border-width-md) solid var(--rh-color-border-interactive);border-radius:var(--rh-border-radius-default,3px)}[part=nav]{padding-block:var(--rh-space-lg,16px)}[part=overlay]{--_gray-90-rgb:var(--rh-color-gray-90-rgb);display:none;background-color:rgb(var(--_gray-90-rgb)/var(--rh-opacity-60));position:fixed;top:0;height:100dvh;width:100dvw;z-index:-1}::slotted(ul){padding-inline:0;padding-block:var(--_padding-start) calc(var(--_padding-end) + var(--rh-font-size-body-text-lg)*1.5 + var(--rh-space-lg)*2);list-style:none;margin-block:0!important;height:var(--_max-height);overflow-y:scroll;background-color:var(--rh-color-surface-lightest)}:host([open]) [part=overlay]{display:block}@media (min-width:320px){:host{--uxdot-sidenav-width:320px;width:var(--uxdot-sidenav-width);box-shadow:var(--rh-box-shadow-lg)}#container{width:var(--uxdot-sidenav-width,320px)}}@media (min-width:576px){#close-button-container{padding:var(--rh-space-lg)}}@media (min-width:992px){:host{--uxdot-sidenav-z-index:1;position:fixed;top:var(--uxdot-masthead-max-height,72px);height:calc(var(--_max-height) - var(--uxdot-masthead-max-height, 72px));box-shadow:unset}:host(:not([open])){display:block}#close-button-container{display:none}:host([open]) [part=overlay]{display:none}}`;
@@ -11,13 +9,13 @@ const itemStyles = css `:host,a{display:block}a{padding:var(--rh-space-lg) var(-
 const dropdownStyles = css `:host{z-index:var(--uxdot-sidenav-z-index,102)}`;
 const dropdownMenuStyles = css `:host{display:block;padding-inline-start:var(--rh-space-2xl)}`;
 const dropdownMenuItemStyles = css `a{text-transform:capitalize;padding:var(--rh-space-md) 0 var(--rh-space-md) var(--rh-space-lg);font-size:var(--rh-font-size-body-text-md)}`;
-let UxdotSideNav = class UxdotSideNav extends LitElement {
+export class UxdotSideNav extends LitElement {
     constructor() {
         super(...arguments);
         _UxdotSideNav_instances.add(this);
-        this.open = false;
         _UxdotSideNav_triggerElement.set(this, null);
         _UxdotSideNav_closeButton.set(this, null);
+        this.open = false;
     }
     async connectedCallback() {
         super.connectedCallback();
@@ -77,29 +75,23 @@ let UxdotSideNav = class UxdotSideNav extends LitElement {
         }
         this.toggle(trapFocus);
     }
-};
-_UxdotSideNav_triggerElement = new WeakMap();
-_UxdotSideNav_closeButton = new WeakMap();
-_UxdotSideNav_instances = new WeakSet();
-_UxdotSideNav_onTriggerClick = function _UxdotSideNav_onTriggerClick(event) {
+}
+_UxdotSideNav_triggerElement = new WeakMap(), _UxdotSideNav_closeButton = new WeakMap(), _UxdotSideNav_instances = new WeakSet(), _UxdotSideNav_onTriggerClick = function _UxdotSideNav_onTriggerClick(event) {
     event.preventDefault();
     this.toggle();
-};
-_UxdotSideNav_onClick = function _UxdotSideNav_onClick(event) {
+}, _UxdotSideNav_onClick = function _UxdotSideNav_onClick(event) {
     const path = event.composedPath();
     if (!path.includes(this)) {
         this.toggle();
     }
-};
-_UxdotSideNav_onKeydownCloseButton = function _UxdotSideNav_onKeydownCloseButton(event) {
+}, _UxdotSideNav_onKeydownCloseButton = function _UxdotSideNav_onKeydownCloseButton(event) {
     switch (event.key) {
         case 'Enter':
             event.preventDefault();
             this.toggle();
             return;
     }
-};
-_UxdotSideNav_onKeydown = function _UxdotSideNav_onKeydown(event) {
+}, _UxdotSideNav_onKeydown = function _UxdotSideNav_onKeydown(event) {
     switch (event.key) {
         case 'Escape': {
             if (!this.open) {
@@ -111,8 +103,7 @@ _UxdotSideNav_onKeydown = function _UxdotSideNav_onKeydown(event) {
         default:
             break;
     }
-};
-_UxdotSideNav_onKeyup = function _UxdotSideNav_onKeyup(event) {
+}, _UxdotSideNav_onKeyup = function _UxdotSideNav_onKeyup(event) {
     switch (event.key) {
         case 'Tab':
             __classPrivateFieldGet(this, _UxdotSideNav_instances, "m", _UxdotSideNav_onTabKeyup).call(this, event);
@@ -120,26 +111,20 @@ _UxdotSideNav_onKeyup = function _UxdotSideNav_onKeyup(event) {
         default:
             break;
     }
-};
-_UxdotSideNav_onTabKeyup = function _UxdotSideNav_onTabKeyup(event) {
+}, _UxdotSideNav_onTabKeyup = function _UxdotSideNav_onTabKeyup(event) {
     const { target } = event;
     if (target instanceof Node && !this.contains(target)) {
         this.close(false);
     }
 };
+UxdotSideNav.properties = {
+    open: { type: Boolean, reflect: true },
+    trigger: {}
+};
 UxdotSideNav.shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
 UxdotSideNav.styles = [styles];
-__decorate([
-    property({ type: Boolean, reflect: true })
-], UxdotSideNav.prototype, "open", void 0);
-__decorate([
-    property()
-], UxdotSideNav.prototype, "trigger", void 0);
-UxdotSideNav = __decorate([
-    customElement('uxdot-sidenav')
-], UxdotSideNav);
-export { UxdotSideNav };
-let UxdotSideNavItem = class UxdotSideNavItem extends LitElement {
+customElements.define("uxdot-sidenav", UxdotSideNav);
+export class UxdotSideNavItem extends LitElement {
     constructor() {
         super(...arguments);
         this.active = false;
@@ -150,19 +135,14 @@ let UxdotSideNavItem = class UxdotSideNavItem extends LitElement {
       <a class="${classMap({ active })}" href="${this.href}"><slot></slot></a>
     `;
     }
+}
+UxdotSideNavItem.properties = {
+    active: { type: Boolean, reflect: true },
+    href: {}
 };
 UxdotSideNavItem.styles = [itemStyles];
-__decorate([
-    property({ type: Boolean, reflect: true })
-], UxdotSideNavItem.prototype, "active", void 0);
-__decorate([
-    property()
-], UxdotSideNavItem.prototype, "href", void 0);
-UxdotSideNavItem = __decorate([
-    customElement('uxdot-sidenav-item')
-], UxdotSideNavItem);
-export { UxdotSideNavItem };
-let UxdotSideNavDropdown = class UxdotSideNavDropdown extends LitElement {
+customElements.define("uxdot-sidenav-item", UxdotSideNavItem);
+export class UxdotSideNavDropdown extends LitElement {
     constructor() {
         super(...arguments);
         _UxdotSideNavDropdown_instances.add(this);
@@ -179,9 +159,8 @@ let UxdotSideNavDropdown = class UxdotSideNavDropdown extends LitElement {
       <slot></slot>
     `;
     }
-};
-_UxdotSideNavDropdown_instances = new WeakSet();
-_UxdotSideNavDropdown_onClick = async function _UxdotSideNavDropdown_onClick(event) {
+}
+_UxdotSideNavDropdown_instances = new WeakSet(), _UxdotSideNavDropdown_onClick = async function _UxdotSideNavDropdown_onClick(event) {
     if (!event.composedPath().some(node => node instanceof HTMLAnchorElement)) {
         event.preventDefault();
         this.expanded = !this.expanded;
@@ -197,31 +176,22 @@ _UxdotSideNavDropdown_onClick = async function _UxdotSideNavDropdown_onClick(eve
         }));
     }
 };
+UxdotSideNavDropdown.properties = {
+    expanded: { type: Boolean, reflect: true }
+};
 UxdotSideNavDropdown.styles = [dropdownStyles];
-__decorate([
-    property({ type: Boolean, reflect: true })
-], UxdotSideNavDropdown.prototype, "expanded", void 0);
-UxdotSideNavDropdown = __decorate([
-    customElement('uxdot-sidenav-dropdown')
-], UxdotSideNavDropdown);
-export { UxdotSideNavDropdown };
-let UxdotSideNavDropdownMenu = class UxdotSideNavDropdownMenu extends LitElement {
+customElements.define("uxdot-sidenav-dropdown", UxdotSideNavDropdown);
+export class UxdotSideNavDropdownMenu extends LitElement {
     render() {
         return html `
       <slot></slot>
     `;
     }
-};
+}
 UxdotSideNavDropdownMenu.styles = [dropdownMenuStyles];
-UxdotSideNavDropdownMenu = __decorate([
-    customElement('uxdot-sidenav-dropdown-menu')
-], UxdotSideNavDropdownMenu);
-export { UxdotSideNavDropdownMenu };
-let UxdotSideNavDropdownMenuItem = class UxdotSideNavDropdownMenuItem extends UxdotSideNavItem {
-};
+customElements.define("uxdot-sidenav-dropdown-menu", UxdotSideNavDropdownMenu);
+export class UxdotSideNavDropdownMenuItem extends UxdotSideNavItem {
+}
 UxdotSideNavDropdownMenuItem.styles = [itemStyles, dropdownMenuItemStyles];
-UxdotSideNavDropdownMenuItem = __decorate([
-    customElement('uxdot-sidenav-dropdown-menu-item')
-], UxdotSideNavDropdownMenuItem);
-export { UxdotSideNavDropdownMenuItem };
+customElements.define("uxdot-sidenav-dropdown-menu-item", UxdotSideNavDropdownMenuItem);
 //# sourceMappingURL=uxdot-sidenav.js.map

@@ -20,12 +20,14 @@ export class ContextRequestEvent extends Event {
     /**
      *
      * @param context the context key to request
+     * @param contextTarget the original context target of the requester
      * @param callback the callback that should be invoked when the context with the specified key is available
      * @param subscribe when, true indicates we want to subscribe to future updates
      */
-    constructor(context, callback, subscribe) {
+    constructor(context, contextTarget, callback, subscribe) {
         super('context-request', { bubbles: true, composed: true });
         this.context = context;
+        this.contextTarget = contextTarget;
         this.callback = callback;
         this.subscribe = subscribe ?? false;
     }

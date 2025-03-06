@@ -1,7 +1,5 @@
 var _RhAvatar_instances, _RhAvatar_style, _RhAvatar_pattern, _RhAvatar_screen, _RhAvatar_normalize, _RhAvatar_initPattern;
-import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
-import { customElement } from 'lit/decorators/custom-element.js';
-import { property } from 'lit/decorators/property.js';
+import { __classPrivateFieldGet, __classPrivateFieldSet } from "tslib";
 import { LitElement, html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
@@ -26,15 +24,15 @@ DEFAULT_AVATARS.saturated = DEFAULT_AVATARS.dark;
  * @cssprop {<color>+} --rh-avatar-colors      - List of colors to use when generating avatars
  * @cssprop {<length>} [--rh-avatar-size=64px] - Size of the avatar,
  */
-let RhAvatar = class RhAvatar extends LitElement {
+export class RhAvatar extends LitElement {
     constructor() {
         super(...arguments);
         _RhAvatar_instances.add(this);
-        /** When true, hides the title and subtitle */
-        this.plain = false;
         _RhAvatar_style.set(this, void 0);
         _RhAvatar_pattern.set(this, void 0);
         _RhAvatar_screen.set(this, new ScreenSizeController(this));
+        /** When true, hides the title and subtitle */
+        this.plain = false;
     }
     connectedCallback() {
         super.connectedCallback();
@@ -67,20 +65,15 @@ let RhAvatar = class RhAvatar extends LitElement {
             __classPrivateFieldGet(this, _RhAvatar_pattern, "f").render({ size, colors, name, pattern });
         }
     }
-};
-_RhAvatar_style = new WeakMap();
-_RhAvatar_pattern = new WeakMap();
-_RhAvatar_screen = new WeakMap();
-_RhAvatar_instances = new WeakSet();
-_RhAvatar_normalize = function _RhAvatar_normalize() {
+}
+_RhAvatar_style = new WeakMap(), _RhAvatar_pattern = new WeakMap(), _RhAvatar_screen = new WeakMap(), _RhAvatar_instances = new WeakSet(), _RhAvatar_normalize = function _RhAvatar_normalize() {
     for (const node of this.childNodes) {
         if (node instanceof Text && !node.data.trim()) {
             node.data = node.data.trim();
         }
     }
     this.normalize();
-};
-_RhAvatar_initPattern = async function _RhAvatar_initPattern() {
+}, _RhAvatar_initPattern = async function _RhAvatar_initPattern() {
     const { RandomPatternController } = await import('./random-pattern-controller.js');
     const canvas = this.shadowRoot?.querySelector('canvas');
     if (canvas) {
@@ -88,31 +81,15 @@ _RhAvatar_initPattern = async function _RhAvatar_initPattern() {
         return new RandomPatternController(this, canvas);
     }
 };
+RhAvatar.properties = {
+    src: { reflect: true },
+    name: { reflect: true },
+    subtitle: { reflect: true },
+    layout: { reflect: true },
+    pattern: { reflect: true },
+    plain: { reflect: true, type: Boolean },
+    on: {}
+};
 RhAvatar.styles = [styles];
-__decorate([
-    property({ reflect: true })
-], RhAvatar.prototype, "src", void 0);
-__decorate([
-    property({ reflect: true })
-], RhAvatar.prototype, "name", void 0);
-__decorate([
-    property({ reflect: true })
-], RhAvatar.prototype, "subtitle", void 0);
-__decorate([
-    property({ reflect: true })
-], RhAvatar.prototype, "layout", void 0);
-__decorate([
-    property({ reflect: true })
-], RhAvatar.prototype, "pattern", void 0);
-__decorate([
-    property({ reflect: true, type: Boolean })
-], RhAvatar.prototype, "plain", void 0);
-__decorate([
-    colorContextConsumer(),
-    property()
-], RhAvatar.prototype, "on", void 0);
-RhAvatar = __decorate([
-    customElement('rh-avatar')
-], RhAvatar);
-export { RhAvatar };
+customElements.define("rh-avatar", RhAvatar);
 //# sourceMappingURL=rh-avatar.js.map

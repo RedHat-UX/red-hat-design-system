@@ -18,11 +18,13 @@ declare global {
 }
 export declare class ContextProviderEvent<C extends Context<unknown, unknown>> extends Event {
     readonly context: C;
+    readonly contextTarget: Element;
     /**
      *
      * @param context the context which this provider can provide
+     * @param contextTarget the original context target of the provider
      */
-    constructor(context: C);
+    constructor(context: C, contextTarget: Element);
 }
 export interface Options<C extends Context<unknown, unknown>> {
     context: C;

@@ -633,7 +633,7 @@
     "body": [
       "var(--rh-color-brand-red-lighter${1:, #f9a8a8})$2"
     ],
-    "description": "lighter brand red"
+    "description": "Lighter brand red"
   },
   "rh-color-brand-red-light": {
     "scope": "css,scss",
@@ -672,10 +672,10 @@
     "scope": "css,scss",
     "prefix": [
       "rhcolorbrandreddarkest",
-      "5f0000"
+      "3f0000"
     ],
     "body": [
-      "var(--rh-color-brand-red-darkest${1:, #5f0000})$2"
+      "var(--rh-color-brand-red-darkest${1:, #3f0000})$2"
     ],
     "description": "Darkest brand red"
   },
@@ -954,6 +954,16 @@
     ],
     "description": "Label - Filled (Orange) text color"
   },
+  "rh-color-orange-80": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolororange80",
+      "4d1f00"
+    ],
+    "body": [
+      "var(--rh-color-orange-80${1:, #4d1f00})$2"
+    ]
+  },
   "rh-color-orange-10-hsl": {
     "scope": "css,scss",
     "prefix": [
@@ -1078,6 +1088,24 @@
     ],
     "body": [
       "var(--rh-color-orange-70-rgb${1:, 115 46 0})$2"
+    ]
+  },
+  "rh-color-orange-80-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolororange80hsl"
+    ],
+    "body": [
+      "var(--rh-color-orange-80-hsl${1:, 24.155844155844157 100% 15.098039215686274%})$2"
+    ]
+  },
+  "rh-color-orange-80-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolororange80rgb"
+    ],
+    "body": [
+      "var(--rh-color-orange-80-rgb${1:, 77 31 0})$2"
     ]
   },
   "rh-color-icon-primary": {
@@ -2032,6 +2060,16 @@
     ],
     "description": "Inline link visited hover (light theme)"
   },
+  "rh-color-purple-80": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorpurple80",
+      "1b0d33"
+    ],
+    "body": [
+      "var(--rh-color-purple-80${1:, #1b0d33})$2"
+    ]
+  },
   "rh-color-purple-10-hsl": {
     "scope": "css,scss",
     "prefix": [
@@ -2156,6 +2194,24 @@
     ],
     "body": [
       "var(--rh-color-purple-70-rgb${1:, 33 19 77})$2"
+    ]
+  },
+  "rh-color-purple-80-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorpurple80hsl"
+    ],
+    "body": [
+      "var(--rh-color-purple-80-hsl${1:, 262.10526315789474 59.375000000000014% 12.549019607843137%})$2"
+    ]
+  },
+  "rh-color-purple-80-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorpurple80rgb"
+    ],
+    "body": [
+      "var(--rh-color-purple-80-rgb${1:, 27 13 51})$2"
     ]
   },
   "rh-color-red-orange-10": {
@@ -2430,6 +2486,17 @@
     ],
     "description": "Darker brand red"
   },
+  "rh-color-red-80": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred80",
+      "3f0000"
+    ],
+    "body": [
+      "var(--rh-color-red-80${1:, #3f0000})$2"
+    ],
+    "description": "Darkest brand red"
+  },
   "rh-color-red-10-hsl": {
     "scope": "css,scss",
     "prefix": [
@@ -2556,6 +2623,24 @@
       "var(--rh-color-red-70-rgb${1:, 95 0 0})$2"
     ]
   },
+  "rh-color-red-80-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred80hsl"
+    ],
+    "body": [
+      "var(--rh-color-red-80-hsl${1:, 0 100% 12.352941176470589%})$2"
+    ]
+  },
+  "rh-color-red-80-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorred80rgb"
+    ],
+    "body": [
+      "var(--rh-color-red-80-rgb${1:, 63 0 0})$2"
+    ]
+  },
   "rh-color-teal-10": {
     "scope": "css,scss",
     "prefix": [
@@ -2629,6 +2714,16 @@
       "var(--rh-color-teal-70${1:, #004d4d})$2"
     ],
     "description": "Alert - Default title text"
+  },
+  "rh-color-teal-80": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorteal80",
+      "003333"
+    ],
+    "body": [
+      "var(--rh-color-teal-80${1:, #003333})$2"
+    ]
   },
   "rh-color-teal-10-hsl": {
     "scope": "css,scss",
@@ -2756,6 +2851,24 @@
       "var(--rh-color-teal-70-rgb${1:, 0 77 77})$2"
     ]
   },
+  "rh-color-teal-80-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorteal80hsl"
+    ],
+    "body": [
+      "var(--rh-color-teal-80-hsl${1:, 180 100% 10%})$2"
+    ]
+  },
+  "rh-color-teal-80-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcolorteal80rgb"
+    ],
+    "body": [
+      "var(--rh-color-teal-80-rgb${1:, 0 51 51})$2"
+    ]
+  },
   "rh-color-yellow-10": {
     "scope": "css,scss",
     "prefix": [
@@ -2828,6 +2941,16 @@
       "var(--rh-color-yellow-70${1:, #73480b})$2"
     ],
     "description": "Alert - Warning title text"
+  },
+  "rh-color-yellow-80": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloryellow80",
+      "54330b"
+    ],
+    "body": [
+      "var(--rh-color-yellow-80${1:, #54330b})$2"
+    ]
   },
   "rh-color-yellow-10-hsl": {
     "scope": "css,scss",
@@ -2953,6 +3076,24 @@
     ],
     "body": [
       "var(--rh-color-yellow-70-rgb${1:, 115 72 11})$2"
+    ]
+  },
+  "rh-color-yellow-80-hsl": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloryellow80hsl"
+    ],
+    "body": [
+      "var(--rh-color-yellow-80-hsl${1:, 32.87671232876713 76.84210526315789% 18.627450980392158%})$2"
+    ]
+  },
+  "rh-color-yellow-80-rgb": {
+    "scope": "css,scss",
+    "prefix": [
+      "rhcoloryellow80rgb"
+    ],
+    "body": [
+      "var(--rh-color-yellow-80-rgb${1:, 84 51 11})$2"
     ]
   },
   "rh-color-interactive-primary-default": {

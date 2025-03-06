@@ -2744,13 +2744,13 @@ exports.tokens = new Map([
     "--rh-color-brand-red-lighter",
     {
       "$value": "#f9a8a8",
-      "$description": "lighter brand red",
+      "$description": "Lighter brand red",
       "filePath": "tokens/color/brand.yml",
       "isSource": true,
       "$type": "color",
       "original": {
         "$value": "{color.red.30}",
-        "$description": "lighter brand red",
+        "$description": "Lighter brand red",
         "$type": "color"
       },
       "name": "rh-color-brand-red-lighter",
@@ -2935,13 +2935,13 @@ exports.tokens = new Map([
   [
     "--rh-color-brand-red-darkest",
     {
-      "$value": "#5f0000",
+      "$value": "#3f0000",
       "$description": "Darkest brand red",
       "filePath": "tokens/color/brand.yml",
       "isSource": true,
       "$type": "color",
       "original": {
-        "$value": "{color.red.70}",
+        "$value": "{color.red.80}",
         "$description": "Darkest brand red",
         "$type": "color"
       },
@@ -2951,9 +2951,9 @@ exports.tokens = new Map([
         "type": "brand",
         "item": "red",
         "subitem": "darkest",
-        "hex": "5f0000",
+        "hex": "3f0000",
         "rgb": {
-          "r": 95,
+          "r": 63,
           "g": 0,
           "b": 0,
           "a": 1
@@ -2961,13 +2961,13 @@ exports.tokens = new Map([
         "hsl": {
           "h": 0,
           "s": 100,
-          "l": 18.627450980392158,
+          "l": 12.352941176470589,
           "a": 1
         },
         "hsv": {
           "h": 0,
           "s": 1,
-          "v": 0.37254901960784315,
+          "v": 0.24705882352941178,
           "a": 1
         },
         "isLight": false
@@ -4203,6 +4203,50 @@ exports.tokens = new Map([
     }
   ],
   [
+    "--rh-color-orange-80",
+    {
+      "$value": "#4d1f00",
+      "filePath": "tokens/color/crayon/orange.yml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "#4D1F00",
+        "$type": "color"
+      },
+      "name": "rh-color-orange-80",
+      "attributes": {
+        "category": "color",
+        "type": "orange",
+        "item": "80",
+        "hex": "4d1f00",
+        "rgb": {
+          "r": 77,
+          "g": 31,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 24.155844155844157,
+          "s": 100,
+          "l": 15.098039215686274,
+          "a": 1
+        },
+        "hsv": {
+          "h": 24.155844155844157,
+          "s": 1,
+          "v": 0.30196078431372547,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "orange",
+        "80"
+      ]
+    }
+  ],
+  [
     "--rh-color-orange-10-hsl",
     {
       "$value": "32.941176470588225 100% 90%",
@@ -4787,6 +4831,90 @@ exports.tokens = new Map([
         "color",
         "orange",
         "70-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-orange-80-hsl",
+    {
+      "$value": "24.155844155844157 100% 15.098039215686274%",
+      "$type": "color",
+      "original": {
+        "$value": "{color.orange.80}",
+        "$type": "color"
+      },
+      "name": "rh-color-orange-80-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "orange",
+        "item": "80-hsl",
+        "hex": "4d1f00",
+        "rgb": {
+          "r": 77,
+          "g": 31,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 24.155844155844157,
+          "s": 100,
+          "l": 15.098039215686274,
+          "a": 1
+        },
+        "hsv": {
+          "h": 24.155844155844157,
+          "s": 1,
+          "v": 0.30196078431372547,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "orange",
+        "80-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-orange-80-rgb",
+    {
+      "$value": "77 31 0",
+      "$type": "color",
+      "original": {
+        "$value": "{color.orange.80}",
+        "$type": "color"
+      },
+      "name": "rh-color-orange-80-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "orange",
+        "item": "80-rgb",
+        "hex": "4d1f00",
+        "rgb": {
+          "r": 77,
+          "g": 31,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 24.155844155844157,
+          "s": 100,
+          "l": 15.098039215686274,
+          "a": 1
+        },
+        "hsv": {
+          "h": 24.155844155844157,
+          "s": 1,
+          "v": 0.30196078431372547,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "orange",
+        "80-rgb"
       ]
     }
   ],
@@ -9176,6 +9304,50 @@ exports.tokens = new Map([
     }
   ],
   [
+    "--rh-color-purple-80",
+    {
+      "$value": "#1b0d33",
+      "filePath": "tokens/color/crayon/purple.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "#1B0D33",
+        "$type": "color"
+      },
+      "name": "rh-color-purple-80",
+      "attributes": {
+        "category": "color",
+        "type": "purple",
+        "item": "80",
+        "hex": "1b0d33",
+        "rgb": {
+          "r": 27,
+          "g": 13,
+          "b": 51,
+          "a": 1
+        },
+        "hsl": {
+          "h": 262.10526315789474,
+          "s": 59.375000000000014,
+          "l": 12.549019607843137,
+          "a": 1
+        },
+        "hsv": {
+          "h": 262.10526315789474,
+          "s": 0.7450980392156864,
+          "v": 0.2,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "purple",
+        "80"
+      ]
+    }
+  ],
+  [
     "--rh-color-purple-10-hsl",
     {
       "$value": "254.4 100% 95.09803921568627%",
@@ -9760,6 +9932,90 @@ exports.tokens = new Map([
         "color",
         "purple",
         "70-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-purple-80-hsl",
+    {
+      "$value": "262.10526315789474 59.375000000000014% 12.549019607843137%",
+      "$type": "color",
+      "original": {
+        "$value": "{color.purple.80}",
+        "$type": "color"
+      },
+      "name": "rh-color-purple-80-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "purple",
+        "item": "80-hsl",
+        "hex": "1b0d33",
+        "rgb": {
+          "r": 27,
+          "g": 13,
+          "b": 51,
+          "a": 1
+        },
+        "hsl": {
+          "h": 262.10526315789474,
+          "s": 59.375000000000014,
+          "l": 12.549019607843137,
+          "a": 1
+        },
+        "hsv": {
+          "h": 262.10526315789474,
+          "s": 0.7450980392156864,
+          "v": 0.2,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "purple",
+        "80-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-purple-80-rgb",
+    {
+      "$value": "27 13 51",
+      "$type": "color",
+      "original": {
+        "$value": "{color.purple.80}",
+        "$type": "color"
+      },
+      "name": "rh-color-purple-80-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "purple",
+        "item": "80-rgb",
+        "hex": "1b0d33",
+        "rgb": {
+          "r": 27,
+          "g": 13,
+          "b": 51,
+          "a": 1
+        },
+        "hsl": {
+          "h": 262.10526315789474,
+          "s": 59.375000000000014,
+          "l": 12.549019607843137,
+          "a": 1
+        },
+        "hsv": {
+          "h": 262.10526315789474,
+          "s": 0.7450980392156864,
+          "v": 0.2,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "purple",
+        "80-rgb"
       ]
     }
   ],
@@ -10980,6 +11236,52 @@ exports.tokens = new Map([
     }
   ],
   [
+    "--rh-color-red-80",
+    {
+      "$value": "#3f0000",
+      "$description": "Darkest brand red",
+      "filePath": "tokens/color/crayon/red.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "#3F0000",
+        "$description": "Darkest brand red",
+        "$type": "color"
+      },
+      "name": "rh-color-red-80",
+      "attributes": {
+        "category": "color",
+        "type": "red",
+        "item": "80",
+        "hex": "3f0000",
+        "rgb": {
+          "r": 63,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 100,
+          "l": 12.352941176470589,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 1,
+          "v": 0.24705882352941178,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "red",
+        "80"
+      ]
+    }
+  ],
+  [
     "--rh-color-red-10-hsl",
     {
       "$value": "0 80.64516129032265% 93.92156862745098%",
@@ -11568,6 +11870,90 @@ exports.tokens = new Map([
     }
   ],
   [
+    "--rh-color-red-80-hsl",
+    {
+      "$value": "0 100% 12.352941176470589%",
+      "$type": "color",
+      "original": {
+        "$value": "{color.red.80}",
+        "$type": "color"
+      },
+      "name": "rh-color-red-80-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "red",
+        "item": "80-hsl",
+        "hex": "3f0000",
+        "rgb": {
+          "r": 63,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 100,
+          "l": 12.352941176470589,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 1,
+          "v": 0.24705882352941178,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "red",
+        "80-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-red-80-rgb",
+    {
+      "$value": "63 0 0",
+      "$type": "color",
+      "original": {
+        "$value": "{color.red.80}",
+        "$type": "color"
+      },
+      "name": "rh-color-red-80-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "red",
+        "item": "80-rgb",
+        "hex": "3f0000",
+        "rgb": {
+          "r": 63,
+          "g": 0,
+          "b": 0,
+          "a": 1
+        },
+        "hsl": {
+          "h": 0,
+          "s": 100,
+          "l": 12.352941176470589,
+          "a": 1
+        },
+        "hsv": {
+          "h": 0,
+          "s": 1,
+          "v": 0.24705882352941178,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "red",
+        "80-rgb"
+      ]
+    }
+  ],
+  [
     "--rh-color-teal-10",
     {
       "$value": "#daf2f2",
@@ -11880,6 +12266,50 @@ exports.tokens = new Map([
         "color",
         "teal",
         "70"
+      ]
+    }
+  ],
+  [
+    "--rh-color-teal-80",
+    {
+      "$value": "#003333",
+      "filePath": "tokens/color/crayon/teal.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "#003333",
+        "$type": "color"
+      },
+      "name": "rh-color-teal-80",
+      "attributes": {
+        "category": "color",
+        "type": "teal",
+        "item": "80",
+        "hex": "003333",
+        "rgb": {
+          "r": 0,
+          "g": 51,
+          "b": 51,
+          "a": 1
+        },
+        "hsl": {
+          "h": 180,
+          "s": 100,
+          "l": 10,
+          "a": 1
+        },
+        "hsv": {
+          "h": 180,
+          "s": 1,
+          "v": 0.2,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "teal",
+        "80"
       ]
     }
   ],
@@ -12472,6 +12902,90 @@ exports.tokens = new Map([
     }
   ],
   [
+    "--rh-color-teal-80-hsl",
+    {
+      "$value": "180 100% 10%",
+      "$type": "color",
+      "original": {
+        "$value": "{color.teal.80}",
+        "$type": "color"
+      },
+      "name": "rh-color-teal-80-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "teal",
+        "item": "80-hsl",
+        "hex": "003333",
+        "rgb": {
+          "r": 0,
+          "g": 51,
+          "b": 51,
+          "a": 1
+        },
+        "hsl": {
+          "h": 180,
+          "s": 100,
+          "l": 10,
+          "a": 1
+        },
+        "hsv": {
+          "h": 180,
+          "s": 1,
+          "v": 0.2,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "teal",
+        "80-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-teal-80-rgb",
+    {
+      "$value": "0 51 51",
+      "$type": "color",
+      "original": {
+        "$value": "{color.teal.80}",
+        "$type": "color"
+      },
+      "name": "rh-color-teal-80-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "teal",
+        "item": "80-rgb",
+        "hex": "003333",
+        "rgb": {
+          "r": 0,
+          "g": 51,
+          "b": 51,
+          "a": 1
+        },
+        "hsl": {
+          "h": 180,
+          "s": 100,
+          "l": 10,
+          "a": 1
+        },
+        "hsv": {
+          "h": 180,
+          "s": 1,
+          "v": 0.2,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "teal",
+        "80-rgb"
+      ]
+    }
+  ],
+  [
     "--rh-color-yellow-10",
     {
       "$value": "#fff4cc",
@@ -12782,6 +13296,50 @@ exports.tokens = new Map([
         "color",
         "yellow",
         "70"
+      ]
+    }
+  ],
+  [
+    "--rh-color-yellow-80",
+    {
+      "$value": "#54330b",
+      "filePath": "tokens/color/crayon/yellow.yaml",
+      "isSource": true,
+      "$type": "color",
+      "original": {
+        "$value": "#54330B",
+        "$type": "color"
+      },
+      "name": "rh-color-yellow-80",
+      "attributes": {
+        "category": "color",
+        "type": "yellow",
+        "item": "80",
+        "hex": "54330b",
+        "rgb": {
+          "r": 84,
+          "g": 51,
+          "b": 11,
+          "a": 1
+        },
+        "hsl": {
+          "h": 32.87671232876713,
+          "s": 76.84210526315789,
+          "l": 18.627450980392158,
+          "a": 1
+        },
+        "hsv": {
+          "h": 32.87671232876713,
+          "s": 0.869047619047619,
+          "v": 0.32941176470588235,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "yellow",
+        "80"
       ]
     }
   ],
@@ -13370,6 +13928,90 @@ exports.tokens = new Map([
         "color",
         "yellow",
         "70-rgb"
+      ]
+    }
+  ],
+  [
+    "--rh-color-yellow-80-hsl",
+    {
+      "$value": "32.87671232876713 76.84210526315789% 18.627450980392158%",
+      "$type": "color",
+      "original": {
+        "$value": "{color.yellow.80}",
+        "$type": "color"
+      },
+      "name": "rh-color-yellow-80-hsl",
+      "attributes": {
+        "category": "color",
+        "type": "yellow",
+        "item": "80-hsl",
+        "hex": "54330b",
+        "rgb": {
+          "r": 84,
+          "g": 51,
+          "b": 11,
+          "a": 1
+        },
+        "hsl": {
+          "h": 32.87671232876713,
+          "s": 76.84210526315789,
+          "l": 18.627450980392158,
+          "a": 1
+        },
+        "hsv": {
+          "h": 32.87671232876713,
+          "s": 0.869047619047619,
+          "v": 0.32941176470588235,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "yellow",
+        "80-hsl"
+      ]
+    }
+  ],
+  [
+    "--rh-color-yellow-80-rgb",
+    {
+      "$value": "84 51 11",
+      "$type": "color",
+      "original": {
+        "$value": "{color.yellow.80}",
+        "$type": "color"
+      },
+      "name": "rh-color-yellow-80-rgb",
+      "attributes": {
+        "category": "color",
+        "type": "yellow",
+        "item": "80-rgb",
+        "hex": "54330b",
+        "rgb": {
+          "r": 84,
+          "g": 51,
+          "b": 11,
+          "a": 1
+        },
+        "hsl": {
+          "h": 32.87671232876713,
+          "s": 76.84210526315789,
+          "l": 18.627450980392158,
+          "a": 1
+        },
+        "hsv": {
+          "h": 32.87671232876713,
+          "s": 0.869047619047619,
+          "v": 0.32941176470588235,
+          "a": 1
+        },
+        "isLight": false
+      },
+      "path": [
+        "color",
+        "yellow",
+        "80-rgb"
       ]
     }
   ],

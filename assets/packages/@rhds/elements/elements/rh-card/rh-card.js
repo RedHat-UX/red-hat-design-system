@@ -1,8 +1,6 @@
 var _RhCard_instances, _RhCard_slots, _RhCard_isPromo, _RhCard_isStandardPromo, _RhCard_computedPalette_get, _RhCard_computedContext_get;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
-import { customElement } from 'lit/decorators/custom-element.js';
-import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { html, LitElement } from 'lit';
 import { colorContextConsumer } from '../../lib/context/color/consumer.js';
@@ -40,17 +38,17 @@ const styles = css `:host{display:block;container-name:card;container-type:inlin
  * @cssprop     [--rh-card-heading-font-weight=var(--rh-font-weight-body-text-medium)]
  *              The font weight for headings in the header and body
  */
-let RhCard = class RhCard extends LitElement {
+export class RhCard extends LitElement {
     constructor() {
         super(...arguments);
         _RhCard_instances.add(this);
+        _RhCard_slots.set(this, new SlotController(this, 'header', 'image', null, 'footer'));
+        _RhCard_isPromo.set(this, this.variant === 'promo');
+        _RhCard_isStandardPromo.set(this, false);
         /**
          * Change a promo with an image + body + footer to use the `full-width` style
          */
         this.fullWidth = false;
-        _RhCard_slots.set(this, new SlotController(this, 'header', 'image', null, 'footer'));
-        _RhCard_isPromo.set(this, this.variant === 'promo');
-        _RhCard_isStandardPromo.set(this, false);
     }
     willUpdate() {
         __classPrivateFieldSet(this, _RhCard_isPromo, this.variant === 'promo', "f");
@@ -113,12 +111,8 @@ let RhCard = class RhCard extends LitElement {
       </div>
     `;
     }
-};
-_RhCard_slots = new WeakMap();
-_RhCard_isPromo = new WeakMap();
-_RhCard_isStandardPromo = new WeakMap();
-_RhCard_instances = new WeakSet();
-_RhCard_computedPalette_get = function _RhCard_computedPalette_get() {
+}
+_RhCard_slots = new WeakMap(), _RhCard_isPromo = new WeakMap(), _RhCard_isStandardPromo = new WeakMap(), _RhCard_instances = new WeakSet(), _RhCard_computedPalette_get = function _RhCard_computedPalette_get() {
     if (__classPrivateFieldGet(this, _RhCard_isStandardPromo, "f")) {
         return `${this.colorPalette}er`.replace(/(er|est){1,2}/, 'er');
     }
@@ -138,28 +132,19 @@ _RhCard_computedPalette_get = function _RhCard_computedPalette_get() {
                 return 'darkest';
         }
     }
-};
-_RhCard_computedContext_get = function _RhCard_computedContext_get() {
+}, _RhCard_computedContext_get = function _RhCard_computedContext_get() {
     return this.colorPalette ?
         this.colorPalette?.includes('light') ? 'light' : 'dark'
         : undefined;
 };
+RhCard.properties = {
+    colorPalette: { reflect: true, attribute: 'color-palette' },
+    variant: { reflect: true },
+    fullWidth: { reflect: true, attribute: 'full-width', type: Boolean }
+};
 RhCard.styles = [styles];
-__decorate([
-    colorContextProvider(),
-    property({ reflect: true, attribute: 'color-palette' })
-], RhCard.prototype, "colorPalette", void 0);
-__decorate([
-    property({ reflect: true })
-], RhCard.prototype, "variant", void 0);
-__decorate([
-    property({ reflect: true, attribute: 'full-width', type: Boolean })
-], RhCard.prototype, "fullWidth", void 0);
 __decorate([
     colorContextConsumer()
 ], RhCard.prototype, "on", void 0);
-RhCard = __decorate([
-    customElement('rh-card')
-], RhCard);
-export { RhCard };
+customElements.define("rh-card", RhCard);
 //# sourceMappingURL=rh-card.js.map

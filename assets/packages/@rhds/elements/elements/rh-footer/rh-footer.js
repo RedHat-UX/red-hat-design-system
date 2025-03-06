@@ -1,9 +1,6 @@
 var _RhFooter_instances, _RhFooter_logger, _RhFooter_compact, _RhFooter_renderLinksTemplate;
-var RhFooter_1;
-import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
+import { __classPrivateFieldGet, __classPrivateFieldSet } from "tslib";
 import { LitElement, html } from 'lit';
-import { property } from 'lit/decorators/property.js';
-import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
@@ -56,13 +53,12 @@ function isHeaderTagName(tagName) {
  * @cssprop [--rh-footer-link-header-font-size=0.875em]
  * @cssprop [--rh-footer-nojs-min-height=750px]
  */
-let RhFooter = RhFooter_1 = class RhFooter extends LitElement {
+export class RhFooter extends LitElement {
     constructor() {
         super(...arguments);
         _RhFooter_instances.add(this);
         _RhFooter_logger.set(this, new Logger(this));
         _RhFooter_compact.set(this, false);
-        this.colorPalette = 'darker';
         /**
          * ScreenSizeController effects callback to set #compact is true when viewport
          * `(min-width: ${tabletLandscapeBreakpoint})`.
@@ -72,6 +68,7 @@ let RhFooter = RhFooter_1 = class RhFooter extends LitElement {
                 __classPrivateFieldSet(this, _RhFooter_compact, !matches, "f");
             },
         });
+        this.colorPalette = 'darker';
     }
     /**
      * Isomorphic import.meta.url function
@@ -146,7 +143,7 @@ let RhFooter = RhFooter_1 = class RhFooter extends LitElement {
      * and synchronously update each list and header if we need to.
      */
     updateAccessibility() {
-        for (const list of this.querySelectorAll(RhFooter_1.LISTS_SELECTOR)) {
+        for (const list of this.querySelectorAll(RhFooter.LISTS_SELECTOR)) {
             // if we already have a label then we assume that the user
             // has wired this up themselves.
             if (!list.hasAttribute('aria-labelledby')) {
@@ -166,11 +163,8 @@ let RhFooter = RhFooter_1 = class RhFooter extends LitElement {
             }
         }
     }
-};
-_RhFooter_logger = new WeakMap();
-_RhFooter_compact = new WeakMap();
-_RhFooter_instances = new WeakSet();
-_RhFooter_renderLinksTemplate = function _RhFooter_renderLinksTemplate(isMobile = false) {
+}
+_RhFooter_logger = new WeakMap(), _RhFooter_compact = new WeakMap(), _RhFooter_instances = new WeakSet(), _RhFooter_renderLinksTemplate = function _RhFooter_renderLinksTemplate(isMobile = false) {
     // gather all of the links that need to be wrapped into the accordion
     // give them a designation of either 'header' or 'panel'
     const children = Array.from(this.querySelectorAll(':scope > [slot^=links]'));
@@ -197,15 +191,11 @@ _RhFooter_renderLinksTemplate = function _RhFooter_renderLinksTemplate(isMobile 
       </rh-accordion>
     `;
 };
+RhFooter.properties = {
+    colorPalette: { reflect: true, attribute: 'color-palette' }
+};
 RhFooter.version = '{{version}}';
 RhFooter.styles = [style];
 RhFooter.LISTS_SELECTOR = ':is([slot^=links],[slot=footer-links-primary],[slot=footer-links-secondary]):is(ul)';
-__decorate([
-    colorContextProvider(),
-    property({ reflect: true, attribute: 'color-palette' })
-], RhFooter.prototype, "colorPalette", void 0);
-RhFooter = RhFooter_1 = __decorate([
-    customElement('rh-footer')
-], RhFooter);
-export { RhFooter };
+customElements.define("rh-footer", RhFooter);
 //# sourceMappingURL=rh-footer.js.map

@@ -1,11 +1,8 @@
 var _RhCodeBlock_instances, _RhCodeBlock_slots, _RhCodeBlock_prismOutput, _RhCodeBlock_ro, _RhCodeBlock_lineHeights, _RhCodeBlock_onSlotChange, _RhCodeBlock_applyPrismPrerenderedStyles, _RhCodeBlock_highlightWithPrism, _RhCodeBlock_wrapChanged, _RhCodeBlock_getSlottedCodeElements, _RhCodeBlock_computeLineNumbers, _RhCodeBlock_onActionsClick, _RhCodeBlock_onActionsKeyup, _RhCodeBlock_onCodeAction, _RhCodeBlock_onClickExpand, _RhCodeBlock_copy;
-var RhCodeBlock_1;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { CSSResult, LitElement, html } from 'lit';
-import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { styleMap } from 'lit/directives/style-map.js';
-import { property } from 'lit/decorators/property.js';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { colorContextConsumer } from '../../lib/context/color/consumer.js';
@@ -41,10 +38,16 @@ function dedent(str) {
  * @slot legend - `<dl>` element containing rh-badges in the `<dt>`
  *                and legend text in the `<dd>` elements
  */
-let RhCodeBlock = RhCodeBlock_1 = class RhCodeBlock extends LitElement {
+export class RhCodeBlock extends LitElement {
     constructor() {
         super(...arguments);
         _RhCodeBlock_instances.add(this);
+        _RhCodeBlock_slots.set(this, new SlotController(this, null, 
+        // 'actions',
+        'action-label-copy', 'action-label-wrap', 'show-more', 'show-less', 'legend'));
+        _RhCodeBlock_prismOutput.set(this, void 0);
+        _RhCodeBlock_ro.set(this, new ResizeObserver(() => __classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_computeLineNumbers).call(this)));
+        _RhCodeBlock_lineHeights.set(this, []);
         this.actions = [];
         /** When set, the code block displays with compact spacing */
         this.compact = false;
@@ -56,12 +59,6 @@ let RhCodeBlock = RhCodeBlock_1 = class RhCodeBlock extends LitElement {
         this.fullHeight = false;
         /** When set, lines in the code snippet wrap */
         this.wrap = false;
-        _RhCodeBlock_slots.set(this, new SlotController(this, null, 
-        // 'actions',
-        'action-label-copy', 'action-label-wrap', 'show-more', 'show-less', 'legend'));
-        _RhCodeBlock_prismOutput.set(this, void 0);
-        _RhCodeBlock_ro.set(this, new ResizeObserver(() => __classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_computeLineNumbers).call(this)));
-        _RhCodeBlock_lineHeights.set(this, []);
     }
     connectedCallback() {
         super.connectedCallback();
@@ -110,7 +107,7 @@ let RhCodeBlock = RhCodeBlock_1 = class RhCodeBlock extends LitElement {
             <button id="action-${x}"
                     class="shadow-fab"
                     data-code-block-action="${x}">
-              ${RhCodeBlock_1.actionIcons.get(this.wrap && x === 'wrap' ? 'wrap-active' : x) ?? ''}
+              ${RhCodeBlock.actionIcons.get(this.wrap && x === 'wrap' ? 'wrap-active' : x) ?? ''}
             </button>
           </rh-tooltip>`)}
         <!-- </slot> -->
@@ -142,13 +139,8 @@ let RhCodeBlock = RhCodeBlock_1 = class RhCodeBlock extends LitElement {
             __classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_wrapChanged).call(this);
         }
     }
-};
-_RhCodeBlock_slots = new WeakMap();
-_RhCodeBlock_prismOutput = new WeakMap();
-_RhCodeBlock_ro = new WeakMap();
-_RhCodeBlock_lineHeights = new WeakMap();
-_RhCodeBlock_instances = new WeakSet();
-_RhCodeBlock_onSlotChange = async function _RhCodeBlock_onSlotChange() {
+}
+_RhCodeBlock_slots = new WeakMap(), _RhCodeBlock_prismOutput = new WeakMap(), _RhCodeBlock_ro = new WeakMap(), _RhCodeBlock_lineHeights = new WeakMap(), _RhCodeBlock_instances = new WeakSet(), _RhCodeBlock_onSlotChange = async function _RhCodeBlock_onSlotChange() {
     switch (this.highlighting) {
         case 'client':
             await __classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_highlightWithPrism).call(this);
@@ -160,8 +152,7 @@ _RhCodeBlock_onSlotChange = async function _RhCodeBlock_onSlotChange() {
             break;
     }
     __classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_computeLineNumbers).call(this);
-};
-_RhCodeBlock_applyPrismPrerenderedStyles = async function _RhCodeBlock_applyPrismPrerenderedStyles() {
+}, _RhCodeBlock_applyPrismPrerenderedStyles = async function _RhCodeBlock_applyPrismPrerenderedStyles() {
     if (getComputedStyle(this).getPropertyValue('--_styles-applied') !== 'true') {
         const root = this.getRootNode();
         if (root instanceof Document || root instanceof ShadowRoot) {
@@ -169,8 +160,7 @@ _RhCodeBlock_applyPrismPrerenderedStyles = async function _RhCodeBlock_applyPris
             root.adoptedStyleSheets = [...root.adoptedStyleSheets, styleSheet];
         }
     }
-};
-_RhCodeBlock_highlightWithPrism = async function _RhCodeBlock_highlightWithPrism() {
+}, _RhCodeBlock_highlightWithPrism = async function _RhCodeBlock_highlightWithPrism() {
     const { highlight, prismStyles } = await import('./prism.js');
     const styleSheet = prismStyles instanceof CSSStyleSheet ? prismStyles
         : prismStyles.styleSheet;
@@ -186,8 +176,7 @@ _RhCodeBlock_highlightWithPrism = async function _RhCodeBlock_highlightWithPrism
     __classPrivateFieldSet(this, _RhCodeBlock_prismOutput, await highlight(textContent, this.language), "f");
     this.requestUpdate('#prismOutput', {});
     await this.updateComplete;
-};
-_RhCodeBlock_wrapChanged = async function _RhCodeBlock_wrapChanged() {
+}, _RhCodeBlock_wrapChanged = async function _RhCodeBlock_wrapChanged() {
     await this.updateComplete;
     __classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_computeLineNumbers).call(this);
     // TODO: handle slotted fabs
@@ -198,14 +187,12 @@ _RhCodeBlock_wrapChanged = async function _RhCodeBlock_wrapChanged() {
         }
     }
     this.requestUpdate();
-};
-_RhCodeBlock_getSlottedCodeElements = function _RhCodeBlock_getSlottedCodeElements() {
+}, _RhCodeBlock_getSlottedCodeElements = function _RhCodeBlock_getSlottedCodeElements() {
     const slot = this.shadowRoot?.getElementById('content');
     return slot.assignedElements().flatMap(x => x instanceof HTMLScriptElement
         || x instanceof HTMLPreElement ? [x]
         : []);
-};
-_RhCodeBlock_computeLineNumbers = 
+}, _RhCodeBlock_computeLineNumbers = 
 /**
  * Clone the text content and connect it to the document, in order to calculate the number of lines
  * @license MIT
@@ -255,19 +242,16 @@ async function _RhCodeBlock_computeLineNumbers() {
     }
     __classPrivateFieldSet(this, _RhCodeBlock_lineHeights, infos.flatMap(x => x.lineHeights?.map(y => `${y ?? x.oneLinerHeight}px`)), "f");
     this.requestUpdate('#linesNumbers', 0);
-};
-_RhCodeBlock_onActionsClick = function _RhCodeBlock_onActionsClick(event) {
+}, _RhCodeBlock_onActionsClick = function _RhCodeBlock_onActionsClick(event) {
     __classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_onCodeAction).call(this, event);
-};
-_RhCodeBlock_onActionsKeyup = function _RhCodeBlock_onActionsKeyup(event) {
+}, _RhCodeBlock_onActionsKeyup = function _RhCodeBlock_onActionsKeyup(event) {
     switch (event.key) {
         case 'Enter':
         case ' ':
             event.preventDefault();
             __classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_onCodeAction).call(this, event);
     }
-};
-_RhCodeBlock_onCodeAction = function _RhCodeBlock_onCodeAction(event) {
+}, _RhCodeBlock_onCodeAction = function _RhCodeBlock_onCodeAction(event) {
     const el = event.composedPath().find((x) => x instanceof HTMLElement && !!x.dataset.codeBlockAction);
     if (el) {
         switch (el.dataset.codeBlockAction) {
@@ -279,11 +263,9 @@ _RhCodeBlock_onCodeAction = function _RhCodeBlock_onCodeAction(event) {
                 return;
         }
     }
-};
-_RhCodeBlock_onClickExpand = function _RhCodeBlock_onClickExpand() {
+}, _RhCodeBlock_onClickExpand = function _RhCodeBlock_onClickExpand() {
     this.fullHeight = !this.fullHeight;
-};
-_RhCodeBlock_copy = async function _RhCodeBlock_copy() {
+}, _RhCodeBlock_copy = async function _RhCodeBlock_copy() {
     let content;
     if (this.highlighting === 'prerendered') {
         content = this.querySelector('pre')?.textContent ?? '';
@@ -312,6 +294,26 @@ _RhCodeBlock_copy = async function _RhCodeBlock_copy() {
     }
     this.requestUpdate();
     tooltip?.show();
+};
+RhCodeBlock.properties = {
+    actions: {
+        reflect: true,
+        converter: {
+            fromAttribute(value) {
+                return ((value ?? '').split(/\s+/) ?? []).map(x => x.trim()).filter(Boolean);
+            },
+            toAttribute(value) {
+                return Array.isArray(value) ? value.join(' ') : '';
+            },
+        },
+    },
+    highlighting: {},
+    language: {},
+    compact: { type: Boolean, reflect: true },
+    dedent: { type: Boolean, reflect: true },
+    resizable: { type: Boolean, reflect: true },
+    fullHeight: { type: Boolean, reflect: true, attribute: 'full-height' },
+    wrap: { type: Boolean }
 };
 RhCodeBlock.actionIcons = new Map([
     ['wrap', html `
@@ -342,46 +344,9 @@ RhCodeBlock.actionIcons = new Map([
 ]);
 RhCodeBlock.styles = [style];
 __decorate([
-    property({
-        reflect: true,
-        converter: {
-            fromAttribute(value) {
-                return ((value ?? '').split(/\s+/) ?? []).map(x => x.trim()).filter(Boolean);
-            },
-            toAttribute(value) {
-                return Array.isArray(value) ? value.join(' ') : '';
-            },
-        },
-    })
-], RhCodeBlock.prototype, "actions", void 0);
-__decorate([
-    property()
-], RhCodeBlock.prototype, "highlighting", void 0);
-__decorate([
-    property()
-], RhCodeBlock.prototype, "language", void 0);
-__decorate([
-    property({ type: Boolean, reflect: true })
-], RhCodeBlock.prototype, "compact", void 0);
-__decorate([
-    property({ type: Boolean, reflect: true })
-], RhCodeBlock.prototype, "dedent", void 0);
-__decorate([
-    property({ type: Boolean, reflect: true })
-], RhCodeBlock.prototype, "resizable", void 0);
-__decorate([
-    property({ type: Boolean, reflect: true, attribute: 'full-height' })
-], RhCodeBlock.prototype, "fullHeight", void 0);
-__decorate([
-    property({ type: Boolean })
-], RhCodeBlock.prototype, "wrap", void 0);
-__decorate([
     colorContextConsumer()
 ], RhCodeBlock.prototype, "on", void 0);
-RhCodeBlock = RhCodeBlock_1 = __decorate([
-    customElement('rh-code-block')
-], RhCodeBlock);
-export { RhCodeBlock };
+customElements.define("rh-code-block", RhCodeBlock);
 /**
  * TODO: slotted fabs like this:
  *

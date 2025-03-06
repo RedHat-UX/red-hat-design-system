@@ -1,21 +1,18 @@
 var _UxdotSearch_instances, _UxdotSearch_internals, _UxdotSearch_ariaLabel, _UxdotSearch_input_get, _UxdotSearch_firstLink_get, _UxdotSearch_lastLink_get, _UxdotSearch_onOutsideClick, _UxdotSearch_onClickSearch, _UxdotSearch_onBlur, _UxdotSearch_onInput, _UxdotSearch_onKeydown, _UxdotSearch_focus;
-var UxdotSearch_1;
-import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
+import { __classPrivateFieldGet, __classPrivateFieldSet } from "tslib";
 import { LitElement, html, isServer } from 'lit';
 import { ifDefined } from 'lit/directives/if-defined.js';
-import { customElement } from 'lit/decorators/custom-element.js';
-import { property } from 'lit/decorators/property.js';
 import '@rhds/elements/rh-button/rh-button.js';
 import { css } from "lit";
 const styles = css `:host{display:grid;gap:var(--rh-space-lg);grid-template:1fr/1fr max-content;font-family:var(--rh-font-family-body-text);position:relative}[hidden]{display:none!important}input{border:var(--rh-border-width-sm);border-bottom-color:var(--rh-color-gray-50);padding:var(--rh-space-md)}input:focus{border-bottom-color:var(--rh-color-interactive-primary-default-on-light);border-bottom-width:var(--rh-border-width-md)}input::placeholder{font-family:inherit;font-size:var(--rh-font-size-body-text-md)}#container{position:absolute;max-height:300px;overflow-y:scroll;z-index:2;grid-column:1/2;width:calc(100% + var(--rh-border-width-md)*2);inset-block-start:var(--rh-length-2xl);inset-inline-start:calc(var(--rh-space-md)*-1);padding:var(--rh-space-sm)}ol{list-style-type:none;flex-flow:column nowrap;padding-inline-start:0;border:var(--rh-border-width-sm);background:var(--rh-color-surface-lightest);margin:0;height:calc(100% - var(--rh-space-md));width:calc(100% - var(--rh-border-width-md)*2)}a{color:inherit;text-decoration:none;font-size:var(--rh-font-size-body-text-sm)}a:focus{outline:none}li{padding:var(--rh-space-md)}li:focus-within,li[aria-selected=true]{outline:var(--rh-border-width-md)}`;
-let UxdotSearch = UxdotSearch_1 = class UxdotSearch extends LitElement {
+export class UxdotSearch extends LitElement {
     constructor() {
         super(...arguments);
         _UxdotSearch_instances.add(this);
-        this.items = [];
-        this.expanded = false;
         _UxdotSearch_internals.set(this, !isServer ? this.attachInternals() : null);
         _UxdotSearch_ariaLabel.set(this, '');
+        this.items = [];
+        this.expanded = false;
     }
     get form() {
         return __classPrivateFieldGet(this, _UxdotSearch_internals, "f")?.form ?? null;
@@ -72,31 +69,23 @@ let UxdotSearch = UxdotSearch_1 = class UxdotSearch extends LitElement {
                  @click="${__classPrivateFieldGet(this, _UxdotSearch_instances, "m", _UxdotSearch_onClickSearch)}">Search</rh-button>
     `;
     }
-};
-_UxdotSearch_internals = new WeakMap();
-_UxdotSearch_ariaLabel = new WeakMap();
-_UxdotSearch_instances = new WeakSet();
-_UxdotSearch_input_get = function _UxdotSearch_input_get() {
+}
+_UxdotSearch_internals = new WeakMap(), _UxdotSearch_ariaLabel = new WeakMap(), _UxdotSearch_instances = new WeakSet(), _UxdotSearch_input_get = function _UxdotSearch_input_get() {
     return this.shadowRoot?.getElementById('input') ?? null;
-};
-_UxdotSearch_firstLink_get = function _UxdotSearch_firstLink_get() {
+}, _UxdotSearch_firstLink_get = function _UxdotSearch_firstLink_get() {
     return this.shadowRoot?.querySelector('li a') ?? null;
-};
-_UxdotSearch_lastLink_get = function _UxdotSearch_lastLink_get() {
+}, _UxdotSearch_lastLink_get = function _UxdotSearch_lastLink_get() {
     return this.shadowRoot?.querySelector('li:last-of-type a') ?? null;
-};
-_UxdotSearch_onOutsideClick = function _UxdotSearch_onOutsideClick(event) {
+}, _UxdotSearch_onOutsideClick = function _UxdotSearch_onOutsideClick(event) {
     if (event.composedPath().every(x => x !== this)) {
         this.expanded = false;
     }
-};
-_UxdotSearch_onClickSearch = function _UxdotSearch_onClickSearch() {
+}, _UxdotSearch_onClickSearch = function _UxdotSearch_onClickSearch() {
     this.expanded = true;
     if (this.value && !isServer) {
         this.form?.requestSubmit();
     }
-};
-_UxdotSearch_onBlur = async function _UxdotSearch_onBlur() {
+}, _UxdotSearch_onBlur = async function _UxdotSearch_onBlur() {
     await this.updateComplete;
     if (!this.shadowRoot?.activeElement) {
         await this.updateComplete;
@@ -105,14 +94,12 @@ _UxdotSearch_onBlur = async function _UxdotSearch_onBlur() {
             this.value = this.selectedItem.textContent?.trim() ?? '';
         }
     }
-};
-_UxdotSearch_onInput = function _UxdotSearch_onInput() {
+}, _UxdotSearch_onInput = function _UxdotSearch_onInput() {
     __classPrivateFieldGet(this, _UxdotSearch_internals, "f")?.setFormValue(this.value);
     if (this.value) {
         this.expanded = true;
     }
-};
-_UxdotSearch_onKeydown = function _UxdotSearch_onKeydown(event) {
+}, _UxdotSearch_onKeydown = function _UxdotSearch_onKeydown(event) {
     switch (event.key) {
         case 'ArrowDown':
         case 'ArrowUp': {
@@ -124,8 +111,7 @@ _UxdotSearch_onKeydown = function _UxdotSearch_onKeydown(event) {
             break;
         case 'Enter': this.form?.requestSubmit();
     }
-};
-_UxdotSearch_focus = function _UxdotSearch_focus(event) {
+}, _UxdotSearch_focus = function _UxdotSearch_focus(event) {
     event.preventDefault();
     this.activeIndex ?? (this.activeIndex = -1);
     const d = ({ ArrowDown: 1, ArrowUp: -1 })[event.key];
@@ -142,33 +128,22 @@ _UxdotSearch_focus = function _UxdotSearch_focus(event) {
         nextFocus?.focus();
     }
 };
+UxdotSearch.properties = {
+    placeholder: {},
+    items: { type: Array, attribute: false },
+    expanded: { type: Boolean, state: true },
+    activeIndex: { type: Number, state: true },
+    value: {}
+};
 UxdotSearch.formAssociated = true;
 UxdotSearch.styles = [styles];
 UxdotSearch.instances = new Set();
 (() => {
     globalThis?.addEventListener?.('click', event => {
-        for (const instance of UxdotSearch_1.instances) {
+        for (const instance of UxdotSearch.instances) {
             __classPrivateFieldGet(instance, _UxdotSearch_instances, "m", _UxdotSearch_onOutsideClick).call(instance, event);
         }
     });
 })();
-__decorate([
-    property()
-], UxdotSearch.prototype, "placeholder", void 0);
-__decorate([
-    property({ type: Array, attribute: false })
-], UxdotSearch.prototype, "items", void 0);
-__decorate([
-    property({ type: Boolean, state: true })
-], UxdotSearch.prototype, "expanded", void 0);
-__decorate([
-    property({ type: Number, state: true })
-], UxdotSearch.prototype, "activeIndex", void 0);
-__decorate([
-    property()
-], UxdotSearch.prototype, "value", null);
-UxdotSearch = UxdotSearch_1 = __decorate([
-    customElement('uxdot-search')
-], UxdotSearch);
-export { UxdotSearch };
+customElements.define("uxdot-search", UxdotSearch);
 //# sourceMappingURL=uxdot-search.js.map

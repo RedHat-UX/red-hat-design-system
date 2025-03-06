@@ -262,7 +262,7 @@ export const tokens = new Map([
   ],
   [
     "--rh-color-brand-red-darkest",
-    "#5f0000"
+    "#3f0000"
   ],
   [
     "--rh-color-green-10",
@@ -377,6 +377,10 @@ export const tokens = new Map([
     "#732e00"
   ],
   [
+    "--rh-color-orange-80",
+    "#4d1f00"
+  ],
+  [
     "--rh-color-orange-10-hsl",
     "32.941176470588225 100% 90%"
   ],
@@ -431,6 +435,14 @@ export const tokens = new Map([
   [
     "--rh-color-orange-70-rgb",
     "115 46 0"
+  ],
+  [
+    "--rh-color-orange-80-hsl",
+    "24.155844155844157 100% 15.098039215686274%"
+  ],
+  [
+    "--rh-color-orange-80-rgb",
+    "77 31 0"
   ],
   [
     "--rh-color-icon-primary",
@@ -813,6 +825,10 @@ export const tokens = new Map([
     "#21134d"
   ],
   [
+    "--rh-color-purple-80",
+    "#1b0d33"
+  ],
+  [
     "--rh-color-purple-10-hsl",
     "254.4 100% 95.09803921568627%"
   ],
@@ -867,6 +883,14 @@ export const tokens = new Map([
   [
     "--rh-color-purple-70-rgb",
     "33 19 77"
+  ],
+  [
+    "--rh-color-purple-80-hsl",
+    "262.10526315789474 59.375000000000014% 12.549019607843137%"
+  ],
+  [
+    "--rh-color-purple-80-rgb",
+    "27 13 51"
   ],
   [
     "--rh-color-red-orange-10",
@@ -981,6 +1005,10 @@ export const tokens = new Map([
     "#5f0000"
   ],
   [
+    "--rh-color-red-80",
+    "#3f0000"
+  ],
+  [
     "--rh-color-red-10-hsl",
     "0 80.64516129032265% 93.92156862745098%"
   ],
@@ -1037,6 +1065,14 @@ export const tokens = new Map([
     "95 0 0"
   ],
   [
+    "--rh-color-red-80-hsl",
+    "0 100% 12.352941176470589%"
+  ],
+  [
+    "--rh-color-red-80-rgb",
+    "63 0 0"
+  ],
+  [
     "--rh-color-teal-10",
     "#daf2f2"
   ],
@@ -1063,6 +1099,10 @@ export const tokens = new Map([
   [
     "--rh-color-teal-70",
     "#004d4d"
+  ],
+  [
+    "--rh-color-teal-80",
+    "#003333"
   ],
   [
     "--rh-color-teal-10-hsl",
@@ -1121,6 +1161,14 @@ export const tokens = new Map([
     "0 77 77"
   ],
   [
+    "--rh-color-teal-80-hsl",
+    "180 100% 10%"
+  ],
+  [
+    "--rh-color-teal-80-rgb",
+    "0 51 51"
+  ],
+  [
     "--rh-color-yellow-10",
     "#fff4cc"
   ],
@@ -1147,6 +1195,10 @@ export const tokens = new Map([
   [
     "--rh-color-yellow-70",
     "#73480b"
+  ],
+  [
+    "--rh-color-yellow-80",
+    "#54330b"
   ],
   [
     "--rh-color-yellow-10-hsl",
@@ -1203,6 +1255,14 @@ export const tokens = new Map([
   [
     "--rh-color-yellow-70-rgb",
     "115 72 11"
+  ],
+  [
+    "--rh-color-yellow-80-hsl",
+    "32.87671232876713 76.84210526315789% 18.627450980392158%"
+  ],
+  [
+    "--rh-color-yellow-80-rgb",
+    "84 51 11"
   ],
   [
     "--rh-color-interactive-primary-default",

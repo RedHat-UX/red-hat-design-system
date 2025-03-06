@@ -1,10 +1,6 @@
 var _RhTab_instances, _RhTab_internals, _RhTab_onClick, _RhTab_onFocus, _RhTab_onKeydown, _RhTab_activate;
 import { __classPrivateFieldGet, __decorate } from "tslib";
 import { html, LitElement } from 'lit';
-import { customElement } from 'lit/decorators/custom-element.js';
-import { property } from 'lit/decorators/property.js';
-import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
-import { query } from 'lit/decorators/query.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { consume } from '@lit/context';
 import { observes } from '@patternfly/pfe-core/decorators/observes.js';
@@ -36,15 +32,21 @@ export class TabExpandEvent extends Event {
  * @cssprop {<length>} [--rh-tabs-link-padding-block-end=16px] - Tab padding block end
  * @fires { TabExpandEvent } expand - when a tab expands
  */
-let RhTab = class RhTab extends LitElement {
+export class RhTab extends LitElement {
     constructor() {
         super(...arguments);
         _RhTab_instances.add(this);
+        _RhTab_internals.set(this, InternalsController.of(this, { role: 'tab' }));
         /** True when the tab is selected */
         this.active = false;
         /** True when the tab is disabled */
         this.disabled = false;
-        _RhTab_internals.set(this, InternalsController.of(this, { role: 'tab' }));
+    }
+    get icons() {
+        return this.renderRoot?.querySelector(`slot[name=icon]`)?.assignedElements({ flatten: true }) ?? [];
+    }
+    get button() {
+        return this.renderRoot?.querySelector("#button") ?? null;
     }
     connectedCallback() {
         super.connectedCallback();
@@ -86,61 +88,42 @@ let RhTab = class RhTab extends LitElement {
     disabledChanged() {
         __classPrivateFieldGet(this, _RhTab_internals, "f").ariaDisabled = String(!!this.disabled);
     }
-};
-_RhTab_internals = new WeakMap();
-_RhTab_instances = new WeakSet();
-_RhTab_onClick = function _RhTab_onClick() {
+}
+_RhTab_internals = new WeakMap(), _RhTab_instances = new WeakSet(), _RhTab_onClick = function _RhTab_onClick() {
     if (!this.disabled && __classPrivateFieldGet(this, _RhTab_internals, "f").ariaDisabled !== 'true' && this.ariaDisabled !== 'true') {
         __classPrivateFieldGet(this, _RhTab_instances, "m", _RhTab_activate).call(this);
         if (InternalsController.isSafari) {
             this.focus();
         }
     }
-};
-_RhTab_onFocus = function _RhTab_onFocus() {
+}, _RhTab_onFocus = function _RhTab_onFocus() {
     if (!this.ctx?.manual && !this.disabled) {
         __classPrivateFieldGet(this, _RhTab_instances, "m", _RhTab_activate).call(this);
     }
-};
-_RhTab_onKeydown = function _RhTab_onKeydown(event) {
+}, _RhTab_onKeydown = function _RhTab_onKeydown(event) {
     if (!this.disabled) {
         switch (event.key) {
             case 'Enter':
                 __classPrivateFieldGet(this, _RhTab_instances, "m", _RhTab_activate).call(this);
         }
     }
-};
-_RhTab_activate = function _RhTab_activate() {
+}, _RhTab_activate = function _RhTab_activate() {
     this.dispatchEvent(new TabExpandEvent(this.active, this));
+};
+RhTab.properties = {
+    active: { reflect: true, type: Boolean },
+    disabled: { reflect: true, type: Boolean },
+    ctx: { attribute: false }
 };
 RhTab.styles = [styles];
 __decorate([
-    property({ reflect: true, type: Boolean })
-], RhTab.prototype, "active", void 0);
-__decorate([
-    property({ reflect: true, type: Boolean })
-], RhTab.prototype, "disabled", void 0);
-__decorate([
-    consume({ context, subscribe: true }),
-    property({ attribute: false })
-], RhTab.prototype, "ctx", void 0);
-__decorate([
     colorContextConsumer()
 ], RhTab.prototype, "on", void 0);
-__decorate([
-    queryAssignedElements({ slot: 'icon', flatten: true })
-], RhTab.prototype, "icons", void 0);
-__decorate([
-    query('#button')
-], RhTab.prototype, "button", void 0);
 __decorate([
     observes('active')
 ], RhTab.prototype, "activeChanged", null);
 __decorate([
     observes('disabled')
 ], RhTab.prototype, "disabledChanged", null);
-RhTab = __decorate([
-    customElement('rh-tab')
-], RhTab);
-export { RhTab };
+customElements.define("rh-tab", RhTab);
 //# sourceMappingURL=rh-tab.js.map

@@ -98,7 +98,7 @@ import { css } from 'lit'; export default css`
   --rh-color-brand-red-on-dark: #ee0000;
   /* Lightest brand red */
   --rh-color-brand-red-lightest: #fbc5c5;
-  /* lighter brand red */
+  /* Lighter brand red */
   --rh-color-brand-red-lighter: #f9a8a8;
   /* Light brand red */
   --rh-color-brand-red-light: #f56e6e;
@@ -107,7 +107,7 @@ import { css } from 'lit'; export default css`
   /* Darker brand red */
   --rh-color-brand-red-darker: #5f0000;
   /* Darkest brand red */
-  --rh-color-brand-red-darkest: #5f0000;
+  --rh-color-brand-red-darkest: #3f0000;
   /* Alert - success background */
   --rh-color-green-10: #e9f7df;
   /* Label - Filled (Green) border color */
@@ -145,6 +145,7 @@ import { css } from 'lit'; export default css`
   --rh-color-orange-60: #9e4a06;
   /* Label - Filled (Orange) text color */
   --rh-color-orange-70: #732e00;
+  --rh-color-orange-80: #4d1f00;
   --rh-color-orange-10-hsl: 32.941176470588225 100% 90%;
   --rh-color-orange-10-rgb: 255 232 204;
   --rh-color-orange-20-hsl: 33.02752293577981 94.78260869565219% 77.45098039215686%;
@@ -159,6 +160,8 @@ import { css } from 'lit'; export default css`
   --rh-color-orange-60-rgb: 158 74 6;
   --rh-color-orange-70-hsl: 24 100% 22.54901960784314%;
   --rh-color-orange-70-rgb: 115 46 0;
+  --rh-color-orange-80-hsl: 24.155844155844157 100% 15.098039215686274%;
+  --rh-color-orange-80-rgb: 77 31 0;
   --rh-color-icon-primary-on-light: #ee0000;
   --rh-color-icon-primary-on-dark: #ee0000;
   --rh-color-icon-secondary-on-light: #151515;
@@ -285,6 +288,7 @@ import { css } from 'lit'; export default css`
   --rh-color-purple-60: #3d2785;
   /* Inline link visited hover (light theme) */
   --rh-color-purple-70: #21134d;
+  --rh-color-purple-80: #1b0d33;
   --rh-color-purple-10-hsl: 254.4 100% 95.09803921568627%;
   --rh-color-purple-10-rgb: 236 230 255;
   --rh-color-purple-20-hsl: 254.0425531914893 68.11594202898556% 86.47058823529412%;
@@ -299,6 +303,8 @@ import { css } from 'lit'; export default css`
   --rh-color-purple-60-rgb: 61 39 133;
   --rh-color-purple-70-hsl: 254.48275862068965 60.416666666666664% 18.823529411764707%;
   --rh-color-purple-70-rgb: 33 19 77;
+  --rh-color-purple-80-hsl: 262.10526315789474 59.375000000000014% 12.549019607843137%;
+  --rh-color-purple-80-rgb: 27 13 51;
   --rh-color-red-orange-10: #ffe3d9;
   --rh-color-red-orange-20: #fbbea8;
   --rh-color-red-orange-30: #f89b78;
@@ -333,6 +339,8 @@ import { css } from 'lit'; export default css`
   --rh-color-red-60: #a60000;
   /* Darker brand red */
   --rh-color-red-70: #5f0000;
+  /* Darkest brand red */
+  --rh-color-red-80: #3f0000;
   --rh-color-red-10-hsl: 0 80.64516129032265% 93.92156862745098%;
   --rh-color-red-10-rgb: 252 227 227;
   --rh-color-red-20-hsl: 0 87.09677419354838% 87.84313725490196%;
@@ -347,6 +355,8 @@ import { css } from 'lit'; export default css`
   --rh-color-red-60-rgb: 166 0 0;
   --rh-color-red-70-hsl: 0 100% 18.627450980392158%;
   --rh-color-red-70-rgb: 95 0 0;
+  --rh-color-red-80-hsl: 0 100% 12.352941176470589%;
+  --rh-color-red-80-rgb: 63 0 0;
   /* Alert - Default background */
   --rh-color-teal-10: #daf2f2;
   --rh-color-teal-20: #b9e5e5;
@@ -358,6 +368,7 @@ import { css } from 'lit'; export default css`
   --rh-color-teal-60: #147878;
   /* Alert - Default title text */
   --rh-color-teal-70: #004d4d;
+  --rh-color-teal-80: #003333;
   --rh-color-teal-10-hsl: 180 47.99999999999998% 90.19607843137254%;
   --rh-color-teal-10-rgb: 218 242 242;
   --rh-color-teal-20-hsl: 180 45.833333333333336% 81.17647058823529%;
@@ -372,6 +383,8 @@ import { css } from 'lit'; export default css`
   --rh-color-teal-60-rgb: 20 120 120;
   --rh-color-teal-70-hsl: 180 100% 15.098039215686274%;
   --rh-color-teal-70-rgb: 0 77 77;
+  --rh-color-teal-80-hsl: 180 100% 10%;
+  --rh-color-teal-80-rgb: 0 51 51;
   /* Alert - Warning background */
   --rh-color-yellow-10: #fff4cc;
   --rh-color-yellow-20: #ffe072;
@@ -382,6 +395,7 @@ import { css } from 'lit'; export default css`
   --rh-color-yellow-60: #96640f;
   /* Alert - Warning title text */
   --rh-color-yellow-70: #73480b;
+  --rh-color-yellow-80: #54330b;
   --rh-color-yellow-10-hsl: 47.058823529411775 100% 90%;
   --rh-color-yellow-10-rgb: 255 244 204;
   --rh-color-yellow-20-hsl: 46.80851063829787 100% 72.35294117647058%;
@@ -396,6 +410,8 @@ import { css } from 'lit'; export default css`
   --rh-color-yellow-60-rgb: 150 100 15;
   --rh-color-yellow-70-hsl: 35.192307692307686 82.53968253968253% 24.705882352941178%;
   --rh-color-yellow-70-rgb: 115 72 11;
+  --rh-color-yellow-80-hsl: 32.87671232876713 76.84210526315789% 18.627450980392158%;
+  --rh-color-yellow-80-rgb: 84 51 11;
   /* Primary interactive - default (Light theme) */
   --rh-color-interactive-primary-default-on-light: #0066cc;
   /* Primary interactive - default (Dark theme) */

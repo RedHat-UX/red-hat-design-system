@@ -1,8 +1,6 @@
 var _RhStat_instances, _RhStat_screenSize, _RhStat_slots, _RhStat_mo, _RhStat_logger, _RhStat_onMutation;
 import { __classPrivateFieldGet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
-import { customElement } from 'lit/decorators/custom-element.js';
-import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
@@ -24,10 +22,14 @@ const styles = css `:host{display:block}div{width:100%;height:100%;display:flex;
  * @slot - Description of the stat
  *
  */
-let RhStat = class RhStat extends LitElement {
+export class RhStat extends LitElement {
     constructor() {
         super(...arguments);
         _RhStat_instances.add(this);
+        _RhStat_screenSize.set(this, new ScreenSizeController(this));
+        _RhStat_slots.set(this, new SlotController(this, null, 'icon', 'title', 'statistic', 'cta'));
+        _RhStat_mo.set(this, new MutationObserver(() => __classPrivateFieldGet(this, _RhStat_instances, "m", _RhStat_onMutation).call(this)));
+        _RhStat_logger.set(this, new Logger(this));
         /**
          * Icon set to display in the statistic
          */
@@ -38,10 +40,6 @@ let RhStat = class RhStat extends LitElement {
         this.size = 'default';
         /** Whether the statistic is in a mobile view or not for styling */
         this.isMobile = false;
-        _RhStat_screenSize.set(this, new ScreenSizeController(this));
-        _RhStat_slots.set(this, new SlotController(this, null, 'icon', 'title', 'statistic', 'cta'));
-        _RhStat_mo.set(this, new MutationObserver(() => __classPrivateFieldGet(this, _RhStat_instances, "m", _RhStat_onMutation).call(this)));
-        _RhStat_logger.set(this, new Logger(this));
     }
     connectedCallback() {
         super.connectedCallback();
@@ -77,13 +75,8 @@ let RhStat = class RhStat extends LitElement {
       </div>
     `;
     }
-};
-_RhStat_screenSize = new WeakMap();
-_RhStat_slots = new WeakMap();
-_RhStat_mo = new WeakMap();
-_RhStat_logger = new WeakMap();
-_RhStat_instances = new WeakSet();
-_RhStat_onMutation = function _RhStat_onMutation() {
+}
+_RhStat_screenSize = new WeakMap(), _RhStat_slots = new WeakMap(), _RhStat_mo = new WeakMap(), _RhStat_logger = new WeakMap(), _RhStat_instances = new WeakSet(), _RhStat_onMutation = function _RhStat_onMutation() {
     if (!__classPrivateFieldGet(this, _RhStat_slots, "f").hasSlotted('stat')) {
         __classPrivateFieldGet(this, _RhStat_logger, "f").warn('Must contain stat content');
     }
@@ -91,28 +84,17 @@ _RhStat_onMutation = function _RhStat_onMutation() {
         __classPrivateFieldGet(this, _RhStat_logger, "f").warn('Must contain description content');
     }
 };
+RhStat.properties = {
+    icon: { reflect: true },
+    iconSet: { attribute: 'icon-set' },
+    top: { reflect: true, type: String },
+    size: { reflect: true, type: String },
+    isMobile: { type: Boolean, reflect: true, attribute: 'is-mobile' }
+};
 RhStat.version = '{{version}}';
 RhStat.styles = [styles];
 __decorate([
     colorContextConsumer()
 ], RhStat.prototype, "on", void 0);
-__decorate([
-    property({ reflect: true })
-], RhStat.prototype, "icon", void 0);
-__decorate([
-    property({ attribute: 'icon-set' })
-], RhStat.prototype, "iconSet", void 0);
-__decorate([
-    property({ reflect: true, type: String })
-], RhStat.prototype, "top", void 0);
-__decorate([
-    property({ reflect: true, type: String })
-], RhStat.prototype, "size", void 0);
-__decorate([
-    property({ type: Boolean, reflect: true, attribute: 'is-mobile' })
-], RhStat.prototype, "isMobile", void 0);
-RhStat = __decorate([
-    customElement('rh-stat')
-], RhStat);
-export { RhStat };
+customElements.define("rh-stat", RhStat);
 //# sourceMappingURL=rh-stat.js.map

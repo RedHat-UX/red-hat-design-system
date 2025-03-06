@@ -1,9 +1,7 @@
 var _RhAlert_instances, _RhAlert_slots, _RhAlert_onClose, _RhAlert_aliasState;
-import { __classPrivateFieldGet, __decorate } from "tslib";
+import { __classPrivateFieldGet } from "tslib";
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { LitElement, html, isServer, render } from 'lit';
-import { customElement } from 'lit/decorators/custom-element.js';
-import { property } from 'lit/decorators/property.js';
 import { repeat } from 'lit/directives/repeat.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
@@ -41,10 +39,11 @@ export class AlertCloseEvent extends Event {
  * @slot actions - Provide actions that the user can take for the alert
  *
  */
-let RhAlert = class RhAlert extends LitElement {
+export class RhAlert extends LitElement {
     constructor() {
         super(...arguments);
         _RhAlert_instances.add(this);
+        _RhAlert_slots.set(this, new SlotController(this, 'header', null, 'actions'));
         /**
          * Communicates the urgency of a message and is denoted by various styling configurations.
          *
@@ -63,7 +62,6 @@ let RhAlert = class RhAlert extends LitElement {
          * All Toast alerts can be dismissed by a user selecting the close button or waiting for them to time out.
          */
         this.dismissable = false;
-        _RhAlert_slots.set(this, new SlotController(this, 'header', null, 'actions'));
     }
     /**
      * @see https://aerotwist.com/blog/flip-your-animations/
@@ -191,16 +189,13 @@ let RhAlert = class RhAlert extends LitElement {
       </rh-surface>
     `;
     }
-};
-_RhAlert_slots = new WeakMap();
-_RhAlert_instances = new WeakSet();
-_RhAlert_onClose = function _RhAlert_onClose() {
+}
+_RhAlert_slots = new WeakMap(), _RhAlert_instances = new WeakSet(), _RhAlert_onClose = function _RhAlert_onClose() {
     const event = new AlertCloseEvent();
     if (this.dispatchEvent(event)) {
         this.remove();
     }
-};
-_RhAlert_aliasState = function _RhAlert_aliasState(state) {
+}, _RhAlert_aliasState = function _RhAlert_aliasState(state) {
     switch (state.toLowerCase()) {
         // the first three are deprecated pre-DPO status names
         case 'note': return 'info';
@@ -218,19 +213,12 @@ _RhAlert_aliasState = function _RhAlert_aliasState(state) {
             return 'neutral';
     }
 };
+RhAlert.properties = {
+    state: { reflect: true },
+    variant: { reflect: true },
+    dismissable: { reflect: true, type: Boolean }
+};
 RhAlert.styles = [styles, consumerStyles];
 RhAlert.toasts = new Set();
-__decorate([
-    property({ reflect: true })
-], RhAlert.prototype, "state", void 0);
-__decorate([
-    property({ reflect: true })
-], RhAlert.prototype, "variant", void 0);
-__decorate([
-    property({ reflect: true, type: Boolean })
-], RhAlert.prototype, "dismissable", void 0);
-RhAlert = __decorate([
-    customElement('rh-alert')
-], RhAlert);
-export { RhAlert };
+customElements.define("rh-alert", RhAlert);
 //# sourceMappingURL=rh-alert.js.map

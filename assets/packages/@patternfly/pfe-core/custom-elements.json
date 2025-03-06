@@ -2709,7 +2709,7 @@
               "kind": "field",
               "name": "style",
               "type": {
-                "text": "CSSStyleDeclaration"
+                "text": "CSSStyleDeclaration | undefined"
               }
             },
             {
@@ -2785,13 +2785,13 @@
               ]
             },
             {
-              "kind": "field",
-              "name": "host",
-              "default": "host"
+              "kind": "method",
+              "name": "hostConnected"
             },
             {
               "kind": "field",
-              "name": "style"
+              "name": "host",
+              "default": "host"
             }
           ]
         }
@@ -2820,7 +2820,7 @@
               "kind": "field",
               "name": "style",
               "type": {
-                "text": "CSSStyleDeclaration"
+                "text": "CSSStyleDeclaration | undefined"
               }
             },
             {

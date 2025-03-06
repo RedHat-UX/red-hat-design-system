@@ -1,8 +1,6 @@
 var _RhBackToTop_instances, _RhBackToTop_scrollSpy, _RhBackToTop_visible, _RhBackToTop_scrollElement, _RhBackToTop_logger, _RhBackToTop_rootNode_get, _RhBackToTop_removeScrollListener, _RhBackToTop_addScrollListener, _RhBackToTop_toggleVisibility;
-import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
+import { __classPrivateFieldGet, __classPrivateFieldSet } from "tslib";
 import { LitElement, html } from 'lit';
-import { customElement } from 'lit/decorators/custom-element.js';
-import { property } from 'lit/decorators/property.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
@@ -16,12 +14,10 @@ const styles = css `:host{position:fixed;z-index:1000;inset-inline-end:var(--rh-
  * @csspart trigger - back to top link anchor element
  * @slot - Text for the back to top link
  */
-let RhBackToTop = class RhBackToTop extends LitElement {
+export class RhBackToTop extends LitElement {
     constructor() {
         super(...arguments);
         _RhBackToTop_instances.add(this);
-        /** Distance from the top of the scrollable element to trigger the visibility of the back to top button */
-        this.scrollDistance = 400;
         _RhBackToTop_scrollSpy.set(this, false);
         _RhBackToTop_visible.set(this, false);
         _RhBackToTop_scrollElement.set(this, void 0);
@@ -43,6 +39,8 @@ let RhBackToTop = class RhBackToTop extends LitElement {
                 }
             }
         });
+        /** Distance from the top of the scrollable element to trigger the visibility of the back to top button */
+        this.scrollDistance = 400;
     }
     connectedCallback() {
         super.connectedCallback();
@@ -77,14 +75,8 @@ let RhBackToTop = class RhBackToTop extends LitElement {
       </a>
     `;
     }
-};
-_RhBackToTop_scrollSpy = new WeakMap();
-_RhBackToTop_visible = new WeakMap();
-_RhBackToTop_scrollElement = new WeakMap();
-_RhBackToTop_logger = new WeakMap();
-_RhBackToTop_toggleVisibility = new WeakMap();
-_RhBackToTop_instances = new WeakSet();
-_RhBackToTop_rootNode_get = function _RhBackToTop_rootNode_get() {
+}
+_RhBackToTop_scrollSpy = new WeakMap(), _RhBackToTop_visible = new WeakMap(), _RhBackToTop_scrollElement = new WeakMap(), _RhBackToTop_logger = new WeakMap(), _RhBackToTop_toggleVisibility = new WeakMap(), _RhBackToTop_instances = new WeakSet(), _RhBackToTop_rootNode_get = function _RhBackToTop_rootNode_get() {
     const root = this.getRootNode();
     if (root instanceof Document || root instanceof ShadowRoot) {
         return root;
@@ -92,11 +84,9 @@ _RhBackToTop_rootNode_get = function _RhBackToTop_rootNode_get() {
     else {
         return document;
     }
-};
-_RhBackToTop_removeScrollListener = function _RhBackToTop_removeScrollListener() {
+}, _RhBackToTop_removeScrollListener = function _RhBackToTop_removeScrollListener() {
     __classPrivateFieldGet(this, _RhBackToTop_scrollElement, "f")?.removeEventListener('scroll', __classPrivateFieldGet(this, _RhBackToTop_toggleVisibility, "f"));
-};
-_RhBackToTop_addScrollListener = function _RhBackToTop_addScrollListener() {
+}, _RhBackToTop_addScrollListener = function _RhBackToTop_addScrollListener() {
     __classPrivateFieldGet(this, _RhBackToTop_instances, "m", _RhBackToTop_removeScrollListener).call(this);
     if (this.scrollableSelector?.trim() === '') {
         __classPrivateFieldGet(this, _RhBackToTop_logger, "f").error(`scrollable-selector attribute cannot be empty`);
@@ -117,21 +107,12 @@ _RhBackToTop_addScrollListener = function _RhBackToTop_addScrollListener() {
     __classPrivateFieldGet(this, _RhBackToTop_scrollElement, "f").addEventListener('scroll', __classPrivateFieldGet(this, _RhBackToTop_toggleVisibility, "f"), { passive: true });
     __classPrivateFieldGet(this, _RhBackToTop_toggleVisibility, "f").call(this);
 };
+RhBackToTop.properties = {
+    visible: { reflect: true, attribute: 'visible' },
+    scrollableSelector: { reflect: true, attribute: 'scrollable-selector' },
+    scrollDistance: { type: Number, attribute: 'scroll-distance' },
+    href: { reflect: true }
+};
 RhBackToTop.styles = [styles];
-__decorate([
-    property({ reflect: true, attribute: 'visible' })
-], RhBackToTop.prototype, "visible", void 0);
-__decorate([
-    property({ reflect: true, attribute: 'scrollable-selector' })
-], RhBackToTop.prototype, "scrollableSelector", void 0);
-__decorate([
-    property({ type: Number, attribute: 'scroll-distance' })
-], RhBackToTop.prototype, "scrollDistance", void 0);
-__decorate([
-    property({ reflect: true })
-], RhBackToTop.prototype, "href", void 0);
-RhBackToTop = __decorate([
-    customElement('rh-back-to-top')
-], RhBackToTop);
-export { RhBackToTop };
+customElements.define("rh-back-to-top", RhBackToTop);
 //# sourceMappingURL=rh-back-to-top.js.map

@@ -2,8 +2,6 @@ var _RhAccordionHeader_instances, _RhAccordionHeader_dir, _RhAccordionHeader_int
 import { __classPrivateFieldGet, __decorate } from "tslib";
 import { html, LitElement } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
-import { customElement } from 'lit/decorators/custom-element.js';
-import { property } from 'lit/decorators/property.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
@@ -34,17 +32,17 @@ const isAccordion = (x) => x instanceof HTMLElement && x.localName === 'rh-accor
  *       (or after the chevron and header in disclosure mode). There is an option to set the accents placement to bottom
  * @fires {AccordionHeaderChangeEvent} change - when the open panels change
  */
-let RhAccordionHeader = class RhAccordionHeader extends LitElement {
+export class RhAccordionHeader extends LitElement {
     constructor() {
         super(...arguments);
         _RhAccordionHeader_instances.add(this);
-        this.expanded = false;
         _RhAccordionHeader_dir.set(this, new DirController(this));
         _RhAccordionHeader_internals.set(this, InternalsController.of(this, {
             role: 'heading',
             ariaLevel: '2',
         }));
         _RhAccordionHeader_heading.set(this, new HeadingLevelController(this));
+        this.expanded = false;
     }
     connectedCallback() {
         super.connectedCallback();
@@ -83,33 +81,23 @@ let RhAccordionHeader = class RhAccordionHeader extends LitElement {
     expandedChanged() {
         __classPrivateFieldGet(this, _RhAccordionHeader_internals, "f").ariaExpanded = String(!!this.expanded);
     }
-};
-_RhAccordionHeader_dir = new WeakMap();
-_RhAccordionHeader_internals = new WeakMap();
-_RhAccordionHeader_heading = new WeakMap();
-_RhAccordionHeader_instances = new WeakSet();
-_RhAccordionHeader_onClick = function _RhAccordionHeader_onClick(event) {
+}
+_RhAccordionHeader_dir = new WeakMap(), _RhAccordionHeader_internals = new WeakMap(), _RhAccordionHeader_heading = new WeakMap(), _RhAccordionHeader_instances = new WeakSet(), _RhAccordionHeader_onClick = function _RhAccordionHeader_onClick(event) {
     const accordion = event.composedPath().find(isAccordion);
     if (accordion) {
         this.dispatchEvent(new AccordionHeaderChangeEvent(!this.expanded, this, accordion));
     }
 };
+RhAccordionHeader.properties = {
+    expanded: { type: Boolean, reflect: true },
+    ctx: { attribute: false }
+};
 RhAccordionHeader.styles = [styles];
-__decorate([
-    property({ type: Boolean, reflect: true })
-], RhAccordionHeader.prototype, "expanded", void 0);
-__decorate([
-    consume({ context, subscribe: true }),
-    property({ attribute: false })
-], RhAccordionHeader.prototype, "ctx", void 0);
 __decorate([
     colorContextConsumer()
 ], RhAccordionHeader.prototype, "on", void 0);
 __decorate([
     observes('expanded')
 ], RhAccordionHeader.prototype, "expandedChanged", null);
-RhAccordionHeader = __decorate([
-    customElement('rh-accordion-header')
-], RhAccordionHeader);
-export { RhAccordionHeader };
+customElements.define("rh-accordion-header", RhAccordionHeader);
 //# sourceMappingURL=rh-accordion-header.js.map

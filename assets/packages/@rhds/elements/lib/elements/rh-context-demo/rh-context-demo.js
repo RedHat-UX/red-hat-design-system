@@ -1,8 +1,6 @@
 var _RhContextDemo_instances, _RhContextDemo_internals, _RhContextDemo_onChange, _RhContextDemo_setValue;
-import { __classPrivateFieldGet, __decorate } from "tslib";
+import { __classPrivateFieldGet } from "tslib";
 import { LitElement, html } from 'lit';
-import { customElement } from 'lit/decorators/custom-element.js';
-import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit-html/directives/class-map.js';
 import { colorContextProvider } from '../../context/color/provider.js';
 import { ContextChangeEvent } from '../rh-context-picker/rh-context-picker.js';
@@ -10,14 +8,14 @@ import '@rhds/elements/rh-surface/rh-surface.js';
 import { css } from "lit";
 const style = css `:host{display:block;min-height:100%;height:auto;position:relative}.on,rh-surface{color:var(--rh-color-text-primary)}#picker-container{display:flex;align-items:center;margin-block-end:var(--rh-context-demo-padding,var(--rh-space-xl,24px));gap:var(--rh-space-lg,16px)}#provider{padding:var(--rh-context-demo-padding,var(--rh-space-xl,24px));position:absolute;inset:0}`;
 import consumerStyles from '@rhds/tokens/css/color-context-consumer.css.js';
-let RhContextDemo = class RhContextDemo extends LitElement {
+export class RhContextDemo extends LitElement {
     constructor() {
         super(...arguments);
         _RhContextDemo_instances.add(this);
+        _RhContextDemo_internals.set(this, this.attachInternals());
         this.value = 'darkest';
         this.label = 'Color Palette';
         this.colorPalette = this.value;
-        _RhContextDemo_internals.set(this, this.attachInternals());
     }
     render() {
         const { value = 'darkest' } = this;
@@ -48,10 +46,8 @@ let RhContextDemo = class RhContextDemo extends LitElement {
     formStateRestoreCallback(state) {
         __classPrivateFieldGet(this, _RhContextDemo_instances, "m", _RhContextDemo_setValue).call(this, state);
     }
-};
-_RhContextDemo_internals = new WeakMap();
-_RhContextDemo_instances = new WeakSet();
-_RhContextDemo_onChange = function _RhContextDemo_onChange(event) {
+}
+_RhContextDemo_internals = new WeakMap(), _RhContextDemo_instances = new WeakSet(), _RhContextDemo_onChange = function _RhContextDemo_onChange(event) {
     const picker = this.shadowRoot?.getElementById('picker');
     if (event instanceof ContextChangeEvent) {
         if (event.target !== picker && event.provider && (event.provider !== this)) {
@@ -60,27 +56,18 @@ _RhContextDemo_onChange = function _RhContextDemo_onChange(event) {
         __classPrivateFieldGet(this, _RhContextDemo_instances, "m", _RhContextDemo_setValue).call(this, event.colorPalette);
         event.preventDefault();
     }
-};
-_RhContextDemo_setValue = function _RhContextDemo_setValue(value) {
+}, _RhContextDemo_setValue = function _RhContextDemo_setValue(value) {
     if (value) {
         __classPrivateFieldGet(this, _RhContextDemo_internals, "f").setFormValue(value);
         this.value = value;
     }
 };
+RhContextDemo.properties = {
+    value: {},
+    label: {},
+    colorPalette: { attribute: 'color-palette', reflect: true }
+};
 RhContextDemo.styles = [style, consumerStyles];
 RhContextDemo.formAssociated = true;
-__decorate([
-    property()
-], RhContextDemo.prototype, "value", void 0);
-__decorate([
-    property()
-], RhContextDemo.prototype, "label", void 0);
-__decorate([
-    colorContextProvider(),
-    property({ attribute: 'color-palette', reflect: true })
-], RhContextDemo.prototype, "colorPalette", void 0);
-RhContextDemo = __decorate([
-    customElement('rh-context-demo')
-], RhContextDemo);
-export { RhContextDemo };
+customElements.define("rh-context-demo", RhContextDemo);
 //# sourceMappingURL=rh-context-demo.js.map

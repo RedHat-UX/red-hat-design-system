@@ -1,10 +1,6 @@
 var _RhTranscript_instances, _RhTranscript_autoscroll, _RhTranscript_duration, _RhTranscript_headings, _RhTranscript_updateCues, _RhTranscript_onScrollClick, _RhTranscript_onDownloadClick;
-import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
+import { __classPrivateFieldGet, __classPrivateFieldSet } from "tslib";
 import { LitElement, html } from 'lit';
-import { customElement } from 'lit/decorators/custom-element.js';
-import { property } from 'lit/decorators/property.js';
-import { state } from 'lit/decorators/state.js';
-import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 import { RhCue, getFormattedTime } from './rh-cue.js';
 import { HeadingLevelContextConsumer } from '@rhds/elements/lib/context/headings/consumer.js';
 import { HeadingLevelContextProvider } from '@rhds/elements/lib/context/headings/provider.js';
@@ -22,7 +18,7 @@ import '@rhds/elements/rh-icon/rh-icon.js';
  * @csspart heading - scrolling text overflow
  * @csspart toolbar - toolbar area above cues list
  */
-let RhTranscript = class RhTranscript extends LitElement {
+export class RhTranscript extends LitElement {
     constructor() {
         super(...arguments);
         _RhTranscript_instances.add(this);
@@ -32,6 +28,9 @@ let RhTranscript = class RhTranscript extends LitElement {
             offset: 0,
             parent: new HeadingLevelContextConsumer(this),
         }));
+    }
+    get _cues() {
+        return this.renderRoot?.querySelector(`slot:not([name])`)?.assignedElements()?.filter(node => node.matches('rh-cue')) ?? [];
     }
     set autoscrollLabel(label) {
         this._autoscroll = label;
@@ -90,12 +89,8 @@ let RhTranscript = class RhTranscript extends LitElement {
     scrollText() {
         this.shadowRoot?.querySelector('rh-audio-player-scrolling-text-overflow')?.startScrolling();
     }
-};
-_RhTranscript_autoscroll = new WeakMap();
-_RhTranscript_duration = new WeakMap();
-_RhTranscript_headings = new WeakMap();
-_RhTranscript_instances = new WeakSet();
-_RhTranscript_updateCues = function _RhTranscript_updateCues(currentTime) {
+}
+_RhTranscript_autoscroll = new WeakMap(), _RhTranscript_duration = new WeakMap(), _RhTranscript_headings = new WeakMap(), _RhTranscript_instances = new WeakSet(), _RhTranscript_updateCues = function _RhTranscript_updateCues(currentTime) {
     let activeCue;
     this._cues.forEach((cue, index) => {
         if (!cue.start) {
@@ -137,38 +132,20 @@ _RhTranscript_updateCues = function _RhTranscript_updateCues(currentTime) {
             }, 250);
         }
     });
-};
-_RhTranscript_onScrollClick = function _RhTranscript_onScrollClick() {
+}, _RhTranscript_onScrollClick = function _RhTranscript_onScrollClick() {
     __classPrivateFieldSet(this, _RhTranscript_autoscroll, !__classPrivateFieldGet(this, _RhTranscript_autoscroll, "f"), "f");
     this.requestUpdate();
-};
-_RhTranscript_onDownloadClick = function _RhTranscript_onDownloadClick() {
+}, _RhTranscript_onDownloadClick = function _RhTranscript_onDownloadClick() {
     this.dispatchEvent(new Event('transcriptdownload', { bubbles: true }));
 };
+RhTranscript.properties = {
+    heading: {},
+    label: {},
+    lang: { reflect: true },
+    _label: { state: true },
+    _autoscroll: { state: true },
+    _download: { state: true }
+};
 RhTranscript.styles = [buttonStyles, panelStyles, styles];
-__decorate([
-    property()
-], RhTranscript.prototype, "heading", void 0);
-__decorate([
-    property()
-], RhTranscript.prototype, "label", void 0);
-__decorate([
-    property({ reflect: true })
-], RhTranscript.prototype, "lang", void 0);
-__decorate([
-    state()
-], RhTranscript.prototype, "_label", void 0);
-__decorate([
-    state()
-], RhTranscript.prototype, "_autoscroll", void 0);
-__decorate([
-    state()
-], RhTranscript.prototype, "_download", void 0);
-__decorate([
-    queryAssignedElements({ selector: 'rh-cue' })
-], RhTranscript.prototype, "_cues", void 0);
-RhTranscript = __decorate([
-    customElement('rh-transcript')
-], RhTranscript);
-export { RhTranscript };
+customElements.define("rh-transcript", RhTranscript);
 //# sourceMappingURL=rh-transcript.js.map

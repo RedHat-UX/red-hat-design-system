@@ -1,7 +1,6 @@
 var _RhTabPanel_internals;
 import { __classPrivateFieldGet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
-import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { colorContextConsumer } from '../../lib/context/color/consumer.js';
@@ -13,7 +12,7 @@ const styles = css `:host{display:block;padding:var(--_panel-padding,var(--rh-sp
  * @slot - Panel content should follow guidelines for [tab panel content layout](../guidelines)
  *
  */
-let RhTabPanel = class RhTabPanel extends LitElement {
+export class RhTabPanel extends LitElement {
     constructor() {
         super(...arguments);
         _RhTabPanel_internals.set(this, this.attachInternals());
@@ -42,14 +41,11 @@ let RhTabPanel = class RhTabPanel extends LitElement {
       </div>
     `;
     }
-};
+}
 _RhTabPanel_internals = new WeakMap();
 RhTabPanel.styles = [styles];
 __decorate([
     colorContextConsumer()
 ], RhTabPanel.prototype, "on", void 0);
-RhTabPanel = __decorate([
-    customElement('rh-tab-panel')
-], RhTabPanel);
-export { RhTabPanel };
+customElements.define("rh-tab-panel", RhTabPanel);
 //# sourceMappingURL=rh-tab-panel.js.map

@@ -1,9 +1,6 @@
 var _RhButton_instances, _RhButton_hasIcon_get, _RhButton_internals, _RhButton_onClick, _RhButton_renderIcon;
 import { __classPrivateFieldGet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
-import { customElement } from 'lit/decorators/custom-element.js';
-import { property } from 'lit/decorators/property.js';
-import { query } from 'lit/decorators/query.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { colorContextConsumer } from '../../lib/context/color/consumer.js';
@@ -20,10 +17,11 @@ const styles = css `:host{display:inline-block;height:max-content}[hidden]{displ
  * @slot icon - Contains the button's icon or state indicator, e.g. a spinner.
  * @slot - Contains button text
  */
-let RhButton = class RhButton extends LitElement {
+export class RhButton extends LitElement {
     constructor() {
         super(...arguments);
         _RhButton_instances.add(this);
+        _RhButton_internals.set(this, InternalsController.of(this));
         /** Disables the button */
         this.disabled = false;
         /**
@@ -43,7 +41,9 @@ let RhButton = class RhButton extends LitElement {
          * user data.
          */
         this.danger = false;
-        _RhButton_internals.set(this, InternalsController.of(this));
+    }
+    get _button() {
+        return this.renderRoot?.querySelector("button") ?? null;
     }
     willUpdate() {
         if (__classPrivateFieldGet(this, _RhButton_instances, "a", _RhButton_hasIcon_get)) {
@@ -83,21 +83,17 @@ let RhButton = class RhButton extends LitElement {
     focus() {
         this._button?.focus();
     }
-};
-_RhButton_internals = new WeakMap();
-_RhButton_instances = new WeakSet();
-_RhButton_hasIcon_get = function _RhButton_hasIcon_get() {
+}
+_RhButton_internals = new WeakMap(), _RhButton_instances = new WeakSet(), _RhButton_hasIcon_get = function _RhButton_hasIcon_get() {
     return this.variant === 'play' || this.variant === 'close' || !!this.icon;
-};
-_RhButton_onClick = function _RhButton_onClick() {
+}, _RhButton_onClick = function _RhButton_onClick() {
     switch (this.type) {
         case 'reset':
             return __classPrivateFieldGet(this, _RhButton_internals, "f").reset();
         default:
             return __classPrivateFieldGet(this, _RhButton_internals, "f").submit();
     }
-};
-_RhButton_renderIcon = function _RhButton_renderIcon() {
+}, _RhButton_renderIcon = function _RhButton_renderIcon() {
     switch (this.variant.toLowerCase()) {
         case 'close':
             return html `<rh-icon set="microns" icon="close"></rh-icon>`;
@@ -107,6 +103,17 @@ _RhButton_renderIcon = function _RhButton_renderIcon() {
             return html `<rh-icon set="${this.iconSet ?? 'ui'}" icon="${this.icon}"></rh-icon>`;
     }
 };
+RhButton.properties = {
+    disabled: { reflect: true, type: Boolean },
+    type: { reflect: true },
+    label: {},
+    value: {},
+    name: {},
+    icon: {},
+    iconSet: { attribute: 'icon-set' },
+    variant: { reflect: true },
+    danger: { type: Boolean, reflect: true }
+};
 RhButton.styles = [styles];
 RhButton.formAssociated = true;
 RhButton.shadowRootOptions = {
@@ -114,40 +121,7 @@ RhButton.shadowRootOptions = {
     delegatesFocus: true,
 };
 __decorate([
-    property({ reflect: true, type: Boolean })
-], RhButton.prototype, "disabled", void 0);
-__decorate([
-    property({ reflect: true })
-], RhButton.prototype, "type", void 0);
-__decorate([
-    property()
-], RhButton.prototype, "label", void 0);
-__decorate([
-    property()
-], RhButton.prototype, "value", void 0);
-__decorate([
-    property()
-], RhButton.prototype, "name", void 0);
-__decorate([
-    property()
-], RhButton.prototype, "icon", void 0);
-__decorate([
-    property({ attribute: 'icon-set' })
-], RhButton.prototype, "iconSet", void 0);
-__decorate([
-    query('button')
-], RhButton.prototype, "_button", void 0);
-__decorate([
-    property({ reflect: true })
-], RhButton.prototype, "variant", void 0);
-__decorate([
-    property({ type: Boolean, reflect: true })
-], RhButton.prototype, "danger", void 0);
-__decorate([
     colorContextConsumer()
 ], RhButton.prototype, "on", void 0);
-RhButton = __decorate([
-    customElement('rh-button')
-], RhButton);
-export { RhButton };
+customElements.define("rh-button", RhButton);
 //# sourceMappingURL=rh-button.js.map

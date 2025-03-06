@@ -1,9 +1,6 @@
 var _RhDialog_screenSize, _RhDialog_headerId, _RhDialog_triggerElement, _RhDialog_header, _RhDialog_body, _RhDialog_headings, _RhDialog_cancelling, _RhDialog_slots;
-var RhDialog_1;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
-import { customElement } from 'lit/decorators/custom-element.js';
-import { property } from 'lit/decorators/property.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { bound, initializer, observes } from '@patternfly/pfe-core/decorators.js';
@@ -11,7 +8,6 @@ import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 import { css } from "lit";
 const styles = css `:host{display:block;position:relative;--_spacer-align-top:var(--rh-space-md,8px);--_height-offset:min(var(--_spacer-align-top),var(--rh-space-3xl,48px))}[hidden]{display:none!important}section{display:flex;position:fixed;height:100%;width:100%;top:0;left:0;align-items:center;justify-content:center;z-index:500}#container{position:relative;max-height:inherit}[part=overlay]{position:fixed;height:100%;width:100%;top:0;left:0;background-color:#0303039e}[part=dialog]{position:relative;margin:0 auto;width:var(--_box-width,calc(100% - var(--rh-space-2xl, 32px)));max-height:var(--_box-max-height,calc(100% - var(--rh-space-3xl, 48px)));box-shadow:0 1rem 2rem 0 #03030329,0 0 .5rem 0 #0303031a;padding:var(--rh-space-xl,24px);margin-inline:var(--rh-space-lg,16px);background-color:var(--rh-color-surface-lightest,#fff);max-width:min(90%,1140px);border-radius:var(--rh-border-radius-default,3px);color:var(--rh-color-text-primary-on-light,#151515);font-family:inherit}:host([variant]) [part=dialog],:host([width]) [part=dialog]{margin-inline:0}:host([variant=small]) [part=dialog],:host([width=small]) [part=dialog]{--_box-width:35rem}:host([variant=medium]) [part=dialog],:host([width=medium]) [part=dialog]{--_box-width:52.5rem}:host([variant=large]) [part=dialog],:host([width=large]) [part=dialog]{--_box-width:70rem}[part=content]{overflow-y:auto;overscroll-behavior:contain;max-height:var(--_box-max-height,calc(100vh - var(--rh-space-3xl, 48px)));box-sizing:border-box;border-radius:var(--rh-border-radius-default,3px)}[part=content] ::slotted([slot=header]){margin-top:0!important}header{position:sticky;top:0;background-color:var(--rh-color-surface-lightest,#fff)}header ::slotted(:is(h1,h2,h3,h4,h5,h6)[slot=header]){font-size:var(--rh-font-size-heading-sm,1.5rem);font-weight:var(--rh-font-weight-body-text-regular,400);font-family:Red Hat Display,RedHatDisplay,Overpass,Helvetica,sans-serif}[part=close-button]{color:var(--rh-color-icon-subtle,#707070);background-color:initial;border:none;margin:0;padding:0;text-align:left;position:absolute;cursor:pointer;line-height:24px;padding-block:.375rem;padding-inline:var(--rh-space-lg,16px);top:0;right:calc(var(--rh-space-xl, 24px)/-3)}[part=close-button]>svg{font-size:16px;width:var(--rh-space-lg,16px);aspect-ratio:1/1}[part=close-button]:is(:hover,:focus-within,:focus-visible) svg:is(svg,:hover){fill:var(--rh-color-icon-secondary-on-light,#151515)}:host([position=top]) #dialog{align-self:start;margin-block:var(--rh-space-2xl,32px);margin-inline:var(--rh-space-lg,16px);width:100%;max-width:calc(100% - min(var(--rh-space-2xl, 32px) * 2, var(--rh-space-2xl, 32px)));max-height:calc(100% - var(--_height-offset) - var(--_spacer-align-top))}footer{display:flex;align-items:center;gap:var(--rh-space-md,8px)}#rhds-wrapper{display:contents;font-family:Red Hat Text,RedHatText,Overpass,Helvetica,sans-serif;--offset:var(--rh-space-md,8px);--offset-top:var(--offset);--offset-right:var(--offset)}:host([type=video]){--rh-dialog-close-button-color:var(--rh-color-icon-secondary-on-dark,#fff)}:host([type=video]) [part=close-button]{top:var(--offset-top);right:var(--offset-right);padding:var(--rh-space-sm,6px);color:var(--rh-color-icon-secondary-on-dark,#fff)}:host([type=video]) [part=content]{overflow:hidden}:host([type=video][open]) [part=overlay]{--_gray-90-rgb:var(--rh-color-gray-90-rgb,31 31 31);background-color:rgb(var(--_gray-90-rgb)/var(--rh-opacity-60,60%))}:host([type=video][open]) [part=dialog]{--_aspect-ratio:var(--rh-dialog-video-aspect-ratio,16/9);aspect-ratio:var(--_aspect-ratio);max-width:min(90%,calc(90vh*var(--_aspect-ratio) + var(--offset-top)));padding:0;margin:0}:host([type=video]) #rhds-wrapper.mobile [part=close-button]{--offset-right:var(--rh-space-sm,6px)}:host([type=video]) #container,:host([type=video]) ::slotted(:not([slot])),:host([type=video]) [part=content]{aspect-ratio:var(--rh-dialog-video-aspect-ratio,16/9);width:calc(100% + 1px);position:absolute;inset:0;max-height:none}`;
-import { query } from 'lit/decorators/query.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import '@rhds/elements/rh-surface/rh-surface.js';
 export class DialogCancelEvent extends Event {
@@ -56,10 +52,9 @@ async function pauseYoutube(iframe) {
  * @cssprop {<color>} [--rh-dialog-close-button-color=var(--rh-color-icon-secondary-on-dark, #ffffff)]
  *           Sets the dialog close button color.
  */
-let RhDialog = RhDialog_1 = class RhDialog extends LitElement {
+export class RhDialog extends LitElement {
     constructor() {
         super(...arguments);
-        this.open = false;
         /** @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/returnValue */
         this.returnValue = '';
         _RhDialog_screenSize.set(this, new ScreenSizeController(this));
@@ -70,6 +65,16 @@ let RhDialog = RhDialog_1 = class RhDialog extends LitElement {
         _RhDialog_headings.set(this, []);
         _RhDialog_cancelling.set(this, false);
         _RhDialog_slots.set(this, new SlotController(this, null, 'header', 'description', 'footer'));
+        this.open = false;
+    }
+    get overlay() {
+        return this.renderRoot?.querySelector("#overlay") ?? null;
+    }
+    get dialog() {
+        return this.renderRoot?.querySelector("#dialog") ?? null;
+    }
+    get closeButton() {
+        return this.renderRoot?.querySelector("#close-button") ?? null;
     }
     connectedCallback() {
         super.connectedCallback();
@@ -269,42 +274,18 @@ let RhDialog = RhDialog_1 = class RhDialog extends LitElement {
         }
         this.open = false;
     }
+}
+_RhDialog_screenSize = new WeakMap(), _RhDialog_headerId = new WeakMap(), _RhDialog_triggerElement = new WeakMap(), _RhDialog_header = new WeakMap(), _RhDialog_body = new WeakMap(), _RhDialog_headings = new WeakMap(), _RhDialog_cancelling = new WeakMap(), _RhDialog_slots = new WeakMap();
+RhDialog.properties = {
+    variant: { reflect: true },
+    position: { reflect: true },
+    open: { type: Boolean, reflect: true },
+    trigger: {},
+    type: { reflect: true }
 };
-_RhDialog_screenSize = new WeakMap();
-_RhDialog_headerId = new WeakMap();
-_RhDialog_triggerElement = new WeakMap();
-_RhDialog_header = new WeakMap();
-_RhDialog_body = new WeakMap();
-_RhDialog_headings = new WeakMap();
-_RhDialog_cancelling = new WeakMap();
-_RhDialog_slots = new WeakMap();
 RhDialog.version = '{{version}}';
 RhDialog.styles = [styles];
 RhDialog.closeOnOutsideClick = true;
-__decorate([
-    property({ reflect: true })
-], RhDialog.prototype, "variant", void 0);
-__decorate([
-    property({ reflect: true })
-], RhDialog.prototype, "position", void 0);
-__decorate([
-    property({ type: Boolean, reflect: true })
-], RhDialog.prototype, "open", void 0);
-__decorate([
-    property()
-], RhDialog.prototype, "trigger", void 0);
-__decorate([
-    property({ reflect: true })
-], RhDialog.prototype, "type", void 0);
-__decorate([
-    query('#overlay')
-], RhDialog.prototype, "overlay", void 0);
-__decorate([
-    query('#dialog')
-], RhDialog.prototype, "dialog", void 0);
-__decorate([
-    query('#close-button')
-], RhDialog.prototype, "closeButton", void 0);
 __decorate([
     initializer()
 ], RhDialog.prototype, "_init", null);
@@ -335,8 +316,5 @@ __decorate([
 __decorate([
     bound
 ], RhDialog.prototype, "close", null);
-RhDialog = RhDialog_1 = __decorate([
-    customElement('rh-dialog')
-], RhDialog);
-export { RhDialog };
+customElements.define("rh-dialog", RhDialog);
 //# sourceMappingURL=rh-dialog.js.map

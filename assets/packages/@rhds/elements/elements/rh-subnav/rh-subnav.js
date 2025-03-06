@@ -1,12 +1,7 @@
 var _RhSubnav_instances, _RhSubnav_allLinkElements, _RhSubnav_overflow, _RhSubnav_allLinks_get, _RhSubnav_allLinks_set, _RhSubnav_firstLink_get, _RhSubnav_lastLink_get, _RhSubnav_onSlotchange, _RhSubnav_firstLastClasses, _RhSubnav_scrollLeft, _RhSubnav_scrollRight;
-var RhSubnav_1;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html, isServer } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
-import { customElement } from 'lit/decorators/custom-element.js';
-import { query } from 'lit/decorators/query.js';
-import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
-import { property } from 'lit/decorators/property.js';
 import { OverflowController } from '@patternfly/pfe-core/controllers/overflow-controller.js';
 import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 import { colorContextProvider } from '../../lib/context/color/provider.js';
@@ -20,10 +15,12 @@ const styles = css `:host{display:block}[part=container]{display:flex;background
  * @csspart container - container, `<div>` element
  * @csspart links     - `<slot>` element
  */
-let RhSubnav = RhSubnav_1 = class RhSubnav extends LitElement {
+export class RhSubnav extends LitElement {
     constructor() {
         super(...arguments);
         _RhSubnav_instances.add(this);
+        _RhSubnav_allLinkElements.set(this, []);
+        _RhSubnav_overflow.set(this, new OverflowController(this));
         /**
          * Sets color palette, which affects the element's styles as well as descendants' color theme.
          * Overrides parent color context.
@@ -36,16 +33,20 @@ let RhSubnav = RhSubnav_1 = class RhSubnav extends LitElement {
          * Defaults to "subnavigation" if no attribute/property is set.
          */
         this.accessibleLabel = 'subnavigation';
-        _RhSubnav_allLinkElements.set(this, []);
-        _RhSubnav_overflow.set(this, new OverflowController(this));
+    }
+    get links() {
+        return this.renderRoot?.querySelector(`slot:not([name])`)?.assignedElements() ?? [];
+    }
+    get linkList() {
+        return this.renderRoot?.querySelector("[part=\"links\"]") ?? null;
     }
     connectedCallback() {
         super.connectedCallback();
-        RhSubnav_1.instances.add(this);
+        RhSubnav.instances.add(this);
     }
     disconnectedCallback() {
         super.disconnectedCallback();
-        RhSubnav_1.instances.delete(this);
+        RhSubnav.instances.delete(this);
     }
     render() {
         const { scrollIconSet, scrollIconLeft, scrollIconRight } = this.constructor;
@@ -73,37 +74,31 @@ let RhSubnav = RhSubnav_1 = class RhSubnav extends LitElement {
     firstUpdated() {
         this.linkList.addEventListener('scroll', __classPrivateFieldGet(this, _RhSubnav_overflow, "f").onScroll.bind(this));
     }
-};
-_RhSubnav_allLinkElements = new WeakMap();
-_RhSubnav_overflow = new WeakMap();
-_RhSubnav_instances = new WeakSet();
-_RhSubnav_allLinks_get = function _RhSubnav_allLinks_get() {
+}
+_RhSubnav_allLinkElements = new WeakMap(), _RhSubnav_overflow = new WeakMap(), _RhSubnav_instances = new WeakSet(), _RhSubnav_allLinks_get = function _RhSubnav_allLinks_get() {
     return __classPrivateFieldGet(this, _RhSubnav_allLinkElements, "f");
-};
-_RhSubnav_allLinks_set = function _RhSubnav_allLinks_set(links) {
+}, _RhSubnav_allLinks_set = function _RhSubnav_allLinks_set(links) {
     __classPrivateFieldSet(this, _RhSubnav_allLinkElements, links.filter(link => link instanceof HTMLAnchorElement), "f");
-};
-_RhSubnav_firstLink_get = function _RhSubnav_firstLink_get() {
+}, _RhSubnav_firstLink_get = function _RhSubnav_firstLink_get() {
     const [link] = __classPrivateFieldGet(this, _RhSubnav_instances, "a", _RhSubnav_allLinks_get);
     return link;
-};
-_RhSubnav_lastLink_get = function _RhSubnav_lastLink_get() {
+}, _RhSubnav_lastLink_get = function _RhSubnav_lastLink_get() {
     return __classPrivateFieldGet(this, _RhSubnav_instances, "a", _RhSubnav_allLinks_get).at(-1);
-};
-_RhSubnav_onSlotchange = function _RhSubnav_onSlotchange() {
+}, _RhSubnav_onSlotchange = function _RhSubnav_onSlotchange() {
     __classPrivateFieldSet(this, _RhSubnav_instances, this.links, "a", _RhSubnav_allLinks_set);
     __classPrivateFieldGet(this, _RhSubnav_overflow, "f").init(this.linkList, __classPrivateFieldGet(this, _RhSubnav_instances, "a", _RhSubnav_allLinks_get));
     __classPrivateFieldGet(this, _RhSubnav_instances, "m", _RhSubnav_firstLastClasses).call(this);
-};
-_RhSubnav_firstLastClasses = function _RhSubnav_firstLastClasses() {
+}, _RhSubnav_firstLastClasses = function _RhSubnav_firstLastClasses() {
     __classPrivateFieldGet(this, _RhSubnav_instances, "a", _RhSubnav_firstLink_get).classList.add('first');
     __classPrivateFieldGet(this, _RhSubnav_instances, "a", _RhSubnav_lastLink_get).classList.add('last');
-};
-_RhSubnav_scrollLeft = function _RhSubnav_scrollLeft() {
+}, _RhSubnav_scrollLeft = function _RhSubnav_scrollLeft() {
     __classPrivateFieldGet(this, _RhSubnav_overflow, "f").scrollLeft();
-};
-_RhSubnav_scrollRight = function _RhSubnav_scrollRight() {
+}, _RhSubnav_scrollRight = function _RhSubnav_scrollRight() {
     __classPrivateFieldGet(this, _RhSubnav_overflow, "f").scrollRight();
+};
+RhSubnav.properties = {
+    colorPalette: { reflect: true, attribute: 'color-palette' },
+    accessibleLabel: { attribute: 'accessible-label' }
 };
 RhSubnav.styles = [styles];
 /** Icon name to use for the scroll left button */
@@ -119,7 +114,7 @@ RhSubnav.instances = new Set();
         globalThis.addEventListener('resize', () => {
             // this appears to be an eslint bug.
             // `this` should refer to the class, but in the minified bundle, it is void
-            const { instances } = RhSubnav_1;
+            const { instances } = RhSubnav;
             for (const instance of instances) {
                 __classPrivateFieldGet(instance, _RhSubnav_overflow, "f").onScroll();
             }
@@ -129,21 +124,5 @@ RhSubnav.instances = new Set();
 __decorate([
     colorContextConsumer()
 ], RhSubnav.prototype, "on", void 0);
-__decorate([
-    colorContextProvider(),
-    property({ reflect: true, attribute: 'color-palette' })
-], RhSubnav.prototype, "colorPalette", void 0);
-__decorate([
-    property({ attribute: 'accessible-label' })
-], RhSubnav.prototype, "accessibleLabel", void 0);
-__decorate([
-    queryAssignedElements()
-], RhSubnav.prototype, "links", void 0);
-__decorate([
-    query('[part="links"]')
-], RhSubnav.prototype, "linkList", void 0);
-RhSubnav = RhSubnav_1 = __decorate([
-    customElement('rh-subnav')
-], RhSubnav);
-export { RhSubnav };
+customElements.define("rh-subnav", RhSubnav);
 //# sourceMappingURL=rh-subnav.js.map

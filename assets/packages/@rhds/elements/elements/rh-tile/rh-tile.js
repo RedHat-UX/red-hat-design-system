@@ -2,9 +2,6 @@ var _RhTile_instances, _RhTile_internals, _RhTile_logger, _RhTile_slots, _RhTile
 import { __classPrivateFieldGet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
-import { customElement } from 'lit/decorators/custom-element.js';
-import { property } from 'lit/decorators/property.js';
-import { state } from 'lit/decorators/state.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
@@ -40,10 +37,16 @@ export class TileSelectEvent extends Event {
  * @cssprop [--rh-tile-disabled-background-color=var(--rh-color-surface-light, #e0e0e0)] - Color tile surface when disabled.<br>Could cause accessibility issues; prefer to use `--rh-color-surface-light` and `--rh-color-surface-dark` for theming.
  * @cssprop [--rh-tile-border-color=var(--rh-color-border-subtle-on-light, #c7c7c7)] - Color of tile border.<br>Could cause accessibility issues; prefer to use `--rh-color-border-subtle-on-light` and `--rh-color-border-subtle-on-dark` for theming.
  */
-let RhTile = class RhTile extends LitElement {
+export class RhTile extends LitElement {
     constructor() {
         super();
         _RhTile_instances.add(this);
+        _RhTile_internals.set(this, InternalsController.of(this));
+        _RhTile_logger.set(this, new Logger(this));
+        _RhTile_slots.set(this, new SlotController(this, { slots: ['icon'] }));
+        this.addEventListener('keydown', __classPrivateFieldGet(this, _RhTile_instances, "m", _RhTile_onKeydown));
+        this.addEventListener('keyup', __classPrivateFieldGet(this, _RhTile_instances, "m", _RhTile_onKeyup));
+        this.addEventListener('click', __classPrivateFieldGet(this, _RhTile_instances, "m", _RhTile_onClick));
         /**
          * Whether image is full-width (i.e. bleeds into the padding)
          */
@@ -78,12 +81,6 @@ let RhTile = class RhTile extends LitElement {
         this.disabledGroup = false;
         // TODO(bennyp): https://lit.dev/docs/data/context/#content
         this.radioGroup = false;
-        _RhTile_internals.set(this, InternalsController.of(this));
-        _RhTile_logger.set(this, new Logger(this));
-        _RhTile_slots.set(this, new SlotController(this, { slots: ['icon'] }));
-        this.addEventListener('keydown', __classPrivateFieldGet(this, _RhTile_instances, "m", _RhTile_onKeydown));
-        this.addEventListener('keyup', __classPrivateFieldGet(this, _RhTile_instances, "m", _RhTile_onKeyup));
-        this.addEventListener('click', __classPrivateFieldGet(this, _RhTile_instances, "m", _RhTile_onClick));
     }
     /**
      * Update the internal accessible representation of the element's state
@@ -188,31 +185,23 @@ let RhTile = class RhTile extends LitElement {
         __classPrivateFieldGet(this, _RhTile_instances, "m", _RhTile_setValidityFromInput).call(this);
         return __classPrivateFieldGet(this, _RhTile_internals, "f").reportValidity();
     }
-};
-_RhTile_internals = new WeakMap();
-_RhTile_logger = new WeakMap();
-_RhTile_slots = new WeakMap();
-_RhTile_instances = new WeakSet();
-_RhTile_isCheckable_get = function _RhTile_isCheckable_get() {
+}
+_RhTile_internals = new WeakMap(), _RhTile_logger = new WeakMap(), _RhTile_slots = new WeakMap(), _RhTile_instances = new WeakSet(), _RhTile_isCheckable_get = function _RhTile_isCheckable_get() {
     return !!this.radioGroup || this.checkable;
-};
-_RhTile_input_get = function _RhTile_input_get() {
+}, _RhTile_input_get = function _RhTile_input_get() {
     return this.shadowRoot.getElementById('input');
-};
-_RhTile_setValidityFromInput = function _RhTile_setValidityFromInput() {
+}, _RhTile_setValidityFromInput = function _RhTile_setValidityFromInput() {
     if (!__classPrivateFieldGet(this, _RhTile_instances, "a", _RhTile_input_get)) {
         __classPrivateFieldGet(this, _RhTile_logger, "f").warn('await updateComplete before validating');
     }
     else {
         __classPrivateFieldGet(this, _RhTile_internals, "f").setValidity(__classPrivateFieldGet(this, _RhTile_instances, "a", _RhTile_input_get).validity, __classPrivateFieldGet(this, _RhTile_instances, "a", _RhTile_input_get).validationMessage);
     }
-};
-_RhTile_onClick = function _RhTile_onClick(event) {
+}, _RhTile_onClick = function _RhTile_onClick(event) {
     if (event.target === this) {
         __classPrivateFieldGet(this, _RhTile_instances, "m", _RhTile_requestSelect).call(this);
     }
-};
-_RhTile_requestSelect = function _RhTile_requestSelect(force) {
+}, _RhTile_requestSelect = function _RhTile_requestSelect(force) {
     if (this.checkable
         && !this.disabled
         && !this.disabledGroup) {
@@ -223,8 +212,7 @@ _RhTile_requestSelect = function _RhTile_requestSelect(force) {
             this.checked = !this.checked;
         }
     }
-};
-_RhTile_onKeydown = function _RhTile_onKeydown(event) {
+}, _RhTile_onKeydown = function _RhTile_onKeydown(event) {
     switch (event.key) {
         case ' ':
             if (event.target === this && this.checkable) {
@@ -233,8 +221,7 @@ _RhTile_onKeydown = function _RhTile_onKeydown(event) {
             }
             break;
     }
-};
-_RhTile_onKeyup = function _RhTile_onKeyup(event) {
+}, _RhTile_onKeyup = function _RhTile_onKeyup(event) {
     switch (event.key) {
         case 'Enter':
         case ' ':
@@ -244,59 +231,27 @@ _RhTile_onKeyup = function _RhTile_onKeyup(event) {
             break;
     }
 };
+RhTile.properties = {
+    bleed: { type: Boolean },
+    desaturated: { type: Boolean },
+    compact: { type: Boolean },
+    icon: { reflect: true },
+    iconSet: { attribute: 'icon-set' },
+    accessibleLabel: { attribute: 'accessible-label' },
+    name: {},
+    value: {},
+    checkable: { type: Boolean },
+    checked: { type: Boolean, reflect: true },
+    disabled: { type: Boolean, reflect: true },
+    colorPalette: { reflect: true, attribute: 'color-palette' },
+    link: {},
+    disabledGroup: { state: true },
+    radioGroup: { state: true }
+};
 RhTile.styles = [styles];
 RhTile.formAssociated = true;
 __decorate([
-    property({ type: Boolean })
-], RhTile.prototype, "bleed", void 0);
-__decorate([
-    property({ type: Boolean })
-], RhTile.prototype, "desaturated", void 0);
-__decorate([
-    property({ type: Boolean })
-], RhTile.prototype, "compact", void 0);
-__decorate([
-    property({ reflect: true })
-], RhTile.prototype, "icon", void 0);
-__decorate([
-    property({ attribute: 'icon-set' })
-], RhTile.prototype, "iconSet", void 0);
-__decorate([
-    property({ attribute: 'accessible-label' })
-], RhTile.prototype, "accessibleLabel", void 0);
-__decorate([
-    property()
-], RhTile.prototype, "name", void 0);
-__decorate([
-    property()
-], RhTile.prototype, "value", void 0);
-__decorate([
-    property({ type: Boolean })
-], RhTile.prototype, "checkable", void 0);
-__decorate([
-    property({ type: Boolean, reflect: true })
-], RhTile.prototype, "checked", void 0);
-__decorate([
-    property({ type: Boolean, reflect: true })
-], RhTile.prototype, "disabled", void 0);
-__decorate([
-    colorContextProvider(),
-    property({ reflect: true, attribute: 'color-palette' })
-], RhTile.prototype, "colorPalette", void 0);
-__decorate([
-    property()
-], RhTile.prototype, "link", void 0);
-__decorate([
     colorContextConsumer()
 ], RhTile.prototype, "on", void 0);
-__decorate([
-    state()
-], RhTile.prototype, "disabledGroup", void 0);
-__decorate([
-    state()
-], RhTile.prototype, "radioGroup", void 0);
-RhTile = __decorate([
-    customElement('rh-tile')
-], RhTile);
-export { RhTile };
+customElements.define("rh-tile", RhTile);
 //# sourceMappingURL=rh-tile.js.map

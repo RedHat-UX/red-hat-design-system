@@ -1,9 +1,6 @@
 var _RhCta_dir, _RhCta_logger;
-import { __classPrivateFieldGet, __decorate } from "tslib";
+import { __classPrivateFieldGet } from "tslib";
 import { LitElement, html, isServer } from 'lit';
-import { customElement } from 'lit/decorators/custom-element.js';
-import { property } from 'lit/decorators/property.js';
-import { state } from 'lit/decorators/state.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
@@ -66,14 +63,14 @@ function isSupportedContent(el) {
  * @cssprop     [--rh-cta-active-text-decoration=none]
  *              Sets the cta text decoration on active
  */
-let RhCta = class RhCta extends LitElement {
+export class RhCta extends LitElement {
     constructor() {
         super(...arguments);
-        /** Icon set */
-        this.iconSet = 'ui';
         /** Is the element in an RTL context? */
         _RhCta_dir.set(this, new DirController(this));
         _RhCta_logger.set(this, new Logger(this));
+        /** Icon set */
+        this.iconSet = 'ui';
     }
     async getUpdateComplete() {
         if (this.icon || !this.variant) {
@@ -126,40 +123,19 @@ let RhCta = class RhCta extends LitElement {
             return __classPrivateFieldGet(this, _RhCta_logger, "f").warn(`Button tag is not supported semantically by the default link styles`);
         }
     }
+}
+_RhCta_dir = new WeakMap(), _RhCta_logger = new WeakMap();
+RhCta.properties = {
+    variant: { reflect: true },
+    href: { reflect: true },
+    download: {},
+    referrerpolicy: {},
+    rel: {},
+    target: {},
+    icon: { reflect: true },
+    iconSet: { attribute: 'icon-set' },
+    on: { state: true }
 };
-_RhCta_dir = new WeakMap();
-_RhCta_logger = new WeakMap();
 RhCta.styles = [style];
-__decorate([
-    property({ reflect: true })
-], RhCta.prototype, "variant", void 0);
-__decorate([
-    property({ reflect: true })
-], RhCta.prototype, "href", void 0);
-__decorate([
-    property()
-], RhCta.prototype, "download", void 0);
-__decorate([
-    property()
-], RhCta.prototype, "referrerpolicy", void 0);
-__decorate([
-    property()
-], RhCta.prototype, "rel", void 0);
-__decorate([
-    property()
-], RhCta.prototype, "target", void 0);
-__decorate([
-    property({ reflect: true })
-], RhCta.prototype, "icon", void 0);
-__decorate([
-    property({ attribute: 'icon-set' })
-], RhCta.prototype, "iconSet", void 0);
-__decorate([
-    colorContextConsumer(),
-    state()
-], RhCta.prototype, "on", void 0);
-RhCta = __decorate([
-    customElement('rh-cta')
-], RhCta);
-export { RhCta };
+customElements.define("rh-cta", RhCta);
 //# sourceMappingURL=rh-cta.js.map

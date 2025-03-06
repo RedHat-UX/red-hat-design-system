@@ -1,7 +1,5 @@
 import { __decorate } from "tslib";
 import { html, LitElement } from 'lit';
-import { customElement } from 'lit/decorators/custom-element.js';
-import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { colorContextConsumer } from '../../lib/context/color/consumer.js';
 import { css } from "lit";
@@ -13,7 +11,7 @@ const styles = css `:host{display:inline-block;text-align:center;width:max-conte
  * @summary Notifies users their action is being processed or loaded
  * @slot - Optional text label below the animated circle.
  */
-let RhSpinner = class RhSpinner extends LitElement {
+export class RhSpinner extends LitElement {
     constructor() {
         super(...arguments);
         /**
@@ -31,16 +29,13 @@ let RhSpinner = class RhSpinner extends LitElement {
       <slot></slot>
     `;
     }
+}
+RhSpinner.properties = {
+    size: { reflect: true }
 };
 RhSpinner.styles = [styles];
 __decorate([
-    property({ reflect: true })
-], RhSpinner.prototype, "size", void 0);
-__decorate([
     colorContextConsumer()
 ], RhSpinner.prototype, "on", void 0);
-RhSpinner = __decorate([
-    customElement('rh-spinner')
-], RhSpinner);
-export { RhSpinner };
+customElements.define("rh-spinner", RhSpinner);
 //# sourceMappingURL=rh-spinner.js.map

@@ -1,9 +1,6 @@
 var _RhPagination_instances, _RhPagination_dir, _RhPagination_mo, _RhPagination_logger, _RhPagination_ol, _RhPagination_links, _RhPagination_firstLink, _RhPagination_lastLink, _RhPagination_nextLink, _RhPagination_prevLink, _RhPagination_currentLink, _RhPagination_currentIndex, _RhPagination_currentPage_get, _RhPagination_numericContent, _RhPagination_update, _RhPagination_getOverflow, _RhPagination_getCurrentLink, _RhPagination_updateLightDOMRefs, _RhPagination_checkValidity, _RhPagination_go, _RhPagination_onKeyup, _RhPagination_onChange;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
-import { customElement } from 'lit/decorators/custom-element.js';
-import { property } from 'lit/decorators/property.js';
-import { query } from 'lit/decorators/query.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
@@ -36,10 +33,21 @@ const L2 = html `
  * @cssprop [--rh-pagination-stepper-color=var(--rh-color-icon-subtle, #707070)]
  *           Sets the stepper color.
  */
-let RhPagination = class RhPagination extends LitElement {
+export class RhPagination extends LitElement {
     constructor() {
         super(...arguments);
         _RhPagination_instances.add(this);
+        _RhPagination_dir.set(this, new DirController(this));
+        _RhPagination_mo.set(this, new MutationObserver(() => __classPrivateFieldGet(this, _RhPagination_instances, "m", _RhPagination_update).call(this)));
+        _RhPagination_logger.set(this, new Logger(this));
+        _RhPagination_ol.set(this, this.querySelector('ol'));
+        _RhPagination_links.set(this, __classPrivateFieldGet(this, _RhPagination_ol, "f")?.querySelectorAll('li a'));
+        _RhPagination_firstLink.set(this, null);
+        _RhPagination_lastLink.set(this, null);
+        _RhPagination_nextLink.set(this, null);
+        _RhPagination_prevLink.set(this, null);
+        _RhPagination_currentLink.set(this, __classPrivateFieldGet(this, _RhPagination_instances, "m", _RhPagination_getCurrentLink).call(this));
+        _RhPagination_currentIndex.set(this, 0);
         /**
          * Override `overflow` values set from HTML or JS.
          * `overflow` should ideally be private, but because
@@ -62,17 +70,9 @@ let RhPagination = class RhPagination extends LitElement {
         this.size = null;
         /** "Open" variant */
         this.variant = null;
-        _RhPagination_dir.set(this, new DirController(this));
-        _RhPagination_mo.set(this, new MutationObserver(() => __classPrivateFieldGet(this, _RhPagination_instances, "m", _RhPagination_update).call(this)));
-        _RhPagination_logger.set(this, new Logger(this));
-        _RhPagination_ol.set(this, this.querySelector('ol'));
-        _RhPagination_links.set(this, __classPrivateFieldGet(this, _RhPagination_ol, "f")?.querySelectorAll('li a'));
-        _RhPagination_firstLink.set(this, null);
-        _RhPagination_lastLink.set(this, null);
-        _RhPagination_nextLink.set(this, null);
-        _RhPagination_prevLink.set(this, null);
-        _RhPagination_currentLink.set(this, __classPrivateFieldGet(this, _RhPagination_instances, "m", _RhPagination_getCurrentLink).call(this));
-        _RhPagination_currentIndex.set(this, 0);
+    }
+    get input() {
+        return this.renderRoot?.querySelector("input") ?? null;
     }
     connectedCallback() {
         super.connectedCallback();
@@ -134,23 +134,10 @@ let RhPagination = class RhPagination extends LitElement {
     go(page) {
         return __classPrivateFieldGet(this, _RhPagination_instances, "m", _RhPagination_go).call(this, page);
     }
-};
-_RhPagination_dir = new WeakMap();
-_RhPagination_mo = new WeakMap();
-_RhPagination_logger = new WeakMap();
-_RhPagination_ol = new WeakMap();
-_RhPagination_links = new WeakMap();
-_RhPagination_firstLink = new WeakMap();
-_RhPagination_lastLink = new WeakMap();
-_RhPagination_nextLink = new WeakMap();
-_RhPagination_prevLink = new WeakMap();
-_RhPagination_currentLink = new WeakMap();
-_RhPagination_currentIndex = new WeakMap();
-_RhPagination_instances = new WeakSet();
-_RhPagination_currentPage_get = function _RhPagination_currentPage_get() {
+}
+_RhPagination_dir = new WeakMap(), _RhPagination_mo = new WeakMap(), _RhPagination_logger = new WeakMap(), _RhPagination_ol = new WeakMap(), _RhPagination_links = new WeakMap(), _RhPagination_firstLink = new WeakMap(), _RhPagination_lastLink = new WeakMap(), _RhPagination_nextLink = new WeakMap(), _RhPagination_prevLink = new WeakMap(), _RhPagination_currentLink = new WeakMap(), _RhPagination_currentIndex = new WeakMap(), _RhPagination_instances = new WeakSet(), _RhPagination_currentPage_get = function _RhPagination_currentPage_get() {
     return __classPrivateFieldGet(this, _RhPagination_currentIndex, "f") + 1;
-};
-_RhPagination_numericContent = function _RhPagination_numericContent(currentPage, lastHref) {
+}, _RhPagination_numericContent = function _RhPagination_numericContent(currentPage, lastHref) {
     return html `
       <div id="numeric" part="numeric">
         <span id="go-to-page" class="xxs-visually-hidden sm-visually-visible">
@@ -169,14 +156,12 @@ _RhPagination_numericContent = function _RhPagination_numericContent(currentPage
         <a href=${ifDefined(lastHref)}>${__classPrivateFieldGet(this, _RhPagination_links, "f")?.length}</a>
       </div>
     `;
-};
-_RhPagination_update = function _RhPagination_update() {
+}, _RhPagination_update = function _RhPagination_update() {
     this.querySelector('[aria-current="page"]')?.removeAttribute('aria-current');
     __classPrivateFieldGet(this, _RhPagination_instances, "m", _RhPagination_updateLightDOMRefs).call(this);
     this.overflow = __classPrivateFieldGet(this, _RhPagination_instances, "m", _RhPagination_getOverflow).call(this);
     __classPrivateFieldGet(this, _RhPagination_instances, "m", _RhPagination_checkValidity).call(this);
-};
-_RhPagination_getOverflow = function _RhPagination_getOverflow() {
+}, _RhPagination_getOverflow = function _RhPagination_getOverflow() {
     const overflowAt = 9;
     const length = __classPrivateFieldGet(this, _RhPagination_links, "f")?.length ?? 0;
     if (length <= overflowAt) {
@@ -192,8 +177,7 @@ _RhPagination_getOverflow = function _RhPagination_getOverflow() {
     else {
         return 'start';
     }
-};
-_RhPagination_getCurrentLink = function _RhPagination_getCurrentLink() {
+}, _RhPagination_getCurrentLink = function _RhPagination_getCurrentLink() {
     const ariaCurrent = this.querySelector('li a[aria-current="page"]');
     if (ariaCurrent) {
         return ariaCurrent;
@@ -208,8 +192,7 @@ _RhPagination_getCurrentLink = function _RhPagination_getCurrentLink() {
     }
     __classPrivateFieldGet(this, _RhPagination_logger, "f").warn('could not determine current link');
     return null;
-};
-_RhPagination_updateLightDOMRefs = function _RhPagination_updateLightDOMRefs() {
+}, _RhPagination_updateLightDOMRefs = function _RhPagination_updateLightDOMRefs() {
     // NB: order of operations! must set up state
     __classPrivateFieldSet(this, _RhPagination_ol, this.querySelector('ol'), "f");
     __classPrivateFieldSet(this, _RhPagination_links, this.querySelectorAll('li a'), "f");
@@ -231,8 +214,7 @@ _RhPagination_updateLightDOMRefs = function _RhPagination_updateLightDOMRefs() {
             __classPrivateFieldGet(this, _RhPagination_currentLink, "f")?.setAttribute('aria-current', 'page');
         }
     }
-};
-_RhPagination_checkValidity = function _RhPagination_checkValidity() {
+}, _RhPagination_checkValidity = function _RhPagination_checkValidity() {
     let message = '';
     // Validate DOM
     if (!__classPrivateFieldGet(this, _RhPagination_ol, "f") || [...this.children].filter(x => !x.slot).length > 1) {
@@ -253,8 +235,7 @@ _RhPagination_checkValidity = function _RhPagination_checkValidity() {
     }
     this.input?.reportValidity();
     return !message;
-};
-_RhPagination_go = 
+}, _RhPagination_go = 
 /**
  * 1. Normalize the element state
  * 2. validate and act on the input
@@ -272,8 +253,7 @@ async function _RhPagination_go(id) {
     this.requestUpdate();
     await this.updateComplete;
     return __classPrivateFieldGet(this, _RhPagination_currentIndex, "f");
-};
-_RhPagination_onKeyup = function _RhPagination_onKeyup(event) {
+}, _RhPagination_onKeyup = function _RhPagination_onKeyup(event) {
     if (!(event.target instanceof HTMLInputElement) || !__classPrivateFieldGet(this, _RhPagination_links, "f")) {
         return;
     }
@@ -282,8 +262,7 @@ _RhPagination_onKeyup = function _RhPagination_onKeyup(event) {
     if (parseInt(input.value) > parseInt(max)) {
         input.value = max;
     }
-};
-_RhPagination_onChange = function _RhPagination_onChange() {
+}, _RhPagination_onChange = function _RhPagination_onChange() {
     if (!this.input || !__classPrivateFieldGet(this, _RhPagination_links, "f")) {
         return;
     }
@@ -293,40 +272,20 @@ _RhPagination_onChange = function _RhPagination_onChange() {
         __classPrivateFieldGet(this, _RhPagination_instances, "m", _RhPagination_go).call(this, __classPrivateFieldGet(this, _RhPagination_instances, "a", _RhPagination_currentPage_get));
     }
 };
+RhPagination.properties = {
+    overflow: { reflect: true },
+    label: {},
+    labelFirst: { attribute: 'label-first' },
+    labelPrevious: { attribute: 'label-previous' },
+    labelNext: { attribute: 'label-next' },
+    labelLast: { attribute: 'label-last' },
+    size: { reflect: true },
+    variant: { reflect: true }
+};
 RhPagination.version = '{{version}}';
 RhPagination.styles = [styles];
 __decorate([
     colorContextConsumer()
 ], RhPagination.prototype, "on", void 0);
-__decorate([
-    property({ reflect: true })
-], RhPagination.prototype, "overflow", void 0);
-__decorate([
-    property()
-], RhPagination.prototype, "label", void 0);
-__decorate([
-    property({ attribute: 'label-first' })
-], RhPagination.prototype, "labelFirst", void 0);
-__decorate([
-    property({ attribute: 'label-previous' })
-], RhPagination.prototype, "labelPrevious", void 0);
-__decorate([
-    property({ attribute: 'label-next' })
-], RhPagination.prototype, "labelNext", void 0);
-__decorate([
-    property({ attribute: 'label-last' })
-], RhPagination.prototype, "labelLast", void 0);
-__decorate([
-    property({ reflect: true })
-], RhPagination.prototype, "size", void 0);
-__decorate([
-    property({ reflect: true })
-], RhPagination.prototype, "variant", void 0);
-__decorate([
-    query('input')
-], RhPagination.prototype, "input", void 0);
-RhPagination = __decorate([
-    customElement('rh-pagination')
-], RhPagination);
-export { RhPagination };
+customElements.define("rh-pagination", RhPagination);
 //# sourceMappingURL=rh-pagination.js.map

@@ -1,8 +1,6 @@
 var _RhSwitch_instances, _RhSwitch_internals, _RhSwitch_slots, _RhSwitch_dir, _RhSwitch_message_get, _RhSwitch_onClick, _RhSwitch_onKeyup, _RhSwitch_onKeyDown, _RhSwitch_toggle;
 import { __classPrivateFieldGet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
-import { customElement } from 'lit/decorators/custom-element.js';
-import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
@@ -21,10 +19,13 @@ import '@rhds/elements/rh-icon/rh-icon.js';
  * @slot message-on - message content when checked. Overrides the `message-on` attribute.
  * @slot message-off - message content when unchecked. Overrides the `message-off` attribute.
  */
-let RhSwitch = class RhSwitch extends LitElement {
+export class RhSwitch extends LitElement {
     constructor() {
         super(...arguments);
         _RhSwitch_instances.add(this);
+        _RhSwitch_internals.set(this, InternalsController.of(this, { role: 'switch' }));
+        _RhSwitch_slots.set(this, new SlotController(this, null, 'message-on', 'message-off'));
+        _RhSwitch_dir.set(this, new DirController(this));
         /** If the checkmark icon should be displayed when the switch is on */
         this.showCheckIcon = false;
         /** If the switch is on */
@@ -33,9 +34,6 @@ let RhSwitch = class RhSwitch extends LitElement {
         this.disabled = false;
         /** If the switch is reversed: message first, then control */
         this.reversed = false;
-        _RhSwitch_internals.set(this, InternalsController.of(this, { role: 'switch' }));
-        _RhSwitch_slots.set(this, new SlotController(this, null, 'message-on', 'message-off'));
-        _RhSwitch_dir.set(this, new DirController(this));
     }
     get labels() {
         return __classPrivateFieldGet(this, _RhSwitch_internals, "f").labels;
@@ -101,15 +99,10 @@ let RhSwitch = class RhSwitch extends LitElement {
       </div>
     `;
     }
-};
-_RhSwitch_internals = new WeakMap();
-_RhSwitch_slots = new WeakMap();
-_RhSwitch_dir = new WeakMap();
-_RhSwitch_instances = new WeakSet();
-_RhSwitch_message_get = function _RhSwitch_message_get() {
+}
+_RhSwitch_internals = new WeakMap(), _RhSwitch_slots = new WeakMap(), _RhSwitch_dir = new WeakMap(), _RhSwitch_instances = new WeakSet(), _RhSwitch_message_get = function _RhSwitch_message_get() {
     return this.checked ? this.messageOn : this.messageOff;
-};
-_RhSwitch_onClick = function _RhSwitch_onClick(event) {
+}, _RhSwitch_onClick = function _RhSwitch_onClick(event) {
     // @ts-expect-error: firefox workarounds for double-firing in the case of switch nested in label
     const { originalTarget, explicitOriginalTarget } = event;
     if (explicitOriginalTarget) {
@@ -121,55 +114,37 @@ _RhSwitch_onClick = function _RhSwitch_onClick(event) {
         }
     }
     __classPrivateFieldGet(this, _RhSwitch_instances, "m", _RhSwitch_toggle).call(this);
-};
-_RhSwitch_onKeyup = function _RhSwitch_onKeyup(event) {
+}, _RhSwitch_onKeyup = function _RhSwitch_onKeyup(event) {
     if (event.key === ' ' || event.key === 'Enter') {
         event.preventDefault();
         event.stopPropagation();
         __classPrivateFieldGet(this, _RhSwitch_instances, "m", _RhSwitch_toggle).call(this);
     }
-};
-_RhSwitch_onKeyDown = function _RhSwitch_onKeyDown(event) {
+}, _RhSwitch_onKeyDown = function _RhSwitch_onKeyDown(event) {
     if (event.key === ' ') {
         event.preventDefault();
         event.stopPropagation();
     }
-};
-_RhSwitch_toggle = function _RhSwitch_toggle() {
+}, _RhSwitch_toggle = function _RhSwitch_toggle() {
     if (this.disabled) {
         return;
     }
     this.checked = !this.checked;
     this.dispatchEvent(new Event('change', { bubbles: true }));
 };
+RhSwitch.properties = {
+    accessibleLabel: { reflect: true, attribute: 'accessible-label' },
+    messageOn: { reflect: true, attribute: 'message-on' },
+    messageOff: { reflect: true, attribute: 'message-off' },
+    showCheckIcon: { reflect: true, type: Boolean, attribute: 'show-check-icon' },
+    checked: { reflect: true, type: Boolean },
+    disabled: { reflect: true, type: Boolean },
+    reversed: { reflect: true, type: Boolean }
+};
 RhSwitch.styles = [styles];
 RhSwitch.formAssociated = true;
 __decorate([
-    property({ reflect: true, attribute: 'accessible-label' })
-], RhSwitch.prototype, "accessibleLabel", void 0);
-__decorate([
-    property({ reflect: true, attribute: 'message-on' })
-], RhSwitch.prototype, "messageOn", void 0);
-__decorate([
-    property({ reflect: true, attribute: 'message-off' })
-], RhSwitch.prototype, "messageOff", void 0);
-__decorate([
-    property({ reflect: true, type: Boolean, attribute: 'show-check-icon' })
-], RhSwitch.prototype, "showCheckIcon", void 0);
-__decorate([
-    property({ reflect: true, type: Boolean })
-], RhSwitch.prototype, "checked", void 0);
-__decorate([
-    property({ reflect: true, type: Boolean })
-], RhSwitch.prototype, "disabled", void 0);
-__decorate([
-    property({ reflect: true, type: Boolean })
-], RhSwitch.prototype, "reversed", void 0);
-__decorate([
     colorContextConsumer()
 ], RhSwitch.prototype, "on", void 0);
-RhSwitch = __decorate([
-    customElement('rh-switch')
-], RhSwitch);
-export { RhSwitch };
+customElements.define("rh-switch", RhSwitch);
 //# sourceMappingURL=rh-switch.js.map
