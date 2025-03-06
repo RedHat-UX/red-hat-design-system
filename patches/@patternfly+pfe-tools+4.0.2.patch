@@ -1,0 +1,25 @@
+diff --git a/node_modules/@patternfly/pfe-tools/dev-server/config.js b/node_modules/@patternfly/pfe-tools/dev-server/config.js
+index 47f47fb..0ecf2d3 100644
+--- a/node_modules/@patternfly/pfe-tools/dev-server/config.js
++++ b/node_modules/@patternfly/pfe-tools/dev-server/config.js
+@@ -84,6 +84,7 @@ function liveReloadTsChangesMiddleware(config) {
+ export function pfeDevServerConfig(options) {
+     const config = normalizeOptions(options);
+     const tsconfig = config?.tsconfig;
++  console.log(config.importMapOptions);
+     return {
+         ...options ?? {},
+         rootDir: config.rootDir,
+diff --git a/node_modules/@patternfly/pfe-tools/dev-server/plugins/import-map-generator.js b/node_modules/@patternfly/pfe-tools/dev-server/plugins/import-map-generator.js
+index ad61e24..0a1c18e 100644
+--- a/node_modules/@patternfly/pfe-tools/dev-server/plugins/import-map-generator.js
++++ b/node_modules/@patternfly/pfe-tools/dev-server/plugins/import-map-generator.js
+@@ -90,6 +90,8 @@ export function importMapGeneratorPlugin(options) {
+                 env: ['development', 'production', 'browser', 'module'],
+                 providers: options?.providers,
+                 inputMap: options?.inputMap,
++                ignore: options?.ignore,
++                typeScript: options?.typeScript,
+                 customProviders: { monorepotypescript },
+                 resolutions: options?.resolutions,
+             }), options));
