@@ -28,10 +28,17 @@ export function getParentCollection(options: {
   return { parent, key };
 }
 
+function isDesignToken(token: DesignToken | CssCustomProperty): token is DesignToken {
+  return '$value' in token;
+}
+
 /** generate `var(--rh-xxx, xxx)` string, given a token or css property */
 export function getVariableSyntax(token: DesignToken | CssCustomProperty) {
-  const name = formatTokenVariableName(token);
-  return `var(${name}, ${escapeDoubleQuotes((token as DesignToken).$value ?? token.default)})`;
+  if (token.name) {
+    const name = formatTokenVariableName(token.name);
+    const value = isDesignToken(token) ? token.$value : token.default;
+    return `var(${name}, ${escapeDoubleQuotes(value)})`;
+  }
 }
 
 /** generate string of copy cell for 11ty templates */
@@ -54,12 +61,15 @@ export function copyCell(token: DesignToken) {
   `.trim();
 }
 
-function formatTokenVariableName(token: DesignToken) {
-  return `--${token.name}`.replace('----', '--') as `--rh-${string}`;
+function formatTokenVariableName(token: string) {
+  return `--${token}`.replace('----', '--') as `--rh-${string}`;
 }
 
 function getTokenCategorySlug(token: DesignToken) {
-  const name = formatTokenVariableName(token);
+  if (!token.name) {
+    throw new Error(`Unknown token`);
+  }
+  const name = formatTokenVariableName(token.name);
   const data = tokensMeta.get(name);
   if (!data) {
     throw new Error(`Could not find token ${name}`);

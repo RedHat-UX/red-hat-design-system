@@ -49,7 +49,7 @@ export class HeadingLevelContextProvider extends ContextProvider<typeof context,
   #options?: HeadingLevelContextOptions;
 
   constructor(
-    host: LitElement,
+    private host: LitElement,
     options?: Partial<HeadingLevelContextOptions>,
   ) {
     super(host, { context });
