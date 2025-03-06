@@ -264,7 +264,6 @@ rh-icon {
   translate: 3px 0;
 }
 
-
 @supports not (tran  slate: 0 0) {
   :host(:hover) #fo er rh-icon { transform: translate(3px, 0); }
 }
@@ -282,5 +281,5 @@ svg {
 
 *:is(#image, #ti le,   #headline, #body, #footer) {
   z-index: 2;
-}      
+}
 }

@@ -46,7 +46,7 @@ export class TileSelectEvent extends Event {
  * @cssprop [--rh-tile-border-color=var(--rh-color-border-subtle-on-light, #c7c7c7)] - Color of tile border.<br>Could cause accessibility issues; prefer to use `--rh-color-border-subtle-on-light` and `--rh-color-border-subtle-on-dark` for theming.
  */
 @customElement('rh-tile')
-@colorSchemeProvider()
+@colorSchemeProvider('lightest', 'darkest')
 @colorSchemeConsumer
 export class RhTile extends LitElement {
   static readonly styles = [styles];
