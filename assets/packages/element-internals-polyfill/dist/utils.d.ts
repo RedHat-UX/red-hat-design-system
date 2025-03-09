@@ -1,5 +1,25 @@
 import { ICustomElement, IElementInternals, LabelsList } from './types.js';
 /**
+ * Set attribute if its value differs from existing one.
+ *
+ * In comparison to other attribute modification methods (removeAttribute and
+ * toggleAttribute), setAttribute always triggers attributeChangedCallback
+ * even if the actual value has not changed.
+ *
+ * This polyfill relies heavily on attributes to pass aria information to
+ * screen readers. This behaviour differs from native implementation which does
+ * not change attributes.
+ *
+ * To limit this difference we only set attribute value when it is different
+ * from the current state.
+ *
+ * @param {ICustomElement | Element} ref - The custom element instance
+ * @param {string} name - The attribute name
+ * @param {string} value - The attribute value
+ * @returns
+ */
+export declare const setAttribute: (ref: ICustomElement | Element, name: string, value: string) => void;
+/**
  * Toggle's the disabled state (attributes & callback) on the given element
  * @param {ICustomElement} ref - The custom element instance
  * @param {boolean} disabled - The disabled state

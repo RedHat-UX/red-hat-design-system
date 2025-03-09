@@ -19,7 +19,7 @@ import { LitElement } from 'lit';
  */
 export declare class RhSurface extends LitElement {
     #private;
-    static readonly styles: (CSSStyleSheet | import("lit").CSSResult)[];
+    static readonly styles: (import("lit").CSSResult | CSSStyleSheet)[];
     /**
      * Sets color palette, which affects the element's styles as well as
      * descendants' color theme. The default surface color palette is 'lightest',

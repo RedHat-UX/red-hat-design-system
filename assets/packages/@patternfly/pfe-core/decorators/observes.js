@@ -13,30 +13,18 @@ import { PropertyObserverController, } from '@patternfly/pfe-core/controllers/pr
  */
 export function observes(propertyName, options) {
     return function (proto, methodName) {
-        if (typeof methodName === 'object') {
-            methodName.addInitializer(function() {
-                this.constructor.addInitializer(instance => {
-                    instance.addController(new PropertyObserverController(instance, {
-                        ...options,
-                        propertyName,
-                        callback: proto,
-                    }));
-                });
-            });
-        } else {
-            const callback = proto[methodName];
-            if (typeof callback !== 'function') {
-                throw new Error('@observes must decorate a class method');
-            }
-            const klass = proto.constructor;
-            klass.addInitializer(instance => {
-                instance.addController(new PropertyObserverController(instance, {
-                    ...options,
-                    propertyName,
-                    callback,
-                }));
-            });
+        const callback = proto[methodName];
+        if (typeof callback !== 'function') {
+            throw new Error('@observes must decorate a class method');
         }
+        const klass = proto.constructor;
+        klass.addInitializer(instance => {
+            instance.addController(new PropertyObserverController(instance, {
+                ...options,
+                propertyName,
+                callback,
+            }));
+        });
     };
 }
 //# sourceMappingURL=observes.js.map

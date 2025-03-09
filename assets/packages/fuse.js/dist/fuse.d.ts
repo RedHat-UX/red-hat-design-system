@@ -1,4 +1,4 @@
-// Type definitions for Fuse.js v7.0.0
+// Type definitions for Fuse.js v7.1.0
 // TypeScript v4.9.5
 declare class Fuse<T> {
   public constructor(
@@ -91,7 +91,10 @@ declare class Fuse<T> {
   ): FuseIndex<U>
 
   public static parseIndex<U>(
-    index: any,
+    index: {
+      keys: ReadonlyArray<string>
+      records: FuseIndexRecords
+    },
     options?: FuseIndexOptions<U>
   ): FuseIndex<U>
 
@@ -292,6 +295,8 @@ type FuseOptionKey<T> = FuseOptionKeyObject<T> | string | string[]
 interface IFuseOptions<T> {
   /** Indicates whether comparisons should be case sensitive. */
   isCaseSensitive?: boolean
+  /** Indicates whether comparisons should ignore diacritics (accents). */
+  ignoreDiacritics?: boolean
   /** Determines how close the match must be to the fuzzy location (specified by `location`). An exact letter match which is `distance` characters away from the fuzzy location would score as a complete mismatch. A `distance` of `0` requires the match be at the exact `location` specified. A distance of `1000` would require a perfect match to be within `800` characters of the `location` to be found using a `threshold` of `0.8`. */
   distance?: number
   /** When true, the matching function will continue to the end of a search pattern even if a perfect match has already been located in the string. */

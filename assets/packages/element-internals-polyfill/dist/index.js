@@ -73,7 +73,7 @@
                 set(value) {
                     closureValue = value;
                     if (ref.isConnected) {
-                        ref.setAttribute(attributeName, value);
+                        setAttribute(ref, attributeName, value);
                     }
                     else {
                         upgradeMap.set(ref, internals);
@@ -142,15 +142,15 @@
                     aomKeys
                         .filter(key => internals[key] !== null)
                         .forEach(key => {
-                        node.setAttribute(aom[key], internals[key]);
+                        setAttribute(node, aom[key], internals[key]);
                     });
                     upgradeMap.delete(node);
                 }
                 if (validityUpgradeMap.has(node)) {
                     const internals = validityUpgradeMap.get(node);
-                    node.setAttribute('internals-valid', internals.validity.valid.toString());
-                    node.setAttribute('internals-invalid', (!internals.validity.valid).toString());
-                    node.setAttribute('aria-invalid', (!internals.validity.valid).toString());
+                    setAttribute(node, 'internals-valid', internals.validity.valid.toString());
+                    setAttribute(node, 'internals-invalid', (!internals.validity.valid).toString());
+                    setAttribute(node, 'aria-invalid', (!internals.validity.valid).toString());
                     validityUpgradeMap.delete(node);
                 }
                 if (node.localName === 'form') {
@@ -212,10 +212,16 @@
         subtree: true
     };
 
+    const setAttribute = (ref, name, value) => {
+        if (ref.getAttribute(name) === value) {
+            return;
+        }
+        ref.setAttribute(name, value);
+    };
     const setDisabled = (ref, disabled) => {
         ref.toggleAttribute('internals-disabled', disabled);
         if (disabled) {
-            ref.setAttribute('aria-disabled', 'true');
+            setAttribute(ref, 'aria-disabled', 'true');
         }
         else {
             ref.removeAttribute('aria-disabled');
@@ -252,7 +258,7 @@
                 firstLabelId = `${labels[0].htmlFor}_Label`;
                 labels[0].id = firstLabelId;
             }
-            ref.setAttribute('aria-labelledby', firstLabelId);
+            setAttribute(ref, 'aria-labelledby', firstLabelId);
         }
     };
     const setFormValidity = (form) => {
@@ -673,7 +679,7 @@
             if (ref.isConnected) {
                 ref.toggleAttribute('internals-invalid', !valid);
                 ref.toggleAttribute('internals-valid', valid);
-                ref.setAttribute('aria-invalid', `${!valid}`);
+                setAttribute(ref, 'aria-invalid', `${!valid}`);
             }
             else {
                 validityUpgradeMap.set(ref, this);

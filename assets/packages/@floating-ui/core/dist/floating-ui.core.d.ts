@@ -351,7 +351,11 @@ export declare interface MiddlewareData {
     offset?: Coords & {
         placement: Placement;
     };
-    shift?: Coords;
+    shift?: Coords & {
+        enabled: {
+            [key in Axis]: boolean;
+        };
+    };
 }
 
 export declare interface MiddlewareReturn extends Partial<Coords> {

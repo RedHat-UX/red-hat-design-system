@@ -7,6 +7,8 @@ export declare class UxdotSideNav extends LitElement {
         mode: ShadowRootMode;
         serializable?: boolean;
         slotAssignment?: SlotAssignmentMode;
+        customElements?: CustomElementRegistry;
+        registry?: CustomElementRegistry;
     };
     static styles: CSSStyleSheet[];
     open: boolean;

@@ -27,7 +27,7 @@ export declare class AlertCloseEvent extends Event {
  */
 export declare class RhAlert extends LitElement {
     #private;
-    static readonly styles: (CSSStyleSheet | CSSResult)[];
+    static readonly styles: (CSSResult | CSSStyleSheet)[];
     private static toaster;
     private static toasts;
     /**
