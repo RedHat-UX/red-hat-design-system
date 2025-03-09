@@ -4,6 +4,7 @@
   ],
   "include": [
     "./**/*",
+    "../lib/**/*.ts",
     "../declaration.d.ts",
     "../eleventy.config.ts",
     "./11ty-types.d.ts"
