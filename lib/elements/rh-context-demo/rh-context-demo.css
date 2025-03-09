@@ -1,8 +1,6 @@
 :host {
   display: block;
-  min-height: 100%;
-  height: auto;
-  position: relative;
+  height: 100%;
 }
 
 rh-surface,
@@ -17,7 +15,6 @@ rh-surface,
 
 #provider {
   padding: var(--rh-context-demo-padding, var(--rh-space-xl, 24px));
-  position: absolute;
-  inset: 0;
+  min-height: 100%;
   height: max-content;
 }
