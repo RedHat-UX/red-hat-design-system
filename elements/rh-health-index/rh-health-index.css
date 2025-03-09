@@ -35,17 +35,29 @@
     }
 
     &.c {
-      --_color-10: light-dark(var(--rh-color-yellow-10, #fff4cc), var(--rh-color-yellow-30, #ffcc17));
+      --_color-10:
+        light-dark(var(--rh-color-yellow-10, #fff4cc),
+          var(--rh-color-yellow-30, #ffcc17));
       --_color-20: var(--rh-color-yellow-30, #ffcc17);
-      --_color-25: light-dark(var(--rh-color-yellow-50, #b98412), var(--rh-color-yellow-10, #fff4cc));
-      --_color-30: light-dark(var(--rh-color-yellow-70, #73480b), var(--rh-color-yellow-10, #fff4cc));
+      --_color-25:
+        light-dark(var(--rh-color-yellow-50, #b98412),
+          var(--rh-color-yellow-10, #fff4cc));
+      --_color-30:
+        light-dark(var(--rh-color-yellow-70, #73480b),
+          var(--rh-color-yellow-10, #fff4cc));
     }
 
     &.d {
-      --_color-10: light-dark(var(--rh-color-orange-10, #ffe8cc), var(--rh-color-orange-40, #f5921b));
+      --_color-10:
+        light-dark(var(--rh-color-orange-10, #ffe8cc),
+          var(--rh-color-orange-40, #f5921b));
       --_color-20: var(--rh-color-orange-40, #f5921b);
-      --_color-25: light-dark(var(--rh-color-orange-60, #9e4a06), var(--rh-color-orange-10, #ffe8cc));
-      --_color-30: light-dark(var(--rh-color-orange-70, #732e00), var(--rh-color-orange-20, #fccb8f));
+      --_color-25:
+        light-dark(var(--rh-color-orange-60, #9e4a06),
+          var(--rh-color-orange-10, #ffe8cc));
+      --_color-30:
+        light-dark(var(--rh-color-orange-70, #732e00),
+          var(--rh-color-orange-20, #fccb8f));
     }
 
     &.e {

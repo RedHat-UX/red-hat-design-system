@@ -62,7 +62,6 @@ span {
     var(--_padding-inline-start);
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
   font-size: var(--_font-size);
-  color: var(--rh-color-text-primary);
 
   & #icon {
     fill: currentcolor;
