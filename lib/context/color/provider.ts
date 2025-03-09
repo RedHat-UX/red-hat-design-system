@@ -71,8 +71,12 @@ export function colorSchemeProvider(...supportedPalettes: ColorPalette[]) {
       throw new Error('@colorSchemeProvider requires the `color-palette` attribute.');
     }
     klass.addInitializer(instance => new PaletteController(instance, supportedPalettes));
+    const elementStyles =
+        Array.isArray(klass.styles) ? klass.styles
+      : klass.styles ? [klass.styles]
+      : [];
     klass.styles = [
-      ...Array.isArray(klass.styles) ? klass.styles : klass.styles ? [klass.styles] : [],
+      ...elementStyles,
       styles,
     ];
   };
