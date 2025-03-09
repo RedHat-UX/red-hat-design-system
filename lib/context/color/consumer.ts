@@ -12,15 +12,20 @@ export type ColorTheme = (
   | 'light'
 );
 
+
+let initialized = false;
 /**
- * Makes this element a [background type](https://ux.redhat.com/theming/color-palettes/) consumer.
+ * Ensures this element acts as a [background type](https://ux.redhat.com/theming/color-palettes/) consumer.
  *
  * @param klass element constructor
  * @see https://ux.redhat.com/theming/color-palettes/
  */
 export function colorSchemeConsumer(klass: typeof ReactiveElement) {
-  klass.styles = [
-    ...Array.isArray(klass.styles) ? klass.styles : klass.styles ? [klass.styles] : [],
-    styles,
-  ];
+  if (!initialized) {
+    const sheet = new CSSStyleSheet();
+    sheet.replaceSync(styles.cssText);
+
+    document.adoptedStyleSheets = [...(document.adoptedStyleSheets ?? []), sheet];
+    initialized = true;
+  }
 }
