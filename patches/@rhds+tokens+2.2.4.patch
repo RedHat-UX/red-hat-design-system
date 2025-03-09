@@ -292,7 +292,7 @@ index b762a34..98e3a78 100644
 +      var(--rh-color-text-brand-on-dark, #ee0000));
  }
 diff --git a/node_modules/@rhds/tokens/css/color-context-consumer.css.js b/node_modules/@rhds/tokens/css/color-context-consumer.css.js
-index f3c26d8..c45f060 100644
+index f3c26d8..87e5d42 100644
 --- a/node_modules/@rhds/tokens/css/color-context-consumer.css.js
 +++ b/node_modules/@rhds/tokens/css/color-context-consumer.css.js
 @@ -5,122 +5,173 @@
@@ -585,8 +585,9 @@ index f3c26d8..c45f060 100644
 +      var(--rh-color-text-brand-on-dark, #ee0000));
  }`;
  //# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY29sb3ItY29udGV4dC1jb25zdW1lci5jc3MuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJjb2xvci1jb250ZXh0LWNvbnN1bWVyLmNzcy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTs7OztHQUlHO0FBRUgsT0FBTyxFQUFFLEdBQUcsRUFBRSxNQUFNLEtBQUssQ0FBQztBQUFDLGVBQWUsR0FBRyxDQUFBOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0VBc0gzQyxDQUFDIn0=
+\ No newline at end of file
 diff --git a/node_modules/@rhds/tokens/css/color-context-consumer.css.ts b/node_modules/@rhds/tokens/css/color-context-consumer.css.ts
-index 955c86f..b362e9e 100644
+index 955c86f..4e42b72 100644
 --- a/node_modules/@rhds/tokens/css/color-context-consumer.css.ts
 +++ b/node_modules/@rhds/tokens/css/color-context-consumer.css.ts
 @@ -5,121 +5,171 @@
@@ -878,11 +879,12 @@ index 955c86f..b362e9e 100644
 +    light-dark(var(--rh-color-text-brand-on-light, #ee0000),
 +      var(--rh-color-text-brand-on-dark, #ee0000));
  }`;
+\ No newline at end of file
 diff --git a/node_modules/@rhds/tokens/css/color-context-provider.css b/node_modules/@rhds/tokens/css/color-context-provider.css
-index 1a06109..0dd7ca6 100644
+index 1a06109..04e8dd8 100644
 --- a/node_modules/@rhds/tokens/css/color-context-provider.css
 +++ b/node_modules/@rhds/tokens/css/color-context-provider.css
-@@ -5,8 +5,8 @@
+@@ -5,9 +5,10 @@
   */
  
  
@@ -891,13 +893,15 @@ index 1a06109..0dd7ca6 100644
 +:host([color-palette^="dark"]) { color-scheme: only dark; }
 +:host([color-palette^="light"]) { color-scheme: only light; }
  
++:host,
  :host([color-palette="lightest"]) {
    --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
+ }
 diff --git a/node_modules/@rhds/tokens/css/color-context-provider.css.js b/node_modules/@rhds/tokens/css/color-context-provider.css.js
-index 0f56ceb..440f245 100644
+index 0f56ceb..f0ba44b 100644
 --- a/node_modules/@rhds/tokens/css/color-context-provider.css.js
 +++ b/node_modules/@rhds/tokens/css/color-context-provider.css.js
-@@ -5,8 +5,8 @@
+@@ -5,9 +5,10 @@
   */
  import { css } from 'lit';
  export default css `
@@ -906,13 +910,15 @@ index 0f56ceb..440f245 100644
 +:host([color-palette^="dark"]) { color-scheme: only dark; }
 +:host([color-palette^="light"]) { color-scheme: only light; }
  
++:host,
  :host([color-palette="lightest"]) {
    --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
+ }
 diff --git a/node_modules/@rhds/tokens/css/color-context-provider.css.ts b/node_modules/@rhds/tokens/css/color-context-provider.css.ts
-index cf07c55..473f7f6 100644
+index cf07c55..838f4e3 100644
 --- a/node_modules/@rhds/tokens/css/color-context-provider.css.ts
 +++ b/node_modules/@rhds/tokens/css/color-context-provider.css.ts
-@@ -5,8 +5,8 @@
+@@ -5,9 +5,10 @@
   */
  
  import { css } from 'lit'; export default css`
@@ -921,5 +927,7 @@ index cf07c55..473f7f6 100644
 +:host([color-palette^="dark"]) { color-scheme: only dark; }
 +:host([color-palette^="light"]) { color-scheme: only light; }
  
++:host,
  :host([color-palette="lightest"]) {
    --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
+ }
