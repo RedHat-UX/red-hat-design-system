@@ -1,8 +1,7 @@
 :host {
   display: block;
   min-height: 100%;
-  height: auto;
-  position: relative;
+  height: max-content;
 }
 
 #picker-container {
@@ -14,6 +13,4 @@
 
 #provider {
   padding: var(--rh-context-demo-padding, var(--rh-space-xl, 24px));
-  position: absolute;
-  inset: 0;
 }
