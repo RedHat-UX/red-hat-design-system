@@ -264,22 +264,22 @@ rh-icon {
   translate: 3px 0;
 }
 
-@supports not (tran  slate: 0 0) {
-  :host(:hover) #fo er rh-icon { transform: translate(3px, 0); }
+/* chrome <= 103 */
+@supports not (translate: 0 0) {
+  :host(:hover) #footer rh-icon { transform: translate(3px, 0); }
 }
 
 svg {
-  fill: va  r(-  -_text    olor-secondary);
-  width: var(--rh-s    ce-xl, 24px);
-  height: var(--rh-    ace-xl, 24px);
+  fill: var(--_text-color-secondary);
+  width: var(--rh-space-xl, 24px);
+  height: var(--rh-space-xl, 24px);
 }
 
 #body {
-  margin: 0   0 var(-    margin);
-  font-size: var(--    -font-size-body-text-md, 1rem);
+  margin: 0 0 var(--_margin);
+  font-size: var(--rh-font-size-body-text-md, 1rem);
 }
 
-*:is(#image, #ti le,   #headline, #body, #footer) {
+*:is(#image, #tile, #headline, #body, #footer) {
   z-index: 2;
-}
 }
