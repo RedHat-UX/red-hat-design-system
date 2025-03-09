@@ -97,7 +97,7 @@ rh-icon {
     var(--rh-animation-timing, cubic-bezier(0.465, 0.183, 0.153, 0.946));
 }
 
-#container.rtl svg {
+#container.rtl rh-icon {
   rotate: 180deg;
 }
 
