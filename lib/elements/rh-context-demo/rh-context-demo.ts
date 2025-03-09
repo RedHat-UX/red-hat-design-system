@@ -1,4 +1,4 @@
-import type { ColorPalette } from '../../context/color/provider.js';
+import { colorSchemeProvider, type ColorPalette } from '../../context/color/provider.js';
 
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
@@ -8,11 +8,10 @@ import { InternalsController } from '@patternfly/pfe-core/controllers/internals-
 
 import { ContextChangeEvent } from '../rh-context-picker/rh-context-picker.js';
 
-import '@rhds/elements/rh-surface/rh-surface.js';
-
 import style from './rh-context-demo.css';
 
 @customElement('rh-context-demo')
+@colorSchemeProvider()
 export class RhContextDemo extends LitElement {
   static readonly styles = [style];
 
@@ -20,17 +19,14 @@ export class RhContextDemo extends LitElement {
 
   @property() label = 'Color Palette';
 
-  @property({ attribute: 'color-palette', reflect: true })
-  colorPalette: ColorPalette = 'darkest';
+  @property({ attribute: 'color-palette', reflect: true }) colorPalette: ColorPalette = 'darkest';
 
   #internals = InternalsController.of(this);
 
   protected override render() {
     const { colorPalette } = this;
     return html`
-      <rh-surface id="provider"
-                  color-palette="${colorPalette}"
-                  @change="${this.#onChange}">
+      <div id="provider" @change="${this.#onChange}">
           <div id="picker-container">
             <rh-context-picker id="picker"
                                .value="${colorPalette}"
@@ -39,7 +35,7 @@ export class RhContextDemo extends LitElement {
             <slot name="controls"></slot>
           </div>
         <slot part="demo"></slot>
-      </rh-surface>
+      </div>
     `;
   }
 

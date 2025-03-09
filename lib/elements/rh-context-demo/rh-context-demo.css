@@ -2,6 +2,8 @@
   display: block;
   min-height: 100%;
   height: max-content;
+  color: var(--rh-color-text-primary);
+  background: var(--rh-color-surface);
 }
 
 #picker-container {
