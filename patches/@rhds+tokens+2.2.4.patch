@@ -502,10 +502,10 @@ index cf07c55..0000000
 \ No newline at end of file
 diff --git a/node_modules/@rhds/tokens/css/color-palette.css b/node_modules/@rhds/tokens/css/color-palette.css
 new file mode 100644
-index 0000000..af10aa0
+index 0000000..d680a8b
 --- /dev/null
 +++ b/node_modules/@rhds/tokens/css/color-palette.css
-@@ -0,0 +1,15 @@
+@@ -0,0 +1,16 @@
 +/**
 + * Do not edit directly, this file was auto-generated.
 + * 
@@ -513,6 +513,7 @@ index 0000000..af10aa0
 + */
 +
 +
++:host(:not([color-palette])) { color-scheme: light dark; }
 +:host([color-palette^="dark"]) { color-scheme: only dark; }
 +:host([color-palette^="light"]) { color-scheme: only light; }
 +:host([color-palette="lightest"]) { --rh-color-surface: var(--rh-color-surface-lightest, #ffffff); }
@@ -528,10 +529,10 @@ rename from node_modules/@rhds/tokens/css/color-context-consumer.css.d.ts
 rename to node_modules/@rhds/tokens/css/color-palette.css.d.ts
 diff --git a/node_modules/@rhds/tokens/css/color-palette.css.js b/node_modules/@rhds/tokens/css/color-palette.css.js
 new file mode 100644
-index 0000000..8c8eb76
+index 0000000..3bbf0a3
 --- /dev/null
 +++ b/node_modules/@rhds/tokens/css/color-palette.css.js
-@@ -0,0 +1,16 @@
+@@ -0,0 +1,17 @@
 +/**
 + * Do not edit directly, this file was auto-generated.
 + *
@@ -539,6 +540,7 @@ index 0000000..8c8eb76
 + */
 +import { css } from 'lit';
 +export default css `
++:host(:not([color-palette])) { color-scheme: light dark; }
 +:host([color-palette^="dark"]) { color-scheme: only dark; }
 +:host([color-palette^="light"]) { color-scheme: only light; }
 +:host([color-palette="lightest"]) { --rh-color-surface: var(--rh-color-surface-lightest, #ffffff); }
@@ -547,14 +549,14 @@ index 0000000..8c8eb76
 +:host([color-palette="dark"]) { --rh-color-surface: var(--rh-color-surface-dark, #383838); }
 +:host([color-palette="darker"]) { --rh-color-surface: var(--rh-color-surface-darker, #1f1f1f); }
 +:host([color-palette="darkest"]) { --rh-color-surface: var(--rh-color-surface-darkest, #151515); }`;
-+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY29sb3ItcGFsZXR0ZS5jc3MuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJjb2xvci1wYWxldHRlLmNzcy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTs7OztHQUlHO0FBRUgsT0FBTyxFQUFFLEdBQUcsRUFBRSxNQUFNLEtBQUssQ0FBQztBQUFDLGVBQWUsR0FBRyxDQUFBOzs7Ozs7OzttR0FRc0QsQ0FBQyJ9
++//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY29sb3ItcGFsZXR0ZS5jc3MuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJjb2xvci1wYWxldHRlLmNzcy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTs7OztHQUlHO0FBRUgsT0FBTyxFQUFFLEdBQUcsRUFBRSxNQUFNLEtBQUssQ0FBQztBQUFDLGVBQWUsR0FBRyxDQUFBOzs7Ozs7Ozs7bUdBU3NELENBQUMifQ==
 \ No newline at end of file
 diff --git a/node_modules/@rhds/tokens/css/color-palette.css.ts b/node_modules/@rhds/tokens/css/color-palette.css.ts
 new file mode 100644
-index 0000000..d2f1eb8
+index 0000000..0fcc4d0
 --- /dev/null
 +++ b/node_modules/@rhds/tokens/css/color-palette.css.ts
-@@ -0,0 +1,15 @@
+@@ -0,0 +1,16 @@
 +/**
 + * Do not edit directly, this file was auto-generated.
 + * 
@@ -562,6 +564,7 @@ index 0000000..d2f1eb8
 + */
 +
 +import { css } from 'lit'; export default css`
++:host(:not([color-palette])) { color-scheme: light dark; }
 +:host([color-palette^="dark"]) { color-scheme: only dark; }
 +:host([color-palette^="light"]) { color-scheme: only light; }
 +:host([color-palette="lightest"]) { --rh-color-surface: var(--rh-color-surface-lightest, #ffffff); }
