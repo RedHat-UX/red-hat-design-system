@@ -17,10 +17,10 @@ Tooltips and [Popovers](/elements/popover) provide more in-context information f
 #### Popover
 
 - Can be more descriptive than a tooltip.
-- Can contain headings, images, and interactive content (e.g., links).
+- Can contain headings, images, and interactive content.
 - Appears when triggering button is clicked.
 - Has a close button.
-- Dismissed when close button is clicked, user presses esc, or user clicks/taps outside the popover.
+- Dismissed when close button is clicked, user presses <kbd>esc</kbd>, or user clicks/taps outside the popover.
 
 ## Content
 
