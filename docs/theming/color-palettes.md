@@ -41,18 +41,21 @@ Before we dive into the details, let's take a moment to clarify the terminology
 used around color within RHDS.
 
 [Color scheme](#color-schemes)
-:  `light` or `dark`. AKA "light mode" or "dark mode".
+:  `light` or `dark`, aka "light mode" or "dark mode".
+
    Color schemes are built into web browsers and operating systems, and form the
 standard backbone of RHDS' theming engine.
 
    <rh-tag>Note:</rh-tag> Previous versions of RHDS referred to color schemes as `on` or "Backgrounds",
    and elements that have a color scheme as "color context consumers" because
    they reacted passively to the color scheme of their containers.
+
    <rh-alert state="caution">Avoid the terms "light theme" or "dark theme",
    as they can be confused with "theming", below.</rh-alert>
 
 [Color palette](#color-palettes)
 :  `lightest`, `lighter`, `light`, `dark`, `darker`, or `darkest`
+
    Color palettes are unique to RHDS, and build upon the standard color schemes
    They apply to elements which contain other elements.
 
@@ -189,9 +192,12 @@ it can also set its own color palette.
 </uxdot-pattern>
 
 ## Theming
-<rh-alert>Page authors *do not need to and should not* directly customize the
+
+<rh-alert>
+  Page authors *do not need to and should not* directly customize the
   colors of consumer elements, but instead should set custom values for [theme
-  tokens][theming].</rh-alert>
+  tokens][theming].
+</rh-alert>
 
 <rh-card>
 
