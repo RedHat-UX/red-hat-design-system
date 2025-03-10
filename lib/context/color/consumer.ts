@@ -17,8 +17,12 @@ export function colorSchemeConsumer(klass: typeof ReactiveElement) {
     document.adoptedStyleSheets = [...(document.adoptedStyleSheets ?? []), sheet];
     initialized = true;
   } else {
+    const elementStyles =
+        Array.isArray(klass.styles) ? klass.styles
+      : klass.styles ? [klass.styles]
+      : [];
     klass.styles = [
-      ...Array.isArray(klass.styles) ? klass.styles : klass.styles ? [klass.styles] : [],
+      ...elementStyles,
       styles,
     ];
   }

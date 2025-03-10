@@ -502,10 +502,10 @@ index cf07c55..0000000
 \ No newline at end of file
 diff --git a/node_modules/@rhds/tokens/css/color-palette.css b/node_modules/@rhds/tokens/css/color-palette.css
 new file mode 100644
-index 0000000..62da8b2
+index 0000000..af10aa0
 --- /dev/null
 +++ b/node_modules/@rhds/tokens/css/color-palette.css
-@@ -0,0 +1,14 @@
+@@ -0,0 +1,15 @@
 +/**
 + * Do not edit directly, this file was auto-generated.
 + * 
@@ -514,7 +514,8 @@ index 0000000..62da8b2
 +
 +
 +:host([color-palette^="dark"]) { color-scheme: only dark; }
-+:host([color-palette^="light"]) { color-scheme: only light; }:host([color-palette="lightest"]) { --rh-color-surface: var(--rh-color-surface-lightest, #ffffff); }
++:host([color-palette^="light"]) { color-scheme: only light; }
++:host([color-palette="lightest"]) { --rh-color-surface: var(--rh-color-surface-lightest, #ffffff); }
 +:host([color-palette="lighter"]) { --rh-color-surface: var(--rh-color-surface-lighter, #f2f2f2); }
 +:host([color-palette="light"]) { --rh-color-surface: var(--rh-color-surface-light, #e0e0e0); }
 +:host([color-palette="dark"]) { --rh-color-surface: var(--rh-color-surface-dark, #383838); }
@@ -527,10 +528,10 @@ rename from node_modules/@rhds/tokens/css/color-context-consumer.css.d.ts
 rename to node_modules/@rhds/tokens/css/color-palette.css.d.ts
 diff --git a/node_modules/@rhds/tokens/css/color-palette.css.js b/node_modules/@rhds/tokens/css/color-palette.css.js
 new file mode 100644
-index 0000000..5792592
+index 0000000..8c8eb76
 --- /dev/null
 +++ b/node_modules/@rhds/tokens/css/color-palette.css.js
-@@ -0,0 +1,286 @@
+@@ -0,0 +1,16 @@
 +/**
 + * Do not edit directly, this file was auto-generated.
 + *
@@ -538,292 +539,22 @@ index 0000000..5792592
 + */
 +import { css } from 'lit';
 +export default css `
-+:root, :host {
-+  --rh-color-accent-base:
-+    light-dark(
-+      var(--rh-color-accent-base-on-light-on-light, #0066cc),
-+      var(--rh-color-accent-base-on-dark, #92c5f9)
-+    );
-+  --rh-color-accent-brand:
-+    light-dark(
-+      var(--rh-color-accent-brand-on-light-on-light, #ee0000),
-+      var(--rh-color-accent-brand-on-dark, #ee0000)
-+    );
-+  --rh-color-border-strong:
-+    light-dark(
-+      var(--rh-color-border-strong-on-light-on-light, #151515),
-+      var(--rh-color-border-strong-on-dark, #ffffff)
-+    );
-+  --rh-color-border-subtle:
-+    light-dark(
-+      var(--rh-color-border-subtle-on-light-on-light, #c7c7c7),
-+      var(--rh-color-border-subtle-on-dark, #707070)
-+    );
-+  --rh-color-border-interactive:
-+    light-dark(
-+      var(--rh-color-border-interactive-on-light-on-light, #0066cc),
-+      var(--rh-color-border-interactive-on-dark, #92c5f9)
-+    );
-+  --rh-color-border-destructive:
-+    light-dark(
-+      var(--rh-color-border-destructive-on-light-on-light, #b1380b),
-+      var(--rh-color-border-destructive-on-dark, #f0561d)
-+    );
-+  --rh-color-border-status-danger:
-+    light-dark(
-+      var(--rh-color-border-status-danger-on-light-on-light, #b1380b),
-+      var(--rh-color-border-status-danger-on-dark, #f0561d)
-+    );
-+  --rh-color-border-status-caution:
-+    light-dark(
-+      var(--rh-color-border-status-caution-on-light-on-light, #ca6c0f),
-+      var(--rh-color-border-status-caution-on-dark, #f5921b)
-+    );
-+  --rh-color-border-status-warning:
-+    light-dark(
-+      var(--rh-color-border-status-warning-on-light-on-light, #dca614),
-+      var(--rh-color-border-status-warning-on-dark, #ffcc17)
-+    );
-+  --rh-color-border-status-neutral:
-+    light-dark(
-+      var(--rh-color-border-status-neutral-on-light-on-light, #4d4d4d),
-+      var(--rh-color-border-status-neutral-on-dark, #c7c7c7)
-+    );
-+  --rh-color-border-status-info:
-+    light-dark(
-+      var(--rh-color-border-status-info-on-light-on-light, #5e40be),
-+      var(--rh-color-border-status-info-on-dark, #b6a6e9)
-+    );
-+  --rh-color-border-status-success:
-+    light-dark(
-+      var(--rh-color-border-status-success-on-light-on-light, #3d7317),
-+      var(--rh-color-border-status-success-on-dark, #87bb62)
-+    );
-+  --rh-color-brand-red:
-+    light-dark(
-+      var(--rh-color-brand-red-on-light-on-light, #ee0000),
-+      var(--rh-color-brand-red-on-dark, #ee0000)
-+    );
-+  --rh-color-icon-primary:
-+    light-dark(
-+      var(--rh-color-icon-primary-on-light-on-light, #ee0000),
-+      var(--rh-color-icon-primary-on-dark, #ee0000)
-+    );
-+  --rh-color-icon-secondary:
-+    light-dark(
-+      var(--rh-color-icon-secondary-on-light-on-light, #151515),
-+      var(--rh-color-icon-secondary-on-dark, #ffffff)
-+    );
-+  --rh-color-icon-status-danger:
-+    light-dark(
-+      var(--rh-color-icon-status-danger-on-light-on-light, #b1380b),
-+      var(--rh-color-icon-status-danger-on-dark, #f0561d)
-+    );
-+  --rh-color-icon-status-caution:
-+    light-dark(
-+      var(--rh-color-icon-status-caution-on-light-on-light, #ca6c0f),
-+      var(--rh-color-icon-status-caution-on-dark, #f5921b)
-+    );
-+  --rh-color-icon-status-warning:
-+    light-dark(
-+      var(--rh-color-icon-status-warning-on-light-on-light, #dca614),
-+      var(--rh-color-icon-status-warning-on-dark, #ffcc17)
-+    );
-+  --rh-color-icon-status-default:
-+    light-dark(
-+      var(--rh-color-icon-status-default-on-light-on-light, #4d4d4d),
-+      var(--rh-color-icon-status-default-on-dark, #4d4d4d)
-+    );
-+  --rh-color-icon-status-neutral:
-+    light-dark(
-+      var(--rh-color-icon-status-neutral-on-light-on-light, #4d4d4d),
-+      var(--rh-color-icon-status-neutral-on-dark, #c7c7c7)
-+    );
-+  --rh-color-icon-status-info:
-+    light-dark(
-+      var(--rh-color-icon-status-info-on-light-on-light, #5e40be),
-+      var(--rh-color-icon-status-info-on-dark, #b6a6e9)
-+    );
-+  --rh-color-icon-status-success:
-+    light-dark(
-+      var(--rh-color-icon-status-success-on-light-on-light, #3d7317),
-+      var(--rh-color-icon-status-success-on-dark, #87bb62)
-+    );
-+  --rh-color-interactive-primary-default:
-+    light-dark(
-+      var(--rh-color-interactive-primary-default-on-light-on-light, #0066cc),
-+      var(--rh-color-interactive-primary-default-on-dark, #92c5f9)
-+    );
-+  --rh-color-interactive-primary-hover:
-+    light-dark(
-+      var(--rh-color-interactive-primary-hover-on-light-on-light, #003366),
-+      var(--rh-color-interactive-primary-hover-on-dark, #b9dafc)
-+    );
-+  --rh-color-interactive-primary-active:
-+    light-dark(
-+      var(--rh-color-interactive-primary-active-on-light-on-light, #003366),
-+      var(--rh-color-interactive-primary-active-on-dark, #b9dafc)
-+    );
-+  --rh-color-interactive-primary-focus:
-+    light-dark(
-+      var(--rh-color-interactive-primary-focus-on-light-on-light, #003366),
-+      var(--rh-color-interactive-primary-focus-on-dark, #b9dafc)
-+    );
-+  --rh-color-interactive-primary-visited-default:
-+    light-dark(
-+      var(--rh-color-interactive-primary-visited-default-on-light-on-light, #5e40be),
-+      var(--rh-color-interactive-primary-visited-default-on-dark, #b6a6e9)
-+    );
-+  --rh-color-interactive-primary-visited-hover:
-+    light-dark(
-+      var(--rh-color-interactive-primary-visited-hover-on-light-on-light, #21134d),
-+      var(--rh-color-interactive-primary-visited-hover-on-dark, #ece6ff)
-+    );
-+  --rh-color-interactive-primary-visited-active:
-+    light-dark(
-+      var(--rh-color-interactive-primary-visited-active-on-light-on-light, #21134d),
-+      var(--rh-color-interactive-primary-visited-active-on-dark, #ece6ff)
-+    );
-+  --rh-color-interactive-primary-visited-focus:
-+    light-dark(
-+      var(--rh-color-interactive-primary-visited-focus-on-light-on-light, #21134d),
-+      var(--rh-color-interactive-primary-visited-focus-on-dark, #ece6ff)
-+    );
-+  --rh-color-interactive-secondary-default:
-+    light-dark(
-+      var(--rh-color-interactive-secondary-default-on-light-on-light, #4d4d4d),
-+      var(--rh-color-interactive-secondary-default-on-dark, #c7c7c7)
-+    );
-+  --rh-color-interactive-secondary-hover:
-+    light-dark(
-+      var(--rh-color-interactive-secondary-hover-on-light-on-light, #4d4d4d),
-+      var(--rh-color-interactive-secondary-hover-on-dark, #c7c7c7)
-+    );
-+  --rh-color-interactive-secondary-active:
-+    light-dark(
-+      var(--rh-color-interactive-secondary-active-on-light-on-light, #4d4d4d),
-+      var(--rh-color-interactive-secondary-active-on-dark, #c7c7c7)
-+    );
-+  --rh-color-interactive-secondary-focus:
-+    light-dark(
-+      var(--rh-color-interactive-secondary-focus-on-light-on-light, #4d4d4d),
-+      var(--rh-color-interactive-secondary-focus-on-dark, #c7c7c7)
-+    );
-+  --rh-color-interactive-secondary-visited-default:
-+    light-dark(
-+      var(--rh-color-interactive-secondary-visited-default-on-light-on-light, #4d4d4d),
-+      var(--rh-color-interactive-secondary-visited-default-on-dark, #c7c7c7)
-+    );
-+  --rh-color-interactive-secondary-visited-hover:
-+    light-dark(
-+      var(--rh-color-interactive-secondary-visited-hover-on-light-on-light, #4d4d4d),
-+      var(--rh-color-interactive-secondary-visited-hover-on-dark, #c7c7c7)
-+    );
-+  --rh-color-interactive-secondary-visited-active:
-+    light-dark(
-+      var(--rh-color-interactive-secondary-visited-active-on-light-on-light, #4d4d4d),
-+      var(--rh-color-interactive-secondary-visited-active-on-dark, #c7c7c7)
-+    );
-+  --rh-color-interactive-secondary-visited-focus:
-+    light-dark(
-+      var(--rh-color-interactive-secondary-visited-focus-on-light-on-light, #4d4d4d),
-+      var(--rh-color-interactive-secondary-visited-focus-on-dark, #c7c7c7)
-+    );
-+  --rh-color-status-danger:
-+    light-dark(
-+      var(--rh-color-status-danger-on-light-on-light, #b1380b),
-+      var(--rh-color-status-danger-on-dark, #f0561d)
-+    );
-+  --rh-color-status-caution:
-+    light-dark(
-+      var(--rh-color-status-caution-on-light-on-light, #ca6c0f),
-+      var(--rh-color-status-caution-on-dark, #f5921b)
-+    );
-+  --rh-color-status-warning:
-+    light-dark(
-+      var(--rh-color-status-warning-on-light-on-light, #dca614),
-+      var(--rh-color-status-warning-on-dark, #ffcc17)
-+    );
-+  --rh-color-status-neutral:
-+    light-dark(
-+      var(--rh-color-status-neutral-on-light-on-light, #4d4d4d),
-+      var(--rh-color-status-neutral-on-dark, #c7c7c7)
-+    );
-+  --rh-color-status-note:
-+    light-dark(
-+      var(--rh-color-status-note-on-light-on-light, #5e40be),
-+      var(--rh-color-status-note-on-dark, #b6a6e9)
-+    );
-+  --rh-color-status-info:
-+    light-dark(
-+      var(--rh-color-status-info-on-light-on-light, #5e40be),
-+      var(--rh-color-status-info-on-dark, #b6a6e9)
-+    );
-+  --rh-color-status-success:
-+    light-dark(
-+      var(--rh-color-status-success-on-light-on-light, #3d7317),
-+      var(--rh-color-status-success-on-dark, #87bb62)
-+    );
-+
-+  --rh-color-surface-status-danger:
-+    light-dark(
-+      var(--rh-color-surface-status-danger-on-light-on-light, #ffe3d9),
-+      var(--rh-color-surface-status-danger-on-dark, #ffe3d9)
-+    );
-+  --rh-color-surface-status-caution:
-+    light-dark(
-+      var(--rh-color-surface-status-caution-on-light-on-light, #ffe8cc),
-+      var(--rh-color-surface-status-caution-on-dark, #ffe8cc)
-+    );
-+  --rh-color-surface-status-warning:
-+    light-dark(
-+      var(--rh-color-surface-status-warning-on-light-on-light, #fff4cc),
-+      var(--rh-color-surface-status-warning-on-dark, #73480b)
-+    );
-+  --rh-color-surface-status-default:
-+    light-dark(
-+      var(--rh-color-surface-status-default-on-light-on-light, #f2f2f2),
-+      var(--rh-color-surface-status-default-on-dark, #f2f2f2)
-+    );
-+  --rh-color-surface-status-neutral:
-+    light-dark(
-+      var(--rh-color-surface-status-neutral-on-light-on-light, #f2f2f2),
-+      var(--rh-color-surface-status-neutral-on-dark, #f2f2f2)
-+    );
-+  --rh-color-surface-status-info:
-+    light-dark(
-+      var(--rh-color-surface-status-info-on-light-on-light, #ece6ff),
-+      var(--rh-color-surface-status-info-on-dark, #ece6ff)
-+    );
-+  --rh-color-surface-status-success:
-+    light-dark(
-+      var(--rh-color-surface-status-success-on-light-on-light, #e9f7df),
-+      var(--rh-color-surface-status-success-on-dark, #e9f7df)
-+    );
-+  --rh-color-text-primary:
-+    light-dark(
-+      var(--rh-color-text-primary-on-light-on-light, #151515),
-+      var(--rh-color-text-primary-on-dark, #ffffff)
-+    );
-+  --rh-color-text-secondary:
-+    light-dark(
-+      var(--rh-color-text-secondary-on-light-on-light, #4d4d4d),
-+      var(--rh-color-text-secondary-on-dark, #c7c7c7)
-+    );
-+  --rh-color-text-brand:
-+    light-dark(
-+      var(--rh-color-text-brand-on-light-on-light, #ee0000),
-+      var(--rh-color-text-brand-on-dark, #ee0000)
-+    );
-+}`;
-+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY29sb3ItcGFsZXR0ZS5jc3MuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJjb2xvci1wYWxldHRlLmNzcy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTs7OztHQUlHO0FBRUgsT0FBTyxFQUFFLEdBQUcsRUFBRSxNQUFNLEtBQUssQ0FBQztBQUFDLGVBQWUsR0FBRyxDQUFBOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztFQXNSM0MsQ0FBQyJ9
++:host([color-palette^="dark"]) { color-scheme: only dark; }
++:host([color-palette^="light"]) { color-scheme: only light; }
++:host([color-palette="lightest"]) { --rh-color-surface: var(--rh-color-surface-lightest, #ffffff); }
++:host([color-palette="lighter"]) { --rh-color-surface: var(--rh-color-surface-lighter, #f2f2f2); }
++:host([color-palette="light"]) { --rh-color-surface: var(--rh-color-surface-light, #e0e0e0); }
++:host([color-palette="dark"]) { --rh-color-surface: var(--rh-color-surface-dark, #383838); }
++:host([color-palette="darker"]) { --rh-color-surface: var(--rh-color-surface-darker, #1f1f1f); }
++:host([color-palette="darkest"]) { --rh-color-surface: var(--rh-color-surface-darkest, #151515); }`;
++//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY29sb3ItcGFsZXR0ZS5jc3MuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJjb2xvci1wYWxldHRlLmNzcy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTs7OztHQUlHO0FBRUgsT0FBTyxFQUFFLEdBQUcsRUFBRSxNQUFNLEtBQUssQ0FBQztBQUFDLGVBQWUsR0FBRyxDQUFBOzs7Ozs7OzttR0FRc0QsQ0FBQyJ9
 \ No newline at end of file
 diff --git a/node_modules/@rhds/tokens/css/color-palette.css.ts b/node_modules/@rhds/tokens/css/color-palette.css.ts
 new file mode 100644
-index 0000000..048eaeb
+index 0000000..d2f1eb8
 --- /dev/null
 +++ b/node_modules/@rhds/tokens/css/color-palette.css.ts
-@@ -0,0 +1,285 @@
+@@ -0,0 +1,15 @@
 +/**
 + * Do not edit directly, this file was auto-generated.
 + * 
@@ -831,291 +562,21 @@ index 0000000..048eaeb
 + */
 +
 +import { css } from 'lit'; export default css`
-+:root, :host {
-+  --rh-color-accent-base:
-+    light-dark(
-+      var(--rh-color-accent-base-on-light-on-light, #0066cc),
-+      var(--rh-color-accent-base-on-dark, #92c5f9)
-+    );
-+  --rh-color-accent-brand:
-+    light-dark(
-+      var(--rh-color-accent-brand-on-light-on-light, #ee0000),
-+      var(--rh-color-accent-brand-on-dark, #ee0000)
-+    );
-+  --rh-color-border-strong:
-+    light-dark(
-+      var(--rh-color-border-strong-on-light-on-light, #151515),
-+      var(--rh-color-border-strong-on-dark, #ffffff)
-+    );
-+  --rh-color-border-subtle:
-+    light-dark(
-+      var(--rh-color-border-subtle-on-light-on-light, #c7c7c7),
-+      var(--rh-color-border-subtle-on-dark, #707070)
-+    );
-+  --rh-color-border-interactive:
-+    light-dark(
-+      var(--rh-color-border-interactive-on-light-on-light, #0066cc),
-+      var(--rh-color-border-interactive-on-dark, #92c5f9)
-+    );
-+  --rh-color-border-destructive:
-+    light-dark(
-+      var(--rh-color-border-destructive-on-light-on-light, #b1380b),
-+      var(--rh-color-border-destructive-on-dark, #f0561d)
-+    );
-+  --rh-color-border-status-danger:
-+    light-dark(
-+      var(--rh-color-border-status-danger-on-light-on-light, #b1380b),
-+      var(--rh-color-border-status-danger-on-dark, #f0561d)
-+    );
-+  --rh-color-border-status-caution:
-+    light-dark(
-+      var(--rh-color-border-status-caution-on-light-on-light, #ca6c0f),
-+      var(--rh-color-border-status-caution-on-dark, #f5921b)
-+    );
-+  --rh-color-border-status-warning:
-+    light-dark(
-+      var(--rh-color-border-status-warning-on-light-on-light, #dca614),
-+      var(--rh-color-border-status-warning-on-dark, #ffcc17)
-+    );
-+  --rh-color-border-status-neutral:
-+    light-dark(
-+      var(--rh-color-border-status-neutral-on-light-on-light, #4d4d4d),
-+      var(--rh-color-border-status-neutral-on-dark, #c7c7c7)
-+    );
-+  --rh-color-border-status-info:
-+    light-dark(
-+      var(--rh-color-border-status-info-on-light-on-light, #5e40be),
-+      var(--rh-color-border-status-info-on-dark, #b6a6e9)
-+    );
-+  --rh-color-border-status-success:
-+    light-dark(
-+      var(--rh-color-border-status-success-on-light-on-light, #3d7317),
-+      var(--rh-color-border-status-success-on-dark, #87bb62)
-+    );
-+  --rh-color-brand-red:
-+    light-dark(
-+      var(--rh-color-brand-red-on-light-on-light, #ee0000),
-+      var(--rh-color-brand-red-on-dark, #ee0000)
-+    );
-+  --rh-color-icon-primary:
-+    light-dark(
-+      var(--rh-color-icon-primary-on-light-on-light, #ee0000),
-+      var(--rh-color-icon-primary-on-dark, #ee0000)
-+    );
-+  --rh-color-icon-secondary:
-+    light-dark(
-+      var(--rh-color-icon-secondary-on-light-on-light, #151515),
-+      var(--rh-color-icon-secondary-on-dark, #ffffff)
-+    );
-+  --rh-color-icon-status-danger:
-+    light-dark(
-+      var(--rh-color-icon-status-danger-on-light-on-light, #b1380b),
-+      var(--rh-color-icon-status-danger-on-dark, #f0561d)
-+    );
-+  --rh-color-icon-status-caution:
-+    light-dark(
-+      var(--rh-color-icon-status-caution-on-light-on-light, #ca6c0f),
-+      var(--rh-color-icon-status-caution-on-dark, #f5921b)
-+    );
-+  --rh-color-icon-status-warning:
-+    light-dark(
-+      var(--rh-color-icon-status-warning-on-light-on-light, #dca614),
-+      var(--rh-color-icon-status-warning-on-dark, #ffcc17)
-+    );
-+  --rh-color-icon-status-default:
-+    light-dark(
-+      var(--rh-color-icon-status-default-on-light-on-light, #4d4d4d),
-+      var(--rh-color-icon-status-default-on-dark, #4d4d4d)
-+    );
-+  --rh-color-icon-status-neutral:
-+    light-dark(
-+      var(--rh-color-icon-status-neutral-on-light-on-light, #4d4d4d),
-+      var(--rh-color-icon-status-neutral-on-dark, #c7c7c7)
-+    );
-+  --rh-color-icon-status-info:
-+    light-dark(
-+      var(--rh-color-icon-status-info-on-light-on-light, #5e40be),
-+      var(--rh-color-icon-status-info-on-dark, #b6a6e9)
-+    );
-+  --rh-color-icon-status-success:
-+    light-dark(
-+      var(--rh-color-icon-status-success-on-light-on-light, #3d7317),
-+      var(--rh-color-icon-status-success-on-dark, #87bb62)
-+    );
-+  --rh-color-interactive-primary-default:
-+    light-dark(
-+      var(--rh-color-interactive-primary-default-on-light-on-light, #0066cc),
-+      var(--rh-color-interactive-primary-default-on-dark, #92c5f9)
-+    );
-+  --rh-color-interactive-primary-hover:
-+    light-dark(
-+      var(--rh-color-interactive-primary-hover-on-light-on-light, #003366),
-+      var(--rh-color-interactive-primary-hover-on-dark, #b9dafc)
-+    );
-+  --rh-color-interactive-primary-active:
-+    light-dark(
-+      var(--rh-color-interactive-primary-active-on-light-on-light, #003366),
-+      var(--rh-color-interactive-primary-active-on-dark, #b9dafc)
-+    );
-+  --rh-color-interactive-primary-focus:
-+    light-dark(
-+      var(--rh-color-interactive-primary-focus-on-light-on-light, #003366),
-+      var(--rh-color-interactive-primary-focus-on-dark, #b9dafc)
-+    );
-+  --rh-color-interactive-primary-visited-default:
-+    light-dark(
-+      var(--rh-color-interactive-primary-visited-default-on-light-on-light, #5e40be),
-+      var(--rh-color-interactive-primary-visited-default-on-dark, #b6a6e9)
-+    );
-+  --rh-color-interactive-primary-visited-hover:
-+    light-dark(
-+      var(--rh-color-interactive-primary-visited-hover-on-light-on-light, #21134d),
-+      var(--rh-color-interactive-primary-visited-hover-on-dark, #ece6ff)
-+    );
-+  --rh-color-interactive-primary-visited-active:
-+    light-dark(
-+      var(--rh-color-interactive-primary-visited-active-on-light-on-light, #21134d),
-+      var(--rh-color-interactive-primary-visited-active-on-dark, #ece6ff)
-+    );
-+  --rh-color-interactive-primary-visited-focus:
-+    light-dark(
-+      var(--rh-color-interactive-primary-visited-focus-on-light-on-light, #21134d),
-+      var(--rh-color-interactive-primary-visited-focus-on-dark, #ece6ff)
-+    );
-+  --rh-color-interactive-secondary-default:
-+    light-dark(
-+      var(--rh-color-interactive-secondary-default-on-light-on-light, #4d4d4d),
-+      var(--rh-color-interactive-secondary-default-on-dark, #c7c7c7)
-+    );
-+  --rh-color-interactive-secondary-hover:
-+    light-dark(
-+      var(--rh-color-interactive-secondary-hover-on-light-on-light, #4d4d4d),
-+      var(--rh-color-interactive-secondary-hover-on-dark, #c7c7c7)
-+    );
-+  --rh-color-interactive-secondary-active:
-+    light-dark(
-+      var(--rh-color-interactive-secondary-active-on-light-on-light, #4d4d4d),
-+      var(--rh-color-interactive-secondary-active-on-dark, #c7c7c7)
-+    );
-+  --rh-color-interactive-secondary-focus:
-+    light-dark(
-+      var(--rh-color-interactive-secondary-focus-on-light-on-light, #4d4d4d),
-+      var(--rh-color-interactive-secondary-focus-on-dark, #c7c7c7)
-+    );
-+  --rh-color-interactive-secondary-visited-default:
-+    light-dark(
-+      var(--rh-color-interactive-secondary-visited-default-on-light-on-light, #4d4d4d),
-+      var(--rh-color-interactive-secondary-visited-default-on-dark, #c7c7c7)
-+    );
-+  --rh-color-interactive-secondary-visited-hover:
-+    light-dark(
-+      var(--rh-color-interactive-secondary-visited-hover-on-light-on-light, #4d4d4d),
-+      var(--rh-color-interactive-secondary-visited-hover-on-dark, #c7c7c7)
-+    );
-+  --rh-color-interactive-secondary-visited-active:
-+    light-dark(
-+      var(--rh-color-interactive-secondary-visited-active-on-light-on-light, #4d4d4d),
-+      var(--rh-color-interactive-secondary-visited-active-on-dark, #c7c7c7)
-+    );
-+  --rh-color-interactive-secondary-visited-focus:
-+    light-dark(
-+      var(--rh-color-interactive-secondary-visited-focus-on-light-on-light, #4d4d4d),
-+      var(--rh-color-interactive-secondary-visited-focus-on-dark, #c7c7c7)
-+    );
-+  --rh-color-status-danger:
-+    light-dark(
-+      var(--rh-color-status-danger-on-light-on-light, #b1380b),
-+      var(--rh-color-status-danger-on-dark, #f0561d)
-+    );
-+  --rh-color-status-caution:
-+    light-dark(
-+      var(--rh-color-status-caution-on-light-on-light, #ca6c0f),
-+      var(--rh-color-status-caution-on-dark, #f5921b)
-+    );
-+  --rh-color-status-warning:
-+    light-dark(
-+      var(--rh-color-status-warning-on-light-on-light, #dca614),
-+      var(--rh-color-status-warning-on-dark, #ffcc17)
-+    );
-+  --rh-color-status-neutral:
-+    light-dark(
-+      var(--rh-color-status-neutral-on-light-on-light, #4d4d4d),
-+      var(--rh-color-status-neutral-on-dark, #c7c7c7)
-+    );
-+  --rh-color-status-note:
-+    light-dark(
-+      var(--rh-color-status-note-on-light-on-light, #5e40be),
-+      var(--rh-color-status-note-on-dark, #b6a6e9)
-+    );
-+  --rh-color-status-info:
-+    light-dark(
-+      var(--rh-color-status-info-on-light-on-light, #5e40be),
-+      var(--rh-color-status-info-on-dark, #b6a6e9)
-+    );
-+  --rh-color-status-success:
-+    light-dark(
-+      var(--rh-color-status-success-on-light-on-light, #3d7317),
-+      var(--rh-color-status-success-on-dark, #87bb62)
-+    );
-+
-+  --rh-color-surface-status-danger:
-+    light-dark(
-+      var(--rh-color-surface-status-danger-on-light-on-light, #ffe3d9),
-+      var(--rh-color-surface-status-danger-on-dark, #ffe3d9)
-+    );
-+  --rh-color-surface-status-caution:
-+    light-dark(
-+      var(--rh-color-surface-status-caution-on-light-on-light, #ffe8cc),
-+      var(--rh-color-surface-status-caution-on-dark, #ffe8cc)
-+    );
-+  --rh-color-surface-status-warning:
-+    light-dark(
-+      var(--rh-color-surface-status-warning-on-light-on-light, #fff4cc),
-+      var(--rh-color-surface-status-warning-on-dark, #73480b)
-+    );
-+  --rh-color-surface-status-default:
-+    light-dark(
-+      var(--rh-color-surface-status-default-on-light-on-light, #f2f2f2),
-+      var(--rh-color-surface-status-default-on-dark, #f2f2f2)
-+    );
-+  --rh-color-surface-status-neutral:
-+    light-dark(
-+      var(--rh-color-surface-status-neutral-on-light-on-light, #f2f2f2),
-+      var(--rh-color-surface-status-neutral-on-dark, #f2f2f2)
-+    );
-+  --rh-color-surface-status-info:
-+    light-dark(
-+      var(--rh-color-surface-status-info-on-light-on-light, #ece6ff),
-+      var(--rh-color-surface-status-info-on-dark, #ece6ff)
-+    );
-+  --rh-color-surface-status-success:
-+    light-dark(
-+      var(--rh-color-surface-status-success-on-light-on-light, #e9f7df),
-+      var(--rh-color-surface-status-success-on-dark, #e9f7df)
-+    );
-+  --rh-color-text-primary:
-+    light-dark(
-+      var(--rh-color-text-primary-on-light-on-light, #151515),
-+      var(--rh-color-text-primary-on-dark, #ffffff)
-+    );
-+  --rh-color-text-secondary:
-+    light-dark(
-+      var(--rh-color-text-secondary-on-light-on-light, #4d4d4d),
-+      var(--rh-color-text-secondary-on-dark, #c7c7c7)
-+    );
-+  --rh-color-text-brand:
-+    light-dark(
-+      var(--rh-color-text-brand-on-light-on-light, #ee0000),
-+      var(--rh-color-text-brand-on-dark, #ee0000)
-+    );
-+}`;
++:host([color-palette^="dark"]) { color-scheme: only dark; }
++:host([color-palette^="light"]) { color-scheme: only light; }
++:host([color-palette="lightest"]) { --rh-color-surface: var(--rh-color-surface-lightest, #ffffff); }
++:host([color-palette="lighter"]) { --rh-color-surface: var(--rh-color-surface-lighter, #f2f2f2); }
++:host([color-palette="light"]) { --rh-color-surface: var(--rh-color-surface-light, #e0e0e0); }
++:host([color-palette="dark"]) { --rh-color-surface: var(--rh-color-surface-dark, #383838); }
++:host([color-palette="darker"]) { --rh-color-surface: var(--rh-color-surface-darker, #1f1f1f); }
++:host([color-palette="darkest"]) { --rh-color-surface: var(--rh-color-surface-darkest, #151515); }`;
 \ No newline at end of file
 diff --git a/node_modules/@rhds/tokens/css/color-scheme.css b/node_modules/@rhds/tokens/css/color-scheme.css
 new file mode 100644
-index 0000000..8930296
+index 0000000..8880a35
 --- /dev/null
 +++ b/node_modules/@rhds/tokens/css/color-scheme.css
-@@ -0,0 +1,285 @@
+@@ -0,0 +1,289 @@
 +/**
 + * Do not edit directly, this file was auto-generated.
 + * 
@@ -1349,7 +810,11 @@ index 0000000..8930296
 +      var(--rh-color-status-success-on-light-on-light, #3d7317),
 +      var(--rh-color-status-success-on-dark, #87bb62)
 +    );
-+
++  --rh-color-surface:
++    light-dark(
++      var(--rh-color-surface-lightest, #ffffff),
++      var(--rh-color-surface-darkest, #151515)
++    );
 +  --rh-color-surface-status-danger:
 +    light-dark(
 +      var(--rh-color-surface-status-danger-on-light-on-light, #ffe3d9),
@@ -1407,10 +872,10 @@ rename from node_modules/@rhds/tokens/css/color-context-provider.css.d.ts
 rename to node_modules/@rhds/tokens/css/color-scheme.css.d.ts
 diff --git a/node_modules/@rhds/tokens/css/color-scheme.css.js b/node_modules/@rhds/tokens/css/color-scheme.css.js
 new file mode 100644
-index 0000000..fd17ab7
+index 0000000..ebbb09b
 --- /dev/null
 +++ b/node_modules/@rhds/tokens/css/color-scheme.css.js
-@@ -0,0 +1,286 @@
+@@ -0,0 +1,290 @@
 +/**
 + * Do not edit directly, this file was auto-generated.
 + *
@@ -1644,7 +1109,11 @@ index 0000000..fd17ab7
 +      var(--rh-color-status-success-on-light-on-light, #3d7317),
 +      var(--rh-color-status-success-on-dark, #87bb62)
 +    );
-+
++  --rh-color-surface:
++    light-dark(
++      var(--rh-color-surface-lightest, #ffffff),
++      var(--rh-color-surface-darkest, #151515)
++    );
 +  --rh-color-surface-status-danger:
 +    light-dark(
 +      var(--rh-color-surface-status-danger-on-light-on-light, #ffe3d9),
@@ -1696,14 +1165,14 @@ index 0000000..fd17ab7
 +      var(--rh-color-text-brand-on-dark, #ee0000)
 +    );
 +}`;
-+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY29sb3Itc2NoZW1lLmNzcy5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbImNvbG9yLXNjaGVtZS5jc3MudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7Ozs7R0FJRztBQUVILE9BQU8sRUFBRSxHQUFHLEVBQUUsTUFBTSxLQUFLLENBQUM7QUFBQyxlQUFlLEdBQUcsQ0FBQTs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7RUFzUjNDLENBQUMifQ==
++//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY29sb3Itc2NoZW1lLmNzcy5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbImNvbG9yLXNjaGVtZS5jc3MudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7Ozs7R0FJRztBQUVILE9BQU8sRUFBRSxHQUFHLEVBQUUsTUFBTSxLQUFLLENBQUM7QUFBQyxlQUFlLEdBQUcsQ0FBQTs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0VBMFIzQyxDQUFDIn0=
 \ No newline at end of file
 diff --git a/node_modules/@rhds/tokens/css/color-scheme.css.ts b/node_modules/@rhds/tokens/css/color-scheme.css.ts
 new file mode 100644
-index 0000000..048eaeb
+index 0000000..aa03f1d
 --- /dev/null
 +++ b/node_modules/@rhds/tokens/css/color-scheme.css.ts
-@@ -0,0 +1,285 @@
+@@ -0,0 +1,289 @@
 +/**
 + * Do not edit directly, this file was auto-generated.
 + * 
@@ -1937,7 +1406,11 @@ index 0000000..048eaeb
 +      var(--rh-color-status-success-on-light-on-light, #3d7317),
 +      var(--rh-color-status-success-on-dark, #87bb62)
 +    );
-+
++  --rh-color-surface:
++    light-dark(
++      var(--rh-color-surface-lightest, #ffffff),
++      var(--rh-color-surface-darkest, #151515)
++    );
 +  --rh-color-surface-status-danger:
 +    light-dark(
 +      var(--rh-color-surface-status-danger-on-light-on-light, #ffe3d9),
