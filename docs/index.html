@@ -57,8 +57,8 @@ title: Home
   }
 
   rh-card {
-    --rh-color-border-subtle-on-light: transparent;
-    --rh-color-border-subtle-on-dark: transparent;
+    --rh-color-border-subtle-on-light: transparent !important;
+    --rh-color-border-subtle-on-dark: transparent !important;
 
     & p { margin: 0; }
 
@@ -98,7 +98,13 @@ title: Home
 
       &::part(container) {
         display: grid;
-        background: linear-gradient(90deg, var(--rh-color-gray-10) 0%, white 100%);
+        background: linear-gradient(
+          90deg,
+          light-dark(var(--rh-color-gray-10), var(--rh-color-gray-90)),
+          0%,
+          light-dark(white, black),
+          100%
+        );
         background-repeat: no-repeat;
         border-radius: 48px 16px;
         padding: var(--nav-padding);

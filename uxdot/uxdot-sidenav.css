@@ -3,6 +3,7 @@
   --_padding-end: var(--uxdot-sidenav-padding-end, var(--rh-space-2xl));
   --_max-height: 100dvh;
 
+  color-scheme: light dark;
   width: 100%;
   height: var(--_max-height);
   top: 0;
@@ -73,7 +74,7 @@
   margin-block: 0 !important;
   height: var(--_max-height);
   overflow-y: scroll;
-  background-color: var(--rh-color-surface-lightest);
+  background-color: var(--rh-color-surface);
 }
 
 :host([open]) [part='overlay'] {
