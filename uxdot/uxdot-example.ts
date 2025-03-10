@@ -2,14 +2,10 @@ import { LitElement, html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 
 import {
-  colorContextProvider,
+  colorSchemeProvider,
   type ColorPalette,
 } from '@rhds/elements/lib/context/color/provider.js';
-
-import {
-  colorContextConsumer,
-  type ColorTheme,
-} from '@rhds/elements/lib/context/color/consumer.js';
+import { colorSchemeConsumer } from '@rhds/elements/lib/context/color/consumer.js';
 
 import { property } from 'lit/decorators/property.js';
 import { customElement } from 'lit/decorators/custom-element.js';
@@ -17,20 +13,16 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import styles from './uxdot-example.css';
 
 @customElement('uxdot-example')
+@colorSchemeProvider()
+@colorSchemeConsumer
 export class UxdotExample extends LitElement {
   static styles = [styles];
 
   /**
    * Sets color context for child components, overrides parent context
    */
-  @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' })
   colorPalette?: ColorPalette;
-
-  /**
-   * Sets color theme based on parent context
-   */
-  @colorContextConsumer() private on?: ColorTheme;
 
   /* force a transparent background */
   @property({ type: Boolean })
@@ -56,11 +48,11 @@ export class UxdotExample extends LitElement {
   alignment = 'center';
 
   render() {
-    const { on = '', widthAdjustment, alignment } = this;
+    const { widthAdjustment, alignment } = this;
     return html`
       <div id="container"
            part="container"
-           class="on ${classMap({ [on]: !!on, widthAdjustment: widthAdjustment !== '100%' })}"
+           class="on ${classMap({ widthAdjustment: widthAdjustment !== '100%' })}"
            style="--_width: ${widthAdjustment}; --_alignment: ${alignment}">
         <slot></slot>
       </div>

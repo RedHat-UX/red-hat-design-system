@@ -57,8 +57,8 @@ title: Home
   }
 
   rh-card {
-    --rh-color-border-subtle-on-light: transparent;
-    --rh-color-border-subtle-on-dark: transparent;
+    --rh-color-border-subtle-on-light: transparent !important;
+    --rh-color-border-subtle-on-dark: transparent !important;
 
     & p { margin: 0; }
 
@@ -97,8 +97,17 @@ title: Home
       }
 
       &::part(container) {
+        --_gradient-start: light-dark(
+          var(--rh-color-gray-10),
+          black
+        );
+        --_gradient-end: light-dark(white, var(--rh-color-gray-90));
         display: grid;
-        background: linear-gradient(90deg, var(--rh-color-gray-10) 0%, white 100%);
+        background: linear-gradient(
+          90deg,
+          var(--_gradient-start) 0%,
+          var(--_gradient-end) 100%
+        );
         background-repeat: no-repeat;
         border-radius: 48px 16px;
         padding: var(--nav-padding);
@@ -152,9 +161,7 @@ title: Home
 {% include 'partials/component/masthead.njk' %}
 {% include 'partials/component/sidenav.njk' %}
 
-<rh-surface id="main"
-            role="main"
-            color-palette="lightest">
+<rh-surface id="main" role="main">
   <div id="container">
     <header id="hero">
       <h1>Digital experiences that look and feel like Red Hat</h1>

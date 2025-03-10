@@ -1,21 +1,22 @@
 import type MarkdownIt from 'markdown-it';
 import type State from 'markdown-it/lib/rules_core/state_core.mjs';
 import type { UserConfig } from '@11ty/eleventy';
-import markdownItAnchor from 'markdown-it-anchor';
-import markdownItAttrs from 'markdown-it-attrs';
-import markdownItFootnote from 'markdown-it-footnote';
+import anchor from 'markdown-it-anchor';
+import attrs from 'markdown-it-attrs';
+import footnote from 'markdown-it-footnote';
+import deflist from 'markdown-it-deflist';
 
 /* eslint-disable lit-a11y/anchor-is-valid */
 /* eslint-disable lit-a11y/accessible-name */
 
-const { makePermalink } = markdownItAnchor.permalink as unknown as {
+const { makePermalink } = anchor.permalink as unknown as {
   makePermalink(callback: (
     slug: string,
-    opts: markdownItAnchor.PermalinkOptions,
-    anchorOptions: markdownItAnchor.AnchorOptions,
+    opts: anchor.PermalinkOptions,
+    anchorOptions: anchor.AnchorOptions,
     state: State,
     idx: number,
-  ) => void): () => markdownItAnchor.PermalinkGenerator;
+  ) => void): () => anchor.PermalinkGenerator;
 };
 
 // for editor highlighting
@@ -79,8 +80,9 @@ function rhdsCodeBlock(md: MarkdownIt) {
 export default function(eleventyConfig: UserConfig) {
   eleventyConfig.amendLibrary('md', md => md
       .set({ html: true, breaks: false })
-      .use(markdownItAnchor, { permalink: rhdsPermalink() })
-      .use(markdownItFootnote)
-      .use(markdownItAttrs)
+      .use(anchor, { permalink: rhdsPermalink() })
+      .use(footnote)
+      .use(deflist)
+      .use(attrs)
       .use(rhdsCodeBlock));
 };

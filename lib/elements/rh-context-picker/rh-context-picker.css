@@ -10,11 +10,7 @@
 #container {
   display: contents;
 
-  --thumb-color: var(--rh-color-interactive-primary-default-on-light, #0066cc);
-}
-
-#container.on.dark {
-  --thumb-color: var(--rh-color-interactive-primary-default-on-dark, #92c5f9);
+  --thumb-color: var(--rh-color-interactive-primary-default);
 }
 
 .darkest { --c: var(--rh-color-surface-darkest, #151515); }
