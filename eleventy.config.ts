@@ -203,6 +203,7 @@ export default async function(eleventyConfig: UserConfig) {
     tsconfig: './tsconfig.settings.json',
     componentModules: [
       'elements/rh-button/rh-button.ts',
+      'elements/rh-cta/rh-cta.ts',
       'elements/rh-icon/rh-icon.ts',
       'elements/rh-surface/rh-surface.ts',
       'elements/rh-code-block/rh-code-block.ts',
@@ -219,7 +220,6 @@ export default async function(eleventyConfig: UserConfig) {
       'uxdot/uxdot-example.ts',
       'uxdot/uxdot-feedback.ts',
       'uxdot/uxdot-header.ts',
-      'uxdot/uxdot-hero.ts',
       'uxdot/uxdot-installation-tabs.ts',
       'uxdot/uxdot-masthead.ts',
       'uxdot/uxdot-pattern.ts',
@@ -246,4 +246,3 @@ export default async function(eleventyConfig: UserConfig) {
     },
   };
 };
-

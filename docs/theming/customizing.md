@@ -85,8 +85,7 @@ that look like `--rh-color-*-on-(light|dark)`.
 <uxdot-pattern class="card-snippet-grid"
                full-height
                active-tab="css"
-               src="./patterns/card-bordeaux.html">
-</uxdot-pattern>
+               src="./patterns/card-bordeaux.html"></uxdot-pattern>
 
 <rh-alert>When writing themes, override the semantic, themeable tokens such as
 `--rh-color-interactive-primary-default-on-light` rather than the crayon tokens

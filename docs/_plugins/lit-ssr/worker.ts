@@ -26,15 +26,22 @@ const { imports, tsconfig } = Piscina.workerData as WorkerInitData;
 registerTS({ tsconfig });
 register('./lit-css-node.ts', import.meta.url);
 
-async function importModule(bareSpec: string) {
-  const spec = pathToFileURL(resolve(process.cwd(), bareSpec)).href.replace('.js', '.ts');
-  await import(spec);
-}
-
-await Promise
-    .allSettled(imports.map(importModule))
-    // eslint-disable-next-line no-console
-    .catch(console.error);
+/* eslint-disable no-console */
+try {
+  await Promise
+      .allSettled(imports.map(async function importModule(bareSpec: string) {
+        const spec = pathToFileURL(resolve(process.cwd(), bareSpec)).href.replace('.js', '.ts');
+        try {
+          await import(spec);
+        } catch (e) {
+          console.log(spec);
+          console.error(e);
+        }
+      }));
+} catch (e) {
+  console.error(e);
+};
+/* eslint-enable no-console */
 
 class RHDSSSRableRenderer extends LitElementRenderer {
   static isRHDSSSRController(ctrl: ReactiveController): ctrl is RHDSSSRController {
@@ -93,4 +100,3 @@ export default async function renderPage({
   const end = performance.now();
   return { page, rendered, durationMs: end - start };
 }
-

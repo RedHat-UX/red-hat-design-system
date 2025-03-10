@@ -1,4 +1,4 @@
-import type { ReactiveElement } from 'lit';
+import { isServer, type ReactiveElement } from 'lit';
 
 import styles from '@rhds/tokens/css/color-context-consumer.css.js';
 
@@ -21,7 +21,12 @@ let initialized = false;
  * @see https://ux.redhat.com/theming/color-palettes/
  */
 export function colorSchemeConsumer(klass: typeof ReactiveElement) {
-  if (!initialized) {
+  if (isServer) {
+    klass.styles = [
+      ...Array.isArray(klass.styles) ? klass.styles : klass.styles ? [klass.styles] : [],
+      styles,
+    ];
+  } else if (!initialized) {
     const sheet = new CSSStyleSheet();
     sheet.replaceSync(styles.cssText);
 

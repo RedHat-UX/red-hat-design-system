@@ -21,7 +21,7 @@ import '@rhds/elements/rh-surface/rh-surface.js';
 import '@rhds/elements/rh-code-block/rh-code-block.js';
 import '@rhds/elements/rh-tabs/rh-tabs.js';
 
-import { type RhTab, TabExpandEvent } from '@rhds/elements/rh-tabs/rh-tab.js';
+import { TabExpandEvent } from '@rhds/elements/rh-tabs/rh-tab.js';
 
 import { UxdotPatternSSRController } from './uxdot-pattern-ssr-controller.js';
 
@@ -30,10 +30,6 @@ import type { RhTabs } from '@rhds/elements/rh-tabs/rh-tabs.js';
 
 function isLitElement(e: Element): e is LitElement {
   return 'updateComplete' in e;
-}
-
-function isRhTab(e: Element): e is RhTab {
-  return e.localName === 'rh-tab';
 }
 
 function isRhTabs(e: Element): e is RhTabs {
@@ -48,11 +44,6 @@ async function forceProperty(e: LitElement, key: PropertyKey) {
     await e.updateComplete;
     e.activeIndex = i;
   }
-  // if (key === 'active' && isRhTab(e)) {
-  //  await e.updateComplete;
-  //  e.active = !e.active;
-  //  e.active = !e.active;
-  // }
   e.requestUpdate(key, Symbol());
   await e.updateComplete;
   e.requestUpdate(key, Symbol());
