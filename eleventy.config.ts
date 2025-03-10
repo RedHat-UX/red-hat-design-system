@@ -205,7 +205,6 @@ export default async function(eleventyConfig: UserConfig) {
       'elements/rh-accordion/rh-accordion.ts',
       'elements/rh-button/rh-button.ts',
       'elements/rh-code-block/rh-code-block.ts',
-      'elements/rh-card/rh-card.ts',
       'elements/rh-cta/rh-cta.ts',
       'elements/rh-footer/rh-footer-universal.ts',
       'elements/rh-icon/rh-icon.ts',
@@ -214,7 +213,9 @@ export default async function(eleventyConfig: UserConfig) {
       'elements/rh-surface/rh-surface.ts',
       'elements/rh-table/rh-table.ts',
       'elements/rh-tag/rh-tag.ts',
-      'elements/rh-tile/rh-tile.ts',
+      // deferring until https://github.com/patternfly/patternfly-elements/pull/2505 or similar
+      // 'elements/rh-card/rh-card.ts',
+      // 'elements/rh-tile/rh-tile.ts',
       'uxdot/uxdot-best-practice.ts',
       'uxdot/uxdot-copy-button.ts',
       'uxdot/uxdot-copy-permalink.ts',
