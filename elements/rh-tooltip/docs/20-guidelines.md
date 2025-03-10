@@ -4,7 +4,7 @@ Use a tooltip as a way for users to see more information before they select an e
 
 ### Tooltip vs. popover
 
-Tooltips and [Popovers](/elements/popover) provide more in-context information for users. However, they are different in a few ways.
+Tooltips and [popovers](/elements/popover) provide more in-context information for users. However, they are different in a few ways.
 
 #### Tooltip
 
