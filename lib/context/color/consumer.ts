@@ -21,16 +21,15 @@ let initialized = false;
  * @see https://ux.redhat.com/theming/color-palettes/
  */
 export function colorSchemeConsumer(klass: typeof ReactiveElement) {
-  if (isServer) {
+  if (!isServer && !initialized) {
+    const sheet = new CSSStyleSheet();
+    sheet.replaceSync(styles.cssText);
+    document.adoptedStyleSheets = [...(document.adoptedStyleSheets ?? []), sheet];
+    initialized = true;
+  } else {
     klass.styles = [
       ...Array.isArray(klass.styles) ? klass.styles : klass.styles ? [klass.styles] : [],
       styles,
     ];
-  } else if (!initialized) {
-    const sheet = new CSSStyleSheet();
-    sheet.replaceSync(styles.cssText);
-
-    document.adoptedStyleSheets = [...(document.adoptedStyleSheets ?? []), sheet];
-    initialized = true;
   }
 }

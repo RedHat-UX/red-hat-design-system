@@ -1,3 +1,5 @@
+import type { RhTabs } from '@rhds/elements/rh-tabs/rh-tabs.js';
+
 import { LitElement, html, isServer, type PropertyValues } from 'lit';
 
 import { customElement } from 'lit/decorators/custom-element.js';
@@ -26,7 +28,6 @@ import { TabExpandEvent } from '@rhds/elements/rh-tabs/rh-tab.js';
 import { UxdotPatternSSRController } from './uxdot-pattern-ssr-controller.js';
 
 import styles from './uxdot-pattern.css';
-import type { RhTabs } from '@rhds/elements/rh-tabs/rh-tabs.js';
 
 function isLitElement(e: Element): e is LitElement {
   return 'updateComplete' in e;
