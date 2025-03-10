@@ -9,7 +9,7 @@
 
 <rh-card id="bordeaux-card-provider" class="theme-bordeaux">
   <rh-blockquote>You can also set a color palette on a specific element</rh-blockquote>
-  <label for="bordeaux-card-picker" slot="footer">Set this card's color palette.</label>
+  <label for="bordeaux-card-picker" slot="footer">Set this card's <a href="../color-palettes/">color palette</a>.</label>
   <rh-context-picker id="bordeax-card-picker"
                      target="bordeaux-card-provider"
                      allow="darkest, lighter, lightest"
@@ -76,4 +76,16 @@
     }
   }
 
+  a {
+    color: var(--rh-color-interactive-primary-default);
+    &:hover { color: var(--rh-color-interactive-primary-hover); }
+    &:focus-within { color: var(--rh-color-interactive-primary-focus); }
+    &:active { color: var(--rh-color-interactive-primary-active); }
+    &:visited {
+      color: var(--rh-color-interactive-primary-visited);
+      &:hover { color: var(--rh-color-interactive-primary-visited-hover); }
+      &:focus-within { color: var(--rh-color-interactive-primary-visited-focus); }
+      &:active { color: var(--rh-color-interactive-primary-visited-active); }
+    }
+  }
 </style>
