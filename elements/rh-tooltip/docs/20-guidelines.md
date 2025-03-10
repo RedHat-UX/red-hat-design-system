@@ -1,18 +1,28 @@
-## Usage 
+## Usage
 
 Use a tooltip as a way for users to see more information before they select an element, go to a new page, or trigger an action on the page.
 
+### Tooltip vs. popover
 
-### Tooltip vs. popover 
+Tooltips and [Popovers](/elements/popover) provide more in-context information for users. However, they are different in a few ways.
 
-A tooltip and [Popover](/elements/popover) provide more information in context for users. However, they are different in the following ways.
+#### Tooltip
 
-- A tooltip is used for simple communication purposes while a popover is more descriptive
-- Content in a tooltip is generally shorter while content in a popover can be longer and include a heading, images, or links
-- A tooltip is triggered on hover (or a tap on mobile devices) while a popover is triggered by a click
+- Used for simple messages.
+- Contains only plain text.
+- Appears when triggering element receives mouse hover, keyboard focus, or is tapped.
+- Has no internal means of dismissal (e.g., a close button).
+- Dismissed when triggering element loses hover/focus, or when a touchscreen user taps elsewhere.
 
+#### Popover
 
-## Content 
+- Can be more descriptive than a tooltip.
+- Can contain headings, images, and interactive content (e.g., links).
+- Appears when triggering button is clicked.
+- Has a close button.
+- Dismissed when close button is clicked, user presses esc, or user clicks/taps outside the popover.
+
+## Content
 
 Content in a tooltip is limited to text only. Consider the following when writing tooltip content.
 
@@ -22,7 +32,6 @@ Content in a tooltip is limited to text only. Consider the following when writin
         width="725"
         height="173">
 </uxdot-example>
-
 
 ### Character count
 
@@ -45,8 +54,7 @@ A tooltip's body text should be short and descriptive.
   </table>
 </rh-table>
 
-
-## Orientation 
+## Orientation
 
 The correct orientation of a tooltip depends on the amount of content and browser window. If a tooltip covers up important information or gets cut off, choose a different orientation.
 
@@ -57,8 +65,7 @@ The correct orientation of a tooltip depends on the amount of content and browse
         height="253">
 </uxdot-example>
 
-
-## Behavior 
+## Behavior
 
 When a cursor or focus is moved, the tooltip disappears. On mobile devices, users must tap to trigger a tooltip and then tap again to make it disappear.
 
@@ -69,8 +76,7 @@ When a cursor or focus is moved, the tooltip disappears. On mobile devices, user
         height="405">
 </uxdot-example>
 
-
-## Responsive design 
+## Responsive design
 
 A tooltip can generally be used on both large and small breakpoints if the content is not too long.
 
@@ -81,10 +87,9 @@ A tooltip can generally be used on both large and small breakpoints if the conte
         height="502">
 </uxdot-example>
 
+## Best practices
 
-## Best practices 
-
-### White on white 
+### White on white
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
@@ -108,8 +113,7 @@ A tooltip can generally be used on both large and small breakpoints if the conte
   </uxdot-best-practice>
 </div>
 
-
-### Cut off by browser window 
+### Cut off by browser window
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
@@ -133,8 +137,7 @@ A tooltip can generally be used on both large and small breakpoints if the conte
   </uxdot-best-practice>
 </div>
 
-
-### Unnecessary pairing 
+### Unnecessary pairing
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
