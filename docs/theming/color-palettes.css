@@ -24,15 +24,28 @@
 
 .surface-grid {
   grid-template-columns: 1fr 1fr;
-
-  ::part(header) {
-    margin-block-end: 1rem;
-  }
 }
 
 .icon-card {
+  &::part(header) {
+    margin-block: var(--rh-space-2xl) 1rem;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &::part(body) {
+    margin-block-start: 0;
+  }
+
   & rh-icon {
-    width: var(--rh-size-icon-07);
+    width: var(--rh-size-icon-04);
+
+    --rh-icon-size: 100%;
+  }
+
+  p {
+    margin: 0;
   }
 }
 

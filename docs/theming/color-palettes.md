@@ -17,23 +17,80 @@ order: 2
 <script type="module" data-helmet>
   import '@uxdot/elements/uxdot-pattern.js';
   import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
-  import '@rhds/elements/rh-accordion/rh-accordion.js';
-  import '@rhds/elements/rh-audio-player/rh-audio-player.js';
   import '@rhds/elements/rh-blockquote/rh-blockquote.js';
-  import '@rhds/elements/rh-button/rh-button.js';
   import '@rhds/elements/rh-card/rh-card.js';
-  import '@rhds/elements/rh-cta/rh-cta.js';
-  import '@rhds/elements/rh-pagination/rh-pagination.js';
   import '@rhds/elements/rh-tabs/rh-tabs.js';
   import '@rhds/elements/rh-tag/rh-tag.js';
   import '@rhds/elements/rh-tile/rh-tile.js';
 </script>
 
-Red Hat Design System comes with a contextual color-theming feature called
-"Color palettes", designed to make page developers' and content authors' jobs
-easier and to improve customers' digital experiences. Authors and developers who
-adopt the color palette system will produce accessible, branded experiences with
-less effort and greater cross-property consistency.
+Red Hat Design System comes with a contextual color-theming feature based on
+color schemes (light, dark) and six corresponding color palettes.  Designed to
+respect user's preferences while enabling designer's vision and increasing
+developers' efficiency, theming with RHDS builds upon state-of-the-art web
+standards. Authors and developers who adopt the color palette system can quickly
+produce accessible, branded experiences with less effort and greater
+cross-property consistency.
+
+<uxdot-pattern id="elements-grid" no-code-tabs src="./patterns/collage.html">
+  <h3 slot="heading">Color palettes in action</h3>
+</uxdot-pattern>
+
+## Terminology
+Before we dive into the details, let's take a moment to clarify the terminology
+used around color within RHDS.
+
+[Color scheme](#color-schemes)
+:  `light` or `dark`. AKA "light mode" or "dark mode".
+   Color schemes are built into web browsers and operating systems, and form the
+standard backbone of RHDS' theming engine.
+
+   <rh-tag>Note:</rh-tag> Previous versions of RHDS referred to color schemes as `on` or "Backgrounds",
+   and elements that have a color scheme as "color context consumers" because
+   they reacted passively to the color scheme of their containers.
+   <rh-alert state="caution">Avoid the terms "light theme" or "dark theme",
+   as they can be confused with "theming", below.</rh-alert>
+
+[Color palette](#color-palettes)
+:  `lightest`, `lighter`, `light`, `dark`, `darker`, or `darkest`
+   Color palettes are unique to RHDS, and build upon the standard color schemes
+   They apply to elements which contain other elements.
+
+   <rh-tag>Note:</rh-tag> Previous versions of RHDS referred to elements with a
+   color palette as "color context providers" because setting their color
+   palette would actively change their descendant element's color schemes as
+   well.
+
+[Theming](../customizing)
+:  The process by which the appearance of RHDS elements are customized by
+   tweaking theme variables. Single elements or entire pages can be themed.
+
+## Color schemes
+<a id="backgrounds-and-theme-tokens"></a>
+<a id="backgrounds"></a>
+
+Color schemes (previously referred to as **backgrounds**) are rendering modes 
+for elements that change their foreground and background colors. There are two 
+color schemes: `light` and `dark`, each corresponding to three of the six color 
+palettes. Elements which respond to their color scheme by changing their colors 
+are called **color scheme consumers** (previously referred to as **color context 
+consumers**).
+
+<div class="surface-grid">
+  <rh-card class="icon-card" color-palette="lightest">
+    <rh-icon slot="header" set="ui" icon="light-mode"></rh-icon>
+    <h3 slot="header">Light Scheme</h3>
+    <p>Corresponding color palettes: <code>light</code>, <code>lighter</code>, <code>lightest</code>.</p>
+  </rh-card>
+  <rh-card class="icon-card" color-palette="darkest">
+    <rh-icon slot="header" set="ui" icon="dark-mode"></rh-icon>
+    <h3 slot="header">Dark Scheme</h3>
+    <p>Corresponding color palettes: <code>dark</code>, <code>darker</code>, <code>darkest</code>.</p>
+  </rh-card>
+</div>
+
+Being aware of which elements are rendering in which color scheme is important 
+to ensure that things like icons, text, and border colours remain legible.
 
 ## Color palettes
 <a id="what-are-color-palettes"></a>
@@ -42,8 +99,6 @@ less effort and greater cross-property consistency.
 <abbr title="red hat design system">RHDS</abbr> defines six color palettes
 ranging from `lightest` to `darkest`, and those are the two palettes you will
 use the most for the majority of your projects.
-
-<uxdot-pattern id="elements-grid" src="./patterns/collage.html"></uxdot-pattern>
 
 Understanding color palettes, color schemes, and theming work together is
 important not only in terms of design guidelines but also for accessibility
@@ -100,33 +155,40 @@ design system. Changing an element's color palette can affect its colors and
 backgrounds, but usually spacing, typography, layouts, content, and imagery 
 remain the same.
 
-## Color schemes
-<a id="backgrounds-and-theme-tokens"></a>
-<a id="backgrounds"></a>
+### Nested color palettes
 
-Color schemes (previously referred to as **backgrounds**) are rendering modes 
-for elements that change their foreground and background colors. There are two 
-color schemes: `light` and `dark`, each corresponding to three of the six color 
-palettes. Elements which respond to their color scheme by changing their colors 
-are called **color scheme consumers** (previously referred to as **color context 
-consumers**).
+Color palette containers can be nested, such that child elements will always 
+adopt the color theme corresponding to the nearest container's palette.
+Extending our card example from above, if you add an
+`<rh-cta>` to the card, it will *automatically* adopt the dark color theme. The
+page author need not and should not customize the CTA's colours.
 
-<div class="surface-grid">
-  <rh-card class="icon-card" color-palette="lightest">
-    <rh-icon slot="header" icon="light-mode"></rh-icon>
-    <h3 slot="header">Light</h3>
-    <p>Corresponding color palettes: <code>light</code>, <code>lighter</code>, <code>lightest</code>.</p>
-  </rh-card>
-  <rh-card class="icon-card" color-palette="darkest">
-    <rh-icon slot="header" icon="dark-mode"></rh-icon>
-    <h3 slot="header">Dark</h3>
-    <p>Corresponding color palettes: <code>dark</code>, <code>darker</code>, <code>darkest</code>.</p>
-  </rh-card>
-</div>
+<uxdot-pattern class="card-snippet-grid"
+               src="./patterns/card-child-consumers.html"
+               full-height="">
+</uxdot-pattern>
 
-Being aware of which elements are rendering in which color scheme is important 
-to ensure that things like icons, text, and border colours remain legible.
+<rh-card class="pullquote-card right">
+  <rh-blockquote>Color palettes lets authors write more HTML, simpler CSS, and
+    less JavaScript</rh-blockquote>
+</rh-card>
 
+To summarize: color providers can adopt one six palettes, three dark and
+three light, and setting a color palette also sets the color scheme for its
+descendants, overriding any user preferences.
+
+## Combination elements
+
+Some elements are both providers and consumers. Card, for example is both a
+provider and a consumer. It can accept the color theme of its parent context and
+it can also set its own color palette.
+
+<uxdot-pattern class="card-snippet-grid"
+               src="./patterns/card-consumer-provider.html"
+               full-height="">
+</uxdot-pattern>
+
+## Theming
 <rh-alert>Page authors *do not need to and should not* directly customize the
   colors of consumer elements, but instead should set custom values for [theme
   tokens][theming].</rh-alert>
@@ -160,37 +222,6 @@ Avoid customizing element CSS directly
 </rh-card>
 
 See the [customizing](./customizing/) page for a more detailed example.
-
-
-Color palette containers can be nested, such that child elements will always 
-adopt the color theme corresponding to the nearest container's palette.
-Extending our card example from above, if you add an
-`<rh-cta>` to the card, it will *automatically* adopt the dark color theme. The
-page author need not and should not customize the CTA's colours.
-
-<uxdot-pattern class="card-snippet-grid"
-               src="./patterns/card-child-consumers.html"
-               full-height="">
-</uxdot-pattern>
-
-<rh-card class="pullquote-card right">
-  <rh-blockquote>Color palettes lets authors write more HTML, simpler CSS, and
-    less JavaScript</rh-blockquote>
-</rh-card>
-
-To summarize: color providers can adopt one six palettes, three dark and
-three light, and they provide a `dark` or `light` background to their children.
-
-## Combination elements
-
-Some elements are both providers and consumers. Card, for example is both a
-provider and a consumer. It can accept the color theme of its parent context and
-it can also set its own color palette.
-
-<uxdot-pattern class="card-snippet-grid"
-               src="./patterns/card-consumer-provider.html"
-               full-height="">
-</uxdot-pattern>
 
 ## Inline color palettes  <rh-tag color="purple">Beta</rh-tag>
 
