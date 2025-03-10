@@ -29,7 +29,7 @@
 
 #container {
   position: relative;
-  background-color: var(--rh-color-surface-lightest);
+  background-color: var(--rh-color-surface);
   overflow-y: scroll;
   width: auto;
   height: 100dvh;

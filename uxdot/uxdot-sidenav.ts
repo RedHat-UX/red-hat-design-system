@@ -7,6 +7,7 @@ import { property } from 'lit/decorators/property.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
 
 import styles from './uxdot-sidenav.css';
+import schemeStyles from '@rhds/tokens/css/color-scheme.css.js';
 import itemStyles from './uxdot-sidenav-item.css';
 import dropdownStyles from './uxdot-sidenav-dropdown.css';
 import dropdownMenuStyles from './uxdot-sidenav-dropdown-menu.css';
@@ -16,7 +17,7 @@ import dropdownMenuItemStyles from './uxdot-sidenav-dropdown-menu-item.css';
 export class UxdotSideNav extends LitElement {
   static shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
 
-  static styles = [styles];
+  static styles = [styles, schemeStyles];
 
   @property({ type: Boolean, reflect: true }) open = false;
 
