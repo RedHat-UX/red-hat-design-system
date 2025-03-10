@@ -1,4 +1,4 @@
-import type { LitElement, ReactiveController } from 'lit';
+import type { CSSResult, LitElement, ReactiveController } from 'lit';
 import type { RenderInfo, RenderResult } from '@lit-labs/ssr';
 import type { RHDSSSRController } from '@rhds/elements/lib/ssr-controller.ts';
 import type { RenderRequestMessage, RenderResponseMessage } from './lit.js';
@@ -15,6 +15,12 @@ import { html } from 'lit';
 import { render } from '@lit-labs/ssr';
 import { collectResult } from '@lit-labs/ssr/lib/render-result.js';
 import Piscina from 'piscina';
+import { renderValue } from '@lit-labs/ssr/lib/render-value.js';
+
+import cssnano from 'cssnano';
+import Postcss from 'postcss';
+
+const postcss = Postcss([cssnano]);
 
 interface WorkerInitData {
   imports: string[];
@@ -44,6 +50,8 @@ try {
 /* eslint-enable no-console */
 
 class RHDSSSRableRenderer extends LitElementRenderer {
+  static styleCache = new Map<string, Promise<string>>();
+
   static isRHDSSSRController(ctrl: ReactiveController): ctrl is RHDSSSRController {
     return !!(ctrl as RHDSSSRController).isRHDSSSRController;
   }
@@ -65,7 +73,28 @@ class RHDSSSRableRenderer extends LitElementRenderer {
     for (const controller of this.getControllers()) {
       yield this.setupController(controller, renderInfo);
     }
-    yield* super.renderShadow(renderInfo);
+    // Render styles.
+    const styles = (this.element.constructor as typeof LitElement).elementStyles;
+    if (styles !== undefined && styles.length > 0) {
+      yield '<style>';
+      for (const style of styles) {
+        const { cssText } = style as CSSResult;
+        if (!RHDSSSRableRenderer.styleCache.has(cssText)) {
+          RHDSSSRableRenderer.styleCache.set(cssText, postcss
+              .process(cssText, { from: undefined })
+              .then(r => r.css));
+        }
+        yield RHDSSSRableRenderer.styleCache.get(cssText)!;
+      }
+      yield '</style>';
+    }
+    // Render template
+
+    yield* renderValue(
+      // @ts-expect-error: if upstream can do it, so can we
+      this.element.render(),
+      renderInfo,
+    );
   }
 }
 
