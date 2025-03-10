@@ -1,7 +1,8 @@
 import { type ReactiveController, type ReactiveElement } from 'lit';
 
-import styles from '@rhds/tokens/css/color-context-provider.css.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
+
+import styles from '@rhds/tokens/css/color-palette.css.js';
 
 const Palettes = Object.freeze([
   'light',

@@ -102,4 +102,3 @@ rh-audio-player::part(toolbar) {
 label + rh-switch {
   margin-inline-start: var(--rh-space-md);
 }
-

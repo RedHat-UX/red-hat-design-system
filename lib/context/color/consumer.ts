@@ -1,21 +1,11 @@
 import { isServer, type ReactiveElement } from 'lit';
 
-import styles from '@rhds/tokens/css/color-context-consumer.css.js';
-
-/**
-   * A Color theme is a context-specific restriction on the available color palettes
-   *
-   * `ColorTheme` is associated with the `on` attribute and the `--context` css property
-   */
-export type ColorTheme = (
-  | 'dark'
-  | 'light'
-);
-
+import styles from '@rhds/tokens/css/color-scheme.css.js';
 
 let initialized = false;
+
 /**
- * Ensures this element acts as a [background type](https://ux.redhat.com/theming/color-palettes/) consumer.
+ * Ensures this element respects themable [color schemes](https://ux.redhat.com/theming/color-palettes/#color-schemes).
  *
  * @param klass element constructor
  * @see https://ux.redhat.com/theming/color-palettes/
