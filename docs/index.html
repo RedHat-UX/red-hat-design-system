@@ -97,13 +97,16 @@ title: Home
       }
 
       &::part(container) {
+        --_gradient-start: light-dark(
+          var(--rh-color-gray-10),
+          black
+        );
+        --_gradient-end: light-dark(white, var(--rh-color-gray-90));
         display: grid;
         background: linear-gradient(
           90deg,
-          light-dark(var(--rh-color-gray-10), var(--rh-color-gray-90)),
-          0%,
-          light-dark(white, black),
-          100%
+          var(--_gradient-start) 0%,
+          var(--_gradient-end) 100%
         );
         background-repeat: no-repeat;
         border-radius: 48px 16px;
