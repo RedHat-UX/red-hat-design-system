@@ -93,6 +93,9 @@ export class UxdotPattern extends LitElement {
   /** Should the color picker be hidden? */
   @property({ type: Boolean, attribute: 'no-color-picker' }) noColorPicker = false;
 
+  /** Should the code tabs be hidden? */
+  @property({ type: Boolean, attribute: 'no-code-tabs' }) noCodeTabs = false;
+
   /** Should the code blocks be expanded? */
   @property({ type: Boolean, attribute: 'full-height' }) fullHeight = false;
 
@@ -152,6 +155,7 @@ export class UxdotPattern extends LitElement {
         <rh-tabs id="code-tabs"
                  class="code-tabs"
                  active-index="${ifDefined(!this.#picked ? ['html', 'css', 'js'].indexOf(activeTab) : undefined)}"
+                 ?hidden="${this.noCodeTabs}"
                  @expand="${this.#onExpand}">
           <rh-tab id="html-tab" slot="tab" >HTML</rh-tab>
           <rh-tab-panel id="html-panel">

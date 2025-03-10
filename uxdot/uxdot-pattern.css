@@ -7,6 +7,10 @@
   max-width: 56rem; /* warning: magic number */
 }
 
+[hidden] {
+  display: none !important;
+}
+
 #container {
   display: grid;
   grid-template-columns: auto;
