@@ -348,7 +348,7 @@
     "query-selector-shadow-dom": "^1.0.1",
     "renamer": "^5.0.2",
     "spandx": "^3.0.0",
-    "stylelint-config-standard": "^36.0.1",
+    "stylelint-config-standard": "^37.0.0",
     "tinycolor2": "^1.6.0",
     "ts-blank-space": "^0.4.4",
     "ts-patch": "^3.3.0",
