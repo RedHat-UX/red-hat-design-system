@@ -20,7 +20,7 @@ Both tooltips and [popovers](/elements/popover) provide contextual information f
 - Can contain headings, images, and interactive content.
 - Appears when triggering button is clicked.
 - Has a close button.
-- Dismissed when close button is clicked, user presses <kbd>esc</kbd>, or user clicks/taps outside the popover.
+- Dismissed when user clicks close button, presses <kbd>esc</kbd>, or clicks/taps outside the popover.
 
 ## Content
 
