@@ -10,7 +10,6 @@ import {
   ContextConsumerProvider,
   ContextProviderConsumer,
 } from './elements.js';
-import { tokens } from '@rhds/tokens';
 
 declare global {
   interface HTMLElementTagNameMap {
