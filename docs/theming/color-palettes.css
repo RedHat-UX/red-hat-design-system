@@ -40,23 +40,6 @@ rh-alert + rh-card {
   text-align: center;
 }
 
-.surface-grid {
-  grid-template-columns: 1fr 1fr;
-  margin-block: var(--rh-space-lg) var(--rh-space-2xl);
-
-  rh-card {
-
-    p {
-      margin-block-start: var(--rh-space-2xl);
-      font-size: var(--rh-font-size-body-text-sm);
-
-      code {
-        font-size: var(--rh-font-size-code-sm);
-      }
-    }
-  }
-}
-
 .icon-card {
   &::part(header) {
     margin-block: var(--rh-space-2xl) 1rem;
@@ -77,6 +60,22 @@ rh-alert + rh-card {
 
   p {
     margin: 0;
+  }
+}
+
+.surface-grid {
+  grid-template-columns: 1fr 1fr;
+  margin-block: var(--rh-space-lg) var(--rh-space-2xl);
+
+  rh-card {
+    p {
+      margin-block-start: var(--rh-space-2xl);
+      font-size: var(--rh-font-size-body-text-sm);
+
+      code {
+        font-size: var(--rh-font-size-code-sm);
+      }
+    }
   }
 }
 
@@ -103,3 +102,4 @@ rh-audio-player::part(toolbar) {
 label + rh-switch {
   margin-inline-start: var(--rh-space-md);
 }
+
