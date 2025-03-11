@@ -57,7 +57,7 @@ a {
 
   &.red {
     --_fill-color: light-dark(var(--rh-color-red-10, #fce3e3), var(--rh-color-red-70, #5f0000));
-    --_border-color: light-dark(var(--rh-color-red-60, #a60000), var(--rh-color-red-50, #ee0000));
+    --_border-color: light-dark(var(--rh-color-red-30, #f9a8a8), var(--rh-color-red-50, #ee0000));
     --_icon-color: light-dark(var(--rh-color-red-60, #a60000), var(--rh-color-red-30, #f9a8a8));
     --_text-color: light-dark(var(--rh-color-red-70, #5f0000), var(--rh-color-red-10, #fce3e3));
 
@@ -72,7 +72,7 @@ a {
       light-dark(var(--rh-color-red-orange-10, #ffe3d9),
         var(--rh-color-red-orange-70, #731f00));
     --_border-color:
-      light-dark(var(--rh-color-red-orange-60, #b1380b),
+      light-dark(var(--rh-color-red-orange-30, #f89b78),
         var(--rh-color-red-orange-50, #f0561d));
     --_icon-color:
       light-dark(var(--rh-color-red-orange-60, #b1380b),
@@ -96,7 +96,7 @@ a {
       light-dark(var(--rh-color-orange-10, #ffe8cc),
         var(--rh-color-orange-70, #732e00));
     --_border-color:
-      light-dark(var(--rh-color-orange-60, #9e4a06),
+      light-dark(var(--rh-color-orange-30, #f8ae54),
         var(--rh-color-orange-50, #ca6c0f));
     --_icon-color:
       light-dark(var(--rh-color-orange-60, #9e4a06),
@@ -120,7 +120,7 @@ a {
       light-dark(var(--rh-color-yellow-10, #fff4cc),
         var(--rh-color-yellow-70, #73480b));
     --_border-color:
-      light-dark(var(--rh-color-yellow-60, #96640f),
+      light-dark(var(--rh-color-yellow-30, #ffcc17),
         var(--rh-color-yellow-50, #b98412));
     --_icon-color:
       light-dark(var(--rh-color-yellow-60, #96640f),
@@ -142,7 +142,7 @@ a {
   &.green {
     --_fill-color: light-dark(var(--rh-color-green-10, #e9f7df), var(--rh-color-green-70, #204d00));
     --_border-color:
-      light-dark(var(--rh-color-green-60, #3d7317),
+      light-dark(var(--rh-color-green-30, #afdc8f),
         var(--rh-color-green-50, #63993d));
     --_icon-color: light-dark(var(--rh-color-green-60, #3d7317), var(--rh-color-green-30, #afdc8f));
     --_text-color: light-dark(var(--rh-color-green-70, #204d00), var(--rh-color-green-10, #e9f7df));
@@ -159,7 +159,7 @@ a {
 
   &.teal {
     --_fill-color: light-dark(var(--rh-color-teal-10, #daf2f2), var(--rh-color-teal-70, #004d4d));
-    --_border-color: light-dark(var(--rh-color-teal-60, #147878), var(--rh-color-teal-50, #37a3a3));
+    --_border-color: light-dark(var(--rh-color-teal-30, #9ad8d8), var(--rh-color-teal-50, #37a3a3));
     --_icon-color: light-dark(var(--rh-color-teal-60, #147878), var(--rh-color-teal-30, #9ad8d8));
     --_text-color: light-dark(var(--rh-color-teal-70, #004d4d), var(--rh-color-teal-10, #daf2f2));
 
@@ -171,7 +171,7 @@ a {
 
   &.blue {
     --_fill-color: light-dark(var(--rh-color-blue-10, #e0f0ff), var(--rh-color-blue-70, #003366));
-    --_border-color: light-dark(var(--rh-color-blue-60, #004d99), var(--rh-color-blue-50, #0066cc));
+    --_border-color: light-dark(var(--rh-color-blue-30, #92c5f9), var(--rh-color-blue-50, #0066cc));
     --_icon-color: light-dark(var(--rh-color-blue-60, #004d99), var(--rh-color-blue-30, #92c5f9));
     --_text-color: light-dark(var(--rh-color-blue-70, #003366), var(--rh-color-blue-10, #e0f0ff));
 
@@ -186,7 +186,7 @@ a {
       light-dark(var(--rh-color-purple-10, #ece6ff),
         var(--rh-color-purple-70, #21134d));
     --_border-color:
-      light-dark(var(--rh-color-purple-60, #3d2785),
+      light-dark(var(--rh-color-purple-30, #b6a6e9),
         var(--rh-color-purple-50, #5e40be));
     --_icon-color:
       light-dark(var(--rh-color-purple-60, #3d2785),
@@ -207,7 +207,7 @@ a {
 
   &.gray {
     --_fill-color: light-dark(var(--rh-color-gray-10, #f2f2f2), var(--rh-color-gray-70, #383838));
-    --_border-color: light-dark(var(--rh-color-gray-60, #4d4d4d), var(--rh-color-gray-50, #707070));
+    --_border-color: light-dark(var(--rh-color-gray-30, #c7c7c7), var(--rh-color-gray-50, #707070));
     --_icon-color: light-dark(var(--rh-color-gray-60, #4d4d4d), var(--rh-color-gray-30, #c7c7c7));
     --_text-color: light-dark(var(--rh-color-gray-70, #383838), var(--rh-color-gray-10, #f2f2f2));
 
