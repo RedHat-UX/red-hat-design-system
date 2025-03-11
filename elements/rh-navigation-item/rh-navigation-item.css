@@ -65,7 +65,14 @@
   width: 100%;
   justify-items: center;
   align-content: center;
-  border-block-start: 4px solid transparent; /* Non standard border width */
+
+  /**
+   * color-scheme change
+   * --_background-color:
+   *   light-dark(var(--rh-color-surface-lighter), var(--rh-color-surface-darker));
+   * change box-shadow-color, but size values wont be able to change based on scheme.
+   * --_box-shadow-color light-dark(rgba(21, 21, 21, 0.2), rgba(0, 0, 0, 0.6));
+  */
 
   &.light {
     --_background-color: var(--rh-color-surface-lighter);
@@ -84,7 +91,6 @@
     align-content: center;
 
     &[open] {
-      background-color: var(--_background-color);
       color: var(--rh-color-text-primary);
 
       /* stylelint-disable-next-line selector-pseudo-element-no-unknown */
@@ -112,6 +118,7 @@
     }
   }
 
+  /* stylelint-disable-next-line no-descending-specificity */
   summary {
     --rh-icon-size: 18px /* non standard value */;
     --rh-avatar-size: var(--rh-size-icon-02);
@@ -130,6 +137,9 @@
     height: 100%;
     padding-inline: calc(var(--rh-space-sm) + var(--rh-space-xs));
     border-inline: var(--rh-border-width-sm) solid transparent;
+
+    /* adjustment for 4px border, because border-image usage we can't use transparent on opposite side to balance */
+    transform: translateY(4px);
     cursor: pointer;
 
     /* stylelint-disable-next-line no-descending-specificity */
@@ -155,6 +165,7 @@
     & rh-icon {
       aspect-ratio: unset;
 
+      /* stylelint-disable-next-line no-descending-specificity */
       &[icon='caret-down'] {
         color: var(--rh-color-icon-subtle);
         transition: rotate 0.2s;
@@ -282,62 +293,8 @@
     }
   }
 
-  &:not(.standalone, .link) {
-    details {
-      border-inline-start: var(--rh-border-width-lg) solid transparent;
-      border-inline-end: var(--rh-border-width-sm) solid transparent;
-      justify-items: unset;
-      align-content: unset;
-
-      @container (min-width: 1200px) {
-        /* TODO: remove */
-
-        /* border-inline: var(--rh-border-width-sm) solid transparent; */
-
-        border-inline: none;
-      }
-
-      &[open] {
-        border-inline-end-color: var(--rh-color-border-subtle);
-        border-inline-start-color: var(--rh-color-accent-brand);
-        height: calc(100% + 10px);
-
-        & summary {
-          height: calc(100% - 10px);
-        }
-
-        @container (min-width: 1200px) {
-          border-block-start-color: var(--rh-color-accent-brand);
-          border-inline-start-color: var(--rh-color-border-subtle);
-
-          &.dark {
-            border-inline-color: transparent;
-          }
-        }
-
-        summary {
-          border-block-start-color: var(--rh-color-text-brand);
-        }
-      }
-
-      /* stylelint-disable-next-line no-descending-specificity */
-      & summary {
-        flex-direction: row;
-        justify-content: space-between;
-        padding: var(--rh-space-lg) var(--rh-space-xl);
-
-        @container (min-width: 1200px) {
-          padding: 0 var(--rh-space-lg);
-          width: auto;
-        }
-      }
-    }
-
-    @container (min-width: 1200px) {
-      &:is(:hover, :focus-within, :has(details[open])) {
-        border-image: var(--_active-item-color) 1;
-      }
-    }
+  &:not(.standalone) {
+    border-block-end: 4px solid transparent; /* Non standard border width */
   }
 
   &.link {
@@ -358,6 +315,9 @@
       text-decoration: none !important;
       height: 100%;
       align-items: center;
+
+      /* adjustment for 4px border, because border-image usage we can't use transparent on opposite side to balance */
+      transform: translateY(4px);
     }
 
     & ::slotted(a:active) {
@@ -399,6 +359,56 @@
         & ::slotted(a) {
           background-color: var(--_background-color);
         }
+      }
+    }
+  }
+
+  &:not(.standalone, .link) {
+    details {
+      border-inline-start: var(--rh-border-width-lg) solid transparent;
+      border-inline-end: var(--rh-border-width-sm) solid transparent;
+      justify-items: unset;
+      align-content: unset;
+
+      @container (min-width: 1200px) {
+        border-inline: none;
+      }
+
+      &[open] {
+        border-inline-end-color: var(--rh-color-border-subtle);
+        border-inline-start-color: var(--rh-color-accent-brand);
+
+        @container (min-width: 1200px) {
+          border-block-start-color: var(--rh-color-accent-brand);
+          border-inline-start-color: var(--rh-color-border-subtle);
+
+          &.dark {
+            border-inline-color: transparent;
+          }
+        }
+
+        /* stylelint-disable-next-line no-descending-specificity */
+        summary {
+          border-block-start-color: var(--rh-color-text-brand);
+        }
+      }
+
+      /* stylelint-disable-next-line no-descending-specificity */
+      & summary {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: var(--rh-space-lg) var(--rh-space-xl);
+
+        @container (min-width: 1200px) {
+          padding: 0 var(--rh-space-lg);
+          width: auto;
+        }
+      }
+    }
+
+    @container (min-width: 1200px) {
+      &:is(:hover, :focus-within, :has(details[open])) {
+        border-image: var(--_active-item-color) 1;
       }
     }
   }
