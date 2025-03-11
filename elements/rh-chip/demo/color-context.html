@@ -2,7 +2,7 @@
   <rh-chip-group>
     <span slot="accessible-label">Filter by:</span>
     <rh-chip>Edge</rh-chip>
-    <rh-chip>AI/ML</rh-chip>
+    <rh-chip checked>AI/ML</rh-chip>
     <rh-chip>DevOps</rh-chip>
     <rh-chip disabled>Disabled</rh-chip>
   </rh-chip-group>
@@ -12,9 +12,3 @@
   import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
   import '@rhds/elements/rh-chip/rh-chip-group.js';
 </script>
-
-<style>
-  rh-chip-group:not(:first-of-type) {
-    margin-block: 2rem;
-  }
-</style>

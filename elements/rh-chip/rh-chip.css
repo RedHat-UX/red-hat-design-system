@@ -18,9 +18,9 @@ label {
   }
 
   &:has(input[aria-disabled='true']) {
-    background-color: var(--rh-color-status-neutral-on-dark, #c7c7c7);
+    background-color: var(--rh-color-interactive-secondary-default-on-dark, #c7c7c7);
     color: var(--rh-color-text-secondary);
-    outline-color: var(--rh-color-status-neutral-on-dark, #c7c7c7);
+    outline-color: var(--rh-color-interactive-secondary-default-on-dark, #c7c7c7);
     pointer-events: none;
   }
 
@@ -44,17 +44,15 @@ label {
 
   &.dark {
     &:has(input[aria-disabled='true']) {
-      color: var(--rh-color-interactive-secondary-default-on-light, #4d4d4d);
+      background-color: var(--rh-color-surface-dark, #383838);
+      color: var(--rh-color-gray-40, #a3a3a3);
+      outline-color: var(--rh-color-surface-dark, #383838);
     }
 
     &:has(input:checked) {
-      background-color: var(--rh-color-blue-50, #0066cc);
+      background-color: var(--rh-color-blue-70, #003366);
+      color: var(--rh-color-blue-10, #e0f0ff);
       outline-color: var(--rh-color-blue-50, #0066cc);
-
-      &:hover {
-        background-color: var(--rh-color-interactive-primary-hover-on-light, #003366);
-        outline-color: var(--rh-color-interactive-primary-hover-on-light, #003366);
-      }
     }
   }
 }
