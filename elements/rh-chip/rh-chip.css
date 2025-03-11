@@ -3,10 +3,12 @@
 }
 
 label {
-  outline: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
   border-radius: var(--rh-border-radius-pill, 64px);
   display: flex;
+  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+  line-height: var(--rh-line-height-body-text, 1.5);
   margin-inline-end: var(--rh-space-md, 8px);
+  outline: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
   padding: var(--rh-space-xs, 4px) var(--rh-space-md, 8px);
 
   &:hover,
@@ -38,10 +40,12 @@ label {
   }
 
   &.size-sm {
+    font-size: var(--rh-font-size-body-text-xs, 0.75rem);
     padding-block: 0;
   }
 
   &.size-lg {
+    font-size: var(--rh-font-size-body-text-md, 1rem);
     padding-inline: 16px;
   }
 
