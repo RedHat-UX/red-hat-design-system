@@ -53,16 +53,16 @@ export class RhHealthIndex extends LitElement {
   }
 
   override render() {
-    const { size } = this;
+    const { size = 'md' } = this;
     const grades = [...RhHealthIndex.grades].map(x => x.toLowerCase());
     const grade = this.grade.toLowerCase();
     return html`
       <div id="container"
            aria-hidden="true"
-           class="${classMap({ [size ?? '']: !!size })}">
+           class="${classMap({ [size]: true })}">
         <div id="grade" ?hidden="${size !== 'md'}">${grade}</div>${size === 'sm' ? html`
-        <div class="box active ${grade}">${grade}</div>` : grades.map(letter => html`
-        <div class="box ${classMap({ [letter]: true, active: letter === grade })}">
+        <div class="box ${classMap({ [grade]: true, [size]: true })}">${grade}</div>` : grades.map(letter => html`
+        <div class="box ${classMap({ [letter]: true, [size]: true, active: letter === grade })}">
           ${!(size === 'lg' || size === 'xl') ? '' : letter}
         </div>`)}
       </div>
