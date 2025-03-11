@@ -9,7 +9,6 @@
   overflow: auto;
   scrollbar-color: var(--_scrollbar-track-color) var(--_scrollbar-thumb-color);
   color: var(--rh-color-text-primary);
-  background-color: var(--rh-color-surface);
 
   --_scrollbar-size: calc(10 / 16 * 1rem);
   --_scrollbar-thumb-color: var(--rh-color-gray-50, #707070);
