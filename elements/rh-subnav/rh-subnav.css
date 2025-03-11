@@ -8,7 +8,7 @@
 
   --_subnav-link-text-color: var(--rh-color-text-secondary);
   --_subnav-link-hover-text-color: var(--rh-color-text-primary);
-  --_subnav-link-hover-border-end-color: var(--rh-color-border-subtle);
+  --_subnav-link-hover-border-end-color: var(--rh-color-border-subtle-on-dark, #707070);
   --_subnav-link-active-border-end-color: var(--rh-color-accent-brand);
   --_subnav-link-visited-text-color: var(--rh-color-text-secondary);
   --_subnav-link-focus-outline-color: var(--rh-color-border-interactive);
@@ -54,6 +54,7 @@
       var(--rh-color-text-secondary)) !important;
 }
 
+::slotted(a:focus-visible):after,
 ::slotted(a:hover):after {
   border-block-end-color:
     var(--_subnav-link-hover-border-end-color,
@@ -73,7 +74,7 @@
     solid
     var(--_subnav-link-focus-outline-color,
       var(--rh-color-interactive-primary-default)) !important;
-  outline-offset: -8px !important;
+  outline-offset: -2px !important;
   border-radius: 10px !important;
 }
 
