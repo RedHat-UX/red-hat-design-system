@@ -20,21 +20,20 @@ label {
   &:has(input[aria-disabled='true']) {
     background-color: var(--rh-color-status-neutral-on-dark, #c7c7c7);
     color: var(--rh-color-text-secondary);
+    outline-color: var(--rh-color-status-neutral-on-dark, #c7c7c7);
     pointer-events: none;
   }
 
   &:has(input:checked) {
-    background-color: var(--rh-color-interactive-primary-default);
-    color: var(--rh-color-white, #ffffff);
+    background-color: var(--rh-color-blue-10, #e0f0ff);
+    color: var(--rh-color-interactive-primary-hover);
     outline-color: var(--rh-color-border-interactive);
 
     &:hover {
-      background-color: var(--rh-color-interactive-primary-hover-on-light, #003366);
-      outline-color: var(--rh-color-interactive-primary-hover-on-light, #003366);
+      outline-color: var(--rh-color-blue-40, #4394e5);
     }
   }
 
-  &:has(input:checked:focus-visible),
   &:has(input[aria-disabled='true']:focus-visible) {
     outline-offset: var(--rh-border-width-md, 2px);
   }
@@ -57,6 +56,16 @@ label {
     &:focus-within {
       outline-color: var(--rh-color-blue-40, #4394e5);
     }
+
+    &:has(input:checked) {
+      background-color: var(--rh-color-interactive-primary-default);
+      color: var(--rh-color-white, #ffffff);
+      outline-color: var(--rh-color-interactive-primary-default);
+
+      &:focus-within {
+        outline-offset: var(--rh-border-width-md, 2px);
+      }
+    }
   }
 
   &.dark {
@@ -77,6 +86,11 @@ label {
     &.color-light-blue {
       background-color: var(--rh-color-interactive-primary-hover-on-light, #003366);
       outline-color: var(--rh-color-blue-50, #0066cc);
+
+      &:has(input[aria-disabled='true']) {
+        background-color: var(--rh-color-status-neutral-on-dark, #c7c7c7);
+        outline-color: var(--rh-color-status-neutral-on-dark, #c7c7c7);
+      }
     }
   }
 }
