@@ -193,10 +193,7 @@ export class RhSiteStatus extends LitElement {
            aria-live="polite">${this.#loading ? html`
           <rh-spinner size="sm"></rh-spinner>
           <span><slot name="loading-text">Loading</slot></span>` : html`
-          <div id="icon">
-            <rh-icon loading="eager" set="ui" icon="${icon.replace(`-fill`, '')}"></rh-icon>
-            <rh-icon loading="eager" set="ui" icon="${icon}" class="${status}"></rh-icon>
-          </div>
+          <rh-icon loading="eager" set="ui" icon="${icon}" class="${status}"></rh-icon>
           <span>${this.#text}</span>`}
         </a>
       </div>

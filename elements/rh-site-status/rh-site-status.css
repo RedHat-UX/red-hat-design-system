@@ -35,16 +35,11 @@ a:is(:hover,:focus) {
   text-decoration: underline;
 }
 
-#icon {
-  position: relative;
+rh-icon {
   width: var(--rh-size-icon-01, 16px);
   height: var(--rh-size-icon-01, 16px);
   color: var(--rh-color-white, #ffffff);
-
-  & rh-icon {
-    position: absolute;
-    &.success { color: var(--rh-color-status-success); }
-    &.warning { color: var(--rh-color-status-warning); }
-    &.danger { color: var(--rh-color-status-danger); }
-  }
+  &.success { color: var(--rh-color-status-success); }
+  &.warning { color: var(--rh-color-status-warning); }
+  &.danger { color: var(--rh-color-status-danger); }
 }
