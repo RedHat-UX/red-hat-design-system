@@ -11,7 +11,7 @@ import { ContextChangeEvent } from '../rh-context-picker/rh-context-picker.js';
 import style from './rh-context-demo.css';
 
 @customElement('rh-context-demo')
-@colorSchemeProvider()
+@colorSchemeProvider
 export class RhContextDemo extends LitElement {
   static readonly styles = [style];
 

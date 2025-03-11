@@ -46,7 +46,7 @@ export class AccordionCollapseEvent extends ComposedEvent {
  * @attr  [accents=inline] Position accents in the header either inline or bottom
  */
 @customElement('rh-accordion')
-@colorSchemeProvider()
+@colorSchemeProvider
 @colorSchemeConsumer
 export class RhAccordion extends LitElement {
   static readonly styles = [styles];

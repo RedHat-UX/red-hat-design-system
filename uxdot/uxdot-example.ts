@@ -13,7 +13,7 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import styles from './uxdot-example.css';
 
 @customElement('uxdot-example')
-@colorSchemeProvider()
+@colorSchemeProvider
 @colorSchemeConsumer
 export class UxdotExample extends LitElement {
   static styles = [styles];

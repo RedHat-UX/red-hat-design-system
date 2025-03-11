@@ -43,7 +43,7 @@ export { RhTab };
  * @cssprop {<length>} [--rh-tabs-inset=auto] - Tabs inset
  */
 @customElement('rh-tabs')
-@colorSchemeProvider()
+@colorSchemeProvider
 @colorSchemeConsumer
 export class RhTabs extends LitElement {
   static readonly styles = [styles];

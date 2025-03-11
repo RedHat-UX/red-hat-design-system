@@ -19,7 +19,7 @@ import styles from './rh-tile-group.css';
  * @slot - Put one or more `rh-tile` elements in this slot
  */
 @customElement('rh-tile-group')
-@colorSchemeProvider()
+@colorSchemeProvider
 @colorSchemeConsumer
 export class RhTileGroup extends LitElement {
   static readonly styles = [styles];

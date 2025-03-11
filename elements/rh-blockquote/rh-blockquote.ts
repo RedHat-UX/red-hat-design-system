@@ -21,7 +21,7 @@ import styles from './rh-blockquote.css';
  *
  */
 @customElement('rh-blockquote')
-@colorSchemeProvider()
+@colorSchemeProvider
 @colorSchemeConsumer
 export class RhBlockquote extends LitElement {
   static readonly styles = styles;

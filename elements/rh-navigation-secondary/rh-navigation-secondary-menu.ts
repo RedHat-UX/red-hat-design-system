@@ -28,7 +28,7 @@ import styles from './rh-navigation-secondary-menu.css';
  *           max-width for menu content
  */
 @customElement('rh-navigation-secondary-menu')
-@colorSchemeProvider()
+@colorSchemeProvider
 export class RhNavigationSecondaryMenu extends LitElement {
   static readonly styles = [styles];
 

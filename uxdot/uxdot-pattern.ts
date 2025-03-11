@@ -69,7 +69,7 @@ function forceHydration(node: Element) {
 }
 
 @customElement('uxdot-pattern')
-@colorSchemeProvider()
+@colorSchemeProvider
 @colorSchemeConsumer
 export class UxdotPattern extends LitElement {
   static styles = [styles];

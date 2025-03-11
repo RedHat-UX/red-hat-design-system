@@ -58,7 +58,7 @@ import '@rhds/elements/rh-icon/rh-icon.js';
  * @csspart transcript - transcript panel
  */
 @customElement('rh-audio-player')
-@colorSchemeProvider()
+@colorSchemeProvider
 @colorSchemeConsumer
 export class RhAudioPlayer extends LitElement {
   static readonly styles = [buttonStyles, styles, rangeStyles];

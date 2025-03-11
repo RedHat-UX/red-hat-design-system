@@ -41,7 +41,7 @@ import './rh-footer-copyright.js';
  * @csspart tertiary
  */
 @customElement('rh-footer-universal')
-@colorSchemeProvider()
+@colorSchemeProvider
 export class RhFooterUniversal extends LitElement {
   static readonly styles = [style];
 

@@ -53,6 +53,33 @@ class PaletteController implements ReactiveController {
   }
 }
 
+
+function impl(
+  klass: Constructor<ColorPaletteElement> & typeof ReactiveElement,
+  supportedPalettes = Palettes,
+) {
+  const { attribute, reflect } = klass.properties?.colorPalette
+      ?? klass.getPropertyOptions('colorPalette')
+      ?? {};
+  if (attribute !== 'color-palette' || !reflect) {
+    throw new Error('@colorSchemeProvider requires the `color-palette` attribute.');
+  }
+  klass.addInitializer(instance => new PaletteController(instance, [...supportedPalettes]));
+  const elementStyles =
+      Array.isArray(klass.styles) ? klass.styles
+    : klass.styles ? [klass.styles]
+    : [];
+  klass.styles = [
+    styles,
+    ...elementStyles,
+  ];
+}
+
+type ColorPaletteConstructor = Constructor<ColorPaletteElement> & typeof ReactiveElement;
+
+type ColorPaletteDecorator =
+  (target: ColorPaletteConstructor) => void;
+
 /**
  * Makes this element a [color scheme provider](https://ux.redhat.com/themeing/color-palettes)
  * Limits the element to the specified color palettes, if provided.
@@ -60,25 +87,16 @@ class PaletteController implements ReactiveController {
  * @param supportedPalettes list of supported color palettes
  * @see https://ux.redhat.com/themeing/color-palettes
  */
-export function colorSchemeProvider(...supportedPalettes: ColorPalette[]) {
-  if (!supportedPalettes.length) {
-    supportedPalettes = [...Palettes];
+export function colorSchemeProvider(...supportedPalettes: ColorPalette[]): ClassDecorator;
+export function colorSchemeProvider(klass: ColorPaletteConstructor): void;
+export function colorSchemeProvider(
+  ...args: ColorPalette[] | [klass: ColorPaletteConstructor]
+): ColorPaletteDecorator | void {
+  if (args.every(x => typeof x === 'string')) {
+    return function(klass: Constructor<ColorPaletteElement> & typeof ReactiveElement) {
+      return impl(klass, args as unknown as typeof Palettes);
+    };
+  } else {
+    return impl(...args);
   }
-  return function(klass: Constructor<ColorPaletteElement> & typeof ReactiveElement) {
-    const { attribute, reflect } = klass.properties?.colorPalette
-        ?? klass.getPropertyOptions('colorPalette')
-        ?? {};
-    if (attribute !== 'color-palette' || !reflect) {
-      throw new Error('@colorSchemeProvider requires the `color-palette` attribute.');
-    }
-    klass.addInitializer(instance => new PaletteController(instance, supportedPalettes));
-    const elementStyles =
-        Array.isArray(klass.styles) ? klass.styles
-      : klass.styles ? [klass.styles]
-      : [];
-    klass.styles = [
-      styles,
-      ...elementStyles,
-    ];
-  };
 }

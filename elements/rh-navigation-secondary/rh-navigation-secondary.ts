@@ -66,7 +66,7 @@ function focusableChildElements(parent: HTMLElement): NodeListOf<HTMLElement> {
  * @cssprop {<integer>} [--rh-navigation-secondary-overlay-z-index=-1] - z-index of the navigation-secondary-overlay
  */
 @customElement('rh-navigation-secondary')
-@colorSchemeProvider()
+@colorSchemeProvider
 @colorSchemeConsumer
 export class RhNavigationSecondary extends LitElement {
   static readonly styles = [styles];

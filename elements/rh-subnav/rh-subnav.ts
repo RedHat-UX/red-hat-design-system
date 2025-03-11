@@ -22,7 +22,7 @@ import styles from './rh-subnav.css';
  * @csspart links     - `<slot>` element
  */
 @customElement('rh-subnav')
-@colorSchemeProvider()
+@colorSchemeProvider
 @colorSchemeConsumer
 export class RhSubnav extends LitElement {
   static readonly styles = [styles];

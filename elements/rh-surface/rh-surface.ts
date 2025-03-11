@@ -25,7 +25,7 @@ import styles from './rh-surface.css';
  *          ```
  */
 @customElement('rh-surface')
-@colorSchemeProvider()
+@colorSchemeProvider
 @colorSchemeConsumer
 export class RhSurface extends LitElement {
   static readonly styles = [styles];
