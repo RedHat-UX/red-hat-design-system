@@ -6,7 +6,7 @@
   typography;
 
 @import url('/assets/packages/@rhds/tokens/css/global.css') layer(tokens);
-@import url('/assets/packages/@rhds/tokens/css/color-context-consumer.css') layer(tokens);
+@import url('/assets/packages/@rhds/tokens/css/color-scheme.css') layer(tokens);
 @import url('../reset.css') layer(reset);
 @import url('../fonts.css') layer(fonts);
 @import url('../typography.css') layer(typography);
