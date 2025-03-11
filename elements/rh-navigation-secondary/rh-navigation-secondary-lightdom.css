@@ -38,7 +38,7 @@ rh-navigation-secondary {
     /* TODO: remove for v2 */
     /* stylelint-disable-next-line */
     max-width: var(--rh-navigation-secondary-logo-max-width, 10em);
-    text-decoration: underline;
+    text-decoration: none;
     font-size: var(--rh-font-size-body-text-md, 1rem);
     letter-spacing: 0.01125em;
     margin-inline-start: var(--rh-space-lg, 16px);
@@ -102,14 +102,13 @@ rh-navigation-secondary {
       color: var(--_logo-link-color);
     }
   }
-}
 
-rh-navigation-secondary * {
-  box-sizing: border-box;
+  * {
+    box-sizing: border-box;
+  }
 }
 
 rh-navigation-secondary-menu a {
-  text-decoration: underline !important;
   color: var(--rh-color-interactive-primary-default-on-light, #0066cc);
 }
 
