@@ -60,6 +60,8 @@
 }
 
 #container {
+  --_box-shadow-color: rgba(21, 21, 21, 0.2);
+
   display: block;
   height: 100%;
   width: 100%;
@@ -71,17 +73,16 @@
    * --_background-color:
    *   light-dark(var(--rh-color-surface-lighter), var(--rh-color-surface-darker));
    * change box-shadow-color, but size values wont be able to change based on scheme.
-   * --_box-shadow-color light-dark(rgba(21, 21, 21, 0.2), rgba(0, 0, 0, 0.6));
+   * --_box-shadow-color: light-dark(rgba(21, 21, 21, 0.2), rgba(0, 0, 0, 0.6));
   */
 
   &.light {
     --_background-color: var(--rh-color-surface-lighter);
-    --_box-shadow: var(--rh-box-shadow-sm);
   }
 
   &.dark {
     --_background-color: var(--rh-color-surface-darker);
-    --_box-shadow: 0 4px 6px 1px rgba(0, 0, 0, 0.6);
+    --_box-shadow-color: rgba(0, 0, 0, 0.6); /* non standard dropshadow color */
   }
 
   details {
@@ -136,11 +137,12 @@
     width: -moz-available;
     height: 100%;
     padding-inline: calc(var(--rh-space-sm) + var(--rh-space-xs));
-    border-inline: var(--rh-border-width-sm) solid transparent;
-
-    /* adjustment for 4px border, because border-image usage we can't use transparent on opposite side to balance */
-    transform: translateY(4px);
     cursor: pointer;
+
+    @container (min-width: 1200px) {
+      /* adjustment for 4px border, because border-image usage we can't use transparent on opposite side to balance */
+      transform: translateY(4px);
+    }
 
     /* stylelint-disable-next-line no-descending-specificity */
     &:active {
@@ -189,7 +191,7 @@
       z-index: -1;
       width: 100%;
       background-color: var(--_background-color);
-      box-shadow: var(--_box-shadow);
+      box-shadow: 0 2px 4px 0 var(--_box-shadow-color);
       border-end-end-radius: calc(var(--rh-border-radius-default) * 2);
       border-end-start-radius: calc(var(--rh-border-radius-default) * 2);
     }
@@ -294,7 +296,9 @@
   }
 
   &:not(.standalone) {
-    border-block-end: 4px solid transparent; /* Non standard border width */
+    @container (min-width: 1200px) {
+      border-block-end: 4px solid transparent; /* Non standard border width */
+    }
   }
 
   &.link {

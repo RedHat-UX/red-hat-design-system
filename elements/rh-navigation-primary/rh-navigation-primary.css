@@ -43,6 +43,8 @@
 }
 
 #bar {
+  --_box-shadow-color: rgba(21, 21, 21, 0.2);
+
   display: grid;
   grid-template-areas: 'logo hamburger secondary-links';
   grid-template-columns: max-content max-content 1fr;
@@ -53,12 +55,12 @@
   width: -moz-available;
   width: fill-available;
   max-height: var(--_navbar-height);
-  box-shadow: var(--rh-box-shadow-sm);
+  box-shadow: 0 2px 4px 0 var(--_box-shadow-color);
 }
 
 .dark {
   & #bar {
-    box-shadow: 0 4px 6px 1px rgba(0, 0, 0, 0.6); /* Non standard dropshadow */
+    --_box-shadow-color: rgba(0, 0, 0, 0.6); /* Non standard dropshadow color */
   }
 }
 

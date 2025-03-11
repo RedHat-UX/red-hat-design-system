@@ -39,6 +39,11 @@ export class NavigationPrimaryChangeEvent extends ComposedEvent {
   }
 }
 
+export type NavigationPrimaryPalette = Extract<ColorPalette, (
+  | 'lightest'
+  | 'darkest'
+)>;
+
 /**
  * Navigation Primary
  * @slot - Place element content here
@@ -70,10 +75,10 @@ export class RhNavigationPrimary extends LitElement {
   private _hamburger!: HTMLDetailsElement;
 
   /**
-   * Color palette darker | lightest (default: darkest)
+   * Color palette is limited to lightest | darkest <NavigationPrimaryPalette>;
    */
   @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'darkest';
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: NavigationPrimaryPalette;
 
   /**
    * Sets color theme based on parent context
