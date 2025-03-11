@@ -77,8 +77,8 @@ export function colorSchemeProvider(...supportedPalettes: ColorPalette[]) {
       : klass.styles ? [klass.styles]
       : [];
     klass.styles = [
-      ...elementStyles,
       styles,
+      ...elementStyles,
     ];
   };
 }

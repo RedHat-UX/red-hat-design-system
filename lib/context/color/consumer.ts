@@ -22,8 +22,8 @@ export function colorSchemeConsumer(klass: typeof ReactiveElement) {
       : klass.styles ? [klass.styles]
       : [];
     klass.styles = [
-      ...elementStyles,
       styles,
+      ...elementStyles,
     ];
   }
 }
