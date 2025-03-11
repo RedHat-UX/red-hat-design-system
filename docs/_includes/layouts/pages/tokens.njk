@@ -61,9 +61,7 @@ layout: layouts/base.njk
 {% include 'partials/component/masthead.njk' %}
 {% include 'partials/component/sidenav.njk' %}
 
-<rh-surface id="main"
-            role="main"
-            color-palette="lightest">
+<rh-surface id="main" role="main">
   <uxdot-header has-search>
     <h1 id="{{ title | slugify }}" class="page-title">{{ title }}</h1>
     <form id="search-tokens" action="/tokens/search">

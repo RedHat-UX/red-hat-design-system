@@ -104,18 +104,14 @@
     grid-template-areas: 'header' 'nav' 'main' 'footer';
   }
 
-  /* stylelint-disable rhds/token-values */
   #main {
+    color-scheme: light dark;
     grid-area: main;
-    border-inline-start:
-      var(--rh-border-width-sm)
-      solid
-      var(--rh-color-border-subtle, var(--rh-color-border-subtle-on-light));
+    border-inline-start: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
     container-type: inline-size;
     container-name: main;
     padding-block-start: var(--uxdot-masthead-max-height);
   }
-  /* stylelint-enable rhds/token-values */
 
   .container {
     padding-inline: var(--rh-space-lg);

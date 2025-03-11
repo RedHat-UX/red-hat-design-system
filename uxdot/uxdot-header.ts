@@ -8,18 +8,12 @@ import '@rhds/elements/rh-surface/rh-surface.js';
 
 import styles from './uxdot-header.css';
 
-import {
-  colorSchemeProvider,
-  type ColorPalette,
-} from '@rhds/elements/lib/context/color/provider.js';
+import { colorSchemeConsumer } from '@rhds/elements/lib/context/color/consumer.js';
 
 @customElement('uxdot-header')
-@colorSchemeProvider()
+@colorSchemeConsumer
 export class UxdotHeader extends LitElement {
   static styles = [styles];
-
-  @property({ reflect: true, attribute: 'color-palette' })
-  colorPalette?: ColorPalette = 'lighter';
 
   @property({ type: Boolean, attribute: 'has-subnav' }) hasSubnav = false;
 
