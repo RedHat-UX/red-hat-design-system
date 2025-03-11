@@ -58,7 +58,7 @@
 ::slotted(a:hover):after {
   border-block-end-color:
     var(--_subnav-link-hover-border-end-color,
-      var(--rh-color-border-subtle)) !important;
+      var(--rh-color-gray-50, #707070)) !important;
 }
 
 ::slotted(a:active):after,
