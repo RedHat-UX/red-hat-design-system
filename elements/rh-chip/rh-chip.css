@@ -18,15 +18,15 @@ label {
   }
 
   &:has(input[aria-disabled='true']) {
-    background-color: var(--rh-color-interactive-secondary-default-on-dark, #c7c7c7);
+    background-color: var(--rh-color-gray-30, #c7c7c7);
     color: var(--rh-color-text-secondary);
-    outline-color: var(--rh-color-interactive-secondary-default-on-dark, #c7c7c7);
+    outline-color: var(--rh-color-gray-30, #c7c7c7);
     pointer-events: none;
   }
 
   &:has(input:checked) {
     background-color: var(--rh-color-blue-10, #e0f0ff);
-    color: var(--rh-color-interactive-primary-hover);
+    color: var(--rh-color-blue-70, #003366);
     outline-color: var(--rh-color-border-interactive);
 
     &:hover {
