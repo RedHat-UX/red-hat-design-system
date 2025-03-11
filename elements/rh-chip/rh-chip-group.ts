@@ -18,9 +18,9 @@ export class RhChipGroup extends LitElement {
   static readonly styles = [styles];
 
   /**
-   * Set the size of the chip to `sm` or `lg`
+   * Decreases the font-size of the chip's label
    */
-  @property({ reflect: true }) size?: 'sm' | 'lg';
+  @property({ reflect: true }) size?: 'sm';
 
   @provide({ context }) private ctx = this.#makeContext();
 
