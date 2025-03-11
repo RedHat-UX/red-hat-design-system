@@ -127,13 +127,12 @@ export class RhCard extends LitElement {
           part="container"
           class="${classMap({
             standard,
+            body: hasBody,
+            header: hasHeader,
+            footer: hasFooter,
+            image: hasImage,
             [variant]: !!variant,
             [computedPalette ?? '']: !!computedPalette,
-            'palette': !!this.colorPalette,
-            'has-body': hasBody,
-            'has-header': hasHeader,
-            'has-footer': hasFooter,
-            'has-image': hasImage,
           })}">${promo ? '' : header}
         <div id="image"
              part="image"
