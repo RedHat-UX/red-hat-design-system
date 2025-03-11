@@ -69,9 +69,9 @@ export class RhChip extends LitElement {
   render() {
     const { on = 'light' } = this;
     const attrName = this.chipName ? this.chipName : 'chip-checkbox';
-    const { size, color } = this.ctx ?? {};
+    const { size } = this.ctx ?? {};
     return html`
-      <label part="chip" class=${classMap({ on: true, [on]: true, [`size-${size}`]: !!size, [`color-${color}`]: !!color })}>
+      <label part="chip" class=${classMap({ on: true, [on]: true, [`size-${size}`]: !!size })}>
         <slot></slot>
         <input type="checkbox"
                name=${attrName}

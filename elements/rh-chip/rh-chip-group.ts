@@ -22,20 +22,14 @@ export class RhChipGroup extends LitElement {
    */
   @property({ reflect: true }) size?: 'sm' | 'lg';
 
-  /**
-   * Set the color of the chip to be light blue
-   */
-  @property({ reflect: true }) color?: 'light-blue';
-
   @provide({ context }) private ctx = this.#makeContext();
 
   #makeContext(): RhChipGroupContext {
-    const { size, color } = this;
-    return { size, color };
+    const { size } = this;
+    return { size };
   }
 
   @observes('size')
-  @observes('color')
   private contextChanged() {
     this.ctx = this.#makeContext();
   }
