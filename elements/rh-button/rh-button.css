@@ -238,7 +238,7 @@ button {
 
     & rh-icon {
       translate: 10%; /* perceptually center play icon only */
-    color: var(--rh-color-icon-secondary-on-dark, #ffffff);
+      color: var(--rh-color-icon-secondary-on-dark, #ffffff);
     }
   }
 
