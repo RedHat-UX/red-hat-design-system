@@ -46,7 +46,7 @@ used around color within RHDS.
    Color schemes are built into web browsers and operating systems, and form the
 standard backbone of RHDS' theming engine.
 
-   <rh-tag>Note:</rh-tag> Previous versions of RHDS referred to color schemes as `on` or "Backgrounds",
+   **Note:** Previous versions of RHDS referred to color schemes as `on` or "Backgrounds",
    and elements that have a color scheme as "color context consumers" because
    they reacted passively to the color scheme of their containers.
 
@@ -59,7 +59,7 @@ standard backbone of RHDS' theming engine.
    Color palettes are unique to RHDS, and build upon the standard color schemes
    They apply to elements which contain other elements.
 
-   <rh-tag>Note:</rh-tag> Previous versions of RHDS referred to elements with a
+   **Note:** Previous versions of RHDS referred to elements with a
    color palette as "color context providers" because setting their color
    palette would actively change their descendant element's color schemes as
    well.
