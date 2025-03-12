@@ -58,11 +58,11 @@ To install design tokens, please visit our dedicated repo for instructions.
 
 <div id="token-types" class="grid xs-two-columns sm-three-columns">
   <rh-card>
-    <h3 slot="header">Global tokens</h3>
-    <p>Global tokens represent the foundations of our design language and should
-    have context-agnostic names. These can be used and are inherited by other
+    <h3 slot="header">Primitive tokens</h3>
+    <p>Primitive tokens represent the foundations of our design language and should
+    have context-agnostic names since they are global. These can be used and are inherited by other
     token types.</p>
-    <p>Example:<br><code>--rh-brand-red-500</code></p>
+    <p>Example:<br><code>--rh-color-red-50</code></p>
   </rh-card>
 
   <rh-card>

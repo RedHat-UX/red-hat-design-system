@@ -81,7 +81,7 @@ theme might look like this:
 </uxdot-pattern>
 
 <rh-alert>When writing themes, use the semantic, themeable tokens such as
-`--rh-color-interactive-primary-default-on-light` rather than the crayon tokens
+`--rh-color-interactive-primary-default-on-light` rather than the primitive tokens
 e.g. `--rh-color-purple-10`.</rh-alert>
 
 <rh-alert state="warning">
