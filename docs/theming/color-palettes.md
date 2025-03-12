@@ -79,7 +79,7 @@ over JavaScript as much as possible. The following explains how the theming
 system works.
 
 <abbr title="red hat design system">RHDS</abbr>' color palette system is an
-*HTML* and *CSS* system with some supporting JavaScript[^1].
+*HTML* and *CSS* system with some supporting JavaScript.
 
 <rh-card class="pullquote-card right">
   <rh-blockquote>HTML design systems help teams ship better digital experiences,
@@ -197,45 +197,6 @@ Avoid customizing element CSS directly
 
 See the [customizing](../customizing/) page for a more detailed example.
 
-## Inline color palettes  <rh-tag color="purple">Beta</rh-tag>
-
-Inlining a color palette is when a section switches palette and looks different
-than the rest of the page or interface. Some use cases include highlighting an
-important section on a page or adding a sidebar to an interface. Use inline
-palettes only for major shifts in color. For minor shifts, use a related color
-palette, e.g. from `lightest` to `light`.
-
-<rh-alert>
-  <h4 slot="header">Update from the team</h4>
-
-  The design system team is working on creating inline color palette best
-  practices in the near future. [Contact us][contact] if you would like to
-  contribute.
-
-</rh-alert>
-
-<uxdot-example color-palette="lighter">
-  <img alt="wireframe of a dark palette section sandwiched by two light palette sections"
-       src="/assets/theming/inline-theming-1.png">
-</uxdot-example>
-
-<uxdot-example color-palette="lighter">
-  <img alt="wireframe of cards in a dark palette section extending into a light palette section"
-       src="/assets/theming/inline-theming-2.png">
-</uxdot-example>
-
-<uxdot-example color-palette="lighter">
-  <img alt="wireframe of dark palette navigation framing the top and left sides of a light palette content area"
-       src="/assets/theming/inline-theming-3.png">
-</uxdot-example>
-
-<rh-alert>
-  <h4 slot="header">More information</h4>
-  <p>High contrast is using bright elements, patterns, or images in dark
-     environments and vice versa. This is useful to focus attention or create
-     visual tension.</p>
-</rh-alert>
-
 ## Choosing a color palette
 
 How you choose a color palette is based on content, user experience, and
@@ -275,9 +236,6 @@ creating themeable, responsive graphics.
 
 {% renderFile './docs/_includes/partials/component/feedback.11ty.ts' %}
 
-[^1]: As the web platform [improves][wpt], the <abbr>RHDS</abbr> authors expect that eventually no JavaScript will be required for this feature.
-
-[wpt]: https://results.web-platform-tests.org/results/css/css-values/attr-container-style-query.html?label=experimental&label=master&aligned
 [contact]: https://github.com/RedHat-UX/red-hat-design-system/discussions
 [artdirection]: /theming/developers/#art-direction
 [theming]: /theming/customizing/
