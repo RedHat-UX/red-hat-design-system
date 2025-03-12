@@ -36,38 +36,6 @@ cross-property consistency.
   <h3 slot="heading">Color palettes in action</h3>
 </uxdot-pattern>
 
-## Terminology
-Before we dive into the details, let's take a moment to clarify the terminology
-used around color within RHDS.
-
-[Color scheme](#color-schemes)
-:  `light` or `dark`, aka "light mode" or "dark mode".
-
-   Color schemes are built into web browsers and operating systems, and form the
-standard backbone of RHDS' theming engine.
-
-   **Note:** Previous versions of RHDS referred to color schemes as `on` or "Backgrounds",
-   and elements that have a color scheme as "color context consumers" because
-   they reacted passively to the color scheme of their containers.
-
-   <rh-alert state="caution">Avoid the terms "light theme" or "dark theme",
-   as they can be confused with "theming", below.</rh-alert>
-
-[Color palette](#color-palettes)
-:  `lightest`, `lighter`, `light`, `dark`, `darker`, or `darkest`
-
-   Color palettes are unique to RHDS, and build upon the standard color schemes
-   They apply to elements which contain other elements.
-
-   **Note:** Previous versions of RHDS referred to elements with a
-   color palette as "color context providers" because setting their color
-   palette would actively change their descendant element's color schemes as
-   well.
-
-[Theming](../customizing)
-:  The process by which the appearance of RHDS elements are customized by
-   tweaking theme variables. Single elements or entire pages can be themed.
-
 ## Color schemes
 <a id="backgrounds-and-theme-tokens"></a>
 <a id="backgrounds"></a>
