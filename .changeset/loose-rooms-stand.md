@@ -1,26 +1,27 @@
 ---
 "@rhds/elements": major
 ---
-**🎨 Color Schemes 😎**
+#### 🎨 Color Schemes 😎
 
 This release introduces built-in support for user [color scheme][colorscheme] 
 preferences (a.k.a. "dark mode"). The [color palette][colorpalette] and 
 [theming][theming] integrate into device color schemes, or can be overridden on
 a per-page or per-element basis.
 
-**Performance**
+#### Performance
 This change significantly improves both the loading and the runtime performance
 of themable elements. We no longer need to apply the color scheming stylesheet
 to each element, which reduces SSR payloads as well.
 
-**Breaking Changes**:
+#### Breaking Changes
 In version 2, users could apply custom themes to specific sections or elements
 by setting theme tokens ending in `-on-light` and `-on-dark`. In this version,
-that will still work when applied to the entire document via the `:root` selector,
-but when theming individual elements, it will fail. For that reason, we recommend
-users should set theme tokens using the `light-dark()` function instead:
+that will still work when applied to the entire document via the `:root` 
+selector, but when theming individual elements, it will fail. For that reason, 
+we recommend users should set theme tokens using the `light-dark()` function 
+instead:
 
-Before:
+##### Before
 ```css
 .theme-custom {
   --rh-color-border-interactive-on-light: var(--custom-darkest);
@@ -30,24 +31,24 @@ Before:
 }
 ```
 
-After:
+##### After
 ```css
 .theme-custom {
   --rh-color-border-interactive: light-dark(var(--custom-darkest),
-                                            var(--custom-lightest));
+    var(--custom-lightest));
   --rh-color-interactive-primary-default: light-dark(var(--custom-darker),
-                                                     var(--custom-lighter));
+    var(--custom-lighter));
 }
 ```
 
-**Potentially Breaking Changes**: Because elements can now render by default 
-using your user's preferred color scheme, pages which are not set up to style 
-content based on user preferences may become unreadable. For example, if a user 
-who set their device to prefer dark mode visits a page which does not style 
-content based on their color-scheme preferences (i.e. it assumes "light mode") 
-and that page contains RHDS elements, those elements may become unreadable, by 
-rendering text for a dark background, when that page actually shows a light 
-background.
+#### Potentially Breaking Changes
+Because elements can now render by default using your user's preferred color 
+scheme, pages which are not set up to style content based on user preferences 
+may become unreadable. For example, if a user who set their device to prefer 
+dark mode visits a page which does not style content based on their color-scheme 
+preferences (i.e. it assumes "light mode") and that page contains RHDS elements, 
+those elements may become unreadable, by rendering text for a dark background, 
+when that page actually shows a light background.
 
 We expect that this should not affect the majority of cases, but if you find
 that it does, there are two solutions you can implement to force your pages into
