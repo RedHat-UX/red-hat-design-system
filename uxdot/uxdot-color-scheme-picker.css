@@ -26,12 +26,12 @@ label {
   position: relative;
   background-color: none;
   color: var(--rh-color-text-primary);
-  width: var(--rh-space-2xl);
   border: 1px solid var(--rh-color-border-subtle);
-  padding-inline: var(--rh-space-xs);
-  display: grid;
-  grid-template: 'c' / 1fr;
-  place-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--rh-space-3xl);
+  height: var(--rh-space-2xl);
 
   > * { grid-area: c; }
 
@@ -49,15 +49,32 @@ label {
 
   input {
     appearance: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    inset: 0;
+    outline-offset: 2px;
 
-    &:checked:after {
-      content: '';
-      position: absolute;
-      inset: 0;
+    &:hover,
+    &:focus {
+      background-color: var(--rh-color-interactive-secondary-focus);
+    }
+
+    &:checked {
       background-color: var(--rh-color-interactive-primary-active);
+
+      &:hover,
+      &:focus {
+        background-color: var(--rh-color-interactive-primary-focus);
+      }
+    }
+
+    &:focus-visible {
+      outline: 1px solid var(--rh-color-interactive-primary-focus);
     }
   }
 
+  &:hover,
   &:has(:checked) {
     color: var(--rh-color-text-primary-on-light);
   }
