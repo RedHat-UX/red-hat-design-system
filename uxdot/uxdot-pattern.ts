@@ -1,4 +1,4 @@
-import { html, isServer, type PropertyValues } from 'lit';
+import { html, isServer } from 'lit';
 
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
