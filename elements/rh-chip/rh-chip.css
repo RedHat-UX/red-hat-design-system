@@ -27,10 +27,10 @@ label {
   &:has(input:checked) {
     background-color: var(--rh-color-blue-10, #e0f0ff);
     color: var(--rh-color-blue-70, #003366);
-    outline-color: var(--rh-color-border-interactive);
+    outline-color: var(--rh-color-blue-30, #92c5f9);
 
     &:hover {
-      outline-color: var(--rh-color-blue-40, #4394e5);
+      outline-color: var(--rh-color-blue-30, #92c5f9);
     }
   }
 
