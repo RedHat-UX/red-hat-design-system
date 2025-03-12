@@ -3,7 +3,6 @@
   --_padding-end: var(--uxdot-sidenav-padding-end, var(--rh-space-2xl));
   --_max-height: 100dvh;
 
-  color-scheme: light dark;
   width: 100%;
   height: var(--_max-height);
   top: 0;

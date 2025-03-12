@@ -2,35 +2,35 @@ import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
+import { observes } from '@patternfly/pfe-core/decorators.js';
+
 import styles from './uxdot-color-scheme-picker.css';
 import visuallyHidden from './visually-hidden.css';
-import { observes } from '@patternfly/pfe-core/decorators.js';
-import type { RhSurface } from 'elements/rh-surface/rh-surface.js';
 
 @customElement('uxdot-color-scheme-picker')
 export class UxdotColorSchemePicker extends LitElement {
   static styles = [styles, visuallyHidden];
 
-  @property() mode: 'light' | 'dark' | 'auto' = 'auto';
+  @property({ reflect: true }) scheme: 'light' | 'dark' | 'light dark' = 'light dark';
 
   render() {
     return html`
       <fieldset @change="${this.#onChange}">
         <legend>Color Scheme:</legend>
         <div id="button-group">
-          <label>
-            <span class="visually-hidden">Light Mode</span>
+          <label title="Light">
+            <span class="visually-hidden">Light</span>
             <input type="radio" name="scheme" value="light">
             <rh-icon set="ui" icon="light-mode-fill"></rh-icon>
           </label>
-          <label>
-            <span class="visually-hidden">Dark Mode</span>
+          <label title="Dark">
+            <span class="visually-hidden">Dark</span>
             <input type="radio" name="scheme" value="dark">
             <rh-icon set="ui" icon="dark-mode-fill"></rh-icon>
           </label>
-          <label>
-            <span class="visually-hidden">Automatic</span>
-            <input type="radio" name="scheme" value="auto" checked>
+          <label title="Device default">
+            <span class="visually-hidden">Device default</span>
+            <input type="radio" name="scheme" value="light dark" checked>
             <rh-icon set="ui" icon="auto-light-dark-mode"></rh-icon>
           </label>
         </div>
@@ -40,26 +40,12 @@ export class UxdotColorSchemePicker extends LitElement {
 
   #onChange(e: Event) {
     if (e.target instanceof HTMLInputElement) {
-      this.mode = e.target.value as this['mode'];
+      this.scheme = e.target.value as this['scheme'];
     }
   }
 
-  @observes('mode')
+  @observes('scheme')
   private modeChanged() {
-    const main = document.getElementById('main') as RhSurface;
-    const side = document.querySelector('uxdot-sidenav')!;
-    switch (this.mode) {
-      case 'light':
-        main.colorPalette = 'lightest';
-        side.colorPalette = 'lightest';
-        break;
-      case 'dark':
-        main.colorPalette = 'darker';
-        side.colorPalette = 'darker';
-        break;
-      default:
-        main.removeAttribute('color-palette');
-        side.removeAttribute('color-palette');
-    }
+    document.body.style.setProperty('color-scheme', this.scheme);
   }
 }

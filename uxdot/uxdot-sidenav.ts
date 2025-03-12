@@ -4,25 +4,22 @@ import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
-import { colorSchemeProvider } from '@rhds/elements/lib/context/color/provider.js';
+import { colorSchemeConsumer } from '@rhds/elements/lib/context/color/consumer.js';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 
 import styles from './uxdot-sidenav.css';
-import schemeStyles from '@rhds/tokens/css/color-scheme.css.js';
 import itemStyles from './uxdot-sidenav-item.css';
 import dropdownStyles from './uxdot-sidenav-dropdown.css';
 import dropdownMenuStyles from './uxdot-sidenav-dropdown-menu.css';
 import dropdownMenuItemStyles from './uxdot-sidenav-dropdown-menu-item.css';
 
 @customElement('uxdot-sidenav')
-@colorSchemeProvider('lightest', 'darker')
+@colorSchemeConsumer
 export class UxdotSideNav extends LitElement {
   static shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
 
-  static styles = [styles, schemeStyles];
-
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: 'lightest' | 'darker';
+  static styles = [styles];
 
   @property({ type: Boolean, reflect: true }) open = false;
 

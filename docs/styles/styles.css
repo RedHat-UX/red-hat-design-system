@@ -104,9 +104,14 @@
     grid-template-areas: 'header' 'nav' 'main' 'footer';
   }
 
-  #main {
-    &:not([color-palette]) { color-scheme: light dark; }
+  #main,
+  uxdot-sidenav {
+    --rh-color-surface:
+      light-dark(var(--rh-color-surface-lightest),
+        var(--rh-color-surface-darker));
+  }
 
+  #main {
     grid-area: main;
     border-inline-start: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
     container-type: inline-size;
