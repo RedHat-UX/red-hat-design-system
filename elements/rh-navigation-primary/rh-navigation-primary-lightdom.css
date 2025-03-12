@@ -22,10 +22,14 @@ rh-navigation-primary {
     }
 
     &[slot='links'] {
+      display: flex;
+      align-items: center;
+
       &:after {
+        display: block;
         content: '';
-        height: 100%;
         border-inline-end: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
+        height: 30px;
       }
 
       &:nth-child(1 of rh-navigation-item[slot='links']) {

@@ -139,11 +139,6 @@
     padding-inline: calc(var(--rh-space-sm) + var(--rh-space-xs));
     cursor: pointer;
 
-    @container (min-width: 1200px) {
-      /* adjustment for 4px border, because border-image usage we can't use transparent on opposite side to balance */
-      transform: translateY(4px);
-    }
-
     /* stylelint-disable-next-line no-descending-specificity */
     &:active {
       background-color: var(--_background-color);
@@ -319,9 +314,6 @@
       text-decoration: none !important;
       height: 100%;
       align-items: center;
-
-      /* adjustment for 4px border, because border-image usage we can't use transparent on opposite side to balance */
-      transform: translateY(4px);
     }
 
     & ::slotted(a:active) {
@@ -367,6 +359,10 @@
     }
   }
 
+  &:is(.standalone, .link) {
+    font-size: var(--rh-font-size-code-sm);
+  }
+
   &:not(.standalone, .link) {
     details {
       border-inline-start: var(--rh-border-width-lg) solid transparent;
@@ -406,6 +402,9 @@
         @container (min-width: 1200px) {
           padding: 0 var(--rh-space-lg);
           width: auto;
+
+          /* adjustment for 4px border, because border-image usage we can't use transparent on opposite side to balance */
+          transform: translateY(4px);
         }
       }
     }

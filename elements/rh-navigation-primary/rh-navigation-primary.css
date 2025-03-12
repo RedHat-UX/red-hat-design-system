@@ -49,7 +49,7 @@
   grid-template-areas: 'logo hamburger secondary-links';
   grid-template-columns: max-content max-content 1fr;
   grid-template-rows: var(--_navbar-height);
-  background-color: var(--rh-color-surface);
+  background-color: var(--rh-color-surface-lightest);
   color: var(--rh-color-text-primary);
   width: -webkit-fill-available;
   width: -moz-available;
@@ -60,6 +60,8 @@
 
 .dark {
   & #bar {
+    background-color: var(--rh-color-surface-darkest);
+
     --_box-shadow-color: rgba(0, 0, 0, 0.6); /* Non standard dropshadow color */
   }
 }
