@@ -155,6 +155,7 @@ button {
 
   &.overflow {
     --_panel-padding: var(--rh-space-lg, 16px);
+
     & [part='tabs'] {
       --_inset-inline-margin: 0;
 
@@ -179,18 +180,12 @@ button {
   }
 }
 
-:host([box='inset']:not([vertical])) {
-  & [part='tabs'] {
-    --_inset-inline-margin: var(--rh-space-2xl, 32px);
-  }
+:host([box='inset']:not([vertical])) #container [part='tabs'] {
+  --_inset-inline-margin: var(--rh-space-2xl, 32px);
 }
 
-:host(:is([centered], [box='inset'])) {
-  & [part='container']:not(.overflow) {
-    & [part='tabs'] {
-      margin-inline: var(--rh-tabs-inset, var(--_inset-inline-margin, auto));
-    }
-  }
+:host(:is([centered], [box='inset'])) #container:not(.overflow) [part='tabs'] {
+  margin-inline: var(--rh-tabs-inset, var(--_inset-inline-margin, auto));
 }
 
 /* OVERFLOW BUTTONS */
