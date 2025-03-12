@@ -50,11 +50,6 @@ export class RhChip extends LitElement {
   @property({ type: Boolean, reflect: true }) disabled = false;
 
   /**
-   * Set a custom string for the input's `name` attribute. Defaults to `chip-checkbox`.
-   */
-  @property({ reflect: true, attribute: 'name' }) chipName?: string;
-
-  /**
    * Set a custom string for the input's `value` attribute. Defaults to `on`.
    */
   @property({ reflect: true, attribute: 'value' }) chipValue?: string;
@@ -67,13 +62,11 @@ export class RhChip extends LitElement {
 
   render() {
     const { on = 'light' } = this;
-    const attrName = this.chipName ? this.chipName : 'chip-checkbox';
     const { size } = this.ctx ?? {};
     return html`
       <label part="chip" class=${classMap({ on: true, [on]: true, [`size-${size}`]: !!size })}>
         <slot></slot>
         <input type="checkbox"
-               name="${attrName}"
                value="${ifDefined(this.chipValue)}"
                @change="${this.#onChecked}"
                @keydown="${this.#onKeydown}"
