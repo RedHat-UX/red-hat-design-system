@@ -206,10 +206,14 @@
 
   #dropdowns {
     gap: var(--rh-space-md);
+
+    @container navigation-primary (min-width: 1200px) {
+      padding-inline-start: var(--rh-space-md);
+    }
   }
 
   @container navigation-primary (min-width: 768px) {
-    gap: var(--rh-space-2xl);
+    gap: var(--rh-space-md);
 
     slot[name='event'] {
       display: contents;
