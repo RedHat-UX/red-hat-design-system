@@ -25,8 +25,8 @@ system.
 ## What is theming?
 
 We use theming to modify our elements and patterns so they fit a specific visual 
-style. Themes can be applied to an element, a page, or a UI. A common theming 
-use case is dark theme or dark mode.
+style. Themes can be applied to an element, a page, or a UI. 
+Theming encompases device dark and light color schemes, RHDS' color palettes and tokens, and design customizations. 
 
 ## How does it work?
 
