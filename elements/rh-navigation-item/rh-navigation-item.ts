@@ -100,7 +100,6 @@ export class RhNavigationItem extends LitElement {
       'on': true,
       [on]: !!on,
       compact,
-      'dehydrated': isServer,
     };
     return html`
       <div id="container" class="${classMap(classes)}" part="container">

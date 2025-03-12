@@ -6,11 +6,9 @@
   color: var(--rh-color-text-primary);
   padding: var(--rh-space-2xl) var(--rh-space-xl);
 
-  &:not(.dehydrated) {
-    @container (min-width: 992px) {
-      margin: 0 auto;
-      max-width: 1440px;
-      padding: var(--rh-space-3xl) var(--rh-space-2xl);
-    }
+  @container (min-width: 992px) {
+    margin: 0 auto;
+    max-width: 1440px;
+    padding: var(--rh-space-3xl) var(--rh-space-2xl);
   }
 }
