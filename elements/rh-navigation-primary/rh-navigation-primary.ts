@@ -238,10 +238,6 @@ export class RhNavigationPrimary extends LitElement {
             && this.#openSecondaryDropdowns.size === 0) {
           this.#closeOverlay();
         }
-
-        if (this.compact && this.#openSecondaryDropdowns.size === 0) {
-          this.#closeOverlay();
-        }
       }
     }
   }
