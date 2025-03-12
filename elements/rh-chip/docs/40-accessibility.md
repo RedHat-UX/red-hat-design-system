@@ -3,28 +3,13 @@
 Description goes here.
 
 <rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Key">Key</th>
-        <th scope="col" data-label="Result">Result</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Key">Tab</td>
-        <td data-label="Result">Moves focus to the next linked breadcrumb or interactive element</td>
-      </tr>
-      <tr>
-        <td data-label="Key">Shift + Tab</td>
-        <td data-label="Result">Moves focus to the previous linked breadcrumb or interactive element</td>
-      </tr>
-      <tr>
-        <td data-label="Key">Enter</td>
-        <td data-label="Result">Activates a link</td>
-      </tr>
-    </tbody>
-  </table>
+
+  | Key                               | Result                                                  |
+  |-----------------------------------|---------------------------------------------------------|
+  | <kbd>Tab</kbd>                    | Moves focus to the next chip or interactive element     |
+  | <kbd>Shift</kbd> + <kbd>Tab</kbd> | Moves focus to the previous chip or interactive element |
+  | <kbd>Spacebar</kbd>               | Checks a non-disabled chip                              |
+
 </rh-table>
 
 ## Focus order
