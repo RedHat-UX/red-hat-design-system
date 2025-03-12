@@ -46,7 +46,7 @@ container elements.
 
 ## How theming works
 
-### Color Scheme Providers
+### Color scheme providers
 <a id="providers"></a>
 
 <rh-alert state=info>[Read more about color palettes and schemes][palettes] in the theming overview.</rh-alert>
@@ -84,7 +84,7 @@ decorator to limit which palettes can be applied.
 export class RhSubsetProvider extends LitElement { /*...*/ }
 ```
 
-#### Color Scheme Consumers
+#### Color scheme consumers
 <a id="consumers"></a>
 
 Color scheme consumers are elements which cannot set their own color scheme,
@@ -131,7 +131,7 @@ export class RhConsumer extends LitElement {
 </rh-tabs>
 
 The `@colorSchemeConsumer` decorator applies a stylesheet from `@rhds/tokens` to 
-the element’s shadow root. which uses [`light-dark()`][lightdark] to compute 
+the page. That stylesheet uses [`light-dark()`][lightdark] to compute 
 theming tokens depending on the color scheme.
 
 ```css rhcodeblock
