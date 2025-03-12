@@ -1,14 +1,16 @@
 # Chip
 
-Add a description of the component here.
+Chip creates a component that can be used in place of a checkbox.
 
 ## Usage
 
-Describe how best to use this web component along with best practices.
+Individual `rh-chip`'s are wrapped by an `<rh-chip-group>` element. Be sure to include an accessible label for each group of chips.
 
 ```html
 <rh-chip-group>
-  <rh-chip>Option 1</rh-chip>
-  <rh-chip>Option 2</rh-chip>
+  <span slot="accessible-label">Filter by:</span>
+  <rh-chip>Edge</rh-chip>
+  <rh-chip>AI/ML</rh-chip>
+  <rh-chip>DevOps</rh-chip>
 </rh-chip-group>
 ```
