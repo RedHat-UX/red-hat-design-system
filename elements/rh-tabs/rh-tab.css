@@ -128,6 +128,8 @@ slot[name='icon'] {
     color: var(--rh-tabs-link-color, var(--rh-color-text-primary));
 
     &.box {
+      background-color: transparent;
+
       &:before {
         border-inline-color: var(--rh-color-border-subtle);
         border-inline-start-width: var(--rh-border-width-sm, 1px);
