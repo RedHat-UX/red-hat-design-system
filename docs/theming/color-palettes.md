@@ -195,7 +195,7 @@ Avoid customizing element CSS directly
 
 </rh-card>
 
-See the [customizing](./customizing/) page for a more detailed example.
+See the [customizing](../customizing/) page for a more detailed example.
 
 ## Inline color palettes  <rh-tag color="purple">Beta</rh-tag>
 
