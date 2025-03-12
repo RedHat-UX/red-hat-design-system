@@ -32,7 +32,6 @@ order: 3
     --bordeaux-darkest: #19050a;
     --bordeaux-darker: #260710;
     --bordeaux-dark: #330915;
-    --bordeaux-dark-alt: #290711;
     --bordeaux-brand-dark: #7f1734;
     --bordeaux-brand-light: #d52757;
     --bordeaux-light: #a55d71;
@@ -41,7 +40,6 @@ order: 3
     --rh-color-surface-darkest: var(--bordeaux-darkest);
     --rh-color-surface-darker: var(--bordeaux-darker);
     --rh-color-surface-dark: var(--bordeaux-dark);
-    --rh-color-surface-dark-alt: var(--bordeaux-dark-alt);
     --rh-color-surface-light: var(--bordeaux-light);
     --rh-color-surface-lighter: var(--bordeaux-lighter);
     --rh-color-surface-lightest: var(--bordeaux-lightest);

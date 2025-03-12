@@ -29,7 +29,7 @@
   --_numeric-a-color-visited-hover: var(--rh-color-interactive-primary-visited-hover);
   --_list-a-bg-color:
     light-dark(var(--rh-color-surface-lighter, #f2f2f2),
-      var(--rh-color-surface-dark-alt, #292929));
+      oklch(from var(--rh-color-surface-dark) calc(l * 0.82) c h));
   --_list-a-current-page-border-color: var(--rh-color-border-subtle);
   --_list-a-current-page-bg-color:
     light-dark(var(--rh-color-surface-lightest, #ffffff),
@@ -37,7 +37,7 @@
   --_list-a-text-color: var(--rh-color-text-primary);
   --_stepper-bg-color:
     light-dark(var(--rh-color-surface-lighter, #f2f2f2),
-      var(--rh-color-surface-dark-alt, #292929));
+      oklch(from var(--rh-color-surface-dark) calc(l * 0.82) c h));
   --_stepper-hover-focus-color: var(--rh-color-text-primary-on-dark, #ffffff);
   --_border-top-hover-color:
     light-dark(var(--rh-color-gray-60, #4d4d4d),

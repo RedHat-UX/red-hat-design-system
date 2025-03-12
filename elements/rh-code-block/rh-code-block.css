@@ -70,7 +70,7 @@
 #container {
   --_code-background-color:
     light-dark(var(--rh-color-surface-lighter, #f2f2f2),
-      var(--rh-color-surface-dark-alt, #292929));
+      oklch(from var(--rh-color-surface-dark) calc(l * 0.82) c h));
   --_code-main-spacer: var(--rh-space-xl, 24px);
   --_cdata-color: var(--rh-color-text-secondary);
   --_comment-color: var(--rh-color-text-secondary);

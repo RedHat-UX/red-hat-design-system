@@ -6,7 +6,7 @@
   container-name: header;
   background-color:
     light-dark(var(--rh-color-surface-lighter),
-      oklch(from var(--rh-color-surface-darkest) calc(l * 1.45) c h));
+      oklch(from var(--rh-color-surface-dark) calc(l * 0.82) c h));
 
   @container (min-width: 768px) {
     --_uxdot-header-padding: var(--rh-space-3xl);
