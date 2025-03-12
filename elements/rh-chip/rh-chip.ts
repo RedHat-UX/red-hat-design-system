@@ -77,7 +77,7 @@ export class RhChip extends LitElement {
                name=${attrName}
                value=${ifDefined(this.chipValue)}
                @change=${this.#onChecked}
-               @keydown=${this.#handleKeydown}
+               @keydown=${this.#onKeydown}
                ?checked=${!this.disabled && this.checked}
                aria-disabled=${!!this.disabled}>
         <rh-icon id="close-icon" set="ui" icon="close-circle"></rh-icon>
@@ -96,7 +96,7 @@ export class RhChip extends LitElement {
     this.dispatchEvent(new ChipCheckedEvent(this.checked));
   }
 
-  #handleKeydown(event: KeyboardEvent) {
+  #onKeydown(event: KeyboardEvent) {
     // Prevent checking via keyboard when disabled
     if (this.disabled && event.key === 'Spacebar') {
       event.preventDefault();
