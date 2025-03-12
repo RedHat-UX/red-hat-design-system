@@ -8,6 +8,8 @@ import tsBlankSpace from 'ts-blank-space';
 import chalk from 'chalk';
 
 import { register } from 'node:module';
+import { parse, serialize } from 'parse5';
+import { hasAttribute, query, queryAll, removeNode, type Node, type Template } from '@parse5/tools';
 
 export interface RenderRequestMessage {
   content: string;
@@ -90,6 +92,30 @@ export default async function(eleventyConfig: UserConfig, opts?: Options) {
       }
     });
   }
+
+  // workaround for an issue with TabsAriaController creating hydration
+  // mismatches in SSR
+  eleventyConfig.addTransform('ssr-hydration-woes-workaround', function(content) {
+    const doc = parse(content);
+
+    function detabify(tree: Node) {
+      const tabEls = queryAll(tree, n => n.nodeName === 'rh-tab');
+      for (const tab of tabEls) {
+        const tpl = query(tab, n => n.nodeName === 'template');
+        if (tpl) {
+          removeNode(tpl);
+        }
+      }
+      for (const tpl of queryAll(tree, (n): n is Template =>
+        n.nodeName === 'template' && hasAttribute(n, 'shadowrootmode'))) {
+        detabify((tpl as Template).content);
+      }
+    }
+
+    detabify(doc);
+
+    return serialize(doc);
+  });
 }
 
 // Lit SSR includes comment markers to track the outer template from
@@ -100,4 +126,3 @@ function trimOuterMarkers(renderedContent: string) {
       .replace(/^((<!--[^<>]*-->)|(<\?>)|\s)+/, '')
       .replace(/((<!--[^<>]*-->)|(<\?>)|\s)+$/, '');
 }
-
