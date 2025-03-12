@@ -24,7 +24,6 @@ describe('<rh-chip-group>', function() {
     beforeEach(async function() {
       element = await createFixture<RhChipGroup>(html`
          <rh-chip-group>
-           <span slot="accessible-label">Filter by:</span>
            <rh-chip>Option 1</rh-chip>
            <rh-chip>Option 2</rh-chip>
            <rh-chip>Option 3</rh-chip>

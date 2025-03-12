@@ -11,7 +11,11 @@ import styles from './rh-chip-group.css';
 
 /**
  * Chip Group
- * @slot - Place individual rh-chips inside rh-chip-group
+ * @slot - Place individual `rh-chips` inside `rh-chip-group`
+ * @slot accessible-label
+ *       An accessible label for the chip group.
+ *       Content for this slot is put into the `<legend>` element.
+ *       Also available as an attribute.
  */
 @customElement('rh-chip-group')
 export class RhChipGroup extends LitElement {
@@ -21,6 +25,11 @@ export class RhChipGroup extends LitElement {
    * Decreases the font-size of the chip's label
    */
   @property({ reflect: true }) size?: 'sm';
+
+  /**
+   * The accessible label for the form control / `rh-chip-group`
+   */
+  @property({ attribute: 'accessible-label' }) accessibleLabel?: string;
 
   @provide({ context }) private ctx = this.#makeContext();
 
@@ -35,10 +44,11 @@ export class RhChipGroup extends LitElement {
   }
 
   render() {
+    const label = this.accessibleLabel ? this.accessibleLabel : 'Filter by:';
     return html`
       <fieldset>
         <legend part="legend">
-          <slot name="accessible-label"></slot>
+          <slot name="accessible-label">${label}</slot>
         </legend>
         <slot></slot>
       </fieldset>
