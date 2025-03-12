@@ -37,20 +37,41 @@
     --rh-color-surface-light: var(--bordeaux-light);
     --rh-color-surface-lighter: var(--bordeaux-lighter);
     --rh-color-surface-lightest: var(--bordeaux-lightest);
-    --rh-color-border-interactive-on-dark: var(--bordeaux-lightest);
-    --rh-color-border-interactive-on-light: var(--bordeaux-darkest);
-    --rh-color-interactive-primary-default-on-dark: var(--bordeaux-lighter);
-    --rh-color-interactive-primary-default-on-light: var(--bordeaux-darker);
-    --rh-color-interactive-primary-hover-on-dark: var(--bordeaux-light);
-    --rh-color-interactive-primary-hover-on-light: var(--bordeaux-dark);
-    --rh-color-interactive-primary-focus-on-dark: var(--bordeaux-light);
-    --rh-color-interactive-primary-focus-on-light: var(--bordeaux-dark);
-    --rh-color-interactive-primary-active-on-dark: var(--bordeaux-light);
-    --rh-color-interactive-primary-active-on-light: var(--bordeaux-dark);
-    --rh-color-border-subtle-on-dark: var(--bordeaux-lighter);
-    --rh-color-border-subtle-on-light: var(--bordeaux-darker);
-    --rh-color-icon-primary-on-light: var(--bordeaux-brand-dark);
-    --rh-color-icon-primary-on-dark: var(--bordeaux-brand-light);
+
+    --rh-color-border-interactive: light-dark(
+      var(--bordeaux-darkest),
+      var(--bordeaux-lightest)
+    );
+
+    --rh-color-interactive-primary-default: light-dark(
+      var(--bordeaux-darker),
+      var(--bordeaux-lighter)
+    );
+
+    --rh-color-interactive-primary-hover: light-dark(
+      var(--bordeaux-dark),
+      var(--bordeaux-light)
+    );
+
+    --rh-color-interactive-primary-focus: light-dark(
+      var(--bordeaux-dark),
+      var(--bordeaux-light)
+    );
+
+    --rh-color-interactive-primary-active: light-dark(
+      var(--bordeaux-dark),
+      var(--bordeaux-light)
+    );
+
+    --rh-color-border-subtle: light-dark(
+      var(--bordeaux-darker),
+      var(--bordeaux-lighter)
+    );
+
+    --rh-color-icon-primary: light-dark(
+      var(--bordeaux-brand-dark),
+      var(--bordeaux-brand-light)
+    );
   }
 
   .list-with-dividers {
