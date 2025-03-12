@@ -290,7 +290,7 @@
     }
   }
 
-  &:not(.standalone) {
+  &:not(.standalone, .compact) {
     @container (min-width: 1200px) {
       border-block-end: 4px solid transparent; /* Non standard border width */
     }
@@ -412,6 +412,33 @@
     @container (min-width: 1200px) {
       &:is(:hover, :focus-within, :has(details[open])) {
         border-image: var(--_active-item-color) 1;
+      }
+    }
+  }
+
+  &.compact {
+    /* JS failed, load mobile styles */
+    @container (min-width: 1200px) {
+      &:not(.standalone, .link) {
+        & details {
+          border-block-end: none;
+          border-inline-start: var(--rh-border-width-lg) solid transparent;
+          border-inline-end: var(--rh-border-width-sm) solid transparent;
+
+          & summary {
+            padding: var(--rh-space-lg) var(--rh-space-xl);
+          }
+
+          & #details-content {
+            position: static;
+            box-shadow: none;
+          }
+
+          &[open] {
+            border-inline-end-color: var(--rh-color-border-subtle);
+            border-inline-start-color: var(--rh-color-accent-brand);
+          }
+        }
       }
     }
   }

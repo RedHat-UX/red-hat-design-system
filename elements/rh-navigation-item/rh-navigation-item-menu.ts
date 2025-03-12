@@ -7,6 +7,9 @@ import { DirController } from '../../lib/DirController.js';
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
+import { consume } from '@lit/context';
+import { context, type RhNavigationItemContext } from './context.js';
+
 import styles from './rh-navigation-item-menu.css';
 
 /**
@@ -30,10 +33,15 @@ export class RhNavigationItemMenu extends LitElement {
    */
   @colorContextConsumer() private on?: ColorTheme;
 
+  @consume({ context, subscribe: true })
+  @property({ attribute: false })
+  private ctx?: RhNavigationItemContext;
+
   render() {
     const rtl = this.#dir.dir === 'rtl';
-    const { on = '' } = this;
-    const classes = { rtl, on: true, [on]: !!on };
+    const { on = 'light' } = this;
+    const { compact = true } = this.ctx ?? {};
+    const classes = { rtl, on: true, [on]: !!on, compact };
     return html`
       <div id="container" class="${classMap(classes)}">
         <slot></slot>

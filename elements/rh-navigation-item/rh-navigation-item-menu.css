@@ -6,9 +6,11 @@
   color: var(--rh-color-text-primary);
   padding: var(--rh-space-2xl) var(--rh-space-xl);
 
-  @container (min-width: 992px) {
-    margin: 0 auto;
-    max-width: 1440px;
-    padding: var(--rh-space-3xl) var(--rh-space-2xl);
+  &:not(.compact) {
+    @container (min-width: 1200px) {
+      margin: 0 auto;
+      max-width: 1440px;
+      padding: var(--rh-space-3xl) var(--rh-space-2xl);
+    }
   }
 }

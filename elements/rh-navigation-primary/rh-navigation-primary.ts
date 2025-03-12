@@ -122,7 +122,7 @@ export class RhNavigationPrimary extends LitElement {
 
   render() {
     const rtl = this.#dir.dir === 'rtl';
-    const { on = '' } = this;
+    const { on = 'light' } = this;
     const classes = { compact: this.compact, rtl, on: true, [on]: !!on };
     return html`
       <nav id="container" class="${classMap(classes)}">

@@ -90,7 +90,7 @@ export class RhNavigationItem extends LitElement {
   }
 
   render() {
-    const { hide = '', variant = '', standalone, on = '' } = this;
+    const { hide = '', variant = '', standalone, on = 'light' } = this;
     const { compact = true } = this.ctx ?? {};
     const classes = {
       'highlight': !!this.#highlight,
