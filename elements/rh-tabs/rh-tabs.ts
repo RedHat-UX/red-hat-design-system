@@ -39,7 +39,6 @@ export { RhTab };
  * @csspart panels - panels
  * @slot tab - Must contain one or more `<rh-tab>`
  * @slot - Must contain one or more `<rh-tab-panel>`
- * @cssprop {<color>} [--rh-tabs-border-color=#c7c7c7] - Tabs Border color
  * @cssprop {<length>} [--rh-tabs-inset=auto] - Tabs inset
  */
 @customElement('rh-tabs')
