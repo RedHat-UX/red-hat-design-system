@@ -3,6 +3,7 @@ import type { RhTabsContext } from './context.js';
 import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
+import { state } from 'lit/decorators/state.js';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 import { query } from 'lit/decorators/query.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -17,7 +18,6 @@ import { context } from './context.js';
 import { colorSchemeConsumer } from '../../lib/context/color/consumer.js';
 
 import styles from './rh-tab.css';
-import { state } from 'lit/decorators/state.js';
 
 export class TabExpandEvent extends Event {
   constructor(
@@ -55,7 +55,7 @@ export class RhTab extends LitElement {
   @property({ reflect: true, type: Boolean }) disabled = false;
 
   @consume({ context, subscribe: true })
-  @state()
+  @property({ attribute: false })
   private ctx?: RhTabsContext;
 
   @queryAssignedElements({ slot: 'icon', flatten: true }) private icons!: HTMLElement[];

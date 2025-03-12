@@ -91,9 +91,7 @@ button {
   }
 }
 
-#rhds-container {
-  display: contents;
-
+#container {
   --_arrow-color: var(--rh-color-accent-base);
   --_overflow-button-text-color: var(--rh-color-text-secondary);
 
@@ -103,17 +101,17 @@ button {
       var(--rh-color-gray-50, #707070));
   --_overflow-button-hover-text-color: var(--rh-color-text-primary);
 
+  color: var(--rh-color-text-primary);
+
   @container (min-width: 768px) {
     --_panel-padding: var(--rh-space-2xl, 32px);
   }
 
   &.vertical {
     @container host (min-width: 768px) {
-      [part='container'] {
-        display: grid;
-        grid-template-columns: max-content 1fr;
-        grid-template-areas: 'tabs panels';
-      }
+      display: grid;
+      grid-template-columns: max-content 1fr;
+      grid-template-areas: 'tabs panels';
 
       [part='tabs-container'] {
         grid-area: tabs;
@@ -155,10 +153,19 @@ button {
     }
   }
 
-  [part='container'] {
-    &.overflow { --_panel-padding: var(--rh-space-lg, 16px); }
+  &.overflow {
+    --_panel-padding: var(--rh-space-lg, 16px);
+    & [part='tabs'] {
+      --_inset-inline-margin: 0;
 
-    color: var(--rh-color-text-primary);
+      position: relative;
+      inset-inline-start: -1px;
+      z-index: 1;
+    }
+
+    & [part='panels'] {
+      --_panels-overflow-padding: var(--rh-space-2xl, 32px);
+    }
   }
 
   &:not(.vertical) {
@@ -169,21 +176,6 @@ button {
         }
       }
     }
-  }
-}
-
-/* When overflow */
-[part='container'].overflow {
-  & [part='tabs'] {
-    --_inset-inline-margin: 0;
-
-    position: relative;
-    inset-inline-start: -1px;
-    z-index: 1;
-  }
-
-  & [part='panels'] {
-    --_panels-overflow-padding: var(--rh-space-2xl, 32px);
   }
 }
 
