@@ -4,7 +4,6 @@
 
 [part='container'] {
   display: flex;
-  background-color: var(--rh-color-surface);
 
   --_subnav-link-text-color: var(--rh-color-text-secondary);
   --_subnav-link-hover-text-color: var(--rh-color-text-primary);
