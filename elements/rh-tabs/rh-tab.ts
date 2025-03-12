@@ -64,7 +64,6 @@ export class RhTab extends LitElement {
 
   #internals = InternalsController.of(this, { role: 'tab' });
 
-  @state() private active = false;
   @state() private first = false;
   @state() private last = false;
 
@@ -84,12 +83,12 @@ export class RhTab extends LitElement {
 
   render() {
     const { box = false, vertical = false } = this.ctx ?? {};
-    const { active, first, last } = this;
+    const { first, last } = this;
     return html`
       <div id="button"
            part="button"
            ?disabled="${this.disabled}"
-           class="${classMap({ active, box, vertical, first, last })}">
+           class="${classMap({ active: this.ctx?.activeTab === this, box, vertical, first, last })}">
         <slot name="icon"
               part="icon"
               ?hidden="${!this.icons.length}"
