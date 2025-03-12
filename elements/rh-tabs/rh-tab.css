@@ -1,6 +1,7 @@
 :host {
   display: flex;
   flex: none;
+  background-color: var(--rh-color-surface);
 
   --_active-tab-border:
     var(--rh-border-width-lg, 3px) solid var(--_active-tab-border-color,
@@ -78,7 +79,7 @@ slot[name='icon'] {
     background-color: transparent;
     border-inline: 0 solid transparent;
     border-block-start: var(--rh-border-width-lg, 3px) solid transparent;
-    border-block-end: var(--rh-border-width-sm, 1px) solid transparent;
+    border-block-end: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
   }
 
   /* When button is box */

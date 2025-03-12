@@ -1,6 +1,5 @@
 :host {
   display: block;
-  background: var(--rh-color-surface);
   color: var(--rh-color-text-primary);
   container-name: host;
   container-type: inline-size;
@@ -22,7 +21,7 @@
     inset-inline-end: 0;
     inset: 0;
     border-width: 0 0 var(--rh-border-width-sm, 1px);
-    border-color: var(--_border-color);
+    border-color: var(--rh-color-border-subtle);
     border-style: solid;
   }
 }
@@ -158,11 +157,8 @@ button {
   }
 
   [part='container'] {
-    &.overflow {
-      --_panel-padding: var(--rh-space-lg, 16px);
-    }
+    &.overflow { --_panel-padding: var(--rh-space-lg, 16px); }
 
-    background-color: var(--rh-color-surface);
     color: var(--rh-color-text-primary);
   }
 
