@@ -11,14 +11,16 @@
 #container {
   display: grid;
   column-gap: var(--rh-space-lg);
-  grid-template-columns: max-content 1fr max-content;
+  grid-template-columns: max-content 1fr 1fr;
   max-height: var(--uxdot-masthead-max-height, 72px);
   margin-inline: var(--rh-space-md);
   margin-block: var(--rh-space-lg);
+  uxdot-color-scheme-picker { display: none; }
 
   @container (min-width: 576px) {
     gap: var(--rh-space-lg);
     margin: var(--rh-space-lg);
+    uxdot-color-scheme-picker { display: initial; }
   }
 
   @container (min-width: 992px) {

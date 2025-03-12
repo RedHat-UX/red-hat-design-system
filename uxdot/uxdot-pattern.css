@@ -85,6 +85,7 @@ h3,
   border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
   border-radius: var(--rh-border-radius-default);
   grid-area: code;
+  background-color: var(--rh-color-surface);
 
   & rh-tab-panel {
     padding: 0;
