@@ -1,4 +1,4 @@
-import { html, LitElement } from 'lit';
+import { html, isServer, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -159,6 +159,14 @@ export class RhTabs extends LitElement {
       this.activeIndex = this.#tabindex.atFocusedItemIndex;
     }
     this.ctx = this.#ctx;
+    // SSR hydration mismatch Workaround
+    // might be fixed if we add context props for each member of the context bag
+    if (!isServer) {
+      for (const tab of this.querySelectorAll('rh-tab')) {
+        // @ts-expect-error: this is a workaround for ssr issues
+        tab.ctx = this.#ctx;
+      }
+    }
   }
 
   async firstUpdated() {
