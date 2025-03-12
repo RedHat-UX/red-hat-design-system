@@ -86,7 +86,7 @@ slot[name='icon'] {
   &.box {
     background-color:
       light-dark(var(--rh-color-surface-lighter, #f2f2f2),
-        var(--rh-color-surface-dark-alt, #292929));
+        oklch(from var(--rh-color-surface-dark) calc(l * 0.82) c h));
   }
 
   /* When button is vertical format */
@@ -129,7 +129,7 @@ slot[name='icon'] {
 
     &.box {
       &:before {
-        border-inline-color: var(--_border-color);
+        border-inline-color: var(--rh-color-border-subtle);
         border-inline-start-width: var(--rh-border-width-sm, 1px);
       }
 
@@ -140,14 +140,14 @@ slot[name='icon'] {
 
       &.first {
         &:before {
-          border-inline-start-color: var(--_border-color);
+          border-inline-start-color: var(--rh-color-border-subtle);
           border-inline-start-width: var(--rh-border-width-sm, 1px);
         }
       }
 
       &.last {
         &:before {
-          border-inline-end-color: var(--_border-color);
+          border-inline-end-color: var(--rh-color-border-subtle);
           border-inline-end-width: var(--rh-border-width-sm, 1px);
         }
       }
@@ -163,14 +163,14 @@ slot[name='icon'] {
             border-block-start:
               var(--rh-border-width-sm, 1px)
               solid
-              var(--_border-color);
+              var(--rh-color-border-subtle);
           }
         }
 
         &.first {
           @container (min-width: 768px) {
             &:after {
-              border-block-start-color: var(--_border-color);
+              border-block-start-color: var(--rh-color-border-subtle);
               border-block-start-width: var(--rh-border-width-sm, 1px);
             }
           }
@@ -179,7 +179,7 @@ slot[name='icon'] {
         &.last {
           @container (min-width: 768px) {
             &:before {
-              border-block-end-color: var(--_border-color);
+              border-block-end-color: var(--rh-color-border-subtle);
               border-block-end-width: var(--rh-border-width-sm, 1px);
             }
           }
@@ -190,7 +190,7 @@ slot[name='icon'] {
         &.first {
           @container (min-width: 768px) {
             &:before {
-              border-inline-start-color: var(--_border-color);
+              border-inline-start-color: var(--rh-color-border-subtle);
               border-inline-start-width: var(--rh-border-width-sm, 1px);
             }
           }
@@ -199,7 +199,7 @@ slot[name='icon'] {
         &.last {
           @container (min-width: 768px) {
             &:before {
-              border-inline-end-color: var(--_border-color);
+              border-inline-end-color: var(--rh-color-border-subtle);
               border-inline-end-width: var(--rh-border-width-sm, 1px);
             }
           }
@@ -259,12 +259,12 @@ slot[name='icon'] {
   &:not(.active) {
     &.box {
       &:before {
-        border-inline-color: var(--_border-color);
+        border-inline-color: var(--rh-color-border-subtle);
         border-inline-start-width: var(--rh-border-width-sm, 1px);
       }
 
       &:after {
-        border-block-end-color: var(--_border-color);
+        border-block-end-color: var(--rh-color-border-subtle);
       }
 
       &.vertical {
@@ -283,11 +283,11 @@ slot[name='icon'] {
             border-inline-end:
               var(--rh-border-width-sm, 1px)
               solid
-              var(--_border-color);
+              var(--rh-color-border-subtle);
             border-block-start:
               var(--rh-border-width-sm, 1px)
               solid
-              var(--_border-color);
+              var(--rh-color-border-subtle);
           }
 
           &:after {
@@ -303,7 +303,7 @@ slot[name='icon'] {
               border-block-start:
                 var(--rh-border-width-sm, 1px)
                 solid
-                var(--_border-color);
+                var(--rh-color-border-subtle);
             }
           }
 
@@ -311,7 +311,7 @@ slot[name='icon'] {
             @container (min-width: 768px) {
               &:before {
                 border-block-start-color: transparent;
-                border-inline-end-color: var(--_border-color);
+                border-inline-end-color: var(--rh-color-border-subtle);
               }
             }
           }
@@ -338,7 +338,7 @@ slot[name='icon'] {
 
         @container (min-width: 768px) {
           &:after {
-            border-block-end-color: var(--_border-color);
+            border-block-end-color: var(--rh-color-border-subtle);
           }
         }
       }

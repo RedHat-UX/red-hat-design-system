@@ -17,6 +17,7 @@ import { context } from './context.js';
 import { colorSchemeConsumer } from '../../lib/context/color/consumer.js';
 
 import styles from './rh-tab.css';
+import { state } from 'lit/decorators/state.js';
 
 export class TabExpandEvent extends Event {
   constructor(
@@ -54,15 +55,18 @@ export class RhTab extends LitElement {
   @property({ reflect: true, type: Boolean }) disabled = false;
 
   @consume({ context, subscribe: true })
-  @property({ attribute: false })
+  @state()
   private ctx?: RhTabsContext;
-
 
   @queryAssignedElements({ slot: 'icon', flatten: true }) private icons!: HTMLElement[];
 
   @query('#button') private button!: HTMLButtonElement;
 
   #internals = InternalsController.of(this, { role: 'tab' });
+
+  @state() private active = false;
+  @state() private first = false;
+  @state() private last = false;
 
   override connectedCallback() {
     super.connectedCallback();
@@ -72,11 +76,15 @@ export class RhTab extends LitElement {
     this.addEventListener('focus', this.#onFocus);
   }
 
+  willUpdate() {
+    this.active = this.ctx?.activeTab === this;
+    this.first = this.ctx?.firstTab === this;
+    this.last = this.ctx?.lastTab === this;
+  }
+
   render() {
-    const active = this.ctx?.activeTab === this;
-    const { box = false, vertical = false, firstTab, lastTab } = this.ctx ?? {};
-    const first = firstTab === this;
-    const last = lastTab === this;
+    const { box = false, vertical = false } = this.ctx ?? {};
+    const { active, first, last } = this;
     return html`
       <div id="button"
            part="button"
