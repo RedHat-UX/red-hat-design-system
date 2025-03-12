@@ -36,14 +36,12 @@ export class RhChipGroup extends LitElement {
 
   render() {
     return html`
-      <div id="container">
-        <fieldset>
-          <legend part="legend">
-            <slot name="accessible-label"></slot>
-          </legend>
-          <slot></slot>
-        </fieldset>
-      </div>
+      <fieldset>
+        <legend part="legend">
+          <slot name="accessible-label"></slot>
+        </legend>
+        <slot></slot>
+      </fieldset>
     `;
   }
 }
