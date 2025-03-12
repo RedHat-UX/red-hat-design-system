@@ -35,9 +35,9 @@ instead:
 ```css
 .theme-custom {
   --rh-color-border-interactive: light-dark(var(--custom-darkest),
-    var(--custom-lightest));
+                                            var(--custom-lightest));
   --rh-color-interactive-primary-default: light-dark(var(--custom-darker),
-    var(--custom-lighter));
+                                                     var(--custom-lighter));
 }
 ```
 
