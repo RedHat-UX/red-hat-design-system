@@ -217,6 +217,7 @@ export default async function(eleventyConfig: UserConfig) {
       // 'elements/rh-card/rh-card.ts',
       // 'elements/rh-tile/rh-tile.ts',
       'uxdot/uxdot-best-practice.ts',
+      'uxdot/uxdot-color-scheme-picker.ts',
       'uxdot/uxdot-copy-button.ts',
       'uxdot/uxdot-copy-permalink.ts',
       'uxdot/uxdot-example.ts',

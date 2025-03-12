@@ -18,18 +18,6 @@ code {
   line-height: var(--rh-line-height-code);
 }
 
-.visually-hidden {
-  border: 0;
-  clip: rect(0, 0, 0, 0);
-  block-size: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  white-space: nowrap;
-  inline-size: 1px;
-}
-
 :host(.icon-only) code,
 :host(:empty) code {
   display: none;

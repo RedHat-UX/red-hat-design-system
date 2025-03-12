@@ -4,6 +4,8 @@ import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
+import { colorSchemeProvider } from '@rhds/elements/lib/context/color/provider.js';
+
 import '@rhds/elements/rh-icon/rh-icon.js';
 
 import styles from './uxdot-sidenav.css';
@@ -14,10 +16,13 @@ import dropdownMenuStyles from './uxdot-sidenav-dropdown-menu.css';
 import dropdownMenuItemStyles from './uxdot-sidenav-dropdown-menu-item.css';
 
 @customElement('uxdot-sidenav')
+@colorSchemeProvider('lightest', 'darker')
 export class UxdotSideNav extends LitElement {
   static shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
 
   static styles = [styles, schemeStyles];
+
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: 'lightest' | 'darker';
 
   @property({ type: Boolean, reflect: true }) open = false;
 
@@ -215,4 +220,12 @@ export class UxdotSideNavDropdownMenu extends LitElement {
 @customElement('uxdot-sidenav-dropdown-menu-item')
 export class UxdotSideNavDropdownMenuItem extends UxdotSideNavItem {
   static styles = [itemStyles, dropdownMenuItemStyles];
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'uxdot-sidenav': UxdotSideNav;
+    'uxdot-sidenav-dropdown-menu': UxdotSideNavDropdownMenu;
+    'uxdot-sidenav-dropdown-menu-item': UxdotSideNavDropdownMenuItem;
+  }
 }

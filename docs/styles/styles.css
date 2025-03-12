@@ -105,7 +105,8 @@
   }
 
   #main {
-    color-scheme: light dark;
+    &:not([color-palette]) { color-scheme: light dark; }
+
     grid-area: main;
     border-inline-start: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
     container-type: inline-size;
