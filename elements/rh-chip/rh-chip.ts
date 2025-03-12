@@ -13,12 +13,11 @@ import '@rhds/elements/rh-icon/rh-icon.js';
 
 import styles from './rh-chip.css';
 
-export class ChipCheckedEvent extends CustomEvent<{ checked: boolean }> {
-  constructor(checked: boolean) {
-    super('chip-checked', {
+export class ChipChangeEvent extends Event {
+  constructor(public checked: boolean) {
+    super('change', {
       bubbles: true,
-      composed: true,
-      detail: { checked },
+      cancelable: true,
     });
   }
 }
@@ -86,14 +85,15 @@ export class RhChip extends LitElement {
   }
 
   #onChecked(event: Event) {
+    event.stopPropagation();
     if (this.disabled) {
       event.preventDefault();
       (event.target as HTMLInputElement).checked = this.checked;
       return;
     }
-
-    this.checked = this.chipInput.checked;
-    this.dispatchEvent(new ChipCheckedEvent(this.checked));
+    if (this.dispatchEvent(new ChipChangeEvent(this.checked))) {
+      this.checked = this.chipInput.checked;
+    }
   }
 
   #onKeydown(event: KeyboardEvent) {
