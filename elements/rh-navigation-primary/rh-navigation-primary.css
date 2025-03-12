@@ -152,16 +152,19 @@
       display: none;
     }
 
-    slot[name='summary'] {
+    & rh-icon {
+      &[icon='caret-down'] {
+        color: var(--rh-color-icon-subtle);
+        transition: rotate 0.2s;
+      }
+
+      &[icon='menu-bars'] {
+        margin-block: var(--rh-space-xs);
+      }
+    }
+
+    & slot[name='summary'] {
       display: none;
-    }
-
-    rh-icon[icon='caret-down'] {
-      color: var(--rh-color-icon-subtle);
-    }
-
-    rh-icon[icon='menu-bars'] {
-      margin-block: var(--rh-space-xs);
     }
 
     @container navigation-primary (min-width: 992px) {
@@ -223,7 +226,7 @@
           --_mask: conic-gradient(#000000 0 0);
         }
 
-        rh-icon {
+        & rh-icon[icon='caret-down'] {
           rotate: 180deg;
         }
       }
