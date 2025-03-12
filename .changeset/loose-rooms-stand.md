@@ -6,7 +6,7 @@
 This release introduces built-in support for user [color scheme][colorscheme] 
 preferences (a.k.a. "dark mode"). The [color palette][colorpalette] and 
 [theming][theming] integrate into device color schemes, or can be overridden on
-a per-element basis.
+a per-page or per-element basis.
 
 **Performance**
 This change significantly improves both the loading and the runtime performance
@@ -16,6 +16,8 @@ to each element, which reduces SSR payloads as well.
 **Breaking Changes**:
 In version 2, users could apply custom themes to specific sections or elements
 by setting theme tokens ending in `-on-light` and `-on-dark`. In this version,
+that will still work when applied to the entire document via the `:root` selector,
+but when theming individual elements, it will fail. For that reason, we recommend
 users should set theme tokens using the `light-dark()` function instead:
 
 Before:
