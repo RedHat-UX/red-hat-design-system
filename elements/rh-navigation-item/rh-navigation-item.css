@@ -415,4 +415,47 @@
       }
     }
   }
+
+  &.dehydrated {
+    /* JS failure, compact but large container */
+    @container (min-width: 1200px) {
+      #details-content {
+        position: unset;
+        inset-block-start: unset;
+        inset-inline-start: unset;
+        z-index: unset;
+        width: unset;
+        background-color: unset;
+        box-shadow: unset;
+        border-end-end-radius: unset;
+        border-end-start-radius: unset;
+      }
+
+      &:not(.standalone) {
+        border-block-end: none;
+      }
+
+      &:not(.standalone, .link) {
+        details {
+          border-inline-start: var(--rh-border-width-lg) solid transparent;
+          border-inline-end: var(--rh-border-width-sm) solid transparent;
+          justify-items: unset;
+          align-content: unset;
+
+          &[open] {
+            border-inline-end-color: var(--rh-color-border-subtle);
+            border-inline-start-color: var(--rh-color-accent-brand);
+          }
+
+          & summary {
+            flex-direction: row;
+            justify-content: space-between;
+            padding: var(--rh-space-lg) var(--rh-space-xl);
+            width: unset;
+            transform: unset;
+          }
+        }
+      }
+    }
+  }
 }

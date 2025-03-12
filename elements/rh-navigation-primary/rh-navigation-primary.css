@@ -294,7 +294,7 @@
     }
 
     /* JS has failed load mobile menu */
-    &.compact {
+    &.dehydrated {
       #hamburger {
         &[open] {
           & #details-content {

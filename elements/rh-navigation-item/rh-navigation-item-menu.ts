@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -33,7 +33,7 @@ export class RhNavigationItemMenu extends LitElement {
   render() {
     const rtl = this.#dir.dir === 'rtl';
     const { on = '' } = this;
-    const classes = { rtl, on: true, [on]: !!on };
+    const classes = { rtl, on: true, [on]: !!on, dehydrated: isServer };
     return html`
       <div id="container" class="${classMap(classes)}">
         <slot></slot>
