@@ -10,7 +10,7 @@ let initialized: boolean;
  * @param klass element constructor
  * @see https://ux.redhat.com/theming/color-palettes/
  */
-export function colorSchemeConsumer() {
+export function colorSchemeConsumer(_: unknown) {
   if (isServer) {
     return;
   }
