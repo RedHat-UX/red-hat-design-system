@@ -20,6 +20,7 @@
   position: relative;
   /* stylelint-disable-next-line rhds/no-unknown-token-name */
   z-index: var(--rh-navigation-primary-z-index, 102);
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif) !important;
 }
 
 #container {
