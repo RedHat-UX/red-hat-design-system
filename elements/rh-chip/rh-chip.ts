@@ -28,7 +28,7 @@ export class ChipChangeEvent extends Event {
  * @summary Creates a checkable surface
  * @fires {ChipCheckedEvent} chip-checked - when chip is checked/unchecked
  * @csspart chip - The main chip container
- * @slot - Place the label of the checkbox here
+ * @slot - The label of the checkbox
  */
 @customElement('rh-chip')
 export class RhChip extends LitElement {
@@ -42,7 +42,23 @@ export class RhChip extends LitElement {
   /**
    * Whether the chip is checked.
    */
-  @property({ type: Boolean, reflect: true }) checked = false;
+  @property({
+    type: Boolean, reflect: true,
+    hasChanged(newVal: boolean, oldVal: boolean) {
+      return newVal !== oldVal;
+    },
+  })
+
+  set checked(value: boolean) {
+    const oldValue = this.#checked;
+    this.#checked = value;
+    this.chipInput.checked = value;
+    this.requestUpdate('checked', oldValue);
+  }
+
+  get checked(): boolean {
+    return this.#checked;
+  }
 
   /**
    * Whether the chip is disabled.
@@ -59,6 +75,8 @@ export class RhChip extends LitElement {
   @consume({ context, subscribe: true })
   @property({ attribute: false })
   private ctx?: RhChipGroupContext;
+
+  #checked = false;
 
   render() {
     const { on = 'light' } = this;
@@ -83,8 +101,18 @@ export class RhChip extends LitElement {
       (event.target as HTMLInputElement).checked = this.checked;
       return;
     }
+
     if (this.dispatchEvent(new ChipChangeEvent(this.checked))) {
       this.checked = this.chipInput.checked;
+    }
+  }
+
+  updated(changedProperties: Map<string | number | symbol, unknown>): void {
+    super.updated(changedProperties);
+
+    // Match input's checked state with component's checked property
+    if (changedProperties.has('checked') && this.chipInput) {
+      this.chipInput.checked = this.checked;
     }
   }
 }

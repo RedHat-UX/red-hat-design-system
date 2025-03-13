@@ -3,8 +3,9 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { provide } from '@lit/context';
 import { context, type RhChipGroupContext } from './context.js';
+import { query } from 'lit/decorators/query.js';
 
-import { RhChip } from './rh-chip.js';
+import { RhChip, ChipChangeEvent } from './rh-chip.js';
 import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 
 import styles from './rh-chip-group.css';
@@ -16,6 +17,8 @@ import styles from './rh-chip-group.css';
  *       An accessible label for the chip group.
  *       Content for this slot is put into the `<legend>` element.
  *       Also available as an attribute.
+ * @slot clear-filters
+ *       Customized text for the "Clear filters" button
  */
 @customElement('rh-chip-group')
 export class RhChipGroup extends LitElement {
@@ -30,6 +33,13 @@ export class RhChipGroup extends LitElement {
    * The accessible label for the form control / `rh-chip-group`
    */
   @property({ attribute: 'accessible-label' }) accessibleLabel?: string;
+
+  /**
+   * Shows or hides the "Clear filters" button that unchecks all chips when clicked
+   */
+  @property({ type: Boolean, reflect: true, attribute: 'clear-filters' }) clearFilters = false;
+
+  @query('slot:not([name])') private defaultSlot!: HTMLSlotElement;
 
   @provide({ context }) private ctx = this.#makeContext();
 
@@ -51,8 +61,42 @@ export class RhChipGroup extends LitElement {
           <slot name="accessible-label">${label}</slot>
         </legend>
         <slot></slot>
+        ${this.clearFilters ? this.#renderClearFiltersBtn() : ''}
       </fieldset>
     `;
+  }
+
+  #renderClearFiltersBtn() {
+    return html`
+      <button class="btn-link" type="button" @click="${this.#uncheckAllChips}">
+        <slot name="clear-filters">Clear filters</slot>
+      </button>
+    `;
+  }
+
+  #uncheckAllChips() {
+    const chips = this.#getChipElements();
+    const checkedChips = chips.filter(chip => chip.checked && !chip.disabled);
+
+    checkedChips.forEach(chip => {
+      chip.checked = false;
+      chip.dispatchEvent(new ChipChangeEvent(false));
+    });
+  }
+
+  /**
+   * Get rh-chip elements that are direct children of this rh-chip-group
+   * @returns {RhChip[]} Array of chip elements
+   */
+  #getChipElements(): RhChip[] {
+    if (!this.defaultSlot) {
+      return [];
+    }
+
+    const assignedElements = this.defaultSlot.assignedElements();
+    return assignedElements.filter((element): element is RhChip =>
+      element instanceof RhChip
+    );
   }
 }
 

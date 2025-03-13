@@ -1,0 +1,27 @@
+<rh-surface color-palette="lightest">
+  <rh-chip-group clear-filters>
+    <rh-chip>Edge</rh-chip>
+    <rh-chip checked>AI/ML</rh-chip>
+    <rh-chip checked disabled>DevOps</rh-chip>
+    <rh-chip>OpenShift</rh-chip>
+  </rh-chip-group>
+
+  <rh-chip-group clear-filters accessible-label="Custom filter text">
+    <rh-chip checked>Bluetooth</rh-chip>
+    <rh-chip>Wi-Fi</rh-chip>
+    <rh-chip>RFID</rh-chip>
+    <rh-chip checked disabled>Chip and pin</rh-chip>
+    <span slot="clear-filters">Clear technologies</span>
+  </rh-chip-group>
+</rh-surface>
+
+<script type="module">
+  import '@rhds/elements/rh-surface/rh-surface.js';
+  import '@rhds/elements/rh-chip/rh-chip-group.js';
+</script>
+
+<style>
+  rh-chip-group:not(:first-of-type) {
+    margin-block: 2rem;
+  }
+</style>

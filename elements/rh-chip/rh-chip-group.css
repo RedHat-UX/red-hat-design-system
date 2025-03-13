@@ -15,3 +15,22 @@ legend {
   float: left;
   margin-inline-end: var(--rh-space-md, 8px);
 }
+
+.btn-link {
+  border: 0;
+  background-color: transparent;
+  color: var(--rh-color-interactive-primary-default);
+  padding: 0;
+  margin-block-start: 2px;
+  margin-inline-start: var(--rh-space-md, 8px);
+  cursor: pointer;
+
+  &:hover,
+  &:focus-visible {
+    text-decoration: underline;
+  }
+
+  &:focus-visible {
+    outline-offset: var(--rh-border-width-md, 2px);
+  }
+}
