@@ -1,5 +1,7 @@
 :host {
   display: inline-block;
+  margin-block: 2px;
+  margin-inline-end: var(--rh-space-md, 8px);
 }
 
 label {
@@ -7,7 +9,6 @@ label {
   display: flex;
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
   line-height: var(--rh-line-height-body-text, 1.5);
-  margin-inline-end: var(--rh-space-md, 8px);
   outline: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
   padding: var(--rh-space-xs, 4px) var(--rh-space-md, 8px);
 
