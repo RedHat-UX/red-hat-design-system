@@ -44,6 +44,18 @@ export type NavigationPrimaryPalette = Extract<ColorPalette, (
   | 'darkest'
 )>;
 
+/* TODO: Abstract this out to a shareable function */
+function focusableChildElements(parent: HTMLElement): NodeListOf<HTMLElement> {
+  return parent.querySelectorAll(`a,
+                                  button:not([disabled]),
+                                  input:not([disabled]),
+                                  select:not([disabled]),
+                                  textarea:not([disabled]),
+                                  [tabindex]:not([tabindex="-1"]):not([disabled]),
+                                  details:not([disabled]),
+                                  summary:not(:disabled)`);
+}
+
 /**
  * Navigation Primary
  * @slot - Place element content here
@@ -115,6 +127,8 @@ export class RhNavigationPrimary extends LitElement {
     if (!isServer) {
       this.#ro?.observe(this);
       this.addEventListener('expand', this.#onExpand);
+      this.addEventListener('focusout', this.#onFocusout);
+      this.addEventListener('keydown', this.#onKeydown);
       this.#upgradeAccessibility();
       this.#internals.ariaLabel = this.accessibleLabel;
     }
@@ -155,10 +169,10 @@ export class RhNavigationPrimary extends LitElement {
               <slot></slot>
             </div>
           </details>
-          <div id="secondary" role="list">
-            <div id="event"><slot name="event"></slot></div>
-            <div id="links"><slot name="links"></slot></div>
-            <div id="dropdowns"><slot name="dropdowns"></slot></div>
+          <div id="secondary">
+            <div id="event" role="list"><slot name="event"></slot></div>
+            <div id="links" role="list"><slot name="links"></slot></div>
+            <div id="dropdowns" role="list"><slot name="dropdowns"></slot></div>
           </div>
         </div>
       </nav>
@@ -207,6 +221,18 @@ export class RhNavigationPrimary extends LitElement {
     this.#closeOverlay();
   }
 
+  #primaryDropdowns(): RhNavigationItem[] {
+    return Array.from(
+      this.querySelectorAll('rh-navigation-item[variant="dropdown"]:not([slot="dropdowns"])')
+    );
+  }
+
+  #secondaryDropdowns(): RhNavigationItem[] {
+    return Array.from(
+      this.querySelectorAll('rh-navigation-item[variant="dropdown"][slot="dropdowns"]')
+    );
+  }
+
   async #onExpand(event: Event) {
     if (event instanceof RhNavigationItemExpandEvent) {
       // if the event came from a secondary link in a compact mode we'll want to close the hamburger first if it is open
@@ -242,9 +268,89 @@ export class RhNavigationPrimary extends LitElement {
     }
   }
 
-  async #onFocusout(event: FocusEvent) {
-    /* TODO close dropdowns and overlay on focus leaving. */
+  #onKeydown(event: KeyboardEvent) {
+    switch (event.key) {
+      case 'Escape': {
+        this.close();
+        break;
+      }
+      case 'Tab':
+        this.#onTabKeydown(event);
+        break;
+      default:
+        break;
+    }
   }
+
+
+  async #onFocusout(event: FocusEvent) {
+    const target = event.relatedTarget as HTMLElement;
+    if (target?.closest('rh-navigation-primary') === this || target === null) {
+      // if the focus is still inside the rh-navigation-secondary exit
+      return;
+    } else {
+      this.close();
+    }
+  }
+
+  #onTabKeydown(event: KeyboardEvent) {
+    // target is the element we are leaving with tab press
+    const target = event.target as HTMLElement;
+    // get target parent dropdown
+    const primaryDropdowns = this.#primaryDropdowns();
+    const secondaryDropdowns = this.#secondaryDropdowns();
+    const primaryContains = primaryDropdowns.find(dropdown => dropdown.contains(target));
+    const secondaryContains = secondaryDropdowns.find(dropdown => dropdown.contains(target));
+    if (!primaryContains && !secondaryContains) {
+      return;
+    }
+
+    // TODO: Refactor to simplify
+    if (primaryContains) {
+      const primaryFocusableChildren = Array.from(focusableChildElements(primaryContains));
+      const {
+        0: firstChild,
+        [primaryFocusableChildren.length - 1]: lastChild,
+      } = primaryFocusableChildren;
+      if (!firstChild) {
+        return;
+      } else {
+        if (event.shiftKey && firstChild === target) {
+          this.close(true);
+        }
+      }
+      if (!lastChild) {
+        return;
+      } else {
+        if (lastChild === target) {
+          this.close(true);
+        }
+      }
+    }
+
+    if (secondaryContains) {
+      const secondaryFocusableChildren = Array.from(focusableChildElements(secondaryContains));
+      const {
+        0: firstChild,
+        [secondaryFocusableChildren.length - 1]: lastChild,
+      } = secondaryFocusableChildren;
+      if (!firstChild) {
+        return;
+      } else {
+        if (event.shiftKey && firstChild === target) {
+          this.close();
+        }
+      }
+      if (!lastChild) {
+        return;
+      } else {
+        if (lastChild === target) {
+          this.close();
+        }
+      }
+    }
+  }
+
 
   #closePrimaryDropdowns() {
     // close all open dropdowns in primary slot
@@ -303,29 +409,13 @@ export class RhNavigationPrimary extends LitElement {
     }
   }
 
-  open(index: number): void {
-    // const hamburgerSlot = this.shadowRoot?.querySelector<HTMLSlotElement>('slot[name="nav"]');
-    // if (hamburgerSlot) {
-    //   const [slotted] = hamburgerSlot.assignedElements({ flatten: true });
-    //   const dropdowns = slotted?.querySelectorAll<RhNavigationItem>(
-    //     'rh-navigation-item[variant="dropdown"]');
-    //   if (dropdowns.length === 0) {
-    //     return;
-    //   }
-    //   if (this.compact) {
-    //     this.#openHamburger();
-    //   }
-    //   const dropdown = dropdowns[index];
-    //   dropdown.open();
-    // }
-  }
-
-  close(): void {
-    for (const dropdown of this.#openPrimaryDropdowns) {
-      // close all dropdowns in set
-      dropdown.close();
-      this.#openPrimaryDropdowns.delete(dropdown);
+  close(skip = false): void {
+    this.#closePrimaryDropdowns();
+    this.#closeSecondaryDropdowns();
+    if (this.compact && !skip) {
+      this.#closeHamburger();
     }
+    this.#closeOverlay();
   }
 }
 
