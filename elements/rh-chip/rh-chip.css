@@ -45,7 +45,8 @@ label {
   }
 
   &.dark {
-    &:has(input[aria-disabled='true']) {
+    &:has(input[aria-disabled='true']),
+    &:has(input[aria-disabled='true']:checked) {
       background-color: var(--rh-color-surface-dark, #383838);
       color: var(--rh-color-gray-40, #a3a3a3);
       outline-color: var(--rh-color-surface-dark, #383838);
