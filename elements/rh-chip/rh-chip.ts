@@ -69,8 +69,7 @@ export class RhChip extends LitElement {
         <input type="checkbox"
                value="${ifDefined(this.chipValue)}"
                @change="${this.#onChecked}"
-               @keydown="${this.#onKeydown}"
-               ?checked="${!this.disabled && this.checked}"
+               ?checked="${this.checked}"
                aria-disabled="${String(this.disabled) as 'true' | 'false'}">
         <rh-icon id="close-icon" set="ui" icon="close-circle"></rh-icon>
       </label>
@@ -86,13 +85,6 @@ export class RhChip extends LitElement {
     }
     if (this.dispatchEvent(new ChipChangeEvent(this.checked))) {
       this.checked = this.chipInput.checked;
-    }
-  }
-
-  #onKeydown(event: KeyboardEvent) {
-    // Prevent checking via keyboard when disabled
-    if (this.disabled && event.key === 'Spacebar') {
-      event.preventDefault();
     }
   }
 }

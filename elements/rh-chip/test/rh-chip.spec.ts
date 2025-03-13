@@ -95,4 +95,33 @@ describe('<rh-chip>', function() {
       expect(element.checked).to.be.false;
     });
   });
+
+  describe('a disabled checked chip', function() {
+    let checkbox: HTMLInputElement;
+
+    beforeEach(async function() {
+      element = await createFixture<RhChip>(html`<rh-chip checked disabled>Disabled Chip</rh-chip>`);
+      await element.updateComplete;
+      checkbox = getCheckbox(element);
+    });
+
+    it('has aria-disabled attribute set to true', function() {
+      expect(checkbox.getAttribute('aria-disabled')).to.equal('true');
+    });
+
+    it('prevents unchecking via click when disabled', async function() {
+      checkbox.click();
+      await element.updateComplete;
+      expect(element.checked).to.be.true;
+    });
+
+    it('prevents unchecking via keyboard when disabled', async function() {
+      checkbox.focus();
+
+      await sendKeys({ press: ' ' });
+      await element.updateComplete;
+
+      expect(element.checked).to.be.true;
+    });
+  });
 });

@@ -18,7 +18,8 @@ label {
     outline-width: var(--rh-border-width-md, 2px);
   }
 
-  &:has(input[aria-disabled='true']) {
+  &:has(input[aria-disabled='true']),
+  &:has(input[aria-disabled='true']:checked) {
     background-color: var(--rh-color-gray-30, #c7c7c7);
     color: var(--rh-color-text-secondary);
     outline-color: var(--rh-color-gray-30, #c7c7c7);
