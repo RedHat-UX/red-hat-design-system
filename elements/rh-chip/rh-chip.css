@@ -80,7 +80,7 @@ input {
   &:checked + #close-icon {
     block-size: auto;
     inline-size: auto;
-    margin-inline-start: 8px;
+    margin-inline-start: var(--rh-space-md, 8px);
     opacity: 1;
 
     @starting-style {
