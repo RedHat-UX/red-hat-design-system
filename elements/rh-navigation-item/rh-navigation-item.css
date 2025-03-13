@@ -140,11 +140,6 @@
     cursor: pointer;
 
     /* stylelint-disable-next-line no-descending-specificity */
-    &:active {
-      background-color: var(--_background-color);
-    }
-
-    /* stylelint-disable-next-line no-descending-specificity */
     &:is(:focus-visible, :hover:focus-visible) {
       outline-offset: -2px;
       outline:
@@ -302,12 +297,6 @@
     justify-items: center;
     align-content: center;
 
-    &:hover {
-      @container (min-width: 1200px) {
-        border-image: var(--_active-item-color) 1;
-      }
-    }
-
     & ::slotted(a) {
       display: flex;
       color: var(--rh-color-text-primary) !important;
@@ -317,7 +306,7 @@
     }
 
     & ::slotted(a:active) {
-      background-color: var(--_background-color);
+      /* background-color: var(--_background-color); */
       color: var(--rh-color-interactive-primary-default) !important;
       text-decoration: none !important;
     }
@@ -344,11 +333,13 @@
         padding: var(--rh-space-md) !important;
       }
 
-      & ::slotted(a:hover) {
-        background-color: var(--_background-color);
-        color: var(--rh-color-interactive-primary-default) !important;
-        text-decoration: none !important;
-        border-radius: var(--rh-border-width-lg);
+      & ::slotted(:is(a:hover, a:focus-visible)) {
+        text-underline-offset: 4px !important;
+        text-decoration-color: var(--rh-color-border-subtle) !important;
+        text-decoration-line: underline !important;
+        text-decoration-style: dotted !important;
+        text-decoration-skip-ink: auto !important;
+        color: var(--rh-color-interactive-primary-hover) !important;
       }
 
       &:has(:focus-within) {
@@ -359,10 +350,20 @@
     }
 
     &:not(.standalone) {
+      /* stylelint-disable-next-line no-descending-specificity */
       & ::slotted(a) {
         font-size: var(--rh-font-size-body-text-md);
         padding-inline: var(--rh-space-lg);
         transform: translateY(4px);
+      }
+
+      & ::slotted(:is(a:hover, a:focus-visible)) {
+        text-underline-offset: 4px !important;
+        text-decoration-color: var(--rh-color-border-subtle) !important;
+        text-decoration-line: underline !important;
+        text-decoration-style: dotted !important;
+        text-decoration-skip-ink: auto !important;
+        color: var(--rh-color-interactive-primary-hover) !important;
       }
     }
   }
@@ -418,7 +419,11 @@
     }
 
     @container (min-width: 1200px) {
-      &:is(:hover, :focus-within, :has(details[open])) {
+      &:hover {
+        border-block-end-color: var(--rh-color-border-subtle);
+      }
+
+      &:is(:active, :focus-within, :has(details[open])) {
         border-image: var(--_active-item-color) 1;
       }
     }
