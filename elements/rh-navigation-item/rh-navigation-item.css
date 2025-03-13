@@ -353,8 +353,8 @@
       /* stylelint-disable-next-line no-descending-specificity */
       & ::slotted(a) {
         font-size: var(--rh-font-size-body-text-md, 1rem);
-        padding-inline: var(--rh-space-lg, 16px);
-        transform: translateY(4px); /* adjust to border-end */
+        padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
+        height: calc(100% + 4px);
       }
 
       & ::slotted(:is(a:hover, a:focus-visible)) {
@@ -364,6 +364,12 @@
         text-decoration-style: dotted !important;
         text-decoration-skip-ink: auto !important;
         color: var(--rh-color-interactive-primary-hover) !important;
+      }
+
+      @container (min-width: 1200px) {
+        & ::slotted(a) {
+          padding: 0 var(--rh-space-lg, 16px);
+        }
       }
     }
   }
@@ -411,9 +417,7 @@
         @container (min-width: 1200px) {
           padding: 0 var(--rh-space-lg, 16px);
           width: auto;
-
-          /* adjustment for 4px border, because border-image usage we can't use transparent on opposite side to balance */
-          transform: translateY(4px);
+          height: calc(100% + 4px); /* adjustment for 4px border, because border-image usage we can't use transparent on opposite side to balance */
         }
       }
     }
