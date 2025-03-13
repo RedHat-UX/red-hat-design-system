@@ -17,7 +17,7 @@ export class UxdotMasthead extends LitElement {
     const { version } = this;
     return html`
       <div id="container" part="container">
-        <slot name="hamburger"></slot>
+        <slot id="hamburger" name="hamburger"></slot>
         <div id="logo">
           <a href="/">
             <img alt="Red Hat Design System logo"
@@ -26,13 +26,13 @@ export class UxdotMasthead extends LitElement {
                  height="40">
           </a>
         </div>
-        <uxdot-color-scheme-picker></uxdot-color-scheme-picker>
+        <uxdot-color-scheme-picker id="scheme"></uxdot-color-scheme-picker>
         <div id="links">
-          <a href="https://github.com/RedHat-UX/red-hat-design-system/">
+          <a id="github" href="https://github.com/RedHat-UX/red-hat-design-system/">
             <span class="display-xs">Contribute on Github</span>
             <rh-icon set="social" icon="github" size="lg"></rh-icon>
           </a>
-          <a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v${version}/"
+          <a id="version" href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v${version}/"
              title="Version ${version}"
              aria-label="Version ${version}">v${version}</a>
         </div>

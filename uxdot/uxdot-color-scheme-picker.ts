@@ -16,7 +16,7 @@ export class UxdotColorSchemePicker extends LitElement {
   render() {
     return html`
       <fieldset @change="${this.#onChange}">
-        <legend>Color Scheme:</legend>
+        <legend>Color scheme:</legend>
         <div id="button-group">
           <label title="Light">
             <span class="visually-hidden">Light</span>

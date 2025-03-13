@@ -15,20 +15,20 @@
   max-height: var(--uxdot-masthead-max-height, 72px);
   margin-inline: var(--rh-space-md);
   margin-block: var(--rh-space-lg);
-  uxdot-color-scheme-picker { display: none; }
+  #scheme { display: none; }
 
   @container (min-width: 576px) {
-    gap: var(--rh-space-lg);
+    gap: var(--rh-space-2xl);
     margin: var(--rh-space-lg);
-    uxdot-color-scheme-picker { display: initial; }
   }
 
   @container (min-width: 992px) {
     grid-template-columns: 1fr max-content max-content;
+    #scheme { display: contents; }
   }
 }
 
-slot[name='hamburger'] {
+#hamburger {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -78,6 +78,7 @@ slot[name='hamburger'] {
 
   display: flex;
   flex-direction: row;
+  justify-self: end;
   column-gap: var(--rh-space-lg);
 
   a {
@@ -90,10 +91,18 @@ slot[name='hamburger'] {
     &:is(:hover, :focus) {
       color: var(--rh-color-icon-subtle-hover, #a3a3a3) !important;
     }
+  }
 
-    &:last-of-type {
-      margin-inline-end: var(--rh-space-md, 8px);
+  #github {
+    display: none;
+
+    @container (min-width: 768px) {
+      display: inline;
     }
+  }
+
+  #version {
+    margin-inline-end: var(--rh-space-md, 8px);
   }
 
   span.display-xs {
