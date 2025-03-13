@@ -97,7 +97,7 @@
     display: none;
 
     @container (min-width: 768px) {
-      display: inline;
+      display: inherit;
     }
   }
 
