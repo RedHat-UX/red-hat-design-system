@@ -1,11 +1,11 @@
-import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
-
-import { type CSSResult, LitElement, html, isServer, render } from 'lit';
+import { type CSSResult, LitElement, type TemplateResult, html, isServer, render } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { repeat } from 'lit/directives/repeat.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
+
+import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 
 import '@rhds/elements/rh-surface/rh-surface.js';
 import '@rhds/elements/rh-button/rh-button.js';
@@ -15,11 +15,23 @@ import styles from './rh-alert.css';
 import toastStyles from './rh-alert-toast-styles.css';
 import consumerStyles from '@rhds/tokens/css/color-context-consumer.css.js';
 
+interface AlertAction {
+  action: 'dismiss' | 'confirm' | string;
+  text: string;
+}
+
 interface ToastOptions {
   id?: string;
-  message: string;
+  /** Alert body content. Can be any value which lit-html can render. Simple strings are preferable */
+  message: string | Node | TemplateResult | (string | Node | TemplateResult)[];
+  /** Alert heading content. Must be a simple string. */
   heading?: string;
+  /** Alert `state` attribute */
   state?: RhAlert['state'];
+  /** Whether the alert should remain on screen until the user explicitly dismisses it */
+  persistent?: boolean;
+  /** One or more optional body actions */
+  actions?: [] | [AlertAction] | [AlertAction, AlertAction];
 }
 
 const ICONS = new Map(Object.entries({
@@ -32,10 +44,14 @@ const ICONS = new Map(Object.entries({
 }));
 
 export class AlertCloseEvent extends Event {
-  constructor() {
+  constructor(public action: 'close' | 'confirm' | 'dismiss' | string) {
     super('close', { bubbles: true, cancelable: true });
   }
 }
+
+let toaster: HTMLElement;
+
+const toasts = new Set<Required<ToastOptions>>();
 
 /**
  * An alert is a banner used to notify a user about a change in status
@@ -55,80 +71,42 @@ export class AlertCloseEvent extends Event {
 export class RhAlert extends LitElement {
   static readonly styles = [styles, consumerStyles];
 
-  private static toaster: HTMLElement;
-
-  private static toasts = new Set<ToastOptions>();
-
-  /**
-   * @see https://aerotwist.com/blog/flip-your-animations/
-   * @param toast
-   */
-  private static flip() {
-    const first = this.toaster.offsetHeight;
-    const last = this.toaster.offsetHeight;
-    const invert = last - first;
-    const animation = this.toaster.animate([
-      { transform: `translateY(${invert}px)` },
-      { transform: 'translateY(0)' },
-    ], {
-      duration: 150,
-      easing: 'ease-out',
-    });
-    animation.startTime = document.timeline.currentTime;
-  };
-
-  private static renderToasts() {
-    render(repeat(this.toasts, x => x.id, toast => html`
-      <rh-alert id="${toast.id}"
-                state="${toast.state}"
-                variant="toast"
-                role="status"
-                aria-live="polite">
-        <h3 slot="header">${toast.heading}</h3>
-        <p class="text" ?hidden="${!toast.message}">${toast.message}</p>
-      </rh-alert>
-    `), this.toaster);
-  }
-
   /**
    * Toast a message with an rh-alert
    * @param options
    * @param options.message alert text
-   * @param [options.heading] alert heading
-   * @param [options.state] `<rh-alert state="...">`
+   * @param [options.actions] optional array of actions
+   * @param [options.heading="Success"] alert heading
+   * @param [options.state="info"] `<rh-alert state="...">`
+   * @param [options.persistent=false] when true, toast remains on screen until dismissed
    */
-  public static async toast({ message, heading = 'Success', state = 'info' }: ToastOptions) {
-    this.toaster ??= this.init();
+  public static async toast({
+    message,
+    persistent = false,
+    heading = 'Success',
+    state = 'info',
+    actions: _actions,
+  }: Omit<ToastOptions, 'id'>) {
+    const actions = _actions ?? [];
+    toaster ??= initToaster();
     const id = getRandomId();
-    const toast = { heading, message, state, id };
-    this.toasts.add(toast);
+    const toast = { actions, heading, message, state, id, persistent };
+    toasts.add(toast);
     const { matches: motionOK } = window.matchMedia('(prefers-reduced-motion: no-preference)');
-    this.renderToasts();
-    const alert = this.toaster.querySelector(`#${id}`);
-    if (this.toaster.children.length && motionOK) {
-      this.flip();
+    renderToasts();
+    const alert = toaster.querySelector(`#${id}`);
+    if (toaster.children.length && motionOK) {
+      flip(toaster);
     }
-    await Promise.all([
-      ...this.toaster.getAnimations().map(x => x.finished),
-      ...(alert?.getAnimations().map(x=>x.finished) ?? []),
-    ]);
-    this.toasts.delete(toast);
-    this.renderToasts();
+    await Promise.all(toaster.getAnimations().map(x => x.finished));
+    if (!persistent) {
+      await Promise.all(alert?.getAnimations().map(x => x.finished) ?? []);
+      toasts.delete(toast);
+    }
+    renderToasts();
   };
 
-  static init() {
-    const node = document.createElement('section');
-    node.classList.add('rh-alert-toast-group');
-    // TODO: possibly allow other roots
-    document.adoptedStyleSheets = [
-      ...document.adoptedStyleSheets ?? [],
-      (toastStyles as unknown as CSSResult).styleSheet!,
-    ];
-    document.body.append(node);
-    return node;
-  }
-
-  private get icon() {
+  get #icon() {
     const state = this.state.toLowerCase() as this['state'];
     switch (state) {
       case 'note': return ICONS.get('info');
@@ -182,9 +160,8 @@ export class RhAlert extends LitElement {
   #slots = new SlotController(this, 'header', null, 'actions');
 
   #onClose() {
-    const event = new AlertCloseEvent();
-    if (this.dispatchEvent(event)) {
-      this.remove();
+    if (this.dispatchEvent(new AlertCloseEvent('close'))) {
+      this.#close();
     }
   }
 
@@ -221,6 +198,13 @@ export class RhAlert extends LitElement {
       _isServer || this.#slots.hasSlotted(SlotController.default as unknown as string);
     const { variant = 'inline' } = this;
     const state = this.#aliasState(this.state);
+    // this click listener delegates events from the footer slot
+    // as such it doest not require a key listener.
+    // eslint-disable-next-line lit-a11y/click-events-have-key-events
+    const footer = html`<footer class="${classMap({ hasActions })}"
+                  @click="${this.#onActionsClick}">
+            <slot name="actions"></slot>
+          </footer>`;
     return html`
       <rh-surface id="container"
                   class="${classMap({
@@ -234,7 +218,7 @@ export class RhAlert extends LitElement {
                   aria-hidden="false"
                   color-palette="lightest">
         <div id="left-column">
-          <rh-icon id="icon" set="ui" icon="${this.icon}"></rh-icon>
+          <rh-icon id="icon" set="ui" icon="${this.#icon}"></rh-icon>
         </div>
         <div id="middle-column">
           <header ?hidden="${!_isServer && this.#slots.isEmpty('header')}">
@@ -246,19 +230,123 @@ export class RhAlert extends LitElement {
                          variant="close"
                          accessible-label="Close"
                          confirm
-                         @click=${this.#onClose}></rh-button>
+                         @click="${this.#onClose}"></rh-button>
             </div>`}
           </header>
           <div id="description">
             <slot></slot>
           </div>
-          <footer class="${classMap({ hasActions })}">
-            <slot name="actions"></slot>
-          </footer>
+          ${footer}
         </div>
       </rh-surface>
     `;
   }
+
+  async #close() {
+    await this.updateComplete;
+    await Promise.all(this.getAnimations().map(x => {
+      x.finish();
+      return x.finished;
+    }));
+    this.remove();
+  }
+
+  async #onActionsClick(event: MouseEvent) {
+    if (event.target instanceof HTMLElement
+      && event.target?.slot === 'actions'
+      && typeof event.target.dataset.action === 'string'
+      && this.dispatchEvent(
+        new AlertCloseEvent(event.target?.dataset.action.toLowerCase()),
+      )) {
+      this.#close();
+    }
+  }
+}
+
+function initToaster() {
+  const node = document.createElement('section');
+  node.classList.add('rh-alert-toast-group');
+  // TODO: possibly allow other roots
+  document.adoptedStyleSheets = [
+    ...document.adoptedStyleSheets ?? [],
+    (toastStyles as unknown as CSSResult).styleSheet!,
+  ];
+  document.body.append(node);
+  return node;
+}
+
+function renderToasts() {
+  render(repeat(toasts, x => x.id, ({
+    actions,
+    id,
+    state,
+    heading,
+    message,
+    persistent,
+  }) => {
+    const [firstAction, secondAction] = actions ?? [];
+    return html`
+    <rh-alert id="${id}"
+              state="${state}"
+              class="${classMap({ persistent })}"
+              variant="toast"
+              role="status"
+              aria-live="polite"
+              @focusin="${manageAlertAnimation}"
+              @focusout="${manageAlertAnimation}"
+              @mouseenter="${manageAlertAnimation}"
+              @mouseleave="${manageAlertAnimation}">
+      <h3 slot="header">${heading}</h3>
+      ${!message ? '' : typeof message !== 'string' ? message : html`
+      <p class="text" ?hidden="${!message}">${message}</p>`}
+      ${[firstAction, secondAction].filter(x => !!x).map(action => html`
+      <rh-button slot="actions"
+                 variant="${action === firstAction ? 'secondary' : 'link'}"
+                 data-action="${action.action}">${action.text}</rh-button>
+      `) ?? []}
+    </rh-alert>
+  `;
+  }), toaster);
+}
+
+async function manageAlertAnimation(event: Event) {
+  const alert =
+      event.target instanceof RhAlert ? event.target
+    : event.target instanceof Element ? event.target.closest('rh-alert')
+    : null;
+  if (!alert) {
+    return;
+  }
+  for (const animation of alert.getAnimations() ?? []) {
+    switch (event.type) {
+      case 'focusin':
+      case 'mouseenter':
+        return animation.pause();
+      case 'focusout':
+      case 'mouseleave':
+        if (!alert.matches(':focus-within')) {
+          return animation.play();
+        }
+    }
+  }
+}
+
+/**
+ * @see https://aerotwist.com/blog/flip-your-animations/
+ * @param toaster container for toasted alerts
+ */
+function flip(toaster: HTMLElement) {
+  const first = toaster.offsetHeight;
+  const last = toaster.offsetHeight;
+  const invert = last - first;
+  const animation = toaster.animate([
+    { transform: `translateY(${invert}px)` },
+    { transform: 'translateY(0)' },
+  ], {
+    duration: 150,
+    easing: 'ease-out',
+  });
+  animation.startTime = document.timeline.currentTime;
 }
 
 declare global {
