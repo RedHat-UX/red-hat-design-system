@@ -238,6 +238,7 @@
 
     @container navigation-primary (min-width: 768px) {
       gap: var(--rh-space-md);
+      margin-inline-end: var(--rh-space-2xl);
     }
 
     slot[name='event'] {
