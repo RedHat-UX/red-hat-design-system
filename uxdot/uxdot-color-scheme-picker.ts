@@ -1,4 +1,4 @@
-import { html, LitElement } from 'lit';
+import { html, isServer, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
@@ -7,11 +7,27 @@ import { observes } from '@patternfly/pfe-core/decorators.js';
 import styles from './uxdot-color-scheme-picker.css';
 import visuallyHidden from './visually-hidden.css';
 
+const LS_KEY = 'RHDS-color-scheme';
+
 @customElement('uxdot-color-scheme-picker')
 export class UxdotColorSchemePicker extends LitElement {
   static styles = [styles, visuallyHidden];
 
-  @property({ reflect: true }) scheme: 'light' | 'dark' | 'light dark' = 'light dark';
+  @property({ reflect: true }) scheme?: 'light' | 'dark' | 'light dark';
+
+  connectedCallback(): void {
+    super.connectedCallback();
+    if (!isServer) {
+      this.scheme = localStorage[LS_KEY];
+    }
+  }
+
+  firstUpdated() {
+    // workaround for ssr mismatch
+    if (!isServer) {
+      this.shadowRoot?.querySelector(`[value="${this.scheme}"]`)?.toggleAttribute('checked', true);
+    }
+  }
 
   render() {
     return html`
@@ -20,17 +36,17 @@ export class UxdotColorSchemePicker extends LitElement {
         <div id="button-group">
           <label title="Light">
             <span class="visually-hidden">Light</span>
-            <input type="radio" name="scheme" value="light">
+            <input type="radio" name="scheme" value="light" ?checked="${!isServer && this.scheme === 'light'}">
             <rh-icon set="ui" icon="light-mode-fill"></rh-icon>
           </label>
           <label title="Dark">
             <span class="visually-hidden">Dark</span>
-            <input type="radio" name="scheme" value="dark">
+            <input type="radio" name="scheme" value="dark" ?checked="${!isServer && this.scheme === 'dark'}">
             <rh-icon set="ui" icon="dark-mode-fill"></rh-icon>
           </label>
           <label title="Device default">
             <span class="visually-hidden">Device default</span>
-            <input type="radio" name="scheme" value="light dark" checked>
+            <input type="radio" name="scheme" value="light dark" ?checked="${isServer || this.scheme === 'light dark'}">
             <rh-icon set="ui" icon="auto-light-dark-mode"></rh-icon>
           </label>
         </div>
@@ -45,7 +61,12 @@ export class UxdotColorSchemePicker extends LitElement {
   }
 
   @observes('scheme')
-  private modeChanged() {
-    document.body.style.setProperty('color-scheme', this.scheme);
+  private schemeChanged() {
+    if (this.scheme) {
+      document.body.style.setProperty('color-scheme', this.scheme);
+      if (!isServer) {
+        localStorage[LS_KEY] = this.scheme;
+      }
+    }
   }
 }
