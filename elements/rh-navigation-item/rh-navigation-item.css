@@ -357,6 +357,14 @@
         }
       }
     }
+
+    &:not(.standalone) {
+      & ::slotted(a) {
+        font-size: var(--rh-font-size-body-text-md);
+        padding-inline: var(--rh-space-lg);
+        transform: translateY(4px);
+      }
+    }
   }
 
   &:is(.standalone, .link) {

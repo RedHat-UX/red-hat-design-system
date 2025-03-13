@@ -5,7 +5,6 @@ rh-navigation-primary {
     & a {
       color: var(--rh-color-interactive-primary-default) !important;
       text-decoration: none;
-      padding: var(--rh-space-lg) var(--rh-space-xl);
       width: 100%;
 
       @container navigation-primary (min-width: 1200px) {
