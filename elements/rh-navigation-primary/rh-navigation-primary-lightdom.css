@@ -27,7 +27,7 @@ rh-navigation-primary {
       &:after {
         display: block;
         content: '';
-        border-inline-end: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
+        border-inline-end: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
         height: 30px;
       }
 

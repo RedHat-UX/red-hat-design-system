@@ -7,9 +7,9 @@
 :host {
   --_gradient:
     linear-gradient(to right,
-      var(--rh-color-brand-red-light),
-      var(--rh-color-purple-40),
-      var(--rh-color-purple-60));
+      var(--rh-color-brand-red-light, #f56e6e),
+      var(--rh-color-purple-40, #876fd4),
+      var(--rh-color-purple-60, #3d2785));
 
   /* stylelint-disable-next-line rhds/no-unknown-token-name */
   --_active-item-color: var(--rh-navigation-active-item-color, var(--_gradient));
@@ -77,11 +77,11 @@
   */
 
   &.light {
-    --_background-color: var(--rh-color-surface-lighter);
+    --_background-color: var(--rh-color-surface-lighter, #f2f2f2);
   }
 
   &.dark {
-    --_background-color: var(--rh-color-surface-darker);
+    --_background-color: var(--rh-color-surface-darker, #1f1f1f);
     --_box-shadow-color: rgba(0, 0, 0, 0.6); /* non standard dropshadow color */
   }
 
@@ -122,11 +122,11 @@
   /* stylelint-disable-next-line no-descending-specificity */
   summary {
     --rh-icon-size: 18px /* non standard value */;
-    --rh-avatar-size: var(--rh-size-icon-02);
+    --rh-avatar-size: var(--rh-size-icon-02, 24px);
 
     list-style: none;
     display: flex;
-    gap: var(--rh-space-md);
+    gap: var(--rh-space-md, 8px);
     color: var(--rh-color-text-primary) !important;
     text-decoration: none !important;
     text-align: center;
@@ -136,17 +136,17 @@
     width: -webkit-fill-available;
     width: -moz-available;
     height: 100%;
-    padding-inline: calc(var(--rh-space-sm) + var(--rh-space-xs));
+    padding-inline: calc(var(--rh-space-sm, 6px) + var(--rh-space-xs, 4px));
     cursor: pointer;
 
     /* stylelint-disable-next-line no-descending-specificity */
     &:is(:focus-visible, :hover:focus-visible) {
       outline-offset: -2px;
       outline:
-        var(--rh-border-width-md)
+        var(--rh-border-width-md, 2px)
         solid
         var(--rh-color-interactive-primary-default);
-      border-radius: var(--rh-border-radius-default);
+      border-radius: var(--rh-border-radius-default, 3px);
     }
 
     &::marker,
@@ -165,7 +165,7 @@
     }
 
     ::slotted(rh-icon) {
-      margin-block: var(--rh-space-xs);
+      margin-block: var(--rh-space-xs, 4px);
     }
   }
 
@@ -182,8 +182,8 @@
       width: 100%;
       background-color: var(--_background-color);
       box-shadow: 0 2px 4px 0 var(--_box-shadow-color);
-      border-end-end-radius: calc(var(--rh-border-radius-default) * 2);
-      border-end-start-radius: calc(var(--rh-border-radius-default) * 2);
+      border-end-end-radius: calc(var(--rh-border-radius-default, 3px) * 2);
+      border-end-start-radius: calc(var(--rh-border-radius-default, 3px) * 2);
     }
   }
 
@@ -197,13 +197,13 @@
 
       & summary {
         position: relative;
-        gap: var(--rh-space-md);
+        gap: var(--rh-space-md, 8px);
         height: max-content;
         width: max-content;
         align-items: center;
-        padding: var(--rh-space-md) var(--rh-space-lg);
-        border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
-        border-radius: var(--rh-border-radius-pill);
+        padding: var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
+        border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+        border-radius: var(--rh-border-radius-pill, 64px);
 
         &:before {
           --_mask: conic-gradient(transparent 0 0);
@@ -212,7 +212,7 @@
           position: absolute;
           inset: -1px;
           border-radius: inherit;
-          padding: var(--rh-border-width-md);
+          padding: var(--rh-border-width-md, 2px);
           background: var(--_active-item-color);
           mask: var(--_mask) content-box exclude, var(--_mask);
           z-index: 1;
@@ -222,7 +222,7 @@
           background-color: var(--_background-color);
 
           &:before {
-            padding: var(--rh-border-width-sm);
+            padding: var(--rh-border-width-sm, 1px);
 
             --_mask: conic-gradient(#000000 0 0);
           }
@@ -232,13 +232,13 @@
           background-color: unset;
 
           &:before {
-            padding: var(--rh-border-width-md);
+            padding: var(--rh-border-width-md, 2px);
           }
         }
 
         &:is(:focus-visible, :hover:focus-visible) {
           outline-offset: 3px;
-          border-radius: var(--rh-border-radius-pill);
+          border-radius: var(--rh-border-radius-pill, 64px);
         }
 
         & slot[name='summary'] {
@@ -257,7 +257,7 @@
           background-color: var(--_background-color);
 
           &:before {
-            padding: var(--rh-border-width-md);
+            padding: var(--rh-border-width-md, 2px);
 
             --_mask: conic-gradient(#000000 0 0);
           }
@@ -270,8 +270,8 @@
           z-index: -1;
           width: 100%;
           background-color: var(--_background-color);
-          border-end-end-radius: calc(var(--rh-border-radius-default) * 2);
-          border-end-start-radius: calc(var(--rh-border-radius-default) * 2);
+          border-end-end-radius: calc(var(--rh-border-radius-default, 3px) * 2);
+          border-end-start-radius: calc(var(--rh-border-radius-default, 3px) * 2);
         }
 
         @container (min-width: 1200px) {
@@ -314,23 +314,23 @@
     & ::slotted(a:is(:focus-visible, :hover:focus-visible, :active)) {
       outline-offset: 2px;
       outline:
-        var(--rh-border-width-md)
+        var(--rh-border-width-md, 2px)
         solid
         var(--rh-color-interactive-primary-default);
-      border-radius: var(--rh-border-radius-default);
+      border-radius: var(--rh-border-radius-default, 3px);
     }
 
     &.standalone {
       display: inline-block;
       height: fit-content;
       border-block-start: none;
-      padding: var(--rh-space-md);
+      padding: var(--rh-space-md, 8px);
 
       & ::slotted(a) {
         display: inline-flex;
         height: auto;
         align-items: center;
-        padding: var(--rh-space-md) !important;
+        padding: var(--rh-space-md, 8px) !important;
       }
 
       & ::slotted(:is(a:hover, a:focus-visible)) {
@@ -352,9 +352,9 @@
     &:not(.standalone) {
       /* stylelint-disable-next-line no-descending-specificity */
       & ::slotted(a) {
-        font-size: var(--rh-font-size-body-text-md);
-        padding-inline: var(--rh-space-lg);
-        transform: translateY(4px);
+        font-size: var(--rh-font-size-body-text-md, 1rem);
+        padding-inline: var(--rh-space-lg, 16px);
+        transform: translateY(4px); /* adjust to border-end */
       }
 
       & ::slotted(:is(a:hover, a:focus-visible)) {
@@ -368,14 +368,14 @@
     }
   }
 
-  &:is(.standalone, .link) {
-    font-size: var(--rh-font-size-code-sm);
+  &:is(.standalone.link) {
+    font-size: var(--rh-font-size-body-text-sm, 0.875rem);
   }
 
   &:not(.standalone, .link) {
     details {
-      border-inline-start: var(--rh-border-width-lg) solid transparent;
-      border-inline-end: var(--rh-border-width-sm) solid transparent;
+      border-inline-start: var(--rh-border-width-lg, 3px) solid transparent;
+      border-inline-end: var(--rh-border-width-sm, 1px) solid transparent;
       justify-items: unset;
       align-content: unset;
 
@@ -406,10 +406,10 @@
       & summary {
         flex-direction: row;
         justify-content: space-between;
-        padding: var(--rh-space-lg) var(--rh-space-xl);
+        padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
 
         @container (min-width: 1200px) {
-          padding: 0 var(--rh-space-lg);
+          padding: 0 var(--rh-space-lg, 16px);
           width: auto;
 
           /* adjustment for 4px border, because border-image usage we can't use transparent on opposite side to balance */
@@ -435,11 +435,11 @@
       &:not(.standalone, .link) {
         & details {
           border-block-end: none;
-          border-inline-start: var(--rh-border-width-lg) solid transparent;
-          border-inline-end: var(--rh-border-width-sm) solid transparent;
+          border-inline-start: var(--rh-border-width-lg, 3px) solid transparent;
+          border-inline-end: var(--rh-border-width-sm, 1px) solid transparent;
 
           & summary {
-            padding: var(--rh-space-lg) var(--rh-space-xl);
+            padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
           }
 
           & #details-content {
