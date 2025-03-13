@@ -1,7 +1,7 @@
-diff --git a/node_modules/@jspm/generator/dist/generator-b8f1de6d.js b/node_modules/@jspm/generator/dist/generator-b8f1de6d.js
-index f7a63ef..6170f5e 100644
---- a/node_modules/@jspm/generator/dist/generator-b8f1de6d.js
-+++ b/node_modules/@jspm/generator/dist/generator-b8f1de6d.js
+diff --git a/node_modules/@jspm/generator/dist/generator-a5c4c1a6.js b/node_modules/@jspm/generator/dist/generator-a5c4c1a6.js
+index 2b9b3f6..5c574ab 100644
+--- a/node_modules/@jspm/generator/dist/generator-a5c4c1a6.js
++++ b/node_modules/@jspm/generator/dist/generator-a5c4c1a6.js
 @@ -218,6 +218,7 @@ async function createTsAnalysis(source, url) {
              sourceType: "module",
              parserOpts: {
@@ -18,7 +18,7 @@ index f7a63ef..6170f5e 100644
                          onlyRemoveTypeImports: true
                      }
                  ]
-@@ -2934,9 +2936,14 @@ class TraceMap {
+@@ -2994,9 +2996,14 @@ class TraceMap {
     * @param {} parentUrl URL of the parent context for the specifier.
     * @param {} seen Cache for optimisation.
     */ async visit(specifier, opts, parentUrl = this.baseUrl.href, seen = new Set()) {
@@ -36,10 +36,10 @@ index f7a63ef..6170f5e 100644
          seen.add(`${specifier}##${parentUrl}`);
          this.log("tracemap/visit", `Attempting to resolve ${specifier} to a module from ${parentUrl}, toplevel=${opts.toplevel}, mode=${opts.installMode}`);
 diff --git a/node_modules/@jspm/generator/lib/generator.d.ts b/node_modules/@jspm/generator/lib/generator.d.ts
-index a08f660..0760d58 100644
+index ebad450..e6595fe 100644
 --- a/node_modules/@jspm/generator/lib/generator.d.ts
 +++ b/node_modules/@jspm/generator/lib/generator.d.ts
-@@ -244,7 +244,7 @@ export interface GeneratorOptions {
+@@ -245,7 +245,7 @@ export interface GeneratorOptions {
       * await generator.install("@react-three/fiber@7")
       * ```
       */
