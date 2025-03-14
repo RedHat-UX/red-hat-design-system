@@ -75,7 +75,7 @@ interaction with Red Hat reflects our brand personality, brand strategy, and
 consistent visual language. Consistency is how we create authentic relationships 
 and credibility with our customers, partners, and contributors.
 
-<uxdot-example variant="full">
+<uxdot-example variant="full" no-border>
   <img alt="The text 'Brand Standards' with small illustrations of color swatches, dropdown element, and resizing an icon"
        src="brand-standards.png">
 </uxdot-example>
