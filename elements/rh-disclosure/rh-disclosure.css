@@ -45,7 +45,7 @@ summary {
   &:hover,
   &:active,
   &:focus {
-    background-color: var(--rh-color-surface-dark-alt, #292929);
+    background-color: var(--rh-color-surface-dark, #383838);
   }
 }
 
