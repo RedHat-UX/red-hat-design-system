@@ -81,15 +81,11 @@ determined by the width of the component.
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
-    <uxdot-example color-palette="lightest" width-adjustment="418px" slot="image">
-      {% include './type-usage-best-practice-1-do.svg' %}
-    </uxdot-example>
+    <uxdot-example color-palette="lightest" width-adjustment="418px" slot="image">{% include './type-usage-best-practice-1-do.svg' %}</uxdot-example>
     <p>Use the correct font family for the correct use case.</p>
   </uxdot-best-practice>
   <uxdot-best-practice variant="dont">
-    <uxdot-example color-palette="lightest" width-adjustment="418px" slot="image">
-      {% include './type-usage-best-practice-1-dont.svg' %}
-    </uxdot-example>
+    <uxdot-example color-palette="lightest" width-adjustment="418px" slot="image">{% include './type-usage-best-practice-1-dont.svg' %}</uxdot-example>
     <p>Do not use Red Hat Text for headings.</p>
   </uxdot-best-practice>
 </div>
@@ -98,15 +94,11 @@ determined by the width of the component.
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
-    <uxdot-example color-palette="lightest" width-adjustment="418px" slot="image">
-      {% include './type-usage-best-practice-2-do.svg' %}
-    </uxdot-example>
+    <uxdot-example color-palette="lightest" width-adjustment="418px" slot="image">{% include './type-usage-best-practice-2-do.svg' %}</uxdot-example>
     <p>Use the correct font family for the correct use case.</p>
   </uxdot-best-practice>
   <uxdot-best-practice variant="dont">
-    <uxdot-example color-palette="lightest" width-adjustment="418px" slot="image">
-      {% include './type-usage-best-practice-2-dont.svg' %}
-    </uxdot-example>
+    <uxdot-example color-palette="lightest" width-adjustment="418px" slot="image">{% include './type-usage-best-practice-2-dont.svg' %}</uxdot-example>
     <p>Do not use Red Hat Display for blocks of body text on websites.</p>
   </uxdot-best-practice>
 </div>
@@ -115,15 +107,11 @@ determined by the width of the component.
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
-    <uxdot-example color-palette="lightest" width-adjustment="418px" slot="image">
-      {% include './type-usage-best-practice-3-do.svg' %}
-    </uxdot-example>
+    <uxdot-example color-palette="lightest" width-adjustment="418px" slot="image">{% include './type-usage-best-practice-3-do.svg' %}</uxdot-example>
     <p>Use comfortable spacing in between text styles.</p>
   </uxdot-best-practice>
   <uxdot-best-practice variant="dont">
-    <uxdot-example color-palette="lightest" width-adjustment="418px" slot="image">
-      {% include './type-usage-best-practice-3-dont.svg' %}
-    </uxdot-example>
+    <uxdot-example color-palette="lightest" width-adjustment="418px" slot="image">{% include './type-usage-best-practice-3-dont.svg' %}</uxdot-example>
     <p>Do not space text too close together. Ensure users can read each style separately.</p>
   </uxdot-best-practice>
 </div>
