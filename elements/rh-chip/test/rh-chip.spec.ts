@@ -72,11 +72,11 @@ describe('<rh-chip>', function() {
       checkbox = getCheckbox(element);
     });
 
-    it('does not have the checked attribute on the host', function() {
+    it('does not have the checked attribute on the host', async function() {
       expect(element.getAttribute('checked')).to.be.null;
     });
 
-    it('has aria-disabled attribute set to true', function() {
+    it('has aria-disabled attribute set to true', async function() {
       expect(checkbox.getAttribute('aria-disabled')).to.equal('true');
     });
 
@@ -105,7 +105,7 @@ describe('<rh-chip>', function() {
       checkbox = getCheckbox(element);
     });
 
-    it('has aria-disabled attribute set to true', function() {
+    it('has aria-disabled attribute set to true', async function() {
       expect(checkbox.getAttribute('aria-disabled')).to.equal('true');
     });
 
