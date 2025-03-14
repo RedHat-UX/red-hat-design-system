@@ -23,7 +23,7 @@ fieldset {
 
   label {
     position: relative;
-    background-color: none;
+    background-color: transparent;
     color: var(--rh-color-text-primary);
     border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
     display: flex;
@@ -31,6 +31,8 @@ fieldset {
     justify-content: center;
     width: var(--rh-space-3xl);
     height: var(--rh-space-2xl);
+
+    &:not(:first-of-type) { margin-inline-start: -1px; }
 
     &:hover,
     &:has(:checked) {
