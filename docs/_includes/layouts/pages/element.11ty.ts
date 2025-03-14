@@ -139,7 +139,10 @@ export default class ElementsPage extends Renderer<Context> {
         defaultProvider: 'jspm.io',
       });
       await generator.install('@rhds/elements');
-      await assetCache.save(generator.getMap(), 'json');
+      const map = generator.getMap();
+      if (map.imports) {
+        await assetCache.save(map, 'json');
+      }
     }
     const map = structuredClone(await assetCache.getCachedValue());
     map.imports![`@rhds/elements/${tagName}/${tagName}.js`] =

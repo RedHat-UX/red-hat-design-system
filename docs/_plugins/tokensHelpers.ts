@@ -1,6 +1,5 @@
 import type { CssCustomProperty } from 'custom-elements-manifest';
-import type { DesignToken } from '@rhds/tokens';
-import { tokens as tokensMeta } from '@rhds/tokens/meta.js';
+import { tokens as tokensMeta, type DesignToken } from '@rhds/tokens/meta.js';
 import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);

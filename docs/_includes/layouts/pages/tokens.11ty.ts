@@ -74,14 +74,14 @@ export default class TokensPage extends Renderer<Data> {
 
   #themeTokensCardCount = 1;
 
-  #getTokenLightness(token: DesignToken) {
+  #getTokenLightness(token: DesignToken, palette: 'light' | 'dark') {
     const meta = tokensMeta.get(`--${token.name as `rh-${string}`}`);
     const value =
        meta?.$value
     || !Array.isArray(meta?.original.$value) ? ''
      : meta?.original.$value.find((x: string | number) =>
-       x.toString().endsWith('lightest}')
-        || x.toString().endsWith('light}'));
+       x.toString().endsWith(`${palette}est}`)
+        || x.toString().endsWith(`${palette}}`));
     const derefed =
       `--rh-${value?.toString().replace(/{(.*)}/, '$1').replace(/\./g, '-')}` as const;
     const derefedToken = meta?.$value ? meta : tokensMeta.get(derefed);
@@ -300,6 +300,28 @@ export default class TokensPage extends Renderer<Data> {
     }
   }
 
+  #makeSwatches(palette: 'light' | 'dark') {
+    return (token: DesignToken) => {
+      const suffix = token.name === 'rh-color-surface' ? `${palette}est` : `on-${palette}`;
+      const style = `--swatch-color: var(--${token.name}-${suffix})`;
+      const classes = `swatch on-${palette} ${classMap(this.#getTokenLightness(token, palette))}`;
+      return token.path.includes('text') ? html`
+        <samp class="${classes} font" style="${style}">
+          <span>Aa</span> <span>--${token.name}</span>
+        </samp>` : token.path.includes('icon') ? html`
+        <samp class="${classes} icon" style="${style}">
+          <rh-icon icon="unknown-fill" set="ui"></rh-icon>
+          <span>--${token.name}</span>
+        </samp>` : token.path.includes('border') ? html`
+        <samp class="${classes} border" style="${style}">
+          <span>--${token.name}</span>
+        </samp>` : html`
+        <samp class="${classes} color" style="${style}">
+          <span>--${token.name}</span>
+        </samp>`;
+    };
+  }
+
   #renderThemeTokensCard(options: Options) {
     const { level = 1 } = options;
     const themeTokens = this.#getThemeTokens(options);
@@ -314,24 +336,8 @@ export default class TokensPage extends Renderer<Data> {
                            slot="header"
                            allow="lightest,darkest"
                            target="surface-${slug}"></rh-context-picker>
-        ${themeTokens.map(token => token.path.includes('text') ? html`
-        <samp class="swatch font ${classMap(this.#getTokenLightness(token))}"
-              style="--swatch-color: var(--${token.name})">
-          <span>Aa</span> <span>--${token.name}</span>
-        </samp>` : token.path.includes('icon') ? html`
-        <samp class="swatch icon ${classMap(this.#getTokenLightness(token))}"
-              style="--swatch-color: var(--${token.name})">
-          <rh-icon icon="unknown-fill" set="ui"></rh-icon>
-          <span>--${token.name}</span>
-        </samp>` : token.path.includes('border') ? html`
-        <samp class="swatch border ${classMap(this.#getTokenLightness(token))}"
-              style="--swatch-color: var(--${token.name})">
-          <span>--${token.name}</span>
-        </samp>` : html`
-        <samp class="swatch color ${classMap(this.#getTokenLightness(token))}"
-              style="--swatch-color: var(--${token.name})">
-          <span>--${token.name}</span>
-        </samp>`).join('')}
+        ${themeTokens.map(this.#makeSwatches('light')).join('')}
+        ${themeTokens.map(this.#makeSwatches('dark')).join('')}
       </rh-card>
     `;
   }

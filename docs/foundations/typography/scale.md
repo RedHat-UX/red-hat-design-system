@@ -21,9 +21,9 @@ subnav:
   rh-table table {
     & td, & th { width: 20%; }
     & td {
-      &:has(s) { color: var(--rh-color-text-brand); }
-      & span { color: var(--rh-color-green-60); }
-      & s { color: var(--rh-color-gray-40); }
+      &:has(s) { color: var(--rh-color-status-danger); }
+      & span { color: var(--rh-color-status-success); }
+      & s { color: var(--rh-color-icon-subtle); }
       & :is(s, span) { display: block; }
     }
   }

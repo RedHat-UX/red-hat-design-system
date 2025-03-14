@@ -35,7 +35,7 @@ If one element has the same function as another, both should be labeled the same
 
 When considering methods of communication or feedback, do not use color alone. Ensure there is a text label, icon, underline, or other visual cue to communicate meaning. Consider how the following elements would look to a color blind user.
 
-<uxdot-example width-adjustment="1012px">
+<uxdot-example color-palette="lightest" width-adjustment="1012px">
   <img src="/assets/color/color-a11y-using-color-alone.svg"
       alt="Dialog with example form elements like a red-orange Leave button, a form field with a red bottom border, and progress steps without labels"
       width="872"
@@ -70,7 +70,7 @@ That said, you still _can_ underline the above, at your discretion.
 
 If, for some reason, color is the only way you can distinguish links within a text block, the contrast ratio between the link and surrounding text _must_ be at least 3:1 in both visited and unvisited states. And underlines or other non-color cues _must also_ then be used to signify when the link receives hover and focus.
 
-<uxdot-example width-adjustment="708px">
+<uxdot-example color-palette="lightest" width-adjustment="708px">
   <img src="/assets/color/contrast-links.png"
       alt="Contrast ratio of a blue link next to black text and an example of a link's darker blue, underlined hover state"
       width="708"

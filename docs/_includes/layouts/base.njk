@@ -7,39 +7,23 @@
 <html lang="en" dir="ltr">
   <head>
     {% include "../partials/meta.html" %}
-
-    <link rel="stylesheet" href="/styles/styles.css">
-
-   {# On browsers that don't yet support native declarative shadow DOM, a
-      paint can occur after some or all pre-rendered HTML has been parsed,
-      but before the declarative shadow DOM polyfill has taken effect. This
-      paint is undesirable because it won't include any component shadow DOM.
-      To prevent layout shifts that can result from this render, we use a
-      "dsd-pending" attribute to ensure we only paint after we know
-      shadow DOM is active. #}
+    {#- prevent white FOUC for deviced preferring dark scheme -#}
     <style>
-      body[dsd-pending] {
-        display: none;
+      body {
+        min-height: 100vh;
+        color-scheme: light dark;
+        background-color: light-dark(white, var(--rh-color-surface-darker, #1f1f1f));
       }
     </style>
-    {# if javascript is turned off we want to ensure the page renders #}
-    <noscript>
-      <style type="text/css">
-        body[dsd-pending] {
-          display: grid;
-        }
-      </style>
-    </noscript>
+    <link rel="stylesheet" href="/styles/styles.css">
 
     <script type="importmap">{{ importMap | dump(2) | safe }}</script>
 
-    {# ensure SSR support modules are loaded first #}
+    {#- Load SSR support modules **BEFORE** element definitions -#}
     {% include 'partials/javascript/dsd-init.html' %}
-
-    {# load all components #}
-    {% for tag in importElements %}
-      <script type="module">import '@rhds/elements/{{tag}}/{{tag}}.js';</script>
-    {% endfor %}
+    {%- for tag in importElements -%}
+    <script type="module">import '@rhds/elements/{{tag}}/{{tag}}.js';</script>
+    {%- endfor -%}
 
     {# only load components that need hydrated (aka interactivity) #}
     <script type="module">
@@ -52,7 +36,7 @@
     <script async src="https://ga.jspm.io/npm:es-module-shims@1.8.0/dist/es-module-shims.js"></script>
   </head>
 
-  <body dsd-pending class="{{ extraPageClasses }}">
+  <body class="{{ extraPageClasses }}">
     <rh-skip-link href="#main">Skip to main content</rh-skip-link>
     {{ content | safe }}
   </body>

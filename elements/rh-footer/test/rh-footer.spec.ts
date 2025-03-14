@@ -228,25 +228,32 @@ describe('<rh-footer>', function() {
       });
     });
 
-    describe('ensure primary links supports second row.', function() {
+    describe('Tablet, landscape', function() {
       let element: RhFooter;
+
+      beforeEach(() => setViewport({ width: 992, height: 800 }));
 
       beforeEach(async function() {
         element = await fixture<RhFooter>(KITCHEN_SINK_TEMPLATE);
       });
 
-      it('Tablet, landscape', async function() {
-        await setViewport({ width: 992, height: 800 });
-        await element.updateComplete;
-        await nextFrame();
+      beforeEach(() => element.updateComplete);
+      beforeEach(nextFrame);
 
+      it('distributes links horizontally', function() {
         const firstPrimaryLink = element.querySelector('ul[slot=links]:first-of-type');
         const secondPrimaryLink = element.querySelector('h3[slot=links]:nth-of-type(n+2)');
-        const fifthPrimaryLink = element.querySelector('h3[slot=links]:nth-of-type(n+5)');
+        const d = Math.abs(firstPrimaryLink!.getBoundingClientRect().right - secondPrimaryLink!.getBoundingClientRect().left);
         // 32px between the link items
-        expect(Math.abs(firstPrimaryLink.getBoundingClientRect().right - secondPrimaryLink.getBoundingClientRect().left)).to.equal(32);
+        expect(d).to.equal(parseInt(tokens.get('--rh-space-2xl') as string), '--rh-space-2xl');
+      });
+
+      it('distributes links vertically', function() {
+        const firstPrimaryLink = element.querySelector('ul[slot=links]:first-of-type');
+        const fifthPrimaryLink = element.querySelector('h3[slot=links]:nth-of-type(n+5)');
+        const d = Math.abs(firstPrimaryLink!.getBoundingClientRect().bottom - fifthPrimaryLink!.getBoundingClientRect().top);
         // 32px between the first and second row
-        expect(Math.abs(firstPrimaryLink.getBoundingClientRect().bottom - fifthPrimaryLink.getBoundingClientRect().top)).to.equal(32);
+        expect(d).to.equal(parseInt(tokens.get('--rh-space-2xl') as string), '--rh-space-2xl');
       });
     });
 

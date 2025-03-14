@@ -1,16 +1,18 @@
 <rh-card>
   <p>
-    The card <em>and</em> CTA respond to the theme of their container.
-    On a light container, the CTA uses the light theme, and dark on dark.
+    The outer card <em>and</em> <abbr title="call to action">CTA</abbr>
+    respond to the theme of their container. On a light container,
+    the CTA uses the light theme, and dark on dark.
   </p>
-  <rh-cta slot="footer">Fine!</rh-cta>
-</rh-card>
 
-<rh-card color-palette="darkest">
-  <p>
-    The card uses the "darkest" palette.
-    The CTA is always themed with the "dark" theme, because the card
-    sets its own palette, rather than responding to it's container's.
-  </p>
-  <rh-cta slot="footer">Nice!</rh-cta>
+  <rh-card color-palette="darkest">
+    <p>
+      The nested card uses the "darkest" palette.
+      its CTA is always themed with the "dark" theme, because the card
+      sets its own palette, rather than responding to it's container's.
+    </p>
+    <rh-cta slot="footer">Nice!</rh-cta>
+  </rh-card>
+
+  <rh-cta slot="footer">Fine!</rh-cta>
 </rh-card>

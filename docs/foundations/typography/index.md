@@ -38,7 +38,7 @@ website.
 
 <uxdot-example width-adjustment="1140px" variant="full" alignment="left" no-border>
   <img alt=" 3 examples of the Red Hat font family: Display, Text, and Mono. Each example shows a capital letter R and lowercase letter H with overlays pointing out unique design characteristics."
-       src="/assets/typography/type-overview-font-family.png"
+       src="type-overview-font-family.png"
        width="1140"
        height="365">
 </uxdot-example>

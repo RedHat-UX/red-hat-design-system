@@ -64,16 +64,16 @@ theme.
 
 <rh-table>
 
-| Property                                 | Token or value                |
-| ---------------------------------------- | ----------------------------- |
-| Color - social media icons               | `--rh-color-gray-40`          |
-| Color - divider lines                    | `--rh-color-gray-50`          |
-| Border width - divider lines             | `--rh-border-width-sm`        |
-| Color - titles and link text             | `--rh-color-white`            |
-| Color - body text                        | `--rh-color-gray-30`          |
-| Color - call to action                   | \#73BCF7                      |
-| Color - language selector icons and text | `--rh-color-gray-30`          |
-| Color - background                       | `--rh-color-surface-dark-alt` |
+| Property                                 | Token or value                     |
+| ---------------------------------------- | ---------------------------------- |
+| Color - social media icons               | `--rh-color-gray-40`               |
+| Color - divider lines                    | `--rh-color-gray-50`               |
+| Border width - divider lines             | `--rh-border-width-sm`             |
+| Color - titles and link text             | `--rh-color-white`                 |
+| Color - body text                        | `--rh-color-gray-30`               |
+| Color - call to action                   | \#73BCF7                           |
+| Color - language selector icons and text | `--rh-color-gray-30`               |
+| Color - background                       | darkened `--rh-color-surface-dark` |
 
 </rh-table>
 
