@@ -35,10 +35,10 @@ tags:
 
     <script async src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
   </head>
-  <body unresolved>{% if demo.filePath %}
-    <rh-surface role="main">
+  <body>{% if demo.filePath %}
+    <main>
       {%- include demo.filePath -%}
-    </rh-surface>{%- else -%}
+    </main>{%- else -%}
     <p>No Demo. <a href="https://github.com/redhat-ux/red-hat-design-system/issues/new">Open an issue!</a></p>{%- endif -%}
   </body>
 </html>

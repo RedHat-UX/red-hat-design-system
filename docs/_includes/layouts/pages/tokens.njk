@@ -61,7 +61,7 @@ layout: layouts/base.njk
 {% include 'partials/component/masthead.njk' %}
 {% include 'partials/component/sidenav.njk' %}
 
-<rh-surface id="main" role="main">
+<main id="main">
   <uxdot-header has-search>
     <h1 id="{{ title | slugify }}" class="page-title">{{ title }}</h1>
     <form id="search-tokens" action="/tokens/search">
@@ -77,7 +77,7 @@ layout: layouts/base.njk
   </div>
 
   {% include "partials/component/back-to-top.njk" %}
-</rh-surface>
+</main>
 
 {% include 'partials/component/footer.njk' %}
 

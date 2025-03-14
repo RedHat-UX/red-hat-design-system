@@ -16,7 +16,7 @@ layout: layouts/base.njk
 
 {% include 'partials/component/masthead.njk' %}
 {% include 'partials/component/sidenav.njk' %}
-<rh-surface id="main" role="main">
+<main id="main">
   <article class="has-toc">
   {% include 'partials/component/header.njk' %}
   {% if table.length > 0 %}
@@ -32,5 +32,5 @@ layout: layouts/base.njk
   </div>
   </article>
   {% include "partials/component/back-to-top.njk" %}
-</rh-surface>
+</main>
 {% include 'partials/component/footer.njk' %}
