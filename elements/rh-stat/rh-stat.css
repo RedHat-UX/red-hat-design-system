@@ -65,7 +65,6 @@ span,
   font-size: var(--rh-font-size-body-text-xl, 1.25rem);
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
   font-weight: var(--rh-font-weight-body-text-regular, 400);
-  text-transform: uppercase;
 }
 
 #statistic {
