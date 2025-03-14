@@ -95,11 +95,16 @@ export class RhSubnav extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     RhSubnav.instances.add(this);
+    this.linkList.addEventListener('scroll', this.#overflow.onScroll.bind(this));
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
     RhSubnav.instances.delete(this);
+  }
+
+  firstUpdated() {
+    this.#onSlotchange();
   }
 
   render() {
@@ -122,10 +127,6 @@ export class RhSubnav extends LitElement {
           </button>`}
       </nav>
     `;
-  }
-
-  firstUpdated() {
-    this.linkList.addEventListener('scroll', this.#overflow.onScroll.bind(this));
   }
 
   #onSlotchange() {
