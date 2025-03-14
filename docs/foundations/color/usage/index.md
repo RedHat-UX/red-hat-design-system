@@ -172,7 +172,7 @@ Status has its own severity levels, color palettes, and meanings assigned to eac
 
 </rh-table>
 
-<uxdot-example color-palette="lightest" width-adjustment="816px">
+<uxdot-example width-adjustment="816px">
   {% include './color-usage-status.svg' %}
 </uxdot-example>
 
