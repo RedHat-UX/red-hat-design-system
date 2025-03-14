@@ -98,8 +98,11 @@ class, and in that rule we'll set the values of <abbr title="red hat design
   system">RHDS</abbr> theming tokens to our custom theme colors.
 In the following example, you can see how we first define some custom theme 
 colours as CSS custom properties beginning with `--bordeaux-`, then we use those 
-values in our custom theme by applying them to RHDS theming tokens, i.e. tokens 
-that look like `--rh-color-*-on-(light|dark)`.
+values in our custom theme by applying them to RHDS theming tokens.
+
+<rh-alert state="info">In order to support user's color 
+scheme preference as well as elements with dark color palettes, always use sure 
+to always use the `light-dark()` function when crafting custom themes.</rh-alert>
 
 <uxdot-pattern class="card-snippet-grid"
                full-height
@@ -107,17 +110,9 @@ that look like `--rh-color-*-on-(light|dark)`.
                src="./patterns/card-bordeaux.html"></uxdot-pattern>
 
 <rh-alert>When writing themes, override the semantic, themeable tokens such as
-`--rh-color-interactive-primary-default-on-light` rather than the crayon tokens
-e.g. `--rh-color-purple-10`.</rh-alert>
-
-<rh-alert state="warning">
-  <h4 slot="header">Careful!</h4>
-
-Do not set the "computed" theme tokens, e.g.
-`--rh-color-interactive-primary-default`, those will always be calculated for
-you from their `-on-light` and `-on-dark` versions.
-
-</rh-alert>
+  `--rh-color-interactive-primary-default` rather than the crayon tokens
+  e.g. `--rh-color-purple-10`. This ensures that your custom colors apply to 
+  elements in the way the designers originally intended</rh-alert>
 
 ### Customizing entire pages
 
