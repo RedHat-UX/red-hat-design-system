@@ -13,6 +13,7 @@ fieldset {
 
 legend {
   float: left;
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
   margin-inline-end: var(--rh-space-md, 8px);
 }
 
@@ -24,6 +25,7 @@ legend {
   margin-block-start: 2px;
   margin-inline-start: var(--rh-space-md, 8px);
   cursor: pointer;
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
 
   &:hover,
   &:focus-visible {

@@ -7,6 +7,7 @@
 label {
   border-radius: var(--rh-border-radius-pill, 64px);
   display: flex;
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-body-text-sm, 0.875rem);
   line-height: var(--rh-line-height-body-text, 1.5);
   outline: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
