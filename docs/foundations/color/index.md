@@ -63,12 +63,8 @@ Since all projects use color in some way, our color palette was designed with br
 
 When colors are used together, they communicate brand, hierarchy, state, and more.
 
-<!-- add image -->
 <uxdot-example width-adjustment="920px">
-  <img alt="Variants of several elements"
-       src="/assets/color/color-communication.svg"
-       width="840"
-       height="599">
+  {% include './color-communication.svg' %}
 </uxdot-example>
 
 ## Design tokens
@@ -90,10 +86,7 @@ Our design system includes two sets of tokens:
 </rh-alert>
 
 <uxdot-example width-adjustment="730px">
-  <img alt="Diagram showing how crayon color tokens are aliased to semantic tokens, which are used to style a button"
-       src="/assets/color/color-semantic-tokens.svg"
-       width="840"
-       height="599">
+  {% include './color-semantic-tokens.svg' %}
 </uxdot-example>
 
 ### Color palette tokens

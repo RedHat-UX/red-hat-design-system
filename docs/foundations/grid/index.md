@@ -25,10 +25,7 @@ tags:
   ### Sample component
 
   <uxdot-example variant="full" no-border>
-    <img alt="Grid"
-         src="/assets/grid/grid.svg"
-         width="1000"
-         height="160">
+    {% include './grid.svg' %}
   </uxdot-example>
 
   ### Grid availability
@@ -40,14 +37,10 @@ tags:
   ### Style
 
   <uxdot-example variant="full" no-border>
-    <img alt="Grid specs"
-         src="/assets/grid/grid-style.svg"
-         width="877"
-         height="193">
+    {% include './grid-style.svg' %}
   </uxdot-example>
 
 </section>
-
 
 <section aria-labelledby="usage">
 
@@ -62,20 +55,14 @@ tags:
 
   <uxdot-example variant="full" no-border alignment="left">
     <figure>
-      <img alt="Grid columns on desktop"
-           src="/assets/grid/grid-usage-desktop.svg"
-           width="1000"
-           height="232">
+      {% include './grid-usage-desktop.svg' %}
       <figcaption>A grid on large screens contains 12 columns</figcaption>
     </figure>
   </uxdot-example>
 
   <uxdot-example variant="full" no-border alignment="left" width-adjustment="576px">
     <figure>
-      <img alt="Grid columns on mobile"
-           src="/assets/grid/grid-usage-mobile.svg"
-           width="576"
-           height="232">
+      {% include './grid-usage-mobile.svg' %}
       <figcaption>A grid on small screens contains one column</figcaption>
     </figure>
   </uxdot-example>
@@ -87,18 +74,8 @@ tags:
   columns being used.
 
   <div class="grid">
-    <uxdot-example variant="full" no-border>
-      <img alt="Grid gutters on desktop"
-           src="/assets/grid/grid-gutters-desktop.svg"
-           width="1000"
-           height="262">
-    </uxdot-example>
-    <uxdot-example variant="full" no-border alignment="left" width-adjustment="576px">
-      <img alt="Grid gutters on mobile"
-           src="/assets/grid/grid-gutters-mobile.svg"
-           width="576"
-           height="266">
-    </uxdot-example>
+    <uxdot-example variant="full" no-border>{% include './grid-gutters-desktop.svg' %}</uxdot-example>
+    <uxdot-example variant="full" no-border alignment="left" width-adjustment="576px">{% include './grid-gutters-mobile.svg' %}</uxdot-example>
   </div>
 
   ### Margins
@@ -113,10 +90,7 @@ tags:
   Column, gutter, and margin widths reduce as breakpoints get smaller.
 
   <uxdot-example variant="full" no-border>
-    <img alt="Grid margins on desktop"
-         src="/assets/grid/grid-margins-desktop.svg"
-         width="1000"
-         height="265">
+    {% include './grid-margins-desktop.svg' %}
   </uxdot-example>
 
   ### Small screens
@@ -125,10 +99,7 @@ tags:
   small screens can sometimes be arranged in two columns.
 
   <uxdot-example variant="full" no-border alignment="left" width-adjustment="576px">
-    <img alt="Grid margins on mobile"
-         src="/assets/grid/grid-margins-mobile.svg"
-         width="574"
-         height="266">
+    {% include './grid-margins-mobile.svg' %}
   </uxdot-example>
 
 </section>
@@ -143,24 +114,16 @@ tags:
 
   <uxdot-example variant="full" no-border alignment="left">
     <figure>
-      <img alt="Grid content outside of grid"
-           src="/assets/grid/grid-best-practices-1.svg"
-           width="872"
-           height="427">
+      {% include './grid-best-practices-1.svg' %}
       <figcaption>18px or larger text shouldn't exceed eight columns to maintain optimal readability.</figcaption>
     </figure>
   </uxdot-example>
 
   <uxdot-example variant="full" no-border>
-    <img alt="Grid alignment issues"
-         src="/assets/grid/grid-best-practices-2.svg"
-         width="872"
-         height="158">
+    {% include './grid-best-practices-2.svg' %}
   </uxdot-example>
 
 </section>
-
-
 
 <section aria-labelledby="responsive-design">
 
@@ -175,17 +138,11 @@ tags:
   Column, gutter, and margin widths reduce as breakpoints get smaller.
 
   <uxdot-example variant="full" no-border>
-    <img alt="Example of responsive grid on large screen"
-         src="/assets/grid/grid-responsive-1.svg"
-         width="1000"
-         height="232">
+    {% include './grid-responsive-1.svg' %}
   </uxdot-example>
 
   <uxdot-example variant="full" no-border>
-    <img alt="Example of responsive grid on smaller screen"
-         src="/assets/grid/grid-responsive-2.svg"
-         width="1000"
-         height="232">
+    {% include './grid-responsive-2.svg' %}
   </uxdot-example>
 
   ### Small screens
@@ -194,17 +151,11 @@ tags:
   small screens can sometimes be arranged in two columns.
 
   <uxdot-example variant="full" no-border alignment="left" width-adjustment="576px">
-    <img alt="Example of responsive grid on large screen"
-         src="/assets/grid/grid-responsive-3.svg"
-         width="576"
-         height="232">
+    {% include "./grid-responsive-3.svg" %}
   </uxdot-example>
 
   <uxdot-example variant="full" no-border alignment="left" width-adjustment="360px">
-    <img alt="Example of responsive grid on smaller screen"
-         src="/assets/grid/grid-responsive-4.svg"
-         width="360"
-         height="232">
+    {% include "./grid-responsive-4.svg" %}
   </uxdot-example>
 
 </section>

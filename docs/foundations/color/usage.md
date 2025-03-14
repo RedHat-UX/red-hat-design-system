@@ -48,10 +48,7 @@ standards website][brandstandards] if you have brand questions.
 
 Red is our primary brand color. Red is also a strong color, so **use it as an accent**, not to fill large areas.
 
-<uxdot-example width-adjustment="948px">
-  <img alt="Examples of brand red being used in logos, illustrations, and text"
-       src="/assets/color/color-usage-brand-red.svg">
-</uxdot-example>
+<uxdot-example>{% include './color-usage-brand-red.svg' %}</uxdot-example>
 
 ### Red orange
 
@@ -182,7 +179,7 @@ Status has its own severity levels, color palettes, and meanings assigned to eac
 
 </rh-table>
 
-<uxdot-example width-adjustment="816px">
+<uxdot-example color-palette="lightest" width-adjustment="816px">
   <img alt="Alerts, buttons, health index, site status, and tags that use status colors"
        src="/assets/color/color-usage-status.svg">
 </uxdot-example>
@@ -199,30 +196,6 @@ Status has its own severity levels, color palettes, and meanings assigned to eac
 ## Best practices
 
 Follow these guidelines and best practices as best you can.
-
-### Custom theming
-
-If you need support for a custom theme including custom design tokens,
-[contact us][contactus].
-
-<div class="grid sm-two-columns">
-  <uxdot-best-practice variant="do">
-    <uxdot-example slot="image" width-adjustment="418px">
-      <img alt="Blue button, blue default call to action, gray badge, black tooltip, blue switch, and blue back to top"
-           src="/assets/color/color-usage-best-practices-1-do.svg"
-           width="500"
-           height="264">
-    </uxdot-example>
-    <p>Use light or dark theme elements as best you can.</p>
-  </uxdot-best-practice>
-  <uxdot-best-practice variant="dont">
-    <uxdot-example slot="image" width-adjustment="418px">
-      <img alt="Purple button, teal default call to action, brand red badge, blue tooltip, orange switch, and green back to top"
-           src="/assets/color/color-usage-best-practices-1-dont.svg">
-    </uxdot-example>
-    <p>Do not create your own theme or change the colors of elements.</p>
-  </uxdot-best-practice>
-</div>
 
 ### Maintaining contrast
 

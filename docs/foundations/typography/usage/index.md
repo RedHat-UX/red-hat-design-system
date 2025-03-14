@@ -18,10 +18,7 @@ subnav:
 Headings are used to establish hierarchy and introduce content.
 
 <uxdot-example width-adjustment="367px">
-  <img alt="3 examples of headings: Large, medium, and small."
-       src="/assets/typography/type-usage-headings.svg"
-       width="367"
-       height="174">
+  {% include './type-usage-headings.svg' %}
 </uxdot-example>
 
 ### Body text
@@ -30,10 +27,7 @@ Body text is used for blocks of text including inline links and lists. Do not
 center align too many lines of body text.
 
 <uxdot-example width-adjustment="668px">
-  <img alt="Example of body text with an inline link."
-       src="/assets/typography/type-usage-body-text.svg"
-       width="668"
-       height="81">
+  {% include './type-usage-body-text.svg' %}
 </uxdot-example>
 
 ### Code text
@@ -42,10 +36,7 @@ Code text is used for code snippets or to style text for technical audiences. Do
 not center align code text.
 
 <uxdot-example width-adjustment="317px">
-  <img alt="Example of code text with 3 lines."
-       src="/assets/typography/type-usage-code-text.svg"
-       width="317"
-       height="96">
+  {% include './type-usage-code-text.svg' %}
 </uxdot-example>
 
 ### Title
@@ -54,10 +45,7 @@ Titles are used above content to explain what can be expected underneath. Titles
 should always be sentence case and never uppercase.
 
 <uxdot-example width-adjustment="247px">
-  <img alt="2 examples of titles: Small and large."
-       src="/assets/typography/type-usage-title.svg"
-       width="247"
-       height="92">
+  {% include './type-usage-title.svg' %}
 </uxdot-example>
 
 ### Blockquote
@@ -68,10 +56,7 @@ always medium weight and the company name is always italic.
 
 
 <uxdot-example width-adjustment="422px">
-  <img alt="Example of blockquote with quote icon and attribution."
-       src="/assets/typography/type-usage-blockquote.svg"
-       width="422"
-       height="261">
+  {% include './type-usage-blockquote.svg' %}
 </uxdot-example>
 
 ## Line length
@@ -86,11 +71,8 @@ between 6 and 8 columns. When text is in a fluid layout, set the max-width to
 50rem (800px). When text is in a component like a card, the line length is
 determined by the width of the component.
 
-<uxdot-example width-adjustment="1012px">
-  <img alt="2 examples of line length: The first example shows that comfortable text is between 4 and 8 columns wide. The second example shows that comfortable text is no more than 800 pixels wide."
-       src="/assets/typography/type-usage-line-length.svg"
-       width="1012"
-       height="318">
+<uxdot-example color-palette="lightest" width-adjustment="1012px">
+  {% include './type-usage-line-length.svg' %}
 </uxdot-example>
 
 ## Best practices
