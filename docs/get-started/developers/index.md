@@ -68,17 +68,13 @@ Our design system libraries and the documentation website offer assets and guida
     <rh-icon slot="header" set="standard" icon="website-system"></rh-icon>
     <h3 slot="header">Foundations</h3>
     <p>Foundations are how we express our brand through color, space, typography, etc.</p>
-    <rh-cta slot="footer">
-      <a href="/foundations">Our foundations</a>
-    </rh-cta>
+    <rh-cta slot="footer" href="/foundations">Our foundations</rh-cta>
   </rh-card>
   <rh-card>
     <rh-icon slot="header" set="standard" icon="interoperability"></rh-icon>
     <h3 slot="header">Design tokens</h3>
     <p>Design tokens are how we translate our design language decisions into code.</p>
-    <rh-cta slot="footer">
-      <a href="tokens">Our design tokens</a>
-    </rh-cta>
+    <rh-cta slot="footer" href="tokens">Our design tokens</rh-cta>
   </rh-card>
   <rh-card>
     <rh-icon slot="header" set="standard" icon="book"></rh-icon>
@@ -87,9 +83,7 @@ Our design system libraries and the documentation website offer assets and guida
       <a href="/elements">elements</a> and <a href="/patterns">patterns</a>.
       Learn how to apply them accessibily with
       <a href="/accessibility/development/">developer-specific guidelines</a>.</p>
-    <rh-cta slot="footer">
-      <a href="/elements">Our elements</a>
-    </rh-cta>
+    <rh-cta slot="footer" href="/elements">Our elements</rh-cta>
   </rh-card>
   <rh-card>
     <rh-icon slot="header" set="standard" icon="code"></rh-icon>
@@ -97,9 +91,7 @@ Our design system libraries and the documentation website offer assets and guida
     <p>Explore our code, roadmaps, and discussions in the 
       <a href="https://github.com/RedHat-UX/red-hat-design-system">Red Hat Design System repo</a> and the 
       <a href="https://github.com/RedHat-UX/red-hat-design-tokens">Red Hat Design Tokens repo</a>.</p>
-    <rh-cta slot="footer">
-      <a href="https://github.com/RedHat-UX/">View our repos</a>
-    </rh-cta>
+    <rh-cta slot="footer" href="https://github.com/RedHat-UX/">View our repos</rh-cta>
   </rh-card>
 </div>
 
@@ -123,10 +115,7 @@ These standards combine to enable developers to write reusable and encapsulated 
 ### Why Web Components?
 
 <section class="grid layout-content-image" id="section-encapsulation">
-  <img src="/assets/get-started/developers/web-components-1.svg" 
-      alt="" 
-      width="369"
-      height="304">
+  {% include '../../assets/get-started/developers/web-components-1.svg' %}
   <div class="content-block">
 
 #### Encapsulation
@@ -136,10 +125,7 @@ Web Components encapsulate their templates, styles, and behavior. They establish
   </div>
 </section>
 <section class="grid layout-content-image reversed" id="section-apis">
-  <img src="/assets/get-started/developers/web-components-2.svg"
-      alt="" 
-      width="369"
-      height="215"> 
+  {% include '../../assets/get-started/developers/web-components-2.svg' %}
   <div class="content-block">
 
 #### Web standards APIs
@@ -149,10 +135,7 @@ Because Web Components are built with web standards, the technology is future-pr
   </div>
 </section>
 <section class="grid layout-content-image" id="section-framework">
-  <img src="/assets/get-started/developers/web-components-3.svg"
-      alt="" 
-      width="369"
-      height="312">
+  {% include '../../assets/get-started/developers/web-components-3.svg' %}
   <div class="content-block">
 
 #### Framework agnostic
