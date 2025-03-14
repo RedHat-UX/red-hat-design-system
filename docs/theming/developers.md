@@ -178,6 +178,17 @@ all children while maintaining the proper [landmark semantics][landmarks].
 </html>
 ```
 
+You may also style a built-in `<main>` element with `color-scheme` and `light-dark()`:
+
+```css rhcodeblock
+body {
+  color-scheme: light dark;
+  main {
+    background-color: light-dark(var(--rh-surface-lightest), var(--rh-surface-darkest));
+  }
+}
+```
+
 ### Theming individual sections
 
 You may also theme particular sections, giving them a contrasting color palette.
