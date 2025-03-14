@@ -95,7 +95,6 @@ export class RhSubnav extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     RhSubnav.instances.add(this);
-    this.linkList.addEventListener('scroll', this.#overflow.onScroll.bind(this));
   }
 
   disconnectedCallback() {
@@ -104,6 +103,7 @@ export class RhSubnav extends LitElement {
   }
 
   firstUpdated() {
+    this.linkList.addEventListener('scroll', this.#overflow.onScroll.bind(this));
     this.#onSlotchange();
   }
 
