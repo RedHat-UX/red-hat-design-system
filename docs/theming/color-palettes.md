@@ -71,7 +71,7 @@ to ensure that things like icons, text, and border colours remain legible.
 ranging from `lightest` to `darkest`, and those are the two palettes you will
 use the most for the majority of your projects.
 
-Understanding color palettes, color schemes, and theming work together is
+Understanding how color palettes, color schemes, and theming work together is
 important not only in terms of design guidelines but also for accessibility
 compliance, and to enable positive experiences for all our users. We've
 developed our theming system with web standards in mind, and aiming to use CSS
