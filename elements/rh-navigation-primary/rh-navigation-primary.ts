@@ -271,7 +271,7 @@ export class RhNavigationPrimary extends LitElement {
   #onKeydown(event: KeyboardEvent) {
     switch (event.key) {
       case 'Escape': {
-        this.close();
+        this.close(true);
         break;
       }
       case 'Tab':
