@@ -97,7 +97,7 @@ Layering is stacking colors to establish hierarchy and separate content. Colors 
 
 <div class="grid sm-two-columns">
   <uxdot-example width-adjustment="418px">
-    {% include './color-usage-layering-theme-light.svg' %}>
+    {% include './color-usage-layering-theme-light.svg' %}
   </uxdot-example>
 
   <uxdot-example color-palette="darkest" width-adjustment="418px">
