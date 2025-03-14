@@ -3,15 +3,17 @@ title: Content
 tags:
   - accessibility
 order: 40
-importElements:
-  - rh-code-block
-  - rh-blockquote
-  - rh-table
 ---
 
 <link data-helmet
       rel="stylesheet"
       href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
+
+<script type="module" data-helmet>
+  import '@rhds/elements/rh-code-block/rh-code-block.js';
+  import '@rhds/elements/rh-blockquote/rh-blockquote.js';
+  import '@rhds/elements/rh-table/rh-table.js';
+</script>
 
 <style data-helmet>
   rh-blockquote {

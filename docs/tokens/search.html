@@ -3,20 +3,15 @@ layout: layouts/pages/basic.njk
 templateEngineOverride: njk
 title: Search Results
 tokenSearch: true
-importElements:
-  - rh-tile
 ---
 
-<link
-  rel="stylesheet"
-  data-helmet
-  href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css"
-/>
-<script
-  type="module"
-  data-helmet
-  src="/assets/javascript/search-results.js"
-></script>
+<link rel="stylesheet" data-helmet href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
+
+<script type="module" data-helmet>
+  import '@rhds/elements/rh-tile/rh-tile.js';
+</script>
+
+<script type="module" data-helmet src="/assets/javascript/search-results.js"></script>
 
 <section aria-label="Search results" class="results-section">
   <div id="results" hidden></div>
@@ -27,9 +22,7 @@ importElements:
 <nav class="grid xs-two-columns sm-three-columns">
   {% for category in collections.tokenCategory %}
   <rh-tile>
-    <a slot="headline" href="{{ category.url }}"
-      ><h3>{{category.title | capitalize }}</h3></a
-    >
+    <a slot="headline" href="{{ category.url }}"><h3>{{ category.title | capitalize }}</h3></a>
   </rh-tile>
   {% endfor %} {# there is a mismatch between the token categories as specified
   and the token categories as designed. for example "line-height" is a top-level

@@ -69,11 +69,11 @@ centered.
 
 ### Stacking
 
-There is `48px` of space when avatar groups are stacked vertically.
+There should be a spacing of `--rh-space-3xl` between avatar groups that are stacked vertically.
 
 <uxdot-example width-adjustment="385px">
   <img src="../avatar-usage-stacking.png" 
-      alt="Image of three avatar groups stacked vertically with 48 pixel of space in between"
+      alt="Image of three avatar groups stacked vertically"
       width="385"
       height="288">
 </uxdot-example>
@@ -114,34 +114,72 @@ break to more lines, it is still anchored at the top.
 
 ### Thumbnail shape
 
-Do not change the shape of the avatar thumbnail.
+<div class="grid sm-two-columns">
+  <uxdot-best-practice variant="do">
+    <uxdot-example width-adjustment="226px" slot="image">
+      <img src="../avatar-best-practices-shape-do.svg"
+            alt="Default avatar thumbnail in a circle next to 'Ada Lovelace, Computer programmer' text"
+            width="226"
+            height="64">
+    </uxdot-example>
+    <p>Keep the thumbnail in a circle.</p>
+  </uxdot-best-practice>
 
-<uxdot-example danger width-adjustment="293px">
-  <img src="../avatar-best-practice-1.png" 
-      alt="Image of a square avatar thumbnail which is incorrect usage"
-      width="293"
-      height="64">
-</uxdot-example>
+  <uxdot-best-practice variant="dont">
+    <uxdot-example width-adjustment="226px" slot="image">
+      <img src="../avatar-best-practices-shape-dont.svg"
+            alt="Default avatar thumbnail in a square next to 'Ada Lovelace, Computer programmer' text"
+            width="226"
+            height="64">
+    </uxdot-example>
+    <p>Do not change the shape of the avatar thumbnail.</p>
+  </uxdot-best-practice>
+</div>
 
-### Light theme thumbnail
+### Thumbnail theme
 
-Do not use a light theme avatar thumbnail in the dark theme.
+<div class="grid sm-two-columns">
+  <uxdot-best-practice variant="do">
+  <uxdot-example width-adjustment="482px" slot="image">
+      <img src="../avatar-best-practices-theme-do.svg"
+            alt="Light theme avatar against light theme background and dark theme avatar against dark theme background"
+            width="482"
+            height="192">
+    </uxdot-example>
+    <p>Use the right avatar thumbnail for the theme.</p>
+  </uxdot-best-practice>
 
-<uxdot-example danger width-adjustment="270px">
-  <img src="../avatar-best-practice-2.png" 
-      alt="Image of a light theme avatar thumbnail placed on a black background which is incorrect usage"
-      width="270"
-      height="64">
-</uxdot-example>
+  <uxdot-best-practice variant="dont">
+    <uxdot-example width-adjustment="482px" slot="image">
+      <img src="../avatar-best-practices-theme-dont.svg"
+            alt="Dark theme avatar against light theme background and light theme avatar against dark theme background"
+            width="482"
+            height="192">
+    </uxdot-example>
+    <p>Do not use a light theme avatar thumbnail in the dark theme and vice versa.</p>
+  </uxdot-best-practice>
+</div>
 
 ### Icon vs. avatar thumbnail
 
-Do not use an avatar thumbnail when an icon is more suitable.
+<div class="grid sm-two-columns">
+  <uxdot-best-practice variant="do">
+  <uxdot-example width-adjustment="215px" slot="image">
+      <img src="../avatar-best-practices-icon-vs-avatar-do.svg"
+            alt="Avatar thumbnail above the text 'You are logged in as Ada Lovelace'"
+            width="215"
+            height="101">
+    </uxdot-example>
+    <p>Use an avatar thumbnail to represent an authenticated user.</p>
+  </uxdot-best-practice>
 
-<uxdot-example danger width-adjustment="136px">
-  <img src="../avatar-best-practice-3.png" 
-      alt="Image of an icon and avatar thumbnail right next to each other which is incorrect usage"
-      width="136"
-      height="48">
-</uxdot-example>
-
+  <uxdot-best-practice variant="dont">
+    <uxdot-example width-adjustment="64px" slot="image">
+      <img src="../avatar-best-practices-icon-vs-avatar-dont.svg"
+            alt="Avatar thumbnail above the text 'Login'"
+            width="64"
+            height="101">
+    </uxdot-example>
+    <p>Do not use an avatar thumbnail when an icon is more suitable.</p>
+  </uxdot-best-practice>
+</div>
