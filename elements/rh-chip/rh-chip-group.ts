@@ -17,8 +17,8 @@ import styles from './rh-chip-group.css';
  *       An accessible label for the chip group.
  *       Content for this slot is put into the `<legend>` element.
  *       Also available as an attribute.
- * @slot clear-filters
- *       Customized text for the "Clear filters" button
+ * @slot clear-all
+ *       Customized text for the "Clear all" button
  */
 @customElement('rh-chip-group')
 export class RhChipGroup extends LitElement {
@@ -35,9 +35,9 @@ export class RhChipGroup extends LitElement {
   @property({ attribute: 'accessible-label' }) accessibleLabel?: string;
 
   /**
-   * Shows or hides the "Clear filters" button that unchecks all chips when clicked
+   * Shows or hides the "Clear all" button that unchecks all chips when clicked
    */
-  @property({ type: Boolean, reflect: true, attribute: 'clear-filters' }) clearFilters = false;
+  @property({ type: Boolean, reflect: true, attribute: 'clear-all' }) clearAll = false;
 
   @query('slot:not([name])') private defaultSlot!: HTMLSlotElement;
 
@@ -61,15 +61,15 @@ export class RhChipGroup extends LitElement {
           <slot name="accessible-label">${label}</slot>
         </legend>
         <slot></slot>
-        ${this.clearFilters ? this.#renderClearFiltersBtn() : ''}
+        ${this.clearAll ? this.#renderClearAllBtn() : ''}
       </fieldset>
     `;
   }
 
-  #renderClearFiltersBtn() {
+  #renderClearAllBtn() {
     return html`
       <button class="btn-link" type="button" @click="${this.#uncheckAllChips}">
-        <slot name="clear-filters">Clear filters</slot>
+        <slot name="clear-all">Clear all</slot>
       </button>
     `;
   }
