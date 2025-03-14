@@ -103,7 +103,6 @@ export class RhSubnav extends LitElement {
   }
 
   render() {
-    const { scrollIconSet, scrollIconLeft, scrollIconRight } = this.constructor as typeof RhSubnav;
     const { on = '' } = this;
     const rtl = this.#dir.dir === 'rtl';
     return html`
