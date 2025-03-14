@@ -210,6 +210,7 @@ export default async function(eleventyConfig: UserConfig) {
       'elements/rh-accordion/rh-accordion.ts',
       'elements/rh-cta/rh-cta.ts',
       'elements/rh-footer/rh-footer-universal.ts',
+      'elements/rh-navigation-primary/rh-navigation-primary.ts',
       'elements/rh-skip-link/rh-skip-link.ts',
       'elements/rh-subnav/rh-subnav.ts',
       'elements/rh-tag/rh-tag.ts',
