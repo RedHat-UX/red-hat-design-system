@@ -2,6 +2,16 @@
   display: block;
 }
 
+:host([size="sm"]) {
+  fieldset {
+    font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+  }
+
+  .btn-link {
+    font-size: var(--rh-font-size-body-text-xs, 0.75rem);
+  }
+}
+
 fieldset {
   align-items: center;
   border: 0;
@@ -18,18 +28,22 @@ legend {
 }
 
 .btn-link {
-  border: 0;
   background-color: transparent;
+  border: 0;
+  border-radius: var(--rh-border-radius-pill, 64px);
   color: var(--rh-color-interactive-primary-default);
-  padding: 0;
-  margin-block-start: 2px;
-  margin-inline-start: var(--rh-space-md, 8px);
   cursor: pointer;
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+  line-height: var(--rh-line-height-body-text, 1.5);
+  margin-block-start: 2px;
+  outline: var(--rh-border-width-sm, 1px) solid transparent;
+  padding: var(--rh-space-xs, 4px) var(--rh-space-md, 8px);
 
   &:hover,
   &:focus-visible {
-    text-decoration: underline;
+    color: var(--rh-color-interactive-primary-hover);
+    outline-color: var(--rh-color-border-subtle);
   }
 
   &:focus-visible {
