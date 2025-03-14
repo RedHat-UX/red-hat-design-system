@@ -55,8 +55,7 @@ Red is our primary brand color. Red is also a strong color, so **use it as an ac
 For danger or error states, use `red orange`.
 
 <uxdot-example width-adjustment="652px">
-  <img alt="Examples of red orange used in alert, buttons, tag, and site status"
-       src="/assets/color/color-usage-red-orange.svg">
+  {% include './color-usage-red-orange.svg' %}
 </uxdot-example>
 
 ## Backgrounds
@@ -73,8 +72,7 @@ For more bespoke websites or interfaces, other colors may be used as long as col
 </rh-alert>
 
 <uxdot-example width-adjustment="1004px">
-  <img alt="swatches of the default canvas colors for dark and light theme and examples of custom canvas colors"
-       src="/assets/color/color-usage-backgrounds-canvas.svg">
+  {% include './color-usage-backgrounds-canvas.svg' %}
 </uxdot-example>
 
 ### Surface
@@ -88,8 +86,7 @@ Surface is a container background that applies a theme to any child elements. If
 
 <figure>
   <uxdot-example width-adjustment="1004px">
-    <img alt="Examples of cards using each surface color"
-        src="/assets/color/color-usage-surface.svg">
+    {% include './color-usage-surface.svg' %}
   </uxdot-example>
   <figcaption>Examples of how Surface is theming child elements within a Card</figcaption>
 </figure>
@@ -100,12 +97,11 @@ Layering is stacking colors to establish hierarchy and separate content. Colors 
 
 <div class="grid sm-two-columns">
   <uxdot-example width-adjustment="418px">
-    <img alt=""
-        src="/assets/color/color-usage-layering-theme-light.svg">
+    {% include './color-usage-layering-theme-light.svg' %}>
   </uxdot-example>
+
   <uxdot-example color-palette="darkest" width-adjustment="418px">
-    <img alt=""
-        src="/assets/color/color-usage-layering-theme-dark.svg">
+    {% include './color-usage-layering-theme-dark.svg' %}
   </uxdot-example>
 </div>
 
@@ -119,8 +115,7 @@ Color is applied to basic text depending on content, hierarchy, theme, and more.
 4. **Custom** - use a variety of colors to advertise a campaign or bespoke experience
 
 <uxdot-example variant="full" no-border width-adjustment="1140px">
-  <img alt="Dark and light theme examples of the four types of semantic colors used by text"
-       src="/assets/color/color-usage-basic-text.svg">
+  {% include './color-usage-basic-text.svg' %}
 </uxdot-example>
 
 ## Icons
@@ -132,8 +127,7 @@ Color is applied to icons depending on category, status, theme, etc. Some icon c
 3.  **UI and microns** - may be different colors depending on how they are used within an element or pattern
 
 <uxdot-example variant="full" no-border width-adjustment="1140px">
-  <img alt="Examples of the icon categories"
-       src="/assets/color/color-usage-icons.svg">
+  {% include './color-usage-icons.svg' %}
 </uxdot-example>
 
 ## Interactivity
@@ -153,8 +147,7 @@ Color can be used to indicate that something is interactive or selectable. All t
 </rh-alert>
 
 <uxdot-example variant="full" no-border width-adjustment="1140px">
-  <img alt="Examples of elements using the colors and styles that denote interactivity"
-       src="/assets/color/color-usage-interactivity.svg">
+  {% include './color-usage-interactivity.svg' %}
 </uxdot-example>
 
 ## Status
@@ -180,8 +173,7 @@ Status has its own severity levels, color palettes, and meanings assigned to eac
 </rh-table>
 
 <uxdot-example color-palette="lightest" width-adjustment="816px">
-  <img alt="Alerts, buttons, health index, site status, and tags that use status colors"
-       src="/assets/color/color-usage-status.svg">
+  {% include './color-usage-status.svg' %}
 </uxdot-example>
 
 ## Resources
@@ -203,17 +195,19 @@ Ensure backgrounds have adequate contrast when other elements are placed on top.
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
-    <uxdot-example slot="image" alignment="left" variant="full" no-border width-adjustment="546px">
-        <img src="/assets/color/color-usage-best-practice-2-do.svg" 
-            alt="Examples of a blue button against a light gray background and a red CTA against a black background">
-    </uxdot-example>
+    <uxdot-example slot="image"
+                   alignment="left"
+                   variant="full"
+                   no-border
+                   width-adjustment="546px">{% include './color-usage-best-practice-2-do.svg' %}</uxdot-example>
     <p>Place foreground elements on background colors with enough contrast.</p>
   </uxdot-best-practice>
   <uxdot-best-practice variant="dont">
-    <uxdot-example slot="image" alignment="left" variant="full" no-border width-adjustment="546px">
-        <img src="/assets/color/color-usage-best-practice-2-dont.svg" 
-            alt="Examples of a blue button against a red background and a red CTA against a blue background">
-    </uxdot-example>
+    <uxdot-example slot="image"
+                   alignment="left"
+                   variant="full"
+                   no-border
+                   width-adjustment="546px">{% include './color-usage-best-practice-2-dont.svg' %}</uxdot-example>
     <p>Do not place foreground elements on background colors with insufficient contrast.</p>
   </uxdot-best-practice>
 </div>
