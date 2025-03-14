@@ -107,7 +107,9 @@ contrast, links in all states must be underlined. Links isolated within visually
 distinct sections (like navigation menus) or links with additional visual cues (like call to action arrows) are **exempt from this requirement**, although you can still add 
 underlines at your discretion.
 
-<uxdot-example width-adjustment="797px">{% include './color-a11y-color-contrast-links.svg' %}</uxdot-example>
+<uxdot-example width-adjustment="797px">
+  {% include './color-a11y-color-contrast-links.svg' %}
+</uxdot-example>
 
 ### Graphical objects and UI elements
 

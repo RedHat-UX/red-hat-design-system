@@ -83,7 +83,7 @@ determined by the width of the component.
   <uxdot-best-practice variant="do">
     <uxdot-example color-palette="lightest" width-adjustment="418px" slot="image">
       <img alt="Example of a heading set correctly in Red Hat Display."
-           src="/assets/typography/type-usage-best-practice-1-do.svg"
+           src="type-usage-best-practice-1-do.svg"
            width="418"
            height="52">
     </uxdot-example>
@@ -92,7 +92,7 @@ determined by the width of the component.
   <uxdot-best-practice variant="dont">
     <uxdot-example color-palette="lightest" width-adjustment="418px" slot="image">
       <img alt="Example of a heading set incorrectly in Red Hat Text."
-           src="/assets/typography/type-usage-best-practice-1-dont.svg"
+           src="type-usage-best-practice-1-dont.svg"
            width="418"
            height="52">
     </uxdot-example>
@@ -106,7 +106,7 @@ determined by the width of the component.
   <uxdot-best-practice variant="do">
     <uxdot-example color-palette="lightest" width-adjustment="418px" slot="image">
       <img alt="Example of body text set correctly in Red Hat Text."
-           src="/assets/typography/type-usage-best-practice-2-do.svg"
+           src="type-usage-best-practice-2-do.svg"
            width="418"
            height="135">
     </uxdot-example>
@@ -115,7 +115,7 @@ determined by the width of the component.
   <uxdot-best-practice variant="dont">
     <uxdot-example color-palette="lightest" width-adjustment="418px" slot="image">
       <img alt="Example of body text set incorrectly in Red Hat Display."
-           src="/assets/typography/type-usage-best-practice-2-dont.svg"
+           src="type-usage-best-practice-2-dont.svg"
            width="418"
            height="135">
     </uxdot-example>
@@ -129,7 +129,7 @@ determined by the width of the component.
   <uxdot-best-practice variant="do">
     <uxdot-example color-palette="lightest" width-adjustment="418px" slot="image">
       <img alt="Example of comfortable spacing in between various text styles which is correct."
-           src="/assets/typography/type-usage-best-practice-3-do.svg"
+           src="type-usage-best-practice-3-do.svg"
            width="418"
            height="226">
     </uxdot-example>
@@ -138,7 +138,7 @@ determined by the width of the component.
   <uxdot-best-practice variant="dont">
     <uxdot-example color-palette="lightest" width-adjustment="418px" slot="image">
       <img alt="Example of uncomfortable spacing in between various text styles which is incorrect."
-           src="/assets/typography/type-usage-best-practice-3-dont.svg"
+           src="type-usage-best-practice-3-dont.svg"
            width="418"
            height="226">
     </uxdot-example>

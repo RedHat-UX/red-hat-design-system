@@ -115,7 +115,7 @@ These standards combine to enable developers to write reusable and encapsulated 
 ### Why Web Components?
 
 <section class="grid layout-content-image" id="section-encapsulation">
-  {% include '../../assets/get-started/developers/web-components-1.svg' %}
+  {% include './web-components-1.svg' %}
   <div class="content-block">
 
 #### Encapsulation
@@ -125,7 +125,7 @@ Web Components encapsulate their templates, styles, and behavior. They establish
   </div>
 </section>
 <section class="grid layout-content-image reversed" id="section-apis">
-  {% include '../../assets/get-started/developers/web-components-2.svg' %}
+  {% include './web-components-2.svg' %}
   <div class="content-block">
 
 #### Web standards APIs
@@ -135,7 +135,7 @@ Because Web Components are built with web standards, the technology is future-pr
   </div>
 </section>
 <section class="grid layout-content-image" id="section-framework">
-  {% include '../../assets/get-started/developers/web-components-3.svg' %}
+  {% include './web-components-3.svg' %}
   <div class="content-block">
 
 #### Framework agnostic
@@ -153,7 +153,7 @@ We anticipate that if HTML modules and CSS modules become widely implemented in 
 
 <uxdot-feedback>
   <h2>Designers</h2>
-  <p>To get started using our design system as a designer, go to the <a href="get-started/designers">Designers</a> page.</p>
+  <p>To get started using our design system as a designer, go to the <a href="../designers/">Designers</a> page.</p>
 </uxdot-feedback>
 
 [ce]: https://html.spec.whatwg.org/dev/custom-elements.html#custom-elements

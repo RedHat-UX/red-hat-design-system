@@ -148,7 +148,9 @@ upgraded easily, allowing for consistency, scalability, and flexibility.
 
 <rh-cta href="https://patternflyelements.org/">Visit PatternFly Elements</rh-cta>
 
-<uxdot-example width-adjustment="558px">{% include '../assets/about/about-rhds-pf-pfe.svg' %}</uxdot-example>
+<uxdot-example width-adjustment="558px">
+{% include './about-rhds-pf-pfe.svg' %}
+</uxdot-example>
 
 ## We provide support
 
