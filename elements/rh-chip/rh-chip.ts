@@ -52,7 +52,9 @@ export class RhChip extends LitElement {
   set checked(value: boolean) {
     const oldValue = this.#checked;
     this.#checked = value;
-    this.chipInput.checked = value;
+    if (this.chipInput) {
+      this.chipInput.checked = value;
+    }
     this.requestUpdate('checked', oldValue);
   }
 
