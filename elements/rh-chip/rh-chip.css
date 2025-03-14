@@ -62,13 +62,13 @@ label {
 }
 
 #close-icon {
-  inline-size: 0;
   block-size: 0;
+  inline-size: 0;
   opacity: 0;
-  transition-property: inline-size, block-size, opacity, margin-inline-start;
-  transition-duration: 0.2s;
-  transition-timing-function: ease-in-out;
   transition-behavior: allow-discrete;
+  transition-duration: 0.2s;
+  transition-property: inline-size, block-size, opacity, margin-inline-start;
+  transition-timing-function: ease-in-out;
 }
 
 input {
