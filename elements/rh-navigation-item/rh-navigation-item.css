@@ -241,13 +241,25 @@
           border-radius: var(--rh-border-radius-pill, 64px);
         }
 
-        & slot[name='summary'] {
-          display: none;
+        & slot[name='summary']::slotted(*) {
+          clip: rect(0 0 0 0);
+          clip-path: inset(50%);
+          height: 1px;
+          overflow: hidden;
+          position: absolute;
+          white-space: nowrap;
+          width: 1px;
         }
 
         @container (min-width: 1680px) {
-          & slot[name='summary'] {
-            display: contents;
+          & slot[name='summary']::slotted(*) {
+            clip: unset;
+            clip-path: unset;
+            height: auto;
+            overflow: auto;
+            position: static;
+            white-space: normal;
+            width: auto;
           }
         }
       }
