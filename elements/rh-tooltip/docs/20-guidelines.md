@@ -8,7 +8,7 @@ Both tooltips and [popovers](/elements/popover) provide contextual information f
 
 #### Tooltip
 
-- Used for simple messages (one or two lines of text)
+- Used for brief messages (one or two lines of text)
 - Contains only plain text.
 - Appears when triggering element receives mouse hover, keyboard focus, or is tapped.
 - Has no internal means of dismissal (e.g., a close button).
