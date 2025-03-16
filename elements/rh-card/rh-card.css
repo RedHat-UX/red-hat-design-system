@@ -152,7 +152,7 @@
 }
 
 @container card (max-width: 767px) {
-  #body{
+  #body {
     margin-block: var(--rh-space-xl, 24px);
   }
 }
