@@ -64,13 +64,3 @@ export class ContextRequestEvent<T extends UnknownContext> extends Event {
     super('context-request', { bubbles: true, composed: true });
   }
 }
-
-declare global {
-  interface HTMLElementEventMap {
-    /**
-     * A 'context-request' event can be emitted by any element which desires
-     * a context value to be injected by an external provider.
-     */
-    'context-request': ContextRequestEvent<Context<unknown, unknown>>;
-  }
-}

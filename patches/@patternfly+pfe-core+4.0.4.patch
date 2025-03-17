@@ -1,5 +1,48 @@
+diff --git a/node_modules/@patternfly/pfe-core/controllers/scroll-spy-controller.d.ts b/node_modules/@patternfly/pfe-core/controllers/scroll-spy-controller.d.ts
+index d342387..3c03556 100644
+--- a/node_modules/@patternfly/pfe-core/controllers/scroll-spy-controller.d.ts
++++ b/node_modules/@patternfly/pfe-core/controllers/scroll-spy-controller.d.ts
+@@ -20,10 +20,16 @@ export interface ScrollSpyControllerOptions extends IntersectionObserverInit {
+      * @default el => el.getAttribute('href');
+      */
+     getHash?: (el: Element) => string | null;
++
++    /**
++     * Optional callback for when a target element scrolls into view.
++     */
++    onIntersection?: <T extends Element>(el: T) => void | Promise<void>;
+ }
+ export declare class ScrollSpyController implements ReactiveController {
+     #private;
+     private host;
++    private options;
+     get root(): Element | Document | null | undefined;
+     set root(v: Element | Document | null | undefined);
+     get rootMargin(): string | undefined;
+diff --git a/node_modules/@patternfly/pfe-core/controllers/scroll-spy-controller.js b/node_modules/@patternfly/pfe-core/controllers/scroll-spy-controller.js
+index fd5a7dc..f0701c7 100644
+--- a/node_modules/@patternfly/pfe-core/controllers/scroll-spy-controller.js
++++ b/node_modules/@patternfly/pfe-core/controllers/scroll-spy-controller.js
+@@ -28,6 +28,7 @@ export class ScrollSpyController {
+     constructor(host, options) {
+         _ScrollSpyController_instances.add(this);
+         this.host = host;
++        this.options = options;
+         _ScrollSpyController_tagNames.set(this, void 0);
+         _ScrollSpyController_activeAttribute.set(this, void 0);
+         _ScrollSpyController_io.set(this, void 0);
+@@ -98,6 +99,9 @@ _ScrollSpyController_tagNames = new WeakMap(), _ScrollSpyController_activeAttrib
+     for (const child of __classPrivateFieldGet(this, _ScrollSpyController_instances, "a", _ScrollSpyController_linkChildren_get)) {
+         child.toggleAttribute(__classPrivateFieldGet(this, _ScrollSpyController_activeAttribute, "f"), child === link);
+     }
++    if (link) {
++        this.options.onIntersection?.(link);
++    }
+ }, _ScrollSpyController_nextIntersection = async function _ScrollSpyController_nextIntersection() {
+     __classPrivateFieldSet(this, _ScrollSpyController_intersected, false, "f");
+     // safeguard the loop
 diff --git a/node_modules/@patternfly/pfe-core/decorators/observes.js b/node_modules/@patternfly/pfe-core/decorators/observes.js
-index d2a82be..67be76d 100644
+index d2a82be..5c38c6f 100644
 --- a/node_modules/@patternfly/pfe-core/decorators/observes.js
 +++ b/node_modules/@patternfly/pfe-core/decorators/observes.js
 @@ -13,18 +13,30 @@ import { PropertyObserverController, } from '@patternfly/pfe-core/controllers/pr
@@ -44,3 +87,4 @@ index d2a82be..67be76d 100644
      };
  }
  //# sourceMappingURL=observes.js.map
+\ No newline at end of file
