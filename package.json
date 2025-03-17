@@ -334,7 +334,7 @@
     "eslint": "^9.22.0",
     "fuse.js": "^7.1.0",
     "git-branch": "^2.0.1",
-    "image-size": "^1.2.0",
+    "image-size": "^2.0.1",
     "leasot": "^14.4.0",
     "lit-html": "^3.2.1",
     "markdown-it-attrs": "^4.3.1",
