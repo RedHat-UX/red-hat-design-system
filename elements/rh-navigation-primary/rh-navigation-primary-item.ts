@@ -149,6 +149,6 @@ export class RhNavigationPrimaryItem extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'rh-navigation-primary-item': RhNavigationItem;
+    'rh-navigation-primary-item': RhNavigationPrimaryItem;
   }
 }
