@@ -8,16 +8,16 @@ import { colorContextProvider, type ColorPalette } from '../../lib/context/color
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
 import { consume } from '@lit/context';
-import { context, type RhNavigationItemContext } from './context.js';
+import { context, type RhNavigationPrimaryItemContext } from './context.js';
 
-import styles from './rh-navigation-item-menu.css';
+import styles from './rh-navigation-primary-item-menu.css';
 
 /**
  * Navigation Menu
  * @slot - Place element content here
  */
-@customElement('rh-navigation-item-menu')
-export class RhNavigationItemMenu extends LitElement {
+@customElement('rh-navigation-primary-item-menu')
+export class RhNavigationPrimaryItemMenu extends LitElement {
   static readonly styles = [styles];
 
   #dir = new DirController(this);
@@ -35,7 +35,7 @@ export class RhNavigationItemMenu extends LitElement {
 
   @consume({ context, subscribe: true })
   @property({ attribute: false })
-  private ctx?: RhNavigationItemContext;
+  private ctx?: RhNavigationPrimaryItemContext;
 
   render() {
     const rtl = this.#dir.dir === 'rtl';
@@ -53,6 +53,6 @@ export class RhNavigationItemMenu extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'rh-navigation-item-menu': RhNavigationItemMenu;
+    'rh-navigation-primary-item-menu': RhNavigationPrimaryItemMenu;
   }
 }

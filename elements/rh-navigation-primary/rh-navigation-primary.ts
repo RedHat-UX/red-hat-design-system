@@ -8,34 +8,35 @@ import { classMap } from 'lit/directives/class-map.js';
 import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 import { provide } from '@lit/context';
 import { context,
-  type RhNavigationItemContext,
-} from '@rhds/elements/rh-navigation-item/context.js';
+  type RhNavigationPrimaryItemContext,
+} from './context.js';
 
 import { DirController } from '../../lib/DirController.js';
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
-
-import { ComposedEvent } from '@patternfly/pfe-core/core.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
 import {
-  RhNavigationItem,
-  RhNavigationItemExpandEvent,
-} from '@rhds/elements/rh-navigation-item/rh-navigation-item.js';
+  RhNavigationPrimaryItem,
+  RhNavigationPrimaryItemExpandEvent,
+} from './rh-navigation-primary-item.js';
+import './rh-navigation-primary-overlay.js';
+
 import '@rhds/elements/rh-icon/rh-icon.js';
 import '@rhds/elements/rh-surface/rh-surface.js';
-import '@rhds/elements/rh-overlay/rh-overlay.js';
 
 import styles from './rh-navigation-primary.css';
 
-export class NavigationPrimaryChangeEvent extends ComposedEvent {
+
+export class RhNavigationPrimaryHamburgerClickEvent extends Event {
+  declare target: HTMLDetailsElement;
   constructor(
     public open: boolean,
-    public toggle: HTMLElement
+    public toggle: HTMLDetailsElement,
   ) {
-    super('overlay-change');
+    super('click', { bubbles: true, cancelable: true });
   }
 }
 
@@ -43,18 +44,6 @@ export type NavigationPrimaryPalette = Extract<ColorPalette, (
   | 'lightest'
   | 'darkest'
 )>;
-
-/* TODO: Abstract this out to a shareable function */
-function focusableChildElements(parent: HTMLElement): NodeListOf<HTMLElement> {
-  return parent.querySelectorAll(`a,
-                                  button:not([disabled]),
-                                  input:not([disabled]),
-                                  select:not([disabled]),
-                                  textarea:not([disabled]),
-                                  [tabindex]:not([tabindex="-1"]):not([disabled]),
-                                  details:not([disabled]),
-                                  summary:not(:disabled)`);
-}
 
 /**
  * Navigation Primary
@@ -68,8 +57,8 @@ export class RhNavigationPrimary extends LitElement {
 
   #dir = new DirController(this);
 
-  #openPrimaryDropdowns = new Set<RhNavigationItem>();
-  #openSecondaryDropdowns = new Set<RhNavigationItem>();
+  #openPrimaryDropdowns = new Set<RhNavigationPrimaryItem>();
+  #openSecondaryDropdowns = new Set<RhNavigationPrimaryItem>();
 
   #ro?: ResizeObserver;
 
@@ -103,6 +92,17 @@ export class RhNavigationPrimary extends LitElement {
    */
   @property({ attribute: 'accessible-label' }) accessibleLabel = 'main';
 
+  static focusableChildElements(parent: HTMLElement): NodeListOf<HTMLElement> {
+    return parent.querySelectorAll(`a,
+                                    button:not([disabled]),
+                                    input:not([disabled]),
+                                    select:not([disabled]),
+                                    textarea:not([disabled]),
+                                    [tabindex]:not([tabindex="-1"]):not([disabled]),
+                                    details:not([disabled]),
+                                    summary:not(:disabled)`);
+  }
+
   constructor() {
     super();
     if (!isServer) {
@@ -116,6 +116,10 @@ export class RhNavigationPrimary extends LitElement {
           const newState = contentBoxSize.inlineSize < 1200;
           if (oldState !== newState) {
             this.compact = newState;
+            if (this.#openPrimaryDropdowns.size === 0
+                && this.#openSecondaryDropdowns.size === 0 && !this.compact) {
+              this.#closeOverlay();
+            }
           }
         }
       });
@@ -159,7 +163,7 @@ export class RhNavigationPrimary extends LitElement {
               </a>
             </slot>
           </div>
-          <details id="hamburger" @toggle="${this.#hamburgerToggle}">
+          <details id="hamburger" @toggle="${this.#hamburgerToggle}" @click="${this.#hamburgerClick}">
             <summary>
               <rh-icon icon="menu-bars" set="ui"></rh-icon>
               <slot name="summary" id="summary">Menu</slot>
@@ -176,10 +180,10 @@ export class RhNavigationPrimary extends LitElement {
           </div>
         </div>
       </nav>
-      <rh-overlay
+      <rh-navigation-primary-overlay
         .open="${this._overlayOpen}"
         @click="${this.#onOverlayClick}">
-      </rh-overlay>
+      </rh-navigation-primary-overlay>
     `;
   }
 
@@ -188,7 +192,7 @@ export class RhNavigationPrimary extends LitElement {
     this.ctx = this.#makeContext();
   }
 
-  #makeContext(): RhNavigationItemContext {
+  #makeContext(): RhNavigationPrimaryItemContext {
     const { compact } = this;
     return { compact };
   }
@@ -221,49 +225,52 @@ export class RhNavigationPrimary extends LitElement {
     this.#closeOverlay();
   }
 
-  #primaryDropdowns(): RhNavigationItem[] {
+  #primaryDropdowns(): RhNavigationPrimaryItem[] {
     return Array.from(
-      this.querySelectorAll('rh-navigation-item[variant="dropdown"]:not([slot="dropdowns"])')
+      // eslint-disable-next-line @stylistic/max-len
+      this.querySelectorAll('rh-navigation-primary-item[variant="dropdown"]:not([slot="dropdowns"])')
     );
   }
 
-  #secondaryDropdowns(): RhNavigationItem[] {
+  #secondaryDropdowns(): RhNavigationPrimaryItem[] {
     return Array.from(
-      this.querySelectorAll('rh-navigation-item[variant="dropdown"][slot="dropdowns"]')
+      this.querySelectorAll('rh-navigation-primary-item[variant="dropdown"][slot="dropdowns"]')
     );
   }
 
   async #onExpand(event: Event) {
-    if (event instanceof RhNavigationItemExpandEvent) {
-      // if the event came from a secondary link in a compact mode we'll want to close the hamburger first if it is open
-      const slottedSecondary = this.#slots.getSlotted('links', 'dropdowns');
-      const secondaryEventToggle = slottedSecondary.find(node => node.isEqualNode(event.toggle));
+    if (!(event instanceof RhNavigationPrimaryItemExpandEvent)) {
+      return;
+    }
+    // if the event came from a secondary link in a compact mode we'll want to close the hamburger first if it is open
+    const slottedSecondary = this.#slots.getSlotted('links', 'dropdowns');
+    const secondaryEventToggle = slottedSecondary.find(node => node.isEqualNode(event.toggle));
 
-      if (event.open) {
-        this.#closePrimaryDropdowns();
-        this.#closeSecondaryDropdowns();
+    if (event.open) {
+      this.#closePrimaryDropdowns();
+      this.#closeSecondaryDropdowns();
 
-        if (secondaryEventToggle) {
-          if (this.compact) {
-            this.#closeHamburger();
-          }
-          this.#openSecondaryDropdowns.add(event.toggle);
-        } else {
-          this.#openPrimaryDropdowns.add(event.toggle);
+      if (secondaryEventToggle) {
+        if (this.compact) {
+          this.#closeHamburger();
         }
-        this.#openOverlay();
+        this.#openSecondaryDropdowns.add(event.toggle);
       } else {
-        if (secondaryEventToggle) {
-          this.#openSecondaryDropdowns.delete(event.toggle);
-        } else {
-          this.#openPrimaryDropdowns.delete(event.toggle);
-        }
+        this.#openPrimaryDropdowns.add(event.toggle);
+      }
+      this.#openOverlay();
+    } else {
+      if (secondaryEventToggle) {
+        this.#openSecondaryDropdowns.delete(event.toggle);
+        this.#closeOverlay();
+      } else {
+        this.#openPrimaryDropdowns.delete(event.toggle);
+      }
 
-        if (!this.compact
-            && this.#openPrimaryDropdowns.size === 0
-            && this.#openSecondaryDropdowns.size === 0) {
-          this.#closeOverlay();
-        }
+      if (!this.compact
+          && this.#openPrimaryDropdowns.size === 0
+          && this.#openSecondaryDropdowns.size === 0) {
+        this.#closeOverlay();
       }
     }
   }
@@ -271,7 +278,18 @@ export class RhNavigationPrimary extends LitElement {
   #onKeydown(event: KeyboardEvent) {
     switch (event.key) {
       case 'Escape': {
-        this.close(true);
+        if (this.#openPrimaryDropdowns.size > 0) {
+          const [dropdown] = this.#openPrimaryDropdowns;
+          dropdown.close();
+          dropdown.shadowRoot?.querySelector('summary')?.focus();
+        } else if (this.#openSecondaryDropdowns.size > 0) {
+          const [dropdown] = this.#openSecondaryDropdowns;
+          dropdown.close();
+          dropdown.shadowRoot?.querySelector('summary')?.focus();
+        } else if (this._hamburger.open) {
+          this.#closeHamburger();
+          this._hamburger.querySelector('summary')?.focus();
+        }
         break;
       }
       case 'Tab':
@@ -299,69 +317,53 @@ export class RhNavigationPrimary extends LitElement {
     // get target parent dropdown
     const primaryDropdowns = this.#primaryDropdowns();
     const secondaryDropdowns = this.#secondaryDropdowns();
-    const primaryContains = primaryDropdowns.find(dropdown => dropdown.contains(target));
-    const secondaryContains = secondaryDropdowns.find(dropdown => dropdown.contains(target));
-    if (!primaryContains && !secondaryContains) {
-      return;
-    }
+    // target can be in one of the two dropdown collections, but only 1.
+    const dropdownContains =
+      primaryDropdowns.find(dropdown => dropdown.contains(target))
+      ?? secondaryDropdowns.find(dropdown => dropdown.contains(target));
+    if (dropdownContains) {
+      const focusableChildElements =
+        Array.from(RhNavigationPrimary.focusableChildElements(dropdownContains));
 
-    // TODO: Refactor to simplify
-    if (primaryContains) {
-      const primaryFocusableChildren = Array.from(focusableChildElements(primaryContains));
-      const {
-        0: firstChild,
-        [primaryFocusableChildren.length - 1]: lastChild,
-      } = primaryFocusableChildren;
-      if (!firstChild) {
-        return;
-      } else {
-        if (event.shiftKey && firstChild === target) {
-          this.close(true);
-        }
-      }
-      if (!lastChild) {
-        return;
-      } else {
-        if (lastChild === target) {
-          this.close(true);
-        }
-      }
-    }
+      if (focusableChildElements.length > 0) {
+        const {
+          0: firstChild,
+          [focusableChildElements.length - 1]: lastChild,
+        } = focusableChildElements;
 
-    if (secondaryContains) {
-      const secondaryFocusableChildren = Array.from(focusableChildElements(secondaryContains));
-      const {
-        0: firstChild,
-        [secondaryFocusableChildren.length - 1]: lastChild,
-      } = secondaryFocusableChildren;
-      if (!firstChild) {
-        return;
-      } else {
-        if (event.shiftKey && firstChild === target) {
-          this.close();
+        if (!firstChild) {
+          return;
+        } else {
+          if (event.shiftKey && firstChild === target) {
+            dropdownContains.close();
+            return;
+          }
         }
-      }
-      if (!lastChild) {
-        return;
-      } else {
-        if (lastChild === target) {
-          this.close();
+        if (!lastChild) {
+          return;
+        } else {
+          if (lastChild === target) {
+            dropdownContains.close();
+            return;
+          }
         }
+      } else {
+        this.#closePrimaryDropdowns();
+        this.#closeSecondaryDropdowns();
       }
     }
   }
 
-
   #closePrimaryDropdowns() {
     // close all open dropdowns in primary slot
-    this.#openPrimaryDropdowns.forEach((dropdown: RhNavigationItem) => {
+    this.#openPrimaryDropdowns.forEach((dropdown: RhNavigationPrimaryItem) => {
       dropdown.close();
     });
   }
 
   #closeSecondaryDropdowns() {
     // close all open dropdowns in secondary slot
-    this.#openSecondaryDropdowns.forEach((dropdown: RhNavigationItem) => {
+    this.#openSecondaryDropdowns.forEach((dropdown: RhNavigationPrimaryItem) => {
       dropdown.close();
     });
   }
@@ -395,6 +397,14 @@ export class RhNavigationPrimary extends LitElement {
     }
   }
 
+  async #hamburgerClick() {
+    await this.updateComplete;
+    // the state of _hamburger.open will be the opposite as the toggle hasn't run yet on click
+    this.dispatchEvent(
+      new RhNavigationPrimaryHamburgerClickEvent(!this._hamburger.open, this._hamburger)
+    );
+  }
+
   @observes('compact')
   private compactChanged(oldVal: boolean, newVal: boolean) {
     // transition into desktop
@@ -409,9 +419,16 @@ export class RhNavigationPrimary extends LitElement {
     }
   }
 
+  /**
+   * Close Menus
+   * @param skip Boolean - closes hamburger menu if true and in a small viewport, default false;
+   */
   close(skip = false): void {
-    this.#closePrimaryDropdowns();
-    this.#closeSecondaryDropdowns();
+    if (this.#openPrimaryDropdowns.size > 0) {
+      this.#closePrimaryDropdowns();
+    } else if (this.#openSecondaryDropdowns.size > 0) {
+      this.#closeSecondaryDropdowns();
+    }
     if (this.compact && !skip) {
       this.#closeHamburger();
     }

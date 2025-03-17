@@ -1,5 +1,5 @@
 rh-navigation-primary {
-  & rh-navigation-item {
+  & rh-navigation-primary-item {
     color: var(--rh-color-text-primary) !important;
 
     & a {
@@ -31,7 +31,7 @@ rh-navigation-primary {
         height: 30px;
       }
 
-      &:nth-child(1 of rh-navigation-item[slot='links']) {
+      &:nth-child(1 of rh-navigation-primary-item[slot='links']) {
         &::part(container) {
           padding-inline-start: 0;
         }
@@ -41,7 +41,7 @@ rh-navigation-primary {
         }
       }
 
-      &:nth-last-child(1 of rh-navigation-item[slot='links']) {
+      &:nth-last-child(1 of rh-navigation-primary-item[slot='links']) {
         &:after {
           border-inline-end-color: transparent;
         }

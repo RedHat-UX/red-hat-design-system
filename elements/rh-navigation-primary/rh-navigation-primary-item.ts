@@ -9,31 +9,32 @@ import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 
 import { consume } from '@lit/context';
-import { context, type RhNavigationItemContext } from './context.js';
+import { context, type RhNavigationPrimaryItemContext } from './context.js';
 
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
-import { ComposedEvent } from '@patternfly/pfe-core/core.js';
 
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
-import './rh-navigation-item-menu.js';
 
-import styles from './rh-navigation-item.css';
+import './rh-navigation-primary-item-menu.js';
 
-export class RhNavigationItemExpandEvent extends ComposedEvent {
+import styles from './rh-navigation-primary-item.css';
+
+export class RhNavigationPrimaryItemExpandEvent extends Event {
+  declare target: RhNavigationPrimaryItem;
   constructor(
     public open: boolean,
-    public toggle: RhNavigationItem,
+    public toggle: RhNavigationPrimaryItem,
   ) {
-    super('expand');
+    super('expand', { bubbles: true, cancelable: true });
   }
 }
 
-@customElement('rh-navigation-item')
-export class RhNavigationItem extends LitElement {
+@customElement('rh-navigation-primary-item')
+export class RhNavigationPrimaryItem extends LitElement {
   static readonly styles = [styles];
 
   #slots = new SlotController(this, { slots: ['summary', null] });
@@ -69,7 +70,7 @@ export class RhNavigationItem extends LitElement {
 
   @consume({ context, subscribe: true })
   @property({ attribute: false })
-  private ctx?: RhNavigationItemContext;
+  private ctx?: RhNavigationPrimaryItemContext;
 
   /**
    * Color palette
@@ -114,9 +115,9 @@ export class RhNavigationItem extends LitElement {
               <slot name="summary">${this.summary}</slot>
               <rh-icon icon="caret-down" set="microns"></rh-icon>
             </summary>
-            <rh-navigation-item-menu id="details-content">
+            <rh-navigation-primary-item-menu id="details-content">
               <slot></slot>
-            </rh-navigation-item-menu>
+            </rh-navigation-primary-item-menu>
           </details>
         ` : html`
           <slot></slot>
@@ -127,7 +128,7 @@ export class RhNavigationItem extends LitElement {
 
   #detailsToggle() {
     this._open = this._details.open;
-    this.dispatchEvent(new RhNavigationItemExpandEvent(this._open, this));
+    this.dispatchEvent(new RhNavigationPrimaryItemExpandEvent(this._open, this));
   }
 
   #mutationsCallback() {
@@ -148,6 +149,6 @@ export class RhNavigationItem extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'rh-navigation-item': RhNavigationItem;
+    'rh-navigation-primary-item': RhNavigationItem;
   }
 }

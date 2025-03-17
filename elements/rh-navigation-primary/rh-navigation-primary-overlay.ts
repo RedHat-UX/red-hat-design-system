@@ -2,13 +2,13 @@ import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
-import styles from './rh-overlay.css';
+import styles from './rh-navigation-primary-overlay.css';
 
 /**
  * Overlay
  * @slot - Place element content here
  */
-@customElement('rh-overlay')
+@customElement('rh-navigation-primary-overlay')
 export class RhOverlay extends LitElement {
   static readonly styles = [styles];
 
@@ -17,6 +17,6 @@ export class RhOverlay extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'rh-overlay': RhOverlay;
+    'rh-navigation-primary-overlay': RhOverlay;
   }
 }
