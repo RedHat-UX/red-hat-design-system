@@ -11,7 +11,7 @@ also include the following optional elements:
  - Interactive elements or layouts like a video or card
 
 <figure>
-  <uxdot-example width-adjustment="653px">
+  <uxdot-example color-palette="lightest" width-adjustment="653px">
     <img alt="Anatomy image of a blockquote with numbered annotations"
          src="../blockquote-anatomy.png"
          width="653"
@@ -30,7 +30,7 @@ also include the following optional elements:
 
 ## Sizes
 
-<uxdot-example width-adjustment="872px">
+<uxdot-example color-palette="lightest" width-adjustment="872px">
   <img alt="Image of two blockquotes, default size on the left and large size on the right"
        src="../blockquote-style-sizes.png"
        width="872"
@@ -52,8 +52,8 @@ also include the following optional elements:
 
 ## Theme
 
-A blockquote is available on both light and dark backgrounds, and uses [themable
-tokens][/theming/color-palettes] to respond to it's color context.
+A blockquote is available for both light and dark color schemes, and uses [themable
+tokens](/theming/customizing/).
 
 <rh-table>
 
@@ -67,7 +67,7 @@ tokens][/theming/color-palettes] to respond to it's color context.
 
 ### Light theme
 
-<uxdot-example width-adjustment="589px">
+<uxdot-example color-palette="lightest" width-adjustment="589px">
   <img alt="Image of a light theme blockquote, red quote icon, black quotation text, and dark gray citation text"
        src="../blockquote-theme-light.png"
        width="589"
@@ -85,7 +85,7 @@ tokens][/theming/color-palettes] to respond to it's color context.
 
 ### Emphasis border
 
-<uxdot-example width-adjustment="872px">
+<uxdot-example color-palette="lightest" width-adjustment="872px">
   <img alt="Image of two blockquotes, a red emphasis border on the left and a black emphasis border on the right"
        src="../blockquote-emphasis-theme-light.png"
        width="872"
@@ -110,7 +110,7 @@ tokens][/theming/color-palettes] to respond to it's color context.
 
 ### Title and heading text
 
-<uxdot-example width-adjustment="872px">
+<uxdot-example color-palette="lightest" width-adjustment="872px">
   <img alt="Image of two blockquotes, both with red title text and black header text"
        src="../blockquote-title-heading-theme-light.png"
        width="872"
@@ -137,7 +137,7 @@ tokens][/theming/color-palettes] to respond to it's color context.
 
 The base elements in both sizes are stacked and left aligned by default, but they can be vertically centered if necessary.
 
-<uxdot-example width-adjustment="872px">
+<uxdot-example color-palette="lightest" width-adjustment="872px">
   <img alt="Image of four blockquotes, two are left aligned and two are vertically centered, the quote icon is 20px tall"
        src="../blockquote-configuration.png"
        width="872"
@@ -149,7 +149,7 @@ The base elements in both sizes are stacked and left aligned by default, but the
 A blockquote was designed to be read from top to bottom. If certain optional elements are included, the order will change.
 
 <figure>
-  <uxdot-example width-adjustment="872px">
+  <uxdot-example color-palette="lightest" width-adjustment="872px">
     <img alt="Image of a blockquote with numbers 1 - 4 on the right side going from top to bottom"
          src="../blockquote-configuration.png" 
          width="872"
@@ -170,7 +170,7 @@ A blockquote was designed to be read from top to bottom. If certain optional ele
 
 Citation text has specific styles applied to it.
 
-<uxdot-example width-adjustment="349px">
+<uxdot-example color-palette="lightest" width-adjustment="349px">
   <img src="../blockquote-configuration-citation.png"
        alt="Image of three citation text examples"
        width="349"
@@ -192,7 +192,7 @@ Citation text has specific styles applied to it.
 
 Space values are the same in both sizes and on all breakpoints.
 
-<uxdot-example width-adjustment="872px">
+<uxdot-example color-palette="lightest" width-adjustment="872px">
   <img src="../blockquote-space.png"
        alt="Image of four blockquotes with spacing values in between"
        width="872"
