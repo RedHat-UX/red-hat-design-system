@@ -151,6 +151,12 @@
   margin-block-end: 0;
 }
 
+@container card (max-width: 767px) {
+  #body {
+    margin-block: var(--rh-space-xl, 24px);
+  }
+}
+
 @container card (min-width: 768px) {
   #header,
   #body,
