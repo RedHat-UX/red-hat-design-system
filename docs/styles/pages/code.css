@@ -7,7 +7,7 @@ rh-accordion {
     &::part(container) {
       background-color:
         light-dark(var(--rh-color-surface-lighter),
-          oklch(from var(--rh-color-surface-dark) calc(l * 1.45) c h));
+          oklch(from var(--rh-color-surface-dark) calc(l * 0.82) c h));
     }
 
     rh-table {
