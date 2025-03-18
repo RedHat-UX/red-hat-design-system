@@ -262,7 +262,7 @@ export class RhNavigationPrimary extends LitElement {
     } else {
       if (secondaryEventToggle) {
         this.#openSecondaryDropdowns.delete(event.toggle);
-        if (this.#openSecondaryDropdowns.size === 0 && !this._hamburger.open) {
+        if (this.#openSecondaryDropdowns.size === 0 && (this.compact && !this._hamburger.open)) {
           this.#closeOverlay();
         }
       } else {
