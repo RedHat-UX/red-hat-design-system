@@ -1,9 +1,9 @@
 ## When to use
 
-- When you want to have some content you want to expand and collapse
-- When putting all of the content on the page might not be relevant to all users
-or distract them from the main content on the page
+- Show or hide information with a trigger
+- Move extra content away from a task that a user needs to complete
+- Organize components that do not fit on small screen sizes like jump links
 
 <div id="overview-image-description" class="visually-hidden">
-  An expanded disclosure element with a panel trigger and lorem ipsum for details content
+  An collapsed disclosure element with a gray outline and trigger text that says, "Start your product trial".
 </div>
