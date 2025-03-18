@@ -13,7 +13,8 @@ const LS_KEY = 'RHDS-color-scheme';
 export class UxdotColorSchemePicker extends LitElement {
   static styles = [styles, visuallyHidden];
 
-  @property({ reflect: true }) scheme?: 'light' | 'dark' | 'light dark';
+  @property({ reflect: true }) scheme?: 'light' | 'dark' | 'light dark' =
+    globalThis.localStorage?.[LS_KEY] as 'light' | 'dark' | 'light dark';
 
   connectedCallback(): void {
     super.connectedCallback();
