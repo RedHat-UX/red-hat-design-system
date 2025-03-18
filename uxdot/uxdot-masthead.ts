@@ -37,6 +37,7 @@ export class UxdotMasthead extends LitElement {
              aria-label="Version ${version}">v${version}</a>
         </div>
       </div>
+      <slot></slot>
     `;
   }
 }

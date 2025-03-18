@@ -7,7 +7,7 @@
 <html lang="en" dir="ltr">
   <head>
     {% include "../partials/meta.html" %}
-    {#- prevent white FOUC for deviced preferring dark scheme -#}
+    {#- prevent white FOUC for devices preferring dark scheme -#}
     <style>
       body {
         min-height: 100vh;
@@ -19,6 +19,9 @@
 
     <script type="importmap">{{ importMap | dump(2) | safe }}</script>
 
+    <script type="module">
+      document.body.style.colorScheme = localStorage.rhdsColorScheme || 'light dark';
+    </script>
     {#- Load SSR support modules **BEFORE** element definitions -#}
     {% include 'partials/javascript/dsd-init.html' %}
     {%- for tag in importElements -%}
@@ -28,6 +31,8 @@
     {# only load components that need hydrated (aka interactivity) #}
     <script type="module">
       import '@rhds/elements/rh-button/rh-button.js';
+      import '@rhds/elements/rh-skip-link/rh-skip-link.js';
+      import '@uxdot/elements/uxdot-masthead.js';
       import '@uxdot/elements/uxdot-copy-permalink.js';
       import '@uxdot/elements/uxdot-sidenav.js';
       import '@uxdot/elements/uxdot-example.js';
@@ -37,7 +42,16 @@
   </head>
 
   <body class="{{ extraPageClasses }}">
-    <rh-skip-link href="#main">Skip to main content</rh-skip-link>
+    <uxdot-masthead role="banner" version="{{ pkg.version }}">
+      <button id="hamburger"
+              slot="hamburger"
+              aria-controls="sidebar"
+              aria-expanded="false"
+              aria-label="Expand Main Navigation">
+        <rh-icon set="ui" icon="menu-bars" size="lg"></rh-icon>
+      </button>
+      <rh-skip-link href="#main">Skip to main content</rh-skip-link>
+    </uxdot-masthead>
     {{ content | safe }}
   </body>
 </html>

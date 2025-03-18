@@ -7,19 +7,23 @@ import { observes } from '@patternfly/pfe-core/decorators.js';
 import styles from './uxdot-color-scheme-picker.css';
 import visuallyHidden from './visually-hidden.css';
 
-const LS_KEY = 'RHDS-color-scheme';
+declare global {
+  interface Storage {
+    rhdsColorScheme: 'light' | 'dark' | 'light dark';
+  }
+}
 
 @customElement('uxdot-color-scheme-picker')
 export class UxdotColorSchemePicker extends LitElement {
   static styles = [styles, visuallyHidden];
 
   @property({ reflect: true }) scheme?: 'light' | 'dark' | 'light dark' =
-    globalThis.localStorage?.[LS_KEY] as 'light' | 'dark' | 'light dark';
+    globalThis.localStorage?.rhdsColorScheme as 'light' | 'dark' | 'light dark';
 
   connectedCallback(): void {
     super.connectedCallback();
     if (!isServer) {
-      this.scheme = localStorage[LS_KEY];
+      this.scheme = localStorage.rhdsColorScheme;
     }
   }
 
@@ -66,7 +70,7 @@ export class UxdotColorSchemePicker extends LitElement {
     if (this.scheme) {
       document.body.style.setProperty('color-scheme', this.scheme);
       if (!isServer) {
-        localStorage[LS_KEY] = this.scheme;
+        localStorage.rhdsColorScheme = this.scheme;
       }
     }
   }
