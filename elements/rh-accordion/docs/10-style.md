@@ -43,10 +43,11 @@ lines.
        height="536">
 </uxdot-example>
 
-## Theme
+## Color scheme
+<a id="theme"></a>
 
-An accordion is available in both light and dark themes. The light theme 
-expanded panel includes a box shadow, but the dark theme does not.
+An accordion is available for both light and dark schemes. The light scheme 
+expanded panel includes a box shadow, but the dark scheme does not.
 
 ### Light theme
 

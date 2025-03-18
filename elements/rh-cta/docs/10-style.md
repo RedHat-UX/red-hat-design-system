@@ -21,24 +21,25 @@ A call to action is text in a container or paired with an icon that directs user
   </figcaption>
 </figure>
 
-## Theme
+## Color scheme
+<a id="theme"></a>
 
-Calls to action are available in both light and dark themes.
+Calls to action are available in both light and dark color schemes.
 
 ### Light and dark themes
 
 <uxdot-example color-palette="lightest" width-adjustment="664px">
-  <img src="../cta-theme-light.png"
-        alt="Image of light theme Primary, Secondary, Brick, Default, and Default video variants"
-        width="664"
-        height="56">
+  <img alt="Image of light theme Primary, Secondary, Brick, Default, and Default video variants"
+       src="../cta-theme-light.png"
+       width="664"
+       height="56">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="664px">
-  <img src="../cta-theme-dark.png"
-        alt="Image of dark theme Primary, Secondary, Brick, Default, and Default video variants"
-        width="666"
-        height="56">
+  <img alt="Image of dark theme Primary, Secondary, Brick, Default, and Default video variants"
+       src="../cta-theme-dark.png"
+       width="666"
+       height="56">
 </uxdot-example>
 
 <rh-table>
@@ -64,17 +65,17 @@ Calls to action are available in both light and dark themes.
 The Brick variant includes a slot for an icon as well as an extra orientation.
 
 <uxdot-example color-palette="lightest" width-adjustment="396px">
-  <img src="../cta-bricks-theme-light.png"
-        alt="Image of light theme Brick variants; one with text and no icon, one with an icon on the left of text, and one with an icon on top of text"
-        width="396"
-        height="88">
+  <img alt="Image of light theme Brick variants; one with text and no icon, one with an icon on the left of text, and one with an icon on top of text"
+       src="../cta-bricks-theme-light.png"
+       width="396"
+       height="88">
 </uxdot-example>
-  
+
 <uxdot-example color-palette="darkest" width-adjustment="396px">
-  <img src="../cta-bricks-theme-dark.png"
-        alt="Image of light theme Brick variants; one with text and no icon, one with an icon on the left of text, and one with an icon on top of text"
-        width="396"
-        height="88">
+  <img alt="Image of light theme Brick variants; one with text and no icon, one with an icon on the left of text, and one with an icon on top of text"
+       src="../cta-bricks-theme-dark.png"
+       width="396"
+       height="88">
 </uxdot-example>
 
 <rh-table>
@@ -90,10 +91,10 @@ The Brick variant includes a slot for an icon as well as an extra orientation.
 Primary, Secondary, and Default variants include a slot for a video icon. The video icon is the same color as the text label.
 
 <uxdot-example color-palette="lightest" width-adjustment="612px">
-  <img src="../cta-video-variants.png"
-        alt="Image of Primary, Secondary, and Default variants with video icons to the right of text"
-        width="612"
-        height="56">
+  <img alt="Image of Primary, Secondary, and Default variants with video icons to the right of text"
+       src="../cta-video-variants.png"
+       width="612"
+       height="56">
 </uxdot-example>
 
 ### White variants
@@ -101,10 +102,10 @@ Primary, Secondary, and Default variants include a slot for a video icon. The vi
 Dark theme includes white variants if other variants are duplicative or if they violate accessibility guidelines.
 
 <uxdot-example width-adjustment="523px">
-  <img src="../cta-white-variants.png"
-        alt="Image of Primary and Primary video variants with a white background and black text and Default and Default video variants with white text"
-        width="523"
-        height="56">
+  <img alt="Image of Primary and Primary video variants with a white background and black text and Default and Default video variants with white text"
+       src="../cta-white-variants.png"
+       width="523"
+       height="56">
 </uxdot-example>
 
 <rh-table>
@@ -123,10 +124,10 @@ Dark theme includes white variants if other variants are duplicative or if they 
 All calls to action with a container have the same border radius, but the height and width vary based on the presence of icons and the amount of content. Calls to action in a row are horizontally centered.
 
 <uxdot-example color-palette="lightest" width-adjustment="721px">
-  <img src="../cta-configuration.png"
-        alt="Image of all variants with various specs like border radius, height, width, alignment, and more"
-        width="721"
-        height="413">
+  <img alt="Image of all variants with various specs like border radius, height, width, alignment, and more"
+       src="../cta-configuration.png"
+       width="721"
+       height="413">
 </uxdot-example>
 
 ## Space
@@ -134,10 +135,10 @@ All calls to action with a container have the same border radius, but the height
 Space values are the same on all breakpoints for calls to action. To see space values when calls to action are grouped, go to the [Guidelines](/elements/call-to-action/guidelines/) page.
 
 <uxdot-example color-palette="lightest" width-adjustment="828px">
-  <img src="../cta-space.png"
-        alt="Image of Primary, Secondary, two Brick variants, and two Default variants with spacing values in between"
-        width="828"
-        height="88">
+  <img alt="Image of Primary, Secondary, two Brick variants, and two Default variants with spacing values in between"
+       src="../cta-space.png"
+       width="828"
+       height="88">
 </uxdot-example>
 
 <uxdot-spacer-tokens-table tokens="md, lg, xl"></uxdot-spacer-tokens-table>
@@ -149,24 +150,24 @@ Interaction states are visual representations used to communicate the status of 
 ### Hover
 
 <uxdot-example color-palette="lightest" width-adjustment="664px">
-  <img src="../cta-interaction-state-hover-theme-light.png"
-        alt="Image of light theme hover states"
-        width="666"
-        height="56">
+  <img alt="Image of light theme hover states"
+       src="../cta-interaction-state-hover-theme-light.png"
+       width="666"
+       height="56">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="664px">
-  <img src="../cta-interaction-state-hover-theme-dark.png"
-        alt="Image of dark theme hover states"
-        width="666"
-        height="56">
+  <img alt="Image of dark theme hover states"
+       src="../cta-interaction-state-hover-theme-dark.png"
+       width="666"
+       height="56">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="543px">
-  <img src="../cta-interaction-state-hover-white-variants.png"
-        alt="Image of dark theme white variant hover states"
-        width="540"
-        height="56">
+  <img alt="Image of dark theme white variant hover states"
+       src="../cta-interaction-state-hover-white-variants.png"
+       width="540"
+       height="56">
 </uxdot-example>
 
 <rh-table>
@@ -194,24 +195,24 @@ Interaction states are visual representations used to communicate the status of 
 </rh-alert>
 
 <uxdot-example color-palette="lightest" width-adjustment="668px">
-  <img src="../cta-interaction-state-focus-theme-light.png"
-        alt="Image of light theme focus states"
-        width="690"
-        height="64">
+  <img alt="Image of light theme focus states"
+       src="../cta-interaction-state-focus-theme-light.png"
+       width="690"
+       height="64">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="668px">
-  <img src="../cta-interaction-state-focus-theme-dark.png"
-        alt="Image of dark theme focus states"
-        width="690"
-        height="64">
+  <img alt="Image of dark theme focus states"
+       src="../cta-interaction-state-focus-theme-dark.png"
+       width="690"
+       height="64">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="543px">
-  <img src="../cta-interaction-state-focus-white-variants.png"
-        alt="Image of dark theme white variant focus states"
-        width="560"
-        height="64">
+  <img alt="Image of dark theme white variant focus states"
+       src="../cta-interaction-state-focus-white-variants.png"
+       width="560"
+       height="64">
 </uxdot-example>
 
 <rh-table>
@@ -230,22 +231,22 @@ Interaction states are visual representations used to communicate the status of 
 </rh-alert>
 
 <uxdot-example color-palette="lightest" width-adjustment="668px">
-  <img src="../cta-interaction-state-active-theme-light.png"
-       alt="Image of light theme active states"
+  <img alt="Image of light theme active states"
+       src="../cta-interaction-state-active-theme-light.png"
        width="690"
        height="64">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="668px">
-  <img src="../cta-interaction-state-active-theme-dark.png"
-       alt="Image of dark theme active states"
+  <img alt="Image of dark theme active states"
+       src="../cta-interaction-state-active-theme-dark.png"
        width="690"
        height="64">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="543px">
-  <img src="../cta-interaction-state-active-white-variants.png"
-       alt="Image of dark theme white variant active states"
+  <img alt="Image of dark theme white variant active states"
+       src="../cta-interaction-state-active-white-variants.png"
        width="560"
        height="64">
 </uxdot-example>

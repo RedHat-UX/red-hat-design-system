@@ -65,9 +65,10 @@ Links can be applied to full name or job details text.
        height="64">
 </uxdot-example>
 
-## Theme
+## Color scheme
+<a id="theme"></a>
 
-All avatar variants are available in both light and dark themes.
+All avatar variants are available for both light and dark color schemes.
 
 ### Light and dark themes
 

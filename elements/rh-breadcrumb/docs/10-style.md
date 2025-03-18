@@ -20,9 +20,10 @@ Breadcrumb navigation is composed of links, text, and caret icons as separators.
   </figcaption>
 </figure>
 
-## Theme
+## Color scheme
+<a id="theme"></a>
 
-Breadcrumbs are available in both light and dark themes.
+Breadcrumbs are available for both light and dark color schemes.
 
 <div class="grid xs-two-columns">
   <uxdot-example color-palette="lightest" width-adjustment="295px">

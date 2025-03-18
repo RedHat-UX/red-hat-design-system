@@ -37,7 +37,8 @@ on or tap the link. It acts as a functional addition instead of only visual.
        height="65">
 </uxdot-example>
 
-### Theme
+### Color scheme
+<a id="theme"></a>
 
 <uxdot-example width-adjustment="484px">
   <img alt="Link with icon theme light"

@@ -47,10 +47,10 @@ distinguish both footers from each other.
 </uxdot-example>
 
 
-## Theme
+## Color scheme
+<a id="theme"></a>
 
-A footer only has one theme, but visually it could be considered in the dark 
-theme.
+Footer only has one available color-palette, and renders in the dark color scheme.
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
   <img alt="Image of a large footer"

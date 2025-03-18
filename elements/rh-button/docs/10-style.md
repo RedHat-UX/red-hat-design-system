@@ -26,9 +26,10 @@ used on its own or grouped with other buttons.
   </figcaption>
 </figure>
 
-## Theme
+## Color scheme
+<a id="theme"></a>
 
-Buttons are available in both light and dark themes.
+Buttons are available for both light and dark color schemes.
 
 ### Light and dark themes
 

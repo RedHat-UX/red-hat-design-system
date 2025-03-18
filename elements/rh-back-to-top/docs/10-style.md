@@ -22,9 +22,10 @@ A back to top is a pill-shaped button that is anchored to the bottom right corne
 </figure>
 
 
-## Theme
+## Color scheme
+<a id="theme"></a>
 
-The back to top button looks the same in light and dark themes.
+The back to top button looks the same on light and dark color schemes.
 
 <div class="grid sm-two-columns">
 

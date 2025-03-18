@@ -18,9 +18,10 @@ A badge is number text on a pill background used to reflect the count of somethi
   </figcaption>
 </figure>
 
-## Theme 
+## Color scheme 
+<a id="theme"></a>
 
-A badge is available in light and dark theme.
+Badge is available for light and dark color schemes.
 
 ### Light theme
 

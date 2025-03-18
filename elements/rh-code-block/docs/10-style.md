@@ -20,9 +20,10 @@ container.
   </figcaption>
 </figure>
 
-## Theme
+## Color scheme
+<a id="theme"></a>
 
-A code block is available in both light and dark themes.
+Code block is available for both light and dark color schemes.
 
 ### Light theme
 

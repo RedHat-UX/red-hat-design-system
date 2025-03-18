@@ -50,7 +50,8 @@ also include the following optional elements:
 
 </rh-table>
 
-## Theme
+## Color scheme
+<a id="theme"></a>
 
 A blockquote is available for both light and dark color schemes, and uses [themable
 tokens](/theming/customizing/).

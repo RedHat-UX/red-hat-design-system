@@ -37,9 +37,10 @@ elements and styles can be placed inside.
         height="502">
 </uxdot-example>
 
-## Theme
+## Color scheme
+<a id="theme"></a>
 
-All card variants are available on light and dark backgrounds.
+All card variants are available for light and dark color schemes.
 
 ### Light background
 
@@ -270,7 +271,8 @@ promo, or full-width promo.
        height="401">
 </uxdot-example>
 
-### Theme
+### Color scheme
+<a id="theme-1"></a>
 
 The standard promo can set the `Lighter` or `Darker` color palettes. It can
 appear on either light or dark backgrounds.

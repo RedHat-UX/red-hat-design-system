@@ -30,7 +30,7 @@ if each tile includes a logo. Other than the heading color, the hover, focus, an
 For a link tile, there are two image sizes available. The Default size has spacing around the entire image. The Full-width image size bleeds to the top, left, and right edges. The default image size
 is recommended for logos, while illustrations or photos would work well as a full-width image.
 
-<uxdot-example width-adjustment="750px">
+<uxdot-example color-palette="lightest" width-adjustment="750px">
   <img alt="Examples of a logo in a tile with the default image size and a photo in a tile with the full-width image size"
        src="../tile-variants-image-sizes.png"
        width="750"

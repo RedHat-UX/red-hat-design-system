@@ -41,8 +41,10 @@ There are three available sizes and the only difference is the amount of interfa
        height="606">  
 </uxdot-example>
 
-## Theme
-The audio player is available in both light and dark themes.
+## Color scheme
+<a id="theme"></a>
+
+The audio player is available for both light and dark color schemes.
 
 ### Light theme
 

@@ -240,9 +240,10 @@ Do not position the secondary navigation above the primary navigation.
 </uxdot-example>
 
 
-### Theme mismatch
+### Color scheme mismatch
+<a id="theme-mismatch"></a>
 
-Do not use a dark theme secondary navigation in light environments and vice versa.
+Do not use a dark color scheme secondary navigation in light environments and vice versa.
 
 <uxdot-example color-palette="lightest" width-adjustment="872px" danger>
   <img alt="Image of a dark theme secondary navigation in a light theme environment which is incorrect usage"
