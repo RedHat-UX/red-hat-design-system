@@ -8,10 +8,10 @@ helps users focus on the dialog content.
 
 <figure>
   <uxdot-example width-adjustment="872px">
-    <img src="../dialog-anatomy.png"
-        alt="Anatomy of a dialog with lots of annotations pointing to various parts"
-        width="872"
-        height="322">
+    <img alt="Anatomy of a dialog with lots of annotations pointing to various parts"
+         src="../dialog-anatomy.png"
+         width="872"
+         height="322">
   </uxdot-example>
   <figcaption>
     <ol>
@@ -31,10 +31,10 @@ helps users focus on the dialog content.
 A dialog is available in the light theme only.
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../dialog-theme-light.png"
-        alt="Light theme dialog"
-        width="1000"
-        height="322">
+  <img alt="Light theme dialog"
+       src="../dialog-theme-light.png"
+       width="1000"
+       height="322">
 </uxdot-example>
 
 ## Configuration
@@ -43,10 +43,10 @@ The dialog container does not have a maximum height, but too much content in the
 body text section will cause scrolling.
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../dialog-configuration.png"
-        alt="How a dialog container is constructed showing border radius, region, and scrolling details"
-        width="1000"
-        height="640">
+  <img alt="How a dialog container is constructed showing border radius, region, and scrolling details"
+       src="../dialog-configuration.png"
+       width="1000"
+       height="640">
 </uxdot-example>
 
 ## Space
@@ -56,19 +56,19 @@ The amount of space in a dialog reduces as breakpoints get smaller.
 ### Large breakpoints
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../dialog-space-breakpoint-large.png"
-        alt="A dialog container on a large breakpoint with spacing between all elements"
-        width="1000"
-        height="322">
+  <img alt="A dialog container on a large breakpoint with spacing between all elements"
+       src="../dialog-space-breakpoint-large.png"
+       width="1000"
+       height="322">
 </uxdot-example>
 
 ### Small breakpoints
 
 <uxdot-example width-adjustment="360px" variant="full" alignment="left" no-border>
-  <img src="../dialog-space-breakpoint-small.png"
-        alt="A dialog container on a small breakpoint with spacing between all elements"
-        width="360"
-        height="640">
+  <img alt="A dialog container on a small breakpoint with spacing between all elements"
+       src="../dialog-space-breakpoint-small.png"
+       width="360"
+       height="640">
 </uxdot-example>
 
 <uxdot-spacer-tokens-table tokens="md, lg, xl, 2xl"
@@ -87,88 +87,55 @@ Control and inactive page number buttons have the same hover state. Truncation
 is not interactive so it has no hover state.
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../dialog-interaction-state-hover.png"
-        alt="Light theme dialog hover state example"
-        width="1000"
-        height="322">
+  <img alt="Light theme dialog hover state example"
+       src="../dialog-interaction-state-hover.png"
+       width="1000"
+       height="322">
 </uxdot-example>
 
 <rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Property">Property</th>
-        <th scope="col" data-label="Light theme">Light theme</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Property">Color - close button</td>
-        <td data-label="Light theme">#151515</td>
-      </tr>
-    </tbody>
-  </table>
+
+| Property             | Light theme |
+|----------------------|-------------|
+| Color - close button | \#151515    |
+
 </rh-table>
 
 
 ### Focus
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../dialog-interaction-state-focus.png"
-        alt="Light theme dialog focus state example"
-        width="1000"
-        height="322">
+  <img alt="Light theme dialog focus state example"
+       src="../dialog-interaction-state-focus.png"
+       width="1000"
+       height="322">
 </uxdot-example>
 
 <rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Property">Property</th>
-        <th scope="col" data-label="Light theme">Light theme</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Property">Color - close button</td>
-        <td data-label="Light theme">#151515</td>
-      </tr>
-      <tr>
-        <td data-label="Property">Color - focus ring</td>
-        <td data-label="Light theme">#0066cc</td>
-      </tr>
-    </tbody>
-  </table>
+
+| Property             | Light theme |
+|----------------------|-------------|
+| Color - close button | \#151515    |
+| Color - focus ring   | \#0066cc    |
+
 </rh-table>
 
 ### Active
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../dialog-interaction-state-active.png"
-        alt="Light theme dialog active state example"
-        width="1000"
-        height="322">
+  <img alt="Light theme dialog active state example"
+       src="../dialog-interaction-state-active.png"
+       width="1000"
+       height="322">
 </uxdot-example>
 
 <rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Property">Property</th>
-        <th scope="col" data-label="Light theme">Light theme</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Property">Color - close button</td>
-        <td data-label="Light theme">#151515</td>
-      </tr>
-      <tr>
-        <td data-label="Property">Color - focus ring</td>
-        <td data-label="Light theme">#0066cc</td>
-      </tr>
-    </tbody>
-  </table>
+
+| Property             | Light theme |
+|----------------------|-------------|
+| Color - close button | \#151515    |
+| Color - focus ring   | \#0066cc    |
+
 </rh-table>
 
 
