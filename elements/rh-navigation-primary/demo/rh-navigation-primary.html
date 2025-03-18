@@ -235,13 +235,22 @@
   <rh-navigation-primary-item slot="dropdowns" hide="sm" variant="dropdown" standalone>
     <rh-icon slot="icon" icon="search" set="ui"></rh-icon>
     <span slot="summary">Search</span>
-    Search Content
+    <form>
+      <label for="search">Search</label>
+      <input id="search" type="search"><button>Search</button>
+    </form>
   </rh-navigation-primary-item>
 
   <rh-navigation-primary-item slot="dropdowns" hide="sm" variant="dropdown" standalone>
     <rh-icon slot="icon" icon="notification" set="ui"></rh-icon>
     <span slot="summary">For You</span>
-    For You Content
+    <h2>Recommendations for you</h2>
+    <p>As you browse redhat.com, we'll recommend resources you may like. For now, try these.</p>
+    <ul>
+      <li><a href="#">All Red Hat products</a></li>
+      <li><a href="#">Tech topics</a></li>
+      <li><a href="#">Red Hat resources</a></li>
+    </ul>
   </rh-navigation-primary-item>
 
   <rh-navigation-primary-item slot="dropdowns" variant="dropdown" standalone>
@@ -249,24 +258,29 @@
     <span slot="summary">My Red Hat</span>
     <!-- Mock content -->
     <div class="grid">
-      <div class="profile">
-        <rh-avatar>
-          Mr. Roboto
-          <span slot="subtitle">AI UX Engineer, </span>
-          <a slot="subtitle" href="#">Red Hat</a>
-        </rh-avatar>
-        <div>Login: jdoe@redhat.com</div>
-        <div>Account number: 0123456</div>
-        <div>jdoe+alias@redhat.com</div>
-        <div>
-          <select>
-            <option>English</option>
-            <option>French</option>
-            <option>German</option>
-          </select>
-        </div>
-        <div>
-          <rh-button danger>Log out</rh-button>
+      <div id="profile">
+        <div class="lockup">
+          <rh-avatar plain></rh-avatar>
+          <div class="account">
+            <div class="name">Mr. Roboto</div>
+            <div class="edit"><a href="#"><rh-icon icon="edit" set="ui"></rh-icon> Edit Avatar</a></div>
+          </div>
+          <div class="info">
+            <div>Login: jdoe@redhat.com</div>
+            <div>Account number: 0123456</div>
+            <div>jdoe+alias@redhat.com</div>
+          </div>
+          <div class="language">
+            <label for="language">Language</label>
+            <select id="language">
+              <option>English</option>
+              <option>French</option>
+              <option>German</option>
+            </select>
+          </div>
+          <div class="logout">
+            <rh-button danger>Log out</rh-button>
+          </div>
         </div>
       </div>
       <div class="content-column">
@@ -314,36 +328,84 @@
   </rh-navigation-primary-item>
 </rh-navigation-primary>
 
-
-<p>Mock Page content <a href="#">Link outside</a></p>
+<div id="mock">
+  <p>Mock Page content <a href="#">Link outside</a></p>
+</div>
 
 <link rel="stylesheet" href="../rh-navigation-primary-lightdom.css">
 
 <style>
   /* styles for mock content */
+  #mock {
+    p {
+      margin-block-start: var(--rh-space-4xl, 64px);
+      padding-inline: var(--rh-space-lg, 16px);
+      @media (min-width: 768px) {
+        padding-inline: var(--rh-space-2xl, 32px);
+      }
+    }
+  }
+
+  /* panel grid */
   .grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--rh-space-4xl);
+    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+    fon-size: var(--rh-font-size-body-text-md, 1rem);
 
     @container (min-width: 768px) {
       grid-template-columns: 1fr 1fr 1fr;
     }
 
-    & rh-avatar {
-      display: block;
-    }
+    #profile {
+      margin-inline-start: var(--rh-space-4xl);
+      display: grid;
+      grid-template-columns: max-content 1fr;
+      grid-template-areas: 'avatar content';
+      grid-template-rows: fit-content;
+      column-gap: var(--rh-space-lg, 16px);
 
-    & .profile {
-      & div {
-        margin-inline-start: var(--rh-space-4xl);
-        margin-block: var(--rh-space-md);
-        line-height: var(--rh-line-height-body-text);
+      & rh-avatar {
+        --rh-size-icon-06: 72px;
+
+        grid-area: avatar;
+        display: block;
+      }
+
+      & .lockup {
+        display: contents;
+
+        & .account {
+          grid-area: content;
+
+          & .name {
+            font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
+            font-size: var(--rh-font-size-heading-sm, 1.5rem);
+          }
+        }
+
+        & .info {
+          grid-area: content;
+          grid-row: 2;
+        }
+
+        & .language {
+          grid-area: content;
+          grid-row: 3;
+        }
+
+        & .logout {
+          grid-area: content;
+          grid-row: 4;
+        }
       }
     }
 
     .content-column {
       max-width: 320px;
+      margin-block: var(--rh-space-md);
+      line-height: var(--rh-line-height-body-text);
     }
 
     & select {
@@ -357,8 +419,13 @@
       list-style: none;
       margin: 0;
       padding: 0;
+
+      & p {
+        font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+      }
     }
   }
+
 
   /* override dev server style */
   #rhds-dev-server-main {
@@ -370,4 +437,5 @@
 <script type="module">
   import '@rhds/elements/rh-navigation-primary/rh-navigation-primary.js';
   import '@rhds/elements/rh-avatar/rh-avatar.js';
+  import '@rhds/elements/rh-button/rh-button.js';
 </script>
