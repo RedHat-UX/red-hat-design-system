@@ -318,12 +318,12 @@ export class RhNavigationPrimary extends LitElement {
     const primaryDropdowns = this.#primaryDropdowns();
     const secondaryDropdowns = this.#secondaryDropdowns();
     // target can be in one of the two dropdown collections, but only 1.
-    const dropdownContains =
+    const dropdownContainsTarget =
       primaryDropdowns.find(dropdown => dropdown.contains(target))
       ?? secondaryDropdowns.find(dropdown => dropdown.contains(target));
-    if (dropdownContains) {
+    if (dropdownContainsTarget) {
       const focusableChildElements =
-        Array.from(RhNavigationPrimary.focusableChildElements(dropdownContains));
+        Array.from(RhNavigationPrimary.focusableChildElements(dropdownContainsTarget));
 
       if (focusableChildElements.length > 0) {
         const {
@@ -335,15 +335,19 @@ export class RhNavigationPrimary extends LitElement {
           return;
         } else {
           if (event.shiftKey && firstChild === target) {
-            dropdownContains.close();
+            dropdownContainsTarget.close();
             return;
+          }
+          // if target is self, close self
+          if (event.shiftKey && target === dropdownContainsTarget) {
+            dropdownContainsTarget.close();
           }
         }
         if (!lastChild) {
           return;
         } else {
           if (lastChild === target) {
-            dropdownContains.close();
+            dropdownContainsTarget.close();
             return;
           }
         }
