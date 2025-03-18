@@ -1467,7 +1467,7 @@ index 0000000..cfe6239
 +}`;
 \ No newline at end of file
 diff --git a/node_modules/@rhds/tokens/css/global.css b/node_modules/@rhds/tokens/css/global.css
-index 8c2ebc9..eb59127 100644
+index 8c2ebc9..36604cb 100644
 --- a/node_modules/@rhds/tokens/css/global.css
 +++ b/node_modules/@rhds/tokens/css/global.css
 @@ -527,8 +527,11 @@
@@ -1477,15 +1477,15 @@ index 8c2ebc9..eb59127 100644
 -  /* Alternative tertiary surface (not available for use with context provider) */
 -  --rh-color-surface-dark-alt: #292929;
 +  /**
-+   * DEPRECATED. Theme authors should use --rh-color-surface-dark. Element authors should use oklch(from var(--rh-color-surface-dark) calc(l * 1.45) c h). Alternative tertiary surface (not available for use with context provider)
++   * DEPRECATED. Theme authors should use --rh-color-surface-dark. Element authors should use oklch(from var(--rh-color-surface-dark) calc(l * 0.82) c h). Alternative tertiary surface (not available for use with context provider)
 +   * 
 +   */
-+  --rh-color-surface-dark-alt: oklch(from(--rh-color-surface-dark) calc(l * 1.45) c h);
++  --rh-color-surface-dark-alt: oklch(from(--rh-color-surface-dark) calc(l * 0.82) c h);
    /* Secondary surface (dark theme) */
    --rh-color-surface-darker: #1f1f1f;
    /* Primary surface (dark theme) */
 diff --git a/node_modules/@rhds/tokens/css/reset.css.js b/node_modules/@rhds/tokens/css/reset.css.js
-index 23e7058..c632ee4 100644
+index 23e7058..d322ec9 100644
 --- a/node_modules/@rhds/tokens/css/reset.css.js
 +++ b/node_modules/@rhds/tokens/css/reset.css.js
 @@ -528,8 +528,11 @@ export default css `
@@ -1495,10 +1495,10 @@ index 23e7058..c632ee4 100644
 -  /* Alternative tertiary surface (not available for use with context provider) */
 -  --rh-color-surface-dark-alt: #292929;
 +  /**
-+   * DEPRECATED. Theme authors should use --rh-color-surface-dark. Element authors should use oklch(from var(--rh-color-surface-dark) calc(l * 1.45) c h). Alternative tertiary surface (not available for use with context provider)
++   * DEPRECATED. Theme authors should use --rh-color-surface-dark. Element authors should use oklch(from var(--rh-color-surface-dark) calc(l * 0.82) c h). Alternative tertiary surface (not available for use with context provider)
 +   * 
 +   */
-+  --rh-color-surface-dark-alt: oklch(from(--rh-color-surface-dark) calc(l * 1.45) c h);
++  --rh-color-surface-dark-alt: oklch(from(--rh-color-surface-dark) calc(l * 0.82) c h);
    /* Secondary surface (dark theme) */
    --rh-color-surface-darker: #1f1f1f;
    /* Primary surface (dark theme) */
@@ -1511,7 +1511,7 @@ index 23e7058..c632ee4 100644
 +//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicmVzZXQuY3NzLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsicmVzZXQuY3NzLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBOzs7O0dBSUc7QUFFSCxPQUFPLEVBQUUsR0FBRyxFQUFFLE1BQU0sS0FBSyxDQUFDO0FBQUMsZUFBZSxHQUFHLENBQUE7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0VBK3ZCM0MsQ0FBQyJ9
 \ No newline at end of file
 diff --git a/node_modules/@rhds/tokens/css/reset.css.ts b/node_modules/@rhds/tokens/css/reset.css.ts
-index b858a13..c85de18 100644
+index b858a13..34dcf3e 100644
 --- a/node_modules/@rhds/tokens/css/reset.css.ts
 +++ b/node_modules/@rhds/tokens/css/reset.css.ts
 @@ -528,8 +528,11 @@ import { css } from 'lit'; export default css`
@@ -1521,15 +1521,15 @@ index b858a13..c85de18 100644
 -  /* Alternative tertiary surface (not available for use with context provider) */
 -  --rh-color-surface-dark-alt: #292929;
 +  /**
-+   * DEPRECATED. Theme authors should use --rh-color-surface-dark. Element authors should use oklch(from var(--rh-color-surface-dark) calc(l * 1.45) c h). Alternative tertiary surface (not available for use with context provider)
++   * DEPRECATED. Theme authors should use --rh-color-surface-dark. Element authors should use oklch(from var(--rh-color-surface-dark) calc(l * 0.82) c h). Alternative tertiary surface (not available for use with context provider)
 +   * 
 +   */
-+  --rh-color-surface-dark-alt: oklch(from(--rh-color-surface-dark) calc(l * 1.45) c h);
++  --rh-color-surface-dark-alt: oklch(from(--rh-color-surface-dark) calc(l * 0.82) c h);
    /* Secondary surface (dark theme) */
    --rh-color-surface-darker: #1f1f1f;
    /* Primary surface (dark theme) */
 diff --git a/node_modules/@rhds/tokens/css/shared.css b/node_modules/@rhds/tokens/css/shared.css
-index 58b520d..b772065 100644
+index 58b520d..e2e966a 100644
 --- a/node_modules/@rhds/tokens/css/shared.css
 +++ b/node_modules/@rhds/tokens/css/shared.css
 @@ -527,8 +527,11 @@
@@ -1539,10 +1539,10 @@ index 58b520d..b772065 100644
 -  /* Alternative tertiary surface (not available for use with context provider) */
 -  --rh-color-surface-dark-alt: #292929;
 +  /**
-+   * DEPRECATED. Theme authors should use --rh-color-surface-dark. Element authors should use oklch(from var(--rh-color-surface-dark) calc(l * 1.45) c h). Alternative tertiary surface (not available for use with context provider)
++   * DEPRECATED. Theme authors should use --rh-color-surface-dark. Element authors should use oklch(from var(--rh-color-surface-dark) calc(l * 0.82) c h). Alternative tertiary surface (not available for use with context provider)
 +   * 
 +   */
-+  --rh-color-surface-dark-alt: oklch(from(--rh-color-surface-dark) calc(l * 1.45) c h);
++  --rh-color-surface-dark-alt: oklch(from(--rh-color-surface-dark) calc(l * 0.82) c h);
    /* Secondary surface (dark theme) */
    --rh-color-surface-darker: #1f1f1f;
    /* Primary surface (dark theme) */
@@ -1980,7 +1980,7 @@ index 0000000..b8d20e6
 +export const Media2xl = {"min-width":Breakpoint2xl} as const;
 \ No newline at end of file
 diff --git a/node_modules/@rhds/tokens/js/meta.cjs b/node_modules/@rhds/tokens/js/meta.cjs
-index 0347790..357353d 100644
+index 0347790..63ec275 100644
 --- a/node_modules/@rhds/tokens/js/meta.cjs
 +++ b/node_modules/@rhds/tokens/js/meta.cjs
 @@ -18220,14 +18220,24 @@ exports.tokens = new Map([
@@ -1989,8 +1989,8 @@ index 0347790..357353d 100644
      {
 -      "$value": "#292929",
 -      "$description": "Alternative tertiary surface (not available for use with context provider)",
-+      "$value": "oklch(from(--rh-color-surface-dark) calc(l * 1.45) c h)",
-+      "$description": "DEPRECATED. Theme authors should use --rh-color-surface-dark. Element authors should use oklch(from var(--rh-color-surface-dark) calc(l * 1.45) c h). Alternative tertiary surface (not available for use with context provider)\n",
++      "$value": "oklch(from(--rh-color-surface-dark) calc(l * 0.82) c h)",
++      "$description": "DEPRECATED. Theme authors should use --rh-color-surface-dark. Element authors should use oklch(from var(--rh-color-surface-dark) calc(l * 0.82) c h). Alternative tertiary surface (not available for use with context provider)\n",
 +      "$extensions": {
 +        "com.redhat.ux": {
 +          "deprecated": true
@@ -2002,8 +2002,8 @@ index 0347790..357353d 100644
        "original": {
 -        "$value": "{color.gray.80}",
 -        "$description": "Alternative tertiary surface (not available for use with context provider)",
-+        "$value": "oklch(from(--rh-color-surface-dark) calc(l * 1.45) c h)",
-+        "$description": "DEPRECATED. Theme authors should use --rh-color-surface-dark. Element authors should use oklch(from var(--rh-color-surface-dark) calc(l * 1.45) c h). Alternative tertiary surface (not available for use with context provider)\n",
++        "$value": "oklch(from(--rh-color-surface-dark) calc(l * 0.82) c h)",
++        "$description": "DEPRECATED. Theme authors should use --rh-color-surface-dark. Element authors should use oklch(from var(--rh-color-surface-dark) calc(l * 0.82) c h). Alternative tertiary surface (not available for use with context provider)\n",
 +        "$extensions": {
 +          "com.redhat.ux": {
 +            "deprecated": true
@@ -2043,7 +2043,7 @@ index 0347790..357353d 100644
          },
          "isLight": false
 diff --git a/node_modules/@rhds/tokens/js/meta.js b/node_modules/@rhds/tokens/js/meta.js
-index 628f7ad..c2f4b3e 100644
+index 628f7ad..753a9a4 100644
 --- a/node_modules/@rhds/tokens/js/meta.js
 +++ b/node_modules/@rhds/tokens/js/meta.js
 @@ -18220,14 +18220,24 @@ export const tokens = new Map([
@@ -2052,8 +2052,8 @@ index 628f7ad..c2f4b3e 100644
      {
 -      "$value": "#292929",
 -      "$description": "Alternative tertiary surface (not available for use with context provider)",
-+      "$value": "oklch(from(--rh-color-surface-dark) calc(l * 1.45) c h)",
-+      "$description": "DEPRECATED. Theme authors should use --rh-color-surface-dark. Element authors should use oklch(from var(--rh-color-surface-dark) calc(l * 1.45) c h). Alternative tertiary surface (not available for use with context provider)\n",
++      "$value": "oklch(from(--rh-color-surface-dark) calc(l * 0.82) c h)",
++      "$description": "DEPRECATED. Theme authors should use --rh-color-surface-dark. Element authors should use oklch(from var(--rh-color-surface-dark) calc(l * 0.82) c h). Alternative tertiary surface (not available for use with context provider)\n",
 +      "$extensions": {
 +        "com.redhat.ux": {
 +          "deprecated": true
@@ -2065,8 +2065,8 @@ index 628f7ad..c2f4b3e 100644
        "original": {
 -        "$value": "{color.gray.80}",
 -        "$description": "Alternative tertiary surface (not available for use with context provider)",
-+        "$value": "oklch(from(--rh-color-surface-dark) calc(l * 1.45) c h)",
-+        "$description": "DEPRECATED. Theme authors should use --rh-color-surface-dark. Element authors should use oklch(from var(--rh-color-surface-dark) calc(l * 1.45) c h). Alternative tertiary surface (not available for use with context provider)\n",
++        "$value": "oklch(from(--rh-color-surface-dark) calc(l * 0.82) c h)",
++        "$description": "DEPRECATED. Theme authors should use --rh-color-surface-dark. Element authors should use oklch(from var(--rh-color-surface-dark) calc(l * 0.82) c h). Alternative tertiary surface (not available for use with context provider)\n",
 +        "$extensions": {
 +          "com.redhat.ux": {
 +            "deprecated": true
@@ -2156,7 +2156,7 @@ index 0000000..b9ec3f1
 +export const Space7xl = "128px";
 \ No newline at end of file
 diff --git a/node_modules/@rhds/tokens/js/tokens.cjs b/node_modules/@rhds/tokens/js/tokens.cjs
-index 47205f6..a466e50 100644
+index 47205f6..a116a84 100644
 --- a/node_modules/@rhds/tokens/js/tokens.cjs
 +++ b/node_modules/@rhds/tokens/js/tokens.cjs
 @@ -1594,7 +1594,7 @@ exports.tokens = new Map([
@@ -2164,12 +2164,12 @@ index 47205f6..a466e50 100644
    [
      "--rh-color-surface-dark-alt",
 -    "#292929"
-+    "oklch(from(--rh-color-surface-dark) calc(l * 1.45) c h)"
++    "oklch(from(--rh-color-surface-dark) calc(l * 0.82) c h)"
    ],
    [
      "--rh-color-surface-darker",
 diff --git a/node_modules/@rhds/tokens/js/tokens.js b/node_modules/@rhds/tokens/js/tokens.js
-index 520c3d0..e4e381d 100644
+index 520c3d0..6a6a7cd 100644
 --- a/node_modules/@rhds/tokens/js/tokens.js
 +++ b/node_modules/@rhds/tokens/js/tokens.js
 @@ -1594,7 +1594,7 @@ export const tokens = new Map([
@@ -2177,7 +2177,7 @@ index 520c3d0..e4e381d 100644
    [
      "--rh-color-surface-dark-alt",
 -    "#292929"
-+    "oklch(from(--rh-color-surface-dark) calc(l * 1.45) c h)"
++    "oklch(from(--rh-color-surface-dark) calc(l * 0.82) c h)"
    ],
    [
      "--rh-color-surface-darker",
@@ -2290,7 +2290,7 @@ index 0000000..aefcafc
 +export const LineHeightCode = 1.5;
 \ No newline at end of file
 diff --git a/node_modules/@rhds/tokens/json/rhds.tokens.flat.json b/node_modules/@rhds/tokens/json/rhds.tokens.flat.json
-index 4144e5e..a645616 100644
+index 4144e5e..730a216 100644
 --- a/node_modules/@rhds/tokens/json/rhds.tokens.flat.json
 +++ b/node_modules/@rhds/tokens/json/rhds.tokens.flat.json
 @@ -396,7 +396,7 @@
@@ -2298,12 +2298,12 @@ index 4144e5e..a645616 100644
    "rh-color-surface-light": "#e0e0e0",
    "rh-color-surface-dark": "#383838",
 -  "rh-color-surface-dark-alt": "#292929",
-+  "rh-color-surface-dark-alt": "oklch(from(--rh-color-surface-dark) calc(l * 1.45) c h)",
++  "rh-color-surface-dark-alt": "oklch(from(--rh-color-surface-dark) calc(l * 0.82) c h)",
    "rh-color-surface-darker": "#1f1f1f",
    "rh-color-surface-darkest": "#151515",
    "rh-color-surface-status-danger": "",
 diff --git a/node_modules/@rhds/tokens/json/rhds.tokens.json b/node_modules/@rhds/tokens/json/rhds.tokens.json
-index 9f84ba7..f2dbbff 100644
+index 9f84ba7..bf2639f 100644
 --- a/node_modules/@rhds/tokens/json/rhds.tokens.json
 +++ b/node_modules/@rhds/tokens/json/rhds.tokens.json
 @@ -17315,14 +17315,24 @@
@@ -2312,8 +2312,8 @@ index 9f84ba7..f2dbbff 100644
        "dark-alt": {
 -        "$value": "#292929",
 -        "$description": "Alternative tertiary surface (not available for use with context provider)",
-+        "$value": "oklch(from(--rh-color-surface-dark) calc(l * 1.45) c h)",
-+        "$description": "DEPRECATED. Theme authors should use --rh-color-surface-dark. Element authors should use oklch(from var(--rh-color-surface-dark) calc(l * 1.45) c h). Alternative tertiary surface (not available for use with context provider)\n",
++        "$value": "oklch(from(--rh-color-surface-dark) calc(l * 0.82) c h)",
++        "$description": "DEPRECATED. Theme authors should use --rh-color-surface-dark. Element authors should use oklch(from var(--rh-color-surface-dark) calc(l * 0.82) c h). Alternative tertiary surface (not available for use with context provider)\n",
 +        "$extensions": {
 +          "com.redhat.ux": {
 +            "deprecated": true
@@ -2325,8 +2325,8 @@ index 9f84ba7..f2dbbff 100644
          "original": {
 -          "$value": "{color.gray.80}",
 -          "$description": "Alternative tertiary surface (not available for use with context provider)",
-+          "$value": "oklch(from(--rh-color-surface-dark) calc(l * 1.45) c h)",
-+          "$description": "DEPRECATED. Theme authors should use --rh-color-surface-dark. Element authors should use oklch(from var(--rh-color-surface-dark) calc(l * 1.45) c h). Alternative tertiary surface (not available for use with context provider)\n",
++          "$value": "oklch(from(--rh-color-surface-dark) calc(l * 0.82) c h)",
++          "$description": "DEPRECATED. Theme authors should use --rh-color-surface-dark. Element authors should use oklch(from var(--rh-color-surface-dark) calc(l * 0.82) c h). Alternative tertiary surface (not available for use with context provider)\n",
 +          "$extensions": {
 +            "com.redhat.ux": {
 +              "deprecated": true
