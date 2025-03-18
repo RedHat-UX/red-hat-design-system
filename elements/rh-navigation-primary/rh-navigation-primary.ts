@@ -163,8 +163,8 @@ export class RhNavigationPrimary extends LitElement {
               </a>
             </slot>
           </div>
-          <details id="hamburger" @toggle="${this.#hamburgerToggle}" @click="${this.#hamburgerClick}">
-            <summary>
+          <details id="hamburger" @toggle="${this.#hamburgerToggle}">
+            <summary @click="${this.#hamburgerClick}">
               <rh-icon icon="menu-bars" set="ui"></rh-icon>
               <slot name="summary" id="summary">Menu</slot>
               <rh-icon icon="caret-down" set="microns" aria-labelledby="summary"></rh-icon>
