@@ -144,15 +144,15 @@ page author need not and should not customize the CTA's colours.
     less JavaScript</rh-blockquote>
 </rh-card>
 
-To summarize: color providers can adopt one six palettes, three dark and
+To summarize: color providers can adopt one of six palettes, three dark and
 three light, and setting a color palette also sets the color scheme for its
 descendants, overriding any user preferences.
 
 ## Combination elements
 
 Some elements are both providers and consumers. Card, for example is both a
-provider and a consumer. It can accept the color theme of its parent context and
-it can also set its own color palette.
+provider and a consumer. It accepts the color scheme of its parent elements, or
+it can set its own color palette, and inherit that scheme to it's child elements.
 
 <uxdot-pattern class="card-snippet-grid"
                src="../patterns/card-consumer-provider.html"
@@ -162,9 +162,11 @@ it can also set its own color palette.
 ## Theming
 
 <rh-alert>
+
   Page authors *do not need to and should not* directly customize the
   colors of consumer elements, but instead should set custom values for [theme
   tokens][theming].
+
 </rh-alert>
 
 <rh-card>

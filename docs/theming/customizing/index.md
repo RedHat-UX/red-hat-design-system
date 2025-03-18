@@ -131,12 +131,10 @@ Have you written a custom theme for RHDS? Brag about it! Let us know in slack, s
 
 ## When to use custom themes
 
-A custom theme may be used for very specific brand projects like campaigns.
-However, the light and dark themes are fine for the majority of other projects.
+A custom theme may be used for very specific brand projects like campaigns, podcasts, or events.
+For other applications, the default theme is already perfectly weighted.
 If your project does need a custom theme, contact the Brand team and [Design
-system](https://github.com/RedHat-UX/red-hat-design-system/discussions) team for guidance. A custom theme may feature a bespoke color
-palette, but try to use other styles with elements and patterns from the design
-system if possible.
+system][designsystem] team for guidance.
 
 <rh-alert state="warning">
   <h4 slot="header">Choosing a theme</h4>
@@ -150,3 +148,5 @@ system if possible.
 </uxdot-example>
 
 {% renderFile './docs/_includes/partials/component/feedback.11ty.ts' %}
+
+[designsystem]: https://github.com/RedHat-UX/red-hat-design-system/discussions/
