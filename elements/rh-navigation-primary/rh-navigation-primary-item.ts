@@ -1,6 +1,6 @@
 import type { IconNameFor, IconSetName } from '@rhds/icons';
 
-import { LitElement, html, isServer, type PropertyValues } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { state } from 'lit/decorators/state.js';
 import { query } from 'lit/decorators/query.js';
@@ -95,7 +95,7 @@ export class RhNavigationPrimaryItem extends LitElement {
     const { compact = true } = this.ctx ?? {};
     const classes = {
       'highlight': !!this.#highlight,
-      'hide': !!this.hide,
+      'hide': !!hide,
       [variant]: true,
       'standalone': standalone,
       'on': true,
