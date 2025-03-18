@@ -340,6 +340,7 @@
     "markdown-it-attrs": "^4.3.1",
     "markdown-it-deflist": "^3.0.0",
     "markdown-it-footnote": "^4.0.0",
+    "markdown-it-table-captions": "^1.0.4",
     "markdownlint-cli2": "^0.14.0",
     "parse5": "^7.2.1",
     "patch-package": "^8.0.0",

@@ -5,6 +5,7 @@ import anchor from 'markdown-it-anchor';
 import attrs from 'markdown-it-attrs';
 import footnote from 'markdown-it-footnote';
 import deflist from 'markdown-it-deflist';
+import captions from 'markdown-it-table-captions';
 
 /* eslint-disable lit-a11y/anchor-is-valid */
 /* eslint-disable lit-a11y/accessible-name */
@@ -83,6 +84,7 @@ export default function(eleventyConfig: UserConfig) {
       .use(anchor, { permalink: rhdsPermalink() })
       .use(footnote)
       .use(deflist)
+      .use(captions)
       .use(attrs)
       .use(rhdsCodeBlock));
 };
