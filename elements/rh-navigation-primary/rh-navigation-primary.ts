@@ -20,7 +20,7 @@ import { InternalsController } from '@patternfly/pfe-core/controllers/internals-
 
 import {
   RhNavigationPrimaryItem,
-  RhNavigationPrimaryItemExpandEvent,
+  RhNavigationPrimaryItemToggleEvent,
 } from './rh-navigation-primary-item.js';
 import './rh-navigation-primary-overlay.js';
 
@@ -130,7 +130,7 @@ export class RhNavigationPrimary extends LitElement {
     super.connectedCallback();
     if (!isServer) {
       this.#ro?.observe(this);
-      this.addEventListener('expand', this.#onExpand);
+      this.addEventListener('item-toggle', this.#onDropdownToggle);
       this.addEventListener('focusout', this.#onFocusout);
       this.addEventListener('keydown', this.#onKeydown);
       this.#upgradeAccessibility();
@@ -238,8 +238,8 @@ export class RhNavigationPrimary extends LitElement {
     );
   }
 
-  async #onExpand(event: Event) {
-    if (!(event instanceof RhNavigationPrimaryItemExpandEvent)) {
+  async #onDropdownToggle(event: Event) {
+    if (!(event instanceof RhNavigationPrimaryItemToggleEvent)) {
       return;
     }
     // if the event came from a secondary link in a compact mode we'll want to close the hamburger first if it is open
@@ -262,7 +262,9 @@ export class RhNavigationPrimary extends LitElement {
     } else {
       if (secondaryEventToggle) {
         this.#openSecondaryDropdowns.delete(event.toggle);
-        this.#closeOverlay();
+        if (this.#openSecondaryDropdowns.size === 0) {
+          this.#closeOverlay();
+        }
       } else {
         this.#openPrimaryDropdowns.delete(event.toggle);
       }

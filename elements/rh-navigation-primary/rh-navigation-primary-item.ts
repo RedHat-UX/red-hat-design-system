@@ -12,7 +12,6 @@ import { consume } from '@lit/context';
 import { context, type RhNavigationPrimaryItemContext } from './context.js';
 
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
-import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 
 import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
@@ -23,13 +22,13 @@ import './rh-navigation-primary-item-menu.js';
 
 import styles from './rh-navigation-primary-item.css';
 
-export class RhNavigationPrimaryItemExpandEvent extends Event {
+export class RhNavigationPrimaryItemToggleEvent extends Event {
   declare target: RhNavigationPrimaryItem;
   constructor(
     public open: boolean,
     public toggle: RhNavigationPrimaryItem,
   ) {
-    super('expand', { bubbles: true, cancelable: true });
+    super('item-toggle', { bubbles: true, cancelable: true });
   }
 }
 
@@ -37,11 +36,7 @@ export class RhNavigationPrimaryItemExpandEvent extends Event {
 export class RhNavigationPrimaryItem extends LitElement {
   static readonly styles = [styles];
 
-  #slots = new SlotController(this, { slots: ['summary', null] });
-
   #highlight = false;
-
-  #mo = new MutationObserver(this.#mutationsCallback.bind(this));
 
   #internals = InternalsController.of(this, { role: 'listitem' });
 
@@ -83,13 +78,6 @@ export class RhNavigationPrimaryItem extends LitElement {
    */
   @colorContextConsumer() private on?: ColorTheme;
 
-  connectedCallback(): void {
-    super.connectedCallback();
-    if (!isServer) {
-      this.#mo.observe(this, { attributeFilter: ['aria-current'], childList: true, subtree: true });
-    }
-  }
-
   render() {
     const { hide = '', variant = '', standalone, on = 'light' } = this;
     const { compact = true } = this.ctx ?? {};
@@ -128,14 +116,7 @@ export class RhNavigationPrimaryItem extends LitElement {
 
   #detailsToggle() {
     this._open = this._details.open;
-    this.dispatchEvent(new RhNavigationPrimaryItemExpandEvent(this._open, this));
-  }
-
-  #mutationsCallback() {
-    // if the [aria-current-page] link is a child of the default slot ensure the state of the highlight
-    const [dropdownMenu] = this.#slots.getSlotted<HTMLElement>('');
-    this.#highlight = dropdownMenu.querySelector('[aria-current="page"]') ? true : false;
-    this.requestUpdate();
+    this.dispatchEvent(new RhNavigationPrimaryItemToggleEvent(this._open, this));
   }
 
   public close() {
