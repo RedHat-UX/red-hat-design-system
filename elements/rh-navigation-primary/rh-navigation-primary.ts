@@ -58,6 +58,7 @@ export class RhNavigationPrimary extends LitElement {
   #dir = new DirController(this);
 
   #openPrimaryDropdowns = new Set<RhNavigationPrimaryItem>();
+
   #openSecondaryDropdowns = new Set<RhNavigationPrimaryItem>();
 
   #ro?: ResizeObserver;

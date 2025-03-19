@@ -35,8 +35,8 @@
   & #bar {
     --_box-shadow-color: rgba(21, 21, 21, 0.2);
 
-    display: grid;
     position: relative;
+    display: grid;
     grid-template-areas: 'logo hamburger secondary-links';
     grid-template-columns: max-content max-content 1fr;
     grid-template-rows: var(--_navbar-height);
@@ -203,7 +203,6 @@
         }
 
         @container navigation-primary (min-width: 1200px) {
-          grid-area: hamburger;
           position: static;
           display: flex;
           height: 100%;
