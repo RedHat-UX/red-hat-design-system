@@ -1,6 +1,6 @@
 ---
 title: Grid
-layout: layouts/pages/has-toc.njk
+layout: layouts/pages/basic.njk
 order: 20
 tags:
   - foundations
