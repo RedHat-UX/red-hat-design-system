@@ -93,6 +93,14 @@ The entire header panel surface changes color on hover.
        height="315">
 </uxdot-example>
 
+<rh-table>
+
+| Property                     | Light Scheme                 | Dark Scheme               |
+|------------------------------|------------------------------|---------------------------|
+| Trigger button surface color | `--rh-color-surface-lighter` | `--rh-color-surface-dark` |
+
+</rh-table>
+
 ### Focus and Active
 
 A focus ring wraps around the entire header panel in both focus and active states.
