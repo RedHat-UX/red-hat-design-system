@@ -19,7 +19,7 @@ import {
 import '@rhds/elements/rh-tooltip/rh-tooltip.js';
 
 import type { ColorPalette } from '../../context/color/provider.js';
-import { colorSchemeConsumer } from '../../context/color/consumer.js';
+import { themable } from '../../context/color/consumer.js';
 
 import style from './rh-context-picker.css';
 
@@ -56,7 +56,7 @@ export const paletteMap = new Map<ColorPalette, Color>(Object.entries({
 export const paletteNames = Array.from(paletteMap, ([name]) => name);
 
 @customElement('rh-context-picker')
-@colorSchemeConsumer
+@themable
 export class RhContextPicker extends LitElement {
   static formAssociated = true;
 

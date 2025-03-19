@@ -5,7 +5,7 @@ import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 
-import { colorSchemeConsumer } from '../../lib/context/color/consumer.js';
+import { themable } from '../../lib/context/color/consumer.js';
 
 import styles from './rh-menu.css';
 
@@ -23,7 +23,7 @@ export class MenuToggleEvent extends Event {
  * @slot - menu items
  */
 @customElement('rh-menu')
-@colorSchemeConsumer
+@themable
 export class RhMenu extends LitElement {
   static readonly styles = [styles];
 

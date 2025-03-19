@@ -4,7 +4,7 @@ import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { html, LitElement } from 'lit';
 
-import { colorSchemeConsumer } from '../../lib/context/color/consumer.js';
+import { themable } from '../../lib/context/color/consumer.js';
 import { colorSchemeProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
 import styles from './rh-card.css';
@@ -44,7 +44,7 @@ const PALETTE_RE = /(er|est)+/g;
  */
 @customElement('rh-card')
 @colorSchemeProvider('lightest', 'lighter', 'darker', 'darkest')
-@colorSchemeConsumer
+@themable
 export class RhCard extends LitElement {
   static styles = [styles];
 

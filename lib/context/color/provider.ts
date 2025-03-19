@@ -3,15 +3,16 @@ import { type ReactiveController, type ReactiveElement } from 'lit';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import styles from '@rhds/tokens/css/color-palette.css.js';
+import type { Constructor } from '@lit/reactive-element/decorators/base.js';
 
-const Palettes = Object.freeze([
-  'light',
-  'lighter',
-  'lightest',
-  'dark',
-  'darker',
-  'darkest',
-] as const);
+type ColorPaletteConstructor = Constructor<ColorPaletteElement> & typeof ReactiveElement;
+
+type ColorPaletteDecorator =
+  (target: ColorPaletteConstructor) => void;
+
+interface ColorPaletteElement extends ReactiveElement {
+  colorPalette?: ColorPalette | undefined;
+}
 
 /**
  * A `ColorPalette` is a collection of specific color values
@@ -23,18 +24,21 @@ const Palettes = Object.freeze([
  */
 export type ColorPalette = typeof Palettes[number];
 
-interface ColorPaletteElement extends ReactiveElement {
-  colorPalette?: ColorPalette | undefined;
-}
-
-type Constructor<T> = new(...args: any[]) => T;
+const Palettes = Object.freeze([
+  'light',
+  'lighter',
+  'lightest',
+  'dark',
+  'darker',
+  'darkest',
+] as const);
 
 class PaletteController implements ReactiveController {
-  #host: ReactiveElement & { colorPalette?: ColorPalette };
+  #host: ColorPaletteElement;
   #palettes: Set<ColorPalette>;
   #last?: ColorPalette;
   #logger: Logger;
-  constructor(host: ReactiveElement, palettes: ColorPalette[]) {
+  constructor(host: ColorPaletteElement, palettes: ColorPalette[]) {
     this.#host = host;
     this.#palettes = new Set(palettes);
     this.#last = this.#host.colorPalette;
@@ -74,11 +78,6 @@ function impl(
     ...elementStyles,
   ];
 }
-
-type ColorPaletteConstructor = Constructor<ColorPaletteElement> & typeof ReactiveElement;
-
-type ColorPaletteDecorator =
-  (target: ColorPaletteConstructor) => void;
 
 /**
  * Makes this element a [color scheme provider](https://ux.redhat.com/themeing/color-palettes)

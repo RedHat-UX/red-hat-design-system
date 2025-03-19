@@ -134,7 +134,7 @@ export default async function(eleventyConfig: UserConfig) {
       '@rhds/tokens',
       '@rhds/tokens/media.js',
       '@rhds/tokens/meta.js',
-      '@rhds/tokens/css/color-scheme.css.js',
+      '@rhds/tokens/css/default-theme.css.js',
       '@rhds/tokens/css/color-palette.css.js',
       '@rhds/icons/',
       '@rhds/icons/microns/',

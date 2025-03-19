@@ -4,7 +4,7 @@ import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit-html/directives/class-map.js';
 import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 
-import { colorSchemeConsumer } from '../../lib/context/color/consumer.js';
+import { themable } from '../../lib/context/color/consumer.js';
 
 import styles from './rh-badge.css';
 
@@ -22,7 +22,7 @@ import styles from './rh-badge.css';
  *
  */
 @customElement('rh-badge')
-@colorSchemeConsumer
+@themable
 export class RhBadge extends LitElement {
   static readonly styles = [styles];
 

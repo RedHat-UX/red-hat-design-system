@@ -14,7 +14,7 @@ import type { IconNameFor, IconSetName } from '@rhds/icons';
 import '@rhds/elements/rh-icon/rh-icon.js';
 
 import { colorSchemeProvider, type ColorPalette } from '../../lib/context/color/provider.js';
-import { colorSchemeConsumer } from '../../lib/context/color/consumer.js';
+import { themable } from '../../lib/context/color/consumer.js';
 
 import styles from './rh-tile.css';
 
@@ -47,7 +47,7 @@ export class TileSelectEvent extends Event {
  */
 @customElement('rh-tile')
 @colorSchemeProvider('lightest', 'darkest')
-@colorSchemeConsumer
+@themable
 export class RhTile extends LitElement {
   static readonly styles = [styles];
 

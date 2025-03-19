@@ -6,7 +6,7 @@ import { property } from 'lit/decorators/property.js';
 import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 import { provide } from '@lit/context';
 
-import { colorSchemeConsumer } from '../../lib/context/color/consumer.js';
+import { themable } from '../../lib/context/color/consumer.js';
 import { colorSchemeProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
 import { NumberListConverter, ComposedEvent } from '@patternfly/pfe-core';
@@ -47,7 +47,7 @@ export class AccordionCollapseEvent extends ComposedEvent {
  */
 @customElement('rh-accordion')
 @colorSchemeProvider
-@colorSchemeConsumer
+@themable
 export class RhAccordion extends LitElement {
   static readonly styles = [styles];
 

@@ -10,7 +10,7 @@ import {
   colorSchemeProvider,
   type ColorPalette,
 } from '@rhds/elements/lib/context/color/provider.js';
-import { colorSchemeConsumer } from '@rhds/elements/lib/context/color/consumer.js';
+import { themable } from '@rhds/elements/lib/context/color/consumer.js';
 
 import {
   ColorPaletteListConverter,
@@ -31,7 +31,7 @@ import styles from './uxdot-pattern.css';
 
 @customElement('uxdot-pattern')
 @colorSchemeProvider
-@colorSchemeConsumer
+@themable
 export class UxdotPattern extends SSRFailureRecoverableElement {
   static styles = [styles];
 

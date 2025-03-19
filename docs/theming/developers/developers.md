@@ -93,8 +93,8 @@ but instead passively consume it from their parents. Elements such as
 
 To make your element a color context consumer:
 
-1. Import the `@colorSchemeConsumer` decorator from the `lib` directory.
-2. Add the `@colorSchemeConsuemr` decorator to the element's class.
+1. Import the `@themable` decorator from the `lib` directory.
+2. Add the `@themable` decorator to the element's class.
 3. Use computed theming tokens to color your element
 3. When needed, override scheme values using [`light-dark()`][lightdark]
 
@@ -105,10 +105,10 @@ To make your element a color context consumer:
 ```ts rhcodeblock
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
-import { colorSchemeConsumer } from '@rhds/elements/lib/context/color/consumer.js'; // 1
+import { themable } from '@rhds/elements/lib/context/color/consumer.js'; // 1
 
 @customElement('rh-consumer')
-@colorSchemeConsumer                                                                // 2
+@themable                                                                // 2
 export class RhConsumer extends LitElement {
   render() {
     return html`<div id="container"></div>`;
@@ -130,9 +130,9 @@ export class RhConsumer extends LitElement {
   </rh-tab-panel>
 </rh-tabs>
 
-The `@colorSchemeConsumer` decorator applies a stylesheet from `@rhds/tokens` to 
-the page. That stylesheet uses [`light-dark()`][lightdark] to compute 
-theming tokens depending on the color scheme.
+The `@themable` decorator applies a stylesheet from `@rhds/tokens` to the page. 
+That stylesheet containing the default theme, using [`light-dark()`][lightdark] 
+to compute theming tokens depending on the color scheme.
 
 ```css rhcodeblock
 --rh-color-text-primary: light-dark(

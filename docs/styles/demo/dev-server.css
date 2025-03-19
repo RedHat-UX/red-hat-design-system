@@ -7,7 +7,7 @@
   layout;
 
 @import url('/node_modules/@rhds/tokens/css/global.css') layer(tokens);
-@import url('/node_modules/@rhds/tokens/css/color-scheme.css') layer(tokens);
+@import url('/node_modules/@rhds/tokens/css/default-theme.css') layer(tokens);
 @import url('../reset.css') layer(reset);
 @import url('../fonts.css') layer(fonts);
 @import url('../typography.css') layer(typography);

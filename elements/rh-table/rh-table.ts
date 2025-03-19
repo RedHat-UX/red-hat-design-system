@@ -5,7 +5,7 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import { RequestSortEvent, RhSortButton } from './rh-sort-button.js';
 
-import { colorSchemeConsumer } from '../../lib/context/color/consumer.js';
+import { themable } from '../../lib/context/color/consumer.js';
 
 import styles from './rh-table.css';
 
@@ -19,7 +19,7 @@ import styles from './rh-table.css';
  * @cssprop [--rh-table-row-border=1px solid #c7c7c7] - row border
  */
 @customElement('rh-table')
-@colorSchemeConsumer
+@themable
 export class RhTable extends LitElement {
   static readonly styles = [styles];
 

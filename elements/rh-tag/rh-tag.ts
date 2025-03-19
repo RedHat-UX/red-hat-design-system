@@ -7,9 +7,10 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 
 import type { IconNameFor, IconSetName } from '@rhds/icons';
-import '@rhds/elements/rh-icon/rh-icon.js';
 
-import { colorSchemeConsumer } from '../../lib/context/color/consumer.js';
+import { themable } from '../../lib/context/color/consumer.js';
+
+import '@rhds/elements/rh-icon/rh-icon.js';
 
 import styles from './rh-tag.css';
 
@@ -33,7 +34,7 @@ import styles from './rh-tag.css';
  *
  */
 @customElement('rh-tag')
-@colorSchemeConsumer
+@themable
 export class RhTag extends LitElement {
   static readonly styles = [styles];
 

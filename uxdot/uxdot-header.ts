@@ -8,10 +8,10 @@ import '@rhds/elements/rh-surface/rh-surface.js';
 
 import styles from './uxdot-header.css';
 
-import { colorSchemeConsumer } from '@rhds/elements/lib/context/color/consumer.js';
+import { themable } from '@rhds/elements/lib/context/color/consumer.js';
 
 @customElement('uxdot-header')
-@colorSchemeConsumer
+@themable
 export class UxdotHeader extends LitElement {
   static styles = [styles];
 

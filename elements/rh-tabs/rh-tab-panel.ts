@@ -2,7 +2,7 @@ import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
-import { colorSchemeConsumer } from '../../lib/context/color/consumer.js';
+import { themable } from '../../lib/context/color/consumer.js';
 
 import styles from './rh-tab-panel.css';
 
@@ -13,7 +13,7 @@ import styles from './rh-tab-panel.css';
  *
  */
 @customElement('rh-tab-panel')
-@colorSchemeConsumer
+@themable
 export class RhTabPanel extends LitElement {
   static readonly styles = [styles];
 

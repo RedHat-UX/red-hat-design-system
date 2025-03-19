@@ -4,7 +4,7 @@ import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
-import { colorSchemeConsumer } from '@rhds/elements/lib/context/color/consumer.js';
+import { themable } from '@rhds/elements/lib/context/color/consumer.js';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 
@@ -15,7 +15,7 @@ import dropdownMenuStyles from './uxdot-sidenav-dropdown-menu.css';
 import dropdownMenuItemStyles from './uxdot-sidenav-dropdown-menu-item.css';
 
 @customElement('uxdot-sidenav')
-@colorSchemeConsumer
+@themable
 export class UxdotSideNav extends LitElement {
   static shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
 

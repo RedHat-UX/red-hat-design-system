@@ -2,7 +2,7 @@ import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
 
-import { colorSchemeConsumer } from '../../lib/context/color/consumer.js';
+import { themable } from '../../lib/context/color/consumer.js';
 
 import styles from './rh-audio-player-scrolling-text-overflow.css';
 
@@ -13,7 +13,7 @@ import styles from './rh-audio-player-scrolling-text-overflow.css';
  *          color of fade effect (should match background)
  */
 @customElement('rh-audio-player-scrolling-text-overflow')
-@colorSchemeConsumer
+@themable
 export class RhAudioPlayerScrollingTextOverflow extends LitElement {
   static readonly styles = [styles];
 

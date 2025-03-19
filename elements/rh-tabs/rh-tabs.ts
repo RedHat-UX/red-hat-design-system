@@ -22,7 +22,7 @@ import { DirController } from '../../lib/DirController.js';
 import { context, type RhTabsContext } from './context.js';
 
 import { colorSchemeProvider, type ColorPalette } from '../../lib/context/color/provider.js';
-import { colorSchemeConsumer } from '../../lib/context/color/consumer.js';
+import { themable } from '../../lib/context/color/consumer.js';
 
 import styles from './rh-tabs.css';
 
@@ -43,7 +43,7 @@ export { RhTab };
  */
 @customElement('rh-tabs')
 @colorSchemeProvider
-@colorSchemeConsumer
+@themable
 export class RhTabs extends LitElement {
   static readonly styles = [styles];
 

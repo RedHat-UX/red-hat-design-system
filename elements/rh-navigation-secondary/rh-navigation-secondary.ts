@@ -9,7 +9,7 @@ import { ComposedEvent } from '@patternfly/pfe-core';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
-import { colorSchemeConsumer } from '../../lib/context/color/consumer.js';
+import { themable } from '../../lib/context/color/consumer.js';
 import { colorSchemeProvider, type ColorPalette } from '../../lib/context/color/provider.js';
 
 import '@rhds/elements/rh-surface/rh-surface.js';
@@ -67,7 +67,7 @@ function focusableChildElements(parent: HTMLElement): NodeListOf<HTMLElement> {
  */
 @customElement('rh-navigation-secondary')
 @colorSchemeProvider
-@colorSchemeConsumer
+@themable
 export class RhNavigationSecondary extends LitElement {
   static readonly styles = [styles];
 

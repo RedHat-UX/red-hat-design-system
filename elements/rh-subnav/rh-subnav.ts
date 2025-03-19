@@ -9,7 +9,7 @@ import { OverflowController } from '@patternfly/pfe-core/controllers/overflow-co
 import '@rhds/elements/rh-icon/rh-icon.js';
 
 import { colorSchemeProvider, type ColorPalette } from '../../lib/context/color/provider.js';
-import { colorSchemeConsumer } from '../../lib/context/color/consumer.js';
+import { themable } from '../../lib/context/color/consumer.js';
 
 import styles from './rh-subnav.css';
 
@@ -23,7 +23,7 @@ import styles from './rh-subnav.css';
  */
 @customElement('rh-subnav')
 @colorSchemeProvider
-@colorSchemeConsumer
+@themable
 export class RhSubnav extends LitElement {
   static readonly styles = [styles];
 

@@ -1,16 +1,21 @@
 import { isServer } from 'lit';
 
-import styles from '@rhds/tokens/css/color-scheme.css.js';
-
 let initialized: boolean;
 
+async function load() {
+  const { default: { cssText } } = await import('@rhds/tokens/css/color-scheme.css.js');
+  const sheet = new CSSStyleSheet();
+  sheet.replaceSync(cssText);
+  document.adoptedStyleSheets = [...(document.adoptedStyleSheets ?? []), sheet];
+}
+
 /**
- * Ensures this element respects themable [color schemes](https://ux.redhat.com/theming/color-palettes/#color-schemes).
+ * Ensures this element is [themable](https://ux.redhat.com/theming/).
  *
- * @param klass element constructor
+ * @param _ element constructor
  * @see https://ux.redhat.com/theming/color-palettes/
  */
-export function colorSchemeConsumer(_: unknown) {
+export function themable(_: unknown) {
   if (isServer) {
     return;
   }
@@ -18,8 +23,6 @@ export function colorSchemeConsumer(_: unknown) {
     ??= (document.documentElement.computedStyleMap?.().has('--rh-color-accent-base')
     ?? !!getComputedStyle(document.documentElement).getPropertyValue('--rh-color-accent-base'));
   if (!initialized) {
-    const sheet = new CSSStyleSheet();
-    sheet.replaceSync(styles.cssText);
-    document.adoptedStyleSheets = [...(document.adoptedStyleSheets ?? []), sheet];
+    load();
   }
 }

@@ -4,7 +4,7 @@ import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
-import { colorSchemeConsumer } from '../../lib/context/color/consumer.js';
+import { themable } from '../../lib/context/color/consumer.js';
 
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
@@ -20,7 +20,7 @@ import { context, type RhAccordionContext } from './context.js';
  *       The content of the accordion panel can be any basic markup including but not limited to div, paragraph, or nested accordion panels.
  */
 @customElement('rh-accordion-panel')
-@colorSchemeConsumer
+@themable
 export class RhAccordionPanel extends LitElement {
   static readonly styles = [styles];
 
