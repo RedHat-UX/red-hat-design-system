@@ -574,11 +574,11 @@ index 0000000..72cf7e1
 +:host([color-palette="darker"]) { --rh-color-surface: var(--rh-color-surface-darker, #1f1f1f); }
 +:host([color-palette="darkest"]) { --rh-color-surface: var(--rh-color-surface-darkest, #151515); }`;
 \ No newline at end of file
-diff --git a/node_modules/@rhds/tokens/css/color-scheme.css b/node_modules/@rhds/tokens/css/color-scheme.css
+diff --git a/node_modules/@rhds/tokens/css/default-theme.css b/node_modules/@rhds/tokens/css/default-theme.css
 new file mode 100644
-index 0000000..b60f245
+index 0000000..2729c32
 --- /dev/null
-+++ b/node_modules/@rhds/tokens/css/color-scheme.css
++++ b/node_modules/@rhds/tokens/css/default-theme.css
 @@ -0,0 +1,289 @@
 +/**
 + * Do not edit directly, this file was auto-generated.
@@ -587,7 +587,7 @@ index 0000000..b60f245
 + */
 +
 +
-+:root, :host {
++:root {
 +  --rh-color-accent-base:
 +    light-dark(
 +      var(--rh-color-accent-base-on-light, #0066cc),
@@ -869,15 +869,15 @@ index 0000000..b60f245
 +      var(--rh-color-text-brand-on-dark, #ee0000)
 +    );
 +}
-diff --git a/node_modules/@rhds/tokens/css/color-context-provider.css.d.ts b/node_modules/@rhds/tokens/css/color-scheme.css.d.ts
+diff --git a/node_modules/@rhds/tokens/css/color-context-provider.css.d.ts b/node_modules/@rhds/tokens/css/default-theme.css.d.ts
 similarity index 100%
 rename from node_modules/@rhds/tokens/css/color-context-provider.css.d.ts
-rename to node_modules/@rhds/tokens/css/color-scheme.css.d.ts
-diff --git a/node_modules/@rhds/tokens/css/color-scheme.css.js b/node_modules/@rhds/tokens/css/color-scheme.css.js
+rename to node_modules/@rhds/tokens/css/default-theme.css.d.ts
+diff --git a/node_modules/@rhds/tokens/css/default-theme.css.js b/node_modules/@rhds/tokens/css/default-theme.css.js
 new file mode 100644
-index 0000000..d77f4e6
+index 0000000..f569d98
 --- /dev/null
-+++ b/node_modules/@rhds/tokens/css/color-scheme.css.js
++++ b/node_modules/@rhds/tokens/css/default-theme.css.js
 @@ -0,0 +1,290 @@
 +/**
 + * Do not edit directly, this file was auto-generated.
@@ -886,7 +886,7 @@ index 0000000..d77f4e6
 + */
 +import { css } from 'lit';
 +export default css `
-+:root, :host {
++:root {
 +  --rh-color-accent-base:
 +    light-dark(
 +      var(--rh-color-accent-base-on-light, #0066cc),
@@ -1168,13 +1168,13 @@ index 0000000..d77f4e6
 +      var(--rh-color-text-brand-on-dark, #ee0000)
 +    );
 +}`;
-+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY29sb3Itc2NoZW1lLmNzcy5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbImNvbG9yLXNjaGVtZS5jc3MudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7Ozs7R0FJRztBQUVILE9BQU8sRUFBRSxHQUFHLEVBQUUsTUFBTSxLQUFLLENBQUM7QUFBQyxlQUFlLEdBQUcsQ0FBQTs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0VBMFIzQyxDQUFDIn0=
++//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZGVmYXVsdC10aGVtZS5jc3MuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJkZWZhdWx0LXRoZW1lLmNzcy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTs7OztHQUlHO0FBRUgsT0FBTyxFQUFFLEdBQUcsRUFBRSxNQUFNLEtBQUssQ0FBQztBQUFDLGVBQWUsR0FBRyxDQUFBOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7RUEwUjNDLENBQUMifQ==
 \ No newline at end of file
-diff --git a/node_modules/@rhds/tokens/css/color-scheme.css.ts b/node_modules/@rhds/tokens/css/color-scheme.css.ts
+diff --git a/node_modules/@rhds/tokens/css/default-theme.css.ts b/node_modules/@rhds/tokens/css/default-theme.css.ts
 new file mode 100644
-index 0000000..cfe6239
+index 0000000..7efdf0e
 --- /dev/null
-+++ b/node_modules/@rhds/tokens/css/color-scheme.css.ts
++++ b/node_modules/@rhds/tokens/css/default-theme.css.ts
 @@ -0,0 +1,289 @@
 +/**
 + * Do not edit directly, this file was auto-generated.
@@ -1183,7 +1183,7 @@ index 0000000..cfe6239
 + */
 +
 +import { css } from 'lit'; export default css`
-+:root, :host {
++:root {
 +  --rh-color-accent-base:
 +    light-dark(
 +      var(--rh-color-accent-base-on-light, #0066cc),
@@ -2042,6 +2042,15 @@ index 0347790..63ec275 100644
            "a": 1
          },
          "isLight": false
+diff --git a/node_modules/@rhds/tokens/js/meta.d.ts b/node_modules/@rhds/tokens/js/meta.d.ts
+deleted file mode 100644
+index 0978a90..0000000
+--- a/node_modules/@rhds/tokens/js/meta.d.ts
++++ /dev/null
+@@ -1,3 +0,0 @@
+-import { ValuesMap } from './types.js';
+-export type * from './types.js';
+-export declare const tokens: DesignTokensMap;
 diff --git a/node_modules/@rhds/tokens/js/meta.js b/node_modules/@rhds/tokens/js/meta.js
 index 628f7ad..753a9a4 100644
 --- a/node_modules/@rhds/tokens/js/meta.js
@@ -2168,6 +2177,15 @@ index 47205f6..a116a84 100644
    ],
    [
      "--rh-color-surface-darker",
+diff --git a/node_modules/@rhds/tokens/js/tokens.d.ts b/node_modules/@rhds/tokens/js/tokens.d.ts
+deleted file mode 100644
+index e5474b4..0000000
+--- a/node_modules/@rhds/tokens/js/tokens.d.ts
++++ /dev/null
+@@ -1,3 +0,0 @@
+-import { ValuesMap } from './types.js';
+-export type * from './types.js';
+-export declare const tokens: ValuesMap;
 diff --git a/node_modules/@rhds/tokens/js/tokens.js b/node_modules/@rhds/tokens/js/tokens.js
 index 520c3d0..6a6a7cd 100644
 --- a/node_modules/@rhds/tokens/js/tokens.js
