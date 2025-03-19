@@ -144,7 +144,7 @@ export class RhNavigationPrimary extends LitElement {
     const { on = 'light' } = this;
     const classes = { compact: this.compact, rtl, on: true, [on]: !!on };
     return html`
-      <nav id="container" class="${classMap(classes)}">
+      <div id="container" class="${classMap(classes)}">
         <div id="bar">
           <div id="logo">
             <slot name="logo">
@@ -180,7 +180,7 @@ export class RhNavigationPrimary extends LitElement {
             <div id="dropdowns" role="list"><slot name="dropdowns"></slot></div>
           </div>
         </div>
-      </nav>
+      </div>
       <rh-navigation-primary-overlay
         .open="${this._overlayOpen}"
         @click="${this.#onOverlayClick}">
