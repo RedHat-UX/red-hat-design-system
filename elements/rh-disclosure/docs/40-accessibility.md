@@ -1,6 +1,6 @@
 ## Keyboard interactions
 
-The disclosure trigger and panel content can be navigated with a keyboard.
+The disclosure trigger button and content within the panel can be navigated with a keyboard.
 
 <uxdot-example>
   <img alt="An open disclosure with a CTA and a closed nested disclosure highlighting the three focusable areas."
@@ -22,8 +22,8 @@ The disclosure trigger and panel content can be navigated with a keyboard.
         <td data-label="Key"><kbd>Tab</kbd></td>
         <td data-label="Result">
           <ul>
-            <li>Moves focus to any interactive elements</li>
-            <li>Moves focus outside, but should not collapse the disclosure</li>
+            <li>Moves focus to the next interactive element</li>
+            <li>Focus can move outside an open disclosure without closing it</li>
           </ul>
         </td>
       </tr>
@@ -31,8 +31,8 @@ The disclosure trigger and panel content can be navigated with a keyboard.
         <td data-label="Key"><kbd>Shift + Tab</kbd></td>
         <td data-label="Result">
           <ul>
-            <li>Moves focus to an interactive element</li>
-            <li>Moves focus to the header panel</li>
+            <li>Moves focus to the previous interactive element</li>
+            <li>Focus can move to the trigger button from within an open disclosure</li>
           </ul>
         </td>
       </tr>
@@ -62,7 +62,7 @@ A logical focus order helps keyboard users operate our websites. Elements need t
 
 ## Touch targets
 
-The large header panels make them easy to select.
+The large disclosure trigger buttons make them easy to select.
 
 <uxdot-example>
   <img alt="A diagram of an open disclosure with a CTA and a closed nested disclosure highlighting the three available touch targets."
