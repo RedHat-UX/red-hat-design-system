@@ -150,11 +150,25 @@
         }
       }
 
-      & slot[name='summary'] {
-        display: none;
+      & #summary {
+        clip: rect(0 0 0 0);
+        clip-path: inset(50%);
+        height: 1px;
+        overflow: hidden;
+        position: absolute;
+        white-space: nowrap;
+        width: 1px;
+      }
 
-        @container navigation-primary (min-width: 992px) {
-          display: contents;
+      @container (min-width: 992px) {
+        & #summary {
+          clip: unset;
+          clip-path: unset;
+          height: auto;
+          overflow: auto;
+          position: static;
+          white-space: normal;
+          width: auto;
         }
       }
     }
