@@ -77,7 +77,7 @@ Only one additional disclosure can be nested to help organize content better. If
 
 ### Hover
 
-The entire header panel surface changes color on hover.
+The entire trigger button surface changes color on hover.
 
 <uxdot-example>
   <img alt="Two open disclosures, one open, one closed. Each showing the gray hover state of the disclosure's trigger."
@@ -103,7 +103,7 @@ The entire header panel surface changes color on hover.
 
 ### Focus and Active
 
-A focus ring wraps around the entire header panel in both focus and active states.
+A focus ring wraps around the entire trigger button in both focus and active states.
 
 <uxdot-example>
   <img alt="Two open disclosures, one open, one closed. Each showing the gray focus state of the disclosure's trigger plus the blue focus outline."
