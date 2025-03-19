@@ -35,8 +35,8 @@
   "imports": {
     "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
-    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
     "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
     "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
@@ -117,13 +117,26 @@
     <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.0/dist/es-module-shims.js"></script>
   <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css"><script type="module">
   import '@rhds/elements/rh-table/rh-table.js';
-</script><script type="module">
+</script><style>
+  .large-red-text {
+    grid-area: h;
+    font-size: var(--rh-font-size-heading-2xl);
+    font-weight: var(--rh-font-weight-heading-regular);
+    font-family: var(--rh-font-family-heading);
+    line-height: var(--rh-line-height-heading);
+    color: var(--rh-color-brand-red);
+    margin-block-end: var(--rh-space-xl);
+  }
+</style><script type="module">
   import '@uxdot/elements/uxdot-header.js';
-</script><link rel="stylesheet" href="/styles/pages/backpage.css"><link rel="stylesheet" href="/assets/packages/@uxdot/elements/uxdot-toc-lightdom.css"><script type="module">
-  // although we load these ssr support modules elsewhere, we still
-  // need them here to ensure no double-rendering on webkit
-  import '/assets/javascript/ssr-support.js';
-  import '@uxdot/elements/uxdot-toc.js';
+</script><link rel="stylesheet" href="/styles/pages/backpage.css"><script type="module">
+  import "@uxdot/elements/uxdot-feedback.js"
+  import '@rhds/elements/rh-cta/rh-cta.js';
+  import '@rhds/elements/rh-footer/rh-footer.js';
+  import '@rhds/elements/rh-alert/rh-alert.js';
+  import '@rhds/elements/rh-subnav/rh-subnav.js';
+  import '@rhds/elements/rh-tag/rh-tag.js';
+  import '@rhds/elements/rh-surface/rh-surface.js';
 </script><script type="module">
   import '@rhds/elements/rh-footer/rh-footer-universal.js';
   import '@rhds/elements/rh-footer/rh-footer-copyright.js';
@@ -210,9 +223,6 @@ a:is(:active, :hover),
 }
 </style><!--lit-part c9HdRUDmBIg=--><!--lit-node 0--><a id="container" href="#main"><slot></slot></a><!--/lit-part--></template>Skip to main content</rh-skip-link>
     
-
-
-
 
 
 <uxdot-masthead  role="banner"><template shadowroot="open" shadowrootmode="open"><style>:host {
@@ -4549,6 +4559,7 @@ a.active {
       <!--lit-node 0--><a class="  " href="/support/"><slot></slot></a>
     <!--/lit-part--></template>Get support</uxdot-sidenav-item></uxdot-sidenav>
 
+
 <rh-surface    id="main" role="main" color-palette="lightest"><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: block;
   background-color: var(--rh-color-surface);
@@ -4690,8 +4701,8 @@ a.active {
 }</style><!--lit-part 6D4ZeB8FY00=--><!--lit-node 0--><slot id="slot"
                       class=" on light palette-lightest "
                       ></slot><!--/lit-part--></template>
-  <article class="has-toc">
-  
+  <article>
+    
 
 
 
@@ -4800,107 +4811,12 @@ a.active {
   
 </uxdot-header>
 
-  
-  <div class="aside">
-    <uxdot-toc  summary="On this page"><template shadowroot="open" shadowrootmode="open"><style>:host {
-  display: block;
-  container-type: inline-size;
-  container-name: host;
-  position: relative;
-}
+    <div class="container">
+      
 
-details {
-  display: flex;
-  padding-inline: var(--rh-space-xl);
-  border-inline-start: var(--rh-border-width-lg) solid transparent;
-  border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle-on-light);
-}
 
-details[open]:after {
-  content: '';
-  position: absolute;
-  inset-block: 0;
-  inset-inline-start: 0;
-  inset-block-start: -1px;
-  width: var(--rh-border-width-lg);
-  background-color: var(--rh-color-brand-red-on-light);
-}
-
-summary {
-  list-style: none;
-  display: inline-flex;
-  gap: var(--rh-space-sm);
-  align-items: center;
-  padding-block: var(--rh-space-lg);
-}
-
-summary,
-.summary {
-  font-family: var(--rh-font-family-body-text);
-  font-size: var(--rh-font-size-body-text-xl) !important;
-  font-weight: var(--rh-font-weight-body-text-medium);
-}
-
-summary:before {
-  content: '';
-  width: 1rem;
-  height: 1rem;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 10 15' fill='none'%3E%3Cg clip-path='url(%23clip0_232_19576)'%3E%3Cpath d='M2.5 14.5L0.5 12.5L5.5 7.5L0.5 2.5L2.5 0.5L9.5 7.5L2.5 14.5Z' fill='%23707070'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_232_19576'%3E%3Crect width='10' height='14' fill='white' transform='matrix(-1 0 0 1 10 0.5)'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-size: contain;
-  transition: 0.2s;
-}
-
-summary::-webkit-details-marker,
-summary::marker {
-  display: none;
-}
-
-details[open] > summary:before {
-  transform: rotate(90deg);
-}
-
-nav {
-  margin-block-end: var(--rh-space-lg);
-}
-
-#expanded {
-  display: none;
-}
-
-@media (min-width: 568px) {
-  details {
-    display: none;
-  }
-
-  #expanded {
-    display: block;
-  }
-}
-</style><!--lit-part zXZqIsCB308=-->
-      <div id="container" part="container">
-        <details>
-          <summary id="summary-sm" class="summary"><!--lit-part-->On this page<!--/lit-part--></summary>
-          <nav aria-labelledby="summary-sm">
-            <slot name="details"></slot>
-          </nav>
-        </details>
-        <div id="expanded">
-          <div id="summary-expanded" class="summary"><!--lit-part-->On this page<!--/lit-part--></div>
-          <nav aria-labelledby="summary-expanded">
-            <slot name="expanded"></slot>
-          </nav>
-        </div>
-      </div>
-    <!--/lit-part--></template>
-      <ol slot="details"><li><a href="#overview">Overview</a></li><li><a href="#usage">Usage</a></li><li><a href="#best-practices">Best practices</a></li><li><a href="#responsive-design">Responsive design</a></li><li><a href="#breakpoints">Breakpoints</a></li></ol><ol slot="expanded"><li><a href="#overview">Overview</a></li><li><a href="#usage">Usage</a></li><li><a href="#best-practices">Best practices</a></li><li><a href="#responsive-design">Responsive design</a></li><li><a href="#breakpoints">Breakpoints</a></li></ol>
-    </uxdot-toc>
-  </div>
-  
-  <div class="container">
-    
-
-<section aria-labelledby="overview">
+<h2 class="large-red-text" id="our-grid-is-the-structural-foundation-for-visual-elements-across-web-experiences">Our grid is the structural foundation for visual elements across web experiences.</h2>
+<p>It helps us create consistent layouts that work across devices, screen sizes, and environments.</p>
 <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: flex;
   margin-block-end: var(--rh-space-lg);
@@ -4973,2261 +4889,12 @@ svg {
     <!--/lit-part--></template></rh-icon>
       </button>
     <!--/lit-part--></template>
-  <h2 id="overview" tabindex="-1">
-    <a href="#overview">Overview</a><a>
+  <h2 id="fixed-grid-values" tabindex="-1">
+    <a href="#fixed-grid-values">Fixed grid values</a><a>
   </a></h2>
 </uxdot-copy-permalink>
-<p>A grid is a group of columns that organize layouts and allow content to scale
-responsively based on screen size. They provide structure to pages and ensure
-optimal viewing experiences.</p>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host {
-  display: flex;
-  margin-block-end: var(--rh-space-lg);
-  align-items: center;
-}
-
-#signifier {
-  display: var(--perma-signifier-display, none);
-}
-
-#button {
-  height: 1.75rem;
-  background: none;
-  border: none;
-  border-radius: var(--rh-border-radius-default);
-  display: none;
-  align-items: center;
-}
-
-#button:is(:hover, :focus) {
-  background: var(--rh-color-surface-light);
-}
-
-:host(:state(--rendered)) #button {
-  display: flex;
-}
-
-::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-  display: flex;
-  margin-block-end: 0 !important;
-  align-items: center;
-  color: inherit;
-  text-decoration: inherit;
-}
-</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button 
-              id="button"
-              aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
-  line-height: 0;
-  aspect-ratio: 1/1;
-  display: inline-flex;
-  place-content: center;
-}
-
-#container {
-  display: contents;
-}
-
-svg {
-  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
-  fill: currentcolor;
-  aspect-ratio: 1/1;
-}
-
-.standard svg {
-  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
-}
-
-.microns svg {
-  width: 12px;
-}
-</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container"
-           aria-hidden="true"
-           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
-    <!--/lit-part--></template>
-  <h3 id="sample-component" tabindex="-1">
-    <a href="#sample-component">Sample component</a><a>
-  </a></h3>
-</uxdot-copy-permalink>
-  <uxdot-example   variant="full" no-border><template shadowroot="open" shadowrootmode="open"><style>:host {
-  display: block;
-  container-type: inline-size;
-  container-name: host;
-  margin-block-end: var(--rh-space-2xl);
-}
-
-:host([transparent]) {
-  --rh-color-surface: transparent;
-}
-
-#container {
-  padding: var(--rh-space-2xl);
-  display: flex;
-  flex-direction: column;
-  align-items: var(--_alignment, center);
-  justify-content: center;
-  border-width: var(--rh-border-width-sm);
-  border-style: solid;
-  border-color: var(--rh-color-border-subtle);
-  border-radius: var(--rh-border-radius-default);
-  background-color: var(--rh-color-surface);
-  color: var(--rh-color-text-primary);
-}
-
-::slotted(*) {
-  display: flex;
-  flex-direction: column;
-  align-items: var(--_alignment, center);
-  justify-content: center;
-  max-width: 100%;
-  height: auto;
-}
-
-.widthAdjustment ::slotted(*) {
-  width: var(--_width);
-}
-
-:host([variant='full']) #container {
-  padding: 0;
-}
-
-:host([danger]) #container {
-  --rh-color-border-subtle: var(--rh-color-border-destructive);
-
-  background-image: url('/assets/best-practices-danger-icon.svg');
-  background-position-x: 8px;
-  background-position-y: 8px;
-  background-repeat: no-repeat;
-}
-
-:host([no-border]:not([danger])) #container {
-  border: none;
-}
-
-@container host (min-width: 576px) {
-  #container {
-    padding: var(--rh-space-3xl);
-  }
-}
-
-@container host (min-width: 768px) {
-  #container {
-    padding: var(--rh-space-4xl);
-  }
-}
-</style><!--lit-part DbmYZodZUIs=-->
-      <!--lit-node 0--><div id="container"
-           part="container"
-           class="on   "
-           style="--_width: 100%; --_alignment: center">
-        <slot></slot>
-      </div>
-    <!--/lit-part--></template>
-    <img alt="Grid" src="/assets/grid/grid.svg" width="1000" height="160">
-  </uxdot-example>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host {
-  display: flex;
-  margin-block-end: var(--rh-space-lg);
-  align-items: center;
-}
-
-#signifier {
-  display: var(--perma-signifier-display, none);
-}
-
-#button {
-  height: 1.75rem;
-  background: none;
-  border: none;
-  border-radius: var(--rh-border-radius-default);
-  display: none;
-  align-items: center;
-}
-
-#button:is(:hover, :focus) {
-  background: var(--rh-color-surface-light);
-}
-
-:host(:state(--rendered)) #button {
-  display: flex;
-}
-
-::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-  display: flex;
-  margin-block-end: 0 !important;
-  align-items: center;
-  color: inherit;
-  text-decoration: inherit;
-}
-</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button 
-              id="button"
-              aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
-  line-height: 0;
-  aspect-ratio: 1/1;
-  display: inline-flex;
-  place-content: center;
-}
-
-#container {
-  display: contents;
-}
-
-svg {
-  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
-  fill: currentcolor;
-  aspect-ratio: 1/1;
-}
-
-.standard svg {
-  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
-}
-
-.microns svg {
-  width: 12px;
-}
-</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container"
-           aria-hidden="true"
-           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
-    <!--/lit-part--></template>
-  <h3 id="grid-availability" tabindex="-1">
-    <a href="#grid-availability">Grid availability</a><a>
-  </a></h3>
-</uxdot-copy-permalink>
-  <uxdot-example   variant="full" no-border><template shadowroot="open" shadowrootmode="open"><style>:host {
-  display: block;
-  container-type: inline-size;
-  container-name: host;
-  margin-block-end: var(--rh-space-2xl);
-}
-
-:host([transparent]) {
-  --rh-color-surface: transparent;
-}
-
-#container {
-  padding: var(--rh-space-2xl);
-  display: flex;
-  flex-direction: column;
-  align-items: var(--_alignment, center);
-  justify-content: center;
-  border-width: var(--rh-border-width-sm);
-  border-style: solid;
-  border-color: var(--rh-color-border-subtle);
-  border-radius: var(--rh-border-radius-default);
-  background-color: var(--rh-color-surface);
-  color: var(--rh-color-text-primary);
-}
-
-::slotted(*) {
-  display: flex;
-  flex-direction: column;
-  align-items: var(--_alignment, center);
-  justify-content: center;
-  max-width: 100%;
-  height: auto;
-}
-
-.widthAdjustment ::slotted(*) {
-  width: var(--_width);
-}
-
-:host([variant='full']) #container {
-  padding: 0;
-}
-
-:host([danger]) #container {
-  --rh-color-border-subtle: var(--rh-color-border-destructive);
-
-  background-image: url('/assets/best-practices-danger-icon.svg');
-  background-position-x: 8px;
-  background-position-y: 8px;
-  background-repeat: no-repeat;
-}
-
-:host([no-border]:not([danger])) #container {
-  border: none;
-}
-
-@container host (min-width: 576px) {
-  #container {
-    padding: var(--rh-space-3xl);
-  }
-}
-
-@container host (min-width: 768px) {
-  #container {
-    padding: var(--rh-space-4xl);
-  }
-}
-</style><!--lit-part DbmYZodZUIs=-->
-      <!--lit-node 0--><div id="container"
-           part="container"
-           class="on   "
-           style="--_width: 100%; --_alignment: center">
-        <slot></slot>
-      </div>
-    <!--/lit-part--></template>
-    (coming soon)
-  </uxdot-example>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host {
-  display: flex;
-  margin-block-end: var(--rh-space-lg);
-  align-items: center;
-}
-
-#signifier {
-  display: var(--perma-signifier-display, none);
-}
-
-#button {
-  height: 1.75rem;
-  background: none;
-  border: none;
-  border-radius: var(--rh-border-radius-default);
-  display: none;
-  align-items: center;
-}
-
-#button:is(:hover, :focus) {
-  background: var(--rh-color-surface-light);
-}
-
-:host(:state(--rendered)) #button {
-  display: flex;
-}
-
-::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-  display: flex;
-  margin-block-end: 0 !important;
-  align-items: center;
-  color: inherit;
-  text-decoration: inherit;
-}
-</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button 
-              id="button"
-              aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
-  line-height: 0;
-  aspect-ratio: 1/1;
-  display: inline-flex;
-  place-content: center;
-}
-
-#container {
-  display: contents;
-}
-
-svg {
-  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
-  fill: currentcolor;
-  aspect-ratio: 1/1;
-}
-
-.standard svg {
-  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
-}
-
-.microns svg {
-  width: 12px;
-}
-</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container"
-           aria-hidden="true"
-           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
-    <!--/lit-part--></template>
-  <h3 id="style" tabindex="-1">
-    <a href="#style">Style</a><a>
-  </a></h3>
-</uxdot-copy-permalink>
-  <uxdot-example   variant="full" no-border><template shadowroot="open" shadowrootmode="open"><style>:host {
-  display: block;
-  container-type: inline-size;
-  container-name: host;
-  margin-block-end: var(--rh-space-2xl);
-}
-
-:host([transparent]) {
-  --rh-color-surface: transparent;
-}
-
-#container {
-  padding: var(--rh-space-2xl);
-  display: flex;
-  flex-direction: column;
-  align-items: var(--_alignment, center);
-  justify-content: center;
-  border-width: var(--rh-border-width-sm);
-  border-style: solid;
-  border-color: var(--rh-color-border-subtle);
-  border-radius: var(--rh-border-radius-default);
-  background-color: var(--rh-color-surface);
-  color: var(--rh-color-text-primary);
-}
-
-::slotted(*) {
-  display: flex;
-  flex-direction: column;
-  align-items: var(--_alignment, center);
-  justify-content: center;
-  max-width: 100%;
-  height: auto;
-}
-
-.widthAdjustment ::slotted(*) {
-  width: var(--_width);
-}
-
-:host([variant='full']) #container {
-  padding: 0;
-}
-
-:host([danger]) #container {
-  --rh-color-border-subtle: var(--rh-color-border-destructive);
-
-  background-image: url('/assets/best-practices-danger-icon.svg');
-  background-position-x: 8px;
-  background-position-y: 8px;
-  background-repeat: no-repeat;
-}
-
-:host([no-border]:not([danger])) #container {
-  border: none;
-}
-
-@container host (min-width: 576px) {
-  #container {
-    padding: var(--rh-space-3xl);
-  }
-}
-
-@container host (min-width: 768px) {
-  #container {
-    padding: var(--rh-space-4xl);
-  }
-}
-</style><!--lit-part DbmYZodZUIs=-->
-      <!--lit-node 0--><div id="container"
-           part="container"
-           class="on   "
-           style="--_width: 100%; --_alignment: center">
-        <slot></slot>
-      </div>
-    <!--/lit-part--></template>
-    <img alt="Grid specs" src="/assets/grid/grid-style.svg" width="877" height="193">
-  </uxdot-example>
-</section>
-<section aria-labelledby="usage">
-<uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host {
-  display: flex;
-  margin-block-end: var(--rh-space-lg);
-  align-items: center;
-}
-
-#signifier {
-  display: var(--perma-signifier-display, none);
-}
-
-#button {
-  height: 1.75rem;
-  background: none;
-  border: none;
-  border-radius: var(--rh-border-radius-default);
-  display: none;
-  align-items: center;
-}
-
-#button:is(:hover, :focus) {
-  background: var(--rh-color-surface-light);
-}
-
-:host(:state(--rendered)) #button {
-  display: flex;
-}
-
-::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-  display: flex;
-  margin-block-end: 0 !important;
-  align-items: center;
-  color: inherit;
-  text-decoration: inherit;
-}
-</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button 
-              id="button"
-              aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
-  line-height: 0;
-  aspect-ratio: 1/1;
-  display: inline-flex;
-  place-content: center;
-}
-
-#container {
-  display: contents;
-}
-
-svg {
-  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
-  fill: currentcolor;
-  aspect-ratio: 1/1;
-}
-
-.standard svg {
-  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
-}
-
-.microns svg {
-  width: 12px;
-}
-</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container"
-           aria-hidden="true"
-           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
-    <!--/lit-part--></template>
-  <h2 id="usage" tabindex="-1">
-    <a href="#usage">Usage</a><a>
-  </a></h2>
-</uxdot-copy-permalink>
-<p>Grids are fundamental to how content is organized across various devices and
-screen sizes.</p>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host {
-  display: flex;
-  margin-block-end: var(--rh-space-lg);
-  align-items: center;
-}
-
-#signifier {
-  display: var(--perma-signifier-display, none);
-}
-
-#button {
-  height: 1.75rem;
-  background: none;
-  border: none;
-  border-radius: var(--rh-border-radius-default);
-  display: none;
-  align-items: center;
-}
-
-#button:is(:hover, :focus) {
-  background: var(--rh-color-surface-light);
-}
-
-:host(:state(--rendered)) #button {
-  display: flex;
-}
-
-::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-  display: flex;
-  margin-block-end: 0 !important;
-  align-items: center;
-  color: inherit;
-  text-decoration: inherit;
-}
-</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button 
-              id="button"
-              aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
-  line-height: 0;
-  aspect-ratio: 1/1;
-  display: inline-flex;
-  place-content: center;
-}
-
-#container {
-  display: contents;
-}
-
-svg {
-  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
-  fill: currentcolor;
-  aspect-ratio: 1/1;
-}
-
-.standard svg {
-  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
-}
-
-.microns svg {
-  width: 12px;
-}
-</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container"
-           aria-hidden="true"
-           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
-    <!--/lit-part--></template>
-  <h3 id="columns" tabindex="-1">
-    <a href="#columns">Columns</a><a>
-  </a></h3>
-</uxdot-copy-permalink>
-<p>The number of columns that a grid contains is determined by the screen size.</p>
-  <uxdot-example    variant="full" no-border alignment="left"><template shadowroot="open" shadowrootmode="open"><style>:host {
-  display: block;
-  container-type: inline-size;
-  container-name: host;
-  margin-block-end: var(--rh-space-2xl);
-}
-
-:host([transparent]) {
-  --rh-color-surface: transparent;
-}
-
-#container {
-  padding: var(--rh-space-2xl);
-  display: flex;
-  flex-direction: column;
-  align-items: var(--_alignment, center);
-  justify-content: center;
-  border-width: var(--rh-border-width-sm);
-  border-style: solid;
-  border-color: var(--rh-color-border-subtle);
-  border-radius: var(--rh-border-radius-default);
-  background-color: var(--rh-color-surface);
-  color: var(--rh-color-text-primary);
-}
-
-::slotted(*) {
-  display: flex;
-  flex-direction: column;
-  align-items: var(--_alignment, center);
-  justify-content: center;
-  max-width: 100%;
-  height: auto;
-}
-
-.widthAdjustment ::slotted(*) {
-  width: var(--_width);
-}
-
-:host([variant='full']) #container {
-  padding: 0;
-}
-
-:host([danger]) #container {
-  --rh-color-border-subtle: var(--rh-color-border-destructive);
-
-  background-image: url('/assets/best-practices-danger-icon.svg');
-  background-position-x: 8px;
-  background-position-y: 8px;
-  background-repeat: no-repeat;
-}
-
-:host([no-border]:not([danger])) #container {
-  border: none;
-}
-
-@container host (min-width: 576px) {
-  #container {
-    padding: var(--rh-space-3xl);
-  }
-}
-
-@container host (min-width: 768px) {
-  #container {
-    padding: var(--rh-space-4xl);
-  }
-}
-</style><!--lit-part DbmYZodZUIs=-->
-      <!--lit-node 0--><div id="container"
-           part="container"
-           class="on   "
-           style="--_width: 100%; --_alignment: left">
-        <slot></slot>
-      </div>
-    <!--/lit-part--></template>
-    <figure>
-      <img alt="Grid columns on desktop" src="/assets/grid/grid-usage-desktop.svg" width="1000" height="232">
-      <figcaption>A grid on large screens contains 12 columns</figcaption>
-    </figure>
-  </uxdot-example>
-  <uxdot-example     variant="full" no-border alignment="left" width-adjustment="576px"><template shadowroot="open" shadowrootmode="open"><style>:host {
-  display: block;
-  container-type: inline-size;
-  container-name: host;
-  margin-block-end: var(--rh-space-2xl);
-}
-
-:host([transparent]) {
-  --rh-color-surface: transparent;
-}
-
-#container {
-  padding: var(--rh-space-2xl);
-  display: flex;
-  flex-direction: column;
-  align-items: var(--_alignment, center);
-  justify-content: center;
-  border-width: var(--rh-border-width-sm);
-  border-style: solid;
-  border-color: var(--rh-color-border-subtle);
-  border-radius: var(--rh-border-radius-default);
-  background-color: var(--rh-color-surface);
-  color: var(--rh-color-text-primary);
-}
-
-::slotted(*) {
-  display: flex;
-  flex-direction: column;
-  align-items: var(--_alignment, center);
-  justify-content: center;
-  max-width: 100%;
-  height: auto;
-}
-
-.widthAdjustment ::slotted(*) {
-  width: var(--_width);
-}
-
-:host([variant='full']) #container {
-  padding: 0;
-}
-
-:host([danger]) #container {
-  --rh-color-border-subtle: var(--rh-color-border-destructive);
-
-  background-image: url('/assets/best-practices-danger-icon.svg');
-  background-position-x: 8px;
-  background-position-y: 8px;
-  background-repeat: no-repeat;
-}
-
-:host([no-border]:not([danger])) #container {
-  border: none;
-}
-
-@container host (min-width: 576px) {
-  #container {
-    padding: var(--rh-space-3xl);
-  }
-}
-
-@container host (min-width: 768px) {
-  #container {
-    padding: var(--rh-space-4xl);
-  }
-}
-</style><!--lit-part DbmYZodZUIs=-->
-      <!--lit-node 0--><div id="container"
-           part="container"
-           class="on  widthAdjustment "
-           style="--_width: 576px; --_alignment: left">
-        <slot></slot>
-      </div>
-    <!--/lit-part--></template>
-    <figure>
-      <img alt="Grid columns on mobile" src="/assets/grid/grid-usage-mobile.svg" width="576" height="232">
-      <figcaption>A grid on small screens contains one column</figcaption>
-    </figure>
-  </uxdot-example>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host {
-  display: flex;
-  margin-block-end: var(--rh-space-lg);
-  align-items: center;
-}
-
-#signifier {
-  display: var(--perma-signifier-display, none);
-}
-
-#button {
-  height: 1.75rem;
-  background: none;
-  border: none;
-  border-radius: var(--rh-border-radius-default);
-  display: none;
-  align-items: center;
-}
-
-#button:is(:hover, :focus) {
-  background: var(--rh-color-surface-light);
-}
-
-:host(:state(--rendered)) #button {
-  display: flex;
-}
-
-::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-  display: flex;
-  margin-block-end: 0 !important;
-  align-items: center;
-  color: inherit;
-  text-decoration: inherit;
-}
-</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button 
-              id="button"
-              aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
-  line-height: 0;
-  aspect-ratio: 1/1;
-  display: inline-flex;
-  place-content: center;
-}
-
-#container {
-  display: contents;
-}
-
-svg {
-  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
-  fill: currentcolor;
-  aspect-ratio: 1/1;
-}
-
-.standard svg {
-  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
-}
-
-.microns svg {
-  width: 12px;
-}
-</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container"
-           aria-hidden="true"
-           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
-    <!--/lit-part--></template>
-  <h3 id="gutters" tabindex="-1">
-    <a href="#gutters">Gutters</a><a>
-  </a></h3>
-</uxdot-copy-permalink>
-<p>Gutters are the spaces in between columns, they also change depending on the
-screen size. Gutters help separate content into layouts based on the amount of
-columns being used.</p>
-  <div class="grid">
-    <uxdot-example   variant="full" no-border><template shadowroot="open" shadowrootmode="open"><style>:host {
-  display: block;
-  container-type: inline-size;
-  container-name: host;
-  margin-block-end: var(--rh-space-2xl);
-}
-
-:host([transparent]) {
-  --rh-color-surface: transparent;
-}
-
-#container {
-  padding: var(--rh-space-2xl);
-  display: flex;
-  flex-direction: column;
-  align-items: var(--_alignment, center);
-  justify-content: center;
-  border-width: var(--rh-border-width-sm);
-  border-style: solid;
-  border-color: var(--rh-color-border-subtle);
-  border-radius: var(--rh-border-radius-default);
-  background-color: var(--rh-color-surface);
-  color: var(--rh-color-text-primary);
-}
-
-::slotted(*) {
-  display: flex;
-  flex-direction: column;
-  align-items: var(--_alignment, center);
-  justify-content: center;
-  max-width: 100%;
-  height: auto;
-}
-
-.widthAdjustment ::slotted(*) {
-  width: var(--_width);
-}
-
-:host([variant='full']) #container {
-  padding: 0;
-}
-
-:host([danger]) #container {
-  --rh-color-border-subtle: var(--rh-color-border-destructive);
-
-  background-image: url('/assets/best-practices-danger-icon.svg');
-  background-position-x: 8px;
-  background-position-y: 8px;
-  background-repeat: no-repeat;
-}
-
-:host([no-border]:not([danger])) #container {
-  border: none;
-}
-
-@container host (min-width: 576px) {
-  #container {
-    padding: var(--rh-space-3xl);
-  }
-}
-
-@container host (min-width: 768px) {
-  #container {
-    padding: var(--rh-space-4xl);
-  }
-}
-</style><!--lit-part DbmYZodZUIs=-->
-      <!--lit-node 0--><div id="container"
-           part="container"
-           class="on   "
-           style="--_width: 100%; --_alignment: center">
-        <slot></slot>
-      </div>
-    <!--/lit-part--></template>
-      <img alt="Grid gutters on desktop" src="/assets/grid/grid-gutters-desktop.svg" width="1000" height="262">
-    </uxdot-example>
-    <uxdot-example     variant="full" no-border alignment="left" width-adjustment="576px"><template shadowroot="open" shadowrootmode="open"><style>:host {
-  display: block;
-  container-type: inline-size;
-  container-name: host;
-  margin-block-end: var(--rh-space-2xl);
-}
-
-:host([transparent]) {
-  --rh-color-surface: transparent;
-}
-
-#container {
-  padding: var(--rh-space-2xl);
-  display: flex;
-  flex-direction: column;
-  align-items: var(--_alignment, center);
-  justify-content: center;
-  border-width: var(--rh-border-width-sm);
-  border-style: solid;
-  border-color: var(--rh-color-border-subtle);
-  border-radius: var(--rh-border-radius-default);
-  background-color: var(--rh-color-surface);
-  color: var(--rh-color-text-primary);
-}
-
-::slotted(*) {
-  display: flex;
-  flex-direction: column;
-  align-items: var(--_alignment, center);
-  justify-content: center;
-  max-width: 100%;
-  height: auto;
-}
-
-.widthAdjustment ::slotted(*) {
-  width: var(--_width);
-}
-
-:host([variant='full']) #container {
-  padding: 0;
-}
-
-:host([danger]) #container {
-  --rh-color-border-subtle: var(--rh-color-border-destructive);
-
-  background-image: url('/assets/best-practices-danger-icon.svg');
-  background-position-x: 8px;
-  background-position-y: 8px;
-  background-repeat: no-repeat;
-}
-
-:host([no-border]:not([danger])) #container {
-  border: none;
-}
-
-@container host (min-width: 576px) {
-  #container {
-    padding: var(--rh-space-3xl);
-  }
-}
-
-@container host (min-width: 768px) {
-  #container {
-    padding: var(--rh-space-4xl);
-  }
-}
-</style><!--lit-part DbmYZodZUIs=-->
-      <!--lit-node 0--><div id="container"
-           part="container"
-           class="on  widthAdjustment "
-           style="--_width: 576px; --_alignment: left">
-        <slot></slot>
-      </div>
-    <!--/lit-part--></template>
-      <img alt="Grid gutters on mobile" src="/assets/grid/grid-gutters-mobile.svg" width="576" height="266">
-    </uxdot-example>
-  </div>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host {
-  display: flex;
-  margin-block-end: var(--rh-space-lg);
-  align-items: center;
-}
-
-#signifier {
-  display: var(--perma-signifier-display, none);
-}
-
-#button {
-  height: 1.75rem;
-  background: none;
-  border: none;
-  border-radius: var(--rh-border-radius-default);
-  display: none;
-  align-items: center;
-}
-
-#button:is(:hover, :focus) {
-  background: var(--rh-color-surface-light);
-}
-
-:host(:state(--rendered)) #button {
-  display: flex;
-}
-
-::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-  display: flex;
-  margin-block-end: 0 !important;
-  align-items: center;
-  color: inherit;
-  text-decoration: inherit;
-}
-</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button 
-              id="button"
-              aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
-  line-height: 0;
-  aspect-ratio: 1/1;
-  display: inline-flex;
-  place-content: center;
-}
-
-#container {
-  display: contents;
-}
-
-svg {
-  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
-  fill: currentcolor;
-  aspect-ratio: 1/1;
-}
-
-.standard svg {
-  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
-}
-
-.microns svg {
-  width: 12px;
-}
-</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container"
-           aria-hidden="true"
-           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
-    <!--/lit-part--></template>
-  <h3 id="margins" tabindex="-1">
-    <a href="#margins">Margins</a><a>
-  </a></h3>
-</uxdot-copy-permalink>
-<p>Margins are the spaces between a grid and the edges of the screen or window.
-They can be the same width or larger than gutters, depending on the screen
-size.</p>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host {
-  display: flex;
-  margin-block-end: var(--rh-space-lg);
-  align-items: center;
-}
-
-#signifier {
-  display: var(--perma-signifier-display, none);
-}
-
-#button {
-  height: 1.75rem;
-  background: none;
-  border: none;
-  border-radius: var(--rh-border-radius-default);
-  display: none;
-  align-items: center;
-}
-
-#button:is(:hover, :focus) {
-  background: var(--rh-color-surface-light);
-}
-
-:host(:state(--rendered)) #button {
-  display: flex;
-}
-
-::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-  display: flex;
-  margin-block-end: 0 !important;
-  align-items: center;
-  color: inherit;
-  text-decoration: inherit;
-}
-</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button 
-              id="button"
-              aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
-  line-height: 0;
-  aspect-ratio: 1/1;
-  display: inline-flex;
-  place-content: center;
-}
-
-#container {
-  display: contents;
-}
-
-svg {
-  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
-  fill: currentcolor;
-  aspect-ratio: 1/1;
-}
-
-.standard svg {
-  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
-}
-
-.microns svg {
-  width: 12px;
-}
-</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container"
-           aria-hidden="true"
-           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
-    <!--/lit-part--></template>
-  <h3 id="large-screens" tabindex="-1">
-    <a href="#large-screens">Large screens</a><a>
-  </a></h3>
-</uxdot-copy-permalink>
-<p>The grid for large screens features 12 columns, like desktop and tablet.
-Column, gutter, and margin widths reduce as breakpoints get smaller.</p>
-  <uxdot-example   variant="full" no-border><template shadowroot="open" shadowrootmode="open"><style>:host {
-  display: block;
-  container-type: inline-size;
-  container-name: host;
-  margin-block-end: var(--rh-space-2xl);
-}
-
-:host([transparent]) {
-  --rh-color-surface: transparent;
-}
-
-#container {
-  padding: var(--rh-space-2xl);
-  display: flex;
-  flex-direction: column;
-  align-items: var(--_alignment, center);
-  justify-content: center;
-  border-width: var(--rh-border-width-sm);
-  border-style: solid;
-  border-color: var(--rh-color-border-subtle);
-  border-radius: var(--rh-border-radius-default);
-  background-color: var(--rh-color-surface);
-  color: var(--rh-color-text-primary);
-}
-
-::slotted(*) {
-  display: flex;
-  flex-direction: column;
-  align-items: var(--_alignment, center);
-  justify-content: center;
-  max-width: 100%;
-  height: auto;
-}
-
-.widthAdjustment ::slotted(*) {
-  width: var(--_width);
-}
-
-:host([variant='full']) #container {
-  padding: 0;
-}
-
-:host([danger]) #container {
-  --rh-color-border-subtle: var(--rh-color-border-destructive);
-
-  background-image: url('/assets/best-practices-danger-icon.svg');
-  background-position-x: 8px;
-  background-position-y: 8px;
-  background-repeat: no-repeat;
-}
-
-:host([no-border]:not([danger])) #container {
-  border: none;
-}
-
-@container host (min-width: 576px) {
-  #container {
-    padding: var(--rh-space-3xl);
-  }
-}
-
-@container host (min-width: 768px) {
-  #container {
-    padding: var(--rh-space-4xl);
-  }
-}
-</style><!--lit-part DbmYZodZUIs=-->
-      <!--lit-node 0--><div id="container"
-           part="container"
-           class="on   "
-           style="--_width: 100%; --_alignment: center">
-        <slot></slot>
-      </div>
-    <!--/lit-part--></template>
-    <img alt="Grid margins on desktop" src="/assets/grid/grid-margins-desktop.svg" width="1000" height="265">
-  </uxdot-example>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host {
-  display: flex;
-  margin-block-end: var(--rh-space-lg);
-  align-items: center;
-}
-
-#signifier {
-  display: var(--perma-signifier-display, none);
-}
-
-#button {
-  height: 1.75rem;
-  background: none;
-  border: none;
-  border-radius: var(--rh-border-radius-default);
-  display: none;
-  align-items: center;
-}
-
-#button:is(:hover, :focus) {
-  background: var(--rh-color-surface-light);
-}
-
-:host(:state(--rendered)) #button {
-  display: flex;
-}
-
-::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-  display: flex;
-  margin-block-end: 0 !important;
-  align-items: center;
-  color: inherit;
-  text-decoration: inherit;
-}
-</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button 
-              id="button"
-              aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
-  line-height: 0;
-  aspect-ratio: 1/1;
-  display: inline-flex;
-  place-content: center;
-}
-
-#container {
-  display: contents;
-}
-
-svg {
-  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
-  fill: currentcolor;
-  aspect-ratio: 1/1;
-}
-
-.standard svg {
-  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
-}
-
-.microns svg {
-  width: 12px;
-}
-</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container"
-           aria-hidden="true"
-           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
-    <!--/lit-part--></template>
-  <h3 id="small-screens" tabindex="-1">
-    <a href="#small-screens">Small screens</a><a>
-  </a></h3>
-</uxdot-copy-permalink>
-<p>The grid for small screens features one column. In rare cases, content on
-small screens can sometimes be arranged in two columns.</p>
-  <uxdot-example     variant="full" no-border alignment="left" width-adjustment="576px"><template shadowroot="open" shadowrootmode="open"><style>:host {
-  display: block;
-  container-type: inline-size;
-  container-name: host;
-  margin-block-end: var(--rh-space-2xl);
-}
-
-:host([transparent]) {
-  --rh-color-surface: transparent;
-}
-
-#container {
-  padding: var(--rh-space-2xl);
-  display: flex;
-  flex-direction: column;
-  align-items: var(--_alignment, center);
-  justify-content: center;
-  border-width: var(--rh-border-width-sm);
-  border-style: solid;
-  border-color: var(--rh-color-border-subtle);
-  border-radius: var(--rh-border-radius-default);
-  background-color: var(--rh-color-surface);
-  color: var(--rh-color-text-primary);
-}
-
-::slotted(*) {
-  display: flex;
-  flex-direction: column;
-  align-items: var(--_alignment, center);
-  justify-content: center;
-  max-width: 100%;
-  height: auto;
-}
-
-.widthAdjustment ::slotted(*) {
-  width: var(--_width);
-}
-
-:host([variant='full']) #container {
-  padding: 0;
-}
-
-:host([danger]) #container {
-  --rh-color-border-subtle: var(--rh-color-border-destructive);
-
-  background-image: url('/assets/best-practices-danger-icon.svg');
-  background-position-x: 8px;
-  background-position-y: 8px;
-  background-repeat: no-repeat;
-}
-
-:host([no-border]:not([danger])) #container {
-  border: none;
-}
-
-@container host (min-width: 576px) {
-  #container {
-    padding: var(--rh-space-3xl);
-  }
-}
-
-@container host (min-width: 768px) {
-  #container {
-    padding: var(--rh-space-4xl);
-  }
-}
-</style><!--lit-part DbmYZodZUIs=-->
-      <!--lit-node 0--><div id="container"
-           part="container"
-           class="on  widthAdjustment "
-           style="--_width: 576px; --_alignment: left">
-        <slot></slot>
-      </div>
-    <!--/lit-part--></template>
-    <img alt="Grid margins on mobile" src="/assets/grid/grid-margins-mobile.svg" width="574" height="266">
-  </uxdot-example>
-</section>
-<section aria-labelledby="best-practices">
-<uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host {
-  display: flex;
-  margin-block-end: var(--rh-space-lg);
-  align-items: center;
-}
-
-#signifier {
-  display: var(--perma-signifier-display, none);
-}
-
-#button {
-  height: 1.75rem;
-  background: none;
-  border: none;
-  border-radius: var(--rh-border-radius-default);
-  display: none;
-  align-items: center;
-}
-
-#button:is(:hover, :focus) {
-  background: var(--rh-color-surface-light);
-}
-
-:host(:state(--rendered)) #button {
-  display: flex;
-}
-
-::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-  display: flex;
-  margin-block-end: 0 !important;
-  align-items: center;
-  color: inherit;
-  text-decoration: inherit;
-}
-</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button 
-              id="button"
-              aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
-  line-height: 0;
-  aspect-ratio: 1/1;
-  display: inline-flex;
-  place-content: center;
-}
-
-#container {
-  display: contents;
-}
-
-svg {
-  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
-  fill: currentcolor;
-  aspect-ratio: 1/1;
-}
-
-.standard svg {
-  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
-}
-
-.microns svg {
-  width: 12px;
-}
-</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container"
-           aria-hidden="true"
-           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
-    <!--/lit-part--></template>
-  <h2 id="best-practices" tabindex="-1">
-    <a href="#best-practices">Best practices</a><a>
-  </a></h2>
-</uxdot-copy-permalink>
-<p>Don’t align every component to the grid, doing so might compromise the design
-of individual elements.</p>
-  <uxdot-example    variant="full" no-border alignment="left"><template shadowroot="open" shadowrootmode="open"><style>:host {
-  display: block;
-  container-type: inline-size;
-  container-name: host;
-  margin-block-end: var(--rh-space-2xl);
-}
-
-:host([transparent]) {
-  --rh-color-surface: transparent;
-}
-
-#container {
-  padding: var(--rh-space-2xl);
-  display: flex;
-  flex-direction: column;
-  align-items: var(--_alignment, center);
-  justify-content: center;
-  border-width: var(--rh-border-width-sm);
-  border-style: solid;
-  border-color: var(--rh-color-border-subtle);
-  border-radius: var(--rh-border-radius-default);
-  background-color: var(--rh-color-surface);
-  color: var(--rh-color-text-primary);
-}
-
-::slotted(*) {
-  display: flex;
-  flex-direction: column;
-  align-items: var(--_alignment, center);
-  justify-content: center;
-  max-width: 100%;
-  height: auto;
-}
-
-.widthAdjustment ::slotted(*) {
-  width: var(--_width);
-}
-
-:host([variant='full']) #container {
-  padding: 0;
-}
-
-:host([danger]) #container {
-  --rh-color-border-subtle: var(--rh-color-border-destructive);
-
-  background-image: url('/assets/best-practices-danger-icon.svg');
-  background-position-x: 8px;
-  background-position-y: 8px;
-  background-repeat: no-repeat;
-}
-
-:host([no-border]:not([danger])) #container {
-  border: none;
-}
-
-@container host (min-width: 576px) {
-  #container {
-    padding: var(--rh-space-3xl);
-  }
-}
-
-@container host (min-width: 768px) {
-  #container {
-    padding: var(--rh-space-4xl);
-  }
-}
-</style><!--lit-part DbmYZodZUIs=-->
-      <!--lit-node 0--><div id="container"
-           part="container"
-           class="on   "
-           style="--_width: 100%; --_alignment: left">
-        <slot></slot>
-      </div>
-    <!--/lit-part--></template>
-    <figure>
-      <img alt="Grid content outside of grid" src="/assets/grid/grid-best-practices-1.svg" width="872" height="427">
-      <figcaption>18px or larger text shouldn't exceed eight columns to maintain optimal readability.</figcaption>
-    </figure>
-  </uxdot-example>
-  <uxdot-example   variant="full" no-border><template shadowroot="open" shadowrootmode="open"><style>:host {
-  display: block;
-  container-type: inline-size;
-  container-name: host;
-  margin-block-end: var(--rh-space-2xl);
-}
-
-:host([transparent]) {
-  --rh-color-surface: transparent;
-}
-
-#container {
-  padding: var(--rh-space-2xl);
-  display: flex;
-  flex-direction: column;
-  align-items: var(--_alignment, center);
-  justify-content: center;
-  border-width: var(--rh-border-width-sm);
-  border-style: solid;
-  border-color: var(--rh-color-border-subtle);
-  border-radius: var(--rh-border-radius-default);
-  background-color: var(--rh-color-surface);
-  color: var(--rh-color-text-primary);
-}
-
-::slotted(*) {
-  display: flex;
-  flex-direction: column;
-  align-items: var(--_alignment, center);
-  justify-content: center;
-  max-width: 100%;
-  height: auto;
-}
-
-.widthAdjustment ::slotted(*) {
-  width: var(--_width);
-}
-
-:host([variant='full']) #container {
-  padding: 0;
-}
-
-:host([danger]) #container {
-  --rh-color-border-subtle: var(--rh-color-border-destructive);
-
-  background-image: url('/assets/best-practices-danger-icon.svg');
-  background-position-x: 8px;
-  background-position-y: 8px;
-  background-repeat: no-repeat;
-}
-
-:host([no-border]:not([danger])) #container {
-  border: none;
-}
-
-@container host (min-width: 576px) {
-  #container {
-    padding: var(--rh-space-3xl);
-  }
-}
-
-@container host (min-width: 768px) {
-  #container {
-    padding: var(--rh-space-4xl);
-  }
-}
-</style><!--lit-part DbmYZodZUIs=-->
-      <!--lit-node 0--><div id="container"
-           part="container"
-           class="on   "
-           style="--_width: 100%; --_alignment: center">
-        <slot></slot>
-      </div>
-    <!--/lit-part--></template>
-    <img alt="Grid alignment issues" src="/assets/grid/grid-best-practices-2.svg" width="872" height="158">
-  </uxdot-example>
-</section>
-<section aria-labelledby="responsive-design">
-<uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host {
-  display: flex;
-  margin-block-end: var(--rh-space-lg);
-  align-items: center;
-}
-
-#signifier {
-  display: var(--perma-signifier-display, none);
-}
-
-#button {
-  height: 1.75rem;
-  background: none;
-  border: none;
-  border-radius: var(--rh-border-radius-default);
-  display: none;
-  align-items: center;
-}
-
-#button:is(:hover, :focus) {
-  background: var(--rh-color-surface-light);
-}
-
-:host(:state(--rendered)) #button {
-  display: flex;
-}
-
-::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-  display: flex;
-  margin-block-end: 0 !important;
-  align-items: center;
-  color: inherit;
-  text-decoration: inherit;
-}
-</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button 
-              id="button"
-              aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
-  line-height: 0;
-  aspect-ratio: 1/1;
-  display: inline-flex;
-  place-content: center;
-}
-
-#container {
-  display: contents;
-}
-
-svg {
-  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
-  fill: currentcolor;
-  aspect-ratio: 1/1;
-}
-
-.standard svg {
-  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
-}
-
-.microns svg {
-  width: 12px;
-}
-</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container"
-           aria-hidden="true"
-           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
-    <!--/lit-part--></template>
-  <h2 id="responsive-design" tabindex="-1">
-    <a href="#responsive-design">Responsive design</a><a>
-  </a></h2>
-</uxdot-copy-permalink>
-<p>Grids are designed to be responsive, meaning they adapt to different screen
-sizes and orientations.</p>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host {
-  display: flex;
-  margin-block-end: var(--rh-space-lg);
-  align-items: center;
-}
-
-#signifier {
-  display: var(--perma-signifier-display, none);
-}
-
-#button {
-  height: 1.75rem;
-  background: none;
-  border: none;
-  border-radius: var(--rh-border-radius-default);
-  display: none;
-  align-items: center;
-}
-
-#button:is(:hover, :focus) {
-  background: var(--rh-color-surface-light);
-}
-
-:host(:state(--rendered)) #button {
-  display: flex;
-}
-
-::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-  display: flex;
-  margin-block-end: 0 !important;
-  align-items: center;
-  color: inherit;
-  text-decoration: inherit;
-}
-</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button 
-              id="button"
-              aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
-  line-height: 0;
-  aspect-ratio: 1/1;
-  display: inline-flex;
-  place-content: center;
-}
-
-#container {
-  display: contents;
-}
-
-svg {
-  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
-  fill: currentcolor;
-  aspect-ratio: 1/1;
-}
-
-.standard svg {
-  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
-}
-
-.microns svg {
-  width: 12px;
-}
-</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container"
-           aria-hidden="true"
-           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
-    <!--/lit-part--></template>
-  <h3 id="large-screens-1" tabindex="-1">
-    <a href="#large-screens-1">Large screens</a><a>
-  </a></h3>
-</uxdot-copy-permalink>
-<p>The grid for large screens features 12 columns, like desktop and tablet.
-Column, gutter, and margin widths reduce as breakpoints get smaller.</p>
-  <uxdot-example   variant="full" no-border><template shadowroot="open" shadowrootmode="open"><style>:host {
-  display: block;
-  container-type: inline-size;
-  container-name: host;
-  margin-block-end: var(--rh-space-2xl);
-}
-
-:host([transparent]) {
-  --rh-color-surface: transparent;
-}
-
-#container {
-  padding: var(--rh-space-2xl);
-  display: flex;
-  flex-direction: column;
-  align-items: var(--_alignment, center);
-  justify-content: center;
-  border-width: var(--rh-border-width-sm);
-  border-style: solid;
-  border-color: var(--rh-color-border-subtle);
-  border-radius: var(--rh-border-radius-default);
-  background-color: var(--rh-color-surface);
-  color: var(--rh-color-text-primary);
-}
-
-::slotted(*) {
-  display: flex;
-  flex-direction: column;
-  align-items: var(--_alignment, center);
-  justify-content: center;
-  max-width: 100%;
-  height: auto;
-}
-
-.widthAdjustment ::slotted(*) {
-  width: var(--_width);
-}
-
-:host([variant='full']) #container {
-  padding: 0;
-}
-
-:host([danger]) #container {
-  --rh-color-border-subtle: var(--rh-color-border-destructive);
-
-  background-image: url('/assets/best-practices-danger-icon.svg');
-  background-position-x: 8px;
-  background-position-y: 8px;
-  background-repeat: no-repeat;
-}
-
-:host([no-border]:not([danger])) #container {
-  border: none;
-}
-
-@container host (min-width: 576px) {
-  #container {
-    padding: var(--rh-space-3xl);
-  }
-}
-
-@container host (min-width: 768px) {
-  #container {
-    padding: var(--rh-space-4xl);
-  }
-}
-</style><!--lit-part DbmYZodZUIs=-->
-      <!--lit-node 0--><div id="container"
-           part="container"
-           class="on   "
-           style="--_width: 100%; --_alignment: center">
-        <slot></slot>
-      </div>
-    <!--/lit-part--></template>
-    <img alt="Example of responsive grid on large screen" src="/assets/grid/grid-responsive-1.svg" width="1000" height="232">
-  </uxdot-example>
-  <uxdot-example   variant="full" no-border><template shadowroot="open" shadowrootmode="open"><style>:host {
-  display: block;
-  container-type: inline-size;
-  container-name: host;
-  margin-block-end: var(--rh-space-2xl);
-}
-
-:host([transparent]) {
-  --rh-color-surface: transparent;
-}
-
-#container {
-  padding: var(--rh-space-2xl);
-  display: flex;
-  flex-direction: column;
-  align-items: var(--_alignment, center);
-  justify-content: center;
-  border-width: var(--rh-border-width-sm);
-  border-style: solid;
-  border-color: var(--rh-color-border-subtle);
-  border-radius: var(--rh-border-radius-default);
-  background-color: var(--rh-color-surface);
-  color: var(--rh-color-text-primary);
-}
-
-::slotted(*) {
-  display: flex;
-  flex-direction: column;
-  align-items: var(--_alignment, center);
-  justify-content: center;
-  max-width: 100%;
-  height: auto;
-}
-
-.widthAdjustment ::slotted(*) {
-  width: var(--_width);
-}
-
-:host([variant='full']) #container {
-  padding: 0;
-}
-
-:host([danger]) #container {
-  --rh-color-border-subtle: var(--rh-color-border-destructive);
-
-  background-image: url('/assets/best-practices-danger-icon.svg');
-  background-position-x: 8px;
-  background-position-y: 8px;
-  background-repeat: no-repeat;
-}
-
-:host([no-border]:not([danger])) #container {
-  border: none;
-}
-
-@container host (min-width: 576px) {
-  #container {
-    padding: var(--rh-space-3xl);
-  }
-}
-
-@container host (min-width: 768px) {
-  #container {
-    padding: var(--rh-space-4xl);
-  }
-}
-</style><!--lit-part DbmYZodZUIs=-->
-      <!--lit-node 0--><div id="container"
-           part="container"
-           class="on   "
-           style="--_width: 100%; --_alignment: center">
-        <slot></slot>
-      </div>
-    <!--/lit-part--></template>
-    <img alt="Example of responsive grid on smaller screen" src="/assets/grid/grid-responsive-2.svg" width="1000" height="232">
-  </uxdot-example>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host {
-  display: flex;
-  margin-block-end: var(--rh-space-lg);
-  align-items: center;
-}
-
-#signifier {
-  display: var(--perma-signifier-display, none);
-}
-
-#button {
-  height: 1.75rem;
-  background: none;
-  border: none;
-  border-radius: var(--rh-border-radius-default);
-  display: none;
-  align-items: center;
-}
-
-#button:is(:hover, :focus) {
-  background: var(--rh-color-surface-light);
-}
-
-:host(:state(--rendered)) #button {
-  display: flex;
-}
-
-::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-  display: flex;
-  margin-block-end: 0 !important;
-  align-items: center;
-  color: inherit;
-  text-decoration: inherit;
-}
-</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button 
-              id="button"
-              aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
-  line-height: 0;
-  aspect-ratio: 1/1;
-  display: inline-flex;
-  place-content: center;
-}
-
-#container {
-  display: contents;
-}
-
-svg {
-  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
-  fill: currentcolor;
-  aspect-ratio: 1/1;
-}
-
-.standard svg {
-  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
-}
-
-.microns svg {
-  width: 12px;
-}
-</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container"
-           aria-hidden="true"
-           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
-    <!--/lit-part--></template>
-  <h3 id="small-screens-1" tabindex="-1">
-    <a href="#small-screens-1">Small screens</a><a>
-  </a></h3>
-</uxdot-copy-permalink>
-<p>The grid for small screens features one column. In rare cases, content on
-small screens can sometimes be arranged in two columns.</p>
-  <uxdot-example     variant="full" no-border alignment="left" width-adjustment="576px"><template shadowroot="open" shadowrootmode="open"><style>:host {
-  display: block;
-  container-type: inline-size;
-  container-name: host;
-  margin-block-end: var(--rh-space-2xl);
-}
-
-:host([transparent]) {
-  --rh-color-surface: transparent;
-}
-
-#container {
-  padding: var(--rh-space-2xl);
-  display: flex;
-  flex-direction: column;
-  align-items: var(--_alignment, center);
-  justify-content: center;
-  border-width: var(--rh-border-width-sm);
-  border-style: solid;
-  border-color: var(--rh-color-border-subtle);
-  border-radius: var(--rh-border-radius-default);
-  background-color: var(--rh-color-surface);
-  color: var(--rh-color-text-primary);
-}
-
-::slotted(*) {
-  display: flex;
-  flex-direction: column;
-  align-items: var(--_alignment, center);
-  justify-content: center;
-  max-width: 100%;
-  height: auto;
-}
-
-.widthAdjustment ::slotted(*) {
-  width: var(--_width);
-}
-
-:host([variant='full']) #container {
-  padding: 0;
-}
-
-:host([danger]) #container {
-  --rh-color-border-subtle: var(--rh-color-border-destructive);
-
-  background-image: url('/assets/best-practices-danger-icon.svg');
-  background-position-x: 8px;
-  background-position-y: 8px;
-  background-repeat: no-repeat;
-}
-
-:host([no-border]:not([danger])) #container {
-  border: none;
-}
-
-@container host (min-width: 576px) {
-  #container {
-    padding: var(--rh-space-3xl);
-  }
-}
-
-@container host (min-width: 768px) {
-  #container {
-    padding: var(--rh-space-4xl);
-  }
-}
-</style><!--lit-part DbmYZodZUIs=-->
-      <!--lit-node 0--><div id="container"
-           part="container"
-           class="on  widthAdjustment "
-           style="--_width: 576px; --_alignment: left">
-        <slot></slot>
-      </div>
-    <!--/lit-part--></template>
-    <img alt="Example of responsive grid on large screen" src="/assets/grid/grid-responsive-3.svg" width="576" height="232">
-  </uxdot-example>
-  <uxdot-example     variant="full" no-border alignment="left" width-adjustment="360px"><template shadowroot="open" shadowrootmode="open"><style>:host {
-  display: block;
-  container-type: inline-size;
-  container-name: host;
-  margin-block-end: var(--rh-space-2xl);
-}
-
-:host([transparent]) {
-  --rh-color-surface: transparent;
-}
-
-#container {
-  padding: var(--rh-space-2xl);
-  display: flex;
-  flex-direction: column;
-  align-items: var(--_alignment, center);
-  justify-content: center;
-  border-width: var(--rh-border-width-sm);
-  border-style: solid;
-  border-color: var(--rh-color-border-subtle);
-  border-radius: var(--rh-border-radius-default);
-  background-color: var(--rh-color-surface);
-  color: var(--rh-color-text-primary);
-}
-
-::slotted(*) {
-  display: flex;
-  flex-direction: column;
-  align-items: var(--_alignment, center);
-  justify-content: center;
-  max-width: 100%;
-  height: auto;
-}
-
-.widthAdjustment ::slotted(*) {
-  width: var(--_width);
-}
-
-:host([variant='full']) #container {
-  padding: 0;
-}
-
-:host([danger]) #container {
-  --rh-color-border-subtle: var(--rh-color-border-destructive);
-
-  background-image: url('/assets/best-practices-danger-icon.svg');
-  background-position-x: 8px;
-  background-position-y: 8px;
-  background-repeat: no-repeat;
-}
-
-:host([no-border]:not([danger])) #container {
-  border: none;
-}
-
-@container host (min-width: 576px) {
-  #container {
-    padding: var(--rh-space-3xl);
-  }
-}
-
-@container host (min-width: 768px) {
-  #container {
-    padding: var(--rh-space-4xl);
-  }
-}
-</style><!--lit-part DbmYZodZUIs=-->
-      <!--lit-node 0--><div id="container"
-           part="container"
-           class="on  widthAdjustment "
-           style="--_width: 360px; --_alignment: left">
-        <slot></slot>
-      </div>
-    <!--/lit-part--></template>
-    <img alt="Example of responsive grid on smaller screen" src="/assets/grid/grid-responsive-4.svg" width="360" height="232">
-  </uxdot-example>
-</section>
-<section aria-labelledby="breakpoints">
-<uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host {
-  display: flex;
-  margin-block-end: var(--rh-space-lg);
-  align-items: center;
-}
-
-#signifier {
-  display: var(--perma-signifier-display, none);
-}
-
-#button {
-  height: 1.75rem;
-  background: none;
-  border: none;
-  border-radius: var(--rh-border-radius-default);
-  display: none;
-  align-items: center;
-}
-
-#button:is(:hover, :focus) {
-  background: var(--rh-color-surface-light);
-}
-
-:host(:state(--rendered)) #button {
-  display: flex;
-}
-
-::slotted(:is(h1, h2, h3, h4, h5, h6)) {
-  display: flex;
-  margin-block-end: 0 !important;
-  align-items: center;
-  color: inherit;
-  text-decoration: inherit;
-}
-</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button 
-              id="button"
-              aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
-  line-height: 0;
-  aspect-ratio: 1/1;
-  display: inline-flex;
-  place-content: center;
-}
-
-#container {
-  display: contents;
-}
-
-svg {
-  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
-  fill: currentcolor;
-  aspect-ratio: 1/1;
-}
-
-.standard svg {
-  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
-}
-
-.microns svg {
-  width: 12px;
-}
-</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container"
-           aria-hidden="true"
-           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
-    <!--/lit-part--></template>
-  <h2 id="breakpoints" tabindex="-1">
-    <a href="#breakpoints">Breakpoints</a><a>
-  </a></h2>
-</uxdot-copy-permalink>
-<p>A breakpoint is a predetermined screen size that has specific layout
-requirements. When breakpoints change, content will shift around to fit the
-adjusted layout.</p>
-  <rh-table><template shadowroot="open" shadowrootmode="open"><style>* {
+<p>We use <a href="/tokens/space/">space tokens</a> to define grid margins and gutters.</p>
+<rh-table><template shadowroot="open" shadowrootmode="open"><style>* {
   box-sizing: border-box;
 }
 
@@ -7308,54 +4975,719 @@ adjusted layout.</p>
         <slot id="summary" name="summary"></slot>
       </div>
     <!--/lit-part--></template>
-<table>
-<thead>
-<tr>
-<th>Breakpoint name</th>
-<th>Size range</th>
-<th>Columns</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Desktop, large</td>
-<td>1680px</td>
-<td>12</td>
-</tr>
-<tr>
-<td>Desktop, medium</td>
-<td>1440px</td>
-<td>12</td>
-</tr>
-<tr>
-<td>Desktop, small</td>
-<td>1200px - 1439px</td>
-<td>12</td>
-</tr>
-<tr>
-<td>Tablet, large</td>
-<td>992px - 1199px</td>
-<td>12</td>
-</tr>
-<tr>
-<td>Tablet, small</td>
-<td>768px - 991px</td>
-<td>12</td>
-</tr>
-<tr>
-<td>Mobile, large</td>
-<td>576px - 767px</td>
-<td>2</td>
-</tr>
-<tr>
-<td>Mobile, small</td>
-<td>0px</td>
-<td>1</td>
-</tr>
-</tbody>
-</table>
-  </rh-table>
-</section>
+  <table>
+  <!--
+    <colgroup>
+      <col>
+      <col>
+      <col>
+    </colgroup>
+    -->
+    <thead>
+      <tr>
+        <th scope="col">Grid name</th>
+        <th scope="col">Breakpoint</th>
+        <th scope="col">Margins and gutters</th>
+        <th scope="col">Max width</th>
+        <th scope="col">Columns</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>xs</td>
+        <td>&lt;575px</td>
+        <td><code>--rh-space-lg</code></td>
+        <td>100% - 32px</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>sm</td>
+        <td>576px</td>
+        <td><code>--rh-space-lg</code></td>
+        <td>544px</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>md</td>
+        <td>768px</td>
+        <td><code>--rh-space-2xl</code></td>
+        <td>704px</td>
+        <td>12</td>
+      </tr>
+      <tr>
+        <td>lg</td>
+        <td>992px</td>
+        <td><code>--rh-space-2xl</code></td>
+        <td>928px</td>
+        <td>12</td>
+      </tr>
+      <tr>
+        <td>xl</td>
+        <td>1200px</td>
+        <td><code>--rh-space-2xl</code></td>
+        <td>1136px</td>
+        <td>12</td>
+      </tr>
+      <tr>
+        <td>2xl</td>
+        <td>&gt;1440px</td>
+        <td><code>--rh-space-2xl</code></td>
+        <td>1376px</td>
+        <td>12</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
+<uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: flex;
+  margin-block-end: var(--rh-space-lg);
+  align-items: center;
+}
+
+#signifier {
+  display: var(--perma-signifier-display, none);
+}
+
+#button {
+  height: 1.75rem;
+  background: none;
+  border: none;
+  border-radius: var(--rh-border-radius-default);
+  display: none;
+  align-items: center;
+}
+
+#button:is(:hover, :focus) {
+  background: var(--rh-color-surface-light);
+}
+
+:host(:state(--rendered)) #button {
+  display: flex;
+}
+
+::slotted(:is(h1, h2, h3, h4, h5, h6)) {
+  display: flex;
+  margin-block-end: 0 !important;
+  align-items: center;
+  color: inherit;
+  text-decoration: inherit;
+}
+</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
+  line-height: 0;
+  aspect-ratio: 1/1;
+  display: inline-flex;
+  place-content: center;
+}
+
+#container {
+  display: contents;
+}
+
+svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
+  fill: currentcolor;
+  aspect-ratio: 1/1;
+}
+
+.standard svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
+}
+
+.microns svg {
+  width: 12px;
+}
+</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+  <h2 id="fluid-grid-values" tabindex="-1">
+    <a href="#fluid-grid-values">Fluid grid values</a><a>
+  </a></h2>
+</uxdot-copy-permalink>
+<rh-table><template shadowroot="open" shadowrootmode="open"><style>* {
+  box-sizing: border-box;
+}
+
+:host {
+  position: relative;
+  display: block;
+  width: 100%;
+  overflow: auto;
+  scrollbar-color: var(--_scrollbar-track-color) var(--_scrollbar-thumb-color);
+  color: var(--rh-color-text-primary);
+  background-color: var(--rh-color-surface);
+
+  --_scrollbar-size: calc(10 / 16 * 1rem);
+  --_scrollbar-thumb-color: var(--rh-color-gray-50, #707070);
+  --_scrollbar-track-color: var(--rh-color-border-subtle);
+  --_row-border:
+    var(--rh-table-row-border,
+      var(--rh-border-width-sm, 1px)
+      solid
+      var(--rh-color-border-subtle-on-light, #c7c7c7));
+  --_row-background-hover-color:
+    var(--rh-table-row-background-hover-color,
+      rgba(from var(--rh-color-gray-40, #a3a3a3) r g b / 0.1));
+  --_column-background-hover-color:
+    var(--rh-table-column-background-hover-color,
+      rgba(from var(--rh-color-blue-50, #0066cc) r g b / 0.1));
+}
+
+:host::-webkit-scrollbar {
+  width: var(--_scrollbar-size);
+  height: var(--_scrollbar-size);
+}
+
+:host::-webkit-scrollbar,
+:host::-webkit-scrollbar-track {
+  background-color: var(--_scrollbar-track-color);
+}
+
+:host::-webkit-scrollbar-thumb {
+  background-color: var(--_scrollbar-thumb-color);
+}
+
+[slot] {
+  display: block;
+}
+
+.color-palette-dark,
+.color-palette-darker,
+.color-palette-darkest,
+.dark {
+  --_row-background-hover-color: rgba(from var(--rh-color-white, #ffffff) r g b / 0.1);
+  --_column-background-hover-color: rgba(from var(--rh-color-blue-70, #003366) r g b / 0.3);
+}
+
+/* @todo: should I move these styles to light dom css file? */
+::slotted([slot='summary']) {
+  display: block;
+  padding: var(--rh-space-xl, 24px) var(--rh-space-lg, 16px) 0 var(--rh-space-lg, 16px);
+  color: var(--rh-color-text-secondary-on-light, #4d4d4d);
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+  font-size: var(--rh-font-size-body-text-md, 1rem);
+  font-style: italic;
+  font-weight: var(--rh-font-weight-body-text-regular, 400);
+  line-height: var(--rh-line-height-body-text, 1.5);
+}
+
+.dark ::slotted([slot='summary']) {
+  color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
+}
+</style><!--lit-part YcLh+NwkpJQ=-->
+      <!--lit-node 0--><div id="container"
+           part="container"
+           class=" on light ">
+        <!--lit-node 1--><slot 
+              
+              
+              ></slot>
+        <slot id="summary" name="summary"></slot>
+      </div>
+    <!--/lit-part--></template>
+  <table>
+    <colgroup>
+      <col>
+      <col>
+      <col>
+      <col>
+      <col>
+    </colgroup>
+    <thead>
+      <tr>
+        <th scope="col">Grid name</th>
+        <th scope="col">Device</th>
+        <th scope="col">Margins and gutters</th>
+        <th scope="col">Max width</th>
+        <th scope="col">Columns</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Fluid</td>
+        <td>Desktop and tablet</td>
+        <td><code>--rh-space-2xl</code></td>
+        <td>100%</td>
+        <td>12</td>
+      </tr>
+      <tr>
+        <td>Fluid</td>
+        <td>Mobile</td>
+        <td><code>--rh-space-lg</code></td>
+        <td>100%</td>
+        <td>2</td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
+<uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: flex;
+  margin-block-end: var(--rh-space-lg);
+  align-items: center;
+}
+
+#signifier {
+  display: var(--perma-signifier-display, none);
+}
+
+#button {
+  height: 1.75rem;
+  background: none;
+  border: none;
+  border-radius: var(--rh-border-radius-default);
+  display: none;
+  align-items: center;
+}
+
+#button:is(:hover, :focus) {
+  background: var(--rh-color-surface-light);
+}
+
+:host(:state(--rendered)) #button {
+  display: flex;
+}
+
+::slotted(:is(h1, h2, h3, h4, h5, h6)) {
+  display: flex;
+  margin-block-end: 0 !important;
+  align-items: center;
+  color: inherit;
+  text-decoration: inherit;
+}
+</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
+  line-height: 0;
+  aspect-ratio: 1/1;
+  display: inline-flex;
+  place-content: center;
+}
+
+#container {
+  display: contents;
+}
+
+svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
+  fill: currentcolor;
+  aspect-ratio: 1/1;
+}
+
+.standard svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
+}
+
+.microns svg {
+  width: 12px;
+}
+</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+  <h2 id="best-practices" tabindex="-1">
+    <a href="#best-practices">Best practices</a><a>
+  </a></h2>
+</uxdot-copy-permalink>
+<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: flex;
+  margin-block-end: var(--rh-space-lg);
+  align-items: center;
+}
+
+#signifier {
+  display: var(--perma-signifier-display, none);
+}
+
+#button {
+  height: 1.75rem;
+  background: none;
+  border: none;
+  border-radius: var(--rh-border-radius-default);
+  display: none;
+  align-items: center;
+}
+
+#button:is(:hover, :focus) {
+  background: var(--rh-color-surface-light);
+}
+
+:host(:state(--rendered)) #button {
+  display: flex;
+}
+
+::slotted(:is(h1, h2, h3, h4, h5, h6)) {
+  display: flex;
+  margin-block-end: 0 !important;
+  align-items: center;
+  color: inherit;
+  text-decoration: inherit;
+}
+</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
+  line-height: 0;
+  aspect-ratio: 1/1;
+  display: inline-flex;
+  place-content: center;
+}
+
+#container {
+  display: contents;
+}
+
+svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
+  fill: currentcolor;
+  aspect-ratio: 1/1;
+}
+
+.standard svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
+}
+
+.microns svg {
+  width: 12px;
+}
+</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+  <h3 id="line-length" tabindex="-1">
+    <a href="#line-length">Line length</a><a>
+  </a></h3>
+</uxdot-copy-permalink>
+<uxdot-best-practice  variant="do"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  margin-block: var(--rh-space-2xl);
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rh-space-2xl);
+  margin-block: var(--rh-space-2xl);
+}
+
+span {
+  font-family: var(--rh-font-family-heading);
+  font-size: var(--rh-font-size-heading-xs);
+  font-weight: var(--rh-font-weight-heading-medium);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--rh-space-md);
+}
+
+#do span {
+  color: var(--rh-color-status-success);
+}
+
+#dont span {
+  color: var(--rh-color-status-danger);
+}
+
+::slotted(uxdot-example) {
+  margin: 0 !important;
+}
+
+figure {
+  margin: 0 !important;
+}
+</style><!--lit-part /OqYtWIsZqM=-->
+      <figure id="container">
+        <slot name="image"></slot>
+        <!--lit-node 2--><figcaption id="do">
+          <span><!--lit-node 4--><rh-icon    set="ui" size="md" icon="check-circle-fill" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
+  line-height: 0;
+  aspect-ratio: 1/1;
+  display: inline-flex;
+  place-content: center;
+}
+
+#container {
+  display: contents;
+}
+
+svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
+  fill: currentcolor;
+  aspect-ratio: 1/1;
+}
+
+.standard svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
+}
+
+.microns svg {
+  width: 12px;
+}
+</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part dS1mROSl53E=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm7.795 12.796-8.646 8.646c-.317.317-.733.475-1.149.475s-.832-.158-1.149-.475l-4.646-4.646a1.126 1.126 0 0 1 1.59-1.592L14 19.41l8.205-8.205a1.124 1.124 0 1 1 1.59 1.592Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon><!--lit-part-->Do<!--/lit-part--></span>
+          <slot></slot>
+        </figcaption>
+      </figure>
+    <!--/lit-part--></template>
+  <uxdot-example   slot="image" width-adjustment="1012px"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  container-type: inline-size;
+  container-name: host;
+  margin-block-end: var(--rh-space-2xl);
+}
+
+:host([transparent]) {
+  --rh-color-surface: transparent;
+}
+
+#container {
+  padding: var(--rh-space-2xl);
+  display: flex;
+  flex-direction: column;
+  align-items: var(--_alignment, center);
+  justify-content: center;
+  border-width: var(--rh-border-width-sm);
+  border-style: solid;
+  border-color: var(--rh-color-border-subtle);
+  border-radius: var(--rh-border-radius-default);
+  background-color: var(--rh-color-surface);
+  color: var(--rh-color-text-primary);
+}
+
+::slotted(*) {
+  display: flex;
+  flex-direction: column;
+  align-items: var(--_alignment, center);
+  justify-content: center;
+  max-width: 100%;
+  height: auto;
+}
+
+.widthAdjustment ::slotted(*) {
+  width: var(--_width);
+}
+
+:host([variant='full']) #container {
+  padding: 0;
+}
+
+:host([danger]) #container {
+  --rh-color-border-subtle: var(--rh-color-border-destructive);
+
+  background-image: url('/assets/best-practices-danger-icon.svg');
+  background-position-x: 8px;
+  background-position-y: 8px;
+  background-repeat: no-repeat;
+}
+
+:host([no-border]:not([danger])) #container {
+  border: none;
+}
+
+@container host (min-width: 576px) {
+  #container {
+    padding: var(--rh-space-3xl);
+  }
+}
+
+@container host (min-width: 768px) {
+  #container {
+    padding: var(--rh-space-4xl);
+  }
+}
+</style><!--lit-part DbmYZodZUIs=-->
+      <!--lit-node 0--><div id="container"
+           part="container"
+           class="on  widthAdjustment "
+           style="--_width: 1012px; --_alignment: center">
+        <slot></slot>
+      </div>
+    <!--/lit-part--></template>
+    <img src="/assets/grid/best-practice-line-length-do.svg" alt="Text at a width of 789px and layered on a grid" width="1012" height="170">
+  </uxdot-example>
+  <p>The width of body text should be 7 grid columns on desktop or 789px max in all layouts.</p>
+</uxdot-best-practice>
+<uxdot-best-practice  variant="dont"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  margin-block: var(--rh-space-2xl);
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rh-space-2xl);
+  margin-block: var(--rh-space-2xl);
+}
+
+span {
+  font-family: var(--rh-font-family-heading);
+  font-size: var(--rh-font-size-heading-xs);
+  font-weight: var(--rh-font-weight-heading-medium);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--rh-space-md);
+}
+
+#do span {
+  color: var(--rh-color-status-success);
+}
+
+#dont span {
+  color: var(--rh-color-status-danger);
+}
+
+::slotted(uxdot-example) {
+  margin: 0 !important;
+}
+
+figure {
+  margin: 0 !important;
+}
+</style><!--lit-part /OqYtWIsZqM=-->
+      <figure id="container">
+        <slot name="image"></slot>
+        <!--lit-node 2--><figcaption id="dont">
+          <span><!--lit-node 4--><rh-icon    set="ui" size="md" icon="close-circle-fill" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
+  line-height: 0;
+  aspect-ratio: 1/1;
+  display: inline-flex;
+  place-content: center;
+}
+
+#container {
+  display: contents;
+}
+
+svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
+  fill: currentcolor;
+  aspect-ratio: 1/1;
+}
+
+.standard svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
+}
+
+.microns svg {
+  width: 12px;
+}
+</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part iKtDDm471k4=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm5.796 20.204c.438.44.438 1.152 0 1.592a1.122 1.122 0 0 1-1.592-.001L16 17.593l-4.204 4.204a1.122 1.122 0 0 1-1.592-.001 1.128 1.128 0 0 1 0-1.59L14.408 16l-4.204-4.204a1.126 1.126 0 0 1 1.592-1.592L16 14.408l4.204-4.204a1.126 1.126 0 0 1 1.592 1.592L17.592 16l4.204 4.204Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon><!--lit-part-->Don&#39;t<!--/lit-part--></span>
+          <slot></slot>
+        </figcaption>
+      </figure>
+    <!--/lit-part--></template>
+  <uxdot-example   slot="image" width-adjustment="1012px"><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  container-type: inline-size;
+  container-name: host;
+  margin-block-end: var(--rh-space-2xl);
+}
+
+:host([transparent]) {
+  --rh-color-surface: transparent;
+}
+
+#container {
+  padding: var(--rh-space-2xl);
+  display: flex;
+  flex-direction: column;
+  align-items: var(--_alignment, center);
+  justify-content: center;
+  border-width: var(--rh-border-width-sm);
+  border-style: solid;
+  border-color: var(--rh-color-border-subtle);
+  border-radius: var(--rh-border-radius-default);
+  background-color: var(--rh-color-surface);
+  color: var(--rh-color-text-primary);
+}
+
+::slotted(*) {
+  display: flex;
+  flex-direction: column;
+  align-items: var(--_alignment, center);
+  justify-content: center;
+  max-width: 100%;
+  height: auto;
+}
+
+.widthAdjustment ::slotted(*) {
+  width: var(--_width);
+}
+
+:host([variant='full']) #container {
+  padding: 0;
+}
+
+:host([danger]) #container {
+  --rh-color-border-subtle: var(--rh-color-border-destructive);
+
+  background-image: url('/assets/best-practices-danger-icon.svg');
+  background-position-x: 8px;
+  background-position-y: 8px;
+  background-repeat: no-repeat;
+}
+
+:host([no-border]:not([danger])) #container {
+  border: none;
+}
+
+@container host (min-width: 576px) {
+  #container {
+    padding: var(--rh-space-3xl);
+  }
+}
+
+@container host (min-width: 768px) {
+  #container {
+    padding: var(--rh-space-4xl);
+  }
+}
+</style><!--lit-part DbmYZodZUIs=-->
+      <!--lit-node 0--><div id="container"
+           part="container"
+           class="on  widthAdjustment "
+           style="--_width: 1012px; --_alignment: center">
+        <slot></slot>
+      </div>
+    <!--/lit-part--></template>
+    <img src="/assets/grid/best-practice-line-length-dont.svg" alt="Text spanning all 12 columns of a grid" width="1012" height="107">
+  </uxdot-example>
+  <p>Do not allow the width of body text to span more than 789px.</p>
+</uxdot-best-practice>
 <uxdot-feedback><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: block;
   container-type: inline-size;
@@ -7408,8 +5740,232 @@ p {
   <h2 id="foundations">Foundations</h2>
   <p>To learn how to use our other foundations in your designs, visit the <a href="/foundations">foundations</a> section.</p>
 </uxdot-feedback>
+<!-- Links -->
+<!-----OLD---->
+<!--
 
-    <div id="edit-this-page">
+<section aria-labelledby="overview">
+
+  ## Overview
+
+  A grid is a group of columns that organize layouts and allow content to scale
+  responsively based on screen size. They provide structure to pages and ensure
+  optimal viewing experiences.
+
+  ### Sample component
+
+  <uxdot-example variant="full" no-border>
+    <img alt="Grid"
+         src="/assets/grid/grid.svg"
+         width="1000"
+         height="160">
+  </uxdot-example>
+
+  ### Grid availability
+
+  <uxdot-example variant="full" no-border>
+    (coming soon)
+  </uxdot-example>
+
+  ### Style
+
+  <uxdot-example variant="full" no-border>
+    <img alt="Grid specs"
+         src="/assets/grid/grid-style.svg"
+         width="877"
+         height="193">
+  </uxdot-example>
+
+</section>
+
+
+<section aria-labelledby="usage">
+
+  ## Usage
+
+  Grids are fundamental to how content is organized across various devices and
+  screen sizes.
+
+  ### Columns
+
+  The number of columns that a grid contains is determined by the screen size.
+
+  <uxdot-example variant="full" no-border alignment="left">
+    <figure>
+      <img alt="Grid columns on desktop"
+           src="/assets/grid/grid-usage-desktop.svg"
+           width="1000"
+           height="232">
+      <figcaption>A grid on large screens contains 12 columns</figcaption>
+    </figure>
+  </uxdot-example>
+
+  <uxdot-example variant="full" no-border alignment="left" width-adjustment="576px">
+    <figure>
+      <img alt="Grid columns on mobile"
+           src="/assets/grid/grid-usage-mobile.svg"
+           width="576"
+           height="232">
+      <figcaption>A grid on small screens contains one column</figcaption>
+    </figure>
+  </uxdot-example>
+
+  ### Gutters
+
+  Gutters are the spaces in between columns, they also change depending on the
+  screen size. Gutters help separate content into layouts based on the amount of
+  columns being used.
+
+  <div class="grid">
+    <uxdot-example variant="full" no-border>
+      <img alt="Grid gutters on desktop"
+           src="/assets/grid/grid-gutters-desktop.svg"
+           width="1000"
+           height="262">
+    </uxdot-example>
+    <uxdot-example variant="full" no-border alignment="left" width-adjustment="576px">
+      <img alt="Grid gutters on mobile"
+           src="/assets/grid/grid-gutters-mobile.svg"
+           width="576"
+           height="266">
+    </uxdot-example>
+  </div>
+
+  ### Margins
+
+  Margins are the spaces between a grid and the edges of the screen or window.
+  They can be the same width or larger than gutters, depending on the screen
+  size.
+
+  ### Large screens
+
+  The grid for large screens features 12 columns, like desktop and tablet.
+  Column, gutter, and margin widths reduce as breakpoints get smaller.
+
+  <uxdot-example variant="full" no-border>
+    <img alt="Grid margins on desktop"
+         src="/assets/grid/grid-margins-desktop.svg"
+         width="1000"
+         height="265">
+  </uxdot-example>
+
+  ### Small screens
+
+  The grid for small screens features one column. In rare cases, content on
+  small screens can sometimes be arranged in two columns.
+
+  <uxdot-example variant="full" no-border alignment="left" width-adjustment="576px">
+    <img alt="Grid margins on mobile"
+         src="/assets/grid/grid-margins-mobile.svg"
+         width="574"
+         height="266">
+  </uxdot-example>
+
+</section>
+
+
+<section aria-labelledby="best-practices">
+
+  ## Best practices
+
+  Don’t align every component to the grid, doing so might compromise the design
+  of individual elements.
+
+  <uxdot-example variant="full" no-border alignment="left">
+    <figure>
+      <img alt="Grid content outside of grid"
+           src="/assets/grid/grid-best-practices-1.svg"
+           width="872"
+           height="427">
+      <figcaption>18px or larger text shouldn't exceed eight columns to maintain optimal readability.</figcaption>
+    </figure>
+  </uxdot-example>
+
+  <uxdot-example variant="full" no-border>
+    <img alt="Grid alignment issues"
+         src="/assets/grid/grid-best-practices-2.svg"
+         width="872"
+         height="158">
+  </uxdot-example>
+
+</section>
+
+
+
+<section aria-labelledby="responsive-design">
+
+  ## Responsive design
+
+  Grids are designed to be responsive, meaning they adapt to different screen
+  sizes and orientations.
+
+  ### Large screens
+
+  The grid for large screens features 12 columns, like desktop and tablet.
+  Column, gutter, and margin widths reduce as breakpoints get smaller.
+
+  <uxdot-example variant="full" no-border>
+    <img alt="Example of responsive grid on large screen"
+         src="/assets/grid/grid-responsive-1.svg"
+         width="1000"
+         height="232">
+  </uxdot-example>
+
+  <uxdot-example variant="full" no-border>
+    <img alt="Example of responsive grid on smaller screen"
+         src="/assets/grid/grid-responsive-2.svg"
+         width="1000"
+         height="232">
+  </uxdot-example>
+
+  ### Small screens
+
+  The grid for small screens features one column. In rare cases, content on
+  small screens can sometimes be arranged in two columns.
+
+  <uxdot-example variant="full" no-border alignment="left" width-adjustment="576px">
+    <img alt="Example of responsive grid on large screen"
+         src="/assets/grid/grid-responsive-3.svg"
+         width="576"
+         height="232">
+  </uxdot-example>
+
+  <uxdot-example variant="full" no-border alignment="left" width-adjustment="360px">
+    <img alt="Example of responsive grid on smaller screen"
+         src="/assets/grid/grid-responsive-4.svg"
+         width="360"
+         height="232">
+  </uxdot-example>
+
+</section>
+
+
+<section aria-labelledby="breakpoints">
+
+  ## Breakpoints
+
+  A breakpoint is a predetermined screen size that has specific layout
+  requirements. When breakpoints change, content will shift around to fit the
+  adjusted layout.
+
+  <rh-table>
+
+  | Breakpoint name | Size range      | Columns |
+  |-----------------|-----------------|---------|
+  | Desktop, large  | 1680px          | 12      |
+  | Desktop, medium | 1440px          | 12      |
+  | Desktop, small  | 1200px - 1439px | 12      |
+  | Tablet, large   | 992px - 1199px  | 12      |
+  | Tablet, small   | 768px - 991px   | 12      |
+  | Mobile, large   | 576px - 767px   | 2       |
+  | Mobile, small   | 0px             | 1       |
+
+  </rh-table>
+
+</section>
+-->
+
+      <div id="edit-this-page">
   
   
   
@@ -7418,7 +5974,7 @@ p {
   <a href="https://github.com/RedHat-UX/red-hat-design-system/blob/main/./docs/foundations/grid.md?plain=1">Edit this page on GitHub</a>
 </div>
 
-  </div>
+    </div>
   </article>
   <style>
   rh-back-to-top {
