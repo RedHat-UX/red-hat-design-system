@@ -50,7 +50,8 @@
       &:hover { color: var(--rh-color-interactive-primary-visited-hover); }
     }
 
-    &[href^="https://url.corp.redhat.com/"]::after,
+    &[href^="http://url.corp.redhat.com"]::after,
+    &[href^="https://url.corp.redhat.com"]::after,
     &.requires-vpn::after {
       display: inline-block;
       content: "";
