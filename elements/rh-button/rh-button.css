@@ -199,16 +199,20 @@ button {
   &.close {
     --_color: var(--rh-color-text-secondary);
     --_background-color: transparent;
-    --_active-color: var(--rh-color-icon-secondary-on-light, #151515);
+    --_active-color: var(--rh-color-icon-secondary);
     --_active-background-color: transparent;
-    --_focus-color: var(--rh-color-icon-secondary-on-light, #151515);
+    --_focus-color: var(--rh-color-icon-secondary);
     --_focus-background-color: transparent;
     --_focus-outline-color: var(--rh-color-interactive-primary-default);
-    --_hover-color: var(--rh-color-icon-secondary-on-light, #151515);
+    --_hover-color: var(--rh-color-icon-secondary);
     --_hover-background-color: transparent;
 
     width: var(--rh-length-lg, 16px);
     aspect-ratio: 1;
+
+    rh-icon {
+      color: inherit;
+    }
   }
 
   &.play {
