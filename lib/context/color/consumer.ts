@@ -3,7 +3,7 @@ import { isServer } from 'lit';
 let initialized: boolean;
 
 async function load() {
-  const { default: { cssText } } = await import('@rhds/tokens/css/color-scheme.css.js');
+  const { default: { cssText } } = await import('@rhds/tokens/css/default-theme.css.js');
   const sheet = new CSSStyleSheet();
   sheet.replaceSync(cssText);
   document.adoptedStyleSheets = [...(document.adoptedStyleSheets ?? []), sheet];
