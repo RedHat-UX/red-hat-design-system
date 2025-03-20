@@ -78,7 +78,7 @@ export default class TokensPage extends Renderer<Data> {
     const meta = tokensMeta.get(`--${token.name}` as TokenName);
     const value =
        meta?.$value
-    || !Array.isArray(meta?.original.$value) ? ''
+    || !Array.isArray(meta?.original?.$value) ? ''
      : meta?.original.$value.find((x: string | number) =>
        x.toString().endsWith(`${palette}est}`)
         || x.toString().endsWith(`${palette}}`));
@@ -201,7 +201,7 @@ export default class TokensPage extends Renderer<Data> {
                 '--samp-font-weight':
                   isWeight ? token.$value : 'var(--rh-font-weight-body-text-regular)',
                 [`--samp-${token.$type === 'dimension' ? `${name}-size` : name}`]: token.$value,
-                [`${token.$type === 'dimension' && token.attributes?.category === 'space' ? `--samp-${name}-color` : ``}`]: isSpace ? token.original['$extensions']['com.redhat.ux'].color : '',
+                [`${token.$type === 'dimension' && token.attributes?.category === 'space' ? `--samp-${name}-color` : ``}`]: isSpace ? token.original?.['$extensions']['com.redhat.ux'].color : '',
               })}">
               <td data-label="Example">
                 <samp class="${classes}">
