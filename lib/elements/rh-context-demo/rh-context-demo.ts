@@ -1,4 +1,4 @@
-import { colorSchemeProvider, type ColorPalette } from '../../context/color/provider.js';
+import { colorPalettes, type ColorPalette } from '../../context/color/provider.js';
 
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
@@ -11,7 +11,7 @@ import { ContextChangeEvent } from '../rh-context-picker/rh-context-picker.js';
 import style from './rh-context-demo.css';
 
 @customElement('rh-context-demo')
-@colorSchemeProvider
+@colorPalettes
 export class RhContextDemo extends LitElement {
   static readonly styles = [style];
 

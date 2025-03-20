@@ -54,7 +54,7 @@ container elements.
 To make your element a color scheme provider:
 
 1. Import the provider decorator from the `lib` directory.
-2. Add the `@colorSchemeProvider` decorator to the element's class.
+2. Add the `@colorPalettes` decorator to the element's class.
 3. Add a reflecting `colorPalette` property with `color-palette` attribute.
 
 ```ts rhcodeblock
@@ -63,12 +63,12 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
 import {
-  colorSchemeProvider,                                     // 1
+  colorPalettes,                                           // 1
   type ColorPalette,
 } from '@rhds/elements/lib/context/color/provider.js';
 
 @customElement('rh-provider')
-@colorSchemeProvider                                     // 2
+@colorPalettes                                             // 2
 export class RhProvider extends LitElement {
   @property({ reflect: true, attribute: 'color-palette' }) // 3
   colorPalette?: ColorPalette;
@@ -80,7 +80,7 @@ decorator to limit which palettes can be applied.
 
 ```ts rhcodeblock
 @customElement('rh-subset-provider')
-@colorSchemeProvider('darker', 'lighter')
+@colorPalettes('darker', 'lighter')
 export class RhSubsetProvider extends LitElement { /*...*/ }
 ```
 

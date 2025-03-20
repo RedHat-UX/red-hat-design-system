@@ -66,7 +66,7 @@ function impl(
       ?? klass.getPropertyOptions('colorPalette')
       ?? {};
   if (attribute !== 'color-palette' || !reflect) {
-    throw new Error('@colorSchemeProvider requires the `color-palette` attribute.');
+    throw new Error('@colorPalettes requires the `color-palette` attribute.');
   }
   klass.addInitializer(instance => new PaletteController(instance, [...supportedPalettes]));
   const elementStyles =
@@ -86,9 +86,9 @@ function impl(
  * @param supportedPalettes list of supported color palettes
  * @see https://ux.redhat.com/themeing/color-palettes
  */
-export function colorSchemeProvider(...supportedPalettes: ColorPalette[]): ClassDecorator;
-export function colorSchemeProvider(klass: ColorPaletteConstructor): void;
-export function colorSchemeProvider(
+export function colorPalettes(...supportedPalettes: ColorPalette[]): ClassDecorator;
+export function colorPalettes(klass: ColorPaletteConstructor): void;
+export function colorPalettes(
   ...args: ColorPalette[] | [klass: ColorPaletteConstructor]
 ): ColorPaletteDecorator | void {
   if (args.every(x => typeof x === 'string')) {

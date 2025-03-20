@@ -13,7 +13,7 @@ import type { IconNameFor, IconSetName } from '@rhds/icons';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 
-import { colorSchemeProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+import { colorPalettes, type ColorPalette } from '../../lib/context/color/provider.js';
 import { themable } from '../../lib/context/color/consumer.js';
 
 import styles from './rh-tile.css';
@@ -46,7 +46,7 @@ export class TileSelectEvent extends Event {
  * @cssprop [--rh-tile-border-color=var(--rh-color-border-subtle-on-light, #c7c7c7)] - Color of tile border.<br>Could cause accessibility issues; prefer to use `--rh-color-border-subtle-on-light` and `--rh-color-border-subtle-on-dark` for theming.
  */
 @customElement('rh-tile')
-@colorSchemeProvider('lightest', 'darkest')
+@colorPalettes('lightest', 'darkest')
 @themable
 export class RhTile extends LitElement {
   static readonly styles = [styles];

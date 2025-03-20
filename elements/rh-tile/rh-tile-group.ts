@@ -10,7 +10,7 @@ import { RovingTabindexController } from '@patternfly/pfe-core/controllers/rovin
 import { RhTile, TileSelectEvent } from './rh-tile.js';
 
 import { themable } from '../../lib/context/color/consumer.js';
-import { colorSchemeProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+import { colorPalettes, type ColorPalette } from '../../lib/context/color/provider.js';
 
 import styles from './rh-tile-group.css';
 
@@ -19,7 +19,7 @@ import styles from './rh-tile-group.css';
  * @slot - Put one or more `rh-tile` elements in this slot
  */
 @customElement('rh-tile-group')
-@colorSchemeProvider
+@colorPalettes
 @themable
 export class RhTileGroup extends LitElement {
   static readonly styles = [styles];

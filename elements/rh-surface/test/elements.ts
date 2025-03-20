@@ -7,7 +7,7 @@ import TinyColor from 'tinycolor2';
 import { tokens } from '@rhds/tokens';
 
 import { themable } from '../../../lib/context/color/consumer.js';
-import { colorSchemeProvider, type ColorPalette } from '../../../lib/context/color/provider.js';
+import { colorPalettes, type ColorPalette } from '../../../lib/context/color/provider.js';
 
 const dark = tokens.get('--rh-color-text-primary-on-dark');
 const light = tokens.get('--rh-color-text-primary-on-light');
@@ -39,13 +39,13 @@ export class ContextConsumer extends RendersText { }
 
 @customElement('test-context-consumer-provider')
 @themable
-@colorSchemeProvider
+@colorPalettes
 export class ContextConsumerProvider extends RendersText {
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 }
 
 @customElement('test-context-provider-consumer')
-@colorSchemeProvider
+@colorPalettes
 @themable
 export class ContextProviderConsumer extends RendersText {
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;

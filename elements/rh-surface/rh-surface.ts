@@ -2,7 +2,7 @@ import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
-import { colorSchemeProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+import { colorPalettes, type ColorPalette } from '../../lib/context/color/provider.js';
 import { themable } from '../../lib/context/color/consumer.js';
 
 import styles from './rh-surface.css';
@@ -25,7 +25,7 @@ import styles from './rh-surface.css';
  *          ```
  */
 @customElement('rh-surface')
-@colorSchemeProvider
+@colorPalettes
 @themable
 export class RhSurface extends LitElement {
   static readonly styles = [styles];

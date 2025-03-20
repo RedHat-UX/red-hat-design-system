@@ -5,7 +5,7 @@ import { classMap } from 'lit/directives/class-map.js';
 import { html, LitElement } from 'lit';
 
 import { themable } from '../../lib/context/color/consumer.js';
-import { colorSchemeProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+import { colorPalettes, type ColorPalette } from '../../lib/context/color/provider.js';
 
 import styles from './rh-card.css';
 
@@ -43,7 +43,7 @@ const PALETTE_RE = /(er|est)+/g;
  *              The font weight for headings in the header and body
  */
 @customElement('rh-card')
-@colorSchemeProvider('lightest', 'lighter', 'darker', 'darkest')
+@colorPalettes('lightest', 'lighter', 'darker', 'darkest')
 @themable
 export class RhCard extends LitElement {
   static styles = [styles];

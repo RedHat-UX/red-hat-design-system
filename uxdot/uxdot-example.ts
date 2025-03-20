@@ -1,10 +1,7 @@
 import { LitElement, html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 
-import {
-  colorSchemeProvider,
-  type ColorPalette,
-} from '@rhds/elements/lib/context/color/provider.js';
+import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/context/color/provider.js';
 import { themable } from '@rhds/elements/lib/context/color/consumer.js';
 
 import { property } from 'lit/decorators/property.js';
@@ -13,7 +10,7 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import styles from './uxdot-example.css';
 
 @customElement('uxdot-example')
-@colorSchemeProvider
+@colorPalettes
 @themable
 export class UxdotExample extends LitElement {
   static styles = [styles];
