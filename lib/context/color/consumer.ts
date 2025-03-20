@@ -1,4 +1,5 @@
-import { isServer } from 'lit';
+import type { Constructor } from '@lit/reactive-element/decorators/base.js';
+import { isServer, ReactiveElement } from 'lit';
 
 let initialized: boolean;
 
@@ -9,20 +10,29 @@ async function load() {
   document.adoptedStyleSheets = [...(document.adoptedStyleSheets ?? []), sheet];
 }
 
+let p: Promise<void>;
+
 /**
  * Ensures this element is [themable](https://ux.redhat.com/theming/).
  *
- * @param _ element constructor
+ * @param klass element constructor
  * @see https://ux.redhat.com/theming/color-palettes/
  */
-export function themable(_: unknown) {
+export function themable<T extends Constructor<ReactiveElement>>(klass: T) {
   if (isServer) {
-    return;
+    return klass;
   }
   initialized
     ??= (document.documentElement.computedStyleMap?.().has('--rh-color-accent-base')
     ?? !!getComputedStyle(document.documentElement).getPropertyValue('--rh-color-accent-base'));
   if (!initialized) {
-    load();
+    p ??= load();
+    return class ThemableElement extends klass {
+      protected async getUpdateComplete(): Promise<boolean> {
+        await p;
+        return super.getUpdateComplete();
+      }
+    };
   }
+  return klass;
 }
