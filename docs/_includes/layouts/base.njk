@@ -24,10 +24,6 @@
     </script>
     {#- Load SSR support modules **BEFORE** element definitions -#}
     {% include 'partials/javascript/dsd-init.html' %}
-    {%- for tag in importElements -%}
-    <script type="module">import '@rhds/elements/{{tag}}/{{tag}}.js';</script>
-    {%- endfor -%}
-
     {# only load components that need hydrated (aka interactivity) #}
     <script type="module">
       import '@rhds/elements/rh-button/rh-button.js';
@@ -37,6 +33,9 @@
       import '@uxdot/elements/uxdot-sidenav.js';
       import '@uxdot/elements/uxdot-example.js';
     </script>
+    {%- for tag in importElements -%}
+    <script type="module">import '@rhds/elements/{{tag}}/{{tag}}.js';</script>
+    {%- endfor -%}
 
     <script async src="https://ga.jspm.io/npm:es-module-shims@1.8.0/dist/es-module-shims.js"></script>
   </head>
