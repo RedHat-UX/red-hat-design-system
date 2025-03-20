@@ -13,7 +13,7 @@ describe('<rh-badge>', function() {
         .and
         .to.be.an.instanceOf(RhBadge);
   });
-  it(`should have a background color '--rh-color-status-neutral-on-light' when state is unset`, async function() {
+  it(`should have a background color '--rh-color-status-neutral-on-light'`, async function() {
     const element = await createFixture <RhBadge>(html`<rh-badge></rh-badge>`);
     // NB: querying shadow root in tests is bad, mmkay?
     const styles = getComputedStyle(element.shadowRoot!.querySelector('span')!);
