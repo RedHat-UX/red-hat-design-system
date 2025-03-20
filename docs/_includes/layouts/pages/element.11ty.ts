@@ -130,13 +130,34 @@ export default class ElementsPage extends Renderer<Context> {
 
   async #generateImportMap(tagName: string) {
     const { assetCache } = ElementsPage;
+    
+    // Custom Provider code from https://jspm.org/docs/generator/stable/interfaces/GeneratorOptions.html#customProviders
+    const rhdsCdnUrl = 'https://www.redhatstatic.com/dssf-001/v2/';
+    const exactPkgRegEx = new RegExp("^((?:@[^/\\%@]+/)?[^./\\%@][^/\\%@]*)@([^/]+)(/.*)?$");
+    
     if (!assetCache.isCacheValid('1d')) {
       const generator = new Generator({
         cache: false,
         // prevent node from resolving @rhds/elements to cwd
         // see https://discord.com/channels/570400367884501026/724211491087056916/1290733101923700737
         baseUrl: 'about:blank',
-        defaultProvider: 'jspm.io',
+        defaultProvider: 'custom',
+        customProviders: {
+          custom: {
+            pkgToUrl: ({ registry, name, version }) => {
+              return `${rhdsCdnUrl}${name}@${version}/`;
+            },
+            parseUrlPkg: (url) => {
+              if (url.startsWith(rhdsCdnUrl)) {
+                const [, name, version] = url.slice(rhdsCdnUrl.length).match(exactPkgRegEx) || [];
+                return { registry: 'npm', name, version };
+              }
+            },
+            resolveLatestTarget: ({ registry, name, range }, unstable, layer, parentUrl) => {
+              return { registry, name, range };
+            }
+          }
+        }
       });
       await generator.install('@rhds/elements');
       await assetCache.save(generator.getMap(), 'json');

@@ -24,28 +24,52 @@ information with code snippets that are specific to that element.
 
 ### Red Hat CDN
 
-<rh-alert state="warning">
-  <h4 slot="header">CDN Prerelease</h4>
-  <p>We are currently working on our CDN, which will be soon moving into beta. 
-    This will be the preferred method of installation in the near future. If you 
-    are a Red Hat associate and have questions or comments about the CDN or 
-    installation process please connect with us on Slack.</p>
+<rh-alert state="info">
+  <h4 slot="header">CDN v2 for v1 users</h4>
+  <p>If you previously used the v1 CDN, and want to migrate to point to the new server the v1 files are still available under 
+  <a href="https://www.redhatstatic.com/dssf-001/v1/">https://www.redhatstatic.com/dssf-001/v1/</a>. To migrate, change 
+  <code>/dx/v1-alpha/</code> to <code>/dssf-001/v1/</code> in your current URLs.</p>
+  <p>This new server will be the preferred method of installation going forward. If you are a Red Hat associate 
+  and have questions or comments about the CDN or installation process please connect with us on Slack.</p>
 </rh-alert>
 
-The recommended way to load RHDS is via the Red Hat Digital Experience CDN, and 
+The recommended way to load RHDS is via the [Red Hat Digital Experience CDN](https://www.redhatstatic.com/dssf-001), and 
 using an [import map][importmap].
 
 If you have full control over the page you are using, add an import map to the 
 `<head>`, pointing to the CDN, or update any existing import map. If you are not 
 responsible for the page's `<head>`, request that the page owner makes the 
-change on your behalf. 
+change on your behalf. Below is the base import map for using v{{ pkg.version }} RHDS components.
 
 ```html rhcodeblock
 <script type="importmap">
   {
     "imports": {
-      "@rhds/elements/": "https://www.redhatstatic.com/dx/v1-alpha/@rhds/elements@{{ pkg.version }}/elements/",
-      "@patternfly/elements/": "https://www.redhatstatic.com/dx/v1-alpha/@patternfly/elements@{{ pkg.devDependencies['@patternfly/elements'].version }}/"
+      "@rhds/elements/": "https://www.redhatstatic.com/dssf-001/v2/@rhds/elements@{{ pkg.version }}/elements/"
+    },
+    "scopes": {
+      "https://www.redhatstatic.com/dssf-001/v2/": {
+          "@floating-ui/core": "https://www.redhatstatic.com/dssf-001/v2/@floating-ui/core@{{ packageinfo.packages["node_modules/@floating-ui/core"].version }}/dist/floating-ui.core.mjs",
+          "@floating-ui/dom": "https://www.redhatstatic.com/dssf-001/v2/@floating-ui/dom@{{ packageinfo.packages["node_modules/@floating-ui/dom"].version }}/dist/floating-ui.dom.mjs",
+          "@floating-ui/utils": "https://www.redhatstatic.com/dssf-001/v2/@floating-ui/utils@{{ packageinfo.packages["node_modules/@floating-ui/utils"].version }}/dist/floating-ui.utils.mjs",
+          "@floating-ui/utils/dom": "https://www.redhatstatic.com/dssf-001/v2/@floating-ui/utils@{{ packageinfo.packages["node_modules/@floating-ui/utils"].version }}/dist/floating-ui.utils.dom.mjs",
+          "@lit/context": "https://www.redhatstatic.com/dssf-001/v2/@lit/context@{{ packageinfo.packages["node_modules/@lit/context"].version }}/development/index.js",
+          "@lit/reactive-element": "https://www.redhatstatic.com/dssf-001/v2/@lit/reactive-element@{{ packageinfo.packages["node_modules/@lit/reactive-element"].version }}/reactive-element.js",
+          "@lit/reactive-element/decorators/": "https://www.redhatstatic.com/dssf-001/v2/@lit/reactive-element@{{ packageinfo.packages["node_modules/@lit/reactive-element"].version }}/decorators/",
+          "@patternfly/pfe-core": "https://www.redhatstatic.com/dssf-001/v2/@patternfly/pfe-core@{{ packageinfo.packages["node_modules/@patternfly/pfe-core"].version }}/core.js",
+          "@patternfly/pfe-core/": "https://www.redhatstatic.com/dssf-001/v2/@patternfly/pfe-core@{{ packageinfo.packages["node_modules/@patternfly/pfe-core"].version }}/",
+          "@rhds/elements/lib/": "https://www.redhatstatic.com/dssf-001/v2/@rhds/elements@{{ pkg.version }}/lib/",
+          "@rhds/icons": "https://www.redhatstatic.com/dssf-001/v2/@rhds/icons@{{ packageinfo.packages["node_modules/@rhds/icons"].version }}/icons.js",
+          "@rhds/icons/": "https://www.redhatstatic.com/dssf-001/v2/@rhds/icons@{{ packageinfo.packages["node_modules/@rhds/icons"].version }}/",
+          "@rhds/tokens/media.js": "https://www.redhatstatic.com/dssf-001/v2/@rhds/tokens@{{ packageinfo.packages["node_modules/@rhds/tokens"].version }}/js/media.js",
+          "@rhds/tokens/": "https://www.redhatstatic.com/dssf-001/v2/@rhds/tokens@{{ packageinfo.packages["node_modules/@rhds/tokens"].version }}/",
+          "lit": "https://www.redhatstatic.com/dssf-001/v2/lit@{{ packageinfo.packages["node_modules/lit"].version }}/index.js",
+          "lit/": "https://www.redhatstatic.com/dssf-001/v2/lit@{{ packageinfo.packages["node_modules/lit"].version }}/",
+          "lit-element/lit-element.js": "https://www.redhatstatic.com/dssf-001/v2/lit-element@{{ packageinfo.packages["node_modules/lit-element"].version }}/lit-element.js",
+          "lit-html": "https://www.redhatstatic.com/dssf-001/v2/lit-html@{{ packageinfo.packages["node_modules/lit-html"].version }}/lit-html.js",
+          "lit-html/": "https://www.redhatstatic.com/dssf-001/v2/lit-html@{{ packageinfo.packages["node_modules/lit-html"].version }}/",
+          "tslib": "https://www.redhatstatic.com/dssf-001/v2/tslib@{{ packageinfo.packages["node_modules/tslib"].version }}/tslib.es6.mjs"
+      }
     }
   }
 </script>
