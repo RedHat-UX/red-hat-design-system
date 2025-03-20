@@ -33,7 +33,7 @@ If one element has the same function as another, both should be labeled the same
 
 ### Using color alone
 
-When presenting meaningful information or indicating the location of interactive elements, do not rely _solely_ upon color in your designs. Users with physical impairments or even situational concerns (e.g., a poor monitor, viewing a phone in bright sunlight, etc.) may be unable to discern these color cues.
+When presenting meaningful information or indicating the location of interactive elements, do not rely solely upon color in your designs. Users with vision impairments or even situational concerns (e.g., a poor monitor, viewing a display in bright sunlight, etc.) may be unable to discern these color cues.
 
 Note that the emphasis here is on "solely,'" as color can enhance the visual design of digital experiences. As stated in the [WCAG criterion on color usage](https://www.w3.org/WAI/WCAG21/Understanding/use-of-color.html), "This should not in any way discourage the use of color on a page, or even color coding if it is complemented by other visual indication."
 
