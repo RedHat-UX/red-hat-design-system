@@ -8,6 +8,12 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import style from './rh-footer-social-link.css';
 
+/**
+ * Displays a linked icon to a social media property
+ * @summary Displays a linked icon to a social media property
+ * @slot    - Add an anchor tag linking to a social media property
+*/
+
 @customElement('rh-footer-social-link')
 export class RhFooterSocialLink extends LitElement {
   static readonly styles = style;
