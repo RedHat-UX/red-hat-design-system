@@ -9,7 +9,7 @@ import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 
 import type { IconNameFor, IconSetName } from '@rhds/icons';
 
-import { themable } from '../../lib/context/color/consumer.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-stat.css';
 

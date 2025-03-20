@@ -8,7 +8,7 @@ import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller
 import '@rhds/elements/rh-button/rh-button.js';
 import '@rhds/elements/rh-surface/rh-surface.js';
 
-import { themable } from '../../lib/context/color/consumer.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-video-embed.css';
 

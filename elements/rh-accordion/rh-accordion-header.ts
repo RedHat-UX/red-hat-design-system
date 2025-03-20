@@ -12,7 +12,8 @@ import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { DirController } from '../../lib/DirController.js';
 import { HeadingLevelContextConsumer } from '../../lib/context/headings/consumer.js';
-import { themable } from '../../lib/context/color/consumer.js';
+
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import { consume } from '@lit/context';
 

@@ -15,7 +15,7 @@ import { InternalsController } from '@patternfly/pfe-core/controllers/internals-
 
 import { context } from './context.js';
 
-import { themable } from '../../lib/context/color/consumer.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-tab.css';
 

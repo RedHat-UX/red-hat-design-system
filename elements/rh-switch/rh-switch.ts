@@ -9,7 +9,7 @@ import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
 import { DirController } from '../../lib/DirController.js';
 
-import { themable } from '../../lib/context/color/consumer.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-switch.css';
 

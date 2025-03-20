@@ -7,8 +7,8 @@ import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js
 import { classMap } from 'lit/directives/class-map.js';
 import { styleMap } from 'lit/directives/style-map.js';
 
-import { colorPalettes, type ColorPalette } from '../../lib/context/color/provider.js';
-import { themable } from '../../lib/context/color/consumer.js';
+import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import { FloatingDOMController } from '@patternfly/pfe-core/controllers/floating-dom-controller.js';
 

@@ -1,8 +1,8 @@
 import { LitElement, html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 
-import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/context/color/provider.js';
-import { themable } from '@rhds/elements/lib/context/color/consumer.js';
+import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import { property } from 'lit/decorators/property.js';
 import { customElement } from 'lit/decorators/custom-element.js';

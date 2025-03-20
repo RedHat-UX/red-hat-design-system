@@ -6,8 +6,8 @@ import TinyColor from 'tinycolor2';
 
 import { tokens } from '@rhds/tokens';
 
-import { themable } from '../../../lib/context/color/consumer.js';
-import { colorPalettes, type ColorPalette } from '../../../lib/context/color/provider.js';
+import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 const dark = tokens.get('--rh-color-text-primary-on-dark');
 const light = tokens.get('--rh-color-text-primary-on-light');

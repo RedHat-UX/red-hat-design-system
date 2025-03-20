@@ -4,7 +4,7 @@ import { property } from 'lit/decorators/property.js';
 
 import { ComposedEvent } from '@patternfly/pfe-core';
 
-import { themable } from '../../lib/context/color/consumer.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-sort-button.css';
 

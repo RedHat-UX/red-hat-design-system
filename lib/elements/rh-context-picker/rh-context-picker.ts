@@ -1,4 +1,5 @@
 import type { Color } from '@rhds/tokens';
+import type { ColorPalette } from '@rhds/elements/lib/color-palettes.js';
 
 import { html, LitElement, type ComplexAttributeConverter } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
@@ -18,8 +19,7 @@ import {
 
 import '@rhds/elements/rh-tooltip/rh-tooltip.js';
 
-import type { ColorPalette } from '../../context/color/provider.js';
-import { themable } from '../../context/color/consumer.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import style from './rh-context-picker.css';
 

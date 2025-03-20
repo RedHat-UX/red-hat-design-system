@@ -6,8 +6,8 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { SSRFailureRecoverableElement } from './ssr-failure-recoverable.js';
 
-import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/context/color/provider.js';
-import { themable } from '@rhds/elements/lib/context/color/consumer.js';
+import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import {
   ColorPaletteListConverter,

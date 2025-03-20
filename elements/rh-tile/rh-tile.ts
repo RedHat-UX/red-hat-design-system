@@ -13,8 +13,8 @@ import type { IconNameFor, IconSetName } from '@rhds/icons';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 
-import { colorPalettes, type ColorPalette } from '../../lib/context/color/provider.js';
-import { themable } from '../../lib/context/color/consumer.js';
+import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-tile.css';
 

@@ -8,7 +8,7 @@ import '@rhds/elements/rh-surface/rh-surface.js';
 
 import styles from './uxdot-header.css';
 
-import { themable } from '@rhds/elements/lib/context/color/consumer.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 @customElement('uxdot-header')
 @themable

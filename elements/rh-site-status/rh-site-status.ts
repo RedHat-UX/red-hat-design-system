@@ -15,7 +15,7 @@ import '@rhds/icons/ui/warning.js';
 import '@rhds/icons/ui/error.js';
 import '@rhds/icons/ui/error-fill.js';
 
-import { themable } from '../../lib/context/color/consumer.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-site-status.css';
 

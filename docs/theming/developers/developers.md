@@ -63,9 +63,9 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
 import {
-  colorPalettes,                                           // 1
-  type ColorPalette,
-} from '@rhds/elements/lib/context/color/provider.js';
+  colorPalettes,
+  type ColorPalette
+} from '@rhds/elements/lib/color-palettes.js';             // 1
 
 @customElement('rh-provider')
 @colorPalettes                                             // 2
@@ -105,7 +105,7 @@ To make your element a color context consumer:
 ```ts rhcodeblock
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
-import { themable } from '@rhds/elements/lib/context/color/consumer.js'; // 1
+import { themable } from '@rhds/elements/lib/themable.js';               // 1
 
 @customElement('rh-consumer')
 @themable                                                                // 2
@@ -299,14 +299,14 @@ themable graphics.
 <rh-cta href="https://github.com/orgs/RedHat-UX/discussions/1780">Join the discussion</rh-cta>
 
 [backgrounds]: /theming/color-palettes/#backgrounds
-[consumersrc]: https://github.com/RedHat-UX/red-hat-design-system/blob/main/lib/context/color/consumer.ts
+[consumersrc]: https://github.com/RedHat-UX/red-hat-design-system/blob/main/lib/themable.ts
 [contextprotocol]: https://github.com/webcomponents-cg/community-protocols/blob/main/proposals/context.md
 [controllers]: https://lit.dev/docs/composition/controllers/
 [elements]: /elements/
 [landmarks]: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/landmark_role
 [palettes]: /theming/color-palettes/
 [patterns]: /patterns/
-[providersrc]: https://github.com/RedHat-UX/red-hat-design-system/blob/main/lib/context/color/provider.ts
+[providersrc]: https://github.com/RedHat-UX/red-hat-design-system/blob/main/lib/color-palettes.ts
 [themes]: /theming/customizing/#custom-themes
 [tokens]: /tokens/
 [lightdark]: https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark

@@ -7,7 +7,7 @@ import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 
-import { colorPalettes, type ColorPalette } from '../../lib/context/color/provider.js';
+import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
 
 import styles from './rh-navigation-secondary-menu.css';
 
