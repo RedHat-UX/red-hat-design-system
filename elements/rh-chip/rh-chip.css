@@ -12,6 +12,7 @@ label {
   line-height: var(--rh-line-height-body-text, 1.5);
   outline: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
   padding: var(--rh-space-xs, 4px) var(--rh-space-md, 8px);
+  text-wrap: balance;
 
   &:hover,
   &:focus-within {
