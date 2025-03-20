@@ -30,7 +30,7 @@ export class RhContextDemo extends LitElement {
           <div id="picker-container">
             <rh-context-picker id="picker"
                                .value="${colorPalette}"
-                               target="provider"></rh-context-picker>
+                               .target="${this}"></rh-context-picker>
             <label for="picker">${this.label}</label>
             <slot name="controls"></slot>
           </div>
