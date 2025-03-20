@@ -35,107 +35,27 @@ It helps us create consistent layouts that work across devices, screen sizes, an
 We use [space tokens][space tokens] to define grid margins and gutters.
 
 <rh-table>
-  <table>
-  <!--
-    <colgroup>
-      <col>
-      <col>
-      <col>
-    </colgroup>
-    -->
-    <thead>
-      <tr>
-        <th scope="col">Grid name</th>
-        <th scope="col">Breakpoint</th>
-        <th scope="col">Margins and gutters</th>
-        <th scope="col">Max width</th>
-        <th scope="col">Columns</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>xs</td>
-        <td>&lt;575px</td>
-        <td><code>--rh-space-lg</code></td>
-        <td>100% - 32px</td>
-        <td>2</td>
-      </tr>
-      <tr>
-        <td>sm</td>
-        <td>576px</td>
-        <td><code>--rh-space-lg</code></td>
-        <td>544px</td>
-        <td>2</td>
-      </tr>
-      <tr>
-        <td>md</td>
-        <td>768px</td>
-        <td><code>--rh-space-2xl</code></td>
-        <td>704px</td>
-        <td>12</td>
-      </tr>
-      <tr>
-        <td>lg</td>
-        <td>992px</td>
-        <td><code>--rh-space-2xl</code></td>
-        <td>928px</td>
-        <td>12</td>
-      </tr>
-      <tr>
-        <td>xl</td>
-        <td>1200px</td>
-        <td><code>--rh-space-2xl</code></td>
-        <td>1136px</td>
-        <td>12</td>
-      </tr>
-      <tr>
-        <td>2xl</td>
-        <td>&gt;1440px</td>
-        <td><code>--rh-space-2xl</code></td>
-        <td>1376px</td>
-        <td>12</td>
-      </tr>
-    </tbody>
-  </table>
+
+| Grid name | Breakpoint | Margins and gutters | Max width   | Columns |
+|-----------|------------|---------------------|-------------|---------|
+| xs        | &lt;575px  | `--rh-space-lg`     | 100% - 32px | 2       |
+| sm        | 576px      | `--rh-space-lg`     | 544px       | 2       |
+| md        | 768px      | `--rh-space-2xl`    | 704px       | 12      |
+| lg        | 992px      | `--rh-space-2xl`    | 928px       | 12      |
+| xl        | 1200px     | `--rh-space-2xl`    | 1136px      | 12      |
+| 2xl       | &gt;1440px | `--rh-space-2xl`    | 1376px      | 12      |
+
 </rh-table>
 
 ## Fluid grid values
 
 <rh-table>
-  <table>
-    <colgroup>
-      <col>
-      <col>
-      <col>
-      <col>
-      <col>
-    </colgroup>
-    <thead>
-      <tr>
-        <th scope="col">Grid name</th>
-        <th scope="col">Device</th>
-        <th scope="col">Margins and gutters</th>
-        <th scope="col">Max width</th>
-        <th scope="col">Columns</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Fluid</td>
-        <td>Desktop and tablet</td>
-        <td><code>--rh-space-2xl</code></td>
-        <td>100%</td>
-        <td>12</td>
-      </tr>
-      <tr>
-        <td>Fluid</td>
-        <td>Mobile</td>
-        <td><code>--rh-space-lg</code></td>
-        <td>100%</td>
-        <td>2</td>
-      </tr>
-    </tbody>
-  </table>
+
+| Grid name | Device             | Margins and gutters | Max width | Columns |
+|-----------|--------------------|---------------------|-----------|---------|
+| Fluid     | Desktop and tablet | `--rh-space-2xl`    | 100%      | 12      |
+| Fluid     | Mobile             | `--rh-space-lg`     | 100%      | 2       |
+
 </rh-table>
 
 ## Best practices
