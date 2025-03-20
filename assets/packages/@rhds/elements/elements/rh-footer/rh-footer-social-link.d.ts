@@ -1,5 +1,10 @@
 import type { IconNameFor } from '@rhds/icons';
 import { LitElement } from 'lit';
+/**
+ * Displays a linked icon to a social media property
+ * @summary Displays a linked icon to a social media property
+ * @slot    - Add an anchor tag linking to a social media property
+*/
 export declare class RhFooterSocialLink extends LitElement {
     #private;
     static readonly styles: CSSStyleSheet;

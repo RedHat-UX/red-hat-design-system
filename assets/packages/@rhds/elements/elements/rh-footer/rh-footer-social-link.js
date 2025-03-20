@@ -4,6 +4,11 @@ import { LitElement, html } from 'lit';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { css } from "lit";
 const style = css `:host{display:block;--rh-icon-size:var(--rh-footer--social-icon--size,var(--rh-size-icon-02,24px))}[hidden]{display:none!important}::slotted(a){color:var(--_icon-color)!important}::slotted(a:is(:hover,:focus-within)){color:var(--_icon-color-hover)!important}`;
+/**
+ * Displays a linked icon to a social media property
+ * @summary Displays a linked icon to a social media property
+ * @slot    - Add an anchor tag linking to a social media property
+*/
 export class RhFooterSocialLink extends LitElement {
     constructor() {
         super(...arguments);
