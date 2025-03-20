@@ -24,8 +24,8 @@ export class ChipChangeEvent extends Event {
 
 /**
  * Chip
- * A chip is a clickable surface that acts like a checkbox.
- * @summary Creates a checkable surface
+ * A chip is used to filter information or indicate that a selection was made.
+ * @summary Filter information or indicate that a selection was made
  * @fires {ChipCheckedEvent} chip-checked - when chip is checked/unchecked
  * @csspart chip - The main chip container
  * @slot - The label of the checkbox
