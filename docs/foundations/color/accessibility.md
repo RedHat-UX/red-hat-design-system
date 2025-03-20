@@ -34,9 +34,7 @@ At our core, we believe in creating interactions and experiences that are inclus
 
 ## Using color alone
 
-When considering methods of communication or feedback, do not use color or
-location alone. Ensure there is text, an icon, an underline, or other visual
-cue to communicate meaning. 
+When considering methods of communication or feedback, do not use color alone. Use text, icons, underlines, or other visual cues to communicate meaning.
 
 Consider how these elements look to a color blind user:
 
@@ -53,9 +51,9 @@ Consider how these elements look to a color blind user:
 
 ### Body and code text
 
-Foreground body and code text (non-bold text **under 24px** and bold text 
-**under 19px**) must have a contrast ratio of 4.5:1. Large foreground body and 
-code text (non-bold text of **at least 24px** and bold text of **at least 
+Foreground body and code text (non-bold text **under 24px** and bold text
+**under 19px**) must have a contrast ratio of 4.5:1. Large foreground body and
+code text (non-bold text of **at least 24px** and bold text of **at least
 19px**) must have a contrast ratio of 3:1.
 
 <uxdot-example width-adjustment=”100%” variant="full" alignment="left" no-border>
@@ -88,23 +86,23 @@ The font sizes that are considered normal and large are as follows:
 <rh-table>
 
 | Background color      | Contrast ratio | Normal text | Large text | Objects and UI elements |
-| --------------------- | -------------- | ----------- | ---------- | ------------------------- |
-| `white` (`#fff`)      | {{ p(4.35) }}  | {{ p() }}   | {{ p() }}  | {{ p() }}                 |
-| `gray-10` (`#f2f2f2`) | {{ p(4.04) }}  | {{ f() }}   | {{ p() }}  | {{ p() }}                 |
-| `gray-20` (`#e0e0e0`) | {{ f(3.43) }}  | {{ f() }}   | {{ p() }}  | {{ p() }}                 |
-| `gray-70` (`#383838`) | {{ f(2.58) }}  | {{ f() }}   | {{ f() }}  | {{ f() }}                 |
-| `gray-80` (`#292929`) | {{ f(3.21) }}  | {{ f() }}   | {{ p() }}  | {{ p() }}                 |
-| `gray-90` (`#1f1f1f`) | {{ f(3.63) }}  | {{ f() }}   | {{ p() }}  | {{ p() }}                 |
-| `gray-95` (`#151515`) | {{ f(4.03) }}  | {{ f() }}   | {{ p() }}  | {{ p() }}                 |
-| `black` (`#000`)      | {{ p(4.63) }}  | {{ p() }}   | {{ p() }}  | {{ p() }}                 |
+| --------------------- | -------------- | ----------- | ---------- | ----------------------- |
+| `white` (`#fff`)      | {{ p(4.35) }}  | {{ p() }}   | {{ p() }}  | {{ p() }}               |
+| `gray-10` (`#f2f2f2`) | {{ p(4.04) }}  | {{ f() }}   | {{ p() }}  | {{ p() }}               |
+| `gray-20` (`#e0e0e0`) | {{ f(3.43) }}  | {{ f() }}   | {{ p() }}  | {{ p() }}               |
+| `gray-70` (`#383838`) | {{ f(2.58) }}  | {{ f() }}   | {{ f() }}  | {{ f() }}               |
+| `gray-80` (`#292929`) | {{ f(3.21) }}  | {{ f() }}   | {{ p() }}  | {{ p() }}               |
+| `gray-90` (`#1f1f1f`) | {{ f(3.63) }}  | {{ f() }}   | {{ p() }}  | {{ p() }}               |
+| `gray-95` (`#151515`) | {{ f(4.03) }}  | {{ f() }}   | {{ p() }}  | {{ p() }}               |
+| `black` (`#000`)      | {{ p(4.63) }}  | {{ p() }}   | {{ p() }}  | {{ p() }}               |
 
 </rh-table>
 
 ### Links
 
-To differentiate text links from their surrounding text without relying on color 
-contrast, links in all states must be underlined. Links isolated within visually 
-distinct sections (like navigation menus) or links with additional visual cues (like call to action arrows) are **exempt from this requirement**, although you can still add 
+To differentiate text links from their surrounding text without relying on color
+contrast, links in all states must be underlined. Links isolated within visually
+distinct sections (like navigation menus) or links with additional visual cues (like call to action arrows) are **exempt from this requirement**, although you can still add
 underlines at your discretion.
 
 <uxdot-example width-adjustment="797px">
@@ -114,12 +112,12 @@ underlines at your discretion.
 
 ### Graphical objects and UI elements
 
-Graphical objects and UI elements like charts and infographics should have a 
-contrast ratio of at least 3:1. If color is the only way to distinguish between 
-inline controls and surrounding text, the contrast ratio between the control and 
+Graphical objects and UI elements like charts and infographics should have a
+contrast ratio of at least 3:1. If color is the only way to distinguish between
+inline controls and surrounding text, the contrast ratio between the control and
 text must be at least 3:1.
 
-- Non-color cues like borders must be used to signify when an element receives 
+- Non-color cues like borders must be used to signify when an element receives
   focus
 
 ### Layering
