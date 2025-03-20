@@ -245,7 +245,7 @@ describe('<rh-footer>', function() {
         const secondPrimaryLink = element.querySelector('h3[slot=links]:nth-of-type(n+2)');
         const d = Math.abs(firstPrimaryLink!.getBoundingClientRect().right - secondPrimaryLink!.getBoundingClientRect().left);
         // 32px between the link items
-        expect(d).to.equal(parseInt(tokens.get('--rh-space-2xl') as string), '--rh-space-2xl');
+        expect(d).to.equal(parseInt(tokens.get('--rh-space-2xl')), '--rh-space-2xl');
       });
 
       it('distributes links vertically', function() {
@@ -253,7 +253,7 @@ describe('<rh-footer>', function() {
         const fifthPrimaryLink = element.querySelector('h3[slot=links]:nth-of-type(n+5)');
         const d = Math.abs(firstPrimaryLink!.getBoundingClientRect().bottom - fifthPrimaryLink!.getBoundingClientRect().top);
         // 32px between the first and second row
-        expect(d).to.equal(parseInt(tokens.get('--rh-space-2xl') as string), '--rh-space-2xl');
+        expect(d).to.equal(parseInt(tokens.get('--rh-space-2xl')), '--rh-space-2xl');
       });
     });
 
@@ -374,7 +374,7 @@ describe('<rh-footer>', function() {
       });
 
       it('Mobile landscape', async function() {
-        await setViewport({ width: parseInt(tokens.get('--rh-breakpoint-sm') as string), height: 800 });
+        await setViewport({ width: parseInt(tokens.get('--rh-breakpoint-sm')), height: 800 });
         await element.updateComplete;
 
         // verify --_section-side-gap
@@ -389,7 +389,7 @@ describe('<rh-footer>', function() {
       });
 
       it('Desktop, small', async function() {
-        await setViewport({ width: parseInt(tokens.get('--rh-breakpoint-lg') as string), height: 800 });
+        await setViewport({ width: parseInt(tokens.get('--rh-breakpoint-lg')), height: 800 });
         await element.updateComplete;
 
         expect(Math.abs(base.getBoundingClientRect().top - logo.getBoundingClientRect().top)).to.equal(32);
@@ -399,7 +399,7 @@ describe('<rh-footer>', function() {
       });
 
       it('Desktop, medium', async function() {
-        await setViewport({ width: parseInt(tokens.get('--rh-breakpoint-xl') as string), height: 800 });
+        await setViewport({ width: parseInt(tokens.get('--rh-breakpoint-xl')), height: 800 });
         await element.updateComplete;
 
         // verify --_section-side-gap

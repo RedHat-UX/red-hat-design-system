@@ -20,6 +20,10 @@ async function allUpdates(element: ReactiveElement) {
   } while (!await element.updateComplete);
 }
 
+tokens.forEach((v, k) => {
+  console.log({ k, v });
+});
+
 describe('<rh-tabs>', function() {
   let element: RhTabs;
 

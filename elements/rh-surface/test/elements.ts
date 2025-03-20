@@ -9,8 +9,8 @@ import { tokens } from '@rhds/tokens';
 import { themable } from '../../../lib/context/color/consumer.js';
 import { colorSchemeProvider, type ColorPalette } from '../../../lib/context/color/provider.js';
 
-const dark = tokens.get('--rh-color-text-primary-on-dark') as string;
-const light = tokens.get('--rh-color-text-primary-on-light') as string;
+const dark = tokens.get('--rh-color-text-primary-on-dark');
+const light = tokens.get('--rh-color-text-primary-on-light');
 
 class RendersText extends LitElement {
   static styles = [css`:host {

@@ -212,22 +212,20 @@ button {
   }
 
   &.play {
-    --_gray-90-rgb: var(--rh-color-gray-90-rgb, 31 31 31);
-    --_white-rgb: 255 255 255;
     --_color: var(--rh-color-icon-secondary-on-dark);
     --_background-color:
-      light-dark(rgb(var(--_gray-90-rgb) / var(--rh-opacity-50, 50%)),
-        rgb(var(--_white-rgb) / var(--rh-opacity-50, 50%)));
+      light-dark(rgba(from var(--rh-color-gray-90, #1f1f1f) r g b / var(--rh-opacity-50, 50%)),
+        rgba(from white r g b / var(--rh-opacity-50, 50%)));
     --_active-background-color:
-      light-dark(rgb(var(--_gray-90-rgb) / var(--rh-opacity-80, 80%)),
-        rgb(var(--_white-rgb) / var(--rh-opacity-80, 80%)));
+      light-dark(rgba(from var(--rh-color-gray-90, #1f1f1f) r g b / var(--rh-opacity-80, 80%)),
+        rgba(from white r g b / var(--rh-opacity-80, 80%)));
     --_focus-background-color:
-      light-dark(rgb(var(--_gray-90-rgb) / var(--rh-opacity-80, 80%)),
-        rgb(var(--_white-rgb) / var(--rh-opacity-80, 80%)));
+      light-dark(rgba(from var(--rh-color-gray-90, #1f1f1f) r g b / var(--rh-opacity-80, 80%)),
+        rgba(from white r g b / var(--rh-opacity-80, 80%)));
     --_focus-outline-color: var(--rh-color-interactive-primary-default);
     --_hover-background-color:
-      light-dark(rgb(var(--_gray-90-rgb) / var(--rh-opacity-80, 80%)),
-        rgb(var(--_white-rgb) / var(--rh-opacity-80, 80%)));
+      light-dark(rgba(from var(--rh-color-gray-90, #1f1f1f) r g b / var(--rh-opacity-80, 80%)),
+        rgba(from white r g b / var(--rh-opacity-80, 80%)));
 
     border-radius: 100%;
     width: var(--rh-length-4xl, 64px);

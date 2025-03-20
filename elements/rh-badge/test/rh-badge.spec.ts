@@ -17,7 +17,7 @@ describe('<rh-badge>', function() {
     const element = await createFixture <RhBadge>(html`<rh-badge></rh-badge>`);
     // NB: querying shadow root in tests is bad, mmkay?
     const styles = getComputedStyle(element.shadowRoot!.querySelector('span')!);
-    expect(styles.backgroundColor).to.be.colored(tokens.get('--rh-color-status-neutral-on-light') as string);
+    expect(styles.backgroundColor).to.be.colored(tokens.get('--rh-color-status-neutral-on-light'));
   });
 });
 
@@ -33,6 +33,14 @@ it('should have a pill shape and padding on left and right only', async function
   expect(elStyles.getPropertyValue('padding-left')).to.equal('8px');
 });
 
+type StatusColor =
+  | '--rh-color-status-neutral'
+  | '--rh-color-status-info'
+  | '--rh-color-status-success'
+  | '--rh-color-status-caution'
+  | '--rh-color-status-warning'
+  | '--rh-color-status-danger';
+
 for (const [state, token] of Object.entries({
   neutral: '--rh-color-status-neutral',
   info: '--rh-color-status-info',
@@ -40,7 +48,7 @@ for (const [state, token] of Object.entries({
   caution: '--rh-color-status-caution',
   warning: '--rh-color-status-warning',
   danger: '--rh-color-status-danger',
-}) as [string, `--rh-${string}`][]) {
+}) as [string, StatusColor][]) {
   describe(`state="${state}"`, function() {
     let element: RhBadge;
     let styles: CSSStyleDeclaration;
@@ -54,7 +62,7 @@ for (const [state, token] of Object.entries({
       styles = getComputedStyle(element.shadowRoot!.querySelector('span')!);
     });
     it(`should have a background color '${token}-on-light'`, async function() {
-      expect(styles.backgroundColor).to.be.colored(tokens.get(`${token}-on-light`) as string);
+      expect(styles.backgroundColor).to.be.colored(tokens.get(`${token}-on-light`));
     });
     describe('on a dark background', function() {
       beforeEach(async function() {
@@ -63,7 +71,7 @@ for (const [state, token] of Object.entries({
         `);
       });
       it(`should have a background color '${token}-on-dark'`, async function() {
-        expect(styles.backgroundColor).to.be.colored(tokens.get(`${token}-on-dark`) as string);
+        expect(styles.backgroundColor).to.be.colored(tokens.get(`${token}-on-dark`));
       });
     });
   });

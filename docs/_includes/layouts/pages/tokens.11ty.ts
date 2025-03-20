@@ -1,4 +1,4 @@
-import type { Color, DesignToken } from '@rhds/tokens';
+import type { Color, DesignToken, TokenName } from '@rhds/tokens';
 
 import tinycolor from 'tinycolor2';
 import { tokens as tokensMeta } from '@rhds/tokens/meta.js';
@@ -75,7 +75,7 @@ export default class TokensPage extends Renderer<Data> {
   #themeTokensCardCount = 1;
 
   #getTokenLightness(token: DesignToken, palette: 'light' | 'dark') {
-    const meta = tokensMeta.get(`--${token.name as `rh-${string}`}`);
+    const meta = tokensMeta.get(`--${token.name}` as TokenName);
     const value =
        meta?.$value
     || !Array.isArray(meta?.original.$value) ? ''
@@ -84,7 +84,7 @@ export default class TokensPage extends Renderer<Data> {
         || x.toString().endsWith(`${palette}}`));
     const derefed =
       `--rh-${value?.toString().replace(/{(.*)}/, '$1').replace(/\./g, '-')}` as const;
-    const derefedToken = meta?.$value ? meta : tokensMeta.get(derefed);
+    const derefedToken = meta?.$value ? meta : tokensMeta.get(derefed as TokenName);
     const color = tinycolor(derefedToken?.$value?.toString());
     const isDark = color?.isDark();
     const isLight = color?.isLight();
@@ -97,7 +97,7 @@ export default class TokensPage extends Renderer<Data> {
     if (parts.at(0) === 'color' && parts.length === 2) {
       const prefix = `rh-color-${parts.at(1)}`;
       for (const token of tokensMeta.values()) {
-        if (isThemeColorToken(token) && token.name.startsWith(prefix)) {
+        if (isThemeColorToken(token) && token.name?.startsWith(prefix)) {
           themeTokens.push(token);
         }
       }
