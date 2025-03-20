@@ -77,7 +77,7 @@ change on your behalf. Below is the base import map for using v{{ pkg.version }}
 
 Once the import map is established, you can load the element with the following 
 module, containing a [bare module specifier][barespec]. The example below shows 
-how you'd load in <`rh-button>`.
+how you'd load in `<rh-button>`.
 
 
 ```html rhcodeblock
@@ -153,7 +153,7 @@ themselves to prevent CLS.
 
 ```html rhcodeblock
 <link rel="stylesheet"
-      href="https://www.redhatstatic.com/dx/v1/@rhds/elements@1.4.5/rh-footer/rh-footer-lightdom.css">
+      href="https://www.redhatstatic.com/dssf-001/v2/@rhds/elements@{{ pkg.version }}/rh-footer/rh-footer-lightdom.css">
 ```
 
 <rh-alert>Note: a future version of RHDS will remove the requirement to manually
@@ -170,7 +170,7 @@ no longer be needed and will become deprecated.
 
 ```html rhcodeblock
 <link rel="stylesheet"
-      href="https://www.redhatstatic.com/dx/v1/@rhds/elements@1.4.5/rh-cta/rh-cta-lightdom-shim.css">
+      href="https://www.redhatstatic.com/dssf-001/v2/@rhds/elements@{{ pkg.version }}/rh-cta/rh-cta-lightdom-shim.css">
 ```
 
 <uxdot-feedback>

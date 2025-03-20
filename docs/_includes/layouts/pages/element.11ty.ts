@@ -275,7 +275,7 @@ export default class ElementsPage extends Renderer<Context> {
     return content;
   }
 
-  async #renderInstallation({ doc, cdnVersion = 'v1-alpha' }: Context) {
+  async #renderInstallation({ doc, cdnVersion = 'v2' }: Context) {
     const jspmMap = await this.#generateImportMap(doc.docsPage.tagName)
         .catch(error => {
           console.warn(error); // eslint-disable-line no-console
@@ -319,7 +319,7 @@ export default class ElementsPage extends Renderer<Context> {
               <script type="importmap">
               {
                 "imports": {
-                  "@rhds/elements/": "https://www.redhatstatic.com/dx/${cdnVersion}/@rhds/elements@${packageVersion}/elements/",
+                  "@rhds/elements/": "https://www.redhatstatic.com/dssf-001/${cdnVersion}/@rhds/elements@${packageVersion}/elements/",
                 }
               }
               </script>`))}
