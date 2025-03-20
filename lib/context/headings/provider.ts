@@ -35,7 +35,8 @@ export class HeadingLevelContextProvider extends HeadingLevelController {
   #callbacks = new Set<ContextCallback<number>>();
 
   hostConnected() {
-    this.host.addEventListener('context-request', e => this.#onChildContextRequestEvent(e));
+    this.host.addEventListener('context-request', e =>
+      this.#onChildContextRequestEvent(e as ContextRequestEvent<UnknownContext>));
     for (const [host, fired] of contextEvents) {
       host.dispatchEvent(fired);
     }
@@ -60,7 +61,10 @@ export class HeadingLevelContextProvider extends HeadingLevelController {
     }
   }
 
-  /** Was the context event fired requesting our colour-context context? */
+  /**
+   * Was the context event fired requesting our colour-context context?
+   * @param event
+   */
   #isHeadingContextRequestEvent(
     event: ContextRequestEvent<UnknownContext>
   ): event is ContextRequestEvent<typeof HeadingLevelController.context> {
