@@ -436,7 +436,7 @@ export default class TokensPage extends Renderer<Data> {
     return html`
       <link rel="stylesheet" data-helmet href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
       <link rel="stylesheet" data-helmet href="/styles/samp.css">
-      <link rel="stylesheet" data-helmet href="/styles/tokens-pages.css">
+      <link rel="stylesheet" data-helmet href="/styles/pages/tokens.css">
       <script type="module" data-helmet>
         import '@uxdot/elements/uxdot-spacer-tokens-table.js';
         import '@rhds/elements/rh-tooltip/rh-tooltip.js';
