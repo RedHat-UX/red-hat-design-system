@@ -42,12 +42,12 @@ export class UxdotColorSchemePicker extends LitElement {
           <label title="Light">
             <span class="visually-hidden">Light</span>
             <input type="radio" name="scheme" value="light" ?checked="${!isServer && this.scheme === 'light'}">
-            <rh-icon set="ui" icon="light-mode-fill"></rh-icon>
+            <rh-icon set="ui" icon="light-mode"></rh-icon>
           </label>
           <label title="Dark">
             <span class="visually-hidden">Dark</span>
             <input type="radio" name="scheme" value="dark" ?checked="${!isServer && this.scheme === 'dark'}">
-            <rh-icon set="ui" icon="dark-mode-fill"></rh-icon>
+            <rh-icon set="ui" icon="dark-mode"></rh-icon>
           </label>
           <label title="Device default">
             <span class="visually-hidden">Device default</span>
