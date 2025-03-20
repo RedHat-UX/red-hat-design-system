@@ -288,7 +288,7 @@
     "@lit/context": "^1.1.4",
     "@patternfly/pfe-core": "^4.0.5",
     "@rhds/icons": "^1.2.0",
-    "@rhds/tokens": "^2.2.4",
+    "@rhds/tokens": "^3.0.0",
     "lit": "^3.2.1",
     "prism-esm": "^1.29.0-fix.6",
     "tslib": "^2.8.1"
