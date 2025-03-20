@@ -34,11 +34,6 @@ fieldset {
 
     &:not(:first-of-type) { margin-inline-start: -1px; }
 
-    &:hover,
-    &:has(:checked) {
-      border-color: var(--rh-color-border-interactive);
-    }
-
     &:first-of-type {
       border-start-start-radius: var(--rh-border-radius-default);
       border-end-start-radius: var(--rh-border-radius-default);
@@ -59,6 +54,7 @@ fieldset {
     &:has(:checked) {
       color: var(--rh-color-text-primary-on-light);
       background-color: var(--rh-color-interactive-primary-active);
+      border-color: var(--rh-color-border-interactive);
 
       &:hover,
       &:focus-within {
