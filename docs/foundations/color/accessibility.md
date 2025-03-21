@@ -34,9 +34,9 @@ At our core, we believe in creating interactions and experiences that are inclus
 
 ## Using color alone
 
-When considering methods of communication or feedback, do not use color alone. Use text, icons, underlines, or other visual cues to communicate meaning.
+When considering methods of communication or feedback, do not rely solely upon color. Use text, icons, underlines, or other visual cues to communicate meaning.
 
-Consider how these elements look to a color blind user:
+Consider how these elements might look to a color blind user:
 
 <figure>
   <uxdot-example width-adjustment="1012px">
@@ -46,6 +46,8 @@ Consider how these elements look to a color blind user:
     A simulation of what a color blind user might see when only color is used to communicate meaning.
   </figcaption>
 </figure>
+
+Note that the emphasis here is on "solely," as we often do use color to enhance the visual design of our digital experiences. As stated in the [WCAG criterion on color usage](https://www.w3.org/WAI/WCAG21/Understanding/use-of-color.html), "This should not in any way discourage the use of color on a page, or even color coding if it is complemented by other visual indication."
 
 ## Color contrast
 
