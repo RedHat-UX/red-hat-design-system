@@ -24,20 +24,17 @@
 
 @layer layout {
   html,
-  body,
-  #main { height: 100%; }
+  body { height: 100%; }
+
+  #sidebar {
+    height: calc(100dvh - var(--pf-demo-header-height)) !important;
+    overflow-x: scroll;
+  }
+  #nav {
+    height: 100% !important;
+  }
 
   [data-demo] {
-    display: contents;
-  }
-
-  #main {
-    display: block;
-    position: relative;
-    max-height: initial;
-  }
-
-  #nav {
     height: 100%;
   }
 
@@ -49,11 +46,10 @@
     margin-inline-end: 0;
   }
 
-  /* offset the padding on the demo container from above */
-  rh-context-demo {
-    min-height: calc(100% + 2 * var(--rh-space-xl, 24px));
-    height: auto;
+  #rhds-dev-server-main {
+    grid-area: body;
   }
+
 }
 
 #source-control {
