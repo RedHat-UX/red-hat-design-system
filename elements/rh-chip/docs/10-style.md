@@ -1,133 +1,132 @@
 ## Style
 
-Description goes here.
+A chip is a checkbox HTML input element. It is styled as text on a pill-shaped background. A close icon appears on the right when a chip is selected. Chips are commonly arranged horizontally in chip groups where a legend or text label is included at the beginning.
 
 ### Anatomy
 
 <figure>
-  <uxdot-example width-adjustment="295px">
-    <img src="../breadcrumbs-anatomy.svg"
-        alt="Anatomy of breadcrumbs with numbered annotations pointing to various parts"
-        width="296"
-        height="47">
+  <uxdot-example>
+    <img src="../chip-style-anatomy.svg"
+        alt="Anatomy of chips with numbered annotations pointing to various parts"
+        width="736"
+        height="106">
   </uxdot-example>
   <figcaption>
      <ol>
-       <li>Parent page</li>
-       <li>Seperator</li>
-       <li>Current page</li>
+       <li>Chip group</li>
+       <li>Legend</li>
+       <li>Chip text</li>
+       <li>Selected icon</li>
+       <li>Clear all button</li>
      </ol>
   </figcaption>
 </figure>
 
-## Theme
+## Variants
 
-Breadcrumbs are available in both light and dark themes.
+### Style
 
-<div class="grid xs-two-columns">
-  <uxdot-example width-adjustment="295px">
-    <img src="../breadcrumb-theme-light.svg"
-        alt="Light theme breadcrumb with blue links and black text and separators"
-        width="296"
-        height="21">
-  </uxdot-example>
+Each chip state has unique styling based on its function.
 
-  <uxdot-example width-adjustment="295px" color-palette="darkest">
-    <img src="../breadcrumb-theme-dark.svg"
-        alt="Dark theme breadcrumb with light blue links and white text and separators"
-        width="296"
-        height="21">
-  </uxdot-example>
-</div>
+<uxdot-example>
+    <img src="../chip-style-variants-style.svg"
+        alt="Three chips and a clear all button. The second chip is selected, the third is disabled."
+        width="355"
+        height="29">
+</uxdot-example>
 
-## Placement
+### Size
 
-Breadcrumbs typically appear above the title of a page and below primary and/or secondary navigation.
+There are two available chip sizes: Small and Large. The only difference is the text size. Chip groups also have two legend sizes depending on which chip is used.
 
-<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-    <img src="../breadcrumb-placement.svg"
-        alt="partial view of Red Hat's homepage with primary and secondary navigation above breadcrumb navigation"
-        width="1000"
-        height="445">
-  </uxdot-example>
+<uxdot-example>
+    <img src="../chip-style-variants-size.svg"
+        alt="Two sets of chips in two columns and two rows. On the left, small chips. On the right, large chips."
+        width="760"
+        height="90">
+</uxdot-example>
+
+## Color scheme
+
+Chips and chip groups are available in both light and dark color schemes.
+
+### Light scheme
+
+<uxdot-example>
+    <img src="../chip-style-color-scheme-light.svg"
+        alt="Four chips on a light color scheme displayed in their default format, horizontally across the image."
+        width="720"
+        height="29">
+</uxdot-example>
+
+### Dark scheme
+
+<uxdot-example color-palette="darkest">
+    <img src="../chip-style-color-scheme-dark.svg"
+        alt="Four chips on a dark color scheme displayed in their default format, horizontally across the image."
+        width="720"
+        height="29">
+</uxdot-example>
+
 
 ## Space
 
-The space between parent pages or current pages and the separators is 16px. If a row of breadcrumbs has to wrap, the space between the lines is 8px. This remains the same across all breakpoints.
+The space in each chip is the same for both sizes. The `--rh-space-md` token is used after the legend as well as in between each subsequent chip.
 
-<uxdot-example width-adjustment="162px">
- <img src="../breadcrumb-space.svg"
-        alt="Diagram of spacing for breadcrumbs"
-        width="162"
-        height="50" />
+<uxdot-example>
+    <img src="../chip-style-space-a.svg"
+        alt="Chips have 8px of horizontal padding, 4px of vertical padding, 8px of margin on the right, and the icon is 16x16."
+        width="745"
+        height="294">
 </uxdot-example>
 
-## Interaction States
+The --rh-space-lg token is used when chips are stacked.
 
-Interaction states are visual representations used to communicate the status of an element or pattern.
+<uxdot-example>
+    <img src="../chip-style-space-b.svg"
+        alt="When chips wrap to more than one line, each item has 16px of margin on the bottom."
+        width="900"
+        height="209">
+</uxdot-example>
+
+## Interaction states
 
 ### Hover
 
-A breadcrumb link turns a darker or lighter shade of the default state’s blue and becomes underlined on hover.
+Styles will change on hover depending on how a chip is used.
 
-<div class="grid xs-two-columns">
-  <uxdot-example width-adjustment="295px">
-    <img src="../breadcrumb-hover-light.svg"
-        alt="Light theme breadcrumbs with dark blue, underlined links on hover and black text and separators"
-        width="296"
-        height="44">
-  </uxdot-example>
+- The Default and Selected chip borders change to --rh-border-width-md on hover
+- The Clear all chip border becomes visible and is --rh-border-width-sm on hover
+- A disabled chip has no states
 
-  <uxdot-example width-adjustment="295px" color-palette="darkest">
-    <img src="../breadcrumb-hover-dark.svg"
-        alt="Dark theme breadcrumbs with light blue, underlined links on hover and white text and separators"
-        width="296"
-        height="44">
-  </uxdot-example>
-</div>
+<uxdot-example>
+    <img src="../chip-style-interaction-states-hover-color-scheme-light.svg"
+        alt="Three sets of two chips on a light color scheme each showing the hover state on the right and the normal state on the left."
+        width="712"
+        height="32">
+</uxdot-example>
 
-### Focus
+<uxdot-example color-palette="darkest">
+    <img src="../chip-style-interaction-states-hover-color-scheme-dark.svg"
+        alt="Three sets of two chips a dark color scheme each showing the hover state on the right and the normal state on the left."
+        width="712"
+        height="32">
+</uxdot-example>
 
-The focus state of a breadcrumb link looks similar to the hover state, but it adds a focus ring around the link.
+### Focus and Active
 
-<div class="grid xs-two-columns">
-  <uxdot-example width-adjustment="295px">
-    <img src="../breadcrumb-focus-light.svg"
-        alt="Light theme breadcrumbs with one dark blue, underlined link in a focus ring"
-        width="296"
-        height="25">
-  </uxdot-example>
+A focus ring wraps around the text and icon in both focus and active states. Hover state styles remain the same.
 
-  <uxdot-example width-adjustment="295px" color-palette="darkest">
-    <img src="../breadcrumb-focus-dark.svg"
-        alt="Dark theme breadcrumbs with one light blue, underlined link in a focus ring"
-        width="296"
-        height="25">
-  </uxdot-example>
-</div>
+<uxdot-example>
+    <img src="../chip-style-interaction-states-focus-color-scheme-light.svg"
+        alt="Three sets of two chips on a light color scheme each showing the focus state on the right and the normal state on the left."
+        width="712"
+        height="29">
+</uxdot-example>
 
-### Active
-
-<rh-alert state="info">
-  <h4 slot="header">Helpful tip</h4>
-  <p>The Active state has the same styles as the Focus state.</p>
-</rh-alert>
-
-<div class="grid xs-two-columns">
-  <uxdot-example width-adjustment="295px">
-    <img src="../breadcrumb-active-light.svg"
-        alt="Light theme breadcrumbs with one dark blue, underlined link in a focus ring"
-        width="296"
-        height="25">
-  </uxdot-example>
-
-  <uxdot-example width-adjustment="295px" color-palette="darkest">
-    <img src="../breadcrumb-active-dark.svg"
-        alt="Dark theme breadcrumbs with one light blue, underlined link in a focus ring"
-        width="296"
-        height="25">
-  </uxdot-example>
-</div>
-
-
-
+<uxdot-example color-palette="darkest">
+    <img src="../chip-style-interaction-states-focus-color-scheme-dark.svg"
+        alt="Three sets of two chips a dark color scheme each showing the focus state on the right and the normal state on the left."
+        width="712"
+        height="29">
+</uxdot-example>
