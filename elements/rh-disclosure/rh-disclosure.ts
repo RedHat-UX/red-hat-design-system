@@ -2,10 +2,9 @@ import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { query } from 'lit/decorators/query.js';
-import { classMap } from 'lit/directives/class-map.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 
@@ -26,10 +25,9 @@ export class DisclosureToggleEvent extends Event {
  * @csspart caret - The caret icon in the shadow DOM
  */
 @customElement('rh-disclosure')
+@colorPalettes
+@themable
 export class RhDisclosure extends LitElement {
-  /** Sets color theme based on parent context */
-  @colorContextConsumer() private on?: ColorTheme;
-
   static readonly styles = [styles];
 
   private static readonly preventEscElements = [
@@ -54,7 +52,7 @@ export class RhDisclosure extends LitElement {
   ].join(',');
 
   /**
-   * Set the colorPalette of the disclosure. Possible values are:
+   * Set the colorPalette of the disclosure. Overrides parent context. Possible values are:
    * - `lightest` (default)
    * - `lighter`
    * - `light`
@@ -62,7 +60,6 @@ export class RhDisclosure extends LitElement {
    * - `darker`
    * - `darkest`
    */
-  @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   /**
@@ -79,10 +76,8 @@ export class RhDisclosure extends LitElement {
   @query('summary') private summaryEl!: HTMLElement;
 
   render() {
-    const { on = 'light' } = this;
     return html`
       <details
-          class=${classMap({ on: true, [on]: true })}
           ?open="${this.open}"
           @keydown="${this.#onKeydown}"
           @toggle="${this.#onToggle}">

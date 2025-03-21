@@ -1,50 +1,47 @@
-<rh-surface color-palette="lightest">
-  <rh-disclosure summary="This is the top level disclosure">
-    <p>Try not to nest disclosures. If nesting, consider using an accordion instead. Lorem ipsum <a href="#">dolor</a>.</p>
-    <rh-disclosure summary="This is the second level disclosure">
-      <p>Test using the ESC key + focus on an element when nesting disclosures. <a href="#">Fake link 2</a> and more text.</p>
-      <form action="#" method="get" class="form-example" style="margin-block: var(--rh-space-md, 8px);">
-        <div class="form-example">
-          <label for="name">Enter your name: </label>
-          <input type="text" name="name" id="name" required />
-        </div>
-        <div class="form-example">
-          <label for="favcity">Which is your favorite city?</label>
-          <select id="favcity" name="select">
-          <option value="1">Amsterdam</option>
-          <option value="2">Buenos Aires</option>
-          </select>
-        </div>
-        <div class="form-example">
-          <fieldset>
-          <legend>Choose a shipping method:</legend>
-          <input id="overnight" type="radio" name="shipping" value="overnight">
-          <label for="overnight">Overnight</label><br>
-          <input id="twoday" type="radio" name="shipping" value="twoday">
-          <label for="twoday">Two day</label><br>
-          </fieldset>
-        </div>
-        <div class="form-example">
-          <fieldset>
-          <legend>Select your pizza toppings:</legend>
-          <input id="ham" type="checkbox" name="toppings" value="ham">
-          <label for="ham">Ham</label><br>
-          <input id="pepperoni" type="checkbox" name="toppings" value="pepperoni">
-          <label for="pepperoni">Pepperoni</label><br>
-          </fieldset>
-        </div>
-        <div class="form-example">
-          <input type="submit" value="Subscribe!" />
-        </div>
-      </form>
-      <p>This is a sentence with <a href="#">a link</a>.</p>
-    </rh-disclosure>
+<rh-disclosure summary="This is the top level disclosure">
+  <p>Try not to nest disclosures. If nesting, consider using an accordion instead. Lorem ipsum <a href="#">dolor</a>.</p>
+  <rh-disclosure summary="This is the second level disclosure">
+    <p>Test using the ESC key + focus on an element when nesting disclosures. <a href="#">Fake link 2</a> and more text.</p>
+    <form action="#" method="get" class="form-example" style="margin-block: var(--rh-space-md, 8px);">
+      <div class="form-example">
+        <label for="name">Enter your name: </label>
+        <input type="text" name="name" id="name" required />
+      </div>
+      <div class="form-example">
+        <label for="favcity">Which is your favorite city?</label>
+        <select id="favcity" name="select">
+        <option value="1">Amsterdam</option>
+        <option value="2">Buenos Aires</option>
+        </select>
+      </div>
+      <div class="form-example">
+        <fieldset>
+        <legend>Choose a shipping method:</legend>
+        <input id="overnight" type="radio" name="shipping" value="overnight">
+        <label for="overnight">Overnight</label><br>
+        <input id="twoday" type="radio" name="shipping" value="twoday">
+        <label for="twoday">Two day</label><br>
+        </fieldset>
+      </div>
+      <div class="form-example">
+        <fieldset>
+        <legend>Select your pizza toppings:</legend>
+        <input id="ham" type="checkbox" name="toppings" value="ham">
+        <label for="ham">Ham</label><br>
+        <input id="pepperoni" type="checkbox" name="toppings" value="pepperoni">
+        <label for="pepperoni">Pepperoni</label><br>
+        </fieldset>
+      </div>
+      <div class="form-example">
+        <input type="submit" value="Subscribe!" />
+      </div>
+    </form>
+    <p>This is a sentence with <a href="#">a link</a>.</p>
   </rh-disclosure>
-</rh-surface>
+</rh-disclosure>
 
 <link rel="stylesheet" href="../rh-disclosure-lightdom-shim.css">
 
 <script type="module">
-  import '@rhds/elements/rh-surface/rh-surface.js';
   import '@rhds/elements/rh-disclosure/rh-disclosure.js';
 </script>
