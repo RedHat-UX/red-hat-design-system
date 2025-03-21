@@ -36,45 +36,33 @@ button {
   --_time-slider-extension: 0px;
   --_about-mediatitle-display: none;
   --_about-heading-display: flex;
-  --_box-shadow: var(--rh-box-shadow-md, 0 4px 6px 1px rgba(21, 21, 21, 0.25));
+  --_box-shadow: light-dark(var(--rh-box-shadow-md, 0 4px 6px 1px rgba(21, 21, 21, 0.25)), none);
   --_secondary-opacity: var(--rh-audio-player-secondary-opacity, 1);
   --_text-color: var(--rh-audio-player-text-color, var(--rh-color-text-primary));
   --_border-color: var(--rh-color-border-subtle);
   --_surface-color:
-    var(--rh-audio-player-background-color,
-      var(--rh-color-surface-lightest, #ffffff));
+    light-dark(var(--rh-audio-player-background-color, var(--rh-color-surface-lightest, #ffffff)),
+      var(--rh-audio-player-background-color, var(--rh-color-surface-darkest, #151515)));
   --_secondary-text-color:
     var(--rh-audio-player-secondary-text-color,
       var(--rh-color-text-secondary));
   --_static-border-color: var(--rh-color-border-subtle);
   --_static-text-color: var(--rh-color-text-primary);
-  --_static-highlight-color: var(--rh-color-interactive-primary-hover);
+  --_static-highlight-color:
+    light-dark(var(--rh-color-interactive-primary-hover),
+      var(--rh-color-surface-dark, #383838));
   --_static-undeline-color: var(--rh-color-border-subtle);
-  --_static-surface-color: var(--rh-color-surface-lightest, #ffffff);
-  --_static-surface-focus-color: var(--rh-color-surface-light, #e0e0e0);
+  --_static-surface-color:
+    light-dark(var(--rh-color-surface-lightest, #ffffff),
+      var(--rh-color-surface-darkest, #151515));
+  --_static-surface-focus-color:
+    light-dark(var(--rh-color-surface-light, #e0e0e0),
+      var(--rh-color-surface-dark, #383838));
   --rh-tooltip-content-padding-block-start: var(--rh-space-md, 8px);
   --rh-tooltip-content-padding-block-end: var(--rh-space-md, 8px);
   --rh-tooltip-content-padding-inline-start: var(--rh-space-md, 8px);
   --rh-tooltip-content-padding-inline-end: var(--rh-space-md, 8px);
   --rh-audio-player-scrolling-text-overflow-background-color: var(--_surface-color);
-
-  &.dark {
-    --_surface-color:
-      var(--rh-audio-player-background-color,
-        var(--rh-color-surface-darkest, #151515));
-    --_box-shadow: none;
-    --_static-highlight-color: var(--rh-color-surface-dark, #383838);
-    --_static-surface-color: var(--rh-color-surface-darkest, #151515);
-    --_static-surface-focus-color: var(--rh-color-surface-dark, #383838);
-
-    &.has-accent-color {
-      --_static-highlight-color: var(--rh-color-interactive-primary-hover);
-      --_static-surface-color: var(--rh-color-surface-lightest, #ffffff);
-      --_static-surface-focus-color: var(--rh-color-surface-light, #e0e0e0);
-      --_border-color: rgba(255, 255, 255, 0.5);
-      --_secondary-opacity: var(--rh-audio-player-secondary-opacity, 0.75);
-    }
-  }
 
   &.mobile-safari {
     --_time-slider-extension:
@@ -83,15 +71,17 @@ button {
   }
 
   &.has-accent-color {
-    --_border-color: rgba(0, 0, 0, 0.5);
+    --_border-color: light-dark(rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 0.5));
     --_secondary-text-color:
       var(--rh-audio-player-secondary-text-color,
         var(--rh-color-text-primary));
-    --_range-track-color: rgb(255 255 255 / 0.5);
     --_secondary-opacity: var(--rh-audio-player-secondary-opacity, 0.75);
     --_static-border-color: transparent;
     --_static-overlay-focus-color: rgba(80, 80, 80, 0.5);
     --_static-overlay-color: rgba(0, 0, 0, 0.5);
+    --_static-highlight-color: var(--rh-color-interactive-primary-hover);
+    --_static-surface-color: var(--rh-color-surface-lightest, #ffffff);
+    --_static-surface-focus-color: var(--rh-color-surface-light, #e0e0e0);
   }
 
   &.show-menu {
@@ -406,10 +396,6 @@ rh-menu::part(menu) {
   box-shadow: var(--_static-box-shadow);
 }
 
-#container.dark rh-menu::part(menu) {
-  border: none;
-}
-
 rh-menu:not([inert])::part(menu),
 rh-menu[aria-hidden='false']::part(menu) {
   opacity: 1;
@@ -446,9 +432,14 @@ rh-menu > button:focus {
 
 #play,
 #full-play {
+  display: flex;
   border-radius: 50%;
-  background-color: var(--_surface-color);
-  color: var(--rh-audio-player-icon-background-color, var(--_text-color));
+  background-color:
+    light-dark(var(--rh-color-surface-darkest, #151515),
+      var(--rh-color-surface-lightest, #ffffff));
+  color:
+    light-dark(var(--rh-color-surface-lightest, #ffffff),
+      var(--rh-color-surface-darkest, #151515));
 }
 
 .expanded {

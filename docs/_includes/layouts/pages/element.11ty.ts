@@ -139,7 +139,10 @@ export default class ElementsPage extends Renderer<Context> {
         defaultProvider: 'jspm.io',
       });
       await generator.install('@rhds/elements');
-      await assetCache.save(generator.getMap(), 'json');
+      const map = generator.getMap();
+      if (map.imports) {
+        await assetCache.save(map, 'json');
+      }
     }
     const map = structuredClone(await assetCache.getCachedValue());
     map.imports![`@rhds/elements/${tagName}/${tagName}.js`] =
@@ -175,7 +178,7 @@ export default class ElementsPage extends Renderer<Context> {
       <h2 id="overview">Overview</h2>
       ${await this.renderTemplate(description, 'md')}
       ${!ctx.doc.overviewImageHref ? '' : html`
-      <uxdot-example><img src="${ctx.doc.overviewImageHref}" alt="" aria-labelledby="overview-image-description"></uxdot-example>`}
+      <uxdot-example color-palette="lightest"><img src="${ctx.doc.overviewImageHref}" alt="" aria-labelledby="overview-image-description"></uxdot-example>`}
       <h2 id="status">Status</h2>
       <uxdot-repo-status-list element="${ctx.tagName}"></uxdot-repo-status-list>
       <h2 id="sample-element">Sample element</h2>

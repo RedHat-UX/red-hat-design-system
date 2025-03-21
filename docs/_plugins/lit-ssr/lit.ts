@@ -8,6 +8,8 @@ import tsBlankSpace from 'ts-blank-space';
 import chalk from 'chalk';
 
 import { register } from 'node:module';
+import { parse, serialize } from 'parse5';
+import { hasAttribute, query, queryAll, removeNode, type Node, type Template } from '@parse5/tools';
 
 export interface RenderRequestMessage {
   content: string;
@@ -100,4 +102,3 @@ function trimOuterMarkers(renderedContent: string) {
       .replace(/^((<!--[^<>]*-->)|(<\?>)|\s)+/, '')
       .replace(/((<!--[^<>]*-->)|(<\?>)|\s)+$/, '');
 }
-
