@@ -1,90 +1,115 @@
 :host {
+  color-scheme: only dark;
   display: block;
   background-color: var(--rh-color-surface-darkest);
   color: var(--rh-color-text-primary-on-dark);
   height: max-content;
   container-type: inline-size;
-  container-name: host;
+  container-name: uxdot-masthead;
 }
 
 #container {
   display: grid;
   column-gap: var(--rh-space-lg);
-  grid-template-columns: max-content 1fr max-content;
+  grid-template-columns: max-content 1fr 1fr;
   max-height: var(--uxdot-masthead-max-height, 72px);
   margin-inline: var(--rh-space-md);
   margin-block: var(--rh-space-lg);
+  #scheme { display: none; }
+
+  @container (min-width: 576px) {
+    gap: var(--rh-space-2xl);
+    margin: var(--rh-space-lg);
+  }
+
+  @container (min-width: 992px) {
+    grid-template-columns: 1fr max-content max-content;
+    #scheme { display: contents; }
+  }
 }
 
-slot[name='hamburger'] {
+#hamburger {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--rh-space-md);
   justify-content: center;
+
+  @container (min-width: 992px) {
+    display: none;
+  }
+
+  &::slotted(button) {
+    color: var(--rh-color-text-primary-on-dark);
+    background-color: transparent;
+    border: none;
+    margin: 0;
+    padding: var(--rh-space-md);
+    line-height: 0 !important;
+  }
+
+  &:hover::slotted(button),
+  &::slotted(button:hover),
+  &::slotted(button:active),
+  &::slotted(button:focus) {
+    color: var(--rh-color-icon-subtle-hover);
+  }
+
+  &::slotted(button:focus) {
+    outline: var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);
+    border-radius: var(--rh-border-radius-default);
+  }
 }
 
-slot[name='hamburger']::slotted(button) {
-  color: var(--rh-color-text-primary-on-dark);
-  background-color: transparent;
-  border: none;
-  margin: 0;
-  padding: var(--rh-space-md);
-  line-height: 0 !important;
-}
-
-slot[name='hamburger']:hover::slotted(button),
-slot[name='hamburger']::slotted(button:hover),
-slot[name='hamburger']::slotted(button:active),
-slot[name='hamburger']::slotted(button:focus) {
-  color: var(--rh-color-icon-subtle-hover);
-}
-
-slot[name='hamburger']::slotted(button:focus) {
-  outline: var(--rh-border-width-md) solid var(--rh-color-border-interactive-on-dark);
-  border-radius: var(--rh-border-radius-default);
-}
-
-slot[name='logo']::slotted(a) {
+#logo a {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-self: flex-start;
   gap: var(--rh-space-md);
+
+  @container (min-width: 992px) {
+    margin-inline-start: var(--rh-space-lg);
+  }
 }
 
-slot[name='links'] {
+#links {
   --rh-icon-size: 24px;
 
   display: flex;
   flex-direction: row;
+  justify-self: end;
   column-gap: var(--rh-space-lg);
-}
 
-slot[name='links']::slotted(a) {
-  display: flex;
-  flex-direction: row;
-  gap: var(--rh-space-lg);
-  align-items: center;
-}
-
-@container (min-width: 576px) {
-  #container {
+  a {
+    display: flex;
+    flex-direction: row;
     gap: var(--rh-space-lg);
-    margin: var(--rh-space-lg);
-  }
-}
+    align-items: center;
+    color: var(--rh-color-text-primary-on-dark, #ffffff) !important;
 
-@container (min-width: 992px) {
-  #container {
-    grid-template-columns: 1fr max-content;
+    &:is(:hover, :focus) {
+      color: var(--rh-color-icon-subtle-hover, #a3a3a3) !important;
+    }
   }
 
-  slot[name='hamburger'] {
+  #github {
     display: none;
+
+    @container (min-width: 768px) {
+      display: inherit;
+    }
   }
 
-  slot[name='logo']::slotted(a) {
-    margin-inline-start: var(--rh-space-lg);
+  #version {
+    margin-inline-end: var(--rh-space-md, 8px);
+  }
+
+  span.display-xs {
+    display: none;
+
+    @container uxdot-masthead (min-width: 576px) {
+      display: inline;
+    }
   }
 }

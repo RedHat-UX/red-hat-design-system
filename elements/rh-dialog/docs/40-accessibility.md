@@ -10,28 +10,13 @@ A dialog can be opened by pressing `Enter` when the dialog trigger has focus. Wh
 </uxdot-example>
 
 <rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Key">Key</th>
-        <th scope="col" data-label="Result">Result</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Key"><kbd>Tab</kbd></td>
-        <td data-label="Result">Moves focus to the next interactive element in the cycle</td>
-      </tr>
-      <tr>
-        <td data-label="Key"><kbd>Enter</kbd></td>
-        <td data-label="Result">Activates an interactive element or a button</td>
-      </tr>
-      <tr>
-        <td data-label="Key"><kbd>Esc</kbd></td>
-        <td data-label="Result">Dismisses a dialog</td>
-      </tr>
-    </tbody>
-  </table>
+
+| Key              | Result                                                   |
+| ---------------- | -------------------------------------------------------- |
+| <kbd>Tab</kbd>   | Moves focus to the next interactive element in the cycle |
+| <kbd>Enter</kbd> | Activates an interactive element or a button             |
+| <kbd>Esc</kbd>   | Dismisses a dialog                                       |
+
 </rh-table>
 
 

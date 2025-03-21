@@ -16,13 +16,27 @@ import './uxdot-copy-button.js';
 
 import styles from './uxdot-spacer-tokens-table.css';
 
+type SpaceTokenName =
+ | '--rh-space-xs'
+ | '--rh-space-sm'
+ | '--rh-space-md'
+ | '--rh-space-lg'
+ | '--rh-space-xl'
+ | '--rh-space-2xl'
+ | '--rh-space-3xl'
+ | '--rh-space-4xl'
+ | '--rh-space-5xl'
+ | '--rh-space-6xl'
+ | '--rh-space-7xl';
+
+
 const assignBasename = (token: DesignToken) => !token.name ? token : ({
   ...token,
   baseName: token.name.replace(/^(--)?rh-space-/, ''),
 });
 
 const getToken = (name: string) => {
-  const tokenName = `--rh-space-${name.trim().replace('--rh-space-', '')}` as const;
+  const tokenName = `--rh-space-${name.trim().replace('--rh-space-', '') as '7xl'}` as const;
   return metaTokens.get(tokenName);
 };
 
@@ -38,14 +52,14 @@ export class UxdotSpacerTokensTable extends LitElement {
 
   @property({ converter: StringListConverter }) tokens: string[] =
     Array.from(allTokens.keys())
-        .filter((x): x is `--rh-space-${string}` => x.startsWith('--rh-space'));
+        .filter((x): x is SpaceTokenName => x.startsWith('--rh-space'));
 
   @state() metaData: DesignToken[] = [];
 
   render() {
     const metaData = this.tokens
         .map(getToken)
-        .filter(Boolean);
+        .filter(x => !!x);
 
     return html`
       <!-- TODO: remove lightdom after implementing auto-load-->
