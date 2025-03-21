@@ -1,4 +1,6 @@
 :host {
+  --_spacer: var(--rh-space-lg, 16px);
+
   display: block;
 }
 
@@ -39,6 +41,11 @@ legend {
   &:focus-visible {
     outline-offset: var(--rh-border-width-md, 2px);
   }
+}
+
+legend,
+.btn-link {
+  margin-block-end: var(--_spacer);
 }
 
 :host([size='sm']) {
