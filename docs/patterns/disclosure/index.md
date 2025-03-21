@@ -49,7 +49,8 @@ of an active border on the left and a slight drop shadow, similar to an
        height="205">
 </uxdot-example>
 
-### Theme
+### Color scheme
+<a id="theme"></a>
 
 <uxdot-example width-adjustment="884px">
   <img src="./disclosure-theme-1.svg"

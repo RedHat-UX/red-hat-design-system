@@ -99,7 +99,7 @@ help us assign consistent meanings that correspond with foundational guidelines.
 
 <rh-cta href="/tokens/">Learn about our tokens</rh-cta>
 
-<uxdot-example width-adjustment="807px">
+<uxdot-example color-palette="lightest" width-adjustment="807px">
  <img src="/tokens/images/design-tokens-intro.png"
       alt="Flow showing how a color like brand red becomes a token, how it is named, and how it is applied to a call to action"
       width="807"
@@ -149,10 +149,7 @@ upgraded easily, allowing for consistency, scalability, and flexibility.
 <rh-cta href="https://patternflyelements.org/">Visit PatternFly Elements</rh-cta>
 
 <uxdot-example width-adjustment="558px">
- <img src="../assets/about/about-rhds-pf-pfe.svg"
-      alt="A back-to-top element that looks the same in RHDS, PatternFly, and PatternFly Elements"
-      width="558"
-      height="58">
+{% include './about-rhds-pf-pfe.svg' %}
 </uxdot-example>
 
 ## We provide support

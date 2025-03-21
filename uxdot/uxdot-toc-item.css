@@ -1,0 +1,36 @@
+:host {
+  display: block;
+  margin-block-end: var(--rh-space-lg);
+}
+
+:host(:first-of-type) {
+  margin-block-start: 0;
+
+  /* TODO: This style is specific to the implementation on ux.redhat.com,
+   * not ideal for the component lightdom files, maybe this is a
+   * pattern level style that should be in the pattern layer.
+   */
+  @container main (min-width: 1440px) {
+    margin-block-start: var(--rh-space-md);
+  }
+}
+
+a {
+  text-decoration: none;
+  color: var(--rh-color-interactive-primary-default);
+  font-size: var(--rh-font-size-body-text-lg);
+  display: inline-flex;
+  gap: var(--rh-space-lg);
+  align-items: first baseline;
+  svg { width: 16px; }
+  &:hover { color: var(--rh-color-interactive-primary-hover); }
+  &:focus-within { color: var(--rh-color-interactive-primary-focus); }
+  &:active { color: var(--rh-color-interactive-primary-active); }
+
+  &:visited {
+    color: var(--rh-color-interactive-primary-visited-default);
+    &:hover { color: var(--rh-color-interactive-primary-visited-hover); }
+    &:focus-within { color: var(--rh-color-interactive-primary-visited-focus); }
+    &:active { color: var(--rh-color-interactive-primary-visited-active); }
+  }
+}

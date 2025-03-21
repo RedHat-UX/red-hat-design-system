@@ -1,9 +1,8 @@
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { classMap } from 'lit/directives/class-map.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-breadcrumb.css';
 
@@ -37,6 +36,7 @@ import styles from './rh-breadcrumb.css';
  */
 
 @customElement('rh-breadcrumb')
+@themable
 export class RhBreadcrumb extends LitElement {
   /**
    * Customize the default `aria-label` on the `<nav>` container.
@@ -49,18 +49,12 @@ export class RhBreadcrumb extends LitElement {
    */
   @property({ reflect: true }) variant?: 'subtle';
 
-  /**
-   * Sets color theme based on parent context
-   */
-  @colorContextConsumer() private on?: ColorTheme;
-
   static readonly styles = [styles];
 
   render() {
-    const { on = '' } = this;
     const label = this.accessibleLabel ? this.accessibleLabel : 'Breadcrumb';
     return html`
-      <nav aria-label="${label}" part="container" id="container" class="${classMap({ on: true, [on]: !!on })}">
+      <nav aria-label="${label}" part="container" id="container">
         <slot></slot>
       </nav>
     `;

@@ -12,57 +12,44 @@ link
 
 Users should have the ability to navigate to and interact with buttons using their keyboard.
 
-<uxdot-example width-adjustment="302px">
-  <img src="../button-a11y-keyboard-interactions.png"
-        alt="Image of a button group showing focus indicators and tab key labels"
-        width="302"
-        height="99">
+<uxdot-example color-palette="lightest" width-adjustment="302px">
+  <img alt="Image of a button group showing focus indicators and tab key labels"
+       src="../button-a11y-keyboard-interactions.png"
+       width="302"
+       height="99">
 </uxdot-example>
 
-<rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Key" style="width: 50%">Key</th>
-        <th scope="col" data-label="Result">Result</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Key"><kbd>Tab</kbd></td>
-        <td data-label="Result">Moves focus to the next button or interactive element</td>
-      </tr>
-      <tr>
-        <td data-label="Key"><kbd>Shift</kbd> + <kbd>Tab</kbd></td>
-        <td data-label="Result">Moves focus to the previous button or interactive element</td>
-      </tr>
-      <tr>
-        <td data-label="Key"><kbd>Enter</kbd></td>
-        <td data-label="Result">Activates an action</td>
-      </tr>
-    </tbody>
-  </table>
+<style data-helmet>.keyboard-table thead th:first-of-type { width: 50%; }</style>
+
+<rh-table class="keyboard-table">
+
+| Key                               | Result                                                    |
+| --------------------------------- | --------------------------------------------------------- |
+| <kbd>Tab</kbd>                    | Moves focus to the next button or interactive element     |
+| <kbd>Shift</kbd> + <kbd>Tab</kbd> | Moves focus to the previous button or interactive element |
+| <kbd>Enter</kbd>                  | Activates an action                                       |
+
 </rh-table>
 
 ## Focus order
 
 {% include 'partials/accessibility/focusorder.md' %} For buttons in groups, the focus order is from left to right and top to bottom when stacked. Disabled buttons are not included in the focus order unless they include the `aria-disabled=“true”` attribute and display a [tooltip](/elements/tooltip) when focused.
 
-<uxdot-example width-adjustment="509px">
-  <img src="../button-a11y-focus-order.png"
-        alt="Image of rows of button groups with numbers; one row has focus indicators only and the other has focus indicators and a tooltip"
-        width="509"
-        height="215">
+<uxdot-example color-palette="lightest" width-adjustment="509px">
+  <img alt="Image of rows of button groups with numbers; one row has focus indicators only and the other has focus indicators and a tooltip"
+       src="../button-a11y-focus-order.png"
+       width="509"
+       height="215">
 </uxdot-example>
 
 ## Touch targets
 Buttons in groups are adequately spaced for optimal touch targets.
 
-<uxdot-example width-adjustment="298px">
-  <img src="../button-a11y-touch-targets.png"
-        alt="Image of button group with touch targets on top of each button"
-        width="298"
-        height="44">
+<uxdot-example color-palette="lightest" width-adjustment="298px">
+  <img alt="Image of button group with touch targets on top of each button"
+       src="../button-a11y-touch-targets.png"
+       width="298"
+       height="44">
 </uxdot-example>
 
 ## Screen reader guidelines

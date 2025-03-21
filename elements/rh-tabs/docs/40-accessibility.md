@@ -7,48 +7,24 @@ Each tab is a focus stop. Pressing the <code>Arrow</code> keys moves the focus a
   <p>Overflow buttons do not have focus so there are no keyboard interactions.</p>
 </rh-alert>
 
-<uxdot-example width-adjustment="872px">
-  <img src="../tabs-a11y-keyboard-interactions.png"
-        alt="Image of horizontal tabs with diagrams of what happens when Arrow or Tab keys are pressed"
-        width="872"
-        height="618">
+<uxdot-example color-palette="lightest" width-adjustment="872px">
+  <img alt="Image of horizontal tabs with diagrams of what happens when Arrow or Tab keys are pressed"
+       src="../tabs-a11y-keyboard-interactions.png"
+       width="872"
+       height="618">
 </uxdot-example>
 
 <rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Key"><kbd>Key</th>
-        <th scope="col" data-label="Result">Result</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Key"><kbd>Left Arrow</kbd></td>
-        <td data-label="Result">Moves focus to the previous tab and activates it (horizontal tabs)</td>
-      </tr>
-      <tr>
-        <td data-label="Key"><kbd>Right Arrow</kbd></td>
-        <td data-label="Result">Moves focus to the next tab and activates it (horizontal tabs)</td>
-      </tr>
-      <tr>
-        <td data-label="Key"><kbd>Up Arrow</kbd></td>
-        <td data-label="Result">Moves focus to the previous tab and activates it (vertical tabs)</td>
-      </tr>
-      <tr>
-        <td data-label="Key"><kbd>Down Arrow</kbd></td>
-        <td data-label="Result">Moves focus to the next tab and activates it (vertical tabs)</td>
-      </tr>
-      <tr>
-        <td data-label="Key"><kbd>Tab</kbd></td>
-        <td data-label="Result">Moves focus to the next tab and activates it (vertical tabs)</td>
-      </tr>
-      <tr>
-        <td data-label="Key"><kbd>Shift+Tab</kbd></td>
-        <td data-label="Result">Moves focus from the first interactive element in the panel to the active tab</td>
-      </tr>
-    </tbody>
-  </table>
+
+| <kbd>Key</kbd>                  | Result                                                                        |
+| ------------------------------- | ----------------------------------------------------------------------------- |
+| <kbd>Left Arrow</kbd>           | Moves focus to the previous tab and activates it (horizontal tabs)            |
+| <kbd>Right Arrow</kbd>          | Moves focus to the next tab and activates it (horizontal tabs)                |
+| <kbd>Up Arrow</kbd>             | Moves focus to the previous tab and activates it (vertical tabs)              |
+| <kbd>Down Arrow</kbd>           | Moves focus to the next tab and activates it (vertical tabs)                  |
+| <kbd>Tab</kbd>                  | Moves focus to the next tab and activates it (vertical tabs)                  |
+| <kbd>Shift</kbd>+<kbd>Tab</kbd> | Moves focus from the first interactive element in the panel to the active tab |
+
 </rh-table>
 
 
@@ -56,11 +32,11 @@ Each tab is a focus stop. Pressing the <code>Arrow</code> keys moves the focus a
 
 A logical focus order helps keyboard users operate our websites. Elements need to receive focus in an order that preserves meaning, therefore the focus order should make sense and not jump around randomly. For both sizes and orientations, the focus order is from left to right and top to bottom. Disabled buttons are not included in the focus order.
 
-<uxdot-example width-adjustment="872px">
-  <img src="../tabs-a11y-focus-order.png"
-        alt="Image of horizontal, vertical, and tabs with overflow buttons showing the focus order from left to right and top to bottom"
-        width="872"
-        height="994">
+<uxdot-example color-palette="lightest" width-adjustment="872px">
+  <img alt="Image of horizontal, vertical, and tabs with overflow buttons showing the focus order from left to right and top to bottom"
+       src="../tabs-a11y-focus-order.png"
+       width="872"
+       height="994">
 </uxdot-example>
 
 
@@ -68,11 +44,11 @@ A logical focus order helps keyboard users operate our websites. Elements need t
 
 Tabs are adequately spaced for optimal touch targets.
 
-<uxdot-example width-adjustment="872px">
-  <img src="../tabs-a11y-touch-targets.png"
-        alt="Image of open, box, and tabs with overflow buttons showing adequate touch target spacing"
-        width="872"
-        height="420">
+<uxdot-example color-palette="lightest" width-adjustment="872px">
+  <img alt="Image of open, box, and tabs with overflow buttons showing adequate touch target spacing"
+       src="../tabs-a11y-touch-targets.png"
+       width="872"
+       height="420">
 </uxdot-example>
 
 

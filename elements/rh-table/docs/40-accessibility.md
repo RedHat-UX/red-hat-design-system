@@ -21,7 +21,7 @@ Since tables are inherently complex HTML structures, they can create barriers fo
 
 ### Example markup
 
-```html
+```html rhcodeblock
 <rh-table>
   <table>
     <caption>
@@ -34,26 +34,26 @@ Since tables are inherently complex HTML structures, they can create barriers fo
     </colgroup>
     <thead>
       <tr>
-        <th id="concerts-date" scope="col" data-label="Date">Date</th>
-        <th id="concerts-event" scope="col" data-label="Event">Event</th>
-        <th id="concerts-venue" scope="col" data-label="Venue">Venue</th>
+        <th id="concerts-date" scope="col">Date</th>
+        <th id="concerts-event" scope="col">Event</th>
+        <th id="concerts-venue" scope="col">Venue</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td headers="concerts-date" data-label="Date">12 February</td>
-        <td headers="concerts-event" data-label="Event">Waltz with Strauss</td>
-        <td headers="concerts-venue" data-label="Venue">Main Hall</td>
+        <td headers="concerts-date">12 February</td>
+        <td headers="concerts-event">Waltz with Strauss</td>
+        <td headers="concerts-venue">Main Hall</td>
       </tr>
       <tr>
-        <td headers="concerts-date" data-label="Date">24 March</td>
-        <td headers="concerts-event" data-label="Event">The Obelisks</td>
-        <td headers="concerts-venue" data-label="Venue">West Wing</td>
+        <td headers="concerts-date">24 March</td>
+        <td headers="concerts-event">The Obelisks</td>
+        <td headers="concerts-venue">West Wing</td>
       </tr>
       <tr>
-        <td headers="concerts-date" data-label="Date">14 April</td>
-        <td headers="concerts-event" data-label="Event">The What</td>
-        <td headers="concerts-venue" data-label="Venue">Main Hall</td>
+        <td headers="concerts-date">14 April</td>
+        <td headers="concerts-event">The What</td>
+        <td headers="concerts-venue">Main Hall</td>
       </tr>
     </tbody>
   </table>
@@ -64,66 +64,38 @@ Since tables are inherently complex HTML structures, they can create barriers fo
 
 If a table is in a container that can receive keyboard focus (e.g., with a `tabindex="0"` attribute), then a user can place focus on the container and scroll the table horizontally or vertically using the arrow keys.
 
-<uxdot-example width-adjustment="872px">
-  <img src="../table-a11y-keyboard-navigation.png"
-        alt="Image of table with scrollbars and purple buttons showing keyboard navigation"
-        width="872"
-        height="236">
+<uxdot-example color-palette="lightest" width-adjustment="872px">
+  <img alt="Image of table with scrollbars and purple buttons showing keyboard navigation"
+       src="../table-a11y-keyboard-navigation.png"
+       width="872"
+       height="236">
 </uxdot-example>
 
-<rh-table>
-  <table>
-    <caption>
-      Keyboard interactions
-    </caption>
-    <colgroup>
-        <col style="width: 25%">
-        <col />
-    </colgroup>
-    <thead>
-      <tr>
-        <th id="keyboard-key" data-label="Key" scope="col">Key</th>
-        <th id="keyboard-result" data-label="Result" scope="col">Result</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td headers="keyboard-key" data-label="Key"><kbd>Up Arrow</kbd></td>
-            <td headers="keyboard-result" data-label="Result">Moves the table view up</td>
-        </tr>
-        <tr>
-            <td headers="keyboard-key" data-label="Key"><kbd>Left Arrow</kbd></td>
-            <td headers="keyboard-result" data-label="Result">Moves the table view left</td>
-        </tr>
-        <tr>
-            <td headers="keyboard-key" data-label="Key"><kbd>Right Arrow</kbd></td>
-            <td headers="keyboard-result" data-label="Result">Moves the table view right</td>
-        </tr>
-        <tr>
-            <td headers="keyboard-key" data-label="Key"><kbd>Down Arrow</kbd></td>
-            <td headers="keyboard-result" data-label="Result">Moves the table view down</td>
-        </tr>
-        <tr>
-            <td headers="keyboard-key" data-label="Key"><kbd>Tab</kbd></td>
-            <td headers="keyboard-result" data-label="Result">Moves focus to next interactive element within a cell or outside of the table</td>
-        </tr>
-        <tr>
-            <td headers="keyboard-key" data-label="Key"><kbd>Shift+Tab</kbd></td>
-            <td headers="keyboard-result" data-label="Result">Moves focus to previous interactive element within a cell or outside of the table</td>
-        </tr>
-    </tbody>
-  </table>
+<style data-helmet>.keypress-table col:first-child { width: 25%; }</style>
+<rh-table class="keypress-table">
+
+| Key                             | Result                                                                            |
+| ------------------------------- | --------------------------------------------------------------------------------- |
+| <kbd>Up Arrow</kbd>             | Moves the table view up                                                           |
+| <kbd>Left Arrow</kbd>           | Moves the table view left                                                         |
+| <kbd>Right Arrow</kbd>          | Moves the table view right                                                        |
+| <kbd>Down Arrow</kbd>           | Moves the table view down                                                         |
+| <kbd>Tab</kbd>                  | Moves focus to next interactive element within a cell or outside of the table     |
+| <kbd>Shift</kbd>+<kbd>Tab</kbd> | Moves focus to previous interactive element within a cell or outside of the table |
+
+Table: Keyboard interactions
+
 </rh-table>
 
 ## Focus order
 
 A logical focus order helps keyboard users operate our websites and apps. Elements need to receive focus in an order that preserves meaning, therefore the focus order should make sense and not jump around randomly. Focus within a table moves from top to bottom and left to right.
 
-<uxdot-example width-adjustment="872px">
-  <img src="../table-a11y-focus-order.png"
-        alt="Image of table with links, focus indicators, and numbers showing the focus order"
-        width="872"
-        height="280">
+<uxdot-example color-palette="lightest" width-adjustment="872px">
+  <img alt="Image of table with links, focus indicators, and numbers showing the focus order"
+       src="../table-a11y-focus-order.png"
+       width="872"
+       height="280">
 </uxdot-example>
 
 
@@ -131,11 +103,11 @@ A logical focus order helps keyboard users operate our websites and apps. Elemen
 
 Each cell includes enough spacing for selecting interactive elements.
 
-<uxdot-example width-adjustment="872px">
-  <img src="../table-a11y-touch-targets.png"
-        alt="Image of table with links and focus indicators showing touch target size"
-        width="872"
-        height="280">
+<uxdot-example color-palette="lightest" width-adjustment="872px">
+  <img alt="Image of table with links and focus indicators showing touch target size"
+       src="../table-a11y-touch-targets.png"
+       width="872"
+       height="280">
 </uxdot-example>
 
 

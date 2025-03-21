@@ -7,7 +7,7 @@ import { property } from 'lit/decorators/property.js';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 import { classMap } from 'lit/directives/class-map.js';
 
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
 
 import style from './rh-footer.css';
 
@@ -41,10 +41,10 @@ import './rh-footer-copyright.js';
  * @csspart tertiary
  */
 @customElement('rh-footer-universal')
+@colorPalettes
 export class RhFooterUniversal extends LitElement {
   static readonly styles = [style];
 
-  @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'darker';
 
   #slots = new SlotController(

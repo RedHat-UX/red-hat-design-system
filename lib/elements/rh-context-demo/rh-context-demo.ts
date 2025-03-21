@@ -1,59 +1,47 @@
-import { LitElement, type PropertyValues, html } from 'lit';
+import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
+
+import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { classMap } from 'lit-html/directives/class-map.js';
+import { observes } from '@patternfly/pfe-core/decorators.js';
+import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
-import { colorContextProvider, type ColorPalette } from '../../context/color/provider.js';
 import { ContextChangeEvent } from '../rh-context-picker/rh-context-picker.js';
-
-import '@rhds/elements/rh-surface/rh-surface.js';
 
 import style from './rh-context-demo.css';
 
-import consumerStyles from '@rhds/tokens/css/color-context-consumer.css.js';
-
 @customElement('rh-context-demo')
+@colorPalettes
 export class RhContextDemo extends LitElement {
-  static readonly styles = [style, consumerStyles];
+  static readonly styles = [style];
 
   static formAssociated = true;
 
-  @property() value: ColorPalette = 'darkest';
-
   @property() label = 'Color Palette';
 
-  @colorContextProvider()
-  @property({ attribute: 'color-palette', reflect: true })
-  colorPalette = this.value;
+  @property({ attribute: 'color-palette', reflect: true }) colorPalette: ColorPalette = 'darkest';
 
-  #internals = this.attachInternals();
+  #internals = InternalsController.of(this);
 
   protected override render() {
-    const { value = 'darkest' } = this;
-    const on = this.value.replace(/est|er/, '');
+    const { colorPalette } = this;
     return html`
-      <rh-surface id="provider"
-                  color-palette="${value}"
-                  @change="${this.#onChange}">
-          <div id="picker-container" class="${classMap({ on: true, [on]: true })}">
+      <div id="provider" @change="${this.#onChange}">
+          <div id="picker-container">
             <rh-context-picker id="picker"
-                               .value="${this.value}"
-                               target="provider"></rh-context-picker>
+                               .value="${colorPalette}"
+                               .target="${this}"></rh-context-picker>
             <label for="picker">${this.label}</label>
             <slot name="controls"></slot>
           </div>
-        <slot part="demo" class="${classMap({ on: true, [on]: true })}"></slot>
-      </rh-surface>
+        <slot part="demo"></slot>
+      </div>
     `;
   }
 
-  protected override willUpdate(changed: PropertyValues<this>) {
-    if (changed.has('colorPalette')) {
-      this.value = this.colorPalette;
-    }
-    if (changed.has('value')) {
-      this.colorPalette = this.value;
-    }
+  @observes('colorPalette')
+  protected colorPaletteChanged() {
+    this.#setValue(this.colorPalette);
   }
 
   protected formStateRestoreCallback(state: string) {
@@ -74,7 +62,9 @@ export class RhContextDemo extends LitElement {
   #setValue(value: ColorPalette) {
     if (value) {
       this.#internals.setFormValue(value);
-      this.value = value;
+      if (this.colorPalette !== value) {
+        this.colorPalette = value;
+      }
     }
   }
 }
