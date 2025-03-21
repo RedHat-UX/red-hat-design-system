@@ -1,0 +1,91 @@
+:host {
+  --_spacer: var(--rh-space-lg, 16px);
+
+  display: inline-block;
+  margin-block: 2px;
+  margin-inline-end: var(--rh-space-md, 8px);
+}
+
+label {
+  border-radius: var(--rh-border-radius-pill, 64px);
+  display: flex;
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+  line-height: var(--rh-line-height-body-text, 1.5);
+  margin-block-end: var(--_spacer);
+  outline: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+  padding: var(--rh-space-xs, 4px) var(--rh-space-md, 8px);
+  text-wrap: balance;
+
+  &:hover,
+  &:focus-within {
+    cursor: pointer;
+    outline-width: var(--rh-border-width-md, 2px);
+  }
+
+  &:has(input[aria-disabled='true']),
+  &:has(input[aria-disabled='true']:checked) {
+    background-color:
+      light-dark(var(--rh-color-gray-30, #c7c7c7),
+        var(--rh-color-surface-dark, #383838));
+    color: light-dark(var(--rh-color-text-secondary), var(--rh-color-gray-40, #a3a3a3));
+    outline-color:
+      light-dark(var(--rh-color-gray-30, #c7c7c7),
+        var(--rh-color-surface-dark, #383838));
+    pointer-events: none;
+  }
+
+  &:has(input:checked) {
+    background-color:
+      light-dark(var(--rh-color-blue-10, #e0f0ff),
+        var(--rh-color-blue-70, #003366));
+    color: light-dark(var(--rh-color-blue-70, #003366), var(--rh-color-blue-10, #e0f0ff));
+    outline-color: light-dark(var(--rh-color-blue-30, #92c5f9), var(--rh-color-blue-50, #0066cc));
+
+    &:hover {
+      outline-color: light-dark(var(--rh-color-blue-30, #92c5f9), var(--rh-color-blue-50, #0066cc));
+    }
+  }
+
+  &:has(input[aria-disabled='true']:focus-visible) {
+    outline-offset: var(--rh-border-width-md, 2px);
+  }
+
+  &.size-sm {
+    font-size: var(--rh-font-size-body-text-xs, 0.75rem);
+  }
+}
+
+#close-icon {
+  block-size: 0;
+  inline-size: 0;
+  opacity: 0;
+  transition-behavior: allow-discrete;
+  transition-duration: 0.2s;
+  transition-property: inline-size, block-size, opacity, margin-inline-start;
+  transition-timing-function: ease-in-out;
+}
+
+input {
+  appearance: none;
+  cursor: pointer;
+  margin: 0;
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:checked + #close-icon {
+    block-size: auto;
+    inline-size: auto;
+    margin-inline-start: var(--rh-space-md, 8px);
+    opacity: 1;
+
+    @starting-style {
+      block-size: 0;
+      inline-size: 0;
+      margin-inline-start: 0;
+      opacity: 0;
+    }
+  }
+}
