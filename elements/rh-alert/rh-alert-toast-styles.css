@@ -23,6 +23,10 @@
     fade-in 0.3s ease,
     slide-in 0.3s ease,
     fade-out 0.3s ease var(--_duration);
+
+  &.persistent {
+    animation: slide-in 0.3s ease;
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
