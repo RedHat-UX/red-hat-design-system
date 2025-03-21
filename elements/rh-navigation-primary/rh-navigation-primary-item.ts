@@ -13,8 +13,8 @@ import { context, type RhNavigationPrimaryItemContext } from './context.js';
 
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 
@@ -33,6 +33,8 @@ export class RhNavigationPrimaryItemToggleEvent extends Event {
 }
 
 @customElement('rh-navigation-primary-item')
+@colorPalettes
+@themable
 export class RhNavigationPrimaryItem extends LitElement {
   static readonly styles = [styles];
 
@@ -70,24 +72,16 @@ export class RhNavigationPrimaryItem extends LitElement {
   /**
    * Color palette
    */
-  @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
-  /**
-   * Sets color theme based on parent context
-   */
-  @colorContextConsumer() private on?: ColorTheme;
-
   render() {
-    const { hide = '', variant = '', standalone, on = 'light' } = this;
+    const { hide = '', variant = '', standalone } = this;
     const { compact = true } = this.ctx ?? {};
     const classes = {
       'highlight': !!this.#highlight,
       'hide': !!hide,
       [variant]: true,
       'standalone': standalone,
-      'on': true,
-      [on]: !!on,
       compact,
     };
     return html`

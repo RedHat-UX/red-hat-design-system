@@ -60,30 +60,16 @@
 }
 
 #container {
-  --_box-shadow-color: rgba(21, 21, 21, 0.2);
+  --_background-color:
+    light-dark(var(--rh-color-surface-lighter, #f2f2f2),
+      var(--rh-color-surface-darker, #1f1f1f));
+  --_box-shadow-color: light-dark(rgba(21, 21, 21, 0.2), rgba(0, 0, 0, 0.6));
 
   display: block;
   height: 100%;
   width: 100%;
   justify-items: center;
   align-content: center;
-
-  /**
-   * color-scheme change
-   * --_background-color:
-   *   light-dark(var(--rh-color-surface-lighter), var(--rh-color-surface-darker));
-   * change box-shadow-color, but size values wont be able to change based on scheme.
-   * --_box-shadow-color: light-dark(rgba(21, 21, 21, 0.2), rgba(0, 0, 0, 0.6));
-  */
-
-  &.light {
-    --_background-color: var(--rh-color-surface-lighter, #f2f2f2);
-  }
-
-  &.dark {
-    --_background-color: var(--rh-color-surface-darker, #1f1f1f);
-    --_box-shadow-color: rgba(0, 0, 0, 0.6); /* non standard dropshadow color */
-  }
 
   details {
     width: 100%;
@@ -407,12 +393,8 @@
         border-inline-start-color: var(--rh-color-accent-brand);
 
         @container (min-width: 1200px) {
-          border-block-start-color: var(--rh-color-accent-brand);
-          border-inline-start-color: var(--rh-color-border-subtle);
-
-          &.dark {
-            border-inline-color: transparent;
-          }
+          border-block-start-color: light-dark(var(--rh-color-accent-brand), transparent);
+          border-inline-start-color: light-dark(var(--rh-color-border-subtle), transparent);
         }
 
         /* stylelint-disable-next-line no-descending-specificity */

@@ -12,11 +12,11 @@ import { context,
 } from './context.js';
 
 import { DirController } from '../../lib/DirController.js';
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
+
+import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import {
   RhNavigationPrimaryItem,
@@ -50,6 +50,8 @@ export type NavigationPrimaryPalette = Extract<ColorPalette, (
  * @slot - Place element content here
  */
 @customElement('rh-navigation-primary')
+@colorPalettes
+@themable
 export class RhNavigationPrimary extends LitElement {
   static readonly styles = [styles];
 
@@ -76,16 +78,8 @@ export class RhNavigationPrimary extends LitElement {
   @query('#hamburger')
   private _hamburger!: HTMLDetailsElement;
 
-  /**
-   * Color palette is limited to lightest | darkest <NavigationPrimaryPalette>;
-   */
-  @colorContextProvider()
+  /** Sets color context for child components, overrides parent context */
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: NavigationPrimaryPalette;
-
-  /**
-   * Sets color theme based on parent context
-   */
-  @colorContextConsumer() private on?: ColorTheme;
 
   /**
    * Customize the default `aria-label` on the `<nav>` container.
@@ -141,8 +135,7 @@ export class RhNavigationPrimary extends LitElement {
 
   render() {
     const rtl = this.#dir.dir === 'rtl';
-    const { on = 'light' } = this;
-    const classes = { compact: this.compact, rtl, on: true, [on]: !!on };
+    const classes = { compact: this.compact, rtl, on: true };
     return html`
       <div id="container" class="${classMap(classes)}">
         <div id="bar">
