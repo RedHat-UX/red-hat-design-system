@@ -5,6 +5,5 @@
 - When you need to break up large portions of text
 
 <div id="overview-image-description" class="visually-hidden">
-  Image of a blockquote including a quote icon, quotation text, and citation 
-  text
+  A blockquote including a quote icon, quotation text, and citation text
 </div>

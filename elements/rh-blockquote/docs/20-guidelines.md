@@ -7,10 +7,10 @@ Use a blockquote to highlight quotation and citation text so users can identify 
 Use the Default size for larger amounts of text and the Large size for smaller amounts of text.
 
 <uxdot-example color-palette="lightest" width-adjustment="872px">
-  <img alt="Image of two blockquotes, default size on the left and large size on the right with green check icons below"
-       src="../blockquote-usage-sizes.png"
-       width="872"
-       height="307">
+  <img src="../blockquote-usage-sizes.png" 
+      alt="Two blockquotes, default size on the left and large size on the right with green check icons below" 
+      width="872" 
+      height="307">
 </uxdot-example>
 
 ## Alignment
@@ -22,10 +22,10 @@ Both blockquote sizes can be left or center aligned.
 </rh-alert>
 
 <uxdot-example color-palette="lightest" width-adjustment="872px">
-  <img alt="Image of two blockquotes, default and large sizes both vertically centered"
-       src="../blockquote-alignment.png"
-       width="872"
-       height="267">  
+  <img src="../blockquote-alignment.png" 
+      alt="Two blockquotes, default and large sizes both vertically centered" 
+      width="872" 
+      height="267">  
 </uxdot-example>
          
 ## Variations
@@ -34,33 +34,33 @@ A variety of extras including an emphasis border, logo, and text styles may be a
 ### Light theme
 
 <uxdot-example color-palette="lightest" width-adjustment="750px">
-  <img alt="Image of a light theme blockquote with red emphasis border"
-       src="../blockquote-variations-emphasis-a-theme-light.png"
-       width="750"
-       height="207">
+  <img src="../blockquote-variations-emphasis-a-theme-light.png" 
+      alt="A light theme blockquote with red emphasis border"
+      width="750" 
+      height="207">
 </uxdot-example>
 
 <uxdot-example color-palette="lightest" width-adjustment="750px">
-  <img alt="Image of two light theme blockquotes, left example is default size with logo and right example is default size with title text and heading text"
-       src="../blockquote-variations-emphasis-b-theme-light.png"
-       width="750"
-       height="319">
+  <img src="../blockquote-variations-emphasis-b-theme-light.png" 
+      alt="Two light theme blockquotes, left example is default size with logo and right example is default size with title text and heading text" 
+      width="750" 
+      height="319">
 </uxdot-example>
 
 ### Dark theme
 
 <uxdot-example color-palette="darkest" width-adjustment="750px">
-  <img alt="Image of a dark theme blockquote with red emphasis border"
-       src="../blockquote-variations-emphasis-a-theme-dark.png"
-       width="750"
-       height="207">
+  <img src="../blockquote-variations-emphasis-a-theme-dark.png" 
+      alt="A dark theme blockquote with red emphasis border" 
+      width="750" 
+      height="207">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="750px">
-  <img alt="Image of two dark theme blockquotes, left example is default size with logo and right example is default size with title text and heading text"
-       src="../blockquote-variations-emphasis-b-theme-dark.png"
-       width="872"
-       height="319">
+  <img src="../blockquote-variations-emphasis-b-theme-dark.png" 
+      alt="Two dark theme blockquotes, left example is default size with logo and right example is default size with title text and heading text" 
+      width="872" 
+      height="319">
 </uxdot-example>
 
 
@@ -69,17 +69,17 @@ A variety of extras including an emphasis border, logo, and text styles may be a
 Other elements including a video or card may also be added to a blockquote. They are aligned to the top of the quote icon if included.
 
 <uxdot-example color-palette="lightest" width-adjustment="1000px" variant="full" no-border alignment="left">
-  <img alt="Image of blockquote with video to the right"
-       src="../blockquote-other-elements-video.png"
-       width="1000"
-       height="372">
+  <img src="../blockquote-other-elements-video.png" 
+      alt="Blockquote with video to the right" 
+      width="1000" 
+      height="372">
 </uxdot-example>
 
 <uxdot-example color-palette="lightest" width-adjustment="1000px" variant="full" no-border alignment="left">
-  <img alt="Image of blockquote with card to the right"
-       src="../blockquote-other-elements-card.png"
-       width="1000"
-       height="414">
+  <img src="../blockquote-other-elements-card.png" 
+      alt="Blockquote with card to the right" 
+      width="1000" 
+      height="414">
 </uxdot-example>
 
 
@@ -90,36 +90,36 @@ Other elements including a video or card may also be added to a blockquote. They
 A minimum width is hard to determine because a blockquote can be placed in a variety of layouts. However, a thin blockquote has readability issues, so use your best judgment when considering how wide a blockquote should be. A reasonable minimum width for a blockquote in a page layout is <code>450px</code>. If a blockquote is used in a card, the minimum width will be smaller.
 
 <uxdot-example color-palette="lightest" width-adjustment="1000px" variant="full" no-border alignment="left">
-  <img alt="Image of default size blockquote left aligned with a minimum width of 450px"
-       src="../blockquote-min-width-a.png"
-       width="2000"
-       height="474">
+  <img src="../blockquote-min-width-a.png" 
+      alt="Default size blockquote left aligned with a minimum width of 450px" 
+      width="2000" 
+      height="474">
 </uxdot-example>
 
 <uxdot-example color-palette="lightest" width-adjustment="1000px" variant="full" no-border alignment="left">
-  <img alt="Image of large size blockquote vertically centered with a minimum width of 450px"
-       src="../blockquote-min-width-b.png"
-       width="1000"
-       height="243">
+  <img src="../blockquote-min-width-b.png" 
+      alt="Large size blockquote vertically centered with a minimum width of 450px" 
+      width="1000" 
+      height="243">
 </uxdot-example>
 
 
 ### Maximum width
 
-The maximum width of a blockquote anywhere is <code>750px</code> to avoid reader fatigue.
+The maximum width of a blockquote anywhere is <code>752px</code> to avoid reader fatigue.
 
 <uxdot-example color-palette="lightest" width-adjustment="1000px" variant="full" no-border alignment="left">
-  <img alt="Image of default size blockquote left aligned with a maximum width of 750px"
-       src="../blockquote-max-width-a.png"
-       width="1000"
-       height="177">
+  <img src="../blockquote-max-width-a.png" 
+      alt="Default size blockquote left aligned with a maximum width of 752px" 
+      width="1000" 
+      height="177">
 </uxdot-example>
 
 <uxdot-example color-palette="lightest" width-adjustment="1000px" variant="full" no-border alignment="left">
-  <img alt="Image of large size blockquote vertically centered with a maximum width of 750px"
-       src="../blockquote-max-width-b.png"
-       width="1000"
-       height="205">
+  <img src="../blockquote-max-width-b.png" 
+      alt="Large size blockquote vertically centered with a maximum width of 752px"
+      width="1000"
+      height="205">
 </uxdot-example>
 
 
@@ -127,8 +127,7 @@ The maximum width of a blockquote anywhere is <code>750px</code> to avoid reader
 A Default size blockquote can be placed in a card if the text is short enough. Otherwise, keep blockquotes with lots of text in the page layout to avoid readability issues. A blockquote will get taller as containers and breakpoints get smaller, so take that into consideration as well.
 
 <uxdot-example color-palette="lightest" width-adjustment="1000px" variant="full" no-border alignment="left">
-  <img alt="Image of default size blockquote in a card"
-       src="../blockquote-card-a.png">
+  <img src="../blockquote-card-a.png" alt="Default size blockquote in a card">
 </uxdot-example>
 
 
@@ -142,17 +141,17 @@ When other elements are used with blockquotes, they are placed on the right. Som
 </rh-alert>
 
 <uxdot-example color-palette="lightest" width-adjustment="1000px" variant="full" no-border alignment="left">
-  <img alt="Image of blockquote with video to the right and a grid overlaid on top"
-       src="../blockquote-other-elements-video-grid.png"
-       width="1000"
-       height="372">
+  <img src="../blockquote-other-elements-video-grid.png" 
+      alt="Blockquote with video to the right and a grid overlaid on top" 
+      width="1000" 
+      height="372">
 </uxdot-example>
 
 <uxdot-example color-palette="lightest" width-adjustment="1000px" variant="full" no-border alignment="left">
-  <img alt="Image of blockquote with card to the right and a grid overlaid on top"
-       src="../blockquote-other-elements-card-grid.png"
-       width="1000"
-       height="414">
+  <img src="../blockquote-other-elements-card-grid.png" 
+      alt="Blockquote with card to the right and a grid overlaid on top" 
+      width="1000" 
+      height="414">
 </uxdot-example>
 
 ## Responsive design
@@ -161,91 +160,91 @@ As breakpoints get smaller, blockquote text sizes will be reduced based on the m
 ### Default size
 
 <uxdot-example color-palette="lightest" width-adjustment="1000px" variant="full" no-border alignment="left">
-  <img alt="Image of a default size blockquote for desktop"
-       src="../blockquote-default-desktop.png"
-       width="1000"
-       height="147">
+  <img src="../blockquote-default-desktop.png" 
+      alt="A default size blockquote for desktop" 
+      width="1000" 
+      height="147">
 </uxdot-example>
 
 <uxdot-example color-palette="lightest" width-adjustment="768px" variant="full" no-border alignment="left">
-  <img alt="Image of a default size blockquote for tablet"
-       src="../blockquote-default-tablet.png"
-       width="768"
-       height="147">
+  <img src="../blockquote-default-tablet.png" 
+      alt="A default size blockquote for tablet" 
+      width="768" 
+      height="147">
 </uxdot-example>
 
 <uxdot-example color-palette="lightest" width-adjustment="576px" variant="full" no-border alignment="left">
-  <img alt="Image of a default size blockquote for large mobile screens"
-       src="../blockquote-default-mobile-large.png"
-       width="576"
-       height="141">
+  <img src="../blockquote-default-mobile-large.png" 
+      alt="A default size blockquote for large mobile screens" 
+      width="576" 
+      height="141">
 </uxdot-example>
 
 <uxdot-example color-palette="lightest" width-adjustment="360px" variant="full" no-border alignment="left">
-  <img alt="Image of a default size blockquote for small mobile screens"
-       src="../blockquote-default-mobile-small.png"
-       width="360"
-       height="168">
+  <img src="../blockquote-default-mobile-small.png" 
+      alt="A default size blockquote for small mobile screens" 
+      width="360" 
+      height="168">
 </uxdot-example>
 
 ### Large size
 
 <uxdot-example color-palette="lightest" width-adjustment="1000px" variant="full" no-border alignment="left">
-  <img alt="Image of a large size blockquote for desktop"
-       src="../blockquote-large-desktop.png"
-       width="1000"
-       height="205">
+  <img src="../blockquote-large-desktop.png" 
+      alt="A large size blockquote for desktop" 
+      width="1000" 
+      height="205">
 </uxdot-example>
 
 <uxdot-example color-palette="lightest" width-adjustment="768px" variant="full" no-border alignment="left">
-  <img alt="Image of a large size blockquote for tablet"
-       src="../blockquote-large-tablet.png"
-       width="768"
-       height="205">
+  <img src="../blockquote-large-tablet.png" 
+      alt="A large size blockquote for tablet"
+      width="768" 
+      height="205">
 </uxdot-example>
 
 <uxdot-example color-palette="lightest" width-adjustment="576px" variant="full" no-border alignment="left">
-  <img alt="Image of a large size blockquote for large mobile screens"
-       src="../blockquote-large-mobile-large.png"
-       width="576"
-       height="184">
+  <img src="../blockquote-large-mobile-large.png" 
+      alt="A large size blockquote for large mobile screens" 
+      width="576" 
+      height="184">
 </uxdot-example>
 
 <uxdot-example color-palette="lightest" width-adjustment="360px" variant="full" no-border alignment="left">
-  <img alt="Image of a large size blockquote for small mobile screens"
-       src="../blockquote-large-mobile-small.png"
-       width="360"
-       height="267">
+  <img src="../blockquote-large-mobile-small.png"
+      alt="A large size blockquote for small mobile screens"
+      width="360" 
+      height="267">
 </uxdot-example>
 
 ### Other elements
 
 <uxdot-example color-palette="lightest" width-adjustment="1000px" variant="full" no-border alignment="left">
-  <img alt="Image of a blockquote with video for desktop"
-       src="../blockquote-other-elements-desktop.png"
-       width="1000"
-       height="372">
+  <img src="../blockquote-other-elements-desktop.png" 
+      alt="A blockquote with video for desktop" 
+      width="1000" 
+      height="372">
 </uxdot-example>
 
 <uxdot-example color-palette="lightest" width-adjustment="768px" variant="full" no-border alignment="left">
-  <img alt="Image of a blockquote with video for tablet"
-       src="../blockquote-other-elements-tablet.png"
-       width="768"
-       height="354">
+  <img src="../blockquote-other-elements-tablet.png" 
+      alt="A blockquote with video for tablet" 
+      width="768" 
+      height="354">
 </uxdot-example>
 
 <uxdot-example color-palette="lightest" width-adjustment="576px" variant="full" no-border alignment="left">
-  <img alt="Image of a blockquote with video for large mobile screens"
-       src="../blockquote-other-elements-mobile-large.png"
-       width="576"
-       height="586">
+  <img src="../blockquote-other-elements-mobile-large.png" 
+      alt="A blockquote with video for large mobile screens" 
+      width="576" 
+      height="586">
 </uxdot-example>
 
 <uxdot-example color-palette="lightest" width-adjustment="360px" variant="full" no-border alignment="left">
-  <img alt="Image of a blockquote with video for small mobile screens"
-       src="../blockquote-other-elements-mobile-small.png"
-       width="360"
-       height="519">
+  <img src="../blockquote-other-elements-mobile-small.png" 
+      alt="A blockquote with video for small mobile screens"
+      width="360" 
+      height="519">
 </uxdot-example>
 
 
@@ -256,10 +255,10 @@ As breakpoints get smaller, blockquote text sizes will be reduced based on the m
 The quote icon and citation text must always be included.
 
 <uxdot-example color-palette="lightest" width-adjustment="780px" danger>
-  <img alt="Image of two blockquotes both missing elements which is incorrect usage"
-       src="../blockquote-best-practice-1.png"
-       width="780"
-       height="201">
+  <img src="../blockquote-best-practice-1.png" 
+      alt="Two blockquotes both missing elements which is incorrect usage" 
+      width="780" 
+      height="201">
 </uxdot-example>
 
 ### Readability issues
@@ -267,10 +266,10 @@ The quote icon and citation text must always be included.
 Blockquotes that are too thin are sometimes hard to read.
 
 <uxdot-example color-palette="lightest" width-adjustment="477px" danger>
-  <img alt="Image of two very thin blockquotes which is incorrect usage"
-       src="../blockquote-best-practice-2.png"
-       width="477"
-       height="416">
+  <img src="../blockquote-best-practice-2.png" 
+    alt="Two very thin blockquotes which is incorrect usage" 
+    width="477"
+    height="416">
 </uxdot-example>
 
 ### Adding an emphasis border
@@ -278,18 +277,18 @@ Blockquotes that are too thin are sometimes hard to read.
 Do not add an emphasis border to a centered blockquote.
 
 <uxdot-example color-palette="lightest" width-adjustment="633px" danger>
-  <img alt="Image of a large size blockquote with an emphasis border on the left which is incorrect usage"
-       src="../blockquote-best-practice-3.png"
-       width="633"
-       height="205">
+  <img src="../blockquote-best-practice-3.png" 
+      alt="A large size blockquote with an emphasis border on the left which is incorrect usage" 
+      width="633" 
+      height="205">
 </uxdot-example>
 
 ### Centered blockquotes
 Do not place any elements near centered blockquotes.
 
 <uxdot-example color-palette="lightest" width-adjustment="872px" danger>
-  <img alt="Image of a vertically centered blockquote with a placeholder element next to it which is incorrect usage"
-       src="../blockquote-best-practice-4.png"
-       width="872"
-       height="208">
+  <img src="../blockquote-best-practice-4.png" 
+      alt="A vertically centered blockquote with a placeholder element next to it which is incorrect usage" 
+      width="872" 
+      height="208">
 </uxdot-example>
