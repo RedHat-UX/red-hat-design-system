@@ -34,11 +34,6 @@ export class RhChipGroup extends LitElement {
    */
   @property({ attribute: 'accessible-label' }) accessibleLabel?: string;
 
-  /**
-   * Shows or hides the "Clear all" button that unchecks all chips when clicked
-   */
-  @property({ type: Boolean, reflect: true, attribute: 'clear-all' }) clearAll = false;
-
   @query('slot:not([name])') private defaultSlot!: HTMLSlotElement;
 
   @provide({ context }) private ctx = this.#makeContext();
@@ -61,16 +56,10 @@ export class RhChipGroup extends LitElement {
           <slot name="accessible-label">${label}</slot>
         </legend>
         <slot></slot>
-        ${this.clearAll ? this.#renderClearAllBtn() : ''}
+        <button class="btn-link" type="button" @click="${this.#uncheckAllChips}">
+          <slot name="clear-all">Clear all</slot>
+        </button>
       </fieldset>
-    `;
-  }
-
-  #renderClearAllBtn() {
-    return html`
-      <button class="btn-link" type="button" @click="${this.#uncheckAllChips}">
-        <slot name="clear-all">Clear all</slot>
-      </button>
     `;
   }
 
