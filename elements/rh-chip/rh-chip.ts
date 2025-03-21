@@ -4,7 +4,7 @@ import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { property } from 'lit/decorators/property.js';
 import { query } from 'lit/decorators/query.js';
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 import { consume } from '@lit/context';
 
 import { context, type RhChipGroupContext } from './context.js';
@@ -31,13 +31,9 @@ export class ChipChangeEvent extends Event {
  * @slot - The label of the checkbox
  */
 @customElement('rh-chip')
+@themable
 export class RhChip extends LitElement {
   static readonly styles = [styles];
-
-  /**
-   * Sets color theme based on parent context
-   */
-  @colorContextConsumer() private on?: ColorTheme;
 
   /**
    * Whether the chip is checked.
@@ -81,10 +77,9 @@ export class RhChip extends LitElement {
   #checked = false;
 
   render() {
-    const { on = 'light' } = this;
     const { size } = this.ctx ?? {};
     return html`
-      <label part="chip" class=${classMap({ on: true, [on]: true, [`size-${size}`]: !!size })}>
+      <label part="chip" class=${classMap({ [`size-${size}`]: !!size })}>
         <slot></slot>
         <input type="checkbox"
                value="${ifDefined(this.chipValue)}"

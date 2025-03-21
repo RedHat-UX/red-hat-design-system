@@ -22,19 +22,25 @@ label {
 
   &:has(input[aria-disabled='true']),
   &:has(input[aria-disabled='true']:checked) {
-    background-color: var(--rh-color-gray-30, #c7c7c7);
-    color: var(--rh-color-text-secondary);
-    outline-color: var(--rh-color-gray-30, #c7c7c7);
+    background-color:
+      light-dark(var(--rh-color-gray-30, #c7c7c7),
+        var(--rh-color-surface-dark, #383838));
+    color: light-dark(var(--rh-color-text-secondary), var(--rh-color-gray-40, #a3a3a3));
+    outline-color:
+      light-dark(var(--rh-color-gray-30, #c7c7c7),
+        var(--rh-color-surface-dark, #383838));
     pointer-events: none;
   }
 
   &:has(input:checked) {
-    background-color: var(--rh-color-blue-10, #e0f0ff);
-    color: var(--rh-color-blue-70, #003366);
-    outline-color: var(--rh-color-blue-30, #92c5f9);
+    background-color:
+      light-dark(var(--rh-color-blue-10, #e0f0ff),
+        var(--rh-color-blue-70, #003366));
+    color: light-dark(var(--rh-color-blue-70, #003366), var(--rh-color-blue-10, #e0f0ff));
+    outline-color: light-dark(var(--rh-color-blue-30, #92c5f9), var(--rh-color-blue-50, #0066cc));
 
     &:hover {
-      outline-color: var(--rh-color-blue-30, #92c5f9);
+      outline-color: light-dark(var(--rh-color-blue-30, #92c5f9), var(--rh-color-blue-50, #0066cc));
     }
   }
 
@@ -44,21 +50,6 @@ label {
 
   &.size-sm {
     font-size: var(--rh-font-size-body-text-xs, 0.75rem);
-  }
-
-  &.dark {
-    &:has(input[aria-disabled='true']),
-    &:has(input[aria-disabled='true']:checked) {
-      background-color: var(--rh-color-surface-dark, #383838);
-      color: var(--rh-color-gray-40, #a3a3a3);
-      outline-color: var(--rh-color-surface-dark, #383838);
-    }
-
-    &:has(input:checked) {
-      background-color: var(--rh-color-blue-70, #003366);
-      color: var(--rh-color-blue-10, #e0f0ff);
-      outline-color: var(--rh-color-blue-50, #0066cc);
-    }
   }
 }
 
