@@ -101,6 +101,7 @@ export default async function(eleventyConfig: UserConfig, options?: Options) {
     { title: 'Elements', url: '/elements', collection: 'elementDocs' },
     { title: 'Theming', url: '/theming', collection: 'theming' },
     { title: 'Patterns', url: '/patterns', collection: 'pattern' },
+    { title: 'Personalization', url: '/personalization', collection: 'personalization' },
     { title: 'Accessibility', url: '/accessibility', collection: 'accessibility' },
   ]);
 
