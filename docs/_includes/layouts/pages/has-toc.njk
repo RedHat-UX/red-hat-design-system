@@ -7,10 +7,6 @@ layout: layouts/base.njk
       href="/styles/pages/backpage.css"
       data-helmet>
 
-<link rel="stylesheet"
-      href="/assets/packages/@uxdot/elements/uxdot-toc-lightdom.css"
-      data-helmet>
-
 <script type="module" data-helmet>
   // although we load these ssr support modules elsewhere, we still
   // need them here to ensure no double-rendering on webkit
@@ -18,11 +14,8 @@ layout: layouts/base.njk
   import '@uxdot/elements/uxdot-toc.js';
 </script>
 
-{% include 'partials/component/masthead.njk' %}
 {% include 'partials/component/sidenav.njk' %}
-<rh-surface id="main"
-            role="main"
-            color-palette="lightest">
+<main id="main">
   <article class="has-toc">
   {% include 'partials/component/header.njk' %}
   {% if table.length > 0 %}
@@ -38,5 +31,5 @@ layout: layouts/base.njk
   </div>
   </article>
   {% include "partials/component/back-to-top.njk" %}
-</rh-surface>
+</main>
 {% include 'partials/component/footer.njk' %}

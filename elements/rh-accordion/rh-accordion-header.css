@@ -9,15 +9,6 @@
   --_isRTL: -1;
 }
 
-#heading {
-  font-size: 100%;
-  padding: 0;
-  margin: 0;
-  color: var(--rh-color-text-primary);
-  background-color: var(--rh-color-surface);
-  font-weight: var(--rh-font-weight-body-text-medium, 500);
-}
-
 button,
 a {
   cursor: pointer;
@@ -60,6 +51,9 @@ span {
 }
 
 #button {
+  color: var(--rh-color-text-primary);
+  background-color: var(--_accordion-background);
+  font-weight: var(--rh-font-weight-body-text-medium, 500);
   width: 100%;
   padding:
     var(--_padding-block-start)
@@ -68,15 +62,15 @@ span {
     var(--_padding-inline-start);
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
   font-size: var(--_font-size);
-  color: var(--rh-color-text-primary);
 
   & #icon {
     fill: currentcolor;
   }
 
   &:is(:hover,:active,:focus) {
-    &.light { background-color: var(--rh-color-surface-lighter); }
-    &.dark { background-color: var(--rh-color-surface-dark-alt); }
+    background-color:
+      light-dark(var(--rh-color-surface-lighter),
+        oklch(from var(--rh-color-surface-dark) calc(l * 0.82) c h));
 
     & span {
       color: var(--rh-color-text-primary);
@@ -85,12 +79,6 @@ span {
 
   &:focus {
     outline: 2px solid var(--rh-color-interactive-primary-default);
-  }
-
-  &,
-  &:before,
-  &:after {
-    background-color: var(--rh-color-surface);
   }
 
   &:after {
@@ -104,14 +92,6 @@ span {
 
     & #icon {
       rotate: calc(var(--_isRTL, -1) * 180deg);
-    }
-
-    &.on.light {
-      --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
-    }
-
-    &.on.dark {
-      --rh-color-surface: var(--rh-color-surface-darkest, #151515);
     }
   }
 }

@@ -34,7 +34,7 @@ tags:
   <div class="grid sm-two-columns">
     <rh-tile>
       <img alt="Color"
-           src="/assets/foundations/color.svg"
+           src="color.svg"
            slot="image"
            width="500"
            height="150">
@@ -43,7 +43,7 @@ tags:
     </rh-tile>
     <rh-tile>
       <img alt="Grid"
-           src="/assets/foundations/grid.svg"
+           src="grid.svg"
            slot="image"
            width="500"
            height="150">
@@ -52,7 +52,7 @@ tags:
     </rh-tile>
     <rh-tile>
       <img alt="Spacing"
-           src="/assets/foundations/spacing.svg"
+           src="spacing.svg"
            slot="image"
            width="500"
            height="150">
@@ -61,7 +61,7 @@ tags:
     </rh-tile>
     <rh-tile>
       <img alt="Typography"
-           src="/assets/foundations/typography.svg"
+           src="typography.svg"
            slot="image"
            width="500"
            height="150">

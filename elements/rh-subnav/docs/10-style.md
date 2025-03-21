@@ -8,10 +8,10 @@ except for the active page accent.
 
 <figure>
   <uxdot-example width-adjustment="872px">
-    <img src="../subnav-anatomy.png"
-        alt="Anatomy image showing a subnavigation with various annotation numbers"
-        width="872"
-        height="178">
+    <img alt="Anatomy image showing a subnavigation with various annotation numbers"
+         src="../subnav-anatomy.png"
+         width="872"
+         height="178">
   </uxdot-example>
   <figcaption>
     <ol>
@@ -26,15 +26,16 @@ except for the active page accent.
 </figure>
 
 
-## Theme
+## Color scheme
+<a id="theme"></a>
 
-A subnavigation is available in the light theme only right now.
+A subnavigation is available for both light and dark color schemes.
 
 <uxdot-example width-adjustment="872px">
-  <img src="../subnav-theme-light.png"
-        alt="Image of light theme desktop and mobile subnavigations"
-        width="872"
-        height="178">
+  <img alt="Image of light theme desktop and mobile subnavigations"
+       src="../subnav-theme-light.png"
+       width="872"
+       height="178">
 </uxdot-example>
 
 
@@ -42,11 +43,11 @@ A subnavigation is available in the light theme only right now.
 
 Each link container is the same height as the bar.
 
-<uxdot-example width-adjustment="872px">
-  <img src="../subnav-configuration.png"
-        alt="Image of desktop and mobile subnavigations with various specs like height, width, and more"
-        width="872"
-        height="203">
+<uxdot-example color-palette="lightest" width-adjustment="872px">
+  <img alt="Image of desktop and mobile subnavigations with various specs like height, width, and more"
+       src="../subnav-configuration.png"
+       width="872"
+       height="203">
 </uxdot-example>
 
 
@@ -57,11 +58,11 @@ Each link container is the same height as the bar.
   <p>To view inset spacing when a subnavigation is used below the primary navigation or a heading, go to the Guidelines page.</p>
 </rh-alert>
 
-<uxdot-example width-adjustment="872px">
-  <img src="../subnav-space.png"
-        alt="Image of desktop and mobile subnavigations with spacing values in between"
-        width="872"
-        height="176">
+<uxdot-example color-palette="lightest" width-adjustment="872px">
+  <img alt="Image of desktop and mobile subnavigations with spacing values in between"
+       src="../subnav-space.png"
+       width="872"
+       height="176">
 </uxdot-example>
 
 <uxdot-spacer-tokens-table tokens="lg, 2xl"></uxdot-spacer-tokens-table>
@@ -76,10 +77,10 @@ Interactive elements include inactive links and overflow buttons.
 Inactive links and overflow buttons have the same hover state.
 
 <uxdot-example width-adjustment="872px">
-  <img src="../subnav-interaction-state-hover.png"
-        alt="Image of light theme hover states"
-        width="872"
-        height="176">
+  <img alt="Image of light theme hover states"
+       src="../subnav-interaction-state-hover.png"
+       width="872"
+       height="176">
 </uxdot-example>
 
 
@@ -91,10 +92,10 @@ Inactive links and overflow buttons have the same hover state.
 </rh-alert>
 
 <uxdot-example width-adjustment="872px">
-  <img src="../subnav-interaction-state-focus.png"
-        alt="Image of light theme focus states"
-        width="872"
-        height="176">
+  <img alt="Image of light theme focus states"
+       src="../subnav-interaction-state-focus.png"
+       width="872"
+       height="176">
 </uxdot-example>
 
 
@@ -106,8 +107,8 @@ Inactive links and overflow buttons have the same hover state.
 </rh-alert>
 
 <uxdot-example width-adjustment="872px">
-  <img src="../subnav-interaction-state-active.png"
-        alt="Image of light theme active states"
-        width="872"
-        height="176">
+  <img alt="Image of light theme active states"
+       src="../subnav-interaction-state-active.png"
+       width="872"
+       height="176">
 </uxdot-example>
