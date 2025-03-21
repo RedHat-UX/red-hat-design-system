@@ -1,15 +1,11 @@
 import type { CssCustomProperty } from 'custom-elements-manifest';
-import { tokens as tokensMeta } from '@rhds/tokens/meta.js';
+import { tokens as tokensMeta, type DesignToken, type TokenName } from '@rhds/tokens/meta.js';
 import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);
 const tokensJSON = require('@rhds/tokens/json/rhds.tokens.json');
 
 export const capitalize = (x: string): string => `${x.at(0)?.toUpperCase() ?? ''}${x.slice(1)}`;
-
-type MapValue<T> = T extends Map<infer _, infer V> ? V : never;
-
-export type DesignToken = MapValue<typeof tokensMeta>;
 
 /* eslint-disable jsdoc/require-param */
 
@@ -32,10 +28,17 @@ export function getParentCollection(options: {
   return { parent, key };
 }
 
+function isDesignToken(token: DesignToken | CssCustomProperty): token is DesignToken {
+  return '$value' in token;
+}
+
 /** generate `var(--rh-xxx, xxx)` string, given a token or css property */
 export function getVariableSyntax(token: DesignToken | CssCustomProperty) {
-  const name = formatTokenVariableName(token.name);
-  return `var(${name}, ${escapeDoubleQuotes(token.$value ?? token.default)})`;
+  if (token.name) {
+    const name = formatTokenVariableName(token.name);
+    const value = isDesignToken(token) ? token.$value : token.default;
+    return `var(${name}, ${escapeDoubleQuotes(value)})`;
+  }
 }
 
 /** generate string of copy cell for 11ty templates */
@@ -58,11 +61,14 @@ export function copyCell(token: DesignToken) {
   `.trim();
 }
 
-function formatTokenVariableName(token: DesignToken) {
-  return `--${token}`.replace('----', '--') as `--rh-${string}`;
+function formatTokenVariableName(token: string) {
+  return `--${token}`.replace('----', '--') as TokenName;
 }
 
 function getTokenCategorySlug(token: DesignToken) {
+  if (!token.name) {
+    throw new Error(`Unknown token`);
+  }
   const name = formatTokenVariableName(token.name);
   const data = tokensMeta.get(name);
   if (!data) {

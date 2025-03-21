@@ -26,9 +26,16 @@ tags:
       rel="stylesheet"
       href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css">
 
+
 <style data-helmet>
   #patterns-nav {
-    margin-block: var(--rh-space--2xl);
+    margin-block: var(--rh-space--2xl, 32px);
+  }
+    rh-tile h3 {
+    margin: 0 !important;
+  }
+  rh-tile p {
+    margin-block: 0 0 !important;
   }
 </style>
 
@@ -64,8 +71,8 @@ create uniform, accessible experiences.
       <img alt="{{ title }}"
            src="/assets/patterns/all-patterns-{{ slug }}.png">
     </uxdot-example>
-    <a slot="headline" href="{{ pattern.url }}"><h3>{{ title }}</h3></a>
-    <p slot="footer">{{ summary }}</p>
+    <h3 slot="headline"><a href="{{ pattern.url }}">{{ title }}</a></h3>
+    <p>{{ summary }}</p>
   </rh-tile>
   {%- endif -%}
 {%- endfor -%}
