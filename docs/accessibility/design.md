@@ -33,7 +33,7 @@ If one element has the same function as another, both should be labeled the same
 
 ### Using color alone
 
-When presenting meaningful information or indicating the location of interactive elements, do not rely upon color alone in your designs. Users with vision impairments or even situational concerns (e.g., a poor monitor, viewing a display in bright sunlight, etc.) may be unable to discern these color cues.
+When presenting meaningful information or indicating the location of interactive elements, do not rely upon color alone in your designs. Users with vision impairments or even situational concerns (e.g., a poor monitor, viewing a display in bright sunlight, etc.) may be unable to discern these color cues. So, ensure you use non-color indicators, as well.
 
 For specific information on how we use color accessibly, visit [our Foundations page](/foundations/color/accessibility/) on the topic.
 
