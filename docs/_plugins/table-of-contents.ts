@@ -49,16 +49,15 @@ class Item {
   }
 
   getNode() {
-    const { createElement, setTextContent, appendChild } = Tools;
-    const container = this.slug && this.text ? createElement('li') : createElement('span');
+    const { appendChild, createElement, setAttribute, setTextContent } = Tools;
+    const container = createElement(this.slug && this.text ? 'uxdot-toc-item' : 'span');
     if (this.slug && this.text) {
-      const a = createElement('a', { href: `#${this.slug}` });
-      setTextContent(a, this.text);
-      appendChild(container, a);
+      setAttribute(container, 'href', `#${this.slug}`);
+      setTextContent(container, this.text);
     }
     if (this.children.length > 0) {
-      const details = createElement('ol', { slot: 'details' });
-      const expanded = createElement('ol', { slot: 'expanded' });
+      const details = createElement('uxdot-toc-list', { slot: 'details' });
+      const expanded = createElement('uxdot-toc-list', { slot: 'expanded' });
       for (const child of this.children) {
         appendChild(details, child.getNode());
         appendChild(expanded, child.getNode());

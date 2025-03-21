@@ -68,6 +68,18 @@ export default [
     },
   },
   {
+    tagName: 'rh-announcement',
+    name: 'Announcement',
+    type: 'element',
+    overallStatus: 'new',
+    libraries: {
+      figma: 'ready',
+      rhds: 'ready',
+      shared: 'planned',
+      docs: 'ready',
+    },
+  },
+  {
     tagName: 'rh-audio-player',
     name: 'Audio player',
     type: 'element',

@@ -7,7 +7,7 @@ import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
 
 import styles from './rh-navigation-secondary-menu.css';
 
@@ -28,6 +28,7 @@ import styles from './rh-navigation-secondary-menu.css';
  *           max-width for menu content
  */
 @customElement('rh-navigation-secondary-menu')
+@colorPalettes
 export class RhNavigationSecondaryMenu extends LitElement {
   static readonly styles = [styles];
 
@@ -35,7 +36,6 @@ export class RhNavigationSecondaryMenu extends LitElement {
    * Color palette (default: lightest)
    * Secondary nav menus are always represented on the lightest color palette.
    */
-  @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'lightest';
 
   /**

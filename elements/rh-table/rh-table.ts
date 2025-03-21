@@ -1,12 +1,11 @@
-import { LitElement, html, isServer } from 'lit';
+import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
-import { classMap } from 'lit/directives/class-map.js';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import { RequestSortEvent, RhSortButton } from './rh-sort-button.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-table.css';
 
@@ -20,10 +19,9 @@ import styles from './rh-table.css';
  * @cssprop [--rh-table-row-border=1px solid #c7c7c7] - row border
  */
 @customElement('rh-table')
+@themable
 export class RhTable extends LitElement {
   static readonly styles = [styles];
-
-  @colorContextConsumer() private on?: ColorTheme;
 
   private static getNodeContentForSort(
     columnIndexToSort: number,
@@ -68,8 +66,6 @@ export class RhTable extends LitElement {
     return this.querySelector('[slot="summary"]') as HTMLElement | undefined;
   }
 
-  #internalColorPalette?: string | null;
-
   #logger = new Logger(this);
 
   #mo = new MutationObserver(() => this.#init);
@@ -80,43 +76,9 @@ export class RhTable extends LitElement {
     this.#mo.observe(this, { childList: true });
   }
 
-  protected willUpdate(): void {
-    if (!isServer) {
-      /**
-       * TEMPORARY: this fixes the need to access the parents color-palette in order to get the `lightest`
-       * value.  This fix will only update the component when switching between light and dark themes as
-       * thats when the consumer requests an update.  Switching between lighter -> light for example will
-       * not trigger the component to update at this time.
-       *
-       * As well, this hack is not supported in SSR (likewise, context is not yet supported)
-       */
-      const selector = '[color-palette]';
-      function closestShadowRecurse(el: Element | Window | Document | null): Element | null {
-        if (!el || el === document || el === window) {
-          return null;
-        }
-        if ((el as Element).assignedSlot) {
-          el = (el as Element).assignedSlot;
-        }
-        const found = (el as Element).closest(selector);
-        return found ?
-        found
-        : closestShadowRecurse(((el as Element).getRootNode() as ShadowRoot).host);
-      }
-      this.#internalColorPalette = closestShadowRecurse(this)?.getAttribute('color-palette');
-    }
-  }
-
   render() {
-    const { on = 'light' } = this;
     return html`
-      <div id="container"
-           part="container"
-           class="${classMap({
-             on: true,
-             [on]: true,
-             [`color-palette-${this.#internalColorPalette}`]: !!this.#internalColorPalette,
-           })}">
+      <div id="container" part="container">
         <slot @pointerleave="${this.#onPointerleave}"
               @pointerover="${this.#onPointerover}"
               @request-sort="${this.#onRequestSort}"

@@ -1,0 +1,86 @@
+rh-announcement:not(:defined) {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+  justify-content: center;
+  line-height: var(--rh-line-height-body-text, 1.5);
+  padding: var(--rh-space-lg, 16px);
+  text-align: center;
+}
+
+rh-announcement:not(:defined) p {
+  margin-block: 0 var(--rh-space-md, 8px);
+  max-inline-size: 896px;
+}
+
+rh-announcement[image-position='inline-start']:not(:defined) p {
+  text-align: start;
+}
+
+rh-announcement[color-palette*='dark']:not(:defined) {
+  background-color: var(--rh-color-surface);
+}
+
+rh-announcement[image-position='inline-start']:not(:defined) {
+  align-items: start;
+  display: grid;
+  grid-template-columns: auto 2fr;
+}
+
+rh-announcement[image-position='block-start']:not(:defined) {
+  display: block;
+  text-align: start;
+}
+
+rh-announcement:not(:defined) :is(img, svg) {
+  display: block;
+  flex-shrink: 0;
+  margin-block-end: var(--rh-space-lg, 16px);
+  min-inline-size: max-content;
+}
+
+rh-announcement[image-position='inline-start']:not(:defined) :is(img, svg) {
+  margin-block-end: 0;
+  margin-inline-end: var(--rh-space-lg, 16px);
+}
+
+rh-announcement:not(:defined) rh-cta:not(:defined) {
+  flex: 0 0 auto;
+  grid-column: 2 / 3;
+  text-align: start;
+}
+
+@media (min-width: 768px) {
+  rh-announcement:not(:defined) {
+    flex-direction: row;
+    gap: var(--rh-space-lg, 16px);
+    justify-content: center;
+    margin-inline: auto;
+  }
+
+  rh-announcement[image-position='inline-start']:not(:defined),
+  rh-announcement[image-position='block-start']:not(:defined) {
+    align-items: center;
+    display: flex;
+  }
+
+  rh-announcement:not(:defined) :is(img, svg, p) {
+    margin-block-end: 0;
+  }
+
+  rh-announcement[image-position='inline-start']:not(:defined) :is(img, svg) {
+    margin-inline-end: 0;
+  }
+
+  rh-announcement:not(:defined) p {
+    font-size: var(--rh-font-size-body-text-lg, 1.125rem) !important;
+    text-align: start;
+  }
+}
+
+@media (min-width: 992px) {
+  rh-announcement:not(:defined) {
+    gap: var(--rh-space-2xl, 32px);
+  }
+}

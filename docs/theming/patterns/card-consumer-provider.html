@@ -1,23 +1,34 @@
 <rh-card>
   <h2 slot="header">Consumer</h2>
   <rh-tag slot="header" icon="info" color="purple">passive</rh-tag>
-  <p>This card acts as a consumer.
-    It will always receive its parent's <code>ColorTheme</code>.</p>
+  <p>Because this card does not set it's <code>color-palette</code> attribute,
+    it acts as a consumer. It will always receive its parent's color scheme.</p>
   <rh-cta slot="footer" href="/elements/card/">Read card docs</rh-cta>
 </rh-card>
 
 <rh-card id="provider-card" color-palette="lightest">
   <h2 slot="header">Provider</h2>
   <rh-tag slot="header" icon="info" color="green">active</rh-tag>
-  <p>This card acts as a provider.
-    Try changing this card's
-    <code>color-palette</code>
-    and see how it affects this card's children.
+  <p>This card, by contrast, sets it's <code>color-palette</code>, so it acts
+    as a provider. Try changing this card's <code>color-palette</code> using
+    the controls below, and see how it affects this card's children.
   </p>
-  <label for="provider-picker">
+  <rh-cta slot="footer" href="/elements/call-to-action/">Read CTA docs</rh-cta>
+  <label slot="footer" for="provider-picker">
     Set this card's color palette.
     <rh-context-picker id="provider-picker" target="provider-card" allow="darkest, lighter, lightest" value="lightest"></rh-context-picker>
   </label>
-  <rh-cta slot="footer" href="/elements/call-to-action/">Read CTA docs</rh-cta>
 </rh-card>
+
+<style>
+  rh-card:first-of-type {
+    margin-block-end: var(--rh-space-xl);
+  }
+  label[slot="footer"] {
+    margin-inline-start: auto;
+    display: flex;
+    align-items: center;
+    gap: var(--rh-space-md);
+  }
+</style>
 

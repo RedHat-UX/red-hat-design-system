@@ -14,4 +14,3 @@ if (!('shadowRootMode' in HTMLTemplateElement.prototype)) {
     });
   })(document);
 }
-document.body.removeAttribute('dsd-pending');

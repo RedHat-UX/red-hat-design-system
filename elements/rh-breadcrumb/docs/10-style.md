@@ -5,11 +5,11 @@ Breadcrumb navigation is composed of links, text, and caret icons as separators.
 ### Anatomy
 
 <figure>
-  <uxdot-example width-adjustment="295px">
-    <img src="../breadcrumbs-anatomy.svg"
-        alt="Anatomy of breadcrumbs with numbered annotations pointing to various parts"
-        width="296"
-        height="47">
+  <uxdot-example color-palette="lightest" width-adjustment="295px">
+    <img alt="Anatomy of breadcrumbs with numbered annotations pointing to various parts"
+         src="../breadcrumbs-anatomy.svg"
+         width="296"
+         height="47">
   </uxdot-example>
   <figcaption>
      <ol>
@@ -20,23 +20,24 @@ Breadcrumb navigation is composed of links, text, and caret icons as separators.
   </figcaption>
 </figure>
 
-## Theme
+## Color scheme
+<a id="theme"></a>
 
-Breadcrumbs are available in both light and dark themes.
+Breadcrumbs are available for both light and dark color schemes.
 
 <div class="grid xs-two-columns">
-  <uxdot-example width-adjustment="295px">
+  <uxdot-example color-palette="lightest" width-adjustment="295px">
     <img src="../breadcrumb-theme-light.svg"
-        alt="Light theme breadcrumb with blue links and black text and separators"
-        width="296"
-        height="21">
+         alt="Light theme breadcrumb with blue links and black text and separators"
+         width="296"
+         height="21">
   </uxdot-example>
 
-  <uxdot-example width-adjustment="295px" color-palette="darkest">
-    <img src="../breadcrumb-theme-dark.svg"
-        alt="Dark theme breadcrumb with light blue links and white text and separators"
-        width="296"
-        height="21">
+  <uxdot-example color-palette="darkest" width-adjustment="295px">
+    <img alt="Dark theme breadcrumb with light blue links and white text and separators"
+         src="../breadcrumb-theme-dark.svg"
+         width="296"
+         height="21">
   </uxdot-example>
 </div>
 
@@ -44,22 +45,22 @@ Breadcrumbs are available in both light and dark themes.
 
 Breadcrumbs typically appear above the title of a page and below primary and/or secondary navigation.
 
-<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-    <img src="../breadcrumb-placement.svg"
-        alt="partial view of Red Hat's homepage with primary and secondary navigation above breadcrumb navigation"
-        width="1000"
-        height="445">
+<uxdot-example variant="full" width-adjustment="1000px" alignment="left" no-border>
+    <img alt="partial view of Red Hat's homepage with primary and secondary navigation above breadcrumb navigation"
+         src="../breadcrumb-placement.svg"
+         width="1000"
+         height="445">
   </uxdot-example>
 
 ## Space
 
 The space between parent pages or current pages and the separators is 16px. If a row of breadcrumbs has to wrap, the space between the lines is 8px. This remains the same across all breakpoints.
 
-<uxdot-example width-adjustment="162px">
- <img src="../breadcrumb-space.svg"
-        alt="Diagram of spacing for breadcrumbs"
-        width="162"
-        height="50" />
+<uxdot-example color-palette="lightest" width-adjustment="162px">
+  <img alt="Diagram of spacing for breadcrumbs"
+       src="../breadcrumb-space.svg"
+       width="162"
+       height="50">
 </uxdot-example>
 
 ## Interaction States
@@ -71,18 +72,18 @@ Interaction states are visual representations used to communicate the status of 
 A breadcrumb link turns a darker or lighter shade of the default state’s blue and becomes underlined on hover.
 
 <div class="grid xs-two-columns">
-  <uxdot-example width-adjustment="295px">
-    <img src="../breadcrumb-hover-light.svg"
-        alt="Light theme breadcrumbs with dark blue, underlined links on hover and black text and separators"
-        width="296"
-        height="44">
+  <uxdot-example color-palette="lightest" width-adjustment="295px">
+    <img alt="Light theme breadcrumbs with dark blue, underlined links on hover and black text and separators"
+         src="../breadcrumb-hover-light.svg"
+         width="296"
+         height="44">
   </uxdot-example>
 
-  <uxdot-example width-adjustment="295px" color-palette="darkest">
-    <img src="../breadcrumb-hover-dark.svg"
-        alt="Dark theme breadcrumbs with light blue, underlined links on hover and white text and separators"
-        width="296"
-        height="44">
+  <uxdot-example color-palette="darkest" width-adjustment="295px">
+    <img alt="Dark theme breadcrumbs with light blue, underlined links on hover and white text and separators"
+         src="../breadcrumb-hover-dark.svg"
+         width="296"
+         height="44">
   </uxdot-example>
 </div>
 
@@ -91,18 +92,18 @@ A breadcrumb link turns a darker or lighter shade of the default state’s blue 
 The focus state of a breadcrumb link looks similar to the hover state, but it adds a focus ring around the link.
 
 <div class="grid xs-two-columns">
-  <uxdot-example width-adjustment="295px">
-    <img src="../breadcrumb-focus-light.svg"
-        alt="Light theme breadcrumbs with one dark blue, underlined link in a focus ring"
-        width="296"
-        height="25">
+  <uxdot-example color-palette="lightest" width-adjustment="295px">
+    <img alt="Light theme breadcrumbs with one dark blue, underlined link in a focus ring"
+         src="../breadcrumb-focus-light.svg"
+         width="296"
+         height="25">
   </uxdot-example>
 
-  <uxdot-example width-adjustment="295px" color-palette="darkest">
-    <img src="../breadcrumb-focus-dark.svg"
-        alt="Dark theme breadcrumbs with one light blue, underlined link in a focus ring"
-        width="296"
-        height="25">
+  <uxdot-example color-palette="darkest" width-adjustment="295px">
+    <img alt="Dark theme breadcrumbs with one light blue, underlined link in a focus ring"
+         src="../breadcrumb-focus-dark.svg"
+         width="296"
+         height="25">
   </uxdot-example>
 </div>
 
@@ -114,18 +115,18 @@ The focus state of a breadcrumb link looks similar to the hover state, but it ad
 </rh-alert>
 
 <div class="grid xs-two-columns">
-  <uxdot-example width-adjustment="295px">
-    <img src="../breadcrumb-active-light.svg"
-        alt="Light theme breadcrumbs with one dark blue, underlined link in a focus ring"
-        width="296"
-        height="25">
+  <uxdot-example color-palette="lightest" width-adjustment="295px">
+    <img alt="Light theme breadcrumbs with one dark blue, underlined link in a focus ring"
+         src="../breadcrumb-active-light.svg"
+         width="296"
+         height="25">
   </uxdot-example>
 
-  <uxdot-example width-adjustment="295px" color-palette="darkest">
-    <img src="../breadcrumb-active-dark.svg"
-        alt="Dark theme breadcrumbs with one light blue, underlined link in a focus ring"
-        width="296"
-        height="25">
+  <uxdot-example color-palette="darkest" width-adjustment="295px">
+    <img alt="Dark theme breadcrumbs with one light blue, underlined link in a focus ring"
+         src="../breadcrumb-active-dark.svg"
+         width="296"
+         height="25">
   </uxdot-example>
 </div>
 

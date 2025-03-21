@@ -1,14 +1,14 @@
 :host {
   color: var(--rh-color-text-primary);
   margin: 0 auto;
-  text-align: left;
+  text-align: start;
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
   line-height: var(--rh-line-height-body-text, 1.5);
   font-weight: var(--rh-font-weight-heading-regular, 400);
 }
 
-@media (min-width: 700px) {
+@media (min-width: 768px) {
   :host {
     font-size: var(--rh-font-size-body-text-xl, 1.25rem);
   }
@@ -19,8 +19,15 @@ blockquote {
   margin: 0;
 }
 
+figure {
+  display: block;
+  max-inline-size: 752px;
+}
+
 blockquote ::slotted(p) {
-  margin: var(--rh-length-lg, 16px) 0;
+  font-size: var(--rh-font-size-body-text-xl, 1.25rem) !important;
+  margin: 0;
+  margin-block-end: var(--rh-length-lg, 16px);
 }
 
 figcaption {
@@ -35,6 +42,7 @@ figcaption p {
 
 #author {
   font-weight: var(--rh-font-weight-heading-bold, 700);
+  margin-block-start: var(--rh-space-lg, 16px);
 }
 
 rh-icon {
@@ -45,14 +53,22 @@ rh-icon {
   text-align: center;
 }
 
-:host([size='large']) {
-  font-size: var(--rh-font-size-body-text-2xl, 1.5rem);
+:host([align='center']) figure {
+  margin-inline: auto;
+}
+
+:host([align='center']) blockquote ::slotted(p) {
+  max-inline-size: none !important;
+}
+
+:host([size='large']) blockquote ::slotted(p) {
+  font-size: var(--rh-font-size-body-text-2xl, 1.5rem) !important;
   line-height: var(--rh-line-height-heading, 1.3);
 }
 
-@media (min-width: 700px) {
-  :host([size='large']) {
-    font-size: var(--rh-font-size-heading-md, 1.75rem);
+@media (min-width: 768px) {
+  :host([size='large']) blockquote ::slotted(p) {
+    font-size: var(--rh-font-size-heading-md, 1.75rem) !important;
   }
 }
 

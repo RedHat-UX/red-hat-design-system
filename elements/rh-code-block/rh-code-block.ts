@@ -8,7 +8,7 @@ import { ifDefined } from 'lit-html/directives/if-defined.js';
 
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 
-import { type ColorTheme, colorContextConsumer } from '../../lib/context/color/consumer.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import style from './rh-code-block.css';
 
@@ -52,6 +52,7 @@ interface CodeLineHeightsInfo {
  *                and legend text in the `<dd>` elements
  */
 @customElement('rh-code-block')
+@themable
 export class RhCodeBlock extends LitElement {
   private static actionIcons = new Map([
     ['wrap', html`
@@ -128,8 +129,6 @@ export class RhCodeBlock extends LitElement {
   /** When set, lines in the code snippet wrap */
   @property({ type: Boolean }) wrap = false;
 
-  @colorContextConsumer() private on?: ColorTheme;
-
   #slots = new SlotController(
     this,
     null,
@@ -159,20 +158,13 @@ export class RhCodeBlock extends LitElement {
   }
 
   render() {
-    const { on = '', fullHeight, wrap, resizable, compact } = this;
+    const { fullHeight, wrap, resizable, compact } = this;
     const expandable = this.#lineHeights.length > 5;
     const truncated = expandable && !fullHeight;
     const actions = !!this.actions.length;
     return html`
       <div id="container"
-           class="${classMap({ on: true, [on]: !!on,
-                               actions,
-                               compact,
-                               expandable,
-                               fullHeight,
-                               resizable,
-                               truncated,
-                               wrap })}"
+           class="${classMap({ actions, compact, expandable, fullHeight, resizable, truncated, wrap })}"
            @code-action="${this.#onCodeAction}">
         <div id="content-lines" tabindex="${ifDefined((!fullHeight || undefined) && 0)}">
           <div id="sizers" aria-hidden="true"></div>
