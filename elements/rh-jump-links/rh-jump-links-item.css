@@ -1,39 +1,57 @@
 :host {
   display: block;
   position: relative;
-  padding-block: var(--rh-space-md, 8px);
-  padding-inline: var(--rh-space-lg, 16px);
-  border-inline-start:
-    var(--_border-override,
-      var(--rh-length-4xs, 1px) solid var(--rh-color-border-subtle));
+  width: max-content;
 }
 
 a {
   color: var(--rh-color-interactive-secondary-default);
   text-decoration: none;
-}
+  display: inline-block;
 
-a:focus-visible {
-  outline: 2px var(--rh-color-interactive-primary-focus);
-}
-
-:host(:hover) a { color: var(--rh-color-interactive-secondary-hover); }
-:host(:focus) a { color: var(--rh-color-interactive-secondary-focus); }
-
-:host([active]) {
-  &:before {
+  &.vertical {
+    padding: var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
     border-inline-start:
       var(--_border-override,
-        var(--rh-length-xs, 4px) solid var(--rh-color-brand-red));
-    content: '';
-    display: block;
-    height: 100%;
-    position: absolute;
-    inset-inline-start: 0;
-    inset-block: 0;
+        var(--rh-length-4xs, 1px) solid var(--rh-color-border-subtle));
   }
-}
 
-:host([active]) a {
-  color: var(--rh-color-interactive-secondary-active);
+  &.horizontal {
+    padding: var(--rh-space-lg, 16px);
+  }
+
+  &:hover { color: var(--rh-color-interactive-secondary-hover); }
+  &:focus { color: var(--rh-color-interactive-secondary-focus); }
+
+  &:focus-visible {
+    outline: 2px var(--rh-color-interactive-primary-focus);
+  }
+
+  &.active {
+    color: var(--rh-color-interactive-secondary-active);
+
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+    }
+
+    &.vertical:before {
+      height: 100%;
+      inset-inline-start: 0;
+      inset-block: 0;
+      border-inline-start:
+        var(--_border-override,
+          var(--rh-length-xs, 4px) solid var(--rh-color-brand-red));
+    }
+
+    &.horizontal:before {
+      width: 100%;
+      inset-block-start: 0;
+      inset-inline: 0;
+      border-block-start:
+        var(--_border-override,
+          var(--rh-length-xs, 4px) solid var(--rh-color-brand-red));
+    }
+  }
 }

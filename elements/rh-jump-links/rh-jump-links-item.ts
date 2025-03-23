@@ -1,18 +1,24 @@
 import { html, LitElement, type TemplateResult } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-
+import { state } from 'lit/decorators/state.js';
+import { consume } from '@lit/context';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import { classMap } from 'lit-html/directives/class-map.js';
 
+import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
+
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import style from './rh-jump-links-item.css';
 
-import { observes } from '@patternfly/pfe-core/decorators/observes.js';
+import { rhJumpLinksOrientationContext } from './context.js';
 
 /**
  */
 @customElement('rh-jump-links-item')
+@themable
 export class RhJumpLinksItem extends LitElement {
   static readonly styles: CSSStyleSheet[] = [style];
 
@@ -20,6 +26,10 @@ export class RhJumpLinksItem extends LitElement {
     ...LitElement.shadowRootOptions,
     delegatesFocus: true,
   };
+
+  /** Whether the layout of children is vertical or horizontal. */
+  @consume({ context: rhJumpLinksOrientationContext, subscribe: true })
+  @state() private orientation?: 'horizontal' | 'vertical';
 
   /** Whether this item is active. */
   @property({ type: Boolean, reflect: true }) active = false;
@@ -30,8 +40,11 @@ export class RhJumpLinksItem extends LitElement {
   #internals = InternalsController.of(this, { role: 'listitem' });
 
   render(): TemplateResult<1> {
+    const { active, orientation = 'vertical' } = this;
     return html`
-      <a href="${ifDefined(this.href)}" @click="${this.#onClick}">
+      <a class="${classMap({ active, [orientation]: true })}"
+         href="${ifDefined(this.href)}"
+         @click="${this.#onClick}">
         <slot></slot>
       </a>
     `;

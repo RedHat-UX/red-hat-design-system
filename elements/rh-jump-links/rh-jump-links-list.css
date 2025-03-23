@@ -1,23 +1,41 @@
 :host {
   display: block;
   position: relative;
-  border-inline-start: var(--rh-length-4xs, 1px) solid var(--rh-color-border-subtle);
 
   --_border-override: none;
 }
 
-#container {
+#list {
   padding-inline: var(--rh-space-lg, 16px);
 }
 
-:host([active]) {
-  &:before {
-    border-inline-start: var(--rh-length-xs, 4px) solid var(--rh-color-brand-red);
-    content: '';
-    display: block;
-    height: 100%;
-    position: absolute;
-    inset-inline-start: 0;
-    inset-block: 0;
+#container {
+  display: contents;
+
+  --_bdr: var(--rh-length-4xs, 1px) solid var(--rh-color-border-subtle);
+
+  &.vertical { border-inline-start: var(--_bdr); }
+  &.horizontal { border-block-start: var(--_bdr); }
+
+  &.active {
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+    }
+
+    &.vertical:before {
+      border-inline-start: var(--rh-length-xs, 4px) solid var(--rh-color-brand-red);
+      height: 100%;
+      inset-inline-start: 0;
+      inset-block: 0;
+    }
+
+    &.horizontal:before {
+      border-block-start: var(--rh-length-xs, 4px) solid var(--rh-color-brand-red);
+      width: 100%;
+      inset-block-start: 0;
+      inset-inline: 0;
+    }
   }
 }
