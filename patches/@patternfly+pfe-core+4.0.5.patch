@@ -1,0 +1,58 @@
+diff --git a/node_modules/@patternfly/pfe-core/controllers/scroll-spy-controller.d.ts b/node_modules/@patternfly/pfe-core/controllers/scroll-spy-controller.d.ts
+index d342387..6da272e 100644
+--- a/node_modules/@patternfly/pfe-core/controllers/scroll-spy-controller.d.ts
++++ b/node_modules/@patternfly/pfe-core/controllers/scroll-spy-controller.d.ts
+@@ -20,6 +20,10 @@ export interface ScrollSpyControllerOptions extends IntersectionObserverInit {
+      * @default el => el.getAttribute('href');
+      */
+     getHash?: (el: Element) => string | null;
++    /**
++     * Optional callback for when an intersection occurs
++     */
++    onIntersection?(): void;
+ }
+ export declare class ScrollSpyController implements ReactiveController {
+     #private;
+diff --git a/node_modules/@patternfly/pfe-core/controllers/scroll-spy-controller.js b/node_modules/@patternfly/pfe-core/controllers/scroll-spy-controller.js
+index fd5a7dc..e22fc58 100644
+--- a/node_modules/@patternfly/pfe-core/controllers/scroll-spy-controller.js
++++ b/node_modules/@patternfly/pfe-core/controllers/scroll-spy-controller.js
+@@ -1,4 +1,4 @@
+-var _ScrollSpyController_instances, _ScrollSpyController_tagNames, _ScrollSpyController_activeAttribute, _ScrollSpyController_io, _ScrollSpyController_passedLinks, _ScrollSpyController_force, _ScrollSpyController_intersected, _ScrollSpyController_root, _ScrollSpyController_rootMargin, _ScrollSpyController_threshold, _ScrollSpyController_getRootNode, _ScrollSpyController_getHash, _ScrollSpyController_linkChildren_get, _ScrollSpyController_initIo, _ScrollSpyController_markPassed, _ScrollSpyController_setActive, _ScrollSpyController_nextIntersection, _ScrollSpyController_onIo;
++var _ScrollSpyController_instances, _ScrollSpyController_tagNames, _ScrollSpyController_activeAttribute, _ScrollSpyController_io, _ScrollSpyController_passedLinks, _ScrollSpyController_force, _ScrollSpyController_intersected, _ScrollSpyController_root, _ScrollSpyController_rootMargin, _ScrollSpyController_threshold, _ScrollSpyController_getRootNode, _ScrollSpyController_getHash, _ScrollSpyController_onIntersection, _ScrollSpyController_linkChildren_get, _ScrollSpyController_initIo, _ScrollSpyController_markPassed, _ScrollSpyController_setActive, _ScrollSpyController_nextIntersection, _ScrollSpyController_onIo;
+ import { __classPrivateFieldGet, __classPrivateFieldSet } from "tslib";
+ export class ScrollSpyController {
+     get root() {
+@@ -42,6 +42,7 @@ export class ScrollSpyController {
+         _ScrollSpyController_threshold.set(this, void 0);
+         _ScrollSpyController_getRootNode.set(this, void 0);
+         _ScrollSpyController_getHash.set(this, void 0);
++        _ScrollSpyController_onIntersection.set(this, void 0);
+         host.addController(this);
+         __classPrivateFieldSet(this, _ScrollSpyController_tagNames, options.tagNames, "f");
+         __classPrivateFieldSet(this, _ScrollSpyController_root, options.root, "f");
+@@ -50,6 +51,7 @@ export class ScrollSpyController {
+         __classPrivateFieldSet(this, _ScrollSpyController_threshold, options.threshold ?? 0.85, "f");
+         __classPrivateFieldSet(this, _ScrollSpyController_getRootNode, () => options.rootNode ?? host.getRootNode(), "f");
+         __classPrivateFieldSet(this, _ScrollSpyController_getHash, options?.getHash ?? ((el) => el.getAttribute('href')), "f");
++        __classPrivateFieldSet(this, _ScrollSpyController_onIntersection, options?.onIntersection, "f");
+     }
+     hostConnected() {
+         __classPrivateFieldGet(this, _ScrollSpyController_instances, "m", _ScrollSpyController_initIo).call(this);
+@@ -72,7 +74,7 @@ export class ScrollSpyController {
+         __classPrivateFieldSet(this, _ScrollSpyController_force, false, "f");
+     }
+ }
+-_ScrollSpyController_tagNames = new WeakMap(), _ScrollSpyController_activeAttribute = new WeakMap(), _ScrollSpyController_io = new WeakMap(), _ScrollSpyController_passedLinks = new WeakMap(), _ScrollSpyController_force = new WeakMap(), _ScrollSpyController_intersected = new WeakMap(), _ScrollSpyController_root = new WeakMap(), _ScrollSpyController_rootMargin = new WeakMap(), _ScrollSpyController_threshold = new WeakMap(), _ScrollSpyController_getRootNode = new WeakMap(), _ScrollSpyController_getHash = new WeakMap(), _ScrollSpyController_instances = new WeakSet(), _ScrollSpyController_linkChildren_get = function _ScrollSpyController_linkChildren_get() {
++_ScrollSpyController_tagNames = new WeakMap(), _ScrollSpyController_activeAttribute = new WeakMap(), _ScrollSpyController_io = new WeakMap(), _ScrollSpyController_passedLinks = new WeakMap(), _ScrollSpyController_force = new WeakMap(), _ScrollSpyController_intersected = new WeakMap(), _ScrollSpyController_root = new WeakMap(), _ScrollSpyController_rootMargin = new WeakMap(), _ScrollSpyController_threshold = new WeakMap(), _ScrollSpyController_getRootNode = new WeakMap(), _ScrollSpyController_getHash = new WeakMap(), _ScrollSpyController_onIntersection = new WeakMap(), _ScrollSpyController_instances = new WeakSet(), _ScrollSpyController_linkChildren_get = function _ScrollSpyController_linkChildren_get() {
+     return Array.from(this.host.querySelectorAll(__classPrivateFieldGet(this, _ScrollSpyController_tagNames, "f").join(',')))
+         .filter(__classPrivateFieldGet(this, _ScrollSpyController_getHash, "f"));
+ }, _ScrollSpyController_initIo = function _ScrollSpyController_initIo() {
+@@ -119,5 +121,6 @@ _ScrollSpyController_tagNames = new WeakMap(), _ScrollSpyController_activeAttrib
+         __classPrivateFieldGet(this, _ScrollSpyController_instances, "m", _ScrollSpyController_setActive).call(this, last ?? __classPrivateFieldGet(this, _ScrollSpyController_instances, "a", _ScrollSpyController_linkChildren_get).at(0));
+     }
+     __classPrivateFieldSet(this, _ScrollSpyController_intersected, true, "f");
++    __classPrivateFieldGet(this, _ScrollSpyController_onIntersection, "f")?.call(this);
+ };
+ //# sourceMappingURL=scroll-spy-controller.js.map
+\ No newline at end of file
