@@ -10,8 +10,6 @@
       var(--rh-color-brand-red-light, #f56e6e),
       var(--rh-color-purple-40, #876fd4),
       var(--rh-color-purple-60, #3d2785));
-
-  /* stylelint-disable-next-line rhds/no-unknown-token-name */
   --_active-item-color: var(--rh-navigation-active-item-color, var(--_gradient));
 
   display: block;
@@ -412,7 +410,12 @@
         @container (min-width: 1200px) {
           padding: 0 var(--rh-space-lg, 16px);
           width: auto;
-          height: calc(100% + 4px); /* adjustment for 4px border, because border-image usage we can't use transparent on opposite side to balance */
+
+          /**
+           * adjustment for 4px border, because border-image usage
+           * we can't use transparent on opposite side to balance
+           */
+          height: calc(100% + 4px);
         }
       }
     }
