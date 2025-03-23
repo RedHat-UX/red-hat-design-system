@@ -53,6 +53,7 @@ function injectManuallyResolvedModulesToImportMap(document) {
     Object.assign(json.imports, {
       'lit': '/node_modules/lit/index.js',
       'lit/': '/node_modules/lit/',
+      '@lit/context': '/node_modules/@lit/context/index.js',
       '@patternfly/pfe-core': '/node_modules/@patternfly/pfe-core/core.js',
       '@patternfly/pfe-core/': '/node_modules/@patternfly/pfe-core/',
       '@rhds/icons/': '/node_modules/@rhds/icons/',
