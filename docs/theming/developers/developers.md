@@ -258,14 +258,21 @@ rectangle.
 
 When using this approach, there are some important things to keep in mind:
 
-1. All element IDs on the page must be unique, including SVG elements,
-so when inlining SVGs onto the page, try to reduce the number of IDs in the graphic
+First, all element IDs on the page must be unique, including inline SVG elements.
+When inlining SVGs onto the page, try to reduce the number of IDs in the graphic
 to the bare minimum, and make sure the IDs are either random or prefixed with some 
-unique identifier, like the file name
+unique identifier, like the file name.
 
-2. When using themable tokens in graphics, e.g `--rh-color-text-primary`, always
+Second, when using themable tokens in graphics, e.g `--rh-color-text-primary`, always
 provide the light-scheme value as a fallback. This ensures that the graphic will
-still render correctly (for light color schemes) when loaded in an `<img>` tag.
+still render correctly (for light color schemes) when loaded in an `<img>` tag. As long 
+as you supply the light scheme fallback value, we don't need to use `light-dark()` except 
+when there's no appropriate themable variable.
+
+```diff-svg
+- fill="var(--rh-color-text-primary, light-dark(var(--rh-color-text-primary-on-light, #151515), var(--rh-color-text-primary-on-dark, #ffffff))"
++ fill="var(--rh-color-text-primary, #151515)"
+```
 
 This approach _does not work_ with SVGs loaded through the `<img>` tag, or with 
 raster graphics; however, another approach is in development that could help.
