@@ -40,6 +40,7 @@ export class RhNavigationPrimaryItem extends LitElement {
 
   #highlight = false;
 
+  // eslint-disable-next-line no-unused-private-class-members
   #internals = InternalsController.of(this, { role: 'listitem' });
 
   @query('details')
@@ -77,34 +78,28 @@ export class RhNavigationPrimaryItem extends LitElement {
   render() {
     const { hide = '', variant = '', standalone } = this;
     const { compact = true } = this.ctx ?? {};
-    const classes = {
-      'highlight': !!this.#highlight,
-      'hide': !!hide,
-      [variant]: true,
-      'standalone': standalone,
-      compact,
-    };
     return html`
-      <div id="container" class="${classMap(classes)}" part="container">
-        ${this.variant === 'dropdown' ? html`
-          <details @toggle="${this.#detailsToggle}">
-            <summary>
-              ${this.standalone ? html`
-                <slot name="icon">
-                  ${this.icon ? html`<rh-icon icon="${this.icon}" set="${ifDefined(this.iconSet)}"></rh-icon>` : html``}
-                </slot>
-                ` : html``}
-              <slot name="summary">${this.summary}</slot>
-              <rh-icon icon="caret-down" set="microns"></rh-icon>
-            </summary>
-            <rh-navigation-primary-item-menu id="details-content">
-              <slot></slot>
-            </rh-navigation-primary-item-menu>
-          </details>
-        ` : html`
-          <slot></slot>
-        `}
-        </div>
+      <div id="container" part="container" class="${classMap({
+        [variant]: true,
+        highlight: !!this.#highlight,
+        hide: !!hide,
+        standalone: standalone,
+        compact,
+      })}">${this.variant === 'dropdown' ? html`
+        <details @toggle="${this.#detailsToggle}">
+          <summary>${!this.standalone ? '' : html`
+            <slot name="icon">${this.icon ? '' : html`
+              <rh-icon icon="${this.icon}" set="${ifDefined(this.iconSet)}"></rh-icon>`}
+            </slot>`}
+            <slot name="summary">${this.summary}</slot>
+            <rh-icon icon="caret-down" set="microns"></rh-icon>
+          </summary>
+          <rh-navigation-primary-item-menu id="details-content">
+            <slot></slot>
+          </rh-navigation-primary-item-menu>
+        </details>` : html`
+        <slot></slot>`}
+      </div>
     `;
   }
 
