@@ -36,6 +36,8 @@ export class RhJumpLinks extends LitElement {
 
   #overflow = new OverflowController(this);
 
+  #onScroll = this.#overflow.onScroll.bind(this);
+
   #spy = new ScrollSpyController(this, {
     rootMargin: '0px 0px 0px 0px',
     tagNames: ['rh-jump-links-item'],
@@ -43,6 +45,7 @@ export class RhJumpLinks extends LitElement {
       for (const list of this.querySelectorAll('rh-jump-links-list')) {
         list.active = !!list.querySelector('rh-jump-links-item[active]');
       }
+      this.#overflow.update();
     },
   });
 
@@ -71,8 +74,7 @@ export class RhJumpLinks extends LitElement {
   }
 
   render(): TemplateResult<1> {
-    const overflow = this.#overflow.showScrollButtons;
-    console.log({ overflow });
+    const { overflowLeft, overflowRight, showScrollButtons: overflow } = this.#overflow;
     return html`
         <button id="scroll-start"
                 class="overflow-button"
@@ -80,7 +82,7 @@ export class RhJumpLinks extends LitElement {
                 tabindex="-1"
                 data-direction="start"
                 aria-label="${this.getAttribute('label-scroll-left') ?? 'Scroll back'}"
-                ?disabled="${!this.#overflow.overflowLeft}"
+                ?disabled="${!overflowLeft}"
                 @click="${this.#onClickScroll}">
           <rh-icon set="ui" icon="caret-left" loading="eager"></rh-icon>
         </button>
@@ -95,7 +97,7 @@ export class RhJumpLinks extends LitElement {
                 tabindex="-1"
                 data-direction="end"
                 aria-label="${this.getAttribute('label-scroll-right') ?? 'Scroll forward'}"
-                ?disabled="${!this.#overflow.overflowRight}"
+                ?disabled="${!overflowRight}"
                 @click="${this.#onClickScroll}">
            <rh-icon set="ui" icon="caret-right" loading="eager"></rh-icon>
         </button>
@@ -104,13 +106,21 @@ export class RhJumpLinks extends LitElement {
 
   @observes('orientation')
   async orientationChanged() {
-    if (!isServer && this.orientation === 'horizontal') {
-      if (!this.hasUpdated) {
-        await this.updateComplete;
-      }
-      const container = this.shadowRoot?.getElementById('container')!;
-      const items = Array.from(this.querySelectorAll(':scope > *'));
-      this.#overflow.init(container, items);
+    if (isServer) {
+      return;
+    }
+    if (!this.hasUpdated) {
+      await this.updateComplete;
+    }
+    const container = this.shadowRoot!.getElementById('container')!;
+    const items = Array.from(this.querySelectorAll(':scope > *')) as HTMLElement[];
+    switch (this.orientation) {
+      case 'horizontal':
+        this.#overflow.init(container, items);
+        container.addEventListener('scroll', this.#onScroll);
+        break;
+      case 'vertical':
+        container.removeEventListener('scroll', this.#onScroll);
     }
   }
 

@@ -19,7 +19,9 @@
       display: block;
       position: absolute;
       inset-inline: 0;
-      margin-inline: var(--rh-space-2xl, 32px);
+
+      /* scroll button width */
+      margin-inline: var(--rh-space-3xl);
       content: '';
       border-block-start: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
     }

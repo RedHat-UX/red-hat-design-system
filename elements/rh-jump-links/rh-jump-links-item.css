@@ -18,6 +18,7 @@ a {
 
   &.horizontal {
     padding: var(--rh-space-lg, 16px);
+    white-space: nowrap;
   }
 
   &:hover { color: var(--rh-color-interactive-secondary-hover); }
