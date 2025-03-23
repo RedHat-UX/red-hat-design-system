@@ -16,12 +16,12 @@ rh-disclosure:not(:defined) {
     inset-inline-start: -1px;
     inset-block: -1px;
   }
-}
 
-rh-disclosure:not(:defined) > [slot='summary'] {
-  display: block;
-  font-size: var(--rh-font-size-body-text-md, 1rem);
-  font-weight: var(--rh-font-weight-body-text-medium, 500);
-  font-family: var(--rh-font-family-body-text);
-  padding-block-end: var(--rh-space-2xl, 32px);
+  > [slot='summary'] {
+    display: block;
+    font-size: var(--rh-font-size-body-text-md, 1rem);
+    font-weight: var(--rh-font-weight-body-text-medium, 500);
+    font-family: var(--rh-font-family-body-text);
+    padding-block-end: var(--rh-space-2xl, 32px);
+  }
 }
