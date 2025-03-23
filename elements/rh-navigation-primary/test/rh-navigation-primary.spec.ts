@@ -13,9 +13,9 @@ describe('<rh-navigation-primary>', function() {
       element = await createFixture<RhNavigationPrimary>(html`<rh-navigation-primary></rh-navigation-primary>`);
       const klass = customElements.get('rh-navigation-primary');
       expect(element)
-        .to.be.an.instanceOf(klass)
-        .and
-        .to.be.an.instanceOf(RhNavigationPrimary);
+          .to.be.an.instanceOf(klass)
+          .and
+          .to.be.an.instanceOf(RhNavigationPrimary);
     });
-  })
+  });
 });
