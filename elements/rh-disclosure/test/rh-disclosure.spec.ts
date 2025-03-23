@@ -1,6 +1,7 @@
 import { expect, html, nextFrame } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
 import { sendKeys } from '@web/test-runner-commands';
+import { a11ySnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
 import { RhDisclosure } from '@rhds/elements/rh-disclosure/rh-disclosure.js';
 
 function press(key: string) {
@@ -26,25 +27,54 @@ describe('<rh-disclosure>', function() {
     });
   });
 
-  describe('when the element loads', function() {
+  describe('with attribute summary', function() {
+    let element: RhDisclosure;
+
+    const SUMMARY = 'Summary title';
+    const CONTENT = 'Details content goes here.';
+    beforeEach(async function() {
+      element = await createFixture<RhDisclosure>(html`
+        <rh-disclosure summary="${SUMMARY}">
+          <p>${CONTENT}</p>
+        </rh-disclosure>
+      `);
+    });
+
+    it('should be accessible', async function() {
+      await expect(element).to.be.accessible();
+    });
+
+    it('exposes the summary to AT', async function() {
+      const snapshot = await a11ySnapshot();
+      expect(snapshot).to.axContainQuery({ role: 'DisclosureTriangle', name: SUMMARY });
+    });
+  });
+
+  describe('with slotted summary', function() {
     let element: RhDisclosure;
     let summary;
 
     const updateComplete = () => element.updateComplete;
 
+    const SUMMARY = 'Summary title';
+    const CONTENT = 'Details content goes here.';
     beforeEach(async function() {
       element = await createFixture<RhDisclosure>(html`
         <rh-disclosure>
-          <span slot="summary">Summary title</span>
-          <p>Details content goes here.</p>
+          <span slot="summary">${SUMMARY}</span>
+          <p>${CONTENT}</p>
         </rh-disclosure>
       `);
       summary = element.shadowRoot!.querySelector<HTMLElement>('summary');
-      await element.updateComplete;
     });
 
     it('should be accessible', async function() {
       await expect(element).to.be.accessible();
+    });
+
+    it('exposes the summary to AT', async function() {
+      const snapshot = await a11ySnapshot();
+      expect(snapshot).to.axContainQuery({ role: 'DisclosureTriangle', name: SUMMARY });
     });
 
     it('should be closed by default', function() {
@@ -63,6 +93,10 @@ describe('<rh-disclosure>', function() {
       it('opens the disclosure', function() {
         expect(element.open).to.be.true;
       });
+      it('shows content to AT', async function() {
+        const snapshot = await a11ySnapshot();
+        expect(snapshot).to.axContainName(CONTENT);
+      });
 
       describe('clicking summary again', function() {
         beforeEach(function() {
@@ -73,6 +107,10 @@ describe('<rh-disclosure>', function() {
 
         it('closes the disclosure', function() {
           expect(element.open).to.be.false;
+        });
+        it('hides content from AT', async function() {
+          const snapshot = await a11ySnapshot();
+          expect(snapshot).to.not.axContainName(CONTENT);
         });
       });
     });
