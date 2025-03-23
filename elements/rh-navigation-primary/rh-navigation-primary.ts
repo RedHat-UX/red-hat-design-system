@@ -7,9 +7,6 @@ import { classMap } from 'lit/directives/class-map.js';
 
 import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 import { provide } from '@lit/context';
-import { context,
-  type RhNavigationPrimaryItemContext,
-} from './context.js';
 
 import { DirController } from '../../lib/DirController.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
@@ -23,6 +20,8 @@ import {
   RhNavigationPrimaryItemToggleEvent,
 } from './rh-navigation-primary-item.js';
 import './rh-navigation-primary-overlay.js';
+
+import { context, type RhNavigationPrimaryItemContext } from './context.js';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 import '@rhds/elements/rh-surface/rh-surface.js';

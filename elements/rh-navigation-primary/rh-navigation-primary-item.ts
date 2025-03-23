@@ -1,6 +1,6 @@
 import type { IconNameFor, IconSetName } from '@rhds/icons';
 
-import { LitElement, html, isServer } from 'lit';
+import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { state } from 'lit/decorators/state.js';
 import { query } from 'lit/decorators/query.js';
@@ -88,7 +88,7 @@ export class RhNavigationPrimaryItem extends LitElement {
       <div id="container" class="${classMap(classes)}" part="container">
         ${this.variant === 'dropdown' ? html`
           <details @toggle="${this.#detailsToggle}">
-            <summary>            
+            <summary>
               ${this.standalone ? html`
                 <slot name="icon">
                   ${this.icon ? html`<rh-icon icon="${this.icon}" set="${ifDefined(this.iconSet)}"></rh-icon>` : html``}

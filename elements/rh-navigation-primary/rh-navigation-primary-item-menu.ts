@@ -32,7 +32,6 @@ export class RhNavigationPrimaryItemMenu extends LitElement {
       <div id="container" class="${classMap(classes)}">
         <slot></slot>
       </div>
-      
     `;
   }
 }
