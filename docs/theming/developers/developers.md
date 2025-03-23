@@ -269,7 +269,7 @@ still render correctly (for light color schemes) when loaded in an `<img>` tag. 
 as you supply the light scheme fallback value, we don't need to use `light-dark()` except 
 when there's no appropriate themable variable.
 
-```diff-svg
+```svg-diff rhcodeblock
 - fill="var(--rh-color-text-primary, light-dark(var(--rh-color-text-primary-on-light, #151515), var(--rh-color-text-primary-on-dark, #ffffff))"
 + fill="var(--rh-color-text-primary, #151515)"
 ```
