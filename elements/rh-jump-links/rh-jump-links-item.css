@@ -9,6 +9,12 @@ a {
   text-decoration: none;
   display: inline-block;
 
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+  }
+
   &.vertical {
     padding: var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
     border-inline-start:
@@ -30,12 +36,6 @@ a {
 
   &.active {
     color: var(--rh-color-interactive-secondary-active);
-
-    &:before {
-      content: '';
-      display: block;
-      position: absolute;
-    }
 
     &.vertical:before {
       height: 100%;
