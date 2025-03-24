@@ -1,11 +1,7 @@
 #sort-button {
   background-color: transparent;
   border: 0;
-  color: var(--rh-color-text-primary-on-light, #151515);
-}
-
-#sort-button.dark {
-  color: var(--rh-color-text-primary-on-dark, #ffffff);
+  color: var(--rh-color-text-primary);
 }
 
 #sort-button:after {

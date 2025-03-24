@@ -11,13 +11,14 @@ button {
 
 code {
   padding: var(--rh-space-xs) var(--rh-space-md);
-  background: var(--rh-color-surface-light);
+  background: light-dark(var(--rh-color-surface-light), var(--rh-color-surface-dark));
   font-size: var(--rh-font-size-code-md);
   font-weight: var(--rh-font-weight-code-regular);
   font-family: var(--rh-font-family-code);
   line-height: var(--rh-line-height-code);
 }
 
+:host(.icon-only) code,
 :host(:empty) code {
   display: none;
 }
@@ -28,7 +29,8 @@ code {
 
 :host(:state(--rendered)) button:is(:focus, :active, :hover),
 :host(:state(--rendered)) button:is(:focus, :active, :hover) code {
-  background: var(--rh-color-interactive-primary-hover-on-dark);
+  color: var(--rh-color-text-primary);
+  background: light-dark(var(--rh-color-blue-20), var(--rh-color-blue-70));
   opacity: 1;
 }
 

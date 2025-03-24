@@ -9,11 +9,11 @@ additional emphasis or context.
 ### Anatomy
 
 <figure>
-  <uxdot-example width-adjustment="388px">
-    <img src="../stat-anatomy.png"
-        alt="Anatomy of a statistic with annotations; number 1 is pointing to an optional icon, number 2 is pointing to optional title text, number 3 is pointing to data text, number 4 is pointing to body text, and number 5 is pointing to an optional call to action"
-        width="388"
-        height="271">
+  <uxdot-example color-palette="lightest" width-adjustment="388px">
+    <img alt="Anatomy of a statistic with annotations; number 1 is pointing to an optional icon, number 2 is pointing to optional title text, number 3 is pointing to data text, number 4 is pointing to body text, and number 5 is pointing to an optional call to action"
+         src="../stat-anatomy.png"
+         width="388"
+         height="271">
   </uxdot-example>
   <figcaption>
     <ol>
@@ -31,63 +31,49 @@ additional emphasis or context.
 There are two available sizes and the only difference is the size of some 
 elements.
 
-<uxdot-example width-adjustment="772px">
-  <img src="../stat-sizes.png"
-        alt="Default size and Large size statistics both with icons and body text; text under the default size says ‘Default size’ and text under the large size says ‘Large size’"
-        width="772"
-        height="228">
+<uxdot-example color-palette="lightest" width-adjustment="772px">
+  <img alt="Default size and Large size statistics both with icons and body text; text under the default size says ‘Default size’ and text under the large size says ‘Large size’"
+       src="../stat-sizes.png"
+       width="772"
+       height="228">
 </uxdot-example>
 
 <rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Size">Size</th>
-        <th scope="col" data-label="Element">Element</th>
-        <th scope="col" data-label="Current value">Current value</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Size">Default</td>
-        <td data-label="Icon size">40px</td>
-        <td data-label="Data text size">36px<br>2.25rem</td>
-      </tr>
-      <tr>
-        <td data-label="Large">Large</td>
-        <td data-label="Icon size">64px</td>
-        <td data-label="Data text size">48px<br>3.0rem</td>
-      </tr>
-    </tbody>
-  </table>
+
+| Size    | Element | Current value   |
+|---------|---------|-----------------|
+| Default | 40px    | 36px<br>2.25rem |
+| Large   | 64px    | 48px<br>3.0rem  |
+
 </rh-table>
 
 
-## Theme
+## Color scheme
+<a id="theme"></a>
 
-A statistic is available in both light and dark themes. The icon, title text, 
-and data text for light theme are red whereas elements and text for dark theme 
+A statistic is available in both light and dark color schemes. The icon, title text, 
+and data text for light scheme are red whereas elements and text for dark scheme 
 (not including the call to action) are white to meet accessibility contrast 
 requirements.
 
 
-### Light theme
+### Light scheme
 
-<uxdot-example width-adjustment="346px">
-  <img src="../stat-theme-light.png"
-        alt="Light theme statistic with a red icon, red data text, and black body text"
-        width="346"
-        height="154">
+<uxdot-example color-palette="lightest" width-adjustment="346px">
+  <img alt="Light scheme statistic with a red icon, red data text, and black body text"
+       src="../stat-theme-light.png"
+       width="346"
+       height="154">
 </uxdot-example>
 
 
-### Dark theme
+### Dark scheme
 
 <uxdot-example color-palette="darkest" width-adjustment="346px">
-  <img src="../stat-theme-dark.png"
-        alt="Dark theme statistic with a white icon and white text styles to meet accessibility contrast requirements"
-        width="346"
-        height="154">
+  <img alt="Dark scheme statistic with a white icon and white text styles to meet accessibility contrast requirements"
+       src="../stat-theme-dark.png"
+       width="346"
+       height="154">
 </uxdot-example>
 
 
@@ -100,11 +86,11 @@ vertically aligned. In some situations, it is acceptable to align elements to
 the left, for example if grouped statistics are used in several rows or if 
 surrounding content is all left aligned.
 
-<uxdot-example width-adjustment="346px">
-  <img src="../stat-configuration.png"
-        alt="Statistic with a dotted vertical line through it"
-        width="346"
-        height="154">
+<uxdot-example color-palette="lightest" width-adjustment="346px">
+  <img alt="Statistic with a dotted vertical line through it"
+       src="../stat-configuration.png"
+       width="346"
+       height="154">
 </uxdot-example>
 
 
@@ -113,11 +99,11 @@ A statistic was designed to be read from top to bottom. If certain optional
 elements are included, the order will change.
 
 <figure>
-  <uxdot-example width-adjustment="346px">
-    <img src="../stat-configuration-order.png"
-        alt="Statistic with boxes around each element slot, there are also numbers next to each box arranged 1 to 4 from top to bottom"
-        width="416"
-        height="271">
+  <uxdot-example color-palette="lightest" width-adjustment="346px">
+    <img alt="Statistic with boxes around each element slot, there are also numbers next to each box arranged 1 to 4 from top to bottom"
+         src="../stat-configuration-order.png"
+         width="416"
+         height="271">
   </uxdot-example>
   <figcaption>
   <ol>
@@ -136,11 +122,11 @@ Space values are the same for both Default and Large sizes and on all
 breakpoints. To see space values when statistics are used in a layout,
 go to the [Guidelines](/elements/statistic/guidelines/) page.
 
-<uxdot-example width-adjustment="800px">
-  <img src="../stat-space.png"
-        alt="Default and Large size spacing between all elements"
-        width="800"
-        height="271">
+<uxdot-example color-palette="lightest" width-adjustment="800px">
+  <img alt="Default and Large size spacing between all elements"
+       src="../stat-space.png"
+       width="800"
+       height="271">
 </uxdot-example>
 
 <uxdot-spacer-tokens-table tokens="md, xl"></uxdot-spacer-tokens-table>

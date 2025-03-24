@@ -1,5 +1,41 @@
 # @rhds/elements
 
+## 2.1.2
+
+### Patch Changes
+
+- 8dd9a5f: `<rh-tooltip>`: make tooltip content available to assistive technology
+- 5554e77: `<rh-tile>`: fixed layout of compact link tiles with icons
+- a37b594: `<rh-cta>`: workaround for Safari which sometimes double-renders icons
+- 64dab19: `<rh-code-block>`: enables copy and word wrap action for prerendered content
+- 33535ef: `<rh-accordion>`: restore missing hover colors
+- e1e325a: `<rh-tile>`:
+  `<rh-stat>`:
+  `<rh-card>`:
+  `<rh-icon>`: no longer force headings to be in all caps
+- af13796: `<rh-accordion>`: corrected accordion header text font weight
+- b60ab7b: `<rh-footer>`: show content after 5 seconds if javascript fails
+- 518a2dc: `<rh-cta>`: improved accessibility by correcting active and focus styles
+- 8d51411: Use non-localized font stacks (see [`@rhds/tokens` v2.1.1 release notes](https://github.com/RedHat-UX/red-hat-design-tokens/releases/tag/v2.1.1))
+- a37b594: `<rh-icon>`: workaround for Safari which sometimes double-renders icons
+- 8d51411: Bump version of `@rhds/tokens`
+- eb9cb2f: `<rh-button>`: improved accessibility by allowing focus when disabled'
+- 7ab9dc5: `<rh-avatar>`: corrected small viewport margin for `plain` variant avatars
+
+## 2.1.1
+
+### Patch Changes
+
+- f63c46d: **Color Context**: prevent errors in certain SSR scenarios
+- 249a596: `<rh-alert>`: corrected typography and layouts
+- 613e827: `<rh-code-block>`: ensure that syntax colours and styles are applied when the element upgrades
+- 0d70e3f: `<rh-tabs>`: corrects active tab styles in SSR scenarios
+- 7bf5841: `<rh-navigation-secondary>`: corrected style regression in dark color palettes
+- 955d393: `<rh-surface>`: corrected themed text color
+- 3ef5687: `<rh-alert>`: change heading color for all states of alert to make them all the same
+- 557ede4: `<rh-table>`: better SSR support
+- f63c46d: `<rh-cta>`: fix some errors when hydrating in SSR scenarios
+
 ## 2.1.0
 
 ### Minor Changes
@@ -25,9 +61,9 @@
 
   ```html
   <rh-subnav accessible-label="Customer service">
-   <a href="#" active>Help</a>
-   <a href="#">Contact Us</a>
-   <a href="#">FAQ</a>
+    <a href="#" active>Help</a>
+    <a href="#">Contact Us</a>
+    <a href="#">FAQ</a>
   </rh-subnav>
   ```
 

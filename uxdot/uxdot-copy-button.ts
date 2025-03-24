@@ -11,10 +11,11 @@ import '@rhds/elements/rh-tooltip/rh-tooltip.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
 
 import styles from './uxdot-copy-button.css';
+import visuallyHidden from './visually-hidden.css';
 
 @customElement('uxdot-copy-button')
 export class UxdotCopyButton extends LitElement {
-  static styles = [styles];
+  static styles = [styles, visuallyHidden];
 
   @property() copy?: string;
 
@@ -28,7 +29,9 @@ export class UxdotCopyButton extends LitElement {
         <span id="caption" slot="content">${this.copy ?? 'Click to copy'}</span>
         <button @click="${this.#onClick}">
           <code><slot></slot></code>
-          <rh-icon set="ui" icon="${this.icon}"></rh-icon>
+          <slot name="extra-content"></slot>
+          <span class="visually-hidden">Click to copy</span>
+          <rh-icon aria-hidden="true" set="ui" .icon="${this.icon}"></rh-icon>
         </button>
       </rh-tooltip>
     `;

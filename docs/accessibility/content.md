@@ -3,15 +3,17 @@ title: Content
 tags:
   - accessibility
 order: 40
-importElements:
-  - rh-code-block
-  - rh-blockquote
-  - rh-table
 ---
 
 <link data-helmet
       rel="stylesheet"
       href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
+
+<script type="module" data-helmet>
+  import '@rhds/elements/rh-code-block/rh-code-block.js';
+  import '@rhds/elements/rh-blockquote/rh-blockquote.js';
+  import '@rhds/elements/rh-table/rh-table.js';
+</script>
 
 <style data-helmet>
   rh-blockquote {
@@ -110,14 +112,16 @@ Depending on whether a web page is about the plot of the 1946 movie It’s a Won
 
 Images acting as buttons or links are functional, and thus serve different purposes than images supporting the surrounding text.
 
-<figure>
-  <a href="https://www.redhat.com/">
-    <img src="/assets/logo-redhat.png"
-      alt="Red Hat homepage"
-      width="613"
-      height="145">
-  </a>
-</figure>
+<uxdot-example color-palette="lightest">
+  <figure>
+    <a href="https://www.redhat.com/">
+      <img src="/assets/logo-redhat.png"
+        alt="Red Hat homepage"
+        width="613"
+        height="145">
+    </a>
+  </figure>
+</uxdot-example>
 
 If the above image supplements the text of an article about Red Hat or our products, the appropriate alt text could be something like `"Red Hat, Inc. logo."` But if that image is a link pointing to the corporate homepage, you might want something along the lines of `"Red Hat homepage"` for your alt text:
 

@@ -54,11 +54,13 @@
 
   /* WARNING: properties containing `__`are deprecated and will be removed */
   color:
-    var(--rh-tooltip-content-color,
-      var(--rh-tooltip__content--Color, var(--rh-color-text-primary-on-dark, #ffffff)));
+    light-dark(var(--rh-tooltip-content-color,
+      var(--rh-tooltip__content--Color, var(--rh-color-text-primary-on-dark, #ffffff))),
+      var(--rh-tooltip-content-color, var(--rh-color-text-primary-on-light, #151515)));
   background-color:
-    var(--rh-tooltip-content-background-color,
-      var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-darkest, #151515)));
+    light-dark(var(--rh-tooltip-content-background-color,
+      var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-darkest, #151515))),
+      var(--rh-tooltip-content-background-color, var(--rh-color-surface-lightest, #ffffff)));
 }
 
 .initialized #tooltip {
@@ -73,12 +75,10 @@
   height: var(--_floating-arrow-size);
   will-change: left top right bottom;
   background-color:
-    var(--rh-tooltip-content-background-color,
-      var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-darkest, #151515)));
-}
-
-.c {
-  display: contents;
+    light-dark(var(--rh-tooltip-content-background-color,
+      var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-darkest, #151515))),
+      var(--rh-tooltip-content-background-color,
+      var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-lightest, #ffffff))));
 }
 
 .open #tooltip {
@@ -112,9 +112,4 @@
 :host([position='left']),
 :host([position='right']) {
   --_text-alignment: 'start';
-}
-
-.dark {
-  --rh-tooltip-content-background-color: var(--rh-color-surface-lightest, #ffffff);
-  --rh-tooltip-content-color: var(--rh-color-text-primary-on-light, #151515);
 }

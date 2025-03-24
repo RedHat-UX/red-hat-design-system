@@ -27,9 +27,10 @@ There are two styles of logo wall: bordered and borderless. Both styles can be e
 1. Logo
 2. Border
 
-## Theme
+## Color scheme
+<a id="theme"></a>
 
-Logo walls can be used in light and dark themes.
+Logo walls can be used in light and dark color schemes.
 
 <rh-alert state="warning">
   When using a borderless logo wall, ensure that the color contrast between each logo and the background meets accessibility standards.
@@ -61,11 +62,11 @@ Logo walls define layout rules for spacing logos, and their styles.
  - Logos are evenly spaced.
  - Logos are in a container with 16px of padding on all sides and a corner radius of 3px.
 
-<uxdot-example width-adjustment="560px">
+<uxdot-example width-adjustment="1010px">
   <img src="../style-space-group-bordered.png"
       alt="Example of a bordered logo wall with spacing values."
-      width="560"
-      height="55">
+      width="1120"
+      height="110">
 </uxdot-example>
 
 ### Borderless
@@ -73,11 +74,11 @@ Logo walls define layout rules for spacing logos, and their styles.
  - Logos are in a container with 16px of top and bottom padding and 8px of left and right padding.
  - All containers using the borderless style have the same height but will likely have different widths depending on the dimensions of the logo.
 
-<uxdot-example width-adjustment="556px">
+<uxdot-example width-adjustment="1113px">
   <img src="../style-space-group-borderless.png"
       alt="Example of a borderless logo wall with spacing values."
-      width="556"
-      height="55">
+      width="1113"
+      height="110">
 </uxdot-example>
 
 ## Interaction states

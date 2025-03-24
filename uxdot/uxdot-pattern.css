@@ -1,10 +1,14 @@
-@import url('/styles/rh-code-block-lightdom.css');
+@import url('/assets/packages/@rhds/elements/elements/rh-code-block/rh-code-block-lightdom.css');
 
 :host {
   container: host / inline-size;
   display: block;
   margin-block-start: var(--rh-space-2xl);
   max-width: 56rem; /* warning: magic number */
+}
+
+[hidden] {
+  display: none !important;
 }
 
 #container {
@@ -77,11 +81,11 @@ h3,
   gap: var(--rh-space-lg, 16px);
 }
 
-rh-tabs {
+#code-tabs {
   border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
   border-radius: var(--rh-border-radius-default);
-  overflow: hidden;
   grid-area: code;
+  background-color: var(--rh-color-surface);
 
   & rh-tab-panel {
     padding: 0;

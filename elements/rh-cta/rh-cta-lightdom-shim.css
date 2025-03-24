@@ -2,7 +2,7 @@ rh-cta:not(:defined) {
   width: fit-content !important;
   display: inline-flex !important;
   color: var(--rh-cta-color);
-  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   font-weight: 600; /* WARNING: not a token value */
   line-height: var(--rh-line-height-body-text, 1.5);
@@ -70,6 +70,7 @@ rh-cta:not(:defined):hover {
 
 rh-cta:not(:defined):active {
   background-color: var(--rh-cta-active-background-color);
+  color: var(--rh-cta-active-color);
 }
 
 rh-cta[variant='primary']:not(:defined) {
@@ -132,7 +133,7 @@ rh-cta[variant='secondary'][color-palette^='dark']:not(:defined) {
 
 rh-cta[variant='brick']:not(:defined) {
   border-style: solid;
-  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
   font-weight: var(--rh-font-weight-body-text-regular, 400);
 
   --rh-cta-background-color: transparent;

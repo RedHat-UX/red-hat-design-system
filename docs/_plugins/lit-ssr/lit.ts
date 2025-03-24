@@ -1,18 +1,97 @@
-/**
- * @license based on code from eleventy-plugin-lit
- * Copyright 2021 Google LLC
- * SPDX-License-Identifier: BSD-3-Clause
- */
-
+import type { EleventyPage } from '@11ty/eleventy/src/UserConfig.js';
 import type { UserConfig } from '@11ty/eleventy';
-import { dirname, resolve } from 'node:path';
-import { fileURLToPath, pathToFileURL } from 'node:url';
-import { Worker } from 'node:worker_threads';
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
+import { readFile, writeFile } from 'node:fs/promises';
+
+import { Piscina } from 'piscina';
+import tsBlankSpace from 'ts-blank-space';
+import chalk from 'chalk';
+
+import { register } from 'node:module';
+import { parse, serialize } from 'parse5';
+import { hasAttribute, query, queryAll, removeNode, type Node, type Template } from '@parse5/tools';
+
+export interface RenderRequestMessage {
+  content: string;
+  page: Pick<EleventyPage, 'inputPath' | 'outputPath'>;
+}
+
+export interface RenderResponseMessage {
+  page: Pick<EleventyPage, 'inputPath' | 'outputPath'>;
+  rendered?: string;
+  durationMs: number;
+}
 
 interface Options {
   componentModules?: string[];
+  /** path from project root to tsconfig */
+  tsconfig?: string;
+}
+
+async function redactTSFileInPlace(path: string) {
+  const inURL = new URL(path, import.meta.url);
+  const outURL = new URL(path.replace('.ts', '.js'), import.meta.url);
+  await writeFile(outURL, tsBlankSpace(await readFile(inURL, 'utf8')), 'utf8');
+}
+
+register('./lit-css-node.ts', import.meta.url);
+
+/**
+ * Eleventy plugin to server-render lit elements directly from typescript source
+ * @param eleventyConfig
+ * @param opts
+ */
+export default async function(eleventyConfig: UserConfig, opts?: Options) {
+  const imports = opts?.componentModules ?? [];
+  const tsconfig = opts?.tsconfig ?? './tsconfig.json';
+
+  let pool: Piscina;
+
+  // If there are no component modules, we could never have anything to
+  // render.
+  if (imports?.length) {
+    eleventyConfig.on('eleventy.before', async function() {
+      await redactTSFileInPlace('./worker.ts');
+      const filename = new URL('worker.js', import.meta.url).pathname;
+      pool = new Piscina({
+        filename,
+        workerData: {
+          imports,
+          tsconfig,
+        },
+      });
+    });
+
+    eleventyConfig.on('eleventy.after', async function() {
+      return pool.close();
+    });
+
+    eleventyConfig.addTransform('render-lit', async function(this, content) {
+      const { outputPath, inputPath } = this.page;
+
+      if (!outputPath.endsWith('.html')) {
+        return content;
+      }
+
+      const page = { outputPath, inputPath };
+      const message = await pool.run({ page, content });
+      if (message.rendered) {
+        const { durationMs, rendered, page } = message;
+        if (durationMs > 1000) {
+          const color =
+            durationMs > 5000 ? chalk.red
+          : durationMs > 1000 ? chalk.yellow
+          : durationMs > 100 ? chalk.blue
+          : chalk.green;
+          // eslint-disable-next-line no-console
+          console.log(`${color(durationMs.toFixed(2).padEnd(8))} Rendered ${page.outputPath} in`);
+        }
+        return trimOuterMarkers(rendered);
+      } else {
+        return content;
+      }
+    });
+  }
 }
 
 // Lit SSR includes comment markers to track the outer template from
@@ -23,91 +102,3 @@ function trimOuterMarkers(renderedContent: string) {
       .replace(/^((<!--[^<>]*-->)|(<\?>)|\s)+/, '')
       .replace(/((<!--[^<>]*-->)|(<\?>)|\s)+$/, '');
 }
-
-export default function(eleventyConfig: UserConfig, opts?: Options) {
-  const { componentModules } = opts ?? {};
-  if (componentModules === undefined || componentModules.length === 0) {
-    // If there are no component modules, we could never have anything to
-    // render.
-    return;
-  }
-
-  const resolvedComponentModules = componentModules.map(module =>
-    pathToFileURL(resolve(process.cwd(), module)).href);
-
-  let worker: Worker;
-
-  const requestIdResolveMap = new Map();
-  let requestId = 0;
-
-  eleventyConfig.on('eleventy.before', async function() {
-    worker = new Worker(resolve(__dirname, './worker/worker.js'));
-
-    worker.on('error', err => {
-      // eslint-disable-next-line no-console
-      console.error('Unexpected error while rendering lit component in worker thread', err);
-      throw err;
-    });
-
-    let requestResolve: (v?: unknown) => void;
-    const requestPromise = new Promise(_resolve => {
-      requestResolve = _resolve;
-    });
-
-    worker.on('message', message => {
-      switch (message.type) {
-        case 'initialize-response': {
-          requestResolve();
-          break;
-        }
-
-        case 'render-response': {
-          const { id, rendered } = message;
-          const _resolve = requestIdResolveMap.get(id);
-          if (_resolve === undefined) {
-            throw new Error(
-              '@lit-labs/eleventy-plugin-lit received invalid render-response message'
-            );
-          }
-          _resolve(rendered);
-          requestIdResolveMap.delete(id);
-          break;
-        }
-      }
-    });
-
-    const message = {
-      type: 'initialize-request',
-      imports: resolvedComponentModules,
-    };
-
-    worker.postMessage(message);
-    await requestPromise;
-  });
-
-  eleventyConfig.on('eleventy.after', async () => {
-    await worker.terminate();
-  });
-
-  eleventyConfig.addTransform('render-lit', async function(this, content) {
-    const { outputPath, inputPath, fileSlug } = this.page;
-    if (!outputPath.endsWith('.html')) {
-      return content;
-    }
-
-    const renderedContent: string = await new Promise(_resolve => {
-      requestIdResolveMap.set(requestId, _resolve);
-      const message = {
-        type: 'render-request',
-        id: requestId++,
-        content,
-        page: JSON.parse(JSON.stringify({ outputPath, inputPath, fileSlug })),
-      };
-      worker.postMessage(message);
-    });
-
-    const outerMarkersTrimmed = trimOuterMarkers(renderedContent);
-    return outerMarkersTrimmed;
-  });
-};
-

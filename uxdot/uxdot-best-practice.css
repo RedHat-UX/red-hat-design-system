@@ -17,7 +17,7 @@ span {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: var(--rh-space-sm);
+  gap: var(--rh-space-md);
 }
 
 #do span {
@@ -26,6 +26,10 @@ span {
 
 #dont span {
   color: var(--rh-color-status-danger);
+}
+
+#caution span {
+  color: var(--rh-color-yellow-60);
 }
 
 ::slotted(uxdot-example) {

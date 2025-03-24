@@ -1,15 +1,11 @@
 import type { CssCustomProperty } from 'custom-elements-manifest';
-import { tokens as tokensMeta } from '@rhds/tokens/meta.js';
+import { tokens as tokensMeta, type DesignToken, type TokenName } from '@rhds/tokens/meta.js';
 import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);
 const tokensJSON = require('@rhds/tokens/json/rhds.tokens.json');
 
 export const capitalize = (x: string): string => `${x.at(0)?.toUpperCase() ?? ''}${x.slice(1)}`;
-
-type MapValue<T> = T extends Map<infer _, infer V> ? V : never;
-
-export type DesignToken = MapValue<typeof tokensMeta>;
 
 /* eslint-disable jsdoc/require-param */
 
@@ -32,9 +28,17 @@ export function getParentCollection(options: {
   return { parent, key };
 }
 
+function isDesignToken(token: DesignToken | CssCustomProperty): token is DesignToken {
+  return '$value' in token;
+}
+
 /** generate `var(--rh-xxx, xxx)` string, given a token or css property */
 export function getVariableSyntax(token: DesignToken | CssCustomProperty) {
-  return `var(--${token.name}, ${escapeDoubleQuotes(token.$value ?? token.default)})`;
+  if (token.name) {
+    const name = formatTokenVariableName(token.name);
+    const value = isDesignToken(token) ? token.$value : token.default;
+    return `var(${name}, ${escapeDoubleQuotes(value)})`;
+  }
 }
 
 /** generate string of copy cell for 11ty templates */
@@ -42,15 +46,30 @@ export function copyCell(token: DesignToken) {
   return /* html */`
     <td data-label="Copy">
       <div>
-        <uxdot-copy-button copy="${getVariableSyntax(token)}"></uxdot-copy-button>
-        <uxdot-copy-button copy="${getTokenHref(token)}" icon="link"></uxdot-copy-button>
+        <uxdot-copy-button class="icon-only" copy="${getVariableSyntax(token)}">
+          <span slot="extra-content" class="visually-hidden">
+            Full CSS Variable
+          </span>
+        </uxdot-copy-button>
+        <uxdot-copy-button class="icon-only" copy="${getTokenHref(token)}" icon="link">
+          <span slot="extra-content" class="visually-hidden">
+            Permalink to this token
+          </span>
+        </uxdot-copy-button>
       </div>
     </td>
   `.trim();
 }
 
+function formatTokenVariableName(token: string) {
+  return `--${token}`.replace('----', '--') as TokenName;
+}
+
 function getTokenCategorySlug(token: DesignToken) {
-  const name = `--${token.name}`.replace('----', '--') as `--rh-${string}`;
+  if (!token.name) {
+    throw new Error(`Unknown token`);
+  }
+  const name = formatTokenVariableName(token.name);
   const data = tokensMeta.get(name);
   if (!data) {
     throw new Error(`Could not find token ${name}`);

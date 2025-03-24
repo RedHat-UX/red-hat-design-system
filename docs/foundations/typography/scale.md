@@ -21,9 +21,9 @@ subnav:
   rh-table table {
     & td, & th { width: 20%; }
     & td {
-      &:has(s) { color: var(--rh-color-text-brand); }
-      & span { color: var(--rh-color-green-60); }
-      & s { color: var(--rh-color-gray-40); }
+      &:has(s) { color: var(--rh-color-status-danger); }
+      & span { color: var(--rh-color-status-success); }
+      & s { color: var(--rh-color-icon-subtle); }
       & :is(s, span) { display: block; }
     }
   }
@@ -97,7 +97,7 @@ Code text may use italic and medium styles for emphasis if absolutely necessary.
 
 | Style     | Font family  | Font weight   | Font size   | Line height |
 |-----------|--------------|---------------|-------------|-------------|
-| Title, lg | Red Hat Text | Regular (400) | 24 (1.5rem) | 36 (1.5)    |
+| Title, lg | Red Hat Text | Regular (400) | 20 (1.25rem) | 30 (1.5)    |
 | Title, sm | Red Hat Text | Regular (400) | 16 (1.0rem) | 24 (1.5)    |
 
 </rh-table>

@@ -15,15 +15,10 @@
   --_button-font-color: var(--rh-color-text-primary);
   --_nav-max-height: var(--_max-height, max-content);
   --_nav-min-height: var(--_min-height, 80px);
-  --_current-active-child-border-color: var(--rh-color-brand-red-on-light, #ee0000);
-  --_border-color: transparent;
+  --_current-active-child-border-color: var(--rh-color-brand-red);
+  --_border-color: light-dark(transparent, var(--rh-color-border-subtle));
 
   z-index: var(--rh-navigation-secondary-z-index, 102);
-}
-
-:host([color-palette='dark']) {
-  --_current-active-child-border-color: var(--rh-color-brand-red-on-dark, #ee0000);
-  --_border-color: var(--rh-color-border-subtle-on-dark, #707070);
 }
 
 nav {
@@ -44,7 +39,9 @@ nav.rtl {
   position: absolute;
   width: 100%;
   z-index: var(--rh-navigation-secondary-z-index, 102);
-  background-color: var(--rh-color-surface);
+  background-color:
+    light-dark(var(--rh-color-surface-lighter, #f2f2f2),
+      var(--rh-color-surface-dark, #383838));
   gap: 0 var(--rh-space-lg, 16px);
   grid-template-rows:
     minmax(var(--_nav-min-height), var(--_nav-max-height))
@@ -101,13 +98,13 @@ button {
   display: flex;
   height: 100%;
   align-items: center;
-  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-body-text-md, 1rem);
   padding: var(--rh-space-lg, 16px);
   border-block-start: var(--rh-border-width-lg, 3px) solid transparent;
   margin-inline-end: var(--rh-space-lg, 16px);
   color: var(--_button-font-color);
-  background-color: var(--rh-color-surface-lighter, #f2f2f2);
+  background-color: var(--rh-color-surface);
   gap: var(--rh-space-md, 8px);
 }
 

@@ -1,4 +1,4 @@
-import { LitElement, html, isServer, noChange } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -8,12 +8,11 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import { DirController } from '../../lib/DirController.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-
 import type { IconNameFor, IconSetName } from '@rhds/icons';
 
+import { themable } from '@rhds/elements/lib/themable.js';
+
 import style from './rh-cta.css';
-import { state } from 'lit/decorators/state.js';
 
 function isSupportedContent(el: Element | null): el is HTMLAnchorElement | HTMLButtonElement {
   return el instanceof HTMLAnchorElement || el instanceof HTMLButtonElement;
@@ -72,6 +71,7 @@ function isSupportedContent(el: Element | null): el is HTMLAnchorElement | HTMLB
  *              Sets the cta text decoration on active
  */
 @customElement('rh-cta')
+@themable
 export class RhCta extends LitElement {
   static readonly styles = [style];
 
@@ -106,20 +106,12 @@ export class RhCta extends LitElement {
   /** when `href` is set, the link's `target` attribute */
   @property() target?: string;
 
-  /**
-   * Icon name
-   */
+  /** Icon name */
   @property({ reflect: true }) icon?: IconNameFor<IconSetName>;
 
-  /**
-   * Icon set
-   */
+  /** Icon set */
   @property({ attribute: 'icon-set' }) iconSet: IconSetName = 'ui';
 
-  /**
-   * Sets color theme based on parent context
-   */
-  @colorContextConsumer() @state() private on?: ColorTheme;
 
   protected override async getUpdateComplete(): Promise<boolean> {
     if (this.icon || !this.variant) {
@@ -137,22 +129,17 @@ export class RhCta extends LitElement {
     const {
       download, href, referrerpolicy, rel, target,
       icon, iconSet,
-      on = 'light', variant,
+      variant,
     } = this;
     const rtl = this.#dir.dir === 'rtl';
     const isDefault = !variant;
     const svg = isDefault;
-    const iconOrSvg = isDefault || !!icon;
     const follower =
-      (variant !== 'brick' && icon) ?
-        html`<rh-icon .icon=${icon} .set=${iconSet ?? 'ui'}></rh-icon>`
-        : (variant === undefined) ?
-          html`<rh-icon set="ui" icon="arrow-right"></rh-icon>`
-          : html``;
+        (variant !== 'brick' && icon) ? html`<rh-icon icon=${icon} set=${iconSet ?? 'ui'}></rh-icon>`
+      : (variant === undefined) ? html`<rh-icon icon="arrow-right" set="ui"></rh-icon>`
+      : '';
     const iconContent =
-          (variant === 'brick' && icon) ?
-            html`<rh-icon .icon=${icon} set="${iconSet ?? 'ui'}"></rh-icon>`
-            : html``;
+      !(variant === 'brick' && icon) ? '' : html`<rh-icon .icon=${icon} set="${iconSet ?? 'ui'}"></rh-icon>`;
     const linkContent =
         !href ? html`<slot></slot>${follower}`
       : html`<a href=${href}
@@ -163,15 +150,21 @@ export class RhCta extends LitElement {
     return html`
       <span id="container"
             part="container"
-            class=${classMap({ rtl, icon: !!icon, svg, on: true, [on]: true })}
+            class=${classMap({ rtl, icon: !!icon, svg })}
             @slotchange=${this.firstUpdated}>${iconContent}${linkContent}</span>`;
   }
 
   override firstUpdated() {
-    const { href, variant } = this;
+    // workaround for lit-ssr bugs
     if (!isServer) {
       this.removeAttribute('defer-hydration');
+      const [, ...duplicateContainers] = this.shadowRoot?.querySelectorAll('#container') ?? [];
+      for (const dupe of duplicateContainers) {
+        dupe.remove();
+      }
     }
+    // TODO: remove in next major version, recommend static HTML audits instead
+    const { href, variant } = this;
     const cta =
          this.shadowRoot?.querySelector('a')
       ?? this.shadowRoot?.querySelector('slot')?.assignedElements().find(isSupportedContent)

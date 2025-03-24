@@ -1,15 +1,16 @@
-import { html, LitElement } from 'lit';
+import { html, LitElement, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { styleMap } from 'lit/directives/style-map.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
 import {
   FloatingDOMController,
   type Placement,
 } from '@patternfly/pfe-core/controllers/floating-dom-controller.js';
+
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-tooltip.css';
 
@@ -38,10 +39,46 @@ const EXIT_EVENTS = ['focusout', 'blur', 'mouseleave'];
  * @cssprop {<absolute-size> | <relative-size> | <length> | <percentage>} [--rh-tooltip-content-font-size=0.875rem]
  */
 @customElement('rh-tooltip')
+@themable
 export class RhTooltip extends LitElement {
   static readonly version = '{{version}}';
 
   static readonly styles = [styles];
+
+  private static instances = new Set<RhTooltip>();
+
+  static {
+    if (!isServer) {
+      globalThis.addEventListener('keydown', (event: KeyboardEvent) => {
+        const { instances } = RhTooltip;
+        for (const instance of instances) {
+          instance.#onKeydown(event);
+        }
+      });
+      RhTooltip.initAnnouncer();
+    }
+  }
+
+  private static announcer: HTMLElement;
+
+  private static announce(message: string) {
+    this.announcer.innerText = message;
+  }
+
+  private static initAnnouncer() {
+    document.body.append((this.announcer = Object.assign(document.createElement('div'), {
+      role: 'status',
+      // apply `.visually-hidden` styles
+      style: /* css */`
+        position: fixed;
+        inset-block-start: 0;
+        inset-inline-start: 0;
+        overflow: hidden;
+        clip: rect(0,0,0,0);
+        white-space: nowrap;
+        border: 0;`,
+    })));
+  }
 
   /** The position of the tooltip, relative to the invoking content */
   @property() position: Placement = 'top';
@@ -49,37 +86,45 @@ export class RhTooltip extends LitElement {
   /** Tooltip content. Overridden by the content slot */
   @property() content?: string;
 
-  @colorContextConsumer() private on?: ColorTheme;
-
   #float = new FloatingDOMController(this, {
     content: (): HTMLElement | undefined | null => this.shadowRoot?.querySelector('#tooltip'),
   });
 
   #initialized = false;
 
+  get #content() {
+    if (!this.#float.open || isServer) {
+      return '';
+    } else {
+      return this.content || (this.shadowRoot
+          ?.getElementById('content') as HTMLSlotElement)
+          ?.assignedNodes().map(x => x.textContent ?? '')
+          ?.join(' ');
+    }
+  }
+
   override connectedCallback(): void {
     super.connectedCallback();
     ENTER_EVENTS.forEach(evt => this.addEventListener(evt, this.show));
     EXIT_EVENTS.forEach(evt => this.addEventListener(evt, this.hide));
+    RhTooltip.instances.add(this);
   }
 
   override render() {
-    const { on = '' } = this;
     const { alignment, anchor, open, styles } = this.#float;
 
     return html`
       <div id="container"
            style="${styleMap(styles)}"
            class="${classMap({ open,
-                              'initialized': !!this.#initialized,
-                               [on]: !!on,
+                               initialized: !!this.#initialized,
                                [anchor]: !!anchor,
                                [alignment]: !!alignment })}">
-        <div class="c" role="tooltip" aria-labelledby="tooltip">
-          <slot id="invoker"></slot>
+        <div id="invoker">
+          <slot id="invoker-slot"></slot>
         </div>
-        <div class="c" aria-hidden="${String(!open) as 'true' | 'false'}">
-          <slot id="tooltip" name="content">${this.content}</slot>
+        <div id="tooltip" role="status">
+          <slot id="content" name="content">${this.content}</slot>
         </div>
       </div>
     `;
@@ -94,12 +139,20 @@ export class RhTooltip extends LitElement {
       : { mainAxis: 15, alignmentAxis: -4 };
     await this.#float.show({ offset, placement });
     this.#initialized ||= true;
+    RhTooltip.announce(this.#content);
   }
 
   /** Hide the tooltip */
   async hide() {
     await this.#float.hide();
+    RhTooltip.announcer.innerText = '';
   }
+
+  #onKeydown = (event: KeyboardEvent): void => {
+    if (event.key === 'Escape') {
+      this.hide();
+    }
+  };
 }
 
 declare global {

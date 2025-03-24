@@ -24,11 +24,11 @@ hierarchies with levels. Therefore, a subnavigation cannot include menus, only
 links. If your content requires a structure with more levels, use another 
 navigation.
 
-<uxdot-example width-adjustment="872px">
-  <img src="../subnav-vs-other-navs.png"
-        alt="Image of the primary navigation, secondary navigation, and subnavigation being compared"
-        width="872"
-        height="441">
+<uxdot-example color-palette="lightest" width-adjustment="872px">
+  <img alt="Image of the primary navigation, secondary navigation, and subnavigation being compared"
+       src="../subnav-vs-other-navs.png"
+       width="872"
+       height="441">
 </uxdot-example>
 
 
@@ -37,11 +37,11 @@ navigation.
 To reduce cognitive load and a cluttered user interface, avoid using more than 
 four or five links.
 
-<uxdot-example width-adjustment="872px">
-  <img src="../subnav-number-of-links.png"
-        alt="Image of a subnavigation with five short link text labels"
-        width="872"
-        height="89">
+<uxdot-example color-palette="lightest" width-adjustment="872px">
+  <img alt="Image of a subnavigation with five short link text labels"
+       src="../subnav-number-of-links.png"
+       width="872"
+       height="89">
 </uxdot-example>
 
 
@@ -50,11 +50,11 @@ four or five links.
 An inset is used to ensure consistent alignment and padding between headings, 
 text labels, and overflow buttons.
 
-<uxdot-example width-adjustment="872px">
-  <img src="../subnav-inset.png"
-        alt="Image of three desktop and one mobile subnavigations with various inset values"
-        width="872"
-        height="1131">
+<uxdot-example color-palette="lightest" width-adjustment="872px">
+  <img alt="Image of three desktop and one mobile subnavigations with various inset values"
+       src="../subnav-inset.png"
+       width="872"
+       height="1131">
 </uxdot-example>
 
 
@@ -66,11 +66,11 @@ Link text labels should be concise, scannable, and descriptive. They should not
 exceed more than two or three short words. If they do, work with a content 
 strategist to shorten them.
 
-<uxdot-example width-adjustment="872px">
-  <img src="../subnav-link-text-labels.png"
-        alt="Image of two subnavigations; one with short text labels and one with long text labels"
-        width="872"
-        height="242">
+<uxdot-example color-palette="lightest" width-adjustment="872px">
+  <img alt="Image of two subnavigations; one with short text labels and one with long text labels"
+       src="../subnav-link-text-labels.png"
+       width="872"
+       height="242">
 </uxdot-example>
 
 
@@ -79,22 +79,11 @@ strategist to shorten them.
 A subnavigation should have four or five links maximum. Text labels should be short but descriptive. The recommended maximum character count for the elements of a subnavigation are listed below and include spaces.
 
 <rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Element">Element</th>
-        <th scope="col" data-label="Character count">Character count</th>
-        <th scope="col" data-label="Word count">Word count</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Element">Link</td>
-        <td data-label="Character count">20</td>
-        <td data-label="Word count">2 to 3</td>
-      </tr>
-    </tbody>
-  </table>
+
+| Element | Character count | Word count |
+|---------|-----------------|------------|
+| Link    | 20              | 2 to 3     |
+
 </rh-table>
 
 
@@ -103,10 +92,10 @@ A subnavigation should have four or five links maximum. Text labels should be sh
 A subnavigation can be placed below the primary navigation or a heading.
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../subnav-layout.png"
-        alt="Image of subnavigations positioned below the primary navigation and a heading"
-        width="1000"
-        height="739">
+  <img alt="Image of subnavigations positioned below the primary navigation and a heading"
+       src="../subnav-layout.png"
+       width="1000"
+       height="739">
 </uxdot-example>
 
 
@@ -210,62 +199,122 @@ labels.
 
 ## Best practices
 
-### Incorrect ordering
+### Navigation order
 
-Do not position the subnavigation above the primary navigation.
+<uxdot-best-practice variant="do">
+  <uxdot-example slot="image" width-adjustment="1012px">
+    <img src="../subnav-best-practices-nav-order-do.svg" 
+        alt="Subnavigation positioned below primary nav"
+        width="1012"
+        height="134">
+  </uxdot-example>
 
-<uxdot-example width-adjustment="872px" danger>
-  <img src="../subnav-best-practice-1.png"
-        alt="Image of a subnavigation above the primary navigation, which is incorrect usage"
-        width="872"
-        height="129">
-</uxdot-example>
+  <p>Subnavigation should always appear below the primary navigation.</p>
+</uxdot-best-practice>
 
+<uxdot-best-practice variant="dont">
+  <uxdot-example slot="image" width-adjustment="1012px">
+    <img  src="../subnav-best-practices-nav-order-dont.svg" 
+        alt="Subnavigation positioned above primary nav"
+        width="1012"
+        height="134">
+  </uxdot-example>
 
-### Not enough links
+  <p>Do not position the subnavigation above the primary navigation.</p>
+</uxdot-best-practice>
 
-There should be at least two links minimum.
+### Minimum number of links
 
-<uxdot-example width-adjustment="872px" danger>
-  <img src="../subnav-best-practice-2.png"
-        alt="Image of a subnavigation with only one link, which is incorrect usage"
-        width="872"
-        height="57">
-</uxdot-example>
+<div class="grid sm-two-columns">
+  <uxdot-best-practice variant="do">
+    <uxdot-example slot="image" width-adjustment="418px">
+      <img src="../subnav-best-practices-min-links-do.svg"
+            alt="Subnavigation with two links"
+            width="418"
+            height="56">
+    </uxdot-example>
+    <p>There should be at least two links in subnavigation.</p>
+  </uxdot-best-practice>
 
+  <uxdot-best-practice variant="dont">
+    <uxdot-example slot="image" width-adjustment="418px">
+      <img src="../subnav-best-practices-min-links-dont.svg"
+            alt="Subnavigation with one link"
+            width="418"
+            height="56">
+    </uxdot-example>
+    <p>Do not add only one subnavigation link.</p>
+  </uxdot-best-practice>
+</div>
 
-### Too many links
+### Maximum number of links
 
-Be careful about displaying too many links, some of them will become hidden even 
-at large breakpoints.
+<uxdot-best-practice variant="do">
+  <uxdot-example slot="image" width-adjustment="1012px">
+    <img src="../subnav-best-practices-max-links-do.svg" 
+        alt="Subnavigation at a large breakpoint with five links"
+        width="1012"
+        height="56">
+  </uxdot-example>
 
-<uxdot-example width-adjustment="872px" danger>
-  <img src="../subnav-best-practice-3.png"
-        alt="Image of a subnavigation with seven links and overflow buttons, which is incorrect usage"
-        width="872"
-        height="57">
-</uxdot-example>
+  <p>There is no specific maximum number of links, but use a reasonable number of links.</p>
+</uxdot-best-practice>
 
+<uxdot-best-practice variant="dont">
+  <uxdot-example slot="image" width-adjustment="1012px">
+    <img  src="../subnav-best-practices-max-links-dont.svg" 
+        alt="Subnavigation at a large breakpoint with more than eight links and with visible overflow buttons"
+        width="1012"
+        height="56">
+  </uxdot-example>
 
-### Extra spacing
+  <p>Avoid displaying too many links. Some will become hidden, even at large breakpoints.</p>
+</uxdot-best-practice>
 
-Do not add extra spacing or stretch the width of links.
+### Spacing and width
 
-<uxdot-example width-adjustment="872px" danger>
-  <img src="../subnav-best-practice-4.png"
-        alt="Image of a subnavigation with stretched links, which is incorrect usage"
-        width="872"
-        height="57">
-</uxdot-example>
+<uxdot-best-practice variant="do">
+  <uxdot-example slot="image" width-adjustment="1012px">
+    <img src="../subnav-best-practices-spacing-width-do.svg" 
+        alt="Subnavigation with links using default spacing"
+        width="1012"
+        height="56">
+  </uxdot-example>
 
+  <p>Retain the default spacing and width of each subnavigation link.</p>
+</uxdot-best-practice>
+
+<uxdot-best-practice variant="dont">
+  <uxdot-example slot="image" width-adjustment="1012px">
+    <img  src="../subnav-best-practices-spacing-width-dont.svg" 
+        alt="Subnavigation with links that use extra spacing on the left and right"
+        width="1012"
+        height="56">
+  </uxdot-example>
+
+  <p>Do not add extra spacing or stretch the width of links.</p>
+</uxdot-best-practice>
 
 ### Overflow buttons
 
-Overflow buttons should not be visible if all links are visible.
+<uxdot-best-practice variant="do">
+  <uxdot-example slot="image" width-adjustment=568px">
+    <img src="../subnav-best-practices-overflow-buttons-do.svg" 
+        alt="Subnavigation with at least three links in a smaller viewport with overflow buttons"
+        width="568"
+        height="56">
+  </uxdot-example>
 
-<uxdot-example width-adjustment="872px" danger>
-  <img src="../subnav-best-practice-5.png"
-        alt="Image of a subnavigation with only two links and overflow buttons, which is incorrect usage"
-        width="872"
-        height="57">
-</uxdot-example>
+  <p>Use overflow buttons if not all of the links can fit.</p>
+</uxdot-best-practice>
+
+<uxdot-best-practice variant="dont">
+  <uxdot-example slot="image" width-adjustment="1012px">
+    <img  src="../subnav-best-practices-overflow-buttons-dont.svg" 
+        alt="Subnavigation with two short links in a smaller viewport with overflow buttons"
+        width="1012"
+        height="56">
+  </uxdot-example>
+
+  <p>Do not make overflow buttons visible if all links can comfortably fit and are visible.</p>
+</uxdot-best-practice>

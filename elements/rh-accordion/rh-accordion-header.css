@@ -3,20 +3,10 @@
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_active-text-color: var(--rh-color-text-primary);
   --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
   --_isRTL: -1;
-}
-
-#heading {
-  font-size: 100%;
-  padding: 0;
-  margin: 0;
-  color: var(--rh-color-text-primary);
-  background-color: var(--rh-color-surface);
-  font-weight: var(--rh-font-weight-heading-medium, 500);
 }
 
 button,
@@ -48,12 +38,6 @@ a {
   border-inline-start-color: var(--rh-color-border-subtle);
 }
 
-#button,
-#button:before,
-#button:after {
-  background-color: var(--rh-color-surface);
-}
-
 #icon {
   width: 16px;
   height: 16px;
@@ -61,50 +45,68 @@ a {
   transition: rotate 0.2s ease-in 0s;
 }
 
+span {
+  overflow: hidden;
+  text-align: start;
+}
+
 #button {
+  color: var(--rh-color-text-primary);
+  background-color: var(--_accordion-background);
+  font-weight: var(--rh-font-weight-body-text-medium, 500);
   width: 100%;
   padding:
     var(--_padding-block-start)
     var(--_padding-inline-end)
     var(--_padding-block-end)
     var(--_padding-inline-start);
-  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
   font-size: var(--_font-size);
-  color: var(--rh-color-text-primary);
-}
 
-#button #icon {
-  fill: currentcolor;
-}
+  & #icon {
+    fill: currentcolor;
+  }
 
-#button:after {
-  inset-block-start: -1px;
-  width: var(--rh-border-width-lg, 3px);
-  background-color: var(--_after-background-color);
-}
+  &:is(:hover,:active,:focus) {
+    background-color:
+      light-dark(var(--rh-color-surface-lighter),
+        oklch(from var(--rh-color-surface-dark) calc(l * 0.82) c h));
 
-span {
-  overflow: hidden;
-  text-align: start;
-}
+    & span {
+      color: var(--rh-color-text-primary);
+    }
+  }
 
-[part='container'] {
-  display: flex;
-  gap: var(--rh-space-xl, 24px);
-  container-type: inline-size;
+  &:focus {
+    outline: 2px solid var(--rh-color-interactive-primary-default);
+  }
+
+  &:after {
+    inset-block-start: -1px;
+    width: var(--rh-border-width-lg, 3px);
+    background-color: var(--_after-background-color);
+  }
+
+  &.expanded {
+    --_after-background-color: var(--rh-color-accent-brand);
+
+    & #icon {
+      rotate: calc(var(--_isRTL, -1) * 180deg);
+    }
+  }
 }
 
 #header-container {
   display: flex;
   gap: var(--rh-space-md, 8px);
-}
 
-#header-container.bottom {
-  flex-direction: column;
+  &.bottom {
+    flex-direction: column;
+  }
 }
 
 #header-text {
-  font-weight: var(--rh-font-weight-heading-bold, 700);
+  font-weight: var(--rh-font-weight-body-text-medium, 500);
 }
 
 [part='accents'] {
@@ -113,54 +115,26 @@ span {
   gap: var(--rh-space-md, 8px);
 }
 
-.expanded #button {
-  --_after-background-color: var(--rh-color-accent-brand);
-}
-
-.expanded #button #icon {
-  rotate: calc(var(--_isRTL, -1) * 180deg);
-}
-
-#button:hover,
-#button:active,
-#button:focus {
-  background-color: var(--rh-color-surface);
-}
-
-#button:hover span,
-#button:focus span,
-#button:active span {
-  color: var(--_active-text-color);
-}
-
-.toggle,
-.toggle:before,
-.toggle:after {
-  padding: 0;
-  margin: 0;
-}
-
 .toggle {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border: 0;
-}
 
-.toggle:after {
-  content: '';
-  position: absolute;
-  inset-block: 0;
-  inset-inline-start: 0;
-}
+  &,
+  &:before,
+  &:after {
+    padding: 0;
+    margin: 0;
+  }
 
-.expanded.on.light {
-  --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
-}
-
-.expanded.on.dark {
-  --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+  &:after {
+    content: '';
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 0;
+  }
 }
 
 @container (min-width: 576px) {

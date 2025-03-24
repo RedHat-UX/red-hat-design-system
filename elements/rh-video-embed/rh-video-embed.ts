@@ -8,7 +8,7 @@ import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller
 import '@rhds/elements/rh-button/rh-button.js';
 import '@rhds/elements/rh-surface/rh-surface.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-video-embed.css';
 
@@ -35,6 +35,7 @@ export class VideoPlayEvent extends Event {
 
 /**
  * A Video embed is a graphical preview of a video overlayed with a play button. When clicked, the embedded YouTube video will begin playing.
+ * @summary Reveals a small area of information on hover
  * @fires consent-click - "Update preferences" consent button is clicked
  * @fires request-play - Play button is clicked
  * @fires play - Video is about to be played
@@ -52,6 +53,7 @@ export class VideoPlayEvent extends Event {
  * @csspart caption - The container for the caption
  */
 @customElement('rh-video-embed')
+@themable
 export class RhVideoEmbed extends LitElement {
   static readonly styles = [styles];
 
@@ -70,11 +72,6 @@ export class RhVideoEmbed extends LitElement {
    * See the Require Consent demo for reference.
    */
   @property({ type: Boolean }) consented = false;
-
-  /**
-   * Sets color theme based on parent context
-   */
-  @colorContextConsumer() private on?: ColorTheme;
 
   // TODO(bennyp): https://lit.dev/docs/data/context/#content
   @state() private _consentClicked = false;
@@ -125,17 +122,18 @@ export class RhVideoEmbed extends LitElement {
   }
 
   render() {
-    const { playClicked, on = '' } = this;
+    const { playClicked } = this;
     const hasCaption = this.#slots.hasSlotted('caption');
     const hasThumbnail = this.#slots.hasSlotted('thumbnail');
     const playLabel = this.iframeElement && this.iframeElement.title ? `${this.iframeElement.title} (play video)` : 'Play video';
-    const show = this.#showConsent ? 'consent' : !!playClicked || !hasThumbnail ?
-      'video' : 'thumbnail';
+    const consent = this.#showConsent;
+    const video = consent && !!playClicked || !hasThumbnail;
+    const thumbnail = consent && !playClicked && !!hasThumbnail;
 
     return html`
-      <figure part="figure" class="${classMap({ on: true, [show]: !!show, [on]: !!on })}">
+      <figure part="figure" class="${classMap({ consent, video, thumbnail })}">
         <div part="video" id="video">
-          <div aria-hidden="${show !== 'thumbnail'}">
+          <div aria-hidden="${String(thumbnail)}">
             <slot id="thumbnail" name="thumbnail"></slot>
           </div>
           <slot @slotchange="${this.#copyIframe}"></slot>
@@ -171,10 +169,12 @@ export class RhVideoEmbed extends LitElement {
               </div>
             </rh-surface>
           ` : ''}
-          <rh-button part="play" id="play" variant="play"
-            ?hidden="${show !== 'thumbnail'}"
-            @click="${this.#handlePlayClick}"
-            @keyup="${this.#handlePlayKeyup}">
+          <rh-button part="play"
+                     id="play"
+                     variant="play"
+                     ?hidden="${thumbnail}"
+                     @click="${this.#handlePlayClick}"
+                     @keyup="${this.#handlePlayKeyup}">
             <span class="visually-hidden"><slot name="play-button-text">${playLabel}</slot></span>
           </rh-button>
         </div>

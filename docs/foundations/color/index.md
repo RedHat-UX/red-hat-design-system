@@ -29,7 +29,8 @@ crayons:
     @container (min-width: 576px) and (max-width: 746px) {
       grid-template-columns: repeat(auto-fill, minmax(245px, 1fr));
     }
-    gap: var(--rh-space-2xl);
+   column-gap: var(--rh-space-2xl);
+   row-gap: var(--rh-space-4xl);
     & .crayons-list {
       margin: 0;
       padding: 0;
@@ -50,59 +51,45 @@ crayons:
 
 ## Introduction
 
-Color helps unify Red Hat digital properties, from website experiences to 
-application interfaces.
+Color is integral to expressing the Red Hat brand successfully across digital experiences. We use color in our elements, patterns, websites, app UI, and more.
 
-## Color system
+## Using color
 
-Our color system provides comprehensive guidelines on use, definition, and role 
-of color in branded digital experiences.
+### Color palette
 
-### Role of color
+Since all projects use color in some way, our color palette was designed with brand, usability, and accessibility as foundations.
 
-Our color palette is designed with brand, usability, and accessibility in mind 
-and is used for all projects across Red Hat. Applying color thoughtfully and 
-consistently helps us create cohesive, recognizable, and engaging experiences 
-for our users.
+### Communication
 
-### Color relationships
+When colors are used together, they communicate brand, hierarchy, state, and more.
 
-When colors are used together, they form relationships that communicate brand, 
-hierarchy, state, and more.
-
-<uxdot-example width-adjustment="840px">
-  <img alt="Variants of several elements"
-       src="/assets/color/color-relationships.png"
-       width="840"
-       height="599">
+<uxdot-example width-adjustment="920px">
+  {% include './color-communication.svg' %}
 </uxdot-example>
 
+## Design tokens
 
-### Color design tokens
+Design tokens are how we communicate and translate our design decisions to code. Changes can be made at scale, so any elements or patterns using our tokens will always be current.
 
-Design tokens are the source of truth of our design decisions. They allow for 
-changes at scale, making design language updates easy to implement.
+To learn more, go to the [Tokens][tokens] section.
 
-To learn more about our color design tokens, go to the [Tokens](/tokens) section.
+### Crayon and semantic tokens
 
-### "Crayon" and semantic colors
+Our design system includes two sets of tokens:
 
-Our design system includes multiple sets of colors known as **"crayon" colors**. 
-Crayon colors reference hard-coded values, but offer no information about usage. 
-**Semantic** colors reference crayon colors and define how a color is used. 
-Semantic naming is essential not just for color, but for all foundational 
-styles.
+- **Crayon tokens** - reference hard-coded values and offer no information about usage
+- **Semantic tokens** - reference crayon colors and define how a color should be used
 
-<uxdot-example width-adjustment="626px">
-  <img alt="Example of how crayon color tokens are aliased to semantic tokens, which are used to style a button"
-       src="/assets/color/primitive-and-semantic-colors.png"
-       width="626"
-       height="550">
+<rh-alert state="info">
+  <h4 slot="header">Helpful tip</h4>
+  <p>Semantic naming is essential not only just for color, but for all foundational styles.</p>
+</rh-alert>
+
+<uxdot-example width-adjustment="730px">
+  {% include './color-semantic-tokens.svg' %}
 </uxdot-example>
 
-## Color tokens
-
-Read more about our colour tokens on the [tokens page](/tokens/).
+### Color palette tokens
 
 <section id="crayons-grid">
 {%- for crayon in crayons -%}
@@ -126,3 +113,5 @@ Read more about our colour tokens on the [tokens page](/tokens/).
   <h2>Foundations</h2>
   <p>To learn how to use our other foundations in your designs, visit the <a href="/foundations">foundations</a> section.</p>
 </uxdot-feedback>
+
+[tokens]: /tokens

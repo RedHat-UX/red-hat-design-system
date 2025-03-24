@@ -10,16 +10,12 @@ import HelmetPlugin from 'eleventy-plugin-helmet';
 
 import { EleventyRenderPlugin, type UserConfig } from '@11ty/eleventy';
 
+import TypescriptAssetsPlugin from '#11ty-plugins/typescript-assets.js';
 import TOCPlugin from '#11ty-plugins/table-of-contents.js';
 import RHDSPlugin from '#11ty-plugins/rhds.js';
 import DesignTokensPlugin from '#11ty-plugins/tokens.js';
 import RHDSMarkdownItPlugin from '#11ty-plugins/markdown-it.js';
 import ImportMapPlugin from '#11ty-plugins/importMap.js';
-import LitPlugin from '#11ty-plugins/lit-ssr/lit.js';
-
-import { $ } from 'execa';
-
-const $$ = $({ stdout: ['pipe'], stderr: ['pipe'] });
 
 export interface GlobalData {
   runMode: 'build' | 'watch' | 'serve';
@@ -56,13 +52,6 @@ export default async function(eleventyConfig: UserConfig) {
     eleventyConfig.addGlobalData('runMode', runMode);
   });
 
-  let typescriptWatchProcess;
-  eleventyConfig.on('eleventy.before', function({ runMode }) {
-    if (runMode !== 'build') {
-      typescriptWatchProcess ??= $$`npx tspc -b --watch`;
-    }
-  });
-
   eleventyConfig.watchIgnores?.add('docs/assets/redhat/');
   eleventyConfig.watchIgnores?.add('**/*.spec.ts');
   eleventyConfig.watchIgnores?.add('**/*.d.ts');
@@ -70,14 +59,14 @@ export default async function(eleventyConfig: UserConfig) {
   eleventyConfig.watchIgnores?.add('elements/*/test/');
   eleventyConfig.watchIgnores?.add('lib/elements/*/test/');
   eleventyConfig.watchIgnores?.add('**/*.tsbuildinfo');
-  eleventyConfig.addPassthroughCopy('docs/patterns/**/*.{svg,jpg,jpeg,png}');
+  eleventyConfig.addPassthroughCopy('docs/**/*.{svg,jpg,jpeg,png}');
   eleventyConfig.addPassthroughCopy('elements/*/demo/**/*.{svg,jpg,jpeg,png}');
   eleventyConfig.addPassthroughCopy('docs/CNAME');
   eleventyConfig.addPassthroughCopy('docs/.nojekyll');
   eleventyConfig.addPassthroughCopy('docs/robots.txt');
   eleventyConfig.addPassthroughCopy('docs/assets/**/*');
   eleventyConfig.addPassthroughCopy('docs/styles/**/*');
-  eleventyConfig.addPassthroughCopy('docs/foundations/**/*.{css,js}');
+  eleventyConfig.addPassthroughCopy('docs/**/*.{css,js}');
 
   if (isLocal) {
     eleventyConfig.addPassthroughCopy({
@@ -86,21 +75,11 @@ export default async function(eleventyConfig: UserConfig) {
   }
 
   eleventyConfig.addWatchTarget('docs/styles/');
-  eleventyConfig.addWatchTarget('docs/patterns/**/*.md');
+  eleventyConfig.addWatchTarget('docs/**/*.md');
 
   eleventyConfig.addGlobalData('isLocal', isLocal);
 
-  eleventyConfig.addGlobalData('sideNavDropdowns', [
-    { title: 'About', url: '/about', collection: 'about' },
-    { title: 'Get started', url: '/get-started', collection: 'getstarted' },
-    { title: 'Foundations', url: '/foundations', collection: 'foundations' },
-    { title: 'Tokens', url: '/tokens', collection: 'tokenCategory' },
-    { title: 'Elements', url: '/elements', collection: 'elementDocs' },
-    { title: 'Theming', url: '/theming', collection: 'theming' },
-    { title: 'Patterns', url: '/patterns', collection: 'pattern' },
-    { title: 'Accessibility', url: '/accessibility', collection: 'accessibility' },
-  ]);
-
+  await eleventyConfig.addPlugin(TypescriptAssetsPlugin);
   eleventyConfig.addPlugin(EleventyRenderPlugin);
   eleventyConfig.addPlugin(HelmetPlugin);
   eleventyConfig.addPlugin(RHDSMarkdownItPlugin);
@@ -117,13 +96,7 @@ export default async function(eleventyConfig: UserConfig) {
   eleventyConfig.addPassthroughCopy({
     'node_modules/@lit/reactive-element': '/assets/packages/@lit/reactive-element',
   });
-  eleventyConfig.addPassthroughCopy({
-    'elements': `/assets/packages/@rhds/elements/elements/`,
-    'lib': `/assets/packages/@rhds/elements/lib/`,
-    'uxdot': `/assets/packages/@uxdot/elements/`,
-  }, {
-    filter: (p: string) => !p.startsWith('tsconfig'),
-  });
+
   eleventyConfig.addPlugin(ImportMapPlugin, {
     nodemodulesPublicPath: '/assets/packages',
     manualImportMap: {
@@ -161,8 +134,8 @@ export default async function(eleventyConfig: UserConfig) {
       '@rhds/tokens',
       '@rhds/tokens/media.js',
       '@rhds/tokens/meta.js',
-      '@rhds/tokens/css/color-context-provider.css.js',
-      '@rhds/tokens/css/color-context-consumer.css.js',
+      '@rhds/tokens/css/default-theme.css.js',
+      '@rhds/tokens/css/color-palette.css.js',
       '@rhds/icons/',
       '@rhds/icons/microns/',
       '@rhds/icons/social/',
@@ -222,60 +195,49 @@ export default async function(eleventyConfig: UserConfig) {
     },
   });
 
-  eleventyConfig.addPlugin(LitPlugin, {
-    componentModules: [
-      'uxdot/uxdot-best-practice.js',
-      'uxdot/uxdot-copy-button.js',
-      'uxdot/uxdot-copy-permalink.js',
-      'uxdot/uxdot-example.js',
-      'uxdot/uxdot-feedback.js',
-      'uxdot/uxdot-header.js',
-      'uxdot/uxdot-hero.js',
-      'uxdot/uxdot-installation-tabs.js',
-      'uxdot/uxdot-masthead.js',
-      'uxdot/uxdot-pattern.js',
-      'uxdot/uxdot-repo-status-checklist.js',
-      'uxdot/uxdot-repo-status-list.js',
-      'uxdot/uxdot-search.js',
-      'uxdot/uxdot-sidenav.js',
-      'uxdot/uxdot-spacer-tokens-table.js',
-      'uxdot/uxdot-toc.js',
-      'elements/rh-button/rh-button.js',
-      'elements/rh-code-block/rh-code-block.js',
-      'elements/rh-footer/rh-footer-universal.js',
-      'elements/rh-icon/rh-icon.js',
-      'elements/rh-skip-link/rh-skip-link.js',
-      'elements/rh-subnav/rh-subnav.js',
-      'elements/rh-surface/rh-surface.js',
-      'elements/rh-table/rh-table.js',
-      'elements/rh-tag/rh-tag.js',
-      'elements/rh-cta/rh-cta.js',
-    ],
-  });
-
   if (!isWatch && !process.env.QUIET) {
     eleventyConfig.addPlugin(DirectoryOutputPlugin);
   }
 
-  /**
-   * Collections to organize by 'order' value in front matter, then alphabetical by title;
-   * instead of by date
-   */
   await eleventyConfig.addPlugin(RHDSPlugin, {
+    tsconfig: './tsconfig.settings.json',
+    componentModules: [
+      'elements/rh-accordion/rh-accordion.ts',
+      'elements/rh-button/rh-button.ts',
+      'elements/rh-code-block/rh-code-block.ts',
+      'elements/rh-cta/rh-cta.ts',
+      'elements/rh-footer/rh-footer-universal.ts',
+      'elements/rh-icon/rh-icon.ts',
+      'elements/rh-skip-link/rh-skip-link.ts',
+      'elements/rh-subnav/rh-subnav.ts',
+      'elements/rh-surface/rh-surface.ts',
+      'elements/rh-table/rh-table.ts',
+      'elements/rh-tag/rh-tag.ts',
+      // deferring until https://github.com/patternfly/patternfly-elements/pull/2505 or similar
+      // 'elements/rh-card/rh-card.ts',
+      // 'elements/rh-tile/rh-tile.ts',
+      'uxdot/uxdot-best-practice.ts',
+      'uxdot/uxdot-color-scheme-picker.ts',
+      'uxdot/uxdot-copy-button.ts',
+      'uxdot/uxdot-copy-permalink.ts',
+      'uxdot/uxdot-example.ts',
+      'uxdot/uxdot-feedback.ts',
+      'uxdot/uxdot-header.ts',
+      'uxdot/uxdot-installation-tabs.ts',
+      'uxdot/uxdot-masthead.ts',
+      'uxdot/uxdot-pattern.ts',
+      'uxdot/uxdot-repo-status-checklist.ts',
+      'uxdot/uxdot-repo-status-list.ts',
+      'uxdot/uxdot-search.ts',
+      'uxdot/uxdot-sidenav.ts',
+      'uxdot/uxdot-spacer-tokens-table.ts',
+      'uxdot/uxdot-toc.ts',
+    ],
     tagsToAlphabetize: [
       'component',
       'foundations',
       'getstarted',
     ],
-  });
-
-  eleventyConfig.addExtension('11ty.ts', {
-    key: '11ty.js',
-    compile() {
-      return async function(this, data) {
-        return this.defaultRenderer(data);
-      };
-    },
   });
 
   return {
@@ -287,4 +249,3 @@ export default async function(eleventyConfig: UserConfig) {
     },
   };
 };
-

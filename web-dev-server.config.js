@@ -61,6 +61,9 @@ function injectManuallyResolvedModulesToImportMap(document) {
       '@floating-ui/dom': '/node_modules/@floating-ui/dom/dist/floating-ui.dom.browser.min.mjs',
       '@floating-ui/core': '/node_modules/@floating-ui/core/dist/floating-ui.core.browser.min.mjs',
     });
+    for (const key of Object.keys(json.scopes ?? {})) {
+      json.scopes[key]['@patternfly/pfe-core'] = '/node_modules/@patternfly/pfe-core/core.js';
+    }
     setTextContent(importMapNode, JSON.stringify(json, null, 2));
   }
 }
@@ -123,17 +126,21 @@ export const litcssOptions = {
   ],
 };
 
+const imports = {
+  ...await resolveLocal('./lib/**/*.ts'),
+  ...await resolveLocal('./**/*.ts', './elements'),
+};
+
 export default pfeDevServerConfig({
   tsconfig: 'tsconfig.settings.json',
   litcssOptions,
   importMapOptions: {
     typeScript: true,
-    inputMap: {
-      imports: {
-        ...await resolveLocal('./lib/**/*.ts'),
-        ...await resolveLocal('./**/*.ts', './elements'),
-      },
-    },
+    ignore: [
+      /^\./,
+      /^@rhds\/icons/,
+    ],
+    inputMap: { imports },
   },
   middleware: [
     async function(ctx, next) {
@@ -188,5 +195,3 @@ export default pfeDevServerConfig({
     },
   ],
 });
-
-

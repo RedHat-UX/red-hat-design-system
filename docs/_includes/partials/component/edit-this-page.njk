@@ -9,7 +9,9 @@
       {% endif %}
     {% endfor %}
   {% endif %}
-  {# remove ./ leading on path #}
-  {% set editPath = (inputPath or page.inputPath)  | replace('./', '/') %}
-  <a href="https://github.com/RedHat-UX/red-hat-design-system/blob/main{{ editPath }}?plain=1">Edit this page on GitHub</a>
-</div> 
+  {% set editPath = ('/' + (inputPath or page.inputPath)) | replace(r/^(\.)?\//, '') %}
+  {% if '30-code.md' in editPath or '90-demos.md' in editPath %}
+    {% set editPath = 'docs/_includes/layouts/pages/element.11ty.ts' %}
+  {% endif %}
+  <a href="https://github.com/RedHat-UX/red-hat-design-system/blob/main/{{ editPath }}?plain=1">Edit this page on GitHub</a>
+</div>

@@ -23,15 +23,11 @@ tags:
     <link rel="stylesheet" href="/styles/demo/styles.css" media="all">
 
     <script type="importmap">{{ importMap | dump(2) | safe }}</script>
+
+    {# ensure SSR support modules are loaded first #}
+    {% include 'partials/javascript/dsd-init.html' %}
+
     <script type="module">
-      // dsd polyfill needs to happen before hydration attempts
-      // lit-element-hydrate-support needs to be included before lit is loaded
-      import '/assets/javascript/dsd-polyfill.js';
-      import '@lit-labs/ssr-client/lit-element-hydrate-support.js';
-      import 'element-internals-polyfill';
-      // include these, which are often internal to elements, to avoid SSR defer-hydration bugs
-      import '@rhds/elements/rh-icon/rh-icon.js';
-      import '@rhds/elements/rh-surface/rh-surface.js';
       // load up the demo and picker
       import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
       import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
@@ -39,7 +35,7 @@ tags:
 
     <script async src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
   </head>
-  <body unresolved>{% if demo.filePath %}
+  <body>{% if demo.filePath %}
     <main>
       {%- include demo.filePath -%}
     </main>{%- else -%}

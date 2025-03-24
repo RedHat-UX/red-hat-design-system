@@ -8,7 +8,7 @@ const shouldUpgrade = (element: unknown) => {
   expect(element).to.be.an.instanceOf(klass).and.to.be.an.instanceOf(RhCard);
 };
 
-const remToPx = remOrPx => {
+const remToPx = (remOrPx: string) => {
   if (remOrPx.endsWith('px')) {
     return remOrPx;
   } else {
@@ -36,14 +36,14 @@ describe('<rh-card>', function() {
     describe('heading', function() {
       it('should have font-size --rh-font-size-heading-sm', async function() {
         expect(getComputedStyle(element.querySelector('h3')!).getPropertyValue('font-size'))
-            .to.equal(remToPx(tokens.get('--rh-font-size-heading-sm').$value));
+            .to.equal(remToPx(tokens.get('--rh-font-size-heading-sm')?.$value));
       });
     });
 
     describe('body', function() {
       it('should have font-size --rh-font-size-body-text-md', async function() {
         expect(getComputedStyle(element.querySelector('p')!).getPropertyValue('font-size'))
-            .to.equal(remToPx(tokens.get('--rh-font-size-body-text-md').$value));
+            .to.equal(remToPx(tokens.get('--rh-font-size-body-text-md')?.$value));
       });
     });
   });
@@ -68,14 +68,14 @@ describe('<rh-card>', function() {
     describe('heading', function() {
       it('should have initial font-size', function() {
         expect(getComputedStyle(element.querySelector('h3')!).getPropertyValue('font-size'))
-            .to.equal(remToPx(tokens.get('--rh-font-size-heading-sm').$value));
+            .to.equal(remToPx(tokens.get('--rh-font-size-heading-sm')?.$value));
       });
     });
 
     describe('body', function() {
       it('should have font-size --rh-font-size-body-text-md', function() {
         expect(getComputedStyle(element.querySelector('p')!).getPropertyValue('font-size'))
-            .to.equal(remToPx(tokens.get('--rh-font-size-body-text-md').$value));
+            .to.equal(remToPx(tokens.get('--rh-font-size-body-text-md')?.$value));
       });
     });
   });

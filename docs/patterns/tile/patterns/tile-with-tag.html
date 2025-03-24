@@ -1,0 +1,17 @@
+<rh-tile class="with-tag">
+  <rh-tag slot="image">Open Shift</rh-tag>
+  <h2 slot="headline"><a href="#top">Link</a></h2>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</rh-tile>
+
+
+<style>
+@import url('/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css');
+
+rh-tile.with-tag {
+  & rh-tag {
+    display: inline-block;
+    margin-block-end: var(--rh-space-lg, 16px);
+  }
+}
+</style>

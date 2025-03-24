@@ -1,20 +1,19 @@
-import type { ColorPalette } from '@rhds/elements/lib/context/color/provider.js';
-
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
-import { colorContextProvider } from '@rhds/elements/lib/context/color/provider.js';
-import consumerStyles from '@rhds/tokens/css/color-context-consumer.css.js';
+import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-surface.css';
-import { classMap } from 'lit/directives/class-map.js';
 
 /**
  * Surfaces are content containers with a color palette which provide a theme
  * (i.e. a background color as well as accessible font colors) to their child
  * elements. Use surface only when other containers like card or accordion
  * are inappropriate.
+ *
+ * @summary Provides background color context for elements placed on top
  *
  * @slot - The `<rh-surface>` element has a single anonymous slot which accepts any content and does not provide additional layout styling
  *
@@ -26,8 +25,10 @@ import { classMap } from 'lit/directives/class-map.js';
  *          ```
  */
 @customElement('rh-surface')
+@colorPalettes
+@themable
 export class RhSurface extends LitElement {
-  static readonly styles = [styles, consumerStyles];
+  static readonly styles = [styles];
 
   /**
    * Sets color palette, which affects the element's styles as well as
@@ -36,19 +37,10 @@ export class RhSurface extends LitElement {
    * Your theme will influence these colors so check there first if you are seeing inconsistencies.
    * See [CSS Custom Properties](#css-custom-properties) for default values
    */
-  @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   render() {
-    const { colorPalette = 'lightest' } = this;
-    const on = colorPalette?.replace(/e(st|r)/, '') ?? 'light';
-    return html`<slot id="slot"
-                      class="${classMap({
-                        on: true,
-                        [on]: true,
-                        [`palette-${colorPalette}`]: true,
-                      })}"
-                      @slotchange=${this.#onSlotchange}></slot>`;
+    return html`<slot id="slot" @slotchange=${this.#onSlotchange}></slot>`;
   }
 
   #onSlotchange() {

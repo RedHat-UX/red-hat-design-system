@@ -4,6 +4,8 @@ import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
+import { themable } from '@rhds/elements/lib/themable.js';
+
 import '@rhds/elements/rh-icon/rh-icon.js';
 
 import styles from './uxdot-sidenav.css';
@@ -13,6 +15,7 @@ import dropdownMenuStyles from './uxdot-sidenav-dropdown-menu.css';
 import dropdownMenuItemStyles from './uxdot-sidenav-dropdown-menu-item.css';
 
 @customElement('uxdot-sidenav')
+@themable
 export class UxdotSideNav extends LitElement {
   static shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };
 
@@ -25,7 +28,6 @@ export class UxdotSideNav extends LitElement {
   #triggerElement: HTMLElement | null = null;
 
   #closeButton: HTMLElement | null = null;
-
 
   async connectedCallback() {
     super.connectedCallback();
@@ -149,9 +151,11 @@ export class UxdotSideNav extends LitElement {
 export class UxdotSideNavItem extends LitElement {
   static styles = [itemStyles];
 
-  @property({ type: Boolean, reflect: true }) active = false;
+  @property({ type: Boolean, reflect: true })
+  active = false;
 
-  @property() href?: string;
+  @property()
+  href: string | undefined;
 
   render() {
     const { active } = this;
@@ -165,7 +169,8 @@ export class UxdotSideNavItem extends LitElement {
 export class UxdotSideNavDropdown extends LitElement {
   static styles = [dropdownStyles];
 
-  @property({ type: Boolean, reflect: true }) expanded = false;
+  @property({ type: Boolean, reflect: true })
+  expanded = false;
 
   connectedCallback() {
     super.connectedCallback();
@@ -212,4 +217,12 @@ export class UxdotSideNavDropdownMenu extends LitElement {
 @customElement('uxdot-sidenav-dropdown-menu-item')
 export class UxdotSideNavDropdownMenuItem extends UxdotSideNavItem {
   static styles = [itemStyles, dropdownMenuItemStyles];
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'uxdot-sidenav': UxdotSideNav;
+    'uxdot-sidenav-dropdown-menu': UxdotSideNavDropdownMenu;
+    'uxdot-sidenav-dropdown-menu-item': UxdotSideNavDropdownMenuItem;
+  }
 }
