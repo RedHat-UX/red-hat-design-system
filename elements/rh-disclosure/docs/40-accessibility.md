@@ -3,10 +3,7 @@
 The disclosure trigger button and content within the panel can be navigated with a keyboard.
 
 <uxdot-example>
-  <img alt="An open disclosure with a CTA and a closed nested disclosure highlighting the three focusable areas."
-       src="../disclosure-a11y-keyboard-interactions.svg"
-       width="1012"
-       height="285">
+  {% include './disclosure-a11y-keyboard-interactions.svg' %}
 </uxdot-example>
 
 <rh-table>
