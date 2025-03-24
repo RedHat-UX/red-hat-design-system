@@ -68,7 +68,7 @@ Chip text displays exactly what is being filtered without truncation. This means
   <p>Chip and legend text should always be sentence case except for product names, abbreviations, and acronyms.</p>
 </rh-alert>
 
-<uxdot-example>
+<uxdot-example color-palette="lightest">
   <img src="../chip-guidelines-writing-content.svg"
       alt="Two rows of chips. The first row has short chip text except for one that is slightly longer with a warning icon above it. The second row has a legend that is too long with an error icon above it."
       width="808"
@@ -94,7 +94,7 @@ To see chip interaction states, go to the [Style](/elements/chip/style) page.
 
 The entire container of a chip is clickable except if a chip is disabled.
 
-<uxdot-example>
+<uxdot-example color-palette="lightest">
   <img src="../chip-guidelines-interactivity-clickable-areas.svg"
       alt="Two chips, a legend that says 'Filter by topic:' and a clear all button on the right."
       width="441"
@@ -105,7 +105,7 @@ The entire container of a chip is clickable except if a chip is disabled.
 
 There should not be any chips selected when the page loads. A user can select only one chip at a time.
 
-<uxdot-example>
+<uxdot-example color-palette="lightest">
   <img src="../chip-guidelines-interactivity-selecting.svg"
       alt="Three rows of four chips. No chips selected in the first row. Second row shows a cursor hovering over a chip with a thicker border. Fourth row shows the second chip selected with a blue background."
       width="696"
@@ -116,7 +116,7 @@ There should not be any chips selected when the page loads. A user can select on
 
 The Clear all button is always present and is always the last chip in the chip group order. When selected, all chips return to the Default state. However, it has no impact on disabled chips.
 
-<uxdot-example>
+<uxdot-example color-palette="lightest">
   <img src="../chip-guidelines-interactivity-clear-all.svg"
       alt="Three rows of four chips. No chips selected in the first row. Second row has the second chip selected. The third row has all chips selected."
       width="937"
@@ -129,7 +129,7 @@ The Clear all button is always present and is always the last chip in the chip g
 
 Chips in a chip group will shuffle and break to multiple lines as screen sizes get smaller.
 
-<uxdot-example variant="full" no-border>
+<uxdot-example color-palette="lightest" variant="full" no-border>
   <img src="../chip-guidelines-responsive-design-small-screen-sizes.svg"
       alt="Four groups of chips. Each group is shown at progressively smaller viewports from desktop to mobile."
       width="1140"
@@ -140,7 +140,7 @@ Chips in a chip group will shuffle and break to multiple lines as screen sizes g
 
 If a chip has a long string of text, it will break to two lines inside of the chip container.
 
-<uxdot-example>
+<uxdot-example color-palette="lightest">
   <img src="../chip-guidelines-responsive-design-long-chip-text.svg"
       alt="Two columns with several chips. The left column shows a chip with long text not wrapping. The right column shows the fourth chip with the same long text wrapping properly."
       width="863"
@@ -153,7 +153,7 @@ If a chip has a long string of text, it will break to two lines inside of the ch
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
-    <uxdot-example slot="image">
+    <uxdot-example slot="image" color-palette="lightest">
       <img src="../chip-guidelines-best-practice-1-do.svg"
         alt="Two rows of chips. Top row is all normal/large chips. Bottom is all small chips."
         width="482"
@@ -163,7 +163,7 @@ If a chip has a long string of text, it will break to two lines inside of the ch
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="dont">
-    <uxdot-example slot="image">
+    <uxdot-example slot="image" color-palette="lightest">
       <img src="../chip-guidelines-best-practice-1-dont.svg"
         alt="Chips with mixed text sizes on one row."
         width="482"
@@ -177,7 +177,7 @@ If a chip has a long string of text, it will break to two lines inside of the ch
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
-    <uxdot-example slot="image">
+    <uxdot-example slot="image" color-palette="lightest">
       <img src="../chip-guidelines-best-practice-2-do.svg"
         alt="Two chips with a legend and the clear all button"
         width="482"
@@ -187,7 +187,7 @@ If a chip has a long string of text, it will break to two lines inside of the ch
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="dont">
-    <uxdot-example slot="image">
+    <uxdot-example slot="image" color-palette="lightest">
       <img src="../chip-guidelines-best-practice-2-dont.svg"
         alt="A lone chip with a legend"
         width="482"
@@ -201,7 +201,7 @@ If a chip has a long string of text, it will break to two lines inside of the ch
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
-    <uxdot-example slot="image">
+    <uxdot-example slot="image" color-palette="lightest">
       <img src="../chip-guidelines-best-practice-3-do.svg"
         alt="Like above, two chips with a legend and the clear all button"
         width="482"
@@ -211,7 +211,7 @@ If a chip has a long string of text, it will break to two lines inside of the ch
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="dont">
-    <uxdot-example slot="image">
+    <uxdot-example slot="image" color-palette="lightest">
       <img src="../chip-guidelines-best-practice-3-dont.svg"
         alt="Two chips with a legend, but no clear all button"
         width="482"
@@ -225,7 +225,7 @@ If a chip has a long string of text, it will break to two lines inside of the ch
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
-    <uxdot-example slot="image">
+    <uxdot-example slot="image" color-palette="lightest">
       <img src="../chip-guidelines-best-practice-4-do.svg"
         alt="Two normal, selected chips with a legend and the clear all button"
         width="482"
@@ -235,7 +235,7 @@ If a chip has a long string of text, it will break to two lines inside of the ch
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="dont">
-    <uxdot-example slot="image">
+    <uxdot-example slot="image" color-palette="lightest">
       <img src="../chip-guidelines-best-practice-4-dont.svg"
         alt="Three selected chips with different icons and icon positioning and a clear all button."
         width="482"

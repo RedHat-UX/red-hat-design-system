@@ -14,7 +14,7 @@ You can provide an accessible label to a chip group by using the following code.
 
 Chips in a chip group can be can be navigated with a keyboard.
 
-<uxdot-example>
+<uxdot-example color-palette="lightest">
   <img src="../chip-a11y-keyboard-interactions.svg"
         alt="Four chips and a clear all button. All show the focus outline around the chip text. The legend exists on the left."
         width="720"
@@ -66,7 +66,7 @@ Chips in a chip group can be can be navigated with a keyboard.
 
 Focus moves from left to right and top to bottom when chips are stacked. Each chip in a chip group receives focus, even if it's disabled.
 
-<uxdot-example>
+<uxdot-example color-palette="lightest">
   <img src="../chip-a11y-focus-order.svg"
         alt="Two rows of four chips showing numbers above each chip. The chips are numbered 1-4 in each row, showing the focus order from left to right."
         width="720"
@@ -77,7 +77,7 @@ Focus moves from left to right and top to bottom when chips are stacked. Each ch
 
 Even with a few letters each, chips are adequately spaced for optimal touch targets.
 
-<uxdot-example>
+<uxdot-example color-palette="lightest">
   <img src="../chip-a11y-touch-targets.svg"
         alt="Two rows of chips with five chips each. Overtop of each chip is a semitransparent circle showing the touch target."
         width="602"

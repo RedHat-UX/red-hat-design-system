@@ -5,7 +5,7 @@ A chip is a checkbox HTML input element. It is styled as text on a pill-shaped b
 ### Anatomy
 
 <figure>
-  <uxdot-example>
+  <uxdot-example color-palette="lightest">
     <img src="../chip-style-anatomy.svg"
         alt="Anatomy of chips with numbered annotations pointing to various parts"
         width="736"
@@ -28,7 +28,7 @@ A chip is a checkbox HTML input element. It is styled as text on a pill-shaped b
 
 Each chip state has unique styling based on its function.
 
-<uxdot-example>
+<uxdot-example color-palette="lightest">
     <img src="../chip-style-variants-style.svg"
         alt="Three chips and a clear all button. The second chip is selected, the third is disabled."
         width="355"
@@ -39,7 +39,7 @@ Each chip state has unique styling based on its function.
 
 There are two available chip sizes: Small and Large. The only difference is the text size. Chip groups also have two legend sizes depending on which chip is used.
 
-<uxdot-example>
+<uxdot-example color-palette="lightest">
     <img src="../chip-style-variants-size.svg"
         alt="Two sets of chips in two columns and two rows. On the left, small chips. On the right, large chips."
         width="760"
@@ -52,7 +52,7 @@ Chips and chip groups are available in both light and dark color schemes.
 
 ### Light scheme
 
-<uxdot-example>
+<uxdot-example color-palette="lightest">
     <img src="../chip-style-color-scheme-light.svg"
         alt="Four chips on a light color scheme displayed in their default format, horizontally across the image."
         width="720"
@@ -73,7 +73,7 @@ Chips and chip groups are available in both light and dark color schemes.
 
 The space in each chip is the same for both sizes. The `--rh-space-md` token is used after the legend as well as in between each subsequent chip.
 
-<uxdot-example>
+<uxdot-example color-palette="lightest">
     <img src="../chip-style-space-a.svg"
         alt="Chips have 8px of horizontal padding, 4px of vertical padding, 8px of margin on the right, and the icon is 16x16."
         width="745"
@@ -82,7 +82,7 @@ The space in each chip is the same for both sizes. The `--rh-space-md` token is 
 
 The --rh-space-lg token is used when chips are stacked.
 
-<uxdot-example>
+<uxdot-example color-palette="lightest">
     <img src="../chip-style-space-b.svg"
         alt="When chips wrap to more than one line, each item has 16px of margin on the bottom."
         width="900"
@@ -99,7 +99,7 @@ Styles will change on hover depending on how a chip is used.
 - The Clear all chip border becomes visible and is --rh-border-width-sm on hover
 - A disabled chip has no states
 
-<uxdot-example>
+<uxdot-example color-palette="lightest">
     <img src="../chip-style-interaction-states-hover-color-scheme-light.svg"
         alt="Three sets of two chips on a light color scheme each showing the hover state on the right and the normal state on the left."
         width="712"
@@ -117,7 +117,7 @@ Styles will change on hover depending on how a chip is used.
 
 A focus ring wraps around the text and icon in both focus and active states. Hover state styles remain the same.
 
-<uxdot-example>
+<uxdot-example color-palette="lightest">
     <img src="../chip-style-interaction-states-focus-color-scheme-light.svg"
         alt="Three sets of two chips on a light color scheme each showing the focus state on the right and the normal state on the left."
         width="712"
