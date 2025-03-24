@@ -54,10 +54,7 @@ The disclosure trigger button and content within the panel can be navigated with
 A logical focus order helps keyboard users operate our websites. Elements need to receive focus in an order that preserves meaning, therefore the focus order should make sense and not jump around randomly.
 
 <uxdot-example>
-  <img alt="A diagram of an open disclosure (1) with a CTA (2) and a closed nested disclosure (3) highlighting the three focusable areas."
-       src="../disclosure-a11y-focus-order.svg"
-       width="1012"
-       height="285">
+  {% include './disclosure-a11y-focus-order.svg' %}
 </uxdot-example>
 
 ## Touch targets
