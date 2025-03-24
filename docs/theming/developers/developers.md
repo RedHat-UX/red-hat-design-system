@@ -269,10 +269,16 @@ still render correctly (for light color schemes) when loaded in an `<img>` tag. 
 as you supply the light scheme fallback value, we don't need to use `light-dark()` except 
 when there's no appropriate themable variable.
 
-```svg-diff rhcodeblock
-- fill="var(--rh-color-text-primary, light-dark(var(--rh-color-text-primary-on-light, #151515), var(--rh-color-text-primary-on-dark, #ffffff))"
-+ fill="var(--rh-color-text-primary, #151515)"
+```diff-svg rhcodeblock
+ <rect x="0"
+       y="0"
+-      fill="var(--rh-color-text-primary, light-dark(var(--rh-color-text-primary-on-light, #151515), var(--rh-color-text-primary-on-dark, #ffffff))">
++      fill="var(--rh-color-text-primary, #151515)">
 ```
+
+Last but not least, SVGs inlined into the page need to have an accessible
+description, so make sure they include a `<title>` element containing their
+<abbr>alt</abbr> text.
 
 This approach _does not work_ with SVGs loaded through the `<img>` tag, or with 
 raster graphics; however, another approach is in development that could help.
