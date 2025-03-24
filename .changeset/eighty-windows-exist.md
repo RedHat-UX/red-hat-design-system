@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-Added --rh-health-index-z-index custom prop to allow implementers to patch z-index conflicts
+`<rh-health-index>`: prevent graphical elements from escaping stacking context
