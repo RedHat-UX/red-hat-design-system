@@ -1,4 +1,4 @@
-import type { DesignToken } from '#11ty-plugins/tokensHelpers.js';
+import type { Color, DesignToken } from '@rhds/tokens';
 
 import tinycolor from 'tinycolor2';
 import { tokens as tokensMeta } from '@rhds/tokens/meta.js';
@@ -140,12 +140,12 @@ export default class TokensPage extends Renderer<Data> {
                   || token.name === '_') {
                 return '';
               }
-              const { r, g, b } = token.attributes?.rgb ?? {};
-              const { h, s, l } = token.attributes?.hsl ?? {};
+              const { r, g, b } = (token.attributes?.rgb ?? {}) as Color['rgb'];
+              const { h, s, l } = (token.attributes?.hsl ?? {}) as Color['hsl'];
               const isColor = !!token.path.includes('color');
-              const isCrayon = isColor && token.name.match(/0$/);
+              const isCrayon = isColor && token.name?.match(/0$/);
               const isDimension = token.$type === 'dimension';
-              const isHSLorRGB = isColor && !!token.name.match(/(hsl|rgb)$/);
+              const isHSLorRGB = isColor && !!token.name?.match(/(hsl|rgb)$/);
               const isFamily = !!token.path.includes('family');
               const isFont = !!token.path.includes('font');
               const isRadius = !!token.path.includes('radius');
@@ -165,7 +165,7 @@ export default class TokensPage extends Renderer<Data> {
                 light: isLight,
                 dark: !isLight,
                 color: isColor,
-                crayon: isCrayon,
+                crayon: !!isCrayon,
                 dimension: isDimension,
                 family: isFamily,
                 font: isFont,
@@ -201,13 +201,13 @@ export default class TokensPage extends Renderer<Data> {
                 '--samp-font-weight':
                   isWeight ? token.$value : 'var(--rh-font-weight-body-text-regular)',
                 [`--samp-${token.$type === 'dimension' ? `${name}-size` : name}`]: token.$value,
-                [`${token.$type === 'dimension' && token.attributes.category === 'space' ? `--samp-${name}-color` : ``}`]: isSpace ? token.original['$extensions']['com.redhat.ux'].color : '',
+                [`${token.$type === 'dimension' && token.attributes?.category === 'space' ? `--samp-${name}-color` : ``}`]: isSpace ? token.original['$extensions']['com.redhat.ux'].color : '',
               })}">
               <td data-label="Example">
                 <samp class="${classes}">
                   ${isSpace ? `<span class="${parseInt(token.$value) < 16 ? `offset` : ''}">${parseInt(token.$value)}</span>` : ``}
                   ${isColor && token.path.includes('text') ? 'Aa'
-                  : isFont ? (example || token.attributes?.aliases?.[0] || 'Aa')
+                  : isFont ? (example || (token.attributes?.aliases as string[])?.[0] || 'Aa')
                   : name === 'breakpoint' ? `
                   <img src="/assets/breakpoints/device-${token.name}.svg" role="presentation">`
                   : example}
@@ -221,7 +221,7 @@ export default class TokensPage extends Renderer<Data> {
                   : isColor ? `<code style="--color: ${token.$value}">${token.$value}</code> `
                   : isWeight ? `
                   <code class="numerical">${token.$value}</code>
-                  <code class="common">${token.attributes?.aliases?.[0] ?? ''}</code>`
+                  <code class="common">${(token.attributes?.aliases as string[])?.[0] ?? ''}</code>`
                   : `<code>${token.$value}</code>`
                   )}
               </td>

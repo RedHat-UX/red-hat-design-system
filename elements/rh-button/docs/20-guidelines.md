@@ -232,9 +232,9 @@ Group buttons logically into sets based on hierarchy and usage.
 
 ### Space in groups
 
-The standard spacing between each button is `16px`, even for Danger 
-buttons. If buttons are stacked, the spacing between each button should be 
-`8px`.
+The standard spacing between each button is `--rh-space-lg`, even for Danger 
+buttons. If buttons are stacked vertically, the spacing between each button should be 
+`--rh-space-md`.
 
 <uxdot-example width-adjustment="508px">
   <img src="../button-layout-spacing.png"
@@ -245,58 +245,146 @@ buttons. If buttons are stacked, the spacing between each button should be
 
 ## Best practices
 
-### More than one line of text
+### Lines of text
 
-Buttons should never have more than one line of text.
+<div class="grid sm-two-columns">
+  <uxdot-best-practice variant="do">
+    <uxdot-example width-adjustment="97px" slot="image">
+      <img src="../button-best-practices-text-lines-do.svg"
+            alt="Button with 'Add item' text on one line"
+            width="97"
+            height="60">
+    </uxdot-example>
+    <p>Keep the button’s text on one line.</p>
+  </uxdot-best-practice>
 
-<uxdot-example width-adjustment="80px" danger>
-  <img src="../button-best-practice-1.png"
-        alt="Image of a button with two lines of text which is incorrect usage"
-        width="80"
-        height="60">
-</uxdot-example>
+  <uxdot-best-practice variant="dont">
+    <uxdot-example width-adjustment="64px" slot="image">
+      <img src="../button-best-practices-text-lines-dont.svg"
+            alt="Button with 'Add item' text breaking to two lines"
+            width="64"
+            height="60">
+    </uxdot-example>
+    <p>Do not use more than one line of text.</p>
+  </uxdot-best-practice>
+</div>
 
-### Multiple buttons
+### Variants in button groups
 
-Do not use multiple Danger or Primary buttons in the same area.
+<div class="grid sm-two-columns">
+  <uxdot-best-practice variant="do">
+    <uxdot-example width-adjustment="482px" slot="image">
+      <img src="../button-best-practices-variants-in-groups-do.svg"
+            alt="Button group with a primary button and a secondary button and another button group with a danger button and a link button"
+            width="482"
+            height="104">
+    </uxdot-example>
+    <p>Use one primary or primary danger button per button group.</p>
+  </uxdot-best-practice>
 
-<uxdot-example width-adjustment="544px" danger>
-  <img src="../button-best-practice-2.png"
-        alt="Image of two danger and two primary button groups which is incorrect usage"
-        width="544"
-        height="36">
-</uxdot-example>
+  <uxdot-best-practice variant="dont">
+    <uxdot-example width-adjustment="240px" slot="image">
+      <img src="../button-best-practices-variants-in-groups-dont.svg"
+            alt="Button group with two primary buttons and a second button group with two primary danger buttons"
+            width="240"
+            height="104">
+    </uxdot-example>
+    <p>Do not use multiple primary or primary danger buttons in the same button group.</p>
+  </uxdot-best-practice>
+</div>
 
 ### Text labels
 
-Do not write button text labels that are expressive or ambiguous.
+<div class="grid sm-two-columns">
+  <uxdot-best-practice variant="do">
+    <uxdot-example width-adjustment="84px" slot="image">
+      <img src="../button-best-practices-labels-do.svg"
+            alt="Secondary button with 'Edit' text and primary button with `Submit` text"
+            width="84"
+            height="104">
+    </uxdot-example>
+    <p>Label buttons clearly and succinctly.</p>
+  </uxdot-best-practice>
 
-<uxdot-example width-adjustment="358px" danger>
-  <img src="../button-best-practice-3.png"
-        alt="Image of two buttons; one has expressive language and the other has ambiguous language which is incorrect usage"
-        width="358"
-        height="36">
-</uxdot-example>
+  <uxdot-best-practice variant="dont">
+    <uxdot-example width-adjustment="120px" slot="image">
+      <img src="../button-best-practices-labels-dont.svg"
+            alt="Secondary button with 'Click here' text and primary button with 'Submit now!' text"
+            width="120"
+            height="104">
+    </uxdot-example>
+    <p>Do not write button text labels that are expressive or ambiguous.</p>
+  </uxdot-best-practice>
+</div>
 
 ### Danger button
 
-Do not use a Danger button for non-destructive purposes.
+<div class="grid sm-two-columns">
+  <uxdot-best-practice variant="do">
+    <uxdot-example width-adjustment="482px" slot="image">
+      <img src="../button-best-practices-danger-do.svg"
+            alt="Danger button labeld 'Reset layout' below explanatory copy and next to a 'Cancel' link button"
+            width="482"
+            height="143">
+    </uxdot-example>
+    <p>Use a danger button for destructive actions only.</p>
+  </uxdot-best-practice>
 
-<uxdot-example width-adjustment="680px" danger>
-  <img src="../button-best-practice-4.png"
-        alt="Image of a search bar using a danger button which is incorrect usage"
-        width="680"
-        height="36">
-</uxdot-example>
+  <uxdot-best-practice variant="dont">
+    <uxdot-example width-adjustment="482px" slot="image">
+      <img src="../button-best-practices-danger-dont.svg"
+            alt="Danger button labeled 'Search' next to a text input field"
+            width="482"
+            height="143">
+    </uxdot-example>
+    <p>Do not use a danger button for non-destructive actions.</p>
+  </uxdot-best-practice>
+</div>
 
-### Button as a call to action
+### Buttons vs. calls to action
 
-Do not use buttons as links or change the Primary button styling, use a link or 
-call to action instead.
+<div class="grid sm-two-columns">
+  <uxdot-best-practice variant="do">
+    <uxdot-example width-adjustment="482px" slot="image">
+      <img src="../button-best-practices-buttons-vs-ctas-do.svg"
+            alt="Blue primary button below supporting copy"
+            width="482"
+            height="197">
+    </uxdot-example>
+    <p>Use buttons for actions, and retain the primary button styling to make them look different from calls to action.</p>
+  </uxdot-best-practice>
 
-<uxdot-example width-adjustment="433px" danger>
-  <img src="../button-best-practice-5.png"
-        alt="Image of text styles with a button underneath that resembles a call to action which is incorrect usage"
-        width="433"
-        height="269">
-</uxdot-example>
+  <uxdot-best-practice variant="dont">
+    <uxdot-example width-adjustment="482px" slot="image">
+      <img src="../button-best-practices-buttons-vs-ctas-dont.svg"
+            alt="Brand red primary button below supporting copy"
+            width="482"
+            height="197">
+    </uxdot-example>
+    <p>Do not use buttons as links or change the style of a primary button to look more like a call to action.</p>
+  </uxdot-best-practice>
+</div>
+
+### Button icons
+
+<div class="grid sm-two-columns">
+  <uxdot-best-practice variant="do">
+    <uxdot-example width-adjustment="121x" slot="image">
+      <img src="../button-best-practices-icons-do.svg"
+            alt="Button with one icon to the left of the text"
+            width="121"
+            height="36">
+    </uxdot-example>
+    <p>Use only one icon in a button.</p>
+  </uxdot-best-practice>
+
+  <uxdot-best-practice variant="dont">
+    <uxdot-example width-adjustment="145px" slot="image">
+      <img src="../button-best-practices-icons-dont.svg"
+            alt="Button with icons to the left and right of the text"
+            width="145"
+            height="36">
+    </uxdot-example>
+    <p>Do not use more than one icon in a button.</p>
+  </uxdot-best-practice>
+</div>

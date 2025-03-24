@@ -22,7 +22,7 @@ slot[name='heading'] *,
 slot[name='heading'] *,
 ::slotted([slot='heading']),
 ::slotted([slot='title']) {
-  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-heading-xs, 1.25rem);
   font-weight: var(--rh-font-weight-heading-medium, 500);
   line-height: var(--rh-line-height-heading, 1.3);

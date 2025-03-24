@@ -4,6 +4,7 @@
   ],
   "include": [
     "./**/*.ts",
+    "../elements/**/*.ts",
     "../declaration.d.ts"
   ],
   "compilerOptions": {
