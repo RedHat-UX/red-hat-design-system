@@ -64,7 +64,7 @@ Chips in a chip group can be can be navigated with a keyboard.
 
 ## Focus order
 
-Focus moves from left to right and top to bottom when chips are stacked. Each chip in a chip group receives focus, even if it's disabled.
+Focus moves from left to right and top to bottom when chips are stacked.
 
 <uxdot-example color-palette="lightest">
   <img src="../chip-a11y-focus-order.svg"
