@@ -2,11 +2,10 @@ import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { provide } from '@lit/context';
-import { context, type RhChipGroupContext } from './context.js';
+import { rhChipGroupSizeCtx } from './context.js';
 import { query } from 'lit/decorators/query.js';
 
 import { RhChip, ChipChangeEvent } from './rh-chip.js';
-import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 
 import styles from './rh-chip-group.css';
 
@@ -27,6 +26,7 @@ export class RhChipGroup extends LitElement {
   /**
    * Decreases the font-size of the chip's label
    */
+  @provide({ context: rhChipGroupSizeCtx })
   @property({ reflect: true }) size?: 'sm';
 
   /**
@@ -35,18 +35,6 @@ export class RhChipGroup extends LitElement {
   @property({ attribute: 'accessible-label' }) accessibleLabel?: string;
 
   @query('slot:not([name])') private defaultSlot!: HTMLSlotElement;
-
-  @provide({ context }) private ctx = this.#makeContext();
-
-  #makeContext(): RhChipGroupContext {
-    const { size } = this;
-    return { size };
-  }
-
-  @observes('size')
-  private contextChanged() {
-    this.ctx = this.#makeContext();
-  }
 
   render() {
     const label = this.accessibleLabel ? this.accessibleLabel : 'Filter by:';

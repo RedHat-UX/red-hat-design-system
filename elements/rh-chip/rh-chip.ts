@@ -7,7 +7,7 @@ import { query } from 'lit/decorators/query.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 import { consume } from '@lit/context';
 
-import { context, type RhChipGroupContext } from './context.js';
+import { rhChipGroupSizeCtx } from './context.js';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 
@@ -69,16 +69,14 @@ export class RhChip extends LitElement {
 
   @query('input') private chipInput!: HTMLInputElement;
 
-  @consume({ context, subscribe: true })
-  @property({ attribute: false })
-  private ctx?: RhChipGroupContext;
+  @consume({ context: rhChipGroupSizeCtx, subscribe: true })
+  private size?: 'sm';
 
   #checked = false;
 
   render() {
-    const { size } = this.ctx ?? {};
     return html`
-      <label part="chip" class=${classMap({ [`size-${size}`]: !!size })}>
+      <label part="chip" class=${classMap({ [`size-${this.size}`]: !!this.size })}>
         <slot></slot>
         <input type="checkbox"
                value="${ifDefined(this.chipValue)}"
