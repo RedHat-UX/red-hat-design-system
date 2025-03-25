@@ -1,5 +1,5 @@
 ---
-layout: layouts/pages/basic.njk
+layout: layouts/pages/has-toc.njk
 title: Overview
 heading: Developers
 sidenavTitle: Developers
