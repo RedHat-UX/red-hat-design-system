@@ -33,14 +33,9 @@ If one element has the same function as another, both should be labeled the same
 
 ### Using color alone
 
-When considering methods of communication or feedback, do not use color alone. Ensure there is a text label, icon, underline, or other visual cue to communicate meaning. Consider how the following elements would look to a color blind user.
+When presenting meaningful information or indicating the location of interactive elements, do not rely upon color alone in your designs. Users with vision impairments or even situational concerns (e.g., a poor monitor, viewing a display in bright sunlight, etc.) may be unable to discern these color cues. So, ensure you use non-color indicators, as well.
 
-<uxdot-example width-adjustment="1012px">
-  <img src="/assets/color/color-a11y-using-color-alone.svg"
-      alt="Dialog with example form elements like a red-orange Leave button, a form field with a red bottom border, and progress steps without labels"
-      width="872"
-      height="537">
-</uxdot-example>
+For specific information on how we use color accessibly, visit [our Foundations page](/foundations/color/accessibility/) on the topic.
 
 ### Contrast
 
