@@ -181,11 +181,6 @@ export default function(eleventyConfig: UserConfig) {
           `${x}/docs/90-demos.md`,
         ]);
 
-      console.log({
-        fakeCodeDocsPaths,
-        wo: await Array.fromAsync(glob('elements/*', { cwd })),
-      }); ;
-
       const docFilePaths = Array.from(new Set([..._docFilePaths, ...fakeCodeDocsPaths.flat()]))
           .sort(function alphabetically(a: string, b: string) {
             return ( a < b ? -1 : a > b ? 1 : 0);
@@ -194,9 +189,6 @@ export default function(eleventyConfig: UserConfig) {
       const { elements } = eleventyConfig.globalData as {
         elements: DocsPage[] | (() => Promise<DocsPage[]>);
       };
-
-      const getPrettyElementName =
-        eleventyConfig.getFilter('getPrettyElementName') as (tagname: string) => string;
 
       const docsPages: DocsPage[] =
         (typeof elements === 'function') ? await elements() : elements;
@@ -216,6 +208,10 @@ export default function(eleventyConfig: UserConfig) {
             .map(x => getTabData(x));
 
         const isDemoTab = (x: ElementDocsPageTabData) => x.pageSlug === 'demos';
+
+        const getPrettyElementName =
+          eleventyConfig.getFilter('getPrettyElementName') as (tagname: string) => string;
+
         if (!fileSystemData.planned) {
           if (!tabs.some(isDemoTab)) {
             tabs.push({ pageSlug: 'demos' } as ElementDocsPageTabData);
