@@ -1,3 +1,7 @@
+:host {
+  container: accordion / inline-size;
+}
+
 #container {
   color: var(--rh-color-text-primary);
   background-color: var(--rh-color-surface);
@@ -11,7 +15,7 @@
     --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
 
     /* --rh-media-sm */
-    @media (min-width: 768px) {
+    @container (min-width: 768px) {
       --_header-font-size: var(--rh-font-size-body-text-lg, 1.125rem);
     }
   }
