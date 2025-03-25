@@ -9,12 +9,7 @@ import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 
 import { consume } from '@lit/context';
-import {
-  context,
-  hamburgerContext,
-  type RhNavigationPrimaryItemContext,
-  type RhNavigationPrimaryHamburgerContext,
-} from './context.js';
+import { compactContext, hamburgerContext } from './context.js';
 
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
@@ -70,13 +65,13 @@ export class RhNavigationPrimaryItem extends LitElement {
   /** Icon set for the `icon` property - 'ui' by default */
   @property({ attribute: 'icon-set' }) iconSet?: IconSetName;
 
-  @consume({ context, subscribe: true })
-  @property({ attribute: false })
-  private ctx?: RhNavigationPrimaryItemContext;
+  @consume({ context: compactContext, subscribe: true })
+  @state()
+  private compact?: boolean;
 
   @consume({ context: hamburgerContext, subscribe: true })
-  @property({ attribute: false })
-  private hamburgerCtx?: RhNavigationPrimaryHamburgerContext;
+  @state()
+  private hamburger?: boolean;
 
   /**
    * Color palette
@@ -85,8 +80,7 @@ export class RhNavigationPrimaryItem extends LitElement {
 
   render() {
     const { hide = '', variant = '' } = this;
-    const { compact = true } = this.ctx ?? {};
-    const { hamburger = false } = this.hamburgerCtx ?? {};
+    const { compact = true, hamburger = false } = this;
     return html`
       <div id="container" class="${classMap({
         [variant]: true,
@@ -96,7 +90,7 @@ export class RhNavigationPrimaryItem extends LitElement {
         hamburger,
       })}">${this.variant === 'dropdown' ? html`
         <details @toggle="${this.#detailsToggle}">
-          <summary>${hamburger ? '' : html`
+          <summary class="${classMap({ hamburger })}">${hamburger ? '' : html`
             <slot name="icon">${this.icon ? '' : html`
               <rh-icon icon="${this.icon}" set="${ifDefined(this.iconSet)}"></rh-icon>`}
             </slot>`}

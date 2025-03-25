@@ -1,15 +1,9 @@
 import { createContextWithRoot } from '@patternfly/pfe-core/functions/context.js';
 
-export interface RhNavigationPrimaryItemContext {
-  compact: boolean;
-}
-export const context =
-  // eslint-disable-next-line @stylistic/max-len
-  createContextWithRoot<RhNavigationPrimaryItemContext>(Symbol('rh-navigation-primary-item-context'));
+export const compactContext = createContextWithRoot<boolean>(
+  Symbol('rh-navigation-primary-item-compact-context'),
+);
 
-export interface RhNavigationPrimaryHamburgerContext {
-  hamburger: boolean;
-}
-export const hamburgerContext =
-  // eslint-disable-next-line @stylistic/max-len
-  createContextWithRoot<RhNavigationPrimaryHamburgerContext>(Symbol('rh-navigation-primary-hamburger-context'));
+export const hamburgerContext = createContextWithRoot<boolean>(
+  Symbol('rh-navigation-primary-hamburger-context'),
+);

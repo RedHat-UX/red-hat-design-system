@@ -3,10 +3,8 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 
-import { DirController } from '../../lib/DirController.js';
-
 import { consume } from '@lit/context';
-import { context, type RhNavigationPrimaryItemContext } from './context.js';
+import { compactContext } from './context.js';
 
 import styles from './rh-navigation-primary-item-menu.css';
 
@@ -18,18 +16,14 @@ import styles from './rh-navigation-primary-item-menu.css';
 export class RhNavigationPrimaryItemMenu extends LitElement {
   static readonly styles = [styles];
 
-  #dir = new DirController(this);
-
-  @consume({ context, subscribe: true })
+  @consume({ context: compactContext, subscribe: true })
   @property({ attribute: false })
-  private ctx?: RhNavigationPrimaryItemContext;
+  private compact?: boolean;
 
   render() {
-    const rtl = this.#dir.dir === 'rtl';
-    const { compact = true } = this.ctx ?? {};
-    const classes = { rtl, compact };
+    const { compact = true } = this;
     return html`
-      <div id="container" class="${classMap(classes)}">
+      <div id="container" class="${classMap({ compact })}">
         <slot></slot>
       </div>
     `;

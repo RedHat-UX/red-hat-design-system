@@ -13,7 +13,6 @@
   --_active-item-color: var(--rh-navigation-active-item-color, var(--_gradient));
 
   display: block;
-  height: 100%;
   justify-items: center;
   align-content: center;
 }
@@ -82,6 +81,7 @@
       display: flex;
       list-style: none;
       gap: var(--rh-space-md, 8px);
+      min-height: 42px;
 
       &::marker,
       &::-webkit-details-marker {
@@ -170,7 +170,10 @@
           &:focus-visible,
           &:hover:focus-visible {
             outline-offset: -2px;
-            outline: var(--rh-border-width-md, 2px) solid var(--rh-color-interactive-primary-default);
+            outline:
+              var(--rh-border-width-md, 2px)
+              solid
+              var(--rh-color-interactive-primary-default);
             border-radius: var(--rh-border-radius-default, 3px);
           }
         }
@@ -200,7 +203,7 @@
       }
     }
 
-    &:not(.hamburger) {
+    @container navigation-primary (min-width: 1200px) {
       & details {
         & summary {
           position: relative;
@@ -208,15 +211,37 @@
           width: max-content;
           align-items: center;
           padding: var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
-          border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
-          border-radius: var(--rh-border-radius-pill, 64px);
 
-          &:before {
+          &:not(.hamburger) {
+            border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+            border-radius: var(--rh-border-radius-pill, 64px);
+
+            &:is(:hover, :focus-visible) {
+              background-color: var(--_background-color);
+            }
+
+            &:before {
+              --_mask: conic-gradient(transparent 0 0);
+
+              content: '';
+              position: absolute;
+              inset: -1px;
+              border-radius: inherit;
+              padding: var(--rh-border-width-md, 2px);
+              background: var(--_active-item-color);
+              mask: var(--_mask) content-box exclude, var(--_mask);
+              z-index: 1;
+            }
+          }
+
+          &.hamburger:before {
+            inset-inline: 0;
+            inset-block-end: -1px;
+
             --_mask: conic-gradient(transparent 0 0);
 
             content: '';
             position: absolute;
-            inset: -1px;
             border-radius: inherit;
             padding: var(--rh-border-width-md, 2px);
             background: var(--_active-item-color);
@@ -235,8 +260,6 @@
           }
 
           &:is(:hover, :focus-visible) {
-            background-color: var(--_background-color);
-
             &:before {
               --_mask: conic-gradient(#000000 0 0);
             }
@@ -336,8 +359,10 @@
       }
     }
 
-    &:not(.hamburger) {
-      padding-inline: var(--_padding-inline-start, var(--rh-space-md, 8px)) var(--_padding-inline-end, var(--rh-space-md, 8px));
+    @container navigation-primary (min-width: 1200px) {
+      padding-inline:
+        var(--_padding-inline-start,
+          var(--rh-space-md, 8px)) var(--_padding-inline-end, var(--rh-space-md, 8px));
 
       & ::slotted(a) {
         display: inline-flex;
