@@ -133,6 +133,7 @@ export class RhNavigationPrimary extends LitElement {
       this.addEventListener('item-toggle', this.#onDropdownToggle);
       this.addEventListener('focusout', this.#onFocusout);
       this.addEventListener('keydown', this.#onKeydown);
+      this.addEventListener('keyup', this.#onKeyup);
       this.#upgradeAccessibility();
       this.#internals.ariaLabel = this.accessibleLabel;
     }
@@ -302,6 +303,16 @@ export class RhNavigationPrimary extends LitElement {
     }
   }
 
+  #onKeyup(event: KeyboardEvent) {
+    switch (event.key) {
+      case 'Tab':
+        this.#onTabKeyup(event);
+        break;
+      default:
+        break;
+    }
+  }
+
 
   async #onFocusout(event: FocusEvent) {
     const target = event.relatedTarget as HTMLElement;
@@ -343,6 +354,7 @@ export class RhNavigationPrimary extends LitElement {
           // if target is self, close self
           if (event.shiftKey && target === dropdownContainsTarget) {
             dropdownContainsTarget.close();
+            return;
           }
         }
         if (!lastChild) {
@@ -356,6 +368,20 @@ export class RhNavigationPrimary extends LitElement {
       } else {
         this.#closePrimaryDropdowns();
         this.#closeSecondaryDropdowns();
+      }
+    }
+  }
+
+  #onTabKeyup(event: KeyboardEvent) {
+    if (this.compact && this._hamburger.open) {
+      const secondaryDropdowns = this.#secondaryDropdowns();
+      const target = event.target as HTMLElement;
+      if (event.shiftKey && target === this) {
+        this.#closeHamburger();
+      } else {
+        if (secondaryDropdowns.some(dropdown => dropdown.contains(target))) {
+          this.#closeHamburger();
+        }
       }
     }
   }
