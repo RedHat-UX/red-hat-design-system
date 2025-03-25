@@ -6,7 +6,7 @@ Use a disclosure to reveal more information or details about an element or conte
 
 Use a disclosure to organize information that is either not critical for users to read or no longer fits on the page due to small screens. A disclosure displays a single section of content whereas an [Accordion](/elements/accordion/) displays multiple sections that can be expanded simultaneously.
 
-<uxdot-example>
+<uxdot-example color-palette="lightest">
   <img alt="One open disclosure, one accordion. Text describing the disclosure: 'A disclosure on a product page displaying secondary information about trials.' Text describing the accordion: 'An accordion with multiple sections displaying important information about subscriptions.'"
        src="../disclosure-guidelines-disclosure-vs-accordion.svg"
        width="1012"
@@ -43,7 +43,7 @@ When a disclosure is collapsed, the caret icon points down. When a disclosure is
 
 If there is a nested disclosure, it is always collapsed by default until a user expands it.
 
-<uxdot-example>
+<uxdot-example color-palette="lightest">
   <img alt="An open outer disclosure and a collapsed inner disclosure."
        src="../disclosure-guidelines-behavior-nested-disclosure.svg"
        width="1012"
@@ -62,7 +62,7 @@ A disclosure can be used to organize interactive elements that do not fit on sma
 
 A disclosure does not change much as screens get smaller.
 
-<uxdot-example variant="full" no-border>
+<uxdot-example color-palette="lightest" variant="full" no-border>
   <img alt="Four disclosures at various viewports, mobile to desktop."
        src="../disclosure-guidelines-responsive-design.svg"
        width="1140"
@@ -75,7 +75,7 @@ A disclosure does not change much as screens get smaller.
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
-    <uxdot-example slot="image">
+    <uxdot-example color-palette="lightest" slot="image">
       <img alt="A single collapsed disclosure"
            src="../disclosure-guidelines-best-practice-1-do.svg"
            width="418"
@@ -85,7 +85,7 @@ A disclosure does not change much as screens get smaller.
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="dont">
-    <uxdot-example slot="image">
+    <uxdot-example color-palette="lightest" slot="image">
       <img alt="Multiple disclosures on top of one another."
            src="../disclosure-guidelines-best-practice-1-dont.svg"
            width="418"
@@ -98,7 +98,7 @@ A disclosure does not change much as screens get smaller.
 ### Line length
 
 <uxdot-best-practice variant="do">
-  <uxdot-example slot="image">
+  <uxdot-example color-palette="lightest" slot="image">
     <img alt="An open disclosure with a line length of 789px."
          src="../disclosure-guidelines-best-practice-2-do.svg"
          width="1012"
@@ -108,7 +108,7 @@ A disclosure does not change much as screens get smaller.
 </uxdot-best-practice>
 
 <uxdot-best-practice variant="dont">
-  <uxdot-example slot="image">
+  <uxdot-example color-palette="lightest" slot="image">
     <img alt="An open disclosure with a line length greater than 798px."
          src="../disclosure-guidelines-best-practice-2-dont.svg"
          width="1012"
@@ -120,7 +120,7 @@ A disclosure does not change much as screens get smaller.
 ### Nesting components
 
 <uxdot-best-practice variant="do">
-  <uxdot-example slot="image">
+  <uxdot-example color-palette="lightest" slot="image">
     <img alt="An open disclosure with a paragraph, CTA, and a closed nested disclosure."
          src="../disclosure-guidelines-best-practice-3-do.svg"
          width="1012"
@@ -130,7 +130,7 @@ A disclosure does not change much as screens get smaller.
 </uxdot-best-practice>
 
 <uxdot-best-practice variant="dont">
-  <uxdot-example slot="image">
+  <uxdot-example color-palette="lightest" slot="image">
     <img alt="An open disclosure with an accordion with three closed panels within."
          src="../disclosure-guidelines-best-practice-3-dont.svg"
          width="1012"

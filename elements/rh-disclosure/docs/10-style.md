@@ -5,7 +5,7 @@ A disclosure is a container that includes a caret icon and a text label, similar
 ### Anatomy
 
 <figure>
-  <uxdot-example>
+  <uxdot-example color-palette="lightest">
     <img alt="Anatomy of a disclosure component with numbered annotations."
          src="../disclosure-style-anatomy.svg"
          width="1012"
@@ -26,7 +26,7 @@ A disclosure is a container that includes a caret icon and a text label, similar
 
 ### Light scheme
 
-<uxdot-example>
+<uxdot-example color-palette="lightest">
   <img alt="Two disclosures. One closed, one open on a light color scheme."
        src="../disclosure-style-scheme-light.svg"
        width="1012"
@@ -46,7 +46,7 @@ A disclosure is a container that includes a caret icon and a text label, similar
 
 A disclosure includes two parts, a trigger that the user selects and the container that opens and discloses the content.
 
-<uxdot-example>
+<uxdot-example color-palette="lightest">
   <img alt="Two disclosures, one open and one closed showing the alignment of the chevron with the trigger text. Below the disclosures is an accordion with the text, 'Accordion panels have the caret icon on the right to differentiate.'"
        src="../disclosure-style-configuration.svg"
        width="1012"
@@ -57,7 +57,7 @@ A disclosure includes two parts, a trigger that the user selects and the contain
 
 Only one additional disclosure can be nested to help organize content better. If you need to use more disclosures, use an [Accordion](/elements/accordion) instead.
 
-<uxdot-example>
+<uxdot-example color-palette="lightest">
   <img alt="Two open disclosures, each with a nested disclosure. The top nested disclosure is closed while the bottom is open."
        src="../disclosure-style-configuration-nested-disclosure.svg"
        width="1012"
@@ -66,7 +66,7 @@ Only one additional disclosure can be nested to help organize content better. If
 
 ## Space
 
-<uxdot-example>
+<uxdot-example color-palette="lightest">
   <img alt="Three disclosures. The top one is closed, the middle one is open, and the bottom one is open with a nested disclosure. There's 16px on the top and bottom of the trigger, 24px on the left and right. There's 24px padding on the open disclosure content."
        src="../disclosure-style-space.svg"
        width="1012"
@@ -79,7 +79,7 @@ Only one additional disclosure can be nested to help organize content better. If
 
 The entire trigger button surface changes color on hover.
 
-<uxdot-example>
+<uxdot-example color-palette="lightest">
   <img alt="Two open disclosures, one open, one closed. Each showing the gray hover state of the disclosure's trigger."
        src="../disclosure-style-interaction-states-hover-scheme-light.svg"
        width="1012"
@@ -105,7 +105,7 @@ The entire trigger button surface changes color on hover.
 
 A focus ring wraps around the entire trigger button in both focus and active states.
 
-<uxdot-example>
+<uxdot-example color-palette="lightest">
   <img alt="Two open disclosures, one open, one closed. Each showing the gray focus state of the disclosure's trigger plus the blue focus outline."
        src="../disclosure-style-interaction-states-focus-active-scheme-light.svg"
        width="1012"
