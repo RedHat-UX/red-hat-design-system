@@ -37,10 +37,6 @@ export declare class RhAccordion extends LitElement {
      */
     large: boolean;
     /**
-     * If this accordion has a border
-     */
-    bordered: boolean;
-    /**
      * Color Palette for this accordion.
      * @see https://ux.redhat.com/theming/color-palettes/
      */

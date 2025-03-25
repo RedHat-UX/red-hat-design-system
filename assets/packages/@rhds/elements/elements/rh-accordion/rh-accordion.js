@@ -49,10 +49,6 @@ export class RhAccordion extends LitElement {
          * If this accordion uses large styles
          */
         this.large = false;
-        /**
-         * If this accordion has a border
-         */
-        this.bordered = true;
     }
     static isAccordion(target) {
         return target instanceof _a;
@@ -257,7 +253,6 @@ _a = RhAccordion, _RhAccordion_expandedIndexSet = new WeakMap(), _RhAccordion_ex
 RhAccordion.properties = {
     accents: { attribute: true, reflect: true },
     large: { reflect: true, type: Boolean },
-    bordered: { reflect: true, type: Boolean },
     colorPalette: { reflect: true, attribute: 'color-palette' },
     expandedIndex: {
         attribute: 'expanded-index',
@@ -277,7 +272,6 @@ __decorate([
 __decorate([
     observes('accents'),
     observes('large'),
-    observes('bordered'),
     observes('expandedIndex')
 ], RhAccordion.prototype, "contextChanged", null);
 customElements.define("rh-accordion", RhAccordion);
