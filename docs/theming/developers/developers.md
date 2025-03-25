@@ -220,7 +220,7 @@ The ideal order of operations is as follows:
 
 1. Search for an appropriate or approximate [pattern][patterns]
 1. Use element-specific tokens to customize an element e.g. `--rh-card-header-background-on-light`
-1. Use theme tokens to customize the target e.g. `--rh-color-interactive-primary-default-on-light`
+1. Use theme tokens to customize the target e.g. `--rh-color-interactive-primary-default`
 1. Use element CSS Shadow Parts for greater control
 
 <rh-alert state="caution">Avoid setting values for CSS custom properties 
@@ -246,18 +246,43 @@ rectangle.
 
 ```html rhcodeblock
 <svg slot="header" width="80" height="80">
-  <rect fill="var(--rh-color-border-interactive)"
+  <rect fill="var(--rh-color-border-interactive, #0066CC)"
         fill-opacity="0.1"
         stroke-dasharray="4"
         stroke-width="1"
-        stroke="var(--rh-color-border-interactive)"
+        stroke="var(--rh-color-border-interactive, #0066CC)"
         width="80"
         height="80"/>
 </svg>
 ```
 
-This approach _does not work_ with SVGs loaded through the `<img>` tag, or with 
-raster graphics; however, another approach is in development that could help.
+When using this approach, there are some important things to keep in mind:
+
+1. All element IDs on the page must be unique, including inline SVG elements.
+When inlining SVGs onto the page, try to reduce the number of IDs in the graphic
+to the bare minimum, and make sure the IDs are either random or prefixed with some 
+unique identifier, like the file name.
+
+2. When using themable tokens in graphics, e.g `--rh-color-text-primary`, always
+provide the light-scheme value as a fallback. This ensures that the graphic will
+still render correctly (for light color schemes) when loaded in an `<img>` tag. As long 
+as you supply the light scheme fallback value, we don't need to use `light-dark()` except 
+when there's no appropriate themable variable.
+
+  ```diff-svg rhcodeblock
+   <rect x="0"
+         y="0"
+  -      fill="var(--rh-color-text-primary, light-dark(var(--rh-color-text-primary-on-light, #151515), var(--rh-color-text-primary-on-dark, #ffffff))">
+  +      fill="var(--rh-color-text-primary, #151515)">
+  ```
+
+Last but not least, SVGs inlined into the page need to 
+have an accessible description, so make sure they include a `<title>` element 
+containing their <abbr>alt</abbr> text.
+ 
+<rh-alert state="caution">This approach _does not work_ with SVGs loaded through 
+  the `<img>` tag, or with raster graphics; however, another approach is in 
+  development that could help.</rh-alert>
 
 ### Alternating Graphics
 
