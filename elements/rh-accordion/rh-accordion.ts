@@ -78,11 +78,6 @@ export class RhAccordion extends LitElement {
   @property({ reflect: true, type: Boolean }) large = false;
 
   /**
-   * If this accordion has a border
-   */
-  @property({ reflect: true, type: Boolean }) bordered = true;
-
-  /**
    * Color Palette for this accordion.
    * @see https://ux.redhat.com/theming/color-palettes/
    */
@@ -178,7 +173,6 @@ export class RhAccordion extends LitElement {
 
   @observes('accents')
   @observes('large')
-  @observes('bordered')
   @observes('expandedIndex')
   private contextChanged() {
     this.ctx = this.#makeContext();
