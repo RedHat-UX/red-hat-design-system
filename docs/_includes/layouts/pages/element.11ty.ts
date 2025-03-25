@@ -789,7 +789,7 @@ export default class ElementsPage extends Renderer<Context> {
       await this.#renderDemoHead(),
       ctx.doc.fileExists && await this.renderFile(ctx.doc.filePath, ctx),
       ...await this.#renderPlaygrounds(ctx, entries),
-    ].join('');
+    ].filter(Boolean).join('');
   }
 
   async #renderDemoHead() {
