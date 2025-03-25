@@ -1,15 +1,27 @@
-import { type CSSResult, LitElement } from 'lit';
+import { type CSSResult, LitElement, type TemplateResult } from 'lit';
 import '@rhds/elements/rh-surface/rh-surface.js';
 import '@rhds/elements/rh-button/rh-button.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
+interface AlertAction {
+    action: 'dismiss' | 'confirm' | string;
+    text: string;
+}
 interface ToastOptions {
     id?: string;
-    message: string;
+    /** Alert body content. Can be any value which lit-html can render. Simple strings are preferable */
+    message: string | Node | TemplateResult | (string | Node | TemplateResult)[];
+    /** Alert heading content. Must be a simple string. */
     heading?: string;
+    /** Alert `state` attribute */
     state?: RhAlert['state'];
+    /** Whether the alert should remain on screen until the user explicitly dismisses it */
+    persistent?: boolean;
+    /** One or more optional body actions */
+    actions?: [] | [AlertAction] | [AlertAction, AlertAction];
 }
 export declare class AlertCloseEvent extends Event {
-    constructor();
+    action: 'close' | 'confirm' | 'dismiss' | string;
+    constructor(action: 'close' | 'confirm' | 'dismiss' | string);
 }
 /**
  * An alert is a banner used to notify a user about a change in status
@@ -28,24 +40,16 @@ export declare class AlertCloseEvent extends Event {
 export declare class RhAlert extends LitElement {
     #private;
     static readonly styles: (CSSResult | CSSStyleSheet)[];
-    private static toaster;
-    private static toasts;
-    /**
-     * @see https://aerotwist.com/blog/flip-your-animations/
-     * @param toast
-     */
-    private static flip;
-    private static renderToasts;
     /**
      * Toast a message with an rh-alert
      * @param options
      * @param options.message alert text
-     * @param [options.heading] alert heading
-     * @param [options.state] `<rh-alert state="...">`
+     * @param [options.actions] optional array of actions
+     * @param [options.heading="Success"] alert heading
+     * @param [options.state="info"] `<rh-alert state="...">`
+     * @param [options.persistent=false] when true, toast remains on screen until dismissed
      */
-    static toast({ message, heading, state }: ToastOptions): Promise<void>;
-    static init(): HTMLElement;
-    private get icon();
+    static toast({ message, persistent, heading, state, actions: _actions, }: Omit<ToastOptions, 'id'>): Promise<void>;
     /**
      * Communicates the urgency of a message and is denoted by various styling configurations.
      *
@@ -74,7 +78,7 @@ export declare class RhAlert extends LitElement {
      */
     dismissable: boolean;
     connectedCallback(): void;
-    render(): import("lit-html").TemplateResult<1>;
+    render(): TemplateResult<1>;
 }
 declare global {
     interface HTMLElementTagNameMap {
