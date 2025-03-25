@@ -141,9 +141,8 @@ export class RhNavigationPrimary extends LitElement {
 
   render() {
     const rtl = this.#dir.dir === 'rtl';
-    const classes = { compact: this.compact, rtl };
     return html`
-      <div id="container" class="${classMap(classes)}">
+      <div id="container" class="${classMap({ compact: this.compact, rtl })}">
         <div id="bar">
           <div id="logo">
             <slot name="logo">
