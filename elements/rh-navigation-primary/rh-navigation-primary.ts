@@ -348,7 +348,6 @@ export class RhNavigationPrimary extends LitElement {
           return;
         } else {
           if (event.shiftKey && firstChild === target) {
-            dropdownContainsTarget.close();
             return;
           }
           // if target is self, close self
