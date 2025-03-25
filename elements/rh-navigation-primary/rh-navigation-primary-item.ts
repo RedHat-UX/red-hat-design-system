@@ -88,7 +88,7 @@ export class RhNavigationPrimaryItem extends LitElement {
     const { compact = true } = this.ctx ?? {};
     const { hamburger = false } = this.hamburgerCtx ?? {};
     return html`
-      <div id="container" part="container" class="${classMap({
+      <div id="container" class="${classMap({
         [variant]: true,
         highlight: !!this.#highlight,
         hide: !!hide,

@@ -32,9 +32,7 @@ rh-navigation-primary {
       }
 
       &:nth-child(1 of rh-navigation-primary-item[slot='links']) {
-        &::part(container) {
-          padding-inline-start: 0;
-        }
+        --_padding-inline-start: 0;
 
         & a {
           margin-inline-start: 0;
@@ -42,12 +40,10 @@ rh-navigation-primary {
       }
 
       &:nth-last-child(1 of rh-navigation-primary-item[slot='links']) {
+        --_padding-inline-end: 0;
+
         &:after {
           border-inline-end-color: transparent;
-        }
-
-        &::part(container) {
-          padding-inline-end: 0;
         }
 
         & a {

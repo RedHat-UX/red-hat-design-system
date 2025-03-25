@@ -337,7 +337,7 @@
     }
 
     &:not(.hamburger) {
-      padding: var(--rh-space-md, 8px);
+      padding-inline: var(--_padding-inline-start, var(--rh-space-md, 8px)) var(--_padding-inline-end, var(--rh-space-md, 8px));
 
       & ::slotted(a) {
         display: inline-flex;
