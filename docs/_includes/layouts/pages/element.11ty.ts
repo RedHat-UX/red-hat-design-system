@@ -256,6 +256,11 @@ export default class ElementsPage extends Renderer<Context> {
 
   async #renderInstallation({ doc, cdnVersion = 'v1-alpha' }: Context) {
     const jspmMap = await this.#generateImportMap(doc.docsPage.tagName)
+        .catch(() => {
+          // try again
+          ElementsPage.assetCache.cache.destroy();
+          return this.#generateImportMap(doc.docsPage.tagName);
+        })
         .catch(error => {
           console.warn(error); // eslint-disable-line no-console
           return `Could not generate import map using JSPM: ${error.message}`;
