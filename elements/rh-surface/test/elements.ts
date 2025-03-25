@@ -1,40 +1,52 @@
-import { ReactiveElement } from 'lit';
+import { css, html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
-import {
-  colorContextConsumer,
-  type ColorTheme,
-} from '@rhds/elements/lib/context/color/consumer.js';
+import TinyColor from 'tinycolor2';
 
-import {
-  colorContextProvider,
-  type ColorPalette,
-} from '@rhds/elements/lib/context/color/provider.js';
+import { tokens } from '@rhds/tokens';
 
-@customElement('test-context-consumer')
-export class ContextConsumer extends ReactiveElement {
-  @colorContextConsumer()
-  @property({ reflect: true })
-  on?: ColorTheme;
+import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
+import { themable } from '@rhds/elements/lib/themable.js';
+
+const dark = tokens.get('--rh-color-text-primary-on-dark');
+const light = tokens.get('--rh-color-text-primary-on-light');
+
+class RendersText extends LitElement {
+  static styles = [css`:host {
+    display: block;
+    padding: 24px;
+    color: var(--rh-color-text-primary);
+  }`];
+
+  get on() {
+    const color = this.#style.getPropertyValue('color');
+    return TinyColor.equals(color, dark) ? 'dark'
+         : TinyColor.equals(color, light) ? 'light'
+         : 'nothing';
+  }
+
+  #style = getComputedStyle(this);
+
+  render() {
+    return html`<span>Hello</span>`;
+  }
 }
 
-@customElement('test-context-consumer-provider')
-export class ContextConsumerProvider extends ReactiveElement {
-  @colorContextConsumer()
-  @property({ reflect: true })
-  on?: ColorTheme;
+@customElement('test-context-consumer')
+@themable
+export class ContextConsumer extends RendersText { }
 
-  @colorContextProvider()
+@customElement('test-context-consumer-provider')
+@themable
+@colorPalettes
+export class ContextConsumerProvider extends RendersText {
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 }
 
 @customElement('test-context-provider-consumer')
-export class ContextProviderConsumer extends ReactiveElement {
-  @colorContextProvider()
+@colorPalettes
+@themable
+export class ContextProviderConsumer extends RendersText {
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
-
-  @colorContextConsumer()
-  @property({ reflect: true })
-  on?: ColorTheme;
 }

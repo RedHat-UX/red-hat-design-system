@@ -5,8 +5,8 @@ import { classMap } from 'lit/directives/class-map.js';
 
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-import { colorContextProvider } from '../../lib/context/color/provider.js';
+import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import '@rhds/elements/rh-button/rh-button.js';
 
@@ -37,8 +37,13 @@ export class AnnouncementCloseEvent extends Event {
  */
 
 @customElement('rh-announcement')
+@colorPalettes
+@themable
 export class RhAnnouncement extends LitElement {
   static styles = [styles];
+
+  /** Sets color context for child components, overrides parent context */
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   /**
    * Make an announcement dismissable
@@ -53,33 +58,16 @@ export class RhAnnouncement extends LitElement {
   @property({ reflect: true, attribute: 'image-position' })
   imagePosition?: 'inline-start' | 'block-start';
 
-  /**
-   * Sets color theme based on parent context
-   */
-  @colorContextConsumer() private on?: ColorTheme;
-
-  /**
-   * Sets color palette, which affects the element's styles as well as descendants' color theme.
-   * Overrides parent color context.
-   * Your theme will influence these colors so check there first if you are seeing inconsistencies.
-   * See [CSS Custom Properties](#css-custom-properties) for default values
-   */
-  @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' })
-  colorPalette?: 'dark' | 'light';
-
   #slots = new SlotController(this, 'image', null, 'cta');
 
   render() {
-    const { dismissable, on = '' } = this;
+    const { dismissable } = this;
     const imagePosInlineStart = this.imagePosition === 'inline-start';
     const imagePosBlockStart = this.imagePosition === 'block-start';
 
     return html`
       <div id="container"
            class="${classMap({
-              on,
-              [on]: !!on,
               dismissable,
               'inline-start': imagePosInlineStart,
               'block-start': imagePosBlockStart,

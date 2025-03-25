@@ -26,9 +26,10 @@ helps users focus on the dialog content.
   </figcaption>
 </figure>
 
-## Theme
+## Color scheme
+<a id="theme"></a>
 
-A dialog is available in the light theme only.
+Dialog is available for the light color scheme only.
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
   <img src="../dialog-theme-light.svg"
@@ -78,7 +79,6 @@ interaction states.
         height="327">
 </uxdot-example>
 
-
 ### Focus
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
@@ -88,7 +88,6 @@ interaction states.
         height="327">
 </uxdot-example>
 
-
 ### Active
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
@@ -97,6 +96,5 @@ interaction states.
         width="1000"
         height="327">
 </uxdot-example>
-
 
 

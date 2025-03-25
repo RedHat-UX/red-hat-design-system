@@ -6,8 +6,8 @@ import { property } from 'lit/decorators/property.js';
 import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 import { provide } from '@lit/context';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import { NumberListConverter, ComposedEvent } from '@patternfly/pfe-core';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
@@ -46,6 +46,8 @@ export class AccordionCollapseEvent extends ComposedEvent {
  * @attr  [accents=inline] Position accents in the header either inline or bottom
  */
 @customElement('rh-accordion')
+@colorPalettes
+@themable
 export class RhAccordion extends LitElement {
   static readonly styles = [styles];
 
@@ -84,10 +86,7 @@ export class RhAccordion extends LitElement {
    * Color Palette for this accordion.
    * @see https://ux.redhat.com/theming/color-palettes/
    */
-  @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
-
-  @colorContextConsumer() private on?: ColorTheme;
 
   /**
    * Sets and reflects the currently expanded accordion 0-based indexes.
@@ -153,15 +152,8 @@ export class RhAccordion extends LitElement {
   }
 
   override render(): TemplateResult {
-    const { on } = this;
-    const expanded = this.#expanded;
     return html`
-      <div id="container"
-           class="${classMap({
-             on: true,
-             [on ?? 'light']: true,
-             expanded,
-           })}"><slot></slot></div>
+      <div id="container" class="${classMap({ expanded: this.#expanded, palette: !!this.colorPalette })}"><slot></slot></div>
     `;
   }
 

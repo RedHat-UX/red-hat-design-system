@@ -50,33 +50,15 @@ from the headline for better scannability.
 
 The recommended maximum character and line counts for the elements of a dialog are listed below and include spaces.
 
-<rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Element" style="width: 50%">Element</th>
-        <th scope="col" data-label="Character count">Character count</th>
-        <th scope="col" data-label="Line count">Line count</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Element">Title text</td>
-        <td data-label="Character count">40</td>
-        <td data-label="Line count">1</td>
-      </tr>
-      <tr>
-        <td data-label="Element">Body text</td>
-        <td data-label="Character count">175</td>
-        <td data-label="Line count">2</td>
-      </tr>
-      <tr>
-        <td data-label="Element">Button text</td>
-        <td data-label="Character count">30</td>
-        <td data-label="Line count">1</td>
-      </tr>
-    </tbody>
-  </table>
+<style data-helmet>.char-count-table thead th:first-of-type { width: 50%; }</style>
+<rh-table class="char-count-table">
+
+| Element     | Character count | Line count |
+|-------------|-----------------|------------|
+| Title text  | 40              | 1          |
+| Body text   | 175             | 2          |
+| Button text | 30              | 1          |
+
 </rh-table>
 
 

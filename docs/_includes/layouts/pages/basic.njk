@@ -21,12 +21,9 @@ layout: layouts/base.njk
 </script>
 <script type="module" src="/assets/javascript/tokens.js" data-helmet></script>
 {%- endif %}
-{% include 'partials/component/masthead.njk' %}
 {% include 'partials/component/sidenav.njk' %}
 
-<rh-surface id="main"
-            role="main"
-            color-palette="lightest">
+<main id="main">
   <article>
     {% include 'partials/component/header.njk' %}
     <div class="container">
@@ -35,5 +32,5 @@ layout: layouts/base.njk
     </div>
   </article>
   {% include "partials/component/back-to-top.njk" %}
-</rh-surface>
+</main>
 {% include 'partials/component/footer.njk' %}

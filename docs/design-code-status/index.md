@@ -11,6 +11,12 @@ title: Design/code status
   import '@uxdot/elements/uxdot-repo-status-table.js';
 </script>
 
+<style>
+  rh-tag {
+    text-transform: capitalize;
+  }
+</style>
+
 <section aria-labelledby="overview">
 
   ## Overview
@@ -21,7 +27,7 @@ title: Design/code status
 
   | Sample tag                                                                           | Meaning                                       |
   | ------------------------------------------------------------------------------------ | --------------------------------------------- |
-  | <rh-tag variant="filled" color="gray" icon="notification-fill">Planned</rh-tag>      | Ready to be worked on or ready to be released |
+  | <rh-tag variant="filled" color="purple" icon="notification-fill">Planned</rh-tag>      | Ready to be worked on or ready to be released |
   | <rh-tag variant="outline" color="green" icon="harvey-ball-50">In progress</rh-tag>   | In the design or development process          |
   | <rh-tag variant="filled" color="green" icon="check-circle-fill">Ready</rh-tag>       | Ready to use and approved by all team members |
   | <rh-tag variant="filled" color="orange" icon="close-circle-fill">Deprecated</rh-tag> | No longer supported by RHDS                   |

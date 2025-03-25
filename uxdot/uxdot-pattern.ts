@@ -1,14 +1,13 @@
-import type { ColorPalette } from '@rhds/elements/lib/context/color/provider.js';
-
-import { LitElement, html, type PropertyValues } from 'lit';
+import { html, isServer } from 'lit';
 
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 
-import {
-  colorContextConsumer,
-  type ColorTheme,
-} from '@rhds/elements/lib/context/color/consumer.js';
+import { SSRFailureRecoverableElement } from './ssr-failure-recoverable.js';
+
+import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import {
   ColorPaletteListConverter,
@@ -21,12 +20,16 @@ import '@rhds/elements/rh-surface/rh-surface.js';
 import '@rhds/elements/rh-code-block/rh-code-block.js';
 import '@rhds/elements/rh-tabs/rh-tabs.js';
 
+import { TabExpandEvent } from '@rhds/elements/rh-tabs/rh-tab.js';
+
 import { UxdotPatternSSRController } from './uxdot-pattern-ssr-controller.js';
 
 import styles from './uxdot-pattern.css';
 
 @customElement('uxdot-pattern')
-export class UxdotPattern extends LitElement {
+@colorPalettes
+@themable
+export class UxdotPattern extends SSRFailureRecoverableElement {
   static styles = [styles];
 
   /** Which color palette to apply to the demo surface */
@@ -48,32 +51,24 @@ export class UxdotPattern extends LitElement {
   /** Should the color picker be hidden? */
   @property({ type: Boolean, attribute: 'no-color-picker' }) noColorPicker = false;
 
+  /** Should the code tabs be hidden? */
+  @property({ type: Boolean, attribute: 'no-code-tabs' }) noCodeTabs = false;
+
   /** Should the code blocks be expanded? */
   @property({ type: Boolean, attribute: 'full-height' }) fullHeight = false;
+
+  /** Should the code blocks be expanded? */
+  @property({ reflect: true, attribute: 'active-tab' }) activeTab?: 'html' | 'css' | 'js';
 
   /** Which colour palettes should be allowed in the picker? (default: all) */
   @property({ converter: ColorPaletteListConverter }) allow = paletteNames;
 
-  @colorContextConsumer() private on?: ColorTheme;
+  #picked = false;
 
   ssr = new UxdotPatternSSRController(this);
 
-  update(changed: PropertyValues<this>) {
-    try {
-      super.update(changed);
-    } catch (e) {
-      if (e instanceof Error && e.message.startsWith('Hydration')) {
-        // eslint-disable-next-line no-console
-        console.warn(e);
-        this.updateComplete.then(() =>
-          this.requestUpdate());
-      } else {
-        throw e;
-      }
-    }
-  }
-
   render() {
+    const { activeTab = 'html' } = this;
     const { allContent, htmlContent, cssContent, jsContent, hasJs, hasCss } = this.ssr;
 
     const actionsLabels = html`
@@ -101,36 +96,34 @@ export class UxdotPattern extends LitElement {
 
         <rh-surface id="content">${allContent}</rh-surface>
 
-        <rh-tabs id="code-tabs" class="code-tabs">
-          <rh-tab id="html-tab"
-                  slot="tab"
-                  active>HTML</rh-tab>
+        <rh-tabs id="code-tabs"
+                 class="code-tabs"
+                 active-index="${ifDefined(!this.#picked ? ['html', 'css', 'js'].indexOf(activeTab) : undefined)}"
+                 ?hidden="${this.noCodeTabs}"
+                 @expand="${this.#onExpand}">
+          <rh-tab id="html-tab" slot="tab" >HTML</rh-tab>
           <rh-tab-panel id="html-panel">
             <rh-code-block highlighting="prerendered"
                            actions="copy wrap"
-                           .full-height="${this.fullHeight}">
+                           ?full-height="${this.fullHeight}">
               ${htmlContent}
               ${actionsLabels}
             </rh-code-block>
           </rh-tab-panel>
-          <rh-tab id="css-tab"
-                  slot="tab"
-                  .disabled="${!hasCss}">CSS</rh-tab>
+          <rh-tab id="css-tab" slot="tab" .disabled="${!hasCss}" >CSS</rh-tab>
           <rh-tab-panel id="css-panel">
             <rh-code-block highlighting="prerendered"
                            actions="copy wrap"
-                           .full-height="${this.fullHeight}">
+                           ?full-height="${this.fullHeight}">
               ${cssContent}
               ${actionsLabels}
             </rh-code-block>
           </rh-tab-panel>
-          <rh-tab id="js-tab"
-                  slot="tab"
-                  .disabled="${!hasJs}">JS</rh-tab>
+          <rh-tab id="js-tab" slot="tab" .disabled="${!hasJs}" >JS</rh-tab>
           <rh-tab-panel id="js-panel">
             <rh-code-block highlighting="prerendered"
                            actions="copy wrap"
-                           .full-height="${this.fullHeight}">
+                           ?full-height="${this.fullHeight}">
               ${jsContent}
               ${actionsLabels}
             </rh-code-block>
@@ -140,10 +133,15 @@ export class UxdotPattern extends LitElement {
     `;
   }
 
+  #onExpand(event: Event) {
+    if (!isServer && event instanceof TabExpandEvent) {
+      this.#picked = true;
+    }
+  }
+
   #onChange(event: Event) {
     if (event instanceof ContextChangeEvent) {
       this.colorPalette = event.colorPalette;
     }
   }
 }
-

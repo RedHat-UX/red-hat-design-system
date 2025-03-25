@@ -1,11 +1,5 @@
 <div id="elements">
   <rh-disclosure summary="Results from Customer Portal"></rh-disclosure>
-  <rh-accordion>
-    <rh-accordion-header>Results from Customer Portal</rh-accordion-header>
-    <rh-accordion-panel>
-      <p> <rh-tag color="green">Hey now!</rh-tag> They're all looking pretty good! </p>
-    </rh-accordion-panel>
-  </rh-accordion>
   <rh-cta href="#" variant="primary">Get started</rh-cta>
   <rh-audio-player layout="mini"></rh-audio-player>
   <rh-pagination>
@@ -34,6 +28,16 @@
   </rh-tabs>
 </div>
 
+<script type="module">
+import '@rhds/elements/rh-audio-player/rh-audio-player.js';
+import '@rhds/elements/rh-button/rh-button.js';
+import '@rhds/elements/rh-card/rh-card.js';
+import '@rhds/elements/rh-cta/rh-cta.js';
+import '@rhds/elements/rh-disclosure/rh-disclosure.js';
+import '@rhds/elements/rh-pagination/rh-pagination.js';
+import '@rhds/elements/rh-tabs/rh-tabs.js';
+</script>
+
 <style>
   #elements {
     min-height: auto;
@@ -54,19 +58,14 @@
     & rh-card { grid-area: card; }
     & rh-cta { grid-area: cta; }
     & rh-tabs { grid-area: tabs; }
-
-    & rh-disclosure,
-    & rh-accordion { grid-area: disclosure; }
+    & rh-disclosure { grid-area: disclosure; }
+    & rh-audio-player { grid-area: audio-player; }
 
     & rh-pagination {
       grid-area: pagination;
       &::part(numeric) {
         display: none;
       }
-    }
-
-    & rh-audio-player {
-      grid-area: audio-player;
     }
 
     & p { margin: 0; }

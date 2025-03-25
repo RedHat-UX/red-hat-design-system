@@ -1,5 +1,4 @@
 import { LitElement, html, isServer } from 'lit';
-import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { query } from 'lit/decorators/query.js';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
@@ -14,6 +13,9 @@ import { colorContextProvider } from '../../lib/context/color/provider.js';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 
+import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
+import { themable } from '@rhds/elements/lib/themable.js';
+
 import styles from './rh-subnav.css';
 
 
@@ -25,6 +27,8 @@ import styles from './rh-subnav.css';
  * @csspart links     - `<slot>` element
  */
 @customElement('rh-subnav')
+@colorPalettes
+@themable
 export class RhSubnav extends LitElement {
   static readonly styles = [styles];
 
@@ -44,10 +48,6 @@ export class RhSubnav extends LitElement {
     }
   }
 
-  /**
-   * Sets color theme based on parent context
-   */
-  @colorContextConsumer() private on?: ColorTheme;
 
   /**
    * Sets color palette, which affects the element's styles as well as descendants' color theme.
@@ -55,8 +55,7 @@ export class RhSubnav extends LitElement {
    * Your theme will influence these colors so check there first if you are seeing inconsistencies.
    * See [CSS Custom Properties](#css-custom-properties) for default values
    */
-  @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette = 'lighter';
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   /**
    * Customize the default `aria-label` on the `<nav>` container.
