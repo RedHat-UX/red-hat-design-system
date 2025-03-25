@@ -55,10 +55,7 @@ If there is a nested disclosure, it is always collapsed by default until a user 
 A disclosure can be used to organize interactive elements that do not fit on small screens like jump links.
 
 <uxdot-example>
-  <img alt="A closed and open disclosure with jump links in the panel content."
-       src="../disclosure-guidelines-behavior-jump-links.svg"
-       width="1012"
-       height="392">
+  {% include "./disclosure-guidelines-behavior-jump-links.svg" %}
 </uxdot-example>
 
 ## Responsive design
