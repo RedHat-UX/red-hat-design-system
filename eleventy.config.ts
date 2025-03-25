@@ -118,7 +118,7 @@ export default async function(eleventyConfig: UserConfig) {
         '@patternfly/icons/': '/assets/packages/@patternfly/icons/',
         '@patternfly/pfe-core/': '/assets/packages/@patternfly/pfe-core/',
         '@uxdot/elements/': '/assets/packages/@uxdot/elements/',
-        'playground-elements': 'https://unpkg.com/playground-elements/playground-ide.js',
+        'playground-elements': 'https://unpkg.com/playground-elements?module',
       },
     },
     localPackages: [
