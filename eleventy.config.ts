@@ -118,7 +118,7 @@ export default async function(eleventyConfig: UserConfig) {
         '@patternfly/icons/': '/assets/packages/@patternfly/icons/',
         '@patternfly/pfe-core/': '/assets/packages/@patternfly/pfe-core/',
         '@uxdot/elements/': '/assets/packages/@uxdot/elements/',
-        'playground-elements': 'https://cdn.jsdelivr.net/npm/playground-elements@0.18.1/+esm',
+        'playground-elements': 'https://cdn.jsdelivr.net/npm/playground-elements@0.19.1/+esm',
       },
     },
     localPackages: [
@@ -246,4 +246,3 @@ export default async function(eleventyConfig: UserConfig) {
     },
   };
 };
-
