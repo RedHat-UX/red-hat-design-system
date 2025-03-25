@@ -120,6 +120,11 @@ export class RhNavigationPrimary extends LitElement {
     }
   }
 
+  protected firstUpdated(): void {
+    // ensure we update initially on client hydration
+    this.compact = this.offsetWidth < 1200;
+  }
+
   async connectedCallback() {
     super.connectedCallback();
     if (!isServer) {
