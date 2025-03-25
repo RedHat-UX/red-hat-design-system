@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-`<rh-subnav>`: corrected scrolling when element is overflowed
+`<rh-subnav>`: restored overflow scrolling
