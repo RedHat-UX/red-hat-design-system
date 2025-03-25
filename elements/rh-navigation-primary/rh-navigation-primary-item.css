@@ -81,7 +81,6 @@
       display: flex;
       list-style: none;
       gap: var(--rh-space-md, 8px);
-      min-height: 42px;
 
       &::marker,
       &::-webkit-details-marker {
@@ -105,6 +104,12 @@
 
     & #details-content {
       width: 100%;
+
+      @container (min-width: 1200px) {
+        border-end-end-radius: calc(var(--rh-border-radius-default, 3px) * 2);
+        border-end-start-radius: calc(var(--rh-border-radius-default, 3px) * 2);
+        box-shadow: 0 2px 4px 0 var(--_box-shadow-color);
+      }
     }
 
     &[open] {
@@ -183,9 +188,6 @@
             position: absolute;
             z-index: -1;
             background-color: var(--rh-color-surface);
-            border-end-end-radius: calc(var(--rh-border-radius-default, 3px) * 2);
-            border-end-start-radius: calc(var(--rh-border-radius-default, 3px) * 2);
-            box-shadow: 0 2px 4px 0 var(--_box-shadow-color);
             inset-block-start: 100%;
             inset-inline-start: 0;
             width: 100%;
@@ -203,7 +205,7 @@
       }
     }
 
-    @container navigation-primary (min-width: 1200px) {
+    &:not(.hamburger) {
       & details {
         & summary {
           position: relative;
@@ -211,37 +213,15 @@
           width: max-content;
           align-items: center;
           padding: var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
+          border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+          border-radius: var(--rh-border-radius-pill, 64px);
 
-          &:not(.hamburger) {
-            border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
-            border-radius: var(--rh-border-radius-pill, 64px);
-
-            &:is(:hover, :focus-visible) {
-              background-color: var(--_background-color);
-            }
-
-            &:before {
-              --_mask: conic-gradient(transparent 0 0);
-
-              content: '';
-              position: absolute;
-              inset: -1px;
-              border-radius: inherit;
-              padding: var(--rh-border-width-md, 2px);
-              background: var(--_active-item-color);
-              mask: var(--_mask) content-box exclude, var(--_mask);
-              z-index: 1;
-            }
-          }
-
-          &.hamburger:before {
-            inset-inline: 0;
-            inset-block-end: -1px;
-
+          &:before {
             --_mask: conic-gradient(transparent 0 0);
 
             content: '';
             position: absolute;
+            inset: -1px;
             border-radius: inherit;
             padding: var(--rh-border-width-md, 2px);
             background: var(--_active-item-color);
@@ -260,6 +240,8 @@
           }
 
           &:is(:hover, :focus-visible) {
+            background-color: var(--_background-color);
+
             &:before {
               --_mask: conic-gradient(#000000 0 0);
             }
@@ -292,9 +274,6 @@
           position: absolute;
           z-index: -1;
           background-color: var(--rh-color-surface);
-          border-end-end-radius: calc(var(--rh-border-radius-default, 3px) * 2);
-          border-end-start-radius: calc(var(--rh-border-radius-default, 3px) * 2);
-          box-shadow: 0 2px 4px 0 var(--_box-shadow-color);
           inset-block-start: 100%;
           inset-inline-end: 0;
           width: 100%;
@@ -359,10 +338,10 @@
       }
     }
 
-    @container navigation-primary (min-width: 1200px) {
+    &:not(.hamburger) {
       padding-inline:
-        var(--_padding-inline-start,
-          var(--rh-space-md, 8px)) var(--_padding-inline-end, var(--rh-space-md, 8px));
+        var(--_padding-inline-start, var(--rh-space-md, 8px))
+        var(--_padding-inline-end, var(--rh-space-md, 8px));
 
       & ::slotted(a) {
         display: inline-flex;

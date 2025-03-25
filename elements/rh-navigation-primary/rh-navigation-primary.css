@@ -104,13 +104,11 @@
 
     @container navigation-primary (min-width: 1200px) {
       position: static;
-      padding: /*var(--rh-space-lg, 16px)*/ 0;
       height: 100%;
       place-items: center;
       align-content: center;
       box-shadow: none;
       background-color: transparent;
-      gap: var(--rh-space-xs, 4px);
 
       & ::slotted(rh-navigation-primary-item) {
         border-block-start: none;
