@@ -137,7 +137,7 @@ Only tags with linked text have interaction states.
 
 ### Hover
 
-The tag border changes to `--rh-border-width-md` or `2px` on hover.
+The tag border width increases to `--rh-border-width-md` on hover.
 
 <uxdot-example width-adjustment="555px">
   <img src="../tag-style-interaction-states-hover.svg"
