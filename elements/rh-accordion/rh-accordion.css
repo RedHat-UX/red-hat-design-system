@@ -1,4 +1,5 @@
 :host {
+  display: block;
   container: accordion / inline-size;
 }
 
@@ -15,7 +16,7 @@
     --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
 
     /* --rh-media-sm */
-    @container (min-width: 768px) {
+    @container accordion (min-width: 768px) {
       --_header-font-size: var(--rh-font-size-body-text-lg, 1.125rem);
     }
   }
