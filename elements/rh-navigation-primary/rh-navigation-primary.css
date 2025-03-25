@@ -32,9 +32,6 @@
 }
 
 #container {
-  --_menu-background:
-    light-dark(var(--rh-color-surface-lighter, #f2f2f2),
-      var(--rh-color-surface-darker, #1f1f1f));
   --_box-shadow-color: light-dark(rgba(21, 21, 21, 0.2), rgba(0, 0, 0, 0.6));
 
   display: block;
@@ -208,7 +205,7 @@
         z-index: var(--_nav-container-z-index);
         display: flex;
         flex-direction: column;
-        background-color: var(--_menu-background);
+        background-color: var(--rh-color-surface);
         width: -webkit-fill-available;
         width: -moz-available;
         width: fill-available;
@@ -310,7 +307,7 @@
           z-index: var(--_nav-container-z-index);
           display: flex;
           flex-direction: column;
-          background-color: var(--_menu-background);
+          background-color: var(--rh-color-surface);
           width: -webkit-fill-available;
           width: -moz-available;
           width: fill-available;

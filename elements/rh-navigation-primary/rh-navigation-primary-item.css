@@ -69,16 +69,45 @@
   justify-items: center;
   align-content: center;
 
-  details {
+  & details {
     width: 100%;
     height: 100%;
     justify-items: center;
     align-content: center;
 
-    &[open] {
-      color: var(--rh-color-text-primary);
+    & summary {
+      --rh-icon-size: 18px /* non standard value */;
+      --rh-avatar-size: var(--rh-size-icon-02, 24px);
 
-      /* stylelint-disable-next-line selector-pseudo-element-no-unknown */
+      display: flex;
+      list-style: none;
+      gap: var(--rh-space-md, 8px);
+
+      &::marker,
+      &::-webkit-details-marker {
+        display: none;
+      }
+
+      & ::slotted(rh-icon) {
+        /* need 24px total icons 18px + 3px margin * 2, avatar is 24px */
+        margin-block: calc(var(--rh-space-sm, 6px) / 2);
+      }
+
+      & rh-icon {
+        aspect-ratio: unset;
+
+        &[icon='caret-down'] {
+          color: var(--rh-color-icon-subtle);
+          transition: rotate 0.2s;
+        }
+      }
+    }
+
+    & #details-content {
+      width: 100%;
+    }
+
+    &[open] {
       &::details-content {
         display: contents;
 
@@ -92,10 +121,6 @@
       }
 
       & summary {
-        &:focus-visible {
-          outline-color: var(--rh-color-interactive-primary-default);
-        }
-
         & rh-icon[icon='caret-down'] {
           rotate: 180deg;
         }
@@ -103,224 +128,215 @@
     }
   }
 
-  /* stylelint-disable-next-line no-descending-specificity */
-  summary {
-    --rh-icon-size: 18px /* non standard value */;
-    --rh-avatar-size: var(--rh-size-icon-02, 24px);
+  /* Variant States */
+  &.hamburger {
+    &:not(.compact) {
+      @container (min-width: 1200px) {
+        border-block-end: 4px solid transparent; /* Non standard border width */
 
-    list-style: none;
-    display: flex;
-    gap: var(--rh-space-md, 8px);
-    color: var(--rh-color-text-primary) !important;
-    text-decoration: none !important;
-    text-align: center;
-    text-wrap: nowrap;
-    place-items: center;
-    width: fill-available;
-    width: -webkit-fill-available;
-    width: -moz-available;
-    height: 100%;
-    padding-inline: calc(var(--rh-space-sm, 6px) + var(--rh-space-xs, 4px));
-    cursor: pointer;
+        &:hover {
+          border-block-end-color: var(--rh-color-border-subtle);
+        }
 
-    /* stylelint-disable-next-line no-descending-specificity */
-    &:is(:focus-visible, :hover:focus-visible) {
-      outline-offset: -2px;
-      outline:
-        var(--rh-border-width-md, 2px)
-        solid
-        var(--rh-color-interactive-primary-default);
-      border-radius: var(--rh-border-radius-default, 3px);
-    }
-
-    &::marker,
-    &::-webkit-details-marker {
-      display: none;
-    }
-
-    & rh-icon {
-      aspect-ratio: unset;
-
-      /* stylelint-disable-next-line no-descending-specificity */
-      &[icon='caret-down'] {
-        color: var(--rh-color-icon-subtle);
-        transition: rotate 0.2s;
+        &:is(:active, :focus-within, :has(details[open])) {
+          border-image: var(--_active-item-color) 1;
+        }
       }
-    }
-
-    ::slotted(rh-icon) {
-      /* need 24px total icons 18px + 3px margin * 2, avatar is 24px */
-      margin-block: calc(var(--rh-space-sm, 6px) / 2);
     }
   }
 
-  #details-content {
-    width: fill-available;
-    width: -webkit-fill-available;
-    width: -moz-available;
-
-    @container (min-width: 1200px) {
-      position: absolute;
-      inset-block-start: 100%;
-      inset-inline-start: 0;
-      z-index: -1;
-      width: 100%;
-      background-color: var(--_background-color);
-      box-shadow: 0 2px 4px 0 var(--_box-shadow-color);
-      border-end-end-radius: calc(var(--rh-border-radius-default, 3px) * 2);
-      border-end-start-radius: calc(var(--rh-border-radius-default, 3px) * 2);
-    }
-  }
-
-  &.standalone {
-    details {
-      display: contents;
-
-      & > * {
-        box-sizing: border-box;
-      }
-
-      & summary {
-        position: relative;
-        gap: var(--rh-space-md, 8px);
-        height: max-content;
-        width: max-content;
-        align-items: center;
-        padding: var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
-        border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
-        border-radius: var(--rh-border-radius-pill, 64px);
-
-        &:before {
-          --_mask: conic-gradient(transparent 0 0);
-
-          content: '';
-          position: absolute;
-          inset: -1px;
-          border-radius: inherit;
-          padding: var(--rh-border-width-md, 2px);
-          background: var(--_active-item-color);
-          mask: var(--_mask) content-box exclude, var(--_mask);
-          z-index: 1;
-        }
-
-        &:is(:hover, :focus-visible) {
-          background-color: var(--_background-color);
-
-          &:before {
-            padding: var(--rh-border-width-sm, 1px);
-
-            --_mask: conic-gradient(#000000 0 0);
-          }
-        }
-
-        &:is(:active) {
-          background-color: unset;
-
-          &:before {
-            padding: var(--rh-border-width-md, 2px);
-          }
-        }
-
-        &:is(:focus-visible, :hover:focus-visible) {
-          outline-offset: 3px;
-          border-radius: var(--rh-border-radius-pill, 64px);
-        }
-
-        & slot[name='summary']::slotted(*) {
-          clip: rect(0 0 0 0);
-          clip-path: inset(50%);
-          height: 1px;
-          overflow: hidden;
-          position: absolute;
-          white-space: nowrap;
-          width: 1px;
-        }
-
-        @container (min-width: 1680px) {
-          & slot[name='summary']::slotted(*) {
-            clip: unset;
-            clip-path: unset;
-            height: auto;
-            overflow: auto;
-            position: static;
-            white-space: normal;
-            width: auto;
-          }
-        }
-      }
-
-      &[open] {
+  &.dropdown {
+    &.hamburger {
+      & details {
         & summary {
-          background-color: var(--_background-color);
+          list-style: none;
+          color: var(--rh-color-text-primary) !important;
+          text-decoration: none !important;
+          text-align: center;
+          text-wrap: nowrap;
+          place-items: center;
+          width: fill-available;
+          width: -webkit-fill-available;
+          width: -moz-available;
+          height: 100%;
+          padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
+          cursor: pointer;
 
-          &:before {
-            padding: var(--rh-border-width-md, 2px);
+          @container (min-width: 1200px) {
+            height: calc(100% + 4px);
+            padding: 0 var(--rh-space-lg, 16px);
+          }
 
-            --_mask: conic-gradient(#000000 0 0);
+          &:focus-visible,
+          &:hover:focus-visible {
+            outline-offset: -2px;
+            outline: var(--rh-border-width-md, 2px) solid var(--rh-color-interactive-primary-default);
+            border-radius: var(--rh-border-radius-default, 3px);
           }
         }
 
-        #details-content {
+        & #details-content {
+          @container (min-width: 1200px) {
+            position: absolute;
+            z-index: -1;
+            background-color: var(--rh-color-surface);
+            border-end-end-radius: calc(var(--rh-border-radius-default, 3px) * 2);
+            border-end-start-radius: calc(var(--rh-border-radius-default, 3px) * 2);
+            box-shadow: 0 2px 4px 0 var(--_box-shadow-color);
+            inset-block-start: 100%;
+            inset-inline-start: 0;
+            width: 100%;
+          }
+        }
+
+        &[open] {
+          border-inline-start: var(--rh-border-width-lg, 3px) solid var(--rh-color-accent-brand);
+          border-inline-end: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+
+          @container (min-width: 1200px) {
+            border-inline: unset;
+          }
+        }
+      }
+    }
+
+    &:not(.hamburger) {
+      & details {
+        & summary {
+          position: relative;
+          height: max-content;
+          width: max-content;
+          align-items: center;
+          padding: var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
+          border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+          border-radius: var(--rh-border-radius-pill, 64px);
+
+          &:before {
+            --_mask: conic-gradient(transparent 0 0);
+
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: inherit;
+            padding: var(--rh-border-width-md, 2px);
+            background: var(--_active-item-color);
+            mask: var(--_mask) content-box exclude, var(--_mask);
+            z-index: 1;
+          }
+
+          &:focus-visible,
+          &:hover:focus-visible {
+            outline:
+              var(--rh-border-width-md, 2px)
+              solid
+              var(--rh-color-interactive-primary-default);
+            outline-offset: 3px;
+            border-radius: var(--rh-border-radius-pill, 64px);
+          }
+
+          &:is(:hover, :focus-visible) {
+            background-color: var(--_background-color);
+
+            &:before {
+              --_mask: conic-gradient(#000000 0 0);
+            }
+          }
+
+          & slot[name='summary']::slotted(*) {
+            clip: rect(0 0 0 0);
+            clip-path: inset(50%);
+            height: 1px;
+            overflow: hidden;
+            position: absolute;
+            white-space: nowrap;
+            width: 1px;
+          }
+
+          @container (min-width: 1680px) {
+            & slot[name='summary']::slotted(*) {
+              clip: unset;
+              clip-path: unset;
+              height: auto;
+              overflow: auto;
+              position: static;
+              white-space: normal;
+              width: auto;
+            }
+          }
+        }
+
+        & #details-content {
           position: absolute;
-          inset-block-start: 100%;
-          inset-inline-start: 0;
           z-index: -1;
-          width: 100%;
-          background-color: var(--_background-color);
+          background-color: var(--rh-color-surface);
           border-end-end-radius: calc(var(--rh-border-radius-default, 3px) * 2);
           border-end-start-radius: calc(var(--rh-border-radius-default, 3px) * 2);
+          box-shadow: 0 2px 4px 0 var(--_box-shadow-color);
+          inset-block-start: 100%;
+          inset-inline-end: 0;
+          width: 100%;
+
+          @container (min-width: 1200px) {
+            width: fit-content;
+          }
         }
 
-        @container (min-width: 1200px) {
-          & #details-content {
-            width: fit-content;
-            inset-inline-start: unset;
-            inset-inline-end: 0;
+        &[open] {
+          summary {
+            background-color: var(--_background-color);
+
+            &:before {
+              --_mask: conic-gradient(#000000 0 0);
+            }
           }
         }
       }
-    }
-  }
-
-  &:not(.standalone, .compact) {
-    @container (min-width: 1200px) {
-      border-block-end: 4px solid transparent; /* Non standard border width */
     }
   }
 
   &.link {
-    display: block;
-    height: 100%;
-    justify-items: center;
-    align-content: center;
+    display: inline-block;
+    height: fit-content;
+    border-block-start: none;
 
     & ::slotted(a) {
-      display: flex;
       color: var(--rh-color-text-primary) !important;
-      text-decoration: none !important;
+    }
+
+    &.hamburger {
       height: 100%;
-      align-items: center;
+
+      & ::slotted(a) {
+        display: flex;
+        align-items: center;
+        height: calc(100% + 4px);
+        font-size: var(--rh-font-size-body-text-md, 1rem);
+        padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
+      }
+
+      & ::slotted(:is(a:hover, a:focus-visible)) {
+        text-underline-offset: 4px !important;
+        text-decoration-color: var(--rh-color-border-subtle) !important;
+        text-decoration-line: underline !important;
+        text-decoration-style: dotted !important;
+        text-decoration-skip-ink: auto !important;
+        color: var(--rh-color-interactive-primary-hover) !important;
+      }
+
+      & ::slotted(a:is(:focus-visible, :hover:focus-visible)) {
+        outline-offset: 0;
+        outline: var(--rh-border-width-md, 2px) solid var(--rh-color-interactive-primary-default);
+        border-radius: var(--rh-border-radius-default, 3px);
+      }
+
+      @container (min-width: 1200px) {
+        & ::slotted(a) {
+          padding: 0 var(--rh-space-lg, 16px);
+        }
+      }
     }
 
-    & ::slotted(a:active) {
-      /* background-color: var(--_background-color); */
-      color: var(--rh-color-interactive-primary-default) !important;
-      text-decoration: none !important;
-    }
-
-    & ::slotted(a:is(:focus-visible, :hover:focus-visible, :active)) {
-      outline-offset: 2px;
-      outline:
-        var(--rh-border-width-md, 2px)
-        solid
-        var(--rh-color-interactive-primary-default);
-      border-radius: var(--rh-border-radius-default, 3px);
-    }
-
-    &.standalone {
-      display: inline-block;
-      height: fit-content;
-      border-block-start: none;
+    &:not(.hamburger) {
       padding: var(--rh-space-md, 8px);
 
       & ::slotted(a) {
@@ -339,120 +355,18 @@
         color: var(--rh-color-interactive-primary-hover) !important;
       }
 
+      & ::slotted(a:is(:focus-visible, :hover:focus-visible)) {
+        outline-offset: 2px;
+        outline:
+          var(--rh-border-width-md, 2px)
+          solid
+          var(--rh-color-interactive-primary-default);
+        border-radius: var(--rh-border-radius-default, 3px);
+      }
+
       &:has(:focus-within) {
         & ::slotted(a) {
           background-color: var(--_background-color);
-        }
-      }
-    }
-
-    &:not(.standalone) {
-      /* stylelint-disable-next-line no-descending-specificity */
-      & ::slotted(a) {
-        font-size: var(--rh-font-size-body-text-md, 1rem);
-        padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
-        height: calc(100% + 4px);
-      }
-
-      & ::slotted(:is(a:hover, a:focus-visible)) {
-        text-underline-offset: 4px !important;
-        text-decoration-color: var(--rh-color-border-subtle) !important;
-        text-decoration-line: underline !important;
-        text-decoration-style: dotted !important;
-        text-decoration-skip-ink: auto !important;
-        color: var(--rh-color-interactive-primary-hover) !important;
-      }
-
-      @container (min-width: 1200px) {
-        & ::slotted(a) {
-          padding: 0 var(--rh-space-lg, 16px);
-        }
-      }
-    }
-  }
-
-  &:is(.standalone.link) {
-    font-size: var(--rh-font-size-body-text-sm, 0.875rem);
-  }
-
-  &:not(.standalone, .link) {
-    details {
-      border-inline-start: var(--rh-border-width-lg, 3px) solid transparent;
-      border-inline-end: var(--rh-border-width-sm, 1px) solid transparent;
-      justify-items: unset;
-      align-content: unset;
-
-      @container (min-width: 1200px) {
-        border-inline: none;
-      }
-
-      &[open] {
-        border-inline-end-color: var(--rh-color-border-subtle);
-        border-inline-start-color: var(--rh-color-accent-brand);
-
-        @container (min-width: 1200px) {
-          border-block-start-color: light-dark(var(--rh-color-accent-brand), transparent);
-          border-inline-start-color: light-dark(var(--rh-color-border-subtle), transparent);
-        }
-
-        /* stylelint-disable-next-line no-descending-specificity */
-        summary {
-          border-block-start-color: var(--rh-color-text-brand);
-        }
-      }
-
-      /* stylelint-disable-next-line no-descending-specificity */
-      & summary {
-        flex-direction: row;
-        justify-content: space-between;
-        padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
-
-        @container (min-width: 1200px) {
-          padding: 0 var(--rh-space-lg, 16px);
-          width: auto;
-
-          /**
-           * adjustment for 4px border, because border-image usage
-           * we can't use transparent on opposite side to balance
-           */
-          height: calc(100% + 4px);
-        }
-      }
-    }
-
-    @container (min-width: 1200px) {
-      &:hover {
-        border-block-end-color: var(--rh-color-border-subtle);
-      }
-
-      &:is(:active, :focus-within, :has(details[open])) {
-        border-image: var(--_active-item-color) 1;
-      }
-    }
-  }
-
-  &.compact {
-    /* JS failed, load mobile styles */
-    @container (min-width: 1200px) {
-      &:not(.standalone, .link) {
-        & details {
-          border-block-end: none;
-          border-inline-start: var(--rh-border-width-lg, 3px) solid transparent;
-          border-inline-end: var(--rh-border-width-sm, 1px) solid transparent;
-
-          & summary {
-            padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
-          }
-
-          & #details-content {
-            position: static;
-            box-shadow: none;
-          }
-
-          &[open] {
-            border-inline-end-color: var(--rh-color-border-subtle);
-            border-inline-start-color: var(--rh-color-accent-brand);
-          }
         }
       }
     }

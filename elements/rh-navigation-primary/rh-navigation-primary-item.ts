@@ -9,7 +9,12 @@ import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 
 import { consume } from '@lit/context';
-import { context, type RhNavigationPrimaryItemContext } from './context.js';
+import {
+  context,
+  hamburgerContext,
+  type RhNavigationPrimaryItemContext,
+  type RhNavigationPrimaryHamburgerContext,
+} from './context.js';
 
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
@@ -58,7 +63,6 @@ export class RhNavigationPrimaryItem extends LitElement {
 
   @property({ reflect: true }) hide?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' = undefined;
 
-  @property({ reflect: true, type: Boolean }) standalone = false;
 
   /** Shorthand for the `icon` slot, the value is icon name */
   @property() icon?: IconNameFor<IconSetName>;
@@ -70,24 +74,29 @@ export class RhNavigationPrimaryItem extends LitElement {
   @property({ attribute: false })
   private ctx?: RhNavigationPrimaryItemContext;
 
+  @consume({ context: hamburgerContext, subscribe: true })
+  @property({ attribute: false })
+  private hamburgerCtx?: RhNavigationPrimaryHamburgerContext;
+
   /**
    * Color palette
    */
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   render() {
-    const { hide = '', variant = '', standalone } = this;
+    const { hide = '', variant = '' } = this;
     const { compact = true } = this.ctx ?? {};
+    const { hamburger = false } = this.hamburgerCtx ?? {};
     return html`
       <div id="container" part="container" class="${classMap({
         [variant]: true,
         highlight: !!this.#highlight,
         hide: !!hide,
-        standalone: standalone,
         compact,
+        hamburger,
       })}">${this.variant === 'dropdown' ? html`
         <details @toggle="${this.#detailsToggle}">
-          <summary>${!this.standalone ? '' : html`
+          <summary>${hamburger ? '' : html`
             <slot name="icon">${this.icon ? '' : html`
               <rh-icon icon="${this.icon}" set="${ifDefined(this.iconSet)}"></rh-icon>`}
             </slot>`}

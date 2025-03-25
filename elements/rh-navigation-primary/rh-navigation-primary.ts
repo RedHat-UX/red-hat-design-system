@@ -1,4 +1,4 @@
-import { LitElement, html, isServer } from 'lit';
+import { LitElement, html, isServer, type PropertyValues } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { state } from 'lit/decorators/state.js';
 import { property } from 'lit/decorators/property.js';
@@ -20,6 +20,7 @@ import {
   RhNavigationPrimaryItemToggleEvent,
 } from './rh-navigation-primary-item.js';
 import './rh-navigation-primary-overlay.js';
+import './rh-navigation-primary-hamburger.js';
 
 import { context, type RhNavigationPrimaryItemContext } from './context.js';
 
@@ -161,16 +162,18 @@ export class RhNavigationPrimary extends LitElement {
               </a>
             </slot>
           </div>
-          <details id="hamburger" @toggle="${this.#hamburgerToggle}">
-            <summary @click="${this.#hamburgerClick}">
-              <rh-icon icon="menu-bars" set="ui"></rh-icon>
-              <div id="summary"><slot name="summary">Menu</slot></div>
-              <rh-icon icon="caret-down" set="microns"></rh-icon>
-            </summary>
-            <div id="details-content" role="list">
-              <slot></slot>
-            </div>
-          </details>
+          <rh-navigation-primary-hamburger>
+            <details id="hamburger" @toggle="${this.#hamburgerToggle}">
+              <summary @click="${this.#hamburgerClick}">
+                <rh-icon icon="menu-bars" set="ui"></rh-icon>
+                <div id="summary"><slot name="summary">Menu</slot></div>
+                <rh-icon icon="caret-down" set="microns"></rh-icon>
+              </summary>
+              <div id="details-content" role="list">
+                <slot></slot>
+              </div>
+            </details>
+          </rh-navigation-primary-hamburger>
           <div id="secondary">
             <div id="event" role="list"><slot name="event"></slot></div>
             <div id="links" role="list"><slot name="links"></slot></div>
@@ -191,8 +194,7 @@ export class RhNavigationPrimary extends LitElement {
   }
 
   #makeContext(): RhNavigationPrimaryItemContext {
-    const { compact } = this;
-    return { compact };
+    return { compact: this.compact };
   }
 
   /**
