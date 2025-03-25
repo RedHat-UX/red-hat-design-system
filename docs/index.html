@@ -12,12 +12,10 @@ title: Home
     max-width: var(--container-max-width);
     container: container / inline-size;
     padding-inline: var(--main-padding);
-    padding-block-start: calc(var(--uxdot-masthead-max-height) + var(--main-padding));
-    padding-block-end: 6rem;
+    padding-block-start: calc(var(--rh-space-3xl) + var(--main-padding));
+    padding-block-end: var(--rh-space-6xl);
 
-    @media (min-width: 576px) { --main-padding: var(--rh-space-2xl); }
-    @media (min-width: 768px) { --main-padding: var(--rh-space-3xl); }
-    @media (min-width: 992px) { --main-padding: var(--rh-space-6xl); }
+    @media (min-width: 768px) { --main-padding: var(--rh-space-5xl); }
   }
 
   h2 {
@@ -29,14 +27,16 @@ title: Home
 
   #hero {
     display: grid;
-    margin-block-end: calc(10 * var(--rh-space-lg));
+    margin-block-end: var(--rh-space-7xl);
     grid-template-columns: 1fr;
     grid-template-areas: 'text' 'image';
-    gap: var(--rh-space-3xl) var(--rh-space-5xl);
+    align-items: center;
+    gap: var(--rh-space-4xl);
 
     @container (min-width: 768px) { 
       grid-template-columns: 4fr 3fr;
       grid-template-areas: 'text image';
+      align-items: center;
     }
 
     & > div {
@@ -99,7 +99,7 @@ title: Home
       &:last-of-type { margin-block-end: 0; }
       width: calc(100% - 2 * var(--nav-padding));
 
-      @media (min-width: 768px) { --nav-padding: var(--rh-space-3xl); }
+      @media (min-width: 766px) { --nav-padding: var(--rh-space-3xl); }
       @media (min-width: 992px) { --nav-padding: var(--rh-space-4xl); }
 
       & > h2 {
@@ -163,7 +163,7 @@ title: Home
   }
 
   .tiles {
-    margin-bottom: calc(10 * var(--rh-space-lg));
+    margin-bottom: var(--rh-space-7xl);
     & p {
       margin: 0;
       font-size: var(--rh-font-size-body-text-sm);
@@ -195,7 +195,7 @@ title: Home
       </div>
       <img alt="A woman sits cross-legged on a low office chair, smiling at the screen of the black laptop on her knee. floating graphics surround her head: a cloud, a stylized representation of a website"
            src="/assets/home/hero-image.png"
-           width="464"
+           width="494"
            height="438">
     </header>
 
