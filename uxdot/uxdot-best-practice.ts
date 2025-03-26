@@ -9,17 +9,26 @@ import styles from './uxdot-best-practice.css';
 export class UxdotBestPractice extends LitElement {
   static styles = [styles];
 
-  @property({ reflect: true }) variant: 'do' | 'dont' = 'do';
+  @property({ reflect: true }) variant: 'do' | 'dont' | 'caution' = 'do';
+
 
   render() {
     const { variant } = this;
-    const icon = variant === 'do' ? 'check-circle-fill' : 'close-circle-fill';
-    const title = variant === 'do' ? 'Do' : 'Don\'t';
+    const iconMap = {
+      do: 'check-circle-fill',
+      dont: 'close-circle-fill',
+      caution: 'warning-fill',
+    };
+    const titleMap = {
+      do: 'Do',
+      dont: 'Don\'t',
+      caution: 'Caution',
+    };
     return html`
       <figure id="container">
         <slot name="image"></slot>
         <figcaption id="${variant}">
-          <span><rh-icon set="ui" icon="${icon}" size="md"></rh-icon>${title}</span>
+          <span><rh-icon set="ui" icon="${iconMap[variant]}" size="md"></rh-icon>${titleMap[variant]}</span>
           <slot></slot>
         </figcaption>
       </figure>
