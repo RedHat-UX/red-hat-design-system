@@ -15,12 +15,20 @@ label {
   margin-block-end: var(--_spacer);
   outline: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
   padding: var(--rh-space-xs, 4px) var(--rh-space-md, 8px);
+  position: relative;
   text-wrap: balance;
 
-  &:hover,
-  &:focus-within {
+  &:hover {
     cursor: pointer;
     outline-width: var(--rh-border-width-md, 2px);
+  }
+
+  &:focus-within:after {
+    content: '';
+    border-radius: var(--rh-border-radius-default, 3px);
+    inset: var(--rh-length-3xs, 2px) var(--rh-length-md, 8px);
+    outline: var(--rh-border-width-md, 2px) solid var(--rh-color-border-interactive);
+    position: absolute;
   }
 
   &:has(input[aria-disabled='true']),
@@ -45,10 +53,6 @@ label {
     &:hover {
       outline-color: light-dark(var(--rh-color-blue-30, #92c5f9), var(--rh-color-blue-50, #0066cc));
     }
-  }
-
-  &:has(input[aria-disabled='true']:focus-visible) {
-    outline-offset: var(--rh-border-width-md, 2px);
   }
 
   &.size-sm {
