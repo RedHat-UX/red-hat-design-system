@@ -8,22 +8,29 @@
 :host([orientation='horizontal']) {
   display: flex;
   justify-content: center;
-  border-block-end: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
 
   #container {
     display: flex;
     flex-flow: row nowrap;
     overflow-x: scroll;
 
+    &:after,
     &:before {
       display: block;
       position: absolute;
       inset-inline: 0;
+      content: '';
+    }
 
+    &:before {
       /* scroll button width */
       margin-inline: var(--rh-space-3xl);
-      content: '';
       border-block-start: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+    }
+
+    &:after {
+      border-block-end: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+      inset-block-end: 0;
     }
   }
 

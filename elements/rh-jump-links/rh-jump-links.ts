@@ -67,7 +67,7 @@ export class RhJumpLinks extends LitElement {
   }
 
   override firstUpdated(): void {
-    const active: RhJumpLinksItem | null = this.querySelector('rh-jump-link[active]');
+    const active: RhJumpLink | null = this.querySelector('rh-jump-link[active]');
     if (active) {
       this.#setActiveItem(active);
     }
