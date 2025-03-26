@@ -200,7 +200,7 @@ export default class ElementsPage extends Renderer<Context> {
       doc.fileExists && await this.renderFile(doc.filePath, ctx),
       await this.#renderCodeDocs.call(this,
                                       doc.docsPage.tagName,
-                                      { ...ctx, level: (ctx.level ?? 2) + 1 }),
+                                      { ...ctx, level: (ctx.level ?? 1) + 1 }),
       ...await Promise.all(doc.siblingElements.map(tagName =>
         this.#renderCodeDocs.call(this, tagName, ctx))),
     ].filter(Boolean).join('');
@@ -259,6 +259,11 @@ export default class ElementsPage extends Renderer<Context> {
 
   async #renderInstallation({ doc, cdnVersion = 'v1-alpha' }: Context) {
     const jspmMap = await this.#generateImportMap(doc.docsPage.tagName)
+        .catch(() => {
+          // try again
+          ElementsPage.assetCache.cache.destroy();
+          return this.#generateImportMap(doc.docsPage.tagName);
+        })
         .catch(error => {
           console.warn(error); // eslint-disable-line no-console
           return `Could not generate import map using JSPM: ${error.message}`;
@@ -346,7 +351,7 @@ export default class ElementsPage extends Renderer<Context> {
     return html`
       <h${h} id="${tagName}-apis">${tagName}</h${h}>
 
-      <p>${manifest.getDescription(tagName)}</p>
+      ${await this.renderTemplate(manifest.getDescription(tagName) ?? '', 'md')}
 
       <rh-accordion box>
         ${await this.#renderSlots(tagName, ctx)}
@@ -785,8 +790,9 @@ export default class ElementsPage extends Renderer<Context> {
     const entries = Object.entries(ctx.playgrounds[tagName]?.files ?? {}) as FileEntry[];
     return [
       await this.#renderDemoHead(),
+      ctx.doc.fileExists && await this.renderFile(ctx.doc.filePath, ctx),
       ...await this.#renderPlaygrounds(ctx, entries),
-    ].join('');
+    ].filter(Boolean).join('');
   }
 
   async #renderDemoHead() {
@@ -903,16 +909,13 @@ export default class ElementsPage extends Renderer<Context> {
 
   async #renderPlaygrounds(ctx: Context, entries: FileEntry[]) {
     const common = await this.#renderPlaygroundsCommon(ctx, entries);
-    return entries.map(([filename, config]) => this.#renderPlayground(
+    return entries.flatMap(([filename, config], _, array) => this.#renderPlayground(
       filename,
       config,
       ctx,
       common,
-      entries
-          .filter(([, config]) => config.inline === filename)
-          .map(([s]) => s)
-
-    ));
+      array,
+    )).join('');
   };
 
   #renderPlayground(
@@ -920,8 +923,11 @@ export default class ElementsPage extends Renderer<Context> {
     config: FileOptions,
     ctx: Context,
     common: string,
-    inlineResources: string[],
+    entries: FileEntry[]
   ) {
+    const inlineResources = entries
+        .filter(([, config]) => config.inline === filename)
+        .map(([s]) => s);
     const { doc, tagName, isLocal } = ctx;
     const { slug } = doc;
     if (!config.label) {
