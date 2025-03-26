@@ -16,8 +16,8 @@ import styles from './rh-subnav.css';
 
 /**
  * A subnavigation allows users to navigate between a small number of page links.
- * @summary Organizes conent into sections using tabbed pages
- * @slot - Navigation linkts, expects collection of `<a>` elements
+ * @summary Organizes content into sections using tabbed pages
+ * @slot - Navigation links, expects collection of `<a>` elements
  * @csspart container - container, `<div>` element
  * @csspart links     - `<slot>` element
  */
