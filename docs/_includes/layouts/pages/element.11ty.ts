@@ -200,7 +200,7 @@ export default class ElementsPage extends Renderer<Context> {
       doc.fileExists && await this.renderFile(doc.filePath, ctx),
       await this.#renderCodeDocs.call(this,
                                       doc.docsPage.tagName,
-                                      { ...ctx, level: (ctx.level ?? 2) + 1 }),
+                                      { ...ctx, level: (ctx.level ?? 1) + 1 }),
       ...await Promise.all(doc.siblingElements.map(tagName =>
         this.#renderCodeDocs.call(this, tagName, ctx))),
     ].filter(Boolean).join('');
@@ -340,9 +340,7 @@ export default class ElementsPage extends Renderer<Context> {
     const { docsPage } = ctx.doc;
     const { manifest } = docsPage;
 
-    // TODO: add heading level nesting in TOC
-    // const h = ctx.level ?? 2;
-    const h = 2;
+    const h = ctx.level ?? 2;
 
     // TODO: dsd
     return html`
@@ -363,9 +361,7 @@ export default class ElementsPage extends Renderer<Context> {
   }
 
   async #renderSlots(tagName: string, ctx: Context) {
-    // TODO: add heading level nesting in TOC, which relates to level here as well
-    // const level = ctx.level ?? 2;
-    const level = 2;
+    const level = ctx.level ?? 2;
     const allSlots = ctx.doc.docsPage.manifest.getSlots(tagName) ?? [];
     const slots = allSlots.filter(x => !x.deprecated);
     const deprecated = allSlots.filter(x => x.deprecated);
@@ -426,9 +422,7 @@ export default class ElementsPage extends Renderer<Context> {
   }
 
   async #renderAttributes(tagName: string, ctx: Context) {
-    // TODO: add heading level nesting in TOC, which relates to level here as well
-    // const level = ctx.level ?? 2;
-    const level = 2;
+    const level = ctx.level ?? 2;
     const _attrs = (ctx.doc.docsPage.manifest.getAttributes(tagName) ?? []);
     const deprecated = _attrs.filter(x => x.deprecated);
     const attributes = _attrs.filter(x => !x.deprecated);
@@ -499,9 +493,7 @@ export default class ElementsPage extends Renderer<Context> {
   }
 
   async #renderMethods(tagName: string, ctx: Context) {
-    // TODO: add heading level nesting in TOC, which relates to level here as well
-    // const level = ctx.level ?? 2;
-    const level = 2;
+    const level = ctx.level ?? 2;
     const allMethods = ctx.doc.docsPage.manifest.getMethods(tagName) ?? [];
     const deprecated = allMethods.filter(x => x.deprecated);
     const methods = allMethods.filter(x => !x.deprecated);
@@ -564,9 +556,7 @@ export default class ElementsPage extends Renderer<Context> {
   }
 
   async #renderEvents(tagName: string, ctx: Context) {
-    // TODO: add heading level nesting in TOC, which relates to level here as well
-    // const level = ctx.level ?? 2;
-    const level = 2;
+    const level = ctx.level ?? 2;
     const _events = ctx.doc.docsPage.manifest.getEvents(tagName) ?? [];
     const deprecated = _events.filter(x => x.deprecated);
     const events = _events.filter(x => !x.deprecated);
@@ -628,9 +618,7 @@ export default class ElementsPage extends Renderer<Context> {
   }
 
   async #renderCssParts(tagName: string, ctx: Context) {
-    // TODO: add heading level nesting in TOC, which relates to level here as well
-    // const level = ctx.level ?? 2;
-    const level = 2;
+    const level = ctx.level ?? 2;
     const allParts = ctx.doc.docsPage.manifest.getCssParts(tagName) ?? [];
     const parts = allParts.filter(x => !x.deprecated);
     const deprecated = allParts.filter(x => x.deprecated);
@@ -692,9 +680,7 @@ export default class ElementsPage extends Renderer<Context> {
   }
 
   async #renderCssCustomProperties(tagName: string, ctx: Context) {
-    // TODO: add heading level nesting in TOC, which relates to level here as well
-    // const level = ctx.level ?? 2;
-    const level = 2;
+    const level = ctx.level ?? 2;
     const allCssProperties = (ctx.doc.docsPage.manifest.getCssCustomProperties(tagName) ?? [])
         .filter(x => !tokens.has(x.name));
     const cssProperties = allCssProperties.filter(x => !x.deprecated);
