@@ -11,15 +11,15 @@ import { InternalsController } from '@patternfly/pfe-core/controllers/internals-
 
 import { themable } from '@rhds/elements/lib/themable.js';
 
-import style from './rh-jump-links-item.css';
+import style from './rh-jump-link.css';
 
 import { rhJumpLinksOrientationContext } from './context.js';
 
 /**
  */
-@customElement('rh-jump-links-item')
+@customElement('rh-jump-link')
 @themable
-export class RhJumpLinksItem extends LitElement {
+export class RhJumpLink extends LitElement {
   static readonly styles: CSSStyleSheet[] = [style];
 
   static override readonly shadowRootOptions: ShadowRootInit = {
@@ -63,6 +63,6 @@ export class RhJumpLinksItem extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'rh-jump-links-item': RhJumpLinksItem;
+    'rh-jump-link': RhJumpLink;
   }
 }

@@ -9,7 +9,7 @@ import { OverflowController } from '@patternfly/pfe-core/controllers/overflow-co
 
 import { themable } from '@rhds/elements/lib/themable.js';
 
-import { RhJumpLinksItem } from './rh-jump-links-item.js';
+import { RhJumpLink } from './rh-jump-link.js';
 import { rhJumpLinksOrientationContext } from './context.js';
 
 import style from './rh-jump-links.css';
@@ -20,7 +20,7 @@ import { observes } from '@patternfly/pfe-core/decorators.js';
 /**
  * **Jump links** allow users to navigate to sections within a page.
  * @fires toggle - when the `expanded` disclosure widget is toggled
- * @slot - Place rh-jump-links-items here
+ * @slot - Place rh-jump-link elements here
  */
 @customElement('rh-jump-links')
 @themable
@@ -40,10 +40,10 @@ export class RhJumpLinks extends LitElement {
 
   #spy = new ScrollSpyController(this, {
     rootMargin: '0px 0px 0px 0px',
-    tagNames: ['rh-jump-links-item'],
+    tagNames: ['rh-jump-link'],
     onIntersection: () => {
       for (const list of this.querySelectorAll('rh-jump-links-list')) {
-        list.active = !!list.querySelector('rh-jump-links-item[active]');
+        list.active = !!list.querySelector('rh-jump-link[active]');
       }
       this.#overflow.update();
     },
@@ -56,7 +56,7 @@ export class RhJumpLinks extends LitElement {
     if (!isServer) {
       RovingTabindexController.of(this, {
         getItems: () => Array.from(
-          this.querySelectorAll('rh-jump-links-item'),
+          this.querySelectorAll('rh-jump-link'),
           x => x.shadowRoot?.querySelector('a')
         ).filter(x =>
           !!x
@@ -67,7 +67,7 @@ export class RhJumpLinks extends LitElement {
   }
 
   override firstUpdated(): void {
-    const active: RhJumpLinksItem | null = this.querySelector('rh-jump-links-item[active]');
+    const active: RhJumpLinksItem | null = this.querySelector('rh-jump-link[active]');
     if (active) {
       this.#setActiveItem(active);
     }
@@ -146,12 +146,12 @@ export class RhJumpLinks extends LitElement {
   }
 
   #onSelect(event: Event) {
-    if (event.target instanceof RhJumpLinksItem) {
+    if (event.target instanceof RhJumpLink) {
       this.#setActiveItem(event.target);
     }
   }
 
-  async #setActiveItem(item: RhJumpLinksItem) {
+  async #setActiveItem(item: RhJumpLink) {
     await this.updateComplete;
     this.#spy.setActive(item);
   }
