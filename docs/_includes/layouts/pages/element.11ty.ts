@@ -346,7 +346,7 @@ export default class ElementsPage extends Renderer<Context> {
     return html`
       <h${h} id="${tagName}-apis">${tagName}</h${h}>
 
-      <p>${manifest.getDescription(tagName)}</p>
+      ${await this.renderTemplate(manifest.getDescription(tagName) ?? '', 'md')}
 
       <rh-accordion box>
         ${await this.#renderSlots(tagName, ctx)}
