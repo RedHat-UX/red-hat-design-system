@@ -45,6 +45,7 @@ a {
 
   &.active {
     color: var(--rh-color-interactive-secondary-active);
+
     --_bdr-c: var(--rh-color-brand-red);
   }
 
@@ -52,6 +53,7 @@ a {
   &:hover,
   &.active {
     --_bdr: var(--_border-override, var(--rh-length-xs, 4px) solid var(--_bdr-c));
+
     &.vertical:before {
       height: 100%;
       inset-inline-start: 0;
