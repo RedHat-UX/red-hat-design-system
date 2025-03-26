@@ -4,17 +4,6 @@
 
 [part='container'] {
   display: flex;
-
-  --_subnav-link-text-color: var(--rh-color-text-secondary);
-  --_subnav-link-hover-text-color: var(--rh-color-text-primary);
-  --_subnav-link-hover-border-end-color: var(--rh-color-border-subtle-on-dark, #707070);
-  --_subnav-link-active-border-end-color: var(--rh-color-accent-brand);
-  --_subnav-link-visited-text-color: var(--rh-color-text-secondary);
-  --_subnav-link-focus-outline-color: var(--rh-color-border-interactive);
-  --_subnav-next-prev-button-text-color: var(--rh-color-text-secondary);
-  --_subnav-next-prev-disabled-text-color: var(--rh-color-border-subtle);
-  --_subnav-next-prev-hover-text-color: var(--rh-color-text-primary);
-  --_subnav-next-prev-border-color: var(--rh-color-border-subtle);
 }
 
 [part='links'] {
@@ -31,9 +20,7 @@
   white-space: nowrap !important;
   padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px) !important;
   text-decoration: none !important;
-  color:
-    var(--_subnav-link-text-color,
-      var(--rh-color-text-secondary)) !important;
+  color: var(--rh-color-text-secondary) !important;
   position: relative !important;
 }
 
@@ -48,39 +35,30 @@
 ::slotted(a:hover),
 ::slotted(a:active),
 ::slotted(a[active]) {
-  color:
-    var(--_subnav-link-hover-text-color,
-      var(--rh-color-text-secondary)) !important;
+  color: var(--rh-color-text-primary) !important;
 }
 
 ::slotted(a:focus-visible):after,
 ::slotted(a:hover):after {
-  border-block-end-color:
-    var(--_subnav-link-hover-border-end-color,
-      var(--rh-color-gray-50, #707070)) !important;
+  border-block-end-color: var(--rh-color-border-subtle) !important;
 }
 
 ::slotted(a:active):after,
 ::slotted(a[active]):after {
-  border-block-end-color:
-    var(--_subnav-link-active-border-end-color,
-      var(--rh-color-accent-brand)) !important;
+  border-block-end-color: var(--rh-color-accent-brand) !important;
 }
 
 ::slotted(a:focus-visible) {
   outline:
     var(--rh-border-width-md, 2px)
     solid
-    var(--_subnav-link-focus-outline-color,
-      var(--rh-color-interactive-primary-default)) !important;
+    var(--rh-color-border-interactive) !important;
   outline-offset: -2px !important;
   border-radius: 10px !important;
 }
 
 ::slotted(a:visited) {
-  color:
-    var(--_subnav-link-visited-text-color,
-      var(--rh-color-text-primary)) !important;
+  color: var(--rh-color-text-primary) !important;
 }
 
 button {
@@ -89,17 +67,15 @@ button {
   margin: 0;
   background-color: transparent;
   border: none;
-  color:
-    var(--_subnav-next-prev-button-text-color,
-      var(--rh-color-text-secondary));
+  color: var(--rh-color-text-secondary);
 
   &:disabled {
     pointer-events: none;
-    color: var(--_subnav-next-prev-disabled-text-color, var(--rh-color-gray-10, #f2f2f2));
+    color: var(--rh-color-border-subtle);
   }
 
   &:hover {
-    color: var(--_subnav-next-prev-hover-text-color, var(--rh-color-text-primary));
+    color: var(--rh-color-text-primary);
   }
 
   &:before {
@@ -109,23 +85,17 @@ button {
     border-block-end: var(--rh-border-width-lg, 3px) solid transparent;
 
     &:hover {
-      border-block-end-color: var(--_subnav-link-hover-border-end-color);
+      border-block-end-color: var(--rh-color-border-subtle);
     }
   }
 }
 
 #previous {
-  border-inline-end:
-    var(--rh-border-width-sm, 1px)
-    solid
-    var(--_subnav-next-prev-border-color, var(--rh-color-border-subtle));
+  border-inline-end: var(--rh-border-width-sm, 1px)  solid  var(--rh-color-border-subtle);
 }
 
 #next {
-  border-inline-start:
-    var(--rh-border-width-sm, 1px)
-    solid
-    var(--_subnav-next-prev-border-color, var(--rh-color-border-subtle));
+  border-inline-start: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
 }
 
 #next,
