@@ -1,4 +1,5 @@
 import { expect, html, oneEvent, fixture } from '@open-wc/testing';
+import { clickElementAtCenter } from '@patternfly/pfe-tools/test/utils.js';
 import { RhAlert } from '../rh-alert.js';
 
 
@@ -53,15 +54,11 @@ describe('<rh-alert>', function() {
     });
 
     it('should send a close event on dismissable close button click', async () => {
-      elementCloseButton = dismissableElement.shadowRoot?.querySelector('#close-button');
-
-      setTimeout(function() {
-        elementCloseButton?.click();
-      });
-      await oneEvent(dismissableElement, 'close');
-      dismissableElement.requestUpdate();
-
-      await dismissableElement.updateComplete;
+      const elementCloseButton = dismissableElement.shadowRoot!.querySelector('#close-button')!;
+      if (!elementCloseButton) {
+        throw new Error('no close button');
+      }
+      await clickElementAtCenter(elementCloseButton);
       expect(dismissableElement.isConnected).to.be.false;
     });
 

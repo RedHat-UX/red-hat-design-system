@@ -92,6 +92,7 @@
   }
 
   display: inline-flex;
+  scale: 1;
   align-items: center;
   width: max-content;
   font-size: var(--_font-size, var(--rh-font-size-body-text-md, 1rem));
@@ -136,7 +137,7 @@
 
   &.active {
     color: var(--rh-color-text-primary);
-    z-index: 10;
+    z-index: 1;
   }
 
   &.sm {
@@ -175,7 +176,7 @@
       display: block;
       content: '';
       min-height: var(--rh-length-xs, 4px);
-      z-index: 10;
+      z-index: 1;
       background-color: var(--_accent);
     }
 
