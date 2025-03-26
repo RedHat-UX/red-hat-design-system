@@ -212,6 +212,18 @@ export default [
     },
   },
   {
+    tagName: 'rh-disclosure',
+    name: 'Disclosure',
+    type: 'element',
+    overallStatus: 'ready',
+    libraries: {
+      figma: 'ready',
+      rhds: 'ready',
+      shared: 'planned',
+      docs: 'ready',
+    },
+  },
+  {
     tagName: 'rh-footer',
     name: 'Footer',
     type: 'element',
