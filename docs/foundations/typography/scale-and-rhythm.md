@@ -11,14 +11,6 @@ subnav:
   order: 5
 ---
 
-<link rel="stylesheet"
-      href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css"
-      data-helmet>
-
-<script type="module" data-helmet>
-  import '@rhds/elements/rh-table/rh-table.js';
-</script>
-
 <link data-helmet rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
 
 <script type="module" data-helmet>
@@ -37,7 +29,6 @@ subnav:
   }
 </style>
 
-<!--add rh-table tags for tables?-->
 
 ## Overview
 
@@ -226,25 +217,23 @@ Use the following specs for lists.
       height="440">
 </uxdot-example>
 
-### Padding <!----Change to "Margin"?---->
+### Margin
 
-There are different padding specs depending on how text styles are grouped.
+There are different margin specs depending on how text styles are grouped.
 
 - In general, blocks of content use the `--rh-space-5xl` token on the top and bottom
 - Blocks of content with subsections use the `--rh-space-4xl` token in between
 
-<!--fix alt text-->
 <uxdot-example width-adjustment="1012px" color-palette="lightest">
   <img src="/assets/typography/scale-and-rhythm-padding-A.svg"
-      alt="Diagram showing padding " 
+      alt="Diagram showing spacing between body text, calls to action, and headings"
       width="1012"
       height="633">
 </uxdot-example>
 
-<!--fix alt text-->
 <uxdot-example width-adjustment="1012px" color-palette="lightest">
   <img src="/assets/typography/scale-and-rhythm-padding-B.svg"
-      alt="Diagram showing padding " 
+      alt="Diagram showing spacing above and below different headings and body text"
       width="1012"
       height="905">
 </uxdot-example>
