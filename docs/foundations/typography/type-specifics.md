@@ -11,15 +11,6 @@ subnav:
   order: 4
 ---
 
-<link rel="stylesheet"
-      href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css"
-      data-helmet>
-
-<script type="module" data-helmet>
-  import '@rhds/elements/rh-table/rh-table.js';
-  import '@rhds/elements/rh-card/rh-card.js';
-  import '@rhds/elements/rh-cta/rh-cta.js';
-</script>
 
 ## Overview
 
@@ -64,7 +55,7 @@ Color is applied to text depending on content, hierarchy, theme, and more.
 
 To learn more about color as a foundation, go to the [Color][colorfoundations] page.
 
-To learn more about color contrast, go to the Accessibility section. <!--ADD LINK-->
+To learn more about color contrast, go to the [Accessibility][coloraccessibility] section.
 
 ## Emphasis
 
@@ -104,7 +95,7 @@ Good hierarchy is key to telling a story and there are many ways to create it us
 
 Line height is the vertical space in between lines of text in the same paragraph. Typography at Red Hat should feel open, but we do not want to impact readability and legibility by overly increasing or decreasing line heights.
 
-To see line height values for specific text styles, go to the [Scale][scale] page.
+To see line height values for specific text styles, go to the [Scale and rhythm][scaleandrhythm] page.
 
 - Line heights that are too tight or too loose make text difficult to read
 - The maximum line height for all text styles is 150% or 1.5x the font size
@@ -159,7 +150,7 @@ Text size helps establish hierarchy. Large text sizes communicate important mess
 
 To learn about when to use extra large heading sizes, go to the [Choosing type][choosingtype] page.
 
-- In general, the [Scale][scale] page is a good resource when it comes to using text on the web
+- In general, the [Scale and rhythm][scaleandrhythm] page is a good resource when it comes to using text on the web
 - Large sizes should be used for more important messages
 - Create balanced text size pairings for visual harmony instead of tension
 - Whatever size is used, text should always be readable and legible
@@ -186,10 +177,11 @@ To see specific brand use cases, go to the [Brand standards][brandstandards] web
 
 [brandstandards]: https://www.redhat.com/en/about/brand/standards
 [colorfoundations]: /foundations/color
+[coloraccessibility]: /accessibility/design/#contrast
 [choosingtype]: /foundations/typography/choosing-type
 [expressivetype]: /foundations/typography/choosing-type/#expressive-type
-[sizepairings]:
-[scale]: ../typography/scale-and-rhythm.md
+[sizepairings]: /foundations/typography/guidelines#size-pairings
+[scaleandrhythm]: ../typography/scale-and-rhythm.md
 [spacingfoundations]: /foundations/spacing
-[corporatestyleguide]: 
+[corporatestyleguide]: https://url.corp.redhat.com/4c19837
 [blockquote]: /elements/blockquote/

@@ -43,7 +43,7 @@ Expressive type can be used as imagery if using other assets is not an option or
 
 ### Extra large headings
 
-Expressive type allows for the <strong>extremely limited</strong> use of extra large heading sizes, but not every heading needs to be larger than the sizes in the [scale][scale]. Creative direction or the goal of the page or experience should dictate whether or not heading sizes need to be larger. Follow these best practices as well.
+Expressive type allows for the <strong>extremely limited</strong> use of extra large heading sizes, but not every heading needs to be larger than the sizes in the [scale][scaleandrhythm]. Creative direction or the goal of the page or experience should dictate whether or not heading sizes need to be larger. Follow these best practices as well.
 
 - Use lots of white space around headings
 - Limit the number of words or choose a smaller heading size
@@ -104,4 +104,4 @@ Utility type includes the following styles.
   <p>To learn how to use our other foundations in your designs, visit the <a href="/foundations">foundations</a> section.</p>
 </uxdot-feedback>
 
-[scale]: ../typography/scale-and-rhythm.md
+[scaleandrhythm]: ../typography/scale-and-rhythm.md
