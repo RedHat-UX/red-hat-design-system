@@ -17,24 +17,28 @@ subnav:
 </script>
 
 <style>
-.grid {
-    
-}
-rh-card p {
-font-family: var(--rh-font-family-heading);
+rh-card {
+    height: 100%;
+
+    & p {
+        font-family: var(--rh-font-family-heading);
         font-size: var(--rh-font-size-body-text-xl);
         font-weight: var(--rh-font-weight-heading-medium);
         margin-block: 0;
+    }
+
+    &::part(header) {
+        display: block;
+    }
 }
-rh-card::part(header) {
-    display: block;
-}
+
 rh-card.do {
     & rh-icon {
         color: var(--rh-color-icon-status-success);
         --rh-icon-size: var(--rh-size-icon-03);
     }
 }
+
 rh-card.dont {
     & rh-icon {
         color: var(--rh-color-icon-status-danger);
