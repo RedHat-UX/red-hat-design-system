@@ -1,5 +1,4 @@
 import { LitElement, html, isServer } from 'lit';
-import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { query } from 'lit/decorators/query.js';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
@@ -7,10 +6,10 @@ import { property } from 'lit/decorators/property.js';
 
 import { OverflowController } from '@patternfly/pfe-core/controllers/overflow-controller.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-import { colorContextProvider } from '../../lib/context/color/provider.js';
-
 import '@rhds/elements/rh-icon/rh-icon.js';
+
+import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-subnav.css';
 
@@ -23,17 +22,10 @@ import styles from './rh-subnav.css';
  * @csspart links     - `<slot>` element
  */
 @customElement('rh-subnav')
+@colorPalettes
+@themable
 export class RhSubnav extends LitElement {
   static readonly styles = [styles];
-
-  /** Icon name to use for the scroll left button */
-  protected static readonly scrollIconLeft = 'caret-left';
-
-  /** Icon name to use for the scroll right button */
-  protected static readonly scrollIconRight = 'caret-right';
-
-  /** Icon set to use for the scroll buttons */
-  protected static readonly scrollIconSet = 'ui';
 
   private static instances = new Set<RhSubnav>();
 
@@ -51,10 +43,9 @@ export class RhSubnav extends LitElement {
     }
   }
 
-  /**
-   * Sets color theme based on parent context
-   */
-  @colorContextConsumer() private on?: ColorTheme;
+  #allLinkElements: HTMLAnchorElement[] = [];
+
+  #overflow = new OverflowController(this);
 
   /**
    * Sets color palette, which affects the element's styles as well as descendants' color theme.
@@ -62,8 +53,7 @@ export class RhSubnav extends LitElement {
    * Your theme will influence these colors so check there first if you are seeing inconsistencies.
    * See [CSS Custom Properties](#css-custom-properties) for default values
    */
-  @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette = 'lighter';
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   /**
    * Customize the default `aria-label` on the `<nav>` container.
@@ -75,9 +65,6 @@ export class RhSubnav extends LitElement {
 
   @query('[part="links"]') private linkList!: HTMLElement;
 
-  #allLinkElements: HTMLAnchorElement[] = [];
-
-  #overflow = new OverflowController(this);
 
   get #allLinks() {
     return this.#allLinkElements;
@@ -106,32 +93,35 @@ export class RhSubnav extends LitElement {
     RhSubnav.instances.delete(this);
   }
 
-  render() {
-    const { scrollIconSet, scrollIconLeft, scrollIconRight } = this.constructor as typeof RhSubnav;
-    const { showScrollButtons } = this.#overflow;
-    const { on = '' } = this;
-    return html`
-      <nav part="container" aria-label="${this.accessibleLabel}" class="${classMap({ [on]: !!on })}">${!showScrollButtons ? '' : html`
-        <button id="previous" tabindex="-1" aria-hidden="true"
-                ?disabled="${!this.#overflow.overflowLeft}"
-                @click="${this.#scrollLeft}">
-          <rh-icon icon="${scrollIconLeft}"
-                   set="${scrollIconSet}"
-                   loading="eager"></rh-icon>
-        </button>`}
-        <slot part="links"
-              @slotchange="${this.#onSlotchange}"></slot>${!showScrollButtons ? '' : html`
-        <button id="next" tabindex="-1" aria-hidden="true"
-                ?disabled="${!this.#overflow.overflowRight}"
-                @click="${this.#scrollRight}">
-          <rh-icon icon="${scrollIconRight}" set="${scrollIconSet}" loading="eager"></rh-icon>
-        </button>`}
-      </nav>
-    `;
-  }
-
   firstUpdated() {
     this.linkList.addEventListener('scroll', this.#overflow.onScroll.bind(this));
+    this.#onSlotchange();
+  }
+
+  render() {
+    return html`
+      <nav part="container" aria-label="${this.accessibleLabel}">
+        ${!this.#overflow.showScrollButtons ? '' : html`
+          <button id="previous" 
+              tabindex="-1"
+              data-direction="start"
+              aria-label="${this.getAttribute('label-scroll-left') ?? 'Scroll back'}"
+              ?disabled="${!this.#overflow.overflowLeft}"
+              @click="${this.#onClickScroll}">
+            <rh-icon set="ui" icon="caret-left" loading="eager"></rh-icon>
+          </button>`}
+        <slot part="links" @slotchange="${this.#onSlotchange}"></slot>
+        ${!this.#overflow.showScrollButtons ? '' : html`
+          <button id="next"
+              tabindex="-1"
+              data-direction="end"
+              aria-label="${this.getAttribute('label-scroll-right') ?? 'Scroll forward'}"
+              ?disabled="${!this.#overflow.overflowRight}"
+              @click="${this.#onClickScroll}">
+            <rh-icon set="ui" icon="caret-right" loading="eager"></rh-icon>
+          </button>`}
+      </nav>
+    `;
   }
 
   #onSlotchange() {
@@ -145,12 +135,25 @@ export class RhSubnav extends LitElement {
     this.#lastLink.classList.add('last');
   }
 
-  #scrollLeft() {
-    this.#overflow.scrollLeft();
-  }
-
-  #scrollRight() {
-    this.#overflow.scrollRight();
+  #onClickScroll(event: Event) {
+    if (event.target instanceof HTMLElement) {
+      switch (event.target.dataset.direction) {
+        case 'start':
+          if (this.matches(':dir(rtl)')) {
+            this.#overflow.scrollRight();
+          } else {
+            this.#overflow.scrollLeft();
+          }
+          break;
+        case 'end':
+          if (this.matches(':dir(rtl)')) {
+            this.#overflow.scrollLeft();
+          } else {
+            this.#overflow.scrollRight();
+          }
+          break;
+      }
+    }
   }
 }
 

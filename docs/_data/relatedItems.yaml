@@ -40,6 +40,9 @@ rh-dialog:
  - announcement
  - sticky-banner
  - sticky-card
+rh-disclosure: 
+ - rh-accordion
+ - rh-jump-links
 rh-footer: 
  - rh-accordion
  - rh-popover
@@ -121,10 +124,6 @@ announcement:
  - rh-dialog
  - sticky-banner
  - sticky-card
-disclosure: 
- - rh-accordion
- - filter
- - rh-form
 filter: 
  - rh-accordion
  - disclosure

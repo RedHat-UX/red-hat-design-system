@@ -19,7 +19,7 @@ The status levels for alerts are Neutral, Info, Success, Warning, Caution, and E
   <p>Go to the <a href="/foundations/color">Color</a> page to learn more about using status levels.</p>
 </rh-alert>
 
-<uxdot-example width-adjustment="928px">
+<uxdot-example color-palette="lightest" width-adjustment="928px">
   <img alt="Examples of the different colors indicating alert status"
        src="../alert-guidelines-severity.svg"
        width="928"
@@ -30,14 +30,14 @@ The status levels for alerts are Neutral, Info, Success, Warning, Caution, and E
 
 Depending on the message, an inline alert can be dismissible or not dismissible. The close button should not be included if it is critical that a user read or interact with the alert. A toast alert is always dismissible.
 
-<uxdot-example width-adjustment="880px">
+<uxdot-example color-palette="lightest" width-adjustment="880px">
   <img alt="Alert element dismissal inline examples"
        src="../alert-guidelines-dismissible-inline.svg"
        width="880"
        height="381">
 </uxdot-example>
 
-<uxdot-example width-adjustment="456px">
+<uxdot-example color-palette="lightest" width-adjustment="456px">
   <img alt="Alert element dismissal toast examples"
        src="../alert-guidelines-dismissible-toast.svg"
        width="456"
@@ -104,7 +104,7 @@ Actions enable a user to perform a specific action in relation to the alert mess
 - Primary action - use the [Secondary button](/elements/button/guidelines/#variants) element
 - Secondary action - use the [Link button](/elements/button/guidelines/#variants) element
 
-<uxdot-example width-adjustment="928px">
+<uxdot-example color-palette="lightest"  width-adjustment="928px">
   <img alt="Example of button action text"
        src="../alert-guidelines-actions.svg"
        width="928"
@@ -117,18 +117,18 @@ Actions enable a user to perform a specific action in relation to the alert mess
 
 An inline alert appears at the top of a content area or close to an item needing attention. The width varies based on content and layout. They can expand to fill a container or related content area.
 
-<uxdot-example alignment="left" variant="full" no-border>
+<uxdot-example color-palette="lightest"  alignment="left" variant="full" no-border>
   <img alt="Example of an inline alert at the top of a layout"
        src="../alert-guidelines-layout-inline-1.svg"
        width="1140"
        height="469">
 </uxdot-example>
 
-<uxdot-example alignment="left" variant="full" no-border>
-  <img alt="Example of an inline alert inside a form"
-       src="../alert-guidelines-layout-inline-2.svg"
-       width="1140"
-       height="969">
+<uxdot-example color-palette="lightest"  alignment="left" variant="full" no-border>
+  <img src="../alert-guidelines-layout-inline-2.svg" 
+      alt="Example of an inline alert inside a form" 
+      width="1140"
+      height="969">
 </uxdot-example>
 
 ### Toast
@@ -138,7 +138,7 @@ A toast alert slides in from the top right corner of a page and then disappears 
 - Persistent - does not disappear unless dismissed by a user
 - Temporary - disappears after eight seconds unless dismissed by a user first
 
-<uxdot-example alignment="left" variant="full" no-border>
+<uxdot-example color-palette="lightest"  alignment="left" variant="full" no-border>
   <img alt="Toast alert with a link in the body text includes a close button"
        src="../alert-guidelines-layout-toast.svg"
        width="1440"
@@ -192,14 +192,14 @@ please read the [code page][codepage].
 
 When multiple toast alerts appear one after the other, they stack. The most recent alert appears at the top and pushes the rest down. When an alert disappears, the rest will fill the empty space.
 
-<uxdot-example alignment="left" variant="full" no-border>
+<uxdot-example color-palette="lightest"  alignment="left" variant="full" no-border>
   <img alt="Three toast alerts are stacked in the top left corner of a layout"
        src="../alert-guidelines-behavior-1.svg"
        width="1440"
        height="449">
 </uxdot-example>
 
-<uxdot-example alignment="left" variant="full" no-border>
+<uxdot-example color-palette="lightest"  alignment="left" variant="full" no-border>
   <img alt="Only one toast alert in the stack from the previous image is left"
        src="../alert-guidelines-behavior-2.svg"
        width="1440"
@@ -212,7 +212,7 @@ When multiple toast alerts appear one after the other, they stack. The most rece
 
 On large screens, inline alert height is determined by the amount of content included. Inline alert width is determined by the width of its container or related content area. Toast alert height is also determined by content, but its max width is 480px.
 
-<uxdot-example alignment="left" variant="full" no-border>
+<uxdot-example color-palette="lightest"  alignment="left" variant="full" no-border>
   <img alt="Example of inline alert spanning content column width"
        src="../alert-guidelines-responsive-large-screens-1.svg"
        width="1440"
@@ -220,7 +220,7 @@ On large screens, inline alert height is determined by the amount of content inc
 </uxdot-example>
 
 
-<uxdot-example alignment="left" variant="full" no-border>
+<uxdot-example color-palette="lightest"  alignment="left" variant="full" no-border>
   <img alt="Example of a toast alert at content width"
        src="../alert-guidelines-responsive-large-screens-2.svg"
        width="1440"
@@ -231,7 +231,7 @@ On large screens, inline alert height is determined by the amount of content inc
 
 On small screens, both alert variants will span one column, and toast alerts will continue to stack.
 
-<uxdot-example alignment="left" variant="full" no-border>
+<uxdot-example color-palette="lightest"  alignment="left" variant="full" no-border>
   <img alt="Example of toast and inline alerts span full column of small screen layout"
        src="../alert-guidelines-responsive-small-screens.svg"
        width="1440"
@@ -243,7 +243,7 @@ On small screens, both alert variants will span one column, and toast alerts wil
 ### Mixing use cases
 
 <uxdot-best-practice variant="do">
-  <uxdot-example slot="image" alignment="left" variant="full" no-border>
+  <uxdot-example color-palette="lightest" slot="image" alignment="left" variant="full" no-border>
     <img alt="Example of using correct variants"
          src="../alert-guidelines-best-practice-do.svg"
          width="1440"
@@ -254,7 +254,7 @@ On small screens, both alert variants will span one column, and toast alerts wil
 </uxdot-best-practice>
 
 <uxdot-best-practice variant="dont">
-  <uxdot-example slot="image" alignment="left" variant="full" no-border>
+  <uxdot-example color-palette="lightest"  slot="image" alignment="left" variant="full" no-border>
     <img alt="Example of using incorrect variants"
          src="../alert-guidelines-best-practice-dont.svg"
          width="1440"

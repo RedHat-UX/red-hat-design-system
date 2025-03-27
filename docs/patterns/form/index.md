@@ -69,9 +69,10 @@ There are two form variants available for use.
        height="389">
 </uxdot-example>
 
-## Theme
-
-### Light theme
+## Color scheme
+<a id="theme"></a>
+<a id="light-theme"></a>
+<a id="dark-theme"></a>
 
 <uxdot-example width-adjustment="360px">
   <img src="./form-theme-light.svg"
@@ -79,8 +80,6 @@ There are two form variants available for use.
        width="360"
        height="717">
 </uxdot-example>
-
-### Dark theme
 
 <rh-alert state="info">
   <h4 slot="header">Coming soon</h4>

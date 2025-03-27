@@ -6,28 +6,29 @@ them to a section of content when the corresponding link is selected. It looks
 visually similar to <a href="../tabs">Open tabs</a>, the only difference is
 the uppercase label on top.
 
-<uxdot-example width-adjustment="537px">
-  <img src="../jump-links-style.svg"
-        alt="Jump links specs"
-        width="536"
-        height="330">
+<uxdot-example color-palette="lightest" width-adjustment="537px">
+  <img alt="Jump links specs"
+       src="../jump-links-style.svg"
+       width="536"
+       height="330">
 </uxdot-example>
 
 
-### Theme
+### Color scheme
+<a id="theme"></a>
 
-<uxdot-example width-adjustment="385px">
-  <img src="../jump-links-theme-light.svg"
-        alt="Jump links theme light"
-        width="383"
-        height="300">
+<uxdot-example color-palette="lightest" width-adjustment="385px">
+  <img alt="Jump links theme light"
+       src="../jump-links-theme-light.svg"
+       width="383"
+       height="300">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="385px">
-  <img src="../jump-links-theme-dark.svg"
-        alt="Jump links theme dark"
-        width="383"
-        height="300">
+  <img alt="Jump links theme dark"
+       src="../jump-links-theme-dark.svg"
+       width="383"
+       height="300">
 </uxdot-example>
 
 
@@ -51,11 +52,11 @@ their parent section link and indented slightly. There are guidelines about
 how many section links can be included, but no guidelines about how many
 nested section links can be included.
 
-<uxdot-example width-adjustment="129px">
-  <img src="../jump-links-nested.svg"
-        alt="Jump links nested section"
-        width="127"
-        height="300" />
+<uxdot-example color-palette="lightest" width-adjustment="129px">
+  <img alt="Jump links nested section"
+       src="../jump-links-nested.svg"
+       width="127"
+       height="300">
 </uxdot-example>
 
 
@@ -64,11 +65,11 @@ nested section links can be included.
 A red indicator bar highlights what the active section is. It’s positioned on
 top of the anchor line, not adjacent.
 
-<uxdot-example width-adjustment="206px">
-  <img src="../jump-links-indicator.svg"
-        alt="Jump links active indicator bar"
-        width="206"
-        height="189" />
+<uxdot-example color-palette="lightest" width-adjustment="206px">
+  <img alt="Jump links active indicator bar"
+       src="../jump-links-indicator.svg"
+       width="206"
+       height="189">
 </uxdot-example>
 
 
@@ -86,8 +87,9 @@ wrapped in a disclosure which is collapsed until a user expands the panel.
 ### Desktop
 
 <figure>
-  <uxdot-example width-adjustment="992px">
-    <img src="../jump-links-responsive-desktop.svg" alt="Jump links on desktop" style="">
+  <uxdot-example color-palette="lightest" width-adjustment="992px">
+    <img alt="Jump links on desktop"
+         src="../jump-links-responsive-desktop.svg">
   </uxdot-example>
   <figcaption>On large screens, jump links are displayed in the layout</figcaption>
 </figure>
@@ -96,11 +98,11 @@ wrapped in a disclosure which is collapsed until a user expands the panel.
 ### Tablet
 
 <figure>
-  <uxdot-example width-adjustment="768px">
-    <img src="../jump-links-responsive-tablet.svg"
-        alt="Jump links on tablet"
-        width="768"
-        height="217">
+  <uxdot-example color-palette="lightest" width-adjustment="768px">
+    <img alt="Jump links on tablet"
+         src="../jump-links-responsive-tablet.svg"
+         width="768"
+         height="217">
   </uxdot-example>
   <figcaption>Section links reduce in width as breakpoints get smaller</figcaption>
 </figure>
@@ -109,11 +111,11 @@ wrapped in a disclosure which is collapsed until a user expands the panel.
 ### Mobile
 
 <figure>
-  <uxdot-example width-adjustment="360px">
-    <img src="../jump-links-responsive-mobile.svg"
-        alt="Jump links on mobile"
-        width="360"
-        height="640">
+  <uxdot-example color-palette="lightest" width-adjustment="360px">
+    <img alt="Jump links on mobile"
+         src="../jump-links-responsive-mobile.svg"
+         width="360"
+         height="640">
   </uxdot-example>
   <figcaption>On small screens, jump links are wrapped in a collapsed disclosure</figcaption>
 </figure>
@@ -121,18 +123,18 @@ wrapped in a disclosure which is collapsed until a user expands the panel.
 
 ## Spacing
 
-<uxdot-example width-adjustment="385px">
-  <img src="../jump-links-spacing.svg"
-        alt="Jump links spacing on desktop"
-        width="384"
-        height="304" />
+<uxdot-example color-palette="lightest" width-adjustment="385px">
+  <img alt="Jump links spacing on desktop"
+       src="../jump-links-spacing.svg"
+       width="384"
+       height="304">
 </uxdot-example>
 
-<uxdot-example width-adjustment="872px">
-  <img src="../jump-links-spacing-2.svg"
-        alt="Jump links spacing on mobile"
-        width="884"
-        height="259" />
+<uxdot-example color-palette="lightest" width-adjustment="872px">
+  <img alt="Jump links spacing on mobile"
+       src="../jump-links-spacing-2.svg"
+       width="884"
+       height="259">
 </uxdot-example>
 
 <uxdot-spacer-tokens-table tokens="sm, md, lg, xl"></uxdot-spacer-tokens-table>

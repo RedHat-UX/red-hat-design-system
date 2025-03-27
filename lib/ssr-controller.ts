@@ -1,8 +1,6 @@
 import type { ReactiveController, ReactiveElement } from 'lit';
 import type { RenderInfo } from '@lit-labs/ssr';
 
-export const ssrControllerMap = new WeakMap<ReactiveElement, RHDSSSRController[]>;
-
 /** This is experimental and may change at any time without warning */
 export class RHDSSSRController implements ReactiveController {
   isRHDSSSRController = true;
@@ -12,6 +10,5 @@ export class RHDSSSRController implements ReactiveController {
   hostUpdate?(): void;
   constructor(public host: ReactiveElement) {
     host.addController(this);
-    ssrControllerMap.set(host, [...ssrControllerMap.get(host) ?? [], this]);
   }
 }

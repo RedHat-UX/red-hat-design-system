@@ -1,8 +1,9 @@
 <style data-helmet>
-  uxdot-example div,
-  uxdot-example rh-surface {
+uxdot-example {
+  div, rh-surface {
     padding: var(--rh-space-xl, 24px);
   }
+}
 </style>
 
 ## Guidelines
@@ -14,19 +15,15 @@ Avoid using surface inside of other containers. Use the appropriate `color-palet
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="dont">
     <uxdot-example slot="image">
-      <h2>⚠️ Avoid</h2>
       <rh-surface color-palette="dark">
         <p>Don't use surfaces inside of other containers</p>
       </rh-surface>
-    </rh-card>
+    </uxdot-example>
   </uxdot-best-practice>
   <uxdot-best-practice variant="do">
     <uxdot-example slot="image" color-palette="darkest">
-      <h2>✅ Good</h2>
-      <div>
-        <p>Use the <code>color-palette</code> attribute on containers.</p>
-      </div>
-    </rh-card>
+      <p>Use the <code>color-palette</code> attribute on containers.</p>
+    </uxdot-example>
   </uxdot-best-practice>
 </div>
 

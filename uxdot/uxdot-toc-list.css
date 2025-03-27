@@ -1,0 +1,14 @@
+:host {
+  display: block;
+  columns: 16rem auto;
+  padding: 0;
+  margin-block: var(--rh-space-lg) 0;
+
+  /* TODO: This style is specific to the implementation on ux.redhat.com,
+   * not ideal for the component lightdom files, maybe this is a
+   * pattern level style that should be in the pattern layer.
+   */
+  @container main (min-width: 1440px) {
+    columns: unset;
+  }
+}
