@@ -10,7 +10,6 @@ import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
-import { DirController } from '../../lib/DirController.js';
 import { HeadingLevelContextConsumer } from '../../lib/context/headings/consumer.js';
 
 import { themable } from '@rhds/elements/lib/themable.js';
@@ -57,8 +56,6 @@ export class RhAccordionHeader extends LitElement {
   @property({ attribute: false })
   private ctx?: RhAccordionContext;
 
-  #dir = new DirController(this);
-
   #internals = InternalsController.of(this, {
     role: 'heading',
     ariaLevel: '2',
@@ -82,10 +79,9 @@ export class RhAccordionHeader extends LitElement {
   render() {
     const { expanded } = this;
     const { accents, large = false } = this.ctx ?? {};
-    const rtl = this.#dir.dir === 'rtl';
     return html`
       <button id="button"
-              class="${classMap({ toggle: true, rtl, large, expanded })}"
+              class="${classMap({ toggle: true, large, expanded })}"
               @click="${this.#onClick}">
         <span id="header-container" class="${classMap({ [accents ?? '']: !!accents })}">
           <span id="header-text" part="text"><slot></slot></span>

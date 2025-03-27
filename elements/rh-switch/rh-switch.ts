@@ -7,8 +7,6 @@ import { InternalsController } from '@patternfly/pfe-core/controllers/internals-
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
-import { DirController } from '../../lib/DirController.js';
-
 import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-switch.css';
@@ -55,8 +53,6 @@ export class RhSwitch extends LitElement {
   #internals = InternalsController.of(this, { role: 'switch' });
 
   #slots = new SlotController(this, null, 'message-on', 'message-off');
-
-  #dir = new DirController(this);
 
   get #message() {
     return this.checked ? this.messageOn : this.messageOff;
@@ -106,7 +102,6 @@ export class RhSwitch extends LitElement {
   }
 
   render() {
-    const rtl = this.#dir.dir === 'rtl';
     const { reversed, checked } = this;
     const slots = html`
       <slot class="message" name="message-on" ?hidden="${!this.checked}"><span aria-hidden="true">${this.messageOn}</span></slot>
@@ -114,7 +109,7 @@ export class RhSwitch extends LitElement {
     return html`
       <div id="container"
            part="container"
-           class="${classMap({ checked, rtl })}">
+           class="${classMap({ checked })}">
         ${reversed ? slots : ''}
         <div id="switch"
              part="switch">

@@ -17,8 +17,6 @@ import { RhTabPanel } from './rh-tab-panel.js';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 
-import { DirController } from '../../lib/DirController.js';
-
 import { context, type RhTabsContext } from './context.js';
 
 import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
@@ -126,8 +124,6 @@ export class RhTabs extends LitElement {
     getItems: () => this.tabs ?? [],
   });
 
-  #dir = new DirController(this);
-
   get tabs(): RhTab[] {
     return this.#tabs.tabs;
   }
@@ -180,14 +176,13 @@ export class RhTabs extends LitElement {
   override render() {
     const { vertical = false, box = false, centered = false } = this;
     const inset = this.box === 'inset' ? 'inset' : '';
-    const rtl = this.#dir.dir === 'rtl';
     return html`
-      <div id="container" part="container" class="${classMap({ rtl, vertical, box, inset, centered, overflow: this.#overflow.showScrollButtons })}">
+      <div id="container" part="container" class="${classMap({ vertical, box, inset, centered, overflow: this.#overflow.showScrollButtons })}">
         <div part="tabs-container">${!this.#overflow.showScrollButtons ? '' : html`
           <button id="previous-tab" tabindex="-1"
                   aria-label="${this.getAttribute('label-scroll-left') ?? 'Scroll left'}"
                   ?disabled="${!this.#overflow.overflowLeft}"
-                  @click="${() => !rtl ? this.#overflow.scrollLeft() : this.#overflow.scrollRight()}">
+                  @click="${() => !this.matches(':dir(rtl)') ? this.#overflow.scrollLeft() : this.#overflow.scrollRight()}">
             <rh-icon set="ui" icon="caret-left" loading="eager"></rh-icon>
           </button>`}
           <div id="tablist" role="tablist">
@@ -199,7 +194,7 @@ export class RhTabs extends LitElement {
                   tabindex="-1"
                   aria-label="${this.getAttribute('label-scroll-right') ?? 'Scroll right'}"
                   ?disabled="${!this.#overflow.overflowRight}"
-                  @click="${() => !rtl ? this.#overflow.scrollRight() : this.#overflow.scrollLeft()}">
+                  @click="${() => !this.matches(':dir(rtl)') ? this.#overflow.scrollRight() : this.#overflow.scrollLeft()}">
              <rh-icon set="ui" icon="caret-right" loading="eager"></rh-icon>
           </button>`}
         </div>

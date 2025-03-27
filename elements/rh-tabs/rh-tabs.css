@@ -230,6 +230,6 @@ button {
   }
 }
 
-.rtl :is(#previous-tab, #next-tab) rh-icon {
+:is(#previous-tab, #next-tab) rh-icon:dir(rtl) {
   rotate: 180deg;
 }

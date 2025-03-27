@@ -6,8 +6,6 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
-import { DirController } from '../../lib/DirController.js';
-
 import type { IconNameFor, IconSetName } from '@rhds/icons';
 
 import { themable } from '@rhds/elements/lib/themable.js';
@@ -120,9 +118,6 @@ export class RhCta extends LitElement {
     return super.getUpdateComplete();
   }
 
-  /** Is the element in an RTL context? */
-  #dir = new DirController(this);
-
   #logger = new Logger(this);
 
   override render() {
@@ -131,7 +126,6 @@ export class RhCta extends LitElement {
       icon, iconSet,
       variant,
     } = this;
-    const rtl = this.#dir.dir === 'rtl';
     const isDefault = !variant;
     const svg = isDefault;
     const follower =
@@ -150,7 +144,7 @@ export class RhCta extends LitElement {
     return html`
       <span id="container"
             part="container"
-            class=${classMap({ rtl, icon: !!icon, svg })}
+            class=${classMap({ icon: !!icon, svg })}
             @slotchange=${this.firstUpdated}>${iconContent}${linkContent}</span>`;
   }
 

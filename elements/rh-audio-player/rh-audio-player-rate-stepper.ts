@@ -2,9 +2,6 @@ import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
-import { classMap } from 'lit-html/directives/class-map.js';
-
-import { DirController } from '@rhds/elements/lib/DirController.js';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 
@@ -33,8 +30,6 @@ export class RhAudioPlayerRateStepper extends LitElement {
   /** Playback rate */
   @property() label?: string;
 
-  #dir = new DirController(this);
-
   /**
    * gets list of allowable playback rates
    */
@@ -50,10 +45,9 @@ export class RhAudioPlayerRateStepper extends LitElement {
   /** template for playback rate controls */
   render() {
     const { pbrFixed } = RhAudioPlayerRateStepper;
-    const rtl = this.#dir.dir === 'rtl';
 
     return html`
-      <rh-tooltip class="${classMap({ rtl })}">
+      <rh-tooltip>
         <div>
           <button id="stepdown"
                   class="tabbable playback-rate-step"

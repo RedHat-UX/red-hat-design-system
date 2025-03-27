@@ -83,7 +83,7 @@
           (var(--_margin-inline) * 2)));
     }
 
-    &.rtl #switch:after {
+    & #switch:dir(rtl):after {
       translate:
         calc(-1 * (
             var(--_switch-width) - (var(--_switch-handle-size) +

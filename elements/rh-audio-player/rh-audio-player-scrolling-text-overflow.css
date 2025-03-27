@@ -24,10 +24,10 @@
       var(--rh-color-surface-lightest, #ffffff)),
       var(--rh-audio-player-scrolling-text-overflow-background-color,
       var(--rh-color-surface-darkest, #151515)));
-}
 
-#outer.rtl {
-  text-align: right;
+  &:dir(rtl) {
+    text-align: right;
+  }
 }
 
 #inner {
@@ -56,20 +56,20 @@ slot {
   right: 0;
   width: 3em;
   box-shadow: -1em 0 1.5em 0 var(--_fade-color) inset;
-}
 
-.rtl #fade {
-  left: 0;
-  right: unset;
-  box-shadow: 1em 0 1.5em 0 var(--_fade-color) inset;
+  &:dir(rtl) {
+    left: 0;
+    right: unset;
+    box-shadow: 1em 0 1.5em 0 var(--_fade-color) inset;
+  }
 }
 
 slot.scrolling.scrollable {
   animation: ltr var(--_animation-ms, 1s) ease-out;
-}
 
-.rtl slot.scrolling.scrollable {
-  animation: rtl var(--_animation-ms, 1s) ease-out;
+  &:dir(rtl) {
+    animation: rtl var(--_animation-ms, 1s) ease-out;
+  }
 }
 
 @keyframes ltr {
