@@ -72,7 +72,7 @@ files](https://help.figma.com/hc/en-us/articles/1500008731201-Manage-libraries-i
 
 <uxdot-example width-adjustment="60%">
   <img alt="Figma's Libraries modal showing the Red Hat Design System library is added"
-       src="/assets/get-started/designers/access-figma-libraries.png">
+       src="access-figma-libraries.png">
 </uxdot-example>
 
 ### Agency access
@@ -132,7 +132,7 @@ documentation or connect with us on Slack.
 
 <uxdot-example width-adjustment="40%">
   <img alt="Figma's asset preview dialog box for a card component with an 'Insert instance' button"
-       src="/assets/get-started/designers/figma-inserting-elements-patterns.png">
+       src="figma-inserting-elements-patterns.png">
 </uxdot-example>
 
 ### Properties
@@ -144,7 +144,7 @@ Some examples of properties include state, theme, variant, etc.
 
 <uxdot-example>
   <img alt="Diagram showing a blue primary button being changed to a destroy button with Figma's properties selector",
-       src="/assets/get-started/designers/figma-properties.png">
+       src="figma-properties.png">
 </uxdot-example>
 
 ### Responsive resize
@@ -154,7 +154,7 @@ can change the height or width of an asset by dragging an edge or corner.
 
 <uxdot-example>
   <img alt="Screenshot of a progress steps element being resized by dragging the bottom right corner"
-       src="/assets/get-started/designers/figma-responsive-resize-drag.png">
+       src="figma-responsive-resize-drag.png">
 </uxdot-example>
 
 You can also use [Constraints][constraints] to tell Figma how layers should
@@ -162,7 +162,7 @@ respond when their frames are resized.
 
 <uxdot-example>
   <img alt="Screenshot of a selected progress steps element next to Figma's constraints settings"
-       src="/assets/get-started/designers/figma-responsive-resize-constraints.png">
+       src="figma-responsive-resize-constraints.png">
 </uxdot-example>
 
 ### Instance swap
@@ -174,7 +174,7 @@ replace an element, but instance swapping will.
 
 <uxdot-example>
   <img alt="Diagram of a primary CTA being changed to a secondary CTA via the instance swap panel"
-       src="/assets/get-started/designers/figma-instance-swap.png">
+       src="figma-instance-swap.png">
 </uxdot-example>
 
 ## Best practices
@@ -194,7 +194,7 @@ prioritize building them in.
 
 <uxdot-example width-adjustment="90%">
   <img alt="Comparison of a linked and a detached accordion with their layers panel below"
-       src="/assets/get-started/designers/best-practices-detach-instance.png">
+       src="best-practices-detach-instance.png">
 </uxdot-example>
 
 <uxdot-feedback>

@@ -74,7 +74,7 @@ with us for additional help.
 
 <uxdot-example variant="full" no-border>
   <img alt="Screenshot of the red-hat-design-system GitHub repo's Code tab"
-       src="/assets/get-started/designers/get-familiar-with-github.png">
+       src="get-familiar-with-github.png">
 </uxdot-example>
 
 ## Roadmap
