@@ -88,8 +88,8 @@ button {
     --_time-slider-base: 128px;
   }
 
-  &.rtl,
-  .rtl button {
+  &:dir(rtl),
+  button:dir(rtl) {
     text-align: right;
   }
 
@@ -318,7 +318,7 @@ input[type='range'] {
   line-height: var(--rh-line-height-code, 1.5);
 }
 
-.rtl #mute rh-icon {
+:dir(rtl) #mute rh-icon {
   rotate: 180deg;
 }
 
@@ -426,7 +426,7 @@ rh-menu > button:focus {
   color: var(--rh-color-text-primary);
 }
 
-#container.rtl rh-menu > button {
+#container rh-menu > button:dir(rtl) {
   text-align: right;
 }
 
@@ -619,10 +619,8 @@ rh-menu > button:focus {
         height: 184px;
       }
 
-      &.rtl {
-        & #duration {
-          justify-content: flex-start;
-        }
+      & #duration:dir(rtl) {
+        justify-content: flex-start;
       }
 
       &.expanded {
@@ -703,7 +701,7 @@ rh-menu > button:focus {
 
           & > img {
             position: absolute;
-            left: calc(-184px - var(--_player-padding));
+            inset-inline-start: calc(-184px - var(--_player-padding));
           }
         }
       }
@@ -722,7 +720,7 @@ rh-menu > button:focus {
           flex: 0 0 calc(100% - 168px);
         }
 
-        &.rtl #poster > img {
+        & #poster > img:dir(rtl) {
           right: calc(-184px - var(--_player-padding));
           left: unset;
         }
