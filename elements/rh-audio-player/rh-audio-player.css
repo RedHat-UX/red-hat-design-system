@@ -719,11 +719,6 @@ rh-menu > button:focus {
         & #full-title {
           flex: 0 0 calc(100% - 168px);
         }
-
-        & #poster > img:dir(rtl) {
-          right: calc(-184px - var(--_player-padding));
-          left: unset;
-        }
       }
     }
   }
