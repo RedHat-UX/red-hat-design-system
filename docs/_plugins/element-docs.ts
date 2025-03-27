@@ -14,16 +14,21 @@ interface ElementDocsPageTabData {
   url: string;
   /** element name slug e.g. 'call-to-action' or 'footer' */
   slug: string;
-  /** e.g. `/elements/call-to-action/code/index.html` */
-  permalink: string;
+  /** e.g. `Code` or `Guidelines` */
+  pageTitle: string;
   /** e.g. 'code' or 'guidelines' */
   pageSlug: string;
+  /** e.g. `/elements/call-to-action/code/index.html` */
+  permalink: string;
   filePath: string;
   tagName: string;
 }
 
 interface ElementDocsPageBasicData extends ElementDocsPageTabData {
   description?: string;
+  isCodePage: boolean;
+  isDemoPage: boolean;
+  isOverviewPage: boolean;
   absPath: string;
   /** configured alias for this element e.g. `Call to Action` for `rh-cta` */
   alias?: string;
@@ -94,16 +99,26 @@ function isHidden(tagName: string) {
   return element?.type === 'hidden';
 }
 
-export default function(eleventyConfig: UserConfig) {
+/**
+ * @param eleventyConfig
+ */
+export default function(eleventyConfig: UserConfig): void {
   eleventyConfig.addCollection('elementDocs', async function() {
-    // 1. compile a list of all sibling element names by scanning the filesystem
-    // 2. compile a list of all output files
-    // 3. assign helpful data to each page entry
-    // 4. compile a list of tabs for each page's subnav.
-    //    this step depends on the full list from step 2.
-    // 5. assign data which relies on the filesystem (async)
-
     try {
+      const [manifest] = getAllManifests();
+
+      const _docsPages =
+        eleventyConfig.globalData.elements as DocsPage[] | (() => Promise<DocsPage[]>);
+
+      const docsPages = typeof _docsPages === 'function' ? await _docsPages() : _docsPages;
+
+      // 1. compile a list of all sibling element names by scanning the filesystem
+      // 2. compile a list of all output files
+      // 3. assign helpful data to each page entry
+      // 4. compile a list of tabs for each page's subnav.
+      //    this step depends on the full list from step 2.
+      // 5. assign data which relies on the filesystem (async)
+
       const siblingElementsByTagName = new Map<string, string[]>();
       for await (const path of glob(`elements/*/*.ts`, { cwd })) {
         const tagName = path.replace('elements/', '').split('/').shift()!;
@@ -117,33 +132,26 @@ export default function(eleventyConfig: UserConfig) {
         }
       }
 
-      const [manifest] = getAllManifests();
-
-      const _docsPages =
-        eleventyConfig.globalData.elements as DocsPage[] | (() => Promise<DocsPage[]>);
-
-      const docsPages = typeof _docsPages === 'function' ? await _docsPages() : _docsPages;
-
-      const allFiles = Array.from(new Set([
-        // docs file paths that exist on disk
-        ...await Array.fromAsync(glob(`elements/*/docs/*.md`, { cwd })),
-        // ensure that code and demos pages are generated, should there not be any content for them
-        // in elements/*/docs/*-code.md or elements/*/docs/*-demos.md. Duplicates are avoided with
-        // the new Set constructor
-        ...(await Array.fromAsync(glob('elements/*', { cwd }), x =>
+      return (await Promise.all(
+        Array.from(new Set([
+          // docs file paths that exist on disk
+          ...await Array.fromAsync(glob(`elements/*/docs/*.md`, { cwd })),
+          // ensure that code and demos pages are generated, should there not be any content for them
+          // in elements/*/docs/*-code.md or elements/*/docs/*-demos.md. Duplicates are avoided with
+          // the new Set constructor
+          ...(await Array.fromAsync(glob('elements/*', { cwd }), x =>
               x.includes('.') ? [] : [
                 `${x}/docs/30-code.md`,
                 `${x}/docs/90-demos.md`,
               ])).flat(),
-      ]));
-
-      return (await Promise.all(
-        allFiles
+        ]))
             .sort()
             .map(filePath => {
-              const pathParts = filePath.split(sep);
-              const tagName = pathParts.find(x => x.startsWith('rh-'))!;
-              const pageSlug = pathParts
+              const tagName = filePath
+                  .split(sep)
+                  .find(x => x.startsWith('rh-'))!;
+              const pageSlug = filePath
+                  .split(sep)
                   .pop()
                   ?.split('.')
                   ?.shift()
@@ -217,7 +225,7 @@ export default function(eleventyConfig: UserConfig) {
                 overviewImageHref,
                 siblingElements: siblingElementsByTagName.get(data.tagName) ?? [],
               };
-            }) satisfies Promise<ElementDocsPageData>[]
+            })
       ));
     } catch (e) {
       // it's important to surface this

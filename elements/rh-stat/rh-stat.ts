@@ -3,13 +3,13 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 
 import type { IconNameFor, IconSetName } from '@rhds/icons';
+
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-stat.css';
 
@@ -28,12 +28,9 @@ import styles from './rh-stat.css';
  *
  */
 @customElement('rh-stat')
+@themable
 export class RhStat extends LitElement {
-  static readonly version = '{{version}}';
-
   static readonly styles = [styles];
-
-  @colorContextConsumer() private on?: ColorTheme;
 
   /**
    * The icon to display in the statistic
@@ -81,9 +78,8 @@ export class RhStat extends LitElement {
     const hasCta = this.#slots.hasSlotted('cta');
     const isMobile = !this.#screenSize.matches.has('sm');
     const iconSize = this.size === 'default' ? 'md' : 'lg';
-    const { on = '' } = this;
     return html`
-      <div class="${classMap({ isMobile, hasIcon, hasTitle, hasStatistic, hasCta, [on]: !!on })}">
+      <div class="${classMap({ isMobile, hasIcon, hasTitle, hasStatistic, hasCta })}">
         <span id="icon" class="${classMap({ [iconSize]: !!iconSize })}">
           <slot name="icon">
             ${!this.icon ? '' : html`

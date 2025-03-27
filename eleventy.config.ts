@@ -59,7 +59,7 @@ export default async function(eleventyConfig: UserConfig) {
   eleventyConfig.watchIgnores?.add('elements/*/test/');
   eleventyConfig.watchIgnores?.add('lib/elements/*/test/');
   eleventyConfig.watchIgnores?.add('**/*.tsbuildinfo');
-  eleventyConfig.addPassthroughCopy('docs/patterns/**/*.{svg,jpg,jpeg,png}');
+  eleventyConfig.addPassthroughCopy('docs/**/*.{svg,jpg,jpeg,png}');
   eleventyConfig.addPassthroughCopy('elements/*/demo/**/*.{svg,jpg,jpeg,png}');
   eleventyConfig.addPassthroughCopy('docs/CNAME');
   eleventyConfig.addPassthroughCopy('docs/.nojekyll');
@@ -118,7 +118,7 @@ export default async function(eleventyConfig: UserConfig) {
         '@patternfly/icons/': '/assets/packages/@patternfly/icons/',
         '@patternfly/pfe-core/': '/assets/packages/@patternfly/pfe-core/',
         '@uxdot/elements/': '/assets/packages/@uxdot/elements/',
-        'playground-elements': 'https://cdn.jsdelivr.net/npm/playground-elements@0.18.1/+esm',
+        'playground-elements': 'https://cdn.jsdelivr.net/npm/playground-elements@0.19.1/+esm',
       },
     },
     localPackages: [
@@ -134,8 +134,8 @@ export default async function(eleventyConfig: UserConfig) {
       '@rhds/tokens',
       '@rhds/tokens/media.js',
       '@rhds/tokens/meta.js',
-      '@rhds/tokens/css/color-context-provider.css.js',
-      '@rhds/tokens/css/color-context-consumer.css.js',
+      '@rhds/tokens/css/default-theme.css.js',
+      '@rhds/tokens/css/color-palette.css.js',
       '@rhds/icons/',
       '@rhds/icons/microns/',
       '@rhds/icons/social/',
@@ -202,24 +202,27 @@ export default async function(eleventyConfig: UserConfig) {
   await eleventyConfig.addPlugin(RHDSPlugin, {
     tsconfig: './tsconfig.settings.json',
     componentModules: [
-      'elements/rh-button/rh-button.ts',
-      'elements/rh-icon/rh-icon.ts',
-      'elements/rh-surface/rh-surface.ts',
-      'elements/rh-code-block/rh-code-block.ts',
-      'elements/rh-table/rh-table.ts',
       'elements/rh-accordion/rh-accordion.ts',
+      'elements/rh-button/rh-button.ts',
+      'elements/rh-code-block/rh-code-block.ts',
       'elements/rh-cta/rh-cta.ts',
       'elements/rh-footer/rh-footer-universal.ts',
+      'elements/rh-icon/rh-icon.ts',
       'elements/rh-skip-link/rh-skip-link.ts',
       'elements/rh-subnav/rh-subnav.ts',
+      'elements/rh-surface/rh-surface.ts',
+      'elements/rh-table/rh-table.ts',
       'elements/rh-tag/rh-tag.ts',
+      // deferring until https://github.com/patternfly/patternfly-elements/pull/2505 or similar
+      // 'elements/rh-card/rh-card.ts',
+      // 'elements/rh-tile/rh-tile.ts',
       'uxdot/uxdot-best-practice.ts',
+      'uxdot/uxdot-color-scheme-picker.ts',
       'uxdot/uxdot-copy-button.ts',
       'uxdot/uxdot-copy-permalink.ts',
       'uxdot/uxdot-example.ts',
       'uxdot/uxdot-feedback.ts',
       'uxdot/uxdot-header.ts',
-      'uxdot/uxdot-hero.ts',
       'uxdot/uxdot-installation-tabs.ts',
       'uxdot/uxdot-masthead.ts',
       'uxdot/uxdot-pattern.ts',
@@ -246,4 +249,3 @@ export default async function(eleventyConfig: UserConfig) {
     },
   };
 };
-
