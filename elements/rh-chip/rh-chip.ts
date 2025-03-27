@@ -14,6 +14,7 @@ import { themable } from '@rhds/elements/lib/themable.js';
 import styles from './rh-chip.css';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
+import { observes } from '@patternfly/pfe-core/decorators.js';
 
 export class ChipChangeEvent extends Event {
   constructor(public checked: boolean) {
@@ -54,14 +55,19 @@ export class RhChip extends LitElement {
   @property({ reflect: true }) value?: string;
 
   #internals = InternalsController.of(this);
+
   #formDisabled = false;
 
   @consume({ context: rhChipGroupSizeCtx, subscribe: true })
   private size?: 'sm';
 
-  formDisabledCallback(disabled: boolean) {
+  protected formDisabledCallback(disabled: boolean) {
     this.#formDisabled = disabled;
     this.requestUpdate();
+  }
+
+  protected formStateRestoreCallback(state: boolean, mode: string) {
+    this.checked = !!state;
   }
 
   render() {
@@ -89,10 +95,15 @@ export class RhChip extends LitElement {
     if (this.dispatchEvent(new ChipChangeEvent(this.checked))) {
       this.checked = (event.target as HTMLInputElement).checked;
     }
+  }
 
-    const value = this.value ?? this.textContent;
-    const state = this.checked ? 'checked' : 'unchecked';
-    this.#internals.setFormValue(value, state);
+  @observes('checked')
+  private checkedChanged() {
+    if (this.checked) {
+      this.#internals.setFormValue(this.value ?? this.textContent);
+    } else {
+      this.#internals.setFormValue(null);
+    }
   }
 }
 
