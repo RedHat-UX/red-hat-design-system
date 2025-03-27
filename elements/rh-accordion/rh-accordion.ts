@@ -148,12 +148,13 @@ export class RhAccordion extends LitElement {
   }
 
   override render(): TemplateResult {
-    const { on } = this;
+    const { on, large } = this;
     const expanded = this.#expanded;
     return html`
       <div id="container"
            class="${classMap({
              on: true,
+             large,
              [on ?? 'light']: true,
              expanded,
            })}"><slot></slot></div>
