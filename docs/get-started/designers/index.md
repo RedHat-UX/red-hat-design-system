@@ -121,6 +121,11 @@ to have a better understanding of how to use our design system.
     <p>Patterns compose elements and tokens with content to create uniform, accessible experiences.</p>
   </rh-tile>
   <rh-tile>
+    <rh-icon slot="icon" set="standard" icon="paint-roller"></rh-icon>
+    <h3 slot="headline"><a href="/theming">Theming</a></h3>
+    <p>Learn about our powerful, flexible, and easy-to-use theming system.</p>
+  </rh-tile>
+  <rh-tile>
     <rh-icon slot="icon" set="standard" icon="wheelchair-accessible"></rh-icon>
     <h3 slot="headline"><a href="/accessibility/design/">Accessibility</a></h3>
     <p>Designer-specific guidelines equip you with the information to create inclusive digital experiences.</p>
