@@ -61,7 +61,7 @@ a:after,
   --_rh-icon-plus-padding: calc(5px + var(--rh-icon-size));
 }
 
-.rtl {
+:dir(rtl) {
   text-align: right;
 }
 
