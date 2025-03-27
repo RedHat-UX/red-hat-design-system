@@ -1,5 +1,32 @@
 # @rhds/elements
 
+## 3.0.0
+
+### Major Changes
+
+- 9dcbc70: `<rh-accordion>`: remove unused `bordered` attribute, which anyways has no effect since 2.0
+
+### Minor Changes
+
+- 5eaee73: `<rh-alert>`: added `actions` and `persistent: true` options for toasts.
+
+  ```js
+  RhAlert.toast({
+    message: "Toast!",
+    persistent: true,
+    actions: [
+      { text: "Confirm", action: "confirm" },
+      { text: "dismiss", action: "dismiss" },
+    ],
+  });
+  ```
+
+### Patch Changes
+
+- 5ca27af: `<rh-accordion>`: corrected `large` size header fonts.
+- 5eaee73: `<rh-alert>`: pause the timer which dismisses a toasted alert when the user hovers or focuses the alert
+- 01d29a8: Update dependencies
+
 ## 2.1.2
 
 ### Patch Changes
