@@ -55,11 +55,10 @@ search, so a button must be used instead.
        height="106">
 </uxdot-example>
 
-## Theme
+## Color scheme
+<a id="theme"></a>
 
-#### Light theme
-
-The light theme search bar includes a light theme form field and red button.
+The light search bar includes a light theme form field and red button.
 
 <uxdot-example width-adjustment="872px">
   <img src="./search-bar-light-theme.svg"
@@ -68,9 +67,7 @@ The light theme search bar includes a light theme form field and red button.
        height="36">
 </uxdot-example>
 
-#### Dark theme
-
-For now, the light theme search bar can also be used in the dark theme.
+For now, the light search bar can also be used in the dark scheme.
 
 <uxdot-example color-palette="darkest" width-adjustment="872px">
   <img src="./search-bar-dark-theme.svg"

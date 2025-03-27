@@ -2,36 +2,21 @@
 
 A tooltip will appear when the trigger receives focus and disappear when moving focus away from the trigger.
 
-<uxdot-example width-adjustment="315px">
-  <img src="../tooltip-keyboard-interactions.png"
-        alt="Tooltip keyboard interactions; pressing tab to focus the trigger will show the tooltip, but pressing tab again will hide the tooltip"
-        width="315"
-        height="153">
+<uxdot-example color-palette="lightest" width-adjustment="315px">
+  <img alt="Tooltip keyboard interactions; pressing tab to focus the trigger will show the tooltip, but pressing tab again will hide the tooltip"
+       src="../tooltip-keyboard-interactions.png"
+       width="315"
+       height="153">
 </uxdot-example>
 
 <rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Key">Key</th>
-        <th scope="col" data-label="Result">Result</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Key"><kbd>Tab</kbd></td>
-        <td data-label="Result">Moves focus to the trigger, tooltip appear</td>
-      </tr>
-      <tr>
-        <td data-label="Key"><kbd>Tab</kbd></td>
-        <td data-label="Result">Moves focus away from the trigger, tooltip disappears</td>
-      </tr>
-      <tr>
-        <td data-label="Key"><kbd>Esc</kbd></td>
-        <td data-label="Result">Removes a tooltip without moving focus away from the trigger</td>
-      </tr>
-    </tbody>
-  </table>
+
+| Key            | Result                                                       |
+| -------------- | ------------------------------------------------------------ |
+| <kbd>Tab</kbd> | Moves focus to the trigger, tooltip appears                  |
+| <kbd>Tab</kbd> | Moves focus away from the trigger, tooltip disappears        |
+| <kbd>Esc</kbd> | Removes a tooltip without moving focus away from the trigger |
+
 </rh-table>
 
 ## Additional guidelines

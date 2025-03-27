@@ -7,11 +7,11 @@ used on its own or grouped with other buttons.
 ### Anatomy
 
 <figure>
-  <uxdot-example width-adjustment="428px">
-    <img src="../button-anatomy.png"
-        alt="Anatomy image of buttons with numbered annotations"
-        width="428"
-        height="94">
+  <uxdot-example color-palette="lightest" width-adjustment="428px">
+    <img alt="Anatomy image of buttons with numbered annotations"
+         src="../button-anatomy.png"
+         width="428"
+         height="94">
   </uxdot-example>
   <figcaption>
     <ol>
@@ -26,100 +26,46 @@ used on its own or grouped with other buttons.
   </figcaption>
 </figure>
 
-## Theme
+## Color scheme
+<a id="theme"></a>
 
-Buttons are available in both light and dark themes.
+Buttons are available for both light and dark color schemes.
 
 ### Light and dark themes
 
-<uxdot-example width-adjustment="494px">
-  <img src="../button-theme-light.png"
-        alt="Image of light theme Danger, Primary, Secondary, Tertiary, Link, Play, and Close buttons"
-        width="494"
-        height="124">
+<uxdot-example color-palette="lightest" width-adjustment="494px">
+  <img alt="Image of light theme Danger, Primary, Secondary, Tertiary, Link, Play, and Close buttons"
+       src="../button-theme-light.png"
+       width="494"
+       height="124">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="494px">
-  <img src="../button-theme-dark.png"
-        alt="Image of dark theme Danger, Primary, Secondary, Tertiary, Link, Play, and Close buttons"
-        width="494"
-        height="124">
+  <img alt="Image of dark theme Danger, Primary, Secondary, Tertiary, Link, Play, and Close buttons"
+       src="../button-theme-dark.png"
+       width="494"
+       height="124">
 </uxdot-example>
 
 <rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Property">Property</th>
-        <th scope="col" data-label="Light theme">Light theme</th>
-        <th scope="col" data-label="Dark theme">Dark theme</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Property">Color - Danger button text</td>
-        <td data-label="Light theme"><code>#FFFFFF</code></td>
-        <td data-label="Dark theme"><code>#151515</code></td>
-      </tr>
-      <tr>
-        <td data-label="Property">Color - Danger button surface</td>
-        <td data-label="Light theme"><code>#C9190B</code></td>
-        <td data-label="Dark theme"><code>#FF542E</code></td>
-      </tr>
-      <tr>
-        <td data-label="Property">Color - Primary button text</td>
-        <td data-label="Light theme"><code>#FFFFFF</code></td>
-        <td data-label="Dark theme"><code>#FFFFFF</code></td>
-      </tr>
-      <tr>
-        <td data-label="Property">Color - Primary button surface</td>
-        <td data-label="Light theme"><code>#0066CC</code></td>
-        <td data-label="Dark theme"><code>#0066CC</code></td>
-      </tr>
-      <tr>
-        <td data-label="Property">Color - Secondary button text and border</td>
-        <td data-label="Light theme"><code>#0066CC</code></td>
-        <td data-label="Dark theme"><code>#2B9AF3</code></td>
-      </tr>
-      <tr>
-        <td data-label="Property">Border width - Secondary button</td>
-        <td data-label="Light theme"><code>1px</code></td>
-        <td data-label="Dark theme"><code>1px</code></td>
-      </tr>
-      <tr>
-        <td data-label="Property">Color - Tertiary button text and border</td>
-        <td data-label="Light theme"><code>#151515</code></td>
-        <td data-label="Dark theme"><code>#FFFFFF</code></td>
-      </tr>
-      <tr>
-        <td data-label="Property">Border width - Tertiary button</td>
-        <td data-label="Light theme"><code>1px</code></td>
-        <td data-label="Dark theme"><code>1px</code></td>
-      </tr>
-      <tr>
-        <td data-label="Property">Color - Link button text</td>
-        <td data-label="Light theme"><code>#0066CC</code></td>
-        <td data-label="Dark theme"><code>#2B9AF3</code></td>
-      </tr>
-      <tr>
-        <td data-label="Property">Color - Play button background</td>
-        <td data-label="Light theme"><code>#151515</code></td>
-        <td data-label="Dark theme"><code>#FFFFFF</code></td>
-      </tr>
-      <tr>
-        <td data-label="Property">Opacity - Play button background</td>
-        <td data-label="Light theme"><code>50%</code></td>
-        <td data-label="Dark theme"><code>25%</code></td>
-      </tr>
-      <tr>
-        <td data-label="Property">Color - Close button</td>
-        <td data-label="Light theme"><code>#4D4D4D</code></td>
-        <td data-label="Dark theme"><code>#C7C7C7</code></td>
-      </tr>
-    </tbody>
-  </table>
+
+| Property                                 | Light theme | Dark theme |
+|------------------------------------------|-------------|------------|
+| Color - Danger button text               | `#FFFFFF`   | `#151515`  |
+| Color - Danger button surface            | `#C9190B`   | `#FF542E`  |
+| Color - Primary button text              | `#FFFFFF`   | `#FFFFFF`  |
+| Color - Primary button surface           | `#0066CC`   | `#0066CC`  |
+| Color - Secondary button text and border | `#0066CC`   | `#2B9AF3`  |
+| Border width - Secondary button          | `1px`       | `1px`      |
+| Color - Tertiary button text and border  | `#151515`   | `#FFFFFF`  |
+| Border width - Tertiary button           | `1px`       | `1px`      |
+| Color - Link button text                 | `#0066CC`   | `#2B9AF3`  |
+| Color - Play button background           | `#151515`   | `#FFFFFF`  |
+| Opacity - Play button background         | `50%`       | `25%`      |
+| Color - Close button                     | `#4D4D4D`   | `#C7C7C7`  |
+
 </rh-table>
-    
+
 ## Configuration
 
 All buttons with a container have the same height and border radius, but the 
@@ -128,11 +74,11 @@ horizontally centered. When a Play button is placed on an image, it is both
 horizontally and vertically centered and stays the same size no matter how big 
 or small the image gets.
 
-<uxdot-example width-adjustment="818px">
-  <img src="../button-configuration.png"
-        alt="Image of buttons and various specs like border radius, height, icon size, width, alignment, placement, and more"
-        width="818"
-        height="386">
+<uxdot-example color-palette="lightest" width-adjustment="818px">
+  <img alt="Image of buttons and various specs like border radius, height, icon size, width, alignment, placement, and more"
+       src="../button-configuration.png"
+       width="818"
+       height="386">
 </uxdot-example>
 
 ## Space
@@ -145,11 +91,11 @@ space values when buttons are grouped, go to the [Guidelines](./guidelines) page
   <p>Buttons include a custom <code>6px</code> spacer, do not use it anywhere else.</p>
 </rh-alert>
 
-<uxdot-example width-adjustment="721px">
-  <img src="../button-space.png"
-        alt="Image of Danger, Primary, Secondary, Tertiary, Link, and Close buttons with spacing values in between"
-        width="721"
-        height="68">
+<uxdot-example color-palette="lightest" width-adjustment="721px">
+  <img alt="Image of Danger, Primary, Secondary, Tertiary, Link, and Close buttons with spacing values in between"
+       src="../button-space.png"
+       width="721"
+       height="68">
 </uxdot-example>
 
 <uxdot-spacer-tokens-table tokens="sm, md, lg"></uxdot-spacer-tokens-table>
@@ -161,72 +107,33 @@ an element or pattern.
 
 ### Hover
 
-<uxdot-example width-adjustment="495px">
-  <img src="../button-interaction-state-hover-theme-light.png"
-        alt="Image of light theme button hover states"
-        width="495"
-        height="124">
+<uxdot-example color-palette="lightest" width-adjustment="495px">
+  <img alt="Image of light theme button hover states"
+       src="../button-interaction-state-hover-theme-light.png"
+       width="495"
+       height="124">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="495px">
-  <img src="../button-interaction-state-hover-theme-dark.png"
-        alt="Image of dark theme button hover states"
-        width="495"
-        height="124">
+  <img alt="Image of dark theme button hover states"
+       src="../button-interaction-state-hover-theme-dark.png"
+       width="495"
+       height="124">
 </uxdot-example>
 
 <rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Property">Property</th>
-        <th scope="col" data-label="Light theme">Light theme</th>
-        <th scope="col" data-label="Dark theme">Dark theme</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Property">Color - Danger button surface</td>
-        <td data-label="Light theme"><code>#A30000</code></td>
-        <td data-label="Dark theme"><code>#FF8266</code></td>
-      </tr>
-      <tr>
-        <td data-label="Property">Color - Primary button surface</td>
-        <td data-label="Light theme"><code>#004080</code></td>
-        <td data-label="Dark theme"><code>#004080</code></td>
-      </tr>
-      <tr>
-        <td data-label="Property">Border width - Secondary button</td>
-        <td data-label="Light theme"><code>2px</code></td>
-        <td data-label="Dark theme"><code>2px</code></td>
-      </tr>
-      <tr>
-        <td data-label="Property">Border width - Tertiary button</td>
-        <td data-label="Light theme"><code>2px</code></td>
-        <td data-label="Dark theme"><code>2px</code></td>
-      </tr>
-      <tr>
-        <td data-label="Property">Color - Link button text</td>
-        <td data-label="Light theme"><code>#004080</code></td>
-        <td data-label="Dark theme"><code>#73BCF7</code></td>
-      </tr>
-      <tr>
-        <td data-label="Property">Text decoration - Link button text</td>
-        <td data-label="Light theme"><code>Underline</code></td>
-        <td data-label="Dark theme"><code>Underline</code></td>
-      </tr>
-      <tr>
-        <td data-label="Property">Opacity - Play button background</td>
-        <td data-label="Light theme"><code>75%</code></td>
-        <td data-label="Dark theme"><code>50%</code></td>
-      </tr>
-      <tr>
-        <td data-label="Property">Color - Close button</td>
-        <td data-label="Light theme"><code>#151515</code></td>
-        <td data-label="Dark theme"><code>#FFFFFF</code></td>
-      </tr>
-    </tbody>
-  </table>
+
+| Property                           | Light theme | Dark theme  |
+|------------------------------------|-------------|-------------|
+| Color - Danger button surface      | `#A30000`   | `#FF8266`   |
+| Color - Primary button surface     | `#004080`   | `#004080`   |
+| Border width - Secondary button    | `2px`       | `2px`       |
+| Border width - Tertiary button     | `2px`       | `2px`       |
+| Color - Link button text           | `#004080`   | `#73BCF7`   |
+| Text decoration - Link button text | `Underline` | `Underline` |
+| Opacity - Play button background   | `75%`       | `50%`       |
+| Color - Close button               | `#151515`   | `#FFFFFF`   |
+
 </rh-table>
 
 ### Focus
@@ -236,38 +143,27 @@ an element or pattern.
   <p>The Focus state has the same styles as the Hover state.</p>
 </rh-alert>
 
-<uxdot-example width-adjustment="530px">
-  <img src="../button-interaction-state-focus-theme-light.png"
-        alt="Image of light theme button focus states"
-        width="530"
-        height="128">
+<uxdot-example color-palette="lightest" width-adjustment="530px">
+  <img alt="Image of light theme button focus states"
+       src="../button-interaction-state-focus-theme-light.png"
+       width="530"
+       height="128">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="530px">
-  <img src="../button-interaction-state-focus-theme-dark.png"
-        alt="Image of dark theme button focus states"
-        width="530"
-        height="128">
+  <img alt="Image of dark theme button focus states"
+       src="../button-interaction-state-focus-theme-dark.png"
+       width="530"
+       height="128">
 </uxdot-example>
 
 
 <rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Property">Property</th>
-        <th scope="col" data-label="Light theme">Light theme</th>
-        <th scope="col" data-label="Dark theme">Dark theme</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Property">Color - focus ring</td>
-        <td data-label="Light theme"><code>#0066CC</code></td>
-        <td data-label="Dark theme"><code>#73BCF7</code></td>
-      </tr>
-    </tbody>
-  </table>
+
+| Property           | Light theme | Dark theme |
+|--------------------|-------------|------------|
+| Color - focus ring | `#0066CC`   | `#73BCF7`  |
+
 </rh-table>
 
 ### Active
@@ -277,35 +173,24 @@ an element or pattern.
   <p>The Active state has the same styles as the Hover state.</p>
 </rh-alert>
 
-<uxdot-example width-adjustment="530px">
-  <img src="../button-interaction-state-active-theme-light.png"
-        alt="Image of light theme button active states"
-        width="530"
-        height="128">
+<uxdot-example color-palette="lightest" width-adjustment="530px">
+  <img alt="Image of light theme button active states"
+       src="../button-interaction-state-active-theme-light.png"
+       width="530"
+       height="128">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="530px">
-  <img src="../button-interaction-state-active-theme-dark.png"
-        alt="Image of dark theme button active states"
-        width="530"
-        height="128">
+  <img alt="Image of dark theme button active states"
+       src="../button-interaction-state-active-theme-dark.png"
+       width="530"
+       height="128">
 </uxdot-example>
 
 <rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Property">Property</th>
-        <th scope="col" data-label="Light theme">Light theme</th>
-        <th scope="col" data-label="Dark theme">Dark theme</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Property"> Color - focus ring </td>
-        <td data-label="Light theme"><code>#0066CC</code></td>
-        <td data-label="Dark theme"><code>#73BCF7</code></td>
-      </tr>
-    </tbody>
-  </table>
+
+| Property           | Light theme | Dark theme |
+|--------------------|-------------|------------|
+| Color - focus ring | `#0066CC`   | `#73BCF7`  |
+
 </rh-table>

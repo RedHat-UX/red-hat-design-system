@@ -37,7 +37,8 @@ that explains what the video is.
       height="379">
 </uxdot-example>
 
-## Theme
+## Color scheme
+<a id="theme"></a>
 
 <uxdot-example color-palette="light" width-adjustment="870px">
   <img src="./video-thumbnail-theme-light.svg"

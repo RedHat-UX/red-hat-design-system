@@ -8,13 +8,13 @@
   main {
     display: block;
     scroll-behavior: smooth;
-    max-height: calc(100dvh - var(--pf-demo-header-height)) !important;
+    max-block-size: calc(100dvh - var(--pf-demo-header-height)) !important;
   }
   #bottom {
     position: absolute;
-    bottom: 0;
+    inset-block-end: 0;
   }
   #nav {
-    height: calc(100dvh - var(--pf-demo-header-height, 4.375rem)); !important;
+    block-size: calc(100dvh - var(--pf-demo-header-height, 4.375rem)); !important;
   }
 </style>

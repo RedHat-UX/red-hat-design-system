@@ -36,20 +36,11 @@ The severity of a status should be communicated in as few words as possible. Rem
 The recommended maximum character count is listed below and includes spaces.
 
 <rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Element">Element</th>
-        <th scope="col" data-label="Character count">Character count</th>
-      </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <td data-label="Element">Link Text</td>
-      <td data-label="Character count">30</td>
-    </tr>
-    </tbody>
-  </table>
+
+| Element   | Character count |
+|-----------|-----------------|
+| Link Text | 30              |
+
 </rh-table>
 
 ## Layout

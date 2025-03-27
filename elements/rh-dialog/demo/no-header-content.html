@@ -1,15 +1,13 @@
 <rh-button id="no-header-content-trigger">Open</rh-button>
 <rh-dialog trigger="no-header-content-trigger">
-  <p>A modal with no slotted header content</p>
-  <h3>This has no header content</h3>
+  <h2>This dialog has no slotted header content</h2>
+  <p>All this content exists in the default slot.</p>
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
     magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
     consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
     pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
     laborum.</p>
-  <rh-cta id="test-dark-child">
-    <a href="#">Call-to-action</a>
-  </rh-cta>
+  <rh-cta slot="footer" href="#bar">Call to Action</rh-cta>
 </rh-dialog>
 
 <script type="module">

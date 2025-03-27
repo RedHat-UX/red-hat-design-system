@@ -5,7 +5,13 @@
 
 #container {
   color: var(--rh-color-text-primary);
-  background-color: var(--rh-color-surface);
+
+  --_accordion-background:
+    light-dark(var(--rh-color-surface-lightest, #ffffff),
+      var(--rh-color-surface-darkest, #151515));
+
+  /* fall back to surface color on the host */
+  &.palette { --_accordion-background: var(--rh-color-surface); }
 
   &.expanded {
     box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
