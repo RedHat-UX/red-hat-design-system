@@ -4,11 +4,11 @@ A timestamp is a simple line of text that displays date and time values.
 ### Anatomy 
 
 <figure>
-  <uxdot-example width-adjustment="496px">
-    <img src="../timestamp-anatomy.png"
-        alt="Anatomy of a timestamp which is a simple line of text showing the date first and then the time after"
-        width="496"
-        height="51">
+  <uxdot-example color-palette="lightest" width-adjustment="496px">
+    <img alt="Anatomy of a timestamp which is a simple line of text showing the date first and then the time after"
+         src="../timestamp-anatomy.png"
+         width="496"
+         height="51">
   </uxdot-example>
   <figcaption>
     <ol>
@@ -22,32 +22,34 @@ A timestamp is a simple line of text that displays date and time values.
 ## Size 
 The size of a timestamp is determined by the text size it is applied to.
 
-<uxdot-example width-adjustment="661px">
-  <img src="../timestamp-size.png"
-        alt="Two lines of text of various sizes with timestamps applied, one is 18px and the other is 24px"
-        width="661"
-        height="200">
+<uxdot-example color-palette="lightest" width-adjustment="661px">
+  <img alt="Two lines of text of various sizes with timestamps applied, one is 18px and the other is 24px"
+       src="../timestamp-size.png"
+       width="661"
+       height="200">
 </uxdot-example>
 
 
 ## Tooltip
 Two lines of text with timestamps applied, one is showing no styling and the other is showing a dashed underline.
 
-<uxdot-example width-adjustment="496px">
-  <img src="../timestamp-style-tooltip.png"
-        alt="Light theme badge"
-        width="496"
-        height="194">
+<uxdot-example color-palette="lightest" width-adjustment="496px">
+  <img alt="Light theme badge"
+       src="../timestamp-style-tooltip.png"
+       width="496"
+       height="194">
 </uxdot-example>
 
 
-## Theme
-A timestamp can be used in the same themes as text.
+## Color scheme
+<a id="theme"></a>
+
+A timestamp can be used in the same themes as body text.
 
 
 ### Light theme
 
-<uxdot-example>
+<uxdot-example color-palette="lightest">
   <rh-timestamp></rh-timestamp>
 </uxdot-example>
 

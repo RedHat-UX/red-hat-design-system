@@ -48,10 +48,7 @@ export class RhTranscript extends LitElement {
 
   #duration?: number;
 
-  #headings = new HeadingLevelContextProvider(this, {
-    offset: 0,
-    parent: new HeadingLevelContextConsumer(this),
-  });
+  #headings = new HeadingLevelContextConsumer(this);
 
   set autoscrollLabel(label: string) {
     this._autoscroll = label;
@@ -79,6 +76,11 @@ export class RhTranscript extends LitElement {
 
   get menuLabel(): string {
     return this.label || this._label || 'About the episode';
+  }
+
+  constructor() {
+    super();
+    new HeadingLevelContextProvider(this, { offset: 0 });
   }
 
   render() {

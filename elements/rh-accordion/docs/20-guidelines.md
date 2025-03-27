@@ -19,7 +19,7 @@ information that might not be critical to read or impact the experience. An
 accordion can also accommodate multiple sections of content, whereas a 
 disclosure can only accommodate one.
 
-<uxdot-example width-adjustment="872px">
+<uxdot-example color-palette="lightest" width-adjustment="872px">
   <img src="../accordion-vs-disclosure.png"  
       alt="Comparison of how to use accordion vs. disclosure elements showing an accordion on top and a disclosure on the bottom"
       width="872"
@@ -30,7 +30,7 @@ disclosure can only accommodate one.
 It is acceptable to use the Small size on large breakpoints, but do not use the 
 Large size on small breakpoints.
 
-<uxdot-example width-adjustment="872px">
+<uxdot-example color-palette="lightest" width-adjustment="872px">
   <img src="../accordion-sizes-best-practices.png"  
       alt="Size comparison of accordions; a wide small size accordion is on top, which is acceptable to use, and a thin large size accordion below it which is not acceptable to use"
       width="872"
@@ -47,7 +47,7 @@ write title text to sound like a call to action, make it as easy as possible for
 users to understand the content within.
 
 <figure>
-<uxdot-example width-adjustment="872px">
+<uxdot-example color-palette="lightest" width-adjustment="872px">
   <img src="../accordion-title-text.png"  
       alt="Title text examples of various lengths; it should not be too long, too short, or too vague"
       width="872"
@@ -81,7 +81,7 @@ When a panel is expanded, some content must appear below the title text and
 chevron icon. Content can include text, cards, images, etc. Text blocks should 
 not exceed `750px` to maintain optimal readability.
 
-<uxdot-example width-adjustment="872px">
+<uxdot-example color-palette="lightest" width-adjustment="872px">
   <img src="../accordion-panel-content.png" 
       alt="Accordion showing different elements you may include in the expanded panel like headings, body text, links, cards, and more" 
       width="872"
@@ -92,7 +92,7 @@ not exceed `750px` to maintain optimal readability.
 
 Title text can be two lines on small breakpoints, but no more.
 
-<uxdot-example width-adjustment="544px">
+<uxdot-example color-palette="lightest" width-adjustment="544px">
   <img src="../accordion-long-title-text.png" 
       alt="Two accordions; one wide accordion with the text title on one line and one thin accordion with the text title on two lines"
       width="544"
@@ -104,7 +104,7 @@ Title text can be two lines on small breakpoints, but no more.
 The width of an accordion can be adjusted on large breakpoints to fit fewer 
 columns if necessary.
 
-<uxdot-example width-adjustment="872px">
+<uxdot-example color-palette="lightest" width-adjustment="872px">
   <img src="../accordion-layout.png" 
       alt="A wider accordion placed on a 12-column grid and occupying four grid columns"
       width="872"
@@ -123,7 +123,7 @@ When a panel is expanded, the caret animates to point up.
 Users can expand multiple panels simultaneously either stacked on top of each 
 other or not. Expanding one panel does not collapse another.
 
-<uxdot-example width-adjustment="872px">
+<uxdot-example color-palette="lightest" width-adjustment="872px">
   <img src="../accordion-expanding-multiple-panels.png" 
       alt="Two accordions; one is showing two expanded panels stacked on top of each other and the other is showing two expanded panels and one collapsed panel in between"
       width="872"
@@ -135,14 +135,14 @@ other or not. Expanding one panel does not collapse another.
 An accordion changes from the Large size to the Small size as breakpoints get
 smaller.
 
-<uxdot-example no-border width-adjustment="1000px" alignment="left" variant="full" >
+<uxdot-example no-border color-palette="lightest" width-adjustment="1000px" alignment="left" variant="full" >
   <img src="../accordion-breakpoints-large.png"  
       alt="Accordions on large breakpoints"
       width="1000"
       height="274">
 </uxdot-example>
 
-<uxdot-example no-border width-adjustment="576px" alignment="left" variant="full">
+<uxdot-example no-border color-palette="lightest" width-adjustment="576px" alignment="left" variant="full">
   <img src="../accordion-breakpoints-small.png"  
        alt="Accordions on small breakpoints"
        width="576"
@@ -171,7 +171,7 @@ smaller.
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
-    <uxdot-example width-adjustment="482px" slot="image">
+    <uxdot-example color-palette="lightest" width-adjustment="482px" slot="image">
       <img src="../accordion-best-practices-one-panel-do.svg"
             alt="Two accordion panels"
             width="482"
@@ -181,7 +181,7 @@ smaller.
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="dont">
-    <uxdot-example width-adjustment="482px" slot="image">
+    <uxdot-example color-palette="lightest" width-adjustment="482px" slot="image">
       <img src="../accordion-best-practices-one-panel-dont.svg"
             alt="One accordion panel"
             width="482"
@@ -194,7 +194,7 @@ smaller.
 ### Text readability
 
 <uxdot-best-practice variant="do">
-  <uxdot-example slot="image" width-adjustment="1012px">
+  <uxdot-example slot="image" color-palette="lightest" width-adjustment="1012px">
     <img src="../accordion-best-practices-text-readability-do.svg" 
         alt="Text in an expanded accordion has a limited width and does not fill wide accordion"
         width="1012"
@@ -205,7 +205,7 @@ smaller.
 </uxdot-best-practice>
 
 <uxdot-best-practice variant="dont">
-  <uxdot-example slot="image" width-adjustment="1012px">
+  <uxdot-example slot="image" color-palette="lightest" width-adjustment="1012px">
     <img  src="../accordion-best-practices-text-readability-dont.svg" 
         alt="Text in an expanded accordion fills wide accordion"
         width="1012"
@@ -215,27 +215,32 @@ smaller.
   <p>Do not allow text within panels to fill the entire width of a panel, if the text would exceed a width of 750px.</p>
 </uxdot-best-practice>
 
-### Mixing themes
+### Mixing color palettes
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
-    <uxdot-example slot="image" color-palette="darkest" width-adjustment="482px">
-      <img src="../accordion-best-practices-mixing-themes-do.svg"
-            alt="Dark theme accordion against a dark background"
-            width="482"
-            height="256">
+    <uxdot-example slot="image" color-palette="darkest" 
+      width-adjustment="482px">
+      <img alt="Dark accordion against a dark background"
+           src="../accordion-best-practices-mixing-themes-do.svg"
+           width="482"
+           height="256">
     </uxdot-example>
-    <p>An accordion group should match the theme of the container it’s in. This ensures that all of the text is visible and has adequate color contrast.</p>
+    <p>An accordion group should match the color palette of the container it’s 
+      in. This ensures that all of the text is visible and has adequate color 
+      contrast.</p>
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="dont">
-    <uxdot-example slot="image" color-palette="darkest" width-adjustment="482px">
-      <img src="../accordion-best-practices-mixing-themes-dont.svg"
-            alt="Light theme accordion against a light background"
-            width="482"
-            height="256">
+    <uxdot-example slot="image"
+                   color-palette="darkest"
+                   width-adjustment="482px">
+      <img alt="Light against a light background"
+           src="../accordion-best-practices-mixing-themes-dont.svg"
+           width="482"
+           height="256">
     </uxdot-example>
-    <p>Do not use a light theme accordion in a dark theme environment and vice versa because it may cause accessibility and usability issues.</p>
+    <p>Do not use a light accordion in a dark environment and vice versa because it may cause accessibility and usability issues.</p>
   </uxdot-best-practice>
 </div>
 

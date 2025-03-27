@@ -1,12 +1,26 @@
-import { contextEvents, HeadingLevelController } from './controller.js';
+import type { LitElement } from 'lit';
 
-import {
-  ContextRequestEvent,
-  type UnknownContext,
-  type ContextCallback,
-} from '../event.js';
+import { ContextProvider } from '@lit/context';
 
 const SELECTORS = `H1,H2,H3,H4,H5,H6`;
+
+import { createContextWithRoot } from '@patternfly/pfe-core/functions/context.js';
+
+export interface HeadingContext {
+  /** Root Heading level. default 1 */
+  level: number;
+  /** Heading offset for children. default 1 */
+  offset: number;
+}
+
+export const context = createContextWithRoot<HeadingContext>('rh-heading-context');
+
+export interface HeadingLevelContextOptions extends HeadingContext {
+  /**
+   * Attribute to read on the host which will determine root heading level.
+   */
+  attribute?: string;
+}
 
 /**
  * **START**
@@ -30,19 +44,41 @@ function canQuery(node: Node): node is Document | ShadowRoot {
  * Determines which heading level immediately precedes the host element,
  * and provides templates for shadow headings.
  */
-export class HeadingLevelContextProvider extends HeadingLevelController {
-  /** Cache of context callbacks. Call each to update consumers */
-  #callbacks = new Set<ContextCallback<number>>();
+export class HeadingLevelContextProvider extends ContextProvider<typeof context, LitElement> {
+  /** Heading level preceding component document, as in 1 for <h1>, 2 for <h2> etc. */
+  #options?: HeadingLevelContextOptions;
+
+  constructor(
+    public host: LitElement,
+    options?: Partial<HeadingLevelContextOptions>,
+  ) {
+    super(host, { context });
+    this.#options = { level: 1, offset: 1, ...options };
+    this.#options.level ??= 1;
+    this.#options.offset ??= 1;
+    this.setValue({});
+  }
+
+  setValue(ctx: Partial<HeadingContext>) {
+    const offset = this.#options?.offset ?? 1;
+    const level = this.#options?.level ?? 1;
+    super.setValue({ offset, level, ...ctx });
+  }
 
   hostConnected() {
-    this.host.addEventListener('context-request', e =>
-      this.#onChildContextRequestEvent(e as ContextRequestEvent<any>));
-    for (const [host, fired] of contextEvents) {
-      host.dispatchEvent(fired);
+    super.hostConnected();
+    const level = this.#getLevel();
+    this.setValue({ level });
+  }
+
+  #getLevel() {
+    const level = this.host.getAttribute(this.#options?.attribute ?? '')
+      ?? this.#computeLevelFromChildren()
+      ?? 1;
+    const val = typeof level === 'string' ? parseInt(level) : level;
+    if (typeof val === 'number' && !Number.isNaN(val)) {
+      return val;
     }
-    this.level =
-      this.host.getAttribute(this.options?.attribute ?? '')
-      ?? this.#computeLevelFromChildren();
   }
 
   #computeLevelFromChildren() {
@@ -57,29 +93,6 @@ export class HeadingLevelContextProvider extends HeadingLevelController {
         const els = [...root.querySelectorAll(`${SELECTORS},${localName}`)];
         const lastHeadingBeforeHost = els.slice(0, els.indexOf(host)).pop();
         return getLevel(lastHeadingBeforeHost);
-      }
-    }
-  }
-
-  /** Was the context event fired requesting our colour-context context? */
-  #isHeadingContextRequestEvent(
-    event: ContextRequestEvent<UnknownContext>
-  ): event is ContextRequestEvent<typeof HeadingLevelController.context> {
-    return event.target !== this.host && event.context === HeadingLevelController.context;
-  }
-
-  async #onChildContextRequestEvent(event: ContextRequestEvent<UnknownContext>) {
-    // only handle ContextRequestEvents relevant to colour context
-    if (this.#isHeadingContextRequestEvent(event)) {
-      // claim the context-request event for ourselves (required by context protocol)
-      event.stopPropagation();
-
-      // Run the callback to initialize the child's value
-      event.callback(this.level);
-
-      // Cache the callback for future updates, if requested
-      if (event.subscribe) {
-        this.#callbacks.add(event.callback);
       }
     }
   }

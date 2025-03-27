@@ -1,10 +1,10 @@
 :host {
   display: block;
-  height: 100%;
+  min-height: 100%;
+  height: max-content;
+  color: var(--rh-color-text-primary);
+  background: var(--rh-color-surface);
 }
-
-rh-surface,
-.on { color: var(--rh-color-text-primary); }
 
 #picker-container {
   display: flex;
