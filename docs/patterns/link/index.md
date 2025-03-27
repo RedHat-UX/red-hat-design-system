@@ -76,9 +76,10 @@ An Inline link can be applied to text used on its own at any size outside of a p
   <p>Visit the <a href="/foundations/typography/">Typography</a> page to see available text sizes.</p>
 </rh-alert>
 
-## Theme
-
-### Light theme
+## Color scheme
+<a id="theme"></a>
+<a id="light-theme"></a>
+<a id="dark-theme"></a>
 
 <rh-alert state="info">
   <h4 slot="header">Helpful tip</h4>
@@ -91,8 +92,6 @@ An Inline link can be applied to text used on its own at any size outside of a p
        width="770"
        height="70">
 </uxdot-example>
-
-### Dark theme
 
 <rh-alert state="info">
   <h4 slot="header">Helpful tip</h4>

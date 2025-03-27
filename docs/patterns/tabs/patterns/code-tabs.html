@@ -5,22 +5,14 @@
       <script type="sample/typescript">
         import { LitElement, html } from 'lit';
         import { customElement } from 'lit/decorators/custom-element.js';
-        import { classMap } from 'lit/directives/class-map.js';  // 1
-        import {
-          colorContextConsumer,
-          type ColorTheme,
-        } from '@rhds/elements/lib/context/color/consumer.js';
+        import { classMap } from 'lit/directives/class-map.js';
+        import { themable } from '@rhds/elements/lib/themable.js';
 
         @customElement('rh-consumer')
+        @themable
         export class RhConsumer extends LitElement {
-          @colorContextConsumer() private accessor on: ColorTheme | undefined;       // 2
-
           render() {
-            const { on = 'light' } = this;                       // 3
-            return html`
-              <div id="container"
-                   class="${classMap({ on: true, [on]: true })}">
-              </div>`;
+            return html`<div id="container"></div>`;
           }
         }
       </script>

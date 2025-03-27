@@ -139,7 +139,10 @@ export default class ElementsPage extends Renderer<Context> {
         defaultProvider: 'jspm.io',
       });
       await generator.install('@rhds/elements');
-      await assetCache.save(generator.getMap(), 'json');
+      const map = generator.getMap();
+      if (map.imports) {
+        await assetCache.save(map, 'json');
+      }
     }
     const map = structuredClone(await assetCache.getCachedValue());
     map.imports![`@rhds/elements/${tagName}/${tagName}.js`] =
@@ -175,7 +178,7 @@ export default class ElementsPage extends Renderer<Context> {
       <h2 id="overview">Overview</h2>
       ${await this.renderTemplate(description, 'md')}
       ${!ctx.doc.overviewImageHref ? '' : html`
-      <uxdot-example><img src="${ctx.doc.overviewImageHref}" alt="" aria-labelledby="overview-image-description"></uxdot-example>`}
+      <uxdot-example color-palette="lightest"><img src="${ctx.doc.overviewImageHref}" alt="" aria-labelledby="overview-image-description"></uxdot-example>`}
       <h2 id="status">Status</h2>
       <uxdot-repo-status-list element="${ctx.tagName}"></uxdot-repo-status-list>
       <h2 id="sample-element">Sample element</h2>
@@ -197,7 +200,7 @@ export default class ElementsPage extends Renderer<Context> {
       doc.fileExists && await this.renderFile(doc.filePath, ctx),
       await this.#renderCodeDocs.call(this,
                                       doc.docsPage.tagName,
-                                      { ...ctx, level: (ctx.level ?? 2) + 1 }),
+                                      { ...ctx, level: (ctx.level ?? 1) + 1 }),
       ...await Promise.all(doc.siblingElements.map(tagName =>
         this.#renderCodeDocs.call(this, tagName, ctx))),
     ].filter(Boolean).join('');
@@ -256,6 +259,11 @@ export default class ElementsPage extends Renderer<Context> {
 
   async #renderInstallation({ doc, cdnVersion = 'v2' }: Context) {
     const jspmMap = await this.#generateImportMap(doc.docsPage.tagName)
+        .catch(() => {
+          // try again
+          ElementsPage.assetCache.cache.destroy();
+          return this.#generateImportMap(doc.docsPage.tagName);
+        })
         .catch(error => {
           console.warn(error); // eslint-disable-line no-console
           return `Could not generate import map using JSPM: ${error.message}`;
@@ -343,7 +351,7 @@ export default class ElementsPage extends Renderer<Context> {
     return html`
       <h${h} id="${tagName}-apis">${tagName}</h${h}>
 
-      <p>${manifest.getDescription(tagName)}</p>
+      ${await this.renderTemplate(manifest.getDescription(tagName) ?? '', 'md')}
 
       <rh-accordion box>
         ${await this.#renderSlots(tagName, ctx)}
@@ -782,8 +790,9 @@ export default class ElementsPage extends Renderer<Context> {
     const entries = Object.entries(ctx.playgrounds[tagName]?.files ?? {}) as FileEntry[];
     return [
       await this.#renderDemoHead(),
+      ctx.doc.fileExists && await this.renderFile(ctx.doc.filePath, ctx),
       ...await this.#renderPlaygrounds(ctx, entries),
-    ].join('');
+    ].filter(Boolean).join('');
   }
 
   async #renderDemoHead() {
@@ -900,16 +909,13 @@ export default class ElementsPage extends Renderer<Context> {
 
   async #renderPlaygrounds(ctx: Context, entries: FileEntry[]) {
     const common = await this.#renderPlaygroundsCommon(ctx, entries);
-    return entries.map(([filename, config]) => this.#renderPlayground(
+    return entries.flatMap(([filename, config], _, array) => this.#renderPlayground(
       filename,
       config,
       ctx,
       common,
-      entries
-          .filter(([, config]) => config.inline === filename)
-          .map(([s]) => s)
-
-    ));
+      array,
+    )).join('');
   };
 
   #renderPlayground(
@@ -917,8 +923,11 @@ export default class ElementsPage extends Renderer<Context> {
     config: FileOptions,
     ctx: Context,
     common: string,
-    inlineResources: string[],
+    entries: FileEntry[]
   ) {
+    const inlineResources = entries
+        .filter(([, config]) => config.inline === filename)
+        .map(([s]) => s);
     const { doc, tagName, isLocal } = ctx;
     const { slug } = doc;
     if (!config.label) {

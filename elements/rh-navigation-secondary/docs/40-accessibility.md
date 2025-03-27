@@ -14,40 +14,16 @@ All elements within a secondary navigation are focus stops. Pressing <code>Enter
 ### Keyboard events
 
 <rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Action">Action</th>
-        <th scope="col" data-label="Event">Event</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Action"><kbd>Tab</kbd></td>
-        <td data-label="Event">Moves focus to the next interactive element (including a menu)</td>
-      </tr>
-      <tr>
-        <td data-label="Action"><kbd>Shift + Tab</kbd></td>
-        <td data-label="Event">Moves focus to the previous interactive element (including a menu)</td>
-      </tr>
-      <tr>
-        <td data-label="Action"><kbd>Enter</kbd> (when a link has focus)</td>
-        <td data-label="Event">Directs user to another page</td>
-      </tr>
-      <tr>
-        <td data-label="Action"><kbd>Enter</kbd> (when a menu has focus)</td>
-        <td data-label="Event">Expands or collapses a menu without moving focus</td>
-      </tr>
-      <tr>
-        <td data-label="Action"><kbd>Enter</kbd> (when a menu has focus)</td>
-        <td data-label="Event">Collapses an expanded menu without moving focus</td>
-      </tr>
-      <tr>
-        <td data-label="Action"><kbd>Esc</kbd> (when a menu is expanded)</td>
-        <td data-label="Event">Collapses the expanded menu</td>
-      </tr>
-    </tbody>
-  </table>
+
+| Action                                   | Event                                                              |
+| ---------------------------------------- | ------------------------------------------------------------------ |
+| <kbd>Tab</kbd>                           | Moves focus to the next interactive element (including a menu)     |
+| <kbd>Shift + Tab</kbd>                   | Moves focus to the previous interactive element (including a menu) |
+| <kbd>Enter</kbd> (when a link has focus) | Directs user to another page                                       |
+| <kbd>Enter</kbd> (when a menu has focus) | Expands or collapses a menu without moving focus                   |
+| <kbd>Enter</kbd> (when a menu has focus) | Collapses an expanded menu without moving focus                    |
+| <kbd>Esc</kbd> (when a menu is expanded) | Collapses the expanded menu                                        |
+
 </rh-table>
 
 

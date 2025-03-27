@@ -29,7 +29,7 @@
 
 #container {
   position: relative;
-  background-color: var(--rh-color-surface-lightest);
+  background-color: var(--rh-color-surface);
   overflow-y: scroll;
   width: auto;
   height: 100dvh;
@@ -51,10 +51,8 @@
 }
 
 [part='overlay'] {
-  --_gray-90-rgb: var(--rh-color-gray-90-rgb);
-
   display: none;
-  background-color: rgb(var(--_gray-90-rgb) / var(--rh-opacity-60));
+  background-color: rgb(from var(---rh-color-gray-90) / var(--rh-opacity-60));
   position: fixed;
   top: 0;
   height: 100dvh;
@@ -73,7 +71,7 @@
   margin-block: 0 !important;
   height: var(--_max-height);
   overflow-y: scroll;
-  background-color: var(--rh-color-surface-lightest);
+  background-color: var(--rh-color-surface);
 }
 
 :host([open]) [part='overlay'] {
