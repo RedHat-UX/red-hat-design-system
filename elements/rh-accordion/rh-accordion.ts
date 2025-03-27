@@ -147,8 +147,11 @@ export class RhAccordion extends LitElement {
   }
 
   override render(): TemplateResult {
+    const { large } = this;
+    const expanded = this.#expanded;
     return html`
-      <div id="container" class="${classMap({ expanded: this.#expanded, palette: !!this.colorPalette })}"><slot></slot></div>
+      <div id="container"
+           class="${classMap({ large, expanded })}"><slot></slot></div>
     `;
   }
 
