@@ -69,7 +69,6 @@ export class UxdotPatternSSRControllerServer extends RHDSSSRController {
   hasCss = false;
   hasJs = false;
 
-
   async #extractInlineContent(kind: 'js' | 'css', partial: Tools.Node, baseUrl: URL) {
     const prop = kind === 'js' ? 'jsSrc' as const : 'cssSrc' as const;
     const nodePred = kind === 'js' ? isScript
@@ -139,4 +138,3 @@ export class UxdotPatternSSRControllerServer extends RHDSSSRController {
     this.htmlContent = unsafeHTML(this.#highlight('html', htmlContent));
   }
 }
-
