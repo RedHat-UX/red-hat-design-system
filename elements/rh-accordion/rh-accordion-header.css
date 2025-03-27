@@ -6,16 +6,11 @@
   --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
-  --_isRTL: -1;
 }
 
 button,
 a {
   cursor: pointer;
-}
-
-.rtl {
-  --_isRTL: 1;
 }
 
 .large {
@@ -91,7 +86,11 @@ span {
     --_after-background-color: var(--rh-color-accent-brand);
 
     & #icon {
-      rotate: calc(var(--_isRTL, -1) * 180deg);
+      rotate: -180deg;
+
+      &:dir(rtl) {
+        rotate: 180deg;
+      }
     }
   }
 }
