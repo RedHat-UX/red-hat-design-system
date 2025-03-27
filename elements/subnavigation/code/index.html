@@ -53,8 +53,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.5/core.js",
     "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.5/core.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
@@ -10770,12 +10770,27 @@ svg {
 
       <p>A subnavigation allows users to navigate between a small number of page links.</p>
 
-      <rh-accordion  box><template shadowroot="open" shadowrootmode="open"><style>#container {
+      <rh-accordion  box><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  container: accordion / inline-size;
+}
+
+#container {
   color: var(--rh-color-text-primary);
   background-color: var(--rh-color-surface);
 
   &.expanded {
     box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
+  }
+
+  &.large {
+    --_header-font-size: var(--rh-font-size-body-text-md, 1rem);
+    --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
+
+    /* --rh-media-sm */
+    @container accordion (min-width: 768px) {
+      --_header-font-size: var(--rh-font-size-body-text-lg, 1.125rem);
+    }
   }
 }
 
@@ -10809,7 +10824,6 @@ svg {
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
   --_isRTL: -1;
@@ -10873,7 +10887,7 @@ span {
     var(--_padding-block-end)
     var(--_padding-inline-start);
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
-  font-size: var(--_font-size);
+  font-size: var(--_header-font-size);
   color: var(--rh-color-text-primary);
 
   & #icon {
@@ -10992,7 +11006,6 @@ span {
   overflow: hidden;
   will-change: height;
 
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
   --_panel-body-padding-block-start: var(--rh-space-lg, 16px);
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-lg, 16px);
@@ -11014,7 +11027,6 @@ span {
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-inline-start: var(--rh-space-xl, 24px);
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
 }
 
 .body {
@@ -11066,7 +11078,7 @@ span {
 
 .content {
   color: var(--rh-color-text-primary);
-  font-size: var(--_panel-font-size, var(--rh-font-size-body-text-sm, 0.875rem));
+  font-size: var(--_panel-font-size);
 }
 </style><!--lit-part A50axevTK8k=-->
       <!--lit-node 0--><div id="container"
@@ -11183,7 +11195,6 @@ span {
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
   --_isRTL: -1;
@@ -11247,7 +11258,7 @@ span {
     var(--_padding-block-end)
     var(--_padding-inline-start);
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
-  font-size: var(--_font-size);
+  font-size: var(--_header-font-size);
   color: var(--rh-color-text-primary);
 
   & #icon {
@@ -11366,7 +11377,6 @@ span {
   overflow: hidden;
   will-change: height;
 
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
   --_panel-body-padding-block-start: var(--rh-space-lg, 16px);
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-lg, 16px);
@@ -11388,7 +11398,6 @@ span {
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-inline-start: var(--rh-space-xl, 24px);
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
 }
 
 .body {
@@ -11440,7 +11449,7 @@ span {
 
 .content {
   color: var(--rh-color-text-primary);
-  font-size: var(--_panel-font-size, var(--rh-font-size-body-text-sm, 0.875rem));
+  font-size: var(--_panel-font-size);
 }
 </style><!--lit-part A50axevTK8k=-->
       <!--lit-node 0--><div id="container"
@@ -11462,7 +11471,6 @@ span {
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
   --_isRTL: -1;
@@ -11526,7 +11534,7 @@ span {
     var(--_padding-block-end)
     var(--_padding-inline-start);
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
-  font-size: var(--_font-size);
+  font-size: var(--_header-font-size);
   color: var(--rh-color-text-primary);
 
   & #icon {
@@ -11645,7 +11653,6 @@ span {
   overflow: hidden;
   will-change: height;
 
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
   --_panel-body-padding-block-start: var(--rh-space-lg, 16px);
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-lg, 16px);
@@ -11667,7 +11674,6 @@ span {
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-inline-start: var(--rh-space-xl, 24px);
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
 }
 
 .body {
@@ -11719,7 +11725,7 @@ span {
 
 .content {
   color: var(--rh-color-text-primary);
-  font-size: var(--_panel-font-size, var(--rh-font-size-body-text-sm, 0.875rem));
+  font-size: var(--_panel-font-size);
 }
 </style><!--lit-part A50axevTK8k=-->
       <!--lit-node 0--><div id="container"
@@ -11741,7 +11747,6 @@ span {
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
   --_isRTL: -1;
@@ -11805,7 +11810,7 @@ span {
     var(--_padding-block-end)
     var(--_padding-inline-start);
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
-  font-size: var(--_font-size);
+  font-size: var(--_header-font-size);
   color: var(--rh-color-text-primary);
 
   & #icon {
@@ -11924,7 +11929,6 @@ span {
   overflow: hidden;
   will-change: height;
 
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
   --_panel-body-padding-block-start: var(--rh-space-lg, 16px);
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-lg, 16px);
@@ -11946,7 +11950,6 @@ span {
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-inline-start: var(--rh-space-xl, 24px);
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
 }
 
 .body {
@@ -11998,7 +12001,7 @@ span {
 
 .content {
   color: var(--rh-color-text-primary);
-  font-size: var(--_panel-font-size, var(--rh-font-size-body-text-sm, 0.875rem));
+  font-size: var(--_panel-font-size);
 }
 </style><!--lit-part A50axevTK8k=-->
       <!--lit-node 0--><div id="container"
@@ -12020,7 +12023,6 @@ span {
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
   --_isRTL: -1;
@@ -12084,7 +12086,7 @@ span {
     var(--_padding-block-end)
     var(--_padding-inline-start);
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
-  font-size: var(--_font-size);
+  font-size: var(--_header-font-size);
   color: var(--rh-color-text-primary);
 
   & #icon {
@@ -12203,7 +12205,6 @@ span {
   overflow: hidden;
   will-change: height;
 
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
   --_panel-body-padding-block-start: var(--rh-space-lg, 16px);
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-lg, 16px);
@@ -12225,7 +12226,6 @@ span {
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-inline-start: var(--rh-space-xl, 24px);
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
 }
 
 .body {
@@ -12277,7 +12277,7 @@ span {
 
 .content {
   color: var(--rh-color-text-primary);
-  font-size: var(--_panel-font-size, var(--rh-font-size-body-text-sm, 0.875rem));
+  font-size: var(--_panel-font-size);
 }
 </style><!--lit-part A50axevTK8k=-->
       <!--lit-node 0--><div id="container"
@@ -12399,7 +12399,6 @@ span {
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
   --_isRTL: -1;
@@ -12463,7 +12462,7 @@ span {
     var(--_padding-block-end)
     var(--_padding-inline-start);
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
-  font-size: var(--_font-size);
+  font-size: var(--_header-font-size);
   color: var(--rh-color-text-primary);
 
   & #icon {
@@ -12582,7 +12581,6 @@ span {
   overflow: hidden;
   will-change: height;
 
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
   --_panel-body-padding-block-start: var(--rh-space-lg, 16px);
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-lg, 16px);
@@ -12604,7 +12602,6 @@ span {
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-inline-start: var(--rh-space-xl, 24px);
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
 }
 
 .body {
@@ -12656,7 +12653,7 @@ span {
 
 .content {
   color: var(--rh-color-text-primary);
-  font-size: var(--_panel-font-size, var(--rh-font-size-body-text-sm, 0.875rem));
+  font-size: var(--_panel-font-size);
 }
 </style><!--lit-part A50axevTK8k=-->
       <!--lit-node 0--><div id="container"
@@ -12678,7 +12675,6 @@ span {
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
   --_isRTL: -1;
@@ -12742,7 +12738,7 @@ span {
     var(--_padding-block-end)
     var(--_padding-inline-start);
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
-  font-size: var(--_font-size);
+  font-size: var(--_header-font-size);
   color: var(--rh-color-text-primary);
 
   & #icon {
@@ -12860,7 +12856,6 @@ span {
   overflow: hidden;
   will-change: height;
 
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
   --_panel-body-padding-block-start: var(--rh-space-lg, 16px);
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-lg, 16px);
@@ -12882,7 +12877,6 @@ span {
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-inline-start: var(--rh-space-xl, 24px);
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
 }
 
 .body {
@@ -12934,7 +12928,7 @@ span {
 
 .content {
   color: var(--rh-color-text-primary);
-  font-size: var(--_panel-font-size, var(--rh-font-size-body-text-sm, 0.875rem));
+  font-size: var(--_panel-font-size);
 }
 </style><!--lit-part A50axevTK8k=-->
       <!--lit-node 0--><div id="container"

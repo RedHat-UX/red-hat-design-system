@@ -12,7 +12,7 @@ import { RhAccordionHeader, AccordionHeaderChangeEvent } from './rh-accordion-he
 import { RhAccordionPanel } from './rh-accordion-panel.js';
 import { context } from './context.js';
 import { css } from "lit";
-const styles = css `#container{color:var(--rh-color-text-primary);background-color:var(--rh-color-surface)}#container.expanded{box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 #15151533)}::slotted(rh-accordion-header:first-child){display:block;border-block:1px solid var(--rh-color-border-subtle)}::slotted(rh-accordion-header:not(:first-child)){display:block;border-block-end:1px solid var(--rh-color-border-subtle)}::slotted(rh-accordion-header:is([expanded])){display:block;border-block-end:0}::slotted(rh-accordion-panel:is([expanded])){display:block;border-block-end:1px solid var(--rh-color-border-subtle);box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 #15151533)}`;
+const styles = css `:host{display:block;container:accordion/inline-size}#container{color:var(--rh-color-text-primary);background-color:var(--rh-color-surface)}#container.expanded{box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 #15151533)}#container.large{--_header-font-size:var(--rh-font-size-body-text-md,1rem);--_panel-font-size:var(--rh-font-size-body-text-md,1rem)}@container accordion (min-width: 768px){#container.large{--_header-font-size:var(--rh-font-size-body-text-lg,1.125rem)}}::slotted(rh-accordion-header:first-child){display:block;border-block:1px solid var(--rh-color-border-subtle)}::slotted(rh-accordion-header:not(:first-child)){display:block;border-block-end:1px solid var(--rh-color-border-subtle)}::slotted(rh-accordion-header:is([expanded])){display:block;border-block-end:0}::slotted(rh-accordion-panel:is([expanded])){display:block;border-block-end:1px solid var(--rh-color-border-subtle);box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 #15151533)}`;
 export class AccordionExpandEvent extends ComposedEvent {
     constructor(toggle, panel) {
         super('expand');
@@ -93,12 +93,13 @@ export class RhAccordion extends LitElement {
         this.updateAccessibility();
     }
     render() {
-        const { on } = this;
+        const { on, large } = this;
         const expanded = __classPrivateFieldGet(this, _RhAccordion_expanded, "f");
         return html `
       <div id="container"
            class="${classMap({
             on: true,
+            large,
             [on ?? 'light']: true,
             expanded,
         })}"><slot></slot></div>

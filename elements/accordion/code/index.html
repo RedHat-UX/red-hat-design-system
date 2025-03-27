@@ -53,8 +53,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.5/core.js",
     "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.5/core.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
@@ -9713,12 +9713,27 @@ Could not generate <span class="token keyword">import</span> map using <span cla
 
       <p>An accordion is a stacked list of panels which allows users to expand or collapse information when selected. They feature panels that consist of a section text label and a caret icon that collapses or expands to reveal more information.</p>
 
-      <rh-accordion  box><template shadowroot="open" shadowrootmode="open"><style>#container {
+      <rh-accordion  box><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  container: accordion / inline-size;
+}
+
+#container {
   color: var(--rh-color-text-primary);
   background-color: var(--rh-color-surface);
 
   &.expanded {
     box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
+  }
+
+  &.large {
+    --_header-font-size: var(--rh-font-size-body-text-md, 1rem);
+    --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
+
+    /* --rh-media-sm */
+    @container accordion (min-width: 768px) {
+      --_header-font-size: var(--rh-font-size-body-text-lg, 1.125rem);
+    }
   }
 }
 
@@ -9752,7 +9767,6 @@ Could not generate <span class="token keyword">import</span> map using <span cla
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
   --_isRTL: -1;
@@ -9816,7 +9830,7 @@ span {
     var(--_padding-block-end)
     var(--_padding-inline-start);
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
-  font-size: var(--_font-size);
+  font-size: var(--_header-font-size);
   color: var(--rh-color-text-primary);
 
   & #icon {
@@ -9935,7 +9949,6 @@ span {
   overflow: hidden;
   will-change: height;
 
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
   --_panel-body-padding-block-start: var(--rh-space-lg, 16px);
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-lg, 16px);
@@ -9957,7 +9970,6 @@ span {
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-inline-start: var(--rh-space-xl, 24px);
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
 }
 
 .body {
@@ -10009,7 +10021,7 @@ span {
 
 .content {
   color: var(--rh-color-text-primary);
-  font-size: var(--_panel-font-size, var(--rh-font-size-body-text-sm, 0.875rem));
+  font-size: var(--_panel-font-size);
 }
 </style><!--lit-part A50axevTK8k=-->
       <!--lit-node 0--><div id="container"
@@ -10126,7 +10138,6 @@ span {
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
   --_isRTL: -1;
@@ -10190,7 +10201,7 @@ span {
     var(--_padding-block-end)
     var(--_padding-inline-start);
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
-  font-size: var(--_font-size);
+  font-size: var(--_header-font-size);
   color: var(--rh-color-text-primary);
 
   & #icon {
@@ -10309,7 +10320,6 @@ span {
   overflow: hidden;
   will-change: height;
 
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
   --_panel-body-padding-block-start: var(--rh-space-lg, 16px);
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-lg, 16px);
@@ -10331,7 +10341,6 @@ span {
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-inline-start: var(--rh-space-xl, 24px);
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
 }
 
 .body {
@@ -10383,7 +10392,7 @@ span {
 
 .content {
   color: var(--rh-color-text-primary);
-  font-size: var(--_panel-font-size, var(--rh-font-size-body-text-sm, 0.875rem));
+  font-size: var(--_panel-font-size);
 }
 </style><!--lit-part A50axevTK8k=-->
       <!--lit-node 0--><div id="container"
@@ -10532,7 +10541,6 @@ Use commas to separate multiple indexes.</p>
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
   --_isRTL: -1;
@@ -10596,7 +10604,7 @@ span {
     var(--_padding-block-end)
     var(--_padding-inline-start);
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
-  font-size: var(--_font-size);
+  font-size: var(--_header-font-size);
   color: var(--rh-color-text-primary);
 
   & #icon {
@@ -10715,7 +10723,6 @@ span {
   overflow: hidden;
   will-change: height;
 
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
   --_panel-body-padding-block-start: var(--rh-space-lg, 16px);
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-lg, 16px);
@@ -10737,7 +10744,6 @@ span {
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-inline-start: var(--rh-space-xl, 24px);
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
 }
 
 .body {
@@ -10789,7 +10795,7 @@ span {
 
 .content {
   color: var(--rh-color-text-primary);
-  font-size: var(--_panel-font-size, var(--rh-font-size-body-text-sm, 0.875rem));
+  font-size: var(--_panel-font-size);
 }
 </style><!--lit-part A50axevTK8k=-->
       <!--lit-node 0--><div id="container"
@@ -10931,7 +10937,6 @@ Accepts an optional parent accordion to search for headers and panels.</p></td>
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
   --_isRTL: -1;
@@ -10995,7 +11000,7 @@ span {
     var(--_padding-block-end)
     var(--_padding-inline-start);
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
-  font-size: var(--_font-size);
+  font-size: var(--_header-font-size);
   color: var(--rh-color-text-primary);
 
   & #icon {
@@ -11114,7 +11119,6 @@ span {
   overflow: hidden;
   will-change: height;
 
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
   --_panel-body-padding-block-start: var(--rh-space-lg, 16px);
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-lg, 16px);
@@ -11136,7 +11140,6 @@ span {
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-inline-start: var(--rh-space-xl, 24px);
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
 }
 
 .body {
@@ -11188,7 +11191,7 @@ span {
 
 .content {
   color: var(--rh-color-text-primary);
-  font-size: var(--_panel-font-size, var(--rh-font-size-body-text-sm, 0.875rem));
+  font-size: var(--_panel-font-size);
 }
 </style><!--lit-part A50axevTK8k=-->
       <!--lit-node 0--><div id="container"
@@ -11314,7 +11317,6 @@ span {
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
   --_isRTL: -1;
@@ -11378,7 +11380,7 @@ span {
     var(--_padding-block-end)
     var(--_padding-inline-start);
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
-  font-size: var(--_font-size);
+  font-size: var(--_header-font-size);
   color: var(--rh-color-text-primary);
 
   & #icon {
@@ -11497,7 +11499,6 @@ span {
   overflow: hidden;
   will-change: height;
 
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
   --_panel-body-padding-block-start: var(--rh-space-lg, 16px);
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-lg, 16px);
@@ -11519,7 +11520,6 @@ span {
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-inline-start: var(--rh-space-xl, 24px);
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
 }
 
 .body {
@@ -11571,7 +11571,7 @@ span {
 
 .content {
   color: var(--rh-color-text-primary);
-  font-size: var(--_panel-font-size, var(--rh-font-size-body-text-sm, 0.875rem));
+  font-size: var(--_panel-font-size);
 }
 </style><!--lit-part A50axevTK8k=-->
       <!--lit-node 0--><div id="container"
@@ -11593,7 +11593,6 @@ span {
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
   --_isRTL: -1;
@@ -11657,7 +11656,7 @@ span {
     var(--_padding-block-end)
     var(--_padding-inline-start);
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
-  font-size: var(--_font-size);
+  font-size: var(--_header-font-size);
   color: var(--rh-color-text-primary);
 
   & #icon {
@@ -11776,7 +11775,6 @@ span {
   overflow: hidden;
   will-change: height;
 
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
   --_panel-body-padding-block-start: var(--rh-space-lg, 16px);
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-lg, 16px);
@@ -11798,7 +11796,6 @@ span {
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-inline-start: var(--rh-space-xl, 24px);
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
 }
 
 .body {
@@ -11850,7 +11847,7 @@ span {
 
 .content {
   color: var(--rh-color-text-primary);
-  font-size: var(--_panel-font-size, var(--rh-font-size-body-text-sm, 0.875rem));
+  font-size: var(--_panel-font-size);
 }
 </style><!--lit-part A50axevTK8k=-->
       <!--lit-node 0--><div id="container"
@@ -11872,7 +11869,6 @@ span {
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
   --_isRTL: -1;
@@ -11936,7 +11932,7 @@ span {
     var(--_padding-block-end)
     var(--_padding-inline-start);
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
-  font-size: var(--_font-size);
+  font-size: var(--_header-font-size);
   color: var(--rh-color-text-primary);
 
   & #icon {
@@ -12047,14 +12043,13 @@ span {
         </svg>
       </button>
     <!--/lit-part--></template>Design Tokens
-        <rh-badge>4</rh-badge>
+        <rh-badge>6</rh-badge>
       </rh-accordion-header>
       <rh-accordion-panel><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: none;
   overflow: hidden;
   will-change: height;
 
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
   --_panel-body-padding-block-start: var(--rh-space-lg, 16px);
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-lg, 16px);
@@ -12076,7 +12071,6 @@ span {
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-inline-start: var(--rh-space-xl, 24px);
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
 }
 
 .body {
@@ -12128,7 +12122,7 @@ span {
 
 .content {
   color: var(--rh-color-text-primary);
-  font-size: var(--_panel-font-size, var(--rh-font-size-body-text-sm, 0.875rem));
+  font-size: var(--_panel-font-size);
 }
 </style><!--lit-part A50axevTK8k=-->
       <!--lit-node 0--><div id="container"
@@ -14041,6 +14035,912 @@ svg {
       </div>
     </td>
                 </tr>
+                <tr>
+                  <td>
+                    <a href="https://ux.redhat.com/tokens/typography/#--rh-font-size-body-text-lg">
+                      <code>--rh-font-size-body-text-lg</code>
+                    </a>
+                  </td>
+                  <td data-label="Copy">
+      <div>
+        <uxdot-copy-button   class="icon-only" copy="var(--rh-font-size-body-text-lg, 1.125rem)"><template shadowroot="open" shadowrootmode="open"><style>button {
+  color: inherit;
+  border-radius: var(--rh-border-radius-default);
+  border-width: 0;
+  background: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--rh-space-xs);
+  padding-inline: var(--rh-space-xs);
+}
+
+code {
+  padding: var(--rh-space-xs) var(--rh-space-md);
+  background: var(--rh-color-surface-light);
+  font-size: var(--rh-font-size-code-md);
+  font-weight: var(--rh-font-weight-code-regular);
+  font-family: var(--rh-font-family-code);
+  line-height: var(--rh-line-height-code);
+}
+
+.visually-hidden {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  block-size: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  inline-size: 1px;
+}
+
+:host(.icon-only) code,
+:host(:empty) code {
+  display: none;
+}
+
+:is(rh-icon, #caption) {
+  display: none;
+}
+
+:host(:state(--rendered)) button:is(:focus, :active, :hover),
+:host(:state(--rendered)) button:is(:focus, :active, :hover) code {
+  background: var(--rh-color-interactive-primary-hover-on-dark);
+  opacity: 1;
+}
+
+:host(:state(--rendered)) :is(rh-icon, #caption) {
+  display: initial;
+}
+</style><!--lit-part zk+fFwx/8Tw=-->
+      <!--lit-node 0--><rh-tooltip  position="left-start" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: inline;
+}
+
+#container {
+  display: inline-flex;
+  position: relative;
+  max-width: 100%;
+
+  /* WARNING: properties containing `__`are deprecated and will be removed */
+  --_floating-arrow-size:
+    var(--rh-tooltip-arrow-size,
+      var(--rh-tooltip__arrow--Width, 11px));
+}
+
+#tooltip,
+#tooltip:after {
+  position: absolute;
+}
+
+#tooltip {
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 10000;
+  transition: opacity 300ms cubic-bezier(0.54, 1.5, 0.38, 1.11) 0s;
+  text-align: var(--_text-alignment, center);
+  word-break: break-word;
+  translate: var(--_floating-content-translate);
+  width: max-content;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  will-change: opacity;
+  line-height: var(--rh-line-height-body-text, 1.5);
+  box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
+  max-width: var(--rh-tooltip-max-width, var(--rh-tooltip--MaxWidth, 18.75rem));
+  border-radius: var(--rh-border-radius-default, 3px);
+
+  /* WARNING: properties containing `__`are deprecated and will be removed */
+  padding:
+    var(--rh-tooltip-content-padding-block-start,
+      var(--rh-tooltip__content--PaddingTop, var(--rh-space-lg, 16px)))
+    var(--rh-tooltip-content-padding-inline-end,
+      var(--rh-tooltip__content--PaddingRight, var(--rh-space-lg, 16px)))
+    var(--rh-tooltip-content-padding-block-end,
+      var(--rh-tooltip__content--PaddingBottom, var(--rh-space-lg, 16px)))
+    var(--rh-tooltip-content-padding-inline-start,
+      var(--rh-tooltip__content--PaddingLeft, var(--rh-space-lg, 16px)));
+
+  /* WARNING: properties containing `__`are deprecated and will be removed */
+  font-size:
+    var(--rh-tooltip-content-font-size,
+      var(--rh-tooltip__content--FontSize, var(--rh-font-size-body-text-sm, 0.875rem)));
+
+  /* WARNING: properties containing `__`are deprecated and will be removed */
+  color:
+    var(--rh-tooltip-content-color,
+      var(--rh-tooltip__content--Color, var(--rh-color-text-primary-on-dark, #ffffff)));
+  background-color:
+    var(--rh-tooltip-content-background-color,
+      var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-darkest, #151515)));
+}
+
+.initialized #tooltip {
+  display: block;
+}
+
+#tooltip:after {
+  display: block;
+  content: '';
+  rotate: 45deg;
+  width: var(--_floating-arrow-size);
+  height: var(--_floating-arrow-size);
+  will-change: left top right bottom;
+  background-color:
+    var(--rh-tooltip-content-background-color,
+      var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-darkest, #151515)));
+}
+
+.open #tooltip {
+  opacity: 1;
+}
+
+/* PLAIN */
+.left #tooltip:after { inset-inline-start: calc(-0.5 * var(--_floating-arrow-size)); }
+.top #tooltip:after { inset-block-start: calc(100% - 0.5 * var(--_floating-arrow-size)); }
+.right #tooltip:after { inset-inline-end: calc(100% - 0.5 * var(--_floating-arrow-size)); }
+.bottom #tooltip:after { inset-block-end: calc(100% - 0.5 * var(--_floating-arrow-size)); }
+
+/* CENTER */
+.left.center #tooltip:after { inset-block-start: calc(50% - 0.5 * var(--_floating-arrow-size)); }
+.top.center #tooltip:after { inset-inline-end: calc(50% - 0.5 * var(--_floating-arrow-size)); }
+.right.center #tooltip:after { inset-block-start: calc(50% - 0.5 * var(--_floating-arrow-size)); }
+.bottom.center #tooltip:after { inset-inline-end: calc(50% - 0.5 * var(--_floating-arrow-size)); }
+
+/* START */
+.left.start #tooltip:after { inset-block-start: var(--_floating-arrow-size); }
+.top.start #tooltip:after { inset-inline-start: var(--_floating-arrow-size); }
+.right.start #tooltip:after { inset-block-start: var(--_floating-arrow-size); }
+.bottom.start #tooltip:after { inset-inline-start: var(--_floating-arrow-size); }
+
+/* END */
+.left.end #tooltip:after { inset-block-end: var(--_floating-arrow-size); }
+.top.end #tooltip:after { inset-inline-end: var(--_floating-arrow-size); }
+.right.end #tooltip:after { inset-block-end: var(--_floating-arrow-size); }
+.bottom.end #tooltip:after { inset-inline-end: var(--_floating-arrow-size); }
+
+:host([position='left']),
+:host([position='right']) {
+  --_text-alignment: 'start';
+}
+
+.dark {
+  --rh-tooltip-content-background-color: var(--rh-color-surface-lightest, #ffffff);
+  --rh-tooltip-content-color: var(--rh-color-text-primary-on-light, #151515);
+}
+</style><!--lit-part eUcF9UlFv54=-->
+      <!--lit-node 0--><div id="container"
+           style=""
+           class=" center ">
+        <div id="invoker">
+          <slot id="invoker-slot"></slot>
+        </div>
+        <div id="tooltip" role="status">
+          <slot id="content" name="content"><!--lit-part--><!--/lit-part--></slot>
+        </div>
+      </div>
+    <!--/lit-part--></template>
+        <span id="caption" slot="content"><!--lit-part-->var(--rh-font-size-body-text-lg, 1.125rem)<!--/lit-part--></span>
+        <!--lit-node 3--><button >
+          <code><slot></slot></code>
+          <slot name="extra-content"></slot>
+          <span class="visually-hidden">Click to copy</span>
+          <!--lit-node 8--><rh-icon    aria-hidden="true" set="ui" icon="copy" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
+  line-height: 0;
+  aspect-ratio: 1/1;
+  display: inline-flex;
+  place-content: center;
+}
+
+#container {
+  display: contents;
+}
+
+svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
+  fill: currentcolor;
+  aspect-ratio: 1/1;
+}
+
+.standard svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
+}
+
+.microns svg {
+  width: 12px;
+}
+</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part pgKZgByffkY=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M23 24.5v-23c0-.827-.673-1.5-1.5-1.5H11a.997.997 0 0 0-.708.294L3.294 7.292A.998.998 0 0 0 3 8v16.5c0 .827.673 1.5 1.5 1.5h17c.827 0 1.5-.673 1.5-1.5ZM10 3.414V7H6.414L10 3.414ZM21 24H5V9h5.5c.827 0 1.5-.673 1.5-1.5V2h9v22Z"/><path d="M28 6a1 1 0 0 0-1 1v23H10a1 1 0 1 0 0 2h17.5c.827 0 1.5-.673 1.5-1.5V7a1 1 0 0 0-1-1Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+        </button>
+      </rh-tooltip>
+    <!--/lit-part--></template>
+          <span slot="extra-content" class="visually-hidden">
+            Full CSS Variable
+          </span>
+        </uxdot-copy-button>
+        <uxdot-copy-button    class="icon-only" copy="https://ux.redhat.com/tokens/typography/#--rh-font-size-body-text-lg" icon="link"><template shadowroot="open" shadowrootmode="open"><style>button {
+  color: inherit;
+  border-radius: var(--rh-border-radius-default);
+  border-width: 0;
+  background: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--rh-space-xs);
+  padding-inline: var(--rh-space-xs);
+}
+
+code {
+  padding: var(--rh-space-xs) var(--rh-space-md);
+  background: var(--rh-color-surface-light);
+  font-size: var(--rh-font-size-code-md);
+  font-weight: var(--rh-font-weight-code-regular);
+  font-family: var(--rh-font-family-code);
+  line-height: var(--rh-line-height-code);
+}
+
+.visually-hidden {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  block-size: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  inline-size: 1px;
+}
+
+:host(.icon-only) code,
+:host(:empty) code {
+  display: none;
+}
+
+:is(rh-icon, #caption) {
+  display: none;
+}
+
+:host(:state(--rendered)) button:is(:focus, :active, :hover),
+:host(:state(--rendered)) button:is(:focus, :active, :hover) code {
+  background: var(--rh-color-interactive-primary-hover-on-dark);
+  opacity: 1;
+}
+
+:host(:state(--rendered)) :is(rh-icon, #caption) {
+  display: initial;
+}
+</style><!--lit-part zk+fFwx/8Tw=-->
+      <!--lit-node 0--><rh-tooltip  position="left-start" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: inline;
+}
+
+#container {
+  display: inline-flex;
+  position: relative;
+  max-width: 100%;
+
+  /* WARNING: properties containing `__`are deprecated and will be removed */
+  --_floating-arrow-size:
+    var(--rh-tooltip-arrow-size,
+      var(--rh-tooltip__arrow--Width, 11px));
+}
+
+#tooltip,
+#tooltip:after {
+  position: absolute;
+}
+
+#tooltip {
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 10000;
+  transition: opacity 300ms cubic-bezier(0.54, 1.5, 0.38, 1.11) 0s;
+  text-align: var(--_text-alignment, center);
+  word-break: break-word;
+  translate: var(--_floating-content-translate);
+  width: max-content;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  will-change: opacity;
+  line-height: var(--rh-line-height-body-text, 1.5);
+  box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
+  max-width: var(--rh-tooltip-max-width, var(--rh-tooltip--MaxWidth, 18.75rem));
+  border-radius: var(--rh-border-radius-default, 3px);
+
+  /* WARNING: properties containing `__`are deprecated and will be removed */
+  padding:
+    var(--rh-tooltip-content-padding-block-start,
+      var(--rh-tooltip__content--PaddingTop, var(--rh-space-lg, 16px)))
+    var(--rh-tooltip-content-padding-inline-end,
+      var(--rh-tooltip__content--PaddingRight, var(--rh-space-lg, 16px)))
+    var(--rh-tooltip-content-padding-block-end,
+      var(--rh-tooltip__content--PaddingBottom, var(--rh-space-lg, 16px)))
+    var(--rh-tooltip-content-padding-inline-start,
+      var(--rh-tooltip__content--PaddingLeft, var(--rh-space-lg, 16px)));
+
+  /* WARNING: properties containing `__`are deprecated and will be removed */
+  font-size:
+    var(--rh-tooltip-content-font-size,
+      var(--rh-tooltip__content--FontSize, var(--rh-font-size-body-text-sm, 0.875rem)));
+
+  /* WARNING: properties containing `__`are deprecated and will be removed */
+  color:
+    var(--rh-tooltip-content-color,
+      var(--rh-tooltip__content--Color, var(--rh-color-text-primary-on-dark, #ffffff)));
+  background-color:
+    var(--rh-tooltip-content-background-color,
+      var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-darkest, #151515)));
+}
+
+.initialized #tooltip {
+  display: block;
+}
+
+#tooltip:after {
+  display: block;
+  content: '';
+  rotate: 45deg;
+  width: var(--_floating-arrow-size);
+  height: var(--_floating-arrow-size);
+  will-change: left top right bottom;
+  background-color:
+    var(--rh-tooltip-content-background-color,
+      var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-darkest, #151515)));
+}
+
+.open #tooltip {
+  opacity: 1;
+}
+
+/* PLAIN */
+.left #tooltip:after { inset-inline-start: calc(-0.5 * var(--_floating-arrow-size)); }
+.top #tooltip:after { inset-block-start: calc(100% - 0.5 * var(--_floating-arrow-size)); }
+.right #tooltip:after { inset-inline-end: calc(100% - 0.5 * var(--_floating-arrow-size)); }
+.bottom #tooltip:after { inset-block-end: calc(100% - 0.5 * var(--_floating-arrow-size)); }
+
+/* CENTER */
+.left.center #tooltip:after { inset-block-start: calc(50% - 0.5 * var(--_floating-arrow-size)); }
+.top.center #tooltip:after { inset-inline-end: calc(50% - 0.5 * var(--_floating-arrow-size)); }
+.right.center #tooltip:after { inset-block-start: calc(50% - 0.5 * var(--_floating-arrow-size)); }
+.bottom.center #tooltip:after { inset-inline-end: calc(50% - 0.5 * var(--_floating-arrow-size)); }
+
+/* START */
+.left.start #tooltip:after { inset-block-start: var(--_floating-arrow-size); }
+.top.start #tooltip:after { inset-inline-start: var(--_floating-arrow-size); }
+.right.start #tooltip:after { inset-block-start: var(--_floating-arrow-size); }
+.bottom.start #tooltip:after { inset-inline-start: var(--_floating-arrow-size); }
+
+/* END */
+.left.end #tooltip:after { inset-block-end: var(--_floating-arrow-size); }
+.top.end #tooltip:after { inset-inline-end: var(--_floating-arrow-size); }
+.right.end #tooltip:after { inset-block-end: var(--_floating-arrow-size); }
+.bottom.end #tooltip:after { inset-inline-end: var(--_floating-arrow-size); }
+
+:host([position='left']),
+:host([position='right']) {
+  --_text-alignment: 'start';
+}
+
+.dark {
+  --rh-tooltip-content-background-color: var(--rh-color-surface-lightest, #ffffff);
+  --rh-tooltip-content-color: var(--rh-color-text-primary-on-light, #151515);
+}
+</style><!--lit-part eUcF9UlFv54=-->
+      <!--lit-node 0--><div id="container"
+           style=""
+           class=" center ">
+        <div id="invoker">
+          <slot id="invoker-slot"></slot>
+        </div>
+        <div id="tooltip" role="status">
+          <slot id="content" name="content"><!--lit-part--><!--/lit-part--></slot>
+        </div>
+      </div>
+    <!--/lit-part--></template>
+        <span id="caption" slot="content"><!--lit-part-->https://ux.redhat.com/tokens/typography/#--rh-font-size-body-text-lg<!--/lit-part--></span>
+        <!--lit-node 3--><button >
+          <code><slot></slot></code>
+          <slot name="extra-content"></slot>
+          <span class="visually-hidden">Click to copy</span>
+          <!--lit-node 8--><rh-icon    aria-hidden="true" set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
+  line-height: 0;
+  aspect-ratio: 1/1;
+  display: inline-flex;
+  place-content: center;
+}
+
+#container {
+  display: contents;
+}
+
+svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
+  fill: currentcolor;
+  aspect-ratio: 1/1;
+}
+
+.standard svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
+}
+
+.microns svg {
+  width: 12px;
+}
+</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+        </button>
+      </rh-tooltip>
+    <!--/lit-part--></template>
+          <span slot="extra-content" class="visually-hidden">
+            Permalink to this token
+          </span>
+        </uxdot-copy-button>
+      </div>
+    </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="https://ux.redhat.com/tokens/typography/#--rh-font-size-body-text-md">
+                      <code>--rh-font-size-body-text-md</code>
+                    </a>
+                  </td>
+                  <td data-label="Copy">
+      <div>
+        <uxdot-copy-button   class="icon-only" copy="var(--rh-font-size-body-text-md, 1rem)"><template shadowroot="open" shadowrootmode="open"><style>button {
+  color: inherit;
+  border-radius: var(--rh-border-radius-default);
+  border-width: 0;
+  background: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--rh-space-xs);
+  padding-inline: var(--rh-space-xs);
+}
+
+code {
+  padding: var(--rh-space-xs) var(--rh-space-md);
+  background: var(--rh-color-surface-light);
+  font-size: var(--rh-font-size-code-md);
+  font-weight: var(--rh-font-weight-code-regular);
+  font-family: var(--rh-font-family-code);
+  line-height: var(--rh-line-height-code);
+}
+
+.visually-hidden {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  block-size: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  inline-size: 1px;
+}
+
+:host(.icon-only) code,
+:host(:empty) code {
+  display: none;
+}
+
+:is(rh-icon, #caption) {
+  display: none;
+}
+
+:host(:state(--rendered)) button:is(:focus, :active, :hover),
+:host(:state(--rendered)) button:is(:focus, :active, :hover) code {
+  background: var(--rh-color-interactive-primary-hover-on-dark);
+  opacity: 1;
+}
+
+:host(:state(--rendered)) :is(rh-icon, #caption) {
+  display: initial;
+}
+</style><!--lit-part zk+fFwx/8Tw=-->
+      <!--lit-node 0--><rh-tooltip  position="left-start" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: inline;
+}
+
+#container {
+  display: inline-flex;
+  position: relative;
+  max-width: 100%;
+
+  /* WARNING: properties containing `__`are deprecated and will be removed */
+  --_floating-arrow-size:
+    var(--rh-tooltip-arrow-size,
+      var(--rh-tooltip__arrow--Width, 11px));
+}
+
+#tooltip,
+#tooltip:after {
+  position: absolute;
+}
+
+#tooltip {
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 10000;
+  transition: opacity 300ms cubic-bezier(0.54, 1.5, 0.38, 1.11) 0s;
+  text-align: var(--_text-alignment, center);
+  word-break: break-word;
+  translate: var(--_floating-content-translate);
+  width: max-content;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  will-change: opacity;
+  line-height: var(--rh-line-height-body-text, 1.5);
+  box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
+  max-width: var(--rh-tooltip-max-width, var(--rh-tooltip--MaxWidth, 18.75rem));
+  border-radius: var(--rh-border-radius-default, 3px);
+
+  /* WARNING: properties containing `__`are deprecated and will be removed */
+  padding:
+    var(--rh-tooltip-content-padding-block-start,
+      var(--rh-tooltip__content--PaddingTop, var(--rh-space-lg, 16px)))
+    var(--rh-tooltip-content-padding-inline-end,
+      var(--rh-tooltip__content--PaddingRight, var(--rh-space-lg, 16px)))
+    var(--rh-tooltip-content-padding-block-end,
+      var(--rh-tooltip__content--PaddingBottom, var(--rh-space-lg, 16px)))
+    var(--rh-tooltip-content-padding-inline-start,
+      var(--rh-tooltip__content--PaddingLeft, var(--rh-space-lg, 16px)));
+
+  /* WARNING: properties containing `__`are deprecated and will be removed */
+  font-size:
+    var(--rh-tooltip-content-font-size,
+      var(--rh-tooltip__content--FontSize, var(--rh-font-size-body-text-sm, 0.875rem)));
+
+  /* WARNING: properties containing `__`are deprecated and will be removed */
+  color:
+    var(--rh-tooltip-content-color,
+      var(--rh-tooltip__content--Color, var(--rh-color-text-primary-on-dark, #ffffff)));
+  background-color:
+    var(--rh-tooltip-content-background-color,
+      var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-darkest, #151515)));
+}
+
+.initialized #tooltip {
+  display: block;
+}
+
+#tooltip:after {
+  display: block;
+  content: '';
+  rotate: 45deg;
+  width: var(--_floating-arrow-size);
+  height: var(--_floating-arrow-size);
+  will-change: left top right bottom;
+  background-color:
+    var(--rh-tooltip-content-background-color,
+      var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-darkest, #151515)));
+}
+
+.open #tooltip {
+  opacity: 1;
+}
+
+/* PLAIN */
+.left #tooltip:after { inset-inline-start: calc(-0.5 * var(--_floating-arrow-size)); }
+.top #tooltip:after { inset-block-start: calc(100% - 0.5 * var(--_floating-arrow-size)); }
+.right #tooltip:after { inset-inline-end: calc(100% - 0.5 * var(--_floating-arrow-size)); }
+.bottom #tooltip:after { inset-block-end: calc(100% - 0.5 * var(--_floating-arrow-size)); }
+
+/* CENTER */
+.left.center #tooltip:after { inset-block-start: calc(50% - 0.5 * var(--_floating-arrow-size)); }
+.top.center #tooltip:after { inset-inline-end: calc(50% - 0.5 * var(--_floating-arrow-size)); }
+.right.center #tooltip:after { inset-block-start: calc(50% - 0.5 * var(--_floating-arrow-size)); }
+.bottom.center #tooltip:after { inset-inline-end: calc(50% - 0.5 * var(--_floating-arrow-size)); }
+
+/* START */
+.left.start #tooltip:after { inset-block-start: var(--_floating-arrow-size); }
+.top.start #tooltip:after { inset-inline-start: var(--_floating-arrow-size); }
+.right.start #tooltip:after { inset-block-start: var(--_floating-arrow-size); }
+.bottom.start #tooltip:after { inset-inline-start: var(--_floating-arrow-size); }
+
+/* END */
+.left.end #tooltip:after { inset-block-end: var(--_floating-arrow-size); }
+.top.end #tooltip:after { inset-inline-end: var(--_floating-arrow-size); }
+.right.end #tooltip:after { inset-block-end: var(--_floating-arrow-size); }
+.bottom.end #tooltip:after { inset-inline-end: var(--_floating-arrow-size); }
+
+:host([position='left']),
+:host([position='right']) {
+  --_text-alignment: 'start';
+}
+
+.dark {
+  --rh-tooltip-content-background-color: var(--rh-color-surface-lightest, #ffffff);
+  --rh-tooltip-content-color: var(--rh-color-text-primary-on-light, #151515);
+}
+</style><!--lit-part eUcF9UlFv54=-->
+      <!--lit-node 0--><div id="container"
+           style=""
+           class=" center ">
+        <div id="invoker">
+          <slot id="invoker-slot"></slot>
+        </div>
+        <div id="tooltip" role="status">
+          <slot id="content" name="content"><!--lit-part--><!--/lit-part--></slot>
+        </div>
+      </div>
+    <!--/lit-part--></template>
+        <span id="caption" slot="content"><!--lit-part-->var(--rh-font-size-body-text-md, 1rem)<!--/lit-part--></span>
+        <!--lit-node 3--><button >
+          <code><slot></slot></code>
+          <slot name="extra-content"></slot>
+          <span class="visually-hidden">Click to copy</span>
+          <!--lit-node 8--><rh-icon    aria-hidden="true" set="ui" icon="copy" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
+  line-height: 0;
+  aspect-ratio: 1/1;
+  display: inline-flex;
+  place-content: center;
+}
+
+#container {
+  display: contents;
+}
+
+svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
+  fill: currentcolor;
+  aspect-ratio: 1/1;
+}
+
+.standard svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
+}
+
+.microns svg {
+  width: 12px;
+}
+</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part pgKZgByffkY=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M23 24.5v-23c0-.827-.673-1.5-1.5-1.5H11a.997.997 0 0 0-.708.294L3.294 7.292A.998.998 0 0 0 3 8v16.5c0 .827.673 1.5 1.5 1.5h17c.827 0 1.5-.673 1.5-1.5ZM10 3.414V7H6.414L10 3.414ZM21 24H5V9h5.5c.827 0 1.5-.673 1.5-1.5V2h9v22Z"/><path d="M28 6a1 1 0 0 0-1 1v23H10a1 1 0 1 0 0 2h17.5c.827 0 1.5-.673 1.5-1.5V7a1 1 0 0 0-1-1Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+        </button>
+      </rh-tooltip>
+    <!--/lit-part--></template>
+          <span slot="extra-content" class="visually-hidden">
+            Full CSS Variable
+          </span>
+        </uxdot-copy-button>
+        <uxdot-copy-button    class="icon-only" copy="https://ux.redhat.com/tokens/typography/#--rh-font-size-body-text-md" icon="link"><template shadowroot="open" shadowrootmode="open"><style>button {
+  color: inherit;
+  border-radius: var(--rh-border-radius-default);
+  border-width: 0;
+  background: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--rh-space-xs);
+  padding-inline: var(--rh-space-xs);
+}
+
+code {
+  padding: var(--rh-space-xs) var(--rh-space-md);
+  background: var(--rh-color-surface-light);
+  font-size: var(--rh-font-size-code-md);
+  font-weight: var(--rh-font-weight-code-regular);
+  font-family: var(--rh-font-family-code);
+  line-height: var(--rh-line-height-code);
+}
+
+.visually-hidden {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  block-size: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  inline-size: 1px;
+}
+
+:host(.icon-only) code,
+:host(:empty) code {
+  display: none;
+}
+
+:is(rh-icon, #caption) {
+  display: none;
+}
+
+:host(:state(--rendered)) button:is(:focus, :active, :hover),
+:host(:state(--rendered)) button:is(:focus, :active, :hover) code {
+  background: var(--rh-color-interactive-primary-hover-on-dark);
+  opacity: 1;
+}
+
+:host(:state(--rendered)) :is(rh-icon, #caption) {
+  display: initial;
+}
+</style><!--lit-part zk+fFwx/8Tw=-->
+      <!--lit-node 0--><rh-tooltip  position="left-start" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: inline;
+}
+
+#container {
+  display: inline-flex;
+  position: relative;
+  max-width: 100%;
+
+  /* WARNING: properties containing `__`are deprecated and will be removed */
+  --_floating-arrow-size:
+    var(--rh-tooltip-arrow-size,
+      var(--rh-tooltip__arrow--Width, 11px));
+}
+
+#tooltip,
+#tooltip:after {
+  position: absolute;
+}
+
+#tooltip {
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 10000;
+  transition: opacity 300ms cubic-bezier(0.54, 1.5, 0.38, 1.11) 0s;
+  text-align: var(--_text-alignment, center);
+  word-break: break-word;
+  translate: var(--_floating-content-translate);
+  width: max-content;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  will-change: opacity;
+  line-height: var(--rh-line-height-body-text, 1.5);
+  box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
+  max-width: var(--rh-tooltip-max-width, var(--rh-tooltip--MaxWidth, 18.75rem));
+  border-radius: var(--rh-border-radius-default, 3px);
+
+  /* WARNING: properties containing `__`are deprecated and will be removed */
+  padding:
+    var(--rh-tooltip-content-padding-block-start,
+      var(--rh-tooltip__content--PaddingTop, var(--rh-space-lg, 16px)))
+    var(--rh-tooltip-content-padding-inline-end,
+      var(--rh-tooltip__content--PaddingRight, var(--rh-space-lg, 16px)))
+    var(--rh-tooltip-content-padding-block-end,
+      var(--rh-tooltip__content--PaddingBottom, var(--rh-space-lg, 16px)))
+    var(--rh-tooltip-content-padding-inline-start,
+      var(--rh-tooltip__content--PaddingLeft, var(--rh-space-lg, 16px)));
+
+  /* WARNING: properties containing `__`are deprecated and will be removed */
+  font-size:
+    var(--rh-tooltip-content-font-size,
+      var(--rh-tooltip__content--FontSize, var(--rh-font-size-body-text-sm, 0.875rem)));
+
+  /* WARNING: properties containing `__`are deprecated and will be removed */
+  color:
+    var(--rh-tooltip-content-color,
+      var(--rh-tooltip__content--Color, var(--rh-color-text-primary-on-dark, #ffffff)));
+  background-color:
+    var(--rh-tooltip-content-background-color,
+      var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-darkest, #151515)));
+}
+
+.initialized #tooltip {
+  display: block;
+}
+
+#tooltip:after {
+  display: block;
+  content: '';
+  rotate: 45deg;
+  width: var(--_floating-arrow-size);
+  height: var(--_floating-arrow-size);
+  will-change: left top right bottom;
+  background-color:
+    var(--rh-tooltip-content-background-color,
+      var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-darkest, #151515)));
+}
+
+.open #tooltip {
+  opacity: 1;
+}
+
+/* PLAIN */
+.left #tooltip:after { inset-inline-start: calc(-0.5 * var(--_floating-arrow-size)); }
+.top #tooltip:after { inset-block-start: calc(100% - 0.5 * var(--_floating-arrow-size)); }
+.right #tooltip:after { inset-inline-end: calc(100% - 0.5 * var(--_floating-arrow-size)); }
+.bottom #tooltip:after { inset-block-end: calc(100% - 0.5 * var(--_floating-arrow-size)); }
+
+/* CENTER */
+.left.center #tooltip:after { inset-block-start: calc(50% - 0.5 * var(--_floating-arrow-size)); }
+.top.center #tooltip:after { inset-inline-end: calc(50% - 0.5 * var(--_floating-arrow-size)); }
+.right.center #tooltip:after { inset-block-start: calc(50% - 0.5 * var(--_floating-arrow-size)); }
+.bottom.center #tooltip:after { inset-inline-end: calc(50% - 0.5 * var(--_floating-arrow-size)); }
+
+/* START */
+.left.start #tooltip:after { inset-block-start: var(--_floating-arrow-size); }
+.top.start #tooltip:after { inset-inline-start: var(--_floating-arrow-size); }
+.right.start #tooltip:after { inset-block-start: var(--_floating-arrow-size); }
+.bottom.start #tooltip:after { inset-inline-start: var(--_floating-arrow-size); }
+
+/* END */
+.left.end #tooltip:after { inset-block-end: var(--_floating-arrow-size); }
+.top.end #tooltip:after { inset-inline-end: var(--_floating-arrow-size); }
+.right.end #tooltip:after { inset-block-end: var(--_floating-arrow-size); }
+.bottom.end #tooltip:after { inset-inline-end: var(--_floating-arrow-size); }
+
+:host([position='left']),
+:host([position='right']) {
+  --_text-alignment: 'start';
+}
+
+.dark {
+  --rh-tooltip-content-background-color: var(--rh-color-surface-lightest, #ffffff);
+  --rh-tooltip-content-color: var(--rh-color-text-primary-on-light, #151515);
+}
+</style><!--lit-part eUcF9UlFv54=-->
+      <!--lit-node 0--><div id="container"
+           style=""
+           class=" center ">
+        <div id="invoker">
+          <slot id="invoker-slot"></slot>
+        </div>
+        <div id="tooltip" role="status">
+          <slot id="content" name="content"><!--lit-part--><!--/lit-part--></slot>
+        </div>
+      </div>
+    <!--/lit-part--></template>
+        <span id="caption" slot="content"><!--lit-part-->https://ux.redhat.com/tokens/typography/#--rh-font-size-body-text-md<!--/lit-part--></span>
+        <!--lit-node 3--><button >
+          <code><slot></slot></code>
+          <slot name="extra-content"></slot>
+          <span class="visually-hidden">Click to copy</span>
+          <!--lit-node 8--><rh-icon    aria-hidden="true" set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
+  line-height: 0;
+  aspect-ratio: 1/1;
+  display: inline-flex;
+  place-content: center;
+}
+
+#container {
+  display: contents;
+}
+
+svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
+  fill: currentcolor;
+  aspect-ratio: 1/1;
+}
+
+.standard svg {
+  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
+}
+
+.microns svg {
+  width: 12px;
+}
+</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+        </button>
+      </rh-tooltip>
+    <!--/lit-part--></template>
+          <span slot="extra-content" class="visually-hidden">
+            Permalink to this token
+          </span>
+        </uxdot-copy-button>
+      </div>
+    </td>
+                </tr>
               </tbody>
             </table>
           </rh-table>
@@ -14054,12 +14954,27 @@ svg {
       <p>Accordion Header
 We expect the light DOM of the rh-accordion-header to be a heading level tag (h1, h2, h3, h4, h5, h6)</p>
 
-      <rh-accordion  box><template shadowroot="open" shadowrootmode="open"><style>#container {
+      <rh-accordion  box><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  container: accordion / inline-size;
+}
+
+#container {
   color: var(--rh-color-text-primary);
   background-color: var(--rh-color-surface);
 
   &.expanded {
     box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
+  }
+
+  &.large {
+    --_header-font-size: var(--rh-font-size-body-text-md, 1rem);
+    --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
+
+    /* --rh-media-sm */
+    @container accordion (min-width: 768px) {
+      --_header-font-size: var(--rh-font-size-body-text-lg, 1.125rem);
+    }
   }
 }
 
@@ -14093,7 +15008,6 @@ We expect the light DOM of the rh-accordion-header to be a heading level tag (h1
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
   --_isRTL: -1;
@@ -14157,7 +15071,7 @@ span {
     var(--_padding-block-end)
     var(--_padding-inline-start);
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
-  font-size: var(--_font-size);
+  font-size: var(--_header-font-size);
   color: var(--rh-color-text-primary);
 
   & #icon {
@@ -14276,7 +15190,6 @@ span {
   overflow: hidden;
   will-change: height;
 
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
   --_panel-body-padding-block-start: var(--rh-space-lg, 16px);
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-lg, 16px);
@@ -14298,7 +15211,6 @@ span {
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-inline-start: var(--rh-space-xl, 24px);
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
 }
 
 .body {
@@ -14350,7 +15262,7 @@ span {
 
 .content {
   color: var(--rh-color-text-primary);
-  font-size: var(--_panel-font-size, var(--rh-font-size-body-text-sm, 0.875rem));
+  font-size: var(--_panel-font-size);
 }
 </style><!--lit-part A50axevTK8k=-->
       <!--lit-node 0--><div id="container"
@@ -14471,7 +15383,6 @@ span {
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
   --_isRTL: -1;
@@ -14535,7 +15446,7 @@ span {
     var(--_padding-block-end)
     var(--_padding-inline-start);
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
-  font-size: var(--_font-size);
+  font-size: var(--_header-font-size);
   color: var(--rh-color-text-primary);
 
   & #icon {
@@ -14654,7 +15565,6 @@ span {
   overflow: hidden;
   will-change: height;
 
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
   --_panel-body-padding-block-start: var(--rh-space-lg, 16px);
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-lg, 16px);
@@ -14676,7 +15586,6 @@ span {
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-inline-start: var(--rh-space-xl, 24px);
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
 }
 
 .body {
@@ -14728,7 +15637,7 @@ span {
 
 .content {
   color: var(--rh-color-text-primary);
-  font-size: var(--_panel-font-size, var(--rh-font-size-body-text-sm, 0.875rem));
+  font-size: var(--_panel-font-size);
 }
 </style><!--lit-part A50axevTK8k=-->
       <!--lit-node 0--><div id="container"
@@ -14852,7 +15761,6 @@ span {
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
   --_isRTL: -1;
@@ -14916,7 +15824,7 @@ span {
     var(--_padding-block-end)
     var(--_padding-inline-start);
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
-  font-size: var(--_font-size);
+  font-size: var(--_header-font-size);
   color: var(--rh-color-text-primary);
 
   & #icon {
@@ -15035,7 +15943,6 @@ span {
   overflow: hidden;
   will-change: height;
 
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
   --_panel-body-padding-block-start: var(--rh-space-lg, 16px);
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-lg, 16px);
@@ -15057,7 +15964,6 @@ span {
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-inline-start: var(--rh-space-xl, 24px);
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
 }
 
 .body {
@@ -15109,7 +16015,7 @@ span {
 
 .content {
   color: var(--rh-color-text-primary);
-  font-size: var(--_panel-font-size, var(--rh-font-size-body-text-sm, 0.875rem));
+  font-size: var(--_panel-font-size);
 }
 </style><!--lit-part A50axevTK8k=-->
       <!--lit-node 0--><div id="container"
@@ -15131,7 +16037,6 @@ span {
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
   --_isRTL: -1;
@@ -15195,7 +16100,7 @@ span {
     var(--_padding-block-end)
     var(--_padding-inline-start);
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
-  font-size: var(--_font-size);
+  font-size: var(--_header-font-size);
   color: var(--rh-color-text-primary);
 
   & #icon {
@@ -15314,7 +16219,6 @@ span {
   overflow: hidden;
   will-change: height;
 
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
   --_panel-body-padding-block-start: var(--rh-space-lg, 16px);
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-lg, 16px);
@@ -15336,7 +16240,6 @@ span {
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-inline-start: var(--rh-space-xl, 24px);
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
 }
 
 .body {
@@ -15388,7 +16291,7 @@ span {
 
 .content {
   color: var(--rh-color-text-primary);
-  font-size: var(--_panel-font-size, var(--rh-font-size-body-text-sm, 0.875rem));
+  font-size: var(--_panel-font-size);
 }
 </style><!--lit-part A50axevTK8k=-->
       <!--lit-node 0--><div id="container"
@@ -15506,7 +16409,6 @@ span {
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
   --_isRTL: -1;
@@ -15570,7 +16472,7 @@ span {
     var(--_padding-block-end)
     var(--_padding-inline-start);
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
-  font-size: var(--_font-size);
+  font-size: var(--_header-font-size);
   color: var(--rh-color-text-primary);
 
   & #icon {
@@ -15689,7 +16591,6 @@ span {
   overflow: hidden;
   will-change: height;
 
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
   --_panel-body-padding-block-start: var(--rh-space-lg, 16px);
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-lg, 16px);
@@ -15711,7 +16612,6 @@ span {
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-inline-start: var(--rh-space-xl, 24px);
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
 }
 
 .body {
@@ -15763,7 +16663,7 @@ span {
 
 .content {
   color: var(--rh-color-text-primary);
-  font-size: var(--_panel-font-size, var(--rh-font-size-body-text-sm, 0.875rem));
+  font-size: var(--_panel-font-size);
 }
 </style><!--lit-part A50axevTK8k=-->
       <!--lit-node 0--><div id="container"
@@ -15885,7 +16785,6 @@ span {
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
   --_isRTL: -1;
@@ -15949,7 +16848,7 @@ span {
     var(--_padding-block-end)
     var(--_padding-inline-start);
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
-  font-size: var(--_font-size);
+  font-size: var(--_header-font-size);
   color: var(--rh-color-text-primary);
 
   & #icon {
@@ -16068,7 +16967,6 @@ span {
   overflow: hidden;
   will-change: height;
 
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
   --_panel-body-padding-block-start: var(--rh-space-lg, 16px);
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-lg, 16px);
@@ -16090,7 +16988,6 @@ span {
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-inline-start: var(--rh-space-xl, 24px);
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
 }
 
 .body {
@@ -16142,7 +17039,7 @@ span {
 
 .content {
   color: var(--rh-color-text-primary);
-  font-size: var(--_panel-font-size, var(--rh-font-size-body-text-sm, 0.875rem));
+  font-size: var(--_panel-font-size);
 }
 </style><!--lit-part A50axevTK8k=-->
       <!--lit-node 0--><div id="container"
@@ -16164,7 +17061,6 @@ span {
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
   --_isRTL: -1;
@@ -16228,7 +17124,7 @@ span {
     var(--_padding-block-end)
     var(--_padding-inline-start);
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
-  font-size: var(--_font-size);
+  font-size: var(--_header-font-size);
   color: var(--rh-color-text-primary);
 
   & #icon {
@@ -16339,14 +17235,13 @@ span {
         </svg>
       </button>
     <!--/lit-part--></template>Design Tokens
-        <rh-badge>17</rh-badge>
+        <rh-badge>16</rh-badge>
       </rh-accordion-header>
       <rh-accordion-panel><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: none;
   overflow: hidden;
   will-change: height;
 
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
   --_panel-body-padding-block-start: var(--rh-space-lg, 16px);
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-lg, 16px);
@@ -16368,7 +17263,6 @@ span {
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-inline-start: var(--rh-space-xl, 24px);
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
 }
 
 .body {
@@ -16420,7 +17314,7 @@ span {
 
 .content {
   color: var(--rh-color-text-primary);
-  font-size: var(--_panel-font-size, var(--rh-font-size-body-text-sm, 0.875rem));
+  font-size: var(--_panel-font-size);
 }
 </style><!--lit-part A50axevTK8k=-->
       <!--lit-node 0--><div id="container"
@@ -21959,459 +22853,6 @@ svg {
                 </tr>
                 <tr>
                   <td>
-                    <a href="https://ux.redhat.com/tokens/typography/#--rh-font-size-body-text-lg">
-                      <code>--rh-font-size-body-text-lg</code>
-                    </a>
-                  </td>
-                  <td data-label="Copy">
-      <div>
-        <uxdot-copy-button   class="icon-only" copy="var(--rh-font-size-body-text-lg, 1.125rem)"><template shadowroot="open" shadowrootmode="open"><style>button {
-  color: inherit;
-  border-radius: var(--rh-border-radius-default);
-  border-width: 0;
-  background: none;
-  display: inline-flex;
-  align-items: center;
-  gap: var(--rh-space-xs);
-  padding-inline: var(--rh-space-xs);
-}
-
-code {
-  padding: var(--rh-space-xs) var(--rh-space-md);
-  background: var(--rh-color-surface-light);
-  font-size: var(--rh-font-size-code-md);
-  font-weight: var(--rh-font-weight-code-regular);
-  font-family: var(--rh-font-family-code);
-  line-height: var(--rh-line-height-code);
-}
-
-.visually-hidden {
-  border: 0;
-  clip: rect(0, 0, 0, 0);
-  block-size: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  white-space: nowrap;
-  inline-size: 1px;
-}
-
-:host(.icon-only) code,
-:host(:empty) code {
-  display: none;
-}
-
-:is(rh-icon, #caption) {
-  display: none;
-}
-
-:host(:state(--rendered)) button:is(:focus, :active, :hover),
-:host(:state(--rendered)) button:is(:focus, :active, :hover) code {
-  background: var(--rh-color-interactive-primary-hover-on-dark);
-  opacity: 1;
-}
-
-:host(:state(--rendered)) :is(rh-icon, #caption) {
-  display: initial;
-}
-</style><!--lit-part zk+fFwx/8Tw=-->
-      <!--lit-node 0--><rh-tooltip  position="left-start" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
-  display: inline;
-}
-
-#container {
-  display: inline-flex;
-  position: relative;
-  max-width: 100%;
-
-  /* WARNING: properties containing `__`are deprecated and will be removed */
-  --_floating-arrow-size:
-    var(--rh-tooltip-arrow-size,
-      var(--rh-tooltip__arrow--Width, 11px));
-}
-
-#tooltip,
-#tooltip:after {
-  position: absolute;
-}
-
-#tooltip {
-  display: none;
-  opacity: 0;
-  pointer-events: none;
-  z-index: 10000;
-  transition: opacity 300ms cubic-bezier(0.54, 1.5, 0.38, 1.11) 0s;
-  text-align: var(--_text-alignment, center);
-  word-break: break-word;
-  translate: var(--_floating-content-translate);
-  width: max-content;
-  inset-block-start: 0;
-  inset-inline-start: 0;
-  will-change: opacity;
-  line-height: var(--rh-line-height-body-text, 1.5);
-  box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
-  max-width: var(--rh-tooltip-max-width, var(--rh-tooltip--MaxWidth, 18.75rem));
-  border-radius: var(--rh-border-radius-default, 3px);
-
-  /* WARNING: properties containing `__`are deprecated and will be removed */
-  padding:
-    var(--rh-tooltip-content-padding-block-start,
-      var(--rh-tooltip__content--PaddingTop, var(--rh-space-lg, 16px)))
-    var(--rh-tooltip-content-padding-inline-end,
-      var(--rh-tooltip__content--PaddingRight, var(--rh-space-lg, 16px)))
-    var(--rh-tooltip-content-padding-block-end,
-      var(--rh-tooltip__content--PaddingBottom, var(--rh-space-lg, 16px)))
-    var(--rh-tooltip-content-padding-inline-start,
-      var(--rh-tooltip__content--PaddingLeft, var(--rh-space-lg, 16px)));
-
-  /* WARNING: properties containing `__`are deprecated and will be removed */
-  font-size:
-    var(--rh-tooltip-content-font-size,
-      var(--rh-tooltip__content--FontSize, var(--rh-font-size-body-text-sm, 0.875rem)));
-
-  /* WARNING: properties containing `__`are deprecated and will be removed */
-  color:
-    var(--rh-tooltip-content-color,
-      var(--rh-tooltip__content--Color, var(--rh-color-text-primary-on-dark, #ffffff)));
-  background-color:
-    var(--rh-tooltip-content-background-color,
-      var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-darkest, #151515)));
-}
-
-.initialized #tooltip {
-  display: block;
-}
-
-#tooltip:after {
-  display: block;
-  content: '';
-  rotate: 45deg;
-  width: var(--_floating-arrow-size);
-  height: var(--_floating-arrow-size);
-  will-change: left top right bottom;
-  background-color:
-    var(--rh-tooltip-content-background-color,
-      var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-darkest, #151515)));
-}
-
-.open #tooltip {
-  opacity: 1;
-}
-
-/* PLAIN */
-.left #tooltip:after { inset-inline-start: calc(-0.5 * var(--_floating-arrow-size)); }
-.top #tooltip:after { inset-block-start: calc(100% - 0.5 * var(--_floating-arrow-size)); }
-.right #tooltip:after { inset-inline-end: calc(100% - 0.5 * var(--_floating-arrow-size)); }
-.bottom #tooltip:after { inset-block-end: calc(100% - 0.5 * var(--_floating-arrow-size)); }
-
-/* CENTER */
-.left.center #tooltip:after { inset-block-start: calc(50% - 0.5 * var(--_floating-arrow-size)); }
-.top.center #tooltip:after { inset-inline-end: calc(50% - 0.5 * var(--_floating-arrow-size)); }
-.right.center #tooltip:after { inset-block-start: calc(50% - 0.5 * var(--_floating-arrow-size)); }
-.bottom.center #tooltip:after { inset-inline-end: calc(50% - 0.5 * var(--_floating-arrow-size)); }
-
-/* START */
-.left.start #tooltip:after { inset-block-start: var(--_floating-arrow-size); }
-.top.start #tooltip:after { inset-inline-start: var(--_floating-arrow-size); }
-.right.start #tooltip:after { inset-block-start: var(--_floating-arrow-size); }
-.bottom.start #tooltip:after { inset-inline-start: var(--_floating-arrow-size); }
-
-/* END */
-.left.end #tooltip:after { inset-block-end: var(--_floating-arrow-size); }
-.top.end #tooltip:after { inset-inline-end: var(--_floating-arrow-size); }
-.right.end #tooltip:after { inset-block-end: var(--_floating-arrow-size); }
-.bottom.end #tooltip:after { inset-inline-end: var(--_floating-arrow-size); }
-
-:host([position='left']),
-:host([position='right']) {
-  --_text-alignment: 'start';
-}
-
-.dark {
-  --rh-tooltip-content-background-color: var(--rh-color-surface-lightest, #ffffff);
-  --rh-tooltip-content-color: var(--rh-color-text-primary-on-light, #151515);
-}
-</style><!--lit-part eUcF9UlFv54=-->
-      <!--lit-node 0--><div id="container"
-           style=""
-           class=" center ">
-        <div id="invoker">
-          <slot id="invoker-slot"></slot>
-        </div>
-        <div id="tooltip" role="status">
-          <slot id="content" name="content"><!--lit-part--><!--/lit-part--></slot>
-        </div>
-      </div>
-    <!--/lit-part--></template>
-        <span id="caption" slot="content"><!--lit-part-->var(--rh-font-size-body-text-lg, 1.125rem)<!--/lit-part--></span>
-        <!--lit-node 3--><button >
-          <code><slot></slot></code>
-          <slot name="extra-content"></slot>
-          <span class="visually-hidden">Click to copy</span>
-          <!--lit-node 8--><rh-icon    aria-hidden="true" set="ui" icon="copy" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
-  line-height: 0;
-  aspect-ratio: 1/1;
-  display: inline-flex;
-  place-content: center;
-}
-
-#container {
-  display: contents;
-}
-
-svg {
-  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
-  fill: currentcolor;
-  aspect-ratio: 1/1;
-}
-
-.standard svg {
-  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
-}
-
-.microns svg {
-  width: 12px;
-}
-</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container"
-           aria-hidden="true"
-           class=" ui "><!--lit-part pgKZgByffkY=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M23 24.5v-23c0-.827-.673-1.5-1.5-1.5H11a.997.997 0 0 0-.708.294L3.294 7.292A.998.998 0 0 0 3 8v16.5c0 .827.673 1.5 1.5 1.5h17c.827 0 1.5-.673 1.5-1.5ZM10 3.414V7H6.414L10 3.414ZM21 24H5V9h5.5c.827 0 1.5-.673 1.5-1.5V2h9v22Z"/><path d="M28 6a1 1 0 0 0-1 1v23H10a1 1 0 1 0 0 2h17.5c.827 0 1.5-.673 1.5-1.5V7a1 1 0 0 0-1-1Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-        </button>
-      </rh-tooltip>
-    <!--/lit-part--></template>
-          <span slot="extra-content" class="visually-hidden">
-            Full CSS Variable
-          </span>
-        </uxdot-copy-button>
-        <uxdot-copy-button    class="icon-only" copy="https://ux.redhat.com/tokens/typography/#--rh-font-size-body-text-lg" icon="link"><template shadowroot="open" shadowrootmode="open"><style>button {
-  color: inherit;
-  border-radius: var(--rh-border-radius-default);
-  border-width: 0;
-  background: none;
-  display: inline-flex;
-  align-items: center;
-  gap: var(--rh-space-xs);
-  padding-inline: var(--rh-space-xs);
-}
-
-code {
-  padding: var(--rh-space-xs) var(--rh-space-md);
-  background: var(--rh-color-surface-light);
-  font-size: var(--rh-font-size-code-md);
-  font-weight: var(--rh-font-weight-code-regular);
-  font-family: var(--rh-font-family-code);
-  line-height: var(--rh-line-height-code);
-}
-
-.visually-hidden {
-  border: 0;
-  clip: rect(0, 0, 0, 0);
-  block-size: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  white-space: nowrap;
-  inline-size: 1px;
-}
-
-:host(.icon-only) code,
-:host(:empty) code {
-  display: none;
-}
-
-:is(rh-icon, #caption) {
-  display: none;
-}
-
-:host(:state(--rendered)) button:is(:focus, :active, :hover),
-:host(:state(--rendered)) button:is(:focus, :active, :hover) code {
-  background: var(--rh-color-interactive-primary-hover-on-dark);
-  opacity: 1;
-}
-
-:host(:state(--rendered)) :is(rh-icon, #caption) {
-  display: initial;
-}
-</style><!--lit-part zk+fFwx/8Tw=-->
-      <!--lit-node 0--><rh-tooltip  position="left-start" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
-  display: inline;
-}
-
-#container {
-  display: inline-flex;
-  position: relative;
-  max-width: 100%;
-
-  /* WARNING: properties containing `__`are deprecated and will be removed */
-  --_floating-arrow-size:
-    var(--rh-tooltip-arrow-size,
-      var(--rh-tooltip__arrow--Width, 11px));
-}
-
-#tooltip,
-#tooltip:after {
-  position: absolute;
-}
-
-#tooltip {
-  display: none;
-  opacity: 0;
-  pointer-events: none;
-  z-index: 10000;
-  transition: opacity 300ms cubic-bezier(0.54, 1.5, 0.38, 1.11) 0s;
-  text-align: var(--_text-alignment, center);
-  word-break: break-word;
-  translate: var(--_floating-content-translate);
-  width: max-content;
-  inset-block-start: 0;
-  inset-inline-start: 0;
-  will-change: opacity;
-  line-height: var(--rh-line-height-body-text, 1.5);
-  box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
-  max-width: var(--rh-tooltip-max-width, var(--rh-tooltip--MaxWidth, 18.75rem));
-  border-radius: var(--rh-border-radius-default, 3px);
-
-  /* WARNING: properties containing `__`are deprecated and will be removed */
-  padding:
-    var(--rh-tooltip-content-padding-block-start,
-      var(--rh-tooltip__content--PaddingTop, var(--rh-space-lg, 16px)))
-    var(--rh-tooltip-content-padding-inline-end,
-      var(--rh-tooltip__content--PaddingRight, var(--rh-space-lg, 16px)))
-    var(--rh-tooltip-content-padding-block-end,
-      var(--rh-tooltip__content--PaddingBottom, var(--rh-space-lg, 16px)))
-    var(--rh-tooltip-content-padding-inline-start,
-      var(--rh-tooltip__content--PaddingLeft, var(--rh-space-lg, 16px)));
-
-  /* WARNING: properties containing `__`are deprecated and will be removed */
-  font-size:
-    var(--rh-tooltip-content-font-size,
-      var(--rh-tooltip__content--FontSize, var(--rh-font-size-body-text-sm, 0.875rem)));
-
-  /* WARNING: properties containing `__`are deprecated and will be removed */
-  color:
-    var(--rh-tooltip-content-color,
-      var(--rh-tooltip__content--Color, var(--rh-color-text-primary-on-dark, #ffffff)));
-  background-color:
-    var(--rh-tooltip-content-background-color,
-      var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-darkest, #151515)));
-}
-
-.initialized #tooltip {
-  display: block;
-}
-
-#tooltip:after {
-  display: block;
-  content: '';
-  rotate: 45deg;
-  width: var(--_floating-arrow-size);
-  height: var(--_floating-arrow-size);
-  will-change: left top right bottom;
-  background-color:
-    var(--rh-tooltip-content-background-color,
-      var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-darkest, #151515)));
-}
-
-.open #tooltip {
-  opacity: 1;
-}
-
-/* PLAIN */
-.left #tooltip:after { inset-inline-start: calc(-0.5 * var(--_floating-arrow-size)); }
-.top #tooltip:after { inset-block-start: calc(100% - 0.5 * var(--_floating-arrow-size)); }
-.right #tooltip:after { inset-inline-end: calc(100% - 0.5 * var(--_floating-arrow-size)); }
-.bottom #tooltip:after { inset-block-end: calc(100% - 0.5 * var(--_floating-arrow-size)); }
-
-/* CENTER */
-.left.center #tooltip:after { inset-block-start: calc(50% - 0.5 * var(--_floating-arrow-size)); }
-.top.center #tooltip:after { inset-inline-end: calc(50% - 0.5 * var(--_floating-arrow-size)); }
-.right.center #tooltip:after { inset-block-start: calc(50% - 0.5 * var(--_floating-arrow-size)); }
-.bottom.center #tooltip:after { inset-inline-end: calc(50% - 0.5 * var(--_floating-arrow-size)); }
-
-/* START */
-.left.start #tooltip:after { inset-block-start: var(--_floating-arrow-size); }
-.top.start #tooltip:after { inset-inline-start: var(--_floating-arrow-size); }
-.right.start #tooltip:after { inset-block-start: var(--_floating-arrow-size); }
-.bottom.start #tooltip:after { inset-inline-start: var(--_floating-arrow-size); }
-
-/* END */
-.left.end #tooltip:after { inset-block-end: var(--_floating-arrow-size); }
-.top.end #tooltip:after { inset-inline-end: var(--_floating-arrow-size); }
-.right.end #tooltip:after { inset-block-end: var(--_floating-arrow-size); }
-.bottom.end #tooltip:after { inset-inline-end: var(--_floating-arrow-size); }
-
-:host([position='left']),
-:host([position='right']) {
-  --_text-alignment: 'start';
-}
-
-.dark {
-  --rh-tooltip-content-background-color: var(--rh-color-surface-lightest, #ffffff);
-  --rh-tooltip-content-color: var(--rh-color-text-primary-on-light, #151515);
-}
-</style><!--lit-part eUcF9UlFv54=-->
-      <!--lit-node 0--><div id="container"
-           style=""
-           class=" center ">
-        <div id="invoker">
-          <slot id="invoker-slot"></slot>
-        </div>
-        <div id="tooltip" role="status">
-          <slot id="content" name="content"><!--lit-part--><!--/lit-part--></slot>
-        </div>
-      </div>
-    <!--/lit-part--></template>
-        <span id="caption" slot="content"><!--lit-part-->https://ux.redhat.com/tokens/typography/#--rh-font-size-body-text-lg<!--/lit-part--></span>
-        <!--lit-node 3--><button >
-          <code><slot></slot></code>
-          <slot name="extra-content"></slot>
-          <span class="visually-hidden">Click to copy</span>
-          <!--lit-node 8--><rh-icon    aria-hidden="true" set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
-  line-height: 0;
-  aspect-ratio: 1/1;
-  display: inline-flex;
-  place-content: center;
-}
-
-#container {
-  display: contents;
-}
-
-svg {
-  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
-  fill: currentcolor;
-  aspect-ratio: 1/1;
-}
-
-.standard svg {
-  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
-}
-
-.microns svg {
-  width: 12px;
-}
-</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container"
-           aria-hidden="true"
-           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-        </button>
-      </rh-tooltip>
-    <!--/lit-part--></template>
-          <span slot="extra-content" class="visually-hidden">
-            Permalink to this token
-          </span>
-        </uxdot-copy-button>
-      </div>
-    </td>
-                </tr>
-                <tr>
-                  <td>
                     <a href="https://ux.redhat.com/tokens/typography/#--rh-font-weight-body-text-medium">
                       <code>--rh-font-weight-body-text-medium</code>
                     </a>
@@ -24234,12 +24675,27 @@ svg {
 
       <p>Accordion Panel</p>
 
-      <rh-accordion  box><template shadowroot="open" shadowrootmode="open"><style>#container {
+      <rh-accordion  box><template shadowroot="open" shadowrootmode="open"><style>:host {
+  display: block;
+  container: accordion / inline-size;
+}
+
+#container {
   color: var(--rh-color-text-primary);
   background-color: var(--rh-color-surface);
 
   &.expanded {
     box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
+  }
+
+  &.large {
+    --_header-font-size: var(--rh-font-size-body-text-md, 1rem);
+    --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
+
+    /* --rh-media-sm */
+    @container accordion (min-width: 768px) {
+      --_header-font-size: var(--rh-font-size-body-text-lg, 1.125rem);
+    }
   }
 }
 
@@ -24273,7 +24729,6 @@ svg {
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
   --_isRTL: -1;
@@ -24337,7 +24792,7 @@ span {
     var(--_padding-block-end)
     var(--_padding-inline-start);
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
-  font-size: var(--_font-size);
+  font-size: var(--_header-font-size);
   color: var(--rh-color-text-primary);
 
   & #icon {
@@ -24456,7 +24911,6 @@ span {
   overflow: hidden;
   will-change: height;
 
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
   --_panel-body-padding-block-start: var(--rh-space-lg, 16px);
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-lg, 16px);
@@ -24478,7 +24932,6 @@ span {
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-inline-start: var(--rh-space-xl, 24px);
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
 }
 
 .body {
@@ -24530,7 +24983,7 @@ span {
 
 .content {
   color: var(--rh-color-text-primary);
-  font-size: var(--_panel-font-size, var(--rh-font-size-body-text-sm, 0.875rem));
+  font-size: var(--_panel-font-size);
 }
 </style><!--lit-part A50axevTK8k=-->
       <!--lit-node 0--><div id="container"
@@ -24647,7 +25100,6 @@ span {
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
   --_isRTL: -1;
@@ -24711,7 +25163,7 @@ span {
     var(--_padding-block-end)
     var(--_padding-inline-start);
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
-  font-size: var(--_font-size);
+  font-size: var(--_header-font-size);
   color: var(--rh-color-text-primary);
 
   & #icon {
@@ -24830,7 +25282,6 @@ span {
   overflow: hidden;
   will-change: height;
 
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
   --_panel-body-padding-block-start: var(--rh-space-lg, 16px);
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-lg, 16px);
@@ -24852,7 +25303,6 @@ span {
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-inline-start: var(--rh-space-xl, 24px);
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
 }
 
 .body {
@@ -24904,7 +25354,7 @@ span {
 
 .content {
   color: var(--rh-color-text-primary);
-  font-size: var(--_panel-font-size, var(--rh-font-size-body-text-sm, 0.875rem));
+  font-size: var(--_panel-font-size);
 }
 </style><!--lit-part A50axevTK8k=-->
       <!--lit-node 0--><div id="container"
@@ -25035,7 +25485,6 @@ span {
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
   --_isRTL: -1;
@@ -25099,7 +25548,7 @@ span {
     var(--_padding-block-end)
     var(--_padding-inline-start);
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
-  font-size: var(--_font-size);
+  font-size: var(--_header-font-size);
   color: var(--rh-color-text-primary);
 
   & #icon {
@@ -25218,7 +25667,6 @@ span {
   overflow: hidden;
   will-change: height;
 
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
   --_panel-body-padding-block-start: var(--rh-space-lg, 16px);
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-lg, 16px);
@@ -25240,7 +25688,6 @@ span {
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-inline-start: var(--rh-space-xl, 24px);
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
 }
 
 .body {
@@ -25292,7 +25739,7 @@ span {
 
 .content {
   color: var(--rh-color-text-primary);
-  font-size: var(--_panel-font-size, var(--rh-font-size-body-text-sm, 0.875rem));
+  font-size: var(--_panel-font-size);
 }
 </style><!--lit-part A50axevTK8k=-->
       <!--lit-node 0--><div id="container"
@@ -25314,7 +25761,6 @@ span {
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
   --_isRTL: -1;
@@ -25378,7 +25824,7 @@ span {
     var(--_padding-block-end)
     var(--_padding-inline-start);
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
-  font-size: var(--_font-size);
+  font-size: var(--_header-font-size);
   color: var(--rh-color-text-primary);
 
   & #icon {
@@ -25497,7 +25943,6 @@ span {
   overflow: hidden;
   will-change: height;
 
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
   --_panel-body-padding-block-start: var(--rh-space-lg, 16px);
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-lg, 16px);
@@ -25519,7 +25964,6 @@ span {
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-inline-start: var(--rh-space-xl, 24px);
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
 }
 
 .body {
@@ -25571,7 +26015,7 @@ span {
 
 .content {
   color: var(--rh-color-text-primary);
-  font-size: var(--_panel-font-size, var(--rh-font-size-body-text-sm, 0.875rem));
+  font-size: var(--_panel-font-size);
 }
 </style><!--lit-part A50axevTK8k=-->
       <!--lit-node 0--><div id="container"
@@ -25593,7 +26037,6 @@ span {
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
   --_isRTL: -1;
@@ -25657,7 +26100,7 @@ span {
     var(--_padding-block-end)
     var(--_padding-inline-start);
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
-  font-size: var(--_font-size);
+  font-size: var(--_header-font-size);
   color: var(--rh-color-text-primary);
 
   & #icon {
@@ -25776,7 +26219,6 @@ span {
   overflow: hidden;
   will-change: height;
 
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
   --_panel-body-padding-block-start: var(--rh-space-lg, 16px);
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-lg, 16px);
@@ -25798,7 +26240,6 @@ span {
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-inline-start: var(--rh-space-xl, 24px);
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
 }
 
 .body {
@@ -25850,7 +26291,7 @@ span {
 
 .content {
   color: var(--rh-color-text-primary);
-  font-size: var(--_panel-font-size, var(--rh-font-size-body-text-sm, 0.875rem));
+  font-size: var(--_panel-font-size);
 }
 </style><!--lit-part A50axevTK8k=-->
       <!--lit-node 0--><div id="container"
@@ -25872,7 +26313,6 @@ span {
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
   --_isRTL: -1;
@@ -25936,7 +26376,7 @@ span {
     var(--_padding-block-end)
     var(--_padding-inline-start);
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
-  font-size: var(--_font-size);
+  font-size: var(--_header-font-size);
   color: var(--rh-color-text-primary);
 
   & #icon {
@@ -26055,7 +26495,6 @@ span {
   overflow: hidden;
   will-change: height;
 
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
   --_panel-body-padding-block-start: var(--rh-space-lg, 16px);
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-lg, 16px);
@@ -26077,7 +26516,6 @@ span {
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-inline-start: var(--rh-space-xl, 24px);
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
 }
 
 .body {
@@ -26129,7 +26567,7 @@ span {
 
 .content {
   color: var(--rh-color-text-primary);
-  font-size: var(--_panel-font-size, var(--rh-font-size-body-text-sm, 0.875rem));
+  font-size: var(--_panel-font-size);
 }
 </style><!--lit-part A50axevTK8k=-->
       <!--lit-node 0--><div id="container"
@@ -26151,7 +26589,6 @@ span {
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
   --_isRTL: -1;
@@ -26215,7 +26652,7 @@ span {
     var(--_padding-block-end)
     var(--_padding-inline-start);
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
-  font-size: var(--_font-size);
+  font-size: var(--_header-font-size);
   color: var(--rh-color-text-primary);
 
   & #icon {
@@ -26326,14 +26763,13 @@ span {
         </svg>
       </button>
     <!--/lit-part--></template>Design Tokens
-        <rh-badge>12</rh-badge>
+        <rh-badge>10</rh-badge>
       </rh-accordion-header>
       <rh-accordion-panel><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: none;
   overflow: hidden;
   will-change: height;
 
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
   --_panel-body-padding-block-start: var(--rh-space-lg, 16px);
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-lg, 16px);
@@ -26355,7 +26791,6 @@ span {
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-inline-start: var(--rh-space-xl, 24px);
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
 }
 
 .body {
@@ -26407,7 +26842,7 @@ span {
 
 .content {
   color: var(--rh-color-text-primary);
-  font-size: var(--_panel-font-size, var(--rh-font-size-body-text-sm, 0.875rem));
+  font-size: var(--_panel-font-size);
 }
 </style><!--lit-part A50axevTK8k=-->
       <!--lit-node 0--><div id="container"
@@ -29635,912 +30070,6 @@ code {
       </div>
     <!--/lit-part--></template>
         <span id="caption" slot="content"><!--lit-part-->https://ux.redhat.com/tokens/color/#--rh-color-text-primary<!--/lit-part--></span>
-        <!--lit-node 3--><button >
-          <code><slot></slot></code>
-          <slot name="extra-content"></slot>
-          <span class="visually-hidden">Click to copy</span>
-          <!--lit-node 8--><rh-icon    aria-hidden="true" set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
-  line-height: 0;
-  aspect-ratio: 1/1;
-  display: inline-flex;
-  place-content: center;
-}
-
-#container {
-  display: contents;
-}
-
-svg {
-  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
-  fill: currentcolor;
-  aspect-ratio: 1/1;
-}
-
-.standard svg {
-  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
-}
-
-.microns svg {
-  width: 12px;
-}
-</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container"
-           aria-hidden="true"
-           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-        </button>
-      </rh-tooltip>
-    <!--/lit-part--></template>
-          <span slot="extra-content" class="visually-hidden">
-            Permalink to this token
-          </span>
-        </uxdot-copy-button>
-      </div>
-    </td>
-                </tr>
-                <tr>
-                  <td>
-                    <a href="https://ux.redhat.com/tokens/typography/#--rh-font-size-body-text-md">
-                      <code>--rh-font-size-body-text-md</code>
-                    </a>
-                  </td>
-                  <td data-label="Copy">
-      <div>
-        <uxdot-copy-button   class="icon-only" copy="var(--rh-font-size-body-text-md, 1rem)"><template shadowroot="open" shadowrootmode="open"><style>button {
-  color: inherit;
-  border-radius: var(--rh-border-radius-default);
-  border-width: 0;
-  background: none;
-  display: inline-flex;
-  align-items: center;
-  gap: var(--rh-space-xs);
-  padding-inline: var(--rh-space-xs);
-}
-
-code {
-  padding: var(--rh-space-xs) var(--rh-space-md);
-  background: var(--rh-color-surface-light);
-  font-size: var(--rh-font-size-code-md);
-  font-weight: var(--rh-font-weight-code-regular);
-  font-family: var(--rh-font-family-code);
-  line-height: var(--rh-line-height-code);
-}
-
-.visually-hidden {
-  border: 0;
-  clip: rect(0, 0, 0, 0);
-  block-size: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  white-space: nowrap;
-  inline-size: 1px;
-}
-
-:host(.icon-only) code,
-:host(:empty) code {
-  display: none;
-}
-
-:is(rh-icon, #caption) {
-  display: none;
-}
-
-:host(:state(--rendered)) button:is(:focus, :active, :hover),
-:host(:state(--rendered)) button:is(:focus, :active, :hover) code {
-  background: var(--rh-color-interactive-primary-hover-on-dark);
-  opacity: 1;
-}
-
-:host(:state(--rendered)) :is(rh-icon, #caption) {
-  display: initial;
-}
-</style><!--lit-part zk+fFwx/8Tw=-->
-      <!--lit-node 0--><rh-tooltip  position="left-start" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
-  display: inline;
-}
-
-#container {
-  display: inline-flex;
-  position: relative;
-  max-width: 100%;
-
-  /* WARNING: properties containing `__`are deprecated and will be removed */
-  --_floating-arrow-size:
-    var(--rh-tooltip-arrow-size,
-      var(--rh-tooltip__arrow--Width, 11px));
-}
-
-#tooltip,
-#tooltip:after {
-  position: absolute;
-}
-
-#tooltip {
-  display: none;
-  opacity: 0;
-  pointer-events: none;
-  z-index: 10000;
-  transition: opacity 300ms cubic-bezier(0.54, 1.5, 0.38, 1.11) 0s;
-  text-align: var(--_text-alignment, center);
-  word-break: break-word;
-  translate: var(--_floating-content-translate);
-  width: max-content;
-  inset-block-start: 0;
-  inset-inline-start: 0;
-  will-change: opacity;
-  line-height: var(--rh-line-height-body-text, 1.5);
-  box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
-  max-width: var(--rh-tooltip-max-width, var(--rh-tooltip--MaxWidth, 18.75rem));
-  border-radius: var(--rh-border-radius-default, 3px);
-
-  /* WARNING: properties containing `__`are deprecated and will be removed */
-  padding:
-    var(--rh-tooltip-content-padding-block-start,
-      var(--rh-tooltip__content--PaddingTop, var(--rh-space-lg, 16px)))
-    var(--rh-tooltip-content-padding-inline-end,
-      var(--rh-tooltip__content--PaddingRight, var(--rh-space-lg, 16px)))
-    var(--rh-tooltip-content-padding-block-end,
-      var(--rh-tooltip__content--PaddingBottom, var(--rh-space-lg, 16px)))
-    var(--rh-tooltip-content-padding-inline-start,
-      var(--rh-tooltip__content--PaddingLeft, var(--rh-space-lg, 16px)));
-
-  /* WARNING: properties containing `__`are deprecated and will be removed */
-  font-size:
-    var(--rh-tooltip-content-font-size,
-      var(--rh-tooltip__content--FontSize, var(--rh-font-size-body-text-sm, 0.875rem)));
-
-  /* WARNING: properties containing `__`are deprecated and will be removed */
-  color:
-    var(--rh-tooltip-content-color,
-      var(--rh-tooltip__content--Color, var(--rh-color-text-primary-on-dark, #ffffff)));
-  background-color:
-    var(--rh-tooltip-content-background-color,
-      var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-darkest, #151515)));
-}
-
-.initialized #tooltip {
-  display: block;
-}
-
-#tooltip:after {
-  display: block;
-  content: '';
-  rotate: 45deg;
-  width: var(--_floating-arrow-size);
-  height: var(--_floating-arrow-size);
-  will-change: left top right bottom;
-  background-color:
-    var(--rh-tooltip-content-background-color,
-      var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-darkest, #151515)));
-}
-
-.open #tooltip {
-  opacity: 1;
-}
-
-/* PLAIN */
-.left #tooltip:after { inset-inline-start: calc(-0.5 * var(--_floating-arrow-size)); }
-.top #tooltip:after { inset-block-start: calc(100% - 0.5 * var(--_floating-arrow-size)); }
-.right #tooltip:after { inset-inline-end: calc(100% - 0.5 * var(--_floating-arrow-size)); }
-.bottom #tooltip:after { inset-block-end: calc(100% - 0.5 * var(--_floating-arrow-size)); }
-
-/* CENTER */
-.left.center #tooltip:after { inset-block-start: calc(50% - 0.5 * var(--_floating-arrow-size)); }
-.top.center #tooltip:after { inset-inline-end: calc(50% - 0.5 * var(--_floating-arrow-size)); }
-.right.center #tooltip:after { inset-block-start: calc(50% - 0.5 * var(--_floating-arrow-size)); }
-.bottom.center #tooltip:after { inset-inline-end: calc(50% - 0.5 * var(--_floating-arrow-size)); }
-
-/* START */
-.left.start #tooltip:after { inset-block-start: var(--_floating-arrow-size); }
-.top.start #tooltip:after { inset-inline-start: var(--_floating-arrow-size); }
-.right.start #tooltip:after { inset-block-start: var(--_floating-arrow-size); }
-.bottom.start #tooltip:after { inset-inline-start: var(--_floating-arrow-size); }
-
-/* END */
-.left.end #tooltip:after { inset-block-end: var(--_floating-arrow-size); }
-.top.end #tooltip:after { inset-inline-end: var(--_floating-arrow-size); }
-.right.end #tooltip:after { inset-block-end: var(--_floating-arrow-size); }
-.bottom.end #tooltip:after { inset-inline-end: var(--_floating-arrow-size); }
-
-:host([position='left']),
-:host([position='right']) {
-  --_text-alignment: 'start';
-}
-
-.dark {
-  --rh-tooltip-content-background-color: var(--rh-color-surface-lightest, #ffffff);
-  --rh-tooltip-content-color: var(--rh-color-text-primary-on-light, #151515);
-}
-</style><!--lit-part eUcF9UlFv54=-->
-      <!--lit-node 0--><div id="container"
-           style=""
-           class=" center ">
-        <div id="invoker">
-          <slot id="invoker-slot"></slot>
-        </div>
-        <div id="tooltip" role="status">
-          <slot id="content" name="content"><!--lit-part--><!--/lit-part--></slot>
-        </div>
-      </div>
-    <!--/lit-part--></template>
-        <span id="caption" slot="content"><!--lit-part-->var(--rh-font-size-body-text-md, 1rem)<!--/lit-part--></span>
-        <!--lit-node 3--><button >
-          <code><slot></slot></code>
-          <slot name="extra-content"></slot>
-          <span class="visually-hidden">Click to copy</span>
-          <!--lit-node 8--><rh-icon    aria-hidden="true" set="ui" icon="copy" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
-  line-height: 0;
-  aspect-ratio: 1/1;
-  display: inline-flex;
-  place-content: center;
-}
-
-#container {
-  display: contents;
-}
-
-svg {
-  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
-  fill: currentcolor;
-  aspect-ratio: 1/1;
-}
-
-.standard svg {
-  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
-}
-
-.microns svg {
-  width: 12px;
-}
-</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container"
-           aria-hidden="true"
-           class=" ui "><!--lit-part pgKZgByffkY=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M23 24.5v-23c0-.827-.673-1.5-1.5-1.5H11a.997.997 0 0 0-.708.294L3.294 7.292A.998.998 0 0 0 3 8v16.5c0 .827.673 1.5 1.5 1.5h17c.827 0 1.5-.673 1.5-1.5ZM10 3.414V7H6.414L10 3.414ZM21 24H5V9h5.5c.827 0 1.5-.673 1.5-1.5V2h9v22Z"/><path d="M28 6a1 1 0 0 0-1 1v23H10a1 1 0 1 0 0 2h17.5c.827 0 1.5-.673 1.5-1.5V7a1 1 0 0 0-1-1Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-        </button>
-      </rh-tooltip>
-    <!--/lit-part--></template>
-          <span slot="extra-content" class="visually-hidden">
-            Full CSS Variable
-          </span>
-        </uxdot-copy-button>
-        <uxdot-copy-button    class="icon-only" copy="https://ux.redhat.com/tokens/typography/#--rh-font-size-body-text-md" icon="link"><template shadowroot="open" shadowrootmode="open"><style>button {
-  color: inherit;
-  border-radius: var(--rh-border-radius-default);
-  border-width: 0;
-  background: none;
-  display: inline-flex;
-  align-items: center;
-  gap: var(--rh-space-xs);
-  padding-inline: var(--rh-space-xs);
-}
-
-code {
-  padding: var(--rh-space-xs) var(--rh-space-md);
-  background: var(--rh-color-surface-light);
-  font-size: var(--rh-font-size-code-md);
-  font-weight: var(--rh-font-weight-code-regular);
-  font-family: var(--rh-font-family-code);
-  line-height: var(--rh-line-height-code);
-}
-
-.visually-hidden {
-  border: 0;
-  clip: rect(0, 0, 0, 0);
-  block-size: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  white-space: nowrap;
-  inline-size: 1px;
-}
-
-:host(.icon-only) code,
-:host(:empty) code {
-  display: none;
-}
-
-:is(rh-icon, #caption) {
-  display: none;
-}
-
-:host(:state(--rendered)) button:is(:focus, :active, :hover),
-:host(:state(--rendered)) button:is(:focus, :active, :hover) code {
-  background: var(--rh-color-interactive-primary-hover-on-dark);
-  opacity: 1;
-}
-
-:host(:state(--rendered)) :is(rh-icon, #caption) {
-  display: initial;
-}
-</style><!--lit-part zk+fFwx/8Tw=-->
-      <!--lit-node 0--><rh-tooltip  position="left-start" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
-  display: inline;
-}
-
-#container {
-  display: inline-flex;
-  position: relative;
-  max-width: 100%;
-
-  /* WARNING: properties containing `__`are deprecated and will be removed */
-  --_floating-arrow-size:
-    var(--rh-tooltip-arrow-size,
-      var(--rh-tooltip__arrow--Width, 11px));
-}
-
-#tooltip,
-#tooltip:after {
-  position: absolute;
-}
-
-#tooltip {
-  display: none;
-  opacity: 0;
-  pointer-events: none;
-  z-index: 10000;
-  transition: opacity 300ms cubic-bezier(0.54, 1.5, 0.38, 1.11) 0s;
-  text-align: var(--_text-alignment, center);
-  word-break: break-word;
-  translate: var(--_floating-content-translate);
-  width: max-content;
-  inset-block-start: 0;
-  inset-inline-start: 0;
-  will-change: opacity;
-  line-height: var(--rh-line-height-body-text, 1.5);
-  box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
-  max-width: var(--rh-tooltip-max-width, var(--rh-tooltip--MaxWidth, 18.75rem));
-  border-radius: var(--rh-border-radius-default, 3px);
-
-  /* WARNING: properties containing `__`are deprecated and will be removed */
-  padding:
-    var(--rh-tooltip-content-padding-block-start,
-      var(--rh-tooltip__content--PaddingTop, var(--rh-space-lg, 16px)))
-    var(--rh-tooltip-content-padding-inline-end,
-      var(--rh-tooltip__content--PaddingRight, var(--rh-space-lg, 16px)))
-    var(--rh-tooltip-content-padding-block-end,
-      var(--rh-tooltip__content--PaddingBottom, var(--rh-space-lg, 16px)))
-    var(--rh-tooltip-content-padding-inline-start,
-      var(--rh-tooltip__content--PaddingLeft, var(--rh-space-lg, 16px)));
-
-  /* WARNING: properties containing `__`are deprecated and will be removed */
-  font-size:
-    var(--rh-tooltip-content-font-size,
-      var(--rh-tooltip__content--FontSize, var(--rh-font-size-body-text-sm, 0.875rem)));
-
-  /* WARNING: properties containing `__`are deprecated and will be removed */
-  color:
-    var(--rh-tooltip-content-color,
-      var(--rh-tooltip__content--Color, var(--rh-color-text-primary-on-dark, #ffffff)));
-  background-color:
-    var(--rh-tooltip-content-background-color,
-      var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-darkest, #151515)));
-}
-
-.initialized #tooltip {
-  display: block;
-}
-
-#tooltip:after {
-  display: block;
-  content: '';
-  rotate: 45deg;
-  width: var(--_floating-arrow-size);
-  height: var(--_floating-arrow-size);
-  will-change: left top right bottom;
-  background-color:
-    var(--rh-tooltip-content-background-color,
-      var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-darkest, #151515)));
-}
-
-.open #tooltip {
-  opacity: 1;
-}
-
-/* PLAIN */
-.left #tooltip:after { inset-inline-start: calc(-0.5 * var(--_floating-arrow-size)); }
-.top #tooltip:after { inset-block-start: calc(100% - 0.5 * var(--_floating-arrow-size)); }
-.right #tooltip:after { inset-inline-end: calc(100% - 0.5 * var(--_floating-arrow-size)); }
-.bottom #tooltip:after { inset-block-end: calc(100% - 0.5 * var(--_floating-arrow-size)); }
-
-/* CENTER */
-.left.center #tooltip:after { inset-block-start: calc(50% - 0.5 * var(--_floating-arrow-size)); }
-.top.center #tooltip:after { inset-inline-end: calc(50% - 0.5 * var(--_floating-arrow-size)); }
-.right.center #tooltip:after { inset-block-start: calc(50% - 0.5 * var(--_floating-arrow-size)); }
-.bottom.center #tooltip:after { inset-inline-end: calc(50% - 0.5 * var(--_floating-arrow-size)); }
-
-/* START */
-.left.start #tooltip:after { inset-block-start: var(--_floating-arrow-size); }
-.top.start #tooltip:after { inset-inline-start: var(--_floating-arrow-size); }
-.right.start #tooltip:after { inset-block-start: var(--_floating-arrow-size); }
-.bottom.start #tooltip:after { inset-inline-start: var(--_floating-arrow-size); }
-
-/* END */
-.left.end #tooltip:after { inset-block-end: var(--_floating-arrow-size); }
-.top.end #tooltip:after { inset-inline-end: var(--_floating-arrow-size); }
-.right.end #tooltip:after { inset-block-end: var(--_floating-arrow-size); }
-.bottom.end #tooltip:after { inset-inline-end: var(--_floating-arrow-size); }
-
-:host([position='left']),
-:host([position='right']) {
-  --_text-alignment: 'start';
-}
-
-.dark {
-  --rh-tooltip-content-background-color: var(--rh-color-surface-lightest, #ffffff);
-  --rh-tooltip-content-color: var(--rh-color-text-primary-on-light, #151515);
-}
-</style><!--lit-part eUcF9UlFv54=-->
-      <!--lit-node 0--><div id="container"
-           style=""
-           class=" center ">
-        <div id="invoker">
-          <slot id="invoker-slot"></slot>
-        </div>
-        <div id="tooltip" role="status">
-          <slot id="content" name="content"><!--lit-part--><!--/lit-part--></slot>
-        </div>
-      </div>
-    <!--/lit-part--></template>
-        <span id="caption" slot="content"><!--lit-part-->https://ux.redhat.com/tokens/typography/#--rh-font-size-body-text-md<!--/lit-part--></span>
-        <!--lit-node 3--><button >
-          <code><slot></slot></code>
-          <slot name="extra-content"></slot>
-          <span class="visually-hidden">Click to copy</span>
-          <!--lit-node 8--><rh-icon    aria-hidden="true" set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
-  line-height: 0;
-  aspect-ratio: 1/1;
-  display: inline-flex;
-  place-content: center;
-}
-
-#container {
-  display: contents;
-}
-
-svg {
-  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
-  fill: currentcolor;
-  aspect-ratio: 1/1;
-}
-
-.standard svg {
-  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
-}
-
-.microns svg {
-  width: 12px;
-}
-</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container"
-           aria-hidden="true"
-           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-        </button>
-      </rh-tooltip>
-    <!--/lit-part--></template>
-          <span slot="extra-content" class="visually-hidden">
-            Permalink to this token
-          </span>
-        </uxdot-copy-button>
-      </div>
-    </td>
-                </tr>
-                <tr>
-                  <td>
-                    <a href="https://ux.redhat.com/tokens/typography/#--rh-font-size-body-text-sm">
-                      <code>--rh-font-size-body-text-sm</code>
-                    </a>
-                  </td>
-                  <td data-label="Copy">
-      <div>
-        <uxdot-copy-button   class="icon-only" copy="var(--rh-font-size-body-text-sm, 0.875rem)"><template shadowroot="open" shadowrootmode="open"><style>button {
-  color: inherit;
-  border-radius: var(--rh-border-radius-default);
-  border-width: 0;
-  background: none;
-  display: inline-flex;
-  align-items: center;
-  gap: var(--rh-space-xs);
-  padding-inline: var(--rh-space-xs);
-}
-
-code {
-  padding: var(--rh-space-xs) var(--rh-space-md);
-  background: var(--rh-color-surface-light);
-  font-size: var(--rh-font-size-code-md);
-  font-weight: var(--rh-font-weight-code-regular);
-  font-family: var(--rh-font-family-code);
-  line-height: var(--rh-line-height-code);
-}
-
-.visually-hidden {
-  border: 0;
-  clip: rect(0, 0, 0, 0);
-  block-size: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  white-space: nowrap;
-  inline-size: 1px;
-}
-
-:host(.icon-only) code,
-:host(:empty) code {
-  display: none;
-}
-
-:is(rh-icon, #caption) {
-  display: none;
-}
-
-:host(:state(--rendered)) button:is(:focus, :active, :hover),
-:host(:state(--rendered)) button:is(:focus, :active, :hover) code {
-  background: var(--rh-color-interactive-primary-hover-on-dark);
-  opacity: 1;
-}
-
-:host(:state(--rendered)) :is(rh-icon, #caption) {
-  display: initial;
-}
-</style><!--lit-part zk+fFwx/8Tw=-->
-      <!--lit-node 0--><rh-tooltip  position="left-start" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
-  display: inline;
-}
-
-#container {
-  display: inline-flex;
-  position: relative;
-  max-width: 100%;
-
-  /* WARNING: properties containing `__`are deprecated and will be removed */
-  --_floating-arrow-size:
-    var(--rh-tooltip-arrow-size,
-      var(--rh-tooltip__arrow--Width, 11px));
-}
-
-#tooltip,
-#tooltip:after {
-  position: absolute;
-}
-
-#tooltip {
-  display: none;
-  opacity: 0;
-  pointer-events: none;
-  z-index: 10000;
-  transition: opacity 300ms cubic-bezier(0.54, 1.5, 0.38, 1.11) 0s;
-  text-align: var(--_text-alignment, center);
-  word-break: break-word;
-  translate: var(--_floating-content-translate);
-  width: max-content;
-  inset-block-start: 0;
-  inset-inline-start: 0;
-  will-change: opacity;
-  line-height: var(--rh-line-height-body-text, 1.5);
-  box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
-  max-width: var(--rh-tooltip-max-width, var(--rh-tooltip--MaxWidth, 18.75rem));
-  border-radius: var(--rh-border-radius-default, 3px);
-
-  /* WARNING: properties containing `__`are deprecated and will be removed */
-  padding:
-    var(--rh-tooltip-content-padding-block-start,
-      var(--rh-tooltip__content--PaddingTop, var(--rh-space-lg, 16px)))
-    var(--rh-tooltip-content-padding-inline-end,
-      var(--rh-tooltip__content--PaddingRight, var(--rh-space-lg, 16px)))
-    var(--rh-tooltip-content-padding-block-end,
-      var(--rh-tooltip__content--PaddingBottom, var(--rh-space-lg, 16px)))
-    var(--rh-tooltip-content-padding-inline-start,
-      var(--rh-tooltip__content--PaddingLeft, var(--rh-space-lg, 16px)));
-
-  /* WARNING: properties containing `__`are deprecated and will be removed */
-  font-size:
-    var(--rh-tooltip-content-font-size,
-      var(--rh-tooltip__content--FontSize, var(--rh-font-size-body-text-sm, 0.875rem)));
-
-  /* WARNING: properties containing `__`are deprecated and will be removed */
-  color:
-    var(--rh-tooltip-content-color,
-      var(--rh-tooltip__content--Color, var(--rh-color-text-primary-on-dark, #ffffff)));
-  background-color:
-    var(--rh-tooltip-content-background-color,
-      var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-darkest, #151515)));
-}
-
-.initialized #tooltip {
-  display: block;
-}
-
-#tooltip:after {
-  display: block;
-  content: '';
-  rotate: 45deg;
-  width: var(--_floating-arrow-size);
-  height: var(--_floating-arrow-size);
-  will-change: left top right bottom;
-  background-color:
-    var(--rh-tooltip-content-background-color,
-      var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-darkest, #151515)));
-}
-
-.open #tooltip {
-  opacity: 1;
-}
-
-/* PLAIN */
-.left #tooltip:after { inset-inline-start: calc(-0.5 * var(--_floating-arrow-size)); }
-.top #tooltip:after { inset-block-start: calc(100% - 0.5 * var(--_floating-arrow-size)); }
-.right #tooltip:after { inset-inline-end: calc(100% - 0.5 * var(--_floating-arrow-size)); }
-.bottom #tooltip:after { inset-block-end: calc(100% - 0.5 * var(--_floating-arrow-size)); }
-
-/* CENTER */
-.left.center #tooltip:after { inset-block-start: calc(50% - 0.5 * var(--_floating-arrow-size)); }
-.top.center #tooltip:after { inset-inline-end: calc(50% - 0.5 * var(--_floating-arrow-size)); }
-.right.center #tooltip:after { inset-block-start: calc(50% - 0.5 * var(--_floating-arrow-size)); }
-.bottom.center #tooltip:after { inset-inline-end: calc(50% - 0.5 * var(--_floating-arrow-size)); }
-
-/* START */
-.left.start #tooltip:after { inset-block-start: var(--_floating-arrow-size); }
-.top.start #tooltip:after { inset-inline-start: var(--_floating-arrow-size); }
-.right.start #tooltip:after { inset-block-start: var(--_floating-arrow-size); }
-.bottom.start #tooltip:after { inset-inline-start: var(--_floating-arrow-size); }
-
-/* END */
-.left.end #tooltip:after { inset-block-end: var(--_floating-arrow-size); }
-.top.end #tooltip:after { inset-inline-end: var(--_floating-arrow-size); }
-.right.end #tooltip:after { inset-block-end: var(--_floating-arrow-size); }
-.bottom.end #tooltip:after { inset-inline-end: var(--_floating-arrow-size); }
-
-:host([position='left']),
-:host([position='right']) {
-  --_text-alignment: 'start';
-}
-
-.dark {
-  --rh-tooltip-content-background-color: var(--rh-color-surface-lightest, #ffffff);
-  --rh-tooltip-content-color: var(--rh-color-text-primary-on-light, #151515);
-}
-</style><!--lit-part eUcF9UlFv54=-->
-      <!--lit-node 0--><div id="container"
-           style=""
-           class=" center ">
-        <div id="invoker">
-          <slot id="invoker-slot"></slot>
-        </div>
-        <div id="tooltip" role="status">
-          <slot id="content" name="content"><!--lit-part--><!--/lit-part--></slot>
-        </div>
-      </div>
-    <!--/lit-part--></template>
-        <span id="caption" slot="content"><!--lit-part-->var(--rh-font-size-body-text-sm, 0.875rem)<!--/lit-part--></span>
-        <!--lit-node 3--><button >
-          <code><slot></slot></code>
-          <slot name="extra-content"></slot>
-          <span class="visually-hidden">Click to copy</span>
-          <!--lit-node 8--><rh-icon    aria-hidden="true" set="ui" icon="copy" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
-  line-height: 0;
-  aspect-ratio: 1/1;
-  display: inline-flex;
-  place-content: center;
-}
-
-#container {
-  display: contents;
-}
-
-svg {
-  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
-  fill: currentcolor;
-  aspect-ratio: 1/1;
-}
-
-.standard svg {
-  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
-}
-
-.microns svg {
-  width: 12px;
-}
-</style><!--lit-part 5A+PTGpViiE=-->
-      <!--lit-node 0--><div id="container"
-           aria-hidden="true"
-           class=" ui "><!--lit-part pgKZgByffkY=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M23 24.5v-23c0-.827-.673-1.5-1.5-1.5H11a.997.997 0 0 0-.708.294L3.294 7.292A.998.998 0 0 0 3 8v16.5c0 .827.673 1.5 1.5 1.5h17c.827 0 1.5-.673 1.5-1.5ZM10 3.414V7H6.414L10 3.414ZM21 24H5V9h5.5c.827 0 1.5-.673 1.5-1.5V2h9v22Z"/><path d="M28 6a1 1 0 0 0-1 1v23H10a1 1 0 1 0 0 2h17.5c.827 0 1.5-.673 1.5-1.5V7a1 1 0 0 0-1-1Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-        </button>
-      </rh-tooltip>
-    <!--/lit-part--></template>
-          <span slot="extra-content" class="visually-hidden">
-            Full CSS Variable
-          </span>
-        </uxdot-copy-button>
-        <uxdot-copy-button    class="icon-only" copy="https://ux.redhat.com/tokens/typography/#--rh-font-size-body-text-sm" icon="link"><template shadowroot="open" shadowrootmode="open"><style>button {
-  color: inherit;
-  border-radius: var(--rh-border-radius-default);
-  border-width: 0;
-  background: none;
-  display: inline-flex;
-  align-items: center;
-  gap: var(--rh-space-xs);
-  padding-inline: var(--rh-space-xs);
-}
-
-code {
-  padding: var(--rh-space-xs) var(--rh-space-md);
-  background: var(--rh-color-surface-light);
-  font-size: var(--rh-font-size-code-md);
-  font-weight: var(--rh-font-weight-code-regular);
-  font-family: var(--rh-font-family-code);
-  line-height: var(--rh-line-height-code);
-}
-
-.visually-hidden {
-  border: 0;
-  clip: rect(0, 0, 0, 0);
-  block-size: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  white-space: nowrap;
-  inline-size: 1px;
-}
-
-:host(.icon-only) code,
-:host(:empty) code {
-  display: none;
-}
-
-:is(rh-icon, #caption) {
-  display: none;
-}
-
-:host(:state(--rendered)) button:is(:focus, :active, :hover),
-:host(:state(--rendered)) button:is(:focus, :active, :hover) code {
-  background: var(--rh-color-interactive-primary-hover-on-dark);
-  opacity: 1;
-}
-
-:host(:state(--rendered)) :is(rh-icon, #caption) {
-  display: initial;
-}
-</style><!--lit-part zk+fFwx/8Tw=-->
-      <!--lit-node 0--><rh-tooltip  position="left-start" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host {
-  display: inline;
-}
-
-#container {
-  display: inline-flex;
-  position: relative;
-  max-width: 100%;
-
-  /* WARNING: properties containing `__`are deprecated and will be removed */
-  --_floating-arrow-size:
-    var(--rh-tooltip-arrow-size,
-      var(--rh-tooltip__arrow--Width, 11px));
-}
-
-#tooltip,
-#tooltip:after {
-  position: absolute;
-}
-
-#tooltip {
-  display: none;
-  opacity: 0;
-  pointer-events: none;
-  z-index: 10000;
-  transition: opacity 300ms cubic-bezier(0.54, 1.5, 0.38, 1.11) 0s;
-  text-align: var(--_text-alignment, center);
-  word-break: break-word;
-  translate: var(--_floating-content-translate);
-  width: max-content;
-  inset-block-start: 0;
-  inset-inline-start: 0;
-  will-change: opacity;
-  line-height: var(--rh-line-height-body-text, 1.5);
-  box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
-  max-width: var(--rh-tooltip-max-width, var(--rh-tooltip--MaxWidth, 18.75rem));
-  border-radius: var(--rh-border-radius-default, 3px);
-
-  /* WARNING: properties containing `__`are deprecated and will be removed */
-  padding:
-    var(--rh-tooltip-content-padding-block-start,
-      var(--rh-tooltip__content--PaddingTop, var(--rh-space-lg, 16px)))
-    var(--rh-tooltip-content-padding-inline-end,
-      var(--rh-tooltip__content--PaddingRight, var(--rh-space-lg, 16px)))
-    var(--rh-tooltip-content-padding-block-end,
-      var(--rh-tooltip__content--PaddingBottom, var(--rh-space-lg, 16px)))
-    var(--rh-tooltip-content-padding-inline-start,
-      var(--rh-tooltip__content--PaddingLeft, var(--rh-space-lg, 16px)));
-
-  /* WARNING: properties containing `__`are deprecated and will be removed */
-  font-size:
-    var(--rh-tooltip-content-font-size,
-      var(--rh-tooltip__content--FontSize, var(--rh-font-size-body-text-sm, 0.875rem)));
-
-  /* WARNING: properties containing `__`are deprecated and will be removed */
-  color:
-    var(--rh-tooltip-content-color,
-      var(--rh-tooltip__content--Color, var(--rh-color-text-primary-on-dark, #ffffff)));
-  background-color:
-    var(--rh-tooltip-content-background-color,
-      var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-darkest, #151515)));
-}
-
-.initialized #tooltip {
-  display: block;
-}
-
-#tooltip:after {
-  display: block;
-  content: '';
-  rotate: 45deg;
-  width: var(--_floating-arrow-size);
-  height: var(--_floating-arrow-size);
-  will-change: left top right bottom;
-  background-color:
-    var(--rh-tooltip-content-background-color,
-      var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-darkest, #151515)));
-}
-
-.open #tooltip {
-  opacity: 1;
-}
-
-/* PLAIN */
-.left #tooltip:after { inset-inline-start: calc(-0.5 * var(--_floating-arrow-size)); }
-.top #tooltip:after { inset-block-start: calc(100% - 0.5 * var(--_floating-arrow-size)); }
-.right #tooltip:after { inset-inline-end: calc(100% - 0.5 * var(--_floating-arrow-size)); }
-.bottom #tooltip:after { inset-block-end: calc(100% - 0.5 * var(--_floating-arrow-size)); }
-
-/* CENTER */
-.left.center #tooltip:after { inset-block-start: calc(50% - 0.5 * var(--_floating-arrow-size)); }
-.top.center #tooltip:after { inset-inline-end: calc(50% - 0.5 * var(--_floating-arrow-size)); }
-.right.center #tooltip:after { inset-block-start: calc(50% - 0.5 * var(--_floating-arrow-size)); }
-.bottom.center #tooltip:after { inset-inline-end: calc(50% - 0.5 * var(--_floating-arrow-size)); }
-
-/* START */
-.left.start #tooltip:after { inset-block-start: var(--_floating-arrow-size); }
-.top.start #tooltip:after { inset-inline-start: var(--_floating-arrow-size); }
-.right.start #tooltip:after { inset-block-start: var(--_floating-arrow-size); }
-.bottom.start #tooltip:after { inset-inline-start: var(--_floating-arrow-size); }
-
-/* END */
-.left.end #tooltip:after { inset-block-end: var(--_floating-arrow-size); }
-.top.end #tooltip:after { inset-inline-end: var(--_floating-arrow-size); }
-.right.end #tooltip:after { inset-block-end: var(--_floating-arrow-size); }
-.bottom.end #tooltip:after { inset-inline-end: var(--_floating-arrow-size); }
-
-:host([position='left']),
-:host([position='right']) {
-  --_text-alignment: 'start';
-}
-
-.dark {
-  --rh-tooltip-content-background-color: var(--rh-color-surface-lightest, #ffffff);
-  --rh-tooltip-content-color: var(--rh-color-text-primary-on-light, #151515);
-}
-</style><!--lit-part eUcF9UlFv54=-->
-      <!--lit-node 0--><div id="container"
-           style=""
-           class=" center ">
-        <div id="invoker">
-          <slot id="invoker-slot"></slot>
-        </div>
-        <div id="tooltip" role="status">
-          <slot id="content" name="content"><!--lit-part--><!--/lit-part--></slot>
-        </div>
-      </div>
-    <!--/lit-part--></template>
-        <span id="caption" slot="content"><!--lit-part-->https://ux.redhat.com/tokens/typography/#--rh-font-size-body-text-sm<!--/lit-part--></span>
         <!--lit-node 3--><button >
           <code><slot></slot></code>
           <slot name="extra-content"></slot>
