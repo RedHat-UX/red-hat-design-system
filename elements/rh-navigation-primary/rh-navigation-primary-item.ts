@@ -84,7 +84,7 @@ export class RhNavigationPrimaryItem extends LitElement {
     const _isHydrated = isServer && !this.hasUpdated;
     if (!_isHydrated) {
       this.#hydrated = true;
-      this.compact = this.parentElement!.offsetWidth < 1200;
+      this.compact = this.closest('rh-navigation-primary')!.offsetWidth < 1200;
     }
   }
 
