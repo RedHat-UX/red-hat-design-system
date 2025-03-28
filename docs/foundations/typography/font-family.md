@@ -89,13 +89,13 @@ Noto is a set of international fonts developed by Google, Monotype, Adobe, and l
 <div class="grid sm-three-columns">
   <rh-card>
     <img slot="header" src="/foundations/typography/google-fonts-icon.svg" width="64px" alt="Google Fonts icon">
-    <rh-cta slot="footer" priority="primary">
+    <rh-cta>
         <a href="https://fonts.google.com/?query=Red+Hat">Google Fonts</a>
     </rh-cta>
   </rh-card>
   <rh-card>
     <img slot="header" src="/foundations/typography/github-icon.svg" width="64px" alt="GitHub icon">
-    <rh-cta slot="footer" priority="primary">
+    <rh-cta>
         <a href="https://github.com/RedHatOfficial/RedHatFont">GitHub</a>
     </rh-cta>
   </rh-card>
@@ -105,7 +105,7 @@ Noto is a set of international fonts developed by Google, Monotype, Adobe, and l
 <div class="grid sm-three-columns">
   <rh-card>
     <img slot="header" src="/foundations/typography/google-fonts-icon.svg" width="64px" alt="Google Fonts icon">
-    <rh-cta slot="footer" priority="primary">
+    <rh-cta>
         <a href="https://fonts.google.com/noto/specimen/Noto+Sans">Google Fonts</a>
     </rh-cta>
   </rh-card>
