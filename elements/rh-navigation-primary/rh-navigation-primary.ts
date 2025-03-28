@@ -159,7 +159,7 @@ export class RhNavigationPrimary extends LitElement {
       <div id="container" class="${classMap({
           compact: this.compact,
           rtl,
-          dehydrated: this.#hydrated,
+          dehydrated: !this.#hydrated,
         })}">
         <div id="bar">
           <div id="logo">

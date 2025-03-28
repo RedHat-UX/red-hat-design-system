@@ -43,6 +43,8 @@ export class RhNavigationPrimaryItem extends LitElement {
   // eslint-disable-next-line no-unused-private-class-members
   #internals = InternalsController.of(this, { role: 'listitem' });
 
+  #hydrated = false;
+
   @query('details')
   private _details!: HTMLDetailsElement;
 
@@ -77,6 +79,15 @@ export class RhNavigationPrimaryItem extends LitElement {
    */
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
+  protected firstUpdated(): void {
+    // ensure we update initially on client hydration
+    const _isHydrated = isServer && !this.hasUpdated;
+    if (!_isHydrated) {
+      this.#hydrated = true;
+      this.compact = this.parentElement!.offsetWidth < 1200;
+    }
+  }
+
   render() {
     const { hide = '', variant = '' } = this;
     const compact = this.compact ?? true;
@@ -91,6 +102,7 @@ export class RhNavigationPrimaryItem extends LitElement {
         standalone: !hamburger,
         hamburger: hamburger,
         rtl,
+        dehydrated: !this.#hydrated,
       })}">${this.variant === 'dropdown' ? html`
         <details @toggle="${this.#detailsToggle}">
           <summary>${hamburger ? '' : html`
