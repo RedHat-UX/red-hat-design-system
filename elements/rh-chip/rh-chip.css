@@ -85,12 +85,5 @@ input {
     inline-size: auto;
     margin-inline-start: var(--rh-space-md, 8px);
     opacity: 1;
-
-    @starting-style {
-      block-size: 0;
-      inline-size: 0;
-      margin-inline-start: 0;
-      opacity: 0;
-    }
   }
 }
