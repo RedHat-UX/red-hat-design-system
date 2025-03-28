@@ -99,7 +99,7 @@ Our design system libraries and the documentation website offer assets and
 guidance needed to create digital experiences. Please read through each section
 to have a better understanding of how to use our design system.
 
-<div id="learn-about-grid" class="grid sm-three-columns">
+<div id="learn-about-grid" class="grid xs-two-columns sm-three-columns">
   <rh-tile>
     <rh-icon slot="icon" set="standard" icon="website-system"></rh-icon>
     <h3 slot="headline"><a href="/foundations">Foundations</a></h3>
