@@ -40,7 +40,7 @@ Red Hat Display is our default font. Use it for headings to grab attention and e
 Use regular, medium, or bold weights. Other weights can be used for [Expressive type][expressivetype] only.
 
 <uxdot-example width-adjustment="810px" color-palette="lightest">
-  <img src="/assets/typography/typography-rh-display.svg"
+  <img src="/foundations/typography/typography-rh-display.svg"
       alt="examples of Red Hat Display and its three weights"
       width="810"
       height="192">
@@ -53,7 +53,7 @@ Red Hat Text takes all of the personality from Display and optimizes it for more
 Use the medium weight and italics for emphasis. Other weights can be used for [Expressive type][expressivetype] only.
 
 <uxdot-example width-adjustment="810px" color-palette="lightest">
-  <img src="/assets/typography/typography-rh-text.svg"
+  <img src="/foundations/typography/typography-rh-text.svg"
       alt="examples of Red Hat Text and its weights and styles"
       width="810"
       height="224">
@@ -66,7 +66,7 @@ Red Hat Mono was created to distinguish code from natural-language text. Use it 
 Use the medium weight and italics for emphasis. Other weights can be used for [Expressive type][expressivetype] only.
 
 <uxdot-example width-adjustment="810px" color-palette="lightest">
-  <img src="/assets/typography/typography-rh-mono.svg"
+  <img src="/foundations/typography/typography-rh-mono.svg"
       alt="examples of Red Hat Mono and its weights and styles"
       width="810"
       height="192">
@@ -77,7 +77,7 @@ Use the medium weight and italics for emphasis. Other weights can be used for [E
 Noto is a set of international fonts developed by Google, Monotype, Adobe, and leading experts from around the world. All Noto fonts are licensed under the Open Font License. The simple and clean design makes it a good counterpart to the Red Hat font family.
 
 <uxdot-example width-adjustment="778px" color-palette="lightest">
-  <img src="/assets/typography/typography-non-latin-fonts.svg"
+  <img src="/foundations/typography/typography-non-latin-fonts.svg"
       alt="examples of Noto used for non-latin text"
       width="778"
       height="207">
@@ -88,13 +88,13 @@ Noto is a set of international fonts developed by Google, Monotype, Adobe, and l
 ### Red Hat
 <div class="grid sm-three-columns">
   <rh-card>
-    <img slot="header" src="/assets/typography/google-fonts-icon.svg" width="64px" alt="Google Fonts icon">
+    <img slot="header" src="/foundations/typography/google-fonts-icon.svg" width="64px" alt="Google Fonts icon">
     <rh-cta slot="footer" priority="primary">
         <a href="https://fonts.google.com/?query=MCKL">Google Fonts</a>
     </rh-cta>
   </rh-card>
   <rh-card>
-    <img slot="header" src="/assets/typography/github-icon.svg" width="64px" alt="GitHub icon">
+    <img slot="header" src="/foundations/typography/github-icon.svg" width="64px" alt="GitHub icon">
     <rh-cta slot="footer" priority="primary">
         <a href="https://github.com/RedHatOfficial/RedHatFont">GitHub</a>
     </rh-cta>
@@ -104,7 +104,7 @@ Noto is a set of international fonts developed by Google, Monotype, Adobe, and l
 ### Noto Sans
 <div class="grid sm-three-columns">
   <rh-card>
-    <img slot="header" src="/assets/typography/google-fonts-icon.svg" width="64px" alt="Google Fonts icon">
+    <img slot="header" src="/foundations/typography/google-fonts-icon.svg" width="64px" alt="Google Fonts icon">
     <rh-cta slot="footer" priority="primary">
         <a href="https://fonts.google.com/noto/specimen/Noto+Sans">Google Fonts</a>
     </rh-cta>

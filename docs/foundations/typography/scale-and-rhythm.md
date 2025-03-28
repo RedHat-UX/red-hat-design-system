@@ -235,7 +235,7 @@ Use the following specs for lists.
 - All padding specs are the same on mobile breakpoints
 
 <uxdot-example width-adjustment="1012px" color-palette="lightest">
-  <img src="/assets/typography/scale-and-rhythm-lists.svg"
+  <img src="/foundations/typography/scale-and-rhythm-lists.svg"
       alt="Diagram showing indentation and spacing between list items"
       width="1012"
       height="440">
@@ -249,14 +249,14 @@ There are different margin specs depending on how text styles are grouped.
 - Blocks of content with subsections use the `--rh-space-4xl` token in between
 
 <uxdot-example width-adjustment="1012px" color-palette="lightest">
-  <img src="/assets/typography/scale-and-rhythm-padding-A.svg"
+  <img src="/foundations/typography/scale-and-rhythm-padding-A.svg"
       alt="Diagram showing spacing between body text, calls to action, and headings"
       width="1012"
       height="633">
 </uxdot-example>
 
 <uxdot-example width-adjustment="1012px" color-palette="lightest">
-  <img src="/assets/typography/scale-and-rhythm-padding-B.svg"
+  <img src="/foundations/typography/scale-and-rhythm-padding-B.svg"
       alt="Diagram showing spacing above and below different headings and body text"
       width="1012"
       height="905">
