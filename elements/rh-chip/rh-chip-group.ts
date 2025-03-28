@@ -37,7 +37,7 @@ export class RhChipGroup extends LitElement {
   @query('slot:not([name])') private defaultSlot!: HTMLSlotElement;
 
   firstUpdated(): void {
-    if (this.size === 'sm') {
+    if (this.size === 'sm' && !this.hasUpdated) {
       this.size = undefined;
       this.size = 'sm';
     }
