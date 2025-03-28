@@ -1,6 +1,6 @@
 import type { IconNameFor, IconSetName } from '@rhds/icons';
 
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { state } from 'lit/decorators/state.js';
 import { query } from 'lit/decorators/query.js';
@@ -9,7 +9,7 @@ import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 
 import { consume } from '@lit/context';
-import { compactContext, hamburgerContext } from './context.js';
+import { context } from './context.js';
 
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
@@ -46,18 +46,20 @@ export class RhNavigationPrimaryItem extends LitElement {
   @query('details')
   private _details!: HTMLDetailsElement;
 
-  @query('summary')
-  private _summary!: HTMLElement;
-
   @state()
   private _open = false;
 
+  /* Summary text for dropdown variants only */
   @property() summary?: string;
 
+  /* Variants 'link' | 'dropdown', link is the default if no variant is given */
   @property() variant?: 'link' | 'dropdown' = 'link';
 
+  /**
+   * Hides the element at various container query based breakpoints.
+   * Breakpoints available 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
+   */
   @property({ reflect: true }) hide?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' = undefined;
-
 
   /** Shorthand for the `icon` slot, the value is icon name */
   @property() icon?: IconNameFor<IconSetName>;
@@ -65,13 +67,10 @@ export class RhNavigationPrimaryItem extends LitElement {
   /** Icon set for the `icon` property - 'ui' by default */
   @property({ attribute: 'icon-set' }) iconSet?: IconSetName;
 
-  @consume({ context: compactContext, subscribe: true })
+  @consume({ context, subscribe: true })
   @state()
   private compact?: boolean;
 
-  @consume({ context: hamburgerContext, subscribe: true })
-  @state()
-  private hamburger?: boolean;
 
   /**
    * Color palette
@@ -80,21 +79,25 @@ export class RhNavigationPrimaryItem extends LitElement {
 
   render() {
     const { hide = '', variant = '' } = this;
-    const { compact = true, hamburger = false } = this;
+    const compact = this.compact ?? true;
+    const hamburger = (!this.getAttribute('slot'));
+    const rtl = !isServer && this.matches(':dir(rtl)');
     return html`
       <div id="container" class="${classMap({
         [variant]: true,
         highlight: !!this.#highlight,
         hide: !!hide,
         compact,
-        hamburger,
+        standalone: !hamburger,
+        hamburger: hamburger,
+        rtl,
       })}">${this.variant === 'dropdown' ? html`
         <details @toggle="${this.#detailsToggle}">
-          <summary class="${classMap({ hamburger })}">${hamburger ? '' : html`
-            <slot name="icon">${this.icon ? '' : html`
-              <rh-icon icon="${this.icon}" set="${ifDefined(this.iconSet)}"></rh-icon>`}
+          <summary>${hamburger ? '' : html`
+            <slot name="icon">${!this.icon ? '' : html`
+              <rh-icon icon="${ifDefined(this.icon)}" set="${ifDefined(this.iconSet)}"></rh-icon>`}
             </slot>`}
-            <slot name="summary">${this.summary}</slot>
+            <div id="summary-text"><slot name="summary">${this.summary}</slot></div>
             <rh-icon icon="caret-down" set="microns"></rh-icon>
           </summary>
           <rh-navigation-primary-item-menu id="details-content">

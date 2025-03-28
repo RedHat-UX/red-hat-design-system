@@ -10,9 +10,10 @@
       var(--rh-color-brand-red-light, #f56e6e),
       var(--rh-color-purple-40, #876fd4),
       var(--rh-color-purple-60, #3d2785));
-  --_active-item-color: var(--rh-navigation-active-item-color, var(--_gradient));
+  --_active-item-color: var(--_gradient);
 
   display: block;
+  height: 100%;
   justify-items: center;
   align-content: center;
 }
@@ -104,12 +105,6 @@
 
     & #details-content {
       width: 100%;
-
-      @container (min-width: 1200px) {
-        border-end-end-radius: calc(var(--rh-border-radius-default, 3px) * 2);
-        border-end-start-radius: calc(var(--rh-border-radius-default, 3px) * 2);
-        box-shadow: 0 2px 4px 0 var(--_box-shadow-color);
-      }
     }
 
     &[open] {
@@ -167,45 +162,51 @@
           padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
           cursor: pointer;
 
-          @container (min-width: 1200px) {
-            height: calc(100% + 4px);
-            padding: 0 var(--rh-space-lg, 16px);
-          }
-
           &:focus-visible,
           &:hover:focus-visible {
             outline-offset: -2px;
-            outline:
-              var(--rh-border-width-md, 2px)
-              solid
-              var(--rh-color-interactive-primary-default);
+            outline: var(--rh-border-width-md, 2px) solid var(--rh-color-interactive-primary-default);
             border-radius: var(--rh-border-radius-default, 3px);
-          }
-        }
-
-        & #details-content {
-          @container (min-width: 1200px) {
-            position: absolute;
-            z-index: -1;
-            background-color: var(--rh-color-surface);
-            inset-block-start: 100%;
-            inset-inline-start: 0;
-            width: 100%;
           }
         }
 
         &[open] {
           border-inline-start: var(--rh-border-width-lg, 3px) solid var(--rh-color-accent-brand);
           border-inline-end: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+        }
+      }
 
+      &:not(.compact) {
+        & details {
           @container (min-width: 1200px) {
             border-inline: unset;
+          }
+
+          & summary {
+            @container (min-width: 1200px) {
+              height: calc(100% + 4px);
+              padding: 0 var(--rh-space-lg, 16px);
+            }
+          }
+
+          & #details-content {
+            @container (min-width: 1200px) {
+              position: absolute;
+              z-index: -1;
+              background-color: var(--rh-color-surface);
+              border-end-end-radius: calc(var(--rh-border-radius-default, 3px) * 2);
+              border-end-start-radius: calc(var(--rh-border-radius-default, 3px) * 2);
+              box-shadow: 0 2px 4px 0 var(--_box-shadow-color);
+              inset-block-start: 100%;
+              inset-inline-start: 0;
+              width: 100%;
+            }
           }
         }
       }
     }
 
-    &:not(.hamburger) {
+    &.standalone {
       & details {
         & summary {
           position: relative;
@@ -247,25 +248,15 @@
             }
           }
 
-          & slot[name='summary']::slotted(*) {
-            clip: rect(0 0 0 0);
+          & #summary-text {
             clip-path: inset(50%);
-            height: 1px;
             overflow: hidden;
             position: absolute;
-            white-space: nowrap;
-            width: 1px;
-          }
 
-          @container (min-width: 1680px) {
-            & slot[name='summary']::slotted(*) {
-              clip: unset;
-              clip-path: unset;
-              height: auto;
-              overflow: auto;
+            @container (min-width: 1680px) {
+              clip-path: none;
+              overflow: none;
               position: static;
-              white-space: normal;
-              width: auto;
             }
           }
         }
@@ -274,9 +265,14 @@
           position: absolute;
           z-index: -1;
           background-color: var(--rh-color-surface);
+          border-end-end-radius: calc(var(--rh-border-radius-default, 3px) * 2);
+          border-end-start-radius: calc(var(--rh-border-radius-default, 3px) * 2);
+          box-shadow: 0 2px 4px 0 var(--_box-shadow-color);
           inset-block-start: 100%;
           inset-inline-end: 0;
           width: 100%;
+          max-height: calc(100dvh - var(--_navbar-height));
+          overflow-y: scroll;
 
           @container (min-width: 1200px) {
             width: fit-content;
@@ -338,10 +334,8 @@
       }
     }
 
-    &:not(.hamburger) {
-      padding-inline:
-        var(--_padding-inline-start, var(--rh-space-md, 8px))
-        var(--_padding-inline-end, var(--rh-space-md, 8px));
+    &.standalone {
+      padding-inline: var(--_padding-inline-start, var(--rh-space-md, 8px)) var(--_padding-inline-end, var(--rh-space-md, 8px));
 
       & ::slotted(a) {
         display: inline-flex;

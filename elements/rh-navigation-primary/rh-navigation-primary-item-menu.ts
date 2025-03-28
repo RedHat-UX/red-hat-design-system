@@ -1,10 +1,10 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
-import { property } from 'lit/decorators/property.js';
+import { state } from 'lit/decorators/state.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 import { consume } from '@lit/context';
-import { compactContext } from './context.js';
+import { context } from './context.js';
 
 import styles from './rh-navigation-primary-item-menu.css';
 
@@ -16,14 +16,16 @@ import styles from './rh-navigation-primary-item-menu.css';
 export class RhNavigationPrimaryItemMenu extends LitElement {
   static readonly styles = [styles];
 
-  @consume({ context: compactContext, subscribe: true })
-  @property({ attribute: false })
+  @consume({ context, subscribe: true })
+  @state()
   private compact?: boolean;
 
   render() {
-    const { compact = true } = this;
+    const rtl = !isServer && this.matches(':dir(rtl)');
+    const compact = this.compact ?? true;
+    const classes = { rtl, compact };
     return html`
-      <div id="container" class="${classMap({ compact })}">
+      <div id="container" class="${classMap(classes)}">
         <slot></slot>
       </div>
     `;
