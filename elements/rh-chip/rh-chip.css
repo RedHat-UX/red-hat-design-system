@@ -2,16 +2,20 @@
   --_spacer: var(--rh-space-lg, 16px);
 
   display: inline-block;
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif) !important;
+  font-size: var(--rh-font-size-body-text-sm, 0.875rem) !important;
+  line-height: var(--rh-line-height-body-text, 1.5) !important;
   margin-block: 2px;
   margin-inline-end: var(--rh-space-md, 8px);
+}
+
+:host:has(.size-sm) {
+  font-size: var(--rh-font-size-body-text-xs, 0.75rem) !important;
 }
 
 label {
   border-radius: var(--rh-border-radius-pill, 64px);
   display: flex;
-  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
-  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
-  line-height: var(--rh-line-height-body-text, 1.5);
   margin-block-end: var(--_spacer);
   outline: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
   padding: var(--rh-space-xs, 4px) var(--rh-space-md, 8px);
@@ -54,10 +58,6 @@ label {
     &:hover {
       outline-color: light-dark(var(--rh-color-blue-30, #92c5f9), var(--rh-color-blue-50, #0066cc));
     }
-  }
-
-  &.size-sm {
-    font-size: var(--rh-font-size-body-text-xs, 0.75rem);
   }
 }
 
