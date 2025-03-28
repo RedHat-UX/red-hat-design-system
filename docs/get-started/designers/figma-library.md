@@ -28,7 +28,7 @@ subnav:
 #}
 
 <style data-helmet>
-  .page-designers .container {
+  .page-figma-library .container {
     uxdot-copy-permalink:not(:first-of-type) {
       margin-block-start: var(--rh-space-5xl, 80px);
     }
@@ -36,27 +36,10 @@ subnav:
     uxdot-copy-permalink:not(:first-of-type) + uxdot-copy-permalink {
       margin-block-start: var(--rh-space-2xl, 32px);
     }
-
-    ul {
-      font-size: var(--rh-font-size-body-text-lg, 1.125rem);
-      margin-block-end: var(--rh-space-2xl, 32px);
-    }
   }
 
-  rh-accordion {
-    display: block;
-  }
-
-  :is(rh-alert, rh-accordion) {
+  :is(rh-alert) {
     margin-block: var(--rh-space-2xl, 32px);
-  }
-
-  #learn-about-grid {
-    margin-block-start: var(--rh-space-2xl, 32px);
-    & h3 {
-      font-size: var(--rh-font-size-heading-sm, 1.5rem);
-      font-weight: var(--rh-font-weight-heading-medium, 500);
-    }
   }
 </style>
 
@@ -70,7 +53,7 @@ libraries and add them to all of your
 or [individual
 files](https://help.figma.com/hc/en-us/articles/1500008731201-Manage-libraries-in-design-files).
 
-<uxdot-example width-adjustment="60%">
+<uxdot-example color-palette="lightest" width-adjustment="60%">
   <img alt="Figma's Libraries modal showing the Red Hat Design System library is added"
        src="access-figma-libraries.png">
 </uxdot-example>
@@ -130,7 +113,7 @@ asset by selecting it. When you are satisfied with the preview, select the
 you have questions about how to use an element or pattern correctly, review the
 documentation or connect with us on Slack.
 
-<uxdot-example width-adjustment="40%">
+<uxdot-example color-palette="lightest" width-adjustment="40%">
   <img alt="Figma's asset preview dialog box for a card component with an 'Insert instance' button"
        src="figma-inserting-elements-patterns.png">
 </uxdot-example>
@@ -142,7 +125,7 @@ in the right sidebar when the asset is selected. Properties change the
 appearance of an element or pattern so they can be used for different use cases.
 Some examples of properties include state, theme, variant, etc.
 
-<uxdot-example>
+<uxdot-example color-palette="lightest">
   <img alt="Diagram showing a blue primary button being changed to a destroy button with Figma's properties selector",
        src="figma-properties.png">
 </uxdot-example>
@@ -152,7 +135,7 @@ Some examples of properties include state, theme, variant, etc.
 Most elements and patterns can be resized to fit different viewport sizes. You
 can change the height or width of an asset by dragging an edge or corner.
 
-<uxdot-example>
+<uxdot-example color-palette="lightest">
   <img alt="Screenshot of a progress steps element being resized by dragging the bottom right corner"
        src="figma-responsive-resize-drag.png">
 </uxdot-example>
@@ -160,7 +143,7 @@ can change the height or width of an asset by dragging an edge or corner.
 You can also use [Constraints][constraints] to tell Figma how layers should
 respond when their frames are resized.
 
-<uxdot-example>
+<uxdot-example color-palette="lightest">
   <img alt="Screenshot of a selected progress steps element next to Figma's constraints settings"
        src="figma-responsive-resize-constraints.png">
 </uxdot-example>
@@ -172,7 +155,7 @@ dragging and dropping over and over again. Use the **Instance** menu to swap one
 element for another from any enabled library. Changing a property will not
 replace an element, but instance swapping will.
 
-<uxdot-example>
+<uxdot-example color-palette="lightest">
   <img alt="Diagram of a primary CTA being changed to a secondary CTA via the instance swap panel"
        src="figma-instance-swap.png">
 </uxdot-example>
@@ -192,7 +175,7 @@ prioritize building them in.
   <p>Detached instances will not receive style or other updates from any of the libraries if that element or pattern is updated.</p>
 </rh-alert>
 
-<uxdot-example width-adjustment="90%">
+<uxdot-example color-palette="lightest" width-adjustment="90%">
   <img alt="Comparison of a linked and a detached accordion with their layers panel below"
        src="best-practices-detach-instance.png">
 </uxdot-example>

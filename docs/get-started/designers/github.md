@@ -28,34 +28,13 @@ subnav:
 #}
 
 <style data-helmet>
-  .page-designers .container {
+  .page-github-project .container {
     uxdot-copy-permalink:not(:first-of-type) {
       margin-block-start: var(--rh-space-5xl, 80px);
     }
 
     uxdot-copy-permalink:not(:first-of-type) + uxdot-copy-permalink {
       margin-block-start: var(--rh-space-2xl, 32px);
-    }
-
-    ul {
-      font-size: var(--rh-font-size-body-text-lg, 1.125rem);
-      margin-block-end: var(--rh-space-2xl, 32px);
-    }
-  }
-
-  rh-accordion {
-    display: block;
-  }
-
-  :is(rh-alert, rh-accordion) {
-    margin-block: var(--rh-space-2xl, 32px);
-  }
-
-  #learn-about-grid {
-    margin-block-start: var(--rh-space-2xl, 32px);
-    & h3 {
-      font-size: var(--rh-font-size-heading-sm, 1.5rem);
-      font-weight: var(--rh-font-weight-heading-medium, 500);
     }
   }
 </style>
@@ -72,7 +51,7 @@ requests][pullrequests].
 The [GitHub Wiki][githubwiki] can help you get started, and you can always chat
 with us for additional help.
 
-<uxdot-example variant="full" no-border>
+<uxdot-example color-palette="lightest" variant="full" no-border>
   <img alt="Screenshot of the red-hat-design-system GitHub repo's Code tab"
        src="get-familiar-with-github.png">
 </uxdot-example>

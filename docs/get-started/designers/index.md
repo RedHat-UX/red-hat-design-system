@@ -36,7 +36,7 @@ order: 10
 #}
 
 <style data-helmet>
-  .page-designers .container {
+  .page-overview .container {
     uxdot-copy-permalink:not(:first-of-type) {
       margin-block-start: var(--rh-space-5xl, 80px);
     }
@@ -49,14 +49,6 @@ order: 10
       font-size: var(--rh-font-size-body-text-lg, 1.125rem);
       margin-block-end: var(--rh-space-2xl, 32px);
     }
-  }
-
-  rh-accordion {
-    display: block;
-  }
-
-  :is(rh-alert, rh-accordion) {
-    margin-block: var(--rh-space-2xl, 32px);
   }
 
   #learn-about-grid {
@@ -86,7 +78,7 @@ interaction with Red Hat reflects our brand personality, brand strategy, and
 consistent visual language. Consistency is how we create authentic relationships 
 and credibility with our customers, partners, and contributors.
 
-<uxdot-example variant="full" no-border>
+<uxdot-example color-palette="lightest" variant="full" no-border>
   <img alt="The text 'Brand Standards' with small illustrations of color swatches, dropdown element, and resizing an icon"
        src="brand-standards.png">
 </uxdot-example>

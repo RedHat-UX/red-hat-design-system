@@ -43,20 +43,13 @@ subnav:
     }
   }
 
-  rh-accordion {
+  :is(rh-accordion) {
     display: block;
-  }
-
-  :is(rh-alert, rh-accordion) {
     margin-block: var(--rh-space-2xl, 32px);
   }
 
-  #learn-about-grid {
-    margin-block-start: var(--rh-space-2xl, 32px);
-    & h3 {
-      font-size: var(--rh-font-size-heading-sm, 1.5rem);
-      font-weight: var(--rh-font-weight-heading-medium, 500);
-    }
+  rh-accordion ul {
+      padding-block-start: 0 !important; /* to correct padding inherited in rh-accordion */
   }
 </style>
 
