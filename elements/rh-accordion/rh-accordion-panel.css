@@ -3,7 +3,6 @@
   overflow: hidden;
   will-change: height;
 
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
   --_panel-body-padding-block-start: var(--rh-space-lg, 16px);
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-lg, 16px);
@@ -25,7 +24,6 @@
   --_panel-body-padding-inline-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-block-end: var(--rh-space-xl, 24px);
   --_panel-body-padding-inline-start: var(--rh-space-xl, 24px);
-  --_panel-font-size: var(--rh-font-size-body-text-md, 1rem);
 }
 
 .body {
@@ -69,5 +67,5 @@
 
 .content {
   color: var(--rh-color-text-primary);
-  font-size: var(--_panel-font-size, var(--rh-font-size-body-text-sm, 0.875rem));
+  font-size: var(--_panel-font-size);
 }
