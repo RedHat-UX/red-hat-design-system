@@ -84,7 +84,12 @@ export class RhNavigationPrimaryItem extends LitElement {
     const _isHydrated = isServer && !this.hasUpdated;
     if (!_isHydrated) {
       this.#hydrated = true;
-      this.compact = this.closest('rh-navigation-primary')!.offsetWidth < 1200;
+      const root = this.getRootNode();
+      if (root === document || !(root instanceof ShadowRoot)) {
+        return;
+      }
+      this.compact =
+        root.host.closest('rh-navigation-primary')!.offsetWidth < 1200;
     }
   }
 
