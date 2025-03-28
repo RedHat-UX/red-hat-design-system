@@ -73,35 +73,35 @@ Read this section to get started and e-mail [design-system@redhat.com](mailto:de
 
 Our design system documentation offers assets and guidance needed to create digital experiences. Please use these resources to have a better understanding of how build with our design system.
 
-<div id="learn-about-grid" class="grid sm-three-columns">
+<div id="learn-about-grid" class="grid xs-two-columns sm-three-columns">
   <rh-tile>
     <rh-icon slot="icon" set="standard" icon="website-system"></rh-icon>
     <h3 slot="headline"><a href="/foundations">Foundations</a></h3>
-    <p>Foundations are how we express our brand through color, space, typography, etc.</p>
-  </rh-tile>
-  <rh-tile>
-    <rh-icon slot="icon" set="standard" icon="toolbox"></rh-icon>
-    <h3 slot="headline"><a href="/tokens">Design tokens</a></h3>
-    <p>Design tokens</a> are how we translate our design language decisions into code.</p>
+    <p>Read about how we us grid, space, color, typography, and more to express our brand.</p>
   </rh-tile>
   <rh-tile>
     <rh-icon slot="icon" set="standard" icon="book"></rh-icon>
     <h3 slot="headline"><a href="/elements">Element docs</a></h3>
-    <p>Custom HTML elements that are the interactive building blocks of our design system.</p>
+    <p>Learn how to implement and customize our RHDS Web Components, the interactive building blocks of our design system.</p>
   </rh-tile>
   <rh-tile>
     <rh-icon slot="icon" set="standard" icon="blueprints"></rh-icon>
     <h3 slot="headline"><a href="/patterns">Pattern docs</a></h3>
-    <p>Patterns compose elements and tokens with content to create uniform, accessible experiences.</p>
+    <p>Patterns compose elements, tokens, and scripts with content to create uniform, accessible experiences.</p>
+  </rh-tile>
+  <rh-tile>
+    <rh-icon slot="icon" set="standard" icon="hierarchy"></rh-icon>
+    <h3 slot="headline"><a href="/tokens">Design token docs</a></h3>
+    <p>We translate our design language decisions into code through design tokens. Learn how to incorporate them.</p>
   </rh-tile>
   <rh-tile>
     <rh-icon slot="icon" set="standard" icon="paint-roller"></rh-icon>
-    <h3 slot="headline"><a href="/theming">Theming</a></h3>
-    <p>Learn about our powerful, flexible, and easy-to-use theming system.</p>
+    <h3 slot="headline"><a href="/theming">Theming docs</a></h3>
+    <p>Explore how to use our powerful and flexible theming system to customize RHDS.</p>
   </rh-tile>
   <rh-tile>
     <rh-icon slot="icon" set="standard" icon="wheelchair-accessible"></rh-icon>
-    <h3 slot="headline"><a href="/accessibility/development/">Accessibility</a></h3>
+    <h3 slot="headline"><a href="/accessibility/development/">Accessibility docs</a></h3>
     <p>Developer-specific guidelines equip you with the information to create inclusive digital experiences.</p>
   </rh-tile>
 </div>
@@ -110,21 +110,16 @@ Our design system documentation offers assets and guidance needed to create digi
 
 Our design system is open source.
 
-<div class="grid sm-three-columns">
+<div class="grid xs-two-columns">
   <rh-tile>
     <rh-icon slot="icon" set="standard" icon="code"></rh-icon>
     <h3 slot="headline"><a href="https://github.com/RedHat-UX/red-hat-design-system">RHDS repo</a></h3>
     <p>Explore our Red Hat Design System code, roadmaps, and discussions.</p>
   </rh-tile>
   <rh-tile>
-    <rh-icon slot="icon" set="standard" icon="hierarchy"></rh-icon>
-    <h3 slot="headline"><a href="https://github.com/RedHat-UX/red-hat-design-tokens">Tokens repo</a></h3>
-    <p>Dig into our Red Hat Design Tokens repo.</p>
-  </rh-tile>
-  <rh-tile>
     <rh-icon slot="icon" set="standard" icon="open-source"></rh-icon>
     <h3 slot="headline"><a href="https://github.com/RedHat-UX/">Our GitHub org</a></h3>
-    <p>Check out our other open source repositiories.</p>
+    <p>Check out our other open source repositiories, like our Design Tokens or RHDS Extensions.</p>
   </rh-tile>
 </div>
 
