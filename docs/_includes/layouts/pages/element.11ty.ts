@@ -171,7 +171,7 @@ export default class ElementsPage extends Renderer<Context> {
 
   async #renderOverviewPage(content: string, ctx: Context) {
     const description = ctx.doc.docsPage.description ?? ctx.doc.description ?? '';
-    return html`${!ctx.doc.preamble ? '' : ctx.doc.preamble }
+    return html`${!ctx.doc.preamble ? '' : ctx.doc.preamble}
       ${!ctx.doc.planned ? '' : html`
       <h2 id="coming-soon">Coming soon!</h2>
       <p>This element is currently in progress and not yet available for
