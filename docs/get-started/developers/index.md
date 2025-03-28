@@ -77,7 +77,7 @@ Our design system documentation offers assets and guidance needed to create digi
   <rh-tile>
     <rh-icon slot="icon" set="standard" icon="website-system"></rh-icon>
     <h3 slot="headline"><a href="/foundations">Foundations</a></h3>
-    <p>Read about how we us grid, space, color, typography, and more to express our brand.</p>
+    <p>Read about how we use grid, space, color, typography, and more to express our brand.</p>
   </rh-tile>
   <rh-tile>
     <rh-icon slot="icon" set="standard" icon="book"></rh-icon>
