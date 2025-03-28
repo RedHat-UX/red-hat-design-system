@@ -90,7 +90,7 @@ Noto is a set of international fonts developed by Google, Monotype, Adobe, and l
   <rh-card>
     <img slot="header" src="/foundations/typography/google-fonts-icon.svg" width="64px" alt="Google Fonts icon">
     <rh-cta slot="footer" priority="primary">
-        <a href="https://fonts.google.com/?query=MCKL">Google Fonts</a>
+        <a href="https://fonts.google.com/?query=Red+Hat">Google Fonts</a>
     </rh-cta>
   </rh-card>
   <rh-card>
