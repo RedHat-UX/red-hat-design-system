@@ -18,7 +18,8 @@ label {
   position: relative;
   text-wrap: balance;
 
-  &:hover {
+  &:hover,
+  &:focus-within {
     cursor: pointer;
     outline-width: var(--rh-border-width-md, 2px);
   }
