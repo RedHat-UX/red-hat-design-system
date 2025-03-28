@@ -36,6 +36,13 @@ export class RhChipGroup extends LitElement {
 
   @query('slot:not([name])') private defaultSlot!: HTMLSlotElement;
 
+  firstUpdated(): void {
+    if (this.size === 'sm') {
+      this.size = undefined;
+      this.size = 'sm';
+    }
+  }
+
   render() {
     const label = this.accessibleLabel ? this.accessibleLabel : 'Filter by:';
     return html`
