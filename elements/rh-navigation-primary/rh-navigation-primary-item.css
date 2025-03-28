@@ -165,7 +165,10 @@
           &:focus-visible,
           &:hover:focus-visible {
             outline-offset: -2px;
-            outline: var(--rh-border-width-md, 2px) solid var(--rh-color-interactive-primary-default);
+            outline:
+              var(--rh-border-width-md, 2px)
+              solid
+              var(--rh-color-interactive-primary-default);
             border-radius: var(--rh-border-radius-default, 3px);
           }
         }
@@ -208,6 +211,7 @@
 
     &.standalone {
       & details {
+        /* stylelint-disable-next-line no-descending-specificity */
         & summary {
           position: relative;
           height: max-content;
@@ -261,6 +265,7 @@
           }
         }
 
+        /* stylelint-disable-next-line no-descending-specificity */
         & #details-content {
           position: absolute;
           z-index: -1;
@@ -335,7 +340,9 @@
     }
 
     &.standalone {
-      padding-inline: var(--_padding-inline-start, var(--rh-space-md, 8px)) var(--_padding-inline-end, var(--rh-space-md, 8px));
+      padding-inline:
+        var(--_padding-inline-start, var(--rh-space-md, 8px))
+        var(--_padding-inline-end, var(--rh-space-md, 8px));
 
       & ::slotted(a) {
         display: inline-flex;
