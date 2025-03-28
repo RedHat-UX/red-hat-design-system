@@ -1,5 +1,5 @@
 ---
-layout: layouts/pages/basic.njk
+layout: layouts/pages/has-toc.njk
 title: Tokens
 heading: Developers
 permalink: /get-started/developers/tokens/index.html
