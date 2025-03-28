@@ -1,0 +1,15 @@
+<rh-chip-group>
+  <rh-chip value="custom-value">Check me</rh-chip>
+</rh-chip-group>
+
+<script type="module">
+  import '@rhds/elements/rh-chip/rh-chip-group.js';
+
+  const getChip = document.querySelector('rh-chip');
+  getChip.addEventListener('change', chipChecked);
+
+  // Replace with custom chip-checked event logic:
+  function chipChecked() {
+    window.alert('A chip was checked/unchecked.')
+  }
+</script>

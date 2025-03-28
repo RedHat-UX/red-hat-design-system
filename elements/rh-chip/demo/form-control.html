@@ -1,0 +1,23 @@
+<form id="chip-form">
+  <rh-chip-group>
+    <rh-chip name="edge">Edge</rh-chip>
+    <rh-chip name="ai" checked>AI/ML</rh-chip>
+    <rh-chip name="devops">DevOps</rh-chip>
+  </rh-chip-group>
+  <hr>
+  <rh-button type="submit">Submit</rh-button>
+  <output name="output"></output>
+</form>
+
+<script type="module">
+  import '@rhds/elements/rh-button/rh-button.js';
+  import '@rhds/elements/rh-chip/rh-chip-group.js';
+  const form = document.getElementById('chip-form');
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    const data = new FormData(form)
+    form.elements.output.textContent = '';
+    for (const [k, v] of data)
+      form.elements.output.textContent += `${k}: ${v}\n`;
+  })
+</script>
