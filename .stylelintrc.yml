@@ -67,6 +67,7 @@ rules:
     - true
     - allowed:
       - --rh-icon-size
+      - --rh-navigation-active-item-color
 
 overrides:
   - files:

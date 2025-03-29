@@ -32,7 +32,7 @@
     display: contents;
   }
 
-  #main {
+  #rhds-dev-server-main {
     display: block;
     position: relative;
     max-height: initial;

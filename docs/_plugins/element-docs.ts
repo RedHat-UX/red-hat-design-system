@@ -26,6 +26,7 @@ interface ElementDocsPageTabData {
 
 interface ElementDocsPageBasicData extends ElementDocsPageTabData {
   description?: string;
+  preamble?: string;
   isCodePage: boolean;
   isDemoPage: boolean;
   isOverviewPage: boolean;
@@ -113,6 +114,7 @@ function getBasicData(filePath: string): ElementDocsPageBasicData {
     isOverviewPage: tabProps.pageSlug === 'overview',
     absPath: join(cwd, filePath),
     description: status?.description,
+    preamble: status?.preamble,
     alias: pfeconfig.aliases?.[tabProps.tagName],
     screenshotPath: `/elements/${tabProps.slug}/screenshot.png`,
     overviewHref: `/elements/${tabProps.slug}/`,
