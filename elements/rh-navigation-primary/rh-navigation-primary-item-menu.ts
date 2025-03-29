@@ -31,8 +31,8 @@ export class RhNavigationPrimaryItemMenu extends LitElement {
       if (root === document || !(root instanceof ShadowRoot)) {
         return;
       }
-      this.compact =
-        root.host.closest('rh-navigation-primary')!.offsetWidth < 1200;
+      const nav = root.host.closest('rh-navigation-primary');
+      this.compact = nav ? nav.offsetWidth < 1200 : true; /* failover to true */
     }
   }
 
