@@ -97,7 +97,7 @@ rh-icon {
     var(--rh-animation-timing, cubic-bezier(0.465, 0.183, 0.153, 0.946));
 }
 
-#container.rtl rh-icon {
+#container:dir(rtl) rh-icon {
   rotate: 180deg;
 }
 
@@ -151,7 +151,7 @@ a:focus-within,
   translate: 3px 0;
 }
 
-:host(:hover) #container.rtl rh-icon {
+:host(:hover) #container:dir(rtl) rh-icon {
   translate: -3px 0;
 }
 
@@ -386,7 +386,7 @@ a:focus-within,
     transition: transform var(--_trans);
   }
 
-  #container.rtl rh-icon { transform: translate(0, 0) rotate(180deg); }
+  #container:dir(rtl) rh-icon { transform: translate(0, 0) rotate(180deg); }
   :host(:hover) #container rh-icon { transform: translate(3px, 0); }
-  :host(:hover) #container.rtl rh-icon { transform: translate(-3px, 0) rotate(180deg); }
+  :host(:hover) #container:dir(rtl) rh-icon { transform: translate(-3px, 0) rotate(180deg); }
 }
