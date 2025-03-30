@@ -22,16 +22,6 @@ import './rh-navigation-primary-item-menu.js';
 
 import styles from './rh-navigation-primary-item.css';
 
-export class RhNavigationPrimaryItemToggleEvent extends Event {
-  declare target: RhNavigationPrimaryItem;
-  constructor(
-    public open: boolean,
-    public toggle: RhNavigationPrimaryItem,
-  ) {
-    super('item-toggle', { bubbles: true, cancelable: true });
-  }
-}
-
 @customElement('rh-navigation-primary-item')
 @colorPalettes
 @themable
@@ -48,8 +38,7 @@ export class RhNavigationPrimaryItem extends LitElement {
   @query('details')
   private _details!: HTMLDetailsElement;
 
-  @state()
-  private _open = false;
+  @property({ type: Boolean, reflect: true }) open = false;
 
   /* Summary text for dropdown variants only */
   @property() summary?: string;
@@ -61,7 +50,8 @@ export class RhNavigationPrimaryItem extends LitElement {
    * Hides the element at various container query based breakpoints.
    * Breakpoints available 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
    */
-  @property({ reflect: true }) hide?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' = undefined;
+  @property({ reflect: true, attribute: 'hide-at' })
+  hideAt?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' = undefined;
 
   /** Shorthand for the `icon` slot, the value is icon name */
   @property() icon?: IconNameFor<IconSetName>;
@@ -90,19 +80,19 @@ export class RhNavigationPrimaryItem extends LitElement {
   }
 
   render() {
-    const { hide = '', variant = '' } = this;
+    const { hideAt = '', variant = '' } = this;
     const compact = this.compact ?? true;
     const hamburger = (!this.getAttribute('slot'));
     return html`
       <div id="container" class="${classMap({
-        [variant]: true,
-        highlight: !!this.#highlight,
-        hide: !!hide,
-        compact,
-        standalone: !hamburger,
-        hamburger: hamburger,
-        dehydrated: !this.#hydrated,
-      })}">${this.variant === 'dropdown' ? html`
+      [variant]: true,
+      highlight: !!this.#highlight,
+      hide: !!hideAt,
+      compact,
+      standalone: !hamburger,
+      hamburger: hamburger,
+      dehydrated: !this.#hydrated,
+    })}">${this.variant === 'dropdown' ? html`
         <details @toggle="${this.#detailsToggle}">
           <summary>${hamburger ? '' : html`
             <slot name="icon">${!this.icon ? '' : html`
@@ -121,15 +111,14 @@ export class RhNavigationPrimaryItem extends LitElement {
   }
 
   #detailsToggle() {
-    this._open = this._details.open;
-    this.dispatchEvent(new RhNavigationPrimaryItemToggleEvent(this._open, this));
+    this.open = this._details.open;
   }
 
-  public close() {
+  public hide() {
     this._details.open = false;
   }
 
-  public open() {
+  public show() {
     this._details.open = true;
   }
 }

@@ -18,36 +18,36 @@
   align-content: center;
 }
 
-:host([hide]) {
+:host([hide-at]) {
   display: none;
 }
 
 @container (min-width: 320px) {
-  :host([hide='xs']) {
+  :host([hide-at='xs']) {
     display: block;
   }
 }
 
 @container (min-width: 567px) {
-  :host([hide='sm']) {
+  :host([hide-at='sm']) {
     display: block;
   }
 }
 
 @container (min-width: 768px) {
-  :host([hide='md']) {
+  :host([hide-at='md']) {
     display: block;
   }
 }
 
 @container (min-width: 992px) {
-  :host([hide='lg']) {
+  :host([hide-at='lg']) {
     display: block;
   }
 }
 
 @container (min-width: 1200px) {
-  :host([hide='xl']) {
+  :host([hide-at='xl']) {
     display: block;
   }
 }

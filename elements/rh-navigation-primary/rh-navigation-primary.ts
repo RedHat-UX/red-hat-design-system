@@ -15,27 +15,13 @@ import { InternalsController } from '@patternfly/pfe-core/controllers/internals-
 import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 
-import {
-  RhNavigationPrimaryItem,
-  RhNavigationPrimaryItemToggleEvent,
-} from './rh-navigation-primary-item.js';
+import { RhNavigationPrimaryItem } from './rh-navigation-primary-item.js';
 import './rh-navigation-primary-overlay.js';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 import '@rhds/elements/rh-surface/rh-surface.js';
 
 import styles from './rh-navigation-primary.css';
-
-
-export class RhNavigationPrimaryHamburgerClickEvent extends Event {
-  declare target: HTMLDetailsElement;
-  constructor(
-    public open: boolean,
-    public toggle: HTMLDetailsElement,
-  ) {
-    super('click', { bubbles: true, cancelable: true });
-  }
-}
 
 export type NavigationPrimaryPalette = Extract<ColorPalette, (
   | 'lightest'
@@ -76,8 +62,13 @@ export class RhNavigationPrimary extends LitElement {
 
   #hydrated = false;
 
-  #slots = new SlotController(
-    this, 'logo', 'summary', 'links', 'dropdowns', null);
+  #slots = new SlotController(this,
+                              'logo',
+                              'summary',
+                              'links',
+                              'dropdowns',
+                              null,
+  );
 
   @provide({ context })
   @state() compact = true; // we should start in compact mode (mobile first)
@@ -144,7 +135,7 @@ export class RhNavigationPrimary extends LitElement {
     super.connectedCallback();
     if (!isServer) {
       this.#ro?.observe(this);
-      this.addEventListener('item-toggle', this.#onDropdownToggle);
+      this.addEventListener('toggle', this.#onDropdownToggle);
       this.addEventListener('focusout', this.#onFocusout);
       this.addEventListener('keydown', this.#onKeydown);
       this.addEventListener('keyup', this.#onKeyup);
@@ -171,7 +162,7 @@ export class RhNavigationPrimary extends LitElement {
             </slot>
           </div>
           <details id="hamburger" @toggle="${this.#hamburgerToggle}">
-            <summary @click="${this.#hamburgerClick}">
+            <summary>
               <rh-icon icon="menu-bars" set="ui"></rh-icon>
               <div id="summary"><slot name="summary">Menu</slot></div>
               <rh-icon icon="caret-down" set="microns"></rh-icon>
@@ -224,52 +215,56 @@ export class RhNavigationPrimary extends LitElement {
 
   #primaryDropdowns(): RhNavigationPrimaryItem[] {
     return Array.from(
-      // eslint-disable-next-line @stylistic/max-len
-      this.querySelectorAll('rh-navigation-primary-item[variant="dropdown"]:not([slot="dropdowns"])')
+      this.querySelectorAll(
+        'rh-navigation-primary-item[variant="dropdown"]:not([slot="dropdowns"])',
+      )
     );
   }
 
   #secondaryDropdowns(): RhNavigationPrimaryItem[] {
     return Array.from(
-      this.querySelectorAll('rh-navigation-primary-item[variant="dropdown"][slot="dropdowns"]')
+      this.querySelectorAll(
+        'rh-navigation-primary-item[variant="dropdown"][slot="dropdowns"]',
+      )
     );
   }
 
   async #onDropdownToggle(event: Event) {
-    if (!(event instanceof RhNavigationPrimaryItemToggleEvent)) {
-      return;
-    }
-    // if the event came from a secondary link in a compact mode we'll want to close the hamburger first if it is open
-    const slottedSecondary = this.#slots.getSlotted('links', 'dropdowns');
-    const secondaryEventToggle = slottedSecondary.find(node => node.isEqualNode(event.toggle));
+    if (event.target instanceof RhNavigationPrimaryItem) {
+      const item = event.target;
+      // if the event came from a secondary link in a compact mode we'll want to close the hamburger first if it is open
+      const slottedSecondary = this.#slots.getSlotted('links', 'dropdowns');
+      const secondaryEventToggle = slottedSecondary.find(node =>
+        node.isEqualNode(item));
 
-    if (event.open) {
-      this.#closePrimaryDropdowns();
-      this.#closeSecondaryDropdowns();
+      if (event.target.open) {
+        this.#closePrimaryDropdowns();
+        this.#closeSecondaryDropdowns();
 
-      if (secondaryEventToggle) {
-        if (this.compact) {
-          this.#closeHamburger();
+        if (secondaryEventToggle) {
+          if (this.compact) {
+            this.#closeHamburger();
+          }
+          this.#openSecondaryDropdowns.add(item);
+        } else {
+          this.#openPrimaryDropdowns.add(item);
         }
-        this.#openSecondaryDropdowns.add(event.toggle);
+        this.#openOverlay();
       } else {
-        this.#openPrimaryDropdowns.add(event.toggle);
-      }
-      this.#openOverlay();
-    } else {
-      if (secondaryEventToggle) {
-        this.#openSecondaryDropdowns.delete(event.toggle);
-        if (this.#openSecondaryDropdowns.size === 0 && (this.compact && !this._hamburger.open)) {
+        if (secondaryEventToggle) {
+          this.#openSecondaryDropdowns.delete(item);
+          if (this.#openSecondaryDropdowns.size === 0 && (this.compact && !this._hamburger.open)) {
+            this.#closeOverlay();
+          }
+        } else {
+          this.#openPrimaryDropdowns.delete(item);
+        }
+
+        if (!this.compact
+          && this.#openPrimaryDropdowns.size === 0
+          && this.#openSecondaryDropdowns.size === 0) {
           this.#closeOverlay();
         }
-      } else {
-        this.#openPrimaryDropdowns.delete(event.toggle);
-      }
-
-      if (!this.compact
-        && this.#openPrimaryDropdowns.size === 0
-        && this.#openSecondaryDropdowns.size === 0) {
-        this.#closeOverlay();
       }
     }
   }
@@ -279,11 +274,11 @@ export class RhNavigationPrimary extends LitElement {
       case 'Escape': {
         if (this.#openPrimaryDropdowns.size > 0) {
           const [dropdown] = this.#openPrimaryDropdowns;
-          dropdown.close();
+          dropdown.hide();
           dropdown.shadowRoot?.querySelector('summary')?.focus();
         } else if (this.#openSecondaryDropdowns.size > 0) {
           const [dropdown] = this.#openSecondaryDropdowns;
-          dropdown.close();
+          dropdown.hide();
           dropdown.shadowRoot?.querySelector('summary')?.focus();
         } else if (this._hamburger.open) {
           this.#closeHamburger();
@@ -348,7 +343,7 @@ export class RhNavigationPrimary extends LitElement {
           }
           // if target is self, close self
           if (event.shiftKey && target === dropdownContainsTarget) {
-            dropdownContainsTarget.close();
+            dropdownContainsTarget.hide();
             return;
           }
         }
@@ -356,7 +351,7 @@ export class RhNavigationPrimary extends LitElement {
           return;
         } else {
           if (lastChild === target) {
-            dropdownContainsTarget.close();
+            dropdownContainsTarget.hide();
             return;
           }
         }
@@ -381,17 +376,17 @@ export class RhNavigationPrimary extends LitElement {
     }
   }
 
+  /** close all open dropdowns in primary slot */
   #closePrimaryDropdowns() {
-    // close all open dropdowns in primary slot
     this.#openPrimaryDropdowns.forEach((dropdown: RhNavigationPrimaryItem) => {
-      dropdown.close();
+      dropdown.hide();
     });
   }
 
+  /** close all open dropdowns in secondary slot */
   #closeSecondaryDropdowns() {
-    // close all open dropdowns in secondary slot
     this.#openSecondaryDropdowns.forEach((dropdown: RhNavigationPrimaryItem) => {
-      dropdown.close();
+      dropdown.hide();
     });
   }
 
@@ -422,14 +417,6 @@ export class RhNavigationPrimary extends LitElement {
         this.#closeOverlay();
       }
     }
-  }
-
-  async #hamburgerClick() {
-    await this.updateComplete;
-    // the state of _hamburger.open will be the opposite as the toggle hasn't run yet on click
-    this.dispatchEvent(
-      new RhNavigationPrimaryHamburgerClickEvent(!this._hamburger.open, this._hamburger)
-    );
   }
 
   @observes('compact')
