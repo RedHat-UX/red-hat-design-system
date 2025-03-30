@@ -238,7 +238,7 @@ export class RhNavigationPrimary extends LitElement {
         node.isEqualNode(item));
 
       if (event.target.open) {
-        this.#closePrimaryDropdowns();
+        this.#closePrimaryDropdowns(event.target);
         this.#closeSecondaryDropdowns();
 
         if (secondaryEventToggle) {
@@ -377,9 +377,11 @@ export class RhNavigationPrimary extends LitElement {
   }
 
   /** close all open dropdowns in primary slot */
-  #closePrimaryDropdowns() {
+  #closePrimaryDropdowns(except?: RhNavigationPrimaryItem) {
     this.#openPrimaryDropdowns.forEach((dropdown: RhNavigationPrimaryItem) => {
-      dropdown.hide();
+      if (dropdown !== except) {
+        dropdown.hide();
+      }
     });
   }
 
@@ -400,21 +402,23 @@ export class RhNavigationPrimary extends LitElement {
     await this.updateComplete;
   }
 
-  #hamburgerToggle(event: ToggleEvent) {
-    if (event.newState === 'open') {
+  #hamburgerToggle(event: Event) {
+    if (event instanceof ToggleEvent) {
+      if (event.newState === 'open') {
       // if we are compact mode and any secondary link dropdowns are open, close them
-      if (this.compact && this.#openSecondaryDropdowns.size > 0) {
-        this.#closeSecondaryDropdowns();
-      }
-      if (this.compact) {
-        this.#openOverlay();
-      }
-    } else {
-      if (this.#openPrimaryDropdowns.size > 0) {
-        this.#closePrimaryDropdowns();
-      }
-      if (this.compact && this.#openSecondaryDropdowns.size === 0) {
-        this.#closeOverlay();
+        if (this.compact && this.#openSecondaryDropdowns.size > 0) {
+          this.#closeSecondaryDropdowns();
+        }
+        if (this.compact) {
+          this.#openOverlay();
+        }
+      } else {
+        if (this.#openPrimaryDropdowns.size > 0) {
+          this.#closePrimaryDropdowns();
+        }
+        if (this.compact && this.#openSecondaryDropdowns.size === 0) {
+          this.#closeOverlay();
+        }
       }
     }
   }

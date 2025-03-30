@@ -112,6 +112,7 @@ export class RhNavigationPrimaryItem extends LitElement {
 
   #detailsToggle() {
     this.open = this._details.open;
+    this.dispatchEvent(new Event('toggle', { bubbles: true }));
   }
 
   public hide() {
