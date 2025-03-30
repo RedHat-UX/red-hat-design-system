@@ -154,13 +154,9 @@ export class RhNavigationPrimary extends LitElement {
   }
 
   render() {
-    const rtl = !isServer && this.matches(':dir(rtl)');
+    const { compact } = this;
     return html`
-      <div id="container" class="${classMap({
-          compact: this.compact,
-          rtl,
-          dehydrated: !this.#hydrated,
-        })}">
+      <div id="container" class="${classMap({ compact, dehydrated: !this.#hydrated })}">
         <div id="bar">
           <div id="logo">
             <slot name="logo">
@@ -179,7 +175,7 @@ export class RhNavigationPrimary extends LitElement {
                 </svg>
               </a>
             </slot>
-          </div>          
+          </div>
           <details id="hamburger" @toggle="${this.#hamburgerToggle}">
             <summary @click="${this.#hamburgerClick}">
               <rh-icon icon="menu-bars" set="ui"></rh-icon>

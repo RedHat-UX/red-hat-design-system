@@ -93,7 +93,6 @@ export class RhNavigationPrimaryItem extends LitElement {
     const { hide = '', variant = '' } = this;
     const compact = this.compact ?? true;
     const hamburger = (!this.getAttribute('slot'));
-    const rtl = !isServer && this.matches(':dir(rtl)');
     return html`
       <div id="container" class="${classMap({
         [variant]: true,
@@ -102,7 +101,6 @@ export class RhNavigationPrimaryItem extends LitElement {
         compact,
         standalone: !hamburger,
         hamburger: hamburger,
-        rtl,
         dehydrated: !this.#hydrated,
       })}">${this.variant === 'dropdown' ? html`
         <details @toggle="${this.#detailsToggle}">

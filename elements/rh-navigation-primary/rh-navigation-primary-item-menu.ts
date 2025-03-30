@@ -37,11 +37,9 @@ export class RhNavigationPrimaryItemMenu extends LitElement {
   }
 
   render() {
-    const rtl = !isServer && this.matches(':dir(rtl)');
-    const compact = this.compact ?? true;
-    const classes = { rtl, compact, dehydrated: !this.#hydrated };
+    const { compact = true } = this;
     return html`
-      <div id="container" class="${classMap(classes)}">
+      <div id="container" class="${classMap({ compact, dehydrated: !this.#hydrated })}">
         <slot></slot>
       </div>
     `;
