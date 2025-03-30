@@ -21,17 +21,17 @@
   z-index: var(--rh-navigation-secondary-z-index, 102);
 }
 
+:host(:dir(rtl)) {
+  --_chevron-transform-collapsed:
+    rotate(calc(-1 * var(--_chevron-up)))
+    translate(calc(1 * var(--_chevron-correction-y)), var(--_chevron-correction-y));
+  --_chevron-transform-expanded:
+    rotate(calc(-1 * var(--_chevron-down)))
+    translate(calc(1 * var(--_chevron-correction-x)), var(--_chevron-correction-x));
+}
+
 nav {
   z-index: var(--rh-navigation-secondary-z-index, 102);
-
-  &:dir(rtl) {
-    --_chevron-transform-collapsed:
-      rotate(calc(-1 * var(--_chevron-up)))
-      translate(calc(1 * var(--_chevron-correction-y)), var(--_chevron-correction-y));
-    --_chevron-transform-expanded:
-      rotate(calc(-1 * var(--_chevron-down)))
-      translate(calc(1 * var(--_chevron-correction-x)), var(--_chevron-correction-x));
-  }
 }
 
 #container {
