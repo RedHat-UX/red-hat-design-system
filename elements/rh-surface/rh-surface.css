@@ -1,5 +1,5 @@
 :host {
   display: block;
-  background-color: var(--rh-color-surface);
   color: var(--rh-color-text-primary);
+  background-color: var(--rh-color-surface);
 }
