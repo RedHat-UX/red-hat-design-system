@@ -26,8 +26,9 @@ export class RhChipGroup extends LitElement {
   /**
    * Decreases the font-size of the chip's label
    */
+  @property({ reflect: true })
   @provide({ context: rhChipGroupSizeCtx })
-  @property({ reflect: true }) size?: 'sm';
+  size?: 'sm';
 
   /**
    * The accessible label for the form control / `rh-chip-group`
