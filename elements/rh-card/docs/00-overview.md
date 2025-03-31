@@ -14,7 +14,7 @@
 
 <div id="guidelines-links">
   <rh-cta><a href="guidelines/#usage">Usage guidelines</a></rh-cta>
-  <rh-cta><a href="guidelines/#tile-vs.-card">Cards vs. tiles</a></rh-cta>
+  <rh-cta><a href="guidelines/#cards-vs.-tiles">Cards vs. tiles</a></rh-cta>
 </div>
 
 
