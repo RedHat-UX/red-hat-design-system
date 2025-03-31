@@ -27,9 +27,10 @@ There are two styles of logo wall: bordered and borderless. Both styles can be e
 1. Logo
 2. Border
 
-## Theme
+## Color scheme
+<a id="theme"></a>
 
-Logo walls can be used in light and dark themes.
+Logo walls can be used in light and dark color schemes.
 
 <rh-alert state="warning">
   When using a borderless logo wall, ensure that the color contrast between each logo and the background meets accessibility standards.

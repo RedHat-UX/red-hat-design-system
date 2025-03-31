@@ -240,10 +240,10 @@ describe('<rh-navigation-secondary>', async function() {
     it('should have a current page indicator on a dropdown that contains a link set to current page', async function() {
       const link = dropdown.querySelector('[slot="menu"] a');
       const container = dropdown.shadowRoot?.querySelector('#container');
-      link.setAttribute('aria-current', 'page');
+      link?.setAttribute('aria-current', 'page');
       await dropdown.updateComplete;
       await aTimeout(50);
-      expect(container.classList.contains('highlight')).to.be.true;
+      expect(container?.classList.contains('highlight')).to.be.true;
     });
   });
 });

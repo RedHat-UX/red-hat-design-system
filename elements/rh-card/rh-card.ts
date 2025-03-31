@@ -3,10 +3,13 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { html, LitElement } from 'lit';
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+
+import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-card.css';
+
+const PALETTE_RE = /(er|est)+/g;
 
 /**
  * Cards are flexible surfaces used to group information in a small layout. They give small previews of information or provide secondary content in relation to the content it's near. Several cards can be used together to group related information.
@@ -40,6 +43,8 @@ import styles from './rh-card.css';
  *              The font weight for headings in the header and body
  */
 @customElement('rh-card')
+@colorPalettes('lightest', 'lighter', 'darker', 'darkest')
+@themable
 export class RhCard extends LitElement {
   static styles = [styles];
 
@@ -48,10 +53,7 @@ export class RhCard extends LitElement {
    * Overrides parent color context.
    * Your theme will influence these colors so check there first if you are seeing inconsistencies.
    * See [CSS Custom Properties](#css-custom-properties) for default values
-   *
-   * Card always resets its context to `base`, unless explicitly provided with a `color-palette`.
    */
-  @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   /**
@@ -63,8 +65,6 @@ export class RhCard extends LitElement {
    * Change a promo with an image + body + footer to use the `full-width` style
    */
   @property({ reflect: true, attribute: 'full-width', type: Boolean }) fullWidth? = false;
-
-  @colorContextConsumer() private on?: ColorTheme;
 
   #slots = new SlotController(this, 'header', 'image', null, 'footer');
 
@@ -82,9 +82,9 @@ export class RhCard extends LitElement {
 
   get #computedPalette() {
     if (this.#isStandardPromo) {
-      return `${this.colorPalette}er`.replace(/(er|est){1,2}/, 'er') as 'lighter' | 'darker';
+      return `${`${this.colorPalette ?? 'lightest'}`.replace(PALETTE_RE, '')}er` as 'lighter' | 'darker';
     } else if (this.#isPromo) {
-      return `${this.colorPalette}est`.replace(/(er|est){1,2}/, 'est') as 'lightest' | 'darkest';
+      return `${`${this.colorPalette ?? 'lightest'}`.replace(PALETTE_RE, '')}est` as 'lightest' | 'darkest';
     } else {
       switch (this.colorPalette) {
         case 'lightest':
@@ -100,18 +100,11 @@ export class RhCard extends LitElement {
     }
   }
 
-  get #computedContext() {
-    return this.colorPalette ?
-      this.colorPalette?.includes('light') ? 'light' : 'dark'
-      : undefined;
-  }
 
   override render() {
     const promo = this.variant === 'promo';
     const standard = this.#isStandardPromo;
     const computedPalette = this.#computedPalette;
-    const computedContext = this.#computedContext;
-    const on = computedContext ?? this.on ?? 'light';
     const { variant = '' } = this;
     const hasHeader = this.#slots.hasSlotted('header');
     const hasFooter = this.#slots.hasSlotted('footer');
@@ -134,15 +127,12 @@ export class RhCard extends LitElement {
           part="container"
           class="${classMap({
             standard,
-            'on': true,
-            [on]: true,
+            body: hasBody,
+            header: hasHeader,
+            footer: hasFooter,
+            image: hasImage,
             [variant]: !!variant,
-            [`palette-${computedPalette}`]: !!computedPalette,
-            'palette': !!this.colorPalette,
-            'has-body': hasBody,
-            'has-header': hasHeader,
-            'has-footer': hasFooter,
-            'has-image': hasImage,
+            [computedPalette ?? '']: !!computedPalette,
           })}">${promo ? '' : header}
         <div id="image"
              part="image"

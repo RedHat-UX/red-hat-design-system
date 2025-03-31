@@ -26,20 +26,20 @@ color alone.
 
 <div class="grid xs-two-columns">
   <figure>
-    <uxdot-example width-adjustment="418px">
-      <img src="../tag-a11y-using-color-fig-1.svg"
-        alt="An image of 3 tags, first tag is outline variant with a white background and blue colored text which reads Tag 1.  The second tag is outline variant with white background and red colored text which reads Tag 2. The third tag is an outline variant with white background and green colored text which reads Tag 3."
-        width="418"
-        height="29">
+    <uxdot-example color-palette="lightest" width-adjustment="418px">
+      <img alt="An image of 3 tags, first tag is outline variant with a white background and blue colored text which reads Tag 1.  The second tag is outline variant with white background and red colored text which reads Tag 2. The third tag is an outline variant with white background and green colored text which reads Tag 3."
+           src="../tag-a11y-using-color-fig-1.svg"
+           width="418"
+           height="29">
     </uxdot-example>
     <figcaption><h3>Figure 1</h3></figcaption>
   </figure>
   <figure>
-    <uxdot-example width-adjustment="418px">
-      <img src="../tag-a11y-using-color-fig-2.svg"
-        alt="An image of 3 tags, first tag is outline variant with a white background and blue colored text which reads Secure server and has a blue padlock icon.  The second tag is outline variant with white background and red colored text which reads critical error and has a red circle with an exclamation point icon The third tag is an outline variant with white background and green colored text which reads signed successfully and has a green circle icon with a check mark."
-        width="418"
-        height="29">
+    <uxdot-example color-palette="lightest" width-adjustment="418px">
+      <img alt="An image of 3 tags, first tag is outline variant with a white background and blue colored text which reads Secure server and has a blue padlock icon.  The second tag is outline variant with white background and red colored text which reads critical error and has a red circle with an exclamation point icon The third tag is an outline variant with white background and green colored text which reads signed successfully and has a green circle icon with a check mark."
+           src="../tag-a11y-using-color-fig-2.svg"
+           width="418"
+           height="29">
     </uxdot-example>
     <figcaption><h3>Figure 2</h3></figcaption>
   </figure>

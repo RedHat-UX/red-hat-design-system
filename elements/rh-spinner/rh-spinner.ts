@@ -1,9 +1,8 @@
 import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { classMap } from 'lit/directives/class-map.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-spinner.css';
 
@@ -17,6 +16,7 @@ export type SpinnerSize = RhSpinner['size'];
  * @slot - Optional text label below the animated circle.
  */
 @customElement('rh-spinner')
+@themable
 export class RhSpinner extends LitElement {
   static readonly styles = [styles];
 
@@ -25,17 +25,11 @@ export class RhSpinner extends LitElement {
    */
   @property({ reflect: true }) size: 'sm' | 'md' | 'lg' = 'lg';
 
-  /**
-   * Sets color theme based on parent context
-   */
-  @colorContextConsumer() private on?: ColorTheme;
-
   render() {
-    const { on = '' } = this;
     return html`
       <svg role="status" viewBox="0 0 100 100" aria-live="polite">
-        <circle class="track ${classMap({ [on]: !!on })}" cx="50" cy="50" r="40" fill="none" vector-effect="non-scaling-stroke" />
-        <circle class="dash ${classMap({ [on]: !!on })}" cx="50" cy="50" r="40" fill="none" vector-effect="non-scaling-stroke" />
+        <circle class="track" cx="50" cy="50" r="40" fill="none" vector-effect="non-scaling-stroke" />
+        <circle class="dash" cx="50" cy="50" r="40" fill="none" vector-effect="non-scaling-stroke" />
       </svg>
       <slot></slot>
     `;

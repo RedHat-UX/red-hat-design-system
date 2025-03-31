@@ -5,7 +5,7 @@ import { classMap } from 'lit/directives/class-map.js';
 
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-health-index.css';
 
@@ -14,6 +14,7 @@ import styles from './rh-health-index.css';
  * @summary     Displays a health grade for a particular item or package
  */
 @customElement('rh-health-index')
+@themable
 export class RhHealthIndex extends LitElement {
   static readonly styles = [styles];
 
@@ -30,11 +31,6 @@ export class RhHealthIndex extends LitElement {
    * Defaults to `A`
    */
   @property({ reflect: true }) grade: 'A' | 'B' | 'C' | 'D' | 'E' | 'F' = 'A';
-
-  /**
-   * Sets color theme based on parent context
-   */
-  @colorContextConsumer() private on?: ColorTheme;
 
   // TODO: use I18nController to support officially supported languages.
   #internals = InternalsController.of(this, {
@@ -57,16 +53,16 @@ export class RhHealthIndex extends LitElement {
   }
 
   override render() {
-    const { on, size } = this;
+    const { size = 'md' } = this;
     const grades = [...RhHealthIndex.grades].map(x => x.toLowerCase());
     const grade = this.grade.toLowerCase();
     return html`
       <div id="container"
            aria-hidden="true"
-           class="${classMap({ [size ?? '']: !!size, [on ?? '']: !!on })}">
+           class="${classMap({ [size]: true })}">
         <div id="grade" ?hidden="${size !== 'md'}">${grade}</div>${size === 'sm' ? html`
-        <div class="box active ${grade}">${grade}</div>` : grades.map(letter => html`
-        <div class="box ${classMap({ [letter]: true, active: letter === grade })}">
+        <div class="box ${classMap({ [grade]: true, [size]: true })}">${grade}</div>` : grades.map(letter => html`
+        <div class="box ${classMap({ [letter]: true, [size]: true, active: letter === grade })}">
           ${!(size === 'lg' || size === 'xl') ? '' : letter}
         </div>`)}
       </div>

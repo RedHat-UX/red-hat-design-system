@@ -3,10 +3,7 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--rh-space-4xl, 64px);
-  }
-
-  @container container (min-width: 567px) {
-    .grid {
+    @container container (min-width: 567px) {
       grid-template-columns: 1fr 1fr;
     }
   }
@@ -33,20 +30,21 @@
 Cards can be used in light and dark themes. They act as a blank canvas where
 elements and styles can be placed inside.
 
-<uxdot-example width-adjustment="600px">
+<uxdot-example color-palette="lightest" width-adjustment="600px">
   <img src="../card-style.svg"
         alt="A breakdown of the parts of a card"
         width="600"
         height="502">
 </uxdot-example>
 
-## Theme
+## Color scheme
+<a id="theme"></a>
 
-All card variants are available on light and dark backgrounds.
+All card variants are available for light and dark color schemes.
 
 ### Light background
 
-<uxdot-example width-adjustment="784px">
+<uxdot-example color-palette="lightest" width-adjustment="784px">
   <img src="../card-background-light.svg"
         alt="Card on light background"
         width="752"
@@ -129,18 +127,18 @@ include a limited amount of content to ensure that the card doesn’t become too
 tall.
 
 <div class="grid">
-  <uxdot-example width-adjustment="360px">
+  <uxdot-example color-palette="lightest" width-adjustment="360px">
     <img src="../card-layout-1.svg"
-          alt="Example of a card layout"
-          width="360"
-          height="502">
+         alt="Example of a card layout"
+         width="360"
+         height="502">
   </uxdot-example>
 
-  <uxdot-example width-adjustment="360px">
+  <uxdot-example color-palette="lightest" width-adjustment="360px">
     <img src="../card-layout-2.svg"
-          alt="Anatomy of a card layout"
-          width="360"
-          height="502">
+         alt="Anatomy of a card layout"
+         width="360"
+         height="502">
   </uxdot-example>
 
 </div>
@@ -169,20 +167,20 @@ Cards will get thinner or move below each other on smaller screens.
 
 ### Large screens
 
-<uxdot-example width-adjustment="784px" variant="full" no-border alignment="left">
+<uxdot-example color-palette="lightest" width-adjustment="784px" variant="full" no-border alignment="left">
   <img src="../card-layout-desktop.svg"
-        alt="Card layout on desktop"
-        width="1000"
-        height="320">
+       alt="Card layout on desktop"
+       width="1000"
+       height="320">
 </uxdot-example>
 
 ### Small screens
 
-<uxdot-example width-adjustment="360px" variant="full" no-border alignment="left">
+<uxdot-example color-palette="lightest" width-adjustment="360px" variant="full" no-border alignment="left">
   <img src="../card-layout-mobile.svg"
-        alt="Card layout on mobile"
-        width="360"
-        height="640">
+       alt="Card layout on mobile"
+       width="360"
+       height="640">
 </uxdot-example>
 
 ## Spacing
@@ -197,20 +195,20 @@ become thinner, the container padding decreases.
 
 ### Desktop
 
-<uxdot-example width-adjustment="360px">
+<uxdot-example color-palette="lightest" width-adjustment="360px">
   <img src="../card-spacing-desktop.svg"
-        alt="Card spacing on desktop"
-        width="360"
-        height="502">
+       alt="Card spacing on desktop"
+       width="360"
+       height="502">
 </uxdot-example>
 
 ### Mobile
 
-<uxdot-example width-adjustment="360px">
+<uxdot-example color-palette="lightest" width-adjustment="360px">
   <img src="../card-spacing-mobile.svg"
-        alt="Card spacing on mobile"
-        width="360"
-        height="640">
+       alt="Card spacing on mobile"
+       width="360"
+       height="640">
 </uxdot-example>
 
 ## Promo
@@ -226,7 +224,7 @@ A standard promo has a subtle border, but it uses the `Lighter` or `Darker`
 surface color. It does not have an image slot and the call to action appears 
 either to the left or right of the text.
 
-<uxdot-example width-adjustment="1012px">
+<uxdot-example color-palette="lightest" width-adjustment="1012px">
   <img src="../card-variants-promo-standard.svg"
        alt="Standard promo with placeholder text"
        width="1012"
@@ -238,7 +236,7 @@ either to the left or right of the text.
 A featured promo uses the `Lightest` or `Darkest` surface color with a subtle 
 border. An image can optionally appear on the left or right side of a promo.
 
-<uxdot-example width-adjustment="1012px">
+<uxdot-example color-palette="lightest" width-adjustment="1012px">
   <img src="../card-variants-promo-featured.svg"
        alt="Featured promo with placeholder text and image"
        width="1012"
@@ -252,7 +250,7 @@ have a border. Similarly to a featured promo, a full-width promo can use either
 the `Lightest` or `Darkest` surface color, and it can have no image or an image 
 positioned to the left or right of the text.
 
-<uxdot-example width-adjustment="1012px" variant="full">
+<uxdot-example color-palette="lightest" width-adjustment="1012px" variant="full">
   <img src="../card-variants-promo-full-width.svg"
        alt="Full-width promo with placeholder text and image"
        width="1012"
@@ -266,14 +264,15 @@ moves an image in any type of promo below the body text and call to action. This
 is also the configuration used on phone viewports for a featured, standard 
 promo, or full-width promo.
 
-<uxdot-example width-adjustment="752px">
+<uxdot-example color-palette="lightest" width-adjustment="752px">
   <img src="../card-variants-promo-narrow.svg"
        alt="Narrow promo versions with featured promo and standard promo"
        width="752"
        height="401">
 </uxdot-example>
 
-### Theme
+### Color scheme
+<a id="theme-1"></a>
 
 The standard promo can set the `Lighter` or `Darker` color palettes. It can
 appear on either light or dark backgrounds.
@@ -288,7 +287,7 @@ appear on either light or dark backgrounds.
 The featured and full-width promos can set the `Lightest` and `Darkest` color 
 palettes, and can appear on either light or dark backgrounds.
 
-<uxdot-example width-adjustment="1140" no-border variant="full">
+<uxdot-example color-palette="lightest" width-adjustment="1140" no-border variant="full">
   <img src="../card-theme-promo-featured-full-width.svg"
        alt="Featured and full-width Promo's in light and dark themes"
        width="1140"
@@ -305,7 +304,7 @@ will use the [Narrow promo](/elements/card/style/#narrow-promo) configuration.
 Except for narrow promos, spacing within the other promo configurations is a 
 little different from Card.
 
-<uxdot-example class="promo-spacing" alignment="left">
+<uxdot-example color-palette="lightest" class="promo-spacing" alignment="left">
   <figure>
     <img src="../card-spacing-promo-standard.svg"
          alt="Standard promo with spacing annotations. 48px on all sides and 24px to the left of the CTA."
@@ -330,9 +329,9 @@ little different from Card.
   <figure>
     <div style="max-width: 360px;">
       <img src="../card-spacing-promo-narrow.svg"
-            alt="Narrow promo with spacing annotations. 32px on all sides and 24px above the CTA."
-            width="360"
-            height="401">
+           alt="Narrow promo with spacing annotations. 32px on all sides and 24px above the CTA."
+           width="360"
+           height="401">
     </div>
     <figcaption>Narrow promo</figcaption>
   </figure>

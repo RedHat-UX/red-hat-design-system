@@ -1,6 +1,5 @@
 import type { CssCustomProperty } from 'custom-elements-manifest';
-import type { DesignToken } from '@rhds/tokens';
-import { tokens as tokensMeta } from '@rhds/tokens/meta.js';
+import { tokens as tokensMeta, type DesignToken, type TokenName } from '@rhds/tokens/meta.js';
 import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);
@@ -63,7 +62,7 @@ export function copyCell(token: DesignToken) {
 }
 
 function formatTokenVariableName(token: string) {
-  return `--${token}`.replace('----', '--') as `--rh-${string}`;
+  return `--${token}`.replace('----', '--') as TokenName;
 }
 
 function getTokenCategorySlug(token: DesignToken) {

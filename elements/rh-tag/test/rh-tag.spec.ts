@@ -41,17 +41,17 @@ describe('<rh-tag>', async function() {
 
     it('should have correct background color', function() {
       expect(styles.getPropertyValue('background-color'))
-          .to.be.colored(tokens.get('--rh-color-surface-lighter')!);
+          .to.be.colored(tokens.get('--rh-color-surface-lighter'));
     });
 
     it('should have correct border color', function() {
       expect(beforeStyles.getPropertyValue('border-color'))
-          .to.be.colored(tokens.get('--rh-color-gray-60')!);
+          .to.be.colored(tokens.get('--rh-color-gray-30'));
     });
 
     it('should have correct text color', function() {
       expect(styles.getPropertyValue('color'))
-          .to.be.colored(tokens.get('--rh-color-gray-70')!);
+          .to.be.colored(tokens.get('--rh-color-gray-70'));
     });
   });
 
@@ -67,17 +67,17 @@ describe('<rh-tag>', async function() {
 
     it('should have correct background color', function() {
       expect(styles.getPropertyValue('background-color'))
-          .to.be.colored(tokens.get('--rh-color-red-10')!);
+          .to.be.colored(tokens.get('--rh-color-red-10'));
     });
 
     it('should have correct border color', function() {
       expect(beforeStyles.getPropertyValue('border-color'))
-          .to.be.colored(tokens.get('--rh-color-red-60')!);
+          .to.be.colored(tokens.get('--rh-color-red-30'));
     });
 
     it('should have correct text color', function() {
       expect(styles.getPropertyValue('color'))
-          .to.be.colored(tokens.get('--rh-color-red-70')!);
+          .to.be.colored(tokens.get('--rh-color-red-70'));
     });
   });
 
