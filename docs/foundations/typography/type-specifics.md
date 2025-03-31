@@ -3,7 +3,7 @@ title: Type specifics
 heading: Typography
 sidenavTitle: Typography
 layout: layouts/pages/has-toc.njk
-permalink: /foundations/typography/type-specifics.html
+permalink: /foundations/typography/type-specifics/index.html
 tags:
   - typography
 subnav:

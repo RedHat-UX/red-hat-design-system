@@ -3,8 +3,8 @@ title: Font family
 heading: Typography
 sidenavTitle: Typography
 layout: layouts/pages/has-toc.njk
-permalink: /foundations/typography/font-family.html
-tags:
+permalink: /foundations/typography/font-family/index.html
+tags: 
   - typography
 subnav:
   collection: sortedTypography
@@ -40,7 +40,7 @@ Red Hat Display is our default font. Use it for headings to grab attention and e
 Use regular, medium, or bold weights. Other weights can be used for [Expressive type][expressivetype] only.
 
 <uxdot-example width-adjustment="810px" color-palette="lightest">
-  <img src="/foundations/typography/typography-rh-display.svg"
+  <img src="../typography-rh-display.svg"
       alt="examples of Red Hat Display and its three weights"
       width="810"
       height="192">

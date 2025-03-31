@@ -3,7 +3,7 @@ title: Guidelines
 heading: Typography
 sidenavTitle: Typography
 layout: layouts/pages/has-toc.njk
-permalink: /foundations/typography/guidelines.html
+permalink: /foundations/typography/guidelines/index.html
 tags:
   - typography
 subnav:

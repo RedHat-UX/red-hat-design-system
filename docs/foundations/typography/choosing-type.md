@@ -3,7 +3,7 @@ title: Choosing type
 heading: Typography
 sidenavTitle: Typography
 layout: layouts/pages/has-toc.njk
-permalink: /foundations/typography/choosing-type.html
+permalink: /foundations/typography/choosing-type/index.html
 tags:
   - typography
 subnav:
