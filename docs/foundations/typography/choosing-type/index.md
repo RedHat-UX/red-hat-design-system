@@ -24,7 +24,7 @@ Expressive type bridges the gap between our branding and how we use type on the 
 Expressive type can be used as imagery if using other assets is not an option or not appropriate. It should feel more like decoration rather than functional text.
 
 <uxdot-example width-adjustment="900px" color-palette="lightest">
-  <img src="/foundations/typography/choosing-type-type-as-imagery.svg"
+  <img src="./choosing-type-type-as-imagery.svg"
       alt="examples of expressive type and functional text"
       width="900"
       height="395">
@@ -35,7 +35,7 @@ Expressive type can be used as imagery if using other assets is not an option or
 <strong>Expressive type relies on creative direction.</strong> It must represent a specific campaign, event, theme, etc. Extended weights and other fonts provide emphasis and help tell a cohesive story when used in combination with Editorial and Utility text styles.
 
 <uxdot-example width-adjustment="1012px" color-palette="lightest">
-  <img src="/foundations/typography/choosing-type-extended-weights-other-fonts.svg"
+  <img src="./choosing-type-extended-weights-other-fonts.svg"
       alt="examples of expressive type and functional text"
       width="1012"
       height="529">
@@ -53,7 +53,7 @@ Expressive type allows for the <strong>extremely limited</strong> use of extra l
 - Line height reduces to 110% or 1.1x the font size 
 
 <uxdot-example width-adjustment="1012px" color-palette="lightest">
-  <img src="/foundations/typography/choosing-type-extra-large-headings.svg"
+  <img src="./choosing-type-extra-large-headings.svg"
       alt="examples of text in large font sizes"
       width="1012"
       height="543">
@@ -70,10 +70,10 @@ Editorial type includes the following styles.
 - Lists
 - Titles
 - Quotes
-- Call to action text choosing-type-editorial
+- Call to action text 
 
 <uxdot-example width-adjustment="1012px" color-palette="lightest">
-  <img src="/foundations/typography/choosing-type-extra-large-headings.svg"
+  <img src="./choosing-type-editorial.svg"
       alt="examples of editorial type"
       width="1012"
       height="673">
@@ -93,7 +93,7 @@ Utility type includes the following styles.
 - Numbers
 
 <uxdot-example width-adjustment="1012px" color-palette="lightest">
-  <img src="/foundations/typography/choosing-type-utility.svg"
+  <img src="./choosing-type-utility.svg"
       alt="examples of editorial type"
       width="1012"
       height="530">

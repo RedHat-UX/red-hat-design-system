@@ -29,7 +29,7 @@ Alignment, sometimes referred to as justification, is the way multiple lines of 
 - Only align text to the right when using RTL languages
 
 <uxdot-example width-adjustment="900px" color-palette="lightest">
-  <img src="/foundations/typography/type-specifics-alignment.svg"
+  <img src="./type-specifics-alignment.svg"
       alt="examples of left-aligned and center-aligned text"
       width="900"
       height="126">
@@ -43,7 +43,7 @@ Case is the capitalization of letters. We want our messaging to be approachable 
 - Never use all caps unless referring to an abbreviation or acronym
 
 <uxdot-example width-adjustment="509px" color-palette="lightest">
-  <img src="/foundations/typography/type-specifics-case.svg"
+  <img src="./type-specifics-case.svg"
       alt="examples of left-aligned and center-aligned text"
       width="509"
       height="138">
@@ -70,7 +70,7 @@ To learn more about using extended weights, go to the [Choosing type][choosingty
 - Inline linked text is always underlined
 
 <uxdot-example width-adjustment="676px" color-palette="lightest">
-  <img src="/foundations/typography/type-specifics-emphasis.svg"
+  <img src="./type-specifics-emphasis.svg"
       alt="examples of bolded text and an inline link"
       width="676"
       height="131">
@@ -85,7 +85,7 @@ Good hierarchy is key to telling a story and there are many ways to create it us
 - Be mindful about [size pairings][sizepairings] <!--ADD LINK-->
 
 <uxdot-example width-adjustment="808px" color-palette="lightest">
-  <img src="/foundations/typography/type-specifics-hierarchy.svg"
+  <img src="./type-specifics-hierarchy.svg"
       alt="text excerpt with a large heading, smaller subheading, and body text"
       width="808"
       height="356">
@@ -102,7 +102,7 @@ To see line height values for specific text styles, go to the [Scale and rhythm]
 - The minimum line height is 130% or 1.3x the font size, but [Expressive type][expressivetype] may use a 1.1x line height 
 
 <uxdot-example width-adjustment="940px" color-palette="lightest">
-  <img src="/foundations/typography/type-specifics-line-height.svg"
+  <img src="./type-specifics-line-height.svg"
       alt="editorial and expressive type with info about font sizes and line heights"
       width="940"
       height="344">
@@ -118,7 +118,7 @@ Line length is the number of characters in a single line of text including space
 - Use white space rather than having text fill an entire container
 
 <uxdot-example width-adjustment="1012px" color-palette="lightest">
-  <img src="/foundations/typography/type-specifics-line-length.svg"
+  <img src="./type-specifics-line-length.svg"
       alt="comparison of a paragraph at a width less than 500 pixels versus a paragraph at a width of 950 pixels"
       width="1012"
       height="368">
@@ -156,7 +156,7 @@ To learn about when to use extra large heading sizes, go to the [Choosing type][
 - Whatever size is used, text should always be readable and legible
 
 <uxdot-example width-adjustment="745px" color-palette="lightest">
-  <img src="/foundations/typography/type-specifics-size.svg"
+  <img src="./type-specifics-size.svg"
       alt="comparison of a 48 pixel heading and a 20 pixel example of functional body text"
       width="745"
       height="101">

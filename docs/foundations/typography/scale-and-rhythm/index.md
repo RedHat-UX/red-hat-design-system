@@ -220,7 +220,7 @@ The mobile scale takes effect when the viewport size is less than 768px.
 Use the `--rh-space-lg` token in between stacked headings and in between headings and body text.
 
 <uxdot-example width-adjustment="820px" color-palette="lightest">
-  <img src="/assets/typography/scale-and-rhythm-headings-paragraphs.svg"
+  <img src="./scale-and-rhythm-headings-paragraphs.svg"
       alt="Diagram showing spacing between headings and between a heading and body text"
       width="820"
       height="148">
