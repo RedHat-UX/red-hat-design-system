@@ -1,13 +1,11 @@
-<!-- Slotted Icon -->
 <rh-tile>
-  <img slot="icon" src="https://fakeimg.pl/24x24" alt="">
+  <rh-icon slot="icon" icon="cloud-automation"></rh-icon>
   <div slot="title">Title</div>
   <h2 slot="headline"><a href="#top">Link</a></h2>
   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
   <div slot="footer">Suspendisse eu turpis elementum</div>
 </rh-tile>
 
-<!-- rh-icon -->
 <rh-tile icon="cloud-automation">
   <div slot="title">Title</div>
   <h2 slot="headline"><a href="#top">Link</a></h2>
@@ -15,8 +13,16 @@
   <div slot="footer">Suspendisse eu turpis elementum</div>
 </rh-tile>
 
-<!-- No icon -->
 <rh-tile>
+  <svg slot="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <title>A placeholder image in a tile icon slot</title>
+    <rect x="0" y="0" width="99%" height="99%"
+          fill="none"
+          stroke="var(--rh-color-icon-primary)"
+          stroke-width="1"
+          stroke-dasharray="1 1"
+    />
+  </svg>
   <div slot="title">Title</div>
   <h2 slot="headline"><a href="#top">Link</a></h2>
   Lorem ipsum dolor sit amet, consectetur adipiscing elit.

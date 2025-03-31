@@ -79,7 +79,7 @@ As a subsidiary of IBM, Red Hat and its associates must adhere to the parent com
 
 ### Red Hat
 
-To demonstrate our intent to meet IBM’s corporate instruction, our legal requirements, and our ethical obligations, Red Hat’s Digital Experience team has developed an internal [accessibility policy](https://url.corp.redhat.com/accessibility-policy) and posted a [digital accessibility statement](https://www.redhat.com/en/about/digital-accessibility) at our website. To put this intent into practice, we continuously remediate our existing properties, we’re building libraries of accessible Web Components and patterns, and we’ve shifted left to incorporate inclusive design in new web projects: from the earliest stages of discovery through launch.
+To demonstrate our intent to meet IBM’s corporate instruction, our legal requirements, and our ethical obligations, Red Hat’s Digital Experience team has developed an internal <a href="https://url.corp.redhat.com/accessibility-policy">accessibility policy <rh-icon set="ui" icon="lock" accessible-label="requires VPN access" role="img" title="requires VPN access"></rh-icon></a> and posted a [digital accessibility statement](https://www.redhat.com/en/about/digital-accessibility) at our website. To put this intent into practice, we continuously remediate our existing properties, we’re building libraries of accessible Web Components and patterns, and we’ve shifted left to incorporate inclusive design in new web projects: from the earliest stages of discovery through launch.
 
 <rh-blockquote>
     <p>“The power of the Web is in its universality. Access by everyone regardless of disability is an essential aspect.”</p>
