@@ -9,7 +9,6 @@
   overflow: auto;
   scrollbar-color: var(--_scrollbar-track-color) var(--_scrollbar-thumb-color);
   color: var(--rh-color-text-primary);
-  background-color: var(--rh-color-surface);
 
   --_scrollbar-size: calc(10 / 16 * 1rem);
   --_scrollbar-thumb-color: var(--rh-color-gray-50, #707070);
@@ -20,11 +19,13 @@
       solid
       var(--rh-color-border-subtle-on-light, #c7c7c7));
   --_row-background-hover-color:
-    var(--rh-table-row-background-hover-color,
-      rgba(from var(--rh-color-gray-40, #a3a3a3) r g b / 0.1));
+    light-dark(var(--rh-table-row-background-hover-color,
+      rgba(from var(--rh-color-gray-40, #a3a3a3) r g b / 0.1)),
+      rgba(from var(--rh-color-white, #ffffff) r g b / 0.1));
   --_column-background-hover-color:
-    var(--rh-table-column-background-hover-color,
-      rgba(from var(--rh-color-blue-50, #0066cc) r g b / 0.1));
+    light-dark(var(--rh-table-column-background-hover-color,
+      rgba(from var(--rh-color-blue-50, #0066cc) r g b / 0.1)),
+      rgba(from var(--rh-color-blue-70, #003366) r g b / 0.3));
 }
 
 :host::-webkit-scrollbar {
@@ -45,26 +46,14 @@
   display: block;
 }
 
-.color-palette-dark,
-.color-palette-darker,
-.color-palette-darkest,
-.dark {
-  --_row-background-hover-color: rgba(from var(--rh-color-white, #ffffff) r g b / 0.1);
-  --_column-background-hover-color: rgba(from var(--rh-color-blue-70, #003366) r g b / 0.3);
-}
-
 /* @todo: should I move these styles to light dom css file? */
 ::slotted([slot='summary']) {
   display: block;
   padding: var(--rh-space-xl, 24px) var(--rh-space-lg, 16px) 0 var(--rh-space-lg, 16px);
-  color: var(--rh-color-text-secondary-on-light, #4d4d4d);
+  color: var(--rh-color-text-secondary);
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-body-text-md, 1rem);
   font-style: italic;
   font-weight: var(--rh-font-weight-body-text-regular, 400);
   line-height: var(--rh-line-height-body-text, 1.5);
-}
-
-.dark ::slotted([slot='summary']) {
-  color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
 }
