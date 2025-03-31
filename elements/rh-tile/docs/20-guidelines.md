@@ -5,8 +5,11 @@ are two types, link tiles and selectable tiles. Both can be used in groups or in
 
 ### Tiles vs. cards
 
-The primary distinguishing factor between a tile and a [card](/elements/card/) is that each tile **must** perform only one action, because its whole surface is interactive (e.g., can be clicked). A tile also has the ability to be used as selectable
-items in a form. Tiles can be grouped together like cards, however.
+The primary distinguishing factor between a tile and a [card](/elements/card/) is that each tile **must** perform only one action, because its whole surface is interactive (e.g., can be clicked).
+
+Tiles also have the ability to be used as selectable items in a form.
+
+Tiles can be grouped together with other tiles, and cards can be grouped together with other cards.
 
 ## Variants
 
