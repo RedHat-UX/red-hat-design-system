@@ -62,11 +62,6 @@ export class RhNavigationPrimaryItem extends LitElement {
   private compact?: boolean;
 
 
-  /**
-   * Color palette
-   */
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
-
   protected firstUpdated(): void {
     // ensure we update initially on client hydration
     const _isHydrated = isServer && !this.hasUpdated;
