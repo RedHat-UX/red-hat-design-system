@@ -319,7 +319,7 @@
           border-end-end-radius: calc(var(--rh-border-radius-default, 3px) * 2);
           border-end-start-radius: calc(var(--rh-border-radius-default, 3px) * 2);
           max-block-size: calc(100dvh - var(--_navbar-height));
-          overflow-y: scroll;
+          overflow-y: auto;
 
           & ::slotted(rh-navigation-primary-item) {
             border-block-start: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
