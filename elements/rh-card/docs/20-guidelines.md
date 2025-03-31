@@ -19,6 +19,10 @@ see the [card patterns page](/patterns/card).
 
 </rh-alert>
 
+### Cards vs. tiles
+
+The main difference between a card and a [tile](/elements/tile/) is that cards can be used as content containers with or without links or other actions. Cards can also contain more than one calls to action, whereas tiles **must** perform only one action. Like tiles, however, cards can be grouped together.
+
 
 ### Patterns
 

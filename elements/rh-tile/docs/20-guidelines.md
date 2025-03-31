@@ -3,10 +3,10 @@
 A tile can be used when a clickable container is needed to provide one call to action or show one form input option. It can be grouped with similarly-structured and styled tiles in a tile group. There
 are two types, link tiles and selectable tiles. Both can be used in groups or individually, except for a selectable tile with a radio button, which always has to be grouped.
 
-### Tile vs. card
+### Tiles vs. cards
 
-The primary distinguishing factor between a tile and a card is that each tile can perform only one action because the whole surface is clickable. A tile also has the ability to be used as selectable
-items in a form. Tiles can be grouped together like card, however.
+The primary distinguishing factor between a tile and a [card](/elements/card/) is that each tile **must** perform only one action, because its whole surface is interactive (e.g., can be clicked). A tile also has the ability to be used as selectable
+items in a form. Tiles can be grouped together like cards, however.
 
 ## Variants
 
