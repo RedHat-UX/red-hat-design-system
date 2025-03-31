@@ -79,6 +79,11 @@ export class RhNavigationPrimary extends LitElement {
   @query('#hamburger')
   private _hamburger!: HTMLDetailsElement;
 
+  /**
+   * Sets the mobile toggle (hamburger) text, used for translations, defaults to 'Menu'
+   */
+  @property({ reflect: true, attribute: 'mobile-toggle-label' }) mobileToggleLabel = 'Menu';
+
   /** Sets color context for child components, overrides parent context */
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: NavigationPrimaryPalette;
 
@@ -164,7 +169,7 @@ export class RhNavigationPrimary extends LitElement {
           <details id="hamburger" @toggle="${this.#hamburgerToggle}">
             <summary>
               <rh-icon icon="menu-bars" set="ui"></rh-icon>
-              <div id="summary"><slot name="summary">Menu</slot></div>
+              <div id="summary">${this.mobileToggleLabel}</div>
               <rh-icon icon="caret-down" set="microns"></rh-icon>
             </summary>
             <div id="details-content" role="list">
