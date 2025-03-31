@@ -13,9 +13,6 @@ import { context } from './context.js';
 
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
-import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
-import { themable } from '@rhds/elements/lib/themable.js';
-
 import '@rhds/elements/rh-icon/rh-icon.js';
 
 import './rh-navigation-primary-item-menu.js';
@@ -23,8 +20,6 @@ import './rh-navigation-primary-item-menu.js';
 import styles from './rh-navigation-primary-item.css';
 
 @customElement('rh-navigation-primary-item')
-@colorPalettes
-@themable
 export class RhNavigationPrimaryItem extends LitElement {
   static readonly styles = [styles];
 
