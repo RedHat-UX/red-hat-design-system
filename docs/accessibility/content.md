@@ -54,7 +54,7 @@ Wherever meaningful images or other non-text elements are used on a page, you mu
 Images loaded via the `<img>` element typically use the alt attribute for their alternative text:
 
 ```html rhcodeblock
-<img src="imagesource.jpg" alt="Description of image"></script>
+<img src="imagesource.jpg" alt="Description of image">
 ```
 
 Inline SVGs that compose simple images commonly use a combination of the `role="img"` attribute and a `<title>` element as the first child of the `<svg>` element:
@@ -242,7 +242,7 @@ In addition to the best practices for all microcopy, adhere to the following bes
 In addition to the best practices for all microcopy, adhere to the following best practices for form labels, when possible.
 
 ```html rhcodeblock
-<label>First name</label></script>
+<label>First name</label>
 ```
 
 #### Best practices for labels
