@@ -11,6 +11,8 @@ import { ifDefined } from 'lit-html/directives/if-defined.js';
 import { consume } from '@lit/context';
 import { context } from './context.js';
 
+import { themable } from '@rhds/elements/lib/themable.js';
+
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
@@ -19,6 +21,7 @@ import './rh-navigation-primary-item-menu.js';
 
 import styles from './rh-navigation-primary-item.css';
 
+@themable
 @customElement('rh-navigation-primary-item')
 export class RhNavigationPrimaryItem extends LitElement {
   static readonly styles = [styles];
