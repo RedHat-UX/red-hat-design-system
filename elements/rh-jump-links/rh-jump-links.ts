@@ -4,7 +4,6 @@ import { property } from 'lit/decorators/property.js';
 import { provide } from '@lit/context';
 
 import { ScrollSpyController } from '@patternfly/pfe-core/controllers/scroll-spy-controller.js';
-import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 import { OverflowController } from '@patternfly/pfe-core/controllers/overflow-controller.js';
 
 import { themable } from '@rhds/elements/lib/themable.js';
@@ -53,17 +52,6 @@ export class RhJumpLinks extends LitElement {
     super.connectedCallback();
     this.role = 'nav';
     this.addEventListener('select', this.#onSelect);
-    if (!isServer) {
-      RovingTabindexController.of(this, {
-        getItems: () => Array.from(
-          this.querySelectorAll('rh-jump-link'),
-          x => x.shadowRoot?.querySelector('a')
-        ).filter(x =>
-          !!x
-          && (this.orientation === 'vertical'
-          || !x?.closest('rh-jump-links-list'))) as HTMLAnchorElement[],
-      });
-    }
   }
 
   override firstUpdated(): void {
