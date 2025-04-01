@@ -5,6 +5,12 @@
   "type": "module",
   "license": "MIT",
   "customElements": "custom-elements.json",
+  "designTokensLanguageServer": {
+    "tokensFiles": [
+      "~/Developer/redhat-ux/red-hat-design-tokens/json/rhds.tokens.json",
+      "~/Developer/design-tokens/pf.json"
+    ]
+  },
   "exports": {
     ".": "./elements.js",
     "./lib/*": "./lib/*",
@@ -115,7 +121,7 @@
     },
     "serve": {
       "service": true,
-      "command": "TSX_TSCONFIG_PATH=tsconfig.settings.json NODE_OPTIONS='--import tsx/esm' eleventy --config=eleventy.config.ts --serve --incremental",
+      "command": "TSX_TSCONFIG_PATH=tsconfig.settings.json NODE_OPTIONS='--import tsx/esm' eleventy --config=eleventy.config.ts --incremental --serve",
       "dependencies": [
         "patch",
         "analyze",
@@ -212,10 +218,10 @@
       ]
     },
     "docs": {
-      "command": "TSX_TSCONFIG_PATH=tsconfig.settings.json NODE_OPTIONS='--import tsx/esm' eleventy --config=eleventy.config.ts",
+      "command": "TSX_TSCONFIG_PATH=tsconfig.settings.json NODE_OPTIONS='--import tsx/esm' eleventy --config=eleventy.config.ts --incremental",
       "dependencies": [
-        "compile",
         "patch",
+        "compile",
         "analyze",
         "playgrounds"
       ],
