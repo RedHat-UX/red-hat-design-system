@@ -3,7 +3,7 @@ title: Scale and rhythm
 heading: Typography
 sidenavTitle: Typography
 layout: layouts/pages/has-toc.njk
-permalink: /foundations/typography/scale-and-rhythm.html
+permalink: /foundations/typography/scale-and-rhythm/index.html
 tags:
   - typography
 subnav:
