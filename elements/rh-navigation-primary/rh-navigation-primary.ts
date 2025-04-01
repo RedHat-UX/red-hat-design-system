@@ -19,7 +19,6 @@ import { RhNavigationPrimaryItem } from './rh-navigation-primary-item.js';
 import './rh-navigation-primary-overlay.js';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
-import '@rhds/elements/rh-surface/rh-surface.js';
 
 import styles from './rh-navigation-primary.css';
 
