@@ -9,7 +9,7 @@ import styles from './rh-navigation-primary-overlay.css';
  * @slot - Place element content here
  */
 @customElement('rh-navigation-primary-overlay')
-export class RhOverlay extends LitElement {
+export class RhNavigationPrimaryOverlay extends LitElement {
   static readonly styles = [styles];
 
   @property({ type: Boolean, reflect: true }) open = false;
@@ -17,6 +17,6 @@ export class RhOverlay extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'rh-navigation-primary-overlay': RhOverlay;
+    'rh-navigation-primary-overlay': RhNavigationPrimaryOverlay;
   }
 }
