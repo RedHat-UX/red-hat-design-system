@@ -29,7 +29,9 @@ helps users focus on the dialog content.
 ## Color scheme
 <a id="theme"></a>
 
-Dialog is available for the light color scheme only.
+Dialog is available for both light and dark color schemes.
+
+### Light theme
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
   <img src="../dialog-theme-light.svg"
@@ -37,6 +39,17 @@ Dialog is available for the light color scheme only.
         width="1000"
         height="327">
 </uxdot-example>
+
+### Dark theme
+
+<uxdot-example color-palette="darkest" width-adjustment="1000px">
+  <img alt="Dark theme badges"
+       src="../dialog-dark.svg"
+       width="1000"
+       height="327">
+</uxdot-example>
+
+
 
 ## Space
 
