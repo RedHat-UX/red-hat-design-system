@@ -48,7 +48,7 @@
 }
 
 #dialog {
-  background-color: light-dark(var(--rh-color-surface), var(--rh-color-surface-dark, #383838));
+  background-color: light-dark(var(--rh-color-surface-lightest, #ffffff), var(--rh-color-surface-dark, #383838));
   border-radius: var(--rh-border-radius-default, 3px);
   border: 0;
   box-shadow: var(--rh-box-shadow-xl, 0 8px 24px 3px rgba(21, 21, 21, 0.35));
@@ -85,13 +85,13 @@
 }
 
 #header {
-  background-color: light-dark(var(--rh-color-surface), var(--rh-color-surface-dark, #383838));
+  background-color: light-dark(var(--rh-color-surface-lightest, #ffffff), var(--rh-color-surface-dark, #383838));
   inset-block-start: 0;
   margin-block-end: var(--rh-space-lg, 16px);
   position: relative;
 
   &:before {
-    background-color: light-dark(var(--rh-color-surface), var(--rh-color-surface-dark, #383838));
+    background-color: light-dark(var(--rh-color-surface-lightest, #ffffff), var(--rh-color-surface-dark, #383838));
     block-size: 100%;
     content: '';
     inline-size: 100%;
@@ -101,7 +101,7 @@
   }
 
   &:after {
-    background-color: light-dark(var(--rh-color-surface), var(--rh-color-surface-dark, #383838));
+    background-color: light-dark(var(--rh-color-surface-lightest, #ffffff), var(--rh-color-surface-dark, #383838));
     block-size: var(--rh-space-lg, 16px);
     content: '';
     inline-size: 100%;
@@ -179,7 +179,7 @@
 }
 
 #close-button::part(button) {
-  background-color: light-dark(var(--rh-color-surface), var(--rh-color-surface-dark, #383838));
+  background-color: light-dark(var(--rh-color-surface-lightest, #ffffff), var(--rh-color-surface-dark, #383838));
   block-size: var(--rh-length-xl, 24px);
   border-radius: var(--rh-border-radius-default, 3px);
   inline-size: var(--rh-length-xl, 24px);
