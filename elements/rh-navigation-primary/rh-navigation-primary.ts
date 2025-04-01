@@ -82,7 +82,7 @@ export class RhNavigationPrimary extends LitElement {
   /**
    * Sets the mobile toggle (hamburger) text, used for translations, defaults to 'Menu'
    */
-  @property({ reflect: true, attribute: 'mobile-toggle-label' }) mobileToggleLabel = 'Menu';
+  @property({ attribute: 'mobile-toggle-label' }) mobileToggleLabel = 'Menu';
 
   /** Sets color context for child components, overrides parent context */
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: NavigationPrimaryPalette;
