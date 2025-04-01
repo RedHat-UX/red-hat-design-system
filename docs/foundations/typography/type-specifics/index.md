@@ -16,7 +16,7 @@ subnav:
 
 Following these typography specifics ensures that we create websites and experiences that are unmistakably Red Hat.
 
-To see more guidance and best practices when using type, go to the [Brand standards website].
+To see more guidance and best practices when using type, go to the [Brand standards][brandstandards] website.
 
 ## Alignment
 
@@ -113,7 +113,7 @@ To see line height values for specific text styles, go to the [Scale and rhythm]
 Line length is the number of characters in a single line of text including spaces.
 
 - Lines that are too long are difficult for users to read
-- Use a line length between 30 and 120 characters or between 2 and 8 desktop grid columns
+- Use a line length between 30 and 120 characters or between 2 and 7 desktop grid columns
 - Lines should not be so short that only a few words fit per line
 - Use white space rather than having text fill an entire container
 
