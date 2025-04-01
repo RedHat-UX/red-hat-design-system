@@ -143,7 +143,7 @@ rh-card.dont {
             width="482"
             height="145">
     </uxdot-example>
-    <p>Do not display one panel only.</p>
+    <p>Do not choose text styles and colors randomly.</p>
   </uxdot-best-practice>
 </div>
 
@@ -157,7 +157,7 @@ rh-card.dont {
             width="482"
             height="248">
     </uxdot-example>
-    <p>Choose the correct text style and color for the correct use case.</p>
+    <p>Choose the correct font families for the correct use cases.</p>
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="dont">
