@@ -5862,83 +5862,8 @@ svg {
     <a href="#using-color-alone">Using color alone</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<p>When considering methods of communication or feedback, do not use color alone. Ensure there is a text label, icon, underline, or other visual cue to communicate meaning. Consider how the following elements would look to a color blind user.</p>
-<uxdot-example  width-adjustment="1012px"><template shadowroot="open" shadowrootmode="open"><style>:host {
-  display: block;
-  container-type: inline-size;
-  container-name: host;
-  margin-block-end: var(--rh-space-2xl);
-}
-
-:host([transparent]) {
-  --rh-color-surface: transparent;
-}
-
-#container {
-  padding: var(--rh-space-2xl);
-  display: flex;
-  flex-direction: column;
-  align-items: var(--_alignment, center);
-  justify-content: center;
-  border-width: var(--rh-border-width-sm);
-  border-style: solid;
-  border-color: var(--rh-color-border-subtle);
-  border-radius: var(--rh-border-radius-default);
-  background-color: var(--rh-color-surface);
-  color: var(--rh-color-text-primary);
-}
-
-::slotted(*) {
-  display: flex;
-  flex-direction: column;
-  align-items: var(--_alignment, center);
-  justify-content: center;
-  max-width: 100%;
-  height: auto;
-}
-
-.widthAdjustment ::slotted(*) {
-  width: var(--_width);
-}
-
-:host([variant='full']) #container {
-  padding: 0;
-}
-
-:host([danger]) #container {
-  --rh-color-border-subtle: var(--rh-color-border-destructive);
-
-  background-image: url('/assets/best-practices-danger-icon.svg');
-  background-position-x: 8px;
-  background-position-y: 8px;
-  background-repeat: no-repeat;
-}
-
-:host([no-border]:not([danger])) #container {
-  border: none;
-}
-
-@container host (min-width: 576px) {
-  #container {
-    padding: var(--rh-space-3xl);
-  }
-}
-
-@container host (min-width: 768px) {
-  #container {
-    padding: var(--rh-space-4xl);
-  }
-}
-</style><!--lit-part DbmYZodZUIs=-->
-      <!--lit-node 0--><div id="container"
-           part="container"
-           class="on  widthAdjustment "
-           style="--_width: 1012px; --_alignment: center">
-        <slot></slot>
-      </div>
-    <!--/lit-part--></template>
-  <img src="/assets/color/color-a11y-using-color-alone.svg" alt="Dialog with example form elements like a red-orange Leave button, a form field with a red bottom border, and progress steps without labels" width="872" height="537">
-</uxdot-example>
+<p>When presenting meaningful information or indicating the location of interactive elements, do not rely upon color alone in your designs. Users with vision impairments or even situational concerns (e.g., a poor monitor, viewing a display in bright sunlight, etc.) may be unable to discern these color cues. So, ensure you use non-color indicators, as well.</p>
+<p>For specific information on how we use color accessibly, visit <a href="/foundations/color/accessibility/">our Foundations page</a> on the topic.</p>
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host {
   display: flex;
   margin-block-end: var(--rh-space-lg);
