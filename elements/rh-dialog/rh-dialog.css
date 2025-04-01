@@ -1,6 +1,5 @@
 :host {
   --rh-dialog-backdrop-background-color: rgba(3, 3, 3, 0.62);
-  --rh-dialog-overlay-background-color: transparent;
 
   display: block;
   position: relative;
@@ -29,18 +28,6 @@
 
   display: contents;
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
-}
-
-/* NOTE: @deprecated, use `::backdrop` instead. Remove for RHDS v3. */
-#overlay {
-  background-color:
-    var(--rh-dialog-overlay-background-color,
-      var(--rh-dialog-backdrop-background-color));
-  block-size: 100%;
-  inset-block-start: 0;
-  inset-inline-start: 0;
-  position: fixed;
-  inline-size: 100%;
 }
 
 ::backdrop {
@@ -201,9 +188,7 @@
   --_gray-90-rgb: var(--rh-color-gray-90-rgb, 31 31 31);
   --rh-dialog-backdrop-background-color: rgb(var(--_gray-90-rgb) / var(--rh-opacity-60, 60%));
 
-  background-color:
-    var(--rh-dialog-overlay-background-color,
-      var(--rh-dialog-backdrop-background-color));
+  background-color: var(--rh-dialog-backdrop-background-color);
 }
 
 :host([type='video']) #rhds-wrapper {
@@ -214,7 +199,7 @@
   --_aspect-ratio: var(--rh-dialog-video-aspect-ratio, 16/9);
 
   aspect-ratio: var(--_aspect-ratio);
-  background-color: var(--rh-dialog-overlay-background-color);
+  background-color: var(--rh-dialog-backdrop-background-color);
   max-inline-size:
     var(--_box-width,
       min(90%, calc(90vh * var(--_aspect-ratio) + var(--_offset-top))));

@@ -1,10 +1,10 @@
 ---
-"@rhds/elements": minor
+"@rhds/elements": major
 ---
 
 `<rh-dialog>`: Dialog now uses the native HTML `<dialog>` element internally.
 
-Note: the `overlay` CSS shadow part is now deprecated in favor of the `--rh-dialog-backdrop-background-color` CSS custom property.  It will still work, but you can expect the `overlay` part to be removed in a future version
+Note: the `overlay` CSS shadow part has been removed in favor of the `--rh-dialog-backdrop-background-color` CSS custom property.
 
 Before:
 
