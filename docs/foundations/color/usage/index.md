@@ -58,6 +58,12 @@ For danger or error states, use `red orange`.
   {% include './color-usage-red-orange.svg' %}
 </uxdot-example>
 
+## Use of black
+
+In the Red Hat Design System, we limit the use of [pure black](/tokens/color/#rh-color-black) (`#000000`) to our logo, graphics, and illustrations, since it can cause visual vibrations when used in large quantities or when set in contrast to pure white.
+
+Therefore, where "black" is needed on all other UI elements (e.g., text, surfaces, or background colors, etc.) please use our [darkest gray color](/tokens/color/#rh-color-gray-95) (`#151515`).
+
 ## Backgrounds
 
 ### Canvas
