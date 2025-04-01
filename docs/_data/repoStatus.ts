@@ -190,6 +190,18 @@ export default [
     },
   },
   {
+    tagName: 'rh-chip',
+    name: 'Chip',
+    type: 'element',
+    overallStatus: 'ready',
+    libraries: {
+      figma: 'ready',
+      rhds: 'ready',
+      shared: 'planned',
+      docs: 'ready',
+    },
+  },
+  {
     tagName: 'rh-code-block',
     name: 'Code block',
     type: 'element',
