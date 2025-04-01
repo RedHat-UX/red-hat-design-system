@@ -32,21 +32,21 @@ Primary navigation for top level site navigation.
     Item 5 Content
   </rh-navigation-primary-item>
 
-  <rh-navigation-primary-item slot="links" standalone>Link 1</rh-navigation-primary-item>
-  <rh-navigation-primary-item slot="links" standalone>Link 2</rh-navigation-primary-item>
-  <rh-navigation-primary-item slot="links" standalone>Link 3</rh-navigation-primary-item>
+  <rh-navigation-primary-item slot="links">Link 1</rh-navigation-primary-item>
+  <rh-navigation-primary-item slot="links">Link 2</rh-navigation-primary-item>
+  <rh-navigation-primary-item slot="links">Link 3</rh-navigation-primary-item>
 
-  <rh-navigation-primary-item slot="dropdowns" variant="dropdown" standalone>
+  <rh-navigation-primary-item slot="dropdowns" variant="dropdown">
     <span slot="summary">Item 6</span>
     Item 6 Content
   </rh-navigation-primary-item>
 
-  <rh-navigation-primary-item slot="dropdowns" variant="dropdown" standalone>
+  <rh-navigation-primary-item slot="dropdowns" variant="dropdown">
     <span slot="summary">Item 7</span>
     Item 7 Content
   </rh-navigation-primary-item>
 
-  <rh-navigation-primary-item slot="dropdowns" variant="dropdown" standalone>
+  <rh-navigation-primary-item slot="dropdowns" variant="dropdown">
     <span slot="summary">Item 8</span>
     Item 8 Content
   </rh-navigation-primary-item>  
