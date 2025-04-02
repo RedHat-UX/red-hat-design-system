@@ -11,7 +11,7 @@ import { themable } from '@rhds/elements/lib/themable.js';
 import styles from './rh-blockquote.css';
 
 /**
- * A blockquote is a styled quotation and citation offset from other text styles on the page.
+ * A blockquote is styled quote text with an icon and attribution text.
  *
  * @summary  Highlights quotations and citations with text styles
  *
