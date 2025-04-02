@@ -42,7 +42,7 @@ Dialog is available for both light and dark color schemes.
 
 ### Dark theme
 
-<uxdot-example color-palette="darkest" width-adjustment="1000px">
+<uxdot-example color-palette="darkest" width-adjustment="1000px" variant="full" alignment="left" no-border>
   <img alt="Dark theme badges"
        src="../dialog-dark.svg"
        width="1000"
