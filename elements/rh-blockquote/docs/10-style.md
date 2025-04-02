@@ -34,21 +34,21 @@ A blockquote is a combination of elements used to give emphasis to a quote. A bl
 
 ## Color scheme
 
-<a id="theme"></a>
+<a id="scheme"></a>
 
-### Light theme
+### Light color scheme
 
 <uxdot-example color-palette="lightest" width-adjustment="750px">
-  <img alt="A light theme blockquote, red quote icon, black quotation text, and dark gray citation text"
+  <img alt="A light color scheme blockquote, red quote icon, black quotation text, and dark gray citation text"
        src="../style-color-scheme-light.svg"
        width="750"
        height="204">
 </uxdot-example>
 
-### Dark theme
+### Dark color scheme
 
 <uxdot-example color-palette="darkest" width-adjustment="750px">
-  <img alt="A dark theme blockquote, red quote icon, white quotation text, and light gray citation text"
+  <img alt="A dark color scheme blockquote, red quote icon, white quotation text, and light gray citation text"
        src="../style-color-scheme-dark.svg"
        width="750"
        height="204">
