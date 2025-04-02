@@ -80,7 +80,7 @@ The space in each chip is the same for both sizes. The `--rh-space-md` token is 
         height="294">
 </uxdot-example>
 
-The --rh-space-lg token is used when chips are stacked.
+The `--rh-space-lg` token is used when chips are stacked.
 
 <uxdot-example color-palette="lightest">
     <img src="../chip-style-space-b.svg"
@@ -95,8 +95,8 @@ The --rh-space-lg token is used when chips are stacked.
 
 Styles will change on hover depending on how a chip is used.
 
-- The Default and Selected chip borders change to --rh-border-width-md on hover
-- The Clear all chip border becomes visible and is --rh-border-width-sm on hover
+- The Default and Selected chip borders change to `--rh-border-width-md` on hover
+- The Clear all chip border becomes visible and is `--rh-border-width-sm` on hover
 - A disabled chip has no states
 
 <uxdot-example color-palette="lightest">
@@ -120,13 +120,13 @@ A focus ring wraps around the text and icon in both focus and active states. Hov
 <uxdot-example color-palette="lightest">
     <img src="../chip-style-interaction-states-focus-color-scheme-light.svg"
         alt="Three sets of two chips on a light color scheme each showing the focus state on the right and the normal state on the left."
-        width="712"
+        width="902"
         height="29">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest">
     <img src="../chip-style-interaction-states-focus-color-scheme-dark.svg"
         alt="Three sets of two chips a dark color scheme each showing the focus state on the right and the normal state on the left."
-        width="712"
+        width="902"
         height="29">
 </uxdot-example>
