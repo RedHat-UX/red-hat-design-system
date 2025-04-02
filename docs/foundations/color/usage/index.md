@@ -48,7 +48,9 @@ standards website][brandstandards] if you have brand questions.
 
 Red is our primary brand color. Red is also a strong color, so **use it as an accent**, not to fill large areas.
 
-<uxdot-example>{% include './color-usage-brand-red.svg' %}</uxdot-example>
+<uxdot-example>
+  {% include './color-usage-brand-red.svg' %}
+</uxdot-example>
 
 ### Red orange
 
