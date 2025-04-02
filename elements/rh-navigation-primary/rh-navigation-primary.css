@@ -322,11 +322,11 @@
           overflow-y: auto;
 
           & ::slotted(rh-navigation-primary-item) {
-            border-block-start: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
+            border-block-start: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
           }
 
           & ::slotted(rh-navigation-primary-item:nth-last-child(1 of :not([slot]))) {
-            border-block-end: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
+            border-block-end: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
           }
 
           @container navigation-primary (min-width: 320px) {
