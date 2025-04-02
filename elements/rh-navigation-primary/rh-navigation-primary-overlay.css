@@ -1,6 +1,6 @@
 :host {
   position: fixed;
-  background-color: rgb(var(--rh-color-gray-90-rgb) / 0.8);
+  background-color: rgb(var(--rh-color-gray-90-rgb, 31 31 31) / 0.8);
   inset: 0;
   inline-size: 100dvw;
   block-size: 100dvh;
