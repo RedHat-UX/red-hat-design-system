@@ -152,7 +152,7 @@ export class RhTile extends LitElement {
 
   #logger = new Logger(this);
 
-  #slots = new SlotController(this, { slots: ['icon'] });
+  #slots = new SlotController(this, { slots: ['icon', 'footer'] });
 
   get #isCheckable() {
     return !!this.radioGroup || this.checkable;
@@ -194,6 +194,8 @@ export class RhTile extends LitElement {
     const { bleed, compact, checkable, checked, colorPalette, desaturated, on = 'light' } = this;
     const disabled = this.disabledGroup || this.disabled || this.#internals.formDisabled;
     const hasSlottedIcon = this.#slots.hasSlotted('icon');
+    const hasSlottedFooter = this.#slots.hasSlotted('footer');
+    
     return html`
       <div id="outer" class="${classMap({
             bleed,
@@ -231,7 +233,7 @@ export class RhTile extends LitElement {
               </div>
             </div>
             <slot id="body"></slot>
-            <div id="footer" class="${classMap({ empty: this.#slots.isEmpty('footer') })}">
+            <div id="footer" class="${classMap({ empty: !hasSlottedFooter })}">
               <slot id="footer-text" name="footer"></slot>${this.#renderLinkIcon()}
             </div>
           </div>

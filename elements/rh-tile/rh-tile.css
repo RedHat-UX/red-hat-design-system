@@ -232,6 +232,17 @@
   }
 }
 
+#outer:not(.checkable) {
+  #body:has(+ .empty) {
+    &::after {
+      content: "";
+      float: right;
+      width: var(--rh-space-2xl);
+      height: var(--rh-space-lg);
+    }
+  }
+}
+
 #input-outer {
   grid-column: 2 / 3;
   grid-row: 1 / 3;
