@@ -2,9 +2,9 @@
 "@rhds/elements": major
 ---
 
-`<rh-dialog>`: Dialog now uses the native HTML `<dialog>` element internally.
+`<rh-dialog>`: Dialog now uses the native HTML [`<dialog>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog) internally.
 
-Note: the `overlay` CSS shadow part has been removed in favor of the `--rh-dialog-backdrop-background-color` CSS custom property.
+Note: the `overlay` CSS shadow part has been removed. Background overlay's on dialogs can no longer be customized.
 
 Before:
 
@@ -15,7 +15,5 @@ rh-dialog::part(overlay) { ... }
 After:
 
 ```css
-rh-dialog {
-  --rh-dialog-backdrop-background-color: ghostwhite;
-}
+/* Delete any rh-dialog::part(overlay) declarations */
 ```
