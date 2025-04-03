@@ -33,7 +33,7 @@ subnav:
 
 ## Overview
 
-Our type scale features a range of text sizes and weights designed to support lots of content and user needs. Use typography tokens to implement these styles.
+Our type scale features a range of text sizes and weights designed to support lots of content and user needs. Use tokens to implement these styles.
 
 <rh-cta href="/tokens/font/">View typography tokens</rh-cta>
 
