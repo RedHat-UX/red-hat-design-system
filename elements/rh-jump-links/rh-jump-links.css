@@ -5,6 +5,10 @@
 
 .overflow-button { display: hidden; }
 
+#container {
+  --_bdr: var(--rh-length-4xs, 1px) solid var(--rh-color-border-subtle);
+}
+
 :host([orientation='horizontal']) {
   display: flex;
   justify-content: center;
@@ -12,7 +16,7 @@
   #container {
     display: flex;
     flex-flow: row nowrap;
-    overflow-x: scroll;
+    overflow: scroll visible;
 
     &:after,
     &:before {

@@ -1,21 +1,30 @@
 :host {
   display: block;
   position: relative;
-
-  --_border-override: none;
 }
 
 #list {
-  padding-inline: var(--rh-space-lg, 16px);
+  padding-inline-end: var(--rh-space-lg, 16px);
 }
 
 #container {
-  display: contents;
-
   --_bdr: var(--rh-length-4xs, 1px) solid var(--rh-color-border-subtle);
 
-  &.vertical { border-inline-start: var(--_bdr); }
-  &.horizontal { border-block-start: var(--_bdr); }
+  &.vertical {
+    border-inline-start: var(--_bdr);
+
+    --_active_bdr: none;
+
+    ::slotted(rh-jump-link) {
+      --_padding-inline-start: var(--rh-space-lg, 16px);
+      --_bdr: none;
+    }
+  }
+
+  &.horizontal {
+    display: contents;
+    border-block-start: var(--_bdr);
+  }
 
   &.active {
     &:before {

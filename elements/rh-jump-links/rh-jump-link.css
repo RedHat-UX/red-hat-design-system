@@ -8,6 +8,7 @@ a {
   color: var(--rh-color-interactive-secondary-default);
   text-decoration: none;
   display: inline-block;
+  box-sizing: border-box;
 
   &:before {
     content: '';
@@ -16,10 +17,11 @@ a {
   }
 
   &.vertical {
-    padding: var(--rh-space-md, 8px) var(--rh-space-lg, 16px);
-    border-inline-start:
-      var(--_border-override,
-        var(--rh-length-4xs, 1px) solid var(--rh-color-border-subtle));
+    padding-block: var(--rh-space-md, 8px);
+    padding-inline:
+      calc(var(--rh-space-lg, 16px) + var(--_padding-inline-start, 0px))
+      var(--rh-space-lg, 16px);
+    border-inline-start: var(--_bdr);
   }
 
   &.horizontal {
@@ -34,8 +36,16 @@ a {
   &:focus { color: var(--rh-color-interactive-secondary-focus); }
 
   &:focus-visible {
-    outline: 2px solid var(--rh-color-interactive-primary-default);
-    border-radius: var(--rh-border-radius-default, 3px);
+    outline: none;
+
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      inset: 0;
+      border: 2px solid var(--rh-color-interactive-primary-default);
+      border-radius: var(--rh-border-radius-default, 3px);
+    }
   }
 
   &:hover,
@@ -44,7 +54,7 @@ a {
   }
 
   &.active {
-    color: var(--rh-color-interactive-secondary-active);
+    color: var(--rh-color-body-text-primary);
 
     --_bdr-c: var(--rh-color-brand-red);
   }
@@ -52,20 +62,21 @@ a {
   &:focus-visible,
   &:hover,
   &.active {
-    --_bdr: var(--_border-override, var(--rh-length-xs, 4px) solid var(--_bdr-c));
-
     &.vertical:before {
       height: 100%;
       inset-inline-start: 0;
       inset-block: 0;
-      border-inline-start: var(--_bdr);
+      border-inline-start: var(--_active_bdr,
+          var(--rh-length-xs, 4px)
+          solid
+          var(--_bdr-c, var(--rh-color-border-status-neutral)));
     }
 
     &.horizontal:before {
       width: 100%;
       inset-block-start: 0;
       inset-inline: 0;
-      border-block-start: var(--_bdr);
+      border-block-start: var(--rh-length-xs, 4px) solid var(--_bdr-c, var(--rh-color-border-status-neutral));
     }
   }
 }
