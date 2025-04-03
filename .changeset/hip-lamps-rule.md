@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-`<rh-tile>`: Fixed whitespace when footer slot is empty.
+`<rh-tile>`: improved layout when footer slot is empty.
