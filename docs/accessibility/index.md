@@ -25,7 +25,7 @@ At Red Hat®, we believe that an open source approach leads to better, more incl
 
 The user experience across Red Hat properties, including our products, services, applications, and digital communications, are all held to a high standard of inclusivity. We strive to make them accessible for as many users and devices as possible.
 
-The Red Hat Design System is built with accessibility in mind and this section provides more technical details on how to implement design components for a more accessible and inclusive outcome.
+The Red Hat Design System is built with accessibility in mind. This section provides more technical details on how to implement design components for more accessible and inclusive outcomes.
 
 ### Personas and user stories
 
@@ -33,7 +33,7 @@ Personas are fictionalized distillations of the varying types of users who may e
 
 When writing, designing, or developing, you can put yourself in the mind of these personas to imagine what outcomes the users they represent might want from your experience and how successfully they can accomplish these goals. Using personas shifts accessibility left in your processes, helping you avoid and catch issues before they ever get to handoffs, QA, or even launch.
 
-WAI has designed a collection of [web user stories](https://www.w3.org/WAI/people-use-web/user-stories/) that you may find helpful to adapt as personas for your own web projects.
+The W3C Web Accessibility Initiative (WAI) has designed a collection of [web user stories](https://www.w3.org/WAI/people-use-web/user-stories/) that you may find helpful to adapt as personas for your own web projects.
 
 ## Guidelines
 
@@ -62,7 +62,7 @@ While the WCAG criteria inform the “what” of accessibility conformance, POUR
 
 Keeping your users and these four principles in mind from the start will go a long way towards conformance.
 
-The [W3C’s Accessibility Principles](https://www.w3.org/WAI/fundamentals/accessibility-principles/) page provides more information on applying POUR.
+The [WAI Accessibility Principles](https://www.w3.org/WAI/fundamentals/accessibility-principles/) page provides more information on applying POUR.
 
 ## ATAG
 
