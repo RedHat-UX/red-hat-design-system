@@ -61,8 +61,6 @@ async function pauseYoutube(iframe: HTMLIFrameElement) {
  *          Aspect ratio for the video inside the dialog
  * @cssprop {<color>} [--rh-dialog-close-button-color=var(--rh-color-icon-secondary-on-dark, #ffffff)]
  *          Sets the dialog close button color.
- * @cssprop {<color>} [--rh-dialog-backdrop-background-color=rgba(3, 3, 3, 0.62)]
- *          Sets the background color for the native HTML dialog element's `backdrop` pseudo-element
  */
 @customElement('rh-dialog')
 export class RhDialog extends LitElement {

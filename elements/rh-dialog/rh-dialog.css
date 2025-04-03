@@ -1,5 +1,5 @@
 :host {
-  --rh-dialog-backdrop-background-color: rgba(3, 3, 3, 0.62);
+  --_dialog-backdrop-bg-color: oklch(from var(--rh-color-surface-darker) l c h / 0.68);
 
   display: block;
   position: relative;
@@ -31,7 +31,7 @@
 }
 
 ::backdrop {
-  background-color: var(--rh-dialog-backdrop-background-color);
+  background-color: var(--_dialog-backdrop-bg-color);
 }
 
 #dialog {
@@ -186,9 +186,9 @@
 
 :host([type='video']) {
   --_gray-90-rgb: var(--rh-color-gray-90-rgb, 31 31 31);
-  --rh-dialog-backdrop-background-color: rgb(var(--_gray-90-rgb) / var(--rh-opacity-60, 60%));
+  --_dialog-backdrop-bg-color: rgb(var(--_gray-90-rgb) / var(--rh-opacity-60, 60%));
 
-  background-color: var(--rh-dialog-backdrop-background-color);
+  background-color: var(--_dialog-backdrop-bg-color);
 }
 
 :host([type='video']) #rhds-wrapper {
@@ -199,7 +199,7 @@
   --_aspect-ratio: var(--rh-dialog-video-aspect-ratio, 16/9);
 
   aspect-ratio: var(--_aspect-ratio);
-  background-color: var(--rh-dialog-backdrop-background-color);
+  background-color: var(--_dialog-backdrop-bg-color);
   max-inline-size:
     var(--_box-width,
       min(90%, calc(90vh * var(--_aspect-ratio) + var(--_offset-top))));
@@ -223,7 +223,7 @@
 
 :host([type='video']) #close-button::part(icon) {
   color: var(--rh-dialog-close-button-color, var(--rh-color-surface));
-  filter: drop-shadow(1px 0 1px var(--rh-dialog-backdrop-background-color));
+  filter: drop-shadow(1px 0 1px var(--_dialog-backdrop-bg-color));
 }
 
 :host([type='video']) #content {
