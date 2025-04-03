@@ -17,7 +17,9 @@ rh-badge:
  - rh-avatar
  - rh-tag
 rh-blockquote: 
+ - rh-card
  - rh-statistic
+ - rh-video-embed
 rh-breadcrumb:
  - rh-link
  - rh-navigation-secondary
