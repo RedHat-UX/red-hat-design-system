@@ -1,8 +1,8 @@
-## Usage
+## General usage
 
 Use a blockquote to highlight quote and attribution text so users can identify them easier. A blockquote should have lots of space around it to avoid competing with other elements.
 
-## Sizes
+### Sizes
 
 Use the Default size for large amounts of text and the Large size for small amounts of text.
 
@@ -83,7 +83,7 @@ To learn more about how text sizes change, go to the [Typography](/foundations/t
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
-    <uxdot-example width-adjustment="482px" slot="image">
+    <uxdot-example color-palette="lightest" width-adjustment="482px" slot="image">
       <img src="../best-practice-1-do.svg" 
            alt="A proper blockquote including a quote icon, quote text, and attribution text" 
            width="482" 
@@ -93,7 +93,7 @@ To learn more about how text sizes change, go to the [Typography](/foundations/t
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="dont">
-    <uxdot-example width-adjustment="482px" slot="image">
+    <uxdot-example color-palette="lightest" width-adjustment="482px" slot="image">
       <img src="../best-practice-1-dont.svg" 
            alt="An improper blockquote that is missing a quote icon" 
            width="482" 
@@ -107,7 +107,7 @@ To learn more about how text sizes change, go to the [Typography](/foundations/t
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
-    <uxdot-example width-adjustment="482px" slot="image">
+    <uxdot-example color-palette="lightest" width-adjustment="482px" slot="image">
       <img src="../best-practice-2-do.svg" 
            alt="A proper blockquote including a quote icon, quote text, and attribution text" 
            width="482" 
@@ -117,7 +117,7 @@ To learn more about how text sizes change, go to the [Typography](/foundations/t
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="dont">
-    <uxdot-example width-adjustment="482px" slot="image">
+    <uxdot-example color-palette="lightest" width-adjustment="482px" slot="image">
       <img src="../best-practice-2-dont.svg" 
            alt="An improper blockquote that is missing attribution text" 
            width="482" 
@@ -131,7 +131,7 @@ To learn more about how text sizes change, go to the [Typography](/foundations/t
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
-    <uxdot-example width-adjustment="482px" slot="image">
+    <uxdot-example color-palette="lightest" width-adjustment="482px" slot="image">
       <img src="../best-practice-3-do.svg" 
            alt="A blockquote with the right amount of text" 
            width="482" 
@@ -141,7 +141,7 @@ To learn more about how text sizes change, go to the [Typography](/foundations/t
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="caution">
-    <uxdot-example width-adjustment="482px" slot="image">
+    <uxdot-example color-palette="lightest" width-adjustment="482px" slot="image">
       <img src="../best-practice-3-dont.svg" 
            alt="A blockquote on a narrow screen showing how too much text can look bad" 
            width="482" 
