@@ -234,41 +234,39 @@ export class RhNavigationPrimary extends LitElement {
   }
 
   async #onDropdownToggle(event: Event) {
-    if (event.target instanceof RhNavigationPrimaryItem) {
-      const item = event.target;
-      // if the event came from a secondary link in a compact mode we'll want to close the hamburger first if it is open
-      const slottedSecondary = this.#slots.getSlotted('links', 'dropdowns');
-      const secondaryEventToggle = slottedSecondary.find(node =>
-        node.isEqualNode(item));
+    const item = event.target as RhNavigationPrimaryItem;
+    // if the event came from a secondary link in a compact mode we'll want to close the hamburger first if it is open
+    const slottedSecondary = this.#slots.getSlotted('links', 'dropdowns');
+    const secondaryEventToggle = slottedSecondary.find(node =>
+      node.isEqualNode(item));
 
-      if (event.target.open) {
-        this.#closePrimaryDropdowns(event.target);
-        this.#closeSecondaryDropdowns();
+    if (item.open) {
+      this.#closePrimaryDropdowns(item);
+      this.#closeSecondaryDropdowns();
 
-        if (secondaryEventToggle) {
-          if (this.compact) {
-            this.#closeHamburger();
-          }
-          this.#openSecondaryDropdowns.add(item);
-        } else {
-          this.#openPrimaryDropdowns.add(item);
+      if (secondaryEventToggle) {
+        if (this.compact) {
+          this.#closeHamburger();
         }
-        this.#openOverlay();
+        this.#openSecondaryDropdowns.add(item);
       } else {
-        if (secondaryEventToggle) {
-          this.#openSecondaryDropdowns.delete(item);
-          if (this.#openSecondaryDropdowns.size === 0 && (this.compact && !this._hamburger.open)) {
-            this.#closeOverlay();
-          }
-        } else {
-          this.#openPrimaryDropdowns.delete(item);
-        }
-
-        if (!this.compact
-          && this.#openPrimaryDropdowns.size === 0
-          && this.#openSecondaryDropdowns.size === 0) {
+        this.#openPrimaryDropdowns.add(item);
+      }
+      this.#openOverlay();
+    } else {
+      if (secondaryEventToggle) {
+        this.#openSecondaryDropdowns.delete(item);
+        if (this.#openSecondaryDropdowns.size === 0 && (this.compact && !this._hamburger.open)) {
           this.#closeOverlay();
         }
+      } else {
+        this.#openPrimaryDropdowns.delete(item);
+      }
+
+      if (!this.compact
+        && this.#openPrimaryDropdowns.size === 0
+        && this.#openSecondaryDropdowns.size === 0) {
+        this.#closeOverlay();
       }
     }
   }
