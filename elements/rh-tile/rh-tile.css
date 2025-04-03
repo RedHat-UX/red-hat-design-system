@@ -245,8 +245,8 @@
     &:after {
       content: '';
       float: right;
-      width: var(--rh-space-2xl);
-      height: var(--rh-space-lg);
+      width: var(--rh-space-2xl, 32px);
+      height: var(--rh-space-lg, 16px);
     }
   }
 }
