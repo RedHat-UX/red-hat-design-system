@@ -49,7 +49,10 @@ Dialog is available for both light and dark color schemes.
        height="327">
 </uxdot-example>
 
-
+<rh-alert state="warning">
+  <h3 slot="header">Warning</h3>
+  <p>If a dialog element is a child of a dark scheme element, but the page as a whole is light scheme, the dialog should match the page scheme.</p>
+</rh-alert>
 
 ## Space
 
