@@ -2,21 +2,21 @@
 "@rhds/elements": major
 ---
 
-`<rh-dialog>`: Dialog now uses the native HTML [`<dialog>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog) internally.
+`<rh-dialog>`: the `overlay` CSS shadow part has been removed. Users who want to customize the overlay should refer to our [theming documentation](https://ux.redhat.com/theming/customizing/).
 
-Note: the `overlay` CSS shadow part has been removed. If RHDS consumers want to customize the overlay, refer to our [theming documentation](https://ux.redhat.com/theming/customizing/).
+  Before:
 
-Before:
+  ```css
+  rh-dialog::part(overlay) {
+  background-color: #260710e7;
+  }
+  ```
 
-```css
-rh-dialog::part(overlay) { ... }
-```
+  After:
 
-After:
-
-```css
-rh-dialog.theme-bordeaux {
-  --bordeaux-darker: #260710;
-  --rh-color-surface-darker: var(--bordeaux-darker);
-}
-```
+  ```css
+  rh-dialog.theme-ai {
+  --ai-darker: #260710;
+  --rh-color-surface-darker: var(--ai-darker);
+  }
+  ```
