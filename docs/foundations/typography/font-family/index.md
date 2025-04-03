@@ -24,7 +24,7 @@ subnav:
 
 ## Overview
 
-The Red Hat font family includes 3 fonts: Red Hat Display, Text, and Mono. Their design is based on who we are: real people with big ideas creating platforms that power technology innovation.
+The Red Hat font family includes 3 fonts: [Red Hat Display][rhdisplay], [Red Hat Text][rhtext], and [Red Hat Mono][rhmono]. Their design is based on who we are: real people with big ideas creating platforms that power technology innovation.
 
 To learn more about the Red Hat font family, go to the [Brand standards][brandstandards] website.
 
@@ -117,6 +117,9 @@ Noto is a set of international fonts developed by Google, Monotype, Adobe, and l
   <p>To learn how to use our other foundations in your designs, visit the <a href="/foundations">foundations</a> section.</p>
 </uxdot-feedback>
 
+[rhdisplay]: #red-hat-display
+[rhtext]: #red-hat-text
+[rhmono]: #red-hat-mono
 [brandstandards]: https://www.redhat.com/en/about/brand/standards
 [typographytokens]: /tokens/font/
 [tone]: https://www.redhat.com/en/about/brand/standards/personality#how-we-sound

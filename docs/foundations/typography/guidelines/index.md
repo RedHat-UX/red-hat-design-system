@@ -127,7 +127,7 @@ rh-card.dont {
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
-    <uxdot-example width-adjustment="482px" slot="image">
+    <uxdot-example width-adjustment="482px" slot="image" color-palette="lightest">
       <img src="./guidelines-best-practice-1-do.svg"
             alt="Form field with 'Zip code' label in small, black text"
             width="482"
@@ -137,7 +137,7 @@ rh-card.dont {
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="dont">
-    <uxdot-example width-adjustment="482px" slot="image">
+    <uxdot-example width-adjustment="482px" slot="image" color-palette="lightest">
       <img src="./guidelines-best-practice-1-dont.svg"
             alt="Form field with 'Zip code' label in large, red text"
             width="482"
@@ -151,7 +151,7 @@ rh-card.dont {
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
-    <uxdot-example width-adjustment="482px" slot="image">
+    <uxdot-example width-adjustment="482px" slot="image" color-palette="lightest">
       <img src="./guidelines-best-practice-2-do.svg"
             alt="Heading using Red Hat Display with body text using Red Hat Text"
             width="482"
@@ -161,7 +161,7 @@ rh-card.dont {
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="dont">
-    <uxdot-example width-adjustment="482px" slot="image">
+    <uxdot-example width-adjustment="482px" slot="image" color-palette="lightest">
       <img src="./guidelines-best-practice-2-dont.svg"
             alt="Heading using Red Hat Text with body text using Red Hat Display"
             width="482"
@@ -175,7 +175,7 @@ rh-card.dont {
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
-    <uxdot-example width-adjustment="482px" slot="image">
+    <uxdot-example width-adjustment="482px" slot="image" color-palette="lightest">
       <img src="./guidelines-best-practice-3-do.svg"
             alt="Body text with blue inline link that has a dashed underline"
             width="482"
@@ -185,7 +185,7 @@ rh-card.dont {
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="caution">
-    <uxdot-example width-adjustment="482px" slot="image">
+    <uxdot-example width-adjustment="482px" slot="image" color-palette="lightest">
       <img src="./guidelines-best-practice-3-caution.svg"
             alt="Body text with inline link that's a slightly lighter shade of gray than the rest of the text"
             width="482"
@@ -199,7 +199,7 @@ rh-card.dont {
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
-    <uxdot-example width-adjustment="482px" slot="image">
+    <uxdot-example width-adjustment="482px" slot="image" color-palette="lightest">
       <img src="./guidelines-best-practice-4-do.svg"
             alt="2xl heading using a normal weight"
             width="482"
@@ -209,7 +209,7 @@ rh-card.dont {
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="dont">
-    <uxdot-example width-adjustment="482px" slot="image">
+    <uxdot-example width-adjustment="482px" slot="image" color-palette="lightest">
       <img src="./guidelines-best-practice-4-caution.svg"
             alt="2xl heading using a bold weight"
             width="482"
@@ -223,7 +223,7 @@ rh-card.dont {
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
-    <uxdot-example width-adjustment="482px" slot="image">
+    <uxdot-example width-adjustment="482px" slot="image" color-palette="lightest">
       <img src="./guidelines-best-practice-5-do.svg"
             alt="xl heading paired with lg body text"
             width="482"
@@ -233,7 +233,7 @@ rh-card.dont {
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="dont">
-    <uxdot-example width-adjustment="482px" slot="image">
+    <uxdot-example width-adjustment="482px" slot="image" color-palette="lightest">
       <img src="./guidelines-best-practice-5-dont.svg"
             alt="2xl heading with xs body text"
             width="482"
@@ -247,7 +247,7 @@ rh-card.dont {
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
-    <uxdot-example width-adjustment="482px" slot="image">
+    <uxdot-example width-adjustment="482px" slot="image" color-palette="lightest">
       <img src="./guidelines-best-practice-6-do.svg"
             alt="Paragraph that doesn't span entire container"
             width="482"
@@ -257,7 +257,7 @@ rh-card.dont {
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="dont">
-    <uxdot-example width-adjustment="482px" slot="image">
+    <uxdot-example width-adjustment="482px" slot="image" color-palette="lightest">
       <img src="./guidelines-best-practice-6-dont.svg"
             alt="Paragraph that spans entire container and goes past a red line"
             width="482"
@@ -271,7 +271,7 @@ rh-card.dont {
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
-    <uxdot-example width-adjustment="482px" slot="image">
+    <uxdot-example width-adjustment="482px" slot="image" color-palette="lightest">
       <img src="./guidelines-best-practice-7-do.svg"
             alt="Text using four different styles plus a call to action"
             width="482"
@@ -281,7 +281,7 @@ rh-card.dont {
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="dont">
-    <uxdot-example width-adjustment="482px" slot="image">
+    <uxdot-example width-adjustment="482px" slot="image" color-palette="lightest">
       <img src="./guidelines-best-practice-7-dont.svg"
             alt="A title, four different heading styles, body text, and a call to action"
             width="482"
@@ -295,7 +295,7 @@ rh-card.dont {
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
-    <uxdot-example width-adjustment="482px" slot="image">
+    <uxdot-example width-adjustment="482px" slot="image" color-palette="lightest">
       <img src="./guidelines-best-practice-8-do.svg"
             alt="Large spacer between a title, heading, and body text with a 2xl spacer before a call to action"
             width="482"
@@ -305,7 +305,7 @@ rh-card.dont {
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="dont">
-    <uxdot-example width-adjustment="482px" slot="image">
+    <uxdot-example width-adjustment="482px" slot="image" color-palette="lightest">
       <img src="./guidelines-best-practice-8-dont.svg"
             alt="No extra space between a title, heading, body text, and a call to action"
             width="482"

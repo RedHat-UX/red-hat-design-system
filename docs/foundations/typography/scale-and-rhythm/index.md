@@ -14,6 +14,7 @@ subnav:
 <link data-helmet rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
 
 <script type="module" data-helmet>
+  import '@rhds/elements/rh-cta/rh-cta.js';
   import '@rhds/elements/rh-table/rh-table.js';
 </script>
 
@@ -32,9 +33,9 @@ subnav:
 
 ## Overview
 
-Our type scale features a range of text sizes and weights designed to support lots of content and user needs.
+Our type scale features a range of text sizes and weights designed to support lots of content and user needs. Use typography tokens to implement these styles.
 
-For always up-to-date type specs, go to the [Tokens][tokens] section.
+<rh-cta href="/tokens/font/">View typography tokens</rh-cta>
 
 ### Base text size
 
@@ -268,5 +269,4 @@ There are different margin specs depending on how text styles are grouped.
 </uxdot-feedback>
 
 
-[tokens]: /tokens/font/
 [choosingtype]: /foundations/typography/choosing-type

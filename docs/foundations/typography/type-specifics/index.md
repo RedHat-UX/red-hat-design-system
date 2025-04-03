@@ -181,7 +181,7 @@ To see specific brand use cases, go to the [Brand standards][brandstandards] web
 [choosingtype]: /foundations/typography/choosing-type
 [expressivetype]: /foundations/typography/choosing-type/#expressive-type
 [sizepairings]: /foundations/typography/guidelines#size-pairings
-[scaleandrhythm]: ../typography/scale-and-rhythm.md
+[scaleandrhythm]: ../typography/scale-and-rhythm
 [spacingfoundations]: /foundations/spacing
 [corporatestyleguide]: https://url.corp.redhat.com/4c19837
 [blockquote]: /elements/blockquote/
