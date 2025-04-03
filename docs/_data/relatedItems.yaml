@@ -26,20 +26,27 @@ rh-button:
  - rh-alert
  - rh-cta
  - search-bar
-rh-cta: 
- - rh-button
- - link
- - link-with-icon
 rh-card: 
  - rh-avatar
  - link
  - link-with-icon
+rh-chip:
+ - rh-badge
+ - filter
+ - rh-tag
 rh-code-block:
  - rh-card
+rh-cta: 
+- rh-button
+- link
+- link-with-icon
 rh-dialog: 
  - announcement
  - sticky-banner
  - sticky-card
+rh-disclosure: 
+ - rh-accordion
+ - rh-jump-links
 rh-footer: 
  - rh-accordion
  - rh-popover
@@ -121,10 +128,6 @@ announcement:
  - rh-dialog
  - sticky-banner
  - sticky-card
-disclosure: 
- - rh-accordion
- - filter
- - rh-form
 filter: 
  - rh-accordion
  - disclosure

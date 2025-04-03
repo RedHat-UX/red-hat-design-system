@@ -7,7 +7,7 @@ import { query } from 'lit/decorators/query.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
@@ -24,6 +24,7 @@ import styles from './rh-button.css';
  * @slot - Contains button text
  */
 @customElement('rh-button')
+@themable
 export class RhButton extends LitElement {
   static readonly styles = [styles];
 
@@ -84,8 +85,6 @@ export class RhButton extends LitElement {
    */
   @property({ type: Boolean, reflect: true }) danger = false;
 
-  @colorContextConsumer() private on?: ColorTheme;
-
   get #hasIcon() {
     return this.variant === 'play' || this.variant === 'close' || !!this.icon;
   }
@@ -99,15 +98,13 @@ export class RhButton extends LitElement {
   }
 
   override render() {
-    const { danger, variant, on = 'light' } = this;
+    const { danger, variant } = this;
     const hasIcon = this.#hasIcon;
     return html`
       <button aria-label="${ifDefined(this.label)}"
               class="${classMap({
                 danger,
                 hasIcon,
-                on: true,
-                [on]: true,
                 [variant]: true,
               })}"
               part="button"

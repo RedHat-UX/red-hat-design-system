@@ -7,6 +7,15 @@
   font-size: initial;
   display: flex;
   flex-direction: column;
+  color-scheme: only dark !important;
+}
+
+:host,
+::slotted(rh-footer-universal) {
+  --_fallback-animation: nothing-doing !important;
+  --_fallback-opacity: 1 !important;
+
+  overflow-y: initial;
 }
 
 footer,
@@ -145,7 +154,7 @@ footer,
 
 .global-secondary {
   grid-area: secondary;
-  color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
+  color: var(--rh-color-text-secondary);
   display: flex;
   flex-direction: column;
   gap: var(--rh-space-lg, 16px);
@@ -328,21 +337,7 @@ footer,
   font-size:
     var(--rh-footer-link-header-font-size,
       var(--rh-font-size-body-text-sm, 0.875rem)) !important;
-  color: var(--rh-color-text-primary-on-dark, #ffffff) !important;
-}
-
-/* @todo We should consider rolling this into the rh-accordion design spec */
-rh-accordion-header[expanded] {
-  --_border-inline-end-color: var(--_border-color);
-}
-
-rh-accordion-header:not([expanded])::part(container) {
-  --_background-color: var(--rh-color-surface-darker, #1f1f1f);
-  --_active-background-color: var(--rh-color-surface-darker, #1f1f1f);
-}
-
-rh-accordion-header:hover {
-  --_after-background-color: var(--_accent-color);
+  color: var(--rh-color-text-primary) !important;
 }
 
 ::slotted(rh-footer-copyright) {
