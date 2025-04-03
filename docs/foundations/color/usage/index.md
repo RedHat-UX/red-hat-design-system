@@ -48,7 +48,9 @@ standards website][brandstandards] if you have brand questions.
 
 Red is our primary brand color. Red is also a strong color, so **use it as an accent**, not to fill large areas.
 
-<uxdot-example>{% include './color-usage-brand-red.svg' %}</uxdot-example>
+<uxdot-example>
+  {% include './color-usage-brand-red.svg' %}
+</uxdot-example>
 
 ### Red orange
 
@@ -57,6 +59,12 @@ For danger or error states, use `red orange`.
 <uxdot-example width-adjustment="652px">
   {% include './color-usage-red-orange.svg' %}
 </uxdot-example>
+
+## Use of black
+
+In the Red Hat Design System, we limit the use of [pure black](/tokens/color/#rh-color-black) (`#000000`) to our logo, graphics, and illustrations, since it can cause visual vibrations when used in large quantities or when set in contrast to pure white.
+
+Therefore, where "black" is needed on all other UI elements (e.g., text, surfaces, background colors, etc.) please use our [darkest gray color](/tokens/color/#rh-color-gray-95) (`#151515`).
 
 ## Backgrounds
 
