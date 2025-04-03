@@ -78,7 +78,7 @@
   font-weight:
     var(--rh-card-heading-font-weight,
       var(--rh-font-weight-body-text-medium, 500)) !important;
-  margin-block-start: var(--rh-space-lg, 16px);
+  margin-block-start: var(--rh-space-xl, 24px);
   background-color: var(--_header-bg, transparent);
 }
 
