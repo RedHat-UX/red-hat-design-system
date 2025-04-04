@@ -38,13 +38,14 @@ export class RhNavigationPrimaryItemMenu extends LitElement {
       } else {
         this.compact = nav.offsetWidth < 1200;
       }
+      this.requestUpdate();
     }
   }
 
   render() {
-    const { compact } = this;
+    const compact = !this.#hydrated ? true : this.compact ?? true;
     return html`
-      <div id="container" class="${classMap({ compact: !!compact, dehydrated: !this.#hydrated })}">
+      <div id="container" class="${classMap({ compact: compact, dehydrated: !this.#hydrated })}">
         <slot></slot>
       </div>
     `;

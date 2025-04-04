@@ -84,13 +84,13 @@ export class RhNavigationPrimaryItem extends LitElement {
 
   render() {
     const { variant = '' } = this;
-    const { compact } = this;
+    const compact = this.compact ?? true;
     const hamburger = (!this.getAttribute('slot'));
     return html`
       <div id="container" class="${classMap({
       [variant]: true,
       highlight: !!this.#highlight,
-      compact: !!compact,
+      compact,
       standalone: !hamburger,
       hamburger: hamburger,
       dehydrated: !this.#hydrated,
