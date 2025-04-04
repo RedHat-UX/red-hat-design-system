@@ -337,7 +337,7 @@
       }
 
       & ::slotted(:is(a:hover, a:focus-visible)) {
-        text-decoration-style: none !important;
+        text-decoration-color: transparent !important;
       }
 
       & ::slotted(a:is(:focus-visible, :hover:focus-visible)) {
