@@ -11,7 +11,7 @@
       var(--rh-color-purple-40, #876fd4),
       var(--rh-color-purple-60, #3d2785));
   --_active-item-color: var(--_gradient);
-  --_navbar-height: 78px;
+  --_navbar-height: 83px;
   --_nav-container-z-index: -1;
 
   display: block;
