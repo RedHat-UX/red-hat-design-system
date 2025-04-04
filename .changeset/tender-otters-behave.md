@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-`<rh-dialog>`: add dark color scheme
+`<rh-dialog>`: add dark color scheme support
