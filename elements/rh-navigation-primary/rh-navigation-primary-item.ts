@@ -61,7 +61,6 @@ export class RhNavigationPrimaryItem extends LitElement {
   @state()
   private compact?: boolean;
 
-
   protected firstUpdated(): void {
     // ensure we update initially on client hydration
     const _isHydrated = isServer && !this.hasUpdated;
@@ -83,16 +82,14 @@ export class RhNavigationPrimaryItem extends LitElement {
     }
   }
 
-
   render() {
-    const { hideAt = '', variant = '' } = this;
+    const { variant = '' } = this;
     const { compact } = this;
     const hamburger = (!this.getAttribute('slot'));
     return html`
       <div id="container" class="${classMap({
       [variant]: true,
       highlight: !!this.#highlight,
-      hide: !!hideAt,
       compact: !!compact,
       standalone: !hamburger,
       hamburger: hamburger,
