@@ -63,7 +63,7 @@
     grid-area: logo;
     display: flex;
     flex-direction: column;
-    margin-inline-end: var(--rh-space-xl, 24px);
+    margin-inline-end: var(--rh-space-lg, 16px);
     border-block-end: none;
 
     @container navigation-primary (min-width: 576px) {
