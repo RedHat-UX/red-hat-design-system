@@ -52,21 +52,22 @@
     inline-size: 100%;
     max-block-size: var(--_navbar-height);
     box-shadow: 0 2px 4px 0 var(--_box-shadow-color);
+    padding-inline: var(--rh-space-lg, 16px);
+
+    @container navigation-primary (min-width: 576px) {
+      padding-inline: var(--rh-space-2xl, 32px);
+    }
   }
 
   & #logo {
     grid-area: logo;
     display: flex;
     flex-direction: column;
-    margin-inline: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
+    margin-inline-end: var(--rh-space-xl, 24px);
     border-block-end: none;
 
     @container navigation-primary (min-width: 576px) {
       border-block-end-color: transparent;
-    }
-
-    @container navigation-primary (min-width: 768px) {
-      margin-inline-start: var(--rh-space-2xl, 32px);
     }
 
     & ::slotted(a),
@@ -201,13 +202,11 @@
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
-    margin-inline-end: var(--rh-space-lg, 16px);
     block-size: 100%;
     gap: var(--rh-space-xs, 4px);
 
     @container navigation-primary (min-width: 768px) {
       gap: var(--rh-space-md, 8px);
-      margin-inline-end: var(--rh-space-2xl, 32px);
     }
 
     #event {
