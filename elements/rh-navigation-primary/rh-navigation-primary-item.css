@@ -238,22 +238,21 @@
             z-index: 1;
           }
 
-          &:focus-visible,
-          &:hover:focus-visible {
-            outline:
-              var(--rh-border-width-md, 2px)
-              solid
-              var(--rh-color-interactive-primary-default);
-            outline-offset: 3px;
-            border-radius: var(--rh-border-radius-pill, 64px);
-          }
-
           &:is(:hover, :focus-visible) {
             background-color: var(--_background-color);
 
             &:before {
               --_mask: conic-gradient(#000000 0 0);
             }
+          }
+
+          &:is(:focus-visible, :hover:focus-visible, :active) {
+            outline:
+              var(--rh-border-width-md, 2px)
+              solid
+              var(--rh-color-interactive-primary-default);
+            outline-offset: 3px;
+            border-radius: var(--rh-border-radius-pill, 64px);
           }
 
           & #summary-text {
@@ -314,7 +313,7 @@
       color: var(--rh-color-text-primary) !important;
     }
 
-    & ::slotted(:is(a:hover, a:focus-visible)) {
+    & ::slotted(:is(a:hover, a:focus-visible, :active)) {
       text-underline-offset: 4px !important;
       text-decoration-color:
         light-dark(var(--rh-color-gray-50, #707070),
@@ -336,11 +335,11 @@
         padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
       }
 
-      & ::slotted(:is(a:hover, a:focus-visible)) {
+      & ::slotted(:is(a:hover, a:focus-visible, :active)) {
         text-decoration-color: transparent !important;
       }
 
-      & ::slotted(a:is(:focus-visible, :hover:focus-visible)) {
+      & ::slotted(a:is(:focus-visible, :hover:focus-visible, :active)) {
         outline-offset: 0;
         outline: var(--rh-border-width-md, 2px) solid var(--rh-color-interactive-primary-default);
         border-radius: var(--rh-border-radius-default, 3px);
@@ -366,7 +365,7 @@
         padding: var(--rh-space-md, 8px) !important;
       }
 
-      & ::slotted(a:is(:focus-visible, :hover:focus-visible)) {
+      & ::slotted(a:is(:focus-visible, :hover:focus-visible, :active)) {
         outline-offset: -2px;
         outline:
           var(--rh-border-width-md, 2px)
