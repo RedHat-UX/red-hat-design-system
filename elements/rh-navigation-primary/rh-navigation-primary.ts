@@ -337,9 +337,7 @@ export class RhNavigationPrimary extends LitElement {
           [focusableChildElements.length - 1]: lastChild,
         } = focusableChildElements;
 
-        if (!firstChild) {
-          return;
-        } else {
+        if (event.shiftKey) {
           if (event.shiftKey && firstChild === target) {
             return;
           }
@@ -348,13 +346,17 @@ export class RhNavigationPrimary extends LitElement {
             dropdownContainsTarget.hide();
             return;
           }
-        }
-        if (!lastChild) {
-          return;
         } else {
-          if (lastChild === target) {
-            dropdownContainsTarget.hide();
+          if (!firstChild) {
             return;
+          }
+          if (!lastChild) {
+            return;
+          } else {
+            if (lastChild === target) {
+              dropdownContainsTarget.hide();
+              return;
+            }
           }
         }
       } else {
