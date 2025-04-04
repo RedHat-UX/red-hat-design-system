@@ -149,7 +149,7 @@ input[type='range'] {
   }
 }
 
-.rtl input[type='range'] {
+input[type='range']:dir(rtl) {
   --_box-fill-color: var(--_track-color);
   --_track-fill-color: var(--_progress-color);
 }

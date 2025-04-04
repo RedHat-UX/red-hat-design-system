@@ -52,7 +52,6 @@ async function pauseYoutube(iframe: HTMLIFrameElement) {
  * @slot - The default slot can contain any type of content. When the header is not present this unnamed slot appear at the top of the dialog window (to the left of the close button). Otherwise it will appear beneath the header.
  * @slot header - The header is an optional slot that appears at the top of the dialog window. It should be a header tag (h2-h6).
  * @slot footer - Optional footer content. Good place to put action buttons.
- * @csspart overlay - @deprecated in favor of the backdrop pseudo-element. The dialog overlay which lies under the dialog and above the page body
  * @csspart dialog - The dialog element
  * @csspart content - The container for the dialog content
  * @csspart header - The container for the optional dialog header
@@ -63,10 +62,6 @@ async function pauseYoutube(iframe: HTMLIFrameElement) {
  *          Aspect ratio for the video inside the dialog
  * @cssprop {<color>} [--rh-dialog-close-button-color=var(--rh-color-icon-secondary-on-dark, #ffffff)]
  *          Sets the dialog close button color.
- * @cssprop {<color>} [--rh-dialog-backdrop-background-color=rgba(3, 3, 3, 0.62)]
- *          Sets the background color for the native HTML dialog element's `backdrop` pseudo-element
- * @cssprop {<color>} [--rh-dialog-overlay-background-color=transparent] @deprecated
- *          Sets the background color for the `#overlay` `<div>`. Use `--rh-dialog-backdrop-background-color` instead.
  */
 @customElement('rh-dialog')
 @themable
@@ -140,13 +135,8 @@ export class RhDialog extends LitElement {
     const { mobile } = this.#screenSize;
     return html`
       <div id="rhds-wrapper" class="${classMap({ mobile })}">
-        <!-- @deprecated: 👇 use public vars for the backdrop pseudo-element instead. -->
-        <div id="overlay"
-             part="overlay"
-             ?hidden=${!this.open}>
-        </div>
-        <div class=${classMap({ hasHeader, hasDescription, hasFooter })}
-                    ?hidden=${!this.open}>
+        <rh-surface class="${classMap({ hasHeader, hasDescription, hasFooter })}"
+                    ?hidden="${!this.open}">
           <dialog id="dialog"
                   part="dialog"
                   aria-labelledby=${ifDefined(this.accessibleLabel ? undefined : headerId)}

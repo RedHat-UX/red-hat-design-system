@@ -1,6 +1,5 @@
 :host {
-  --rh-dialog-backdrop-background-color: light-dark(rgba(3, 3, 3, 0.62), rgba(21, 21, 21, 0.5));
-  --rh-dialog-overlay-background-color: transparent;
+  --_dialog-backdrop-bg-color: oklch(from var(--rh-color-surface-darker) l c h / 0.68);
 
   display: block;
   position: relative;
@@ -31,20 +30,8 @@
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
 }
 
-/* NOTE: @deprecated, use `::backdrop` instead. Remove for RHDS v3. */
-#overlay {
-  background-color:
-    var(--rh-dialog-overlay-background-color,
-      var(--rh-dialog-backdrop-background-color));
-  block-size: 100%;
-  inset-block-start: 0;
-  inset-inline-start: 0;
-  position: fixed;
-  inline-size: 100%;
-}
-
 ::backdrop {
-  background-color: var(--rh-dialog-backdrop-background-color);
+  background-color: var(--_dialog-backdrop-bg-color);
 }
 
 #dialog {
@@ -158,7 +145,7 @@
 }
 
 #content ::slotted([slot='header']) {
-  margin-top: 0 !important;
+  margin-block: 0 !important;
 }
 
 #header ::slotted(:is(h1,h2,h3,h4,h5,h6)[slot='header']) {
@@ -209,11 +196,9 @@
 
 :host([type='video']) {
   --_gray-90-rgb: var(--rh-color-gray-90-rgb, 31 31 31);
-  --rh-dialog-backdrop-background-color: rgb(var(--_gray-90-rgb) / var(--rh-opacity-60, 60%));
+  --_dialog-backdrop-bg-color: rgb(var(--_gray-90-rgb) / var(--rh-opacity-60, 60%));
 
-  background-color:
-    var(--rh-dialog-overlay-background-color,
-      var(--rh-dialog-backdrop-background-color));
+  background-color: var(--_dialog-backdrop-bg-color);
 }
 
 :host([type='video']) #rhds-wrapper {
@@ -224,7 +209,7 @@
   --_aspect-ratio: var(--rh-dialog-video-aspect-ratio, 16/9);
 
   aspect-ratio: var(--_aspect-ratio);
-  background-color: var(--rh-dialog-overlay-background-color);
+  background-color: var(--_dialog-backdrop-bg-color);
   max-inline-size:
     var(--_box-width,
       min(90%, calc(90vh * var(--_aspect-ratio) + var(--_offset-top))));
@@ -248,7 +233,7 @@
 
 :host([type='video']) #close-button::part(icon) {
   color: var(--rh-dialog-close-button-color, var(--rh-color-surface));
-  filter: drop-shadow(1px 0 1px var(--rh-dialog-backdrop-background-color));
+  filter: drop-shadow(1px 0 1px var(--_dialog-backdrop-bg-color));
 }
 
 :host([type='video']) #content {
