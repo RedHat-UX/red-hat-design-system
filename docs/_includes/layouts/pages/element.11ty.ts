@@ -269,7 +269,7 @@ export default class ElementsPage extends Renderer<Context> {
       <section class="band">
         <h2 id="installation">Importing</h2>
         
-        <p>Add ${doc.docsPage.tagName} to your page with this import statement</p>
+        <p>Add ${doc.docsPage.tagName} to your page with this import statement:</p>
         <rh-code-block actions="copy" highlighting="prerendered">${this.highlight('html', dedent(html`
           <script type="module">
             import '@rhds/elements/${doc.docsPage.tagName}/${doc.docsPage.tagName}.js';
