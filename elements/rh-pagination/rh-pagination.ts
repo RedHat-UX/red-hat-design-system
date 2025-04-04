@@ -97,6 +97,10 @@ export class RhPagination extends LitElement {
 
   connectedCallback(): void {
     super.connectedCallback();
+    // Validate DOM
+    if (!this.#ol || [...this.children].filter(x => !x.slot).length > 1) {
+      this.#logger.warn('must have a single <ol> element as it\'s only child');
+    }
     this.#mo.observe(this, { childList: true, subtree: true });
   }
 
@@ -227,10 +231,6 @@ export class RhPagination extends LitElement {
 
   #checkValidity(): boolean {
     let message = '';
-    // Validate DOM
-    if (!this.#ol || [...this.children].filter(x => !x.slot).length > 1) {
-      message = 'must have a single <ol> element as it\'s only child';
-    }
     // Validate user input
     if (this.input && this.#links) {
       if (Number.isNaN(this.#currentPage)) {
