@@ -100,8 +100,8 @@ For example, you can load `<rh-button>` using the following:
 
 Note that modules may be placed in the `<head>`. Since they are deferred by 
 default, they will not block rendering. Multiple import statements on the same page to the same 
-script in this manner are completely safe, and will be deduplicated and not force the browser
-to make multiple calls as long as they use the same bare module specifier.
+script in this manner are completely safe, and will be deduplicated, so the browser
+won't make any additional calls as long as they use the same bare module specifier.
 
 ### Still need CDN v1 bundles?
 
