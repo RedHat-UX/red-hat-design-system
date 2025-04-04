@@ -288,6 +288,7 @@
         }
 
         &[open] {
+          /* stylelint-disable-next-line no-descending-specificity */
           summary {
             background-color: var(--_background-color);
 
