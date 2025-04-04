@@ -104,7 +104,7 @@ async function getCachedImportMap({
 
       assetCache.save(json, 'json');
 
-      return JSON.stringify(json);
+      return json;
     } catch (e) {
       // it's important to surface this, even if it means double-logging
       // eslint-disable-next-line no-console
