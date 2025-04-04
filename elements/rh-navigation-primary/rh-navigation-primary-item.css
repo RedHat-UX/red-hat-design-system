@@ -236,10 +236,16 @@
             position: absolute;
             inset: -1px;
             border-radius: inherit;
-            padding: var(--rh-border-width-md, 2px);
+            padding: var(--rh-border-width-sm, 1px);
             background: var(--_active-item-color);
             mask: var(--_mask) content-box exclude, var(--_mask);
             z-index: 1;
+          }
+
+          &:active {
+            &:before {
+              padding: var(--rh-border-width-md, 2px);
+            }
           }
 
           &:is(:hover, :focus-visible) {
@@ -298,6 +304,8 @@
 
             &:before {
               --_mask: conic-gradient(#000000 0 0);
+
+              padding: var(--rh-border-width-md, 2px);
             }
 
             & rh-icon[icon='caret-down'] {
