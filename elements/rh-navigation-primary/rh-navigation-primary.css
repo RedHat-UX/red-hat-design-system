@@ -147,7 +147,10 @@
 
       & rh-icon {
         &[icon='caret-down'] {
-          color: var(--rh-color-icon-subtle);
+          /* non standard, this wont take effect though as microns hard stops at 12px */
+          --rh-icon-size: 10px;
+
+          color: light-dark(var(--rh-color-gray-40, #a3a3a3), var(--rh-color-icon-subtle));
           transition: rotate 0.2s;
         }
 
