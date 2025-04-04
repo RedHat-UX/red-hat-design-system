@@ -28,7 +28,7 @@ export class RhAudioPlayerSubscribe extends LitElement {
 
   @property() label?: string;
 
-  @queryAssignedElements({ slot: '' }) private body?: HTMLElement[];
+  @queryAssignedElements() private body?: HTMLElement[];
 
   #headings = new HeadingLevelContextConsumer(this);
 
