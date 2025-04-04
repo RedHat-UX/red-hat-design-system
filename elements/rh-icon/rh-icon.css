@@ -20,5 +20,7 @@ svg {
 }
 
 .microns svg {
-  width: 12px;
+  min-width: 8px;
+  max-width: 12px;
+  width: var(--rh-icon-size, 12px);
 }
