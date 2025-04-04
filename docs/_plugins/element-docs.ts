@@ -26,6 +26,7 @@ interface ElementDocsPageTabData {
 
 interface ElementDocsPageBasicData extends ElementDocsPageTabData {
   description?: string;
+  preamble?: string;
   isCodePage: boolean;
   isDemoPage: boolean;
   isOverviewPage: boolean;

@@ -1,0 +1,17 @@
+:host {
+  display: block;
+}
+
+#container {
+  color: var(--rh-color-text-primary);
+  background-color: var(--rh-color-surface);
+  padding: var(--rh-space-2xl, 32px) var(--rh-space-xl, 24px);
+
+  &:not(.compact) {
+    @container (min-width: 1200px) {
+      margin: 0 auto;
+      max-width: 1440px;
+      padding: var(--rh-space-3xl, 48px) var(--rh-space-2xl, 32px);
+    }
+  }
+}
