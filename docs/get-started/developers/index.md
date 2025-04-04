@@ -67,7 +67,7 @@ Welcome to the **Red Hat Design System** (RHDS) for digital experiences. If you 
 
 Read this section to get started and e-mail [design-system@redhat.com](mailto:design-system@redhat.com) or connect with us on Slack if you have any questions along the way.
 
-<rh-cta><a href="installation">How to install RHDS</a></rh-cta>
+<rh-cta href="installation">How to install RHDS</rh-cta>
 
 ## Learn about our design system
 

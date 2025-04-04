@@ -34,7 +34,9 @@ information with code snippets that are specific to that element.
 
 ## Red Hat CDN
 
-The recommended way to load the Red Hat Design System (RHDS) on Red Hat websites and applications is through the [Red Hat Digital Experience CDN](https://www.redhatstatic.com/dssf-001) using an [import map][importmap].
+The recommended way to load the Red Hat Design System (RHDS) on Red Hat websites and applications is through the [Red Hat Digital Experience CDN](https://www.redhatstatic.com/dssf-001) using an [import map][importmap]. 
+
+**Note:** Due to current information security standards regarding access to the CDN, the CDN only allows requests from `*.redhat.com` domains. This means for local development an `/etc/hosts` change to forward `localhost` to something like `dev.foo.redhat.com` and navigating to that instead of `localhost` is required. If you need help setting this up for your project please reach out on [Slack](/support/#contact-us).
 
 ### Using import maps
 
@@ -89,13 +91,17 @@ For example, you can load `<rh-button>` using the following:
 
 
 ```html rhcodeblock
+<rh-button>Primary</rh-button>
+
 <script type="module">
   import '@rhds/elements/rh-button/rh-button.js';
 </script>
 ```
 
 Note that modules may be placed in the `<head>`. Since they are deferred by 
-default, they will not block rendering.
+default, they will not block rendering. Multiple import statements on the same page to the same 
+script in this manner are completely safe, and will be deduplicated and not force the browser
+to make multiple calls as long as they use the same bare module specifier.
 
 ### Still need CDN v1 bundles?
 
