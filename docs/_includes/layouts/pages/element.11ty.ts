@@ -71,9 +71,9 @@ export default class ElementsPage extends Renderer<Context> {
     } = doc;
     const content = fileExists ? await this.renderFile(filePath, ctx) : '';
     const stylesheets = [
-      '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css',
+      // '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css',
       '/styles/samp.css',
-      ctx.doc.hasLightdom && `/assets/packages/@rhds/elements/elements/${tagName}/${tagName}-lightdom.css`,
+      // ctx.doc.hasLightdom && `/assets/packages/@rhds/elements/elements/${tagName}/${tagName}-lightdom.css`,
       isCodePage && '/styles/pages/code.css',
     ].filter(Boolean);
 

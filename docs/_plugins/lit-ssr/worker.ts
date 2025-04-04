@@ -60,6 +60,14 @@ class RHDSSSRableRenderer extends LitElementRenderer {
     }
     yield* super.renderShadow(renderInfo);
   }
+
+  override* renderLight(renderInfo: RenderInfo): RenderResult {
+    if (this.tagName === 'rh-table') {
+      console.log(renderInfo.customElementHostStack);
+      console.log(this.element);
+    }
+    yield* super.renderLight(renderInfo);
+  }
 }
 
 const elementRenderers = [
@@ -93,4 +101,3 @@ export default async function renderPage({
   const end = performance.now();
   return { page, rendered, durationMs: end - start };
 }
-
