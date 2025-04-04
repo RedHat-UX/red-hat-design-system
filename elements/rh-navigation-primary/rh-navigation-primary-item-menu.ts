@@ -22,7 +22,7 @@ export class RhNavigationPrimaryItemMenu extends LitElement {
   @state()
   private compact?: boolean;
 
-  protected firstUpdated(): void {
+  protected async firstUpdated(): Promise<void> {
     // ensure we update initially on client hydration
     const _isHydrated = isServer && !this.hasUpdated;
     if (!_isHydrated) {
@@ -32,14 +32,19 @@ export class RhNavigationPrimaryItemMenu extends LitElement {
         return;
       }
       const nav = root.host.closest('rh-navigation-primary');
-      this.compact = nav ? nav.offsetWidth < 1200 : true; /* failover to true */
+      await nav?.updateComplete;
+      if (!nav) {
+        this.compact = true; /* default to true if nav returns false */
+      } else {
+        this.compact = nav.offsetWidth < 1200;
+      }
     }
   }
 
   render() {
-    const { compact = true } = this;
+    const { compact } = this;
     return html`
-      <div id="container" class="${classMap({ compact, dehydrated: !this.#hydrated })}">
+      <div id="container" class="${classMap({ compact: !!compact, dehydrated: !this.#hydrated })}">
         <slot></slot>
       </div>
     `;

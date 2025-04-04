@@ -68,7 +68,11 @@ export class RhNavigationPrimaryItem extends LitElement {
     if (!_isHydrated) {
       this.#hydrated = true;
       const nav = this.closest('rh-navigation-primary');
-      this.compact = nav ? nav.offsetWidth < 1200 : true; /* failover to true */
+      if (!nav) {
+        this.compact = true; /* default to true if nav returns false */
+      } else {
+        this.compact = nav.offsetWidth < 1200;
+      }
       /**
        * SSR Adds the role, but then removes when ElementInternals is hydrated
        * However, axe-dev tools then complains as it doesn't handle Internals correctly
@@ -82,14 +86,14 @@ export class RhNavigationPrimaryItem extends LitElement {
 
   render() {
     const { hideAt = '', variant = '' } = this;
-    const compact = this.compact ?? true;
+    const { compact } = this;
     const hamburger = (!this.getAttribute('slot'));
     return html`
       <div id="container" class="${classMap({
       [variant]: true,
       highlight: !!this.#highlight,
       hide: !!hideAt,
-      compact,
+      compact: !!compact,
       standalone: !hamburger,
       hamburger: hamburger,
       dehydrated: !this.#hydrated,
