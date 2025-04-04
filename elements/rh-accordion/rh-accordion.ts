@@ -159,6 +159,9 @@ export class RhAccordion extends LitElement {
 
   @observes('expandedIndex')
   private updateExpanded() {
+    if (this.#expandedIndex.length === 0) {
+      return;
+    }
     // close all first
     this.collapseAll();
     this.#expandedIndex.forEach(headerIndex => {
@@ -178,8 +181,7 @@ export class RhAccordion extends LitElement {
 
   #makeContext(): RhAccordionContext {
     const { accents = 'inline', large } = this;
-    const expanded = this.#expanded;
-    return { accents, large, expanded };
+    return { accents, large };
   }
 
   #panelForHeader(header: RhAccordionHeader) {
@@ -223,16 +225,14 @@ export class RhAccordion extends LitElement {
   }
 
   #onChange(event: AccordionHeaderChangeEvent) {
-    if (RhAccordion.isAccordionChangeEvent(event)) {
-      const index = this.#getIndex(event.target);
-
-      if (event.expanded) {
-        this.#expand(index);
-      }
-
-      if (!event.expanded) {
-        this.#collapse(index);
-      }
+    if (this.contains(event.target)) {
+      event.stopPropagation();
+    }
+    const index = this.#getIndex(event.target);
+    if (event.expanded) {
+      this.#expand(index);
+    } else {
+      this.#collapse(index);
     }
   }
 

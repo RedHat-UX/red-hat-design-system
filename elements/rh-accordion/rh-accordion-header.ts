@@ -1,7 +1,7 @@
 import type { RhAccordion } from './rh-accordion.js';
 import type { RhAccordionContext } from './context.js';
 
-import { html, LitElement } from 'lit';
+import { html, LitElement, isServer } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
@@ -24,7 +24,6 @@ export class AccordionHeaderChangeEvent extends Event {
   constructor(
     public expanded: boolean,
     public toggle: RhAccordionHeader,
-    public accordion: RhAccordion,
   ) {
     super('change', { bubbles: true, cancelable: true });
   }
@@ -73,13 +72,15 @@ export class RhAccordionHeader extends LitElement {
   override connectedCallback() {
     super.connectedCallback();
     this.id ||= getRandomId(this.localName);
-    this.#belongsTo = this.closest<RhAccordion>('rh-accordion');
-    const heading = this.closest('h1,h2,h3,h4,h5,h6');
-    if (heading && this.#belongsTo?.contains(heading)) {
-      this.#internals.ariaLevel = heading.localName.replace('h', '');
-      heading.replaceWith(this);
-    } else {
-      this.#internals.ariaLevel = Math.max(2, this.#heading.level).toString();
+    if (!isServer) {
+      this.#belongsTo = this.closest<RhAccordion>('rh-accordion');
+      const heading = this.closest('h1,h2,h3,h4,h5,h6');
+      if (heading && this.#belongsTo?.contains(heading)) {
+        this.#internals.ariaLevel = heading.localName.replace('h', '');
+        heading.replaceWith(this);
+      } else {
+        this.#internals.ariaLevel = Math.max(2, this.#heading.level).toString();
+      }
     }
   }
 
@@ -108,16 +109,14 @@ export class RhAccordionHeader extends LitElement {
     this.expanded = !this.expanded;
   }
 
-  #dispatchChange(accordion?: RhAccordion | null) {
-    if (accordion) {
-      this.dispatchEvent(new AccordionHeaderChangeEvent(this.expanded, this, accordion));
-    }
+  #dispatchChange() {
+    this.dispatchEvent(new AccordionHeaderChangeEvent(this.expanded, this));
   }
 
   @observes('expanded')
   private expandedChanged() {
     this.#internals.ariaExpanded = String(!!this.expanded) as 'true' | 'false';
-    this.#dispatchChange(this.#belongsTo);
+    this.#dispatchChange();
   }
 }
 
