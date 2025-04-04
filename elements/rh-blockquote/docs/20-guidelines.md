@@ -1,6 +1,6 @@
 ## General usage
 
-Use a blockquote to highlight quote and attribution text so users can identify them easier. A blockquote should have lots of space around it to avoid competing with other elements.
+In general, use a blockquote to highlight quote and attribution text so users can identify them easier. A blockquote should have lots of space around it to avoid competing with other elements.
 
 ### Sizes
 
