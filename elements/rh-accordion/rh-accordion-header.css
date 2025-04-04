@@ -3,19 +3,13 @@
   --_padding-inline-end: var(--rh-space-xl, 24px);
   --_padding-block-end: var(--rh-space-lg, 16px);
   --_padding-inline-start: var(--rh-space-xl, 24px);
-  --_font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
-  --_isRTL: -1;
 }
 
 button,
 a {
   cursor: pointer;
-}
-
-.rtl {
-  --_isRTL: 1;
 }
 
 .large {
@@ -61,7 +55,7 @@ span {
     var(--_padding-block-end)
     var(--_padding-inline-start);
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
-  font-size: var(--_font-size);
+  font-size: var(--_header-font-size);
 
   & #icon {
     fill: currentcolor;
@@ -91,7 +85,11 @@ span {
     --_after-background-color: var(--rh-color-accent-brand);
 
     & #icon {
-      rotate: calc(var(--_isRTL, -1) * 180deg);
+      rotate: -180deg;
+
+      &:dir(rtl) {
+        rotate: 180deg;
+      }
     }
   }
 }

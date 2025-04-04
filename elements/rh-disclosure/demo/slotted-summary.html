@@ -1,0 +1,24 @@
+<rh-disclosure>
+  <span slot="summary" class="icon">
+    This is a slotted summary with extra markup <rh-icon set="ui" icon="like"></rh-icon>
+  </span>
+  <p>Instead of using <code>&lt;rh-disclosure summary="Hello world"&gt;</code>, users can slot content into a <code>summary</code> slot and include additional HTML if needed.</p>
+  <p>Also note that slotted <code>summary</code> content will render on the page if/when JavaScript fails to load.</p>
+</rh-disclosure>
+
+<script type="module">
+  import '@rhds/elements/rh-disclosure/rh-disclosure.js';
+  import '@rhds/elements/rh-icon/rh-icon.js';
+</script>
+
+<style>
+  span.icon {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--rh-space-sm, 6px);
+  }
+
+  p {
+    margin-block-end: var(--rh-space-lg, 16px);
+  }
+</style>

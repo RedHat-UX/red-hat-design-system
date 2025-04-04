@@ -188,6 +188,18 @@ export default [
     },
   },
   {
+    tagName: 'rh-chip',
+    name: 'Chip',
+    type: 'element',
+    overallStatus: 'ready',
+    libraries: {
+      figma: 'ready',
+      rhds: 'ready',
+      shared: 'planned',
+      docs: 'ready',
+    },
+  },
+  {
     tagName: 'rh-code-block',
     name: 'Code block',
     type: 'element',
@@ -208,6 +220,18 @@ export default [
       figma: 'ready',
       rhds: 'ready',
       shared: 'ready',
+      docs: 'ready',
+    },
+  },
+  {
+    tagName: 'rh-disclosure',
+    name: 'Disclosure',
+    type: 'element',
+    overallStatus: 'ready',
+    libraries: {
+      figma: 'ready',
+      rhds: 'ready',
+      shared: 'planned',
       docs: 'ready',
     },
   },

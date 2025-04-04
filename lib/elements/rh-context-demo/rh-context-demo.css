@@ -15,4 +15,6 @@
 
 #provider {
   padding: var(--rh-context-demo-padding, var(--rh-space-xl, 24px));
+  min-height: 100%;
+  height: max-content;
 }
