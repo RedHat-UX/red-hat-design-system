@@ -353,6 +353,7 @@
         var(--_padding-inline-end, var(--rh-space-md, 8px));
 
       & ::slotted(a) {
+        font-size: var(--rh-font-size-body-text-sm, 0.875rem) !important;
         display: inline-flex;
         block-size: auto;
         align-items: center;
