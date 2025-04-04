@@ -4,12 +4,13 @@ import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { styleMap } from 'lit/directives/style-map.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
 
 import {
   FloatingDOMController,
   type Placement,
 } from '@patternfly/pfe-core/controllers/floating-dom-controller.js';
+
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-tooltip.css';
 
@@ -38,6 +39,7 @@ const EXIT_EVENTS = ['focusout', 'blur', 'mouseleave'];
  * @cssprop {<absolute-size> | <relative-size> | <length> | <percentage>} [--rh-tooltip-content-font-size=0.875rem]
  */
 @customElement('rh-tooltip')
+@themable
 export class RhTooltip extends LitElement {
   static readonly version = '{{version}}';
 
@@ -84,8 +86,6 @@ export class RhTooltip extends LitElement {
   /** Tooltip content. Overridden by the content slot */
   @property() content?: string;
 
-  @colorContextConsumer() private on?: ColorTheme;
-
   #float = new FloatingDOMController(this, {
     content: (): HTMLElement | undefined | null => this.shadowRoot?.querySelector('#tooltip'),
   });
@@ -111,7 +111,6 @@ export class RhTooltip extends LitElement {
   }
 
   override render() {
-    const { on = '' } = this;
     const { alignment, anchor, open, styles } = this.#float;
 
     return html`
@@ -119,7 +118,6 @@ export class RhTooltip extends LitElement {
            style="${styleMap(styles)}"
            class="${classMap({ open,
                                initialized: !!this.#initialized,
-                               [on]: !!on,
                                [anchor]: !!anchor,
                                [alignment]: !!alignment })}">
         <div id="invoker">

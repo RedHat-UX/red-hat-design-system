@@ -1,5 +1,5 @@
 ---
-layout: layouts/pages/basic.njk
+layout: layouts/pages/has-toc.njk
 title: Usage
 heading: Developers
 permalink: /get-started/developers/usage/index.html
@@ -17,17 +17,17 @@ subnav:
 
 ## Usage
 
-Now that you've installed the Red Hat Design System, here's more information
+Now that you've installed the Red Hat Design System, here's more information 
 about how to use the web components.
 
-### Using react wrappers
+## Using react wrappers
 
-React wrappers make it possible to use web components within React JSX files.
+React wrappers make it possible to use web components within React JSX files. 
 Follow the steps below to learn how.
 
-#### 1. Initial setup
+### 1. Initial setup
 
-We'll bootstrap our React app using [Vite][vite]. It's possible to use other
+We'll bootstrap our React app using [Vite][vite]. It's possible to use other 
 tools for this, but that is out of the scope of this tutorial.
 
 ```sh rhcodeblock
@@ -36,7 +36,7 @@ npm create vite@latest
 
 This command will ask you to provide the project name, framework, and variant.
 
-#### 2. Install the `@lit/react` library
+### 2. Install the `@lit/react` library
 
 Use the following command:
 
@@ -44,17 +44,17 @@ Use the following command:
 npm install @lit-labs/react
 ```
 
-#### 3. Import elements and patterns
+### 3. Import elements and patterns
 
-After installing the `@lit/react` library, you can import elements and patterns
+After installing the `@lit/react` library, you can import elements and patterns 
 to your file. Below is an example of importing `<rh-button>` and `<rh-card>`, and
 managing app state between them using react.
 
 ```js rhcodeblock
-import { useState } from "react";
-import { Button } from "@rhds/elements/react/rh-button/rh-button.js";
-import { Badge } from "@rhds/elements/react/rh-badge/rh-badge.js";
-import { Card } from "@rhds/elements/react/rh-card/rh-card.js";
+import { useState } from 'react';
+import { Button } from '@rhds/elements/react/rh-button/rh-button.js';
+import { Badge } from '@rhds/elements/react/rh-badge/rh-badge.js';
+import { Card } from '@rhds/elements/react/rh-card/rh-card.js';
 export function App() {
   const [clicks, setClicks] = useState(0);
   return (
@@ -65,16 +65,16 @@ export function App() {
         Increment!
       </Button>
     </Card>
-  );
+  )
 }
 ```
 
-### Using RHDS elements with Vue
+## Using RHDS elements with Vue
 
-To get web components to work with Vue, it’s pretty easy and straightforward.
+To get web components to work with Vue, it’s pretty easy and straightforward. 
 Follow the steps below to use web components in a Vue app.
 
-#### 1. Initial setup
+### 1. Initial setup
 
 Add these two lines at the top of the `main.js` file in the `/src/` directory.
 
@@ -83,10 +83,10 @@ import Vue from "vue";
 import App from "./App.vue";
 ```
 
-#### 2. Import elements and patterns
+### 2. Import elements and patterns
 
-Add the import statements to the top of the `<script>` tag in the file in which
-you're using web components. Below is an example of importing `<rh-card>` to a
+Add the import statements to the top of the `<script>` tag in the file in which 
+you're using web components. Below is an example of importing `<rh-card>` to a 
 file called `HelloWorld.vue`.
 
 ```js rhcodeblock
@@ -106,7 +106,7 @@ export default {
 
 <uxdot-feedback>
   <h2>Designers</h2>
-  <p>To get started using our design system as a designer, go to the <a href="/get-started/designers">Designers</a> page.</p>
+  <p>To get started using our design system as a designer, go to the <a href="get-started/designers">Designers</a> page.</p>
 </uxdot-feedback>
 
 [vite]: https://vitejs.dev/guide/#scaffolding-your-first-vite-project

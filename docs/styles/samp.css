@@ -9,7 +9,7 @@ samp:not(.swatch) {
     /* stylelint-disable-next-line rhds/token-values */
     opacity: var(--rh-opacity-60);
     display: block;
-    border-bottom: 2px solid var(--rh-color-border-strong-on-light);
+    border-bottom: 2px solid var(--rh-color-border-strong);
     position: relative;
 
     &:before,
@@ -22,7 +22,7 @@ samp:not(.swatch) {
       inset-block: calc(-1 * var(--rh-length-xs));
       border-style: solid;
       border-inline-width: var(--rh-border-width-md) 0;
-      border-color: var(--rh-color-border-interactive-on-light);
+      border-color: var(--rh-color-border-interactive);
     }
 
     &:before {
@@ -72,7 +72,7 @@ samp:not(.swatch) {
     }
 
     &:not(.border, .text, .dark) {
-      border-color: var(--rh-color-border-strong-on-light);
+      border-color: var(--rh-color-border-strong);
     }
   }
 
@@ -97,7 +97,7 @@ samp:not(.swatch) {
     display: block;
     border-style: solid;
     border-width: var(--samp-space-size, var(--rh-border-width-md));
-    border-color: var(--samp-color, var(--rh-color-border-strong-on-light));
+    border-color: var(--samp-color, var(--rh-color-border-strong));
     border-radius: var(--samp-radius, var(--rh-border-radius-default));
 
     &.sm {

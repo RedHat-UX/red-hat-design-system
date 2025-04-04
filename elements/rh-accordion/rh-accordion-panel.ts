@@ -3,8 +3,7 @@ import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { observes } from '@patternfly/pfe-core/decorators/observes.js';
@@ -20,15 +19,11 @@ import styles from './rh-accordion-panel.css';
  *       The content of the accordion panel can be any basic markup including but not limited to div, paragraph, or nested accordion panels.
  */
 @customElement('rh-accordion-panel')
+@themable
 export class RhAccordionPanel extends LitElement {
   static readonly styles = [styles];
 
   @property({ type: Boolean, reflect: true }) expanded = false;
-
-  @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
-
-  @colorContextConsumer() private on?: ColorTheme;
 
   @consume({ context, subscribe: true })
   @property({ attribute: false })
@@ -41,11 +36,11 @@ export class RhAccordionPanel extends LitElement {
   }
 
   override render() {
-    const { on = '', expanded } = this;
+    const { expanded } = this;
     const { large = false } = this.ctx ?? {};
     return html`
       <div id="container"
-           class="${classMap({ on: true, [on]: !!on, large, expanded, content: true })}"
+           class="${classMap({ large, expanded, content: true })}"
            part="container"
            tabindex="-1">
         <slot class="body"></slot>

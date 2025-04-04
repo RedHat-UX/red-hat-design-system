@@ -12,7 +12,8 @@ export class UxdotPatternSSRControllerClient extends RHDSSSRController {
   hasWorkedAroundHydrationWoes = false;
   async hostConnected() {
     await this.host.updateComplete;
-    this.host.requestUpdate('color-palette', null);
+    this.host.requestUpdate('colorPalette', null);
+    this.host.requestUpdate('activeTab', null);
     await this.host.updateComplete;
     // workaround for awful terrible no good very bad ssr hydration lib problems
     const containers = this.host.shadowRoot!.querySelectorAll('#container');
@@ -36,4 +37,3 @@ export class UxdotPatternSSRControllerClient extends RHDSSSRController {
     }
   }
 }
-

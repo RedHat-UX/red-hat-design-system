@@ -5,6 +5,8 @@ import { repeat } from 'lit/directives/repeat.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
+import { themable } from '@rhds/elements/lib/themable.js';
+
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 
 import '@rhds/elements/rh-surface/rh-surface.js';
@@ -13,7 +15,6 @@ import '@rhds/elements/rh-icon/rh-icon.js';
 
 import styles from './rh-alert.css';
 import toastStyles from './rh-alert-toast-styles.css';
-import consumerStyles from '@rhds/tokens/css/color-context-consumer.css.js';
 
 interface AlertAction {
   action: 'dismiss' | 'confirm' | string;
@@ -68,8 +69,9 @@ const toasts = new Set<Required<ToastOptions>>();
  *
  */
 @customElement('rh-alert')
+@themable
 export class RhAlert extends LitElement {
-  static readonly styles = [styles, consumerStyles];
+  static readonly styles = [styles];
 
   /**
    * Toast a message with an rh-alert
@@ -209,7 +211,6 @@ export class RhAlert extends LitElement {
       <rh-surface id="container"
                   class="${classMap({
                     hasBody,
-                    on: true,
                     light: true,
                     [state]: true,
                     [variant]: !!variant,

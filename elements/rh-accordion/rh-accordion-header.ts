@@ -9,11 +9,10 @@ import { property } from 'lit/decorators/property.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 
-import { HeadingLevelController } from '@rhds/elements/lib/context/headings/controller.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
+import { HeadingLevelContextConsumer } from '../../lib/context/headings/consumer.js';
 
-import { DirController } from '../../lib/DirController.js';
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import { consume } from '@lit/context';
 import { context } from './context.js';
@@ -46,6 +45,7 @@ const isAccordion = (x: EventTarget): x is RhAccordion =>
  * @fires {AccordionHeaderChangeEvent} change - when the open panels change
  */
 @customElement('rh-accordion-header')
+@themable
 export class RhAccordionHeader extends LitElement {
   static readonly styles = [styles];
 
@@ -61,17 +61,12 @@ export class RhAccordionHeader extends LitElement {
   @property({ attribute: false })
   private ctx?: RhAccordionContext;
 
-  @colorContextConsumer()
-  private on?: ColorTheme;
-
-  #dir = new DirController(this);
-
   #internals = InternalsController.of(this, {
     role: 'heading',
     ariaLevel: '2',
   });
 
-  #heading = new HeadingLevelController(this);
+  #heading = new HeadingLevelContextConsumer(this);
 
   #belongsTo?: RhAccordion | null;
 
@@ -89,12 +84,11 @@ export class RhAccordionHeader extends LitElement {
   }
 
   render() {
-    const { expanded, on = 'light' } = this;
+    const { expanded } = this;
     const { accents, large = false } = this.ctx ?? {};
-    const rtl = this.#dir.dir === 'rtl';
     return html`
       <button id="button"
-              class="${classMap({ on: true, toggle: true, [on]: !!on, rtl, large, expanded })}"
+              class="${classMap({ toggle: true, large, expanded })}"
               @click="${this.#onClick}">
         <span id="header-container" class="${classMap({ [accents ?? '']: !!accents })}">
           <span id="header-text" part="text"><slot></slot></span>

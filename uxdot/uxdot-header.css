@@ -4,7 +4,9 @@
   display: block;
   container-type: inline-size;
   container-name: header;
-  background-color: var(--rh-color-surface);
+  background-color:
+    light-dark(var(--rh-color-surface-lighter),
+      oklch(from var(--rh-color-surface-dark) calc(l * 0.82) c h));
 
   @container (min-width: 768px) {
     --_uxdot-header-padding: var(--rh-space-3xl);

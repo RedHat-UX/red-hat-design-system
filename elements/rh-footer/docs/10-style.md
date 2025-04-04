@@ -47,10 +47,10 @@ distinguish both footers from each other.
 </uxdot-example>
 
 
-## Theme
+## Color scheme
+<a id="theme"></a>
 
-A footer only has one theme, but visually it could be considered in the dark 
-theme.
+Footer only has one available color-palette, and renders in the dark color scheme.
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
   <img alt="Image of a large footer"
@@ -64,16 +64,16 @@ theme.
 
 <rh-table>
 
-| Property                                 | Token or value                |
-| ---------------------------------------- | ----------------------------- |
-| Color - social media icons               | `--rh-color-gray-40`          |
-| Color - divider lines                    | `--rh-color-gray-50`          |
-| Border width - divider lines             | `--rh-border-width-sm`        |
-| Color - titles and link text             | `--rh-color-white`            |
-| Color - body text                        | `--rh-color-gray-30`          |
-| Color - call to action                   | \#73BCF7                      |
-| Color - language selector icons and text | `--rh-color-gray-30`          |
-| Color - background                       | `--rh-color-surface-dark-alt` |
+| Property                                 | Token or value                     |
+| ---------------------------------------- | ---------------------------------- |
+| Color - social media icons               | `--rh-color-gray-40`               |
+| Color - divider lines                    | `--rh-color-gray-50`               |
+| Border width - divider lines             | `--rh-border-width-sm`             |
+| Color - titles and link text             | `--rh-color-white`                 |
+| Color - body text                        | `--rh-color-gray-30`               |
+| Color - call to action                   | \#73BCF7                           |
+| Color - language selector icons and text | `--rh-color-gray-30`               |
+| Color - background                       | darkened `--rh-color-surface-dark` |
 
 </rh-table>
 

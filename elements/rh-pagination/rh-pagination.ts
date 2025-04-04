@@ -4,12 +4,11 @@ import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { query } from 'lit/decorators/query.js';
-import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
-import { DirController } from '../../lib/DirController.js';
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-pagination.css';
 
@@ -41,11 +40,10 @@ const L2 = html`
  *           Sets the stepper color.
  */
 @customElement('rh-pagination')
+@themable
 export class RhPagination extends LitElement {
   static readonly version = '{{version}}';
 
-  /** Sets color theme based on parent context */
-  @colorContextConsumer() private on?: ColorTheme;
 
   static readonly styles = [styles];
 
@@ -81,7 +79,6 @@ export class RhPagination extends LitElement {
 
   @query('input') private input?: HTMLInputElement;
 
-  #dir = new DirController(this);
   #mo = new MutationObserver(() => this.#update());
   #logger = new Logger(this);
 
@@ -100,6 +97,10 @@ export class RhPagination extends LitElement {
 
   connectedCallback(): void {
     super.connectedCallback();
+    // Validate DOM
+    if (!this.#ol || [...this.children].filter(x => !x.slot).length > 1) {
+      this.#logger.warn('must have a single <ol> element as it\'s only child');
+    }
     this.#mo.observe(this, { childList: true, subtree: true });
   }
 
@@ -114,8 +115,6 @@ export class RhPagination extends LitElement {
   }
 
   render() {
-    const { on = '' } = this;
-    const { dir } = this.#dir;
     const { label, labelFirst, labelPrevious, labelNext, labelLast } = this;
     const firstHref = this.#currentLink === this.#firstLink ? undefined : this.#firstLink?.href;
     const prevHref = this.#prevLink?.href;
@@ -124,8 +123,7 @@ export class RhPagination extends LitElement {
     const currentPage = this.#currentPage.toString();
 
     return html`
-      <div id="container" part="container"
-           class=${classMap({ [dir]: true, [on]: !!on })}>
+      <div id="container" part="container">
         <a id="first" class="stepper" href=${ifDefined(firstHref)} ?inert=${!firstHref} aria-label=${labelFirst}>${L2}</a>
         <a id="prev" class="stepper" href=${ifDefined(prevHref)} ?inert=${!prevHref} aria-label=${labelPrevious}>${L1}</a>
         <nav aria-label=${label}>
@@ -152,12 +150,13 @@ export class RhPagination extends LitElement {
           </slot>
         </span>
         <input inputmode="numeric"
-            required
-            min=1 max=${this.#links?.length ?? 1}
-            aria-labelledby="go-to-page"
-            @change=${this.#onChange}
-            @keyup=${this.#onKeyup}
-            .value=${currentPage}>
+               required
+               min=1
+               max="${this.#links?.length ?? 1}"
+               aria-labelledby="go-to-page"
+               @change="${this.#onChange}"
+               @keyup="${this.#onKeyup}"
+               .value="${currentPage}">
         <slot name="out-of">of</slot>
         <a href=${ifDefined(lastHref)}>${this.#links?.length}</a>
       </div>
@@ -232,10 +231,6 @@ export class RhPagination extends LitElement {
 
   #checkValidity(): boolean {
     let message = '';
-    // Validate DOM
-    if (!this.#ol || [...this.children].filter(x => !x.slot).length > 1) {
-      message = 'must have a single <ol> element as it\'s only child';
-    }
     // Validate user input
     if (this.input && this.#links) {
       if (Number.isNaN(this.#currentPage)) {
@@ -256,6 +251,7 @@ export class RhPagination extends LitElement {
    * 1. Normalize the element state
    * 2. validate and act on the input
    * 3. update the element in case a full browser navigation was prevented (e.g. SPA routing)
+   * @param id
    */
   async #go(id: 'first' | 'prev' | 'next' | 'last' | number) {
     await this.updateComplete;
@@ -312,7 +308,10 @@ export class RhPagination extends LitElement {
     return this.#go('last');
   }
 
-  /** Navigate to a specific page */
+  /**
+   * Navigate to a specific page
+   * @param page
+   */
   go(page: 'first' | 'prev' | 'next' | 'last' | number) {
     return this.#go(page);
   }

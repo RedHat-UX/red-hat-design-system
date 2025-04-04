@@ -1,10 +1,9 @@
 ## When to use
 
-- When you need to feature direct a quotation from an external source
-- When you need to highlight positive feedback or reviews from customers
-- When you need to break up large portions of text
+- Feature a quote from an external source
+- Highlight positive feedback or reviews from customers
+- Break up large portions of text
 
 <div id="overview-image-description" class="visually-hidden">
-  Image of a blockquote including a quote icon, quotation text, and citation 
-  text
+  A blockquote including a quote icon, quotation text, and citation text
 </div>

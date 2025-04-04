@@ -112,14 +112,16 @@ Depending on whether a web page is about the plot of the 1946 movie It’s a Won
 
 Images acting as buttons or links are functional, and thus serve different purposes than images supporting the surrounding text.
 
-<figure>
-  <a href="https://www.redhat.com/">
-    <img src="/assets/logo-redhat.png"
-      alt="Red Hat homepage"
-      width="613"
-      height="145">
-  </a>
-</figure>
+<uxdot-example color-palette="lightest">
+  <figure>
+    <a href="https://www.redhat.com/">
+      <img src="/assets/logo-redhat.png"
+        alt="Red Hat homepage"
+        width="613"
+        height="145">
+    </a>
+  </figure>
+</uxdot-example>
 
 If the above image supplements the text of an article about Red Hat or our products, the appropriate alt text could be something like `"Red Hat, Inc. logo."` But if that image is a link pointing to the corporate homepage, you might want something along the lines of `"Red Hat homepage"` for your alt text:
 

@@ -9,7 +9,7 @@
   --_panel-body-padding-inline-start: var(--rh-space-xl, 24px);
 }
 
-:host ::slotted(*) {
+::slotted(*:not(rh-accordion)) {
   display: block;
   margin: unset;
   background-color: transparent;
@@ -50,15 +50,7 @@
 
 #container {
   border-inline-end: 1px solid var(--rh-color-border-subtle);
-  background-color: var(--rh-color-surface);
-}
-
-.expanded.on.light {
-  --rh-color-surface: var(--rh-color-surface-lightest, #ffffff);
-}
-
-.expanded.on.dark {
-  --rh-color-surface: var(--rh-color-surface-darkest, #151515);
+  background-color: var(--_accordion-background);
 }
 
 .body:after {

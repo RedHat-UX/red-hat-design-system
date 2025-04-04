@@ -33,7 +33,7 @@ title: Home
     align-items: center;
     gap: var(--rh-space-4xl);
 
-    @container (min-width: 768px) { 
+    @container (min-width: 768px) {
       grid-template-columns: 4fr 3fr;
       grid-template-areas: 'text image';
       align-items: center;
@@ -43,7 +43,7 @@ title: Home
       grid-area: text;
     }
 
-    & h1 {      
+    & h1 {
       font-size: var(--rh-font-size-heading-2xl);
       font-weight: var(--rh-font-weight-heading-regular);
       font-family: var(--rh-font-family-heading);
@@ -74,8 +74,7 @@ title: Home
   }
 
   rh-card {
-    --rh-color-border-subtle-on-light: transparent;
-    --rh-color-border-subtle-on-dark: transparent;
+    --rh-color-border-subtle: transparent !important;
 
     & p { margin: 0; }
 
@@ -85,6 +84,9 @@ title: Home
     }
 
     &.start {
+      --rh-color-surface-lightest: transparent;
+      --rh-color-surface-darkest: transparent;
+
       &::part(header),
       &::part(footer),
       &::part(body) {
@@ -113,8 +115,17 @@ title: Home
       }
 
       &::part(container) {
+        --_gradient-start: light-dark(
+          var(--rh-color-gray-10),
+          black
+        );
+        --_gradient-end: light-dark(white, var(--rh-color-gray-90));
         display: grid;
-        background: linear-gradient(90deg, var(--rh-color-gray-10) 0%, white 100%);
+        background: linear-gradient(
+          90deg,
+          var(--_gradient-start) 0%,
+          var(--_gradient-end) 100%
+        );
         background-repeat: no-repeat;
         border-radius: 48px 16px;
         padding: var(--nav-padding);
@@ -124,7 +135,7 @@ title: Home
           'header'
           'body'
           'footer';
-            
+
         @container (min-width: 576px) {
           grid-template-rows: 1fr auto 1fr;
           grid-template-areas:
@@ -180,12 +191,9 @@ title: Home
   import '@rhds/elements/rh-tile/rh-tile.js';
 </script>
 
-{% include 'partials/component/masthead.njk' %}
 {% include 'partials/component/sidenav.njk' %}
 
-<rh-surface id="main"
-            role="main"
-            color-palette="lightest">
+<main id="main">
   <div id="container">
     <header id="hero">
       <div>
@@ -297,7 +305,7 @@ title: Home
     </rh-card>
   </div>
   {% include "partials/component/back-to-top.njk" %}
-</rh-surface>
+</main>
 
 {% include 'partials/component/footer.njk' %}
 

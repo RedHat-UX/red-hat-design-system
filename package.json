@@ -5,6 +5,12 @@
   "type": "module",
   "license": "MIT",
   "customElements": "custom-elements.json",
+  "designTokensLanguageServer": {
+    "tokensFiles": [
+      "~/Developer/redhat-ux/red-hat-design-tokens/json/rhds.tokens.json",
+      "~/Developer/design-tokens/pf.json"
+    ]
+  },
   "exports": {
     ".": "./elements.js",
     "./lib/*": "./lib/*",
@@ -115,7 +121,7 @@
     },
     "serve": {
       "service": true,
-      "command": "TSX_TSCONFIG_PATH=tsconfig.settings.json NODE_OPTIONS='--import tsx/esm' eleventy --config=eleventy.config.ts --serve --incremental",
+      "command": "TSX_TSCONFIG_PATH=tsconfig.settings.json NODE_OPTIONS='--import tsx/esm' eleventy --config=eleventy.config.ts --incremental --serve",
       "dependencies": [
         "patch",
         "analyze",
@@ -212,9 +218,10 @@
       ]
     },
     "docs": {
-      "command": "TSX_TSCONFIG_PATH=tsconfig.settings.json NODE_OPTIONS='--import tsx/esm' eleventy --config=eleventy.config.ts",
+      "command": "TSX_TSCONFIG_PATH=tsconfig.settings.json NODE_OPTIONS='--import tsx/esm' eleventy --config=eleventy.config.ts --incremental",
       "dependencies": [
         "patch",
+        "compile",
         "analyze",
         "playgrounds"
       ],
@@ -287,7 +294,7 @@
     "@lit/context": "^1.1.4",
     "@patternfly/pfe-core": "^4.0.5",
     "@rhds/icons": "^1.2.0",
-    "@rhds/tokens": "^2.2.4",
+    "@rhds/tokens": "^3.0.0",
     "lit": "^3.2.1",
     "prism-esm": "^1.29.0-fix.6",
     "tslib": "^2.8.1"
@@ -338,7 +345,9 @@
     "leasot": "^14.4.0",
     "lit-html": "^3.2.1",
     "markdown-it-attrs": "^4.3.1",
+    "markdown-it-deflist": "^3.0.0",
     "markdown-it-footnote": "^4.0.0",
+    "markdown-it-table-captions": "^1.0.4",
     "markdownlint-cli2": "^0.14.0",
     "parse5": "^7.2.1",
     "patch-package": "^8.0.0",

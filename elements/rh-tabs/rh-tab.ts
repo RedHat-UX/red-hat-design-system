@@ -3,6 +3,7 @@ import type { RhTabsContext } from './context.js';
 import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
+import { state } from 'lit/decorators/state.js';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 import { query } from 'lit/decorators/query.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -12,9 +13,9 @@ import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-
 import { context } from './context.js';
+
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-tab.css';
 
@@ -43,6 +44,7 @@ export class TabExpandEvent extends Event {
  * @fires { TabExpandEvent } expand - when a tab expands
  */
 @customElement('rh-tab')
+@themable
 export class RhTab extends LitElement {
   static readonly styles = [styles];
 
@@ -56,14 +58,14 @@ export class RhTab extends LitElement {
   @property({ attribute: false })
   private ctx?: RhTabsContext;
 
-  /** Sets color theme based on parent context */
-  @colorContextConsumer() private on?: ColorTheme;
-
   @queryAssignedElements({ slot: 'icon', flatten: true }) private icons!: HTMLElement[];
 
   @query('#button') private button!: HTMLButtonElement;
 
   #internals = InternalsController.of(this, { role: 'tab' });
+
+  @state() private first = false;
+  @state() private last = false;
 
   override connectedCallback() {
     super.connectedCallback();
@@ -73,17 +75,20 @@ export class RhTab extends LitElement {
     this.addEventListener('focus', this.#onFocus);
   }
 
+  willUpdate() {
+    this.active = this.ctx?.activeTab === this;
+    this.first = this.ctx?.firstTab === this;
+    this.last = this.ctx?.lastTab === this;
+  }
+
   render() {
-    const { on = 'light' } = this;
-    const active = this.ctx?.activeTab === this;
-    const { box = false, vertical = false, firstTab, lastTab } = this.ctx ?? {};
-    const first = firstTab === this;
-    const last = lastTab === this;
+    const { box = false, vertical = false } = this.ctx ?? {};
+    const { first, last } = this;
     return html`
       <div id="button"
            part="button"
            ?disabled="${this.disabled}"
-           class="${classMap({ active, box, vertical, first, last, on: true, [on]: true })}">
+           class="${classMap({ active: this.ctx?.activeTab === this, box, vertical, first, last })}">
         <slot name="icon"
               part="icon"
               ?hidden="${!this.icons.length}"
