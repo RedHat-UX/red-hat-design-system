@@ -367,18 +367,12 @@
       }
 
       & ::slotted(a:is(:focus-visible, :hover:focus-visible)) {
-        outline-offset: 2px;
+        outline-offset: -2px;
         outline:
           var(--rh-border-width-md, 2px)
           solid
           var(--rh-color-interactive-primary-default);
         border-radius: var(--rh-border-radius-default, 3px);
-      }
-
-      &:has(:focus-within) {
-        & ::slotted(a) {
-          background-color: var(--_background-color);
-        }
       }
     }
   }
