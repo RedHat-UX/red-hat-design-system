@@ -7,6 +7,7 @@ import { classMap } from 'lit/directives/class-map.js';
 import { bound, initializer, observes } from '@patternfly/pfe-core/decorators.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-dialog.css';
 
@@ -63,6 +64,7 @@ async function pauseYoutube(iframe: HTMLIFrameElement) {
  *          Sets the dialog close button color.
  */
 @customElement('rh-dialog')
+@themable
 export class RhDialog extends LitElement {
   static readonly styles = [styles];
 
@@ -133,9 +135,8 @@ export class RhDialog extends LitElement {
     const { mobile } = this.#screenSize;
     return html`
       <div id="rhds-wrapper" class="${classMap({ mobile })}">
-        <rh-surface class=${classMap({ hasHeader, hasDescription, hasFooter })}
-                    ?hidden=${!this.open}
-                    color-palette="lightest">
+        <rh-surface class="${classMap({ hasHeader, hasDescription, hasFooter })}"
+                    ?hidden="${!this.open}">
           <dialog id="dialog"
                   part="dialog"
                   aria-labelledby=${ifDefined(this.accessibleLabel ? undefined : headerId)}
@@ -166,7 +167,7 @@ export class RhDialog extends LitElement {
               </div>
             </div>
           </dialog>
-        </rh-surface>
+        </div>
       </div>
     `;
   }
