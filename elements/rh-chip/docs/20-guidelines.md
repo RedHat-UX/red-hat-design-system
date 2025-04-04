@@ -10,14 +10,14 @@ Although these elements look very similar, the following guidance should help cl
   <table>
     <thead>
       <tr>
-        <th scope="col" data-label="Element">Element</th>
-        <th scope="col" data-label="Use Cases">Use Cases</th>
+        <th scope="col" data-label="Element" style="width: 25%;">Element</th>
+        <th scope="col" data-label="Use cases">Use cases</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td data-label="Element">Chip</td>
-        <td data-label="Use Cases">
+        <td data-label="Use cases">
           <ul>
             <li>Almost the same as a checkbox</li>
             <li>Required to use more than one in a Chip group</li>
@@ -27,7 +27,7 @@ Although these elements look very similar, the following guidance should help cl
       </tr>
       <tr>
         <td data-label="Element">Badge</td>
-        <td data-label="Use Cases">
+        <td data-label="Use cases">
           <ul>
             <li>Reflect counts like number of objects, events, or unread items</li>
           </ul>
@@ -35,7 +35,7 @@ Although these elements look very similar, the following guidance should help cl
       </tr>
       <tr>
         <td data-label="Element">Tag</td>
-        <td data-label="Use Cases">
+        <td data-label="Use cases">
           <ul>
             <li>Can be used on its own</li>
             <li>Highlight an element on a page in order to draw attention to it</li>
@@ -78,12 +78,28 @@ Chip text displays exactly what is being filtered without truncation. This means
 ### Character count
 
 <rh-table>
-
-| Element                       | Character count |
-|-------------------------------|-----------------|
-| Legend                        | 25 (maximum)    |
-| Number of characters per chip | 2 (minimum)     |
-
+  <table>
+    <thead>
+      <tr>
+        <th scope="col" data-label="Element" style="width: 50%;">Element</th>
+        <th scope="col" data-label="Character count">Character count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Element">Legend</td>
+        <td data-label="Character count">
+          25 (maximum)
+        </td>
+      </tr>
+      <tr>
+        <td data-label="Element">Number of characters per chip</td>
+        <td data-label="Character count">
+          2 (minimum)
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </rh-table>
 
 ## Interactivity
@@ -147,7 +163,7 @@ If a chip has a long string of text, it will break to two lines inside of the ch
       height="228">
 </uxdot-example>
 
-## Best Practices
+## Best practices
 
 ### Size of chips
 
