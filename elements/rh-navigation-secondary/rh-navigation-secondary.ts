@@ -22,7 +22,6 @@ import {
   SecondaryNavDropdownExpandEvent,
 } from './rh-navigation-secondary-dropdown.js';
 
-import { DirController } from '../../lib/DirController.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 
 export class SecondaryNavOverlayChangeEvent extends ComposedEvent {
@@ -85,9 +84,6 @@ export class RhNavigationSecondary extends LitElement {
 
   #logger = new Logger(this);
   #logoCopy: HTMLElement | null = null;
-
-  /** Is the element in an RTL context? */
-  #dir = new DirController(this);
 
   /** Compact mode  */
   #compact = false;
@@ -174,12 +170,11 @@ export class RhNavigationSecondary extends LitElement {
 
   render() {
     const expanded = this.mobileMenuExpanded;
-    const rtl = this.#dir.dir === 'rtl';
     // CTA must always be 'lightest' on mobile screens
     const dropdownPalette = this.#compact ? 'lightest' : this.#computedPalette;
     return html`
       <div part="nav"
-           class="${classMap({ compact: this.#compact, rtl })}">
+           class="${classMap({ compact: this.#compact })}">
         ${this.#logoCopy}
         <div id="container" part="container" class="${classMap({ expanded })}">
           <slot name="logo" id="logo"></slot>

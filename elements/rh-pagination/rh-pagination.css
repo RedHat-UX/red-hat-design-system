@@ -157,11 +157,11 @@ svg {
 }
 
 :is(#next, #last) svg,
-.rtl :not(#next, #last) svg {
+:not(#next, #last) svg:dir(rtl) {
   rotate: 180deg;
 }
 
-.rtl :is(#next, #last) svg {
+:is(#next, #last) svg:dir(rtl) {
   rotate: 0deg;
 }
 
