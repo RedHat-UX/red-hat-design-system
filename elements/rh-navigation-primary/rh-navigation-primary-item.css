@@ -316,7 +316,9 @@
 
     & ::slotted(:is(a:hover, a:focus-visible)) {
       text-underline-offset: 4px !important;
-      text-decoration-color: var(--rh-color-border-subtle) !important;
+      text-decoration-color:
+        light-dark(var(--rh-color-gray-50, #707070),
+          var(--rh-color-gray-40, #a3a3a3)) !important;
       text-decoration-line: underline !important;
       text-decoration-style: dashed !important;
       text-decoration-skip-ink: auto !important;
@@ -332,6 +334,10 @@
         block-size: calc(100% + 4px);
         font-size: var(--rh-font-size-body-text-md, 1rem);
         padding: var(--rh-space-lg, 16px) var(--rh-space-xl, 24px);
+      }
+
+      & ::slotted(:is(a:hover, a:focus-visible)) {
+        text-decoration-style: none !important;
       }
 
       & ::slotted(a:is(:focus-visible, :hover:focus-visible)) {
