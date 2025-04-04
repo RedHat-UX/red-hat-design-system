@@ -27,7 +27,10 @@ rh-navigation-primary {
       &:after {
         display: block;
         content: '';
-        border-inline-end: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+        border-inline-end:
+          var(--rh-border-width-sm, 1px)
+          solid
+          light-dark(var(--rh-color-gray-20, #e0e0e0), var(--rh-color-gray-60, #4d4d4d));
         height: 30px;
       }
 
