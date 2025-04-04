@@ -3,6 +3,7 @@
   container-name: card;
   container-type: inline-size;
   height: max-content;
+  width: 100%;
 }
 
 #header.empty,
