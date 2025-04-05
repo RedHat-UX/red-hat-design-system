@@ -1,5 +1,5 @@
 ---
-title: Overview
+title: Links
 heading: Interactions
 sidenavTitle: Interactions
 layout: layouts/pages/has-toc.njk
@@ -19,13 +19,14 @@ subnav:
       href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css"
       data-helmet>
 
-<link rel="stylesheet" data-helmet href="/styles/samp.css">
+<!--<link rel="stylesheet" data-helmet href="/styles/samp.css">-->
 
 <script type="module" data-helmet>
   import '@rhds/elements/rh-alert/rh-alert.js';
   import '@rhds/elements/rh-code-block/rh-code-block.js';
   import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
   import '@rhds/elements/rh-table/rh-table.js';
+  import "@uxdot/elements/uxdot-pattern.js";
 </script>
 
 ## Types of links
@@ -38,7 +39,7 @@ Links are interactive elements that connect users to another page or page sectio
 
 ## Inline links
 
-<uxdot-pattern src="./inline-link-demo.html">
+<uxdot-pattern src="./inline-link-demo.html" noCodeTabs=true>
 </uxdot-pattern>
 
 ## Interaction states
@@ -187,16 +188,16 @@ Developers can use the following CSS as a starting point for link underlining:
 <rh-code-block>
   <script type="text/css">
     :is(p, ul, ol, dl) a {
-      text-decoration-color: var(--rh-color-gray-50, #707070);
-      text-decoration-line: underline;
-      text-decoration-style: dashed;
-      text-decoration-thickness: 1px;
-      text-underline-offset: max(5px, 0.28em);
-      transition: ease all 0.3s;
-      &:hover {
-        text-decoration-color: inherit;
-        text-underline-offset: max(6px, 0.33em);
-      }
+      text-decoration-color: var(--rh-color-gray-50, #707070);
+      text-decoration-line: underline;
+      text-decoration-style: dashed;
+      text-decoration-thickness: 1px;
+      text-underline-offset: max(5px, 0.28em);
+      transition: ease all 0.3s;
+      &:hover {
+        text-decoration-color: inherit;
+        text-underline-offset: max(6px, 0.33em);
+      }
     }
   </script>
 </rh-code-block>
