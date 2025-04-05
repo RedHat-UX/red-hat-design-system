@@ -1,41 +1,33 @@
-<section dir="rtl" lang="he">
-  <header lang="en" dir="ltr">
+<section dir="rtl"
+         lang="he">
+  <header lang="en"
+          dir="ltr">
     <h2>Right-to-Left Languages</h2>
   </header>
 
   <div>
-    <rh-cta>
-      <a href="#default">ברירת מחדל</a>
-    </rh-cta>
-
-    <rh-cta icon="play-circle">
-      <a href="#default-video">ברירת מחדל - וידאו</a>
-    </rh-cta>
-
-    <rh-cta variant="primary">
-      <a href="#primary">ראשי</a>
-    </rh-cta>
-
-    <rh-cta variant="primary" icon="play-circle">
-      <a href="#primary-video">ראשי - וידאו</a>
-    </rh-cta>
-
-    <rh-cta variant="secondary">
-      <a href="#secondary">משני</a>
-    </rh-cta>
-
-    <rh-cta variant="brick">
-      <a href="#brick">לבנה</a>
-    </rh-cta>
-
-    <rh-cta variant="brick" icon="user">
-      <a href="#brick-icon">לבנה עם אייקון</a>
-    </rh-cta>
+    <rh-cta> href="#default">ברירת מחדל</rh-cta>
+    <rh-cta icon="play-circle"
+            href="#default-video">ברירת מחדל - וידאו</rh-cta>
+    <rh-cta variant="primary"
+            href="#primary">ראשי</rh-cta>
+    <rh-cta variant="primary"
+            icon="play-circle"
+            href="#primary-video">ראשי - וידאו</rh-cta>
+    <rh-cta variant="secondary"
+            href="#secondary">משני</rh-cta>
+    <rh-cta variant="brick"
+            href="#brick">לבנה</rh-cta>
+    <rh-cta variant="brick"
+            icon="user"
+            href="#brick-icon">לבנה עם אייקון</rh-cta>
   </div>
 </section>
 
-<section dir="rtl" lang="he">
-  <header dir="ltr" lang="en">
+<section dir="rtl"
+         lang="he">
+  <header dir="ltr"
+          lang="en">
     <h2>Deep Shadow RTL</h2>
     <p>
       When the CTA is found within the shadow root of an element which is itself within a RTL context,
@@ -51,61 +43,51 @@
         :host {
           width: 100%;
           padding: var(--rh-space-xl, 24px);
-          background-color: var(--rh-color-blue-50, #e7f1fa);
+          color-scheme: dark only;
+          background-color: var(--rh-color-surface-darkest, #151515);
           display: flex;
           flex-flow: row wrap;
           gap: 16px;
         }
       </style>
 
-      <rh-cta id="deep">
-        <a href="#default">ברירת מחדל</a>
-      </rh-cta>
-
-      <rh-cta icon="play-circle">
-        <a href="#default-video">ברירת מחדל - וידאו</a>
-      </rh-cta>
-
-      <rh-cta variant="primary">
-        <a href="#primary">ראשי</a>
-      </rh-cta>
-
-      <rh-cta variant="primary" icon="play-circle">
-        <a href="#primary-video">ראשי - וידאו</a>
-      </rh-cta>
-
-      <rh-cta variant="secondary">
-        <a href="#secondary">משני</a>
-      </rh-cta>
-
-      <rh-cta variant="brick">
-        <a href="#brick">לבנה</a>
-      </rh-cta>
-
-      <rh-cta variant="brick" icon="user">
-        <a href="#brick-icon">לבנה עם אייקון</a>
-      </rh-cta>
+      <rh-cta id="deep"
+              href="#default">ברירת מחדל</rh-cta>
+      <rh-cta icon="play-circle"
+              href="#default-video">ברירת מחדל - וידאו</rh-cta>
+      <rh-cta variant="primary"
+              href="#primary">ראשי</rh-cta>
+      <rh-cta variant="primary"
+              icon="play-circle"
+              href="#primary-video">ראשי - וידאו</rh-cta>
+      <rh-cta variant="secondary"
+              href="#secondary">משני</rh-cta>
+      <rh-cta variant="brick"
+              href="#brick">לבנה</rh-cta>
+      <rh-cta variant="brick"
+              icon="user"
+              href="#brick-icon">לבנה עם אייקון</rh-cta>
     </template>
   </shadow-root>
 </section>
 
 <style>
-shadow-root:not(:defined) {
-  display: block;
-  opacity: 1;
-}
+  shadow-root:not(:defined) {
+    display: block;
+    opacity: 1;
+  }
 
-section > div {
-  display: flex;
-  flex-flow: row wrap;
-  gap: var(--rh-space-lg, 16px);
-  padding: var(--rh-space-xl, 24px);
-  width: 100%;
-}
+  section>div {
+    display: flex;
+    flex-flow: row wrap;
+    gap: var(--rh-space-lg, 16px);
+    padding: var(--rh-space-xl, 24px);
+    width: 100%;
+  }
 
-header[lang="en"] {
-  width: 100%;
-}
+  header[lang="en"] {
+    width: 100%;
+  }
 </style>
 
 <script type="module">
@@ -115,4 +97,3 @@ header[lang="en"] {
   }
   customElements.define('shadow-root', class ShadowRootElement extends HTMLElement { });
 </script>
-

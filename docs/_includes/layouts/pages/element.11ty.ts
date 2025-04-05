@@ -6,7 +6,8 @@ import { tokens } from '@rhds/tokens/meta.js';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { readFile } from 'node:fs/promises';
-import { copyCell, dedent, getTokenHref } from '#11ty-plugins/tokensHelpers.js';
+import { capitalize, copyCell, dedent, getTokenHref } from '#11ty-plugins/tokensHelpers.js';
+import { getPfeConfig } from '@patternfly/pfe-tools/config.js';
 import { Generator } from '@jspm/generator';
 import { AssetCache } from '@11ty/eleventy-fetch';
 import { Renderer } from '#eleventy.config';
@@ -15,6 +16,7 @@ import type { ImportMap } from '#11ty-plugins/importMap.js';
 type FileEntry = [string, FileOptions & { inline: string }];
 
 const html = String.raw; // for editor highlighting
+const pfeconfig = getPfeConfig();
 const { version: packageVersion } =
   JSON.parse(await readFile(
     fileURLToPath(import.meta.resolve('@rhds/elements')).replace('elements.js', 'package.json'),
@@ -52,23 +54,17 @@ export default class ElementsPage extends Renderer<Context> {
       layout: 'layouts/pages/has-toc.njk',
       permalink: ({ doc }: Context) => doc.permalink,
       eleventyComputed: {
-        title: ({ doc }: Context) => doc.pageTitle,
+        title: ({ doc }: Context) => `${doc.pageTitle} | ${pfeconfig.aliases[doc.tagName] ?? capitalize(doc.tagName.replace('rh-', '').replaceAll('-', ' '))}`,
         tagName: ({ doc }: Context) => doc.tagName,
       },
     };
   }
 
   async render(ctx: Context) {
-    const { doc } = ctx;
-    const {
-      fileExists,
-      filePath,
-      isCodePage,
-      isDemoPage,
-      isOverviewPage,
-      tagName,
-      planned,
-    } = doc;
+    const { fileExists, filePath, pageSlug, planned, tagName } = ctx.doc;
+    const isCodePage = pageSlug === 'code';
+    const isDemoPage = pageSlug === 'demos';
+    const isOverviewPage = pageSlug === 'overview';
     const content = fileExists ? await this.renderFile(filePath, ctx) : '';
     const stylesheets = [
       '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css',
@@ -257,7 +253,7 @@ export default class ElementsPage extends Renderer<Context> {
     return content;
   }
 
-  async #renderInstallation({ doc, cdnVersion = 'v1-alpha' }: Context) {
+  async #renderInstallation({ doc, cdnVersion = 'v2' }: Context) {
     const jspmMap = await this.#generateImportMap(doc.docsPage.tagName)
         .catch(() => {
           // try again
@@ -270,73 +266,18 @@ export default class ElementsPage extends Renderer<Context> {
         });
 
     return html`
-      <script data-helmet type="module">
-        import "@uxdot/elements/uxdot-installation-tabs.js";
-      </script>
-      <style data-helmet>${''/* NOTE: adapted from theming/developers.css - better to wrap the localhost behaviour? */}
-      uxdot-installation-tabs {
-        border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
-        border-radius: var(--rh-border-radius-default);
-        max-width: 56rem; /* warning: magic number */
-        overflow: hidden;
-        & rh-tab-panel {
-          padding: 0;
-          border-radius: 0;
-        }
-        & rh-code-block {
-          --rh-border-radius-default: 0;
-          --rh-border-width-sm: 0px;
-          border-width: 0;
-        }
-      }
-      .attributes rh-table td.type pre {
-        background: transparent;
-        margin: 0;
-        padding: 0;
-        display: inline;
-      }
-      </style>
       <section class="band">
-        <h2 id="installation">Installation</h2>
-        <p>We recommend import maps when building pages with RHDS. Learn more about how to install on our <a href="/get-started/developers/installation/">getting started docs</a>.</p>
-        <uxdot-installation-tabs>
-          <rh-tab slot="tab">Red Hat CDN</rh-tab>
-          <rh-tab-panel>
-            <rh-code-block actions="copy" highlighting="prerendered">${this.highlight('html', dedent(html`
-              <script type="importmap">
-              {
-                "imports": {
-                  "@rhds/elements/": "https://www.redhatstatic.com/dx/${cdnVersion}/@rhds/elements@${packageVersion}/elements/",
-                }
-              }
-              </script>`))}
-              ${this.#actionsLabels}
-            </rh-code-block>
-          </rh-tab-panel>
-          <rh-tab slot="tab">NPM</rh-tab>
-          <rh-tab-panel>
-            <rh-code-block actions="copy" highlighting="prerendered">${this.highlight('shell', `npm install @rhds/elements`)}${this.#actionsLabels}
-            </rh-code-block>
-          </rh-tab-panel>
-          <rh-tab slot="tab">JSPM</rh-tab>
-          <rh-tab-panel>
-            <rh-code-block actions="copy" highlighting="prerendered">${this.highlight('html', dedent(html`
-              <script type="importmap">
-              ${jspmMap}
-              </script>`))}
-              ${this.#actionsLabels}
-            </rh-code-block>
-          </rh-tab-panel>
-        </uxdot-installation-tabs>
-
-        <p>Add it to your page with this import statement</p>
-
+        <h2 id="installation">Importing</h2>
+        
+        <p>Add ${doc.docsPage.tagName} to your page with this import statement:</p>
         <rh-code-block actions="copy" highlighting="prerendered">${this.highlight('html', dedent(html`
           <script type="module">
             import '@rhds/elements/${doc.docsPage.tagName}/${doc.docsPage.tagName}.js';
           </script>`))}
           ${this.#actionsLabels}
         </rh-code-block>
+
+        <p>To learn more about installing RHDS elements on your site using an import map read our <a href="/get-started/developers/installation/">getting started docs</a>.        
       </section>
     `;
   }
