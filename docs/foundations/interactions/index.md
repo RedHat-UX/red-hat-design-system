@@ -40,16 +40,16 @@ They help ensure that anything interactive is accessible, communicative, and int
 
 Interactions are foundational to how our users engage with Red Hat digital experiences.
 
-<nav id="patterns-nav"
+<nav id="interactions-nav"
      class="grid sm-two-columns"
-     aria-label="Patterns">
+     aria-label="Interaction types">
     <rh-tile>
-      <img alt="Color"
-           src=""
+      <img alt="abstract representation of a paragraph with an inline link and a call to action"
+           src="./types-of-interactions-links.svg"
            slot="image"
-           width="500"
-           height="150">
-      <h3 slot="headline"><a href="../foundations/color">Color</a></h3>
-      <p>Unifies our brand while bringing accessibility and consistency to our digital experiences</p>
+           width="295"
+           height="203">
+      <h3 slot="headline"><a href="../foundations/color">Links</a></h3>
+      <p>Text that sends users to another destination</p>
     </rh-tile>
 </nav>

@@ -147,7 +147,7 @@ The following elements are exempt from underlining requirements and should not h
 
   <uxdot-best-practice variant="dont">
     <uxdot-example color-palette="lighter" width-adjustment="482px" slot="image">
-      <img src="underlining-exceptions-1.svg"
+      <img src="./underlining-exceptions-1.svg"
             alt=""
             width="482"
             height="342">
@@ -157,7 +157,7 @@ The following elements are exempt from underlining requirements and should not h
 
   <uxdot-best-practice variant="dont">
     <uxdot-example color-palette="lightest" width-adjustment="482px" slot="image">
-      <img src="underlining-exceptions-2.svg"
+      <img src="./underlining-exceptions-2.svg"
             alt=""
             width="482"
             height="342">
@@ -167,7 +167,7 @@ The following elements are exempt from underlining requirements and should not h
 
   <uxdot-best-practice variant="dont">
     <uxdot-example color-palette="lightest" width-adjustment="482px" slot="image">
-      <img src="underlining-exceptions-3.svg"
+      <img src="./underlining-exceptions-3.svg"
             alt=""
             width="482"
             height="268">
@@ -219,7 +219,7 @@ Use an external link icon if a link will direct users to another domain. This do
 </rh-alert>
 
 <uxdot-example color-palette="lightest" width-adjustment="496px" slot="image">
-  <img src="behavior-external-pages.svg"
+  <img src="./behavior-external-pages.svg"
         alt="Examples of links paired with an external link icon"
         width="496"
        height="161">
@@ -265,14 +265,14 @@ A user should have the ability to navigate to and interact with links using thei
 When the Tab key is pressed repeatedly, the focus highlights links in order, from left to right and top to bottom.
 
 <uxdot-example color-palette="lightest" width-adjustment="606px" slot="image">
-  <img src="a11y-tab-order-A.svg"
+  <img src="./a11y-tab-order-A.svg"
         alt="Three inline links and a call to action in a row with focus rings around each"
         width="606"
        height="27">
 </uxdot-example>
 
 <uxdot-example color-palette="lightest" width-adjustment="93px" slot="image">
-  <img src="a11y-tab-order-B.svg"
+  <img src="./a11y-tab-order-B.svg"
         alt="Four links in a vertical list with focus rings around each"
         width="93"
        height="156">
@@ -285,7 +285,7 @@ When the Tab key is pressed repeatedly, the focus highlights links in order, fro
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
     <uxdot-example color-palette="lightest" width-adjustment="482px" slot="image">
-      <img src="links-best-practice-1-do.svg"
+      <img src="./links-best-practice-1-do.svg"
             alt="'Open hybrid cloud' linked within a paragraph"
             width="482"
             height="81">
@@ -295,7 +295,7 @@ When the Tab key is pressed repeatedly, the focus highlights links in order, fro
 
   <uxdot-best-practice variant="dont">
     <uxdot-example color-palette="lightest" width-adjustment="482px" slot="image">
-      <img src="links-best-practice-1-dont.svg"
+      <img src="./links-best-practice-1-dont.svg"
             alt="'Click here' linked within a paragraph"
             width="482"
             height="81">
@@ -309,7 +309,7 @@ When the Tab key is pressed repeatedly, the focus highlights links in order, fro
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
     <uxdot-example color-palette="lightest" width-adjustment="482px" slot="image">
-      <img src="links-best-practice-2-do.svg"
+      <img src="./links-best-practice-2-do.svg"
             alt="A paragraph of text with the last few words hyperlinked"
             width="482"
             height="135">
@@ -319,7 +319,7 @@ When the Tab key is pressed repeatedly, the focus highlights links in order, fro
 
   <uxdot-best-practice variant="dont">
     <uxdot-example color-palette="lightest" width-adjustment="482px" slot="image">
-      <img src="links-best-practice-2-dont.svg"
+      <img src="./links-best-practice-2-dont.svg"
             alt="A paragraph of text with the final sentence hyperlinked"
             width="482"
             height="135">
@@ -333,7 +333,7 @@ When the Tab key is pressed repeatedly, the focus highlights links in order, fro
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
     <uxdot-example color-palette="lightest" width-adjustment="482px" slot="image">
-      <img src="links-best-practice-3-do.svg"
+      <img src="./links-best-practice-3-do.svg"
             alt="Blue primary button that says 'Submit'"
             width="482"
             height="100">
@@ -343,7 +343,7 @@ When the Tab key is pressed repeatedly, the focus highlights links in order, fro
 
   <uxdot-best-practice variant="dont">
     <uxdot-example color-palette="lightest" width-adjustment="482px" slot="image">
-      <img src="links-best-practice-3-dont.svg"
+      <img src="./links-best-practice-3-dont.svg"
             alt="Blue primary button that syas 'Learn more' text with a right arrow"
             width="482"
             height="100">
