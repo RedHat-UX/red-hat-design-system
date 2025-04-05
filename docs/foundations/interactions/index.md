@@ -12,6 +12,10 @@ subnav:
   order: 1
 ---
 
+<link rel="stylesheet"
+      href="/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css"
+      data-helmet>
+
 <script type="module" data-helmet>
   import '@rhds/elements/rh-tile/rh-tile.js';
 </script>
@@ -35,3 +39,17 @@ They help ensure that anything interactive is accessible, communicative, and int
 ## Types of interactions
 
 Interactions are foundational to how our users engage with Red Hat digital experiences.
+
+<nav id="patterns-nav"
+     class="grid sm-two-columns"
+     aria-label="Patterns">
+    <rh-tile>
+      <img alt="Color"
+           src=""
+           slot="image"
+           width="500"
+           height="150">
+      <h3 slot="headline"><a href="../foundations/color">Color</a></h3>
+      <p>Unifies our brand while bringing accessibility and consistency to our digital experiences</p>
+    </rh-tile>
+</nav>
