@@ -1,21 +1,22 @@
 ---
-"@rhds/elements": minor
+"@rhds/elements": major
 ---
 
-`<rh-dialog>`: Dialog now uses the native HTML `<dialog>` element internally.
+`<rh-dialog>`: the `overlay` CSS shadow part has been removed. Users who want to customize the overlay should refer to our [theming documentation](https://ux.redhat.com/theming/customizing/).
 
-Note: the `overlay` CSS shadow part is now deprecated in favor of the `--rh-dialog-backdrop-background-color` CSS custom property.  It will still work, but you can expect the `overlay` part to be removed in a future version
+  Before:
 
-Before:
+  ```css
+  rh-dialog::part(overlay) {
+  background-color: #260710e7;
+  }
+  ```
 
-```css
-rh-dialog::part(overlay) { ... }
-```
+  After:
 
-After:
-
-```css
-rh-dialog {
-  --rh-dialog-backdrop-background-color: ghostwhite;
-}
-```
+  ```css
+  rh-dialog.theme-ai {
+  --ai-darker: #260710;
+  --rh-color-surface-darker: var(--ai-darker);
+  }
+  ```
