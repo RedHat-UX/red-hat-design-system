@@ -33,6 +33,8 @@ export class RhJumpLinks extends LitElement {
   /** Accessible label for nav */
   @property() label?: string;
 
+  role = 'navigation';
+
   #overflow = new OverflowController(this);
 
   #onScroll = this.#overflow.onScroll.bind(this);
@@ -50,7 +52,6 @@ export class RhJumpLinks extends LitElement {
 
   override connectedCallback(): void {
     super.connectedCallback();
-    this.role = 'nav';
     this.addEventListener('select', this.#onSelect);
   }
 

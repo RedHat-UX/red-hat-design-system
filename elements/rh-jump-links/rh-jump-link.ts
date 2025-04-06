@@ -39,6 +39,8 @@ export class RhJumpLink extends LitElement {
 
   #internals = InternalsController.of(this, { role: 'listitem' });
 
+  role = 'listitem';
+
   render(): TemplateResult<1> {
     const { active, orientation = 'vertical' } = this;
     return html`
