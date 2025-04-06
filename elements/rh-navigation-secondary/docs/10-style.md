@@ -4,7 +4,7 @@ A secondary navigation is a group of links and menus placed in a bar container t
   
 ### Anatomy
 
-A secondary navigation is divided into three slots, it is not required to use all three slots.
+A secondary navigation is divided into three slots. It is not required to use all three slots.
 
 - Slot 1 - includes primary elements like product logo text
 - Slot 2 - includes secondary elements like links and menus
@@ -20,7 +20,7 @@ A secondary navigation is divided into three slots, it is not required to use al
 
 ### Using slots
 
-Slots are defined areas where content can be inserted, each slot includes a specific type of content.
+Slots are defined areas where content can be inserted. Each slot includes a specific type of content.
 
 <rh-table>
   <table>
