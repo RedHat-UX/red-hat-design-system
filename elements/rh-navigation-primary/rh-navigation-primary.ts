@@ -72,13 +72,15 @@ export class RhNavigationPrimary extends LitElement {
   );
 
   @provide({ context })
-  @state() compact = true; // we should start in compact mode (mobile first)
+  @state() private compact = true; // we should start in compact mode (mobile first)
 
   @state()
   private _overlayOpen = false;
 
   @query('#hamburger')
   private _hamburger!: HTMLDetailsElement;
+
+  role = 'navigation';
 
   /**
    * Sets the mobile toggle (hamburger) text, used for translations, defaults to 'Menu'
@@ -195,8 +197,6 @@ export class RhNavigationPrimary extends LitElement {
    * Upgrades the aria attributes on upgrade
    */
   #upgradeAccessibility(): void {
-    // remove role="navigation" from host on upgrade
-    this.removeAttribute('role');
     this.#internals.ariaLabel = this.accessibleLabel;
   }
 
