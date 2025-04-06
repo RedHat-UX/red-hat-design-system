@@ -2,7 +2,7 @@
 title: Overview
 heading: Typography
 sidenavTitle: Typography
-layout: layouts/pages/has-toc.njk
+layout: layouts/pages/basic.njk
 permalink: /foundations/typography/index.html
 tags:
   - foundations
@@ -20,73 +20,29 @@ subnav:
   import '@rhds/elements/rh-table/rh-table.js';
 </script>
 
-## Get started
+<style data-helmet>
+  .large-red-text {
+    grid-area: h;
+    font-size: var(--rh-font-size-heading-2xl);
+    font-weight: var(--rh-font-weight-heading-regular);
+    font-family: var(--rh-font-family-heading);
+    line-height: var(--rh-line-height-heading);
+    color: var(--rh-color-brand-red);
+    margin-block-end: var(--rh-space-xl);
+  }
+</style>
 
-To download the font files, go to [Google Fonts][googlefonts]. To install the 
-fonts using Terminal, go to our [GitHub repo][githubrepo]. If you need further 
-assistance, contact the [Brand team][brandteam] or the [Design System 
-team][designsystemteam].
+<h2 class="large-red-text">The fonts we use affects the way our audience perceives our brand just as much as the words that we write.</h2>
 
-## Font family
+To make our words unmistakably Red Hat, we use the Red Hat® font family—with straightforward and approachable typography.
 
-The words we choose are an important part of our brand voice and so is the way 
-those words look. The way our words look is established by the fonts we use and 
-the way we use them, also known as typography. The Red Hat font family was 
-designed by type designer Jeremy Mickel in collaboration with the Brand team. To 
-learn more our fonts and typography, go to the [Brand standards][brandstandards] 
-website.
+## Fonts and typography
 
-<uxdot-example width-adjustment="1140px" variant="full" alignment="left" no-border>
-  <img alt=" 3 examples of the Red Hat font family: Display, Text, and Mono. Each example shows a capital letter R and lowercase letter H with overlays pointing out unique design characteristics."
-       src="type-overview-font-family.png"
-       width="1140"
-       height="365">
-</uxdot-example>
+How we apply our fonts, also known as typography, can be just as impactful as the design of the fonts themselves. We write the way that real people talk, so we use our fonts in a way that reflects that. The basics of typography at Red Hat align to our brand personality traits.
 
-### Red Hat Display
-
-Red Hat Display is used in headlines and to make big statements. Because Red Hat 
-Display is intended for large sizes, it has more of our brand personality and 
-voice.
-
-### Red Hat Text
-
-Red Hat Text takes all of the personality from Red Hat Display and optimizes it 
-for more demanding applications. It is easy to read in paragraphs and very small 
-sizes.
-
-### Red Hat Mono
-
-Red Hat Mono is our monospaced font that was created to distinguish code from 
-other text. It should only be used when demonstrating code snippets in our 
-communications and specifications.
-
-## International
-
-Designs that need to use non-Latin characters should fall back to [Noto 
-Sans][notosans]. By loading language-specific fonts, the design system can 
-accommodate mixed-language content. For more technical details, go to the 
-[Tokens][tokens] section.
-
-<rh-table>
-
-| Language | Font family                  |
-| -------- | ---------------------------- |
-| Chinese  | Noto Sans Simplified Chinese |
-| Japanese | Noto Sans Japanese           |
-| Korean   | Noto Sans Korean             |
-
-</rh-table>
+<rh-cta href="https://www.redhat.com/en/about/brand/standards/personality">Read our brand personality traits</rh-cta>
 
 <uxdot-feedback>
   <h2>Foundations</h2>
   <p>To learn how to use our other foundations in your designs, visit the <a href="/foundations">foundations</a> section.</p>
 </uxdot-feedback>
-
-[googlefonts]: https://fonts.google.com/?query=MCKL
-[githubrepo]: https://github.com/RedHatOfficial/RedHatFont
-[brandteam]: https://brand.redhat.com/
-[designsystemteam]: https://ux.redhat.com/support/
-[brandstandards]: https://www.redhat.com/en/about/brand/standards
-[notosans]: https://fonts.google.com/noto/specimen/Noto+Sans
-[tokens]: https://ux.redhat.com/tokens/font/

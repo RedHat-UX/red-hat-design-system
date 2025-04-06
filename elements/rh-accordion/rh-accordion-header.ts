@@ -1,7 +1,7 @@
 import type { RhAccordion } from './rh-accordion.js';
 import type { RhAccordionContext } from './context.js';
 
-import { html, LitElement } from 'lit';
+import { html, LitElement, isServer } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
@@ -10,13 +10,11 @@ import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
-import { DirController } from '../../lib/DirController.js';
 import { HeadingLevelContextConsumer } from '../../lib/context/headings/consumer.js';
 
 import { themable } from '@rhds/elements/lib/themable.js';
 
 import { consume } from '@lit/context';
-
 import { context } from './context.js';
 
 import styles from './rh-accordion-header.css';
@@ -26,7 +24,6 @@ export class AccordionHeaderChangeEvent extends Event {
   constructor(
     public expanded: boolean,
     public toggle: RhAccordionHeader,
-    public accordion: RhAccordion,
   ) {
     super('change', { bubbles: true, cancelable: true });
   }
@@ -51,13 +48,17 @@ const isAccordion = (x: EventTarget): x is RhAccordion =>
 export class RhAccordionHeader extends LitElement {
   static readonly styles = [styles];
 
+  // Allow focus to apply to shadow button
+  static override readonly shadowRootOptions: ShadowRootInit = {
+    ...LitElement.shadowRootOptions,
+    delegatesFocus: true,
+  };
+
   @property({ type: Boolean, reflect: true }) expanded = false;
 
   @consume({ context, subscribe: true })
   @property({ attribute: false })
   private ctx?: RhAccordionContext;
-
-  #dir = new DirController(this);
 
   #internals = InternalsController.of(this, {
     role: 'heading',
@@ -66,26 +67,29 @@ export class RhAccordionHeader extends LitElement {
 
   #heading = new HeadingLevelContextConsumer(this);
 
+  #belongsTo?: RhAccordion | null;
+
   override connectedCallback() {
     super.connectedCallback();
     this.id ||= getRandomId(this.localName);
-    const accordion = this.closest('rh-accordion');
-    const heading = this.closest('h1,h2,h3,h4,h5,h6');
-    if (heading && accordion?.contains(heading)) {
-      this.#internals.ariaLevel = heading.localName.replace('h', '');
-      heading.replaceWith(this);
-    } else {
-      this.#internals.ariaLevel = Math.max(2, this.#heading.level).toString();
+    if (!isServer) {
+      this.#belongsTo = this.closest<RhAccordion>('rh-accordion');
+      const heading = this.closest('h1,h2,h3,h4,h5,h6');
+      if (heading && this.#belongsTo?.contains(heading)) {
+        this.#internals.ariaLevel = heading.localName.replace('h', '');
+        heading.replaceWith(this);
+      } else {
+        this.#internals.ariaLevel = Math.max(2, this.#heading.level).toString();
+      }
     }
   }
 
   render() {
     const { expanded } = this;
     const { accents, large = false } = this.ctx ?? {};
-    const rtl = this.#dir.dir === 'rtl';
     return html`
       <button id="button"
-              class="${classMap({ toggle: true, rtl, large, expanded })}"
+              class="${classMap({ toggle: true, large, expanded })}"
               @click="${this.#onClick}">
         <span id="header-container" class="${classMap({ [accents ?? '']: !!accents })}">
           <span id="header-text" part="text"><slot></slot></span>
@@ -101,16 +105,18 @@ export class RhAccordionHeader extends LitElement {
     `;
   }
 
-  #onClick(event: MouseEvent) {
-    const accordion = event.composedPath().find(isAccordion);
-    if (accordion) {
-      this.dispatchEvent(new AccordionHeaderChangeEvent(!this.expanded, this, accordion));
-    }
+  #onClick() {
+    this.expanded = !this.expanded;
+  }
+
+  #dispatchChange() {
+    this.dispatchEvent(new AccordionHeaderChangeEvent(this.expanded, this));
   }
 
   @observes('expanded')
   private expandedChanged() {
     this.#internals.ariaExpanded = String(!!this.expanded) as 'true' | 'false';
+    this.#dispatchChange();
   }
 }
 

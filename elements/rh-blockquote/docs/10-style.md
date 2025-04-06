@@ -1,28 +1,23 @@
 ## Style
 
-A blockquote is a combination of elements used to give visual prominence 
-to a quotation. By default, a blockquote includes a quote icon, quotation 
-text, and citation text <strong>at a minimum</strong>. A blockquote may 
-also include the following optional elements:
+A blockquote is a combination of elements used to give emphasis to a quote. A blockquote includes a quote icon, quotation text, and attribution text <strong>at a minimum</strong>. A blockquote may also include the following optional elements:
 
+ - Logo or image
  - Emphasis border
- - Logo
- - Title and heading text
- - Interactive elements or layouts like a video or card
 
 <figure>
-  <uxdot-example color-palette="lightest" width-adjustment="653px">
+  <uxdot-example color-palette="lightest" width-adjustment="774px">
     <img alt="Anatomy image of a blockquote with numbered annotations"
-         src="../blockquote-anatomy.png"
-         width="653"
-         height="530">
+         src="../style-anatomy.svg"
+         width="774"
+         height="600">
   </uxdot-example>
   <figcaption>
 
 1.  Quote icon
 2.  Quotation text
-3.  Citation text
-4.  Logo or text placeholder
+3.  Attribution text
+4.  Logo
 5.  Emphasis border
 
   </figcaption>
@@ -30,181 +25,74 @@ also include the following optional elements:
 
 ## Sizes
 
-
-<uxdot-example color-palette="lightest" width-adjustment="872px">
+<uxdot-example color-palette="lightest" width-adjustment="996px">
   <img alt="Two blockquotes, default size on the left and large size on the right"
-       src="../blockquote-style-sizes.png"
-       width="872"
-       height="350">
+       src="../blockquote-style-sizes.svg"
+       width="996"
+       height="358">
 </uxdot-example>
-
-<rh-table>
-
-| Size              | Element                 | Current value  |
-|-------------------|-------------------------|----------------|
-| Default           | Text size - quotation   | 20px, 1.25rem  |
-| Default           | Line height - quotation | 30 (1.5)       |
-| Large             | Text size - quotation   | 28px, 1.75rem  |
-| Large             | Line height - quotation | 36.4 (1.3)     |
-| Default and Large | Text size - citation    | 14px, 0.875rem |
-| Default and Large | Line height - citation  | 21 (1.5)       |
-
-</rh-table>
 
 ## Color scheme
-<a id="theme"></a>
 
-A blockquote is available for both light and dark color schemes, and uses [themable
-tokens](/theming/customizing/).
+<a id="scheme"></a>
 
+### Light color scheme
 
-<rh-table>
-
-| Element                | Current value                              |
-| ---------------------- | ------------------------------------------ |
-| Color - quote icon     | `--rh-color-icon-primary`                  |
-| Color - quotation text | `--rh-color-text-primary`                  |
-| Color - citation text  | `--rh-color-interactive-secondary-default` |
-
-</rh-table>
-
-### Light theme
-
-<uxdot-example color-palette="lightest" width-adjustment="589px">
-  <img alt="A light theme blockquote, red quote icon, black quotation text, and dark gray citation text"
-       src="../blockquote-theme-light.png"
-       width="589"
-       height="177">
+<uxdot-example color-palette="lightest" width-adjustment="750px">
+  <img alt="A light color scheme blockquote, red quote icon, black quotation text, and dark gray citation text"
+       src="../style-color-scheme-light.svg"
+       width="750"
+       height="204">
 </uxdot-example>
 
-### Dark theme
+### Dark color scheme
 
-<uxdot-example color-palette="darkest" width-adjustment="589px">
-  <img alt="A dark theme blockquote, red quote icon, white quotation text, and light gray citation text"
-       src="../blockquote-theme-dark.png"
-       width="589"
-       height="177">
+<uxdot-example color-palette="darkest" width-adjustment="750px">
+  <img alt="A dark color scheme blockquote, red quote icon, white quotation text, and light gray citation text"
+       src="../style-color-scheme-dark.svg"
+       width="750"
+       height="204">
 </uxdot-example>
-
-### Emphasis border
-
-<uxdot-example color-palette="lightest" width-adjustment="872px">
-  <img alt="Two blockquotes, a red emphasis border on the left and a black emphasis border on the right"
-       src="../blockquote-emphasis-theme-light.png"
-       width="872"
-       height="260">
-</uxdot-example>
-
-<uxdot-example color-palette="darkest" width-adjustment="872px">
-  <img alt="Two blockquotes, a red emphasis border on the left and a black emphasis border on the right"
-       src="../blockquote-emphasis-theme-dark.png"
-       width="872"
-       height="260">
-</uxdot-example>
-
-<rh-table>
-
-| Emphasis level | Token                        |
-| -------------- | ---------------------------- |
-| Primary        | `--rh-color-accent-brand`    |
-| Secondary      | `--rh-color-surface-darkest` |
-
-</rh-table>
-
-### Title and heading text
-
-<uxdot-example color-palette="lightest" width-adjustment="872px">
-  <img alt="Two blockquotes, both with red title text and black header text"
-       src="../blockquote-title-heading-theme-light.png"
-       width="872"
-       height="356">
-</uxdot-example>
-
-<uxdot-example color-palette="darkest" width-adjustment="872px">
-  <img alt="Two blockquotes, both with red title text and white header text"
-       src="../blockquote-title-heading-theme-dark.png"
-       width="872"
-       height="356">
-</uxdot-example>
-
-<rh-table>
-
-| Element      | Light theme               |
-| ------------ | ------------------------- |
-| Title text   | `--rh-color-accent-brand` |
-| Heading text | `--rh-color-text-primary` |
-
-</rh-table>
 
 ## Configuration
 
-The base elements in both sizes are stacked and left aligned by default, but they can be vertically centered if necessary.
+Elements in both blockquote sizes are aligned left by default, but they can be centered if necessary.
 
-<uxdot-example color-palette="lightest" width-adjustment="872px">
+<uxdot-example color-palette="lightest" width-adjustment="860px">
   <img alt="Four blockquotes, two are left aligned and two are vertically centered, the quote icon is 20px tall"
-       src="../blockquote-configuration.png"
-       width="872"
-       height="615">
+       src="../style-configuration.svg"
+       width="860"
+       height="673">
 </uxdot-example>
 
-### Order
+### Attribution text
 
-A blockquote was designed to be read from top to bottom. If certain optional elements are included, the order will change.
-
-<figure>
-  <uxdot-example color-palette="lightest" width-adjustment="872px">
-    <img alt="A blockquote with numbers 1 - 4 on the right side going from top to bottom"
-         src="../blockquote-configuration.png" 
-         width="872"
-         height="615">
-  </uxdot-example>
-  <figcaption>
-
-1.  Logo or text (always ordered first if included)
-2.  Quotate icon (always included and ordered first if there is no logo
-    or text)
-3.  Quotation text (always ordered after the quote icon)
-4.  Citation text (always ordered last)
-
-  </figcaption>
-</figure>
-
-### Citation text
-
-Citation text has specific styles applied to it.
-
-<uxdot-example color-palette="lightest" width-adjustment="349px">
-  <img src="../blockquote-configuration-citation.png"
-       alt="Three citation text examples"
-       width="349"
-       height="181">
+<uxdot-example color-palette="lightest" width-adjustment="355px">
+  <img src="../style-configuration-attribution.svg"
+       alt="Three attribution text examples"
+       width="355"
+       height="190">
 </uxdot-example>
 
 <rh-table>
 
 | Property                            | Token or value                       |
 | ----------------------------------- | ------------------------------------ |
-| Font family - all text              | `--rh-font-family-body-text`         |
 | Font weight - name                  | `--rh-font-weight-body-text-medium`  |
 | Font weight - job title and company | `--rh-font-weight-body-text-regular` |
-| Font style - company                | Italic                               |
+| Font style - company                | `font-style: italic;`                |
 
 </rh-table>
 
 ## Space
 
-Space values are the same in both sizes and on all breakpoints.
-
-<uxdot-example color-palette="lightest" width-adjustment="872px">
-  <img src="../blockquote-space.png"
+<uxdot-example color-palette="lightest" width-adjustment="774px">
+  <img src="../style-space.svg"
        alt="Four blockquotes with spacing values in between"
-       width="872"
-       height="642">
+       width="774"
+       height="328">
 </uxdot-example>
-
-<uxdot-spacer-tokens-table tokens="md, lg, 2xl"></uxdot-spacer-tokens-table>
 
 ## Interaction states
 
-A blockquote includes text only and is not interactive unless interactive elements are added like a video or other elements within a card. If interactive elements are added, go to their element or pattern pages to view the interaction states.
-
+A blockquote does not have interaction states unless interactive elements are added.
