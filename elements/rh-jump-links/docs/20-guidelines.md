@@ -18,10 +18,10 @@ include spaces.
 
 <rh-table>
 
-  | Element | Character count |
-  | ------------- | --------------- |
-  | Label | 18 |
-  | Section links | 30 |
+ | Element       | Character count |
+ | ------------- | --------------- |
+ | Label         | 18              |
+ | Section links | 30              |
 
 </rh-table>
 
@@ -32,7 +32,7 @@ Jump links are placed on the left edge of the grid on large screens so content
 can scroll freely on the right without interruption. Ensure there’s ample
 space between jump links and the content.
 
-<uxdot-example>
+<uxdot-example color-palette="lightest">
   <img alt="Jump links positioning"
        src="../jump-links-positioning.svg"
        width="1000"
