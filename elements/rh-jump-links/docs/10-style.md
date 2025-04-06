@@ -1,4 +1,3 @@
-
 ## Style
 
 Jump links are fixed on the page and follow a user as they scroll. It moves
@@ -6,7 +5,8 @@ them to a section of content when the corresponding link is selected. It looks
 visually similar to <a href="../tabs">Open tabs</a>, the only difference is
 the uppercase label on top.
 
-<uxdot-example color-palette="lightest" width-adjustment="537px">
+<uxdot-example color-palette="lightest"
+               width-adjustment="537px">
   <img alt="Jump links specs"
        src="../jump-links-style.svg"
        width="536"
@@ -17,14 +17,16 @@ the uppercase label on top.
 ### Color scheme
 <a id="theme"></a>
 
-<uxdot-example color-palette="lightest" width-adjustment="385px">
+<uxdot-example color-palette="lightest"
+               width-adjustment="385px">
   <img alt="Jump links theme light"
        src="../jump-links-theme-light.svg"
        width="383"
        height="300">
 </uxdot-example>
 
-<uxdot-example color-palette="darkest" width-adjustment="385px">
+<uxdot-example color-palette="darkest"
+               width-adjustment="385px">
   <img alt="Jump links theme dark"
        src="../jump-links-theme-dark.svg"
        width="383"
@@ -37,12 +39,10 @@ the uppercase label on top.
 Jump links display a label at the top indicating there are section links that
 a user can select. This label isn’t interactive.
 
-
 ### Section links
 
 Jump links feature links that float to the right of an anchor line, they
 represent the different sections that are available to select.
-
 
 ### Nested section links
 
@@ -52,7 +52,8 @@ their parent section link and indented slightly. There are guidelines about
 how many section links can be included, but no guidelines about how many
 nested section links can be included.
 
-<uxdot-example color-palette="lightest" width-adjustment="129px">
+<uxdot-example color-palette="lightest"
+               width-adjustment="129px">
   <img alt="Jump links nested section"
        src="../jump-links-nested.svg"
        width="127"
@@ -65,7 +66,8 @@ nested section links can be included.
 A red indicator bar highlights what the active section is. It’s positioned on
 top of the anchor line, not adjacent.
 
-<uxdot-example color-palette="lightest" width-adjustment="206px">
+<uxdot-example color-palette="lightest"
+               width-adjustment="206px">
   <img alt="Jump links active indicator bar"
        src="../jump-links-indicator.svg"
        width="206"
@@ -87,7 +89,8 @@ wrapped in a disclosure which is collapsed until a user expands the panel.
 ### Desktop
 
 <figure>
-  <uxdot-example color-palette="lightest" width-adjustment="992px">
+  <uxdot-example color-palette="lightest"
+                 width-adjustment="992px">
     <img alt="Jump links on desktop"
          src="../jump-links-responsive-desktop.svg">
   </uxdot-example>
@@ -98,7 +101,8 @@ wrapped in a disclosure which is collapsed until a user expands the panel.
 ### Tablet
 
 <figure>
-  <uxdot-example color-palette="lightest" width-adjustment="768px">
+  <uxdot-example color-palette="lightest"
+                 width-adjustment="768px">
     <img alt="Jump links on tablet"
          src="../jump-links-responsive-tablet.svg"
          width="768"
@@ -111,7 +115,8 @@ wrapped in a disclosure which is collapsed until a user expands the panel.
 ### Mobile
 
 <figure>
-  <uxdot-example color-palette="lightest" width-adjustment="360px">
+  <uxdot-example color-palette="lightest"
+                 width-adjustment="360px">
     <img alt="Jump links on mobile"
          src="../jump-links-responsive-mobile.svg"
          width="360"
@@ -123,14 +128,16 @@ wrapped in a disclosure which is collapsed until a user expands the panel.
 
 ## Spacing
 
-<uxdot-example color-palette="lightest" width-adjustment="385px">
+<uxdot-example color-palette="lightest"
+               width-adjustment="385px">
   <img alt="Jump links spacing on desktop"
        src="../jump-links-spacing.svg"
        width="384"
        height="304">
 </uxdot-example>
 
-<uxdot-example color-palette="lightest" width-adjustment="872px">
+<uxdot-example color-palette="lightest"
+               width-adjustment="872px">
   <img alt="Jump links spacing on mobile"
        src="../jump-links-spacing-2.svg"
        width="884"
