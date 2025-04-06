@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-`<rh-accordion>`: corrected use of `expanded-index` and `expanded`
+`<rh-accordion>`: `expanded` and `expanded-index` attributes work as expected
