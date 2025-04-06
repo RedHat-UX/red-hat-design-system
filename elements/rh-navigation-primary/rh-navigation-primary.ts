@@ -71,8 +71,14 @@ export class RhNavigationPrimary extends LitElement {
                               null,
   );
 
+  /**
+   * We should start in compact mode (mobile first)
+   * Later, after the element has fully hydrated, we can recompute
+   * whether to use the compact layout based on the viewport
+   * @internal
+   */
   @provide({ context })
-  @state() private compact = true; // we should start in compact mode (mobile first)
+  @state() compact = true;
 
   @state()
   private _overlayOpen = false;
@@ -382,7 +388,10 @@ export class RhNavigationPrimary extends LitElement {
     }
   }
 
-  /** close all open dropdowns in primary slot */
+  /**
+   * close all open dropdowns in primary slot
+   * @param except
+   */
   #closePrimaryDropdowns(except?: RhNavigationPrimaryItem) {
     this.#openPrimaryDropdowns.forEach((dropdown: RhNavigationPrimaryItem) => {
       if (dropdown !== except) {
