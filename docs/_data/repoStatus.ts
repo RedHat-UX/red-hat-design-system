@@ -36,8 +36,6 @@ export interface RepoStatusRecord {
   name: string;
   /** Appears on the header of the docs page */
   description?: string;
-  /** Appears above the header on the docs page */
-  preamble?: string;
   /** Controls the optional appearance of status tags in listings such as sidenav */
   overallStatus: RepoStatus;
   /** Controls the content of the repo status table element on docs pages */
@@ -314,8 +312,6 @@ export default [
     tagName: 'rh-navigation-primary',
     name: 'Navigation (primary)',
     type: 'element',
-    description: `The Primary navigation is a container of menus and utilities, it allows visitors to orient themselves and move through a website. It is persistent on every page to ensure a consistent user experience across websites.`,
-    preamble: `<h2>Coming Soon!</h2><p>This element is available to use, but the rest of the documentation is in progress.</p>`,
     overallStatus: 'planned',
     libraries: {
       figma: 'planned',
