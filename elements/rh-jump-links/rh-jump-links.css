@@ -50,8 +50,9 @@
     position: relative;
     z-index: 2;
 
-    rh-icon:dir(rtl) {
-      rotate: 180deg;
+    rh-icon {
+      pointer-events: none;
+      &:dir(rtl) { rotate: 180deg; }
     }
 
     &:nth-of-type(1) {
