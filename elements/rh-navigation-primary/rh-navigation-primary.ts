@@ -28,8 +28,10 @@ export type NavigationPrimaryPalette = Extract<ColorPalette, (
 )>;
 
 /**
- * The Primary navigation allows users to orient themselves and successfully move through web experiences. It is
- * persistent on every page to ensure a consistent user experience across our systems of websites.
+ * The Primary navigation is a container of menus and utilities, it allows
+ * visitors to orient themselves and move through a website. It is persistent on
+ * every page to ensure a consistent user experience across websites.
+ *
  * @summary       Primary navigation
  * @slot          - Place hamburger menu links and dropdowns
  * @slot          event -
