@@ -16,7 +16,7 @@
   #container {
     display: flex;
     flex-flow: row nowrap;
-    overflow: scroll visible;
+    overflow: auto visible;
 
     &:after,
     &:before {
