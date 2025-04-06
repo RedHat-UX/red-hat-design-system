@@ -54,7 +54,7 @@ a {
   }
 
   &.active {
-    color: var(--rh-color-body-text-primary);
+    color: var(--rh-color-text-primary);
 
     --_bdr-c: var(--rh-color-brand-red);
   }
@@ -66,7 +66,8 @@ a {
       height: 100%;
       inset-inline-start: 0;
       inset-block: 0;
-      border-inline-start: var(--_active_bdr,
+      border-inline-start:
+        var(--_active_bdr,
           var(--rh-length-xs, 4px)
           solid
           var(--_bdr-c, var(--rh-color-border-status-neutral)));
@@ -76,7 +77,10 @@ a {
       width: 100%;
       inset-block-start: 0;
       inset-inline: 0;
-      border-block-start: var(--rh-length-xs, 4px) solid var(--_bdr-c, var(--rh-color-border-status-neutral));
+      border-block-start:
+        var(--rh-length-xs, 4px)
+        solid
+        var(--_bdr-c, var(--rh-color-border-status-neutral));
     }
   }
 }
