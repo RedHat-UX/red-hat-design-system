@@ -312,11 +312,10 @@ export default [
     tagName: 'rh-navigation-primary',
     name: 'Navigation (primary)',
     type: 'element',
-    description: `The Primary navigation is a container of menus and utilities, it allows visitors to orient themselves and move through a website. It is persistent on every page to ensure a consistent user experience across websites.`,
     overallStatus: 'planned',
     libraries: {
       figma: 'planned',
-      rhds: 'planned',
+      rhds: 'ready',
       shared: 'planned',
       docs: 'planned',
     },
