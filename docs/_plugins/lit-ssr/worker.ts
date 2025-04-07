@@ -40,8 +40,8 @@ try {
         try {
           await import(spec);
         } catch (e) {
-          console.log(spec);
-          console.error(e);
+          console.log(`Failed to load ${bareSpec} from ${spec.replace(process.cwd(), '').replace('file://', '')}!`);
+          console.warn((e as Error)?.message?.trim() || e);
         }
       }));
 } catch (e) {
