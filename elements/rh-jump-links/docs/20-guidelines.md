@@ -1,6 +1,163 @@
-## Usage
+## General usage
 
-### Content
+In general, use jump links as a sticky or persistent navigation to help users 
+move through sections of content without scrolling.
+
+## Vertical vs. horizontal 
+
+There are two available orientations that offer several benefits and risks.
+
+<rh-table>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Orientation</th>
+        <th scope="col">Benefits</th>
+        <th scope="col">Risks</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Vertical</td>
+        <td>
+          <ul>
+            <li>Flexible placement</li>
+            <li>Does not cover other content when scrolling</li>
+            <li>Can display lots of headings with lots of words</li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li>Less visually prominent</li>
+            <li>Layout can get narrow and show lots of lines</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>Horizontal</td>
+        <td>
+          <ul>
+            <li>More visually prominent</li>
+            <li>Spans the entire page width</li>
+            <li>Layout does not change</li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li>Less flexible placement</li>
+            <li>Sometimes covers other content when scrolling</li>
+            <li>On small screens, some jump links are not visible</li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
+
+## Writing content
+
+### Title text
+
+The title should always be included and should default to "Jump to section" if 
+something else is not provided. Use sentence case only and limit title text to 
+`25` characters max.
+
+<hgroup>
+
+## Layout
+
+### Placement
+
+</hgroup>
+
+Vertical jump links are place on the left side of content by default and aligned 
+to the top edge. However, in situations where there is already and element on 
+the left side like a menu, jump links can be placed on the right side of 
+content.
+
+{#
+<uxdot-example>
+  insert placement graphic 1 here
+</uxdot-example>
+<uxdot-example>
+  insert placement graphic 2 here
+</uxdot-example>
+#}
+
+### Mobile
+
+On small screens, both vertical and horizontal jump links collapse into a 
+disclosure which is always located above content. When the disclosure is 
+expanded, jump links are displayed and any page content below is pushed down.
+
+{#
+<uxdot-example>
+  insert mobile graphic 1 here
+</uxdot-example>
+#}
+
+<hgroup>
+
+## Behavior
+
+### Order of operations
+
+</hgroup>
+
+When a page loads, both vertical and horizontal jump links are anchored to the 
+top edge of content or a container before becoming sticky. There are a few 
+things that can happen from here:
+
+- The first section on top is highlighted with a thick red border
+- When a user selects a jump link, they are moved down to their chosen section
+- The new active section is highlighted
+- When a user selects another jump link, they are moved up or down
+- When a user scrolls, active sections are highlighted as they pass by
+
+### Nested jump links
+
+Nested jump links are indented under the parent section. They are hidden by 
+default and become visible when the parent section becomes active by a user 
+clicking on it or scrolling to it. They can be individually selected, but only 
+one level max is recommended.
+
+<rh-alert state="info">
+  <p>Only the vertical orientation can display nested jump links.</p>
+</rh-alert>
+
+{#
+<uxdot-example>
+  insert nested jump links graphic
+</uxdot-example>
+#}
+
+
+{# TODO:
+
+### Scrolling on backgrounds
+
+## Responsive design
+
+### Vertical
+
+### Horizontal
+
+### Disclosure
+
+## Best practices
+
+### No title
+
+### Long headings
+
+### Max number of jump links
+#}
+
+
+
+
+
+{# OLD DOCS:
 
 Jump links are used to help a user navigate through large sections of content.
 Blocks of content that use jump links should be displayed in full and not
@@ -149,3 +306,5 @@ first section link is focused and the tab order becomes top to bottom.
        width="871"
        height="195" />
 </uxdot-example>
+
+#}
