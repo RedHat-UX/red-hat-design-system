@@ -1,5 +1,5 @@
 import { LitElement, type PropertyValues } from 'lit';
-import { type ColorPalette } from '../../lib/context/color/provider.js';
+import { type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
 import '@rhds/elements/rh-surface/rh-surface.js';
 import '@rhds/elements/rh-tooltip/rh-tooltip.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
@@ -73,7 +73,6 @@ export declare class RhAudioPlayer extends LitElement {
     microcopy: {};
     /** Element's color palette */
     colorPalette?: ColorPalette;
-    private on?;
     private _mediaseries?;
     private _mediatitle?;
     private _transcripts?;
@@ -114,10 +113,12 @@ export declare class RhAudioPlayer extends LitElement {
     play(): Promise<void | undefined>;
     /**
      * Seeks media to a given point in seconds
+     * @param seconds
      */
     seek(seconds: number): void;
     /**
      * Seeks media a given number of secons from current elapsed time
+     * @param seconds
      */
     seekFromCurrentTime(seconds?: number): void;
     /**

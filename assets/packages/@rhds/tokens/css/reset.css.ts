@@ -119,19 +119,33 @@ import { css } from 'lit'; export default css`
   --rh-color-green-60: #3d7317;
   /* Alert - Success title text */
   --rh-color-green-70: #204d00;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-green-10) h s l / 10%) */
   --rh-color-green-10-hsl: 95.00000000000003 60.00000000000004% 92.15686274509804%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-green-10) r g b / 10%) */
   --rh-color-green-10-rgb: 233 247 223;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-green-20) h s l / 10%) */
   --rh-color-green-20-hsl: 95.55555555555556 65.85365853658536% 83.92156862745097%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-green-20) r g b / 10%) */
   --rh-color-green-20-rgb: 209 241 187;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-green-30) h s l / 10%) */
   --rh-color-green-30-hsl: 95.06493506493506 52.380952380952394% 71.17647058823529%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-green-30) r g b / 10%) */
   --rh-color-green-30-rgb: 175 220 143;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-green-40) h s l / 10%) */
   --rh-color-green-40-hsl: 95.05617977528091 39.55555555555555% 55.88235294117647%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-green-40) r g b / 10%) */
   --rh-color-green-40-rgb: 135 187 98;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-green-50) h s l / 10%) */
   --rh-color-green-50-hsl: 95.21739130434783 42.99065420560747% 41.96078431372549%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-green-50) r g b / 10%) */
   --rh-color-green-50-rgb: 99 153 61;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-green-60) h s l / 10%) */
   --rh-color-green-60-hsl: 95.21739130434783 66.66666666666667% 27.058823529411764%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-green-60) r g b / 10%) */
   --rh-color-green-60-rgb: 61 115 23;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-green-70) h s l / 10%) */
   --rh-color-green-70-hsl: 95.06493506493506 100% 15.098039215686274%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-green-70) r g b / 10%) */
   --rh-color-green-70-rgb: 32 77 0;
   /* Label - Filled (Orange) background color */
   --rh-color-orange-10: #ffe8cc;
@@ -146,21 +160,37 @@ import { css } from 'lit'; export default css`
   /* Label - Filled (Orange) text color */
   --rh-color-orange-70: #732e00;
   --rh-color-orange-80: #4d1f00;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-orange-10) h s l / 10%) */
   --rh-color-orange-10-hsl: 32.941176470588225 100% 90%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-orange-10) r g b / 10%) */
   --rh-color-orange-10-rgb: 255 232 204;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-orange-20) h s l / 10%) */
   --rh-color-orange-20-hsl: 33.02752293577981 94.78260869565219% 77.45098039215686%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-orange-20) r g b / 10%) */
   --rh-color-orange-20-rgb: 252 203 143;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-orange-30) h s l / 10%) */
   --rh-color-orange-30-hsl: 32.926829268292686 92.13483146067415% 65.09803921568627%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-orange-30) r g b / 10%) */
   --rh-color-orange-30-rgb: 248 174 84;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-orange-40) h s l / 10%) */
   --rh-color-orange-40-hsl: 32.752293577981646 91.5966386554622% 53.333333333333336%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-orange-40) r g b / 10%) */
   --rh-color-orange-40-rgb: 245 146 27;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-orange-50) h s l / 10%) */
   --rh-color-orange-50-hsl: 29.83957219251337 86.17511520737327% 42.549019607843135%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-orange-50) r g b / 10%) */
   --rh-color-orange-50-rgb: 202 108 15;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-orange-60) h s l / 10%) */
   --rh-color-orange-60-hsl: 26.842105263157904 92.68292682926828% 32.15686274509804%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-orange-60) r g b / 10%) */
   --rh-color-orange-60-rgb: 158 74 6;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-orange-70) h s l / 10%) */
   --rh-color-orange-70-hsl: 24 100% 22.54901960784314%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-orange-70) r g b / 10%) */
   --rh-color-orange-70-rgb: 115 46 0;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-orange-80) h s l / 10%) */
   --rh-color-orange-80-hsl: 24.155844155844157 100% 15.098039215686274%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-orange-80) r g b / 10%) */
   --rh-color-orange-80-rgb: 77 31 0;
   --rh-color-icon-primary-on-light: #ee0000;
   --rh-color-icon-primary-on-dark: #ee0000;
@@ -218,19 +248,33 @@ import { css } from 'lit'; export default css`
   --rh-color-blue-60: #004d99;
   /* Alert - Info title text */
   --rh-color-blue-70: #003366;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-blue-10) h s l / 10%) */
   --rh-color-blue-10-hsl: 209.03225806451616 100% 93.92156862745098%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-blue-10) r g b / 10%) */
   --rh-color-blue-10-rgb: 224 240 255;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-blue-20) h s l / 10%) */
   --rh-color-blue-20-hsl: 210.44776119402988 91.78082191780825% 85.68627450980392%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-blue-20) r g b / 10%) */
   --rh-color-blue-20-rgb: 185 218 252;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-blue-30) h s l / 10%) */
   --rh-color-blue-30-hsl: 210.29126213592232 89.56521739130436% 77.45098039215685%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-blue-30) r g b / 10%) */
   --rh-color-blue-30-rgb: 146 197 249;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-blue-40) h s l / 10%) */
   --rh-color-blue-40-hsl: 210 75.70093457943923% 58.03921568627452%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-blue-40) r g b / 10%) */
   --rh-color-blue-40-rgb: 67 148 229;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-blue-50) h s l / 10%) */
   --rh-color-blue-50-hsl: 210 100% 40%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-blue-50) r g b / 10%) */
   --rh-color-blue-50-rgb: 0 102 204;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-blue-60) h s l / 10%) */
   --rh-color-blue-60-hsl: 209.80392156862746 100% 30%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-blue-60) r g b / 10%) */
   --rh-color-blue-60-rgb: 0 77 153;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-blue-70) h s l / 10%) */
   --rh-color-blue-70-hsl: 210 100% 20%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-blue-70) r g b / 10%) */
   --rh-color-blue-70-rgb: 0 51 102;
   /* Lightest surface (light theme) or primary text (dark theme) */
   --rh-color-white: #ffffff;
@@ -254,25 +298,45 @@ import { css } from 'lit'; export default css`
   --rh-color-gray-90: #1f1f1f;
   /* Primary surface (dark theme) or primary text (light theme) */
   --rh-color-gray-95: #151515;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-gray-10) h s l / 10%) */
   --rh-color-gray-10-hsl: 0 0% 94.90196078431372%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-gray-10) r g b / 10%) */
   --rh-color-gray-10-rgb: 242 242 242;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-gray-20) h s l / 10%) */
   --rh-color-gray-20-hsl: 0 0% 87.84313725490196%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-gray-20) r g b / 10%) */
   --rh-color-gray-20-rgb: 224 224 224;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-gray-30) h s l / 10%) */
   --rh-color-gray-30-hsl: 0 0% 78.03921568627452%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-gray-30) r g b / 10%) */
   --rh-color-gray-30-rgb: 199 199 199;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-gray-40) h s l / 10%) */
   --rh-color-gray-40-hsl: 0 0% 63.921568627450974%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-gray-40) r g b / 10%) */
   --rh-color-gray-40-rgb: 163 163 163;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-gray-50) h s l / 10%) */
   --rh-color-gray-50-hsl: 0 0% 43.92156862745098%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-gray-50) r g b / 10%) */
   --rh-color-gray-50-rgb: 112 112 112;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-gray-60) h s l / 10%) */
   --rh-color-gray-60-hsl: 0 0% 30.19607843137255%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-gray-60) r g b / 10%) */
   --rh-color-gray-60-rgb: 77 77 77;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-gray-70) h s l / 10%) */
   --rh-color-gray-70-hsl: 0 0% 21.96078431372549%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-gray-70) r g b / 10%) */
   --rh-color-gray-70-rgb: 56 56 56;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-gray-80) h s l / 10%) */
   --rh-color-gray-80-hsl: 0 0% 16.07843137254902%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-gray-80) r g b / 10%) */
   --rh-color-gray-80-rgb: 41 41 41;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-gray-90) h s l / 10%) */
   --rh-color-gray-90-hsl: 0 0% 12.156862745098039%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-gray-90) r g b / 10%) */
   --rh-color-gray-90-rgb: 31 31 31;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-gray-95) h s l / 10%) */
   --rh-color-gray-95-hsl: 0 0% 8.235294117647058%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-gray-95) r g b / 10%) */
   --rh-color-gray-95-rgb: 21 21 21;
   /* Brand black (avoid using) */
   --rh-color-black: #000000;
@@ -289,21 +353,37 @@ import { css } from 'lit'; export default css`
   /* Inline link visited hover (light theme) */
   --rh-color-purple-70: #21134d;
   --rh-color-purple-80: #1b0d33;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-purple-10) h s l / 10%) */
   --rh-color-purple-10-hsl: 254.4 100% 95.09803921568627%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-purple-10) r g b / 10%) */
   --rh-color-purple-10-rgb: 236 230 255;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-purple-20) h s l / 10%) */
   --rh-color-purple-20-hsl: 254.0425531914893 68.11594202898556% 86.47058823529412%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-purple-20) r g b / 10%) */
   --rh-color-purple-20-rgb: 208 197 244;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-purple-30) h s l / 10%) */
   --rh-color-purple-30-hsl: 254.32835820895522 60.36036036036033% 78.23529411764706%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-purple-30) r g b / 10%) */
   --rh-color-purple-30-rgb: 182 166 233;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-purple-40) h s l / 10%) */
   --rh-color-purple-40-hsl: 254.25742574257427 54.010695187165794% 63.33333333333333%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-purple-40) r g b / 10%) */
   --rh-color-purple-40-rgb: 135 111 212;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-purple-50) h s l / 10%) */
   --rh-color-purple-50-hsl: 254.2857142857143 49.60629921259843% 49.80392156862745%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-purple-50) r g b / 10%) */
   --rh-color-purple-50-rgb: 94 64 190;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-purple-60) h s l / 10%) */
   --rh-color-purple-60-hsl: 254.0425531914894 54.65116279069767% 33.72549019607843%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-purple-60) r g b / 10%) */
   --rh-color-purple-60-rgb: 61 39 133;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-purple-70) h s l / 10%) */
   --rh-color-purple-70-hsl: 254.48275862068965 60.416666666666664% 18.823529411764707%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-purple-70) r g b / 10%) */
   --rh-color-purple-70-rgb: 33 19 77;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-purple-80) h s l / 10%) */
   --rh-color-purple-80-hsl: 262.10526315789474 59.375000000000014% 12.549019607843137%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-purple-80) r g b / 10%) */
   --rh-color-purple-80-rgb: 27 13 51;
   --rh-color-red-orange-10: #ffe3d9;
   --rh-color-red-orange-20: #fbbea8;
@@ -312,19 +392,33 @@ import { css } from 'lit'; export default css`
   --rh-color-red-orange-50: #f0561d;
   --rh-color-red-orange-60: #b1380b;
   --rh-color-red-orange-70: #731f00;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-red-orange-10) h s l / 10%) */
   --rh-color-red-orange-10-hsl: 15.789473684210513 100% 92.54901960784314%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-red-orange-10) r g b / 10%) */
   --rh-color-red-orange-10-rgb: 255 227 217;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-red-orange-20) h s l / 10%) */
   --rh-color-red-orange-20-hsl: 15.903614457831333 91.20879120879121% 82.15686274509804%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-red-orange-20) r g b / 10%) */
   --rh-color-red-orange-20-rgb: 251 190 168;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-red-orange-30) h s l / 10%) */
   --rh-color-red-orange-30-hsl: 16.406249999999996 90.14084507042254% 72.15686274509804%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-red-orange-30) r g b / 10%) */
   --rh-color-red-orange-30-rgb: 248 155 120;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-red-orange-40) h s l / 10%) */
   --rh-color-red-orange-40-hsl: 16.235294117647054 88.54166666666671% 62.35294117647059%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-red-orange-40) r g b / 10%) */
   --rh-color-red-orange-40-rgb: 244 120 74;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-red-orange-50) h s l / 10%) */
   --rh-color-red-orange-50-hsl: 16.208530805687207 87.55186721991701% 52.74509803921569%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-red-orange-50) r g b / 10%) */
   --rh-color-red-orange-50-rgb: 240 86 29;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-red-orange-60) h s l / 10%) */
   --rh-color-red-orange-60-hsl: 16.265060240963855 88.29787234042554% 36.86274509803921%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-red-orange-60) r g b / 10%) */
   --rh-color-red-orange-60-rgb: 177 56 11;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-red-orange-70) h s l / 10%) */
   --rh-color-red-orange-70-hsl: 16.17391304347826 100% 22.54901960784314%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-red-orange-70) r g b / 10%) */
   --rh-color-red-orange-70-rgb: 115 31 0;
   --rh-color-red-10: #fce3e3;
   /* Lightest brand red */
@@ -341,21 +435,37 @@ import { css } from 'lit'; export default css`
   --rh-color-red-70: #5f0000;
   /* Darkest brand red */
   --rh-color-red-80: #3f0000;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-red-10) h s l / 10%) */
   --rh-color-red-10-hsl: 0 80.64516129032265% 93.92156862745098%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-red-10) r g b / 10%) */
   --rh-color-red-10-rgb: 252 227 227;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-red-20) h s l / 10%) */
   --rh-color-red-20-hsl: 0 87.09677419354838% 87.84313725490196%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-red-20) r g b / 10%) */
   --rh-color-red-20-rgb: 251 197 197;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-red-30) h s l / 10%) */
   --rh-color-red-30-hsl: 0 87.0967741935484% 81.76470588235294%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-red-30) r g b / 10%) */
   --rh-color-red-30-rgb: 249 168 168;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-red-40) h s l / 10%) */
   --rh-color-red-40-hsl: 0 87.09677419354841% 69.6078431372549%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-red-40) r g b / 10%) */
   --rh-color-red-40-rgb: 245 110 110;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-red-50) h s l / 10%) */
   --rh-color-red-50-hsl: 0 100% 46.666666666666664%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-red-50) r g b / 10%) */
   --rh-color-red-50-rgb: 238 0 0;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-red-60) h s l / 10%) */
   --rh-color-red-60-hsl: 0 100% 32.549019607843135%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-red-60) r g b / 10%) */
   --rh-color-red-60-rgb: 166 0 0;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-red-70) h s l / 10%) */
   --rh-color-red-70-hsl: 0 100% 18.627450980392158%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-red-70) r g b / 10%) */
   --rh-color-red-70-rgb: 95 0 0;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-red-80) h s l / 10%) */
   --rh-color-red-80-hsl: 0 100% 12.352941176470589%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-red-80) r g b / 10%) */
   --rh-color-red-80-rgb: 63 0 0;
   /* Alert - Default background */
   --rh-color-teal-10: #daf2f2;
@@ -369,21 +479,37 @@ import { css } from 'lit'; export default css`
   /* Alert - Default title text */
   --rh-color-teal-70: #004d4d;
   --rh-color-teal-80: #003333;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-teal-10) h s l / 10%) */
   --rh-color-teal-10-hsl: 180 47.99999999999998% 90.19607843137254%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-teal-10) r g b / 10%) */
   --rh-color-teal-10-rgb: 218 242 242;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-teal-20) h s l / 10%) */
   --rh-color-teal-20-hsl: 180 45.833333333333336% 81.17647058823529%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-teal-20) r g b / 10%) */
   --rh-color-teal-20-rgb: 185 229 229;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-teal-30) h s l / 10%) */
   --rh-color-teal-30-hsl: 180 44.28571428571429% 72.54901960784314%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-teal-30) r g b / 10%) */
   --rh-color-teal-30-rgb: 154 216 216;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-teal-40) h s l / 10%) */
   --rh-color-teal-40-hsl: 180 40.54054054054054% 56.470588235294116%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-teal-40) r g b / 10%) */
   --rh-color-teal-40-rgb: 99 189 189;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-teal-50) h s l / 10%) */
   --rh-color-teal-50-hsl: 180 49.54128440366972% 42.745098039215684%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-teal-50) r g b / 10%) */
   --rh-color-teal-50-rgb: 55 163 163;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-teal-60) h s l / 10%) */
   --rh-color-teal-60-hsl: 180 71.42857142857142% 27.450980392156865%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-teal-60) r g b / 10%) */
   --rh-color-teal-60-rgb: 20 120 120;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-teal-70) h s l / 10%) */
   --rh-color-teal-70-hsl: 180 100% 15.098039215686274%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-teal-70) r g b / 10%) */
   --rh-color-teal-70-rgb: 0 77 77;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-teal-80) h s l / 10%) */
   --rh-color-teal-80-hsl: 180 100% 10%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-teal-80) r g b / 10%) */
   --rh-color-teal-80-rgb: 0 51 51;
   /* Alert - Warning background */
   --rh-color-yellow-10: #fff4cc;
@@ -396,21 +522,37 @@ import { css } from 'lit'; export default css`
   /* Alert - Warning title text */
   --rh-color-yellow-70: #73480b;
   --rh-color-yellow-80: #54330b;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-yellow-10) h s l / 10%) */
   --rh-color-yellow-10-hsl: 47.058823529411775 100% 90%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-yellow-10) r g b / 10%) */
   --rh-color-yellow-10-rgb: 255 244 204;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-yellow-20) h s l / 10%) */
   --rh-color-yellow-20-hsl: 46.80851063829787 100% 72.35294117647058%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-yellow-20) r g b / 10%) */
   --rh-color-yellow-20-rgb: 255 224 114;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-yellow-30) h s l / 10%) */
   --rh-color-yellow-30-hsl: 46.81034482758621 100% 54.509803921568626%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-yellow-30) r g b / 10%) */
   --rh-color-yellow-30-rgb: 255 204 23;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-yellow-40) h s l / 10%) */
   --rh-color-yellow-40-hsl: 43.79999999999999 83.33333333333334% 47.05882352941176%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-yellow-40) r g b / 10%) */
   --rh-color-yellow-40-rgb: 220 166 20;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-yellow-50) h s l / 10%) */
   --rh-color-yellow-50-hsl: 40.95808383233534 82.26600985221675% 39.80392156862745%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-yellow-50) r g b / 10%) */
   --rh-color-yellow-50-rgb: 185 132 18;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-yellow-60) h s l / 10%) */
   --rh-color-yellow-60-hsl: 37.77777777777777 81.81818181818181% 32.35294117647059%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-yellow-60) r g b / 10%) */
   --rh-color-yellow-60-rgb: 150 100 15;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-yellow-70) h s l / 10%) */
   --rh-color-yellow-70-hsl: 35.192307692307686 82.53968253968253% 24.705882352941178%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-yellow-70) r g b / 10%) */
   --rh-color-yellow-70-rgb: 115 72 11;
+  /* DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-yellow-80) h s l / 10%) */
   --rh-color-yellow-80-hsl: 32.87671232876713 76.84210526315789% 18.627450980392158%;
+  /* DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-yellow-80) r g b / 10%) */
   --rh-color-yellow-80-rgb: 84 51 11;
   /* Primary interactive - default (Light theme) */
   --rh-color-interactive-primary-default-on-light: #0066cc;
@@ -528,8 +670,11 @@ import { css } from 'lit'; export default css`
   --rh-color-surface-light: #e0e0e0;
   /* Tertiary surface (dark theme) */
   --rh-color-surface-dark: #383838;
-  /* Alternative tertiary surface (not available for use with context provider) */
-  --rh-color-surface-dark-alt: #292929;
+  /**
+   * DEPRECATED. Theme authors should use --rh-color-surface-dark. Element authors should use oklch(from var(--rh-color-surface-dark) calc(l * 0.82) c h). Alternative tertiary surface (not available for use with context provider)
+   * 
+   */
+  --rh-color-surface-dark-alt: oklch(from(--rh-color-surface-dark) calc(l * 0.82) c h);
   /* Secondary surface (dark theme) */
   --rh-color-surface-darker: #1f1f1f;
   /* Primary surface (dark theme) */

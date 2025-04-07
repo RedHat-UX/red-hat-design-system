@@ -27,11 +27,12 @@ export declare class RhTab extends LitElement {
     /** True when the tab is disabled */
     disabled: boolean;
     private ctx?;
-    /** Sets color theme based on parent context */
-    private on?;
     private icons;
     private button;
+    private first;
+    private last;
     connectedCallback(): void;
+    willUpdate(): void;
     render(): import("lit-html").TemplateResult<1>;
     private activeChanged;
     /**

@@ -1,18 +1,23 @@
 var _RhAccordion_instances, _a, _RhAccordion_expandedIndexSet, _RhAccordion_expanded, _RhAccordion_expandedIndex, _RhAccordion_logger, _RhAccordion_mo, _RhAccordion_makeContext, _RhAccordion_panelForHeader, _RhAccordion_expand, _RhAccordion_collapse, _RhAccordion_onChange, _RhAccordion_allHeaders, _RhAccordion_allPanels, _RhAccordion_getIndex;
+var RhAccordion_1;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
+import { customElement } from 'lit/decorators/custom-element.js';
+import { property } from 'lit/decorators/property.js';
 import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 import { provide } from '@lit/context';
-import { colorContextConsumer } from '../../lib/context/color/consumer.js';
-import { colorContextProvider } from '../../lib/context/color/provider.js';
+import { colorPalettes } from '@rhds/elements/lib/color-palettes.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 import { NumberListConverter, ComposedEvent } from '@patternfly/pfe-core';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { RhAccordionHeader, AccordionHeaderChangeEvent } from './rh-accordion-header.js';
 import { RhAccordionPanel } from './rh-accordion-panel.js';
 import { context } from './context.js';
+export * from './rh-accordion-header.js';
+export * from './rh-accordion-panel.js';
 import { css } from "lit";
-const styles = css `:host{display:block;container:accordion/inline-size}#container{color:var(--rh-color-text-primary);background-color:var(--rh-color-surface)}#container.expanded{box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 #15151533)}#container.large{--_header-font-size:var(--rh-font-size-body-text-md,1rem);--_panel-font-size:var(--rh-font-size-body-text-md,1rem)}@container accordion (min-width: 768px){#container.large{--_header-font-size:var(--rh-font-size-body-text-lg,1.125rem)}}::slotted(rh-accordion-header:first-child){display:block;border-block:1px solid var(--rh-color-border-subtle)}::slotted(rh-accordion-header:not(:first-child)){display:block;border-block-end:1px solid var(--rh-color-border-subtle)}::slotted(rh-accordion-header:is([expanded])){display:block;border-block-end:0}::slotted(rh-accordion-panel:is([expanded])){display:block;border-block-end:1px solid var(--rh-color-border-subtle);box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 #15151533)}`;
+const styles = css `:host{display:block;container:accordion/inline-size}#container{color:var(--rh-color-text-primary);--_accordion-background:light-dark(var(--rh-color-surface-lightest,#fff),var(--rh-color-surface-darkest,#151515))}#container.palette{--_accordion-background:var(--rh-color-surface)}#container.expanded{box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 #15151533)}#container.large{--_header-font-size:var(--rh-font-size-body-text-md,1rem);--_panel-font-size:var(--rh-font-size-body-text-md,1rem)}@container accordion (min-width: 768px){#container.large{--_header-font-size:var(--rh-font-size-body-text-lg,1.125rem)}}::slotted(rh-accordion-header:first-child){display:block;border-block:1px solid var(--rh-color-border-subtle)}::slotted(rh-accordion-header:not(:first-child)){display:block;border-block-end:1px solid var(--rh-color-border-subtle)}::slotted(rh-accordion-header:is([expanded])){display:block;border-block-end:0}::slotted(rh-accordion-panel:is([expanded])){display:block;border-block-end:1px solid var(--rh-color-border-subtle);box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 #15151533)}`;
 export class AccordionExpandEvent extends ComposedEvent {
     constructor(toggle, panel) {
         super('expand');
@@ -35,23 +40,23 @@ export class AccordionCollapseEvent extends ComposedEvent {
  * @slot - Place the `rh-accordion-header` and `rh-accordion-panel` elements here.
  * @attr  [accents=inline] Position accents in the header either inline or bottom
  */
-export class RhAccordion extends LitElement {
+let RhAccordion = RhAccordion_1 = _a = class RhAccordion extends LitElement {
     constructor() {
         super(...arguments);
         _RhAccordion_instances.add(this);
+        /**
+         * If this accordion uses large styles
+         */
+        this.large = false;
         _RhAccordion_expandedIndexSet.set(this, new Set());
         _RhAccordion_expanded.set(this, false);
         _RhAccordion_expandedIndex.set(this, []);
         _RhAccordion_logger.set(this, new Logger(this));
         _RhAccordion_mo.set(this, new MutationObserver(() => this.updateAccessibility()));
         this.ctx = __classPrivateFieldGet(this, _RhAccordion_instances, "m", _RhAccordion_makeContext).call(this);
-        /**
-         * If this accordion uses large styles
-         */
-        this.large = false;
     }
     static isAccordion(target) {
-        return target instanceof _a;
+        return target instanceof RhAccordion_1;
     }
     static isHeader(target) {
         return target instanceof RhAccordionHeader;
@@ -62,21 +67,20 @@ export class RhAccordion extends LitElement {
     static isAccordionChangeEvent(event) {
         return event instanceof AccordionHeaderChangeEvent;
     }
+    /**
+     * Sets and reflects the currently expanded accordion 0-based indexes.
+     * Use commas to separate multiple indexes.
+     * ```html
+     * <rh-accordion expanded-index="1,2">
+     *   ...
+     * </rh-accordion>
+     * ```
+     */
     get expandedIndex() {
         return __classPrivateFieldGet(this, _RhAccordion_expandedIndex, "f");
     }
     set expandedIndex(value) {
         __classPrivateFieldSet(this, _RhAccordion_expandedIndex, value, "f");
-        __classPrivateFieldSet(this, _RhAccordion_expanded, !!__classPrivateFieldGet(this, _RhAccordion_expandedIndex, "f").length, "f");
-        this.headers.forEach((header, i) => {
-            const expanded = __classPrivateFieldGet(this, _RhAccordion_expandedIndexSet, "f").has(i);
-            header.expanded = expanded;
-            const panel = this.panels[i];
-            if (panel) {
-                panel.expanded = expanded;
-                panel.hidden = !expanded;
-            }
-        });
     }
     /** All headers for this accordion */
     get headers() {
@@ -93,16 +97,11 @@ export class RhAccordion extends LitElement {
         this.updateAccessibility();
     }
     render() {
-        const { on, large } = this;
+        const { large } = this;
         const expanded = __classPrivateFieldGet(this, _RhAccordion_expanded, "f");
         return html `
       <div id="container"
-           class="${classMap({
-            on: true,
-            large,
-            [on ?? 'light']: true,
-            expanded,
-        })}"><slot></slot></div>
+           class="${classMap({ large, expanded })}"><slot></slot></div>
     `;
     }
     async getUpdateComplete() {
@@ -113,14 +112,18 @@ export class RhAccordion extends LitElement {
         ]);
         return c && results.every(Boolean);
     }
-    firstUpdated() {
-        this.headers.forEach((header, index) => {
-            if (header.expanded) {
-                __classPrivateFieldGet(this, _RhAccordion_expandedIndexSet, "f").add(index);
+    updateExpanded() {
+        if (__classPrivateFieldGet(this, _RhAccordion_expandedIndex, "f").length === 0) {
+            return;
+        }
+        // close all first
+        this.collapseAll();
+        __classPrivateFieldGet(this, _RhAccordion_expandedIndex, "f").forEach(headerIndex => {
+            if (!this.headers[headerIndex]) {
+                return;
             }
+            __classPrivateFieldGet(this, _RhAccordion_instances, "m", _RhAccordion_expand).call(this, headerIndex);
         });
-        this.expandedIndex = [...__classPrivateFieldGet(this, _RhAccordion_expandedIndexSet, "f")];
-        __classPrivateFieldSet(this, _RhAccordion_expanded, !!__classPrivateFieldGet(this, _RhAccordion_expandedIndex, "f").length, "f");
     }
     contextChanged() {
         this.ctx = __classPrivateFieldGet(this, _RhAccordion_instances, "m", _RhAccordion_makeContext).call(this);
@@ -150,10 +153,10 @@ export class RhAccordion extends LitElement {
         const { headers } = this;
         const header = headers[index];
         if (!header.expanded) {
-            await this.expand(index);
+            await __classPrivateFieldGet(this, _RhAccordion_instances, "m", _RhAccordion_expand).call(this, index);
         }
         else {
-            await this.collapse(index);
+            await __classPrivateFieldGet(this, _RhAccordion_instances, "m", _RhAccordion_collapse).call(this, index);
         }
     }
     /**
@@ -206,74 +209,113 @@ export class RhAccordion extends LitElement {
         this.headers.forEach((_, i) => __classPrivateFieldGet(this, _RhAccordion_instances, "m", _RhAccordion_collapse).call(this, i));
         await this.updateComplete;
     }
-}
-_a = RhAccordion, _RhAccordion_expandedIndexSet = new WeakMap(), _RhAccordion_expanded = new WeakMap(), _RhAccordion_expandedIndex = new WeakMap(), _RhAccordion_logger = new WeakMap(), _RhAccordion_mo = new WeakMap(), _RhAccordion_instances = new WeakSet(), _RhAccordion_makeContext = function _RhAccordion_makeContext() {
+};
+_RhAccordion_expandedIndexSet = new WeakMap();
+_RhAccordion_expanded = new WeakMap();
+_RhAccordion_expandedIndex = new WeakMap();
+_RhAccordion_logger = new WeakMap();
+_RhAccordion_mo = new WeakMap();
+_RhAccordion_instances = new WeakSet();
+_RhAccordion_makeContext = function _RhAccordion_makeContext() {
     const { accents = 'inline', large } = this;
-    const expanded = __classPrivateFieldGet(this, _RhAccordion_expanded, "f");
-    return { accents, large, expanded };
-}, _RhAccordion_panelForHeader = function _RhAccordion_panelForHeader(header) {
+    return { accents, large };
+};
+_RhAccordion_panelForHeader = function _RhAccordion_panelForHeader(header) {
     const next = header.nextElementSibling;
-    if (!_a.isPanel(next)) {
+    if (!RhAccordion_1.isPanel(next)) {
         return next?.querySelector('rh-accordion-panel');
     }
     else {
         return next;
     }
-}, _RhAccordion_expand = function _RhAccordion_expand(index) {
+};
+_RhAccordion_expand = function _RhAccordion_expand(index) {
     // If this index is not already listed in the expandedSets array, add it
-    this.expandedIndex = [...__classPrivateFieldGet(this, _RhAccordion_expandedIndexSet, "f").add(index)];
-}, _RhAccordion_collapse = function _RhAccordion_collapse(index) {
-    if (__classPrivateFieldGet(this, _RhAccordion_expandedIndexSet, "f").delete(index)) {
-        this.expandedIndex = [...__classPrivateFieldGet(this, _RhAccordion_expandedIndexSet, "f")];
+    if (__classPrivateFieldGet(this, _RhAccordion_expandedIndexSet, "f").has(index)) {
+        return;
     }
-}, _RhAccordion_onChange = function _RhAccordion_onChange(event) {
-    if (_a.isAccordionChangeEvent(event)) {
-        const index = __classPrivateFieldGet(this, _RhAccordion_instances, "m", _RhAccordion_getIndex).call(this, event.target);
-        if (event.expanded) {
-            this.expand(index, event.accordion);
-        }
-        else {
-            this.collapse(index);
-        }
+    __classPrivateFieldGet(this, _RhAccordion_expandedIndexSet, "f").add(index);
+    const header = this.headers[index];
+    const panel = this.panels[index];
+    if (header && panel) {
+        header.expanded = true;
+        panel.expanded = true;
     }
-    this.requestUpdate('expandedIndex');
-}, _RhAccordion_allHeaders = function _RhAccordion_allHeaders(accordion = this) {
+};
+_RhAccordion_collapse = function _RhAccordion_collapse(index) {
+    if (!__classPrivateFieldGet(this, _RhAccordion_expandedIndexSet, "f").has(index)) {
+        return;
+    }
+    const header = this.headers[index];
+    const panel = this.panels[index];
+    if (header && panel) {
+        header.expanded = false;
+        panel.expanded = false;
+    }
+    __classPrivateFieldGet(this, _RhAccordion_expandedIndexSet, "f").delete(index);
+};
+_RhAccordion_onChange = function _RhAccordion_onChange(event) {
+    if (this.contains(event.target)) {
+        event.stopPropagation();
+    }
+    const index = __classPrivateFieldGet(this, _RhAccordion_instances, "m", _RhAccordion_getIndex).call(this, event.target);
+    if (event.expanded) {
+        __classPrivateFieldGet(this, _RhAccordion_instances, "m", _RhAccordion_expand).call(this, index);
+    }
+    else {
+        __classPrivateFieldGet(this, _RhAccordion_instances, "m", _RhAccordion_collapse).call(this, index);
+    }
+};
+_RhAccordion_allHeaders = function _RhAccordion_allHeaders(accordion = this) {
     return Array.from(accordion.children).filter((x) => x instanceof RhAccordionHeader);
-}, _RhAccordion_allPanels = function _RhAccordion_allPanels(accordion = this) {
-    return Array.from(accordion.children).filter((x => _a.isPanel(x)));
-}, _RhAccordion_getIndex = function _RhAccordion_getIndex(el) {
-    if (_a.isHeader(el)) {
+};
+_RhAccordion_allPanels = function _RhAccordion_allPanels(accordion = this) {
+    return Array.from(accordion.children).filter((x => RhAccordion_1.isPanel(x)));
+};
+_RhAccordion_getIndex = function _RhAccordion_getIndex(el) {
+    if (RhAccordion_1.isHeader(el)) {
         return this.headers.findIndex(header => header.id === el.id);
     }
-    if (_a.isPanel(el)) {
+    if (RhAccordion_1.isPanel(el)) {
         return this.panels.findIndex(panel => panel.id === el.id);
     }
     __classPrivateFieldGet(this, _RhAccordion_logger, "f").warn('The #getIndex method expects to receive a header or panel element.');
     return -1;
 };
-RhAccordion.properties = {
-    accents: { attribute: true, reflect: true },
-    large: { reflect: true, type: Boolean },
-    colorPalette: { reflect: true, attribute: 'color-palette' },
-    expandedIndex: {
+RhAccordion.styles = [styles];
+__decorate([
+    property({ attribute: true, reflect: true })
+], RhAccordion.prototype, "accents", void 0);
+__decorate([
+    property({ reflect: true, type: Boolean })
+], RhAccordion.prototype, "large", void 0);
+__decorate([
+    property({ reflect: true, attribute: 'color-palette' })
+], RhAccordion.prototype, "colorPalette", void 0);
+__decorate([
+    property({
         attribute: 'expanded-index',
         converter: NumberListConverter,
         hasChanged(value, old) {
             return JSON.stringify(old) !== JSON.stringify(value);
         },
-    }
-};
-RhAccordion.styles = [styles];
-__decorate([
-    colorContextConsumer()
-], RhAccordion.prototype, "on", void 0);
+    })
+], RhAccordion.prototype, "expandedIndex", null);
 __decorate([
     provide({ context })
 ], RhAccordion.prototype, "ctx", void 0);
+__decorate([
+    observes('expandedIndex')
+], RhAccordion.prototype, "updateExpanded", null);
 __decorate([
     observes('accents'),
     observes('large'),
     observes('expandedIndex')
 ], RhAccordion.prototype, "contextChanged", null);
-customElements.define("rh-accordion", RhAccordion);
+RhAccordion = RhAccordion_1 = __decorate([
+    customElement('rh-accordion'),
+    colorPalettes,
+    themable
+], RhAccordion);
+export { RhAccordion };
 //# sourceMappingURL=rh-accordion.js.map

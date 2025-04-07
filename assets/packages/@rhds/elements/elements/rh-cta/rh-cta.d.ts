@@ -84,8 +84,6 @@ export declare class RhCta extends LitElement {
     icon?: IconNameFor<IconSetName>;
     /** Icon set */
     iconSet: IconSetName;
-    /** Sets color theme based on parent context */
-    private on?;
     protected getUpdateComplete(): Promise<boolean>;
     render(): import("lit-html").TemplateResult<1>;
     firstUpdated(): void;

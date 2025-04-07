@@ -14,8 +14,8 @@
   "imports": {
     "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
-    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
@@ -23,8 +23,8 @@
     "lit-element": "/assets/packages/lit-element/index.js",
     "prism-esm": "/assets/packages/prism-esm/prism.js",
     "lit": "/assets/packages/lit/index.js",
-    "@rhds/tokens/css/color-context-provider.css.js": "/assets/packages/@rhds/tokens/css/color-context-provider.css.js",
-    "@rhds/tokens/css/color-context-consumer.css.js": "/assets/packages/@rhds/tokens/css/color-context-consumer.css.js",
+    "@rhds/tokens/css/default-theme.css.js": "/assets/packages/@rhds/tokens/css/default-theme.css.js",
+    "@rhds/tokens/css/color-palette.css.js": "/assets/packages/@rhds/tokens/css/color-palette.css.js",
     "lit/decorators/custom-element.js": "/assets/packages/lit/decorators/custom-element.js",
     "lit/decorators/property.js": "/assets/packages/lit/decorators/property.js",
     "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
@@ -32,7 +32,7 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.5/core.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.0/core.js",
     "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
@@ -90,33 +90,9 @@
 
     <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
   </head>
-  <body unresolved="">
+  <body>
     <main><rh-tile>
-  <rh-icon   slot="icon" icon="cloud-automation"><template shadowroot="open" shadowrootmode="open"><style>:host {
-  line-height: 0;
-  aspect-ratio: 1/1;
-  display: inline-flex;
-  place-content: center;
-}
-
-#container {
-  display: contents;
-}
-
-svg {
-  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
-  fill: currentcolor;
-  aspect-ratio: 1/1;
-}
-
-.standard svg {
-  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
-}
-
-.microns svg {
-  width: 12px;
-}
-</style><!--lit-part 5A+PTGpViiE=-->
+  <rh-icon   slot="icon" icon="cloud-automation"><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part 5A+PTGpViiE=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
            class=" standard "><!--lit-part a9YkVmEr2aU=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36"><path d="M28.62 15.52c-.05-9.6-12.95-12.64-17.28-4.09a7.12 7.12 0 1 0-.84 14.19h.5a.62.62 0 0 0 0-1.24h-.5c-8.5-.46-7.35-12.79 1.09-11.65a.64.64 0 0 0 .69-.36c3.59-8 15.4-5.21 15.08 3.52V16a.63.63 0 0 0 .56.66 3.87 3.87 0 0 1-.41 7.71H27a.62.62 0 0 0 0 1.24h.5a5.12 5.12 0 0 0 1.12-10.09Z"/><path d="M24 24.38h-1.1a4 4 0 0 0-.7-1.69l.78-.78a.63.63 0 0 0-.89-.89l-.78.78a4 4 0 0 0-1.69-.69V20a.62.62 0 0 0-1.24 0v1.11a4 4 0 0 0-1.69.69l-.78-.8a.63.63 0 0 0-.89.89l.78.78a4 4 0 0 0-.7 1.69H14a.62.62 0 0 0 0 1.24h1.1a4 4 0 0 0 .7 1.69l-.78.78a.63.63 0 0 0 .89.89l.78-.78a4 4 0 0 0 1.69.69V30a.62.62 0 0 0 1.24 0v-1.11a4 4 0 0 0 1.69-.69l.78.78a.63.63 0 0 0 .89-.89l-.78-.78a4 4 0 0 0 .7-1.69H24a.62.62 0 0 0 0-1.24Zm-5 3.33a2.71 2.71 0 0 1 0-5.42 2.71 2.71 0 0 1 0 5.42Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>

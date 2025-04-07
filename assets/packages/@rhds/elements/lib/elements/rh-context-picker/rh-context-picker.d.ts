@@ -1,5 +1,5 @@
-import type { ColorPalette } from '@rhds/elements/lib/context/color/provider.js';
 import type { Color } from '@rhds/tokens';
+import type { ColorPalette } from '@rhds/elements/lib/color-palettes.js';
 import { LitElement, type ComplexAttributeConverter } from 'lit';
 import '@rhds/elements/rh-tooltip/rh-tooltip.js';
 export declare class ContextChangeEvent extends Event {
@@ -11,8 +11,8 @@ export declare class ContextChangeEvent extends Event {
     provider: HTMLElement | null);
 }
 export declare const ColorPaletteListConverter: ComplexAttributeConverter;
-export declare const paletteMap: Map<ColorPalette, Color>;
-export declare const paletteNames: ColorPalette[];
+export declare const paletteMap: Map<"light" | "lighter" | "lightest" | "dark" | "darker" | "darkest", Color>;
+export declare const paletteNames: ("light" | "lighter" | "lightest" | "dark" | "darker" | "darkest")[];
 export declare class RhContextPicker extends LitElement {
     #private;
     static formAssociated: boolean;
@@ -21,8 +21,7 @@ export declare class RhContextPicker extends LitElement {
     /** ID of context element to toggle (same root) */
     target?: string | HTMLElement;
     value: ColorPalette;
-    private on?;
-    allow: ColorPalette[];
+    allow: ("light" | "lighter" | "lightest" | "dark" | "darker" | "darkest")[];
     render(): import("lit-html").TemplateResult<1>;
     formStateRestoreCallback(state: string): void;
     firstUpdated(): void;

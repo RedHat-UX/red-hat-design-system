@@ -1,6 +1,5 @@
 import { css } from 'lit';
 const styles = css `
-
   & pre[class*="language-"]::selection,
   & pre[class*="language-"] ::selection,
   & code[class*="language-"]::selection,

@@ -1,4 +1,5 @@
-"use strict";
+var _a;
+import { installWindowOnGlobal } from '@lit-labs/ssr/lib/dom-shim.js';
 class ObserverShim {
     observe() {
         void 0;
@@ -19,32 +20,7 @@ class MiniHTMLTemplateElement extends MiniHTMLElement {
         this.content = { cloneNode: () => this.innerHTML };
     }
 }
-class MiniDocument {
-    createElement(tagName) {
-        switch (tagName) {
-            case 'template':
-                return new MiniHTMLTemplateElement(tagName);
-            default:
-                return new MiniHTMLElement(tagName);
-        }
-    }
-}
-// @ts-expect-error: this runs in node
-globalThis.window ?? (globalThis.window = globalThis);
-// @ts-expect-error: this runs in node
-globalThis.document ?? (globalThis.document = new MiniDocument());
-// @ts-expect-error: this runs in node
-globalThis.navigator ?? (globalThis.navigator = { userAgent: '' });
-// @ts-expect-error: this runs in node
-globalThis.ErrorEvent ?? (globalThis.ErrorEvent = Event);
-// @ts-expect-error: this runs in node
-globalThis.IntersectionObserver ?? (globalThis.IntersectionObserver = ObserverShim);
-// @ts-expect-error: this runs in node
-globalThis.MutationObserver ?? (globalThis.MutationObserver = ObserverShim);
-// @ts-expect-error: this runs in node
-globalThis.ResizeObserver ?? (globalThis.ResizeObserver = ObserverShim);
-// @ts-expect-error: this runs in node
-globalThis.getComputedStyle ?? (globalThis.getComputedStyle = function () {
+function getComputedStyle() {
     return {
         getPropertyPriority() {
             return '';
@@ -53,5 +29,25 @@ globalThis.getComputedStyle ?? (globalThis.getComputedStyle = function () {
             return '';
         },
     };
+}
+;
+// @ts-expect-error: opt in to event support in ssr
+globalThis.litSsrCallConnectedCallback = true;
+installWindowOnGlobal({
+    ErrorEvent: Event,
+    IntersectionObserver: ObserverShim,
+    MutationObserver: ObserverShim,
+    ResizeObserver: ObserverShim,
+    getComputedStyle,
 });
+// @ts-expect-error: this runs in node
+(_a = globalThis.navigator).userAgent ?? (_a.userAgent = '@lit-labs/ssr');
+globalThis.document.createElement = function createElement(tagName) {
+    switch (tagName) {
+        case 'template':
+            return new MiniHTMLTemplateElement(tagName);
+        default:
+            return new MiniHTMLElement(tagName);
+    }
+};
 //# sourceMappingURL=ssr-shims.js.map

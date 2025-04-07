@@ -1,4 +1,4 @@
-import type { ReactiveController, ReactiveElement } from 'lit';
+import { type ReactiveController, type ReactiveElement } from 'lit';
 export interface Options {
     observe?: boolean | MutationObserverInit;
     emptyWarning?: string;

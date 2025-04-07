@@ -1,8 +1,12 @@
+import { __decorate } from "tslib";
 import { tokens as metaTokens } from '@rhds/tokens/meta.js';
 import { tokens as allTokens } from '@rhds/tokens';
 import { LitElement, html } from 'lit';
+import { property } from 'lit/decorators/property.js';
+import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit-html/directives/class-map.js';
 import { styleMap } from 'lit-html/directives/style-map.js';
+import { state } from 'lit/decorators/state.js';
 import { StringListConverter } from '@patternfly/pfe-core';
 import '@rhds/elements/rh-table/rh-table.js';
 import './uxdot-copy-button.js';
@@ -19,7 +23,7 @@ const getToken = (name) => {
 /**
  * Reads token data from @rhds/tokens and outputs a table for specified tokens
  */
-export class UxdotSpacerTokensTable extends LitElement {
+let UxdotSpacerTokensTable = class UxdotSpacerTokensTable extends LitElement {
     constructor() {
         super(...arguments);
         this.caption = '';
@@ -31,7 +35,7 @@ export class UxdotSpacerTokensTable extends LitElement {
     render() {
         const metaData = this.tokens
             .map(getToken)
-            .filter(Boolean);
+            .filter(x => !!x);
         return html `
       <!-- TODO: remove lightdom after implementing auto-load-->
       <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
@@ -80,13 +84,22 @@ export class UxdotSpacerTokensTable extends LitElement {
       <slot></slot>
     `;
     }
-}
-UxdotSpacerTokensTable.properties = {
-    caption: {},
-    colorPalette: { attribute: 'color-palette' },
-    tokens: { converter: StringListConverter },
-    metaData: { state: true }
 };
 UxdotSpacerTokensTable.styles = [styles];
-customElements.define("uxdot-spacer-tokens-table", UxdotSpacerTokensTable);
+__decorate([
+    property()
+], UxdotSpacerTokensTable.prototype, "caption", void 0);
+__decorate([
+    property({ attribute: 'color-palette' })
+], UxdotSpacerTokensTable.prototype, "colorPalette", void 0);
+__decorate([
+    property({ converter: StringListConverter })
+], UxdotSpacerTokensTable.prototype, "tokens", void 0);
+__decorate([
+    state()
+], UxdotSpacerTokensTable.prototype, "metaData", void 0);
+UxdotSpacerTokensTable = __decorate([
+    customElement('uxdot-spacer-tokens-table')
+], UxdotSpacerTokensTable);
+export { UxdotSpacerTokensTable };
 //# sourceMappingURL=uxdot-spacer-tokens-table.js.map

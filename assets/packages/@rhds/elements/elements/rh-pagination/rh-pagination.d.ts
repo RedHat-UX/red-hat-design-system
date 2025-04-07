@@ -20,8 +20,6 @@ import { LitElement } from 'lit';
 export declare class RhPagination extends LitElement {
     #private;
     static readonly version = "{{version}}";
-    /** Sets color theme based on parent context */
-    private on?;
     static readonly styles: CSSStyleSheet[];
     /**
      * Override `overflow` values set from HTML or JS.
@@ -58,7 +56,10 @@ export declare class RhPagination extends LitElement {
     next(): Promise<number>;
     /** Navigate to the last page */
     last(): Promise<number>;
-    /** Navigate to a specific page */
+    /**
+     * Navigate to a specific page
+     * @param page
+     */
     go(page: 'first' | 'prev' | 'next' | 'last' | number): Promise<number>;
 }
 declare global {

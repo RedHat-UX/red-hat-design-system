@@ -1,3 +1,4 @@
+import { isServer } from 'lit';
 import { Logger } from './logger.js';
 export class LightDOMController {
     constructor(host, initializer, options) {
@@ -31,8 +32,13 @@ export class LightDOMController {
      * Returns a boolean statement of whether or not this component contains any light DOM.
      */
     hasLightDOM() {
-        return !!(this.host.children.length > 0
-            || (this.host.textContent ?? '').trim().length > 0);
+        if (isServer) {
+            return false;
+        }
+        else {
+            return !!(this.host.children.length > 0
+                || (this.host.textContent ?? '').trim().length > 0);
+        }
     }
 }
 //# sourceMappingURL=light-dom-controller.js.map

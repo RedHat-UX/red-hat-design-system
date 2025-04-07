@@ -1,6 +1,6 @@
 import { LitElement, type PropertyValues } from 'lit';
-import { type ColorPalette } from '../../lib/context/color/provider.js';
 import { RhTile } from './rh-tile.js';
+import { type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
 /**
  * A group of `<rh-tile>` elements which handles radio selection.
  * @slot - Put one or more `rh-tile` elements in this slot
@@ -25,10 +25,6 @@ export declare class RhTileGroup extends LitElement {
      * Tile group always resets its context to `base`, unless explicitly provided with a `color-palette`.
      */
     colorPalette?: ColorPalette;
-    /**
-     * Sets color theme based on parent context
-     */
-    private on?;
     /**
      * All slotted tiles
      */

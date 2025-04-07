@@ -1,16 +1,15 @@
 import { LitElement } from 'lit';
 import { ComposedEvent } from '@patternfly/pfe-core';
+import { type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
 import '@rhds/elements/rh-surface/rh-surface.js';
 import './rh-navigation-secondary-menu-section.js';
 import './rh-navigation-secondary-overlay.js';
 import { RhNavigationSecondaryDropdown } from './rh-navigation-secondary-dropdown.js';
-import { type ColorPalette } from '../../lib/context/color/provider.js';
 export declare class SecondaryNavOverlayChangeEvent extends ComposedEvent {
     open: boolean;
     toggle: HTMLElement;
     constructor(open: boolean, toggle: HTMLElement);
 }
-export type NavPalette = Extract<ColorPalette, ('lighter' | 'dark')>;
 /**
  * The Secondary navigation is used to connect a series of pages together. It displays wayfinding content and links relevant to the page it is placed on. It should be used in conjunction with the [primary navigation](../navigation-primary).
  * @summary Propagates related content across a series of pages
@@ -33,13 +32,9 @@ export declare class RhNavigationSecondary extends LitElement {
     static readonly styles: CSSStyleSheet[];
     private static instances;
     /**
-     * Color palette darker | lighter (default: lighter)
+     * Color palette dark | lighter (default: lighter)
      */
-    colorPalette: NavPalette;
-    /**
-     * Sets color theme based on parent context
-     */
-    private on?;
+    colorPalette: ColorPalette;
     private _nav?;
     /**
      * Customize the default `aria-label` on the `<nav>` container.

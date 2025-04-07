@@ -1,6 +1,9 @@
 var _RhNavigationSecondaryDropdown_instances, _RhNavigationSecondaryDropdown_slots, _RhNavigationSecondaryDropdown_logger, _RhNavigationSecondaryDropdown_highlight, _RhNavigationSecondaryDropdown_mo, _RhNavigationSecondaryDropdown_open, _RhNavigationSecondaryDropdown_close, _RhNavigationSecondaryDropdown_mutationsCallback;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { html, LitElement } from 'lit';
+import { customElement } from 'lit/decorators/custom-element.js';
+import { state } from 'lit/decorators/state.js';
+import { query } from 'lit/decorators/query.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { ComposedEvent } from '@patternfly/pfe-core';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
@@ -24,7 +27,7 @@ const styles = css `:host{display:block}#container{border-inline-start:var(--rh-
  * @slot menu   - Menu for dropdown, expects `<rh-navigation-secondary-menu>` element
  * @fires { SecondaryNavDropdownExpandEvent } change - Fires when a dropdown is clicked
  */
-export class RhNavigationSecondaryDropdown extends LitElement {
+let RhNavigationSecondaryDropdown = class RhNavigationSecondaryDropdown extends LitElement {
     constructor() {
         super(...arguments);
         _RhNavigationSecondaryDropdown_instances.add(this);
@@ -33,9 +36,6 @@ export class RhNavigationSecondaryDropdown extends LitElement {
         _RhNavigationSecondaryDropdown_highlight.set(this, false);
         _RhNavigationSecondaryDropdown_mo.set(this, new MutationObserver(__classPrivateFieldGet(this, _RhNavigationSecondaryDropdown_instances, "m", _RhNavigationSecondaryDropdown_mutationsCallback).bind(this)));
         this.expanded = false;
-    }
-    get _container() {
-        return this.renderRoot?.querySelector("#container") ?? null;
     }
     connectedCallback() {
         super.connectedCallback();
@@ -89,8 +89,13 @@ export class RhNavigationSecondaryDropdown extends LitElement {
         // trigger change event which evokes the mutation on this.expanded
         this.dispatchEvent(new SecondaryNavDropdownExpandEvent(this.expanded, this));
     }
-}
-_RhNavigationSecondaryDropdown_slots = new WeakMap(), _RhNavigationSecondaryDropdown_logger = new WeakMap(), _RhNavigationSecondaryDropdown_highlight = new WeakMap(), _RhNavigationSecondaryDropdown_mo = new WeakMap(), _RhNavigationSecondaryDropdown_instances = new WeakSet(), _RhNavigationSecondaryDropdown_open = function _RhNavigationSecondaryDropdown_open() {
+};
+_RhNavigationSecondaryDropdown_slots = new WeakMap();
+_RhNavigationSecondaryDropdown_logger = new WeakMap();
+_RhNavigationSecondaryDropdown_highlight = new WeakMap();
+_RhNavigationSecondaryDropdown_mo = new WeakMap();
+_RhNavigationSecondaryDropdown_instances = new WeakSet();
+_RhNavigationSecondaryDropdown_open = function _RhNavigationSecondaryDropdown_open() {
     const link = __classPrivateFieldGet(this, _RhNavigationSecondaryDropdown_slots, "f").getSlotted('link').find(child => child instanceof HTMLAnchorElement);
     link?.setAttribute('aria-expanded', 'true');
     // menu as a RhNavigationSecondaryMenu in the slotted child is specific to rh-navigation-secondary.
@@ -98,7 +103,8 @@ _RhNavigationSecondaryDropdown_slots = new WeakMap(), _RhNavigationSecondaryDrop
     // could possibly become a sub component of the abstraction instead.
     const menu = __classPrivateFieldGet(this, _RhNavigationSecondaryDropdown_slots, "f").getSlotted('menu').find(child => child instanceof RhNavigationSecondaryMenu);
     menu.visible = true;
-}, _RhNavigationSecondaryDropdown_close = function _RhNavigationSecondaryDropdown_close() {
+};
+_RhNavigationSecondaryDropdown_close = function _RhNavigationSecondaryDropdown_close() {
     const link = __classPrivateFieldGet(this, _RhNavigationSecondaryDropdown_slots, "f").getSlotted('link').find(child => child instanceof HTMLAnchorElement);
     link?.setAttribute('aria-expanded', 'false');
     // Same as comment in #open()
@@ -107,20 +113,27 @@ _RhNavigationSecondaryDropdown_slots = new WeakMap(), _RhNavigationSecondaryDrop
     if (menu) {
         menu.visible = false;
     }
-}, _RhNavigationSecondaryDropdown_mutationsCallback = async function _RhNavigationSecondaryDropdown_mutationsCallback() {
+};
+_RhNavigationSecondaryDropdown_mutationsCallback = async function _RhNavigationSecondaryDropdown_mutationsCallback() {
     const [menu] = __classPrivateFieldGet(this, _RhNavigationSecondaryDropdown_slots, "f").getSlotted('menu');
     __classPrivateFieldSet(this, _RhNavigationSecondaryDropdown_highlight, menu.querySelector('[aria-current="page"]') ? true : false, "f");
     this.requestUpdate();
 };
-RhNavigationSecondaryDropdown.properties = {
-    expanded: { state: true }
-};
 RhNavigationSecondaryDropdown.styles = [styles];
+__decorate([
+    query('#container')
+], RhNavigationSecondaryDropdown.prototype, "_container", void 0);
+__decorate([
+    state()
+], RhNavigationSecondaryDropdown.prototype, "expanded", void 0);
 __decorate([
     observes('expanded')
 ], RhNavigationSecondaryDropdown.prototype, "_expandedChanged", null);
 __decorate([
     bound
 ], RhNavigationSecondaryDropdown.prototype, "_clickHandler", null);
-customElements.define("rh-navigation-secondary-dropdown", RhNavigationSecondaryDropdown);
+RhNavigationSecondaryDropdown = __decorate([
+    customElement('rh-navigation-secondary-dropdown')
+], RhNavigationSecondaryDropdown);
+export { RhNavigationSecondaryDropdown };
 //# sourceMappingURL=rh-navigation-secondary-dropdown.js.map

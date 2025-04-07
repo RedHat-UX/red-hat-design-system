@@ -1,5 +1,4 @@
 import { LitElement } from 'lit';
-import { type ColorPalette } from '../../lib/context/color/provider.js';
 /**
  * Accordion Panel
  *
@@ -9,11 +8,10 @@ import { type ColorPalette } from '../../lib/context/color/provider.js';
 export declare class RhAccordionPanel extends LitElement {
     static readonly styles: CSSStyleSheet[];
     expanded: boolean;
-    colorPalette?: ColorPalette;
-    private on?;
     private ctx?;
     connectedCallback(): void;
     render(): import("lit-html").TemplateResult<1>;
+    private expandedChanged;
 }
 declare global {
     interface HTMLElementTagNameMap {

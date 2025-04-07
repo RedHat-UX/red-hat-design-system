@@ -8490,6 +8490,15 @@
             },
             {
               "kind": "method",
+              "name": "hostDisconnected",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
               "name": "setActive",
               "return": {
                 "type": {
@@ -8548,6 +8557,10 @@
             },
             {
               "kind": "method",
+              "name": "hostDisconnected"
+            },
+            {
+              "kind": "method",
               "name": "setActive",
               "parameters": [
                 {
@@ -8587,212 +8600,15 @@
           "members": [
             {
               "kind": "field",
-              "name": "#tagNames",
+              "name": "#instances",
               "privacy": "private",
-              "type": {
-                "text": "string[]"
-              }
+              "static": true,
+              "default": "new Set<ScrollSpyController>"
             },
             {
               "kind": "field",
-              "name": "#activeAttribute",
-              "privacy": "private",
-              "type": {
-                "text": "string"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "#io",
-              "privacy": "private",
-              "type": {
-                "text": "IntersectionObserver | undefined"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "#passedLinks",
-              "privacy": "private",
-              "default": "new Set<Element>()",
-              "description": "Which link's targets have already scrolled past?"
-            },
-            {
-              "kind": "field",
-              "name": "#force",
-              "privacy": "private",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Ignore intersections?"
-            },
-            {
-              "kind": "field",
-              "name": "#intersected",
-              "privacy": "private",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Has the intersection observer found an element?"
-            },
-            {
-              "kind": "field",
-              "name": "#root",
-              "privacy": "private",
-              "type": {
-                "text": "ScrollSpyControllerOptions['root']"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "#rootMargin",
-              "privacy": "private",
-              "type": {
-                "text": "string | undefined"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "#threshold",
-              "privacy": "private",
-              "type": {
-                "text": "number | number[]"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "#getRootNode",
-              "privacy": "private",
-              "type": {
-                "text": "() => Node"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "#getHash",
-              "privacy": "private",
-              "type": {
-                "text": "(el: Element) => string | null"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "#linkChildren",
-              "privacy": "private",
-              "type": {
-                "text": "Element[]"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "root",
-              "type": {
-                "text": "Element | Document | null | undefined"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "rootMargin",
-              "type": {
-                "text": "string | undefined"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "threshold",
-              "type": {
-                "text": "number | number[]"
-              }
-            },
-            {
-              "kind": "method",
-              "name": "hostConnected",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "method",
-              "name": "#initIo"
-            },
-            {
-              "kind": "method",
-              "name": "#markPassed",
-              "parameters": [
-                {
-                  "name": "link",
-                  "type": {
-                    "text": "Element"
-                  }
-                },
-                {
-                  "name": "force",
-                  "type": {
-                    "text": "boolean"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "#setActive",
-              "parameters": [
-                {
-                  "name": "link",
-                  "optional": true,
-                  "type": {
-                    "text": "EventTarget | null"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "#nextIntersection"
-            },
-            {
-              "kind": "method",
-              "name": "#onIo",
-              "parameters": [
-                {
-                  "name": "entries",
-                  "type": {
-                    "text": "IntersectionObserverEntry[]"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "setActive",
-              "privacy": "public",
-              "return": {
-                "type": {
-                  "text": "Promise<void>"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "link",
-                  "type": {
-                    "text": "EventTarget | null"
-                  },
-                  "description": "usually an `<a>`"
-                }
-              ],
-              "description": "Explicitly set the active item"
-            },
-            {
-              "kind": "field",
-              "type": {
-                "text": "ReactiveControllerHost & HTMLElement",
-                "name": "ReactiveControllerHost & HTMLElement"
-              },
-              "name": "host",
-              "privacy": "private"
+              "name": "",
+              "static": true
             }
           ]
         }
@@ -8810,8 +8626,356 @@
     },
     {
       "kind": "javascript-module",
+      "path": "controllers/slot-controller-server.d.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "SlotController",
+          "members": [
+            {
+              "kind": "field",
+              "name": "host",
+              "type": {
+                "text": "ReactiveElement"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "default",
+              "type": {
+                "text": "symbol"
+              },
+              "static": true
+            },
+            {
+              "kind": "field",
+              "name": "anonymous",
+              "type": {
+                "text": "symbol"
+              },
+              "static": true,
+              "deprecated": "use `default`"
+            },
+            {
+              "kind": "field",
+              "name": "attribute",
+              "type": {
+                "text": "\"ssr-hint-has-slotted\""
+              },
+              "static": true
+            },
+            {
+              "kind": "field",
+              "name": "anonymousAttribute",
+              "type": {
+                "text": "\"ssr-hint-has-slotted-default\""
+              },
+              "static": true
+            },
+            {
+              "kind": "method",
+              "name": "hostConnected",
+              "return": {
+                "type": {
+                  "text": "Promise<void>"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "fromAttribute",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "getSlotted",
+              "return": {
+                "type": {
+                  "text": "T[]"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "_",
+                  "type": {
+                    "text": "string[]"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "hasSlotted",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "names",
+                  "type": {
+                    "text": "(string | null)[]"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "isEmpty",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "names",
+                  "type": {
+                    "text": "(string | null)[]"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "SlotController",
+          "declaration": {
+            "name": "SlotController",
+            "module": "controllers/slot-controller-server.d.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "controllers/slot-controller-server.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "SlotController",
+          "members": [
+            {
+              "kind": "method",
+              "name": "fromAttribute",
+              "parameters": [
+                {
+                  "name": "slots"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getSlotted",
+              "parameters": [
+                {
+                  "name": "_"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "hasSlotted",
+              "parameters": [
+                {
+                  "name": "names"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "isEmpty",
+              "parameters": [
+                {
+                  "name": "names"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "host",
+              "default": "host"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "SlotController",
+          "declaration": {
+            "name": "SlotController",
+            "module": "controllers/slot-controller-server.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "controllers/slot-controller-server.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "SlotController",
+          "members": [
+            {
+              "kind": "field",
+              "name": "default",
+              "privacy": "public",
+              "static": true
+            },
+            {
+              "kind": "field",
+              "name": "satisfies"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "SlotController",
+          "declaration": {
+            "name": "SlotController",
+            "module": "controllers/slot-controller-server.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "controllers/slot-controller.d.ts",
       "declarations": [
+        {
+          "kind": "function",
+          "name": "isObjectSpread",
+          "return": {
+            "type": {
+              "text": "config is [SlotsConfig]"
+            }
+          },
+          "parameters": [
+            {
+              "name": "config",
+              "type": {
+                "text": "SlotControllerArgs"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "SlotControllerPublicAPI",
+          "members": [
+            {
+              "kind": "field",
+              "name": "default",
+              "type": {
+                "text": "symbol"
+              },
+              "static": true
+            },
+            {
+              "kind": "field",
+              "name": "host",
+              "type": {
+                "text": "ReactiveElement"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "hostConnected",
+              "return": {
+                "type": {
+                  "text": "Promise<void>"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "hostDisconnected",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "hostUpdated",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getSlotted",
+              "return": {
+                "type": {
+                  "text": "T[]"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "slotNames",
+                  "type": {
+                    "text": "string[]"
+                  },
+                  "description": "slots to query"
+                }
+              ],
+              "description": "Given a slot name or slot names, returns elements assigned to the requested slots as an array.\nIf no value is provided, it returns all children not assigned to a slot (without a slot attribute)."
+            },
+            {
+              "kind": "method",
+              "name": "hasSlotted",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "names",
+                  "type": {
+                    "text": "(string | null | undefined)[]"
+                  },
+                  "description": "The slot names to check."
+                }
+              ],
+              "description": "Returns a boolean statement of whether or not any of those slots exists in the light DOM."
+            },
+            {
+              "kind": "method",
+              "name": "isEmpty",
+              "return": {
+                "type": {
+                  "text": ""
+                }
+              },
+              "parameters": [
+                {
+                  "name": "names",
+                  "type": {
+                    "text": "(string | null | undefined)[]"
+                  },
+                  "description": "The slot names to query.  If no value is provided, it returns the default slot."
+                }
+              ],
+              "description": "Whether or not all the requested slots are empty."
+            }
+          ]
+        },
         {
           "kind": "class",
           "description": "",
@@ -8936,6 +9100,22 @@
       "exports": [
         {
           "kind": "js",
+          "name": "isObjectSpread",
+          "declaration": {
+            "name": "isObjectSpread",
+            "module": "controllers/slot-controller.d.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "SlotControllerPublicAPI",
+          "declaration": {
+            "name": "SlotControllerPublicAPI",
+            "module": "controllers/slot-controller.d.ts"
+          }
+        },
+        {
+          "kind": "js",
           "name": "SlotController",
           "declaration": {
             "name": "SlotController",
@@ -8948,6 +9128,15 @@
       "kind": "javascript-module",
       "path": "controllers/slot-controller.js",
       "declarations": [
+        {
+          "kind": "function",
+          "name": "isObjectSpread",
+          "parameters": [
+            {
+              "name": "config"
+            }
+          ]
+        },
         {
           "kind": "class",
           "description": "",
@@ -9014,6 +9203,14 @@
       "exports": [
         {
           "kind": "js",
+          "name": "isObjectSpread",
+          "declaration": {
+            "name": "isObjectSpread",
+            "module": "controllers/slot-controller.js"
+          }
+        },
+        {
+          "kind": "js",
           "name": "SlotController",
           "declaration": {
             "name": "SlotController",
@@ -9026,6 +9223,130 @@
       "kind": "javascript-module",
       "path": "controllers/slot-controller.ts",
       "declarations": [
+        {
+          "kind": "function",
+          "name": "isObjectSpread",
+          "return": {
+            "type": {
+              "text": "config is [SlotsConfig]"
+            }
+          },
+          "parameters": [
+            {
+              "name": "config",
+              "type": {
+                "text": "SlotControllerArgs"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "SlotControllerPublicAPI",
+          "members": [
+            {
+              "kind": "field",
+              "name": "default",
+              "type": {
+                "text": "symbol"
+              },
+              "static": true
+            },
+            {
+              "kind": "field",
+              "name": "host",
+              "type": {
+                "text": "ReactiveElement"
+              },
+              "privacy": "public"
+            },
+            {
+              "kind": "method",
+              "name": "hostConnected",
+              "return": {
+                "type": {
+                  "text": "Promise<void>"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "hostDisconnected",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "hostUpdated",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getSlotted",
+              "return": {
+                "type": {
+                  "text": "T[]"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "slotNames",
+                  "type": {
+                    "text": "string[]"
+                  },
+                  "description": "slots to query"
+                }
+              ],
+              "description": "Given a slot name or slot names, returns elements assigned to the requested slots as an array.\nIf no value is provided, it returns all children not assigned to a slot (without a slot attribute)."
+            },
+            {
+              "kind": "method",
+              "name": "hasSlotted",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "names",
+                  "type": {
+                    "text": "(string | null | undefined)[]"
+                  },
+                  "description": "The slot names to check."
+                }
+              ],
+              "description": "Returns a boolean statement of whether or not any of those slots exists in the light DOM."
+            },
+            {
+              "kind": "method",
+              "name": "isEmpty",
+              "return": {
+                "type": {
+                  "text": ""
+                }
+              },
+              "parameters": [
+                {
+                  "name": "names",
+                  "type": {
+                    "text": "(string | null | undefined)[]"
+                  },
+                  "description": "The slot names to query.  If no value is provided, it returns the default slot."
+                }
+              ],
+              "description": "Whether or not all the requested slots are empty."
+            }
+          ]
+        },
         {
           "kind": "class",
           "description": "",
@@ -9045,6 +9366,22 @@
         }
       ],
       "exports": [
+        {
+          "kind": "js",
+          "name": "isObjectSpread",
+          "declaration": {
+            "name": "isObjectSpread",
+            "module": "controllers/slot-controller.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "SlotControllerPublicAPI",
+          "declaration": {
+            "name": "SlotControllerPublicAPI",
+            "module": "controllers/slot-controller.ts"
+          }
+        },
         {
           "kind": "js",
           "name": "SlotController",

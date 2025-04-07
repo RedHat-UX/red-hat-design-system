@@ -1,6 +1,9 @@
 var _RhAudioPlayerSubscribe_headings, _RhAudioPlayerSubscribe_label;
-import { __classPrivateFieldGet, __classPrivateFieldSet } from "tslib";
+import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
+import { customElement } from 'lit/decorators/custom-element.js';
+import { property } from 'lit/decorators/property.js';
+import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 import { HeadingLevelContextConsumer } from '../../lib/context/headings/consumer.js';
 import './rh-audio-player-scrolling-text-overflow.js';
 import { css } from "lit";
@@ -15,14 +18,11 @@ const styles = css `[part=body]{max-height:240px;overflow-y:auto}::slotted([slot
  * @csspart body - body content slot
  * @csspart links - subscribe links
  */
-export class RhAudioPlayerSubscribe extends LitElement {
+let RhAudioPlayerSubscribe = class RhAudioPlayerSubscribe extends LitElement {
     constructor() {
         super(...arguments);
         _RhAudioPlayerSubscribe_headings.set(this, new HeadingLevelContextConsumer(this));
         _RhAudioPlayerSubscribe_label.set(this, void 0);
-    }
-    get body() {
-        return this.renderRoot?.querySelector(`slot[name=]`)?.assignedElements() ?? [];
     }
     render() {
         return html `
@@ -42,12 +42,21 @@ export class RhAudioPlayerSubscribe extends LitElement {
     scrollText() {
         this.shadowRoot?.querySelector('rh-audio-player-scrolling-text-overflow')?.startScrolling();
     }
-}
-_RhAudioPlayerSubscribe_headings = new WeakMap(), _RhAudioPlayerSubscribe_label = new WeakMap();
-RhAudioPlayerSubscribe.properties = {
-    heading: {},
-    label: {}
 };
+_RhAudioPlayerSubscribe_headings = new WeakMap();
+_RhAudioPlayerSubscribe_label = new WeakMap();
 RhAudioPlayerSubscribe.styles = [panelStyles, styles];
-customElements.define("rh-audio-player-subscribe", RhAudioPlayerSubscribe);
+__decorate([
+    property()
+], RhAudioPlayerSubscribe.prototype, "heading", void 0);
+__decorate([
+    property()
+], RhAudioPlayerSubscribe.prototype, "label", void 0);
+__decorate([
+    queryAssignedElements()
+], RhAudioPlayerSubscribe.prototype, "body", void 0);
+RhAudioPlayerSubscribe = __decorate([
+    customElement('rh-audio-player-subscribe')
+], RhAudioPlayerSubscribe);
+export { RhAudioPlayerSubscribe };
 //# sourceMappingURL=rh-audio-player-subscribe.js.map

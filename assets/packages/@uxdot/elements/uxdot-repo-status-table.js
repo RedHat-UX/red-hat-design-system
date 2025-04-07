@@ -1,9 +1,12 @@
+import { __decorate } from "tslib";
 import { html } from 'lit';
+import { customElement } from 'lit/decorators/custom-element.js';
+import { property } from 'lit/decorators/property.js';
 import { UxdotRepoElement } from './uxdot-repo.js';
 import '@rhds/elements/rh-table/rh-table.js';
 import { css } from "lit";
 const style = css `rh-table{margin-block:var(--rh-space-3xl)}`;
-export class UxdotRepoStatusTable extends UxdotRepoElement {
+let UxdotRepoStatusTable = class UxdotRepoStatusTable extends UxdotRepoElement {
     render() {
         const status = this.getStatus();
         return html `
@@ -48,10 +51,13 @@ export class UxdotRepoStatusTable extends UxdotRepoElement {
       </div>
     `;
     }
-}
-UxdotRepoStatusTable.properties = {
-    element: {}
 };
 UxdotRepoStatusTable.styles = [style];
-customElements.define("uxdot-repo-status-table", UxdotRepoStatusTable);
+__decorate([
+    property()
+], UxdotRepoStatusTable.prototype, "element", void 0);
+UxdotRepoStatusTable = __decorate([
+    customElement('uxdot-repo-status-table')
+], UxdotRepoStatusTable);
+export { UxdotRepoStatusTable };
 //# sourceMappingURL=uxdot-repo-status-table.js.map

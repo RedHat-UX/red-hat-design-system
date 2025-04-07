@@ -14,7 +14,6 @@ import { LitElement } from 'lit';
  */
 export declare class RhBadge extends LitElement {
     static readonly styles: CSSStyleSheet[];
-    private on?;
     /**
      * Denotes the state-of-affairs this badge represents
      */

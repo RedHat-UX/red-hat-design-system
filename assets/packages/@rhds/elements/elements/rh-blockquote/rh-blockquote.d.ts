@@ -1,8 +1,8 @@
 import { LitElement } from 'lit';
-import { type ColorPalette } from '../../lib/context/color/provider.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
+import { type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
 /**
- * A blockquote is a styled quotation and citation offset from other text styles on the page.
+ * A blockquote is styled quote text with an icon and attribution text.
  *
  * @summary  Highlights quotations and citations with text styles
  *
@@ -20,7 +20,6 @@ export declare class RhBlockquote extends LitElement {
      * - `darkest`
      */
     colorPalette?: ColorPalette;
-    private on?;
     /**
      * Set the alignment of the blockquote. Possible values are:
      * - `left` (default)

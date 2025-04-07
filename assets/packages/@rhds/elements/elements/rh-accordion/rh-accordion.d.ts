@@ -1,8 +1,10 @@
 import { LitElement, type TemplateResult } from 'lit';
-import { type ColorPalette } from '../../lib/context/color/provider.js';
+import { type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
 import { ComposedEvent } from '@patternfly/pfe-core';
 import { RhAccordionHeader, AccordionHeaderChangeEvent } from './rh-accordion-header.js';
 import { RhAccordionPanel } from './rh-accordion-panel.js';
+export * from './rh-accordion-header.js';
+export * from './rh-accordion-panel.js';
 export declare class AccordionExpandEvent extends ComposedEvent {
     toggle: RhAccordionHeader;
     panel: RhAccordionPanel;
@@ -41,14 +43,13 @@ export declare class RhAccordion extends LitElement {
      * @see https://ux.redhat.com/theming/color-palettes/
      */
     colorPalette?: ColorPalette;
-    private on?;
     /**
      * Sets and reflects the currently expanded accordion 0-based indexes.
      * Use commas to separate multiple indexes.
      * ```html
-     * <pf-accordion expanded-index="1,2">
+     * <rh-accordion expanded-index="1,2">
      *   ...
-     * </pf-accordion>
+     * </rh-accordion>
      * ```
      */
     get expandedIndex(): number[];
@@ -61,7 +62,7 @@ export declare class RhAccordion extends LitElement {
     connectedCallback(): void;
     render(): TemplateResult;
     protected getUpdateComplete(): Promise<boolean>;
-    firstUpdated(): void;
+    private updateExpanded;
     private contextChanged;
     /**
      * Initialize the accordion by connecting headers and panels

@@ -1,5 +1,5 @@
-import type { ColorPalette } from '@rhds/elements/lib/context/color/provider.js';
 import { LitElement } from 'lit';
+import { type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
 /**
  * Surfaces are content containers with a color palette which provide a theme
  * (i.e. a background color as well as accessible font colors) to their child
@@ -19,7 +19,7 @@ import { LitElement } from 'lit';
  */
 export declare class RhSurface extends LitElement {
     #private;
-    static readonly styles: (import("lit").CSSResult | CSSStyleSheet)[];
+    static readonly styles: CSSStyleSheet[];
     /**
      * Sets color palette, which affects the element's styles as well as
      * descendants' color theme. The default surface color palette is 'lightest',

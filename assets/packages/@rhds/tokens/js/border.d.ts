@@ -3,7 +3,7 @@
  *
  * @license Copyright (c) 2022 Red Hat UX MIT License
  */
-import type { Color } from "./types.js";
+import type { Color } from "./tokens.js";
 export declare const BorderWidthSm = "1px";
 export declare const BorderWidthMd = "2px";
 export declare const BorderWidthLg = "3px";

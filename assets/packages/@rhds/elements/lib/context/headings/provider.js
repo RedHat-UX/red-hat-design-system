@@ -1,8 +1,9 @@
-var _HeadingLevelContextProvider_instances, _HeadingLevelContextProvider_callbacks, _HeadingLevelContextProvider_computeLevelFromChildren, _HeadingLevelContextProvider_isHeadingContextRequestEvent, _HeadingLevelContextProvider_onChildContextRequestEvent;
-import { __classPrivateFieldGet } from "tslib";
-import { contextEvents, HeadingLevelController } from './controller.js';
-import { ContextRequestEvent, } from '../event.js';
+var _HeadingLevelContextProvider_instances, _HeadingLevelContextProvider_options, _HeadingLevelContextProvider_getLevel, _HeadingLevelContextProvider_computeLevelFromChildren;
+import { __classPrivateFieldGet, __classPrivateFieldSet } from "tslib";
+import { ContextProvider } from '@lit/context';
 const SELECTORS = `H1,H2,H3,H4,H5,H6`;
+import { createContextWithRoot } from '@patternfly/pfe-core/functions/context.js';
+export const context = createContextWithRoot('rh-heading-context');
 /**
  * **START**
  * `H`
@@ -22,24 +23,39 @@ function canQuery(node) {
  * Determines which heading level immediately precedes the host element,
  * and provides templates for shadow headings.
  */
-export class HeadingLevelContextProvider extends HeadingLevelController {
-    constructor() {
-        super(...arguments);
+export class HeadingLevelContextProvider extends ContextProvider {
+    constructor(host, options) {
+        var _a, _b;
+        super(host, { context });
         _HeadingLevelContextProvider_instances.add(this);
-        /** Cache of context callbacks. Call each to update consumers */
-        _HeadingLevelContextProvider_callbacks.set(this, new Set());
+        this.host = host;
+        /** Heading level preceding component document, as in 1 for <h1>, 2 for <h2> etc. */
+        _HeadingLevelContextProvider_options.set(this, void 0);
+        __classPrivateFieldSet(this, _HeadingLevelContextProvider_options, { level: 1, offset: 1, ...options }, "f");
+        (_a = __classPrivateFieldGet(this, _HeadingLevelContextProvider_options, "f")).level ?? (_a.level = 1);
+        (_b = __classPrivateFieldGet(this, _HeadingLevelContextProvider_options, "f")).offset ?? (_b.offset = 1);
+        this.setValue({});
+    }
+    setValue(ctx) {
+        const offset = __classPrivateFieldGet(this, _HeadingLevelContextProvider_options, "f")?.offset ?? 1;
+        const level = __classPrivateFieldGet(this, _HeadingLevelContextProvider_options, "f")?.level ?? 1;
+        super.setValue({ offset, level, ...ctx });
     }
     hostConnected() {
-        this.host.addEventListener('context-request', e => __classPrivateFieldGet(this, _HeadingLevelContextProvider_instances, "m", _HeadingLevelContextProvider_onChildContextRequestEvent).call(this, e));
-        for (const [host, fired] of contextEvents) {
-            host.dispatchEvent(fired);
-        }
-        this.level =
-            this.host.getAttribute(this.options?.attribute ?? '')
-                ?? __classPrivateFieldGet(this, _HeadingLevelContextProvider_instances, "m", _HeadingLevelContextProvider_computeLevelFromChildren).call(this);
+        super.hostConnected();
+        const level = __classPrivateFieldGet(this, _HeadingLevelContextProvider_instances, "m", _HeadingLevelContextProvider_getLevel).call(this);
+        this.setValue({ level });
     }
 }
-_HeadingLevelContextProvider_callbacks = new WeakMap(), _HeadingLevelContextProvider_instances = new WeakSet(), _HeadingLevelContextProvider_computeLevelFromChildren = function _HeadingLevelContextProvider_computeLevelFromChildren() {
+_HeadingLevelContextProvider_options = new WeakMap(), _HeadingLevelContextProvider_instances = new WeakSet(), _HeadingLevelContextProvider_getLevel = function _HeadingLevelContextProvider_getLevel() {
+    const level = this.host.getAttribute(__classPrivateFieldGet(this, _HeadingLevelContextProvider_options, "f")?.attribute ?? '')
+        ?? __classPrivateFieldGet(this, _HeadingLevelContextProvider_instances, "m", _HeadingLevelContextProvider_computeLevelFromChildren).call(this)
+        ?? 1;
+    const val = typeof level === 'string' ? parseInt(level) : level;
+    if (typeof val === 'number' && !Number.isNaN(val)) {
+        return val;
+    }
+}, _HeadingLevelContextProvider_computeLevelFromChildren = function _HeadingLevelContextProvider_computeLevelFromChildren() {
     const { host } = this;
     const slotted = host.querySelector(SELECTORS);
     if (slotted && host.shadowRoot) {
@@ -52,20 +68,6 @@ _HeadingLevelContextProvider_callbacks = new WeakMap(), _HeadingLevelContextProv
             const els = [...root.querySelectorAll(`${SELECTORS},${localName}`)];
             const lastHeadingBeforeHost = els.slice(0, els.indexOf(host)).pop();
             return getLevel(lastHeadingBeforeHost);
-        }
-    }
-}, _HeadingLevelContextProvider_isHeadingContextRequestEvent = function _HeadingLevelContextProvider_isHeadingContextRequestEvent(event) {
-    return event.target !== this.host && event.context === HeadingLevelController.context;
-}, _HeadingLevelContextProvider_onChildContextRequestEvent = async function _HeadingLevelContextProvider_onChildContextRequestEvent(event) {
-    // only handle ContextRequestEvents relevant to colour context
-    if (__classPrivateFieldGet(this, _HeadingLevelContextProvider_instances, "m", _HeadingLevelContextProvider_isHeadingContextRequestEvent).call(this, event)) {
-        // claim the context-request event for ourselves (required by context protocol)
-        event.stopPropagation();
-        // Run the callback to initialize the child's value
-        event.callback(this.level);
-        // Cache the callback for future updates, if requested
-        if (event.subscribe) {
-            __classPrivateFieldGet(this, _HeadingLevelContextProvider_callbacks, "f").add(event.callback);
         }
     }
 };

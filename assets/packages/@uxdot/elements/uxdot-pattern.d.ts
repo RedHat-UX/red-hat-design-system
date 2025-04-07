@@ -1,10 +1,10 @@
-import type { ColorPalette } from '@rhds/elements/lib/context/color/provider.js';
-import { LitElement, type PropertyValues } from 'lit';
+import { SSRFailureRecoverableElement } from './ssr-failure-recoverable.js';
+import { type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
 import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
 import '@rhds/elements/rh-surface/rh-surface.js';
 import '@rhds/elements/rh-code-block/rh-code-block.js';
 import '@rhds/elements/rh-tabs/rh-tabs.js';
-export declare class UxdotPattern extends LitElement {
+export declare class UxdotPattern extends SSRFailureRecoverableElement {
     #private;
     static styles: CSSStyleSheet[];
     /** Which color palette to apply to the demo surface */
@@ -19,12 +19,14 @@ export declare class UxdotPattern extends LitElement {
     jsSrc?: string;
     /** Should the color picker be hidden? */
     noColorPicker: boolean;
+    /** Should the code tabs be hidden? */
+    noCodeTabs: boolean;
     /** Should the code blocks be expanded? */
     fullHeight: boolean;
+    /** Should the code blocks be expanded? */
+    activeTab?: 'html' | 'css' | 'js';
     /** Which colour palettes should be allowed in the picker? (default: all) */
-    allow: ColorPalette[];
-    private on?;
+    allow: ("light" | "lighter" | "lightest" | "dark" | "darker" | "darkest")[];
     ssr: import("./uxdot-pattern-ssr-controller-client.js").UxdotPatternSSRControllerClient | import("./uxdot-pattern-ssr-controller-server.js").UxdotPatternSSRControllerServer;
-    update(changed: PropertyValues<this>): void;
     render(): import("lit-html").TemplateResult<1>;
 }

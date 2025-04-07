@@ -26,6 +26,7 @@ export declare class RhTranscript extends LitElement {
     get downloadText(): string;
     set menuLabel(label: string);
     get menuLabel(): string;
+    constructor();
     render(): import("lit-html").TemplateResult<1>;
     setActiveCues(currentTime?: number): void;
     setDuration(mediaDuration: number): void;

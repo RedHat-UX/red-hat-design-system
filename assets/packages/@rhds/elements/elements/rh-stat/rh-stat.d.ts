@@ -16,9 +16,7 @@ import type { IconNameFor, IconSetName } from '@rhds/icons';
  */
 export declare class RhStat extends LitElement {
     #private;
-    static readonly version = "{{version}}";
     static readonly styles: CSSStyleSheet[];
-    private on?;
     /**
      * The icon to display in the statistic
      */

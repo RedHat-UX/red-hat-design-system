@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/assets/logo-red-hat.svg">
+    <title>Right To Left | Red Hat Design System</title>
+
+    <link rel="preconnect" href="https://ga.jspm.io">
+
+    <link rel="stylesheet" href="/styles/demo/styles.css" media="all">
+
+    <script type="importmap">{
+  "imports": {
+    "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
+    "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
+    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
+    "lit-html": "/assets/packages/lit-html/lit-html.js",
+    "tslib": "/assets/packages/tslib/tslib.es6.mjs",
+    "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
+    "lit-element": "/assets/packages/lit-element/index.js",
+    "prism-esm": "/assets/packages/prism-esm/prism.js",
+    "lit": "/assets/packages/lit/index.js",
+    "@rhds/tokens/css/default-theme.css.js": "/assets/packages/@rhds/tokens/css/default-theme.css.js",
+    "@rhds/tokens/css/color-palette.css.js": "/assets/packages/@rhds/tokens/css/color-palette.css.js",
+    "lit/decorators/custom-element.js": "/assets/packages/lit/decorators/custom-element.js",
+    "lit/decorators/property.js": "/assets/packages/lit/decorators/property.js",
+    "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
+    "lit/static-html.js": "/assets/packages/lit/static-html.js",
+    "@lit/context": "/assets/packages/@lit/context/index.js",
+    "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
+    "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.0/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
+    "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
+    "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
+    "lit/": "/assets/packages/lit/",
+    "lit-html/": "/assets/packages/lit-html/",
+    "prism-esm/": "/assets/packages/prism-esm/",
+    "@lit-labs/ssr-client/lit-element-hydrate-support.js": "/assets/packages/@lit-labs/ssr-client/lit-element-hydrate-support.js",
+    "@rhds/tokens/css/": "/assets/packages/@rhds/tokens/css/",
+    "@rhds/tokens/": "/assets/packages/@rhds/tokens/js/",
+    "@rhds/elements/lib/": "/assets/packages/@rhds/elements/lib/",
+    "@rhds/elements/": "/assets/packages/@rhds/elements/elements/",
+    "@rhds/icons/": "/assets/packages/@rhds/icons/",
+    "@rhds/icons/icons.js": "/assets/packages/@rhds/icons/icons.js",
+    "@patternfly/elements/": "/assets/packages/@patternfly/elements/",
+    "@patternfly/icons/": "/assets/packages/@patternfly/icons/",
+    "@patternfly/pfe-core/": "/assets/packages/@patternfly/pfe-core/",
+    "@uxdot/elements/": "/assets/packages/@uxdot/elements/",
+    "playground-elements": "https://cdn.jsdelivr.net/npm/playground-elements@0.19.1/+esm"
+  },
+  "scopes": {
+    "/assets/packages/": {
+      "@floating-ui/utils": "https://ga.jspm.io/npm:@floating-ui/utils@0.2.9/dist/floating-ui.utils.mjs",
+      "@floating-ui/utils/dom": "https://ga.jspm.io/npm:@floating-ui/utils@0.2.9/dist/floating-ui.utils.dom.mjs",
+      "@lit/reactive-element/decorators/": "/assets/packages/@lit/reactive-element/decorators/",
+      "lit-element/lit-element.js": "/assets/packages/lit-element/lit-element.js",
+      "lit-html/": "/assets/packages/lit-html/",
+      "lit/": "/assets/packages/lit/"
+    }
+  }
+}</script>
+
+    
+      <script type="module">
+    // although we load these ssr support modules elsewhere, we still
+    // need them here to ensure no double-rendering on webkit
+    import '/assets/javascript/ssr-support.js';
+    // include these, which are often internal to elements,
+    // and are definitely required by context-picker and context-demo
+    // to avoid SSR defer-hydration bugs and SSR double-rendering bugs
+    import '@rhds/elements/rh-icon/rh-icon.js';
+    import '@rhds/elements/rh-surface/rh-surface.js';
+    import '@rhds/elements/rh-button/rh-button.js';
+    import '@rhds/elements/rh-tooltip/rh-tooltip.js';
+    import '@rhds/elements/rh-tag/rh-tag.js';
+  </script>
+
+
+    <script type="module">
+      // load up the demo and picker
+      import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
+      import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
+    </script>
+
+    <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
+  </head>
+  <body>
+    <main><form dir="rtl">
+  <fieldset>
+    <legend>Right To Left - No Label</legend>
+    <div>
+      <rh-switch accessible-label="RTL Switch No Messages"></rh-switch>
+    </div>
+    <div>
+      <rh-switch accessible-label="RTL Switch No Messages, Checked" checked=""></rh-switch>
+    </div>
+    <div>
+      <rh-switch id="switch-a" accessible-label="RTL Switch with Messages, Checked" message-on="Message when on" message-off="Message when off" checked=""></rh-switch>
+    </div>
+    <div>
+      <rh-switch id="switch-b" message-on="Message when on" message-off="Message when off" accessible-label="RTL Switch with Messages, Show Checked Icon" show-check-icon=""></rh-switch>
+    </div>
+
+    <div>
+      <rh-switch id="switch-c" accessible-label="RTL with Reversed Messages, Show Checked Icon" message-on="Reversed message when on" message-off="Reversed message when off" show-check-icon="" reversed=""></rh-switch>
+    </div>
+  </fieldset>
+
+  <fieldset disabled="">
+    <legend>Right to Left - Disabled</legend>
+    <div>
+      <rh-switch id="switch-w" accessible-label="Disabled RTL Switch No Label"></rh-switch>
+    </div>
+    <div>
+      <rh-switch id="switch-x" accessible-label="Disabled RTL Switch No Label, Checked" checked=""></rh-switch>
+    </div>
+    <div>
+      <rh-switch id="switch-y" accessible-label="Disabled RTL Switch No Label, Checked, Show Checked Icon" checked="" show-check-icon=""></rh-switch>
+    </div>
+    <div>
+      <label for="switch-z">Disabled RTL Switch with Label and Messages</label>
+      <rh-switch id="switch-z" message-on="Disabled Message when on" message-off="Disabled Message when off"></rh-switch>
+    </div>
+    <div>
+      <label for="switch-1">Disabled RTL Switch with Label and with Messages, Show Checked Icon</label>
+      <rh-switch id="switch-1" message-on="Disabled Message when on" message-off="Disabled Message when off" checked="" show-check-icon=""></rh-switch>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Right to Left - With Sibling Label</legend>
+    <div>
+      <label for="switch-e">RTL Switch</label>
+      <rh-switch id="switch-e" message-on="Message when on" message-off="Message when off" checked=""></rh-switch>
+    </div>
+    <div>
+      <label for="switch-f">RTL Switch</label>
+      <rh-switch id="switch-f" message-on="Message when on" message-off="Message when off"></rh-switch>
+    </div>
+    <div>
+      <label for="switch-g">RTL Switch, Show Checked Icon</label>
+      <rh-switch id="switch-g" checked="" show-check-icon="" message-on="Message when on" message-off="Message when off"></rh-switch>
+    </div>
+    <div>
+      <rh-switch id="switch-h" message-on="Reversed message when on" message-off="Reversed message when off" checked="" show-check-icon="" reversed=""></rh-switch>
+      <label for="switch-h">Switch with Reversed Messages, Show Checked Icon</label>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Right to Left - With Rich Messages</legend>
+    <div>
+      <rh-switch accessible-label="RTL Switch" checked="">
+        <div slot="messages">Message when
+          <span data-state="on">On</span>
+          <span data-state="of" hidden="">Off</span>
+        </div>
+      </rh-switch>
+    </div>
+  </fieldset>
+</form>
+
+<script type="module">
+  import '@rhds/elements/rh-switch/rh-switch.js';
+</script>
+
+<style>
+
+  label {
+    color: var(--rh-color-text-primary-on-light, #151515);
+  }
+
+  rh-switch:is(:disabled) ~ label {
+    color: var(--rh-color-text-secondary-on-light, #4d4d4d);
+  }
+
+  [color-palette^="dark"] label {
+   color:  var(--rh-color-text-primary-on-dark, #ffffff)
+  }
+
+  [color-palette^="dark"] rh-switch:is(:disabled) ~ label {
+    color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
+  }
+
+  fieldset {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+  }
+
+  fieldset div {
+    display: flex;
+    gap: 1rem;
+  }
+
+</style>
+</main></body>
+</html>

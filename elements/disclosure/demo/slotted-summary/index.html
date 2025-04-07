@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/assets/logo-red-hat.svg">
+    <title>Slotted Summary | Red Hat Design System</title>
+
+    <link rel="preconnect" href="https://ga.jspm.io">
+
+    <link rel="stylesheet" href="/styles/demo/styles.css" media="all">
+
+    <script type="importmap">{
+  "imports": {
+    "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
+    "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
+    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
+    "lit-html": "/assets/packages/lit-html/lit-html.js",
+    "tslib": "/assets/packages/tslib/tslib.es6.mjs",
+    "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
+    "lit-element": "/assets/packages/lit-element/index.js",
+    "prism-esm": "/assets/packages/prism-esm/prism.js",
+    "lit": "/assets/packages/lit/index.js",
+    "@rhds/tokens/css/default-theme.css.js": "/assets/packages/@rhds/tokens/css/default-theme.css.js",
+    "@rhds/tokens/css/color-palette.css.js": "/assets/packages/@rhds/tokens/css/color-palette.css.js",
+    "lit/decorators/custom-element.js": "/assets/packages/lit/decorators/custom-element.js",
+    "lit/decorators/property.js": "/assets/packages/lit/decorators/property.js",
+    "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
+    "lit/static-html.js": "/assets/packages/lit/static-html.js",
+    "@lit/context": "/assets/packages/@lit/context/index.js",
+    "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
+    "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.0/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
+    "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
+    "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
+    "lit/": "/assets/packages/lit/",
+    "lit-html/": "/assets/packages/lit-html/",
+    "prism-esm/": "/assets/packages/prism-esm/",
+    "@lit-labs/ssr-client/lit-element-hydrate-support.js": "/assets/packages/@lit-labs/ssr-client/lit-element-hydrate-support.js",
+    "@rhds/tokens/css/": "/assets/packages/@rhds/tokens/css/",
+    "@rhds/tokens/": "/assets/packages/@rhds/tokens/js/",
+    "@rhds/elements/lib/": "/assets/packages/@rhds/elements/lib/",
+    "@rhds/elements/": "/assets/packages/@rhds/elements/elements/",
+    "@rhds/icons/": "/assets/packages/@rhds/icons/",
+    "@rhds/icons/icons.js": "/assets/packages/@rhds/icons/icons.js",
+    "@patternfly/elements/": "/assets/packages/@patternfly/elements/",
+    "@patternfly/icons/": "/assets/packages/@patternfly/icons/",
+    "@patternfly/pfe-core/": "/assets/packages/@patternfly/pfe-core/",
+    "@uxdot/elements/": "/assets/packages/@uxdot/elements/",
+    "playground-elements": "https://cdn.jsdelivr.net/npm/playground-elements@0.19.1/+esm"
+  },
+  "scopes": {
+    "/assets/packages/": {
+      "@floating-ui/utils": "https://ga.jspm.io/npm:@floating-ui/utils@0.2.9/dist/floating-ui.utils.mjs",
+      "@floating-ui/utils/dom": "https://ga.jspm.io/npm:@floating-ui/utils@0.2.9/dist/floating-ui.utils.dom.mjs",
+      "@lit/reactive-element/decorators/": "/assets/packages/@lit/reactive-element/decorators/",
+      "lit-element/lit-element.js": "/assets/packages/lit-element/lit-element.js",
+      "lit-html/": "/assets/packages/lit-html/",
+      "lit/": "/assets/packages/lit/"
+    }
+  }
+}</script>
+
+    
+      <script type="module">
+    // although we load these ssr support modules elsewhere, we still
+    // need them here to ensure no double-rendering on webkit
+    import '/assets/javascript/ssr-support.js';
+    // include these, which are often internal to elements,
+    // and are definitely required by context-picker and context-demo
+    // to avoid SSR defer-hydration bugs and SSR double-rendering bugs
+    import '@rhds/elements/rh-icon/rh-icon.js';
+    import '@rhds/elements/rh-surface/rh-surface.js';
+    import '@rhds/elements/rh-button/rh-button.js';
+    import '@rhds/elements/rh-tooltip/rh-tooltip.js';
+    import '@rhds/elements/rh-tag/rh-tag.js';
+  </script>
+
+
+    <script type="module">
+      // load up the demo and picker
+      import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
+      import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
+    </script>
+
+    <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
+  </head>
+  <body>
+    <main><rh-disclosure>
+  <span slot="summary" class="icon">
+    This is a slotted summary with extra markup <rh-icon   set="ui" icon="like"><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part Y0+4lU2M0zE=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.986 17.81a3.516 3.516 0 0 0-.906-2.675 3.508 3.508 0 0 0-1.521-.97c.235-.41.385-.868.427-1.354a3.516 3.516 0 0 0-.906-2.676A3.51 3.51 0 0 0 24.5 9h-4.435C21.085 7.597 22 5.857 22 3.677 22 1.78 20.599.17 18.81.014A3.476 3.476 0 0 0 16.2.86a3.528 3.528 0 0 0-1.196 2.485L15 3.5c0 .72-.072 1.082-1.808 2.127-1.772 1.17-4.201 2.79-5.713 3.855-1.543 1.088-2.656 2.185-3.501 3.453-.905 1.357-1.517 3.042-1.818 5.007C2.054 18.636 2 19.328 2 20c0 6.065 4.934 11 11 11h9.323c1.898 0 3.507-1.401 3.663-3.19a3.52 3.52 0 0 0-.43-2.015c1.32-.45 2.31-1.602 2.43-2.985a3.52 3.52 0 0 0-.43-2.015c1.32-.45 2.31-1.602 2.43-2.985ZM26.323 19H21a1 1 0 0 0 0 2h3.5c.426 0 .818.173 1.106.487.287.313.425.722.388 1.15-.065.752-.815 1.363-1.671 1.363H22a1 1 0 0 0 0 2h.5c.426 0 .818.173 1.106.487.287.313.425.721.388 1.15-.065.752-.815 1.363-1.671 1.363H13c-4.963 0-9-4.038-9-9 0-.57.046-1.16.137-1.755.257-1.675.763-3.087 1.505-4.2.704-1.057 1.654-1.987 2.99-2.928 1.49-1.052 3.902-2.658 5.626-3.798C16.077 6.226 17 5.335 17 3.527l.003-.104c.02-.41.203-.784.513-1.054a1.489 1.489 0 0 1 1.121-.363C19.388 2.07 20 2.82 20 3.677c0 2.217-1.206 3.817-2.783 5.676A1 1 0 0 0 17.979 11h6.52c.427 0 .82.173 1.107.487.287.313.425.721.388 1.15-.066.752-.816 1.363-1.672 1.363H20a1 1 0 0 0 0 2h6.5c.425 0 .818.173 1.106.487.287.313.425.721.388 1.15-.066.752-.816 1.363-1.672 1.363Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+  </span>
+  <p>Instead of using <code>&lt;rh-disclosure summary="Hello world"&gt;</code>, users can slot content into a <code>summary</code> slot and include additional HTML if needed.</p>
+  <p>Also note that slotted <code>summary</code> content will render on the page if/when JavaScript fails to load.</p>
+</rh-disclosure>
+
+<script type="module">
+  import '@rhds/elements/rh-disclosure/rh-disclosure.js';
+  import '@rhds/elements/rh-icon/rh-icon.js';
+</script>
+
+<style>
+  span.icon {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--rh-space-sm, 6px);
+  }
+
+  p {
+    margin-block-end: var(--rh-space-lg, 16px);
+  }
+</style>
+</main></body>
+</html>

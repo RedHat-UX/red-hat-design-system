@@ -1,6 +1,5 @@
 :host {
   display: block;
-  background: var(--rh-color-surface);
   color: var(--rh-color-text-primary);
   container-name: host;
   container-type: inline-size;
@@ -22,7 +21,7 @@
     inset-inline-end: 0;
     inset: 0;
     border-width: 0 0 var(--rh-border-width-sm, 1px);
-    border-color: var(--_border-color);
+    border-color: var(--rh-color-border-subtle);
     border-style: solid;
   }
 }
@@ -92,16 +91,17 @@ button {
   }
 }
 
-#rhds-container {
-  display: contents;
-
-  --_border-color: var(--rh-tabs-border-color, var(--rh-color-border-subtle));
+#container {
   --_arrow-color: var(--rh-color-accent-base);
   --_overflow-button-text-color: var(--rh-color-text-secondary);
 
   /* Non Standard usage of crayon token */
-  --_overflow-button-disabled-text-color: var(--rh-color-gray-40, #a3a3a3);
+  --_overflow-button-disabled-text-color:
+    light-dark(var(--rh-color-gray-40, #a3a3a3),
+      var(--rh-color-gray-50, #707070));
   --_overflow-button-hover-text-color: var(--rh-color-text-primary);
+
+  color: var(--rh-color-text-primary);
 
   @container (min-width: 768px) {
     --_panel-padding: var(--rh-space-2xl, 32px);
@@ -109,11 +109,9 @@ button {
 
   &.vertical {
     @container host (min-width: 768px) {
-      [part='container'] {
-        display: grid;
-        grid-template-columns: max-content 1fr;
-        grid-template-areas: 'tabs panels';
-      }
+      display: grid;
+      grid-template-columns: max-content 1fr;
+      grid-template-areas: 'tabs panels';
 
       [part='tabs-container'] {
         grid-area: tabs;
@@ -155,9 +153,19 @@ button {
     }
   }
 
-  [part='container'] {
-    &.overflow {
-      --_panel-padding: var(--rh-space-lg, 16px);
+  &.overflow {
+    --_panel-padding: var(--rh-space-lg, 16px);
+
+    & [part='tabs'] {
+      --_inset-inline-margin: 0;
+
+      position: relative;
+      inset-inline-start: -1px;
+      z-index: 1;
+    }
+
+    & [part='panels'] {
+      --_panels-overflow-padding: var(--rh-space-2xl, 32px);
     }
   }
 
@@ -170,43 +178,14 @@ button {
       }
     }
   }
-
-  &.dark {
-    --_border-color: var(--rh-tabs-border-color, var(--rh-color-border-subtle));
-    --_arrow-color: var(--rh-color-accent-base);
-    --_overflow-button-text-color: var(--rh-color-text-secondary);
-    --_overflow-button-disabled-text-color: var(--rh-color-gray-50, #707070);
-    --_overflow-button-hover-text-color: var(--rh-color-text-primary);
-  }
 }
 
-/* When overflow */
-[part='container'].overflow {
-  & [part='tabs'] {
-    --_inset-inline-margin: 0;
-
-    position: relative;
-    inset-inline-start: -1px;
-    z-index: 1;
-  }
-
-  & [part='panels'] {
-    --_panels-overflow-padding: var(--rh-space-2xl, 32px);
-  }
+:host([box='inset']:not([vertical])) #container [part='tabs'] {
+  --_inset-inline-margin: var(--rh-space-2xl, 32px);
 }
 
-:host([box='inset']:not([vertical])) {
-  & [part='tabs'] {
-    --_inset-inline-margin: var(--rh-space-2xl, 32px);
-  }
-}
-
-:host(:is([centered], [box='inset'])) {
-  & [part='container']:not(.overflow) {
-    & [part='tabs'] {
-      margin-inline: var(--rh-tabs-inset, var(--_inset-inline-margin, auto));
-    }
-  }
+:host(:is([centered], [box='inset'])) #container:not(.overflow) [part='tabs'] {
+  margin-inline: var(--rh-tabs-inset, var(--_inset-inline-margin, auto));
 }
 
 /* OVERFLOW BUTTONS */
@@ -220,15 +199,15 @@ button {
 
   &:before {
     border-block-start: var(--rh-border-width-sm, 1px) solid transparent;
-    border-block-end: var(--rh-border-width-sm, 1px) solid var(--_border-color);
-    border-inline: var(--rh-border-width-sm, 1px) solid var(--_border-color);
+    border-block-end: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+    border-inline: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
   }
 
   &:hover {
     color: var(--_overflow-button-hover-text-color, var(--rh-color-text-primary));
 
     &:before {
-      border-block-end: var(--rh-border-width-lg, 3px) solid var(--_border-color);
+      border-block-end: var(--rh-border-width-lg, 3px) solid var(--rh-color-border-subtle);
     }
   }
 
@@ -251,6 +230,6 @@ button {
   }
 }
 
-.rtl :is(#previous-tab, #next-tab) rh-icon {
+:is(#previous-tab, #next-tab) rh-icon:dir(rtl) {
   rotate: 180deg;
 }

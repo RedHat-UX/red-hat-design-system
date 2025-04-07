@@ -1,11 +1,12 @@
 var _RhSurface_instances, _RhSurface_onSlotchange;
-import { __classPrivateFieldGet } from "tslib";
+import { __classPrivateFieldGet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
-import { colorContextProvider } from '@rhds/elements/lib/context/color/provider.js';
-import consumerStyles from '@rhds/tokens/css/color-context-consumer.css.js';
+import { customElement } from 'lit/decorators/custom-element.js';
+import { property } from 'lit/decorators/property.js';
+import { colorPalettes } from '@rhds/elements/lib/color-palettes.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 import { css } from "lit";
-const styles = css `:host{display:block;background-color:var(--rh-color-surface)}#slot{color:var(--rh-color-text-primary)}.on.dark,.on.light{--rh-color-surface:unset}#slot.palette-lightest{--rh-color-surface:var(--rh-color-surface-lightest,#fff)}#slot.palette-lighter{--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}#slot.palette-light{--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}#slot.palette-dark{--rh-color-surface:var(--rh-color-surface-dark,#383838)}#slot.palette-darker{--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}#slot.palette-darkest{--rh-color-surface:var(--rh-color-surface-darkest,#151515)}`;
-import { classMap } from 'lit/directives/class-map.js';
+const styles = css `:host{display:block;color:var(--rh-color-text-primary);background-color:var(--rh-color-surface)}`;
 /**
  * Surfaces are content containers with a color palette which provide a theme
  * (i.e. a background color as well as accessible font colors) to their child
@@ -23,29 +24,27 @@ import { classMap } from 'lit/directives/class-map.js';
  *          </rh-surface>
  *          ```
  */
-export class RhSurface extends LitElement {
+let RhSurface = class RhSurface extends LitElement {
     constructor() {
         super(...arguments);
         _RhSurface_instances.add(this);
     }
     render() {
-        const { colorPalette = 'lightest' } = this;
-        const on = colorPalette?.replace(/e(st|r)/, '') ?? 'light';
-        return html `<slot id="slot"
-                      class="${classMap({
-            on: true,
-            [on]: true,
-            [`palette-${colorPalette}`]: true,
-        })}"
-                      @slotchange=${__classPrivateFieldGet(this, _RhSurface_instances, "m", _RhSurface_onSlotchange)}></slot>`;
+        return html `<slot id="slot" @slotchange=${__classPrivateFieldGet(this, _RhSurface_instances, "m", _RhSurface_onSlotchange)}></slot>`;
     }
-}
-_RhSurface_instances = new WeakSet(), _RhSurface_onSlotchange = function _RhSurface_onSlotchange() {
+};
+_RhSurface_instances = new WeakSet();
+_RhSurface_onSlotchange = function _RhSurface_onSlotchange() {
     this.requestUpdate('colorPalette');
 };
-RhSurface.properties = {
-    colorPalette: { reflect: true, attribute: 'color-palette' }
-};
-RhSurface.styles = [styles, consumerStyles];
-customElements.define("rh-surface", RhSurface);
+RhSurface.styles = [styles];
+__decorate([
+    property({ reflect: true, attribute: 'color-palette' })
+], RhSurface.prototype, "colorPalette", void 0);
+RhSurface = __decorate([
+    customElement('rh-surface'),
+    colorPalettes,
+    themable
+], RhSurface);
+export { RhSurface };
 //# sourceMappingURL=rh-surface.js.map

@@ -1,11 +1,9 @@
-import type { RhAccordion } from './rh-accordion.js';
 import { LitElement } from 'lit';
 export declare class AccordionHeaderChangeEvent extends Event {
     expanded: boolean;
     toggle: RhAccordionHeader;
-    accordion: RhAccordion;
     target: RhAccordionHeader;
-    constructor(expanded: boolean, toggle: RhAccordionHeader, accordion: RhAccordion);
+    constructor(expanded: boolean, toggle: RhAccordionHeader);
 }
 /**
  * Accordion Header
@@ -21,9 +19,9 @@ export declare class AccordionHeaderChangeEvent extends Event {
 export declare class RhAccordionHeader extends LitElement {
     #private;
     static readonly styles: CSSStyleSheet[];
+    static readonly shadowRootOptions: ShadowRootInit;
     expanded: boolean;
     private ctx?;
-    private on?;
     connectedCallback(): void;
     render(): import("lit-html").TemplateResult<1>;
     private expandedChanged;

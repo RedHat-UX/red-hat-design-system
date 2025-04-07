@@ -1,6 +1,9 @@
 var _RhAudioPlayerAbout_headings, _RhAudioPlayerAbout_label;
-import { __classPrivateFieldGet, __classPrivateFieldSet } from "tslib";
+import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
+import { customElement } from 'lit/decorators/custom-element.js';
+import { property } from 'lit/decorators/property.js';
+import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 import './rh-audio-player-scrolling-text-overflow.js';
 import '@rhds/elements/rh-avatar/rh-avatar.js';
 import { css } from "lit";
@@ -16,14 +19,11 @@ import { HeadingLevelContextConsumer } from '../../lib/context/headings/consumer
  * @csspart body - panel body
  * @csspart profile - panel profile / avatar
  */
-export class RhAudioPlayerAbout extends LitElement {
+let RhAudioPlayerAbout = class RhAudioPlayerAbout extends LitElement {
     constructor() {
         super(...arguments);
         _RhAudioPlayerAbout_headings.set(this, new HeadingLevelContextConsumer(this));
         _RhAudioPlayerAbout_label.set(this, void 0);
-    }
-    get content() {
-        return this.renderRoot?.querySelector(`slot:not([name])`)?.assignedElements() ?? [];
     }
     render() {
         const { label, mediaseries, mediatitle } = this;
@@ -57,13 +57,24 @@ export class RhAudioPlayerAbout extends LitElement {
             scroller?.startScrolling();
         }
     }
-}
-_RhAudioPlayerAbout_headings = new WeakMap(), _RhAudioPlayerAbout_label = new WeakMap();
-RhAudioPlayerAbout.properties = {
-    label: {},
-    mediaseries: { attribute: 'series' },
-    mediatitle: { attribute: 'mediatitle' }
 };
+_RhAudioPlayerAbout_headings = new WeakMap();
+_RhAudioPlayerAbout_label = new WeakMap();
 RhAudioPlayerAbout.styles = [panelStyles, styles];
-customElements.define("rh-audio-player-about", RhAudioPlayerAbout);
+__decorate([
+    property()
+], RhAudioPlayerAbout.prototype, "label", void 0);
+__decorate([
+    property({ attribute: 'series' })
+], RhAudioPlayerAbout.prototype, "mediaseries", void 0);
+__decorate([
+    property({ attribute: 'mediatitle' })
+], RhAudioPlayerAbout.prototype, "mediatitle", void 0);
+__decorate([
+    queryAssignedElements()
+], RhAudioPlayerAbout.prototype, "content", void 0);
+RhAudioPlayerAbout = __decorate([
+    customElement('rh-audio-player-about')
+], RhAudioPlayerAbout);
+export { RhAudioPlayerAbout };
 //# sourceMappingURL=rh-audio-player-about.js.map

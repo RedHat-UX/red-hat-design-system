@@ -69,10 +69,6 @@ export declare class RhSiteStatus extends LitElement {
     static readonly styles: CSSStyleSheet[];
     private static dataURI;
     private static fetchOptions;
-    /**
-     * Sets color theme based on parent context
-     */
-    private on?;
     connectedCallback(): void;
     protected render(): import("lit-html").TemplateResult<1>;
 }

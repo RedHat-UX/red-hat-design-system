@@ -6,6 +6,11 @@ function makeContextRoot() {
     if (!isServer) {
         root.attach(document.body);
     }
+    else {
+        root.attach(
+        // @ts-expect-error: enable context root in ssr
+        globalThis.litServerRoot);
+    }
     return root;
 }
 /**

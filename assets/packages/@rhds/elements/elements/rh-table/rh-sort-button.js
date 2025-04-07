@@ -1,10 +1,11 @@
 import { __decorate } from "tslib";
 import { LitElement, html, svg } from 'lit';
-import { classMap } from 'lit/directives/class-map.js';
+import { customElement } from 'lit/decorators/custom-element.js';
+import { property } from 'lit/decorators/property.js';
 import { ComposedEvent } from '@patternfly/pfe-core';
-import { colorContextConsumer } from '../../lib/context/color/consumer.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 import { css } from "lit";
-const styles = css `#sort-button{background-color:initial;border:0;color:var(--rh-color-text-primary-on-light,#151515)}#sort-button.dark{color:var(--rh-color-text-primary-on-dark,#fff)}#sort-button:after{content:"";position:absolute;inset:0;cursor:pointer}#sort-button #sort-indicator{color:currentcolor}.visually-hidden{position:fixed;top:0;left:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}`;
+const styles = css `#sort-button{background-color:initial;border:0;color:var(--rh-color-text-primary)}#sort-button:after{content:"";position:absolute;inset:0;cursor:pointer}#sort-button #sort-indicator{color:currentcolor}.visually-hidden{position:fixed;top:0;left:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}`;
 const DIRECTIONS_OPPOSITES = { asc: 'desc', desc: 'asc' };
 export class RequestSortEvent extends ComposedEvent {
     constructor(direction) {
@@ -30,14 +31,13 @@ const paths = new Map(Object.entries({
  *
  * @fires {RequestSortEvent} request-sort - when the button is clicked
  */
-export class RhSortButton extends LitElement {
+let RhSortButton = class RhSortButton extends LitElement {
     render() {
-        const { on = '' } = this;
         return html `
-      <button id="sort-button" part="sort-button" @click="${this.sort}" aria-label="Sort" class="${classMap({ [on]: !!on })}">
+      <button id="sort-button" part="sort-button" @click="${this.sort}" aria-label="Sort">
         <span class="visually-hidden">${!this.sortDirection ? '' : `(sort${!this.column ? '' : ` by ${this.column}`} in ${this.sortDirection === 'asc' ? 'ascending' : 'descending'} order)`}</span>
         <span id="sort-indicator" part="sort-indicator">
-          <svg fill="currentColor" 
+          <svg fill="currentColor"
                height="1em"
                width="1em"
                viewBox="0 0 320 512"
@@ -57,17 +57,20 @@ export class RhSortButton extends LitElement {
         const next = DIRECTIONS_OPPOSITES[this.sortDirection ?? 'asc'];
         this.dispatchEvent(new RequestSortEvent(next));
     }
-}
-RhSortButton.properties = {
-    sortDirection: {
-        reflect: true,
-        attribute: 'sort-direction',
-    },
-    column: {}
 };
 RhSortButton.styles = [styles];
 __decorate([
-    colorContextConsumer()
-], RhSortButton.prototype, "on", void 0);
-customElements.define("rh-sort-button", RhSortButton);
+    property({
+        reflect: true,
+        attribute: 'sort-direction',
+    })
+], RhSortButton.prototype, "sortDirection", void 0);
+__decorate([
+    property()
+], RhSortButton.prototype, "column", void 0);
+RhSortButton = __decorate([
+    customElement('rh-sort-button'),
+    themable
+], RhSortButton);
+export { RhSortButton };
 //# sourceMappingURL=rh-sort-button.js.map

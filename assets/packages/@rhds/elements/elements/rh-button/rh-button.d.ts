@@ -57,7 +57,6 @@ export declare class RhButton extends LitElement {
      * user data.
      */
     danger: boolean;
-    private on?;
     willUpdate(): void;
     render(): TemplateResult<1>;
     protected formDisabledCallback(): Promise<void>;

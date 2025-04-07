@@ -1,23 +1,23 @@
-var _RhAccordionHeader_instances, _RhAccordionHeader_dir, _RhAccordionHeader_internals, _RhAccordionHeader_heading, _RhAccordionHeader_onClick;
-import { __classPrivateFieldGet, __decorate } from "tslib";
-import { html, LitElement } from 'lit';
+var _RhAccordionHeader_instances, _RhAccordionHeader_internals, _RhAccordionHeader_heading, _RhAccordionHeader_belongsTo, _RhAccordionHeader_onClick, _RhAccordionHeader_dispatchChange;
+import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
+import { html, LitElement, isServer } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
+import { customElement } from 'lit/decorators/custom-element.js';
+import { property } from 'lit/decorators/property.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
-import { DirController } from '../../lib/DirController.js';
-import { colorContextConsumer } from '../../lib/context/color/consumer.js';
+import { HeadingLevelContextConsumer } from '../../lib/context/headings/consumer.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 import { consume } from '@lit/context';
 import { context } from './context.js';
 import { css } from "lit";
-const styles = css `:host{--_padding-block-start:var(--rh-space-lg,16px);--_padding-inline-end:var(--rh-space-xl,24px);--_padding-block-end:var(--rh-space-lg,16px);--_padding-inline-start:var(--rh-space-xl,24px);--_after-background-color:#0000;--_expanded-background-color:var(--rh-color-accent-brand);--_isRTL:-1}#heading{font-size:100%;padding:0;margin:0;color:var(--rh-color-text-primary);background-color:var(--rh-color-surface);font-weight:var(--rh-font-weight-body-text-medium,500)}a,button{cursor:pointer}.rtl{--_isRTL:1}.large{--_padding-block-start:var(--rh-space-lg,16px);--_padding-inline-end:var(--rh-space-xl,24px);--_padding-block-end:var(--rh-space-lg,16px);--_padding-inline-start:var(--rh-space-xl,24px)}:host([expanded]){border-inline-end:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle)}:host(.animating) #button,:host([expanded]) #button{border-inline-end-color:var(--rh-color-border-subtle);border-inline-start-color:var(--rh-color-border-subtle)}#icon{width:16px;height:16px;will-change:rotate;transition:rotate .2s ease-in 0s}span{overflow:hidden;text-align:start}#button{width:100%;padding:var(--_padding-block-start) var(--_padding-inline-end) var(--_padding-block-end) var(--_padding-inline-start);font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif);font-size:var(--_header-font-size);color:var(--rh-color-text-primary)}#button #icon{fill:currentcolor}#button.light:is(:hover,:active,:focus){background-color:var(--rh-color-surface-lighter)}#button.dark:is(:hover,:active,:focus){background-color:var(--rh-color-surface-dark-alt)}#button:is(:hover,:active,:focus) span{color:var(--rh-color-text-primary)}#button:focus{outline:2px solid var(--rh-color-interactive-primary-default)}#button,#button:after,#button:before{background-color:var(--rh-color-surface)}#button:after{inset-block-start:-1px;width:var(--rh-border-width-lg,3px);background-color:var(--_after-background-color)}#button.expanded{--_after-background-color:var(--rh-color-accent-brand)}#button.expanded #icon{rotate:calc(var(--_isRTL, -1)*180deg)}#button.expanded.on.light{--rh-color-surface:var(--rh-color-surface-lightest,#fff)}#button.expanded.on.dark{--rh-color-surface:var(--rh-color-surface-darkest,#151515)}#header-container{display:flex;gap:var(--rh-space-md,8px)}#header-container.bottom{flex-direction:column}#header-text{font-weight:var(--rh-font-weight-body-text-medium,500)}[part=accents]{display:flex;flex-wrap:wrap;gap:var(--rh-space-md,8px)}.toggle{position:relative;display:flex;align-items:center;justify-content:space-between;border:0}.toggle,.toggle:after,.toggle:before{padding:0;margin:0}.toggle:after{content:"";position:absolute;inset-block:0;inset-inline-start:0}@container (min-width: 576px){#header-container:not(.bottom){flex-direction:row}}`;
-import { HeadingLevelController } from '@rhds/elements/lib/context/headings/controller.js';
+const styles = css `:host{--_padding-block-start:var(--rh-space-lg,16px);--_padding-inline-end:var(--rh-space-xl,24px);--_padding-block-end:var(--rh-space-lg,16px);--_padding-inline-start:var(--rh-space-xl,24px);--_after-background-color:#0000;--_expanded-background-color:var(--rh-color-accent-brand)}a,button{cursor:pointer}.large{--_padding-block-start:var(--rh-space-lg,16px);--_padding-inline-end:var(--rh-space-xl,24px);--_padding-block-end:var(--rh-space-lg,16px);--_padding-inline-start:var(--rh-space-xl,24px)}:host([expanded]){border-inline-end:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle)}:host(.animating) #button,:host([expanded]) #button{border-inline-end-color:var(--rh-color-border-subtle);border-inline-start-color:var(--rh-color-border-subtle)}#icon{width:16px;height:16px;will-change:rotate;transition:rotate .2s ease-in 0s}span{overflow:hidden;text-align:start}#button{color:var(--rh-color-text-primary);background-color:var(--_accordion-background);font-weight:var(--rh-font-weight-body-text-medium,500);width:100%;padding:var(--_padding-block-start) var(--_padding-inline-end) var(--_padding-block-end) var(--_padding-inline-start);font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif);font-size:var(--_header-font-size)}#button #icon{fill:currentcolor}#button:is(:hover,:active,:focus){background-color:light-dark(var(--rh-color-surface-lighter),oklch(from var(--rh-color-surface-dark) calc(l * .82) c h))}#button:is(:hover,:active,:focus) span{color:var(--rh-color-text-primary)}#button:focus{outline:2px solid var(--rh-color-interactive-primary-default)}#button:after{inset-block-start:-1px;width:var(--rh-border-width-lg,3px);background-color:var(--_after-background-color)}#button.expanded{--_after-background-color:var(--rh-color-accent-brand)}#button.expanded #icon{rotate:-180deg}#button.expanded #icon:dir(rtl){rotate:180deg}#header-container{display:flex;gap:var(--rh-space-md,8px)}#header-container.bottom{flex-direction:column}#header-text{font-weight:var(--rh-font-weight-body-text-medium,500)}[part=accents]{display:flex;flex-wrap:wrap;gap:var(--rh-space-md,8px)}.toggle{position:relative;display:flex;align-items:center;justify-content:space-between;border:0}.toggle,.toggle:after,.toggle:before{padding:0;margin:0}.toggle:after{content:"";position:absolute;inset-block:0;inset-inline-start:0}@container (min-width: 576px){#header-container:not(.bottom){flex-direction:row}}`;
 export class AccordionHeaderChangeEvent extends Event {
-    constructor(expanded, toggle, accordion) {
+    constructor(expanded, toggle) {
         super('change', { bubbles: true, cancelable: true });
         this.expanded = expanded;
         this.toggle = toggle;
-        this.accordion = accordion;
     }
 }
 const isAccordion = (x) => x instanceof HTMLElement && x.localName === 'rh-accordion';
@@ -32,38 +32,39 @@ const isAccordion = (x) => x instanceof HTMLElement && x.localName === 'rh-accor
  *       (or after the chevron and header in disclosure mode). There is an option to set the accents placement to bottom
  * @fires {AccordionHeaderChangeEvent} change - when the open panels change
  */
-export class RhAccordionHeader extends LitElement {
+let RhAccordionHeader = class RhAccordionHeader extends LitElement {
     constructor() {
         super(...arguments);
         _RhAccordionHeader_instances.add(this);
-        _RhAccordionHeader_dir.set(this, new DirController(this));
+        this.expanded = false;
         _RhAccordionHeader_internals.set(this, InternalsController.of(this, {
             role: 'heading',
             ariaLevel: '2',
         }));
-        _RhAccordionHeader_heading.set(this, new HeadingLevelController(this));
-        this.expanded = false;
+        _RhAccordionHeader_heading.set(this, new HeadingLevelContextConsumer(this));
+        _RhAccordionHeader_belongsTo.set(this, void 0);
     }
     connectedCallback() {
         super.connectedCallback();
         this.id || (this.id = getRandomId(this.localName));
-        const accordion = this.closest('rh-accordion');
-        const heading = this.closest('h1,h2,h3,h4,h5,h6');
-        if (heading && accordion?.contains(heading)) {
-            __classPrivateFieldGet(this, _RhAccordionHeader_internals, "f").ariaLevel = heading.localName.replace('h', '');
-            heading.replaceWith(this);
-        }
-        else {
-            __classPrivateFieldGet(this, _RhAccordionHeader_internals, "f").ariaLevel = Math.max(2, __classPrivateFieldGet(this, _RhAccordionHeader_heading, "f").level).toString();
+        if (!isServer) {
+            __classPrivateFieldSet(this, _RhAccordionHeader_belongsTo, this.closest('rh-accordion'), "f");
+            const heading = this.closest('h1,h2,h3,h4,h5,h6');
+            if (heading && __classPrivateFieldGet(this, _RhAccordionHeader_belongsTo, "f")?.contains(heading)) {
+                __classPrivateFieldGet(this, _RhAccordionHeader_internals, "f").ariaLevel = heading.localName.replace('h', '');
+                heading.replaceWith(this);
+            }
+            else {
+                __classPrivateFieldGet(this, _RhAccordionHeader_internals, "f").ariaLevel = Math.max(2, __classPrivateFieldGet(this, _RhAccordionHeader_heading, "f").level).toString();
+            }
         }
     }
     render() {
-        const { expanded, on = 'light' } = this;
+        const { expanded } = this;
         const { accents, large = false } = this.ctx ?? {};
-        const rtl = __classPrivateFieldGet(this, _RhAccordionHeader_dir, "f").dir === 'rtl';
         return html `
       <button id="button"
-              class="${classMap({ on: true, toggle: true, [on]: !!on, rtl, large, expanded })}"
+              class="${classMap({ toggle: true, large, expanded })}"
               @click="${__classPrivateFieldGet(this, _RhAccordionHeader_instances, "m", _RhAccordionHeader_onClick)}">
         <span id="header-container" class="${classMap({ [accents ?? '']: !!accents })}">
           <span id="header-text" part="text"><slot></slot></span>
@@ -80,24 +81,38 @@ export class RhAccordionHeader extends LitElement {
     }
     expandedChanged() {
         __classPrivateFieldGet(this, _RhAccordionHeader_internals, "f").ariaExpanded = String(!!this.expanded);
-    }
-}
-_RhAccordionHeader_dir = new WeakMap(), _RhAccordionHeader_internals = new WeakMap(), _RhAccordionHeader_heading = new WeakMap(), _RhAccordionHeader_instances = new WeakSet(), _RhAccordionHeader_onClick = function _RhAccordionHeader_onClick(event) {
-    const accordion = event.composedPath().find(isAccordion);
-    if (accordion) {
-        this.dispatchEvent(new AccordionHeaderChangeEvent(!this.expanded, this, accordion));
+        __classPrivateFieldGet(this, _RhAccordionHeader_instances, "m", _RhAccordionHeader_dispatchChange).call(this);
     }
 };
-RhAccordionHeader.properties = {
-    expanded: { type: Boolean, reflect: true },
-    ctx: { attribute: false }
+_RhAccordionHeader_internals = new WeakMap();
+_RhAccordionHeader_heading = new WeakMap();
+_RhAccordionHeader_belongsTo = new WeakMap();
+_RhAccordionHeader_instances = new WeakSet();
+_RhAccordionHeader_onClick = function _RhAccordionHeader_onClick() {
+    this.expanded = !this.expanded;
+};
+_RhAccordionHeader_dispatchChange = function _RhAccordionHeader_dispatchChange() {
+    this.dispatchEvent(new AccordionHeaderChangeEvent(this.expanded, this));
 };
 RhAccordionHeader.styles = [styles];
+// Allow focus to apply to shadow button
+RhAccordionHeader.shadowRootOptions = {
+    ...LitElement.shadowRootOptions,
+    delegatesFocus: true,
+};
 __decorate([
-    colorContextConsumer()
-], RhAccordionHeader.prototype, "on", void 0);
+    property({ type: Boolean, reflect: true })
+], RhAccordionHeader.prototype, "expanded", void 0);
+__decorate([
+    consume({ context, subscribe: true }),
+    property({ attribute: false })
+], RhAccordionHeader.prototype, "ctx", void 0);
 __decorate([
     observes('expanded')
 ], RhAccordionHeader.prototype, "expandedChanged", null);
-customElements.define("rh-accordion-header", RhAccordionHeader);
+RhAccordionHeader = __decorate([
+    customElement('rh-accordion-header'),
+    themable
+], RhAccordionHeader);
+export { RhAccordionHeader };
 //# sourceMappingURL=rh-accordion-header.js.map

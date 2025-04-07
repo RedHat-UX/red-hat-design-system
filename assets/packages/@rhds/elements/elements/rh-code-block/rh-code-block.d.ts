@@ -38,7 +38,6 @@ export declare class RhCodeBlock extends LitElement {
     fullHeight: boolean;
     /** When set, lines in the code snippet wrap */
     wrap: boolean;
-    private on?;
     connectedCallback(): void;
     disconnectedCallback(): void;
     render(): import("lit-html").TemplateResult<1>;

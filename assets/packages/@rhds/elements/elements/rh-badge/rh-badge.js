@@ -1,10 +1,12 @@
 import { __decorate } from "tslib";
 import { LitElement, html } from 'lit';
+import { customElement } from 'lit/decorators/custom-element.js';
+import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit-html/directives/class-map.js';
 import { observes } from '@patternfly/pfe-core/decorators/observes.js';
-import { colorContextConsumer } from '@rhds/elements/lib/context/color/consumer.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 import { css } from "lit";
-const styles = css `span{display:inline-flex;align-items:center;justify-content:center;position:relative;white-space:nowrap;text-align:center;aspect-ratio:var(--_aspect-ratio);border-radius:var(--rh-border-radius-pill,64px);min-width:var(--_badge-size,var(--rh-length-lg,16px));font-size:var(--rh-font-size-body-text-xs,.75rem);font-weight:700;line-height:var(--rh-line-height-body-text,1.5);padding-inline:var(--_badge-padding,var(--rh-space-md,8px))}.on.dark{color:var(--rh-color-text-primary-on-light,#151515)}.on.light{color:var(--rh-color-text-primary-on-dark,#fff)}.on.neutral{background-color:var(--rh-color-status-neutral)}.on.info{background-color:var(--rh-color-status-info)}.on.success{background-color:var(--rh-color-status-success)}.on.caution{background-color:var(--rh-color-status-caution)}.on.warning{background-color:var(--rh-color-status-warning)}.on.danger{background-color:var(--rh-color-status-danger)}.on.light.caution,.on.light.warning{color:var(--rh-color-text-primary-on-light,#151515)}`;
+const styles = css `span{display:inline-flex;align-items:center;justify-content:center;position:relative;white-space:nowrap;text-align:center;aspect-ratio:var(--_aspect-ratio);border-radius:var(--rh-border-radius-pill,64px);min-width:var(--_badge-size,var(--rh-length-lg,16px));font-size:var(--rh-font-size-body-text-xs,.75rem);font-weight:700;line-height:var(--rh-line-height-body-text,1.5);padding-inline:var(--_badge-padding,var(--rh-space-md,8px));color:light-dark(var(--rh-color-text-primary-on-dark,#fff),var(--rh-color-text-primary-on-light,#151515))}span.neutral{background-color:var(--rh-color-status-neutral)}span.info{background-color:var(--rh-color-status-info)}span.success{background-color:var(--rh-color-status-success)}span.caution{background-color:var(--rh-color-status-caution)}span.caution,span.warning{color:var(--rh-color-text-primary-on-light,#151515)}span.warning{background-color:var(--rh-color-status-warning)}span.danger{background-color:var(--rh-color-status-danger)}`;
 /**
  * A badge is used to annotate other information like a label or an object name.
  *
@@ -18,7 +20,7 @@ const styles = css `span{display:inline-flex;align-items:center;justify-content:
  * @summary Annotates information like a label or object
  *
  */
-export class RhBadge extends LitElement {
+let RhBadge = class RhBadge extends LitElement {
     constructor() {
         super(...arguments);
         /**
@@ -56,30 +58,33 @@ export class RhBadge extends LitElement {
         }
     }
     render() {
-        const { threshold, number, textContent, on = 'light', state = 'neutral' } = this;
+        const { threshold, number, textContent, state = 'neutral' } = this;
         const displayText = (threshold && number && (threshold < number)) ? `${threshold.toString()}+`
             : (number != null) ? number.toString()
                 : textContent ?? '';
         return html `
       <span class="${classMap({
-            on: true,
-            [on]: true,
             [state]: true,
         })}">${displayText}</span>
     `;
     }
-}
-RhBadge.properties = {
-    state: { reflect: true },
-    number: { reflect: true, type: Number },
-    threshold: { reflect: true, type: Number }
 };
 RhBadge.styles = [styles];
 __decorate([
-    colorContextConsumer()
-], RhBadge.prototype, "on", void 0);
+    property({ reflect: true })
+], RhBadge.prototype, "state", void 0);
+__decorate([
+    property({ reflect: true, type: Number })
+], RhBadge.prototype, "number", void 0);
+__decorate([
+    property({ reflect: true, type: Number })
+], RhBadge.prototype, "threshold", void 0);
 __decorate([
     observes('state', { waitFor: 'updated' })
 ], RhBadge.prototype, "stateChanged", null);
-customElements.define("rh-badge", RhBadge);
+RhBadge = __decorate([
+    customElement('rh-badge'),
+    themable
+], RhBadge);
+export { RhBadge };
 //# sourceMappingURL=rh-badge.js.map

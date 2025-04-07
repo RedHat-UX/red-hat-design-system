@@ -27,7 +27,6 @@ export declare class RhSwitch extends LitElement {
     disabled: boolean;
     /** If the switch is reversed: message first, then control */
     reversed: boolean;
-    private on?;
     get labels(): NodeListOf<HTMLLabelElement>;
     formDisabledCallback(disabled: boolean): void;
     connectedCallback(): void;

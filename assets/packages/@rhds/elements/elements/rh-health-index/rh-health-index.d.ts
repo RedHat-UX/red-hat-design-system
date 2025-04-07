@@ -17,10 +17,6 @@ export declare class RhHealthIndex extends LitElement {
      * Defaults to `A`
      */
     grade: 'A' | 'B' | 'C' | 'D' | 'E' | 'F';
-    /**
-     * Sets color theme based on parent context
-     */
-    private on?;
     protected willUpdate(changed: PropertyValues<this>): void;
     render(): import("lit-html").TemplateResult<1>;
 }

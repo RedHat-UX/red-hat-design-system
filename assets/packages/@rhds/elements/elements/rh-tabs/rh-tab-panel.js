@@ -1,18 +1,18 @@
 var _RhTabPanel_internals;
 import { __classPrivateFieldGet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
-import { classMap } from 'lit/directives/class-map.js';
+import { customElement } from 'lit/decorators/custom-element.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
-import { colorContextConsumer } from '../../lib/context/color/consumer.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 import { css } from "lit";
-const styles = css `:host{display:block;padding:var(--_panel-padding,var(--rh-space-2xl,32px))}:host([hidden]){display:none!important}#container{display:contents}`;
+const styles = css `:host{display:block;padding:var(--_panel-padding,var(--rh-space-2xl,32px));background-color:var(--rh-color-surface)}:host([hidden]){display:none!important}#container{display:contents}`;
 /**
  * The tab panel for use within a rh-tabs element, must be paired with a rh-tab.
  *
  * @slot - Panel content should follow guidelines for [tab panel content layout](../guidelines)
  *
  */
-export class RhTabPanel extends LitElement {
+let RhTabPanel = class RhTabPanel extends LitElement {
     constructor() {
         super(...arguments);
         _RhTabPanel_internals.set(this, this.attachInternals());
@@ -34,18 +34,18 @@ export class RhTabPanel extends LitElement {
         this.tabIndex = 0;
     }
     render() {
-        const { on = 'light' } = this;
         return html `
-      <div id="container" class="${classMap({ on: true, [on]: true })}">
+      <div id="container">
         <slot></slot>
       </div>
     `;
     }
-}
+};
 _RhTabPanel_internals = new WeakMap();
 RhTabPanel.styles = [styles];
-__decorate([
-    colorContextConsumer()
-], RhTabPanel.prototype, "on", void 0);
-customElements.define("rh-tab-panel", RhTabPanel);
+RhTabPanel = __decorate([
+    customElement('rh-tab-panel'),
+    themable
+], RhTabPanel);
+export { RhTabPanel };
 //# sourceMappingURL=rh-tab-panel.js.map

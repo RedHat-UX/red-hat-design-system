@@ -14,8 +14,8 @@
   "imports": {
     "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
-    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
@@ -23,8 +23,8 @@
     "lit-element": "/assets/packages/lit-element/index.js",
     "prism-esm": "/assets/packages/prism-esm/prism.js",
     "lit": "/assets/packages/lit/index.js",
-    "@rhds/tokens/css/color-context-provider.css.js": "/assets/packages/@rhds/tokens/css/color-context-provider.css.js",
-    "@rhds/tokens/css/color-context-consumer.css.js": "/assets/packages/@rhds/tokens/css/color-context-consumer.css.js",
+    "@rhds/tokens/css/default-theme.css.js": "/assets/packages/@rhds/tokens/css/default-theme.css.js",
+    "@rhds/tokens/css/color-palette.css.js": "/assets/packages/@rhds/tokens/css/color-palette.css.js",
     "lit/decorators/custom-element.js": "/assets/packages/lit/decorators/custom-element.js",
     "lit/decorators/property.js": "/assets/packages/lit/decorators/property.js",
     "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
@@ -32,7 +32,7 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.5/core.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.0/core.js",
     "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
@@ -90,32 +90,8 @@
 
     <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
   </head>
-  <body unresolved="">
-    <main><rh-icon  icon="hat"><template shadowroot="open" shadowrootmode="open"><style>:host {
-  line-height: 0;
-  aspect-ratio: 1/1;
-  display: inline-flex;
-  place-content: center;
-}
-
-#container {
-  display: contents;
-}
-
-svg {
-  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
-  fill: currentcolor;
-  aspect-ratio: 1/1;
-}
-
-.standard svg {
-  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
-}
-
-.microns svg {
-  width: 12px;
-}
-</style><!--lit-part 5A+PTGpViiE=-->
+  <body>
+    <main><rh-icon  icon="hat"><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part 5A+PTGpViiE=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
            class=" standard "><!--lit-part ZJOiFPiwnqE=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36"><path d="M31.36 17.67a.88.88 0 0 0-.41-.12h-7.59a9.83 9.83 0 0 0-12-6c-5.59 1.48-9 8.9-5.73 14a.57.57 0 0 0 .42.07l12.69-2.7a11.45 11.45 0 0 0 12.77-4.37.62.62 0 0 0-.15-.88Zm-9.17.33-3 3a13.85 13.85 0 0 0-5.83-8.53A8.52 8.52 0 0 1 22.19 18Zm-11.07 5.26c-2-5.63-.13-9.21.63-10.3 1.28.62 5.08 2.95 6.36 8.81ZM10 13.53c-.9 1.9-1.76 5.31-.11 10l-3.59.76A8.57 8.57 0 0 1 10 13.53ZM20 22l3.15-3.16h6.53A10.19 10.19 0 0 1 20 22Zm-8.38-12a.63.63 0 0 1-1.25 0 .63.63 0 0 1 1.25 0Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>

@@ -20,7 +20,6 @@ export declare class RhMenu extends LitElement {
         registry?: CustomElementRegistry;
     };
     private _menuItems;
-    private on?;
     /**
      * override or set to add items to the roving tab index controller
      * @param items original list of items

@@ -14,7 +14,6 @@ export declare class RequestSortEvent extends ComposedEvent {
  */
 export declare class RhSortButton extends LitElement {
     static readonly styles: CSSStyleSheet[];
-    private on?;
     /** The button's sorting order */
     sortDirection?: 'asc' | 'desc';
     /** The column name associated with this button (for screen readers) */

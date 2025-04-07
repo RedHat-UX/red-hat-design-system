@@ -37,10 +37,6 @@ export declare class RhBreadcrumb extends LitElement {
      * Sets variants to breadcrumbs
      */
     variant?: 'subtle';
-    /**
-     * Sets color theme based on parent context
-     */
-    private on?;
     static readonly styles: CSSStyleSheet[];
     render(): import("lit-html").TemplateResult<1>;
 }

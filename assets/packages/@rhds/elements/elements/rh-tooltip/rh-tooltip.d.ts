@@ -33,7 +33,6 @@ export declare class RhTooltip extends LitElement {
     position: Placement;
     /** Tooltip content. Overridden by the content slot */
     content?: string;
-    private on?;
     connectedCallback(): void;
     render(): import("lit-html").TemplateResult<1>;
     /** Show the tooltip */

@@ -203,7 +203,7 @@
       "rhcoloraccentbase"
     ],
     "body": [
-      "var(--rh-color-accent-base)$2"
+      "var(--rh-color-accent-base${1:, light-dark(var(--rh-color-accent-base-on-light, #0066cc), var(--rh-color-accent-base-on-dark, #92c5f9))})$2"
     ],
     "description": "Responsive `accent-base` color value. Typically read only - use a themable container e.g. `<rh-surface>` Resolves to `--rh-color-accent-base-on-light` on a themable container with a light color palette and `--rh-color-accent-base-on-dark` on a themable container with a dark color palette."
   },
@@ -235,7 +235,7 @@
       "rhcoloraccentbrand"
     ],
     "body": [
-      "var(--rh-color-accent-brand)$2"
+      "var(--rh-color-accent-brand${1:, light-dark(var(--rh-color-accent-brand-on-light, #ee0000), var(--rh-color-accent-brand-on-dark, #ee0000))})$2"
     ],
     "description": "Responsive `accent-brand` color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-accent-brand-on-light` on a themable container with a light color palette and `--rh-color-accent-brand-on-dark` on a themable container with a dark color palette."
   },
@@ -267,7 +267,7 @@
       "rhcolorborderstrong"
     ],
     "body": [
-      "var(--rh-color-border-strong)$2"
+      "var(--rh-color-border-strong${1:, light-dark(var(--rh-color-border-strong-on-light, #151515), var(--rh-color-border-strong-on-dark, #ffffff))})$2"
     ],
     "description": "Responsive `border-strong` color value. Typically read only - use a themable container e.g. `<rh-surface>` Resolves to `--rh-color-border-strong-on-light` on a themable container with a light color palette and `--rh-color-border-strong-on-dark` on a themable container with a dark color palette"
   },
@@ -299,7 +299,7 @@
       "rhcolorbordersubtle"
     ],
     "body": [
-      "var(--rh-color-border-subtle)$2"
+      "var(--rh-color-border-subtle${1:, light-dark(var(--rh-color-border-subtle-on-light, #c7c7c7), var(--rh-color-border-subtle-on-dark, #707070))})$2"
     ],
     "description": "Responsive `border-subtle` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-subtle-on-light` on a themable container with a light color palette and `--rh-color-border-subtle-on-dark` on a themable container with a dark color palette."
   },
@@ -331,7 +331,7 @@
       "rhcolorborderinteractive"
     ],
     "body": [
-      "var(--rh-color-border-interactive)$2"
+      "var(--rh-color-border-interactive${1:, light-dark(var(--rh-color-border-interactive-on-light, #0066cc), var(--rh-color-border-interactive-on-dark, #92c5f9))})$2"
     ],
     "description": "Responsive `border-interactive` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-interactive-on-light` on a themable container with a light color palette and `--rh-color-border-interactive-on-dark` on a themable container with a dark color palette."
   },
@@ -363,7 +363,7 @@
       "rhcolorborderdestructive"
     ],
     "body": [
-      "var(--rh-color-border-destructive)$2"
+      "var(--rh-color-border-destructive${1:, light-dark(var(--rh-color-border-destructive-on-light, #b1380b), var(--rh-color-border-destructive-on-dark, #f0561d))})$2"
     ],
     "description": "Responsive `border-destructive` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-destructive-on-light` on a themable container with a light color palette and `--rh-color-border-destructive-on-dark` on a themable container with a dark color palette."
   },
@@ -395,7 +395,7 @@
       "rhcolorborderstatusdanger"
     ],
     "body": [
-      "var(--rh-color-border-status-danger)$2"
+      "var(--rh-color-border-status-danger${1:, light-dark(var(--rh-color-border-status-danger-on-light, #b1380b), var(--rh-color-border-status-danger-on-dark, #f0561d))})$2"
     ],
     "description": "Responsive `border-danger` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-danger-on-light` on a themable container with a light color palette and `--rh-color-border-danger-on-dark` on a themable container with a dark color palette."
   },
@@ -427,7 +427,7 @@
       "rhcolorborderstatuscaution"
     ],
     "body": [
-      "var(--rh-color-border-status-caution)$2"
+      "var(--rh-color-border-status-caution${1:, light-dark(var(--rh-color-border-status-caution-on-light, #ca6c0f), var(--rh-color-border-status-caution-on-dark, #f5921b))})$2"
     ],
     "description": "Responsive `border-caution` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-caution-on-light` on a themable container with a light color palette and `--rh-color-border-caution-on-dark` on a themable container with a dark color palette."
   },
@@ -459,7 +459,7 @@
       "rhcolorborderstatuswarning"
     ],
     "body": [
-      "var(--rh-color-border-status-warning)$2"
+      "var(--rh-color-border-status-warning${1:, light-dark(var(--rh-color-border-status-warning-on-light, #dca614), var(--rh-color-border-status-warning-on-dark, #ffcc17))})$2"
     ],
     "description": "Responsive `border-warning` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-warning-on-light` on a themable container with a light color palette and `--rh-color-border-warning-on-dark` on a themable container with a dark color palette."
   },
@@ -491,7 +491,7 @@
       "rhcolorborderstatusneutral"
     ],
     "body": [
-      "var(--rh-color-border-status-neutral)$2"
+      "var(--rh-color-border-status-neutral${1:, light-dark(var(--rh-color-border-status-neutral-on-light, #4d4d4d), var(--rh-color-border-status-neutral-on-dark, #c7c7c7))})$2"
     ],
     "description": "Responsive `border-neutral` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-neutral-on-light` on a themable container with a light color palette and `--rh-color-border-neutral-on-dark` on a themable container with a dark color palette."
   },
@@ -523,7 +523,7 @@
       "rhcolorborderstatusinfo"
     ],
     "body": [
-      "var(--rh-color-border-status-info)$2"
+      "var(--rh-color-border-status-info${1:, light-dark(var(--rh-color-border-status-info-on-light, #5e40be), var(--rh-color-border-status-info-on-dark, #b6a6e9))})$2"
     ],
     "description": "Responsive `border-info` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-info-on-light` on a themable container with a light color palette and `--rh-color-border-info-on-dark` on a themable container with a dark color palette."
   },
@@ -555,7 +555,7 @@
       "rhcolorborderstatussuccess"
     ],
     "body": [
-      "var(--rh-color-border-status-success)$2"
+      "var(--rh-color-border-status-success${1:, light-dark(var(--rh-color-border-status-success-on-light, #3d7317), var(--rh-color-border-status-success-on-dark, #87bb62))})$2"
     ],
     "description": "Responsive `border-success` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-success-on-light` on a themable container with a light color palette and `--rh-color-border-success-on-dark` on a themable container with a dark color palette."
   },
@@ -587,7 +587,7 @@
       "rhcolorbrandred"
     ],
     "body": [
-      "var(--rh-color-brand-red)$2"
+      "var(--rh-color-brand-red${1:, light-dark(var(--rh-color-brand-red-on-light, #ee0000), var(--rh-color-brand-red-on-dark, #ee0000))})$2"
     ],
     "description": "Responsive `brand-red` color value. Typically read only - use a themable container e.g. `<rh-surface>` Resolves to `--rh-color-brand-red-on-light` on a themable container with a light color palette and `--rh-color-brand-red-on-dark` on a themable container with a dark color palette."
   },
@@ -1114,7 +1114,7 @@
       "rhcoloriconprimary"
     ],
     "body": [
-      "var(--rh-color-icon-primary)$2"
+      "var(--rh-color-icon-primary${1:, light-dark(var(--rh-color-icon-primary-on-light, #ee0000), var(--rh-color-icon-primary-on-dark, #ee0000))})$2"
     ],
     "description": "Responsive `icon-primary` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-icon-primary-on-light` on a themable container with a light color palette and `--rh-color-icon-primary-on-dark` on a themable container with a dark color palette."
   },
@@ -1144,7 +1144,7 @@
       "rhcoloriconsecondary"
     ],
     "body": [
-      "var(--rh-color-icon-secondary)$2"
+      "var(--rh-color-icon-secondary${1:, light-dark(var(--rh-color-icon-secondary-on-light, #151515), var(--rh-color-icon-secondary-on-dark, #ffffff))})$2"
     ],
     "description": "Responsive `icon-secondary` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-icon-secondary-on-light` on a themable container with a light color palette and `--rh-color-icon-secondary-on-dark` on a themable container with a dark color palette."
   },
@@ -1194,7 +1194,7 @@
       "rhcoloriconstatusdanger"
     ],
     "body": [
-      "var(--rh-color-icon-status-danger)$2"
+      "var(--rh-color-icon-status-danger${1:, light-dark(var(--rh-color-icon-status-danger-on-light, #b1380b), var(--rh-color-icon-status-danger-on-dark, #f0561d))})$2"
     ],
     "description": "Responsive `icon-status-danger` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-icon-status-danger-on-light` on a themable container with a light color palette and `--rh-color-icon-status-danger-on-dark` on a themable container with a dark color palette."
   },
@@ -1226,7 +1226,7 @@
       "rhcoloriconstatuscaution"
     ],
     "body": [
-      "var(--rh-color-icon-status-caution)$2"
+      "var(--rh-color-icon-status-caution${1:, light-dark(var(--rh-color-icon-status-caution-on-light, #ca6c0f), var(--rh-color-icon-status-caution-on-dark, #f5921b))})$2"
     ],
     "description": "Responsive `icon-status-caution` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-icon-status-caution-on-light` on a themable container with a light color palette and `--rh-color-icon-status-caution-on-dark` on a themable container with a dark color palette."
   },
@@ -1258,7 +1258,7 @@
       "rhcoloriconstatuswarning"
     ],
     "body": [
-      "var(--rh-color-icon-status-warning)$2"
+      "var(--rh-color-icon-status-warning${1:, light-dark(var(--rh-color-icon-status-warning-on-light, #dca614), var(--rh-color-icon-status-warning-on-dark, #ffcc17))})$2"
     ],
     "description": "Responsive `icon-status-warning` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-icon-status-warning-on-light` on a themable container with a light color palette and `--rh-color-icon-status-warning-on-dark` on a themable container with a dark color palette."
   },
@@ -1290,7 +1290,7 @@
       "rhcoloriconstatusdefault"
     ],
     "body": [
-      "var(--rh-color-icon-status-default)$2"
+      "var(--rh-color-icon-status-default${1:, light-dark(var(--rh-color-icon-status-default-on-light, #4d4d4d), var(--rh-color-icon-status-default-on-dark, #4d4d4d))})$2"
     ],
     "description": "Responsive `icon-status-default` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-icon-status-default-on-light` on a themable container with a light color palette and `--rh-color-icon-status-default-on-dark` on a themable container with a dark color palette."
   },
@@ -1322,7 +1322,7 @@
       "rhcoloriconstatusneutral"
     ],
     "body": [
-      "var(--rh-color-icon-status-neutral)$2"
+      "var(--rh-color-icon-status-neutral${1:, light-dark(var(--rh-color-icon-status-neutral-on-light, #4d4d4d), var(--rh-color-icon-status-neutral-on-dark, #c7c7c7))})$2"
     ],
     "description": "Responsive `icon-status-neutral` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-icon-status-neutral-on-light` on a themable container with a light color palette and `--rh-color-icon-status-neutral-on-dark` on a themable container with a dark color palette."
   },
@@ -1354,7 +1354,7 @@
       "rhcoloriconstatusinfo"
     ],
     "body": [
-      "var(--rh-color-icon-status-info)$2"
+      "var(--rh-color-icon-status-info${1:, light-dark(var(--rh-color-icon-status-info-on-light, #5e40be), var(--rh-color-icon-status-info-on-dark, #b6a6e9))})$2"
     ],
     "description": "Responsive `icon-status-info` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-icon-status-info-on-light` on a themable container with a light color palette and `--rh-color-icon-status-info-on-dark` on a themable container with a dark color palette."
   },
@@ -1386,7 +1386,7 @@
       "rhcoloriconstatussuccess"
     ],
     "body": [
-      "var(--rh-color-icon-status-success)$2"
+      "var(--rh-color-icon-status-success${1:, light-dark(var(--rh-color-icon-status-success-on-light, #3d7317), var(--rh-color-icon-status-success-on-dark, #87bb62))})$2"
     ],
     "description": "Responsive `icon-status-success` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-icon-status-success-on-light` on a themable container with a light color palette and `--rh-color-icon-status-success-on-dark` on a themable container with a dark color palette."
   },
@@ -3102,7 +3102,7 @@
       "rhcolorinteractiveprimarydefault"
     ],
     "body": [
-      "var(--rh-color-interactive-primary-default)$2"
+      "var(--rh-color-interactive-primary-default${1:, light-dark(var(--rh-color-interactive-primary-default-on-light, #0066cc), var(--rh-color-interactive-primary-default-on-dark, #92c5f9))})$2"
     ],
     "description": "Responsive `interactive-primary` (e.g. link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-primary-default-on-light` on a themable container with a light color palette and `--rh-color-interactive-primary-default-on-dark` on a themable container with a dark color palette."
   },
@@ -3134,7 +3134,7 @@
       "rhcolorinteractiveprimaryhover"
     ],
     "body": [
-      "var(--rh-color-interactive-primary-hover)$2"
+      "var(--rh-color-interactive-primary-hover${1:, light-dark(var(--rh-color-interactive-primary-hover-on-light, #003366), var(--rh-color-interactive-primary-hover-on-dark, #b9dafc))})$2"
     ],
     "description": "Responsive `interactive-primary` (e.g. link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-primary-hover-on-light` on a themable container with a light color palette\n     and to `--rh-color-interactive-primary-hover-on-dark` on a themable container with a dark color palette."
   },
@@ -3166,7 +3166,7 @@
       "rhcolorinteractiveprimaryactive"
     ],
     "body": [
-      "var(--rh-color-interactive-primary-active)$2"
+      "var(--rh-color-interactive-primary-active${1:, light-dark(var(--rh-color-interactive-primary-active-on-light, #003366), var(--rh-color-interactive-primary-active-on-dark, #b9dafc))})$2"
     ],
     "description": "Responsive `interactive-primary` (e.g. link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-primary-active-on-light` on a themable container with a light color palette\n     and to `--rh-color-interactive-primary-active-on-dark` on a themable container with a dark color palette."
   },
@@ -3198,7 +3198,7 @@
       "rhcolorinteractiveprimaryfocus"
     ],
     "body": [
-      "var(--rh-color-interactive-primary-focus)$2"
+      "var(--rh-color-interactive-primary-focus${1:, light-dark(var(--rh-color-interactive-primary-focus-on-light, #003366), var(--rh-color-interactive-primary-focus-on-dark, #b9dafc))})$2"
     ],
     "description": "Responsive `interactive-primary` (e.g. link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-primary-focus-on-light` on a themable container with a light color palette\n     and to `--rh-color-interactive-primary-focus-on-dark` on a themable container with a dark color palette."
   },
@@ -3230,7 +3230,7 @@
       "rhcolorinteractiveprimaryvisiteddefault"
     ],
     "body": [
-      "var(--rh-color-interactive-primary-visited-default)$2"
+      "var(--rh-color-interactive-primary-visited-default${1:, light-dark(var(--rh-color-interactive-primary-visited-default-on-light, #5e40be), var(--rh-color-interactive-primary-visited-default-on-dark, #b6a6e9))})$2"
     ],
     "description": "Responsive `interactive-primary-visited` (e.g. visited link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-primary-visited-default-on-light` on a themable container with a light color palette and `--rh-color-interactive-primary-visited-default-on-dark` on a themable container with a dark color palette."
   },
@@ -3262,7 +3262,7 @@
       "rhcolorinteractiveprimaryvisitedhover"
     ],
     "body": [
-      "var(--rh-color-interactive-primary-visited-hover)$2"
+      "var(--rh-color-interactive-primary-visited-hover${1:, light-dark(var(--rh-color-interactive-primary-visited-hover-on-light, #21134d), var(--rh-color-interactive-primary-visited-hover-on-dark, #ece6ff))})$2"
     ],
     "description": "Responsive `interactive-primary-visited` (e.g. visited link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-primary-visited-hover-on-light` on a themable container with a light color palette\n     and to `--rh-color-interactive-primary-visited-hover-on-dark` on a themable container with a dark color palette."
   },
@@ -3294,7 +3294,7 @@
       "rhcolorinteractiveprimaryvisitedactive"
     ],
     "body": [
-      "var(--rh-color-interactive-primary-visited-active)$2"
+      "var(--rh-color-interactive-primary-visited-active${1:, light-dark(var(--rh-color-interactive-primary-visited-active-on-light, #21134d), var(--rh-color-interactive-primary-visited-active-on-dark, #ece6ff))})$2"
     ],
     "description": "Responsive `interactive-primary-visited` (e.g. visited link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-primary-visited-active-on-light` on a themable container with a light color palette\n     and to `--rh-color-interactive-primary-visited-active-on-dark` on a themable container with a dark color palette."
   },
@@ -3326,7 +3326,7 @@
       "rhcolorinteractiveprimaryvisitedfocus"
     ],
     "body": [
-      "var(--rh-color-interactive-primary-visited-focus)$2"
+      "var(--rh-color-interactive-primary-visited-focus${1:, light-dark(var(--rh-color-interactive-primary-visited-focus-on-light, #21134d), var(--rh-color-interactive-primary-visited-focus-on-dark, #ece6ff))})$2"
     ],
     "description": "Responsive `interactive-primary-visited` (e.g. visited link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-primary-visited-focus-on-light` on a themable container with a light color palette\n     and to `--rh-color-interactive-primary-visited-focus-on-dark` on a themable container with a dark color palette."
   },
@@ -3358,7 +3358,7 @@
       "rhcolorinteractivesecondarydefault"
     ],
     "body": [
-      "var(--rh-color-interactive-secondary-default)$2"
+      "var(--rh-color-interactive-secondary-default${1:, light-dark(var(--rh-color-interactive-secondary-default-on-light, #4d4d4d), var(--rh-color-interactive-secondary-default-on-dark, #c7c7c7))})$2"
     ],
     "description": "Responsive `interactive-secondary` (e.g. link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-secondary-default-on-light` on a themable container with a light color palette and `--rh-color-interactive-secondary-default-on-dark` on a themable container with a dark color palette."
   },
@@ -3390,7 +3390,7 @@
       "rhcolorinteractivesecondaryhover"
     ],
     "body": [
-      "var(--rh-color-interactive-secondary-hover)$2"
+      "var(--rh-color-interactive-secondary-hover${1:, light-dark(var(--rh-color-interactive-secondary-hover-on-light, #4d4d4d), var(--rh-color-interactive-secondary-hover-on-dark, #c7c7c7))})$2"
     ],
     "description": "Responsive `interactive-secondary` (e.g. link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-secondary-hover-on-light` on a themable container with a light color palette\n     and to `--rh-color-interactive-secondary-hover-on-dark` on a themable container with a dark color palette."
   },
@@ -3422,7 +3422,7 @@
       "rhcolorinteractivesecondaryactive"
     ],
     "body": [
-      "var(--rh-color-interactive-secondary-active)$2"
+      "var(--rh-color-interactive-secondary-active${1:, light-dark(var(--rh-color-interactive-secondary-active-on-light, #4d4d4d), var(--rh-color-interactive-secondary-active-on-dark, #c7c7c7))})$2"
     ],
     "description": "Responsive `interactive-secondary` (e.g. link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-secondary-active-on-light` on a themable container with a light color palette\n     and to `--rh-color-interactive-secondary-active-on-dark` on a themable container with a dark color palette."
   },
@@ -3454,7 +3454,7 @@
       "rhcolorinteractivesecondaryfocus"
     ],
     "body": [
-      "var(--rh-color-interactive-secondary-focus)$2"
+      "var(--rh-color-interactive-secondary-focus${1:, light-dark(var(--rh-color-interactive-secondary-focus-on-light, #4d4d4d), var(--rh-color-interactive-secondary-focus-on-dark, #c7c7c7))})$2"
     ],
     "description": "Responsive `interactive-secondary` (e.g. link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-secondary-focus-on-light` on a themable container with a light color palette\n     and to `--rh-color-interactive-secondary-focus-on-dark` on a themable container with a dark color palette."
   },
@@ -3486,7 +3486,7 @@
       "rhcolorinteractivesecondaryvisiteddefault"
     ],
     "body": [
-      "var(--rh-color-interactive-secondary-visited-default)$2"
+      "var(--rh-color-interactive-secondary-visited-default${1:, light-dark(var(--rh-color-interactive-secondary-visited-default-on-light, #4d4d4d), var(--rh-color-interactive-secondary-visited-default-on-dark, #c7c7c7))})$2"
     ],
     "description": "Responsive `interactive-secondary-visited` (e.g. visited link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-secondary-visited-default-on-light` on a themable container with a light color palette and `--rh-color-interactive-secondary-visited-default-on-dark` on a themable container with a dark color palette."
   },
@@ -3518,7 +3518,7 @@
       "rhcolorinteractivesecondaryvisitedhover"
     ],
     "body": [
-      "var(--rh-color-interactive-secondary-visited-hover)$2"
+      "var(--rh-color-interactive-secondary-visited-hover${1:, light-dark(var(--rh-color-interactive-secondary-visited-hover-on-light, #4d4d4d), var(--rh-color-interactive-secondary-visited-hover-on-dark, #c7c7c7))})$2"
     ],
     "description": "Responsive `interactive-secondary-visited` (e.g. visited link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-secondary-visited-hover-on-light` on a themable container with a light color palette\n     and to `--rh-color-interactive-secondary-visited-hover-on-dark` on a themable container with a dark color palette."
   },
@@ -3550,7 +3550,7 @@
       "rhcolorinteractivesecondaryvisitedactive"
     ],
     "body": [
-      "var(--rh-color-interactive-secondary-visited-active)$2"
+      "var(--rh-color-interactive-secondary-visited-active${1:, light-dark(var(--rh-color-interactive-secondary-visited-active-on-light, #4d4d4d), var(--rh-color-interactive-secondary-visited-active-on-dark, #c7c7c7))})$2"
     ],
     "description": "Responsive `interactive-secondary-visited` (e.g. visited link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-secondary-visited-active-on-light` on a themable container with a light color palette\n     and to `--rh-color-interactive-secondary-visited-active-on-dark` on a themable container with a dark color palette."
   },
@@ -3582,7 +3582,7 @@
       "rhcolorinteractivesecondaryvisitedfocus"
     ],
     "body": [
-      "var(--rh-color-interactive-secondary-visited-focus)$2"
+      "var(--rh-color-interactive-secondary-visited-focus${1:, light-dark(var(--rh-color-interactive-secondary-visited-focus-on-light, #4d4d4d), var(--rh-color-interactive-secondary-visited-focus-on-dark, #c7c7c7))})$2"
     ],
     "description": "Responsive `interactive-secondary-visited` (e.g. visited link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-secondary-visited-focus-on-light` on a themable container with a light color palette\n     and to `--rh-color-interactive-secondary-visited-focus-on-dark` on a themable container with a dark color palette."
   },
@@ -3702,7 +3702,7 @@
       "rhcolorstatusdanger"
     ],
     "body": [
-      "var(--rh-color-status-danger)$2"
+      "var(--rh-color-status-danger${1:, light-dark(var(--rh-color-status-danger-on-light, #b1380b), var(--rh-color-status-danger-on-dark, #f0561d))})$2"
     ],
     "description": "Responsive `status-danger` color value. Typically read-only – use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-status-danger-on-light` on a themable container with a light color palette and `--rh-color-status-danger-on-dark` on a themable container with a dark color palette."
   },
@@ -3734,7 +3734,7 @@
       "rhcolorstatuscaution"
     ],
     "body": [
-      "var(--rh-color-status-caution)$2"
+      "var(--rh-color-status-caution${1:, light-dark(var(--rh-color-status-caution-on-light, #ca6c0f), var(--rh-color-status-caution-on-dark, #f5921b))})$2"
     ],
     "description": "Responsive `status-caution` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-status-caution-on-light` on a themable container with a light color palette and `--rh-color-status-caution-on-dark` on a themable container with a dark color palette."
   },
@@ -3766,7 +3766,7 @@
       "rhcolorstatuswarning"
     ],
     "body": [
-      "var(--rh-color-status-warning)$2"
+      "var(--rh-color-status-warning${1:, light-dark(var(--rh-color-status-warning-on-light, #dca614), var(--rh-color-status-warning-on-dark, #ffcc17))})$2"
     ],
     "description": "Responsive `status-warning` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-status-warning-on-light` on a themable container with a light color palette and `--rh-color-status-warning-on-dark` on a themable container with a dark color palette."
   },
@@ -3798,7 +3798,7 @@
       "rhcolorstatusneutral"
     ],
     "body": [
-      "var(--rh-color-status-neutral)$2"
+      "var(--rh-color-status-neutral${1:, light-dark(var(--rh-color-status-neutral-on-light, #4d4d4d), var(--rh-color-status-neutral-on-dark, #c7c7c7))})$2"
     ],
     "description": "Responsive `status-neutral` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-status-neutral-on-light` on a themable container with a light color palette and `--rh-color-status-neutral-on-dark` on a themable container with a dark color palette."
   },
@@ -3830,7 +3830,7 @@
       "rhcolorstatusnote"
     ],
     "body": [
-      "var(--rh-color-status-note)$2"
+      "var(--rh-color-status-note${1:, light-dark(var(--rh-color-status-note-on-light, #5e40be), var(--rh-color-status-note-on-dark, #b6a6e9))})$2"
     ],
     "description": "Responsive `status-note` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-status-note-on-light` on a themable container with a light color palette and `--rh-color-status-note-on-dark` on a themable container with a dark color palette."
   },
@@ -3862,7 +3862,7 @@
       "rhcolorstatusinfo"
     ],
     "body": [
-      "var(--rh-color-status-info)$2"
+      "var(--rh-color-status-info${1:, light-dark(var(--rh-color-status-info-on-light, #5e40be), var(--rh-color-status-info-on-dark, #b6a6e9))})$2"
     ],
     "description": "Responsive `status-info` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-status-info-on-light` on a themable container with a light color palette and `--rh-color-status-info-on-dark` on a themable container with a dark color palette."
   },
@@ -3894,7 +3894,7 @@
       "rhcolorstatussuccess"
     ],
     "body": [
-      "var(--rh-color-status-success)$2"
+      "var(--rh-color-status-success${1:, light-dark(var(--rh-color-status-success-on-light, #3d7317), var(--rh-color-status-success-on-dark, #87bb62))})$2"
     ],
     "description": "Responsive `status-success` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-status-success-on-light` on a themable container with a light color palette and `--rh-color-status-success-on-dark` on a themable container with a dark color palette."
   },
@@ -3926,7 +3926,7 @@
       "rhcolorsurface"
     ],
     "body": [
-      "var(--rh-color-surface)$2"
+      "var(--rh-color-surface${1:, light-dark(var(--rh-color-surface-lightest, #ffffff), var(--rh-color-surface-lighter, #f2f2f2))})$2"
     ],
     "description": "Responsive `surface` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to the surface color corresponding to the surface' color palette."
   },
@@ -3977,13 +3977,12 @@
   "rh-color-surface-dark-alt": {
     "scope": "css,scss",
     "prefix": [
-      "rhcolorsurfacedarkalt",
-      "292929"
+      "rhcolorsurfacedarkalt"
     ],
     "body": [
-      "var(--rh-color-surface-dark-alt${1:, #292929})$2"
+      "var(--rh-color-surface-dark-alt${1:, oklch(from(--rh-color-surface-dark) calc(l * 0.82) c h)})$2"
     ],
-    "description": "Alternative tertiary surface (not available for use with context provider)"
+    "description": "DEPRECATED. Theme authors should use --rh-color-surface-dark. Element authors should use oklch(from var(--rh-color-surface-dark) calc(l * 0.82) c h). Alternative tertiary surface (not available for use with context provider)\n"
   },
   "rh-color-surface-darker": {
     "scope": "css,scss",
@@ -4013,7 +4012,7 @@
       "rhcolorsurfacestatusdanger"
     ],
     "body": [
-      "var(--rh-color-surface-status-danger)$2"
+      "var(--rh-color-surface-status-danger${1:, light-dark(var(--rh-color-surface-status-danger-on-light, #ffe3d9), var(--rh-color-surface-status-danger-on-dark, #ffe3d9))})$2"
     ],
     "description": "Responsive `surface-status-danger` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-surface-status-danger-on-light` on a themable container with a light color palette and `--rh-color-surface-status-danger-on-dark` on a themable container with a dark color palette."
   },
@@ -4045,7 +4044,7 @@
       "rhcolorsurfacestatuscaution"
     ],
     "body": [
-      "var(--rh-color-surface-status-caution)$2"
+      "var(--rh-color-surface-status-caution${1:, light-dark(var(--rh-color-surface-status-caution-on-light, #ffe8cc), var(--rh-color-surface-status-caution-on-dark, #ffe8cc))})$2"
     ],
     "description": "Responsive `surface-status-caution` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-surface-status-caution-on-light` on a themable container with a light color palette and `--rh-color-surface-status-caution-on-dark` on a themable container with a dark color palette."
   },
@@ -4077,7 +4076,7 @@
       "rhcolorsurfacestatuswarning"
     ],
     "body": [
-      "var(--rh-color-surface-status-warning)$2"
+      "var(--rh-color-surface-status-warning${1:, light-dark(var(--rh-color-surface-status-warning-on-light, #fff4cc), var(--rh-color-surface-status-warning-on-dark, #73480b))})$2"
     ],
     "description": "Responsive `surface-status-warning` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-surface-status-warning-on-light` on a themable container with a light color palette and `--rh-color-surface-status-warning-on-dark` on a themable container with a dark color palette."
   },
@@ -4109,7 +4108,7 @@
       "rhcolorsurfacestatusdefault"
     ],
     "body": [
-      "var(--rh-color-surface-status-default)$2"
+      "var(--rh-color-surface-status-default${1:, light-dark(var(--rh-color-surface-status-default-on-light, #f2f2f2), var(--rh-color-surface-status-default-on-dark, #f2f2f2))})$2"
     ],
     "description": "Responsive `surface-status-default` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-surface-status-default-on-light` on a themable container with a light color palette and `--rh-color-surface-status-default-on-dark` on a themable container with a dark color palette."
   },
@@ -4141,7 +4140,7 @@
       "rhcolorsurfacestatusneutral"
     ],
     "body": [
-      "var(--rh-color-surface-status-neutral)$2"
+      "var(--rh-color-surface-status-neutral${1:, light-dark(var(--rh-color-surface-status-neutral-on-light, #f2f2f2), var(--rh-color-surface-status-neutral-on-dark, #f2f2f2))})$2"
     ],
     "description": "Responsive `surface-status-neutral` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-surface-status-neutral-on-light` on a themable container with a light color palette and `--rh-color-surface-status-neutral-on-dark` on a themable container with a dark color palette."
   },
@@ -4173,7 +4172,7 @@
       "rhcolorsurfacestatusinfo"
     ],
     "body": [
-      "var(--rh-color-surface-status-info)$2"
+      "var(--rh-color-surface-status-info${1:, light-dark(var(--rh-color-surface-status-info-on-light, #ece6ff), var(--rh-color-surface-status-info-on-dark, #ece6ff))})$2"
     ],
     "description": "Responsive `surface-status-info` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-surface-status-info-on-light` on a themable container with a light color palette and `--rh-color-surface-status-info-on-dark` on a themable container with a dark color palette."
   },
@@ -4205,7 +4204,7 @@
       "rhcolorsurfacestatussuccess"
     ],
     "body": [
-      "var(--rh-color-surface-status-success)$2"
+      "var(--rh-color-surface-status-success${1:, light-dark(var(--rh-color-surface-status-success-on-light, #e9f7df), var(--rh-color-surface-status-success-on-dark, #e9f7df))})$2"
     ],
     "description": "Responsive `surface-status-success` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-surface-status-success-on-light` on a themable container with a light color palette and `--rh-color-surface-status-success-on-dark` on a themable container with a dark color palette."
   },
@@ -4237,7 +4236,7 @@
       "rhcolortextprimary"
     ],
     "body": [
-      "var(--rh-color-text-primary)$2"
+      "var(--rh-color-text-primary${1:, light-dark(var(--rh-color-text-primary-on-light, #151515), var(--rh-color-text-primary-on-dark, #ffffff))})$2"
     ],
     "description": "Responsive `text-primary` color value. Typically read only - use a themable container e.g. `<rh-surface>` Resolves to `--rh-color-text-primary-on-light` on a themable container with a light color palette and `--rh-color-text-primary-on-dark` on a themable container with a dark color palette."
   },
@@ -4269,7 +4268,7 @@
       "rhcolortextsecondary"
     ],
     "body": [
-      "var(--rh-color-text-secondary)$2"
+      "var(--rh-color-text-secondary${1:, light-dark(var(--rh-color-text-secondary-on-light, #4d4d4d), var(--rh-color-text-secondary-on-dark, #c7c7c7))})$2"
     ],
     "description": "Responsive `text-secondary` color value. Typically read only - use a themable container e.g. `<rh-surface>` Resolves to `--rh-color-text-secondary-on-light` on a themable container with a light color palette and `--rh-color-text-secondary-on-dark` on a themable container with a dark color palette."
   },
@@ -4301,7 +4300,7 @@
       "rhcolortextbrand"
     ],
     "body": [
-      "var(--rh-color-text-brand)$2"
+      "var(--rh-color-text-brand${1:, light-dark(var(--rh-color-text-brand-on-light, #ee0000), var(--rh-color-text-brand-on-dark, #ee0000))})$2"
     ],
     "description": "Responsive `text-brand` color value. Typically read only - use a themable container e.g. `<rh-surface>` Resolves to `--rh-color-text-brand-on-light` on a themable container with a light color palette and `--rh-color-text-brand-on-dark` on a themable container with a dark color palette."
   },

@@ -40,3 +40,10 @@ export declare class UxdotSideNavDropdownMenu extends LitElement {
 export declare class UxdotSideNavDropdownMenuItem extends UxdotSideNavItem {
     static styles: CSSStyleSheet[];
 }
+declare global {
+    interface HTMLElementTagNameMap {
+        'uxdot-sidenav': UxdotSideNav;
+        'uxdot-sidenav-dropdown-menu': UxdotSideNavDropdownMenu;
+        'uxdot-sidenav-dropdown-menu-item': UxdotSideNavDropdownMenuItem;
+    }
+}

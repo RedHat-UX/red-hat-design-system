@@ -2,7 +2,7 @@ import { LitElement } from 'lit';
 import { RhTab } from './rh-tab.js';
 import { RhTabPanel } from './rh-tab-panel.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
-import { type ColorPalette } from '../../lib/context/color/provider.js';
+import { type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
 export { RhTab };
 /**
  * Tabs are used to organize and navigate between sections of content.
@@ -15,7 +15,6 @@ export { RhTab };
  * @csspart panels - panels
  * @slot tab - Must contain one or more `<rh-tab>`
  * @slot - Must contain one or more `<rh-tab-panel>`
- * @cssprop {<color>} [--rh-tabs-border-color=#c7c7c7] - Tabs Border color
  * @cssprop {<length>} [--rh-tabs-inset=auto] - Tabs inset
  */
 export declare class RhTabs extends LitElement {
@@ -40,7 +39,6 @@ export declare class RhTabs extends LitElement {
     get activeIndex(): number;
     set activeIndex(v: number);
     activeTab?: RhTab;
-    private on?;
     /** Sets color context for child components, overrides parent context */
     colorPalette?: ColorPalette;
     /** Aligns tabs to the center */

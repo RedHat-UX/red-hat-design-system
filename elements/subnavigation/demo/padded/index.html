@@ -14,8 +14,8 @@
   "imports": {
     "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
-    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
@@ -23,8 +23,8 @@
     "lit-element": "/assets/packages/lit-element/index.js",
     "prism-esm": "/assets/packages/prism-esm/prism.js",
     "lit": "/assets/packages/lit/index.js",
-    "@rhds/tokens/css/color-context-provider.css.js": "/assets/packages/@rhds/tokens/css/color-context-provider.css.js",
-    "@rhds/tokens/css/color-context-consumer.css.js": "/assets/packages/@rhds/tokens/css/color-context-consumer.css.js",
+    "@rhds/tokens/css/default-theme.css.js": "/assets/packages/@rhds/tokens/css/default-theme.css.js",
+    "@rhds/tokens/css/color-palette.css.js": "/assets/packages/@rhds/tokens/css/color-palette.css.js",
     "lit/decorators/custom-element.js": "/assets/packages/lit/decorators/custom-element.js",
     "lit/decorators/property.js": "/assets/packages/lit/decorators/property.js",
     "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
@@ -32,7 +32,7 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@4.0.5/core.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.0/core.js",
     "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
@@ -90,142 +90,14 @@
 
     <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
   </head>
-  <body unresolved="">
+  <body>
     <main><h2>In a container with padding</h2>
 <div class="padded">
-  <rh-subnav color-palette="lighter"><template shadowroot="open" shadowrootmode="open"><style>:host {
-  display: block;
-}
-
-[part='container'] {
-  display: flex;
-  background-color: var(--rh-color-surface);
-
-  --_subnav-link-text-color: var(--rh-color-text-secondary);
-  --_subnav-link-hover-text-color: var(--rh-color-text-primary);
-  --_subnav-link-hover-border-end-color: var(--rh-color-border-subtle);
-  --_subnav-link-active-border-end-color: var(--rh-color-accent-brand);
-  --_subnav-link-visited-text-color: var(--rh-color-text-secondary);
-  --_subnav-link-focus-outline-color: var(--rh-color-border-interactive);
-  --_subnav-next-prev-button-text-color: var(--rh-color-text-secondary);
-  --_subnav-next-prev-disabled-text-color: var(--rh-color-border-subtle);
-  --_subnav-next-prev-hover-text-color: var(--rh-color-text-primary);
-  --_subnav-next-prev-border-color: var(--rh-color-border-subtle);
-}
-
-[part='links'] {
-  display: flex;
-  position: relative;
-  bottom: 0;
-  overflow-x: auto;
-  scrollbar-width: none;
-  max-width: 100%;
-}
-
-::slotted(a) {
-  display: block !important;
-  white-space: nowrap !important;
-  padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px) !important;
-  text-decoration: none !important;
-  color:
-    var(--_subnav-link-text-color,
-      var(--rh-color-text-secondary)) !important;
-  position: relative !important;
-}
-
-::slotted(a):after {
-  content: '' !important;
-  position: absolute !important;
-  inset: 0 !important;
-  width: 100% !important;
-  border-block-end: var(--rh-border-width-lg, 3px) solid transparent !important;
-}
-
-::slotted(a:hover),
-::slotted(a:active),
-::slotted(a[active]) {
-  color:
-    var(--_subnav-link-hover-text-color,
-      var(--rh-color-text-secondary)) !important;
-}
-
-::slotted(a:hover):after {
-  border-block-end-color:
-    var(--_subnav-link-hover-border-end-color,
-      var(--rh-color-border-subtle)) !important;
-}
-
-::slotted(a:active):after,
-::slotted(a[active]):after {
-  border-block-end-color:
-    var(--_subnav-link-active-border-end-color,
-      var(--rh-color-accent-brand)) !important;
-}
-
-::slotted(a:focus-visible) {
-  outline:
-    var(--rh-border-width-md, 2px)
-    solid
-    var(--_subnav-link-focus-outline-color,
-      var(--rh-color-interactive-primary-default)) !important;
-  outline-offset: -8px !important;
-  border-radius: 10px !important;
-}
-
-::slotted(a:visited) {
-  color:
-    var(--_subnav-link-visited-text-color,
-      var(--rh-color-text-primary)) !important;
-}
-
-button {
-  position: relative;
-  padding: 0 var(--rh-space-lg, 16px);
-  margin: 0;
-  background-color: transparent;
-  border: none;
-  color:
-    var(--_subnav-next-prev-button-text-color,
-      var(--rh-color-text-secondary));
-}
-
-button:disabled {
-  pointer-events: none;
-  color: var(--_subnav-next-prev-disabled-text-color, var(--rh-color-gray-10, #f2f2f2));
-}
-
-button:hover {
-  color: var(--_subnav-next-prev-hover-text-color, var(--rh-color-text-primary));
-}
-
-button:before {
-  position: absolute;
-  inset: 0;
-  content: '';
-  border-block-end: var(--rh-border-width-lg, 3px) solid transparent;
-}
-
-button:hover:before {
-  border-block-end-color: var(--_subnav-link-hover-border-end-color);
-}
-
-#previous {
-  border-inline-end:
-    var(--rh-border-width-sm, 1px)
-    solid
-    var(--_subnav-next-prev-border-color, var(--rh-color-border-subtle));
-}
-
-#next {
-  border-inline-start:
-    var(--rh-border-width-sm, 1px)
-    solid
-    var(--_subnav-next-prev-border-color, var(--rh-color-border-subtle));
-}
-</style><!--lit-part JjqcvvneScE=-->
-      <!--lit-node 0--><nav part="container" aria-label="subnavigation" class="  "><!--lit-part--><!--/lit-part-->
-        <!--lit-node 2--><slot part="links"
-              ></slot><!--lit-part--><!--/lit-part-->
+  <rh-subnav><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{display:block}[part=container]{display:flex}[part=links]{bottom:0;display:flex;max-width:100%;overflow-x:auto;position:relative;scrollbar-width:none}::slotted(a){color:var(--rh-color-text-secondary)!important;display:block!important;padding:var(--rh-space-lg,16px) var(--rh-space-2xl,32px)!important;position:relative!important;text-decoration:none!important;white-space:nowrap!important}::slotted(a):after{border-block-end:var(--rh-border-width-lg,3px) solid #0000!important;content:""!important;inset:0!important;position:absolute!important;width:100%!important}::slotted(a:active),::slotted(a:hover),::slotted(a[active]){color:var(--rh-color-text-primary)!important}::slotted(a:focus-visible):after,::slotted(a:hover):after{border-block-end-color:var(--rh-color-border-subtle)!important}::slotted(a:active):after,::slotted(a[active]):after{border-block-end-color:var(--rh-color-accent-brand)!important}::slotted(a:focus-visible){border-radius:10px!important;outline:var(--rh-border-width-md,2px) solid var(--rh-color-border-interactive)!important;outline-offset:-2px!important}::slotted(a:visited){color:var(--rh-color-text-primary)!important}button{background-color:initial;border:none;color:var(--rh-color-text-secondary);margin:0;padding:0 var(--rh-space-lg,16px);position:relative;&:disabled{color:var(--rh-color-border-subtle);pointer-events:none}&:hover{color:var(--rh-color-text-primary)}&:before{border-block-end:var(--rh-border-width-lg,3px) solid #0000;content:"";inset:0;position:absolute;&:hover{border-block-end-color:var(--rh-color-border-subtle)}}}#previous{border-inline-end:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle)}#next{border-inline-start:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle)}#next,#previous{& rh-icon{pointer-events:none;&:dir(rtl){rotate:180deg}}}</style><!--lit-part 3ckEeDtCi48=-->
+      <!--lit-node 0--><nav part="container" aria-label="subnavigation">
+        <!--lit-part--><!--/lit-part-->
+        <!--lit-node 2--><slot part="links" ></slot>
+        <!--lit-part--><!--/lit-part-->
       </nav>
     <!--/lit-part--></template>
     <a href="#">Users</a>
@@ -233,31 +105,7 @@ button:hover:before {
     <a href="#">Databases</a>
     <a href="#" active="">Servers</a>
     <a href="#">System</a>
-    <a href="#"><rh-icon     slot="icon" icon="data" set="ui" size="sm"><template shadowroot="open" shadowrootmode="open"><style>:host {
-  line-height: 0;
-  aspect-ratio: 1/1;
-  display: inline-flex;
-  place-content: center;
-}
-
-#container {
-  display: contents;
-}
-
-svg {
-  width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
-  fill: currentcolor;
-  aspect-ratio: 1/1;
-}
-
-.standard svg {
-  width: var(--rh-icon-size, var(--rh-size-icon-04, 40px));
-}
-
-.microns svg {
-  width: 12px;
-}
-</style><!--lit-part 5A+PTGpViiE=-->
+    <a href="#"><rh-icon     slot="icon" icon="data" set="ui" size="sm"><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part 5A+PTGpViiE=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
            class=" ui "><!--lit-part E65hbQkpc38=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M23 7c0-3.86-3.14-7-7-7S9 3.14 9 7s3.14 7 7 7 7-3.14 7-7Zm-7 5c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5Zm9 6c-3.86 0-7 3.14-7 7s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7Zm0 12c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5ZM3 0a1 1 0 0 0-1 1v12a1 1 0 0 0 2 0V1a1 1 0 0 0-1-1Zm0 18a1 1 0 0 0-1 1v12a1 1 0 0 0 2 0V19a1 1 0 0 0-1-1Zm9 0a1 1 0 0 0-1 1v12a1 1 0 0 0 2 0V19a1 1 0 0 0-1-1Zm17-4a1 1 0 0 0 1-1V1a1 1 0 0 0-2 0v12a1 1 0 0 0 1 1Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>

@@ -1,13 +1,16 @@
 var _RhCodeBlock_instances, _RhCodeBlock_slots, _RhCodeBlock_prismOutput, _RhCodeBlock_ro, _RhCodeBlock_lineHeights, _RhCodeBlock_onSlotChange, _RhCodeBlock_applyPrismPrerenderedStyles, _RhCodeBlock_highlightWithPrism, _RhCodeBlock_wrapChanged, _RhCodeBlock_getSlottedCodeElements, _RhCodeBlock_computeLineNumbers, _RhCodeBlock_onActionsClick, _RhCodeBlock_onActionsKeyup, _RhCodeBlock_onCodeAction, _RhCodeBlock_onClickExpand, _RhCodeBlock_copy;
+var RhCodeBlock_1;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { CSSResult, LitElement, html } from 'lit';
+import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { styleMap } from 'lit/directives/style-map.js';
+import { property } from 'lit/decorators/property.js';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
-import { colorContextConsumer } from '../../lib/context/color/consumer.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 import { css } from "lit";
-const style = css `:host{--rh-code-block-callout-size:var(--rh-size-icon-02,24px);--_aspect-ratio:1;--_badge-size:var(--rh-code-block-callout-size);--_badge-padding:0;display:block;max-width:1000px;max-height:calc(var(--rh-space-4xl, 64px)*10)}:host([full-height]){--_expand-toggle-rotate:0deg;max-height:none}[hidden]{display:none!important}::slotted(pre){margin:0!important;padding:0!important;background:#0000!important;border:none!important}.shadow-fab{display:flex;align-items:center;justify-content:center;border:none;background:#0000;padding:var(--rh-space-md,8px);border-radius:var(--rh-border-radius-default,3px);width:var(--rh-length-3xl,48px);height:var(--rh-length-3xl,48px)}.shadow-fab:is(:hover,:focus,:active){background:var(--_code-action-hover-focus-active-background,var(--rh-color-surface-light,#e0e0e0))}.shadow-fab svg{width:var(--rh-size-icon-02,24px);height:var(--rh-size-icon-02,24px);color:var(--rh-color-text-primary)}.dark .shadow-fab{--_code-action-hover-focus-active-background:var(--rh-color-surface-dark,#383838)}#container,#content,#content-lines,#prism-output,#sizers{max-width:100%}#prism-output{margin:0}#prism-output code{font-size:inherit;font-family:inherit;font-weight:inherit;line-height:inherit}#container{--_code-background-color:var(--rh-color-surface-lighter,#f2f2f2);--_code-main-spacer:var(--rh-space-xl,24px);display:grid;place-items:center;grid-template-columns:auto min-content;grid-template-areas:"code actions" "expand expand";column-gap:var(--_code-main-spacer);padding-inline-start:var(--_code-main-spacer);padding-block-end:var(--_code-main-spacer);border-radius:var(--rh-border-radius-default,3px);background-color:var(--_code-background-color);color:var(--rh-color-text-primary);border:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle);border-block-start-width:var(--rh-code-block-border-block-start-width,var(--rh-border-width-sm,1px));--_gradient:linear-gradient(var(--_gradient-angle,0deg),var(--_code-background-color) 0%,#0000 100%)}#container.dark{--_code-background-color:var(--rh-color-surface-dark-alt,#292929)}#container.expandable{padding-block-end:0}#content,#prism-output,#sizers{display:block;font-family:var(--rh-font-family-code,RedHatMono,"Red Hat Mono","Courier New",Courier,monospace);z-index:1;place-self:start;grid-area:code}#content::slotted(:is(script,pre)),#prism-output,#sizers{display:inline;white-space:var(--_code-white-space,pre);word-wrap:var(--_code-word-wrap,initial);color:inherit}#content::slotted(:is(code[class*=language-],pre[class*=language-])){color:var(--_code-color);font-family:var(--rh-font-family-code,RedHatMono,"Red Hat Mono","Courier New",Courier,monospace);text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:var(--rh-line-height-code,1.5);tab-size:4;hyphens:none;background:#0000}:host([highlighting=prerendered]) .wrap #content::slotted(pre[class*=language-]){white-space:pre-wrap}#content::slotted(rh-tag){width:var(--rh-size-icon-06,64px)}#content-lines{display:grid;column-gap:var(--rh-space-lg,16px);grid-area:code;grid-template-areas:"lines code";grid-template-columns:min-content 1fr;grid-template-rows:1fr;position:relative;overflow-y:auto;margin-block-start:var(--_code-main-spacer);width:100%}#sizers{position:absolute;min-width:100%;width:100%;opacity:0;pointer-events:none;z-index:-10000;line-height:var(--rh-line-height-code,1.5)}#line-numbers{pointer-events:none;overflow-y:hidden;margin:0;grid-area:lines;list-style-type:none;padding-inline:0 var(--rh-space-md,8px);text-align:end;font-family:var(--rh-font-family-code,RedHatMono,"Red Hat Mono","Courier New",Courier,monospace);color:var(--rh-color-text-secondary);font-weight:var(--rh-font-weight-code-regular,400);border-inline-end:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle)}#line-numbers li{line-height:var(--rh-line-height-code,1.5);display:block}#actions{display:flex;grid-area:actions;gap:var(--rh-space-md,8px);flex-flow:column;margin-block-start:var(--rh-space-lg,16px);margin-inline-end:var(--rh-space-lg,16px);z-index:2;place-self:start center;height:100%;position:relative;--_gradient-angle:270deg}#actions rh-tooltip{display:block}#expand{--_code-secondary-spacer:var(--rh-space-md,8px);display:inline-flex;align-items:center;border:0;background:#0000;grid-area:expand;gap:var(--rh-space-md,8px);inset-block-end:var(--_code-secondary-spacer);margin-block:var(--_code-secondary-spacer);color:var(--rh-color-text-primary);font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-body-text-sm,.875rem);font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-body-text,1.5)}#expand svg{width:11px;height:7px;rotate:var(--_expand-toggle-rotate,180deg);transform:rotate .2s ease-in-out;color:var(--rh-color-icon-secondary)}#container.compact{--_code-main-spacer:var(--rh-space-lg,16px);--_code-secondary-spacer:var(--rh-space-sm,6px)}.resizable #content-lines{resize:vertical;overflow-x:scroll}.truncated #content-lines{max-height:calc(var(--rh-font-size-code-md, 1rem)*8)}.truncated #content-lines:before{position:sticky;inset-block-end:0;inset-inline:0;height:var(--rh-space-3xl,48px);grid-column:-1/1}.truncated #content-lines:before,:not(.wrap) #actions:before{content:"";display:block;z-index:2;pointer-events:none;background:var(--_gradient)}:not(.wrap) #actions:before{position:absolute;inset-block:0;inset-inline-start:calc(var(--rh-space-4xl, 64px)*-1);width:var(--rh-space-4xl,64px)}:not(.actions) #actions{margin:0}.wrap{--_code-white-space:pre-wrap;--_code-word-wrap:anywhere}[name=legend]::slotted(dl){display:grid;grid-template-columns:max-content auto;margin-block:var(--rh-space-lg,16px);gap:var(--rh-space-md,8px)}.on{--_cdata-color:var(--rh-color-text-secondary);--_comment-color:var(--rh-color-text-secondary);--_comment-block-color:var(--rh-color-text-secondary);--_doctype-color:var(--rh-color-text-secondary)}.on,.on.light{--_default-color:var(--rh-color-gray-95,#151515);--_selected-text-background:var(--rh-color-blue-10,#e0f0ff);--_punctuation-color:var(--rh-color-gray-40,#a3a3a3);--_namespace-color:var(--rh-color-gray-95,#151515);--_property-color:var(--rh-color-purple-50,#5e40be);--_tag-color:var(--rh-color-purple-50,#5e40be);--_boolean-color:var(--rh-color-purple-50,#5e40be);--_number-color:var(--rh-color-purple-50,#5e40be);--_constant-color:var(--rh-color-purple-50,#5e40be);--_symbol-color:var(--rh-color-purple-50,#5e40be);--_deleted-color:var(--rh-color-purple-50,#5e40be);--_function-name-color:var(--rh-color-purple-50,#5e40be);--_selector-color:var(--rh-color-teal-60,#147878);--_attr-name-color:var(--rh-color-teal-60,#147878);--_string-color:var(--rh-color-teal-60,#147878);--_character-color:var(--rh-color-teal-60,#147878);--_built-in-color:var(--rh-color-teal-60,#147878);--_inserted-color:var(--rh-color-teal-60,#147878);--_operator-color:var(--rh-color-yellow-60,#96640f);--_entity-color:var(--rh-color-yellow-60,#96640f);--_url-color:var(--rh-color-yellow-60,#96640f);--_at-rule-color:var(--rh-color-blue-60,#004d99);--_attr-value-color:var(--rh-color-blue-60,#004d99);--_keyword-color:var(--rh-color-blue-60,#004d99);--_function-color:var(--rh-color-red-60,#a60000);--_class-name-color:var(--rh-color-red-60,#a60000);--_regex-color:var(--rh-color-orange-60,#9e4a06);--_important-color:var(--rh-color-orange-60,#9e4a06);--_variable-color:var(--rh-color-orange-60,#9e4a06)}.on.dark{--_default-color:var(--rh-color-gray-20,#e0e0e0);--_selected-text-background:var(--rh-color-gray-95,#151515);--_punctuation-color:var(--rh-color-gray-20,#e0e0e0);--_namespace-color:var(--rh-color-red-40,#f56e6e);--_property-color:var(--rh-color-yellow-40,#dca614);--_tag-color:var(--rh-color-red-10,#fce3e3);--_boolean-color:var(--rh-color-orange-40,#f5921b);--_number-color:var(--rh-color-orange-40,#f5921b);--_constant-color:var(--rh-color-yellow-40,#dca614);--_symbol-color:var(--rh-color-yellow-40,#dca614);--_deleted-color:var(--rh-color-red-40,#f56e6e);--_function-name-color:var(--rh-color-teal-20,#b9e5e5);--_selector-color:var(--rh-color-purple-30,#b6a6e9);--_attr-name-color:var(--rh-color-red-40,#f56e6e);--_string-color:var(--rh-color-green-40,#87bb62);--_character-color:var(--rh-color-green-40,#87bb62);--_built-in-color:var(--rh-color-purple-30,#b6a6e9);--_inserted-color:var(--rh-color-green-40,#87bb62);--_operator-color:var(--rh-color-blue-40,#4394e5);--_entity-color:var(--rh-color-blue-40,#4394e5);--_url-color:var(--rh-color-blue-40,#4394e5);--_at-rule-color:var(--rh-color-purple-30,#b6a6e9);--_attr-value-color:var(--rh-color-green-40,#87bb62);--_keyword-color:var(--rh-color-purple-30,#b6a6e9);--_function-color:var(--rh-color-orange-40,#f5921b);--_class-name-color:var(--rh-color-yellow-40,#dca614);--_regex-color:var(--rh-color-green-40,#87bb62);--_important-color:var(--rh-color-purple-30,#b6a6e9);--_variable-color:var(--rh-color-green-40,#87bb62)}:host([highlighting=client]) #content::slotted(:is(script,pre)){display:none}`;
+const style = css `:host{--rh-code-block-callout-size:var(--rh-size-icon-02,24px);--_aspect-ratio:1;--_badge-size:var(--rh-code-block-callout-size);--_badge-padding:0;display:block;max-width:1000px;max-height:calc(var(--rh-space-4xl, 64px)*10)}:host([full-height]){--_expand-toggle-rotate:0deg;max-height:none}[hidden]{display:none!important}::slotted(pre){margin:0!important;padding:0!important;background:#0000!important;border:none!important}.shadow-fab{display:flex;align-items:center;justify-content:center;border:none;background:#0000;padding:var(--rh-space-md,8px);border-radius:var(--rh-border-radius-default,3px);width:var(--rh-length-3xl,48px);height:var(--rh-length-3xl,48px)}.shadow-fab:is(:hover,:focus,:active){background:var(--rh-color-surface)}.shadow-fab svg{width:var(--rh-size-icon-02,24px);height:var(--rh-size-icon-02,24px);color:var(--rh-color-text-primary)}#container,#content,#content-lines,#prism-output,#sizers{max-width:100%}#prism-output{margin:0}#prism-output code{font-size:inherit;font-family:inherit;font-weight:inherit;line-height:inherit}#container{--_code-background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),oklch(from var(--rh-color-surface-dark) calc(l * 0.82) c h));--_code-main-spacer:var(--rh-space-xl,24px);--_cdata-color:var(--rh-color-text-secondary);--_comment-color:var(--rh-color-text-secondary);--_comment-block-color:var(--rh-color-text-secondary);--_doctype-color:var(--rh-color-text-secondary);--_default-color:light-dark(var(--rh-color-gray-95,#151515),var(--rh-color-gray-20,#e0e0e0));--_selected-text-background:light-dark(var(--rh-color-blue-10,#e0f0ff),var(--rh-color-gray-95,#151515));--_punctuation-color:light-dark(var(--rh-color-gray-40,#a3a3a3),var(--rh-color-gray-20,#e0e0e0));--_namespace-color:light-dark(var(--rh-color-gray-95,#151515),var(--rh-color-red-40,#f56e6e));--_property-color:light-dark(var(--rh-color-purple-50,#5e40be),var(--rh-color-yellow-40,#dca614));--_tag-color:light-dark(var(--rh-color-purple-50,#5e40be),var(--rh-color-red-10,#fce3e3));--_boolean-color:light-dark(var(--rh-color-purple-50,#5e40be),var(--rh-color-orange-40,#f5921b));--_number-color:light-dark(var(--rh-color-purple-50,#5e40be),var(--rh-color-orange-40,#f5921b));--_constant-color:light-dark(var(--rh-color-purple-50,#5e40be),var(--rh-color-yellow-40,#dca614));--_symbol-color:light-dark(var(--rh-color-purple-50,#5e40be),var(--rh-color-yellow-40,#dca614));--_deleted-color:light-dark(var(--rh-color-purple-50,#5e40be),var(--rh-color-red-40,#f56e6e));--_function-name-color:light-dark(var(--rh-color-purple-50,#5e40be),var(--rh-color-teal-20,#b9e5e5));--_selector-color:light-dark(var(--rh-color-teal-60,#147878),var(--rh-color-purple-30,#b6a6e9));--_attr-name-color:light-dark(var(--rh-color-teal-60,#147878),var(--rh-color-red-40,#f56e6e));--_string-color:light-dark(var(--rh-color-teal-60,#147878),var(--rh-color-green-40,#87bb62));--_character-color:light-dark(var(--rh-color-teal-60,#147878),var(--rh-color-green-40,#87bb62));--_built-in-color:light-dark(var(--rh-color-teal-60,#147878),var(--rh-color-purple-30,#b6a6e9));--_inserted-color:light-dark(var(--rh-color-teal-60,#147878),var(--rh-color-green-40,#87bb62));--_operator-color:light-dark(var(--rh-color-yellow-60,#96640f),var(--rh-color-blue-40,#4394e5));--_entity-color:light-dark(var(--rh-color-yellow-60,#96640f),var(--rh-color-blue-40,#4394e5));--_url-color:light-dark(var(--rh-color-yellow-60,#96640f),var(--rh-color-blue-40,#4394e5));--_at-rule-color:light-dark(var(--rh-color-blue-60,#004d99),var(--rh-color-purple-30,#b6a6e9));--_attr-value-color:light-dark(var(--rh-color-blue-60,#004d99),var(--rh-color-green-40,#87bb62));--_keyword-color:light-dark(var(--rh-color-blue-60,#004d99),var(--rh-color-purple-30,#b6a6e9));--_function-color:light-dark(var(--rh-color-red-60,#a60000),var(--rh-color-orange-40,#f5921b));--_class-name-color:light-dark(var(--rh-color-red-60,#a60000),var(--rh-color-yellow-40,#dca614));--_regex-color:light-dark(var(--rh-color-orange-60,#9e4a06),var(--rh-color-green-40,#87bb62));--_important-color:light-dark(var(--rh-color-orange-60,#9e4a06),var(--rh-color-purple-30,#b6a6e9));--_variable-color:light-dark(var(--rh-color-orange-60,#9e4a06),var(--rh-color-green-40,#87bb62));display:grid;place-items:center;grid-template-columns:auto min-content;grid-template-areas:"code actions" "expand expand";column-gap:var(--_code-main-spacer);padding-inline-start:var(--_code-main-spacer);padding-block-end:var(--_code-main-spacer);border-radius:var(--rh-border-radius-default,3px);background-color:var(--_code-background-color);color:var(--rh-color-text-primary);border:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle);border-block-start-width:var(--rh-code-block-border-block-start-width,var(--rh-border-width-sm,1px));--_gradient:linear-gradient(var(--_gradient-angle,0deg),var(--_code-background-color) 0%,#0000 100%)}#container.expandable{padding-block-end:0}#content,#prism-output,#sizers{display:block;font-family:var(--rh-font-family-code,RedHatMono,"Red Hat Mono","Courier New",Courier,monospace);z-index:1;place-self:start;grid-area:code}#content::slotted(:is(script,pre)),#prism-output,#sizers{display:inline;white-space:var(--_code-white-space,pre);word-wrap:var(--_code-word-wrap,initial);color:inherit}#content::slotted(:is(code[class*=language-],pre[class*=language-])){color:var(--_code-color);font-family:var(--rh-font-family-code,RedHatMono,"Red Hat Mono","Courier New",Courier,monospace);text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:var(--rh-line-height-code,1.5);tab-size:4;hyphens:none;background:#0000}:host([highlighting=prerendered]) .wrap #content::slotted(pre[class*=language-]){white-space:pre-wrap}#content::slotted(rh-tag){width:var(--rh-size-icon-06,64px)}#content-lines{display:grid;column-gap:var(--rh-space-lg,16px);grid-area:code;grid-template-areas:"lines code";grid-template-columns:min-content 1fr;grid-template-rows:1fr;position:relative;overflow-y:auto;margin-block-start:var(--_code-main-spacer);width:100%}#sizers{position:absolute;min-width:100%;width:100%;opacity:0;pointer-events:none;z-index:-10000;line-height:var(--rh-line-height-code,1.5)}#line-numbers{pointer-events:none;overflow-y:hidden;margin:0;grid-area:lines;list-style-type:none;padding-inline:0 var(--rh-space-md,8px);text-align:end;font-family:var(--rh-font-family-code,RedHatMono,"Red Hat Mono","Courier New",Courier,monospace);color:var(--rh-color-text-secondary);font-weight:var(--rh-font-weight-code-regular,400);border-inline-end:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle)}#line-numbers li{line-height:var(--rh-line-height-code,1.5);display:block}#actions{display:flex;grid-area:actions;gap:var(--rh-space-md,8px);flex-flow:column;margin-block-start:var(--rh-space-lg,16px);margin-inline-end:var(--rh-space-lg,16px);z-index:2;place-self:start center;height:100%;position:relative;--_gradient-angle:270deg}#actions rh-tooltip{display:block}#expand{--_code-secondary-spacer:var(--rh-space-md,8px);display:inline-flex;align-items:center;border:0;background:#0000;grid-area:expand;gap:var(--rh-space-md,8px);inset-block-end:var(--_code-secondary-spacer);margin-block:var(--_code-secondary-spacer);color:var(--rh-color-text-primary);font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-body-text-sm,.875rem);font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-body-text,1.5)}#expand svg{width:11px;height:7px;rotate:var(--_expand-toggle-rotate,180deg);transform:rotate .2s ease-in-out;color:var(--rh-color-icon-secondary)}#container.compact{--_code-main-spacer:var(--rh-space-lg,16px);--_code-secondary-spacer:var(--rh-space-sm,6px)}.resizable #content-lines{resize:vertical;overflow-x:scroll}.truncated #content-lines{max-height:calc(var(--rh-font-size-code-md, 1rem)*8)}.truncated #content-lines:before{position:sticky;inset-block-end:0;inset-inline:0;height:var(--rh-space-3xl,48px);grid-column:-1/1}.truncated #content-lines:before,:not(.wrap) #actions:before{content:"";display:block;z-index:2;pointer-events:none;background:var(--_gradient)}:not(.wrap) #actions:before{position:absolute;inset-block:0;inset-inline-start:calc(var(--rh-space-4xl, 64px)*-1);width:var(--rh-space-4xl,64px)}:not(.actions) #actions{margin:0}.wrap{--_code-white-space:pre-wrap;--_code-word-wrap:anywhere}[name=legend]::slotted(dl){display:grid;grid-template-columns:max-content auto;margin-block:var(--rh-space-lg,16px);gap:var(--rh-space-md,8px)}:host([highlighting=client]) #content::slotted(:is(script,pre)){display:none}`;
 /* TODO
  * - style slotted and shadow fake-fabs
  * - manage state of copy and wrap, including if they are slotted. see actions.html
@@ -38,16 +41,10 @@ function dedent(str) {
  * @slot legend - `<dl>` element containing rh-badges in the `<dt>`
  *                and legend text in the `<dd>` elements
  */
-export class RhCodeBlock extends LitElement {
+let RhCodeBlock = RhCodeBlock_1 = class RhCodeBlock extends LitElement {
     constructor() {
         super(...arguments);
         _RhCodeBlock_instances.add(this);
-        _RhCodeBlock_slots.set(this, new SlotController(this, null, 
-        // 'actions',
-        'action-label-copy', 'action-label-wrap', 'show-more', 'show-less', 'legend'));
-        _RhCodeBlock_prismOutput.set(this, void 0);
-        _RhCodeBlock_ro.set(this, new ResizeObserver(() => __classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_computeLineNumbers).call(this)));
-        _RhCodeBlock_lineHeights.set(this, []);
         this.actions = [];
         /** When set, the code block displays with compact spacing */
         this.compact = false;
@@ -59,6 +56,12 @@ export class RhCodeBlock extends LitElement {
         this.fullHeight = false;
         /** When set, lines in the code snippet wrap */
         this.wrap = false;
+        _RhCodeBlock_slots.set(this, new SlotController(this, null, 
+        // 'actions',
+        'action-label-copy', 'action-label-wrap', 'show-more', 'show-less', 'legend'));
+        _RhCodeBlock_prismOutput.set(this, void 0);
+        _RhCodeBlock_ro.set(this, new ResizeObserver(() => __classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_computeLineNumbers).call(this)));
+        _RhCodeBlock_lineHeights.set(this, []);
     }
     connectedCallback() {
         super.connectedCallback();
@@ -70,20 +73,13 @@ export class RhCodeBlock extends LitElement {
         __classPrivateFieldGet(this, _RhCodeBlock_ro, "f").disconnect();
     }
     render() {
-        const { on = '', fullHeight, wrap, resizable, compact } = this;
+        const { fullHeight, wrap, resizable, compact } = this;
         const expandable = __classPrivateFieldGet(this, _RhCodeBlock_lineHeights, "f").length > 5;
         const truncated = expandable && !fullHeight;
         const actions = !!this.actions.length;
         return html `
       <div id="container"
-           class="${classMap({ on: true, [on]: !!on,
-            actions,
-            compact,
-            expandable,
-            fullHeight,
-            resizable,
-            truncated,
-            wrap })}"
+           class="${classMap({ actions, compact, expandable, fullHeight, resizable, truncated, wrap })}"
            @code-action="${__classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_onCodeAction)}">
         <div id="content-lines" tabindex="${ifDefined((!fullHeight || undefined) && 0)}">
           <div id="sizers" aria-hidden="true"></div>
@@ -107,7 +103,7 @@ export class RhCodeBlock extends LitElement {
             <button id="action-${x}"
                     class="shadow-fab"
                     data-code-block-action="${x}">
-              ${RhCodeBlock.actionIcons.get(this.wrap && x === 'wrap' ? 'wrap-active' : x) ?? ''}
+              ${RhCodeBlock_1.actionIcons.get(this.wrap && x === 'wrap' ? 'wrap-active' : x) ?? ''}
             </button>
           </rh-tooltip>`)}
         <!-- </slot> -->
@@ -139,8 +135,13 @@ export class RhCodeBlock extends LitElement {
             __classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_wrapChanged).call(this);
         }
     }
-}
-_RhCodeBlock_slots = new WeakMap(), _RhCodeBlock_prismOutput = new WeakMap(), _RhCodeBlock_ro = new WeakMap(), _RhCodeBlock_lineHeights = new WeakMap(), _RhCodeBlock_instances = new WeakSet(), _RhCodeBlock_onSlotChange = async function _RhCodeBlock_onSlotChange() {
+};
+_RhCodeBlock_slots = new WeakMap();
+_RhCodeBlock_prismOutput = new WeakMap();
+_RhCodeBlock_ro = new WeakMap();
+_RhCodeBlock_lineHeights = new WeakMap();
+_RhCodeBlock_instances = new WeakSet();
+_RhCodeBlock_onSlotChange = async function _RhCodeBlock_onSlotChange() {
     switch (this.highlighting) {
         case 'client':
             await __classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_highlightWithPrism).call(this);
@@ -152,7 +153,8 @@ _RhCodeBlock_slots = new WeakMap(), _RhCodeBlock_prismOutput = new WeakMap(), _R
             break;
     }
     __classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_computeLineNumbers).call(this);
-}, _RhCodeBlock_applyPrismPrerenderedStyles = async function _RhCodeBlock_applyPrismPrerenderedStyles() {
+};
+_RhCodeBlock_applyPrismPrerenderedStyles = async function _RhCodeBlock_applyPrismPrerenderedStyles() {
     if (getComputedStyle(this).getPropertyValue('--_styles-applied') !== 'true') {
         const root = this.getRootNode();
         if (root instanceof Document || root instanceof ShadowRoot) {
@@ -160,7 +162,8 @@ _RhCodeBlock_slots = new WeakMap(), _RhCodeBlock_prismOutput = new WeakMap(), _R
             root.adoptedStyleSheets = [...root.adoptedStyleSheets, styleSheet];
         }
     }
-}, _RhCodeBlock_highlightWithPrism = async function _RhCodeBlock_highlightWithPrism() {
+};
+_RhCodeBlock_highlightWithPrism = async function _RhCodeBlock_highlightWithPrism() {
     const { highlight, prismStyles } = await import('./prism.js');
     const styleSheet = prismStyles instanceof CSSStyleSheet ? prismStyles
         : prismStyles.styleSheet;
@@ -176,7 +179,8 @@ _RhCodeBlock_slots = new WeakMap(), _RhCodeBlock_prismOutput = new WeakMap(), _R
     __classPrivateFieldSet(this, _RhCodeBlock_prismOutput, await highlight(textContent, this.language), "f");
     this.requestUpdate('#prismOutput', {});
     await this.updateComplete;
-}, _RhCodeBlock_wrapChanged = async function _RhCodeBlock_wrapChanged() {
+};
+_RhCodeBlock_wrapChanged = async function _RhCodeBlock_wrapChanged() {
     await this.updateComplete;
     __classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_computeLineNumbers).call(this);
     // TODO: handle slotted fabs
@@ -187,12 +191,14 @@ _RhCodeBlock_slots = new WeakMap(), _RhCodeBlock_prismOutput = new WeakMap(), _R
         }
     }
     this.requestUpdate();
-}, _RhCodeBlock_getSlottedCodeElements = function _RhCodeBlock_getSlottedCodeElements() {
+};
+_RhCodeBlock_getSlottedCodeElements = function _RhCodeBlock_getSlottedCodeElements() {
     const slot = this.shadowRoot?.getElementById('content');
     return slot.assignedElements().flatMap(x => x instanceof HTMLScriptElement
         || x instanceof HTMLPreElement ? [x]
         : []);
-}, _RhCodeBlock_computeLineNumbers = 
+};
+_RhCodeBlock_computeLineNumbers = 
 /**
  * Clone the text content and connect it to the document, in order to calculate the number of lines
  * @license MIT
@@ -242,16 +248,19 @@ async function _RhCodeBlock_computeLineNumbers() {
     }
     __classPrivateFieldSet(this, _RhCodeBlock_lineHeights, infos.flatMap(x => x.lineHeights?.map(y => `${y ?? x.oneLinerHeight}px`)), "f");
     this.requestUpdate('#linesNumbers', 0);
-}, _RhCodeBlock_onActionsClick = function _RhCodeBlock_onActionsClick(event) {
+};
+_RhCodeBlock_onActionsClick = function _RhCodeBlock_onActionsClick(event) {
     __classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_onCodeAction).call(this, event);
-}, _RhCodeBlock_onActionsKeyup = function _RhCodeBlock_onActionsKeyup(event) {
+};
+_RhCodeBlock_onActionsKeyup = function _RhCodeBlock_onActionsKeyup(event) {
     switch (event.key) {
         case 'Enter':
         case ' ':
             event.preventDefault();
             __classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_onCodeAction).call(this, event);
     }
-}, _RhCodeBlock_onCodeAction = function _RhCodeBlock_onCodeAction(event) {
+};
+_RhCodeBlock_onCodeAction = function _RhCodeBlock_onCodeAction(event) {
     const el = event.composedPath().find((x) => x instanceof HTMLElement && !!x.dataset.codeBlockAction);
     if (el) {
         switch (el.dataset.codeBlockAction) {
@@ -263,9 +272,11 @@ async function _RhCodeBlock_computeLineNumbers() {
                 return;
         }
     }
-}, _RhCodeBlock_onClickExpand = function _RhCodeBlock_onClickExpand() {
+};
+_RhCodeBlock_onClickExpand = function _RhCodeBlock_onClickExpand() {
     this.fullHeight = !this.fullHeight;
-}, _RhCodeBlock_copy = async function _RhCodeBlock_copy() {
+};
+_RhCodeBlock_copy = async function _RhCodeBlock_copy() {
     let content;
     if (this.highlighting === 'prerendered') {
         content = this.querySelector('pre')?.textContent ?? '';
@@ -294,26 +305,6 @@ async function _RhCodeBlock_computeLineNumbers() {
     }
     this.requestUpdate();
     tooltip?.show();
-};
-RhCodeBlock.properties = {
-    actions: {
-        reflect: true,
-        converter: {
-            fromAttribute(value) {
-                return ((value ?? '').split(/\s+/) ?? []).map(x => x.trim()).filter(Boolean);
-            },
-            toAttribute(value) {
-                return Array.isArray(value) ? value.join(' ') : '';
-            },
-        },
-    },
-    highlighting: {},
-    language: {},
-    compact: { type: Boolean, reflect: true },
-    dedent: { type: Boolean, reflect: true },
-    resizable: { type: Boolean, reflect: true },
-    fullHeight: { type: Boolean, reflect: true, attribute: 'full-height' },
-    wrap: { type: Boolean }
 };
 RhCodeBlock.actionIcons = new Map([
     ['wrap', html `
@@ -344,9 +335,44 @@ RhCodeBlock.actionIcons = new Map([
 ]);
 RhCodeBlock.styles = [style];
 __decorate([
-    colorContextConsumer()
-], RhCodeBlock.prototype, "on", void 0);
-customElements.define("rh-code-block", RhCodeBlock);
+    property({
+        reflect: true,
+        converter: {
+            fromAttribute(value) {
+                return ((value ?? '').split(/\s+/) ?? []).map(x => x.trim()).filter(Boolean);
+            },
+            toAttribute(value) {
+                return Array.isArray(value) ? value.join(' ') : '';
+            },
+        },
+    })
+], RhCodeBlock.prototype, "actions", void 0);
+__decorate([
+    property()
+], RhCodeBlock.prototype, "highlighting", void 0);
+__decorate([
+    property()
+], RhCodeBlock.prototype, "language", void 0);
+__decorate([
+    property({ type: Boolean, reflect: true })
+], RhCodeBlock.prototype, "compact", void 0);
+__decorate([
+    property({ type: Boolean, reflect: true })
+], RhCodeBlock.prototype, "dedent", void 0);
+__decorate([
+    property({ type: Boolean, reflect: true })
+], RhCodeBlock.prototype, "resizable", void 0);
+__decorate([
+    property({ type: Boolean, reflect: true, attribute: 'full-height' })
+], RhCodeBlock.prototype, "fullHeight", void 0);
+__decorate([
+    property({ type: Boolean })
+], RhCodeBlock.prototype, "wrap", void 0);
+RhCodeBlock = RhCodeBlock_1 = __decorate([
+    customElement('rh-code-block'),
+    themable
+], RhCodeBlock);
+export { RhCodeBlock };
 /**
  * TODO: slotted fabs like this:
  *

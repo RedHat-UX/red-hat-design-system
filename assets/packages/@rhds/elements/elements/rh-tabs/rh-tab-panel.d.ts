@@ -8,10 +8,6 @@ import { LitElement } from 'lit';
 export declare class RhTabPanel extends LitElement {
     #private;
     static readonly styles: CSSStyleSheet[];
-    /**
-     * Sets color theme based on parent context
-     */
-    private on?;
     connectedCallback(): void;
     render(): import("lit-html").TemplateResult<1>;
 }

@@ -1,9 +1,12 @@
 var _RhAlert_instances, _RhAlert_icon_get, _RhAlert_slots, _RhAlert_onClose, _RhAlert_aliasState, _RhAlert_close, _RhAlert_onActionsClick;
-import { __classPrivateFieldGet } from "tslib";
+import { __classPrivateFieldGet, __decorate } from "tslib";
 import { LitElement, html, isServer, render } from 'lit';
+import { customElement } from 'lit/decorators/custom-element.js';
+import { property } from 'lit/decorators/property.js';
 import { repeat } from 'lit/directives/repeat.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import '@rhds/elements/rh-surface/rh-surface.js';
 import '@rhds/elements/rh-button/rh-button.js';
@@ -11,7 +14,6 @@ import '@rhds/elements/rh-icon/rh-icon.js';
 import { css } from "lit";
 const styles = css `:host{display:block;max-width:var(--_max-width,initial)}[hidden]{display:none!important}header{display:flex;align-items:center;justify-content:flex-start}.hasBody header{margin-block-end:var(--rh-space-xs,4px)}footer.hasActions{margin-block-start:var(--rh-space-lg,16px)}footer ::slotted([slot=actions]:not(rh-button[variant=link i])){margin-inline-end:var(--rh-space-xl,24px)!important;padding:0!important;border:none!important;background-color:initial!important;color:var(--rh-color-interactive-primary-default)!important;font-size:var(--rh-font-size-body-text-sm,.875rem)!important;font-family:var(--_font-family)!important}footer ::slotted([slot=actions]:focus){text-decoration:underline!important;color:var(--rh-color-interactive-primary-hover)!important}footer ::slotted([slot=actions]:hover){cursor:pointer!important;text-decoration:underline!important;color:var(--rh-color-interactive-primary-hover)!important}footer ::slotted(rh-button[variant=link i]){display:inline-block;translate:calc(var(--rh-space-lg, 16px)*-1)}#container{--_background-color:var(--rh-color-teal-10,#daf2f2);--_border-color:var(--rh-color-teal-50,#37a3a3);--_icon-color:var(--rh-color-teal-50,#37a3a3);border-width:var(--rh-border-width-md,2px);border-style:solid;border-color:var(--_border-color);border-inline-start-color:#0000;border-block-end-color:#0000;border-inline-end-color:#0000;background-color:var(--_background-color);box-shadow:var(--_box-shadow,none);padding:var(--rh-space-lg,16px);display:grid;grid-template-columns:min-content 1fr;gap:var(--rh-space-xs,4px);font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif);font-weight:var(--rh-font-weight-body-text-regular,400);font-size:var(--rh-font-size-body-text-sm,.875rem);line-height:var(--rh-line-height-body-text,1.5)}#container header ::slotted(*){font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif)!important;font-weight:var(--rh-font-weight-body-text-medium,500)!important;font-size:var(--rh-font-size-body-text-sm,.875rem)!important;line-height:var(--rh-line-height-body-text,1.5)!important;margin:0!important}#container header ::slotted(:is(h1,h2,h3,h4,h5,h6)){padding-block:2px var(--rh-space-xs,4px)!important}#container #description>::slotted(*){font-size:var(--rh-font-size-body-text-sm,.875rem)!important;margin-block:0!important;padding:0!important}#container.neutral{--_border-color:var(--rh-color-status-neutral);--_icon-color:var(--rh-color-icon-status-neutral);--_background-color:var(--rh-color-surface-status-neutral)}#container.info{--_border-color:var(--rh-color-status-info);--_icon-color:var(--rh-color-icon-status-info);--_background-color:var(--rh-color-surface-status-info)}#container.success{--_border-color:var(--rh-color-status-success);--_icon-color:var(--rh-color-icon-status-success);--_background-color:var(--rh-color-surface-status-success)}#container.caution{--_border-color:var(--rh-color-status-caution);--_icon-color:var(--rh-color-icon-status-caution);--_background-color:var(--rh-color-surface-status-caution)}#container.warning{--_border-color:var(--rh-color-status-warning);--_icon-color:var(--rh-color-icon-status-warning);--_background-color:var(--rh-color-surface-status-warning)}#container.danger{--_border-color:var(--rh-color-status-danger);--_icon-color:var(--rh-color-icon-status-danger);--_background-color:var(--rh-color-surface-status-danger)}#container.toast{--_background-color:var(--rh-color-surface-lightest,#fff);--_max-width:550px;--_box-shadow:var(--rh-box-shadow-xl,0 8px 24px 3px #15151559)}#container.alternate{border-inline-start-color:var(--_border-color);border-block-end-color:var(--_border-color);border-inline-end-color:var(--_border-color)}#left-column,#middle-column{display:inline-block;vertical-align:top}#header-actions{margin-inline-end:var(--rh-space-xs,4px)}#header{color:var(--rh-color-text-primary);flex:1 1 auto}#icon{display:flex;align-items:center;justify-content:center;width:var(--rh-size-icon-02,24px);height:var(--rh-size-icon-02,24px);color:var(--_icon-color)}#close-button{color:var(--rh-color-text-secondary);background-color:initial;border:none;height:var(--rh-length-xl,24px);width:var(--rh-length-xl,24px);cursor:pointer}#close-button:hover{color:var(--rh-color-text-primary)}`;
 const toastStyles = css `.rh-alert-toast-group{position:fixed;z-index:1000;inset-block-start:var(--rh-space-lg,16px);inset-inline-end:var(--rh-space-lg,16px);padding-block-end:var(--rh-space-4xl,64px);display:grid;justify-items:end;justify-content:center;gap:var(--rh-space-lg,16px);pointer-events:none}.rh-alert-toast-group rh-alert{--_duration:8s;--_travel-distance:0;pointer-events:all;will-change:transform;animation:fade-in .3s ease,slide-in .3s ease,fade-out .3s ease var(--_duration)}.rh-alert-toast-group rh-alert.persistent{animation:slide-in .3s ease}@media (prefers-reduced-motion:no-preference){.rh-alert-toast-group rh-alert{--_travel-distance:var(--rh-space-4xl,64px)}}@keyframes fade-in{0%{opacity:0}}@keyframes fade-out{to{opacity:0}}@keyframes slide-in{0%{transform:translateY(var(--_travel-distance,var(--rh-space-lg,16px)))}}`;
-import consumerStyles from '@rhds/tokens/css/color-context-consumer.css.js';
 const ICONS = new Map(Object.entries({
     neutral: 'minus-circle-fill',
     info: 'information-fill',
@@ -42,11 +44,10 @@ const toasts = new Set();
  * @slot actions - Provide actions that the user can take for the alert
  *
  */
-export class RhAlert extends LitElement {
+let RhAlert = class RhAlert extends LitElement {
     constructor() {
         super(...arguments);
         _RhAlert_instances.add(this);
-        _RhAlert_slots.set(this, new SlotController(this, 'header', null, 'actions'));
         /**
          * Communicates the urgency of a message and is denoted by various styling configurations.
          *
@@ -65,6 +66,7 @@ export class RhAlert extends LitElement {
          * All Toast alerts can be dismissed by a user selecting the close button or waiting for them to time out.
          */
         this.dismissable = false;
+        _RhAlert_slots.set(this, new SlotController(this, 'header', null, 'actions'));
     }
     /**
      * Toast a message with an rh-alert
@@ -118,7 +120,6 @@ export class RhAlert extends LitElement {
       <rh-surface id="container"
                   class="${classMap({
             hasBody,
-            on: true,
             light: true,
             [state]: true,
             [variant]: !!variant,
@@ -150,8 +151,10 @@ export class RhAlert extends LitElement {
       </rh-surface>
     `;
     }
-}
-_RhAlert_slots = new WeakMap(), _RhAlert_instances = new WeakSet(), _RhAlert_icon_get = function _RhAlert_icon_get() {
+};
+_RhAlert_slots = new WeakMap();
+_RhAlert_instances = new WeakSet();
+_RhAlert_icon_get = function _RhAlert_icon_get() {
     const state = this.state.toLowerCase();
     switch (state) {
         case 'note': return ICONS.get('info');
@@ -159,11 +162,13 @@ _RhAlert_slots = new WeakMap(), _RhAlert_instances = new WeakSet(), _RhAlert_ico
         case 'error': return ICONS.get('danger');
         default: return ICONS.get(state);
     }
-}, _RhAlert_onClose = function _RhAlert_onClose() {
+};
+_RhAlert_onClose = function _RhAlert_onClose() {
     if (this.dispatchEvent(new AlertCloseEvent('close'))) {
         __classPrivateFieldGet(this, _RhAlert_instances, "m", _RhAlert_close).call(this);
     }
-}, _RhAlert_aliasState = function _RhAlert_aliasState(state) {
+};
+_RhAlert_aliasState = function _RhAlert_aliasState(state) {
     switch (state.toLowerCase()) {
         // the first three are deprecated pre-DPO status names
         case 'note': return 'info';
@@ -180,14 +185,16 @@ _RhAlert_slots = new WeakMap(), _RhAlert_instances = new WeakSet(), _RhAlert_ico
         default:
             return 'neutral';
     }
-}, _RhAlert_close = async function _RhAlert_close() {
+};
+_RhAlert_close = async function _RhAlert_close() {
     await this.updateComplete;
     await Promise.all(this.getAnimations().map(x => {
         x.finish();
         return x.finished;
     }));
     this.remove();
-}, _RhAlert_onActionsClick = async function _RhAlert_onActionsClick(event) {
+};
+_RhAlert_onActionsClick = async function _RhAlert_onActionsClick(event) {
     if (event.target instanceof HTMLElement
         && event.target?.slot === 'actions'
         && typeof event.target.dataset.action === 'string'
@@ -195,13 +202,21 @@ _RhAlert_slots = new WeakMap(), _RhAlert_instances = new WeakSet(), _RhAlert_ico
         __classPrivateFieldGet(this, _RhAlert_instances, "m", _RhAlert_close).call(this);
     }
 };
-RhAlert.properties = {
-    state: { reflect: true },
-    variant: { reflect: true },
-    dismissable: { reflect: true, type: Boolean }
-};
-RhAlert.styles = [styles, consumerStyles];
-customElements.define("rh-alert", RhAlert);
+RhAlert.styles = [styles];
+__decorate([
+    property({ reflect: true })
+], RhAlert.prototype, "state", void 0);
+__decorate([
+    property({ reflect: true })
+], RhAlert.prototype, "variant", void 0);
+__decorate([
+    property({ reflect: true, type: Boolean })
+], RhAlert.prototype, "dismissable", void 0);
+RhAlert = __decorate([
+    customElement('rh-alert'),
+    themable
+], RhAlert);
+export { RhAlert };
 function initToaster() {
     const node = document.createElement('section');
     node.classList.add('rh-alert-toast-group');

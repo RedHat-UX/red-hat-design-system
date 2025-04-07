@@ -1,11 +1,10 @@
 import { LitElement } from 'lit';
+export { RhFooterUniversal } from './rh-footer-universal.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
 import '@rhds/elements/rh-accordion/rh-accordion.js';
-export { RhFooterUniversal } from './rh-footer-universal.js';
 import './rh-footer-social-link.js';
 import './rh-footer-links.js';
 import './rh-footer-block.js';
-import { type ColorPalette } from '../../lib/context/color/provider.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 /**
  * A footer displays secondary content and legal information to users who reach the bottom of a page.
@@ -52,7 +51,6 @@ export declare class RhFooter extends LitElement {
      * Requires a node.js dom shim that sets window.location
      */
     static getImportURL(relativeLocation: string | URL): string | URL;
-    colorPalette: ColorPalette;
     /**
      * ScreenSizeController effects callback to set #compact is true when viewport
      * `(min-width: ${tabletLandscapeBreakpoint})`.

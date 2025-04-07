@@ -1,6 +1,7 @@
 var _RhNavigationSecondaryMenuSection_instances, _RhNavigationSecondaryMenuSection_logger, _RhNavigationSecondaryMenuSection_updateAccessibility;
-import { __classPrivateFieldGet } from "tslib";
+import { __classPrivateFieldGet, __decorate } from "tslib";
 import { html, LitElement } from 'lit';
+import { customElement } from 'lit/decorators/custom-element.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { isHeadingElement } from '../../lib/functions.js';
@@ -14,7 +15,7 @@ const styles = css `:host{display:block}::slotted([slot=header]){padding:0}::slo
  * @slot cta        - Adds a section level CTA, expects `<rh-cta>` element
  * @csspart container    - container, <section> element
  */
-export class RhNavigationSecondaryMenuSection extends LitElement {
+let RhNavigationSecondaryMenuSection = class RhNavigationSecondaryMenuSection extends LitElement {
     constructor() {
         super(...arguments);
         _RhNavigationSecondaryMenuSection_instances.add(this);
@@ -33,8 +34,10 @@ export class RhNavigationSecondaryMenuSection extends LitElement {
       </section>
     `;
     }
-}
-_RhNavigationSecondaryMenuSection_logger = new WeakMap(), _RhNavigationSecondaryMenuSection_instances = new WeakSet(), _RhNavigationSecondaryMenuSection_updateAccessibility = function _RhNavigationSecondaryMenuSection_updateAccessibility() {
+};
+_RhNavigationSecondaryMenuSection_logger = new WeakMap();
+_RhNavigationSecondaryMenuSection_instances = new WeakSet();
+_RhNavigationSecondaryMenuSection_updateAccessibility = function _RhNavigationSecondaryMenuSection_updateAccessibility() {
     const lists = this.querySelectorAll(':is([slot="links"]):is(ul, ol)');
     for (const list of lists) {
         if (!list.hasAttribute('aria-labelledby')) {
@@ -54,5 +57,8 @@ _RhNavigationSecondaryMenuSection_logger = new WeakMap(), _RhNavigationSecondary
     }
 };
 RhNavigationSecondaryMenuSection.styles = [styles];
-customElements.define("rh-navigation-secondary-menu-section", RhNavigationSecondaryMenuSection);
+RhNavigationSecondaryMenuSection = __decorate([
+    customElement('rh-navigation-secondary-menu-section')
+], RhNavigationSecondaryMenuSection);
+export { RhNavigationSecondaryMenuSection };
 //# sourceMappingURL=rh-navigation-secondary-menu-section.js.map

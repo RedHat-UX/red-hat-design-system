@@ -45,10 +45,6 @@ export declare class RhVideoEmbed extends LitElement {
      * See the Require Consent demo for reference.
      */
     consented: boolean;
-    /**
-     * Sets color theme based on parent context
-     */
-    private on?;
     private _consentClicked;
     private _playClicked;
     private _playStarted;

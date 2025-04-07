@@ -58,7 +58,7 @@ snippet rhbreakpoint2xl
   var(--rh-breakpoint-2xl${1:, 1680px})$2
 # Responsive `accent-base` color value. Typically read only - use a themable container e.g. `<rh-surface>` Resolves to `--rh-color-accent-base-on-light` on a themable container with a light color palette and `--rh-color-accent-base-on-dark` on a themable container with a dark color palette.
 snippet rhcoloraccentbase
-  var(--rh-color-accent-base)$2
+  var(--rh-color-accent-base${1:, light-dark(var(--rh-color-accent-base-on-light, #0066cc), var(--rh-color-accent-base-on-dark, #92c5f9))})$2
 # Inline link (light theme)
 snippet rhcoloraccentbaseonlight
   var(--rh-color-accent-base-on-light${1:, #0066cc})$2
@@ -71,7 +71,7 @@ snippet 92c5f9
   var(--rh-color-accent-base-on-dark${1:, #92c5f9})$2
 # Responsive `accent-brand` color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-accent-brand-on-light` on a themable container with a light color palette and `--rh-color-accent-brand-on-dark` on a themable container with a dark color palette.
 snippet rhcoloraccentbrand
-  var(--rh-color-accent-brand)$2
+  var(--rh-color-accent-brand${1:, light-dark(var(--rh-color-accent-brand-on-light, #ee0000), var(--rh-color-accent-brand-on-dark, #ee0000))})$2
 # Brand red (light theme)
 snippet rhcoloraccentbrandonlight
   var(--rh-color-accent-brand-on-light${1:, #ee0000})$2
@@ -84,7 +84,7 @@ snippet ee0000
   var(--rh-color-accent-brand-on-dark${1:, #ee0000})$2
 # Responsive `border-strong` color value. Typically read only - use a themable container e.g. `<rh-surface>` Resolves to `--rh-color-border-strong-on-light` on a themable container with a light color palette and `--rh-color-border-strong-on-dark` on a themable container with a dark color palette
 snippet rhcolorborderstrong
-  var(--rh-color-border-strong)$2
+  var(--rh-color-border-strong${1:, light-dark(var(--rh-color-border-strong-on-light, #151515), var(--rh-color-border-strong-on-dark, #ffffff))})$2
 # Strong border color (light theme)
 snippet rhcolorborderstrongonlight
   var(--rh-color-border-strong-on-light${1:, #151515})$2
@@ -97,7 +97,7 @@ snippet ffffff
   var(--rh-color-border-strong-on-dark${1:, #ffffff})$2
 # Responsive `border-subtle` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-subtle-on-light` on a themable container with a light color palette and `--rh-color-border-subtle-on-dark` on a themable container with a dark color palette.
 snippet rhcolorbordersubtle
-  var(--rh-color-border-subtle)$2
+  var(--rh-color-border-subtle${1:, light-dark(var(--rh-color-border-subtle-on-light, #c7c7c7), var(--rh-color-border-subtle-on-dark, #707070))})$2
 # Subtle border color (light theme)
 snippet rhcolorbordersubtleonlight
   var(--rh-color-border-subtle-on-light${1:, #c7c7c7})$2
@@ -110,7 +110,7 @@ snippet 707070
   var(--rh-color-border-subtle-on-dark${1:, #707070})$2
 # Responsive `border-interactive` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-interactive-on-light` on a themable container with a light color palette and `--rh-color-border-interactive-on-dark` on a themable container with a dark color palette.
 snippet rhcolorborderinteractive
-  var(--rh-color-border-interactive)$2
+  var(--rh-color-border-interactive${1:, light-dark(var(--rh-color-border-interactive-on-light, #0066cc), var(--rh-color-border-interactive-on-dark, #92c5f9))})$2
 # Interactive border color (light theme)
 snippet rhcolorborderinteractiveonlight
   var(--rh-color-border-interactive-on-light${1:, #0066cc})$2
@@ -123,7 +123,7 @@ snippet 92c5f9
   var(--rh-color-border-interactive-on-dark${1:, #92c5f9})$2
 # Responsive `border-destructive` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-destructive-on-light` on a themable container with a light color palette and `--rh-color-border-destructive-on-dark` on a themable container with a dark color palette.
 snippet rhcolorborderdestructive
-  var(--rh-color-border-destructive)$2
+  var(--rh-color-border-destructive${1:, light-dark(var(--rh-color-border-destructive-on-light, #b1380b), var(--rh-color-border-destructive-on-dark, #f0561d))})$2
 # Destructive border color (light theme)
 snippet rhcolorborderdestructiveonlight
   var(--rh-color-border-destructive-on-light${1:, #b1380b})$2
@@ -136,7 +136,7 @@ snippet f0561d
   var(--rh-color-border-destructive-on-dark${1:, #f0561d})$2
 # Responsive `border-danger` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-danger-on-light` on a themable container with a light color palette and `--rh-color-border-danger-on-dark` on a themable container with a dark color palette.
 snippet rhcolorborderstatusdanger
-  var(--rh-color-border-status-danger)$2
+  var(--rh-color-border-status-danger${1:, light-dark(var(--rh-color-border-status-danger-on-light, #b1380b), var(--rh-color-border-status-danger-on-dark, #f0561d))})$2
 # Danger border color (light theme)
 snippet rhcolorborderstatusdangeronlight
   var(--rh-color-border-status-danger-on-light${1:, #b1380b})$2
@@ -149,7 +149,7 @@ snippet f0561d
   var(--rh-color-border-status-danger-on-dark${1:, #f0561d})$2
 # Responsive `border-caution` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-caution-on-light` on a themable container with a light color palette and `--rh-color-border-caution-on-dark` on a themable container with a dark color palette.
 snippet rhcolorborderstatuscaution
-  var(--rh-color-border-status-caution)$2
+  var(--rh-color-border-status-caution${1:, light-dark(var(--rh-color-border-status-caution-on-light, #ca6c0f), var(--rh-color-border-status-caution-on-dark, #f5921b))})$2
 # Caution border color (light theme)
 snippet rhcolorborderstatuscautiononlight
   var(--rh-color-border-status-caution-on-light${1:, #ca6c0f})$2
@@ -162,7 +162,7 @@ snippet f5921b
   var(--rh-color-border-status-caution-on-dark${1:, #f5921b})$2
 # Responsive `border-warning` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-warning-on-light` on a themable container with a light color palette and `--rh-color-border-warning-on-dark` on a themable container with a dark color palette.
 snippet rhcolorborderstatuswarning
-  var(--rh-color-border-status-warning)$2
+  var(--rh-color-border-status-warning${1:, light-dark(var(--rh-color-border-status-warning-on-light, #dca614), var(--rh-color-border-status-warning-on-dark, #ffcc17))})$2
 # Warning border color (light theme)
 snippet rhcolorborderstatuswarningonlight
   var(--rh-color-border-status-warning-on-light${1:, #dca614})$2
@@ -175,7 +175,7 @@ snippet ffcc17
   var(--rh-color-border-status-warning-on-dark${1:, #ffcc17})$2
 # Responsive `border-neutral` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-neutral-on-light` on a themable container with a light color palette and `--rh-color-border-neutral-on-dark` on a themable container with a dark color palette.
 snippet rhcolorborderstatusneutral
-  var(--rh-color-border-status-neutral)$2
+  var(--rh-color-border-status-neutral${1:, light-dark(var(--rh-color-border-status-neutral-on-light, #4d4d4d), var(--rh-color-border-status-neutral-on-dark, #c7c7c7))})$2
 # Neutral border color (light theme)
 snippet rhcolorborderstatusneutralonlight
   var(--rh-color-border-status-neutral-on-light${1:, #4d4d4d})$2
@@ -188,7 +188,7 @@ snippet c7c7c7
   var(--rh-color-border-status-neutral-on-dark${1:, #c7c7c7})$2
 # Responsive `border-info` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-info-on-light` on a themable container with a light color palette and `--rh-color-border-info-on-dark` on a themable container with a dark color palette.
 snippet rhcolorborderstatusinfo
-  var(--rh-color-border-status-info)$2
+  var(--rh-color-border-status-info${1:, light-dark(var(--rh-color-border-status-info-on-light, #5e40be), var(--rh-color-border-status-info-on-dark, #b6a6e9))})$2
 # Info border color (light theme)
 snippet rhcolorborderstatusinfoonlight
   var(--rh-color-border-status-info-on-light${1:, #5e40be})$2
@@ -201,7 +201,7 @@ snippet b6a6e9
   var(--rh-color-border-status-info-on-dark${1:, #b6a6e9})$2
 # Responsive `border-success` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-border-success-on-light` on a themable container with a light color palette and `--rh-color-border-success-on-dark` on a themable container with a dark color palette.
 snippet rhcolorborderstatussuccess
-  var(--rh-color-border-status-success)$2
+  var(--rh-color-border-status-success${1:, light-dark(var(--rh-color-border-status-success-on-light, #3d7317), var(--rh-color-border-status-success-on-dark, #87bb62))})$2
 # Success border color (light theme)
 snippet rhcolorborderstatussuccessonlight
   var(--rh-color-border-status-success-on-light${1:, #3d7317})$2
@@ -214,7 +214,7 @@ snippet 87bb62
   var(--rh-color-border-status-success-on-dark${1:, #87bb62})$2
 # Responsive `brand-red` color value. Typically read only - use a themable container e.g. `<rh-surface>` Resolves to `--rh-color-brand-red-on-light` on a themable container with a light color palette and `--rh-color-brand-red-on-dark` on a themable container with a dark color palette.
 snippet rhcolorbrandred
-  var(--rh-color-brand-red)$2
+  var(--rh-color-brand-red${1:, light-dark(var(--rh-color-brand-red-on-light, #ee0000), var(--rh-color-brand-red-on-dark, #ee0000))})$2
 # Brand red on light background
 snippet rhcolorbrandredonlight
   var(--rh-color-brand-red-on-light${1:, #ee0000})$2
@@ -386,7 +386,7 @@ snippet rhcolororange80rgb
   var(--rh-color-orange-80-rgb${1:, 77 31 0})$2
 # Responsive `icon-primary` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-icon-primary-on-light` on a themable container with a light color palette and `--rh-color-icon-primary-on-dark` on a themable container with a dark color palette.
 snippet rhcoloriconprimary
-  var(--rh-color-icon-primary)$2
+  var(--rh-color-icon-primary${1:, light-dark(var(--rh-color-icon-primary-on-light, #ee0000), var(--rh-color-icon-primary-on-dark, #ee0000))})$2
 snippet rhcoloriconprimaryonlight
   var(--rh-color-icon-primary-on-light${1:, #ee0000})$2
 snippet ee0000
@@ -397,7 +397,7 @@ snippet ee0000
   var(--rh-color-icon-primary-on-dark${1:, #ee0000})$2
 # Responsive `icon-secondary` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-icon-secondary-on-light` on a themable container with a light color palette and `--rh-color-icon-secondary-on-dark` on a themable container with a dark color palette.
 snippet rhcoloriconsecondary
-  var(--rh-color-icon-secondary)$2
+  var(--rh-color-icon-secondary${1:, light-dark(var(--rh-color-icon-secondary-on-light, #151515), var(--rh-color-icon-secondary-on-dark, #ffffff))})$2
 snippet rhcoloriconsecondaryonlight
   var(--rh-color-icon-secondary-on-light${1:, #151515})$2
 snippet 151515
@@ -416,7 +416,7 @@ snippet a3a3a3
   var(--rh-color-icon-subtle-hover${1:, #a3a3a3})$2
 # Responsive `icon-status-danger` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-icon-status-danger-on-light` on a themable container with a light color palette and `--rh-color-icon-status-danger-on-dark` on a themable container with a dark color palette.
 snippet rhcoloriconstatusdanger
-  var(--rh-color-icon-status-danger)$2
+  var(--rh-color-icon-status-danger${1:, light-dark(var(--rh-color-icon-status-danger-on-light, #b1380b), var(--rh-color-icon-status-danger-on-dark, #f0561d))})$2
 # Danger status icon color (light theme)
 snippet rhcoloriconstatusdangeronlight
   var(--rh-color-icon-status-danger-on-light${1:, #b1380b})$2
@@ -429,7 +429,7 @@ snippet f0561d
   var(--rh-color-icon-status-danger-on-dark${1:, #f0561d})$2
 # Responsive `icon-status-caution` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-icon-status-caution-on-light` on a themable container with a light color palette and `--rh-color-icon-status-caution-on-dark` on a themable container with a dark color palette.
 snippet rhcoloriconstatuscaution
-  var(--rh-color-icon-status-caution)$2
+  var(--rh-color-icon-status-caution${1:, light-dark(var(--rh-color-icon-status-caution-on-light, #ca6c0f), var(--rh-color-icon-status-caution-on-dark, #f5921b))})$2
 # Caution status icon color (light theme)
 snippet rhcoloriconstatuscautiononlight
   var(--rh-color-icon-status-caution-on-light${1:, #ca6c0f})$2
@@ -442,7 +442,7 @@ snippet f5921b
   var(--rh-color-icon-status-caution-on-dark${1:, #f5921b})$2
 # Responsive `icon-status-warning` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-icon-status-warning-on-light` on a themable container with a light color palette and `--rh-color-icon-status-warning-on-dark` on a themable container with a dark color palette.
 snippet rhcoloriconstatuswarning
-  var(--rh-color-icon-status-warning)$2
+  var(--rh-color-icon-status-warning${1:, light-dark(var(--rh-color-icon-status-warning-on-light, #dca614), var(--rh-color-icon-status-warning-on-dark, #ffcc17))})$2
 # Warning status icon color (light theme)
 snippet rhcoloriconstatuswarningonlight
   var(--rh-color-icon-status-warning-on-light${1:, #dca614})$2
@@ -455,7 +455,7 @@ snippet ffcc17
   var(--rh-color-icon-status-warning-on-dark${1:, #ffcc17})$2
 # Responsive `icon-status-default` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-icon-status-default-on-light` on a themable container with a light color palette and `--rh-color-icon-status-default-on-dark` on a themable container with a dark color palette.
 snippet rhcoloriconstatusdefault
-  var(--rh-color-icon-status-default)$2
+  var(--rh-color-icon-status-default${1:, light-dark(var(--rh-color-icon-status-default-on-light, #4d4d4d), var(--rh-color-icon-status-default-on-dark, #4d4d4d))})$2
 # Default status icon color (light theme)
 snippet rhcoloriconstatusdefaultonlight
   var(--rh-color-icon-status-default-on-light${1:, #4d4d4d})$2
@@ -468,7 +468,7 @@ snippet 4d4d4d
   var(--rh-color-icon-status-default-on-dark${1:, #4d4d4d})$2
 # Responsive `icon-status-neutral` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-icon-status-neutral-on-light` on a themable container with a light color palette and `--rh-color-icon-status-neutral-on-dark` on a themable container with a dark color palette.
 snippet rhcoloriconstatusneutral
-  var(--rh-color-icon-status-neutral)$2
+  var(--rh-color-icon-status-neutral${1:, light-dark(var(--rh-color-icon-status-neutral-on-light, #4d4d4d), var(--rh-color-icon-status-neutral-on-dark, #c7c7c7))})$2
 # Neutral status icon color (light theme)
 snippet rhcoloriconstatusneutralonlight
   var(--rh-color-icon-status-neutral-on-light${1:, #4d4d4d})$2
@@ -481,7 +481,7 @@ snippet c7c7c7
   var(--rh-color-icon-status-neutral-on-dark${1:, #c7c7c7})$2
 # Responsive `icon-status-info` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-icon-status-info-on-light` on a themable container with a light color palette and `--rh-color-icon-status-info-on-dark` on a themable container with a dark color palette.
 snippet rhcoloriconstatusinfo
-  var(--rh-color-icon-status-info)$2
+  var(--rh-color-icon-status-info${1:, light-dark(var(--rh-color-icon-status-info-on-light, #5e40be), var(--rh-color-icon-status-info-on-dark, #b6a6e9))})$2
 # Info status icon color (light theme)
 snippet rhcoloriconstatusinfoonlight
   var(--rh-color-icon-status-info-on-light${1:, #5e40be})$2
@@ -494,7 +494,7 @@ snippet b6a6e9
   var(--rh-color-icon-status-info-on-dark${1:, #b6a6e9})$2
 # Responsive `icon-status-success` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-icon-status-success-on-light` on a themable container with a light color palette and `--rh-color-icon-status-success-on-dark` on a themable container with a dark color palette.
 snippet rhcoloriconstatussuccess
-  var(--rh-color-icon-status-success)$2
+  var(--rh-color-icon-status-success${1:, light-dark(var(--rh-color-icon-status-success-on-light, #3d7317), var(--rh-color-icon-status-success-on-dark, #87bb62))})$2
 # Success status icon color (light theme)
 snippet rhcoloriconstatussuccessonlight
   var(--rh-color-icon-status-success-on-light${1:, #3d7317})$2
@@ -1019,7 +1019,7 @@ snippet rhcoloryellow80rgb
   var(--rh-color-yellow-80-rgb${1:, 84 51 11})$2
 # Responsive `interactive-primary` (e.g. link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-primary-default-on-light` on a themable container with a light color palette and `--rh-color-interactive-primary-default-on-dark` on a themable container with a dark color palette.
 snippet rhcolorinteractiveprimarydefault
-  var(--rh-color-interactive-primary-default)$2
+  var(--rh-color-interactive-primary-default${1:, light-dark(var(--rh-color-interactive-primary-default-on-light, #0066cc), var(--rh-color-interactive-primary-default-on-dark, #92c5f9))})$2
 # Primary interactive - default (Light theme)
 snippet rhcolorinteractiveprimarydefaultonlight
   var(--rh-color-interactive-primary-default-on-light${1:, #0066cc})$2
@@ -1033,7 +1033,7 @@ snippet 92c5f9
 # Responsive `interactive-primary` (e.g. link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-primary-hover-on-light` on a themable container with a light color palette
      and to `--rh-color-interactive-primary-hover-on-dark` on a themable container with a dark color palette.
 snippet rhcolorinteractiveprimaryhover
-  var(--rh-color-interactive-primary-hover)$2
+  var(--rh-color-interactive-primary-hover${1:, light-dark(var(--rh-color-interactive-primary-hover-on-light, #003366), var(--rh-color-interactive-primary-hover-on-dark, #b9dafc))})$2
 # Primary interactive - hover (Light theme)
 snippet rhcolorinteractiveprimaryhoveronlight
   var(--rh-color-interactive-primary-hover-on-light${1:, #003366})$2
@@ -1047,7 +1047,7 @@ snippet b9dafc
 # Responsive `interactive-primary` (e.g. link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-primary-active-on-light` on a themable container with a light color palette
      and to `--rh-color-interactive-primary-active-on-dark` on a themable container with a dark color palette.
 snippet rhcolorinteractiveprimaryactive
-  var(--rh-color-interactive-primary-active)$2
+  var(--rh-color-interactive-primary-active${1:, light-dark(var(--rh-color-interactive-primary-active-on-light, #003366), var(--rh-color-interactive-primary-active-on-dark, #b9dafc))})$2
 # Primary interactive - active (Light theme)
 snippet rhcolorinteractiveprimaryactiveonlight
   var(--rh-color-interactive-primary-active-on-light${1:, #003366})$2
@@ -1061,7 +1061,7 @@ snippet b9dafc
 # Responsive `interactive-primary` (e.g. link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-primary-focus-on-light` on a themable container with a light color palette
      and to `--rh-color-interactive-primary-focus-on-dark` on a themable container with a dark color palette.
 snippet rhcolorinteractiveprimaryfocus
-  var(--rh-color-interactive-primary-focus)$2
+  var(--rh-color-interactive-primary-focus${1:, light-dark(var(--rh-color-interactive-primary-focus-on-light, #003366), var(--rh-color-interactive-primary-focus-on-dark, #b9dafc))})$2
 # Primary interactive - focus (Light theme)
 snippet rhcolorinteractiveprimaryfocusonlight
   var(--rh-color-interactive-primary-focus-on-light${1:, #003366})$2
@@ -1074,7 +1074,7 @@ snippet b9dafc
   var(--rh-color-interactive-primary-focus-on-dark${1:, #b9dafc})$2
 # Responsive `interactive-primary-visited` (e.g. visited link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-primary-visited-default-on-light` on a themable container with a light color palette and `--rh-color-interactive-primary-visited-default-on-dark` on a themable container with a dark color palette.
 snippet rhcolorinteractiveprimaryvisiteddefault
-  var(--rh-color-interactive-primary-visited-default)$2
+  var(--rh-color-interactive-primary-visited-default${1:, light-dark(var(--rh-color-interactive-primary-visited-default-on-light, #5e40be), var(--rh-color-interactive-primary-visited-default-on-dark, #b6a6e9))})$2
 # Primary interactive visited - default (Light theme)
 snippet rhcolorinteractiveprimaryvisiteddefaultonlight
   var(--rh-color-interactive-primary-visited-default-on-light${1:, #5e40be})$2
@@ -1088,7 +1088,7 @@ snippet b6a6e9
 # Responsive `interactive-primary-visited` (e.g. visited link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-primary-visited-hover-on-light` on a themable container with a light color palette
      and to `--rh-color-interactive-primary-visited-hover-on-dark` on a themable container with a dark color palette.
 snippet rhcolorinteractiveprimaryvisitedhover
-  var(--rh-color-interactive-primary-visited-hover)$2
+  var(--rh-color-interactive-primary-visited-hover${1:, light-dark(var(--rh-color-interactive-primary-visited-hover-on-light, #21134d), var(--rh-color-interactive-primary-visited-hover-on-dark, #ece6ff))})$2
 # Primary interactive visited - hover (Light theme)
 snippet rhcolorinteractiveprimaryvisitedhoveronlight
   var(--rh-color-interactive-primary-visited-hover-on-light${1:, #21134d})$2
@@ -1102,7 +1102,7 @@ snippet ece6ff
 # Responsive `interactive-primary-visited` (e.g. visited link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-primary-visited-active-on-light` on a themable container with a light color palette
      and to `--rh-color-interactive-primary-visited-active-on-dark` on a themable container with a dark color palette.
 snippet rhcolorinteractiveprimaryvisitedactive
-  var(--rh-color-interactive-primary-visited-active)$2
+  var(--rh-color-interactive-primary-visited-active${1:, light-dark(var(--rh-color-interactive-primary-visited-active-on-light, #21134d), var(--rh-color-interactive-primary-visited-active-on-dark, #ece6ff))})$2
 # Primary interactive visited - active (Light theme)
 snippet rhcolorinteractiveprimaryvisitedactiveonlight
   var(--rh-color-interactive-primary-visited-active-on-light${1:, #21134d})$2
@@ -1116,7 +1116,7 @@ snippet ece6ff
 # Responsive `interactive-primary-visited` (e.g. visited link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-primary-visited-focus-on-light` on a themable container with a light color palette
      and to `--rh-color-interactive-primary-visited-focus-on-dark` on a themable container with a dark color palette.
 snippet rhcolorinteractiveprimaryvisitedfocus
-  var(--rh-color-interactive-primary-visited-focus)$2
+  var(--rh-color-interactive-primary-visited-focus${1:, light-dark(var(--rh-color-interactive-primary-visited-focus-on-light, #21134d), var(--rh-color-interactive-primary-visited-focus-on-dark, #ece6ff))})$2
 # Primary interactive visited - focus (Light theme)
 snippet rhcolorinteractiveprimaryvisitedfocusonlight
   var(--rh-color-interactive-primary-visited-focus-on-light${1:, #21134d})$2
@@ -1129,7 +1129,7 @@ snippet ece6ff
   var(--rh-color-interactive-primary-visited-focus-on-dark${1:, #ece6ff})$2
 # Responsive `interactive-secondary` (e.g. link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-secondary-default-on-light` on a themable container with a light color palette and `--rh-color-interactive-secondary-default-on-dark` on a themable container with a dark color palette.
 snippet rhcolorinteractivesecondarydefault
-  var(--rh-color-interactive-secondary-default)$2
+  var(--rh-color-interactive-secondary-default${1:, light-dark(var(--rh-color-interactive-secondary-default-on-light, #4d4d4d), var(--rh-color-interactive-secondary-default-on-dark, #c7c7c7))})$2
 # Secondary interactive - default (Light theme)
 snippet rhcolorinteractivesecondarydefaultonlight
   var(--rh-color-interactive-secondary-default-on-light${1:, #4d4d4d})$2
@@ -1143,7 +1143,7 @@ snippet c7c7c7
 # Responsive `interactive-secondary` (e.g. link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-secondary-hover-on-light` on a themable container with a light color palette
      and to `--rh-color-interactive-secondary-hover-on-dark` on a themable container with a dark color palette.
 snippet rhcolorinteractivesecondaryhover
-  var(--rh-color-interactive-secondary-hover)$2
+  var(--rh-color-interactive-secondary-hover${1:, light-dark(var(--rh-color-interactive-secondary-hover-on-light, #4d4d4d), var(--rh-color-interactive-secondary-hover-on-dark, #c7c7c7))})$2
 # Secondary interactive - hover (Light theme)
 snippet rhcolorinteractivesecondaryhoveronlight
   var(--rh-color-interactive-secondary-hover-on-light${1:, #4d4d4d})$2
@@ -1157,7 +1157,7 @@ snippet c7c7c7
 # Responsive `interactive-secondary` (e.g. link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-secondary-active-on-light` on a themable container with a light color palette
      and to `--rh-color-interactive-secondary-active-on-dark` on a themable container with a dark color palette.
 snippet rhcolorinteractivesecondaryactive
-  var(--rh-color-interactive-secondary-active)$2
+  var(--rh-color-interactive-secondary-active${1:, light-dark(var(--rh-color-interactive-secondary-active-on-light, #4d4d4d), var(--rh-color-interactive-secondary-active-on-dark, #c7c7c7))})$2
 # Secondary interactive - active (Light theme)
 snippet rhcolorinteractivesecondaryactiveonlight
   var(--rh-color-interactive-secondary-active-on-light${1:, #4d4d4d})$2
@@ -1171,7 +1171,7 @@ snippet c7c7c7
 # Responsive `interactive-secondary` (e.g. link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-secondary-focus-on-light` on a themable container with a light color palette
      and to `--rh-color-interactive-secondary-focus-on-dark` on a themable container with a dark color palette.
 snippet rhcolorinteractivesecondaryfocus
-  var(--rh-color-interactive-secondary-focus)$2
+  var(--rh-color-interactive-secondary-focus${1:, light-dark(var(--rh-color-interactive-secondary-focus-on-light, #4d4d4d), var(--rh-color-interactive-secondary-focus-on-dark, #c7c7c7))})$2
 # Secondary interactive - focus (Light theme)
 snippet rhcolorinteractivesecondaryfocusonlight
   var(--rh-color-interactive-secondary-focus-on-light${1:, #4d4d4d})$2
@@ -1184,7 +1184,7 @@ snippet c7c7c7
   var(--rh-color-interactive-secondary-focus-on-dark${1:, #c7c7c7})$2
 # Responsive `interactive-secondary-visited` (e.g. visited link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-secondary-visited-default-on-light` on a themable container with a light color palette and `--rh-color-interactive-secondary-visited-default-on-dark` on a themable container with a dark color palette.
 snippet rhcolorinteractivesecondaryvisiteddefault
-  var(--rh-color-interactive-secondary-visited-default)$2
+  var(--rh-color-interactive-secondary-visited-default${1:, light-dark(var(--rh-color-interactive-secondary-visited-default-on-light, #4d4d4d), var(--rh-color-interactive-secondary-visited-default-on-dark, #c7c7c7))})$2
 # Secondary interactive visited - default (Light theme)
 snippet rhcolorinteractivesecondaryvisiteddefaultonlight
   var(--rh-color-interactive-secondary-visited-default-on-light${1:, #4d4d4d})$2
@@ -1198,7 +1198,7 @@ snippet c7c7c7
 # Responsive `interactive-secondary-visited` (e.g. visited link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-secondary-visited-hover-on-light` on a themable container with a light color palette
      and to `--rh-color-interactive-secondary-visited-hover-on-dark` on a themable container with a dark color palette.
 snippet rhcolorinteractivesecondaryvisitedhover
-  var(--rh-color-interactive-secondary-visited-hover)$2
+  var(--rh-color-interactive-secondary-visited-hover${1:, light-dark(var(--rh-color-interactive-secondary-visited-hover-on-light, #4d4d4d), var(--rh-color-interactive-secondary-visited-hover-on-dark, #c7c7c7))})$2
 # Secondary interactive visited - hover (Light theme)
 snippet rhcolorinteractivesecondaryvisitedhoveronlight
   var(--rh-color-interactive-secondary-visited-hover-on-light${1:, #4d4d4d})$2
@@ -1212,7 +1212,7 @@ snippet c7c7c7
 # Responsive `interactive-secondary-visited` (e.g. visited link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-secondary-visited-active-on-light` on a themable container with a light color palette
      and to `--rh-color-interactive-secondary-visited-active-on-dark` on a themable container with a dark color palette.
 snippet rhcolorinteractivesecondaryvisitedactive
-  var(--rh-color-interactive-secondary-visited-active)$2
+  var(--rh-color-interactive-secondary-visited-active${1:, light-dark(var(--rh-color-interactive-secondary-visited-active-on-light, #4d4d4d), var(--rh-color-interactive-secondary-visited-active-on-dark, #c7c7c7))})$2
 # Secondary interactive visited - active (Light theme)
 snippet rhcolorinteractivesecondaryvisitedactiveonlight
   var(--rh-color-interactive-secondary-visited-active-on-light${1:, #4d4d4d})$2
@@ -1226,7 +1226,7 @@ snippet c7c7c7
 # Responsive `interactive-secondary-visited` (e.g. visited link) color value. Typically read only - use a themable container e.g. `<rh-surface>`. Resolves to `--rh-color-interactive-secondary-visited-focus-on-light` on a themable container with a light color palette
      and to `--rh-color-interactive-secondary-visited-focus-on-dark` on a themable container with a dark color palette.
 snippet rhcolorinteractivesecondaryvisitedfocus
-  var(--rh-color-interactive-secondary-visited-focus)$2
+  var(--rh-color-interactive-secondary-visited-focus${1:, light-dark(var(--rh-color-interactive-secondary-visited-focus-on-light, #4d4d4d), var(--rh-color-interactive-secondary-visited-focus-on-dark, #c7c7c7))})$2
 # Secondary interactive visited - focus (Light theme)
 snippet rhcolorinteractivesecondaryvisitedfocusonlight
   var(--rh-color-interactive-secondary-visited-focus-on-light${1:, #4d4d4d})$2
@@ -1279,7 +1279,7 @@ snippet ece6ff
   var(--rh-color-interactive-purple-darkest${1:, #ece6ff})$2
 # Responsive `status-danger` color value. Typically read-only – use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-status-danger-on-light` on a themable container with a light color palette and `--rh-color-status-danger-on-dark` on a themable container with a dark color palette.
 snippet rhcolorstatusdanger
-  var(--rh-color-status-danger)$2
+  var(--rh-color-status-danger${1:, light-dark(var(--rh-color-status-danger-on-light, #b1380b), var(--rh-color-status-danger-on-dark, #f0561d))})$2
 # Danger status color (light theme)
 snippet rhcolorstatusdangeronlight
   var(--rh-color-status-danger-on-light${1:, #b1380b})$2
@@ -1292,7 +1292,7 @@ snippet f0561d
   var(--rh-color-status-danger-on-dark${1:, #f0561d})$2
 # Responsive `status-caution` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-status-caution-on-light` on a themable container with a light color palette and `--rh-color-status-caution-on-dark` on a themable container with a dark color palette.
 snippet rhcolorstatuscaution
-  var(--rh-color-status-caution)$2
+  var(--rh-color-status-caution${1:, light-dark(var(--rh-color-status-caution-on-light, #ca6c0f), var(--rh-color-status-caution-on-dark, #f5921b))})$2
 # Caution status color (light theme)
 snippet rhcolorstatuscautiononlight
   var(--rh-color-status-caution-on-light${1:, #ca6c0f})$2
@@ -1305,7 +1305,7 @@ snippet f5921b
   var(--rh-color-status-caution-on-dark${1:, #f5921b})$2
 # Responsive `status-warning` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-status-warning-on-light` on a themable container with a light color palette and `--rh-color-status-warning-on-dark` on a themable container with a dark color palette.
 snippet rhcolorstatuswarning
-  var(--rh-color-status-warning)$2
+  var(--rh-color-status-warning${1:, light-dark(var(--rh-color-status-warning-on-light, #dca614), var(--rh-color-status-warning-on-dark, #ffcc17))})$2
 # Warning status color (light theme)
 snippet rhcolorstatuswarningonlight
   var(--rh-color-status-warning-on-light${1:, #dca614})$2
@@ -1318,7 +1318,7 @@ snippet ffcc17
   var(--rh-color-status-warning-on-dark${1:, #ffcc17})$2
 # Responsive `status-neutral` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-status-neutral-on-light` on a themable container with a light color palette and `--rh-color-status-neutral-on-dark` on a themable container with a dark color palette.
 snippet rhcolorstatusneutral
-  var(--rh-color-status-neutral)$2
+  var(--rh-color-status-neutral${1:, light-dark(var(--rh-color-status-neutral-on-light, #4d4d4d), var(--rh-color-status-neutral-on-dark, #c7c7c7))})$2
 # Neutral accent color (light theme)
 snippet rhcolorstatusneutralonlight
   var(--rh-color-status-neutral-on-light${1:, #4d4d4d})$2
@@ -1331,7 +1331,7 @@ snippet c7c7c7
   var(--rh-color-status-neutral-on-dark${1:, #c7c7c7})$2
 # Responsive `status-note` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-status-note-on-light` on a themable container with a light color palette and `--rh-color-status-note-on-dark` on a themable container with a dark color palette.
 snippet rhcolorstatusnote
-  var(--rh-color-status-note)$2
+  var(--rh-color-status-note${1:, light-dark(var(--rh-color-status-note-on-light, #5e40be), var(--rh-color-status-note-on-dark, #b6a6e9))})$2
 # Note/tip status color (light theme)
 snippet rhcolorstatusnoteonlight
   var(--rh-color-status-note-on-light${1:, #5e40be})$2
@@ -1344,7 +1344,7 @@ snippet b6a6e9
   var(--rh-color-status-note-on-dark${1:, #b6a6e9})$2
 # Responsive `status-info` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-status-info-on-light` on a themable container with a light color palette and `--rh-color-status-info-on-dark` on a themable container with a dark color palette.
 snippet rhcolorstatusinfo
-  var(--rh-color-status-info)$2
+  var(--rh-color-status-info${1:, light-dark(var(--rh-color-status-info-on-light, #5e40be), var(--rh-color-status-info-on-dark, #b6a6e9))})$2
 # Info status color (light theme)
 snippet rhcolorstatusinfoonlight
   var(--rh-color-status-info-on-light${1:, #5e40be})$2
@@ -1357,7 +1357,7 @@ snippet b6a6e9
   var(--rh-color-status-info-on-dark${1:, #b6a6e9})$2
 # Responsive `status-success` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-status-success-on-light` on a themable container with a light color palette and `--rh-color-status-success-on-dark` on a themable container with a dark color palette.
 snippet rhcolorstatussuccess
-  var(--rh-color-status-success)$2
+  var(--rh-color-status-success${1:, light-dark(var(--rh-color-status-success-on-light, #3d7317), var(--rh-color-status-success-on-dark, #87bb62))})$2
 # Success status color (light theme)
 snippet rhcolorstatussuccessonlight
   var(--rh-color-status-success-on-light${1:, #3d7317})$2
@@ -1370,7 +1370,7 @@ snippet 87bb62
   var(--rh-color-status-success-on-dark${1:, #87bb62})$2
 # Responsive `surface` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to the surface color corresponding to the surface' color palette.
 snippet rhcolorsurface
-  var(--rh-color-surface)$2
+  var(--rh-color-surface${1:, light-dark(var(--rh-color-surface-lightest, #ffffff), var(--rh-color-surface-lighter, #f2f2f2))})$2
 # Primary surface (light theme)
 snippet rhcolorsurfacelightest
   var(--rh-color-surface-lightest${1:, #ffffff})$2
@@ -1391,11 +1391,10 @@ snippet rhcolorsurfacedark
   var(--rh-color-surface-dark${1:, #383838})$2
 snippet 383838
   var(--rh-color-surface-dark${1:, #383838})$2
-# Alternative tertiary surface (not available for use with context provider)
+# DEPRECATED. Theme authors should use --rh-color-surface-dark. Element authors should use oklch(from var(--rh-color-surface-dark) calc(l * 0.82) c h). Alternative tertiary surface (not available for use with context provider)
+
 snippet rhcolorsurfacedarkalt
-  var(--rh-color-surface-dark-alt${1:, #292929})$2
-snippet 292929
-  var(--rh-color-surface-dark-alt${1:, #292929})$2
+  var(--rh-color-surface-dark-alt${1:, oklch(from(--rh-color-surface-dark) calc(l * 0.82) c h)})$2
 # Secondary surface (dark theme)
 snippet rhcolorsurfacedarker
   var(--rh-color-surface-darker${1:, #1f1f1f})$2
@@ -1408,7 +1407,7 @@ snippet 151515
   var(--rh-color-surface-darkest${1:, #151515})$2
 # Responsive `surface-status-danger` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-surface-status-danger-on-light` on a themable container with a light color palette and `--rh-color-surface-status-danger-on-dark` on a themable container with a dark color palette.
 snippet rhcolorsurfacestatusdanger
-  var(--rh-color-surface-status-danger)$2
+  var(--rh-color-surface-status-danger${1:, light-dark(var(--rh-color-surface-status-danger-on-light, #ffe3d9), var(--rh-color-surface-status-danger-on-dark, #ffe3d9))})$2
 # Danger status surface color (light theme)
 snippet rhcolorsurfacestatusdangeronlight
   var(--rh-color-surface-status-danger-on-light${1:, #ffe3d9})$2
@@ -1421,7 +1420,7 @@ snippet ffe3d9
   var(--rh-color-surface-status-danger-on-dark${1:, #ffe3d9})$2
 # Responsive `surface-status-caution` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-surface-status-caution-on-light` on a themable container with a light color palette and `--rh-color-surface-status-caution-on-dark` on a themable container with a dark color palette.
 snippet rhcolorsurfacestatuscaution
-  var(--rh-color-surface-status-caution)$2
+  var(--rh-color-surface-status-caution${1:, light-dark(var(--rh-color-surface-status-caution-on-light, #ffe8cc), var(--rh-color-surface-status-caution-on-dark, #ffe8cc))})$2
 # Caution status surface color (light theme)
 snippet rhcolorsurfacestatuscautiononlight
   var(--rh-color-surface-status-caution-on-light${1:, #ffe8cc})$2
@@ -1434,7 +1433,7 @@ snippet ffe8cc
   var(--rh-color-surface-status-caution-on-dark${1:, #ffe8cc})$2
 # Responsive `surface-status-warning` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-surface-status-warning-on-light` on a themable container with a light color palette and `--rh-color-surface-status-warning-on-dark` on a themable container with a dark color palette.
 snippet rhcolorsurfacestatuswarning
-  var(--rh-color-surface-status-warning)$2
+  var(--rh-color-surface-status-warning${1:, light-dark(var(--rh-color-surface-status-warning-on-light, #fff4cc), var(--rh-color-surface-status-warning-on-dark, #73480b))})$2
 # Warning status surface color (light theme)
 snippet rhcolorsurfacestatuswarningonlight
   var(--rh-color-surface-status-warning-on-light${1:, #fff4cc})$2
@@ -1447,7 +1446,7 @@ snippet 73480b
   var(--rh-color-surface-status-warning-on-dark${1:, #73480b})$2
 # Responsive `surface-status-default` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-surface-status-default-on-light` on a themable container with a light color palette and `--rh-color-surface-status-default-on-dark` on a themable container with a dark color palette.
 snippet rhcolorsurfacestatusdefault
-  var(--rh-color-surface-status-default)$2
+  var(--rh-color-surface-status-default${1:, light-dark(var(--rh-color-surface-status-default-on-light, #f2f2f2), var(--rh-color-surface-status-default-on-dark, #f2f2f2))})$2
 # Default status surface color (light theme)
 snippet rhcolorsurfacestatusdefaultonlight
   var(--rh-color-surface-status-default-on-light${1:, #f2f2f2})$2
@@ -1460,7 +1459,7 @@ snippet f2f2f2
   var(--rh-color-surface-status-default-on-dark${1:, #f2f2f2})$2
 # Responsive `surface-status-neutral` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-surface-status-neutral-on-light` on a themable container with a light color palette and `--rh-color-surface-status-neutral-on-dark` on a themable container with a dark color palette.
 snippet rhcolorsurfacestatusneutral
-  var(--rh-color-surface-status-neutral)$2
+  var(--rh-color-surface-status-neutral${1:, light-dark(var(--rh-color-surface-status-neutral-on-light, #f2f2f2), var(--rh-color-surface-status-neutral-on-dark, #f2f2f2))})$2
 # Neutral status surface color (light theme)
 snippet rhcolorsurfacestatusneutralonlight
   var(--rh-color-surface-status-neutral-on-light${1:, #f2f2f2})$2
@@ -1473,7 +1472,7 @@ snippet f2f2f2
   var(--rh-color-surface-status-neutral-on-dark${1:, #f2f2f2})$2
 # Responsive `surface-status-info` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-surface-status-info-on-light` on a themable container with a light color palette and `--rh-color-surface-status-info-on-dark` on a themable container with a dark color palette.
 snippet rhcolorsurfacestatusinfo
-  var(--rh-color-surface-status-info)$2
+  var(--rh-color-surface-status-info${1:, light-dark(var(--rh-color-surface-status-info-on-light, #ece6ff), var(--rh-color-surface-status-info-on-dark, #ece6ff))})$2
 # Info status surface color (light theme)
 snippet rhcolorsurfacestatusinfoonlight
   var(--rh-color-surface-status-info-on-light${1:, #ece6ff})$2
@@ -1486,7 +1485,7 @@ snippet ece6ff
   var(--rh-color-surface-status-info-on-dark${1:, #ece6ff})$2
 # Responsive `surface-status-success` color value. Typically read-only - use a themable container, e.g. `<rh-surface>`. Resolves to `--rh-color-surface-status-success-on-light` on a themable container with a light color palette and `--rh-color-surface-status-success-on-dark` on a themable container with a dark color palette.
 snippet rhcolorsurfacestatussuccess
-  var(--rh-color-surface-status-success)$2
+  var(--rh-color-surface-status-success${1:, light-dark(var(--rh-color-surface-status-success-on-light, #e9f7df), var(--rh-color-surface-status-success-on-dark, #e9f7df))})$2
 # Success status surface color (light theme)
 snippet rhcolorsurfacestatussuccessonlight
   var(--rh-color-surface-status-success-on-light${1:, #e9f7df})$2
@@ -1499,7 +1498,7 @@ snippet e9f7df
   var(--rh-color-surface-status-success-on-dark${1:, #e9f7df})$2
 # Responsive `text-primary` color value. Typically read only - use a themable container e.g. `<rh-surface>` Resolves to `--rh-color-text-primary-on-light` on a themable container with a light color palette and `--rh-color-text-primary-on-dark` on a themable container with a dark color palette.
 snippet rhcolortextprimary
-  var(--rh-color-text-primary)$2
+  var(--rh-color-text-primary${1:, light-dark(var(--rh-color-text-primary-on-light, #151515), var(--rh-color-text-primary-on-dark, #ffffff))})$2
 # Primary text color for light theme
 snippet rhcolortextprimaryonlight
   var(--rh-color-text-primary-on-light${1:, #151515})$2
@@ -1512,7 +1511,7 @@ snippet ffffff
   var(--rh-color-text-primary-on-dark${1:, #ffffff})$2
 # Responsive `text-secondary` color value. Typically read only - use a themable container e.g. `<rh-surface>` Resolves to `--rh-color-text-secondary-on-light` on a themable container with a light color palette and `--rh-color-text-secondary-on-dark` on a themable container with a dark color palette.
 snippet rhcolortextsecondary
-  var(--rh-color-text-secondary)$2
+  var(--rh-color-text-secondary${1:, light-dark(var(--rh-color-text-secondary-on-light, #4d4d4d), var(--rh-color-text-secondary-on-dark, #c7c7c7))})$2
 # Secondary text color for light theme
 snippet rhcolortextsecondaryonlight
   var(--rh-color-text-secondary-on-light${1:, #4d4d4d})$2
@@ -1525,7 +1524,7 @@ snippet c7c7c7
   var(--rh-color-text-secondary-on-dark${1:, #c7c7c7})$2
 # Responsive `text-brand` color value. Typically read only - use a themable container e.g. `<rh-surface>` Resolves to `--rh-color-text-brand-on-light` on a themable container with a light color palette and `--rh-color-text-brand-on-dark` on a themable container with a dark color palette.
 snippet rhcolortextbrand
-  var(--rh-color-text-brand)$2
+  var(--rh-color-text-brand${1:, light-dark(var(--rh-color-text-brand-on-light, #ee0000), var(--rh-color-text-brand-on-dark, #ee0000))})$2
 # Brand text color for light theme
 snippet rhcolortextbrandonlight
   var(--rh-color-text-brand-on-light${1:, #ee0000})$2

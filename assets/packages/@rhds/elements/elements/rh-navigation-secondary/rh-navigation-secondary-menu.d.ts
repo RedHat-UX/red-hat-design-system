@@ -1,5 +1,5 @@
 import { LitElement } from 'lit';
-import { type ColorPalette } from '../../lib/context/color/provider.js';
+import { type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
 /**
  * Dropdown menu for secondary nav, available in full-width and fixed-with sizes
  * @summary 'Dropdown menu for secondary nav, available in full-width and fixed-with sizes'

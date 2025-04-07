@@ -1,13 +1,16 @@
 var _RhVideoEmbed_instances, _RhVideoEmbed_slots, _RhVideoEmbed_iframe, _RhVideoEmbed_showConsent_get, _RhVideoEmbed_copyIframe, _RhVideoEmbed_handleConsentClick, _RhVideoEmbed_handleConsentKeyup, _RhVideoEmbed_handlePlayClick, _RhVideoEmbed_handlePlayKeyup, _RhVideoEmbed_playVideo;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
+import { property } from 'lit/decorators/property.js';
+import { customElement } from 'lit/decorators/custom-element.js';
+import { state } from 'lit/decorators/state.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import '@rhds/elements/rh-button/rh-button.js';
 import '@rhds/elements/rh-surface/rh-surface.js';
-import { colorContextConsumer } from '../../lib/context/color/consumer.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 import { css } from "lit";
-const styles = css `:host{display:flex}:host([hidden]),[hidden]{display:none!important}#consent,#video{display:inline-flex;align-items:center;flex-direction:column}#video{justify-content:stretch;position:relative}::slotted([slot=thumbnail]),::slotted(iframe),figure{max-width:100%}::slotted([slot=thumbnail]){display:block}::slotted(iframe){width:100%;height:100%;position:absolute;inset-block-start:0;inset-inline-start:0;border:0}figure{--_video-focus-border-color:var(--rh-color-border-interactive);--_video-play-btn-bkg-color:rgb(31 31 31/var(--rh-opacity-50,50%));--_video-play-btn-interactive-bkg-color:rgb(21 21 21/var(--rh-opacity-80,80%));display:flex;flex-direction:column;margin:0}figure.dark{--_video-focus-border-color:var(--rh-color-border-interactive);--_video-play-btn-bkg-color:rgb(255 255 255/var(--rh-opacity-20,20%));--_video-play-btn-interactive-bkg-color:rgb(255 255 255/var(--rh-opacity-50,50%));--_caption-text-color:var(--rh-color-text-secondary)}figcaption{margin-block-start:var(--rh-space-lg,16px)}figcaption ::slotted(p){margin-block-start:0!important}::slotted([slot=caption]){color:var(--_caption-text-color,var(--rh-color-text-secondary));font-size:var(--rh-font-size-body-text-sm,.875rem)!important;line-height:var(--rh-line-height-body-text,1.5)}#consent,#watermark{position:absolute;inset:0}#consent{justify-content:center;container:consent/inline-size}#consent-body{display:flex;flex-direction:column;align-items:center;position:relative;text-align:center;z-index:5}#consent-message,::slotted([slot=consent-message]){font-family:var(--rh-font-family-heading,RedHatDisplay,"Red Hat Display",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-heading-xs,1.25rem);line-height:var(--rh-line-height-heading,1.3)}#consent-message,::slotted([slot=consent-message]:last-of-type){margin-block-end:var(--rh-space-lg,16px)}@container consent (min-width: 576px){#consent-message,::slotted([slot=consent-message]:last-of-type){margin-block-end:var(--rh-space-xl,24px)}#consent-body{padding:var(--rh-space-xl,24px)}#consent-message{font-size:var(--rh-font-size-heading-sm,1.5rem)}}#play{cursor:pointer;display:block;height:100%;inset:0;position:absolute;width:100%}#play:focus-within{border-radius:var(--rh-border-radius-default,3px);outline:var(--rh-border-width-lg,3px) solid var(--_video-focus-border-color);outline-offset:var(--rh-border-width-md,2px)}#play::part(button){background-color:var(--_video-play-btn-bkg-color,var(--rh-color-surface-darkest,#151515));inset-block:calc(50% - var(--rh-length-2xl, 32px)) 0;inset-inline:50% 0;position:absolute;outline:none;transform:translate(-50%);width:var(--rh-length-4xl,64px)}#play:active::part(button),#play:focus::part(button),#play:hover::part(button){background-color:var(--_video-play-btn-interactive-bkg-color)}.dark #play::part(icon){color:var(--rh-color-surface-lightest,#fff)}#play[hidden],:is(.video,.consent) ::slotted([slot=thumbnail]){opacity:0;pointer-events:none}.visually-hidden{position:fixed;inset-block-start:0;inset-inline-start:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}#autoplay{position:absolute;inset:0;opacity:0;transition:opacity .2s ease-in}.video #autoplay{opacity:1}`;
+const styles = css `:host{display:flex}:host([hidden]),[hidden]{display:none!important}#consent,#video{display:inline-flex;align-items:center;flex-direction:column}#video{justify-content:stretch;position:relative}::slotted([slot=thumbnail]),::slotted(iframe),figure{max-width:100%}::slotted([slot=thumbnail]){display:block}::slotted(iframe){width:100%;height:100%;position:absolute;inset-block-start:0;inset-inline-start:0;border:0}figure{--_video-focus-border-color:var(--rh-color-border-interactive);--_video-play-btn-bkg-color:light-dark(rgb(31 31 31/var(--rh-opacity-50,50%)),rgb(255 255 255/var(--rh-opacity-20,20%)));--_video-play-btn-interactive-bkg-color:light-dark(rgb(21 21 21/var(--rh-opacity-80,80%)),rgb(255 255 255/var(--rh-opacity-50,50%)));display:flex;flex-direction:column;margin:0}figcaption{margin-block-start:var(--rh-space-lg,16px)}figcaption ::slotted(p){margin-block-start:0!important}::slotted([slot=caption]){color:var(--rh-color-text-secondary);font-size:var(--rh-font-size-body-text-sm,.875rem)!important;line-height:var(--rh-line-height-body-text,1.5)}#consent,#watermark{position:absolute;inset:0}#consent{justify-content:center;container:consent/inline-size}#consent-body{display:flex;flex-direction:column;align-items:center;position:relative;text-align:center;z-index:5}#consent-message,::slotted([slot=consent-message]){font-family:var(--rh-font-family-heading,RedHatDisplay,"Red Hat Display",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-heading-xs,1.25rem);line-height:var(--rh-line-height-heading,1.3)}#consent-message,::slotted([slot=consent-message]:last-of-type){margin-block-end:var(--rh-space-lg,16px)}@container consent (min-width: 576px){#consent-message,::slotted([slot=consent-message]:last-of-type){margin-block-end:var(--rh-space-xl,24px)}#consent-body{padding:var(--rh-space-xl,24px)}#consent-message{font-size:var(--rh-font-size-heading-sm,1.5rem)}}#play{cursor:pointer;display:block;height:100%;inset:0;position:absolute;width:100%}#play:focus-within{border-radius:var(--rh-border-radius-default,3px);outline:var(--rh-border-width-lg,3px) solid var(--_video-focus-border-color);outline-offset:var(--rh-border-width-md,2px)}#play::part(button){background-color:var(--_video-play-btn-bkg-color,var(--rh-color-surface-darkest,#151515));inset-block:calc(50% - var(--rh-length-2xl, 32px)) 0;inset-inline:50% 0;position:absolute;outline:none;transform:translate(-50%);width:var(--rh-length-4xl,64px)}#play:active::part(button),#play:focus::part(button),#play:hover::part(button){background-color:var(--_video-play-btn-interactive-bkg-color)}#play::part(icon){color:var(--rh-color-surface)}#play[hidden],:is(.video,.consent) ::slotted([slot=thumbnail]){opacity:0;pointer-events:none}.visually-hidden{position:fixed;inset-block-start:0;inset-inline-start:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}#autoplay{position:absolute;inset:0;opacity:0;transition:opacity .2s ease-in}.video #autoplay{opacity:1}`;
 export class ConsentClickEvent extends Event {
     constructor() {
         super('consent-click', { bubbles: true, cancelable: true });
@@ -42,12 +45,10 @@ export class VideoPlayEvent extends Event {
  * @csspart play - The play button on top of the thumbnail
  * @csspart caption - The container for the caption
  */
-export class RhVideoEmbed extends LitElement {
+let RhVideoEmbed = class RhVideoEmbed extends LitElement {
     constructor() {
         super(...arguments);
         _RhVideoEmbed_instances.add(this);
-        _RhVideoEmbed_slots.set(this, new SlotController(this, 'caption', 'thumbnail', null));
-        _RhVideoEmbed_iframe.set(this, void 0);
         /**
          * Add to `rh-video-embed` when a video requires consent for cookies
          */
@@ -61,6 +62,8 @@ export class RhVideoEmbed extends LitElement {
         this._consentClicked = false;
         this._playClicked = false;
         this._playStarted = false;
+        _RhVideoEmbed_slots.set(this, new SlotController(this, 'caption', 'thumbnail', null));
+        _RhVideoEmbed_iframe.set(this, void 0);
     }
     get consentButton() {
         return this.shadowRoot?.querySelector('#consent-button');
@@ -94,16 +97,17 @@ export class RhVideoEmbed extends LitElement {
         return this._playStarted;
     }
     render() {
-        const { playClicked, on = '' } = this;
+        const { playClicked } = this;
         const hasCaption = __classPrivateFieldGet(this, _RhVideoEmbed_slots, "f").hasSlotted('caption');
         const hasThumbnail = __classPrivateFieldGet(this, _RhVideoEmbed_slots, "f").hasSlotted('thumbnail');
         const playLabel = this.iframeElement && this.iframeElement.title ? `${this.iframeElement.title} (play video)` : 'Play video';
-        const show = __classPrivateFieldGet(this, _RhVideoEmbed_instances, "a", _RhVideoEmbed_showConsent_get) ? 'consent' : !!playClicked || !hasThumbnail ?
-            'video' : 'thumbnail';
+        const consent = __classPrivateFieldGet(this, _RhVideoEmbed_instances, "a", _RhVideoEmbed_showConsent_get);
+        const video = consent && !!playClicked || !hasThumbnail;
+        const thumbnail = consent && !playClicked && !!hasThumbnail;
         return html `
-      <figure part="figure" class="${classMap({ on: true, [show]: !!show, [on]: !!on })}">
+      <figure part="figure" class="${classMap({ consent, video, thumbnail })}">
         <div part="video" id="video">
-          <div aria-hidden="${show !== 'thumbnail'}">
+          <div aria-hidden="${String(thumbnail)}">
             <slot id="thumbnail" name="thumbnail"></slot>
           </div>
           <slot @slotchange="${__classPrivateFieldGet(this, _RhVideoEmbed_instances, "m", _RhVideoEmbed_copyIframe)}"></slot>
@@ -139,10 +143,12 @@ export class RhVideoEmbed extends LitElement {
               </div>
             </rh-surface>
           ` : ''}
-          <rh-button part="play" id="play" variant="play"
-            ?hidden="${show !== 'thumbnail'}"
-            @click="${__classPrivateFieldGet(this, _RhVideoEmbed_instances, "m", _RhVideoEmbed_handlePlayClick)}"
-            @keyup="${__classPrivateFieldGet(this, _RhVideoEmbed_instances, "m", _RhVideoEmbed_handlePlayKeyup)}">
+          <rh-button part="play"
+                     id="play"
+                     variant="play"
+                     ?hidden="${thumbnail}"
+                     @click="${__classPrivateFieldGet(this, _RhVideoEmbed_instances, "m", _RhVideoEmbed_handlePlayClick)}"
+                     @keyup="${__classPrivateFieldGet(this, _RhVideoEmbed_instances, "m", _RhVideoEmbed_handlePlayKeyup)}">
             <span class="visually-hidden"><slot name="play-button-text">${playLabel}</slot></span>
           </rh-button>
         </div>
@@ -150,10 +156,14 @@ export class RhVideoEmbed extends LitElement {
       </figure>
     `;
     }
-}
-_RhVideoEmbed_slots = new WeakMap(), _RhVideoEmbed_iframe = new WeakMap(), _RhVideoEmbed_instances = new WeakSet(), _RhVideoEmbed_showConsent_get = function _RhVideoEmbed_showConsent_get() {
+};
+_RhVideoEmbed_slots = new WeakMap();
+_RhVideoEmbed_iframe = new WeakMap();
+_RhVideoEmbed_instances = new WeakSet();
+_RhVideoEmbed_showConsent_get = function _RhVideoEmbed_showConsent_get() {
     return this.requireConsent && !this.consented;
-}, _RhVideoEmbed_copyIframe = function _RhVideoEmbed_copyIframe() {
+};
+_RhVideoEmbed_copyIframe = function _RhVideoEmbed_copyIframe() {
     const template = this.querySelector('template');
     const node = template ? document.importNode(template.content, true) : undefined;
     const iframe = node ?
@@ -169,10 +179,12 @@ _RhVideoEmbed_slots = new WeakMap(), _RhVideoEmbed_iframe = new WeakMap(), _RhVi
     }
     __classPrivateFieldSet(this, _RhVideoEmbed_iframe, iframe, "f");
     __classPrivateFieldGet(this, _RhVideoEmbed_instances, "m", _RhVideoEmbed_playVideo).call(this);
-}, _RhVideoEmbed_handleConsentClick = function _RhVideoEmbed_handleConsentClick() {
+};
+_RhVideoEmbed_handleConsentClick = function _RhVideoEmbed_handleConsentClick() {
     this._consentClicked = true;
     this.dispatchEvent(new ConsentClickEvent());
-}, _RhVideoEmbed_handleConsentKeyup = function _RhVideoEmbed_handleConsentKeyup(event) {
+};
+_RhVideoEmbed_handleConsentKeyup = function _RhVideoEmbed_handleConsentKeyup(event) {
     switch (event.key) {
         case ' ':
         case 'Enter':
@@ -180,13 +192,15 @@ _RhVideoEmbed_slots = new WeakMap(), _RhVideoEmbed_iframe = new WeakMap(), _RhVi
             this.dispatchEvent(new ConsentClickEvent());
             break;
     }
-}, _RhVideoEmbed_handlePlayClick = function _RhVideoEmbed_handlePlayClick() {
+};
+_RhVideoEmbed_handlePlayClick = function _RhVideoEmbed_handlePlayClick() {
     if (!this.playClicked) {
         this._playClicked = true;
         this.dispatchEvent(new VideoClickEvent());
         __classPrivateFieldGet(this, _RhVideoEmbed_instances, "m", _RhVideoEmbed_playVideo).call(this);
     }
-}, _RhVideoEmbed_handlePlayKeyup = function _RhVideoEmbed_handlePlayKeyup(event) {
+};
+_RhVideoEmbed_handlePlayKeyup = function _RhVideoEmbed_handlePlayKeyup(event) {
     switch (event.key) {
         case ' ':
         case 'Enter':
@@ -197,7 +211,8 @@ _RhVideoEmbed_slots = new WeakMap(), _RhVideoEmbed_iframe = new WeakMap(), _RhVi
             }
             break;
     }
-}, _RhVideoEmbed_playVideo = function _RhVideoEmbed_playVideo() {
+};
+_RhVideoEmbed_playVideo = function _RhVideoEmbed_playVideo() {
     if (!__classPrivateFieldGet(this, _RhVideoEmbed_instances, "a", _RhVideoEmbed_showConsent_get) && this.playClicked && this.iframeElement) {
         this.appendChild(this.iframeElement);
         this.iframeElement?.focus();
@@ -205,20 +220,29 @@ _RhVideoEmbed_slots = new WeakMap(), _RhVideoEmbed_iframe = new WeakMap(), _RhVi
         this.dispatchEvent(new VideoPlayEvent());
     }
 };
-RhVideoEmbed.properties = {
-    requireConsent: { type: Boolean, attribute: 'require-consent' },
-    consented: { type: Boolean },
-    _consentClicked: { state: true },
-    _playClicked: { state: true },
-    _playStarted: { state: true }
-};
 RhVideoEmbed.styles = [styles];
 RhVideoEmbed.shadowRootOptions = {
     ...LitElement.shadowRootOptions,
     delegatesFocus: true,
 };
 __decorate([
-    colorContextConsumer()
-], RhVideoEmbed.prototype, "on", void 0);
-customElements.define("rh-video-embed", RhVideoEmbed);
+    property({ type: Boolean, attribute: 'require-consent' })
+], RhVideoEmbed.prototype, "requireConsent", void 0);
+__decorate([
+    property({ type: Boolean })
+], RhVideoEmbed.prototype, "consented", void 0);
+__decorate([
+    state()
+], RhVideoEmbed.prototype, "_consentClicked", void 0);
+__decorate([
+    state()
+], RhVideoEmbed.prototype, "_playClicked", void 0);
+__decorate([
+    state()
+], RhVideoEmbed.prototype, "_playStarted", void 0);
+RhVideoEmbed = __decorate([
+    customElement('rh-video-embed'),
+    themable
+], RhVideoEmbed);
+export { RhVideoEmbed };
 //# sourceMappingURL=rh-video-embed.js.map

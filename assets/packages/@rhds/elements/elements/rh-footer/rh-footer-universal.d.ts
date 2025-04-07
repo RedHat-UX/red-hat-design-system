@@ -1,5 +1,5 @@
 import { LitElement } from 'lit';
-import { type ColorPalette } from '../../lib/context/color/provider.js';
+import { type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
 import './rh-footer-copyright.js';
 /**
  * @csspart base

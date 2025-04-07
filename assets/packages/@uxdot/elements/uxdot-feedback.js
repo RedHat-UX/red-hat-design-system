@@ -1,7 +1,9 @@
+import { __decorate } from "tslib";
 import { LitElement, html } from 'lit';
+import { customElement } from 'lit/decorators/custom-element.js';
 import { css } from "lit";
 const styles = css `:host{display:block;container-type:inline-size;container-name:host;margin-block-start:var(--rh-space-5xl)}#container{display:grid;grid-template-columns:1fr;grid-gap:var(--rh-space-3xl);margin-block-end:var(--rh-space-3xl)}::slotted(h2),h2{font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-md)!important;font-weight:var(--rh-font-weight-heading-medium);line-height:var(--rh-line-height-heading);margin:var(--rh-space-2xl) 0!important}p{font-size:var(--rh-font-size-body-text-lg)}@container host (min-width: 576px){#container{grid-template-columns:1fr 1fr}}`;
-export class UxdotFeedback extends LitElement {
+let UxdotFeedback = class UxdotFeedback extends LitElement {
     render() {
         return html `
       <div id="container" part="container">
@@ -21,7 +23,10 @@ export class UxdotFeedback extends LitElement {
       </div>
     `;
     }
-}
+};
 UxdotFeedback.styles = [styles];
-customElements.define("uxdot-feedback", UxdotFeedback);
+UxdotFeedback = __decorate([
+    customElement('uxdot-feedback')
+], UxdotFeedback);
+export { UxdotFeedback };
 //# sourceMappingURL=uxdot-feedback.js.map

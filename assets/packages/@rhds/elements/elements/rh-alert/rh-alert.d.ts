@@ -1,4 +1,4 @@
-import { type CSSResult, LitElement, type TemplateResult } from 'lit';
+import { LitElement, type TemplateResult } from 'lit';
 import '@rhds/elements/rh-surface/rh-surface.js';
 import '@rhds/elements/rh-button/rh-button.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
@@ -39,7 +39,7 @@ export declare class AlertCloseEvent extends Event {
  */
 export declare class RhAlert extends LitElement {
     #private;
-    static readonly styles: (CSSResult | CSSStyleSheet)[];
+    static readonly styles: CSSStyleSheet[];
     /**
      * Toast a message with an rh-alert
      * @param options

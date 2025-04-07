@@ -13,10 +13,6 @@ export declare class RhSpinner extends LitElement {
      * Preset sizes for the spinner
      */
     size: 'sm' | 'md' | 'lg';
-    /**
-     * Sets color theme based on parent context
-     */
-    private on?;
     render(): import("lit-html").TemplateResult<1>;
 }
 declare global {

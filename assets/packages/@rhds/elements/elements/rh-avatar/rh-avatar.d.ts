@@ -30,7 +30,6 @@ export declare class RhAvatar extends LitElement {
     pattern?: 'squares' | 'triangles';
     /** When true, hides the title and subtitle */
     plain: boolean;
-    private on?;
     connectedCallback(): void;
     render(): import("lit-html").TemplateResult<1>;
     updated(changed: PropertyValues<this>): Promise<void>;

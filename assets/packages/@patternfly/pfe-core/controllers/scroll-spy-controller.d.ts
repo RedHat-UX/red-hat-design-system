@@ -1,4 +1,4 @@
-import type { ReactiveController, ReactiveControllerHost } from 'lit';
+import { type ReactiveController, type ReactiveControllerHost } from 'lit';
 export interface ScrollSpyControllerOptions extends IntersectionObserverInit {
     /**
      * Tag names of legal link children.
@@ -20,6 +20,10 @@ export interface ScrollSpyControllerOptions extends IntersectionObserverInit {
      * @default el => el.getAttribute('href');
      */
     getHash?: (el: Element) => string | null;
+    /**
+     * Optional callback for when an intersection occurs
+     */
+    onIntersection?(): void;
 }
 export declare class ScrollSpyController implements ReactiveController {
     #private;
@@ -32,6 +36,7 @@ export declare class ScrollSpyController implements ReactiveController {
     set threshold(v: number | number[]);
     constructor(host: ReactiveControllerHost & HTMLElement, options: ScrollSpyControllerOptions);
     hostConnected(): void;
+    hostDisconnected(): void;
     /**
      * Explicitly set the active item
      * @param link usually an `<a>`
