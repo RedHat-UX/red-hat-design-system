@@ -88,6 +88,7 @@ Released April 7, 2025
 | `<rh-dialog>`: added dark color scheme support | {{p()}} | The Dialog element now supports dark mode. |
 | `<rh-tile>`: corrected border colors | {{p()}} | Corrected border colors on Tile. |
 | `<rh-tile>`: layout improvements | {{p()}} | Improved layout when footer slot is empty. |
+| `<rh-tile>`: fix link bug | {{p()}} | Fix a bug where a Tile's link stretches beyond the bounds of the element when JavaScript doesn't load. |
 | `<rh-pagination>`: dark color scheme improvements | {{p()}} | Improved dark mode for the numeric paginator control. |
 | `<rh-pagination>`: layout improvements | {{p()}} | Improved layouts for non-left-to-right languages. |
 | `<rh-pagination>`: removed background from `open` variant links | {{p()}} | The `open` pagination variant no longer has a background color behind its links |
