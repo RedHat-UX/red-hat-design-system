@@ -32,11 +32,11 @@ export class UxdotSideNav extends LitElement {
   async connectedCallback() {
     super.connectedCallback();
 
-    const root = this.getRootNode() as Document | ShadowRoot;
-    if (this.trigger) {
-      this.#triggerElement = root.getElementById(this.trigger);
-    }
     if (!isServer) {
+      const root = this.getRootNode() as Document | ShadowRoot;
+      if (this.trigger) {
+        this.#triggerElement = root.getElementById(this.trigger);
+      }
       this.#triggerElement?.addEventListener('click', this.#onTriggerClick.bind(this));
       this.addEventListener('click', this.#onClick.bind(this));
       this.addEventListener('keydown', this.#onKeydown.bind(this));
