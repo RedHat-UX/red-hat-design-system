@@ -221,7 +221,6 @@
       "command": "TSX_TSCONFIG_PATH=tsconfig.settings.json NODE_OPTIONS='--import tsx/esm' eleventy --config=eleventy.config.ts --incremental",
       "dependencies": [
         "patch",
-        "compile",
         "analyze",
         "playgrounds"
       ],
