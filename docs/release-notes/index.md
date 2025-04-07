@@ -73,7 +73,7 @@ Released April 7, 2025
 | `<rh-accordion>`: Accordion panel always uses its parent's color scheme | {{j()}} | Users can no longer override an accordion panel's `color-palette` |
 | `<rh-tabs>`: removed border color token | {{j()}} | Removed `--rh-tabs-border-color` and replaced with `--rh-color-border-subtle` token. |
 | `@rhds/tokens`: bumps version to 3.0 | {{j()}} | See the [design tokens' release notes](https://github.com/RedHat-UX/red-hat-design-tokens/releases/tag/v3.0.0) for changes. |
-| `@patternfly/pfe-core`: enables SSR support | {{j()}} | Enables Server-side Rendering (SSR) support through SSR hints, `connectedCallback()` and context protocol in SSR scenarios. For more information, read our [PatternFly Elements Core v5 release notes](https://github.com/patternfly/patternfly-elements/releases/tag/%40patternfly%2Fpfe-core%405.0.0) |
+| `@patternfly/pfe-core`: SSR support | {{j()}} | Server-side Rendering (SSR) support through SSR hints, `connectedCallback()` and context protocol in SSR scenarios. For more information, read our [PatternFly Elements Core v5 release notes](https://github.com/patternfly/patternfly-elements/releases/tag/%40patternfly%2Fpfe-core%405.0.0) |
 | ✨ Added `<rh-navigation-primary>` | {{i()}} | The Primary navigation element ensures a consistent user experience across our website system. |
 | ✨ Added `<rh-jump-links>` | {{i()}} | Jump links is a navigation list of links enhanced with Red Hat branded design and a scroll spy mechanism. |
 | ✨ Added `<rh-chip>` | {{i()}} | Chip creates a component that can be used in place of a checkbox. |
