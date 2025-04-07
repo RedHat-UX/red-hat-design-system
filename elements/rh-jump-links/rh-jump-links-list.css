@@ -15,7 +15,7 @@
 
     --_active_bdr: none;
 
-    ::slotted(rh-jump-link) {
+    ::slotted(rh-jump-link:not([slot])) { /* exclude parent item */
       --_padding-inline-start: var(--rh-space-lg, 16px);
       --_bdr: none;
     }
