@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-Fixes pre-hydration or non-JavaScript link bug
+`<rh-tile>`: Fix a bug where a Tile's link stretches beyond the bounds of the element when JavaScript doesn't load
