@@ -4,7 +4,7 @@ Progress steps contain **at least three** step indicators. They are positioned
 on a thin horizontal or vertical line and organized sequentially from left to
 right or top to bottom.
 
-<uxdot-example width-adjustment="699px">
+<uxdot-example width-adjustment="699px" color-palette="lightest">
   <img src="../progress-steps-blueprint.svg"
         alt="Progress steps component blueprint"
         width="699"
@@ -29,7 +29,7 @@ through each step of the task.
 - **Progress bar** - A dark gray bar in between Finished and Current steps
   indicates how much progress a user has made.
 
-<uxdot-example width-adjustment="385px">
+<uxdot-example width-adjustment="385px" color-palette="lightest">
   <img src="../progress-steps-visual-elements.svg"
         alt="Progress steps component visual elements"
         width="385"
@@ -50,7 +50,7 @@ them in **Sentence case** only.
   three steps, reduce the amount of characters.</p>
 </rh-alert>
 
-<uxdot-example width-adjustment="687px">
+<uxdot-example width-adjustment="687px" color-palette="lightest">
   <img src="../progress-steps-text-labels.svg"
         alt="Progress steps component text labels"
         width="687"
@@ -72,7 +72,7 @@ steps with short text labels.
   can become crowded when breakpoints get smaller or when text is translated.</p>
 </rh-alert>
 
-<uxdot-example width-adjustment="687px">
+<uxdot-example width-adjustment="687px" color-palette="lightest">
   <img src="../progress-steps-horizontal-orientation.svg"
         alt="Progress steps component horizontal orientation"
         width="687"
@@ -93,7 +93,7 @@ with more words.
   can become crowded when breakpoints get smaller or when text is translated.</p>
 </rh-alert>
 
-<uxdot-example width-adjustment="872px">
+<uxdot-example width-adjustment="872px" color-palette="lightest">
   <img src="../progress-steps-vertical-orientation.svg"
         alt="Progress steps component vertical orientation"
         width="872"
@@ -109,7 +109,7 @@ orientation.
 
 ### Desktop
 
-<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border color-palette="lightest">
   <img src="../progress-steps-responsive-desktop.svg"
         alt="Progress steps component responsive design, desktop"
         width="1000"
@@ -119,7 +119,7 @@ orientation.
 
 ### Tablet
 
-<uxdot-example width-adjustment="768px"  variant="full" alignment="left" no-border>
+<uxdot-example width-adjustment="768px"  variant="full" alignment="left" no-border color-palette="lightest">
   <img src="../progress-steps-responsive-tablet.svg"
         alt="Progress steps component responsive design, tablet"
         width="768"
@@ -129,7 +129,7 @@ orientation.
 
 ### Mobile
 
-<uxdot-example width-adjustment="375px" variant="full" alignment="left" no-border>
+<uxdot-example width-adjustment="375px" variant="full" alignment="left" no-border color-palette="lightest">
   <img src="../progress-steps-responsive-mobile.svg"
         alt="Progress steps component responsive design, mobile"
         width="360"
@@ -139,7 +139,7 @@ orientation.
 
 ## Spacing
 
-<uxdot-example width-adjustment="687px">
+<uxdot-example width-adjustment="687px" color-palette="lightest">
   <img src="../progress-steps-spacing.svg"
         alt="Progress steps component spacing"
         width="687"

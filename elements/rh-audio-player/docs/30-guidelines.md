@@ -7,7 +7,7 @@ Playing and controlling audio are not the only functions of the audio player. Th
 ## Sizes 
 When choosing one size over the other, consider where it is being used and what controls should be visible to users. Some audio player sizes have limited controls due to space constraints and some sizes occupy more space in a layout than others. Also take into account how an audio player changes size when users expand certain features.
 
-<uxdot-example width-adjustment="712px">
+<uxdot-example color-palette="lightest" width-adjustment="712px">
   <img alt="Image of all audio player sizes with text labels"
        src="../audio-player-guidelines-sizes.png"
        width="712"

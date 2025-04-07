@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-private-class-members */
 import { LitElement, html } from 'lit';
 
 import { customElement } from 'lit/decorators/custom-element.js';
@@ -6,6 +7,7 @@ import { property } from 'lit/decorators/property.js';
 import styles from './uxdot-toc.css';
 import listStyles from './uxdot-toc-list.css';
 import itemStyles from './uxdot-toc-item.css';
+import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
 @customElement('uxdot-toc')
 export class UxdotToc extends LitElement {
@@ -36,7 +38,9 @@ export class UxdotToc extends LitElement {
 @customElement('uxdot-toc-list')
 export class UxdotTocList extends LitElement {
   static styles = [listStyles];
-  role = 'list';
+
+  #internals = InternalsController.of(this, { role: 'list' });
+
   render() {
     return html`<slot></slot>`;
   }
@@ -47,7 +51,9 @@ export class UxdotTocList extends LitElement {
 export class UxdotTocItem extends LitElement {
   static styles = [itemStyles];
   @property() href?: string;
-  role = 'listitem';
+
+  #internals = InternalsController.of(this, { role: 'listitem' });
+
   render() {
     return html`
       <a href="${this.href}">

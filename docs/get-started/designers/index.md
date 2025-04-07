@@ -18,9 +18,9 @@ tags:
 </script>
 
 {#
-  the .page-designers rule allows for spacing of "sections" while only using
-  headers which are converted to uxdot-copy-permalink
-  TODO: determine if this is how we want to do this
+the .page-designers rule allows for spacing of "sections" while only using
+headers which are converted to uxdot-copy-permalink
+TODO: determine if this is how we want to do this
 #}
 
 <style data-helmet>
@@ -62,17 +62,16 @@ Welcome to the **Red Hat Design System** (RHDS) for digital experiences. If you
 need to design something using our design system, you have come to the right
 place.
 
-Follow these steps to get started and e-mail 
+Follow these steps to get started and e-mail
 [design-system@redhat.com][designsystemredhatcom] or connect with us
 on Slack if you have any questions along the way.
 
-
 ## Explore brand standards
 
-Our [Brand standards][brandstandards] are the source code of the Red Hat brand. 
-Using brand standards as the starting point for every project ensures that every 
-interaction with Red Hat reflects our brand personality, brand strategy, and 
-consistent visual language. Consistency is how we create authentic relationships 
+Our [Brand standards][brandstandards] are the source code of the Red Hat brand.
+Using brand standards as the starting point for every project ensures that every
+interaction with Red Hat reflects our brand personality, brand strategy, and
+consistent visual language. Consistency is how we create authentic relationships
 and credibility with our customers, partners, and contributors.
 
 <uxdot-example variant="full" no-border>
@@ -217,7 +216,7 @@ dragging and dropping over and over again. Use the **Instance** menu to swap one
 element for another from any enabled library. Changing a property will not
 replace an element, but instance swapping will.
 
-<uxdot-example>
+<uxdot-example color-palette="lightest">
   <img alt="Diagram of a primary CTA being changed to a secondary CTA via the instance swap panel"
        src="figma-instance-swap.png">
 </uxdot-example>
@@ -263,16 +262,16 @@ prioritize building them in.
 
 Use these resources to help you stay aligned to our brand and design system while working.
 
--   [Brand standards][brandstandards]
--   [Foundations][foundations], [elements][elements], and
-    [patterns][patterns]
--   Reference existing pages so you can see how brand and design system
-    assets are being used
-    -   [redhat.com home page][redhatcomhomepage]
-    -   [Product page][productpage]
-    -   [Resource article page][resourcearticlepage]
-    -   [Catalog SERP][catalogserp]
-    -   [Product trial page][producttrialpage]
+- [Brand standards][brandstandards]
+- [Foundations][foundations], [elements][elements], and
+  [patterns][patterns]
+- Reference existing pages so you can see how brand and design system
+  assets are being used
+  - [redhat.com home page][redhatcomhomepage]
+  - [Product page][productpage]
+  - [Resource article page][resourcearticlepage]
+  - [Catalog SERP][catalogserp]
+  - [Product trial page][producttrialpage]
 
 ## Frequently asked questions
 

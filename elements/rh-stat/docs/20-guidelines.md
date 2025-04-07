@@ -13,7 +13,7 @@ Include a footnote on every page especially if a statistic comes from an
 external source. Doing this increases the credibility of the statistic and 
 better integrates the data with the rest of the page content.
 
-<uxdot-example width-adjustment="369px">
+<uxdot-example width-adjustment="369px" color-palette="lightest">
   <img src="../stat-footnote.png"
         alt="A statistic with a small text footnote underneath"
         width="369"

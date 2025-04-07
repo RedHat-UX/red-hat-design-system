@@ -38,7 +38,7 @@ There are three available sizes and the only difference is the amount of interfa
   <img alt="Image of all audio player sizes with text labels"
        src="../audio-player-style-sizes.png"
        width="712"
-       height="606">  
+       height="606">
 </uxdot-example>
 
 ## Color scheme

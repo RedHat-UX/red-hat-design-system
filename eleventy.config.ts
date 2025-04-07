@@ -207,6 +207,7 @@ export default async function(eleventyConfig: UserConfig) {
       'elements/rh-code-block/rh-code-block.ts',
       'elements/rh-cta/rh-cta.ts',
       'elements/rh-footer/rh-footer-universal.ts',
+      'elements/rh-navigation-primary/rh-navigation-primary.ts',
       'elements/rh-icon/rh-icon.ts',
       'elements/rh-skip-link/rh-skip-link.ts',
       'elements/rh-subnav/rh-subnav.ts',

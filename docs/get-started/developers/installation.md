@@ -89,12 +89,11 @@ Once the import map is established, you can load individual elements using a [ba
 
 For example, you can load `<rh-button>` using the following:
 
-
 ```html rhcodeblock
 <rh-button>Primary</rh-button>
 
 <script type="module">
-  import '@rhds/elements/rh-button/rh-button.js';
+  import "@rhds/elements/rh-button/rh-button.js";
 </script>
 ```
 
@@ -121,9 +120,9 @@ Install RHDS using your team's preferred NPM package manager.
 npm install @rhds/elements
 ```
 
-Once that's been accomplished, you will need to use a bundler to resolve the 
-bare module specifiers and optionally optimize the package for your site's 
-particular use case and needs. Comprehensive guides to bundling are beyond the 
+Once that's been accomplished, you will need to use a bundler to resolve the
+bare module specifiers and optionally optimize the package for your site's
+particular use case and needs. Comprehensive guides to bundling are beyond the
 scope of this page; read more about bundlers on their websites:
 
 - [Rollup][rollup]
@@ -140,7 +139,7 @@ scope of this page; read more about bundlers on their websites:
     them for <strong>development purposes only</strong>!</p>
 </rh-alert>
 
-Add an [import map][importmap] to the `<head>`, pointing to the CDN, or update 
+Add an [import map][importmap] to the `<head>`, pointing to the CDN, or update
 any existing import map.
 
 ```html rhcodeblock
@@ -153,26 +152,26 @@ any existing import map.
   }
 </script>
 ```
-Once the import map is established, you can load the element with the following 
-module, containing a [bare module specifier][barespec]. The example below shows 
-how you'd load in <`rh-button>`.
 
+Once the import map is established, you can load the element with the following
+module, containing a [bare module specifier][barespec]. The example below shows
+how you'd load in <`rh-button>`.
 
 ```html rhcodeblock
 <script type="module">
-  import '@rhds/elements/rh-button/rh-button.js';
+  import "@rhds/elements/rh-button/rh-button.js";
 </script>
 ```
 
-Note that Modules may be placed in the `<head>`. Since they are deferred by 
+Note that Modules may be placed in the `<head>`. Since they are deferred by
 default, they will not block rendering.
 
 ## Lightdom CSS
 
-Some elements require you to load "Lightdom CSS" stylesheets, which are necessary 
-for styling deeply slotted child elements. In some cases, these may also help reduce 
-some [Cumulative Layout Shift (CLS)][cls] experience before the element has fully 
-initialized, but are not intended to be used without initializing the element or by 
+Some elements require you to load "Lightdom CSS" stylesheets, which are necessary
+for styling deeply slotted child elements. In some cases, these may also help reduce
+some [Cumulative Layout Shift (CLS)][cls] experience before the element has fully
+initialized, but are not intended to be used without initializing the element or by
 themselves to prevent CLS.
 
 ```html rhcodeblock
@@ -185,11 +184,11 @@ load these stylesheets</rh-alert>
 
 ## Lightdom CSS shims
 
-Some elements have provided an *optional* `-lightdom-shim.css` file to aid in limiting 
-[CLS][cls] as much as possible, by styling some parts of the element before it has fully 
-initialized (i.e., `:not(:defined)`). These "shims" are inherently different than the 
-required "Lightdom CSS" mentioned above, and are only a temporary stop-gap until 
-[Delcarative Shadow DOM][dsd] is more widely available; at which point the shims will 
+Some elements have provided an _optional_ `-lightdom-shim.css` file to aid in limiting
+[CLS][cls] as much as possible, by styling some parts of the element before it has fully
+initialized (i.e., `:not(:defined)`). These "shims" are inherently different than the
+required "Lightdom CSS" mentioned above, and are only a temporary stop-gap until
+[Delcarative Shadow DOM][dsd] is more widely available; at which point the shims will
 no longer be needed and will become deprecated.
 
 ```html rhcodeblock
@@ -200,7 +199,7 @@ no longer be needed and will become deprecated.
 <uxdot-feedback>
   <h2>Designers</h2>
   <p>To get started using our design system as a designer, go to the <a 
-    href="get-started/designers">Designers</a> page.</p>
+    href="/get-started/designers">Designers</a> page.</p>
 </uxdot-feedback>
 
 [rollup]: https://rollupjs.org/

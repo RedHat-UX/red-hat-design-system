@@ -27,7 +27,7 @@ on the content and color of the background.
       <h4>Black </h4>
       <p>Use on light background.</p>
     </figcaption>
-    <uxdot-example width-adjustment="392px" variant="full" no-border>
+    <uxdot-example width-adjustment="392px" color-palette="lightest">
       <img alt="Popover component, black variant"
            src="../popover-black.svg"
            width="405"
@@ -39,7 +39,7 @@ on the content and color of the background.
       <h4>White</h4>
       <p>Use on dark background.</p>
     </figcaption>
-    <uxdot-example width-adjustment="392px" variant="full" no-border>
+    <uxdot-example width-adjustment="392px" color-palette="darkest">
       <img alt="Popover component, white variant"
            src="../popover-white.svg"
            width="392"
@@ -49,7 +49,7 @@ on the content and color of the background.
   <figure>
     <figcaption><h4>With heading</h4></figcaption>
     <p>Use for messages that require a heading.</p>
-    <uxdot-example width-adjustment="392px" variant="full" no-border>
+    <uxdot-example width-adjustment="392px" color-palette="lightest">
       <img alt="Popover component, with heading variant"
            src="../popover-with-heading.svg"
            width="405"
@@ -61,7 +61,7 @@ on the content and color of the background.
       <h4>Without heading</h4>
       <p>Use for messages that do not require a heading.</p>
     </figcaption>
-    <uxdot-example width-adjustment="392px" variant="full" no-border>
+    <uxdot-example width-adjustment="392px" color-palette="lightest">
       <img alt="Popover component, without heading variant"
            src="../popover-without-heading.svg"
            width="405"
@@ -73,7 +73,7 @@ on the content and color of the background.
       <h4>With drop shadow</h4>
       <p>A drop shadow gives a popover subtle elevation above light backgrounds.</p>
     </figcaption>
-    <uxdot-example width-adjustment="392px" variant="full" no-border>
+    <uxdot-example width-adjustment="392px" color-palette="lightest">
       <img alt="Popover component, with drop shadow variant"
            src="../popover-with-drop-shadow.svg"
            width="405"
@@ -85,7 +85,7 @@ on the content and color of the background.
       <h4>Without drop shadow</h4>
       <p>A drop shadow cannot be seen on dark backgrounds, so it is not included.</p> 
     </figcaption>
-    <uxdot-example width-adjustment="392px" variant="full" no-border>
+    <uxdot-example width-adjustment="392px" color-palette="lightest">
       <img alt="Popover component, without drop shadow variant"
            src="../popover-without-drop-shadow.svg"
            width="392"
@@ -98,6 +98,7 @@ on the content and color of the background.
 ## Color scheme
 <a id="theme"></a>
 
+
 For popovers and [tooltips](/elements/tooltip),
 the themes are inverted. For example, light scheme popovers are **black* and
 should be used on light backgrounds; dark scheme popovers are **white** and
@@ -105,7 +106,7 @@ should be used on dark backgrounds.
 
 ### Black (light backgrounds)
 
-<uxdot-example width-adjustment="392px">
+<uxdot-example width-adjustment="392px" color-palette="lightest">
   <img alt="Popover component, light theme"
        src="../popover-theme-light.svg"
        width="405"
@@ -130,7 +131,7 @@ screens.
 
 ### Large screens
 
-<uxdot-example width-adjustment="1000px" variant="full" no-border alignment="left">
+<uxdot-example width-adjustment="1000px" variant="full" no-border alignment="left" color-palette="lightest">
   <img alt="Popover component responsive design, large screens"
        src="../popover-responsive-design-lg.svg"
        width="1000"
@@ -140,7 +141,7 @@ screens.
 
 ### Small screens
 
-<uxdot-example width-adjustment="360px" variant="full" no-border alignment="left">
+<uxdot-example width-adjustment="360px" variant="full" no-border alignment="left" color-palette="lightest">
   <img alt="Popover component responsive design, small screens"
        src="../popover-responsive-design-sm.svg"
        width="373"
@@ -152,7 +153,7 @@ screens.
 
 Each popover orientation contains the same amount of spacing in between the component and icon.
 
-<uxdot-example palette="lightest" width-adjustment="392px">
+<uxdot-example palette="lightest" width-adjustment="392px" color-palette="lightest">
   <img alt="Popover component spacing"
        src="../popover-spacing.svg"
        width="405"

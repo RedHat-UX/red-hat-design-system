@@ -14,7 +14,6 @@ subnav:
   import '@rhds/elements/rh-tag/rh-tag.js';
 </script>
 
-
 <style data-helmet>
   rh-code-block + rh-code-block {
     margin-block-start: var(--rh-spacer-2xl, 32px);
@@ -23,11 +22,11 @@ subnav:
 
 ## Install Project
 
-A quick start guide for installing the local development tools needed for 
+A quick start guide for installing the local development tools needed for
 contributing to the Red Hat Design System.
 
 1. [Install Git][installgit] for your system.
-2. [Install Node Version Manager][installnodeversionmanager] for your system.  
+2. [Install Node Version Manager][installnodeversionmanager] for your system.
 3. Clone the Red Hat Design System repository from Github.
 
 ```shell rhcodeblock
@@ -42,20 +41,20 @@ cd red-hat-design-system
 
 ### 5. Get the proper Node version
 
-Run [Node Version Manager's][nodeversionmanagers] `use` command to switch to 
+Run [Node Version Manager's][nodeversionmanagers] `use` command to switch to
 the projects [Node][node] version.
 
 ```shell rhcodeblock
 nvm use
 ```
 
-If prompted, follow the instructions for installing specific version of Node 
-[used by this project][usedbythisproject] on your system, which will look 
+If prompted, follow the instructions for installing specific version of Node
+[used by this project][usedbythisproject] on your system, which will look
 similar to the following:
 
 > `You need to run "nvm install v20.10.0" to install it before using it.`
 
-### 6. Install dependencies 
+### 6. Install dependencies
 
 Install project dependencies, run `npm ci`
 
@@ -65,24 +64,25 @@ npm ci
 
 ## Development Servers
 
-RHDS repo comes with two dev servers, one for working on elements, the other 
+RHDS repo comes with two dev servers, one for working on elements, the other
 for working on patterns and docs.
 
 ### Running both servers
+
 Start the development servers `npm start`.
 
 ```shell rhcodeblock
 npm start
 ```
 
-Two servers will start, if no other processes are using port `:8000` or 
-`:8080` the element development server will load on `:8000` and the 
-documentation server will load on `:8080`. The element server will auto open 
-a browser window, the documentation server however will not.  
+Two servers will start, if no other processes are using port `:8000` or
+`:8080` the element development server will load on `:8000` and the
+documentation server will load on `:8080`. The element server will auto open
+a browser window, the documentation server however will not.
 
 ### Running them separately
 
-To run these servers independently you can use the commands `npm run dev` and 
+To run these servers independently you can use the commands `npm run dev` and
 `npm run serve`.
 
 ```shell rhcodeblock
@@ -96,6 +96,7 @@ npm run serve
 ## Creating a new element
 
 ### 1. Scaffolding
+
 Run the new element generator command `npm run new`
 
 ```shell rhcodeblock
@@ -103,14 +104,16 @@ npm run new
 ```
 
 ### 2. Element name
-You will be prompted for a element name.  For Red Hat Design System elements 
- use prefix `rh-` followed by the elements name e.g: `rh-element-name`.
+
+You will be prompted for a element name. For Red Hat Design System elements
+use prefix `rh-` followed by the elements name e.g: `rh-element-name`.
 
 ### 3. Generated files
-A new folder will be created in the `./elements/rh-element-name` directory 
- with the name of the element you chose.
 
- The following files will also be created for you:
+A new folder will be created in the `./elements/rh-element-name` directory
+with the name of the element you chose.
+
+The following files will also be created for you:
 
 - `./elements/rh-element-name/demo/rh-element-name.html`
 - `./elements/rh-element-name/demo/rh-element-name.js`
@@ -128,8 +131,8 @@ A new folder will be created in the `./elements/rh-element-name` directory
 
 ### 4. Develop your element
 
-For more information please read our [Wiki][wiki] page on [adding new 
-components][addingnewcomponents] 
+For more information please read our [Wiki][wiki] page on [adding new
+components][addingnewcomponents]
 
 ## Testing
 
@@ -146,9 +149,9 @@ npm run test -- -- ./elements/rh-element-name/test/rh-element-name.spec.ts
 ```
 
 The project uses [Mocha][mocha] and [Chai][chai] and are run via
-[Web Test Runner][webtestrunner]. For more detailed information about testing 
-and how we write tests please see our [Testing][testing] page on the Wiki and 
-our [introduction to testing RHDS 
+[Web Test Runner][webtestrunner]. For more detailed information about testing
+and how we write tests please see our [Testing][testing] page on the Wiki and
+our [introduction to testing RHDS
 components][introductiontotestingrhdscomponents] with Chai A11y aXe and
 `a11ySnapshot`.
 
@@ -156,16 +159,16 @@ components][introductiontotestingrhdscomponents] with Chai A11y aXe and
 
 Please read our Developer Guidelines section of our [Wiki][wiki]
 
-  - [Custom Element API Style Guide][customelementapistyleguide]
-  - [Shadow DOM][shadowdom]
-  - [HTML Formatting][htmlformatting]
-  - [CSS][css]
-  - [JSDoc][jsdoc]
+- [Custom Element API Style Guide][customelementapistyleguide]
+- [Shadow DOM][shadowdom]
+- [HTML Formatting][htmlformatting]
+- [CSS][css]
+- [JSDoc][jsdoc]
 
 ## Contributing
 
-When your code is ready to push to our repository, please open a Pull 
-Request/Merge Request. You may first need to request access. Please reach out to 
+When your code is ready to push to our repository, please open a Pull
+Request/Merge Request. You may first need to request access. Please reach out to
 us on Slack `#red-hat-design-system`
 <rh-tag color="red" variant="outline">Internal Red Hat only</rh-tag> or
 [open an issue][openanissue].
@@ -175,7 +178,7 @@ Before pushing your code please read our
 
 <uxdot-feedback>
   <h2>Designers</h2>
-  <p>To get started using our design system as a designer, go to the <a href="get-started/designers">Designers</a> page.</p>
+  <p>To get started using our design system as a designer, go to the <a href="/get-started/designers">Designers</a> page.</p>
 </uxdot-feedback>
 
 [addingnewcomponents]: https://github.com/RedHat-UX/red-hat-design-system/wiki/Adding-New-Components
