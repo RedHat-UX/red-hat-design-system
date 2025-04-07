@@ -8,10 +8,12 @@ Before:
 ```html
 
 <rh-footer-social-link slot="social-links"
-                       icon="linkedin"><a href="https://www.linkedin.com/company/red-hat"
-                                          data-analytics-region="social-links-exit"
-                                          data-analytics-category="Footer|social-links"
-                                          data-analytics-text="LinkedIn">LinkedIn</a></rh-footer-social-link>
+                       icon="linkedin">
+  <a href="https://www.linkedin.com/company/red-hat"
+     data-analytics-region="social-links-exit"
+     data-analytics-category="Footer|social-links"
+     data-analytics-text="LinkedIn">LinkedIn</a>
+</rh-footer-social-link>
 ```
 
 After:

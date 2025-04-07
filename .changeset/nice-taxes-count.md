@@ -1,10 +1,9 @@
 ---
 "@rhds/elements": minor
 ---
-`<rh-jump-links>`: ✨ Added `<rh-jump-links>`
+✨ Added `<rh-jump-links>`
 
-Jump links is a navigation list of links enhanced with Red Hat branded design and a scroll spy mechanism.
-It comes in horizontal and vertical layouts, and can be composed with `<rh-disclosure>` for a mobile-friendly presentation.
+Jump links is a navigation list of links enhanced with Red Hat branded design and a scroll spy mechanism. It comes in horizontal and vertical layouts, and can be composed with `<rh-disclosure>` for a mobile-friendly presentation.
 
 ```html
 <aside id="jump-links-container">
