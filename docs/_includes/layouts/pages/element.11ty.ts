@@ -135,15 +135,28 @@ export default class ElementsPage extends Renderer<Context> {
     }
   }
 
+  async #getOverviewInlineSvg(ctx: Context) {
+    const svgPath = join(
+      process.cwd(),
+      'elements',
+      ctx.tagName,
+      'docs',
+      ctx.doc.overviewImageHref!,
+    );
+    return readFile(svgPath, 'utf8');
+  }
+
   async #renderOverviewPage(content: string, ctx: Context) {
     const description = ctx.doc.docsPage.description ?? ctx.doc.description ?? '';
     return html`${!ctx.doc.planned ? '' : html`
       <h2 id="coming-soon">Coming soon!</h2>
-      <p>This element is currently in progress and not yet available for
-      use.</p>`}
+      <p>This element is currently in progress and not yet available for use.</p>`}
       <h2 id="overview">Overview</h2>
       ${await this.renderTemplate(description, 'md')}
-      ${!ctx.doc.overviewImageHref ? '' : html`
+      ${!ctx.doc.overviewImageHref ? ''
+       : ctx.doc.overviewImageHref.endsWith('svg') ? html`
+      <uxdot-example>${await this.#getOverviewInlineSvg(ctx)}</uxdot-example>
+      ` : html`
       <uxdot-example color-palette="lightest"><img src="${ctx.doc.overviewImageHref}" alt="" aria-labelledby="overview-image-description"></uxdot-example>`}
       <h2 id="status">Status</h2>
       <uxdot-repo-status-list element="${ctx.tagName}"></uxdot-repo-status-list>
