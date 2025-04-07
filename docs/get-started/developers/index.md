@@ -51,13 +51,11 @@ order: 20
   }
 </style>
 
-
 ## Introduction
 
 Welcome to the **Red Hat Design System** (RHDS) for digital experiences. If you need to develop something using our design system, you have come to the right place.
 
 Read this section to get started and e-mail [design-system@redhat.com](mailto:design-system@redhat.com) or connect with us on Slack if you have any questions along the way.
-
 
 ## Learn about our design system
 
@@ -102,7 +100,6 @@ Our design system libraries and the documentation website offer assets and guida
     </rh-cta>
   </rh-card>
 </div>
-
 
 ## About Web Components
 
@@ -170,7 +167,7 @@ We anticipate that if HTML modules and CSS modules become widely implemented in 
 
 <uxdot-feedback>
   <h2>Designers</h2>
-  <p>To get started using our design system as a designer, go to the <a href="get-started/designers">Designers</a> page.</p>
+  <p>To get started using our design system as a designer, go to the <a href="/get-started/designers">Designers</a> page.</p>
 </uxdot-feedback>
 
 [ce]: https://html.spec.whatwg.org/dev/custom-elements.html#custom-elements
