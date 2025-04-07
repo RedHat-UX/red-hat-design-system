@@ -50,10 +50,10 @@ Website status is a combination of an icon and link within a very small card. It
 </figure>
 
 
-## Theme
+## Color scheme
+<a id="theme"></a>
 
-Currently, Website status is only available in the dark theme. You may use Website status in the light theme if necessary. If you need a separate light version designed instead, [contact us](https://github.com/RedHat-UX/red-hat-design-system/discussions).
-
+Website status is available for both light and dark color schemes.
 
 <div class="grid sm-two-columns">
   <uxdot-example color-palette="darkest" width-adjustment="200px">

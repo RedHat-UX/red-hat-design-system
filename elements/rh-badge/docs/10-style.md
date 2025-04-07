@@ -4,11 +4,11 @@ A badge is number text on a pill background used to reflect the count of somethi
 ### Anatomy 
 
 <figure>
-  <uxdot-example width-adjustment="102px">
-    <img src="../badge-anatomy.svg" 
-        alt="Anatomy of a badge with annotations; number 1 is pointing to the container and number 2 is pointing to the counter number"
-        width="102"
-        height="18">
+  <uxdot-example color-palette="lightest" width-adjustment="102px">
+    <img alt="Anatomy of a badge with annotations; number 1 is pointing to the container and number 2 is pointing to the counter number"
+         src="../badge-anatomy.svg"
+         width="102"
+         height="18">
   </uxdot-example>
   <figcaption>
     <ol>
@@ -18,66 +18,58 @@ A badge is number text on a pill background used to reflect the count of somethi
   </figcaption>
 </figure>
 
-## Theme 
+## Color scheme 
+<a id="theme"></a>
 
-A badge is available in light and dark theme.
+Badge is available for light and dark color schemes.
 
 ### Light theme
 
-<uxdot-example width-adjustment="272px">
-  <img src="../badge-theme-light.svg" 
-      alt="Light theme badges"
-      width="272"
-      height="18">
+<uxdot-example color-palette="lightest" width-adjustment="272px">
+  <img alt="Light theme badges"
+       src="../badge-theme-light.svg"
+       width="272"
+       height="18">
 </uxdot-example>
 
 ### Dark theme
 
-<uxdot-example width-adjustment="272px" color-palette="darkest">
-  <img src="../badge-theme-dark.svg" 
-      alt="Dark theme badges"
-      width="272"
-      height="18">
+<uxdot-example color-palette="darkest" width-adjustment="272px">
+  <img alt="Dark theme badges"
+       src="../badge-theme-dark.svg"
+       width="272"
+       height="18">
 </uxdot-example>
 
 ## Configuration 
 
 All badges have the same height and border radius.
 
-<uxdot-example width-adjustment="350px">
-  <img src="../badge-configuration.svg" 
-      alt="How a badge is constructed showing border radius and height details"
-      width="350"
-      height="35">
+<uxdot-example color-palette="lightest" width-adjustment="350px">
+  <img alt="How a badge is constructed showing border radius and height details"
+       src="../badge-configuration.svg"
+       width="350"
+       height="35">
 </uxdot-example>
 
 
 ## Space and width 
 
-<uxdot-example width-adjustment="238px">
-  <img src="../badge-space-and-width.svg" 
-      alt="Badge spacing and minimum width"
-      width="238"
-      height="49">
+<uxdot-example color-palette="lightest" width-adjustment="238px">
+  <img alt="Badge spacing and minimum width"
+       width="238"
+       height="49"
+       src="../badge-space-and-width.svg">
 </uxdot-example>
 
 <uxdot-spacer-tokens-table tokens="md"></uxdot-spacer-tokens-table>
 
 <rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Property">Property</th>
-        <th scope="col" data-label="Current value">Current value</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Property">Minimum width</td>
-        <td data-label="Current value">--rh-length-2xl</td>
-      </tr>
-    </tbody>
-  </table>
+
+| Property      | Current value     |
+|---------------|-------------------|
+| Minimum width | `--rh-length-2xl` |
+
 </rh-table>
 
 ## Interaction states

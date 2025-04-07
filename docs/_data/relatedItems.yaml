@@ -17,7 +17,9 @@ rh-badge:
  - rh-avatar
  - rh-tag
 rh-blockquote: 
+ - rh-card
  - rh-statistic
+ - rh-video-embed
 rh-breadcrumb:
  - rh-link
  - rh-navigation-secondary
@@ -26,20 +28,27 @@ rh-button:
  - rh-alert
  - rh-cta
  - search-bar
-rh-cta: 
- - rh-button
- - link
- - link-with-icon
 rh-card: 
  - rh-avatar
  - link
  - link-with-icon
+rh-chip:
+ - rh-badge
+ - filter
+ - rh-tag
 rh-code-block:
  - rh-card
+rh-cta: 
+- rh-button
+- link
+- link-with-icon
 rh-dialog: 
  - announcement
  - sticky-banner
  - sticky-card
+rh-disclosure: 
+ - rh-accordion
+ - rh-jump-links
 rh-footer: 
  - rh-accordion
  - rh-popover
@@ -57,7 +66,7 @@ rh-jump-links:
  - rh-pagination
  - rh-progress-steps
  - rh-tabs
-rh-navigation: 
+rh-navigation-primary: 
  - rh-navigation-secondary
  - skip-navigation
  - rh-subnav
@@ -121,10 +130,6 @@ announcement:
  - rh-dialog
  - sticky-banner
  - sticky-card
-disclosure: 
- - rh-accordion
- - filter
- - rh-form
 filter: 
  - rh-accordion
  - disclosure

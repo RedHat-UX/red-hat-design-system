@@ -7,8 +7,7 @@ import { InternalsController } from '@patternfly/pfe-core/controllers/internals-
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
-import { DirController } from '../../lib/DirController.js';
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-switch.css';
 
@@ -24,6 +23,7 @@ import '@rhds/elements/rh-icon/rh-icon.js';
  * @slot message-off - message content when unchecked. Overrides the `message-off` attribute.
  */
 @customElement('rh-switch')
+@themable
 export class RhSwitch extends LitElement {
   static readonly styles = [styles];
 
@@ -50,13 +50,9 @@ export class RhSwitch extends LitElement {
   /** If the switch is reversed: message first, then control */
   @property({ reflect: true, type: Boolean }) reversed = false;
 
-  @colorContextConsumer() private on?: ColorTheme;
-
   #internals = InternalsController.of(this, { role: 'switch' });
 
   #slots = new SlotController(this, null, 'message-on', 'message-off');
-
-  #dir = new DirController(this);
 
   get #message() {
     return this.checked ? this.messageOn : this.messageOff;
@@ -106,15 +102,14 @@ export class RhSwitch extends LitElement {
   }
 
   render() {
-    const rtl = this.#dir.dir === 'rtl';
-    const { on = 'light', reversed, checked } = this;
+    const { reversed, checked } = this;
     const slots = html`
       <slot class="message" name="message-on" ?hidden="${!this.checked}"><span aria-hidden="true">${this.messageOn}</span></slot>
       <slot class="message" name="message-off" ?hidden="${this.checked}"><span aria-hidden="true">${this.messageOff}</span></slot>`;
     return html`
       <div id="container"
            part="container"
-           class="${classMap({ checked, on: true, [on]: true, rtl })}">
+           class="${classMap({ checked })}">
         ${reversed ? slots : ''}
         <div id="switch"
              part="switch">

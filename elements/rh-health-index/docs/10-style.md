@@ -17,11 +17,11 @@ Health index is a combination of letter grades and severity colors. Severity col
 ### Anatomy
 
 <figure>
-  <uxdot-example width-adjustment="752px">
-    <img src="../style-anatomy.svg"
-        alt="Anatomy of 3 health index components. Annotation #1 is pointing to the letter grade and annotation #2 is pointing to the severity level."
-        width="638"
-        height="82">
+  <uxdot-example color-palette="lightest" width-adjustment="752px">
+    <img alt="Anatomy of 3 health index components. Annotation #1 is pointing to the letter grade and annotation #2 is pointing to the severity level."
+         src="../style-anatomy.svg"
+         width="638"
+         height="82">
   </uxdot-example>
   <figcaption>
     <ol>
@@ -36,63 +36,64 @@ Health index is a combination of letter grades and severity colors. Severity col
 
 There are four available variants: `Small`, `Default`, `Large`, and `Extra large`. The only difference between the Large and Extra large variants is the size.
 
-<uxdot-example width-adjustment="752px">
-  <img src="../style-variants.svg"
-        alt="4 columns of health index components. Each column is a different size. Under each column, there is every letter grade and severity color."
-        width="802"
-        height="334">
+<uxdot-example color-palette="lightest" width-adjustment="752px">
+  <img alt="4 columns of health index components. Each column is a different size. Under each column, there is every letter grade and severity color."
+       src="../style-variants.svg"
+       width="802"
+       height="334">
 </uxdot-example>
 
 
-## Theme
+## Color schemes
+<a id="theme"></a>
 
-Health index is available in both light and dark themes.
+Health index is available in both light and dark color schemes.
 
-### Light theme
+### Light scheme
 
-<uxdot-example width-adjustment="752px">
-  <img src="../style-theme-light.svg"
-        alt="Light theme health index component examples."
-        width="793"
-        height="38">
+<uxdot-example color-palette="lightest" width-adjustment="752px">
+  <img alt="Light scheme health index component examples."
+       src="../style-theme-light.svg"
+       width="793"
+       height="38">
 </uxdot-example>
 
 <uxdot-example color-palette="lighter" width-adjustment="752px">
-  <img src="../style-theme-light.svg"
-        alt="Light theme health index component examples."
-        width="793"
-        height="38">
+  <img alt="Light scheme health index component examples."
+       src="../style-theme-light.svg"
+       width="793"
+       height="38">
 </uxdot-example>
 
 <uxdot-example color-palette="light" width-adjustment="752px">
-  <img src="../style-theme-light.svg"
-        alt="Light theme health index component examples."
-        width="793"
-        height="38">
+  <img alt="Light scheme health index component examples."
+       src="../style-theme-light.svg"
+       width="793"
+       height="38">
 </uxdot-example>
 
 
-### Dark theme
+### Dark scheme
 
 <uxdot-example color-palette="dark" width-adjustment="752px">
-  <img src="../style-theme-dark.svg"
-        alt="Dark theme health index component examples."
-        width="793"
-        height="38">
+  <img alt="Dark scheme health index component examples."
+       src="../style-theme-dark.svg"
+       width="793"
+       height="38">
 </uxdot-example>
 
 <uxdot-example color-palette="darker" width-adjustment="752px">
-  <img src="../style-theme-dark.svg"
-        alt="Dark theme health index component examples."
-        width="793"
-        height="38">
+  <img alt="Dark scheme health index component examples."
+       src="../style-theme-dark.svg"
+       width="793"
+       height="38">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="752px">
-  <img src="../style-theme-dark.svg"
-        alt="Dark theme health index component examples."
-        width="793"
-        height="38">
+  <img alt="Dark scheme health index component examples."
+       src="../style-theme-dark.svg"
+       width="793"
+       height="38">
 </uxdot-example>
 
 
@@ -100,11 +101,11 @@ Health index is available in both light and dark themes.
 
 Squares in the Default, Large, and Extra large variants are aligned horizontally.
 
-<uxdot-example width-adjustment="752px">
-  <img src="../style-configuration.svg"
-        alt="3 examples of health index component configurations. The small size is just 1 square, so it’s horizontally and vertically centered. The default, large, and extra large sizes are rows of squares, so they’re horizontally centered only."
-        width="764"
-        height="90">
+<uxdot-example color-palette="lightest" width-adjustment="752px">
+  <img alt="3 examples of health index component configurations. The small size is just 1 square, so it’s horizontally and vertically centered. The default, large, and extra large sizes are rows of squares, so they’re horizontally centered only."
+       src="../style-configuration.svg"
+       width="764"
+       height="90">
 </uxdot-example>
 
 
@@ -112,11 +113,11 @@ Squares in the Default, Large, and Extra large variants are aligned horizontally
 
 The spacer in the Default variant is the same for all viewport sizes.
 
-<uxdot-example width-adjustment="240px">
-  <img src="../style-space.svg"
-        alt="Health index component with a 16px spacer box in between a C letter grade and a row of severity squares. The active severity square is yellow."
-        width="170"
-        height="24">
+<uxdot-example color-palette="lightest" width-adjustment="240px">
+  <img alt="Health index component with a 16px spacer box in between a C letter grade and a row of severity squares. The active severity square is yellow."
+       src="../style-space.svg"
+       width="170"
+       height="24">
 </uxdot-example>
 
 
@@ -126,11 +127,11 @@ The spacer in the Default variant is the same for all viewport sizes.
 
 Depending on the theme and chosen variant, each severity level can have different colors and font styling.
 
-<uxdot-example width-adjustment="715px">
-  <img src="../style-severity-level-light.svg"
-        alt="Multiple light theme health index components at different sizes. Annotations 1 through 4 are pointing to various styling details as well as letter grades that have been enlarged."
-        width="715"
-        height="227">
+<uxdot-example color-palette="lightest" width-adjustment="715px">
+  <img alt="Multiple light theme health index components at different sizes. Annotations 1 through 4 are pointing to various styling details as well as letter grades that have been enlarged."
+       src="../style-severity-level-light.svg"
+       width="715"
+       height="227">
 </uxdot-example>
 
 <rh-table>
@@ -138,38 +139,38 @@ Depending on the theme and chosen variant, each severity level can have differen
     <caption>Annotations of the health index component's light theme examples in the figure above</caption>
     <thead>
       <tr>
-        <th scope="col" data-label="#">#</th>
-        <th scope="col" data-label="Variant">Variant</th>
-        <th scope="col" data-label="Font weight">Font weight</th>
-        <th scope="col" data-label="Text color">Text color</th>
-        <th scope="col" data-label="Fill color">Fill color</th>
-        <th scope="col" data-label="Stroke/Emphasis color">Stroke/Emphasis color</th>
+        <th scope="col">#</th>
+        <th scope="col">Variant</th>
+        <th scope="col">Font weight</th>
+        <th scope="col">Text color</th>
+        <th scope="col">Fill color</th>
+        <th scope="col">Stroke/Emphasis color</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td data-label="#">1</td>
-        <td data-label="Variant">Small</td>
-        <td data-label="Font weight">Regular</td>
-        <td data-label="Text color"><code>green-70</code></td>
-        <td data-label="Fill color"><code>green-20</code></td>
-        <td data-label="Stroke/Emphasis color">Stroke: <code>green-60</code></td>
+        <td>1</td>
+        <td>Small</td>
+        <td>Regular</td>
+        <td><code>green-70</code></td>
+        <td><code>green-20</code></td>
+        <td>Stroke: <code>green-60</code></td>
       </tr>
       <tr>
-        <td data-label="#">2</td>
-        <td data-label="Variant">Default</td>
-        <td data-label="Font weight">Regular</td>
-        <td data-label="Text color"><code>gray-95</code></td>
-        <td data-label="Fill color">N/A</td>
-        <td data-label="Stroke/Emphasis color">N/A</td>
+        <td>2</td>
+        <td>Default</td>
+        <td>Regular</td>
+        <td><code>gray-95</code></td>
+        <td>N/A</td>
+        <td>N/A</td>
       </tr>
       <tr>
-        <td data-label="#">3</td>
-        <td data-label="Variant">Large</td>
-        <td data-label="Font weight">Medium</td>
-        <td data-label="Text color"><code>gray-95</code></td>
-        <td data-label="Fill color"><code>red-10</code></td>
-        <td data-label="Stroke/Emphasis color">
+        <td>3</td>
+        <td>Large</td>
+        <td>Medium</td>
+        <td><code>gray-95</code></td>
+        <td><code>red-10</code></td>
+        <td>
           <ul class="list-flat">
             <li>Stroke: <code>red-70</code></li>
             <li>Emphasis: <code>red-70</code></li>
@@ -177,12 +178,12 @@ Depending on the theme and chosen variant, each severity level can have differen
         </td>
       </tr>
       <tr>
-        <td data-label="#">4</td>
-        <td data-label="Variant">Extra large</td>
-        <td data-label="Font weight">Medium</td>
-        <td data-label="Text color"><code>gray-95</code></td>
-        <td data-label="Fill color"><code>red-10</code></td>
-        <td data-label="Stroke/Emphasis color">
+        <td>4</td>
+        <td>Extra large</td>
+        <td>Medium</td>
+        <td><code>gray-95</code></td>
+        <td><code>red-10</code></td>
+        <td>
           <ul class="list-flat">
             <li>Stroke: <code>red-70</code></li>
             <li>Emphasis: <code>red-70</code></li>
@@ -195,10 +196,10 @@ Depending on the theme and chosen variant, each severity level can have differen
 
 
 <uxdot-example color-palette="darkest" width-adjustment="715px">
-  <img src="../style-severity-level-dark.svg"
-        alt="Multiple dark theme health index components at different sizes. Annotations 1 through 4 are pointing to various styling details as well as letter grades that have been enlarged.."
-        width="715"
-        height="227">
+  <img alt="Multiple dark theme health index components at different sizes. Annotations 1 through 4 are pointing to various styling details as well as letter grades that have been enlarged.."
+       src="../style-severity-level-dark.svg"
+       width="715"
+       height="227">
 </uxdot-example>
 
 <rh-table>
@@ -206,38 +207,38 @@ Depending on the theme and chosen variant, each severity level can have differen
     <caption>Annotations of the health index component's dark theme examples in the figure above</caption>
     <thead>
       <tr>
-        <th scope="col" data-label="#">#</th>
-        <th scope="col" data-label="Variant">Variant</th>
-        <th scope="col" data-label="Font weight">Font weight</th>
-        <th scope="col" data-label="Text color">Text color</th>
-        <th scope="col" data-label="Fill color">Fill color</th>
-        <th scope="col" data-label="Stroke/Emphasis color">Stroke/Emphasis color</th>
+        <th scope="col">#</th>
+        <th scope="col">Variant</th>
+        <th scope="col">Font weight</th>
+        <th scope="col">Text color</th>
+        <th scope="col">Fill color</th>
+        <th scope="col">Stroke/Emphasis color</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td data-label="#">1</td>
-        <td data-label="Variant">Mini</td>
-        <td data-label="Font weight">Regular</td>
-        <td data-label="Text color"><code>white</code></td>
-        <td data-label="Fill color"><code>gray-95</code></td>
-        <td data-label="Stroke/Emphasis color">Stroke: <code>green-60</code></td>
+        <td>1</td>
+        <td>Mini</td>
+        <td>Regular</td>
+        <td><code>white</code></td>
+        <td><code>gray-95</code></td>
+        <td>Stroke: <code>green-60</code></td>
       </tr>
       <tr>
-        <td data-label="#">2</td>
-        <td data-label="Variant">Default</td>
-        <td data-label="Font weight">Regular</td>
-        <td data-label="Text color"><code>white</code></td>
-        <td data-label="Fill color">N/A</td>
-        <td data-label="Stroke/Emphasis color">N/A</td>
+        <td>2</td>
+        <td>Default</td>
+        <td>Regular</td>
+        <td><code>white</code></td>
+        <td>N/A</td>
+        <td>N/A</td>
       </tr>
       <tr>
-        <td data-label="#">3</td>
-        <td data-label="Variant">Large</td>
-        <td data-label="Font weight">Medium</td>
-        <td data-label="Text color"><code>white</code></td>
-        <td data-label="Fill color"><code>gray-95</code></td>
-        <td data-label="Stroke/Emphasis color">
+        <td>3</td>
+        <td>Large</td>
+        <td>Medium</td>
+        <td><code>white</code></td>
+        <td><code>gray-95</code></td>
+        <td>
           <ul class="list-flat">
             <li>Stroke: <code>red-40</code></li>
             <li>Emphasis: <code>red-60</code></li>
@@ -245,12 +246,12 @@ Depending on the theme and chosen variant, each severity level can have differen
         </td>
       </tr>
       <tr>
-        <td data-label="#">4</td>
-        <td data-label="Variant">Extra large</td>
-        <td data-label="Font weight">Medium</td>
-        <td data-label="Text color"><code>white</code></td>
-        <td data-label="Fill color"><code>gray-95</code></td>
-        <td data-label="Stroke/Emphasis color">
+        <td>4</td>
+        <td>Extra large</td>
+        <td>Medium</td>
+        <td><code>white</code></td>
+        <td><code>gray-95</code></td>
+        <td>
           <ul class="list-flat">
             <li>Stroke: <code>red-40</code></li>
             <li>Emphasis: <code>red-60</code></li>

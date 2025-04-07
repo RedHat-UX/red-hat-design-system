@@ -16,23 +16,12 @@
   --_nav-max-height: var(--_max-height, max-content);
   --_nav-min-height: var(--_min-height, 80px);
   --_current-active-child-border-color: var(--rh-color-brand-red);
-  --_border-color: transparent;
+  --_border-color: light-dark(transparent, var(--rh-color-border-subtle));
 
   z-index: var(--rh-navigation-secondary-z-index, 102);
 }
 
-.on.dark {
-  --_current-active-child-border-color: var(--rh-color-brand-red);
-  --_border-color: var(--rh-color-border-subtle);
-  --_button-font-color: var(--rh-color-text-primary);
-  --_chevron-color: var(--rh-color-text-primary);
-}
-
-nav {
-  z-index: var(--rh-navigation-secondary-z-index, 102);
-}
-
-nav.rtl {
+:host(:dir(rtl)) {
   --_chevron-transform-collapsed:
     rotate(calc(-1 * var(--_chevron-up)))
     translate(calc(1 * var(--_chevron-correction-y)), var(--_chevron-correction-y));
@@ -41,12 +30,18 @@ nav.rtl {
     translate(calc(1 * var(--_chevron-correction-x)), var(--_chevron-correction-x));
 }
 
+nav {
+  z-index: var(--rh-navigation-secondary-z-index, 102);
+}
+
 #container {
   display: grid;
   position: absolute;
   width: 100%;
   z-index: var(--rh-navigation-secondary-z-index, 102);
-  background-color: var(--rh-color-surface);
+  background-color:
+    light-dark(var(--rh-color-surface-lighter, #f2f2f2),
+      var(--rh-color-surface-dark, #383838));
   gap: 0 var(--rh-space-lg, 16px);
   grid-template-rows:
     minmax(var(--_nav-min-height), var(--_nav-max-height))
@@ -109,7 +104,7 @@ button {
   border-block-start: var(--rh-border-width-lg, 3px) solid transparent;
   margin-inline-end: var(--rh-space-lg, 16px);
   color: var(--_button-font-color);
-  background-color: var(--rh-color-surface-lighter, #f2f2f2);
+  background-color: var(--rh-color-surface);
   gap: var(--rh-space-md, 8px);
 }
 

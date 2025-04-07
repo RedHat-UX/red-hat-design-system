@@ -6,14 +6,12 @@ import { property } from 'lit/decorators/property.js';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { styleMap } from 'lit/directives/style-map.js';
-import { ifDefined } from 'lit/directives/if-defined.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import { FloatingDOMController } from '@patternfly/pfe-core/controllers/floating-dom-controller.js';
 
-import { DirController } from '../../lib/DirController.js';
 import { HeadingLevelContextProvider } from '../../lib/context/headings/provider.js';
 import { I18nController } from '../../lib/I18nController.js';
 
@@ -59,6 +57,8 @@ import '@rhds/elements/rh-icon/rh-icon.js';
  * @csspart transcript - transcript panel
  */
 @customElement('rh-audio-player')
+@colorPalettes
+@themable
 export class RhAudioPlayer extends LitElement {
   static readonly styles = [buttonStyles, styles, rangeStyles];
 
@@ -114,10 +114,7 @@ export class RhAudioPlayer extends LitElement {
   @property({ attribute: false }) microcopy = {};
 
   /** Element's color palette */
-  @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
-
-  @colorContextConsumer() private on?: ColorTheme;
 
   @queryAssignedElements({ slot: 'series' })
   private _mediaseries?: HTMLElement[];
@@ -158,8 +155,6 @@ export class RhAudioPlayer extends LitElement {
   #mediaElement?: HTMLAudioElement;
 
   #lastMediaElement?: HTMLAudioElement;
-
-  #dir = new DirController(this);
 
   #width = this.offsetWidth;
 
@@ -340,8 +335,7 @@ export class RhAudioPlayer extends LitElement {
   }
 
   render() {
-    const { expanded, mediatitle, on = 'light', layout, poster } = this;
-    const { dir } = this.#dir;
+    const { expanded, mediatitle, layout, poster } = this;
     const { open, styles = {} } = this.#menufloat;
     const showMenu = this.#hasMenu;
     const mutelabel = !this.muted ? this.#translation.get('mute') : this.#translation.get('unmute');
@@ -366,14 +360,10 @@ export class RhAudioPlayer extends LitElement {
     const accentColor = !!this.#styles?.getPropertyValue('--rh-audio-player-background-color');
 
     return html`
-      <rh-surface id="container"
-          color-palette="${ifDefined(this.colorPalette)}"
+      <div id="container"
           class="${classMap({
-              [on]: true,
-              [dir]: true,
               [layout]: true,
               expanded,
-              'on': true,
               'mediatitle': mediatitle !== undefined,
               'poster': poster !== undefined,
               'show-menu': showMenu,
@@ -600,7 +590,7 @@ export class RhAudioPlayer extends LitElement {
                 @transcriptdownload=${this.#onTranscriptDownload}>
           </slot>
         </div>
-      </rh-surface>
+      </div>
     `;
   }
 
@@ -672,6 +662,7 @@ export class RhAudioPlayer extends LitElement {
 
   /**
    * sets initial values based media player metadata
+   * @param slotchangeevent
    */
   #initMediaElement(slotchangeevent?: Event) {
     if (slotchangeevent) {
@@ -781,6 +772,7 @@ export class RhAudioPlayer extends LitElement {
   /**
    * handles changes to value of playback rate number input
    * by updating component playbackRate property
+   * @param event
    */
   #onPlaybackRateSelect(event: Event) {
     if (event instanceof RhAudioPlayerRateSelectEvent && this.#mediaElement) {
@@ -791,6 +783,7 @@ export class RhAudioPlayer extends LitElement {
 
   /**
    * handles play button click by toggling play / pause
+   * @param event
    */
   async #onPlayClick(event: Event) {
     const target = event?.target as HTMLElement;
@@ -843,6 +836,7 @@ export class RhAudioPlayer extends LitElement {
 
   /**
    * handles time input changes by seeking to input value
+   * @param event
    */
   #onTimeSlider(event: Event & { target: HTMLInputElement }) {
     if (this.#mediaEnd) {
@@ -862,6 +856,7 @@ export class RhAudioPlayer extends LitElement {
 
   /**
    * handles toggling the "More options" menu button
+   * @param event
    */
   #onMenuToggle(event: Event) {
     event.preventDefault();
@@ -910,6 +905,7 @@ export class RhAudioPlayer extends LitElement {
 
   /**
    * handles volume input changes by setting media volume to input value
+   * @param event
    */
   #onVolumeSlider(event: Event & { target: HTMLInputElement }) {
     const level = parseFloat(event.target.value || '-1');
@@ -920,6 +916,7 @@ export class RhAudioPlayer extends LitElement {
 
   /**
    * opens particular panel open or closes panels if none given
+   * @param panel
    */
   #selectOpenPanel(
     panel?: RhAudioPlayerAbout | RhAudioPlayerSubscribe | RhTranscript
@@ -960,6 +957,7 @@ export class RhAudioPlayer extends LitElement {
 
   /**
    * hides menu with Escape key
+   * @param event
    */
   async #onMenuKeydown(event: KeyboardEvent) {
     if (event.key === 'Escape') {
@@ -970,6 +968,7 @@ export class RhAudioPlayer extends LitElement {
 
   /**
    * hides menu when left without focus
+   * @param event
    */
   #onMenuFocusout(event: FocusEvent) {
     const { relatedTarget } = event;
@@ -1080,6 +1079,7 @@ export class RhAudioPlayer extends LitElement {
 
   /**
    * Seeks media to a given point in seconds
+   * @param seconds
    */
   seek(seconds: number) {
     this.#mediaElement?.setAttribute('seekable', 'seekable');
@@ -1096,6 +1096,7 @@ export class RhAudioPlayer extends LitElement {
 
   /**
    * Seeks media a given number of secons from current elapsed time
+   * @param seconds
    */
   seekFromCurrentTime(seconds = 0) {
     const currentTime = this.#mediaElement?.currentTime || 0;

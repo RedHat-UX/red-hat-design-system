@@ -6,9 +6,10 @@
   base,
   layout;
 
+@import url('/node_modules/@rhds/tokens/css/global.css') layer(tokens);
+@import url('/node_modules/@rhds/tokens/css/default-theme.css') layer(tokens);
 @import url('../reset.css') layer(reset);
 @import url('../fonts.css') layer(fonts);
-@import url('/node_modules/@rhds/tokens/css/global.css') layer(tokens);
 @import url('../typography.css') layer(typography);
 
 @layer base {
@@ -31,7 +32,7 @@
     display: contents;
   }
 
-  #main {
+  #rhds-dev-server-main {
     display: block;
     position: relative;
     max-height: initial;
@@ -58,8 +59,4 @@
 
 #source-control {
   margin-inline-start: unset;
-}
-
-html[unresolved] {
-  opacity: 1;
 }

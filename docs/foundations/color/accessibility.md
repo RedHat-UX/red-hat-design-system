@@ -19,8 +19,8 @@ subnav:
 </script>
 
 <style data-helmet>
-  .pass { color: var(--rh-color-green-60); }
-  .fail { color: var(--rh-color-red-orange-60); }
+  .pass { color: var(--rh-color-status-success); }
+  .fail { color: var(--rh-color-status-danger); }
   figcaption { 
     margin-block-start: var(--rh-space-lg);
     color: var(--rh-color-text-secondary-on-light);
@@ -39,7 +39,7 @@ When considering methods of communication or feedback, do not rely solely upon c
 Consider how these elements might look to a color blind user:
 
 <figure>
-  <uxdot-example width-adjustment="1012px">
+  <uxdot-example color-palette="lightest" width-adjustment="1012px">
     <img alt="Dialog with a gray leave button, a form field with a gray bottom border, and progress steps in gray without labels" src="/assets/color/color-a11y-using-color-alone.svg">
   </uxdot-example>
   <figcaption>
@@ -108,8 +108,7 @@ distinct sections (like navigation menus) or links with additional visual cues (
 underlines at your discretion.
 
 <uxdot-example width-adjustment="797px">
-  <img alt="Contrast ratio of a blue link in a paragraph with black text"
-       src="/assets/color/color-a11y-color-contrast-links.svg">
+  {% include './color-a11y-color-contrast-links.svg' %}
 </uxdot-example>
 
 ### Graphical objects and UI elements

@@ -4,10 +4,9 @@ import type { FileOptions, ProjectManifest } from 'playground-elements/shared/wo
 
 import { tokens } from '@rhds/tokens/meta.js';
 import { join } from 'node:path';
-import { fileURLToPath } from 'node:url';
 import { readFile } from 'node:fs/promises';
-import { copyCell, dedent, getTokenHref } from '#11ty-plugins/tokensHelpers.js';
-import { Generator } from '@jspm/generator';
+import { capitalize, copyCell, dedent, getTokenHref } from '#11ty-plugins/tokensHelpers.js';
+import { getPfeConfig } from '@patternfly/pfe-tools/config.js';
 import { AssetCache } from '@11ty/eleventy-fetch';
 import { Renderer } from '#eleventy.config';
 import type { ImportMap } from '#11ty-plugins/importMap.js';
@@ -15,11 +14,7 @@ import type { ImportMap } from '#11ty-plugins/importMap.js';
 type FileEntry = [string, FileOptions & { inline: string }];
 
 const html = String.raw; // for editor highlighting
-const { version: packageVersion } =
-  JSON.parse(await readFile(
-    fileURLToPath(import.meta.resolve('@rhds/elements')).replace('elements.js', 'package.json'),
-    'utf8',
-  ));
+const pfeconfig = getPfeConfig();
 
 function stringifyParams(method: ClassMethod) {
   return method.parameters?.map?.(p =>
@@ -52,23 +47,17 @@ export default class ElementsPage extends Renderer<Context> {
       layout: 'layouts/pages/has-toc.njk',
       permalink: ({ doc }: Context) => doc.permalink,
       eleventyComputed: {
-        title: ({ doc }: Context) => doc.pageTitle,
+        title: ({ doc }: Context) => `${doc.pageTitle} | ${pfeconfig.aliases[doc.tagName] ?? capitalize(doc.tagName.replace('rh-', '').replaceAll('-', ' '))}`,
         tagName: ({ doc }: Context) => doc.tagName,
       },
     };
   }
 
   async render(ctx: Context) {
-    const { doc } = ctx;
-    const {
-      fileExists,
-      filePath,
-      isCodePage,
-      isDemoPage,
-      isOverviewPage,
-      tagName,
-      planned,
-    } = doc;
+    const { fileExists, filePath, pageSlug, planned, tagName } = ctx.doc;
+    const isCodePage = pageSlug === 'code';
+    const isDemoPage = pageSlug === 'demos';
+    const isOverviewPage = pageSlug === 'overview';
     const content = fileExists ? await this.renderFile(filePath, ctx) : '';
     const stylesheets = [
       '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css',
@@ -113,8 +102,8 @@ export default class ElementsPage extends Renderer<Context> {
       </script>`}
 
       ${isOverviewPage ? await this.#renderOverviewPage(content, ctx)
-      : isCodePage ? await this.#renderCodePage(ctx)
-      : isDemoPage ? await this.#renderDemos(ctx)
+      : isCodePage ? await this.#renderCodePage(content, ctx)
+      : isDemoPage ? await this.#renderDemos(content, ctx)
       : content}
 
       ${await this.renderFile('./docs/_includes/partials/component/feedback.11ty.ts', ctx)}
@@ -127,26 +116,6 @@ export default class ElementsPage extends Renderer<Context> {
     <span slot="action-label-wrap">Wrap lines</span>
     <span slot="action-label-wrap" hidden data-code-block-state="active">Overflow lines</span>
   `;
-
-  async #generateImportMap(tagName: string) {
-    const { assetCache } = ElementsPage;
-    if (!assetCache.isCacheValid('1d')) {
-      const generator = new Generator({
-        cache: false,
-        // prevent node from resolving @rhds/elements to cwd
-        // see https://discord.com/channels/570400367884501026/724211491087056916/1290733101923700737
-        baseUrl: 'about:blank',
-        defaultProvider: 'jspm.io',
-      });
-      await generator.install('@rhds/elements');
-      await assetCache.save(generator.getMap(), 'json');
-    }
-    const map = structuredClone(await assetCache.getCachedValue());
-    map.imports![`@rhds/elements/${tagName}/${tagName}.js`] =
-      map.imports!['@rhds/elements'].replace('elements.js', `${tagName}/${tagName}.js`);
-    delete map.imports!['@rhds/elements'];
-    return JSON.stringify(map, null, 2);
-  }
 
   async #innerMD(content = '') {
     return (await this.renderTemplate(content.trim(), 'md')).trim();
@@ -166,16 +135,29 @@ export default class ElementsPage extends Renderer<Context> {
     }
   }
 
+  async #getOverviewInlineSvg(ctx: Context) {
+    const svgPath = join(
+      process.cwd(),
+      'elements',
+      ctx.tagName,
+      'docs',
+      ctx.doc.overviewImageHref!,
+    );
+    return readFile(svgPath, 'utf8');
+  }
+
   async #renderOverviewPage(content: string, ctx: Context) {
     const description = ctx.doc.docsPage.description ?? ctx.doc.description ?? '';
     return html`${!ctx.doc.planned ? '' : html`
       <h2 id="coming-soon">Coming soon!</h2>
-      <p>This element is currently in progress and not yet available for
-      use.</p>`}
+      <p>This element is currently in progress and not yet available for use.</p>`}
       <h2 id="overview">Overview</h2>
       ${await this.renderTemplate(description, 'md')}
-      ${!ctx.doc.overviewImageHref ? '' : html`
-      <uxdot-example><img src="${ctx.doc.overviewImageHref}" alt="" aria-labelledby="overview-image-description"></uxdot-example>`}
+      ${!ctx.doc.overviewImageHref ? ''
+       : ctx.doc.overviewImageHref.endsWith('svg') ? html`
+      <uxdot-example>${await this.#getOverviewInlineSvg(ctx)}</uxdot-example>
+      ` : html`
+      <uxdot-example color-palette="lightest"><img src="${ctx.doc.overviewImageHref}" alt="" aria-labelledby="overview-image-description"></uxdot-example>`}
       <h2 id="status">Status</h2>
       <uxdot-repo-status-list element="${ctx.tagName}"></uxdot-repo-status-list>
       <h2 id="sample-element">Sample element</h2>
@@ -186,18 +168,31 @@ export default class ElementsPage extends Renderer<Context> {
     `;
   }
 
-  async #renderCodePage(ctx: Context) {
+  async #renderCodePage(content: string, ctx: Context) {
     const { doc } = ctx;
     const { tagName } = doc.docsPage;
     return [
-      await this.#renderInstallation.call(this, ctx),
+      content,
+      html`
+      <section class="band">
+        <h2 id="installation">Importing</h2>
+        <p>Add ${doc.docsPage.tagName} to your page with this import statement:</p>
+        <rh-code-block actions="copy" highlighting="prerendered">${this.highlight('html', dedent(html`
+          <script type="module">
+            import '@rhds/elements/${doc.docsPage.tagName}/${doc.docsPage.tagName}.js';
+          </script>`))}
+          ${this.#actionsLabels}
+        </rh-code-block>
+        <p>To learn more about installing RHDS elements on your site using an import map read our <a href="/get-started/developers/installation/">getting started docs</a>.        
+      </section>
+      `,
       await this.#renderLightdom(ctx),
       html`<h2 id="usage">Usage</h2>`,
       await this.#getMainDemoContent(tagName),
       doc.fileExists && await this.renderFile(doc.filePath, ctx),
       await this.#renderCodeDocs.call(this,
                                       doc.docsPage.tagName,
-                                      { ...ctx, level: (ctx.level ?? 2) + 1 }),
+                                      { ...ctx, level: (ctx.level ?? 1) + 1 }),
       ...await Promise.all(doc.siblingElements.map(tagName =>
         this.#renderCodeDocs.call(this, tagName, ctx))),
     ].filter(Boolean).join('');
@@ -254,90 +249,6 @@ export default class ElementsPage extends Renderer<Context> {
     return content;
   }
 
-  async #renderInstallation({ doc, cdnVersion = 'v1-alpha' }: Context) {
-    const jspmMap = await this.#generateImportMap(doc.docsPage.tagName)
-        .catch(() => {
-          // try again
-          ElementsPage.assetCache.cache.destroy();
-          return this.#generateImportMap(doc.docsPage.tagName);
-        })
-        .catch(error => {
-          console.warn(error); // eslint-disable-line no-console
-          return `Could not generate import map using JSPM: ${error.message}`;
-        });
-
-    return html`
-      <script data-helmet type="module">
-        import "@uxdot/elements/uxdot-installation-tabs.js";
-      </script>
-      <style data-helmet>${''/* NOTE: adapted from theming/developers.css - better to wrap the localhost behaviour? */}
-      uxdot-installation-tabs {
-        border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
-        border-radius: var(--rh-border-radius-default);
-        max-width: 56rem; /* warning: magic number */
-        overflow: hidden;
-        & rh-tab-panel {
-          padding: 0;
-          border-radius: 0;
-        }
-        & rh-code-block {
-          --rh-border-radius-default: 0;
-          --rh-border-width-sm: 0px;
-          border-width: 0;
-        }
-      }
-      .attributes rh-table td.type pre {
-        background: transparent;
-        margin: 0;
-        padding: 0;
-        display: inline;
-      }
-      </style>
-      <section class="band">
-        <h2 id="installation">Installation</h2>
-        <p>We recommend import maps when building pages with RHDS. Learn more about how to install on our <a href="/get-started/developers/installation/">getting started docs</a>.</p>
-        <uxdot-installation-tabs>
-          <rh-tab slot="tab">Red Hat CDN</rh-tab>
-          <rh-tab-panel>
-            <rh-code-block actions="copy" highlighting="prerendered">${this.highlight('html', dedent(html`
-              <script type="importmap">
-              {
-                "imports": {
-                  "@rhds/elements/": "https://www.redhatstatic.com/dx/${cdnVersion}/@rhds/elements@${packageVersion}/elements/",
-                }
-              }
-              </script>`))}
-              ${this.#actionsLabels}
-            </rh-code-block>
-          </rh-tab-panel>
-          <rh-tab slot="tab">NPM</rh-tab>
-          <rh-tab-panel>
-            <rh-code-block actions="copy" highlighting="prerendered">${this.highlight('shell', `npm install @rhds/elements`)}${this.#actionsLabels}
-            </rh-code-block>
-          </rh-tab-panel>
-          <rh-tab slot="tab">JSPM</rh-tab>
-          <rh-tab-panel>
-            <rh-code-block actions="copy" highlighting="prerendered">${this.highlight('html', dedent(html`
-              <script type="importmap">
-              ${jspmMap}
-              </script>`))}
-              ${this.#actionsLabels}
-            </rh-code-block>
-          </rh-tab-panel>
-        </uxdot-installation-tabs>
-
-        <p>Add it to your page with this import statement</p>
-
-        <rh-code-block actions="copy" highlighting="prerendered">${this.highlight('html', dedent(html`
-          <script type="module">
-            import '@rhds/elements/${doc.docsPage.tagName}/${doc.docsPage.tagName}.js';
-          </script>`))}
-          ${this.#actionsLabels}
-        </rh-code-block>
-      </section>
-    `;
-  }
-
   async #renderCodeDocs(tagName: string, ctx: Context) {
     const { docsPage } = ctx.doc;
     const { manifest } = docsPage;
@@ -348,7 +259,7 @@ export default class ElementsPage extends Renderer<Context> {
     return html`
       <h${h} id="${tagName}-apis">${tagName}</h${h}>
 
-      <p>${manifest.getDescription(tagName)}</p>
+      ${await this.renderTemplate(manifest.getDescription(tagName) ?? '', 'md')}
 
       <rh-accordion box>
         ${await this.#renderSlots(tagName, ctx)}
@@ -782,11 +693,12 @@ export default class ElementsPage extends Renderer<Context> {
     `;
   }
 
-  async #renderDemos(ctx: Context) {
+  async #renderDemos(content: string, ctx: Context) {
     const tagName = ctx.tagName as `rh-${string}`;
     const entries = Object.entries(ctx.playgrounds[tagName]?.files ?? {}) as FileEntry[];
     return [
       await this.#renderDemoHead(),
+      content,
       ctx.doc.fileExists && await this.renderFile(ctx.doc.filePath, ctx),
       ...await this.#renderPlaygrounds(ctx, entries),
     ].filter(Boolean).join('');
