@@ -338,7 +338,7 @@
     &.hamburger {
       block-size: 100%;
 
-      &:hover {
+      &:is(:hover, :focus-visible, :hover:focus-visible, :active) {
         border-block-end-color: transparent;
       }
 
@@ -359,6 +359,11 @@
       @container (min-width: 1200px) {
         & ::slotted(a) {
           padding: 0 var(--rh-space-lg, 16px);
+        }
+
+        &:is(:active, :focus-within, :has(details[open])) {
+          border-image: unset;
+          border-block-end-color: transparent;
         }
       }
     }
