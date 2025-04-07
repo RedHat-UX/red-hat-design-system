@@ -112,6 +112,51 @@ Released April 7, 2025
 
 <rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v3.0.0">View all version 3.0 release notes</rh-cta>
 
+### Patches from version 2.1.2
+
+<rh-table>
+
+| Change        | Type        | Notes        |
+| ------------- | ----------- | ------------ |
+| `<rh-tooltip>`: accessibility improvements | {{p()}} | Make tooltip content available to assistive technology. |
+| `<rh-tile>`: layout improvements | {{p()}} | Fixed layout of compact link tiles with icons. |
+| `<rh-avatar>`: layout improvements | {{p()}} | Corrected small viewport margin for `plain` variant avatars |
+| `<rh-button>`: accessibility improvements | {{p()}} | Improved accessibility by allowing focus when disabled. |
+| `<rh-cta>`: accessibility improvements | {{p()}} | Improved accessibility by correcting active and focus styles. |
+| `<rh-cta>`: fixed icon bug in Safari | {{p()}} | Workaround for Safari which sometimes double-renders icons. |
+| `<rh-icon>`: fixed icon bug in Safari | {{p()}} | Workaround for Safari which sometimes double-renders icons. |
+| `<rh-code-block>`: improve copy and word wrap features | {{p()}} | Enables copy and word wrap action for prerendered content. |
+| `<rh-accordion>`: fix hover colors | {{p()}} | Restore missing hover colors. |
+| `<rh-accordion>`: fixed header font | {{p()}} | Corrected accordion header text font weight. |
+| `<rh-footer>`: fixed loading failsafe for more graceful degredation | {{p()}} | Shows content after 5 seconds if JavaScript fails. |
+| `@rhds/tokens`: Use non-localized font stacks | {{p()}} | See [`@rhds/tokens` v2.1.1 release notes](https://github.com/RedHat-UX/red-hat-design-tokens/releases/tag/v2.1.1). |
+| `@rhds/tokens`: bump version to 2.1.1 | {{p()}} | See [`@rhds/tokens` v2.1.1 release notes](https://github.com/RedHat-UX/red-hat-design-tokens/releases/tag/v2.1.1). |
+| Removed all caps in heading | {{p()}} | No longer force headings to be in all caps on various elements, like `<rh-tile>`. |
+
+</rh-table>
+
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v2.1.2">View all version 2.1.2 release notes</rh-cta>
+
+### Patches from version 2.1.1
+
+<rh-table>
+
+| Change        | Type        | Notes        |
+| ------------- | ----------- | ------------ |
+| Color Context: SSR support | {{p()}} | Prevent errors in certain Server-side Rendered (SSR) scenarios. |
+| `<rh-alert>`: layout improvements | {{p()}} | Corrected typography and layouts. |
+| `<rh-code-block>`: code highlighting improvements | {{p()}} | Ensure that syntax colours and styles are applied when the element upgrades. |
+| `<rh-tabs>`: SSR fix | {{p()}} | Corrects active tab styles in SSR scenarios |
+| `<rh-navigation-secondary>`: dark color scheme fix | {{p()}} | Corrected style regression in dark color palettes. |
+| `<rh-surface>`: fixed themed text color | {{p()}} | Corrected themed text color. |
+| `<rh-alert>`: corrected heading colors | {{p()}} | Change heading color for all states of alert to make them all the same. |
+| `<rh-table>`: SSR support | {{p()}} | Improved SSR support. |
+| `<rh-cta>`: SSR fix | {{p()}} | Fix some errors when hydrating in SSR scenarios. |
+
+</rh-table>
+
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v2.1.1">View all version 2.1.1 release notes</rh-cta>
+
 </section>
 
 <section aria-labelledby="version-2.1.0">
