@@ -40,7 +40,7 @@ export class RhJumpLinksList extends LitElement {
     const { active, orientation = 'vertical' } = this;
     return html`
       <div id="container" class="${classMap({ active, [orientation]: true })}">
-        <slot name="parent"></slot>
+        <slot name="parent" ?hidden="${!active}"></slot>
         <div id="list"
              ?hidden="${this.orientation === 'horizontal'}"
              role="list">
