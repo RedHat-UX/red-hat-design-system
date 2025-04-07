@@ -60,7 +60,6 @@ order: 20
   }
 </style>
 
-
 ## Introduction
 
 Welcome to the **Red Hat Design System** (RHDS) for digital experiences. If you need to develop something using our design system, you have come to the right place.
