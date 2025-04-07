@@ -1,11 +1,36 @@
-<rh-jump-links accessible-label="jump links">
-  <rh-jump-link href="#overview">Overview</rh-jump-link>
-  <rh-jump-link href="#status">Status</rh-jump-link>
-  <rh-jump-link href="#sample-element">Sample Element</rh-jump-link>
-  <rh-jump-link href="#when-to-use">When to use</rh-jump-link>
-  <rh-jump-link href="#status-checklist">Status checklist</rh-jump-link>
-</rh-jump-links>
+<div id="jump-links-demo-container">
+  <aside>
+    <h2 id="sections">Sections</h2>
+    <rh-jump-links aria-labelledby="sections">
+      <rh-jump-link href="#section-1">Section 1</rh-jump-link>
+      <rh-jump-link href="#section-2">Section 2</rh-jump-link>
+      <rh-jump-link href="#section-3">Section 3</rh-jump-link>
+      <rh-jump-link href="#section-4">Section 4</rh-jump-link>
+      <rh-jump-link href="#section-5">Section 5</rh-jump-link>
+    </rh-jump-links>
+  </aside>
+  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Impedit itaque veniam animi iure corporis quibusdam error, necessitatibus inventore fugiat, minus natus eaque provident eius facilis.
+    Dolorem qui tenetur quaerat facere!</p>
+</div>
 
 <script type="module">
   import '@rhds/elements/rh-jump-links/rh-jump-links.js';
 </script>
+
+<style>
+  #jump-links-demo-container {
+    display: grid;
+    grid-template-columns: max-content auto;
+    gap: var(--rh-space-lg);
+
+    aside {
+      h2 {
+        font-weight: var(--rh-font-weight-heading-medium);
+        font-family: var(--rh-font-family-body-text);
+        font-size: var(--rh-font-size-body-text-md);
+        line-height: var(--rh-line-height-body-text, 1.5);
+        margin-block-end: var(--rh-space-lg);
+      }
+    }
+  }
+</style>
