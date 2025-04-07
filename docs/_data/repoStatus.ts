@@ -291,7 +291,7 @@ export default [
     libraries: {
       figma: 'ready',
       rhds: 'ready',
-      shared: 'planned',
+      shared: 'inProgress',
       docs: 'ready',
     },
   },
