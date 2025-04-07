@@ -136,9 +136,6 @@ export default class ElementsPage extends Renderer<Context> {
   }
 
   async #renderOverviewPage(content: string, ctx: Context) {
-    if (ctx.tagName === 'rh-jump-links') {
-      console.log(content);
-    }
     const description = ctx.doc.docsPage.description ?? ctx.doc.description ?? '';
     return html`${!ctx.doc.planned ? '' : html`
       <h2 id="coming-soon">Coming soon!</h2>
