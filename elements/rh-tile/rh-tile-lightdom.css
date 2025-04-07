@@ -1,3 +1,7 @@
+:where(rh-tile) {
+  position: relative;
+}
+
 rh-tile a {
   color: var(--_link-color) !important;
   text-decoration: var(--rh-tile-link-text-decoration, none) !important;
