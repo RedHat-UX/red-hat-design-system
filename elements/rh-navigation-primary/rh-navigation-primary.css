@@ -340,8 +340,6 @@
           place-items: initial;
           padding: var(--rh-space-lg, 16px);
           box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
-          border-end-end-radius: calc(var(--rh-border-radius-default, 3px) * 2);
-          border-end-start-radius: calc(var(--rh-border-radius-default, 3px) * 2);
           max-block-size: calc(100dvh - var(--_navbar-height));
           overflow-y: auto;
 
