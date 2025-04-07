@@ -292,7 +292,7 @@
   },
   "dependencies": {
     "@lit/context": "^1.1.4",
-    "@patternfly/pfe-core": "^4.0.5",
+    "@patternfly/pfe-core": "^5.0.0",
     "@rhds/icons": "^1.2.0",
     "@rhds/tokens": "^3.0.0",
     "lit": "^3.2.1",
