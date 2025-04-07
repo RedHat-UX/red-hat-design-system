@@ -5,6 +5,9 @@ import { provide } from '@lit/context';
 
 import { ScrollSpyController } from '@patternfly/pfe-core/controllers/scroll-spy-controller.js';
 import { OverflowController } from '@patternfly/pfe-core/controllers/overflow-controller.js';
+import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
+
+import { observes } from '@patternfly/pfe-core/decorators.js';
 
 import { themable } from '@rhds/elements/lib/themable.js';
 
@@ -14,7 +17,6 @@ import { rhJumpLinksOrientationContext } from './context.js';
 import style from './rh-jump-links.css';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
-import { observes } from '@patternfly/pfe-core/decorators.js';
 
 /**
  * Jump links act as persistent navigation that consists of a vertical list of
@@ -37,7 +39,7 @@ export class RhJumpLinks extends LitElement {
   /** Accessible label for nav */
   @property({ attribute: 'accessible-label' }) accessibleLabel?: string;
 
-  role = 'navigation';
+  #internals = InternalsController.of(this, { role: 'navigation' });
 
   #overflow = new OverflowController(this);
 
@@ -63,6 +65,13 @@ export class RhJumpLinks extends LitElement {
     const active: RhJumpLink | null = this.querySelector('rh-jump-link[active]');
     if (active) {
       this.#setActiveItem(active);
+    }
+  }
+
+  @observes('accessibleLabel')
+  protected labelChanged() {
+    if (this.accessibleLabel) {
+      this.#internals.ariaLabel = this.accessibleLabel;
     }
   }
 

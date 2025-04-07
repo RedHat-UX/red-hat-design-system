@@ -39,12 +39,16 @@ export class RhJumpLink extends LitElement {
 
   #internals = InternalsController.of(this, { role: 'listitem' });
 
-  role = 'listitem';
+  override connectedCallback(): void {
+    super.connectedCallback();
+    this.role = 'listitem';
+  }
 
   render(): TemplateResult<1> {
     const { active, orientation = 'vertical' } = this;
     return html`
       <a class="${classMap({ active, [orientation]: true })}"
+         aria-current="${ifDefined(this.active ? 'location' : undefined)}"
          href="${ifDefined(this.href)}"
          @click="${this.#onClick}">
         <slot></slot>
@@ -61,7 +65,6 @@ export class RhJumpLink extends LitElement {
     this.dispatchEvent(new Event('select', { bubbles: true }));
   }
 }
-
 
 declare global {
   interface HTMLElementTagNameMap {
