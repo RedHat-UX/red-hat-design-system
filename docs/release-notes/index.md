@@ -52,6 +52,67 @@ or anything else, please submit a [GitHub issue][issues].
   <a slot="headline" href="https://github.com/RedHat-UX/red-hat-design-system/releases">Changelog</a>
 </rh-tile>
 
+<section aria-labelledby="version-3.0.0">
+
+## Version 3.0.0
+Released April 7, 2025
+
+<rh-alert state="info">
+  <h3 slot="header">Upgrading?</h3>
+  <p>If you're upgrading to version 3.0, <a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v3.0.0">read our v3.0 changelog</a> for upgrade instructions.</p>
+</rh-alert>
+
+### Highlights
+
+<rh-table>
+
+| Change        | Type        | Notes        |
+| ------------- | ----------- | ------------ |
+| 🌓 Color schemes: added built-in support for user color scheme preferences (aka "dark mode") | {{j()}} | `Color-palette` and [theming](https://ux.redhat.com/theming/) integrate into device color schemes, or can be overridden on a per-page or per-element basis. |
+| `<rh-dialog>`: Dialog's `overlay` CSS shadow part has been removed | {{j()}} | With the migration to HTML's native dialog element, `<rh-dialog>` now uses its `::backdrop` pseudo-element. For customization, please refer to our [theming documentation](https://ux.redhat.com/theming/customizing/) |
+| `<rh-accordion>`: Accordion panel always uses its parent's color scheme | {{j()}} | Users can no longer override an accordion panel's `color-palette` |
+| `<rh-tabs>`: removed border color token | {{j()}} | Removed `--rh-tabs-border-color` and replaced with `--rh-color-border-subtle` token. |
+| `@rhds/tokens`: bumps the version to 3.0 | {{j()}} | See the [design tokens' release notes](https://github.com/RedHat-UX/red-hat-design-tokens/releases/tag/v3.0.0) for changes. |
+| ✨ Added `<rh-navigation-primary>` | {{i()}} | The Primary navigation element ensures a consistent user experience across our systems of website |
+| ✨ Added `<rh-jump-links>` | {{i()}} | Jump links is a navigation list of links enhanced with Red Hat branded design and a scroll spy mechanism. |
+| ✨ Added `<rh-chip>` | {{i()}} | Chip creates a component that can be used in place of a checkbox. |
+| ✨ Added `<rh-disclosure>` | {{i()}} | A disclosure is a widget that enables content to be either collapsed (hidden) or expanded (visible). |
+| ✨ Added `<rh-announcement>` | {{i()}} | `<rh-announcement>` is a short banner that conveys an important message, such as promoting an event or advertising an organizational or product announcement. |
+| `<rh-footer>`: social link element can now take an `href` attribute | {{i()}} | While a slotted link will still work, the `<rh-footer-social-link>` elements can now have an `href` attribute instead. |
+| `<rh-accordion>`: fixed `expanded` and `expanded-index` attributes | {{p()}} | Accordion's `expanded` and `expanded-index` attributes now work as expected. |
+| `<rh-button>`: corrected play button's icon colors | {{p()}} | Adjusted the icon colors of the `play` button variant. |
+| `<rh-blockquote>`: fixed center alignment | {{p()}} | Fixed `align="center"` alignent and font size. |
+| `<rh-card>`: changed the `header` slot margin | {{p()}} | Changed Card's `header` slot's top margin from `--rh-space-lg` to `--rh-space-xl`. |
+| `<rh-card>`: layout improvements | {{p()}} | Corrected margins on small screens |
+| `<rh-dialog>`: added dark color scheme support | {{p()}} | The Dialog element now supports dark mode. |
+| `<rh-tile>`: corrected border colors | {{p()}} | Corrected border colors on Tile. |
+| `<rh-tile>`: layout improvements | {{p()}} | Improved layout when footer slot is empty. |
+| `<rh-pagination>`: dark color scheme improvements | {{p()}} | Improved dark mode for the numeric paginator control. |
+| `<rh-pagination>`: layout improvements | {{p()}} | Improved layouts for non-left-to-right languages. |
+| `<rh-pagination>`: removed background from `open` variant links | {{p()}} | The `open` pagination variant no longer has a background color behind its links |
+| `<rh-auto-player>`: layout improvements | {{p()}} | Fixed right-to-left layout. |
+| `<rh-health-index>`: fixed `z-index` stacking | {{p()}} | Prevents graphical elements from escaping stacking context. |
+| `<rh-health-index>`: corrected colors | {{p()}} | Corrected `<rh-health-index>` colors. |
+| `<rh-naivgation-secondary>`: removed underlines from links | {{p()}} | Removed underlines from links from Secondary Navigation. |
+| `<rh-naivgation-secondary>`: layout improvements | {{p()}} | Improved visual rendering when scrollbars are turned on by the user. |
+| `<rh-back-to-top>`: removed console errors and warnings | {{p()}} | Removed user-facing errors and warning from missing attributes/values from the console.  |
+| `<rh-dialog>`: aligned private, undocumented CSS variable names | {{p()}} | Changed several undocumented CSS variable names to align with privacy conventions, like `--offset` to `--_offset`, etc. |
+| `<rh-subnav>`: fixed overflow scrolling | {{p()}} | Restored horizontal overflow scrolling on `<rh-subnav>`. |
+| `<rh-subnav>`: fixed focus styles | {{p()}} | Correct the focus state styles on `<rh-subnav>`. |
+| `<rh-subnav>`: removed background color | {{p()}} | Removed Subnav's background color. |
+| `<rh-site-status>`: correct icon colors | {{p()}} | Fixed icons colors in Site Status. |
+| `<rh-table>`: removed background color | {{p()}} | Use an `<rh-surface>` element or other themable container element to set a background color. |
+| `<rh-tabs>`: removed background from tab panels | {{p()}} | Removed tab panel backgrounds and correct colors. |
+| Removed instances of `--rh-color-surface-dark-alt` across several elements | {{p()}} | Instead of `--rh-color-surface-dark-alt`, use `--rh-color-surface-dark` and surface colors will be automatically darkened where necessary. |
+| Reduced JavaScript payload across several elements | {{p()}} | Improved performance of several elements, like `<rh-accordion>`, `<rh-pagination>`, `<rh-cta>`, etc. |
+| `Color-palette` attributes no longer depend on JavaScript | {{p()}} | Elements with `color-palette` attributes no longer depend on JavaScript to set the background color of children. See [theming docs](https://ux.redhat.com/theming) for more information. |
+
+</rh-table>
+
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v3.0.0">View all version 3.0 release notes</rh-cta>
+
+</section>
+
 <section aria-labelledby="version-2.1.0">
 
 ## Version 2.1.0
@@ -97,7 +158,7 @@ Released August 27, 2024
 
 <rh-alert state="info">
   <h3 slot="header">Upgrading?</h3>
-  <p>If you're upgrading to version 2.0, <a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v2.0.0">read our changelog</a> for upgrade instructions.</p>
+  <p>If you're upgrading to version 2.0, <a href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v2.0.0">read our v2.0 changelog</a> for upgrade instructions.</p>
 </rh-alert>
 
 ### Highlights
