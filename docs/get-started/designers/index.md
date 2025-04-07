@@ -217,7 +217,7 @@ dragging and dropping over and over again. Use the **Instance** menu to swap one
 element for another from any enabled library. Changing a property will not
 replace an element, but instance swapping will.
 
-<uxdot-example>
+<uxdot-example color-palette="lightest">
   <img alt="Diagram of a primary CTA being changed to a secondary CTA via the instance swap panel"
        src="figma-instance-swap.png">
 </uxdot-example>

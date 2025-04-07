@@ -124,7 +124,7 @@ positioned under the primary navigation or heading again.
 
 ### With primary navigation
 
-<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+<uxdot-example width-adjustment="1000px" color-palette="lightest">
   <img src="../subnav-scrolling-primary-nav.png"
         alt="Image of a subnavigation and how it behaves when scrolling under the primary navigation"
         width="1000"
@@ -134,7 +134,7 @@ positioned under the primary navigation or heading again.
 
 ### With heading
 
-<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+<uxdot-example width-adjustment="1000px" color-palette="lightest">
   <img src="../subnav-scrolling-heading.png"
         alt="Image of a subnavigation and how it behaves when scrolling under a heading"
         width="1000"

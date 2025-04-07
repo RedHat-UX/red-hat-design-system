@@ -28,7 +28,7 @@ A skip link is designed to be easily seen once a user navigates to it.
 A skip link appears the same in both light and dark color schemes.
 
 <div class="grid sm-two-columns">
-  <uxdot-example width-adjustment="220px">
+  <uxdot-example width-adjustment="220px" color-palette="lightest">
     <img alt="Image of a skip link in a light scheme section"
          src="../overview.svg"
          width="220"
