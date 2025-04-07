@@ -17,9 +17,13 @@ import '@rhds/elements/rh-icon/rh-icon.js';
 import { observes } from '@patternfly/pfe-core/decorators.js';
 
 /**
- * **Jump links** allow users to navigate to sections within a page.
+ * Jump links act as persistent navigation that consists of a vertical list of
+ * anchor links. Selecting a link moves a user to content that corresponds with
+ * the link selected. A link is displayed as active when the content it links to
+ * is visible in the browser window.
+.
  * @fires toggle - when the `expanded` disclosure widget is toggled
- * @slot - Place rh-jump-link elements here
+ * @slot - Place `<rh-jump-link>` or `<rh-jump-links-list>` elements here
  */
 @customElement('rh-jump-links')
 @themable
@@ -31,7 +35,7 @@ export class RhJumpLinks extends LitElement {
   @property({ reflect: true }) orientation: 'horizontal' | 'vertical' = 'vertical';
 
   /** Accessible label for nav */
-  @property() label?: string;
+  @property({ attribute: 'accessible-label' }) accessibleLabel?: string;
 
   role = 'navigation';
 
