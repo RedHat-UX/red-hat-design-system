@@ -15,7 +15,7 @@ labels, the vertical orientation should be used instead.
   become crowded and a user might feel overwhelmed by the number of steps.</p>
 </rh-alert>
 
-<uxdot-example width-adjustment="360px">
+<uxdot-example width-adjustment="360px" color-palette="lightest">
   <img src="../progress-steps-mobile-usage.svg"
         alt="Progress steps component mobile usage"
         width="360"
@@ -36,14 +36,14 @@ before finishing and submitting.
   able to unless the task is complete.</p>
 </rh-alert>
 
-<uxdot-example width-adjustment="687px">
+<uxdot-example width-adjustment="687px" color-palette="lightest">
   <img src="../progress-steps-progression-1.svg"
         alt="Progress steps component progression, part 1"
         width="691"
         height="349">
 </uxdot-example>
 
-<uxdot-example width-adjustment="687px">
+<uxdot-example width-adjustment="687px" color-palette="lightest">
   <img src="../progress-steps-progression-2.svg"
         alt="Progress steps component progression, part 2"
         width="687"
@@ -59,7 +59,7 @@ the next step without inputting the required data, a [Danger severity
 alert](https://ux.redhat.com/elements/alert/){target="_blank"} is displayed to 
 inform them of what they should do.
 
-<uxdot-example width-adjustment="687px">
+<uxdot-example width-adjustment="687px" color-palette="lightest">
   <img src="../progress-steps-validation.svg"
         alt="Progress steps component validation"
         width="687"
@@ -79,7 +79,7 @@ user **is not able** to go back to review or change anything.
   previous steps</strong> without starting the task all over again.</p>
 </rh-alert>
 
-<uxdot-example width-adjustment="702px">
+<uxdot-example width-adjustment="702px" color-palette="lightest">
   <img src="../progress-steps-completion.svg"
         alt="Progress steps component completion"
         width="702"
@@ -120,7 +120,7 @@ to choose a trial. Displaying relevant content and being clear about where a
 user is in the process will make them feel in control and encourage them to 
 finish the task.
 
-<uxdot-example width-adjustment="728px">
+<uxdot-example width-adjustment="728px" color-palette="lightest">
   <img src="../progress-steps-behavior.svg"
         alt="Progress steps component behavior"
         width="728"
@@ -134,7 +134,7 @@ The interaction states within both orientations are the same.
 
 ### Link
 
-<uxdot-example width-adjustment="738px">
+<uxdot-example width-adjustment="738px" color-palette="lightest">
   <img src="../progress-steps-interaction-states-link.svg"
         alt="Progress steps component interaction state, link"
         width="738"
@@ -144,7 +144,7 @@ The interaction states within both orientations are the same.
 
 ### Hover
 
-<uxdot-example width-adjustment="738px">
+<uxdot-example width-adjustment="738px" color-palette="lightest">
   <img src="../progress-steps-interaction-states-hover.svg"
         alt="Progress steps component interaction state, hover"
         width="738"
@@ -154,7 +154,7 @@ The interaction states within both orientations are the same.
 
 ### Focus
 
-<uxdot-example width-adjustment="738px">
+<uxdot-example width-adjustment="738px" color-palette="lightest">
   <img src="../progress-steps-interaction-states-focus.svg"
         alt="Progress steps component interaction state, focus"
         width="738"
@@ -164,7 +164,7 @@ The interaction states within both orientations are the same.
 
 ### Active
 
-<uxdot-example width-adjustment="738px">
+<uxdot-example width-adjustment="738px" color-palette="lightest">
   <img src="../progress-steps-interaction-states-active.svg"
         alt="Progress steps component interaction state, active"
         width="738"
@@ -178,7 +178,7 @@ When the Tab key is pressed repeatedly, the focus highlights each step icon
 and text label in order, from left to right in the horizontal component or 
 from top to bottom in the vertical component.
 
-<uxdot-example width-adjustment="738px">
+<uxdot-example width-adjustment="738px" color-palette="lightest">
   <img src="../progress-steps-tab-order.svg"
         alt="Progress steps component tab order"
         width="738"
@@ -237,7 +237,7 @@ from top to bottom in the vertical component.
 Do not use too many or too few steps, there should be between three and five 
 steps visible.
 
-<uxdot-example width-adjustment="698px" danger>
+<uxdot-example width-adjustment="698px" danger color-palette="lightest">
   <img src="../progress-steps-best-practice-1.svg"
         alt="Progress steps component best practice 1"
         width="698"
@@ -251,7 +251,7 @@ Avoid using the horizontal orientation on mobile if there are too many steps
 present or if text labels are too long, switch to the vertical orientation 
 instead.
 
-<uxdot-example width-adjustment="360px" danger>
+<uxdot-example width-adjustment="360px" danger color-palette="lightest">
   <img src="../progress-steps-best-practice-2.svg"
         alt="Progress steps component best practice 2"
         width="360"
@@ -265,7 +265,7 @@ Do not use the Error step icon for any **previous steps**, a user cannot
 proceed to the next step without resolving any errors first nor can they go 
 back to resolve any errors and then continue.
 
-<uxdot-example width-adjustment="687px" danger>
+<uxdot-example width-adjustment="687px" danger color-palette="lightest">
   <img src="../progress-steps-best-practice-3.svg"
         alt="Progress steps component best practice 3"
         width="687"
@@ -279,7 +279,7 @@ Do not use Progress steps without text labels, color or icons alone cannot be
 used to represent step position or validation if a user is colorblind or uses 
 assistive technologies like a screen reader.
 
-<uxdot-example width-adjustment="687px" danger>
+<uxdot-example width-adjustment="687px" danger color-palette="lightest">
   <img src="../progress-steps-best-practice-4.svg"
         alt="Progress steps component best practice 4"
         width="687"
@@ -292,7 +292,7 @@ assistive technologies like a screen reader.
 Do not use Progress steps as an image carousel without including text labels 
 and other types of content.
 
-<uxdot-example width-adjustment="687px" danger>
+<uxdot-example width-adjustment="687px" danger color-palette="lightest">
   <img src="../progress-steps-best-practice-5.svg"
         alt="Progress steps component best practice 5"
         width="687"
@@ -305,7 +305,7 @@ and other types of content.
 Do not use Progress steps as Tabs. Progress steps are used for guiding a user 
 through a task by displaying sequential steps and instructional content.
 
-<uxdot-example width-adjustment="687px" danger>
+<uxdot-example width-adjustment="687px" danger color-palette="lightest">
   <img src="../progress-steps-best-practice-6.svg"
         alt="Progress steps component best practice 6"
         width="687"

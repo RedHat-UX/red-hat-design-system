@@ -6,7 +6,7 @@ optional text label.
 ### Anatomy
 
 <figure>
-  <uxdot-example width-adjustment="299px">
+  <uxdot-example width-adjustment="299px" color-palette="lightest">
     <img alt="Anatomy of a spinner with annotations; number 1 is pointing to the track, number 2 is pointing to the indicator, and number 3 is pointing to the optional text label"
          src="../spinner-anatomy.png"
          width="299"
@@ -82,7 +82,7 @@ A spinner is centered horizontally and vertically within a container and the
 viewport by default. This demonstrates that the whole container is loading 
 rather than one specific area.
 
-<uxdot-example width-adjustment="872px">
+<uxdot-example width-adjustment="872px" color-palette="lightest">
   <img alt="Diagram of how a spinner should be horizontally and vertically centered within a container no matter its size or if a text label is included or not"
        src="../spinner-configuration-container.png"
        width="872"

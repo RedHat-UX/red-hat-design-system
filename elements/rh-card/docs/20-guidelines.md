@@ -282,7 +282,7 @@ A narrow promo can be used if the promo content needs to fit in a small area, li
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
-    <uxdot-example width-adjustment="546px" slot="image">
+    <uxdot-example width-adjustment="546px" slot="image" color-palette="lightest">
       <img alt="One featured promo below lorem ipsum text"
            src="../card-best-practices-promo-do.svg"
            width="546"
@@ -292,7 +292,7 @@ A narrow promo can be used if the promo content needs to fit in a small area, li
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="dont">
-    <uxdot-example width-adjustment="546px" slot="image">
+    <uxdot-example width-adjustment="546px" slot="image" color-palette="lightest">
       <img alt="Three narrow promos in a group"
            src="../card-best-practices-promo-dont.svg"
            width="546"

@@ -35,13 +35,13 @@ The video’s width will dynamically adjust with its parent container. The video
 
 ### Large Viewport Sizes
 
-<uxdot-example>
+<uxdot-example color-palette="lightest">
   {% include './video-grid-lg-viewports.svg' %}
 </uxdot-example>
 
 ### Small Viewport sizes
 
-<uxdot-example>
+<uxdot-example color-palette="lightest">
   {% include './video-grid-sm-viewports.svg' %}
 </uxdot-example>
 
