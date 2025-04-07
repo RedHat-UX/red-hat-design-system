@@ -86,8 +86,6 @@ export class RhNavigationPrimary extends LitElement {
   @query('#hamburger')
   private _hamburger!: HTMLDetailsElement;
 
-  role = 'navigation';
-
   /**
    * Sets the mobile toggle (hamburger) text, used for translations, defaults to 'Menu'
    */
@@ -147,6 +145,8 @@ export class RhNavigationPrimary extends LitElement {
 
   async connectedCallback() {
     super.connectedCallback();
+    this.role = 'navigation';
+
     if (!isServer) {
       this.#ro?.observe(this);
       this.addEventListener('toggle', this.#onDropdownToggle);

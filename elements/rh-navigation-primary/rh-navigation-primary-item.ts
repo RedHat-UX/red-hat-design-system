@@ -61,13 +61,16 @@ export class RhNavigationPrimaryItem extends LitElement {
   @state()
   private compact?: boolean;
 
-  /**
-   * SSR Adds the role, but then removes when ElementInternals is hydrated
-   * However, axe-dev tools then complains as it doesn't handle Internals correctly
-   * So.... lets readd it for brevity, then when axe decides to fix their stuff,
-   * we can remove at a later date.
-   */
-  role = 'listitem';
+  override connectedCallback(): void {
+    super.connectedCallback();
+    /**
+     * SSR Adds the role, but then removes when ElementInternals is hydrated
+     * However, axe-dev tools then complains as it doesn't handle Internals correctly
+     * So.... lets readd it for brevity, then when axe decides to fix their stuff,
+     * we can remove at a later date.
+     */
+    this.role = 'listitem';
+  }
 
   protected firstUpdated(): void {
     // ensure we update initially on client hydration

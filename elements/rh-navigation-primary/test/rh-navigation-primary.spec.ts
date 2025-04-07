@@ -1,6 +1,5 @@
-import { expect, fixture, nextFrame, oneEvent } from '@open-wc/testing';
+import { expect, fixture, nextFrame } from '@open-wc/testing';
 import { RhNavigationPrimary } from '@rhds/elements/rh-navigation-primary/rh-navigation-primary.js';
-import { RhNavigationPrimaryOverlay } from '../rh-navigation-primary-overlay.js';
 import { setViewport } from '@web/test-runner-commands';
 import { a11ySnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
 
@@ -41,10 +40,6 @@ describe('<rh-navigation-primary>', function() {
     // `#internals = InternalsController.of(this, { role: 'listitem' });`
     it.skip('is accessible', async function() {
       await expect(element.shadowRoot).to.be.accessible();
-    });
-
-    it('should remove role="navigation" after upgrade', function() {
-      expect(element.hasAttribute('role')).to.be.false;
     });
 
     // a11ySnapshot() does not provide the internals data
