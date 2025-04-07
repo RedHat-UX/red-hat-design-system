@@ -84,3 +84,7 @@ a {
     }
   }
 }
+
+:host([slot]) a.vertical {
+  border-inline-start: none;
+}
