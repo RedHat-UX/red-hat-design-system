@@ -4,11 +4,9 @@ import type { FileOptions, ProjectManifest } from 'playground-elements/shared/wo
 
 import { tokens } from '@rhds/tokens/meta.js';
 import { join } from 'node:path';
-import { fileURLToPath } from 'node:url';
 import { readFile } from 'node:fs/promises';
 import { capitalize, copyCell, dedent, getTokenHref } from '#11ty-plugins/tokensHelpers.js';
 import { getPfeConfig } from '@patternfly/pfe-tools/config.js';
-import { Generator } from '@jspm/generator';
 import { AssetCache } from '@11ty/eleventy-fetch';
 import { Renderer } from '#eleventy.config';
 import type { ImportMap } from '#11ty-plugins/importMap.js';
@@ -17,11 +15,6 @@ type FileEntry = [string, FileOptions & { inline: string }];
 
 const html = String.raw; // for editor highlighting
 const pfeconfig = getPfeConfig();
-const { version: packageVersion } =
-  JSON.parse(await readFile(
-    fileURLToPath(import.meta.resolve('@rhds/elements')).replace('elements.js', 'package.json'),
-    'utf8',
-  ));
 
 function stringifyParams(method: ClassMethod) {
   return method.parameters?.map?.(p =>
@@ -109,8 +102,8 @@ export default class ElementsPage extends Renderer<Context> {
       </script>`}
 
       ${isOverviewPage ? await this.#renderOverviewPage(content, ctx)
-      : isCodePage ? await this.#renderCodePage(ctx)
-      : isDemoPage ? await this.#renderDemos(ctx)
+      : isCodePage ? await this.#renderCodePage(content, ctx)
+      : isDemoPage ? await this.#renderDemos(content, ctx)
       : content}
 
       ${await this.renderFile('./docs/_includes/partials/component/feedback.11ty.ts', ctx)}
@@ -123,29 +116,6 @@ export default class ElementsPage extends Renderer<Context> {
     <span slot="action-label-wrap">Wrap lines</span>
     <span slot="action-label-wrap" hidden data-code-block-state="active">Overflow lines</span>
   `;
-
-  async #generateImportMap(tagName: string) {
-    const { assetCache } = ElementsPage;
-    if (!assetCache.isCacheValid('1d')) {
-      const generator = new Generator({
-        cache: false,
-        // prevent node from resolving @rhds/elements to cwd
-        // see https://discord.com/channels/570400367884501026/724211491087056916/1290733101923700737
-        baseUrl: 'about:blank',
-        defaultProvider: 'jspm.io',
-      });
-      await generator.install('@rhds/elements');
-      const map = generator.getMap();
-      if (map.imports) {
-        await assetCache.save(map, 'json');
-      }
-    }
-    const map = structuredClone(await assetCache.getCachedValue());
-    map.imports![`@rhds/elements/${tagName}/${tagName}.js`] =
-      map.imports!['@rhds/elements'].replace('elements.js', `${tagName}/${tagName}.js`);
-    delete map.imports!['@rhds/elements'];
-    return JSON.stringify(map, null, 2);
-  }
 
   async #innerMD(content = '') {
     return (await this.renderTemplate(content.trim(), 'md')).trim();
@@ -166,6 +136,9 @@ export default class ElementsPage extends Renderer<Context> {
   }
 
   async #renderOverviewPage(content: string, ctx: Context) {
+    if (ctx.tagName === 'rh-jump-links') {
+      console.log(content);
+    }
     const description = ctx.doc.docsPage.description ?? ctx.doc.description ?? '';
     return html`${!ctx.doc.planned ? '' : html`
       <h2 id="coming-soon">Coming soon!</h2>
@@ -178,18 +151,31 @@ export default class ElementsPage extends Renderer<Context> {
       <h2 id="status">Status</h2>
       <uxdot-repo-status-list element="${ctx.tagName}"></uxdot-repo-status-list>
       <h2 id="sample-element">Sample element</h2>
-      ${ctx.doc.mainDemoContent}
+      ${ctx.doc.mainDemoContent.trim()}
       ${content}
       <h2 id="status-checklist">Status checklist</h2>
       <uxdot-repo-status-checklist element="${ctx.tagName}"></uxdot-repo-status-checklist>
     `;
   }
 
-  async #renderCodePage(ctx: Context) {
+  async #renderCodePage(content: string, ctx: Context) {
     const { doc } = ctx;
     const { tagName } = doc.docsPage;
     return [
-      await this.#renderInstallation.call(this, ctx),
+      content,
+      html`
+      <section class="band">
+        <h2 id="installation">Importing</h2>
+        <p>Add ${doc.docsPage.tagName} to your page with this import statement:</p>
+        <rh-code-block actions="copy" highlighting="prerendered">${this.highlight('html', dedent(html`
+          <script type="module">
+            import '@rhds/elements/${doc.docsPage.tagName}/${doc.docsPage.tagName}.js';
+          </script>`))}
+          ${this.#actionsLabels}
+        </rh-code-block>
+        <p>To learn more about installing RHDS elements on your site using an import map read our <a href="/get-started/developers/installation/">getting started docs</a>.        
+      </section>
+      `,
       await this.#renderLightdom(ctx),
       html`<h2 id="usage">Usage</h2>`,
       await this.#getMainDemoContent(tagName),
@@ -251,35 +237,6 @@ export default class ElementsPage extends Renderer<Context> {
       `;
     }
     return content;
-  }
-
-  async #renderInstallation({ doc, cdnVersion = 'v2' }: Context) {
-    const jspmMap = await this.#generateImportMap(doc.docsPage.tagName)
-        .catch(() => {
-          // try again
-          ElementsPage.assetCache.cache.destroy();
-          return this.#generateImportMap(doc.docsPage.tagName);
-        })
-        .catch(error => {
-          console.warn(error); // eslint-disable-line no-console
-          return `Could not generate import map using JSPM: ${error.message}`;
-        });
-
-    return html`
-      <section class="band">
-        <h2 id="installation">Importing</h2>
-        
-        <p>Add ${doc.docsPage.tagName} to your page with this import statement:</p>
-        <rh-code-block actions="copy" highlighting="prerendered">${this.highlight('html', dedent(html`
-          <script type="module">
-            import '@rhds/elements/${doc.docsPage.tagName}/${doc.docsPage.tagName}.js';
-          </script>`))}
-          ${this.#actionsLabels}
-        </rh-code-block>
-
-        <p>To learn more about installing RHDS elements on your site using an import map read our <a href="/get-started/developers/installation/">getting started docs</a>.        
-      </section>
-    `;
   }
 
   async #renderCodeDocs(tagName: string, ctx: Context) {
@@ -726,11 +683,12 @@ export default class ElementsPage extends Renderer<Context> {
     `;
   }
 
-  async #renderDemos(ctx: Context) {
+  async #renderDemos(content: string, ctx: Context) {
     const tagName = ctx.tagName as `rh-${string}`;
     const entries = Object.entries(ctx.playgrounds[tagName]?.files ?? {}) as FileEntry[];
     return [
       await this.#renderDemoHead(),
+      content,
       ctx.doc.fileExists && await this.renderFile(ctx.doc.filePath, ctx),
       ...await this.#renderPlaygrounds(ctx, entries),
     ].filter(Boolean).join('');
