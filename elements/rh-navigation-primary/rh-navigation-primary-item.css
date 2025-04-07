@@ -204,8 +204,6 @@
               position: absolute;
               z-index: -1;
               background-color: var(--rh-color-surface);
-              border-end-end-radius: calc(var(--rh-border-radius-default, 3px) * 2);
-              border-end-start-radius: calc(var(--rh-border-radius-default, 3px) * 2);
               box-shadow: 0 2px 4px 0 var(--_box-shadow-color);
               inset-block-start: 100%;
               inset-inline-start: 0;
