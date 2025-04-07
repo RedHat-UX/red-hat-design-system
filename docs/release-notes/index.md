@@ -72,8 +72,9 @@ Released April 7, 2025
 | `<rh-dialog>`: Dialog's `overlay` CSS shadow part has been removed | {{j()}} | With the migration to HTML's native dialog element, `<rh-dialog>` now uses its `::backdrop` pseudo-element. For customization, please refer to our [theming documentation](https://ux.redhat.com/theming/customizing/) |
 | `<rh-accordion>`: Accordion panel always uses its parent's color scheme | {{j()}} | Users can no longer override an accordion panel's `color-palette` |
 | `<rh-tabs>`: removed border color token | {{j()}} | Removed `--rh-tabs-border-color` and replaced with `--rh-color-border-subtle` token. |
-| `@rhds/tokens`: bumps the version to 3.0 | {{j()}} | See the [design tokens' release notes](https://github.com/RedHat-UX/red-hat-design-tokens/releases/tag/v3.0.0) for changes. |
-| ✨ Added `<rh-navigation-primary>` | {{i()}} | The Primary navigation element ensures a consistent user experience across our systems of website |
+| `@rhds/tokens`: bumps version to 3.0 | {{j()}} | See the [design tokens' release notes](https://github.com/RedHat-UX/red-hat-design-tokens/releases/tag/v3.0.0) for changes. |
+| `@patternfly/pfe-core`: enables SSR support | {{j()}} | Enables Server-side Rendering (SSR) support through SSR hints, `connectedCallback()` and context protocol in SSR scenarios. For more information, read our [PatternFly Elements Core v5 release notes](https://github.com/patternfly/patternfly-elements/releases/tag/%40patternfly%2Fpfe-core%405.0.0) |
+| ✨ Added `<rh-navigation-primary>` | {{i()}} | The Primary navigation element ensures a consistent user experience across our website system. |
 | ✨ Added `<rh-jump-links>` | {{i()}} | Jump links is a navigation list of links enhanced with Red Hat branded design and a scroll spy mechanism. |
 | ✨ Added `<rh-chip>` | {{i()}} | Chip creates a component that can be used in place of a checkbox. |
 | ✨ Added `<rh-disclosure>` | {{i()}} | A disclosure is a widget that enables content to be either collapsed (hidden) or expanded (visible). |
@@ -81,7 +82,7 @@ Released April 7, 2025
 | `<rh-footer>`: social link element can now take an `href` attribute | {{i()}} | While a slotted link will still work, the `<rh-footer-social-link>` elements can now have an `href` attribute instead. |
 | `<rh-accordion>`: fixed `expanded` and `expanded-index` attributes | {{p()}} | Accordion's `expanded` and `expanded-index` attributes now work as expected. |
 | `<rh-button>`: corrected play button's icon colors | {{p()}} | Adjusted the icon colors of the `play` button variant. |
-| `<rh-blockquote>`: fixed center alignment | {{p()}} | Fixed `align="center"` alignent and font size. |
+| `<rh-blockquote>`: fixed center alignment | {{p()}} | Fixed `align="center"` alignment and font size. |
 | `<rh-card>`: changed the `header` slot margin | {{p()}} | Changed Card's `header` slot's top margin from `--rh-space-lg` to `--rh-space-xl`. |
 | `<rh-card>`: layout improvements | {{p()}} | Corrected margins on small screens |
 | `<rh-dialog>`: added dark color scheme support | {{p()}} | The Dialog element now supports dark mode. |
