@@ -148,7 +148,7 @@ export default class ElementsPage extends Renderer<Context> {
       <h2 id="status">Status</h2>
       <uxdot-repo-status-list element="${ctx.tagName}"></uxdot-repo-status-list>
       <h2 id="sample-element">Sample element</h2>
-      ${ctx.doc.mainDemoContent.trim()}
+      ${ctx.doc.mainDemoContent}
       ${content}
       <h2 id="status-checklist">Status checklist</h2>
       <uxdot-repo-status-checklist element="${ctx.tagName}"></uxdot-repo-status-checklist>
