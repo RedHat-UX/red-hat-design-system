@@ -213,6 +213,7 @@ export default async function(eleventyConfig: UserConfig) {
       'elements/rh-surface/rh-surface.ts',
       'elements/rh-table/rh-table.ts',
       'elements/rh-tag/rh-tag.ts',
+      'elements/rh-jump-links/rh-jump-links.ts',
       // deferring until https://github.com/patternfly/patternfly-elements/pull/2505 or similar
       // 'elements/rh-card/rh-card.ts',
       // 'elements/rh-tile/rh-tile.ts',
