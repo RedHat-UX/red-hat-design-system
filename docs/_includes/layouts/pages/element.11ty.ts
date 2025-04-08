@@ -10,7 +10,14 @@ import { AssetCache } from '@11ty/eleventy-fetch';
 import { Renderer } from '#eleventy.config';
 import type { ImportMap } from '#11ty-plugins/importMap.js';
 
-import { getAllManifests } from '@patternfly/pfe-tools/custom-elements-manifest/custom-elements-manifest.js';
+import { parse, serialize } from 'parse5';
+import * as Tools from '@parse5/tools';
+
+import {
+  getAllManifests,
+  type DemoRecord,
+} from '@patternfly/pfe-tools/custom-elements-manifest/custom-elements-manifest.js';
+import { parseFragment } from 'parse5';
 
 const html = String.raw; // for editor highlighting
 const pfeconfig = getPfeConfig();
@@ -701,7 +708,20 @@ export default class ElementsPage extends Renderer<Context> {
     const tagName = ctx.tagName as `rh-${string}`;
     const demos = ElementsPage.demoManifestsForTagNames[tagName] ?? [];
     return [
-      await this.#renderDemoHead(),
+      html`
+      <script type="module" data-helmet>
+        import '@uxdot/elements/uxdot-copy-button.js';
+        import '@uxdot/elements/uxdot-header.js';
+        import '@uxdot/elements/uxdot-demo.js';
+        import '@rhds/elements/rh-button/rh-button.js';
+        import '@rhds/elements/rh-card/rh-card.js';
+        import '@rhds/elements/rh-code-block/rh-code-block.js';
+        import '@rhds/elements/rh-cta/rh-cta.js';
+        import '@rhds/elements/rh-footer/rh-footer.js';
+        import '@rhds/elements/rh-subnav/rh-subnav.js';
+        import '@rhds/elements/rh-surface/rh-surface.js';
+        import '@rhds/elements/rh-tabs/rh-tabs.js';
+      </script>`,
       content,
       ctx.doc.fileExists && await this.renderFile(ctx.doc.filePath, ctx),
       ...await Promise.all(demos.map(async demo => {
@@ -722,37 +742,61 @@ export default class ElementsPage extends Renderer<Context> {
               .replace('.html', '')
               .replace('index', tagName)}.html`;
 
-          return html`
-            <h2 id="demo-${labelSlug}">${demo.title}</h2>
-            <uxdot-demo id="${projectId}"
-                        tag="${tagName}"
-                        demo="${demo.slug}"
-                        demo-title="${demo.title}"
-                        demo-source-url="${sourceUrl}"
-                        demo-url="/elements/${this.getTagNameSlug(tagName)}/demo/"
-                        demo-file-path="${demo.filePath}"
-            ></uxdot-demo>
-          `;
+          const demoUrl = `/elements/${this.getTagNameSlug(tagName)}/demo/${demoSlug === tagName ? '' : `${demoSlug}/`}`;
+
+          const codeblocks = await this.#getDemoCodeBlocks(demo);
+
+          if (codeblocks) {
+            return html`
+              <h2 id="demo-${labelSlug}">${demo.title}</h2>
+              <uxdot-demo id="${projectId}"
+                          tag="${tagName}"
+                          demo="${demoSlug}"
+                          demo-title="${demo.title}"
+                          demo-source-url="${sourceUrl}"
+                          demo-url="${demoUrl}"
+                          demo-file-path="${demo.filePath}"
+              >${codeblocks}</uxdot-demo>
+            `;
+          } else {
+            return '';
+          }
         }
       })),
     ].filter(Boolean).join('');
   }
 
-  async #renderDemoHead() {
-    return html`
-      <script type="module" data-helmet>
-        import '@uxdot/elements/uxdot-copy-button.js';
-        import '@uxdot/elements/uxdot-header.js';
-        import '@uxdot/elements/uxdot-demo.js';
-        import '@rhds/elements/rh-button/rh-button.js';
-        import '@rhds/elements/rh-card/rh-card.js';
-        import '@rhds/elements/rh-code-block/rh-code-block.js';
-        import '@rhds/elements/rh-cta/rh-cta.js';
-        import '@rhds/elements/rh-footer/rh-footer.js';
-        import '@rhds/elements/rh-subnav/rh-subnav.js';
-        import '@rhds/elements/rh-surface/rh-surface.js';
-        import '@rhds/elements/rh-tabs/rh-tabs.js';
-      </script>
-    `;
+  async #getDemoCodeBlocks(demo: DemoRecord) {
+    const map = new Map<'html' | 'css' | 'js', string>();
+
+    function updateKey(key: 'html' | 'css' | 'js', node: Tools.ParentNode) {
+      const oldContent = map.get(key) ?? '';
+      const newContent =
+      dedent(node.childNodes.map(x => Tools.isTextNode(x) ? x.value : '').join('\n'));
+      Tools.removeNode(node);
+      map.set(key, oldContent + newContent);
+    }
+
+    if (demo.filePath) {
+      const fragment = parseFragment(await readFile(demo.filePath, 'utf-8'));
+
+      for (const node of Tools.queryAll<Tools.Element>(fragment, Tools.isElementNode)) {
+        if (node.tagName === 'script'
+          && node.attrs.some(x => x.name === 'type' && x.value === 'module')) {
+          updateKey('js', node);
+        } else if (node.tagName === 'style') {
+          updateKey('css', node);
+        }
+      }
+
+      map.set('html', serialize(fragment));
+
+      const blocks = await Promise.all(map.entries().map(([kind, content]) => this.renderTemplate(dedent(`
+        ~~~${kind} rhcodeblock {slot="${kind}"}
+        ${content}
+        ~~~
+      `), 'md')).toArray());
+      return blocks.join('\n');
+    }
   }
-};
+}

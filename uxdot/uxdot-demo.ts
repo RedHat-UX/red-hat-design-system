@@ -5,11 +5,10 @@ import { property } from 'lit/decorators/property.js';
 
 import styles from './uxdot-demo.css';
 
-import { UxdotDemoSSRController } from './uxdot-demo-ssr-controller.js';
-import { SSRFailureRecoverableElement } from './ssr-failure-recoverable.js';
+import { LitElement } from 'lit';
 
 @customElement('uxdot-demo')
-export class UxdotDemo extends SSRFailureRecoverableElement {
+export class UxdotDemo extends LitElement {
   static styles = [styles];
 
   @property() tag!: string;
@@ -24,8 +23,6 @@ export class UxdotDemo extends SSRFailureRecoverableElement {
 
   @property({ attribute: 'demo-file-path' }) demoFilePath!: string;
 
-  ssr = new UxdotDemoSSRController(this);
-
   render() {
     return html`
       <div id="container">
@@ -33,23 +30,28 @@ export class UxdotDemo extends SSRFailureRecoverableElement {
         <rh-card>
           <rh-tabs class="code-tabs">
             <rh-tab slot="tab">HTML</rh-tab>
-            <rh-tab-panel>
-              <rh-code-block highlighting="prerendered">${this.ssr.htmlContent}</rh-code-block
-            </rh-tab-panel>
+            <rh-tab-panel><slot name="html"></slot></rh-tab-panel>
             <rh-tab slot="tab">CSS</rh-tab>
-            <rh-tab-panel>
-              <rh-code-block highlighting="prerendered">${this.ssr.cssContent}</rh-code-block
-            </rh-tab-panel>
+            <rh-tab-panel><slot name="css"></slot></rh-tab-panel>
             <rh-tab slot="tab">JS</rh-tab>
-            <rh-tab-panel>
-              <rh-code-block highlighting="prerendered">${this.ssr.jsContent}</rh-code-block
-            </rh-tab-panel>
+            <rh-tab-panel><slot name="js"></slot></rh-tab-panel>
           </rh-tabs>
-          <rh-button slot="footer" variant="tertiary" data-action="fullscreen" icon="expand">FullScreen</rh-button>
+          <rh-button slot="footer"
+                     variant="tertiary"
+                     icon="expand"
+                     @click="${this.#toggleFullscreen}">FullScreen</rh-button>
           <rh-cta slot="footer" href="${this.demoSourceUrl}">View source on GitHub</rh-cta>
           <rh-cta slot="footer" href="${this.demoUrl}">View In Own Tab</rh-cta>
         </rh-card>
       </div>
     `;
+  }
+
+  #toggleFullscreen() {
+    if (document.fullscreenElement === this) {
+      document.exitFullscreen();
+    } else {
+      this.requestFullscreen();
+    }
   }
 }

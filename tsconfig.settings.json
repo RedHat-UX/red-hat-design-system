@@ -57,6 +57,7 @@
       "ES2015.Generator",
       "ESNext.Collection",
       "ESNext.Array",
+      "ESNext.Iterator",
       "ESNext.AsyncIterable",
       "ESNext.Disposable",
       "ScriptHost"
