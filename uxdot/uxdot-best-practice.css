@@ -29,7 +29,7 @@ span {
 }
 
 #caution span {
-  color: var(--rh-color-yellow-60);
+  color: var(--rh-color-status-warning);
 }
 
 ::slotted(uxdot-example) {
