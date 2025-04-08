@@ -192,14 +192,11 @@ export default class ElementsPage extends Renderer<Context> {
   async #renderCodePage(content: string, ctx: Context) {
     const { doc } = ctx;
     const { tagName } = doc.docsPage;
-    /* eslint-disable lit-a11y/accessible-name */
-    /* eslint-disable lit-a11y/anchor-is-valid */
     return [
       content,
       html`
-      <section class="band">
+      <section class="band" id="installation">
         ${this.#header('Importing')}
-        <a id="installation"></a>
         <p>Add ${doc.docsPage.tagName} to your page with this import statement:</p>
         <rh-code-block actions="copy" highlighting="prerendered">${this.highlight('html', dedent(html`
           <script type="module">
