@@ -10,7 +10,8 @@ import { AssetCache } from '@11ty/eleventy-fetch';
 import { Renderer } from '#eleventy.config';
 import type { ImportMap } from '#11ty-plugins/importMap.js';
 
-import { parse, serialize } from 'parse5';
+import { serialize } from 'parse5';
+
 import * as Tools from '@parse5/tools';
 
 import {
@@ -157,24 +158,33 @@ export default class ElementsPage extends Renderer<Context> {
     return readFile(svgPath, 'utf8');
   }
 
+  #header(text: string, level = 2, id = this.slugify(text)) {
+    return html`
+      <uxdot-copy-permalink class="h${level}">
+        <h${level} id="${id}">
+          <a href="#${id}">${text}</a>
+        </h${level}>
+      </uxdot-copy-permalink>`;
+  }
+
   async #renderOverviewPage(content: string, ctx: Context) {
     const description = ctx.doc.docsPage.description ?? ctx.doc.description ?? '';
     return html`${!ctx.doc.planned ? '' : html`
-      <h2 id="coming-soon">Coming soon!</h2>
+      ${this.#header('Coming soon!')}
       <p>This element is currently in progress and not yet available for use.</p>`}
-      <h2 id="overview">Overview</h2>
+      ${this.#header('Overview')}
       ${await this.renderTemplate(description, 'md')}
       ${!ctx.doc.overviewImageHref ? ''
        : ctx.doc.overviewImageHref.endsWith('svg') ? html`
       <uxdot-example>${await this.#getOverviewInlineSvg(ctx)}</uxdot-example>
       ` : html`
       <uxdot-example color-palette="lightest"><img src="${ctx.doc.overviewImageHref}" alt="" aria-labelledby="overview-image-description"></uxdot-example>`}
-      <h2 id="status">Status</h2>
+      ${this.#header('Status')}
       <uxdot-repo-status-list element="${ctx.tagName}"></uxdot-repo-status-list>
-      <h2 id="sample-element">Sample element</h2>
+      ${this.#header('Sample element')}
       ${ctx.doc.mainDemoContent}
       ${content}
-      <h2 id="status-checklist">Status checklist</h2>
+      ${this.#header('Status checklist')}
       <uxdot-repo-status-checklist element="${ctx.tagName}"></uxdot-repo-status-checklist>
     `;
   }
@@ -185,8 +195,8 @@ export default class ElementsPage extends Renderer<Context> {
     return [
       content,
       html`
-      <section class="band">
-        <h2 id="installation">Importing</h2>
+      <section class="band" id="installation">
+        ${this.#header('Importing')}
         <p>Add ${doc.docsPage.tagName} to your page with this import statement:</p>
         <rh-code-block actions="copy" highlighting="prerendered">${this.highlight('html', dedent(html`
           <script type="module">
@@ -197,8 +207,10 @@ export default class ElementsPage extends Renderer<Context> {
         <p>To learn more about installing RHDS elements on your site using an import map read our <a href="/get-started/developers/installation/">getting started docs</a>.        
       </section>
       `,
+      /* eslint-enable lit-a11y/anchor-is-valid */
+      /* eslint-enable lit-a11y/accessible-name */
       await this.#renderLightdom(ctx),
-      html`<h2 id="usage">Usage</h2>`,
+      this.#header('Usage'),
       await this.#getMainDemoContent(tagName),
       doc.fileExists && await this.renderFile(doc.filePath, ctx),
       await this.#renderCodeDocs.call(this,
@@ -215,7 +227,7 @@ export default class ElementsPage extends Renderer<Context> {
     // TODO: revisit after implementing auto-loaded light-dom css
     if (ctx.doc.hasLightdom) {
       content += html`
-        <h3 id="lightdom-css">Lightdom CSS</h3>
+        ${this.#header('Lightdom CSS', 3)}
 
         <p>This element requires you to load "Lightdom CSS" stylesheets for styling
            deeply slotted elements.</p>
@@ -234,7 +246,7 @@ export default class ElementsPage extends Renderer<Context> {
     }
     if (ctx.doc.hasLightdomShim) {
       content += html`
-        <h3 id="lightdom-css-shim">Lightdom CSS shim</h3>
+        ${this.#header('Lightdom CSS shim', 3)}
 
         <rh-alert state="warning">
           <h4 slot="header">Warning</h4>
@@ -268,7 +280,7 @@ export default class ElementsPage extends Renderer<Context> {
 
     // TODO: dsd
     return html`
-      <h${h} id="${tagName}-apis">${tagName}</h${h}>
+      ${this.#header(tagName, h, `${tagName}-apis`)}
 
       ${await this.renderTemplate(manifest.getDescription(tagName) ?? '', 'md')}
 
@@ -744,7 +756,7 @@ export default class ElementsPage extends Renderer<Context> {
 
           if (codeblocks) {
             return html`
-              <h2 id="demo-${labelSlug}">${demo.title}</h2>
+              ${this.#header(demo.title, 2, `demo-${labelSlug}`)}
               <uxdot-demo id="${projectId}"
                           tag="${tagName}"
                           demo="${demoSlug}"
