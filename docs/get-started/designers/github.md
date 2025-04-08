@@ -72,9 +72,9 @@ requests][pullrequests].
 The [GitHub Wiki][githubwiki] can help you get started, and you can always chat
 with us for additional help.
 
-<uxdot-example variant="full" no-border>
+<uxdot-example color-palette="lightest" variant="full" no-border>
   <img alt="Screenshot of the red-hat-design-system GitHub repo's Code tab"
-       src="/assets/get-started/designers/get-familiar-with-github.png">
+       src="get-familiar-with-github.png">
 </uxdot-example>
 
 ## Roadmap
