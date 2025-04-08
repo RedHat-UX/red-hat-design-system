@@ -61,6 +61,11 @@ You can learn about our current release or future plans by going to the
 [design-system@redhat.com][designsystemredhatcom], and we will discuss the
 priority and timeline.
 
+<uxdot-feedback>
+  <h2>Developers</h2>
+  <p>To get started using our design system as a developer, go to the <a href="get-started/developers">Developers</a> page.</p>
+</uxdot-feedback>
+
 [createanissue]: https://github.com/RedHat-UX/red-hat-design-system/issues/new/choose
 [designsystemredhatcom]: mailto:design-system@redhat.com
 [discussion]: https://github.com/RedHat-UX/red-hat-design-system/discussions
