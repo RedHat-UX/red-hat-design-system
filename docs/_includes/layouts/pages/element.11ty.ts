@@ -734,14 +734,9 @@ export default class ElementsPage extends Renderer<Context> {
           const demoSlug = filepath?.split('.').shift()?.replaceAll('/', '-') ?? '';
           const projectId = `demo-${tagName}-${demoSlug}`;
 
-          const githubSourcePrefix = `https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements`;
+          const githubSourcePrefix = `https://github.com/RedHat-UX/red-hat-design-system/tree/main`;
 
-          const sourceUrl = `${githubSourcePrefix}/${tagName}/demo/${demo.filePath
-              .replace(process.cwd(), '')
-              .replace('demo/', '')
-              .replace('/index.html', '')
-              .replace('.html', '')
-              .replace('index', tagName)}.html`;
+          const sourceUrl = `${githubSourcePrefix}${demo.filePath.replace(process.cwd(), '')}`;
 
           const demoUrl = `/elements/${this.getTagNameSlug(tagName)}/demo/${demoSlug === tagName ? '' : `${demoSlug}/`}`;
 
