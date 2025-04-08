@@ -3,7 +3,7 @@
 }
 
 iframe {
-  border: none;
+  border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
   height: 400px;
   max-height: var(--height);
 }
@@ -22,7 +22,7 @@ rh-card {
   &::part(header),
   &::part(body) {
     margin: 0;
-    border-block-end: var(--rh-border-width-sm) solid var(--rh-color-border-subtle-on-light);
+    border-block-end: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
   }
 
   &::part(footer) {

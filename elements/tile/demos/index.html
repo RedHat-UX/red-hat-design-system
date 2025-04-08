@@ -43,8 +43,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.0/core.js",
     "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.0/core.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
@@ -678,7 +678,25 @@
 
       
       
-              <h2 id="demo-tile">Tile</h2>
+              
+      <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+        <h2 id="demo-tile">
+          <a href="#demo-tile">Tile</a>
+        </h2>
+      </uxdot-copy-permalink>
               <uxdot-demo id="demo-rh-tile-rh-tile" tag="rh-tile" demo="rh-tile" demo-title="Tile" demo-source-url="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/rh-tile/demo/rh-tile.html" demo-url="/elements/tile/demo/" demo-file-path="/home/runner/work/red-hat-design-system/red-hat-design-system/elements/rh-tile/demo/rh-tile.html"><rh-code-block full-height="" dedent="" actions="copy" highlighting="prerendered" slot="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token string">'@rhds/elements/rh-tile/rh-tile.js'</span><span class="token punctuation">;</span></code></pre>
 </rh-code-block>
 <rh-code-block full-height="" dedent="" actions="copy wrap" highlighting="prerendered" slot="css"><pre class="language-css"><code class="language-css"><span class="token selector">rh-tile</span> <span class="token punctuation">{</span>
@@ -698,7 +716,25 @@
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>../rh-tile-lightdom.css<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span></code></pre>
 </rh-code-block></uxdot-demo>
             
-              <h2 id="demo-accented-tiles">Accented Tiles</h2>
+              
+      <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+        <h2 id="demo-accented-tiles">
+          <a href="#demo-accented-tiles">Accented Tiles</a>
+        </h2>
+      </uxdot-copy-permalink>
               <uxdot-demo id="demo-rh-tile-accented-tiles" tag="rh-tile" demo="accented-tiles" demo-title="Accented Tiles" demo-source-url="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/rh-tile/demo/accented-tiles.html" demo-url="/elements/tile/demo/accented-tiles/" demo-file-path="/home/runner/work/red-hat-design-system/red-hat-design-system/elements/rh-tile/demo/accented-tiles.html"><rh-code-block full-height="" dedent="" actions="copy wrap" highlighting="prerendered" slot="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token string">'@rhds/elements/rh-tile/rh-tile.js'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token string">'@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js'</span><span class="token punctuation">;</span></code></pre>
 </rh-code-block>
@@ -765,7 +801,25 @@
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>../rh-tile-lightdom.css<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span></code></pre>
 </rh-code-block></uxdot-demo>
             
-              <h2 id="demo-checkable">Checkable</h2>
+              
+      <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+        <h2 id="demo-checkable">
+          <a href="#demo-checkable">Checkable</a>
+        </h2>
+      </uxdot-copy-permalink>
               <uxdot-demo id="demo-rh-tile-checkable" tag="rh-tile" demo="checkable" demo-title="Checkable" demo-source-url="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/rh-tile/demo/checkable.html" demo-url="/elements/tile/demo/checkable/" demo-file-path="/home/runner/work/red-hat-design-system/red-hat-design-system/elements/rh-tile/demo/checkable.html"><rh-code-block full-height="" dedent="" actions="copy" highlighting="prerendered" slot="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token string">'@rhds/elements/rh-tile/rh-tile.js'</span><span class="token punctuation">;</span></code></pre>
 </rh-code-block>
 <rh-code-block full-height="" dedent="" actions="copy wrap" highlighting="prerendered" slot="css"><pre class="language-css"><code class="language-css"><span class="token selector">rh-tile</span> <span class="token punctuation">{</span>
@@ -797,7 +851,25 @@
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>../rh-tile-lightdom.css<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span></code></pre>
 </rh-code-block></uxdot-demo>
             
-              <h2 id="demo-color-context">Color Context</h2>
+              
+      <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+        <h2 id="demo-color-context">
+          <a href="#demo-color-context">Color Context</a>
+        </h2>
+      </uxdot-copy-permalink>
               <uxdot-demo id="demo-rh-tile-color-context" tag="rh-tile" demo="color-context" demo-title="Color Context" demo-source-url="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/rh-tile/demo/color-context.html" demo-url="/elements/tile/demo/color-context/" demo-file-path="/home/runner/work/red-hat-design-system/red-hat-design-system/elements/rh-tile/demo/color-context.html"><rh-code-block full-height="" dedent="" actions="copy wrap" highlighting="prerendered" slot="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token string">'@rhds/elements/rh-tile/rh-tile-group.js'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token string">'@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js'</span><span class="token punctuation">;</span></code></pre>
 </rh-code-block>
@@ -1073,7 +1145,25 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>../rh-tile-lightdom.css<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span></code></pre>
 </rh-code-block></uxdot-demo>
             
-              <h2 id="demo-compact-link-with-fullwidth-image-and-icon">Compact Link With Fullwidth Image And Icon</h2>
+              
+      <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+        <h2 id="demo-compact-link-with-fullwidth-image-and-icon">
+          <a href="#demo-compact-link-with-fullwidth-image-and-icon">Compact Link With Fullwidth Image And Icon</a>
+        </h2>
+      </uxdot-copy-permalink>
               <uxdot-demo id="demo-rh-tile-compact-link-with-fullwidth-image-and-icon" tag="rh-tile" demo="compact-link-with-fullwidth-image-and-icon" demo-title="Compact Link With Fullwidth Image And Icon" demo-source-url="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/rh-tile/demo/compact-link-with-fullwidth-image-and-icon.html" demo-url="/elements/tile/demo/compact-link-with-fullwidth-image-and-icon/" demo-file-path="/home/runner/work/red-hat-design-system/red-hat-design-system/elements/rh-tile/demo/compact-link-with-fullwidth-image-and-icon.html"><rh-code-block full-height="" dedent="" actions="copy" highlighting="prerendered" slot="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token string">'@rhds/elements/rh-tile/rh-tile.js'</span><span class="token punctuation">;</span></code></pre>
 </rh-code-block>
 <rh-code-block full-height="" dedent="" actions="copy wrap" highlighting="prerendered" slot="css"><pre class="language-css"><code class="language-css"><span class="token selector">rh-tile rh-icon</span> <span class="token punctuation">{</span>
@@ -1096,7 +1186,25 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>../rh-tile-lightdom.css<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span></code></pre>
 </rh-code-block></uxdot-demo>
             
-              <h2 id="demo-compact-link-with-icon">Compact Link With Icon</h2>
+              
+      <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+        <h2 id="demo-compact-link-with-icon">
+          <a href="#demo-compact-link-with-icon">Compact Link With Icon</a>
+        </h2>
+      </uxdot-copy-permalink>
               <uxdot-demo id="demo-rh-tile-compact-link-with-icon" tag="rh-tile" demo="compact-link-with-icon" demo-title="Compact Link With Icon" demo-source-url="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/rh-tile/demo/compact-link-with-icon.html" demo-url="/elements/tile/demo/compact-link-with-icon/" demo-file-path="/home/runner/work/red-hat-design-system/red-hat-design-system/elements/rh-tile/demo/compact-link-with-icon.html"><rh-code-block full-height="" dedent="" actions="copy" highlighting="prerendered" slot="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token string">'@rhds/elements/rh-tile/rh-tile.js'</span><span class="token punctuation">;</span></code></pre>
 </rh-code-block>
 <rh-code-block full-height="" dedent="" actions="copy wrap" highlighting="prerendered" slot="css"><pre class="language-css"><code class="language-css"><span class="token selector">rh-tile rh-icon</span> <span class="token punctuation">{</span>
@@ -1114,7 +1222,25 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>../rh-tile-lightdom.css<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span></code></pre>
 </rh-code-block></uxdot-demo>
             
-              <h2 id="demo-compact-link-with-image-and-icon">Compact Link With Image And Icon</h2>
+              
+      <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+        <h2 id="demo-compact-link-with-image-and-icon">
+          <a href="#demo-compact-link-with-image-and-icon">Compact Link With Image And Icon</a>
+        </h2>
+      </uxdot-copy-permalink>
               <uxdot-demo id="demo-rh-tile-compact-link-with-image-and-icon" tag="rh-tile" demo="compact-link-with-image-and-icon" demo-title="Compact Link With Image And Icon" demo-source-url="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/rh-tile/demo/compact-link-with-image-and-icon.html" demo-url="/elements/tile/demo/compact-link-with-image-and-icon/" demo-file-path="/home/runner/work/red-hat-design-system/red-hat-design-system/elements/rh-tile/demo/compact-link-with-image-and-icon.html"><rh-code-block full-height="" dedent="" actions="copy" highlighting="prerendered" slot="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token string">'@rhds/elements/rh-tile/rh-tile.js'</span><span class="token punctuation">;</span></code></pre>
 </rh-code-block>
 <rh-code-block full-height="" dedent="" actions="copy wrap" highlighting="prerendered" slot="css"><pre class="language-css"><code class="language-css"><span class="token selector">rh-tile rh-icon</span> <span class="token punctuation">{</span>
@@ -1137,7 +1263,25 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>../rh-tile-lightdom.css<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span></code></pre>
 </rh-code-block></uxdot-demo>
             
-              <h2 id="demo-compact-link-with-image">Compact Link With Image</h2>
+              
+      <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+        <h2 id="demo-compact-link-with-image">
+          <a href="#demo-compact-link-with-image">Compact Link With Image</a>
+        </h2>
+      </uxdot-copy-permalink>
               <uxdot-demo id="demo-rh-tile-compact-link-with-image" tag="rh-tile" demo="compact-link-with-image" demo-title="Compact Link With Image" demo-source-url="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/rh-tile/demo/compact-link-with-image.html" demo-url="/elements/tile/demo/compact-link-with-image/" demo-file-path="/home/runner/work/red-hat-design-system/red-hat-design-system/elements/rh-tile/demo/compact-link-with-image.html"><rh-code-block full-height="" dedent="" actions="copy" highlighting="prerendered" slot="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token string">'@rhds/elements/rh-tile/rh-tile.js'</span><span class="token punctuation">;</span></code></pre>
 </rh-code-block>
 <rh-code-block full-height="" dedent="" actions="copy wrap" highlighting="prerendered" slot="css"><pre class="language-css"><code class="language-css"><span class="token selector">rh-tile rh-icon</span> <span class="token punctuation">{</span>
@@ -1155,7 +1299,25 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>../rh-tile-lightdom.css<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span></code></pre>
 </rh-code-block></uxdot-demo>
             
-              <h2 id="demo-compact">Compact</h2>
+              
+      <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+        <h2 id="demo-compact">
+          <a href="#demo-compact">Compact</a>
+        </h2>
+      </uxdot-copy-permalink>
               <uxdot-demo id="demo-rh-tile-compact" tag="rh-tile" demo="compact" demo-title="Compact" demo-source-url="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/rh-tile/demo/compact.html" demo-url="/elements/tile/demo/compact/" demo-file-path="/home/runner/work/red-hat-design-system/red-hat-design-system/elements/rh-tile/demo/compact.html"><rh-code-block full-height="" dedent="" actions="copy" highlighting="prerendered" slot="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token string">'@rhds/elements/rh-tile/rh-tile.js'</span><span class="token punctuation">;</span></code></pre>
 </rh-code-block>
 <rh-code-block full-height="" dedent="" actions="copy wrap" highlighting="prerendered" slot="css"><pre class="language-css"><code class="language-css"><span class="token selector">rh-tile</span> <span class="token punctuation">{</span>
@@ -1224,7 +1386,25 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>../rh-tile-lightdom.css<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span></code></pre>
 </rh-code-block></uxdot-demo>
             
-              <h2 id="demo-custom-props">Custom Props</h2>
+              
+      <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+        <h2 id="demo-custom-props">
+          <a href="#demo-custom-props">Custom Props</a>
+        </h2>
+      </uxdot-copy-permalink>
               <uxdot-demo id="demo-rh-tile-custom-props" tag="rh-tile" demo="custom-props" demo-title="Custom Props" demo-source-url="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/rh-tile/demo/custom-props.html" demo-url="/elements/tile/demo/custom-props/" demo-file-path="/home/runner/work/red-hat-design-system/red-hat-design-system/elements/rh-tile/demo/custom-props.html"><rh-code-block full-height="" dedent="" actions="copy wrap" highlighting="prerendered" slot="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token string">'@rhds/elements/rh-tile/rh-tile.js'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token string">'@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js'</span><span class="token punctuation">;</span></code></pre>
 </rh-code-block>
@@ -1263,7 +1443,25 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>../rh-tile-lightdom.css<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span></code></pre>
 </rh-code-block></uxdot-demo>
             
-              <h2 id="demo-desaturated-heading-slotted-icon">Desaturated Heading Slotted Icon</h2>
+              
+      <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+        <h2 id="demo-desaturated-heading-slotted-icon">
+          <a href="#demo-desaturated-heading-slotted-icon">Desaturated Heading Slotted Icon</a>
+        </h2>
+      </uxdot-copy-permalink>
               <uxdot-demo id="demo-rh-tile-desaturated-heading-slotted-icon" tag="rh-tile" demo="desaturated-heading-slotted-icon" demo-title="Desaturated Heading Slotted Icon" demo-source-url="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/rh-tile/demo/desaturated-heading-slotted-icon.html" demo-url="/elements/tile/demo/desaturated-heading-slotted-icon/" demo-file-path="/home/runner/work/red-hat-design-system/red-hat-design-system/elements/rh-tile/demo/desaturated-heading-slotted-icon.html"><rh-code-block full-height="" dedent="" actions="copy" highlighting="prerendered" slot="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token string">'@rhds/elements/rh-tile/rh-tile.js'</span><span class="token punctuation">;</span></code></pre>
 </rh-code-block>
 <rh-code-block full-height="" dedent="" actions="copy wrap" highlighting="prerendered" slot="css"><pre class="language-css"><code class="language-css"><span class="token selector">rh-tile</span> <span class="token punctuation">{</span>
@@ -1286,7 +1484,25 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>../rh-tile-lightdom.css<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span></code></pre>
 </rh-code-block></uxdot-demo>
             
-              <h2 id="demo-desaturated-heading">Desaturated Heading</h2>
+              
+      <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+        <h2 id="demo-desaturated-heading">
+          <a href="#demo-desaturated-heading">Desaturated Heading</a>
+        </h2>
+      </uxdot-copy-permalink>
               <uxdot-demo id="demo-rh-tile-desaturated-heading" tag="rh-tile" demo="desaturated-heading" demo-title="Desaturated Heading" demo-source-url="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/rh-tile/demo/desaturated-heading.html" demo-url="/elements/tile/demo/desaturated-heading/" demo-file-path="/home/runner/work/red-hat-design-system/red-hat-design-system/elements/rh-tile/demo/desaturated-heading.html"><rh-code-block full-height="" dedent="" actions="copy" highlighting="prerendered" slot="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token string">'@rhds/elements/rh-tile/rh-tile.js'</span><span class="token punctuation">;</span></code></pre>
 </rh-code-block>
 <rh-code-block full-height="" dedent="" actions="copy wrap" highlighting="prerendered" slot="css"><pre class="language-css"><code class="language-css"><span class="token selector">rh-tile</span> <span class="token punctuation">{</span>
@@ -1305,7 +1521,25 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>../rh-tile-lightdom.css<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span></code></pre>
 </rh-code-block></uxdot-demo>
             
-              <h2 id="demo-disabled">Disabled</h2>
+              
+      <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+        <h2 id="demo-disabled">
+          <a href="#demo-disabled">Disabled</a>
+        </h2>
+      </uxdot-copy-permalink>
               <uxdot-demo id="demo-rh-tile-disabled" tag="rh-tile" demo="disabled" demo-title="Disabled" demo-source-url="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/rh-tile/demo/disabled.html" demo-url="/elements/tile/demo/disabled/" demo-file-path="/home/runner/work/red-hat-design-system/red-hat-design-system/elements/rh-tile/demo/disabled.html"><rh-code-block full-height="" dedent="" actions="copy" highlighting="prerendered" slot="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token string">'@rhds/elements/rh-tile/rh-tile.js'</span><span class="token punctuation">;</span></code></pre>
 </rh-code-block>
 <rh-code-block full-height="" dedent="" actions="copy wrap" highlighting="prerendered" slot="css"><pre class="language-css"><code class="language-css"><span class="token selector">rh-tile</span> <span class="token punctuation">{</span>
@@ -1324,7 +1558,25 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>../rh-tile-lightdom.css<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span></code></pre>
 </rh-code-block></uxdot-demo>
             
-              <h2 id="demo-form-control">Form Control</h2>
+              
+      <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+        <h2 id="demo-form-control">
+          <a href="#demo-form-control">Form Control</a>
+        </h2>
+      </uxdot-copy-permalink>
               <uxdot-demo id="demo-rh-tile-form-control" tag="rh-tile" demo="form-control" demo-title="Form Control" demo-source-url="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/rh-tile/demo/form-control.html" demo-url="/elements/tile/demo/form-control/" demo-file-path="/home/runner/work/red-hat-design-system/red-hat-design-system/elements/rh-tile/demo/form-control.html"><rh-code-block full-height="" dedent="" actions="copy wrap" highlighting="prerendered" slot="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token string">'@rhds/elements/rh-button/rh-button.js'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token string">'@rhds/elements/rh-tile/rh-tile-group.js'</span><span class="token punctuation">;</span>
 <span class="token keyword">const</span> form <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'form'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1356,7 +1608,25 @@ form<span class="token punctuation">.</span><span class="token function">addEven
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>../rh-tile-lightdom.css<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span></code></pre>
 </rh-code-block></uxdot-demo>
             
-              <h2 id="demo-full-width-images">Full Width Images</h2>
+              
+      <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+        <h2 id="demo-full-width-images">
+          <a href="#demo-full-width-images">Full Width Images</a>
+        </h2>
+      </uxdot-copy-permalink>
               <uxdot-demo id="demo-rh-tile-full-width-images" tag="rh-tile" demo="full-width-images" demo-title="Full Width Images" demo-source-url="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/rh-tile/demo/full-width-images.html" demo-url="/elements/tile/demo/full-width-images/" demo-file-path="/home/runner/work/red-hat-design-system/red-hat-design-system/elements/rh-tile/demo/full-width-images.html"><rh-code-block full-height="" dedent="" actions="copy wrap" highlighting="prerendered" slot="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token string">'@rhds/elements/rh-tile/rh-tile.js'</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token string">'@rhds/elements/rh-icon/rh-icon.js'</span><span class="token punctuation">;</span></code></pre>
 </rh-code-block>
@@ -1385,7 +1655,25 @@ form<span class="token punctuation">.</span><span class="token function">addEven
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>../rh-tile-lightdom.css<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span></code></pre>
 </rh-code-block></uxdot-demo>
             
-              <h2 id="demo-icon-with-full-width-image">Icon With Full Width Image</h2>
+              
+      <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+        <h2 id="demo-icon-with-full-width-image">
+          <a href="#demo-icon-with-full-width-image">Icon With Full Width Image</a>
+        </h2>
+      </uxdot-copy-permalink>
               <uxdot-demo id="demo-rh-tile-icon-with-full-width-image" tag="rh-tile" demo="icon-with-full-width-image" demo-title="Icon With Full Width Image" demo-source-url="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/rh-tile/demo/icon-with-full-width-image.html" demo-url="/elements/tile/demo/icon-with-full-width-image/" demo-file-path="/home/runner/work/red-hat-design-system/red-hat-design-system/elements/rh-tile/demo/icon-with-full-width-image.html"><rh-code-block full-height="" dedent="" actions="copy" highlighting="prerendered" slot="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token string">'@rhds/elements/rh-tile/rh-tile.js'</span><span class="token punctuation">;</span></code></pre>
 </rh-code-block>
 <rh-code-block full-height="" dedent="" actions="copy wrap" highlighting="prerendered" slot="css"><pre class="language-css"><code class="language-css"><span class="token selector">rh-tile</span> <span class="token punctuation">{</span>
@@ -1437,7 +1725,25 @@ form<span class="token punctuation">.</span><span class="token function">addEven
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>../rh-tile-lightdom.css<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span></code></pre>
 </rh-code-block></uxdot-demo>
             
-              <h2 id="demo-icon-with-image">Icon With Image</h2>
+              
+      <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+        <h2 id="demo-icon-with-image">
+          <a href="#demo-icon-with-image">Icon With Image</a>
+        </h2>
+      </uxdot-copy-permalink>
               <uxdot-demo id="demo-rh-tile-icon-with-image" tag="rh-tile" demo="icon-with-image" demo-title="Icon With Image" demo-source-url="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/rh-tile/demo/icon-with-image.html" demo-url="/elements/tile/demo/icon-with-image/" demo-file-path="/home/runner/work/red-hat-design-system/red-hat-design-system/elements/rh-tile/demo/icon-with-image.html"><rh-code-block full-height="" dedent="" actions="copy" highlighting="prerendered" slot="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token string">'@rhds/elements/rh-tile/rh-tile.js'</span><span class="token punctuation">;</span></code></pre>
 </rh-code-block>
 <rh-code-block full-height="" dedent="" actions="copy wrap" highlighting="prerendered" slot="css"><pre class="language-css"><code class="language-css"><span class="token selector">rh-tile</span> <span class="token punctuation">{</span>
@@ -1477,7 +1783,25 @@ form<span class="token punctuation">.</span><span class="token function">addEven
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>../rh-tile-lightdom.css<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span></code></pre>
 </rh-code-block></uxdot-demo>
             
-              <h2 id="demo-icon">Icon</h2>
+              
+      <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+        <h2 id="demo-icon">
+          <a href="#demo-icon">Icon</a>
+        </h2>
+      </uxdot-copy-permalink>
               <uxdot-demo id="demo-rh-tile-icon" tag="rh-tile" demo="icon" demo-title="Icon" demo-source-url="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/rh-tile/demo/icon.html" demo-url="/elements/tile/demo/icon/" demo-file-path="/home/runner/work/red-hat-design-system/red-hat-design-system/elements/rh-tile/demo/icon.html"><rh-code-block full-height="" dedent="" actions="copy" highlighting="prerendered" slot="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token string">'@rhds/elements/rh-tile/rh-tile.js'</span><span class="token punctuation">;</span></code></pre>
 </rh-code-block>
 <rh-code-block full-height="" dedent="" actions="copy wrap" highlighting="prerendered" slot="css"><pre class="language-css"><code class="language-css"><span class="token selector">rh-tile</span> <span class="token punctuation">{</span>
@@ -1516,7 +1840,25 @@ form<span class="token punctuation">.</span><span class="token function">addEven
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>../rh-tile-lightdom.css<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span></code></pre>
 </rh-code-block></uxdot-demo>
             
-              <h2 id="demo-in-flex-container">In Flex Container</h2>
+              
+      <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+        <h2 id="demo-in-flex-container">
+          <a href="#demo-in-flex-container">In Flex Container</a>
+        </h2>
+      </uxdot-copy-permalink>
               <uxdot-demo id="demo-rh-tile-in-flex-container" tag="rh-tile" demo="in-flex-container" demo-title="In Flex Container" demo-source-url="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/rh-tile/demo/in-flex-container.html" demo-url="/elements/tile/demo/in-flex-container/" demo-file-path="/home/runner/work/red-hat-design-system/red-hat-design-system/elements/rh-tile/demo/in-flex-container.html"><rh-code-block full-height="" dedent="" actions="copy" highlighting="prerendered" slot="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token string">'@rhds/elements/rh-tile/rh-tile.js'</span><span class="token punctuation">;</span></code></pre>
 </rh-code-block>
 <rh-code-block full-height="" dedent="" actions="copy wrap" highlighting="prerendered" slot="css"><pre class="language-css"><code class="language-css"><span class="token selector">rh-tile</span> <span class="token punctuation">{</span>
@@ -1544,7 +1886,25 @@ form<span class="token punctuation">.</span><span class="token function">addEven
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>../rh-tile-lightdom.css<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span></code></pre>
 </rh-code-block></uxdot-demo>
             
-              <h2 id="demo-link-types">Link Types</h2>
+              
+      <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+        <h2 id="demo-link-types">
+          <a href="#demo-link-types">Link Types</a>
+        </h2>
+      </uxdot-copy-permalink>
               <uxdot-demo id="demo-rh-tile-link-types" tag="rh-tile" demo="link-types" demo-title="Link Types" demo-source-url="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/rh-tile/demo/link-types.html" demo-url="/elements/tile/demo/link-types/" demo-file-path="/home/runner/work/red-hat-design-system/red-hat-design-system/elements/rh-tile/demo/link-types.html"><rh-code-block full-height="" dedent="" actions="copy" highlighting="prerendered" slot="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token string">'@rhds/elements/rh-tile/rh-tile.js'</span><span class="token punctuation">;</span></code></pre>
 </rh-code-block>
 <rh-code-block full-height="" dedent="" actions="copy wrap" highlighting="prerendered" slot="css"><pre class="language-css"><code class="language-css"><span class="token selector">rh-tile</span> <span class="token punctuation">{</span>
@@ -1571,7 +1931,25 @@ form<span class="token punctuation">.</span><span class="token function">addEven
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>../rh-tile-lightdom.css<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span></code></pre>
 </rh-code-block></uxdot-demo>
             
-              <h2 id="demo-tile-group-disabled">Tile Group Disabled</h2>
+              
+      <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+        <h2 id="demo-tile-group-disabled">
+          <a href="#demo-tile-group-disabled">Tile Group Disabled</a>
+        </h2>
+      </uxdot-copy-permalink>
               <uxdot-demo id="demo-rh-tile-tile-group-disabled" tag="rh-tile" demo="tile-group-disabled" demo-title="Tile Group Disabled" demo-source-url="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/rh-tile/demo/tile-group-disabled.html" demo-url="/elements/tile/demo/tile-group-disabled/" demo-file-path="/home/runner/work/red-hat-design-system/red-hat-design-system/elements/rh-tile/demo/tile-group-disabled.html"><rh-code-block full-height="" dedent="" actions="copy" highlighting="prerendered" slot="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token string">'@rhds/elements/rh-tile/rh-tile-group.js'</span><span class="token punctuation">;</span></code></pre>
 </rh-code-block>
 <rh-code-block full-height="" dedent="" actions="copy wrap" highlighting="prerendered" slot="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-tile-group</span> <span class="token attr-name">disabled</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
@@ -1597,7 +1975,25 @@ form<span class="token punctuation">.</span><span class="token function">addEven
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>../rh-tile-lightdom.css<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span></code></pre>
 </rh-code-block></uxdot-demo>
             
-              <h2 id="demo-tile-group-radio-disabled">Tile Group Radio Disabled</h2>
+              
+      <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+        <h2 id="demo-tile-group-radio-disabled">
+          <a href="#demo-tile-group-radio-disabled">Tile Group Radio Disabled</a>
+        </h2>
+      </uxdot-copy-permalink>
               <uxdot-demo id="demo-rh-tile-tile-group-radio-disabled" tag="rh-tile" demo="tile-group-radio-disabled" demo-title="Tile Group Radio Disabled" demo-source-url="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/rh-tile/demo/tile-group-radio-disabled.html" demo-url="/elements/tile/demo/tile-group-radio-disabled/" demo-file-path="/home/runner/work/red-hat-design-system/red-hat-design-system/elements/rh-tile/demo/tile-group-radio-disabled.html"><rh-code-block full-height="" dedent="" actions="copy" highlighting="prerendered" slot="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token string">'@rhds/elements/rh-tile/rh-tile-group.js'</span><span class="token punctuation">;</span></code></pre>
 </rh-code-block>
 <rh-code-block full-height="" dedent="" actions="copy wrap" highlighting="prerendered" slot="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-tile-group</span> <span class="token attr-name">radio</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span> <span class="token attr-name">disabled</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
@@ -1623,7 +2019,25 @@ form<span class="token punctuation">.</span><span class="token function">addEven
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>../rh-tile-lightdom.css<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span></code></pre>
 </rh-code-block></uxdot-demo>
             
-              <h2 id="demo-tile-group-radio">Tile Group Radio</h2>
+              
+      <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+        <h2 id="demo-tile-group-radio">
+          <a href="#demo-tile-group-radio">Tile Group Radio</a>
+        </h2>
+      </uxdot-copy-permalink>
               <uxdot-demo id="demo-rh-tile-tile-group-radio" tag="rh-tile" demo="tile-group-radio" demo-title="Tile Group Radio" demo-source-url="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/rh-tile/demo/tile-group-radio.html" demo-url="/elements/tile/demo/tile-group-radio/" demo-file-path="/home/runner/work/red-hat-design-system/red-hat-design-system/elements/rh-tile/demo/tile-group-radio.html"><rh-code-block full-height="" dedent="" actions="copy" highlighting="prerendered" slot="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token string">'@rhds/elements/rh-tile/rh-tile-group.js'</span><span class="token punctuation">;</span></code></pre>
 </rh-code-block>
 <rh-code-block full-height="" dedent="" actions="copy wrap" highlighting="prerendered" slot="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-tile-group</span> <span class="token attr-name">radio</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
@@ -1649,7 +2063,25 @@ form<span class="token punctuation">.</span><span class="token function">addEven
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>../rh-tile-lightdom.css<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span></code></pre>
 </rh-code-block></uxdot-demo>
             
-              <h2 id="demo-tile-group">Tile Group</h2>
+              
+      <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+        <h2 id="demo-tile-group">
+          <a href="#demo-tile-group">Tile Group</a>
+        </h2>
+      </uxdot-copy-permalink>
               <uxdot-demo id="demo-rh-tile-tile-group" tag="rh-tile" demo="tile-group" demo-title="Tile Group" demo-source-url="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/rh-tile/demo/tile-group.html" demo-url="/elements/tile/demo/tile-group/" demo-file-path="/home/runner/work/red-hat-design-system/red-hat-design-system/elements/rh-tile/demo/tile-group.html"><rh-code-block full-height="" dedent="" actions="copy" highlighting="prerendered" slot="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token string">'@rhds/elements/rh-tile/rh-tile-group.js'</span><span class="token punctuation">;</span></code></pre>
 </rh-code-block>
 <rh-code-block full-height="" dedent="" actions="copy wrap" highlighting="prerendered" slot="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-tile-group</span><span class="token punctuation">&gt;</span></span>
@@ -1676,7 +2108,25 @@ form<span class="token punctuation">.</span><span class="token function">addEven
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>../rh-tile-lightdom.css<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span></code></pre>
 </rh-code-block></uxdot-demo>
             
-              <h2 id="demo-without-footer-content">Without Footer Content</h2>
+              
+      <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+        <h2 id="demo-without-footer-content">
+          <a href="#demo-without-footer-content">Without Footer Content</a>
+        </h2>
+      </uxdot-copy-permalink>
               <uxdot-demo id="demo-rh-tile-without-footer-content" tag="rh-tile" demo="without-footer-content" demo-title="Without Footer Content" demo-source-url="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/rh-tile/demo/without-footer-content.html" demo-url="/elements/tile/demo/without-footer-content/" demo-file-path="/home/runner/work/red-hat-design-system/red-hat-design-system/elements/rh-tile/demo/without-footer-content.html"><rh-code-block full-height="" dedent="" actions="copy" highlighting="prerendered" slot="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token string">'@rhds/elements/rh-tile/rh-tile.js'</span><span class="token punctuation">;</span></code></pre>
 </rh-code-block>
 <rh-code-block full-height="" dedent="" actions="copy wrap" highlighting="prerendered" slot="css"><pre class="language-css"><code class="language-css"><span class="token selector">.grid</span> <span class="token punctuation">{</span>
