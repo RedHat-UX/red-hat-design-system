@@ -8,20 +8,6 @@ iframe {
   max-height: var(--height);
 }
 
-:host(:fullscreen) #container {
-  height: 100vh;
-  justify-content: space-between;
-
-  iframe {
-    flex: 1 1 auto;
-    max-height: unset;
-  }
-
-  rh-card {
-    height: max-content;
-  }
-}
-
 #container {
   --height: 825px;
 
@@ -70,4 +56,18 @@ rh-card {
 
   max-width: 100% !important;
   border-width: 0;
+}
+
+:host(:fullscreen) #container {
+  height: 100vh;
+  justify-content: space-between;
+
+  iframe {
+    flex: 1 1 auto;
+    max-height: unset;
+  }
+
+  rh-card {
+    height: max-content;
+  }
 }
