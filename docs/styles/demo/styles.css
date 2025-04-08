@@ -14,5 +14,6 @@
 html,
 body,
 main {
+  color-scheme: light dark;
   height: 100%;
 }
