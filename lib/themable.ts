@@ -8,6 +8,7 @@ async function load() {
   const sheet = new CSSStyleSheet();
   sheet.replaceSync(cssText);
   document.adoptedStyleSheets = [...(document.adoptedStyleSheets ?? []), sheet];
+  initialized = true;
 }
 
 let p: Promise<void>;
@@ -28,9 +29,11 @@ export function themable<T extends Constructor<ReactiveElement>>(klass: T) {
   if (!initialized) {
     p ??= load();
     return class ThemableElement extends klass {
-      protected async getUpdateComplete(): Promise<boolean> {
-        await p;
-        return super.getUpdateComplete();
+      protected override async scheduleUpdate() {
+        if (!initialized) {
+          await p;
+        }
+        super.scheduleUpdate();
       }
     };
   }
