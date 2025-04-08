@@ -68,12 +68,6 @@ export default async function(eleventyConfig: UserConfig) {
   eleventyConfig.addPassthroughCopy('docs/styles/**/*');
   eleventyConfig.addPassthroughCopy('docs/**/*.{css,js}');
 
-  if (isLocal) {
-    eleventyConfig.addPassthroughCopy({
-      'node_modules/playground-elements/playground-*worker*': '.',
-    });
-  }
-
   eleventyConfig.addWatchTarget('docs/styles/');
   eleventyConfig.addWatchTarget('docs/**/*.md');
 
@@ -118,7 +112,6 @@ export default async function(eleventyConfig: UserConfig) {
         '@patternfly/icons/': '/assets/packages/@patternfly/icons/',
         '@patternfly/pfe-core/': '/assets/packages/@patternfly/pfe-core/',
         '@uxdot/elements/': '/assets/packages/@uxdot/elements/',
-        'playground-elements': 'https://cdn.jsdelivr.net/npm/playground-elements@0.19.1/+esm',
       },
     },
     localPackages: [
@@ -228,6 +221,7 @@ export default async function(eleventyConfig: UserConfig) {
       'uxdot/uxdot-installation-tabs.ts',
       'uxdot/uxdot-masthead.ts',
       'uxdot/uxdot-pattern.ts',
+      'uxdot/uxdot-demo.ts',
       'uxdot/uxdot-repo-status-checklist.ts',
       'uxdot/uxdot-repo-status-list.ts',
       'uxdot/uxdot-search.ts',

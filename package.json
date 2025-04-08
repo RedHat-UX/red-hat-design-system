@@ -100,7 +100,6 @@
       "dependencies": [
         "patch",
         "analyze",
-        "playgrounds",
         "11ty-dev"
       ]
     },
@@ -124,8 +123,7 @@
       "command": "TSX_TSCONFIG_PATH=tsconfig.settings.json NODE_OPTIONS='--import tsx/esm' eleventy --config=eleventy.config.ts --incremental --serve",
       "dependencies": [
         "patch",
-        "analyze",
-        "playgrounds"
+        "analyze"
       ]
     },
     "build": {
@@ -221,8 +219,7 @@
       "command": "TSX_TSCONFIG_PATH=tsconfig.settings.json NODE_OPTIONS='--import tsx/esm' eleventy --config=eleventy.config.ts --incremental",
       "dependencies": [
         "patch",
-        "analyze",
-        "playgrounds"
+        "analyze"
       ],
       "files": [
         "docs"
@@ -261,20 +258,6 @@
         "docs/**/*.md",
         "elements/**/*.md",
         "README.md"
-      ]
-    },
-    "playgrounds": {
-      "command": "npx tsx scripts/playgrounds.ts docs/_data/playgrounds.json",
-      "dependencies": [
-        "analyze"
-      ],
-      "files": [
-        "scripts/playgrounds.ts",
-        "elements/*/demo/*.*",
-        "custom-elements.json"
-      ],
-      "output": [
-        "docs/_data/playgrounds.json"
       ]
     },
     "e2e": {
@@ -351,7 +334,6 @@
     "parse5": "^7.2.1",
     "patch-package": "^8.0.0",
     "piscina": "^4.8.0",
-    "playground-elements": "^0.19.1",
     "postcss-pxtorem": "^6.1.0",
     "query-selector-shadow-dom": "^1.0.1",
     "renamer": "^5.0.2",

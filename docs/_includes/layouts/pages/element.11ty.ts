@@ -1,6 +1,5 @@
 import type { ElementDocsPageData } from '#11ty-plugins/element-docs.js';
 import type { ClassMethod } from 'custom-elements-manifest';
-import type { FileOptions, ProjectManifest } from 'playground-elements/shared/worker-api.js';
 
 import { tokens } from '@rhds/tokens/meta.js';
 import { join } from 'node:path';
@@ -11,7 +10,14 @@ import { AssetCache } from '@11ty/eleventy-fetch';
 import { Renderer } from '#eleventy.config';
 import type { ImportMap } from '#11ty-plugins/importMap.js';
 
-type FileEntry = [string, FileOptions & { inline: string }];
+import { parse, serialize } from 'parse5';
+import * as Tools from '@parse5/tools';
+
+import {
+  getAllManifests,
+  type DemoRecord,
+} from '@patternfly/pfe-tools/custom-elements-manifest/custom-elements-manifest.js';
+import { parseFragment } from 'parse5';
 
 const html = String.raw; // for editor highlighting
 const pfeconfig = getPfeConfig();
@@ -36,7 +42,6 @@ interface Context extends EleventyPageRenderData {
   tagName: string;
   isLocal: boolean;
   importMap: { imports: Record<string, string>; scopes: Record<string, Record<string, string>> };
-  playgrounds: Record<`rh-${string}`, ProjectManifest>;
 }
 
 export default class ElementsPage extends Renderer<Context> {
@@ -52,6 +57,12 @@ export default class ElementsPage extends Renderer<Context> {
       },
     };
   }
+
+  static demoManifestsForTagNames =
+    Object.groupBy(getAllManifests()
+        .flatMap(manifest => manifest.getTagNames()
+            .flatMap(tagName => manifest.getDemoMetadata(tagName, getPfeConfig()))),
+                   x => x.primaryElementName);
 
   async render(ctx: Context) {
     const { fileExists, filePath, pageSlug, planned, tagName } = ctx.doc;
@@ -695,69 +706,13 @@ export default class ElementsPage extends Renderer<Context> {
 
   async #renderDemos(content: string, ctx: Context) {
     const tagName = ctx.tagName as `rh-${string}`;
-    const entries = Object.entries(ctx.playgrounds[tagName]?.files ?? {}) as FileEntry[];
+    const demos = ElementsPage.demoManifestsForTagNames[tagName] ?? [];
     return [
-      await this.#renderDemoHead(),
-      content,
-      ctx.doc.fileExists && await this.renderFile(ctx.doc.filePath, ctx),
-      ...await this.#renderPlaygrounds(ctx, entries),
-    ].filter(Boolean).join('');
-  }
-
-  async #renderDemoHead() {
-    return html`
-      <style data-helmet>
-        playground-project {
-          height: 825px;
-          &:fullscreen {
-            height: 100vh;
-            & rh-card {
-              height: 100%;
-              &::part(body) {
-                flex: auto;
-              }
-            }
-            & playground-file-editor,
-            & playground-preview {
-              height: 100%;
-            }
-          }
-          &:not(:defined) { opacity: 0; }
-          display: flex;
-          flex-flow: column;
-          gap: var(--rh-space-sm);
-          --playground-code-background: var(--rh-color-surface-lighter);
-          & playground-preview {
-            border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle-on-light);
-            &::part(preview-toolbar) {
-              display: none;
-            }
-          }
-          & rh-card {
-            &::part(header),
-            &::part(body) { margin: 0; }
-            &::part(footer) {
-              margin-block: var(--rh-space-lg);
-              justify-content: end;
-            }
-            &::part(body) {
-              border-block-end: var(--rh-border-width-sm) solid var(--rh-color-border-subtle-on-light);
-            }
-            & rh-button[slot="footer"] {
-              display: inline-block;
-              margin-inline-end: auto;
-            }
-          }
-          & rh-tab-panel {
-            display: none !important;
-          }
-        }
-      </style>
-
+      html`
       <script type="module" data-helmet>
         import '@uxdot/elements/uxdot-copy-button.js';
         import '@uxdot/elements/uxdot-header.js';
-        import 'playground-elements';
+        import '@uxdot/elements/uxdot-demo.js';
         import '@rhds/elements/rh-button/rh-button.js';
         import '@rhds/elements/rh-card/rh-card.js';
         import '@rhds/elements/rh-code-block/rh-code-block.js';
@@ -766,119 +721,78 @@ export default class ElementsPage extends Renderer<Context> {
         import '@rhds/elements/rh-subnav/rh-subnav.js';
         import '@rhds/elements/rh-surface/rh-surface.js';
         import '@rhds/elements/rh-tabs/rh-tabs.js';
-        import {TabExpandEvent} from '@rhds/elements/rh-tabs/rh-tab.js';
-        for (const tabs of document.querySelectorAll('.demo-fileswitcher')) {
-          tabs.addEventListener('expand', function(event) {
-            if (event instanceof TabExpandEvent && event.active) {
-              const { filename } = event.tab.dataset;
-              if (filename) {
-                const project = tabs.closest('playground-project');
-                const fileEditor = project.querySelector('playground-file-editor');
-                if (fileEditor) {
-                  fileEditor.filename = filename;
-                }
-              }
-            }
-          })
-        }
-        for (const playground of document.querySelectorAll('playground-project')) {
-          playground.addEventListener('click', function(event) {
-            if (event.target.dataset?.action === 'fullscreen') {
-              playground.requestFullscreen();
-            }
-          })
-        }
-      </script>
-    `;
-  }
+      </script>`,
+      content,
+      ctx.doc.fileExists && await this.renderFile(ctx.doc.filePath, ctx),
+      ...await Promise.all(demos.map(async demo => {
+        if (!demo.title || !demo.filePath) {
+          return '';
+        } else {
+          const labelSlug = this.slugify(demo.title);
+          const filepath = demo.filePath
+              ?.replace(join(process.cwd(), 'elements', tagName, 'demo/'), '');
+          const demoSlug = filepath?.split('.').shift()?.replaceAll('/', '-') ?? '';
+          const projectId = `demo-${tagName}-${demoSlug}`;
 
-  /**
-   * Files to include with every demo playground e.g. import map, shared styles, etc.
-   * Some of these are generated by /scripts/playgrounds.ts
-   * @param ctx
-   * @param entries
-   */
-  async #renderPlaygroundsCommon(ctx: Context, entries: FileEntry[]) {
-    const { isLocal, importMap: { imports } } = ctx;
-    const baseUrl = process.env.DEPLOY_PRIME_URL || 'http://localhost:8080';
-    return html`${isLocal ? html`
-      <script type="sample/importmap">${JSON.stringify({ imports }, null, 2).replaceAll('"/assets', `"${baseUrl}/assets`)}</script>` : html`
-      <script type="sample/importmap">
-        {
-          "imports": {
-            "@patternfly/icons/": "https://ux.redhat.com/assets/packages/@patternfly/icons/"
+          const githubSourcePrefix = `https://github.com/RedHat-UX/red-hat-design-system/tree/main`;
+
+          const sourceUrl = `${githubSourcePrefix}${demo.filePath.replace(process.cwd(), '')}`;
+
+          const demoUrl = `/elements/${this.getTagNameSlug(tagName)}/demo/${demoSlug === tagName ? '' : `${demoSlug}/`}`;
+
+          const codeblocks = await this.#getDemoCodeBlocks(demo);
+
+          if (codeblocks) {
+            return html`
+              <h2 id="demo-${labelSlug}">${demo.title}</h2>
+              <uxdot-demo id="${projectId}"
+                          tag="${tagName}"
+                          demo="${demoSlug}"
+                          demo-title="${demo.title}"
+                          demo-source-url="${sourceUrl}"
+                          demo-url="${demoUrl}"
+                          demo-file-path="${demo.filePath}"
+              >${codeblocks}</uxdot-demo>
+            `;
+          } else {
+            return '';
           }
         }
-      </script>`}${entries.map(([filename, config]) => config.label ? '' : html`
-      <script type="sample/${filename.split('.').pop()}" filename="${filename}" ${!config.hidden ? '' : 'hidden'}>${
-      config.content?.replace('</' + 'script>', '&lt;/script>') ?? ''
-    }</script>`).join('')}
-    `;
+      })),
+    ].filter(Boolean).join('');
   }
 
-  async #renderPlaygrounds(ctx: Context, entries: FileEntry[]) {
-    const common = await this.#renderPlaygroundsCommon(ctx, entries);
-    return entries.flatMap(([filename, config], _, array) => this.#renderPlayground(
-      filename,
-      config,
-      ctx,
-      common,
-      array,
-    )).join('');
-  };
+  async #getDemoCodeBlocks(demo: DemoRecord) {
+    const map = new Map<'html' | 'css' | 'js', string>();
 
-  #renderPlayground(
-    filename: string,
-    config: FileOptions,
-    ctx: Context,
-    common: string,
-    entries: FileEntry[]
-  ) {
-    const inlineResources = entries
-        .filter(([, config]) => config.inline === filename)
-        .map(([s]) => s);
-    const { doc, tagName, isLocal } = ctx;
-    const { slug } = doc;
-    if (!config.label) {
-      return '';
-    } else {
-      const labelSlug = this.slugify(config.label);
-      const extension = filename.split('.').pop();
-      const demoSlug =
-        filename.split('.').shift()?.replace('demo/', '').replaceAll('/', '-') ?? '';
-      const projectId = `playground-${tagName}-${demoSlug}`;
-      const demoPageUrl = `/elements/${slug}/demo/${demoSlug === 'index' ? '' : `${labelSlug}/`}`;
-      const githubSourcePrefix = `https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements`;
-      const githubSourceUrl = `${githubSourcePrefix}/${tagName}/demo/${filename
-          .replace('demo/', '')
-          .replace('/index.html', '')
-          .replace('.html', '')
-          .replace('index', tagName)}.html`;
+    function updateKey(key: 'html' | 'css' | 'js', node: Tools.ParentNode) {
+      const oldContent = map.get(key) ?? '';
+      const newContent =
+      dedent(node.childNodes.map(x => Tools.isTextNode(x) ? x.value : '').join('\n'));
+      Tools.removeNode(node);
+      map.set(key, oldContent + newContent);
+    }
 
-      const content = config.content?.replace('</' + 'script>', '&lt;/script>') ?? '';
-      return html`
-        <h2 id="demo-${labelSlug}">${config.label}</h2>
-        <playground-project id="${projectId}" ${!isLocal ? '' : 'sandbox-base-url="http://localhost:8080"'}>
-          ${common}
-          <script type="sample/${extension}" filename="${filename}">${content}</script>
-          <playground-preview project="${projectId}" html-file="${filename}"></playground-preview>
-          <rh-card>
-            <rh-tabs slot="header" class="demo-fileswitcher">
-              <rh-tab slot="tab" data-filename="${filename}">HTML</rh-tab>
-              <rh-tab-panel hidden></rh-tab-panel>
-              ${inlineResources.map(subresourcename => html`
-              <rh-tab slot="tab" data-filename="${subresourcename}">${subresourcename.split('.').pop()?.toUpperCase() ?? ''}</rh-tab>
-              <rh-tab-panel hidden></rh-tab-panel>`).join('')}
-            </rh-tabs>
-            <playground-file-editor project="${projectId}"
-                                    filename="${filename}"
-                                    line-numbers></playground-file-editor>
-            <rh-button slot="footer" variant="tertiary" data-action="fullscreen" icon="expand">FullScreen</rh-button>
-            <rh-cta slot="footer" href="${githubSourceUrl}">View source on GitHub</rh-cta>
-            <rh-cta slot="footer" href="${demoPageUrl}">View In Own Tab</rh-cta>
-          </rh-card>
-        </playground-project>
-      `;
+    if (demo.filePath) {
+      const fragment = parseFragment(await readFile(demo.filePath, 'utf-8'));
+
+      for (const node of Tools.queryAll<Tools.Element>(fragment, Tools.isElementNode)) {
+        if (node.tagName === 'script'
+          && node.attrs.some(x => x.name === 'type' && x.value === 'module')) {
+          updateKey('js', node);
+        } else if (node.tagName === 'style') {
+          updateKey('css', node);
+        }
+      }
+
+      map.set('html', serialize(fragment));
+
+      const blocks = await Promise.all(map.entries().map(([kind, content]) => this.renderTemplate(dedent(`
+        ~~~${kind} rhcodeblock {slot="${kind}"}
+        ${content.trim()}
+        ~~~
+      `), 'md')).toArray());
+      return blocks.join('\n');
     }
   }
-};
+}
