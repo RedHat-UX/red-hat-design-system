@@ -39,6 +39,7 @@ export class UxdotDemo extends LitElement {
           <rh-button slot="footer"
                      variant="tertiary"
                      icon="expand"
+                     icon-set="ui"
                      @click="${this.#toggleFullscreen}">FullScreen</rh-button>
           <rh-cta slot="footer" href="${this.demoSourceUrl}">View source on GitHub</rh-cta>
           <rh-cta slot="footer" href="${this.demoUrl}">View In Own Tab</rh-cta>

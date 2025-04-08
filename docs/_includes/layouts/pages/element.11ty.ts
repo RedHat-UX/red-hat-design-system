@@ -737,6 +737,7 @@ export default class ElementsPage extends Renderer<Context> {
           const githubSourcePrefix = `https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements`;
 
           const sourceUrl = `${githubSourcePrefix}/${tagName}/demo/${demo.filePath
+              .replace(process.cwd(), '')
               .replace('demo/', '')
               .replace('/index.html', '')
               .replace('.html', '')
