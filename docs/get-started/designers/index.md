@@ -30,19 +30,16 @@ order: 10
 </script>
 
 {#
-  the .page-designers rule allows for spacing of "sections" while only using
+  the .page-overview rule allows for spacing of "sections" while only using
   headers which are converted to uxdot-copy-permalink
   TODO: determine if this is how we want to do this
 #}
 
 <style data-helmet>
   .page-overview .container {
-    uxdot-copy-permalink:not(:first-of-type) {
+    uxdot-copy-permalink:not(:first-of-type),
+    uxdot-feedback h2 {
       margin-block-start: var(--rh-space-5xl, 80px);
-    }
-
-    uxdot-copy-permalink:not(:first-of-type) + uxdot-copy-permalink {
-      margin-block-start: var(--rh-space-2xl, 32px);
     }
 
     ul {
@@ -78,7 +75,7 @@ interaction with Red Hat reflects our brand personality, brand strategy, and
 consistent visual language. Consistency is how we create authentic relationships 
 and credibility with our customers, partners, and contributors.
 
-<uxdot-example color-palette="lightest" variant="full" no-border>
+<uxdot-example variant="full" no-border>
   <img alt="The text 'Brand Standards' with small illustrations of color swatches, dropdown element, and resizing an icon"
        src="brand-standards.png">
 </uxdot-example>

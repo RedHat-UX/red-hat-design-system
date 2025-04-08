@@ -22,41 +22,22 @@ subnav:
 </script>
 
 {#
-  the .page-designers rule allows for spacing of "sections" while only using
+  the .page-faqs rule allows for spacing of "sections" while only using
   headers which are converted to uxdot-copy-permalink
   TODO: determine if this is how we want to do this
 #}
 
 <style data-helmet>
-  .page-designers .container {
-    uxdot-copy-permalink:not(:first-of-type) {
+  .page-faqs .container {
+    uxdot-copy-permalink:not(:first-of-type),
+    uxdot-feedback h2 {
       margin-block-start: var(--rh-space-5xl, 80px);
-    }
-
-    uxdot-copy-permalink:not(:first-of-type) + uxdot-copy-permalink {
-      margin-block-start: var(--rh-space-2xl, 32px);
-    }
-
-    ul {
-      font-size: var(--rh-font-size-body-text-lg, 1.125rem);
-      margin-block-end: var(--rh-space-2xl, 32px);
     }
   }
 
   rh-accordion {
     display: block;
-  }
-
-  :is(rh-alert, rh-accordion) {
     margin-block: var(--rh-space-2xl, 32px);
-  }
-
-  #learn-about-grid {
-    margin-block-start: var(--rh-space-2xl, 32px);
-    & h3 {
-      font-size: var(--rh-font-size-heading-sm, 1.5rem);
-      font-weight: var(--rh-font-weight-heading-medium, 500);
-    }
   }
 </style>
 
@@ -89,3 +70,8 @@ subnav:
     <p>If you find a bug, <a href="https://github.com/RedHat-UX/red-hat-design-system/issues/new/choose">create an issue</a> and describe it as thoroughly as possible. If something is broken, e-mail <a href="mailto:design-system@redhat.com" style="white-space: nowrap;">design-system@redhat.com</a> or connect with us on Slack and we will investigate.</p>
   </rh-accordion-panel>
 </rh-accordion>
+
+<uxdot-feedback>
+  <h2>Developers</h2>
+  <p>To get started using our design system as a developer, go to the <a href="get-started/developers">Developers</a> page.</p>
+</uxdot-feedback>

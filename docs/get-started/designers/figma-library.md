@@ -22,14 +22,15 @@ subnav:
 </script>
 
 {#
-  the .page-designers rule allows for spacing of "sections" while only using
+  the .page-figma-library rule allows for spacing of "sections" while only using
   headers which are converted to uxdot-copy-permalink
   TODO: determine if this is how we want to do this
 #}
 
 <style data-helmet>
   .page-figma-library .container {
-    uxdot-copy-permalink:not(:first-of-type) {
+    uxdot-copy-permalink:not(:first-of-type),
+    uxdot-feedback h2 {
       margin-block-start: var(--rh-space-5xl, 80px);
     }
 
