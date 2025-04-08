@@ -95,8 +95,8 @@ Released April 7, 2025
 | `<rh-auto-player>`: layout improvements | {{p()}} | Fixed right-to-left layout. |
 | `<rh-health-index>`: fixed `z-index` stacking | {{p()}} | Prevents graphical elements from escaping stacking context. |
 | `<rh-health-index>`: corrected colors | {{p()}} | Corrected `<rh-health-index>` colors. |
-| `<rh-naivgation-secondary>`: removed underlines from links | {{p()}} | Removed underlines from links from Secondary Navigation. |
-| `<rh-naivgation-secondary>`: layout improvements | {{p()}} | Improved visual rendering when scrollbars are turned on by the user. |
+| `<rh-navigation-secondary>`: removed underlines from links | {{p()}} | Removed underlines from links from Secondary Navigation. |
+| `<rh-navigation-secondary>`: layout improvements | {{p()}} | Improved visual rendering when scrollbars are turned on by the user. |
 | `<rh-back-to-top>`: removed console errors and warnings | {{p()}} | Removed user-facing errors and warning from missing attributes/values from the console.  |
 | `<rh-dialog>`: aligned private, undocumented CSS variable names | {{p()}} | Changed several undocumented CSS variable names to align with privacy conventions, like `--offset` to `--_offset`, etc. |
 | `<rh-subnav>`: fixed overflow scrolling | {{p()}} | Restored horizontal overflow scrolling on `<rh-subnav>`. |
@@ -129,7 +129,7 @@ Released April 7, 2025
 | `<rh-code-block>`: improve copy and word wrap features | {{p()}} | Enables copy and word wrap action for prerendered content. |
 | `<rh-accordion>`: fix hover colors | {{p()}} | Restore missing hover colors. |
 | `<rh-accordion>`: fixed header font | {{p()}} | Corrected accordion header text font weight. |
-| `<rh-footer>`: fixed loading failsafe for more graceful degredation | {{p()}} | Shows content after 5 seconds if JavaScript fails. |
+| `<rh-footer>`: fixed loading failsafe for more graceful degradation | {{p()}} | Shows content after 5 seconds if JavaScript fails. |
 | `@rhds/tokens`: Use non-localized font stacks | {{p()}} | See [`@rhds/tokens` v2.1.1 release notes](https://github.com/RedHat-UX/red-hat-design-tokens/releases/tag/v2.1.1). |
 | `@rhds/tokens`: bump version to 2.1.1 | {{p()}} | See [`@rhds/tokens` v2.1.1 release notes](https://github.com/RedHat-UX/red-hat-design-tokens/releases/tag/v2.1.1). |
 | Removed all caps in heading | {{p()}} | No longer force headings to be in all caps on various elements, like `<rh-tile>`. |
@@ -146,7 +146,7 @@ Released April 7, 2025
 | ------------- | ----------- | ------------ |
 | Color Context: SSR support | {{p()}} | Prevent errors in certain Server-side Rendered (SSR) scenarios. |
 | `<rh-alert>`: layout improvements | {{p()}} | Corrected typography and layouts. |
-| `<rh-code-block>`: code highlighting improvements | {{p()}} | Ensure that syntax colours and styles are applied when the element upgrades. |
+| `<rh-code-block>`: code highlighting improvements | {{p()}} | Ensure that syntax colors and styles are applied when the element upgrades. |
 | `<rh-tabs>`: SSR fix | {{p()}} | Corrects active tab styles in SSR scenarios |
 | `<rh-navigation-secondary>`: dark color scheme fix | {{p()}} | Corrected style regression in dark color palettes. |
 | `<rh-surface>`: fixed themed text color | {{p()}} | Corrected themed text color. |
@@ -171,7 +171,7 @@ Released October 1, 2024
 
 | Change                                                    | Type    | Notes                                                                                                                                                                                                    |
 | --------------------------------------------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Theming: added theming tokens to most elements            | {{i()}} | New theming tokens allow page-level and container-level colour palettes on patterns and elements.                                                                                                        |
+| Theming: added theming tokens to most elements            | {{i()}} | New theming tokens allow page-level and container-level color palettes on patterns and elements.                                                                                                        |
 | `<rh-alert>`: added new `state` colors                    | {{i()}} | Added `info`, `neutral`, and `caution`. Deprecated `note` (aliasing `info`), `default` (aliasing `neutral`), and `error` (aliasing `danger`).                                                            |
 | `<rh-accordion>`: improved accessibility                  | {{i()}} | Removed arrow-key keyboard navigation in favor of tab navigation through accordion sets.                                                                                                                 |
 | `<rh-badge>`: added new `state` colors                    | {{i()}} | Added `danger`, `warning`, `caution`, `neutral`, and `info`. Deprecated `critical` (aliasing `danger`), `important` (aliasing `caution`), `moderate` (aliasing `warning`), and `note` (aliasing `info`). |
@@ -180,7 +180,7 @@ Released October 1, 2024
 | `<rh-code-block>`: added syntax highlighting              | {{i()}} | Code blocks now have optional Red Hat color-themed syntax highlighting via client side or server side (prerendered prismjs code-blocks).                                                                 |
 | `<rh-table>`: improved responsive layout API              | {{i()}} | Added auto-generated table cell headings for responsive layout on small screens.                                                                                                                         |
 | `<rh-tag>`: added new tag colors                          | {{i()}} | Added `red-orange`, `yellow`, and `teal` colors. Deprecated `cyan`, aliasing it to `teal`.                                                                                                               |
-| `<rh-tag>`: added `destaurated` variant                   | {{i()}} | Added `variant="desaturated"` to reduce visual prominence or to better fit a specific theme or visual style.                                                                                             |
+| `<rh-tag>`: added `desaturated` variant                   | {{i()}} | Added `variant="desaturated"` to reduce visual prominence or to better fit a specific theme or visual style.                                                                                             |
 | `<rh-tag>`: added `size` attribute                        | {{i()}} | Added `size="compact"` for areas where space is limited.                                                                                                                                                 |
 | `<rh-tag>`: added optional `href` attribute               | {{i()}} | Adding `href` attribute to `<rh-tag>` removes the need for slotting an anchor element (`<a>`) on linked tags.                                                                                            |
 | `<rh-tile>`: added `private` and `external` link variants | {{i()}} |  Using `link="private"` or `link="external"` indicates whether the link is private or external and changes the tile icon from an arrow to a padlock or external link icons respectively.                 |
@@ -239,7 +239,7 @@ Released August 27, 2024
 | Added static `toast` method to `<rh-alert>`                | {{i()}} | The `toast` method allows for toast-like alert messages.                                                                                                                                                                                        |
 | Added dark color palette to `<rh-pagination>`              | {{i()}} | Pagination now responds to themeable containers like `<rh-surface>`.                                                                                                                                                                            |
 | Added light DOM shim for `<rh-cta>`                        | {{i()}} | Added `rh-cta-lightdom-shim.css` as an optional file to help reduce layout shift before element is defined, where declarative shadow DOM is not an option.                                                                                      |
-| Added `<rh-card>` heading custom properties                | {{i()}} | User can now cumstomize CSS custom properties for card headings.                                                                                                                                                                                |
+| Added `<rh-card>` heading custom properties                | {{i()}} | User can now customize CSS custom properties for card headings.                                                                                                                                                                                |
 | Added `href` attribute to `<rh-cta>`                       | {{i()}} | Users can now set the `href` directly on `<rh-cta>` rather than slotting an anchor tag.                                                                                                                                                         |
 | Added `icon-set` attribute to `<rh-cta>`                   | {{i()}} | Users can now choose an `icon-set` in their call-to-action.                                                                                                                                                                                     |
 | Fix `<rh-tile-group>` grid layout                          | {{p()}} | Corrected application of grid layout to slotted elements.                                                                                                                                                                                       |
