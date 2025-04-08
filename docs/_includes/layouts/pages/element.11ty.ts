@@ -10,7 +10,8 @@ import { AssetCache } from '@11ty/eleventy-fetch';
 import { Renderer } from '#eleventy.config';
 import type { ImportMap } from '#11ty-plugins/importMap.js';
 
-import { parse, serialize } from 'parse5';
+import { serialize } from 'parse5';
+
 import * as Tools from '@parse5/tools';
 
 import {
@@ -191,6 +192,8 @@ export default class ElementsPage extends Renderer<Context> {
   async #renderCodePage(content: string, ctx: Context) {
     const { doc } = ctx;
     const { tagName } = doc.docsPage;
+    /* eslint-disable lit-a11y/accessible-name */
+    /* eslint-disable lit-a11y/anchor-is-valid */
     return [
       content,
       html`
@@ -207,6 +210,8 @@ export default class ElementsPage extends Renderer<Context> {
         <p>To learn more about installing RHDS elements on your site using an import map read our <a href="/get-started/developers/installation/">getting started docs</a>.        
       </section>
       `,
+      /* eslint-enable lit-a11y/anchor-is-valid */
+      /* eslint-enable lit-a11y/accessible-name */
       await this.#renderLightdom(ctx),
       this.#header('Usage'),
       await this.#getMainDemoContent(tagName),
