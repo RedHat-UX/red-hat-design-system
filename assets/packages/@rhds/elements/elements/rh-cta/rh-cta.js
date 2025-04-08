@@ -71,11 +71,11 @@ let RhCta = class RhCta extends LitElement {
         this.iconSet = 'ui';
         _RhCta_logger.set(this, new Logger(this));
     }
-    async getUpdateComplete() {
-        if (this.icon || !this.variant) {
+    async scheduleUpdate() {
+        if (this.icon || !this.variant && !customElements.get('rh-icon')) {
             await import('@rhds/elements/rh-icon/rh-icon.js');
         }
-        return super.getUpdateComplete();
+        super.scheduleUpdate();
     }
     render() {
         const { download, href, referrerpolicy, rel, target, icon, iconSet, variant, } = this;

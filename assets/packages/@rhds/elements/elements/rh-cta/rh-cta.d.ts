@@ -84,7 +84,7 @@ export declare class RhCta extends LitElement {
     icon?: IconNameFor<IconSetName>;
     /** Icon set */
     iconSet: IconSetName;
-    protected getUpdateComplete(): Promise<boolean>;
+    scheduleUpdate(): Promise<void>;
     render(): import("lit-html").TemplateResult<1>;
     firstUpdated(): void;
 }

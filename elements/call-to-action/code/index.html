@@ -43,8 +43,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.0/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
@@ -901,14 +901,30 @@ lowest in hierarchy and can be used multiple times in the same container or layo
       </rh-accordion-panel>
     
         
-      <rh-accordion-header id="rh-cta-methods">Methods
-        <rh-badge>0</rh-badge>
+      <rh-accordion-header id="rh-cta-methods" expanded="">Methods
+        <rh-badge>1</rh-badge>
         
       </rh-accordion-header>
       <rh-accordion-panel>
         <section class="methods">
           
-          <em>None</em>
+          <rh-table>
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Method Name</th>
+                  <th scope="col">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                
+                <tr>
+                  <td><code>scheduleUpdate()</code></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </rh-table>
         </section>
       </rh-accordion-panel>
     

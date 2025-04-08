@@ -5,6 +5,7 @@ async function load() {
     const sheet = new CSSStyleSheet();
     sheet.replaceSync(cssText);
     document.adoptedStyleSheets = [...(document.adoptedStyleSheets ?? []), sheet];
+    initialized = true;
 }
 let p;
 /**
@@ -22,9 +23,11 @@ export function themable(klass) {
     if (!initialized) {
         p ?? (p = load());
         return class ThemableElement extends klass {
-            async getUpdateComplete() {
-                await p;
-                return super.getUpdateComplete();
+            async scheduleUpdate() {
+                if (!initialized) {
+                    await p;
+                }
+                super.scheduleUpdate();
             }
         };
     }
