@@ -32,8 +32,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.0/core.js",
     "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.0/core.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
@@ -100,6 +100,16 @@
   <rh-button variant="close">Close</rh-button>
   <rh-button variant="play">Play</rh-button>
   <rh-button disabled="">Disabled</rh-button>
+
+  <rh-button danger="" icon="information-fill">Danger</rh-button>
+  <rh-button icon="information-fill">Primary</rh-button>
+  <rh-button variant="link" icon="information-fill">Link</rh-button>
+  <rh-button variant="secondary" icon="information-fill">Secondary</rh-button>
+  <rh-button variant="secondary" danger="" icon="information-fill">Secondary Danger</rh-button>
+  <rh-button variant="tertiary" icon="information-fill">Tertiary</rh-button>
+  <rh-button variant="close" icon="information-fill">Close</rh-button>
+  <rh-button variant="play" icon="information-fill">Play</rh-button>
+  <rh-button disabled="" icon="information-fill">Disabled</rh-button>
 </rh-context-demo>
 
 <style>
