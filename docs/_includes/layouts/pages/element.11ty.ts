@@ -793,7 +793,7 @@ export default class ElementsPage extends Renderer<Context> {
 
       const blocks = await Promise.all(map.entries().map(([kind, content]) => this.renderTemplate(dedent(`
         ~~~${kind} rhcodeblock {slot="${kind}"}
-        ${content}
+        ${content.trim()}
         ~~~
       `), 'md')).toArray());
       return blocks.join('\n');
