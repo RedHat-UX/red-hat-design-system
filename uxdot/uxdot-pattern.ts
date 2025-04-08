@@ -42,6 +42,12 @@ export class UxdotPattern extends SSRFailureRecoverableElement {
   /** Path to the pattern source file, relative to the input file */
   @property({ reflect: true }) src?: string;
 
+  /** Path to additional CSS file to include */
+  @property({ reflect: true, attribute: 'css-src' }) cssSrc?: string;
+
+  /** Path to additional JS file to include */
+  @property({ reflect: true, attribute: 'js-src' }) jsSrc?: string;
+
   /** Should the color picker be hidden? */
   @property({ type: Boolean, attribute: 'no-color-picker' }) noColorPicker = false;
 
