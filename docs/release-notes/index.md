@@ -71,6 +71,7 @@ Released April 7, 2025
 | 🌓 Color schemes: added built-in support for user color scheme preferences (aka "dark mode") | {{j()}} | `Color-palette` and [theming](https://ux.redhat.com/theming/) integrate into device color schemes, or can be overridden on a per-page or per-element basis. |
 | `<rh-dialog>`: Dialog's `overlay` CSS shadow part has been removed | {{j()}} | With the migration to HTML's native dialog element, `<rh-dialog>` now uses its `::backdrop` pseudo-element. For customization, please refer to our [theming documentation](https://ux.redhat.com/theming/customizing/) |
 | `<rh-accordion>`: Accordion panel always uses its parent's color scheme | {{j()}} | Users can no longer override an accordion panel's `color-palette` |
+| `<rh-accordion>`: removed unused `bordered` attribute | {{j()}} | Removed unused `bordered` attribute, which has had no effect since 2.0 |
 | `<rh-tabs>`: removed border color token | {{j()}} | Removed `--rh-tabs-border-color` and replaced with `--rh-color-border-subtle` token. |
 | `@rhds/tokens`: bumps version to 3.0 | {{j()}} | See the [design tokens' release notes](https://github.com/RedHat-UX/red-hat-design-tokens/releases/tag/v3.0.0) for changes. |
 | `@patternfly/pfe-core`: SSR support | {{j()}} | Server-side Rendering (SSR) support through SSR hints, `connectedCallback()` and context protocol in SSR scenarios. For more information, read our [PatternFly Elements Core v5 release notes](https://github.com/patternfly/patternfly-elements/releases/tag/%40patternfly%2Fpfe-core%405.0.0) |
@@ -79,6 +80,7 @@ Released April 7, 2025
 | ✨ Added `<rh-chip>` | {{i()}} | Chip creates a component that can be used in place of a checkbox. |
 | ✨ Added `<rh-disclosure>` | {{i()}} | A disclosure is a widget that enables content to be either collapsed (hidden) or expanded (visible). |
 | ✨ Added `<rh-announcement>` | {{i()}} | `<rh-announcement>` is a short banner that conveys an important message, such as promoting an event or advertising an organizational or product announcement. |
+| `<rh-alert>`: improved toast API | {{i()}} | Added `actions` and `persistent: true` options for toasts |
 | `<rh-footer>`: social link element can now take an `href` attribute | {{i()}} | While a slotted link will still work, the `<rh-footer-social-link>` elements can now have an `href` attribute instead. |
 | `<rh-accordion>`: fixed `expanded` and `expanded-index` attributes | {{p()}} | Accordion's `expanded` and `expanded-index` attributes now work as expected. |
 | `<rh-button>`: corrected play button's icon colors | {{p()}} | Adjusted the icon colors of the `play` button variant. |
