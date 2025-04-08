@@ -110,12 +110,11 @@ export class RhCta extends LitElement {
   /** Icon set */
   @property({ attribute: 'icon-set' }) iconSet: IconSetName = 'ui';
 
-
-  protected override async getUpdateComplete(): Promise<boolean> {
-    if (this.icon || !this.variant) {
+  override async scheduleUpdate() {
+    if (this.icon || !this.variant && !customElements.get('rh-icon')) {
       await import('@rhds/elements/rh-icon/rh-icon.js');
     }
-    return super.getUpdateComplete();
+    super.scheduleUpdate();
   }
 
   #logger = new Logger(this);
