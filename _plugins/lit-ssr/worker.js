@@ -14,11 +14,11 @@ import { pathToFileURL } from 'node:url';
 import { html } from 'lit';
 import { render } from '@lit-labs/ssr';
 import { collectResult } from '@lit-labs/ssr/lib/render-result.js';
-import Piscina from 'piscina';
 import { renderValue } from '@lit-labs/ssr/lib/render-value.js';
 
-import cssnano from 'cssnano';
+import Piscina from 'piscina';
 import Postcss from 'postcss';
+import cssnano from 'cssnano';
 
 const postcss = Postcss([cssnano]);
 

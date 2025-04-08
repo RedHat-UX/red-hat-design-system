@@ -62,8 +62,7 @@
     "@patternfly/elements/": "/assets/packages/@patternfly/elements/",
     "@patternfly/icons/": "/assets/packages/@patternfly/icons/",
     "@patternfly/pfe-core/": "/assets/packages/@patternfly/pfe-core/",
-    "@uxdot/elements/": "/assets/packages/@uxdot/elements/",
-    "playground-elements": "https://cdn.jsdelivr.net/npm/playground-elements@0.19.1/+esm"
+    "@uxdot/elements/": "/assets/packages/@uxdot/elements/"
   },
   "scopes": {
     "/assets/packages/": {
@@ -127,56 +126,10 @@
         import '@rhds/elements/rh-tag/rh-tag.js';
       </script><script type="module">
         import '@rhds/elements/rh-health-index/rh-health-index.js';
-      </script><style>
-        playground-project {
-          height: 825px;
-          &:fullscreen {
-            height: 100vh;
-            & rh-card {
-              height: 100%;
-              &::part(body) {
-                flex: auto;
-              }
-            }
-            & playground-file-editor,
-            & playground-preview {
-              height: 100%;
-            }
-          }
-          &:not(:defined) { opacity: 0; }
-          display: flex;
-          flex-flow: column;
-          gap: var(--rh-space-sm);
-          --playground-code-background: var(--rh-color-surface-lighter);
-          & playground-preview {
-            border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle-on-light);
-            &::part(preview-toolbar) {
-              display: none;
-            }
-          }
-          & rh-card {
-            &::part(header),
-            &::part(body) { margin: 0; }
-            &::part(footer) {
-              margin-block: var(--rh-space-lg);
-              justify-content: end;
-            }
-            &::part(body) {
-              border-block-end: var(--rh-border-width-sm) solid var(--rh-color-border-subtle-on-light);
-            }
-            & rh-button[slot="footer"] {
-              display: inline-block;
-              margin-inline-end: auto;
-            }
-          }
-          & rh-tab-panel {
-            display: none !important;
-          }
-        }
-      </style><script type="module">
+      </script><script type="module">
         import '@uxdot/elements/uxdot-copy-button.js';
         import '@uxdot/elements/uxdot-header.js';
-        import 'playground-elements';
+        import '@uxdot/elements/uxdot-demo.js';
         import '@rhds/elements/rh-button/rh-button.js';
         import '@rhds/elements/rh-card/rh-card.js';
         import '@rhds/elements/rh-code-block/rh-code-block.js';
@@ -185,28 +138,6 @@
         import '@rhds/elements/rh-subnav/rh-subnav.js';
         import '@rhds/elements/rh-surface/rh-surface.js';
         import '@rhds/elements/rh-tabs/rh-tabs.js';
-        import {TabExpandEvent} from '@rhds/elements/rh-tabs/rh-tab.js';
-        for (const tabs of document.querySelectorAll('.demo-fileswitcher')) {
-          tabs.addEventListener('expand', function(event) {
-            if (event instanceof TabExpandEvent && event.active) {
-              const { filename } = event.tab.dataset;
-              if (filename) {
-                const project = tabs.closest('playground-project');
-                const fileEditor = project.querySelector('playground-file-editor');
-                if (fileEditor) {
-                  fileEditor.filename = filename;
-                }
-              }
-            }
-          })
-        }
-        for (const playground of document.querySelectorAll('playground-project')) {
-          playground.addEventListener('click', function(event) {
-            if (event.target.dataset?.action === 'fullscreen') {
-              playground.requestFullscreen();
-            }
-          })
-        }
       </script><script type="module">
   import '@uxdot/elements/uxdot-feedback.js';
 </script><script type="module">
@@ -746,1474 +677,202 @@
 
       
       
-
-      
-    
-        <h2 id="demo-health-index">Health Index</h2>
-        <playground-project id="playground-rh-health-index-index">
-          
-      <script type="sample/importmap">
-        {
-          "imports": {
-            "@patternfly/icons/": "https://ux.redhat.com/assets/packages/@patternfly/icons/"
-          }
-        }
-      </script>
-      <script type="sample/js" filename="demo/rh-health-index-index-inline-0.js">import '@rhds/elements/rh-health-index/rh-health-index.js';
-</script>
-      <script type="sample/js" filename="demo/rh-health-index-color-context-inline-0.js">import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
-import '@rhds/elements/rh-surface/rh-surface.js';
-import '@rhds/elements/rh-health-index/rh-health-index.js';
-</script>
-      <script type="sample/css" filename="demo/rh-health-index-color-context-inline-1.css">.demo {
-  margin: 2rem;
-  padding: 0;
-  list-style: none;
-  width: 800px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 2rem;
-  & h2 {
-    font-size: var(--rh-font-size-body-text-lg, 1.125rem);
-    color: var(--rh-color-text-primary);
-  }
-  & li {
-    margin: 0;
-    padding: 0;
-  }
-  & rh-surface,
-  & div {
-    margin-block-end: 1rem;
-  }
-}
-</script>
-      <script type="sample/js" filename="demo/rh-health-index-screen-readers-inline-0.js">import '@rhds/elements/rh-health-index/rh-health-index.js';
-</script>
-      <script type="sample/css" filename="demo/rh-health-index-screen-readers-inline-1.css">section {
-  display: flex;
-  flex-flow: column;
-  gap: var(--rh-space-lg, 16px);
-}
-div[role="meter"] {
-  display: block;
-  height: 2em;
-  width: 5em;
-  background: linear-gradient(90deg, blue, red);
-  &::after {
-    color: white;
-    content: attr(aria-valuetext);
-  }
-}
-</script>
-      <script type="sample/js" filename="demo/rh-health-index-variants-inline-0.js">import '@rhds/elements/rh-health-index/rh-health-index.js';
-</script>
-      <script type="sample/css" filename="demo/rh-health-index-variants-inline-1.css">.demo {
-  margin: 2rem;
-  padding: 0;
-  list-style: none;
-  width: 800px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 2rem;
-  & h2 {
-    font-size: var(--rh-font-size-body-text-lg, 1.125rem);
-  }
-  & li {
-    display: flex;
-    flex-flow: column;
-    gap: var(--rh-space-lg, 16px);
-    margin: 0;
-    padding: 0;
-  }
-}
-</script>
-      <script type="sample/css" filename="demo/reset.css" hidden="">/* Box sizing rules */
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-}
-
-/* Remove default margin */
-:where(body,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-li,
-figure,
-figcaption,
-blockquote,
-dl,
-dd) {
-  margin: 0;
-}
-
-/* Default scroll behavior */
-html:focus-within {
-  scroll-behavior: smooth;
-}
-
-/* Inherit fonts for inputs and buttons */
-:where(input,
-button,
-textarea,
-select) {
-  font: inherit;
-}
-
-/* Remove all animations and transitions for people that prefer not to see them */
-@media (prefers-reduced-motion: reduce) {
-  html:focus-within {
-    scroll-behavior: auto;
-  }
-
-  *,
-  *:before,
-  *:after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-</script>
-      <script type="sample/css" filename="demo/fonts.css" hidden="">@font-face {
-  font-family: RedHatDisplay;
-  src: url('../assets/fonts/RedHatDisplay/RedHatDisplay-Regular.woff');
-  font-style: normal;
-  font-weight: 400;
-  text-rendering: optimizelegibility;
-}
-
-@font-face {
-  font-family: RedHatDisplay;
-  src: url('../assets/fonts/RedHatDisplay/RedHatDisplay-Medium.woff');
-  font-style: normal;
-  font-weight: 500;
-  text-rendering: optimizelegibility;
-}
-
-@font-face {
-  font-family: RedHatDisplay;
-  src: url('../assets/fonts/RedHatDisplay/RedHatDisplay-Bold.woff');
-  font-style: normal;
-  font-weight: 700;
-  text-rendering: optimizelegibility;
-}
-
-@font-face {
-  font-family: RedHatText;
-  src: url('../assets/fonts/RedHatText/RedHatText-Regular.woff');
-  font-style: normal;
-  font-weight: 400;
-  text-rendering: optimizelegibility;
-}
-
-@font-face {
-  font-family: RedHatText;
-  src: url('../assets/fonts/RedHatText/RedHatText-Medium.woff');
-  font-style: normal;
-  font-weight: 500;
-  text-rendering: optimizelegibility;
-}
-
-@font-face {
-  font-family: RedHatMono;
-  src: url('../assets/fonts/RedHatMono/RedHatMono-Bold.woff2') format('woff2');
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: RedHatMono;
-  src: url('../assets/fonts/RedHatMono/RedHatMono-BoldItalic.woff2') format('woff2');
-  font-weight: bold;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: RedHatMono;
-  src: url('../assets/fonts/RedHatMono/RedHatMono-Italic.woff2') format('woff2');
-  font-weight: normal;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: RedHatMono;
-  src: url('../assets/fonts/RedHatMono/RedHatMono-Light.woff2') format('woff2');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: RedHatMono;
-  src: url('../assets/fonts/RedHatMono/RedHatMono-LightItalic.woff2') format('woff2');
-  font-weight: 300;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: RedHatMono;
-  src: url('../assets/fonts/RedHatMono/RedHatMono-Medium.woff2') format('woff2');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: RedHatMono;
-  src: url('../assets/fonts/RedHatMono/RedHatMono-MediumItalic.woff2') format('woff2');
-  font-weight: 500;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: RedHatMono;
-  src: url('../assets/fonts/RedHatMono/RedHatMono-Regular.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: RedHatMono;
-  src: url('../assets/fonts/RedHatMono/RedHatMono-SemiBold.woff2') format('woff2');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: RedHatMono;
-  src: url('../assets/fonts/RedHatMono/RedHatMono-SemiBoldItalic.woff2') format('woff2');
-  font-weight: 600;
-  font-style: italic;
-  font-display: swap;
-}
-</script>
-      <script type="sample/css" filename="demo/typography.css" hidden="">body {
-  font-family: var(--rh-font-family-body-text);
-  font-size: 1rem;
-  line-height: var(--rh-line-height-body-text);
-}
-
-:where(h1, h2, h3, h4, h5, h6) {
-  font-family: var(--rh-font-family-heading);
-  line-height: var(--rh-line-height-heading);
-}
-
-:where(code) {
-  font-family: var(--rh-font-family-code);
-  line-height: var(--rh-line-height-code);
-}
-
-:where(kbd) {
-  font-family: var(--rh-font-family-body-text);
-  font-size: 1rem;
-  line-height: var(--rh-line-height-body-text);
-}
-
-:where(h1) {
-  font-size: var(--rh-font-size-heading-2xl);
-}
-
-:where(h2) {
-  font-size: var(--rh-font-size-heading-xl);
-}
-
-:where(h3) {
-  font-size: var(--rh-font-size-heading-lg);
-}
-
-:where(h4) {
-  font-size: var(--rh-font-size-heading-md);
-}
-
-:where(h5) {
-  font-size: var(--rh-font-size-heading-sm);
-}
-
-:where(h6) {
-  font-size: var(--rh-font-size-heading-xs);
-}
-
-:where(p) {
-  font-size: var(--rh-font-size-body-text-md);
-}
-
-:where(p, h1, h2, h3, h4, h5, h6, li) {
-  max-width: 56rem; /* warning: magic number */
-}
-</script>
-    
-          <script type="sample/html" filename="demo/index.html"><rh-health-index grade="C" size="lg">C</rh-health-index><!--playground-hide--><script type="module" src="./rh-health-index-index-inline-0.js">&lt;/script>
-<link rel="stylesheet" href="/styles/demo/styles.css"><!--playground-hide-end--></script>
-          <playground-preview project="playground-rh-health-index-index" html-file="demo/index.html"></playground-preview>
-          <rh-card>
-            <rh-tabs   slot="header" class="demo-fileswitcher" label-scroll-left="Scroll left" label-scroll-right="Scroll right"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{color:var(--rh-color-text-primary);container-name:host;container-type:inline-size;display:block}[part=tabs-container]{--_tab-max-width:200px;@container host (min-width: 768px){--_tab-max-width:none}display:flex;overflow:hidden;position:relative;&:before{border-color:var(--rh-color-border-subtle);border-style:solid;border-width:0 0 var(--rh-border-width-sm,1px);inset-inline-end:0;inset:0;position:absolute}}:is([part=tabs],[part=panels]){display:block}[part=tabs]{bottom:0;display:flex;font-size:var(--rh-font-size-body-text-md,1rem);margin:0;max-width:100%;overflow-x:auto;position:relative;scrollbar-width:none;width:auto}:is([part=tabs-container],[part=tabs],button){&:before{border-style:solid;content:"";inset-block-end:0;inset-inline:0;position:absolute}}:is([part=tabs],button){&:before{top:0}}#tablist{display:contents}[part=tabs]:before,button{border:0}button{flex:none;line-height:1;opacity:1;&:before{border-block-start-width:0}&:first-of-type{margin-inline-end:0;translate:0 0}&:nth-of-type(2){margin-inline-start:0;translate:0 0}&:disabled{pointer-events:none}}#container{--_arrow-color:var(--rh-color-accent-base);--_overflow-button-text-color:var(--rh-color-text-secondary);--_overflow-button-disabled-text-color:light-dark(var(--rh-color-gray-40,#a3a3a3),var(--rh-color-gray-50,#707070));--_overflow-button-hover-text-color:var(--rh-color-text-primary);color:var(--rh-color-text-primary);@container (min-width: 768px){--_panel-padding:var(--rh-space-2xl,32px)}&.vertical{@container host (min-width: 768px){display:grid;grid-template-areas:"tabs panels";grid-template-columns:max-content 1fr;[part=tabs-container]{display:inline-flex;flex-direction:column;grid-area:tabs;height:100%;overflow:visible;padding:0;&:before{border-block-end-width:0;border-inline-start-width:var(--rh-border-width-sm,1px);height:100%}}[part=panels]{grid-area:panels}[part=tabs]{flex-direction:column;flex-grow:1;max-width:15.625rem}}&.box{@container host (min-width: 768px){--_panel-padding:var(--rh-space-3xl,48px);[part=tabs-container]{&:before{border-inline-end-width:var(--rh-border-width-sm,1px);border-inline-start-width:0}}}}}&.overflow{--_panel-padding:var(--rh-space-lg,16px);& [part=tabs]{--_inset-inline-margin:0;inset-inline-start:-1px;position:relative;z-index:1}& [part=panels]{--_panels-overflow-padding:var(--rh-space-2xl,32px)}}&:not(.vertical){&.box{&.inset{& [part=container]:not(.overflow){--_panel-padding:var(--rh-space-2xl,32px) var(--rh-space-4xl,64px)}}}}}:host([box=inset]:not([vertical])) #container [part=tabs]{--_inset-inline-margin:var(--rh-space-2xl,32px)}:host(:is([centered],[box=inset])) #container:not(.overflow) [part=tabs]{margin-inline:var(--rh-tabs-inset,var(--_inset-inline-margin,auto))}:is(#previous-tab,#next-tab){background-color:var(--rh-color-surface);color:var(--_overflow-button-text-color);padding-block:0;padding-inline:var(--rh-space-lg,16px);position:relative;z-index:2;&:before{border-block-end:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle);border-block-start:var(--rh-border-width-sm,1px) solid #0000;border-inline:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle)}&:hover{color:var(--_overflow-button-hover-text-color,var(--rh-color-text-primary));&:before{border-block-end:var(--rh-border-width-lg,3px) solid var(--rh-color-border-subtle)}}&:disabled{color:var(--_overflow-button-disabled-text-color)}}#next-tab{inset-inline-start:-1px;&:before{border-inline-width:1px 0}}#previous-tab{&:before{border-inline-width:0 1px}}:is(#previous-tab,#next-tab) rh-icon:dir(rtl){rotate:180deg}</style><!--lit-part G+8dk0ZSQ+Y=-->
-      <!--lit-node 0--><div id="container" part="container" class="  ">
-        <div part="tabs-container"><!--lit-part--><!--/lit-part-->
-          <div id="tablist" role="tablist">
-            <!--lit-node 4--><slot name="tab"
-                  part="tabs"
-                  ></slot>
-          </div><!--lit-part--><!--/lit-part-->
-        </div>
-        <!--lit-node 6--><slot part="panels" ></slot>
-      </div>
-    <!--/lit-part--></template>
-              <rh-tab slot="tab" data-filename="demo/index.html">HTML</rh-tab>
-              <rh-tab-panel hidden=""></rh-tab-panel>
-              
-              <rh-tab slot="tab" data-filename="demo/rh-health-index-index-inline-0.js">JS</rh-tab>
-              <rh-tab-panel hidden=""></rh-tab-panel>
-            </rh-tabs>
-            <playground-file-editor project="playground-rh-health-index-index" filename="demo/index.html" line-numbers=""></playground-file-editor>
-            <rh-button slot="footer" variant="tertiary" data-action="fullscreen" icon="expand">FullScreen</rh-button>
-            <rh-cta slot="footer" href="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/rh-health-index/demo/rh-health-index.html">View source on GitHub</rh-cta>
-            <rh-cta slot="footer" href="/elements/health-index/demo/">View In Own Tab</rh-cta>
-          </rh-card>
-        </playground-project>
-      
-        <h2 id="demo-color-context">Color Context</h2>
-        <playground-project id="playground-rh-health-index-color-context-index">
-          
-      <script type="sample/importmap">
-        {
-          "imports": {
-            "@patternfly/icons/": "https://ux.redhat.com/assets/packages/@patternfly/icons/"
-          }
-        }
-      </script>
-      <script type="sample/js" filename="demo/rh-health-index-index-inline-0.js">import '@rhds/elements/rh-health-index/rh-health-index.js';
-</script>
-      <script type="sample/js" filename="demo/rh-health-index-color-context-inline-0.js">import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
-import '@rhds/elements/rh-surface/rh-surface.js';
-import '@rhds/elements/rh-health-index/rh-health-index.js';
-</script>
-      <script type="sample/css" filename="demo/rh-health-index-color-context-inline-1.css">.demo {
-  margin: 2rem;
-  padding: 0;
-  list-style: none;
-  width: 800px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 2rem;
-  & h2 {
-    font-size: var(--rh-font-size-body-text-lg, 1.125rem);
-    color: var(--rh-color-text-primary);
-  }
-  & li {
-    margin: 0;
-    padding: 0;
-  }
-  & rh-surface,
-  & div {
-    margin-block-end: 1rem;
-  }
-}
-</script>
-      <script type="sample/js" filename="demo/rh-health-index-screen-readers-inline-0.js">import '@rhds/elements/rh-health-index/rh-health-index.js';
-</script>
-      <script type="sample/css" filename="demo/rh-health-index-screen-readers-inline-1.css">section {
-  display: flex;
-  flex-flow: column;
-  gap: var(--rh-space-lg, 16px);
-}
-div[role="meter"] {
-  display: block;
-  height: 2em;
-  width: 5em;
-  background: linear-gradient(90deg, blue, red);
-  &::after {
-    color: white;
-    content: attr(aria-valuetext);
-  }
-}
-</script>
-      <script type="sample/js" filename="demo/rh-health-index-variants-inline-0.js">import '@rhds/elements/rh-health-index/rh-health-index.js';
-</script>
-      <script type="sample/css" filename="demo/rh-health-index-variants-inline-1.css">.demo {
-  margin: 2rem;
-  padding: 0;
-  list-style: none;
-  width: 800px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 2rem;
-  & h2 {
-    font-size: var(--rh-font-size-body-text-lg, 1.125rem);
-  }
-  & li {
-    display: flex;
-    flex-flow: column;
-    gap: var(--rh-space-lg, 16px);
-    margin: 0;
-    padding: 0;
-  }
-}
-</script>
-      <script type="sample/css" filename="demo/reset.css" hidden="">/* Box sizing rules */
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-}
-
-/* Remove default margin */
-:where(body,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-li,
-figure,
-figcaption,
-blockquote,
-dl,
-dd) {
-  margin: 0;
-}
-
-/* Default scroll behavior */
-html:focus-within {
-  scroll-behavior: smooth;
-}
-
-/* Inherit fonts for inputs and buttons */
-:where(input,
-button,
-textarea,
-select) {
-  font: inherit;
-}
-
-/* Remove all animations and transitions for people that prefer not to see them */
-@media (prefers-reduced-motion: reduce) {
-  html:focus-within {
-    scroll-behavior: auto;
-  }
-
-  *,
-  *:before,
-  *:after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-</script>
-      <script type="sample/css" filename="demo/fonts.css" hidden="">@font-face {
-  font-family: RedHatDisplay;
-  src: url('../assets/fonts/RedHatDisplay/RedHatDisplay-Regular.woff');
-  font-style: normal;
-  font-weight: 400;
-  text-rendering: optimizelegibility;
-}
-
-@font-face {
-  font-family: RedHatDisplay;
-  src: url('../assets/fonts/RedHatDisplay/RedHatDisplay-Medium.woff');
-  font-style: normal;
-  font-weight: 500;
-  text-rendering: optimizelegibility;
-}
-
-@font-face {
-  font-family: RedHatDisplay;
-  src: url('../assets/fonts/RedHatDisplay/RedHatDisplay-Bold.woff');
-  font-style: normal;
-  font-weight: 700;
-  text-rendering: optimizelegibility;
-}
-
-@font-face {
-  font-family: RedHatText;
-  src: url('../assets/fonts/RedHatText/RedHatText-Regular.woff');
-  font-style: normal;
-  font-weight: 400;
-  text-rendering: optimizelegibility;
-}
-
-@font-face {
-  font-family: RedHatText;
-  src: url('../assets/fonts/RedHatText/RedHatText-Medium.woff');
-  font-style: normal;
-  font-weight: 500;
-  text-rendering: optimizelegibility;
-}
-
-@font-face {
-  font-family: RedHatMono;
-  src: url('../assets/fonts/RedHatMono/RedHatMono-Bold.woff2') format('woff2');
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: RedHatMono;
-  src: url('../assets/fonts/RedHatMono/RedHatMono-BoldItalic.woff2') format('woff2');
-  font-weight: bold;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: RedHatMono;
-  src: url('../assets/fonts/RedHatMono/RedHatMono-Italic.woff2') format('woff2');
-  font-weight: normal;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: RedHatMono;
-  src: url('../assets/fonts/RedHatMono/RedHatMono-Light.woff2') format('woff2');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: RedHatMono;
-  src: url('../assets/fonts/RedHatMono/RedHatMono-LightItalic.woff2') format('woff2');
-  font-weight: 300;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: RedHatMono;
-  src: url('../assets/fonts/RedHatMono/RedHatMono-Medium.woff2') format('woff2');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: RedHatMono;
-  src: url('../assets/fonts/RedHatMono/RedHatMono-MediumItalic.woff2') format('woff2');
-  font-weight: 500;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: RedHatMono;
-  src: url('../assets/fonts/RedHatMono/RedHatMono-Regular.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: RedHatMono;
-  src: url('../assets/fonts/RedHatMono/RedHatMono-SemiBold.woff2') format('woff2');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: RedHatMono;
-  src: url('../assets/fonts/RedHatMono/RedHatMono-SemiBoldItalic.woff2') format('woff2');
-  font-weight: 600;
-  font-style: italic;
-  font-display: swap;
-}
-</script>
-      <script type="sample/css" filename="demo/typography.css" hidden="">body {
-  font-family: var(--rh-font-family-body-text);
-  font-size: 1rem;
-  line-height: var(--rh-line-height-body-text);
-}
-
-:where(h1, h2, h3, h4, h5, h6) {
-  font-family: var(--rh-font-family-heading);
-  line-height: var(--rh-line-height-heading);
-}
-
-:where(code) {
-  font-family: var(--rh-font-family-code);
-  line-height: var(--rh-line-height-code);
-}
-
-:where(kbd) {
-  font-family: var(--rh-font-family-body-text);
-  font-size: 1rem;
-  line-height: var(--rh-line-height-body-text);
-}
-
-:where(h1) {
-  font-size: var(--rh-font-size-heading-2xl);
-}
-
-:where(h2) {
-  font-size: var(--rh-font-size-heading-xl);
-}
-
-:where(h3) {
-  font-size: var(--rh-font-size-heading-lg);
-}
-
-:where(h4) {
-  font-size: var(--rh-font-size-heading-md);
-}
-
-:where(h5) {
-  font-size: var(--rh-font-size-heading-sm);
-}
-
-:where(h6) {
-  font-size: var(--rh-font-size-heading-xs);
-}
-
-:where(p) {
-  font-size: var(--rh-font-size-body-text-md);
-}
-
-:where(p, h1, h2, h3, h4, h5, h6, li) {
-  max-width: 56rem; /* warning: magic number */
-}
-</script>
-    
-          <script type="sample/html" filename="demo/color-context/index.html"><rh-context-demo>
-  <ul class="demo">
-    <li>
-      <h2>SM</h2>
-      <div><rh-health-index grade="A" size="sm">A</rh-health-index></div>
-      <div><rh-health-index grade="B" size="sm">B</rh-health-index></div>
-      <div><rh-health-index grade="C" size="sm">C</rh-health-index></div>
-      <div><rh-health-index grade="D" size="sm">D</rh-health-index></div>
-      <div><rh-health-index grade="E" size="sm">E</rh-health-index></div>
-      <div><rh-health-index grade="F" size="sm">F</rh-health-index></div>
-    </li>
-    <li>
-      <h2>Default</h2>
-      <div><rh-health-index grade="A">A</rh-health-index></div>
-      <div><rh-health-index grade="B">B</rh-health-index></div>
-      <div><rh-health-index grade="C">C</rh-health-index></div>
-      <div><rh-health-index grade="D">D</rh-health-index></div>
-      <div><rh-health-index grade="E">E</rh-health-index></div>
-      <div><rh-health-index grade="F">F</rh-health-index></div>
-    </li>
-    <li>
-      <h2>LG</h2>
-      <div><rh-health-index grade="A" size="lg">A</rh-health-index></div>
-      <div><rh-health-index grade="B" size="lg">B</rh-health-index></div>
-      <div><rh-health-index grade="C" size="lg">C</rh-health-index></div>
-      <div><rh-health-index grade="D" size="lg">D</rh-health-index></div>
-      <div><rh-health-index grade="E" size="lg">E</rh-health-index></div>
-      <div><rh-health-index grade="F" size="lg">F</rh-health-index></div>
-    </li>
-    <li>
-      <h2>XL</h2>
-      <div><rh-health-index grade="A" size="xl">A</rh-health-index></div>
-      <div><rh-health-index grade="B" size="xl">B</rh-health-index></div>
-      <div><rh-health-index grade="C" size="xl">C</rh-health-index></div>
-      <div><rh-health-index grade="D" size="xl">D</rh-health-index></div>
-      <div><rh-health-index grade="E" size="xl">E</rh-health-index></div>
-      <div><rh-health-index grade="F" size="xl">F</rh-health-index></div>
-    </li>
-  </ul>
-</rh-context-demo><!--playground-hide--><script type="module" src="../rh-health-index-color-context-inline-0.js">&lt;/script>
-<link rel="stylesheet" href="../rh-health-index-color-context-inline-1.css">
-<link rel="stylesheet" href="/styles/demo/styles.css"><!--playground-hide-end--></script>
-          <playground-preview project="playground-rh-health-index-color-context-index" html-file="demo/color-context/index.html"></playground-preview>
-          <rh-card>
-            <rh-tabs   slot="header" class="demo-fileswitcher" label-scroll-left="Scroll left" label-scroll-right="Scroll right"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{color:var(--rh-color-text-primary);container-name:host;container-type:inline-size;display:block}[part=tabs-container]{--_tab-max-width:200px;@container host (min-width: 768px){--_tab-max-width:none}display:flex;overflow:hidden;position:relative;&:before{border-color:var(--rh-color-border-subtle);border-style:solid;border-width:0 0 var(--rh-border-width-sm,1px);inset-inline-end:0;inset:0;position:absolute}}:is([part=tabs],[part=panels]){display:block}[part=tabs]{bottom:0;display:flex;font-size:var(--rh-font-size-body-text-md,1rem);margin:0;max-width:100%;overflow-x:auto;position:relative;scrollbar-width:none;width:auto}:is([part=tabs-container],[part=tabs],button){&:before{border-style:solid;content:"";inset-block-end:0;inset-inline:0;position:absolute}}:is([part=tabs],button){&:before{top:0}}#tablist{display:contents}[part=tabs]:before,button{border:0}button{flex:none;line-height:1;opacity:1;&:before{border-block-start-width:0}&:first-of-type{margin-inline-end:0;translate:0 0}&:nth-of-type(2){margin-inline-start:0;translate:0 0}&:disabled{pointer-events:none}}#container{--_arrow-color:var(--rh-color-accent-base);--_overflow-button-text-color:var(--rh-color-text-secondary);--_overflow-button-disabled-text-color:light-dark(var(--rh-color-gray-40,#a3a3a3),var(--rh-color-gray-50,#707070));--_overflow-button-hover-text-color:var(--rh-color-text-primary);color:var(--rh-color-text-primary);@container (min-width: 768px){--_panel-padding:var(--rh-space-2xl,32px)}&.vertical{@container host (min-width: 768px){display:grid;grid-template-areas:"tabs panels";grid-template-columns:max-content 1fr;[part=tabs-container]{display:inline-flex;flex-direction:column;grid-area:tabs;height:100%;overflow:visible;padding:0;&:before{border-block-end-width:0;border-inline-start-width:var(--rh-border-width-sm,1px);height:100%}}[part=panels]{grid-area:panels}[part=tabs]{flex-direction:column;flex-grow:1;max-width:15.625rem}}&.box{@container host (min-width: 768px){--_panel-padding:var(--rh-space-3xl,48px);[part=tabs-container]{&:before{border-inline-end-width:var(--rh-border-width-sm,1px);border-inline-start-width:0}}}}}&.overflow{--_panel-padding:var(--rh-space-lg,16px);& [part=tabs]{--_inset-inline-margin:0;inset-inline-start:-1px;position:relative;z-index:1}& [part=panels]{--_panels-overflow-padding:var(--rh-space-2xl,32px)}}&:not(.vertical){&.box{&.inset{& [part=container]:not(.overflow){--_panel-padding:var(--rh-space-2xl,32px) var(--rh-space-4xl,64px)}}}}}:host([box=inset]:not([vertical])) #container [part=tabs]{--_inset-inline-margin:var(--rh-space-2xl,32px)}:host(:is([centered],[box=inset])) #container:not(.overflow) [part=tabs]{margin-inline:var(--rh-tabs-inset,var(--_inset-inline-margin,auto))}:is(#previous-tab,#next-tab){background-color:var(--rh-color-surface);color:var(--_overflow-button-text-color);padding-block:0;padding-inline:var(--rh-space-lg,16px);position:relative;z-index:2;&:before{border-block-end:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle);border-block-start:var(--rh-border-width-sm,1px) solid #0000;border-inline:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle)}&:hover{color:var(--_overflow-button-hover-text-color,var(--rh-color-text-primary));&:before{border-block-end:var(--rh-border-width-lg,3px) solid var(--rh-color-border-subtle)}}&:disabled{color:var(--_overflow-button-disabled-text-color)}}#next-tab{inset-inline-start:-1px;&:before{border-inline-width:1px 0}}#previous-tab{&:before{border-inline-width:0 1px}}:is(#previous-tab,#next-tab) rh-icon:dir(rtl){rotate:180deg}</style><!--lit-part G+8dk0ZSQ+Y=-->
-      <!--lit-node 0--><div id="container" part="container" class="  ">
-        <div part="tabs-container"><!--lit-part--><!--/lit-part-->
-          <div id="tablist" role="tablist">
-            <!--lit-node 4--><slot name="tab"
-                  part="tabs"
-                  ></slot>
-          </div><!--lit-part--><!--/lit-part-->
-        </div>
-        <!--lit-node 6--><slot part="panels" ></slot>
-      </div>
-    <!--/lit-part--></template>
-              <rh-tab slot="tab" data-filename="demo/color-context/index.html">HTML</rh-tab>
-              <rh-tab-panel hidden=""></rh-tab-panel>
-              
-              <rh-tab slot="tab" data-filename="demo/rh-health-index-color-context-inline-0.js">JS</rh-tab>
-              <rh-tab-panel hidden=""></rh-tab-panel>
-              <rh-tab slot="tab" data-filename="demo/rh-health-index-color-context-inline-1.css">CSS</rh-tab>
-              <rh-tab-panel hidden=""></rh-tab-panel>
-            </rh-tabs>
-            <playground-file-editor project="playground-rh-health-index-color-context-index" filename="demo/color-context/index.html" line-numbers=""></playground-file-editor>
-            <rh-button slot="footer" variant="tertiary" data-action="fullscreen" icon="expand">FullScreen</rh-button>
-            <rh-cta slot="footer" href="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/rh-health-index/demo/color-context.html">View source on GitHub</rh-cta>
-            <rh-cta slot="footer" href="/elements/health-index/demo/color-context/">View In Own Tab</rh-cta>
-          </rh-card>
-        </playground-project>
-      
-        <h2 id="demo-screen-readers">Screen Readers</h2>
-        <playground-project id="playground-rh-health-index-screen-readers-index">
-          
-      <script type="sample/importmap">
-        {
-          "imports": {
-            "@patternfly/icons/": "https://ux.redhat.com/assets/packages/@patternfly/icons/"
-          }
-        }
-      </script>
-      <script type="sample/js" filename="demo/rh-health-index-index-inline-0.js">import '@rhds/elements/rh-health-index/rh-health-index.js';
-</script>
-      <script type="sample/js" filename="demo/rh-health-index-color-context-inline-0.js">import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
-import '@rhds/elements/rh-surface/rh-surface.js';
-import '@rhds/elements/rh-health-index/rh-health-index.js';
-</script>
-      <script type="sample/css" filename="demo/rh-health-index-color-context-inline-1.css">.demo {
-  margin: 2rem;
-  padding: 0;
-  list-style: none;
-  width: 800px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 2rem;
-  & h2 {
-    font-size: var(--rh-font-size-body-text-lg, 1.125rem);
-    color: var(--rh-color-text-primary);
-  }
-  & li {
-    margin: 0;
-    padding: 0;
-  }
-  & rh-surface,
-  & div {
-    margin-block-end: 1rem;
-  }
-}
-</script>
-      <script type="sample/js" filename="demo/rh-health-index-screen-readers-inline-0.js">import '@rhds/elements/rh-health-index/rh-health-index.js';
-</script>
-      <script type="sample/css" filename="demo/rh-health-index-screen-readers-inline-1.css">section {
-  display: flex;
-  flex-flow: column;
-  gap: var(--rh-space-lg, 16px);
-}
-div[role="meter"] {
-  display: block;
-  height: 2em;
-  width: 5em;
-  background: linear-gradient(90deg, blue, red);
-  &::after {
-    color: white;
-    content: attr(aria-valuetext);
-  }
-}
-</script>
-      <script type="sample/js" filename="demo/rh-health-index-variants-inline-0.js">import '@rhds/elements/rh-health-index/rh-health-index.js';
-</script>
-      <script type="sample/css" filename="demo/rh-health-index-variants-inline-1.css">.demo {
-  margin: 2rem;
-  padding: 0;
-  list-style: none;
-  width: 800px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 2rem;
-  & h2 {
-    font-size: var(--rh-font-size-body-text-lg, 1.125rem);
-  }
-  & li {
-    display: flex;
-    flex-flow: column;
-    gap: var(--rh-space-lg, 16px);
-    margin: 0;
-    padding: 0;
-  }
-}
-</script>
-      <script type="sample/css" filename="demo/reset.css" hidden="">/* Box sizing rules */
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-}
-
-/* Remove default margin */
-:where(body,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-li,
-figure,
-figcaption,
-blockquote,
-dl,
-dd) {
-  margin: 0;
-}
-
-/* Default scroll behavior */
-html:focus-within {
-  scroll-behavior: smooth;
-}
-
-/* Inherit fonts for inputs and buttons */
-:where(input,
-button,
-textarea,
-select) {
-  font: inherit;
-}
-
-/* Remove all animations and transitions for people that prefer not to see them */
-@media (prefers-reduced-motion: reduce) {
-  html:focus-within {
-    scroll-behavior: auto;
-  }
-
-  *,
-  *:before,
-  *:after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-</script>
-      <script type="sample/css" filename="demo/fonts.css" hidden="">@font-face {
-  font-family: RedHatDisplay;
-  src: url('../assets/fonts/RedHatDisplay/RedHatDisplay-Regular.woff');
-  font-style: normal;
-  font-weight: 400;
-  text-rendering: optimizelegibility;
-}
-
-@font-face {
-  font-family: RedHatDisplay;
-  src: url('../assets/fonts/RedHatDisplay/RedHatDisplay-Medium.woff');
-  font-style: normal;
-  font-weight: 500;
-  text-rendering: optimizelegibility;
-}
-
-@font-face {
-  font-family: RedHatDisplay;
-  src: url('../assets/fonts/RedHatDisplay/RedHatDisplay-Bold.woff');
-  font-style: normal;
-  font-weight: 700;
-  text-rendering: optimizelegibility;
-}
-
-@font-face {
-  font-family: RedHatText;
-  src: url('../assets/fonts/RedHatText/RedHatText-Regular.woff');
-  font-style: normal;
-  font-weight: 400;
-  text-rendering: optimizelegibility;
-}
-
-@font-face {
-  font-family: RedHatText;
-  src: url('../assets/fonts/RedHatText/RedHatText-Medium.woff');
-  font-style: normal;
-  font-weight: 500;
-  text-rendering: optimizelegibility;
-}
-
-@font-face {
-  font-family: RedHatMono;
-  src: url('../assets/fonts/RedHatMono/RedHatMono-Bold.woff2') format('woff2');
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: RedHatMono;
-  src: url('../assets/fonts/RedHatMono/RedHatMono-BoldItalic.woff2') format('woff2');
-  font-weight: bold;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: RedHatMono;
-  src: url('../assets/fonts/RedHatMono/RedHatMono-Italic.woff2') format('woff2');
-  font-weight: normal;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: RedHatMono;
-  src: url('../assets/fonts/RedHatMono/RedHatMono-Light.woff2') format('woff2');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: RedHatMono;
-  src: url('../assets/fonts/RedHatMono/RedHatMono-LightItalic.woff2') format('woff2');
-  font-weight: 300;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: RedHatMono;
-  src: url('../assets/fonts/RedHatMono/RedHatMono-Medium.woff2') format('woff2');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: RedHatMono;
-  src: url('../assets/fonts/RedHatMono/RedHatMono-MediumItalic.woff2') format('woff2');
-  font-weight: 500;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: RedHatMono;
-  src: url('../assets/fonts/RedHatMono/RedHatMono-Regular.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: RedHatMono;
-  src: url('../assets/fonts/RedHatMono/RedHatMono-SemiBold.woff2') format('woff2');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: RedHatMono;
-  src: url('../assets/fonts/RedHatMono/RedHatMono-SemiBoldItalic.woff2') format('woff2');
-  font-weight: 600;
-  font-style: italic;
-  font-display: swap;
-}
-</script>
-      <script type="sample/css" filename="demo/typography.css" hidden="">body {
-  font-family: var(--rh-font-family-body-text);
-  font-size: 1rem;
-  line-height: var(--rh-line-height-body-text);
-}
-
-:where(h1, h2, h3, h4, h5, h6) {
-  font-family: var(--rh-font-family-heading);
-  line-height: var(--rh-line-height-heading);
-}
-
-:where(code) {
-  font-family: var(--rh-font-family-code);
-  line-height: var(--rh-line-height-code);
-}
-
-:where(kbd) {
-  font-family: var(--rh-font-family-body-text);
-  font-size: 1rem;
-  line-height: var(--rh-line-height-body-text);
-}
-
-:where(h1) {
-  font-size: var(--rh-font-size-heading-2xl);
-}
-
-:where(h2) {
-  font-size: var(--rh-font-size-heading-xl);
-}
-
-:where(h3) {
-  font-size: var(--rh-font-size-heading-lg);
-}
-
-:where(h4) {
-  font-size: var(--rh-font-size-heading-md);
-}
-
-:where(h5) {
-  font-size: var(--rh-font-size-heading-sm);
-}
-
-:where(h6) {
-  font-size: var(--rh-font-size-heading-xs);
-}
-
-:where(p) {
-  font-size: var(--rh-font-size-body-text-md);
-}
-
-:where(p, h1, h2, h3, h4, h5, h6, li) {
-  max-width: 56rem; /* warning: magic number */
-}
-</script>
-    
-          <script type="sample/html" filename="demo/screen-readers/index.html"><section>
-  <h2>&lt;rh-health-index&gt; element</h2>
-  <rh-health-index grade="A" size="sm">A</rh-health-index>
-  <rh-health-index grade="B" size="sm">B</rh-health-index>
-  <rh-health-index grade="C" size="sm">C</rh-health-index>
-  <rh-health-index grade="D" size="md">D</rh-health-index>
-  <rh-health-index grade="E" size="lg">E</rh-health-index>
-  <rh-health-index grade="F" size="xl">F</rh-health-index>
-</section>
-
-<section>
-  <h2>ARIA attrs for <abbr title="localization">l10n</abbr></h2>
-  <rh-health-index grade="A" aria-label="בריאות מדורג מדרגות א עד ו" aria-valuetext="דרגה א" size="sm">A</rh-health-index>
-</section>
-
-<section>
-  <h2>Native &gt;meter&gt; element</h2>
-  <meter min="1" max="6" value="1" aria-valuetext="Grade A" aria-label="Health graded A to F"></meter>
-  <meter min="1" max="6" value="2" aria-valuetext="Grade B" aria-label="Health graded A to F"></meter>
-  <meter min="1" max="6" value="3" aria-valuetext="Grade C" aria-label="Health graded A to F"></meter>
-  <meter min="1" max="6" value="4" aria-valuetext="Grade D" aria-label="Health graded A to F"></meter>
-  <meter min="1" max="6" value="5" aria-valuetext="Grade E" aria-label="Health graded A to F"></meter>
-  <meter min="1" max="6" value="6" aria-valuetext="Grade F" aria-label="Health graded A to F"></meter>
-</section>
-
-<section>
-  <h2>ARIA-attributes &gt;meter&gt; element</h2>
-  <div role="meter" aria-valuemin="1" aria-valuemax="6" aria-valuenow="1" aria-valuetext="Grade A" aria-label="Health graded A to F">A</div>
-  <div role="meter" aria-valuemin="1" aria-valuemax="6" aria-valuenow="1" aria-valuetext="Grade B" aria-label="Health graded A to F">B</div>
-  <div role="meter" aria-valuemin="1" aria-valuemax="6" aria-valuenow="1" aria-valuetext="Grade C" aria-label="Health graded A to F">C</div>
-  <div role="meter" aria-valuemin="1" aria-valuemax="6" aria-valuenow="1" aria-valuetext="Grade D" aria-label="Health graded A to F">D</div>
-  <div role="meter" aria-valuemin="1" aria-valuemax="6" aria-valuenow="1" aria-valuetext="Grade E" aria-label="Health graded A to F">E</div>
-  <div role="meter" aria-valuemin="1" aria-valuemax="6" aria-valuenow="1" aria-valuetext="Grade F" aria-label="Health graded A to F">F</div>
-</section><!--playground-hide--><script type="module" src="../rh-health-index-screen-readers-inline-0.js">&lt;/script>
-<link rel="stylesheet" href="../rh-health-index-screen-readers-inline-1.css">
-<link rel="stylesheet" href="/styles/demo/styles.css"><!--playground-hide-end--></script>
-          <playground-preview project="playground-rh-health-index-screen-readers-index" html-file="demo/screen-readers/index.html"></playground-preview>
-          <rh-card>
-            <rh-tabs   slot="header" class="demo-fileswitcher" label-scroll-left="Scroll left" label-scroll-right="Scroll right"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{color:var(--rh-color-text-primary);container-name:host;container-type:inline-size;display:block}[part=tabs-container]{--_tab-max-width:200px;@container host (min-width: 768px){--_tab-max-width:none}display:flex;overflow:hidden;position:relative;&:before{border-color:var(--rh-color-border-subtle);border-style:solid;border-width:0 0 var(--rh-border-width-sm,1px);inset-inline-end:0;inset:0;position:absolute}}:is([part=tabs],[part=panels]){display:block}[part=tabs]{bottom:0;display:flex;font-size:var(--rh-font-size-body-text-md,1rem);margin:0;max-width:100%;overflow-x:auto;position:relative;scrollbar-width:none;width:auto}:is([part=tabs-container],[part=tabs],button){&:before{border-style:solid;content:"";inset-block-end:0;inset-inline:0;position:absolute}}:is([part=tabs],button){&:before{top:0}}#tablist{display:contents}[part=tabs]:before,button{border:0}button{flex:none;line-height:1;opacity:1;&:before{border-block-start-width:0}&:first-of-type{margin-inline-end:0;translate:0 0}&:nth-of-type(2){margin-inline-start:0;translate:0 0}&:disabled{pointer-events:none}}#container{--_arrow-color:var(--rh-color-accent-base);--_overflow-button-text-color:var(--rh-color-text-secondary);--_overflow-button-disabled-text-color:light-dark(var(--rh-color-gray-40,#a3a3a3),var(--rh-color-gray-50,#707070));--_overflow-button-hover-text-color:var(--rh-color-text-primary);color:var(--rh-color-text-primary);@container (min-width: 768px){--_panel-padding:var(--rh-space-2xl,32px)}&.vertical{@container host (min-width: 768px){display:grid;grid-template-areas:"tabs panels";grid-template-columns:max-content 1fr;[part=tabs-container]{display:inline-flex;flex-direction:column;grid-area:tabs;height:100%;overflow:visible;padding:0;&:before{border-block-end-width:0;border-inline-start-width:var(--rh-border-width-sm,1px);height:100%}}[part=panels]{grid-area:panels}[part=tabs]{flex-direction:column;flex-grow:1;max-width:15.625rem}}&.box{@container host (min-width: 768px){--_panel-padding:var(--rh-space-3xl,48px);[part=tabs-container]{&:before{border-inline-end-width:var(--rh-border-width-sm,1px);border-inline-start-width:0}}}}}&.overflow{--_panel-padding:var(--rh-space-lg,16px);& [part=tabs]{--_inset-inline-margin:0;inset-inline-start:-1px;position:relative;z-index:1}& [part=panels]{--_panels-overflow-padding:var(--rh-space-2xl,32px)}}&:not(.vertical){&.box{&.inset{& [part=container]:not(.overflow){--_panel-padding:var(--rh-space-2xl,32px) var(--rh-space-4xl,64px)}}}}}:host([box=inset]:not([vertical])) #container [part=tabs]{--_inset-inline-margin:var(--rh-space-2xl,32px)}:host(:is([centered],[box=inset])) #container:not(.overflow) [part=tabs]{margin-inline:var(--rh-tabs-inset,var(--_inset-inline-margin,auto))}:is(#previous-tab,#next-tab){background-color:var(--rh-color-surface);color:var(--_overflow-button-text-color);padding-block:0;padding-inline:var(--rh-space-lg,16px);position:relative;z-index:2;&:before{border-block-end:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle);border-block-start:var(--rh-border-width-sm,1px) solid #0000;border-inline:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle)}&:hover{color:var(--_overflow-button-hover-text-color,var(--rh-color-text-primary));&:before{border-block-end:var(--rh-border-width-lg,3px) solid var(--rh-color-border-subtle)}}&:disabled{color:var(--_overflow-button-disabled-text-color)}}#next-tab{inset-inline-start:-1px;&:before{border-inline-width:1px 0}}#previous-tab{&:before{border-inline-width:0 1px}}:is(#previous-tab,#next-tab) rh-icon:dir(rtl){rotate:180deg}</style><!--lit-part G+8dk0ZSQ+Y=-->
-      <!--lit-node 0--><div id="container" part="container" class="  ">
-        <div part="tabs-container"><!--lit-part--><!--/lit-part-->
-          <div id="tablist" role="tablist">
-            <!--lit-node 4--><slot name="tab"
-                  part="tabs"
-                  ></slot>
-          </div><!--lit-part--><!--/lit-part-->
-        </div>
-        <!--lit-node 6--><slot part="panels" ></slot>
-      </div>
-    <!--/lit-part--></template>
-              <rh-tab slot="tab" data-filename="demo/screen-readers/index.html">HTML</rh-tab>
-              <rh-tab-panel hidden=""></rh-tab-panel>
-              
-              <rh-tab slot="tab" data-filename="demo/rh-health-index-screen-readers-inline-0.js">JS</rh-tab>
-              <rh-tab-panel hidden=""></rh-tab-panel>
-              <rh-tab slot="tab" data-filename="demo/rh-health-index-screen-readers-inline-1.css">CSS</rh-tab>
-              <rh-tab-panel hidden=""></rh-tab-panel>
-            </rh-tabs>
-            <playground-file-editor project="playground-rh-health-index-screen-readers-index" filename="demo/screen-readers/index.html" line-numbers=""></playground-file-editor>
-            <rh-button slot="footer" variant="tertiary" data-action="fullscreen" icon="expand">FullScreen</rh-button>
-            <rh-cta slot="footer" href="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/rh-health-index/demo/screen-readers.html">View source on GitHub</rh-cta>
-            <rh-cta slot="footer" href="/elements/health-index/demo/screen-readers/">View In Own Tab</rh-cta>
-          </rh-card>
-        </playground-project>
-      
-        <h2 id="demo-variants">Variants</h2>
-        <playground-project id="playground-rh-health-index-variants-index">
-          
-      <script type="sample/importmap">
-        {
-          "imports": {
-            "@patternfly/icons/": "https://ux.redhat.com/assets/packages/@patternfly/icons/"
-          }
-        }
-      </script>
-      <script type="sample/js" filename="demo/rh-health-index-index-inline-0.js">import '@rhds/elements/rh-health-index/rh-health-index.js';
-</script>
-      <script type="sample/js" filename="demo/rh-health-index-color-context-inline-0.js">import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
-import '@rhds/elements/rh-surface/rh-surface.js';
-import '@rhds/elements/rh-health-index/rh-health-index.js';
-</script>
-      <script type="sample/css" filename="demo/rh-health-index-color-context-inline-1.css">.demo {
-  margin: 2rem;
-  padding: 0;
-  list-style: none;
-  width: 800px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 2rem;
-  & h2 {
-    font-size: var(--rh-font-size-body-text-lg, 1.125rem);
-    color: var(--rh-color-text-primary);
-  }
-  & li {
-    margin: 0;
-    padding: 0;
-  }
-  & rh-surface,
-  & div {
-    margin-block-end: 1rem;
-  }
-}
-</script>
-      <script type="sample/js" filename="demo/rh-health-index-screen-readers-inline-0.js">import '@rhds/elements/rh-health-index/rh-health-index.js';
-</script>
-      <script type="sample/css" filename="demo/rh-health-index-screen-readers-inline-1.css">section {
-  display: flex;
-  flex-flow: column;
-  gap: var(--rh-space-lg, 16px);
-}
-div[role="meter"] {
-  display: block;
-  height: 2em;
-  width: 5em;
-  background: linear-gradient(90deg, blue, red);
-  &::after {
-    color: white;
-    content: attr(aria-valuetext);
-  }
-}
-</script>
-      <script type="sample/js" filename="demo/rh-health-index-variants-inline-0.js">import '@rhds/elements/rh-health-index/rh-health-index.js';
-</script>
-      <script type="sample/css" filename="demo/rh-health-index-variants-inline-1.css">.demo {
-  margin: 2rem;
-  padding: 0;
-  list-style: none;
-  width: 800px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 2rem;
-  & h2 {
-    font-size: var(--rh-font-size-body-text-lg, 1.125rem);
-  }
-  & li {
-    display: flex;
-    flex-flow: column;
-    gap: var(--rh-space-lg, 16px);
-    margin: 0;
-    padding: 0;
-  }
-}
-</script>
-      <script type="sample/css" filename="demo/reset.css" hidden="">/* Box sizing rules */
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-}
-
-/* Remove default margin */
-:where(body,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-li,
-figure,
-figcaption,
-blockquote,
-dl,
-dd) {
-  margin: 0;
-}
-
-/* Default scroll behavior */
-html:focus-within {
-  scroll-behavior: smooth;
-}
-
-/* Inherit fonts for inputs and buttons */
-:where(input,
-button,
-textarea,
-select) {
-  font: inherit;
-}
-
-/* Remove all animations and transitions for people that prefer not to see them */
-@media (prefers-reduced-motion: reduce) {
-  html:focus-within {
-    scroll-behavior: auto;
-  }
-
-  *,
-  *:before,
-  *:after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-</script>
-      <script type="sample/css" filename="demo/fonts.css" hidden="">@font-face {
-  font-family: RedHatDisplay;
-  src: url('../assets/fonts/RedHatDisplay/RedHatDisplay-Regular.woff');
-  font-style: normal;
-  font-weight: 400;
-  text-rendering: optimizelegibility;
-}
-
-@font-face {
-  font-family: RedHatDisplay;
-  src: url('../assets/fonts/RedHatDisplay/RedHatDisplay-Medium.woff');
-  font-style: normal;
-  font-weight: 500;
-  text-rendering: optimizelegibility;
-}
-
-@font-face {
-  font-family: RedHatDisplay;
-  src: url('../assets/fonts/RedHatDisplay/RedHatDisplay-Bold.woff');
-  font-style: normal;
-  font-weight: 700;
-  text-rendering: optimizelegibility;
-}
-
-@font-face {
-  font-family: RedHatText;
-  src: url('../assets/fonts/RedHatText/RedHatText-Regular.woff');
-  font-style: normal;
-  font-weight: 400;
-  text-rendering: optimizelegibility;
-}
-
-@font-face {
-  font-family: RedHatText;
-  src: url('../assets/fonts/RedHatText/RedHatText-Medium.woff');
-  font-style: normal;
-  font-weight: 500;
-  text-rendering: optimizelegibility;
-}
-
-@font-face {
-  font-family: RedHatMono;
-  src: url('../assets/fonts/RedHatMono/RedHatMono-Bold.woff2') format('woff2');
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: RedHatMono;
-  src: url('../assets/fonts/RedHatMono/RedHatMono-BoldItalic.woff2') format('woff2');
-  font-weight: bold;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: RedHatMono;
-  src: url('../assets/fonts/RedHatMono/RedHatMono-Italic.woff2') format('woff2');
-  font-weight: normal;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: RedHatMono;
-  src: url('../assets/fonts/RedHatMono/RedHatMono-Light.woff2') format('woff2');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: RedHatMono;
-  src: url('../assets/fonts/RedHatMono/RedHatMono-LightItalic.woff2') format('woff2');
-  font-weight: 300;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: RedHatMono;
-  src: url('../assets/fonts/RedHatMono/RedHatMono-Medium.woff2') format('woff2');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: RedHatMono;
-  src: url('../assets/fonts/RedHatMono/RedHatMono-MediumItalic.woff2') format('woff2');
-  font-weight: 500;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: RedHatMono;
-  src: url('../assets/fonts/RedHatMono/RedHatMono-Regular.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: RedHatMono;
-  src: url('../assets/fonts/RedHatMono/RedHatMono-SemiBold.woff2') format('woff2');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: RedHatMono;
-  src: url('../assets/fonts/RedHatMono/RedHatMono-SemiBoldItalic.woff2') format('woff2');
-  font-weight: 600;
-  font-style: italic;
-  font-display: swap;
-}
-</script>
-      <script type="sample/css" filename="demo/typography.css" hidden="">body {
-  font-family: var(--rh-font-family-body-text);
-  font-size: 1rem;
-  line-height: var(--rh-line-height-body-text);
-}
-
-:where(h1, h2, h3, h4, h5, h6) {
-  font-family: var(--rh-font-family-heading);
-  line-height: var(--rh-line-height-heading);
-}
-
-:where(code) {
-  font-family: var(--rh-font-family-code);
-  line-height: var(--rh-line-height-code);
-}
-
-:where(kbd) {
-  font-family: var(--rh-font-family-body-text);
-  font-size: 1rem;
-  line-height: var(--rh-line-height-body-text);
-}
-
-:where(h1) {
-  font-size: var(--rh-font-size-heading-2xl);
-}
-
-:where(h2) {
-  font-size: var(--rh-font-size-heading-xl);
-}
-
-:where(h3) {
-  font-size: var(--rh-font-size-heading-lg);
-}
-
-:where(h4) {
-  font-size: var(--rh-font-size-heading-md);
-}
-
-:where(h5) {
-  font-size: var(--rh-font-size-heading-sm);
-}
-
-:where(h6) {
-  font-size: var(--rh-font-size-heading-xs);
-}
-
-:where(p) {
-  font-size: var(--rh-font-size-body-text-md);
-}
-
-:where(p, h1, h2, h3, h4, h5, h6, li) {
-  max-width: 56rem; /* warning: magic number */
-}
-</script>
-    
-          <script type="sample/html" filename="demo/variants/index.html"><ul class="demo">
-  <li>
-    <h2>SM</h2>
-    <rh-health-index grade="A" size="sm">A</rh-health-index>
-    <rh-health-index grade="B" size="sm">B</rh-health-index>
-    <rh-health-index grade="C" size="sm">C</rh-health-index>
-    <rh-health-index grade="D" size="sm">D</rh-health-index>
-    <rh-health-index grade="E" size="sm">E</rh-health-index>
-    <rh-health-index grade="F" size="sm">F</rh-health-index>
-  </li>
-
-  <li>
-    <h2>Default</h2>
-    <rh-health-index grade="A">A</rh-health-index>
-    <rh-health-index grade="B">B</rh-health-index>
-    <rh-health-index grade="C">C</rh-health-index>
-    <rh-health-index grade="D">D</rh-health-index>
-    <rh-health-index grade="E">E</rh-health-index>
-    <rh-health-index grade="F">F</rh-health-index>
-  </li>
-
-  <li>
-    <h2>LG</h2>
-    <rh-health-index grade="A" size="lg">A</rh-health-index>
-    <rh-health-index grade="B" size="lg">B</rh-health-index>
-    <rh-health-index grade="C" size="lg">C</rh-health-index>
-    <rh-health-index grade="D" size="lg">D</rh-health-index>
-    <rh-health-index grade="E" size="lg">E</rh-health-index>
-    <rh-health-index grade="F" size="lg">F</rh-health-index>
-  </li>
-
-  <li>
-    <h2>XL</h2>
-    <rh-health-index grade="A" size="xl">A</rh-health-index>
-    <rh-health-index grade="B" size="xl">B</rh-health-index>
-    <rh-health-index grade="C" size="xl">C</rh-health-index>
-    <rh-health-index grade="D" size="xl">D</rh-health-index>
-    <rh-health-index grade="E" size="xl">E</rh-health-index>
-    <rh-health-index grade="F" size="xl">F</rh-health-index>
-  </li>
-</ul><!--playground-hide--><script type="module" src="../rh-health-index-variants-inline-0.js">&lt;/script>
-<link rel="stylesheet" href="../rh-health-index-variants-inline-1.css">
-<link rel="stylesheet" href="/styles/demo/styles.css"><!--playground-hide-end--></script>
-          <playground-preview project="playground-rh-health-index-variants-index" html-file="demo/variants/index.html"></playground-preview>
-          <rh-card>
-            <rh-tabs   slot="header" class="demo-fileswitcher" label-scroll-left="Scroll left" label-scroll-right="Scroll right"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{color:var(--rh-color-text-primary);container-name:host;container-type:inline-size;display:block}[part=tabs-container]{--_tab-max-width:200px;@container host (min-width: 768px){--_tab-max-width:none}display:flex;overflow:hidden;position:relative;&:before{border-color:var(--rh-color-border-subtle);border-style:solid;border-width:0 0 var(--rh-border-width-sm,1px);inset-inline-end:0;inset:0;position:absolute}}:is([part=tabs],[part=panels]){display:block}[part=tabs]{bottom:0;display:flex;font-size:var(--rh-font-size-body-text-md,1rem);margin:0;max-width:100%;overflow-x:auto;position:relative;scrollbar-width:none;width:auto}:is([part=tabs-container],[part=tabs],button){&:before{border-style:solid;content:"";inset-block-end:0;inset-inline:0;position:absolute}}:is([part=tabs],button){&:before{top:0}}#tablist{display:contents}[part=tabs]:before,button{border:0}button{flex:none;line-height:1;opacity:1;&:before{border-block-start-width:0}&:first-of-type{margin-inline-end:0;translate:0 0}&:nth-of-type(2){margin-inline-start:0;translate:0 0}&:disabled{pointer-events:none}}#container{--_arrow-color:var(--rh-color-accent-base);--_overflow-button-text-color:var(--rh-color-text-secondary);--_overflow-button-disabled-text-color:light-dark(var(--rh-color-gray-40,#a3a3a3),var(--rh-color-gray-50,#707070));--_overflow-button-hover-text-color:var(--rh-color-text-primary);color:var(--rh-color-text-primary);@container (min-width: 768px){--_panel-padding:var(--rh-space-2xl,32px)}&.vertical{@container host (min-width: 768px){display:grid;grid-template-areas:"tabs panels";grid-template-columns:max-content 1fr;[part=tabs-container]{display:inline-flex;flex-direction:column;grid-area:tabs;height:100%;overflow:visible;padding:0;&:before{border-block-end-width:0;border-inline-start-width:var(--rh-border-width-sm,1px);height:100%}}[part=panels]{grid-area:panels}[part=tabs]{flex-direction:column;flex-grow:1;max-width:15.625rem}}&.box{@container host (min-width: 768px){--_panel-padding:var(--rh-space-3xl,48px);[part=tabs-container]{&:before{border-inline-end-width:var(--rh-border-width-sm,1px);border-inline-start-width:0}}}}}&.overflow{--_panel-padding:var(--rh-space-lg,16px);& [part=tabs]{--_inset-inline-margin:0;inset-inline-start:-1px;position:relative;z-index:1}& [part=panels]{--_panels-overflow-padding:var(--rh-space-2xl,32px)}}&:not(.vertical){&.box{&.inset{& [part=container]:not(.overflow){--_panel-padding:var(--rh-space-2xl,32px) var(--rh-space-4xl,64px)}}}}}:host([box=inset]:not([vertical])) #container [part=tabs]{--_inset-inline-margin:var(--rh-space-2xl,32px)}:host(:is([centered],[box=inset])) #container:not(.overflow) [part=tabs]{margin-inline:var(--rh-tabs-inset,var(--_inset-inline-margin,auto))}:is(#previous-tab,#next-tab){background-color:var(--rh-color-surface);color:var(--_overflow-button-text-color);padding-block:0;padding-inline:var(--rh-space-lg,16px);position:relative;z-index:2;&:before{border-block-end:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle);border-block-start:var(--rh-border-width-sm,1px) solid #0000;border-inline:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle)}&:hover{color:var(--_overflow-button-hover-text-color,var(--rh-color-text-primary));&:before{border-block-end:var(--rh-border-width-lg,3px) solid var(--rh-color-border-subtle)}}&:disabled{color:var(--_overflow-button-disabled-text-color)}}#next-tab{inset-inline-start:-1px;&:before{border-inline-width:1px 0}}#previous-tab{&:before{border-inline-width:0 1px}}:is(#previous-tab,#next-tab) rh-icon:dir(rtl){rotate:180deg}</style><!--lit-part G+8dk0ZSQ+Y=-->
-      <!--lit-node 0--><div id="container" part="container" class="  ">
-        <div part="tabs-container"><!--lit-part--><!--/lit-part-->
-          <div id="tablist" role="tablist">
-            <!--lit-node 4--><slot name="tab"
-                  part="tabs"
-                  ></slot>
-          </div><!--lit-part--><!--/lit-part-->
-        </div>
-        <!--lit-node 6--><slot part="panels" ></slot>
-      </div>
-    <!--/lit-part--></template>
-              <rh-tab slot="tab" data-filename="demo/variants/index.html">HTML</rh-tab>
-              <rh-tab-panel hidden=""></rh-tab-panel>
-              
-              <rh-tab slot="tab" data-filename="demo/rh-health-index-variants-inline-0.js">JS</rh-tab>
-              <rh-tab-panel hidden=""></rh-tab-panel>
-              <rh-tab slot="tab" data-filename="demo/rh-health-index-variants-inline-1.css">CSS</rh-tab>
-              <rh-tab-panel hidden=""></rh-tab-panel>
-            </rh-tabs>
-            <playground-file-editor project="playground-rh-health-index-variants-index" filename="demo/variants/index.html" line-numbers=""></playground-file-editor>
-            <rh-button slot="footer" variant="tertiary" data-action="fullscreen" icon="expand">FullScreen</rh-button>
-            <rh-cta slot="footer" href="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/rh-health-index/demo/variants.html">View source on GitHub</rh-cta>
-            <rh-cta slot="footer" href="/elements/health-index/demo/variants/">View In Own Tab</rh-cta>
-          </rh-card>
-        </playground-project>
-      
+              <h2 id="demo-health-index">Health Index</h2>
+              <uxdot-demo id="demo-rh-health-index-rh-health-index" tag="rh-health-index" demo="rh-health-index" demo-title="Health Index" demo-source-url="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/rh-health-index/demo/rh-health-index.html" demo-url="/elements/health-index/demo/" demo-file-path="/home/runner/work/red-hat-design-system/red-hat-design-system/elements/rh-health-index/demo/rh-health-index.html"><rh-code-block full-height="" dedent="" actions="copy" highlighting="prerendered" slot="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token string">'@rhds/elements/rh-health-index/rh-health-index.js'</span><span class="token punctuation">;</span></code></pre>
+</rh-code-block>
+<rh-code-block full-height="" dedent="" actions="copy" highlighting="prerendered" slot="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>C<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>lg<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>C<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span></code></pre>
+</rh-code-block></uxdot-demo>
+            
+              <h2 id="demo-color-context">Color Context</h2>
+              <uxdot-demo id="demo-rh-health-index-color-context" tag="rh-health-index" demo="color-context" demo-title="Color Context" demo-source-url="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/rh-health-index/demo/color-context.html" demo-url="/elements/health-index/demo/color-context/" demo-file-path="/home/runner/work/red-hat-design-system/red-hat-design-system/elements/rh-health-index/demo/color-context.html"><rh-code-block full-height="" dedent="" actions="copy wrap" highlighting="prerendered" slot="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token string">'@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token string">'@rhds/elements/rh-surface/rh-surface.js'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token string">'@rhds/elements/rh-health-index/rh-health-index.js'</span><span class="token punctuation">;</span></code></pre>
+</rh-code-block>
+<rh-code-block full-height="" dedent="" actions="copy wrap" highlighting="prerendered" slot="css"><pre class="language-css"><code class="language-css"><span class="token selector">.demo</span> <span class="token punctuation">{</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 2rem<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">list-style</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 800px<span class="token punctuation">;</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> grid<span class="token punctuation">;</span>
+  <span class="token property">grid-template-columns</span><span class="token punctuation">:</span> 1fr 1fr 1fr 1fr<span class="token punctuation">;</span>
+  <span class="token property">gap</span><span class="token punctuation">:</span> 2rem<span class="token punctuation">;</span>
+  <span class="token selector">&amp; h2</span> <span class="token punctuation">{</span>
+    <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--rh-font-size-body-text-lg<span class="token punctuation">,</span> 1.125rem<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--rh-color-text-primary<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">&amp; li</span> <span class="token punctuation">{</span>
+    <span class="token property">margin</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">&amp; rh-surface,
+  &amp; div</span> <span class="token punctuation">{</span>
+    <span class="token property">margin-block-end</span><span class="token punctuation">:</span> 1rem<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+</rh-code-block>
+<rh-code-block full-height="" dedent="" actions="copy wrap" highlighting="prerendered" slot="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-context-demo</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>demo<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">&gt;</span></span>SM<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>A<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sm<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>A<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>B<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sm<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>B<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>C<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sm<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>C<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>D<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sm<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>D<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>E<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sm<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>E<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>F<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sm<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>F<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">&gt;</span></span>Default<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>A<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>A<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>B<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>B<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>C<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>C<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>D<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>D<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>E<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>E<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>F<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>F<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">&gt;</span></span>LG<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>A<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>lg<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>A<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>B<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>lg<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>B<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>C<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>lg<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>C<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>D<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>lg<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>D<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>E<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>lg<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>E<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>F<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>lg<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>F<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">&gt;</span></span>XL<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>A<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>xl<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>A<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>B<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>xl<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>B<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>C<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>xl<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>C<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>D<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>xl<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>D<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>E<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>xl<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>E<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>F<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>xl<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>F<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-context-demo</span><span class="token punctuation">&gt;</span></span></code></pre>
+</rh-code-block></uxdot-demo>
+            
+              <h2 id="demo-screen-readers">Screen Readers</h2>
+              <uxdot-demo id="demo-rh-health-index-screen-readers" tag="rh-health-index" demo="screen-readers" demo-title="Screen Readers" demo-source-url="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/rh-health-index/demo/screen-readers.html" demo-url="/elements/health-index/demo/screen-readers/" demo-file-path="/home/runner/work/red-hat-design-system/red-hat-design-system/elements/rh-health-index/demo/screen-readers.html"><rh-code-block full-height="" dedent="" actions="copy" highlighting="prerendered" slot="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token string">'@rhds/elements/rh-health-index/rh-health-index.js'</span><span class="token punctuation">;</span></code></pre>
+</rh-code-block>
+<rh-code-block full-height="" dedent="" actions="copy wrap" highlighting="prerendered" slot="css"><pre class="language-css"><code class="language-css"><span class="token selector">section</span> <span class="token punctuation">{</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+  <span class="token property">flex-flow</span><span class="token punctuation">:</span> column<span class="token punctuation">;</span>
+  <span class="token property">gap</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--rh-space-lg<span class="token punctuation">,</span> 16px<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">div[role="meter"]</span> <span class="token punctuation">{</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> block<span class="token punctuation">;</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 2em<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 5em<span class="token punctuation">;</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> <span class="token function">linear-gradient</span><span class="token punctuation">(</span>90deg<span class="token punctuation">,</span> blue<span class="token punctuation">,</span> red<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token selector">&amp;::after</span> <span class="token punctuation">{</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span>
+    <span class="token property">content</span><span class="token punctuation">:</span> <span class="token function">attr</span><span class="token punctuation">(</span>aria-valuetext<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+</rh-code-block>
+<rh-code-block full-height="" dedent="" actions="copy wrap" highlighting="prerendered" slot="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>section</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">&gt;</span></span><span class="token entity named-entity" title="<">&amp;lt;</span>rh-health-index<span class="token entity named-entity" title=">">&amp;gt;</span> element<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>A<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sm<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>A<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>B<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sm<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>B<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>C<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sm<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>C<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>D<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>md<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>D<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>E<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>lg<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>E<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>F<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>xl<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>F<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>section</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>section</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">&gt;</span></span>ARIA attrs for <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>abbr</span> <span class="token attr-name">title</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>localization<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>l10n<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>abbr</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>A<span class="token punctuation">"</span></span> <span class="token attr-name">aria-label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>בריאות מדורג מדרגות א עד ו<span class="token punctuation">"</span></span> <span class="token attr-name">aria-valuetext</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>דרגה א<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sm<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>A<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>section</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>section</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">&gt;</span></span>Native <span class="token entity named-entity" title=">">&amp;gt;</span>meter<span class="token entity named-entity" title=">">&amp;gt;</span> element<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meter</span> <span class="token attr-name">min</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span> <span class="token attr-name">max</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>6<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span> <span class="token attr-name">aria-valuetext</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Grade A<span class="token punctuation">"</span></span> <span class="token attr-name">aria-label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Health graded A to F<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>meter</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meter</span> <span class="token attr-name">min</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span> <span class="token attr-name">max</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>6<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2<span class="token punctuation">"</span></span> <span class="token attr-name">aria-valuetext</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Grade B<span class="token punctuation">"</span></span> <span class="token attr-name">aria-label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Health graded A to F<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>meter</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meter</span> <span class="token attr-name">min</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span> <span class="token attr-name">max</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>6<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>3<span class="token punctuation">"</span></span> <span class="token attr-name">aria-valuetext</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Grade C<span class="token punctuation">"</span></span> <span class="token attr-name">aria-label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Health graded A to F<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>meter</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meter</span> <span class="token attr-name">min</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span> <span class="token attr-name">max</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>6<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>4<span class="token punctuation">"</span></span> <span class="token attr-name">aria-valuetext</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Grade D<span class="token punctuation">"</span></span> <span class="token attr-name">aria-label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Health graded A to F<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>meter</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meter</span> <span class="token attr-name">min</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span> <span class="token attr-name">max</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>6<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>5<span class="token punctuation">"</span></span> <span class="token attr-name">aria-valuetext</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Grade E<span class="token punctuation">"</span></span> <span class="token attr-name">aria-label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Health graded A to F<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>meter</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meter</span> <span class="token attr-name">min</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span> <span class="token attr-name">max</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>6<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>6<span class="token punctuation">"</span></span> <span class="token attr-name">aria-valuetext</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Grade F<span class="token punctuation">"</span></span> <span class="token attr-name">aria-label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Health graded A to F<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>meter</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>section</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>section</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">&gt;</span></span>ARIA-attributes <span class="token entity named-entity" title=">">&amp;gt;</span>meter<span class="token entity named-entity" title=">">&amp;gt;</span> element<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>meter<span class="token punctuation">"</span></span> <span class="token attr-name">aria-valuemin</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span> <span class="token attr-name">aria-valuemax</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>6<span class="token punctuation">"</span></span> <span class="token attr-name">aria-valuenow</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span> <span class="token attr-name">aria-valuetext</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Grade A<span class="token punctuation">"</span></span> <span class="token attr-name">aria-label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Health graded A to F<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>A<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>meter<span class="token punctuation">"</span></span> <span class="token attr-name">aria-valuemin</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span> <span class="token attr-name">aria-valuemax</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>6<span class="token punctuation">"</span></span> <span class="token attr-name">aria-valuenow</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span> <span class="token attr-name">aria-valuetext</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Grade B<span class="token punctuation">"</span></span> <span class="token attr-name">aria-label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Health graded A to F<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>B<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>meter<span class="token punctuation">"</span></span> <span class="token attr-name">aria-valuemin</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span> <span class="token attr-name">aria-valuemax</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>6<span class="token punctuation">"</span></span> <span class="token attr-name">aria-valuenow</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span> <span class="token attr-name">aria-valuetext</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Grade C<span class="token punctuation">"</span></span> <span class="token attr-name">aria-label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Health graded A to F<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>C<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>meter<span class="token punctuation">"</span></span> <span class="token attr-name">aria-valuemin</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span> <span class="token attr-name">aria-valuemax</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>6<span class="token punctuation">"</span></span> <span class="token attr-name">aria-valuenow</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span> <span class="token attr-name">aria-valuetext</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Grade D<span class="token punctuation">"</span></span> <span class="token attr-name">aria-label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Health graded A to F<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>D<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>meter<span class="token punctuation">"</span></span> <span class="token attr-name">aria-valuemin</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span> <span class="token attr-name">aria-valuemax</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>6<span class="token punctuation">"</span></span> <span class="token attr-name">aria-valuenow</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span> <span class="token attr-name">aria-valuetext</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Grade E<span class="token punctuation">"</span></span> <span class="token attr-name">aria-label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Health graded A to F<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>E<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>meter<span class="token punctuation">"</span></span> <span class="token attr-name">aria-valuemin</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span> <span class="token attr-name">aria-valuemax</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>6<span class="token punctuation">"</span></span> <span class="token attr-name">aria-valuenow</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span> <span class="token attr-name">aria-valuetext</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Grade F<span class="token punctuation">"</span></span> <span class="token attr-name">aria-label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Health graded A to F<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>F<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>section</span><span class="token punctuation">&gt;</span></span></code></pre>
+</rh-code-block></uxdot-demo>
+            
+              <h2 id="demo-variants">Variants</h2>
+              <uxdot-demo id="demo-rh-health-index-variants" tag="rh-health-index" demo="variants" demo-title="Variants" demo-source-url="https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements/rh-health-index/demo/variants.html" demo-url="/elements/health-index/demo/variants/" demo-file-path="/home/runner/work/red-hat-design-system/red-hat-design-system/elements/rh-health-index/demo/variants.html"><rh-code-block full-height="" dedent="" actions="copy" highlighting="prerendered" slot="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token string">'@rhds/elements/rh-health-index/rh-health-index.js'</span><span class="token punctuation">;</span></code></pre>
+</rh-code-block>
+<rh-code-block full-height="" dedent="" actions="copy wrap" highlighting="prerendered" slot="css"><pre class="language-css"><code class="language-css"><span class="token selector">.demo</span> <span class="token punctuation">{</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 2rem<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">list-style</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 800px<span class="token punctuation">;</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> grid<span class="token punctuation">;</span>
+  <span class="token property">grid-template-columns</span><span class="token punctuation">:</span> 1fr 1fr 1fr 1fr<span class="token punctuation">;</span>
+  <span class="token property">gap</span><span class="token punctuation">:</span> 2rem<span class="token punctuation">;</span>
+  <span class="token selector">&amp; h2</span> <span class="token punctuation">{</span>
+    <span class="token property">font-size</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--rh-font-size-body-text-lg<span class="token punctuation">,</span> 1.125rem<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">&amp; li</span> <span class="token punctuation">{</span>
+    <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+    <span class="token property">flex-flow</span><span class="token punctuation">:</span> column<span class="token punctuation">;</span>
+    <span class="token property">gap</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--rh-space-lg<span class="token punctuation">,</span> 16px<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">margin</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+</rh-code-block>
+<rh-code-block full-height="" dedent="" actions="copy wrap" highlighting="prerendered" slot="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>demo<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">&gt;</span></span>SM<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>A<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sm<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>A<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>B<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sm<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>B<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>C<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sm<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>C<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>D<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sm<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>D<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>E<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sm<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>E<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>F<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sm<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>F<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">&gt;</span></span>Default<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>A<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>A<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>B<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>B<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>C<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>C<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>D<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>D<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>E<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>E<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>F<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>F<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">&gt;</span></span>LG<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>A<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>lg<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>A<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>B<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>lg<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>B<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>C<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>lg<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>C<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>D<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>lg<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>D<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>E<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>lg<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>E<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>F<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>lg<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>F<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">&gt;</span></span>XL<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>A<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>xl<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>A<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>B<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>xl<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>B<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>C<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>xl<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>C<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>D<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>xl<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>D<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>E<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>xl<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>E<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-health-index</span> <span class="token attr-name">grade</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>F<span class="token punctuation">"</span></span> <span class="token attr-name">size</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>xl<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>F<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-health-index</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">&gt;</span></span></code></pre>
+</rh-code-block></uxdot-demo>
+            
 
       
 <uxdot-feedback>
