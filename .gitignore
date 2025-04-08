@@ -7,16 +7,12 @@ node_modules
 # Ignore compiled files in webroot
 _site
 docs/pfe.min*
-docs/assets/playgrounds/
 docs/assets/javascript/elements/**/*.js.map
 docs/assets/javascript/elements/**/*.d.ts
 docs/assets/javascript/elements/**/*.js
 docs/_plugins/**/*.js
 docs/_includes/**/*.js
-docs/_data/playgrounds.json
 docs/_data/*.js
-docs/assets/javascript/elements/playground-elements.js
-docs/assets/javascript/elements/assets/playground-typescript-worker-*.js
 docs/assets/javascript/environment.js
 !docs/11ty-types.d.ts
 !docs/_plugins/lit-ssr/worker/*.js
