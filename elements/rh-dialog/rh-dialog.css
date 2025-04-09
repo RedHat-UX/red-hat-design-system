@@ -232,7 +232,7 @@
 }
 
 :host([type='video']) #close-button::part(icon) {
-  color: var(--rh-dialog-close-button-color, var(--rh-color-surface));
+  color: var(--rh-dialog-close-button-color, var(--rh-color-surface-lightest, #ffffff));
   filter: drop-shadow(1px 0 1px var(--_dialog-backdrop-bg-color));
 }
 
