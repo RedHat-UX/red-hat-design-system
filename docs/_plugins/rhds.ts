@@ -81,6 +81,8 @@ async function getFilesToCopy() {
 interface Options {
   tagsToAlphabetize: string[];
   componentModules: string[];
+  /** Tag names of elements which will require ssr hint attrs because they use slotcontroller in their templates */
+  slotControllerElements: string[];
   tsconfig: string;
 }
 
@@ -275,6 +277,6 @@ export default async function(eleventyConfig: UserConfig, options?: Options) {
   eleventyConfig.addPlugin(RHDSAlphabetizeTagsPlugin, options);
   eleventyConfig.addPlugin(RHDSElementDocsPlugin);
   eleventyConfig.addPlugin(RHDSElementDemosPlugin);
-  eleventyConfig.addPlugin(RHDSSSRHintHasSlottedPlugin);
+  eleventyConfig.addPlugin(RHDSSSRHintHasSlottedPlugin, options);
   eleventyConfig.addPlugin(LitSSRPlugin, options);
 };

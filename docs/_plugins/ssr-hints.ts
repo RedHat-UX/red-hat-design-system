@@ -1,3 +1,4 @@
+
 import type { UserConfig } from '@11ty/eleventy';
 
 import { parse, serialize } from 'parse5';
@@ -17,7 +18,42 @@ import {
 } from '@parse5/tools';
 
 interface Options {
-  slotControllerTagNames: string[];
+  /** Tag names of elements which will require ssr hint attrs because they use slotcontroller in their templates */
+  slotControllerElements: string[];
+}
+
+
+export function injectSSRHintAttributes(
+  node: Node,
+  options: Pick<Options, 'slotControllerElements'>,
+): void {
+  const tagSet = new Set(options.slotControllerElements);
+
+  const isSlotControllerNode = (node: Node): node is Element =>
+    isElementNode(node) && tagSet.has(node.tagName);
+
+  for (const element of queryAll<Element>(node, isSlotControllerNode)) {
+    const slots = new Set();
+    let foundDefault = false;
+    for (const node of queryAll(element)) {
+      if (isDocument(node)
+          || isDocumentFragment(node)
+          || isCommentNode(node)
+          || isDocumentTypeNode(node)) {
+        continue;
+      } else if (isTextNode(node) || !hasAttribute(node, 'slot')) {
+        foundDefault = true;
+      } else if (hasAttribute(node, 'slot')) {
+        slots.add(getAttribute(node, 'slot'));
+      }
+    }
+    if (foundDefault) {
+      setAttribute(element, 'ssr-hint-has-slotted-default', 'true');
+    }
+    if (slots.size) {
+      setAttribute(element, 'ssr-hint-has-slotted', [...slots].join());
+    }
+  }
 }
 
 /**
@@ -25,54 +61,13 @@ interface Options {
  * @param eleventyConfig
  * @param pluginOpts
  */
-export default function(eleventyConfig: UserConfig, pluginOpts: Partial<Options> = { }) {
-  const tagSet = new Set(pluginOpts.slotControllerTagNames ?? [
-    'rh-alert',
-    'rh-announcement',
-    'rh-audio-player',
-    'rh-audio-player-subscribe',
-    'rh-transcript',
-    'rh-card',
-    'rh-code-block',
-    'rh-dialog',
-    'rh-footer',
-    'rh-footer-universal',
-    'rh-stat',
-    'rh-switch',
-    'rh-tab',
-    'rh-tag',
-    'rh-tile',
-    'rh-video-embed',
-  ]);
-  const isSlotControllerNode = (node: Node): node is Element =>
-    isElementNode(node) && tagSet.has(node.tagName);
-
+export default function(eleventyConfig: UserConfig, pluginOpts: Options) {
   eleventyConfig.addTransform('rhds-ssr-hints', function(content: string) {
     const document = parse(content);
 
-    for (const element of queryAll<Element>(document, isSlotControllerNode)) {
-      const slots = new Set();
-      let foundDefault = false;
-      for (const node of queryAll(element)) {
-        if (isDocument(node)
-          || isDocumentFragment(node)
-          || isCommentNode(node)
-          || isDocumentTypeNode(node)) {
-          continue;
-        } else if (isTextNode(node) || !hasAttribute(node, 'slot')) {
-          foundDefault = true;
-        } else if (hasAttribute(node, 'slot')) {
-          slots.add(getAttribute(node, 'slot'));
-        }
-      }
-      if (foundDefault) {
-        setAttribute(element, 'ssr-hint-has-slotted-default', 'true');
-      }
-      if (slots.size) {
-        setAttribute(element, 'ssr-hint-has-slotted', [...slots].join());
-      }
-    }
+    injectSSRHintAttributes(document, pluginOpts);
 
     return serialize(document);
   });
 };
+;

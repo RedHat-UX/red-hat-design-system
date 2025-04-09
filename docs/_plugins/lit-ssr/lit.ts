@@ -12,6 +12,7 @@ import { register } from 'node:module';
 export interface RenderRequestMessage {
   content: string;
   page: Pick<EleventyPage, 'inputPath' | 'outputPath'>;
+  slotControllerElements: string[];
 }
 
 export interface RenderResponseMessage {
@@ -21,6 +22,7 @@ export interface RenderResponseMessage {
 }
 
 interface Options {
+  slotControllerElements: string[];
   componentModules?: string[];
   /** path from project root to tsconfig */
   tsconfig?: string;
@@ -66,12 +68,13 @@ export default async function(eleventyConfig: UserConfig, opts?: Options) {
     eleventyConfig.addTransform('render-lit', async function(this, content) {
       const { outputPath, inputPath } = this.page;
 
+      const { slotControllerElements = [] } = opts ?? {};
       if (!outputPath.endsWith('.html')) {
         return content;
       }
 
       const page = { outputPath, inputPath };
-      const message = await pool.run({ page, content });
+      const message = await pool.run({ page, content, slotControllerElements });
       if (message.rendered) {
         const { durationMs, rendered, page } = message;
         if (durationMs > 1000) {

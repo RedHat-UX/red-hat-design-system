@@ -5,6 +5,7 @@
   "include": [
     "./**/*",
     "../lib/**/*.ts",
+    "../docs/_plugins/*.ts",
     "../elements/**/*.ts",
     "../declaration.d.ts",
     "../docs/11ty-types.d.ts",

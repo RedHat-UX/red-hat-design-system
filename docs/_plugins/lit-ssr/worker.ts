@@ -119,13 +119,6 @@ class UnsafeHTMLStringsArray extends Array {
   }
 }
 
-// for debug only
-declare global {
-  interface CustomElementRegistry {
-    __definitions: Map<string, unknown>;
-  }
-}
-
 /**
  * Render a page using lit-ssr
  *
@@ -136,10 +129,15 @@ declare global {
 export default async function renderPage({
   page,
   content,
+  slotControllerElements,
 }: RenderRequestMessage): Promise<RenderResponseMessage> {
   const start = performance.now();
   const tpl = html(new UnsafeHTMLStringsArray(content));
-  const result = render(tpl, { elementRenderers, page } as unknown as RenderInfo);
+  const result = render(tpl, {
+    elementRenderers,
+    page,
+    slotControllerElements,
+  } as unknown as RenderInfo);
   const rendered = await collectResult(result);
   const end = performance.now();
   return { page, rendered, durationMs: end - start };
