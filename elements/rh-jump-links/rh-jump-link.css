@@ -30,10 +30,10 @@ a {
   }
 
   &:hover {
-    color: var(--rh-color-interactive-secondary-hover);
+    color: var(--rh-color-text-primary, #151515);
   }
 
-  &:focus { color: var(--rh-color-interactive-secondary-focus); }
+  &:focus { color: var(--rh-color-text-primary, #151515); }
 
   &:focus-visible {
     outline: none;
