@@ -8,8 +8,6 @@ import tsBlankSpace from 'ts-blank-space';
 import chalk from 'chalk';
 
 import { register } from 'node:module';
-import { parse, serialize } from 'parse5';
-import { hasAttribute, query, queryAll, removeNode, type Node, type Template } from '@parse5/tools';
 
 export interface RenderRequestMessage {
   content: string;
@@ -47,8 +45,7 @@ export default async function(eleventyConfig: UserConfig, opts?: Options) {
 
   let pool: Piscina;
 
-  // If there are no component modules, we could never have anything to
-  // render.
+  // If there are no component modules, we could never have anything to render.
   if (imports?.length) {
     eleventyConfig.on('eleventy.before', async function() {
       await redactTSFileInPlace('./worker.ts');

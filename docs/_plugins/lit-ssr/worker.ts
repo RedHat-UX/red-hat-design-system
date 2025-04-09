@@ -3,6 +3,8 @@ import type { RenderInfo, RenderResult } from '@lit-labs/ssr';
 import type { RHDSSSRController } from '@rhds/elements/lib/ssr-controller.ts';
 import type { RenderRequestMessage, RenderResponseMessage } from './lit.js';
 
+import '@patternfly/pfe-core/ssr-shims.js';
+
 import { LitElementRenderer } from '@lit-labs/ssr/lib/lit-element-renderer.js';
 
 import { register } from 'node:module';
@@ -33,20 +35,24 @@ registerTS({ tsconfig });
 register('./lit-css-node.ts', import.meta.url);
 
 /* eslint-disable no-console */
-try {
-  await Promise
-      .allSettled(imports.map(async function importModule(bareSpec: string) {
-        const spec = pathToFileURL(resolve(process.cwd(), bareSpec)).href.replace('.js', '.ts');
-        try {
-          await import(spec);
-        } catch (e) {
-          console.log(`Failed to load ${bareSpec} from ${spec.replace(process.cwd(), '').replace('file://', '')}!`);
-          console.warn((e as Error)?.message?.trim() || e);
-        }
-      }));
-} catch (e) {
-  console.error(e);
-};
+for (const bareSpec of imports) {
+  const conventionalTagName = bareSpec.split('/')?.pop()?.split('.').shift();
+  if (!conventionalTagName) {
+    throw new Error(`${bareSpec} does not appear to be an element module`);
+  }
+  if (!customElements.get(conventionalTagName)) {
+    const spec = pathToFileURL(resolve(process.cwd(), bareSpec)).href.replace('.js', '.ts');
+    try {
+      await import(spec);
+      if (!customElements.get(conventionalTagName)) {
+        throw new Error(`${conventionalTagName} declaration loaded, but not defined!`);
+      }
+    } catch (e) {
+      console.warn((e as Error)?.message?.trim() || e);
+      throw new Error(`FAILED to load ${bareSpec}`);
+    }
+  }
+}
 /* eslint-enable no-console */
 
 class RHDSSSRableRenderer extends LitElementRenderer {
@@ -80,9 +86,11 @@ class RHDSSSRableRenderer extends LitElementRenderer {
       for (const style of styles) {
         const { cssText } = style as CSSResult;
         if (!RHDSSSRableRenderer.styleCache.has(cssText)) {
-          RHDSSSRableRenderer.styleCache.set(cssText, postcss
+          const processed = postcss
               .process(cssText, { from: undefined })
-              .then(r => r.css));
+              .then(r => r.css)
+              .catch(() => cssText);
+          RHDSSSRableRenderer.styleCache.set(cssText, processed);
         }
         yield RHDSSSRableRenderer.styleCache.get(cssText)!;
       }
@@ -108,6 +116,13 @@ class UnsafeHTMLStringsArray extends Array {
     super();
     this.push(string);
     this.raw = [string];
+  }
+}
+
+// for debug only
+declare global {
+  interface CustomElementRegistry {
+    __definitions: Map<string, unknown>;
   }
 }
 
