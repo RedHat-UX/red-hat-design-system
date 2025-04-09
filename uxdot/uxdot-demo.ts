@@ -25,36 +25,28 @@ export class UxdotDemo extends LitElement {
 
   render() {
     return html`
-
       <div id="container">
         <iframe loading="lazy" title="${this.demoTitle}" src="${this.demoUrl}"></iframe>
         <rh-card ssr-hint-has-slotted-default
                  ssr-hint-has-slotted="footer">
           <rh-tabs class="code-tabs" active-index="0">
             <rh-tab slot="tab" active>HTML</rh-tab>
-            <rh-tab-panel>
-              <rh-code-block dedent
-                             actions="copy wrap"
-                             highlighting="prerendered"><slot name="html"></slot></rh-code-block>
-            </rh-tab-panel>
+            <rh-tab-panel><slot name="html"></slot></rh-tab-panel>
             <rh-tab slot="tab">CSS</rh-tab>
-            <rh-tab-panel>
-              <rh-code-block dedent
-                             actions="copy wrap"
-                             highlighting="prerendered"><slot name="css"></slot></rh-code-block>
-            </rh-tab-panel>
+            <rh-tab-panel><slot name="css"></slot></rh-tab-panel>
             <rh-tab slot="tab">JS</rh-tab>
-            <rh-tab-panel>
-              <rh-code-block dedent
-                             actions="copy wrap"
-                             highlighting="prerendered"><slot name="js"></slot></rh-code-block>
-            </rh-tab-panel>
+            <rh-tab-panel><slot name="js"></slot></rh-tab-panel>
           </rh-tabs>
           <rh-button slot="footer"
                      variant="tertiary"
                      icon="expand"
                      icon-set="ui"
                      @click="${this.#toggleFullscreen}">FullScreen</rh-button>
+          <rh-button slot="footer"
+                     variant="tertiary"
+                     icon="refresh"
+                     icon-set="ui"
+                     @click="${this.#reloadIframe}">Reload</rh-button>
           <rh-cta slot="footer" href="${this.demoSourceUrl}">View source on GitHub</rh-cta>
           <rh-cta slot="footer" href="${this.demoUrl}">View In Own Tab</rh-cta>
         </rh-card>
@@ -68,5 +60,9 @@ export class UxdotDemo extends LitElement {
     } else {
       this.requestFullscreen();
     }
+  }
+
+  #reloadIframe() {
+    this.shadowRoot?.querySelector('iframe')?.contentWindow?.location.reload();
   }
 }

@@ -799,11 +799,14 @@ export default class ElementsPage extends Renderer<Context> {
 
       map.set('html', serialize(fragment));
 
-      const blocks = await Promise.all(map.entries().map(([kind, content]) => this.renderTemplate(dedent(`
-        ~~~${kind} {slot="${kind}"}
-        ${content.trim()}
-        ~~~
-      `), 'md')).toArray());
+      const blocks = await Promise.all(map.entries().map(([kind, content]) => {
+        const tpl = dedent(`
+          \`\`\`\`${kind} uxdotcodeblock {slot=${kind}}
+          ${content.trim()}
+          \`\`\`
+        `);
+        return this.renderTemplate(tpl, 'md');
+      }).toArray());
       return blocks.join('\n');
     }
   }
