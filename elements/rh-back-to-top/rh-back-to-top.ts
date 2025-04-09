@@ -1,4 +1,4 @@
-import { LitElement, html, type PropertyValues } from 'lit';
+import { LitElement, html, isServer, type PropertyValues } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
@@ -49,7 +49,9 @@ export class RhBackToTop extends LitElement {
 
   override connectedCallback(): void {
     super.connectedCallback();
-    this.#addScrollListener();
+    if (!isServer) {
+      this.#addScrollListener();
+    }
 
     if (this.href && this.href.charAt(0) !== '#') {
       this.href = `#${this.href}`;
