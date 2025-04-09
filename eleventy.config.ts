@@ -218,7 +218,6 @@ export default async function(eleventyConfig: UserConfig) {
       'uxdot/uxdot-example.ts',
       'uxdot/uxdot-feedback.ts',
       'uxdot/uxdot-header.ts',
-      'uxdot/uxdot-installation-tabs.ts',
       'uxdot/uxdot-masthead.ts',
       'uxdot/uxdot-pattern.ts',
       'uxdot/uxdot-demo.ts',
