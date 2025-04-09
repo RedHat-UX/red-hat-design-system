@@ -204,11 +204,16 @@
       ]
     },
     "analyze": {
-      "command": "cem analyze && node scripts/cem-tokens.js && node scripts/system-tokens.js",
+      "command": "cem analyze",
+      "dependencies": [
+        "patch"
+      ],
       "files": [
         "elements/*/demo/*.html",
         "elements/**/*.{ts,js,map}",
         "elements/**/*.css",
+        "scripts/cem-tokens.ts",
+        "scripts/system-tokens.ts",
         "tsconfig.tsbuildinfo"
       ],
       "output": [
@@ -218,8 +223,7 @@
     "docs": {
       "command": "TSX_TSCONFIG_PATH=tsconfig.settings.json NODE_OPTIONS='--import tsx/esm' eleventy --config=eleventy.config.ts --incremental",
       "dependencies": [
-        "patch",
-        "analyze"
+        "patch"
       ],
       "files": [
         "docs"

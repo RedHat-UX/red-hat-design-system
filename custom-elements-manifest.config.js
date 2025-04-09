@@ -1,3 +1,4 @@
+import { writeFile } from 'node:fs/promises';
 import { pfeCustomElementsManifestConfig } from '@patternfly/pfe-tools/custom-elements-manifest/config.js';
 
 export default pfeCustomElementsManifestConfig({
@@ -28,6 +29,18 @@ export default pfeCustomElementsManifestConfig({
         }
       }
     },
+  }, {
+    name: 'rhds-tokens',
+    async packageLinkPhase({ customElementsManifest }) {
+      const { analyze: cemTokens } = await import('./scripts/cem-tokens.ts');
+      const { analyze: systemTokens } = await import('./scripts/system-tokens.ts');
+      cemTokens(customElementsManifest);
+      await systemTokens(customElementsManifest);
+      // Shouldn't need to do this, but practically speaking, the new manifest is not being written
+      await writeFile(
+        new URL('custom-elements.json', import.meta.url),
+        JSON.stringify(customElementsManifest, null, 2),
+      );
+    },
   }],
 });
-
