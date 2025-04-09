@@ -241,7 +241,7 @@
 }
 
 #outer:not(.checkable) {
-  #body:has(+ .empty) {
+  #body:not(.empty):has(+ .empty) {
     &:after {
       content: '';
       float: right;
