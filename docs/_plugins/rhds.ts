@@ -11,6 +11,7 @@ import slugify from 'slugify';
 import RHDSAlphabetizeTagsPlugin from '#11ty-plugins/alphabetize-tags.js';
 import RHDSElementDocsPlugin from '#11ty-plugins/element-docs.js';
 import RHDSElementDemosPlugin from '#11ty-plugins/element-demos.js';
+import RHDSSSRHintHasSlottedPlugin from '#11ty-plugins/ssr-hints.js';
 import LitSSRPlugin from '#11ty-plugins/lit-ssr/lit.js';
 
 import { getPfeConfig } from '@patternfly/pfe-tools/config.js';
@@ -274,5 +275,6 @@ export default async function(eleventyConfig: UserConfig, options?: Options) {
   eleventyConfig.addPlugin(RHDSAlphabetizeTagsPlugin, options);
   eleventyConfig.addPlugin(RHDSElementDocsPlugin);
   eleventyConfig.addPlugin(RHDSElementDemosPlugin);
+  eleventyConfig.addPlugin(RHDSSSRHintHasSlottedPlugin);
   eleventyConfig.addPlugin(LitSSRPlugin, options);
 };
