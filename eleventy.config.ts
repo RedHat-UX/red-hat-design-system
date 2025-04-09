@@ -198,7 +198,6 @@ export default async function(eleventyConfig: UserConfig) {
       'elements/rh-accordion/rh-accordion.ts',
       'elements/rh-alert/rh-alert.ts',
       'elements/rh-announcement/rh-announcement.ts',
-      'elements/rh-audio-player/rh-audio-player.ts',
       'elements/rh-avatar/rh-avatar.ts',
       'elements/rh-back-to-top/rh-back-to-top.ts',
       'elements/rh-badge/rh-badge.ts',
@@ -211,7 +210,6 @@ export default async function(eleventyConfig: UserConfig) {
       'elements/rh-cta/rh-cta.ts',
       'elements/rh-dialog/rh-dialog.ts',
       'elements/rh-disclosure/rh-disclosure.ts',
-      'elements/rh-footer/rh-footer.ts',
       'elements/rh-footer/rh-footer-copyright.ts',
       'elements/rh-footer/rh-footer-universal.ts',
       'elements/rh-health-index/rh-health-index.ts',
@@ -258,6 +256,10 @@ export default async function(eleventyConfig: UserConfig) {
       'uxdot/uxdot-sidenav.ts',
       'uxdot/uxdot-spacer-tokens-table.ts',
       'uxdot/uxdot-toc.ts',
+
+      // still not working nicely with ssr
+      // 'elements/rh-audio-player/rh-audio-player.ts',
+      // 'elements/rh-footer/rh-footer.ts',
     ],
     tagsToAlphabetize: [
       'component',
