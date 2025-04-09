@@ -1,11 +1,15 @@
 /* eslint-disable no-console */
 
-import type { CssCustomProperty, CustomElementDeclaration, Package } from 'custom-elements-manifest';
+import type {
+  CssCustomProperty,
+  CustomElementDeclaration,
+  Package,
+} from 'custom-elements-manifest';
 import type { PathLike } from 'node:fs';
 import type { Declaration } from 'postcss';
 import type { DesignToken, TokenValue } from '@rhds/tokens/meta.js';
 
-import { glob, readFile, writeFile, stat } from 'node:fs/promises';
+import { glob, readFile, stat } from 'node:fs/promises';
 import { tokens } from '@rhds/tokens/meta.js';
 
 import { dirname, join } from 'node:path';
@@ -149,6 +153,10 @@ function tokensToCEMCssProperties(tokens: Map<string, DesignToken<TokenValue>>) 
   return decls.sort(byLocaleName);
 }
 
+/**
+ * Add used system tokens to CEM
+ * @param manifest
+ */
 export async function analyze(manifest: Package) {
   performance.mark('cem-system-tokens-start');
   for (const mod of manifest.modules) {
