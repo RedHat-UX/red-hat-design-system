@@ -27,9 +27,10 @@ export class UxdotDemo extends LitElement {
     return html`
       <div id="container">
         <iframe loading="lazy" title="${this.demoTitle}" src="${this.demoUrl}"></iframe>
-        <rh-card>
-          <rh-tabs class="code-tabs">
-            <rh-tab slot="tab">HTML</rh-tab>
+        <rh-card ssr-hint-has-slotted-default
+                 ssr-hint-has-slotted="footer">
+          <rh-tabs class="code-tabs" active-index="0">
+            <rh-tab slot="tab" active>HTML</rh-tab>
             <rh-tab-panel><slot name="html"></slot></rh-tab-panel>
             <rh-tab slot="tab">CSS</rh-tab>
             <rh-tab-panel><slot name="css"></slot></rh-tab-panel>
