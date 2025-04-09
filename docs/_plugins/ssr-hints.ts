@@ -27,8 +27,18 @@ interface Options {
  */
 export default function(eleventyConfig: UserConfig, pluginOpts: Partial<Options> = { }) {
   const tagSet = new Set(pluginOpts.slotControllerTagNames ?? [
+    'rh-alert',
+    'rh-announcement',
     'rh-card',
+    'rh-code-block',
+    'rh-dialog',
+    'rh-footer-universal',
+    'rh-stat',
+    'rh-switch',
+    'rh-tab',
+    'rh-tag',
     'rh-tile',
+    'rh-video-embed',
   ]);
   const isSlotControllerNode = (node: Node): node is Element =>
     isElementNode(node) && tagSet.has(node.tagName);
