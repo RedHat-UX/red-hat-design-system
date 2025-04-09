@@ -47,23 +47,23 @@ export class RhTable extends LitElement {
   }
 
   get #table(): HTMLTableElement | undefined {
-    return this.querySelector('table') as HTMLTableElement | undefined;
+    return this.querySelector?.('table') as HTMLTableElement | undefined;
   }
 
   get #cols(): NodeListOf<HTMLTableColElement> | undefined {
-    return this.querySelectorAll('col') as NodeListOf<HTMLTableColElement> | undefined;
+    return this.querySelectorAll?.('col') as NodeListOf<HTMLTableColElement> | undefined;
   }
 
   get #rows(): NodeListOf<HTMLTableRowElement> | undefined {
-    return this.querySelectorAll('tbody > tr') as NodeListOf<HTMLTableRowElement> | undefined;
+    return this.querySelectorAll?.('tbody > tr') as NodeListOf<HTMLTableRowElement> | undefined;
   }
 
   get #colHeaders(): NodeListOf<HTMLTableCellElement> | undefined {
-    return this.querySelectorAll<HTMLTableCellElement>('thead > tr > th');
+    return this.querySelectorAll?.<HTMLTableCellElement>('thead > tr > th');
   }
 
   get #summary(): HTMLElement | undefined {
-    return this.querySelector('[slot="summary"]') as HTMLElement | undefined;
+    return this.querySelector?.('[slot="summary"]') as HTMLElement | undefined;
   }
 
   #logger = new Logger(this);
@@ -142,7 +142,7 @@ export class RhTable extends LitElement {
      *
      * So we bail for now...
      */
-    if (this.querySelector('[colspan], [rowspan]')) {
+    if (this.querySelector?.('[colspan], [rowspan]')) {
       return;
     }
 
