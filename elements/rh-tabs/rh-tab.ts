@@ -12,6 +12,7 @@ import { InternalsController } from '@patternfly/pfe-core/controllers/internals-
 import {
   rhTabsActiveTabContext,
   rhTabsBoxContext,
+  rhTabsManualContext,
   rhTabsFirstTabContext,
   rhTabsLastTabContext,
   rhTabsVerticalContext,
@@ -63,6 +64,9 @@ export class RhTab extends LitElement {
   @consume({ context: rhTabsVerticalContext, subscribe: true })
   @state() private vertical = false;
 
+  @consume({ context: rhTabsManualContext, subscribe: true })
+  @state() private manual = false;
+
   @consume({ context: rhTabsActiveTabContext, subscribe: true })
   @state() private activeTab: RhTab | null = null;
 
@@ -113,7 +117,7 @@ export class RhTab extends LitElement {
   }
 
   #onFocus() {
-    if (!this.ctx?.manual && !this.disabled) {
+    if (!this.manual && !this.disabled) {
       this.#activate();
     }
   }
