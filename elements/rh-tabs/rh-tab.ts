@@ -1,6 +1,6 @@
 import type { RhTabsContext } from './context.js';
 
-import { html, LitElement } from 'lit';
+import { html, isServer, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { state } from 'lit/decorators/state.js';
@@ -18,6 +18,7 @@ import { context } from './context.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-tab.css';
+import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 
 export class TabExpandEvent extends Event {
   constructor(
@@ -58,9 +59,7 @@ export class RhTab extends LitElement {
   @property({ attribute: false })
   private ctx?: RhTabsContext;
 
-  @queryAssignedElements({ slot: 'icon', flatten: true }) private icons!: HTMLElement[];
-
-  @query('#button') private button!: HTMLButtonElement;
+  #slots = new SlotController(this, 'icon', null);
 
   #internals = InternalsController.of(this, { role: 'tab' });
 
@@ -91,7 +90,7 @@ export class RhTab extends LitElement {
            class="${classMap({ active: this.ctx?.activeTab === this, box, vertical, first, last })}">
         <slot name="icon"
               part="icon"
-              ?hidden="${!this.icons.length}"
+              ?hidden="${this.#slots.hasSlotted('icon')}"
               @slotchange="${() => this.requestUpdate()}"></slot>
         <slot part="text"></slot>
       </div>
