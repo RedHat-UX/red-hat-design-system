@@ -8,6 +8,7 @@ import tsBlankSpace from 'ts-blank-space';
 import chalk from 'chalk';
 
 import { register } from 'node:module';
+import type { Options } from '#11ty-plugins/rhds.js';
 
 export interface RenderRequestMessage {
   content: string;
@@ -19,13 +20,6 @@ export interface RenderResponseMessage {
   page: Pick<EleventyPage, 'inputPath' | 'outputPath'>;
   rendered?: string;
   durationMs: number;
-}
-
-interface Options {
-  slotControllerElements: string[];
-  componentModules?: string[];
-  /** path from project root to tsconfig */
-  tsconfig?: string;
 }
 
 async function redactTSFileInPlace(path: string) {
@@ -41,7 +35,10 @@ register('./lit-css-node.ts', import.meta.url);
  * @param eleventyConfig
  * @param opts
  */
-export default async function(eleventyConfig: UserConfig, opts?: Options) {
+export default async function(
+  eleventyConfig: UserConfig,
+  opts?: Options,
+) {
   const imports = opts?.componentModules ?? [];
   const tsconfig = opts?.tsconfig ?? './tsconfig.json';
 

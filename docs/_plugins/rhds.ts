@@ -78,7 +78,7 @@ async function getFilesToCopy() {
   }));
 }
 
-interface Options {
+export interface Options {
   tagsToAlphabetize: string[];
   componentModules: string[];
   /** Tag names of elements which will require ssr hint attrs because they use slotcontroller in their templates */
@@ -92,7 +92,10 @@ async function clean() {
   await $`npx tspc -b lib --clean`;
 }
 
-export default async function(eleventyConfig: UserConfig, options?: Options) {
+export default async function(
+  eleventyConfig: UserConfig,
+  options?: Options,
+) {
   /** add the normalized pfe-tools config to global data */
   eleventyConfig.addGlobalData('pfeconfig', getPfeConfig());
 

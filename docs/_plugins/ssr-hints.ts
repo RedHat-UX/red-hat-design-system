@@ -16,18 +16,13 @@ import {
   queryAll,
   setAttribute,
 } from '@parse5/tools';
-
-interface Options {
-  /** Tag names of elements which will require ssr hint attrs because they use slotcontroller in their templates */
-  slotControllerElements: string[];
-}
-
+import type { Options } from './rhds.js';
 
 export function injectSSRHintAttributes(
   node: Node,
-  options: Pick<Options, 'slotControllerElements'>,
+  options?: Pick<Options, 'slotControllerElements'>,
 ): void {
-  const tagSet = new Set(options.slotControllerElements);
+  const tagSet = new Set(options?.slotControllerElements ?? []);
 
   const isSlotControllerNode = (node: Node): node is Element =>
     isElementNode(node) && tagSet.has(node.tagName);
@@ -61,7 +56,10 @@ export function injectSSRHintAttributes(
  * @param eleventyConfig
  * @param pluginOpts
  */
-export default function(eleventyConfig: UserConfig, pluginOpts: Options) {
+export default function(
+  eleventyConfig: UserConfig,
+  pluginOpts?: Options,
+) {
   eleventyConfig.addTransform('rhds-ssr-hints', function(content: string) {
     const document = parse(content);
 
