@@ -1,6 +1,20 @@
 import type { UserConfig } from '@11ty/eleventy';
+
 import { parse, serialize } from 'parse5';
-import * as Tools from '@parse5/tools';
+import {
+  type Node,
+  type Element,
+  isElementNode,
+  getAttribute,
+  hasAttribute,
+  isCommentNode,
+  isDocument,
+  isDocumentFragment,
+  isDocumentTypeNode,
+  isTextNode,
+  queryAll,
+  setAttribute,
+} from '@parse5/tools';
 
 interface Options {
   slotControllerTagNames: string[];
@@ -11,38 +25,37 @@ interface Options {
  * @param eleventyConfig
  * @param pluginOpts
  */
-export default function(eleventyConfig: UserConfig, pluginOpts: Partial<Options> = {
-  slotControllerTagNames: [
+export default function(eleventyConfig: UserConfig, pluginOpts: Partial<Options> = { }) {
+  const tagSet = new Set(pluginOpts.slotControllerTagNames ?? [
     'rh-card',
     'rh-tile',
-  ],
-}) {
-  const tagSet = new Set(pluginOpts.slotControllerTagNames);
+  ]);
+  const isSlotControllerNode = (node: Node): node is Element =>
+    isElementNode(node) && tagSet.has(node.tagName);
+
   eleventyConfig.addTransform('rhds-ssr-hints', function(content: string) {
     const document = parse(content);
 
-    for (const element of Tools.queryAll<Tools.Element>(document, (node): node is Tools.Element =>
-      Tools.isElementNode(node)
-       && tagSet.has(node.tagName))) {
+    for (const element of queryAll<Element>(document, isSlotControllerNode)) {
       const slots = new Set();
       let foundDefault = false;
-      for (const node of Tools.queryAll(element)) {
-        if (Tools.isDocument(node)
-          || Tools.isDocumentFragment(node)
-          || Tools.isCommentNode(node)
-          || Tools.isDocumentTypeNode(node)) {
+      for (const node of queryAll(element)) {
+        if (isDocument(node)
+          || isDocumentFragment(node)
+          || isCommentNode(node)
+          || isDocumentTypeNode(node)) {
           continue;
-        } else if (Tools.isTextNode(node) || !Tools.hasAttribute(node, 'slot')) {
+        } else if (isTextNode(node) || !hasAttribute(node, 'slot')) {
           foundDefault = true;
-        } else if (Tools.hasAttribute(node, 'slot')) {
-          slots.add(Tools.getAttribute(node, 'slot'));
+        } else if (hasAttribute(node, 'slot')) {
+          slots.add(getAttribute(node, 'slot'));
         }
       }
       if (foundDefault) {
-        Tools.setAttribute(element, 'ssr-hint-has-slotted-default', 'true');
+        setAttribute(element, 'ssr-hint-has-slotted-default', 'true');
       }
       if (slots.size) {
-        Tools.setAttribute(element, 'ssr-hint-has-slotted', [...slots].join());
+        setAttribute(element, 'ssr-hint-has-slotted', [...slots].join());
       }
     }
 
