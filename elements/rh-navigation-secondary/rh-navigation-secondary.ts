@@ -153,13 +153,19 @@ export class RhNavigationSecondary extends LitElement {
   async connectedCallback() {
     super.connectedCallback();
     RhNavigationSecondary.instances.add(this);
-    this.#compact = !this.#screenSize.matches.has('md');
     this.addEventListener('expand-request', this.#onExpandRequest);
     this.addEventListener('overlay-change', this.#onOverlayChange);
     this.addEventListener('focusout', this.#onFocusout);
     this.addEventListener('keydown', this.#onKeydown);
     if (!isServer) {
       this.#upgradeAccessibility();
+    }
+  }
+
+  async firstUpdated() {
+    if (!isServer) {
+      await this.updateComplete;
+      this.#compact = !this.#screenSize.matches.has('md');
     }
   }
 
