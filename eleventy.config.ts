@@ -219,6 +219,7 @@ export default async function(eleventyConfig: UserConfig) {
       'elements/rh-skip-link/rh-skip-link.ts',
       'elements/rh-subnav/rh-subnav.ts',
       'elements/rh-surface/rh-surface.ts',
+      'elements/rh-switch/rh-switch.ts',
       'elements/rh-table/rh-sort-button.ts',
       'elements/rh-table/rh-table.ts',
       'elements/rh-tabs/rh-tab-panel.ts',
