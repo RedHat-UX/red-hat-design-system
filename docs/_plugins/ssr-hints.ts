@@ -34,6 +34,7 @@ export default function(eleventyConfig: UserConfig, pluginOpts: Partial<Options>
     'rh-card',
     'rh-code-block',
     'rh-dialog',
+    'rh-footer',
     'rh-footer-universal',
     'rh-stat',
     'rh-switch',
