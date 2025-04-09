@@ -2,13 +2,13 @@ import type { RandomPatternController } from './random-pattern-controller.js';
 
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { LitElement, html, type PropertyValues } from 'lit';
+import { LitElement, html, isServer, type PropertyValues } from 'lit';
 import { classMap } from 'lit/directives/class-map.js';
 
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
+import { themable } from '../../lib/themable.js';
 
 import styles from './rh-avatar.css';
-
 
 /**
  * An avatar is a small thumbnail representation of a user.
@@ -19,6 +19,7 @@ import styles from './rh-avatar.css';
  * @cssprop {<length>} [--rh-avatar-size=64px] - Size of the avatar,
  */
 @customElement('rh-avatar')
+@themable
 export class RhAvatar extends LitElement {
   static readonly styles = [styles];
 
@@ -56,7 +57,9 @@ export class RhAvatar extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.#normalize();
+    if (!isServer) {
+      this.#normalize();
+    }
   }
 
   /**
