@@ -29,6 +29,8 @@ export default function(eleventyConfig: UserConfig, pluginOpts: Partial<Options>
   const tagSet = new Set(pluginOpts.slotControllerTagNames ?? [
     'rh-alert',
     'rh-announcement',
+    'rh-audio-player-subscribe',
+    'rh-transcript',
     'rh-card',
     'rh-code-block',
     'rh-dialog',

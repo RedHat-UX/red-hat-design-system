@@ -1,6 +1,6 @@
 import type { RhTooltip } from '@rhds/elements/rh-tooltip/rh-tooltip.js';
 
-import { LitElement, html, type PropertyValues } from 'lit';
+import { LitElement, html, isServer, type PropertyValues } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
@@ -139,7 +139,9 @@ export class RhAudioPlayer extends LitElement {
     return this.#mediaElement?.readyState ?? 0;
   }
 
-  #isMobileSafari = window.navigator.userAgent.match(/(iPhone|iPad|Mobile).*(AppleWebkit|Safari)/i);
+  #isMobileSafari =
+      isServer ? false
+    : window.navigator.userAgent.match(/(iPhone|iPad|Mobile).*(AppleWebkit|Safari)/i);
 
   #paused = true;
 
@@ -221,7 +223,7 @@ export class RhAudioPlayer extends LitElement {
   }
 
   get #hasMenu() {
-    return (
+    return isServer ? false : (
       this.#panels.length > 1
       || !!this.mediaseries
       || !!this.mediatitle
@@ -268,17 +270,23 @@ export class RhAudioPlayer extends LitElement {
   }
 
   get #transcript(): RhTranscript | undefined {
-    const [t] = this._transcripts ?? [];
-    return t ?? this.shadowRoot?.querySelector('rh-transcript');
+    if (!isServer) {
+      const [t] = this._transcripts ?? [];
+      return t ?? this.shadowRoot?.querySelector('rh-transcript');
+    }
   }
 
   get #about() {
-    const [a = this.shadowRoot?.querySelector('rh-audio-player-about')] = this._abouts ?? [];
-    return a;
+    if (!isServer) {
+      const [a = this.shadowRoot?.querySelector?.('rh-audio-player-about')] = this._abouts ?? [];
+      return a;
+    }
   }
 
   get #subscribe() {
-    return this._subscribe?.[0];
+    if (!isServer) {
+      return this._subscribe?.[0];
+    }
   }
 
   /** elapsed time in seconds */
@@ -325,7 +333,9 @@ export class RhAudioPlayer extends LitElement {
     this.addEventListener('cueseek', this.#onCueseek);
     this.#initMediaElement();
     this.#loadLanguage();
-    this.#styles ??= window.getComputedStyle?.(this);
+    if (!isServer) {
+      this.#styles ??= window.getComputedStyle?.(this);
+    }
   }
 
   disconnectedCallback() {
@@ -665,20 +675,22 @@ export class RhAudioPlayer extends LitElement {
    * @param slotchangeevent
    */
   #initMediaElement(slotchangeevent?: Event) {
-    if (slotchangeevent) {
-      this.#cleanUpListeners();
-      this.#lastMediaElement = this.querySelector('audio') ?? undefined;
-    }
+    if (!isServer) {
+      if (slotchangeevent) {
+        this.#cleanUpListeners();
+        this.#lastMediaElement = this.querySelector('audio') ?? undefined;
+      }
 
-    this.#mediaElement = this.querySelector('audio') ?? undefined;
+      this.#mediaElement = this.querySelector('audio') ?? undefined;
 
-    if (this.#mediaElement) {
-      this.#mediaElement.removeAttribute('controls');
-      this.#mediaElement.setAttribute('seekable', 'seekable');
-      this.volume = this.#mediaElement.volume || 0.5;
+      if (this.#mediaElement) {
+        this.#mediaElement.removeAttribute('controls');
+        this.#mediaElement.setAttribute('seekable', 'seekable');
+        this.volume = this.#mediaElement.volume || 0.5;
 
-      for (const [event, listener] of this.#listeners) {
-        this.#mediaElement.addEventListener(event, listener);
+        for (const [event, listener] of this.#listeners) {
+          this.#mediaElement.addEventListener(event, listener);
+        }
       }
     }
   }

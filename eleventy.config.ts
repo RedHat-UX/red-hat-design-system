@@ -196,6 +196,7 @@ export default async function(eleventyConfig: UserConfig) {
     tsconfig: './tsconfig.settings.json',
     componentModules: [
       'elements/rh-accordion/rh-accordion.ts',
+      'elements/rh-audio-player/rh-audio-player.ts',
       'elements/rh-avatar/rh-avatar.ts',
       'elements/rh-back-to-top/rh-back-to-top.ts',
       'elements/rh-badge/rh-badge.ts',

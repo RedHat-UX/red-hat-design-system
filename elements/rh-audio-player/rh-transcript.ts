@@ -1,8 +1,7 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, type TemplateResult } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { state } from 'lit/decorators/state.js';
-import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 
 import { RhCue, getFormattedTime } from './rh-cue.js';
 
@@ -17,6 +16,7 @@ import './rh-audio-player-scrolling-text-overflow.js';
 
 import '@rhds/elements/rh-tooltip/rh-tooltip.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
+import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller-server.js';
 
 /**
  * Audio Player Transcript Panel
@@ -41,12 +41,11 @@ export class RhTranscript extends LitElement {
 
   @state() private _download!: string;
 
-  @queryAssignedElements({ selector: 'rh-cue' })
-  private _cues!: RhCue[];
-
   #autoscroll = true;
 
   #duration?: number;
+
+  #slots = new SlotController(this, 'heading', null, 'cues');
 
   #headings = new HeadingLevelContextConsumer(this);
 
@@ -67,7 +66,7 @@ export class RhTranscript extends LitElement {
   }
 
   get downloadText() {
-    return this._cues.map(cue =>cue.downloadText).join('\n\n');
+    return this.#slots.getSlotted<RhCue>('cues').map(cue =>cue.downloadText).join('\n\n');
   }
 
   set menuLabel(label: string) {
@@ -83,12 +82,12 @@ export class RhTranscript extends LitElement {
     new HeadingLevelContextProvider(this, { offset: 0 });
   }
 
-  render() {
+  override render(): TemplateResult {
     return html`
       <rh-audio-player-scrolling-text-overflow part="heading">
         <slot name="heading">${this.#headings.wrap(this.menuLabel)}</slot>
       </rh-audio-player-scrolling-text-overflow>
-      <div class="panel-toolbar" part="toolbar">${this._cues.length < 0 ? '' : html`
+      <div class="panel-toolbar" part="toolbar">${this.#slots.isEmpty('cues') ? '' : html`
         <label>
           <input id="autoscroll"
                  type="checkbox"
@@ -109,16 +108,16 @@ export class RhTranscript extends LitElement {
 
   #updateCues(currentTime?: number) {
     let activeCue: RhCue;
-    this._cues.forEach((cue, index)=>{
+    this.#slots.getSlotted<RhCue>('cues').forEach((cue, index, a)=>{
       if (!cue.start) {
-        const prevCue = this._cues[index - 1];
+        const prevCue = a[index - 1];
         const prevEnd = prevCue?.end;
         if (prevEnd) {
           cue.start = prevEnd || '0:00';
         }
       }
       if (!cue.end) {
-        const nextCue = this._cues[index + 1];
+        const nextCue = a[index + 1];
         const nextStart = nextCue?.start;
         const duration = getFormattedTime(this.#duration);
         if (!!nextStart || !!duration) {

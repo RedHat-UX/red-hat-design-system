@@ -1,4 +1,4 @@
-import type { ReactiveController, ReactiveElement } from 'lit';
+import { isServer, type ReactiveController, type ReactiveElement } from 'lit';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
@@ -17,17 +17,25 @@ export class I18nController implements ReactiveController {
 
   #microcopy = new Map<string, Map<string, string>>();
 
+  #updatedOnce = false;
+
   constructor(private host: ReactiveElement, defaults: Microcopy) {
     this.#logger = new Logger(host);
     for (const [language, copy] of Object.entries(defaults)) {
       this.#microcopy.set(language, new Map(Object.entries(copy)));
     }
-    this.update();
   }
 
   hostConnected(): void {
     this.#mo.observe(this.host, { childList: true, attributes: true, attributeFilter: ['lang'] });
-    this.update();
+  }
+
+  async hostUpdated() {
+    if (!this.#updatedOnce) {
+      await this.host.updateComplete;
+      this.update();
+      this.#updatedOnce = true;
+    }
   }
 
   hostDisconnected(): void {
@@ -35,6 +43,9 @@ export class I18nController implements ReactiveController {
   }
 
   #getLanguage() {
+    if (isServer) {
+      return this.#defaultLanguage;
+    }
     let lang = this.host.getAttribute('lang') || this.host.closest('[lang]')?.getAttribute('lang');
     let root = this.host.getRootNode();
     while (!lang && root instanceof ShadowRoot) {
@@ -59,9 +70,11 @@ export class I18nController implements ReactiveController {
 
   #updateMicrocopy() {
     this.#updateLanguage();
-    const lightLangs = this.host.querySelectorAll<HTMLScriptElement>(
-      'script[type="application/json"][data-language]'
-    );
+    const lightLangs =
+        isServer ? []
+      : this.host.querySelectorAll<HTMLScriptElement>(
+        'script[type="application/json"][data-language]'
+      );
     for (const script of lightLangs) {
       const { language } = script.dataset;
       if (language) {
