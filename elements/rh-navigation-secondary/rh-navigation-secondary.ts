@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -73,12 +73,14 @@ export class RhNavigationSecondary extends LitElement {
   private static instances = new Set<RhNavigationSecondary>();
 
   static {
-    globalThis.addEventListener('keyup', (event: KeyboardEvent) => {
-      const { instances } = RhNavigationSecondary;
-      for (const instance of instances) {
-        instance.#onKeyup(event);
-      }
-    }, { capture: false });
+    if (!isServer) {
+      document.addEventListener('keyup', (event: KeyboardEvent) => {
+        const { instances } = RhNavigationSecondary;
+        for (const instance of instances) {
+          instance.#onKeyup(event);
+        }
+      }, { capture: false });
+    }
   }
 
 
@@ -160,7 +162,9 @@ export class RhNavigationSecondary extends LitElement {
     this.addEventListener('overlay-change', this.#onOverlayChange);
     this.addEventListener('focusout', this.#onFocusout);
     this.addEventListener('keydown', this.#onKeydown);
-    this.#upgradeAccessibility();
+    if (!isServer) {
+      this.#upgradeAccessibility();
+    }
   }
 
   disconnectedCallback(): void {
