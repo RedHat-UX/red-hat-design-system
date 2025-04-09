@@ -3,7 +3,6 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { state } from 'lit/decorators/state.js';
-import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 
 import { ComposedEvent } from '@patternfly/pfe-core';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
@@ -112,9 +111,6 @@ export class RhNavigationSecondary extends LitElement {
    * Color palette dark | lighter (default: lighter)
    */
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'lighter';
-
-
-  @queryAssignedElements({ slot: 'nav' }) private _nav?: HTMLElement[];
 
   /**
    * Customize the default `aria-label` on the `<nav>` container.
