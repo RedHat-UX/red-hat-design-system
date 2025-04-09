@@ -7,6 +7,7 @@ import { RhCue, getFormattedTime } from './rh-cue.js';
 
 import { HeadingLevelContextConsumer } from '@rhds/elements/lib/context/headings/consumer.js';
 import { HeadingLevelContextProvider } from '@rhds/elements/lib/context/headings/provider.js';
+import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller-server.js';
 
 import buttonStyles from './rh-audio-player-button.css';
 import panelStyles from './rh-audio-player-panel.css';
@@ -16,7 +17,6 @@ import './rh-audio-player-scrolling-text-overflow.js';
 
 import '@rhds/elements/rh-tooltip/rh-tooltip.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
-import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller-server.js';
 
 /**
  * Audio Player Transcript Panel
@@ -35,7 +35,9 @@ export class RhTranscript extends LitElement {
 
   @property({ reflect: true }) lang!: string;
 
-  @state() private _label!: string;
+  @property() menuLabel = 'About the episode';
+  @property() downloadLabel = 'Download';
+  @property() autoscrollLabel = 'Autoscroll';
 
   @state() private _autoscroll!: string;
 
@@ -49,32 +51,8 @@ export class RhTranscript extends LitElement {
 
   #headings = new HeadingLevelContextConsumer(this);
 
-  set autoscrollLabel(label: string) {
-    this._autoscroll = label;
-  }
-
-  get autoscrollLabel(): string {
-    return this._autoscroll || 'Autoscroll';
-  }
-
-  set downloadLabel(label: string) {
-    this._download = label;
-  }
-
-  get downloadLabel(): string {
-    return this._download || 'Download';
-  }
-
   get downloadText() {
     return this.#slots.getSlotted<RhCue>('cues').map(cue =>cue.downloadText).join('\n\n');
-  }
-
-  set menuLabel(label: string) {
-    this._label = label;
-  }
-
-  get menuLabel(): string {
-    return this.label || this._label || 'About the episode';
   }
 
   constructor() {

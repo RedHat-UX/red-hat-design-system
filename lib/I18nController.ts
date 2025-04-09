@@ -17,8 +17,6 @@ export class I18nController implements ReactiveController {
 
   #microcopy = new Map<string, Map<string, string>>();
 
-  #updatedOnce = false;
-
   constructor(private host: ReactiveElement, defaults: Microcopy) {
     this.#logger = new Logger(host);
     for (const [language, copy] of Object.entries(defaults)) {
@@ -28,14 +26,7 @@ export class I18nController implements ReactiveController {
 
   hostConnected(): void {
     this.#mo.observe(this.host, { childList: true, attributes: true, attributeFilter: ['lang'] });
-  }
-
-  async hostUpdated() {
-    if (!this.#updatedOnce) {
-      await this.host.updateComplete;
-      this.update();
-      this.#updatedOnce = true;
-    }
+    this.update();
   }
 
   hostDisconnected(): void {
@@ -46,17 +37,15 @@ export class I18nController implements ReactiveController {
     if (isServer) {
       return this.#defaultLanguage;
     }
-    let lang = this.host.getAttribute('lang') || this.host.closest('[lang]')?.getAttribute('lang');
+    let lang =
+      this.host.getAttribute('lang')
+        || this.host.closest('[lang]')?.getAttribute('lang');
     let root = this.host.getRootNode();
     while (!lang && root instanceof ShadowRoot) {
       lang = root.host.closest('[lang]')?.getAttribute('lang') as string;
       root = root.host.getRootNode();
     }
     return lang ?? this.language;
-  }
-
-  #updateLanguage() {
-    this.language = this.#getLanguage();
   }
 
   #useDefaultLanguage() {
@@ -69,14 +58,11 @@ export class I18nController implements ReactiveController {
   }
 
   #updateMicrocopy() {
-    this.#updateLanguage();
-    const lightLangs =
-        isServer ? []
-      : this.host.querySelectorAll<HTMLScriptElement>(
-        'script[type="application/json"][data-language]'
-      );
-    for (const script of lightLangs) {
-      const { language } = script.dataset;
+    this.language = this.#getLanguage();
+    for (const script of this.host.querySelectorAll?.(
+      'script[type="application/json"][data-language]'
+    ) ?? []) {
+      const { language } = (script as HTMLElement).dataset;
       if (language) {
         let content = {};
         try {
@@ -97,7 +83,7 @@ export class I18nController implements ReactiveController {
   }
 
   update() {
-    this.#updateLanguage();
+    this.language = this.#getLanguage();
     this.#updateMicrocopy();
     this.host.requestUpdate();
   }

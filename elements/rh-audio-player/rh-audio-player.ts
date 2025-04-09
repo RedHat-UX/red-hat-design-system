@@ -643,23 +643,25 @@ export class RhAudioPlayer extends LitElement {
     }
   }
 
-  #updateMenuLabels() {
-    if (this.#about?.menuLabel) {
+  async #updateMenuLabels() {
+    await this.updateComplete;
+    this.#translation.update();
+    if (this.#about) {
       this.#about.menuLabel = this.#translation.get('about');
     }
-    if (this.#subscribe?.menuLabel) {
+    if (this.#subscribe) {
       this.#subscribe.menuLabel = this.#translation.get('subscribe');
     }
-    if (this.#transcript?.menuLabel) {
+    if (this.#transcript) {
       this.#transcript.menuLabel = this.#translation.get('transcript');
     }
   }
 
-  #updateTranscriptLabels() {
-    if (this.#transcript?.autoscrollLabel) {
+  async #updateTranscriptLabels() {
+    await this.updateComplete;
+    this.#translation.update();
+    if (this.#transcript) {
       this.#transcript.autoscrollLabel = this.#translation.get('autoscroll');
-    }
-    if (this.#transcript?.downloadLabel) {
       this.#transcript.downloadLabel = this.#translation.get('download');
     }
   }
