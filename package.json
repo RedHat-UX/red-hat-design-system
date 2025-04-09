@@ -105,10 +105,7 @@
     },
     "11ty-dev": {
       "service": true,
-      "command": "NODE_OPTIONS='--import tsx/esm' eleventy --serve --incremental --config=eleventy.config.ts",
-      "dependencies": [
-        "analyze"
-      ]
+      "command": "NODE_OPTIONS='--import tsx/esm' eleventy --serve --incremental --config=eleventy.config.ts"
     },
     "dev": {
       "service": true,
@@ -122,8 +119,7 @@
       "service": true,
       "command": "TSX_TSCONFIG_PATH=tsconfig.settings.json NODE_OPTIONS='--import tsx/esm' eleventy --config=eleventy.config.ts --incremental --serve",
       "dependencies": [
-        "patch",
-        "analyze"
+        "patch"
       ]
     },
     "build": {
