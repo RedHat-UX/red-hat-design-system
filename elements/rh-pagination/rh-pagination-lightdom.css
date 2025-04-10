@@ -106,7 +106,6 @@ rh-pagination {
     font-size: var(--rh-font-size-body-text-lg, 1.125rem);
     color: var(--rh-color-gray-40, #a3a3a3);
     justify-content: center;
-    background: var(--rh-color-surface-lightest, #ffffff);
     align-self: start;
   }
 

@@ -1,11 +1,7 @@
-import type { RhTabsContext } from './context.js';
-
-import { html, LitElement } from 'lit';
+import { html, isServer, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { state } from 'lit/decorators/state.js';
-import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
-import { query } from 'lit/decorators/query.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { consume } from '@lit/context';
 
@@ -13,11 +9,19 @@ import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
-import { context } from './context.js';
+import {
+  rhTabsActiveTabContext,
+  rhTabsBoxContext,
+  rhTabsManualContext,
+  rhTabsFirstTabContext,
+  rhTabsLastTabContext,
+  rhTabsVerticalContext,
+} from './context.js';
 
 import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-tab.css';
+import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 
 export class TabExpandEvent extends Event {
   constructor(
@@ -54,18 +58,27 @@ export class RhTab extends LitElement {
   /** True when the tab is disabled */
   @property({ reflect: true, type: Boolean }) disabled = false;
 
-  @consume({ context, subscribe: true })
-  @property({ attribute: false })
-  private ctx?: RhTabsContext;
+  @consume({ context: rhTabsBoxContext, subscribe: true })
+  @state() private box = false;
 
-  @queryAssignedElements({ slot: 'icon', flatten: true }) private icons!: HTMLElement[];
+  @consume({ context: rhTabsVerticalContext, subscribe: true })
+  @state() private vertical = false;
 
-  @query('#button') private button!: HTMLButtonElement;
+  @consume({ context: rhTabsManualContext, subscribe: true })
+  @state() private manual = false;
+
+  @consume({ context: rhTabsActiveTabContext, subscribe: true })
+  @state() private activeTab: RhTab | null = null;
+
+  @consume({ context: rhTabsFirstTabContext, subscribe: true })
+  @state() private firstTab: RhTab | null = null;
+
+  @consume({ context: rhTabsLastTabContext, subscribe: true })
+  @state() private lastTab: RhTab | null = null;
+
+  #slots = new SlotController(this, 'icon', null);
 
   #internals = InternalsController.of(this, { role: 'tab' });
-
-  @state() private first = false;
-  @state() private last = false;
 
   override connectedCallback() {
     super.connectedCallback();
@@ -75,23 +88,19 @@ export class RhTab extends LitElement {
     this.addEventListener('focus', this.#onFocus);
   }
 
-  willUpdate() {
-    this.active = this.ctx?.activeTab === this;
-    this.first = this.ctx?.firstTab === this;
-    this.last = this.ctx?.lastTab === this;
-  }
-
   render() {
-    const { box = false, vertical = false } = this.ctx ?? {};
-    const { first, last } = this;
+    const { box = false, vertical = false, activeTab, firstTab, lastTab } = this;
+    const active = isServer ? this.active : activeTab === this;
+    const first = firstTab === this;
+    const last = lastTab === this;
     return html`
       <div id="button"
            part="button"
            ?disabled="${this.disabled}"
-           class="${classMap({ active: this.ctx?.activeTab === this, box, vertical, first, last })}">
+           class="${classMap({ active, box, vertical, first, last })}">
         <slot name="icon"
               part="icon"
-              ?hidden="${!this.icons.length}"
+              ?hidden="${this.#slots.hasSlotted('icon')}"
               @slotchange="${() => this.requestUpdate()}"></slot>
         <slot part="text"></slot>
       </div>
@@ -108,7 +117,7 @@ export class RhTab extends LitElement {
   }
 
   #onFocus() {
-    if (!this.ctx?.manual && !this.disabled) {
+    if (!this.manual && !this.disabled) {
       this.#activate();
     }
   }

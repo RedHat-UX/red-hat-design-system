@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
 
@@ -23,13 +23,15 @@ export class RhAudioPlayerScrollingTextOverflow extends LitElement {
   #style?: CSSStyleDeclaration;
 
   get #isScrollable() {
-    const outer = this.shadowRoot?.getElementById('outer');
+    const outer = this.shadowRoot?.getElementById?.('outer');
     return (outer?.scrollWidth ?? 0) > (outer?.clientWidth ?? 0);
   }
 
   connectedCallback(): void {
     super.connectedCallback();
-    this.#style = getComputedStyle(this);
+    if (!isServer) {
+      this.#style = getComputedStyle(this);
+    }
   }
 
   firstUpdated() {
