@@ -1,5 +1,7 @@
 <rh-tabs>
-  <rh-tab id="users" slot="tab">Users</rh-tab>
+  <rh-tab id="users"
+          slot="tab"
+          active>Users</rh-tab>
   <rh-tab-panel>Users</rh-tab-panel>
   <rh-tab slot="tab">Containers</rh-tab>
   <rh-tab-panel>Containers <a href="#">Focusable element</a></rh-tab-panel>
@@ -31,14 +33,33 @@
 
   a {
     color: var(--rh-color-interactive-primary-default);
-    &:hover { color: var(--rh-color-interactive-primary-hover); }
-    &:focus-within { color: var(--rh-color-interactive-primary-focus); }
-    &:active { color: var(--rh-color-interactive-primary-active); }
+
+    &:hover {
+      color: var(--rh-color-interactive-primary-hover);
+    }
+
+    &:focus-within {
+      color: var(--rh-color-interactive-primary-focus);
+    }
+
+    &:active {
+      color: var(--rh-color-interactive-primary-active);
+    }
+
     &:visited {
       color: var(--rh-color-interactive-primary-visited);
-      &:hover { color: var(--rh-color-interactive-primary-visited-hover); }
-      &:focus-within { color: var(--rh-color-interactive-primary-visited-focus); }
-      &:active { color: var(--rh-color-interactive-primary-visited-active); }
+
+      &:hover {
+        color: var(--rh-color-interactive-primary-visited-hover);
+      }
+
+      &:focus-within {
+        color: var(--rh-color-interactive-primary-visited-focus);
+      }
+
+      &:active {
+        color: var(--rh-color-interactive-primary-visited-active);
+      }
     }
   }
 </style>

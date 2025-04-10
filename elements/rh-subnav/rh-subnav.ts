@@ -1,7 +1,6 @@
 import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { query } from 'lit/decorators/query.js';
-import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 import { property } from 'lit/decorators/property.js';
 
 import { OverflowController } from '@patternfly/pfe-core/controllers/overflow-controller.js';
@@ -12,6 +11,7 @@ import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palet
 import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-subnav.css';
+import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 
 
 /**
@@ -45,6 +45,8 @@ export class RhSubnav extends LitElement {
 
   #allLinkElements: HTMLAnchorElement[] = [];
 
+  #slots = new SlotController(this, null);
+
   #overflow = new OverflowController(this);
 
   /**
@@ -60,8 +62,6 @@ export class RhSubnav extends LitElement {
    * Defaults to "subnavigation" if no attribute/property is set.
    */
   @property({ attribute: 'accessible-label' }) accessibleLabel = 'subnavigation';
-
-  @queryAssignedElements() private links!: HTMLAnchorElement[];
 
   @query('[part="links"]') private linkList!: HTMLElement;
 
@@ -102,22 +102,22 @@ export class RhSubnav extends LitElement {
     return html`
       <nav part="container" aria-label="${this.accessibleLabel}">
         ${!this.#overflow.showScrollButtons ? '' : html`
-          <button id="previous" 
-              tabindex="-1"
-              data-direction="start"
-              aria-label="${this.getAttribute('label-scroll-left') ?? 'Scroll back'}"
-              ?disabled="${!this.#overflow.overflowLeft}"
-              @click="${this.#onClickScroll}">
+          <button id="previous"
+                  tabindex="-1"
+                  data-direction="start"
+                  aria-label="${this.getAttribute('label-scroll-left') ?? 'Scroll back'}"
+                  ?disabled="${!this.#overflow.overflowLeft}"
+                  @click="${this.#onClickScroll}">
             <rh-icon set="ui" icon="caret-left" loading="eager"></rh-icon>
           </button>`}
         <slot part="links" @slotchange="${this.#onSlotchange}"></slot>
         ${!this.#overflow.showScrollButtons ? '' : html`
           <button id="next"
-              tabindex="-1"
-              data-direction="end"
-              aria-label="${this.getAttribute('label-scroll-right') ?? 'Scroll forward'}"
-              ?disabled="${!this.#overflow.overflowRight}"
-              @click="${this.#onClickScroll}">
+                  tabindex="-1"
+                  data-direction="end"
+                  aria-label="${this.getAttribute('label-scroll-right') ?? 'Scroll forward'}"
+                  ?disabled="${!this.#overflow.overflowRight}"
+                  @click="${this.#onClickScroll}">
             <rh-icon set="ui" icon="caret-right" loading="eager"></rh-icon>
           </button>`}
       </nav>
@@ -125,7 +125,7 @@ export class RhSubnav extends LitElement {
   }
 
   #onSlotchange() {
-    this.#allLinks = this.links;
+    this.#allLinks = this.#slots.getSlotted();
     this.#overflow.init(this.linkList, this.#allLinks);
     this.#firstLastClasses();
   }

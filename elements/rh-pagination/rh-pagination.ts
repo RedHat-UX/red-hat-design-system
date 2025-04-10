@@ -1,6 +1,6 @@
 import type { PropertyValues } from 'lit';
 
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { query } from 'lit/decorators/query.js';
@@ -82,7 +82,7 @@ export class RhPagination extends LitElement {
   #mo = new MutationObserver(() => this.#update());
   #logger = new Logger(this);
 
-  #ol = this.querySelector('ol');
+  #ol = isServer ? null : this.querySelector('ol');
   #links = this.#ol?.querySelectorAll<HTMLAnchorElement>('li a');
 
   #firstLink: HTMLAnchorElement | null = null;
@@ -98,7 +98,7 @@ export class RhPagination extends LitElement {
   connectedCallback(): void {
     super.connectedCallback();
     // Validate DOM
-    if (!this.#ol || [...this.children].filter(x => !x.slot).length > 1) {
+    if (!isServer && (!this.#ol || [...this.children].filter(x => !x.slot).length > 1)) {
       this.#logger.warn('must have a single <ol> element as it\'s only child');
     }
     this.#mo.observe(this, { childList: true, subtree: true });
@@ -189,6 +189,9 @@ export class RhPagination extends LitElement {
   }
 
   #getCurrentLink(): HTMLAnchorElement | null {
+    if (isServer) {
+      return null;
+    }
     const ariaCurrent = this.querySelector<HTMLAnchorElement>('li a[aria-current="page"]');
     if (ariaCurrent) {
       return ariaCurrent;

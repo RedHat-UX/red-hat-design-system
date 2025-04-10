@@ -1,6 +1,7 @@
 import { html, isServer, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
+import { state } from 'lit/decorators/state.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { query } from 'lit/decorators/query.js';
 import { provide } from '@lit/context';
@@ -17,7 +18,14 @@ import { RhTabPanel } from './rh-tab-panel.js';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 
-import { context, type RhTabsContext } from './context.js';
+import {
+  rhTabsActiveTabContext,
+  rhTabsBoxContext,
+  rhTabsVerticalContext,
+  rhTabsLastTabContext,
+  rhTabsManualContext,
+  rhTabsFirstTabContext,
+} from './context.js';
 
 import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
 import { themable } from '@rhds/elements/lib/themable.js';
@@ -59,6 +67,7 @@ export class RhTabs extends LitElement {
    * Tabs can be either [automatic](https://w3c.github.io/aria-practices/examples/tabs/tabs-automatic.html) activated
    * or [manual](https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html)
    */
+  @provide({ context: rhTabsManualContext })
   @property({ reflect: true, type: Boolean }) manual = false;
 
   /**
@@ -81,6 +90,7 @@ export class RhTabs extends LitElement {
     }
   }
 
+  @provide({ context: rhTabsActiveTabContext })
   @property({ attribute: false }) activeTab?: RhTab;
 
   /** Sets color context for child components, overrides parent context */
@@ -90,20 +100,20 @@ export class RhTabs extends LitElement {
   @property({ reflect: true, type: Boolean }) centered? = false;
 
   /** Sets tabs to a boxed style with or without an inset */
+  @provide({ context: rhTabsBoxContext })
   @property({ reflect: true }) box?: 'box' | 'inset';
 
   /** Sets the alignment of the tabs vertical */
+  @provide({ context: rhTabsVerticalContext })
   @property({ reflect: true, type: Boolean }) vertical = false;
 
-  @query('[part="tabs"]') private tabList!: HTMLElement;
+  @provide({ context: rhTabsFirstTabContext })
+  @state() private firstTab: RhTab | null = null;
 
-  get #ctx(): RhTabsContext {
-    const { activeTab, manual, vertical } = this;
-    const box = this.box === null || this.box === '' as 'box' ? 'box' : this.box;
-    const firstTab = this.#firstTab;
-    const lastTab = this.#lastTab;
-    return { activeTab, box, firstTab, lastTab, manual, vertical };
-  }
+  @provide({ context: rhTabsLastTabContext })
+  @state() private lastTab: RhTab | null = null;
+
+  @query('[part="tabs"]') private tabList!: HTMLElement;
 
   protected get canShowScrollButtons(): boolean {
     return !this.vertical;
@@ -132,17 +142,6 @@ export class RhTabs extends LitElement {
     return this.tabs.map(tab => this.#tabs.panelFor(tab));
   }
 
-  get #firstTab(): RhTab | undefined {
-    const [tab] = this.tabs;
-    return tab;
-  }
-
-  get #lastTab(): RhTab | undefined {
-    return this.tabs.at(-1);
-  }
-
-  @provide({ context }) private ctx = this.#ctx;
-
   override connectedCallback() {
     super.connectedCallback();
     this.id ||= getRandomId(this.localName);
@@ -154,15 +153,8 @@ export class RhTabs extends LitElement {
     if (!this.manual && this.activeIndex !== this.#tabindex.atFocusedItemIndex) {
       this.activeIndex = this.#tabindex.atFocusedItemIndex;
     }
-    this.ctx = this.#ctx;
-    // SSR hydration mismatch Workaround
-    // might be fixed if we add context props for each member of the context bag
-    if (!isServer) {
-      for (const tab of this.querySelectorAll('rh-tab')) {
-        // @ts-expect-error: this is a workaround for ssr issues
-        tab.ctx = this.#ctx;
-      }
-    }
+    this.firstTab = this.tabs.at(0) ?? null;
+    this.lastTab = this.tabs.at(-1) ?? null;
   }
 
   async firstUpdated() {

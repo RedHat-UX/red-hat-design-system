@@ -1,9 +1,8 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { state } from 'lit/decorators/state.js';
-import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 
 import { ComposedEvent } from '@patternfly/pfe-core';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
@@ -73,12 +72,14 @@ export class RhNavigationSecondary extends LitElement {
   private static instances = new Set<RhNavigationSecondary>();
 
   static {
-    globalThis.addEventListener('keyup', (event: KeyboardEvent) => {
-      const { instances } = RhNavigationSecondary;
-      for (const instance of instances) {
-        instance.#onKeyup(event);
-      }
-    }, { capture: false });
+    if (!isServer) {
+      document.addEventListener('keyup', (event: KeyboardEvent) => {
+        const { instances } = RhNavigationSecondary;
+        for (const instance of instances) {
+          instance.#onKeyup(event);
+        }
+      }, { capture: false });
+    }
   }
 
 
@@ -110,9 +111,6 @@ export class RhNavigationSecondary extends LitElement {
    * Color palette dark | lighter (default: lighter)
    */
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'lighter';
-
-
-  @queryAssignedElements({ slot: 'nav' }) private _nav?: HTMLElement[];
 
   /**
    * Customize the default `aria-label` on the `<nav>` container.
@@ -155,12 +153,20 @@ export class RhNavigationSecondary extends LitElement {
   async connectedCallback() {
     super.connectedCallback();
     RhNavigationSecondary.instances.add(this);
-    this.#compact = !this.#screenSize.matches.has('md');
     this.addEventListener('expand-request', this.#onExpandRequest);
     this.addEventListener('overlay-change', this.#onOverlayChange);
     this.addEventListener('focusout', this.#onFocusout);
     this.addEventListener('keydown', this.#onKeydown);
-    this.#upgradeAccessibility();
+    if (!isServer) {
+      this.#upgradeAccessibility();
+    }
+  }
+
+  async firstUpdated() {
+    if (!isServer) {
+      await this.updateComplete;
+      this.#compact = !this.#screenSize.matches.has('md');
+    }
   }
 
   disconnectedCallback(): void {
