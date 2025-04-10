@@ -346,7 +346,7 @@
     "typescript": "^5.8.2",
     "typescript-transform-lit-css": "^2.0.2",
     "web-dev-server-plugin-lit-css": "^3.0.2",
-    "wireit": "^0.14.11"
+    "wireit": "^0.14.12"
   },
   "optionalDependencies": {
     "@esbuild/darwin-arm64": "^0.25.0",
