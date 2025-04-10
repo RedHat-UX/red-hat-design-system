@@ -1,6 +1,6 @@
 var _RhBackToTop_instances, _RhBackToTop_scrollSpy, _RhBackToTop_visible, _RhBackToTop_scrollElement, _RhBackToTop_rootNode_get, _RhBackToTop_removeScrollListener, _RhBackToTop_addScrollListener, _RhBackToTop_toggleVisibility;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
@@ -44,7 +44,9 @@ let RhBackToTop = class RhBackToTop extends LitElement {
     }
     connectedCallback() {
         super.connectedCallback();
-        __classPrivateFieldGet(this, _RhBackToTop_instances, "m", _RhBackToTop_addScrollListener).call(this);
+        if (!isServer) {
+            __classPrivateFieldGet(this, _RhBackToTop_instances, "m", _RhBackToTop_addScrollListener).call(this);
+        }
         if (this.href && this.href.charAt(0) !== '#') {
             this.href = `#${this.href}`;
         }

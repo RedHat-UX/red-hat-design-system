@@ -1,6 +1,6 @@
 var _RhStat_instances, _RhStat_screenSize, _RhStat_slots, _RhStat_mo, _RhStat_logger, _RhStat_onMutation;
 import { __classPrivateFieldGet, __decorate } from "tslib";
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -46,7 +46,9 @@ let RhStat = class RhStat extends LitElement {
     connectedCallback() {
         super.connectedCallback();
         __classPrivateFieldGet(this, _RhStat_mo, "f").observe(this, { childList: true });
-        __classPrivateFieldGet(this, _RhStat_instances, "m", _RhStat_onMutation).call(this);
+        if (!isServer) {
+            __classPrivateFieldGet(this, _RhStat_instances, "m", _RhStat_onMutation).call(this);
+        }
     }
     willUpdate() {
         if (this.icon) {

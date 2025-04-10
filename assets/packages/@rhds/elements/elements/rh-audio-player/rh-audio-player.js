@@ -1,7 +1,7 @@
 var _RhAudioPlayer_instances, _a, _RhAudioPlayer_duration_get, _RhAudioPlayer_readyState_get, _RhAudioPlayer_isMobileSafari, _RhAudioPlayer_paused, _RhAudioPlayer_unmutedVolume, _RhAudioPlayer_styles, _RhAudioPlayer_headings, _RhAudioPlayer_mediaElement, _RhAudioPlayer_lastMediaElement, _RhAudioPlayer_width, _RhAudioPlayer_resizeObserver, _RhAudioPlayer_translation, _RhAudioPlayer_menufloat, _RhAudioPlayer_listeners, _RhAudioPlayer_isMini_get, _RhAudioPlayer_isFull_get, _RhAudioPlayer_isCompact_get, _RhAudioPlayer_panels_get, _RhAudioPlayer_hasMenu_get, _RhAudioPlayer_menuOpen_get, _RhAudioPlayer_menuOpen_set, _RhAudioPlayer_mediaEnd_get, _RhAudioPlayer_mediaStart_get, _RhAudioPlayer_elapsedText_get, _RhAudioPlayer_transcript_get, _RhAudioPlayer_about_get, _RhAudioPlayer_subscribe_get, _RhAudioPlayer_loadLanguage, _RhAudioPlayer_getMenuItems, _RhAudioPlayer_updateMenuLabels, _RhAudioPlayer_updateTranscriptLabels, _RhAudioPlayer_cleanUpListeners, _RhAudioPlayer_initMediaElement, _RhAudioPlayer_onCanplay, _RhAudioPlayer_onCanplaythrough, _RhAudioPlayer_onCueseek, _RhAudioPlayer_onDurationchange, _RhAudioPlayer_onEnded, _RhAudioPlayer_onLoadeddata, _RhAudioPlayer_onLoadedmetadata, _RhAudioPlayer_onMuteButton, _RhAudioPlayer_onPause, _RhAudioPlayer_onPlay, _RhAudioPlayer_onPlaybackRateChange, _RhAudioPlayer_onPlaybackRateSelect, _RhAudioPlayer_onPlayClick, _RhAudioPlayer_onPlayFocus, _RhAudioPlayer_onPlaying, _RhAudioPlayer_onSeeked, _RhAudioPlayer_onSeeking, _RhAudioPlayer_onTimeSlider, _RhAudioPlayer_onTimeupdate, _RhAudioPlayer_onMenuToggle, _RhAudioPlayer_onPanelChange, _RhAudioPlayer_onTitleChange, _RhAudioPlayer_onVolumechange, _RhAudioPlayer_onVolumeSlider, _RhAudioPlayer_selectOpenPanel, _RhAudioPlayer_lastActiveMenuItem, _RhAudioPlayer_onCloseKeydown, _RhAudioPlayer_onMenuKeydown, _RhAudioPlayer_onMenuFocusout, _RhAudioPlayer_positionMenu, _RhAudioPlayer_showMenu, _RhAudioPlayer_unsetTabindexFromMenuItems, _RhAudioPlayer_hideMenu, _RhAudioPlayer_onTranscriptDownload, _RhAudioPlayer_onWindowClick;
 var RhAudioPlayer_1;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
@@ -72,7 +72,8 @@ let RhAudioPlayer = RhAudioPlayer_1 = _a = class RhAudioPlayer extends LitElemen
         this.playbackRate = 1;
         this.expanded = false;
         this.microcopy = {};
-        _RhAudioPlayer_isMobileSafari.set(this, window.navigator.userAgent.match(/(iPhone|iPad|Mobile).*(AppleWebkit|Safari)/i));
+        _RhAudioPlayer_isMobileSafari.set(this, isServer ? false
+            : window.navigator.userAgent.match(/(iPhone|iPad|Mobile).*(AppleWebkit|Safari)/i));
         _RhAudioPlayer_paused.set(this, true);
         _RhAudioPlayer_unmutedVolume.set(this, this.volume);
         _RhAudioPlayer_styles.set(this, void 0);
@@ -163,7 +164,9 @@ let RhAudioPlayer = RhAudioPlayer_1 = _a = class RhAudioPlayer extends LitElemen
         this.addEventListener('cueseek', __classPrivateFieldGet(this, _RhAudioPlayer_instances, "m", _RhAudioPlayer_onCueseek));
         __classPrivateFieldGet(this, _RhAudioPlayer_instances, "m", _RhAudioPlayer_initMediaElement).call(this);
         __classPrivateFieldGet(this, _RhAudioPlayer_instances, "m", _RhAudioPlayer_loadLanguage).call(this);
-        __classPrivateFieldSet(this, _RhAudioPlayer_styles, __classPrivateFieldGet(this, _RhAudioPlayer_styles, "f") ?? window.getComputedStyle?.(this), "f");
+        if (!isServer) {
+            __classPrivateFieldSet(this, _RhAudioPlayer_styles, __classPrivateFieldGet(this, _RhAudioPlayer_styles, "f") ?? window.getComputedStyle?.(this), "f");
+        }
     }
     disconnectedCallback() {
         __classPrivateFieldGet(this, _RhAudioPlayer_instances, "m", _RhAudioPlayer_cleanUpListeners).call(this);
@@ -545,7 +548,7 @@ _RhAudioPlayer_panels_get = function _RhAudioPlayer_panels_get() {
     ].filter(x => !!x.panel);
 };
 _RhAudioPlayer_hasMenu_get = function _RhAudioPlayer_hasMenu_get() {
-    return (__classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_panels_get).length > 1
+    return isServer ? false : (__classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_panels_get).length > 1
         || !!this.mediaseries
         || !!this.mediatitle
         || (this._abouts?.length ?? 0) > 0);
@@ -579,15 +582,21 @@ _RhAudioPlayer_elapsedText_get = function _RhAudioPlayer_elapsedText_get() {
     return getFormattedTime(this.currentTime || 0);
 };
 _RhAudioPlayer_transcript_get = function _RhAudioPlayer_transcript_get() {
-    const [t] = this._transcripts ?? [];
-    return t ?? this.shadowRoot?.querySelector('rh-transcript');
+    if (!isServer) {
+        const [t] = this._transcripts ?? [];
+        return t ?? this.shadowRoot?.querySelector('rh-transcript');
+    }
 };
 _RhAudioPlayer_about_get = function _RhAudioPlayer_about_get() {
-    const [a = this.shadowRoot?.querySelector('rh-audio-player-about')] = this._abouts ?? [];
-    return a;
+    if (!isServer) {
+        const [a = this.shadowRoot?.querySelector?.('rh-audio-player-about')] = this._abouts ?? [];
+        return a;
+    }
 };
 _RhAudioPlayer_subscribe_get = function _RhAudioPlayer_subscribe_get() {
-    return this._subscribe?.[0];
+    if (!isServer) {
+        return this._subscribe?.[0];
+    }
 };
 _RhAudioPlayer_loadLanguage = async function _RhAudioPlayer_loadLanguage(lang = __classPrivateFieldGet(this, _RhAudioPlayer_translation, "f").language) {
     const url = new URL(`./i18n/${lang}.json`, import.meta.url);
@@ -610,22 +619,24 @@ _RhAudioPlayer_getMenuItems = function _RhAudioPlayer_getMenuItems(items) {
         return items;
     }
 };
-_RhAudioPlayer_updateMenuLabels = function _RhAudioPlayer_updateMenuLabels() {
-    if (__classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_about_get)?.menuLabel) {
+_RhAudioPlayer_updateMenuLabels = async function _RhAudioPlayer_updateMenuLabels() {
+    await this.updateComplete;
+    __classPrivateFieldGet(this, _RhAudioPlayer_translation, "f").update();
+    if (__classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_about_get)) {
         __classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_about_get).menuLabel = __classPrivateFieldGet(this, _RhAudioPlayer_translation, "f").get('about');
     }
-    if (__classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_subscribe_get)?.menuLabel) {
+    if (__classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_subscribe_get)) {
         __classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_subscribe_get).menuLabel = __classPrivateFieldGet(this, _RhAudioPlayer_translation, "f").get('subscribe');
     }
-    if (__classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_transcript_get)?.menuLabel) {
+    if (__classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_transcript_get)) {
         __classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_transcript_get).menuLabel = __classPrivateFieldGet(this, _RhAudioPlayer_translation, "f").get('transcript');
     }
 };
-_RhAudioPlayer_updateTranscriptLabels = function _RhAudioPlayer_updateTranscriptLabels() {
-    if (__classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_transcript_get)?.autoscrollLabel) {
+_RhAudioPlayer_updateTranscriptLabels = async function _RhAudioPlayer_updateTranscriptLabels() {
+    await this.updateComplete;
+    __classPrivateFieldGet(this, _RhAudioPlayer_translation, "f").update();
+    if (__classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_transcript_get)) {
         __classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_transcript_get).autoscrollLabel = __classPrivateFieldGet(this, _RhAudioPlayer_translation, "f").get('autoscroll');
-    }
-    if (__classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_transcript_get)?.downloadLabel) {
         __classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_transcript_get).downloadLabel = __classPrivateFieldGet(this, _RhAudioPlayer_translation, "f").get('download');
     }
 };
@@ -635,17 +646,19 @@ _RhAudioPlayer_cleanUpListeners = function _RhAudioPlayer_cleanUpListeners() {
     }
 };
 _RhAudioPlayer_initMediaElement = function _RhAudioPlayer_initMediaElement(slotchangeevent) {
-    if (slotchangeevent) {
-        __classPrivateFieldGet(this, _RhAudioPlayer_instances, "m", _RhAudioPlayer_cleanUpListeners).call(this);
-        __classPrivateFieldSet(this, _RhAudioPlayer_lastMediaElement, this.querySelector('audio') ?? undefined, "f");
-    }
-    __classPrivateFieldSet(this, _RhAudioPlayer_mediaElement, this.querySelector('audio') ?? undefined, "f");
-    if (__classPrivateFieldGet(this, _RhAudioPlayer_mediaElement, "f")) {
-        __classPrivateFieldGet(this, _RhAudioPlayer_mediaElement, "f").removeAttribute('controls');
-        __classPrivateFieldGet(this, _RhAudioPlayer_mediaElement, "f").setAttribute('seekable', 'seekable');
-        this.volume = __classPrivateFieldGet(this, _RhAudioPlayer_mediaElement, "f").volume || 0.5;
-        for (const [event, listener] of __classPrivateFieldGet(this, _RhAudioPlayer_listeners, "f")) {
-            __classPrivateFieldGet(this, _RhAudioPlayer_mediaElement, "f").addEventListener(event, listener);
+    if (!isServer) {
+        if (slotchangeevent) {
+            __classPrivateFieldGet(this, _RhAudioPlayer_instances, "m", _RhAudioPlayer_cleanUpListeners).call(this);
+            __classPrivateFieldSet(this, _RhAudioPlayer_lastMediaElement, this.querySelector('audio') ?? undefined, "f");
+        }
+        __classPrivateFieldSet(this, _RhAudioPlayer_mediaElement, this.querySelector('audio') ?? undefined, "f");
+        if (__classPrivateFieldGet(this, _RhAudioPlayer_mediaElement, "f")) {
+            __classPrivateFieldGet(this, _RhAudioPlayer_mediaElement, "f").removeAttribute('controls');
+            __classPrivateFieldGet(this, _RhAudioPlayer_mediaElement, "f").setAttribute('seekable', 'seekable');
+            this.volume = __classPrivateFieldGet(this, _RhAudioPlayer_mediaElement, "f").volume || 0.5;
+            for (const [event, listener] of __classPrivateFieldGet(this, _RhAudioPlayer_listeners, "f")) {
+                __classPrivateFieldGet(this, _RhAudioPlayer_mediaElement, "f").addEventListener(event, listener);
+            }
         }
     }
 };

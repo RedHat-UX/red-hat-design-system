@@ -1,6 +1,6 @@
-var _RhNavigationSecondaryDropdown_instances, _RhNavigationSecondaryDropdown_slots, _RhNavigationSecondaryDropdown_logger, _RhNavigationSecondaryDropdown_highlight, _RhNavigationSecondaryDropdown_mo, _RhNavigationSecondaryDropdown_open, _RhNavigationSecondaryDropdown_close, _RhNavigationSecondaryDropdown_mutationsCallback;
+var _RhNavigationSecondaryDropdown_instances, _RhNavigationSecondaryDropdown_slots, _RhNavigationSecondaryDropdown_logger, _RhNavigationSecondaryDropdown_highlight, _RhNavigationSecondaryDropdown_mo, _RhNavigationSecondaryDropdown_open, _RhNavigationSecondaryDropdown_close, _RhNavigationSecondaryDropdown_mutationsCallback, _RhNavigationSecondaryDropdown_upgradeAccessibility;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
-import { html, LitElement } from 'lit';
+import { html, isServer, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { state } from 'lit/decorators/state.js';
 import { query } from 'lit/decorators/query.js';
@@ -40,22 +40,11 @@ let RhNavigationSecondaryDropdown = class RhNavigationSecondaryDropdown extends 
     connectedCallback() {
         super.connectedCallback();
         this.id || (this.id = getRandomId('rh-navigation-secondary-dropdown'));
-        const [link] = __classPrivateFieldGet(this, _RhNavigationSecondaryDropdown_slots, "f").getSlotted('link');
-        const [menu] = __classPrivateFieldGet(this, _RhNavigationSecondaryDropdown_slots, "f").getSlotted('menu');
-        if (link === undefined) {
-            __classPrivateFieldGet(this, _RhNavigationSecondaryDropdown_logger, "f").warn('[rh-navigation-secondary-dropdown][slot="link"] expects a slotted <a> tag');
-            return;
-        }
-        if (menu === undefined) {
-            __classPrivateFieldGet(this, _RhNavigationSecondaryDropdown_logger, "f").warn(`[rh-navigation-secondary-dropdown][slot="menu"] expects a slotted <rh-navigation-secondary-menu> tag`);
-            return;
-        }
-        link.setAttribute('role', 'button');
-        link.setAttribute('aria-expanded', 'false');
-        link.setAttribute('aria-controls', menu.id);
-        link.addEventListener('click', this._clickHandler);
         __classPrivateFieldGet(this, _RhNavigationSecondaryDropdown_mo, "f").observe(this, { attributeFilter: ['aria-current'], childList: true, subtree: true });
-        __classPrivateFieldGet(this, _RhNavigationSecondaryDropdown_instances, "m", _RhNavigationSecondaryDropdown_mutationsCallback).call(this);
+        if (!isServer) {
+            __classPrivateFieldGet(this, _RhNavigationSecondaryDropdown_instances, "m", _RhNavigationSecondaryDropdown_upgradeAccessibility).call(this);
+            __classPrivateFieldGet(this, _RhNavigationSecondaryDropdown_instances, "m", _RhNavigationSecondaryDropdown_mutationsCallback).call(this);
+        }
     }
     render() {
         const classes = { 'expanded': this.expanded, 'highlight': __classPrivateFieldGet(this, _RhNavigationSecondaryDropdown_highlight, "f") };
@@ -118,6 +107,22 @@ _RhNavigationSecondaryDropdown_mutationsCallback = async function _RhNavigationS
     const [menu] = __classPrivateFieldGet(this, _RhNavigationSecondaryDropdown_slots, "f").getSlotted('menu');
     __classPrivateFieldSet(this, _RhNavigationSecondaryDropdown_highlight, menu.querySelector('[aria-current="page"]') ? true : false, "f");
     this.requestUpdate();
+};
+_RhNavigationSecondaryDropdown_upgradeAccessibility = function _RhNavigationSecondaryDropdown_upgradeAccessibility() {
+    const [link] = __classPrivateFieldGet(this, _RhNavigationSecondaryDropdown_slots, "f").getSlotted('link');
+    const [menu] = __classPrivateFieldGet(this, _RhNavigationSecondaryDropdown_slots, "f").getSlotted('menu');
+    if (link === undefined) {
+        __classPrivateFieldGet(this, _RhNavigationSecondaryDropdown_logger, "f").warn('[rh-navigation-secondary-dropdown][slot="link"] expects a slotted <a> tag');
+        return;
+    }
+    if (menu === undefined) {
+        __classPrivateFieldGet(this, _RhNavigationSecondaryDropdown_logger, "f").warn(`[rh-navigation-secondary-dropdown][slot="menu"] expects a slotted <rh-navigation-secondary-menu> tag`);
+        return;
+    }
+    link.setAttribute('role', 'button');
+    link.setAttribute('aria-expanded', 'false');
+    link.setAttribute('aria-controls', menu.id);
+    link.addEventListener('click', this._clickHandler);
 };
 RhNavigationSecondaryDropdown.styles = [styles];
 __decorate([

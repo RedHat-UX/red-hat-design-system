@@ -1,4 +1,4 @@
-import type { LitElement } from 'lit';
+import { type LitElement } from 'lit';
 import { ContextProvider } from '@lit/context';
 export interface HeadingContext {
     /** Root Heading level. default 1 */

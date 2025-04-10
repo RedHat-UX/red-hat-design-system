@@ -1,6 +1,6 @@
 var _RhFooterLinks_logger, _RhFooterLinks_mo;
 import { __classPrivateFieldGet, __decorate } from "tslib";
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
@@ -22,7 +22,9 @@ let RhFooterLinks = class RhFooterLinks extends LitElement {
     }
     connectedCallback() {
         super.connectedCallback();
-        this.updateAccessibility();
+        if (!isServer) {
+            this.updateAccessibility();
+        }
         __classPrivateFieldGet(this, _RhFooterLinks_mo, "f").observe(this, { childList: true });
     }
     updateAccessibility() {

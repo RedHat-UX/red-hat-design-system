@@ -1,10 +1,10 @@
-var _UxdotDemo_instances, _UxdotDemo_toggleFullscreen;
+var _UxdotDemo_instances, _UxdotDemo_toggleFullscreen, _UxdotDemo_reloadIframe;
 import { __classPrivateFieldGet, __decorate } from "tslib";
 import { html } from 'lit-html';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { css } from "lit";
-const styles = css `:host{display:block}iframe{border:var(--rh-border-width-sm) solid var(--rh-color-border-subtle);height:400px;max-height:var(--height)}#container{--height:825px;display:flex;flex-flow:column;gap:var(--rh-space-sm)}#container:not(:defined){opacity:0}rh-card::part(body),rh-card::part(header){margin:0;border-block-end:var(--rh-border-width-sm) solid var(--rh-color-border-subtle)}rh-card::part(footer){margin-block:var(--rh-space-lg);justify-content:end}rh-card rh-button[slot=footer]{display:inline-block;margin-inline-end:auto}.code-tabs{border:0;border-radius:var(--rh-border-radius-default)}.code-tabs::part(tabs-container){background:light-dark(var(--rh-color-surface-lightest),var(--rh-color-surface-darker))}.code-tabs rh-tab-panel{padding:0;border-radius:0}::slotted(rh-code-block){--rh-border-radius-default:0;--rh-border-width-sm:0px;max-width:100%!important;border-width:0}:host(:fullscreen) #container{height:100vh;justify-content:space-between}:host(:fullscreen) #container iframe{flex:1 1 auto;max-height:unset}:host(:fullscreen) #container rh-card{height:max-content}`;
+const styles = css `:host{display:block}iframe{border:var(--rh-border-width-sm) solid var(--rh-color-border-subtle);height:400px;max-height:var(--height)}#container{--height:825px;display:flex;flex-flow:column;gap:var(--rh-space-sm)}#container:not(:defined){opacity:0}rh-card::part(body),rh-card::part(header){margin:0;border-block-end:var(--rh-border-width-sm) solid var(--rh-color-border-subtle)}rh-card::part(footer){margin-block:var(--rh-space-lg);justify-content:end}rh-card rh-button[slot=footer]{display:inline-block}rh-card rh-button[slot=footer]:last-of-type{margin-inline-end:auto}.code-tabs{border:0;border-radius:var(--rh-border-radius-default)}.code-tabs::part(tabs-container){background:light-dark(var(--rh-color-surface-lightest),var(--rh-color-surface-darker))}.code-tabs rh-tab-panel{padding:0;border-radius:0}::slotted(rh-code-block){--rh-border-radius-default:0;--rh-border-width-sm:0px;max-width:100%!important;border-width:0}:host(:fullscreen) #container{height:100vh;justify-content:space-between}:host(:fullscreen) #container iframe{flex:1 1 auto;max-height:unset}:host(:fullscreen) #container rh-card{height:max-content}`;
 import { LitElement } from 'lit';
 let UxdotDemo = class UxdotDemo extends LitElement {
     constructor() {
@@ -15,9 +15,10 @@ let UxdotDemo = class UxdotDemo extends LitElement {
         return html `
       <div id="container">
         <iframe loading="lazy" title="${this.demoTitle}" src="${this.demoUrl}"></iframe>
-        <rh-card>
-          <rh-tabs class="code-tabs">
-            <rh-tab slot="tab">HTML</rh-tab>
+        <rh-card ssr-hint-has-slotted-default
+                 ssr-hint-has-slotted="footer">
+          <rh-tabs class="code-tabs" active-index="0">
+            <rh-tab slot="tab" active>HTML</rh-tab>
             <rh-tab-panel><slot name="html"></slot></rh-tab-panel>
             <rh-tab slot="tab">CSS</rh-tab>
             <rh-tab-panel><slot name="css"></slot></rh-tab-panel>
@@ -29,6 +30,11 @@ let UxdotDemo = class UxdotDemo extends LitElement {
                      icon="expand"
                      icon-set="ui"
                      @click="${__classPrivateFieldGet(this, _UxdotDemo_instances, "m", _UxdotDemo_toggleFullscreen)}">FullScreen</rh-button>
+          <rh-button slot="footer"
+                     variant="tertiary"
+                     icon="refresh"
+                     icon-set="ui"
+                     @click="${__classPrivateFieldGet(this, _UxdotDemo_instances, "m", _UxdotDemo_reloadIframe)}">Reload</rh-button>
           <rh-cta slot="footer" href="${this.demoSourceUrl}">View source on GitHub</rh-cta>
           <rh-cta slot="footer" href="${this.demoUrl}">View In Own Tab</rh-cta>
         </rh-card>
@@ -44,6 +50,9 @@ _UxdotDemo_toggleFullscreen = function _UxdotDemo_toggleFullscreen() {
     else {
         this.requestFullscreen();
     }
+};
+_UxdotDemo_reloadIframe = function _UxdotDemo_reloadIframe() {
+    this.shadowRoot?.querySelector('iframe')?.contentWindow?.location.reload();
 };
 UxdotDemo.styles = [styles];
 __decorate([

@@ -1,6 +1,6 @@
 var _RhMenu_instances, _RhMenu_tabindex, _RhMenu_onSlotchange;
 import { __classPrivateFieldGet, __decorate } from "tslib";
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
@@ -41,7 +41,9 @@ let RhMenu = class RhMenu extends LitElement {
         super.connectedCallback();
         this.id || (this.id = getRandomId('menu'));
         this.setAttribute('role', 'menu'); // TODO: use InternalsController.role when support/polyfill is better
-        __classPrivateFieldGet(this, _RhMenu_instances, "m", _RhMenu_onSlotchange).call(this);
+        if (!isServer) {
+            __classPrivateFieldGet(this, _RhMenu_instances, "m", _RhMenu_onSlotchange).call(this);
+        }
     }
     render() {
         return html `

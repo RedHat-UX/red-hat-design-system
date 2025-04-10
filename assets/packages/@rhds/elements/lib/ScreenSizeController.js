@@ -1,3 +1,4 @@
+import { isServer } from 'lit';
 import { Breakpoint2xsMax, Media2xl, MediaLg, MediaMd, MediaSm, MediaXl, MediaXs, } from '@rhds/tokens/media.js';
 function getMediaQueryListForToken(token) {
     const media = typeof token === 'string' ? `(max-width: ${token})`
@@ -48,7 +49,8 @@ export class ScreenSizeController {
     }
 }
 ScreenSizeController.instances = new Set();
-ScreenSizeController.queries = new Map(Object.entries(BREAKPOINTS).map(([k, v]) => [k, getMediaQueryListForToken(v)]));
+ScreenSizeController.queries = isServer ? new Map()
+    : new Map(Object.entries(BREAKPOINTS).map(([k, v]) => [k, getMediaQueryListForToken(v)]));
 for (const [key, list] of ScreenSizeController.queries) {
     if (key === '2xs') {
         list.addEventListener('change', event => {

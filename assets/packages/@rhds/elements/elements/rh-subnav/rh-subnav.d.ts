@@ -24,7 +24,6 @@ export declare class RhSubnav extends LitElement {
      * Defaults to "subnavigation" if no attribute/property is set.
      */
     accessibleLabel: string;
-    private links;
     private linkList;
     connectedCallback(): void;
     disconnectedCallback(): void;

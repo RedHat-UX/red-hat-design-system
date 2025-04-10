@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="/assets/logo-red-hat.svg">
@@ -14,8 +12,8 @@
   "imports": {
     "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
-    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
     "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
     "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
@@ -32,8 +30,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.0/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
@@ -90,20 +88,89 @@
     <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
   </head>
   <body>
-    <main><rh-accordion expanded-index="0, 2">
+    <main><rh-accordion  expanded-index="0, 2"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container:accordion/inline-size;display:block}#container{color:var(--rh-color-text-primary);--_accordion-background:light-dark(var(--rh-color-surface-lightest,#fff),var(--rh-color-surface-darkest,#151515));&.palette{--_accordion-background:var(--rh-color-surface)}&.expanded{box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 #15151533)}&.large{--_header-font-size:var(--rh-font-size-body-text-md,1rem);--_panel-font-size:var(--rh-font-size-body-text-md,1rem);@container accordion (min-width: 768px){--_header-font-size:var(--rh-font-size-body-text-lg,1.125rem)}}}::slotted(rh-accordion-header:first-child){border-block:1px solid var(--rh-color-border-subtle);display:block}::slotted(rh-accordion-header:not(:first-child)){border-block-end:1px solid var(--rh-color-border-subtle);display:block}::slotted(rh-accordion-header:is([expanded])){border-block-end:0;display:block}::slotted(rh-accordion-panel:is([expanded])){border-block-end:1px solid var(--rh-color-border-subtle);box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 #15151533);display:block}</style><!--lit-part gJIg9U5Lilc=-->
+      <!--lit-node 0--><div id="container"
+           class="  "><slot></slot></div>
+    <!--/lit-part--></template>
 
-  <h2><rh-accordion-header>Item One</rh-accordion-header></h2>
-  <rh-accordion-panel>
+  <h2><rh-accordion-header aria-level="2" hydrate-internals-aria-level="2" role="heading" hydrate-internals-role="heading"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{--_padding-block-start:var(--rh-space-lg,16px);--_padding-inline-end:var(--rh-space-xl,24px);--_padding-block-end:var(--rh-space-lg,16px);--_padding-inline-start:var(--rh-space-xl,24px);--_after-background-color:#0000;--_expanded-background-color:var(--rh-color-accent-brand)}a,button{cursor:pointer}.large{--_padding-block-start:var(--rh-space-lg,16px);--_padding-inline-end:var(--rh-space-xl,24px);--_padding-block-end:var(--rh-space-lg,16px);--_padding-inline-start:var(--rh-space-xl,24px)}:host([expanded]){border-inline-end:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle)}:host(.animating) #button,:host([expanded]) #button{border-inline-end-color:var(--rh-color-border-subtle);border-inline-start-color:var(--rh-color-border-subtle)}#icon{height:16px;transition:rotate .2s ease-in 0s;width:16px;will-change:rotate}span{overflow:hidden;text-align:start}#button{background-color:var(--_accordion-background);color:var(--rh-color-text-primary);font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif);font-size:var(--_header-font-size);font-weight:var(--rh-font-weight-body-text-medium,500);padding:var(--_padding-block-start) var(--_padding-inline-end) var(--_padding-block-end) var(--_padding-inline-start);width:100%;& #icon{fill:currentcolor}&:is(:hover,:active,:focus){background-color:light-dark(var(--rh-color-surface-lighter),oklch(from var(--rh-color-surface-dark) calc(l * .82) c h));& span{color:var(--rh-color-text-primary)}}&:focus{outline:2px solid var(--rh-color-interactive-primary-default)}&:after{background-color:var(--_after-background-color);inset-block-start:-1px;width:var(--rh-border-width-lg,3px)}&.expanded{--_after-background-color:var(--rh-color-accent-brand);& #icon{rotate:-180deg;&:dir(rtl){rotate:180deg}}}}#header-container{display:flex;gap:var(--rh-space-md,8px);&.bottom{flex-direction:column}}#header-text{font-weight:var(--rh-font-weight-body-text-medium,500)}[part=accents]{display:flex;flex-wrap:wrap;gap:var(--rh-space-md,8px)}.toggle{align-items:center;border:0;display:flex;justify-content:space-between;position:relative;&,&:after,&:before{margin:0;padding:0}&:after{content:"";inset-block:0;inset-inline-start:0;position:absolute}}@container (min-width: 576px){#header-container:not(.bottom){flex-direction:row}}</style><!--lit-part Fb0Ua0Ev9dU=-->
+      <!--lit-node 0--><button id="button"
+              class=" toggle "
+              >
+        <!--lit-node 1--><span id="header-container" class=" inline ">
+          <span id="header-text" part="text"><slot></slot></span>
+          <span part="accents"><slot name="accents"></slot></span>
+        </span>
+        <svg id="icon"
+             role="presentation"
+             xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 448 512">
+          <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
+        </svg>
+      </button>
+    <!--/lit-part--></template>Item One</rh-accordion-header></h2>
+  <rh-accordion-panel role="region"><template shadowroot="open" shadowrootmode="open"><style>:host{display:none;overflow:hidden;will-change:height;--_panel-body-padding-block-start:var(--rh-space-lg,16px);--_panel-body-padding-inline-end:var(--rh-space-xl,24px);--_panel-body-padding-block-end:var(--rh-space-lg,16px);--_panel-body-padding-inline-start:var(--rh-space-xl,24px)}::slotted(:not(rh-accordion)){background-color:initial;display:block;margin:unset}:host ::slotted(:not(:first-child)){padding-block-start:var(--rh-space-xl,24px)}.large{--_panel-body-padding-block-start:var(--rh-space-xl,24px);--_panel-body-padding-inline-end:var(--rh-space-xl,24px);--_panel-body-padding-block-end:var(--rh-space-xl,24px);--_panel-body-padding-inline-start:var(--rh-space-xl,24px)}.body{display:block;overflow:hidden;padding:var(--_panel-body-padding-block-start,var(--rh-space-md,8px)) var(--_panel-body-padding-inline-end,var(--rh-space-lg,16px)) var(--_panel-body-padding-block-end,var(--rh-space-md,8px)) var(--_panel-body-padding-inline-start,var(--rh-space-lg,16px));position:relative}:host([fixed]){max-height:9.375rem;overflow-y:auto}:host([expanded]){display:block;position:relative;position:unset}#container{background-color:var(--_accordion-background);border-inline-end:1px solid var(--rh-color-border-subtle)}.body:after{background-color:var(--rh-color-accent-brand);bottom:0;content:"";left:0;position:absolute;top:0;inset-block:0;inset-inline-start:0;width:var(--rh-border-width-lg,3px)}.content{color:var(--rh-color-text-primary);font-size:var(--_panel-font-size)}</style><!--lit-part A50axevTK8k=-->
+      <!--lit-node 0--><div id="container"
+           class=" content "
+           part="container"
+           tabindex="-1">
+        <slot class="body"></slot>
+      </div>
+    <!--/lit-part--></template>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
   </rh-accordion-panel>
 
-  <h2><rh-accordion-header>Item Two</rh-accordion-header></h2>
-  <rh-accordion-panel>
+  <h2><rh-accordion-header aria-level="2" hydrate-internals-aria-level="2" role="heading" hydrate-internals-role="heading"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{--_padding-block-start:var(--rh-space-lg,16px);--_padding-inline-end:var(--rh-space-xl,24px);--_padding-block-end:var(--rh-space-lg,16px);--_padding-inline-start:var(--rh-space-xl,24px);--_after-background-color:#0000;--_expanded-background-color:var(--rh-color-accent-brand)}a,button{cursor:pointer}.large{--_padding-block-start:var(--rh-space-lg,16px);--_padding-inline-end:var(--rh-space-xl,24px);--_padding-block-end:var(--rh-space-lg,16px);--_padding-inline-start:var(--rh-space-xl,24px)}:host([expanded]){border-inline-end:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle)}:host(.animating) #button,:host([expanded]) #button{border-inline-end-color:var(--rh-color-border-subtle);border-inline-start-color:var(--rh-color-border-subtle)}#icon{height:16px;transition:rotate .2s ease-in 0s;width:16px;will-change:rotate}span{overflow:hidden;text-align:start}#button{background-color:var(--_accordion-background);color:var(--rh-color-text-primary);font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif);font-size:var(--_header-font-size);font-weight:var(--rh-font-weight-body-text-medium,500);padding:var(--_padding-block-start) var(--_padding-inline-end) var(--_padding-block-end) var(--_padding-inline-start);width:100%;& #icon{fill:currentcolor}&:is(:hover,:active,:focus){background-color:light-dark(var(--rh-color-surface-lighter),oklch(from var(--rh-color-surface-dark) calc(l * .82) c h));& span{color:var(--rh-color-text-primary)}}&:focus{outline:2px solid var(--rh-color-interactive-primary-default)}&:after{background-color:var(--_after-background-color);inset-block-start:-1px;width:var(--rh-border-width-lg,3px)}&.expanded{--_after-background-color:var(--rh-color-accent-brand);& #icon{rotate:-180deg;&:dir(rtl){rotate:180deg}}}}#header-container{display:flex;gap:var(--rh-space-md,8px);&.bottom{flex-direction:column}}#header-text{font-weight:var(--rh-font-weight-body-text-medium,500)}[part=accents]{display:flex;flex-wrap:wrap;gap:var(--rh-space-md,8px)}.toggle{align-items:center;border:0;display:flex;justify-content:space-between;position:relative;&,&:after,&:before{margin:0;padding:0}&:after{content:"";inset-block:0;inset-inline-start:0;position:absolute}}@container (min-width: 576px){#header-container:not(.bottom){flex-direction:row}}</style><!--lit-part Fb0Ua0Ev9dU=-->
+      <!--lit-node 0--><button id="button"
+              class=" toggle "
+              >
+        <!--lit-node 1--><span id="header-container" class=" inline ">
+          <span id="header-text" part="text"><slot></slot></span>
+          <span part="accents"><slot name="accents"></slot></span>
+        </span>
+        <svg id="icon"
+             role="presentation"
+             xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 448 512">
+          <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
+        </svg>
+      </button>
+    <!--/lit-part--></template>Item Two</rh-accordion-header></h2>
+  <rh-accordion-panel role="region"><template shadowroot="open" shadowrootmode="open"><style>:host{display:none;overflow:hidden;will-change:height;--_panel-body-padding-block-start:var(--rh-space-lg,16px);--_panel-body-padding-inline-end:var(--rh-space-xl,24px);--_panel-body-padding-block-end:var(--rh-space-lg,16px);--_panel-body-padding-inline-start:var(--rh-space-xl,24px)}::slotted(:not(rh-accordion)){background-color:initial;display:block;margin:unset}:host ::slotted(:not(:first-child)){padding-block-start:var(--rh-space-xl,24px)}.large{--_panel-body-padding-block-start:var(--rh-space-xl,24px);--_panel-body-padding-inline-end:var(--rh-space-xl,24px);--_panel-body-padding-block-end:var(--rh-space-xl,24px);--_panel-body-padding-inline-start:var(--rh-space-xl,24px)}.body{display:block;overflow:hidden;padding:var(--_panel-body-padding-block-start,var(--rh-space-md,8px)) var(--_panel-body-padding-inline-end,var(--rh-space-lg,16px)) var(--_panel-body-padding-block-end,var(--rh-space-md,8px)) var(--_panel-body-padding-inline-start,var(--rh-space-lg,16px));position:relative}:host([fixed]){max-height:9.375rem;overflow-y:auto}:host([expanded]){display:block;position:relative;position:unset}#container{background-color:var(--_accordion-background);border-inline-end:1px solid var(--rh-color-border-subtle)}.body:after{background-color:var(--rh-color-accent-brand);bottom:0;content:"";left:0;position:absolute;top:0;inset-block:0;inset-inline-start:0;width:var(--rh-border-width-lg,3px)}.content{color:var(--rh-color-text-primary);font-size:var(--_panel-font-size)}</style><!--lit-part A50axevTK8k=-->
+      <!--lit-node 0--><div id="container"
+           class=" content "
+           part="container"
+           tabindex="-1">
+        <slot class="body"></slot>
+      </div>
+    <!--/lit-part--></template>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
   </rh-accordion-panel>
 
-  <h2><rh-accordion-header>Item Three</rh-accordion-header></h2>
-  <rh-accordion-panel>
+  <h2><rh-accordion-header aria-level="2" hydrate-internals-aria-level="2" role="heading" hydrate-internals-role="heading"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{--_padding-block-start:var(--rh-space-lg,16px);--_padding-inline-end:var(--rh-space-xl,24px);--_padding-block-end:var(--rh-space-lg,16px);--_padding-inline-start:var(--rh-space-xl,24px);--_after-background-color:#0000;--_expanded-background-color:var(--rh-color-accent-brand)}a,button{cursor:pointer}.large{--_padding-block-start:var(--rh-space-lg,16px);--_padding-inline-end:var(--rh-space-xl,24px);--_padding-block-end:var(--rh-space-lg,16px);--_padding-inline-start:var(--rh-space-xl,24px)}:host([expanded]){border-inline-end:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle)}:host(.animating) #button,:host([expanded]) #button{border-inline-end-color:var(--rh-color-border-subtle);border-inline-start-color:var(--rh-color-border-subtle)}#icon{height:16px;transition:rotate .2s ease-in 0s;width:16px;will-change:rotate}span{overflow:hidden;text-align:start}#button{background-color:var(--_accordion-background);color:var(--rh-color-text-primary);font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif);font-size:var(--_header-font-size);font-weight:var(--rh-font-weight-body-text-medium,500);padding:var(--_padding-block-start) var(--_padding-inline-end) var(--_padding-block-end) var(--_padding-inline-start);width:100%;& #icon{fill:currentcolor}&:is(:hover,:active,:focus){background-color:light-dark(var(--rh-color-surface-lighter),oklch(from var(--rh-color-surface-dark) calc(l * .82) c h));& span{color:var(--rh-color-text-primary)}}&:focus{outline:2px solid var(--rh-color-interactive-primary-default)}&:after{background-color:var(--_after-background-color);inset-block-start:-1px;width:var(--rh-border-width-lg,3px)}&.expanded{--_after-background-color:var(--rh-color-accent-brand);& #icon{rotate:-180deg;&:dir(rtl){rotate:180deg}}}}#header-container{display:flex;gap:var(--rh-space-md,8px);&.bottom{flex-direction:column}}#header-text{font-weight:var(--rh-font-weight-body-text-medium,500)}[part=accents]{display:flex;flex-wrap:wrap;gap:var(--rh-space-md,8px)}.toggle{align-items:center;border:0;display:flex;justify-content:space-between;position:relative;&,&:after,&:before{margin:0;padding:0}&:after{content:"";inset-block:0;inset-inline-start:0;position:absolute}}@container (min-width: 576px){#header-container:not(.bottom){flex-direction:row}}</style><!--lit-part Fb0Ua0Ev9dU=-->
+      <!--lit-node 0--><button id="button"
+              class=" toggle "
+              >
+        <!--lit-node 1--><span id="header-container" class=" inline ">
+          <span id="header-text" part="text"><slot></slot></span>
+          <span part="accents"><slot name="accents"></slot></span>
+        </span>
+        <svg id="icon"
+             role="presentation"
+             xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 448 512">
+          <path d="M201.4 374.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 306.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/>
+        </svg>
+      </button>
+    <!--/lit-part--></template>Item Three</rh-accordion-header></h2>
+  <rh-accordion-panel role="region"><template shadowroot="open" shadowrootmode="open"><style>:host{display:none;overflow:hidden;will-change:height;--_panel-body-padding-block-start:var(--rh-space-lg,16px);--_panel-body-padding-inline-end:var(--rh-space-xl,24px);--_panel-body-padding-block-end:var(--rh-space-lg,16px);--_panel-body-padding-inline-start:var(--rh-space-xl,24px)}::slotted(:not(rh-accordion)){background-color:initial;display:block;margin:unset}:host ::slotted(:not(:first-child)){padding-block-start:var(--rh-space-xl,24px)}.large{--_panel-body-padding-block-start:var(--rh-space-xl,24px);--_panel-body-padding-inline-end:var(--rh-space-xl,24px);--_panel-body-padding-block-end:var(--rh-space-xl,24px);--_panel-body-padding-inline-start:var(--rh-space-xl,24px)}.body{display:block;overflow:hidden;padding:var(--_panel-body-padding-block-start,var(--rh-space-md,8px)) var(--_panel-body-padding-inline-end,var(--rh-space-lg,16px)) var(--_panel-body-padding-block-end,var(--rh-space-md,8px)) var(--_panel-body-padding-inline-start,var(--rh-space-lg,16px));position:relative}:host([fixed]){max-height:9.375rem;overflow-y:auto}:host([expanded]){display:block;position:relative;position:unset}#container{background-color:var(--_accordion-background);border-inline-end:1px solid var(--rh-color-border-subtle)}.body:after{background-color:var(--rh-color-accent-brand);bottom:0;content:"";left:0;position:absolute;top:0;inset-block:0;inset-inline-start:0;width:var(--rh-border-width-lg,3px)}.content{color:var(--rh-color-text-primary);font-size:var(--_panel-font-size)}</style><!--lit-part A50axevTK8k=-->
+      <!--lit-node 0--><div id="container"
+           class=" content "
+           part="container"
+           tabindex="-1">
+        <slot class="body"></slot>
+      </div>
+    <!--/lit-part--></template>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
   </rh-accordion-panel>
 </rh-accordion>
@@ -111,5 +178,7 @@
 <script type="module">
   import '@rhds/elements/rh-accordion/rh-accordion.js';
 </script>
-</main></body>
-</html>
+</main>
+
+
+</body></html>

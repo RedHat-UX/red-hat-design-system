@@ -1,8 +1,9 @@
-var _RhTabs_instances, _RhTabs_ctx_get, _RhTabs_activeIndex, _RhTabs_overflow, _RhTabs_tabs, _RhTabs_tabindex, _RhTabs_firstTab_get, _RhTabs_lastTab_get, _RhTabs_onSlotchange, _RhTabs_onExpand;
+var _RhTabs_instances, _RhTabs_activeIndex, _RhTabs_overflow, _RhTabs_tabs, _RhTabs_tabindex, _RhTabs_onSlotchange, _RhTabs_onExpand;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { html, isServer, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
+import { state } from 'lit/decorators/state.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { query } from 'lit/decorators/query.js';
 import { provide } from '@lit/context';
@@ -14,7 +15,7 @@ import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { RhTab, TabExpandEvent } from './rh-tab.js';
 import { RhTabPanel } from './rh-tab-panel.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
-import { context } from './context.js';
+import { rhTabsActiveTabContext, rhTabsBoxContext, rhTabsVerticalContext, rhTabsLastTabContext, rhTabsManualContext, rhTabsFirstTabContext, } from './context.js';
 import { colorPalettes } from '@rhds/elements/lib/color-palettes.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 import { css } from "lit";
@@ -54,6 +55,8 @@ let RhTabs = class RhTabs extends LitElement {
         this.centered = false;
         /** Sets the alignment of the tabs vertical */
         this.vertical = false;
+        this.firstTab = null;
+        this.lastTab = null;
         _RhTabs_activeIndex.set(this, -1);
         _RhTabs_overflow.set(this, new OverflowController(this));
         _RhTabs_tabs.set(this, new TabsAriaController(this, {
@@ -65,7 +68,6 @@ let RhTabs = class RhTabs extends LitElement {
             getItemsContainer: () => this.tabList,
             getItems: () => this.tabs ?? [],
         }));
-        this.ctx = __classPrivateFieldGet(this, _RhTabs_instances, "a", _RhTabs_ctx_get);
     }
     /**
      * Index of the active tab
@@ -103,15 +105,8 @@ let RhTabs = class RhTabs extends LitElement {
         if (!this.manual && this.activeIndex !== __classPrivateFieldGet(this, _RhTabs_tabindex, "f").atFocusedItemIndex) {
             this.activeIndex = __classPrivateFieldGet(this, _RhTabs_tabindex, "f").atFocusedItemIndex;
         }
-        this.ctx = __classPrivateFieldGet(this, _RhTabs_instances, "a", _RhTabs_ctx_get);
-        // SSR hydration mismatch Workaround
-        // might be fixed if we add context props for each member of the context bag
-        if (!isServer) {
-            for (const tab of this.querySelectorAll('rh-tab')) {
-                // @ts-expect-error: this is a workaround for ssr issues
-                tab.ctx = __classPrivateFieldGet(this, _RhTabs_instances, "a", _RhTabs_ctx_get);
-            }
-        }
+        this.firstTab = this.tabs.at(0) ?? null;
+        this.lastTab = this.tabs.at(-1) ?? null;
     }
     async firstUpdated() {
         this.tabList.addEventListener('scroll', __classPrivateFieldGet(this, _RhTabs_overflow, "f").onScroll.bind(this));
@@ -172,20 +167,6 @@ _RhTabs_overflow = new WeakMap();
 _RhTabs_tabs = new WeakMap();
 _RhTabs_tabindex = new WeakMap();
 _RhTabs_instances = new WeakSet();
-_RhTabs_ctx_get = function _RhTabs_ctx_get() {
-    const { activeTab, manual, vertical } = this;
-    const box = this.box === null || this.box === '' ? 'box' : this.box;
-    const firstTab = __classPrivateFieldGet(this, _RhTabs_instances, "a", _RhTabs_firstTab_get);
-    const lastTab = __classPrivateFieldGet(this, _RhTabs_instances, "a", _RhTabs_lastTab_get);
-    return { activeTab, box, firstTab, lastTab, manual, vertical };
-};
-_RhTabs_firstTab_get = function _RhTabs_firstTab_get() {
-    const [tab] = this.tabs;
-    return tab;
-};
-_RhTabs_lastTab_get = function _RhTabs_lastTab_get() {
-    return this.tabs.at(-1);
-};
 _RhTabs_onSlotchange = function _RhTabs_onSlotchange() {
     __classPrivateFieldGet(this, _RhTabs_overflow, "f").init(this.tabList, this.tabs);
 };
@@ -203,12 +184,14 @@ __decorate([
     property({ reflect: true, attribute: 'label-scroll-right' })
 ], RhTabs.prototype, "labelScrollRight", void 0);
 __decorate([
+    provide({ context: rhTabsManualContext }),
     property({ reflect: true, type: Boolean })
 ], RhTabs.prototype, "manual", void 0);
 __decorate([
     property({ attribute: 'active-index', type: Number })
 ], RhTabs.prototype, "activeIndex", null);
 __decorate([
+    provide({ context: rhTabsActiveTabContext }),
     property({ attribute: false })
 ], RhTabs.prototype, "activeTab", void 0);
 __decorate([
@@ -218,17 +201,24 @@ __decorate([
     property({ reflect: true, type: Boolean })
 ], RhTabs.prototype, "centered", void 0);
 __decorate([
+    provide({ context: rhTabsBoxContext }),
     property({ reflect: true })
 ], RhTabs.prototype, "box", void 0);
 __decorate([
+    provide({ context: rhTabsVerticalContext }),
     property({ reflect: true, type: Boolean })
 ], RhTabs.prototype, "vertical", void 0);
 __decorate([
+    provide({ context: rhTabsFirstTabContext }),
+    state()
+], RhTabs.prototype, "firstTab", void 0);
+__decorate([
+    provide({ context: rhTabsLastTabContext }),
+    state()
+], RhTabs.prototype, "lastTab", void 0);
+__decorate([
     query('[part="tabs"]')
 ], RhTabs.prototype, "tabList", void 0);
-__decorate([
-    provide({ context })
-], RhTabs.prototype, "ctx", void 0);
 __decorate([
     observes('activeTab')
 ], RhTabs.prototype, "activeTabChanged", null);

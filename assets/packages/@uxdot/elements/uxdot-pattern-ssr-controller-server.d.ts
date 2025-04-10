@@ -8,6 +8,7 @@ interface EleventyPageData {
 }
 interface RHDSRenderInfo extends RenderInfo {
     page: EleventyPageData;
+    slotControllerElements: string[];
 }
 export declare class UxdotPatternSSRControllerServer extends RHDSSSRController {
     #private;

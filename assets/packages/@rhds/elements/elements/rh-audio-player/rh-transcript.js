@@ -1,13 +1,13 @@
-var _RhTranscript_instances, _RhTranscript_autoscroll, _RhTranscript_duration, _RhTranscript_headings, _RhTranscript_updateCues, _RhTranscript_onScrollClick, _RhTranscript_onDownloadClick;
+var _RhTranscript_instances, _RhTranscript_autoscroll, _RhTranscript_duration, _RhTranscript_slots, _RhTranscript_headings, _RhTranscript_updateCues, _RhTranscript_onScrollClick, _RhTranscript_onDownloadClick;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { state } from 'lit/decorators/state.js';
-import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 import { RhCue, getFormattedTime } from './rh-cue.js';
 import { HeadingLevelContextConsumer } from '@rhds/elements/lib/context/headings/consumer.js';
 import { HeadingLevelContextProvider } from '@rhds/elements/lib/context/headings/provider.js';
+import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller-server.js';
 import { css } from "lit";
 const buttonStyles = css `:host{--_button-size:40px;--rh-icon-size:var(--rh-size-icon-03,32px)}#container{--_outline:var(--rh-border-width-md,2px) solid var(--rh-color-border-interactive)}rh-tooltip{display:flex;height:var(--_button-size);width:var(--_button-size);margin-inline:var(--_icon-margin);--_icon-margin:calc(var(--_icon-gap)/2 - var(--_icon-padding));--_icon-padding:calc((var(--_button-size) - var(--rh-icon-size))/2)}button{border:none;background:#0000;height:var(--_button-size,40px);min-width:var(--_button-size,40px);padding:0}rh-tooltip *{outline:none}button:focus,select:focus{outline:var(--_outline)}button[disabled],select[disabled]{filter:grayscale(1);opacity:.5;cursor:not-allowed;border:none}`;
 const panelStyles = css `:host{display:block;border-top:1px solid var(--_border-color)}:host([hidden]),[hidden]{display:none!important}[part=heading]{margin:var(--rh-space-lg,16px) 0;height:26px}::slotted([slot=heading]),slot[name=heading] *{margin-bottom:0!important;margin-top:0!important}::slotted([slot=heading]),::slotted([slot=title]),slot[name=heading] *{font-family:var(--rh-font-family-heading,RedHatDisplay,"Red Hat Display",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-heading-xs,1.25rem);font-weight:var(--rh-font-weight-heading-medium,500);line-height:var(--rh-line-height-heading,1.3)}::slotted([slot=title]){margin:0 0 var(--rh-space-lg,16px);padding:0}::slotted([slot=series]){letter-spacing:var(--rh-letter-spacing-body-text,.0125rem);font-size:var(--rh-font-size-body-text-xs,.75rem);font-weight:var(--rh-font-weight-heading-medium,500);margin:0 0 var(--rh-space-md,8px);padding:0}::-webkit-scrollbar{width:.5em}::-webkit-scrollbar-track{box-shadow:inset 0 0 .15em var(--_static-border-color)}::-webkit-scrollbar-thumb{background-color:var(--_static-border-color)}::-webkit-scrollbar-thumb:hover{cursor:pointer}`;
@@ -23,32 +23,18 @@ import '@rhds/elements/rh-icon/rh-icon.js';
  * @csspart toolbar - toolbar area above cues list
  */
 let RhTranscript = class RhTranscript extends LitElement {
-    set autoscrollLabel(label) {
-        this._autoscroll = label;
-    }
-    get autoscrollLabel() {
-        return this._autoscroll || 'Autoscroll';
-    }
-    set downloadLabel(label) {
-        this._download = label;
-    }
-    get downloadLabel() {
-        return this._download || 'Download';
-    }
     get downloadText() {
-        return this._cues.map(cue => cue.downloadText).join('\n\n');
-    }
-    set menuLabel(label) {
-        this._label = label;
-    }
-    get menuLabel() {
-        return this.label || this._label || 'About the episode';
+        return __classPrivateFieldGet(this, _RhTranscript_slots, "f").getSlotted('cues').map(cue => cue.downloadText).join('\n\n');
     }
     constructor() {
         super();
         _RhTranscript_instances.add(this);
+        this.menuLabel = 'About the episode';
+        this.downloadLabel = 'Download';
+        this.autoscrollLabel = 'Autoscroll';
         _RhTranscript_autoscroll.set(this, true);
         _RhTranscript_duration.set(this, void 0);
+        _RhTranscript_slots.set(this, new SlotController(this, 'heading', null, 'cues'));
         _RhTranscript_headings.set(this, new HeadingLevelContextConsumer(this));
         new HeadingLevelContextProvider(this, { offset: 0 });
     }
@@ -57,7 +43,7 @@ let RhTranscript = class RhTranscript extends LitElement {
       <rh-audio-player-scrolling-text-overflow part="heading">
         <slot name="heading">${__classPrivateFieldGet(this, _RhTranscript_headings, "f").wrap(this.menuLabel)}</slot>
       </rh-audio-player-scrolling-text-overflow>
-      <div class="panel-toolbar" part="toolbar">${this._cues.length < 0 ? '' : html `
+      <div class="panel-toolbar" part="toolbar">${__classPrivateFieldGet(this, _RhTranscript_slots, "f").isEmpty('cues') ? '' : html `
         <label>
           <input id="autoscroll"
                  type="checkbox"
@@ -91,20 +77,21 @@ let RhTranscript = class RhTranscript extends LitElement {
 };
 _RhTranscript_autoscroll = new WeakMap();
 _RhTranscript_duration = new WeakMap();
+_RhTranscript_slots = new WeakMap();
 _RhTranscript_headings = new WeakMap();
 _RhTranscript_instances = new WeakSet();
 _RhTranscript_updateCues = function _RhTranscript_updateCues(currentTime) {
     let activeCue;
-    this._cues.forEach((cue, index) => {
+    __classPrivateFieldGet(this, _RhTranscript_slots, "f").getSlotted('cues').forEach((cue, index, a) => {
         if (!cue.start) {
-            const prevCue = this._cues[index - 1];
+            const prevCue = a[index - 1];
             const prevEnd = prevCue?.end;
             if (prevEnd) {
                 cue.start = prevEnd || '0:00';
             }
         }
         if (!cue.end) {
-            const nextCue = this._cues[index + 1];
+            const nextCue = a[index + 1];
             const nextStart = nextCue?.start;
             const duration = getFormattedTime(__classPrivateFieldGet(this, _RhTranscript_duration, "f"));
             if (!!nextStart || !!duration) {
@@ -154,17 +141,20 @@ __decorate([
     property({ reflect: true })
 ], RhTranscript.prototype, "lang", void 0);
 __decorate([
-    state()
-], RhTranscript.prototype, "_label", void 0);
+    property()
+], RhTranscript.prototype, "menuLabel", void 0);
+__decorate([
+    property()
+], RhTranscript.prototype, "downloadLabel", void 0);
+__decorate([
+    property()
+], RhTranscript.prototype, "autoscrollLabel", void 0);
 __decorate([
     state()
 ], RhTranscript.prototype, "_autoscroll", void 0);
 __decorate([
     state()
 ], RhTranscript.prototype, "_download", void 0);
-__decorate([
-    queryAssignedElements({ selector: 'rh-cue' })
-], RhTranscript.prototype, "_cues", void 0);
 RhTranscript = __decorate([
     customElement('rh-transcript')
 ], RhTranscript);

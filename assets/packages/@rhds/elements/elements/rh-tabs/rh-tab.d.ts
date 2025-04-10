@@ -26,13 +26,13 @@ export declare class RhTab extends LitElement {
     active: boolean;
     /** True when the tab is disabled */
     disabled: boolean;
-    private ctx?;
-    private icons;
-    private button;
-    private first;
-    private last;
+    private box;
+    private vertical;
+    private manual;
+    private activeTab;
+    private firstTab;
+    private lastTab;
     connectedCallback(): void;
-    willUpdate(): void;
     render(): import("lit-html").TemplateResult<1>;
     private activeChanged;
     /**

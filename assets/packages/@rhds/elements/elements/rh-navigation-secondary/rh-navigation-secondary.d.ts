@@ -35,7 +35,6 @@ export declare class RhNavigationSecondary extends LitElement {
      * Color palette dark | lighter (default: lighter)
      */
     colorPalette: ColorPalette;
-    private _nav?;
     /**
      * Customize the default `aria-label` on the `<nav>` container.
      * Defaults to "secondary" if no attribute/property is set.
@@ -54,6 +53,7 @@ export declare class RhNavigationSecondary extends LitElement {
      */
     static isDropdown(element: Element | null): element is RhNavigationSecondaryDropdown;
     connectedCallback(): Promise<void>;
+    firstUpdated(): Promise<void>;
     disconnectedCallback(): void;
     render(): import("lit-html").TemplateResult<1>;
     /**

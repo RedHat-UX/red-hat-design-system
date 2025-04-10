@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="/assets/logo-red-hat.svg">
@@ -14,8 +12,8 @@
   "imports": {
     "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
-    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
     "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
     "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
@@ -32,8 +30,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.0/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
@@ -104,88 +102,138 @@
         <!--lit-node 6--><slot part="panels" ></slot>
       </div>
     <!--/lit-part--></template>
-    <rh-tab slot="tab">הקדמה</rh-tab>
-    <rh-tab-panel>
-      <p>קיום מוצר ה”תוכנה“ מעלה את השאלה על דרך קבלת ההחלטות בקשר אליה. לדוגמא, נניח כי אדם מסוים, בעל עותק של תוכנה, פוגש אדם אחר המעונין בעותק שלה. האם הם יכולים להעתיק את התוכנה? מי צריך להחליט על כך? האם האנשים המעורבים, או שמא ישות נוספת, ”הבעלים“ של המוצר?</p>
-      <p>מפתחי תוכנה בדרך כלל מתייחסים לשאלות אלו בהנחה שהקריטריון לתשובה הוא מיקסום רווחים למפתח. הכוח הפוליטי של עולם העסקים הוביל את השלטון לאמץ הן את הקריטריון והן את התשובה שהוצעה : למוצר תוכנה יש בעלים, שהם בד"כ חברה המזוהה עם פיתוח המוצר. </p>
+    <rh-tab    role="tab" hydrate-internals-role="tab" slot="tab" active ssr-hint-has-slotted-default="true"><template shadowroot="open" shadowrootmode="open"><style>:host{background-color:var(--rh-color-surface);display:flex;flex:none;--_active-tab-border:var(--rh-border-width-lg,3px) solid var(--_active-tab-border-color,var(--rh-tabs-active-border-color,var(--rh-color-accent-brand)));--_active-tab-border-open:var(--rh-border-width-sm,1px) solid var(--rh-color-surface)}[part=text]{display:inline;line-height:var(--rh-line-height-heading,1.3);text-wrap:balance}.vertical [part=text]{max-width:100%;overflow-wrap:break-word}[hidden]{display:none!important}slot[name=icon]{display:block}[part=icon]{margin-inline-end:var(--rh-space-md,8px)}#button{align-items:center;background-color:inherit;border:0;color:var(--rh-tabs-link-color,var(--rh-color-text-secondary));cursor:pointer;display:flex;flex:1;font-family:inherit;font-size:100%;line-height:0;margin:0;max-height:100%;max-width:var(--_tab-max-width,200px);padding:var(--rh-tabs-link-padding-block-start,var(--rh-space-lg,16px)) var(--rh-tabs-link-padding-inline-end,var(--rh-space-2xl,32px)) var(--rh-tabs-link-padding-block-end,var(--rh-space-lg,16px)) var(--rh-tabs-link-padding-inline-start,var(--rh-space-2xl,32px));position:relative;text-decoration:none;width:100%;&:after,&:before{background-color:initial;border-style:solid;content:"";inset:0;margin:0;padding:0;position:absolute}&:before{border:0 solid #0000;pointer-events:none}&:after{background-color:initial;border-block-end:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle);border-block-start:var(--rh-border-width-lg,3px) solid #0000;border-inline:0 solid #0000}&.box{background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),oklch(from var(--rh-color-surface-dark) calc(l * .82) c h))}&.vertical{padding-inline:var(--rh-space-lg,16px);text-align:start;&.box{@container (min-width: 768px){&.first{margin-block-start:var(--rh-space-2xl,32px)}&.last{margin-block-end:var(--rh-space-2xl,32px)}}}&:not(.box){@container (min-width: 768px){padding-block:var(--rh-tabs-link-padding-block-start,var(--rh-space-md,8px)) var(--rh-tabs-link-padding-block-end,var(--rh-space-md,8px));&.first{margin-block-start:var(--rh-space-xl,24px)}&.last{margin-block-end:var(--rh-space-xl,24px)}}}}&.active{color:var(--rh-tabs-link-color,var(--rh-color-text-primary));&.box{background-color:initial;&:before{border-inline-color:var(--rh-color-border-subtle);border-inline-start-width:var(--rh-border-width-sm,1px)}&:after{border-block-end:var(--_active-tab-border-open);border-block-start:var(--_active-tab-border)}&.first{&:before{border-inline-start-color:var(--rh-color-border-subtle);border-inline-start-width:var(--rh-border-width-sm,1px)}}&.last{&:before{border-inline-end-color:var(--rh-color-border-subtle);border-inline-end-width:var(--rh-border-width-sm,1px)}}&.vertical{@container (min-width: 768px){&:before{border-inline-end:var(--_active-tab-border-open);border-inline-start:var(--_active-tab-border)}&:after{border-block-start:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle)}}&.first{@container (min-width: 768px){&:after{border-block-start-color:var(--rh-color-border-subtle);border-block-start-width:var(--rh-border-width-sm,1px)}}}&.last{@container (min-width: 768px){&:before{border-block-end-color:var(--rh-color-border-subtle);border-block-end-width:var(--rh-border-width-sm,1px)}}}}&:not(.vertical){&.first{@container (min-width: 768px){&:before{border-inline-start-color:var(--rh-color-border-subtle);border-inline-start-width:var(--rh-border-width-sm,1px)}}}&.last{@container (min-width: 768px){&:before{border-inline-end-color:var(--rh-color-border-subtle);border-inline-end-width:var(--rh-border-width-sm,1px)}}}@container (min-width: 768px){&:after{border-block-end:var(--_active-tab-border-open);border-block-start:var(--_active-tab-border)}}}}&.vertical{@container (max-width: 767px){&:after{border-block-start:var(--_active-tab-border)}}@container (min-width: 768px){&:after{border-block-end:#0000}}}&:not(.box){&.vertical{@container (max-width: 767px){&:after{border-block-end:var(--_active-tab-border);border-block-start:#0000}}@container (min-width: 768px){&:before{border-inline-start:var(--_active-tab-border)}&:after{border-block-end:#0000}}}&:not(.vertical){&:after{border-block-end:var(--_active-tab-border)}}}}&:not(.active){&.box{&:before{border-inline-color:var(--rh-color-border-subtle);border-inline-start-width:var(--rh-border-width-sm,1px)}&:after{border-block-end-color:var(--rh-color-border-subtle)}&.vertical{&:hover{&:before{border-block-start:var(--rh-border-width-lg,3px) solid var(--rh-color-interactive-secondary-default)}}@container (min-width: 768px){&:before{border-block-start:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle);border-inline-end:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle);border-inline-start-color:#0000}&:after{border-block-end-color:#0000}&:hover{&:before{border-block-start:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle);border-inline-start:var(--rh-border-width-lg,3px) solid var(--rh-color-interactive-secondary-default)}}&.first{@container (min-width: 768px){&:before{border-block-start-color:#0000;border-inline-end-color:var(--rh-color-border-subtle)}}}&.last{@container (min-width: 768px){&:after{border-block-end:none}}}}}&:not(.vertical){&:hover{&:before{border-block-start:var(--rh-border-width-lg,3px) solid var(--rh-color-interactive-secondary-default)}}@container (min-width: 768px){&:after{border-block-end-color:var(--rh-color-border-subtle)}}}&.first{&:before{border-inline-color:#0000}}}&:not(.box){&.vertical{&:hover{@container (max-width: 767px){&:after{border-block-end:var(--rh-border-width-lg,3px) solid var(--rh-color-interactive-secondary-default)}}@container (min-width: 768px){&:after{border-inline-start:var(--rh-border-width-lg,3px) solid var(--rh-color-interactive-secondary-default)}}}}}&:not(.vertical,.box){&:hover{&:before{border-block-end:var(--rh-border-width-lg,3px) solid var(--rh-color-interactive-secondary-default)}}}}}:host(:disabled){& #button{pointer-events:none}}:host([aria-disabled=true]){& #button{cursor:default}}:host(:is(:focus,:focus-within)){& #button{outline:1px auto var(--rh-color-interactive-primary-default);outline-offset:-3px}}</style><!--lit-part JJ+M2krsyYw=-->
+      <!--lit-node 0--><div id="button"
+           part="button"
+           
+           class=" active ">
+        <!--lit-node 1--><slot name="icon"
+              part="icon"
+              
+              ></slot>
+        <slot part="text"></slot>
+      </div>
+    <!--/lit-part--></template>הקדמה</rh-tab>
+    <rh-tab-panel><template shadowroot="open" shadowrootmode="open"><style>:host{background-color:var(--rh-color-surface);display:block;padding:var(--_panel-padding,var(--rh-space-2xl,32px))}:host([hidden]){display:none!important}#container{display:contents}</style><!--lit-part meT5rY7ykc4=-->
+      <div id="container">
+        <slot></slot>
+      </div>
+    <!--/lit-part--></template>
+      <p>קיום מוצר ה”תוכנה“ מעלה את השאלה על דרך קבלת ההחלטות בקשר אליה. לדוגמא, נניח כי אדם מסוים, בעל עותק של תוכנה, פוגש אדם אחר המעונין בעותק שלה. האם הם יכולים להעתיק את התוכנה? מי צריך להחליט על
+        כך? האם האנשים המעורבים, או שמא ישות נוספת, ”הבעלים“ של המוצר?</p>
+      <p>מפתחי תוכנה בדרך כלל מתייחסים לשאלות אלו בהנחה שהקריטריון לתשובה הוא מיקסום רווחים למפתח. הכוח הפוליטי של עולם העסקים הוביל את השלטון לאמץ הן את הקריטריון והן את התשובה שהוצעה : למוצר תוכנה
+        יש בעלים, שהם בד"כ חברה המזוהה עם פיתוח המוצר. </p>
       <p>במאמר זה ננסה לבחון את אותה שאלה, אבל עם קריטריון שונה: השגשוג והחופש של הציבור. </p>
-      <p>התשובה אינה יכולה להתבסס על החקיקה הנוכחית – החוק צריך לעקוב אחרי האתיקה ולא להפך, ובכלל, החקיקה הנוכחית אינה פותרת את השאלה, למרות שהיא מציעה מספר פתרונות אפשריים. הדרך היחידה לשפוט בנושא היא לגלות מי נפגע ומי מרוויח בהכרה בבעלות על תוכנה, למה, ובאיזו מידה. במילים אחרות, עלינו לבצע אנליזת מחיר/תועלת בשם החברה כישות אחת, תוך שאנו לוקחים בחשבון את החופש האישי ובנוסף את היצור של מוצרים ברי קיימא. </p>
-      <p>במאמר זה יתוארו האפקטים של ”בעלות“, ונראה כי התוצאה היא מזיקה בעליל. המסקנה המתבקשת היא כי למתכנתים יש את החובה לעודד אחרים לחלוק, להפיץ מחדש, ללמוד ולשפר תוכנה שהם כותבים, או במילים אחרות, לכתוב תוכנה חופשית. </p>
+      <p>התשובה אינה יכולה להתבסס על החקיקה הנוכחית – החוק צריך לעקוב אחרי האתיקה ולא להפך, ובכלל, החקיקה הנוכחית אינה פותרת את השאלה, למרות שהיא מציעה מספר פתרונות אפשריים. הדרך היחידה לשפוט בנושא
+        היא לגלות מי נפגע ומי מרוויח בהכרה בבעלות על תוכנה, למה, ובאיזו מידה. במילים אחרות, עלינו לבצע אנליזת מחיר/תועלת בשם החברה כישות אחת, תוך שאנו לוקחים בחשבון את החופש האישי ובנוסף את היצור של
+        מוצרים ברי קיימא. </p>
+      <p>במאמר זה יתוארו האפקטים של ”בעלות“, ונראה כי התוצאה היא מזיקה בעליל. המסקנה המתבקשת היא כי למתכנתים יש את החובה לעודד אחרים לחלוק, להפיץ מחדש, ללמוד ולשפר תוכנה שהם כותבים, או במילים אחרות,
+        לכתוב תוכנה חופשית. </p>
     </rh-tab-panel>
 
-    <rh-tab slot="tab">כיצד בעלי קניין מצדיקים את כוחם</rh-tab>
-    <rh-tab-panel>
+    <rh-tab   role="tab" hydrate-internals-role="tab" slot="tab" ssr-hint-has-slotted-default="true"><template shadowroot="open" shadowrootmode="open"><style>:host{background-color:var(--rh-color-surface);display:flex;flex:none;--_active-tab-border:var(--rh-border-width-lg,3px) solid var(--_active-tab-border-color,var(--rh-tabs-active-border-color,var(--rh-color-accent-brand)));--_active-tab-border-open:var(--rh-border-width-sm,1px) solid var(--rh-color-surface)}[part=text]{display:inline;line-height:var(--rh-line-height-heading,1.3);text-wrap:balance}.vertical [part=text]{max-width:100%;overflow-wrap:break-word}[hidden]{display:none!important}slot[name=icon]{display:block}[part=icon]{margin-inline-end:var(--rh-space-md,8px)}#button{align-items:center;background-color:inherit;border:0;color:var(--rh-tabs-link-color,var(--rh-color-text-secondary));cursor:pointer;display:flex;flex:1;font-family:inherit;font-size:100%;line-height:0;margin:0;max-height:100%;max-width:var(--_tab-max-width,200px);padding:var(--rh-tabs-link-padding-block-start,var(--rh-space-lg,16px)) var(--rh-tabs-link-padding-inline-end,var(--rh-space-2xl,32px)) var(--rh-tabs-link-padding-block-end,var(--rh-space-lg,16px)) var(--rh-tabs-link-padding-inline-start,var(--rh-space-2xl,32px));position:relative;text-decoration:none;width:100%;&:after,&:before{background-color:initial;border-style:solid;content:"";inset:0;margin:0;padding:0;position:absolute}&:before{border:0 solid #0000;pointer-events:none}&:after{background-color:initial;border-block-end:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle);border-block-start:var(--rh-border-width-lg,3px) solid #0000;border-inline:0 solid #0000}&.box{background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),oklch(from var(--rh-color-surface-dark) calc(l * .82) c h))}&.vertical{padding-inline:var(--rh-space-lg,16px);text-align:start;&.box{@container (min-width: 768px){&.first{margin-block-start:var(--rh-space-2xl,32px)}&.last{margin-block-end:var(--rh-space-2xl,32px)}}}&:not(.box){@container (min-width: 768px){padding-block:var(--rh-tabs-link-padding-block-start,var(--rh-space-md,8px)) var(--rh-tabs-link-padding-block-end,var(--rh-space-md,8px));&.first{margin-block-start:var(--rh-space-xl,24px)}&.last{margin-block-end:var(--rh-space-xl,24px)}}}}&.active{color:var(--rh-tabs-link-color,var(--rh-color-text-primary));&.box{background-color:initial;&:before{border-inline-color:var(--rh-color-border-subtle);border-inline-start-width:var(--rh-border-width-sm,1px)}&:after{border-block-end:var(--_active-tab-border-open);border-block-start:var(--_active-tab-border)}&.first{&:before{border-inline-start-color:var(--rh-color-border-subtle);border-inline-start-width:var(--rh-border-width-sm,1px)}}&.last{&:before{border-inline-end-color:var(--rh-color-border-subtle);border-inline-end-width:var(--rh-border-width-sm,1px)}}&.vertical{@container (min-width: 768px){&:before{border-inline-end:var(--_active-tab-border-open);border-inline-start:var(--_active-tab-border)}&:after{border-block-start:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle)}}&.first{@container (min-width: 768px){&:after{border-block-start-color:var(--rh-color-border-subtle);border-block-start-width:var(--rh-border-width-sm,1px)}}}&.last{@container (min-width: 768px){&:before{border-block-end-color:var(--rh-color-border-subtle);border-block-end-width:var(--rh-border-width-sm,1px)}}}}&:not(.vertical){&.first{@container (min-width: 768px){&:before{border-inline-start-color:var(--rh-color-border-subtle);border-inline-start-width:var(--rh-border-width-sm,1px)}}}&.last{@container (min-width: 768px){&:before{border-inline-end-color:var(--rh-color-border-subtle);border-inline-end-width:var(--rh-border-width-sm,1px)}}}@container (min-width: 768px){&:after{border-block-end:var(--_active-tab-border-open);border-block-start:var(--_active-tab-border)}}}}&.vertical{@container (max-width: 767px){&:after{border-block-start:var(--_active-tab-border)}}@container (min-width: 768px){&:after{border-block-end:#0000}}}&:not(.box){&.vertical{@container (max-width: 767px){&:after{border-block-end:var(--_active-tab-border);border-block-start:#0000}}@container (min-width: 768px){&:before{border-inline-start:var(--_active-tab-border)}&:after{border-block-end:#0000}}}&:not(.vertical){&:after{border-block-end:var(--_active-tab-border)}}}}&:not(.active){&.box{&:before{border-inline-color:var(--rh-color-border-subtle);border-inline-start-width:var(--rh-border-width-sm,1px)}&:after{border-block-end-color:var(--rh-color-border-subtle)}&.vertical{&:hover{&:before{border-block-start:var(--rh-border-width-lg,3px) solid var(--rh-color-interactive-secondary-default)}}@container (min-width: 768px){&:before{border-block-start:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle);border-inline-end:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle);border-inline-start-color:#0000}&:after{border-block-end-color:#0000}&:hover{&:before{border-block-start:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle);border-inline-start:var(--rh-border-width-lg,3px) solid var(--rh-color-interactive-secondary-default)}}&.first{@container (min-width: 768px){&:before{border-block-start-color:#0000;border-inline-end-color:var(--rh-color-border-subtle)}}}&.last{@container (min-width: 768px){&:after{border-block-end:none}}}}}&:not(.vertical){&:hover{&:before{border-block-start:var(--rh-border-width-lg,3px) solid var(--rh-color-interactive-secondary-default)}}@container (min-width: 768px){&:after{border-block-end-color:var(--rh-color-border-subtle)}}}&.first{&:before{border-inline-color:#0000}}}&:not(.box){&.vertical{&:hover{@container (max-width: 767px){&:after{border-block-end:var(--rh-border-width-lg,3px) solid var(--rh-color-interactive-secondary-default)}}@container (min-width: 768px){&:after{border-inline-start:var(--rh-border-width-lg,3px) solid var(--rh-color-interactive-secondary-default)}}}}}&:not(.vertical,.box){&:hover{&:before{border-block-end:var(--rh-border-width-lg,3px) solid var(--rh-color-interactive-secondary-default)}}}}}:host(:disabled){& #button{pointer-events:none}}:host([aria-disabled=true]){& #button{cursor:default}}:host(:is(:focus,:focus-within)){& #button{outline:1px auto var(--rh-color-interactive-primary-default);outline-offset:-3px}}</style><!--lit-part JJ+M2krsyYw=-->
+      <!--lit-node 0--><div id="button"
+           part="button"
+           
+           class="  ">
+        <!--lit-node 1--><slot name="icon"
+              part="icon"
+              
+              ></slot>
+        <slot part="text"></slot>
+      </div>
+    <!--/lit-part--></template>כיצד בעלי קניין מצדיקים את כוחם</rh-tab>
+    <rh-tab-panel><template shadowroot="open" shadowrootmode="open"><style>:host{background-color:var(--rh-color-surface);display:block;padding:var(--_panel-padding,var(--rh-space-2xl,32px))}:host([hidden]){display:none!important}#container{display:contents}</style><!--lit-part meT5rY7ykc4=-->
+      <div id="container">
+        <slot></slot>
+      </div>
+    <!--/lit-part--></template>
       <p>אלו הנהנים מהמערכת הנוכחית, בה תוכנות הנן רכוש, מציעים שני נימוקים לתמיכה
-      בדרישתם לבעלות על תוכנה: הנימוק הרגשי והנימוק הכלכלי.</p>
+        בדרישתם לבעלות על תוכנה: הנימוק הרגשי והנימוק הכלכלי.</p>
       <p>הנימוק הרגשי פשוט: ”השקעתי מאמצים, זמן ונשמה במוצר, המוצר בא <em>ממני</em>,
-      הוא <em>שלי</em>!“</p>
+        הוא <em>שלי</em>!“</p>
       <p>נימוק זה אינה דורש מאמץ רב להפרכתו. תחושת ה-”קשר הרגשי“ אינה בלתי-נמנעת אלא
-      כזו שמתכנתים יכולים לטפח כאשר זה מתאים להם. ניקח לדוגמא, כיצד תחושת הקשר
-      נעלמת במסתוריות במקרה הנפוץ בו מתכנתים מוכנים, בד"כ, להעביר את כל זכויותיהם
-      לתאגיד גדול תמורת שכר. בניגוד לכך, שיקלו את גישתם של האמנים והאומנים הגדולים
-      של ימי הביניים, שאפילו לא חתמו על עבודותיהם. להם, שם האמן לא היה חשוב. מה
-      שכן היה חשוב היה הצורך שהעבודה תשרת והעובדה שהיא נעשתה. גישה זה שלטה מאות
-      שנים.</p>
+        כזו שמתכנתים יכולים לטפח כאשר זה מתאים להם. ניקח לדוגמא, כיצד תחושת הקשר
+        נעלמת במסתוריות במקרה הנפוץ בו מתכנתים מוכנים, בד"כ, להעביר את כל זכויותיהם
+        לתאגיד גדול תמורת שכר. בניגוד לכך, שיקלו את גישתם של האמנים והאומנים הגדולים
+        של ימי הביניים, שאפילו לא חתמו על עבודותיהם. להם, שם האמן לא היה חשוב. מה
+        שכן היה חשוב היה הצורך שהעבודה תשרת והעובדה שהיא נעשתה. גישה זה שלטה מאות
+        שנים.</p>
       <p>הנימוק הכלכלי מתואר כך : ”אני רוצה להתעשר (או, בתיאור הפופולרי אך לא מדויק,
-      להתקיים), אם לא אוכל על ידי פיתוח תוכנה, אז לא אפתח תוכנה. כל האחרים הם
-      כמוני, ולכן אף אחד לא יתכנת. ואז מה תעשו?“ – איום זה בד"כ מוסווה כעצה
-      ידידותית.</p>
+        להתקיים), אם לא אוכל על ידי פיתוח תוכנה, אז לא אפתח תוכנה. כל האחרים הם
+        כמוני, ולכן אף אחד לא יתכנת. ואז מה תעשו?“ – איום זה בד"כ מוסווה כעצה
+        ידידותית.</p>
       <p>בהמשך נראה מדוע איום זה הנו איום סרק. אבל תחילה נפנה לטפל בהנחה סמויה שניתן
-      לגלות ביתר קלות בניסוח אחר של הטיעון הנ"ל.</p>
+        לגלות ביתר קלות בניסוח אחר של הטיעון הנ"ל.</p>
       <p>ניסוח זה מתחיל בהשוואת התועלת הציבורית של תוכנה קניינית לעומת אי קיום תוכנה,
-      ומסיים במסקנה כי פיתוח תוכנה קניינית הנו, למרות הכל, משתלם, ויש
-      לעודדו. הטעות פה הנה ההשוואה של שתי תוצאות בלבד, תוכנה קניינית
-      ואי-תוכנה. וההנחה שאין אפשרויות נוספות.</p>
+        ומסיים במסקנה כי פיתוח תוכנה קניינית הנו, למרות הכל, משתלם, ויש
+        לעודדו. הטעות פה הנה ההשוואה של שתי תוצאות בלבד, תוכנה קניינית
+        ואי-תוכנה. וההנחה שאין אפשרויות נוספות.</p>
       <p>בהינתן מערכת של זכויות יוצרים, פיתוח תוכנה בד"כ מקושר עם קיום בעלים השולט על
-      השימוש בתוכנה. כל עוד קישור זה קיים, אנו לרוב עומדים בפני הבחירה בין תוכנה
-      קניינית וכלום. בכל אופן, הקישור הזה אינו טבעי או בלתי-נמנע, הוא תוצאה של
-      מדיניות משפטית/חברתית שעליה אנו מערערים: ההחלטה על קנייניות. הגדרת הברירה
-      כבחירה בין תוכנה קניינית לאי קיום תוכנה ממש דורש מאיתנו לשאול</p>
+        השימוש בתוכנה. כל עוד קישור זה קיים, אנו לרוב עומדים בפני הבחירה בין תוכנה
+        קניינית וכלום. בכל אופן, הקישור הזה אינו טבעי או בלתי-נמנע, הוא תוצאה של
+        מדיניות משפטית/חברתית שעליה אנו מערערים: ההחלטה על קנייניות. הגדרת הברירה
+        כבחירה בין תוכנה קניינית לאי קיום תוכנה ממש דורש מאיתנו לשאול</p>
     </rh-tab-panel>
 
-    <rh-tab slot="tab">הטיעון נגד קנייניות</rh-tab>
-    <rh-tab-panel>
+    <rh-tab   role="tab" hydrate-internals-role="tab" slot="tab" ssr-hint-has-slotted-default="true"><template shadowroot="open" shadowrootmode="open"><style>:host{background-color:var(--rh-color-surface);display:flex;flex:none;--_active-tab-border:var(--rh-border-width-lg,3px) solid var(--_active-tab-border-color,var(--rh-tabs-active-border-color,var(--rh-color-accent-brand)));--_active-tab-border-open:var(--rh-border-width-sm,1px) solid var(--rh-color-surface)}[part=text]{display:inline;line-height:var(--rh-line-height-heading,1.3);text-wrap:balance}.vertical [part=text]{max-width:100%;overflow-wrap:break-word}[hidden]{display:none!important}slot[name=icon]{display:block}[part=icon]{margin-inline-end:var(--rh-space-md,8px)}#button{align-items:center;background-color:inherit;border:0;color:var(--rh-tabs-link-color,var(--rh-color-text-secondary));cursor:pointer;display:flex;flex:1;font-family:inherit;font-size:100%;line-height:0;margin:0;max-height:100%;max-width:var(--_tab-max-width,200px);padding:var(--rh-tabs-link-padding-block-start,var(--rh-space-lg,16px)) var(--rh-tabs-link-padding-inline-end,var(--rh-space-2xl,32px)) var(--rh-tabs-link-padding-block-end,var(--rh-space-lg,16px)) var(--rh-tabs-link-padding-inline-start,var(--rh-space-2xl,32px));position:relative;text-decoration:none;width:100%;&:after,&:before{background-color:initial;border-style:solid;content:"";inset:0;margin:0;padding:0;position:absolute}&:before{border:0 solid #0000;pointer-events:none}&:after{background-color:initial;border-block-end:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle);border-block-start:var(--rh-border-width-lg,3px) solid #0000;border-inline:0 solid #0000}&.box{background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),oklch(from var(--rh-color-surface-dark) calc(l * .82) c h))}&.vertical{padding-inline:var(--rh-space-lg,16px);text-align:start;&.box{@container (min-width: 768px){&.first{margin-block-start:var(--rh-space-2xl,32px)}&.last{margin-block-end:var(--rh-space-2xl,32px)}}}&:not(.box){@container (min-width: 768px){padding-block:var(--rh-tabs-link-padding-block-start,var(--rh-space-md,8px)) var(--rh-tabs-link-padding-block-end,var(--rh-space-md,8px));&.first{margin-block-start:var(--rh-space-xl,24px)}&.last{margin-block-end:var(--rh-space-xl,24px)}}}}&.active{color:var(--rh-tabs-link-color,var(--rh-color-text-primary));&.box{background-color:initial;&:before{border-inline-color:var(--rh-color-border-subtle);border-inline-start-width:var(--rh-border-width-sm,1px)}&:after{border-block-end:var(--_active-tab-border-open);border-block-start:var(--_active-tab-border)}&.first{&:before{border-inline-start-color:var(--rh-color-border-subtle);border-inline-start-width:var(--rh-border-width-sm,1px)}}&.last{&:before{border-inline-end-color:var(--rh-color-border-subtle);border-inline-end-width:var(--rh-border-width-sm,1px)}}&.vertical{@container (min-width: 768px){&:before{border-inline-end:var(--_active-tab-border-open);border-inline-start:var(--_active-tab-border)}&:after{border-block-start:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle)}}&.first{@container (min-width: 768px){&:after{border-block-start-color:var(--rh-color-border-subtle);border-block-start-width:var(--rh-border-width-sm,1px)}}}&.last{@container (min-width: 768px){&:before{border-block-end-color:var(--rh-color-border-subtle);border-block-end-width:var(--rh-border-width-sm,1px)}}}}&:not(.vertical){&.first{@container (min-width: 768px){&:before{border-inline-start-color:var(--rh-color-border-subtle);border-inline-start-width:var(--rh-border-width-sm,1px)}}}&.last{@container (min-width: 768px){&:before{border-inline-end-color:var(--rh-color-border-subtle);border-inline-end-width:var(--rh-border-width-sm,1px)}}}@container (min-width: 768px){&:after{border-block-end:var(--_active-tab-border-open);border-block-start:var(--_active-tab-border)}}}}&.vertical{@container (max-width: 767px){&:after{border-block-start:var(--_active-tab-border)}}@container (min-width: 768px){&:after{border-block-end:#0000}}}&:not(.box){&.vertical{@container (max-width: 767px){&:after{border-block-end:var(--_active-tab-border);border-block-start:#0000}}@container (min-width: 768px){&:before{border-inline-start:var(--_active-tab-border)}&:after{border-block-end:#0000}}}&:not(.vertical){&:after{border-block-end:var(--_active-tab-border)}}}}&:not(.active){&.box{&:before{border-inline-color:var(--rh-color-border-subtle);border-inline-start-width:var(--rh-border-width-sm,1px)}&:after{border-block-end-color:var(--rh-color-border-subtle)}&.vertical{&:hover{&:before{border-block-start:var(--rh-border-width-lg,3px) solid var(--rh-color-interactive-secondary-default)}}@container (min-width: 768px){&:before{border-block-start:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle);border-inline-end:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle);border-inline-start-color:#0000}&:after{border-block-end-color:#0000}&:hover{&:before{border-block-start:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle);border-inline-start:var(--rh-border-width-lg,3px) solid var(--rh-color-interactive-secondary-default)}}&.first{@container (min-width: 768px){&:before{border-block-start-color:#0000;border-inline-end-color:var(--rh-color-border-subtle)}}}&.last{@container (min-width: 768px){&:after{border-block-end:none}}}}}&:not(.vertical){&:hover{&:before{border-block-start:var(--rh-border-width-lg,3px) solid var(--rh-color-interactive-secondary-default)}}@container (min-width: 768px){&:after{border-block-end-color:var(--rh-color-border-subtle)}}}&.first{&:before{border-inline-color:#0000}}}&:not(.box){&.vertical{&:hover{@container (max-width: 767px){&:after{border-block-end:var(--rh-border-width-lg,3px) solid var(--rh-color-interactive-secondary-default)}}@container (min-width: 768px){&:after{border-inline-start:var(--rh-border-width-lg,3px) solid var(--rh-color-interactive-secondary-default)}}}}}&:not(.vertical,.box){&:hover{&:before{border-block-end:var(--rh-border-width-lg,3px) solid var(--rh-color-interactive-secondary-default)}}}}}:host(:disabled){& #button{pointer-events:none}}:host([aria-disabled=true]){& #button{cursor:default}}:host(:is(:focus,:focus-within)){& #button{outline:1px auto var(--rh-color-interactive-primary-default);outline-offset:-3px}}</style><!--lit-part JJ+M2krsyYw=-->
+      <!--lit-node 0--><div id="button"
+           part="button"
+           
+           class="  ">
+        <!--lit-node 1--><slot name="icon"
+              part="icon"
+              
+              ></slot>
+        <slot part="text"></slot>
+      </div>
+    <!--/lit-part--></template>הטיעון נגד קנייניות</rh-tab>
+    <rh-tab-panel><template shadowroot="open" shadowrootmode="open"><style>:host{background-color:var(--rh-color-surface);display:block;padding:var(--_panel-padding,var(--rh-space-2xl,32px))}:host([hidden]){display:none!important}#container{display:contents}</style><!--lit-part meT5rY7ykc4=-->
+      <div id="container">
+        <slot></slot>
+      </div>
+    <!--/lit-part--></template>
       <p>השאלה שעל הפרק – ”האם פיתוח תוכנה צריך להיות קשור לקיום בעלות והגבלת שימוש?“</p>
       <p>על מנת לפסוק בסוגיה זו, אנו צריכים למדוד את ההשפעה של כל אחת מהפעילויות על
-      החברה באופן בלתי תלוי. ההשפעה של פיתוח תוכנה (ללא קשר לשיטות ההפצה שלה)
-      וההשפעה של הגבלת השימוש (בהנחה שהתוכנה פותחה). אם אחת מהפעילויות הללו הנה
-      חיובית והשניה הרסנית, מוטב לנו לבטל את הקישור בינן ולבצע רק את החיובית.</p>
+        החברה באופן בלתי תלוי. ההשפעה של פיתוח תוכנה (ללא קשר לשיטות ההפצה שלה)
+        וההשפעה של הגבלת השימוש (בהנחה שהתוכנה פותחה). אם אחת מהפעילויות הללו הנה
+        חיובית והשניה הרסנית, מוטב לנו לבטל את הקישור בינן ולבצע רק את החיובית.</p>
       <p>או במילים אחרות – אם הגבלת הפצה של תוכנה פוגע בחברה, אזי מתכנת מוסרי ימנע
-      מאפשרות זו.</p>
+        מאפשרות זו.</p>
       <p>למדידת התוצאה של הגבלת ההפצה, אנו צריכים להשוות את הערך לחברה של תוכנה קניינית (מוגבלת הפצה) והערך של אותה תוכנה, הזמינה לכולם – כלומר השוואה של
-      שני עולמות שונים.</p>
+        שני עולמות שונים.</p>
       <p>השוואה זו מטפלת גם בנימוק הנגדי הפשוט שעולה מפעם לפעם - ”התועלת לשכן שלו נתת
-      עותק תוכנה מבטלת את התועלת לבעלי התוכנה“ – נימוק זה מניח שהנזק והתועלת שווים
-      בערכם. בהשוואה שנבצע נשווה גם את הערכים, ונראה כי התועלת גדולה לעין שיעור
-      מהנזק.</p>
+        עותק תוכנה מבטלת את התועלת לבעלי התוכנה“ – נימוק זה מניח שהנזק והתועלת שווים
+        בערכם. בהשוואה שנבצע נשווה גם את הערכים, ונראה כי התועלת גדולה לעין שיעור
+        מהנזק.</p>
       <p>להבהרת הטיעון, בואו ננסה להפעיל אותו על נושא אחר – בניית כבישים.</p>
       <p>ניתן לממן את בניית כל הכבישים על ידי אגרת-מעבר. מימון כזה ידרוש הקמת נקודות
-      גבייה בכל צומת רחובות. מערכת כזו תהווה תמריץ גדול לשיפור הדרכים ותגרום לכל
-      משתמש בדרך לשלם על השימוש בה, אולם, נקודת גבייה היא מכשול מלאכותי המפריע
-      לזרימת התנועה. מלאכותי מכיוון שאינו תוצאה של דרך פעולתן של מכוניות או
-      כבישים.</p>
+        גבייה בכל צומת רחובות. מערכת כזו תהווה תמריץ גדול לשיפור הדרכים ותגרום לכל
+        משתמש בדרך לשלם על השימוש בה, אולם, נקודת גבייה היא מכשול מלאכותי המפריע
+        לזרימת התנועה. מלאכותי מכיוון שאינו תוצאה של דרך פעולתן של מכוניות או
+        כבישים.</p>
       <p>בהשוואת דרכים חופשיות לכבישי אגרה אנו מוצאים (בהנחה כי כל שאר הפרמטרים זהים)
-      כי כבישים רגילים זולים יותר לבנייה ולתחזוקה, בטוחים יותר ויותר יעילים
-      בשימוש. <a href="#f2">(2)</a> במדינה ענייה, אגרות מעבר מונעות את השימוש
-      בכבישים מאזרחים רבים. יוצא מזה כי כבישים נטולי אגרה (חופשיים) מציעים יותר
-      תועלת לחברה בעלות קטנה יותר והם מועדפים על ידי החברה. לכן, על החברה לבחור
-      לממן סלילת כבישים בדרכים אחרות, ולא על ידי נקודות גביית אגרה. השימוש בכביש,
-      אחרי בנייתו, צריך להיות חופשי.</p>
+        כי כבישים רגילים זולים יותר לבנייה ולתחזוקה, בטוחים יותר ויותר יעילים
+        בשימוש. <a href="#f2">(2)</a> במדינה ענייה, אגרות מעבר מונעות את השימוש
+        בכבישים מאזרחים רבים. יוצא מזה כי כבישים נטולי אגרה (חופשיים) מציעים יותר
+        תועלת לחברה בעלות קטנה יותר והם מועדפים על ידי החברה. לכן, על החברה לבחור
+        לממן סלילת כבישים בדרכים אחרות, ולא על ידי נקודות גביית אגרה. השימוש בכביש,
+        אחרי בנייתו, צריך להיות חופשי.</p>
       <p>כאשר הסניגורים של כבישי האגרה טוענים כי הם רק דרך לגיוס כספים, הם מסתירים את
-      העובדה שיש חלופות. נקודות גביית אגרה אכן מגייסות כספים, אבל הן גם מורידות את
-      רמת הכביש. כבישי האגרה אינם טובים כמו כבישים חופשיים.</p>
+        העובדה שיש חלופות. נקודות גביית אגרה אכן מגייסות כספים, אבל הן גם מורידות את
+        רמת הכביש. כבישי האגרה אינם טובים כמו כבישים חופשיים.</p>
       <p>כמובן, בניית כביש חופשי עולה כסף, שעל הציבור לשלם. אולם, אין משמעות הדבר
-      מעבר לשיטת כבישי האגרה. אנו, הנדרשים לשלם בכל מקרה, נקבל תמורה טובה יותר
-      לכספנו בבניית כבישים חופשיים.</p>
+        מעבר לשיטת כבישי האגרה. אנו, הנדרשים לשלם בכל מקרה, נקבל תמורה טובה יותר
+        לכספנו בבניית כבישים חופשיים.</p>
       <p>איננו טוענים כי דרך אגרה גרועה מאי קיום דרך, למרות שטענה זו תתקיים אם האגרה
-      תהיה גבוהה במידה כזאת שלא נוכל להשתמש בדרך (זו אינה מדיניות הגיונית לבעלי
-      הכביש). אולם, כל עוד כבישי אגרה גורמים לבזבוז ואי נוחות, עדיף לגייס את הכסף
-      בדרכים פחות פוגעניות.</p>
+        תהיה גבוהה במידה כזאת שלא נוכל להשתמש בדרך (זו אינה מדיניות הגיונית לבעלי
+        הכביש). אולם, כל עוד כבישי אגרה גורמים לבזבוז ואי נוחות, עדיף לגייס את הכסף
+        בדרכים פחות פוגעניות.</p>
       <p>ניתן להפעיל אותם טיעונים לגבי פיתוח תוכנה, נראה כי קיום ”נקודות גבייה“
-      לתוכנה שימושית עולה רבות לחברה – גורם לתוכנה להיות יקרה יותר לפיתוח, יקרה
-      יותר להפצה ופחות מספקת ויעילה לשימוש. מזה יוצא כי יש לעודד פיתוח תוכנה
-      בדרכים אחרות, ויתוארו גישות אחדות לעידוד ומימון (בהיקף הנדרש באמת) של פיתוח
-      תוכנה.</p>
+        לתוכנה שימושית עולה רבות לחברה – גורם לתוכנה להיות יקרה יותר לפיתוח, יקרה
+        יותר להפצה ופחות מספקת ויעילה לשימוש. מזה יוצא כי יש לעודד פיתוח תוכנה
+        בדרכים אחרות, ויתוארו גישות אחדות לעידוד ומימון (בהיקף הנדרש באמת) של פיתוח
+        תוכנה.</p>
     </rh-tab-panel>
   </rh-tabs>
 </section>
@@ -197,17 +245,37 @@
 <style>
   a {
     color: var(--rh-color-interactive-primary-default);
-    &:hover { color: var(--rh-color-interactive-primary-hover); }
-    &:focus-within { color: var(--rh-color-interactive-primary-focus); }
-    &:active { color: var(--rh-color-interactive-primary-active); }
+
+    &:hover {
+      color: var(--rh-color-interactive-primary-hover);
+    }
+
+    &:focus-within {
+      color: var(--rh-color-interactive-primary-focus);
+    }
+
+    &:active {
+      color: var(--rh-color-interactive-primary-active);
+    }
+
     &:visited {
       color: var(--rh-color-interactive-primary-visited);
-      &:hover { color: var(--rh-color-interactive-primary-visited-hover); }
-      &:focus-within { color: var(--rh-color-interactive-primary-visited-focus); }
-      &:active { color: var(--rh-color-interactive-primary-visited-active); }
+
+      &:hover {
+        color: var(--rh-color-interactive-primary-visited-hover);
+      }
+
+      &:focus-within {
+        color: var(--rh-color-interactive-primary-visited-focus);
+      }
+
+      &:active {
+        color: var(--rh-color-interactive-primary-visited-active);
+      }
     }
   }
 </style>
+</main>
 
-</main></body>
-</html>
+
+</body></html>

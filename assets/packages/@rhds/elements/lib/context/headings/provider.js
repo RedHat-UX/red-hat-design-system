@@ -1,5 +1,6 @@
 var _HeadingLevelContextProvider_instances, _HeadingLevelContextProvider_options, _HeadingLevelContextProvider_getLevel, _HeadingLevelContextProvider_computeLevelFromChildren;
 import { __classPrivateFieldGet, __classPrivateFieldSet } from "tslib";
+import { isServer } from 'lit';
 import { ContextProvider } from '@lit/context';
 const SELECTORS = `H1,H2,H3,H4,H5,H6`;
 import { createContextWithRoot } from '@patternfly/pfe-core/functions/context.js';
@@ -49,7 +50,7 @@ export class HeadingLevelContextProvider extends ContextProvider {
 }
 _HeadingLevelContextProvider_options = new WeakMap(), _HeadingLevelContextProvider_instances = new WeakSet(), _HeadingLevelContextProvider_getLevel = function _HeadingLevelContextProvider_getLevel() {
     const level = this.host.getAttribute(__classPrivateFieldGet(this, _HeadingLevelContextProvider_options, "f")?.attribute ?? '')
-        ?? __classPrivateFieldGet(this, _HeadingLevelContextProvider_instances, "m", _HeadingLevelContextProvider_computeLevelFromChildren).call(this)
+        ?? (isServer ? null : __classPrivateFieldGet(this, _HeadingLevelContextProvider_instances, "m", _HeadingLevelContextProvider_computeLevelFromChildren).call(this))
         ?? 1;
     const val = typeof level === 'string' ? parseInt(level) : level;
     if (typeof val === 'number' && !Number.isNaN(val)) {

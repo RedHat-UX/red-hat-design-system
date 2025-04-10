@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="/assets/logo-red-hat.svg">
@@ -14,8 +12,8 @@
   "imports": {
     "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
-    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
     "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
     "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
@@ -32,8 +30,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.0/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
@@ -93,13 +91,35 @@
     <main><section>
   <h2>Default tooltip</h2>
   <p>
-    <rh-tooltip>
+    <rh-tooltip><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline}#container{display:inline-flex;max-width:100%;position:relative;--_floating-arrow-size:var(--rh-tooltip-arrow-size,var(--rh-tooltip__arrow--Width,11px))}#tooltip,#tooltip:after{position:absolute}#tooltip{background-color:light-dark(var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-darkest,#151515))),var(--rh-tooltip-content-background-color,var(--rh-color-surface-lightest,#fff)));border-radius:var(--rh-border-radius-default,3px);box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 #15151533);color:light-dark(var(--rh-tooltip-content-color,var(--rh-tooltip__content--Color,var(--rh-color-text-primary-on-dark,#fff))),var(--rh-tooltip-content-color,var(--rh-color-text-primary-on-light,#151515)));display:none;font-size:var(--rh-tooltip-content-font-size,var(--rh-tooltip__content--FontSize,var(--rh-font-size-body-text-sm,.875rem)));inset-block-start:0;inset-inline-start:0;line-height:var(--rh-line-height-body-text,1.5);max-width:var(--rh-tooltip-max-width,var(--rh-tooltip--MaxWidth,18.75rem));opacity:0;padding:var(--rh-tooltip-content-padding-block-start,var(--rh-tooltip__content--PaddingTop,var(--rh-space-lg,16px))) var(--rh-tooltip-content-padding-inline-end,var(--rh-tooltip__content--PaddingRight,var(--rh-space-lg,16px))) var(--rh-tooltip-content-padding-block-end,var(--rh-tooltip__content--PaddingBottom,var(--rh-space-lg,16px))) var(--rh-tooltip-content-padding-inline-start,var(--rh-tooltip__content--PaddingLeft,var(--rh-space-lg,16px)));pointer-events:none;text-align:var(--_text-alignment,center);transition:opacity .3s cubic-bezier(.54,1.5,.38,1.11) 0s;translate:var(--_floating-content-translate);width:max-content;will-change:opacity;word-break:break-word;z-index:10000}.initialized #tooltip{display:block}#tooltip:after{background-color:light-dark(var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-darkest,#151515))),var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-lightest,#fff))));content:"";display:block;height:var(--_floating-arrow-size);rotate:45deg;width:var(--_floating-arrow-size);will-change:left top right bottom}.open #tooltip{opacity:1}.left #tooltip:after{inset-inline-start:calc(var(--_floating-arrow-size)*-.5)}.top #tooltip:after{inset-block-start:calc(100% - var(--_floating-arrow-size)*.5)}.right #tooltip:after{inset-inline-end:calc(100% - var(--_floating-arrow-size)*.5)}.bottom #tooltip:after{inset-block-end:calc(100% - var(--_floating-arrow-size)*.5)}.left.center #tooltip:after{inset-block-start:calc(50% - var(--_floating-arrow-size)*.5)}.top.center #tooltip:after{inset-inline-end:calc(50% - var(--_floating-arrow-size)*.5)}.right.center #tooltip:after{inset-block-start:calc(50% - var(--_floating-arrow-size)*.5)}.bottom.center #tooltip:after{inset-inline-end:calc(50% - var(--_floating-arrow-size)*.5)}.left.start #tooltip:after{inset-block-start:var(--_floating-arrow-size)}.top.start #tooltip:after{inset-inline-start:var(--_floating-arrow-size)}.right.start #tooltip:after{inset-block-start:var(--_floating-arrow-size)}.bottom.start #tooltip:after{inset-inline-start:var(--_floating-arrow-size)}.left.end #tooltip:after{inset-block-end:var(--_floating-arrow-size)}.top.end #tooltip:after{inset-inline-end:var(--_floating-arrow-size)}.right.end #tooltip:after{inset-block-end:var(--_floating-arrow-size)}.bottom.end #tooltip:after{inset-inline-end:var(--_floating-arrow-size)}:host([position=left]),:host([position=right]){--_text-alignment:"start"}</style><!--lit-part eUcF9UlFv54=-->
+      <!--lit-node 0--><div id="container"
+           style=""
+           class=" center ">
+        <div id="invoker">
+          <slot id="invoker-slot"></slot>
+        </div>
+        <div id="tooltip" role="status">
+          <slot id="content" name="content"><!--lit-part--><!--/lit-part--></slot>
+        </div>
+      </div>
+    <!--/lit-part--></template>
       <rh-timestamp></rh-timestamp>
       <rh-timestamp slot="content" utc=""></rh-timestamp>
     </rh-tooltip>
   </p>
   <p>
-    <rh-tooltip>
+    <rh-tooltip><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline}#container{display:inline-flex;max-width:100%;position:relative;--_floating-arrow-size:var(--rh-tooltip-arrow-size,var(--rh-tooltip__arrow--Width,11px))}#tooltip,#tooltip:after{position:absolute}#tooltip{background-color:light-dark(var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-darkest,#151515))),var(--rh-tooltip-content-background-color,var(--rh-color-surface-lightest,#fff)));border-radius:var(--rh-border-radius-default,3px);box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 #15151533);color:light-dark(var(--rh-tooltip-content-color,var(--rh-tooltip__content--Color,var(--rh-color-text-primary-on-dark,#fff))),var(--rh-tooltip-content-color,var(--rh-color-text-primary-on-light,#151515)));display:none;font-size:var(--rh-tooltip-content-font-size,var(--rh-tooltip__content--FontSize,var(--rh-font-size-body-text-sm,.875rem)));inset-block-start:0;inset-inline-start:0;line-height:var(--rh-line-height-body-text,1.5);max-width:var(--rh-tooltip-max-width,var(--rh-tooltip--MaxWidth,18.75rem));opacity:0;padding:var(--rh-tooltip-content-padding-block-start,var(--rh-tooltip__content--PaddingTop,var(--rh-space-lg,16px))) var(--rh-tooltip-content-padding-inline-end,var(--rh-tooltip__content--PaddingRight,var(--rh-space-lg,16px))) var(--rh-tooltip-content-padding-block-end,var(--rh-tooltip__content--PaddingBottom,var(--rh-space-lg,16px))) var(--rh-tooltip-content-padding-inline-start,var(--rh-tooltip__content--PaddingLeft,var(--rh-space-lg,16px)));pointer-events:none;text-align:var(--_text-alignment,center);transition:opacity .3s cubic-bezier(.54,1.5,.38,1.11) 0s;translate:var(--_floating-content-translate);width:max-content;will-change:opacity;word-break:break-word;z-index:10000}.initialized #tooltip{display:block}#tooltip:after{background-color:light-dark(var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-darkest,#151515))),var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-lightest,#fff))));content:"";display:block;height:var(--_floating-arrow-size);rotate:45deg;width:var(--_floating-arrow-size);will-change:left top right bottom}.open #tooltip{opacity:1}.left #tooltip:after{inset-inline-start:calc(var(--_floating-arrow-size)*-.5)}.top #tooltip:after{inset-block-start:calc(100% - var(--_floating-arrow-size)*.5)}.right #tooltip:after{inset-inline-end:calc(100% - var(--_floating-arrow-size)*.5)}.bottom #tooltip:after{inset-block-end:calc(100% - var(--_floating-arrow-size)*.5)}.left.center #tooltip:after{inset-block-start:calc(50% - var(--_floating-arrow-size)*.5)}.top.center #tooltip:after{inset-inline-end:calc(50% - var(--_floating-arrow-size)*.5)}.right.center #tooltip:after{inset-block-start:calc(50% - var(--_floating-arrow-size)*.5)}.bottom.center #tooltip:after{inset-inline-end:calc(50% - var(--_floating-arrow-size)*.5)}.left.start #tooltip:after{inset-block-start:var(--_floating-arrow-size)}.top.start #tooltip:after{inset-inline-start:var(--_floating-arrow-size)}.right.start #tooltip:after{inset-block-start:var(--_floating-arrow-size)}.bottom.start #tooltip:after{inset-inline-start:var(--_floating-arrow-size)}.left.end #tooltip:after{inset-block-end:var(--_floating-arrow-size)}.top.end #tooltip:after{inset-inline-end:var(--_floating-arrow-size)}.right.end #tooltip:after{inset-block-end:var(--_floating-arrow-size)}.bottom.end #tooltip:after{inset-inline-end:var(--_floating-arrow-size)}:host([position=left]),:host([position=right]){--_text-alignment:"start"}</style><!--lit-part eUcF9UlFv54=-->
+      <!--lit-node 0--><div id="container"
+           style=""
+           class=" center ">
+        <div id="invoker">
+          <slot id="invoker-slot"></slot>
+        </div>
+        <div id="tooltip" role="status">
+          <slot id="content" name="content"><!--lit-part--><!--/lit-part--></slot>
+        </div>
+      </div>
+    <!--/lit-part--></template>
       <rh-timestamp></rh-timestamp>
       <rh-timestamp slot="content" utc="" display-suffix="Coordinated Universal Time"></rh-timestamp>
     </rh-tooltip>
@@ -109,13 +129,35 @@
 <section>
   <h2>Custom tooltip</h2>
   <p>
-    <rh-tooltip>
+    <rh-tooltip><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline}#container{display:inline-flex;max-width:100%;position:relative;--_floating-arrow-size:var(--rh-tooltip-arrow-size,var(--rh-tooltip__arrow--Width,11px))}#tooltip,#tooltip:after{position:absolute}#tooltip{background-color:light-dark(var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-darkest,#151515))),var(--rh-tooltip-content-background-color,var(--rh-color-surface-lightest,#fff)));border-radius:var(--rh-border-radius-default,3px);box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 #15151533);color:light-dark(var(--rh-tooltip-content-color,var(--rh-tooltip__content--Color,var(--rh-color-text-primary-on-dark,#fff))),var(--rh-tooltip-content-color,var(--rh-color-text-primary-on-light,#151515)));display:none;font-size:var(--rh-tooltip-content-font-size,var(--rh-tooltip__content--FontSize,var(--rh-font-size-body-text-sm,.875rem)));inset-block-start:0;inset-inline-start:0;line-height:var(--rh-line-height-body-text,1.5);max-width:var(--rh-tooltip-max-width,var(--rh-tooltip--MaxWidth,18.75rem));opacity:0;padding:var(--rh-tooltip-content-padding-block-start,var(--rh-tooltip__content--PaddingTop,var(--rh-space-lg,16px))) var(--rh-tooltip-content-padding-inline-end,var(--rh-tooltip__content--PaddingRight,var(--rh-space-lg,16px))) var(--rh-tooltip-content-padding-block-end,var(--rh-tooltip__content--PaddingBottom,var(--rh-space-lg,16px))) var(--rh-tooltip-content-padding-inline-start,var(--rh-tooltip__content--PaddingLeft,var(--rh-space-lg,16px)));pointer-events:none;text-align:var(--_text-alignment,center);transition:opacity .3s cubic-bezier(.54,1.5,.38,1.11) 0s;translate:var(--_floating-content-translate);width:max-content;will-change:opacity;word-break:break-word;z-index:10000}.initialized #tooltip{display:block}#tooltip:after{background-color:light-dark(var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-darkest,#151515))),var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-lightest,#fff))));content:"";display:block;height:var(--_floating-arrow-size);rotate:45deg;width:var(--_floating-arrow-size);will-change:left top right bottom}.open #tooltip{opacity:1}.left #tooltip:after{inset-inline-start:calc(var(--_floating-arrow-size)*-.5)}.top #tooltip:after{inset-block-start:calc(100% - var(--_floating-arrow-size)*.5)}.right #tooltip:after{inset-inline-end:calc(100% - var(--_floating-arrow-size)*.5)}.bottom #tooltip:after{inset-block-end:calc(100% - var(--_floating-arrow-size)*.5)}.left.center #tooltip:after{inset-block-start:calc(50% - var(--_floating-arrow-size)*.5)}.top.center #tooltip:after{inset-inline-end:calc(50% - var(--_floating-arrow-size)*.5)}.right.center #tooltip:after{inset-block-start:calc(50% - var(--_floating-arrow-size)*.5)}.bottom.center #tooltip:after{inset-inline-end:calc(50% - var(--_floating-arrow-size)*.5)}.left.start #tooltip:after{inset-block-start:var(--_floating-arrow-size)}.top.start #tooltip:after{inset-inline-start:var(--_floating-arrow-size)}.right.start #tooltip:after{inset-block-start:var(--_floating-arrow-size)}.bottom.start #tooltip:after{inset-inline-start:var(--_floating-arrow-size)}.left.end #tooltip:after{inset-block-end:var(--_floating-arrow-size)}.top.end #tooltip:after{inset-inline-end:var(--_floating-arrow-size)}.right.end #tooltip:after{inset-block-end:var(--_floating-arrow-size)}.bottom.end #tooltip:after{inset-inline-end:var(--_floating-arrow-size)}:host([position=left]),:host([position=right]){--_text-alignment:"start"}</style><!--lit-part eUcF9UlFv54=-->
+      <!--lit-node 0--><div id="container"
+           style=""
+           class=" center ">
+        <div id="invoker">
+          <slot id="invoker-slot"></slot>
+        </div>
+        <div id="tooltip" role="status">
+          <slot id="content" name="content"><!--lit-part--><!--/lit-part--></slot>
+        </div>
+      </div>
+    <!--/lit-part--></template>
       <rh-timestamp date="Tue Aug 09 2022 14:57:00 GMT-0400 (Eastern Daylight Time)"></rh-timestamp>
       <span slot="content">Last updated on <rh-timestamp date="Tue Aug 09 2022 14:57:00 GMT-0400 (Eastern Daylight Time)" date-format="long" time-format="short" utc=""></rh-timestamp></span>
     </rh-tooltip>
   </p>
   <p>
-    <rh-tooltip>
+    <rh-tooltip><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline}#container{display:inline-flex;max-width:100%;position:relative;--_floating-arrow-size:var(--rh-tooltip-arrow-size,var(--rh-tooltip__arrow--Width,11px))}#tooltip,#tooltip:after{position:absolute}#tooltip{background-color:light-dark(var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-darkest,#151515))),var(--rh-tooltip-content-background-color,var(--rh-color-surface-lightest,#fff)));border-radius:var(--rh-border-radius-default,3px);box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 #15151533);color:light-dark(var(--rh-tooltip-content-color,var(--rh-tooltip__content--Color,var(--rh-color-text-primary-on-dark,#fff))),var(--rh-tooltip-content-color,var(--rh-color-text-primary-on-light,#151515)));display:none;font-size:var(--rh-tooltip-content-font-size,var(--rh-tooltip__content--FontSize,var(--rh-font-size-body-text-sm,.875rem)));inset-block-start:0;inset-inline-start:0;line-height:var(--rh-line-height-body-text,1.5);max-width:var(--rh-tooltip-max-width,var(--rh-tooltip--MaxWidth,18.75rem));opacity:0;padding:var(--rh-tooltip-content-padding-block-start,var(--rh-tooltip__content--PaddingTop,var(--rh-space-lg,16px))) var(--rh-tooltip-content-padding-inline-end,var(--rh-tooltip__content--PaddingRight,var(--rh-space-lg,16px))) var(--rh-tooltip-content-padding-block-end,var(--rh-tooltip__content--PaddingBottom,var(--rh-space-lg,16px))) var(--rh-tooltip-content-padding-inline-start,var(--rh-tooltip__content--PaddingLeft,var(--rh-space-lg,16px)));pointer-events:none;text-align:var(--_text-alignment,center);transition:opacity .3s cubic-bezier(.54,1.5,.38,1.11) 0s;translate:var(--_floating-content-translate);width:max-content;will-change:opacity;word-break:break-word;z-index:10000}.initialized #tooltip{display:block}#tooltip:after{background-color:light-dark(var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-darkest,#151515))),var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-lightest,#fff))));content:"";display:block;height:var(--_floating-arrow-size);rotate:45deg;width:var(--_floating-arrow-size);will-change:left top right bottom}.open #tooltip{opacity:1}.left #tooltip:after{inset-inline-start:calc(var(--_floating-arrow-size)*-.5)}.top #tooltip:after{inset-block-start:calc(100% - var(--_floating-arrow-size)*.5)}.right #tooltip:after{inset-inline-end:calc(100% - var(--_floating-arrow-size)*.5)}.bottom #tooltip:after{inset-block-end:calc(100% - var(--_floating-arrow-size)*.5)}.left.center #tooltip:after{inset-block-start:calc(50% - var(--_floating-arrow-size)*.5)}.top.center #tooltip:after{inset-inline-end:calc(50% - var(--_floating-arrow-size)*.5)}.right.center #tooltip:after{inset-block-start:calc(50% - var(--_floating-arrow-size)*.5)}.bottom.center #tooltip:after{inset-inline-end:calc(50% - var(--_floating-arrow-size)*.5)}.left.start #tooltip:after{inset-block-start:var(--_floating-arrow-size)}.top.start #tooltip:after{inset-inline-start:var(--_floating-arrow-size)}.right.start #tooltip:after{inset-block-start:var(--_floating-arrow-size)}.bottom.start #tooltip:after{inset-inline-start:var(--_floating-arrow-size)}.left.end #tooltip:after{inset-block-end:var(--_floating-arrow-size)}.top.end #tooltip:after{inset-inline-end:var(--_floating-arrow-size)}.right.end #tooltip:after{inset-block-end:var(--_floating-arrow-size)}.bottom.end #tooltip:after{inset-inline-end:var(--_floating-arrow-size)}:host([position=left]),:host([position=right]){--_text-alignment:"start"}</style><!--lit-part eUcF9UlFv54=-->
+      <!--lit-node 0--><div id="container"
+           style=""
+           class=" center ">
+        <div id="invoker">
+          <slot id="invoker-slot"></slot>
+        </div>
+        <div id="tooltip" role="status">
+          <slot id="content" name="content"><!--lit-part--><!--/lit-part--></slot>
+        </div>
+      </div>
+    <!--/lit-part--></template>
       Halloween
       <rh-timestamp slot="content" date="Mon Oct 31 2022 00:00:00 GMT-0400 (Eastern Daylight Time)" date-format="medium"></rh-timestamp>
     </rh-tooltip>
@@ -125,13 +167,35 @@
 <section>
   <h2>Relative with tooltip</h2>
   <p>
-    <rh-tooltip>
+    <rh-tooltip><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline}#container{display:inline-flex;max-width:100%;position:relative;--_floating-arrow-size:var(--rh-tooltip-arrow-size,var(--rh-tooltip__arrow--Width,11px))}#tooltip,#tooltip:after{position:absolute}#tooltip{background-color:light-dark(var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-darkest,#151515))),var(--rh-tooltip-content-background-color,var(--rh-color-surface-lightest,#fff)));border-radius:var(--rh-border-radius-default,3px);box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 #15151533);color:light-dark(var(--rh-tooltip-content-color,var(--rh-tooltip__content--Color,var(--rh-color-text-primary-on-dark,#fff))),var(--rh-tooltip-content-color,var(--rh-color-text-primary-on-light,#151515)));display:none;font-size:var(--rh-tooltip-content-font-size,var(--rh-tooltip__content--FontSize,var(--rh-font-size-body-text-sm,.875rem)));inset-block-start:0;inset-inline-start:0;line-height:var(--rh-line-height-body-text,1.5);max-width:var(--rh-tooltip-max-width,var(--rh-tooltip--MaxWidth,18.75rem));opacity:0;padding:var(--rh-tooltip-content-padding-block-start,var(--rh-tooltip__content--PaddingTop,var(--rh-space-lg,16px))) var(--rh-tooltip-content-padding-inline-end,var(--rh-tooltip__content--PaddingRight,var(--rh-space-lg,16px))) var(--rh-tooltip-content-padding-block-end,var(--rh-tooltip__content--PaddingBottom,var(--rh-space-lg,16px))) var(--rh-tooltip-content-padding-inline-start,var(--rh-tooltip__content--PaddingLeft,var(--rh-space-lg,16px)));pointer-events:none;text-align:var(--_text-alignment,center);transition:opacity .3s cubic-bezier(.54,1.5,.38,1.11) 0s;translate:var(--_floating-content-translate);width:max-content;will-change:opacity;word-break:break-word;z-index:10000}.initialized #tooltip{display:block}#tooltip:after{background-color:light-dark(var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-darkest,#151515))),var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-lightest,#fff))));content:"";display:block;height:var(--_floating-arrow-size);rotate:45deg;width:var(--_floating-arrow-size);will-change:left top right bottom}.open #tooltip{opacity:1}.left #tooltip:after{inset-inline-start:calc(var(--_floating-arrow-size)*-.5)}.top #tooltip:after{inset-block-start:calc(100% - var(--_floating-arrow-size)*.5)}.right #tooltip:after{inset-inline-end:calc(100% - var(--_floating-arrow-size)*.5)}.bottom #tooltip:after{inset-block-end:calc(100% - var(--_floating-arrow-size)*.5)}.left.center #tooltip:after{inset-block-start:calc(50% - var(--_floating-arrow-size)*.5)}.top.center #tooltip:after{inset-inline-end:calc(50% - var(--_floating-arrow-size)*.5)}.right.center #tooltip:after{inset-block-start:calc(50% - var(--_floating-arrow-size)*.5)}.bottom.center #tooltip:after{inset-inline-end:calc(50% - var(--_floating-arrow-size)*.5)}.left.start #tooltip:after{inset-block-start:var(--_floating-arrow-size)}.top.start #tooltip:after{inset-inline-start:var(--_floating-arrow-size)}.right.start #tooltip:after{inset-block-start:var(--_floating-arrow-size)}.bottom.start #tooltip:after{inset-inline-start:var(--_floating-arrow-size)}.left.end #tooltip:after{inset-block-end:var(--_floating-arrow-size)}.top.end #tooltip:after{inset-inline-end:var(--_floating-arrow-size)}.right.end #tooltip:after{inset-block-end:var(--_floating-arrow-size)}.bottom.end #tooltip:after{inset-inline-end:var(--_floating-arrow-size)}:host([position=left]),:host([position=right]){--_text-alignment:"start"}</style><!--lit-part eUcF9UlFv54=-->
+      <!--lit-node 0--><div id="container"
+           style=""
+           class=" center ">
+        <div id="invoker">
+          <slot id="invoker-slot"></slot>
+        </div>
+        <div id="tooltip" role="status">
+          <slot id="content" name="content"><!--lit-part--><!--/lit-part--></slot>
+        </div>
+      </div>
+    <!--/lit-part--></template>
       <rh-timestamp date="Tue Aug 09 2022 14:57:00 GMT-0400 (Eastern Daylight Time)" relative=""></rh-timestamp>
       <rh-timestamp slot="content" date="Tue Aug 09 2022 14:57:00 GMT-0400 (Eastern Daylight Time)"></rh-timestamp>
     </rh-tooltip>
   </p>
   <p>
-    <rh-tooltip>
+    <rh-tooltip><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline}#container{display:inline-flex;max-width:100%;position:relative;--_floating-arrow-size:var(--rh-tooltip-arrow-size,var(--rh-tooltip__arrow--Width,11px))}#tooltip,#tooltip:after{position:absolute}#tooltip{background-color:light-dark(var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-darkest,#151515))),var(--rh-tooltip-content-background-color,var(--rh-color-surface-lightest,#fff)));border-radius:var(--rh-border-radius-default,3px);box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 #15151533);color:light-dark(var(--rh-tooltip-content-color,var(--rh-tooltip__content--Color,var(--rh-color-text-primary-on-dark,#fff))),var(--rh-tooltip-content-color,var(--rh-color-text-primary-on-light,#151515)));display:none;font-size:var(--rh-tooltip-content-font-size,var(--rh-tooltip__content--FontSize,var(--rh-font-size-body-text-sm,.875rem)));inset-block-start:0;inset-inline-start:0;line-height:var(--rh-line-height-body-text,1.5);max-width:var(--rh-tooltip-max-width,var(--rh-tooltip--MaxWidth,18.75rem));opacity:0;padding:var(--rh-tooltip-content-padding-block-start,var(--rh-tooltip__content--PaddingTop,var(--rh-space-lg,16px))) var(--rh-tooltip-content-padding-inline-end,var(--rh-tooltip__content--PaddingRight,var(--rh-space-lg,16px))) var(--rh-tooltip-content-padding-block-end,var(--rh-tooltip__content--PaddingBottom,var(--rh-space-lg,16px))) var(--rh-tooltip-content-padding-inline-start,var(--rh-tooltip__content--PaddingLeft,var(--rh-space-lg,16px)));pointer-events:none;text-align:var(--_text-alignment,center);transition:opacity .3s cubic-bezier(.54,1.5,.38,1.11) 0s;translate:var(--_floating-content-translate);width:max-content;will-change:opacity;word-break:break-word;z-index:10000}.initialized #tooltip{display:block}#tooltip:after{background-color:light-dark(var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-darkest,#151515))),var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-lightest,#fff))));content:"";display:block;height:var(--_floating-arrow-size);rotate:45deg;width:var(--_floating-arrow-size);will-change:left top right bottom}.open #tooltip{opacity:1}.left #tooltip:after{inset-inline-start:calc(var(--_floating-arrow-size)*-.5)}.top #tooltip:after{inset-block-start:calc(100% - var(--_floating-arrow-size)*.5)}.right #tooltip:after{inset-inline-end:calc(100% - var(--_floating-arrow-size)*.5)}.bottom #tooltip:after{inset-block-end:calc(100% - var(--_floating-arrow-size)*.5)}.left.center #tooltip:after{inset-block-start:calc(50% - var(--_floating-arrow-size)*.5)}.top.center #tooltip:after{inset-inline-end:calc(50% - var(--_floating-arrow-size)*.5)}.right.center #tooltip:after{inset-block-start:calc(50% - var(--_floating-arrow-size)*.5)}.bottom.center #tooltip:after{inset-inline-end:calc(50% - var(--_floating-arrow-size)*.5)}.left.start #tooltip:after{inset-block-start:var(--_floating-arrow-size)}.top.start #tooltip:after{inset-inline-start:var(--_floating-arrow-size)}.right.start #tooltip:after{inset-block-start:var(--_floating-arrow-size)}.bottom.start #tooltip:after{inset-inline-start:var(--_floating-arrow-size)}.left.end #tooltip:after{inset-block-end:var(--_floating-arrow-size)}.top.end #tooltip:after{inset-inline-end:var(--_floating-arrow-size)}.right.end #tooltip:after{inset-block-end:var(--_floating-arrow-size)}.bottom.end #tooltip:after{inset-inline-end:var(--_floating-arrow-size)}:host([position=left]),:host([position=right]){--_text-alignment:"start"}</style><!--lit-part eUcF9UlFv54=-->
+      <!--lit-node 0--><div id="container"
+           style=""
+           class=" center ">
+        <div id="invoker">
+          <slot id="invoker-slot"></slot>
+        </div>
+        <div id="tooltip" role="status">
+          <slot id="content" name="content"><!--lit-part--><!--/lit-part--></slot>
+        </div>
+      </div>
+    <!--/lit-part--></template>
       <rh-timestamp date="Aug 09 2024 14:57:00 GMT-0400 (Eastern Daylight Time)" relative=""></rh-timestamp>
       <rh-timestamp slot="content" date="Aug 09 2024 14:57:00 GMT-0400 (Eastern Daylight Time)"></rh-timestamp>
     </rh-tooltip>
@@ -142,5 +206,7 @@
   import '@rhds/elements/rh-tooltip/rh-tooltip.js';
   import '@rhds/elements/rh-timestamp/rh-timestamp.js';
 </script>
-</main></body>
-</html>
+</main>
+
+
+</body></html>

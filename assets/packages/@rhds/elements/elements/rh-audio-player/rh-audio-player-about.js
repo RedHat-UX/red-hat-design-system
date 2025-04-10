@@ -1,6 +1,6 @@
 var _RhAudioPlayerAbout_headings, _RhAudioPlayerAbout_label;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
@@ -27,7 +27,7 @@ let RhAudioPlayerAbout = class RhAudioPlayerAbout extends LitElement {
     }
     render() {
         const { label, mediaseries, mediatitle } = this;
-        const hasContent = (this.content?.length ?? 0) >= 1;
+        const hasContent = isServer || ((this.content?.length ?? 0) >= 1);
         const heading = __classPrivateFieldGet(this, _RhAudioPlayerAbout_headings, "f").wrap(mediatitle ?? '');
         return html `
       <rh-audio-player-scrolling-text-overflow id="title" part="heading">

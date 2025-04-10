@@ -1,12 +1,11 @@
 var _RhNavigationSecondary_instances, _a, _RhNavigationSecondary_logger, _RhNavigationSecondary_logoCopy, _RhNavigationSecondary_compact, _RhNavigationSecondary_internals, _RhNavigationSecondary_computedPalette_get, _RhNavigationSecondary_screenSize, _RhNavigationSecondary_onExpandRequest, _RhNavigationSecondary_onFocusout, _RhNavigationSecondary_onOverlayClick, _RhNavigationSecondary_onKeydown, _RhNavigationSecondary_onKeyup, _RhNavigationSecondary_onTabKeyup, _RhNavigationSecondary_onTabKeydown, _RhNavigationSecondary_getDropdownIndex, _RhNavigationSecondary_dropdownByIndex, _RhNavigationSecondary_expand, _RhNavigationSecondary_allDropdowns, _RhNavigationSecondary_closeDropdown, _RhNavigationSecondary_openDropdown, _RhNavigationSecondary_onOverlayChange, _RhNavigationSecondary_upgradeAccessibility, _RhNavigationSecondary_toggleMobileMenu;
 var RhNavigationSecondary_1;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { state } from 'lit/decorators/state.js';
-import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 import { ComposedEvent } from '@patternfly/pfe-core';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
@@ -104,12 +103,19 @@ let RhNavigationSecondary = RhNavigationSecondary_1 = _a = class RhNavigationSec
     async connectedCallback() {
         super.connectedCallback();
         RhNavigationSecondary_1.instances.add(this);
-        __classPrivateFieldSet(this, _RhNavigationSecondary_compact, !__classPrivateFieldGet(this, _RhNavigationSecondary_screenSize, "f").matches.has('md'), "f");
         this.addEventListener('expand-request', __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_onExpandRequest));
         this.addEventListener('overlay-change', __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_onOverlayChange));
         this.addEventListener('focusout', __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_onFocusout));
         this.addEventListener('keydown', __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_onKeydown));
-        __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_upgradeAccessibility).call(this);
+        if (!isServer) {
+            __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_upgradeAccessibility).call(this);
+        }
+    }
+    async firstUpdated() {
+        if (!isServer) {
+            await this.updateComplete;
+            __classPrivateFieldSet(this, _RhNavigationSecondary_compact, !__classPrivateFieldGet(this, _RhNavigationSecondary_screenSize, "f").matches.has('md'), "f");
+        }
     }
     disconnectedCallback() {
         super.disconnectedCallback();
@@ -360,19 +366,18 @@ _RhNavigationSecondary_toggleMobileMenu = function _RhNavigationSecondary_toggle
 RhNavigationSecondary.styles = [styles];
 RhNavigationSecondary.instances = new Set();
 (() => {
-    globalThis.addEventListener('keyup', (event) => {
-        const { instances } = RhNavigationSecondary_1;
-        for (const instance of instances) {
-            __classPrivateFieldGet(instance, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_onKeyup).call(instance, event);
-        }
-    }, { capture: false });
+    if (!isServer) {
+        document.addEventListener('keyup', (event) => {
+            const { instances } = RhNavigationSecondary_1;
+            for (const instance of instances) {
+                __classPrivateFieldGet(instance, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_onKeyup).call(instance, event);
+            }
+        }, { capture: false });
+    }
 })();
 __decorate([
     property({ reflect: true, attribute: 'color-palette' })
 ], RhNavigationSecondary.prototype, "colorPalette", void 0);
-__decorate([
-    queryAssignedElements({ slot: 'nav' })
-], RhNavigationSecondary.prototype, "_nav", void 0);
 __decorate([
     property({ attribute: 'accessible-label' })
 ], RhNavigationSecondary.prototype, "accessibleLabel", void 0);

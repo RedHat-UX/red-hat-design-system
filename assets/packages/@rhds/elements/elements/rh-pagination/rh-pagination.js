@@ -1,6 +1,6 @@
 var _RhPagination_instances, _RhPagination_mo, _RhPagination_logger, _RhPagination_ol, _RhPagination_links, _RhPagination_firstLink, _RhPagination_lastLink, _RhPagination_nextLink, _RhPagination_prevLink, _RhPagination_currentLink, _RhPagination_currentIndex, _RhPagination_currentPage_get, _RhPagination_numericContent, _RhPagination_update, _RhPagination_getOverflow, _RhPagination_getCurrentLink, _RhPagination_updateLightDOMRefs, _RhPagination_checkValidity, _RhPagination_go, _RhPagination_onKeyup, _RhPagination_onChange;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { query } from 'lit/decorators/query.js';
@@ -62,7 +62,7 @@ let RhPagination = class RhPagination extends LitElement {
         this.variant = null;
         _RhPagination_mo.set(this, new MutationObserver(() => __classPrivateFieldGet(this, _RhPagination_instances, "m", _RhPagination_update).call(this)));
         _RhPagination_logger.set(this, new Logger(this));
-        _RhPagination_ol.set(this, this.querySelector('ol'));
+        _RhPagination_ol.set(this, isServer ? null : this.querySelector('ol'));
         _RhPagination_links.set(this, __classPrivateFieldGet(this, _RhPagination_ol, "f")?.querySelectorAll('li a'));
         _RhPagination_firstLink.set(this, null);
         _RhPagination_lastLink.set(this, null);
@@ -74,7 +74,7 @@ let RhPagination = class RhPagination extends LitElement {
     connectedCallback() {
         super.connectedCallback();
         // Validate DOM
-        if (!__classPrivateFieldGet(this, _RhPagination_ol, "f") || [...this.children].filter(x => !x.slot).length > 1) {
+        if (!isServer && (!__classPrivateFieldGet(this, _RhPagination_ol, "f") || [...this.children].filter(x => !x.slot).length > 1)) {
             __classPrivateFieldGet(this, _RhPagination_logger, "f").warn('must have a single <ol> element as it\'s only child');
         }
         __classPrivateFieldGet(this, _RhPagination_mo, "f").observe(this, { childList: true, subtree: true });
@@ -195,6 +195,9 @@ _RhPagination_getOverflow = function _RhPagination_getOverflow() {
     }
 };
 _RhPagination_getCurrentLink = function _RhPagination_getCurrentLink() {
+    if (isServer) {
+        return null;
+    }
     const ariaCurrent = this.querySelector('li a[aria-current="page"]');
     if (ariaCurrent) {
         return ariaCurrent;

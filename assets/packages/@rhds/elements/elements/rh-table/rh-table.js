@@ -64,19 +64,19 @@ _RhTable_logger = new WeakMap();
 _RhTable_mo = new WeakMap();
 _RhTable_instances = new WeakSet();
 _RhTable_table_get = function _RhTable_table_get() {
-    return this.querySelector('table');
+    return this.querySelector?.('table');
 };
 _RhTable_cols_get = function _RhTable_cols_get() {
-    return this.querySelectorAll('col');
+    return this.querySelectorAll?.('col');
 };
 _RhTable_rows_get = function _RhTable_rows_get() {
-    return this.querySelectorAll('tbody > tr');
+    return this.querySelectorAll?.('tbody > tr');
 };
 _RhTable_colHeaders_get = function _RhTable_colHeaders_get() {
-    return this.querySelectorAll('thead > tr > th');
+    return this.querySelectorAll?.('thead > tr > th');
 };
 _RhTable_summary_get = function _RhTable_summary_get() {
-    return this.querySelector('[slot="summary"]');
+    return this.querySelector?.('[slot="summary"]');
 };
 _RhTable_onPointerleave = function _RhTable_onPointerleave() {
     if (!__classPrivateFieldGet(this, _RhTable_instances, "a", _RhTable_cols_get)) {
@@ -119,7 +119,7 @@ _RhTable_init = function _RhTable_init() {
      *
      * So we bail for now...
      */
-    if (this.querySelector('[colspan], [rowspan]')) {
+    if (this.querySelector?.('[colspan], [rowspan]')) {
         return;
     }
     /* If responsive attribute set, auto-assign `data-label` attributes based on column headers */

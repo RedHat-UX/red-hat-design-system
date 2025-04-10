@@ -267,7 +267,7 @@ _RhAccordion_onChange = function _RhAccordion_onChange(event) {
     }
 };
 _RhAccordion_allHeaders = function _RhAccordion_allHeaders(accordion = this) {
-    return Array.from(accordion.children).filter((x) => x instanceof RhAccordionHeader);
+    return Array.from(accordion.children ?? []).filter((x) => x instanceof RhAccordionHeader);
 };
 _RhAccordion_allPanels = function _RhAccordion_allPanels(accordion = this) {
     return Array.from(accordion.children).filter((x => RhAccordion_1.isPanel(x)));

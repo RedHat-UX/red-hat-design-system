@@ -1,5 +1,6 @@
-var _I18nController_instances, _I18nController_defaultLanguage, _I18nController_logger, _I18nController_mo, _I18nController_microcopy, _I18nController_getLanguage, _I18nController_updateLanguage, _I18nController_useDefaultLanguage, _I18nController_updateMicrocopy, _I18nController_ensure;
+var _I18nController_instances, _I18nController_defaultLanguage, _I18nController_logger, _I18nController_mo, _I18nController_microcopy, _I18nController_getLanguage, _I18nController_useDefaultLanguage, _I18nController_updateMicrocopy, _I18nController_ensure;
 import { __classPrivateFieldGet, __classPrivateFieldSet } from "tslib";
+import { isServer } from 'lit';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 export class I18nController {
     constructor(host, defaults) {
@@ -14,7 +15,6 @@ export class I18nController {
         for (const [language, copy] of Object.entries(defaults)) {
             __classPrivateFieldGet(this, _I18nController_microcopy, "f").set(language, new Map(Object.entries(copy)));
         }
-        this.update();
     }
     hostConnected() {
         __classPrivateFieldGet(this, _I18nController_mo, "f").observe(this.host, { childList: true, attributes: true, attributeFilter: ['lang'] });
@@ -24,7 +24,7 @@ export class I18nController {
         __classPrivateFieldGet(this, _I18nController_mo, "f").disconnect();
     }
     update() {
-        __classPrivateFieldGet(this, _I18nController_instances, "m", _I18nController_updateLanguage).call(this);
+        this.language = __classPrivateFieldGet(this, _I18nController_instances, "m", _I18nController_getLanguage).call(this);
         __classPrivateFieldGet(this, _I18nController_instances, "m", _I18nController_updateMicrocopy).call(this);
         this.host.requestUpdate();
     }
@@ -77,15 +77,17 @@ export class I18nController {
     }
 }
 _I18nController_defaultLanguage = new WeakMap(), _I18nController_logger = new WeakMap(), _I18nController_mo = new WeakMap(), _I18nController_microcopy = new WeakMap(), _I18nController_instances = new WeakSet(), _I18nController_getLanguage = function _I18nController_getLanguage() {
-    let lang = this.host.getAttribute('lang') || this.host.closest('[lang]')?.getAttribute('lang');
+    if (isServer) {
+        return __classPrivateFieldGet(this, _I18nController_defaultLanguage, "f");
+    }
+    let lang = this.host.getAttribute('lang')
+        || this.host.closest('[lang]')?.getAttribute('lang');
     let root = this.host.getRootNode();
     while (!lang && root instanceof ShadowRoot) {
         lang = root.host.closest('[lang]')?.getAttribute('lang');
         root = root.host.getRootNode();
     }
     return lang ?? this.language;
-}, _I18nController_updateLanguage = function _I18nController_updateLanguage() {
-    this.language = __classPrivateFieldGet(this, _I18nController_instances, "m", _I18nController_getLanguage).call(this);
 }, _I18nController_useDefaultLanguage = function _I18nController_useDefaultLanguage() {
     __classPrivateFieldGet(this, _I18nController_logger, "f").log(`Using ${__classPrivateFieldGet(this, _I18nController_defaultLanguage, "f")} instead.`);
     if (this.language !== __classPrivateFieldGet(this, _I18nController_defaultLanguage, "f")) {
@@ -94,9 +96,8 @@ _I18nController_defaultLanguage = new WeakMap(), _I18nController_logger = new We
         this.host.requestUpdate();
     }
 }, _I18nController_updateMicrocopy = function _I18nController_updateMicrocopy() {
-    __classPrivateFieldGet(this, _I18nController_instances, "m", _I18nController_updateLanguage).call(this);
-    const lightLangs = this.host.querySelectorAll('script[type="application/json"][data-language]');
-    for (const script of lightLangs) {
+    this.language = __classPrivateFieldGet(this, _I18nController_instances, "m", _I18nController_getLanguage).call(this);
+    for (const script of this.host.querySelectorAll?.('script[type="application/json"][data-language]') ?? []) {
         const { language } = script.dataset;
         if (language) {
             let content = {};

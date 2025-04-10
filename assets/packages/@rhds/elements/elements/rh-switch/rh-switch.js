@@ -55,7 +55,7 @@ let RhSwitch = class RhSwitch extends LitElement {
         const noMessageOn = __classPrivateFieldGet(this, _RhSwitch_slots, "f").isEmpty('message-on');
         const noMessageOff = __classPrivateFieldGet(this, _RhSwitch_slots, "f").isEmpty('message-off');
         if (noMessageOn || noMessageOff) {
-            if ('ariaDescription' in ElementInternals) {
+            if ('ariaDescription' in (globalThis.ElementInternals ?? {})) {
                 __classPrivateFieldGet(this, _RhSwitch_internals, "f").ariaDescription = __classPrivateFieldGet(this, _RhSwitch_instances, "a", _RhSwitch_message_get) ?? '';
             }
             else {
@@ -68,7 +68,7 @@ let RhSwitch = class RhSwitch extends LitElement {
             for (const el of stateEls) {
                 el.id || (el.id = getRandomId('rh-switch-message'));
             }
-            if ('ariaDescribedByElements' in ElementInternals) {
+            if ('ariaDescribedByElements' in (globalThis.ElementInternals ?? {})) {
                 // see https://w3c.github.io/aria/#dom-ariamixin
                 __classPrivateFieldGet(this, _RhSwitch_internals, "f").ariaDescribedByElements = stateEls;
             }

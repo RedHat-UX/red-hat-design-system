@@ -1,6 +1,6 @@
 var _RhNavigationSecondaryMenuSection_instances, _RhNavigationSecondaryMenuSection_logger, _RhNavigationSecondaryMenuSection_updateAccessibility;
 import { __classPrivateFieldGet, __decorate } from "tslib";
-import { html, LitElement } from 'lit';
+import { html, isServer, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
@@ -23,7 +23,9 @@ let RhNavigationSecondaryMenuSection = class RhNavigationSecondaryMenuSection ex
     }
     connectedCallback() {
         super.connectedCallback();
-        __classPrivateFieldGet(this, _RhNavigationSecondaryMenuSection_instances, "m", _RhNavigationSecondaryMenuSection_updateAccessibility).call(this);
+        if (!isServer) {
+            __classPrivateFieldGet(this, _RhNavigationSecondaryMenuSection_instances, "m", _RhNavigationSecondaryMenuSection_updateAccessibility).call(this);
+        }
     }
     render() {
         return html `

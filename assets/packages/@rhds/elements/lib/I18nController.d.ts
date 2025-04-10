@@ -1,4 +1,4 @@
-import type { ReactiveController, ReactiveElement } from 'lit';
+import { type ReactiveController, type ReactiveElement } from 'lit';
 export type LanguageCode = string;
 export type Microcopy = Record<LanguageCode, Record<string, string>>;
 export declare class I18nController implements ReactiveController {

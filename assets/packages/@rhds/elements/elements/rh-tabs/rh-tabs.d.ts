@@ -47,11 +47,12 @@ export declare class RhTabs extends LitElement {
     box?: 'box' | 'inset';
     /** Sets the alignment of the tabs vertical */
     vertical: boolean;
+    private firstTab;
+    private lastTab;
     private tabList;
     protected get canShowScrollButtons(): boolean;
     get tabs(): RhTab[];
     get panels(): (RhTabPanel | undefined)[];
-    private ctx;
     connectedCallback(): void;
     willUpdate(): void;
     firstUpdated(): Promise<void>;

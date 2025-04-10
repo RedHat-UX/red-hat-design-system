@@ -8,6 +8,7 @@ import { parseFragment, serialize } from 'parse5';
 import { unsafeHTML } from 'lit-html/directives/unsafe-html.js';
 import { RHDSSSRController } from '@rhds/elements/lib/ssr-controller.js';
 import * as Tools from '@parse5/tools';
+import { injectSSRHintAttributes } from '#11ty-plugins/ssr-hints.js';
 let HighlightPairedShortcode;
 function dedent(str) {
     const stripped = str.replace(/^\n/, '');
@@ -40,8 +41,10 @@ export class UxdotPatternSSRControllerServer extends RHDSSSRController {
     }
     async ssrSetup(renderInfo) {
         HighlightPairedShortcode || (HighlightPairedShortcode = await __classPrivateFieldGet(this, _UxdotPatternSSRControllerServer_instances, "m", _UxdotPatternSSRControllerServer_loadHighlighter).call(this));
-        const allContent = await __classPrivateFieldGet(this, _UxdotPatternSSRControllerServer_instances, "m", _UxdotPatternSSRControllerServer_getPatternContent).call(this, renderInfo);
-        const partial = parseFragment(allContent);
+        const content = await __classPrivateFieldGet(this, _UxdotPatternSSRControllerServer_instances, "m", _UxdotPatternSSRControllerServer_getPatternContent).call(this, renderInfo);
+        const partial = parseFragment(content);
+        injectSSRHintAttributes(partial, renderInfo);
+        const allContent = serialize(partial).trim();
         const baseUrl = pathToFileURL(renderInfo.page.inputPath);
         // NB: the css and js content functions *mutate* the partial,
         //     so it's important that the HTML content is serialized last, and that

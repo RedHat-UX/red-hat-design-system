@@ -1,6 +1,6 @@
 var _RhAudioPlayerScrollingTextOverflow_instances, _RhAudioPlayerScrollingTextOverflow_scrolling, _RhAudioPlayerScrollingTextOverflow_style, _RhAudioPlayerScrollingTextOverflow_isScrollable_get;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { themable } from '@rhds/elements/lib/themable.js';
@@ -21,7 +21,9 @@ let RhAudioPlayerScrollingTextOverflow = class RhAudioPlayerScrollingTextOverflo
     }
     connectedCallback() {
         super.connectedCallback();
-        __classPrivateFieldSet(this, _RhAudioPlayerScrollingTextOverflow_style, getComputedStyle(this), "f");
+        if (!isServer) {
+            __classPrivateFieldSet(this, _RhAudioPlayerScrollingTextOverflow_style, getComputedStyle(this), "f");
+        }
     }
     firstUpdated() {
         const letters = this.textContent?.length || 0;
@@ -59,7 +61,7 @@ _RhAudioPlayerScrollingTextOverflow_scrolling = new WeakMap();
 _RhAudioPlayerScrollingTextOverflow_style = new WeakMap();
 _RhAudioPlayerScrollingTextOverflow_instances = new WeakSet();
 _RhAudioPlayerScrollingTextOverflow_isScrollable_get = function _RhAudioPlayerScrollingTextOverflow_isScrollable_get() {
-    const outer = this.shadowRoot?.getElementById('outer');
+    const outer = this.shadowRoot?.getElementById?.('outer');
     return (outer?.scrollWidth ?? 0) > (outer?.clientWidth ?? 0);
 };
 RhAudioPlayerScrollingTextOverflow.styles = [styles];

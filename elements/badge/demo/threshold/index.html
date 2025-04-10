@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="/assets/logo-red-hat.svg">
@@ -14,8 +12,8 @@
   "imports": {
     "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
-    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
     "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
     "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
@@ -32,8 +30,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.0/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
@@ -90,11 +88,15 @@
     <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
   </head>
   <body>
-    <main><rh-badge number="900" threshold="100">900</rh-badge> (Threshold = 100)
+    <main><rh-badge   number="900" threshold="100" state="neutral"><template shadowroot="open" shadowrootmode="open"><style>span{align-items:center;aspect-ratio:var(--_aspect-ratio);border-radius:var(--rh-border-radius-pill,64px);color:light-dark(var(--rh-color-text-primary-on-dark,#fff),var(--rh-color-text-primary-on-light,#151515));display:inline-flex;font-size:var(--rh-font-size-body-text-xs,.75rem);font-weight:700;justify-content:center;line-height:var(--rh-line-height-body-text,1.5);min-width:var(--_badge-size,var(--rh-length-lg,16px));padding-inline:var(--_badge-padding,var(--rh-space-md,8px));position:relative;text-align:center;white-space:nowrap;&.neutral{background-color:var(--rh-color-status-neutral)}&.info{background-color:var(--rh-color-status-info)}&.success{background-color:var(--rh-color-status-success)}&.caution{background-color:var(--rh-color-status-caution)}&.caution,&.warning{color:var(--rh-color-text-primary-on-light,#151515)}&.warning{background-color:var(--rh-color-status-warning)}&.danger{background-color:var(--rh-color-status-danger)}}</style><!--lit-part TT3aqLGyJt8=-->
+      <!--lit-node 0--><span class=" neutral "><!--lit-part-->100+<!--/lit-part--></span>
+    <!--/lit-part--></template>900</rh-badge> (Threshold = 100)
 <p>Should add '+' sign if the value exceeds the threshold</p>
 
 <script type="module">
   import '@rhds/elements/rh-badge/rh-badge.js';
 </script>
-</main></body>
-</html>
+</main>
+
+
+</body></html>

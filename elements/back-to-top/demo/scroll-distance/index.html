@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="/assets/logo-red-hat.svg">
@@ -14,8 +12,8 @@
   "imports": {
     "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
-    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
     "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
     "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
@@ -32,8 +30,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.0/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
@@ -94,7 +92,17 @@
   <a id="top" href="#bottom">Go to bottom</a>
   <p>Scroll down (50px) or press tab to see the back to top button</p>
   <a id="bottom" href="#top">Go to top</a>
-  <rh-back-to-top scroll-distance="50" href="#top">Back to top</rh-back-to-top>
+  <rh-back-to-top   scroll-distance="50" href="#top"><template shadowroot="open" shadowrootmode="open"><style>:host{inset-block-end:var(--rh-space-xl,24px);inset-inline-end:var(--rh-space-xl,24px);position:fixed;z-index:1000}[part=trigger]{align-items:center;background-color:var(--rh-back-to-top-background-color,var(--rh-color-accent-base-on-light,#06c));border:var(--rh-border-width-md,2px) solid #0000;border-radius:var(--rh-border-radius-pill,64px);color:var(--rh-color-text-primary-on-dark,#fff);display:inline-flex;font-size:var(--rh-font-size-body-text-xs,.75rem);gap:var(--rh-space-xs,4px);justify-content:center;line-height:var(--rh-line-height-body-text,1.5);outline:var(--rh-border-width-md,2px) solid #0000;padding-block:var(--rh-space-xs,4px);padding-inline:var(--rh-space-md,8px);pointer-events:all;text-decoration:none}[part=trigger]:is(:hover,:focus){background-color:var(--rh-color-interactive-primary-hover-on-light,#036);border:var(--rh-border-width-md,2px) solid var(--rh-color-border-strong-on-dark,#fff);outline:var(--rh-border-width-md,2px) solid var(--rh-color-interactive-primary-hover-on-light,#036)}[part=trigger][hidden]{display:none}rh-icon{--rh-icon-size:var(--rh-font-size-body-text-xs,0.75rem);vertical-align:-.125rem}span{align-items:center;display:inline-flex;gap:var(--rh-space-xs,4px);justify-content:center}@media (min-width:768px){:host{inset-block-end:var(--rh-space-3xl,48px);inset-inline-end:var(--rh-space-3xl,48px)}}</style><!--lit-part ZFrNlNg/JPs=-->
+      <!--lit-node 0--><a href="#top" hidden part="trigger">
+        <slot>Back to top</slot>
+        <!--lit-node 2--><rh-icon   set="ui" icon="caret-up" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part YhnjOOcYIfc=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30 23a.997.997 0 0 1-.707-.293L16 9.414 2.707 22.707a1 1 0 1 1-1.414-1.414L14.939 7.647a1.501 1.501 0 0 1 2.122 0l13.646 13.646A1 1 0 0 1 30 23Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </a>
+    <!--/lit-part--></template>Back to top</rh-back-to-top>
 </div>
 <script type="module">
   import '@rhds/elements/rh-back-to-top/rh-back-to-top.js';
@@ -139,5 +147,7 @@
     b2t.scrollableSelector = 'main';
   }
 </script>
-</main></body>
-</html>
+</main>
+
+
+</body></html>

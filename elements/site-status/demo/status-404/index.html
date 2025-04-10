@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="/assets/logo-red-hat.svg">
@@ -14,8 +12,8 @@
   "imports": {
     "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
-    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
     "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
     "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
@@ -32,8 +30,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.0/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
@@ -90,7 +88,22 @@
     <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
   </head>
   <body>
-    <main><rh-site-status></rh-site-status>
+    <main><rh-site-status><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block}#container{background:light-dark(var(--rh-color-surface-light,#e0e0e0),var(--rh-color-surface-dark,#383838));border-radius:var(--rh-border-radius-default,3px);min-width:150px;padding:var(--rh-space-lg,16px)}#container,a{display:inline-flex}a{align-items:center;color:var(--rh-color-text-primary);font-size:var(--rh-font-size-body-text-sm,.875rem);gap:var(--rh-space-md,8px);text-decoration:none;text-transform:lowercase}span:first-letter{text-transform:uppercase}a:focus{border-radius:var(--rh-border-radius-default,3px);outline:var(--rh-border-width-md,2px) solid var(--rh-color-border-interactive)}a:is(:hover,:focus){text-decoration:underline}rh-icon{color:var(--rh-color-white,#fff);height:var(--rh-size-icon-01,16px);width:var(--rh-size-icon-01,16px);&.success{color:var(--rh-color-status-success)}&.warning{color:var(--rh-color-status-warning)}&.danger{color:var(--rh-color-status-danger)}}</style><!--lit-part Ym8fcu1O9Y0=-->
+      <!--lit-node 0--><div id="container" class=" loading ">
+        <!--lit-node 1--><a href="https://status.redhat.com/"
+           aria-busy="true"
+           aria-live="polite"><!--lit-part 5lXCw0Uu2MQ=-->
+          <!--lit-node 0--><rh-spinner  size="sm" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-block;min-height:0;text-align:center;width:max-content}::slotted(*){margin-top:var(--rh-space-lg,16px)}::slotted(p){font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif);font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-body-text,1.5)}svg{aspect-ratio:1/1;width:var(--rh-length-4xl,64px);stroke-width:var(--rh-length-sm,6px);display:block;margin-left:auto;margin-right:auto;overflow:hidden}circle{height:100%;width:100%;stroke-linecap:round}circle.dash{animation:rh-spinner-animation-dash 1.4s ease-out infinite;transform-origin:50% 50%;stroke:var(--rh-color-accent-base);stroke-dasharray:283;stroke-dashoffset:280;transform:rotate(-90deg)}circle.track{stroke:light-dark(var(--rh-color-gray-10,#f2f2f2),var(--rh-color-gray-70,#383838));animation-duration:0}:host([size=lg]) svg{width:var(--rh-size-icon-06,64px);stroke-width:var(--rh-length-sm,6px)}:host([size=lg]) ::slotted(p){font-size:var(--rh-font-size-body-text-lg,1.125rem)}:host([size=md]) svg{width:var(--rh-size-icon-04,40px);stroke-width:var(--rh-length-xs,4px)}:host([size=md]) ::slotted(p){font-size:var(--rh-font-size-body-text-md,1rem)}:host([size=sm]) svg{width:var(--rh-size-icon-01,16px);stroke-width:var(--rh-length-2xs,3px)}:host([size=sm]) circle.dash{animation-name:rh-spinner-small-animation-dash;stroke-dasharray:71;stroke-dashoffset:71}:host([size=sm]) ::slotted(p){font-size:var(--rh-font-size-body-text-sm,.875rem)}@keyframes rh-spinner-animation-dash{50%{stroke-dashoffset:0}75%{transform:rotate(280deg)}to{stroke-dashoffset:-283}}@keyframes rh-spinner-small-animation-dash{50%{stroke-dashoffset:0}75%{transform:rotate(280deg)}to{stroke-dashoffset:-71}}</style><!--lit-part ho549pntUUo=-->
+      <svg role="status" viewBox="0 0 100 100" aria-live="polite">
+        <circle class="track" cx="50" cy="50" r="40" fill="none" vector-effect="non-scaling-stroke" />
+        <circle class="dash" cx="50" cy="50" r="40" fill="none" vector-effect="non-scaling-stroke" />
+      </svg>
+      <slot></slot>
+    <!--/lit-part--></template></rh-spinner>
+          <span><slot name="loading-text">Loading</slot></span><!--/lit-part-->
+        </a>
+      </div>
+    <!--/lit-part--></template></rh-site-status>
 
 <script>
   window.fetch = new Proxy(window.fetch, {
@@ -111,5 +124,7 @@
 <script type="module">
   import '@rhds/elements/rh-site-status/rh-site-status.js';
 </script>
-</main></body>
-</html>
+</main>
+
+
+</body></html>

@@ -1,12 +1,19 @@
 import type { RhTab } from './rh-tab.js';
-export interface RhTabsContext {
-    activeTab?: RhTab;
-    firstTab?: RhTab;
-    lastTab?: RhTab;
-    box?: 'box' | 'inset';
-    manual: boolean;
-    vertical: boolean;
-}
-export declare const context: {
-    __context__: RhTabsContext;
+export declare const rhTabsActiveTabContext: {
+    __context__: RhTab | undefined;
+};
+export declare const rhTabsFirstTabContext: {
+    __context__: RhTab | undefined;
+};
+export declare const rhTabsLastTabContext: {
+    __context__: RhTab | undefined;
+};
+export declare const rhTabsBoxContext: {
+    __context__: "box" | "inset" | undefined;
+};
+export declare const rhTabsVerticalContext: {
+    __context__: boolean;
+};
+export declare const rhTabsManualContext: {
+    __context__: boolean;
 };

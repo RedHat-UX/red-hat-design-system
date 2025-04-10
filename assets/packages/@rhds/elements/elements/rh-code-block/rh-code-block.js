@@ -1,7 +1,7 @@
 var _RhCodeBlock_instances, _RhCodeBlock_slots, _RhCodeBlock_prismOutput, _RhCodeBlock_ro, _RhCodeBlock_lineHeights, _RhCodeBlock_onSlotChange, _RhCodeBlock_applyPrismPrerenderedStyles, _RhCodeBlock_highlightWithPrism, _RhCodeBlock_wrapChanged, _RhCodeBlock_getSlottedCodeElements, _RhCodeBlock_computeLineNumbers, _RhCodeBlock_onActionsClick, _RhCodeBlock_onActionsKeyup, _RhCodeBlock_onCodeAction, _RhCodeBlock_onClickExpand, _RhCodeBlock_copy;
 var RhCodeBlock_1;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
-import { CSSResult, LitElement, html } from 'lit';
+import { CSSResult, LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { styleMap } from 'lit/directives/style-map.js';
@@ -155,7 +155,7 @@ _RhCodeBlock_onSlotChange = async function _RhCodeBlock_onSlotChange() {
     __classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_computeLineNumbers).call(this);
 };
 _RhCodeBlock_applyPrismPrerenderedStyles = async function _RhCodeBlock_applyPrismPrerenderedStyles() {
-    if (getComputedStyle(this).getPropertyValue('--_styles-applied') !== 'true') {
+    if (!isServer && getComputedStyle(this).getPropertyValue('--_styles-applied') !== 'true') {
         const root = this.getRootNode();
         if (root instanceof Document || root instanceof ShadowRoot) {
             const { preRenderedLightDomStyles: { styleSheet } } = await import('./prism.js');
@@ -164,21 +164,23 @@ _RhCodeBlock_applyPrismPrerenderedStyles = async function _RhCodeBlock_applyPris
     }
 };
 _RhCodeBlock_highlightWithPrism = async function _RhCodeBlock_highlightWithPrism() {
-    const { highlight, prismStyles } = await import('./prism.js');
-    const styleSheet = prismStyles instanceof CSSStyleSheet ? prismStyles
-        : prismStyles.styleSheet;
-    if (!this.shadowRoot.adoptedStyleSheets.includes(styleSheet)) {
-        this.shadowRoot.adoptedStyleSheets = [
-            ...this.shadowRoot.adoptedStyleSheets,
-            styleSheet,
-        ];
+    if (!isServer) {
+        const { highlight, prismStyles } = await import('./prism.js');
+        const styleSheet = prismStyles instanceof CSSStyleSheet ? prismStyles
+            : prismStyles.styleSheet;
+        if (!this.shadowRoot.adoptedStyleSheets.includes(styleSheet)) {
+            this.shadowRoot.adoptedStyleSheets = [
+                ...this.shadowRoot.adoptedStyleSheets,
+                styleSheet,
+            ];
+        }
+        const scripts = this.querySelectorAll('script[type]:not([type="javascript"])');
+        const preprocess = this.dedent ? dedent : (x) => x;
+        const textContent = preprocess(Array.from(scripts, x => x.textContent).join(''));
+        __classPrivateFieldSet(this, _RhCodeBlock_prismOutput, await highlight(textContent, this.language), "f");
+        this.requestUpdate('#prismOutput', {});
+        await this.updateComplete;
     }
-    const scripts = this.querySelectorAll('script[type]:not([type="javascript"])');
-    const preprocess = this.dedent ? dedent : (x) => x;
-    const textContent = preprocess(Array.from(scripts, x => x.textContent).join(''));
-    __classPrivateFieldSet(this, _RhCodeBlock_prismOutput, await highlight(textContent, this.language), "f");
-    this.requestUpdate('#prismOutput', {});
-    await this.updateComplete;
 };
 _RhCodeBlock_wrapChanged = async function _RhCodeBlock_wrapChanged() {
     await this.updateComplete;

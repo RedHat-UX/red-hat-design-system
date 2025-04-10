@@ -1,4 +1,4 @@
-import type { ReactiveControllerHost, ReactiveController } from 'lit';
+import { type ReactiveControllerHost, type ReactiveController } from 'lit';
 type BreakpointKey = '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 export declare class ScreenSizeController implements ReactiveController {
     /** reference to the host element using this controller */

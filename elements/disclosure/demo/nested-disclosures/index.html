@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="/assets/logo-red-hat.svg">
@@ -14,8 +12,8 @@
   "imports": {
     "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
-    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
     "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
     "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
@@ -32,8 +30,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.0/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
@@ -90,9 +88,45 @@
     <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
   </head>
   <body>
-    <main><rh-disclosure summary="This is the top level disclosure">
+    <main><rh-disclosure  summary="This is the top level disclosure"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{border:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle);display:block;font-family:var(--rh-font-family-body-text)}summary{background-color:var(--rh-color-surface);color:var(--rh-color-text-primary);cursor:pointer;font-size:var(--rh-font-size-body-text-md,1rem);font-weight:var(--rh-font-weight-body-text-medium,500);list-style:none;padding-block:var(--rh-space-lg,16px);padding-inline:var(--rh-space-xl,24px);&::-webkit-details-marker,&::marker{display:none}&:active,&:focus,&:hover{background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838))}&:active,&:focus{outline:var(--rh-border-width-md,2px) solid;outline-color:var(--rh-color-interactive-primary-default);outline-offset:-2px;position:relative;z-index:2}& ::slotted([slot=summary]){font-family:var(--rh-font-family-body-text);font-size:var(--rh-font-size-body-text-md,1rem)!important;font-weight:var(--rh-font-weight-body-text-medium,500)}}#caret{block-size:var(--rh-space-lg,16px);inline-size:var(--rh-space-lg,16px);inset-block-start:3px;margin-inline-end:var(--rh-space-md,8px);position:relative;transition:.2s;will-change:rotate}#details-content{background-color:var(--rh-color-surface);color:var(--rh-color-text-primary);font-size:var(--rh-font-size-body-text-md,1rem);line-height:var(--rh-line-height-body-text,1.5);padding-block:var(--rh-space-lg,16px) var(--rh-space-xl,24px);padding-inline:var(--rh-space-xl,24px)}::slotted(:is(p,h1,h2,h3,h4,h5,h6):first-of-type){margin-block-start:0}::slotted(:is(p,li,dd):last-of-type){margin-block-end:0!important}details[open]{box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 #15151533);position:relative;& #caret{transform:rotate(-180deg)}&:before{border-inline-start:3px solid var(--rh-color-brand-red);content:"";inset-block:-1px;inset-inline-start:-1px;position:absolute;z-index:1}}:host(:has(rh-jump-links)){details[open]:before{border:21px solid #ff0}}</style><!--lit-part dEDNzuUtgEI=-->
+      <!--lit-node 0--><details
+          
+          
+          >
+        <summary>
+          <!--lit-node 2--><rh-icon    id="caret" set="ui" icon="caret-down" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part vxcTD9NBlrI=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 24.792c-.384 0-.768-.146-1.06-.439L1.293 10.707a1 1 0 1 1 1.414-1.414L16 22.586 29.293 9.293a1 1 0 1 1 1.414 1.414L17.061 24.354a1.494 1.494 0 0 1-1.06.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+          <slot name="summary"><!--lit-part-->This is the top level disclosure<!--/lit-part--></slot>
+        </summary>
+        <div id="details-content">
+          <slot></slot>
+        </div>
+      </details>
+    <!--/lit-part--></template>
   <p>Try not to nest disclosures. If nesting, consider using an accordion instead. Lorem ipsum <a href="#">dolor</a>.</p>
-  <rh-disclosure summary="This is the second level disclosure">
+  <rh-disclosure  summary="This is the second level disclosure"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{border:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle);display:block;font-family:var(--rh-font-family-body-text)}summary{background-color:var(--rh-color-surface);color:var(--rh-color-text-primary);cursor:pointer;font-size:var(--rh-font-size-body-text-md,1rem);font-weight:var(--rh-font-weight-body-text-medium,500);list-style:none;padding-block:var(--rh-space-lg,16px);padding-inline:var(--rh-space-xl,24px);&::-webkit-details-marker,&::marker{display:none}&:active,&:focus,&:hover{background-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),var(--rh-color-surface-dark,#383838))}&:active,&:focus{outline:var(--rh-border-width-md,2px) solid;outline-color:var(--rh-color-interactive-primary-default);outline-offset:-2px;position:relative;z-index:2}& ::slotted([slot=summary]){font-family:var(--rh-font-family-body-text);font-size:var(--rh-font-size-body-text-md,1rem)!important;font-weight:var(--rh-font-weight-body-text-medium,500)}}#caret{block-size:var(--rh-space-lg,16px);inline-size:var(--rh-space-lg,16px);inset-block-start:3px;margin-inline-end:var(--rh-space-md,8px);position:relative;transition:.2s;will-change:rotate}#details-content{background-color:var(--rh-color-surface);color:var(--rh-color-text-primary);font-size:var(--rh-font-size-body-text-md,1rem);line-height:var(--rh-line-height-body-text,1.5);padding-block:var(--rh-space-lg,16px) var(--rh-space-xl,24px);padding-inline:var(--rh-space-xl,24px)}::slotted(:is(p,h1,h2,h3,h4,h5,h6):first-of-type){margin-block-start:0}::slotted(:is(p,li,dd):last-of-type){margin-block-end:0!important}details[open]{box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 #15151533);position:relative;& #caret{transform:rotate(-180deg)}&:before{border-inline-start:3px solid var(--rh-color-brand-red);content:"";inset-block:-1px;inset-inline-start:-1px;position:absolute;z-index:1}}:host(:has(rh-jump-links)){details[open]:before{border:21px solid #ff0}}</style><!--lit-part dEDNzuUtgEI=-->
+      <!--lit-node 0--><details
+          
+          
+          >
+        <summary>
+          <!--lit-node 2--><rh-icon    id="caret" set="ui" icon="caret-down" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part vxcTD9NBlrI=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 24.792c-.384 0-.768-.146-1.06-.439L1.293 10.707a1 1 0 1 1 1.414-1.414L16 22.586 29.293 9.293a1 1 0 1 1 1.414 1.414L17.061 24.354a1.494 1.494 0 0 1-1.06.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+          <slot name="summary"><!--lit-part-->This is the second level disclosure<!--/lit-part--></slot>
+        </summary>
+        <div id="details-content">
+          <slot></slot>
+        </div>
+      </details>
+    <!--/lit-part--></template>
     <p>Test using the ESC key + focus on an element when nesting disclosures. <a href="#">Fake link 2</a> and more text.</p>
     <form action="#" method="get" class="form-example" style="margin-block: var(--rh-space-md, 8px);">
       <div class="form-example">
@@ -135,5 +169,7 @@
 <script type="module">
   import '@rhds/elements/rh-disclosure/rh-disclosure.js';
 </script>
-</main></body>
-</html>
+</main>
+
+
+</body></html>
