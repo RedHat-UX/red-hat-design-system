@@ -240,15 +240,11 @@
   }
 }
 
-#outer:not(.checkable) {
-  #body:not(.empty):has(+ .empty) {
-    &:after {
-      content: '';
-      float: right;
-      width: var(--rh-space-2xl, 32px);
-      height: var(--rh-space-lg, 16px);
-    }
-  }
+#outer:not(.checkable) #body:not(.empty):has(+ .empty):after {
+  content: '';
+  float: right;
+  width: var(--rh-space-2xl, 32px);
+  height: var(--rh-space-lg, 16px);
 }
 
 #input-outer {
