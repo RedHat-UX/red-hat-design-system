@@ -1,4 +1,4 @@
-<h3>Heading with an <a href="#">inline link</a></h3>
+<h2>Heading with an <a href="#">inline link</a></h2>
 <p>This is body text with another <a href="#">inline link</a>. Hover over, tab to, or click the inline links in this demo. Use the color palette picker to see what inline links look like in dark contexts.</p>
 
 <style>
@@ -28,14 +28,16 @@
       &:hover { color: var(--rh-color-interactive-primary-visited-hover); }
     }
   }
-  h3 {
-    font-family: --rh-font-family-heading;
-    color: --rh-color-text-primary;
-    font-size: --rh-font-size-heading-sm;
-    font-weight: --rh-font-weight-heading-medium;
+
+  /*The following CSS is not related to link styling */
+  h2 {
+    font-family: var(--rh-font-family-heading);
+    color: var(--rh-color-text-primary);
+    font-size: var(--rh-font-size-heading-sm);
+    font-weight: var(--rh-font-weight-heading-medium);
   }
   p {
-    color: --rh-color-text-primary;
-    font-size: --rh-font-size-body-text-lg;
+    color: var(--rh-color-text-primary);
+    font-size: var(--rh-font-size-body-text-lg);
   }
 </style>

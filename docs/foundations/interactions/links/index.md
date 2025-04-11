@@ -19,8 +19,6 @@ subnav:
       href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css"
       data-helmet>
 
-<!--<link rel="stylesheet" data-helmet href="/styles/samp.css">-->
-
 <script type="module" data-helmet>
   import '@rhds/elements/rh-alert/rh-alert.js';
   import '@rhds/elements/rh-code-block/rh-code-block.js';
@@ -28,6 +26,24 @@ subnav:
   import '@rhds/elements/rh-table/rh-table.js';
   import "@uxdot/elements/uxdot-pattern.js";
 </script>
+
+<style>
+.underline-exception {
+    display: block;
+    margin-block: var(--rh-space-2xl);
+    & span {
+        font-family: var(--rh-font-family-heading);
+        font-size: var(--rh-font-size-heading-xs);
+        font-weight: var(--rh-font-weight-heading-medium);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: var(--rh-space-md);
+        color: var(--rh-color-status-danger);
+        margin-block: var(--rh-space-2xl) var(--rh-space-lg);
+    }
+}
+</style>
 
 ## Types of links
 
@@ -39,7 +55,7 @@ Links are interactive elements that connect users to another page or page sectio
 
 ## Inline links
 
-<uxdot-pattern src="./inline-link-demo.html" noCodeTabs=true>
+<uxdot-pattern src="./inline-link-demo.html" noCodeTabs="">
 </uxdot-pattern>
 
 ## Interaction states
@@ -146,20 +162,23 @@ The following elements are exempt from underlining requirements and should not h
 
 <div class="grid sm-two-columns">
 
-  <uxdot-best-practice variant="dont">
+  <figure class="underline-exception">
     <uxdot-example color-palette="lighter" width-adjustment="482px" slot="image">
       <img src="./underlining-exceptions-1.svg"
-            alt=""
+            alt="Recommendations menu with list of links that aren't underlined"
             width="482"
             height="342">
     </uxdot-example>
-    <p>Do not underline links within visually distinct navigation groupings like menus and breadcrumbs.</p>
-  </uxdot-best-practice>
+    <figcaption id="dont">
+        <span><rh-icon set="ui" size="md" icon="close-circle-fill" defer-hydration=""></rh-icon>Don't underline</span>
+        <p>Do not underline links within visually distinct navigation groupings like menus and breadcrumbs.</p>
+    </figcaption>
+  </figure>
 
   <uxdot-best-practice variant="dont">
     <uxdot-example color-palette="lightest" width-adjustment="482px" slot="image">
       <img src="./underlining-exceptions-2.svg"
-            alt=""
+            alt="Heading, body copy, and call to action with an arrow but without an underline"
             width="482"
             height="342">
     </uxdot-example>
@@ -169,7 +188,7 @@ The following elements are exempt from underlining requirements and should not h
   <uxdot-best-practice variant="dont">
     <uxdot-example color-palette="lightest" width-adjustment="482px" slot="image">
       <img src="./underlining-exceptions-3.svg"
-            alt=""
+            alt="List of links "
             width="482"
             height="268">
     </uxdot-example>
@@ -214,9 +233,7 @@ Use an external link icon if a link will direct users to another domain. This do
 
 <rh-alert>
   <h4 slot="header">Helpful tip</h4>
-  <p>Calls to action have [different guidance][ctaiconguidelines] regarding what icons can be used.</p>
-  <rh-button slot="actions" variant="secondary" data-action="confirm">Confirm</rh-button>
-  <rh-button slot="actions" variant="link" data-action="dismiss">Cancel</rh-button>
+  <p>Calls to action have <a href="/elements/call-to-action/guidelines/#call-to-action-text-labels">different guidance</a> regarding what icons can be used.</p>
 </rh-alert>
 
 <uxdot-example color-palette="lightest" width-adjustment="496px" slot="image">
@@ -353,8 +370,8 @@ When the Tab key is pressed repeatedly, the focus highlights links in order, fro
   </uxdot-best-practice>
 </div>
 
+
 [linkwithicon]: /patterns/link-with-icon/
 [ctas]: /elements/call-to-action/
 [interactivevisitedtokens]: /tokens/color/#color-interactive-primary-visited
 [redhat]: https://www.redhat.com
-[ctaiconguidelines]: /elements/call-to-action/guidelines/#call-to-action-text-labels
