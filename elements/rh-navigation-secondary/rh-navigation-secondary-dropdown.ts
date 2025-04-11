@@ -44,7 +44,7 @@ export class RhNavigationSecondaryDropdown extends LitElement {
 
   #highlight = false;
 
-  #mo = new MutationObserver(this.#mutationsCallback.bind(this));
+  #mo = new MutationObserver(() => this.#mutationsCallback());
 
   @query('#container') _container?: HTMLElement;
 
@@ -130,8 +130,12 @@ export class RhNavigationSecondaryDropdown extends LitElement {
   }
 
   async #mutationsCallback(): Promise<void> {
+    await this.updateComplete;
+    // TODO(bennypowers) slotcontroller intrigue...
+    await this.updateComplete;
     const [menu] = this.#slots.getSlotted<HTMLElement>('menu');
-    this.#highlight = menu.querySelector('[aria-current="page"]') ? true : false;
+    this.#highlight = menu?.querySelector('[aria-current="page"]') ? true : false;
+    this.#upgradeAccessibility();
     this.requestUpdate();
   }
 
