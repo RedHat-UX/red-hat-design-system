@@ -169,31 +169,37 @@ The following elements are exempt from underlining requirements and should not h
             width="482"
             height="342">
     </uxdot-example>
-    <figcaption id="dont">
+    <figcaption>
         <span><rh-icon set="ui" size="md" icon="close-circle-fill" defer-hydration=""></rh-icon>Don't underline</span>
         <p>Do not underline links within visually distinct navigation groupings like menus and breadcrumbs.</p>
     </figcaption>
   </figure>
 
-  <uxdot-best-practice variant="dont">
+  <figure class="underline-exception">
     <uxdot-example color-palette="lightest" width-adjustment="482px" slot="image">
       <img src="./underlining-exceptions-2.svg"
             alt="Heading, body copy, and call to action with an arrow but without an underline"
             width="482"
             height="342">
     </uxdot-example>
-    <p>Do not underline links accompanied by visual cues (e.g. call to action arrows) that indicate their interactivity.</p>
-  </uxdot-best-practice>
+    <figcaption>
+        <span><rh-icon set="ui" size="md" icon="close-circle-fill" defer-hydration=""></rh-icon>Don't underline</span>
+      <p>Do not underline links accompanied by visual cues (e.g. call to action arrows) that indicate their interactivity.</p>
+    </figcaption>
+  </figure>
 
-  <uxdot-best-practice variant="dont">
+  <figure class="underline-exception">
     <uxdot-example color-palette="lightest" width-adjustment="482px" slot="image">
       <img src="./underlining-exceptions-3.svg"
             alt="List of links "
             width="482"
             height="268">
     </uxdot-example>
-    <p>Do not underline links that will not appear alongside non-link text like a list of links within a card.</p>
-  </uxdot-best-practice>
+    <figcaption>
+        <span><rh-icon set="ui" size="md" icon="close-circle-fill" defer-hydration=""></rh-icon>Don't underline</span>
+      <p>Do not underline links that will not appear alongside non-link text like a list of links within a card.</p>
+    </figcpation>
+  </figure>
 </div>
 
 ### Example CSS

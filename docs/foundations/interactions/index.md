@@ -3,6 +3,7 @@ title: Overview
 heading: Interactions
 sidenavTitle: Interactions
 layout: layouts/pages/basic.njk
+order: 40
 permalink: /foundations/interactions/index.html
 tags:
   - foundations
@@ -48,7 +49,8 @@ Interactions are foundational to how our users engage with Red Hat digital exper
            src="./types-of-interactions-links.svg"
            slot="image"
            width="295"
-           height="176">
+           height="176"
+           style="background-color: var(--rh-color-surface-lightest);">
       <h3 slot="headline"><a href="/foundations/interactions/links">Links</a></h3>
       Text that sends users to another destination
     </rh-tile>
