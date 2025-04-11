@@ -87,3 +87,9 @@ details[open] {
     inset-block: -1px;
   }
 }
+
+:host(:has(rh-jump-links)) {
+  details[open]:before {
+    border: 21px solid yellow;
+  }
+}

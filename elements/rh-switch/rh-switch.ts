@@ -81,7 +81,7 @@ export class RhSwitch extends LitElement {
     const noMessageOn = this.#slots.isEmpty('message-on');
     const noMessageOff = this.#slots.isEmpty('message-off');
     if (noMessageOn || noMessageOff) {
-      if ('ariaDescription' in ElementInternals) {
+      if ('ariaDescription' in (globalThis.ElementInternals ?? {})) {
         this.#internals.ariaDescription = this.#message ?? '';
       } else {
         this.setAttribute('aria-description', this.#message ?? '');
@@ -92,7 +92,7 @@ export class RhSwitch extends LitElement {
       for (const el of stateEls) {
         el.id ||= getRandomId('rh-switch-message');
       }
-      if ('ariaDescribedByElements' in ElementInternals) {
+      if ('ariaDescribedByElements' in (globalThis.ElementInternals ?? {})) {
         // see https://w3c.github.io/aria/#dom-ariamixin
         this.#internals.ariaDescribedByElements = stateEls;
       } else {

@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 
@@ -51,7 +51,9 @@ export class RhMenu extends LitElement {
     super.connectedCallback();
     this.id ||= getRandomId('menu');
     this.setAttribute('role', 'menu'); // TODO: use InternalsController.role when support/polyfill is better
-    this.#onSlotchange();
+    if (!isServer) {
+      this.#onSlotchange();
+    }
   }
 
   render() {

@@ -207,8 +207,8 @@ export default class ElementsPage extends Renderer<Context> {
         <p>To learn more about installing RHDS elements on your site using an import map read our <a href="/get-started/developers/installation/">getting started docs</a>.        
       </section>
       `,
-      /* eslint-enable lit-a11y/anchor-is-valid */
-      /* eslint-enable lit-a11y/accessible-name */
+
+
       await this.#renderLightdom(ctx),
       this.#header('Usage'),
       await this.#getMainDemoContent(tagName),
@@ -799,11 +799,14 @@ export default class ElementsPage extends Renderer<Context> {
 
       map.set('html', serialize(fragment));
 
-      const blocks = await Promise.all(map.entries().map(([kind, content]) => this.renderTemplate(dedent(`
-        ~~~${kind} rhcodeblock {slot="${kind}"}
-        ${content.trim()}
-        ~~~
-      `), 'md')).toArray());
+      const blocks = await Promise.all(map.entries().map(([kind, content]) => {
+        const tpl = dedent(`
+          \`\`\`\`${kind} uxdotcodeblock {slot=${kind}}
+          ${content.trim()}
+          \`\`\`
+        `);
+        return this.renderTemplate(tpl, 'md');
+      }).toArray());
       return blocks.join('\n');
     }
   }

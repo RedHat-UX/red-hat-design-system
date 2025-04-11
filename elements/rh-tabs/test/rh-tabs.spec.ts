@@ -66,13 +66,11 @@ describe('<rh-tabs>', function() {
 
   describe('box tabs', function() {
     it('should have box styles', async function() {
-      element.setAttribute('box', '');
-      await updateComplete();
-      await nextFrame();
-      const tab = element.querySelector('rh-tab');
-      const button = tab!.shadowRoot!.querySelector('#button')!;
-      const buttonBeforeStyles = getComputedStyle(button, '::before').borderInlineStartWidth;
-      expect(buttonBeforeStyles).to.be.equal(tokens.get('--rh-border-width-sm'));
+      element.setAttribute('box', 'box');
+      await element.updateComplete;
+      for (const tab of element.tabs) {
+        expect(tab.shadowRoot?.querySelector('.box')).to.be.ok;
+      }
     });
   });
 

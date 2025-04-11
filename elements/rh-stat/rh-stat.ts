@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -62,7 +62,9 @@ export class RhStat extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     this.#mo.observe(this, { childList: true });
-    this.#onMutation();
+    if (!isServer) {
+      this.#onMutation();
+    }
   }
 
   willUpdate() {

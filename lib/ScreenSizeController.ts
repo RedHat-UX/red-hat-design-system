@@ -1,4 +1,4 @@
-import type { ReactiveControllerHost, ReactiveController } from 'lit';
+import { type ReactiveControllerHost, type ReactiveController, isServer } from 'lit';
 
 import {
   Breakpoint2xsMax,
@@ -47,11 +47,10 @@ const BREAKPOINTS: Record<BreakpointKey, string | MediaToken> = {
 export class ScreenSizeController implements ReactiveController {
   static instances = new Set<ScreenSizeController>();
 
-  static queries = new Map<
-    BreakpointKey,
-    MediaQueryList
-  >(Object.entries(BREAKPOINTS).map(([k, v]) =>
-    [k as BreakpointKey, getMediaQueryListForToken(v)]));
+  static queries: Map<BreakpointKey, MediaQueryList> =
+      isServer ? new Map()
+    : new Map(Object.entries(BREAKPOINTS).map(([k, v]) =>
+      [k as BreakpointKey, getMediaQueryListForToken(v)]));
 
   public mobile = ScreenSizeController.queries.get('2xs')?.matches ?? false;
 

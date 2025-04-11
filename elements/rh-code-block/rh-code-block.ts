@@ -1,5 +1,5 @@
 import type { DirectiveResult } from 'lit-html/directive.js';
-import { CSSResult, LitElement, html, type PropertyValues } from 'lit';
+import { CSSResult, LitElement, html, isServer, type PropertyValues } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { styleMap } from 'lit/directives/style-map.js';
@@ -234,7 +234,7 @@ export class RhCodeBlock extends LitElement {
   }
 
   async #applyPrismPrerenderedStyles() {
-    if (getComputedStyle(this).getPropertyValue('--_styles-applied') !== 'true') {
+    if (!isServer && getComputedStyle(this).getPropertyValue('--_styles-applied') !== 'true') {
       const root = this.getRootNode();
       if (root instanceof Document || root instanceof ShadowRoot) {
         const { preRenderedLightDomStyles: { styleSheet } } = await import('./prism.js');
@@ -244,22 +244,24 @@ export class RhCodeBlock extends LitElement {
   }
 
   async #highlightWithPrism() {
-    const { highlight, prismStyles } = await import('./prism.js');
-    const styleSheet =
-        prismStyles instanceof CSSStyleSheet ? prismStyles
-      : (prismStyles as CSSResult).styleSheet;
-    if (!this.shadowRoot!.adoptedStyleSheets.includes(styleSheet!)) {
-      this.shadowRoot!.adoptedStyleSheets = [
-        ...this.shadowRoot!.adoptedStyleSheets as CSSStyleSheet[],
-        styleSheet!,
-      ];
+    if (!isServer) {
+      const { highlight, prismStyles } = await import('./prism.js');
+      const styleSheet =
+          prismStyles instanceof CSSStyleSheet ? prismStyles
+        : (prismStyles as CSSResult).styleSheet;
+      if (!this.shadowRoot!.adoptedStyleSheets.includes(styleSheet!)) {
+        this.shadowRoot!.adoptedStyleSheets = [
+          ...this.shadowRoot!.adoptedStyleSheets as CSSStyleSheet[],
+          styleSheet!,
+        ];
+      }
+      const scripts = this.querySelectorAll('script[type]:not([type="javascript"])');
+      const preprocess = this.dedent ? dedent : (x: string) => x;
+      const textContent = preprocess(Array.from(scripts, x => x.textContent).join(''));
+      this.#prismOutput = await highlight(textContent, this.language);
+      this.requestUpdate('#prismOutput', {});
+      await this.updateComplete;
     }
-    const scripts = this.querySelectorAll('script[type]:not([type="javascript"])');
-    const preprocess = this.dedent ? dedent : (x: string) => x;
-    const textContent = preprocess(Array.from(scripts, x => x.textContent).join(''));
-    this.#prismOutput = await highlight(textContent, this.language);
-    this.requestUpdate('#prismOutput', {});
-    await this.updateComplete;
   }
 
   async #wrapChanged() {

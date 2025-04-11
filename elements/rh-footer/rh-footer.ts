@@ -152,7 +152,7 @@ export class RhFooter extends LitElement {
   #renderLinksTemplate(isMobile = false) {
     // gather all of the links that need to be wrapped into the accordion
     // give them a designation of either 'header' or 'panel'
-    const children = Array.from(this.querySelectorAll(':scope > [slot^=links]'));
+    const children = Array.from(this.querySelectorAll?.(':scope > [slot^=links]') ?? []);
 
     // Update the dynamic slot names if on mobile
     children.forEach((child, i) => child.setAttribute('slot', isMobile ? `links-${i}` : 'links'));
@@ -187,7 +187,7 @@ export class RhFooter extends LitElement {
    * and synchronously update each list and header if we need to.
    */
   public updateAccessibility(): void {
-    for (const list of this.querySelectorAll(RhFooter.LISTS_SELECTOR)) {
+    for (const list of this.querySelectorAll?.(RhFooter.LISTS_SELECTOR) ?? []) {
       // if we already have a label then we assume that the user
       // has wired this up themselves.
       if (!list.hasAttribute('aria-labelledby')) {

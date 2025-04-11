@@ -1,4 +1,4 @@
-import type { LitElement } from 'lit';
+import { isServer, type LitElement } from 'lit';
 
 import { ContextProvider } from '@lit/context';
 
@@ -73,7 +73,7 @@ export class HeadingLevelContextProvider extends ContextProvider<typeof context,
 
   #getLevel() {
     const level = this.host.getAttribute(this.#options?.attribute ?? '')
-      ?? this.#computeLevelFromChildren()
+      ?? (isServer ? null : this.#computeLevelFromChildren())
       ?? 1;
     const val = typeof level === 'string' ? parseInt(level) : level;
     if (typeof val === 'number' && !Number.isNaN(val)) {

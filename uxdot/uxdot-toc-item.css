@@ -22,7 +22,7 @@ a {
   display: inline-flex;
   gap: var(--rh-space-lg);
   align-items: first baseline;
-  svg { width: 16px; }
+  svg { min-width: 16px; }
   &:hover { color: var(--rh-color-interactive-primary-hover); }
   &:focus-within { color: var(--rh-color-interactive-primary-focus); }
   &:active { color: var(--rh-color-interactive-primary-active); }

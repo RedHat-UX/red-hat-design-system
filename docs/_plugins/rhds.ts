@@ -11,6 +11,7 @@ import slugify from 'slugify';
 import RHDSAlphabetizeTagsPlugin from '#11ty-plugins/alphabetize-tags.js';
 import RHDSElementDocsPlugin from '#11ty-plugins/element-docs.js';
 import RHDSElementDemosPlugin from '#11ty-plugins/element-demos.js';
+import RHDSSSRHintHasSlottedPlugin from '#11ty-plugins/ssr-hints.js';
 import LitSSRPlugin from '#11ty-plugins/lit-ssr/lit.js';
 
 import { getPfeConfig } from '@patternfly/pfe-tools/config.js';
@@ -77,9 +78,11 @@ async function getFilesToCopy() {
   }));
 }
 
-interface Options {
+export interface Options {
   tagsToAlphabetize: string[];
   componentModules: string[];
+  /** Tag names of elements which will require ssr hint attrs because they use slotcontroller in their templates */
+  slotControllerElements: string[];
   tsconfig: string;
 }
 
@@ -89,7 +92,10 @@ async function clean() {
   await $`npx tspc -b lib --clean`;
 }
 
-export default async function(eleventyConfig: UserConfig, options?: Options) {
+export default async function(
+  eleventyConfig: UserConfig,
+  options?: Options,
+) {
   /** add the normalized pfe-tools config to global data */
   eleventyConfig.addGlobalData('pfeconfig', getPfeConfig());
 
@@ -274,5 +280,6 @@ export default async function(eleventyConfig: UserConfig, options?: Options) {
   eleventyConfig.addPlugin(RHDSAlphabetizeTagsPlugin, options);
   eleventyConfig.addPlugin(RHDSElementDocsPlugin);
   eleventyConfig.addPlugin(RHDSElementDemosPlugin);
+  eleventyConfig.addPlugin(RHDSSSRHintHasSlottedPlugin, options);
   eleventyConfig.addPlugin(LitSSRPlugin, options);
 };
