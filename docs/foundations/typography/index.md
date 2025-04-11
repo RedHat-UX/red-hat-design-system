@@ -3,6 +3,7 @@ title: Overview
 heading: Typography
 sidenavTitle: Typography
 layout: layouts/pages/basic.njk
+order: 60
 permalink: /foundations/typography/index.html
 tags:
   - foundations
