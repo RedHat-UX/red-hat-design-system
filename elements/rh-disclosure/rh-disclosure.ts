@@ -5,6 +5,7 @@ import { query } from 'lit/decorators/query.js';
 
 import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
 import { themable } from '@rhds/elements/lib/themable.js';
+import type { RhJumpLinks } from 'elements/rh-jump-links/rh-jump-links.js';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 
@@ -76,6 +77,10 @@ export class RhDisclosure extends LitElement {
   @query('summary') private summaryEl!: HTMLElement;
 
   render() {
+    const hasJumpLinks: RhJumpLinks | null = this.querySelector('rh-jump-links');
+    if (hasJumpLinks && ! this.hasAttribute('has-jump-links')) {
+      this.setAttribute('has-jump-links', '');
+    }
     return html`
       <details
           ?open="${this.open}"
