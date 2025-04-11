@@ -12,8 +12,8 @@
   "imports": {
     "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
-    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
     "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
     "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
@@ -30,8 +30,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.0/core.js",
     "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.0/core.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
@@ -359,10 +359,6 @@
 </section>
 
 <style>
-  svg.sample {
-    border: 1px dashed var(--rh-color-border-interactive-on-light, #0066cc);
-    & rect { width: 100%; height: 100%; fill: rgba(0 102 204 / 0.10) }
-  }
   #card-pattern-quote {
     display: grid;
     gap: var(--rh-space-md, 16px);
@@ -375,7 +371,7 @@
         aspect-ratio: 9/5;
         /* below presumably implemented in rh-video */
         display: block;
-        background-color: var(--rh-color-surface-light, #e0e0e0);
+        background-color: light-dark(var(--rh-color-surface-light, #e0e0e0), var(--rh-color-surface-dark, #383838));
       }
     }
   }
