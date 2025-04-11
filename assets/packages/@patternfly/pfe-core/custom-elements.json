@@ -9021,15 +9021,6 @@
             },
             {
               "kind": "method",
-              "name": "hostUpdated",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              }
-            },
-            {
-              "kind": "method",
               "name": "hostDisconnected",
               "return": {
                 "type": {
@@ -9049,7 +9040,7 @@
                 {
                   "name": "slotNames",
                   "type": {
-                    "text": "string[]"
+                    "text": "string[] | [null]"
                   },
                   "description": "slots to query"
                 }
@@ -9145,10 +9136,6 @@
             {
               "kind": "method",
               "name": "hostConnected"
-            },
-            {
-              "kind": "method",
-              "name": "hostUpdated"
             },
             {
               "kind": "method",
@@ -11930,6 +11917,24 @@
     {
       "kind": "javascript-module",
       "path": "controllers/test/combobox-controller.spec.ts",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "controllers/test/slot-controller.spec.d.ts",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "controllers/test/slot-controller.spec.js",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "controllers/test/slot-controller.spec.ts",
       "declarations": [],
       "exports": []
     }

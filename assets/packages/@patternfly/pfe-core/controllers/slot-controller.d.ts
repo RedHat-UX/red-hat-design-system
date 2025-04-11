@@ -76,7 +76,6 @@ export declare class SlotController implements SlotControllerPublicAPI {
     static anonymous: symbol;
     constructor(host: ReactiveElement, ...args: SlotControllerArgs);
     hostConnected(): Promise<void>;
-    hostUpdated(): void;
     hostDisconnected(): void;
     /**
      * Given a slot name or slot names, returns elements assigned to the requested slots as an array.
@@ -95,7 +94,7 @@ export declare class SlotController implements SlotControllerPublicAPI {
      *          this.getSlotted();
      *          ```
      */
-    getSlotted<T extends Element = Element>(...slotNames: string[]): T[];
+    getSlotted<T extends Element = Element>(...slotNames: string[] | [null]): T[];
     /**
      * Returns a boolean statement of whether or not any of those slots exists in the light DOM.
      * @param names The slot names to check.

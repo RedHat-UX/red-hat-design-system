@@ -92,7 +92,8 @@ _RhSubnav_onSlotchange = function _RhSubnav_onSlotchange() {
     __classPrivateFieldGet(this, _RhSubnav_overflow, "f").init(this.linkList, __classPrivateFieldGet(this, _RhSubnav_instances, "a", _RhSubnav_allLinks_get));
     __classPrivateFieldGet(this, _RhSubnav_instances, "m", _RhSubnav_firstLastClasses).call(this);
 };
-_RhSubnav_firstLastClasses = function _RhSubnav_firstLastClasses() {
+_RhSubnav_firstLastClasses = async function _RhSubnav_firstLastClasses() {
+    await this.updateComplete;
     __classPrivateFieldGet(this, _RhSubnav_instances, "a", _RhSubnav_firstLink_get).classList.add('first');
     __classPrivateFieldGet(this, _RhSubnav_instances, "a", _RhSubnav_lastLink_get).classList.add('last');
 };

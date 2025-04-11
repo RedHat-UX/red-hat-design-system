@@ -34,7 +34,7 @@ let RhNavigationSecondaryDropdown = class RhNavigationSecondaryDropdown extends 
         _RhNavigationSecondaryDropdown_slots.set(this, new SlotController(this, { slots: ['link', 'menu'] }));
         _RhNavigationSecondaryDropdown_logger.set(this, new Logger(this));
         _RhNavigationSecondaryDropdown_highlight.set(this, false);
-        _RhNavigationSecondaryDropdown_mo.set(this, new MutationObserver(__classPrivateFieldGet(this, _RhNavigationSecondaryDropdown_instances, "m", _RhNavigationSecondaryDropdown_mutationsCallback).bind(this)));
+        _RhNavigationSecondaryDropdown_mo.set(this, new MutationObserver(() => __classPrivateFieldGet(this, _RhNavigationSecondaryDropdown_instances, "m", _RhNavigationSecondaryDropdown_mutationsCallback).call(this)));
         this.expanded = false;
     }
     connectedCallback() {
@@ -104,8 +104,12 @@ _RhNavigationSecondaryDropdown_close = function _RhNavigationSecondaryDropdown_c
     }
 };
 _RhNavigationSecondaryDropdown_mutationsCallback = async function _RhNavigationSecondaryDropdown_mutationsCallback() {
+    await this.updateComplete;
+    // TODO(bennypowers) slotcontroller intrigue...
+    await this.updateComplete;
     const [menu] = __classPrivateFieldGet(this, _RhNavigationSecondaryDropdown_slots, "f").getSlotted('menu');
-    __classPrivateFieldSet(this, _RhNavigationSecondaryDropdown_highlight, menu.querySelector('[aria-current="page"]') ? true : false, "f");
+    __classPrivateFieldSet(this, _RhNavigationSecondaryDropdown_highlight, menu?.querySelector('[aria-current="page"]') ? true : false, "f");
+    __classPrivateFieldGet(this, _RhNavigationSecondaryDropdown_instances, "m", _RhNavigationSecondaryDropdown_upgradeAccessibility).call(this);
     this.requestUpdate();
 };
 _RhNavigationSecondaryDropdown_upgradeAccessibility = function _RhNavigationSecondaryDropdown_upgradeAccessibility() {
