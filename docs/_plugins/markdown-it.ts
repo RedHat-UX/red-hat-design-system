@@ -64,10 +64,11 @@ function rhdsCodeBlock(md: MarkdownIt) {
     const actions = ['copy', hasMoreThan1Line && 'wrap'].filter(x => !!x);
     const [lang, block, ...rest] = token.info.split(/\s+/);
     const info = `${lang} ${rest.join(' ')}`;
-    if (block?.replaceAll('-', '') === 'rhcodeblock') {
+    const normalized = block?.replaceAll('-', '');
+    if (normalized?.endsWith('codeblock')) {
       const redactedToken = Object.assign(token, { info });
       return html`
-        <rh-code-block full-height
+        <rh-code-block ${normalized.startsWith('rh' ) ? 'full-height' : ''}
                        dedent
                        actions="${actions.join(' ')}"
                        highlighting="prerendered"

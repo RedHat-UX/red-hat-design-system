@@ -34,12 +34,12 @@ describe('<rh-transcript>', function() {
     beforeEach(async function() {
       element = await createFixture<RhAudioPlayer>(html`
         <rh-audio-player lang="he-IL" mediaseries="testing" mediatitle="123">
-            <script type="application/json" data-language="he-IL">
+          <script type="application/json" data-language="he-IL">
             {
               "autoscroll": "גלילת אוטומטית",
               "download": "הורדה"
             }
-            </script>
+          </script>
           <rh-transcript slot="transcript"></rh-transcript>
         </rh-audio-player>
       `);
@@ -47,7 +47,9 @@ describe('<rh-transcript>', function() {
     });
 
     it('should use slotted data', function() {
-      expect(transcript?.shadowRoot?.textContent?.replace(/\s+/g, ' ').trim()).to.equal('transcript גלילת אוטומטית הורדה');
+      expect(transcript?.menuLabel).to.equal('transcript');
+      expect(transcript?.autoscrollLabel).to.equal('גלילת אוטומטית');
+      expect(transcript?.downloadLabel).to.equal('הורדה');
     });
   });
 });

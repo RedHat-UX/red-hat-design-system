@@ -8,6 +8,9 @@ import { getAllManifests } from '@patternfly/pfe-tools/custom-elements-manifest/
 import { capitalize } from '#11ty-plugins/tokensHelpers.js';
 import { DocsPage } from '@patternfly/pfe-tools/11ty/DocsPage.js';
 
+import { $ } from 'execa';
+import chalk from 'chalk';
+
 import repoStatus from '#11ty-data/repoStatus.js';
 
 interface ElementDocsPageTabData {
@@ -103,6 +106,14 @@ function isHidden(tagName: string) {
  * @param eleventyConfig
  */
 export default function(eleventyConfig: UserConfig): void {
+  eleventyConfig.on('eleventy.before', async function() {
+    performance.mark('analyze-start');
+    await $`node node_modules/.bin/cem analyze`;
+    performance.mark('analyze-end');
+    const TOTAL = performance.measure('analyze-total', 'analyze-start', 'analyze-end');
+    // eslint-disable-next-line no-console
+    console.log(`⏲️  Custom elements manifest generated in ${chalk.blue(TOTAL.duration)}ms\n`);
+  });
   eleventyConfig.addCollection('elementDocs', async function() {
     try {
       const [manifest] = getAllManifests();

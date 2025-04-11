@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
@@ -41,7 +41,7 @@ export class RhAudioPlayerAbout extends LitElement {
 
   override render() {
     const { label, mediaseries, mediatitle } = this;
-    const hasContent = (this.content?.length ?? 0) >= 1;
+    const hasContent = isServer || ((this.content?.length ?? 0) >= 1);
     const heading = this.#headings.wrap(mediatitle ?? '');
 
     return html`

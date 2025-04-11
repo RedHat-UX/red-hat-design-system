@@ -32,12 +32,15 @@ rh-card {
 
   & rh-button[slot='footer'] {
     display: inline-block;
-    margin-inline-end: auto;
+
+    &:last-of-type {
+      margin-inline-end: auto;
+    }
   }
 }
 
 .code-tabs {
-  border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
+  border: 0;
   border-radius: var(--rh-border-radius-default);
 
   &::part(tabs-container) {

@@ -8,24 +8,18 @@ import tsBlankSpace from 'ts-blank-space';
 import chalk from 'chalk';
 
 import { register } from 'node:module';
-import { parse, serialize } from 'parse5';
-import { hasAttribute, query, queryAll, removeNode, type Node, type Template } from '@parse5/tools';
+import type { Options } from '#11ty-plugins/rhds.js';
 
 export interface RenderRequestMessage {
   content: string;
   page: Pick<EleventyPage, 'inputPath' | 'outputPath'>;
+  slotControllerElements: string[];
 }
 
 export interface RenderResponseMessage {
   page: Pick<EleventyPage, 'inputPath' | 'outputPath'>;
   rendered?: string;
   durationMs: number;
-}
-
-interface Options {
-  componentModules?: string[];
-  /** path from project root to tsconfig */
-  tsconfig?: string;
 }
 
 async function redactTSFileInPlace(path: string) {
@@ -41,14 +35,16 @@ register('./lit-css-node.ts', import.meta.url);
  * @param eleventyConfig
  * @param opts
  */
-export default async function(eleventyConfig: UserConfig, opts?: Options) {
+export default async function(
+  eleventyConfig: UserConfig,
+  opts?: Options,
+) {
   const imports = opts?.componentModules ?? [];
   const tsconfig = opts?.tsconfig ?? './tsconfig.json';
 
   let pool: Piscina;
 
-  // If there are no component modules, we could never have anything to
-  // render.
+  // If there are no component modules, we could never have anything to render.
   if (imports?.length) {
     eleventyConfig.on('eleventy.before', async function() {
       await redactTSFileInPlace('./worker.ts');
@@ -69,12 +65,13 @@ export default async function(eleventyConfig: UserConfig, opts?: Options) {
     eleventyConfig.addTransform('render-lit', async function(this, content) {
       const { outputPath, inputPath } = this.page;
 
+      const { slotControllerElements = [] } = opts ?? {};
       if (!outputPath.endsWith('.html')) {
         return content;
       }
 
       const page = { outputPath, inputPath };
-      const message = await pool.run({ page, content });
+      const message = await pool.run({ page, content, slotControllerElements });
       if (message.rendered) {
         const { durationMs, rendered, page } = message;
         if (durationMs > 1000) {

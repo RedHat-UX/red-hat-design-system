@@ -237,7 +237,7 @@ export class RhAccordion extends LitElement {
   }
 
   #allHeaders(accordion: RhAccordion = this): RhAccordionHeader[] {
-    return Array.from(accordion.children).filter((x): x is RhAccordionHeader =>
+    return Array.from(accordion.children ?? []).filter((x): x is RhAccordionHeader =>
       x instanceof RhAccordionHeader
     );
   }

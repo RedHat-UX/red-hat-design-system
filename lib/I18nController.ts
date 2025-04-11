@@ -1,4 +1,4 @@
-import type { ReactiveController, ReactiveElement } from 'lit';
+import { isServer, type ReactiveController, type ReactiveElement } from 'lit';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
@@ -22,7 +22,6 @@ export class I18nController implements ReactiveController {
     for (const [language, copy] of Object.entries(defaults)) {
       this.#microcopy.set(language, new Map(Object.entries(copy)));
     }
-    this.update();
   }
 
   hostConnected(): void {
@@ -35,17 +34,18 @@ export class I18nController implements ReactiveController {
   }
 
   #getLanguage() {
-    let lang = this.host.getAttribute('lang') || this.host.closest('[lang]')?.getAttribute('lang');
+    if (isServer) {
+      return this.#defaultLanguage;
+    }
+    let lang =
+      this.host.getAttribute('lang')
+        || this.host.closest('[lang]')?.getAttribute('lang');
     let root = this.host.getRootNode();
     while (!lang && root instanceof ShadowRoot) {
       lang = root.host.closest('[lang]')?.getAttribute('lang') as string;
       root = root.host.getRootNode();
     }
     return lang ?? this.language;
-  }
-
-  #updateLanguage() {
-    this.language = this.#getLanguage();
   }
 
   #useDefaultLanguage() {
@@ -58,12 +58,11 @@ export class I18nController implements ReactiveController {
   }
 
   #updateMicrocopy() {
-    this.#updateLanguage();
-    const lightLangs = this.host.querySelectorAll<HTMLScriptElement>(
+    this.language = this.#getLanguage();
+    for (const script of this.host.querySelectorAll?.(
       'script[type="application/json"][data-language]'
-    );
-    for (const script of lightLangs) {
-      const { language } = script.dataset;
+    ) ?? []) {
+      const { language } = (script as HTMLElement).dataset;
       if (language) {
         let content = {};
         try {
@@ -84,7 +83,7 @@ export class I18nController implements ReactiveController {
   }
 
   update() {
-    this.#updateLanguage();
+    this.language = this.#getLanguage();
     this.#updateMicrocopy();
     this.host.requestUpdate();
   }
