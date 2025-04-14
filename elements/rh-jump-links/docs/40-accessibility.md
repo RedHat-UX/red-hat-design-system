@@ -30,7 +30,7 @@ Each individual jump link can be navigated with a keyboard. However, focus movin
   <table>
     <thead>
       <tr>
-        <th scope="col">Key</th>
+        <th scope="col" style="width: 50%;">Key</th>
         <th scope="col">Result</th>
       </tr>
     </thead>
