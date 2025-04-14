@@ -191,7 +191,6 @@ export class RhTile extends LitElement {
     const { bleed, compact, checkable, checked, desaturated } = this;
     const disabled = this.disabledGroup || this.disabled || this.#internals.formDisabled;
     const hasSlottedIcon = this.#slots.hasSlotted('icon');
-    const hasSlottedFooter = this.#slots.hasSlotted('footer');
     const linkIcon =
         this.checkable ? ''
       : this.disabled ? 'ban'
@@ -226,7 +225,7 @@ export class RhTile extends LitElement {
               </div>
             </div>
             <slot id="body" class="${classMap({ empty: this.#slots.isEmpty() })}"></slot>
-            <div id="footer" class="${classMap({ empty: !hasSlottedFooter })}">
+            <div id="footer" class="${classMap({ empty: this.#slots.isEmpty('footer') })}">
               <slot id="footer-text" name="footer"></slot><rh-icon set="ui" icon="${linkIcon}"></rh-icon>
             </div>
           </div>
