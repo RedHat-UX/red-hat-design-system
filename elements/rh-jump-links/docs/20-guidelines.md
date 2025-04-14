@@ -62,27 +62,28 @@ The title should always be included and should default to "Jump to section" if
 something else is not provided. Use sentence case only and limit title text to
 `25` characters max.
 
-<hgroup>
-
 ## Layout
 
 ### Placement
-
-</hgroup>
 
 Vertical jump links are place on the left side of content by default and aligned
 to the top edge. However, in situations where there is already and element on
 the left side like a menu, jump links can be placed on the right side of
 content.
 
-{#
-<uxdot-example>
-  insert placement graphic 1 here
+<uxdot-example color-palette="lightest">
+    <img src="../jump-links-guidelines-layout-placement-A.svg"
+        alt="Jump links on the left with gray blocks representing content in another column on the right."
+        width="1012"
+        height="384">
 </uxdot-example>
-<uxdot-example>
-  insert placement graphic 2 here
+
+<uxdot-example color-palette="lightest">
+    <img src="../jump-links-guidelines-layout-placement-B.svg"
+        alt="Three column layout with a menu or element on the left, content in the middle, and jump links on the right."
+        width="1012"
+        height="344">
 </uxdot-example>
-#}
 
 ### Mobile
 
@@ -90,19 +91,16 @@ On small screens, both vertical and horizontal jump links collapse into a
 disclosure which is always located above content. When the disclosure is
 expanded, jump links are displayed and any page content below is pushed down.
 
-{#
-<uxdot-example>
-  insert mobile graphic 1 here
+<uxdot-example color-palette="lightest">
+    <img src="../jump-links-guidelines-layout-mobile.svg"
+        alt="Two jump links screens shown in mobile viewports. The left has a collapsed disclosure with jump links inside. The right has an expanded disclosure with visible jump links inside the disclosure."
+        width="800"
+        height="640">
 </uxdot-example>
-#}
-
-<hgroup>
 
 ## Behavior
 
 ### Order of operations
-
-</hgroup>
 
 When a page loads, both vertical and horizontal jump links are anchored to the
 top edge of content or a container before becoming sticky. There are a few
@@ -122,14 +120,16 @@ clicking on it or scrolling to it. They can be individually selected, but only
 one level max is recommended.
 
 <rh-alert state="info">
+  <h4 slot="header">Helpful tip</h4>
   <p>Only the vertical orientation can display nested jump links.</p>
 </rh-alert>
 
-{#
-<uxdot-example>
-  insert nested jump links graphic
+<uxdot-example color-palette="lightest">
+    <img src="../jump-links-guidelines-nested-jump-links.svg"
+        alt="Two sets of jump links. The left shows the third jump link collapsed. The right shows the third jump link with its nested jump links under it."
+        width="332"
+        height="360">
 </uxdot-example>
-#}
 
 
 ### Scrolling on backgrounds
@@ -144,44 +144,45 @@ the page
 - The border radius must use `--rh-border-radius-default` token
 - Padding on all sides must use the `--rh-space-lg` token
 
-{#
-<uxdot-example>
-  insert scrolling on backgrounds graphic
+<uxdot-example color-palette="lightest">
+    <img src="../jump-links-guidelines-configuration-container-background.svg"
+        alt="Two sets of jump links. On the left, jump links on a gray background. On the right, sticky jump links scrolling between a gray and black rear background with a white background applied to the jump links."
+        width="1012"
+        height="304">
 </uxdot-example>
-#}
-
-<hgroup>
 
 ## Responsive design
 
 ### Vertical
 
-</hgroup>
-
 Vertical jump links can occupy a specific amount of space like a number of grid
 columns. However, longer text meands more line breaks.
 
-{#
-<uxdot-example>
-  insert vertical responsive graphic
+<uxdot-example color-palette="lightest" no-border variant="full">
+    <img src="../jump-links-guidelines-responsive-design-vertical.svg"
+        alt="Two sets of jump links and content displayed over top of a 12 column grid. The top links are shown at desktop viewports and the jump link text doesn't wrap. The bottom jump links are shown at tablet viewports and the jump link text wraps 1-3 lines."
+        width="1136"
+        height="736">
 </uxdot-example>
-#}
 
 ### Horizontal
 
 Horizontal jump links span the entire page width. However, if the container is
 not wide enough to display everything, overflow buttons will appear.
 
-{#
-<uxdot-example>
-  insert horizontal responsive graphic
+<uxdot-example color-palette="lightest" no-border variant="full">
+    <img src="../jump-links-guidelines-responsive-design-horizontal.svg"
+        alt="Three sets of horizontal jump links. The top jump links shown a a desktop viewport. The middle shows a tablet viewport without overflow or scroll arrows. The last jump links have overflow or scroll arrows to scroll horizontally."
+        width="1136"
+        height="400">
 </uxdot-example>
-#}
 
 ### Disclosure
 
 To save space, vertical jump links collapse into a
 [disclosure](/elements/disclosure/) element at specific screen sizes.
+
+Learn more about the [Disclosure](/elements/disclosure/) element.
 
 <rh-table>
 
@@ -192,27 +193,29 @@ To save space, vertical jump links collapse into a
 
 </rh-table>
 
-<hgroup>
-
 ## Best practices
 
 ### No title
 
-</hgroup>
-
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
-    <uxdot-example slot="image">
-      {# insert do 1 svg #}
+    <uxdot-example slot="image" color-palette="lightest">
+      <img src="../jump-links-guidelines-best-practice-1-do.svg"
+        alt="Jump links with a custom title at the top"
+        width="418"
+        height="240">
     </uxdot-example>
     <p>Write a custom title or uses the default which is "Jump to section".</p>
   </uxdot-best-practice>
+
   <uxdot-best-practice variant="dont">
-    <uxdot-example slot="image">
-      {# insert dont 1 svg #}
+    <uxdot-example slot="image" color-palette="lightest">
+      <img src="../jump-links-guidelines-best-practice-1-dont.svg"
+        alt="Jump links without a custom title at the top"
+        width="418"
+        height="240">
     </uxdot-example>
-    <p>Do not hide the title or else it might be confusing to users what this
-       element does.</p>
+    <p>Do not hide the title or else it might be confusing to users what this</p>
   </uxdot-best-practice>
 </div>
 
@@ -220,14 +223,21 @@ To save space, vertical jump links collapse into a
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
-    <uxdot-example slot="image">
-      {# insert do 2 svg #}
+    <uxdot-example slot="image" color-palette="lightest">
+      <img src="../jump-links-guidelines-best-practice-2-do.svg"
+        alt="A jump links title and a sole four word jump link"
+        width="418"
+        height="288">
     </uxdot-example>
     <p>Write short headings to that short jump links are created</p>
   </uxdot-best-practice>
+
   <uxdot-best-practice variant="caution">
-    <uxdot-example slot="image">
-      {# insert dont 2 svg #}
+    <uxdot-example slot="image" color-palette="lightest">
+      <img src="../jump-links-guidelines-best-practice-2-dont.svg"
+        alt="Jump links where the third jump link is a sentence instead of a few words as the link"
+        width="418"
+        height="288">
     </uxdot-example>
     <p>Be aware that long headings will create event longer jump links.</p>
   </uxdot-best-practice>
@@ -235,17 +245,23 @@ To save space, vertical jump links collapse into a
 
 ### Max number of jump links
 
-
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
-    <uxdot-example slot="image">
-      {# insert do 3 svg #}
+    <uxdot-example slot="image" color-palette="lightest">
+      <img src="../jump-links-guidelines-best-practice-3-do.svg"
+        alt="Two sets of jump links. The left jump links set has five items. The right has five outer items and two nested items under the third jump link."
+        width="418"
+        height="320">
     </uxdot-example>
     <p>Include a max of eight jump links or use nesting</p>
   </uxdot-best-practice>
+
   <uxdot-best-practice variant="dont">
-    <uxdot-example slot="image">
-      {# insert dont 3 svg #}
+    <uxdot-example slot="image" color-palette="lightest">
+      <img src="../jump-links-guidelines-best-practice-3-dont.svg"
+        alt="A set of jump links with 22 different jump links."
+        width="418"
+        height="320">
     </uxdot-example>
     <p>Don't overload jump links with too many parent section links.</p>
   </uxdot-best-practice>
