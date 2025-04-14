@@ -130,7 +130,8 @@ export class RhSubnav extends LitElement {
     this.#firstLastClasses();
   }
 
-  #firstLastClasses() {
+  async #firstLastClasses() {
+    await this.updateComplete;
     this.#firstLink.classList.add('first');
     this.#lastLink.classList.add('last');
   }
