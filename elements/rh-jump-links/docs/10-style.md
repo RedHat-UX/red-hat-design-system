@@ -78,13 +78,9 @@ token at a minimum.
         height="312">
 </uxdot-example>
 
-<hgroup>
-
 ## Interaction states
 
 ### Hover
-
-</hgroup>
 
 The active section jump link is interactive, but the styling does not change on
 hover.
