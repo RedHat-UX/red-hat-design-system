@@ -58,9 +58,9 @@ There are two available orientations that offer several benefits and risks.
 
 ### Title text
 
-The title should always be included and should default to "Jump to section" if
+The title should always be included and should default to “Jump to section” if
 something else is not provided. Use sentence case only and limit title text to
-`25` characters max.
+25 characters max.
 
 ## Layout
 
@@ -156,7 +156,7 @@ the page
 ### Vertical
 
 Vertical jump links can occupy a specific amount of space like a number of grid
-columns. However, longer text meands more line breaks.
+columns. However, longer text means more line breaks.
 
 <uxdot-example color-palette="lightest" no-border variant="full">
     <img src="../jump-links-guidelines-responsive-design-vertical.svg"
@@ -179,8 +179,7 @@ not wide enough to display everything, overflow buttons will appear.
 
 ### Disclosure
 
-To save space, vertical jump links collapse into a
-[disclosure](/elements/disclosure/) element at specific screen sizes.
+To save space, both vertical and horizontal jump links collapse into a disclosure at specific screen sizes.
 
 Learn more about the [Disclosure](/elements/disclosure/) element.
 
@@ -205,7 +204,7 @@ Learn more about the [Disclosure](/elements/disclosure/) element.
         width="418"
         height="240">
     </uxdot-example>
-    <p>Write a custom title or uses the default which is "Jump to section".</p>
+    <p>Write a custom title or uses the default which is “Jump to section”.</p>
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="dont">
@@ -215,7 +214,7 @@ Learn more about the [Disclosure](/elements/disclosure/) element.
         width="418"
         height="240">
     </uxdot-example>
-    <p>Do not hide the title or else it might be confusing to users what this</p>
+    <p>Do not hide the title or else it might be confusing to users what this element does.</p>
   </uxdot-best-practice>
 </div>
 
@@ -229,7 +228,7 @@ Learn more about the [Disclosure](/elements/disclosure/) element.
         width="418"
         height="288">
     </uxdot-example>
-    <p>Write short headings to that short jump links are created</p>
+    <p>Write short headings so that short jump links are created.</p>
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="caution">
@@ -239,7 +238,7 @@ Learn more about the [Disclosure](/elements/disclosure/) element.
         width="418"
         height="288">
     </uxdot-example>
-    <p>Be aware that long headings will create event longer jump links.</p>
+    <p>Be aware that long headings will create even longer jump links.</p>
   </uxdot-best-practice>
 </div>
 
@@ -253,7 +252,7 @@ Learn more about the [Disclosure](/elements/disclosure/) element.
         width="418"
         height="320">
     </uxdot-example>
-    <p>Include a max of eight jump links or use nesting</p>
+    <p>Include a max of eight jump links or use nesting.</p>
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="dont">
