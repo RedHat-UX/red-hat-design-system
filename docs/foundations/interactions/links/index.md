@@ -49,8 +49,8 @@ subnav:
 
 Links are interactive elements that connect users to another page or page section. Outside of navigation elements, most links will appear as one of the following types:
 
-- **Inline links** - appear within a sentence or paragraph of text;
-- **Links in a list** - may be [accompanied by an icon][linkwithicon]; and
+- **Inline links** - appear within a sentence or paragraph of text
+- **Links in a list** - may be [accompanied by an icon][linkwithicon]
 - **[Calls to action][ctas]** - styled links that call attention to important actions
 
 ## Inline links
@@ -64,7 +64,7 @@ To improve link affordance in alignment with our brand standards, the styles in 
 
 ### Default
 
-Inline text links that may appear alongside non-link text (e.g. within body paragraphs and list items) should be styled like the following:
+Inline text links that may appear alongside non-link text (e.g., within body paragraphs and list items) should be styled like the following:
 
 <rh-table>
   <table>
@@ -89,7 +89,7 @@ Inline text links that may appear alongside non-link text (e.g. within body para
         <td><code>--rh-color-interactive-primary-default</code></td>
       </tr>
       <tr>
-        <td>Underline style</td>
+        <td>Underline - style</td>
         <td><code>text-decoration-style: dashed;</code></td>
         <td><code>text-decoration-style: dashed;</code></td>
       </tr>
@@ -184,7 +184,7 @@ The following elements are exempt from underlining requirements and should not h
     </uxdot-example>
     <figcaption>
         <span><rh-icon set="ui" size="md" icon="close-circle-fill" defer-hydration=""></rh-icon>Don't underline</span>
-      <p>Do not underline links accompanied by visual cues (e.g. call to action arrows) that indicate their interactivity.</p>
+      <p>Do not underline links accompanied by visual cues (e.g., call to action arrows) that indicate their interactivity.</p>
     </figcaption>
   </figure>
 
@@ -207,8 +207,8 @@ The following elements are exempt from underlining requirements and should not h
 Developers can use the following CSS as a starting point for link underlining:
 
 - In practice, you will probably want to use a more specific selector than `:is(p, ul, ol, dl) a` because this example selector applies to all links in paragraphs or lists on a page
-- This example adds a `max()` function to the text-underline-offset property allowing this value to grow proportionally at large font sizes
-- As of this writing, Safari has some issues with the text-decoration shorthand property so we separated it out into its component options `(-color, -line, -style, and -thickness)`
+- This example adds a `max()` function to the `text-underline-offset` property allowing this value to grow proportionally at large font sizes
+- As of this writing, Safari has some issues with the `text-decoration` shorthand property so we separated it out into its component options `(-color, -line, -style, and -thickness)`
 
 <rh-code-block>
   <script type="text/css">
@@ -237,7 +237,7 @@ If a user selects a link within [redhat.com][redhat] or other Red Hat web prope
 
 Use an external link icon if a link will direct users to another domain. This does not necessarily mean that the link will or should open in a new tab or window. However, if navigating to a new page in the same tab is very disruptive to the experience or workflow, then consider having the page open in a new tab or window.
 
-<rh-alert>
+<rh-alert state="info">
   <h4 slot="header">Helpful tip</h4>
   <p>Calls to action have <a href="/elements/call-to-action/guidelines/#call-to-action-text-labels">different guidance</a> regarding what icons can be used.</p>
 </rh-alert>
