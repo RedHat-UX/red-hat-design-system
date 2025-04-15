@@ -55,7 +55,7 @@ Links are interactive elements that connect users to another page or page sectio
 
 ## Inline links
 
-<uxdot-pattern src="./inline-link-demo.html" noCodeTabs="">
+<uxdot-pattern src="./inline-link-demo.html" no-code-tabs="">
 </uxdot-pattern>
 
 ## Interaction states
