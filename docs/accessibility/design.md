@@ -54,23 +54,11 @@ Small foreground text (non-bold text under 24px and bold text under 19px) must h
 
 #### Links
 
-Inline text links (e.g., those within paragraphs and list items in the main body of a page) should be underlined to make these links easy to discern for all visitors, particularly those with visual impairments or in situations that could make color differentiation difficult.
+You should underline inline text links that may appear within blocks alongside non-link text (e.g., within paragraphs and list items). This makes such links easy to discern for all visitors, particularly those with visual impairments or in situations that could make color differentiation difficult.
 
-In fact, you should default to underlining all text links, except for the following:
+If you can’t add underlines to your inline links, and color is the only way you can distinguish these links from non-link text within a paragraph or list, the contrast ratio between a link and its surrounding text must be at least 3:1 in both visited and unvisited states. And underlines or other non-color cues must also then be used to signify when the link receives hover.
 
-- Links within visually distinct navigation groupings, like menus.
-- CTAs and other links accompanied by visual cues (e.g., arrow symbols) to indicate their interactivity.
-
-That said, you still _can_ underline the above, at your discretion.
-
-If, for some reason, color is the only way you can distinguish links within a text block, the contrast ratio between the link and surrounding text _must_ be at least 3:1 in both visited and unvisited states. And underlines or other non-color cues _must also_ then be used to signify when the link receives hover and focus.
-
-<uxdot-example color-palette="lightest" width-adjustment="708px">
-  <img src="/assets/color/contrast-links.png"
-      alt="Contrast ratio of a blue link next to black text and an example of a link's darker blue, underlined hover state"
-      width="708"
-      height="171">
-</uxdot-example>
+Our [Interactions section](/foundations/interactions/links/) has specific information on styling links for Red Hat experiences.
 
 #### Graphical objects and UI components
 
