@@ -36,7 +36,7 @@ disclosure does not.
 
 Learn more about the [Disclosure](/elements/disclosure) element.
 
-<uxdot-example color-palette="lighter">
+<uxdot-example color-palette="lighter" no-border>
     <img src="../jump-links-style-color-scheme-light.svg"
         alt="Four sets of jump links. Two vertical with one nested, one horizontal, and one vertical inside a disclosure."
         width="1012"
@@ -45,7 +45,7 @@ Learn more about the [Disclosure](/elements/disclosure) element.
 
 ### Dark scheme
 
-<uxdot-example color-palette="darkest">
+<uxdot-example color-palette="darker" no-border>
     <img src="../jump-links-style-color-scheme-dark.svg"
         alt="Four sets of jump links on a dark color scheme. Two vertical with one nested, one horizontal, and one vertical inside a disclosure."
         width="1012"
@@ -64,7 +64,7 @@ token at a minimum.
         height="244">
 </uxdot-example>
 
-<uxdot-example color-palette="lighter">
+<uxdot-example color-palette="lighter" no-border>
     <img src="../jump-links-style-space-B.svg"
         alt="Horizontal jump links. 16px of padding around the jump links and 16px of top and bottom padding around the accessible label."
         width="1012"
@@ -85,14 +85,14 @@ token at a minimum.
 The active section jump link is interactive, but the styling does not change on
 hover.
 
-<uxdot-example color-palette="lightest">
+<uxdot-example color-palette="lighter" no-border>
     <img src="../jump-links-style-interaction-states-hover-color-scheme-light.svg"
         alt="Hovered jump links have the border thickness increased and the text gets darker."
         width="1012"
         height="464">
 </uxdot-example>
 
-<uxdot-example color-palette="darkest">
+<uxdot-example color-palette="darker" no-border>
     <img src="../jump-links-style-interaction-states-hover-color-scheme-dark.svg"
         alt="Similar to the light scheme, hovered jump links have the border thickness increased and the text gets darker."
         width="1012"
@@ -113,14 +113,14 @@ hover.
 
 The active section jump link can receive focus, but the styling does not change.
 
-<uxdot-example color-palette="lightest">
+<uxdot-example color-palette="lighter" no-border>
     <img src="../jump-links-style-interaction-states-focus-active-color-scheme-light.svg"
         alt="Focused jump links receive a blue outline all the way around the link."
         width="1012"
         height="464">
 </uxdot-example>
 
-<uxdot-example color-palette="darkest">
+<uxdot-example color-palette="darker" no-border>
     <img src="../jump-links-style-interaction-states-focus-active-color-scheme-dark.svg"
         alt="Similar to the light scheme, dark focused jump links have a blue outline all the way around the link."
         width="1012"
