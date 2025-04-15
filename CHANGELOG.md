@@ -15,10 +15,10 @@
 - 4e036d1: `<rh-stat>`: improved <abbr title="server side rendering">SSR</abbr> support
 - 706be44: Theming: ensure themable elements always load the default theme
 - 4e036d1: `<rh-pagination>`: improved <abbr title="server side rendering">SSR</abbr> support
-- d54b1cb: `<rh-tile>`: Fixed empty body slot
+- d54b1cb: `<rh-tile>`: fixed empty body slot
 - 4e036d1: `<rh-switch>`: improved <abbr title="server side rendering">SSR</abbr> support
 - 316bcd0: `<rh-dialog>`: increase contrast of close button for video dialogs
-- 8beac87: `<rh-pagination>`: Fix ellipsis background color on dark color schemes
+- 8beac87: `<rh-pagination>`: fix ellipsis background color on dark color schemes
 
 ## 3.0.0
 ### Major Changes
