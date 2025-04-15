@@ -247,11 +247,6 @@
   overflow-y: auto;
   margin-block-start: var(--_code-main-spacer);
   width: 100%;
-
-  &:has(#line-numbers[hidden]) {
-    grid-template-areas: 'code';
-    grid-template-columns: 1fr;
-  }
 }
 
 #sizers {
@@ -353,6 +348,11 @@
   pointer-events: none;
   grid-column: -1/1;
   background: var(--_gradient);
+}
+
+#content-lines:has(#line-numbers[hidden]) {
+  grid-template-areas: 'code';
+  grid-template-columns: 1fr;
 }
 
 :not(.wrap) #actions:before {
