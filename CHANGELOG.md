@@ -1,5 +1,25 @@
 # @rhds/elements
 
+## 3.0.1
+### Patch Changes
+
+- 4e036d1: `<rh-navigation-secondary>`: improved <abbr title="server side rendering">SSR</abbr> support
+- 642800b: `<rh-button>`: dark scheme support for buttons with icons
+- 706be44: `<rh-cta>`: ensure the arrow icon always appears
+- 4e036d1: `<rh-back-to-top>`: improved <abbr title="server side rendering">SSR</abbr> support
+- 4e036d1: `<rh-avatar>`: improved <abbr title="server side rendering">SSR</abbr> support
+- 4e036d1: `<rh-accordion>`: improved <abbr title="server side rendering">SSR</abbr> support
+- 4e036d1: `<rh-table>`: improved <abbr title="server side rendering">SSR</abbr> support
+- 4e036d1: `<rh-code-block>`: improved <abbr title="server side rendering">SSR</abbr> support
+- 4e036d1: `<rh-table>`: improved <abbr title="server side rendering">SSR</abbr> support
+- 4e036d1: `<rh-stat>`: improved <abbr title="server side rendering">SSR</abbr> support
+- 706be44: Theming: ensure themable elements always load the default theme
+- 4e036d1: `<rh-pagination>`: improved <abbr title="server side rendering">SSR</abbr> support
+- d54b1cb: `<rh-tile>`: fixed empty body slot
+- 4e036d1: `<rh-switch>`: improved <abbr title="server side rendering">SSR</abbr> support
+- 316bcd0: `<rh-dialog>`: increase contrast of close button for video dialogs
+- 8beac87: `<rh-pagination>`: fix ellipsis background color on dark color schemes
+
 ## 3.0.0
 ### Major Changes
 
