@@ -25,8 +25,8 @@
   "imports": {
     "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
-    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
     "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
     "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
@@ -43,8 +43,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.0/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
@@ -1100,24 +1100,9 @@
     <a href="#links">Links</a><a>
   </a></h4>
 </uxdot-copy-permalink>
-<p>Inline text links (e.g., those within paragraphs and list items in the main body of a page) should be underlined to make these links easy to discern for all visitors, particularly those with visual impairments or in situations that could make color differentiation difficult.</p>
-<p>In fact, you should default to underlining all text links, except for the following:</p>
-<ul>
-<li>Links within visually distinct navigation groupings, like menus.</li>
-<li>CTAs and other links accompanied by visual cues (e.g., arrow symbols) to indicate their interactivity.</li>
-</ul>
-<p>That said, you still <em>can</em> underline the above, at your discretion.</p>
-<p>If, for some reason, color is the only way you can distinguish links within a text block, the contrast ratio between the link and surrounding text <em>must</em> be at least 3:1 in both visited and unvisited states. And underlines or other non-color cues <em>must also</em> then be used to signify when the link receives hover and focus.</p>
-<uxdot-example   color-palette="lightest" width-adjustment="708px"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
-      <!--lit-node 0--><div id="container"
-           part="container"
-           class=" widthAdjustment "
-           style="--_width: 708px; --_alignment: center">
-        <slot></slot>
-      </div>
-    <!--/lit-part--></template>
-  <img src="/assets/color/contrast-links.png" alt="Contrast ratio of a blue link next to black text and an example of a link's darker blue, underlined hover state" width="708" height="171">
-</uxdot-example>
+<p>When possible, you should underline inline text links that may appear within blocks alongside non-link text (e.g., within paragraphs and list items). This makes such links easy to discern for all visitors, particularly those with visual impairments or in situations that could make color differentiation difficult.</p>
+<p>If you can’t add underlines to your inline links, and color is the <em>only</em> way you can distinguish these links from non-link text within a paragraph or list, the contrast ratio between a link and its surrounding text <em>must</em> be at least 3:1 in both visited and unvisited states. And underlines or other non-color cues must also then be used to signify when the link receives hover.</p>
+<p>Our <a href="/foundations/interactions/links/">Interactions section</a> has specific information on styling links for Red Hat experiences.</p>
 <uxdot-copy-permalink  class="h4"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
