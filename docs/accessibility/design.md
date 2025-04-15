@@ -54,9 +54,9 @@ Small foreground text (non-bold text under 24px and bold text under 19px) must h
 
 #### Links
 
-You should underline inline text links that may appear within blocks alongside non-link text (e.g., within paragraphs and list items). This makes such links easy to discern for all visitors, particularly those with visual impairments or in situations that could make color differentiation difficult.
+When possible, you should underline inline text links that may appear within blocks alongside non-link text (e.g., within paragraphs and list items). This makes such links easy to discern for all visitors, particularly those with visual impairments or in situations that could make color differentiation difficult.
 
-If you can’t add underlines to your inline links, and color is the only way you can distinguish these links from non-link text within a paragraph or list, the contrast ratio between a link and its surrounding text must be at least 3:1 in both visited and unvisited states. And underlines or other non-color cues must also then be used to signify when the link receives hover.
+If you can’t add underlines to your inline links, and color is the _only_ way you can distinguish these links from non-link text within a paragraph or list, the contrast ratio between a link and its surrounding text _must_ be at least 3:1 in both visited and unvisited states. And underlines or other non-color cues must also then be used to signify when the link receives hover.
 
 Our [Interactions section](/foundations/interactions/links/) has specific information on styling links for Red Hat experiences.
 
