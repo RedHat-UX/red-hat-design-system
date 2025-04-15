@@ -247,6 +247,11 @@
   overflow-y: auto;
   margin-block-start: var(--_code-main-spacer);
   width: 100%;
+
+  &:has(#line-numbers[hidden]) {
+    grid-template-areas: 'code';
+    grid-template-columns: 1fr;
+  }
 }
 
 #sizers {
