@@ -88,6 +88,10 @@ details[open] {
   }
 }
 
+:host(.mobile[has-jump-links]) details[open]::before {
+  border-inline-start-color: transparent;
+}
+
 :host(:has(rh-jump-links)) {
   details[open]:before {
     border: 21px solid yellow;
