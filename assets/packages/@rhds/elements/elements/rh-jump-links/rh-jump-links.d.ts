@@ -1,11 +1,7 @@
 import { LitElement, type TemplateResult } from 'lit';
 import '@rhds/elements/rh-icon/rh-icon.js';
 /**
- * Jump links act as persistent navigation that consists of a vertical list of
- * anchor links. Selecting a link moves a user to content that corresponds with
- * the link selected. A link is displayed as active when the content it links to
- * is visible in the browser window.
-.
+ * Jump links allow users to navigate sections of content on a page.
  * @fires toggle - when the `expanded` disclosure widget is toggled
  * @slot - Place `<rh-jump-link>` or `<rh-jump-links-list>` elements here
  */

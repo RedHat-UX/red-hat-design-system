@@ -15,11 +15,7 @@ import { css } from "lit";
 const style = css `:host{display:block;position:relative}.overflow-button{display:hidden}#container{--_bdr:var(--rh-length-4xs,1px) solid var(--rh-color-border-subtle)}:host([orientation=horizontal]){display:flex;justify-content:center}:host([orientation=horizontal]) #container{display:flex;flex-flow:row nowrap;overflow:auto visible}:host([orientation=horizontal]) #container:after,:host([orientation=horizontal]) #container:before{display:block;position:absolute;inset-inline:0;content:""}:host([orientation=horizontal]) #container:before{margin-inline:var(--rh-space-3xl);border-block-start:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle)}:host([orientation=horizontal]) #container:after{border-block-end:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle);inset-block-end:0}:host([orientation=horizontal]) .overflow-button{flex:none;line-height:1;opacity:1;border:0;padding-block:0;padding-inline:var(--rh-space-lg,16px);background-color:initial;color:var(--_overflow-button-text-color);position:relative;z-index:2}:host([orientation=horizontal]) .overflow-button rh-icon{pointer-events:none}:host([orientation=horizontal]) .overflow-button rh-icon:dir(rtl){rotate:180deg}:host([orientation=horizontal]) .overflow-button:first-of-type{margin-inline-end:0;translate:0 0}:host([orientation=horizontal]) .overflow-button:first-of-type:before{border-inline-width:0 1px}:host([orientation=horizontal]) .overflow-button:nth-of-type(2){margin-inline-start:0;translate:0 0;inset-inline-start:-1px}:host([orientation=horizontal]) .overflow-button:nth-of-type(2):before{border-inline-width:1px 0}:host([orientation=horizontal]) .overflow-button:disabled{pointer-events:none;color:light-dark(var(--rh-color-gray-40,#a3a3a3),var(--rh-color-gray-50,#707070))}:host([orientation=horizontal]) .overflow-button:hover{color:var(--rh-color-text-primary)}`;
 import '@rhds/elements/rh-icon/rh-icon.js';
 /**
- * Jump links act as persistent navigation that consists of a vertical list of
- * anchor links. Selecting a link moves a user to content that corresponds with
- * the link selected. A link is displayed as active when the content it links to
- * is visible in the browser window.
-.
+ * Jump links allow users to navigate sections of content on a page.
  * @fires toggle - when the `expanded` disclosure widget is toggled
  * @slot - Place `<rh-jump-link>` or `<rh-jump-links-list>` elements here
  */
