@@ -84,7 +84,7 @@ Small heading sizes for small elements or other use cases. Weights for these hea
 
 | Name  | Font family            | Weight       | Size           | Line height (1.3) |
 | ----- | ---------------------- | ------------ | -------------- | ----------------- |
-| 2xs   | Display                | Medium (500) | 18 (1.1.25rem) | 23.4              |
+| 2xs   | Display                | Medium (500) | 18 (1.125rem)  | 23.4              |
 | 3xs   | Display                | Medium (500) | 16 (1.0rem)    | 20.8              |
 
 </rh-table>
