@@ -351,7 +351,7 @@ When the Tab key is pressed repeatedly, the focus highlights links in order, fro
             width="482"
             height="135">
     </uxdot-example>
-    <p>Do not link very long strings of text.</p>
+    <p><a href="/accessibility/content/#avoid-the-following-when-creating-links">Do not link very long strings of text (including long URLs).</p>
   </uxdot-best-practice>
 </div>
 
