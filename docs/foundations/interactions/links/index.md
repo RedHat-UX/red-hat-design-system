@@ -23,6 +23,7 @@ subnav:
   import '@rhds/elements/rh-alert/rh-alert.js';
   import '@rhds/elements/rh-code-block/rh-code-block.js';
   import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
+  import '@rhds/elements/rh-cta/rh-cta.js';
   import '@rhds/elements/rh-table/rh-table.js';
   import "@uxdot/elements/uxdot-pattern.js";
 </script>
@@ -328,6 +329,8 @@ When the Tab key is pressed repeatedly, the focus highlights links in order, fro
   </uxdot-best-practice>
 </div>
 
+<rh-cta href="/accessibility/content/#link-text">Writing accessible link text</rh-cta>
+
 ### Long links
 
 <div class="grid sm-two-columns">
@@ -375,7 +378,6 @@ When the Tab key is pressed repeatedly, the focus highlights links in order, fro
     <p>Do not use buttons as links.</p>
   </uxdot-best-practice>
 </div>
-
 
 [linkwithicon]: /patterns/link-with-icon/
 [ctas]: /elements/call-to-action/
