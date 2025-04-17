@@ -76,6 +76,19 @@ These are our standard h1 - h6 heading sizes. Weights for these headings should 
 
 </rh-table>
 
+### Small headings
+
+Small heading sizes for small elements or other use cases. Weights for these headings should not be changed.
+
+<rh-table>
+
+| Name  | Font family            | Weight       | Size           | Line height (1.3) |
+| ----- | ---------------------- | ------------ | -------------- | ----------------- |
+| 2xs   | Display                | Medium (500) | 18 (1.1.25rem) | 23.4              |
+| 3xs   | Display                | Medium (500) | 16 (1.0rem)    | 20.8              |
+
+</rh-table>
+
 ### Body text
 
 Body text can use the medium weight and italics for emphasis, but never use the bold weight.
