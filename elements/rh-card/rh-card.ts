@@ -43,7 +43,7 @@ const PALETTE_RE = /(er|est)+/g;
  *              The font weight for headings in the header and body
  */
 @customElement('rh-card')
-@colorPalettes('lightest', 'lighter', 'darker', 'darkest')
+@colorPalettes
 @themable
 export class RhCard extends LitElement {
   static styles = [styles];
@@ -86,17 +86,7 @@ export class RhCard extends LitElement {
     } else if (this.#isPromo) {
       return `${`${this.colorPalette ?? 'lightest'}`.replace(PALETTE_RE, '')}est` as 'lightest' | 'darkest';
     } else {
-      switch (this.colorPalette) {
-        case 'lightest':
-        case 'lighter':
-        case 'darkest':
-          return this.colorPalette;
-        case 'light':
-          return 'lighter';
-        case 'darker':
-        case 'dark':
-          return 'darkest';
-      }
+      return this.colorPalette;
     }
   }
 
