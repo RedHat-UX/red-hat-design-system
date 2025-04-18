@@ -4,7 +4,9 @@ rh-navigation-secondary {
   --_nav-link-color: var(--rh-color-text-primary);
   --_logo-link-color: var(--rh-color-text-primary);
   --_nav-chevron-color: var(--rh-color-text-primary);
-  --rh-color-surface: light-dark(var(--rh-color-surface-lighter), var(--rh-color-surface-dark));
+  --rh-color-surface:
+    light-dark(var(--rh-color-surface-lighter),
+      var(--rh-color-surface-dark, #383838));
 
   display: block;
   position: sticky;
