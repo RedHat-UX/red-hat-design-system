@@ -76,6 +76,19 @@ These are our standard h1 - h6 heading sizes. Weights for these headings should 
 
 </rh-table>
 
+### Small headings
+
+Small heading sizes for small elements or other use cases. Weights for these headings should not be changed.
+
+<rh-table>
+
+| Name  | Font family            | Weight       | Size           | Line height (1.3) |
+| ----- | ---------------------- | ------------ | -------------- | ----------------- |
+| 2xs   | Display                | Medium (500) | 18 (1.125rem)  | 23.4              |
+| 3xs   | Display                | Medium (500) | 16 (1.0rem)    | 20.8              |
+
+</rh-table>
+
 ### Body text
 
 Body text can use the medium weight and italics for emphasis, but never use the bold weight.
@@ -96,7 +109,7 @@ Body text can use the medium weight and italics for emphasis, but never use the 
 
 </rh-table>
 
-### Code text
+### Code
 
 <rh-table>
 
@@ -108,13 +121,10 @@ Body text can use the medium weight and italics for emphasis, but never use the 
 | md    | Mono        | Regular | 16 (1.0rem)   | 24                |
 | sm    | Mono        | Regular | 14 (0.875rem) | 21                |
 | xs    | Mono        | Regular | 12 (0.75rem)  | 18                |
-| 2xs   | Mono        | Regular | 10 (0.625rem) | 15                |
-| 3xs   | Mono        | Regular | 8 (0.5rem)    | 12                |
-| 4xs   | Mono        | Regular | 6 (0.375rem)  | 9                 |
 
 </rh-table>
 
-### Titles
+### Title
 
 <rh-table>
 
@@ -125,7 +135,7 @@ Body text can use the medium weight and italics for emphasis, but never use the 
 
 </rh-table>
 
-### Quotes
+### Quote
 
 The bold weight may be used for emphasis if absolutely necessary.
 
@@ -169,6 +179,10 @@ The mobile scale takes effect when the viewport size is less than 768px.
 
 </rh-table>
 
+### Small headings
+
+Small heading sizes do not change.
+
 ### Body text
 
 <rh-table>
@@ -181,7 +195,7 @@ The mobile scale takes effect when the viewport size is less than 768px.
 
 </rh-table>
 
-### Code text
+### Code
 
 <rh-table>
 
@@ -193,7 +207,7 @@ The mobile scale takes effect when the viewport size is less than 768px.
 
 </rh-table>
 
-### Titles
+### Title
 
 <rh-table>
 
@@ -203,7 +217,7 @@ The mobile scale takes effect when the viewport size is less than 768px.
 
 </rh-table>
 
-### Quotes
+### Quote
 
 <rh-table>
 
