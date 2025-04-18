@@ -182,6 +182,10 @@ The mobile scale takes effect when the viewport size is less than 768px.
 
 </rh-table>
 
+### Small headings
+
+Small heading sizes do not change.
+
 ### Body text
 
 <rh-table>
