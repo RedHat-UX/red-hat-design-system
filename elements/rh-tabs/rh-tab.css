@@ -28,14 +28,6 @@
   display: none !important;
 }
 
-slot[name='icon'] {
-  display: block;
-}
-
-[part='icon'] {
-  margin-inline-end: var(--rh-space-md, 8px);
-}
-
 #button {
   margin: 0;
   font-family: inherit;
@@ -44,6 +36,7 @@ slot[name='icon'] {
   position: relative;
   display: flex;
   flex: 1;
+  gap: var(--rh-space-md, 8px);
   text-decoration: none;
   cursor: pointer;
   align-items: center;
