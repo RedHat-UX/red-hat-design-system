@@ -109,7 +109,7 @@ Body text can use the medium weight and italics for emphasis, but never use the 
 
 </rh-table>
 
-### Code text
+### Code
 
 <rh-table>
 
@@ -121,13 +121,10 @@ Body text can use the medium weight and italics for emphasis, but never use the 
 | md    | Mono        | Regular | 16 (1.0rem)   | 24                |
 | sm    | Mono        | Regular | 14 (0.875rem) | 21                |
 | xs    | Mono        | Regular | 12 (0.75rem)  | 18                |
-| 2xs   | Mono        | Regular | 10 (0.625rem) | 15                |
-| 3xs   | Mono        | Regular | 8 (0.5rem)    | 12                |
-| 4xs   | Mono        | Regular | 6 (0.375rem)  | 9                 |
 
 </rh-table>
 
-### Titles
+### Title
 
 <rh-table>
 
@@ -138,7 +135,7 @@ Body text can use the medium weight and italics for emphasis, but never use the 
 
 </rh-table>
 
-### Quotes
+### Quote
 
 The bold weight may be used for emphasis if absolutely necessary.
 
@@ -198,7 +195,7 @@ Small heading sizes do not change.
 
 </rh-table>
 
-### Code text
+### Code
 
 <rh-table>
 
@@ -210,7 +207,7 @@ Small heading sizes do not change.
 
 </rh-table>
 
-### Titles
+### Title
 
 <rh-table>
 
@@ -220,7 +217,7 @@ Small heading sizes do not change.
 
 </rh-table>
 
-### Quotes
+### Quote
 
 <rh-table>
 
