@@ -21,7 +21,6 @@ import {
 import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-tab.css';
-import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 
 export class TabExpandEvent extends Event {
   constructor(
@@ -76,8 +75,6 @@ export class RhTab extends LitElement {
   @consume({ context: rhTabsLastTabContext, subscribe: true })
   @state() private lastTab: RhTab | null = null;
 
-  #slots = new SlotController(this, 'icon', null);
-
   #internals = InternalsController.of(this, { role: 'tab' });
 
   override connectedCallback() {
@@ -100,7 +97,6 @@ export class RhTab extends LitElement {
            class="${classMap({ active, box, vertical, first, last })}">
         <slot name="icon"
               part="icon"
-              ?hidden="${this.#slots.hasSlotted('icon')}"
               @slotchange="${() => this.requestUpdate()}"></slot>
         <slot part="text"></slot>
       </div>
