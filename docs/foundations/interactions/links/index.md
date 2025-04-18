@@ -371,7 +371,7 @@ When the Tab key is pressed repeatedly, the focus highlights links in order, fro
   <uxdot-best-practice variant="dont">
     <uxdot-example color-palette="lightest" width-adjustment="482px" slot="image">
       <img src="./links-best-practice-3-dont.svg"
-            alt="Blue primary button that syas 'Learn more' text with a right arrow"
+            alt="Blue primary button that says 'Learn more' text with a right arrow"
             width="482"
             height="100">
     </uxdot-example>
