@@ -207,9 +207,9 @@ The following elements are exempt from underlining requirements and should not h
 
 Developers can use the following CSS as a starting point for link underlining:
 
-- In practice, you will probably want to use a more specific selector than `:is(p, ul, ol, dl) a` because this example selector applies to all links in paragraphs or lists on a page
-- This example adds a `max()` function to the `text-underline-offset` property allowing this value to grow proportionally at large font sizes
-- As of this writing, Safari has some issues with the `text-decoration` shorthand property so we separated it out into its component options `(-color, -line, -style, and -thickness)`
+- In practice, you will probably want to use a more specific selector than `:is(p, ul, ol, dl) a`, because this example selector applies to all links in paragraphs or lists on a page.
+- This example adds a `max()` function to the `text-underline-offset` property, allowing this value to grow proportionally at large font sizes.
+- As of this writing, Safari has some issues with the `text-decoration` shorthand property, so we separated it out into its component options `(-color, -line, -style, and -thickness)`.
 
 <rh-code-block>
   <script type="text/css">
@@ -351,7 +351,7 @@ When the Tab key is pressed repeatedly, the focus highlights links in order, fro
             width="482"
             height="135">
     </uxdot-example>
-    <p><a href="/accessibility/content/#avoid-the-following-when-creating-links">Do not link very long strings of text (including long URLs).</p>
+    <p>[Do not link](/accessibility/content/#avoid-the-following-when-creating-links) very long strings of text (including long URLs).</p>
   </uxdot-best-practice>
 </div>
 
