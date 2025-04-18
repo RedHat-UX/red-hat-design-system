@@ -1,7 +1,6 @@
 :host {
   display: flex;
   flex: none;
-  background-color: var(--rh-color-surface);
 
   --_active-tab-border:
     var(--rh-border-width-lg, 3px) solid var(--_active-tab-border-color,
@@ -107,10 +106,20 @@ slot[name='icon'] {
     }
 
     &:not(.box) {
+      @container (max-width: 767px) {
+        &:after {
+          border-block-start: var(--_active-tab-border);
+        }
+      }
+
       @container (min-width: 768px) {
         padding-block:
           var(--rh-tabs-link-padding-block-start, var(--rh-space-md, 8px))
           var(--rh-tabs-link-padding-block-end, var(--rh-space-md, 8px));
+
+        &:after {
+          border-block-end-color: transparent;
+        }
 
         &.first {
           margin-block-start: var(--rh-space-xl, 24px);
@@ -212,20 +221,6 @@ slot[name='icon'] {
             border-block-start: var(--_active-tab-border);
             border-block-end: var(--_active-tab-border-open);
           }
-        }
-      }
-    }
-
-    &.vertical {
-      @container (max-width: 767px) {
-        &:after {
-          border-block-start: var(--_active-tab-border);
-        }
-      }
-
-      @container (min-width: 768px) {
-        &:after {
-          border-block-end: transparent;
         }
       }
     }
@@ -370,6 +365,7 @@ slot[name='icon'] {
                 var(--rh-border-width-lg, 3px)
                 solid
                 var(--rh-color-interactive-secondary-default);
+              border-block-end-color: transparent;
             }
           }
         }
