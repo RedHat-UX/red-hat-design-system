@@ -141,15 +141,15 @@ Links should appear clickable and focusable. And, when possible, [links][linkfou
 
 #### Opening links in new windows
 
-Avoid opening links in new windows or tabs, as this [takes control away](#user-control) from the user. There are only a few exceptions where it may be acceptable to open links in new windows or tabs:
+Avoid opening links in new windows or tabs, as this [takes control away](#user-control) from the user. There are only a few exceptions where it may be acceptable to open links in new windows/tabs:
 
-- A link might interrupt an ongoing process (e.g., filling out a form) where navigating away would lose the user's progress.
-- A link provides help or assistance that could would take the user away from a step in the current experience, like search results.
-- A link leads to a file or document that isn't a web page or web application, like a PDF.
+- When a link might interrupt an ongoing process (e.g., filling out a form) where navigating away would lose the user's progress.
+- When a link provides help or assistance that could would take the user away from a step in the current experience, like search results.
+- When a link leads to a file or document that isn't a web page or web application, like a PDF.
 
 In the first two cases above, such experience interruptions may be better handled through tooltips, popovers, or modals/dialogs.
 
-If a link must open in a new window, indicate this both visually and non-visually. Text is preferred, but an icon (with text alternative for assistive tech users) can be used to announce that a new window will open.
+If a link must open in a new window, indicate this both [visually][externallinks] and non-visually. Text is preferred, but an icon (with text alternative for assistive tech users) can be used to announce that a new window will open.
 
 ### Target size
 
@@ -196,6 +196,7 @@ Text should never be justified. Justified text is aligned to the left and right 
 
 [coloraccessibility]: /foundations/color/accessibility/
 [colorcontrast]: https://www.tpgi.com/color-contrast-checker/
+[externallinks]: foundations/interactions/links/#external-pages
 [linkfoundations]: /foundations/interactions/links/
 [paragraphspacing]: https://www.w3.org/WAI/WCAG21/Understanding/visual-presentation.html
 [rhbutton]: /elements/button/
