@@ -5,7 +5,7 @@ rh-navigation-secondary {
   --_logo-link-color: var(--rh-color-text-primary);
   --_nav-chevron-color: var(--rh-color-text-primary);
   --rh-color-surface:
-    light-dark(var(--rh-color-surface-lighter),
+    light-dark(var(--rh-color-surface-lighter, #f2f2f2),
       var(--rh-color-surface-dark, #383838));
 
   display: block;
