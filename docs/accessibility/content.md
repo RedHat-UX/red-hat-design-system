@@ -217,7 +217,7 @@ In addition to the best practices for all microcopy, adhere to the following bes
 - Use the same link text for links that go to the same place.
 - Use different link text for links that go to different places.
 - If you absolutely must use URLs as link text, try to choose short and easy-to-read URLs (e.g., “redhat.com” instead of "https://www.redhat.com/").
-- Links that point to external sites, [open new windows/tabs](/accessibility/design/#opening-links-in-new-windows), or launch other media should indicate this behavior to all visitors (both users and non-users of assistive tech alike)
+- Links that point to external sites, [open new windows/tabs](/accessibility/design/#opening-links-in-new-windows), or launch other media should indicate this behavior to all visitors (both users and non-users of assistive tech alike).
 
 #### Avoid the following when creating links
 

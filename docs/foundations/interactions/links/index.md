@@ -235,9 +235,9 @@ At Red Hat, we prefer to [keep the user in control](/accessibility/design/#user-
 
 ### External pages
 
-Use an external link icon if a link will direct users to another domain. This visual indicator must also be paired with a non-visual indicator. While text is preferred, alternative text may be used for assistive tech users.
+Indicate when links will direct users to another domain. While text indicators are preferred, you may also use external link icons, provided that the icon has a text label (e.g., alt text) for assistive tech.
 
-External links to another domain are [not a reason](/accessibility/design/#opening-links-in-new-windows) to open them in a new window or tab.
+Pointing an external link to another domain is [not a reason](/accessibility/design/#opening-links-in-new-windows) for opening it in a new window or tab.
 
 <rh-alert state="info">
   <h4 slot="header">Helpful tip</h4>
