@@ -23,7 +23,7 @@
       var(--rh-color-gray-40, #a3a3a3));
   --_switch-handle-color:
     light-dark(var(--rh-color-surface-lightest, #ffffff),
-      oklch(from var(--rh-color-surface-dark) calc(l * 0.82) c h));
+      oklch(from var(--rh-color-surface-dark, #383838) calc(l * 0.82) c h));
 
   &:after {
     box-shadow: light-dark(none, var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2)));
