@@ -9,7 +9,7 @@ export declare class TabExpandEvent extends Event {
  * @slot icon - Can contain an `<svg>` or `<rh-icon>`
  * @slot - Tab title text
  * @csspart button - element that contains the interactive part of a tab
- * @csspart icon - icon `<span>` element
+ * @csspart icon - `<rh-icon>` element
  * @csspart text - tile text `<span>` element
  * @cssprop {<color>} [--rh-tabs-link-color=#4d4d4d] - Tab link text color
  * @cssprop {<color>} [--rh-tabs-active-border-color=#ff442b] - Tab active border color
