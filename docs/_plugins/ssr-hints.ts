@@ -19,6 +19,7 @@ import {
 } from '@parse5/tools';
 import type { Options } from './rhds.js';
 import type { TransformContext } from '@11ty/eleventy/src/UserConfig.js';
+import type { RHDSSSRController } from 'lib/ssr-controller.js';
 
 function isLengthyTextNode(node: Node): node is TextNode {
   return isTextNode(node) && !!getTextContent(node).trim();
@@ -34,7 +35,7 @@ function isUnslottedElement(node: Node): node is Element {
  * @param options
  */
 export function injectSSRHintAttributes(
-  this: TransformContext,
+  this: TransformContext | RHDSSSRController,
   node: Node,
   options?: Pick<Options, 'slotControllerElements'>,
 ): void {
