@@ -52,6 +52,8 @@ export class RhDisclosure extends LitElement {
     ].map(selector => `${selector}:not([inert]):not([inert] *):not([tabindex^='-'])`),
   ].join(',');
 
+  #mo = new MutationObserver(() => this.#mutationsCallback());
+
   /**
    * Set the colorPalette of the disclosure. Overrides parent context. Possible values are:
    * - `lightest` (default)
@@ -76,11 +78,12 @@ export class RhDisclosure extends LitElement {
   @query('details') private detailsEl!: HTMLDetailsElement;
   @query('summary') private summaryEl!: HTMLElement;
 
+  connectedCallback() {
+    super.connectedCallback();
+    this.#mutationsCallback();
+  }
+
   render() {
-    const hasJumpLinks: RhJumpLinks | null = this.querySelector('rh-jump-links');
-    if (hasJumpLinks && ! this.hasAttribute('has-jump-links')) {
-      this.setAttribute('has-jump-links', '');
-    }
     return html`
       <details
           ?open="${this.open}"
@@ -126,6 +129,13 @@ export class RhDisclosure extends LitElement {
     this.detailsEl.open = false;
     this.open = false;
     this.summaryEl.focus();
+  }
+
+  #mutationsCallback(): void {
+    const hasJumpLinks: RhJumpLinks | null = this.querySelector('rh-jump-links');
+    if (hasJumpLinks && ! this.hasAttribute('has-jump-links')) {
+      this.setAttribute('has-jump-links', '');
+    }
   }
 }
 
