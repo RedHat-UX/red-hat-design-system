@@ -48,8 +48,9 @@
       var(--_card-background, var(--rh-color-surface-darkest, #151515)));
   color: var(--rh-color-text-primary);
 
-  &.light {
-    --_card-background: var(--rh-color-surface-light, #e0e0e0);
+  &.light,
+  &.dark {
+    --_card-background: var(--rh-color-surface);
   }
 
   &.lighter {
@@ -58,10 +59,6 @@
 
   &.lightest {
     --_card-background: var(--rh-color-surface-lightest, #ffffff);
-  }
-
-  &.dark {
-    --_card-background: var(--rh-color-surface-dark, #383838);
   }
 
   &.darker {
