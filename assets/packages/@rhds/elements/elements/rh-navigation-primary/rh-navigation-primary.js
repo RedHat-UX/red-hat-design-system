@@ -25,7 +25,9 @@ const styles = css `*,:after,:before{box-sizing:border-box}:host{--_gradient:lin
  * every page to ensure a consistent user experience across websites.
  *
  * @summary       Primary navigation
- * @slot          - Place hamburger menu links and dropdowns
+ * @slot          - Use this slot for `<rh-primary-navigation-item>` hamburger menu links and dropdowns
+ * @slot          logo -
+ *                Use this slot to override the link and logo image for translations and sub sites.
  * @slot          event -
  *                Use this slot for event promotion.  Images such as SVGs and links are most often slotted here.
  *                Slot these items using the `<rh-navigation-primary-item slot="event">` element.
