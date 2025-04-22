@@ -144,7 +144,7 @@ Links should appear clickable and focusable. And, when possible, [links][linkfou
 Avoid opening links in new windows or tabs, as this [takes control away](#user-control) from the user. There are only a few exceptions where it may be acceptable to open links in new windows/tabs:
 
 - When a link might interrupt an ongoing process (e.g., filling out a form) where navigating away would lose the user's progress.
-- When a link provides help or assistance that could would take the user away from a step in the current experience, like search results.
+- When a link provides help or assistance that would take the user away from a step in the current experience, like search results.
 - When a link leads to a file or document that isn't a web page or web application, like a PDF.
 
 In the first two cases above, such experience interruptions may be better handled through tooltips, popovers, or modals/dialogs.
