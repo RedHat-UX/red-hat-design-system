@@ -196,7 +196,7 @@ Text should never be justified. Justified text is aligned to the left and right 
 
 [coloraccessibility]: /foundations/color/accessibility/
 [colorcontrast]: https://www.tpgi.com/color-contrast-checker/
-[externallinks]: foundations/interactions/links/#external-pages
+[externallinks]: /foundations/interactions/links/#external-pages
 [linkfoundations]: /foundations/interactions/links/
 [paragraphspacing]: https://www.w3.org/WAI/WCAG21/Understanding/visual-presentation.html
 [rhbutton]: /elements/button/
