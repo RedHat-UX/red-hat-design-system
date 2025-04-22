@@ -39,27 +39,24 @@ Our type scale features a range of text sizes and weights designed to support lo
 
 ### Base text size
 
-We use a base text size of 16px or 1.0rem.
+We use a base text size of 16px or `1.0rem`.
 
 ## Desktop scale
 
-### Extra large headings
+### Extra small headings
 
-These are Expressive type heading sizes.
-
-To learn more about how to use these, go to the [Choosing type][choosingtype] page.
+Use extra small headings inside small elements or for other use cases. Weights for these headings should not be changed.
 
 <rh-table>
 
-| Name  | Font family            | Weight   | Size        | Line height (1.1) |
-| ----- | ---------------------- | -------- | ----------- | ----------------- |
-| 5xl   | Display, Text, Mono    | Multiple | 96 (6.0rem) | 105.6             |
-| 4xl   | Display, Text, Mono    | Multiple | 80 (5.0rem) | 88                |
-| 3xl   | Display, Text, Mono    | Multiple | 64 (4.0rem) | 70.4              |
+| Name  | Font family            | Weight       | Size           | Line height (1.3) |
+| ----- | ---------------------- | ------------ | -------------- | ----------------- |
+| 3xs   | Display                | Medium (500) | 16 (1.0rem)    | 20.8              |
+| 2xs   | Display                | Medium (500) | 18 (1.125rem)  | 23.4              |
 
 </rh-table>
 
-### Headings
+### Standard headings
 
 These are our standard h1 - h6 heading sizes. Weights for these headings should not be changed.
 
@@ -67,65 +64,86 @@ These are our standard h1 - h6 heading sizes. Weights for these headings should 
 
 | Name  | Font family            | Weight        | Size         | Line height (1.3) |
 | ----- | ---------------------- | ------------- | ------------ | ----------------- |
-| 2xl   | Display                | Regular (400) | 48 (3.0 rem) | 62.4              |
-| xl    | Display                | Regular (400) | 40 (2.5rem)  | 52                |
-| lg    | Display                | Medium (500)  | 36 (2.25rem) | 46.8              |
-| md    | Display                | Medium (500)  | 28 (1.75rem) | 36.4              |
-| sm    | Display                | Medium (500)  | 24 (1.5rem)  | 31.2              |
 | xs    | Display                | Medium (500)  | 20 (1.25rem) | 26                |
+| sm    | Display                | Medium (500)  | 24 (1.5rem)  | 31.2              |
+| md    | Display                | Medium (500)  | 28 (1.75rem) | 36.4              |
+| lg    | Display                | Medium (500)  | 36 (2.25rem) | 46.8              |
+| xl    | Display                | Regular (400) | 40 (2.5rem)  | 52                |
+| 2xl   | Display                | Regular (400) | 48 (3.0 rem) | 62.4              |
 
 </rh-table>
 
-### Body text
+### Expressive headings
 
-Body text can use the medium weight and italics for emphasis, but never use the bold weight.
+To learn more about how to use expressive headings, go to the [Choosing type][choosingtype] page.
+
+<rh-table>
+
+| Name  | Font family            | Weight   | Size        | Line height (1.1) |
+| ----- | ---------------------- | -------- | ----------- | ----------------- |
+| 3xl   | Display, Text, Mono    | Multiple | 64 (4.0rem) | 70.4              |
+| 4xl   | Display, Text, Mono    | Multiple | 80 (5.0rem) | 88                |
+| 5xl   | Display, Text, Mono    | Multiple | 96 (6.0rem) | 105.6             |
+
+</rh-table>
+
+### Body text and lists
+
+Body text and lists can use the medium weight and italics for emphasis, but never use the bold weight.
 
 <rh-table>
 
 | Name  | Font family | Weight  | Size          | Line height (1.5) |
 | ----- | ----------- | ------- | ------------- | ----------------- |
-| 2xl   | Text        | Regular | 24 (1.5rem)   | 36                |
-| xl    | Text        | Regular | 20 (1.25rem)  | 30                |
-| lg    | Text        | Regular | 18 (1.125rem) | 27                |
-| md    | Text        | Regular | 16 (1.0rem)   | 24                |
-| sm    | Text        | Regular | 14 (0.875rem) | 21                |
 | xs    | Text        | Regular | 12 (0.75rem)  | 18                |
-| 2xs   | Text        | Regular | 10 (0.625rem) | 15                |
-| 3xs   | Text        | Regular | 8 (0.5rem)    | 12                |
-| 4xs   | Text        | Regular | 6 (0.375rem)  | 9                 |
+| sm    | Text        | Regular | 14 (0.875rem) | 21                |
+| md    | Text        | Regular | 16 (1.0rem)   | 24                |
+| lg    | Text        | Regular | 18 (1.125rem) | 27                |
+| xl    | Text        | Regular | 20 (1.25rem)  | 30                |
+| 2xl   | Text        | Regular | 24 (1.5rem)   | 36                |
 
 </rh-table>
 
-### Code text
+### Code
+
+Code text may use the medium weight and italics for emphasis if necessary, but never use the bold weight.
 
 <rh-table>
 
 | Name  | Font family | Weight  | Size          | Line height (1.5) |
 | ----- | ----------- | ------- | ------------- | ----------------- |
-| 2xl   | Mono        | Regular | 24 (1.5rem)   | 36                |
-| xl    | Mono        | Regular | 20 (1.25rem)  | 30                |
-| lg    | Mono        | Regular | 18 (1.125rem) | 27                |
-| md    | Mono        | Regular | 16 (1.0rem)   | 24                |
-| sm    | Mono        | Regular | 14 (0.875rem) | 21                |
 | xs    | Mono        | Regular | 12 (0.75rem)  | 18                |
-| 2xs   | Mono        | Regular | 10 (0.625rem) | 15                |
-| 3xs   | Mono        | Regular | 8 (0.5rem)    | 12                |
-| 4xs   | Mono        | Regular | 6 (0.375rem)  | 9                 |
+| sm    | Mono        | Regular | 14 (0.875rem) | 21                |
+| md    | Mono        | Regular | 16 (1.0rem)   | 24                |
+| lg    | Mono        | Regular | 18 (1.125rem) | 27                |
+| xl    | Mono        | Regular | 20 (1.25rem)  | 30                |
+| 2xl   | Mono        | Regular | 24 (1.5rem)   | 36                |
 
 </rh-table>
 
-### Titles
+### Call to action
+
+<rh-table>
+
+| Name  | Font family | Weight  | Size          | Line height (1.5) |
+| ----- | ----------- | ------- | ------------- | ----------------- |
+| sm    | Display     | Bold    | 16 (1.0rem)   | 24                |
+| lg    | Display     | Bold    | 18 (1.125rem) | 27                |
+
+</rh-table>
+
+### Title
 
 <rh-table>
 
 | Name  | Font family | Weight  | Size         | Line height (1.5) |
 | ----- | ----------- | ------- | ------------ | ----------------- |
-| lg    | Text        | Regular | 20 (1.25rem) | 30                |
 | sm    | Text        | Regular | 16 (1.0rem)  | 24                |
+| lg    | Text        | Regular | 20 (1.25rem) | 30                |
 
 </rh-table>
 
-### Quotes
+### Quote
 
 The bold weight may be used for emphasis if absolutely necessary.
 
@@ -133,8 +151,8 @@ The bold weight may be used for emphasis if absolutely necessary.
 
 | Name  | Font family | Weight  | Size         | Line height (1.5) |
 | ----- | ----------- | ------- | ------------ | ----------------- |
-| lg    | Display     | Regular | 28 (1.75rem) | 42                |
 | sm    | Display     | Regular | 20 (1.25rem) | 30                |
+| lg    | Display     | Regular | 28 (1.75rem) | 42                |
 
 </rh-table>
 
@@ -142,19 +160,11 @@ The bold weight may be used for emphasis if absolutely necessary.
 
 The mobile scale takes effect when the viewport size is less than 768px.
 
-### Extra large headings
+### Extra small headings
 
-<rh-table>
+Extra small heading sizes do not get smaller.
 
-| Name | Font family  | Weight   | Size                              | Line height (1.1) |
-| ---- | ------------ | -------- | --------------------------------- | ----------------- |
-| 5xl  | Display      | Multiple | <s>96 (6.0rem)</s> Reduces to 48  | <s>105.6</s> 52.8 |
-| 4xl  | Display      | Multiple | <s>80 (5.0rem)</s> Reduces to 48  | <s>88</s> 52.8    |
-| 3xl  | Display      | Multiple | <s>64 (4.0rem)</s> Reduces to 48  | <s>70.4</s> 52.8  |
-
-</rh-table>
-
-### Headings
+### Standard headings
 
 <rh-table>
 
@@ -169,31 +179,55 @@ The mobile scale takes effect when the viewport size is less than 768px.
 
 </rh-table>
 
-### Body text
+### Expressive headings
+
+All expressive heading sizes reduce to 48px.
+
+<rh-table>
+
+| Name | Font family  | Weight   | Size                              | Line height (1.1) |
+| ---- | ------------ | -------- | --------------------------------- | ----------------- |
+| 3xl  | Display      | Multiple | <s>64 (4.0rem)</s> Reduces to 48  | <s>70.4</s> 52.8  |
+| 4xl  | Display      | Multiple | <s>80 (5.0rem)</s> Reduces to 48  | <s>88</s> 52.8    |
+| 5xl  | Display      | Multiple | <s>96 (6.0rem)</s> Reduces to 48  | <s>105.6</s> 52.8 |
+
+</rh-table>
+
+### Body text and lists
+
+Body text and list sizes that are 16px and below do not get smaller.
 
 <rh-table>
 
 | Name | Font family | Weight        | Size                               | Line height (1.5) |
 | ---- | ----------- | ------------- | ---------------------------------- | ----------------- |
-| 2xl  | Text        | Regular       | <s>24 (1.5rem)</s> Reduces to 20   | <s>36</s> 30      |
-| xl   | Text        | Regular       | <s>20 (1.25rem)</s> Reduces to 18  | <s>30</s> 27      |
 | lg   | Text        | Regular       | <s>18 (1.125rem)</s> Reduces to 16 | <s>27</s> 24      |
+| xl   | Text        | Regular       | <s>20 (1.25rem)</s> Reduces to 18  | <s>30</s> 27      |
+| 2xl  | Text        | Regular       | <s>24 (1.5rem)</s> Reduces to 20   | <s>36</s> 30      |
 
 </rh-table>
 
-### Code text
+### Code
+
+Code sizes that are 16px and below do not get smaller.
 
 <rh-table>
 
 | Name | Font family | Weight        | Size                               | Line height (1.5) |
 | ---- | ----------- | ------------- | ---------------------------------- | ----------------- |
-| 2xl  | Mono        | Regular       | <s>24 (1.5rem)</s> Reduces to 20   | <s>36</s> 30      |
-| xl   | Mono        | Regular       | <s>20 (1.25rem)</s> Reduces to 18  | <s>30</s> 27      |
 | lg   | Mono        | Regular       | <s>18 (1.125rem)</s> Reduces to 16 | <s>27</s> 24      |
+| xl   | Mono        | Regular       | <s>20 (1.25rem)</s> Reduces to 18  | <s>30</s> 27      |
+| 2xl  | Mono        | Regular       | <s>24 (1.5rem)</s> Reduces to 20   | <s>36</s> 30      |
 
 </rh-table>
 
-### Titles
+### Call to action
+
+Call to action sizes do not get smaller.
+
+### Title
+
+The `Title, sm` size does not get smaller.
 
 <rh-table>
 
@@ -203,14 +237,14 @@ The mobile scale takes effect when the viewport size is less than 768px.
 
 </rh-table>
 
-### Quotes
+### Quote
 
 <rh-table>
 
 | Name | Font family | Weight        | Size                              | Line height (1.5) |
 | ---- | ----------- | ------------- | --------------------------------- | ----------------- |
-| lg   | Display     | Regular       | <s>28 (1.75rem)</s> Reduces to 24 | <s>42</s> 36      |
 | sm   | Display     | Regular       | <s>20 (1.25rem)</s> Reduces to 18 | <s>30</s> 27      |
+| lg   | Display     | Regular       | <s>28 (1.75rem)</s> Reduces to 24 | <s>42</s> 36      |
 
 </rh-table>
 

@@ -64,8 +64,8 @@
   border: var(--rh-border-width-sm, 1px) solid var(--_border-color);
   background-color:
     var(--rh-tile-background-color,
-      light-dark(var(--rh-color-surface-lightest),
-      var(--rh-color-surface-darkest)));
+      light-dark(var(--rh-color-surface-lightest, #ffffff),
+      var(--rh-color-surface-darkest, #151515)));
   color: var(--rh-tile-text-color, var(--rh-color-text-primary));
 
   & ::slotted(*) {
