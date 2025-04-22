@@ -62,6 +62,11 @@ Links are interactive elements that connect users to another page or page sectio
 
 To improve link affordance in alignment with our brand standards, the styles in this section should apply to all inline links, visited and unvisited, in both light and dark schemes, unless noted as an exception.
 
+<rh-alert state="info">
+  <h4 slot="header">Helpful tip</h4>
+  <p>The <a href="/get-started/designers/figma-library#use-libraries">Red Hat Design System Figma library</a> contains link styles for easy formatting. However, Figma’s type settings do not currently include dashed underlines, so the style outlined below is being approximated by a dotted underline.</p>
+</rh-alert>
+
 ### Default
 
 Inline text links that may appear alongside non-link text (e.g., within body paragraphs and list items) should be styled like the following:

@@ -21,7 +21,6 @@ import {
 import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-tab.css';
-import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 
 export class TabExpandEvent extends Event {
   constructor(
@@ -37,7 +36,7 @@ export class TabExpandEvent extends Event {
  * @slot icon - Can contain an `<svg>` or `<rh-icon>`
  * @slot - Tab title text
  * @csspart button - element that contains the interactive part of a tab
- * @csspart icon - icon `<span>` element
+ * @csspart icon - `<rh-icon>` element
  * @csspart text - tile text `<span>` element
  * @cssprop {<color>} [--rh-tabs-link-color=#4d4d4d] - Tab link text color
  * @cssprop {<color>} [--rh-tabs-active-border-color=#ff442b] - Tab active border color
@@ -76,8 +75,6 @@ export class RhTab extends LitElement {
   @consume({ context: rhTabsLastTabContext, subscribe: true })
   @state() private lastTab: RhTab | null = null;
 
-  #slots = new SlotController(this, 'icon', null);
-
   #internals = InternalsController.of(this, { role: 'tab' });
 
   override connectedCallback() {
@@ -99,9 +96,7 @@ export class RhTab extends LitElement {
            ?disabled="${this.disabled}"
            class="${classMap({ active, box, vertical, first, last })}">
         <slot name="icon"
-              part="icon"
-              ?hidden="${this.#slots.hasSlotted('icon')}"
-              @slotchange="${() => this.requestUpdate()}"></slot>
+              part="icon"></slot>
         <slot part="text"></slot>
       </div>
     `;
