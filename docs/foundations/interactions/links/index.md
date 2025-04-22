@@ -234,13 +234,15 @@ Developers can use the following CSS as a starting point for link underlining:
 
 ## Behavior
 
-### Internal pages
+### Opening links in new windows
 
-If a user selects a link within [redhat.com][redhat] or other Red Hat web property, a new tab or window should typically not be opened.
+At Red Hat, we prefer to [keep the user in control](/accessibility/design/#user-control) of their own experience. Therefore, avoid forcing links to open in new windows or tabs, except under [very specific circumstances](/accessibility/design/#opening-links-in-new-windows).
 
 ### External pages
 
-Use an external link icon if a link will direct users to another domain. This does not necessarily mean that the link will or should open in a new tab or window. However, if navigating to a new page in the same tab is very disruptive to the experience or workflow, then consider having the page open in a new tab or window.
+Indicate when links will direct users to another domain. While text indicators are preferred, you may also use external link icons, provided that the icon has a text label (e.g., alt text) for assistive tech.
+
+Pointing an external link to another domain is [not a reason](/accessibility/design/#opening-links-in-new-windows) for opening it in a new window or tab.
 
 <rh-alert state="info">
   <h4 slot="header">Helpful tip</h4>
