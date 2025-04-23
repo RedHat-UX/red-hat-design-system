@@ -6,9 +6,9 @@
   "license": "MIT",
   "customElements": "custom-elements.json",
   "designTokensLanguageServer": {
+    "prefix": "rh",
     "tokensFiles": [
-      "~/Developer/redhat-ux/red-hat-design-tokens/json/rhds.tokens.json",
-      "~/Developer/design-tokens/pf.json"
+      "npm:@rhds/tokens/json/rhds.tokens.json"
     ]
   },
   "exports": {
