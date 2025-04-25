@@ -127,13 +127,13 @@ export class RhVideoEmbed extends LitElement {
     const hasThumbnail = this.#slots.hasSlotted('thumbnail');
     const playLabel = this.iframeElement && this.iframeElement.title ? `${this.iframeElement.title} (play video)` : 'Play video';
     const consent = this.#showConsent;
-    const video = consent && !!playClicked || !hasThumbnail;
-    const thumbnail = consent && !playClicked && !!hasThumbnail;
+    const video = !!playClicked || !hasThumbnail;
+    const show = consent ? 'consent' : video ? 'video' : 'thumbnail';
 
     return html`
-      <figure part="figure" class="${classMap({ consent, video, thumbnail })}">
+      <figure part="figure" class="${classMap({ video, consent, [show]: !!show })}">
         <div part="video" id="video">
-          <div aria-hidden="${String(thumbnail)}">
+          <div aria-hidden="${show !== 'thumbnail'}">
             <slot id="thumbnail" name="thumbnail"></slot>
           </div>
           <slot @slotchange="${this.#copyIframe}"></slot>
@@ -172,7 +172,7 @@ export class RhVideoEmbed extends LitElement {
           <rh-button part="play"
                      id="play"
                      variant="play"
-                     ?hidden="${thumbnail}"
+                     ?hidden="${show !== 'thumbnail'}"
                      @click="${this.#handlePlayClick}"
                      @keyup="${this.#handlePlayKeyup}">
             <span class="visually-hidden"><slot name="play-button-text">${playLabel}</slot></span>
