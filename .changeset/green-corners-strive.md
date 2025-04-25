@@ -2,4 +2,4 @@
 "@rhds/elements": patch
 ---
 
-`<rh-dialog>`: don't scroll to the top of the page when opening a dialog
+`<rh-dialog>`: corrected dialog positioning to prevent page scrolling
