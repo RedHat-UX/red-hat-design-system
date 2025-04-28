@@ -136,7 +136,7 @@ export class RhVideoEmbed extends LitElement {
           <div aria-hidden="${show !== 'thumbnail'}">
             <slot id="thumbnail" name="thumbnail"></slot>
           </div>
-          <slot @slotchange="${this.#copyIframe}"></slot>
+          <slot></slot>
           <div id="autoplay"><slot name="autoplay"></slot></div>
           ${this.#showConsent ? html`
             <rh-surface id="consent" color-palette="darker">
@@ -220,7 +220,7 @@ export class RhVideoEmbed extends LitElement {
     if (!this.playClicked) {
       this._playClicked = true;
       this.dispatchEvent(new VideoClickEvent());
-      this.#playVideo();
+      this.#copyIframe();
     }
   }
 
@@ -231,7 +231,7 @@ export class RhVideoEmbed extends LitElement {
         if (!this.playClicked) {
           this._playClicked = true;
           this.dispatchEvent(new VideoClickEvent());
-          this.#playVideo();
+          this.#copyIframe();
         }
         break;
     }
