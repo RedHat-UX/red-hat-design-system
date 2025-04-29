@@ -241,7 +241,7 @@ At Red Hat, we prefer to [keep the user in control](/accessibility/design/#user-
 
 <rh-alert state="info">
   <h4 slot="header">Helpful tip</h4>
-  <p>Pointing an external link to another domain is <a href="/accessibility/design/#opening-links-in-new-windows">not reason enough</a> to open it in a new window or tab.</p>
+  <p>Pointing an external link to another domain is <a href="/accessibility/design/#opening-links-in-new-windows">not reason alone</a> to open it in a new window or tab.</p>
 </rh-alert>
 
 ## Accessibility
