@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { property } from 'lit/decorators/property.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { state } from 'lit/decorators/state.js';
@@ -121,17 +121,23 @@ export class RhVideoEmbed extends LitElement {
     return this._playStarted;
   }
 
+  firstUpdated() {
+    if (!isServer) {
+      this.#iframe = this.#getIframe();
+    }
+  }
+
   render() {
     const { playClicked } = this;
     const hasCaption = this.#slots.hasSlotted('caption');
     const hasThumbnail = this.#slots.hasSlotted('thumbnail');
-    const playLabel = this.iframeElement && this.iframeElement.title ? `${this.iframeElement.title} (play video)` : 'Play video';
+    const playLabel = this.#iframe && this.#iframe.title ? `${this.#iframe.title} (play video)` : 'Play video';
     const consent = this.#showConsent;
     const video = !!playClicked || !hasThumbnail;
     const show = consent ? 'consent' : video ? 'video' : 'thumbnail';
 
     return html`
-      <figure part="figure" class="${classMap({ video, consent, [show]: !!show })}">
+      <figure part="figure" class="${classMap({ video, consent })}">
         <div part="video" id="video">
           <div aria-hidden="${show !== 'thumbnail'}">
             <slot id="thumbnail" name="thumbnail"></slot>
@@ -183,21 +189,24 @@ export class RhVideoEmbed extends LitElement {
     `;
   }
 
-  #copyIframe() {
+  #getIframe() {
     const template = this.querySelector('template');
     const node = template ? document.importNode(template.content, true) : undefined;
     const iframe = node ?
       node.querySelector('iframe')?.cloneNode(true) as HTMLIFrameElement : undefined;
-    if (iframe) {
-      const url = new URL(iframe.getAttribute('src') || '');
+    return iframe;
+  }
+
+  #copyIframe() {
+    if (this.#iframe) {
+      const url = new URL(this.#iframe.getAttribute('src') || '');
       url.searchParams.append('autoplay', '1');
       url.searchParams.append('rel', '0');
-      iframe.src = url.href;
-      iframe.classList.add('rh-yt-iframe');
-      iframe.allow = 'autoplay';
-      iframe.slot = 'autoplay';
+      this.#iframe.src = url.href;
+      this.#iframe.classList.add('rh-yt-iframe');
+      this.#iframe.allow = 'autoplay';
+      this.#iframe.slot = 'autoplay';
     }
-    this.#iframe = iframe;
     this.#playVideo();
   }
 
