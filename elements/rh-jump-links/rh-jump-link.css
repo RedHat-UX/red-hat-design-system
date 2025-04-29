@@ -30,10 +30,10 @@ a {
   }
 
   &:hover {
-    color: var(--rh-color-text-primary, #151515);
+    color: var(--rh-color-text-primary);
   }
 
-  &:focus { color: var(--rh-color-text-primary, #151515); }
+  &:focus { color: var(--rh-color-text-primary); }
 
   &:focus-visible {
     outline: none;
@@ -68,7 +68,7 @@ a {
       inset-block: 0;
       border-inline-start:
         var(--_active_bdr,
-        var(--rh-border-width-lg, 3px)
+          var(--rh-border-width-lg, 3px)
           solid
           var(--_bdr-c, var(--rh-color-border-status-neutral)));
     }

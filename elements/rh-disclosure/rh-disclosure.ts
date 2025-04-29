@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, type PropertyValues } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { query } from 'lit/decorators/query.js';
@@ -80,7 +80,17 @@ export class RhDisclosure extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
+    this.#mo.observe(this, { childList: true, subtree: true });
+  }
+
+  disconnectedCallback(): void {
+    super.disconnectedCallback();
+    this.#mo.disconnect();
+  }
+
+  update(changed: PropertyValues<this>): void {
     this.#mutationsCallback();
+    super.update(changed);
   }
 
   render() {
@@ -133,8 +143,8 @@ export class RhDisclosure extends LitElement {
 
   #mutationsCallback(): void {
     const hasJumpLinks: RhJumpLinks | null = this.querySelector('rh-jump-links');
-    if (hasJumpLinks && ! this.hasAttribute('has-jump-links')) {
-      this.setAttribute('has-jump-links', '');
+    if (hasJumpLinks && !this.classList.contains('has-jump-links')) {
+      this.classList.add('has-jump-links');
     }
   }
 }
