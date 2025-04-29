@@ -43,30 +43,21 @@
   border-color: var(--rh-color-border-subtle);
   width: 100%;
   height: 100%;
+
+  /* colors for when `color-palette` inherits from a parent: */
   background-color:
     light-dark(var(--_card-background, var(--rh-color-surface-lightest, #ffffff)),
       var(--_card-background, var(--rh-color-surface-darkest, #151515)));
   color: var(--rh-color-text-primary);
 
+  /* colors for when `color-palette` is applied directly on an rh-card: */
   &.light,
-  &.dark {
-    --_card-background: var(--rh-color-surface);
-  }
-
-  &.lighter {
-    --_card-background: var(--rh-color-surface-lighter, #f2f2f2);
-  }
-
-  &.lightest {
-    --_card-background: var(--rh-color-surface-lightest, #ffffff);
-  }
-
-  &.darker {
-    --_card-background: var(--rh-color-surface-darker, #1f1f1f);
-  }
-
+  &.lighter,
+  &.lightest,
+  &.dark,
+  &.darker,
   &.darkest {
-    --_card-background: var(--rh-color-surface-darkest, #151515);
+    --_card-background: var(--rh-color-surface);
   }
 }
 
