@@ -43,7 +43,7 @@ const PALETTE_RE = /(er|est)+/g;
  *              The font weight for headings in the header and body
  */
 @customElement('rh-card')
-@colorPalettes('lightest', 'lighter', 'darker', 'darkest')
+@colorPalettes
 @themable
 export class RhCard extends LitElement {
   static styles = [styles];
@@ -68,8 +68,9 @@ export class RhCard extends LitElement {
 
   #slots = new SlotController(this, 'header', 'image', null, 'footer');
 
-  #isPromo = this.variant === 'promo';
+  #isPromo = false;
   #isStandardPromo = false;
+  #computedPalette?: ColorPalette;
 
   willUpdate() {
     this.#isPromo = this.variant === 'promo';
@@ -78,28 +79,15 @@ export class RhCard extends LitElement {
       && this.#slots.hasSlotted(null)
       && this.#slots.isEmpty('image')
       && this.#slots.isEmpty('header');
-  }
 
-  get #computedPalette() {
     if (this.#isStandardPromo) {
-      return `${`${this.colorPalette ?? 'lightest'}`.replace(PALETTE_RE, '')}er` as 'lighter' | 'darker';
+      this.#computedPalette = `${`${this.colorPalette ?? 'lightest'}`.replace(PALETTE_RE, '')}er` as 'lighter' | 'darker';
     } else if (this.#isPromo) {
-      return `${`${this.colorPalette ?? 'lightest'}`.replace(PALETTE_RE, '')}est` as 'lightest' | 'darkest';
+      this.#computedPalette = `${`${this.colorPalette ?? 'lightest'}`.replace(PALETTE_RE, '')}est` as 'lightest' | 'darkest';
     } else {
-      switch (this.colorPalette) {
-        case 'lightest':
-        case 'lighter':
-        case 'darkest':
-          return this.colorPalette;
-        case 'light':
-          return 'lighter';
-        case 'darker':
-        case 'dark':
-          return 'darkest';
-      }
+      this.#computedPalette = this.colorPalette;
     }
   }
-
 
   override render() {
     const promo = this.variant === 'promo';
