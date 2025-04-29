@@ -149,7 +149,7 @@ export class RhTile extends LitElement {
 
   #logger = new Logger(this);
 
-  #slots = new SlotController(this, { slots: ['icon', 'footer'] });
+  #slots = new SlotController(this, 'image', 'icon', 'title', 'headline', null, 'footer');
 
   get #isCheckable() {
     return !!this.radioGroup || this.checkable;
@@ -188,10 +188,9 @@ export class RhTile extends LitElement {
   }
 
   render() {
-    const { bleed, compact, checkable, checked, colorPalette, desaturated } = this;
+    const { bleed, compact, checkable, checked, desaturated } = this;
     const disabled = this.disabledGroup || this.disabled || this.#internals.formDisabled;
     const hasSlottedIcon = this.#slots.hasSlotted('icon');
-    const hasSlottedFooter = this.#slots.hasSlotted('footer');
     const linkIcon =
         this.checkable ? ''
       : this.disabled ? 'ban'
@@ -208,10 +207,8 @@ export class RhTile extends LitElement {
           <slot id="icon"
                 class="${classMap({ compact, checkable })}"
                 name="icon"
-                ?hidden="${this.icon === undefined && !hasSlottedIcon}">
-            ${this.icon !== undefined ?
-              html`<rh-icon icon="${ifDefined(this.icon)}" set="${this.iconSet}"></rh-icon>`
-              : html``}
+                ?hidden="${this.icon === undefined && !hasSlottedIcon}">${this.icon === undefined ? ''
+      : html`<rh-icon icon="${ifDefined(this.icon)}" set="${this.iconSet}"></rh-icon>`}
           </slot>
           <div id="content">
             <div id="header">
@@ -227,8 +224,8 @@ export class RhTile extends LitElement {
                        ?disabled="${disabled}"></input>
               </div>
             </div>
-            <slot id="body"></slot>
-            <div id="footer" class="${classMap({ empty: !hasSlottedFooter })}">
+            <slot id="body" class="${classMap({ empty: this.#slots.isEmpty() })}"></slot>
+            <div id="footer" class="${classMap({ empty: this.#slots.isEmpty('footer') })}">
               <slot id="footer-text" name="footer"></slot><rh-icon set="ui" icon="${linkIcon}"></rh-icon>
             </div>
           </div>

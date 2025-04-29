@@ -25,7 +25,7 @@ The contents of a page should be arranged in a meaningful order. Here are some t
 
 Elements that repeat across a site (e.g., navigation and site search) should appear in consistent locations and with consistent ordering. That said, it’s okay if some elements within repeating sections (e.g., individual items in a navigation menu) change and shift by necessity, depending on context.
 
-For repeating sections that come before a page’s main content (e.g., a navigation menu at the top of the site), there must be a means for keyboard users to bypass them and get to the unique content. Such "[skip links](https://webaim.org/techniques/skipnav/)" may be hidden by default, but you will want to design how they appear onscreen upon receiving keyboard focus.
+For repeating sections that come before a page’s main content (e.g., a navigation menu at the top of the site), there must be a means for keyboard users to bypass them and get to the unique content. Such "[skip links][webaimskipnav]" may be hidden by default, but you will want to design how they appear onscreen upon receiving keyboard focus.
 
 If one element has the same function as another, both should be labeled the same way. For example, a call to action for the Contact page should have consistent text labels.
 
@@ -35,11 +35,11 @@ If one element has the same function as another, both should be labeled the same
 
 When presenting meaningful information or indicating the location of interactive elements, do not rely upon color alone in your designs. Users with vision impairments or even situational concerns (e.g., a poor monitor, viewing a display in bright sunlight, etc.) may be unable to discern these color cues. So, ensure you use non-color indicators, as well.
 
-For specific information on how we use color accessibly, visit [our Foundations page](/foundations/color/accessibility/) on the topic.
+For specific information on how we use color accessibly, visit [our Foundations page][coloraccessibility] on the topic.
 
 ### Contrast
 
-We strive to adhere to [WCAG 2.1 AA contrast ratio standards](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum). Our text, links, interface elements, etc. are designed with sufficient contrast when used on top of surfaces, image backgrounds with low contrast, and near adjacent colors.
+We strive to adhere to [WCAG 2.1 AA contrast ratio standards][wcagcontrast]. Our text, links, interface elements, etc. are designed with sufficient contrast when used on top of surfaces, image backgrounds with low contrast, and near adjacent colors.
 
 #### Text
 
@@ -54,23 +54,11 @@ Small foreground text (non-bold text under 24px and bold text under 19px) must h
 
 #### Links
 
-Inline text links (e.g., those within paragraphs and list items in the main body of a page) should be underlined to make these links easy to discern for all visitors, particularly those with visual impairments or in situations that could make color differentiation difficult.
+When possible, you should [underline inline text links](/foundations/interactions/links/#inline-links) that may appear within blocks alongside non-link text (e.g., within paragraphs and list items). This makes such links easy to discern for all visitors, particularly those with visual impairments or in situations that could make color differentiation difficult.
 
-In fact, you should default to underlining all text links, except for the following:
+If you can’t add underlines to your inline links, and color is the _only_ way you can distinguish these links from non-link text within a paragraph or list, the contrast ratio between a link and its surrounding text _must_ be at least 3:1 in both visited and unvisited states. And underlines or other non-color cues must also then be used to signify when the link receives hover.
 
-- Links within visually distinct navigation groupings, like menus.
-- CTAs and other links accompanied by visual cues (e.g., arrow symbols) to indicate their interactivity.
-
-That said, you still _can_ underline the above, at your discretion.
-
-If, for some reason, color is the only way you can distinguish links within a text block, the contrast ratio between the link and surrounding text _must_ be at least 3:1 in both visited and unvisited states. And underlines or other non-color cues _must also_ then be used to signify when the link receives hover and focus.
-
-<uxdot-example color-palette="lightest" width-adjustment="708px">
-  <img src="/assets/color/contrast-links.png"
-      alt="Contrast ratio of a blue link next to black text and an example of a link's darker blue, underlined hover state"
-      width="708"
-      height="171">
-</uxdot-example>
+Our [Interactions section][linkfoundations] has specific information on styling links for Red Hat experiences.
 
 #### Graphical objects and UI components
 
@@ -80,7 +68,7 @@ Non-color cues must be also used to signify when an object or component receives
 
 #### Layering
 
-It is acceptable to layer colors with the same hue, saturation, or lightness on white, black, or gray. However, layering them near or on top of each other might cause vibration. If you need to layer colors, follow [WCAG 2.1 AA](https://www.w3.org/WAI/WCAG21/Understanding/) requirements.
+It is acceptable to layer colors with the same hue, saturation, or lightness on white, black, or gray. However, layering them near or on top of each other might cause vibration. If you need to layer colors, follow [WCAG 2.1 AA][wcag21aa] requirements.
 
 <uxdot-example width-adjustment=”1140px”>
   <img src="/assets/color/color-a11y-color-contrast-layering.svg"
@@ -91,7 +79,7 @@ It is acceptable to layer colors with the same hue, saturation, or lightness on 
 
 #### Further help
 
-TPGi’s [Colour Contrast Analyzer](https://www.tpgi.com/color-contrast-checker/) for Windows and Mac computers can help you identify colors and gauge their contrast from one another.
+TPGi’s [Colour Contrast Analyzer][colorcontrast] for Windows and Mac computers can help you identify colors and gauge their contrast from one another.
 
 ## Imagery
 
@@ -141,11 +129,27 @@ Essential information should not be conveyed by sound alone. For example, if a t
 
 ## Interactions
 
+### User control
+
+[Giving users control][usercontrol] over user interfaces is a foundational principle of user experience design. It is also the basis of several WCAG 2.1 AA requirements, like ensuring [interfaces operate in predictable ways][wcagpredictable].
+
 ### Links
 
-Links should appear clickable and focusable. And, when possible, links and buttons should look different from one another to give users cues as to their purpose.
+#### Appearance
 
-If a link opens in a new window, this will have to be indicated both visually and non-visually. Text is preferred, but an icon (with text alternative for assistive tech users) can be used to announce that a new window will open.
+Links should appear clickable and focusable. And, when possible, [links][linkfoundations] and [buttons][rhbutton] should look different from one another to give users cues as to their purpose.
+
+#### Opening links in new windows
+
+Avoid opening links in new windows or tabs, as this [takes control away](#user-control) from the user. There are only a few exceptions where it may be acceptable to open links in new windows/tabs:
+
+- When a link might interrupt an ongoing process (e.g., filling out a form) where navigating away would lose the user's progress.
+- When a link provides help or assistance that would take the user away from a step in the current experience, like search results.
+- When a link leads to a file or document that isn't a web page or web application, like a PDF.
+
+In the first two cases above, such experience interruptions may be better handled through tooltips, popovers, or modals/dialogs.
+
+If a link must open in a new window, indicate this both [visually][externallinks] and non-visually. Text is preferred, but an icon (with text alternative for assistive tech users) can be used to announce that a new window will open.
 
 ### Target size
 
@@ -176,7 +180,7 @@ If keyboard focus appears to be trapped in a subsection, instructions for exitin
 
 ### Spacing
 
-Line heights for body copy should be at least 1.5× regular single-spacing. And paragraph spacing should be 1.5× of that line height. In other words, if your line height is 1.5, your paragraph spacing should be at least 2.25× (or 1.5×1.5) the original single-spaced height. (W3C rounds to 2.5× in their [paragraph-spacing recommendation](https://www.w3.org/WAI/WCAG21/Understanding/visual-presentation.html).) Such spacing helps people who find it difficult to read when lines are too close together.
+Line heights for body copy should be at least 1.5× regular single-spacing. And paragraph spacing should be 1.5× of that line height. In other words, if your line height is 1.5, your paragraph spacing should be at least 2.25× (or 1.5×1.5) the original single-spaced height. (W3C rounds to 2.5× in their [paragraph-spacing recommendation][paragraphspacing].) Such spacing helps people who find it difficult to read when lines are too close together.
 
 ### Character counts
 
@@ -189,3 +193,15 @@ For left-to-right languages, left-aligned text is the easiest to read and skim. 
 Center-aligned text can be used sparingly, but it should be avoided for paragraphs.
 
 Text should never be justified. Justified text is aligned to the left and right edges of a content area, and spacing between words is adjusted to make this happen. Depending on how the content flows on various screen sizes and whether the user is manipulating the text for improved readability, justified text can create spaces between words that are too large or narrow to be read comfortably.
+
+[coloraccessibility]: /foundations/color/accessibility/
+[colorcontrast]: https://www.tpgi.com/color-contrast-checker/
+[externallinks]: /foundations/interactions/links/#external-pages
+[linkfoundations]: /foundations/interactions/links/
+[paragraphspacing]: https://www.w3.org/WAI/WCAG21/Understanding/visual-presentation.html
+[rhbutton]: /elements/button/
+[usercontrol]: https://www.interaction-design.org/literature/topics/user-control
+[wcag21aa]: https://www.w3.org/WAI/WCAG21/Understanding/
+[wcagcontrast]: https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum
+[webaimskipnav]: https://webaim.org/techniques/skipnav/
+[wcagpredictable]: https://www.w3.org/WAI/WCAG22/quickref/#predictable
