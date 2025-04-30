@@ -1,6 +1,6 @@
-var _RhVideoEmbed_instances, _RhVideoEmbed_slots, _RhVideoEmbed_iframe, _RhVideoEmbed_showConsent_get, _RhVideoEmbed_copyIframe, _RhVideoEmbed_handleConsentClick, _RhVideoEmbed_handleConsentKeyup, _RhVideoEmbed_handlePlayClick, _RhVideoEmbed_handlePlayKeyup, _RhVideoEmbed_playVideo;
+var _RhVideoEmbed_instances, _RhVideoEmbed_slots, _RhVideoEmbed_iframe, _RhVideoEmbed_showConsent_get, _RhVideoEmbed_getIframe, _RhVideoEmbed_copyIframe, _RhVideoEmbed_handleConsentClick, _RhVideoEmbed_handleConsentKeyup, _RhVideoEmbed_handlePlayClick, _RhVideoEmbed_handlePlayKeyup, _RhVideoEmbed_playVideo;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { property } from 'lit/decorators/property.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { state } from 'lit/decorators/state.js';
@@ -96,21 +96,26 @@ let RhVideoEmbed = class RhVideoEmbed extends LitElement {
     get playStarted() {
         return this._playStarted;
     }
+    firstUpdated() {
+        if (!isServer) {
+            __classPrivateFieldSet(this, _RhVideoEmbed_iframe, __classPrivateFieldGet(this, _RhVideoEmbed_instances, "m", _RhVideoEmbed_getIframe).call(this), "f");
+        }
+    }
     render() {
         const { playClicked } = this;
         const hasCaption = __classPrivateFieldGet(this, _RhVideoEmbed_slots, "f").hasSlotted('caption');
         const hasThumbnail = __classPrivateFieldGet(this, _RhVideoEmbed_slots, "f").hasSlotted('thumbnail');
-        const playLabel = this.iframeElement && this.iframeElement.title ? `${this.iframeElement.title} (play video)` : 'Play video';
+        const playLabel = __classPrivateFieldGet(this, _RhVideoEmbed_iframe, "f") && __classPrivateFieldGet(this, _RhVideoEmbed_iframe, "f").title ? `${__classPrivateFieldGet(this, _RhVideoEmbed_iframe, "f").title} (play video)` : 'Play video';
         const consent = __classPrivateFieldGet(this, _RhVideoEmbed_instances, "a", _RhVideoEmbed_showConsent_get);
-        const video = consent && !!playClicked || !hasThumbnail;
-        const thumbnail = consent && !playClicked && !!hasThumbnail;
+        const video = !!playClicked || !hasThumbnail;
+        const show = consent ? 'consent' : video ? 'video' : 'thumbnail';
         return html `
-      <figure part="figure" class="${classMap({ consent, video, thumbnail })}">
+      <figure part="figure" class="${classMap({ video, consent })}">
         <div part="video" id="video">
-          <div aria-hidden="${String(thumbnail)}">
+          <div aria-hidden="${show !== 'thumbnail'}">
             <slot id="thumbnail" name="thumbnail"></slot>
           </div>
-          <slot @slotchange="${__classPrivateFieldGet(this, _RhVideoEmbed_instances, "m", _RhVideoEmbed_copyIframe)}"></slot>
+          <slot></slot>
           <div id="autoplay"><slot name="autoplay"></slot></div>
           ${__classPrivateFieldGet(this, _RhVideoEmbed_instances, "a", _RhVideoEmbed_showConsent_get) ? html `
             <rh-surface id="consent" color-palette="darker">
@@ -146,7 +151,7 @@ let RhVideoEmbed = class RhVideoEmbed extends LitElement {
           <rh-button part="play"
                      id="play"
                      variant="play"
-                     ?hidden="${thumbnail}"
+                     ?hidden="${show !== 'thumbnail'}"
                      @click="${__classPrivateFieldGet(this, _RhVideoEmbed_instances, "m", _RhVideoEmbed_handlePlayClick)}"
                      @keyup="${__classPrivateFieldGet(this, _RhVideoEmbed_instances, "m", _RhVideoEmbed_handlePlayKeyup)}">
             <span class="visually-hidden"><slot name="play-button-text">${playLabel}</slot></span>
@@ -163,21 +168,23 @@ _RhVideoEmbed_instances = new WeakSet();
 _RhVideoEmbed_showConsent_get = function _RhVideoEmbed_showConsent_get() {
     return this.requireConsent && !this.consented;
 };
-_RhVideoEmbed_copyIframe = function _RhVideoEmbed_copyIframe() {
+_RhVideoEmbed_getIframe = function _RhVideoEmbed_getIframe() {
     const template = this.querySelector('template');
     const node = template ? document.importNode(template.content, true) : undefined;
     const iframe = node ?
         node.querySelector('iframe')?.cloneNode(true) : undefined;
-    if (iframe) {
-        const url = new URL(iframe.getAttribute('src') || '');
+    return iframe;
+};
+_RhVideoEmbed_copyIframe = function _RhVideoEmbed_copyIframe() {
+    if (__classPrivateFieldGet(this, _RhVideoEmbed_iframe, "f")) {
+        const url = new URL(__classPrivateFieldGet(this, _RhVideoEmbed_iframe, "f").getAttribute('src') || '');
         url.searchParams.append('autoplay', '1');
         url.searchParams.append('rel', '0');
-        iframe.src = url.href;
-        iframe.classList.add('rh-yt-iframe');
-        iframe.allow = 'autoplay';
-        iframe.slot = 'autoplay';
+        __classPrivateFieldGet(this, _RhVideoEmbed_iframe, "f").src = url.href;
+        __classPrivateFieldGet(this, _RhVideoEmbed_iframe, "f").classList.add('rh-yt-iframe');
+        __classPrivateFieldGet(this, _RhVideoEmbed_iframe, "f").allow = 'autoplay';
+        __classPrivateFieldGet(this, _RhVideoEmbed_iframe, "f").slot = 'autoplay';
     }
-    __classPrivateFieldSet(this, _RhVideoEmbed_iframe, iframe, "f");
     __classPrivateFieldGet(this, _RhVideoEmbed_instances, "m", _RhVideoEmbed_playVideo).call(this);
 };
 _RhVideoEmbed_handleConsentClick = function _RhVideoEmbed_handleConsentClick() {
@@ -197,7 +204,7 @@ _RhVideoEmbed_handlePlayClick = function _RhVideoEmbed_handlePlayClick() {
     if (!this.playClicked) {
         this._playClicked = true;
         this.dispatchEvent(new VideoClickEvent());
-        __classPrivateFieldGet(this, _RhVideoEmbed_instances, "m", _RhVideoEmbed_playVideo).call(this);
+        __classPrivateFieldGet(this, _RhVideoEmbed_instances, "m", _RhVideoEmbed_copyIframe).call(this);
     }
 };
 _RhVideoEmbed_handlePlayKeyup = function _RhVideoEmbed_handlePlayKeyup(event) {
@@ -207,7 +214,7 @@ _RhVideoEmbed_handlePlayKeyup = function _RhVideoEmbed_handlePlayKeyup(event) {
             if (!this.playClicked) {
                 this._playClicked = true;
                 this.dispatchEvent(new VideoClickEvent());
-                __classPrivateFieldGet(this, _RhVideoEmbed_instances, "m", _RhVideoEmbed_playVideo).call(this);
+                __classPrivateFieldGet(this, _RhVideoEmbed_instances, "m", _RhVideoEmbed_copyIframe).call(this);
             }
             break;
     }

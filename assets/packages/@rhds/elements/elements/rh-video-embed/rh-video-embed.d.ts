@@ -55,6 +55,7 @@ export declare class RhVideoEmbed extends LitElement {
     get playButton(): HTMLElement | null | undefined;
     get playClicked(): boolean;
     get playStarted(): boolean;
+    firstUpdated(): void;
     render(): import("lit-html").TemplateResult<1>;
 }
 declare global {
