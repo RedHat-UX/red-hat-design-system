@@ -1,0 +1,56 @@
+<rh-card class="example-dl">
+  <img src="../charmander.png" alt="Charmander Pokémon" slot="image">
+  <h2 slot="header">Charmander</h2>
+  <dl>
+    <dt>National №</dt>
+    <dd>0004</dd>
+    <dt>Species</dt>
+    <dd>Lizard Pokémon</dd>
+    <dt>Type</dt>
+    <dd><rh-tag color="red">Fire</rh-tag></dd>
+    <dt>Generation</dt>
+    <dd>1</dd>
+  </dl>
+  <rh-cta slot="footer" href="https://pokemondb.net/pokedex/charmander">Charmander Pokédex</rh-cta>
+</rh-card>
+
+<style>
+  .example-dl {
+    /* Definition list itself */
+    & dl {
+      display: flex;
+      flex-flow: column;
+      gap: var(--rh-space-lg);
+      margin: 0;
+      padding: 0;
+      & dt {
+        font-weight: var(--rh-font-weight-heading-medium);
+      }
+      & dd {
+        margin: 0;
+        padding-block-end: var(--rh-space-lg);
+        border-block-end: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
+      }
+    }
+    /* For this Pokémon example */   
+    &::part(container) {
+      display: grid;
+      grid-template-areas: "image" "header" "body" "footer";
+      grid-template-columns: 1fr;
+      justify-items: stretch;
+      align-items: start;
+      gap: var(--rh-space-2xl);
+    }
+    @container (min-width: 576px) {
+      &::part(container) {
+        grid-template-areas: "image header" "image body" "image footer";
+        grid-template-columns: 1fr 2fr;
+      }
+    }
+    &::part(image) {
+      grid-area: image;
+      padding: var(--rh-space-2xl);
+    }
+  }
+</style>
+
