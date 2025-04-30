@@ -1,5 +1,5 @@
 :host {
-  --_dialog-backdrop-bg-color: oklch(from var(--rh-color-surface-darker) l c h / 0.68);
+  --_dialog-backdrop-bg-color: oklch(from var(--rh-color-surface-darker, #1f1f1f) l c h / 0.68);
 
   display: block;
   position: relative;
@@ -51,7 +51,7 @@
   overflow-y: auto;
   overscroll-behavior: contain;
   padding: var(--rh-space-xl, 24px);
-  position: relative;
+  position: fixed;
 }
 
 :host([width='small']) #dialog,
