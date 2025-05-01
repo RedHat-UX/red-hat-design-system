@@ -23,6 +23,7 @@ subnav:
   import '@rhds/elements/rh-alert/rh-alert.js';
   import '@rhds/elements/rh-code-block/rh-code-block.js';
   import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
+  import '@rhds/elements/rh-cta/rh-cta.js';
   import '@rhds/elements/rh-table/rh-table.js';
   import "@uxdot/elements/uxdot-pattern.js";
 </script>
@@ -211,9 +212,9 @@ The following elements are exempt from underlining requirements and should not h
 
 Developers can use the following CSS as a starting point for link underlining:
 
-- In practice, you will probably want to use a more specific selector than `:is(p, ul, ol, dl) a` because this example selector applies to all links in paragraphs or lists on a page
-- This example adds a `max()` function to the `text-underline-offset` property allowing this value to grow proportionally at large font sizes
-- As of this writing, Safari has some issues with the `text-decoration` shorthand property so we separated it out into its component options `(-color, -line, -style, and -thickness)`
+- In practice, you will probably want to use a more specific selector than `:is(p, ul, ol, dl) a`, because this example selector applies to all links in paragraphs or lists on a page.
+- This example adds a `max()` function to the `text-underline-offset` property, allowing this value to grow proportionally at large font sizes.
+- As of this writing, Safari has some issues with the `text-decoration` shorthand property, so we separated it out into its component options `(-color, -line, -style, and -thickness)`.
 
 <rh-code-block>
   <script type="text/css">
@@ -234,13 +235,15 @@ Developers can use the following CSS as a starting point for link underlining:
 
 ## Behavior
 
-### Internal pages
+### Opening links in new windows
 
-If a user selects a link within [redhat.com][redhat] or other Red Hat web property, a new tab or window should typically not be opened.
+At Red Hat, we prefer to [keep the user in control](/accessibility/design/#user-control) of their own experience. Therefore, avoid forcing links to open in new windows or tabs, except under [very specific circumstances](/accessibility/design/#opening-links-in-new-windows).
 
 ### External pages
 
-Use an external link icon if a link will direct users to another domain. This does not necessarily mean that the link will or should open in a new tab or window. However, if navigating to a new page in the same tab is very disruptive to the experience or workflow, then consider having the page open in a new tab or window.
+Indicate when links will direct users to another domain. While text indicators are preferred, you may also use external link icons, provided that the icon has a text label (e.g., alt text) for assistive tech.
+
+Pointing an external link to another domain is [not a reason](/accessibility/design/#opening-links-in-new-windows) for opening it in a new window or tab.
 
 <rh-alert state="info">
   <h4 slot="header">Helpful tip</h4>
@@ -333,6 +336,8 @@ When the Tab key is pressed repeatedly, the focus highlights links in order, fro
   </uxdot-best-practice>
 </div>
 
+<rh-cta href="/accessibility/content/#link-text">Writing accessible link text</rh-cta>
+
 ### Long links
 
 <div class="grid sm-two-columns">
@@ -343,7 +348,7 @@ When the Tab key is pressed repeatedly, the focus highlights links in order, fro
             width="482"
             height="135">
     </uxdot-example>
-    <p>Try to keep link text as brief as possible</p>
+    <p>Try to keep link text as brief as possible.</p>
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="dont">
@@ -353,7 +358,7 @@ When the Tab key is pressed repeatedly, the focus highlights links in order, fro
             width="482"
             height="135">
     </uxdot-example>
-    <p>Do not link very long strings of text.</p>
+    <p><a href="/accessibility/content/#avoid-the-following-when-creating-links">Do not link</a> very long strings of text (including long URLs).</p>
   </uxdot-best-practice>
 </div>
 
@@ -373,14 +378,13 @@ When the Tab key is pressed repeatedly, the focus highlights links in order, fro
   <uxdot-best-practice variant="dont">
     <uxdot-example color-palette="lightest" width-adjustment="482px" slot="image">
       <img src="./links-best-practice-3-dont.svg"
-            alt="Blue primary button that syas 'Learn more' text with a right arrow"
+            alt="Blue primary button that says 'Learn more' text with a right arrow"
             width="482"
             height="100">
     </uxdot-example>
     <p>Do not use buttons as links.</p>
   </uxdot-best-practice>
 </div>
-
 
 [linkwithicon]: /patterns/link-with-icon/
 [ctas]: /elements/call-to-action/
