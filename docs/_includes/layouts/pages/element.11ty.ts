@@ -45,6 +45,15 @@ interface Context extends EleventyPageRenderData {
   importMap: { imports: Record<string, string>; scopes: Record<string, Record<string, string>> };
 }
 
+interface CodepenDefineAPI {
+  title: string;
+  editors: string;
+  html: string;
+  css: string;
+  js: string;
+  head: string;
+}
+
 export default class ElementsPage extends Renderer<Context> {
   static assetCache = new AssetCache<ImportMap>('rhds-ux-dot-import-map-jspmio');
 
@@ -754,7 +763,7 @@ export default class ElementsPage extends Renderer<Context> {
           const map = await this.#getDemoMap(demo);
           const codeblocks = await this.#getDemoCodeBlocks(demo, map);
 
-          let codePenData: object | null;
+          const codePenData = new Object({}) as CodepenDefineAPI;
           if (map.size > 0) {
             // Reparse HTML data for modifications for use in codepen
             const htmlData = map.get('html') ?? '';
@@ -763,8 +772,12 @@ export default class ElementsPage extends Renderer<Context> {
               for (const node of Tools.queryAll<Tools.Element>(fragment, Tools.isElementNode)) {
                 if (node.tagName === 'link') {
                   if (node.attrs[0].name === 'rel' && node.attrs[1].name === 'href') {
-                    if (node.attrs[1].value.includes('-lightdom.css')) {
+                    if (node.attrs[1].value.includes(`${tagName}-lightdom.css`)) {
                       node.attrs[1].value = `https://esm.run/@rhds/elements@${process.env.npm_package_version}/elements/${tagName}/${tagName}-lightdom.css`;
+                    }
+
+                    if (node.attrs[1].value.includes(`${tagName}-lightdom-shim.css`)) {
+                      node.attrs[1].value = `https://esm.run/@rhds/elements@${process.env.npm_package_version}/elements/${tagName}/${tagName}-lightdom-shim.css`;
                     }
                   }
                 }
@@ -772,20 +785,12 @@ export default class ElementsPage extends Renderer<Context> {
               map.set('html', serialize(fragment));
             }
 
-            const html = map.get('html') ?? '';
-            const css = map.get('css') ?? '';
-            const js = map.get('js') ?? '';
-
-            codePenData = new Object({
-              'html': html,
-              'css': css,
-              'js': js,
-              'editors': '111',
-              'title': `${ctx.tagName} | ${demo.title} - v${process.env.npm_package_version}`,
-              'head': `<script type="importmap">{ "imports": { "@rhds/elements/": "https://esm.run/@rhds/elements@${process.env.npm_package_version}/", "@rhds/icons/": "https://esm.run/@rhds/icons@1.2/" } }</script>`,
-            });
-          } else {
-            codePenData = {};
+            codePenData.html = map.get('html') ?? '';
+            codePenData.css = map.get('css') ?? '';
+            codePenData.js = map.get('js') ?? '';
+            codePenData.editors = '111';
+            codePenData.title = `${ctx.tagName} | ${demo.title} - v${process.env.npm_package_version}`;
+            codePenData.head = `<script type="importmap">{ "imports": { "@rhds/elements/": "https://esm.run/@rhds/elements@${process.env.npm_package_version}/", "@rhds/icons/": "https://esm.run/@rhds/icons@1.2/" } }</script>`;
           }
 
           const strCodePenData = JSON.stringify(codePenData)
