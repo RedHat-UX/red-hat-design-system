@@ -149,7 +149,14 @@ Avoid opening links in new windows or tabs, as this [takes control away](#user-c
 
 In the first two cases above, such experience interruptions may be better handled through tooltips, popovers, or modals/dialogs.
 
-If a link must open in a new window, indicate this both [visually][externallinks] and non-visually. Text is preferred, but an icon (with text alternative for assistive tech users) can be used to announce that a new window will open.
+If a link must open in a new window, indicate this both visually and non-visually. Text is preferred, but an icon (with text alternative for assistive tech users) can be used to announce that a new window will open.
+
+<uxdot-example color-palette="lightest" width-adjustment="496px" slot="image">
+  <img src="./behavior-external-pages.svg"
+        alt="Examples of links paired with an external link icon"
+        width="496"
+       height="161">
+</uxdot-example>
 
 ### Target size
 
@@ -196,7 +203,6 @@ Text should never be justified. Justified text is aligned to the left and right 
 
 [coloraccessibility]: /foundations/color/accessibility/
 [colorcontrast]: https://www.tpgi.com/color-contrast-checker/
-[externallinks]: /foundations/interactions/links/#external-pages
 [linkfoundations]: /foundations/interactions/links/
 [paragraphspacing]: https://www.w3.org/WAI/WCAG21/Understanding/visual-presentation.html
 [rhbutton]: /elements/button/
