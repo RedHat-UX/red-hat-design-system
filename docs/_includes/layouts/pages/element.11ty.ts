@@ -751,8 +751,45 @@ export default class ElementsPage extends Renderer<Context> {
           const sourceUrl = `${githubSourcePrefix}${demo.filePath.replace(process.cwd(), '')}`;
 
           const demoUrl = `/elements/${this.getTagNameSlug(tagName)}/demo/${demoSlug === tagName ? '' : `${demoSlug}/`}`;
+          const map = await this.#getDemoMap(demo);
+          const codeblocks = await this.#getDemoCodeBlocks(demo, map);
 
-          const codeblocks = await this.#getDemoCodeBlocks(demo);
+          let codePenData: object | null;
+          if (map.size > 0) {
+            // Reparse HTML data for modifications for use in codepen
+            const htmlData = map.get('html') ?? '';
+            if (htmlData !== '') {
+              const fragment = parseFragment(htmlData);
+              for (const node of Tools.queryAll<Tools.Element>(fragment, Tools.isElementNode)) {
+                if (node.tagName === 'link') {
+                  if (node.attrs[0].name === 'rel' && node.attrs[1].name === 'href') {
+                    if (node.attrs[1].value.includes('-lightdom.css')) {
+                      node.attrs[1].value = `https://esm.run/@rhds/elements@${process.env.npm_package_version}/elements/${tagName}/${tagName}-lightdom.css`;
+                    }
+                  }
+                }
+              }
+              map.set('html', serialize(fragment));
+            }
+
+            const html = map.get('html') ?? '';
+            const css = map.get('css') ?? '';
+            const js = map.get('js') ?? '';
+
+            codePenData = new Object({
+              'html': html,
+              'css': css,
+              'js': js,
+              'editors': '111',
+              'title': `${ctx.tagName} | ${demo.title} - v${process.env.npm_package_version}`,
+              'head': `<script type="importmap">{ "imports": { "@rhds/elements/": "https://esm.run/@rhds/elements@${process.env.npm_package_version}/", "@rhds/icons/": "https://esm.run/@rhds/icons@1.2/" } }</script>`,
+            });
+          } else {
+            codePenData = {};
+          }
+
+          const strCodePenData = JSON.stringify(codePenData)
+              .replace(/"/g, '&quot;').replace(/'/g, '&apos;');
 
           if (codeblocks) {
             return html`
@@ -764,6 +801,7 @@ export default class ElementsPage extends Renderer<Context> {
                           demo-source-url="${sourceUrl}"
                           demo-url="${demoUrl}"
                           demo-file-path="${demo.filePath}"
+                          codepen-data="${strCodePenData}"
               >${codeblocks}</uxdot-demo>
             `;
           } else {
@@ -774,7 +812,8 @@ export default class ElementsPage extends Renderer<Context> {
     ].filter(Boolean).join('');
   }
 
-  async #getDemoCodeBlocks(demo: DemoRecord) {
+
+  async #getDemoMap(demo: DemoRecord) {
     const map = new Map<'html' | 'css' | 'js', string>();
 
     function updateKey(key: 'html' | 'css' | 'js', node: Tools.ParentNode) {
@@ -792,18 +831,26 @@ export default class ElementsPage extends Renderer<Context> {
         if (node.tagName === 'script'
           && node.attrs.some(x => x.name === 'type' && x.value === 'module')) {
           updateKey('js', node);
+          Tools.removeNode(node);
         } else if (node.tagName === 'style') {
           updateKey('css', node);
+          Tools.removeNode(node);
         }
       }
 
       map.set('html', serialize(fragment));
+    }
 
+    return map;
+  }
+
+  async #getDemoCodeBlocks(demo: DemoRecord, map: Map<'html' | 'css' | 'js', string>) {
+    if (demo.filePath) {
       const blocks = await Promise.all(map.entries().map(([kind, content]) => {
         const tpl = dedent(`
-          \`\`\`\`${kind} uxdotcodeblock {slot=${kind}}
-          ${content.trim()}
-          \`\`\`
+        \`\`\`${kind} uxdotcodeblock {slot=${kind}}
+        ${content.trim()}
+        \`\`\`
         `);
         return this.renderTemplate(tpl, 'md');
       }).toArray());
