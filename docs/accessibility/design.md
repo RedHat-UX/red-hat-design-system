@@ -152,10 +152,8 @@ In the first two cases above, such experience interruptions may be better handle
 If a link must open in a new window, indicate this both visually and non-visually. Text is preferred, but an icon (with text alternative for assistive tech users) can be used to announce that a new window will open.
 
 <uxdot-example color-palette="lightest" width-adjustment="496px" slot="image">
-  <img src="./behavior-external-pages.svg"
-        alt="Examples of links paired with an external link icon"
-        width="496"
-       height="161">
+  <img src="../behavior-external-pages.svg"
+        alt="Examples of links paired with an external link icon">
 </uxdot-example>
 
 ### Target size
