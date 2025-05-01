@@ -153,7 +153,7 @@ If a link must open in a new window, indicate this both visually and non-visuall
 
 <uxdot-example color-palette="lightest" width-adjustment="496px" slot="image">
   <img src="../behavior-external-pages.svg"
-        alt="Examples of links paired with an external link icon">
+        alt="Examples of links paired with a new tab/window icon">
 </uxdot-example>
 
 ### Target size
