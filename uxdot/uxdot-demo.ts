@@ -48,7 +48,7 @@ export class UxdotDemo extends LitElement {
                      icon-set="ui"
                      @click="${this.#reloadIframe}">Reload</rh-button>
           <rh-cta slot="footer" href="${this.demoSourceUrl}">View source on GitHub</rh-cta>
-          <rh-cta slot="footer" href="${this.demoUrl}" target="_blank" rel="noreferrer noopener">View In Own Tab</rh-cta>
+          <rh-cta slot="footer" href="${this.demoUrl}" target="_blank">View In Own Tab</rh-cta>
         </rh-card>
       </div>
     `;
