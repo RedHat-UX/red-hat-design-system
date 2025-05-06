@@ -83,13 +83,14 @@ export class RhBreadcrumb extends LitElement {
   }
 
   firstUpdated(): void {
-    if (isServer) {
-      return;
-    }
     this.#updateLightDOM();
   }
 
   #updateLightDOM(): void {
+    if (isServer || !this.truncate) {
+      return;
+    }
+
     this.#list = this.querySelector('ol');
     if (!this.#list) {
       return;
