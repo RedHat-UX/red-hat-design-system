@@ -73,8 +73,8 @@ export class RhBreadcrumb extends LitElement {
     return html`
       <nav 
         aria-label="${label}"
-        @click="${this.truncate && this.#handleTruncationClick}"
-        @keyup="${this.truncate && this.#onKeyUp}"
+        @click="${this.truncate ? this.#handleTruncationClick : undefined}"
+        @keyup="${this.truncate ? this.#onKeyUp : undefined}"
         id="container"
         part="container">
         <slot></slot>
@@ -110,6 +110,10 @@ export class RhBreadcrumb extends LitElement {
   }
 
   #handleTruncationClick(event: Event): void {
+    if (isServer) {
+      return;
+    }
+
     const target = event.target as HTMLButtonElement;
     if (!target.closest('.truncate-btn')) {
       return;
