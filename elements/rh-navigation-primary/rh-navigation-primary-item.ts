@@ -21,6 +21,17 @@ import './rh-navigation-primary-item-menu.js';
 
 import styles from './rh-navigation-primary-item.css';
 
+
+/**
+ * Navigation Item
+ * @slot          Item menu content
+ * @slot          summary -
+ *                When the variant is dropdown, use this slot to provide text to the dropdown trigger
+ * @slot          icon -
+ *                When the variant is dropdown, use this slot to provide an icon next to the text of the dropdown trigger
+ * @cssprop       [--rh-navigation-primary-item-menu-padding-block-end, var(--rh-space-2xl, 32px)]
+ *                Sets the bottom padding to support designs where bottom padding needs adjusted
+ */
 @themable
 @customElement('rh-navigation-primary-item')
 export class RhNavigationPrimaryItem extends LitElement {
