@@ -51,7 +51,7 @@
   overflow-y: auto;
   overscroll-behavior: contain;
   padding: var(--rh-space-xl, 24px);
-  position: relative;
+  position: fixed;
 }
 
 :host([width='small']) #dialog,
