@@ -54,6 +54,24 @@ or anything else, please submit a [GitHub issue][issues].
 
 <section aria-labelledby="version-3.0.0">
 
+### Patches from version 3.0.1
+
+<rh-table>
+
+| Change        | Type        | Notes        |
+| ------------- | ----------- | ------------ |
+| `<rh-button>`: dark scheme support | {{p()}} | Dark scheme support for buttons with icons |
+| `<rh-cta>`: load icon | {{p()}} | Ensure the arrow icon always appears |
+| `<rh-dialog>`: improve accessibility | {{p()}} | Increase contrast of close button for video dialogs |
+| `<rh-pagination>`: improve accessibility | {{p()}} | Fix ellipsis background color on dark color schemes |
+| `<rh-tile>`: body slot | {{p()}} | Fixed empty body slot |
+| Server side rendering: improve support | {{p()}} | Improved SSR support for the following elements: `<rh-accordion>`, `<rh-avatar>`, `<rh-back-to-top>`, `<rh-code-block>`, `<rh-navigation-secondary>`, `<rh-pagination>`, `<rh-stat>`, `<rh-switch>`, `<rh-table>` |
+| Theming: load default theme | {{p()}} | Ensure themable elements always load the default theme |
+
+</rh-table>
+
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v3.0.1">View all version 3.0.1 release notes</rh-cta>
+
 ## Version 3.0.0
 Released April 7, 2025
 
