@@ -133,6 +133,10 @@ Released April 7, 2025
 
 <rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v3.0.0">View all version 3.0 release notes</rh-cta>
 
+</section>
+
+<section aria-labelledby="version-2.1.0">
+
 ### Patches from version 2.1.2
 
 <rh-table>
@@ -177,10 +181,6 @@ Released April 7, 2025
 </rh-table>
 
 <rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v2.1.1">View all version 2.1.1 release notes</rh-cta>
-
-</section>
-
-<section aria-labelledby="version-2.1.0">
 
 ## Version 2.1.0
 Released October 1, 2024
