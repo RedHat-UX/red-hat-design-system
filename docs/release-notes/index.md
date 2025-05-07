@@ -13,7 +13,7 @@ title: Release notes
 <style data-helmet>
   rh-tile {
     margin-block: var(--rh-space-3xl, 48px);
-    max-width: 320px;
+    max-inline-size: 320px;
   }
 
   rh-tile [icon="github"] {
