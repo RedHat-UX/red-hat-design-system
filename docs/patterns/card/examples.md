@@ -106,6 +106,10 @@ Secondary and Default calls to action may be used.
   <h3 id="definition-list" slot="heading">Definition list</h3>
 </uxdot-pattern>
 
+<uxdot-pattern src="./patterns/definition-list-image.html">
+  <h3 id="definition-list-image" slot="heading">Definition list with image</h3>
+</uxdot-pattern>
+
 ## Logo cards
 Use to display a customer logo in a variety of arrangements. A call to
 action is required, otherwise use a logo wall.

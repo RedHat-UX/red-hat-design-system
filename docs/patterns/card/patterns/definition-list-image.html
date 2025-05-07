@@ -1,16 +1,17 @@
 <rh-card class="example-dl">
-  <h2 slot="header">Pikachu</h2>
+  <img src="../charmander.png" alt="Charmander Pokémon" slot="image">
+  <h2 slot="header">Charmander</h2>
   <dl>
     <dt>National №</dt>
-    <dd>0025</dd>
+    <dd>0004</dd>
     <dt>Species</dt>
-    <dd>Mouse Pokémon</dd>
+    <dd>Lizard Pokémon</dd>
     <dt>Type</dt>
-    <dd><rh-tag color="yellow">Electric</rh-tag></dd>
+    <dd><rh-tag color="red">Fire</rh-tag></dd>
     <dt>Generation</dt>
     <dd>1</dd>
   </dl>
-  <rh-cta slot="footer" href="https://pokemondb.net/pokedex/pikachu">Pikachu Pokédex</rh-cta>
+  <rh-cta slot="footer" href="https://pokemondb.net/pokedex/charmander">Charmander Pokédex</rh-cta>
 </rh-card>
 
 <style>
@@ -37,7 +38,23 @@
 
     /* For this Pokémon example */   
     &::part(container) {
+      display: grid;
+      grid-template-areas: 'image' 'header' 'body' 'footer';
+      grid-template-columns: 1fr;
+      place-items: start stretch;
       gap: var(--rh-space-2xl, 32px);
+    }
+    
+    @container (min-width: 576px) {
+      &::part(container) {
+        grid-template-areas: 'image header' 'image body' 'image footer';
+        grid-template-columns: 1fr 2fr;
+      }
+    }
+
+    &::part(image) {
+      grid-area: image;
+      padding: var(--rh-space-2xl, 32px);
     }
   }
 </style>
