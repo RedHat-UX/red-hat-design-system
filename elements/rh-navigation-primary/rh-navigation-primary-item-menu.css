@@ -5,18 +5,16 @@
 #container {
   color: var(--rh-color-text-primary);
   background-color: var(--rh-color-surface);
-  padding:
+  padding-inline: var(--rh-space-lg, 16px);
+  padding-block:
     var(--rh-space-lg, 16px)
-    var(--rh-space-lg, 16px)
-    var(--rh-navigation-primary-item-menu-padding-block-end, var(--rh-space-2xl, 32px))
-    var(--rh-space-lg, 16px);
+    var(--rh-navigation-primary-item-menu-padding-block-end, var(--rh-space-2xl, 32px));
 
   @container (min-width: 768px) {
-    padding:
-      var(--rh-space-lg, 16px)
-      var(--rh-space-lg, 16px)
-      var(--rh-navigation-primary-item-menu-padding-block-end, var(--rh-space-2xl, 32px))
-      var(--rh-space-lg, 16px);
+    padding-inline: var(--rh-space-2xl, 32px);
+    padding-block:
+      var(--rh-space-2xl, 32px)
+      var(--rh-navigation-primary-item-menu-padding-block-end, var(--rh-space-3xl, 48px));
   }
 
   &:not(.compact) {
