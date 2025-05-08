@@ -124,6 +124,7 @@ export class RhDialog extends LitElement {
   disconnectedCallback() {
     super.disconnectedCallback();
     this.#triggerElement?.removeEventListener('click', this.onTriggerClick);
+    this.dialog?.removeEventListener('cancel', this.#onNativeDialogCancel);
   }
 
   render() {
@@ -190,6 +191,10 @@ export class RhDialog extends LitElement {
       // Get the first heading in the dialog if it exists
       this.#headings[0].id = this.#headerId;
     }
+
+    if (this.dialog) {
+      this.dialog?.addEventListener('cancel', this.#onNativeDialogCancel.bind(this));
+    }
   }
 
   @observes('open')
@@ -251,6 +256,11 @@ export class RhDialog extends LitElement {
         this.cancel();
       }
     }
+  }
+
+  #onNativeDialogCancel(event: Event) {
+    event.preventDefault();
+    this.cancel();
   }
 
   #onKeyDown(event: KeyboardEvent) {
