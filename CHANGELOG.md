@@ -1,5 +1,22 @@
 # @rhds/elements
 
+## 3.0.2
+### Patch Changes
+
+- 885ab9a: `<rh-dialog>`: corrected background color for dark scheme
+- 75b43f6: `<rh-video-embed>`: hide thumbnail and show video after hitting play button
+- 885ab9a: `<rh-code-block>`: corrected background color for dark scheme
+- dce6e53: `<rh-tabs>`: corrected icons from being incorrectly hidden
+- 885ab9a: `<rh-switch>`: corrected switch handle color for dark scheme
+- 2faf93b: `<rh-dialog>`: corrected dialog positioning to prevent page scrolling
+- 885ab9a: `<rh-health-index>`: corrected background color for dark scheme
+- 49e06d3: `<rh-navigation-primary>`: corrected missing named logo slot documentation
+- 885ab9a: `<rh-navigation-secondary>`: corrected background color for dark scheme
+- 885ab9a: `<rh-tile>`: corrected background color for light and dark scheme
+- 885ab9a: `<rh-accordion>`: corrected hover background-color for dark scheme
+- 885ab9a: `<rh-pagination>`: correct background-colors for dark scheme
+- 220b522: `<rh-navigation-primary>`: documented the `logo` slot
+
 ## 3.0.1
 ### Patch Changes
 
