@@ -118,41 +118,45 @@ export default class TokensPage extends Renderer<Data> {
       return '';
     }
 
+    const deprecatedTokens = tokens.filter(x => x.$deprecated);
+
     return html`
       <rh-table>
         <table>
           <thead>
             <tr>
-              <th scope="col" data-label="Example"><abbr title="Example">Ex.</abbr></th>
-              <th scope="col" data-label="Token name">Token name</th>
-              <th scope="col" data-label="Value">Value</th>
-              <th scope="col" data-label="Use case">Use case</th>
-              <th scope="col" data-label="Copy"></th>
+              <th scope="col"><abbr title="Example">Ex.</abbr></th>
+              <th scope="col">Token name</th>
+              <th scope="col">Value</th>
+              <th scope="col">Use case</th>
+              <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
             ${(await Promise.all(tokens.filter(x => !x.$deprecated).map(token => this.#renderToken(token, options)))).join('\n')}
           </tbody>
         </table>
-      </rh-table>
-      <rh-disclosure summary="Deprecated tokens">
+      </rh-table>${!deprecatedTokens.length ? '' : html`
+
+      <rh-disclosure summary="Deprecated tokens"
+                     style="--rh-color-surface: light-dark(var(--rh-color-surface-lighter), var(--rh-color-surface-darkest))">
         <rh-table>
           <table>
             <thead>
               <tr>
-                <th scope="col" data-label="Example"><abbr title="Example">Ex.</abbr></th>
-                <th scope="col" data-label="Token name">Token name</th>
-                <th scope="col" data-label="Value">Value</th>
-                <th scope="col" data-label="Use case">Use case</th>
-                <th scope="col" data-label="Copy"></th>
+                <th scope="col"><abbr title="Example">Ex.</abbr></th>
+                <th scope="col">Token name</th>
+                <th scope="col">Value</th>
+                <th scope="col">Deprecation reason</th>
+                <th scope="col"></th>
               </tr>
             </thead>
             <tbody>
-              ${(await Promise.all(tokens.filter(x => x.$deprecated).map(token => this.#renderToken(token, options)))).join('\n')}
+              ${(await Promise.all(deprecatedTokens.map(token => this.#renderToken(token, options)))).join('\n')}
             </tbody>
           </table>
         </rh-table>
-      </rh-table>`.trim();
+      </rh-disclosure>`}`.trim();
   }
 
   async #renderToken(token: DesignToken, { name, tokens }: Options) {
@@ -164,9 +168,9 @@ export default class TokensPage extends Renderer<Data> {
         || token.name === '_') {
       return '';
     }
-    const { r, g, b } = (token.attributes?.rgb ?? {}) as Color['rgb'];
-    const { h, s, l } = (token.attributes?.hsl ?? {}) as Color['hsl'];
     const isColor = !!token.path.includes('color');
+    const isHSL = !!token.name?.match(/hsl$/);
+    const isRGB = !!token.name?.match(/rgb$/);
     const isCrayon = isColor && token.name?.match(/0$/);
     const isDimension = token.$type === 'dimension';
     const isFamily = !!token.path.includes('family');
@@ -211,95 +215,49 @@ export default class TokensPage extends Renderer<Data> {
     });
 
     return html`
-    <tr id="${token.name}"
-      class="${classes}"
-      style="${styleMap({
-      '--samp-radius': isRadius ? token.$value : 'initial',
-      '--samp-width': isWidth ? token.$value : 'initial',
-      '--samp-color': isColor ? token.$value : 'initial',
-      '--samp-opacity': isOpacity ? token.$value : 'initial',
-      '--samp-space': isSpace ? token.$value : 'initial',
-      '--samp-font-family': isFamily ? token.$value : 'var(--rh-font-family-body-text)',
-      '--samp-font-size': isSize ? token.$value : 'var(--rh-font-size-heading-md)',
-      '--samp-font-weight':
-        isWeight ? token.$value : 'var(--rh-font-weight-body-text-regular)',
-      [`--samp-${token.$type === 'dimension' ? `${name}-size` : name}`]: token.$value,
-      [`${token.$type === 'dimension' && token.attributes?.category === 'space' ? `--samp-${name}-color` : ``}`]: isSpace ? token.original?.['$extensions']['com.redhat.ux'].color : '',
-    })}">
-    <td data-label="Example">
-      <samp class="${classes}">
-        ${isSpace ? `<span class="${parseInt(token.$value) < 16 ? `offset` : ''}">${parseInt(token.$value)}</span>` : ``}
-        ${isColor && token.path.includes('text') ? 'Aa'
-        : isFont ? (example || (token.attributes?.aliases as string[])?.[0] || 'Aa')
-        : name === 'breakpoint' ? html`
-        <img src="/assets/breakpoints/device-${token.name}.svg" role="presentation">`
-        : example}
-      </samp>
-    </td>
-    <td data-label="Token name">
-      <uxdot-copy-button>--${token.name}</uxdot-copy-button>
-    </td>
-    <td data-label="Value">
-      ${( isDimension ? html`<code>${token.$value}<code>`
-        : isColor ? html`<code style="--color: ${token.$value}">${token.$value}</code> `
-        : isWeight ? html`
-        <code class="numerical">${token.$value}</code>
-        <code class="common">${(token.attributes?.aliases as string[])?.[0] ?? ''}</code>`
-        : html`<code>${token.$value}</code>`
-        )}
-    </td>
-    <td data-label="Use case">
-      ${await this.renderTemplate(token.$description ?? '', 'md')}
-      ${await this.#renderTokenDeprecationReason(token)}
-    </td>
-    ${copyCell(token)}
-  </tr>${!isCrayon ? '' : html`
-  <tr class="variants">
-    <td colspan="5">
-      <details>
-        <summary title="Color function variants">Color function variants</summary>
-        <rh-table>
-          <table class="${classes}"
-            style="${styleMap({ '--samp-color': isColor ? token.$value : 'initial' })}">
-            <thead>
-              <tr>
-                <th scope="col" data-label="Example"><abbr title="Example">Ex.</abbr></th>
-                <th scope="col" data-label="Token name">Token name</th>
-                <th scope="col" data-label="Value">Value</th>
-                <th scope="col" data-label="Use case">Use case</th>
-                <th scope="col" data-label="Copy"></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr id="${token.name}-rgb" style="--color: rgb(${r}, ${g}, ${b})">
-                <td class="sample">
-                  <samp class="${classes}">${token.path.includes('text') ? 'Aa' : example}</samp>
-                </td>
-                <td class="token name">
-                  <uxdot-copy-button>--${token.name}-rgb</uxdot-copy-button>
-                </td>
-                <td><code>rgb(${r}, ${g}, ${b})</code></td>
-                <td>To modify opacity</td>
-                ${copyCell(token)}
-              </tr>
-              <tr id="${token.name}-hsl" style="--color: hsl(${h} ${s}% ${l}%)">
-                <td class="sample">
-                  <samp class="${classes}">${token.path.includes('text') ? 'Aa' : example}</samp>
-                </td>
-                <td class="token name">
-                  <uxdot-copy-button>--${token.name}-hsl</uxdot-copy-button>
-                </td>
-                <td><code>hsl(${h} ${s}% ${l}%)</code></td>
-                <td>To modify opacity</td>
-                ${copyCell(token)}
-              </tr>
-            </tbody>
-          </table>
-        </rh-table>
-      </details>
-    </td>
-  </tr>
-  `}`;
+      <tr id="${token.name}"
+          class="${classes}"
+          style="${styleMap({
+          '--samp-radius': isRadius ? token.$value : 'initial',
+          '--samp-width': isWidth ? token.$value : 'initial',
+          '--samp-color': isHSL ? `hsl(${token.$value})` : isRGB ? `rgb(${token.$value})` : isColor ? token.$value : 'initial',
+          '--samp-opacity': isOpacity ? token.$value : 'initial',
+          '--samp-space': isSpace ? token.$value : 'initial',
+          '--samp-font-family': isFamily ? token.$value : 'var(--rh-font-family-body-text)',
+          '--samp-font-size': isSize ? token.$value : 'var(--rh-font-size-heading-md)',
+          '--samp-font-weight':
+            isWeight ? token.$value : 'var(--rh-font-weight-body-text-regular)',
+          [`--samp-${token.$type === 'dimension' ? `${name}-size` : name}`]: token.$value,
+          [`${token.$type === 'dimension' && token.attributes?.category === 'space' ? `--samp-${name}-color` : ``}`]: isSpace ? token.original?.['$extensions']['com.redhat.ux'].color : '',
+        })}">
+        <td>
+          <samp class="${classes}">
+            ${!isSpace ? '' : html`<span class="${parseInt(token.$value) < 16 ? `offset` : ''}">${parseInt(token.$value)}</span>`}
+            ${isColor && token.path.includes('text') ? 'Aa'
+            : isFont ? (example || (token.attributes?.aliases as string[])?.[0] || 'Aa')
+            : name === 'breakpoint' ? html`
+            <img src="/assets/breakpoints/device-${token.name}.svg" role="presentation">`
+            : example}
+          </samp>
+        </td>
+        <td>
+          <uxdot-copy-button>--${token.name}</uxdot-copy-button>
+        </td>
+        <td>
+          ${( isDimension ? html`<code>${token.$value}<code>`
+            : isColor ? html`<code style="--color: ${token.$value}">${token.$value}</code> `
+            : isWeight ? html`
+            <code class="numerical">${token.$value}</code>
+            <code class="common">${(token.attributes?.aliases as string[])?.[0] ?? ''}</code>`
+            : html`<code>${token.$value}</code>`
+            )}
+        </td>
+        <td>
+          ${await this.renderTemplate(token.$description ?? '', 'md')}
+          ${await this.#renderTokenDeprecationReason(token)}
+        </td>
+        ${copyCell(token)}
+      </tr>`;
   }
 
   async #renderIncludes(options: Options): Promise<string> {
