@@ -128,7 +128,7 @@ export class RhDialog extends LitElement {
   }
 
   firstUpdated(): void {
-    if (this.dialog){
+    if (this.dialog) {
       this.dialog.addEventListener('close', this.#onNativeDialogCancel.bind(this));
     }
   }
