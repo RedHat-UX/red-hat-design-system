@@ -43,8 +43,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.0/core.js",
     "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.1/core.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
@@ -1431,7 +1431,17 @@
 <li>When a link leads to a file or document that isn't a web page or web application, like a PDF.</li>
 </ul>
 <p>In the first two cases above, such experience interruptions may be better handled through tooltips, popovers, or modals/dialogs.</p>
-<p>If a link must open in a new window, indicate this both <a href="/foundations/interactions/links/#external-pages">visually</a> and non-visually. Text is preferred, but an icon (with text alternative for assistive tech users) can be used to announce that a new window will open.</p>
+<p>If a link must open in a new window, indicate this both visually and non-visually. Text is preferred, but an icon (with text alternative for assistive tech users) can be used to announce that a new window will open.</p>
+<uxdot-example    color-palette="lightest" width-adjustment="496px" slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
+      <!--lit-node 0--><div id="container"
+           part="container"
+           class=" widthAdjustment "
+           style="--_width: 496px; --_alignment: center">
+        <slot></slot>
+      </div>
+    <!--/lit-part--></template>
+  <img src="../behavior-external-pages.svg" alt="Examples of links paired with a new tab/window icon">
+</uxdot-example>
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
