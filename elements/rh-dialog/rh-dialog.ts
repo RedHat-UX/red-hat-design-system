@@ -124,6 +124,13 @@ export class RhDialog extends LitElement {
   disconnectedCallback() {
     super.disconnectedCallback();
     this.#triggerElement?.removeEventListener('click', this.onTriggerClick);
+    this.dialog?.removeEventListener('cancel', this.#onNativeDialogCancel);
+  }
+
+  firstUpdated(): void {
+    if (this.dialog) {
+      this.dialog.addEventListener('close', this.#onNativeDialogCancel.bind(this));
+    }
   }
 
   render() {
@@ -251,6 +258,11 @@ export class RhDialog extends LitElement {
         this.cancel();
       }
     }
+  }
+
+  #onNativeDialogCancel(event: Event) {
+    event.preventDefault();
+    this.cancel();
   }
 
   #onKeyDown(event: KeyboardEvent) {
