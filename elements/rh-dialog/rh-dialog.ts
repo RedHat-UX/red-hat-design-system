@@ -127,6 +127,12 @@ export class RhDialog extends LitElement {
     this.dialog?.removeEventListener('cancel', this.#onNativeDialogCancel);
   }
 
+  firstUpdated(): void {
+    if (this.dialog){
+      this.dialog.addEventListener('close', this.#onNativeDialogCancel.bind(this));
+    }
+  }
+
   render() {
     const headerId = (this.#header || this.#headings.length) ? this.#headerId : undefined;
     const triggerLabel = this.#triggerElement ? this.#triggerElement.innerText : undefined;
@@ -190,10 +196,6 @@ export class RhDialog extends LitElement {
     } else if (this.#headings.length > 0) {
       // Get the first heading in the dialog if it exists
       this.#headings[0].id = this.#headerId;
-    }
-
-    if (this.dialog) {
-      this.dialog?.addEventListener('cancel', this.#onNativeDialogCancel.bind(this));
     }
   }
 
