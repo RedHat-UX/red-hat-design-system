@@ -227,7 +227,7 @@ export default class TokensPage extends Renderer<Data> {
               </td>
               <td data-label="Use case">
                 ${await this.renderTemplate(token.$description ?? '', 'md')}
-                ${this.#renderTokenDeprecationReason(token)}
+                ${await this.#renderTokenDeprecationReason(token)}
               </td>
               ${copyCell(token)}
             </tr>${!isCrayon ? '' : `
@@ -378,7 +378,7 @@ export default class TokensPage extends Renderer<Data> {
     return html`
       ${permalink}
       <div class="description">${await this.renderTemplate(description, 'md')}</div>
-      ${this.#renderTokenDeprecationReason(options.tokens)}
+      ${await this.#renderTokenDeprecationReason(options.tokens)}
       ${this.#renderThemeTokensCard(options)}
       ${await this.#renderTable(options)}
       ${await this.#renderChildren(options)}
