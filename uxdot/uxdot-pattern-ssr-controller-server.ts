@@ -126,7 +126,7 @@ export class UxdotPatternSSRControllerServer extends RHDSSSRController {
 
     const partial = parseFragment(content);
 
-    injectSSRHintAttributes(partial, renderInfo);
+    injectSSRHintAttributes.call(this, partial, renderInfo);
 
     const allContent = serialize(partial).trim();
 
