@@ -225,7 +225,10 @@ export default class TokensPage extends Renderer<Data> {
                   : `<code>${token.$value}</code>`
                   )}
               </td>
-              <td data-label="Use case">${await this.renderTemplate(token.$description ?? '', 'md')}</td>
+              <td data-label="Use case">
+                ${await this.renderTemplate(token.$description ?? '', 'md')}
+                ${this.#renderTokenDeprecationReason(token)}
+              </td>
               ${copyCell(token)}
             </tr>${!isCrayon ? '' : `
             <tr class="variants">
@@ -375,11 +378,18 @@ export default class TokensPage extends Renderer<Data> {
     return html`
       ${permalink}
       <div class="description">${await this.renderTemplate(description, 'md')}</div>
+      ${this.#renderTokenDeprecationReason(options.tokens)}
       ${this.#renderThemeTokensCard(options)}
       ${await this.#renderTable(options)}
       ${await this.#renderChildren(options)}
       ${await this.#renderIncludes(options)}
     `;
+  }
+
+  async #renderTokenDeprecationReason({ $deprecated }: DesignToken) {
+    return !$deprecated ? ''
+      : $deprecated === true ? html`<div class="deprecated"><strong>Deprecated</strong></div>`
+      : html`<div class="deprecated">${await this.renderTemplate($deprecated, 'md')}</div>`;
   }
 
   async #renderCategory(options: Options) {
