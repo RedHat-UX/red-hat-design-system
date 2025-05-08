@@ -55,6 +55,10 @@ export class RhJumpLinks extends LitElement {
   override connectedCallback(): void {
     super.connectedCallback();
     this.addEventListener('select', this.#onSelect);
+    this.dispatchEvent(new CustomEvent('jump-links-connect', {
+      bubbles: true,
+      composed: true
+    }));
   }
 
   override firstUpdated(): void {

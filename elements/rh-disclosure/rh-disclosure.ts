@@ -5,7 +5,6 @@ import { query } from 'lit/decorators/query.js';
 
 import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
 import { themable } from '@rhds/elements/lib/themable.js';
-import type { RhJumpLinks } from 'elements/rh-jump-links/rh-jump-links.js';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 
@@ -52,8 +51,6 @@ export class RhDisclosure extends LitElement {
     ].map(selector => `${selector}:not([inert]):not([inert] *):not([tabindex^='-'])`),
   ].join(',');
 
-  #mo = new MutationObserver(() => this.#mutationsCallback());
-
   /**
    * Set the colorPalette of the disclosure. Overrides parent context. Possible values are:
    * - `lightest` (default)
@@ -80,16 +77,15 @@ export class RhDisclosure extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.#mo.observe(this, { childList: true, subtree: true });
+    this.addEventListener('jump-links-connect', this.#handleJumpLinkChildren);
   }
 
   disconnectedCallback(): void {
     super.disconnectedCallback();
-    this.#mo.disconnect();
+    this.removeEventListener('jump-links-connect', this.#handleJumpLinkChildren);
   }
 
   update(changed: PropertyValues<this>): void {
-    this.#mutationsCallback();
     super.update(changed);
   }
 
@@ -131,7 +127,6 @@ export class RhDisclosure extends LitElement {
     }
   }
 
-
   #closeDisclosure(): void {
     if (!this.open) {
       return;
@@ -141,11 +136,19 @@ export class RhDisclosure extends LitElement {
     this.summaryEl.focus();
   }
 
-  #mutationsCallback(): void {
-    const hasJumpLinks: RhJumpLinks | null = this.querySelector('rh-jump-links');
-    if (hasJumpLinks && !this.classList.contains('has-jump-links')) {
-      this.classList.add('has-jump-links');
-    }
+  #handleJumpLinkChildren(event: Event) {
+    const sheet: CSSStyleSheet = new CSSStyleSheet();
+    sheet?.replaceSync(
+      `:host(.mobile) details[open]:before {
+        border-inline-start-color: transparent;
+      }`
+    );
+    if(this.shadowRoot)
+    this.shadowRoot.adoptedStyleSheets = [
+      ...this.shadowRoot.adoptedStyleSheets, 
+      sheet
+    ];
+    this.requestUpdate();
   }
 }
 
