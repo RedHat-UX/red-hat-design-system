@@ -11,6 +11,7 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-pagination.css';
+import { state } from 'lit/decorators/state.js';
 
 const L1 = html`
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 14">
@@ -85,17 +86,20 @@ export class RhPagination extends LitElement {
   #ol = isServer ? null : this.querySelector('ol');
   #links = this.#ol?.querySelectorAll<HTMLAnchorElement>('li a');
 
+  @state() private total = 0;
+
   #firstLink: HTMLAnchorElement | null = null;
   #lastLink: HTMLAnchorElement | null = null;
   #nextLink: HTMLAnchorElement | null = null;
   #prevLink: HTMLAnchorElement | null = null;
   #currentLink = this.#getCurrentLink();
   #currentIndex = 0;
+
   get #currentPage() {
     return this.#currentIndex + 1;
   }
 
-  connectedCallback(): void {
+  override connectedCallback(): void {
     super.connectedCallback();
     // Validate DOM
     if (!isServer && (!this.#ol || [...this.children].filter(x => !x.slot).length > 1)) {
@@ -104,17 +108,23 @@ export class RhPagination extends LitElement {
     this.#mo.observe(this, { childList: true, subtree: true });
   }
 
-  disconnectedCallback(): void {
+  override disconnectedCallback(): void {
     super.disconnectedCallback();
     this.#mo.disconnect();
   }
 
-  update(changed: PropertyValues<this>): void {
+  override update(changed: PropertyValues<this>): void {
     this.#update();
     super.update(changed);
   }
 
-  render() {
+  override updated() {
+    if (!isServer) {
+      this.total = this.#links?.length ?? 0;
+    }
+  }
+
+  override render() {
     const { label, labelFirst, labelPrevious, labelNext, labelLast } = this;
     const firstHref = this.#currentLink === this.#firstLink ? undefined : this.#firstLink?.href;
     const prevHref = this.#prevLink?.href;
@@ -152,13 +162,13 @@ export class RhPagination extends LitElement {
         <input inputmode="numeric"
                required
                min=1
-               max="${this.#links?.length ?? 1}"
+               max="${this.total}"
                aria-labelledby="go-to-page"
                @change="${this.#onChange}"
                @keyup="${this.#onKeyup}"
                .value="${currentPage}">
-        <slot name="out-of">of</slot>
-        <a href=${ifDefined(lastHref)}>${this.#links?.length}</a>
+        <slot ?hidden="${!this.total}" name="out-of">of</slot>
+        <a ?hidden="${!this.total}" href=${ifDefined(lastHref)}>${this.total}</a>
       </div>
     `;
   }
@@ -172,7 +182,7 @@ export class RhPagination extends LitElement {
 
   #getOverflow(): 'start' | 'end' | 'both' | null {
     const overflowAt = 9;
-    const length = this.#links?.length ?? 0;
+    const length = this.total;
     if (length <= overflowAt) {
       return null;
     }
@@ -238,7 +248,7 @@ export class RhPagination extends LitElement {
     if (this.input && this.#links) {
       if (Number.isNaN(this.#currentPage)) {
         message = `${this.#currentPage} is not a valid page number`;
-      } else if (this.#currentPage > this.#links.length || this.#currentPage < 1) {
+      } else if (this.#currentPage > this.total || this.#currentPage < 1) {
         message = `cannot navigate to page ${this.#currentPage}`;
       }
       this.input.setCustomValidity(message);
@@ -273,7 +283,7 @@ export class RhPagination extends LitElement {
     if (!(event.target instanceof HTMLInputElement) || !this.#links) {
       return;
     }
-    const max = this.#links.length.toString();
+    const max = this.total.toString();
     const input = event.target;
     if (parseInt(input.value) > parseInt(max)) {
       input.value = max;
