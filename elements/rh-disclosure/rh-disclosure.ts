@@ -136,7 +136,7 @@ export class RhDisclosure extends LitElement {
     this.summaryEl.focus();
   }
 
-  #handleJumpLinkChildren(event: Event) {
+  #handleJumpLinkChildren() {
     const sheet: CSSStyleSheet = new CSSStyleSheet();
     sheet?.replaceSync(
       `:host(.mobile) details[open]:before {
