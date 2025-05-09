@@ -139,7 +139,7 @@ export default class TokensPage extends Renderer<Data> {
       </rh-table>${!deprecatedTokens.length ? '' : html`
 
       <rh-disclosure summary="Deprecated tokens"
-                     style="--rh-color-surface: light-dark(var(--rh-color-surface-lighter), var(--rh-color-surface-darkest))">
+                     style="margin-block-end: var(--rh-space-6xl, 96px);"
         <rh-table>
           <table>
             <thead>
@@ -148,7 +148,7 @@ export default class TokensPage extends Renderer<Data> {
                 <th scope="col">Token name</th>
                 <th scope="col">Value</th>
                 <th scope="col">Deprecation reason</th>
-                <th scope="col"></th>
+                <th scope="col">Action</th>
               </tr>
             </thead>
             <tbody>
