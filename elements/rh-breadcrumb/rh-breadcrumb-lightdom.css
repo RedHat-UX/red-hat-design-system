@@ -13,6 +13,10 @@ rh-breadcrumb {
   --_breadcrumb-link-focus-outline-color: var(--rh-color-border-interactive);
 
   display: block;
+
+  & [hidden] {
+    display: none !important;
+  }
 }
 
 rh-breadcrumb ol {
@@ -100,10 +104,6 @@ rh-breadcrumb > ol > li > a[aria-current='page'] {
 rh-breadcrumb[variant='subtle'] > ol > li:last-child,
 rh-breadcrumb[variant='subtle'] > ol > li > a[aria-current='page'] {
   color: var(--_breadcrumb-link-color-current-page-subtle);
-}
-
-[hidden] {
-  display: none !important;
 }
 
 .rhds-truncate-btn {
