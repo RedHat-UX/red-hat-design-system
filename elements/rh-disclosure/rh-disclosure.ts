@@ -51,6 +51,8 @@ export class RhDisclosure extends LitElement {
     ].map(selector => `${selector}:not([inert]):not([inert] *):not([tabindex^='-'])`),
   ].join(',');
 
+  #sheet: CSSStyleSheet = new CSSStyleSheet();
+
   /**
    * Set the colorPalette of the disclosure. Overrides parent context. Possible values are:
    * - `lightest` (default)
@@ -137,8 +139,7 @@ export class RhDisclosure extends LitElement {
   }
 
   #handleJumpLinkChildren() {
-    const sheet: CSSStyleSheet = new CSSStyleSheet();
-    sheet?.replaceSync(
+    this.#sheet?.replaceSync(
       `:host(.mobile) details[open]:before {
         border-inline-start-color: transparent;
       }`
@@ -146,7 +147,7 @@ export class RhDisclosure extends LitElement {
     if(this.shadowRoot)
     this.shadowRoot.adoptedStyleSheets = [
       ...this.shadowRoot.adoptedStyleSheets, 
-      sheet
+      this.#sheet
     ];
     this.requestUpdate();
   }
