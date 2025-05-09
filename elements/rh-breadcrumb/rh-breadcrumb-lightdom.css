@@ -106,7 +106,7 @@ rh-breadcrumb[variant='subtle'] > ol > li > a[aria-current='page'] {
   display: none !important;
 }
 
-.truncate-btn {
+.rhds-truncate-btn {
   background-color: transparent;
   border: 0;
   color: var(--_breadcrumb-link-color);
@@ -115,18 +115,18 @@ rh-breadcrumb[variant='subtle'] > ol > li > a[aria-current='page'] {
   padding: 0;
 }
 
-.truncate-btn:hover,
-.truncate-btn:focus {
+.rhds-truncate-btn:hover,
+.rhds-truncate-btn:focus {
   color: var(--_breadcrumb-link-color-hover);
   text-decoration: underline;
 }
 
-.truncate-btn:focus {
+.rhds-truncate-btn:focus {
   border-radius: var(--rh-border-radius-default, 3px);
   outline: 2px solid var(--_breadcrumb-link-focus-outline-color);
 }
 
-.truncate-visually-hidden {
+.rhds-truncate-visually-hidden {
   border: 0;
   clip: rect(0, 0, 0, 0);
   block-size: 1px;

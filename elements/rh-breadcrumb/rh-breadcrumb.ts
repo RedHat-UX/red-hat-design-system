@@ -7,10 +7,10 @@ import { themable } from '@rhds/elements/lib/themable.js';
 import styles from './rh-breadcrumb.css';
 
 const truncationBtn = html`
-  <li class="truncate-btn-container">
-    <button type="button" class="truncate-btn" aria-expanded="false" title="Show middle breadcrumb items">
+  <li class="rhds-truncate-btn-container">
+    <button type="button" class="rhds-truncate-btn" aria-expanded="false" title="Show middle breadcrumb items">
       <span aria-hidden="true">&#8230;</span>
-      <span class="truncate-visually-hidden">
+      <span class="rhds-truncate-visually-hidden">
         Show middle breadcrumb items
       </span>
     </button>
@@ -115,7 +115,7 @@ export class RhBreadcrumb extends LitElement {
     }
 
     const target = event.target as HTMLButtonElement;
-    if (!target.closest('.truncate-btn')) {
+    if (!target.closest('.rhds-truncate-btn')) {
       return;
     }
 
@@ -127,7 +127,7 @@ export class RhBreadcrumb extends LitElement {
       item.removeAttribute('hidden');
     }
 
-    target.closest('.truncate-btn-container')?.remove();
+    target.closest('.rhds-truncate-btn-container')?.remove();
   }
 
   // appease linter
