@@ -13,6 +13,10 @@ rh-breadcrumb {
   --_breadcrumb-link-focus-outline-color: var(--rh-color-border-interactive);
 
   display: block;
+
+  & [hidden] {
+    display: none !important;
+  }
 }
 
 rh-breadcrumb ol {
@@ -100,4 +104,36 @@ rh-breadcrumb > ol > li > a[aria-current='page'] {
 rh-breadcrumb[variant='subtle'] > ol > li:last-child,
 rh-breadcrumb[variant='subtle'] > ol > li > a[aria-current='page'] {
   color: var(--_breadcrumb-link-color-current-page-subtle);
+}
+
+.rhds-truncate-btn {
+  background-color: transparent;
+  border: 0;
+  color: var(--_breadcrumb-link-color);
+  cursor: pointer;
+  min-inline-size: var(--rh-length-xl, 24px);
+  padding: 0;
+}
+
+.rhds-truncate-btn:hover,
+.rhds-truncate-btn:focus {
+  color: var(--_breadcrumb-link-color-hover);
+  text-decoration: underline;
+}
+
+.rhds-truncate-btn:focus {
+  border-radius: var(--rh-border-radius-default, 3px);
+  outline: 2px solid var(--_breadcrumb-link-focus-outline-color);
+}
+
+.rhds-truncate-visually-hidden {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  block-size: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  inline-size: 1px;
 }
