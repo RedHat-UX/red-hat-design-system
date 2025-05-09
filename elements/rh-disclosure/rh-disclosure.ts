@@ -1,6 +1,7 @@
-import { LitElement, html, type PropertyValues } from 'lit';
+import { LitElement, html, isServer, type PropertyValues } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
+import { state } from 'lit/decorators/state.js';
 import { query } from 'lit/decorators/query.js';
 
 import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
@@ -17,8 +18,8 @@ export class DisclosureToggleEvent extends Event {
 }
 
 const hasJumpLinksStyleSheet = new CSSStyleSheet();
-hasJumpLinksStyleSheet.replaceSync(/*css*/`
-  details[open].hasJumpLinks:before {
+hasJumpLinksStyleSheet.replaceSync(/* css */`
+  details[open]:before {
     border-inline-start-color: transparent;
   }
 `);
@@ -91,6 +92,7 @@ export class RhDisclosure extends LitElement {
     this.addEventListener('jump-links-connect', this.#handleJumpLinkChildren);
     if (!isServer) {
       this.#mo.observe(this, { childList: true });
+    }
   }
 
   render() {
