@@ -144,11 +144,12 @@ export class RhDisclosure extends LitElement {
         border-inline-start-color: transparent;
       }`
     );
-    if(this.shadowRoot)
-    this.shadowRoot.adoptedStyleSheets = [
-      ...this.shadowRoot.adoptedStyleSheets, 
-      this.#sheet
-    ];
+    if (this.shadowRoot) {
+      this.shadowRoot.adoptedStyleSheets = [
+        ...this.shadowRoot.adoptedStyleSheets,
+        this.#sheet,
+      ];
+    }
     this.requestUpdate();
   }
 }

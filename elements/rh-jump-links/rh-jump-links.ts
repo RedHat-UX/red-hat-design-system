@@ -57,7 +57,7 @@ export class RhJumpLinks extends LitElement {
     this.addEventListener('select', this.#onSelect);
     this.dispatchEvent(new CustomEvent('jump-links-connect', {
       bubbles: true,
-      composed: true
+      composed: true,
     }));
   }
 
