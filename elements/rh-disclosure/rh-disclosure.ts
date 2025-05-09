@@ -16,6 +16,13 @@ export class DisclosureToggleEvent extends Event {
   }
 }
 
+const hasJumpLinksStyleSheet = new CSSStyleSheet();
+hasJumpLinksStyleSheet.replaceSync(/*css*/`
+  details[open].hasJumpLinks:before {
+    border-inline-start-color: transparent;
+  }
+`);
+
 /**
  * A disclosure toggles the visibility of content when triggered.
  * @summary A disclosure toggles the visibility of content when triggered
@@ -51,8 +58,6 @@ export class RhDisclosure extends LitElement {
     ].map(selector => `${selector}:not([inert]):not([inert] *):not([tabindex^='-'])`),
   ].join(',');
 
-  #sheet: CSSStyleSheet = new CSSStyleSheet();
-
   /**
    * Set the colorPalette of the disclosure. Overrides parent context. Possible values are:
    * - `lightest` (default)
@@ -74,21 +79,18 @@ export class RhDisclosure extends LitElement {
    */
   @property({ reflect: true }) summary?: string;
 
+  @state() private hasJumpLinks = false;
   @query('details') private detailsEl!: HTMLDetailsElement;
   @query('summary') private summaryEl!: HTMLElement;
+  #mo = new MutationObserver(() => {
+    this.hasJumpLinks = !!this.querySelector('rh-jump-links');
+  });
 
   connectedCallback() {
     super.connectedCallback();
     this.addEventListener('jump-links-connect', this.#handleJumpLinkChildren);
-  }
-
-  disconnectedCallback(): void {
-    super.disconnectedCallback();
-    this.removeEventListener('jump-links-connect', this.#handleJumpLinkChildren);
-  }
-
-  update(changed: PropertyValues<this>): void {
-    super.update(changed);
+    if (!isServer) {
+      this.#mo.observe(this, { childList: true });
   }
 
   render() {
@@ -139,18 +141,13 @@ export class RhDisclosure extends LitElement {
   }
 
   #handleJumpLinkChildren() {
-    this.#sheet?.replaceSync(
-      `:host(.mobile) details[open]:before {
-        border-inline-start-color: transparent;
-      }`
-    );
+    this.hasJumpLinks = true;
     if (this.shadowRoot) {
       this.shadowRoot.adoptedStyleSheets = [
         ...this.shadowRoot.adoptedStyleSheets,
-        this.#sheet,
+        hasJumpLinksStyleSheet,
       ];
     }
-    this.requestUpdate();
   }
 }
 
