@@ -30,10 +30,10 @@ a {
   }
 
   &:hover {
-    color: var(--rh-color-interactive-secondary-hover);
+    color: var(--rh-color-text-primary);
   }
 
-  &:focus { color: var(--rh-color-interactive-secondary-focus); }
+  &:focus { color: var(--rh-color-text-primary); }
 
   &:focus-visible {
     outline: none;
@@ -68,7 +68,7 @@ a {
       inset-block: 0;
       border-inline-start:
         var(--_active_bdr,
-          var(--rh-length-xs, 4px)
+          var(--rh-border-width-lg, 3px)
           solid
           var(--_bdr-c, var(--rh-color-border-status-neutral)));
     }
@@ -78,7 +78,7 @@ a {
       inset-block-start: 0;
       inset-inline: 0;
       border-block-start:
-        var(--rh-length-xs, 4px)
+        var(--rh-border-width-lg, 3px)
         solid
         var(--_bdr-c, var(--rh-color-border-status-neutral));
     }
