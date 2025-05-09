@@ -2,7 +2,9 @@
 "@rhds/elements": minor
 ---
 
-`<rh-breadcrumb>`: added the `truncate` property to allow users to temporarily hide the middle breadcrumb items:
+`<rh-breadcrumb>`: added the `truncate` attribute.
+
+When present, the middle breadcrumb items are hidden until the user interacts with them:
 
 ```html
 <rh-breadcrumb truncate>
