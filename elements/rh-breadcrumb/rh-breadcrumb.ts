@@ -1,4 +1,4 @@
-import { LitElement, html, isServer } from 'lit';
+import { LitElement, html, isServer, render } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
@@ -7,14 +7,12 @@ import { themable } from '@rhds/elements/lib/themable.js';
 import styles from './rh-breadcrumb.css';
 
 const truncationBtn = html`
-  <li class="rhds-truncate-btn-container">
-    <button type="button" class="rhds-truncate-btn" aria-expanded="false" title="Show middle breadcrumb items">
-      <span aria-hidden="true">&#8230;</span>
-      <span class="rhds-truncate-visually-hidden">
-        Show middle breadcrumb items
-      </span>
-    </button>
-  </li>`;
+  <button type="button" class="rhds-truncate-btn" aria-expanded="false" title="Show middle breadcrumb items">
+    <span aria-hidden="true">&#8230;</span>
+    <span class="rhds-truncate-visually-hidden">
+      Show middle breadcrumb items
+    </span>
+  </button>`;
 
 /**
  * A breadcrumb navigation is a secondary navigation element consisting of a list
@@ -67,6 +65,7 @@ export class RhBreadcrumb extends LitElement {
 
   #list: HTMLOListElement | null = null;
   #listItems: NodeListOf<HTMLLIElement> | null | undefined = null;
+  #truncateBtnContainerClass = 'rhds-truncate-btn-container';
 
   render() {
     const label = this.accessibleLabel ? this.accessibleLabel : 'Breadcrumb';
@@ -105,8 +104,10 @@ export class RhBreadcrumb extends LitElement {
       item.setAttribute('hidden', 'true');
     }
 
-    const [truncationBtnString] = truncationBtn.strings;
-    middleItems[0].insertAdjacentHTML('beforebegin', truncationBtnString);
+    const container = document.createElement('li');
+    container.className = this.#truncateBtnContainerClass;
+    render(truncationBtn, container);
+    middleItems[0].before(container);
   }
 
   #handleTruncationClick(event: Event): void {
@@ -127,7 +128,7 @@ export class RhBreadcrumb extends LitElement {
       item.removeAttribute('hidden');
     }
 
-    target.closest('.rhds-truncate-btn-container')?.remove();
+    target.closest(`.${this.#truncateBtnContainerClass}`)?.remove();
   }
 
   // appease linter
