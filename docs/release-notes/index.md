@@ -13,7 +13,7 @@ title: Release notes
 <style data-helmet>
   rh-tile {
     margin-block: var(--rh-space-3xl, 48px);
-    max-width: 320px;
+    max-inline-size: 320px;
   }
 
   rh-tile [icon="github"] {
@@ -53,6 +53,24 @@ or anything else, please submit a [GitHub issue][issues].
 </rh-tile>
 
 <section aria-labelledby="version-3.0.0">
+
+### Patches from version 3.0.1
+
+<rh-table>
+
+| Change        | Type        | Notes        |
+| ------------- | ----------- | ------------ |
+| `<rh-button>`: dark scheme support | {{p()}} | Dark scheme support for buttons with icons |
+| `<rh-cta>`: load icon | {{p()}} | Ensure the arrow icon always appears |
+| `<rh-dialog>`: improve accessibility | {{p()}} | Increase contrast of close button for video dialogs |
+| `<rh-pagination>`: improve accessibility | {{p()}} | Fix ellipsis background color on dark color schemes |
+| `<rh-tile>`: body slot | {{p()}} | Fixed empty body slot |
+| Server side rendering: improve support | {{p()}} | Improved SSR support for the following elements: `<rh-accordion>`, `<rh-avatar>`, `<rh-back-to-top>`, `<rh-code-block>`, `<rh-navigation-secondary>`, `<rh-pagination>`, `<rh-stat>`, `<rh-switch>`, `<rh-table>` |
+| Theming: load default theme | {{p()}} | Ensure themable elements always load the default theme |
+
+</rh-table>
+
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v3.0.1">View all version 3.0.1 release notes</rh-cta>
 
 ## Version 3.0.0
 Released April 7, 2025
@@ -115,6 +133,10 @@ Released April 7, 2025
 
 <rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v3.0.0">View all version 3.0 release notes</rh-cta>
 
+</section>
+
+<section aria-labelledby="version-2.1.0">
+
 ### Patches from version 2.1.2
 
 <rh-table>
@@ -159,10 +181,6 @@ Released April 7, 2025
 </rh-table>
 
 <rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v2.1.1">View all version 2.1.1 release notes</rh-cta>
-
-</section>
-
-<section aria-labelledby="version-2.1.0">
 
 ## Version 2.1.0
 Released October 1, 2024
