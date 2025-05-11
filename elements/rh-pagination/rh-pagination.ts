@@ -117,6 +117,7 @@ export class RhPagination extends LitElement {
   override updated() {
     if (!isServer) {
       this.total = this.#links?.length ?? 0;
+      this.#updateLightDOMRefs();
     }
   }
 
@@ -133,14 +134,14 @@ export class RhPagination extends LitElement {
         <a id="first"
            class="stepper"
            href="${ifDefined(firstHref)}"
-           ?inert=${!firstHref}
-           aria-label=${labelFirst}>${L2}</a>
+           ?inert="${this.currentLink === this.firstLink}"
+           aria-label="${labelFirst}">${L2}</a>
         <a id="prev"
            class="stepper"
            href="${ifDefined(prevHref)}"
-           ?inert=${!prevHref}
-           aria-label=${labelPrevious}>${L1}</a>
-        <nav aria-label=${label}>
+           ?inert="${this.currentLink === this.prevLink}"
+           aria-label="${labelPrevious}">${L1}</a>
+        <nav aria-label="${label}">
           <slot></slot>
         </nav>
         <div id="numeric-middle" part="numeric-middle">
@@ -149,12 +150,12 @@ export class RhPagination extends LitElement {
         <a id="next"
            class="stepper"
            href="${ifDefined(nextHref)}"
-           ?inert="${!nextHref}"
+           ?inert="${this.currentLink === this.nextLink}"
            aria-label="${labelNext}">${L1}</a>
         <a id="last"
            class="stepper"
            href="${ifDefined(lastHref)}"
-           ?inert="${!lastHref}"
+           ?inert="${this.currentLink === this.lastLink}"
            aria-label="${labelLast}">${L2}</a>
         <div id="numeric-end" part="numeric-end">
           ${this.#numericContent(currentPage, lastHref)}
@@ -187,7 +188,6 @@ export class RhPagination extends LitElement {
 
   #update() {
     this.querySelector('[aria-current="page"]')?.removeAttribute('aria-current');
-    this.#updateLightDOMRefs();
     this.overflow = this.#getOverflow();
     this.#checkValidity();
   }
