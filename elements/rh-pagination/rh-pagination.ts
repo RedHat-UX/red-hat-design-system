@@ -45,12 +45,12 @@ const L2 = html`
 export class RhPagination extends LitElement {
   static readonly styles = [styles];
 
-  static instances = new Set<RhPagination>();
+  private static instances = new Set<RhPagination>();
 
   static {
     if (!isServer) {
       globalThis.addEventListener('hashchange', () => {
-        for (const instance of this.instances) {
+        for (const instance of RhPagination.instances) {
           instance.requestUpdate();
         }
       });
