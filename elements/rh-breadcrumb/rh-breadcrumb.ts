@@ -6,10 +6,21 @@ import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-breadcrumb.css';
 
+const truncateBtnClass = 'truncate-btn';
+const truncateBtnContainerClass = `${truncateBtnClass}-container`;
+
+function isTruncateButtonDescendant(target: EventTarget | null): target is HTMLElement {
+  return !!target
+    && target instanceof HTMLElement
+    && !!target.closest(`.${truncateBtnClass}`);
+}
+
 const truncationBtn = html`
-  <button type="button" class="rhds-truncate-btn" aria-expanded="false" title="Show middle breadcrumb items">
+  <button class="${truncateBtnClass}"
+          aria-expanded="false"
+          title="Show middle breadcrumb items">
     <span aria-hidden="true">&#8230;</span>
-    <span class="rhds-truncate-visually-hidden">
+    <span class="visually-hidden">
       Show middle breadcrumb items
     </span>
   </button>`;
@@ -63,77 +74,58 @@ export class RhBreadcrumb extends LitElement {
  */
   @property({ reflect: true, type: Boolean }) truncate? = false;
 
-  #list: HTMLOListElement | null = null;
-  #listItems: NodeListOf<HTMLLIElement> | null | undefined = null;
-  #truncateBtnContainerClass = 'rhds-truncate-btn-container';
 
   render() {
     const label = this.accessibleLabel ? this.accessibleLabel : 'Breadcrumb';
+    // delegating click events on the buttons to the nav element
+    /* eslint-disable lit-a11y/click-events-have-key-events */
     return html`
-      <nav 
-        aria-label="${label}"
-        @click="${this.truncate ? this.#handleTruncationClick : undefined}"
-        @keyup="${this.truncate ? this.#onKeyUp : undefined}"
-        id="container"
-        part="container">
+      <nav id="container"
+           part="container"
+           aria-label="${label}"
+           @click="${this.#onTruncationClick}">
         <slot></slot>
       </nav>
     `;
+    /* eslint-enable lit-a11y/click-events-have-key-events */
   }
 
   firstUpdated(): void {
-    this.#updateLightDOM();
-  }
-
-  #updateLightDOM(): void {
     if (isServer || !this.truncate) {
       return;
     }
 
-    this.#list = this.querySelector('ol');
-    if (!this.#list) {
+    const list = this.querySelector('ol');
+    if (!list) {
       return;
     }
 
-    if (this.#list.children.length < 5) {
+    if (list.children.length < 5) {
       return;
     }
 
-    const middleItems = this.#list.querySelectorAll('li:nth-child(n+2):nth-last-child(n+3)');
+    const middleItems = list.querySelectorAll('li:nth-child(n+2):nth-last-child(n+3)');
     for (const item of middleItems) {
       item.setAttribute('hidden', 'true');
     }
 
     const container = document.createElement('li');
-    container.className = this.#truncateBtnContainerClass;
+    container.className = truncateBtnContainerClass;
     render(truncationBtn, container);
     middleItems[0].before(container);
   }
 
-  #handleTruncationClick(event: Event): void {
-    if (isServer) {
-      return;
+  #onTruncationClick(event: Event): void {
+    let listItems: NodeListOf<Element>;
+    if (!isServer
+      && this.truncate
+      && isTruncateButtonDescendant(event.target)
+      && (listItems = this.querySelectorAll(':scope > ol > li'))) {
+      for (const item of listItems) {
+        item.removeAttribute('hidden');
+      }
+      event.target.closest(`.${truncateBtnContainerClass}`)?.remove();
     }
-
-    const target = event.target as HTMLButtonElement;
-    if (!target.closest('.rhds-truncate-btn')) {
-      return;
-    }
-
-    this.#listItems = this.#list?.querySelectorAll('li');
-    if (!this.#listItems) {
-      return;
-    }
-    for (const item of this.#listItems) {
-      item.removeAttribute('hidden');
-    }
-
-    target.closest(`.${this.#truncateBtnContainerClass}`)?.remove();
-  }
-
-  // appease linter
-  #onKeyUp() {
-    return;
   }
 }
 
