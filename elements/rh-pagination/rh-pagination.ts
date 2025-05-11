@@ -3,6 +3,7 @@ import type { PropertyValues } from 'lit';
 import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
+import { state } from 'lit/decorators/state.js';
 import { query } from 'lit/decorators/query.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
@@ -11,7 +12,6 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-pagination.css';
-import { state } from 'lit/decorators/state.js';
 
 const L1 = html`
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 14">
@@ -43,9 +43,6 @@ const L2 = html`
 @customElement('rh-pagination')
 @themable
 export class RhPagination extends LitElement {
-  static readonly version = '{{version}}';
-
-
   static readonly styles = [styles];
 
   /**
@@ -87,16 +84,15 @@ export class RhPagination extends LitElement {
   #links = this.#ol?.querySelectorAll<HTMLAnchorElement>('li a');
 
   @state() private total = 0;
-
-  #firstLink: HTMLAnchorElement | null = null;
-  #lastLink: HTMLAnchorElement | null = null;
-  #nextLink: HTMLAnchorElement | null = null;
-  #prevLink: HTMLAnchorElement | null = null;
-  #currentLink = this.#getCurrentLink();
-  #currentIndex = 0;
+  @state() private firstLink: HTMLAnchorElement | null = null;
+  @state() private lastLink: HTMLAnchorElement | null = null;
+  @state() private nextLink: HTMLAnchorElement | null = null;
+  @state() private prevLink: HTMLAnchorElement | null = null;
+  @state() private currentLink = this.#getCurrentLink();
+  @state() private currentIndex = 0;
 
   get #currentPage() {
-    return this.#currentIndex + 1;
+    return this.currentIndex + 1;
   }
 
   override connectedCallback(): void {
@@ -126,24 +122,40 @@ export class RhPagination extends LitElement {
 
   override render() {
     const { label, labelFirst, labelPrevious, labelNext, labelLast } = this;
-    const firstHref = this.#currentLink === this.#firstLink ? undefined : this.#firstLink?.href;
-    const prevHref = this.#prevLink?.href;
-    const nextHref = this.#nextLink?.href;
-    const lastHref = this.#currentLink === this.#lastLink ? undefined : this.#lastLink?.href;
+    const firstHref = this.currentLink === this.firstLink ? undefined : this.firstLink?.href;
+    const prevHref = this.prevLink?.href;
+    const nextHref = this.nextLink?.href;
+    const lastHref = this.currentLink === this.lastLink ? undefined : this.lastLink?.href;
     const currentPage = this.#currentPage.toString();
 
     return html`
       <div id="container" part="container">
-        <a id="first" class="stepper" href=${ifDefined(firstHref)} ?inert=${!firstHref} aria-label=${labelFirst}>${L2}</a>
-        <a id="prev" class="stepper" href=${ifDefined(prevHref)} ?inert=${!prevHref} aria-label=${labelPrevious}>${L1}</a>
+        <a id="first"
+           class="stepper"
+           href="${ifDefined(firstHref)}"
+           ?inert=${!firstHref}
+           aria-label=${labelFirst}>${L2}</a>
+        <a id="prev"
+           class="stepper"
+           href="${ifDefined(prevHref)}"
+           ?inert=${!prevHref}
+           aria-label=${labelPrevious}>${L1}</a>
         <nav aria-label=${label}>
           <slot></slot>
         </nav>
         <div id="numeric-middle" part="numeric-middle">
           ${this.#numericContent(currentPage, lastHref)}
         </div>
-        <a id="next" class="stepper" href=${ifDefined(nextHref)} ?inert=${!nextHref} aria-label=${labelNext}>${L1}</a>
-        <a id="last" class="stepper" href=${ifDefined(lastHref)} ?inert=${!lastHref} aria-label=${labelLast}>${L2}</a>
+        <a id="next"
+           class="stepper"
+           href="${ifDefined(nextHref)}"
+           ?inert="${!nextHref}"
+           aria-label="${labelNext}">${L1}</a>
+        <a id="last"
+           class="stepper"
+           href="${ifDefined(lastHref)}"
+           ?inert="${!lastHref}"
+           aria-label="${labelLast}">${L2}</a>
         <div id="numeric-end" part="numeric-end">
           ${this.#numericContent(currentPage, lastHref)}
         </div>
@@ -168,7 +180,7 @@ export class RhPagination extends LitElement {
                @keyup="${this.#onKeyup}"
                .value="${currentPage}">
         <slot ?hidden="${!this.total}" name="out-of">of</slot>
-        <a ?hidden="${!this.total}" href=${ifDefined(lastHref)}>${this.total}</a>
+        <a ?hidden="${!this.total}" href="${ifDefined(lastHref)}">${this.total}</a>
       </div>
     `;
   }
@@ -187,7 +199,7 @@ export class RhPagination extends LitElement {
       return null;
     }
 
-    const current = this.#currentIndex + 1;
+    const current = this.currentIndex + 1;
 
     if (current > (overflowAt - 4) && current < (length - 4)) {
       return 'both';
@@ -222,22 +234,22 @@ export class RhPagination extends LitElement {
     // NB: order of operations! must set up state
     this.#ol = this.querySelector('ol');
     this.#links = this.querySelectorAll('li a');
-    this.#firstLink = this.querySelector('li:first-child a');
-    this.#lastLink = this.querySelector('li:last-child a');
-    this.#currentLink = this.#getCurrentLink();
-    if (this.#currentLink) {
+    this.firstLink = this.querySelector('li:first-child a');
+    this.lastLink = this.querySelector('li:last-child a');
+    this.currentLink = this.#getCurrentLink();
+    if (this.currentLink) {
       const links = Array.from(this.#links);
-      this.#currentIndex = links.indexOf(this.#currentLink);
-      this.#prevLink = this.#links[this.#currentIndex - 1];
-      this.#nextLink = this.#links[this.#currentIndex + 1];
+      this.currentIndex = links.indexOf(this.currentLink);
+      this.prevLink = this.#links[this.currentIndex - 1];
+      this.nextLink = this.#links[this.currentIndex + 1];
       for (const link of this.querySelectorAll('[data-page]')) {
         link.removeAttribute('data-page');
       }
-      this.#currentLink.closest('li')?.setAttribute('data-page', 'current');
-      this.#prevLink?.closest('li')?.setAttribute('data-page', 'previous');
-      this.#nextLink?.closest('li')?.setAttribute('data-page', 'next');
-      if (this.#currentLink?.getAttribute('aria-current') !== 'page') {
-        this.#currentLink?.setAttribute('aria-current', 'page');
+      this.currentLink.closest('li')?.setAttribute('data-page', 'current');
+      this.prevLink?.closest('li')?.setAttribute('data-page', 'previous');
+      this.nextLink?.closest('li')?.setAttribute('data-page', 'next');
+      if (this.currentLink?.getAttribute('aria-current') !== 'page') {
+        this.currentLink?.setAttribute('aria-current', 'page');
       }
     }
   }
@@ -276,7 +288,7 @@ export class RhPagination extends LitElement {
     }
     this.requestUpdate();
     await this.updateComplete;
-    return this.#currentIndex;
+    return this.currentIndex;
   }
 
   #onKeyup(event: Event) {
@@ -295,7 +307,7 @@ export class RhPagination extends LitElement {
       return;
     }
     const inputNum = parseInt(this.input.value);
-    this.#currentIndex = inputNum - 1;
+    this.currentIndex = inputNum - 1;
     if (this.#checkValidity()) {
       this.#go(this.#currentPage);
     }
