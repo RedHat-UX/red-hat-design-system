@@ -45,6 +45,18 @@ const L2 = html`
 export class RhPagination extends LitElement {
   static readonly styles = [styles];
 
+  static instances = new Set<RhPagination>();
+
+  static {
+    if (!isServer) {
+      globalThis.addEventListener('hashchange', () => {
+        for (const instance of this.instances) {
+          instance.requestUpdate();
+        }
+      });
+    }
+  }
+
   /**
    * Override `overflow` values set from HTML or JS.
    * `overflow` should ideally be private, but because
@@ -77,56 +89,81 @@ export class RhPagination extends LitElement {
 
   @query('input') private input?: HTMLInputElement;
 
-  #mo = new MutationObserver(() => this.#update());
+  #mo = new MutationObserver(() => this.requestUpdate());
   #logger = new Logger(this);
 
   #ol = isServer ? null : this.querySelector('ol');
   #links = this.#ol?.querySelectorAll<HTMLAnchorElement>('li a');
 
+  #firstLink: HTMLAnchorElement | null = null;
+  #lastLink: HTMLAnchorElement | null = null;
+  #nextLink: HTMLAnchorElement | null = null;
+  #prevLink: HTMLAnchorElement | null = null;
+  #currentLink = this.#getCurrentLink();
+  #currentIndex = 0;
+
   @state() private total = 0;
-  @state() private firstLink: HTMLAnchorElement | null = null;
-  @state() private lastLink: HTMLAnchorElement | null = null;
-  @state() private nextLink: HTMLAnchorElement | null = null;
-  @state() private prevLink: HTMLAnchorElement | null = null;
-  @state() private currentLink = this.#getCurrentLink();
-  @state() private currentIndex = 0;
+  @state() private firstHref?: string;
+  @state() private lastHref?: string;
+  @state() private nextHref?: string;
+  @state() private prevHref?: string;
+  @state() private currentHref?: string;
 
   get #currentPage() {
-    return this.currentIndex + 1;
+    return this.#currentIndex + 1;
   }
 
   override connectedCallback(): void {
     super.connectedCallback();
+    RhPagination.instances.add(this);
     // Validate DOM
-    if (!isServer && (!this.#ol || [...this.children].filter(x => !x.slot).length > 1)) {
-      this.#logger.warn('must have a single <ol> element as it\'s only child');
+    if (!isServer) {
+      this.#mo.observe(this, { childList: true, subtree: true });
+      if (!this.#ol || [...this.children].filter(x => !x.slot).length > 1) {
+        this.#logger.warn('must have a single <ol> element as it\'s only child');
+      }
     }
-    this.#mo.observe(this, { childList: true, subtree: true });
   }
 
   override disconnectedCallback(): void {
     super.disconnectedCallback();
+    RhPagination.instances.delete(this);
     this.#mo.disconnect();
   }
 
   override update(changed: PropertyValues<this>): void {
-    this.#update();
+    if (!isServer) {
+      this.querySelector('[aria-current="page"]')?.removeAttribute('aria-current');
+      this.#updateLightDOMRefs();
+      this.overflow = this.#getOverflow();
+      this.#checkValidity();
+    }
     super.update(changed);
   }
 
   override updated() {
-    if (!isServer) {
+    if (!isServer && this.hasUpdated) {
       this.total = this.#links?.length ?? 0;
-      this.#updateLightDOMRefs();
+      this.firstHref = this.#firstLink?.href;
+      this.lastHref = this.#lastLink?.href;
+      this.prevHref = this.#prevLink?.href;
+      this.nextHref = this.#nextLink?.href;
+      this.currentHref = this.#currentLink?.href;
     }
   }
 
   override render() {
-    const { label, labelFirst, labelPrevious, labelNext, labelLast } = this;
-    const firstHref = this.currentLink === this.firstLink ? undefined : this.firstLink?.href;
-    const prevHref = this.prevLink?.href;
-    const nextHref = this.nextLink?.href;
-    const lastHref = this.currentLink === this.lastLink ? undefined : this.lastLink?.href;
+    const {
+      label,
+      labelFirst,
+      labelPrevious,
+      labelNext,
+      labelLast,
+      firstHref,
+      prevHref,
+      nextHref,
+      lastHref,
+    } = this;
     const currentPage = this.#currentPage.toString();
 
     return html`
@@ -134,12 +171,12 @@ export class RhPagination extends LitElement {
         <a id="first"
            class="stepper"
            href="${ifDefined(firstHref)}"
-           ?inert="${this.currentLink === this.firstLink}"
+           .inert="${this.#currentLink === this.#firstLink}"
            aria-label="${labelFirst}">${L2}</a>
         <a id="prev"
            class="stepper"
            href="${ifDefined(prevHref)}"
-           ?inert="${this.currentLink === this.prevLink}"
+           .inert="${this.#currentLink === this.#prevLink || this.#currentLink === this.#firstLink}"
            aria-label="${labelPrevious}">${L1}</a>
         <nav aria-label="${label}">
           <slot></slot>
@@ -150,12 +187,12 @@ export class RhPagination extends LitElement {
         <a id="next"
            class="stepper"
            href="${ifDefined(nextHref)}"
-           ?inert="${this.currentLink === this.nextLink}"
+           .inert="${this.#currentLink === this.#nextLink || this.#currentLink === this.#lastLink}"
            aria-label="${labelNext}">${L1}</a>
         <a id="last"
            class="stepper"
            href="${ifDefined(lastHref)}"
-           ?inert="${this.currentLink === this.lastLink}"
+           .inert="${this.#currentLink === this.#lastLink}"
            aria-label="${labelLast}">${L2}</a>
         <div id="numeric-end" part="numeric-end">
           ${this.#numericContent(currentPage, lastHref)}
@@ -186,12 +223,6 @@ export class RhPagination extends LitElement {
     `;
   }
 
-  #update() {
-    this.querySelector('[aria-current="page"]')?.removeAttribute('aria-current');
-    this.overflow = this.#getOverflow();
-    this.#checkValidity();
-  }
-
   #getOverflow(): 'start' | 'end' | 'both' | null {
     const overflowAt = 9;
     const length = this.total;
@@ -199,7 +230,7 @@ export class RhPagination extends LitElement {
       return null;
     }
 
-    const current = this.currentIndex + 1;
+    const current = this.#currentIndex + 1;
 
     if (current > (overflowAt - 4) && current < (length - 4)) {
       return 'both';
@@ -234,22 +265,22 @@ export class RhPagination extends LitElement {
     // NB: order of operations! must set up state
     this.#ol = this.querySelector('ol');
     this.#links = this.querySelectorAll('li a');
-    this.firstLink = this.querySelector('li:first-child a');
-    this.lastLink = this.querySelector('li:last-child a');
-    this.currentLink = this.#getCurrentLink();
-    if (this.currentLink) {
+    this.#firstLink = this.querySelector('li:first-child a');
+    this.#lastLink = this.querySelector('li:last-child a');
+    this.#currentLink = this.#getCurrentLink();
+    if (this.#currentLink) {
       const links = Array.from(this.#links);
-      this.currentIndex = links.indexOf(this.currentLink);
-      this.prevLink = this.#links[this.currentIndex - 1];
-      this.nextLink = this.#links[this.currentIndex + 1];
+      this.#currentIndex = links.indexOf(this.#currentLink);
+      this.#prevLink = this.#links[this.#currentIndex - 1];
+      this.#nextLink = this.#links[this.#currentIndex + 1];
       for (const link of this.querySelectorAll('[data-page]')) {
         link.removeAttribute('data-page');
       }
-      this.currentLink.closest('li')?.setAttribute('data-page', 'current');
-      this.prevLink?.closest('li')?.setAttribute('data-page', 'previous');
-      this.nextLink?.closest('li')?.setAttribute('data-page', 'next');
-      if (this.currentLink?.getAttribute('aria-current') !== 'page') {
-        this.currentLink?.setAttribute('aria-current', 'page');
+      this.#currentLink.closest('li')?.setAttribute('data-page', 'current');
+      this.#prevLink?.closest('li')?.setAttribute('data-page', 'previous');
+      this.#nextLink?.closest('li')?.setAttribute('data-page', 'next');
+      if (this.#currentLink?.getAttribute('aria-current') !== 'page') {
+        this.#currentLink?.setAttribute('aria-current', 'page');
       }
     }
   }
@@ -288,7 +319,7 @@ export class RhPagination extends LitElement {
     }
     this.requestUpdate();
     await this.updateComplete;
-    return this.currentIndex;
+    return this.#currentIndex;
   }
 
   #onKeyup(event: Event) {
@@ -307,7 +338,7 @@ export class RhPagination extends LitElement {
       return;
     }
     const inputNum = parseInt(this.input.value);
-    this.currentIndex = inputNum - 1;
+    this.#currentIndex = inputNum - 1;
     if (this.#checkValidity()) {
       this.#go(this.#currentPage);
     }
