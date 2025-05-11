@@ -17,123 +17,125 @@ rh-breadcrumb {
   & [hidden] {
     display: none !important;
   }
+
+  & > ol {
+    container-type: inline-size;
+    container-name: breadcrumbs-list;
+    font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+    line-height: var(--rh-line-height-body-text, 1.5);
+    margin-block: 0;
+    padding-inline-start: 0;
+    & > li {
+      display: inline-flex;
+      margin-block-end: var(--rh-space-md, 8px);
+      padding-inline-end: var(--rh-breadcrumb-li-padding-inline-end, var(--rh-space-lg, 16px));
+      vertical-align: bottom;
+      align-items: center;
+      gap: var(--rh-space-lg, 16px);
+
+      &:not(:first-of-type):before {
+        display: inline-block;
+        background-color: var(--rh-color-icon-secondary);
+        mask-image: var(--_breadcrumb-caret-image-default);
+        mask-position: center center;
+        mask-repeat: no-repeat;
+        height: var(--rh-font-size-body-text-sm, 0.875rem);
+        width: var(--rh-font-size-body-text-sm, 0.875rem);
+        content: '';
+      }
+
+      &:first-child {
+        padding-inline-start: 0;
+        & > a {
+          margin-inline-start: 0;
+        }
+      }
+
+      &:last-child {
+        background-image: none;
+      }
+
+      & > a {
+        text-decoration: underline;
+        &:is(:hover, :focus, :active) {
+          color: var(--_breadcrumb-link-color-hover);
+        }
+
+        &:is(:focus, :focus-visible) {
+          border-radius: var(--rh-border-radius-default, 3px);
+          outline: 2px solid var(--_breadcrumb-link-focus-outline-color);
+        }
+
+        &:visited {
+          color: var(--_breadcrumb-link-color-visited);
+        }
+
+        &:visited:hover {
+          color: var(--_breadcrumb-link-color-visited-hover);
+        }
+
+        &[aria-current='page'] {
+          cursor: default;
+          pointer-events: none;
+        }
+      }
+
+      &:last-child,
+      & > a[aria-current='page'] {
+        color: var(--_breadcrumb-link-color-current-page);
+        text-decoration: none;
+      }
+
+    }
+
+    & > li,
+    & > li > a {
+      color: var(--_breadcrumb-link-color);
+    }
+  }
+
+  &[variant='subtle'] > ol > li {
+    &:not(:first-of-type):before {
+      background-color: var(--rh-color-icon-subtle, #707070);
+    }
+
+    &:last-child,
+    & > a[aria-current='page'] {
+      color: var(--_breadcrumb-link-color-current-page-subtle);
+    }
+  }
+
+  & .truncate-btn {
+    background-color: transparent;
+    border: 0;
+    color: var(--_breadcrumb-link-color);
+    cursor: pointer;
+    min-inline-size: var(--rh-length-xl, 24px);
+    padding: 0;
+
+    &:hover,
+    &:focus {
+      color: var(--_breadcrumb-link-color-hover);
+      text-decoration: underline;
+    }
+
+    &:focus {
+      border-radius: var(--rh-border-radius-default, 3px);
+      outline: 2px solid var(--_breadcrumb-link-focus-outline-color);
+    }
+
+    & .visually-hidden {
+      border: 0;
+      clip: rect(0, 0, 0, 0);
+      block-size: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      white-space: nowrap;
+      inline-size: 1px;
+    }
+  }
 }
 
-rh-breadcrumb ol {
-  container-type: inline-size;
-  container-name: breadcrumbs-list;
-  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
-  line-height: var(--rh-line-height-body-text, 1.5);
-  margin-block: 0;
-  padding-inline-start: 0;
-}
 
-rh-breadcrumb > ol > li {
-  display: inline-flex;
-  margin-block-end: var(--rh-space-md, 8px);
-  padding-inline-end: var(--rh-breadcrumb-li-padding-inline-end, var(--rh-space-lg, 16px));
-  vertical-align: bottom;
-  align-items: center;
-  gap: var(--rh-space-lg, 16px);
-}
-
-rh-breadcrumb > ol > li:not(:first-of-type):before {
-  display: inline-block;
-  background-color: var(--rh-color-icon-secondary);
-  mask-image: var(--_breadcrumb-caret-image-default);
-  mask-position: center center;
-  mask-repeat: no-repeat;
-  height: var(--rh-font-size-body-text-sm, 0.875rem);
-  width: var(--rh-font-size-body-text-sm, 0.875rem);
-  content: '';
-}
-
-rh-breadcrumb[variant='subtle'] > ol > li:not(:first-of-type):before {
-  background-color: var(--rh-color-icon-subtle, #707070);
-}
-
-rh-breadcrumb > ol > li:first-child {
-  padding-inline-start: 0;
-}
-
-rh-breadcrumb > ol > li:last-child {
-  background-image: none;
-}
-
-rh-breadcrumb > ol > li,
-rh-breadcrumb > ol > li > a {
-  color: var(--_breadcrumb-link-color);
-}
-
-rh-breadcrumb > ol > li > a {
-  text-decoration: underline;
-}
-
-rh-breadcrumb > ol > li > a:is(:hover, :focus, :active) {
-  color: var(--_breadcrumb-link-color-hover);
-}
-
-rh-breadcrumb > ol > li > a:is(:focus, :focus-visible) {
-  border-radius: var(--rh-border-radius-default, 3px);
-  outline: 2px solid var(--_breadcrumb-link-focus-outline-color);
-}
-
-rh-breadcrumb > ol > li:first-child > a {
-  margin-inline-start: 0;
-}
-
-rh-breadcrumb > ol > li > a:visited {
-  color: var(--_breadcrumb-link-color-visited);
-}
-
-rh-breadcrumb > ol > li > a:visited:hover {
-  color: var(--_breadcrumb-link-color-visited-hover);
-}
-
-rh-breadcrumb > ol > li:last-child,
-rh-breadcrumb > ol > li > a[aria-current='page'] {
-  color: var(--_breadcrumb-link-color-current-page);
-  text-decoration: none;
-}
-
-rh-breadcrumb > ol > li > a[aria-current='page'] {
-  cursor: default;
-  pointer-events: none;
-}
-
-rh-breadcrumb[variant='subtle'] > ol > li:last-child,
-rh-breadcrumb[variant='subtle'] > ol > li > a[aria-current='page'] {
-  color: var(--_breadcrumb-link-color-current-page-subtle);
-}
-
-.rhds-truncate-btn {
-  background-color: transparent;
-  border: 0;
-  color: var(--_breadcrumb-link-color);
-  cursor: pointer;
-  min-inline-size: var(--rh-length-xl, 24px);
-  padding: 0;
-}
-
-.rhds-truncate-btn:hover,
-.rhds-truncate-btn:focus {
-  color: var(--_breadcrumb-link-color-hover);
-  text-decoration: underline;
-}
-
-.rhds-truncate-btn:focus {
-  border-radius: var(--rh-border-radius-default, 3px);
-  outline: 2px solid var(--_breadcrumb-link-focus-outline-color);
-}
-
-.rhds-truncate-visually-hidden {
-  border: 0;
-  clip: rect(0, 0, 0, 0);
-  block-size: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  white-space: nowrap;
-  inline-size: 1px;
-}
