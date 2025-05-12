@@ -129,9 +129,8 @@ export class RhCodeBlock extends LitElement {
   /** When set, lines in the code snippet wrap */
   @property({ type: Boolean }) wrap = false;
 
-  /** When set, the code block's line numbers are hidden */
-  @property({ type: Boolean, reflect: true, attribute: 'hide-line-numbers' })
-  hideLineNumbers = false;
+  /** When set to `hidden`, the code block's line numbers are hidden */
+  @property({ reflect: true, attribute: 'line-numbers' }) hideLineNumbers?: 'hidden';
 
   #slots = new SlotController(
     this,
@@ -174,7 +173,7 @@ export class RhCodeBlock extends LitElement {
           <div id="sizers" aria-hidden="true"></div>
           <ol id="line-numbers"
               aria-hidden="true"
-              ?hidden="${this.hideLineNumbers}">${this.#lineHeights.map((height, i) => html`
+              ?hidden="${this.hideLineNumbers === 'hidden'}">${this.#lineHeights.map((height, i) => html`
             <li style="${styleMap({ height })}">${i + 1}</li>`)}
           </ol>
           <pre id="prism-output"
