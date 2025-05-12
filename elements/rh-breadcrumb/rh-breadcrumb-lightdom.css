@@ -39,8 +39,8 @@ rh-breadcrumb {
         mask-image: var(--_breadcrumb-caret-image-default);
         mask-position: center center;
         mask-repeat: no-repeat;
-        height: var(--rh-font-size-body-text-sm, 0.875rem);
-        width: var(--rh-font-size-body-text-sm, 0.875rem);
+        block-size: var(--rh-font-size-body-text-sm, 0.875rem);
+        inline-size: var(--rh-font-size-body-text-sm, 0.875rem);
         content: '';
       }
 
