@@ -18,11 +18,13 @@ export class DisclosureToggleEvent extends Event {
 }
 
 const hasJumpLinksStyleSheet = new CSSStyleSheet();
-hasJumpLinksStyleSheet.replaceSync(/* css */`
-  details[open]:before {
-    border-inline-start-color: transparent;
-  }
-`);
+if(!isServer){
+  hasJumpLinksStyleSheet.replaceSync(/* css */`
+    details[open]:before {
+      border-inline-start-color: transparent;
+    }
+  `);
+}
 
 /**
  * A disclosure toggles the visibility of content when triggered.
@@ -81,6 +83,7 @@ export class RhDisclosure extends LitElement {
   @property({ reflect: true }) summary?: string;
 
   @state() private hasJumpLinks = false;
+
   @query('details') private detailsEl!: HTMLDetailsElement;
   @query('summary') private summaryEl!: HTMLElement;
   #mo = new MutationObserver(() => {
