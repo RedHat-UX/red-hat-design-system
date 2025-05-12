@@ -18,7 +18,8 @@ function isTruncateButtonDescendant(target: EventTarget | null): target is HTMLE
 const truncationBtn = html`
   <button class="${truncateBtnClass}"
           aria-expanded="false"
-          title="Show middle breadcrumb items">
+          title="Show middle breadcrumb items"
+          type="button">
     <span aria-hidden="true">&#8230;</span>
     <span class="visually-hidden">
       Show middle breadcrumb items
