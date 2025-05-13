@@ -195,8 +195,7 @@
 }
 
 :host([type='video']) {
-  --_gray-90-rgb: var(--rh-color-gray-90-rgb, 31 31 31);
-  --_dialog-backdrop-bg-color: rgb(var(--_gray-90-rgb) / var(--rh-opacity-60, 60%));
+  --_dialog-backdrop-bg-color: rgb(from var(--rh-color-gray-90), r g b / var(--rh-opacity-60, 60%));
 
   background-color: var(--_dialog-backdrop-bg-color);
 }
