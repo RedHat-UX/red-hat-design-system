@@ -2,6 +2,7 @@
   display: block;
   position: relative;
   width: max-content;
+  --rh-jump-link-max-width: var(--rh-length-7xl, 128px);
 }
 
 a {
@@ -9,6 +10,9 @@ a {
   text-decoration: none;
   display: inline-block;
   box-sizing: border-box;
+  width: var(--rh-jump-link-max-width);
+  white-space: normal;
+  overflow-wrap: break-word;
 
   &:before {
     content: '';
