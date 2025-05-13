@@ -129,7 +129,7 @@ export default class TokensPage extends Renderer<Data> {
               <th scope="col">Token name</th>
               <th scope="col">Value</th>
               <th scope="col">Use case</th>
-              <th scope="col"></th>
+              <th scope="col">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -148,7 +148,7 @@ export default class TokensPage extends Renderer<Data> {
                 <th scope="col">Token name</th>
                 <th scope="col">Value</th>
                 <th scope="col">Deprecation reason</th>
-                <th scope="col">Action</th>
+                <th scope="col">Actions</th>
               </tr>
             </thead>
             <tbody>
