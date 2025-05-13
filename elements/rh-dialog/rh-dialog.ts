@@ -124,13 +124,6 @@ export class RhDialog extends LitElement {
   disconnectedCallback() {
     super.disconnectedCallback();
     this.#triggerElement?.removeEventListener('click', this.onTriggerClick);
-    this.dialog?.removeEventListener('cancel', this.#onNativeDialogCancel);
-  }
-
-  firstUpdated(): void {
-    if (this.dialog) {
-      this.dialog.addEventListener('close', this.#onNativeDialogCancel.bind(this));
-    }
   }
 
   render() {
@@ -147,7 +140,8 @@ export class RhDialog extends LitElement {
           <dialog id="dialog"
                   part="dialog"
                   aria-labelledby=${ifDefined(this.accessibleLabel ? undefined : headerId)}
-                  aria-label=${ifDefined(this.accessibleLabel ? this.accessibleLabel : (!headerId ? triggerLabel : undefined))}>
+                  aria-label=${ifDefined(this.accessibleLabel ? this.accessibleLabel : (!headerId ? triggerLabel : undefined))}
+                  @cancel=${this.#onNativeDialogCancel}>
             <rh-button variant="close"
                        id="close-button"
                        part="close-button"
@@ -261,7 +255,9 @@ export class RhDialog extends LitElement {
   }
 
   #onNativeDialogCancel(event: Event) {
-    event.preventDefault();
+    console.log('native dialog close or cancel');
+    console.log('event:')
+    console.log(event);
     this.cancel();
   }
 
@@ -280,9 +276,9 @@ export class RhDialog extends LitElement {
     }
   }
 
-  private async cancel() {
+  private async cancel(returnValue?: string) {
     this.#cancelling = true;
-    this.close();
+    this.close(returnValue);
     this.open = false;
     await this.updateComplete;
     this.#cancelling = false;
@@ -334,6 +330,8 @@ export class RhDialog extends LitElement {
   close(returnValue?: string) {
     if (typeof returnValue === 'string') {
       this.returnValue = returnValue;
+    } else {
+      this.returnValue = '';
     }
 
     this.dialog?.close();
