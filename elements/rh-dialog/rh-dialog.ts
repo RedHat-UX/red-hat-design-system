@@ -254,10 +254,7 @@ export class RhDialog extends LitElement {
     }
   }
 
-  #onNativeDialogCancel(event: Event) {
-    console.log('native dialog close or cancel');
-    console.log('event:')
-    console.log(event);
+  #onNativeDialogCancel() {
     this.cancel();
   }
 
@@ -276,7 +273,7 @@ export class RhDialog extends LitElement {
     }
   }
 
-  private async cancel(returnValue?: string) {
+  async cancel(returnValue?: string) {
     this.#cancelling = true;
     this.close(returnValue);
     this.open = false;
