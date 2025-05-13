@@ -18,7 +18,7 @@ export class DisclosureToggleEvent extends Event {
 }
 
 const hasJumpLinksStyleSheet = new CSSStyleSheet();
-if(!isServer){
+if (!isServer) {
   hasJumpLinksStyleSheet.replaceSync(/* css */`
     details[open]:before {
       border-inline-start-color: transparent;
@@ -92,7 +92,6 @@ export class RhDisclosure extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.addEventListener('jump-links-connect', this.#handleJumpLinkChildren);
     if (!isServer) {
       this.#mo.observe(this, { childList: true });
     }
@@ -143,16 +142,6 @@ export class RhDisclosure extends LitElement {
     this.detailsEl.open = false;
     this.open = false;
     this.summaryEl.focus();
-  }
-
-  #handleJumpLinkChildren() {
-    this.hasJumpLinks = true;
-    if (this.shadowRoot) {
-      this.shadowRoot.adoptedStyleSheets = [
-        ...this.shadowRoot.adoptedStyleSheets,
-        hasJumpLinksStyleSheet,
-      ];
-    }
   }
 }
 
