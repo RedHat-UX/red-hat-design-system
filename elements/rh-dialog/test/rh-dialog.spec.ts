@@ -125,7 +125,7 @@ describe('<rh-dialog>', function() {
       await nextFrame();
       expect(element.open, 'Dialog should be open after trigger click').to.be.true;
     }
-  
+
     beforeEach(async function() {
       const fixture = await createFixture(html`
         <div>
@@ -157,24 +157,24 @@ describe('<rh-dialog>', function() {
       selectElement = fixture.querySelector<HTMLSelectElement>('#selectElement')!;
       confirmationButton = fixture.querySelector<HTMLButtonElement>('#confirmation-button')!;
       cancellationButton = fixture.querySelector<HTMLButtonElement>('#cancellationButton')!;
-  
+
       formElement.addEventListener('submit', e => e.preventDefault());
-  
-      confirmationButton.addEventListener("click", (event) => {
+
+      confirmationButton.addEventListener('click', event => {
         event.preventDefault();
         if (element.open) {
           element.close(selectElement.value);
         }
       });
-  
-      cancellationButton.addEventListener("click", (event) => {
+
+      cancellationButton.addEventListener('click', event => {
         event.preventDefault();
         if (element.open) {
           element.cancel('cancelled');
         }
       });
     });
-  
+
     it('should set returnValue correctly when submitting with a selected option', async function() {
       await openDialog();
       selectElement.value = '--rh-color-brand-red';
@@ -186,7 +186,7 @@ describe('<rh-dialog>', function() {
       expect(element.open, `Dialog should be closed after submit with selection`).to.be.false;
       expect(element.returnValue, `returnValue after submit with selection`).to.equal(selectElement.value);
     });
-  
+
     it('should set returnValue correctly when submitting with default option', async function() {
       await openDialog();
       selectElement.value = 'default';
@@ -198,7 +198,7 @@ describe('<rh-dialog>', function() {
       expect(element.open, `Dialog should be closed after submit with default`).to.be.false;
       expect(element.returnValue, `returnValue after submit with default`).to.equal(selectElement.value);
     });
-  
+
     it('should set returnValue correctly when the forms "Cancel" button is clicked', async function() {
       await openDialog();
 
@@ -209,7 +209,7 @@ describe('<rh-dialog>', function() {
       expect(element.open, `Dialog should be closed after form cancel button`).to.be.false;
       expect(element.returnValue, `returnValue after form cancel button`).to.equal('cancelled');
     });
-  
+
     it('should set empty returnValue when closed via ESC key', async function() {
       await openDialog();
 
@@ -220,11 +220,11 @@ describe('<rh-dialog>', function() {
       expect(element.open, `Dialog should be closed after ESC key`).to.be.false;
       expect(element.returnValue, `returnValue after ESC key`).to.equal('');
     });
-  
+
     it('should set empty returnValue when closed by clicking outside', async function() {
       await openDialog();
 
-      await clickElementAtOffset(document.body, [10, 10]);;
+      await clickElementAtOffset(document.body, [10, 10]); ;
       await element.updateComplete;
       await nextFrame();
 
