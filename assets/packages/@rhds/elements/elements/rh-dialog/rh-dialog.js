@@ -1,4 +1,4 @@
-var _RhDialog_instances, _RhDialog_screenSize, _RhDialog_headerId, _RhDialog_triggerElement, _RhDialog_header, _RhDialog_body, _RhDialog_headings, _RhDialog_cancelling, _RhDialog_slots, _RhDialog_onClick, _RhDialog_onKeyDown;
+var _RhDialog_instances, _RhDialog_screenSize, _RhDialog_headerId, _RhDialog_triggerElement, _RhDialog_header, _RhDialog_body, _RhDialog_headings, _RhDialog_cancelling, _RhDialog_slots, _RhDialog_onClick, _RhDialog_onNativeDialogCancel, _RhDialog_onKeyDown;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
@@ -99,7 +99,8 @@ let RhDialog = class RhDialog extends LitElement {
           <dialog id="dialog"
                   part="dialog"
                   aria-labelledby=${ifDefined(this.accessibleLabel ? undefined : headerId)}
-                  aria-label=${ifDefined(this.accessibleLabel ? this.accessibleLabel : (!headerId ? triggerLabel : undefined))}>
+                  aria-label=${ifDefined(this.accessibleLabel ? this.accessibleLabel : (!headerId ? triggerLabel : undefined))}
+                  @cancel=${__classPrivateFieldGet(this, _RhDialog_instances, "m", _RhDialog_onNativeDialogCancel)}>
             <rh-button variant="close"
                        id="close-button"
                        part="close-button"
@@ -190,9 +191,9 @@ let RhDialog = class RhDialog extends LitElement {
         await this.updateComplete;
         this.closeButton?.focus();
     }
-    async cancel() {
+    async cancel(returnValue) {
         __classPrivateFieldSet(this, _RhDialog_cancelling, true, "f");
-        this.close();
+        this.close(returnValue);
         this.open = false;
         await this.updateComplete;
         __classPrivateFieldSet(this, _RhDialog_cancelling, false, "f");
@@ -241,6 +242,9 @@ let RhDialog = class RhDialog extends LitElement {
         if (typeof returnValue === 'string') {
             this.returnValue = returnValue;
         }
+        else {
+            this.returnValue = '';
+        }
         this.dialog?.close();
         this.open = false;
     }
@@ -263,6 +267,9 @@ _RhDialog_onClick = function _RhDialog_onClick(event) {
             this.cancel();
         }
     }
+};
+_RhDialog_onNativeDialogCancel = function _RhDialog_onNativeDialogCancel() {
+    this.cancel();
 };
 _RhDialog_onKeyDown = function _RhDialog_onKeyDown(event) {
     switch (event.key) {

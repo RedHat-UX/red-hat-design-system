@@ -72,7 +72,7 @@ export declare class RhDialog extends LitElement {
     protected _openChanged(oldValue?: boolean, open?: boolean): Promise<void>;
     protected _triggerChanged(): void;
     private onTriggerClick;
-    private cancel;
+    cancel(returnValue?: string): Promise<void>;
     setTrigger(element: HTMLElement): void;
     /**
      * Manually toggles the dialog.
