@@ -1,4 +1,4 @@
-import type { Color, DesignToken, TokenName } from '@rhds/tokens';
+import type { DesignToken, TokenName } from '@rhds/tokens';
 
 import tinycolor from 'tinycolor2';
 import { tokens as tokensMeta } from '@rhds/tokens/meta.js';
@@ -133,7 +133,7 @@ export default class TokensPage extends Renderer<Data> {
             </tr>
           </thead>
           <tbody>
-            ${(await Promise.all(tokens.filter(x => !x.$deprecated).map(token => this.#renderToken(token, options)))).join('\n')}
+            ${(await Promise.all(tokens.filter(x => !x.$deprecated).map(token => this.#renderTokenRow(token, options)))).join('\n')}
           </tbody>
         </table>
       </rh-table>${!deprecatedTokens.length ? '' : html`
@@ -151,14 +151,14 @@ export default class TokensPage extends Renderer<Data> {
               </tr>
             </thead>
             <tbody>
-              ${(await Promise.all(deprecatedTokens.map(token => this.#renderToken(token, options)))).join('\n')}
+              ${(await Promise.all(deprecatedTokens.map(token => this.#renderTokenRow(token, options)))).join('\n')}
             </tbody>
           </table>
         </rh-table>
       </rh-disclosure>`}`.trim();
   }
 
-  async #renderToken(token: DesignToken, { name, tokens }: Options) {
+  async #renderTokenRow(token: DesignToken, { name, tokens }: Options) {
     const example = getDocs(tokens)?.example ?? '';
 
     if (!token.path
