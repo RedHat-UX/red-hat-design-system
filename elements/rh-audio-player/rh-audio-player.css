@@ -432,6 +432,8 @@ rh-menu > button:focus {
 #play,
 #full-play {
   display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 50%;
   background-color:
     light-dark(var(--rh-color-surface-darkest, #151515),
