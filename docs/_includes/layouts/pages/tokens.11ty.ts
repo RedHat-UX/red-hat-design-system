@@ -138,8 +138,7 @@ export default class TokensPage extends Renderer<Data> {
         </table>
       </rh-table>${!deprecatedTokens.length ? '' : html`
 
-      <rh-disclosure summary="Deprecated tokens"
-                     style="margin-block-end: var(--rh-space-6xl, 96px);"
+      <rh-disclosure class="deprecated-tokens" summary="Deprecated tokens">
         <rh-table>
           <table>
             <thead>
