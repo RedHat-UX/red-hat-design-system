@@ -67,7 +67,7 @@ rh-footer-universal [slot^='links'] a {
 :is(rh-footer, rh-footer-universal) {
   --rh-footer-section-side-gap: var(--rh-space-lg, 16px);
 
-  overflow-y: scroll;
+  overflow-y: auto;
 
   & > :not([slot='logo'], rh-footer-universal) {
     animation-name: var(--_fallback-animation, deopacitize-footer);
