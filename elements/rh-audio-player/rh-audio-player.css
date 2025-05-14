@@ -357,8 +357,7 @@ input[type='range'] {
   display: none;
 }
 
-.expanded #close-tooltip,
-:not(.expanded) #menu-tooltip {
+.expanded #close-tooltip {
   display: inline-block;
 }
 
