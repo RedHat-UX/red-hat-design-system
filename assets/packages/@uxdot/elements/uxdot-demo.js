@@ -36,7 +36,7 @@ let UxdotDemo = class UxdotDemo extends LitElement {
                      icon-set="ui"
                      @click="${__classPrivateFieldGet(this, _UxdotDemo_instances, "m", _UxdotDemo_reloadIframe)}">Reload</rh-button>
           <rh-cta slot="footer" href="${this.demoSourceUrl}">View source on GitHub</rh-cta>
-          <rh-cta slot="footer" href="${this.demoUrl}">View In Own Tab</rh-cta>
+          <rh-cta slot="footer" href="${this.demoUrl}" target="_blank">View In Own Tab</rh-cta>
         </rh-card>
       </div>
     `;
