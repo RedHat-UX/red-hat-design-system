@@ -350,6 +350,11 @@
   background: var(--_gradient);
 }
 
+#content-lines:has(#line-numbers[hidden]) {
+  grid-template-areas: 'code';
+  grid-template-columns: 1fr;
+}
+
 :not(.wrap) #actions:before {
   content: '';
   display: block;
