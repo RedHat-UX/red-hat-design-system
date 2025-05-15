@@ -196,8 +196,9 @@
 
 :host([type='video']) {
   --_dialog-backdrop-bg-color:
-    rgb(from var(--rh-color-gray-90, #1f1f1f),
-      r g b / var(--rh-opacity-60, 60%));
+    rgb(from var(--rh-color-gray-90,
+      #1f1f1f) r g b / var(--rh-opacity-60,
+      60%));
 
   background-color: var(--_dialog-backdrop-bg-color);
 }
