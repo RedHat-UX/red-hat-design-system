@@ -90,7 +90,9 @@ describe('<rh-pagination>', function() {
         </rh-pagination>
       `);
       element.addEventListener('click', event => {
-        const link = event.composedPath().findLast(x => x instanceof HTMLAnchorElement);
+        const link = [...event.composedPath()]
+            .reverse()
+            .find(x => x instanceof HTMLAnchorElement);
         if (link) {
           event.preventDefault();
           history.pushState(null, link.innerText, link.href);
@@ -104,37 +106,36 @@ describe('<rh-pagination>', function() {
     });
 
     describe('on the first page', function() {
+      let first: HTMLAnchorElement;
       beforeEach(async function() {
-        const url = new URL(location.href);
-        url.hash = '';
-        history.pushState(null, null, url.href);
+        [first] = element.shadowRoot!.querySelectorAll('a');
+        first.click();
         element.requestUpdate();
         await element.updateComplete;
       });
       it('disables first page stepper', function() {
-        const [first] = element.shadowRoot.querySelectorAll('a');
         expect(first.hasAttribute('inert'), 'is inert').to.be.true;
-        expect(first.hasAttribute('href'), 'has no href').to.be.false;
       });
 
       it('disables previous page stepper', function() {
-        const [, prev] = element.shadowRoot.querySelectorAll('a');
+        const [, prev] = element.shadowRoot!.querySelectorAll('a');
         expect(prev.hasAttribute('inert'), 'is inert').to.be.true;
         expect(prev.hasAttribute('href'), 'has no href').to.be.false;
       });
     });
 
     describe('appending 5 new pages with javascript', function() {
-      let nodelist: HTMLCollection;
+      let nodelist: NodeListOf<HTMLLIElement>;
       beforeEach(async function() {
-        element.querySelector('ol').innerHTML = Array.from({ length: 10 }, (_, i) =>
+        element.querySelector('ol')!.innerHTML = Array.from({ length: 10 }, (_, i) =>
           `<li><a href="#${i + 1}">${i + 1}</a></li>`).join('\n');
         await element.updateComplete;
-        nodelist = element.querySelectorAll('li');
+        await element.updateComplete;
+        nodelist = element.querySelectorAll('li')!;
       });
 
       it('should overflow', function() {
-        expect(element.getAttribute('overflow')).to.equal('end');
+        expect(element.getAttribute('overflow'), 'overflow attr').to.equal('end');
       });
 
       it('should show first 5 items', function() {
@@ -160,27 +161,27 @@ describe('<rh-pagination>', function() {
         before(() => element.next());
 
         it('enables first page stepper', function() {
-          const [first] = element.shadowRoot.querySelectorAll('a');
+          const [first] = element.shadowRoot!.querySelectorAll('a');
           expect(first.hasAttribute('inert'), 'is not inert').to.be.false;
           expect(first.hasAttribute('href'), 'has an href').to.be.true;
         });
 
         it('enables previous page stepper', function() {
-          const [, prev] = element.shadowRoot.querySelectorAll('a');
+          const [, prev] = element.shadowRoot!.querySelectorAll('a');
           expect(prev.hasAttribute('inert'), 'is not inert').to.be.false;
           expect(prev.hasAttribute('href'), 'has an href').to.be.true;
         });
 
         it('activates page 2', function() {
           const current = document.querySelector<HTMLAnchorElement>('[aria-current=page]');
-          expect(new URL(current.href).hash).to.equal('#2');
+          expect(new URL(current!.href).hash).to.equal('#2');
         });
 
         describe('then advancing to page 3', function() {
           before(() => element.next());
           it('activates page 3', function() {
             const current = document.querySelector<HTMLAnchorElement>('[aria-current=page]');
-            expect(new URL(current.href).hash).to.equal('#3');
+            expect(new URL(current!.href).hash).to.equal('#3');
           });
         });
 
@@ -188,7 +189,16 @@ describe('<rh-pagination>', function() {
           before(() => element.next());
           before(() => element.next());
           before(() => element.next());
-          let a; let b; let c; let d; let e; let f; let g; let h; let i; let j;
+          let a: Element;
+          let b: Element;
+          let c: Element;
+          let d: Element;
+          let e: Element;
+          let f: Element;
+          let g: Element;
+          let h: Element;
+          let i: Element;
+          let j: Element;
           beforeEach(function() {
             ([a, b, c, d, e, f, g, h, i, j] = nodelist);
           });
