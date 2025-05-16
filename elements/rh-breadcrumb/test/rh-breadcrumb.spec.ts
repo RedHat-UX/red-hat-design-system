@@ -24,12 +24,12 @@ describe('<rh-breadcrumb>', function() {
       element = await createFixture<RhBreadcrumb>(html`
         <rh-breadcrumb>
           <ol>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Products</a></li>
-            <li><a href="#">Red Hat OpenShift on AWS</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">Introduction to ROSA</a></li>
-            <li><a href="#" aria-current="page">Chapter 1. Understanding ROSA</a></li>
+            <li><a href="#">One</a></li>
+            <li><a href="#">Two</a></li>
+            <li><a href="#">Three</a></li>
+            <li><a href="#">Four</a></li>
+            <li><a href="#">Five</a></li>
+            <li><a href="#" aria-current="page">Six</a></li>
           </ol>
         </rh-breadcrumb>
       `);
@@ -89,12 +89,12 @@ describe('<rh-breadcrumb>', function() {
       element = await createFixture<RhBreadcrumb>(html`
         <rh-breadcrumb accessible-label="${customAccessibleLabel}">
           <ol>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Products</a></li>
-            <li><a href="#">Red Hat OpenShift on AWS</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">Introduction to ROSA</a></li>
-            <li><a href="#" aria-current="page">Chapter 1. Understanding ROSA</a></li>
+            <li><a href="#">One</a></li>
+            <li><a href="#">Two</a></li>
+            <li><a href="#">Three</a></li>
+            <li><a href="#">Four</a></li>
+            <li><a href="#">Five</a></li>
+            <li><a href="#" aria-current="page">Six</a></li>
           </ol>
         </rh-breadcrumb>
       `);
