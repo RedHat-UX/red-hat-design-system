@@ -43,9 +43,9 @@ describe('<rh-breadcrumb>', function() {
 
     it('should have nav element with aria-label "Breadcrumb"', async function() {
       const { shadowRoot } = element;
-      const navElement = shadowRoot.querySelector('nav');
+      const navElement = shadowRoot?.querySelector('nav');
       expect(navElement).to.exist;
-      expect(navElement.getAttribute('aria-label')).to.equal('Breadcrumb');
+      expect(navElement?.getAttribute('aria-label')).to.equal('Breadcrumb');
     });
 
     it('should contain an ordered list, list items, and anchor tags', function() {
@@ -58,7 +58,7 @@ describe('<rh-breadcrumb>', function() {
       listItemElements.forEach(function(li) {
         const anchorElement = li.querySelector('a');
         expect(anchorElement).to.exist;
-        expect(anchorElement.getAttribute('href')).to.not.be.empty;
+        expect(anchorElement?.getAttribute('href')).to.not.be.empty;
       });
     });
 
@@ -76,7 +76,7 @@ describe('<rh-breadcrumb>', function() {
 
       it('should underline the first link when focused', function() {
         const firstBreadcrumb = element.querySelector('a');
-        const computedStyle = getComputedStyle(firstBreadcrumb);
+        const computedStyle = getComputedStyle(firstBreadcrumb as Element);
         expect(computedStyle.textDecorationLine).to.equal('underline');
       });
     });
@@ -103,9 +103,11 @@ describe('<rh-breadcrumb>', function() {
 
     it('should output the custom accessible label', async function() {
       const { shadowRoot } = element;
-      const navElement = shadowRoot.querySelector('nav');
+      const navElement = shadowRoot?.querySelector('nav');
       expect(navElement).to.exist;
-      expect(navElement.getAttribute('aria-label')).to.equal(customAccessibleLabel);
+      expect(navElement?.getAttribute('aria-label')).to.equal(customAccessibleLabel);
+    });
+  });
 
   describe('when truncate is enabled', function() {
     let element: RhBreadcrumb;
