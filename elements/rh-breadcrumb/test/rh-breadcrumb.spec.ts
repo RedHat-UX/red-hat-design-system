@@ -106,6 +106,97 @@ describe('<rh-breadcrumb>', function() {
       const navElement = shadowRoot.querySelector('nav');
       expect(navElement).to.exist;
       expect(navElement.getAttribute('aria-label')).to.equal(customAccessibleLabel);
+
+  describe('when truncate is enabled', function() {
+    let element: RhBreadcrumb;
+    const truncateBtnClass = 'truncate-btn';
+    const truncateBtnContainerClass = `${truncateBtnClass}-container`;
+
+    describe('with 5+ breadcrumb items', function() {
+      beforeEach(async function() {
+        element = await createFixture<RhBreadcrumb>(html`
+          <rh-breadcrumb truncate>
+            <ol>
+              <li><a href="#">One</a></li>
+              <li><a href="#">Two</a></li>
+              <li><a href="#">Three</a></li>
+              <li><a href="#">Four</a></li>
+              <li><a href="#">Five</a></li>
+              <li><a href="#" aria-current="page">Six</a></li>
+            </ol>
+          </rh-breadcrumb>
+        `);
+        await element.updateComplete;
+      });
+
+      it('should be accessible', async function() {
+        await expect(element).to.be.accessible();
+      });
+
+      it('should hide middle items and show truncation button', function() {
+        const listItems = element.querySelectorAll('li');
+        const items = Array.from(listItems);
+        expect(listItems).to.have.lengthOf(7); // 6 breadcrumbs + truncation btn
+
+        expect(items[0].hasAttribute('hidden')).to.be.false;
+        expect(items.at(-1)?.hasAttribute('hidden')).to.be.false;
+        expect(items.at(-2)?.hasAttribute('hidden')).to.be.false;
+
+        for (const [i, item] of items.entries()) {
+          if (item.classList.contains(truncateBtnContainerClass)) {
+            continue;
+          }
+
+          // Find the hidden list items:
+          const isMiddle = i > 0 && i < items.length - 2;
+          expect(item.hasAttribute('hidden')).to.equal(isMiddle);
+        }
+
+        const truncateBtn = element.querySelector(`.${truncateBtnClass}`);
+        expect(truncateBtn).to.exist;
+        expect(truncateBtn?.getAttribute('aria-expanded')).to.equal('false');
+        expect(truncateBtn?.textContent?.includes('Show')).to.be.true;
+      });
+
+      it('should show all items and remove button when truncation button is clicked', async function() {
+        const truncateBtn = element.querySelector(`.${truncateBtnClass}`);
+        expect(truncateBtn).to.exist;
+        (truncateBtn as HTMLElement)?.click();
+        await element.updateComplete;
+
+        const listItems = element.querySelectorAll('li');
+        for (const item of listItems) {
+          expect(item.hasAttribute('hidden')).to.be.false;
+        }
+        expect(element.querySelector(`.${truncateBtnClass}`)).to.not.exist;
+      });
+    });
+
+    describe('with fewer than 5 breadcrumb items', function() {
+      beforeEach(async function() {
+        element = await createFixture<RhBreadcrumb>(html`
+          <rh-breadcrumb truncate>
+            <ol>
+              <li><a href="#">One</a></li>
+              <li><a href="#">Two</a></li>
+              <li><a href="#">Three</a></li>
+              <li><a href="#" aria-current="page">Four</a></li>
+            </ol>
+          </rh-breadcrumb>
+        `);
+        await element.updateComplete;
+      });
+
+      it('should not truncate or add truncation button', function() {
+        const listItems = element.querySelectorAll('li');
+        expect(listItems).to.have.lengthOf(4);
+
+        for (const item of listItems) {
+          expect(item.hasAttribute('hidden')).to.be.false;
+        }
+
+        expect(element.querySelector(`.${truncateBtnClass}`)).to.not.exist;
+      });
     });
   });
 });
