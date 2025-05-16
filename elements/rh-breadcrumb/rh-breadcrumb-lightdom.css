@@ -25,6 +25,7 @@ rh-breadcrumb {
     line-height: var(--rh-line-height-body-text, 1.5);
     margin-block: 0;
     padding-inline-start: 0;
+
     & > li {
       display: inline-flex;
       margin-block-end: var(--rh-space-md, 8px);
@@ -46,6 +47,7 @@ rh-breadcrumb {
 
       &:first-child {
         padding-inline-start: 0;
+
         & > a {
           margin-inline-start: 0;
         }
@@ -55,8 +57,10 @@ rh-breadcrumb {
         background-image: none;
       }
 
+      /* stylelint-disable-next-line no-descending-specificity */
       & > a {
         text-decoration: underline;
+
         &:is(:hover, :focus, :active) {
           color: var(--_breadcrumb-link-color-hover);
         }
@@ -85,7 +89,6 @@ rh-breadcrumb {
         color: var(--_breadcrumb-link-color-current-page);
         text-decoration: none;
       }
-
     }
 
     & > li,
@@ -137,5 +140,3 @@ rh-breadcrumb {
     }
   }
 }
-
-
