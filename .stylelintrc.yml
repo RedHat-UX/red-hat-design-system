@@ -68,6 +68,7 @@ rules:
     - allowed:
       - --rh-icon-size
       - --rh-navigation-active-item-color
+      - --rh-jump-link-max-width
 
 overrides:
   - files:

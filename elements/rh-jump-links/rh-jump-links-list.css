@@ -13,22 +13,27 @@
   &.vertical {
     border-inline-start: var(--_bdr);
 
-    --_active_bdr: none;
-
     ::slotted(rh-jump-link[slot][active]),
     ::slotted(rh-jump-link[slot]) { /* hide border for parent item */
       --_bdr-c: none;
+
+      margin-left: -1px;
     }
 
     ::slotted(rh-jump-link:not([slot])) { /* exclude parent item */
       --_padding-inline-start: var(--rh-space-lg, 16px);
       --_bdr: none;
+      --_active_bdr: none;
     }
   }
 
   &.horizontal {
     display: contents;
     border-block-start: var(--_bdr);
+  }
+
+  &.vertical.active {
+    --_active_bdr: none;
   }
 
   &.active {

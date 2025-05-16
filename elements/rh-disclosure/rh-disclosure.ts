@@ -1,6 +1,7 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer, type PropertyValues } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
+import { state } from 'lit/decorators/state.js';
 import { query } from 'lit/decorators/query.js';
 
 import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
@@ -14,6 +15,15 @@ export class DisclosureToggleEvent extends Event {
   constructor() {
     super('toggle', { bubbles: true, cancelable: true });
   }
+}
+
+const hasJumpLinksStyleSheet = new CSSStyleSheet();
+if (!isServer) {
+  hasJumpLinksStyleSheet.replaceSync(/* css */`
+    details[open]:before {
+      border-inline-start-color: transparent;
+    }
+  `);
 }
 
 /**
@@ -72,8 +82,20 @@ export class RhDisclosure extends LitElement {
    */
   @property({ reflect: true }) summary?: string;
 
+  @state() private hasJumpLinks = false;
+
   @query('details') private detailsEl!: HTMLDetailsElement;
   @query('summary') private summaryEl!: HTMLElement;
+  #mo = new MutationObserver(() => {
+    this.hasJumpLinks = !!this.querySelector('rh-jump-links');
+  });
+
+  connectedCallback() {
+    super.connectedCallback();
+    if (!isServer) {
+      this.#mo.observe(this, { childList: true });
+    }
+  }
 
   render() {
     return html`
@@ -112,7 +134,6 @@ export class RhDisclosure extends LitElement {
       }
     }
   }
-
 
   #closeDisclosure(): void {
     if (!this.open) {
