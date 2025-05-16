@@ -1,6 +1,6 @@
 {
   "name": "@rhds/tokens",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Red Hat Design System Tokens",
   "scripts": {
     "build": "wireit",
@@ -16,6 +16,13 @@
   "main": "js/tokens.cjs",
   "module": "js/tokens.js",
   "types": "js/tokens.d.ts",
+  "designTokensLanguageServer": {
+    "prefix": "rh",
+    "tokensFiles": [
+      "./tokens/**/*.yaml",
+      "./tokens/**/*.yml"
+    ]
+  },
   "exports": {
     ".": {
       "import": "./js/tokens.js",
@@ -132,8 +139,9 @@
       "service": true
     },
     "test": {
-      "command": "tape-es 'test/*.js' | tap-difflet",
+      "command": "tape-es 'test/*.ts' | tap-difflet",
       "files": [
+        "**/*.test.{ts,js}",
         "test/**/*.{ts,js}",
         "plugins/**/*.js",
         "tokens/**/*.ya?ml"
@@ -162,7 +170,7 @@
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
-    "@changesets/cli": "^2.28.1",
+    "@changesets/cli": "^2.29.4",
     "@eslint/eslintrc": "^3.3.0",
     "@eslint/js": "^9.22.0",
     "@jspm/generator": "^2.5.1",
@@ -187,7 +195,7 @@
     "tsx": "^4.19.3",
     "typescript": "^5.8.2",
     "vsce": "^2.15.0",
-    "wireit": "^0.14.11",
+    "wireit": "^0.14.12",
     "yaml": "^2.7.0"
   }
 }

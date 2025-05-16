@@ -3981,8 +3981,7 @@
     ],
     "body": [
       "var(--rh-color-surface-dark-alt${1:, oklch(from(--rh-color-surface-dark) calc(l * 0.82) c h)})$2"
-    ],
-    "description": "DEPRECATED. Theme authors should use --rh-color-surface-dark. Element authors should use oklch(from var(--rh-color-surface-dark) calc(l * 0.82) c h). Alternative tertiary surface (not available for use with context provider)\n"
+    ]
   },
   "rh-color-surface-darker": {
     "scope": "css,scss",

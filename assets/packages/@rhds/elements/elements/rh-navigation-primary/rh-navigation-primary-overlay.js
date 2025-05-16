@@ -3,7 +3,7 @@ import { LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { css } from "lit";
-const styles = css `:host{position:fixed;background-color:rgb(var(--rh-color-gray-90-rgb,31 31 31)/.8);inset:0;inline-size:100dvw;block-size:100dvh;z-index:var(--rh-overlay-z-index,1)}:host([open]){display:block}:host(:not([open])){display:none}`;
+const styles = css `:host{position:fixed;background-color:rgb(from var(--rh-color-gray-90,#1f1f1f) r g b/var(--rh-opacity-80,80%));inset:0;inline-size:100dvw;block-size:100dvh;z-index:var(--rh-overlay-z-index,1)}:host([open]){display:block}:host(:not([open])){display:none}`;
 /**
  * Overlay
  * @slot - Place element content here

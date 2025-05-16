@@ -3176,11 +3176,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-green-10-hsl": {
     "$value": "95.00000000000003 60.00000000000004% 92.15686274509804%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-green-10) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-green-10) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.green.10}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-green-10) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-green-10) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-green-10-hsl",
@@ -3218,11 +3218,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-green-10-rgb": {
     "$value": "233 247 223",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-green-10) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-green-10) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.green.10}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-green-10) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-green-10) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-green-10-rgb",
@@ -3260,11 +3260,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-green-20-hsl": {
     "$value": "95.55555555555556 65.85365853658536% 83.92156862745097%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-green-20) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-green-20) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.green.20}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-green-20) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-green-20) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-green-20-hsl",
@@ -3302,11 +3302,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-green-20-rgb": {
     "$value": "209 241 187",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-green-20) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-green-20) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.green.20}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-green-20) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-green-20) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-green-20-rgb",
@@ -3344,11 +3344,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-green-30-hsl": {
     "$value": "95.06493506493506 52.380952380952394% 71.17647058823529%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-green-30) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-green-30) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.green.30}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-green-30) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-green-30) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-green-30-hsl",
@@ -3386,11 +3386,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-green-30-rgb": {
     "$value": "175 220 143",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-green-30) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-green-30) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.green.30}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-green-30) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-green-30) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-green-30-rgb",
@@ -3428,11 +3428,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-green-40-hsl": {
     "$value": "95.05617977528091 39.55555555555555% 55.88235294117647%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-green-40) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-green-40) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.green.40}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-green-40) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-green-40) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-green-40-hsl",
@@ -3470,11 +3470,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-green-40-rgb": {
     "$value": "135 187 98",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-green-40) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-green-40) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.green.40}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-green-40) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-green-40) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-green-40-rgb",
@@ -3512,11 +3512,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-green-50-hsl": {
     "$value": "95.21739130434783 42.99065420560747% 41.96078431372549%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-green-50) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-green-50) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.green.50}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-green-50) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-green-50) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-green-50-hsl",
@@ -3554,11 +3554,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-green-50-rgb": {
     "$value": "99 153 61",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-green-50) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-green-50) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.green.50}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-green-50) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-green-50) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-green-50-rgb",
@@ -3596,11 +3596,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-green-60-hsl": {
     "$value": "95.21739130434783 66.66666666666667% 27.058823529411764%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-green-60) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-green-60) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.green.60}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-green-60) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-green-60) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-green-60-hsl",
@@ -3638,11 +3638,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-green-60-rgb": {
     "$value": "61 115 23",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-green-60) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-green-60) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.green.60}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-green-60) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-green-60) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-green-60-rgb",
@@ -3680,11 +3680,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-green-70-hsl": {
     "$value": "95.06493506493506 100% 15.098039215686274%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-green-70) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-green-70) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.green.70}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-green-70) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-green-70) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-green-70-hsl",
@@ -3722,11 +3722,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-green-70-rgb": {
     "$value": "32 77 0",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-green-70) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-green-70) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.green.70}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-green-70) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-green-70) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-green-70-rgb",
@@ -4110,11 +4110,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-orange-10-hsl": {
     "$value": "32.941176470588225 100% 90%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-orange-10) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-orange-10) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.orange.10}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-orange-10) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-orange-10) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-orange-10-hsl",
@@ -4152,11 +4152,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-orange-10-rgb": {
     "$value": "255 232 204",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-orange-10) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-orange-10) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.orange.10}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-orange-10) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-orange-10) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-orange-10-rgb",
@@ -4194,11 +4194,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-orange-20-hsl": {
     "$value": "33.02752293577981 94.78260869565219% 77.45098039215686%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-orange-20) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-orange-20) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.orange.20}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-orange-20) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-orange-20) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-orange-20-hsl",
@@ -4236,11 +4236,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-orange-20-rgb": {
     "$value": "252 203 143",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-orange-20) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-orange-20) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.orange.20}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-orange-20) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-orange-20) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-orange-20-rgb",
@@ -4278,11 +4278,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-orange-30-hsl": {
     "$value": "32.926829268292686 92.13483146067415% 65.09803921568627%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-orange-30) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-orange-30) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.orange.30}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-orange-30) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-orange-30) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-orange-30-hsl",
@@ -4320,11 +4320,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-orange-30-rgb": {
     "$value": "248 174 84",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-orange-30) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-orange-30) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.orange.30}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-orange-30) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-orange-30) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-orange-30-rgb",
@@ -4362,11 +4362,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-orange-40-hsl": {
     "$value": "32.752293577981646 91.5966386554622% 53.333333333333336%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-orange-40) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-orange-40) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.orange.40}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-orange-40) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-orange-40) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-orange-40-hsl",
@@ -4404,11 +4404,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-orange-40-rgb": {
     "$value": "245 146 27",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-orange-40) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-orange-40) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.orange.40}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-orange-40) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-orange-40) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-orange-40-rgb",
@@ -4446,11 +4446,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-orange-50-hsl": {
     "$value": "29.83957219251337 86.17511520737327% 42.549019607843135%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-orange-50) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-orange-50) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.orange.50}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-orange-50) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-orange-50) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-orange-50-hsl",
@@ -4488,11 +4488,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-orange-50-rgb": {
     "$value": "202 108 15",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-orange-50) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-orange-50) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.orange.50}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-orange-50) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-orange-50) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-orange-50-rgb",
@@ -4530,11 +4530,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-orange-60-hsl": {
     "$value": "26.842105263157904 92.68292682926828% 32.15686274509804%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-orange-60) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-orange-60) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.orange.60}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-orange-60) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-orange-60) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-orange-60-hsl",
@@ -4572,11 +4572,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-orange-60-rgb": {
     "$value": "158 74 6",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-orange-60) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-orange-60) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.orange.60}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-orange-60) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-orange-60) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-orange-60-rgb",
@@ -4614,11 +4614,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-orange-70-hsl": {
     "$value": "24 100% 22.54901960784314%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-orange-70) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-orange-70) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.orange.70}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-orange-70) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-orange-70) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-orange-70-hsl",
@@ -4656,11 +4656,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-orange-70-rgb": {
     "$value": "115 46 0",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-orange-70) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-orange-70) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.orange.70}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-orange-70) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-orange-70) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-orange-70-rgb",
@@ -4698,11 +4698,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-orange-80-hsl": {
     "$value": "24.155844155844157 100% 15.098039215686274%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-orange-80) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-orange-80) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.orange.80}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-orange-80) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-orange-80) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-orange-80-hsl",
@@ -4740,11 +4740,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-orange-80-rgb": {
     "$value": "77 31 0",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-orange-80) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-orange-80) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.orange.80}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-orange-80) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-orange-80) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-orange-80-rgb",
@@ -6753,11 +6753,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-blue-10-hsl": {
     "$value": "209.03225806451616 100% 93.92156862745098%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-blue-10) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-blue-10) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.blue.10}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-blue-10) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-blue-10) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-blue-10-hsl",
@@ -6795,11 +6795,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-blue-10-rgb": {
     "$value": "224 240 255",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-blue-10) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-blue-10) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.blue.10}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-blue-10) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-blue-10) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-blue-10-rgb",
@@ -6837,11 +6837,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-blue-20-hsl": {
     "$value": "210.44776119402988 91.78082191780825% 85.68627450980392%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-blue-20) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-blue-20) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.blue.20}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-blue-20) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-blue-20) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-blue-20-hsl",
@@ -6879,11 +6879,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-blue-20-rgb": {
     "$value": "185 218 252",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-blue-20) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-blue-20) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.blue.20}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-blue-20) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-blue-20) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-blue-20-rgb",
@@ -6921,11 +6921,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-blue-30-hsl": {
     "$value": "210.29126213592232 89.56521739130436% 77.45098039215685%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-blue-30) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-blue-30) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.blue.30}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-blue-30) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-blue-30) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-blue-30-hsl",
@@ -6963,11 +6963,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-blue-30-rgb": {
     "$value": "146 197 249",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-blue-30) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-blue-30) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.blue.30}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-blue-30) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-blue-30) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-blue-30-rgb",
@@ -7005,11 +7005,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-blue-40-hsl": {
     "$value": "210 75.70093457943923% 58.03921568627452%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-blue-40) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-blue-40) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.blue.40}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-blue-40) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-blue-40) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-blue-40-hsl",
@@ -7047,11 +7047,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-blue-40-rgb": {
     "$value": "67 148 229",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-blue-40) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-blue-40) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.blue.40}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-blue-40) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-blue-40) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-blue-40-rgb",
@@ -7089,11 +7089,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-blue-50-hsl": {
     "$value": "210 100% 40%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-blue-50) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-blue-50) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.blue.50}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-blue-50) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-blue-50) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-blue-50-hsl",
@@ -7131,11 +7131,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-blue-50-rgb": {
     "$value": "0 102 204",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-blue-50) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-blue-50) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.blue.50}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-blue-50) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-blue-50) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-blue-50-rgb",
@@ -7173,11 +7173,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-blue-60-hsl": {
     "$value": "209.80392156862746 100% 30%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-blue-60) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-blue-60) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.blue.60}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-blue-60) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-blue-60) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-blue-60-hsl",
@@ -7215,11 +7215,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-blue-60-rgb": {
     "$value": "0 77 153",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-blue-60) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-blue-60) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.blue.60}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-blue-60) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-blue-60) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-blue-60-rgb",
@@ -7257,11 +7257,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-blue-70-hsl": {
     "$value": "210 100% 20%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-blue-70) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-blue-70) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.blue.70}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-blue-70) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-blue-70) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-blue-70-hsl",
@@ -7299,11 +7299,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-blue-70-rgb": {
     "$value": "0 51 102",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-blue-70) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-blue-70) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.blue.70}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-blue-70) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-blue-70) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-blue-70-rgb",
@@ -7856,11 +7856,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-gray-10-hsl": {
     "$value": "0 0% 94.90196078431372%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-gray-10) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-gray-10) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.gray.10}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-gray-10) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-gray-10) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-gray-10-hsl",
@@ -7898,11 +7898,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-gray-10-rgb": {
     "$value": "242 242 242",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-gray-10) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-gray-10) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.gray.10}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-gray-10) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-gray-10) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-gray-10-rgb",
@@ -7940,11 +7940,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-gray-20-hsl": {
     "$value": "0 0% 87.84313725490196%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-gray-20) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-gray-20) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.gray.20}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-gray-20) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-gray-20) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-gray-20-hsl",
@@ -7982,11 +7982,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-gray-20-rgb": {
     "$value": "224 224 224",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-gray-20) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-gray-20) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.gray.20}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-gray-20) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-gray-20) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-gray-20-rgb",
@@ -8024,11 +8024,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-gray-30-hsl": {
     "$value": "0 0% 78.03921568627452%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-gray-30) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-gray-30) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.gray.30}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-gray-30) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-gray-30) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-gray-30-hsl",
@@ -8066,11 +8066,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-gray-30-rgb": {
     "$value": "199 199 199",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-gray-30) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-gray-30) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.gray.30}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-gray-30) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-gray-30) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-gray-30-rgb",
@@ -8108,11 +8108,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-gray-40-hsl": {
     "$value": "0 0% 63.921568627450974%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-gray-40) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-gray-40) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.gray.40}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-gray-40) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-gray-40) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-gray-40-hsl",
@@ -8150,11 +8150,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-gray-40-rgb": {
     "$value": "163 163 163",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-gray-40) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-gray-40) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.gray.40}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-gray-40) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-gray-40) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-gray-40-rgb",
@@ -8192,11 +8192,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-gray-50-hsl": {
     "$value": "0 0% 43.92156862745098%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-gray-50) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-gray-50) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.gray.50}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-gray-50) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-gray-50) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-gray-50-hsl",
@@ -8234,11 +8234,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-gray-50-rgb": {
     "$value": "112 112 112",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-gray-50) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-gray-50) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.gray.50}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-gray-50) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-gray-50) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-gray-50-rgb",
@@ -8276,11 +8276,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-gray-60-hsl": {
     "$value": "0 0% 30.19607843137255%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-gray-60) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-gray-60) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.gray.60}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-gray-60) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-gray-60) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-gray-60-hsl",
@@ -8318,11 +8318,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-gray-60-rgb": {
     "$value": "77 77 77",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-gray-60) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-gray-60) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.gray.60}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-gray-60) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-gray-60) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-gray-60-rgb",
@@ -8360,11 +8360,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-gray-70-hsl": {
     "$value": "0 0% 21.96078431372549%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-gray-70) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-gray-70) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.gray.70}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-gray-70) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-gray-70) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-gray-70-hsl",
@@ -8402,11 +8402,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-gray-70-rgb": {
     "$value": "56 56 56",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-gray-70) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-gray-70) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.gray.70}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-gray-70) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-gray-70) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-gray-70-rgb",
@@ -8444,11 +8444,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-gray-80-hsl": {
     "$value": "0 0% 16.07843137254902%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-gray-80) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-gray-80) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.gray.80}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-gray-80) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-gray-80) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-gray-80-hsl",
@@ -8486,11 +8486,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-gray-80-rgb": {
     "$value": "41 41 41",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-gray-80) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-gray-80) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.gray.80}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-gray-80) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-gray-80) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-gray-80-rgb",
@@ -8528,11 +8528,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-gray-90-hsl": {
     "$value": "0 0% 12.156862745098039%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-gray-90) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-gray-90) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.gray.90}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-gray-90) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-gray-90) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-gray-90-hsl",
@@ -8570,11 +8570,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-gray-90-rgb": {
     "$value": "31 31 31",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-gray-90) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-gray-90) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.gray.90}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-gray-90) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-gray-90) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-gray-90-rgb",
@@ -8612,11 +8612,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-gray-95-hsl": {
     "$value": "0 0% 8.235294117647058%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-gray-95) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-gray-95) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.gray.95}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-gray-95) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-gray-95) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-gray-95-hsl",
@@ -8654,11 +8654,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-gray-95-rgb": {
     "$value": "21 21 21",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-gray-95) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-gray-95) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.gray.95}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-gray-95) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-gray-95) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-gray-95-rgb",
@@ -9087,11 +9087,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-purple-10-hsl": {
     "$value": "254.4 100% 95.09803921568627%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-purple-10) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-purple-10) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.purple.10}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-purple-10) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-purple-10) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-purple-10-hsl",
@@ -9129,11 +9129,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-purple-10-rgb": {
     "$value": "236 230 255",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-purple-10) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-purple-10) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.purple.10}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-purple-10) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-purple-10) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-purple-10-rgb",
@@ -9171,11 +9171,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-purple-20-hsl": {
     "$value": "254.0425531914893 68.11594202898556% 86.47058823529412%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-purple-20) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-purple-20) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.purple.20}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-purple-20) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-purple-20) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-purple-20-hsl",
@@ -9213,11 +9213,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-purple-20-rgb": {
     "$value": "208 197 244",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-purple-20) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-purple-20) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.purple.20}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-purple-20) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-purple-20) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-purple-20-rgb",
@@ -9255,11 +9255,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-purple-30-hsl": {
     "$value": "254.32835820895522 60.36036036036033% 78.23529411764706%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-purple-30) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-purple-30) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.purple.30}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-purple-30) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-purple-30) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-purple-30-hsl",
@@ -9297,11 +9297,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-purple-30-rgb": {
     "$value": "182 166 233",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-purple-30) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-purple-30) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.purple.30}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-purple-30) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-purple-30) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-purple-30-rgb",
@@ -9339,11 +9339,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-purple-40-hsl": {
     "$value": "254.25742574257427 54.010695187165794% 63.33333333333333%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-purple-40) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-purple-40) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.purple.40}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-purple-40) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-purple-40) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-purple-40-hsl",
@@ -9381,11 +9381,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-purple-40-rgb": {
     "$value": "135 111 212",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-purple-40) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-purple-40) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.purple.40}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-purple-40) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-purple-40) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-purple-40-rgb",
@@ -9423,11 +9423,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-purple-50-hsl": {
     "$value": "254.2857142857143 49.60629921259843% 49.80392156862745%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-purple-50) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-purple-50) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.purple.50}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-purple-50) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-purple-50) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-purple-50-hsl",
@@ -9465,11 +9465,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-purple-50-rgb": {
     "$value": "94 64 190",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-purple-50) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-purple-50) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.purple.50}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-purple-50) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-purple-50) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-purple-50-rgb",
@@ -9507,11 +9507,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-purple-60-hsl": {
     "$value": "254.0425531914894 54.65116279069767% 33.72549019607843%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-purple-60) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-purple-60) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.purple.60}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-purple-60) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-purple-60) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-purple-60-hsl",
@@ -9549,11 +9549,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-purple-60-rgb": {
     "$value": "61 39 133",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-purple-60) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-purple-60) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.purple.60}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-purple-60) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-purple-60) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-purple-60-rgb",
@@ -9591,11 +9591,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-purple-70-hsl": {
     "$value": "254.48275862068965 60.416666666666664% 18.823529411764707%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-purple-70) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-purple-70) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.purple.70}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-purple-70) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-purple-70) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-purple-70-hsl",
@@ -9633,11 +9633,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-purple-70-rgb": {
     "$value": "33 19 77",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-purple-70) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-purple-70) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.purple.70}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-purple-70) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-purple-70) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-purple-70-rgb",
@@ -9675,11 +9675,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-purple-80-hsl": {
     "$value": "262.10526315789474 59.375000000000014% 12.549019607843137%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-purple-80) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-purple-80) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.purple.80}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-purple-80) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-purple-80) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-purple-80-hsl",
@@ -9717,11 +9717,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-purple-80-rgb": {
     "$value": "27 13 51",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-purple-80) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-purple-80) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.purple.80}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-purple-80) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-purple-80) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-purple-80-rgb",
@@ -10053,11 +10053,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-red-orange-10-hsl": {
     "$value": "15.789473684210513 100% 92.54901960784314%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-red-orange-10) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-red-orange-10) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.red-orange.10}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-red-orange-10) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-red-orange-10) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-red-orange-10-hsl",
@@ -10095,11 +10095,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-red-orange-10-rgb": {
     "$value": "255 227 217",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-red-orange-10) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-red-orange-10) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.red-orange.10}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-red-orange-10) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-red-orange-10) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-red-orange-10-rgb",
@@ -10137,11 +10137,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-red-orange-20-hsl": {
     "$value": "15.903614457831333 91.20879120879121% 82.15686274509804%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-red-orange-20) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-red-orange-20) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.red-orange.20}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-red-orange-20) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-red-orange-20) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-red-orange-20-hsl",
@@ -10179,11 +10179,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-red-orange-20-rgb": {
     "$value": "251 190 168",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-red-orange-20) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-red-orange-20) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.red-orange.20}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-red-orange-20) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-red-orange-20) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-red-orange-20-rgb",
@@ -10221,11 +10221,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-red-orange-30-hsl": {
     "$value": "16.406249999999996 90.14084507042254% 72.15686274509804%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-red-orange-30) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-red-orange-30) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.red-orange.30}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-red-orange-30) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-red-orange-30) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-red-orange-30-hsl",
@@ -10263,11 +10263,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-red-orange-30-rgb": {
     "$value": "248 155 120",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-red-orange-30) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-red-orange-30) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.red-orange.30}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-red-orange-30) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-red-orange-30) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-red-orange-30-rgb",
@@ -10305,11 +10305,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-red-orange-40-hsl": {
     "$value": "16.235294117647054 88.54166666666671% 62.35294117647059%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-red-orange-40) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-red-orange-40) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.red-orange.40}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-red-orange-40) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-red-orange-40) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-red-orange-40-hsl",
@@ -10347,11 +10347,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-red-orange-40-rgb": {
     "$value": "244 120 74",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-red-orange-40) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-red-orange-40) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.red-orange.40}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-red-orange-40) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-red-orange-40) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-red-orange-40-rgb",
@@ -10389,11 +10389,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-red-orange-50-hsl": {
     "$value": "16.208530805687207 87.55186721991701% 52.74509803921569%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-red-orange-50) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-red-orange-50) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.red-orange.50}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-red-orange-50) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-red-orange-50) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-red-orange-50-hsl",
@@ -10431,11 +10431,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-red-orange-50-rgb": {
     "$value": "240 86 29",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-red-orange-50) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-red-orange-50) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.red-orange.50}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-red-orange-50) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-red-orange-50) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-red-orange-50-rgb",
@@ -10473,11 +10473,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-red-orange-60-hsl": {
     "$value": "16.265060240963855 88.29787234042554% 36.86274509803921%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-red-orange-60) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-red-orange-60) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.red-orange.60}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-red-orange-60) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-red-orange-60) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-red-orange-60-hsl",
@@ -10515,11 +10515,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-red-orange-60-rgb": {
     "$value": "177 56 11",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-red-orange-60) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-red-orange-60) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.red-orange.60}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-red-orange-60) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-red-orange-60) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-red-orange-60-rgb",
@@ -10557,11 +10557,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-red-orange-70-hsl": {
     "$value": "16.17391304347826 100% 22.54901960784314%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-red-orange-70) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-red-orange-70) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.red-orange.70}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-red-orange-70) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-red-orange-70) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-red-orange-70-hsl",
@@ -10599,11 +10599,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-red-orange-70-rgb": {
     "$value": "115 31 0",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-red-orange-70) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-red-orange-70) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.red-orange.70}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-red-orange-70) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-red-orange-70) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-red-orange-70-rgb",
@@ -10991,11 +10991,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-red-10-hsl": {
     "$value": "0 80.64516129032265% 93.92156862745098%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-red-10) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-red-10) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.red.10}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-red-10) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-red-10) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-red-10-hsl",
@@ -11033,11 +11033,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-red-10-rgb": {
     "$value": "252 227 227",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-red-10) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-red-10) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.red.10}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-red-10) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-red-10) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-red-10-rgb",
@@ -11075,11 +11075,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-red-20-hsl": {
     "$value": "0 87.09677419354838% 87.84313725490196%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-red-20) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-red-20) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.red.20}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-red-20) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-red-20) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-red-20-hsl",
@@ -11117,11 +11117,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-red-20-rgb": {
     "$value": "251 197 197",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-red-20) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-red-20) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.red.20}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-red-20) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-red-20) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-red-20-rgb",
@@ -11159,11 +11159,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-red-30-hsl": {
     "$value": "0 87.0967741935484% 81.76470588235294%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-red-30) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-red-30) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.red.30}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-red-30) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-red-30) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-red-30-hsl",
@@ -11201,11 +11201,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-red-30-rgb": {
     "$value": "249 168 168",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-red-30) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-red-30) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.red.30}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-red-30) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-red-30) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-red-30-rgb",
@@ -11243,11 +11243,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-red-40-hsl": {
     "$value": "0 87.09677419354841% 69.6078431372549%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-red-40) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-red-40) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.red.40}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-red-40) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-red-40) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-red-40-hsl",
@@ -11285,11 +11285,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-red-40-rgb": {
     "$value": "245 110 110",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-red-40) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-red-40) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.red.40}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-red-40) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-red-40) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-red-40-rgb",
@@ -11327,11 +11327,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-red-50-hsl": {
     "$value": "0 100% 46.666666666666664%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-red-50) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-red-50) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.red.50}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-red-50) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-red-50) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-red-50-hsl",
@@ -11369,11 +11369,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-red-50-rgb": {
     "$value": "238 0 0",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-red-50) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-red-50) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.red.50}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-red-50) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-red-50) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-red-50-rgb",
@@ -11411,11 +11411,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-red-60-hsl": {
     "$value": "0 100% 32.549019607843135%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-red-60) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-red-60) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.red.60}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-red-60) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-red-60) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-red-60-hsl",
@@ -11453,11 +11453,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-red-60-rgb": {
     "$value": "166 0 0",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-red-60) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-red-60) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.red.60}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-red-60) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-red-60) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-red-60-rgb",
@@ -11495,11 +11495,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-red-70-hsl": {
     "$value": "0 100% 18.627450980392158%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-red-70) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-red-70) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.red.70}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-red-70) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-red-70) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-red-70-hsl",
@@ -11537,11 +11537,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-red-70-rgb": {
     "$value": "95 0 0",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-red-70) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-red-70) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.red.70}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-red-70) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-red-70) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-red-70-rgb",
@@ -11579,11 +11579,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-red-80-hsl": {
     "$value": "0 100% 12.352941176470589%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-red-80) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-red-80) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.red.80}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-red-80) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-red-80) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-red-80-hsl",
@@ -11621,11 +11621,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-red-80-rgb": {
     "$value": "63 0 0",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-red-80) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-red-80) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.red.80}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-red-80) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-red-80) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-red-80-rgb",
@@ -12007,11 +12007,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-teal-10-hsl": {
     "$value": "180 47.99999999999998% 90.19607843137254%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-teal-10) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-teal-10) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.teal.10}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-teal-10) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-teal-10) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-teal-10-hsl",
@@ -12049,11 +12049,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-teal-10-rgb": {
     "$value": "218 242 242",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-teal-10) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-teal-10) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.teal.10}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-teal-10) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-teal-10) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-teal-10-rgb",
@@ -12091,11 +12091,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-teal-20-hsl": {
     "$value": "180 45.833333333333336% 81.17647058823529%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-teal-20) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-teal-20) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.teal.20}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-teal-20) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-teal-20) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-teal-20-hsl",
@@ -12133,11 +12133,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-teal-20-rgb": {
     "$value": "185 229 229",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-teal-20) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-teal-20) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.teal.20}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-teal-20) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-teal-20) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-teal-20-rgb",
@@ -12175,11 +12175,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-teal-30-hsl": {
     "$value": "180 44.28571428571429% 72.54901960784314%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-teal-30) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-teal-30) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.teal.30}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-teal-30) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-teal-30) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-teal-30-hsl",
@@ -12217,11 +12217,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-teal-30-rgb": {
     "$value": "154 216 216",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-teal-30) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-teal-30) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.teal.30}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-teal-30) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-teal-30) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-teal-30-rgb",
@@ -12259,11 +12259,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-teal-40-hsl": {
     "$value": "180 40.54054054054054% 56.470588235294116%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-teal-40) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-teal-40) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.teal.40}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-teal-40) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-teal-40) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-teal-40-hsl",
@@ -12301,11 +12301,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-teal-40-rgb": {
     "$value": "99 189 189",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-teal-40) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-teal-40) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.teal.40}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-teal-40) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-teal-40) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-teal-40-rgb",
@@ -12343,11 +12343,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-teal-50-hsl": {
     "$value": "180 49.54128440366972% 42.745098039215684%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-teal-50) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-teal-50) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.teal.50}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-teal-50) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-teal-50) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-teal-50-hsl",
@@ -12385,11 +12385,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-teal-50-rgb": {
     "$value": "55 163 163",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-teal-50) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-teal-50) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.teal.50}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-teal-50) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-teal-50) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-teal-50-rgb",
@@ -12427,11 +12427,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-teal-60-hsl": {
     "$value": "180 71.42857142857142% 27.450980392156865%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-teal-60) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-teal-60) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.teal.60}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-teal-60) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-teal-60) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-teal-60-hsl",
@@ -12469,11 +12469,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-teal-60-rgb": {
     "$value": "20 120 120",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-teal-60) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-teal-60) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.teal.60}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-teal-60) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-teal-60) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-teal-60-rgb",
@@ -12511,11 +12511,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-teal-70-hsl": {
     "$value": "180 100% 15.098039215686274%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-teal-70) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-teal-70) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.teal.70}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-teal-70) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-teal-70) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-teal-70-hsl",
@@ -12553,11 +12553,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-teal-70-rgb": {
     "$value": "0 77 77",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-teal-70) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-teal-70) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.teal.70}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-teal-70) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-teal-70) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-teal-70-rgb",
@@ -12595,11 +12595,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-teal-80-hsl": {
     "$value": "180 100% 10%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-teal-80) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-teal-80) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.teal.80}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-teal-80) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-teal-80) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-teal-80-hsl",
@@ -12637,11 +12637,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-teal-80-rgb": {
     "$value": "0 51 51",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-teal-80) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-teal-80) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.teal.80}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-teal-80) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-teal-80) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-teal-80-rgb",
@@ -13021,11 +13021,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-yellow-10-hsl": {
     "$value": "47.058823529411775 100% 90%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-yellow-10) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-yellow-10) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.yellow.10}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-yellow-10) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-yellow-10) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-yellow-10-hsl",
@@ -13063,11 +13063,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-yellow-10-rgb": {
     "$value": "255 244 204",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-yellow-10) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-yellow-10) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.yellow.10}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-yellow-10) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-yellow-10) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-yellow-10-rgb",
@@ -13105,11 +13105,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-yellow-20-hsl": {
     "$value": "46.80851063829787 100% 72.35294117647058%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-yellow-20) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-yellow-20) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.yellow.20}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-yellow-20) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-yellow-20) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-yellow-20-hsl",
@@ -13147,11 +13147,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-yellow-20-rgb": {
     "$value": "255 224 114",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-yellow-20) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-yellow-20) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.yellow.20}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-yellow-20) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-yellow-20) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-yellow-20-rgb",
@@ -13189,11 +13189,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-yellow-30-hsl": {
     "$value": "46.81034482758621 100% 54.509803921568626%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-yellow-30) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-yellow-30) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.yellow.30}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-yellow-30) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-yellow-30) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-yellow-30-hsl",
@@ -13231,11 +13231,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-yellow-30-rgb": {
     "$value": "255 204 23",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-yellow-30) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-yellow-30) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.yellow.30}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-yellow-30) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-yellow-30) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-yellow-30-rgb",
@@ -13273,11 +13273,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-yellow-40-hsl": {
     "$value": "43.79999999999999 83.33333333333334% 47.05882352941176%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-yellow-40) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-yellow-40) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.yellow.40}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-yellow-40) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-yellow-40) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-yellow-40-hsl",
@@ -13315,11 +13315,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-yellow-40-rgb": {
     "$value": "220 166 20",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-yellow-40) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-yellow-40) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.yellow.40}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-yellow-40) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-yellow-40) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-yellow-40-rgb",
@@ -13357,11 +13357,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-yellow-50-hsl": {
     "$value": "40.95808383233534 82.26600985221675% 39.80392156862745%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-yellow-50) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-yellow-50) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.yellow.50}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-yellow-50) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-yellow-50) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-yellow-50-hsl",
@@ -13399,11 +13399,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-yellow-50-rgb": {
     "$value": "185 132 18",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-yellow-50) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-yellow-50) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.yellow.50}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-yellow-50) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-yellow-50) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-yellow-50-rgb",
@@ -13441,11 +13441,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-yellow-60-hsl": {
     "$value": "37.77777777777777 81.81818181818181% 32.35294117647059%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-yellow-60) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-yellow-60) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.yellow.60}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-yellow-60) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-yellow-60) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-yellow-60-hsl",
@@ -13483,11 +13483,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-yellow-60-rgb": {
     "$value": "150 100 15",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-yellow-60) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-yellow-60) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.yellow.60}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-yellow-60) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-yellow-60) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-yellow-60-rgb",
@@ -13525,11 +13525,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-yellow-70-hsl": {
     "$value": "35.192307692307686 82.53968253968253% 24.705882352941178%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-yellow-70) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-yellow-70) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.yellow.70}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-yellow-70) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-yellow-70) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-yellow-70-hsl",
@@ -13567,11 +13567,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-yellow-70-rgb": {
     "$value": "115 72 11",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-yellow-70) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-yellow-70) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.yellow.70}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-yellow-70) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-yellow-70) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-yellow-70-rgb",
@@ -13609,11 +13609,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-yellow-80-hsl": {
     "$value": "32.87671232876713 76.84210526315789% 18.627450980392158%",
-    "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-yellow-80) h s l / 10%)",
+    "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-yellow-80) h s l / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.yellow.80}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. hsla(from var(--rh-color-yellow-80) h s l / 10%)",
+      "$deprecated": "Use color transforms instead e.g. hsla(from var(--rh-color-yellow-80) h s l / 10%)",
       "$type": "color"
     },
     "name": "rh-color-yellow-80-hsl",
@@ -13651,11 +13651,11 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-yellow-80-rgb": {
     "$value": "84 51 11",
-    "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-yellow-80) r g b / 10%)",
+    "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-yellow-80) r g b / 10%)",
     "$type": "color",
     "original": {
       "$value": "{color.yellow.80}",
-      "comment": "DEPRECATED. Use color transforms instead e.g. rgba(from var(--rh-color-yellow-80) r g b / 10%)",
+      "$deprecated": "Use color transforms instead e.g. rgba(from var(--rh-color-yellow-80) r g b / 10%)",
       "$type": "color"
     },
     "name": "rh-color-yellow-80-rgb",
@@ -17731,23 +17731,13 @@ exports.tokens = new TokenMetaMap({
   },
   "--rh-color-surface-dark-alt": {
     "$value": "oklch(from(--rh-color-surface-dark) calc(l * 0.82) c h)",
-    "$description": "DEPRECATED. Theme authors should use --rh-color-surface-dark. Element authors should use oklch(from var(--rh-color-surface-dark) calc(l * 0.82) c h). Alternative tertiary surface (not available for use with context provider)\n",
-    "$extensions": {
-      "com.redhat.ux": {
-        "deprecated": true
-      }
-    },
+    "$deprecated": "Theme authors should use --rh-color-surface-dark. Element authors should use oklch(from var(--rh-color-surface-dark) calc(l * 0.82) c h). Alternative tertiary surface (not available for use with context provider)\n",
     "filePath": "tokens/color/surface.yaml",
     "isSource": true,
     "$type": "color",
     "original": {
       "$value": "oklch(from(--rh-color-surface-dark) calc(l * 0.82) c h)",
-      "$description": "DEPRECATED. Theme authors should use --rh-color-surface-dark. Element authors should use oklch(from var(--rh-color-surface-dark) calc(l * 0.82) c h). Alternative tertiary surface (not available for use with context provider)\n",
-      "$extensions": {
-        "com.redhat.ux": {
-          "deprecated": true
-        }
-      },
+      "$deprecated": "Theme authors should use --rh-color-surface-dark. Element authors should use oklch(from var(--rh-color-surface-dark) calc(l * 0.82) c h). Alternative tertiary surface (not available for use with context provider)\n",
       "$type": "color"
     },
     "name": "rh-color-surface-dark-alt",
