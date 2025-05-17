@@ -6,9 +6,9 @@
   "license": "MIT",
   "customElements": "custom-elements.json",
   "designTokensLanguageServer": {
+    "prefix": "rh",
     "tokensFiles": [
-      "~/Developer/redhat-ux/red-hat-design-tokens/json/rhds.tokens.json",
-      "~/Developer/design-tokens/pf.json"
+      "npm:@rhds/tokens/json/rhds.tokens.json"
     ]
   },
   "exports": {
@@ -276,7 +276,7 @@
     "@lit/context": "^1.1.4",
     "@patternfly/pfe-core": "^5.0.1",
     "@rhds/icons": "^1.2.0",
-    "@rhds/tokens": "^3.0.0",
+    "@rhds/tokens": "^3.0.1",
     "lit": "^3.2.1",
     "prism-esm": "^1.29.0-fix.6",
     "tslib": "^2.8.1"
