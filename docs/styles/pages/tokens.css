@@ -57,3 +57,7 @@ rh-card.swatches {
     margin: 0;
   }
 }
+
+rh-disclosure.deprecated-tokens {
+  margin-block-end: var(--rh-space-6xl);
+}
