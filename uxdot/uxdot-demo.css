@@ -6,6 +6,8 @@ iframe {
   border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
   height: 400px;
   max-height: var(--height);
+  grid-area: iframe;
+  width: 100%;
 }
 
 #container {
@@ -13,12 +15,17 @@ iframe {
 
   &:not(:defined) { opacity: 0; }
 
-  display: flex;
-  flex-flow: column;
+  display: grid;
+  grid-template-areas:
+    'head head'
+    'iframe iframe'
+    'code knobs';
+  grid-template-columns: auto min-content;
   gap: var(--rh-space-sm);
 }
 
 rh-card {
+  grid-area: code;
   &::part(header),
   &::part(body) {
     margin: 0;
@@ -36,6 +43,14 @@ rh-card {
     &:last-of-type {
       margin-inline-end: auto;
     }
+  }
+}
+
+slot[name=knobs] {
+  display: block;
+  grid-area: knobs;
+  &::slotted(ul,ol) {
+    list-style-type: none;
   }
 }
 

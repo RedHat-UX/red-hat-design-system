@@ -19,6 +19,7 @@ import {
   type DemoRecord,
 } from '@patternfly/pfe-tools/custom-elements-manifest/custom-elements-manifest.js';
 import { parseFragment } from 'parse5';
+import type { Manifest } from 'node_modules/@patternfly/pfe-tools/custom-elements-manifest/lib/Manifest.js';
 
 const html = String.raw; // for editor highlighting
 const pfeconfig = getPfeConfig();
@@ -106,6 +107,7 @@ export default class ElementsPage extends Renderer<Context> {
         import '@rhds/elements/rh-accordion/rh-accordion.js';
         import '@rhds/elements/rh-badge/rh-badge.js';
         import '@rhds/elements/rh-tag/rh-tag.js';
+        import '@patternfly/elements/pf-select/pf-select.js';
       </script>
 
       ${planned ? '' : html`
@@ -174,7 +176,7 @@ export default class ElementsPage extends Renderer<Context> {
       <p>This element is currently in progress and not yet available for use.</p>`}
       ${this.#header('Overview')}
       ${await this.renderTemplate(description, 'md')}
-      ${!ctx.doc.overviewImageHref ? ''
+      ${!ctx.doc.overviewImageHref ? await this.#renderKnobs(ctx)
        : ctx.doc.overviewImageHref.endsWith('svg') ? html`
       <uxdot-example>${await this.#getOverviewInlineSvg(ctx)}</uxdot-example>
       ` : html`
@@ -186,6 +188,41 @@ export default class ElementsPage extends Renderer<Context> {
       ${content}
       ${this.#header('Status checklist')}
       <uxdot-repo-status-checklist element="${ctx.tagName}"></uxdot-repo-status-checklist>
+    `;
+  }
+
+  async #renderKnobs(ctx: Context) {
+    const [manifest] = getAllManifests();
+    // set up an iframe
+    // inject a script which receives messages from the parent
+    // render knobs based on cem - these are ces, one element per field type
+    // e.g. uxdot-knob-attribute
+    //      uxdot-knob-slot
+    //      uxdot-knob-event (read only), etc
+    //
+    const tagName = ctx.tagName as `rh-${string}`;
+    const [demo] = ElementsPage.demoManifestsForTagNames[tagName] ?? [];
+    if (!demo) return '';
+    const attributes = manifest.getAttributes(tagName) ?? [];
+    return html`
+      <rh-context-picker></rh-context-picker>
+      ${await this.#renderDemo(demo, ctx, html`
+      <ul slot="knobs" class="attributes">${attributes.map(attr => {
+        const id = `${ctx.tagName}-attribute-${attr.name}`;
+        return html`
+          <li>${attr.type?.text === 'boolean' ? html`
+            <rh-switch id="${id}"></rh-switch>` : attr.type?.text.includes('|') ? html`
+            <pf-select>${(attr.type.text as string).split('|')
+            .map(member => !member || member.trim() === 'undefined' ? '' : html`
+              <pf-option>${member.trim().replace(/^['"](.*)['"]$/, '$1')}</pf-option>`).join('')}
+            </pf-select>` : html`
+            <input id="${id}"/>`}
+            <label for="${id}">${attr.name}</label>
+          </li>`;
+        }).join('')}
+      </ul>
+
+      `)}
     `;
   }
 
@@ -736,42 +773,45 @@ export default class ElementsPage extends Renderer<Context> {
       </script>`,
       content,
       ctx.doc.fileExists && await this.renderFile(ctx.doc.filePath, ctx),
-      ...await Promise.all(demos.map(async demo => {
-        if (!demo.title || !demo.filePath) {
-          return '';
-        } else {
-          const labelSlug = this.slugify(demo.title);
-          const filepath = demo.filePath
-              ?.replace(join(process.cwd(), 'elements', tagName, 'demo/'), '');
-          const demoSlug = filepath?.split('.').shift()?.replaceAll('/', '-') ?? '';
-          const projectId = `demo-${tagName}-${demoSlug}`;
-
-          const githubSourcePrefix = `https://github.com/RedHat-UX/red-hat-design-system/tree/main`;
-
-          const sourceUrl = `${githubSourcePrefix}${demo.filePath.replace(process.cwd(), '')}`;
-
-          const demoUrl = `/elements/${this.getTagNameSlug(tagName)}/demo/${demoSlug === tagName ? '' : `${demoSlug}/`}`;
-
-          const codeblocks = await this.#getDemoCodeBlocks(demo);
-
-          if (codeblocks) {
-            return html`
-              ${this.#header(demo.title, 2, `demo-${labelSlug}`)}
-              <uxdot-demo id="${projectId}"
-                          tag="${tagName}"
-                          demo="${demoSlug}"
-                          demo-title="${demo.title}"
-                          demo-source-url="${sourceUrl}"
-                          demo-url="${demoUrl}"
-                          demo-file-path="${demo.filePath}"
-              >${codeblocks}</uxdot-demo>
-            `;
-          } else {
-            return '';
-          }
-        }
-      })),
+      ...await Promise.all(demos.map(demo => this.#renderDemo(demo, ctx))),
     ].filter(Boolean).join('');
+  }
+
+  async #renderDemo(demo: DemoRecord, ctx: Context, knobs?: string) {
+    if (!demo.title || !demo.filePath) {
+      return '';
+    } else {
+      const tagName = ctx.tagName as `rh-${string}`;
+      const labelSlug = this.slugify(demo.title);
+      const filepath = demo.filePath
+          ?.replace(join(process.cwd(), 'elements', tagName, 'demo/'), '');
+      const demoSlug = filepath?.split('.').shift()?.replaceAll('/', '-') ?? '';
+      const projectId = `demo-${tagName}-${demoSlug}`;
+
+      const githubSourcePrefix = `https://github.com/RedHat-UX/red-hat-design-system/tree/main`;
+
+      const sourceUrl = `${githubSourcePrefix}${demo.filePath.replace(process.cwd(), '')}`;
+
+      const demoUrl = `/elements/${this.getTagNameSlug(tagName)}/demo/${demoSlug === tagName ? '' : `${demoSlug}/`}`;
+
+      const codeblocks = await this.#getDemoCodeBlocks(demo);
+
+      if (codeblocks) {
+        return html`
+          ${this.#header(demo.title, 2, `demo-${labelSlug}`)}
+          <uxdot-demo id="${projectId}"
+                      tag="${tagName}"
+                      demo="${demoSlug}"
+                      demo-title="${demo.title}"
+                      demo-source-url="${sourceUrl}"
+                      demo-url="${demoUrl}"
+                      demo-file-path="${demo.filePath}"
+          >${codeblocks}${knobs ?? ''}</uxdot-demo>
+        `;
+      } else {
+        return '';
+      }
+    }
   }
 
   async #getDemoCodeBlocks(demo: DemoRecord) {

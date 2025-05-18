@@ -50,6 +50,7 @@ export class UxdotDemo extends LitElement {
           <rh-cta slot="footer" href="${this.demoSourceUrl}">View source on GitHub</rh-cta>
           <rh-cta slot="footer" href="${this.demoUrl}" target="_blank">View In Own Tab</rh-cta>
         </rh-card>
+        <slot name=knobs></slot>
       </div>
     `;
   }
