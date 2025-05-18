@@ -2,5 +2,4 @@
 "@rhds/elements": patch
 ---
 
-`<rh-navigation-primary>`: corrected state race condition on menu load'
-  
+`<rh-navigation-primary>`: prevent an error from being thrown in certain circumstances when the element connects
