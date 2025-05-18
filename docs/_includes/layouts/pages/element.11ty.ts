@@ -19,7 +19,6 @@ import {
   type DemoRecord,
 } from '@patternfly/pfe-tools/custom-elements-manifest/custom-elements-manifest.js';
 import { parseFragment } from 'parse5';
-import type { Manifest } from 'node_modules/@patternfly/pfe-tools/custom-elements-manifest/lib/Manifest.js';
 
 const html = String.raw; // for editor highlighting
 const pfeconfig = getPfeConfig();
@@ -81,6 +80,12 @@ export default class ElementsPage extends Renderer<Context> {
 
     return html`${stylesheets.map(x => html`
       <link rel="stylesheet" data-helmet href="${x}">`).join('')}
+
+      <style data-helmet>
+      uxdot-demo > ul > li {
+        margin-block: 0;
+      }
+      </style>
 
       <noscript data-helmet>
         <style>
@@ -202,7 +207,9 @@ export default class ElementsPage extends Renderer<Context> {
     //
     const tagName = ctx.tagName as `rh-${string}`;
     const [demo] = ElementsPage.demoManifestsForTagNames[tagName] ?? [];
-    if (!demo) return '';
+    if (!demo) {
+      return '';
+    };
     const attributes = manifest.getAttributes(tagName) ?? [];
     return html`
       <rh-context-picker></rh-context-picker>
