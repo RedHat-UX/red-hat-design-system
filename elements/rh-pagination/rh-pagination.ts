@@ -136,7 +136,6 @@ export class RhPagination extends LitElement {
       this.querySelector('[aria-current="page"]')?.removeAttribute('aria-current');
       this.#updateLightDOMRefs();
       this.overflow = this.#getOverflow();
-      this.#checkValidity();
     }
     super.update(changed);
   }
@@ -149,6 +148,7 @@ export class RhPagination extends LitElement {
       this.prevHref = this.#prevLink?.href;
       this.nextHref = this.#nextLink?.href;
       this.currentHref = this.#currentLink?.href;
+      this.#checkValidity();
     }
   }
 
@@ -201,7 +201,7 @@ export class RhPagination extends LitElement {
     `;
   }
 
-  #numericContent(currentPage: string, lastHref?: string, ) {
+  #numericContent(currentPage: string, lastHref?: string) {
     return html`
       <div id="numeric" part="numeric">
         <span id="go-to-page" class="xxs-visually-hidden sm-visually-visible">
