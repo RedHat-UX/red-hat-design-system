@@ -16,10 +16,18 @@ iframe {
   &:not(:defined) { opacity: 0; }
 
   display: grid;
-  grid-template-areas:
-    'head head'
-    'iframe iframe'
-    'code knobs';
+    grid-template-areas:
+      'head'
+      'iframe'
+      'knobs'
+      'code';
+  /* var(--rh-breakpoint-sm, 768px) */
+  @media (width >= 768px) {
+    grid-template-areas:
+      'head head'
+      'iframe iframe'
+      'code knobs';
+  }
   grid-template-columns: auto min-content;
   gap: var(--rh-space-sm);
 }
