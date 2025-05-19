@@ -171,9 +171,7 @@ export class RhCodeBlock extends LitElement {
            @code-action="${this.#onCodeAction}">
         <div id="content-lines" tabindex="${ifDefined((!fullHeight || undefined) && 0)}">
           <div id="sizers" aria-hidden="true"></div>
-          <ol id="line-numbers"
-              aria-hidden="true"
-              ?hidden="${this.lineNumbers === 'hidden'}">${this.#lineHeights.map((height, i) => html`
+          <ol id="line-numbers" aria-hidden="true">${this.#lineHeights.map((height, i) => html`
             <li style="${styleMap({ height })}">${i + 1}</li>`)}
           </ol>
           <pre id="prism-output"
