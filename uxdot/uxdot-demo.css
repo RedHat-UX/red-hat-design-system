@@ -13,31 +13,38 @@ iframe {
 #container {
   --height: 825px;
 
-  &:not(:defined) { opacity: 0; }
+  &:not(:defined) {
+    opacity: 0;
+  }
 
   display: grid;
-    grid-template-areas:
-      'head'
-      'iframe'
-      'knobs'
-      'code';
+  grid-template-areas:
+    'head'
+    'iframe'
+    'knobs'
+    'code';
+
   /* var(--rh-breakpoint-sm, 768px) */
-  @media (width >= 768px) {
+  @media (min-width: 768px) {
     grid-template-areas:
       'head head'
       'iframe iframe'
       'code knobs';
   }
+
   grid-template-columns: auto min-content;
   gap: var(--rh-space-sm);
 }
 
 rh-card {
   grid-area: code;
+
   &::part(header),
   &::part(body) {
     margin: 0;
-    border-block-end: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
+    border-block-end:
+ var(--rh-border-width-sm) solid
+      var(--rh-color-border-subtle);
   }
 
   &::part(footer) {
@@ -54,9 +61,10 @@ rh-card {
   }
 }
 
-slot[name=knobs] {
+slot[name='knobs'] {
   display: block;
   grid-area: knobs;
+
   &::slotted(ol),
   &::slotted(ul) {
     list-style-type: none;
@@ -73,7 +81,9 @@ slot[name=knobs] {
   border-radius: var(--rh-border-radius-default);
 
   &::part(tabs-container) {
-    background: light-dark(var(--rh-color-surface-lightest), var(--rh-color-surface-darker));
+    background:
+ light-dark(var(--rh-color-surface-lightest),
+      var(--rh-color-surface-darker));
   }
 
   & rh-tab-panel {
