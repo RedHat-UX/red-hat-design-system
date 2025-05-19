@@ -1,8 +1,10 @@
-var _RhPagination_instances, _RhPagination_mo, _RhPagination_logger, _RhPagination_ol, _RhPagination_links, _RhPagination_firstLink, _RhPagination_lastLink, _RhPagination_nextLink, _RhPagination_prevLink, _RhPagination_currentLink, _RhPagination_currentIndex, _RhPagination_currentPage_get, _RhPagination_numericContent, _RhPagination_update, _RhPagination_getOverflow, _RhPagination_getCurrentLink, _RhPagination_updateLightDOMRefs, _RhPagination_checkValidity, _RhPagination_go, _RhPagination_onKeyup, _RhPagination_onChange;
+var _RhPagination_instances, _RhPagination_mo, _RhPagination_logger, _RhPagination_ol, _RhPagination_links, _RhPagination_firstLink, _RhPagination_lastLink, _RhPagination_nextLink, _RhPagination_prevLink, _RhPagination_currentLink, _RhPagination_currentIndex, _RhPagination_currentPage_get, _RhPagination_numericContent, _RhPagination_getOverflow, _RhPagination_getCurrentLink, _RhPagination_updateLightDOMRefs, _RhPagination_checkValidity, _RhPagination_go, _RhPagination_onKeyup, _RhPagination_onChange;
+var RhPagination_1;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
+import { state } from 'lit/decorators/state.js';
 import { query } from 'lit/decorators/query.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
@@ -34,7 +36,7 @@ const L2 = html `
  * @cssprop [--rh-pagination-stepper-color=var(--rh-color-icon-subtle, #707070)]
  *           Sets the stepper color.
  */
-let RhPagination = class RhPagination extends LitElement {
+let RhPagination = RhPagination_1 = class RhPagination extends LitElement {
     constructor() {
         super(...arguments);
         _RhPagination_instances.add(this);
@@ -60,7 +62,7 @@ let RhPagination = class RhPagination extends LitElement {
         this.size = null;
         /** "Open" variant */
         this.variant = null;
-        _RhPagination_mo.set(this, new MutationObserver(() => __classPrivateFieldGet(this, _RhPagination_instances, "m", _RhPagination_update).call(this)));
+        _RhPagination_mo.set(this, new MutationObserver(() => this.requestUpdate()));
         _RhPagination_logger.set(this, new Logger(this));
         _RhPagination_ol.set(this, isServer ? null : this.querySelector('ol'));
         _RhPagination_links.set(this, __classPrivateFieldGet(this, _RhPagination_ol, "f")?.querySelectorAll('li a'));
@@ -70,42 +72,74 @@ let RhPagination = class RhPagination extends LitElement {
         _RhPagination_prevLink.set(this, null);
         _RhPagination_currentLink.set(this, __classPrivateFieldGet(this, _RhPagination_instances, "m", _RhPagination_getCurrentLink).call(this));
         _RhPagination_currentIndex.set(this, 0);
+        this.total = 0;
     }
     connectedCallback() {
         super.connectedCallback();
+        RhPagination_1.instances.add(this);
         // Validate DOM
-        if (!isServer && (!__classPrivateFieldGet(this, _RhPagination_ol, "f") || [...this.children].filter(x => !x.slot).length > 1)) {
-            __classPrivateFieldGet(this, _RhPagination_logger, "f").warn('must have a single <ol> element as it\'s only child');
+        if (!isServer) {
+            __classPrivateFieldGet(this, _RhPagination_mo, "f").observe(this, { childList: true, subtree: true });
+            if (!__classPrivateFieldGet(this, _RhPagination_ol, "f") || [...this.children].filter(x => !x.slot).length > 1) {
+                __classPrivateFieldGet(this, _RhPagination_logger, "f").warn('must have a single <ol> element as it\'s only child');
+            }
         }
-        __classPrivateFieldGet(this, _RhPagination_mo, "f").observe(this, { childList: true, subtree: true });
     }
     disconnectedCallback() {
         super.disconnectedCallback();
+        RhPagination_1.instances.delete(this);
         __classPrivateFieldGet(this, _RhPagination_mo, "f").disconnect();
     }
     update(changed) {
-        __classPrivateFieldGet(this, _RhPagination_instances, "m", _RhPagination_update).call(this);
+        if (!isServer) {
+            this.querySelector('[aria-current="page"]')?.removeAttribute('aria-current');
+            __classPrivateFieldGet(this, _RhPagination_instances, "m", _RhPagination_updateLightDOMRefs).call(this);
+            this.overflow = __classPrivateFieldGet(this, _RhPagination_instances, "m", _RhPagination_getOverflow).call(this);
+        }
         super.update(changed);
     }
+    updated() {
+        if (!isServer && this.hasUpdated) {
+            this.total = __classPrivateFieldGet(this, _RhPagination_links, "f")?.length ?? 0;
+            this.firstHref = __classPrivateFieldGet(this, _RhPagination_firstLink, "f")?.href;
+            this.lastHref = __classPrivateFieldGet(this, _RhPagination_lastLink, "f")?.href;
+            this.prevHref = __classPrivateFieldGet(this, _RhPagination_prevLink, "f")?.href;
+            this.nextHref = __classPrivateFieldGet(this, _RhPagination_nextLink, "f")?.href;
+            this.currentHref = __classPrivateFieldGet(this, _RhPagination_currentLink, "f")?.href;
+            __classPrivateFieldGet(this, _RhPagination_instances, "m", _RhPagination_checkValidity).call(this);
+        }
+    }
     render() {
-        const { label, labelFirst, labelPrevious, labelNext, labelLast } = this;
-        const firstHref = __classPrivateFieldGet(this, _RhPagination_currentLink, "f") === __classPrivateFieldGet(this, _RhPagination_firstLink, "f") ? undefined : __classPrivateFieldGet(this, _RhPagination_firstLink, "f")?.href;
-        const prevHref = __classPrivateFieldGet(this, _RhPagination_prevLink, "f")?.href;
-        const nextHref = __classPrivateFieldGet(this, _RhPagination_nextLink, "f")?.href;
-        const lastHref = __classPrivateFieldGet(this, _RhPagination_currentLink, "f") === __classPrivateFieldGet(this, _RhPagination_lastLink, "f") ? undefined : __classPrivateFieldGet(this, _RhPagination_lastLink, "f")?.href;
+        const { label, labelFirst, labelPrevious, labelNext, labelLast, firstHref, prevHref, nextHref, lastHref, } = this;
         const currentPage = __classPrivateFieldGet(this, _RhPagination_instances, "a", _RhPagination_currentPage_get).toString();
         return html `
       <div id="container" part="container">
-        <a id="first" class="stepper" href=${ifDefined(firstHref)} ?inert=${!firstHref} aria-label=${labelFirst}>${L2}</a>
-        <a id="prev" class="stepper" href=${ifDefined(prevHref)} ?inert=${!prevHref} aria-label=${labelPrevious}>${L1}</a>
-        <nav aria-label=${label}>
+        <a id="first"
+           class="stepper"
+           href="${ifDefined(firstHref)}"
+           .inert="${__classPrivateFieldGet(this, _RhPagination_currentLink, "f") === __classPrivateFieldGet(this, _RhPagination_firstLink, "f")}"
+           aria-label="${labelFirst}">${L2}</a>
+        <a id="prev"
+           class="stepper"
+           href="${ifDefined(prevHref)}"
+           .inert="${__classPrivateFieldGet(this, _RhPagination_currentLink, "f") === __classPrivateFieldGet(this, _RhPagination_prevLink, "f") || __classPrivateFieldGet(this, _RhPagination_currentLink, "f") === __classPrivateFieldGet(this, _RhPagination_firstLink, "f")}"
+           aria-label="${labelPrevious}">${L1}</a>
+        <nav aria-label="${label}">
           <slot></slot>
         </nav>
         <div id="numeric-middle" part="numeric-middle">
           ${__classPrivateFieldGet(this, _RhPagination_instances, "m", _RhPagination_numericContent).call(this, currentPage, lastHref)}
         </div>
-        <a id="next" class="stepper" href=${ifDefined(nextHref)} ?inert=${!nextHref} aria-label=${labelNext}>${L1}</a>
-        <a id="last" class="stepper" href=${ifDefined(lastHref)} ?inert=${!lastHref} aria-label=${labelLast}>${L2}</a>
+        <a id="next"
+           class="stepper"
+           href="${ifDefined(nextHref)}"
+           .inert="${__classPrivateFieldGet(this, _RhPagination_currentLink, "f") === __classPrivateFieldGet(this, _RhPagination_nextLink, "f") || __classPrivateFieldGet(this, _RhPagination_currentLink, "f") === __classPrivateFieldGet(this, _RhPagination_lastLink, "f")}"
+           aria-label="${labelNext}">${L1}</a>
+        <a id="last"
+           class="stepper"
+           href="${ifDefined(lastHref)}"
+           .inert="${__classPrivateFieldGet(this, _RhPagination_currentLink, "f") === __classPrivateFieldGet(this, _RhPagination_lastLink, "f")}"
+           aria-label="${labelLast}">${L2}</a>
         <div id="numeric-end" part="numeric-end">
           ${__classPrivateFieldGet(this, _RhPagination_instances, "m", _RhPagination_numericContent).call(this, currentPage, lastHref)}
         </div>
@@ -161,25 +195,19 @@ _RhPagination_numericContent = function _RhPagination_numericContent(currentPage
         <input inputmode="numeric"
                required
                min=1
-               max="${__classPrivateFieldGet(this, _RhPagination_links, "f")?.length ?? 1}"
+               max="${this.total}"
                aria-labelledby="go-to-page"
                @change="${__classPrivateFieldGet(this, _RhPagination_instances, "m", _RhPagination_onChange)}"
                @keyup="${__classPrivateFieldGet(this, _RhPagination_instances, "m", _RhPagination_onKeyup)}"
                .value="${currentPage}">
-        <slot name="out-of">of</slot>
-        <a href=${ifDefined(lastHref)}>${__classPrivateFieldGet(this, _RhPagination_links, "f")?.length}</a>
+        <slot ?hidden="${!this.total}" name="out-of">of</slot>
+        <a ?hidden="${!this.total}" href="${ifDefined(lastHref)}">${this.total}</a>
       </div>
     `;
 };
-_RhPagination_update = function _RhPagination_update() {
-    this.querySelector('[aria-current="page"]')?.removeAttribute('aria-current');
-    __classPrivateFieldGet(this, _RhPagination_instances, "m", _RhPagination_updateLightDOMRefs).call(this);
-    this.overflow = __classPrivateFieldGet(this, _RhPagination_instances, "m", _RhPagination_getOverflow).call(this);
-    __classPrivateFieldGet(this, _RhPagination_instances, "m", _RhPagination_checkValidity).call(this);
-};
 _RhPagination_getOverflow = function _RhPagination_getOverflow() {
     const overflowAt = 9;
-    const length = __classPrivateFieldGet(this, _RhPagination_links, "f")?.length ?? 0;
+    const length = this.total;
     if (length <= overflowAt) {
         return null;
     }
@@ -243,7 +271,7 @@ _RhPagination_checkValidity = function _RhPagination_checkValidity() {
         if (Number.isNaN(__classPrivateFieldGet(this, _RhPagination_instances, "a", _RhPagination_currentPage_get))) {
             message = `${__classPrivateFieldGet(this, _RhPagination_instances, "a", _RhPagination_currentPage_get)} is not a valid page number`;
         }
-        else if (__classPrivateFieldGet(this, _RhPagination_instances, "a", _RhPagination_currentPage_get) > __classPrivateFieldGet(this, _RhPagination_links, "f").length || __classPrivateFieldGet(this, _RhPagination_instances, "a", _RhPagination_currentPage_get) < 1) {
+        else if (__classPrivateFieldGet(this, _RhPagination_instances, "a", _RhPagination_currentPage_get) > this.total || __classPrivateFieldGet(this, _RhPagination_instances, "a", _RhPagination_currentPage_get) < 1) {
             message = `cannot navigate to page ${__classPrivateFieldGet(this, _RhPagination_instances, "a", _RhPagination_currentPage_get)}`;
         }
         this.input.setCustomValidity(message);
@@ -278,7 +306,7 @@ _RhPagination_onKeyup = function _RhPagination_onKeyup(event) {
     if (!(event.target instanceof HTMLInputElement) || !__classPrivateFieldGet(this, _RhPagination_links, "f")) {
         return;
     }
-    const max = __classPrivateFieldGet(this, _RhPagination_links, "f").length.toString();
+    const max = this.total.toString();
     const input = event.target;
     if (parseInt(input.value) > parseInt(max)) {
         input.value = max;
@@ -294,8 +322,17 @@ _RhPagination_onChange = function _RhPagination_onChange() {
         __classPrivateFieldGet(this, _RhPagination_instances, "m", _RhPagination_go).call(this, __classPrivateFieldGet(this, _RhPagination_instances, "a", _RhPagination_currentPage_get));
     }
 };
-RhPagination.version = '{{version}}';
 RhPagination.styles = [styles];
+RhPagination.instances = new Set();
+(() => {
+    if (!isServer) {
+        globalThis.addEventListener('hashchange', () => {
+            for (const instance of RhPagination_1.instances) {
+                instance.requestUpdate();
+            }
+        });
+    }
+})();
 __decorate([
     property({ reflect: true })
 ], RhPagination.prototype, "overflow", void 0);
@@ -323,7 +360,25 @@ __decorate([
 __decorate([
     query('input')
 ], RhPagination.prototype, "input", void 0);
-RhPagination = __decorate([
+__decorate([
+    state()
+], RhPagination.prototype, "total", void 0);
+__decorate([
+    state()
+], RhPagination.prototype, "firstHref", void 0);
+__decorate([
+    state()
+], RhPagination.prototype, "lastHref", void 0);
+__decorate([
+    state()
+], RhPagination.prototype, "nextHref", void 0);
+__decorate([
+    state()
+], RhPagination.prototype, "prevHref", void 0);
+__decorate([
+    state()
+], RhPagination.prototype, "currentHref", void 0);
+RhPagination = RhPagination_1 = __decorate([
     customElement('rh-pagination'),
     themable
 ], RhPagination);
