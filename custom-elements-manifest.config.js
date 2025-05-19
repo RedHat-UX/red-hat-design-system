@@ -1,6 +1,17 @@
 import { writeFile } from 'node:fs/promises';
 import { pfeCustomElementsManifestConfig } from '@patternfly/pfe-tools/custom-elements-manifest/config.js';
 
+// shim for icons
+globalThis.document ??= {
+  createElement(_k) {
+    return {
+      content: {
+        cloneNode() {},
+      },
+    };
+  },
+};
+
 export default pfeCustomElementsManifestConfig({
   globs: ['elements/*/rh-*.ts'],
   exclude: [
@@ -34,7 +45,9 @@ export default pfeCustomElementsManifestConfig({
     async packageLinkPhase({ customElementsManifest }) {
       const { analyze: cemTokens } = await import('./scripts/cem-tokens.ts');
       const { analyze: systemTokens } = await import('./scripts/system-tokens.ts');
+      const { analyze: cemTypes } = await import('./scripts/cem-types.ts');
       cemTokens(customElementsManifest);
+      cemTypes(customElementsManifest);
       await systemTokens(customElementsManifest);
       // Shouldn't need to do this, but practically speaking, the new manifest is not being written
       await writeFile(
