@@ -79,7 +79,9 @@ export class UxdotDemo extends LitElement {
     if (!element) {
       throw new Error(`element ${this.tag} not found`);
     }
-    if (typeof value === 'boolean') {
+    if (value === null) {
+      element.removeAttribute(name);
+    } else if (typeof value === 'boolean') {
       element.toggleAttribute(name, value);
     } else {
       element.setAttribute(name, value);
