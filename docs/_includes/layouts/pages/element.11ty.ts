@@ -81,12 +81,6 @@ export default class ElementsPage extends Renderer<Context> {
     return html`${stylesheets.map(x => html`
       <link rel="stylesheet" data-helmet href="${x}">`).join('')}
 
-      <style data-helmet>
-      uxdot-demo > ul > li {
-        margin-block: 0;
-      }
-      </style>
-
       <noscript data-helmet>
         <style>
         rh-audio-player:not([expanded]) rh-transcript:not(:defined) {
@@ -207,57 +201,87 @@ export default class ElementsPage extends Renderer<Context> {
     //
     const tagName = ctx.tagName as `rh-${string}`;
     const [demo] = ElementsPage.demoManifestsForTagNames[tagName] ?? [];
-    if (!demo) {
+    if (!demo?.filePath) {
       return '';
     };
     const attributes = manifest.getAttributes(tagName) ?? [];
+    const content = await readFile(demo.filePath, 'utf-8');
+    const fragment = parseFragment(content);
+    const elementNode: Tools.Element | null =
+      Tools.query(fragment, node => Tools.isElementNode(node) && node.tagName === ctx.tagName);
+    if (!elementNode) {
+      throw new Error('demo does not contain element');
+    }
+    const values = new Map(attributes.map(attr => [
+      attr.name,
+      attr.type?.text === 'boolean' ? Tools.hasAttribute(elementNode, attr.name)
+      : Tools.getAttribute(elementNode, attr.name),
+    ]));
     return html`
-      <script type="module" data-helmet>
-      const surface = document.getElementById('knobs-surface-picker');
-      const demo = document.querySelector('uxdot-demo');
-      const knobs = document.getElementById('knobs-knobs');
-      knobs.addEventListener('change', function(event) {
-        console.log(event);
-        console.log(event.target.dataset);
-        const { kind, name } = event.target.dataset;
-        switch (kind) {
-          case 'attribute':
-            demo.setDemoElementAttribute(name, event.target.value);
-            break;
+      <style data-helmet>
+        uxdot-demo {
+          > ul > li {
+            margin-block: 0;
+            label {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+            }
+          }
         }
-      });
+      </style>
+      <script type="module" data-helmet>
+        import '@uxdot/elements/uxdot-demo.js';
+        import '@rhds/elements/rh-switch/rh-switch.js';
+        import '@rhds/elements/rh-tabs/rh-tabs.js';
+        import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
+        const surface = document.getElementById('knobs-surface-picker');
+        const demo = document.querySelector('uxdot-demo');
+        const knobs = document.getElementById('knobs-knobs');
+        knobs.addEventListener('change', async function(event) {
+          await event.target.updateComplete;
+          const { kind, type, name } = event.target.dataset;
+          const value = type === 'boolean'?event.target.checked : event.target.value;
+          switch (kind) {
+            case 'attribute':
+              demo.setDemoElementAttribute(name, value);
+              break;
+          }
+        });
       </script>
-      <label for="knobs-surface-picker">Background</label>
-      <rh-context-picker id="knobs-surface-picker"></rh-context-picker>
       ${await this.#renderDemo(demo, ctx, html`
       <ul id="knobs-knobs" slot="knobs" class="attributes">${(await Promise.all(attributes.map(async attr => {
         const id = `${ctx.tagName}-attribute-${attr.name}`;
         const description = attr.description && await this.renderTemplate(attr.description, 'md');
-        const knobAttrs = `id="${id}" data-kind="attribute" data-name="${attr.name}"`;
         const options = ((attr.type?.text ?? '') as string)
             .split('|')
             .filter(member => !!member && member.trim() !== 'undefined')
             .map(member => member.trim().replace(/^['"](.*)['"]$/, '$1'));
+        const type = attr.type?.text;
+        const knobAttrs = `id="${id}" data-kind="attribute" data-name="${attr.name}" data-type="${type}"`;
+        const valueAttr = !values.has(attr.name) ? '' : `value="${values.get(attr.name)}"`;
         return html`
-        <li>
-          <label for="${id}">${attr.name}${!description ? '' : html`
+        <li data-name="${attr.name}">
+          <label for="${id}">
+            <code>${attr.name}</code>${!description ? '' : html`
             <rh-tooltip>
-              <rh-icon icon="information" set="ui"></rh-icon>
+              <rh-icon icon="information" set="ui" tabindex=0></rh-icon>
               <div slot="content">${description}</div>`}
             </rh-tooltip>
           </label>${attr.type?.text === 'boolean' ? html`
-          <rh-switch ${knobAttrs}></rh-switch>` : options.length > 1 ? html`
-          <pf-select ${knobAttrs}>${options.map(option => html`
+          <rh-switch ${knobAttrs} ${values.get(attr.name) ? 'checked' : ''}
+                     message-on="Attribute is present"
+                     message-off="Attribute is absent"></rh-switch>` : options.length > 1 ? html`
+          <pf-select ${knobAttrs} ${valueAttr}>${options.map(option => html`
             <pf-option>${option}</pf-option>`).join('')}
           </pf-select>` : options.length === 1 && options.at(0) === 'ColorPalette' ? html`
-          <rh-context-picker ${knobAttrs}></rh-context-picker>
+          <rh-context-picker value="${values.get(attr.name) ?? 'lightest'}" ${knobAttrs}></rh-context-picker>
           ` : attr.type?.text === 'number' ? html`
-          <input inputmode="numeric" ${knobAttrs}>` : html`
-          <input ${knobAttrs}>`}
+          <input inputmode="numeric" ${knobAttrs} ${valueAttr}>` : html`
+          <input ${knobAttrs} ${valueAttr}>`}
         </li>`;
         }))).join('')}
       </ul>
-
       `)}
     `;
   }
@@ -848,23 +872,24 @@ export default class ElementsPage extends Renderer<Context> {
   async #getDemoCodeBlocks(demo: DemoRecord) {
     const map = new Map<'html' | 'css' | 'js', string>();
 
-    function updateKey(key: 'html' | 'css' | 'js', node: Tools.ParentNode) {
-      const oldContent = map.get(key) ?? '';
+    function updateDemoContentForType(contentType: 'html' | 'css' | 'js', node: Tools.ParentNode) {
+      const oldContent = map.get(contentType) ?? '';
       const newContent =
       dedent(node.childNodes.map(x => Tools.isTextNode(x) ? x.value : '').join('\n'));
       Tools.removeNode(node);
-      map.set(key, oldContent + newContent);
+      map.set(contentType, oldContent + newContent);
     }
 
     if (demo.filePath) {
-      const fragment = parseFragment(await readFile(demo.filePath, 'utf-8'));
+      const content = await readFile(demo.filePath, 'utf-8');
+      const fragment = parseFragment(content);
 
       for (const node of Tools.queryAll<Tools.Element>(fragment, Tools.isElementNode)) {
         if (node.tagName === 'script'
           && node.attrs.some(x => x.name === 'type' && x.value === 'module')) {
-          updateKey('js', node);
+          updateDemoContentForType('js', node);
         } else if (node.tagName === 'style') {
-          updateKey('css', node);
+          updateDemoContentForType('css', node);
         }
       }
 

@@ -6,6 +6,7 @@ import { property } from 'lit/decorators/property.js';
 import styles from './uxdot-demo.css';
 
 import { LitElement } from 'lit';
+import type { RhCodeBlock } from 'elements/rh-code-block/rh-code-block.js';
 
 @customElement('uxdot-demo')
 export class UxdotDemo extends LitElement {
@@ -73,7 +74,8 @@ export class UxdotDemo extends LitElement {
     if (!iframe) {
       throw new Error('iframe not found');
     }
-    const element = iframe.contentWindow?.document.querySelector(this.tag);
+    const element: LitElement | null | undefined =
+      iframe.contentWindow?.document.querySelector(this.tag);
     if (!element) {
       throw new Error(`element ${this.tag} not found`);
     }
@@ -82,6 +84,14 @@ export class UxdotDemo extends LitElement {
     } else {
       element.setAttribute(name, value);
     }
+    await element.updateComplete;
+    const htmlSlot: HTMLSlotElement | null = this.shadowRoot!.querySelector('slot[name=html]')!;
+    const [htmlBlock] = htmlSlot.assignedElements() as RhCodeBlock[];
+    htmlBlock.setAttribute('highlighting', 'client');
+    htmlBlock.setAttribute('language', 'html');
+    htmlBlock.toggleAttribute('wrap', true);
+    await htmlBlock.updateComplete;
+    htmlBlock.innerHTML = `<script type="text/html">${element.outerHTML}</script>`;
   }
 }
 

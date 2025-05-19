@@ -54,6 +54,9 @@ slot[name=knobs] {
     list-style-type: none;
     padding: 0;
     margin: 0 !important;
+    display: flex;
+    flex-direction: column;
+    gap: var(--rh-space-sm);
   }
 }
 
