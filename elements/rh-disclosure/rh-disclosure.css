@@ -86,4 +86,8 @@ details[open] {
     inset-inline-start: -1px;
     inset-block: -1px;
   }
+
+  &.has-jump-links:before {
+    border-inline-start-color: transparent;
+  }
 }

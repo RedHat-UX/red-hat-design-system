@@ -6,9 +6,8 @@ import { query } from 'lit/decorators/query.js';
 
 import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
 import { themable } from '@rhds/elements/lib/themable.js';
-
 import '@rhds/elements/rh-icon/rh-icon.js';
-
+import { classMap } from 'lit-html/directives/class-map.js';
 import styles from './rh-disclosure.css';
 
 export class DisclosureToggleEvent extends Event {
@@ -86,9 +85,9 @@ export class RhDisclosure extends LitElement {
 
   @query('details') private detailsEl!: HTMLDetailsElement;
   @query('summary') private summaryEl!: HTMLElement;
-  #mo = new MutationObserver(() => {
-    this.hasJumpLinks = !!this.querySelector('rh-jump-links');
-  });
+
+  #mo = new MutationObserver(() => this.#mutationsCallback());
+
 
   connectedCallback() {
     super.connectedCallback();
@@ -97,10 +96,16 @@ export class RhDisclosure extends LitElement {
     }
   }
 
+  disconnectedCallback(): void {
+    super.disconnectedCallback();
+    this.#mo.disconnect();
+  }
+
   render() {
     return html`
       <details
           ?open="${this.open}"
+          class=${classMap({ 'has-jump-links': this.hasJumpLinks })}
           @keydown="${this.#onKeydown}"
           @toggle="${this.#onToggle}">
         <summary>
@@ -117,6 +122,9 @@ export class RhDisclosure extends LitElement {
   #onToggle(): void {
     this.open = this.detailsEl.open;
     const event = new DisclosureToggleEvent();
+    if (this.open) {
+      this.#mutationsCallback();
+    }
     this.dispatchEvent(event);
   }
 
@@ -142,6 +150,13 @@ export class RhDisclosure extends LitElement {
     this.detailsEl.open = false;
     this.open = false;
     this.summaryEl.focus();
+  }
+
+  async #mutationsCallback(): Promise<void> {
+    await this.updateComplete;
+    this.hasJumpLinks = !!this.querySelector('rh-jump-links');
+    await this.updateComplete;
+    this.requestUpdate();
   }
 }
 
