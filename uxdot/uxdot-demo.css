@@ -43,7 +43,7 @@ rh-card {
   &::part(body) {
     margin: 0;
     border-block-end:
- var(--rh-border-width-sm) solid
+      var(--rh-border-width-sm) solid
       var(--rh-color-border-subtle);
   }
 
@@ -82,8 +82,8 @@ slot[name='knobs'] {
 
   &::part(tabs-container) {
     background:
- light-dark(var(--rh-color-surface-lightest),
-      var(--rh-color-surface-darker));
+      light-dark(var(--rh-color-surface-lightest),
+        var(--rh-color-surface-darker));
   }
 
   & rh-tab-panel {
