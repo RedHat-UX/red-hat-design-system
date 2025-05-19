@@ -66,4 +66,27 @@ export class UxdotDemo extends LitElement {
   #reloadIframe() {
     this.shadowRoot?.querySelector('iframe')?.contentWindow?.location.reload();
   }
+
+  async setDemoElementAttribute(name: string, value: string | boolean) {
+    await this.updateComplete;
+    const iframe = this.shadowRoot?.querySelector('iframe');
+    if (!iframe) {
+      throw new Error('iframe not found');
+    }
+    const element = iframe.contentWindow?.document.querySelector(this.tag);
+    if (!element) {
+      throw new Error(`element ${this.tag} not found`);
+    }
+    if (typeof value === 'boolean') {
+      element.toggleAttribute(name, value);
+    } else {
+      element.setAttribute(name, value);
+    }
+  }
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'uxdot-demo': UxdotDemo;
+  }
 }

@@ -212,21 +212,50 @@ export default class ElementsPage extends Renderer<Context> {
     };
     const attributes = manifest.getAttributes(tagName) ?? [];
     return html`
-      <rh-context-picker></rh-context-picker>
+      <script type="module" data-helmet>
+      const surface = document.getElementById('knobs-surface-picker');
+      const demo = document.querySelector('uxdot-demo');
+      const knobs = document.getElementById('knobs-knobs');
+      knobs.addEventListener('change', function(event) {
+        console.log(event);
+        console.log(event.target.dataset);
+        const { kind, name } = event.target.dataset;
+        switch (kind) {
+          case 'attribute':
+            demo.setDemoElementAttribute(name, event.target.value);
+            break;
+        }
+      });
+      </script>
+      <label for="knobs-surface-picker">Background</label>
+      <rh-context-picker id="knobs-surface-picker"></rh-context-picker>
       ${await this.#renderDemo(demo, ctx, html`
-      <ul slot="knobs" class="attributes">${attributes.map(attr => {
+      <ul id="knobs-knobs" slot="knobs" class="attributes">${(await Promise.all(attributes.map(async attr => {
         const id = `${ctx.tagName}-attribute-${attr.name}`;
+        const description = attr.description && await this.renderTemplate(attr.description, 'md');
+        const knobAttrs = `id="${id}" data-kind="attribute" data-name="${attr.name}"`;
+        const options = ((attr.type?.text ?? '') as string)
+            .split('|')
+            .filter(member => !!member && member.trim() !== 'undefined')
+            .map(member => member.trim().replace(/^['"](.*)['"]$/, '$1'));
         return html`
-          <li>${attr.type?.text === 'boolean' ? html`
-            <rh-switch id="${id}"></rh-switch>` : attr.type?.text.includes('|') ? html`
-            <pf-select>${(attr.type.text as string).split('|')
-            .map(member => !member || member.trim() === 'undefined' ? '' : html`
-              <pf-option>${member.trim().replace(/^['"](.*)['"]$/, '$1')}</pf-option>`).join('')}
-            </pf-select>` : html`
-            <input id="${id}"/>`}
-            <label for="${id}">${attr.name}</label>
-          </li>`;
-        }).join('')}
+        <li>
+          <label for="${id}">${attr.name}${!description ? '' : html`
+            <rh-tooltip>
+              <rh-icon icon="information" set="ui"></rh-icon>
+              <div slot="content">${description}</div>`}
+            </rh-tooltip>
+          </label>${attr.type?.text === 'boolean' ? html`
+          <rh-switch ${knobAttrs}></rh-switch>` : options.length > 1 ? html`
+          <pf-select ${knobAttrs}>${options.map(option => html`
+            <pf-option>${option}</pf-option>`).join('')}
+          </pf-select>` : options.length === 1 && options.at(0) === 'ColorPalette' ? html`
+          <rh-context-picker ${knobAttrs}></rh-context-picker>
+          ` : attr.type?.text === 'number' ? html`
+          <input inputmode="numeric" ${knobAttrs}>` : html`
+          <input ${knobAttrs}>`}
+        </li>`;
+        }))).join('')}
       </ul>
 
       `)}
@@ -794,15 +823,10 @@ export default class ElementsPage extends Renderer<Context> {
           ?.replace(join(process.cwd(), 'elements', tagName, 'demo/'), '');
       const demoSlug = filepath?.split('.').shift()?.replaceAll('/', '-') ?? '';
       const projectId = `demo-${tagName}-${demoSlug}`;
-
       const githubSourcePrefix = `https://github.com/RedHat-UX/red-hat-design-system/tree/main`;
-
       const sourceUrl = `${githubSourcePrefix}${demo.filePath.replace(process.cwd(), '')}`;
-
       const demoUrl = `/elements/${this.getTagNameSlug(tagName)}/demo/${demoSlug === tagName ? '' : `${demoSlug}/`}`;
-
       const codeblocks = await this.#getDemoCodeBlocks(demo);
-
       if (codeblocks) {
         return html`
           ${this.#header(demo.title, 2, `demo-${labelSlug}`)}
