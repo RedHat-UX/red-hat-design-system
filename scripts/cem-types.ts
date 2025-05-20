@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import type * as CEM from 'custom-elements-manifest';
-import * as Icons from '@rhds/icons';
+import type { IconSetName } from '@rhds/icons';
+import { icons } from '@rhds/icons/metadata.js';
 
 import chalk from 'chalk';
 
@@ -26,13 +27,13 @@ function computeIconUnion(type: `IconNameFor${string}`) {
   const { typeArg = '' } = type.match(/IconNameFor<(?<typeArg>[^>]+)>/)?.groups ?? {};
   const iconSetsTypes = typeArg === 'IconSetName' ?
     ['\'ui\'', '\'microns\'', '\'social\'', '\'standard\'']
-    : typeArg.split('|').map(x => x.trim()) as Icons.IconSetName[];
+    : typeArg.split('|').map(x => x.trim()) as IconSetName[];
   return iconSetsTypes.flatMap(x => {
     switch (x.replaceAll('\'', '')) {
-      case 'ui': return [...Icons.ui.keys()].map(quote);
-      case 'social': return [...Icons.social.keys()].map(quote);
-      case 'standard': return [...Icons.standard.keys()].map(quote);
-      case 'microns': return [...Icons.microns.keys()].map(quote);
+      case 'ui': return [...icons.get('ui') ?? []].map(quote);
+      case 'social': return [...icons.get('social') ?? []].map(quote);
+      case 'standard': return [...icons.get('standard') ?? []].map(quote);
+      case 'microns': return [...icons.get('microns') ?? []].map(quote);
     }
   }).join('|');
 }
