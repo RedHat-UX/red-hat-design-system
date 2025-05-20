@@ -1,7 +1,10 @@
+import type { IconSetName } from '@rhds/icons';
 import { LitElement, html, isServer, type PropertyValues } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
+
+import { icons } from '@rhds/icons/metadata.js';
 
 import type * as Tools from '@parse5/tools';
 import styles from './uxdot-knob-attribute.css';
@@ -9,7 +12,6 @@ import styles from './uxdot-knob-attribute.css';
 import '@rhds/elements/rh-switch/rh-switch.js';
 import '@rhds/elements/rh-tabs/rh-tabs.js';
 import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
-import type { IconSetName } from '@rhds/icons';
 
 @customElement('uxdot-knob-attribute')
 export class UxdotKnobAttribute extends LitElement {
@@ -145,16 +147,20 @@ export class UxdotKnobAttribute extends LitElement {
       && this.name === 'icon') {
       const demo = this.closest('uxdot-demo');
       if (demo) {
+        await demo.updateComplete;
         let iconSet: string | IconSetName | null = null;
         if (this.tag === 'rh-icon') {
           iconSet = await demo.getDemoElementAttribute('set') ?? 'standard';
         } else {
-          iconSet =
-            await demo.getDemoElementAttribute('icon-set')
-           ?? demo
-               .querySelector<UxdotKnobAttribute>('uxdot-knob-attribute[name="icon-set"]')
-               ?.value
-          ?? null;
+          const liveValue = await demo.getDemoElementAttribute('icon-set');
+          if (liveValue) {
+            iconSet = liveValue;
+          } else {
+            const setKnob =
+              demo.querySelector<UxdotKnobAttribute>('uxdot-knob-attribute[name="icon-set"]');
+            await setKnob?.updateComplete;
+            iconSet = setKnob?.value || this.tagName === 'rh-icon' ? 'standard' : 'ui';
+          }
         }
         switch (iconSet) {
           case 'microns':
@@ -162,8 +168,7 @@ export class UxdotKnobAttribute extends LitElement {
           case 'social':
           case 'standard': {
             this.#iconSet = iconSet;
-            const Icons = await import('@rhds/icons');
-            this.#icons = [...Icons[this.#iconSet].keys()];
+            this.#icons = [...icons.get(iconSet) ?? []];
             break;
           }
           default:
@@ -178,7 +183,7 @@ export class UxdotKnobAttribute extends LitElement {
     const demo = this.closest('uxdot-demo');
     await target.updateComplete;
     const value = this.type === 'boolean' ?
-      (target as unknown as HTMLInputElement).checked
+        (target as unknown as HTMLInputElement).checked
       : (target as unknown as HTMLInputElement).value;
     if (demo && this.name) {
       demo.setDemoElementAttribute(this.name, value);
