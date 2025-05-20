@@ -1,5 +1,5 @@
 import type { ElementDocsPageData } from '#11ty-plugins/element-docs.js';
-import type { ClassMethod } from 'custom-elements-manifest';
+import type * as CEM from 'custom-elements-manifest';
 
 import { tokens } from '@rhds/tokens/meta.js';
 import { join } from 'node:path';
@@ -23,7 +23,7 @@ import { parseFragment } from 'parse5';
 const html = String.raw; // for editor highlighting
 const pfeconfig = getPfeConfig();
 
-function stringifyParams(method: ClassMethod) {
+function stringifyParams(method: CEM.ClassMethod) {
   return method.parameters?.map?.(p =>
     `${p.name}: ${p.type?.text ?? 'unknown'}`).join(', ') ?? '';
 }
@@ -44,6 +44,8 @@ interface Context extends EleventyPageRenderData {
   isLocal: boolean;
   importMap: { imports: Record<string, string>; scopes: Record<string, Record<string, string>> };
 }
+
+const [manifest] = getAllManifests();
 
 export default class ElementsPage extends Renderer<Context> {
   static assetCache = new AssetCache<ImportMap>('rhds-ux-dot-import-map-jspmio');
@@ -191,7 +193,6 @@ export default class ElementsPage extends Renderer<Context> {
   }
 
   async #renderKnobs(ctx: Context) {
-    const [manifest] = getAllManifests();
     // set up an iframe
     // inject a script which receives messages from the parent
     // render knobs based on cem - these are ces, one element per field type
@@ -212,77 +213,27 @@ export default class ElementsPage extends Renderer<Context> {
     if (!elementNode) {
       throw new Error('demo does not contain element');
     }
-    const values = new Map(attributes.map(attr => [
-      attr.name,
-      attr.type?.text === 'boolean' ? Tools.hasAttribute(elementNode, attr.name)
-      : Tools.getAttribute(elementNode, attr.name),
-    ]));
+
+
     return html`
-      <style data-helmet>
-        uxdot-demo {
-          > ul > li {
-            margin-block: 0;
-            label {
-              display: flex;
-              align-items: center;
-              justify-content: space-between;
-            }
-          }
-        }
-      </style>
       <script type="module" data-helmet>
         import '@uxdot/elements/uxdot-demo.js';
-        import '@rhds/elements/rh-switch/rh-switch.js';
-        import '@rhds/elements/rh-tabs/rh-tabs.js';
-        import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
-        const surface = document.getElementById('knobs-surface-picker');
-        const demo = document.querySelector('uxdot-demo');
-        const knobs = document.getElementById('knobs-knobs');
-        knobs.addEventListener('change', async function(event) {
-          await event.target.updateComplete;
-          const { kind, type, name } = event.target.dataset;
-          const value = type === 'boolean'?event.target.checked : event.target.value;
-          switch (kind) {
-            case 'attribute':
-              demo.setDemoElementAttribute(name, value);
-              break;
-          }
-        });
+        import '@uxdot/elements/uxdot-knob-attribute.js';
       </script>
-      ${await this.#renderDemo(demo, ctx, html`
-      <ul id="knobs-knobs" slot="knobs" class="attributes">${(await Promise.all(attributes.map(async attr => {
-        const id = `${ctx.tagName}-attribute-${attr.name}`;
-        const description = attr.description && await this.renderTemplate(attr.description, 'md');
-        const options = ((attr.type?.text ?? '') as string)
-            .split('|')
-            .filter(member => !!member && member.trim() !== 'undefined')
-            .map(member => member.trim().replace(/^['"](.*)['"]$/, '$1'));
-        const type = attr.type?.text;
-        const knobAttrs = `id="${id}" data-kind="attribute" data-name="${attr.name}" data-type="${type}"`;
-        const valueAttr = !values.has(attr.name) ? '' : `value="${values.get(attr.name)}"`;
+      ${await this.#renderDemo(demo, ctx, (await Promise.all(attributes.map(async attr => {
+        const type = attr.type?.text?.replaceAll('"', '\\"');
+        const description =
+            !attr.description ? ''
+          : await this.renderTemplate(attr.description, 'md');
         return html`
-        <li data-name="${attr.name}">
-          <label for="${id}">
-            <code>${attr.name}</code>${!description ? '' : html`
-            <rh-tooltip>
-              <rh-icon icon="information" set="ui" tabindex=0></rh-icon>
-              <div slot="content">${description}</div>`}
-            </rh-tooltip>
-          </label>${attr.type?.text === 'boolean' ? html`
-          <rh-switch ${knobAttrs} ${values.get(attr.name) ? 'checked' : ''}
-                     message-on="Attribute is present"
-                     message-off="Attribute is absent"></rh-switch>` : options.length > 1 ? html`
-          <pf-select ${knobAttrs} ${valueAttr}>${options.map(option => html`
-            <pf-option>${option}</pf-option>`).join('')}
-          </pf-select>` : options.length === 1 && options.at(0) === 'ColorPalette' ? html`
-          <rh-context-picker value="${values.get(attr.name) ?? 'lightest'}" ${knobAttrs}></rh-context-picker>
-          ` : attr.type?.text === 'number' ? html`
-          <input inputmode="numeric" ${knobAttrs} ${valueAttr}>` : html`
-          <input ${knobAttrs} ${valueAttr}>`}
-        </li>`;
-        }))).join('')}
-      </ul>
-      `)}
+          <uxdot-knob-attribute slot="knobs"
+                                tag="${ctx.tagName}"
+                                name="${attr.name}"${!type ? '' : html`
+                                type="${type}"`}${!attr.default ? '' : html`
+                                default="${attr.default}"`}>
+          <div slot="description">${description}</div>
+        </uxdot-knob-attribute>`;
+        }))).join(''))}
     `;
   }
 
@@ -856,7 +807,8 @@ export default class ElementsPage extends Renderer<Context> {
           ${this.#header(demo.title, 2, `demo-${labelSlug}`)}
           <uxdot-demo id="${projectId}"
                       tag="${tagName}"
-                      demo="${demoSlug}"
+                      demo="${demoSlug}"${!knobs ? '' : html`
+                      attribute-knobs="${[...manifest.getAttributes(tagName)?.values().map(x => x.name) ?? []]}"`}
                       demo-title="${demo.title}"
                       demo-source-url="${sourceUrl}"
                       demo-url="${demoUrl}"

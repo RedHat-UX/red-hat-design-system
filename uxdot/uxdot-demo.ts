@@ -16,6 +16,15 @@ export class UxdotDemo extends LitElement {
 
   @property() demo!: string;
 
+  @property({
+    attribute: 'attribute-knobs',
+    converter: {
+      fromAttribute(str) {
+        return str?.split(/,|\s/) ?? [];
+      },
+    },
+  }) attributeKnobs: string[] = [];
+
   @property({ attribute: 'demo-title' }) demoTitle!: string;
 
   @property({ attribute: 'demo-url' }) demoUrl!: string;
@@ -51,7 +60,7 @@ export class UxdotDemo extends LitElement {
           <rh-cta slot="footer" href="${this.demoSourceUrl}">View source on GitHub</rh-cta>
           <rh-cta slot="footer" href="${this.demoUrl}" target="_blank">View In Own Tab</rh-cta>
         </rh-card>
-        <slot name=knobs></slot>
+        <div id="knobs" role="list"><slot name=knobs></slot></div>
       </div>
     `;
   }
@@ -79,7 +88,7 @@ export class UxdotDemo extends LitElement {
     if (!element) {
       throw new Error(`element ${this.tag} not found`);
     }
-    if (value === null) {
+    if (value === null || value === '') {
       element.removeAttribute(name);
     } else if (typeof value === 'boolean') {
       element.toggleAttribute(name, value);
@@ -94,6 +103,23 @@ export class UxdotDemo extends LitElement {
     htmlBlock.toggleAttribute('wrap', true);
     await htmlBlock.updateComplete;
     htmlBlock.innerHTML = `<script type="text/html">${element.outerHTML}</script>`;
+    for (const knob of this.querySelectorAll('uxdot-knob-attribute')) {
+      knob.requestUpdate();
+    }
+  }
+
+  async getDemoElementAttribute(name: string) {
+    await this.updateComplete;
+    const iframe = this.shadowRoot?.querySelector('iframe');
+    if (!iframe) {
+      throw new Error('iframe not found');
+    }
+    const element: LitElement | null | undefined =
+      iframe.contentWindow?.document.querySelector(this.tag);
+    if (!element) {
+      throw new Error(`element ${this.tag} not found`);
+    }
+    return element.getAttribute(name);
   }
 }
 

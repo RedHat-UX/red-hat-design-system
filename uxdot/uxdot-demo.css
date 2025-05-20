@@ -61,19 +61,16 @@ rh-card {
   }
 }
 
-slot[name='knobs'] {
+#knobs {
+  display: none;
+}
+
+:host([attribute-knobs]) #knobs {
   display: block;
   grid-area: knobs;
-
-  &::slotted(ol),
-  &::slotted(ul) {
-    list-style-type: none;
-    padding: 0;
-    margin: 0 !important;
-    display: flex;
-    flex-direction: column;
-    gap: var(--rh-space-sm);
-  }
+  display: flex;
+  flex-direction: column;
+  gap: var(--rh-space-sm);
 }
 
 .code-tabs {
