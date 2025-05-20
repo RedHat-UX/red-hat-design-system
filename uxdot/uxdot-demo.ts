@@ -5,12 +5,25 @@ import { property } from 'lit/decorators/property.js';
 
 import styles from './uxdot-demo.css';
 
-import { LitElement } from 'lit';
+import { isServer, LitElement } from 'lit';
 import type { RhCodeBlock } from 'elements/rh-code-block/rh-code-block.js';
 
 @customElement('uxdot-demo')
 export class UxdotDemo extends LitElement {
   static styles = [styles];
+
+  /** For these tags, do not center the primary-demo content in the frame */
+  private static tagsWithFullWidthDemos = new Set([
+    'rh-accordion',
+    'rh-announcement',
+    'rh-back-to-top',
+    'rh-breadcrumb',
+    'rh-footer',
+    'rh-jump-links',
+    'rh-navigation-primary',
+    'rh-navigation-secondary',
+    'rh-subnav',
+  ]);
 
   @property() tag!: string;
 
@@ -33,10 +46,22 @@ export class UxdotDemo extends LitElement {
 
   @property({ attribute: 'demo-file-path' }) demoFilePath!: string;
 
+  get #iframe() {
+    const iframe = this.shadowRoot?.querySelector('iframe');
+    if (!iframe) {
+      throw new Error('iframe not found');
+    }
+    return iframe;
+  }
+
   render() {
     return html`
       <div id="container">
-        <iframe loading="lazy" title="${this.demoTitle}" src="${this.demoUrl}"></iframe>
+        <iframe loading="lazy"
+                style="opacity: 0"
+                onload="this.style.opacity=1"
+                title="${this.demoTitle}"
+                src="${this.demoUrl}"></iframe>
         <rh-card ssr-hint-has-slotted-default
                  ssr-hint-has-slotted="footer">
           <rh-tabs class="code-tabs" active-index="0">
@@ -65,6 +90,10 @@ export class UxdotDemo extends LitElement {
     `;
   }
 
+  firstUpdated() {
+    this.#initIframe();
+  }
+
   #toggleFullscreen() {
     if (document.fullscreenElement === this) {
       document.exitFullscreen();
@@ -75,24 +104,49 @@ export class UxdotDemo extends LitElement {
 
   #reloadIframe() {
     this.shadowRoot?.querySelector('iframe')?.contentWindow?.location.reload();
+    this.#initIframe();
   }
 
-  #getDemoElement() {
-    return new Promise<LitElement>(( resolve, reject ) => {
-      const iframe = this.shadowRoot?.querySelector('iframe');
-      if (!iframe) {
-        throw new Error('iframe not found');
+  async #initIframe() {
+    if (!this.#loadedPromises.has(this.#iframe.contentWindow!)) {
+      this.#loadedPromises.set(this.#iframe.contentWindow!, new Promise(resolve =>
+        this.#iframe.contentWindow?.addEventListener('DOMContentLoaded', () => resolve())));
+    }
+    await this.#loadedPromises.get(this.#iframe.contentWindow!);
+    if (!isServer && this.demo === this.tag && !UxdotDemo.tagsWithFullWidthDemos.has(this.tag)) {
+      const { contentDocument } = this.#iframe;
+      if (contentDocument) {
+        const style = contentDocument.createElement('style');
+        style.textContent = /* css */`
+          body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            main {
+              display: contents;
+              > :is(
+                rh-card,
+              ) {
+                min-width: 300px;
+              }
+            }
+          }
+        `;
+        contentDocument.body.append(style);
       }
-      iframe.contentWindow?.addEventListener('DOMContentLoaded', () => {
-        const element: LitElement | null | undefined =
-          iframe.contentWindow?.document.querySelector(this.tag);
-        if (element) {
-          resolve(element);
-        } else {
-          reject(new Error(`element ${this.tag} not found`));
-        }
-      });
-    });
+    }
+  }
+
+  #loadedPromises = new WeakMap<Window, Promise<void>>();
+
+  async #getDemoElement() {
+    const element: LitElement | null | undefined =
+        this.#iframe.contentWindow?.document.querySelector(this.tag);
+    if (element) {
+      return element;
+    } else {
+      throw new Error(`element ${this.tag} not found`);
+    }
   }
 
   async setDemoElementAttribute(name: string, value: string | boolean) {
