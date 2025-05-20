@@ -3,7 +3,7 @@ import { html } from '@open-wc/testing';
 export const NAV = html`
   <rh-navigation-primary>
     <rh-navigation-primary-item variant="dropdown" summary="Item 1">
-      Item 1 Content 
+      Item 1 Content
     </rh-navigation-primary-item>
 
     <rh-navigation-primary-item variant="dropdown" summary="Item 2">
@@ -59,7 +59,7 @@ export const NAV = html`
 
     <rh-navigation-primary-item slot="dropdowns" variant="dropdown" summary="Item 8">
       Item 8 Content
-    </rh-navigation-primary-item>  
+    </rh-navigation-primary-item>
   </rh-navigation-primary>
 `;
 

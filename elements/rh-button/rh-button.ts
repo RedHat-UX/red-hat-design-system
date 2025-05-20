@@ -117,7 +117,7 @@ export class RhButton extends LitElement {
                 part="icon"
                 name="icon">${this.#renderIcon()}</slot>
         </span>
-        <span aria-hidden=${String(!!this.label) as 'true' | 'false'}><slot id="text" ></slot></span>
+        <span aria-hidden=${String(!!this.label) as 'true' | 'false'}><slot id="text"></slot></span>
       </button>
     `;
   }

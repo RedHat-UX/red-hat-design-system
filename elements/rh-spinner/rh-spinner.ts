@@ -28,8 +28,8 @@ export class RhSpinner extends LitElement {
   render() {
     return html`
       <svg role="status" viewBox="0 0 100 100" aria-live="polite">
-        <circle class="track" cx="50" cy="50" r="40" fill="none" vector-effect="non-scaling-stroke" />
-        <circle class="dash" cx="50" cy="50" r="40" fill="none" vector-effect="non-scaling-stroke" />
+        <circle class="track" cx="50" cy="50" r="40" fill="none" vector-effect="non-scaling-stroke"/>
+        <circle class="dash" cx="50" cy="50" r="40" fill="none" vector-effect="non-scaling-stroke"/>
       </svg>
       <slot></slot>
     `;

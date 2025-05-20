@@ -121,7 +121,7 @@ describe('<rh-disclosure>', function() {
           element = await createFixture<RhDisclosure>(html`
             <rh-disclosure open>
               <span slot="summary">Summary title</span>
-              <input type="text" />
+              <input type="text"/>
             </rh-disclosure>
           `);
           await element.updateComplete;

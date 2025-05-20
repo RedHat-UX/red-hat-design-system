@@ -452,9 +452,9 @@ export class RhAudioPlayer extends LitElement {
             <input id="volume"
                       class="toolbar-button"
                       aria-label="${this.#translation.get('volume')}"
-                      min=0
+                      min="0"
                       max=${!this.#mediaElement ? 0 : 100}
-                      step=1
+                      step="1"
                       type="range"
                       value=${this.volume * 100}
                       ?disabled="${!this.#mediaElement}"

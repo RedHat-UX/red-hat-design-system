@@ -10,7 +10,7 @@ const KITCHEN_SINK_TEMPLATE = html`
   <rh-footer>
     <a slot="logo" href="/">
       <img src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" alt="Red Hat logo"
-        loading="lazy" />
+        loading="lazy"/>
     </a>
     <rh-footer-social-link slot="social-links" icon="linkedin">
       <a href="http://www.linkedin.com/company/red-hat">LinkedIn</a>

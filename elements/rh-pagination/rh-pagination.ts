@@ -211,7 +211,7 @@ export class RhPagination extends LitElement {
         </span>
         <input inputmode="numeric"
                required
-               min=1
+               min="1"
                max="${this.total}"
                aria-labelledby="go-to-page"
                @change="${this.#onChange}"

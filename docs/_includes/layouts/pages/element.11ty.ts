@@ -204,7 +204,7 @@ export default class ElementsPage extends Renderer<Context> {
           </script>`))}
           ${this.#actionsLabels}
         </rh-code-block>
-        <p>To learn more about installing RHDS elements on your site using an import map read our <a href="/get-started/developers/installation/">getting started docs</a>.        
+        <p>To learn more about installing RHDS elements on your site using an import map read our <a href="/get-started/developers/installation/">getting started docs</a>.
       </section>
       `,
 
@@ -634,7 +634,7 @@ export default class ElementsPage extends Renderer<Context> {
           ${!cssProperties.length ? html`
           <em>None</em>` : html`
           <rh-table>
-            <table class=css-custom-properties>
+            <table class="css-custom-properties">
               <thead>
                 <tr>
                   <th scope="col">CSS Property</th>
