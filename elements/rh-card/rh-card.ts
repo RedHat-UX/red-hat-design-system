@@ -68,31 +68,25 @@ export class RhCard extends LitElement {
 
   #slots = new SlotController(this, 'header', 'image', null, 'footer');
 
-  #isPromo = false;
-  #isStandardPromo = false;
-  #computedPalette?: ColorPalette;
-
-  willUpdate() {
-    this.#isPromo = this.variant === 'promo';
-    this.#isStandardPromo =
-         this.#isPromo
+  override render() {
+    const isPromo = this.variant === 'promo';
+    const isStandardPromo =
+         isPromo
       && this.#slots.hasSlotted(null)
       && this.#slots.isEmpty('image')
       && this.#slots.isEmpty('header');
 
-    if (this.#isStandardPromo) {
-      this.#computedPalette = `${`${this.colorPalette ?? 'lightest'}`.replace(PALETTE_RE, '')}er` as 'lighter' | 'darker';
-    } else if (this.#isPromo) {
-      this.#computedPalette = `${`${this.colorPalette ?? 'lightest'}`.replace(PALETTE_RE, '')}est` as 'lightest' | 'darkest';
+    let computedPalette: ColorPalette | undefined;
+    if (isStandardPromo) {
+      computedPalette = `${`${this.colorPalette ?? 'lightest'}`.replace(PALETTE_RE, '')}er` as 'lighter' | 'darker';
+    } else if (isPromo) {
+      computedPalette = `${`${this.colorPalette ?? 'lightest'}`.replace(PALETTE_RE, '')}est` as 'lightest' | 'darkest';
     } else {
-      this.#computedPalette = this.colorPalette;
+      computedPalette = this.colorPalette;
     }
-  }
 
-  override render() {
     const promo = this.variant === 'promo';
-    const standard = this.#isStandardPromo;
-    const computedPalette = this.#computedPalette;
+    const standard = isStandardPromo;
     const { variant = '' } = this;
     const hasHeader = this.#slots.hasSlotted('header');
     const hasFooter = this.#slots.hasSlotted('footer');
