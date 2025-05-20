@@ -140,7 +140,8 @@ export class RhDialog extends LitElement {
           <dialog id="dialog"
                   part="dialog"
                   aria-labelledby=${ifDefined(this.accessibleLabel ? undefined : headerId)}
-                  aria-label=${ifDefined(this.accessibleLabel ? this.accessibleLabel : (!headerId ? triggerLabel : undefined))}>
+                  aria-label=${ifDefined(this.accessibleLabel ? this.accessibleLabel : (!headerId ? triggerLabel : undefined))}
+                  @cancel=${this.#onNativeDialogCancel}>
             <rh-button variant="close"
                        id="close-button"
                        part="close-button"
@@ -253,6 +254,10 @@ export class RhDialog extends LitElement {
     }
   }
 
+  #onNativeDialogCancel() {
+    this.cancel();
+  }
+
   #onKeyDown(event: KeyboardEvent) {
     switch (event.key) {
       case 'Escape':
@@ -268,9 +273,9 @@ export class RhDialog extends LitElement {
     }
   }
 
-  private async cancel() {
+  async cancel(returnValue?: string) {
     this.#cancelling = true;
-    this.close();
+    this.close(returnValue);
     this.open = false;
     await this.updateComplete;
     this.#cancelling = false;
@@ -322,6 +327,8 @@ export class RhDialog extends LitElement {
   close(returnValue?: string) {
     if (typeof returnValue === 'string') {
       this.returnValue = returnValue;
+    } else {
+      this.returnValue = '';
     }
 
     this.dialog?.close();

@@ -63,8 +63,8 @@ rh-icon:
  - rh-card
  - rh-statistic
 rh-jump-links: 
+ - rh-disclosure
  - rh-pagination
- - rh-progress-steps
  - rh-tabs
 rh-navigation-primary: 
  - rh-navigation-secondary

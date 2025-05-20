@@ -123,7 +123,7 @@
   border: var(--rh-border-width-sm, 1px) solid transparent;
   background-color:
     light-dark(var(--rh-color-surface-lightest, #ffffff),
-      oklch(from var(--rh-color-surface-dark) calc(l * 0.82) c h));
+      oklch(from var(--rh-color-surface-dark, #383838) calc(l * 0.82) c h));
   width: var(--_box-size);
   display: flex;
   flex-flow: column nowrap;

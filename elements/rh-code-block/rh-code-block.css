@@ -70,7 +70,7 @@
 #container {
   --_code-background-color:
     light-dark(var(--rh-color-surface-lighter, #f2f2f2),
-      oklch(from var(--rh-color-surface-dark) calc(l * 0.82) c h));
+      oklch(from var(--rh-color-surface-dark, #383838) calc(l * 0.82) c h));
   --_code-main-spacer: var(--rh-space-xl, 24px);
   --_cdata-color: var(--rh-color-text-secondary);
   --_comment-color: var(--rh-color-text-secondary);
@@ -348,6 +348,15 @@
   pointer-events: none;
   grid-column: -1/1;
   background: var(--_gradient);
+}
+
+:host([line-numbers='hidden']) #content-lines {
+  grid-template-areas: 'code';
+  grid-template-columns: 1fr;
+}
+
+:host([line-numbers='hidden']) #line-numbers {
+  display: none;
 }
 
 :not(.wrap) #actions:before {
