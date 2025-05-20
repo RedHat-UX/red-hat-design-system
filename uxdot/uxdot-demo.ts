@@ -77,17 +77,27 @@ export class UxdotDemo extends LitElement {
     this.shadowRoot?.querySelector('iframe')?.contentWindow?.location.reload();
   }
 
+  #getDemoElement() {
+    return new Promise<LitElement>(( resolve, reject ) => {
+      const iframe = this.shadowRoot?.querySelector('iframe');
+      if (!iframe) {
+        throw new Error('iframe not found');
+      }
+      iframe.contentWindow?.addEventListener('DOMContentLoaded', () => {
+        const element: LitElement | null | undefined =
+          iframe.contentWindow?.document.querySelector(this.tag);
+        if (element) {
+          resolve(element);
+        } else {
+          reject(new Error(`element ${this.tag} not found`));
+        }
+      });
+    });
+  }
+
   async setDemoElementAttribute(name: string, value: string | boolean) {
     await this.updateComplete;
-    const iframe = this.shadowRoot?.querySelector('iframe');
-    if (!iframe) {
-      throw new Error('iframe not found');
-    }
-    const element: LitElement | null | undefined =
-      iframe.contentWindow?.document.querySelector(this.tag);
-    if (!element) {
-      throw new Error(`element ${this.tag} not found`);
-    }
+    const element = await this.#getDemoElement();
     if (value === null || value === '') {
       element.removeAttribute(name);
     } else if (typeof value === 'boolean') {
@@ -110,15 +120,7 @@ export class UxdotDemo extends LitElement {
 
   async getDemoElementAttribute(name: string) {
     await this.updateComplete;
-    const iframe = this.shadowRoot?.querySelector('iframe');
-    if (!iframe) {
-      throw new Error('iframe not found');
-    }
-    const element: LitElement | null | undefined =
-      iframe.contentWindow?.document.querySelector(this.tag);
-    if (!element) {
-      throw new Error(`element ${this.tag} not found`);
-    }
+    const element = await this.#getDemoElement();
     return element.getAttribute(name);
   }
 }
