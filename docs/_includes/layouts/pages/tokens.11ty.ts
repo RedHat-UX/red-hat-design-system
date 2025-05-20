@@ -244,7 +244,7 @@ export default class TokensPage extends Renderer<Data> {
         </td>
         <td>
           ${( isDimension ? html`<code>${token.$value}<code>`
-            : isColor ? html`<code style="--color: ${token.$value}">${token.$value}</code> `
+            : isColor ? html`<code style="--color: ${token.$value}">${token.$value}</code>`
             : isWeight ? html`
             <code class="numerical">${token.$value}</code>
             <code class="common">${(token.attributes?.aliases as string[])?.[0] ?? ''}</code>`
