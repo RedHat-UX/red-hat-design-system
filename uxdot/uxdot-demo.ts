@@ -140,6 +140,7 @@ export class UxdotDemo extends LitElement {
   #loadedPromises = new WeakMap<Window, Promise<void>>();
 
   async #getDemoElement() {
+    await this.#loadedPromises.get(this.#iframe.contentWindow!);
     const element: LitElement | null | undefined =
         this.#iframe.contentWindow?.document.querySelector(this.tag);
     if (element) {
