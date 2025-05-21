@@ -43,6 +43,11 @@ export class UxdotKnobAttribute extends LitElement {
     return el?.value;
   }
 
+  set value(v) {
+    const el = this.shadowRoot?.getElementById('knob') as HTMLInputElement;
+    el.value = v;
+  }
+
   async update(ch: PropertyValues<this>) {
     await this.#computeValues();
     await this.#computeIcons();
@@ -157,7 +162,11 @@ export class UxdotKnobAttribute extends LitElement {
       const demo = this.closest('uxdot-demo');
       if (demo) {
         for (const attr of demo.dataset.attributes?.split(',') ?? []) {
-          this.#values.set(attr, await demo.getDemoElementAttribute(attr));
+          const value = await demo.getDemoElementAttribute(attr);
+          this.#values.set(attr, value);
+          if (attr === this.name) {
+            this.value = value;
+          }
         }
       }
     }
