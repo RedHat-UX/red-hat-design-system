@@ -184,8 +184,6 @@ export default class ElementsPage extends Renderer<Context> {
       <uxdot-example color-palette="lightest"><img src="${ctx.doc.overviewImageHref}" alt="" aria-labelledby="overview-image-description"></uxdot-example>`}
       ${this.#header('Status')}
       <uxdot-repo-status-list element="${ctx.tagName}"></uxdot-repo-status-list>
-      ${this.#header('Sample element')}
-      ${ctx.doc.mainDemoContent}
       ${content}
       ${this.#header('Status checklist')}
       <uxdot-repo-status-checklist element="${ctx.tagName}"></uxdot-repo-status-checklist>
