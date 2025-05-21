@@ -237,7 +237,7 @@ export class RhCodeBlock extends LitElement {
     if (!isServer && getComputedStyle(this).getPropertyValue('--_styles-applied') !== 'true') {
       const root = this.getRootNode();
       if (root instanceof Document || root instanceof ShadowRoot) {
-        const { preRenderedLightDomStyles: { styleSheet } } = await import('./prism.js');
+        const { preRenderedLightDomStyles: { styleSheet } } = await import('./prism.css.js');
         root.adoptedStyleSheets = [...root.adoptedStyleSheets, styleSheet!];
       }
     }
@@ -378,7 +378,11 @@ export class RhCodeBlock extends LitElement {
   async #copy() {
     let content: string;
     if (this.highlighting === 'prerendered') {
-      content = this.querySelector('pre')?.textContent ?? '';
+      content =
+        Array.from(
+          this.querySelectorAll('pre'),
+          x => x?.textContent ?? '',
+        ).join('');
     } else {
       content = Array.from(
         this.querySelectorAll('script'),
