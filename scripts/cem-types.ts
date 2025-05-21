@@ -60,6 +60,13 @@ export function analyze(manifest: CEM.Package) {
               member.type.text = computeIconUnion(member.type.text);
             } else if (member.type.text === 'IconSetName') {
               member.type.text = `'ui'|'standard'|'social'|'microns'`;
+            } else if (member.type.text.includes('|')) {
+              member.type.text = member.type.text
+                  .split('|')
+                  .map(x => x.trim().replace(/\/\/.*/, ''))
+                  .join('|');
+            } else {
+              member.type.text = member.type.text.trim();
             }
           }
         }

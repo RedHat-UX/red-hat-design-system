@@ -13,6 +13,9 @@ import '@rhds/elements/rh-switch/rh-switch.js';
 import '@rhds/elements/rh-tabs/rh-tabs.js';
 import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
 
+const dequote = (x: string) =>
+  x.replace(/^\s*['"]([^'"]+)['"].*$/m, '$1');
+
 @customElement('uxdot-knob-attribute')
 export class UxdotKnobAttribute extends LitElement {
   static styles = [styles];
@@ -47,11 +50,13 @@ export class UxdotKnobAttribute extends LitElement {
   render() {
     const options = (this.type ?? '')
         .split('|')
-        .filter(member => !!member && member.trim() !== 'undefined')
-        .map(member => member
-            .replace(/^\s*['"]([^'"]+)['"].*$/m, '$1'));
+        .filter(member => member !== 'undefined');
 
     const isIconSet = this.name === 'icon-set' || (this.tag === 'rh-icon' && this.name === 'set');
+    const isUnionType =
+         options.length > 1
+         // case: `variant?: 'subtle'`
+      || (options.length === 1 && !!options.at(0)?.match(/^'.*'$/));
 
     return html`
       <li data-name="${this.name}" @change="${this.#onChange}">
@@ -67,6 +72,7 @@ export class UxdotKnobAttribute extends LitElement {
                    message-on="Attribute is present"
                    message-off="Attribute is absent"></rh-switch>` : isIconSet ? html`
         <pf-select id="knob"
+                   data-kind="iconSet"
                    value="${ifDefined(this.#values.get(this.name)) ?? this.default}">
           <pf-option>ui</pf-option>
           <pf-option>standard</pf-option>
@@ -74,6 +80,7 @@ export class UxdotKnobAttribute extends LitElement {
           <pf-option>social</pf-option>
         </pf-select>` : this.name === 'icon' ? html`
         <pf-select id="knob"
+                   data-kind="icon"
                    variant="typeahead"
                    value="${ifDefined(this.#values.get(this.name))}">${this.#icons.map(option => html`
           <pf-option>
@@ -82,13 +89,14 @@ export class UxdotKnobAttribute extends LitElement {
                      icon="${option}"
                      set="${this.#iconSet}"></rh-icon>
           </pf-option>`)}
-        </pf-select>` : options.length > 1 ? html`
+        </pf-select>` : isUnionType ? html`
         <pf-select id="knob"
+                   data-kind="enum"
                    value="${ifDefined(this.#values.get(this.name))}">${options.map(option => html`
-          <pf-option>${option}</pf-option>`)}
+          <pf-option>${dequote(option)}</pf-option>`)}
         </pf-select>` : this.name === 'color-palette' ? html`
         <rh-context-picker id="knob"
-                           allowed="${ifDefined(options.at(0) === 'ColorPalette' ? undefined : options.join(','))}"
+                           allowed="${ifDefined(options.at(0) === 'ColorPalette' ? undefined : options.map(dequote).join(','))}"
                            value="${this.#values.get(this.name) ?? 'lightest'}"></rh-context-picker>` : html`
         <input id="knob"
                inputmode="${ifDefined(this.type === 'number' ? 'numeric' : undefined)}"
