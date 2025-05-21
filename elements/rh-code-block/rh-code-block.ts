@@ -221,6 +221,9 @@ export class RhCodeBlock extends LitElement {
     if (changed.has('wrap')) {
       this.#wrapChanged();
     }
+    if (this.actions.length && !isServer) {
+      import('@rhds/elements/rh-tooltip/rh-tooltip.js');
+    }
   }
 
   async #onSlotChange() {
