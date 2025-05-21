@@ -237,7 +237,7 @@ export class RhCodeBlock extends LitElement {
     if (!isServer && getComputedStyle(this).getPropertyValue('--_styles-applied') !== 'true') {
       const root = this.getRootNode();
       if (root instanceof Document || root instanceof ShadowRoot) {
-        const { preRenderedLightDomStyles: { styleSheet } } = await import('./prism.js');
+        const { preRenderedLightDomStyles: { styleSheet } } = await import('./prism.css.js');
         root.adoptedStyleSheets = [...root.adoptedStyleSheets, styleSheet!];
       }
     }
