@@ -16,6 +16,8 @@ import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
 const dequote = (x: string) =>
   x.replace(/^\s*['"]([^'"]+)['"].*$/m, '$1');
 
+const ARRAY_OF_PAREN_TYPE_RE = /^\((.*)\)\[\]$/;
+
 @customElement('uxdot-knob-attribute')
 export class UxdotKnobAttribute extends LitElement {
   static styles = [styles];
@@ -57,6 +59,10 @@ export class UxdotKnobAttribute extends LitElement {
          options.length > 1
          // case: `variant?: 'subtle'`
       || (options.length === 1 && !!options.at(0)?.match(/^'.*'$/));
+    // case: rh-code-block action field: `actions?: ('code'|'wrap')[]`
+    const [, listAttrEnum] =
+      this.type?.match(ARRAY_OF_PAREN_TYPE_RE) ?? [];
+    const listAttrEnumMembers = listAttrEnum?.split('|') ?? [];
 
     return html`
       <li data-name="${this.name}" @change="${this.#onChange}">
@@ -70,7 +76,14 @@ export class UxdotKnobAttribute extends LitElement {
         <rh-switch id="knob"
                    ?checked="${this.#values.get(this.name)}"
                    message-on="Attribute is present"
-                   message-off="Attribute is absent"></rh-switch>` : isIconSet ? html`
+                   message-off="Attribute is absent"></rh-switch>` : listAttrEnumMembers.length ? listAttrEnumMembers.map(member => html`
+        <div class="checkbox-group">
+          <input id="${this.name}-${dequote(member)}"
+                 type="checkbox"
+                 name="${this.name}"
+                 value="${dequote(member)}">
+          <label for="${this.name}-${dequote(member)}">${dequote(member)}</label>
+        </div>`) : isIconSet ? html`
         <pf-select id="knob"
                    data-kind="iconSet"
                    value="${ifDefined(this.#values.get(this.name)) ?? this.default}">
@@ -186,13 +199,22 @@ export class UxdotKnobAttribute extends LitElement {
     }
   }
 
+  #getValueForCheckboxes() {
+    const checkboxes = this.shadowRoot?.querySelectorAll<HTMLInputElement>(`[type="checkbox"][name="${this.name}"]`);
+    return Array.from(checkboxes ?? [])
+        .filter(x => x.checked)
+        .map(x => x.value)
+        .join(' ');
+  }
+
   async #onChange(event: Event) {
-    const target = event.target as LitElement;
+    const target = event.target as LitElement & HTMLInputElement;
     const demo = this.closest('uxdot-demo');
     await target.updateComplete;
-    const value = this.type === 'boolean' ?
-        (target as unknown as HTMLInputElement).checked
-      : (target as unknown as HTMLInputElement).value;
+    const value =
+        target.type === 'checkbox' ? this.#getValueForCheckboxes()
+      : this.type === 'boolean' ? target.checked
+      : target.value;
     if (demo && this.name) {
       demo.setDemoElementAttribute(this.name, value);
     }

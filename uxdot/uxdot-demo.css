@@ -32,7 +32,7 @@ iframe {
       'code knobs';
   }
 
-  grid-template-columns: auto min-content;
+  grid-template-columns: auto max-content;
   gap: var(--rh-space-sm);
 }
 
@@ -65,11 +65,22 @@ rh-card {
   display: none;
 }
 
-:host([attribute-knobs]) #knobs {
-  grid-area: knobs;
-  display: flex;
-  flex-direction: column;
-  gap: var(--rh-space-sm);
+:host([attribute-knobs]) {
+  #knobs {
+    grid-area: knobs;
+    display: flex;
+    flex-direction: column;
+    gap: var(--rh-space-sm);
+    min-width: 200px;
+  }
+
+  rh-card {
+    height: auto;
+
+    &::part(body) {
+      height: 100%;
+    }
+  }
 }
 
 .code-tabs {
