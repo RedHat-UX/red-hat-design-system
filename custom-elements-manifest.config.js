@@ -1,17 +1,6 @@
 import { writeFile } from 'node:fs/promises';
 import { pfeCustomElementsManifestConfig } from '@patternfly/pfe-tools/custom-elements-manifest/config.js';
 
-// shim for icons
-globalThis.document ??= {
-  createElement(_k) {
-    return {
-      content: {
-        cloneNode() {},
-      },
-    };
-  },
-};
-
 export default pfeCustomElementsManifestConfig({
   globs: ['elements/*/rh-*.ts'],
   exclude: [
