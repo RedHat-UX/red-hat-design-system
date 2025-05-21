@@ -296,6 +296,10 @@
           justify-content: flex-start;
           align-items: center;
           block-size: 100%;
+
+          & ::slotted(rh-navigation-primary-item) {
+            block-size: var(--_navbar-height);
+          }
         }
       }
     }
