@@ -134,6 +134,9 @@ let RhCodeBlock = RhCodeBlock_1 = class RhCodeBlock extends LitElement {
         if (changed.has('wrap')) {
             __classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_wrapChanged).call(this);
         }
+        if (this.actions.length && !isServer) {
+            import('@rhds/elements/rh-tooltip/rh-tooltip.js');
+        }
     }
 };
 _RhCodeBlock_slots = new WeakMap();
