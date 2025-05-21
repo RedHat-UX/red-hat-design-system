@@ -91,6 +91,7 @@ export class RhTooltip extends LitElement {
   });
 
   #initialized = false;
+  #style?: CSSStyleDeclaration;
 
   get #content() {
     if (!this.#float.open || isServer) {
@@ -113,6 +114,10 @@ export class RhTooltip extends LitElement {
   override render() {
     const { alignment, anchor, open, styles } = this.#float;
 
+    const scheme = this.#style?.colorScheme ?? 'light';
+    const dark = !!scheme.match(/^light( (dark|only))?/);
+    const light = !!scheme.match(/^dark( only)?/);
+
     return html`
       <div id="container"
            style="${styleMap(styles)}"
@@ -123,7 +128,7 @@ export class RhTooltip extends LitElement {
         <div id="invoker">
           <slot id="invoker-slot"></slot>
         </div>
-        <div id="tooltip" role="status">
+        <div id="tooltip" role="status" class="${classMap({ dark, light })}">
           <slot id="content" name="content">${this.content}</slot>
         </div>
       </div>
@@ -132,6 +137,7 @@ export class RhTooltip extends LitElement {
 
   /** Show the tooltip */
   async show() {
+    this.#style ??= getComputedStyle(this);
     await this.updateComplete;
     const placement = this.position;
     const offset =
