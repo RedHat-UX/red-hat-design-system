@@ -69,6 +69,10 @@ describe('<rh-navigation-primary>', function() {
         expect(element.shadowRoot?.querySelector('#container')?.classList.contains('compact')).to.be.true;
       });
 
+      it('should have a closed hamburger', function() {
+        expect(element.shadowRoot?.querySelector<HTMLDetailsElement>('#hamburger')?.open).to.be.false;
+      });
+
       describe('interactions', function() {
         describe('toggling hamburger menu', function() {
           let details: HTMLDetailsElement | null | undefined;
@@ -114,6 +118,10 @@ describe('<rh-navigation-primary>', function() {
 
       it('should not have compact class', function() {
         expect(element.shadowRoot?.querySelector('#container')?.classList.contains('compact')).to.be.false;
+      });
+
+      it('should have an open hamburger', function() {
+        expect(element.shadowRoot?.querySelector<HTMLDetailsElement>('#hamburger')?.open).to.be.true;
       });
 
       describe('interactions', function() {
