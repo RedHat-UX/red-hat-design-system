@@ -12,11 +12,6 @@ import { themable } from '@rhds/elements/lib/themable.js';
 
 import style from './rh-code-block.css';
 
-/* TODO
- * - style slotted and shadow fake-fabs
- * - manage state of copy and wrap, including if they are slotted. see actions.html
- */
-
 /**
  * Returns a string with common indent stripped from each line. Useful for templating HTML
  * @param str indented string
@@ -203,10 +198,10 @@ export class RhCodeBlock extends LitElement {
         ${this.actions.map(x => html`
           <rh-tooltip>
             <slot slot="content" name="action-label-${x}">${x === 'copy' ? html`
-              <span slot="action-label-copy">Copy to Clipboard</span>
-              <span slot="action-label-copy" hidden data-code-block-state="active">Copied!</span>` : html`
-              <span slot="action-label-wrap">Toggle word wrap</span>
-              <span slot="action-label-wrap" hidden data-code-block-state="active">Toggle overflow</span>`}
+              <span>Copy to Clipboard</span>
+              <span hidden data-code-block-state="active">Copied!</span>` : html`
+              <span>Toggle word wrap</span>
+              <span hidden data-code-block-state="active">Toggle overflow</span>`}
             </slot>
             <button id="action-${x}"
                     class="shadow-fab"
@@ -290,8 +285,9 @@ export class RhCodeBlock extends LitElement {
     await this.updateComplete;
     this.#computeLineNumbers();
     // TODO: handle slotted fabs
-    const slot = this.shadowRoot?.querySelector<HTMLSlotElement>('slot[name="action-label-wrap"]');
-    for (const el of slot?.assignedElements() ?? []) {
+    const assignedElements =
+      this.#getFabContentElements(this.shadowRoot?.querySelector('slot[name="action-label-wrap"]'));
+    for (const el of assignedElements) {
       if (el instanceof HTMLElement) {
         el.hidden = (el.dataset.codeBlockState !== 'active') === this.wrap;
       }
@@ -305,6 +301,14 @@ export class RhCodeBlock extends LitElement {
         x instanceof HTMLScriptElement
         || x instanceof HTMLPreElement ? [x]
       : []);
+  }
+
+  #getFabContentElements(slot?: HTMLSlotElement | null) {
+    const assignedElements = slot?.assignedElements() ?? [];
+    if (!assignedElements.length) {
+      return [...slot?.querySelectorAll('*') ?? []];
+    }
+    return assignedElements;
   }
 
   /**
@@ -414,7 +418,8 @@ export class RhCodeBlock extends LitElement {
     const slot = this.shadowRoot?.querySelector<HTMLSlotElement>('slot[name="action-label-copy"]');
     const tooltip = slot?.closest('rh-tooltip');
     tooltip?.hide();
-    for (const el of slot?.assignedElements() ?? []) {
+    const assignedElements = this.#getFabContentElements(slot);
+    for (const el of assignedElements) {
       if (el instanceof HTMLElement) {
         el.hidden = el.dataset.codeBlockState !== 'active';
       }
@@ -423,7 +428,7 @@ export class RhCodeBlock extends LitElement {
     tooltip?.show();
     await new Promise(r => setTimeout(r, 5_000));
     tooltip?.hide();
-    for (const el of slot?.assignedElements() ?? []) {
+    for (const el of assignedElements) {
       if (el instanceof HTMLElement) {
         el.hidden = el.dataset.codeBlockState === 'active';
       }
