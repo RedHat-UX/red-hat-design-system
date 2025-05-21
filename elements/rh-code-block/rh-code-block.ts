@@ -84,11 +84,30 @@ export class RhCodeBlock extends LitElement {
 
   static styles = [style];
 
+  /**
+   * Space- or comma-separated list of code block action buttons to display, containing either 'copy', 'wrap', or both.
+   * 'copy' adds a button that copies the text content to the clipboard. 'wrap' adds a button that toggles line wrap.
+   *
+   * To override the default labels, e.g. for purposes of internationalization, use the
+   * `action-label-copy` and `action-label-wrap` slots. Each slot may receive two elements,
+   * one for the action's default state (e.g. "Copy to clipboard"),
+   * and one for the actions alternative state, e.g. "Copied!".
+   * The active-state element must have the attributes `hidden data-code-block-state="active"`
+   *
+   * @example html```
+   *          <rh-code-block actions="copy wrap">
+   *            <span slot="action-label-copy">Copy to Clipboard</span>
+   *            <span slot="action-label-copy" hidden data-code-block-state="active">Copied!</span>
+   *            <span slot="action-label-wrap">Toggle word wrap</span>
+   *            <span slot="action-label-wrap" hidden data-code-block-state="active">Toggle overflow</span>
+   *          </rh-code-block>
+   *          ```
+   */
   @property({
     reflect: true,
     converter: {
       fromAttribute(value) {
-        return ((value ?? '').split(/\s+/) ?? []).map(x => x.trim()).filter(Boolean);
+        return ((value ?? '').split(/\s+|,/) ?? []).map(x => x.trim()).filter(Boolean);
       },
       toAttribute(value) {
         return Array.isArray(value) ? value.join(' ') : '';
@@ -132,7 +151,6 @@ export class RhCodeBlock extends LitElement {
   #slots = new SlotController(
     this,
     null,
-    // 'actions',
     'action-label-copy',
     'action-label-wrap',
     'show-more',
@@ -182,16 +200,20 @@ export class RhCodeBlock extends LitElement {
         <div id="actions"
              @click="${this.#onActionsClick}"
              @keyup="${this.#onActionsKeyup}">
-        <!-- <slot name="actions"> -->${this.actions.map(x => html`
+        ${this.actions.map(x => html`
           <rh-tooltip>
-            <slot slot="content" name="action-label-${x}"></slot>
+            <slot slot="content" name="action-label-${x}">${x === 'copy' ? html`
+              <span slot="action-label-copy">Copy to Clipboard</span>
+              <span slot="action-label-copy" hidden data-code-block-state="active">Copied!</span>` : html`
+              <span slot="action-label-wrap">Toggle word wrap</span>
+              <span slot="action-label-wrap" hidden data-code-block-state="active">Toggle overflow</span>`}
+            </slot>
             <button id="action-${x}"
                     class="shadow-fab"
                     data-code-block-action="${x}">
               ${RhCodeBlock.actionIcons.get(this.wrap && x === 'wrap' ? 'wrap-active' : x) ?? ''}
             </button>
           </rh-tooltip>`)}
-        <!-- </slot> -->
         </div>
 
         <button id="expand"
@@ -416,28 +438,3 @@ declare global {
     'rh-code-block': RhCodeBlock;
   }
 }
-
-/**
- * TODO: slotted fabs like this:
- *
- *```html
-  <rh-tooltip slot="actions">
-    <span slot="content">Copy to Clipboard</span>
-    <span slot="content"
-          hidden
-          data-code-block-state="active">Copied!</span>
-    <rh-fab icon="copy"
-            data-code-block-action="copy"></rh-fab>
-  </rh-tooltip>
-
-  <rh-tooltip slot="actions">
-    <span slot="content">Toggle linewrap</span>
-    <span slot="content"
-          hidden
-          data-code-block-state="active">Toggle linewrap</span>
-    <rh-fab icon="copy"
-            data-code-block-action="copy"></rh-fab>
-  </rh-tooltip>
-  ````
- *
- */
