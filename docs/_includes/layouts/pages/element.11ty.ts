@@ -765,8 +765,7 @@ export default class ElementsPage extends Renderer<Context> {
   async #renderDemos(content: string, ctx: Context) {
     const tagName = ctx.tagName as `rh-${string}`;
     const demos: DemoRecord[] = ElementsPage.demoManifestsForTagNames[tagName] ?? [];
-    return [
-      html`
+    return html`
       <script type="module" data-helmet>
         import '@uxdot/elements/uxdot-copy-button.js';
         import '@uxdot/elements/uxdot-header.js';
@@ -779,11 +778,14 @@ export default class ElementsPage extends Renderer<Context> {
         import '@rhds/elements/rh-subnav/rh-subnav.js';
         import '@rhds/elements/rh-surface/rh-surface.js';
         import '@rhds/elements/rh-tabs/rh-tabs.js';
-      </script>`,
-      content,
-      ctx.doc.fileExists && await this.renderFile(ctx.doc.filePath, ctx),
-      ...await Promise.all(demos.map(demo => this.#renderDemo(demo, ctx))),
-    ].filter(Boolean).join('');
+      </script>
+      ${content}
+      ${!ctx.doc.fileExists ? '' : await this.renderFile(ctx.doc.filePath, ctx)}
+      ${(await Promise.all(demos.map(async demo => `
+      ${this.#header(demo.title, 2, `demo-${this.slugify(demo.title)}`)}
+      ${await this.#renderDemo(demo, ctx)}
+      `))).filter(Boolean).join('')}
+    `;
   }
 
   async #renderDemo(demo: DemoRecord, ctx: Context, knobs?: string) {
@@ -791,7 +793,6 @@ export default class ElementsPage extends Renderer<Context> {
       return '';
     } else {
       const tagName = ctx.tagName as `rh-${string}`;
-      const labelSlug = this.slugify(demo.title);
       const filepath = demo.filePath
           ?.replace(join(process.cwd(), 'elements', tagName, 'demo/'), '');
       const demoSlug = filepath?.split('.').shift()?.replaceAll('/', '-') ?? '';
@@ -802,7 +803,6 @@ export default class ElementsPage extends Renderer<Context> {
       const codeblocks = await this.#getDemoCodeBlocks(demo);
       if (codeblocks) {
         return html`
-          ${this.#header(demo.title, 2, `demo-${labelSlug}`)}
           <uxdot-demo id="${projectId}"
                       tag="${tagName}"
                       demo="${demoSlug}"${!knobs ? '' : html`

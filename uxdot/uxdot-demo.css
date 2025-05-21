@@ -21,16 +21,7 @@ iframe {
   grid-template-areas:
     'head'
     'iframe'
-    'knobs'
     'code';
-
-  /* var(--rh-breakpoint-sm, 768px) */
-  @media (min-width: 768px) {
-    grid-template-areas:
-      'head head'
-      'iframe iframe'
-      'code knobs';
-  }
 
   grid-template-columns: auto max-content;
   gap: var(--rh-space-sm);
@@ -66,6 +57,22 @@ rh-card {
 }
 
 :host([attribute-knobs]) {
+  #container {
+    grid-template-areas:
+      'head'
+      'iframe'
+      'knobs'
+      'code';
+
+    /* var(--rh-breakpoint-sm, 768px) */
+    @media (min-width: 768px) {
+      grid-template-areas:
+        'head head'
+        'iframe iframe'
+        'code knobs';
+    }
+  }
+
   #knobs {
     grid-area: knobs;
     display: flex;
