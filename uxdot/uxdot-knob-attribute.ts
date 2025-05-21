@@ -64,12 +64,13 @@ export class UxdotKnobAttribute extends LitElement {
       this.type?.match(ARRAY_OF_PAREN_TYPE_RE) ?? [];
     const listAttrEnumMembers = listAttrEnum?.split('|') ?? [];
 
+    // TODO: replace tooltip with popover for toggletips
     return html`
       <li data-name="${this.name}" @change="${this.#onChange}">
         <label for="knob">
-          <code>${this.name}</code>
+          <code id="knob-title">${this.name}</code>
           <rh-tooltip>
-            <rh-icon icon="information" set="ui" tabindex=0></rh-icon>
+            <button class="toggletip" aria-labelledby="knob-title"><rh-icon icon="information" set="ui"></rh-icon></button>
             <div slot="content"><slot name="description"></slot></div>
           </rh-tooltip>
         </label>${this.type === 'boolean' ? html`

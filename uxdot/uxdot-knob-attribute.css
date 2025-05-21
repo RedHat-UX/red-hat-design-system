@@ -15,3 +15,23 @@ li {
 pf-option {
   --rh-icon-size: var(--rh-size-icon-03);
 }
+
+button.toggletip {
+  background: none;
+  border: none;
+  padding: none;
+  margin: none;
+  outline: none;
+
+  rh-icon {
+    color: var(--rh-color-interactive-primary-default);
+  }
+
+  &:is(:focus,:hover) {
+    outline: none;
+
+    rh-icon {
+      color: var(--rh-color-interactive-primary-hover);
+    }
+  }
+}
