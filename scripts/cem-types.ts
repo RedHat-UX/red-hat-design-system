@@ -54,6 +54,7 @@ export function analyze(manifest: CEM.Package) {
           if (isMethod(member)) {
             // todo
           } else if (isField(member) && member.type?.text) {
+            member.type.text = member.type.text.trim();
             if (member.type.text === 'ColorPalette') {
               member.type.text = `'darkest'|'darker'|'dark'|'light'|'lighter'|'lightest'`;
             } else if (isIconNameType(member.type.text)) {
@@ -65,8 +66,6 @@ export function analyze(manifest: CEM.Package) {
                   .split('|')
                   .map(x => x.trim().replace(/\/\/.*/, ''))
                   .join('|');
-            } else {
-              member.type.text = member.type.text.trim();
             }
           }
         }
