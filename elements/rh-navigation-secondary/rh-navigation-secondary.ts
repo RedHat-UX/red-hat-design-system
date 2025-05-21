@@ -179,14 +179,14 @@ export class RhNavigationSecondary extends LitElement {
     // CTA must always be 'lightest' on mobile screens
     const dropdownPalette = this.#compact ? 'lightest' : this.#computedPalette;
     return html`
-      <div part="nav"
-           class="${classMap({ compact: this.#compact })}">
+      <div class="${classMap({ compact: this.#compact })}"
+           part="nav">
         ${this.#logoCopy}
-        <div id="container" part="container" class="${classMap({ expanded })}">
-          <slot name="logo" id="logo"></slot>
-          <button aria-controls="container"
-                  aria-expanded="${String(expanded) as 'true' | 'false'}"
-                  @click="${this.#toggleMobileMenu}"><slot name="mobile-menu">Menu</slot></button>
+        <div id="container" class="${classMap({ expanded })}" part="container">
+          <slot id="logo" name="logo"></slot>
+          <button @click="${this.#toggleMobileMenu}"
+                  aria-controls="container"
+                  aria-expanded="${String(expanded) as 'true' | 'false'}"><slot name="mobile-menu">Menu</slot></button>
           <rh-surface color-palette="${dropdownPalette}">
             <slot name="nav"></slot>
             <div id="cta" part="cta">

@@ -56,7 +56,7 @@ export class RhBlockquote extends LitElement {
     const { highlight } = this;
     return html`
       <figure id="container" class="${classMap({ highlight })}">
-        <rh-icon set="standard" icon="quotemark-open"></rh-icon>
+        <rh-icon icon="quotemark-open" set="standard"></rh-icon>
         <blockquote id="quote">
           <slot></slot>
         </blockquote>

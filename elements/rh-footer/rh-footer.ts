@@ -161,7 +161,7 @@ export class RhFooter extends LitElement {
       <slot name="links"></slot>
       ` : html`
 
-      <rh-accordion on="dark" color-palette="darkest">${children.map((child, i) => {
+      <rh-accordion color-palette="darkest" on="dark">${children.map((child, i) => {
           const type = isHeaderTagName(child.tagName) ? 'header' : 'panel';
           // SEE https://github.com/asyncLiz/minify-html-literals/issues/37
           switch (type) {

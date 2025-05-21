@@ -31,7 +31,7 @@ export class UxdotCopyButton extends LitElement {
           <code><slot></slot></code>
           <slot name="extra-content"></slot>
           <span class="visually-hidden">Click to copy</span>
-          <rh-icon aria-hidden="true" set="ui" .icon="${this.icon}"></rh-icon>
+          <rh-icon .icon="${this.icon}" aria-hidden="true" set="ui"></rh-icon>
         </button>
       </rh-tooltip>
     `;

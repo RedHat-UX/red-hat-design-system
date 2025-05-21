@@ -41,18 +41,18 @@ export class UxdotColorSchemePicker extends LitElement {
         <div id="button-group">
           <label title="Light">
             <span class="visually-hidden">Light</span>
-            <input type="radio" name="scheme" value="light" ?checked="${!isServer && this.scheme === 'light'}">
-            <rh-icon set="ui" icon="light-mode"></rh-icon>
+            <input type="radio" ?checked="${!isServer && this.scheme === 'light'}" name="scheme" value="light">
+            <rh-icon icon="light-mode" set="ui"></rh-icon>
           </label>
           <label title="Dark">
             <span class="visually-hidden">Dark</span>
-            <input type="radio" name="scheme" value="dark" ?checked="${!isServer && this.scheme === 'dark'}">
-            <rh-icon set="ui" icon="dark-mode"></rh-icon>
+            <input type="radio" ?checked="${!isServer && this.scheme === 'dark'}" name="scheme" value="dark">
+            <rh-icon icon="dark-mode" set="ui"></rh-icon>
           </label>
           <label title="Device default">
             <span class="visually-hidden">Device default</span>
-            <input type="radio" name="scheme" value="light dark" ?checked="${isServer || this.scheme === 'light dark'}">
-            <rh-icon set="ui" icon="auto-light-dark-mode"></rh-icon>
+            <input type="radio" ?checked="${isServer || this.scheme === 'light dark'}" name="scheme" value="light dark">
+            <rh-icon icon="auto-light-dark-mode" set="ui"></rh-icon>
           </label>
         </div>
       </fieldset>

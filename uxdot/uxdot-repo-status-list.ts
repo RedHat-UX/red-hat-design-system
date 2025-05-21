@@ -16,17 +16,17 @@ export class UxdotRepoStatusList extends UxdotRepoElement {
     const status = this.getStatus(this.element!);
     return html`
       <!-- TODO: remove lightdom after implementing auto-load-->
-      <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
+      <link href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css" rel="stylesheet">
       <div id="container">
-        <a href="#status-checklist" class="checklist">What do these mean?</a>
+        <a class="checklist" href="#status-checklist">What do these mean?</a>
         <div id="inner-container">
           <dl>${status?.libraries.map(x => x.key === 'docs' ? '' : html`
             <div>
               <dt>${x.name}:</dt>
               <dd>
                 <rh-tag color="${x.color}"
-                        variant="${x.variant}"
-                        icon="${x.icon}">${x.status}</rh-tag>
+                        icon="${x.icon}"
+                        variant="${x.variant}">${x.status}</rh-tag>
               </dd>
             </div>`)}
           </dl>

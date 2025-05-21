@@ -115,11 +115,11 @@ export class RhTooltip extends LitElement {
 
     return html`
       <div id="container"
-           style="${styleMap(styles)}"
            class="${classMap({ open,
                                initialized: !!this.#initialized,
                                [anchor]: !!anchor,
-                               [alignment]: !!alignment })}">
+                               [alignment]: !!alignment })}"
+           style="${styleMap(styles)}">
         <div id="invoker">
           <slot id="invoker-slot"></slot>
         </div>

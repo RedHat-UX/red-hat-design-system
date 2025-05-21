@@ -56,28 +56,28 @@ interface CodeLineHeightsInfo {
 export class RhCodeBlock extends LitElement {
   private static actionIcons = new Map([
     ['wrap', html`
-      <svg xmlns="http://www.w3.org/2000/svg"
-          fill="currentColor"
-          viewBox="0 0 20 20">
+      <svg fill="currentColor"
+          viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg">
         <path d="M19 0c.313.039.781-.077 1 .057V20c-.313-.039-.781.077-1-.057V0ZM10.82 4.992C9.877 4.996 8.31 5.57 8.174 6c1.21.03 2.432-.073 3.635.08 2.181.383 3.677 2.796 3.066 4.922-.41 1.753-2.108 2.995-3.877 3.014L11 14H5.207l2.682-2.682-.707-.707L3.293 14.5l3.889 3.889.707-.707L5.207 15h5.736l.004-.008c1.444.005 2.896-.59 3.832-1.722 1.65-1.82 1.612-4.85-.08-6.63A5 5 0 0 0 11 5a1.948 1.948 0 0 0-.18-.008z"/>
         <path d="M4 5h7c-.039.313.077.781-.057 1H4V5ZM0 0c.313.039.781-.077 1 .057V20c-.313-.039-.781.077-1-.057V0Z"/>
       </svg>
     `],
     ['wrap-active', html`
-      <svg xmlns="http://www.w3.org/2000/svg"
-           fill="none"
-           viewBox="0 0 21 20">
-        <path fill="currentColor" d="M12 13h1v7h-1zM12 0h1v7h-1z"/>
-        <path stroke="currentColor" d="M16.465 6.464 20 10l-3.535 3.536"/>
-        <path fill="currentColor" d="M3 9.5h17v1H3zM0 0h1v20H0z"/>
+      <svg fill="none"
+           viewBox="0 0 21 20"
+           xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 13h1v7h-1zM12 0h1v7h-1z" fill="currentColor"/>
+        <path d="M16.465 6.464 20 10l-3.535 3.536" stroke="currentColor"/>
+        <path d="M3 9.5h17v1H3zM0 0h1v20H0z" fill="currentColor"/>
       </svg>
     `],
     ['copy', html`
-      <svg xmlns="http://www.w3.org/2000/svg"
-           version="1.1"
-           viewBox="0 0 20 20">
-        <path fill="currentColor" d="M12 0H2C.9 0 0 .9 0 2v10h1V2c0-.6.4-1 1-1h10V0z"/>
-        <path fill="currentColor" d="M18 20H8c-1.1 0-2-.9-2-2V8c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2zM8 7c-.6 0-1 .4-1 1v10c0 .6.4 1 1 1h10c.6 0 1-.4 1-1V8c0-.6-.4-1-1-1H8z"/>
+      <svg version="1.1"
+           viewBox="0 0 20 20"
+           xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 0H2C.9 0 0 .9 0 2v10h1V2c0-.6.4-1 1-1h10V0z" fill="currentColor"/>
+        <path d="M18 20H8c-1.1 0-2-.9-2-2V8c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2zM8 7c-.6 0-1 .4-1 1v10c0 .6.4 1 1 1h10c.6 0 1-.4 1-1V8c0-.6-.4-1-1-1H8z" fill="currentColor"/>
       </svg>
     `],
   ]);
@@ -196,20 +196,20 @@ export class RhCodeBlock extends LitElement {
 
         <button id="expand"
                 ?hidden="${!expandable}"
+                @click="${this.#onClickExpand}"
                 aria-controls="content-lines"
-                aria-expanded="${String(!!fullHeight) as 'true' | 'false'}"
-                @click="${this.#onClickExpand}">
-          <slot name="show-more" ?hidden="${this.fullHeight}">Show more</slot>
-          <slot name="show-less" ?hidden="${!this.fullHeight}">Show less</slot>
-          <svg xmlns="http://www.w3.org/2000/svg"
-               fill="currentColor"
-               viewBox="0 0 11 7">
+                aria-expanded="${String(!!fullHeight) as 'true' | 'false'}">
+          <slot ?hidden="${this.fullHeight}" name="show-more">Show more</slot>
+          <slot ?hidden="${!this.fullHeight}" name="show-less">Show less</slot>
+          <svg fill="currentColor"
+               viewBox="0 0 11 7"
+               xmlns="http://www.w3.org/2000/svg">
             <path d="M4.919.239.242 4.847a.801.801 0 0 0 0 1.148l.778.766a.83.83 0 0 0 1.165 0L5.5 3.495 8.815 6.76a.83.83 0 0 0 1.165 0l.778-.766a.802.802 0 0 0 0-1.148L6.08.239a.826.826 0 0 0-1.162 0Z"/>
           </svg>
         </button>
       </div>
 
-      <slot name="legend" ?hidden="${this.#slots.isEmpty('legend')}"></slot>
+      <slot ?hidden="${this.#slots.isEmpty('legend')}" name="legend"></slot>
     `;
   }
 

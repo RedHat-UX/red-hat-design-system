@@ -26,9 +26,9 @@ export class UxdotDemo extends LitElement {
   render() {
     return html`
       <div id="container">
-        <iframe loading="lazy" title="${this.demoTitle}" src="${this.demoUrl}"></iframe>
-        <rh-card ssr-hint-has-slotted-default
-                 ssr-hint-has-slotted="footer">
+        <iframe loading="lazy" src="${this.demoUrl}" title="${this.demoTitle}"></iframe>
+        <rh-card ssr-hint-has-slotted="footer"
+                 ssr-hint-has-slotted-default>
           <rh-tabs class="code-tabs" active-index="0">
             <rh-tab slot="tab" active>HTML</rh-tab>
             <rh-tab-panel><slot name="html"></slot></rh-tab-panel>
@@ -38,15 +38,15 @@ export class UxdotDemo extends LitElement {
             <rh-tab-panel><slot name="js"></slot></rh-tab-panel>
           </rh-tabs>
           <rh-button slot="footer"
-                     variant="tertiary"
+                     @click="${this.#toggleFullscreen}"
                      icon="expand"
                      icon-set="ui"
-                     @click="${this.#toggleFullscreen}">FullScreen</rh-button>
+                     variant="tertiary">FullScreen</rh-button>
           <rh-button slot="footer"
-                     variant="tertiary"
+                     @click="${this.#reloadIframe}"
                      icon="refresh"
                      icon-set="ui"
-                     @click="${this.#reloadIframe}">Reload</rh-button>
+                     variant="tertiary">Reload</rh-button>
           <rh-cta slot="footer" href="${this.demoSourceUrl}">View source on GitHub</rh-cta>
           <rh-cta slot="footer" href="${this.demoUrl}" target="_blank">View In Own Tab</rh-cta>
         </rh-card>

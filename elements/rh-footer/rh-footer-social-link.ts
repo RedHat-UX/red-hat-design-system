@@ -34,9 +34,9 @@ export class RhFooterSocialLink extends LitElement {
 
   render() {
     return html`
-      <a href="${this.href}" aria-label="${this.accessibleLabel}">
+      <a aria-label="${this.accessibleLabel}" href="${this.href}">
         <slot>
-          <rh-icon set="social" icon="${this.icon}"></rh-icon>
+          <rh-icon icon="${this.icon}" set="social"></rh-icon>
         </slot>
       </a>
     `;

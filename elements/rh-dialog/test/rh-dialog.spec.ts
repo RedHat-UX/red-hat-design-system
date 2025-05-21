@@ -34,10 +34,10 @@ describe('<rh-dialog>', function() {
     beforeEach(async function() {
       const storeEvent = (event: DialogEvent) => events.set(event.type, event);
       element = await createFixture(html`
-        <rh-dialog trigger="trigger"
-                   @cancel="${storeEvent}"
+        <rh-dialog @cancel="${storeEvent}"
+                   @close="${storeEvent}"
                    @open="${storeEvent}"
-                   @close="${storeEvent}">
+                   trigger="trigger">
           <h2 slot="header">Header</h2>
           <p>Body</p>
           <rh-button slot="footer">Footer Action</rh-button>
@@ -144,7 +144,7 @@ describe('<rh-dialog>', function() {
               </p>
               <div>
                 <button id="cancellationButton" value="cancel">Cancel</button>
-                <button type="submit" id="confirmation-button" value="default">Submit</button>
+                <button id="confirmation-button" type="submit" value="default">Submit</button>
               </div>
             </form>
           </rh-dialog>

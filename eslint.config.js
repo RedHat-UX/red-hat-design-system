@@ -19,6 +19,9 @@ export default tseslint.config(
       '@html-eslint/prefer-https': 'error',
       '@html-eslint/no-target-blank': 'error',
       '@html-eslint/quotes': 'error',
+      '@html-eslint/sort-attrs': ['error', {
+        priority: ['id', 'class', 'part', 'slot', 'type', 'style'],
+      }],
     },
   },
   {

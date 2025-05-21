@@ -48,9 +48,9 @@ export class RhJumpLink extends LitElement {
     const { active, orientation = 'vertical' } = this;
     return html`
       <a class="${classMap({ active, [orientation]: true })}"
+         @click="${this.#onClick}"
          aria-current="${ifDefined(this.active ? 'location' : undefined)}"
-         href="${ifDefined(this.href)}"
-         @click="${this.#onClick}">
+         href="${ifDefined(this.href)}">
         <slot></slot>
       </a>
     `;

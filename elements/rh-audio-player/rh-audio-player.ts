@@ -381,7 +381,7 @@ export class RhAudioPlayer extends LitElement {
               'mobile-safari': !!this.#isMobileSafari,
             })}">
         <input type="hidden" value=${this.#readyState}>
-        <slot id="media" name="media" @slotchange="${this.#initMediaElement}"></slot>
+        <slot id="media" @slotchange="${this.#initMediaElement}" name="media"></slot>
         <div id="toolbar"
              class="${this.expanded ? 'expanded' : ''}"
              part="toolbar"
@@ -390,36 +390,36 @@ export class RhAudioPlayer extends LitElement {
           <div id="poster"><img .src="${poster}" aria-hidden="true"></div>`}
           <rh-tooltip id="play-tooltip">
             <button id="play"
-                    aria-label="${playlabel}"
                     class="toolbar-button"
                     ?disabled=${!this.#mediaElement || playdisabled}
                     @click=${this.#onPlayClick}
-                    @focus=${this.#onPlayFocus}>
-              <rh-icon set="ui" icon="${this.paused ? 'play-fill' : 'pause-fill'}"></rh-icon>
+                    @focus=${this.#onPlayFocus}
+                    aria-label="${playlabel}">
+              <rh-icon icon="${this.paused ? 'play-fill' : 'pause-fill'}" set="ui"></rh-icon>
             </button>
             <span slot="content">${playlabel}</span>
           </rh-tooltip>
 
           <div id="full-title">
             <rh-audio-player-scrolling-text-overflow id="mediaseries" ?hidden=${!this.mediaseries}>
-              <slot name="series" @slotchange=${this.#onTitleChange}>${this.mediaseries}</slot>
+              <slot @slotchange=${this.#onTitleChange} name="series">${this.mediaseries}</slot>
             </rh-audio-player-scrolling-text-overflow>
             <rh-audio-player-scrolling-text-overflow id="mediatitle" ?hidden=${!this.mediatitle}>
-              <slot name="title" @slotchange=${this.#onTitleChange}>${this.mediatitle}</slot>
+              <slot @slotchange=${this.#onTitleChange} name="title">${this.mediatitle}</slot>
             </rh-audio-player-scrolling-text-overflow>
           </div>
 
           <rh-tooltip id="time-tooltip">
             <input id="time"
                    class="toolbar-button"
-                   aria-label="${this.#translation.get('seek')}"
-                   min="0"
-                   max="100"
-                   step="1"
                    type="range"
-                   value="${currentTimePct}"
                    ?disabled="${this.duration === 0}"
-                   @input=${this.#onTimeSlider}>
+                   @input=${this.#onTimeSlider}
+                   aria-label="${this.#translation.get('seek')}"
+                   max="100"
+                   min="0"
+                   step="1"
+                   value="${currentTimePct}">
             <span slot="content">${this.#translation.get('seek')}</span>
           </rh-tooltip>
 
@@ -428,21 +428,21 @@ export class RhAudioPlayer extends LitElement {
           <div class="spacer"></div>
 
           <rh-audio-player-rate-stepper id="playback-rate"
-                                        @playback-rate-select="${this.#onPlaybackRateSelect}"
                                         ?hidden="${this.#isFull || this.#isMini}"
                                         .disabled="${!this.#mediaElement}"
+                                        .label="${this.#translation.get('speed')}"
                                         .playbackRate="${this.playbackRate}"
-                                        .label="${this.#translation.get('speed')}"></rh-audio-player-rate-stepper>
+                                        @playback-rate-select="${this.#onPlaybackRateSelect}"></rh-audio-player-rate-stepper>
 
           ${this.#isMobileSafari ? '' : html`
 
           <rh-tooltip id="mute-tooltip">
             <button id="mute"
-                    aria-label="${mutelabel}"
                     class="toolbar-button"
                     ?disabled=${!this.#mediaElement}
-                    @click=${this.#onMuteButton}>
-              <rh-icon set="ui" icon="${this.muted ? 'mute-fill' : 'volume-up-fill'}"></rh-icon>
+                    @click=${this.#onMuteButton}
+                    aria-label="${mutelabel}">
+              <rh-icon icon="${this.muted ? 'mute-fill' : 'volume-up-fill'}" set="ui"></rh-icon>
             </button>
             <span slot="content">${mutelabel}</span>
           </rh-tooltip>${this.#isMini ? '' : html`
@@ -451,14 +451,14 @@ export class RhAudioPlayer extends LitElement {
             <span slot="content">${this.#translation.get('volume')}</span>
             <input id="volume"
                       class="toolbar-button"
-                      aria-label="${this.#translation.get('volume')}"
-                      min="0"
-                      max=${!this.#mediaElement ? 0 : 100}
-                      step="1"
                       type="range"
-                      value=${this.volume * 100}
                       ?disabled="${!this.#mediaElement}"
-                      @input=${this.#onVolumeSlider}>
+                      @input=${this.#onVolumeSlider}
+                      aria-label="${this.#translation.get('volume')}"
+                      max=${!this.#mediaElement ? 0 : 100}
+                      min="0"
+                      step="1"
+                      value=${this.volume * 100}>
             </rh-tooltip>
           `}
           `}${!this.#isFull ? '' : html`
@@ -472,22 +472,22 @@ export class RhAudioPlayer extends LitElement {
           <div class="full-spacer"></div>
 
           <rh-audio-player-rate-stepper id="full-playback-rate"
-                                        @playback-rate-select="${this.#onPlaybackRateSelect}"
                                         ?hidden="${this.expanded || !this.#isFull}"
                                         .disabled="${!this.#mediaElement}"
+                                        .label="${this.#translation.get('speed')}"
                                         .playbackRate="${this.playbackRate}"
-                                        .label="${this.#translation.get('speed')}"></rh-audio-player-rate-stepper>
+                                        @playback-rate-select="${this.#onPlaybackRateSelect}"></rh-audio-player-rate-stepper>
 
           <rh-tooltip id="rewind-tooltip">
             <button id="rewind"
-                    aria-label="${this.#translation.get('rewind')}"
                     class="toolbar-button"
                     ?disabled=${rewinddisabled}
-                    @click=${() => this.rewind()}>
-              <svg xmlns="http://www.w3.org/2000/svg"
+                    @click=${() => this.rewind()}
+                    aria-label="${this.#translation.get('rewind')}">
+              <svg class="scrubber"
+                   role="presentation"
                    viewBox="0 0 32 32"
-                   class="scrubber"
-                   role="presentation">
+                   xmlns="http://www.w3.org/2000/svg">
                 <path d="M10.4,19.5h1.8v-5l-1.8,0.8v-1l2.2-0.9h0.7v6.2h1.9v1h-4.8V19.5z"/>
                 <path d="M16.4,19.6l0.7-0.8c0.6,0.5,1.2,0.8,1.9,0.8c0.9,0,1.5-0.6,1.5-1.4c0-0.8-0.6-1.3-1.5-1.3 c-0.5,0-0.9,0.1-1.4,0.4L16.8,17l0.2-3.7h4.3v1h-3.3l-0.1,2c0.5-0.2,1-0.3,1.5-0.3c1.4,0,2.4,0.9,2.4,2.1c0,1.4-1.1,2.4-2.7,2.4 C18,20.5,17.1,20.2,16.4,19.6z"/>
                 <path d="M4,6.6L9.5,2v3.7h7.4c6.1,0,11.1,5,11.1,11.1c0,6.1-5,11.1-11.1,11.1H9.5V26h1.8h5.5 c5.1,0,9.2-4.1,9.2-9.2c0-5.1-4.1-9.2-9.2-9.2h-5.5H9.5v3.7L4,6.6z"/>
@@ -498,26 +498,26 @@ export class RhAudioPlayer extends LitElement {
 
           <rh-tooltip id="full-play-tooltip">
             <button id="full-play"
-                    aria-label="${playlabel}"
                     class="toolbar-button"
                     ?disabled=${!this.#mediaElement || playdisabled}
                     @click=${this.#onPlayClick}
-                    @focus=${this.#onPlayFocus}>
-              <rh-icon set="ui" icon="${this.paused ? 'play-fill' : 'pause-fill'}"></rh-icon>
+                    @focus=${this.#onPlayFocus}
+                    aria-label="${playlabel}">
+              <rh-icon icon="${this.paused ? 'play-fill' : 'pause-fill'}" set="ui"></rh-icon>
             </button>
             <span slot="content">${playlabel}</span>
           </rh-tooltip>
 
           <rh-tooltip id="forward-tooltip">
             <button id="forward"
-                    aria-label="${this.#translation.get('advance')}"
                     class="toolbar-button"
                     ?disabled=${forwarddisabled}
-                    @click=${() => this.forward()}>
-              <svg xmlns="http://www.w3.org/2000/svg"
+                    @click=${() => this.forward()}
+                    aria-label="${this.#translation.get('advance')}">
+              <svg class="scrubber"
+                   role="presentation"
                    viewBox="0 0 32 32"
-                   class="scrubber"
-                   role="presentation">
+                   xmlns="http://www.w3.org/2000/svg">
                 <path d="M10.4,19.5h1.8v-5l-1.8,0.8v-1l2.2-0.9h0.7v6.2h1.9v1h-4.8V19.5z"/>
                 <path d="M16.4,19.6l0.7-0.8c0.6,0.5,1.2,0.8,1.9,0.8c0.9,0,1.5-0.6,1.5-1.4c0-0.8-0.6-1.3-1.5-1.3 c-0.5,0-0.9,0.1-1.4,0.4L16.8,17l0.2-3.7h4.3v1h-3.3l-0.1,2c0.5-0.2,1-0.3,1.5-0.3c1.4,0,2.4,0.9,2.4,2.1c0,1.4-1.1,2.4-2.7,2.4 C18,20.5,17.1,20.2,16.4,19.6z"/>
                 <path d="M28,6.6L22.4,2v3.7h-7.4C9,5.7,4,10.6,4,16.7c0,6.1,5,11.1,11.1,11.1h7.4V26h-1.8h-5.5c-5.1,0-9.2-4.1-9.2-9.2 c0-5.1,4.1-9.2,9.2-9.2h5.5h1.8v3.7L28,6.6z"/>
@@ -531,45 +531,45 @@ export class RhAudioPlayer extends LitElement {
                       position="${this.#menuOpen ? 'left' : 'top'}">
             <button id="menu-button"
                     class="toolbar-button"
-                    aria-label="${this.#translation.get('menu')}"
+                    @click="${this.#onMenuToggle}"
                     aria-controls="menu"
                     aria-haspopup="true"
-                    @click="${this.#onMenuToggle}">
-              <rh-icon set="ui" icon="ellipsis-horizontal-fill"></rh-icon>
+                    aria-label="${this.#translation.get('menu')}">
+              <rh-icon icon="ellipsis-horizontal-fill" set="ui"></rh-icon>
             </button>
             <span slot="content">${this.#translation.get('menu')}</span>
           </rh-tooltip>
 
           <rh-menu id="menu"
-                   aria-labelledby="menu-button"
-                   ?inert="${!this.#menuOpen}"
-                   style="${styleMap(styles)}"
                    class="${classMap({ open })}"
+                   style="${styleMap(styles)}"
+                   ?inert="${!this.#menuOpen}"
                    .getItems="${(items: HTMLElement[]) => this.#getMenuItems(items)}"
+                   @focusout="${this.#onMenuFocusout}"
                    @keydown="${this.#onMenuKeydown}"
-                   @focusout="${this.#onMenuFocusout}">${this.#panels.map(x => !x.panel ? '' : html`
+                   aria-labelledby="menu-button">${this.#panels.map(x => !x.panel ? '' : html`
             <button id="${x.id}-menu-item"
-                    aria-label="${x.panel.menuLabel}"
+                    @click="${() => this.#selectOpenPanel(x.panel)}"
                     aria-controls="panel"
-                    @click="${() => this.#selectOpenPanel(x.panel)}">
+                    aria-label="${x.panel.menuLabel}">
               ${x.panel.menuLabel}
             </button>`)}
             <rh-audio-player-rate-stepper id="mini-playback-rate"
-                                          @playback-rate-select="${this.#onPlaybackRateSelect}"
                                           ?hidden="${!this.#isMini}"
                                           .disabled="${!this.#mediaElement}"
+                                          .label="${this.#translation.get('speed')}"
                                           .playbackRate="${this.playbackRate}"
-                                          .label="${this.#translation.get('speed')}"></rh-audio-player-rate-stepper>
+                                          @playback-rate-select="${this.#onPlaybackRateSelect}"></rh-audio-player-rate-stepper>
           </rh-menu>`}
           <rh-tooltip id="close-tooltip">
             <button id="close"
-                    aria-label="${this.#translation.get('close')}"
                     class="toolbar-button"
                     ?disabled="${!this.#mediaElement}"
-                    aria-controls="panel"
                     @click="${this.#selectOpenPanel}"
-                    @keydown="${this.#onCloseKeydown}">
-              <rh-icon set="ui" icon="close"></rh-icon>
+                    @keydown="${this.#onCloseKeydown}"
+                    aria-controls="panel"
+                    aria-label="${this.#translation.get('close')}">
+              <rh-icon icon="close" set="ui"></rh-icon>
             </button>
             <span slot="content">${this.#translation.get('close')}</span>
           </rh-tooltip>
@@ -577,27 +577,27 @@ export class RhAudioPlayer extends LitElement {
         </div>
 
         <div id="panel"
-             role="dialog"
-             aria-live="polite"
-             aria-labelledby="about-menu-item"
              part="panel"
-             ?hidden=${!this.expanded || !this.#hasMenu}>
+             ?hidden=${!this.expanded || !this.#hasMenu}
+             aria-labelledby="about-menu-item"
+             aria-live="polite"
+             role="dialog">
           <slot id="about-slot"
-                name="about"
                 part="about"
-                @slotchange=${this.#onPanelChange}>
+                @slotchange=${this.#onPanelChange}
+                name="about">
             <rh-audio-player-about></rh-audio-player-about>
           </slot>
           <slot id="subscribe-slot"
-                name="subscribe"
                 part="subscribe"
-                @slotchange=${this.#onPanelChange}>
+                @slotchange=${this.#onPanelChange}
+                name="subscribe">
           </slot>
           <slot id="transcribe-slot"
-                name="transcript"
                 part="transcript"
                 @slotchange=${this.#onPanelChange}
-                @transcriptdownload=${this.#onTranscriptDownload}>
+                @transcriptdownload=${this.#onTranscriptDownload}
+                name="transcript">
           </slot>
         </div>
       </div>

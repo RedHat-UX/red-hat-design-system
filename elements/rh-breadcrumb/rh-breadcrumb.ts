@@ -54,7 +54,7 @@ export class RhBreadcrumb extends LitElement {
   render() {
     const label = this.accessibleLabel ? this.accessibleLabel : 'Breadcrumb';
     return html`
-      <nav aria-label="${label}" part="container" id="container">
+      <nav id="container" part="container" aria-label="${label}">
         <slot></slot>
       </nav>
     `;

@@ -18,7 +18,7 @@ export class UxdotRepoStatusTable extends UxdotRepoElement {
     const status = this.getStatus();
     return html`
       <!-- TODO: remove lightdom after implementing auto-load-->
-      <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
+      <link href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css" rel="stylesheet">
       <div id="container">
         <rh-table>
           <table>
@@ -43,13 +43,13 @@ export class UxdotRepoStatusTable extends UxdotRepoElement {
                 <td>
                   <a href="/elements/${x.slug}/">${x?.name}</a>${x?.overallStatus === 'ready' ? '' : html`
                   <rh-tag color="${x?.color}"
-                          variant="${x?.variant}"
-                          icon="${x?.icon}">${x?.overallStatus}</rh-tag>`}
+                          icon="${x?.icon}"
+                          variant="${x?.variant}">${x?.overallStatus}</rh-tag>`}
                 </td>${x?.libraries.map(x => html`
                 <td>
                   <rh-tag color="${x.color}"
-                          variant="${x.variant}"
-                          icon="${x.icon}">${x.status}</rh-tag>
+                          icon="${x.icon}"
+                          variant="${x.variant}">${x.status}</rh-tag>
                 </td>`)}
               </tr>`)}
             </tbody>

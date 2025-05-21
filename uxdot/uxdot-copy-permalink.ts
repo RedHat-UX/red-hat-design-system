@@ -22,10 +22,10 @@ export class UxdotCopyPermalink extends LitElement {
     return html`
       <slot></slot>
       <span id="signifier">(permalink)</span>
-      <button @click="${this.#copyLink}"
-              id="button"
+      <button id="button"
+              @click="${this.#copyLink}"
               aria-label="${this.copyButtonLabel}">
-        <rh-icon set="ui" icon="link"></rh-icon>
+        <rh-icon icon="link" set="ui"></rh-icon>
       </button>
     `;
   }

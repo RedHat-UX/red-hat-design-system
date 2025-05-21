@@ -73,7 +73,7 @@ export class UxdotPattern extends SSRFailureRecoverableElement {
 
     const actionsLabels = html`
       <span slot="action-label-copy">Copy to Clipboard</span>
-      <span slot="action-label-copy" hidden data-code-block-state="active">Copied!</span>
+      <span slot="action-label-copy" data-code-block-state="active" hidden>Copied!</span>
       <span slot="action-label-wrap">Toggle line wrap</span>
     `;
 
@@ -87,9 +87,9 @@ export class UxdotPattern extends SSRFailureRecoverableElement {
           <label for="picker">Color palette</label>
           <rh-context-picker id="picker"
                              @change="${this.#onChange}"
-                             value="${this.colorPalette}"
+                             allow="${this.allow}"
                              target="${this.target}"
-                             allow="${this.allow}"></rh-context-picker>
+                             value="${this.colorPalette}"></rh-context-picker>
         </form>
 
         <div id="description"><slot></slot></div>
@@ -98,32 +98,32 @@ export class UxdotPattern extends SSRFailureRecoverableElement {
 
         <rh-tabs id="code-tabs"
                  class="code-tabs"
-                 active-index="${ifDefined(!this.#picked ? ['html', 'css', 'js'].indexOf(activeTab) : undefined)}"
                  ?hidden="${this.noCodeTabs}"
-                 @expand="${this.#onExpand}">
+                 @expand="${this.#onExpand}"
+                 active-index="${ifDefined(!this.#picked ? ['html', 'css', 'js'].indexOf(activeTab) : undefined)}">
           <rh-tab id="html-tab" slot="tab">HTML</rh-tab>
           <rh-tab-panel id="html-panel">
-            <rh-code-block highlighting="prerendered"
+            <rh-code-block ?full-height="${this.fullHeight}"
                            actions="copy wrap"
-                           ?full-height="${this.fullHeight}">
+                           highlighting="prerendered">
               ${htmlContent}
               ${actionsLabels}
             </rh-code-block>
           </rh-tab-panel>
           <rh-tab id="css-tab" slot="tab" .disabled="${!hasCss}">CSS</rh-tab>
           <rh-tab-panel id="css-panel">
-            <rh-code-block highlighting="prerendered"
+            <rh-code-block ?full-height="${this.fullHeight}"
                            actions="copy wrap"
-                           ?full-height="${this.fullHeight}">
+                           highlighting="prerendered">
               ${cssContent}
               ${actionsLabels}
             </rh-code-block>
           </rh-tab-panel>
           <rh-tab id="js-tab" slot="tab" .disabled="${!hasJs}">JS</rh-tab>
           <rh-tab-panel id="js-panel">
-            <rh-code-block highlighting="prerendered"
+            <rh-code-block ?full-height="${this.fullHeight}"
                            actions="copy wrap"
-                           ?full-height="${this.fullHeight}">
+                           highlighting="prerendered">
               ${jsContent}
               ${actionsLabels}
             </rh-code-block>

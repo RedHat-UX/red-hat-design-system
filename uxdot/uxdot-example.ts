@@ -48,8 +48,8 @@ export class UxdotExample extends LitElement {
     const { widthAdjustment, alignment } = this;
     return html`
       <div id="container"
-           part="container"
            class="${classMap({ widthAdjustment: widthAdjustment !== '100%' })}"
+           part="container"
            style="--_width: ${widthAdjustment}; --_alignment: ${alignment}">
         <slot></slot>
       </div>

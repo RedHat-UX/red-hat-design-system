@@ -120,9 +120,9 @@ export class RhCue extends LitElement {
     ].filter(Boolean).join('');
     return html`
       <a id="${id}"
-         href="#${id}"
          ?active="${this.active && !heading}"
-         @click=${this.#onClick}>${content}</a>`;
+         @click=${this.#onClick}
+         href="#${id}">${content}</a>`;
   }
 
   #onClick() {

@@ -27,9 +27,9 @@ describe('with `dismissable` and `image-position` attributes, a slotted image, a
   beforeEach(async function() {
     element = await createFixture<RhAnnouncement>(html`
       <rh-announcement dismissable image-position="inline-start">
-        <svg slot="image" width="80" height="48" role="img" aria-label="Sample image">
-          <rect fill="light-dark(var(--rh-color-surface-dark, #383838), var(--rh-color-surface-light, #e0e0e0))" stroke="var(--rh-color-border-subtle)" stroke-width="2px" width="100%" height="100%" stroke-dasharray="4 4"></rect>
-          <text x="17" y="30" style="font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace); font-size: var(--rh-font-size-body-text-md, 1rem);" fill="light-dark(var(--rh-color-text-primary-on-dark, #ffffff), var(--rh-color-text-primary-on-light, #151515))">
+        <svg slot="image" aria-label="Sample image" height="48" role="img" width="80">
+          <rect fill="light-dark(var(--rh-color-surface-dark, #383838), var(--rh-color-surface-light, #e0e0e0))" height="100%" stroke="var(--rh-color-border-subtle)" stroke-dasharray="4 4" stroke-width="2px" width="100%"></rect>
+          <text style="font-family: var(--rh-font-family-code, RedHatMono, 'Red Hat Mono', 'Courier New', Courier, monospace); font-size: var(--rh-font-size-body-text-md, 1rem);" fill="light-dark(var(--rh-color-text-primary-on-dark, #ffffff), var(--rh-color-text-primary-on-light, #151515))" x="17" y="30">
             Image
           </text>
         </svg>

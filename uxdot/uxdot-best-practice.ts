@@ -28,7 +28,7 @@ export class UxdotBestPractice extends LitElement {
       <figure id="container">
         <slot name="image"></slot>
         <figcaption id="${variant}">
-          <span><rh-icon set="ui" icon="${iconMap[variant]}" size="md"></rh-icon>${titleMap[variant]}</span>
+          <span><rh-icon icon="${iconMap[variant]}" set="ui" size="md"></rh-icon>${titleMap[variant]}</span>
           <slot></slot>
         </figcaption>
       </figure>

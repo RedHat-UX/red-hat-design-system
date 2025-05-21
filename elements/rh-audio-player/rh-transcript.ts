@@ -75,7 +75,7 @@ export class RhTranscript extends LitElement {
         </label>
         <rh-tooltip id="download-tooltip">
           <button id="download" @click="${this.#onDownloadClick}" aria-label="${this.downloadLabel}">
-            <rh-icon set="ui" icon="download"></rh-icon>
+            <rh-icon icon="download" set="ui"></rh-icon>
           </button>
           <span slot="content">${this.downloadLabel}</span>
         </rh-tooltip>`}

@@ -55,16 +55,16 @@ describe('<rh-video-embed>', function() {
     beforeEach(async function() {
       element = await createFixture<RhVideoEmbed>(html`
       <rh-video-embed>
-        <img slot="thumbnail" src="https://fakeimg.pl/900x499/282828/eae0d0" alt="fakethumb"/>
+        <img slot="thumbnail" alt="fakethumb" src="https://fakeimg.pl/900x499/282828/eae0d0"/>
         <template>
-          <iframe title="videotitle"
-                  width="900"
-                  height="499"
-                  src="https://www.youtube.com/embed/Hc8emNr2igU"
+          <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen
                   frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  height="499"
                   referrerpolicy="strict-origin-when-cross-origin"
-                  allowfullscreen></iframe>
+                  src="https://www.youtube.com/embed/Hc8emNr2igU"
+                  title="videotitle"
+                  width="900"></iframe>
         </template>
        <p slot="caption">Caption</caption>
       </rh-video-embed>`);
@@ -109,9 +109,9 @@ describe('<rh-video-embed>', function() {
     beforeEach(async function() {
       element = await createFixture<RhVideoEmbed>(html`
       <rh-video-embed>
-        <img slot="thumbnail" src="https://fakeimg.pl/900x499/282828/eae0d0" alt="fakethumb"/>
+        <img slot="thumbnail" alt="fakethumb" src="https://fakeimg.pl/900x499/282828/eae0d0"/>
         <template>
-          <iframe title="videotitle" width="900" height="499" src="https://www.youtube.com/embed/Hc8emNr2igU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen frameborder="0" height="499" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/Hc8emNr2igU" title="videotitle" width="900"></iframe>
         </template>
       </rh-video-embed>`);
       element?.focusableElement?.focus();
@@ -133,9 +133,9 @@ describe('<rh-video-embed>', function() {
     beforeEach(async function() {
       element = await createFixture<RhVideoEmbed>(html`
       <rh-video-embed>
-        <img slot="thumbnail" src="https://fakeimg.pl/900x499/282828/eae0d0" alt="fakethumb"/>
+        <img slot="thumbnail" alt="fakethumb" src="https://fakeimg.pl/900x499/282828/eae0d0"/>
         <template>
-          <iframe title="videotitle" width="900" height="499" src="https://www.youtube.com/embed/Hc8emNr2igU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen frameborder="0" height="499" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/Hc8emNr2igU" title="videotitle" width="900"></iframe>
         </template>
       </rh-video-embed>`);
       await clickElementAtCenter(element.focusableElement);
@@ -156,9 +156,9 @@ describe('<rh-video-embed>', function() {
     beforeEach(async function() {
       element = await createFixture<RhVideoEmbed>(html`
       <rh-video-embed require-consent>
-        <img slot="thumbnail" src="https://fakeimg.pl/900x499/282828/eae0d0" alt="fakethumb"/>
+        <img slot="thumbnail" alt="fakethumb" src="https://fakeimg.pl/900x499/282828/eae0d0"/>
         <template>
-          <iframe title="videotitle" width="900" height="499" src="https://www.youtube.com/embed/Hc8emNr2igU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen frameborder="0" height="499" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/Hc8emNr2igU" title="videotitle" width="900"></iframe>
         </template>
        <p slot="caption">Caption</caption>
       </rh-video-embed>`);
@@ -199,9 +199,9 @@ describe('<rh-video-embed>', function() {
     beforeEach(async function() {
       element = await createFixture<RhVideoEmbed>(html`
       <rh-video-embed require-consent>
-        <img slot="thumbnail" src="https://fakeimg.pl/900x499/282828/eae0d0" alt="fakethumb"/>
+        <img slot="thumbnail" alt="fakethumb" src="https://fakeimg.pl/900x499/282828/eae0d0"/>
         <template>
-          <iframe title="videotitle" width="900" height="499" src="https://www.youtube.com/embed/Hc8emNr2igU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen frameborder="0" height="499" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/Hc8emNr2igU" title="videotitle" width="900"></iframe>
         </template>
       </rh-video-embed>`);
       element.consentButton?.focus();
@@ -225,9 +225,9 @@ describe('<rh-video-embed>', function() {
     beforeEach(async function() {
       element = await createFixture<RhVideoEmbed>(html`
       <rh-video-embed require-consent>
-        <img slot="thumbnail" src="https://fakeimg.pl/900x499/282828/eae0d0" alt="fakethumb"/>
+        <img slot="thumbnail" alt="fakethumb" src="https://fakeimg.pl/900x499/282828/eae0d0"/>
         <template>
-          <iframe title="videotitle" width="900" height="499" src="https://www.youtube.com/embed/Hc8emNr2igU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen frameborder="0" height="499" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/Hc8emNr2igU" title="videotitle" width="900"></iframe>
         </template>
       </rh-video-embed>`);
       await clickElementAtCenter(element.focusableElement.shadowRoot!.querySelector('button')!);

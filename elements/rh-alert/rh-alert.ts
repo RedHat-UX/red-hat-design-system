@@ -215,11 +215,11 @@ export class RhAlert extends LitElement {
                     [state]: true,
                     [variant]: !!variant,
                   })}"
-                  role="alert"
                   aria-hidden="false"
-                  color-palette="lightest">
+                  color-palette="lightest"
+                  role="alert">
         <div id="left-column">
-          <rh-icon id="icon" set="ui" icon="${this.#icon}"></rh-icon>
+          <rh-icon id="icon" icon="${this.#icon}" set="ui"></rh-icon>
         </div>
         <div id="middle-column">
           <header ?hidden="${!_isServer && this.#slots.isEmpty('header')}">
@@ -228,10 +228,10 @@ export class RhAlert extends LitElement {
             </div>${!this.dismissable && this.variant !== 'toast' ? '' : html`
             <div id="header-actions">
               <rh-button id="close-button"
-                         variant="close"
+                         @click="${this.#onClose}"
                          accessible-label="Close"
                          confirm
-                         @click="${this.#onClose}"></rh-button>
+                         variant="close"></rh-button>
             </div>`}
           </header>
           <div id="description">
@@ -288,22 +288,22 @@ function renderToasts() {
     const [firstAction, secondAction] = actions ?? [];
     return html`
     <rh-alert id="${id}"
-              state="${state}"
               class="${classMap({ persistent })}"
-              variant="toast"
-              role="status"
-              aria-live="polite"
               @focusin="${manageAlertAnimation}"
               @focusout="${manageAlertAnimation}"
               @mouseenter="${manageAlertAnimation}"
-              @mouseleave="${manageAlertAnimation}">
+              @mouseleave="${manageAlertAnimation}"
+              aria-live="polite"
+              role="status"
+              state="${state}"
+              variant="toast">
       <h3 slot="header">${heading}</h3>
       ${!message ? '' : typeof message !== 'string' ? message : html`
       <p class="text" ?hidden="${!message}">${message}</p>`}
       ${[firstAction, secondAction].filter(x => !!x).map(action => html`
       <rh-button slot="actions"
-                 variant="${action === firstAction ? 'secondary' : 'link'}"
-                 data-action="${action.action}">${action.text}</rh-button>
+                 data-action="${action.action}"
+                 variant="${action === firstAction ? 'secondary' : 'link'}">${action.text}</rh-button>
       `) ?? []}
     </rh-alert>
   `;

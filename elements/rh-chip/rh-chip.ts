@@ -72,14 +72,14 @@ export class RhChip extends LitElement {
 
   render() {
     return html`
-      <label part="chip" class=${classMap({ [`size-${this.size}`]: !!this.size })}>
+      <label class=${classMap({ [`size-${this.size}`]: !!this.size })} part="chip">
         <slot></slot>
         <input type="checkbox"
-               value="${ifDefined(this.value)}"
-               @change="${this.#onChecked}"
                .checked="${this.checked}"
-               aria-disabled="${String(this.disabled || this.#formDisabled) as 'true' | 'false'}">
-        <rh-icon id="close-icon" set="ui" icon="close-circle"></rh-icon>
+               @change="${this.#onChecked}"
+               aria-disabled="${String(this.disabled || this.#formDisabled) as 'true' | 'false'}"
+               value="${ifDefined(this.value)}">
+        <rh-icon id="close-icon" icon="close-circle" set="ui"></rh-icon>
       </label>
     `;
   }

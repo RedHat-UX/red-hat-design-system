@@ -69,8 +69,8 @@ function rhdsCodeBlock(md: MarkdownIt) {
       const redactedToken = Object.assign(token, { info });
       return html`
         <rh-code-block ${normalized.startsWith('rh' ) ? 'full-height' : ''}
-                       dedent
                        actions="${actions.join(' ')}"
+                       dedent
                        highlighting="prerendered"
                        ${slf.renderAttrs(redactedToken)}>${rendered}</rh-code-block>`.trim();
     } else {

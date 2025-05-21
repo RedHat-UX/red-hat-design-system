@@ -84,7 +84,7 @@ export class RhTag extends LitElement {
               teal: color === 'cyan' || color === 'teal',
               [variant]: true,
               [color]: true })}">
-        <slot name="icon" part="icon">
+        <slot part="icon" name="icon">
           <rh-icon ?hidden="${!icon}" icon="${ifDefined(icon)}" set="${this.iconSet}"></rh-icon>
         </slot>${!this.href ? html`
         <slot id="text"></slot>` : html`

@@ -56,10 +56,10 @@ export class UxdotSideNav extends LitElement {
         <div id="close-button-container">
           <button id="close-button"
               part="close-button"
-              aria-label="Close dialog"
+              @click=${this.toggle}
               @keydown=${this.#onKeydownCloseButton}
-              @click=${this.toggle}>
-            <rh-icon set="ui" icon="close" size="lg"></rh-icon>
+              aria-label="Close dialog">
+            <rh-icon icon="close" set="ui" size="lg"></rh-icon>
           </button>
         </div>
         <nav part="nav" aria-label="Main menu">

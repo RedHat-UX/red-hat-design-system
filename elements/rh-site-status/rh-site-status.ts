@@ -188,12 +188,12 @@ export class RhSiteStatus extends LitElement {
     const { icon, status } = this.#icon;
     return html`
       <div id="container" class="${classMap({ loading })}">
-        <a href="https://status.redhat.com/"
-           aria-busy="${String(this.#loading) as 'true' | 'false'}"
-           aria-live="polite">${this.#loading ? html`
+        <a aria-busy="${String(this.#loading) as 'true' | 'false'}"
+           aria-live="polite"
+           href="https://status.redhat.com/">${this.#loading ? html`
           <rh-spinner size="sm"></rh-spinner>
           <span><slot name="loading-text">Loading</slot></span>` : html`
-          <rh-icon loading="eager" set="ui" icon="${icon}" class="${status}"></rh-icon>
+          <rh-icon class="${status}" icon="${icon}" loading="eager" set="ui"></rh-icon>
           <span>${this.#text}</span>`}
         </a>
       </div>

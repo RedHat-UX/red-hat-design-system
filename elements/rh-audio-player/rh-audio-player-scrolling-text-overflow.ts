@@ -46,10 +46,10 @@ export class RhAudioPlayerScrollingTextOverflow extends LitElement {
     return html`
       <div id="outer"
            class="${classMap({ [direction || 'auto']: true })}"
-           @mouseover=${this.startScrolling}
-           @mouseout=${this.stopScrolling}
+           @blur=${this.stopScrolling}
            @focus=${this.startScrolling}
-           @blur=${this.stopScrolling}>
+           @mouseout=${this.stopScrolling}
+           @mouseover=${this.startScrolling}>
         <div id="inner">
           <slot class="${this.#scrolling ? 'scrolling' : ''} ${this.#isScrollable ? 'scrollable' : ''}"></slot>
         </div>

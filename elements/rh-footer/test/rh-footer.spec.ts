@@ -9,8 +9,8 @@ import '@patternfly/pfe-tools/test/stub-logger.js';
 const KITCHEN_SINK_TEMPLATE = html`
   <rh-footer>
     <a slot="logo" href="/">
-      <img src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" alt="Red Hat logo"
-        loading="lazy"/>
+      <img alt="Red Hat logo" loading="lazy"
+        src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg"/>
     </a>
     <rh-footer-social-link slot="social-links" icon="linkedin">
       <a href="http://www.linkedin.com/company/red-hat">LinkedIn</a>
@@ -116,7 +116,7 @@ const KITCHEN_SINK_TEMPLATE = html`
       </div>
     </rh-footer-universal>
   </rh-footer>
-  <link rel="stylesheet" href="/elements/rh-footer/rh-footer-lightdom.css">
+  <link href="/elements/rh-footer/rh-footer-lightdom.css" rel="stylesheet">
 `;
 
 const UNIVERSAL_FOOTER_TEMPLATE = html`
@@ -145,7 +145,7 @@ const UNIVERSAL_FOOTER_TEMPLATE = html`
       <a href="#">*We’ve updated our privacy statement effective December 30, 202X.</a>
     </div>
   </rh-footer-universal>
-  <link rel="stylesheet" href="/elements/rh-footer/rh-footer-lightdom.css">
+  <link href="/elements/rh-footer/rh-footer-lightdom.css" rel="stylesheet">
 `;
 
 describe('<rh-footer>', function() {
