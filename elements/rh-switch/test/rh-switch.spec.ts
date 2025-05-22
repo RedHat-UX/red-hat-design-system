@@ -45,7 +45,7 @@ describe('<rh-switch>', function() {
     let snapshot: A11yTreeSnapshot;
     beforeEach(async function() {
       element = await createFixture<RhSwitch>(html`
-        <rh-switch accessible-label="Dark Mode" message-on="Message when on" message-off="Message when off"></rh-switch>
+        <rh-switch accessible-label="Dark Mode" message-off="Message when off" message-on="Message when on"></rh-switch>
       `);
       await element.updateComplete;
     });
@@ -128,7 +128,7 @@ describe('<rh-switch>', function() {
     let snapshot: A11yTreeSnapshot;
     beforeEach(async function() {
       element = await createFixture<RhSwitch>(html`
-        <rh-switch checked accessible-label="Change Message" message-on="Message when on" message-off="Message when off"></rh-switch>
+        <rh-switch accessible-label="Change Message" checked message-off="Message when off" message-on="Message when on"></rh-switch>
       `);
 
       await element.updateComplete;
@@ -147,7 +147,7 @@ describe('<rh-switch>', function() {
     let snapshot: A11yTreeSnapshot;
     beforeEach(async function() {
       element = await createFixture<RhSwitch>(html`
-        <rh-switch accessible-label="Change Message" message-on="Message when on" message-off="Message when off"></rh-switch>
+        <rh-switch accessible-label="Change Message" message-off="Message when off" message-on="Message when on"></rh-switch>
       `);
 
       await element.updateComplete;
@@ -166,7 +166,7 @@ describe('<rh-switch>', function() {
     let element: RhSwitch;
     beforeEach(async function() {
       element = await createFixture<RhSwitch>(html`
-        <rh-switch checked show-check-icon accessible-label="Change Message" message-on="Message when on" message-off="Message when off"></rh-switch>
+        <rh-switch accessible-label="Change Message" checked message-off="Message when off" message-on="Message when on" show-check-icon></rh-switch>
       `);
     });
     it('should display a check icon', async function() {
@@ -186,7 +186,7 @@ describe('<rh-switch>', function() {
       const container = await createFixture<HTMLLabelElement>(html`
         <fieldset>
           <label for="with-label">Dark Mode</label>
-          <rh-switch id="with-label" message-on="Message when on" message-off="Message when off"></rh-switch>
+          <rh-switch id="with-label" message-off="Message when off" message-on="Message when on"></rh-switch>
         </fieldset>
       `);
       label = container.querySelector('label')!;
@@ -226,7 +226,7 @@ describe('<rh-switch>', function() {
       const container = await createFixture<HTMLLabelElement>(html`
         <fieldset>
           <label>Dark Mode
-            <rh-switch aria-describedby="switch-messages" message-on="Message when on" message-off="Message when off"></rh-switch>
+            <rh-switch aria-describedby="switch-messages" message-off="Message when off" message-on="Message when on"></rh-switch>
           </label>
         </fieldset>
       `);

@@ -74,9 +74,9 @@ export class RhBackToTop extends LitElement {
 
   render() {
     return html`
-      <a href="${ifDefined(this.href)}" ?hidden="${!this.#visible}" part="trigger">
+      <a part="trigger" ?hidden="${!this.#visible}" href="${ifDefined(this.href)}">
         <slot>Back to top</slot>
-        <rh-icon set="ui" icon="caret-up"></rh-icon>
+        <rh-icon icon="caret-up" set="ui"></rh-icon>
       </a>
     `;
   }

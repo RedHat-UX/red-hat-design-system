@@ -104,19 +104,19 @@ export class RhSwitch extends LitElement {
   render() {
     const { reversed, checked } = this;
     const slots = html`
-      <slot class="message" name="message-on" ?hidden="${!this.checked}"><span aria-hidden="true">${this.messageOn}</span></slot>
-      <slot class="message" name="message-off" ?hidden="${this.checked}"><span aria-hidden="true">${this.messageOff}</span></slot>`;
+      <slot class="message" ?hidden="${!this.checked}" name="message-on"><span aria-hidden="true">${this.messageOn}</span></slot>
+      <slot class="message" ?hidden="${this.checked}" name="message-off"><span aria-hidden="true">${this.messageOff}</span></slot>`;
     return html`
       <div id="container"
-           part="container"
-           class="${classMap({ checked })}">
+           class="${classMap({ checked })}"
+           part="container">
         ${reversed ? slots : ''}
         <div id="switch"
              part="switch">
           <rh-icon id="toggle"
+                   ?hidden="${!this.showCheckIcon}"
                    icon="checkmark"
-                   set="microns"
-                   ?hidden="${!this.showCheckIcon}"></rh-icon>
+                   set="microns"></rh-icon>
         </div>
         ${reversed ? '' : slots}
       </div>

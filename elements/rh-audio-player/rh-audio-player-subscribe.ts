@@ -40,7 +40,7 @@ export class RhAudioPlayerSubscribe extends LitElement {
         <slot name="heading">${this.#headings.wrap(this.menuLabel)}</slot>
       </rh-audio-player-scrolling-text-overflow>
       <slot part="body" ?hidden="${this.#slots.isEmpty(null)}"></slot>
-      <slot name="link" part="links"></slot>`;
+      <slot part="links" name="link"></slot>`;
   }
 
   set menuLabel(label: string) {

@@ -139,14 +139,14 @@ export class RhDialog extends LitElement {
                     ?hidden="${!this.open}">
           <dialog id="dialog"
                   part="dialog"
-                  aria-labelledby=${ifDefined(this.accessibleLabel ? undefined : headerId)}
+                  @cancel=${this.#onNativeDialogCancel}
                   aria-label=${ifDefined(this.accessibleLabel ? this.accessibleLabel : (!headerId ? triggerLabel : undefined))}
-                  @cancel=${this.#onNativeDialogCancel}>
-            <rh-button variant="close"
-                       id="close-button"
+                  aria-labelledby=${ifDefined(this.accessibleLabel ? undefined : headerId)}>
+            <rh-button id="close-button"
                        part="close-button"
                        type="button"
-                       @click=${this.close}>
+                       @click=${this.close}
+                       variant="close">
               <span class="visually-hidden">Close Dialog</span>
             </rh-button>
             <div id="content" part="content">

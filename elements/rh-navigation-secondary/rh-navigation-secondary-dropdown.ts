@@ -66,7 +66,7 @@ export class RhNavigationSecondaryDropdown extends LitElement {
     const classes = { 'expanded': this.expanded, 'highlight': this.#highlight };
 
     return html`
-      <div id="container" part="container" class="${classMap(classes)}">
+      <div id="container" class="${classMap(classes)}" part="container">
         <slot name="link"></slot>
         <slot name="menu"></slot>
       </div>

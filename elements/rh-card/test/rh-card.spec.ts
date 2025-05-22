@@ -24,7 +24,7 @@ describe('<rh-card>', function() {
         <rh-card>
           <h3 slot="header">Default</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est</p>
-          <a href="#" slot="footer">Link</a>
+          <a slot="footer" href="#">Link</a>
         </rh-card>
       `);
     });
@@ -56,7 +56,7 @@ describe('<rh-card>', function() {
         <rh-card>
           <h3>Default</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est</p>
-          <a href="#" slot="footer">Link</a>
+          <a slot="footer" href="#">Link</a>
         </rh-card>
       `);
     });

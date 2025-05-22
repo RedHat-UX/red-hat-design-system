@@ -101,23 +101,23 @@ export class RhButton extends LitElement {
     const { danger, variant } = this;
     const hasIcon = this.#hasIcon;
     return html`
-      <button aria-label="${ifDefined(this.label)}"
-              class="${classMap({
+      <button class="${classMap({
                 danger,
                 hasIcon,
                 [variant]: true,
               })}"
               part="button"
               type="${ifDefined(this.type)}"
-              value="${ifDefined(this.value)}"
               @click="${this.#onClick}"
-              aria-disabled=${String(!!this.disabled || !!this.#internals.formDisabled) as 'true' | 'false'}>
+              aria-disabled=${String(!!this.disabled || !!this.#internals.formDisabled) as 'true' | 'false'}
+              aria-label="${ifDefined(this.label)}"
+              value="${ifDefined(this.value)}">
         <span aria-hidden="true">
           <slot id="icon"
                 part="icon"
                 name="icon">${this.#renderIcon()}</slot>
         </span>
-        <span aria-hidden=${String(!!this.label) as 'true' | 'false'}><slot id="text" ></slot></span>
+        <span aria-hidden=${String(!!this.label) as 'true' | 'false'}><slot id="text"></slot></span>
       </button>
     `;
   }
@@ -146,11 +146,11 @@ export class RhButton extends LitElement {
   #renderIcon(): TemplateResult {
     switch (this.variant.toLowerCase()) {
       case 'close':
-        return html`<rh-icon set="microns" icon="close"></rh-icon>`;
+        return html`<rh-icon icon="close" set="microns"></rh-icon>`;
       case 'play':
-        return html`<rh-icon set="ui" icon="play-fill"></rh-icon>`;
+        return html`<rh-icon icon="play-fill" set="ui"></rh-icon>`;
       default:
-        return html`<rh-icon set="${this.iconSet ?? 'ui'}" icon="${this.icon}"></rh-icon>`;
+        return html`<rh-icon icon="${this.icon}" set="${this.iconSet ?? 'ui'}"></rh-icon>`;
     }
   }
 

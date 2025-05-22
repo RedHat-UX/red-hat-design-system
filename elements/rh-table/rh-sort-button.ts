@@ -54,13 +54,13 @@ export class RhSortButton extends LitElement {
       <button id="sort-button" part="sort-button" @click="${this.sort}" aria-label="Sort">
         <span class="visually-hidden">${!this.sortDirection ? '' : `(sort${!this.column ? '' : ` by ${this.column}`} in ${this.sortDirection === 'asc' ? 'ascending' : 'descending'} order)`}</span>
         <span id="sort-indicator" part="sort-indicator">
-          <svg fill="currentColor"
-               height="1em"
-               width="1em"
-               viewBox="0 0 320 512"
+          <svg style="vertical-align: -0.125em;"
                aria-hidden="true"
+               fill="currentColor"
+               height="1em"
                role="img"
-               style="vertical-align: -0.125em;">
+               viewBox="0 0 320 512"
+               width="1em">
             ${svg`<path d="${paths.get(this.sortDirection ?? 'sort')}"></path>`}
           </svg>
         </span>

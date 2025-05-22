@@ -75,8 +75,8 @@ export class RhAnnouncement extends LitElement {
             })}">
         <div id="row" part="row">
           <div id="image"
-               part="image"
-               class="${classMap({ empty: !this.#slots.hasSlotted('image') })}">
+               class="${classMap({ empty: !this.#slots.hasSlotted('image') })}"
+               part="image">
             <slot name="image"></slot>
           </div>
           <div id="content">
@@ -92,10 +92,10 @@ export class RhAnnouncement extends LitElement {
              ?hidden="${!this.dismissable}"
              ?inert="${!this.dismissable}">
           <rh-button id="close-button"
-                  label="Close"
+                  @click=${this.#closeHandler}
                   confirm
-                  variant="close"
-                  @click=${this.#closeHandler}></rh-button>
+                  label="Close"
+                  variant="close"></rh-button>
         </div>
       </div>
     `;

@@ -2,15 +2,15 @@ import { html } from '@open-wc/testing';
 
 export const NAV = html`
   <rh-navigation-primary>
-    <rh-navigation-primary-item variant="dropdown" summary="Item 1">
-      Item 1 Content 
+    <rh-navigation-primary-item summary="Item 1" variant="dropdown">
+      Item 1 Content
     </rh-navigation-primary-item>
 
-    <rh-navigation-primary-item variant="dropdown" summary="Item 2">
+    <rh-navigation-primary-item summary="Item 2" variant="dropdown">
       Item 2 Content
     </rh-navigation-primary-item>
 
-    <rh-navigation-primary-item variant="dropdown" summary="Item 3">
+    <rh-navigation-primary-item summary="Item 3" variant="dropdown">
       Item 3 Content
     </rh-navigation-primary-item>
 
@@ -26,7 +26,7 @@ export const NAV = html`
 
     <rh-navigation-primary-item slot="event">
       <a href="#summit">
-        <svg width="64" height="35" viewBox="0 0 64 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg fill="none" height="35" viewBox="0 0 64 35" width="64" xmlns="http://www.w3.org/2000/svg">
           <title>Red Hat Summit logo</title>
           <path d="M61.9356 1.34412H2.06356C1.08623 1.34412 0.293945 2.1364 0.293945 3.11373V27.8382C0.293945 28.8156 1.08623 29.6079 2.06356 29.6079H26.4849C26.9543 29.6079 27.4044 29.7943 27.7363 30.1262L30.7477 33.1377C31.4388 33.8287 32.5591 33.8288 33.2502 33.1379L36.263 30.126C36.5948 29.7942 37.0449 29.6079 37.5141 29.6079H61.9356C62.913 29.6079 63.7053 28.8156 63.7053 27.8382V3.11373C63.7053 2.1364 62.913 1.34412 61.9356 1.34412Z" fill="#EE0000"/>
           <path d="M18.3535 12.4776V7.41943H20.9404C21.2873 7.41943 21.5955 7.48805 21.8654 7.62537C22.1351 7.76262 22.3459 7.953 22.4977 8.19616C22.6495 8.43947 22.7252 8.7177 22.7252 9.03079C22.7252 9.34876 22.6385 9.63305 22.4651 9.88348C22.2917 10.134 22.0628 10.3242 21.7787 10.4543L22.8842 12.4776H21.4969L20.5431 10.6349H19.5963V12.4776H18.3535ZM19.5963 9.62332H20.8248C21.0175 9.62332 21.1729 9.57039 21.2909 9.46433C21.4089 9.3584 21.4679 9.22117 21.4679 9.05245C21.4679 8.88388 21.4089 8.74657 21.2909 8.64057C21.1728 8.53465 21.0175 8.48159 20.8248 8.48159H19.5963V9.62332Z" fill="white"/>
@@ -49,17 +49,17 @@ export const NAV = html`
     <rh-navigation-primary-item slot="links">Link 2</rh-navigation-primary-item>
     <rh-navigation-primary-item slot="links">Link 3</rh-navigation-primary-item>
 
-    <rh-navigation-primary-item slot="dropdowns" variant="dropdown" hide="sm" summary="Item 6">
+    <rh-navigation-primary-item slot="dropdowns" hide="sm" summary="Item 6" variant="dropdown">
       Item 6 Content
     </rh-navigation-primary-item>
 
-    <rh-navigation-primary-item slot="dropdowns" variant="dropdown" hide="sm" summary="Item 7">
+    <rh-navigation-primary-item slot="dropdowns" hide="sm" summary="Item 7" variant="dropdown">
       Item 7 Content
     </rh-navigation-primary-item>
 
-    <rh-navigation-primary-item slot="dropdowns" variant="dropdown" summary="Item 8">
+    <rh-navigation-primary-item slot="dropdowns" summary="Item 8" variant="dropdown">
       Item 8 Content
-    </rh-navigation-primary-item>  
+    </rh-navigation-primary-item>
   </rh-navigation-primary>
 `;
 

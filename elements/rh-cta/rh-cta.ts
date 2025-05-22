@@ -135,15 +135,15 @@ export class RhCta extends LitElement {
       !(variant === 'brick' && icon) ? '' : html`<rh-icon .icon=${icon} set="${iconSet ?? 'ui'}"></rh-icon>`;
     const linkContent =
         !href ? html`<slot></slot>${follower}`
-      : html`<a href=${href}
-                download="${ifDefined(download)}"
-                rel="${ifDefined(rel)}"
+      : html`<a download="${ifDefined(download)}"
+                href=${href}
                 referrerpolicy="${ifDefined(referrerpolicy)}"
+                rel="${ifDefined(rel)}"
                 target="${ifDefined(target)}"><slot></slot>${follower}</a>`;
     return html`
       <span id="container"
-            part="container"
             class=${classMap({ icon: !!icon, svg })}
+            part="container"
             @slotchange=${this.firstUpdated}>${iconContent}${linkContent}</span>`;
   }
 

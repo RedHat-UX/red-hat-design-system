@@ -43,12 +43,12 @@ export class HeadingLevelContextConsumer extends ContextConsumer<typeof context,
     const id = options?.id;
     const hidden = options?.hidden ?? false;
     switch (offsetLevel) {
-      case 1: return html`<h1 ?hidden=${hidden} id="${ifDefined(id)}">${content}</h1>`;
-      case 2: return html`<h2 ?hidden=${hidden} id="${ifDefined(id)}">${content}</h2>`;
-      case 3: return html`<h3 ?hidden=${hidden} id="${ifDefined(id)}">${content}</h3>`;
-      case 4: return html`<h4 ?hidden=${hidden} id="${ifDefined(id)}">${content}</h4>`;
-      case 5: return html`<h5 ?hidden=${hidden} id="${ifDefined(id)}">${content}</h5>`;
-      default: return html`<h6 ?hidden=${hidden} id="${ifDefined(id)}">${content}</h6>`;
+      case 1: return html`<h1 id="${ifDefined(id)}" ?hidden=${hidden}>${content}</h1>`;
+      case 2: return html`<h2 id="${ifDefined(id)}" ?hidden=${hidden}>${content}</h2>`;
+      case 3: return html`<h3 id="${ifDefined(id)}" ?hidden=${hidden}>${content}</h3>`;
+      case 4: return html`<h4 id="${ifDefined(id)}" ?hidden=${hidden}>${content}</h4>`;
+      case 5: return html`<h5 id="${ifDefined(id)}" ?hidden=${hidden}>${content}</h5>`;
+      default: return html`<h6 id="${ifDefined(id)}" ?hidden=${hidden}>${content}</h6>`;
     }
   }
 }

@@ -87,31 +87,31 @@ export class UxdotSearch extends LitElement {
   render() {
     return html`
       <input id="input"
-             placeholder="${ifDefined(this.placeholder)}"
-             role="combobox"
-             aria-label="${ifDefined(this.#ariaLabel)}"
+             @input="${this.#onInput}"
              aria-autocomplete="list"
              aria-controls="listbox"
              aria-expanded="${String(this.expanded)}"
-             @input="${this.#onInput}">
-      <div id="container" tabindex="-1" ?hidden="${!this.expanded}">
+             aria-label="${ifDefined(this.#ariaLabel)}"
+             placeholder="${ifDefined(this.placeholder)}"
+             role="combobox">
+      <div id="container" ?hidden="${!this.expanded}" tabindex="-1">
         <ol id="listbox"
-            role="listbox"
-            aria-labelledby="input">${this.items.map((item, i) => !item ? '' : html`
-          <li role="option"
+            aria-labelledby="input"
+            role="listbox">${this.items.map((item, i) => !item ? '' : html`
+          <li aria-selected="${this.activeIndex === i}"
               data-i="${i}"
-              aria-selected="${this.activeIndex === i}">
+              role="option">
             <a id="i-${i}"
-               tabindex="${this.activeIndex === i ? 0 : -1}"
+               @blur="${this.#onBlur}"
                href="${item.value}"
-               @blur="${this.#onBlur}">${item.label}</a>
+               tabindex="${this.activeIndex === i ? 0 : -1}">${item.label}</a>
           </li>`)}
         </ol>
       </div>
       <rh-button id="button"
+                 @click="${this.#onClickSearch}"
                  aria-controls="listbox"
-                 aria-expanded="${String(this.expanded)}"
-                 @click="${this.#onClickSearch}">Search</rh-button>
+                 aria-expanded="${String(this.expanded)}">Search</rh-button>
     `;
   }
 

@@ -86,7 +86,7 @@ describe('<rh-timestamp>', function() {
     };
     const expected = new Date(dateString).toLocaleString('en-US', options);
     const element = await createFixture<RhTimestamp>(html`
-      <rh-timestamp date="Sat Jan 01 2022 00:00:00" .customFormat=${options}></rh-timestamp>
+      <rh-timestamp .customFormat=${options} date="Sat Jan 01 2022 00:00:00"></rh-timestamp>
     `);
     expect(element.time).to.equal(expected);
   });
@@ -146,7 +146,7 @@ describe('<rh-timestamp>', function() {
     const date = new Date(2022, 1, 1, 13, 0).toString();
     const expected = new Date(date).toLocaleString('en-US', { hour12: false });
     const element = await createFixture<RhTimestamp>(html`
-      <rh-timestamp date="${date}" locale="en-US" hour-12="false"></rh-timestamp>
+      <rh-timestamp date="${date}" hour-12="false" locale="en-US"></rh-timestamp>
     `);
 
     expect(element.time).to.equal(expected);
@@ -156,7 +156,7 @@ describe('<rh-timestamp>', function() {
     const date = new Date(2022, 1, 1, 13, 0).toString();
     const expected = new Date(date).toLocaleString('en-GB', { hour12: true });
     const element = await createFixture<RhTimestamp>(html`
-      <rh-timestamp date="${date}" locale="en-GB" hour-12></rh-timestamp>
+      <rh-timestamp date="${date}" hour-12 locale="en-GB"></rh-timestamp>
     `);
 
     expect(element.time).to.equal(expected);

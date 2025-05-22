@@ -137,8 +137,8 @@ export class RhVideoEmbed extends LitElement {
     const show = consent ? 'consent' : video ? 'video' : 'thumbnail';
 
     return html`
-      <figure part="figure" class="${classMap({ video, consent })}">
-        <div part="video" id="video">
+      <figure class="${classMap({ video, consent })}" part="figure">
+        <div id="video" part="video">
           <div aria-hidden="${show !== 'thumbnail'}">
             <slot id="thumbnail" name="thumbnail"></slot>
           </div>
@@ -146,41 +146,41 @@ export class RhVideoEmbed extends LitElement {
           <div id="autoplay"><slot name="autoplay"></slot></div>
           ${this.#showConsent ? html`
             <rh-surface id="consent" color-palette="darker">
-              <svg id="watermark" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1136 639">
+              <svg id="watermark" viewBox="0 0 1136 639" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <defs>
                   <clipPath id="clip-path">
-                    <rect id="Rectangle" width="1136" height="639" transform="translate(150 212)" fill="#212427"/>
+                    <rect id="Rectangle" fill="#212427" height="639" transform="translate(150 212)" width="1136"/>
                   </clipPath>
                   <clipPath id="clip-path-2">
-                    <rect id="Rectangle_1" data-name="Rectangle 1" width="1000.925" height="756.901" fill="none"/>
+                    <rect id="Rectangle_1" data-name="Rectangle 1" fill="none" height="756.901" width="1000.925"/>
                   </clipPath>
                 </defs>
-                <g id="Mask_Group_1" data-name="Mask Group 1" transform="translate(-150 -212)" clip-path="url(#clip-path)">
-                  <g id="Group_2000" data-name="Group 2000" transform="translate(50.847 23.483)" opacity="0.2">
-                    <g id="Group_1999" data-name="Group 1999" clip-path="url(#clip-path-2)">
-                      <path id="Path_3" data-name="Path 3" d="M667.591,436.2c65.743-.063,160.93-13.755,160.857-91.955-.005-6.1-.173-12.042-1.645-17.992L787.482,156.147c-9.114-37.392-17.046-54.39-82.815-87.2C653.636,42.937,542.528-.032,509.656,0c-30.6.026-39.626,39.7-75.9,39.731-35.126.032-61.218-29.408-94.094-29.376-31.72.032-52.114,21.576-67.935,65.8,0,0-44.093,124.706-49.749,142.834a33.047,33.047,0,0,0-1.156,10.213c.047,48.45,191.011,207.231,446.766,207m171.085-60.229c9.114,43.058,9.114,47.589,9.119,53.255.074,73.68-82.641,114.546-191.432,114.645-245.953.226-461.415-143.507-461.5-238.71a97,97,0,0,1,7.889-38.543C114.352,271.234-.1,287.2,0,388.072.148,553.538,392.488,757.185,703.022,756.9c238.021-.216,297.977-107.934,297.9-192.935-.068-66.884-57.932-142.75-162.245-187.994" transform="translate(0.004 0)"/>
+                <g id="Mask_Group_1" clip-path="url(#clip-path)" data-name="Mask Group 1" transform="translate(-150 -212)">
+                  <g id="Group_2000" data-name="Group 2000" opacity="0.2" transform="translate(50.847 23.483)">
+                    <g id="Group_1999" clip-path="url(#clip-path-2)" data-name="Group 1999">
+                      <path id="Path_3" d="M667.591,436.2c65.743-.063,160.93-13.755,160.857-91.955-.005-6.1-.173-12.042-1.645-17.992L787.482,156.147c-9.114-37.392-17.046-54.39-82.815-87.2C653.636,42.937,542.528-.032,509.656,0c-30.6.026-39.626,39.7-75.9,39.731-35.126.032-61.218-29.408-94.094-29.376-31.72.032-52.114,21.576-67.935,65.8,0,0-44.093,124.706-49.749,142.834a33.047,33.047,0,0,0-1.156,10.213c.047,48.45,191.011,207.231,446.766,207m171.085-60.229c9.114,43.058,9.114,47.589,9.119,53.255.074,73.68-82.641,114.546-191.432,114.645-245.953.226-461.415-143.507-461.5-238.71a97,97,0,0,1,7.889-38.543C114.352,271.234-.1,287.2,0,388.072.148,553.538,392.488,757.185,703.022,756.9c238.021-.216,297.977-107.934,297.9-192.935-.068-66.884-57.932-142.75-162.245-187.994" data-name="Path 3" transform="translate(0.004 0)"/>
                     </g>
                   </g>
                 </g>
               </svg>
-              <div part="consent-body" id="consent-body">
+              <div id="consent-body" part="consent-body">
                 <slot name="consent-message">
                   <p id="consent-message">View this video by opting in to “Advertising Cookies.”</p>
                 </slot>
                 <rh-button
                   id="consent-button"
-                  variant="tertiary"
                   @click="${this.#handleConsentClick}"
-                  @keyup="${this.#handleConsentKeyup}"><slot name="consent-button-text">Update preferences</slot></rh-button>
+                  @keyup="${this.#handleConsentKeyup}"
+                  variant="tertiary"><slot name="consent-button-text">Update preferences</slot></rh-button>
               </div>
             </rh-surface>
           ` : ''}
-          <rh-button part="play"
-                     id="play"
-                     variant="play"
+          <rh-button id="play"
+                     part="play"
                      ?hidden="${show !== 'thumbnail'}"
                      @click="${this.#handlePlayClick}"
-                     @keyup="${this.#handlePlayKeyup}">
+                     @keyup="${this.#handlePlayKeyup}"
+                     variant="play">
             <span class="visually-hidden"><slot name="play-button-text">${playLabel}</slot></span>
           </rh-button>
         </div>

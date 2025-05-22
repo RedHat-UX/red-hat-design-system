@@ -84,16 +84,16 @@ export class RhContextPicker extends LitElement {
       <div id="container"
            @input="${this.#onInput}">
         ${allow.map(palette => html`
-        <label for="radio-${palette}" class="visually-hidden">${palette}</label>
+        <label class="visually-hidden" for="radio-${palette}">${palette}</label>
         <rh-tooltip>
           <span slot="content">${palette}</span>
           <input id="radio-${palette}"
                  class="${classMap({ [palette]: true })}"
-                 name="palette"
                  type="radio"
-                 value="${palette}"
+                 ?checked="${value === palette}"
                  aria-describedby="host-label"
-                 ?checked="${value === palette}">
+                 name="palette"
+                 value="${palette}">
         </rh-tooltip>`)}
       </div>
     `;

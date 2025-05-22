@@ -14,12 +14,12 @@ import { themable } from '@rhds/elements/lib/themable.js';
 import styles from './rh-pagination.css';
 
 const L1 = html`
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 14">
+  <svg viewBox="0 0 9 14" xmlns="http://www.w3.org/2000/svg">
     <path d="M.3 6.26 6.24.3C6.63-.1 7.3-.1 7.7.3l.99.99c.4.4.4 1.07 0 1.48L4.49 7l4.2 4.22c.41.4.41 1.07 0 1.48l-.98 1c-.41.4-1.07.4-1.48 0L.31 7.73a1.05 1.05 0 0 1 0-1.48Z"/>
   </svg>`;
 
 const L2 = html`
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.44 14">
+  <svg viewBox="0 0 17.44 14" xmlns="http://www.w3.org/2000/svg">
     <path d="M8.7 6.26 14.66.3a1.05 1.05 0 0 1 1.49 0l.98.99c.42.4.42 1.07 0 1.48L12.92 7l4.2 4.22c.42.4.42 1.07 0 1.48l-.98 1c-.41.4-1.08.4-1.48 0L8.7 7.73a1.05 1.05 0 0 1 0-1.48zM.3 7.74l5.96 5.95c.4.41 1.07.41 1.48 0l.99-.99c.4-.4.4-1.07 0-1.48L4.52 7l4.21-4.22c.41-.4.41-1.07 0-1.48l-.99-1a1.05 1.05 0 0 0-1.48 0L.31 6.27a1.05 1.05 0 0 0 0 1.48z"/>
   </svg>`;
 
@@ -170,14 +170,14 @@ export class RhPagination extends LitElement {
       <div id="container" part="container">
         <a id="first"
            class="stepper"
-           href="${ifDefined(firstHref)}"
            .inert="${this.#currentLink === this.#firstLink}"
-           aria-label="${labelFirst}">${L2}</a>
+           aria-label="${labelFirst}"
+           href="${ifDefined(firstHref)}">${L2}</a>
         <a id="prev"
            class="stepper"
-           href="${ifDefined(prevHref)}"
            .inert="${this.#currentLink === this.#prevLink || this.#currentLink === this.#firstLink}"
-           aria-label="${labelPrevious}">${L1}</a>
+           aria-label="${labelPrevious}"
+           href="${ifDefined(prevHref)}">${L1}</a>
         <nav aria-label="${label}">
           <slot></slot>
         </nav>
@@ -186,14 +186,14 @@ export class RhPagination extends LitElement {
         </div>
         <a id="next"
            class="stepper"
-           href="${ifDefined(nextHref)}"
            .inert="${this.#currentLink === this.#nextLink || this.#currentLink === this.#lastLink}"
-           aria-label="${labelNext}">${L1}</a>
+           aria-label="${labelNext}"
+           href="${ifDefined(nextHref)}">${L1}</a>
         <a id="last"
            class="stepper"
-           href="${ifDefined(lastHref)}"
            .inert="${this.#currentLink === this.#lastLink}"
-           aria-label="${labelLast}">${L2}</a>
+           aria-label="${labelLast}"
+           href="${ifDefined(lastHref)}">${L2}</a>
         <div id="numeric-end" part="numeric-end">
           ${this.#numericContent(currentPage, lastHref)}
         </div>
@@ -209,14 +209,14 @@ export class RhPagination extends LitElement {
             Page
           </slot>
         </span>
-        <input inputmode="numeric"
-               required
-               min=1
-               max="${this.total}"
-               aria-labelledby="go-to-page"
+        <input .value="${currentPage}"
                @change="${this.#onChange}"
                @keyup="${this.#onKeyup}"
-               .value="${currentPage}">
+               aria-labelledby="go-to-page"
+               inputmode="numeric"
+               max="${this.total}"
+               min="1"
+               required>
         <slot ?hidden="${!this.total}" name="out-of">of</slot>
         <a ?hidden="${!this.total}" href="${ifDefined(lastHref)}">${this.total}</a>
       </div>

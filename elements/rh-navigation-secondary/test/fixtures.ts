@@ -2,14 +2,14 @@ import { html } from '@open-wc/testing';
 
 export const NAV = html`
 <rh-navigation-secondary role="navigation">
-  <a href="#" slot="logo">Red Hat Ansible Automation Platform</a>
+  <a slot="logo" href="#">Red Hat Ansible Automation Platform</a>
   <ul slot="nav">
     <li>
       <rh-navigation-secondary-dropdown>
-        <a href="#" slot="link">Explore</a>
+        <a slot="link" href="#">Explore</a>
         <rh-navigation-secondary-menu slot="menu">
           <rh-navigation-secondary-menu-section slot="section">
-            <h3 slot="header" id="ansible-platform"><a href="#">Why Red Hat Ansible Automation Platforms</a></h3>
+            <h3 id="ansible-platform" slot="header"><a href="#">Why Red Hat Ansible Automation Platforms</a></h3>
             <ul slot="links">
               <li><a href="#">Integrations</a></li>
               <li><a href="#">Custom success stories </a></li>
@@ -53,7 +53,7 @@ export const NAV = html`
     </li>
     <li>
       <rh-navigation-secondary-dropdown>
-        <a href="#" slot="link">Use cases</a>
+        <a slot="link" href="#">Use cases</a>
         <rh-navigation-secondary-menu slot="menu">
           <ul slot="section">
             <li><a href="#">Infrastructure</a></li>
@@ -70,7 +70,7 @@ export const NAV = html`
     </li>
     <li>
       <rh-navigation-secondary-dropdown>
-        <a href="#" slot="link">Fixed Width</a>
+        <a slot="link" href="#">Fixed Width</a>
         <rh-navigation-secondary-menu slot="menu" type="fixed-width">
           <ul slot="links">
             <li><a href="#">Containers</a></li>
@@ -87,15 +87,15 @@ export const NAV = html`
 `;
 
 export const DARKVARIANT = html`
-<rh-navigation-secondary role="navigation" color-palette="dark">
-  <a href="#" slot="logo">Red Hat Ansible Automation Platform</a>
+<rh-navigation-secondary color-palette="dark" role="navigation">
+  <a slot="logo" href="#">Red Hat Ansible Automation Platform</a>
   <ul slot="nav">
     <li>
       <rh-navigation-secondary-dropdown>
-        <a href="#" slot="link">Explore</a>
+        <a slot="link" href="#">Explore</a>
         <rh-navigation-secondary-menu slot="menu">
           <rh-navigation-secondary-menu-section slot="section">
-            <h3 slot="header" id="ansible-platform"><a href="#">Why Red Hat Ansible Automation Platforms</a></h3>
+            <h3 id="ansible-platform" slot="header"><a href="#">Why Red Hat Ansible Automation Platforms</a></h3>
             <ul slot="links">
               <li><a href="#">Integrations</a></li>
               <li><a href="#">Custom success stories </a></li>
@@ -139,7 +139,7 @@ export const DARKVARIANT = html`
     </li>
     <li>
       <rh-navigation-secondary-dropdown>
-        <a href="#" slot="link">Use cases</a>
+        <a slot="link" href="#">Use cases</a>
         <rh-navigation-secondary-menu slot="menu">
           <ul slot="section">
             <li><a href="#">Infrastructure</a></li>
@@ -156,7 +156,7 @@ export const DARKVARIANT = html`
     </li>
     <li>
       <rh-navigation-secondary-dropdown>
-        <a href="#" slot="link">Fixed Width</a>
+        <a slot="link" href="#">Fixed Width</a>
         <rh-navigation-secondary-menu slot="menu" type="fixed-width">
           <ul slot="links">
             <li><a href="#">Containers</a></li>

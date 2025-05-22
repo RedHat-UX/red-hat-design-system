@@ -50,10 +50,10 @@ export class RhFooterLinks extends LitElement {
 
   render() {
     return html`
-      <div part="header" class="header">
+      <div class="header" part="header">
         <slot name="header"></slot>
       </div>
-      <div part="default" class="default">
+      <div class="default" part="default">
         <slot name="panel"></slot>
         <slot></slot>
       </div>

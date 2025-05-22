@@ -63,15 +63,15 @@ export class UxdotSpacerTokensTable extends LitElement {
 
     return html`
       <!-- TODO: remove lightdom after implementing auto-load-->
-      <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
+      <link href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css" rel="stylesheet">
       <rh-table color-palette="${this.colorPalette}">
         <table>
           <caption>${this.caption}</caption>
           <thead>
             <tr>
-              <th scope="col" data-label="Example">Example</th>
-              <th scope="col" data-label="Token">Token</th>
-              <th scope="col" data-label="Description">Description</th>
+              <th data-label="Example" scope="col">Example</th>
+              <th data-label="Token" scope="col">Token</th>
+              <th data-label="Description" scope="col">Description</th>
               <th scope="col"></th>
             </tr>
           </thead>
@@ -98,7 +98,7 @@ export class UxdotSpacerTokensTable extends LitElement {
                 <div>
                   <uxdot-copy-button copy="var(--${token.name}, ${token.$value})"></uxdot-copy-button>
                   <a href="/tokens/space/#${token.name}">
-                    <rh-icon icon="link" set="ui" aria-label="link"></rh-icon>
+                    <rh-icon aria-label="link" icon="link" set="ui"></rh-icon>
                   </a>
                 </div>
               </td>

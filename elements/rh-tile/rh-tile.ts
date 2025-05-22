@@ -200,33 +200,33 @@ export class RhTile extends LitElement {
     return html`
       <div id="outer" class="${classMap({ bleed, checkable, compact, checked, desaturated, disabled })}">
         <slot id="image"
-              name="image"
               ?hidden="${this.checkable}"
+              name="image"
         ></slot>
         <div id="inner">
           <slot id="icon"
                 class="${classMap({ compact, checkable })}"
-                name="icon"
-                ?hidden="${this.icon === undefined && !hasSlottedIcon}">${this.icon === undefined ? ''
+                ?hidden="${this.icon === undefined && !hasSlottedIcon}"
+                name="icon">${this.icon === undefined ? ''
       : html`<rh-icon icon="${ifDefined(this.icon)}" set="${this.iconSet}"></rh-icon>`}
           </slot>
           <div id="content">
             <div id="header">
               <slot id="title"
-                    name="title"
-                    ?hidden="${this.checkable || this.compact}"></slot>
+                    ?hidden="${this.checkable || this.compact}"
+                    name="title"></slot>
               <slot id="headline" name="headline"></slot>
-              <div id="input-outer" aria-hidden="true" ?hidden="${!this.#isCheckable}" ?inert="${!this.#isCheckable}">
+              <div id="input-outer" ?hidden="${!this.#isCheckable}" ?inert="${!this.#isCheckable}" aria-hidden="true">
                 <input id="input"
                        type="${this.radioGroup ? 'radio' : 'checkbox'}"
-                       tabindex="-1"
                        ?checked="${checked}"
-                       ?disabled="${disabled}"></input>
+                       ?disabled="${disabled}"
+                       tabindex="-1"></input>
               </div>
             </div>
             <slot id="body" class="${classMap({ empty: this.#slots.isEmpty() })}"></slot>
             <div id="footer" class="${classMap({ empty: this.#slots.isEmpty('footer') })}">
-              <slot id="footer-text" name="footer"></slot><rh-icon set="ui" icon="${linkIcon}"></rh-icon>
+              <slot id="footer-text" name="footer"></slot><rh-icon icon="${linkIcon}" set="ui"></rh-icon>
             </div>
           </div>
         </div>

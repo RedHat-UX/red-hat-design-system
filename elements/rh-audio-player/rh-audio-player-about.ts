@@ -56,7 +56,7 @@ export class RhAudioPlayerAbout extends LitElement {
           ${heading}
         </rh-audio-player-scrolling-text-overflow>
       </hgroup>`}
-      <div part="body" ?hidden="${!hasContent}" tabindex=0><slot></slot></div>
+      <div part="body" ?hidden="${!hasContent}" tabindex="0"><slot></slot></div>
       <slot part="profile" name="profile"></slot>`;
   }
 

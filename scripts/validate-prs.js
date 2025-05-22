@@ -1,7 +1,6 @@
 import { default as read } from '@changesets/read';
 import semanticRelease from 'semantic-release';
 
-/** @typedef {'major'|'minor'|'patch'} ReleaseType */
 
 /**
  * named capture group 1 `commitType`:
@@ -18,7 +17,6 @@ async function getReleaseType(title, mergeType) {
       dryRun: true,
       branches: ['main'],
     }) ?? {};
-    /** @type {ReleaseType} */
     const type = result?.nextRelease?.type;
     return type;
   } else {
@@ -44,7 +42,6 @@ export async function validate({ context }) {
   const type = await getReleaseType(title, autoMerge?.merge_method) ?? null;
   const sets = await read(process.cwd());
 
-  /** @type {ReleaseType} */
   const release = sets.reduce((greatest, type) => {
     switch (greatest) {
       case null:

@@ -29,7 +29,7 @@ describe('<rh-breadcrumb>', function() {
             <li><a href="#">Red Hat OpenShift on AWS</a></li>
             <li><a href="#">4</a></li>
             <li><a href="#">Introduction to ROSA</a></li>
-            <li><a href="#" aria-current="page">Chapter 1. Understanding ROSA</a></li>
+            <li><a aria-current="page" href="#">Chapter 1. Understanding ROSA</a></li>
           </ol>
         </rh-breadcrumb>
       `);
@@ -94,7 +94,7 @@ describe('<rh-breadcrumb>', function() {
             <li><a href="#">Red Hat OpenShift on AWS</a></li>
             <li><a href="#">4</a></li>
             <li><a href="#">Introduction to ROSA</a></li>
-            <li><a href="#" aria-current="page">Chapter 1. Understanding ROSA</a></li>
+            <li><a aria-current="page" href="#">Chapter 1. Understanding ROSA</a></li>
           </ol>
         </rh-breadcrumb>
       `);

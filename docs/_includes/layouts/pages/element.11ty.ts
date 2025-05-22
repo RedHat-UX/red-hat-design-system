@@ -79,7 +79,7 @@ export default class ElementsPage extends Renderer<Context> {
     ].filter(Boolean);
 
     return html`${stylesheets.map(x => html`
-      <link rel="stylesheet" data-helmet href="${x}">`).join('')}
+      <link data-helmet href="${x}" rel="stylesheet">`).join('')}
 
       <noscript data-helmet>
         <style>
@@ -124,9 +124,9 @@ export default class ElementsPage extends Renderer<Context> {
 
   #actionsLabels = html`
     <span slot="action-label-copy">Copy to Clipboard</span>
-    <span slot="action-label-copy" hidden data-code-block-state="active">Copied!</span>
+    <span slot="action-label-copy" data-code-block-state="active" hidden>Copied!</span>
     <span slot="action-label-wrap">Wrap lines</span>
-    <span slot="action-label-wrap" hidden data-code-block-state="active">Overflow lines</span>
+    <span slot="action-label-wrap" data-code-block-state="active" hidden>Overflow lines</span>
   `;
 
   async #innerMD(content = '') {
@@ -178,7 +178,7 @@ export default class ElementsPage extends Renderer<Context> {
        : ctx.doc.overviewImageHref.endsWith('svg') ? html`
       <uxdot-example>${await this.#getOverviewInlineSvg(ctx)}</uxdot-example>
       ` : html`
-      <uxdot-example color-palette="lightest"><img src="${ctx.doc.overviewImageHref}" alt="" aria-labelledby="overview-image-description"></uxdot-example>`}
+      <uxdot-example color-palette="lightest"><img alt="" aria-labelledby="overview-image-description" src="${ctx.doc.overviewImageHref}"></uxdot-example>`}
       ${this.#header('Status')}
       <uxdot-repo-status-list element="${ctx.tagName}"></uxdot-repo-status-list>
       ${this.#header('Sample element')}
@@ -195,7 +195,7 @@ export default class ElementsPage extends Renderer<Context> {
     return [
       content,
       html`
-      <section class="band" id="installation">
+      <section id="installation" class="band">
         ${this.#header('Importing')}
         <p>Add ${doc.docsPage.tagName} to your page with this import statement:</p>
         <rh-code-block actions="copy" highlighting="prerendered">${this.highlight('html', dedent(html`
@@ -204,7 +204,7 @@ export default class ElementsPage extends Renderer<Context> {
           </script>`))}
           ${this.#actionsLabels}
         </rh-code-block>
-        <p>To learn more about installing RHDS elements on your site using an import map read our <a href="/get-started/developers/installation/">getting started docs</a>.        
+        <p>To learn more about installing RHDS elements on your site using an import map read our <a href="/get-started/developers/installation/">getting started docs</a>.
       </section>
       `,
 
@@ -239,7 +239,7 @@ export default class ElementsPage extends Renderer<Context> {
 
         <rh-code-block actions="copy" highlighting="prerendered">
           ${this.highlight('html', html`
-          <link rel="stylesheet" href="/path/to/${docsPage.tagName}/${docsPage.tagName}-lightdom.css">
+          <link href="/path/to/${docsPage.tagName}/${docsPage.tagName}-lightdom.css" rel="stylesheet">
           `.trim())}
         </rh-code-block>
       `;
@@ -259,7 +259,7 @@ export default class ElementsPage extends Renderer<Context> {
 
         <rh-code-block actions="copy" highlighting="prerendered">
           ${this.highlight('html', html`
-          <link rel="stylesheet" href="/path/to/${docsPage.tagName}/${docsPage.tagName}-lightdom-shim.css">
+          <link href="/path/to/${docsPage.tagName}/${docsPage.tagName}-lightdom-shim.css" rel="stylesheet">
           `.trim())}
         </rh-code-block>
 
@@ -634,7 +634,7 @@ export default class ElementsPage extends Renderer<Context> {
           ${!cssProperties.length ? html`
           <em>None</em>` : html`
           <rh-table>
-            <table class=css-custom-properties>
+            <table class="css-custom-properties">
               <thead>
                 <tr>
                   <th scope="col">CSS Property</th>
@@ -647,7 +647,7 @@ export default class ElementsPage extends Renderer<Context> {
                   <td><code>${prop.name}</code></td>
                   <td>${await this.#innerMD(prop.description ?? '')}</td>
                   <td>
-                    ${!prop.default?.startsWith('#') ? html`<code>` : html`<code data-color="${prop.default}" style="--color:${prop.default}">`}${prop.default ?? '—'}</code>
+                    ${!prop.default?.startsWith('#') ? html`<code>` : html`<code style="--color:${prop.default}" data-color="${prop.default}">`}${prop.default ?? '—'}</code>
                   </td>
                 </tr>`))).join('')}
               </tbody>
@@ -758,12 +758,12 @@ export default class ElementsPage extends Renderer<Context> {
             return html`
               ${this.#header(demo.title, 2, `demo-${labelSlug}`)}
               <uxdot-demo id="${projectId}"
-                          tag="${tagName}"
                           demo="${demoSlug}"
-                          demo-title="${demo.title}"
-                          demo-source-url="${sourceUrl}"
-                          demo-url="${demoUrl}"
                           demo-file-path="${demo.filePath}"
+                          demo-source-url="${sourceUrl}"
+                          demo-title="${demo.title}"
+                          demo-url="${demoUrl}"
+                          tag="${tagName}"
               >${codeblocks}</uxdot-demo>
             `;
           } else {

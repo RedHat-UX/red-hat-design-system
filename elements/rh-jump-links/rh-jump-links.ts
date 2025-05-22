@@ -76,13 +76,13 @@ export class RhJumpLinks extends LitElement {
     return html`
         <button id="scroll-start"
                 class="overflow-button"
-                ?hidden="${!overflow}"
-                tabindex="-1"
-                data-direction="start"
-                aria-label="${this.getAttribute('label-scroll-left') ?? 'Scroll back'}"
                 ?disabled="${!overflowLeft}"
-                @click="${this.#onClickScroll}">
-          <rh-icon set="ui" icon="caret-left" loading="eager"></rh-icon>
+                ?hidden="${!overflow}"
+                @click="${this.#onClickScroll}"
+                aria-label="${this.getAttribute('label-scroll-left') ?? 'Scroll back'}"
+                data-direction="start"
+                tabindex="-1">
+          <rh-icon icon="caret-left" loading="eager" set="ui"></rh-icon>
         </button>
 
         <div id="container" role="list">
@@ -91,13 +91,13 @@ export class RhJumpLinks extends LitElement {
 
         <button id="scroll-end"
                 class="overflow-button"
-                ?hidden="${!overflow}"
-                tabindex="-1"
-                data-direction="end"
-                aria-label="${this.getAttribute('label-scroll-right') ?? 'Scroll forward'}"
                 ?disabled="${!overflowRight}"
-                @click="${this.#onClickScroll}">
-           <rh-icon set="ui" icon="caret-right" loading="eager"></rh-icon>
+                ?hidden="${!overflow}"
+                @click="${this.#onClickScroll}"
+                aria-label="${this.getAttribute('label-scroll-right') ?? 'Scroll forward'}"
+                data-direction="end"
+                tabindex="-1">
+           <rh-icon icon="caret-right" loading="eager" set="ui"></rh-icon>
         </button>
     `;
   }

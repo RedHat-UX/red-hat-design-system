@@ -69,7 +69,7 @@ describe('<rh-accordion>', function() {
               ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
               rebum.</p>
           </rh-accordion-panel>
-        </rh-accordion>          
+        </rh-accordion>
       `);
       headers = Array.from(element.querySelectorAll('rh-accordion-header'));
       panels = Array.from(element.querySelectorAll('rh-accordion-panel'));
@@ -496,9 +496,9 @@ describe('<rh-accordion>', function() {
     beforeEach(async function() {
       element = await fixture<RhAccordion>(html`
         <rh-accordion>
-          <h2><rh-accordion-header expanded id="attribute-header-1">h1</rh-accordion-header></h2>
+          <h2><rh-accordion-header id="attribute-header-1" expanded>h1</rh-accordion-header></h2>
           <rh-accordion-panel id="attribute-panel-1"><p>p1</p></rh-accordion-panel>
-          <h2><rh-accordion-header expanded id="attribute-header-2">h2</rh-accordion-header></h2>
+          <h2><rh-accordion-header id="attribute-header-2" expanded>h2</rh-accordion-header></h2>
           <rh-accordion-panel id="attribute-panel-2"><p>p2</p></rh-accordion-panel>
           <h2><rh-accordion-header>h3</rh-accordion-header></h2>
           <rh-accordion-panel><p>p3</p></rh-accordion-panel>

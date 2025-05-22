@@ -51,30 +51,30 @@ export class RhAudioPlayerRateStepper extends LitElement {
         <div>
           <button id="stepdown"
                   class="tabbable playback-rate-step"
-                  tabindex="-1"
-                  aria-label="<"
                   ?disabled="${this.disabled || this.playbackRate < 0.5}"
-                  @click="${this.#dec}">
+                  @click="${this.#dec}"
+                  aria-label="<"
+                  tabindex="-1">
             <rh-icon icon="caret-left" set="microns"></rh-icon>
           </button>
           <select id="playback-rate"
                   class="tabbable"
-                  aria-label="${ifDefined(this.label)}"
                   ?disabled="${this.disabled}"
-                  @click="${this.#onPlaybackRateSelect}"
+                  .value="${this.playbackRate?.toFixed(pbrFixed)}"
                   @change="${this.#onPlaybackRateSelect}"
-                  .value="${this.playbackRate?.toFixed(pbrFixed)}">${this.#playbackRates.map(step => html`
-            <option .value="${step.toFixed(pbrFixed)}"
-                    ?selected=${this.playbackRate.toFixed(pbrFixed) === step.toFixed(pbrFixed)}>
+                  @click="${this.#onPlaybackRateSelect}"
+                  aria-label="${ifDefined(this.label)}">${this.#playbackRates.map(step => html`
+            <option ?selected=${this.playbackRate.toFixed(pbrFixed) === step.toFixed(pbrFixed)}
+                    .value="${step.toFixed(pbrFixed)}">
               ${step.toFixed(pbrFixed)}x
             </option>`)}
           </select>
           <button id="stepup"
                   class="tabbable playback-rate-step"
-                  tabindex="-1"
-                  aria-label=">"
                   ?disabled="${this.disabled || this.playbackRate > 1.75}"
-                  @click="${this.#inc}">
+                  @click="${this.#inc}"
+                  aria-label=">"
+                  tabindex="-1">
             <rh-icon icon="caret-right" set="microns"></rh-icon>
           </button>
         </div>

@@ -59,8 +59,8 @@ describe('<rh-stat>', function() {
   describe('adjusting window size', function() {
     beforeEach(async function() {
       element = await fixture<RhStat>(html`
-        <rh-stat titleplacement="below" size="large" top="statistic">
-            <rh-icon slot="icon" set="standard" icon="atom"></rh-icon>
+        <rh-stat size="large" titleplacement="below" top="statistic">
+            <rh-icon slot="icon" icon="atom" set="standard"></rh-icon>
             <span slot="title">Overwrite Title</span>
             <p>Stat body that includes two lines and a footnote.</p>
             <span slot="statistic">Overwrite Statistic</span>

@@ -235,7 +235,7 @@ export default class TokensPage extends Renderer<Data> {
             ${isColor && token.path.includes('text') ? 'Aa'
             : isFont ? (example || (token.attributes?.aliases as string[])?.[0] || 'Aa')
             : name === 'breakpoint' ? html`
-            <img src="/assets/breakpoints/device-${token.name}.svg" role="presentation">`
+            <img role="presentation" src="/assets/breakpoints/device-${token.name}.svg">`
             : example}
           </samp>
         </td>
@@ -244,7 +244,7 @@ export default class TokensPage extends Renderer<Data> {
         </td>
         <td>
           ${( isDimension ? html`<code>${token.$value}<code>`
-            : isColor ? html`<code style="--color: ${token.$value}">${token.$value}</code> `
+            : isColor ? html`<code style="--color: ${token.$value}">${token.$value}</code>`
             : isWeight ? html`
             <code class="numerical">${token.$value}</code>
             <code class="common">${(token.attributes?.aliases as string[])?.[0] ?? ''}</code>`
@@ -310,7 +310,7 @@ export default class TokensPage extends Renderer<Data> {
                class="swatches"
                color-palette="lightest">
         <h${level + 1} slot="header">Theme Tokens</h${level + 1}>
-        <label for="picker-${slug}" slot="header">Color Palette</label>
+        <label slot="header" for="picker-${slug}">Color Palette</label>
         <rh-context-picker id="picker-${slug}"
                            slot="header"
                            allow="lightest,darkest"
@@ -420,9 +420,9 @@ export default class TokensPage extends Renderer<Data> {
     const seenPaths = new Set<string>();
     const options: Options = { tokens, name, path, slug, level: 1, exclude, include, seenPaths };
     return html`
-      <link rel="stylesheet" data-helmet href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
-      <link rel="stylesheet" data-helmet href="/styles/samp.css">
-      <link rel="stylesheet" data-helmet href="/styles/pages/tokens.css">
+      <link data-helmet href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css" rel="stylesheet">
+      <link data-helmet href="/styles/samp.css" rel="stylesheet">
+      <link data-helmet href="/styles/pages/tokens.css" rel="stylesheet">
       <script type="module" data-helmet>
         import '@uxdot/elements/uxdot-spacer-tokens-table.js';
         import '@rhds/elements/rh-card/rh-card.js';

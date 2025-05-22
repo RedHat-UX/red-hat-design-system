@@ -103,22 +103,22 @@ export class RhSubnav extends LitElement {
       <nav part="container" aria-label="${this.accessibleLabel}">
         ${!this.#overflow.showScrollButtons ? '' : html`
           <button id="previous"
-                  tabindex="-1"
-                  data-direction="start"
-                  aria-label="${this.getAttribute('label-scroll-left') ?? 'Scroll back'}"
                   ?disabled="${!this.#overflow.overflowLeft}"
-                  @click="${this.#onClickScroll}">
-            <rh-icon set="ui" icon="caret-left" loading="eager"></rh-icon>
+                  @click="${this.#onClickScroll}"
+                  aria-label="${this.getAttribute('label-scroll-left') ?? 'Scroll back'}"
+                  data-direction="start"
+                  tabindex="-1">
+            <rh-icon icon="caret-left" loading="eager" set="ui"></rh-icon>
           </button>`}
         <slot part="links" @slotchange="${this.#onSlotchange}"></slot>
         ${!this.#overflow.showScrollButtons ? '' : html`
           <button id="next"
-                  tabindex="-1"
-                  data-direction="end"
-                  aria-label="${this.getAttribute('label-scroll-right') ?? 'Scroll forward'}"
                   ?disabled="${!this.#overflow.overflowRight}"
-                  @click="${this.#onClickScroll}">
-            <rh-icon set="ui" icon="caret-right" loading="eager"></rh-icon>
+                  @click="${this.#onClickScroll}"
+                  aria-label="${this.getAttribute('label-scroll-right') ?? 'Scroll forward'}"
+                  data-direction="end"
+                  tabindex="-1">
+            <rh-icon icon="caret-right" loading="eager" set="ui"></rh-icon>
           </button>`}
       </nav>
     `;

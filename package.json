@@ -287,6 +287,7 @@
     "@11ty/eleventy-plugin-rss": "^2.0.3",
     "@commitlint/cli": "^19.8.0",
     "@commitlint/config-conventional": "^19.8.0",
+    "@html-eslint/eslint-plugin": "^0.40.3",
     "@lit-labs/eleventy-plugin-lit": "^1.0.5",
     "@lit-labs/ssr": "^3.3.1",
     "@lit-labs/ssr-client": "^1.1.7",

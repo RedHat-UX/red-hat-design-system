@@ -38,7 +38,7 @@ describe('<rh-tile>', function() {
     beforeEach(async function() {
       element = await createFixture<RhTile>(html`
         <rh-tile>
-          <img slot="image" src="${dataurl}" alt="296 X 50 placeholder">
+          <img slot="image" alt="296 X 50 placeholder" src="${dataurl}">
           <div slot="title">Title</div>
           <h2 slot="headline"><a href="#top">Link</a></h2>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -58,7 +58,7 @@ describe('<rh-tile>', function() {
     beforeEach(async function() {
       element = await createFixture<RhTile>(html`
         <rh-tile checkable>
-          <img slot="image" src="${dataurl}" alt="296 X 50 placeholder">
+          <img slot="image" alt="296 X 50 placeholder" src="${dataurl}">
           <div slot="title">Title</div>
           <h2 slot="headline"><a href="#top">Link</a></h2>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.

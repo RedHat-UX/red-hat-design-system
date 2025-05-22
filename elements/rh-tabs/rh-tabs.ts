@@ -169,25 +169,25 @@ export class RhTabs extends LitElement {
     const { vertical = false, box = false, centered = false } = this;
     const inset = this.box === 'inset' ? 'inset' : '';
     return html`
-      <div id="container" part="container" class="${classMap({ vertical, box, inset, centered, overflow: this.#overflow.showScrollButtons })}">
+      <div id="container" class="${classMap({ vertical, box, inset, centered, overflow: this.#overflow.showScrollButtons })}" part="container">
         <div part="tabs-container">${!this.#overflow.showScrollButtons ? '' : html`
-          <button id="previous-tab" tabindex="-1"
+          <button id="previous-tab" ?disabled="${!this.#overflow.overflowLeft}"
+                  @click="${() => !this.matches(':dir(rtl)') ? this.#overflow.scrollLeft() : this.#overflow.scrollRight()}"
                   aria-label="${this.getAttribute('label-scroll-left') ?? 'Scroll left'}"
-                  ?disabled="${!this.#overflow.overflowLeft}"
-                  @click="${() => !this.matches(':dir(rtl)') ? this.#overflow.scrollLeft() : this.#overflow.scrollRight()}">
-            <rh-icon set="ui" icon="caret-left" loading="eager"></rh-icon>
+                  tabindex="-1">
+            <rh-icon icon="caret-left" loading="eager" set="ui"></rh-icon>
           </button>`}
           <div id="tablist" role="tablist">
-            <slot name="tab"
-                  part="tabs"
-                  @slotchange="${this.#onSlotchange}"></slot>
+            <slot part="tabs"
+                  @slotchange="${this.#onSlotchange}"
+                  name="tab"></slot>
           </div>${!this.#overflow.showScrollButtons ? '' : html`
           <button id="next-tab"
-                  tabindex="-1"
-                  aria-label="${this.getAttribute('label-scroll-right') ?? 'Scroll right'}"
                   ?disabled="${!this.#overflow.overflowRight}"
-                  @click="${() => !this.matches(':dir(rtl)') ? this.#overflow.scrollRight() : this.#overflow.scrollLeft()}">
-             <rh-icon set="ui" icon="caret-right" loading="eager"></rh-icon>
+                  @click="${() => !this.matches(':dir(rtl)') ? this.#overflow.scrollRight() : this.#overflow.scrollLeft()}"
+                  aria-label="${this.getAttribute('label-scroll-right') ?? 'Scroll right'}"
+                  tabindex="-1">
+             <rh-icon icon="caret-right" loading="eager" set="ui"></rh-icon>
           </button>`}
         </div>
         <slot part="panels" @slotchange="${this.#onSlotchange}"></slot>

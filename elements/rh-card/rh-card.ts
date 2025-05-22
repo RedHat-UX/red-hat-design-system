@@ -112,19 +112,18 @@ export class RhCard extends LitElement {
     const hasBody = this.#slots.hasSlotted(null);
     const header = html`
       <div id="header"
-           part="header"
-           class="${classMap({ empty: !hasHeader })}">
+           class="${classMap({ empty: !hasHeader })}"
+           part="header">
         <slot name="header"></slot>
       </div>`;
     const footer = html`
       <div id="footer"
-           part="footer"
-           class="${classMap({ empty: !hasFooter })}">
+           class="${classMap({ empty: !hasFooter })}"
+           part="footer">
         <slot name="footer"></slot>
       </div>`;
     return html`
      <div id="container"
-          part="container"
           class="${classMap({
             standard,
             body: hasBody,
@@ -133,15 +132,16 @@ export class RhCard extends LitElement {
             image: hasImage,
             [variant]: !!variant,
             [computedPalette ?? '']: !!computedPalette,
-          })}">${promo ? '' : header}
+          })}"
+          part="container">${promo ? '' : header}
         <div id="image"
-             part="image"
-             class="${classMap({ empty: !hasImage })}">
+             class="${classMap({ empty: !hasImage })}"
+             part="image">
           <slot name="image"></slot>
         </div>
         <div id="body"
-             part="body"
-             class="${classMap({ empty: !hasBody })}">
+             class="${classMap({ empty: !hasBody })}"
+             part="body">
           ${!promo ? '' : header}
           <slot></slot>
           ${!promo ? '' : footer}

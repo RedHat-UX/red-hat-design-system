@@ -113,8 +113,8 @@ export class RhIcon extends LitElement {
     const content = this.#getContent();
     return html`
       <div id="container"
-           aria-hidden="${String(!!content)}"
-           class="${classMap({ [set]: set })}">${!isServer ? content
+           class="${classMap({ [set]: set })}"
+           aria-hidden="${String(!!content)}">${!isServer ? content
         : unsafeHTML(content as unknown as string)}<span part="fallback" ?hidden="${content}"><slot></slot></span>
       </div>
     `;

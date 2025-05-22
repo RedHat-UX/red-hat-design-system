@@ -47,12 +47,12 @@ export function copyCell(token: DesignToken) {
     <td data-label="Copy">
       <div>
         <uxdot-copy-button class="icon-only" copy="${getVariableSyntax(token)}">
-          <span slot="extra-content" class="visually-hidden">
+          <span class="visually-hidden" slot="extra-content">
             Full CSS Variable
           </span>
         </uxdot-copy-button>
         <uxdot-copy-button class="icon-only" copy="${getTokenHref(token)}" icon="link">
-          <span slot="extra-content" class="visually-hidden">
+          <span class="visually-hidden" slot="extra-content">
             Permalink to this token
           </span>
         </uxdot-copy-button>

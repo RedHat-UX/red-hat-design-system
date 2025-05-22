@@ -36,8 +36,8 @@ describe('<rh-audio-player>', function() {
         <rh-audio-player layout="${ifDefined(layout)}" poster="/elements/rh-audio-player/test/poster.png">
           <p slot="series">Code Comments</p>
           <h3 slot="title">Bringing Deep Learning to Enterprise Applications</h3>
-          <audio crossorigin="anonymous" slot="media" controls preload="auto">
-            <source type="audio/mp3" srclang="en" src="/elements/rh-audio-player/test/test.1mb.mp3">
+          <audio slot="media" controls crossorigin="anonymous" preload="auto">
+            <source type="audio/mp3" src="/elements/rh-audio-player/test/test.1mb.mp3" srclang="en">
           </audio>
           <rh-transcript slot="transcript">
               <rh-cue start="00:01" voice="Burr Sutter"></rh-cue>
@@ -223,20 +223,20 @@ describe('<rh-audio-player>', function() {
       await createFixture<RhAudioPlayer>(html`
         <div>
           <rh-audio-player id="a">
-            <audio src="/elements/rh-audio-player/test/test.100k.mp3"
-                   slot="media"
-                   crossorigin="anonymous"
-                   preload="auto"
+            <audio slot="media"
                    controls
-                   loop></audio>
+                   crossorigin="anonymous"
+                   loop
+                   preload="auto"
+                   src="/elements/rh-audio-player/test/test.100k.mp3"></audio>
           </rh-audio-player>
           <rh-audio-player id="b">
-            <audio src="/elements/rh-audio-player/test/test.100k.mp3"
-                   slot="media"
-                   crossorigin="anonymous"
-                   preload="auto"
+            <audio slot="media"
                    controls
-                   loop></audio>
+                   crossorigin="anonymous"
+                   loop
+                   preload="auto"
+                   src="/elements/rh-audio-player/test/test.100k.mp3"></audio>
           </rh-audio-player>
         </div>
       `);

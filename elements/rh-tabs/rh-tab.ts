@@ -92,11 +92,11 @@ export class RhTab extends LitElement {
     const last = lastTab === this;
     return html`
       <div id="button"
+           class="${classMap({ active, box, vertical, first, last })}"
            part="button"
-           ?disabled="${this.disabled}"
-           class="${classMap({ active, box, vertical, first, last })}">
-        <slot name="icon"
-              part="icon"></slot>
+           ?disabled="${this.disabled}">
+        <slot part="icon"
+              name="icon"></slot>
         <slot part="text"></slot>
       </div>
     `;
