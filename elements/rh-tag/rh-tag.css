@@ -1,6 +1,20 @@
 a {
   color: inherit;
-  text-decoration: underline;
+  text-decoration: underline dashed;
+  text-underline-offset: var(--rh-length-3xs, 2px);
+
+  &:hover,
+  &:focus-visible {
+    text-decoration: none;
+  }
+
+  &:active {
+    outline: var(--rh-border-width-md, 2px) solid var(--rh-color-border-interactive);
+  }
+
+  &:focus-visible {
+    outline-color: var(--rh-color-border-interactive);
+  }
 }
 
 #container {
