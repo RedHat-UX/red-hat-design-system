@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 import type { CustomElementDeclaration, Package } from 'custom-elements-manifest';
 
-import { readFile, writeFile } from 'node:fs/promises';
 import { tokens, type TokenName } from '@rhds/tokens/meta.js';
 import chalk from 'chalk';
 

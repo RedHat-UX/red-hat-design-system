@@ -75,7 +75,7 @@ export class RhIcon extends LitElement {
           .then(mod => mod.default.cloneNode(true));
 
   /** Icon set */
-  @property({ type: String, reflect: true }) set?: IconSetName;
+  @property({ type: String, reflect: true }) set: IconSetName = 'standard';
 
   /** Icon name */
   @property({ type: String, reflect: true }) icon?: IconNameFor<IconSetName>;
@@ -109,12 +109,12 @@ export class RhIcon extends LitElement {
   }
 
   render(): TemplateResult {
-    const { set = 'standard' } = this;
+    const { set } = this;
     const content = this.#getContent();
     return html`
       <div id="container"
            aria-hidden="${String(!!content)}"
-           class="${classMap({ [set]: set })}">${!isServer ? content
+           class="${classMap({ [set]: true })}">${!isServer ? content
         : unsafeHTML(content as unknown as string)}<span part="fallback" ?hidden="${content}"><slot></slot></span>
       </div>
     `;
@@ -133,7 +133,7 @@ export class RhIcon extends LitElement {
       const { set = 'standard', icon } = this;
       return globalThis.RH_ICONS.get(set)?.get(icon as never) ?? '';
     } else {
-      return this.content ?? '';
+      return this.content as string ?? '';
     }
   }
 
