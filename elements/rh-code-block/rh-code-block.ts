@@ -197,13 +197,14 @@ export class RhCodeBlock extends LitElement {
              @keyup="${this.#onActionsKeyup}">
         ${this.actions.map(x => html`
           <rh-tooltip>
-            <slot slot="content" name="action-label-${x}">${x === 'copy' ? html`
+            <slot id="label" slot="content" name="action-label-${x}">${x === 'copy' ? html`
               <span>Copy to Clipboard</span>
               <span hidden data-code-block-state="active">Copied!</span>` : html`
               <span>Toggle word wrap</span>
               <span hidden data-code-block-state="active">Toggle overflow</span>`}
             </slot>
             <button id="action-${x}"
+                    aria-labelledby="label"
                     class="shadow-fab"
                     data-code-block-action="${x}">
               ${RhCodeBlock.actionIcons.get(this.wrap && x === 'wrap' ? 'wrap-active' : x) ?? ''}
