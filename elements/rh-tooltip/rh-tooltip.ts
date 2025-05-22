@@ -17,6 +17,31 @@ import styles from './rh-tooltip.css';
 const ENTER_EVENTS = ['focusin', 'tap', 'click', 'mouseenter'];
 const EXIT_EVENTS = ['focusout', 'blur', 'mouseleave'];
 
+function flattenSlottedNodes(x: Node): Node[] {
+  if (x.nodeType === Node.COMMENT_NODE) {
+    return [];
+  } else if (x instanceof HTMLSlotElement) {
+    let assignedNodes = x.assignedNodes();
+    if (!assignedNodes.length) {
+      assignedNodes = Array.from(x.childNodes);
+    }
+    return assignedNodes.flatMap(flattenSlottedNodes);
+  } else {
+    return [x];
+  }
+}
+
+function getBestGuessAccessibleContent(node: Node): string {
+  if (node instanceof HTMLElement) {
+    if (node.hasAttribute('aria-label')) {
+      return node.getAttribute('aria-label') ?? '';
+    } else if (node.hidden || node.hasAttribute('inert')) {
+      return '';
+    }
+  }
+  return node.textContent ?? '';
+}
+
 /**
  * A tooltip is a floating text area that provides helpful
  * or contextual information on hover, focus, or tap.
@@ -96,11 +121,18 @@ export class RhTooltip extends LitElement {
   get #content() {
     if (!this.#float.open || isServer) {
       return '';
+    } else if (this.content) {
+      return this.content;
     } else {
-      return this.content || (this.shadowRoot
-          ?.getElementById('content') as HTMLSlotElement)
-          ?.assignedNodes().map(x => x.textContent ?? '')
-          ?.join(' ');
+      const contentSlot =
+        (this.shadowRoot?.getElementById('content') as HTMLSlotElement | null) ?? null;
+      const nodes = contentSlot
+          ?.assignedNodes()
+          ?.flatMap(flattenSlottedNodes) ?? [];
+      return nodes
+          .map(getBestGuessAccessibleContent)
+          .join(' ')
+          .trim();
     }
   }
 
@@ -145,6 +177,7 @@ export class RhTooltip extends LitElement {
       : { mainAxis: 15, alignmentAxis: -4 };
     await this.#float.show({ offset, placement });
     this.#initialized ||= true;
+    console.log(this.#content);
     RhTooltip.announce(this.#content);
   }
 
