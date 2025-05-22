@@ -19,6 +19,25 @@ export declare class RhCodeBlock extends LitElement {
     #private;
     private static actionIcons;
     static styles: CSSStyleSheet[];
+    /**
+     * Space- or comma-separated list of code block action buttons to display, containing either 'copy', 'wrap', or both.
+     * 'copy' adds a button that copies the text content to the clipboard. 'wrap' adds a button that toggles line wrap.
+     *
+     * To override the default labels, e.g. for purposes of internationalization, use the
+     * `action-label-copy` and `action-label-wrap` slots. Each slot may receive two elements,
+     * one for the action's default state (e.g. "Copy to clipboard"),
+     * and one for the actions alternative state, e.g. "Copied!".
+     * The active-state element must have the attributes `hidden data-code-block-state="active"`
+     *
+     * @example html```
+     *          <rh-code-block actions="copy wrap">
+     *            <span slot="action-label-copy">Copy to Clipboard</span>
+     *            <span slot="action-label-copy" hidden data-code-block-state="active">Copied!</span>
+     *            <span slot="action-label-wrap">Toggle word wrap</span>
+     *            <span slot="action-label-wrap" hidden data-code-block-state="active">Toggle overflow</span>
+     *          </rh-code-block>
+     *          ```
+     */
     actions: ('copy' | 'wrap')[];
     /**
      * When set to "client", `<rh-code-block>` will automatically highlight the source using Prism.js
@@ -49,27 +68,3 @@ declare global {
         'rh-code-block': RhCodeBlock;
     }
 }
-/**
- * TODO: slotted fabs like this:
- *
- *```html
-  <rh-tooltip slot="actions">
-    <span slot="content">Copy to Clipboard</span>
-    <span slot="content"
-          hidden
-          data-code-block-state="active">Copied!</span>
-    <rh-fab icon="copy"
-            data-code-block-action="copy"></rh-fab>
-  </rh-tooltip>
-
-  <rh-tooltip slot="actions">
-    <span slot="content">Toggle linewrap</span>
-    <span slot="content"
-          hidden
-          data-code-block-state="active">Toggle linewrap</span>
-    <rh-fab icon="copy"
-            data-code-block-action="copy"></rh-fab>
-  </rh-tooltip>
-  ````
- *
- */
