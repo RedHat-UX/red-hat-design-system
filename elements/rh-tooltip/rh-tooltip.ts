@@ -17,6 +17,31 @@ import styles from './rh-tooltip.css';
 const ENTER_EVENTS = ['focusin', 'tap', 'click', 'mouseenter'];
 const EXIT_EVENTS = ['focusout', 'blur', 'mouseleave'];
 
+function flattenSlottedNodes(x: Node): Node[] {
+  if (x.nodeType === Node.COMMENT_NODE) {
+    return [];
+  } else if (x instanceof HTMLSlotElement) {
+    let assignedNodes = x.assignedNodes();
+    if (!assignedNodes.length) {
+      assignedNodes = Array.from(x.childNodes);
+    }
+    return assignedNodes.flatMap(flattenSlottedNodes);
+  } else {
+    return [x];
+  }
+}
+
+function getBestGuessAccessibleContent(node: Node): string {
+  if (node instanceof HTMLElement) {
+    if (node.hasAttribute('aria-label')) {
+      return node.getAttribute('aria-label') ?? '';
+    } else if (node.hidden || node.hasAttribute('inert')) {
+      return '';
+    }
+  }
+  return node.textContent ?? '';
+}
+
 /**
  * A tooltip is a floating text area that provides helpful
  * or contextual information on hover, focus, or tap.
@@ -91,15 +116,23 @@ export class RhTooltip extends LitElement {
   });
 
   #initialized = false;
+  #style?: CSSStyleDeclaration;
 
   get #content() {
     if (!this.#float.open || isServer) {
       return '';
+    } else if (this.content) {
+      return this.content;
     } else {
-      return this.content || (this.shadowRoot
-          ?.getElementById('content') as HTMLSlotElement)
-          ?.assignedNodes().map(x => x.textContent ?? '')
-          ?.join(' ');
+      const contentSlot =
+        (this.shadowRoot?.getElementById('content') as HTMLSlotElement | null) ?? null;
+      const nodes = contentSlot
+          ?.assignedNodes()
+          ?.flatMap(flattenSlottedNodes) ?? [];
+      return nodes
+          .map(getBestGuessAccessibleContent)
+          .join(' ')
+          .trim();
     }
   }
 
@@ -113,6 +146,10 @@ export class RhTooltip extends LitElement {
   override render() {
     const { alignment, anchor, open, styles } = this.#float;
 
+    const scheme = this.#style?.colorScheme ?? 'light';
+    const dark = !!scheme.match(/^light( (dark|only))?/);
+    const light = !!scheme.match(/^dark( only)?/);
+
     return html`
       <div id="container"
            style="${styleMap(styles)}"
@@ -123,7 +160,7 @@ export class RhTooltip extends LitElement {
         <div id="invoker">
           <slot id="invoker-slot"></slot>
         </div>
-        <div id="tooltip" role="status">
+        <div id="tooltip" role="status" class="${classMap({ dark, light })}">
           <slot id="content" name="content">${this.content}</slot>
         </div>
       </div>
@@ -132,6 +169,7 @@ export class RhTooltip extends LitElement {
 
   /** Show the tooltip */
   async show() {
+    this.#style ??= getComputedStyle(this);
     await this.updateComplete;
     const placement = this.position;
     const offset =
