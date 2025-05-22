@@ -1,5 +1,5 @@
-span {
-  display: inline-flex;
+span,
+slot {
   align-items: center;
   justify-content: center;
   position: relative;
@@ -33,4 +33,11 @@ span {
   }
 
   &.danger { background-color: var(--rh-color-status-danger); }
+}
+
+slot { display: inline-flex; }
+
+:host([number]) {
+  slot { display: none; }
+  span { display: inline-flex; }
 }
