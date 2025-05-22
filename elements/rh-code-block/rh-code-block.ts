@@ -204,7 +204,6 @@ export class RhCodeBlock extends LitElement {
               <span hidden data-code-block-state="active">Toggle overflow</span>`}
             </slot>
             <button id="action-${x}"
-                    aria-labelledby="label"
                     class="shadow-fab"
                     data-code-block-action="${x}">
               ${RhCodeBlock.actionIcons.get(this.wrap && x === 'wrap' ? 'wrap-active' : x) ?? ''}
@@ -412,9 +411,7 @@ export class RhCodeBlock extends LitElement {
         x => x.textContent,
       ).join('');
     }
-    await navigator.clipboard.writeText(
-      content
-    );
+    await navigator.clipboard.writeText(content);
     // TODO: handle slotted fabs
     const slot = this.shadowRoot?.querySelector<HTMLSlotElement>('slot[name="action-label-copy"]');
     const tooltip = slot?.closest('rh-tooltip');
