@@ -35,6 +35,10 @@ slot {
   &.danger { background-color: var(--rh-color-status-danger); }
 }
 
+span:empty {
+  display: none;
+}
+
 slot { display: inline-flex; }
 
 :host([number]) {
