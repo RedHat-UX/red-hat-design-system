@@ -12,6 +12,32 @@ import { css } from "lit";
 const styles = css `:host{display:inline}#container{display:inline-flex;position:relative;max-width:100%;--_floating-arrow-size:var(--rh-tooltip-arrow-size,var(--rh-tooltip__arrow--Width,11px))}#tooltip,#tooltip:after{position:absolute}#tooltip{display:none;opacity:0;pointer-events:none;z-index:10000;transition:opacity .3s cubic-bezier(.54,1.5,.38,1.11) 0s;text-align:var(--_text-alignment,center);word-break:break-word;translate:var(--_floating-content-translate);width:max-content;inset-block-start:0;inset-inline-start:0;will-change:opacity;line-height:var(--rh-line-height-body-text,1.5);box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 #15151533);max-width:var(--rh-tooltip-max-width,var(--rh-tooltip--MaxWidth,18.75rem));border-radius:var(--rh-border-radius-default,3px);padding:var(--rh-tooltip-content-padding-block-start,var(--rh-tooltip__content--PaddingTop,var(--rh-space-lg,16px))) var(--rh-tooltip-content-padding-inline-end,var(--rh-tooltip__content--PaddingRight,var(--rh-space-lg,16px))) var(--rh-tooltip-content-padding-block-end,var(--rh-tooltip__content--PaddingBottom,var(--rh-space-lg,16px))) var(--rh-tooltip-content-padding-inline-start,var(--rh-tooltip__content--PaddingLeft,var(--rh-space-lg,16px)));font-size:var(--rh-tooltip-content-font-size,var(--rh-tooltip__content--FontSize,var(--rh-font-size-body-text-sm,.875rem)));color:light-dark(var(--rh-tooltip-content-color,var(--rh-tooltip__content--Color,var(--rh-color-text-primary-on-light,#151515))),var(--rh-tooltip-content-color,var(--rh-color-text-primary-on-dark,#fff)));background-color:light-dark(var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-lightest,#fff))),var(--rh-tooltip-content-background-color,var(--rh-color-surface-darkest,#151515)))}#tooltip.dark{color-scheme:dark}#tooltip.light{color-scheme:light}.initialized #tooltip{display:block}#tooltip:after{display:block;content:"";rotate:45deg;width:var(--_floating-arrow-size);height:var(--_floating-arrow-size);will-change:left top right bottom;background-color:light-dark(var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-lightest,#fff))),var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-darkest,#151515))))}.open #tooltip{opacity:1}.left #tooltip:after{inset-inline-start:calc(var(--_floating-arrow-size)*-.5)}.top #tooltip:after{inset-block-start:calc(100% - var(--_floating-arrow-size)*.5)}.right #tooltip:after{inset-inline-end:calc(100% - var(--_floating-arrow-size)*.5)}.bottom #tooltip:after{inset-block-end:calc(100% - var(--_floating-arrow-size)*.5)}.left.center #tooltip:after{inset-block-start:calc(50% - var(--_floating-arrow-size)*.5)}.top.center #tooltip:after{inset-inline-end:calc(50% - var(--_floating-arrow-size)*.5)}.right.center #tooltip:after{inset-block-start:calc(50% - var(--_floating-arrow-size)*.5)}.bottom.center #tooltip:after{inset-inline-end:calc(50% - var(--_floating-arrow-size)*.5)}.left.start #tooltip:after{inset-block-start:var(--_floating-arrow-size)}.top.start #tooltip:after{inset-inline-start:var(--_floating-arrow-size)}.right.start #tooltip:after{inset-block-start:var(--_floating-arrow-size)}.bottom.start #tooltip:after{inset-inline-start:var(--_floating-arrow-size)}.left.end #tooltip:after{inset-block-end:var(--_floating-arrow-size)}.top.end #tooltip:after{inset-inline-end:var(--_floating-arrow-size)}.right.end #tooltip:after{inset-block-end:var(--_floating-arrow-size)}.bottom.end #tooltip:after{inset-inline-end:var(--_floating-arrow-size)}:host([position=left]),:host([position=right]){--_text-alignment:"start"}`;
 const ENTER_EVENTS = ['focusin', 'tap', 'click', 'mouseenter'];
 const EXIT_EVENTS = ['focusout', 'blur', 'mouseleave'];
+function flattenSlottedNodes(x) {
+    if (x.nodeType === Node.COMMENT_NODE) {
+        return [];
+    }
+    else if (x instanceof HTMLSlotElement) {
+        let assignedNodes = x.assignedNodes();
+        if (!assignedNodes.length) {
+            assignedNodes = Array.from(x.childNodes);
+        }
+        return assignedNodes.flatMap(flattenSlottedNodes);
+    }
+    else {
+        return [x];
+    }
+}
+function getBestGuessAccessibleContent(node) {
+    if (node instanceof HTMLElement) {
+        if (node.hasAttribute('aria-label')) {
+            return node.getAttribute('aria-label') ?? '';
+        }
+        else if (node.hidden || node.hasAttribute('inert')) {
+            return '';
+        }
+    }
+    return node.textContent ?? '';
+}
 /**
  * A tooltip is a floating text area that provides helpful
  * or contextual information on hover, focus, or tap.
@@ -120,11 +146,18 @@ _RhTooltip_content_get = function _RhTooltip_content_get() {
     if (!__classPrivateFieldGet(this, _RhTooltip_float, "f").open || isServer) {
         return '';
     }
+    else if (this.content) {
+        return this.content;
+    }
     else {
-        return this.content || this.shadowRoot
-            ?.getElementById('content')
-            ?.assignedNodes().map(x => x.textContent ?? '')
-            ?.join(' ');
+        const contentSlot = this.shadowRoot?.getElementById('content') ?? null;
+        const nodes = contentSlot
+            ?.assignedNodes()
+            ?.flatMap(flattenSlottedNodes) ?? [];
+        return nodes
+            .map(getBestGuessAccessibleContent)
+            .join(' ')
+            .trim();
     }
 };
 RhTooltip.version = '{{version}}';
