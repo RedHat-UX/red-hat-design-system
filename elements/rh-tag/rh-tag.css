@@ -23,7 +23,7 @@ a {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  max-width: 100%;
+  max-inline-size: 100%;
   color: var(--_text-color, var(--rh-color-text-primary));
   border-width: 0;
 
@@ -245,6 +245,6 @@ a {
 }
 
 ::slotted(svg) {
-  height: 1em;
+  block-size: 1em;
   aspect-ratio: 1;
 }
