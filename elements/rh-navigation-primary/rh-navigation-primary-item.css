@@ -255,7 +255,7 @@
             }
           }
 
-          &:is(:focus-visible, :hover:focus-visible, :active) {
+          &:is(:focus-visible, :hover:focus-visible) {
             outline:
               var(--rh-border-width-md, 2px)
               solid
