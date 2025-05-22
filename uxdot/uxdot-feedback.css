@@ -25,6 +25,22 @@ p {
   font-size: var(--rh-font-size-body-text-lg);
 }
 
+a {
+  text-decoration: underline dashed var(--rh-color-gray-50, #707070) 1px;
+  text-underline-offset: max(5px, 0.28em);
+  transition: ease all 0.3s;
+
+  &:hover {
+    text-decoration-color: inherit;
+    text-underline-offset: max(6px, 0.33em);
+  }
+
+  &:focus-within {
+    text-decoration-color: inherit;
+    text-underline-offset: max(6px, 0.33em);
+  }
+}
+
 @container host (min-width: 576px) {
   #container {
     grid-template-columns: 1fr 1fr;
