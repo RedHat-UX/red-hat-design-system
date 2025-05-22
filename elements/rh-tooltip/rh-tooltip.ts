@@ -177,7 +177,6 @@ export class RhTooltip extends LitElement {
       : { mainAxis: 15, alignmentAxis: -4 };
     await this.#float.show({ offset, placement });
     this.#initialized ||= true;
-    console.log(this.#content);
     RhTooltip.announce(this.#content);
   }
 
