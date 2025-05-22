@@ -1,4 +1,4 @@
-var _RhSubnav_instances, _RhSubnav_allLinkElements, _RhSubnav_slots, _RhSubnav_overflow, _RhSubnav_allLinks_get, _RhSubnav_allLinks_set, _RhSubnav_firstLink_get, _RhSubnav_lastLink_get, _RhSubnav_onSlotchange, _RhSubnav_firstLastClasses, _RhSubnav_onClickScroll;
+var _RhSubnav_instances, _RhSubnav_allLinkElements, _RhSubnav_slots, _RhSubnav_overflow, _RhSubnav_allLinks_get, _RhSubnav_allLinks_set, _RhSubnav_firstLink_get, _RhSubnav_lastLink_get, _RhSubnav_onSlotchange, _RhSubnav_onClickScroll;
 var RhSubnav_1;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html, isServer } from 'lit';
@@ -87,15 +87,14 @@ _RhSubnav_firstLink_get = function _RhSubnav_firstLink_get() {
 _RhSubnav_lastLink_get = function _RhSubnav_lastLink_get() {
     return __classPrivateFieldGet(this, _RhSubnav_instances, "a", _RhSubnav_allLinks_get).at(-1);
 };
-_RhSubnav_onSlotchange = function _RhSubnav_onSlotchange() {
-    __classPrivateFieldSet(this, _RhSubnav_instances, __classPrivateFieldGet(this, _RhSubnav_slots, "f").getSlotted(), "a", _RhSubnav_allLinks_set);
-    __classPrivateFieldGet(this, _RhSubnav_overflow, "f").init(this.linkList, __classPrivateFieldGet(this, _RhSubnav_instances, "a", _RhSubnav_allLinks_get));
-    __classPrivateFieldGet(this, _RhSubnav_instances, "m", _RhSubnav_firstLastClasses).call(this);
-};
-_RhSubnav_firstLastClasses = async function _RhSubnav_firstLastClasses() {
-    await this.updateComplete;
-    __classPrivateFieldGet(this, _RhSubnav_instances, "a", _RhSubnav_firstLink_get).classList.add('first');
-    __classPrivateFieldGet(this, _RhSubnav_instances, "a", _RhSubnav_lastLink_get).classList.add('last');
+_RhSubnav_onSlotchange = async function _RhSubnav_onSlotchange() {
+    if (!isServer) {
+        __classPrivateFieldSet(this, _RhSubnav_instances, __classPrivateFieldGet(this, _RhSubnav_slots, "f").getSlotted(), "a", _RhSubnav_allLinks_set);
+        __classPrivateFieldGet(this, _RhSubnav_overflow, "f").init(this.linkList, __classPrivateFieldGet(this, _RhSubnav_instances, "a", _RhSubnav_allLinks_get));
+        await this.updateComplete;
+        __classPrivateFieldGet(this, _RhSubnav_instances, "a", _RhSubnav_firstLink_get)?.classList.add('first');
+        __classPrivateFieldGet(this, _RhSubnav_instances, "a", _RhSubnav_lastLink_get)?.classList.add('last');
+    }
 };
 _RhSubnav_onClickScroll = function _RhSubnav_onClickScroll(event) {
     if (event.target instanceof HTMLElement) {

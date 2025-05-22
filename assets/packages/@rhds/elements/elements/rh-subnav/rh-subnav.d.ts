@@ -27,7 +27,7 @@ export declare class RhSubnav extends LitElement {
     private linkList;
     connectedCallback(): void;
     disconnectedCallback(): void;
-    firstUpdated(): void;
+    protected firstUpdated(): void;
     render(): import("lit-html").TemplateResult<1>;
 }
 declare global {
