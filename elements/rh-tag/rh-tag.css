@@ -8,12 +8,8 @@ a {
     text-decoration: none;
   }
 
-  &:active {
-    outline: var(--rh-border-width-md, 2px) solid var(--rh-color-border-interactive);
-  }
-
   &:focus-visible {
-    outline-color: var(--rh-color-border-interactive);
+    outline: 0;
   }
 }
 
@@ -58,6 +54,14 @@ a {
     &:hover {
       border-width: var(--rh-border-width-md, 2px);
     }
+  }
+
+  &:has(a:focus-visible, a:active):after {
+    border-radius: var(--rh-border-radius-default, 3px);
+    content: '';
+    inset: calc(var(--rh-space-xs, 4px) - 1px) calc(var(--rh-space-md, 8px) - 1px);
+    outline: var(--rh-border-width-md, 2px) solid var(--rh-color-border-interactive);
+    position: absolute;
   }
 
   &.compact {
