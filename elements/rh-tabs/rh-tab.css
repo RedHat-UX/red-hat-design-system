@@ -290,6 +290,10 @@
                 var(--rh-border-width-lg, 3px)
                 solid
                 var(--rh-color-interactive-secondary-default);
+              border-block-start: 0;
+            }
+
+            &:after {
               border-block-start:
                 var(--rh-border-width-sm, 1px)
                 solid
@@ -300,7 +304,7 @@
           &.first {
             @container (min-width: 768px) {
               &:before {
-                border-block-start-color: transparent;
+                border-block-start: 0 solid transparent;
                 border-inline-end-color: var(--rh-color-border-subtle);
               }
             }
@@ -318,7 +322,7 @@
 
       &:not(.vertical) {
         &:hover {
-          &:before {
+          &:after {
             border-block-start:
               var(--rh-border-width-lg, 3px)
               solid
@@ -358,7 +362,8 @@
                 var(--rh-border-width-lg, 3px)
                 solid
                 var(--rh-color-interactive-secondary-default);
-              border-block-end-color: transparent;
+              border-block-start: transparent;
+              border-block-end: transparent;
             }
           }
         }
