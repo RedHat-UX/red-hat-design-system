@@ -13,7 +13,6 @@ subnav:
 <script type="module" data-helmet>
   import '@uxdot/elements/uxdot-example.js';
   import '@rhds/elements/rh-code-block/rh-code-block.js';
-  import '@rhds/elements/rh-tooltip/rh-tooltip.js';
 </script>
 
 ## Usage
