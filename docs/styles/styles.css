@@ -39,10 +39,21 @@
 
   a {
     color: var(--rh-color-interactive-primary-default);
-    &:hover { color: var(--rh-color-interactive-primary-hover); }
+    text-decoration: underline dashed 1px;
+    text-decoration-color: light-dark(var(--rh-color-gray-50), var(--rh-color-gray-40));
+    text-underline-offset: max(5px, 0.28em);
+    transition: ease all 0.3s;
+
+    &:hover {
+      color: var(--rh-color-interactive-primary-hover);
+      text-decoration-color: inherit;
+      text-underline-offset: max(6px, 0.33em);
+    }
 
     &:focus-within {
       color: var(--rh-color-interactive-primary-focus);
+      text-decoration-color: inherit;
+      text-underline-offset: max(6px, 0.33em);
       &:hover { color: var(--rh-color-interactive-primary-focus); }
     }
 
