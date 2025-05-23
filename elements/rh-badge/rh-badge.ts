@@ -1,6 +1,7 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
+import { state } from 'lit/decorators/state.js';
 import { classMap } from 'lit-html/directives/class-map.js';
 import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 
@@ -79,16 +80,12 @@ export class RhBadge extends LitElement {
   }
 
   override render() {
-    const { threshold, number, textContent, state = 'neutral' } = this;
-    const displayText =
-        (threshold && number && (threshold < number)) ? `${threshold.toString()}+`
-      : (number != null) ? number.toString()
-      : textContent ?? '';
-
+    const { state, threshold, number } = this;
+    const isLarge = !!threshold && number != null && (threshold < number);
+    const computedContent = isLarge ? `${threshold}+` : number?.toString() ?? null;
     return html`
-      <span class="${classMap({
-        [state]: true,
-      })}">${displayText}</span>
+      <span class="${classMap({ [state]: true })}">${computedContent}</span>
+      <slot class="${classMap({ [state]: true })}"></slot>
     `;
   }
 }

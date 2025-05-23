@@ -50,7 +50,6 @@ export class UxdotDemo extends LitElement {
                      icon="refresh"
                      icon-set="ui"
                      @click="${this.#reloadIframe}">Reload</rh-button>
-          
           <rh-tooltip slot="footer">
             <a href="${this.demoSourceUrl}" aria-label="View source on Github">
               <rh-icon set="social" icon="github"></rh-icon>

@@ -727,7 +727,7 @@ export default class ElementsPage extends Renderer<Context> {
 
   async #renderDemos(content: string, ctx: Context) {
     const tagName = ctx.tagName as `rh-${string}`;
-    const demos = ElementsPage.demoManifestsForTagNames[tagName] ?? [];
+    const demos: DemoRecord[] = ElementsPage.demoManifestsForTagNames[tagName] ?? [];
     return [
       html`
       <script type="module" data-helmet>
@@ -853,9 +853,9 @@ export default class ElementsPage extends Renderer<Context> {
     if (demo.filePath) {
       const blocks = await Promise.all(map.entries().map(([kind, content]) => {
         const tpl = dedent(`
-        \`\`\`${kind} uxdotcodeblock {slot=${kind}}
-        ${content.trim()}
-        \`\`\`
+          \`\`\`${kind} uxdotcodeblock {slot=${kind}}
+          ${content.trim()}
+          \`\`\`
         `);
         return this.renderTemplate(tpl, 'md');
       }).toArray());
