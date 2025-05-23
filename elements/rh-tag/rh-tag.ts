@@ -57,6 +57,11 @@ export class RhTag extends LitElement {
   /** optional href for linked tag. */
   @property() href?: string;
 
+  /**
+  * Whether an interactive tag is disabled.
+  */
+  @property({ type: Boolean, reflect: true }) disabled = false;
+
   /** The color of the label. */
   @property() color?:
     | 'red'
@@ -74,11 +79,12 @@ export class RhTag extends LitElement {
   #slots = new SlotController(this, 'icon', null);
 
   override render() {
-    const { icon, size, variant = 'filled', color = 'gray' } = this;
+    const { icon, size, variant = 'filled', color = 'gray', disabled } = this;
     const hasIcon = !!icon || this.#slots.hasSlotted('icon');
     return html`
       <span id="container"
             class="${classMap({
+              disabled,
               hasIcon,
               compact: size === 'compact',
               teal: color === 'cyan' || color === 'teal',
@@ -88,11 +94,19 @@ export class RhTag extends LitElement {
           <rh-icon ?hidden="${!icon}" icon="${ifDefined(icon)}" set="${this.iconSet}"></rh-icon>
         </slot>${!this.href ? html`
         <slot id="text"></slot>` : html`
-        <a href="${this.href}">
+        <a href="${this.href}" 
+           aria-disabled="${String(this.disabled) as 'true' | 'false'}"
+           @keydown="${this.#onKeyDown}">
           <slot id="text"></slot>
         </a>`}
       </span>
     `;
+  }
+
+  #onKeyDown(event: KeyboardEvent): void {
+    if (this.disabled && event.key === 'Enter') {
+      event.preventDefault();
+    }
   }
 }
 

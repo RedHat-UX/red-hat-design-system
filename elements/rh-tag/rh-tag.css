@@ -246,6 +246,19 @@ a {
     --_icon-color: var(--rh-color-text-primary);
     --_text-color: var(--rh-color-text-primary);
   }
+
+  &.disabled {
+    pointer-events: none;
+
+    --_fill-color: light-dark(var(--rh-color-gray-30, #c7c7c7), var(--rh-color-gray-70, #383838));
+    --_border-color: light-dark(var(--rh-color-gray-30, #c7c7c7), var(--rh-color-gray-70, #383838));
+    --_icon-color: light-dark(var(--rh-color-gray-60, #4d4d4d), var(--rh-color-gray-40, #a3a3a3));
+    --_text-color: light-dark(var(--rh-color-gray-60, #4d4d4d), var(--rh-color-gray-40, #a3a3a3));
+
+    & a {
+      text-decoration: none;
+    }
+  }
 }
 
 [part='icon'] {
