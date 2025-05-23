@@ -308,7 +308,8 @@ _RhCodeBlock_onClickExpand = function _RhCodeBlock_onClickExpand() {
 _RhCodeBlock_copy = async function _RhCodeBlock_copy() {
     let content;
     if (this.highlighting === 'prerendered') {
-        content = this.querySelector('pre')?.textContent ?? '';
+        content =
+            Array.from(this.querySelectorAll('pre'), x => x?.textContent ?? '').join('');
     }
     else {
         content = Array.from(this.querySelectorAll('script'), x => x.textContent).join('');
