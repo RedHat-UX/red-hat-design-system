@@ -147,7 +147,7 @@
         }
       }
 
-      &:is(:focus-visible, :hover:focus-visible, :active) {
+      &:is(:focus-visible, :hover:focus-visible) {
         outline:
           var(--rh-border-width-md, 2px)
           solid
@@ -296,6 +296,10 @@
           justify-content: flex-start;
           align-items: center;
           block-size: 100%;
+
+          & ::slotted(rh-navigation-primary-item) {
+            block-size: var(--_navbar-height);
+          }
         }
       }
     }
