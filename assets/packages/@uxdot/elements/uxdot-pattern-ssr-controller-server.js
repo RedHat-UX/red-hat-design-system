@@ -43,7 +43,7 @@ export class UxdotPatternSSRControllerServer extends RHDSSSRController {
         HighlightPairedShortcode || (HighlightPairedShortcode = await __classPrivateFieldGet(this, _UxdotPatternSSRControllerServer_instances, "m", _UxdotPatternSSRControllerServer_loadHighlighter).call(this));
         const content = await __classPrivateFieldGet(this, _UxdotPatternSSRControllerServer_instances, "m", _UxdotPatternSSRControllerServer_getPatternContent).call(this, renderInfo);
         const partial = parseFragment(content);
-        injectSSRHintAttributes(partial, renderInfo);
+        injectSSRHintAttributes.call(this, partial, renderInfo);
         const allContent = serialize(partial).trim();
         const baseUrl = pathToFileURL(renderInfo.page.inputPath);
         // NB: the css and js content functions *mutate* the partial,
