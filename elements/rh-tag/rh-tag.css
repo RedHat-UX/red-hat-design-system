@@ -13,6 +13,25 @@ a {
   }
 }
 
+button {
+  align-items: center;
+  background-color: inherit;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  gap: inherit;
+  line-height: inherit;
+  padding: 0;
+
+  &:focus-visible {
+    outline: 0;
+  }
+}
+
 #container {
   align-items: center;
   background-color: var(--_fill-color, var(--rh-color-surface-lighter, #f2f2f2));
@@ -56,12 +75,20 @@ a {
     }
   }
 
-  &:has(a:focus-visible, a:active):after {
+  &:has(a:focus-visible, a:active, button:focus-visible, button:active):after {
     border-radius: var(--rh-border-radius-default, 3px);
     content: '';
     inset: calc(var(--rh-space-xs, 4px) - 1px) calc(var(--rh-space-md, 8px) - 1px);
     outline: var(--rh-border-width-md, 2px) solid var(--rh-color-border-interactive);
     position: absolute;
+  }
+
+  &:has(button:not([disabled])) {
+    cursor: pointer;
+  }
+
+  &:has(button:not([disabled])):hover:before {
+    border-width: var(--rh-border-width-md, 2px);
   }
 
   &.compact {

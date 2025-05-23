@@ -3,6 +3,7 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import type { TemplateResult } from 'lit';
 
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 
@@ -56,6 +57,18 @@ export class RhTag extends LitElement {
   /** optional href for linked tag. */
   @property() href?: string;
 
+  /** Make the tag an HTML button element. */
+  @property({ type: Boolean, reflect: true }) button = false;
+
+  /** optional type for button tag. */
+  @property() type?: 'button' | 'submit' | 'reset' = 'button';
+
+  /** Form value for the button */
+  @property() value?: string;
+
+  /** Form name for the button */
+  @property() name?: string;
+
   /**
   * Whether an interactive tag is disabled.
   */
@@ -91,19 +104,38 @@ export class RhTag extends LitElement {
               [color]: true })}">
         <slot name="icon" part="icon">
           <rh-icon ?hidden="${!icon}" icon="${ifDefined(icon)}" set="${this.iconSet}"></rh-icon>
-        </slot>${!this.href ? html`
-        <slot id="text"></slot>` : html`
-        <a href="${this.href}" 
-           aria-disabled="${String(this.disabled) as 'true' | 'false'}"
-           @keydown="${this.#onKeyDown}">
-          <slot id="text"></slot>
-        </a>`}
+        </slot>${this.#renderContent()}
       </span>
     `;
   }
 
+  #renderContent(): TemplateResult {
+    if (this.button) {
+      return html`
+        <button type="${this.type}"
+                value="${ifDefined(this.value)}"
+                name="${ifDefined(this.name)}"
+                aria-disabled="${String(this.disabled) as 'true' | 'false'}"
+                @keydown="${this.#onKeyDown}">
+          <slot id="text"></slot>
+        </button>`;
+    }
+    if (this.href) {
+      return html`
+        <a href="${this.href}" 
+           aria-disabled="${String(this.disabled) as 'true' | 'false'}"
+           @keydown="${this.#onKeyDown}">
+          <slot id="text"></slot>
+        </a>`;
+    }
+    return html`<slot id="text"></slot>`;
+  }
+
   #onKeyDown(event: KeyboardEvent): void {
     if (this.disabled && event.key === 'Enter') {
+      event.preventDefault();
+    }
+    if (this.disabled && event.key === ' ') {
       event.preventDefault();
     }
   }
