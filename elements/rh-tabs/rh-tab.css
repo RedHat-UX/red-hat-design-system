@@ -1,6 +1,7 @@
 :host {
   display: flex;
   flex: none;
+  background-color: var(--rh-color-surface);
 
   --_active-tab-border:
     var(--rh-border-width-lg, 3px) solid var(--_active-tab-border-color,
@@ -27,18 +28,7 @@
   display: none !important;
 }
 
-slot[name='icon'] {
-  display: block;
-}
-
-[part='icon'] {
-  margin-inline-end: var(--rh-space-md, 8px);
-}
-
 #button {
-  --_button-text-color: var(--rh-tabs-link-color, var(--rh-color-text-secondary));
-  --_button-focus-outline-color: var(--rh-color-border-interactive);
-
   margin: 0;
   font-family: inherit;
   font-size: 100%;
@@ -46,11 +36,12 @@ slot[name='icon'] {
   position: relative;
   display: flex;
   flex: 1;
+  gap: var(--rh-space-md, 8px);
   text-decoration: none;
   cursor: pointer;
   align-items: center;
   background-color: inherit;
-  color: var(--_button-text-color);
+  color: var(--rh-tabs-link-color, var(--rh-color-text-secondary));
   width: 100%;
   max-width: var(--_tab-max-width, 200px);
   max-height: 100%;
@@ -81,12 +72,14 @@ slot[name='icon'] {
     background-color: transparent;
     border-inline: 0 solid transparent;
     border-block-start: var(--rh-border-width-lg, 3px) solid transparent;
-    border-block-end: var(--rh-border-width-sm, 1px) solid transparent;
+    border-block-end: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
   }
 
   /* When button is box */
   &.box {
-    --_inactive-tab-background-color: var(--rh-color-surface-lighter, #f2f2f2);
+    background-color:
+      light-dark(var(--rh-color-surface-lighter, #f2f2f2),
+        oklch(from var(--rh-color-surface-dark) calc(l * 0.82) c h));
   }
 
   /* When button is vertical format */
@@ -125,11 +118,13 @@ slot[name='icon'] {
 
   /* When button is active */
   &.active {
-    --_button-text-color: var(--rh-tabs-link-color, var(--rh-color-text-primary));
+    color: var(--rh-tabs-link-color, var(--rh-color-text-primary));
 
     &.box {
+      background-color: transparent;
+
       &:before {
-        border-inline-color: var(--_border-color);
+        border-inline-color: var(--rh-color-border-subtle);
         border-inline-start-width: var(--rh-border-width-sm, 1px);
       }
 
@@ -140,14 +135,14 @@ slot[name='icon'] {
 
       &.first {
         &:before {
-          border-inline-start-color: var(--_border-color);
+          border-inline-start-color: var(--rh-color-border-subtle);
           border-inline-start-width: var(--rh-border-width-sm, 1px);
         }
       }
 
       &.last {
         &:before {
-          border-inline-end-color: var(--_border-color);
+          border-inline-end-color: var(--rh-color-border-subtle);
           border-inline-end-width: var(--rh-border-width-sm, 1px);
         }
       }
@@ -163,14 +158,14 @@ slot[name='icon'] {
             border-block-start:
               var(--rh-border-width-sm, 1px)
               solid
-              var(--_border-color);
+              var(--rh-color-border-subtle);
           }
         }
 
         &.first {
           @container (min-width: 768px) {
             &:after {
-              border-block-start-color: var(--_border-color);
+              border-block-start-color: var(--rh-color-border-subtle);
               border-block-start-width: var(--rh-border-width-sm, 1px);
             }
           }
@@ -179,7 +174,7 @@ slot[name='icon'] {
         &.last {
           @container (min-width: 768px) {
             &:before {
-              border-block-end-color: var(--_border-color);
+              border-block-end-color: var(--rh-color-border-subtle);
               border-block-end-width: var(--rh-border-width-sm, 1px);
             }
           }
@@ -190,7 +185,7 @@ slot[name='icon'] {
         &.first {
           @container (min-width: 768px) {
             &:before {
-              border-inline-start-color: var(--_border-color);
+              border-inline-start-color: var(--rh-color-border-subtle);
               border-inline-start-width: var(--rh-border-width-sm, 1px);
             }
           }
@@ -199,7 +194,7 @@ slot[name='icon'] {
         &.last {
           @container (min-width: 768px) {
             &:before {
-              border-inline-end-color: var(--_border-color);
+              border-inline-end-color: var(--rh-color-border-subtle);
               border-inline-end-width: var(--rh-border-width-sm, 1px);
             }
           }
@@ -258,15 +253,13 @@ slot[name='icon'] {
 
   &:not(.active) {
     &.box {
-      background-color: var(--_inactive-tab-background-color);
-
       &:before {
-        border-inline-color: var(--_border-color);
+        border-inline-color: var(--rh-color-border-subtle);
         border-inline-start-width: var(--rh-border-width-sm, 1px);
       }
 
       &:after {
-        border-block-end-color: var(--_border-color);
+        border-block-end-color: var(--rh-color-border-subtle);
       }
 
       &.vertical {
@@ -285,11 +278,11 @@ slot[name='icon'] {
             border-inline-end:
               var(--rh-border-width-sm, 1px)
               solid
-              var(--_border-color);
+              var(--rh-color-border-subtle);
             border-block-start:
               var(--rh-border-width-sm, 1px)
               solid
-              var(--_border-color);
+              var(--rh-color-border-subtle);
           }
 
           &:after {
@@ -305,7 +298,7 @@ slot[name='icon'] {
               border-block-start:
                 var(--rh-border-width-sm, 1px)
                 solid
-                var(--_border-color);
+                var(--rh-color-border-subtle);
             }
           }
 
@@ -313,7 +306,7 @@ slot[name='icon'] {
             @container (min-width: 768px) {
               &:before {
                 border-block-start-color: transparent;
-                border-inline-end-color: var(--_border-color);
+                border-inline-end-color: var(--rh-color-border-subtle);
               }
             }
           }
@@ -340,7 +333,7 @@ slot[name='icon'] {
 
         @container (min-width: 768px) {
           &:after {
-            border-block-end-color: var(--_border-color);
+            border-block-end-color: var(--rh-color-border-subtle);
           }
         }
       }
@@ -385,17 +378,6 @@ slot[name='icon'] {
             var(--rh-color-interactive-secondary-default);
         }
       }
-    }
-  }
-
-  /* When button is in a dark context */
-  &.dark {
-    --_button-text-color: var(--rh-tabs-link-color, var(--rh-color-text-secondary));
-    --_button-focus-outline-color: var(--rh-color-border-interactive);
-    --_inactive-tab-background-color: var(--rh-color-surface-dark-alt, #292929);
-
-    &.active {
-      --_button-text-color: var(--rh-tabs-link-color, var(--rh-color-text-primary));
     }
   }
 }

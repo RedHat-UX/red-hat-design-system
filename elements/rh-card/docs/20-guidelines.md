@@ -19,6 +19,14 @@ see the [card patterns page](/patterns/card).
 
 </rh-alert>
 
+### Cards vs. tiles
+
+The main difference between a card and a [tile](/elements/tile/) is that cards may or may not contain links or other actions. Cards can even contain multiple calls to action.
+
+Tiles, on the other hand, must perform exactly one action. No more or less.
+
+Cards can be grouped together with other cards, and tiles can be grouped together with other tiles.
+
 
 ### Patterns
 
@@ -274,7 +282,7 @@ A narrow promo can be used if the promo content needs to fit in a small area, li
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
-    <uxdot-example width-adjustment="546px" slot="image">
+    <uxdot-example width-adjustment="546px" slot="image" color-palette="lightest">
       <img alt="One featured promo below lorem ipsum text"
            src="../card-best-practices-promo-do.svg"
            width="546"
@@ -284,7 +292,7 @@ A narrow promo can be used if the promo content needs to fit in a small area, li
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="dont">
-    <uxdot-example width-adjustment="546px" slot="image">
+    <uxdot-example width-adjustment="546px" slot="image" color-palette="lightest">
       <img alt="Three narrow promos in a group"
            src="../card-best-practices-promo-dont.svg"
            width="546"

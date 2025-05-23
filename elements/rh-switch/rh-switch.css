@@ -18,8 +18,16 @@
   --_switch-width: 40px;
   --_switch-height: 24px;
   --_switch-handle-size: 14px;
-  --_switch-track-background-color: var(--rh-color-gray-60, #4d4d4d);
-  --_switch-handle-color: var(--rh-color-surface-lightest, #ffffff);
+  --_switch-track-background-color:
+    light-dark(var(--rh-color-gray-60, #4d4d4d),
+      var(--rh-color-gray-40, #a3a3a3));
+  --_switch-handle-color:
+    light-dark(var(--rh-color-surface-lightest, #ffffff),
+      oklch(from var(--rh-color-surface-dark, #383838) calc(l * 0.82) c h));
+
+  &:after {
+    box-shadow: light-dark(none, var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2)));
+  }
 
   #switch {
     align-items: center;
@@ -75,25 +83,12 @@
           (var(--_margin-inline) * 2)));
     }
 
-    &.rtl #switch:after {
+    & #switch:dir(rtl):after {
       translate:
         calc(-1 * (
             var(--_switch-width) - (var(--_switch-handle-size) +
             (var(--_margin-inline) * 2))
           ));
-    }
-  }
-
-  &.dark {
-    --_switch-track-background-color: var(--rh-color-gray-40, #a3a3a3); /* no disabled token yet */
-    --_switch-handle-color: var(--rh-color-surface-dark-alt, #292929);
-
-    &.checked {
-      --_switch-track-background-color: var(--rh-color-accent-base);
-    }
-
-    &:after {
-      box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
     }
   }
 }
@@ -114,20 +109,21 @@ rh-icon {
   pointer-events: none;
   cursor: not-allowed;
 
-  --_switch-track-background-color: var(--rh-color-gray-30, #c7c7c7);
-
   & #container {
     & .message {
       color: var(--rh-color-gray-50, #707070);
     }
 
-    &.dark {
-      --_switch-track-background-color: var(--rh-color-gray-60, #4d4d4d);
+    & ::slotted(*),
+    & span {
+      color: light-dark(var(--rh-color-gray-60, #4d4d4d), var(--rh-color-gray-40, #a3a3a3));
+    }
 
-      & ::slotted(*),
-      & span {
-        color: var(--rh-color-gray-40, #a3a3a3);
-      }
+    &.checked,
+    &:not(.checked) {
+      --_switch-track-background-color:
+        light-dark(var(--rh-color-gray-30, #c7c7c7),
+          var(--rh-color-gray-60, #4d4d4d));
     }
   }
 }

@@ -13,8 +13,8 @@ import type { IconNameFor, IconSetName } from '@rhds/icons';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-tile.css';
 
@@ -31,21 +31,23 @@ export class TileSelectEvent extends Event {
  * @fires {TileSelectEvent} select - when tile is clicked
  * @slot image - optional image on top of tile
  * @slot icon - optional icon
- * @slot title - optional title
- * @slot headline - optional headline / link title
- * @slot - optional body content
- * @slot footer - optional footer
+ * @slot title - A title provides secondary descriptive context. Selectable and compact tiles do not have title slots
+ * @slot headline - In a link tile, the heading should indicate what clicking on the tile will do. In a selectable tile, the heading labels the radio button or checkbox.
+ * @slot - The body text expands on heading content and gives the user more information.
+ * @slot footer - Footer text should be brief and be used for supplementary information only.
  * @cssprop [--rh-tile-text-color=var(--rh-color-text-primary-on-light, #151515)] - Color of text.<br>Could cause accessibility issues; prefer to use `--rh-color-text-primary-on-light` and `--rh-color-text-primary-on-dark` for theming.
  * @cssprop [--rh-tile-text-color-secondary=var(--rh-color-text-secondary-on-light, #4d4d4d)] - Disabled text and icons.<br>Could cause accessibility issues; prefer to use `--rh-color-text-secondary-on-light` and `--rh-color-text-secondary-on-dark` for theming.
  * @cssprop [--rh-tile-interactive-color=var(--rh-color-border-interactive-on-light, #0066cc)] - Color of interactive elements.<br>Could cause accessibility issues; prefer to use `--rh-color-border-interactive-on-light` and `--rh-color-border-interactive-on-dark` for theming.
  * @cssprop [--rh-tile-link-color=var(--rh-tile-interactive-color)] - Color of tile link.
- * @cssprop [--rh-tile-link-text-decoration=none] - Tile link text decoration
+ * @cssprop [--rh-tile-link-texColorPaletteConstructort-decoration=none] - Tile link text decoration
  * @cssprop [--rh-tile-background-color=var(--rh-color-surface-lightest, #ffffff)] - Color tile surface.<br>Could cause accessibility issues; prefer to use `--rh-color-surface-lightest` and `--rh-color-surface-darkest` for theming.
  * @cssprop [--rh-tile-focus-background-color=var(--rh-color-surface-lighter, #f2f2f2)] - Color tile surface on focus/hover.<br>Could cause accessibility issues; prefer to use `--rh-color-surface-lighter` and `--rh-color-surface-darker` for theming.
  * @cssprop [--rh-tile-disabled-background-color=var(--rh-color-surface-light, #e0e0e0)] - Color tile surface when disabled.<br>Could cause accessibility issues; prefer to use `--rh-color-surface-light` and `--rh-color-surface-dark` for theming.
  * @cssprop [--rh-tile-border-color=var(--rh-color-border-subtle-on-light, #c7c7c7)] - Color of tile border.<br>Could cause accessibility issues; prefer to use `--rh-color-border-subtle-on-light` and `--rh-color-border-subtle-on-dark` for theming.
  */
 @customElement('rh-tile')
+@colorPalettes('lightest', 'darkest')
+@themable
 export class RhTile extends LitElement {
   static readonly styles = [styles];
 
@@ -132,15 +134,10 @@ export class RhTile extends LitElement {
    *
    * Tile always resets its context to `base`, unless explicitly provided with a `color-palette`.
    */
-  @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   /** When set to "private", the icon representing the link changes from an arrow to a padlock */
   @property() link?: 'private' | 'public' | 'external';
-  /**
-   * Sets color theme based on parent context
-   */
-  @colorContextConsumer() private on?: ColorTheme;
 
   // TODO(bennyp): https://lit.dev/docs/data/context/#content
   @state() private disabledGroup = false;
@@ -152,7 +149,7 @@ export class RhTile extends LitElement {
 
   #logger = new Logger(this);
 
-  #slots = new SlotController(this, { slots: ['icon'] });
+  #slots = new SlotController(this, 'image', 'icon', 'title', 'headline', null, 'footer');
 
   get #isCheckable() {
     return !!this.radioGroup || this.checkable;
@@ -191,30 +188,27 @@ export class RhTile extends LitElement {
   }
 
   render() {
-    const { bleed, compact, checkable, checked, colorPalette, desaturated, on = 'light' } = this;
+    const { bleed, compact, checkable, checked, desaturated } = this;
     const disabled = this.disabledGroup || this.disabled || this.#internals.formDisabled;
     const hasSlottedIcon = this.#slots.hasSlotted('icon');
+    const linkIcon =
+        this.checkable ? ''
+      : this.disabled ? 'ban'
+      : this.link === 'private' ? 'lock'
+      : this.link === 'external' ? 'external-link'
+                                 : 'arrow-right';
     return html`
-      <div id="outer" class="${classMap({
-            bleed,
-            checkable,
-            compact,
-            checked,
-            desaturated,
-            disabled,
-            on: true,
-            [on]: true,
-            [`palette-${colorPalette}`]: !!colorPalette,
-          })}">
+      <div id="outer" class="${classMap({ bleed, checkable, compact, checked, desaturated, disabled })}">
         <slot id="image"
               name="image"
               ?hidden="${this.checkable}"
         ></slot>
         <div id="inner">
-          <slot id="icon" name="icon" ?hidden="${this.icon === undefined && !hasSlottedIcon}">
-            ${this.icon !== undefined ?
-              html`<rh-icon icon="${ifDefined(this.icon)}" set="${this.iconSet}"></rh-icon>`
-              : html``}
+          <slot id="icon"
+                class="${classMap({ compact, checkable })}"
+                name="icon"
+                ?hidden="${this.icon === undefined && !hasSlottedIcon}">${this.icon === undefined ? ''
+      : html`<rh-icon icon="${ifDefined(this.icon)}" set="${this.iconSet}"></rh-icon>`}
           </slot>
           <div id="content">
             <div id="header">
@@ -230,28 +224,14 @@ export class RhTile extends LitElement {
                        ?disabled="${disabled}"></input>
               </div>
             </div>
-            <slot id="body"></slot>
-            <div id="footer">
-              <slot id="footer-text" name="footer"></slot>${this.#renderLinkIcon()}
+            <slot id="body" class="${classMap({ empty: this.#slots.isEmpty() })}"></slot>
+            <div id="footer" class="${classMap({ empty: this.#slots.isEmpty('footer') })}">
+              <slot id="footer-text" name="footer"></slot><rh-icon set="ui" icon="${linkIcon}"></rh-icon>
             </div>
           </div>
         </div>
       </div>
     `;
-  }
-
-  #renderLinkIcon() {
-    if (this.checkable) {
-      return '';
-    } else if (this.disabled) {
-      return html`<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><g id="uuid-0fd9e805-a455-40ef-9171-f2f334832bf2"><rect width="48" height="48" fill="none"/></g><g id="uuid-48f9e284-0601-4fcd-bbe7-8b444234ac6c"><path d="m24,7c-9.37,0-17,7.63-17,17s7.63,17,17,17,17-7.63,17-17S33.37,7,24,7Zm15,17c0,3.52-1.23,6.76-3.27,9.32L14.68,12.27c2.56-2.04,5.8-3.27,9.32-3.27,8.27,0,15,6.73,15,15Zm-30,0c0-4.03,1.61-7.69,4.2-10.38l21.18,21.18c-2.7,2.6-6.35,4.2-10.38,4.2-8.27,0-15-6.73-15-15Z"/></g></svg>`;
-    } else if (this.link === 'private') {
-      return html`<rh-icon set="ui" icon="lock"></rh-icon>`;
-    } else if (this.link === 'external') {
-      return html`<rh-icon set="microns" icon="external-link"></rh-icon>`;
-    } else {
-      return html`<rh-icon set="ui" icon="arrow-right"></rh-icon>`;
-    }
   }
 
   async formDisabledCallback() {

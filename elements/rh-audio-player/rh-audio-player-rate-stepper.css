@@ -22,7 +22,7 @@ select {
   background: transparent;
 }
 
-.rtl {
+:dir(rtl) {
   text-align: right;
 }
 

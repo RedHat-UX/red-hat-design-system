@@ -8,17 +8,12 @@ import '@rhds/elements/rh-surface/rh-surface.js';
 
 import styles from './uxdot-header.css';
 
-import { colorContextProvider } from '@rhds/elements/lib/context/color/provider.js';
-
-import colorContextProviderCss from '@rhds/tokens/css/color-context-provider.css.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 @customElement('uxdot-header')
+@themable
 export class UxdotHeader extends LitElement {
-  static styles = [styles, colorContextProviderCss];
-
-  @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' })
-  colorPalette = 'lighter';
+  static styles = [styles];
 
   @property({ type: Boolean, attribute: 'has-subnav' }) hasSubnav = false;
 
@@ -37,4 +32,3 @@ export class UxdotHeader extends LitElement {
     `;
   }
 }
-

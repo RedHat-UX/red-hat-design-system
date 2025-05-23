@@ -1,0 +1,34 @@
+<section class="grid">
+  <rh-tile>
+    <h2 slot="headline"><a href="#top">Tile w/ no footer</a></h2>
+    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque tenetur quae omnis beatae, distinctio natus quo hic est iste tempora vitae nesciunt, minus totam itaque modi! Laborum obcaecati
+    soluta sapiente?
+  </rh-tile>
+  <rh-tile>
+    <h2 slot="headline"><a href="#top">Tile w/ no footer</a></h2>
+    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque tenetur quae omnis beatae, distinctio natus quo hic est iste tempora vitae nesciunt, minus totam itaque modi! Laborum obcaecati
+    soluta sapiente?
+  </rh-tile>
+  <rh-tile>
+    <h2 slot="headline"><a href="#top">Tile w/ only headline</a></h2>
+  </rh-tile>
+  <rh-tile>
+    <h2 slot="headline"><a href="#top">Tile w/ only headline</a></h2>
+  </rh-tile>
+</section>
+
+<script type="module">
+  import '@rhds/elements/rh-tile/rh-tile.js';
+</script>
+
+<link rel="stylesheet"
+      href="../rh-tile-lightdom.css">
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--rh-space-xl);
+    padding: var(--rh-space-xl);
+  }
+</style>

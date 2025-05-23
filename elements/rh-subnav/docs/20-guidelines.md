@@ -24,11 +24,11 @@ hierarchies with levels. Therefore, a subnavigation cannot include menus, only
 links. If your content requires a structure with more levels, use another 
 navigation.
 
-<uxdot-example width-adjustment="872px">
-  <img src="../subnav-vs-other-navs.png"
-        alt="Image of the primary navigation, secondary navigation, and subnavigation being compared"
-        width="872"
-        height="441">
+<uxdot-example color-palette="lightest" width-adjustment="872px">
+  <img alt="Image of the primary navigation, secondary navigation, and subnavigation being compared"
+       src="../subnav-vs-other-navs.png"
+       width="872"
+       height="441">
 </uxdot-example>
 
 
@@ -37,11 +37,11 @@ navigation.
 To reduce cognitive load and a cluttered user interface, avoid using more than 
 four or five links.
 
-<uxdot-example width-adjustment="872px">
-  <img src="../subnav-number-of-links.png"
-        alt="Image of a subnavigation with five short link text labels"
-        width="872"
-        height="89">
+<uxdot-example color-palette="lightest" width-adjustment="872px">
+  <img alt="Image of a subnavigation with five short link text labels"
+       src="../subnav-number-of-links.png"
+       width="872"
+       height="89">
 </uxdot-example>
 
 
@@ -50,11 +50,11 @@ four or five links.
 An inset is used to ensure consistent alignment and padding between headings, 
 text labels, and overflow buttons.
 
-<uxdot-example width-adjustment="872px">
-  <img src="../subnav-inset.png"
-        alt="Image of three desktop and one mobile subnavigations with various inset values"
-        width="872"
-        height="1131">
+<uxdot-example color-palette="lightest" width-adjustment="872px">
+  <img alt="Image of three desktop and one mobile subnavigations with various inset values"
+       src="../subnav-inset.png"
+       width="872"
+       height="1131">
 </uxdot-example>
 
 
@@ -66,11 +66,11 @@ Link text labels should be concise, scannable, and descriptive. They should not
 exceed more than two or three short words. If they do, work with a content 
 strategist to shorten them.
 
-<uxdot-example width-adjustment="872px">
-  <img src="../subnav-link-text-labels.png"
-        alt="Image of two subnavigations; one with short text labels and one with long text labels"
-        width="872"
-        height="242">
+<uxdot-example color-palette="lightest" width-adjustment="872px">
+  <img alt="Image of two subnavigations; one with short text labels and one with long text labels"
+       src="../subnav-link-text-labels.png"
+       width="872"
+       height="242">
 </uxdot-example>
 
 
@@ -79,22 +79,11 @@ strategist to shorten them.
 A subnavigation should have four or five links maximum. Text labels should be short but descriptive. The recommended maximum character count for the elements of a subnavigation are listed below and include spaces.
 
 <rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Element">Element</th>
-        <th scope="col" data-label="Character count">Character count</th>
-        <th scope="col" data-label="Word count">Word count</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Element">Link</td>
-        <td data-label="Character count">20</td>
-        <td data-label="Word count">2 to 3</td>
-      </tr>
-    </tbody>
-  </table>
+
+| Element | Character count | Word count |
+|---------|-----------------|------------|
+| Link    | 20              | 2 to 3     |
+
 </rh-table>
 
 
@@ -103,10 +92,10 @@ A subnavigation should have four or five links maximum. Text labels should be sh
 A subnavigation can be placed below the primary navigation or a heading.
 
 <uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../subnav-layout.png"
-        alt="Image of subnavigations positioned below the primary navigation and a heading"
-        width="1000"
-        height="739">
+  <img alt="Image of subnavigations positioned below the primary navigation and a heading"
+       src="../subnav-layout.png"
+       width="1000"
+       height="739">
 </uxdot-example>
 
 
@@ -135,7 +124,7 @@ positioned under the primary navigation or heading again.
 
 ### With primary navigation
 
-<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+<uxdot-example width-adjustment="1000px" color-palette="lightest">
   <img src="../subnav-scrolling-primary-nav.png"
         alt="Image of a subnavigation and how it behaves when scrolling under the primary navigation"
         width="1000"
@@ -145,7 +134,7 @@ positioned under the primary navigation or heading again.
 
 ### With heading
 
-<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+<uxdot-example width-adjustment="1000px" color-palette="lightest">
   <img src="../subnav-scrolling-heading.png"
         alt="Image of a subnavigation and how it behaves when scrolling under a heading"
         width="1000"

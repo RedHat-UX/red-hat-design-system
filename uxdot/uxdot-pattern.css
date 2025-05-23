@@ -7,6 +7,10 @@
   max-width: 56rem; /* warning: magic number */
 }
 
+[hidden] {
+  display: none !important;
+}
+
 #container {
   display: grid;
   grid-template-columns: auto;
@@ -77,11 +81,11 @@ h3,
   gap: var(--rh-space-lg, 16px);
 }
 
-rh-tabs {
+#code-tabs {
   border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
   border-radius: var(--rh-border-radius-default);
-  overflow: hidden;
   grid-area: code;
+  background-color: var(--rh-color-surface);
 
   & rh-tab-panel {
     padding: 0;

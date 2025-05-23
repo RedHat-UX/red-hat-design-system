@@ -1,8 +1,8 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-audio-player-scrolling-text-overflow.css';
 
@@ -13,23 +13,25 @@ import styles from './rh-audio-player-scrolling-text-overflow.css';
  *          color of fade effect (should match background)
  */
 @customElement('rh-audio-player-scrolling-text-overflow')
+@themable
 export class RhAudioPlayerScrollingTextOverflow extends LitElement {
   static readonly styles = [styles];
 
-  @colorContextConsumer() private on?: ColorTheme;
 
   #scrolling = false;
 
   #style?: CSSStyleDeclaration;
 
   get #isScrollable() {
-    const outer = this.shadowRoot?.getElementById('outer');
+    const outer = this.shadowRoot?.getElementById?.('outer');
     return (outer?.scrollWidth ?? 0) > (outer?.clientWidth ?? 0);
   }
 
   connectedCallback(): void {
     super.connectedCallback();
-    this.#style = getComputedStyle(this);
+    if (!isServer) {
+      this.#style = getComputedStyle(this);
+    }
   }
 
   firstUpdated() {
@@ -40,11 +42,10 @@ export class RhAudioPlayerScrollingTextOverflow extends LitElement {
   }
 
   render() {
-    const { on = 'light' } = this;
     const { direction } = this.#style ?? {};
     return html`
       <div id="outer"
-           class="${classMap({ [on]: true, [direction || 'auto']: true })}"
+           class="${classMap({ [direction || 'auto']: true })}"
            @mouseover=${this.startScrolling}
            @mouseout=${this.stopScrolling}
            @focus=${this.startScrolling}

@@ -1,20 +1,21 @@
 import { LitElement, html } from 'lit';
-import { property } from 'lit/decorators/property.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
+
+export { RhFooterUniversal } from './rh-footer-universal.js';
+
 import '@rhds/elements/rh-icon/rh-icon.js';
 import '@rhds/elements/rh-accordion/rh-accordion.js';
 
-export { RhFooterUniversal } from './rh-footer-universal.js';
 import './rh-footer-social-link.js';
 import './rh-footer-links.js';
 import './rh-footer-block.js';
 
 import style from './rh-footer.css';
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 
 function isHeaderTagName(tagName: string) {
@@ -78,9 +79,6 @@ export class RhFooter extends LitElement {
   #logger = new Logger(this);
 
   #compact = false;
-
-  @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'darker';
 
   /**
    * ScreenSizeController effects callback to set #compact is true when viewport
@@ -154,7 +152,7 @@ export class RhFooter extends LitElement {
   #renderLinksTemplate(isMobile = false) {
     // gather all of the links that need to be wrapped into the accordion
     // give them a designation of either 'header' or 'panel'
-    const children = Array.from(this.querySelectorAll(':scope > [slot^=links]'));
+    const children = Array.from(this.querySelectorAll?.(':scope > [slot^=links]') ?? []);
 
     // Update the dynamic slot names if on mobile
     children.forEach((child, i) => child.setAttribute('slot', isMobile ? `links-${i}` : 'links'));
@@ -189,7 +187,7 @@ export class RhFooter extends LitElement {
    * and synchronously update each list and header if we need to.
    */
   public updateAccessibility(): void {
-    for (const list of this.querySelectorAll(RhFooter.LISTS_SELECTOR)) {
+    for (const list of this.querySelectorAll?.(RhFooter.LISTS_SELECTOR) ?? []) {
       // if we already have a label then we assume that the user
       // has wired this up themselves.
       if (!list.hasAttribute('aria-labelledby')) {

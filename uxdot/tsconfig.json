@@ -4,6 +4,11 @@
   ],
   "include": [
     "./**/*",
+    "../lib/**/*.ts",
+    "../docs/_plugins/**/*.ts",
+    "../docs/_plugins/*.ts",
+    "../docs/declaration.d.ts",
+    "../elements/**/*.ts",
     "../declaration.d.ts",
     "../docs/11ty-types.d.ts",
     "../docs/_data/repoStatus.ts"

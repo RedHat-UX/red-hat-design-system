@@ -46,7 +46,7 @@ a:after,
   position: relative;
   white-space: nowrap;
   color: var(--_color);
-  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
   font-weight: 600; /* WARNING: not a token value */
   line-height: var(--rh-line-height-body-text, 1.5);
@@ -61,7 +61,7 @@ a:after,
   --_rh-icon-plus-padding: calc(5px + var(--rh-icon-size));
 }
 
-.rtl {
+:dir(rtl) {
   text-align: right;
 }
 
@@ -97,7 +97,7 @@ rh-icon {
     var(--rh-animation-timing, cubic-bezier(0.465, 0.183, 0.153, 0.946));
 }
 
-#container.rtl svg {
+#container:dir(rtl) rh-icon {
   rotate: 180deg;
 }
 
@@ -151,7 +151,7 @@ a:focus-within,
   translate: 3px 0;
 }
 
-:host(:hover) #container.rtl rh-icon {
+:host(:hover) #container:dir(rtl) rh-icon {
   translate: -3px 0;
 }
 
@@ -236,7 +236,9 @@ a:focus-within,
   --_focus-background-color: var(--rh-cta-focus-background-color, transparent);
 
   /* --rh-color-border-interactive-on-light with 10% opacity */
-  --_focus-container-background-color: var(--rh-cta-focus-container-background-color, #0066cc1a);
+  --_focus-container-background-color:
+    light-dark(var(--rh-cta-focus-container-background-color, #0066cc1a),
+      var(--rh-cta-focus-container-background-color, #73bcf740));
   --_focus-border-color: var(--rh-cta-focus-border-color, transparent);
   --_focus-color:
     var(--rh-cta-focus-color,
@@ -245,23 +247,11 @@ a:focus-within,
   --_focus-text-decoration: var(--rh-cta-focus-text-decoration, none);
 
   /* --rh-color-border-interactive-on-light with 10% opacity */
-  --_active-container-background-color: var(--rh-cta-active-container-background-color, #0066cc1a);
+  --_active-container-background-color:
+    light-dark(var(--rh-cta-active-container-background-color, #0066cc1a),
+      var(--rh-cta-active-container-background-color, #73bcf740));
   --_active-inner-border-color: var(--rh-cta-active-inner-border-color, transparent);
   --_active-text-decoration: var(--rh-cta-active-text-decoration, none);
-
-  &.dark {
-    /* --rh-color-interactive-blue-lighter with 25% opacity */
-    --_focus-container-background-color: var(--rh-cta-focus-container-background-color, #73bcf740);
-    --_focus-border-color: var(--rh-cta-focus-border-color, transparent);
-    --_focus-inner-border-color: var(--rh-cta-focus-inner-border-color, transparent);
-    --_focus-text-decoration: var(--rh-cta-focus-text-decoration, none);
-
-    /* --rh-color-interactive-blue-lighter with 25% opacity */
-    --_active-container-background-color:
-      var(--rh-cta-active-container-background-color,
-        #73bcf740);
-    --_active-text-decoration: var(--rh-cta-active-text-decoration, none);
-  }
 }
 
 /*****************************************************************************
@@ -307,54 +297,31 @@ a:focus-within,
 
   --_background-color: var(--rh-cta-background-color, transparent);
   --_border-color: var(--rh-cta-border-color, var(--rh-color-border-strong));
-  --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-light, #151515));
+  --_color:
+    light-dark(var(--rh-cta-color, var(--rh-color-text-primary-on-light, #151515)),
+      var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff)));
   --_hover-background-color:
-    var(--rh-cta-hover-background-color,
-      var(--rh-color-surface-darkest,
-      #151515));
+    light-dark(var(--rh-cta-hover-background-color, var(--rh-color-surface-darkest, #151515)),
+      var(--rh-cta-hover-background-color, var(--rh-color-surface-lightest, #ffffff)));
   --_hover-border-color: var(--rh-cta-hover-border-color, var(--rh-color-border-strong));
-  --_hover-color: var(--rh-cta-hover-color, var(--rh-color-text-primary-on-dark, #ffffff));
+  --_hover-color:
+    light-dark(var(--rh-cta-hover-color, var(--rh-color-text-primary-on-dark, #ffffff)),
+      var(--rh-cta-hover-color, var(--rh-color-text-primary-on-light, #151515)));
   --_focus-background-color:
-    var(--rh-cta-focus-background-color,
-      var(--rh-color-surface-lighter,
-      #f2f2f2));
+    light-dark(var(--rh-cta-focus-background-color, var(--rh-color-surface-lighter, #f2f2f2)),
+      var(--rh-cta-focus-background-color, var(--rh-color-surface-dark, #383838)));
   --_focus-border-color: var(--rh-cta-focus-border-color, var(--rh-color-border-strong));
-  --_focus-color:
-    var(--rh-cta-focus-color,
-      var(--rh-color-surface-darkest,
-      #151515));
+  --_focus-color: var(--rh-color-text-primary);
   --_focus-inner-border-color:
     var(--rh-cta-focus-inner-border-color,
       var(--rh-color-border-strong));
-  --_active-color: var(--rh-cta-active-color, var(--rh-color-text-primary-on-light, #151515));
-  --_active-background-color: var(--rh-cta-active-background-color, var(--rh-color-border-strong));
+  --_active-color: var(--rh-cta-active-color, var(--rh-color-text-primary));
+  --_active-background-color:
+    light-dark(var(--rh-cta-active-background-color, var(--rh-color-border-strong)),
+      var(--rh-cta-active-background-color, var(--rh-color-surface-lightest, #ffffff)));
   --_active-inner-border-color:
-    var(--rh-cta-active-inner-border-color,
-      var(--rh-color-surface-light,
-      #e0e0e0));
-
-  &.dark {
-    --_color: var(--rh-cta-color, var(--rh-color-text-primary-on-dark, #ffffff));
-    --_hover-background-color:
-      var(--rh-cta-hover-background-color,
-        var(--rh-color-surface-lightest,
-        #ffffff));
-    --_focus-background-color:
-      var(--rh-cta-focus-background-color,
-        var(--rh-color-surface-dark,
-        #383838));
-    --_hover-color: var(--rh-cta-hover-color, var(--rh-color-text-primary-on-light, #151515));
-    --_focus-color: var(--rh-cta-focus-color, var(--rh-color-text-primary-on-light, #151515));
-    --_active-color: var(--rh-cta-active-color, var(--rh-color-text-primary-on-dark, #ffffff));
-    --_active-background-color:
-      var(--rh-cta-active-background-color,
-        var(--rh-color-surface-lightest,
-        #ffffff));
-    --_active-inner-border-color:
-      var(--rh-cta-active-inner-border-color,
-        var(--rh-color-border-strong-on-light,
-        #151515));
-  }
+    light-dark(var(--rh-cta-active-inner-border-color, var(--rh-color-surface-light, #e0e0e0)),
+      var(--rh-cta-active-inner-border-color, var(--rh-color-border-strong-on-light, #151515)));
 }
 
 /*****************************************************************************
@@ -368,7 +335,7 @@ a:focus-within,
 
   & #container {
     border-style: solid;
-    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+    font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
     font-weight: var(--rh-font-weight-body-text-regular, 400);
     display: flex;
     flex-flow: row wrap;
@@ -380,40 +347,31 @@ a:focus-within,
     --_border-color: var(--rh-cta-border-color, var(--rh-color-border-subtle));
     --_color: var(--rh-cta-color, var(--rh-color-interactive-primary-default));
     --_hover-background-color:
-      var(--rh-cta-hover-background-color,
-        var(--rh-color-surface-lighter,
-        #f2f2f2));
+      light-dark(var(--rh-cta-hover-background-color, var(--rh-color-surface-lighter, #f2f2f2)),
+        var(--rh-cta-hover-background-color, var(--rh-color-surface-darker, #1f1f1f)));
     --_hover-border-color: var(--rh-cta-hover-border-color, var(--rh-color-border-subtle));
     --_hover-color: var(--rh-cta-hover-color, var(--rh-color-interactive-primary-hover));
-    --_hover-text-decoration: var(--rh-cta-hover-text-decoration, none);
+    --_hover-text-decoration:
+      light-dark(var(--rh-cta-hover-text-decoration, none),
+        var(--rh-cta-hover-text-decoration, underline));
     --_focus-color: var(--rh-cta-focus-color, var(--rh-color-interactive-primary-default));
     --_focus-border-color: var(--rh-cta-focus-border-color, var(--rh-color-border-subtle));
     --_focus-inner-border-color:
       var(--rh-cta-focus-inner-border-color,
         var(--rh-color-border-subtle));
-    --_focus-text-decoration: var(--rh-cta-focus-text-decoration, none);
+    --_focus-text-decoration:
+      light-dark(var(--rh-cta-focus-text-decoration, none),
+        var(--rh-cta-focus-text-decoration, none));
     --_active-background-color:
-      var(--rh-cta-active-background-color,
-        var(--rh-color-surface-lighter,
-        #f2f2f2));
+      light-dark(var(--rh-cta-active-background-color,
+        var(--rh-color-surface-lighter, #f2f2f2)),
+        var(--rh-cta-active-background-color, var(--rh-color-surface-darker, #1f1f1f)));
     --_active-inner-border-color:
       var(--rh-cta-active-inner-border-color,
         var(--rh-color-border-subtle));
-    --_active-text-decoration: var(--rh-cta-active-text-decoration, none);
-
-    &.dark {
-      --_hover-background-color:
-        var(--rh-cta-hover-background-color,
-          var(--rh-color-surface-darker,
-          #1f1f1f));
-      --_hover-text-decoration: var(--rh-cta-hover-text-decoration, underline);
-      --_focus-text-decoration: var(--rh-cta-focus-text-decoration, none);
-      --_active-background-color:
-        var(--rh-cta-active-background-color,
-          var(--rh-color-surface-darker,
-          #1f1f1f));
-      --_active-text-decoration: var(--rh-cta-active-text-decoration, underline);
-    }
+    --_active-text-decoration:
+      light-dark(var(--rh-cta-active-text-decoration, none),
+        var(--rh-cta-active-text-decoration, underline));
 
     &.icon rh-icon {
       margin-inline: 0;
@@ -428,7 +386,7 @@ a:focus-within,
     transition: transform var(--_trans);
   }
 
-  #container.rtl rh-icon { transform: translate(0, 0) rotate(180deg); }
+  #container:dir(rtl) rh-icon { transform: translate(0, 0) rotate(180deg); }
   :host(:hover) #container rh-icon { transform: translate(3px, 0); }
-  :host(:hover) #container.rtl rh-icon { transform: translate(-3px, 0) rotate(180deg); }
+  :host(:hover) #container:dir(rtl) rh-icon { transform: translate(-3px, 0) rotate(180deg); }
 }

@@ -1,138 +1,138 @@
-
 ## Style
 
-Jump links are fixed on the page and follow a user as they scroll. It moves
-them to a section of content when the corresponding link is selected. It looks
-visually similar to <a href="../tabs">Open tabs</a>, the only difference is
-the uppercase label on top.
+Jump links are a list of links located near content that act as persistent
+navigation. This list can be vertical or horizontal and a title is always
+included on top.
 
-<uxdot-example width-adjustment="537px">
-  <img src="../jump-links-style.svg"
-        alt="Jump links specs"
-        width="536"
-        height="330">
-</uxdot-example>
-
-
-### Theme
-
-<uxdot-example width-adjustment="385px">
-  <img src="../jump-links-theme-light.svg"
-        alt="Jump links theme light"
-        width="383"
-        height="300">
-</uxdot-example>
-
-<uxdot-example color-palette="darkest" width-adjustment="385px">
-  <img src="../jump-links-theme-dark.svg"
-        alt="Jump links theme dark"
-        width="383"
-        height="300">
-</uxdot-example>
-
-
-### Label
-
-Jump links display a label at the top indicating there are section links that
-a user can select. This label isn’t interactive.
-
-
-### Section links
-
-Jump links feature links that float to the right of an anchor line, they
-represent the different sections that are available to select.
-
-
-### Nested section links
-
-Sections that contain lots of content can be broken into nested sections for
-better organization and hierarchy. Nested section links are positioned under
-their parent section link and indented slightly. There are guidelines about
-how many section links can be included, but no guidelines about how many
-nested section links can be included.
-
-<uxdot-example width-adjustment="129px">
-  <img src="../jump-links-nested.svg"
-        alt="Jump links nested section"
-        width="127"
-        height="300" />
-</uxdot-example>
-
-
-### Active indicator bar
-
-A red indicator bar highlights what the active section is. It’s positioned on
-top of the anchor line, not adjacent.
-
-<uxdot-example width-adjustment="206px">
-  <img src="../jump-links-indicator.svg"
-        alt="Jump links active indicator bar"
-        width="206"
-        height="189" />
-</uxdot-example>
-
-
-## Responsive design
-
-Jump links can be used on all screen sizes.
-
-
-### Breakpoints
-
-Jump links are displayed in layout on large screens, but on small screens it’s
-wrapped in a disclosure which is collapsed until a user expands the panel.
-
-
-### Desktop
+### Anatomy
 
 <figure>
-  <uxdot-example width-adjustment="992px">
-    <img src="../jump-links-responsive-desktop.svg" alt="Jump links on desktop" style="">
+  <uxdot-example color-palette="lightest">
+    <img src="../jump-links-style-anatomy.svg"
+        alt="Anatomy of jump links with numbered annotations pointing to various parts"
+        width="394"
+        height="240">
   </uxdot-example>
-  <figcaption>On large screens, jump links are displayed in the layout</figcaption>
+  <figcaption>
+     <ol>
+       <li>Title</li>
+       <li>Inactive section</li>
+       <li>Active section border</li>
+       <li>Active section</li>
+       <li>Section with nested jump links</li>
+     </ol>
+  </figcaption>
 </figure>
 
+## Color scheme
 
-### Tablet
+Vertical and horizontal jump links are available in both light and dark color
+schemes.
 
-<figure>
-  <uxdot-example width-adjustment="768px">
-    <img src="../jump-links-responsive-tablet.svg"
-        alt="Jump links on tablet"
-        width="768"
-        height="217">
-  </uxdot-example>
-  <figcaption>Section links reduce in width as breakpoints get smaller</figcaption>
-</figure>
+### Light scheme
 
+The light scheme disclosure includes a box shadow, but the dark scheme
+disclosure does not.
 
-### Mobile
+Learn more about the [Disclosure](/elements/disclosure) element.
 
-<figure>
-  <uxdot-example width-adjustment="360px">
-    <img src="../jump-links-responsive-mobile.svg"
-        alt="Jump links on mobile"
-        width="360"
-        height="640">
-  </uxdot-example>
-  <figcaption>On small screens, jump links are wrapped in a collapsed disclosure</figcaption>
-</figure>
-
-
-## Spacing
-
-<uxdot-example width-adjustment="385px">
-  <img src="../jump-links-spacing.svg"
-        alt="Jump links spacing on desktop"
-        width="384"
-        height="304" />
+<uxdot-example color-palette="lighter" no-border>
+    <img src="../jump-links-style-color-scheme-light.svg"
+        alt="Four sets of jump links. Two vertical with one nested, one horizontal, and one vertical inside a disclosure."
+        width="1012"
+        height="464">
 </uxdot-example>
 
-<uxdot-example width-adjustment="872px">
-  <img src="../jump-links-spacing-2.svg"
-        alt="Jump links spacing on mobile"
-        width="884"
-        height="259" />
+### Dark scheme
+
+<uxdot-example color-palette="darker" no-border>
+    <img src="../jump-links-style-color-scheme-dark.svg"
+        alt="Four sets of jump links on a dark color scheme. Two vertical with one nested, one horizontal, and one vertical inside a disclosure."
+        width="1012"
+        height="464">
 </uxdot-example>
 
-<uxdot-spacer-tokens-table tokens="sm, md, lg, xl"></uxdot-spacer-tokens-table>
+## Space
+
+The space in between jump links and content should use the `--rh-space-2xl`
+token at a minimum.
+
+<uxdot-example color-palette="lightest">
+    <img src="../jump-links-style-space-A.svg"
+        alt="Three sets of vertical jump links. Jump links have 16px of margin bottom between the accessible label and the list. Jump links have 16px of horizontal padding and 8px of vertical padding. Nested jump links have 32px of left padding from the border. There's also 32px of margin right between the jump links and the content."
+        width="1012"
+        height="244">
+</uxdot-example>
+
+<uxdot-example color-palette="lighter" no-border>
+    <img src="../jump-links-style-space-B.svg"
+        alt="Horizontal jump links. 16px of padding around the jump links and 16px of top and bottom padding around the accessible label."
+        width="1012"
+        height="112">
+</uxdot-example>
+
+<uxdot-example color-palette="lightest">
+    <img src="../jump-links-style-space-C.svg"
+        alt="Jump links in a disclosure. Jump links have 16px top margin from the disclosure's border when open. All other sides have 24px of padding from the disclosure's border."
+        width="752"
+        height="312">
+</uxdot-example>
+
+## Interaction states
+
+### Hover
+
+The active section jump link is interactive, but the styling does not change on
+hover.
+
+<uxdot-example color-palette="lighter" no-border>
+    <img src="../jump-links-style-interaction-states-hover-color-scheme-light.svg"
+        alt="Hovered jump links have the border thickness increased and the text gets darker."
+        width="1012"
+        height="464">
+</uxdot-example>
+
+<uxdot-example color-palette="darker" no-border>
+    <img src="../jump-links-style-interaction-states-hover-color-scheme-dark.svg"
+        alt="Similar to the light scheme, hovered jump links have the border thickness increased and the text gets darker."
+        width="1012"
+        height="464">
+</uxdot-example>
+
+<rh-table>
+
+ | Property                                | Light scheme                 | Dark scheme               |
+ | --------------------------------------- | ---------------------------- | ------------------------- |
+ | Thick border color                      | `--rh-color-gray-60`         | `--rh-color-gray-30`      |
+ | Jump link text color                    | `--rh-color-text-primary`    | `--rh-color-text-primary` |
+ | Disclosure trigger button surface color | `--rh-color-surface-lighter` | `--rh-color-surface-dark` |
+
+</rh-table>
+
+### Focus and active
+
+The active section jump link can receive focus, but the styling does not change.
+
+<uxdot-example color-palette="lighter" no-border>
+    <img src="../jump-links-style-interaction-states-focus-active-color-scheme-light.svg"
+        alt="Focused jump links receive a blue outline all the way around the link."
+        width="1012"
+        height="464">
+</uxdot-example>
+
+<uxdot-example color-palette="darker" no-border>
+    <img src="../jump-links-style-interaction-states-focus-active-color-scheme-dark.svg"
+        alt="Similar to the light scheme, dark focused jump links have a blue outline all the way around the link."
+        width="1012"
+        height="464">
+</uxdot-example>
+
+<rh-table>
+
+ | Property                                | Light scheme                 | Dark scheme               |
+ | --------------------------------------- | ---------------------------- | ------------------------- |
+ | Thick border color                      | `--rh-color-gray-60`         | `--rh-color-gray-30`      |
+ | Jump link text color                    | `--rh-color-text-primary`    | `--rh-color-text-primary` |
+ | Disclosure trigger button surface color | `--rh-color-surface-lighter` | `--rh-color-surface-dark` |
+
+</rh-table>

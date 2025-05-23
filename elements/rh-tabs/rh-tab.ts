@@ -1,10 +1,7 @@
-import type { RhTabsContext } from './context.js';
-
-import { html, LitElement } from 'lit';
+import { html, isServer, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
-import { query } from 'lit/decorators/query.js';
+import { state } from 'lit/decorators/state.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { consume } from '@lit/context';
 
@@ -12,9 +9,16 @@ import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import {
+  rhTabsActiveTabContext,
+  rhTabsBoxContext,
+  rhTabsManualContext,
+  rhTabsFirstTabContext,
+  rhTabsLastTabContext,
+  rhTabsVerticalContext,
+} from './context.js';
 
-import { context } from './context.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-tab.css';
 
@@ -32,7 +36,7 @@ export class TabExpandEvent extends Event {
  * @slot icon - Can contain an `<svg>` or `<rh-icon>`
  * @slot - Tab title text
  * @csspart button - element that contains the interactive part of a tab
- * @csspart icon - icon `<span>` element
+ * @csspart icon - `<rh-icon>` element
  * @csspart text - tile text `<span>` element
  * @cssprop {<color>} [--rh-tabs-link-color=#4d4d4d] - Tab link text color
  * @cssprop {<color>} [--rh-tabs-active-border-color=#ff442b] - Tab active border color
@@ -43,6 +47,7 @@ export class TabExpandEvent extends Event {
  * @fires { TabExpandEvent } expand - when a tab expands
  */
 @customElement('rh-tab')
+@themable
 export class RhTab extends LitElement {
   static readonly styles = [styles];
 
@@ -52,16 +57,23 @@ export class RhTab extends LitElement {
   /** True when the tab is disabled */
   @property({ reflect: true, type: Boolean }) disabled = false;
 
-  @consume({ context, subscribe: true })
-  @property({ attribute: false })
-  private ctx?: RhTabsContext;
+  @consume({ context: rhTabsBoxContext, subscribe: true })
+  @state() private box = false;
 
-  /** Sets color theme based on parent context */
-  @colorContextConsumer() private on?: ColorTheme;
+  @consume({ context: rhTabsVerticalContext, subscribe: true })
+  @state() private vertical = false;
 
-  @queryAssignedElements({ slot: 'icon', flatten: true }) private icons!: HTMLElement[];
+  @consume({ context: rhTabsManualContext, subscribe: true })
+  @state() private manual = false;
 
-  @query('#button') private button!: HTMLButtonElement;
+  @consume({ context: rhTabsActiveTabContext, subscribe: true })
+  @state() private activeTab: RhTab | null = null;
+
+  @consume({ context: rhTabsFirstTabContext, subscribe: true })
+  @state() private firstTab: RhTab | null = null;
+
+  @consume({ context: rhTabsLastTabContext, subscribe: true })
+  @state() private lastTab: RhTab | null = null;
 
   #internals = InternalsController.of(this, { role: 'tab' });
 
@@ -74,20 +86,17 @@ export class RhTab extends LitElement {
   }
 
   render() {
-    const { on = 'light' } = this;
-    const active = this.ctx?.activeTab === this;
-    const { box = false, vertical = false, firstTab, lastTab } = this.ctx ?? {};
+    const { box = false, vertical = false, activeTab, firstTab, lastTab } = this;
+    const active = isServer ? this.active : activeTab === this;
     const first = firstTab === this;
     const last = lastTab === this;
     return html`
       <div id="button"
            part="button"
            ?disabled="${this.disabled}"
-           class="${classMap({ active, box, vertical, first, last, on: true, [on]: true })}">
+           class="${classMap({ active, box, vertical, first, last })}">
         <slot name="icon"
-              part="icon"
-              ?hidden="${!this.icons.length}"
-              @slotchange="${() => this.requestUpdate()}"></slot>
+              part="icon"></slot>
         <slot part="text"></slot>
       </div>
     `;
@@ -103,7 +112,7 @@ export class RhTab extends LitElement {
   }
 
   #onFocus() {
-    if (!this.ctx?.manual && !this.disabled) {
+    if (!this.manual && !this.disabled) {
       this.#activate();
     }
   }

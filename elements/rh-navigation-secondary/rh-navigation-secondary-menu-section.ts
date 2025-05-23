@@ -1,4 +1,4 @@
-import { html, LitElement } from 'lit';
+import { html, isServer, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
@@ -24,8 +24,9 @@ export class RhNavigationSecondaryMenuSection extends LitElement {
 
   connectedCallback(): void {
     super.connectedCallback();
-
-    this.#updateAccessibility();
+    if (!isServer) {
+      this.#updateAccessibility();
+    }
   }
 
   render() {

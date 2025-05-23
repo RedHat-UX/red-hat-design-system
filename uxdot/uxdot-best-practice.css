@@ -28,6 +28,16 @@ span {
   color: var(--rh-color-status-danger);
 }
 
+#caution {
+  span {
+    color: light-dark(var(--rh-color-yellow-60), var(--rh-color-status-warning-on-dark));
+  }
+
+  rh-icon {
+    color: var(--rh-color-status-warning);
+  }
+}
+
 ::slotted(uxdot-example) {
   margin: 0 !important;
 }

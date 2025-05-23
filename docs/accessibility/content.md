@@ -3,15 +3,17 @@ title: Content
 tags:
   - accessibility
 order: 40
-importElements:
-  - rh-code-block
-  - rh-blockquote
-  - rh-table
 ---
 
 <link data-helmet
       rel="stylesheet"
       href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
+
+<script type="module" data-helmet>
+  import '@rhds/elements/rh-code-block/rh-code-block.js';
+  import '@rhds/elements/rh-blockquote/rh-blockquote.js';
+  import '@rhds/elements/rh-table/rh-table.js';
+</script>
 
 <style data-helmet>
   rh-blockquote {
@@ -52,7 +54,7 @@ Wherever meaningful images or other non-text elements are used on a page, you mu
 Images loaded via the `<img>` element typically use the alt attribute for their alternative text:
 
 ```html rhcodeblock
-<img src="imagesource.jpg" alt="Description of image"></script>
+<img src="imagesource.jpg" alt="Description of image">
 ```
 
 Inline SVGs that compose simple images commonly use a combination of the `role="img"` attribute and a `<title>` element as the first child of the `<svg>` element:
@@ -110,14 +112,16 @@ Depending on whether a web page is about the plot of the 1946 movie It’s a Won
 
 Images acting as buttons or links are functional, and thus serve different purposes than images supporting the surrounding text.
 
-<figure>
-  <a href="https://www.redhat.com/">
-    <img src="/assets/logo-redhat.png"
-      alt="Red Hat homepage"
-      width="613"
-      height="145">
-  </a>
-</figure>
+<uxdot-example color-palette="lightest">
+  <figure>
+    <a href="https://www.redhat.com/">
+      <img src="/assets/logo-redhat.png"
+        alt="Red Hat homepage"
+        width="613"
+        height="145">
+    </a>
+  </figure>
+</uxdot-example>
 
 If the above image supplements the text of an article about Red Hat or our products, the appropriate alt text could be something like `"Red Hat, Inc. logo."` But if that image is a link pointing to the corporate homepage, you might want something along the lines of `"Red Hat homepage"` for your alt text:
 
@@ -213,7 +217,7 @@ In addition to the best practices for all microcopy, adhere to the following bes
 - Use the same link text for links that go to the same place.
 - Use different link text for links that go to different places.
 - If you absolutely must use URLs as link text, try to choose short and easy-to-read URLs (e.g., “redhat.com” instead of "https://www.redhat.com/").
-- Links that point to external sites, open new windows/tabs, or launch other media should indicate this behavior to all visitors (both users and non-users of assistive tech alike)
+- Links that point to external sites, [open new windows/tabs](/accessibility/design/#opening-links-in-new-windows), or launch other media should indicate this behavior to all visitors (both users and non-users of assistive tech alike).
 
 #### Avoid the following when creating links
 
@@ -240,7 +244,7 @@ In addition to the best practices for all microcopy, adhere to the following bes
 In addition to the best practices for all microcopy, adhere to the following best practices for form labels, when possible.
 
 ```html rhcodeblock
-<label>First name</label></script>
+<label>First name</label>
 ```
 
 #### Best practices for labels

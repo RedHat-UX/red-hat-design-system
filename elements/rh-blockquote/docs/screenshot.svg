@@ -1,20 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="340" height="200" viewBox="0 0 340 200">
-  <defs>
-    <clipPath id="clip-blockquote">
-      <rect width="340" height="200"/>
-    </clipPath>
-  </defs>
-  <g id="blockquote" clip-path="url(#clip-blockquote)">
-    <rect width="340" height="200" fill="#fff"/>
-    <g id="Light_theme" data-name="Light theme" transform="translate(0 27)">
-      <g id="Quote">
-        <text id="Walter_Bishop_Chief_science_officer_Massive_Dynamic" data-name="Walter Bishop
-Chief science officer, Massive Dynamic" transform="translate(0 108)" fill="#6a6e73" font-size="14" font-family="RedHatText-Medium, Red Hat Text" letter-spacing="0.01em" font-weight="500"><tspan x="0" y="14">Walter Bishop</tspan><tspan y="14" font-family="RedHatText-Regular, Red Hat Text" font-weight="400"></tspan><tspan font-family="RedHatText-Regular, Red Hat Text" font-weight="400"><tspan x="0" y="35">Chief science officer, </tspan><tspan y="35" font-family="RedHatText-Italic, Red Hat Text" font-style="italic">Massive Dynamic</tspan></tspan></text>
-        <text id="Red_Hat_OpenShift_has_allowed_us_to_successfully_scale_as_we_grow." data-name="Red Hat OpenShift has allowed us to successfully scale as we grow." transform="translate(0 36)" fill="#151515" font-size="20" font-family="RedHatDisplay-Regular, Red Hat Display"><tspan x="0" y="20">Red Hat OpenShift has allowed us to </tspan><tspan x="0" y="50">successfully scale as we grow.</tspan></text>
-        <g id="Quote_-_light_theme" data-name="Quote - light theme">
-          <path id="Icon" d="M12.9,17.5H8.508a6.83,6.83,0,0,1,6.527-5.75.875.875,0,1,0,0-1.75A8.527,8.527,0,0,0,6.5,18.5V29.125A.856.856,0,0,0,7.379,30H18.425a.856.856,0,0,0,.879-.875V24A6.364,6.364,0,0,0,12.9,17.5Zm15.942,0H24.451a6.83,6.83,0,0,1,6.527-5.75.875.875,0,1,0,0-1.75,8.527,8.527,0,0,0-8.536,8.5V29.125a.856.856,0,0,0,.879.875H34.367a.856.856,0,0,0,.879-.875V24A6.288,6.288,0,0,0,28.844,17.5Z" transform="translate(-6.5 -10)" fill="#e00"/>
-        </g>
-      </g>
-    </g>
-  </g>
+<svg width="294" height="141" viewBox="0 0 294 141" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_100_3786)">
+<path d="M9.5 15.88H5.13C5.2 12.7 7.8 10.13 11 10.13C11.15 10.13 11.3 10.13 11.45 10.15C11.79 10.18 12.09 9.92 12.12 9.57C12.15 9.23 11.89 8.93 11.54 8.9C11.36 8.89 11.18 8.88 10.99 8.88C7.05999 8.88 3.87 12.08 3.87 16V27.5C3.87 27.85 4.14999 28.12 4.49 28.12H15.49C15.84 28.12 16.12 27.84 16.12 27.5V22.5C16.12 18.85 13.15 15.88 9.5 15.88ZM14.88 26.88H5.12V17.13H9.5C12.46 17.13 14.88 19.54 14.88 22.51V26.89V26.88Z" fill="#EE0000"/>
+<path d="M24.5 15.88H20.13C20.2 12.7 22.8 10.13 26 10.13C26.15 10.13 26.3 10.13 26.45 10.15C26.79 10.18 27.1 9.92 27.12 9.57C27.15 9.23 26.89 8.93 26.54 8.9C26.36 8.89 26.18 8.88 25.99 8.88C22.06 8.88 18.87 12.08 18.87 16V27.5C18.87 27.85 19.15 28.12 19.49 28.12H30.49C30.84 28.12 31.11 27.84 31.11 27.5V22.5C31.11 18.85 28.14 15.88 24.49 15.88H24.5ZM29.88 26.88H20.13V17.13H24.51C27.47 17.13 29.89 19.54 29.89 22.51V26.89L29.88 26.88Z" fill="#EE0000"/>
+</g>
+<rect x="3.5" y="52.5" width="291" height="18" fill="#151515"/>
+<rect x="3.5" y="78.5" width="291" height="18" fill="#151515"/>
+<rect x="3.5" y="108.5" width="160" height="12" fill="#4D4D4D"/>
+<rect x="3.5" y="128.5" width="160" height="12" fill="#4D4D4D"/>
+<defs>
+<clipPath id="clip0_100_3786">
+<rect width="36" height="36" fill="white" transform="translate(-0.5 0.5)"/>
+</clipPath>
+</defs>
 </svg>

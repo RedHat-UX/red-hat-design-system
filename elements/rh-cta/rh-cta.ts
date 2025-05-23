@@ -1,17 +1,14 @@
 import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { state } from 'lit/decorators/state.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
-import { DirController } from '../../lib/DirController.js';
-
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-
 import type { IconNameFor, IconSetName } from '@rhds/icons';
+
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import style from './rh-cta.css';
 
@@ -72,6 +69,7 @@ function isSupportedContent(el: Element | null): el is HTMLAnchorElement | HTMLB
  *              Sets the cta text decoration on active
  */
 @customElement('rh-cta')
+@themable
 export class RhCta extends LitElement {
   static readonly styles = [style];
 
@@ -112,18 +110,12 @@ export class RhCta extends LitElement {
   /** Icon set */
   @property({ attribute: 'icon-set' }) iconSet: IconSetName = 'ui';
 
-  /** Sets color theme based on parent context */
-  @colorContextConsumer() @state() private on?: ColorTheme;
-
-  protected override async getUpdateComplete(): Promise<boolean> {
-    if (this.icon || !this.variant) {
+  override async scheduleUpdate() {
+    if (this.icon || !this.variant && !customElements.get('rh-icon')) {
       await import('@rhds/elements/rh-icon/rh-icon.js');
     }
-    return super.getUpdateComplete();
+    super.scheduleUpdate();
   }
-
-  /** Is the element in an RTL context? */
-  #dir = new DirController(this);
 
   #logger = new Logger(this);
 
@@ -131,9 +123,8 @@ export class RhCta extends LitElement {
     const {
       download, href, referrerpolicy, rel, target,
       icon, iconSet,
-      on = 'light', variant,
+      variant,
     } = this;
-    const rtl = this.#dir.dir === 'rtl';
     const isDefault = !variant;
     const svg = isDefault;
     const follower =
@@ -152,7 +143,7 @@ export class RhCta extends LitElement {
     return html`
       <span id="container"
             part="container"
-            class=${classMap({ rtl, icon: !!icon, svg, on: true, [on]: true })}
+            class=${classMap({ icon: !!icon, svg })}
             @slotchange=${this.firstUpdated}>${iconContent}${linkContent}</span>`;
   }
 

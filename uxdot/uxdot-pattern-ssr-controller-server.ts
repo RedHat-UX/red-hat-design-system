@@ -13,6 +13,8 @@ import { RHDSSSRController } from '@rhds/elements/lib/ssr-controller.js';
 import * as Tools from '@parse5/tools';
 import type { UxdotPattern } from './uxdot-pattern.js';
 
+import { injectSSRHintAttributes } from '#11ty-plugins/ssr-hints.js';
+
 let HighlightPairedShortcode: (
   content: string,
   language: string,
@@ -58,6 +60,7 @@ interface EleventyPageData {
 
 interface RHDSRenderInfo extends RenderInfo {
   page: EleventyPageData;
+  slotControllerElements: string[];
 }
 
 export class UxdotPatternSSRControllerServer extends RHDSSSRController {
@@ -68,7 +71,6 @@ export class UxdotPatternSSRControllerServer extends RHDSSSRController {
   jsContent?: DirectiveResult;
   hasCss = false;
   hasJs = false;
-
 
   async #extractInlineContent(kind: 'js' | 'css', partial: Tools.Node, baseUrl: URL) {
     const prop = kind === 'js' ? 'jsSrc' as const : 'cssSrc' as const;
@@ -120,8 +122,14 @@ export class UxdotPatternSSRControllerServer extends RHDSSSRController {
 
   async ssrSetup(renderInfo: RHDSRenderInfo) {
     HighlightPairedShortcode ||= await this.#loadHighlighter();
-    const allContent = await this.#getPatternContent(renderInfo);
-    const partial = parseFragment(allContent);
+    const content = await this.#getPatternContent(renderInfo);
+
+    const partial = parseFragment(content);
+
+    injectSSRHintAttributes(partial, renderInfo);
+
+    const allContent = serialize(partial).trim();
+
     const baseUrl = pathToFileURL(renderInfo.page.inputPath);
 
     // NB: the css and js content functions *mutate* the partial,
@@ -129,6 +137,7 @@ export class UxdotPatternSSRControllerServer extends RHDSSSRController {
     //     the entire content is printed as the runtime portion of the pattern.
     const cssContent = await this.#extractInlineContent('css', partial, baseUrl);
     const jsContent = await this.#extractInlineContent('js', partial, baseUrl);
+
     const htmlContent = serialize(partial).trim();
 
     this.hasCss = !!cssContent.length;
@@ -139,4 +148,3 @@ export class UxdotPatternSSRControllerServer extends RHDSSSRController {
     this.htmlContent = unsafeHTML(this.#highlight('html', htmlContent));
   }
 }
-

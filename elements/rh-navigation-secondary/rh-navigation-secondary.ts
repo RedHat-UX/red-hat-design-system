@@ -1,13 +1,15 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { state } from 'lit/decorators/state.js';
-import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 
 import { ComposedEvent } from '@patternfly/pfe-core';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
+
+import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import '@rhds/elements/rh-surface/rh-surface.js';
 
@@ -19,10 +21,8 @@ import {
   SecondaryNavDropdownExpandEvent,
 } from './rh-navigation-secondary-dropdown.js';
 
-import { DirController } from '../../lib/DirController.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+
 export class SecondaryNavOverlayChangeEvent extends ComposedEvent {
   constructor(
     public open: boolean,
@@ -32,13 +32,7 @@ export class SecondaryNavOverlayChangeEvent extends ComposedEvent {
   }
 }
 
-export type NavPalette = Extract<ColorPalette, (
-  | 'lighter'
-  | 'dark'
-)>;
-
 import styles from './rh-navigation-secondary.css';
-
 
 /* TODO: Abstract this out to a shareable function, should RTI handle something similar? */
 function focusableChildElements(parent: HTMLElement): NodeListOf<HTMLElement> {
@@ -70,44 +64,53 @@ function focusableChildElements(parent: HTMLElement): NodeListOf<HTMLElement> {
  * @cssprop {<integer>} [--rh-navigation-secondary-overlay-z-index=-1] - z-index of the navigation-secondary-overlay
  */
 @customElement('rh-navigation-secondary')
+@colorPalettes
+@themable
 export class RhNavigationSecondary extends LitElement {
   static readonly styles = [styles];
 
   private static instances = new Set<RhNavigationSecondary>();
 
   static {
-    globalThis.addEventListener('keyup', (event: KeyboardEvent) => {
-      const { instances } = RhNavigationSecondary;
-      for (const instance of instances) {
-        instance.#onKeyup(event);
-      }
-    }, { capture: false });
+    if (!isServer) {
+      document.addEventListener('keyup', (event: KeyboardEvent) => {
+        const { instances } = RhNavigationSecondary;
+        for (const instance of instances) {
+          instance.#onKeyup(event);
+        }
+      }, { capture: false });
+    }
   }
 
 
   #logger = new Logger(this);
   #logoCopy: HTMLElement | null = null;
 
-  /** Is the element in an RTL context? */
-  #dir = new DirController(this);
-
   /** Compact mode  */
   #compact = false;
 
   #internals = InternalsController.of(this, { role: 'navigation' });
 
-  /**
-   * Color palette darker | lighter (default: lighter)
-   */
-  @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette: NavPalette = 'lighter';
+  get #computedPalette() {
+    switch (this.colorPalette) {
+      case 'lighter':
+      case 'dark':
+        return this.colorPalette;
+      case 'light':
+      case 'lightest':
+        return 'lighter';
+      case 'darker':
+      case 'darkest':
+        return 'dark';
+      default:
+        return 'lightest';
+    }
+  }
 
   /**
-   * Sets color theme based on parent context
+   * Color palette dark | lighter (default: lighter)
    */
-  @colorContextConsumer() private on?: ColorTheme;
-
-  @queryAssignedElements({ slot: 'nav' }) private _nav?: HTMLElement[];
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'lighter';
 
   /**
    * Customize the default `aria-label` on the `<nav>` container.
@@ -150,12 +153,20 @@ export class RhNavigationSecondary extends LitElement {
   async connectedCallback() {
     super.connectedCallback();
     RhNavigationSecondary.instances.add(this);
-    this.#compact = !this.#screenSize.matches.has('md');
     this.addEventListener('expand-request', this.#onExpandRequest);
     this.addEventListener('overlay-change', this.#onOverlayChange);
     this.addEventListener('focusout', this.#onFocusout);
     this.addEventListener('keydown', this.#onKeydown);
-    this.#upgradeAccessibility();
+    if (!isServer) {
+      this.#upgradeAccessibility();
+    }
+  }
+
+  async firstUpdated() {
+    if (!isServer) {
+      await this.updateComplete;
+      this.#compact = !this.#screenSize.matches.has('md');
+    }
   }
 
   disconnectedCallback(): void {
@@ -164,14 +175,12 @@ export class RhNavigationSecondary extends LitElement {
   }
 
   render() {
-    const { on = '' } = this;
     const expanded = this.mobileMenuExpanded;
-    const rtl = this.#dir.dir === 'rtl';
     // CTA must always be 'lightest' on mobile screens
-    const dropdownPalette = this.#compact ? 'lightest' : this.colorPalette;
+    const dropdownPalette = this.#compact ? 'lightest' : this.#computedPalette;
     return html`
       <div part="nav"
-           class="${classMap({ [on]: !!on, on: true, compact: this.#compact, rtl })}">
+           class="${classMap({ compact: this.#compact })}">
         ${this.#logoCopy}
         <div id="container" part="container" class="${classMap({ expanded })}">
           <slot name="logo" id="logo"></slot>

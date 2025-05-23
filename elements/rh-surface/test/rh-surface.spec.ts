@@ -1,6 +1,6 @@
 import type { TemplateResult } from 'lit';
 
-import { expect, fixture, html, nextFrame, aTimeout } from '@open-wc/testing';
+import { expect, fixture, html, nextFrame } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
 
 import { RhSurface } from '@rhds/elements/rh-surface/rh-surface.js';
@@ -53,28 +53,29 @@ describe('<rh-surface>', function() {
   });
 
   describe('with child', function() {
-    let parent: RhSurface;
-    let child: ContextConsumer;
+    let element: RhSurface;
+    let consumer: ContextConsumer;
+    const updateComplete = () => Promise.all([element.updateComplete, consumer?.updateComplete]);
     beforeEach(async function() {
       await fixture(html`
         <rh-surface id="p" color-palette="darkest">
           <test-context-consumer id="c"></test-context-consumer>
         </rh-surface>
       `);
-      parent = document.getElementById('p') as RhSurface;
-      child = document.getElementById('c') as ContextConsumer;
+      element = document.getElementById('p') as RhSurface;
+      consumer = document.getElementById('c') as ContextConsumer;
       await nextFrame();
     });
     it('sets the parent context on the child', function() {
-      expect(child.on).to.equal('dark');
+      expect(consumer.on).to.equal('dark');
     });
     describe('updating the parent context', function() {
       beforeEach(async function() {
-        parent.colorPalette = 'lightest';
-        await nextFrame();
+        element.colorPalette = 'lightest';
       });
-      it('updates the child context', function() {
-        expect(child.on).to.equal('light');
+      beforeEach(updateComplete);
+      it('updates the consumers color', function() {
+        expect(consumer.on).to.equal('light');
       });
     });
   });
@@ -86,38 +87,40 @@ describe('<rh-surface>', function() {
           let grandparent: RhSurface;
           let parent: RhSurface;
           let child: ContextConsumer;
+          const updateComplete = () => Promise.all([grandparent, parent, child].map(x => x.updateComplete));
           beforeEach(async function() {
             await fixture(template);
             grandparent = document.getElementById('gp') as RhSurface;
             parent = document.getElementById('p') as RhSurface;
             child = document.getElementById('c') as ContextConsumer;
-            await nextFrame();
           });
+          beforeEach(updateComplete);
           it('sets the grandparent context on the child', function() {
             expect(child.on).to.equal('dark');
           });
           describe('updating the parent context', function() {
-            beforeEach(async function() {
+            beforeEach(function() {
               parent.colorPalette = 'lightest';
-              await nextFrame();
             });
+            beforeEach(updateComplete);
+            beforeEach(updateComplete);
             it('updates the child context', function() {
               expect(child.on).to.equal('light');
             });
           });
           describe('updating the grandparent context', function() {
-            beforeEach(async function() {
+            beforeEach(function() {
               grandparent.colorPalette = 'lightest';
-              await aTimeout(100);
             });
+            beforeEach(updateComplete);
             it('updates the child context', function() {
               expect(child.on).to.equal('light');
             });
             describe('then updating the parent context', function() {
-              beforeEach(async function() {
-                parent.colorPalette = 'darker';
-                await aTimeout(100);
+              beforeEach(function() {
+                grandparent.colorPalette = 'dark';
               });
+              beforeEach(updateComplete);
               it('updates the child context', function() {
                 expect(child.on).to.equal('dark');
               });
@@ -156,12 +159,12 @@ describe('<rh-surface>', function() {
           let grandparent: RhSurface;
           let parent: RhSurface;
           let child: ContextConsumer;
+          const updateComplete = () => Promise.all([grandparent, parent, child].map(x => x.updateComplete));
           beforeEach(async function() {
             await fixture(template);
             grandparent = document.getElementById('gp') as RhSurface;
             parent = document.getElementById('p') as RhSurface;
             child = document.getElementById('c') as ContextConsumer;
-            await Promise.all([grandparent, parent, child].map(x => x.updateComplete));
           });
           it('does not set the grandparent context on the child', function() {
             // Parent color context should override the grandparent context
@@ -169,19 +172,19 @@ describe('<rh-surface>', function() {
             expect(child.on).to.equal('light');
           });
           describe('updating the grandparent context', function() {
-            beforeEach(async function() {
+            beforeEach(function() {
               grandparent.colorPalette = 'darker';
-              await Promise.all([grandparent, parent, child].map(x => x.updateComplete));
             });
+            beforeEach(updateComplete);
             it('does not update the child context', function() {
               // Parent color context should override the grandparent context
               expect(child.on).to.equal('light');
             });
             describe('then updating the parent context', function() {
-              beforeEach(async function() {
+              beforeEach(function() {
                 parent.colorPalette = 'darker';
-                await aTimeout(100);
               });
+              beforeEach(updateComplete);
               it('updates the child context', function() {
                 expect(child.on).to.equal('dark');
               });

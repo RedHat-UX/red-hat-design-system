@@ -12,7 +12,7 @@ background with a drop shadow.
 ### Anatomy
 
 <figure>
-  <uxdot-example width-adjustment="456px">
+  <uxdot-example color-palette="lightest" width-adjustment="456px">
     <img alt="Alert with numbers pointing to parts of the element"
          src="../alert-style-anatomy.svg"
          width="538"
@@ -37,7 +37,7 @@ background with a drop shadow.
 
 The default alert is inline. At minimum, the status icon and title need to be visible.
 
-<uxdot-example width-adjustment="408px">
+<uxdot-example color-palette="lightest" width-adjustment="408px">
   <img alt="Two examples of an inline alert"
        src="../alert-style-variant-inline.svg"
        width="408"
@@ -48,7 +48,7 @@ The default alert is inline. At minimum, the status icon and title need to be vi
 
 There is an alternate inline alert where the border covers all sides.
 
-<uxdot-example width-adjustment="408px">
+<uxdot-example color-palette="lightest" width-adjustment="408px">
   <img alt="Two examples of an alternate design for inline alerts"
        src="../alert-style-variant-inline-alt.svg"
        width="408"
@@ -59,7 +59,7 @@ There is an alternate inline alert where the border covers all sides.
 
 Same as the inline alert, at minimum, the status icon and title need to be visible.
 
-<uxdot-example width-adjustment="456px">
+<uxdot-example color-palette="lightest" width-adjustment="456px">
   <img alt="Two examples of a toast alert"
        src="../alert-style-variant-toast.svg"
        width="456"
@@ -68,21 +68,22 @@ Same as the inline alert, at minimum, the status icon and title need to be visib
 
 ## Space
 
-<uxdot-example width-adjustment="456px">
+<uxdot-example color-palette="lightest" width-adjustment="456px">
   <img alt="Diagram of spacing for inline alerts"
        src="../alert-style-spacing-1.svg"
        width="456"
        height="276">
 </uxdot-example>
 
-<uxdot-example variant="full" no-border>
+<uxdot-example color-palette="lightest" variant="full" no-border>
   <img alt="Diagram of spacing for toast alerts"
        src="../alert-style-spacing-2.svg"
        width="1140"
        height="302">
 </uxdot-example>
 
-<uxdot-example width-adjustment="752px"
+<uxdot-example color-palette="lightest"
+               width-adjustment="752px"
                alignment="left"
                variant="full"
                no-border>

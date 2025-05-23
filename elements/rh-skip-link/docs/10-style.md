@@ -22,23 +22,24 @@ A skip link is designed to be easily seen once a user navigates to it.
 </figure>
 
 
-## Theme
+## Color scheme
+<a id="theme"></a>
 
-A skip link appears the same in both light and dark themes.
+A skip link appears the same in both light and dark color schemes.
 
 <div class="grid sm-two-columns">
-  <uxdot-example width-adjustment="220px">
-    <img src="../skip-link.svg"
-        alt="Image of a skip link in a light theme section"
-        width="220"
-        height="56">
+  <uxdot-example width-adjustment="220px" color-palette="lightest">
+    <img alt="Image of a skip link in a light scheme section"
+         src="../overview.svg"
+         width="220"
+         height="56">
   </uxdot-example>
 
   <uxdot-example width-adjustment="220px" color-palette="darkest">
-    <img src="../skip-link.svg"
-        alt="Image of a skip link in a dark theme section"
-        width="220"
-        height="56">
+    <img alt="Image of a skip link in a dark scheme section"
+         src="../overview.svg"
+         width="220"
+         height="56">
   </uxdot-example>
 </div>
 
@@ -53,20 +54,20 @@ A skip link’s bottom corners have a border radius of 4px, which matches the bo
 A skip link should be centered and aligned with the top edge at all viewport sizes. It also overlaps items at the top of the page.
 
 <uxdot-example width-adjustment="1000px" variant="full" no-border alignment="left">
-  <img src="../skip-link-placement.png"
-        alt="A skip link element at the top overlays the navigation header of redhat.com"
-        width="1000"
-        height="174">
+  <img alt="A skip link element at the top overlays the navigation header of redhat.com"
+       src="../skip-link-placement.png"
+       width="1000"
+       height="174">
 </uxdot-example>
 
 
 ## Space
 
 <uxdot-example width-adjustment="220px">
-  <img src="../skip-link-spacing.svg"
-        alt="A skip link element at the top overlays the navigation header of redhat.com"
-        width="220"
-        height="56">
+  <img alt="A skip link element at the top overlays the navigation header of redhat.com"
+       src="../skip-link-spacing.svg"
+       width="220"
+       height="56">
 </uxdot-example>
 
 <uxdot-spacer-tokens-table tokens="lg, 2xl"></uxdot-spacer-tokens-table>
@@ -80,20 +81,20 @@ Interaction states are visual representations used to communicate the status of 
 Because a skip link is in focus once it appears on the screen, the default and focus states are the same. The blue, 2px-wide border mimics the focus ring for other elements.
 
 <uxdot-example width-adjustment="220px">
-  <img src="../skip-link-focus.svg"
-        alt="A skip link with blue text and a blue border around three sides"
-        width="220"
-        height="56">
+  <img alt="A skip link with blue text and a blue border around three sides"
+       src="../skip-link-focus.svg"
+       width="220"
+       height="56">
 </uxdot-example>
 
 
 ### Hover
 
 <uxdot-example width-adjustment="220px">
-  <img src="../skip-link-hover-and-active.svg"
-        alt="A skip link's text is underlined on hover"
-        width="220"
-        height="56">
+  <img alt="A skip link's text is underlined on hover"
+       src="../skip-link-hover-and-active.svg"
+       width="220"
+       height="56">
 </uxdot-example>
 
 
@@ -105,8 +106,8 @@ Because a skip link is in focus once it appears on the screen, the default and f
 </rh-alert>
 
 <uxdot-example width-adjustment="220px">
-  <img src="../skip-link-hover-and-active.svg"
-        alt="A skip link's text is underlined when it's active"
-        width="220"
-        height="56">
-</uxdot-example
+  <img alt="A skip link's text is underlined when it's active"
+       src="../skip-link-hover-and-active.svg"
+       width="220"
+       height="56">
+</uxdot-example>

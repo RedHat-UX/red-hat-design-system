@@ -38,7 +38,7 @@
 
 <style>
   svg.sample {
-    border: 1px dashed var(--rh-color-border-interactive-on-light, #0066cc);
+    border: 1px dashed var(--rh-color-border-interactive);
     & rect { width: 100%; height: 100%; fill: rgba(0 102 204 / 0.10) }
   }
   #card-pattern-title {
@@ -53,21 +53,20 @@
         padding:
           var(--rh-space-lg, 16px)
           var(--rh-space-2xl, 32px);
-        background-color: var(--rh-color-surface-light, #e0e0e0);
+        background-color: light-dark(var(--rh-color-surface-light, #e0e0e0), var(--rh-color-surface-dark, #383838));
       }
       &::part(body) {
         display: flex;
         flex-flow: column;
       }
       & h2 {
-        text-transform: uppercase;
-        font-family: var(--rh-font-family-body-text, RedHatText, "Red Hat Text", "Noto Sans Arabic", "Noto Sans Hebrew", "Noto Sans JP", "Noto Sans KR", "Noto Sans Malayalam", "Noto Sans SC", "Noto Sans TC", "Noto Sans Thai", Helvetica, Arial, sans-serif);
-        font-size: var(--rh-font-size-body-text-md, 1rem);
-        font-weight: var(--rh-font-weight-body-text-regular, 400);
+        font-family: var(--rh-font-family-body-text);
+        font-size: var(--rh-font-size-body-text-md);
+        font-weight: var(--rh-font-weight-body-text-regular);
       }
       & svg {
         align-self: center;
-        margin-block-end: var(--rh-space-2xl, 32px);
+        margin-block-end: var(--rh-space-2xl);
       }
     }
   }

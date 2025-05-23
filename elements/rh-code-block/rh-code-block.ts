@@ -1,5 +1,5 @@
 import type { DirectiveResult } from 'lit-html/directive.js';
-import { CSSResult, LitElement, html, type PropertyValues } from 'lit';
+import { CSSResult, LitElement, html, isServer, type PropertyValues } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { styleMap } from 'lit/directives/style-map.js';
@@ -8,14 +8,9 @@ import { ifDefined } from 'lit-html/directives/if-defined.js';
 
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 
-import { type ColorTheme, colorContextConsumer } from '../../lib/context/color/consumer.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import style from './rh-code-block.css';
-
-/* TODO
- * - style slotted and shadow fake-fabs
- * - manage state of copy and wrap, including if they are slotted. see actions.html
- */
 
 /**
  * Returns a string with common indent stripped from each line. Useful for templating HTML
@@ -52,6 +47,7 @@ interface CodeLineHeightsInfo {
  *                and legend text in the `<dd>` elements
  */
 @customElement('rh-code-block')
+@themable
 export class RhCodeBlock extends LitElement {
   private static actionIcons = new Map([
     ['wrap', html`
@@ -83,11 +79,30 @@ export class RhCodeBlock extends LitElement {
 
   static styles = [style];
 
+  /**
+   * Space- or comma-separated list of code block action buttons to display, containing either 'copy', 'wrap', or both.
+   * 'copy' adds a button that copies the text content to the clipboard. 'wrap' adds a button that toggles line wrap.
+   *
+   * To override the default labels, e.g. for purposes of internationalization, use the
+   * `action-label-copy` and `action-label-wrap` slots. Each slot may receive two elements,
+   * one for the action's default state (e.g. "Copy to clipboard"),
+   * and one for the actions alternative state, e.g. "Copied!".
+   * The active-state element must have the attributes `hidden data-code-block-state="active"`
+   *
+   * @example html```
+   *          <rh-code-block actions="copy wrap">
+   *            <span slot="action-label-copy">Copy to Clipboard</span>
+   *            <span slot="action-label-copy" hidden data-code-block-state="active">Copied!</span>
+   *            <span slot="action-label-wrap">Toggle word wrap</span>
+   *            <span slot="action-label-wrap" hidden data-code-block-state="active">Toggle overflow</span>
+   *          </rh-code-block>
+   *          ```
+   */
   @property({
     reflect: true,
     converter: {
       fromAttribute(value) {
-        return ((value ?? '').split(/\s+/) ?? []).map(x => x.trim()).filter(Boolean);
+        return ((value ?? '').split(/\s+|,/) ?? []).map(x => x.trim()).filter(Boolean);
       },
       toAttribute(value) {
         return Array.isArray(value) ? value.join(' ') : '';
@@ -128,12 +143,9 @@ export class RhCodeBlock extends LitElement {
   /** When set, lines in the code snippet wrap */
   @property({ type: Boolean }) wrap = false;
 
-  @colorContextConsumer() private on?: ColorTheme;
-
   #slots = new SlotController(
     this,
     null,
-    // 'actions',
     'action-label-copy',
     'action-label-wrap',
     'show-more',
@@ -159,20 +171,13 @@ export class RhCodeBlock extends LitElement {
   }
 
   render() {
-    const { on = '', fullHeight, wrap, resizable, compact } = this;
+    const { fullHeight, wrap, resizable, compact } = this;
     const expandable = this.#lineHeights.length > 5;
     const truncated = expandable && !fullHeight;
     const actions = !!this.actions.length;
     return html`
       <div id="container"
-           class="${classMap({ on: true, [on]: !!on,
-                               actions,
-                               compact,
-                               expandable,
-                               fullHeight,
-                               resizable,
-                               truncated,
-                               wrap })}"
+           class="${classMap({ actions, compact, expandable, fullHeight, resizable, truncated, wrap })}"
            @code-action="${this.#onCodeAction}">
         <div id="content-lines" tabindex="${ifDefined((!fullHeight || undefined) && 0)}">
           <div id="sizers" aria-hidden="true"></div>
@@ -190,16 +195,20 @@ export class RhCodeBlock extends LitElement {
         <div id="actions"
              @click="${this.#onActionsClick}"
              @keyup="${this.#onActionsKeyup}">
-        <!-- <slot name="actions"> -->${this.actions.map(x => html`
+        ${this.actions.map(x => html`
           <rh-tooltip>
-            <slot slot="content" name="action-label-${x}"></slot>
+            <slot id="label" slot="content" name="action-label-${x}">${x === 'copy' ? html`
+              <span>Copy to Clipboard</span>
+              <span hidden data-code-block-state="active">Copied!</span>` : html`
+              <span>Toggle word wrap</span>
+              <span hidden data-code-block-state="active">Toggle overflow</span>`}
+            </slot>
             <button id="action-${x}"
                     class="shadow-fab"
                     data-code-block-action="${x}">
               ${RhCodeBlock.actionIcons.get(this.wrap && x === 'wrap' ? 'wrap-active' : x) ?? ''}
             </button>
           </rh-tooltip>`)}
-        <!-- </slot> -->
         </div>
 
         <button id="expand"
@@ -229,6 +238,9 @@ export class RhCodeBlock extends LitElement {
     if (changed.has('wrap')) {
       this.#wrapChanged();
     }
+    if (this.actions.length && !isServer) {
+      import('@rhds/elements/rh-tooltip/rh-tooltip.js');
+    }
   }
 
   async #onSlotChange() {
@@ -242,40 +254,43 @@ export class RhCodeBlock extends LitElement {
   }
 
   async #applyPrismPrerenderedStyles() {
-    if (getComputedStyle(this).getPropertyValue('--_styles-applied') !== 'true') {
+    if (!isServer && getComputedStyle(this).getPropertyValue('--_styles-applied') !== 'true') {
       const root = this.getRootNode();
       if (root instanceof Document || root instanceof ShadowRoot) {
-        const { preRenderedLightDomStyles: { styleSheet } } = await import('./prism.js');
+        const { preRenderedLightDomStyles: { styleSheet } } = await import('./prism.css.js');
         root.adoptedStyleSheets = [...root.adoptedStyleSheets, styleSheet!];
       }
     }
   }
 
   async #highlightWithPrism() {
-    const { highlight, prismStyles } = await import('./prism.js');
-    const styleSheet =
-        prismStyles instanceof CSSStyleSheet ? prismStyles
-      : (prismStyles as CSSResult).styleSheet;
-    if (!this.shadowRoot!.adoptedStyleSheets.includes(styleSheet!)) {
-      this.shadowRoot!.adoptedStyleSheets = [
-        ...this.shadowRoot!.adoptedStyleSheets as CSSStyleSheet[],
-        styleSheet!,
-      ];
+    if (!isServer) {
+      const { highlight, prismStyles } = await import('./prism.js');
+      const styleSheet =
+          prismStyles instanceof CSSStyleSheet ? prismStyles
+        : (prismStyles as CSSResult).styleSheet;
+      if (!this.shadowRoot!.adoptedStyleSheets.includes(styleSheet!)) {
+        this.shadowRoot!.adoptedStyleSheets = [
+          ...this.shadowRoot!.adoptedStyleSheets as CSSStyleSheet[],
+          styleSheet!,
+        ];
+      }
+      const scripts = this.querySelectorAll('script[type]:not([type="javascript"])');
+      const preprocess = this.dedent ? dedent : (x: string) => x;
+      const textContent = preprocess(Array.from(scripts, x => x.textContent).join(''));
+      this.#prismOutput = await highlight(textContent, this.language);
+      this.requestUpdate('#prismOutput', {});
+      await this.updateComplete;
     }
-    const scripts = this.querySelectorAll('script[type]:not([type="javascript"])');
-    const preprocess = this.dedent ? dedent : (x: string) => x;
-    const textContent = preprocess(Array.from(scripts, x => x.textContent).join(''));
-    this.#prismOutput = await highlight(textContent, this.language);
-    this.requestUpdate('#prismOutput', {});
-    await this.updateComplete;
   }
 
   async #wrapChanged() {
     await this.updateComplete;
     this.#computeLineNumbers();
     // TODO: handle slotted fabs
-    const slot = this.shadowRoot?.querySelector<HTMLSlotElement>('slot[name="action-label-wrap"]');
-    for (const el of slot?.assignedElements() ?? []) {
+    const assignedElements =
+      this.#getFabContentElements(this.shadowRoot?.querySelector('slot[name="action-label-wrap"]'));
+    for (const el of assignedElements) {
       if (el instanceof HTMLElement) {
         el.hidden = (el.dataset.codeBlockState !== 'active') === this.wrap;
       }
@@ -289,6 +304,14 @@ export class RhCodeBlock extends LitElement {
         x instanceof HTMLScriptElement
         || x instanceof HTMLPreElement ? [x]
       : []);
+  }
+
+  #getFabContentElements(slot?: HTMLSlotElement | null) {
+    const assignedElements = slot?.assignedElements() ?? [];
+    if (!assignedElements.length) {
+      return [...slot?.querySelectorAll('*') ?? []];
+    }
+    return assignedElements;
   }
 
   /**
@@ -391,14 +414,13 @@ export class RhCodeBlock extends LitElement {
         x => x.textContent,
       ).join('');
     }
-    await navigator.clipboard.writeText(
-      content
-    );
+    await navigator.clipboard.writeText(content);
     // TODO: handle slotted fabs
     const slot = this.shadowRoot?.querySelector<HTMLSlotElement>('slot[name="action-label-copy"]');
     const tooltip = slot?.closest('rh-tooltip');
     tooltip?.hide();
-    for (const el of slot?.assignedElements() ?? []) {
+    const assignedElements = this.#getFabContentElements(slot);
+    for (const el of assignedElements) {
       if (el instanceof HTMLElement) {
         el.hidden = el.dataset.codeBlockState !== 'active';
       }
@@ -407,7 +429,7 @@ export class RhCodeBlock extends LitElement {
     tooltip?.show();
     await new Promise(r => setTimeout(r, 5_000));
     tooltip?.hide();
-    for (const el of slot?.assignedElements() ?? []) {
+    for (const el of assignedElements) {
       if (el instanceof HTMLElement) {
         el.hidden = el.dataset.codeBlockState === 'active';
       }
@@ -422,28 +444,3 @@ declare global {
     'rh-code-block': RhCodeBlock;
   }
 }
-
-/**
- * TODO: slotted fabs like this:
- *
- *```html
-  <rh-tooltip slot="actions">
-    <span slot="content">Copy to Clipboard</span>
-    <span slot="content"
-          hidden
-          data-code-block-state="active">Copied!</span>
-    <rh-fab icon="copy"
-            data-code-block-action="copy"></rh-fab>
-  </rh-tooltip>
-
-  <rh-tooltip slot="actions">
-    <span slot="content">Toggle linewrap</span>
-    <span slot="content"
-          hidden
-          data-code-block-state="active">Toggle linewrap</span>
-    <rh-fab icon="copy"
-            data-code-block-action="copy"></rh-fab>
-  </rh-tooltip>
-  ````
- *
- */

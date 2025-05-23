@@ -1,0 +1,62 @@
+<rh-dialog id="dialog-element"  trigger="trigger">
+    <form id="form-element"> 
+        <p>
+          <label>
+            Favorite RHDS Token Value:
+            <select id="selectElement">
+              <option value="default">Choose…</option>
+              <option>--rh-color-brand-red</option>
+              <option>--rh-color-red-50</option>
+              <option>--rh-color-status-note</option>
+            </select>
+          </label>
+        </p>
+        <div>
+            <button id="cancellationButton" value="cancel" formmethod="dialog">Cancel</button>
+            <button type="submit" id="confirmation-button" value="default">Submit</button>
+          </div>
+        </form>
+        </rh-dialog>
+<rh-button id="trigger">Open Dialog</rh-button>
+<output></output>
+
+
+<script type="module">
+    import '@rhds/elements/rh-button/rh-button.js';
+    import '@rhds/elements/rh-dialog/rh-dialog.js';
+  
+    const rhdsDialogElement = document.getElementById('dialog-element');
+    const form = document.getElementById('form-element');
+    
+    const confirmationButton = document.getElementById('confirmation-button');
+    const cancellationButton = document.getElementById('cancellationButton');
+    const selectElement = document.getElementById("selectElement");
+    
+    const eventOutput = document.querySelector('output');
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+    });
+
+    const events = [];
+    const onDialogEvent = event => {
+      events.push(event.type);
+      if (event.type !== 'open') {
+        eventOutput.value =
+          rhdsDialogElement.returnValue === "default"
+          ? "No return value."
+          : `ReturnValue: ${rhdsDialogElement.returnValue}.`;
+      }
+    };
+    confirmationButton.addEventListener("click", (event) => {
+        event.preventDefault();
+        rhdsDialogElement.close(selectElement.value);
+    });
+    cancellationButton.addEventListener("click", (event) => {
+        event.preventDefault();
+        rhdsDialogElement.cancel('cancelled');
+    });
+    rhdsDialogElement.addEventListener('close', onDialogEvent);
+    rhdsDialogElement.addEventListener('open', onDialogEvent);
+    rhdsDialogElement.addEventListener('cancel', onDialogEvent);
+  </script>

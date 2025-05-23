@@ -1,4 +1,4 @@
-import { html, LitElement } from 'lit';
+import { html, isServer, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { state } from 'lit/decorators/state.js';
 import { query } from 'lit/decorators/query.js';
@@ -44,7 +44,7 @@ export class RhNavigationSecondaryDropdown extends LitElement {
 
   #highlight = false;
 
-  #mo = new MutationObserver(this.#mutationsCallback.bind(this));
+  #mo = new MutationObserver(() => this.#mutationsCallback());
 
   @query('#container') _container?: HTMLElement;
 
@@ -55,26 +55,11 @@ export class RhNavigationSecondaryDropdown extends LitElement {
 
     this.id ||= getRandomId('rh-navigation-secondary-dropdown');
 
-    const [link] = this.#slots.getSlotted<HTMLElement>('link');
-    const [menu] = this.#slots.getSlotted<HTMLElement>('menu');
-    if (link === undefined) {
-      this.#logger.warn(
-        '[rh-navigation-secondary-dropdown][slot="link"] expects a slotted <a> tag'
-      );
-      return;
-    }
-    if (menu === undefined) {
-      this.#logger.warn(`[rh-navigation-secondary-dropdown][slot="menu"] expects a slotted <rh-navigation-secondary-menu> tag`);
-      return;
-    }
-
-    link.setAttribute('role', 'button');
-    link.setAttribute('aria-expanded', 'false');
-    link.setAttribute('aria-controls', menu.id);
-    link.addEventListener('click', this._clickHandler);
-
     this.#mo.observe(this, { attributeFilter: ['aria-current'], childList: true, subtree: true });
-    this.#mutationsCallback();
+    if (!isServer) {
+      this.#upgradeAccessibility();
+      this.#mutationsCallback();
+    }
   }
 
   render() {
@@ -145,9 +130,33 @@ export class RhNavigationSecondaryDropdown extends LitElement {
   }
 
   async #mutationsCallback(): Promise<void> {
+    await this.updateComplete;
+    // TODO(bennypowers) slotcontroller intrigue...
+    await this.updateComplete;
     const [menu] = this.#slots.getSlotted<HTMLElement>('menu');
-    this.#highlight = menu.querySelector('[aria-current="page"]') ? true : false;
+    this.#highlight = menu?.querySelector('[aria-current="page"]') ? true : false;
+    this.#upgradeAccessibility();
     this.requestUpdate();
+  }
+
+  #upgradeAccessibility() {
+    const [link] = this.#slots.getSlotted<HTMLElement>('link');
+    const [menu] = this.#slots.getSlotted<HTMLElement>('menu');
+    if (link === undefined) {
+      this.#logger.warn(
+        '[rh-navigation-secondary-dropdown][slot="link"] expects a slotted <a> tag'
+      );
+      return;
+    }
+    if (menu === undefined) {
+      this.#logger.warn(`[rh-navigation-secondary-dropdown][slot="menu"] expects a slotted <rh-navigation-secondary-menu> tag`);
+      return;
+    }
+
+    link.setAttribute('role', 'button');
+    link.setAttribute('aria-expanded', 'false');
+    link.setAttribute('aria-controls', menu.id);
+    link.addEventListener('click', this._clickHandler);
   }
 }
 

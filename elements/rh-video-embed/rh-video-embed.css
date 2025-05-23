@@ -40,19 +40,16 @@ figure,
 
 figure {
   --_video-focus-border-color: var(--rh-color-border-interactive);
-  --_video-play-btn-bkg-color: rgb(31 31 31 / var(--rh-opacity-50, 50%));
-  --_video-play-btn-interactive-bkg-color: rgb(21 21 21 / var(--rh-opacity-80, 80%));
+  --_video-play-btn-bkg-color:
+    light-dark(rgb(31 31 31 / var(--rh-opacity-50, 50%)),
+      rgb(255 255 255 / var(--rh-opacity-20, 20%)));
+  --_video-play-btn-interactive-bkg-color:
+    light-dark(rgb(21 21 21 / var(--rh-opacity-80, 80%)),
+      rgb(255 255 255 / var(--rh-opacity-50, 50%)));
 
   display: flex;
   flex-direction: column;
   margin: 0;
-}
-
-figure.dark {
-  --_video-focus-border-color: var(--rh-color-border-interactive);
-  --_video-play-btn-bkg-color: rgb(255 255 255 / var(--rh-opacity-20, 20%));
-  --_video-play-btn-interactive-bkg-color: rgb(255 255 255 / var(--rh-opacity-50, 50%));
-  --_caption-text-color: var(--rh-color-text-secondary);
 }
 
 figcaption {
@@ -64,7 +61,7 @@ figcaption ::slotted(p) {
 }
 
 ::slotted([slot='caption']) {
-  color: var(--_caption-text-color, var(--rh-color-text-secondary));
+  color: var(--rh-color-text-secondary);
   font-size: var(--rh-font-size-body-text-sm, 0.875rem) !important;
   line-height: var(--rh-line-height-body-text, 1.5);
 }
@@ -91,7 +88,7 @@ figcaption ::slotted(p) {
 
 #consent-message,
 ::slotted([slot='consent-message']) {
-  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-heading-xs, 1.25rem);
   line-height: var(--rh-line-height-heading, 1.3);
 }
@@ -147,8 +144,8 @@ figcaption ::slotted(p) {
   background-color: var(--_video-play-btn-interactive-bkg-color);
 }
 
-.dark #play::part(icon) {
-  color: var(--rh-color-surface-lightest, #ffffff);
+#play::part(icon) {
+  color: var(--rh-color-surface);
 }
 
 #play[hidden],

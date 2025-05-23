@@ -2,33 +2,34 @@
  * Elements > Code > Accordion Panel & Table customizations
  * Only loaded on the {Element} > Code pages
  **/
-rh-accordion-panel[expanded]::part(container) {
-  background-color: var(--rh-color-surface-lighter);
-}
+rh-accordion {
+  rh-accordion-panel[expanded] {
+    &::part(container) {
+      background-color: light-dark(var(--rh-color-surface-lighter), var(--rh-color-surface-darker));
+    }
 
-rh-accordion-panel[expanded] rh-table {
-  --rh-table-row-background-hover-color: #f8f8f8;
+    rh-table {
+      margin: 0;
 
-  background-color: var(--rh-color-surface-lightest);
-  margin: 0;
-}
+      tbody tr:last-child {
+        border-block-end: 0 !important;
+      }
 
-rh-accordion-panel[expanded] rh-table tbody tr:last-child {
-  border-block-end: 0 !important;
-}
+      th {
+        font-size: var(--rh-font-size-body-text-sm);
+      }
 
-rh-accordion-panel[expanded] rh-table th {
-  font-size: var(--rh-font-size-body-text-sm);
-}
+      :is(pre, code) {
+        white-space: break-spaces;
+      }
 
-rh-accordion-panel[expanded] rh-table :is(pre, code) {
-  white-space: break-spaces;
-}
+      :is(th, td) p {
+        margin-block: 0;
+      }
+    }
+  }
 
-rh-accordion-panel[expanded] rh-table :is(th, td) p {
-  margin-block: 0;
-}
-
-rh-accordion details summary {
-  font-weight: var(--rh-font-weight-heading-medium, 500);
+  details summary {
+    font-weight: var(--rh-font-weight-heading-medium, 500);
+  }
 }

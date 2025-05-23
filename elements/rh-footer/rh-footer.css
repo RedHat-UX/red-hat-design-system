@@ -1,12 +1,21 @@
 :host {
   /* apply sensible defaults based on redhat standards. */
   color: var(--rh-color-white, #ffffff);
-  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
   line-height: var(--rh-line-height-body-text, 1.5);
   font-weight: var(--_font-weight);
   font-size: initial;
   display: flex;
   flex-direction: column;
+  color-scheme: only dark !important;
+}
+
+:host,
+::slotted(rh-footer-universal) {
+  --_fallback-animation: nothing-doing !important;
+  --_fallback-opacity: 1 !important;
+
+  overflow-y: initial;
 }
 
 footer,
@@ -26,7 +35,7 @@ footer,
 }
 
 ::slotted(:is(h1,h2,h3,h4,h5,h6)) {
-  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', 'Noto Sans Arabic', 'Noto Sans Hebrew', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans Malayalam', 'Noto Sans SC', 'Noto Sans TC', 'Noto Sans Thai', Helvetica, Arial, sans-serif) !important;
+  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif) !important;
   line-height: var(--rh-line-height-heading, 1.3) !important;
 }
 
@@ -145,7 +154,7 @@ footer,
 
 .global-secondary {
   grid-area: secondary;
-  color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
+  color: var(--rh-color-text-secondary);
   display: flex;
   flex-direction: column;
   gap: var(--rh-space-lg, 16px);
@@ -328,21 +337,7 @@ footer,
   font-size:
     var(--rh-footer-link-header-font-size,
       var(--rh-font-size-body-text-sm, 0.875rem)) !important;
-  color: var(--rh-color-text-primary-on-dark, #ffffff) !important;
-}
-
-/* @todo We should consider rolling this into the rh-accordion design spec */
-rh-accordion-header[expanded] {
-  --_border-inline-end-color: var(--_border-color);
-}
-
-rh-accordion-header:not([expanded])::part(container) {
-  --_background-color: var(--rh-color-surface-darker, #1f1f1f);
-  --_active-background-color: var(--rh-color-surface-darker, #1f1f1f);
-}
-
-rh-accordion-header:hover {
-  --_after-background-color: var(--_accent-color);
+  color: var(--rh-color-text-primary) !important;
 }
 
 ::slotted(rh-footer-copyright) {

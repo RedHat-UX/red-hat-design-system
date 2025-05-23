@@ -1,9 +1,7 @@
-import { LitElement, html, type PropertyValues } from 'lit';
+import { LitElement, html, isServer, type PropertyValues } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
-
-import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 
@@ -40,8 +38,6 @@ export class RhBackToTop extends LitElement {
 
   #scrollElement?: Element | Window;
 
-  #logger = new Logger(this);
-
   get #rootNode(): Document | ShadowRoot {
     const root = this.getRootNode();
     if (root instanceof Document || root instanceof ShadowRoot) {
@@ -53,16 +49,12 @@ export class RhBackToTop extends LitElement {
 
   override connectedCallback(): void {
     super.connectedCallback();
-    this.#addScrollListener();
-
-    // warn if missing href attribute
-    if (!this.href) {
-      this.#logger.warn(`missing href attribute text fragment`);
+    if (!isServer) {
+      this.#addScrollListener();
     }
-    // warn if missing hash in href attribute
+
     if (this.href && this.href.charAt(0) !== '#') {
       this.href = `#${this.href}`;
-      this.#logger.warn(`missing hash in href attribute text fragment`);
     }
   }
 
@@ -96,8 +88,8 @@ export class RhBackToTop extends LitElement {
   #addScrollListener() {
     this.#removeScrollListener();
 
+    // scrollable-selector attribute cannot be empty:
     if (this.scrollableSelector?.trim() === '') {
-      this.#logger.error(`scrollable-selector attribute cannot be empty`);
       return;
     }
 
@@ -105,7 +97,6 @@ export class RhBackToTop extends LitElement {
     if (this.#scrollSpy && this.scrollableSelector) {
       const scrollableElement = this.#rootNode.querySelector(this.scrollableSelector);
       if (!scrollableElement) {
-        this.#logger.error(`unable to find element with selector ${this.scrollableSelector}`);
         return;
       }
       this.#scrollElement = scrollableElement;

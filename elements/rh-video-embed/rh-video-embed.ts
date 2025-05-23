@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { property } from 'lit/decorators/property.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { state } from 'lit/decorators/state.js';
@@ -8,7 +8,7 @@ import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller
 import '@rhds/elements/rh-button/rh-button.js';
 import '@rhds/elements/rh-surface/rh-surface.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-video-embed.css';
 
@@ -53,6 +53,7 @@ export class VideoPlayEvent extends Event {
  * @csspart caption - The container for the caption
  */
 @customElement('rh-video-embed')
+@themable
 export class RhVideoEmbed extends LitElement {
   static readonly styles = [styles];
 
@@ -71,11 +72,6 @@ export class RhVideoEmbed extends LitElement {
    * See the Require Consent demo for reference.
    */
   @property({ type: Boolean }) consented = false;
-
-  /**
-   * Sets color theme based on parent context
-   */
-  @colorContextConsumer() private on?: ColorTheme;
 
   // TODO(bennyp): https://lit.dev/docs/data/context/#content
   @state() private _consentClicked = false;
@@ -125,21 +121,28 @@ export class RhVideoEmbed extends LitElement {
     return this._playStarted;
   }
 
+  firstUpdated() {
+    if (!isServer) {
+      this.#iframe = this.#getIframe();
+    }
+  }
+
   render() {
-    const { playClicked, on = '' } = this;
+    const { playClicked } = this;
     const hasCaption = this.#slots.hasSlotted('caption');
     const hasThumbnail = this.#slots.hasSlotted('thumbnail');
-    const playLabel = this.iframeElement && this.iframeElement.title ? `${this.iframeElement.title} (play video)` : 'Play video';
-    const show = this.#showConsent ? 'consent' : !!playClicked || !hasThumbnail ?
-      'video' : 'thumbnail';
+    const playLabel = this.#iframe && this.#iframe.title ? `${this.#iframe.title} (play video)` : 'Play video';
+    const consent = this.#showConsent;
+    const video = !!playClicked || !hasThumbnail;
+    const show = consent ? 'consent' : video ? 'video' : 'thumbnail';
 
     return html`
-      <figure part="figure" class="${classMap({ on: true, [show]: !!show, [on]: !!on })}">
+      <figure part="figure" class="${classMap({ video, consent })}">
         <div part="video" id="video">
           <div aria-hidden="${show !== 'thumbnail'}">
             <slot id="thumbnail" name="thumbnail"></slot>
           </div>
-          <slot @slotchange="${this.#copyIframe}"></slot>
+          <slot></slot>
           <div id="autoplay"><slot name="autoplay"></slot></div>
           ${this.#showConsent ? html`
             <rh-surface id="consent" color-palette="darker">
@@ -172,10 +175,12 @@ export class RhVideoEmbed extends LitElement {
               </div>
             </rh-surface>
           ` : ''}
-          <rh-button part="play" id="play" variant="play"
-            ?hidden="${show !== 'thumbnail'}"
-            @click="${this.#handlePlayClick}"
-            @keyup="${this.#handlePlayKeyup}">
+          <rh-button part="play"
+                     id="play"
+                     variant="play"
+                     ?hidden="${show !== 'thumbnail'}"
+                     @click="${this.#handlePlayClick}"
+                     @keyup="${this.#handlePlayKeyup}">
             <span class="visually-hidden"><slot name="play-button-text">${playLabel}</slot></span>
           </rh-button>
         </div>
@@ -184,21 +189,24 @@ export class RhVideoEmbed extends LitElement {
     `;
   }
 
-  #copyIframe() {
+  #getIframe() {
     const template = this.querySelector('template');
     const node = template ? document.importNode(template.content, true) : undefined;
     const iframe = node ?
       node.querySelector('iframe')?.cloneNode(true) as HTMLIFrameElement : undefined;
-    if (iframe) {
-      const url = new URL(iframe.getAttribute('src') || '');
+    return iframe;
+  }
+
+  #copyIframe() {
+    if (this.#iframe) {
+      const url = new URL(this.#iframe.getAttribute('src') || '');
       url.searchParams.append('autoplay', '1');
       url.searchParams.append('rel', '0');
-      iframe.src = url.href;
-      iframe.classList.add('rh-yt-iframe');
-      iframe.allow = 'autoplay';
-      iframe.slot = 'autoplay';
+      this.#iframe.src = url.href;
+      this.#iframe.classList.add('rh-yt-iframe');
+      this.#iframe.allow = 'autoplay';
+      this.#iframe.slot = 'autoplay';
     }
-    this.#iframe = iframe;
     this.#playVideo();
   }
 
@@ -221,7 +229,7 @@ export class RhVideoEmbed extends LitElement {
     if (!this.playClicked) {
       this._playClicked = true;
       this.dispatchEvent(new VideoClickEvent());
-      this.#playVideo();
+      this.#copyIframe();
     }
   }
 
@@ -232,7 +240,7 @@ export class RhVideoEmbed extends LitElement {
         if (!this.playClicked) {
           this._playClicked = true;
           this.dispatchEvent(new VideoClickEvent());
-          this.#playVideo();
+          this.#copyIframe();
         }
         break;
     }

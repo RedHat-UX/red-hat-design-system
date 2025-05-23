@@ -51,10 +51,6 @@
 </section>
 
 <style>
-  svg.sample {
-    border: 1px dashed var(--rh-color-border-interactive-on-light, #0066cc);
-    & rect { width: 100%; height: 100%; fill: rgba(0 102 204 / 0.10) }
-  }
   #card-pattern-quote {
     display: grid;
     gap: var(--rh-space-md, 16px);
@@ -67,7 +63,7 @@
         aspect-ratio: 9/5;
         /* below presumably implemented in rh-video */
         display: block;
-        background-color: var(--rh-color-surface-light, #e0e0e0);
+        background-color: light-dark(var(--rh-color-surface-light, #e0e0e0), var(--rh-color-surface-dark, #383838));
       }
     }
   }
