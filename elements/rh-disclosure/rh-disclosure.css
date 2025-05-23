@@ -86,10 +86,8 @@ details[open] {
     inset-inline-start: -1px;
     inset-block: -1px;
   }
-}
 
-:host(:has(rh-jump-links)) {
-  details[open]:before {
-    border: 21px solid yellow;
+  &.has-jump-links:before {
+    border-inline-start-color: transparent;
   }
 }

@@ -1,19 +1,28 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer, type PropertyValues } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
+import { state } from 'lit/decorators/state.js';
 import { query } from 'lit/decorators/query.js';
 
 import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
 import { themable } from '@rhds/elements/lib/themable.js';
-
 import '@rhds/elements/rh-icon/rh-icon.js';
-
+import { classMap } from 'lit-html/directives/class-map.js';
 import styles from './rh-disclosure.css';
 
 export class DisclosureToggleEvent extends Event {
   constructor() {
     super('toggle', { bubbles: true, cancelable: true });
   }
+}
+
+const hasJumpLinksStyleSheet = new CSSStyleSheet();
+if (!isServer) {
+  hasJumpLinksStyleSheet.replaceSync(/* css */`
+    details[open]:before {
+      border-inline-start-color: transparent;
+    }
+  `);
 }
 
 /**
@@ -72,13 +81,31 @@ export class RhDisclosure extends LitElement {
    */
   @property({ reflect: true }) summary?: string;
 
+  @state() private hasJumpLinks = false;
+
   @query('details') private detailsEl!: HTMLDetailsElement;
   @query('summary') private summaryEl!: HTMLElement;
+
+  #mo = new MutationObserver(() => this.#mutationsCallback());
+
+
+  connectedCallback() {
+    super.connectedCallback();
+    if (!isServer) {
+      this.#mo.observe(this, { childList: true });
+    }
+  }
+
+  disconnectedCallback(): void {
+    super.disconnectedCallback();
+    this.#mo.disconnect();
+  }
 
   render() {
     return html`
       <details
           ?open="${this.open}"
+          class=${classMap({ 'has-jump-links': this.hasJumpLinks })}
           @keydown="${this.#onKeydown}"
           @toggle="${this.#onToggle}">
         <summary>
@@ -95,6 +122,9 @@ export class RhDisclosure extends LitElement {
   #onToggle(): void {
     this.open = this.detailsEl.open;
     const event = new DisclosureToggleEvent();
+    if (this.open) {
+      this.#mutationsCallback();
+    }
     this.dispatchEvent(event);
   }
 
@@ -113,7 +143,6 @@ export class RhDisclosure extends LitElement {
     }
   }
 
-
   #closeDisclosure(): void {
     if (!this.open) {
       return;
@@ -121,6 +150,13 @@ export class RhDisclosure extends LitElement {
     this.detailsEl.open = false;
     this.open = false;
     this.summaryEl.focus();
+  }
+
+  async #mutationsCallback(): Promise<void> {
+    await this.updateComplete;
+    this.hasJumpLinks = !!this.querySelector('rh-jump-links');
+    await this.updateComplete;
+    this.requestUpdate();
   }
 }
 
