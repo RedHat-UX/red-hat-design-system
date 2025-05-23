@@ -83,22 +83,22 @@ export class RhSubnav extends LitElement {
     return this.#allLinks.at(-1) as HTMLAnchorElement;
   }
 
-  connectedCallback() {
+  override connectedCallback() {
     super.connectedCallback();
     RhSubnav.instances.add(this);
   }
 
-  disconnectedCallback() {
+  override disconnectedCallback() {
     super.disconnectedCallback();
     RhSubnav.instances.delete(this);
   }
 
-  firstUpdated() {
+  protected override firstUpdated() {
     this.linkList.addEventListener('scroll', this.#overflow.onScroll.bind(this));
     this.#onSlotchange();
   }
 
-  render() {
+  override render() {
     return html`
       <nav part="container" aria-label="${this.accessibleLabel}">
         ${!this.#overflow.showScrollButtons ? '' : html`
@@ -124,16 +124,14 @@ export class RhSubnav extends LitElement {
     `;
   }
 
-  #onSlotchange() {
-    this.#allLinks = this.#slots.getSlotted();
-    this.#overflow.init(this.linkList, this.#allLinks);
-    this.#firstLastClasses();
-  }
-
-  async #firstLastClasses() {
-    await this.updateComplete;
-    this.#firstLink.classList.add('first');
-    this.#lastLink.classList.add('last');
+  async #onSlotchange() {
+    if (!isServer) {
+      this.#allLinks = this.#slots.getSlotted();
+      this.#overflow.init(this.linkList, this.#allLinks);
+      await this.updateComplete;
+      this.#firstLink?.classList.add('first');
+      this.#lastLink?.classList.add('last');
+    }
   }
 
   #onClickScroll(event: Event) {
