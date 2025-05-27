@@ -148,7 +148,7 @@ export class RhDisclosure extends LitElement {
 
   @observes('open')
   protected _openChanged() {
-    if(this.open) {
+    if (this.open) {
       this.hasJumpLinks = !!this.querySelector('rh-jump-links');
     }
   }
