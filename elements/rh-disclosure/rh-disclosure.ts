@@ -19,7 +19,7 @@ export class DisclosureToggleEvent extends Event {
 const hasJumpLinksStyleSheet = new CSSStyleSheet();
 if (!isServer) {
   hasJumpLinksStyleSheet.replaceSync(/* css */`
-    details[open]:before {
+    details.has-jump-links[open]:before {
       border-inline-start-color: transparent;
     }
   `);
