@@ -8,6 +8,7 @@ import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palet
 import { themable } from '@rhds/elements/lib/themable.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
 import { classMap } from 'lit-html/directives/class-map.js';
+import { observes } from '@patternfly/pfe-core/decorators.js';
 import styles from './rh-disclosure.css';
 
 export class DisclosureToggleEvent extends Event {
@@ -86,19 +87,15 @@ export class RhDisclosure extends LitElement {
   @query('details') private detailsEl!: HTMLDetailsElement;
   @query('summary') private summaryEl!: HTMLElement;
 
-  #mo = new MutationObserver(() => this.#mutationsCallback());
-
-
   connectedCallback() {
     super.connectedCallback();
     if (!isServer) {
-      this.#mo.observe(this, { childList: true });
+      this.hasJumpLinks = !!this.querySelector('rh-jump-links');
     }
   }
 
   disconnectedCallback(): void {
     super.disconnectedCallback();
-    this.#mo.disconnect();
   }
 
   render() {
@@ -122,9 +119,6 @@ export class RhDisclosure extends LitElement {
   #onToggle(): void {
     this.open = this.detailsEl.open;
     const event = new DisclosureToggleEvent();
-    if (this.open) {
-      this.#mutationsCallback();
-    }
     this.dispatchEvent(event);
   }
 
@@ -152,11 +146,11 @@ export class RhDisclosure extends LitElement {
     this.summaryEl.focus();
   }
 
-  async #mutationsCallback(): Promise<void> {
-    await this.updateComplete;
-    this.hasJumpLinks = !!this.querySelector('rh-jump-links');
-    await this.updateComplete;
-    this.requestUpdate();
+  @observes('open')
+  protected _openChanged() {
+    if(this.open) {
+      this.hasJumpLinks = !!this.querySelector('rh-jump-links');
+    }
   }
 }
 
