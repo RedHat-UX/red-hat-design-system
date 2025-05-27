@@ -23,31 +23,43 @@
 }
 
 @container (min-width: 320px) {
-  :host([hide-at='xs']) {
+  :host([hide-at='2xs']) {
     display: block;
   }
 }
 
 @container (min-width: 567px) {
-  :host([hide-at='sm']) {
+  :host([hide-at='xs']) {
     display: block;
   }
 }
 
 @container (min-width: 768px) {
-  :host([hide-at='md']) {
+  :host([hide-at='sm']) {
     display: block;
   }
 }
 
 @container (min-width: 992px) {
-  :host([hide-at='lg']) {
+  :host([hide-at='md']) {
     display: block;
   }
 }
 
 @container (min-width: 1200px) {
+  :host([hide-at='lg']) {
+    display: block;
+  }
+}
+
+@container (min-width: 1440px) {
   :host([hide-at='xl']) {
+    display: block;
+  }
+}
+
+@container (min-width: 1680px) {
+  :host([hide-at='2xl']) {
     display: block;
   }
 }
