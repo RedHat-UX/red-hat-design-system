@@ -407,7 +407,11 @@ export class RhCodeBlock extends LitElement {
   async #copy() {
     let content: string;
     if (this.highlighting === 'prerendered') {
-      content = this.querySelector('pre')?.textContent ?? '';
+      content =
+        Array.from(
+          this.querySelectorAll('pre'),
+          x => x?.textContent ?? '',
+        ).join('');
     } else {
       content = Array.from(
         this.querySelectorAll('script'),
