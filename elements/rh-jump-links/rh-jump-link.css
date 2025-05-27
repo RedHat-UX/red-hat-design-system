@@ -2,8 +2,6 @@
   display: block;
   position: relative;
   width: max-content;
-
-  --rh-jump-link-max-width: var(--rh-length-7xl, 128px);
 }
 
 a {
