@@ -6,6 +6,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import type { TemplateResult } from 'lit';
 
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
+import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
 import type { IconNameFor, IconSetName } from '@rhds/icons';
 
@@ -38,6 +39,8 @@ import styles from './rh-tag.css';
 export class RhTag extends LitElement {
   static readonly styles = [styles];
 
+  static readonly formAssociated = true;
+
   /**
    * The icon to display in the tag.
    */
@@ -60,7 +63,10 @@ export class RhTag extends LitElement {
   /** Make the tag an HTML button element. */
   @property({ type: Boolean, reflect: true }) button = false;
 
-  /** optional type for button tag. */
+  /**
+   * Optional type for button tag.
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#type
+   */
   @property() type?: 'button' | 'submit' | 'reset' = 'button';
 
   /** Form value for the button */
@@ -86,6 +92,8 @@ export class RhTag extends LitElement {
     | 'blue'
     | 'purple'
     | 'gray';
+
+  #internals = InternalsController.of(this);
 
   /** Represents the state of the anonymous and icon slots */
   #slots = new SlotController(this, 'icon', null);
@@ -116,7 +124,8 @@ export class RhTag extends LitElement {
                 value="${ifDefined(this.value)}"
                 name="${ifDefined(this.name)}"
                 aria-disabled="${String(this.disabled) as 'true' | 'false'}"
-                @keydown="${this.#onKeyDown}">
+                @keydown="${this.#onKeyDown}"
+                @click="${this.#onClick}">
           <slot id="text"></slot>
         </button>`;
     }
@@ -131,12 +140,29 @@ export class RhTag extends LitElement {
     return html`<slot id="text"></slot>`;
   }
 
+  protected async formDisabledCallback() {
+    await this.updateComplete;
+    this.requestUpdate();
+  }
+
   #onKeyDown(event: KeyboardEvent): void {
     if (this.disabled && event.key === 'Enter') {
       event.preventDefault();
     }
     if (this.disabled && event.key === ' ') {
       event.preventDefault();
+    }
+  }
+
+  #onClick() {
+    if (this.disabled) {
+      return;
+    }
+    switch (this.type) {
+      case 'reset':
+        return this.#internals.reset();
+      default:
+        return this.#internals.submit();
     }
   }
 }
