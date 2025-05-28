@@ -7,6 +7,7 @@ import styles from './uxdot-demo.css';
 
 import { isServer, LitElement } from 'lit';
 import type { RhCodeBlock } from 'elements/rh-code-block/rh-code-block.js';
+import 'elements/rh-disclosure/rh-disclosure.js';
 
 @customElement('uxdot-demo')
 export class UxdotDemo extends LitElement {
@@ -14,10 +15,7 @@ export class UxdotDemo extends LitElement {
 
   /** For these tags, do not center the primary-demo content in the frame */
   private static tagsWithFullWidthDemos = new Set([
-    'rh-accordion',
-    'rh-announcement',
     'rh-back-to-top',
-    'rh-breadcrumb',
     'rh-footer',
     'rh-jump-links',
     'rh-navigation-primary',
@@ -62,7 +60,11 @@ export class UxdotDemo extends LitElement {
                 onload="this.style.opacity=1"
                 title="${this.demoTitle}"
                 src="${this.demoUrl}"></iframe>
-        <rh-card ssr-hint-has-slotted-default
+        <rh-disclosure id="knobs-drawer" summary="Edit element properties">
+          <div id="knobs" role="list"><slot name=knobs></slot></div>
+        </rh-disclosure>
+        <rh-card id="code"
+                 ssr-hint-has-slotted-default
                  ssr-hint-has-slotted="footer">
           <rh-tabs class="code-tabs" active-index="0">
             <rh-tab slot="tab" active>HTML</rh-tab>
@@ -73,19 +75,18 @@ export class UxdotDemo extends LitElement {
             <rh-tab-panel><slot name="js"></slot></rh-tab-panel>
           </rh-tabs>
           <rh-button slot="footer"
-                     variant="tertiary"
+                     variant="link"
                      icon="expand"
                      icon-set="ui"
-                     @click="${this.#toggleFullscreen}">FullScreen</rh-button>
+                     @click="${this.#toggleFullscreen}">View fullscreen</rh-button>
           <rh-button slot="footer"
-                     variant="tertiary"
+                     variant="link"
                      icon="refresh"
                      icon-set="ui"
                      @click="${this.#reloadIframe}">Reload</rh-button>
-          <rh-cta slot="footer" href="${this.demoSourceUrl}">View source on GitHub</rh-cta>
-          <rh-cta slot="footer" href="${this.demoUrl}" target="_blank">View In Own Tab</rh-cta>
+          <a slot="footer" href="${this.demoSourceUrl}">View source on GitHub <rh-icon set="ui" icon="code"></rh-icon></a></rh-cta>
+          <a slot="footer" href="${this.demoUrl}" target="_blank">View in new window <rh-icon set="ui" icon="duplicate"></rh-icon></a></rh-cta>
         </rh-card>
-        <div id="knobs" role="list"><slot name=knobs></slot></div>
       </div>
     `;
   }
@@ -119,17 +120,7 @@ export class UxdotDemo extends LitElement {
         const style = contentDocument.createElement('style');
         style.textContent = /* css */`
           body {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            main {
-              display: contents;
-              > :is(
-                rh-card,
-              ) {
-                min-width: 300px;
-              }
-            }
+            padding: var(--rh-space-3xl, 48px);
           }
         `;
         contentDocument.body.append(style);

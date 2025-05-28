@@ -117,7 +117,8 @@ export class UxdotKnobAttribute extends LitElement {
         <rh-context-picker id="knob"
                            allowed="${ifDefined(options.at(0) === 'ColorPalette' ? undefined : options.map(dequote).join(','))}"
                            value="${this.#values.get(this.name) ?? 'lightest'}"></rh-context-picker>` : html`
-        <input id="knob"
+        <input type="text"
+               id="knob"
                inputmode="${ifDefined(this.type === 'number' ? 'numeric' : undefined)}"
                value="${ifDefined(this.#values.get(this.name))}">`}
       </li>

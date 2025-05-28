@@ -229,8 +229,8 @@ export default class ElementsPage extends Renderer<Context> {
                                 name="${attr.name}"${!type ? '' : html`
                                 type="${type}"`}${!attr.default ? '' : html`
                                 default="${attr.default}"`}>
-          <div slot="description">${description}</div>
-        </uxdot-knob-attribute>`;
+            <div slot="description">${description}</div>
+          </uxdot-knob-attribute>`;
         }))).join(''))}
     `;
   }
