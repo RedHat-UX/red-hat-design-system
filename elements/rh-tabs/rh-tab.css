@@ -396,6 +396,8 @@
 }
 
 :host(:is(:focus, :focus-within)) {
+  outline: none;
+
   & #button {
     outline: 1px auto var(--rh-color-interactive-primary-default);
     outline-offset: -3px;
