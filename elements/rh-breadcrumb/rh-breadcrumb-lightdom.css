@@ -62,7 +62,7 @@ rh-breadcrumb > ol > li > a {
 }
 
 rh-breadcrumb > ol > li > a {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 rh-breadcrumb > ol > li > a:is(:hover, :focus, :active) {
