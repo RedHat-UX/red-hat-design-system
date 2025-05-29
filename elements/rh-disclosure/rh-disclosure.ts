@@ -87,17 +87,6 @@ export class RhDisclosure extends LitElement {
   @query('details') private detailsEl!: HTMLDetailsElement;
   @query('summary') private summaryEl!: HTMLElement;
 
-  connectedCallback() {
-    super.connectedCallback();
-    if (!isServer) {
-      this.hasJumpLinks = !!this.querySelector('rh-jump-links');
-    }
-  }
-
-  disconnectedCallback(): void {
-    super.disconnectedCallback();
-  }
-
   render() {
     return html`
       <details
@@ -141,14 +130,13 @@ export class RhDisclosure extends LitElement {
     if (!this.open) {
       return;
     }
-    this.detailsEl.open = false;
     this.open = false;
     this.summaryEl.focus();
   }
 
   @observes('open')
   protected _openChanged() {
-    if (this.open) {
+    if (!isServer) {
       this.hasJumpLinks = !!this.querySelector('rh-jump-links');
     }
   }
