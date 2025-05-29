@@ -166,7 +166,7 @@ export class UxdotKnobAttribute extends LitElement {
           const value = await demo.getDemoElementAttribute(attr);
           this.#values.set(attr, value);
           if (attr === this.name) {
-            this.value = value;
+            this.value = value ?? '';
           }
         }
       }
