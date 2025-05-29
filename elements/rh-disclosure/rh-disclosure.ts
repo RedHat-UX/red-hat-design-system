@@ -3,12 +3,15 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { state } from 'lit/decorators/state.js';
 import { query } from 'lit/decorators/query.js';
-
-import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
-import { themable } from '@rhds/elements/lib/themable.js';
-import '@rhds/elements/rh-icon/rh-icon.js';
 import { classMap } from 'lit-html/directives/class-map.js';
+
 import { observes } from '@patternfly/pfe-core/decorators.js';
+
+import { themable } from '@rhds/elements/lib/themable.js';
+import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
+
+import '@rhds/elements/rh-icon/rh-icon.js';
+
 import styles from './rh-disclosure.css';
 
 export class DisclosureToggleEvent extends Event {
