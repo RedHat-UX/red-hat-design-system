@@ -7,7 +7,6 @@ import styles from './uxdot-demo.css';
 
 import { isServer, LitElement } from 'lit';
 import type { RhCodeBlock } from 'elements/rh-code-block/rh-code-block.js';
-import 'elements/rh-disclosure/rh-disclosure.js';
 
 @customElement('uxdot-demo')
 export class UxdotDemo extends LitElement {
@@ -55,14 +54,16 @@ export class UxdotDemo extends LitElement {
   render() {
     return html`
       <div id="container">
-        <iframe loading="lazy"
-                style="opacity: 0"
-                onload="this.style.opacity=1"
-                title="${this.demoTitle}"
-                src="${this.demoUrl}"></iframe>
-        <rh-disclosure id="knobs-drawer" summary="Edit element properties">
-          <div id="knobs" role="list"><slot name=knobs></slot></div>
-        </rh-disclosure>
+        <div id="preview">
+          <iframe loading="lazy"
+                  style="opacity: 0"
+                  onload="this.style.opacity=1"
+                  title="${this.demoTitle}"
+                  src="${this.demoUrl}"></iframe>
+          <rh-disclosure id="knobs-drawer" summary="Edit element properties">
+            <div id="knobs" role="list"><slot name=knobs></slot></div>
+          </rh-disclosure>
+        </div>
         <rh-card id="code"
                  ssr-hint-has-slotted-default
                  ssr-hint-has-slotted="footer">

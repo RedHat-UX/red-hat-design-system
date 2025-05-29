@@ -20,7 +20,7 @@ iframe {
 
   display: flex;
   flex-direction: column;
-  gap: var(--rh-space-lg);
+  gap: var(--rh-space-2xl);
 }
 
 #code {
@@ -54,14 +54,27 @@ iframe {
   }
 }
 
+#preview {
+  display: flex;
+  flex-direction: column;
+}
+
 #knobs-drawer {
   display: none;
 }
 
 :host([attribute-knobs]) {
+  iframe {
+    border-end-start-radius: 0;
+    border-end-end-radius: 0;
+  }
+
   #knobs-drawer {
+    position: relative;
     display: block;
-    border-radius: var(--rh-border-radius-default);
+    margin-block-start: -1px;
+    border-end-start-radius: var(--rh-border-radius-default);
+    border-end-end-radius: var(--rh-border-radius-default);
   }
 
   #knobs {
