@@ -20,15 +20,6 @@ export class DisclosureToggleEvent extends Event {
   }
 }
 
-const hasJumpLinksStyleSheet = new CSSStyleSheet();
-if (!isServer) {
-  hasJumpLinksStyleSheet.replaceSync(/* css */`
-    details.has-jump-links[open]:before {
-      border-inline-start-color: transparent;
-    }
-  `);
-}
-
 /**
  * A disclosure toggles the visibility of content when triggered.
  * @summary A disclosure toggles the visibility of content when triggered
