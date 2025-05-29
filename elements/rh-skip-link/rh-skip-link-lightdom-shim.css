@@ -54,6 +54,11 @@ rh-skip-link:not(:defined) > a:is(:active, :focus) {
 
 rh-skip-link:not(:defined) > a:is(:active, :hover) {
   text-decoration: underline;
+  text-decoration-style: dashed;
+  text-decoration-color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: max(5px, 0.28em);
+  transition: ease all 0.3s;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -68,6 +68,11 @@ a:is(:active, :focus),
 a:is(:active, :hover),
 ::slotted(a:is(:active, :hover)) {
   text-decoration: underline !important;
+  text-decoration-style: dashed !important;
+  text-decoration-color: inherit !important;
+  text-decoration-thickness: 1px !important;
+  text-underline-offset: max(5px, 0.28em) !important;
+  transition: ease all 0.3s !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
