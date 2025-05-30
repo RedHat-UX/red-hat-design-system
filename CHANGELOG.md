@@ -1,6 +1,7 @@
 # @rhds/elements
 
 ## 3.0.1
+
 ### Patch Changes
 
 - 4e036d1: `<rh-navigation-secondary>`: improved <abbr title="server side rendering">SSR</abbr> support
@@ -21,38 +22,43 @@
 - 8beac87: `<rh-pagination>`: fix ellipsis background color on dark color schemes
 
 ## 3.0.0
+
 ### Major Changes
 
 - f32f39d: `<rh-accordion>`: make accordion panel always use it's parent's color scheme
-  
+
   BEFORE: Users could override an accordion panel's color palette
+
   ```html
   <rh-accordion color-palette="darkest">
     <rh-accordion-header>Override Panel</rh-accordion-header>
     <rh-accordion-panel color-palette="lightest">Overridden panel</rh-accordion-panel>
   </rh-accordion>
   ```
-  
+
   AFTER: Users cannot override an accordion panel's color palette
+
   ```html
   <rh-accordion color-palette="darkest">
     <rh-accordion-header>Consistent Panel</rh-accordion-header>
     <rh-accordion-panel>Consistent panel</rh-accordion-panel>
   </rh-accordion>
   ```
+
 - f32f39d: **🎨 Color Schemes 😎**
-  
+
   This release introduces built-in support for user [color scheme][colorscheme] preferences (a.k.a. "dark mode"). The [color palette][colorpalette] and [theming][theming] integrate into device color schemes, or can be overridden on a per-page or per-element basis.
-  
+
   #### Performance
-  
+
   This change significantly improves both the loading and the runtime performance of themable elements. We no longer need to apply the color scheming stylesheet to each element, which reduces SSR payloads as well.
-  
+
   #### Breaking Changes
-  
+
   In version 2, users could apply custom themes to specific sections or elements by setting theme tokens ending in `-on-light` and `-on-dark`. In this version, that will still work when applied to the entire document via the `:root` selector, but when theming individual elements, it will fail. For that reason, we recommend users should set theme tokens using the `light-dark()` function instead:
-  
+
   ##### Before
+
   ```css
   .theme-custom {
     --rh-color-border-interactive-on-light: var(--custom-darkest);
@@ -61,79 +67,83 @@
     --rh-color-interactive-primary-default-on-dark: var(--custom-lighter);
   }
   ```
-  
+
   ##### After
+
   ```css
   .theme-custom {
-    --rh-color-border-interactive: light-dark(var(--custom-darkest),
-                                              var(--custom-lightest));
-    --rh-color-interactive-primary-default: light-dark(var(--custom-darker),
-                                                       var(--custom-lighter));
+    --rh-color-border-interactive: light-dark(var(--custom-darkest), var(--custom-lightest));
+    --rh-color-interactive-primary-default: light-dark(var(--custom-darker), var(--custom-lighter));
   }
   ```
-  
+
   #### Potentially Breaking Changes
-  
+
   Because elements can now render by default using your user's preferred color scheme, pages which are not set up to style content based on user preferences may become unreadable. For example, if a user who set their device to prefer dark mode visits a page which does not style content based on their color-scheme preferences (i.e. it assumes "light mode") and that page contains RHDS elements, those elements may become unreadable, by rendering text for a dark background, when that page actually shows a light background.
-  
+
   We expect that this should not affect the majority of cases, but if you find that it does, there are two solutions you can implement to force your pages into light mode: either use an `<rh-surface>` element with the `lightest` color palette, or set your page's rendering mode to `only light`
-  
+
   ```diff
   - <main>
   + <rh-surface role="main" color-palette="lightest">
   ```
-  
+
   ```css
   :root {
     color-scheme: only light;
   }
   ```
-  
+
   [colorscheme]: https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme
   [colorpalette]: https://ux.redhat.com/theming/color-palettes/
   [theming]: https://ux.redhat.com/theming/customizing/
+
 - f32f39d: `<rh-dialog>`: the `overlay` CSS shadow part has been removed. Users who want to customize the overlay should refer to our [theming documentation](https://ux.redhat.com/theming/customizing/).
-  
+
   Before:
-  
+
   ```css
   rh-dialog::part(overlay) {
     background-color: #260710e7;
   }
   ```
-  
+
   After:
-  
+
   ```css
   rh-dialog.theme-ai {
     --ai-darker: #260710;
     --rh-color-surface-darker: var(--ai-darker);
   }
   ```
+
 - f32f39d: `<rh-tabs>`: removed `--rh-tabs-border-color`. Use `--rh-color-border-subtle` instead.
-  
+
   #### Before:
+
   ```css
   .my-tabs {
     --rh-tabs-border-color: cadetblue;
   }
   ```
-  
+
   #### Before:
+
   ```css
   .my-tabs {
     --rh-color-border-subtle: light-dark(cadetblue, darkslategray);
   }
   ```
+
 - f32f39d: `@rhds/tokens`: bumps the version to 3.0. CSS customizations which used the design tokens may no longer apply. See the [tokens release notes](https://github.com/RedHat-UX/red-hat-design-tokens/releases/tag/v3.0.0) for more information on the breaking changes.
 - 9dcbc70: `<rh-accordion>`: remove unused `bordered` attribute, which anyways has no effect since 2.0
 
 ### Minor Changes
 
 - f32f39d: ✨ Added `<rh-chip>`.
-  
+
   Chip creates a component that can be used in place of a checkbox.
-  
+
   ```html
   <rh-chip-group>
     <span slot="accessible-label">Filter by:</span>
@@ -142,44 +152,51 @@
     <rh-chip>DevOps</rh-chip>
   </rh-chip-group>
   ```
+
 - f32f39d: `<rh-footer>`: social link element can now take an `href` attribute instead of a slotted link. The previous behaviour will still work.
-  
+
   Before:
-  
+
   ```html
-  
-  <rh-footer-social-link slot="social-links"
-                         icon="linkedin">
-    <a href="https://www.linkedin.com/company/red-hat"
-       data-analytics-region="social-links-exit"
-       data-analytics-category="Footer|social-links"
-       data-analytics-text="LinkedIn">LinkedIn</a>
+  <rh-footer-social-link slot="social-links" icon="linkedin">
+    <a
+      href="https://www.linkedin.com/company/red-hat"
+      data-analytics-region="social-links-exit"
+      data-analytics-category="Footer|social-links"
+      data-analytics-text="LinkedIn"
+      >LinkedIn</a
+    >
   </rh-footer-social-link>
   ```
-  
+
   After:
+
   ```html
-    <rh-footer-social-link slot="social-links"
-                           icon="linkedin"
-                           href="https://www.linkedin.com/company/red-hat"
-                           data-analytics-region="social-links-exit"
-                           data-analytics-category="Footer|social-links"
-                           data-analytics-text="LinkedIn"
-                           accessible-label="LinkedIn"></rh-footer-social-link>
+  <rh-footer-social-link
+    slot="social-links"
+    icon="linkedin"
+    href="https://www.linkedin.com/company/red-hat"
+    data-analytics-region="social-links-exit"
+    data-analytics-category="Footer|social-links"
+    data-analytics-text="LinkedIn"
+    accessible-label="LinkedIn"
+  ></rh-footer-social-link>
   ```
+
 - f32f39d: ✨ Added `<rh-disclosure>`
-  
+
   A disclosure is a widget that enables content to be either collapsed (hidden) or expanded (visible).
-  
+
   ```html
   <rh-disclosure summary="Collapsed panel title">
     <p>Lorem ipsum dolor sit amet consectetur adipisicing, elit.</p>
   </rh-disclosure>
   ```
+
 - f32f39d: ✨ Added `<rh-jump-links>`
-  
+
   Jump links is a navigation list of links enhanced with Red Hat branded design and a scroll spy mechanism. It comes in horizontal and vertical layouts, and can be composed with `<rh-disclosure>` for a mobile-friendly presentation.
-  
+
   ```html
   <aside id="jump-links-container">
     <h2 id="jump-links-title">Sections</h2>
@@ -192,94 +209,84 @@
     </rh-jump-links>
   </aside>
   ```
+
 - f32f39d: ✨ Added `<rh-announcement>`.
-  
+
   `<rh-announcement>` is a short banner that conveys an important message, such as
   promoting an event or advertising an organizational or product announcement.
-  
+
   ```html
   <rh-announcement>
-    <img slot="image"
-         alt="summit logo"
-         src="/images/summit.png">
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit adipisicing elit adipisicing elit.</p>
+    <img slot="image" alt="summit logo" src="/images/summit.png" />
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit adipisicing elit adipisicing elit.
+    </p>
     <rh-cta slot="cta" href="#">Learn More</rh-cta>
   </rh-announcement>
   ```
+
 - f32f39d: ✨ Added `<rh-navigation-primary>`.
-  
+
   The Primary navigation allows users to orient themselves and successfully move through web experiences. It is persistent on every page to ensure a consistent user experience across our systems of website
-  
+
   ```html
   <rh-navigation-primary>
-    <rh-navigation-primary-item variant="dropdown"
-                                summary="AI">
+    <rh-navigation-primary-item variant="dropdown" summary="AI">
       AI dropdown content
     </rh-navigation-primary-item>
-  
-    <rh-navigation-primary-item variant="dropdown"
-                                summary="Hybrid Cloud">
+
+    <rh-navigation-primary-item variant="dropdown" summary="Hybrid Cloud">
       Hybrid Cloud dropdown content
     </rh-navigation-primary-item>
-  
-    <rh-navigation-primary-item variant="dropdown"
-                                summary="Products">
+
+    <rh-navigation-primary-item variant="dropdown" summary="Products">
       Products dropdown content
     </rh-navigation-primary-item>
-  
-    <rh-navigation-primary-item variant="dropdown"
-                                summary="Learn">
+
+    <rh-navigation-primary-item variant="dropdown" summary="Learn">
       Learn dropdown content
     </rh-navigation-primary-item>
-  
-    <rh-navigation-primary-item variant="dropdown"
-                                summary="Partners">
+
+    <rh-navigation-primary-item variant="dropdown" summary="Partners">
       Partners dropdown content
     </rh-navigation-primary-item>
-  
+
     <rh-navigation-primary-item slot="links">
       <a href="https://developers.redhat.com/">Developers</a>
     </rh-navigation-primary-item>
-  
+
     <rh-navigation-primary-item slot="links">
       <a href="https://docs.redhat.com/en">Docs</a>
     </rh-navigation-primary-item>
-  
+
     <rh-navigation-primary-item slot="links">
       <a href="https://access.redhat.com/support">Support</a>
     </rh-navigation-primary-item>
-  
-    <rh-navigation-primary-item slot="dropdowns"
-                                variant="dropdown"
-                                hide-at="sm"
-                                summary="Search">
+
+    <rh-navigation-primary-item slot="dropdowns" variant="dropdown" hide-at="sm" summary="Search">
       Search dropdown content
     </rh-navigation-primary-item>
-  
-    <rh-navigation-primary-item slot="dropdowns"
-                                variant="dropdown"
-                                hide-at="sm"
-                                summary="For you">
+
+    <rh-navigation-primary-item slot="dropdowns" variant="dropdown" hide-at="sm" summary="For you">
       For you dropdown content
     </rh-navigation-primary-item>
-  
-    <rh-navigation-primary-item slot="dropdowns"
-                                variant="dropdown"
-                                summary="My Red Hat">
+
+    <rh-navigation-primary-item slot="dropdowns" variant="dropdown" summary="My Red Hat">
       My Red Hat dropdown content
     </rh-navigation-primary-item>
   </rh-navigation-primary>
   ```
+
 - 5eaee73: `<rh-alert>`: added `actions` and `persistent: true` options for toasts.
-  
+
   ```js
   RhAlert.toast({
-    message: 'Toast!',
+    message: "Toast!",
     persistent: true,
     actions: [
-      { text: 'Confirm', action: 'confirm' },
-      { text: 'dismiss', action: 'dismiss' }
-    ],
+      { text: "Confirm", action: "confirm" },
+      { text: "dismiss", action: "dismiss" }
+    ]
   });
   ```
 
@@ -715,8 +722,8 @@
   <rh-alert toast>
     <h3 slot="header">Default</h3>
     <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend
-      elit sed est egestas, a sollicitudin mauris tincidunt.
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est egestas,
+      a sollicitudin mauris tincidunt.
     </p>
   </rh-alert>
   ```
@@ -727,8 +734,8 @@
   <rh-alert variant="toast">
     <h3 slot="header">Default</h3>
     <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend
-      elit sed est egestas, a sollicitudin mauris tincidunt.
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est egestas,
+      a sollicitudin mauris tincidunt.
     </p>
   </rh-alert>
   ```
@@ -795,7 +802,7 @@
   RhAlert.toast({
     state: "warning",
     heading: "Careful",
-    message: "Toast is high in calories!",
+    message: "Toast is high in calories!"
   });
   ```
 
@@ -805,11 +812,7 @@
 
   ```html
   <rh-video-embed>
-    <img
-      slot="thumbnail"
-      src="https://fakeimg.pl/900x499/282828/eae0d0"
-      alt="Image description"
-    />
+    <img slot="thumbnail" src="https://fakeimg.pl/900x499/282828/eae0d0" alt="Image description" />
     <template>
       <iframe
         title="Title of video"
@@ -823,9 +826,7 @@
       ></iframe>
     </template>
     <p slot="caption">
-      <a class="rh-video-embed-caption-link" href="https://www.redhat.com/"
-        >View the infographic</a
-      >
+      <a class="rh-video-embed-caption-link" href="https://www.redhat.com/">View the infographic</a>
     </p>
   </rh-video-embed>
   ```
@@ -852,11 +853,7 @@
 
   ```html
   <rh-card variant="promo">
-    <img
-      slot="image"
-      alt="product illustration"
-      src="/assets/images/new-product.png"
-    />
+    <img slot="image" alt="product illustration" src="/assets/images/new-product.png" />
     <h2 slot="header">Try our new product</h2>
     <p>Our new product is the best in class.</p>
     <rh-cta slot="footer" href="#">Start a Free Trial</rh-cta>
@@ -1055,7 +1052,7 @@
 
   const tabs = [
     { heading: 'Hello Red Hat', content: 'Let\'s break down silos' },
-    { heading: 'Web components', content: 'They work everywhere' }
+    { heading: 'Web Components', content: 'They work everywhere' }
   ];
 
   function App() {
@@ -1076,13 +1073,9 @@
   ```html
   <rh-code-block actions="wrap copy">
     <span slot="action-label-copy">Copy to Clipboard</span>
-    <span slot="action-label-copy" hidden data-code-block-state="active"
-      >Copied!</span
-    >
+    <span slot="action-label-copy" hidden data-code-block-state="active">Copied!</span>
     <span slot="action-label-wrap">Toggle word wrap</span>
-    <span slot="action-label-wrap" hidden data-code-block-state="active"
-      >Toggle overflow</span
-    >
+    <span slot="action-label-wrap" hidden data-code-block-state="active">Toggle overflow</span>
     <script type="text/css">
       :host {
         display: block;
@@ -1305,12 +1298,8 @@
       <thead>
         <tr>
           <th scope="col" data-label="Date">Date</th>
-          <th scope="col" data-label="Event">
-            Event<rh-sort-button></rh-sort-button>
-          </th>
-          <th scope="col" data-label="Venue">
-            Venue<rh-sort-button></rh-sort-button>
-          </th>
+          <th scope="col" data-label="Event">Event<rh-sort-button></rh-sort-button></th>
+          <th scope="col" data-label="Venue">Venue<rh-sort-button></rh-sort-button></th>
         </tr>
       </thead>
       <tbody>
@@ -1406,10 +1395,9 @@
   <rh-card>
     <h2 slot="header">Headline, sm</h2>
     <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend
-      elit sed est egestas, a sollicitudin mauris tincidunt. Pellentesque vel
-      dapibus risus. Nullam aliquam felis orci, eget cursus mi lacinia quis.
-      Vivamus at felis sem.
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est egestas,
+      a sollicitudin mauris tincidunt. Pellentesque vel dapibus risus. Nullam aliquam felis orci,
+      eget cursus mi lacinia quis. Vivamus at felis sem.
     </p>
     <rh-cta slot="footer">
       <a href="#">Call to action</a>
@@ -1658,8 +1646,8 @@
   ```html
   <rh-blockquote>
     <p slot="quote">
-      In open source, we feel strongly that to really do something well, you
-      have to get a lot of people involved.
+      In open source, we feel strongly that to really do something well, you have to get a lot of
+      people involved.
     </p>
     <span slot="author">Linus Torvalds</span>
     <span slot="title">Software Engineer</span>
@@ -1729,8 +1717,8 @@
     </rh-accordion-header>
     <rh-accordion-panel>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+        ut labore et dolore magna aliqua.
       </p>
     </rh-accordion-panel>
     <rh-accordion-header>
@@ -1738,8 +1726,8 @@
     </rh-accordion-header>
     <rh-accordion-panel>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+        ut labore et dolore magna aliqua.
       </p>
     </rh-accordion-panel>
     <rh-accordion-header>
@@ -1747,8 +1735,8 @@
     </rh-accordion-header>
     <rh-accordion-panel>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+        ut labore et dolore magna aliqua.
       </p>
     </rh-accordion-panel>
   </rh-accordion>
@@ -1763,8 +1751,8 @@
   <rh-alert>
     <h3 slot="header">Default</h3>
     <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend
-      elit sed est egestas, a sollicitudin mauris tincidunt.
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est egestas,
+      a sollicitudin mauris tincidunt.
     </p>
     <button slot="actions" data-action="dismiss">Dismiss</button>
     <button slot="actions" data-action="confirm">Confirm</button>
@@ -1777,11 +1765,7 @@
   left or on top of text.
 
   ```html
-  <rh-avatar
-    name="Grace Hopper"
-    subtitle="Rear Admiral"
-    src="hopper.jpg"
-  ></rh-avatar>
+  <rh-avatar name="Grace Hopper" subtitle="Rear Admiral" src="hopper.jpg"></rh-avatar>
   ```
 
 - b625710c: ✨ Added `<rh-footer>`.
@@ -1818,11 +1802,10 @@
     <rh-footer-block slot="main-secondary">
       <h3 slot="header">About Red Hat</h3>
       <p>
-        We’re the world’s leading provider of enterprise open source
-        solutions―including Linux, cloud, container, and Kubernetes. We deliver
-        hardened solutions that make it easier for enterprises to work across
-        platforms and environments, from the core datacenter to the network
-        edge.
+        We’re the world’s leading provider of enterprise open source solutions―including Linux,
+        cloud, container, and Kubernetes. We deliver hardened solutions that make it easier for
+        enterprises to work across platforms and environments, from the core datacenter to the
+        network edge.
       </p>
     </rh-footer-block>
     <rh-footer-block slot="main-secondary">
@@ -1927,9 +1910,7 @@
     Red Hat Design System is an interoperable
     <rh-tooltip position="top">
       <rh-icon icon="info" aria-label="information"></rh-icon>
-      <span slot="content"
-        >Interoperable components work in any frontend framework, or none</span
-      >
+      <span slot="content">Interoperable components work in any frontend framework, or none</span>
     </rh-tooltip>
     set of components with Red Hat branding guidelines built in.
   </p>
@@ -2188,11 +2169,7 @@
   left or on top of text.
 
   ```html
-  <rh-avatar
-    name="Grace Hopper"
-    subtitle="Rear Admiral"
-    src="hopper.jpg"
-  ></rh-avatar>
+  <rh-avatar name="Grace Hopper" subtitle="Rear Admiral" src="hopper.jpg"></rh-avatar>
   ```
 
 ### Patch Changes
@@ -2272,8 +2249,8 @@
     </rh-accordion-header>
     <rh-accordion-panel>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+        ut labore et dolore magna aliqua.
       </p>
     </rh-accordion-panel>
     <rh-accordion-header>
@@ -2281,8 +2258,8 @@
     </rh-accordion-header>
     <rh-accordion-panel>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+        ut labore et dolore magna aliqua.
       </p>
     </rh-accordion-panel>
     <rh-accordion-header>
@@ -2290,8 +2267,8 @@
     </rh-accordion-header>
     <rh-accordion-panel>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+        ut labore et dolore magna aliqua.
       </p>
     </rh-accordion-panel>
   </rh-accordion>
@@ -2502,9 +2479,7 @@
     Red Hat Design System is an interoperable
     <rh-tooltip position="top">
       <rh-icon icon="info" aria-label="information"></rh-icon>
-      <span slot="content"
-        >Interoperable components work in any frontend framework, or none</span
-      >
+      <span slot="content">Interoperable components work in any frontend framework, or none</span>
     </rh-tooltip>
     set of components with Red Hat branding guidelines built in.
   </p>
@@ -2587,8 +2562,8 @@
   ```html
   <rh-blockquote color-palette="lightest" align="inline-start" size="default">
     <p slot="quote">
-      In open source, we feel strongly that to really do something well, you
-      have to get a lot of people involved.
+      In open source, we feel strongly that to really do something well, you have to get a lot of
+      people involved.
     </p>
     <span slot="author">Linus Torvalds</span>
     <span slot="title">Software Engineer</span>
@@ -2766,11 +2741,10 @@
     <rh-footer-block slot="main-secondary">
       <h3 slot="header">About Red Hat</h3>
       <p>
-        We’re the world’s leading provider of enterprise open source
-        solutions―including Linux, cloud, container, and Kubernetes. We deliver
-        hardened solutions that make it easier for enterprises to work across
-        platforms and environments, from the core datacenter to the network
-        edge.
+        We’re the world’s leading provider of enterprise open source solutions―including Linux,
+        cloud, container, and Kubernetes. We deliver hardened solutions that make it easier for
+        enterprises to work across platforms and environments, from the core datacenter to the
+        network edge.
       </p>
     </rh-footer-block>
     <rh-footer-block slot="main-secondary">
@@ -2804,8 +2778,8 @@
   <rh-alert>
     <h3 slot="header">Default</h3>
     <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend
-      elit sed est egestas, a sollicitudin mauris tincidunt.
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est egestas,
+      a sollicitudin mauris tincidunt.
     </p>
     <button slot="actions" data-action="dismiss">Dismiss</button>
     <button slot="actions" data-action="confirm">Confirm</button>

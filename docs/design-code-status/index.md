@@ -19,26 +19,26 @@ title: Design/code status
 
 <section aria-labelledby="overview">
 
-  ## Overview
+## Overview
 
-  A detailed synopsis of our web components and their implementation status.
+A detailed synopsis of our Web Components and their implementation status.
 
   <rh-table>
 
-  | Sample tag                                                                           | Meaning                                       |
-  | ------------------------------------------------------------------------------------ | --------------------------------------------- |
-  | <rh-tag variant="filled" color="purple" icon="notification-fill">Planned</rh-tag>      | Ready to be worked on or ready to be released |
-  | <rh-tag variant="outline" color="green" icon="harvey-ball-50">In progress</rh-tag>   | In the design or development process          |
-  | <rh-tag variant="filled" color="green" icon="check-circle-fill">Ready</rh-tag>       | Ready to use and approved by all team members |
-  | <rh-tag variant="filled" color="orange" icon="close-circle-fill">Deprecated</rh-tag> | No longer supported by RHDS                   |
-  | <rh-tag variant="outline" color="gray" icon="ban">N/A</rh-tag>                       | Not planned, not available, or does not apply |
+| Sample tag                                                                           | Meaning                                       |
+| ------------------------------------------------------------------------------------ | --------------------------------------------- |
+| <rh-tag variant="filled" color="purple" icon="notification-fill">Planned</rh-tag>    | Ready to be worked on or ready to be released |
+| <rh-tag variant="outline" color="green" icon="harvey-ball-50">In progress</rh-tag>   | In the design or development process          |
+| <rh-tag variant="filled" color="green" icon="check-circle-fill">Ready</rh-tag>       | Ready to use and approved by all team members |
+| <rh-tag variant="filled" color="orange" icon="close-circle-fill">Deprecated</rh-tag> | No longer supported by RHDS                   |
+| <rh-tag variant="outline" color="gray" icon="ban">N/A</rh-tag>                       | Not planned, not available, or does not apply |
 
   </rh-table>
 </section>
 
 <section aria-labelledby="web-component-status">
 
-  ## Web component status
+## Web component status
 
   <uxdot-repo-status-table>
   </uxdot-repo-status-table>
