@@ -98,7 +98,7 @@ _Bordeaux_ theme. We'll write a CSS rule which selects for the `theme-bordeaux`
 class, and in that rule we'll set the values of <abbr title="red hat design 
   system">RHDS</abbr> theming tokens to our custom theme colors.
 In the following example, you can see how we first define some custom theme
-colours as CSS custom properties beginning with `--bordeaux-`, then we use those
+colors as CSS custom properties beginning with `--bordeaux-`, then we use those
 values in our custom theme by applying them to RHDS theming tokens.
 
 <rh-alert state="info">In order to support user's color

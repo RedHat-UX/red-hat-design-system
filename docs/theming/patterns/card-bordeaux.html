@@ -8,12 +8,18 @@
 </rh-card>
 
 <rh-card id="bordeaux-card-provider" class="theme-bordeaux">
-  <rh-blockquote>You can also set a color palette on a specific element</rh-blockquote>
-  <label for="bordeaux-card-picker" slot="footer">Set this card's <a href="../color-palettes/">color palette</a>.</label>
-  <rh-context-picker id="bordeax-card-picker"
-                     target="bordeaux-card-provider"
-                     allow="darkest, lighter, lightest"
-                     slot="footer"></rh-context-picker>
+  <rh-blockquote
+    >You can also set a color palette on a specific element</rh-blockquote
+  >
+  <label for="bordeaux-card-picker" slot="footer"
+    >Set this card's <a href="../color-palettes/">color palette</a>.</label
+  >
+  <rh-context-picker
+    id="bordeax-card-picker"
+    target="bordeaux-card-provider"
+    allow="darkest, lighter, lightest"
+    slot="footer"
+  ></rh-context-picker>
 </rh-card>
 
 <style>
@@ -28,7 +34,7 @@
     --bordeaux-lighter: #d9b9c2;
     --bordeaux-lightest: #f2e8eb;
 
-    /* next, apply those colours to RHDS' theming tokens */
+    /* next, apply those colors to RHDS' theming tokens */
     --rh-color-surface-darkest: var(--bordeaux-darkest);
     --rh-color-surface-darker: var(--bordeaux-darker);
     --rh-color-surface-dark: var(--bordeaux-dark);
@@ -97,14 +103,26 @@
 
   a {
     color: var(--rh-color-interactive-primary-default);
-    &:hover { color: var(--rh-color-interactive-primary-hover); }
-    &:focus-within { color: var(--rh-color-interactive-primary-focus); }
-    &:active { color: var(--rh-color-interactive-primary-active); }
+    &:hover {
+      color: var(--rh-color-interactive-primary-hover);
+    }
+    &:focus-within {
+      color: var(--rh-color-interactive-primary-focus);
+    }
+    &:active {
+      color: var(--rh-color-interactive-primary-active);
+    }
     &:visited {
       color: var(--rh-color-interactive-primary-visited);
-      &:hover { color: var(--rh-color-interactive-primary-visited-hover); }
-      &:focus-within { color: var(--rh-color-interactive-primary-visited-focus); }
-      &:active { color: var(--rh-color-interactive-primary-visited-active); }
+      &:hover {
+        color: var(--rh-color-interactive-primary-visited-hover);
+      }
+      &:focus-within {
+        color: var(--rh-color-interactive-primary-visited-focus);
+      }
+      &:active {
+        color: var(--rh-color-interactive-primary-visited-active);
+      }
     }
   }
 </style>
