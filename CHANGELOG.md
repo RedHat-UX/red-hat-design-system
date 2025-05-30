@@ -512,7 +512,7 @@
 - 82ffb12: Theming: Added [theming tokens][theming] to most elements
 
   Theming tokens let authors respond to the currently-active colour palette, and
-  are especially useful when implementing [patterns][patterns] using themeable
+  are especially useful when implementing [patterns][patterns] using themable
   elements.
 
   ```html
@@ -727,7 +727,7 @@
 
 - fa2c4d2: `<rh-cta>`: Removed previously-deprecated `color-palette` attribute
 
-  Use themeable containers (e.g. `<rh-surface>` or `<rh-card>`) instead.
+  Use themable containers (e.g. `<rh-surface>` or `<rh-card>`) instead.
 
   Before:
 

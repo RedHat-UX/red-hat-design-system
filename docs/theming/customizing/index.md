@@ -83,7 +83,7 @@ order: 3
 
 Red Hat Design System is composed of tokens, elements, and patterns, each layer
 building on the last. Theming emerges as a design possibility from the
-composition of those smaller pieces. By setting custom values for themeable
+composition of those smaller pieces. By setting custom values for themable
 design tokens, elements, sections, or entire pages can take on a new color
 scheme, layout density, etc. Custom themes can apply to multiple color-palettes
 and to both the `light` and `dark` backgrounds.
@@ -109,7 +109,7 @@ to always use the `light-dark()` function when crafting custom themes.</rh-alert
                active-tab="css"
                src="../patterns/card-bordeaux.html"></uxdot-pattern>
 
-<rh-alert>When writing themes, override the semantic, themeable tokens such as
+<rh-alert>When writing themes, override the semantic, themable tokens such as
   `--rh-color-interactive-primary-default` rather than the crayon tokens
   e.g. `--rh-color-purple-10`. This ensures that your custom colors apply to 
   elements in the way the designers originally intended</rh-alert>

@@ -229,7 +229,7 @@ palette should feature imagery with light colors and vice versa. Imagery with
 high contrast is only acceptable if it has a transparent background. If you
 cannot find color-palette-specific imagery, contact the Brand team. Developers
 have a number of [art-direction][artdirection] techniques at their disposal for
-creating themeable, responsive graphics.
+creating themable, responsive graphics.
 
 <uxdot-example>
   <img alt="correct uses of an illustration with a transparent background and one illustration incorrectly using a white background on a surface with a dark color palette area"
