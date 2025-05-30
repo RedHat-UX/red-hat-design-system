@@ -4,7 +4,6 @@ bodyClasses: element-docs
 layout: layouts/pages/has-toc.njk
 order: 3
 ---
-
 <link rel="stylesheet"
       data-helmet
       href="../color-palettes.css">
@@ -84,25 +83,25 @@ order: 3
 
 Red Hat Design System is composed of tokens, elements, and patterns, each layer
 building on the last. Theming emerges as a design possibility from the
-composition of those smaller pieces. By setting custom values for themable
+composition of those smaller pieces. By setting custom values for themeable
 design tokens, elements, sections, or entire pages can take on a new color
 scheme, layout density, etc. Custom themes can apply to multiple color-palettes
 and to both the `light` and `dark` backgrounds.
 
 ## Custom themes
 
-To create a custom theme, designers and developers need only set the values for
+To create a custom theme, designers and developers need only set the values for 
 the relevant color properties in the design system in their page's <abbr 
-  title="Cascading style sheets">CSS</abbr>. For example, let's create a custom
-_Bordeaux_ theme. We'll write a CSS rule which selects for the `theme-bordeaux`
+  title="Cascading style sheets">CSS</abbr>. For example, let's create a custom 
+_Bordeaux_ theme. We'll write a CSS rule which selects for the `theme-bordeaux` 
 class, and in that rule we'll set the values of <abbr title="red hat design 
   system">RHDS</abbr> theming tokens to our custom theme colors.
-In the following example, you can see how we first define some custom theme
-colours as CSS custom properties beginning with `--bordeaux-`, then we use those
+In the following example, you can see how we first define some custom theme 
+colours as CSS custom properties beginning with `--bordeaux-`, then we use those 
 values in our custom theme by applying them to RHDS theming tokens.
 
-<rh-alert state="info">In order to support user's color
-scheme preference as well as elements with dark color palettes, always use sure
+<rh-alert state="info">In order to support user's color 
+scheme preference as well as elements with dark color palettes, always use sure 
 to always use the `light-dark()` function when crafting custom themes.</rh-alert>
 
 <uxdot-pattern class="card-snippet-grid"
@@ -110,10 +109,10 @@ to always use the `light-dark()` function when crafting custom themes.</rh-alert
                active-tab="css"
                src="../patterns/card-bordeaux.html"></uxdot-pattern>
 
-<rh-alert>When writing themes, override the semantic, themable tokens such as
-`--rh-color-interactive-primary-default` rather than the crayon tokens
-e.g. `--rh-color-purple-10`. This ensures that your custom colors apply to
-elements in the way the designers originally intended</rh-alert>
+<rh-alert>When writing themes, override the semantic, themeable tokens such as
+  `--rh-color-interactive-primary-default` rather than the crayon tokens
+  e.g. `--rh-color-purple-10`. This ensures that your custom colors apply to 
+  elements in the way the designers originally intended</rh-alert>
 
 ### Customizing entire pages
 

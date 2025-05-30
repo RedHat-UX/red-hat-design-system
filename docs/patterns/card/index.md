@@ -31,13 +31,13 @@ preview of information or provide secondary content in relation to the content
 it's near. Several cards can be used together to group related information.
 
 <rh-alert state="info">These Card patterns document different design-approved
-uses of the `<rh-card>` element. Consult the [`<rh-card>` element documentation][element]
-for more information on how to use the card element.</rh-alert>
+  uses of the `<rh-card>` element. Consult the [`<rh-card>` element documentation][element]
+  for more information on how to use the card element.</rh-alert>
 
 ## Customizing cards
 
-Cards act as both themable containers and also respond to the color theme from
-their themable containers.
+Cards act as both themeable containers and also respond to the color theme from
+their themeable containers.
 
 To customize a card the design tokens must be altered. These design tokens are
 different depending on the context for the card (light or dark theme).
