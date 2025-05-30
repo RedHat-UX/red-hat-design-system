@@ -35,18 +35,19 @@ order: 4
 
 ## Using the theming system
 
-<abbr title="Red Hat Design System">RHDS</abbr>’s theming system is a high-level 
-expression of the lower-level components of the system: [tokens][tokens], and 
-[elements][elements]. In turn, it factors into the development of the 
-highest-level design system component: [patterns][patterns]. To use 
-the theming system, then, developers must already be familiar with our tokens 
-and elements. In other words, theming is the developer’s process of 
-orchestrating design tokens with elements, particularly by way of themeable 
+<abbr title="Red Hat Design System">RHDS</abbr>’s theming system is a high-level
+expression of the lower-level components of the system: [tokens][tokens], and
+[elements][elements]. In turn, it factors into the development of the
+highest-level design system component: [patterns][patterns]. To use
+the theming system, then, developers must already be familiar with our tokens
+and elements. In other words, theming is the developer’s process of
+orchestrating design tokens with elements, particularly by way of themable
 container elements.
 
 ## How theming works
 
 ### Color scheme providers
+
 <a id="providers"></a>
 
 <rh-alert state=info>[Read more about color palettes and schemes][palettes] in the theming overview.</rh-alert>
@@ -58,19 +59,16 @@ To make your element a color scheme provider:
 3. Add a reflecting `colorPalette` property with `color-palette` attribute.
 
 ```ts rhcodeblock
-import { LitElement } from 'lit';
-import { customElement } from 'lit/decorators/custom-element.js';
-import { property } from 'lit/decorators/property.js';
+import { LitElement } from "lit";
+import { customElement } from "lit/decorators/custom-element.js";
+import { property } from "lit/decorators/property.js";
 
-import {
-  colorPalettes,
-  type ColorPalette
-} from '@rhds/elements/lib/color-palettes.js';             // 1
+import { colorPalettes, type ColorPalette } from "@rhds/elements/lib/color-palettes.js"; // 1
 
-@customElement('rh-provider')
-@colorPalettes                                             // 2
+@customElement("rh-provider")
+@colorPalettes // 2
 export class RhProvider extends LitElement {
-  @property({ reflect: true, attribute: 'color-palette' }) // 3
+  @property({ reflect: true, attribute: "color-palette" }) // 3
   colorPalette?: ColorPalette;
 }
 ```
@@ -79,12 +77,15 @@ If the element only allows a subset of color palettes, you may pass them to the
 decorator to limit which palettes can be applied.
 
 ```ts rhcodeblock
-@customElement('rh-subset-provider')
-@colorPalettes('darker', 'lighter')
-export class RhSubsetProvider extends LitElement { /*...*/ }
+@customElement("rh-subset-provider")
+@colorPalettes("darker", "lighter")
+export class RhSubsetProvider extends LitElement {
+  /*...*/
+}
 ```
 
 #### Color scheme consumers
+
 <a id="consumers"></a>
 
 Color scheme consumers are elements which cannot set their own color scheme,
@@ -96,19 +97,19 @@ To make your element a color context consumer:
 1. Import the `@themable` decorator from the `lib` directory.
 2. Add the `@themable` decorator to the element's class.
 3. Use computed theming tokens to color your element
-3. When needed, override scheme values using [`light-dark()`][lightdark]
+4. When needed, override scheme values using [`light-dark()`][lightdark]
 
 <rh-tabs class="code-tabs">
   <rh-tab slot="tab">TypeScript</rh-tab>
   <rh-tab-panel>
 
 ```ts rhcodeblock
-import { LitElement, html } from 'lit';
-import { customElement } from 'lit/decorators/custom-element.js';
-import { themable } from '@rhds/elements/lib/themable.js';               // 1
+import { LitElement, html } from "lit";
+import { customElement } from "lit/decorators/custom-element.js";
+import { themable } from "@rhds/elements/lib/themable.js"; // 1
 
-@customElement('rh-consumer')
-@themable                                                                // 2
+@customElement("rh-consumer")
+@themable // 2
 export class RhConsumer extends LitElement {
   render() {
     return html`<div id="container"></div>`;
@@ -130,26 +131,25 @@ export class RhConsumer extends LitElement {
   </rh-tab-panel>
 </rh-tabs>
 
-The `@themable` decorator applies a stylesheet from `@rhds/tokens` to the page. 
-That stylesheet containing the default theme, using [`light-dark()`][lightdark] 
+The `@themable` decorator applies a stylesheet from `@rhds/tokens` to the page.
+That stylesheet containing the default theme, using [`light-dark()`][lightdark]
 to compute theming tokens depending on the color scheme.
 
 ```css rhcodeblock
 --rh-color-text-primary: light-dark(
-  var(--rh-color-text-primary-on-light, #151515)
-  var(--rh-color-text-primary-on-dark, #ffffff)
+  var(--rh-color-text-primary-on-light, #151515) var(--rh-color-text-primary-on-dark, #ffffff)
 );
 ```
 
 ### Themeable containers
 
-In <abbr>RHDS</abbr>, elements such as `<rh-surface>`, `<rh-card>`, `<rh-tabs>`, 
-and others are considered themeable containers. Developers can provide custom 
+In <abbr>RHDS</abbr>, elements such as `<rh-surface>`, `<rh-card>`, `<rh-tabs>`,
+and others are considered themable containers. Developers can provide custom
 values for theming tokens on those elements in a [custom theme][themes].
 
-A common pattern for a themeable container is the full-width band. For example, 
-a `<rh-surface>` may be used as a full-width container and provide the 
-*Bordeaux* theme values to a set of 3 cards in a grid:
+A common pattern for a themable container is the full-width band. For example,
+a `<rh-surface>` may be used as a full-width container and provide the
+_Bordeaux_ theme values to a set of 3 cards in a grid:
 
 <uxdot-pattern src="../patterns/band.html"
                class="band-example"
@@ -158,22 +158,20 @@ a `<rh-surface>` may be used as a full-width container and provide the
 
 ### Theming whole pages
 
-To theme an entire page, you may replace the `<main>` element with an 
-`<rh-surface role="main">`. This ensures that computed theme tokens propagate to 
+To theme an entire page, you may replace the `<main>` element with an
+`<rh-surface role="main">`. This ensures that computed theme tokens propagate to
 all children while maintaining the proper [landmark semantics][landmarks].
 
 ```html rhcodeblock
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
     <title>My Themed Page</title>
   </head>
   <body>
-    <rh-surface role="main" color-palette="darker">
-      ...
-    </rh-surface>
+    <rh-surface role="main" color-palette="darker"> ... </rh-surface>
   </body>
 </html>
 ```
@@ -202,9 +200,7 @@ Read more about the design considerations for contrasting sections on the
       <h2 id="default">Default palette</h2>
       <p>Default color palette (i.e. lightest)</p>
     </section>
-    <rh-surface role="section"
-                aria-labelledby="darker"
-                color-palette="darker">
+    <rh-surface role="section" aria-labelledby="darker" color-palette="darker">
       <h2 id="darker">Darker palette</h2>
       <p>Contrasting color palette (i.e. darker)</p>
     </rh-surface>
@@ -223,15 +219,15 @@ The ideal order of operations is as follows:
 1. Use theme tokens to customize the target e.g. `--rh-color-interactive-primary-default`
 1. Use element CSS Shadow Parts for greater control
 
-<rh-alert state="caution">Avoid setting values for CSS custom properties 
-  beginning with an underscore (`_`). These should be considered "private" and 
-  may change at any time without warning.</rh-alert>
+<rh-alert state="caution">Avoid setting values for CSS custom properties
+beginning with an underscore (`_`). These should be considered "private" and
+may change at any time without warning.</rh-alert>
 
 ## Art Direction
 
-Art direction is the process of selecting art assets based on the context in 
-which they are viewed. Regarding theming, art direction means choosing or 
-modifying graphics based on the surrounding theme or color palette. There are 
+Art direction is the process of selecting art assets based on the context in
+which they are viewed. Regarding theming, art direction means choosing or
+modifying graphics based on the surrounding theme or color palette. There are
 two ways to approach this:
 
 1. Dynamic graphics
@@ -239,50 +235,52 @@ two ways to approach this:
 
 ### Dynamic graphics
 
-Page authors can create dynamic graphics that respond to their surrounding 
+Page authors can create dynamic graphics that respond to their surrounding
 theme by using _inline SVGs_ that reference theme tokens. For example, this SVG
-graphic uses the `--rh-color-border-interactive` theme token to style a 
+graphic uses the `--rh-color-border-interactive` theme token to style a
 rectangle.
 
 ```html rhcodeblock
 <svg slot="header" width="80" height="80">
-  <rect fill="var(--rh-color-border-interactive, #0066CC)"
-        fill-opacity="0.1"
-        stroke-dasharray="4"
-        stroke-width="1"
-        stroke="var(--rh-color-border-interactive, #0066CC)"
-        width="80"
-        height="80"/>
+  <rect
+    fill="var(--rh-color-border-interactive, #0066CC)"
+    fill-opacity="0.1"
+    stroke-dasharray="4"
+    stroke-width="1"
+    stroke="var(--rh-color-border-interactive, #0066CC)"
+    width="80"
+    height="80"
+  />
 </svg>
 ```
 
 When using this approach, there are some important things to keep in mind:
 
 1. All element IDs on the page must be unique, including inline SVG elements.
-When inlining SVGs onto the page, try to reduce the number of IDs in the graphic
-to the bare minimum, and make sure the IDs are either random or prefixed with some 
-unique identifier, like the file name.
+   When inlining SVGs onto the page, try to reduce the number of IDs in the graphic
+   to the bare minimum, and make sure the IDs are either random or prefixed with some
+   unique identifier, like the file name.
 
 2. When using themable tokens in graphics, e.g `--rh-color-text-primary`, always
-provide the light-scheme value as a fallback. This ensures that the graphic will
-still render correctly (for light color schemes) when loaded in an `<img>` tag. As long 
-as you supply the light scheme fallback value, we don't need to use `light-dark()` except 
-when there's no appropriate themable variable.
+   provide the light-scheme value as a fallback. This ensures that the graphic will
+   still render correctly (for light color schemes) when loaded in an `<img>` tag. As long
+   as you supply the light scheme fallback value, we don't need to use `light-dark()` except
+   when there's no appropriate themable variable.
 
-  ```diff-svg rhcodeblock
-   <rect x="0"
-         y="0"
-  -      fill="var(--rh-color-text-primary, light-dark(var(--rh-color-text-primary-on-light, #151515), var(--rh-color-text-primary-on-dark, #ffffff))">
-  +      fill="var(--rh-color-text-primary, #151515)">
-  ```
+```diff-svg rhcodeblock
+ <rect x="0"
+       y="0"
+-      fill="var(--rh-color-text-primary, light-dark(var(--rh-color-text-primary-on-light, #151515), var(--rh-color-text-primary-on-dark, #ffffff))">
++      fill="var(--rh-color-text-primary, #151515)">
+```
 
-Last but not least, SVGs inlined into the page need to 
-have an accessible description, so make sure they include a `<title>` element 
+Last but not least, SVGs inlined into the page need to
+have an accessible description, so make sure they include a `<title>` element
 containing their <abbr>alt</abbr> text.
- 
-<rh-alert state="caution">This approach _does not work_ with SVGs loaded through 
-  the `<img>` tag, or with raster graphics; however, another approach is in 
-  development that could help.</rh-alert>
+
+<rh-alert state="caution">This approach _does not work_ with SVGs loaded through
+the `<img>` tag, or with raster graphics; however, another approach is in
+development that could help.</rh-alert>
 
 ### Alternating Graphics
 
@@ -292,12 +290,9 @@ the Red Hat logo appears on sections with both light and dark backgrounds,
 developers should carefully choose the graphic that matches the background.
 
 ```html rhcodeblock
-<rh-surface role="section"
-            aria-labelledby="products"
-            color-palette="darkest">
+<rh-surface role="section" aria-labelledby="products" color-palette="darkest">
   <h2 id="products">Products</h2>
-  <img alt="Red Hat Enterprise Linux"
-       src="/assets/logos/products/rhel-on-dark.svg">
+  <img alt="Red Hat Enterprise Linux" src="/assets/logos/products/rhel-on-dark.svg" />
 </rh-surface>
 ```
 

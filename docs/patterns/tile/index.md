@@ -25,33 +25,34 @@ subnav:
 
 Tiles are flexible layouts with clickable and contained surfaces.
 
-<rh-alert state="info">These Tile patterns document different design-approved 
-  uses of the `<rh-tile>` element. Consult the [`<rh-tile>` element documentation][element]
-  for more information on how to use the tile element.</rh-alert>
+<rh-alert state="info">These Tile patterns document different design-approved
+uses of the `<rh-tile>` element. Consult the [`<rh-tile>` element documentation][element]
+for more information on how to use the tile element.</rh-alert>
 
 ## Customizing tiles
 
-Tiles act as both themeable containers and also respond to the color theme from
-their themeable containers. 
+Tiles act as both themable containers and also respond to the color theme from
+their themable containers.
 
-Customize tiles by setting custom values for the element's color tokens. By 
-setting the theme tokens for both `dark` and `light` color themes, you can theme 
+Customize tiles by setting custom values for the element's color tokens. By
+setting the theme tokens for both `dark` and `light` color themes, you can theme
 an entire page or section.
 
 Examples include:
 
- - [`--rh-color-border-interactive-on-light`](/tokens/color/#rh-color-border-interactive-on-light)
- - [`--rh-color-border-interactive-on-dark`](/tokens/color/#rh-color-border-interactive-on-dark)
- - [`--rh-color-interactive-primary-hover-on-light`](/tokens/color/#rh-color-interactive-primary-hover-on-light)
- - [`--rh-color-interactive-primary-hover-on-dark`](/tokens/color/#rh-color-interactive-primary-hover-on-dark)
- - [`--rh-color-text-primary-on-light`](/tokens/color/#rh-color-text-primary-on-light)
- - [`--rh-color-text-primary-on-dark`](/tokens/color/#rh-color-text-primary-on-dark)
+- [`--rh-color-border-interactive-on-light`](/tokens/color/#rh-color-border-interactive-on-light)
+- [`--rh-color-border-interactive-on-dark`](/tokens/color/#rh-color-border-interactive-on-dark)
+- [`--rh-color-interactive-primary-hover-on-light`](/tokens/color/#rh-color-interactive-primary-hover-on-light)
+- [`--rh-color-interactive-primary-hover-on-dark`](/tokens/color/#rh-color-interactive-primary-hover-on-dark)
+- [`--rh-color-text-primary-on-light`](/tokens/color/#rh-color-text-primary-on-light)
+- [`--rh-color-text-primary-on-dark`](/tokens/color/#rh-color-text-primary-on-dark)
 
 For more information, please see the docs on [theming][theming] and
 [`<rh-tile>` css custom properties][css-props].
 
 <uxdot-pattern src="./patterns/custom-themes.html"
                target="custom-tiles">
+
   <h3 id="custom-tiles">Custom tiles</h3>
 </uxdot-pattern>
 
