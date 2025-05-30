@@ -1831,7 +1831,7 @@
   color values
 - c677b9e8: ✨ Added `<rh-pagination>`.
 
-  Pagination is a web component for navigating paginated content.
+  Pagination is a Web Component for navigating paginated content.
 
   ```html
   <rh-pagination>
@@ -2349,7 +2349,7 @@
 
 ### Minor Changes
 
-- c677b9e8: Added `<rh-pagination>`, a web component for navigating paginated content.
+- c677b9e8: Added `<rh-pagination>`, a Web Component for navigating paginated content.
 
   ```html
   <rh-pagination>
