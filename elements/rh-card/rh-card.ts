@@ -1,13 +1,13 @@
-import { SlotController } from "@patternfly/pfe-core/controllers/slot-controller.js";
-import { customElement } from "lit/decorators/custom-element.js";
-import { property } from "lit/decorators/property.js";
-import { classMap } from "lit/directives/class-map.js";
-import { html, LitElement } from "lit";
+import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
+import { customElement } from 'lit/decorators/custom-element.js';
+import { property } from 'lit/decorators/property.js';
+import { classMap } from 'lit/directives/class-map.js';
+import { html, LitElement } from 'lit';
 
-import { colorPalettes, type ColorPalette } from "@rhds/elements/lib/color-palettes.js";
-import { themable } from "@rhds/elements/lib/themable.js";
+import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
-import styles from "./rh-card.css";
+import styles from './rh-card.css';
 
 const PALETTE_RE = /(er|est)+/g;
 
@@ -33,7 +33,7 @@ const PALETTE_RE = /(er|est)+/g;
  * @csspart     footer
  *              The footer for the card. Contains the footer slot.
  * @cssprop     [--rh-card-border-color=var(--rh-border-color-subtle-on-light)]
- *              Computed from the color context. Intended to be read for
+ *              Computed from the colour context. Intended to be read for
  *              theming purposes, rather than set in page css.
  * @cssprop     [--rh-card-heading-font-family=var(--rh-font-family-heading)]
  *              The font family for headings in the header and body
@@ -42,8 +42,8 @@ const PALETTE_RE = /(er|est)+/g;
  * @cssprop     [--rh-card-heading-font-weight=var(--rh-font-weight-body-text-medium)]
  *              The font weight for headings in the header and body
  */
-@customElement("rh-card")
-@colorPalettes("lightest", "lighter", "darker", "darkest")
+@customElement('rh-card')
+@colorPalettes('lightest', 'lighter', 'darker', 'darkest')
 @themable
 export class RhCard extends LitElement {
   static styles = [styles];
@@ -54,95 +54,99 @@ export class RhCard extends LitElement {
    * Your theme will influence these colors so check there first if you are seeing inconsistencies.
    * See [CSS Custom Properties](#css-custom-properties) for default values
    */
-  @property({ reflect: true, attribute: "color-palette" }) colorPalette?: ColorPalette;
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   /**
    * Change the style of the card to be a "Promo"
    */
-  @property({ reflect: true }) variant?: "promo";
+  @property({ reflect: true }) variant?: 'promo';
 
   /**
    * Change a promo with an image + body + footer to use the `full-width` style
    */
-  @property({ reflect: true, attribute: "full-width", type: Boolean }) fullWidth? = false;
+  @property({ reflect: true, attribute: 'full-width', type: Boolean }) fullWidth? = false;
 
-  #slots = new SlotController(this, "header", "image", null, "footer");
+  #slots = new SlotController(this, 'header', 'image', null, 'footer');
 
-  #isPromo = this.variant === "promo";
+  #isPromo = this.variant === 'promo';
   #isStandardPromo = false;
 
   willUpdate() {
-    this.#isPromo = this.variant === "promo";
+    this.#isPromo = this.variant === 'promo';
     this.#isStandardPromo =
-      this.#isPromo &&
-      this.#slots.hasSlotted(null) &&
-      this.#slots.isEmpty("image") &&
-      this.#slots.isEmpty("header");
+         this.#isPromo
+      && this.#slots.hasSlotted(null)
+      && this.#slots.isEmpty('image')
+      && this.#slots.isEmpty('header');
   }
 
   get #computedPalette() {
     if (this.#isStandardPromo) {
-      return `${`${this.colorPalette ?? "lightest"}`.replace(PALETTE_RE, "")}er` as
-        | "lighter"
-        | "darker";
+      return `${`${this.colorPalette ?? 'lightest'}`.replace(PALETTE_RE, '')}er` as 'lighter' | 'darker';
     } else if (this.#isPromo) {
-      return `${`${this.colorPalette ?? "lightest"}`.replace(PALETTE_RE, "")}est` as
-        | "lightest"
-        | "darkest";
+      return `${`${this.colorPalette ?? 'lightest'}`.replace(PALETTE_RE, '')}est` as 'lightest' | 'darkest';
     } else {
       switch (this.colorPalette) {
-        case "lightest":
-        case "lighter":
-        case "darkest":
+        case 'lightest':
+        case 'lighter':
+        case 'darkest':
           return this.colorPalette;
-        case "light":
-          return "lighter";
-        case "darker":
-        case "dark":
-          return "darkest";
+        case 'light':
+          return 'lighter';
+        case 'darker':
+        case 'dark':
+          return 'darkest';
       }
     }
   }
 
+
   override render() {
-    const promo = this.variant === "promo";
+    const promo = this.variant === 'promo';
     const standard = this.#isStandardPromo;
     const computedPalette = this.#computedPalette;
-    const { variant = "" } = this;
-    const hasHeader = this.#slots.hasSlotted("header");
-    const hasFooter = this.#slots.hasSlotted("footer");
-    const hasImage = this.#slots.hasSlotted("image");
+    const { variant = '' } = this;
+    const hasHeader = this.#slots.hasSlotted('header');
+    const hasFooter = this.#slots.hasSlotted('footer');
+    const hasImage = this.#slots.hasSlotted('image');
     const hasBody = this.#slots.hasSlotted(null);
-    const header = html` <div id="header" part="header" class="${classMap({ empty: !hasHeader })}">
-      <slot name="header"></slot>
-    </div>`;
-    const footer = html` <div id="footer" part="footer" class="${classMap({ empty: !hasFooter })}">
-      <slot name="footer"></slot>
-    </div>`;
+    const header = html`
+      <div id="header"
+           part="header"
+           class="${classMap({ empty: !hasHeader })}">
+        <slot name="header"></slot>
+      </div>`;
+    const footer = html`
+      <div id="footer"
+           part="footer"
+           class="${classMap({ empty: !hasFooter })}">
+        <slot name="footer"></slot>
+      </div>`;
     return html`
-      <div
-        id="container"
-        part="container"
-        class="${classMap({
-          standard,
-          body: hasBody,
-          header: hasHeader,
-          footer: hasFooter,
-          image: hasImage,
-          [variant]: !!variant,
-          [computedPalette ?? ""]: !!computedPalette
-        })}"
-      >
-        ${promo ? "" : header}
-        <div id="image" part="image" class="${classMap({ empty: !hasImage })}">
+     <div id="container"
+          part="container"
+          class="${classMap({
+            standard,
+            body: hasBody,
+            header: hasHeader,
+            footer: hasFooter,
+            image: hasImage,
+            [variant]: !!variant,
+            [computedPalette ?? '']: !!computedPalette,
+          })}">${promo ? '' : header}
+        <div id="image"
+             part="image"
+             class="${classMap({ empty: !hasImage })}">
           <slot name="image"></slot>
         </div>
-        <div id="body" part="body" class="${classMap({ empty: !hasBody })}">
-          ${!promo ? "" : header}
+        <div id="body"
+             part="body"
+             class="${classMap({ empty: !hasBody })}">
+          ${!promo ? '' : header}
           <slot></slot>
-          ${!promo ? "" : footer}
+          ${!promo ? '' : footer}
         </div>
-        ${promo ? "" : footer}
+        ${promo ? '' : footer}
       </div>
     `;
   }
@@ -150,6 +154,6 @@ export class RhCard extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "rh-card": RhCard;
+    'rh-card': RhCard;
   }
 }

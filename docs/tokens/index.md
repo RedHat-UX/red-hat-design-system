@@ -192,10 +192,10 @@ websites, libraries, and tools.
 ## Naming tokens
 
 Design tokens are names based on how they are used. For example,
-`--rh-color-surface-lightest` is used as a background color in light color
+`--rh-color-surface-lightest` is used as a background colour in light color
 contexts. A clear and predictable name ensures that attributes are displayed
 correctly and any actions are communicated clearly. Tokens should be named by
-proceeding from the general to the specific, e.g. `color` (general), `surface`
+proceeding from the general to the specific, e.g. `colour` (general), `surface`
 (more specific), `lightest` (most specific).
 
 <uxdot-example width-adjustment="269px">
