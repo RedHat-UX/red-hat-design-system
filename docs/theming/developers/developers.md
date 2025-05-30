@@ -141,7 +141,7 @@ to compute theming tokens depending on the color scheme.
 );
 ```
 
-### Themable containers
+### Themeable containers
 
 In <abbr>RHDS</abbr>, elements such as `<rh-surface>`, `<rh-card>`, `<rh-tabs>`,
 and others are considered themable containers. Developers can provide custom

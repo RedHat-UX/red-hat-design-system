@@ -38,7 +38,7 @@ your GitHub issue or discussion into our workflow more easily.
 <div id="rhds-help-grid" class="grid sm-three-columns">
   <rh-tile>
     <h4 slot="headline"><a href="https://github.com/RedHat-UX/red-hat-design-system/issues/new?assignees=&labels=bug&projects=&template=1-bug-report.yml&title=%5Bbug%5D+%60%3Crh-component-name%3E%60+...">File a bug report</a></h4>
-    If something is broken in an existing Web Component, submit a bug report and describe the error as thoroughly as possible.
+    If something is broken in an existing web component, submit a bug report and describe the error as thoroughly as possible.
   </rh-tile>
   <rh-tile>
     <h4 slot="headline"><a href="https://github.com/RedHat-UX/red-hat-design-system/issues/new?assignees=&labels=feature%2Cdiscovery+needed&projects=&template=3-feature-request.yml&title=%5Bfeat%5D+%60%3Crh-component-name%3E%60+...">Request a feature or component</a></h4>

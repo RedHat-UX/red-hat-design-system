@@ -2,6 +2,7 @@
 
 Use a Switch to adjust settings or make a binary selection like on or off and true or false.
 
+
 ### Switch vs. other selection controls
 
 Deciding whether to use a Switch vs. other selection controls can be confusing. The table below summarizes questions and answers about these frequently used elements.
@@ -17,6 +18,7 @@ Deciding whether to use a Switch vs. other selection controls can be confusing. 
 | When does the selection take effect? | After a user selects a submit button | After a user selects a submit button | After a user selects a submit button | Immediately        |
 
 </rh-table>
+
 
 ## Variants
 
@@ -34,45 +36,50 @@ A Switch displays a state through different methods and locations.
        height="24">
 </uxdot-example>
 
+
 ## Using status messages
 
-Adding a custom status message is _not_ a requirement. By default, switches already indicate their state both graphically and to assistive tech (e.g., announcing “on” and “off” to screen readers when receiving focus or being toggled).
+Adding a custom status message is *not* a requirement. By default, switches already indicate their state both graphically and to assistive tech (e.g., announcing “on” and “off” to screen readers when receiving focus or being toggled).
 
 If you would like to add a status message, you can do so with the `message-on` and `message-off` attributes:
 
 Here's an example of a status message from a <a href="../demo/">Switch demo</a>:
 
 ```html rhcodeblock
-<rh-switch
-  id="switch-a"
-  accessible-label="Switch A"
-  message-on="Message when on"
-  message-off="Message when off"
-></rh-switch>
+<rh-switch id="switch-a"
+           accessible-label="Switch A"
+           message-on="Message when on"
+           message-off="Message when off"></rh-switch>
 ```
 
 If your status messages contain rich text, you may use the `message-on` and `message-off` slots instead:
 
 ```html rhcodeblock
-<rh-switch id="switch-a" accessible-label="Switch A" checked>
+<rh-switch id="switch-a"
+           accessible-label="Switch A"
+           checked>
   <span slot="message-on">Message when <strong>on</strong></span>
   <span slot="message-off">Message when <strong>off</strong></span>
 </rh-switch>
 ```
 
+
 ### Status messages vs. form labels
 
-Unlike a status message, a form label is required whenever Switch is used. A form label describes a Switch's purpose. There is no slot for a form label within the Web Component and has to be added separately.
+Unlike a status message, a form label is required whenever Switch is used. A form label describes a Switch's purpose. There is no slot for a form label within the web component and has to be added separately.
 
 <rh-cta href="../accessibility/#using-form-labels">Learn how to use form labels with Switch</rh-cta>
+
 
 ## Writing content
 
 In general, users scan and do not read everything, so use keywords and avoid long phrases and questions.
 
+
 ### Clarity of language
 
 The status message and form label should be short and direct, not neutral or ambiguous.
+
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
@@ -96,6 +103,7 @@ The status message and form label should be short and direct, not neutral or amb
   </uxdot-best-practice>
 </div>
 
+
 ### Character count
 
 The recommended maximum character count is listed below and includes spaces.
@@ -103,11 +111,12 @@ The recommended maximum character count is listed below and includes spaces.
 <rh-table>
 
 | Element               | Character count |
-| --------------------- | --------------- |
+|-----------------------|-----------------|
 | Switch status message | 20              |
 | Form label            | 30              |
 
 </rh-table>
+
 
 ## Layout
 
@@ -122,6 +131,7 @@ Use a stack of Switches for situations where multiple independent options need t
        height="168">
 </uxdot-example>
 
+
 ## Behavior
 
 A Switch is successfully toggled when the handle slides to the other side of the track and the status message changes. When a user toggles a Switch, the effects should start immediately without needing to save. If immediate results are not achievable, another element should be used instead (see table above in Usage section).
@@ -132,6 +142,7 @@ A Switch is successfully toggled when the handle slides to the other side of the
        width="319"
        height="24">
 </uxdot-example>
+
 
 ## Best practices
 
@@ -161,8 +172,8 @@ To avoid confusion as to what a Switch will do, always include some kind of stat
   </uxdot-best-practice>
 </div>
 
-<!-- Should this be added once we have toggle group available? -->
 
+<!-- Should this be added once we have toggle group available? -->
 ### Binary vs. opposing options
 
 A Switch controls binary options, not opposing ones. A binary option represents a single selection that is either on or off.
@@ -173,13 +184,13 @@ A Switch controls binary options, not opposing ones. A binary option represents 
         <img slot="header" src="" alt="">
         <h4 class="correct">Do</h4>
         <p>Use a Toggle group to choose between opposing options.</p>
-
+        
     </div>
     <div>
         <img slot="header" src="" alt="">
         <h4 class="wrong">Don't</h4>
         <p>Do not use a Switch to control opposing options.</p>
-
+        
     </div>
 </div>
 -->

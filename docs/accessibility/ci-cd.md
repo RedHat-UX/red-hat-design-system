@@ -13,18 +13,18 @@ tags:
 
 ## Accessibility tools for CI/CD pipelines
 
-Many Red Hat projects use continuous integration and continuous delivery
-pipelines to help deliver robust digital products to our users. There are
-several accessibility tools for CI/CD. The Red Hat Design System uses the [Chai
-A11y aXe][chaia11yaxe] module and [PatternFly Elements Tools][pfe-tools]'s
+Many Red Hat projects use continuous integration and continuous delivery 
+pipelines to help deliver robust digital products to our users. There are 
+several accessibility tools for CI/CD. The Red Hat Design System uses the [Chai 
+A11y aXe][chaia11yaxe] module and [PatternFly Elements Tools][pfe-tools]'s 
 a11ySnapshot feature, based on [Web Test Runner][wtr], for unit tests.
 
 ### Chai A11y aXe
 
-Chai A11y aXe is a plugin to perform automated accessibility tests via
-[aXe][axe] for the [Chai Assertion Library][chaiassertionlibrary]. Here's how to
-test and see if a Web Component in the Red Hat Design System passes aXe
-accessibility tests. In this example, we're going to use Chai A11y aXe with
+Chai A11y aXe is a plugin to perform automated accessibility tests via 
+[aXe][axe] for the [Chai Assertion Library][chaiassertionlibrary]. Here's how to 
+test and see if a web component in the Red Hat Design System passes aXe 
+accessibility tests. In this example, we're going to use Chai A11y aXe with 
 `<rh-tag>`:
 
 1. Follow the instructions to [Install the project][installtheproject].
@@ -35,7 +35,7 @@ accessibility tests. In this example, we're going to use Chai A11y aXe with
 1. You should see "1/1 test files | 1 passed, 0 failed" output to your terminal.
 1. Congrats, you just implemented aXe a11y tests into your testing pipeline! 🎉
 
-The aXe assertion from step 3 looks like this, add it anywhere inside the first
+The aXe assertion from step 3 looks like this, add it anywhere inside the first 
 `describe('<rh-tag>')` block:
 
 ```ts rh-code-block
@@ -44,21 +44,21 @@ it("should be accessible", async function () {
 });
 ```
 
-In this test, we called the Chai A11y aXe module and ran it against `<rh-tag>`
-to ensure `<rh-tag>` didn't fail any automated accessibility tests as reported
-by aXe. Every component in the Red Hat Design System should call and use Chai
+In this test, we called the Chai A11y aXe module and ran it against `<rh-tag>` 
+to ensure `<rh-tag>` didn't fail any automated accessibility tests as reported 
+by aXe. Every component in the Red Hat Design System should call and use Chai 
 A11y aXe to continuously verify accessibility in RHDS components.
 
-If you want to see what a failed test might look like, add something to
-`<rh-tag>` that aXe would flag for failing an accessibility test—like
-`tabindex="1234"`. Then, re-run the test (step 4). Your terminal will show
-"Error: Accessibility Violations" and provide more information about what failed
+If you want to see what a failed test might look like, add something to 
+`<rh-tag>` that aXe would flag for failing an accessibility test—like 
+`tabindex="1234"`. Then, re-run the test (step 4). Your terminal will show 
+"Error: Accessibility Violations" and provide more information about what failed 
 and how to fix it.
 
 ### a11ySnapshot
 
-Web Test Runner's [`a11ySnapshot` command][a11ysnapshotcommand] requests a
-snapshot of the accessibility tree built in the browser. Web component authors
+Web Test Runner's [`a11ySnapshot` command][a11ysnapshotcommand] requests a 
+snapshot of the accessibility tree built in the browser. Web component authors 
 can use `a11ySnapshot` to verify accessibility properties in unit tests.
 
 Here's how to integrate `a11ySnapshot` with `<rh-skip-link>`:
@@ -92,18 +92,18 @@ describe("when the element loads", function () {
 });
 ```
 
-In step three above, we're using `a11ySnapshot` and some custom Chai helpers to
-verify the [role][linkrole] of the link in the lightdom and ensure it has the
-name, "Skip to main content". Test writers can `console.log()` the contents of
-`a11ySnapshot` to see other properties to test against. Be sure to check the
-PatternFly Elements's source for a list of other [custom Chai accessibility
+In step three above, we're using `a11ySnapshot` and some custom Chai helpers to 
+verify the [role][linkrole] of the link in the lightdom and ensure it has the 
+name, "Skip to main content". Test writers can `console.log()` the contents of 
+`a11ySnapshot` to see other properties to test against. Be sure to check the 
+PatternFly Elements's source for a list of other [custom Chai accessibility 
 helpers][helpers] that are available to RHDS users.
 
-This is a very basic example of using `a11ySnapshot`. To see more complex
-examples, check out the tests for [`<rh-switch>`][rhswitch],
+This is a very basic example of using `a11ySnapshot`. To see more complex 
+examples, check out the tests for [`<rh-switch>`][rhswitch], 
 [`<rh-site-status>`][rhsitestatus], or [`<rh-icon>`][rhicon].
 
-For more information about testing, including how users should organize tests,
+For more information about testing, including how users should organize tests, 
 visit the [Testing page][testingpage] on our Wiki.
 
 [chaia11yaxe]: https://open-wc.org/docs/testing/chai-a11y-axe/
