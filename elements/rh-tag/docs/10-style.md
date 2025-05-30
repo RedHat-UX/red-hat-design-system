@@ -1,7 +1,7 @@
 ## Style
 
-A tag is text on a pill-shaped background. It comes in a variety of colors,
-styles, and sizes. The text may be linked or include an optional decorative
+A tag is text on a pill-shaped background. It comes in a variety of colors, 
+styles, and sizes. The text may be linked or include an optional decorative 
 icon.
 
 ### Anatomy
@@ -29,7 +29,7 @@ icon.
 There are three available tag styles: `Filled`, `Outlined`, and `Desaturated`.
 
 <uxdot-example color-palette="lightest" width-adjustment="231px">
-  <img alt="Image of 3 tags, a filled variant with a red background and red border, an outlined variant with a white background and red border, and a desaturated variant with a white background and dark gray border"
+  <img alt="Image of 3 tags, a filled variant with a red background and red border, an outlined variant with a white background and red border, and a desaturated variant with a white background and dark grey border"
        src="../tag-style-variants-style.svg"
        width="231"
        height="29">
@@ -37,7 +37,7 @@ There are three available tag styles: `Filled`, `Outlined`, and `Desaturated`.
 
 ### Color
 
-There are nine available tag colors. The Desaturated style uses only one color
+There are nine available tag colors. The Desaturated style uses only one color 
 for both the border and text.
 
 <uxdot-example color-palette="lightest" width-adjustment="558px">
@@ -49,7 +49,7 @@ for both the border and text.
 
 ### Size
 
-There are two available tag sizes. Each style and color has `Default` and
+There are two available tag sizes. Each style and color has `Default` and 
 `Compact` sizes.
 
 <uxdot-example color-palette="lightest" width-adjustment="539px">
@@ -96,13 +96,11 @@ Each tag style, color, and size can be text only or linked.
 </uxdot-example>
 
 ## Color scheme
-
 <a id="theme"></a>
 
 Each tag style, color, and size is available for both light and dark color schemes.
 
 ### Light scheme
-
 <a id="light-theme"></a>
 
 <uxdot-example color-palette="lightest" width-adjustment="738px">
@@ -113,7 +111,6 @@ Each tag style, color, and size is available for both light and dark color schem
 </uxdot-example>
 
 ### Dark scheme
-
 <a id="dark-theme"></a>
 
 <uxdot-example color-palette="darkest" width-adjustment="738px">
@@ -122,6 +119,7 @@ Each tag style, color, and size is available for both light and dark color schem
        width="738"
        height="253">
 </uxdot-example>
+
 
 ## Space
 
