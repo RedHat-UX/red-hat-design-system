@@ -61,7 +61,7 @@ consumers**).
 </div>
 
 Being aware of which elements are rendering in which color scheme is important 
-to ensure that things like icons, text, and border colours remain legible.
+to ensure that things like icons, text, and border colors remain legible.
 
 ## Color palettes
 <a id="what-are-color-palettes"></a>
@@ -132,7 +132,7 @@ Color palette containers can be nested, such that child elements will always
 adopt the color theme corresponding to the nearest container's palette.
 Extending our card example from above, if you add an
 `<rh-cta>` to the card, it will *automatically* adopt the dark color theme. The
-page author need not and should not customize the CTA's colours.
+page author need not and should not customize the CTA's colors.
 
 <uxdot-pattern class="card-snippet-grid"
                src="../patterns/card-child-consumers.html"
