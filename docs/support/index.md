@@ -30,7 +30,7 @@ Find the best method for getting your question to the team.
 
 ## Connect on GitHub
 
-The best way to get help or feedback is through GitHub. This allows us to pull
+The best way to get help or feedback is through GitHub. This allows us to pull 
 your GitHub issue or discussion into our workflow more easily.
 
 ### Design system help
@@ -50,6 +50,7 @@ your GitHub issue or discussion into our workflow more easily.
   </rh-tile>
 </div>
 
+
 ### Documentation and Figma help
 
 <div id="docs-help-grid" class="grid sm-three-columns">
@@ -67,13 +68,14 @@ your GitHub issue or discussion into our workflow more easily.
   </rh-tile>
 </div>
 
+
 ## Contact us
 
 <div id="contact-grid" class="grid sm-two-columns">
   <div>
     <h3>Find us on Slack <rh-tag color="red" variant="outline">Internal Red Hat users only</rh-tag></h3> 
     <p>We’re available at <strong>#red-hat-design-system</strong> for design, development, or accessibility questions.</p>
-    <p>Discussions about Web Components in general can be found in <strong>#list-web-components</strong>.</p>
+    <p>Discussions about web components in general can be found in <strong>#list-web-components</strong>.</p>
   </div>
   <div>
     <h3>Join office hours <rh-tag color="red" variant="outline">Internal Red Hat users only</rh-tag></h3>
