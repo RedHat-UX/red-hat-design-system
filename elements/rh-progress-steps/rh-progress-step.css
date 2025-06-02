@@ -1,0 +1,36 @@
+  :host {
+    display: block;
+  }
+
+  .progress-step {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--rh-space-md, 0.5rem);
+    cursor: default;
+  }
+
+  input[type="checkbox"] {
+    margin: 0;
+    opacity: 0;
+    position: absolute;
+  }
+
+  rh-icon {
+    width: var(--rh-space-xl, 1.5rem);
+    height: var(--rh-space-xl, 1.5rem);
+  }
+
+  .label {
+    font-weight: var(--rh-font-weight-heading-medium, 500);
+    color: var(--rh-color-text-primary-on-light, #151515);
+  }
+
+  .description {
+    margin: var(--rh-space-xs, 0.25rem) 0 0;
+    color: var(--rh-color-text-secondary-on-light, #4a4a4a);
+    font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+  }
+
+  :host([state="inactive"]) .label {
+    color: var(--rh-color-text-disabled-on-light, #6a6e73);
+  }

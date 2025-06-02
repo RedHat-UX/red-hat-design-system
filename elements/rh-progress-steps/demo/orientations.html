@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Progress Steps - Orientations</title>
+  <script type="module" src="../src/index.js"></script>
+  <style>
+    body {
+      padding: 2rem;
+      font-family: var(--rh-font-family-body-text, "RedHatText", "Overpass", Overpass, Helvetica, Arial, sans-serif);
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .demo-section {
+      margin-bottom: 3rem;
+    }
+    h2 {
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Progress Steps - Orientations</h1>
+    
+    <div class="demo-section">
+      <h2>Horizontal Orientation (Default)</h2>
+      <rh-progress-steps>
+        <rh-progress-step
+          state="complete"
+          label="Step 1"
+          description="This step is complete"
+        ></rh-progress-step>
+        
+        <rh-progress-step
+          state="active"
+          label="Step 2"
+          description="Currently working on this step"
+        ></rh-progress-step>
+        
+        <rh-progress-step
+          state="inactive"
+          label="Step 3"
+          description="This step is not yet started"
+        ></rh-progress-step>
+      </rh-progress-steps>
+    </div>
+
+    <div class="demo-section">
+      <h2>Vertical Orientation</h2>
+      <rh-progress-steps orientation="vertical">
+        <rh-progress-step
+          state="complete"
+          label="Step 1"
+          description="This step is complete"
+        ></rh-progress-step>
+        
+        <rh-progress-step
+          state="active"
+          label="Step 2"
+          description="Currently working on this step"
+        ></rh-progress-step>
+        
+        <rh-progress-step
+          state="inactive"
+          label="Step 3"
+          description="This step is not yet started"
+        ></rh-progress-step>
+      </rh-progress-steps>
+    </div>
+
+    <div class="demo-section">
+      <h2>Responsive Behavior</h2>
+      <p>On mobile devices (width < 768px), the steps will automatically switch to vertical orientation for better readability.</p>
+      <rh-progress-steps>
+        <rh-progress-step
+          state="complete"
+          label="Step 1"
+          description="This step is complete"
+        ></rh-progress-step>
+        
+        <rh-progress-step
+          state="active"
+          label="Step 2"
+          description="Currently working on this step"
+        ></rh-progress-step>
+        
+        <rh-progress-step
+          state="inactive"
+          label="Step 3"
+          description="This step is not yet started"
+        ></rh-progress-step>
+      </rh-progress-steps>
+    </div>
+  </div>
+</body>
+</html> 

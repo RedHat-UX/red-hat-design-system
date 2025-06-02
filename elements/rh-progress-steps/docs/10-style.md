@@ -1,3 +1,79 @@
+# Style Guide
+
+## Colors
+
+The Progress Steps component uses the following color variables for different states:
+
+| State | Color Variable | Description |
+|-------|----------------|-------------|
+| Inactive | `--rh-color-gray-30` | Default state color |
+| Active | `--rh-color-status-note` | Current step color |
+| Complete | `--rh-color-status-success` | Success state color |
+| Warning | `--rh-color-yellow-50` | Warning state color |
+| Fail | `--rh-color-status-danger` | Error state color |
+
+## Typography
+
+The component uses the following typography variables:
+
+| Element | Variable | Default |
+|---------|----------|---------|
+| Label | `--rh-font-weight-heading-medium` | 500 |
+| Description | `--rh-font-size-body-text-sm` | 0.875rem |
+
+## Spacing
+
+The component uses the following spacing variables:
+
+| Element | Variable | Default |
+|---------|----------|---------|
+| Steps gap | `--rh-space-lg` | 1rem |
+| Step elements gap | `--rh-space-md` | 0.5rem |
+| Description margin | `--rh-space-xs` | 0.25rem |
+
+## Icons
+
+The component uses the following default icons from the UI set:
+
+| State | Icon Name |
+|-------|-----------|
+| Inactive | `harvey-ball-0` |
+| Active | `resources-full` |
+| Complete | `check-circle-fill` |
+| Warning | `error-fill` |
+| Fail | `ban-fill` |
+
+Icon size is controlled by:
+- Width: `--rh-space-xl` (1.5rem)
+- Height: `--rh-space-xl` (1.5rem)
+
+## CSS Custom Properties
+
+You can customize the appearance of the Progress Steps component using the following CSS custom properties:
+
+```css
+rh-progress-steps {
+  /* Container styles */
+  --rh-space-lg: 1rem; /* Gap between steps */
+}
+
+rh-progress-step {
+  /* Step styles */
+  --rh-space-md: 0.5rem; /* Gap between step elements */
+  --rh-space-xl: 1.5rem; /* Icon size */
+  --rh-space-xs: 0.25rem; /* Description margin */
+  
+  /* Typography */
+  --rh-font-weight-heading-medium: 500;
+  --rh-font-size-body-text-sm: 0.875rem;
+  
+  /* Colors */
+  --rh-color-text-primary-on-light: #151515;
+  --rh-color-text-secondary-on-light: #4a4a4a;
+  --rh-color-text-disabled-on-light: #6a6e73;
+}
+```
+
 ## Style
 
 Progress steps contain **at least three** step indicators. They are positioned
