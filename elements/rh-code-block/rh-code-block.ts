@@ -294,10 +294,9 @@ export class RhCodeBlock extends LitElement {
    * Portions copyright prism.js authors (MIT license)
    */
   async #computeLineNumbers() {
-    // if (this.lineNumbers === 'hidden') {
-    //   return;
-    // }
-    // console.log(this.lineNumbers);
+    if (this.lineNumbers === 'hidden') {
+      return;
+    }
     await this.updateComplete;
     const codes =
         this.#prismOutput ? [this.shadowRoot?.getElementById('prism-output')].filter(x => !!x)
