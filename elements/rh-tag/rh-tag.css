@@ -61,6 +61,7 @@ a {
     content: '';
     inset: calc(var(--rh-space-xs, 4px) - 1px) calc(var(--rh-space-md, 8px) - 1px);
     outline: var(--rh-border-width-md, 2px) solid var(--rh-color-border-interactive);
+    pointer-events: none;
     position: absolute;
   }
 
