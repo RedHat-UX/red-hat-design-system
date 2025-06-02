@@ -143,6 +143,9 @@ export class RhCodeBlock extends LitElement {
   /** When set, lines in the code snippet wrap */
   @property({ type: Boolean }) wrap = false;
 
+  /** When set to `hidden`, the code block's line numbers are hidden */
+  @property({ reflect: true, attribute: 'line-numbers' }) lineNumbers?: 'hidden';
+
   #slots = new SlotController(
     this,
     null,
