@@ -10,6 +10,11 @@ rh-tile a {
 rh-tile:focus-within a,
 rh-tile a:is(:focus, :hover, :active) {
   text-decoration: var(--rh-tile-link-text-decoration, underline) !important;
+  text-decoration-color: inherit !important;
+  text-decoration-style: dashed !important;
+  text-decoration-thickness: 1px !important;
+  text-underline-offset: max(5px, 0.28em) !important;
+  transition: ease all 0.3s !important;
 }
 
 rh-tile a:not([slot='image'], [slot='headline']) {

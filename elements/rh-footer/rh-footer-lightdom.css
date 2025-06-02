@@ -5,17 +5,45 @@
 
 :is(rh-footer, rh-footer-universal) a:hover {
   color: var(--rh-color-interactive-primary-hover);
-  text-decoration: underline;
+  text-decoration: underline dashed 1px;
+  text-decoration-color: inherit;
+  text-underline-offset: max(5px, 0.28em);
+  transition: ease all 0.3s;
 }
 
 :is(rh-footer, rh-footer-universal) a:is(:focus, :focus-within) {
   color: var(--rh-color-interactive-primary-hover);
-  text-decoration: underline;
+  text-decoration: underline dashed 1px;
+  text-decoration-color: inherit;
+  text-underline-offset: max(5px, 0.28em);
+  transition: ease all 0.3s;
 }
 
 :is(rh-footer, rh-footer-universal) a:visited {
   color: var(--rh-color-interactive-primary-hover);
   text-decoration: none;
+}
+
+/* adds underlines to inline links in rh-footer-block only */
+:is(rh-footer, rh-footer-universal) :is(rh-footer-block) a {
+  text-decoration: underline 1px dashed;
+  text-decoration-color: light-dark(var(--rh-color-gray-50), var(--rh-color-gray-40)) !important;
+  text-underline-offset: max(5px, 0.28em);
+  transition: ease all 0.3s;
+}
+
+:is(rh-footer, rh-footer-universal) :is(rh-footer-block) a:hover {
+  text-decoration-color: inherit !important;
+  text-underline-offset: max(6px, 0.33em);
+}
+
+:is(rh-footer, rh-footer-universal) :is(rh-footer-block) a:is(:focus, :focus-within) {
+  text-decoration-color: inherit !important;
+  text-underline-offset: max(6px, 0.33em);
+}
+
+:is(rh-footer, rh-footer-universal) :is(rh-footer-block) a:visited {
+  text-decoration-color: inherit;
 }
 
 /* ensure links fully wrap img tags */
