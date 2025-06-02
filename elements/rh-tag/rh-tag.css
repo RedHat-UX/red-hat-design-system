@@ -56,6 +56,10 @@ a {
     }
   }
 
+  &:has(a:active) {
+    cursor: pointer;
+  }
+
   &:has(a:focus-visible, a:active):after {
     border-radius: var(--rh-border-radius-default, 3px);
     content: '';
