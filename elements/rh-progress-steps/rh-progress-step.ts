@@ -58,13 +58,13 @@ export class RhProgressStep extends LitElement {
       <label class="progress-step">
         <input type="checkbox" ?checked=${this.state === 'complete'} disabled />
         <rh-icon
-          name="${this.getIconName()}"
-          icon-set="${this.state === 'custom' ? this.customIconSet : 'ui'}"
+          icon="${this.getIconName()}"
+          set="${this.state === 'custom' ? this.customIconSet : 'ui'}"
           style="color: ${this.getIconColor()}"
         ></rh-icon>
         <span class="label">${this.label}</span>
-        ${this.description ? html`<p class="description">${this.description}</p>` : ''}
       </label>
+      ${this.description ? html`<p class="description">${this.description}</p>` : ''}
     `;
   }
 }

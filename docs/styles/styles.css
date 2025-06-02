@@ -39,10 +39,21 @@
 
   a {
     color: var(--rh-color-interactive-primary-default);
-    &:hover { color: var(--rh-color-interactive-primary-hover); }
+    text-decoration: underline dashed 1px;
+    text-decoration-color: light-dark(var(--rh-color-gray-50), var(--rh-color-gray-40));
+    text-underline-offset: max(5px, 0.28em);
+    transition: ease all 0.3s;
+
+    &:hover {
+      color: var(--rh-color-interactive-primary-hover);
+      text-decoration-color: inherit;
+      text-underline-offset: max(6px, 0.33em);
+    }
 
     &:focus-within {
       color: var(--rh-color-interactive-primary-focus);
+      text-decoration-color: inherit;
+      text-underline-offset: max(6px, 0.33em);
       &:hover { color: var(--rh-color-interactive-primary-focus); }
     }
 
@@ -247,7 +258,9 @@
 
   :where(code:not([class^='language-'])) {
     padding-inline: var(--rh-space-xs);
-    background: oklch(from var(--rh-color-surface) calc(l - 0.05) c h);
+    background:
+      light-dark(oklch(from var(--rh-color-surface) calc(l - 0.05) c h),
+        oklch(from var(--rh-color-surface) calc(l + 0.1) c h));
     border-radius: var(--rh-border-radius-default);
     font-size: var(--rh-font-size-code-md);
     font-weight: var(--rh-font-weight-code-regular);
