@@ -262,7 +262,8 @@ input:invalid:focus {
   color: var(--_numeric-a-color-focus);
   outline: var(--rh-border-width-md, 2px) solid transparent;
   outline-color: var(--_numeric-a-color-focus-outline);
-  text-decoration: underline;
+  text-decoration-color: inherit;
+  text-underline-offset: max(6px, 0.33em);
 }
 
 #numeric a:visited:hover {
