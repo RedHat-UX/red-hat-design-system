@@ -41,6 +41,10 @@ summary {
     font-size: var(--rh-font-size-body-text-md, 1rem) !important;
     font-weight: var(--rh-font-weight-body-text-medium, 500);
   }
+
+  & ::slotted([slot='summary']:is(h1,h2,h3,h4,h5,h6)) {
+    display: inline;
+  }
 }
 
 #caret {
@@ -86,10 +90,8 @@ details[open] {
     inset-inline-start: -1px;
     inset-block: -1px;
   }
-}
 
-:host(:has(rh-jump-links)) {
-  details[open]:before {
-    border: 21px solid yellow;
+  &.has-jump-links:before {
+    border-inline-start-color: transparent;
   }
 }
