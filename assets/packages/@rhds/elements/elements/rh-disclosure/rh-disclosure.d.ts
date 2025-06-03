@@ -34,9 +34,11 @@ export declare class RhDisclosure extends LitElement {
      * Sets the disclosure title via an attribute
      */
     summary?: string;
+    private hasJumpLinks;
     private detailsEl;
     private summaryEl;
     render(): import("lit-html").TemplateResult<1>;
+    protected _openChanged(): void;
 }
 declare global {
     interface HTMLElementTagNameMap {

@@ -1,5 +1,7 @@
 import { LitElement, type TemplateResult } from 'lit';
 /**
+ * @cssprop  {<length>} [--rh-jump-link-max-width=320px]
+ *           max-width for each vertical jump link
  */
 export declare class RhJumpLink extends LitElement {
     #private;
