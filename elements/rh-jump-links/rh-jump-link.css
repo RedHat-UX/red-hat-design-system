@@ -9,7 +9,6 @@ a {
   text-decoration: none;
   display: inline-block;
   box-sizing: border-box;
-  max-width: var(--rh-jump-link-max-width, calc(var(--rh-length-md, 8px) * 40));
   white-space: normal;
   overflow-wrap: break-word;
 
@@ -25,7 +24,7 @@ a {
       calc(var(--rh-space-lg, 16px) + var(--_padding-inline-start, 0px))
       var(--rh-space-lg, 16px);
     border-inline-start: var(--_bdr);
-    max-width: var(--rh-jump-link-max-width, calc(var(--rh-length-md, 8px) * 25));
+    max-width: var(--rh-jump-link-max-width, calc(var(--rh-length-md, 8px) * 40));
   }
 
   &.horizontal {
