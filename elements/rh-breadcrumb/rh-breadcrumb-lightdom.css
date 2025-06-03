@@ -116,7 +116,6 @@ rh-breadcrumb {
     min-inline-size: var(--rh-length-xl, 24px);
     padding: 0;
     text-decoration: none;
-
     &:hover,
     &:focus {
       color: var(--_breadcrumb-link-color-hover);
