@@ -344,7 +344,7 @@ export class RhCodeBlock extends LitElement {
     const infos: CodeLineHeightsInfo[] = codes.map(element => {
       const codeElement = this.#prismOutput ? element.querySelector('code') : element;
       if (codeElement) {
-        const sizer =.createElement('span');
+        const sizer = document.createElement('span');
         sizer.className = 'sizer';
         sizer.innerText = '0';
         sizer.style.display = 'block';
