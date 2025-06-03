@@ -22,7 +22,7 @@ import { type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
  * @csspart     footer
  *              The footer for the card. Contains the footer slot.
  * @cssprop     [--rh-card-border-color=var(--rh-border-color-subtle-on-light)]
- *              Computed from the colour context. Intended to be read for
+ *              Computed from the color context. Intended to be read for
  *              theming purposes, rather than set in page css.
  * @cssprop     [--rh-card-heading-font-family=var(--rh-font-family-heading)]
  *              The font family for headings in the header and body

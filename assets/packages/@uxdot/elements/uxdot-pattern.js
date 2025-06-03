@@ -30,7 +30,7 @@ let UxdotPattern = class UxdotPattern extends SSRFailureRecoverableElement {
         this.noCodeTabs = false;
         /** Should the code blocks be expanded? */
         this.fullHeight = false;
-        /** Which colour palettes should be allowed in the picker? (default: all) */
+        /** Which color palettes should be allowed in the picker? (default: all) */
         this.allow = paletteNames;
         _UxdotPattern_picked.set(this, false);
         this.ssr = new UxdotPatternSSRController(this);

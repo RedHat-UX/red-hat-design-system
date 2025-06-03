@@ -25,7 +25,7 @@ export declare class UxdotPattern extends SSRFailureRecoverableElement {
     fullHeight: boolean;
     /** Should the code blocks be expanded? */
     activeTab?: 'html' | 'css' | 'js';
-    /** Which colour palettes should be allowed in the picker? (default: all) */
+    /** Which color palettes should be allowed in the picker? (default: all) */
     allow: ("light" | "lighter" | "lightest" | "dark" | "darker" | "darkest")[];
     ssr: import("./uxdot-pattern-ssr-controller-client.js").UxdotPatternSSRControllerClient | import("./uxdot-pattern-ssr-controller-server.js").UxdotPatternSSRControllerServer;
     render(): import("lit-html").TemplateResult<1>;
