@@ -109,6 +109,11 @@ export class RhTag extends LitElement {
     return html`<slot id="text"></slot>`;
   }
 
+  #onKeyDown(event: KeyboardEvent): void {
+    if (this.disabled && event.key === 'Enter') {
+      event.preventDefault();
+    }
+  }
 }
 
 export type TagColor = RhTag['color'];
