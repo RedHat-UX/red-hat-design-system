@@ -1,5 +1,11 @@
 # @rhds/elements
 
+## 3.0.3
+### Patch Changes
+
+- 7c845cd: `<rh-navigation-primary>`: prevent an error from being thrown in certain circumstances when the element connects
+- 4ae9221: `<rh-code-block>`: improve performance of line numbers
+
 ## 3.0.2
 ### Patch Changes
 
