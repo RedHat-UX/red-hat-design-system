@@ -1,4 +1,4 @@
-var _RhCodeBlock_instances, _RhCodeBlock_slots, _RhCodeBlock_prismOutput, _RhCodeBlock_ro, _RhCodeBlock_lineHeights, _RhCodeBlock_onSlotChange, _RhCodeBlock_applyPrismPrerenderedStyles, _RhCodeBlock_highlightWithPrism, _RhCodeBlock_wrapChanged, _RhCodeBlock_getSlottedCodeElements, _RhCodeBlock_getFabContentElements, _RhCodeBlock_computeLineNumbers, _RhCodeBlock_onActionsClick, _RhCodeBlock_onActionsKeyup, _RhCodeBlock_onCodeAction, _RhCodeBlock_onClickExpand, _RhCodeBlock_copy;
+var _RhCodeBlock_instances, _RhCodeBlock_slots, _RhCodeBlock_prismOutput, _RhCodeBlock_isIntersecting, _RhCodeBlock_io, _RhCodeBlock_ro, _RhCodeBlock_lineHeights, _RhCodeBlock_onSlotChange, _RhCodeBlock_applyPrismPrerenderedStyles, _RhCodeBlock_highlightWithPrism, _RhCodeBlock_wrapChanged, _RhCodeBlock_getSlottedCodeElements, _RhCodeBlock_getFabContentElements, _RhCodeBlock_computeLineNumbers, _RhCodeBlock_onActionsClick, _RhCodeBlock_onActionsKeyup, _RhCodeBlock_onCodeAction, _RhCodeBlock_onClickExpand, _RhCodeBlock_copy;
 var RhCodeBlock_1;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { CSSResult, LitElement, html, isServer } from 'lit';
@@ -73,17 +73,26 @@ let RhCodeBlock = RhCodeBlock_1 = class RhCodeBlock extends LitElement {
         this.wrap = false;
         _RhCodeBlock_slots.set(this, new SlotController(this, null, 'action-label-copy', 'action-label-wrap', 'show-more', 'show-less', 'legend'));
         _RhCodeBlock_prismOutput.set(this, void 0);
+        _RhCodeBlock_isIntersecting.set(this, false);
+        _RhCodeBlock_io.set(this, new IntersectionObserver(rs => {
+            __classPrivateFieldSet(this, _RhCodeBlock_isIntersecting, rs.some(r => r.isIntersecting), "f");
+            __classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_computeLineNumbers).call(this);
+        }, { rootMargin: '50% 0px' }));
         _RhCodeBlock_ro.set(this, new ResizeObserver(() => __classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_computeLineNumbers).call(this)));
         _RhCodeBlock_lineHeights.set(this, []);
     }
     connectedCallback() {
         super.connectedCallback();
-        __classPrivateFieldGet(this, _RhCodeBlock_ro, "f").observe(this);
+        if (!isServer) {
+            __classPrivateFieldGet(this, _RhCodeBlock_ro, "f").observe(this);
+            __classPrivateFieldGet(this, _RhCodeBlock_io, "f").observe(this);
+        }
         __classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_onSlotChange).call(this);
     }
     disconnectedCallback() {
         super.disconnectedCallback();
         __classPrivateFieldGet(this, _RhCodeBlock_ro, "f").disconnect();
+        __classPrivateFieldGet(this, _RhCodeBlock_io, "f").disconnect();
     }
     render() {
         const { fullHeight, wrap, resizable, compact } = this;
@@ -158,6 +167,8 @@ let RhCodeBlock = RhCodeBlock_1 = class RhCodeBlock extends LitElement {
 };
 _RhCodeBlock_slots = new WeakMap();
 _RhCodeBlock_prismOutput = new WeakMap();
+_RhCodeBlock_isIntersecting = new WeakMap();
+_RhCodeBlock_io = new WeakMap();
 _RhCodeBlock_ro = new WeakMap();
 _RhCodeBlock_lineHeights = new WeakMap();
 _RhCodeBlock_instances = new WeakSet();
@@ -234,6 +245,9 @@ _RhCodeBlock_computeLineNumbers =
  * Portions copyright prism.js authors (MIT license)
  */
 async function _RhCodeBlock_computeLineNumbers() {
+    if (!__classPrivateFieldGet(this, _RhCodeBlock_isIntersecting, "f")) {
+        return;
+    }
     await this.updateComplete;
     const codes = __classPrivateFieldGet(this, _RhCodeBlock_prismOutput, "f") ? [this.shadowRoot?.getElementById('prism-output')].filter(x => !!x)
         : __classPrivateFieldGet(this, _RhCodeBlock_instances, "m", _RhCodeBlock_getSlottedCodeElements).call(this);
