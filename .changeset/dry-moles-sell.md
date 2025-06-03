@@ -2,8 +2,8 @@
 "@rhds/elements": minor
 ---
 
-`<rh-tag>`: add `button` variant and increase link + button affordance
+`<rh-tag>`: add disabled, hover, focus, and active states to linked tags
 
 ```html
-<rh-tag button>Engage cluster</rh-tag>
+<rh-tag href="/engage">Engage cluster</rh-tag>
 ```
