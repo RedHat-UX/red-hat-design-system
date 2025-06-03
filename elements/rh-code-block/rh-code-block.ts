@@ -155,19 +155,29 @@ export class RhCodeBlock extends LitElement {
 
   #prismOutput?: DirectiveResult;
 
+  #isIntersecting = false;
+  #io = new IntersectionObserver(rs => {
+    this.#isIntersecting = rs.some(r => r.isIntersecting);
+    this.#computeLineNumbers();
+  }, { rootMargin: '50% 0px' });
+
   #ro = new ResizeObserver(() => this.#computeLineNumbers());
 
   #lineHeights: `${string}px`[] = [];
 
   override connectedCallback() {
     super.connectedCallback();
-    this.#ro.observe(this);
+    if (!isServer) {
+      this.#ro.observe(this);
+      this.#io.observe(this);
+    }
     this.#onSlotChange();
   }
 
   override disconnectedCallback() {
     super.disconnectedCallback();
     this.#ro.disconnect();
+    this.#io.disconnect();
   }
 
   render() {
@@ -320,6 +330,9 @@ export class RhCodeBlock extends LitElement {
    * Portions copyright prism.js authors (MIT license)
    */
   async #computeLineNumbers() {
+    if (!this.#isIntersecting) {
+      return;
+    }
     await this.updateComplete;
     const codes =
         this.#prismOutput ? [this.shadowRoot?.getElementById('prism-output')].filter(x => !!x)

@@ -8,6 +8,7 @@ import tsBlankSpace from 'ts-blank-space';
 import chalk from 'chalk';
 
 import { register } from 'node:module';
+import { fileURLToPath } from 'node:url';
 import type { Options } from '#11ty-plugins/rhds.js';
 
 export interface RenderRequestMessage {
@@ -48,7 +49,7 @@ export default async function(
   if (imports?.length) {
     eleventyConfig.on('eleventy.before', async function() {
       await redactTSFileInPlace('./worker.ts');
-      const filename = new URL('worker.js', import.meta.url).pathname;
+      const filename = fileURLToPath(new URL('worker.js', import.meta.url));
       pool = new Piscina({
         filename,
         workerData: {
