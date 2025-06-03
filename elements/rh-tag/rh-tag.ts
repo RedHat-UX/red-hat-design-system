@@ -109,19 +109,6 @@ export class RhTag extends LitElement {
     return html`<slot id="text"></slot>`;
   }
 
-  protected async formDisabledCallback() {
-    await this.updateComplete;
-    this.requestUpdate();
-  }
-
-  #onKeyDown(event: KeyboardEvent): void {
-    if (this.disabled && event.key === 'Enter') {
-      event.preventDefault();
-    }
-    if (this.disabled && event.key === ' ') {
-      event.preventDefault();
-    }
-  }
 }
 
 export type TagColor = RhTag['color'];
