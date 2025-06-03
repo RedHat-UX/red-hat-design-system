@@ -1,4 +1,8 @@
 <rh-code-block actions="wrap copy">
+  <span slot="action-label-copy">העתק</span>
+  <span slot="action-label-copy" hidden data-code-block-state="active">הועתק!</span>
+  <span slot="action-label-wrap">לעבור לגלישת שורות</span>
+  <span slot="action-label-wrap" hidden data-code-block-state="active">לעבור להצפת שורות</span>
 <script type="text/css">#content {
   display: block;
   background-color: var(--rh-color-surface-lighter, #f2f2f2);
@@ -19,6 +23,7 @@
 <script type="module">
   import '@rhds/elements/rh-button/rh-button.js';
   import '@rhds/elements/rh-code-block/rh-code-block.js';
+  import '@rhds/elements/rh-tooltip/rh-tooltip.js';
 </script>
 
 <style>
