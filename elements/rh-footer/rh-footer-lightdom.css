@@ -3,6 +3,28 @@
   text-decoration: none;
 }
 
+:is(rh-footer, rh-footer-universal) :is(rh-footer-block) a {
+  text-decoration: underline 1px dashed;
+  text-decoration-color: light-dark(var(--rh-color-gray-50), var(--rh-color-gray-40)) !important;
+  text-underline-offset: max(5px, 0.28em);
+  transition: ease all 0.3s;
+}
+
+rh-footer [slot^='links'] a {
+  gap: var(--rh-footer-links-gap, var(--rh-space-md, 8px));
+}
+
+:is(rh-footer, rh-footer-universal) [slot^='links'] a {
+  display: block;
+  color: var(--rh-color-text-primary) !important;
+  font-size: var(--rh-footer-link-font-size, var(--rh-font-size-body-text-sm, 0.875rem));
+  width: fit-content;
+}
+
+rh-footer-universal [slot^='links'] a {
+  font-size: inherit;
+}
+
 :is(rh-footer, rh-footer-universal) a:hover {
   color: var(--rh-color-interactive-primary-hover);
   text-decoration: underline dashed 1px;
@@ -25,12 +47,6 @@
 }
 
 /* adds underlines to inline links in rh-footer-block only */
-:is(rh-footer, rh-footer-universal) :is(rh-footer-block) a {
-  text-decoration: underline 1px dashed;
-  text-decoration-color: light-dark(var(--rh-color-gray-50), var(--rh-color-gray-40)) !important;
-  text-underline-offset: max(5px, 0.28em);
-  transition: ease all 0.3s;
-}
 
 :is(rh-footer, rh-footer-universal) :is(rh-footer-block) a:hover {
   text-decoration-color: inherit !important;
@@ -68,25 +84,10 @@ rh-footer [slot='links']:is(h1, h2, h3, h4, h5):nth-of-type(n+5) {
   --_link-header-margin: calc(var(--rh-space-2xl, 32px) - var(--rh-space-lg, 16px));
 }
 
-rh-footer [slot^='links'] a {
-  gap: var(--rh-footer-links-gap, var(--rh-space-md, 8px));
-}
-
 :is(rh-footer, rh-footer-universal) [slot^='links'] li {
   margin: 0;
   padding: 0;
   display: contents;
-}
-
-:is(rh-footer, rh-footer-universal) [slot^='links'] a {
-  display: block;
-  color: var(--rh-color-text-primary) !important;
-  font-size: var(--rh-footer-link-font-size, var(--rh-font-size-body-text-sm, 0.875rem));
-  width: fit-content;
-}
-
-rh-footer-universal [slot^='links'] a {
-  font-size: inherit;
 }
 
 /**
