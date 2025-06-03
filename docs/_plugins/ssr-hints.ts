@@ -1,4 +1,3 @@
-
 import type { UserConfig } from '@11ty/eleventy';
 
 import { parse, serialize } from 'parse5';
@@ -7,6 +6,7 @@ import {
   type Element,
   isElementNode,
   getAttribute,
+  getTextContent,
   hasAttribute,
   isCommentNode,
   isDocument,
@@ -15,10 +15,27 @@ import {
   isTextNode,
   queryAll,
   setAttribute,
+  type TextNode,
 } from '@parse5/tools';
 import type { Options } from './rhds.js';
+import type { TransformContext } from '@11ty/eleventy/src/UserConfig.js';
+import type { RHDSSSRController } from 'lib/ssr-controller.js';
 
+function isLengthyTextNode(node: Node): node is TextNode {
+  return isTextNode(node) && !!getTextContent(node).trim();
+}
+
+function isUnslottedElement(node: Node): node is Element {
+  return isElementNode(node) && !hasAttribute(node, 'slot');
+}
+
+/**
+ * inject ssr hints into elements which need them (per config)
+ * @param node
+ * @param options
+ */
 export function injectSSRHintAttributes(
+  this: TransformContext | RHDSSSRController,
   node: Node,
   options?: Pick<Options, 'slotControllerElements'>,
 ): void {
@@ -29,21 +46,21 @@ export function injectSSRHintAttributes(
 
   for (const element of queryAll<Element>(node, isSlotControllerNode)) {
     const slots = new Set();
-    let foundDefault = false;
-    for (const node of queryAll(element)) {
+    let foundDefault: Node | null = null;
+    for (const node of element.childNodes) {
       if (isDocument(node)
           || isDocumentFragment(node)
           || isCommentNode(node)
           || isDocumentTypeNode(node)) {
         continue;
-      } else if (isTextNode(node) || !hasAttribute(node, 'slot')) {
-        foundDefault = true;
-      } else if (hasAttribute(node, 'slot')) {
+      } else if (isLengthyTextNode(node) || isUnslottedElement(node)) {
+        foundDefault = node;
+      } else if (isElementNode(node) && hasAttribute(node, 'slot')) {
         slots.add(getAttribute(node, 'slot'));
       }
     }
     if (foundDefault) {
-      setAttribute(element, 'ssr-hint-has-slotted-default', 'true');
+      setAttribute(element, 'ssr-hint-has-slotted-default', '');
     }
     if (slots.size) {
       setAttribute(element, 'ssr-hint-has-slotted', [...slots].join());
@@ -60,10 +77,10 @@ export default function(
   eleventyConfig: UserConfig,
   pluginOpts?: Options,
 ) {
-  eleventyConfig.addTransform('rhds-ssr-hints', function(content: string) {
+  eleventyConfig.addTransform('rhds-ssr-hints', function(this: TransformContext, content: string) {
     const document = parse(content);
 
-    injectSSRHintAttributes(document, pluginOpts);
+    injectSSRHintAttributes.call(this, document, pluginOpts);
 
     return serialize(document);
   });

@@ -87,9 +87,20 @@
     gap: var(--rh-space-lg);
     align-items: center;
     color: var(--rh-color-text-primary-on-dark, #ffffff) !important;
+    text-decoration: underline dashed 1px;
+    text-decoration-color: light-dark(var(--rh-color-gray-50), var(--rh-color-gray-40));
+    text-underline-offset: max(5px, 0.28em);
+    transition: ease all 0.3s;
 
     &:is(:hover, :focus) {
       color: var(--rh-color-icon-subtle-hover, #a3a3a3) !important;
+      text-decoration-color: inherit;
+      text-underline-offset: max(6px, 0.33em);
+    }
+
+    &:focus-within {
+      text-decoration-color: inherit;
+      text-underline-offset: max(6px, 0.33em);
     }
   }
 

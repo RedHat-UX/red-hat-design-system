@@ -54,6 +54,44 @@ or anything else, please submit a [GitHub issue][issues].
 
 <section aria-labelledby="version-3.0.0">
 
+### Patches from version 3.0.2
+
+<rh-table>
+
+| Change        | Type        | Notes        |
+| ------------- | ----------- | ------------ |
+| `<rh-accordion>`: hover color scheme | {{p()}} | Corrected hover background-color for dark scheme |
+| `<rh-audio-player>`: icon alignment | {{p()}} | Fix play button icon misalignment in webkit |
+| `<rh-audio-player>`: close button positioning | {{p()}} | Fix transcript close button on chrome |
+| `<rh-badge>`: SSR fix | {{p()}} | Fixed rendering in SSR scenarios |
+| `<rh-code-block>`: performance improvement | {{p()}} | Improve performance of pre-rendered code blocks. |
+| `<rh-code-block>`, `<rh-dialog>`, `<rh-health-index>`: dark scheme | {{p()}} | Corrected background color for dark scheme |
+| `<rh-code-block>`: copy action | {{p()}} | Fixed copy actions for prerendered codeblocks with badge callouts |
+| `<rh-code-block>`: default button content | {{p()}} | Added default content for action buttons. |
+| `<rh-code-block>`: auto-load tooltip | {{p()}} | Automatically load tooltip when action buttons are added |
+| `<rh-dialog>`: prevent scroll | {{p()}} | Corrected dialog positioning to prevent page scrolling |
+| `<rh-dialog>`: scrollbar reset | {{p()}} | The dialog element will now reset scrollbar when closed, even if it was not in focus at the time of closure. |
+| `<rh-dialog>`, `<rh-navigation-primary>`, `<rh-navigation-secondary>`: token update | {{p()}} | Updated usage of design tokens |
+| `<rh-footer>`: scrollbar fix | {{p()}} | Only show vertical scrollbars if content overflows |
+| `<rh-navigation-primary>`: slot docunmentation | {{p()}} | Corrected missing named logo slot documentation |
+| `<rh-navigation-primary>`: active state | {{p()}} | Corrected :active state for hamburger and secondary slotted items |
+| `<rh-navigation-primary>`: cursor style | {{p()}} | Corrected cursor style on secondary links |
+| `<rh-navigation-primary>`: safari height | {{p()}} | Corrected render height for navigation items in safari |
+| `<rh-navigation-primary>`: logo slot documentation | {{p()}} | Documented the logo slot |
+| `<rh-navigation-secondary>`: dark scheme | {{p()}} | Corrected background color for dark scheme |
+| `<rh-pagination>`: page counter | {{p()}} | Show total pages counter |
+| `<rh-pagination>`: dark scheme | {{p()}} | Correct background-colors for dark scheme |
+| `<rh-subnav>`: esbuild bundling | {{p()}} | Prevent error which can occur when bundling the element with esbuild |
+| `<rh-switch>`: dark scheme | {{p()}} | Corrected switch handle color for dark scheme |
+| `<rh-tile>`: background scheme | {{p()}} | Corrected background color for light and dark scheme |
+| `<rh-tooltip>`: accessibility improvement | {{p()}} | Improved screen reader support |
+| `<rh-tooltip>`: color scheme | {{p()}} | Correctly renders tooltip content using contrasting color scheme |
+| `<rh-video-embed>`: fix functionality | {{p()}} | Hide thumbnail and show video after hitting play button |
+
+</rh-table>
+
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v3.0.2">View all version 3.0.2 release notes</rh-cta>
+
 ### Patches from version 3.0.1
 
 <rh-table>
@@ -341,94 +379,4 @@ Released October 16, 2023
 | Added `<rh-table>`                                               | {{i()}} | A table is a container for displaying information. It allows a user to scan, examine, and compare large amounts of data.        |
 | Added `<rh-tile>`                                                | {{i()}} | A tile is a flexible layout with a clickable and contained surface.                                                             |
 | Added `<rh-timestamp>`                                           | {{i()}} | Provides consistent formats for displaying date and time values.                                                                |
-| Added `<rh-navigation-secondary>` current page indicator support | {{i()}} | Updated support for a current page indicator using `aria-current="page"`.                                                       |
-| Fixed `<rh-card>` `header` slot                                  | {{i()}} | Card's header slot now displays items vertically instead of stacking, allowing for more than one item to display in the header. |
-| Improved keyboard navigation on `<rh-navigation-secondary>`      | {{p()}} | Secondary Navigation now has improved keyboard navigation.                                                                      |
-| Fixed `<rh-cta>` `brick` variant                                 | {{p()}} | Brick variants of calls to action (CTAs) are now full width.                                                                    |
-
-</rh-table>
-
-<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.2.0">View all version 1.2 release notes</rh-cta>
-
-</section>
-
-<section aria-labelledby="version-1.1.0">
-
-## Version 1.1.0
-Released July 5, 2023
-
-### Highlights
-
-<rh-table>
-
-| Change                                             | Type    | Notes |
-| ---------------------------------------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Added `<rh-card>`                                  | {{i()}} | Card creates a component with a header, body, and footer. The header and footer are optional.                            |
-| Added `<rh-audio-player>`                          | {{i()}} | Audio-player creates a custom UI for audio files.                                                                        |
-| Added `<rh-code-block>`                            | {{i()}} | A container for a block of code. May be composed into a toolbar or contain copy buttons or other interactive components. |
-| Added new CSS custom properties for `<rh-tooltip>` | {{i()}} | New CSS custom properties, like `--rh-tooltip-arrow-size`, `--rh-tooltip-content-background-color`, and more!            |
-| Added outline variant for `<rh-tag>`               | {{i()}} | Now you can use `variant="outline"`.                                                                                     |
-
-</rh-table>
-
-<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.1.0">
-View all version 1.1 release notes
-</rh-cta>
-
-</section>
-
-<section aria-labelledby="version-1.0.0">
-
-## Version 1.0.0
-Released April 3, 2023
-
-### Highlights
-
-<rh-table>
-
-| Change                                                      | Type    | Notes |
-| ---------------------------------------------------------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Added `<rh-cta>`                                            | {{j()}} | A Call to Action is a styled link that directs a user to other pages or sometimes displays hidden content.                                                                                                             |
-| Added `<rh-secondary-nav>`                                  | {{j()}} | A non-primary navigation for products and subcategory pages.                                                                                                                                                           |
-| Added `<rh-global-footer>`                                  | {{j()}} | A standalone global footer component.                                                                                                                                                                                  |
-| Renamed `<rh-global-footer>` to `<rh-footer-universal>`     | {{j()}} | Renamed the global slot to universal.                                                                                                                                                                                  |
-| Renamed `<rh-secondary-nav>` to `<rh-navigation-secondary>` | {{j()}} | Renamed the component and all sub components to `<rh-navigation-secondary-*>`.                                                                                                                                         |
-| Added `<rh-spinner>`                                        | {{i()}} | Spinner consists of an animated circle and sometimes a message, and it indicates that a section is loading.                                                                                                            |
-| Added `<rh-button>`                                         | {{i()}} | Button is a form-associated custom element. Buttons allow users to perform an action when triggered.                                                                                                                   |
-| Added `<rh-tag>`                                            | {{i()}} | A tag is an inline-block element component that provides a distinct visual style for metadata in a UI.                                                                                                                 |
-| Added `<rh-blockquote>`                                     | {{i()}} | Displays a quote with author's name and title.                                                                                                                                                                         |
-| Added `<rh-subnav>`                                         | {{i()}} | The subnav component is used when an alternate navigation structure is needed to provide additional navigation on a site that does not need the product branding or structural depth that `rh-secondary-nav` provides. |
-| Added `<rh-tabs>`                                           | {{i()}} | A tab set of layered content, including tab widgets and their associated tab panel.                                                                                                                                    |
-| Added `<rh-accordion>`                                      | {{i()}} | Accordion displays multiple, related disclosure widgets.                                                                                                                                                               |
-| Added `<rh-alert>`                                          | {{i()}} | An alert displays auxiliary information on a website. An alert can have one of several states of severity.                                                                                                             |
-| Added `<rh-avatar>`                                         | {{i()}} | An Avatar is a placeholder graphic for a photo or an image that is placed to the left or on top of text.                                                                                                               |
-| Added `<rh-pagination>`                                     | {{i()}} | Pagination is a web component for navigating paginated content.                                                                                                                                                        |
-| Added `<rh-stat>`                                           | {{i()}} | An element which can be used to display statistics inside of an app.                                                                                                                                                   |
-| Added `<rh-badge>`                                          | {{i()}} | A badge is used to annotate other information with numerical content.                                                                                                                                                  |
-| Added `<rh-tooltip>`                                        | {{i()}} | A tooltip displays floating content next to a portion of inline content.                                                                                                                                               |
-| Added `<rh-footer>`                                         | {{i()}} | A universal footer component.                                                                                                                                                                                          |
- 
-</rh-table>
-
-<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v1.0.0">View all version 1.0 release notes</rh-cta>
-
-</section>
-
-<section aria-labelledby="older-versions">
-
-## Older versions
-
-For release notes on older versions, please [view our release notes on 
-GitHub][releasenotes].
-
-</section>
-
-<uxdot-feedback>
-  <h2>Roadmap</h2>
-  <p>For an up-to-date outline of what we're working on and what we're planning 
-    to do in the Red Hat Design System, visit <a href="/about/roadmap">our 
-      roadmap</a>.</p>
-</uxdot-feedback>
-
-[releasenotes]: https://github.com/RedHat-UX/red-hat-design-system/releases
-[issues]: https://github.com/RedHat-UX/red-hat-design-system/issues
+| Added `<rh-navigation-secondary>`
