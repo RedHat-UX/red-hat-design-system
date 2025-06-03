@@ -16,8 +16,8 @@ import style from './rh-jump-link.css';
 import { rhJumpLinksOrientationContext } from './context.js';
 
 /**
- * @cssprop  {<length>} [--rh-jump-link-max-width=200px|320px]
- *           max-width for each jump link
+ * @cssprop  {<length>} [--rh-jump-link-max-width=320px]
+ *           max-width for each vertical jump link
  */
 @customElement('rh-jump-link')
 @themable
