@@ -63,7 +63,7 @@ module.exports = {
   startPath: '/',
   verbose: false,
   routes: {
-    // shut off web components bundle
+    // shut off Web Components bundle
     // '/sites/all/libraries/webrh/dist/js/webrh.webcomponents.min.js': '',
 
     '/node_modules/': {

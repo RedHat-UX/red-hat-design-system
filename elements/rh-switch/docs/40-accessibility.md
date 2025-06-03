@@ -42,7 +42,7 @@ Grouped Switches are adequately spaced for optimal touch targets.
 
 ## Using form labels
 
-Like other form elements, switches require labels that are available to assistive tech. These labels may be visible or visually hidden. A label captions its associated switch, offering an indication of its purpose (e.g., “Dark mode”). It’s important to note that a label is not the same as a status message (e.g., “On” and “Off”), and though it's associated with the switch and can control it, the label is not part of the Switch web component.
+Like other form elements, switches require labels that are available to assistive tech. These labels may be visible or visually hidden. A label captions its associated switch, offering an indication of its purpose (e.g., “Dark mode”). It’s important to note that a label is not the same as a status message (e.g., “On” and “Off”), and though it's associated with the switch and can control it, the label is not part of the Switch Web Component.
 
 ### Visible labels
 

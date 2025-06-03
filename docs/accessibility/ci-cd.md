@@ -23,7 +23,7 @@ a11ySnapshot feature, based on [Web Test Runner][wtr], for unit tests.
 
 Chai A11y aXe is a plugin to perform automated accessibility tests via 
 [aXe][axe] for the [Chai Assertion Library][chaiassertionlibrary]. Here's how to 
-test and see if a web component in the Red Hat Design System passes aXe 
+test and see if a Web Component in the Red Hat Design System passes aXe 
 accessibility tests. In this example, we're going to use Chai A11y aXe with 
 `<rh-tag>`:
 

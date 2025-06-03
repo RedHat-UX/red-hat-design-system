@@ -14,7 +14,7 @@ document
       init(document.getElementById('search-tokens'));
     }, { once: true });
 
-// colour variants
+// color variants
 for (const details of document.querySelectorAll('.variants details')) {
   details.addEventListener('toggle', function(event) {
     event.target.closest('tr.variants')?.classList.toggle('open', event.target.open);
