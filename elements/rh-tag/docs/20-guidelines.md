@@ -41,7 +41,7 @@ limitations and using a tag is required, use the Compact size instead.
 
 ### Tag groups
 
-Tags can be grouped next to an element or in the same space. Tag groups can be used almost anywhere and are oriented either horizontally or vertically. **Tags that are grouped should use the same style**, but show different colors. Text-only tags, link tags, and button tags may be used in the same group.
+Tags can be grouped next to an element or in the same space. Tag groups can be used almost anywhere and are oriented either horizontally or vertically. **Tags that are grouped should use the same style**, but show different colors. Text-only tags and link tags may be used in the same group.
 
 <rh-alert state="info">
   <h4 slot="header">Helpful tip</h4>
@@ -49,9 +49,9 @@ Tags can be grouped next to an element or in the same space. Tag groups can be u
 </rh-alert>
 
 <uxdot-example>
-  <img alt="Two rows of four tags each. The first row has filled tags and the second outlined. From left to right, the tags are: text only, button, link, and disabled."
+  <img alt="Two rows of four tags each. The first row has filled tags and the second outlined. From left to right, the tags are: text only, link, and disabled."
        src="../tag-guidelines-tag-groups.svg"
-       width="784"
+       width="586"
        height="175">
 </uxdot-example>
 
@@ -134,15 +134,15 @@ instead.
 
 ## Interactivity
 
-You can use a tag as a link or as a button for actions like triggering a [Popover](/elements/popover/).
+You can use a tag as a link. To use a tag in a button for actions like triggering a [Popover](/elements/popover/), read about our [tag pattern](/patterns/tag).
 
 To see tag interaction states, go to the [Style](/elements/tag/style/) page.
 
-<uxdot-example color-palette="lightest" width-adjustment="797px">
-  <img alt="Two sets of tags: one linked and one button. The linked shows the underline disapearring on hover. The button shows the tag border getting thicker on hover."
+<uxdot-example color-palette="lightest" width-adjustment="242px">
+  <img alt="The linked tag example shows the underline disappearing on hover."
        src="../tag-guidelines-interactivity.svg"
-       width="797"
-       height="194">
+       width="242"
+       height="32">
 </uxdot-example>
 
 ## Responsive design

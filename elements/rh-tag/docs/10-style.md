@@ -119,13 +119,6 @@ Tags have 8px of space in between each other in a row or when stacked.
        height="214">
 </uxdot-example>
 
-<uxdot-example color-palette="lightest" width-adjustment="376px">
-  <img alt="A tag with an open popover above the tag."
-       src="../tag-style-space-b.svg"
-       width="376"
-       height="194">
-</uxdot-example>
-
 ## Interaction states
 
 ### Hover
@@ -134,20 +127,19 @@ Styles will change on hover depending on how a tag is used.
 
   - The dashed underline is the same color as the text it is applied to
   - If a tag has linked text, the underline will disappear on hover
-  - If a tag is a button, the border width changes to `--rh-border-width-md` on hover
   - A disabled tag has no states
 
-<uxdot-example color-palette="lightest" width-adjustment="950px">
-  <img alt="A collection of six light scheme tags, two to each group. There are three variants: linked, button, and disabled. The linked tag shows the underline disapearing on hover. The button tag shows a thicker border on hover. The disabled tag has no hover state."
+<uxdot-example color-palette="lightest" width-adjustment="438px">
+  <img alt="A collection of six light scheme tags, two to each group. There are two variants: linked and disabled. The linked tag shows the underline disapearing on hover. The disabled tag has no hover state."
        src="../tag-style-interaction-states-hover-scheme-light.svg"
-       width="950"
+       width="438"
        height="125">
 </uxdot-example>
 
-<uxdot-example color-palette="darkest" width-adjustment="950px">
+<uxdot-example color-palette="darkest" width-adjustment="438px">
   <img alt="The same arrangement as the previous image, but using a dark color scheme."
        src="../tag-style-interaction-states-hover-scheme-dark.svg"
-       width="950"
+       width="438"
        height="125">
 </uxdot-example>
 
@@ -155,16 +147,16 @@ Styles will change on hover depending on how a tag is used.
 
 A focus ring wraps around the text and icon in both focus and active states. Hover state styles remain the same.
 
-<uxdot-example color-palette="lightest" width-adjustment="952px">
+<uxdot-example color-palette="lightest" width-adjustment="438px">
   <img alt="A collection of four sets of two tags each. The right tag in each set has a blue focus ring denoting the focus state around the tag text and optional icon."
        src="../tag-style-interaction-states-focus-active-scheme-light.svg"
-       width="952"
+       width="438"
        height="29">
 </uxdot-example>
 
-<uxdot-example color-palette="darkest" width-adjustment="952px">
+<uxdot-example color-palette="darkest" width-adjustment="438px">
   <img alt="Same setup as above, but on a dark scheme background."
        src="../tag-style-interaction-states-focus-active-scheme-dark.svg"
-       width="952"
+       width="438"
        height="29">
 </uxdot-example>
