@@ -370,10 +370,16 @@ _RhNavigationPrimary_closeSecondaryDropdowns = function _RhNavigationPrimary_clo
     });
 };
 _RhNavigationPrimary_openHamburger = async function _RhNavigationPrimary_openHamburger() {
+    if (!this._hamburger) {
+        await this.updateComplete;
+    }
     this._hamburger.open = true;
     await this.updateComplete;
 };
 _RhNavigationPrimary_closeHamburger = async function _RhNavigationPrimary_closeHamburger() {
+    if (!this._hamburger) {
+        await this.updateComplete;
+    }
     this._hamburger.open = false;
     await this.updateComplete;
 };
