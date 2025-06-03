@@ -54,6 +54,44 @@ or anything else, please submit a [GitHub issue][issues].
 
 <section aria-labelledby="version-3.0.0">
 
+### Patches from version 3.0.2
+
+<rh-table>
+
+| Change        | Type        | Notes        |
+| ------------- | ----------- | ------------ |
+| `<rh-accordion>`: hover color scheme | {{p()}} | Corrected hover background-color for dark scheme |
+| `<rh-audio-player>`: icon alignment | {{p()}} | Fix play button icon misalignment in webkit |
+| `<rh-audio-player>`: close button positioning | {{p()}} | Fix transcript close button on chrome |
+| `<rh-badge>`: SSR fix | {{p()}} | Fixed rendering in SSR scenarios |
+| `<rh-code-block>`: performance improvement | {{p()}} | Improve performance of pre-rendered code blocks. |
+| `<rh-code-block>`, `<rh-dialog>`, `<rh-health-index>`: dark scheme | {{p()}} | Corrected background color for dark scheme |
+| `<rh-code-block>`: copy action | {{p()}} | Fixed copy actions for prerendered codeblocks with badge callouts |
+| `<rh-code-block>`: default button content | {{p()}} | Added default content for action buttons. |
+| `<rh-code-block>`: auto-load tooltip | {{p()}} | Automatically load tooltip when action buttons are added |
+| `<rh-dialog>`: prevent scroll | {{p()}} | Corrected dialog positioning to prevent page scrolling |
+| `<rh-dialog>`: scrollbar reset | {{p()}} | The dialog element will now reset scrollbar when closed, even if it was not in focus at the time of closure. |
+| `<rh-dialog>`, `<rh-navigation-primary>`, `<rh-navigation-secondary>`: token update | {{p()}} | Updated usage of design tokens |
+| `<rh-footer>`: scrollbar fix | {{p()}} | Only show vertical scrollbars if content overflows |
+| `<rh-navigation-primary>`: slot docunmentation | {{p()}} | Corrected missing named logo slot documentation |
+| `<rh-navigation-primary>`: active state | {{p()}} | Corrected :active state for hamburger and secondary slotted items |
+| `<rh-navigation-primary>`: cursor style | {{p()}} | Corrected cursor style on secondary links |
+| `<rh-navigation-primary>`: safari height | {{p()}} | Corrected render height for navigation items in safari |
+| `<rh-navigation-primary>`: logo slot documentation | {{p()}} | Documented the logo slot |
+| `<rh-navigation-secondary>`: dark scheme | {{p()}} | Corrected background color for dark scheme |
+| `<rh-pagination>`: page counter | {{p()}} | Show total pages counter |
+| `<rh-pagination>`: dark scheme | {{p()}} | Correct background-colors for dark scheme |
+| `<rh-subnav>`: esbuild bundling | {{p()}} | Prevent error which can occur when bundling the element with esbuild |
+| `<rh-switch>`: dark scheme | {{p()}} | Corrected switch handle color for dark scheme |
+| `<rh-tile>`: background scheme | {{p()}} | Corrected background color for light and dark scheme |
+| `<rh-tooltip>`: accessibility improvement | {{p()}} | Improved screen reader support |
+| `<rh-tooltip>`: color scheme | {{p()}} | Correctly renders tooltip content using contrasting color scheme |
+| `<rh-video-embed>`: fix functionality | {{p()}} | Hide thumbnail and show video after hitting play button |
+
+</rh-table>
+
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v3.0.2">View all version 3.0.2 release notes</rh-cta>
+
 ### Patches from version 3.0.1
 
 <rh-table>
