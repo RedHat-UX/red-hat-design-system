@@ -194,9 +194,9 @@ export class RhCodeBlock extends LitElement {
            @code-action="${this.#onCodeAction}">
         <div id="content-lines" tabindex="${ifDefined((!fullHeight || undefined) && 0)}">
           <div id="sizers" aria-hidden="true"></div>
-          ${this.lineNumbers === 'hidden' ? '' : html`<ol id="line-numbers" aria-hidden="true">
-            ${this.#lineHeights.map((height, i) => html`<li style="${styleMap({ height })}">${i + 1}</li>`)}
-          </ol>`}
+          <ol id="line-numbers" inert aria-hidden="true">${this.#lineHeights.map((height, i) => html`
+            <li style="${styleMap({ height })}">${i + 1}</li>`)}
+          </ol>
           <pre id="prism-output"
                class="language-${this.language}"
                ?hidden="${!this.#prismOutput}">${this.#prismOutput}</pre>
@@ -344,7 +344,7 @@ export class RhCodeBlock extends LitElement {
     const infos: CodeLineHeightsInfo[] = codes.map(element => {
       const codeElement = this.#prismOutput ? element.querySelector('code') : element;
       if (codeElement) {
-        const sizer =.createElement('span');
+        const sizer = document.createElement('span');
         sizer.className = 'sizer';
         sizer.innerText = '0';
         sizer.style.display = 'block';
