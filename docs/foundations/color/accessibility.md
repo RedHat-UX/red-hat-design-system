@@ -136,5 +136,4 @@ You can layer colors on light or dark backgrounds. However, layering colors on t
 </uxdot-feedback>
 
 [brandteam]: https://www.redhat.com/en/about/brand/standards
-[colourcontrastanalyzer]: https://www.tpgi.com/color-contrast-checker/
 [wcag21aa]: https://www.w3.org/WAI/WCAG21/Understanding/

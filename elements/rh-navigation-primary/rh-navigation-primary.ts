@@ -410,11 +410,17 @@ export class RhNavigationPrimary extends LitElement {
   }
 
   async #openHamburger() {
+    if (!this._hamburger) {
+      await this.updateComplete;
+    }
     this._hamburger.open = true;
     await this.updateComplete;
   }
 
   async #closeHamburger() {
+    if (!this._hamburger) {
+      await this.updateComplete;
+    }
     this._hamburger.open = false;
     await this.updateComplete;
   }
