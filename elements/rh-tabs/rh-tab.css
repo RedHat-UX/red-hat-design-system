@@ -101,7 +101,7 @@
     &:not(.box) {
       @container (max-width: 767px) {
         &:after {
-          border-block-start: var(--_active-tab-border);
+          border-block-start: var(--rh-border-width-lg, 3px) solid transparent;
         }
       }
 
