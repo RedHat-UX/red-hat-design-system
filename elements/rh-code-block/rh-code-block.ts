@@ -143,6 +143,9 @@ export class RhCodeBlock extends LitElement {
   /** When set, lines in the code snippet wrap */
   @property({ type: Boolean }) wrap = false;
 
+  /** When set to `hidden`, the code block's line numbers are hidden */
+  @property({ reflect: true, attribute: 'line-numbers' }) lineNumbers?: 'hidden';
+
   #slots = new SlotController(
     this,
     null,
@@ -191,7 +194,7 @@ export class RhCodeBlock extends LitElement {
            @code-action="${this.#onCodeAction}">
         <div id="content-lines" tabindex="${ifDefined((!fullHeight || undefined) && 0)}">
           <div id="sizers" aria-hidden="true"></div>
-          <ol id="line-numbers" aria-hidden="true">${this.#lineHeights.map((height, i) => html`
+          <ol id="line-numbers" inert aria-hidden="true">${this.#lineHeights.map((height, i) => html`
             <li style="${styleMap({ height })}">${i + 1}</li>`)}
           </ol>
           <pre id="prism-output"
@@ -330,7 +333,7 @@ export class RhCodeBlock extends LitElement {
    * Portions copyright prism.js authors (MIT license)
    */
   async #computeLineNumbers() {
-    if (!this.#isIntersecting) {
+    if (this.lineNumbers === 'hidden' || !this.#isIntersecting) {
       return;
     }
     await this.updateComplete;

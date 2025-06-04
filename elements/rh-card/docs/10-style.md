@@ -60,11 +60,14 @@ All card variants are available for light and dark color schemes.
         height="507">
 </uxdot-example>
 
-Cards can also set any of the six [color palettes](/theming/color-palettes/), to 
-create an emphasized or contrasting section of the page. [Promo](#promo) cards
-can only use the `Lightest` or `Darkest` color palettes, while [standard 
-promo](#standard-promo) cards can only use the `Lighter` or `Darker` color 
-palettes.
+Cards can also set any of the six [color palettes](/theming/color-palettes/) to 
+create an emphasized or contrasting section of the page. If a card inherits one 
+of the six color palettes from a parent component, it will have either a 
+`Lightest` or `Darkest` background. 
+
+[Promo](#promo) cards can only use the `Lightest` or `Darkest` color palettes, 
+while [standard promo](#standard-promo) cards can only use the `Lighter` or 
+`Darker` color palettes.
 
 ### Color
 
