@@ -1,6 +1,6 @@
 # Red Hat Design System
 
-[Documentation][docs], [design tokens][tokens], and [web components][elements] for building uniform experiences with the Red Hat brand.
+[Documentation][docs], [design tokens][tokens], and [Web Components][elements] for building uniform experiences with the Red Hat brand.
 
 ## 🎨 For Designers
 
@@ -8,7 +8,7 @@ RHDS provides Figma libraries and subsystems to aid in your design work.
 
 ## 💻 For Developers
 
-RHDS provides a collection of ready-made, framework-agnostic web components with Red Hat branding, user experience, accessibility, and style guidelines built in.
+RHDS provides a collection of ready-made, framework-agnostic Web Components with Red Hat branding, user experience, accessibility, and style guidelines built in.
 
 ```html
 <rh-card>
