@@ -106,6 +106,7 @@ export default async function(eleventyConfig: UserConfig) {
         '@rhds/tokens/': '/assets/packages/@rhds/tokens/js/',
         '@rhds/elements/lib/': '/assets/packages/@rhds/elements/lib/',
         '@rhds/elements/': '/assets/packages/@rhds/elements/elements/',
+        '@rhds/icons': '/assets/packages/@rhds/icons/icons.js',
         '@rhds/icons/': '/assets/packages/@rhds/icons/',
         '@rhds/icons/icons.js': '/assets/packages/@rhds/icons/icons.js',
         '@patternfly/elements/': '/assets/packages/@patternfly/elements/',
