@@ -1,0 +1,55 @@
+<script type="module">
+  import '@rhds/elements/rh-tag/rh-tag.js';
+</script>
+
+<button>
+    <rh-tag color="purple">Purple</rh-tag>
+</button>
+<button>
+    <rh-tag color="purple" variant="outline">Purple</rh-tag>
+</button>
+<button>
+    <rh-tag color="purple" icon=""information-fill">Purple</rh-tag>
+</button>
+<button>
+    <rh-tag color="purple" size=""compact>Purple</rh-tag>
+</button>
+
+<style>
+@import url('/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css');
+
+button rh-tag {
+    align-items: center;
+    background-color: inherit;
+    border: 0;
+    color: inherit;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    gap: inherit;
+    line-height: inherit;
+    padding: 0;
+
+    &:focus-visible {
+        outline: 0;
+    }
+}
+
+button:not([disabled]) rh-tag #container {
+    cursor: pointer;
+    
+    &:hover:before {
+        border-width: var(--rh-border-width-md, 2px);
+    }
+
+    &:focus-visible:after, &:active:after {
+        border-radius: var(--rh-border-radius-default, 3px);
+        content: '';
+        inset: calc(var(--rh-space-xs, 4px) - 1px) calc(var(--rh-space-md, 8px) - 1px);
+        outline: var(--rh-border-width-md, 2px) solid var(--rh-color-border-interactive);
+        position: absolute;
+    }
+}
+</style>
