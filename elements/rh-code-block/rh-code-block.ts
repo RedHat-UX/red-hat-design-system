@@ -31,7 +31,7 @@ interface CodeLineHeightsInfo {
 }
 
 /**
- * A code block is formatted text within a container.
+ * A code block applies special formatting to sections of code.
  * @summary Formats code strings within a container
  * @slot - A non-executable script tag containing the sample content. JavaScript
  *         samples should use the type `text/sample-javascript`. HTML samples

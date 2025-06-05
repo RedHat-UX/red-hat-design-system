@@ -1,7 +1,7 @@
 ## When to use
 
-- When you need to highlight a block of code while maintaining the formatting
+- Visually separate and highlight code text from other elements on the page
 
 <div id="overview-image-description" class="visually-hidden">
-  Image of a code block with black code text within a light gray container
+  Code block with black code text within a light gray container with copy and wrap buttons plus line numbers.
 </div>
