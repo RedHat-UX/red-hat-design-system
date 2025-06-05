@@ -70,9 +70,11 @@ a:is(:active, :hover),
   text-decoration: underline !important;
   text-decoration-style: dashed !important;
   text-decoration-color: inherit !important;
-  text-decoration-thickness: 1px !important;
+  text-decoration-thickness: var(--rh-border-width-sm) !important;
   text-underline-offset: max(5px, 0.28em) !important;
-  transition: ease all 0.3s !important;
+  transition-timing-function: ease;
+  transition-property: text-underline-offset, color, text-decoration-color;
+  transition-duration: 0.3s;
 }
 
 @media (prefers-reduced-motion: reduce) {
