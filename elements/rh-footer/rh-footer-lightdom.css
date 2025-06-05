@@ -4,7 +4,7 @@
 }
 
 :is(rh-footer, rh-footer-universal) :is(rh-footer-block) a {
-  text-decoration: underline var(--rh-border-width-sm) dashed;
+  text-decoration: underline var(--rh-,) dashed;
   text-decoration-color: light-dark(var(--rh-color-gray-50), var(--rh-color-gray-40)) !important;
   text-underline-offset: max(5px, 0.28em);
   transition-timing-function: ease;
@@ -29,7 +29,7 @@ rh-footer-universal [slot^='links'] a {
 
 :is(rh-footer, rh-footer-universal) a:hover {
   color: var(--rh-color-interactive-primary-hover);
-  text-decoration: underline var(--rh-border-width-sm) dashed;
+  text-decoration: underline var(--rh-border-width-sm, 1px) dashed;
   text-decoration-color: inherit;
   text-underline-offset: max(5px, 0.28em);
   transition-timing-function: ease;
@@ -39,7 +39,7 @@ rh-footer-universal [slot^='links'] a {
 
 :is(rh-footer, rh-footer-universal) a:is(:focus, :focus-within) {
   color: var(--rh-color-interactive-primary-hover);
-  text-decoration: underline dashed var(--rh-border-width-sm);
+  text-decoration: underline dashed var(--rh-border-width-sm, 1px);
   text-decoration-color: inherit;
   text-underline-offset: max(5px, 0.28em);
   transition-timing-function: ease;

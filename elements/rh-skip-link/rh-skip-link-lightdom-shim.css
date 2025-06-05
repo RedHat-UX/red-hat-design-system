@@ -56,7 +56,7 @@ rh-skip-link:not(:defined) > a:is(:active, :hover) {
   text-decoration: underline;
   text-decoration-style: dashed;
   text-decoration-color: inherit;
-  text-decoration-thickness: var(--rh-border-width-sm);
+  text-decoration-thickness: var(--rh-border-width-sm, 1px);
   text-underline-offset: max(5px, 0.28em);
   transition-timing-function: ease;
   transition-property: text-underline-offset, color, text-decoration-color;
