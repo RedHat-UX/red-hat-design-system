@@ -1,0 +1,84 @@
+:host {
+  width: 100%;
+  height: 100%;
+  margin-bottom: var(--stepCompactMargin, var(--rh-space-2xl, 32px));
+  display: grid;
+  background: var(--stepLineStyle, linear-gradient(
+    var(--stepLineAngle),
+    transparent 14px, 
+    var(--rh-color-border-subtle) 16px,
+    transparent 18px
+  ));
+  align-items: start;
+  justify-items: baseline ;
+  color: var(--rh-color-text-secondary, #4d4d4d);
+  grid-template-columns: var(--stepTemplateColumns, 32px auto);
+  grid-template-rows: var(--stepTemplateRows, 32px auto);
+  justify-self: var(--stepJustifySelf, start);
+  /* Body text/md */
+  font-family: var(--rh-font-family-body-text, "Red Hat Text");
+  font-size: var(--rh-font-size-body-text-md, 16px);
+  font-style: normal;
+  font-weight: var(--rh-font-weight-body-text-regular, 400);
+  line-height: 1.5; /* 150% */
+  
+  & input[type="checkbox"] { 
+    grid-column: 1; 
+    grid-row: 1;
+  } 
+
+  & rh-icon {
+    color: var(--stepIconColor);
+    background-color: var(--rh-color-surface);
+    grid-column: 1;
+    grid-row: 1;
+    height: var(--rh-size-icon-02, 24px);
+    width: var(--rh-size-icon-02, 24px);
+    border: var(--rh-border-width-md) solid var(--rh-color-border-subtle);
+    border-radius: 50%;
+    justify-self: var(--stepIconJustifySelf);
+  }
+}
+
+:host([state="inactive"]) {
+  & strong, & p {
+    color: var(--rh-color-text-disabled, #6a6e73);
+    font-weight: var(--rh-font-weight-body-text-regular, 400);
+  }
+}
+
+p { 
+  margin: 0;
+  grid-column: var(--stepDescriptionGridColumn, 1); 
+  font-weight: var(--rh-font-weight-body-text-regular, 400);
+}
+
+strong, p {
+  display: var(--stepCompactDisplay, auto);
+}
+
+:host(:not([state="inactive"])) {
+  background: var(--stepLineStyle, linear-gradient(
+    var(--stepLineAngle),
+    transparent 14px, 
+    var(--rh-color-text-primary) 16px,
+    transparent 18px
+  ));
+  
+  & div {
+    & rh-icon { border-color: var(--rh-color-text-primary); }
+    & span {
+      color: var(--rh-color-text-secondary, #151515);
+
+      /* Body text/md - Medium weight */
+      font-weight: var(--rh-font-weight-body-text-medium, 500);
+      text-decoration-line: underline;
+      text-decoration-style: dotted;
+      text-decoration-skip-ink: none;
+      text-decoration-color: var(--rh-color-text-secondary, #707070);
+      text-decoration-thickness: 1.5px; /* 9.375% */
+      text-underline-offset: 30%; /* 4.8px */
+      text-underline-position: from-font;
+      }
+  }  
+}

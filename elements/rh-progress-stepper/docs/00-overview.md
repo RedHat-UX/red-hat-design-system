@@ -6,7 +6,7 @@ Progress Steps is a component that displays a sequence of steps in a process, sh
 
 ### Horizontal Orientation (Default)
 ```html
-<rh-progress-steps>
+<rh-progress-stepper>
   <rh-progress-step
     state="complete"
     label="Step 1"
@@ -24,12 +24,12 @@ Progress Steps is a component that displays a sequence of steps in a process, sh
     label="Step 3"
     description="This step is not yet started"
   ></rh-progress-step>
-</rh-progress-steps>
+</rh-progress-stepper>
 ```
 
 ### Vertical Orientation
 ```html
-<rh-progress-steps orientation="vertical">
+<rh-progress-stepper orientation="vertical">
   <rh-progress-step
     state="complete"
     label="Step 1"
@@ -47,7 +47,7 @@ Progress Steps is a component that displays a sequence of steps in a process, sh
     label="Step 3"
     description="This step is not yet started"
   ></rh-progress-step>
-</rh-progress-steps>
+</rh-progress-stepper>
 ```
 
 ## States
@@ -77,7 +77,7 @@ You can use custom icons for the `custom` state:
 
 ## Properties
 
-### rh-progress-steps
+### rh-progress-stepper
 
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|

@@ -1,6 +1,7 @@
 import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
+import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import styles from './rh-progress-step.css';
 
 export type ProgressStepState = 'inactive' | 'active' | 'complete' | 'warn' | 'fail' | 'custom';
@@ -8,6 +9,8 @@ export type ProgressStepState = 'inactive' | 'active' | 'complete' | 'warn' | 'f
 @customElement('rh-progress-step')
 export class RhProgressStep extends LitElement {
   static styles = styles;
+
+  #internals = InternalsController.of(this, { role: 'listitem' });
 
   @property({ reflect: true }) state: ProgressStepState = 'inactive';
   @property({ type: String }) label = '';
@@ -18,7 +21,7 @@ export class RhProgressStep extends LitElement {
   private getIconName(): string {
     switch (this.state) {
       case 'inactive':
-        return 'harvey-ball-0';
+        return '';
       case 'active':
         return 'resources-full';
       case 'complete':
@@ -43,7 +46,7 @@ export class RhProgressStep extends LitElement {
       case 'complete':
         return 'var(--rh-color-status-success)';
       case 'warn':
-        return 'var(--rh-color-yellow-50)';
+        return 'light-dark(var(--rh-color-yellow-50),var(--rh-color-yellow-30)';
       case 'fail':
         return 'var(--rh-color-status-danger)';
       case 'custom':
@@ -55,16 +58,13 @@ export class RhProgressStep extends LitElement {
 
   render() {
     return html`
-      <label class="progress-step">
-        <input type="checkbox" ?checked=${this.state === 'complete'} disabled />
-        <rh-icon
-          icon="${this.getIconName()}"
-          set="${this.state === 'custom' ? this.customIconSet : 'ui'}"
-          style="color: ${this.getIconColor()}"
-        ></rh-icon>
-        <span class="label">${this.label}</span>
-      </label>
-      ${this.description ? html`<p class="description">${this.description}</p>` : ''}
+      <rh-icon
+        icon="${this.getIconName()}"
+        set="${this.state === 'custom' ? this.customIconSet : 'ui'}"
+        style="color: ${this.getIconColor()}"
+      ></rh-icon>
+      <strong>${this.label}</strong>
+      ${this.description ? html`<p>${this.description}</p>` : ''}
     `;
   }
 }

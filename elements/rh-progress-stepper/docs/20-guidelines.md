@@ -31,7 +31,7 @@
 
 ### Good Example
 ```html
-<rh-progress-steps>
+<rh-progress-stepper>
   <rh-progress-step
     state="complete"
     label="Verify System"
@@ -49,12 +49,12 @@
     label="Install Software"
     description="Ready to begin installation"
   ></rh-progress-step>
-</rh-progress-steps>
+</rh-progress-stepper>
 ```
 
 ### Bad Example
 ```html
-<rh-progress-steps>
+<rh-progress-stepper>
   <rh-progress-step
     state="complete"
     label="Step 1: System Verification Process"
@@ -72,14 +72,14 @@
     label="Step 3"
     description=""
   ></rh-progress-step>
-</rh-progress-steps>
+</rh-progress-stepper>
 ```
 
 ## Common Use Cases
 
 ### Multi-step Forms
 ```html
-<rh-progress-steps>
+<rh-progress-stepper>
   <rh-progress-step
     state="complete"
     label="Personal Info"
@@ -97,12 +97,12 @@
     label="Review"
     description="Review and submit"
   ></rh-progress-step>
-</rh-progress-steps>
+</rh-progress-stepper>
 ```
 
 ### Installation Process
 ```html
-<rh-progress-steps>
+<rh-progress-stepper>
   <rh-progress-step
     state="complete"
     label="Download"
@@ -120,12 +120,12 @@
     label="Configure"
     description="Set up your preferences"
   ></rh-progress-step>
-</rh-progress-steps>
+</rh-progress-stepper>
 ```
 
 ### Error Handling
 ```html
-<rh-progress-steps>
+<rh-progress-stepper>
   <rh-progress-step
     state="complete"
     label="Upload Files"
@@ -143,7 +143,7 @@
     label="Complete"
     description="Finish the process"
   ></rh-progress-step>
-</rh-progress-steps>
+</rh-progress-stepper>
 ```
 
 ## Usage

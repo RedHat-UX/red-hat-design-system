@@ -1,0 +1,44 @@
+:host {
+  /* width: 100%;
+  height: 100%; */
+  padding: 0;
+  list-style: none;
+  display: grid;
+  align-content: baseline;
+  justify-content: normal;
+  grid-auto-columns: 1fr;
+}
+
+:host([orientation="vertical"]) {
+  grid-auto-flow: row;
+  --stepLineAngle: 90deg;
+  --stepTemplateColumns: 32px auto;
+  --stepTemplateRows: auto;
+  --stepJustifySelf: start;
+  --stepIconJustifySelf: center;
+  --stepDescriptionGridColumn: 2;
+  
+  & ::slotted(rh-progress-step:last-of-type) { background: none; }
+}
+
+:host([orientation="horizontal"]) {
+  grid-auto-flow: column;
+  --stepLineAngle: -180deg;
+  --stepTemplateColumns: auto;
+  --stepTemplateRows: 32px auto;
+  --stepJustifySelf: baseline;
+  --stepDescriptionMargin: inherit;
+  --stepCompactMargin: 0;
+}
+
+:host([compact]) {
+  --stepTemplateColumns: var(--rh-); 
+  --stepTemplateRows: auto;
+  --stepCompactDisplay: none;
+  
+  grid-auto-columns: 50px;
+}
+
+::slotted(rh-progress-step:last-of-type) {
+  --stepLineStyle: none;
+}

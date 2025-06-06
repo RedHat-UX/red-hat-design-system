@@ -1,51 +1,45 @@
-<rh-progress-steps>
+<rh-progress-stepper orientation="vertical">
   <rh-progress-step
     state="inactive"
     label="Inactive Step"
     description="This step is not yet started">
   </rh-progress-step>
-  
   <rh-progress-step
     state="active"
     label="Active Step"
     description="Currently working on this step">
   </rh-progress-step>
-  
   <rh-progress-step
     state="complete"
     label="Complete Step"
     description="This step has been completed successfully">
   </rh-progress-step>
-  
   <rh-progress-step
     state="warn"
     label="Warning Step"
     description="This step has a warning that needs attention">
   </rh-progress-step>
-  
   <rh-progress-step
     state="fail"
     label="Failed Step"
     description="This step has failed and needs to be retried">
   </rh-progress-step>
-  
-  <rh-progress-step
+  <!-- <rh-progress-step
     state="custom"
     label="Custom Step"
     description="This step uses a custom icon from the microns set"
     custom-icon="info-circle"
     custom-icon-set="microns">
-  </rh-progress-step>
-</rh-progress-steps>
+  </rh-progress-step> -->
+</rh-progress-stepper>
 
 <script type="module">
-  import '@rhds/elements/rh-progress-steps/rh-progress-steps.js';
-  import '@rhds/elements/rh-progress-steps/rh-progress-step.js';
+  import '@rhds/elements/rh-progress-stepper/rh-progress-stepper.js';
+  import '@rhds/elements/rh-progress-stepper/rh-progress-step.js';
 </script>
 
 <style>
-rh-progress-steps {
+rh-progress-stepper {
   /* insert demo styles */
 }
 </style>
-

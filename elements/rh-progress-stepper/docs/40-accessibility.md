@@ -46,7 +46,7 @@ The component uses the following color contrast ratios:
 ## Example with ARIA Attributes
 
 ```html
-<rh-progress-steps role="list">
+<rh-progress-stepper role="list">
   <rh-progress-step
     role="listitem"
     state="complete"
@@ -73,5 +73,5 @@ The component uses the following color contrast ratios:
       This is the current step in the process
     </span>
   </rh-progress-step>
-</rh-progress-steps>
+</rh-progress-stepper>
 ``` 
