@@ -85,6 +85,9 @@ export class RhNavigationPrimary extends LitElement {
   @state()
   private _overlayOpen = false;
 
+  @state()
+  private _hamburgerOpen = false;
+
   @query('#hamburger')
   private _hamburger!: HTMLDetailsElement;
 
@@ -177,7 +180,7 @@ export class RhNavigationPrimary extends LitElement {
               </a>
             </slot>
           </div>
-          <details id="hamburger" @toggle="${this.#hamburgerToggle}">
+          <details id="hamburger" ?open="${this._hamburgerOpen}" @toggle="${this.#hamburgerToggle}">
             <summary>
               <rh-icon icon="menu-bars" set="ui"></rh-icon>
               <div id="summary">${this.mobileToggleLabel}</div>
@@ -266,7 +269,7 @@ export class RhNavigationPrimary extends LitElement {
     } else {
       if (secondaryEventToggle) {
         this.#openSecondaryDropdowns.delete(item);
-        if (this.#openSecondaryDropdowns.size === 0 && (this.compact && !this._hamburger.open)) {
+        if (this.#openSecondaryDropdowns.size === 0 && (this.compact && !this._hamburgerOpen)) {
           this.#closeOverlay();
         }
       } else {
@@ -292,7 +295,7 @@ export class RhNavigationPrimary extends LitElement {
           const [dropdown] = this.#openSecondaryDropdowns;
           dropdown.hide();
           dropdown.shadowRoot?.querySelector('summary')?.focus();
-        } else if (this._hamburger.open) {
+        } else if (this._hamburgerOpen) {
           this.#closeHamburger();
           this._hamburger.querySelector('summary')?.focus();
         }
@@ -377,7 +380,7 @@ export class RhNavigationPrimary extends LitElement {
   }
 
   #onTabKeyup(event: KeyboardEvent) {
-    if (this.compact && this._hamburger.open) {
+    if (this.compact && this._hamburgerOpen) {
       const secondaryDropdowns = this.#secondaryDropdowns();
       const target = event.target as HTMLElement;
       if (event.shiftKey && target === this) {
@@ -413,7 +416,8 @@ export class RhNavigationPrimary extends LitElement {
     if (!this._hamburger) {
       await this.updateComplete;
     }
-    this._hamburger.open = true;
+    this._hamburgerOpen = true;
+    this.requestUpdate();
     await this.updateComplete;
   }
 
@@ -421,7 +425,8 @@ export class RhNavigationPrimary extends LitElement {
     if (!this._hamburger) {
       await this.updateComplete;
     }
-    this._hamburger.open = false;
+    this._hamburgerOpen = false;
+    this.requestUpdate();
     await this.updateComplete;
   }
 
