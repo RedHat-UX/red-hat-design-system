@@ -13,9 +13,26 @@ describe('<rh-skeleton>', function() {
       element = await createFixture<RhSkeleton>(html`<rh-skeleton></rh-skeleton>`);
       const klass = customElements.get('rh-skeleton');
       expect(element)
-        .to.be.an.instanceOf(klass)
-        .and
-        .to.be.an.instanceOf(RhSkeleton);
+          .to.be.an.instanceOf(klass)
+          .and
+          .to.be.an.instanceOf(RhSkeleton);
     });
-  })
+  });
+
+  describe('when the element loads', function() {
+    let element: RhSkeleton;
+    beforeEach(async function() {
+      element = await createFixture<RhSkeleton>(html`<rh-skeleton></rh-skeleton>`);
+      await element.updateComplete;
+    });
+
+    it('should be accessible', async function() {
+      await expect(element)
+          .to.be.accessible();
+    });
+
+    it('should have a11y content in the default slot', function() {
+      expect(element.shadowRoot?.textContent).to.not.be.empty;
+    });
+  });
 });
