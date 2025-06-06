@@ -23,7 +23,7 @@ export class RhSkeleton extends LitElement {
 
   render() {
     return html`
-      <p aria-busy="true" class="visually-hidden">
+      <p class="visually-hidden">
         <slot>
             Loading...
         </slot>

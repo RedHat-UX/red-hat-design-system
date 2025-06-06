@@ -1,7 +1,7 @@
 By default, `<rh-skeleton>` inserts the following content into its shadowdom:
 
 ```html
-<p aria-busy="true" class="visually-hidden">
+<p class="visually-hidden">
   Loading...
 </p>
 ```
