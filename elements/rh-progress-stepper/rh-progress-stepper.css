@@ -1,9 +1,17 @@
 :host {
+<<<<<<< HEAD
   padding: 0;
+=======
+  /* width: 100%;
+  height: 100%; */
+  padding: 0;
+  list-style: none;
+>>>>>>> 50061e12 (Restructured Stepper)
   display: grid;
   align-content: baseline;
   justify-content: normal;
   grid-auto-columns: 1fr;
+<<<<<<< HEAD
 
   & #current-step {
     grid-area: currentstep;
@@ -17,25 +25,35 @@
     text-underline-offset: 30%; /* 4.8px */
     text-underline-position: from-font;
   }
+=======
+>>>>>>> 50061e12 (Restructured Stepper)
 }
 
 :host([orientation="vertical"]) {
   grid-auto-flow: row;
   --stepLineAngle: 90deg;
+<<<<<<< HEAD
   --stepTemplateColumns: calc(var(--rh-length-xl, 24px) + 4px) auto;
+=======
+  --stepTemplateColumns: 32px auto;
+>>>>>>> 50061e12 (Restructured Stepper)
   --stepTemplateRows: auto;
   --stepJustifySelf: start;
   --stepIconJustifySelf: center;
   --stepDescriptionGridColumn: 2;
+<<<<<<< HEAD
   --stepCompactHPadding: 0;
   --stepColGap: var(--rh-length-lg, 16px);
   --stepRowGap: var(--rh-length-lg, 16px);
+=======
+>>>>>>> 50061e12 (Restructured Stepper)
   
   & ::slotted(rh-progress-step:last-of-type) { background: none; }
 }
 
 :host([orientation="horizontal"]) {
   grid-auto-flow: column;
+<<<<<<< HEAD
   grid-auto-columns: 50px;
   --stepLineAngle: -180deg;
   --stepTemplateColumns: auto;
@@ -58,6 +76,22 @@
   
 
   & #current-step { display: block; grid-column: 1 / -1; }
+=======
+  --stepLineAngle: -180deg;
+  --stepTemplateColumns: auto;
+  --stepTemplateRows: 32px auto;
+  --stepJustifySelf: baseline;
+  --stepDescriptionMargin: inherit;
+  --stepCompactMargin: 0;
+}
+
+:host([compact]) {
+  --stepTemplateColumns: var(--rh-); 
+  --stepTemplateRows: auto;
+  --stepCompactDisplay: none;
+  
+  grid-auto-columns: 50px;
+>>>>>>> 50061e12 (Restructured Stepper)
 }
 
 ::slotted(rh-progress-step:last-of-type) {

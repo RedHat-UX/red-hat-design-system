@@ -358,7 +358,7 @@ export default [
     },
   },
   {
-    tagName: 'rh-progress-steps',
+    tagName: 'rh-progress-stepper',
     name: 'Progress steps',
     type: 'element',
     overallStatus: 'ready',

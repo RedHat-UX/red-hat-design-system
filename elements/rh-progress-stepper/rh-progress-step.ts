@@ -37,11 +37,37 @@ export class RhProgressStep extends LitElement {
     }
   }
 
+<<<<<<< HEAD
+=======
+  private getIconColor(): string {
+    switch (this.state) {
+      case 'inactive':
+        return 'var(--rh-color-gray-30)';
+      case 'active':
+        return 'var(--rh-color-status-note)';
+      case 'complete':
+        return 'var(--rh-color-status-success)';
+      case 'warn':
+        return 'light-dark(var(--rh-color-yellow-50),var(--rh-color-yellow-30)';
+      case 'fail':
+        return 'var(--rh-color-status-danger)';
+      case 'custom':
+        return 'var(--rh-color-gray-30)';
+      default:
+        return 'var(--rh-color-gray-30)';
+    }
+  }
+
+>>>>>>> 50061e12 (Restructured Stepper)
   render() {
     return html`
       <rh-icon
         icon="${this.getIconName()}"
         set="${this.state === 'custom' ? this.customIconSet : 'ui'}"
+<<<<<<< HEAD
+=======
+        style="color: ${this.getIconColor()}"
+>>>>>>> 50061e12 (Restructured Stepper)
       ></rh-icon>
       <strong>${this.label}</strong>
       ${this.description ? html`<p>${this.description}</p>` : ''}

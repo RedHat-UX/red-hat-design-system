@@ -1,5 +1,6 @@
 :host {
   width: 100%;
+<<<<<<< HEAD
   height: 100%;    
   padding-bottom: var(--stepCompactVPadding, var(--rh-length-2xl, 32px));
   padding-right: var(--stepCompactHPadding, var(--rh-length-5xl, 80px));
@@ -9,12 +10,27 @@
     transparent 12px, 
     var(--rh-color-border-subtle) 14px,
     transparent 16px
+=======
+  height: 100%;
+  margin-bottom: var(--stepCompactMargin, var(--rh-space-2xl, 32px));
+  display: grid;
+  background: var(--stepLineStyle, linear-gradient(
+    var(--stepLineAngle),
+    transparent 14px, 
+    var(--rh-color-border-subtle) 16px,
+    transparent 18px
+>>>>>>> 50061e12 (Restructured Stepper)
   ));
   align-items: start;
   justify-items: baseline ;
   color: var(--rh-color-text-secondary, #4d4d4d);
+<<<<<<< HEAD
   grid-template-columns: var(--stepTemplateColumns, 24px auto);
   grid-template-rows: var(--stepTemplateRows, 24px auto);
+=======
+  grid-template-columns: var(--stepTemplateColumns, 32px auto);
+  grid-template-rows: var(--stepTemplateRows, 32px auto);
+>>>>>>> 50061e12 (Restructured Stepper)
   justify-self: var(--stepJustifySelf, start);
   /* Body text/md */
   font-family: var(--rh-font-family-body-text, "Red Hat Text");
@@ -22,8 +38,11 @@
   font-style: normal;
   font-weight: var(--rh-font-weight-body-text-regular, 400);
   line-height: 1.5; /* 150% */
+<<<<<<< HEAD
   column-gap: var(--stepColGap, 16px);
   row-gap: var(--stepRowGap, 16px);
+=======
+>>>>>>> 50061e12 (Restructured Stepper)
   
   & input[type="checkbox"] { 
     grid-column: 1; 
@@ -31,7 +50,11 @@
   } 
 
   & rh-icon {
+<<<<<<< HEAD
     color: var(--stepColor);
+=======
+    color: var(--stepIconColor);
+>>>>>>> 50061e12 (Restructured Stepper)
     background-color: var(--rh-color-surface);
     grid-column: 1;
     grid-row: 1;
@@ -41,9 +64,12 @@
     border-radius: 50%;
     justify-self: var(--stepIconJustifySelf);
   }
+<<<<<<< HEAD
 
   & strong { align-self: center; }
   & p { font-size: var(--rh-font-size-body-text-xs, 12px); }
+=======
+>>>>>>> 50061e12 (Restructured Stepper)
 }
 
 :host([state="inactive"]) {
@@ -53,6 +79,7 @@
   }
 }
 
+<<<<<<< HEAD
 :host([state="active"]) {
   --stepColor: var(--rh-color-status-note);
 }
@@ -80,6 +107,8 @@
   }
 }
 
+=======
+>>>>>>> 50061e12 (Restructured Stepper)
 p { 
   margin: 0;
   grid-column: var(--stepDescriptionGridColumn, 1); 
@@ -93,6 +122,7 @@ strong, p {
 :host(:not([state="inactive"])) {
   background: var(--stepLineStyle, linear-gradient(
     var(--stepLineAngle),
+<<<<<<< HEAD
     transparent 12px, 
     var(--rh-color-text-primary) 14px,
     transparent 16px
@@ -113,4 +143,27 @@ strong, p {
     text-underline-offset: 30%; /* 4.8px */
     text-underline-position: from-font;
     }
+=======
+    transparent 14px, 
+    var(--rh-color-text-primary) 16px,
+    transparent 18px
+  ));
+  
+  & div {
+    & rh-icon { border-color: var(--rh-color-text-primary); }
+    & span {
+      color: var(--rh-color-text-secondary, #151515);
+
+      /* Body text/md - Medium weight */
+      font-weight: var(--rh-font-weight-body-text-medium, 500);
+      text-decoration-line: underline;
+      text-decoration-style: dotted;
+      text-decoration-skip-ink: none;
+      text-decoration-color: var(--rh-color-text-secondary, #707070);
+      text-decoration-thickness: 1.5px; /* 9.375% */
+      text-underline-offset: 30%; /* 4.8px */
+      text-underline-position: from-font;
+      }
+  }  
+>>>>>>> 50061e12 (Restructured Stepper)
 }
