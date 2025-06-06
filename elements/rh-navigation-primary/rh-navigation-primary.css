@@ -5,12 +5,18 @@
 }
 
 :host {
-  --_gradient:
-    linear-gradient(to right,
-      var(--rh-color-brand-red-light, #f56e6e),
-      var(--rh-color-purple-40, #876fd4),
-      var(--rh-color-purple-60, #3d2785));
-  --_active-item-color: var(--_gradient);
+  --_color-stop-start: var(--rh-color-brand-red-light, #f56e6e);
+  --_color-stop-middle: var(--rh-color-purple-40, #876fd4);
+  --_color-stop-end: var(--rh-color-purple-60, #3d2785);
+  --_linear-gradient:
+    var(--_color-stop-start),
+    var(--_color-stop-middle),
+    var(--_color-stop-end);
+  --_conic-gradient:
+    var(--_linear-gradient),
+    var(--_color-stop-middle),
+    var(--_color-stop-start);
+  --_gradient-direction: -90deg;
   --_navbar-height: 83px;
   --_nav-container-z-index: -1;
 
@@ -117,24 +123,15 @@
       border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
       border-radius: var(--rh-border-radius-pill, 64px);
       margin-inline-start: 0;
+      z-index: 1;
 
       &:before {
-        --_mask: conic-gradient(transparent 0 0);
-
         content: '';
         position: absolute;
         inset: -1px;
+        z-index: -1;
+        background: transparent;
         border-radius: inherit;
-        padding: var(--rh-border-width-sm, 1px);
-        background: var(--_active-item-color);
-        mask: var(--_mask) content-box exclude, var(--_mask);
-        z-index: 1;
-      }
-
-      &:active {
-        &:before {
-          padding: var(--rh-border-width-md, 2px);
-        }
       }
 
       &:is(:hover, :focus-visible) {
@@ -143,7 +140,22 @@
             var(--rh-color-surface-darker, #1f1f1f));
 
         &:before {
-          --_mask: conic-gradient(#000000 0 0);
+          border: var(--rh-border-width-sm, 1px) solid transparent;
+        }
+      }
+
+      &:is(:active, :active:hover) {
+        &:before {
+          border: var(--rh-border-width-md, 2px) solid transparent;
+        }
+      }
+
+      &:is(:active, :active:hover, :hover, :focus-visible) {
+        &:before {
+          background:
+            linear-gradient(light-dark(var(--rh-color-surface-lighter, #f2f2f2),
+              var(--rh-color-surface-darker, #1f1f1f)) 0 0) padding-box,
+            conic-gradient(from var(--_gradient-direction), var(--_conic-gradient)) border-box;
         }
       }
 
@@ -153,7 +165,6 @@
           solid
           var(--rh-color-interactive-primary-default);
         outline-offset: 3px;
-        border-radius: var(--rh-border-radius-pill, 64px);
       }
 
       &::marker,
@@ -202,22 +213,25 @@
       }
     }
 
-    & #details-content {
-      display: none;
-    }
-
     &[open] {
       & summary {
+        /* stylelint-disable-next-line no-descending-specificity */
         &:before {
-          --_mask: conic-gradient(#000000 0 0);
-
-          padding: var(--rh-border-width-md, 2px);
+          border: var(--rh-border-width-md, 2px) solid transparent;
+          background:
+            linear-gradient(light-dark(var(--rh-color-surface-lighter, #f2f2f2),
+              var(--rh-color-surface-darker, #1f1f1f)) 0 0) padding-box,
+            conic-gradient(from var(--_gradient-direction), var(--_conic-gradient)) border-box;
         }
 
         & rh-icon[icon='caret-down'] {
           rotate: 180deg;
         }
       }
+    }
+
+    & #details-content {
+      display: none;
     }
   }
 
