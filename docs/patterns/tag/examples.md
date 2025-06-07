@@ -3,7 +3,6 @@ title: Examples
 heading: Tag
 layout: layouts/pages/pattern.njk
 tags:
-  - pattern
   - tagPatterns
 subnav:
   collection: tagPatterns
