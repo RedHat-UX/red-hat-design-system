@@ -20,11 +20,11 @@ subnav:
 
 <link rel="stylesheet" href="/path/to/rh-code-block/rh-code-block-lightdom.css">
 
-## Tag as a button
+## Tag in a button
 
 You can use tag within the `<button>` HTML element to make it trigger an action, like revealing a popover.
 
-<uxdot-pattern src="./patterns/tag-as-button.html">
+<uxdot-pattern src="./patterns/tag-in-button.html">
 </uxdot-pattern>
 
 ### Interaction states

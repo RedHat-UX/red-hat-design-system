@@ -1,0 +1,42 @@
+<script type="module">
+  import '@rhds/elements/rh-tag/rh-tag.js';
+</script>
+
+<button>
+    <rh-tag color="purple">Purple</rh-tag>
+</button>
+<button>
+    <rh-tag color="purple" variant="outline">Purple</rh-tag>
+</button>
+<button>
+    <rh-tag color="purple" icon="information-fill">Purple</rh-tag>
+</button>
+<button>
+    <rh-tag color="purple" size="compact">Purple</rh-tag>
+</button>
+<button>
+    test
+</button>
+
+<style>
+@import url('/assets/packages/@rhds/elements/elements/rh-tile/rh-tile-lightdom.css');
+
+button:has(rh-tag) {
+    cursor: pointer;
+    position: relative;
+    align-items: center;
+    background-color: transparent;
+    border: 0;
+    border-radius: var(--rh-border-radius-pill, 64px);
+    padding: 0;
+
+    &:focus-visible {
+        outline: 0;
+    }
+
+    &:hover rh-tag #container::before {
+        border-width: var(--rh-border-width-md, 2px);
+    }
+}
+
+</style>
