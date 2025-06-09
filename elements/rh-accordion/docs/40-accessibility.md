@@ -36,7 +36,7 @@ Each panel is selectable instead of only title text or the chevrons.
   <img alt="Accordion showing touch target size examples for large and small sizes"
        src="../accordion-touch-targets.png"
        width="872"
-       height="536">>
+       height="536">
 </uxdot-example>
 
 {% include 'partials/accessibility/ariaguide.md' %}
