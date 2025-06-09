@@ -1,6 +1,7 @@
 :host {
   display: block;
   color: var(--rh-color-text-primary);
+  background-color: var(--rh-color-surface);
   container-name: host;
   container-type: inline-size;
 }
