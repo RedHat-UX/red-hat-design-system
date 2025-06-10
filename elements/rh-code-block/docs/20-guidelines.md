@@ -1,105 +1,86 @@
-## Usage
-Use a code block to highlight code text only, no other styles should be 
-included.
+## Guidelines
 
-### When to use a code block
-
-If a block of code text needs to be highlighted separate from paragraphs or 
-other elements, use a code block.
+Use a code block to visually separate code text from other content on the page.
 
 ## Sizes
 
-A code block container can adhere to the width of content within or be fixed 
-width.
+A code block can adhere to the width of code text or be a fixed width.
 
-<uxdot-example color-palette="lightest" width-adjustment="872px">
-  <img alt="Image of fluid width and fixed width code block sizes with text labels below"
-       src="../code-block-sizes.png"
-       width="872"
-       height="702">
+<uxdot-example width-adjustment="800px">
+  <img alt="One horizontally shorter and one horizontally longer code block. Both have identical content."
+       src="../code-block-guidelines-sizes.svg"
+       width="800"
+       height="416">
 </uxdot-example>
 
-## Content
+## Writing content
 
-The length of code text and the number of lines can change the width and height 
-of a code block.
+The length of code and number of lines will change the width and height of a code block.
 
-<uxdot-example color-palette="lightest" width-adjustment="872px">
-  <img alt="Image of two code blocks; one code block is fluid width showing only one line and the other code block is fixed width showing 10 lines"
-       src="../code-block-content.png"
-       width="872"
-       height="486">
+<uxdot-example width-adjustment="800px">
+  <img alt="two code blocks; one code block is fluid width showing only one line and the other code block is fixed width showing 10 lines"
+       src="../code-block-guidelines-writing-content.svg"
+       width="800"
+       height="416">
 </uxdot-example>
-
 
 ## Responsive design
 
-### Large breakpoints
+A code block does not change much as screens get smaller.
 
-<uxdot-example width-adjustment="1000px" variant="full" no-border alignment="left">
-  <img alt="Image of code blocks on desktop and tablet breakpoints"
-       src="../code-block-breakpoints-large.png"
-       width="1000"
-       height="602">
-</uxdot-example>
-
-### Small breakpoints
-
-Container spacing and code text size reduces as breakpoints get smaller.
-
-<uxdot-example width-adjustment="576px" variant="full" no-border alignment="left">
-  <img alt="Image of code blocks on large and small mobile breakpoints"
-       src="../code-block-breakpoints-small.png"
-       width="576"
-       height="573">
+<uxdot-example width-adjustment="1140px" variant="full" no-border alignment="left">
+  <img alt="Code blocks on desktop, tablet, and mobile breakpoints"
+       src="../code-block-guidelines-responsive-design.svg"
+       width="1140"
+       height="640">
 </uxdot-example>
 
 ## Best practices
 
 ### Font family
 
-<uxdot-best-practice variant="do">
-  <uxdot-example slot="image" width-adjustment="768px">
-    <img alt="Code block text using Red Hat Mono"
-         src="../code-block-best-practices-font-family-do.svg"
-         width="768"
-         height="192">
-  </uxdot-example>
+<div class="grid sm-two-columns">
+  <uxdot-best-practice variant="do">
+    <uxdot-example slot="image">
+      <img src="../code-block-guidelines-best-practice-1-do.svg"
+        alt="A code block with the default red hat code font family"
+        width="418"
+        height="256">
+    </uxdot-example>
+    <p>Always use the <code>--rh-font-family-code</code> token.</p>
+  </uxdot-best-practice>
 
-  <p>Use <code>--rh-font-family-code</code>.</p>
-</uxdot-best-practice>
-
-<uxdot-best-practice variant="dont">
-  <uxdot-example slot="image" width-adjustment="768px">
-    <img alt="Code block text using Red Hat Text"
-         src="../code-block-best-practices-font-family-dont.svg"
-         width="768"
-         height="192">
-  </uxdot-example>
-
-  <p>Do not use a different font family token than <code>--rh-font-family-code</code>.</p>
-</uxdot-best-practice>
+  <uxdot-best-practice variant="dont">
+    <uxdot-example slot="image">
+      <img src="../code-block-guidelines-best-practice-1-dont.svg"
+        alt="A code block with a non-monospaced font with tighter letter spacing"
+        width="418"
+        height="256">
+    </uxdot-example>
+    <p>Do not use a different font family.</p>
+  </uxdot-best-practice>
+</div>
 
 ### Customizing
 
-<uxdot-best-practice variant="do">
-  <uxdot-example slot="image" width-adjustment="768px">
-    <img alt="Code block using default styling"
-         src="../code-block-best-practices-customizing-do.svg"
-         width="768"
-         height="192">
-  </uxdot-example>
+<div class="grid sm-two-columns">
+  <uxdot-best-practice variant="do">
+    <uxdot-example slot="image">
+      <img src="../code-block-guidelines-best-practice-2-do.svg"
+        alt="A code block with a block of HTML that is syntax highlighted"
+        width="418"
+        height="256">
+    </uxdot-example>
+    <p>Customize code text using syntax highlighting only.</p>
+  </uxdot-best-practice>
 
-  <p>Use the available options for customizing code block. (Adjusting syntax highlighting is ok.)</p>
-</uxdot-best-practice>
-
-<uxdot-best-practice variant="dont">
-  <uxdot-example slot="image" width-adjustment="768px">
-    <img alt="Code block with white background and black border"
-         src="../code-block-best-practices-customizing-dont.svg"
-         width="768"
-         height="192">
-  </uxdot-example>
-
-  <p>Do not change the code block styling, especially if it will look like other text containers on the same page.</p>
-</uxdot-best-practice>
+  <uxdot-best-practice variant="dont">
+    <uxdot-example slot="image">
+      <img src="../code-block-guidelines-best-practice-2-dont.svg"
+        alt="A code block with a white background and black borders."
+        width="418"
+        height="256">
+    </uxdot-example>
+    <p>Do not change other code block styles.</p>
+  </uxdot-best-practice>
+</div>

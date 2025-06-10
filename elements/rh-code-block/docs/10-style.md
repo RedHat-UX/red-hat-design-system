@@ -1,73 +1,94 @@
 ## Style
 
-A code block displays read-only text with code formatting within a light gray 
-container.
+A code block displays read-only code-formatted text within a flexible container.
 
 ### Anatomy
 
 <figure>
-  <uxdot-example width-adjustment="870px">
-    <img src="../code-block-anatomy.png"
-         alt="Image of code block anatomy showing two annotations"
-         width="872"
-         height="285">
+  <uxdot-example width-adjustment="503px">
+    <img src="../code-block-style-anatomy.svg"
+         alt="Code block anatomy showing six annotations. See figcaption below for more information."
+         width="503"
+         height="192">
   </uxdot-example>
   <figcaption>
     <ol>
+      <li>Line numbers</li>
       <li>Code text</li>
+      <li>Copy button</li>
+      <li>Wrap button</li>
+      <li>Expand/collapse</li>
       <li>Container</li>
     </ol>
   </figcaption>
 </figure>
 
 ## Color scheme
-<a id="theme"></a>
 
 Code block is available for both light and dark color schemes.
 
-### Light theme
+### Light scheme
 
-<uxdot-example color-palette="lightest" width-adjustment="872px">
-  <img src="../code-block-theme-light.png"
-       alt="Image of light theme code block"
-       width="872"
-       height="285">
+<uxdot-example color-palette="lightest" width-adjustment="503px">
+  <img src="../code-block-style-scheme-light.svg"
+       alt="Light scheme code block has a gray background and black text"
+       width="503"
+       height="192">
 </uxdot-example>
 
 
-### Dark theme
+### Dark scheme
 
-<uxdot-example color-palette="darkest" width-adjustment="872px">
-  <img src="../code-block-theme-dark.png"
-       alt="Image of dark theme code block"
-       width="872"
-       height="285">
+<uxdot-example color-palette="darkest" width-adjustment="503px">
+  <img src="../code-block-style-scheme-dark.svg"
+       alt="Dark scheme code block has a dark gray background thats slightly lighter than black and white text"
+       width="503"
+       height="192">
 </uxdot-example>
 
-### Configuration
+## Variants
 
-Code block text is always horizontally and vertically centered.
+### Line numbers
 
-<uxdot-example color-palette="lightest" width-adjustment="872px">
-  <img src="../code-block-configuration.png"
-       alt="Image of a code block showing alignment and border radius specs"
-       width="872"
-       height="307">
+A code block may or may not show line numbers.
+
+<uxdot-example width-adjustment="503px">
+  <img src="../code-block-style-variants-line-numbers.svg"
+       alt="Two code blocks, one with line numbers and one without"
+       width="503"
+       height="416">
+</uxdot-example>
+
+<rh-table>
+
+| Property                | Light Scheme                | Dark Scheme                 |
+|-------------------------|-----------------------------|-----------------------------|
+| Line numbers text color | `--rh-color-text-secondary` | `--rh-color-text-secondary` |
+| Line numbers border     | `--rh-color-border-subtle`  | `--rh-color-border-subtle`  |
+
+</rh-table>
+
+### Expand or collapse
+
+A code block may expand or collapse to display more or less code. There must be at least 5 lines of code in order to display this feature.
+
+<rh-alert state="info">
+  <h3 slot="header">Helpful tip</h3>
+  <p>A code block is always collapsed by default if there are at least 5 lines of code.</p>
+</rh-alert>
+
+<uxdot-example width-adjustment="599px">
+  <img src="../code-block-style-variants-expand-collapse.svg"
+       alt="Three code blocks. One short, 3 line code block without an expand button. The next is a collapsed code block that has more than 5 lines with an expand/collapse button. The third is an expanded code block."
+       width="599"
+       height="680">
 </uxdot-example>
 
 ## Space
 
-Container spacing reduces as breakpoints get smaller.
-
-<uxdot-example color-palette="lightest" width-adjustment="872px">
-  <img src="../code-block-space.png"
-       alt="Image of a code block spacing for all breakpoints"
-       width="872"
-       height="588">
+<uxdot-example width-adjustment="599px">
+  <img src="../code-block-style-space.svg"
+       alt="Code block has 24px padding around the outer edges, 16px between the line numbers and the code excerpt, 8px around the show more button, and 16px margin top between the code and the show more button."
+       width="599"
+       height="688">
 </uxdot-example>
-
-<uxdot-spacer-tokens-table tokens="lg, xl"></uxdot-spacer-tokens-table>
-
-## Interaction states
-A code block includes only text and is not interactive right now.
-
