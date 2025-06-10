@@ -87,7 +87,7 @@ or anything else, please submit a [GitHub issue][issues].
 | `<rh-dialog>`: scrollbar reset | {{p()}} | The dialog element will now reset scrollbar when closed, even if it was not in focus at the time of closure. |
 | `<rh-dialog>`, `<rh-navigation-primary>`, `<rh-navigation-secondary>`: token update | {{p()}} | Updated usage of design tokens |
 | `<rh-footer>`: scrollbar fix | {{p()}} | Only show vertical scrollbars if content overflows |
-| `<rh-navigation-primary>`: slot docunmentation | {{p()}} | Corrected missing named logo slot documentation |
+| `<rh-navigation-primary>`: slot documentation | {{p()}} | Corrected missing named logo slot documentation |
 | `<rh-navigation-primary>`: active state | {{p()}} | Corrected :active state for hamburger and secondary slotted items |
 | `<rh-navigation-primary>`: cursor style | {{p()}} | Corrected cursor style on secondary links |
 | `<rh-navigation-primary>`: safari height | {{p()}} | Corrected render height for navigation items in safari |
