@@ -45,7 +45,7 @@ websites, libraries, and tools.
 
 <uxdot-example color-palette="lightest" width-adjustment="807px">
   <img alt="Flow showing how a color like brand red becomes a token, how it is named, and how it is applied to a call to action"
-       src="/tokens/images/design-tokens-intro.png">
+       src="/tokens/images/design-tokens-intro.avif">
 </uxdot-example>
 
 ## Installation
