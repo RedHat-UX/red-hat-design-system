@@ -54,6 +54,20 @@ or anything else, please submit a [GitHub issue][issues].
 
 <section aria-labelledby="version-3.0.0">
 
+### Patches from version 3.0.3
+
+<rh-table>
+
+| Change        | Type        | Notes        |
+| ------------- | ----------- | ------------ |
+| `<rh-code-block>`: performance improvement | {{p()}} | Improve performance of line numbers |
+| `<rh-navigation-primary>`: prevent error | {{p()}} | Prevent an error from being thrown in certain circumstances when the element connects |
+
+</rh-table>
+
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v3.0.3">View all version 3.0.3 release notes</rh-cta>
+
+
 ### Patches from version 3.0.2
 
 <rh-table>
