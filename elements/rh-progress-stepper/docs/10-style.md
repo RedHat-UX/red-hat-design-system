@@ -2,15 +2,7 @@
 
 ## Colors
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-The Progress Steps component uses the following color variables for different states:
-=======
 The Progress Stepper component uses the following color variables for different states:
->>>>>>> 50061e12 (Restructured Stepper)
-=======
-The Progress Stepper component uses the following color variables for different states:
->>>>>>> 50061e12d9d18651a6825147430c1778b71ad546
 
 | State | Color Variable | Description |
 |-------|----------------|-------------|
@@ -60,15 +52,7 @@ Icon size is controlled by:
 You can customize the appearance of the Progress Steps component using the following CSS custom properties:
 
 ```css
-<<<<<<< HEAD
-<<<<<<< HEAD
-rh-progress-steps {
-=======
 rh-progress-stepper {
->>>>>>> 50061e12 (Restructured Stepper)
-=======
-rh-progress-stepper {
->>>>>>> 50061e12d9d18651a6825147430c1778b71ad546
   /* Container styles */
   --rh-space-lg: 1rem; /* Gap between steps */
 }
@@ -112,15 +96,7 @@ through each step of the task.
 
 - **Finished step** - A green circle with a check mark indicates a user has
   completed a previous step.
-<<<<<<< HEAD
-<<<<<<< HEAD
-- **Current step** - A bright red circle with a pink border indicates a user
-=======
 - **Current step** - A solid purple circle inside a larger purple circle indicates a user
->>>>>>> 50061e12 (Restructured Stepper)
-=======
-- **Current step** - A solid purple circle inside a larger purple circle indicates a user
->>>>>>> 50061e12d9d18651a6825147430c1778b71ad546
   is viewing or completing the current step.
 - **Error step** - A dark red circle with an exclamation mark indicates there
   is an issue a user should be aware of.
