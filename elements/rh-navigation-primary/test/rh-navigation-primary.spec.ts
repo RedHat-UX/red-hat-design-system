@@ -1,10 +1,16 @@
 import { expect, fixture, nextFrame } from '@open-wc/testing';
-import { setViewport } from '@web/test-runner-commands';
+import { setViewport, sendKeys } from '@web/test-runner-commands';
 import { a11ySnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
 import { html } from 'lit';
 
 import { RhNavigationPrimary } from '@rhds/elements/rh-navigation-primary/rh-navigation-primary.js';
 import { RhNavigationPrimaryItem } from '../rh-navigation-primary-item.js';
+
+function press(key: string) {
+  return async function() {
+    await sendKeys({ press: key });
+  };
+}
 
 const [
   HamburgerItem1Name,
@@ -168,13 +174,9 @@ describe('<rh-navigation-primary>', function() {
 
       describe('interactions', function() {
         describe('toggling hamburger menu', function() {
-          let summary: HTMLElement | null | undefined;
-
-          beforeEach(async function() {
-            const details = element.shadowRoot?.querySelector('#hamburger');
-            summary = details?.querySelector('summary');
-            summary?.click();
-          });
+          beforeEach(press('Tab'));
+          beforeEach(press('Tab'));
+          beforeEach(press('Enter'));
           beforeEach(async () => await element.updateComplete);
 
           describe('toggle open', function() {
@@ -201,10 +203,7 @@ describe('<rh-navigation-primary>', function() {
           });
 
           describe('toggle closed', function() {
-            beforeEach(function() {
-              summary?.click();
-            });
-
+            beforeEach(press('Enter'));
             beforeEach(async () => await element.updateComplete);
 
             it('menu should be closed', async function() {
