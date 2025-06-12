@@ -47,10 +47,14 @@ The component uses the following color contrast ratios:
 
 ```html
 <<<<<<< HEAD
+<<<<<<< HEAD
 <rh-progress-steps role="list">
 =======
 <rh-progress-stepper role="list">
 >>>>>>> 50061e12 (Restructured Stepper)
+=======
+<rh-progress-stepper role="list">
+>>>>>>> 50061e12d9d18651a6825147430c1778b71ad546
   <rh-progress-step
     role="listitem"
     state="complete"
@@ -78,8 +82,12 @@ The component uses the following color contrast ratios:
     </span>
   </rh-progress-step>
 <<<<<<< HEAD
+<<<<<<< HEAD
 </rh-progress-steps>
 =======
 </rh-progress-stepper>
 >>>>>>> 50061e12 (Restructured Stepper)
+=======
+</rh-progress-stepper>
+>>>>>>> 50061e12d9d18651a6825147430c1778b71ad546
 ``` 

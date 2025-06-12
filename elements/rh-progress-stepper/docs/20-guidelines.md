@@ -32,10 +32,14 @@
 ### Good Example
 ```html
 <<<<<<< HEAD
+<<<<<<< HEAD
 <rh-progress-steps>
 =======
 <rh-progress-stepper>
 >>>>>>> 50061e12 (Restructured Stepper)
+=======
+<rh-progress-stepper>
+>>>>>>> 50061e12d9d18651a6825147430c1778b71ad546
   <rh-progress-step
     state="complete"
     label="Verify System"
@@ -54,19 +58,27 @@
     description="Ready to begin installation"
   ></rh-progress-step>
 <<<<<<< HEAD
+<<<<<<< HEAD
 </rh-progress-steps>
 =======
 </rh-progress-stepper>
 >>>>>>> 50061e12 (Restructured Stepper)
+=======
+</rh-progress-stepper>
+>>>>>>> 50061e12d9d18651a6825147430c1778b71ad546
 ```
 
 ### Bad Example
 ```html
 <<<<<<< HEAD
+<<<<<<< HEAD
 <rh-progress-steps>
 =======
 <rh-progress-stepper>
 >>>>>>> 50061e12 (Restructured Stepper)
+=======
+<rh-progress-stepper>
+>>>>>>> 50061e12d9d18651a6825147430c1778b71ad546
   <rh-progress-step
     state="complete"
     label="Step 1: System Verification Process"
@@ -85,10 +97,14 @@
     description=""
   ></rh-progress-step>
 <<<<<<< HEAD
+<<<<<<< HEAD
 </rh-progress-steps>
 =======
 </rh-progress-stepper>
 >>>>>>> 50061e12 (Restructured Stepper)
+=======
+</rh-progress-stepper>
+>>>>>>> 50061e12d9d18651a6825147430c1778b71ad546
 ```
 
 ## Common Use Cases
@@ -96,10 +112,14 @@
 ### Multi-step Forms
 ```html
 <<<<<<< HEAD
+<<<<<<< HEAD
 <rh-progress-steps>
 =======
 <rh-progress-stepper>
 >>>>>>> 50061e12 (Restructured Stepper)
+=======
+<rh-progress-stepper>
+>>>>>>> 50061e12d9d18651a6825147430c1778b71ad546
   <rh-progress-step
     state="complete"
     label="Personal Info"
@@ -118,19 +138,27 @@
     description="Review and submit"
   ></rh-progress-step>
 <<<<<<< HEAD
+<<<<<<< HEAD
 </rh-progress-steps>
 =======
 </rh-progress-stepper>
 >>>>>>> 50061e12 (Restructured Stepper)
+=======
+</rh-progress-stepper>
+>>>>>>> 50061e12d9d18651a6825147430c1778b71ad546
 ```
 
 ### Installation Process
 ```html
 <<<<<<< HEAD
+<<<<<<< HEAD
 <rh-progress-steps>
 =======
 <rh-progress-stepper>
 >>>>>>> 50061e12 (Restructured Stepper)
+=======
+<rh-progress-stepper>
+>>>>>>> 50061e12d9d18651a6825147430c1778b71ad546
   <rh-progress-step
     state="complete"
     label="Download"
@@ -149,19 +177,27 @@
     description="Set up your preferences"
   ></rh-progress-step>
 <<<<<<< HEAD
+<<<<<<< HEAD
 </rh-progress-steps>
 =======
 </rh-progress-stepper>
 >>>>>>> 50061e12 (Restructured Stepper)
+=======
+</rh-progress-stepper>
+>>>>>>> 50061e12d9d18651a6825147430c1778b71ad546
 ```
 
 ### Error Handling
 ```html
 <<<<<<< HEAD
+<<<<<<< HEAD
 <rh-progress-steps>
 =======
 <rh-progress-stepper>
 >>>>>>> 50061e12 (Restructured Stepper)
+=======
+<rh-progress-stepper>
+>>>>>>> 50061e12d9d18651a6825147430c1778b71ad546
   <rh-progress-step
     state="complete"
     label="Upload Files"
@@ -180,10 +216,14 @@
     description="Finish the process"
   ></rh-progress-step>
 <<<<<<< HEAD
+<<<<<<< HEAD
 </rh-progress-steps>
 =======
 </rh-progress-stepper>
 >>>>>>> 50061e12 (Restructured Stepper)
+=======
+</rh-progress-stepper>
+>>>>>>> 50061e12d9d18651a6825147430c1778b71ad546
 ```
 
 ## Usage

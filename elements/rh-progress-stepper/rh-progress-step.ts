@@ -38,7 +38,10 @@ export class RhProgressStep extends LitElement {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 50061e12d9d18651a6825147430c1778b71ad546
   private getIconColor(): string {
     switch (this.state) {
       case 'inactive':
@@ -58,16 +61,23 @@ export class RhProgressStep extends LitElement {
     }
   }
 
+<<<<<<< HEAD
 >>>>>>> 50061e12 (Restructured Stepper)
+=======
+>>>>>>> 50061e12d9d18651a6825147430c1778b71ad546
   render() {
     return html`
       <rh-icon
         icon="${this.getIconName()}"
         set="${this.state === 'custom' ? this.customIconSet : 'ui'}"
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         style="color: ${this.getIconColor()}"
 >>>>>>> 50061e12 (Restructured Stepper)
+=======
+        style="color: ${this.getIconColor()}"
+>>>>>>> 50061e12d9d18651a6825147430c1778b71ad546
       ></rh-icon>
       <strong>${this.label}</strong>
       ${this.description ? html`<p>${this.description}</p>` : ''}
