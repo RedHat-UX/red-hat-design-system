@@ -94,7 +94,7 @@ and adapts to meet new challenges.
 
 Our foundations are implemented through design tokens, which are used in lieu of 
 hard-coded values for color, text attributes, spacing, and more. Tokens help us 
-keep web components flexible and scalable. Additionally, semantic token names 
+keep Web Components flexible and scalable. Additionally, semantic token names 
 help us assign consistent meanings that correspond with foundational guidelines.
 
 <rh-cta href="/tokens/">Learn about our tokens</rh-cta>
