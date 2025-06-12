@@ -1,3 +1,151 @@
+# Guidelines
+
+## Best Practices
+
+### Step Labels
+- Keep step labels concise and clear
+- Use action verbs when possible
+- Limit labels to 2-3 words
+- Be consistent with label formatting
+
+### Descriptions
+- Provide helpful context in descriptions
+- Keep descriptions under 100 characters
+- Use descriptions to explain the current state
+- Make descriptions actionable when possible
+
+### States
+- Use states consistently throughout the process
+- Only one step should be active at a time
+- Completed steps should remain complete
+- Use warning state sparingly
+- Use fail state only for critical errors
+
+### Custom Icons
+- Use custom icons only when necessary
+- Ensure custom icons are meaningful
+- Maintain consistency with the design system
+- Test custom icons for clarity at different sizes
+
+## Examples
+
+### Good Example
+```html
+<rh-progress-steps>
+  <rh-progress-step
+    state="complete"
+    label="Verify System"
+    description="System requirements checked"
+  ></rh-progress-step>
+  
+  <rh-progress-step
+    state="active"
+    label="Configure Network"
+    description="Setting up network parameters"
+  ></rh-progress-step>
+  
+  <rh-progress-step
+    state="inactive"
+    label="Install Software"
+    description="Ready to begin installation"
+  ></rh-progress-step>
+</rh-progress-steps>
+```
+
+### Bad Example
+```html
+<rh-progress-steps>
+  <rh-progress-step
+    state="complete"
+    label="Step 1: System Verification Process"
+    description="We have completed the system verification process which includes checking all system requirements and dependencies"
+  ></rh-progress-step>
+  
+  <rh-progress-step
+    state="active"
+    label="Step 2"
+    description=""
+  ></rh-progress-step>
+  
+  <rh-progress-step
+    state="inactive"
+    label="Step 3"
+    description=""
+  ></rh-progress-step>
+</rh-progress-steps>
+```
+
+## Common Use Cases
+
+### Multi-step Forms
+```html
+<rh-progress-steps>
+  <rh-progress-step
+    state="complete"
+    label="Personal Info"
+    description="Basic information provided"
+  ></rh-progress-step>
+  
+  <rh-progress-step
+    state="active"
+    label="Preferences"
+    description="Setting your preferences"
+  ></rh-progress-step>
+  
+  <rh-progress-step
+    state="inactive"
+    label="Review"
+    description="Review and submit"
+  ></rh-progress-step>
+</rh-progress-steps>
+```
+
+### Installation Process
+```html
+<rh-progress-steps>
+  <rh-progress-step
+    state="complete"
+    label="Download"
+    description="Files downloaded successfully"
+  ></rh-progress-step>
+  
+  <rh-progress-step
+    state="active"
+    label="Install"
+    description="Installing components"
+  ></rh-progress-step>
+  
+  <rh-progress-step
+    state="inactive"
+    label="Configure"
+    description="Set up your preferences"
+  ></rh-progress-step>
+</rh-progress-steps>
+```
+
+### Error Handling
+```html
+<rh-progress-steps>
+  <rh-progress-step
+    state="complete"
+    label="Upload Files"
+    description="Files uploaded successfully"
+  ></rh-progress-step>
+  
+  <rh-progress-step
+    state="warn"
+    label="Process Files"
+    description="Some files need attention"
+  ></rh-progress-step>
+  
+  <rh-progress-step
+    state="inactive"
+    label="Complete"
+    description="Finish the process"
+  ></rh-progress-step>
+</rh-progress-steps>
+```
+
 ## Usage
 
 Progress steps are best used when displaying content that must be completed in 

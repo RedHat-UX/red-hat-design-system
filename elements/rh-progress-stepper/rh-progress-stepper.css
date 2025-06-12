@@ -1,0 +1,65 @@
+:host {
+  padding: 0;
+  display: grid;
+  align-content: baseline;
+  justify-content: normal;
+  grid-auto-columns: 1fr;
+
+  & #current-step {
+    grid-area: currentstep;
+    display:none;
+    font-weight: var(--rh-font-weight-body-text-medium, 500);
+    text-decoration-line: underline;
+    text-decoration-style: dotted;
+    text-decoration-skip-ink: none;
+    text-decoration-color: var(--rh-color-text-secondary, #707070);
+    text-decoration-thickness: 1.5px; /* 9.375% */
+    text-underline-offset: 30%; /* 4.8px */
+    text-underline-position: from-font;
+  }
+}
+
+:host([orientation="vertical"]) {
+  grid-auto-flow: row;
+  --stepLineAngle: 90deg;
+  --stepTemplateColumns: calc(var(--rh-length-xl, 24px) + 4px) auto;
+  --stepTemplateRows: auto;
+  --stepJustifySelf: start;
+  --stepIconJustifySelf: center;
+  --stepDescriptionGridColumn: 2;
+  --stepCompactHPadding: 0;
+  --stepColGap: var(--rh-length-lg, 16px);
+  --stepRowGap: var(--rh-length-lg, 16px);
+  
+  & ::slotted(rh-progress-step:last-of-type) { background: none; }
+}
+
+:host([orientation="horizontal"]) {
+  grid-auto-flow: column;
+  grid-auto-columns: 50px;
+  --stepLineAngle: -180deg;
+  --stepTemplateColumns: auto;
+  --stepTemplateRows: calc(var(--rh-length-xl, 24px) + 4px) auto 1fr;
+  --stepJustifySelf: baseline;
+  --stepDescriptionMargin: inherit;
+  --stepCompactVPadding: 0;
+  --stepColGap: var(--rh-length-lg, 16px);
+  --stepRowGap: var(--rh-length-lg, 16px);
+  
+}
+
+:host([compact]) { 
+  grid-template-areas: "currentstep";
+  grid-template-rows: 32px auto;
+  --stepTemplateRows: auto;
+  --stepCompactDisplay: none;
+  --stepCompactVPadding: var(--rh-length-lg, 16px);
+  --stepCompactHPadding: var(--rh-length-lg, 16px);
+  
+
+  & #current-step { display: block; grid-column: 1 / -1; }
+}
+
+::slotted(rh-progress-step:last-of-type) {
+  --stepLineStyle: none;
+}
