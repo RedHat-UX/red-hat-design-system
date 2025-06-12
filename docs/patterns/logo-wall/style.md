@@ -63,7 +63,7 @@ Logo walls define layout rules for spacing logos, and their styles.
  - Logos are in a container with 16px of padding on all sides and a corner radius of 3px.
 
 <uxdot-example width-adjustment="1010px">
-  <img src="../style-space-group-bordered.png"
+  <img src="../style-space-group-bordered.avif"
       alt="Example of a bordered logo wall with spacing values."
       width="1120"
       height="110">
@@ -75,7 +75,7 @@ Logo walls define layout rules for spacing logos, and their styles.
  - All containers using the borderless style have the same height but will likely have different widths depending on the dimensions of the logo.
 
 <uxdot-example width-adjustment="1113px">
-  <img src="../style-space-group-borderless.png"
+  <img src="../style-space-group-borderless.avif"
       alt="Example of a borderless logo wall with spacing values."
       width="1113"
       height="110">

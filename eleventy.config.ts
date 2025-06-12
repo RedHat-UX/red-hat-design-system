@@ -59,8 +59,8 @@ export default async function(eleventyConfig: UserConfig) {
   eleventyConfig.watchIgnores?.add('elements/*/test/');
   eleventyConfig.watchIgnores?.add('lib/elements/*/test/');
   eleventyConfig.watchIgnores?.add('**/*.tsbuildinfo');
-  eleventyConfig.addPassthroughCopy('docs/**/*.{svg,jpg,jpeg,png}');
-  eleventyConfig.addPassthroughCopy('elements/*/demo/**/*.{svg,jpg,jpeg,png}');
+  eleventyConfig.addPassthroughCopy('docs/**/*.{svg,jpg,jpeg,png,webp,avif}');
+  eleventyConfig.addPassthroughCopy('elements/*/demo/**/*.{svg,jpg,jpeg,png,webp,avif}');
   eleventyConfig.addPassthroughCopy('docs/CNAME');
   eleventyConfig.addPassthroughCopy('docs/.nojekyll');
   eleventyConfig.addPassthroughCopy('docs/robots.txt');

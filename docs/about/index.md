@@ -84,7 +84,7 @@ and adapts to meet new challenges.
 <rh-cta href="https://www.redhat.com/en/about/brand/standards">Learn about the Red Hat brand</rh-cta>
 
 <uxdot-example variant="full" no-border alignment="left" width-adjustment="1140px">
- <img src="../assets/about/about-rhds-brand-standards.png"
+ <img src="../assets/about/about-rhds-brand-standards.avif"
       alt="the words 'brand standards' framed by elements and shapes in Red Hat colors"
       width="1140"
       height="286">
@@ -100,7 +100,7 @@ help us assign consistent meanings that correspond with foundational guidelines.
 <rh-cta href="/tokens/">Learn about our tokens</rh-cta>
 
 <uxdot-example color-palette="lightest" width-adjustment="807px">
- <img src="/tokens/images/design-tokens-intro.png"
+ <img src="/tokens/images/design-tokens-intro.avif"
       alt="Flow showing how a color like brand red becomes a token, how it is named, and how it is applied to a call to action"
       width="807"
       height="96">

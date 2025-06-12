@@ -124,7 +124,7 @@ included at the same time. Move any extra content to other parts of the page if
 possible.
 
 <uxdot-example width-adjustment="596px">
-  <img src="./sticky-card-content.png"
+  <img src="./sticky-card-content.avif"
        alt="Sticky card content sections"
        width="596"
        height="399">

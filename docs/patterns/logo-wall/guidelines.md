@@ -30,7 +30,7 @@ logos.
 ### Bordered
 
 <uxdot-example width-adjustment="1010px">
-  <img src="../guidelines-variants-bordered.png"
+  <img src="../guidelines-variants-bordered.avif"
       alt="An example of a bordered logo wall with 6 logos each inside of a bordered container."
       width="1120"
       height="110">
@@ -39,7 +39,7 @@ logos.
 ### Borderless
 
 <uxdot-example width-adjustment="1010px">
-  <img src="../guidelines-variants-borderless.png"
+  <img src="../guidelines-variants-borderless.avif"
       alt="An example of a borderless logo wall with 6 logos."
       width="1113"
       height="110">
@@ -137,7 +137,7 @@ with this case</rh-alert>
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
     <uxdot-example slot="image" alignment="left" width-adjustment="556px">
-      <img src="../guidelines-bestpractices-sizing-do.png"
+      <img src="../guidelines-bestpractices-sizing-do.avif"
       alt="Example of a borderless logo wall with similarly sized logos that represent each partner evenly."
       width="556"
       height="55">
@@ -147,7 +147,7 @@ with this case</rh-alert>
 
   <uxdot-best-practice variant="dont">
     <uxdot-example slot="image" alignment="left" width-adjustment="556px">
-      <img src="../guidelines-bestpractices-sizing-dont.png"
+      <img src="../guidelines-bestpractices-sizing-dont.avif"
       alt="Example of a borderless logo wall in which the sizes of logos varies and disproportionately represents each partner."
       width="559"
       height="48">
@@ -161,7 +161,7 @@ with this case</rh-alert>
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
     <uxdot-example slot="image" alignment="left" width-adjustment="556px">
-      <img src="../guidelines-bestpractices-align-do.png"
+      <img src="../guidelines-bestpractices-align-do.avif"
       alt="Example of a borderless logo wall in which each logo is horizontally and vertically aligned in its container."
       width="556"
       height="55">
@@ -171,7 +171,7 @@ with this case</rh-alert>
 
   <uxdot-best-practice variant="dont">
     <uxdot-example slot="image" alignment="left" width-adjustment="556px">
-      <img src="../guidelines-bestpractices-align-dont.png"
+      <img src="../guidelines-bestpractices-align-dont.avif"
       alt="Example of a borderless logo wall in which each logo is aligned to the bottom of the container."
       width="556"
       height="55">

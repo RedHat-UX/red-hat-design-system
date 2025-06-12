@@ -100,7 +100,7 @@ Note that background images inserted into a page via CSS are always considered d
 When writing alternative text, it’s important to first consider the image’s context. An image’s meaning or function may be more relevant than its literal depiction. So, the same image may need very different alt text in different contexts.
 
 <uxdot-example width-adjustment="500px" no-border class="limit-width">
-  <img src="/assets/accessibility/Its_A_Wonderful_Life.jpg"
+  <img src="/assets/accessibility/Its_A_Wonderful_Life.avif"
       alt="George Bailey hugs his wife, Mary, and holds his daughter, Zuzu, in the movie It's a Wonderful Life"
       width="720"
       height="540">
@@ -115,7 +115,7 @@ Images acting as buttons or links are functional, and thus serve different purpo
 <uxdot-example color-palette="lightest">
   <figure>
     <a href="https://www.redhat.com/">
-      <img src="/assets/logo-redhat.png"
+      <img src="/assets/logo-redhat.avif"
         alt="Red Hat homepage"
         width="613"
         height="145">
@@ -127,7 +127,7 @@ If the above image supplements the text of an article about Red Hat or our produ
 
 ```html rhcodeblock
 <a href="https://www.redhat.com/">
-  <img src="logo-redhat.png" alt="Red Hat homepage" />
+  <img src="logo-redhat.avif" alt="Red Hat homepage" />
 </a>
 ```
 
