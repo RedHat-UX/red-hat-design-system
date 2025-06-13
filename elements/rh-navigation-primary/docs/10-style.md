@@ -98,7 +98,7 @@ Certain elements have specific hover states.
 - The primary menu bottom border changes to gray
 - Links change color and display a dashed underline
 - The utility menu background changes to gray
-- The utility menu border changes to a Hybrid style gradient
+- The utility menu border changes to a [Hybrid style](/elements/navigation-primary/style/#hybrid-style) gradient
 
 <uxdot-example color-palette="lighter" no-border>
   <img alt="Two navigations. The first shows a cursor hovering over the first item and a gray border underneath. The second shows two hover states. A link with an underline and a utility nav trigger with a darker background and hybrid style border."
