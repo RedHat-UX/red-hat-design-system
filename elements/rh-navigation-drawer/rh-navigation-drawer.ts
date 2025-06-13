@@ -25,9 +25,9 @@ import styles from './rh-navigation-drawer.css';
 
 /**
  * Navigation Drawer is a component that displays a navigation menu in a vertical drawer in wide viewports and a disclosure in narrow viewports.
- * @slot - Place navigation content here
- * @slot header - Place header content here
- * @slot footer - Place footer content here
+ * @slot - Drawer content such as vertical navigation elements
+ * @slot header - (optional) header content such as titles and filters
+ * @slot footer - (optional) Footer content such as links and copyright info
  */
 
 @customElement('rh-navigation-drawer')
@@ -89,7 +89,7 @@ export class RhNavigationDrawer extends LitElement {
   private _compact = true;
 
   /**
-   * The selector for the container element to observe
+   * The selector for the element to observe for container width sizing
    */
   @property({ reflect: true }) container?: string;
 
@@ -111,7 +111,7 @@ export class RhNavigationDrawer extends LitElement {
   accessibleLabelExpanded = 'Collapse navigation';
 
   /**
-   * Breakpoint at which the drawer switches to mobile disclosure pattern
+   * Breakpoint at which the element switches from mobile disclosure pattern to a drawer
    * Available breakpoints: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
    */
   @property({ attribute: 'expand-at' })
