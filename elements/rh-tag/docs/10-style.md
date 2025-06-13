@@ -29,7 +29,7 @@ icon.
 There are three available tag styles: `Filled`, `Outlined`, and `Desaturated`.
 
 <uxdot-example color-palette="lightest" width-adjustment="231px">
-  <img alt="Image of 3 tags, a filled variant with a red background and red border, an outlined variant with a white background and red border, and a desaturated variant with a white background and dark grey border"
+  <img alt="Image of 3 tags, a filled variant with a red background and red border, an outlined variant with a white background and red border, and a desaturated variant with a white background and dark gray border"
        src="../tag-style-variants-style.svg"
        width="231"
        height="29">

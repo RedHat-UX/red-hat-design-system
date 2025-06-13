@@ -18,11 +18,11 @@ subnav:
 ## Usage
 
 Now that you've installed the Red Hat Design System, here's more information
-about how to use the web components.
+about how to use the Web Components.
 
 ## Using react wrappers
 
-React wrappers make it possible to use web components within React JSX files.
+React wrappers make it possible to use Web Components within React JSX files.
 Follow the steps below to learn how.
 
 ### 1. Initial setup
@@ -71,8 +71,8 @@ export function App() {
 
 ## Using RHDS elements with Vue
 
-To get web components to work with Vue, it’s pretty easy and straightforward.
-Follow the steps below to use web components in a Vue app.
+To get Web Components to work with Vue, it’s pretty easy and straightforward.
+Follow the steps below to use Web Components in a Vue app.
 
 ### 1. Initial setup
 
@@ -86,7 +86,7 @@ import App from "./App.vue";
 ### 2. Import elements and patterns
 
 Add the import statements to the top of the `<script>` tag in the file in which
-you're using web components. Below is an example of importing `<rh-card>` to a
+you're using Web Components. Below is an example of importing `<rh-card>` to a
 file called `HelloWorld.vue`.
 
 ```js rhcodeblock

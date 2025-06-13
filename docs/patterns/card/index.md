@@ -36,8 +36,8 @@ it's near. Several cards can be used together to group related information.
 
 ## Customizing cards
 
-Cards act as both themeable containers and also respond to the color theme from
-their themeable containers.
+Cards act as both themable containers and also respond to the color theme from
+their themable containers.
 
 To customize a card the design tokens must be altered. These design tokens are
 different depending on the context for the card (light or dark theme).
