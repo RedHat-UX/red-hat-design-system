@@ -43,7 +43,7 @@ const PALETTE_RE = /(er|est)+/g;
  *              The font weight for headings in the header and body
  */
 @customElement('rh-card')
-@colorPalettes('lightest', 'lighter', 'darker', 'darkest')
+@colorPalettes
 @themable
 export class RhCard extends LitElement {
   static styles = [styles];
@@ -68,43 +68,25 @@ export class RhCard extends LitElement {
 
   #slots = new SlotController(this, 'header', 'image', null, 'footer');
 
-  #isPromo = this.variant === 'promo';
-  #isStandardPromo = false;
-
-  willUpdate() {
-    this.#isPromo = this.variant === 'promo';
-    this.#isStandardPromo =
-         this.#isPromo
+  override render() {
+    const isPromo = this.variant === 'promo';
+    const isStandardPromo =
+         isPromo
       && this.#slots.hasSlotted(null)
       && this.#slots.isEmpty('image')
       && this.#slots.isEmpty('header');
-  }
 
-  get #computedPalette() {
-    if (this.#isStandardPromo) {
-      return `${`${this.colorPalette ?? 'lightest'}`.replace(PALETTE_RE, '')}er` as 'lighter' | 'darker';
-    } else if (this.#isPromo) {
-      return `${`${this.colorPalette ?? 'lightest'}`.replace(PALETTE_RE, '')}est` as 'lightest' | 'darkest';
+    let computedPalette: ColorPalette | undefined;
+    if (isStandardPromo) {
+      computedPalette = `${`${this.colorPalette ?? 'lightest'}`.replace(PALETTE_RE, '')}er` as 'lighter' | 'darker';
+    } else if (isPromo) {
+      computedPalette = `${`${this.colorPalette ?? 'lightest'}`.replace(PALETTE_RE, '')}est` as 'lightest' | 'darkest';
     } else {
-      switch (this.colorPalette) {
-        case 'lightest':
-        case 'lighter':
-        case 'darkest':
-          return this.colorPalette;
-        case 'light':
-          return 'lighter';
-        case 'darker':
-        case 'dark':
-          return 'darkest';
-      }
+      computedPalette = this.colorPalette;
     }
-  }
 
-
-  override render() {
     const promo = this.variant === 'promo';
-    const standard = this.#isStandardPromo;
-    const computedPalette = this.#computedPalette;
+    const standard = isStandardPromo;
     const { variant = '' } = this;
     const hasHeader = this.#slots.hasSlotted('header');
     const hasFooter = this.#slots.hasSlotted('footer');
