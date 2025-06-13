@@ -38,6 +38,11 @@
     max-height: initial;
   }
 
+  #sidebar {
+    position: relative;
+    z-index: 300;
+  }
+
   #nav {
     height: 100%;
   }
