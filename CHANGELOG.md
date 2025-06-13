@@ -1,5 +1,11 @@
 # @rhds/elements
 
+## 3.0.3
+### Patch Changes
+
+- 7c845cd: `<rh-navigation-primary>`: prevent an error from being thrown in certain circumstances when the element connects
+- 4ae9221: `<rh-code-block>`: improve performance of line numbers
+
 ## 3.0.2
 ### Patch Changes
 
@@ -344,10 +350,10 @@
 - f32f39d: `<rh-subnav>`: restored overflow scrolling
 - f32f39d: `<rh-navigation-secondary>`: reduce JavaScript payload
 - f32f39d: `<rh-avatar>`: improved layout compatibility for plain variant avatars
-- f32f39d: `<rh-table>`: remove background colour. Use an `<rh-surface>`, or other themable container element if you need to set a background.
+- f32f39d: `<rh-table>`: remove background color. Use an `<rh-surface>`, or other themable container element if you need to set a background.
 - f32f39d: `<rh-navigation-secondary>`: improve visual rendering when scrollbars are turned on by user
 - 5eaee73: `<rh-alert>`: pause the timer which dismisses a toasted alert when the user hovers or focuses the alert
-- f32f39d: `<rh-tabs>`: remove background from tabs panel and corrected colours
+- f32f39d: `<rh-tabs>`: remove background from tabs panel and corrected colors
 - f32f39d: `<rh-pagination>`: remove background from open variant links
 - f32f39d: `<rh-health-index>`: corrected colors
 - f32f39d: `<rh-subnav>`: corrected focus styles
@@ -388,7 +394,7 @@
 
 - f63c46d: **Color Context**: prevent errors in certain SSR scenarios
 - 249a596: `<rh-alert>`: corrected typography and layouts
-- 613e827: `<rh-code-block>`: ensure that syntax colours and styles are applied when the element upgrades
+- 613e827: `<rh-code-block>`: ensure that syntax colors and styles are applied when the element upgrades
 - 0d70e3f: `<rh-tabs>`: corrects active tab styles in SSR scenarios
 - 7bf5841: `<rh-navigation-secondary>`: corrected style regression in dark color palettes
 - 955d393: `<rh-surface>`: corrected themed text color
@@ -502,7 +508,7 @@
   </rh-skip-link>
   ```
 
-- 82ffb12: `<rh-code-block>`: Added `highlighting="client"` for client-side syntax highlighting with Red Hat colour scheme
+- 82ffb12: `<rh-code-block>`: Added `highlighting="client"` for client-side syntax highlighting with Red Hat color scheme
 - 82ffb12: `<rh-tag>`: added `href` attribute
 
   ```html
@@ -511,8 +517,8 @@
 
 - 82ffb12: Theming: Added [theming tokens][theming] to most elements
 
-  Theming tokens let authors respond to the currently-active colour palette, and
-  are especially useful when implementing [patterns][patterns] using themeable
+  Theming tokens let authors respond to the currently-active color palette, and
+  are especially useful when implementing [patterns][patterns] using themable
   elements.
 
   ```html
@@ -727,7 +733,7 @@
 
 - fa2c4d2: `<rh-cta>`: Removed previously-deprecated `color-palette` attribute
 
-  Use themeable containers (e.g. `<rh-surface>` or `<rh-card>`) instead.
+  Use themable containers (e.g. `<rh-surface>` or `<rh-card>`) instead.
 
   Before:
 
@@ -1134,7 +1140,7 @@
 - fecdcbf: `<rh-accordion>`: added a accents slot with placement options as inline and bottom
 - fecdcbf: Context: aligned context implementation with updated [protocol defintions](https://github.com/webcomponents-cg/community-protocols/blob/main/proposals/context.md#definitions)
 - fecdcbf: Update dependencies, including Lit version 3
-- fecdcbf: `<rh-alert>`: make sure alerts always have to correct (lightest) colour palette
+- fecdcbf: `<rh-alert>`: make sure alerts always have to correct (lightest) color palette
 - fecdcbf: `<rh-tabs>`: allow tabs with long text content to fit into different-sized containers
 
 ## 1.3.2
@@ -1203,11 +1209,11 @@
 
 - 58ab8e60b: Uses `@rhds/tokens` - Red Hat Design Tokens - version 2!
 
-  ⚠️ if your pages directly override "crayon" colour values, (e.g. `--rh-color-red-50`)
+  ⚠️ if your pages directly override "crayon" color values, (e.g. `--rh-color-red-50`)
   then this is a breaking change, since the token names have changed.
 
   However, if your project follows the theming guidelines and only overrides the
-  semantic tokens, then you should automatically receive the new colour values.
+  semantic tokens, then you should automatically receive the new color values.
 
 - 05fbc275a: `<rh-tile>`: radio and checkbox tiles now submit their values in `<form>` elements
 
@@ -1283,7 +1289,7 @@
 - baa382063: `<rh-accordion>`: fixed border color for dark color palettes
 - fb9e3eac0: `<rh-accordion>`: remove dependency on `@patternfly/elements`
 - d4e1ebd4b: `<rh-tag>`: while tag should not be used on dark contexts unless it has the
-  `white` colour, this change ensures that tags that are used on dark context will
+  `white` color, this change ensures that tags that are used on dark context will
   be legible.
 - 422d6279b: `<rh-tile>`: ensure that tiles in a flex container grow along the cross axis
 - 61ca7202d: `<rh-tooltip>`: remove dependency on `@patternfly/elements`
@@ -1745,11 +1751,11 @@
 - de7fd69b: ✨ Added `<rh-context-provider>`.
 
   Component meant to be used internally within rh-elements shadow templates or
-  demos to override colour context.
+  demos to override color context.
 
   `<rh-dialog>`:
 
-  - [fixed][overrides] the colour context overrides for slotted content.
+  - [fixed][overrides] the color context overrides for slotted content.
   - renamed the `variant` attribute to `type`.
 
   [overrides]: https://github.com/patternfly/patternfly-elements/pull/2036#issuecomment-1134460631
@@ -1884,7 +1890,7 @@
   color values
 - c677b9e8: ✨ Added `<rh-pagination>`.
 
-  Pagination is a web component for navigating paginated content.
+  Pagination is a Web Component for navigating paginated content.
 
   ```html
   <rh-pagination>
@@ -2014,7 +2020,7 @@
   to the `href="/en"` url. They have been changed to `href="/"`.
 - fd78f884: `<rh-footer>`: fixed styles when used on redhat.com
 - 86d075e8: **Color Context**: added missing `light` color palette option
-- aa2d5b40: `<rh-blockquote>`: added colour context and updated style tokens
+- aa2d5b40: `<rh-blockquote>`: added color context and updated style tokens
 - b7aa79aa: **Color Context**: added `attribute` option to `@colorContextConsumer` (defaults
   to `false`), allowing elements to make their context private to the shadow DOM.
 - da26ab31: `<rh-alert>`: clicking close button now removes the element.
@@ -2074,7 +2080,7 @@
 - ce2ce34a: chore: added missing development dependencies
 - 750f451a: Added support for PFE 2.0 icon color in rh-footer
 - fe8f11f6: `<rh-stat>`: fixed dark theme font color contrast.
-- 42331698: Fixed nested colour contexts
+- 42331698: Fixed nested color contexts
 - 7f1ae4a8: `<rh-footer>`: fix typography in various page contexts ([#790][issue])
 
   [issue]: https://github.com/RedHat-UX/red-hat-design-system/issues/790
@@ -2277,7 +2283,7 @@
 - 84da26fd: `<rh-footer>`: Corrected href for footer logo links. They were incorrectly pointing
   to the `href="/en"` url. They have been changed to `href="/"`.
 - 94eeec07: `<rh-global-footer>`: fixed logo links, as per `<rh-footer>`
-- 42331698: Fixed nested colour contexts
+- 42331698: Fixed nested color contexts
 - e40e87dc: `<rh-context-provider>`: notify children of context when adding them using javascript.
 - e40e87dc: `<rh-context-provider>`: set color context, rather than palette, on consumers
 - b23a8038: `<rh-tooltip>`: fixed tooltips on dark contexts
@@ -2348,7 +2354,7 @@
 ### Patch Changes
 
 - aa2d5b40: `<rh-tooltip>`: calculated the tooltip offset when the element is first updated
-- aa2d5b40: `<rh-blockquote>`: added colour context and updated style tokens
+- aa2d5b40: `<rh-blockquote>`: added color context and updated style tokens
 - b7aa79aa: **Color Context**: added `attribute` option to `@colorContextConsumer` (defaults
   to `false`), allowing elements to make their context private to the shadow DOM.
 - 41e27ddc: `<rh-tag>`: Fixed styles and tests connected with upstream changes in `BaseLabel`
@@ -2408,7 +2414,7 @@
 
 ### Minor Changes
 
-- c677b9e8: Added `<rh-pagination>`, a web component for navigating paginated content.
+- c677b9e8: Added `<rh-pagination>`, a Web Component for navigating paginated content.
 
   ```html
   <rh-pagination>
@@ -2693,8 +2699,8 @@
 
 ### Minor Changes
 
-- de7fd69: Added `rh-context-provider` component, which is meant to be used internally within rh-elements shadow templates to override colour context.
-  In `rh-dialog`, fix the colour context overrides for slotted content. See https://github.com/patternfly/patternfly-elements/pull/2036#issuecomment-1134460631
+- de7fd69: Added `rh-context-provider` component, which is meant to be used internally within rh-elements shadow templates to override color context.
+  In `rh-dialog`, fix the color context overrides for slotted content. See https://github.com/patternfly/patternfly-elements/pull/2036#issuecomment-1134460631
   In `rh-dialog`, changed the attribute `variant="video"` to `type="video"`, because `<pfe-modal>` uses variant for width.
 - 3248990: Add `rh-stat`
 
