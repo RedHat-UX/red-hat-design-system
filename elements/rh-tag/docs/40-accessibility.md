@@ -27,21 +27,21 @@ color alone.
 <div class="grid xs-two-columns">
   <figure>
     <uxdot-example color-palette="lightest" width-adjustment="418px">
-      <img alt="An image of 3 tags, first tag is outline variant with a white background and blue colored text which reads Tag 1.  The second tag is outline variant with white background and red colored text which reads Tag 2. The third tag is an outline variant with white background and green colored text which reads Tag 3."
+      <img alt="Three outlined tags with the text: Secure, Critical, and Signed."
            src="../tag-a11y-using-color-fig-1.svg"
            width="418"
-           height="29">
+           height="93">
     </uxdot-example>
-    <figcaption><h3>Figure 1</h3></figcaption>
+    <figcaption>Figure 1</figcaption>
   </figure>
   <figure>
     <uxdot-example color-palette="lightest" width-adjustment="418px">
-      <img alt="An image of 3 tags, first tag is outline variant with a white background and blue colored text which reads Secure server and has a blue padlock icon.  The second tag is outline variant with white background and red colored text which reads critical error and has a red circle with an exclamation point icon The third tag is an outline variant with white background and green colored text which reads signed successfully and has a green circle icon with a check mark."
+      <img alt="Three outlined tags with relevant icons alongside the following text: Secure server (lock icon), Critical error (exclamation point icon), Signed successfully (checkmark icon)."
            src="../tag-a11y-using-color-fig-2.svg"
            width="418"
-           height="29">
+           height="93">
     </uxdot-example>
-    <figcaption><h3>Figure 2</h3></figcaption>
+    <figcaption>Figure 2</figcaption>
   </figure>
 </div>
 

@@ -115,6 +115,7 @@ rh-tabs:
 rh-tag: 
  - rh-badge
  - rh-button
+ - rh-chip
 rh-tile:
  - rh-cta
  - rh-card
