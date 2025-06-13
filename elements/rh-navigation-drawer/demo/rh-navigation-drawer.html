@@ -1,33 +1,17 @@
+<!-- A parent container element with container-type: inline-size is required -->
 <div class="container">
-  <div class="flex-wrap">
-    <rh-navigation-drawer>
-      Drawer content
-    </rh-navigation-drawer>
-    <h1>Document content</h1>
-  </div>
+  <rh-navigation-drawer>
+    Drawer content
+  </rh-navigation-drawer>
 </div>
 
 <script type="module">
   import '@rhds/elements/rh-navigation-drawer/rh-navigation-drawer.js';
-  import '@rhds/elements/rh-accordion/rh-accordion.js';
 </script>
 
 <style>
   .container {
     container-type: inline-size;
     height: 100%;
-  }
-
-  .flex-wrap {
-    display: flex;
-    flex-direction: column;
-    gap: var(--rh-space-2xl, 32px);
-    height: 100%;
-  }
-
-  @container (min-width: 992px) {
-    .flex-wrap {
-      flex-direction: row;
-    }
   }
 </style>
