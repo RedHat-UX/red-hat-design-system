@@ -1,0 +1,35 @@
+<div id="container">
+  <div class="grid">
+    <div class="left-column">
+      <rh-navigation-drawer container="#container" collapsible>
+        Drawer content
+      </rh-navigation-drawer>
+    </div>
+    <div class="right-column">
+      <h1>Document content</h1>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+  import '@rhds/elements/rh-navigation-drawer/rh-navigation-drawer.js';
+</script>
+
+<style>
+  #container {
+    container-type: inline-size;
+    height: 100%;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--rh-space-2xl, 32px);
+    width: 100%;
+
+    @container (min-width: 992px) {
+      height: 100%;
+      grid-template-columns: 320px 1fr;
+    }
+  }
+</style>
