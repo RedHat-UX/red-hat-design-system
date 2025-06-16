@@ -41,61 +41,11 @@ fieldset {
       border-start-end-radius: var(--rh-border-radius-default);
     }
 
-    /* &:hover,
-    &:focus-within {
-      background-color:
-        light-dark(var(--rh-color-interactive-secondary-focus),
-          var(--rh-color-gray-70));
-    } */
-
-    /* &:has(input:checked) {
-      background-color: var(--rh-color-interactive-primary-active);
-      border-color: var(--rh-color-border-interactive);
-
-      &:hover,
-      &:focus-within {
-        background-color: var(--rh-color-interactive-primary-focus);
-      }
-    } */
-
-
-
-    /* &:has(input[value="light"]:checked) {
-      color: var(--rh-color-text-primary-on-dark, #ffffff);
-
-      & ~ label:has(input:not(:checked)) {
-        &:hover,
-        &:focus-within {
-          color: var(--rh-color-text-primary-on-dark, #ffffff);
-        }
-      }
-    } */
-
-    /* &:has(input[value="dark"]:checked) {
-      color: var(--rh-color-text-primary-on-light, #151515);
-    } */
-
-    /* &:has(input[value="light dark"]:checked) {
-      @media (prefers-color-scheme: dark) {
-        color: var(--rh-color-text-primary-on-light, #151515);
-
-        &:hover,
-        &:focus-within {
-          color: var(--rh-color-text-primary-on-light, #151515);
-        }
-      }
-
-      @media (prefers-color-scheme: light) {
-        color: var(--rh-color-text-primary-on-dark, #ffffff);
-
-        & ~ label:has(input:not(:checked)) {
-          &:hover,
-          &:focus-within {
-            color: var(--rh-color-text-primary-on-dark, #ffffff);
-          }
-        }
-      }
-    }  */
+    &:focus-within,
+    &:hover {
+      background-color: var(--rh-color-interactive-secondary-focus);
+      color: light-dark(var(--rh-color-text-primary-on-dark, #ffffff), var(--rh-color-text-primary-on-light, #151515))
+    }
 
     rh-icon {
       z-index: 2;
@@ -112,22 +62,22 @@ fieldset {
       &:focus-visible {
         outline: 1px solid var(--rh-color-interactive-primary-focus);
       }
+    }
 
-      &:has(:checked) {
-        background-color: var(--rh-color-interactive-primary-active);
-        border-color: var(--rh-color-border-interactive);
-        color: var(--rh-color-text-primary);
+    &:has(input:checked) {
+      background-color: var(--rh-color-interactive-primary-active);
+      border-color: var(--rh-color-border-interactive);
+      color: light-dark(var(--rh-color-text-primary-on-dark, #ffffff), var(--rh-color-text-primary-on-light, #151515));
 
-        &:focus-within,
-        &:hover {
-          background-color: var(--rh-color-interactive-primary-focus);
-        }
+      &:focus-within,
+      &:hover {
+        background-color: var(--rh-color-interactive-primary-focus);
       }
     }
   }
 }
 
-fieldset.light {
+/* fieldset.light {
   label {
     &:has(input:checked) {
       color: var(--rh-color-text-primary-on-dark, #ffffff);
@@ -205,7 +155,7 @@ fieldset.system {
       }
     }
   }
-}
+} */
 
 .visually-hidden {
   border: 0;
