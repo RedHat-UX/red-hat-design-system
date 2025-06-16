@@ -40,14 +40,14 @@ fieldset {
       border-start-end-radius: var(--rh-border-radius-default);
     }
 
-    &:hover,
+    /* &:hover,
     &:focus-within {
       background-color:
         light-dark(var(--rh-color-interactive-secondary-focus),
           var(--rh-color-gray-70));
-    }
+    } */
     
-    &:has(input:checked) {
+    /* &:has(input:checked) {
       background-color: var(--rh-color-interactive-primary-active);
       border-color: var(--rh-color-border-interactive);
 
@@ -55,9 +55,11 @@ fieldset {
       &:focus-within {
         background-color: var(--rh-color-interactive-primary-focus);
       }
-    }
+    } */
 
-    &:has(input[value="light"]:checked) {
+    
+
+    /* &:has(input[value="light"]:checked) {
       color: var(--rh-color-text-primary-on-dark, #ffffff);
 
       & ~ label:has(input:not(:checked)) {
@@ -66,13 +68,13 @@ fieldset {
           color: var(--rh-color-text-primary-on-dark, #ffffff);
         }
       }
-    }
+    } */
 
-    &:has(input[value="dark"]:checked) {
+    /* &:has(input[value="dark"]:checked) {
       color: var(--rh-color-text-primary-on-light, #151515);
-    }
+    } */
 
-    &:has(input[value="light dark"]:checked) {
+    /* &:has(input[value="light dark"]:checked) {
       @media (prefers-color-scheme: dark) {
         color: var(--rh-color-text-primary-on-light, #151515);
 
@@ -92,11 +94,7 @@ fieldset {
           }
         }
       }
-    }
-/* 
-    &:has(input:not(:checked)) {
-      color: var(--rh-color-text-primary);
-    } */
+    }  */
 
     rh-icon {
       z-index: 2;
@@ -123,6 +121,86 @@ fieldset {
           background-color: var(--rh-color-interactive-primary-focus);
         }
       }
+    }
+  }
+}
+
+fieldset.light {
+  label {
+      &:has(input:checked) {
+        color: var(--rh-color-text-primary-on-dark, #ffffff);
+        background-color: var(--rh-color-interactive-primary-active);
+        border-color: var(--rh-color-border-interactive);
+      }
+      
+      &:has(input:not(:checked)) {
+        color: var(--rh-color-text-primary-on-light, #151515);
+        
+          &:hover,
+          &:focus-within {
+            color: var(--rh-color-text-primary-on-dark, #ffffff);
+            background-color: var(--rh-color-interactive-secondary-focus);
+          }
+        }
+  }
+}
+
+fieldset.dark {
+  label {
+      &:has(input:checked) {
+        color: var(--rh-color-text-primary-on-light, #151515);
+        background-color: var(--rh-color-interactive-primary-active);
+        border-color: var(--rh-color-border-interactive);
+      }
+      
+      &:has(input:not(:checked)) {
+        color: var(--rh-color-text-primary-on-dark, #ffffff);
+        
+          &:hover,
+          &:focus-within {
+            color: var(--rh-color-text-primary-on-light, #151515);
+            background-color: var(--rh-color-interactive-secondary-focus);
+          }
+        }
+  }
+}
+
+fieldset.system {
+  label {
+    @media (prefers-color-scheme: dark) {
+      &:has(input:checked) {
+        color: var(--rh-color-text-primary-on-light, #151515);
+        background-color: var(--rh-color-interactive-primary-active);
+        border-color: var(--rh-color-border-interactive);
+      }
+      
+      &:has(input:not(:checked)) {
+        color: var(--rh-color-text-primary-on-dark, #ffffff);
+        
+          &:hover,
+          &:focus-within {
+            color: var(--rh-color-text-primary-on-light, #151515);
+            background-color: var(--rh-color-interactive-secondary-focus);
+          }
+        }
+    }
+
+    @media (prefers-color-scheme: light) {
+      &:has(input:checked) {
+        color: var(--rh-color-text-primary-on-dark, #ffffff);
+        background-color: var(--rh-color-interactive-primary-active);
+        border-color: var(--rh-color-border-interactive);
+      }
+      
+      &:has(input:not(:checked)) {
+        color: var(--rh-color-text-primary-on-light, #151515);
+        
+          &:hover,
+          &:focus-within {
+            color: var(--rh-color-text-primary-on-dark, #ffffff);
+            background-color: var(--rh-color-interactive-secondary-focus);
+          }
+        }
     }
   }
 }
