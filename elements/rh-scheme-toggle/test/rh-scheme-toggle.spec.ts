@@ -13,9 +13,9 @@ describe('<rh-scheme-toggle>', function() {
       element = await createFixture<RhSchemeToggle>(html`<rh-scheme-toggle></rh-scheme-toggle>`);
       const klass = customElements.get('rh-scheme-toggle');
       expect(element)
-        .to.be.an.instanceOf(klass)
-        .and
-        .to.be.an.instanceOf(RhSchemeToggle);
+          .to.be.an.instanceOf(klass)
+          .and
+          .to.be.an.instanceOf(RhSchemeToggle);
     });
-  })
+  });
 });

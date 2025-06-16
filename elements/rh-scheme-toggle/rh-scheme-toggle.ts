@@ -47,13 +47,13 @@ export class RhSchemeToggle extends LitElement {
     let dark = false;
     let system = false;
 
-    if(this.scheme === 'light') {
+    if (this.scheme === 'light') {
       light = true;
     };
-    if(this.scheme === 'dark') {
+    if (this.scheme === 'dark') {
       dark = true;
     };
-    if(this.scheme === 'light dark') {
+    if (this.scheme === 'light dark') {
       system = true;
     };
 
