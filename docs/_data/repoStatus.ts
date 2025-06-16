@@ -312,12 +312,12 @@ export default [
     tagName: 'rh-navigation-primary',
     name: 'Navigation (primary)',
     type: 'element',
-    overallStatus: 'planned',
+    overallStatus: 'ready',
     libraries: {
-      figma: 'planned',
+      figma: 'ready',
       rhds: 'ready',
       shared: 'planned',
-      docs: 'planned',
+      docs: 'ready',
     },
   },
   {

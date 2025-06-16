@@ -28,9 +28,7 @@ export type NavigationPrimaryPalette = Extract<ColorPalette, (
 )>;
 
 /**
- * The Primary navigation is a container of menus and utilities, it allows
- * visitors to orient themselves and move through a website. It is persistent on
- * every page to ensure a consistent user experience across websites.
+ * Primary navigation helps users orient themselves and move through websites and domains.
  *
  * @summary       Primary navigation
  * @slot          - Use this slot for `<rh-primary-navigation-item>` hamburger menu links and dropdowns
