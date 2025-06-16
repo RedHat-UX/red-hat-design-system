@@ -7,7 +7,6 @@ import { observes } from '@patternfly/pfe-core/decorators.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-scheme-toggle.css';
-import { classMap } from 'lit-html/directives/class-map.js';
 // import visuallyHidden from './visually-hidden.css';
 
 declare global {
@@ -43,22 +42,8 @@ export class RhSchemeToggle extends LitElement {
   }
 
   render() {
-    let light = false;
-    let dark = false;
-    let system = false;
-
-    if (this.scheme === 'light') {
-      light = true;
-    };
-    if (this.scheme === 'dark') {
-      dark = true;
-    };
-    if (this.scheme === 'light dark') {
-      system = true;
-    };
-
     return html`
-      <fieldset @change="${this.#onChange}" class="${classMap({ light: !!light, dark: !!dark, system: !!system })}">
+      <fieldset @change="${this.#onChange}">
         <legend>Color scheme:</legend>
         <div id="button-group">
           <label title="Light">
