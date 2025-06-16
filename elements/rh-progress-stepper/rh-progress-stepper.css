@@ -1,0 +1,112 @@
+:host {
+  --stepLineColor: var(--rh-color-border-subtle);
+  display: grid;
+  row-gap: var(--rh-length-lg, 16px);
+
+  & div {
+    padding: 0;
+    display: grid;
+    align-content: baseline;
+    justify-content: normal;
+    grid-auto-columns: 1fr;
+  }
+
+  & ::slotted(rh-progress-step) {
+    --stepLineColor: var(--rh-color-text-primary);
+  }
+
+  & #current-step {
+    display:none;
+    font-weight: var(--rh-font-weight-body-text-medium, 500);
+    text-decoration-line: underline;
+    text-decoration-style: dotted;
+    text-decoration-skip-ink: none;
+    text-decoration-color: var(--rh-color-text-secondary, #707070);
+    text-decoration-thickness: 1.5px; /* 9.375% */
+    text-underline-offset: 30%; /* 4.8px */
+    text-underline-position: from-font;
+  }
+}
+
+:host([orientation="vertical"]) {
+  & #step-list {
+    grid-auto-flow: row;
+    --stepLineAngle: 90deg;
+    --stepTemplateColumns: calc(var(--rh-length-xl, 24px) + 4px) auto;
+    --stepTemplateRows: auto;
+    --stepJustifySelf: start;
+    --stepIconJustifySelf: center;
+    --stepDescriptionGridColumn: 2;
+    --stepCompactHPadding: 0;
+    --stepColGap: var(--rh-length-lg, 16px);
+    --stepRowGap: var(--rh-length-lg, 16px);
+  }
+  
+  & ::slotted(rh-progress-step:last-of-type) { background: none; }
+}
+
+:host([orientation="horizontal"]) {
+  & #step-list {
+    grid-auto-flow: column;
+    grid-auto-columns: var(--stepperGridAutoColumn);
+    --stepLineAngle: -180deg;
+    --stepTemplateColumns: auto;
+    --stepTemplateRows: calc(var(--rh-length-xl, 24px) + 4px) auto 1fr;
+    --stepJustifySelf: baseline;
+    --stepDescriptionMargin: inherit;
+    --stepCompactVPadding: 0;
+    --stepColGap: var(--rh-length-lg, 16px);
+    --stepRowGap: var(--rh-length-lg, 16px);
+    --stepCompactGridRow: 2;
+  }
+}
+
+:host([compact]) { 
+  grid-template-rows: 32px;
+  --stepperGridAutoColumn: 50px;
+  --stepGridRow: var(--stepCompactGridRow);
+  --stepTemplateRows: auto;
+  --stepCompactDisplay: none;
+  --stepCompactVPadding: var(--rh-length-lg, 16px);
+  --stepCompactHPadding: var(--rh-length-lg, 16px);
+
+  & #current-step { 
+    display: block; 
+    grid-column: 1 / -1; 
+    grid-row: 1;
+    color: var(--currentStepColor, #6a6e73);
+    font-weight: var(--currentStepWeight, 500);
+  }
+
+}
+
+:host([state="inactive"]) {
+    --currentStepColor: var(--rh-color-text-disabled, #6a6e73);
+    --currentStepWeight: var(--rh-font-weight-body-text-regular, 400);
+}
+
+:host([state="active"]) {
+  --currentStepColor: var(--rh-color-status-note);
+  --currentStepWeight: var(--rh-font-weight-body-text-medium, 500);
+}
+
+:host([state="complete"]) {
+  --currentStepColor: var(--rh-color-status-success);
+  --currentStepWeight: var(--rh-font-weight-body-text-medium, 500);
+}
+
+:host([state="warn"]) {
+  --currentStepColor: light-dark(var(--rh-color-yellow-50),var(--rh-color-yellow-30));
+  --currentStepWeight: var(--rh-font-weight-body-text-medium, 500);
+}
+
+:host([state="fail"]) {
+  --currentStepColor: var(--rh-color-status-danger);
+  --currentStepWeight: var(--rh-font-weight-body-text-medium, 500);
+}
+
+::slotted(rh-progress-step:last-of-type) {
+  --stepLineStyle: none;
+}
+
+
