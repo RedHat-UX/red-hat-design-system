@@ -81,7 +81,7 @@ function transformDevServerHTML(document) {
     && x.tagName === 'main');
   if (main && isElementNode(main)) {
     main.tagName = 'rh-surface';
-    setAttribute(main, 'color-palette', 'lightest');
+    setAttribute(main, 'color-palette', '');
     setAttribute(main, 'id', surfaceId);
     setAttribute(main, 'role', 'main');
   }
@@ -92,7 +92,7 @@ function transformDevServerHTML(document) {
   if (header && isElementNode(header)) {
     const picker = createElement('rh-context-picker');
     setAttribute(picker, 'target', surfaceId);
-    setAttribute(picker, 'value', 'lightest');
+    setAttribute(picker, 'value', '');
     const logoBar = query(header, node =>
       isElementNode(node)
         && getAttribute(node, 'class') === 'logo-bar');
