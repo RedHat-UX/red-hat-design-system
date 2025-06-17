@@ -69,6 +69,7 @@ let RhNavigationPrimary = RhNavigationPrimary_1 = _a = class RhNavigationPrimary
          */
         this.compact = true;
         this._overlayOpen = false;
+        this._hamburgerOpen = false;
         /**
          * Sets the mobile toggle (hamburger) text, used for translations, defaults to 'Menu'
          */
@@ -136,7 +137,7 @@ let RhNavigationPrimary = RhNavigationPrimary_1 = _a = class RhNavigationPrimary
               </a>
             </slot>
           </div>
-          <details id="hamburger" @toggle="${__classPrivateFieldGet(this, _RhNavigationPrimary_instances, "m", _RhNavigationPrimary_hamburgerToggle)}">
+          <details id="hamburger" ?open="${this._hamburgerOpen}" @toggle="${__classPrivateFieldGet(this, _RhNavigationPrimary_instances, "m", _RhNavigationPrimary_hamburgerToggle)}">
             <summary>
               <rh-icon icon="menu-bars" set="ui"></rh-icon>
               <div id="summary">${this.mobileToggleLabel}</div>
@@ -240,7 +241,7 @@ _RhNavigationPrimary_onDropdownToggle = async function _RhNavigationPrimary_onDr
     else {
         if (secondaryEventToggle) {
             __classPrivateFieldGet(this, _RhNavigationPrimary_openSecondaryDropdowns, "f").delete(item);
-            if (__classPrivateFieldGet(this, _RhNavigationPrimary_openSecondaryDropdowns, "f").size === 0 && (this.compact && !this._hamburger.open)) {
+            if (__classPrivateFieldGet(this, _RhNavigationPrimary_openSecondaryDropdowns, "f").size === 0 && (this.compact && !this._hamburgerOpen)) {
                 __classPrivateFieldGet(this, _RhNavigationPrimary_instances, "m", _RhNavigationPrimary_closeOverlay).call(this);
             }
         }
@@ -267,7 +268,7 @@ _RhNavigationPrimary_onKeydown = function _RhNavigationPrimary_onKeydown(event) 
                 dropdown.hide();
                 dropdown.shadowRoot?.querySelector('summary')?.focus();
             }
-            else if (this._hamburger.open) {
+            else if (this._hamburgerOpen) {
                 __classPrivateFieldGet(this, _RhNavigationPrimary_instances, "m", _RhNavigationPrimary_closeHamburger).call(this);
                 this._hamburger.querySelector('summary')?.focus();
             }
@@ -344,7 +345,7 @@ _RhNavigationPrimary_onTabKeydown = function _RhNavigationPrimary_onTabKeydown(e
     }
 };
 _RhNavigationPrimary_onTabKeyup = function _RhNavigationPrimary_onTabKeyup(event) {
-    if (this.compact && this._hamburger.open) {
+    if (this.compact && this._hamburgerOpen) {
         const secondaryDropdowns = __classPrivateFieldGet(this, _RhNavigationPrimary_instances, "m", _RhNavigationPrimary_secondaryDropdowns).call(this);
         const target = event.target;
         if (event.shiftKey && target === this) {
@@ -373,14 +374,16 @@ _RhNavigationPrimary_openHamburger = async function _RhNavigationPrimary_openHam
     if (!this._hamburger) {
         await this.updateComplete;
     }
-    this._hamburger.open = true;
+    this._hamburgerOpen = true;
+    this.requestUpdate();
     await this.updateComplete;
 };
 _RhNavigationPrimary_closeHamburger = async function _RhNavigationPrimary_closeHamburger() {
     if (!this._hamburger) {
         await this.updateComplete;
     }
-    this._hamburger.open = false;
+    this._hamburgerOpen = false;
+    this.requestUpdate();
     await this.updateComplete;
 };
 _RhNavigationPrimary_hamburgerToggle = function _RhNavigationPrimary_hamburgerToggle(event) {
@@ -412,6 +415,9 @@ __decorate([
 __decorate([
     state()
 ], RhNavigationPrimary.prototype, "_overlayOpen", void 0);
+__decorate([
+    state()
+], RhNavigationPrimary.prototype, "_hamburgerOpen", void 0);
 __decorate([
     query('#hamburger')
 ], RhNavigationPrimary.prototype, "_hamburger", void 0);
