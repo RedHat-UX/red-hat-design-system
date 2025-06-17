@@ -10,7 +10,7 @@ export declare class SlotController implements SlotControllerPublicAPI {
     constructor(host: ReactiveElement, ..._: SlotControllerArgs);
     hostConnected?(): Promise<void>;
     private fromAttribute;
-    getSlotted<T extends Element = Element>(..._: string[]): T[];
+    getSlotted<T extends Element = Element>(..._: (string | null)[]): T[];
     hasSlotted(...names: (string | null)[]): boolean;
     isEmpty(...names: (string | null)[]): boolean;
 }

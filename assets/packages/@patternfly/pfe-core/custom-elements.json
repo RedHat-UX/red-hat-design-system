@@ -8699,7 +8699,7 @@
                 {
                   "name": "_",
                   "type": {
-                    "text": "string[]"
+                    "text": "(string | null)[]"
                   }
                 }
               ]

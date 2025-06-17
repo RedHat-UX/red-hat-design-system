@@ -17,6 +17,9 @@ export class SlotController {
         const attr = this.host.getAttribute(_a.attribute);
         const anon = this.host.hasAttribute(_a.anonymousAttribute);
         const hints = new Set(this.fromAttribute(attr));
+        if (!names.length) {
+            names.push(null);
+        }
         return names.every(x => x === null ? anon : hints.has(x));
     }
     isEmpty(...names) {
