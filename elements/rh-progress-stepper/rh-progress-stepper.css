@@ -1,13 +1,19 @@
+
+
+::slotted(rh-progress-step:has(+ [state="inactive"])) {
+    --stepLineColor: var(--rh-color-gray-30);
+}
+
 :host {
   --stepLineColor: var(--rh-color-border-subtle);
+
   display: grid;
   row-gap: var(--rh-length-lg, 16px);
 
   & div {
     padding: 0;
     display: grid;
-    align-content: baseline;
-    justify-content: normal;
+    place-content: baseline normal;
     grid-auto-columns: 1fr;
   }
 
@@ -15,22 +21,28 @@
     --stepLineColor: var(--rh-color-text-primary);
   }
 
+  ::slotted(rh-progress-step:last-of-type) {
+    --stepLineStyle: none;
+  }
+
   & #current-step {
-    display:none;
+    display: none;
     font-weight: var(--rh-font-weight-body-text-medium, 500);
-    text-decoration-line: underline;
-    text-decoration-style: dotted;
-    text-decoration-skip-ink: none;
-    text-decoration-color: var(--rh-color-text-secondary, #707070);
-    text-decoration-thickness: 1.5px; /* 9.375% */
+    text-decoration:
+      underline
+      dotted
+      var(--rh-color-text-secondary, light-dark(var(--rh-color-text-secondary-on-light, #4d4d4d), var(--rh-color-text-secondary-on-dark, #c7c7c7)))
+      1px;
+    text-decoration-skip-ink: none; /* 9.375% */
     text-underline-offset: 30%; /* 4.8px */
     text-underline-position: from-font;
   }
 }
 
-:host([orientation="vertical"]) {
+:host([orientation='vertical']) {
   & #step-list {
     grid-auto-flow: row;
+
     --stepLineAngle: 90deg;
     --stepTemplateColumns: calc(var(--rh-length-xl, 24px) + 4px) auto;
     --stepTemplateRows: auto;
@@ -41,14 +53,15 @@
     --stepColGap: var(--rh-length-lg, 16px);
     --stepRowGap: var(--rh-length-lg, 16px);
   }
-  
-  & ::slotted(rh-progress-step:last-of-type) { background: none; }
+
+  /* & ::slotted(rh-progress-step:last-of-type) { background: none; } */
 }
 
-:host([orientation="horizontal"]) {
+:host([orientation='horizontal']) {
   & #step-list {
     grid-auto-flow: column;
     grid-auto-columns: var(--stepperGridAutoColumn);
+
     --stepLineAngle: -180deg;
     --stepTemplateColumns: auto;
     --stepTemplateRows: calc(var(--rh-length-xl, 24px) + 4px) auto 1fr;
@@ -61,8 +74,9 @@
   }
 }
 
-:host([compact]) { 
+:host([compact]) {
   grid-template-rows: 32px;
+
   --stepperGridAutoColumn: 50px;
   --stepGridRow: var(--stepCompactGridRow);
   --stepTemplateRows: auto;
@@ -70,43 +84,36 @@
   --stepCompactVPadding: var(--rh-length-lg, 16px);
   --stepCompactHPadding: var(--rh-length-lg, 16px);
 
-  & #current-step { 
-    display: block; 
-    grid-column: 1 / -1; 
+  & #current-step {
+    display: block;
+    grid-column: 1 / -1;
     grid-row: 1;
     color: var(--currentStepColor, #6a6e73);
     font-weight: var(--currentStepWeight, 500);
   }
-
 }
 
-:host([state="inactive"]) {
-    --currentStepColor: var(--rh-color-text-disabled, #6a6e73);
-    --currentStepWeight: var(--rh-font-weight-body-text-regular, 400);
+:host([state='inactive']) {
+  --currentStepColor: var(--rh-color-text-disabled, #6a6e73);
+  --currentStepWeight: var(--rh-font-weight-body-text-regular, 400);
 }
 
-:host([state="active"]) {
+:host([state='active']) {
   --currentStepColor: var(--rh-color-status-note);
   --currentStepWeight: var(--rh-font-weight-body-text-medium, 500);
 }
 
-:host([state="complete"]) {
+:host([state='complete']) {
   --currentStepColor: var(--rh-color-status-success);
   --currentStepWeight: var(--rh-font-weight-body-text-medium, 500);
 }
 
-:host([state="warn"]) {
-  --currentStepColor: light-dark(var(--rh-color-yellow-50),var(--rh-color-yellow-30));
+:host([state='warn']) {
+  --currentStepColor: light-dark(var(--rh-color-yellow-50), var(--rh-color-yellow-30));
   --currentStepWeight: var(--rh-font-weight-body-text-medium, 500);
 }
 
-:host([state="fail"]) {
+:host([state='fail']) {
   --currentStepColor: var(--rh-color-status-danger);
   --currentStepWeight: var(--rh-font-weight-body-text-medium, 500);
 }
-
-::slotted(rh-progress-step:last-of-type) {
-  --stepLineStyle: none;
-}
-
-

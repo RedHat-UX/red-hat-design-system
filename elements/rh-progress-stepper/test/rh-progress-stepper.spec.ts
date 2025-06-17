@@ -13,9 +13,9 @@ describe('<rh-progress-stepper>', function() {
       element = await createFixture<RhProgressStepper>(html`<rh-progress-stepper></rh-progress-stepper>`);
       const klass = customElements.get('rh-progress-stepper');
       expect(element)
-        .to.be.an.instanceOf(klass)
-        .and
-        .to.be.an.instanceOf(RhProgressStepper);
+          .to.be.an.instanceOf(klass)
+          .and
+          .to.be.an.instanceOf(RhProgressStepper);
     });
-  })
+  });
 });

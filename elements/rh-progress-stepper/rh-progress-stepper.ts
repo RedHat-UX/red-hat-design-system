@@ -10,19 +10,27 @@ type ProgressStepperState = 'inactive' | 'active' | 'complete' | 'warn' | 'fail'
 
 
 /**
- * Progress Steps
- * @slot - Place element content here
+ * Progress Stepper
+ * The Progress Stepper is a container of progress steps, it presents
+ * a horizontal or vertical display of steps and their details. The stepper
+ * can also display a compact view with a single heading.
+ *
+ * @summary       Progress Stepper
+ * @slot          - Use this slot for `<rh-progress-step>` items
+ *
  */
 @customElement('rh-progress-stepper')
 export class RhProgressStepper extends LitElement {
   static readonly styles: CSSStyleSheet[] = [styles];
 
-  #internals = InternalsController.of(this, { role: 'list' });
-
   @property({ reflect: true }) orientation: ProgressStepsOrientation = 'horizontal';
-  @property({ reflect: true }) current: String = "";
+  @property({ reflect: true }) current = '';
   @property({ reflect: true }) state: ProgressStepperState = 'inactive';
-    
+
+  override connectedCallback(): void {
+    super.connectedCallback();
+    this.role = 'list';
+  }
 
   render(): TemplateResult<1> {
     return html`
