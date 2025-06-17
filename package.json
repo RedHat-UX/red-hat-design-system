@@ -200,7 +200,7 @@
       ]
     },
     "analyze": {
-      "command": "cem analyze",
+      "command": "cem generate elements/*/rh-*.ts --design-tokens npm:@rhds/tokens/json/rhds.tokens.json -o custom-elements.json",
       "dependencies": [
         "patch"
       ],
@@ -208,8 +208,6 @@
         "elements/*/demo/*.html",
         "elements/**/*.{ts,js,map}",
         "elements/**/*.css",
-        "scripts/cem-tokens.ts",
-        "scripts/system-tokens.ts",
         "tsconfig.tsbuildinfo"
       ],
       "output": [
@@ -300,6 +298,7 @@
     "@patternfly/icons": "^1.0.3",
     "@patternfly/pfe-tools": "^4.0.3",
     "@playwright/test": "^1.51.0",
+    "@pwrs/cem": "^0.1.11",
     "@rollup/plugin-node-resolve": "^16.0.0",
     "@stylistic/eslint-plugin-js": "^2.13.0",
     "@stylistic/stylelint-config": "^2.0.0",
