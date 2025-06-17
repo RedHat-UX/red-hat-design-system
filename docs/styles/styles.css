@@ -258,7 +258,9 @@
 
   :where(code:not([class^='language-'])) {
     padding-inline: var(--rh-space-xs);
-    background: oklch(from var(--rh-color-surface) calc(l - 0.05) c h);
+    background:
+      light-dark(oklch(from var(--rh-color-surface) calc(l - 0.05) c h),
+        oklch(from var(--rh-color-surface) calc(l + 0.1) c h));
     border-radius: var(--rh-border-radius-default);
     font-size: var(--rh-font-size-code-md);
     font-weight: var(--rh-font-weight-code-regular);

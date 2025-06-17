@@ -1,10 +1,14 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
+import { state } from 'lit/decorators/state.js';
 import { query } from 'lit/decorators/query.js';
+import { classMap } from 'lit-html/directives/class-map.js';
 
-import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
+import { observes } from '@patternfly/pfe-core/decorators.js';
+
 import { themable } from '@rhds/elements/lib/themable.js';
+import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 
@@ -72,6 +76,8 @@ export class RhDisclosure extends LitElement {
    */
   @property({ reflect: true }) summary?: string;
 
+  @state() private hasJumpLinks = false;
+
   @query('details') private detailsEl!: HTMLDetailsElement;
   @query('summary') private summaryEl!: HTMLElement;
 
@@ -79,6 +85,7 @@ export class RhDisclosure extends LitElement {
     return html`
       <details
           ?open="${this.open}"
+          class=${classMap({ 'has-jump-links': this.hasJumpLinks })}
           @keydown="${this.#onKeydown}"
           @toggle="${this.#onToggle}">
         <summary>
@@ -113,14 +120,19 @@ export class RhDisclosure extends LitElement {
     }
   }
 
-
   #closeDisclosure(): void {
     if (!this.open) {
       return;
     }
-    this.detailsEl.open = false;
     this.open = false;
     this.summaryEl.focus();
+  }
+
+  @observes('open')
+  protected _openChanged() {
+    if (!isServer) {
+      this.hasJumpLinks = !!this.querySelector('rh-jump-links');
+    }
   }
 }
 
