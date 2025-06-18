@@ -1,5 +1,12 @@
 # @rhds/elements
 
+## 3.0.4
+### Patch Changes
+
+- 7e9e971: `<rh-navigation-primary>`: improved component reactivity
+- c904202: Improved SSR for elements whose layout depends on their content
+- bd8eb99: `<rh-audio-player>`: fix layout issue between 576px and 768px breakpoints
+
 ## 3.0.3
 ### Patch Changes
 
