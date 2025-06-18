@@ -6,7 +6,7 @@ const style = css `:host{flex:1 1 auto;display:block;width:100%}`;
 const currentYear = new Date().getFullYear();
 let RhFooterCopyright = class RhFooterCopyright extends LitElement {
     render() {
-        return html `<slot>&copy; ${currentYear} Red Hat, Inc.</slot>`;
+        return html `<slot>&copy; ${currentYear} Red Hat</slot>`;
     }
 };
 RhFooterCopyright.styles = style;
