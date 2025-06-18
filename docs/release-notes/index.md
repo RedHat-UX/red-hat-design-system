@@ -54,6 +54,20 @@ or anything else, please submit a [GitHub issue][issues].
 
 <section aria-labelledby="version-3.0.0">
 
+### Patches from version 3.0.4
+
+<rh-table>
+
+| Change        | Type        | Notes        |
+| ------------- | ----------- | ------------ |
+| `<rh-audio-player>`: responsive design | {{p()}} | fix layout issue between 576px and 768px breakpoints |
+| `<rh-navigation-primary>`: reactivity | {{p()}} | Improved component reactivity |
+| Server side rendering: improve support | {{p()}} | Improved SSR for elements whose layout depends on their content |
+
+</rh-table>
+
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v3.0.4">View all version 3.0.4 release notes</rh-cta>
+
 ### Patches from version 3.0.2
 
 <rh-table>
