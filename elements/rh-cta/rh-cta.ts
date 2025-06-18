@@ -67,6 +67,9 @@ function isSupportedContent(el: Element | null): el is HTMLAnchorElement | HTMLB
  *              Sets the cta text decoration on hover
  * @cssprop     [--rh-cta-active-text-decoration=none]
  *              Sets the cta text decoration on active
+ * @cssprop     [--rh-cta-white-space=nowrap]
+ *              Sets the `white-space` property on the `#container`. Set to `normal` if CTAs cause
+ *              horizontal scrolling
  */
 @customElement('rh-cta')
 @themable
