@@ -1,0 +1,46 @@
+<rh-navigation-vertical>
+  <rh-navigation-vertical-item href="#" current-page>Home</rh-navigation-vertical-item>
+
+  <rh-navigation-vertical-group>
+    <span slot="summary">About</span>
+    <rh-navigation-vertical-item href="#about">About the Design System</rh-navigation-vertical-item>
+    <rh-navigation-vertical-item href="#about/roadmap">Roadmap</rh-navigation-vertical-item>
+  </rh-navigation-vertical-group>
+
+  <rh-navigation-vertical-group>
+    <span slot="summary">Get Started</span>
+    <rh-navigation-vertical-item href="#get-started">About the Design System</rh-navigation-vertical-item>
+    <rh-navigation-vertical-item href="#get-started/designers">Designers</rh-navigation-vertical-item>
+    <rh-navigation-vertical-item href="#get-started/developers">Developers</rh-navigation-vertical-item>
+    <rh-navigation-vertical-group>
+      <span slot="summary">Sub group</span>
+      <rh-navigation-vertical-item href="#test">Test</rh-navigation-vertical-item>
+      <rh-navigation-vertical-group>
+        <span slot="summary">Sub Sub group</span>
+        <rh-navigation-vertical-item href="#test-two">Test Two</rh-navigation-vertical-item>
+        <rh-navigation-vertical-group>
+          <span slot="summary">Sub Sub Sub group</span>
+          <rh-navigation-vertical-item href="#test-three">This is a test of a long item that would wrap in narrow viewports</rh-navigation-vertical-item>
+        </rh-navigation-vertical-group>
+      </rh-navigation-vertical-group>
+    </rh-navigation-vertical-group>
+  </rh-navigation-vertical-group>
+
+  <rh-navigation-vertical-group>
+    <span slot="summary">Foundations</span>
+    <rh-navigation-vertical-item href="#foundations">Overview</rh-navigation-vertical-item>
+    <rh-navigation-vertical-item href="#foundations/color">Color</rh-navigation-vertical-item>
+    <rh-navigation-vertical-item href="#foundations/grid">Grid</rh-navigation-vertical-item>
+    <rh-navigation-vertical-item href="#foundations/iconography">Iconography</rh-navigation-vertical-item>
+    <rh-navigation-vertical-item href="#foundations/interactions">Interactions</rh-navigation-vertical-item>
+    <rh-navigation-vertical-item href="#foundations/spacing">Spacing</rh-navigation-vertical-item>
+    <rh-navigation-vertical-item href="#foundations/typography">Typography</rh-navigation-vertical-item>
+  </rh-navigation-vertical-group>
+
+  <rh-navigation-vertical-item href="#end">End</rh-navigation-vertical-item>
+
+</rh-navigation-vertical>
+
+<script type="module">
+  import '@rhds/elements/rh-navigation-vertical/rh-navigation-vertical.js';
+</script>
