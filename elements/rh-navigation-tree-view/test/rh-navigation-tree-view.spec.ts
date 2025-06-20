@@ -13,9 +13,9 @@ describe('<rh-navigation-tree-view>', function() {
       element = await createFixture<RhNavigationTreeView>(html`<rh-navigation-tree-view></rh-navigation-tree-view>`);
       const klass = customElements.get('rh-navigation-tree-view');
       expect(element)
-        .to.be.an.instanceOf(klass)
-        .and
-        .to.be.an.instanceOf(RhNavigationTreeView);
+          .to.be.an.instanceOf(klass)
+          .and
+          .to.be.an.instanceOf(RhNavigationTreeView);
     });
-  })
+  });
 });

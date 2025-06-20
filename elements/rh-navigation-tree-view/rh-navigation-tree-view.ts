@@ -64,7 +64,7 @@ export class RhNavigationTreeView extends LitElement {
 
 /**
  * Navigation Tree View
- * @slot - Place element content here
+ * @slot - Place element content heres
  */
 @customElement('rh-navigation-tree-view-item')
 export class RhNavigationTreeViewItem extends LitElement {
