@@ -1,17 +1,3 @@
-{% renderOverview %}
-  <rh-navigation-tree-view></rh-navigation-tree-view>
-{% endrenderOverview %}
+## When to use
 
-{% band header="Usage" %}{% endband %}
-
-{% renderSlots %}{% endrenderSlots %}
-
-{% renderAttributes %}{% endrenderAttributes %}
-
-{% renderMethods %}{% endrenderMethods %}
-
-{% renderEvents %}{% endrenderEvents %}
-
-{% renderCssCustomProperties %}{% endrenderCssCustomProperties %}
-
-{% renderCssParts %}{% endrenderCssParts %}
+- 
