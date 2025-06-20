@@ -7,8 +7,6 @@ import { ifDefined } from 'lit-html/directives/if-defined.js';
 
 import { themable } from '@rhds/elements/lib/themable.js';
 
-import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
-
 import { consume, provide } from '@lit/context';
 import { parentContext } from './context.js';
 
@@ -25,7 +23,6 @@ import itemStyles from './rh-navigation-tree-view-item.css';
  * import './rh-navigation-tree-view-item.js';
  */
 
-
 export interface RhNavigationTreeViewParent {
   parent: HTMLElement;
   depth: number;
@@ -41,13 +38,11 @@ export interface RhNavigationTreeViewParent {
 export class RhNavigationTreeView extends LitElement {
   static readonly styles: CSSStyleSheet[] = [styles];
 
-  // eslint-disable-next-line no-unused-private-class-members
-  #internals = InternalsController.of(this, { role: 'tree' });
-
   private _depth = 0; // Internal state for depth, initially 0
 
-  // Provide our own parent information, including our calculated depth
-  // This @provide will be reactive to changes in _depth
+  /**
+   * Provide our own parent information, depth = 0
+   */
   @provide({ context: parentContext })
   parentInfo: RhNavigationTreeViewParent = { parent: this, depth: this._depth };
 
@@ -70,14 +65,11 @@ export class RhNavigationTreeView extends LitElement {
 export class RhNavigationTreeViewItem extends LitElement {
   static readonly styles: CSSStyleSheet[] = [itemStyles];
 
-  // eslint-disable-next-line no-unused-private-class-members
-  #internals = InternalsController.of(this, { role: 'treeitem' });
-
-  // @state() is used here because depth will be updated dynamically based on consumed context
+  /* Internal state for depth, initially 0 */
   @state()
-  private _depth = 0; // Internal state for depth, initially 0
+  private _depth = 0;
 
-  // Consume the parent context to determine our own depth
+  /* Consume the parent context to determine our own depth */
   @consume({ context: parentContext, subscribe: true })
   @state() // Mark as state so changes re-render
   private _upstreamParentInfo?: { parent: HTMLElement; depth: number };
@@ -118,20 +110,18 @@ export class RhNavigationTreeViewItem extends LitElement {
 export class RhNavigationTreeViewGroup extends LitElement {
   static readonly styles: CSSStyleSheet[] = [groupStyles];
 
-  // eslint-disable-next-line no-unused-private-class-members
-  #internals = InternalsController.of(this, { role: 'treeitem' });
-
-  // @state() is used here because depth will be updated dynamically based on consumed context
+  /* Internal state for depth, initially 0 */
   @state()
-  private _depth = 0; // Internal state for depth, initially 0
+  private _depth = 0;
 
-  // Consume the parent context to determine our own depth
+  /* Consume the parent context to determine our own depth */
   @consume({ context: parentContext, subscribe: true })
-  @state() // Mark as state so changes re-render
+  @state()
   private _upstreamParentInfo?: RhNavigationTreeViewParent;
 
-  // Provide our own parent information, including our calculated depth
-  // This @provide will be reactive to changes in _depth
+  /**
+   * Provide our own parent information, including our calculated depth
+   */
   @provide({ context: parentContext })
   parentInfo: RhNavigationTreeViewParent = { parent: this, depth: this._depth };
 
