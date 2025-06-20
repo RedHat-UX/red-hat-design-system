@@ -41,6 +41,7 @@ export interface RhNavigationTreeViewParent {
 export class RhNavigationTreeView extends LitElement {
   static readonly styles: CSSStyleSheet[] = [styles];
 
+  // eslint-disable-next-line no-unused-private-class-members
   #internals = InternalsController.of(this, { role: 'tree' });
 
   private _depth = 0; // Internal state for depth, initially 0
@@ -69,6 +70,7 @@ export class RhNavigationTreeView extends LitElement {
 export class RhNavigationTreeViewItem extends LitElement {
   static readonly styles: CSSStyleSheet[] = [itemStyles];
 
+  // eslint-disable-next-line no-unused-private-class-members
   #internals = InternalsController.of(this, { role: 'treeitem' });
 
   // @state() is used here because depth will be updated dynamically based on consumed context
