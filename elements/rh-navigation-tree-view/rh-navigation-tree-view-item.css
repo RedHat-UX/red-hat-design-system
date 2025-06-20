@@ -1,0 +1,57 @@
+:host {
+  display: block;
+}
+
+a {
+  color: var(--rh-color-text-primary);
+  text-decoration: none;
+  display: block;
+  padding: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
+  position: relative;
+
+  &:before {
+    content: '';
+    border-inline-start: var(--rh-border-width-lg, 3px) solid transparent;
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+  }
+
+  &:is(:hover, :focus, :active) {
+    background-color:
+      light-dark(var(--rh-color-surface-lighter, #f2f2f2),
+        var(--rh-color-surface-darker, #1f1f1f));
+  }
+
+  &:is(:active) {
+    &:before {
+      border-inline-start-color: var(--rh-color-brand-red);
+    }
+  }
+
+  &:is(:focus) {
+    outline:
+      var(--rh-border-width-md, 2px)
+      solid
+      var(--rh-color-interactive-primary-default);
+    border-radius: var(--rh-border-radius-default, 3px);
+  }
+
+  &[aria-current] {
+    background:
+      light-dark(var(--rh-color-surface-lighter, #f2f2f2),
+        var(--rh-color-surface-dark, #383838));
+
+    &:before {
+      border-inline-start-color: var(--rh-color-brand-red);
+    }
+  }
+}
+
+#container {
+  &.child {
+    & a {
+      padding-inline: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
+    }
+  }
+}
