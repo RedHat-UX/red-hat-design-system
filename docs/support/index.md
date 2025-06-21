@@ -38,7 +38,7 @@ your GitHub issue or discussion into our workflow more easily.
 <div id="rhds-help-grid" class="grid sm-three-columns">
   <rh-tile>
     <h4 slot="headline"><a href="https://github.com/RedHat-UX/red-hat-design-system/issues/new?assignees=&labels=bug&projects=&template=1-bug-report.yml&title=%5Bbug%5D+%60%3Crh-component-name%3E%60+...">File a bug report</a></h4>
-    If something is broken in an existing web component, submit a bug report and describe the error as thoroughly as possible.
+    If something is broken in an existing Web Component, submit a bug report and describe the error as thoroughly as possible.
   </rh-tile>
   <rh-tile>
     <h4 slot="headline"><a href="https://github.com/RedHat-UX/red-hat-design-system/issues/new?assignees=&labels=feature%2Cdiscovery+needed&projects=&template=3-feature-request.yml&title=%5Bfeat%5D+%60%3Crh-component-name%3E%60+...">Request a feature or component</a></h4>
@@ -75,7 +75,7 @@ your GitHub issue or discussion into our workflow more easily.
   <div>
     <h3>Find us on Slack <rh-tag color="red" variant="outline">Internal Red Hat users only</rh-tag></h3> 
     <p>We’re available at <strong>#red-hat-design-system</strong> for design, development, or accessibility questions.</p>
-    <p>Discussions about web components in general can be found in <strong>#list-web-components</strong>.</p>
+    <p>Discussions about Web Components in general can be found in <strong>#list-web-components</strong>.</p>
   </div>
   <div>
     <h3>Join office hours <rh-tag color="red" variant="outline">Internal Red Hat users only</rh-tag></h3>

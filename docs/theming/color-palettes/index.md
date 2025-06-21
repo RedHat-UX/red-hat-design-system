@@ -61,7 +61,7 @@ consumers**).
 </div>
 
 Being aware of which elements are rendering in which color scheme is important 
-to ensure that things like icons, text, and border colours remain legible.
+to ensure that things like icons, text, and border colors remain legible.
 
 ## Color palettes
 <a id="what-are-color-palettes"></a>
@@ -132,7 +132,7 @@ Color palette containers can be nested, such that child elements will always
 adopt the color theme corresponding to the nearest container's palette.
 Extending our card example from above, if you add an
 `<rh-cta>` to the card, it will *automatically* adopt the dark color theme. The
-page author need not and should not customize the CTA's colours.
+page author need not and should not customize the CTA's colors.
 
 <uxdot-pattern class="card-snippet-grid"
                src="../patterns/card-child-consumers.html"
@@ -229,7 +229,7 @@ palette should feature imagery with light colors and vice versa. Imagery with
 high contrast is only acceptable if it has a transparent background. If you
 cannot find color-palette-specific imagery, contact the Brand team. Developers
 have a number of [art-direction][artdirection] techniques at their disposal for
-creating themeable, responsive graphics.
+creating themable, responsive graphics.
 
 <uxdot-example>
   <img alt="correct uses of an illustration with a transparent background and one illustration incorrectly using a white background on a surface with a dark color palette area"
