@@ -59,7 +59,7 @@ rh-breadcrumb {
 
       /* stylelint-disable-next-line no-descending-specificity */
       & > a {
-        text-decoration: underline;
+        text-decoration: none;
 
         &:is(:hover, :focus, :active) {
           color: var(--_breadcrumb-link-color-hover);
@@ -115,7 +115,7 @@ rh-breadcrumb {
     cursor: pointer;
     min-inline-size: var(--rh-length-xl, 24px);
     padding: 0;
-    text-decoration: underline;
+    text-decoration: none;
 
     &:hover,
     &:focus {
