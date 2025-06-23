@@ -108,7 +108,7 @@ export class RhNavigationVerticalItem extends LitElement {
           <a href="${ifDefined(this.href)}" aria-current="${ifDefined(isCurrentPage)}">
             <slot></slot>
             ${this._upstreamParentInfo?.variant === 'learning-path' ? html`
-              <slot name="readtime"></slot>
+              <slot name="footer"></slot>
             ` : ''}
           </a>
         ` : html`

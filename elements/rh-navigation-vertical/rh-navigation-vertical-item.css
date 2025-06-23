@@ -68,7 +68,7 @@ a {
         font-size: var(--rh-font-size-body-text-md, 1rem) !important;
       }
 
-      & slot[name='readtime']::slotted(*) {
+      & slot[name='footer']::slotted(*) {
         font-size: var(--rh-font-size-body-text-sm, 0.875rem) !important;
       }
 
