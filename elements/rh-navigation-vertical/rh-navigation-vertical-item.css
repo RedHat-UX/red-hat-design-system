@@ -87,6 +87,10 @@ a {
       }
 
       &:is(:hover, :focus) {
+        background-color:
+          light-dark(var(--rh-color-surface-lighter, #f2f2f2),
+            var(--rh-color-surface-dark, #383838));
+
         &:before {
           border-inline-start-color: var(--rh-color-border-subtle-on-dark);
         }
