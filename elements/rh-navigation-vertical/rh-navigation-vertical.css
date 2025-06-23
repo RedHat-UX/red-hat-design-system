@@ -4,3 +4,9 @@
     light-dark(var(--rh-color-surface-lightest),
       var(--rh-color-surface-darker, #1f1f1f));
 }
+
+.learning-path {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rh-space-lg, 16px);
+}

@@ -11,7 +11,7 @@ a {
 
   &:before {
     content: '';
-    border-inline-start: var(--rh-border-width-lg, 3px) solid transparent;
+    border-inline-start: var(--rh-border-width-sm, 1px) solid transparent;
     position: absolute;
     z-index: 1;
     inset: 0;
@@ -43,15 +43,65 @@ a {
         var(--rh-color-surface-dark, #383838));
 
     &:before {
+      border-inline-start-width: var(--rh-border-width-lg, 3px);
       border-inline-start-color: var(--rh-color-brand-red);
     }
   }
 }
 
 #container {
-  &.child {
+  &:not([data-depth='1']) {
     & a {
       padding-inline: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
+    }
+  }
+
+  &.learning-path {
+    & a {
+      display: flex;
+      flex-direction: column;
+      gap: var(--rh-space-md, 8px);
+      position: relative;
+      padding-inline: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
+
+      & slot:not([name])::slotted(*) {
+        font-size: var(--rh-font-size-body-text-md, 1rem) !important;
+      }
+
+      & slot[name='readtime']::slotted(*) {
+        font-size: var(--rh-font-size-body-text-sm, 0.875rem) !important;
+      }
+
+      &:before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-inline-start: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+        z-index: 1;
+      }
+
+      &:active {
+        &:before {
+          border-inline-start-color: var(--rh-color-brand-red);
+        }
+      }
+
+      &:is(:hover, :focus) {
+        &:before {
+          border-inline-start-color: var(--rh-color-border-subtle-on-dark);
+        }
+      }
+
+      &[aria-current] {
+        & slot:not([name])::slotted(*) {
+          font-weight: var(--rh-font-weight-body-text-medium, 500) !important;
+        }
+
+        &:before {
+          border-inline-start-color: var(--rh-color-brand-red);
+          border-inline-start-width: var(--rh-border-width-lg, 3px);
+        }
+      }
     }
   }
 }

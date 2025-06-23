@@ -8,8 +8,10 @@ import { ifDefined } from 'lit-html/directives/if-defined.js';
 
 import { themable } from '@rhds/elements/lib/themable.js';
 
+import { observes } from '@patternfly/pfe-core/decorators/observes.js';
+
 import { consume, provide } from '@lit/context';
-import { rhNavigationVerticalParentContext } from './context.js';
+import { context, type RhNavigationVerticalContext } from './context.js';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 
@@ -18,17 +20,11 @@ import groupStyles from './rh-navigation-vertical-group.css';
 import itemStyles from './rh-navigation-vertical-item.css';
 
 
-
 /**
  * TODO: Figure out why when this is broken out into separate files, the context doesn't work correctly.
  * import './rh-navigation-vertical-group.js';
  * import './rh-navigation-vertical-item.js';
  */
-
-export interface RhNavigationVerticalParent {
-  parent: HTMLElement;
-  depth: number;
-}
 
 /**
  * Navigation Tree View
@@ -41,20 +37,32 @@ export class RhNavigationVertical extends LitElement {
 
   private _depth = 0; // Internal state for depth, initially 0
 
+  @property({ reflect: true }) variant?: 'learning-path';
+
   /**
    * Provide our own parent information, depth = 0
    */
-  @provide({ context: rhNavigationVerticalParentContext })
-  parentInfo: RhNavigationVerticalParent = { parent: this, depth: this._depth };
+  @provide({ context: context })
+  private _ctx = this.#makeContext();
 
   render(): TemplateResult<1> {
     return html`
-      <nav>
-        <div id="container">
-          <slot></slot>
-        </div>
+      <nav class="${classMap({ 'learning-path': this.variant === 'learning-path' })}">
+        <slot></slot>
       </nav>
     `;
+  }
+
+  #makeContext(): RhNavigationVerticalContext {
+    return {
+      depth: this._depth,
+      variant: this.variant,
+    };
+  }
+
+  @observes('variant')
+  protected _openChanged() {
+    this._ctx = this.#makeContext();
   }
 }
 
@@ -71,9 +79,9 @@ export class RhNavigationVerticalItem extends LitElement {
   private _depth = 0;
 
   /* Consume the parent context to determine our own depth */
-  @consume({ context: rhNavigationVerticalParentContext, subscribe: true })
+  @consume({ context: context, subscribe: true })
   @state() // Mark as state so changes re-render
-  private _upstreamParentInfo?: { parent: HTMLElement; depth: number };
+  private _upstreamParentInfo?: RhNavigationVerticalContext;
 
   @property({ reflect: true }) href?: string;
 
@@ -90,17 +98,21 @@ export class RhNavigationVerticalItem extends LitElement {
   render(): TemplateResult<1> {
     const isCurrentPage = this.currentPage ? 'page' : undefined;
     const classes = {
-      root: !!this._depth && this._depth === 1,
-      child: !!this._depth && this._depth > 1,
+      'root': !!this._depth && this._depth === 1,
+      'child': !!this._depth && this._depth > 1,
+      'learning-path': this._upstreamParentInfo?.variant === 'learning-path',
     };
     return html`
       <div id="container" class="${classMap(classes)}" data-depth="${this._depth}">
         ${this.href ? html`
-        <a href="${ifDefined(this.href)}" aria-current="${ifDefined(isCurrentPage)}">
-          <slot></slot>
-        </a>
+          <a href="${ifDefined(this.href)}" aria-current="${ifDefined(isCurrentPage)}">
+            <slot></slot>
+            ${this._upstreamParentInfo?.variant === 'learning-path' ? html`
+              <slot name="readtime"></slot>
+            ` : ''}
+          </a>
         ` : html`
-        <slot></slot>
+          <slot></slot>
         `}
       </div>
     `;
@@ -120,15 +132,15 @@ export class RhNavigationVerticalGroup extends LitElement {
   private _depth = 0;
 
   /* Consume the parent context to determine our own depth */
-  @consume({ context: rhNavigationVerticalParentContext, subscribe: true })
+  @consume({ context: context, subscribe: true })
   @state()
-  private _upstreamParentInfo?: RhNavigationVerticalParent;
+  private _upstreamParentInfo?: RhNavigationVerticalContext;
 
   /**
    * Provide our own parent information, including our calculated depth
    */
-  @provide({ context: rhNavigationVerticalParentContext })
-  parentInfo: RhNavigationVerticalParent = { parent: this, depth: this._depth };
+  @provide({ context: context })
+  private _ctx = this.#makeContext();
 
   @property({ type: Boolean, reflect: true }) open = false;
 
@@ -141,18 +153,13 @@ export class RhNavigationVerticalGroup extends LitElement {
       // If we found an upstream parent context, our depth is theirs + 1
       this._depth = this._upstreamParentInfo ? this._upstreamParentInfo.depth + 1 : 0;
       // Update the provided context value when _depth changes
-      this.parentInfo = { parent: this, depth: this._depth };
+      this._ctx = this.#makeContext();
     }
   }
 
   render(): TemplateResult<1> {
-    const classes = {
-      root: !!this._depth && this._depth === 0,
-      child: !!this._depth && this._depth > 0,
-    };
     return html`
       <details 
-        class="${classMap(classes)}" 
         @toggle="${this.#toggle}" 
         ?open="${this.open}"
         @keydown="${this.#onKeydown}"
@@ -166,6 +173,13 @@ export class RhNavigationVerticalGroup extends LitElement {
         </div>
       </details>
       `;
+  }
+
+  #makeContext(): RhNavigationVerticalContext {
+    return {
+      depth: this._depth,
+      variant: this._upstreamParentInfo?.variant,
+    };
   }
 
   #onKeydown(event: KeyboardEvent): void {
