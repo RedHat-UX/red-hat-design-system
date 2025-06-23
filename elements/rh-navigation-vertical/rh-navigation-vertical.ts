@@ -2,6 +2,7 @@ import { LitElement, html, type TemplateResult } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { state } from 'lit/decorators/state.js';
+import { query } from 'lit/decorators/query.js';
 import { classMap } from 'lit-html/directives/class-map.js';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 
@@ -15,6 +16,7 @@ import '@rhds/elements/rh-icon/rh-icon.js';
 import styles from './rh-navigation-vertical.css';
 import groupStyles from './rh-navigation-vertical-group.css';
 import itemStyles from './rh-navigation-vertical-item.css';
+
 
 
 /**
@@ -73,7 +75,7 @@ export class RhNavigationVerticalItem extends LitElement {
   @state() // Mark as state so changes re-render
   private _upstreamParentInfo?: { parent: HTMLElement; depth: number };
 
-  @property() href?: string;
+  @property({ reflect: true }) href?: string;
 
   @property({ attribute: 'current-page', type: Boolean }) currentPage? = false;
 
@@ -92,10 +94,14 @@ export class RhNavigationVerticalItem extends LitElement {
       child: !!this._depth && this._depth > 1,
     };
     return html`
-      <div id="container" class="${classMap(classes)}">
+      <div id="container" class="${classMap(classes)}" data-depth="${this._depth}">
+        ${this.href ? html`
         <a href="${ifDefined(this.href)}" aria-current="${ifDefined(isCurrentPage)}">
           <slot></slot>
         </a>
+        ` : html`
+        <slot></slot>
+        `}
       </div>
     `;
   }
@@ -124,6 +130,11 @@ export class RhNavigationVerticalGroup extends LitElement {
   @provide({ context: rhNavigationVerticalParentContext })
   parentInfo: RhNavigationVerticalParent = { parent: this, depth: this._depth };
 
+  @property({ type: Boolean, reflect: true }) open = false;
+
+  @query('details') private detailsEl!: HTMLDetailsElement;
+  @query('summary') private summaryEl!: HTMLElement;
+
   // Lifecycle method to update depth based on consumed context
   willUpdate(changedProperties: Map<string | number | symbol, unknown>) {
     if (changedProperties.has('_upstreamParentInfo')) {
@@ -140,7 +151,12 @@ export class RhNavigationVerticalGroup extends LitElement {
       child: !!this._depth && this._depth > 0,
     };
     return html`
-      <details id="group" class="${classMap(classes)}">
+      <details 
+        class="${classMap(classes)}" 
+        @toggle="${this.#toggle}" 
+        ?open="${this.open}"
+        @keydown="${this.#onKeydown}"
+        data-depth="${this._depth}">
         <summary>
           <slot name="summary"></slot>
           <rh-icon set="ui" icon="caret-down"></rh-icon>
@@ -149,7 +165,24 @@ export class RhNavigationVerticalGroup extends LitElement {
           <slot></slot>
         </div>
       </details>
-    `;
+      `;
+  }
+
+  #onKeydown(event: KeyboardEvent): void {
+    if (event.code === 'Escape') {
+      event.stopPropagation();
+      this.#close();
+    }
+  }
+
+  #toggle() {
+    this.open = this.detailsEl.open;
+    this.dispatchEvent(new Event('toggle', { bubbles: true }));
+  }
+
+  #close() {
+    this.open = false;
+    this.summaryEl.focus();
   }
 }
 

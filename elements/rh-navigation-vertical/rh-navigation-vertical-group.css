@@ -52,8 +52,20 @@ details {
       transform: rotate(-180deg);
     }
   }
-}
 
-#subtree {
-  margin-inline-start: var(--rh-space-lg, 16px);
+  &[data-depth='1'] {
+    & #subtree {
+      margin-inline-start: var(--rh-space-2xl, 32px);
+    }
+  }
+
+  &:not([data-depth='1']) {
+    & summary {
+      padding: var(--rh-space-lg, 16px);
+    }
+
+    & #subtree {
+      margin-inline-start: var(--rh-space-lg, 16px);
+    }
+  }
 }
