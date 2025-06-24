@@ -111,8 +111,11 @@ export class RhAlert extends LitElement {
   get #icon() {
     const state = this.state.toLowerCase() as this['state'];
     switch (state) {
+      // @ts-expect-error: support for deprecated props
       case 'note': return ICONS.get('info');
+      // @ts-expect-error: support for deprecated props
       case 'default': return ICONS.get('neutral');
+      // @ts-expect-error: support for deprecated props
       case 'error': return ICONS.get('danger');
       default: return ICONS.get(state);
     }
@@ -127,6 +130,8 @@ export class RhAlert extends LitElement {
    *  - `caution` - Indicates an action or notice which should immediately draw the attention
    *  - `info` - Indicates helpful information or a message with very little to no severity.
    *  - `success` - Indicates a success state, like if a process was completed without errors.
+   *
+   *  Note: 'note', 'default', and 'error' will also work, but are deprecated
    */
   @property({ reflect: true })
   state:
@@ -135,10 +140,7 @@ export class RhAlert extends LitElement {
     | 'caution'
     | 'neutral'
     | 'info'
-    | 'success'
-    | 'note' // deprecated
-    | 'default' // deprecated
-    | 'error' = // deprecated
+    | 'success' =
       'neutral';
 
   /**
