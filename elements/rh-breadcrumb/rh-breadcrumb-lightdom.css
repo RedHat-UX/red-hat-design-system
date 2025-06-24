@@ -63,6 +63,12 @@ rh-breadcrumb {
 
         &:is(:hover, :focus, :active) {
           color: var(--_breadcrumb-link-color-hover);
+          text-decoration: underline var(--rh-border-width-sm, 1px) dashed;
+          text-decoration-color: inherit;
+          text-underline-offset: max(5px, 0.28em);
+          transition-timing-function: ease;
+          transition-property: text-underline-offset, color, text-decoration-color;
+          transition-duration: 0.3s;
         }
 
         &:is(:focus, :focus-visible) {
@@ -76,6 +82,12 @@ rh-breadcrumb {
 
         &:visited:hover {
           color: var(--_breadcrumb-link-color-visited-hover);
+          text-decoration: underline var(--rh-border-width-sm, 1px) dashed;
+          text-decoration-color: inherit;
+          text-underline-offset: max(5px, 0.28em);
+          transition-timing-function: ease;
+          transition-property: text-underline-offset, color, text-decoration-color;
+          transition-duration: 0.3s;
         }
 
         &[aria-current='page'] {
