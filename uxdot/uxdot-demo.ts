@@ -142,7 +142,7 @@ export class UxdotDemo extends LitElement {
     }
   }
 
-  async setDemoElementAttribute(name: string, value: string | boolean) {
+  async setDemoElementAttribute(name: string, value: string | boolean | null) {
     await this.updateComplete;
     const element = await this.#getDemoElement();
     if (value === null || value === '') {

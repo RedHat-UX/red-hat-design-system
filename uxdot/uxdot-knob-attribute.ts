@@ -93,6 +93,7 @@ export class UxdotKnobAttribute extends LitElement {
         <pf-select id="knob"
                    data-kind="iconSet"
                    value="${ifDefined(this.#values.get(this.name)) ?? this.default}">
+          <pf-option .value="${null}">Choose an Icon Set</pf-option>
           <pf-option>ui</pf-option>
           <pf-option>standard</pf-option>
           <pf-option>microns</pf-option>
@@ -101,7 +102,8 @@ export class UxdotKnobAttribute extends LitElement {
         <pf-select id="knob"
                    data-kind="icon"
                    variant="typeahead"
-                   value="${ifDefined(this.#values.get(this.name))}">${this.#icons.map(option => html`
+                   value="${ifDefined(this.#values.get(this.name))}">
+          <pf-option .value="${null}">Choose an Icon</pf-option>${this.#icons.map(option => html`
           <pf-option>
             ${option}
             <rh-icon slot="icon"
@@ -111,7 +113,8 @@ export class UxdotKnobAttribute extends LitElement {
         </pf-select>` : isUnionType ? html`
         <pf-select id="knob"
                    data-kind="enum"
-                   value="${ifDefined(this.#values.get(this.name))}">${options.map(option => html`
+                   value="${ifDefined(this.#values.get(this.name))}">
+          <pf-option .value="${null}">Choose a Color Palette</pf-option>${options.map(option => html`
           <pf-option>${dequote(option)}</pf-option>`)}
         </pf-select>` : this.name === 'color-palette' ? html`
         <rh-context-picker id="knob"
@@ -222,7 +225,7 @@ export class UxdotKnobAttribute extends LitElement {
     const target = event.target as LitElement & HTMLInputElement;
     const demo = this.closest('uxdot-demo');
     await target.updateComplete;
-    const value =
+    const value: string | boolean | null =
         target.type === 'checkbox' ? this.#getValueForCheckboxes()
       : this.type === 'boolean' ? target.checked
       : target.value;
