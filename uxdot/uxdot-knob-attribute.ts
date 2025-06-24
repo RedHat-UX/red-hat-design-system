@@ -12,6 +12,7 @@ import styles from './uxdot-knob-attribute.css';
 import '@rhds/elements/rh-switch/rh-switch.js';
 import '@rhds/elements/rh-tabs/rh-tabs.js';
 import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
+import { observes } from '@patternfly/pfe-core/decorators.js';
 
 const dequote = (x: string) =>
   x.replace(/^\s*['"]([^'"]+)['"].*$/m, '$1');
@@ -38,6 +39,8 @@ export class UxdotKnobAttribute extends LitElement {
 
   #icons: string[] = [];
 
+  #typeMembers: string[] = [];
+
   get value() {
     const el = this.shadowRoot?.getElementById('knob') as HTMLInputElement;
     return el?.value;
@@ -54,11 +57,15 @@ export class UxdotKnobAttribute extends LitElement {
     super.update(ch);
   }
 
-  render() {
-    const options = (this.type ?? '')
+  @observes('type')
+  protected typeChanged() {
+    this.#typeMembers = (this.type ?? '')
         .split('|')
-        .filter(member => member !== 'undefined');
+        .filter(member => !!member && member !== 'undefined');
+  }
 
+  render() {
+    const options = this.#typeMembers;
     const isIconSet = this.name === 'icon-set' || (this.tag === 'rh-icon' && this.name === 'set');
     const isUnionType =
          options.length > 1
@@ -114,7 +121,7 @@ export class UxdotKnobAttribute extends LitElement {
         <pf-select id="knob"
                    data-kind="enum"
                    value="${ifDefined(this.#values.get(this.name))}">
-          <pf-option .value="${null}">Choose a Color Palette</pf-option>${options.map(option => html`
+          <pf-option .value="${null}">Choose a Value</pf-option>${options.map(option => html`
           <pf-option>${dequote(option)}</pf-option>`)}
         </pf-select>` : this.name === 'color-palette' ? html`
         <rh-context-picker id="knob"
