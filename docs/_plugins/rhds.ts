@@ -45,6 +45,7 @@ const COPY_CONTENT_EXTENSIONS = [
   'jpg',
   'jpeg',
   'bmp',
+  'avif',
   'webp',
   'webm',
   'mp3',
