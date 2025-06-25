@@ -179,6 +179,27 @@ export class RhNavigationVerticalItem extends LitElement {
 export class RhNavigationVerticalGroup extends LitElement {
   static readonly styles: CSSStyleSheet[] = [groupStyles];
 
+  private static readonly preventEscElements = [
+    'input:not([type="hidden"]):not([type="radio"])',
+
+    // Elements that need the :disabled selector:
+    ...[
+      'input[type="radio"]',
+      'select',
+      'textarea',
+      'rh-audio-player',
+      'rh-dialog',
+    ].map(selector => `${selector}:not([inert]):not([inert] *):not([tabindex^='-']):not(:disabled)`),
+
+    // Elements that don't need the :disabled selector:
+    ...[
+      'iframe',
+      'audio[controls]',
+      'video[controls]',
+      '[contenteditable]',
+    ].map(selector => `${selector}:not([inert]):not([inert] *):not([tabindex^='-'])`),
+  ].join(',');
+
   // eslint-disable-next-line no-unused-private-class-members
   #internals = InternalsController.of(this, { role: 'listitem' });
 
@@ -254,7 +275,16 @@ export class RhNavigationVerticalGroup extends LitElement {
   #onKeydown(event: KeyboardEvent): void {
     if (event.code === 'Escape') {
       event.stopPropagation();
-      this.#close();
+
+      const escapeGuardElement =
+        event.composedPath().reverse().find((element: EventTarget | null) => {
+          return (element instanceof Element
+            && element.matches(RhNavigationVerticalGroup.preventEscElements));
+        });
+
+      if (!escapeGuardElement) {
+        this.#close();
+      }
     }
   }
 
