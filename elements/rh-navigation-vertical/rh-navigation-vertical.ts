@@ -1,4 +1,4 @@
-import { LitElement, html, type TemplateResult } from 'lit';
+import { LitElement, html, isServer, type TemplateResult } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { state } from 'lit/decorators/state.js';
@@ -8,6 +8,7 @@ import { ifDefined } from 'lit-html/directives/if-defined.js';
 
 import { themable } from '@rhds/elements/lib/themable.js';
 
+import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 
 import { consume, provide } from '@lit/context';
@@ -35,9 +36,14 @@ import itemStyles from './rh-navigation-vertical-item.css';
 export class RhNavigationVertical extends LitElement {
   static readonly styles: CSSStyleSheet[] = [styles];
 
+  // eslint-disable-next-line no-unused-private-class-members
+  #internals = InternalsController.of(this, { role: 'navigation' });
+
   private _depth = 0; // Internal state for depth, initially 0
 
   @property({ reflect: true }) variant?: 'learning-path';
+
+  @property({ attribute: 'accessible-label' }) accessibleLabel = 'main';
 
   /**
    * Provide our own parent information, depth = 0
@@ -45,12 +51,41 @@ export class RhNavigationVertical extends LitElement {
   @provide({ context: context })
   private _ctx = this.#makeContext();
 
+  connectedCallback() {
+    super.connectedCallback();
+    if (!isServer) {
+      this.#upgradeAccessibility();
+    }
+  }
+
+  protected firstUpdated(): void {
+    // ensure we update initially on client hydration
+    const _isHydrated = isServer && !this.hasUpdated;
+    if (!_isHydrated) {
+      /**
+       * SSR Adds the role, but then removes when ElementInternals is hydrated
+       * However, axe-dev tools then complains as it doesn't handle Internals correctly
+       * So.... lets readd it for brevity, then when axe decides to fix their stuff,
+       * we can remove at a later date.
+       */
+      this.role = 'navigation';
+    }
+  }
+
   render(): TemplateResult<1> {
+    const classes = { 'learning-path': this.variant === 'learning-path' };
     return html`
-      <nav class="${classMap({ 'learning-path': this.variant === 'learning-path' })}">
+      <div id="container" class="${classMap(classes)}" role="list">
         <slot></slot>
-      </nav>
+      </div>
     `;
+  }
+
+  /**
+   * Upgrades the aria attributes on upgrade
+   */
+  #upgradeAccessibility(): void {
+    this.#internals.ariaLabel = this.accessibleLabel;
   }
 
   #makeContext(): RhNavigationVerticalContext {
@@ -74,6 +109,9 @@ export class RhNavigationVertical extends LitElement {
 export class RhNavigationVerticalItem extends LitElement {
   static readonly styles: CSSStyleSheet[] = [itemStyles];
 
+  // eslint-disable-next-line no-unused-private-class-members
+  #internals = InternalsController.of(this, { role: 'listitem' });
+
   /* Internal state for depth, initially 0 */
   @state()
   private _depth = 0;
@@ -92,6 +130,20 @@ export class RhNavigationVerticalItem extends LitElement {
     if (changedProperties.has('_upstreamParentInfo')) {
       // If we found an upstream parent context, our depth is theirs + 1
       this._depth = this._upstreamParentInfo ? this._upstreamParentInfo.depth + 1 : 0;
+    }
+  }
+
+  protected firstUpdated(): void {
+    // ensure we update initially on client hydration
+    const _isHydrated = isServer && !this.hasUpdated;
+    if (!_isHydrated) {
+      /**
+       * SSR Adds the role, but then removes when ElementInternals is hydrated
+       * However, axe-dev tools then complains as it doesn't handle Internals correctly
+       * So.... lets readd it for brevity, then when axe decides to fix their stuff,
+       * we can remove at a later date.
+       */
+      this.role = 'listitem';
     }
   }
 
@@ -127,6 +179,9 @@ export class RhNavigationVerticalItem extends LitElement {
 export class RhNavigationVerticalGroup extends LitElement {
   static readonly styles: CSSStyleSheet[] = [groupStyles];
 
+  // eslint-disable-next-line no-unused-private-class-members
+  #internals = InternalsController.of(this, { role: 'listitem' });
+
   /* Internal state for depth, initially 0 */
   @state()
   private _depth = 0;
@@ -154,6 +209,20 @@ export class RhNavigationVerticalGroup extends LitElement {
       this._depth = this._upstreamParentInfo ? this._upstreamParentInfo.depth + 1 : 0;
       // Update the provided context value when _depth changes
       this._ctx = this.#makeContext();
+    }
+  }
+
+  protected firstUpdated(): void {
+    // ensure we update initially on client hydration
+    const _isHydrated = isServer && !this.hasUpdated;
+    if (!_isHydrated) {
+      /**
+       * SSR Adds the role, but then removes when ElementInternals is hydrated
+       * However, axe-dev tools then complains as it doesn't handle Internals correctly
+       * So.... lets readd it for brevity, then when axe decides to fix their stuff,
+       * we can remove at a later date.
+       */
+      this.role = 'listitem';
     }
   }
 
