@@ -100,7 +100,7 @@ export class UxdotKnobAttribute extends LitElement {
         <pf-select id="knob"
                    data-kind="iconSet"
                    value="${ifDefined(this.#values.get(this.name)) ?? this.default}">
-          <pf-option .value="${null}">Choose an Icon Set</pf-option>
+          <pf-option value="">Choose an Icon Set</pf-option>
           <pf-option>ui</pf-option>
           <pf-option>standard</pf-option>
           <pf-option>microns</pf-option>
@@ -110,7 +110,7 @@ export class UxdotKnobAttribute extends LitElement {
                    data-kind="icon"
                    variant="typeahead"
                    value="${ifDefined(this.#values.get(this.name))}">
-          <pf-option .value="${null}">Choose an Icon</pf-option>${this.#icons.map(option => html`
+          <pf-option value="">Choose an Icon</pf-option>${this.#icons.map(option => html`
           <pf-option>
             ${option}
             <rh-icon slot="icon"
@@ -121,7 +121,7 @@ export class UxdotKnobAttribute extends LitElement {
         <pf-select id="knob"
                    data-kind="enum"
                    value="${ifDefined(this.#values.get(this.name))}">
-          <pf-option .value="${null}">Choose a Value</pf-option>${options.map(option => html`
+          <pf-option value="">Choose a Value</pf-option>${options.map(option => html`
           <pf-option>${dequote(option)}</pf-option>`)}
         </pf-select>` : this.name === 'color-palette' ? html`
         <rh-context-picker id="knob"
@@ -164,9 +164,9 @@ export class UxdotKnobAttribute extends LitElement {
       for (const attr of attributes) {
         this.#values.set(
           attr.name,
-          attr.type?.text === 'boolean' ?
-            Tools.hasAttribute(elementNode, attr.name)
-            : Tools.getAttribute(elementNode, attr.name),
+          (attr.type?.text === 'boolean' ?
+              Tools.hasAttribute(elementNode, attr.name)
+            : Tools.getAttribute(elementNode, attr.name)),
         );
       }
     } else {
@@ -174,7 +174,7 @@ export class UxdotKnobAttribute extends LitElement {
       if (demo) {
         for (const attr of demo.dataset.attributes?.split(',') ?? []) {
           const value = await demo.getDemoElementAttribute(attr);
-          this.#values.set(attr, value);
+          this.#values.set(attr, value ?? '');
           if (attr === this.name) {
             this.value = value ?? '';
           }
