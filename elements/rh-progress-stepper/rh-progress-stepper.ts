@@ -35,9 +35,7 @@ export class RhProgressStepper extends LitElement {
   render(): TemplateResult<1> {
     return html`
       <strong id="current-step">${this.current}</strong>
-      <div id="step-list">
-        <slot></slot>
-      </div>
+      <slot id="step-list"></slot>
     `;
   }
 }

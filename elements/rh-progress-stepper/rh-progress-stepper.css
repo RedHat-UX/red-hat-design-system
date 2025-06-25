@@ -1,41 +1,47 @@
-
-
-::slotted(rh-progress-step:has(+ [state="inactive"])) {
-    --stepLineColor: var(--rh-color-gray-30);
-}
-
 :host {
   --stepLineColor: var(--rh-color-border-subtle);
 
   display: grid;
   row-gap: var(--rh-length-lg, 16px);
 
-  & div {
+  & slot {
     padding: 0;
     display: grid;
     place-content: baseline normal;
     grid-auto-columns: 1fr;
   }
 
-  & ::slotted(rh-progress-step) {
-    --stepLineColor: var(--rh-color-text-primary);
-  }
-
-  ::slotted(rh-progress-step:last-of-type) {
-    --stepLineStyle: none;
-  }
-
   & #current-step {
-    display: none;
+    /* Visually Hiding */
+    block-size: 1px;
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    inline-size: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+
+    /* End Visual Hiding */
     font-weight: var(--rh-font-weight-body-text-medium, 500);
     text-decoration:
       underline
       dotted
-      var(--rh-color-text-secondary, light-dark(var(--rh-color-text-secondary-on-light, #4d4d4d), var(--rh-color-text-secondary-on-dark, #c7c7c7)))
+      var(--rh-color-text-secondary,
+        light-dark(var(--rh-color-text-secondary-on-light, #4d4d4d),
+        var(--rh-color-text-secondary-on-dark, #c7c7c7)))
       1px;
     text-decoration-skip-ink: none; /* 9.375% */
-    text-underline-offset: 30%; /* 4.8px */
-    text-underline-position: from-font;
+    text-underline-offset: 5px; /* 4.8px */
+  }
+
+  /* & ::slotted(rh-progress-step) {
+    --stepLineColor: var(--rh-color-text-primary);
+  } */
+
+  & ::slotted(rh-progress-step:last-of-type) {
+    --stepLineStyle: none;
   }
 }
 
@@ -51,7 +57,7 @@
     --stepDescriptionGridColumn: 2;
     --stepCompactHPadding: 0;
     --stepColGap: var(--rh-length-lg, 16px);
-    --stepRowGap: var(--rh-length-lg, 16px);
+    --stepRowGap: var(--rh-length-xs, 4px);
   }
 
   /* & ::slotted(rh-progress-step:last-of-type) { background: none; } */
@@ -69,13 +75,13 @@
     --stepDescriptionMargin: inherit;
     --stepCompactVPadding: 0;
     --stepColGap: var(--rh-length-lg, 16px);
-    --stepRowGap: var(--rh-length-lg, 16px);
+    --stepRowGap: var(--rh-length-xs, 4px);
     --stepCompactGridRow: 2;
   }
 }
 
 :host([compact]) {
-  grid-template-rows: 32px;
+  grid-template-rows: auto;
 
   --stepperGridAutoColumn: 50px;
   --stepGridRow: var(--stepCompactGridRow);
@@ -85,7 +91,18 @@
   --stepCompactHPadding: var(--rh-length-lg, 16px);
 
   & #current-step {
-    display: block;
+    /* Visually Showing */
+    block-size: auto;
+    border: none;
+    clip: auto;
+    inline-size: auto;
+    margin: 0;
+    overflow: auto;
+    padding: 0;
+    position: relative;
+    white-space: normal;
+
+    /* End Visually Showing */
     grid-column: 1 / -1;
     grid-row: 1;
     color: var(--currentStepColor, #6a6e73);
@@ -116,4 +133,12 @@
 :host([state='fail']) {
   --currentStepColor: var(--rh-color-status-danger);
   --currentStepWeight: var(--rh-font-weight-body-text-medium, 500);
+}
+
+rh-progress-step:has(+ [state='inactive']) {
+  --stepLineColor: var(--rh-color-border-subtle);
+}
+
+rh-progress-step:not([state='inactive']) {
+  --stepLineColor: var(--rh-color-text-primary);
 }
