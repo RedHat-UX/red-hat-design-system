@@ -61,7 +61,8 @@ details {
 
   &:not([data-depth='1']) {
     & summary {
-      padding: var(--rh-space-lg, 16px);
+      padding-block: var(--rh-space-lg, 16px);
+      padding-inline: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
     }
 
     & #subtree {
