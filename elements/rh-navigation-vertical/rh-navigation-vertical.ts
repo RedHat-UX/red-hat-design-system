@@ -258,7 +258,7 @@ export class RhNavigationVerticalGroup extends LitElement {
           <slot name="summary"></slot>
           <rh-icon set="ui" icon="caret-down"></rh-icon>
         </summary>
-        <div id="subtree">
+        <div id="subtree" role="list">
           <slot></slot>
         </div>
       </details>
