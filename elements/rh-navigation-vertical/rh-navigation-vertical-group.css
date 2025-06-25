@@ -63,6 +63,10 @@ details {
     & summary {
       padding-block: var(--rh-space-lg, 16px);
       padding-inline: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
+
+      & ::slotted([slot='summary']) {
+        font-size: var(--rh-font-size-body-text-sm, 0.875rem) !important;
+      }
     }
 
     & #subtree {
