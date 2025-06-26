@@ -69,11 +69,7 @@ details {
       }
     }
 
-    /**
-     * Only show the border for the inline-left bordered attribute.
-     * does not work in combination with learning-path variant attribute.
-     */
-    &.inline-start:not(.learning-path) {
+    &.inline-start {
       & summary {
         position: relative;
 

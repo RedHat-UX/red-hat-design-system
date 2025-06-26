@@ -50,70 +50,13 @@ a {
 }
 
 #container {
-  &.learning-path {
-    & a {
-      display: flex;
-      flex-direction: column;
-      gap: var(--rh-space-md, 8px);
-      position: relative;
-      padding-inline: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
-
-      & slot:not([name])::slotted(*) {
-        font-size: var(--rh-font-size-body-text-md, 1rem) !important;
-      }
-
-      & slot[name='footer']::slotted(*) {
-        font-size: var(--rh-font-size-body-text-sm, 0.875rem) !important;
-      }
-
-      &:before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        border-inline-start: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
-        z-index: 1;
-      }
-
-      &:active {
-        &:before {
-          border-inline-start-color: var(--rh-color-brand-red);
-        }
-      }
-
-      &:is(:hover, :focus) {
-        background-color:
-          light-dark(var(--rh-color-surface-lighter, #f2f2f2),
-            var(--rh-color-surface-dark, #383838));
-
-        &:before {
-          border-inline-start-color: var(--rh-color-border-subtle-on-dark);
-        }
-      }
-
-      &[aria-current] {
-        & slot:not([name])::slotted(*) {
-          font-weight: var(--rh-font-weight-body-text-medium, 500) !important;
-        }
-
-        &:before {
-          border-inline-start-color: var(--rh-color-brand-red);
-          border-inline-start-width: var(--rh-border-width-lg, 3px);
-        }
-      }
-    }
-  }
-
   &[data-depth]:not([data-depth='1']) {
     & a {
       font-size: var(--rh-font-size-body-text-sm, 0.875rem);
       padding-inline: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
     }
 
-    /**
-     * Only show the border for the inline-left bordered attribute.
-     * does not work in combination with learning-path variant attribute.
-     */
-    &.inline-start:not(.learning-path) {
+    &.inline-start {
       & a {
         position: relative;
 

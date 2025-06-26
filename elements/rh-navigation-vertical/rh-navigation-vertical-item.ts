@@ -78,11 +78,10 @@ export class RhNavigationVerticalItem extends LitElement {
 
   render(): TemplateResult<1> {
     const isCurrentPage = this.currentPage ? 'page' : undefined;
-    const { variant = '', bordered = '' } = this._upstreamParentInfo ?? {};
+    const { bordered = '' } = this._upstreamParentInfo ?? {};
     const classes = {
       'root': !!this._depth && this._depth === 1,
       'child': !!this._depth && this._depth > 1,
-      [variant]: !!variant,
       [bordered]: !!bordered,
     };
     return html`
@@ -90,9 +89,6 @@ export class RhNavigationVerticalItem extends LitElement {
         ${this.href ? html`
           <a href="${ifDefined(this.href)}" aria-current="${ifDefined(isCurrentPage)}">
             <slot></slot>
-            ${this._upstreamParentInfo?.variant === 'learning-path' ? html`
-              <slot name="footer"></slot>
-            ` : ''}
           </a>
         ` : html`
           <slot></slot>
