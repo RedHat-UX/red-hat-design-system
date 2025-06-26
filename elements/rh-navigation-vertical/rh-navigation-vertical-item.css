@@ -50,13 +50,6 @@ a {
 }
 
 #container {
-  &:not([data-depth='1']) {
-    & a {
-      font-size: var(--rh-font-size-body-text-sm, 0.875rem);
-      padding-inline: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
-    }
-  }
-
   &.learning-path {
     & a {
       display: flex;
@@ -105,6 +98,31 @@ a {
         &:before {
           border-inline-start-color: var(--rh-color-brand-red);
           border-inline-start-width: var(--rh-border-width-lg, 3px);
+        }
+      }
+    }
+  }
+
+  &[data-depth]:not([data-depth='1']) {
+    & a {
+      font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+      padding-inline: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
+    }
+
+    /**
+     * Only show the border for the inline-left bordered attribute.
+     * does not work in combination with learning-path variant attribute.
+     */
+    &.inline-start:not(.learning-path) {
+      & a {
+        position: relative;
+
+        &:before {
+          content: '';
+          position: absolute;
+          width: 1px;
+          inset: 0;
+          border-inline-start: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
         }
       }
     }

@@ -35,8 +35,23 @@ export class RhNavigationVerticalItem extends LitElement {
   @state() // Mark as state so changes re-render
   private _upstreamParentInfo?: RhNavigationVerticalContext;
 
+  /**
+   * Optional href attribute that, sets the href of the anchor element.
+   * If not set the element assumes you've slotted your own <a> element.
+   * Defaults to undefined.
+   */
   @property({ reflect: true }) href?: string;
 
+  /**
+   * Optional highlight attribute that, emphasizes the item.
+   * Used for chapter index/landing pages
+   */
+  @property({ reflect: true, type: Boolean }) highlight = false;
+
+  /**
+   * Optional current-page attribute that, highlights the item as the current page.
+   * Used to pass the aria-current attribute to the anchor element.
+   */
   @property({ attribute: 'current-page', type: Boolean }) currentPage? = false;
 
   // Lifecycle method to update depth based on consumed context
@@ -63,10 +78,12 @@ export class RhNavigationVerticalItem extends LitElement {
 
   render(): TemplateResult<1> {
     const isCurrentPage = this.currentPage ? 'page' : undefined;
+    const { variant = '', bordered = '' } = this._upstreamParentInfo ?? {};
     const classes = {
       'root': !!this._depth && this._depth === 1,
       'child': !!this._depth && this._depth > 1,
-      'learning-path': this._upstreamParentInfo?.variant === 'learning-path',
+      [variant]: !!variant,
+      [bordered]: !!bordered,
     };
     return html`
       <div id="container" class="${classMap(classes)}" data-depth="${this._depth}">

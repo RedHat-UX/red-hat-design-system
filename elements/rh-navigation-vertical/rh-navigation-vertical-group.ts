@@ -3,6 +3,7 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { state } from 'lit/decorators/state.js';
 import { query } from 'lit/decorators/query.js';
+import { classMap } from 'lit-html/directives/class-map.js';
 
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
@@ -60,6 +61,10 @@ export class RhNavigationVerticalGroup extends LitElement {
   @provide({ context: context })
   private _ctx = this.#makeContext();
 
+  /**
+   * Optional open attribute that, sets the open state of the group.
+   * Defaults to false.
+   */
   @property({ type: Boolean, reflect: true }) open = false;
 
   @query('details') private detailsEl!: HTMLDetailsElement;
@@ -90,12 +95,18 @@ export class RhNavigationVerticalGroup extends LitElement {
   }
 
   render(): TemplateResult<1> {
+    const { variant = '', bordered = '' } = this._upstreamParentInfo ?? {};
+    const classes = {
+      [variant]: !!variant,
+      [bordered]: !!bordered,
+    };
     return html`
       <details 
         @toggle="${this.#toggle}" 
         ?open="${this.open}"
         @keydown="${this.#onKeydown}"
-        data-depth="${this._depth}">
+        data-depth="${this._depth}"
+        class="${classMap(classes)}">
         <summary>
           <slot name="summary"></slot>
           <rh-icon set="ui" icon="caret-down"></rh-icon>
@@ -111,6 +122,7 @@ export class RhNavigationVerticalGroup extends LitElement {
     return {
       depth: this._depth,
       variant: this._upstreamParentInfo?.variant,
+      bordered: this._upstreamParentInfo?.bordered,
     };
   }
 

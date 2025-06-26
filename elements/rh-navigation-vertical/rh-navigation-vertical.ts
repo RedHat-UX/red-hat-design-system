@@ -33,8 +33,24 @@ export class RhNavigationVertical extends LitElement {
 
   private _depth = 0; // Internal state for depth, initially 0
 
+  /**
+   * Optional variant attribute that sets the variant of the navigation items.
+   * Not to be used in conjunction with rh-navigation-vertical-group for nested navigation.
+   * Defaults to undefined.
+   */
   @property({ reflect: true }) variant?: 'learning-path';
 
+  /**
+   * Optional bordered attribute that adds a border to the inline-start
+   * of the navigation items and groups that are greater then a depth of 1.
+   * Defaults to undefined.
+   */
+  @property({ reflect: true }) bordered?: 'inline-start';
+
+  /**
+   * Optional accessible-label attribute that sets the aria-label for the navigation.
+   * Defaults to 'main'
+   */
   @property({ attribute: 'accessible-label' }) accessibleLabel = 'main';
 
   /**
@@ -65,7 +81,11 @@ export class RhNavigationVertical extends LitElement {
   }
 
   render(): TemplateResult<1> {
-    const classes = { 'learning-path': this.variant === 'learning-path' };
+    const { variant = '', bordered = '' } = this;
+    const classes = {
+      [variant]: !!variant,
+      [bordered]: !!bordered,
+    };
     return html`
       <div id="container" class="${classMap(classes)}" role="list">
         <slot></slot>
@@ -84,6 +104,7 @@ export class RhNavigationVertical extends LitElement {
     return {
       depth: this._depth,
       variant: this.variant,
+      bordered: this.bordered,
     };
   }
 

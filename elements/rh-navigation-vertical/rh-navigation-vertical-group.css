@@ -59,13 +59,31 @@ details {
     }
   }
 
-  &:not([data-depth='1']) {
+  &[data-depth]:not([data-depth='1']) {
     & summary {
       padding-block: var(--rh-space-lg, 16px);
       padding-inline: var(--rh-space-lg, 16px) var(--rh-space-2xl, 32px);
 
       & ::slotted([slot='summary']) {
         font-size: var(--rh-font-size-body-text-sm, 0.875rem) !important;
+      }
+    }
+
+    /**
+     * Only show the border for the inline-left bordered attribute.
+     * does not work in combination with learning-path variant attribute.
+     */
+    &.inline-start:not(.learning-path) {
+      & summary {
+        position: relative;
+
+        &:before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          inline-size: var(--rh-border-width-sm, 1px);
+          border-inline-start: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+        }
       }
     }
 
