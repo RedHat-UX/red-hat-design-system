@@ -74,9 +74,8 @@ export class RhNavigationVertical extends LitElement {
   }
 
   render(): TemplateResult<1> {
-    const { variant = '', bordered = '' } = this;
+    const { bordered = '' } = this;
     const classes = {
-      [variant]: !!variant,
       [bordered]: !!bordered,
     };
     return html`
@@ -96,12 +95,11 @@ export class RhNavigationVertical extends LitElement {
   #makeContext(): RhNavigationVerticalContext {
     return {
       depth: this._depth,
-      variant: this.variant,
       bordered: this.bordered,
     };
   }
 
-  @observes('variant')
+  @observes('bordered')
   protected _openChanged() {
     this._ctx = this.#makeContext();
   }
