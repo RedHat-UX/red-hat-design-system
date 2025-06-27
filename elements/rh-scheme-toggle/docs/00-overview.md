@@ -1,3 +1,1 @@
 ## When to use
-
-- There will be some information here soon. Check back later...
