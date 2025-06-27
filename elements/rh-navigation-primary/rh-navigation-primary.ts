@@ -238,6 +238,14 @@ export class RhNavigationPrimary extends LitElement {
     );
   }
 
+  #eventItems(): RhNavigationPrimaryItem[] {
+    return Array.from(
+      this.querySelectorAll(
+        'rh-navigation-primary-item[slot="event"]',
+      )
+    );
+  }
+
   #secondaryDropdowns(): RhNavigationPrimaryItem[] {
     return Array.from(
       this.querySelectorAll(
@@ -381,12 +389,15 @@ export class RhNavigationPrimary extends LitElement {
 
   #onTabKeyup(event: KeyboardEvent) {
     if (this.compact && this._hamburgerOpen) {
-      const secondaryDropdowns = this.#secondaryDropdowns();
       const target = event.target as HTMLElement;
       if (event.shiftKey && target === this) {
         this.#closeHamburger();
       } else {
-        if (secondaryDropdowns.some(dropdown => dropdown.contains(target))) {
+        if (this.#secondaryDropdowns().some(dropdown => dropdown.contains(target))) {
+          this.#closeHamburger();
+        }
+
+        if (this.#eventItems().some(event => event.contains(target))) {
           this.#closeHamburger();
         }
       }
@@ -433,7 +444,8 @@ export class RhNavigationPrimary extends LitElement {
   #hamburgerToggle(event: Event) {
     if (event instanceof ToggleEvent) {
       if (event.newState === 'open') {
-      // if we are compact mode and any secondary link dropdowns are open, close them
+        this.#openHamburger();
+        // if we are compact mode and any secondary link dropdowns are open, close them
         if (this.compact && this.#openSecondaryDropdowns.size > 0) {
           this.#closeSecondaryDropdowns();
         }
@@ -441,6 +453,7 @@ export class RhNavigationPrimary extends LitElement {
           this.#openOverlay();
         }
       } else {
+        this.#closeHamburger();
         if (this.#openPrimaryDropdowns.size > 0) {
           this.#closePrimaryDropdowns();
         }
