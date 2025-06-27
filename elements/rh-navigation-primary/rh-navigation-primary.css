@@ -381,6 +381,13 @@
     }
   }
 
+  &.logo-text-hide-at-xs #logo svg {
+    @container navigation-primary (min-width: 320px) {
+      block-size: 30px;
+      inline-size: 125px;
+    }
+  }
+
   &.logo-text-hide-at-sm #logo svg {
     @container navigation-primary (min-width: 576px) {
       block-size: 30px;

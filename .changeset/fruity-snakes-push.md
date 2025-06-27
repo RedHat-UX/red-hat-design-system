@@ -6,7 +6,7 @@
 
   - Default logo is now bi-modal auto adjusting text color to light or dark scheme.
   - `logo-href` sets the href for the `<a>` element wrapping the logo, defaults to `/`.
-  - `logo-text-hide-at` sets the breakpoint at which the logo text is hidden, breakpoints available 'sm' | 'md' | 'lg' | 'xl' | '2xl' defaulting to 'md' (992px)
+  - `logo-text-hide-at` sets the breakpoint at which the logo text is hidden, breakpoints available 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' defaulting to 'md' (992px)
   - If you are slotting in a logo these options will not take effect.
 
   ```html
