@@ -70,6 +70,11 @@
       border-block-end-color: transparent;
     }
 
+    & svg {
+      block-size: 30px;
+      inline-size: 42px;
+    }
+
     & ::slotted(a),
     & a {
       display: flex;
@@ -373,6 +378,41 @@
           }
         }
       }
+    }
+  }
+
+  &.logo-text-hide-at-sm #logo svg {
+    @container navigation-primary (min-width: 576px) {
+      block-size: 30px;
+      inline-size: 125px;
+    }
+  }
+
+  &.logo-text-hide-at-md #logo svg {
+    @container navigation-primary (min-width: 992px) {
+      block-size: 30px;
+      inline-size: 125px;
+    }
+  }
+
+  &.logo-text-hide-at-lg #logo svg {
+    @container navigation-primary (min-width: 1200px) {
+      block-size: 30px;
+      inline-size: 125px;
+    }
+  }
+
+  &.logo-text-hide-at-xl #logo svg {
+    @container navigation-primary (min-width: 1440px) {
+      block-size: 30px;
+      inline-size: 125px;
+    }
+  }
+
+  &.logo-text-hide-at-2xl #logo svg {
+    @container navigation-primary (min-width: 1600px) {
+      block-size: 30px;
+      inline-size: 125px;
     }
   }
 }
