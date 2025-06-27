@@ -66,14 +66,15 @@
       & a,
       & ::slotted(a) {
         position: relative;
+      }
 
-        &:before {
-          content: '';
-          position: absolute;
-          inset: 0;
-          inline-size: 1px;
-          border-inline-start: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
-        }
+      & a:before,
+      & ::slotted(a):before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        inline-size: 1px;
+        border-inline-start: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
       }
     }
   }

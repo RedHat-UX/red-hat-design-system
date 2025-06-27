@@ -1,45 +1,46 @@
 <rh-navigation-vertical bordered="inline-start">
-  <rh-navigation-vertical-item href="#" current-page>Home</rh-navigation-vertical-item>
-
-  <rh-navigation-vertical-group>
-    <span slot="summary">About</span>
-    <rh-navigation-vertical-item href="#about">About the Design System</rh-navigation-vertical-item>
-    <rh-navigation-vertical-item href="#about/roadmap">Roadmap</rh-navigation-vertical-item>
-  </rh-navigation-vertical-group>
-
-  <rh-navigation-vertical-group>
-    <span slot="summary">Get Started</span>
-    <rh-navigation-vertical-item href="#get-started">About the Design System</rh-navigation-vertical-item>
-    <rh-navigation-vertical-item href="#get-started/designers">Designers</rh-navigation-vertical-item>
-    <rh-navigation-vertical-item href="#get-started/developers">Developers</rh-navigation-vertical-item>
-    <rh-navigation-vertical-group>
-      <span slot="summary">Sub group</span>
-      <rh-navigation-vertical-item href="#test">Test</rh-navigation-vertical-item>
-      <rh-navigation-vertical-group>
-        <span slot="summary">Sub Sub group</span>
-        <rh-navigation-vertical-item href="#test-two">Test Two</rh-navigation-vertical-item>
-        <rh-navigation-vertical-group>
-          <span slot="summary">Sub Sub Sub group</span>
-          <rh-navigation-vertical-item href="#test-three">This is a test of a long item that would wrap in narrow viewports</rh-navigation-vertical-item>
+  <rh-navigation-vertical-item href="#manage-applications" current-page>Manage applications</rh-navigation-vertical-item>
+  <rh-navigation-vertical-group summary="1. Managing applications">
+    <rh-navigation-vertical-item>
+      <a class="index-link" href="#managing-applications">Managing applications</a>
+    </rh-navigation-vertical-item>
+    <rh-navigation-vertical-group summary="1.1 Application management lifecycle">
+      <rh-navigation-vertical-item>
+        <a class="index-link" href="#application-management-lifecycle">Application Management Lifecycle</a>
+      </rh-navigation-vertical-item>
+      <rh-navigation-vertical-item href="#application-model-definitions">1.1.1 Application Model Definitions</rh-navigation-vertical-item>
+      <rh-navigation-vertical-item href="#managing-applications-with-the-console">1.1.2 Managing applications with the console</rh-navigation-vertical-item>
+      <rh-navigation-vertical-item href="#channels">1.1.3 Channels</rh-navigation-vertical-item>
+      <rh-navigation-vertical-item href="#subscriptions">1.1.4 Subscriptions</rh-navigation-vertical-item>
+      <rh-navigation-vertical-item href="#placement-rules">1.1.5 Placement rules</rh-navigation-vertical-item>
+      <rh-navigation-vertical-group summary="1.1.6 Application">
+        <rh-navigation-vertical-item>
+          <a class="index-link" href="#application">Application</a>
+        </rh-navigation-vertical-item>
+        <rh-navigation-vertical-group summary="1.1.6.1 Creating and managing channels">
+          <rh-navigation-vertical-item>
+            <a class="index-link" href="#creating-and-managing-channels">Creating and managing channels</a>
+          </rh-navigation-vertical-item>
+          <rh-navigation-vertical-item href="#creating-channels">1.1.6.1.1 Creating and managing channels</rh-navigation-vertical-item>
+          <rh-navigation-vertical-group summary="1.1.6.1.2 Updating channel">
+            <rh-navigation-vertical-item>
+              <a class="index-link" href="#updating-channel">Updating channel</a>
+            </rh-navigation-vertical-item>
+            <rh-navigation-vertical-item href="#deleting-channel">1.1.6.1.2.1 Deleting channel</rh-navigation-vertical-item>
+          </rh-navigation-vertical-group>
+          <rh-navigation-vertical-item href="#managing-deployments-with-channels">1.1.6.1.3 Managing deployments with channels</rh-navigation-vertical-item>
         </rh-navigation-vertical-group>
       </rh-navigation-vertical-group>
     </rh-navigation-vertical-group>
   </rh-navigation-vertical-group>
-
-  <rh-navigation-vertical-group>
-    <span slot="summary">Foundations</span>
-    <rh-navigation-vertical-item href="#foundations">Overview</rh-navigation-vertical-item>
-    <rh-navigation-vertical-item href="#foundations/color">Color</rh-navigation-vertical-item>
-    <rh-navigation-vertical-item href="#foundations/grid">Grid</rh-navigation-vertical-item>
-    <rh-navigation-vertical-item href="#foundations/iconography">Iconography</rh-navigation-vertical-item>
-    <rh-navigation-vertical-item href="#foundations/interactions">Interactions</rh-navigation-vertical-item>
-    <rh-navigation-vertical-item href="#foundations/spacing">Spacing</rh-navigation-vertical-item>
-    <rh-navigation-vertical-item href="#foundations/typography">Typography</rh-navigation-vertical-item>
-  </rh-navigation-vertical-group>
-
-  <rh-navigation-vertical-item href="#end">End</rh-navigation-vertical-item>
-
+  <rh-navigation-vertical-item href="#legal-notice">Legal Notice</rh-navigation-vertical-item>
 </rh-navigation-vertical>
+
+<style>
+  .index-link {
+    font-weight: 600;
+  }
+</style>
 
 <script type="module">
   import '@rhds/elements/rh-navigation-vertical/rh-navigation-vertical.js';

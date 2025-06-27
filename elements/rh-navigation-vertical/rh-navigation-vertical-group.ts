@@ -67,6 +67,12 @@ export class RhNavigationVerticalGroup extends LitElement {
    */
   @property({ type: Boolean, reflect: true }) open = false;
 
+  /**
+   * Optional summary attribute, sets the summary text.
+   * Overridden by the summary slot.
+   */
+  @property({ type: String }) summary?: string;
+
   @query('details') private detailsEl!: HTMLDetailsElement;
   @query('summary') private summaryEl!: HTMLElement;
 
@@ -107,7 +113,7 @@ export class RhNavigationVerticalGroup extends LitElement {
         data-depth="${this._depth}"
         class="${classMap(classes)}">
         <summary>
-          <slot name="summary"></slot>
+          <slot name="summary">${this.summary}</slot>
           <rh-icon set="ui" icon="caret-down"></rh-icon>
         </summary>
         <div id="subtree" role="list">
