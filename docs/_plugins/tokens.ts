@@ -12,7 +12,7 @@ interface PluginOptions {
 }
 
 export default function RHDSPlugin(eleventyConfig: UserConfig, pluginOptions?: PluginOptions) {
-  eleventyConfig.addPassthroughCopy('docs/tokens/**/*.{svg,jpe?g,png}');
+  eleventyConfig.addPassthroughCopy('docs/tokens/**/*.{svg,jpe?g,png,webp,avif}');
 
   eleventyConfig.addGlobalData('tokens', tokensJSON);
 
