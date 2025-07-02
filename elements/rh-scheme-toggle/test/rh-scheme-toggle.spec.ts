@@ -2,93 +2,113 @@ import { expect, html, nextFrame } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
 import { RhSchemeToggle } from '@rhds/elements/rh-scheme-toggle/rh-scheme-toggle.js';
 import { a11ySnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
-import type { A11yTreeSnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
+import { sendKeys } from '@web/test-runner-commands';
 
-describe('<rh-scheme-toggle>', function () {
-  describe('simply instantiating', function () {
+function press(key: string) {
+  return async function() {
+    await sendKeys({ press: key });
+  };
+}
+
+describe('<rh-scheme-toggle>', function() {
+  describe('simply instantiating', function() {
     let element: RhSchemeToggle;
 
-    beforeEach(async function () {
+    beforeEach(async function() {
       element = await createFixture<RhSchemeToggle>(
         html`<rh-scheme-toggle></rh-scheme-toggle>`
       );
       await element.updateComplete;
     });
 
-    it('imperatively instantiates', function () {
+    it('imperatively instantiates', function() {
       expect(document.createElement('rh-scheme-toggle')).to.be.an.instanceof(
         RhSchemeToggle
       );
     });
 
-    it('should upgrade', async function () {
+    it('should upgrade', async function() {
       const klass = customElements.get('rh-scheme-toggle');
       expect(element)
-        .to.be.an.instanceOf(klass)
-        .and.to.be.an.instanceOf(RhSchemeToggle);
+          .to.be.an.instanceOf(klass)
+          .and.to.be.an.instanceOf(RhSchemeToggle);
     });
 
-    it('should be accessible', async function () {
+    it('should be accessible', async function() {
       await expect(element).to.be.accessible();
     });
   });
-  describe('testing the toggle states', function () {
+  describe('keyboard navigation', function() {
     let element: RhSchemeToggle;
-    let snapshot: A11yTreeSnapshot;
 
-    beforeEach(async function () {
+    beforeEach(async function() {
       element = await createFixture<RhSchemeToggle>(
         html`<rh-scheme-toggle></rh-scheme-toggle>`
       );
-      await element.updateComplete;
-      await nextFrame();
+    });
+    beforeEach(async () => await element.updateComplete);
+
+    describe('first tab press', function() {
+      beforeEach(press('Tab'));
+
+      it('should focus and check the device default mode radio input', async function() {
+        const snapshot = await a11ySnapshot();
+        expect(snapshot).to.have.axQuery({ name: 'Device default', focused: true, checked: true });
+      });
+
+      describe('right arrow press', function() {
+        beforeEach(press('ArrowRight'));
+
+        it('should focus and check the light mode radio input', async function() {
+          const snapshot = await a11ySnapshot();
+          expect(snapshot).to.have.axQuery({ name: 'Light', focused: true, checked: true });
+        });
+      });
+
+      describe('left arrow press', function() {
+        beforeEach(press('ArrowRight'));
+
+        it('should focus and check the dark mode radio input', async function() {
+          const snapshot = await a11ySnapshot();
+          expect(snapshot).to.have.axQuery({ name: 'Dark', focused: true, checked: true });
+        });
+      });
     });
 
-    it('should check the clicked input and update scheme', async function () {
-      // Get all radio inputs from the shadow DOM
-      const lightInput = element.shadowRoot?.querySelector(
-        'input[value="light"]'
-      ) as HTMLInputElement;
-      const darkInput = element.shadowRoot?.querySelector(
-        'input[value="dark"]'
-      ) as HTMLInputElement;
-      const autoInput = element.shadowRoot?.querySelector(
-        'input[value="light dark"]'
-      ) as HTMLInputElement;
+    describe('local storage', function() {
+      beforeEach(function() {
+        localStorage.clear();
+      });
 
-      expect(lightInput).to.exist;
-      expect(darkInput).to.exist;
-      expect(autoInput).to.exist;
+      it('if local storage is set to light dark, should focus, check and set the scheme to light dark', async function() {
+        localStorage.setItem('rhdsColorScheme', 'light dark');
+        // Create new element after setting localStorage so it reads the value during initialization
+        const newElement = await createFixture<RhSchemeToggle>(
+          html`<rh-scheme-toggle></rh-scheme-toggle>`
+        );
+        await newElement.updateComplete;
+        expect(newElement.scheme).to.equal('light dark');
+      });
 
-      // Click the light mode input
-      lightInput.click();
-      await element.updateComplete;
+      it('if local storage is set to light, should focus, check and set the scheme to light', async function() {
+        localStorage.setItem('rhdsColorScheme', 'light');
+        // Create new element after setting localStorage so it reads the value during initialization
+        const newElement = await createFixture<RhSchemeToggle>(
+          html`<rh-scheme-toggle></rh-scheme-toggle>`
+        );
+        await newElement.updateComplete;
+        expect(newElement.scheme).to.equal('light');
+      });
 
-      // Verify the light input is now checked
-      expect(lightInput.checked).to.be.true;
-      expect(darkInput.checked).to.be.false;
-      expect(autoInput.checked).to.be.false;
-      expect(element.scheme).to.equal('light');
-
-      // Click the dark mode input
-      darkInput.click();
-      await element.updateComplete;
-
-      // Verify the dark input is now checked
-      expect(lightInput.checked).to.be.false;
-      expect(darkInput.checked).to.be.true;
-      expect(autoInput.checked).to.be.false;
-      expect(element.scheme).to.equal('dark');
-
-      // Click the auto mode input
-      autoInput.click();
-      await element.updateComplete;
-
-      // Verify the auto input is now checked
-      expect(lightInput.checked).to.be.false;
-      expect(darkInput.checked).to.be.false;
-      expect(autoInput.checked).to.be.true;
-      expect(element.scheme).to.equal('light dark');
+      it('if local storage is set to dark, should focus, check and set the scheme to dark', async function() {
+        localStorage.setItem('rhdsColorScheme', 'dark');
+        // Create new element after setting localStorage so it reads the value during initialization
+        const newElement = await createFixture<RhSchemeToggle>(
+          html`<rh-scheme-toggle></rh-scheme-toggle>`
+        );
+        await newElement.updateComplete;
+        expect(newElement.scheme).to.equal('dark');
+      });
     });
   });
 });
