@@ -1,8 +1,8 @@
 import { LitElement } from 'lit';
 import type { IconNameFor, IconSetName } from '@rhds/icons';
 /**
- * A call to action is a styled link that entices users to make a selection.
- * @summary     Directs users to other pages or displays extra content
+ * A call to action is styled text representing a link.
+ * @summary     A call to action is styled text representing a link.
  * @slot
  *              The default slot contains the link text when the `href`
  *              attribute is set. In case there is no href attribute, an anchor
