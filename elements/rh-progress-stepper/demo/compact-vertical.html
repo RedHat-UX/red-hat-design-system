@@ -1,12 +1,5 @@
 <rh-progress-stepper orientation="vertical" compact state="active" current="Active Step">
   <rh-progress-step
-    state="active"
-    label="Active Step"
-    description="Currently working on this step"
-    aria-current="step">
-  </rh-progress-step>
-  
-  <rh-progress-step
     state="complete"
     label="Complete Step"
     description="This step has been completed successfully">
@@ -22,6 +15,13 @@
     state="fail"
     label="Failed Step"
     description="This step has failed and needs to be retried">
+  </rh-progress-step>
+
+  <rh-progress-step
+    state="active"
+    label="Active Step"
+    description="Currently working on this step"
+    aria-current="step">
   </rh-progress-step>
 
   <rh-progress-step

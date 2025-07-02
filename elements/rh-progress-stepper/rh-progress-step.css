@@ -1,11 +1,12 @@
-p {
+slot[name='description'] {
+  display: inline-block;
   margin: 0;
   grid-column: var(--stepDescriptionGridColumn, 1);
   font-weight: var(--rh-font-weight-body-text-regular, 400);
 }
 
 strong,
-p {
+slot[name='description'] {
   /* Visually Showing */
   block-size: auto;
   border: none;
@@ -22,7 +23,7 @@ p {
 
 :host-context([compact]) {
   & strong,
-  & p {
+  & slot[name='description'] {
     /* Visually Hiding */
     block-size: 1px;
     border: 0;
@@ -53,13 +54,17 @@ p {
       var(--stepLineColor) 15px,
       transparent 15px));
   place-items: start baseline;
-  color: var(--rh-color-text-secondary, light-dark(var(--rh-color-text-secondary-on-light, #4d4d4d), var(--rh-color-text-secondary-on-dark, #c7c7c7)));
+  color:
+    var(--rh-color-text-secondary,
+      light-dark(var(--rh-color-text-secondary-on-light, #4d4d4d),
+      var(--rh-color-text-secondary-on-dark, #c7c7c7)));
   grid-template-columns: var(--stepTemplateColumns, 24px auto);
   grid-template-rows: var(--stepTemplateRows, 24px auto);
   justify-self: var(--stepJustifySelf, start);
 
   /* Body text/md */
-  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+  font-family:
+    var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-body-text-md, 1rem);
   font-style: normal;
   font-weight: var(--rh-font-weight-body-text-regular, 400);
@@ -84,7 +89,7 @@ p {
   }
 
   & strong { align-self: center; }
-  & p { font-size: var(--rh-font-size-body-text-xs, 0.75rem); }
+  & slot[name='description'] { font-size: var(--rh-font-size-body-text-xs, 0.75rem); }
 
   &:has(+ [state='inactive']) {
     --stepLineColor: var(--rh-color-border-subtle) !important;
@@ -93,7 +98,7 @@ p {
 
 :host([state='inactive']) {
   & strong,
-  & p {
+  & slot[name='description'] {
     color: var(--rh-color-text-disabled, #6a6e73);
     font-weight: var(--rh-font-weight-body-text-regular, 400);
   }
@@ -144,7 +149,9 @@ p {
     text-decoration:
       underline
       dotted
-      var(--rh-color-text-secondary, light-dark(var(--rh-color-text-secondary-on-light, #4d4d4d), var(--rh-color-text-secondary-on-dark, #c7c7c7)))
+      var(--rh-color-text-secondary,
+        light-dark(var(--rh-color-text-secondary-on-light, #4d4d4d),
+        var(--rh-color-text-secondary-on-dark, #c7c7c7)))
       1px;
     text-decoration-skip-ink: none; /* 9.375% */
     text-underline-offset: 5px; /* 4.8px */
@@ -154,14 +161,19 @@ p {
     & rh-icon { border-color: var(--rh-color-text-primary); }
 
     & span {
-      color: var(--rh-color-text-secondary, light-dark(var(--rh-color-text-secondary-on-light, #4d4d4d), var(--rh-color-text-secondary-on-dark, #c7c7c7)));
+      color:
+        var(--rh-color-text-secondary,
+          light-dark(var(--rh-color-text-secondary-on-light, #4d4d4d),
+          var(--rh-color-text-secondary-on-dark, #c7c7c7)));
 
       /* Body text/md - Medium weight */
       font-weight: var(--rh-font-weight-body-text-medium, 500);
       text-decoration:
         underline
         dotted
-        var(--rh-color-text-secondary, light-dark(var(--rh-color-text-secondary-on-light, #4d4d4d), var(--rh-color-text-secondary-on-dark, #c7c7c7)))
+        var(--rh-color-text-secondary,
+          light-dark(var(--rh-color-text-secondary-on-light, #4d4d4d),
+          var(--rh-color-text-secondary-on-dark, #c7c7c7)))
         1px;
       text-decoration-skip-ink: none; /* 9.375% */
       text-underline-offset: 5px; /* 4.8px */
