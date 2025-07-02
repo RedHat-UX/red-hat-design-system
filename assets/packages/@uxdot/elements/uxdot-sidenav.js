@@ -11,7 +11,7 @@ const styles = css `:host{--_padding-start:var(--uxdot-sidenav-padding-start,var
 const itemStyles = css `:host,a{display:block}a{padding:var(--rh-space-lg) var(--rh-space-2xl);font-size:var(--rh-font-size-body-text-lg);text-decoration:none!important;color:var(--rh-color-text-primary)!important;border-inline-start:var(--rh-border-width-lg) solid #0000}a:hover{border-inline-start-color:var(--rh-color-border-subtle)}a.active,a:hover{background:light-dark(var(--rh-color-surface-lighter),var(--rh-color-surface-darker))}a.active{border-inline-start-color:var(--rh-color-accent-brand)}`;
 const dropdownStyles = css `:host{z-index:var(--uxdot-sidenav-z-index,102)}`;
 const dropdownMenuStyles = css `:host{display:block;padding-inline-start:var(--rh-space-2xl)}`;
-const dropdownMenuItemStyles = css `a{text-transform:capitalize;padding:var(--rh-space-md) 0 var(--rh-space-md) var(--rh-space-lg);font-size:var(--rh-font-size-body-text-md)}`;
+const dropdownMenuItemStyles = css `a{font-size:var(--rh-font-size-body-text-md);padding:var(--rh-space-md) 0 var(--rh-space-md) var(--rh-space-lg)}`;
 let UxdotSideNav = class UxdotSideNav extends LitElement {
     constructor() {
         super(...arguments);
