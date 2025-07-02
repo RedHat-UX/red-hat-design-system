@@ -41,7 +41,7 @@ Primary navigation is available in both light and dark color schemes.
 
 ### Dark scheme
 
-<uxdot-example color-palette="darkest" variant="full" no-border>
+<uxdot-example variant="full" no-border>
   <img alt="Primary nav in a dark scheme which means it has a dark or black background"
        src="../nav-primary-style-scheme-dark.svg"
        width="1140"
