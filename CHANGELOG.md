@@ -1,5 +1,10 @@
 # @rhds/elements
 
+## 3.0.5
+### Patch Changes
+
+- 4b130a7: `<rh-footer>`: removed Inc from copyright
+
 ## 3.0.4
 ### Patch Changes
 
