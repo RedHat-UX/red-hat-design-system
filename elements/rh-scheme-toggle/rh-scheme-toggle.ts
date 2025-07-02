@@ -24,25 +24,13 @@ export class RhSchemeToggle extends LitElement {
   static styles = [styles];
 
   @property({ reflect: true }) scheme?: Scheme = globalThis.localStorage
-    ?.rhdsColorScheme as Scheme;
-
-  connectedCallback(): void {
-    super.connectedCallback();
-    if (!isServer) {
-      this.scheme = localStorage.rhdsColorScheme;
-    }
-  }
-
-  firstUpdated() {
-    // workaround for ssr mismatch
-    if (!isServer) {
-      this.shadowRoot
-        ?.querySelector(`[value="${this.scheme}"]`)
-        ?.toggleAttribute('checked', true);
-    }
-  }
+      ?.rhdsColorScheme as Scheme;
 
   render() {
+    const isLight = this.scheme === 'light';
+    const isDark = this.scheme === 'dark';
+    const isSystem = (this.scheme === 'light dark') || (this.scheme === undefined);
+
     return html`
       <fieldset @change="${this.#onChange}">
         <legend>Color scheme:</legend>
@@ -53,7 +41,7 @@ export class RhSchemeToggle extends LitElement {
               type="radio"
               name="scheme"
               value="light"
-              ?checked="${!isServer && this.scheme === 'light'}"
+              ?checked="${isLight}"
             />
             <rh-icon set="ui" icon="light-mode"></rh-icon>
           </label>
@@ -63,7 +51,7 @@ export class RhSchemeToggle extends LitElement {
               type="radio"
               name="scheme"
               value="dark"
-              ?checked="${!isServer && this.scheme === 'dark'}"
+              ?checked="${isDark}"
             />
             <rh-icon set="ui" icon="dark-mode"></rh-icon>
           </label>
@@ -73,9 +61,7 @@ export class RhSchemeToggle extends LitElement {
               type="radio"
               name="scheme"
               value="light dark"
-              ?checked="${isServer ||
-              this.scheme === 'light dark' ||
-              undefined}"
+              ?checked="${isSystem}"
             />
             <rh-icon set="ui" icon="auto-light-dark-mode"></rh-icon>
           </label>
