@@ -1,3 +1,11 @@
+<style>
+  @container host (min-width: 768px) {
+    #kbd-interactions td:first-child {
+      width: 33%;
+    }
+  }
+</style>
+
 ## Implementation
 
 - If a primary navigation does not use the native `<details>`/`<summary>` elements, ensure `aria-expanded` is applied to the menu trigger element and respects its state
@@ -23,7 +31,7 @@ Primary and utility menus can also be expanded or collapsed using the keyboard.
        height="370">
 </uxdot-example>
 
-<rh-table>
+<rh-table id="kbd-interactions">
   <table>
     <caption class="visually-hidden">Primary navigation keyboard navigation behavior</caption>
     <thead>

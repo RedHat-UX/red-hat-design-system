@@ -1,3 +1,12 @@
+<style>
+  @container host (min-width: 768px) {
+    #primary-vs-secondary td:first-child,
+    #char-count td {
+      width: 33%;
+    }
+  }
+</style>
+
 ## Guidelines
 
 Use the primary navigation to organize high-level content and important user actions.
@@ -6,40 +15,37 @@ Use the primary navigation to organize high-level content and important user act
 
 Here is guidance on when to use the primary vs. secondary navigation.
 
-<rh-table>
-
-  <rh-table>
-    <table>
-      <thead>
-        <tr>
-          <th scope="col" data-label="Element" style="width: 25%;">Element</th>
-          <th scope="col" data-label="When to use">When to use</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td data-label="Element">Primary navigation</td>
-          <td data-label="When to use">
-            <ul>
-              <li>Provide persistent access to high-level content across domains</li>
-              <li>Outline the fundamental structure of a website</li>
-              <li>Organize the most important user actions</li>
-            </ul>
-          </td>
-        </tr>
-        <tr>
-          <td data-label="Element">Secondary navigation</td>
-          <td data-label="When to use">
-            <ul>
-              <li>If more space is needed for content without cluttering the primary navigation</li>
-              <li>Offer more content pertinent to a section that users are exploring</li>
-              <li>Allow users to dig deeper into a specific topic</li>
-            </ul>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </rh-table>
+<rh-table id="primary-vs-secondary">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col" data-label="Element" style="width: 25%;">Element</th>
+        <th scope="col" data-label="When to use">When to use</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Element">Primary navigation</td>
+        <td data-label="When to use">
+          <ul>
+            <li>Provide persistent access to high-level content across domains</li>
+            <li>Outline the fundamental structure of a website</li>
+            <li>Organize the most important user actions</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td data-label="Element">Secondary navigation</td>
+        <td data-label="When to use">
+          <ul>
+            <li>If more space is needed for content without cluttering the primary navigation</li>
+            <li>Offer more content pertinent to a section that users are exploring</li>
+            <li>Allow users to dig deeper into a specific topic</li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </rh-table>
 
 ## Writing content
@@ -50,7 +56,7 @@ Menus need to quickly describe to users what content they can expect to see when
 
 ### Element and character counts
 
-<rh-table>
+<rh-table id="char-count">
 
   | Element            | Max number      | Character count |
   |--------------------|-----------------|-----------------|
