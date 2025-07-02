@@ -1,5 +1,5 @@
 # Pagination
-Red Hat Pagination web component. A responsive, dynamic, and flexible paginator.
+Red Hat Pagination Web Component. A responsive, dynamic, and flexible paginator.
 
 ## Usage
 Pagination is the practice of separating content into individual numbered pages. The pagination web
