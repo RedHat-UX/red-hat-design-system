@@ -1,3 +1,12 @@
+<style>
+  @container host (min-width: 768px) {
+    #cta-vs-btn td,
+    #styles-variants td:first-child {
+      width: 33%;
+    }
+  }
+</style>
+
 ## Guidelines
 
 Use a call to action to entice users to make a selection.
@@ -10,7 +19,7 @@ Use a call to action to highlight a link on its own so it stands out to users. M
 
 Here is guidance on when to use a call to action vs. button.
 
-<rh-table>
+<rh-table id="cta-vs-btn">
 
 | Element        | Intended action                            | Frequency              |
 |----------------|--------------------------------------------|-------------------------|
@@ -23,7 +32,7 @@ Here is guidance on when to use a call to action vs. button.
 
 Some calls to action can be used more than once per page depending on their messaging and placement.
 
-<rh-table>
+<rh-table id="styles-variants">
 
 | Style or variant | How to use |
 |------------------|------------------------------------------------------------------|
@@ -160,7 +169,7 @@ Spacing between Brick variants is flexible and should be the same as [grid gutte
 
 Calls to action are arranged horizontally in 1 row by default. As viewports get smaller, they will stack.
 
-<uxdot-example color-palette="lightest" width-adjustment="1140px">
+<uxdot-example color-palette="lightest" width-adjustment="1140px" no-border variant="full">
   <img src="../cta-guidelines-layout-responsive-design.svg"
         alt="Three sets of CTAs showing desktop, tablet, and mobile viewports and how they stack as the viewport gets smaller."
         width="1140"
@@ -226,7 +235,7 @@ Calls to action are arranged horizontally in 1 row by default. As viewports get 
           width="483"
           height="120">
   </uxdot-example>
-  <p>Use 3 calls to action max, this helps avoid choice paralysis.</p>
+  <p>Use 3 calls to action max, this helps avoid <a href="https://www.scienceofpeople.com/choice-paralysis/">choice paralysis</a>.</p>
 </uxdot-best-practice>
 
 <uxdot-best-practice variant="dont">
