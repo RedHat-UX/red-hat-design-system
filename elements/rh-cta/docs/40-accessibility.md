@@ -1,3 +1,11 @@
+<style>
+  @container host (min-width: 768px) {
+    #kbd-interactions td:first-child {
+      width: 33%;
+    }
+  }
+</style>
+
 ## Keyboard interactions
 
 Every call to action style and variant must be able to receive focus and be navigated with a keyboard.
@@ -9,7 +17,7 @@ Every call to action style and variant must be able to receive focus and be navi
         height="103">
 </uxdot-example>
 
-<rh-table>
+<rh-table id="kbd-interactions">
 
 | Key                  | Result                                                            |
 | -------------------- | ----------------------------------------------------------------- |
