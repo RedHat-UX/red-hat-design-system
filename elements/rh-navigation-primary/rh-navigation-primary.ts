@@ -89,6 +89,9 @@ export class RhNavigationPrimary extends LitElement {
   @query('#hamburger')
   private _hamburger!: HTMLDetailsElement;
 
+  @query('summary')
+  private _hamburgerSummary!: HTMLElement;
+
   /**
    * Sets the mobile toggle (hamburger) text, used for translations, defaults to 'Menu'
    */
@@ -155,7 +158,6 @@ export class RhNavigationPrimary extends LitElement {
       this.addEventListener('toggle', this.#onDropdownToggle);
       this.addEventListener('focusout', this.#onFocusout);
       this.addEventListener('keydown', this.#onKeydown);
-      this.addEventListener('keyup', this.#onKeyup);
       this.#upgradeAccessibility();
       this.#internals.ariaLabel = this.accessibleLabel;
     }
@@ -178,15 +180,16 @@ export class RhNavigationPrimary extends LitElement {
               </a>
             </slot>
           </div>
-          <details id="hamburger" ?open="${this._hamburgerOpen}" @toggle="${this.#hamburgerToggle}">
-            <summary>
+          <details id="hamburger" ?open="${this._hamburgerOpen}" @toggle="${this.#hamburgerToggle}" @focusout="${this.#onHamburgerFocusOut}">
+            <summary @blur="${this.#onHamburgerSummaryBlur}">
               <rh-icon icon="menu-bars" set="ui"></rh-icon>
               <div id="summary">${this.mobileToggleLabel}</div>
               <rh-icon icon="caret-down" set="microns"></rh-icon>
             </summary>
-            <div id="details-content" role="list">
+            <div id="details-content" role="list" >
               <slot></slot>
             </div>
+
           </details>
           <div id="secondary">
             <div id="event" role="list"><slot name="event"></slot></div>
@@ -228,29 +231,14 @@ export class RhNavigationPrimary extends LitElement {
     this.#closeOverlay();
   }
 
-  #primaryDropdowns(): RhNavigationPrimaryItem[] {
+  #primaryItems(): RhNavigationPrimaryItem[] {
     return Array.from(
       this.querySelectorAll(
-        'rh-navigation-primary-item[variant="dropdown"]:not([slot="dropdowns"])',
+        'rh-navigation-primary-item:not([slot])',
       )
     );
   }
 
-  #eventItems(): RhNavigationPrimaryItem[] {
-    return Array.from(
-      this.querySelectorAll(
-        'rh-navigation-primary-item[slot="event"]',
-      )
-    );
-  }
-
-  #secondaryDropdowns(): RhNavigationPrimaryItem[] {
-    return Array.from(
-      this.querySelectorAll(
-        'rh-navigation-primary-item[variant="dropdown"][slot="dropdowns"]',
-      )
-    );
-  }
 
   async #onDropdownToggle(event: Event) {
     const item = event.target as RhNavigationPrimaryItem;
@@ -290,6 +278,42 @@ export class RhNavigationPrimary extends LitElement {
     }
   }
 
+  #hamburgerContains(item: Node): boolean {
+    const primaryItems = this.#primaryItems();
+    return primaryItems.some(pi => pi.contains(item));
+  }
+
+  #onHamburgerSummaryBlur(event: FocusEvent) {
+    if (event.relatedTarget) {
+      if (this.#hamburgerContains(event.relatedTarget as Node)) {
+        return;
+      }
+      this.close();
+    }
+  }
+
+  #onHamburgerFocusOut(event: FocusEvent) {
+    if (event.relatedTarget) {
+      if (event.relatedTarget === this._hamburgerSummary) {
+        return;
+      }
+      if (this.#hamburgerContains(event.relatedTarget as Node)) {
+        return;
+      }
+      this.close();
+    }
+  }
+
+  async #onFocusout(event: FocusEvent) {
+    const target = event.relatedTarget as HTMLElement;
+    if (target?.closest('rh-navigation-primary') === this || target === null) {
+      // if the focus is still inside the rh-navigation-secondary exit
+      return;
+    } else {
+      this.close();
+    }
+  }
+
   #onKeydown(event: KeyboardEvent) {
     switch (event.key) {
       case 'Escape': {
@@ -307,100 +331,11 @@ export class RhNavigationPrimary extends LitElement {
         }
         break;
       }
-      case 'Tab':
-        this.#onTabKeydown(event);
-        break;
       default:
         break;
     }
   }
 
-  #onKeyup(event: KeyboardEvent) {
-    switch (event.key) {
-      case 'Tab':
-        this.#onTabKeyup(event);
-        break;
-      default:
-        break;
-    }
-  }
-
-
-  async #onFocusout(event: FocusEvent) {
-    const target = event.relatedTarget as HTMLElement;
-    if (target?.closest('rh-navigation-primary') === this || target === null) {
-      // if the focus is still inside the rh-navigation-secondary exit
-      return;
-    } else {
-      this.close();
-    }
-  }
-
-  #onTabKeydown(event: KeyboardEvent) {
-    // target is the element we are leaving with tab press
-    const target = event.target as HTMLElement;
-    // get target parent dropdown
-    const primaryDropdowns = this.#primaryDropdowns();
-    const secondaryDropdowns = this.#secondaryDropdowns();
-    // target can be in one of the two dropdown collections, but only 1.
-    const dropdownContainsTarget =
-      primaryDropdowns.find(dropdown => dropdown.contains(target))
-      ?? secondaryDropdowns.find(dropdown => dropdown.contains(target));
-    if (dropdownContainsTarget) {
-      const focusableChildElements =
-        Array.from(RhNavigationPrimary.focusableChildElements(dropdownContainsTarget));
-
-      if (focusableChildElements.length > 0) {
-        const {
-          0: firstChild,
-          [focusableChildElements.length - 1]: lastChild,
-        } = focusableChildElements;
-
-        if (event.shiftKey) {
-          if (event.shiftKey && firstChild === target) {
-            return;
-          }
-          // if target is self, close self
-          if (event.shiftKey && target === dropdownContainsTarget) {
-            dropdownContainsTarget.hide();
-            return;
-          }
-        } else {
-          if (!firstChild) {
-            return;
-          }
-          if (!lastChild) {
-            return;
-          } else {
-            if (lastChild === target) {
-              dropdownContainsTarget.hide();
-              return;
-            }
-          }
-        }
-      } else {
-        this.#closePrimaryDropdowns();
-        this.#closeSecondaryDropdowns();
-      }
-    }
-  }
-
-  #onTabKeyup(event: KeyboardEvent) {
-    if (this.compact && this._hamburgerOpen) {
-      const target = event.target as HTMLElement;
-      if (event.shiftKey && target === this) {
-        this.#closeHamburger();
-      } else {
-        if (this.#secondaryDropdowns().some(dropdown => dropdown.contains(target))) {
-          this.#closeHamburger();
-        }
-
-        if (this.#eventItems().some(event => event.contains(target))) {
-          this.#closeHamburger();
-        }
-      }
-    }
-  }
 
   /**
    * close all open dropdowns in primary slot

@@ -36,6 +36,13 @@ export class RhNavigationPrimaryItem extends LitElement {
   @query('details')
   private _details!: HTMLDetailsElement;
 
+  @query('summary')
+  private _summary!: HTMLElement;
+
+  @consume({ context, subscribe: true })
+  @state()
+  private compact?: boolean;
+
   @property({ type: Boolean, reflect: true }) open = false;
 
   /* Summary text for dropdown variants only */
@@ -57,9 +64,6 @@ export class RhNavigationPrimaryItem extends LitElement {
   /** Icon set for the `icon` property - 'ui' by default */
   @property({ attribute: 'icon-set' }) iconSet?: IconSetName;
 
-  @consume({ context, subscribe: true })
-  @state()
-  private compact?: boolean;
 
   protected firstUpdated(): void {
     // ensure we update initially on client hydration
@@ -95,7 +99,7 @@ export class RhNavigationPrimaryItem extends LitElement {
       hamburger: hamburger,
       dehydrated: !this.#hydrated,
     })}">${this.variant === 'dropdown' ? html`
-        <details @toggle="${this.#detailsToggle}">
+        <details @toggle="${this.#detailsToggle}" @focusout="${this.#onFocusout}" ?open="${this.open}">
           <summary>${hamburger ? '' : html`
             <slot name="icon">${!this.icon ? '' : html`
               <rh-icon icon="${ifDefined(this.icon)}" set="${ifDefined(this.iconSet)}"></rh-icon>`}
@@ -117,12 +121,28 @@ export class RhNavigationPrimaryItem extends LitElement {
     this.dispatchEvent(new Event('toggle', { bubbles: true }));
   }
 
-  public hide() {
-    this._details.open = false;
+  async #onFocusout(event: FocusEvent) {
+    if (event.relatedTarget) {
+      if (event.relatedTarget === this._summary) {
+        return;
+      }
+      if (this.contains(event.relatedTarget as Node)) {
+        return;
+      }
+      this.hide();
+    }
   }
 
-  public show() {
-    this._details.open = true;
+  public async hide() {
+    this.open = false;
+    this.requestUpdate();
+    await this.updateComplete;
+  }
+
+  public async show() {
+    this.open = true;
+    this.requestUpdate();
+    await this.updateComplete;
   }
 }
 
