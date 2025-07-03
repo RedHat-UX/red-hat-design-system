@@ -46,10 +46,10 @@ label {
   &:focus-within,
   &:hover {
     background-color: var(--rh-color-interactive-secondary-focus);
-    color: light-dark(
-      var(--rh-color-text-primary-on-dark, #ffffff),
-      var(--rh-color-text-primary-on-light, #151515)
-    );
+    color:
+      light-dark
+      (var(--rh-color-text-primary-on-dark, #ffffff),
+        var(--rh-color-text-primary-on-light, #151515));
   }
 
   rh-icon {
@@ -65,7 +65,8 @@ label {
     position: absolute;
 
     &:focus-visible {
-      outline: var(--rh-border-width-sm, 1px) solid
+      outline:
+        var(--rh-border-width-sm, 1px) solid
         var(--rh-color-interactive-primary-focus);
     }
   }
@@ -73,10 +74,10 @@ label {
   &:has(input:checked) {
     background-color: var(--rh-color-interactive-primary-active);
     border-color: var(--rh-color-border-interactive);
-    color: light-dark(
-      var(--rh-color-text-primary-on-dark, #ffffff),
-      var(--rh-color-text-primary-on-light, #151515)
-    );
+    color:
+      light-dark
+      (var(--rh-color-text-primary-on-dark, #ffffff),
+        var(--rh-color-text-primary-on-light, #151515));
 
     &:focus-within,
     &:hover {
