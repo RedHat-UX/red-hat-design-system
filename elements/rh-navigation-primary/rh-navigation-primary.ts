@@ -288,7 +288,7 @@ export class RhNavigationPrimary extends LitElement {
       if (this.#hamburgerContains(event.relatedTarget as Node)) {
         return;
       }
-      this.close();
+      this.#closeHamburger();
     }
   }
 
@@ -300,7 +300,7 @@ export class RhNavigationPrimary extends LitElement {
       if (this.#hamburgerContains(event.relatedTarget as Node)) {
         return;
       }
-      this.close();
+      this.#closeHamburger();
     }
   }
 
