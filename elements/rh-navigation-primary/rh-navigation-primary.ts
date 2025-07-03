@@ -158,6 +158,7 @@ export class RhNavigationPrimary extends LitElement {
       this.addEventListener('toggle', this.#onDropdownToggle);
       this.addEventListener('focusout', this.#onFocusout);
       this.addEventListener('keydown', this.#onKeydown);
+      this.addEventListener('keyup', this.#onKeyup);
       this.#upgradeAccessibility();
       this.#internals.ariaLabel = this.accessibleLabel;
     }
@@ -235,6 +236,14 @@ export class RhNavigationPrimary extends LitElement {
     return Array.from(
       this.querySelectorAll(
         'rh-navigation-primary-item:not([slot])',
+      )
+    );
+  }
+
+  #openDropdownItems(): RhNavigationPrimaryItem[] {
+    return Array.from(
+      this.querySelectorAll(
+        'rh-navigation-primary-item[variant="dropdown"][open]',
       )
     );
   }
@@ -340,16 +349,27 @@ export class RhNavigationPrimary extends LitElement {
     }
   }
 
-
-  /**
-   * close all open dropdowns in primary slot
-   * @param except
-   */
-  #closePrimaryDropdowns(except?: RhNavigationPrimaryItem) {
-    this.#openPrimaryDropdowns.forEach((dropdown: RhNavigationPrimaryItem) => {
-      if (dropdown !== except) {
-        dropdown.hide();
+  #onKeyup(event: KeyboardEvent) {
+    switch (event.key) {
+      case 'Tab': {
+        this.#onTabUp(event);
+        break;
       }
+    }
+  }
+
+  #onTabUp(event: KeyboardEvent) {
+    // target is the element we are entering with tab up press
+    const target = event.target as HTMLElement;
+    if (!this.#openDropdownItems().some(item => item.contains(target))) {
+      this.#closePrimaryDropdowns();
+      this.#closeSecondaryDropdowns();
+    }
+  }
+
+  #closePrimaryDropdowns() {
+    this.#openPrimaryDropdowns.forEach((dropdown: RhNavigationPrimaryItem) => {
+      dropdown.hide();
     });
   }
 

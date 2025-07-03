@@ -99,7 +99,7 @@ export class RhNavigationPrimaryItem extends LitElement {
       hamburger: hamburger,
       dehydrated: !this.#hydrated,
     })}">${this.variant === 'dropdown' ? html`
-        <details @toggle="${this.#detailsToggle}" @focusout="${this.#onFocusout}" ?open="${this.open}">
+        <details @toggle="${this.#detailsToggle}" ?open="${this.open}">
           <summary>${hamburger ? '' : html`
             <slot name="icon">${!this.icon ? '' : html`
               <rh-icon icon="${ifDefined(this.icon)}" set="${ifDefined(this.iconSet)}"></rh-icon>`}
@@ -119,18 +119,6 @@ export class RhNavigationPrimaryItem extends LitElement {
   #detailsToggle() {
     this.open = this._details.open;
     this.dispatchEvent(new Event('toggle', { bubbles: true }));
-  }
-
-  async #onFocusout(event: FocusEvent) {
-    if (event.relatedTarget) {
-      if (event.relatedTarget === this._summary) {
-        return;
-      }
-      if (this.contains(event.relatedTarget as Node)) {
-        return;
-      }
-      this.hide();
-    }
   }
 
   public async hide() {
