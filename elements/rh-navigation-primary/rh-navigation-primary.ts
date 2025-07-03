@@ -367,9 +367,11 @@ export class RhNavigationPrimary extends LitElement {
     }
   }
 
-  #closePrimaryDropdowns() {
+  #closePrimaryDropdowns(except?: RhNavigationPrimaryItem) {
     this.#openPrimaryDropdowns.forEach((dropdown: RhNavigationPrimaryItem) => {
-      dropdown.hide();
+      if (dropdown !== except) {
+        dropdown.hide();
+      }
     });
   }
 
