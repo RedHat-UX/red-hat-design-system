@@ -5,6 +5,7 @@
   --_padding-inline-start: var(--rh-space-xl, 24px);
   --_after-background-color: transparent;
   --_expanded-background-color: var(--rh-color-accent-brand);
+  --rh-this-is-not-a-known-token: 100px;
 }
 
 button,

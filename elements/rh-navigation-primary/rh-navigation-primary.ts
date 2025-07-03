@@ -101,10 +101,10 @@ export class RhNavigationPrimary extends LitElement {
   /**
    * Sets the breakpoint at which the logo text is hidden
    * Breakpoints available 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
-   * Defaults to 'md' (992px)
+   * Defaults to 'xl' (1440px)
    */
   @property({ attribute: 'logo-text-hide-at' })
-  logoTextHideAt: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' = 'md';
+  logoTextHideAt: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' = 'xl';
 
   /** Sets color context for child components, overrides parent context */
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: NavigationPrimaryPalette;
