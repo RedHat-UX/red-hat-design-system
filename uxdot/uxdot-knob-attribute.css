@@ -8,8 +8,6 @@ li {
   .checkbox-group {
     display: flex;
     align-items: center;
-
-    /* justify-content: space-between; */
   }
 
   > label {
@@ -19,8 +17,14 @@ li {
   }
 
   rh-tooltip {
-    --rh-color-interactive-primary-default: var(--rh-color-text-primary);
+    --rh-color-interactive-primary-default: var(--rh-color-icon-subtle);
+
+    margin-block-start: var(--rh-space-sm, 6px);
   }
+}
+
+#knob-title {
+  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
 }
 
 #knob[type='text'] {
