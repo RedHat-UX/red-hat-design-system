@@ -1,7 +1,6 @@
-import { LitElement, html, isServer } from 'lit';
+import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { state } from 'lit/decorators/state.js';
 import { classMap } from 'lit-html/directives/class-map.js';
 import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 
@@ -29,6 +28,7 @@ export class RhBadge extends LitElement {
 
   /**
    * Denotes the state-of-affairs this badge represents
+   * Note: 'moderate','important', and 'critical' will also work, but are deprecated
    */
   @property({ reflect: true }) state:
     | 'danger'
@@ -36,9 +36,6 @@ export class RhBadge extends LitElement {
     | 'caution'
     | 'neutral'
     | 'success'
-    | 'moderate' // deprecated
-    | 'important' // deprecated
-    | 'critical' // deprecated
     | 'info' =
       'neutral';
 
