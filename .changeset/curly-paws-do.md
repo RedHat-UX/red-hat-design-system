@@ -2,5 +2,5 @@
 "@rhds/elements": patch
 ---
 
-`<rh-cta>`: let long CTA text wrap to next line
+`<rh-announcement>`: let long CTA text wrap to next line for small viewports
   
