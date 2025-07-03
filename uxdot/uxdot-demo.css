@@ -4,7 +4,6 @@
 
 iframe {
   border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
-  border-radius: var(--rh-border-width-lg);
   height: 400px;
   max-height: var(--height);
   width: 100%;
