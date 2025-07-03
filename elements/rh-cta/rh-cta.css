@@ -44,7 +44,7 @@ a:after,
 
 #container {
   position: relative;
-  white-space: var(--rh-cta-white-space, nowrap);
+  white-space: var(--_rh-cta-white-space, nowrap);
   color: var(--_color);
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-body-text-lg, 1.125rem);
