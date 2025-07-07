@@ -98,14 +98,6 @@ export class RhNavigationPrimary extends LitElement {
    */
   @property({ attribute: 'logo-href' }) logoHref = '/';
 
-  /**
-   * Sets the breakpoint at which the logo text is hidden
-   * Breakpoints available 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
-   * Defaults to 'xl' (1440px)
-   */
-  @property({ attribute: 'logo-text-hide-at' })
-  logoTextHideAt: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' = 'xl';
-
   /** Sets color context for child components, overrides parent context */
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: NavigationPrimaryPalette;
 
@@ -178,7 +170,6 @@ export class RhNavigationPrimary extends LitElement {
     const classes = {
       compact,
       dehydrated: !this.#hydrated,
-      [`logo-text-hide-at-${this.logoTextHideAt}`]: !!this.logoTextHideAt,
     };
     return html`
       <div id="container" class="${classMap(classes)}">
