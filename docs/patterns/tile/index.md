@@ -31,8 +31,8 @@ Tiles are flexible layouts with clickable and contained surfaces.
 
 ## Customizing tiles
 
-Tiles act as both themeable containers and also respond to the color theme from
-their themeable containers. 
+Tiles act as both themable containers and also respond to the color theme from
+their themable containers. 
 
 Customize tiles by setting custom values for the element's color tokens. By 
 setting the theme tokens for both `dark` and `light` color themes, you can theme 

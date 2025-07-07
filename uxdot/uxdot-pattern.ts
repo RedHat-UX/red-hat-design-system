@@ -60,7 +60,7 @@ export class UxdotPattern extends SSRFailureRecoverableElement {
   /** Should the code blocks be expanded? */
   @property({ reflect: true, attribute: 'active-tab' }) activeTab?: 'html' | 'css' | 'js';
 
-  /** Which colour palettes should be allowed in the picker? (default: all) */
+  /** Which color palettes should be allowed in the picker? (default: all) */
   @property({ converter: ColorPaletteListConverter }) allow = paletteNames;
 
   #picked = false;
