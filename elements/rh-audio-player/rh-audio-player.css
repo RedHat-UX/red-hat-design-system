@@ -563,7 +563,6 @@ rh-menu > button:focus {
       & #duration {
         flex: 0 0 calc(var(--_time-slider-width) / 2);
         justify-content: flex-end;
-        margin-inline-end: 140px;
       }
 
       & #mute-tooltip {
@@ -591,7 +590,7 @@ rh-menu > button:focus {
 
       & #full-title {
         display: block;
-        flex: 0 0 454px;
+        flex: 0 0 100%;
       }
 
       /* this will complain either way */
@@ -651,10 +650,8 @@ rh-menu > button:focus {
       display: inline-block;
     }
 
-    &:is(.compact,.compact-wide) #volume-tooltip,
     &.full:not(.expanded) #full-current,
     &.full:not(.expanded) #duration,
-    &.full:not(.expanded) #volume-tooltip,
     &.full:not(.expanded) #rewind-tooltip,
     &.full:not(.expanded) #full-play-tooltip,
     &.full:not(.expanded) #forward-tooltip {
@@ -665,6 +662,11 @@ rh-menu > button:focus {
 
 @media (min-width: 768px) {
   #container {
+    &:is(.compact,.compact-wide) #volume-tooltip,
+    &.full:not(.expanded) #volume-tooltip {
+      display: flex;
+    }
+
     &:is(.compact,.compact-wide) {
       --_time-slider-base: 221px;
       --_player-width: 650px;
@@ -680,6 +682,12 @@ rh-menu > button:focus {
 
     &:is(.compact,.compact-wide).poster #poster {
       display: inline-block;
+    }
+
+    &.full {
+      & #duration {
+        margin-inline-end: 140px;
+      }
     }
 
     &.full.poster {
