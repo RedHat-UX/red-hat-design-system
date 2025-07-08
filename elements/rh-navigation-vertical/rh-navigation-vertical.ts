@@ -20,8 +20,9 @@ import styles from './rh-navigation-vertical.css';
 
 
 /**
- * Navigation Tree View
- * @slot - Place element content here
+ * A vertical navigation list of top-level and grouped navigation items, typically used in a side navigation pattern.
+ * @summary Vertical navigation
+ * @slot - Default slot for navigation items and groups
  */
 @customElement('rh-navigation-vertical')
 @themable

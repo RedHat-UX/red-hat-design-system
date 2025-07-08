@@ -16,8 +16,9 @@ import styles from './rh-navigation-vertical-item.css';
 
 
 /**
- * Navigation Tree View
- * @slot - Place element content heres
+ * A single navigation item in a vertical navigation list which can have a slotted anchor element or use the href attribute.
+ * @summary Vertical navigation item
+ * @slot - A default slot for a slotted anchor element. Overrides the href attribute.
  */
 @customElement('rh-navigation-vertical-item')
 export class RhNavigationVerticalItem extends LitElement {

@@ -15,8 +15,10 @@ import '@rhds/elements/rh-icon/rh-icon.js';
 import styles from './rh-navigation-vertical-group.css';
 
 /**
- * Navigation Tree View
- * @slot - Place element content here
+ * A disclosure menu of grouped navigation items in a vertical navigation list.
+ * @summary Vertical navigation group
+ * @slot - Default slot for navigation items or additional sub groups.
+ * @slot summary - A summary slot for the group title, overrides the summary attribute.
  */
 @customElement('rh-navigation-vertical-group')
 export class RhNavigationVerticalGroup extends LitElement {

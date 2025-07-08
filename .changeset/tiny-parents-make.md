@@ -4,7 +4,7 @@
 
 - ✨ Added `<rh-navigation-vertical>`
 
-A vertical navigation list of both top-level and nested grouped navigation items, typically used in a side navigation pattern.
+A vertical navigation list of top-level and grouped navigation items, typically used in a side navigation pattern.
 
 ```html
 <rh-navigation-vertical>
