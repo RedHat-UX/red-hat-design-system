@@ -56,7 +56,8 @@ files](https://help.figma.com/hc/en-us/articles/1500008731201-Manage-libraries-i
 
 <uxdot-example color-palette="lightest" width-adjustment="60%">
   <img alt="Figma's Libraries modal showing the Red Hat Design System library is added"
-       src="access-figma-libraries.avif">
+       src="access-figma-libraries.avif"
+       loading="lazy">
 </uxdot-example>
 
 ### Agency access
@@ -116,7 +117,8 @@ documentation or connect with us on Slack.
 
 <uxdot-example color-palette="lightest" width-adjustment="40%">
   <img alt="Figma's asset preview dialog box for a card component with an 'Insert instance' button"
-       src="figma-inserting-elements-patterns.avif">
+       src="figma-inserting-elements-patterns.avif"
+       loading="lazy">
 </uxdot-example>
 
 ### Properties
@@ -128,7 +130,8 @@ Some examples of properties include state, theme, variant, etc.
 
 <uxdot-example color-palette="lightest">
   <img alt="Diagram showing a blue primary button being changed to a destroy button with Figma's properties selector",
-       src="figma-properties.avif">
+       src="figma-properties.avif"
+       loading="lazy">
 </uxdot-example>
 
 ### Responsive resize
@@ -138,7 +141,8 @@ can change the height or width of an asset by dragging an edge or corner.
 
 <uxdot-example color-palette="lightest">
   <img alt="Screenshot of a progress steps element being resized by dragging the bottom right corner"
-       src="figma-responsive-resize-drag.avif">
+       src="figma-responsive-resize-drag.avif"
+       loading="lazy">
 </uxdot-example>
 
 You can also use [Constraints][constraints] to tell Figma how layers should
@@ -146,7 +150,8 @@ respond when their frames are resized.
 
 <uxdot-example color-palette="lightest">
   <img alt="Screenshot of a selected progress steps element next to Figma's constraints settings"
-       src="figma-responsive-resize-constraints.avif">
+       src="figma-responsive-resize-constraints.avif"
+       loading="lazy">
 </uxdot-example>
 
 ### Instance swap
@@ -158,7 +163,8 @@ replace an element, but instance swapping will.
 
 <uxdot-example color-palette="lightest">
   <img alt="Diagram of a primary CTA being changed to a secondary CTA via the instance swap panel"
-       src="figma-instance-swap.avif">
+       src="figma-instance-swap.avif"
+       loading="lazy">
 </uxdot-example>
 
 ## Best practices
@@ -178,7 +184,8 @@ prioritize building them in.
 
 <uxdot-example color-palette="lightest" width-adjustment="90%">
   <img alt="Comparison of a linked and a detached accordion with their layers panel below"
-       src="best-practices-detach-instance.avif">
+       src="best-practices-detach-instance.avif"
+       loading="lazy">
 </uxdot-example>
 
 <uxdot-feedback>

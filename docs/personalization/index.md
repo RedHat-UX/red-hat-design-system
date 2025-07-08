@@ -52,7 +52,8 @@ Current personalization patterns use the following assets.
             <img alt="{{alt}}"
                 width="482"
                 height="286"
-                src="{{pattern.data['pattern-info'].thumbnail}}">
+                src="{{pattern.data['pattern-info'].thumbnail}}"
+                loading="lazy">
         </uxdot-example>
         <h3 slot="headline"><a href="{{pattern.url}}">{{pattern.data.title}}</a></h3>
         <p>{{pattern.data['pattern-info'].summary}}</p>

@@ -87,7 +87,8 @@ and adapts to meet new challenges.
  <img src="../assets/about/about-rhds-brand-standards.avif"
       alt="the words 'brand standards' framed by elements and shapes in Red Hat colors"
       width="1140"
-      height="286">
+      height="286"
+      loading="lazy">
 </uxdot-example>
 
 ### Design tokens
@@ -103,7 +104,8 @@ help us assign consistent meanings that correspond with foundational guidelines.
  <img src="/tokens/images/design-tokens-intro.avif"
       alt="Flow showing how a color like brand red becomes a token, how it is named, and how it is applied to a call to action"
       width="807"
-      height="96">
+      height="96"
+      loading="lazy">
 </uxdot-example>
 
 ## We build Web Components
@@ -119,7 +121,8 @@ framework or platform.
  <img src="../assets/about/about-rhds-web-components.svg"
       alt="Example of a card next to the Web Component's code"
       width="820"
-      height="281">
+      height="281"
+      loading="lazy">
 </uxdot-example>
 
 ## We look for opportunities to align

@@ -21,7 +21,8 @@ scrolls underneath until a user dismisses them.
   <img src="./sticky-banner.svg"
        alt="Sticky banner"
        width="340"
-       height="200">
+       height="200"
+       loading="lazy">
 </uxdot-example>
 
 ## Style
@@ -35,7 +36,8 @@ button also needs to be included in both sizes.
   <img src="./sticky-banner-style.svg"
        alt="Sticky banner style"
        width="884"
-       height="170">
+       height="170"
+       loading="lazy">
 </uxdot-example>
 
 ### Sizes
@@ -50,14 +52,16 @@ text, and a larger call to action.
   <img src="./sticky-banner-size-desktop.svg"
        alt="Sticky banner large size"
        width="1012"
-       height="140">
+       height="140"
+       loading="lazy">
 </uxdot-example>
 
 <uxdot-example width-adjustment="360px" variant="full" alignment="left" no-border>
   <img src="./sticky-banner-size-mobile.svg"
        alt="Sticky banner small size"
        width="360"
-       height="640">
+       height="640"
+       loading="lazy">
 </uxdot-example>
 
 ### Content
@@ -97,14 +101,16 @@ banner to appear.
   <img src="./sticky-banner-usage.svg"
        alt="Sticky banner desktop placement"
        width="1012"
-       height="628">
+       height="628"
+       loading="lazy">
 </uxdot-example>
 
 <uxdot-example width-adjustment="360px" variant="full" alignment="left" no-border>
   <img src="./sticky-banner-usage-mobile.svg"
        alt="Sticky banner mobile placement"
        width="372"
-       height="643">
+       height="643"
+       loading="lazy">
 </uxdot-example>
 
 ### Layout
@@ -132,7 +138,8 @@ Don't change the large sticky banner to be fixed width.
   <img src="./sticky-banner-best-practices-1.svg"
        alt="Fixed width issue"
        width="872"
-       height="195">
+       height="195"
+       loading="lazy">
 </uxdot-example>
 
 Don’t omit the thumbnail image from the sticky banner on large screens like
@@ -143,7 +150,8 @@ downloading.
   <img src="./sticky-banner-best-practices-2.svg"
        alt="Full width small banner issue"
        width="884"
-       height="171">
+       height="171"
+       loading="lazy">
 </uxdot-example>
 
 Don’t omit the drop shadow because the banner will blend into the background.
@@ -152,7 +160,8 @@ Don’t omit the drop shadow because the banner will blend into the background.
   <img src="./sticky-banner-best-practices-3.svg"
        alt="Banner without thumbnail issue"
        width="872"
-       height="192">
+       height="192"
+       loading="lazy">
 </uxdot-example>
 
 ## Behavior
@@ -167,7 +176,8 @@ promotes a less important offer like a resource or webinar.
   <img src="./sticky-banner-behavior.svg"
        alt="Sticky banner behavior"
        width="1012"
-       height="608">
+       height="608"
+       loading="lazy">
 </uxdot-example>
 
 ### Sliding
@@ -194,7 +204,8 @@ dropped when space reduces to keep the layout clean and organized.
   <img src="./sticky-banner-breakpoints-desktop.svg"
        alt="Sticky banner desktop breakpoint"
        width="1012"
-       height="140">
+       height="140"
+       loading="lazy">
 </uxdot-example>
 
 ### Tablet
@@ -203,7 +214,8 @@ dropped when space reduces to keep the layout clean and organized.
   <img src="./sticky-banner-breakpoints-tablet.svg"
        alt="Sticky banner tablet breakpoint"
        width="780"
-       height="116">
+       height="116"
+       loading="lazy">
 </uxdot-example>
 
 ### Mobile, landscape
@@ -213,7 +225,8 @@ dropped when space reduces to keep the layout clean and organized.
     <img src="./sticky-banner-breakpoints-mobile-landscape.svg"
          alt="Sticky banner mobile landscape breakpoint"
          width="588"
-         height="327">
+         height="327"
+         loading="lazy">
   </uxdot-example>
   <figcaption>Some text styles reduce in size on small screens. Learn more about
     typography on mobile.</figcaption>
@@ -225,7 +238,8 @@ dropped when space reduces to keep the layout clean and organized.
   <img src="./sticky-banner-breakpoints-mobile-portrait.svg"
        alt="Sticky banner mobile portrait breakpoint"
        width="372"
-       height="643">
+       height="643"
+       loading="lazy">
 </uxdot-example>
 
 ## Interaction states
@@ -245,7 +259,8 @@ between elements.
   <img src="./sticky-banner-spacing-large-screens.svg"
        alt="Sticky banner large spacing"
        width="884"
-       height="308">
+       height="308"
+       loading="lazy">
 </uxdot-example>
 
 ### Small size
@@ -257,7 +272,8 @@ section.
   <img src="./sticky-banner-spacing-small-screens.svg"
        alt="Sticky banner small spacing"
        width="588"
-       height="329">
+       height="329"
+       loading="lazy">
 </uxdot-example>
 
 <uxdot-spacer-tokens-table tokens="md, lg, xl, 2xl, 3xl, 4xl"></uxdot-spacer-tokens-table>

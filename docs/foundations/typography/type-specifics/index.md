@@ -32,7 +32,8 @@ Alignment, sometimes referred to as justification, is the way multiple lines of 
   <img src="./type-specifics-alignment.svg"
       alt="examples of left-aligned and center-aligned text"
       width="900"
-      height="126">
+      height="126"
+      loading="lazy">
 </uxdot-example>
 
 ## Case
@@ -46,7 +47,8 @@ Case is the capitalization of letters. We want our messaging to be approachable 
   <img src="./type-specifics-case.svg"
       alt="examples of left-aligned and center-aligned text"
       width="509"
-      height="138">
+      height="138"
+      loading="lazy">
 </uxdot-example>
 
 ## Color
@@ -73,7 +75,8 @@ To learn more about using extended weights, go to the [Choosing type][choosingty
   <img src="./type-specifics-emphasis.svg"
       alt="examples of bolded text and an inline link"
       width="676"
-      height="131">
+      height="131"
+      loading="lazy">
 </uxdot-example>
 
 ### Hierarchy
@@ -88,7 +91,8 @@ Good hierarchy is key to telling a story and there are many ways to create it us
   <img src="./type-specifics-hierarchy.svg"
       alt="text excerpt with a large heading, smaller subheading, and body text"
       width="808"
-      height="356">
+      height="356"
+      loading="lazy">
 </uxdot-example>
 
 ### Line height
@@ -105,7 +109,8 @@ To see line height values for specific text styles, go to the [Scale and rhythm]
   <img src="./type-specifics-line-height.svg"
       alt="editorial and expressive type with info about font sizes and line heights"
       width="940"
-      height="344">
+      height="344"
+      loading="lazy">
 </uxdot-example>
 
 ### Line length
@@ -121,7 +126,8 @@ Line length is the number of characters in a single line of text including space
   <img src="./type-specifics-line-length.svg"
       alt="comparison of a paragraph at a width less than 500 pixels versus a paragraph at a width of 950 pixels"
       width="1012"
-      height="368">
+      height="368"
+      loading="lazy">
 </uxdot-example>
 
 ### Margins
@@ -159,7 +165,8 @@ To learn about when to use extra large heading sizes, go to the [Choosing type][
   <img src="./type-specifics-size.svg"
       alt="comparison of a 48 pixel heading and a 20 pixel example of functional body text"
       width="745"
-      height="101">
+      height="101"
+      loading="lazy">
 </uxdot-example>
 
 ### Tracking

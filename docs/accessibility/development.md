@@ -44,10 +44,12 @@ To make icon fonts accessible, you often have to re-hack what’s already a hack
 
 #### Describing SVGs
 
-As with any other image, SVGs that are loaded into your page via an `<img>` tag should include alt attributes. This attribute should be descriptive for meaningful SVGs and null for decorative SVGs. In addition, we recommend adding a role="img" attribute to the `<img>` element for SVGs:
+As with any other image, SVGs that are loaded into your page via an `<img
+loading="lazy">
 
 ```html rhcodeblock
-<img src="logo.svg" alt="Image description" role="img" />
+<img src="logo.svg" alt="Image description" role="img" /
+loading="lazy">
 ```
 
 Inline `<svg>` elements (i.e., SVGs that are coded directly into the page source) cannot use the alt attribute. You must use some other means to describe or hide these images.

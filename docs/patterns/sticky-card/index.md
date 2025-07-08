@@ -21,7 +21,8 @@ scrolls underneath until a user dismisses them.
   <img src="./sticky-card.svg"
        alt="Sticky card"
        width="274"
-       height="361">
+       height="361"
+       loading="lazy">
 </uxdot-example>
 
 ## Style
@@ -32,7 +33,8 @@ A sticky card acts as a small container for a limited amount of content.
   <img src="./sticky-card-style.svg"
        alt="Sticky card style"
        width="453"
-       height="361">
+       height="361"
+       loading="lazy">
 </uxdot-example>
 
 ### Color scheme
@@ -49,14 +51,16 @@ than the page background color.
   <img src="./sticky-card-theme-light.svg"
        alt="Sticky card light theme"
        width="277"
-       height="361">
+       height="361"
+       loading="lazy">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="262px">
   <img src="./sticky-card-theme-dark.svg"
        alt="Sticky card dark theme"
        width="262"
-       height="349">
+       height="349"
+       loading="lazy">
 </uxdot-example>
 
 ### Layout
@@ -91,7 +95,8 @@ footer is always required and shouldn't be hidden.
   <img src="./sticky-card-layout.svg"
        alt="Sticky card content sections"
        width="713"
-       height="361">
+       height="361"
+       loading="lazy">
 </uxdot-example>
 
 ## Usage
@@ -112,7 +117,8 @@ fixed width of 262px.
   <img src="./sticky-card-layout-right.svg"
        alt="Sticky card on right side"
        width="879"
-       height="477">
+       height="477"
+       loading="lazy">
 </uxdot-example>
 
 ### Content
@@ -127,7 +133,8 @@ possible.
   <img src="./sticky-card-content.avif"
        alt="Sticky card content sections"
        width="596"
-       height="399">
+       height="399"
+       loading="lazy">
 </uxdot-example>
 
 ### Character count
@@ -159,7 +166,8 @@ Don’t use more than one sticky card per page.
   <img src="./sticky-card-best-practices-1.svg"
        alt="Sticky card multiple issue"
        width="751"
-       height="477">
+       height="477"
+       loading="lazy">
 </uxdot-example>
 
 Don’t change the width of a sticky card on large screens, it’s fixed at 262px.
@@ -168,7 +176,8 @@ Don’t change the width of a sticky card on large screens, it’s fixed at 262p
   <img src="./sticky-card-best-practices-2.svg"
        alt="Sticky card width issue"
        width="375"
-       height="311">
+       height="311"
+       loading="lazy">
 </uxdot-example>
 
 Don’t anchor a sticky card on small screens, it covers too much content.
@@ -177,7 +186,8 @@ Don’t anchor a sticky card on small screens, it covers too much content.
   <img src="./sticky-card-best-practices-3.svg"
        alt="Sticky card overlap issue"
        width="366"
-       height="477">
+       height="477"
+       loading="lazy">
 </uxdot-example>
 
 Don't omit the close button, it’s needed for accessibility.
@@ -186,7 +196,8 @@ Don't omit the close button, it’s needed for accessibility.
   <img src="./sticky-card-best-practices-4.svg"
        alt="Sticky card close button issue"
        width="277"
-       height="323">
+       height="323"
+       loading="lazy">
 </uxdot-example>
 
 Don’t use more than one call to action.
@@ -195,7 +206,8 @@ Don’t use more than one call to action.
   <img src="./sticky-card-best-practices-5.svg"
        alt="Sticky card call to action issue"
        width="277"
-       height="400">
+       height="400"
+       loading="lazy">
 </uxdot-example>
 
 ## Behavior
@@ -229,7 +241,8 @@ aspect ratio as possible.
   <img src="./sticky-card-behavior-height.svg"
        alt="Sticky card vertical height caution"
        width="603"
-       height="607">
+       height="607"
+       loading="lazy">
 </uxdot-example>
 
 ## Breakpoints
@@ -244,7 +257,8 @@ maintains the same styles.
   <img src="./sticky-card-responsive-desktop.svg"
        alt="Sticky card desktop layout"
        width="1007"
-       height="477">
+       height="477"
+       loading="lazy">
 </uxdot-example>
 
 ### Tablet
@@ -253,7 +267,8 @@ maintains the same styles.
   <img src="./sticky-card-responsive-tablet.svg"
        alt="Sticky card tablet layout"
        width="775"
-       height="477">
+       height="477"
+       loading="lazy">
 </uxdot-example>
 
 ### Mobile
@@ -262,7 +277,8 @@ maintains the same styles.
   <img src="./sticky-card-responsive-mobile.svg"
        alt="Sticky card mobile layout"
        width="360"
-       height="640">
+       height="640"
+       loading="lazy">
 </uxdot-example>
 
 ## Interaction states
@@ -280,7 +296,8 @@ values between elements.
   <img src="./sticky-card-spacing.svg"
        alt="Sticky card spacing"
        width="287"
-       height="361">
+       height="361"
+       loading="lazy">
 </uxdot-example>
 
 <uxdot-spacer-tokens-table tokens="lg,xl"></uxdot-spacer-tokens-table>

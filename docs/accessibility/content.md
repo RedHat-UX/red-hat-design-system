@@ -51,10 +51,10 @@ Wherever meaningful images or other non-text elements are used on a page, you mu
 
 ### Types of alt text
 
-Images loaded via the `<img>` element typically use the alt attribute for their alternative text:
+Images loaded via the `<img loading="lazy">
 
 ```html rhcodeblock
-<img src="imagesource.jpg" alt="Description of image">
+<img src="imagesource.jpg" alt="Description of image" loading="lazy">
 ```
 
 Inline SVGs that compose simple images commonly use a combination of the `role="img"` attribute and a `<title>` element as the first child of the `<svg>` element:
@@ -81,8 +81,8 @@ Complex images, like diagrams, still require alt text. But they may also warrant
 
 Images and other non-text media that don’t add any meaningful information to a page are considered decorative and should be hidden from assistive tech:
 
-- While an alt attribute is required for all `<img>` elements, leaving its value empty (e.g., `alt=""` or just `alt`) for decorative images will hide them from assistive tech.
-- You can hide decorative inline `<svg>` elements (and other non-`<img>` media) from assistive tech with the `aria-hidden="true"` attribute.
+- While an alt attribute is required for all `<img loading="lazy">
+- You can hide decorative inline `<svg>` elements (and other non-`<img loading="lazy">
 
 If an image is a page border, an abstract decoration, or if it’s used more to improve layout than to provide additional context, it can typically be considered decorative.
 
@@ -103,7 +103,8 @@ When writing alternative text, it’s important to first consider the image’s 
   <img src="/assets/accessibility/Its_A_Wonderful_Life.avif"
       alt="George Bailey hugs his wife, Mary, and holds his daughter, Zuzu, in the movie It's a Wonderful Life"
       width="720"
-      height="540">
+      height="540"
+      loading="lazy">
 </uxdot-example>
 
 Depending on whether a web page is about the plot of the 1946 movie It’s a Wonderful Life or about the actor Jimmy Stewart, the above image could have very different alt text. For the first case, the image’s alt text could be `“George Bailey hugs his wife, Mary, and holds his daughter, Zuzu.”` For the second, the alt text could be `“Jimmy Stewart returned to acting after the war with It’s a Wonderful Life.”`
@@ -118,7 +119,8 @@ Images acting as buttons or links are functional, and thus serve different purpo
       <img src="/assets/logo-redhat.avif"
         alt="Red Hat homepage"
         width="613"
-        height="145">
+        height="145"
+        loading="lazy">
     </a>
   </figure>
 </uxdot-example>
@@ -127,7 +129,7 @@ If the above image supplements the text of an article about Red Hat or our produ
 
 ```html rhcodeblock
 <a href="https://www.redhat.com/">
-  <img src="logo-redhat.avif" alt="Red Hat homepage" />
+  <img src="logo-redhat.avif" alt="Red Hat homepage" / loading="lazy">
 </a>
 ```
 
@@ -137,18 +139,18 @@ Grouped images that convey a single meaning (e.g., movie rating stars), can be g
 
 ```html rhcodeblock
 <div aria-label="2 of 3 attempts left">
-  <img src="pending.jpg" alt />
-  <img src="pending.jpg" alt />
-  <img src="failed.jpg" alt />
+  <img src="pending.jpg" alt / loading="lazy">
+  <img src="pending.jpg" alt / loading="lazy">
+  <img src="failed.jpg" alt / loading="lazy">
 </div>
 ```
 
 Or the first element of the group can have alt text, while the others are hidden:
 
 ```html rhcodeblock
-<img src="pending.jpg" alt="2 of 3 attempts left" />
-<img src="pending.jpg" alt />
-<img src="failed.jpg" alt />
+<img src="pending.jpg" alt="2 of 3 attempts left" / loading="lazy">
+<img src="pending.jpg" alt / loading="lazy">
+<img src="failed.jpg" alt / loading="lazy">
 ```
 
 ### Embedded media (and other non-text) titles
