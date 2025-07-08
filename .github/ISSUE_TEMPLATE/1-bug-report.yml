@@ -34,6 +34,17 @@ body:
         ---
         ## Debugging Info
 
+  - type: input
+    id: version
+    attributes:
+      label: RHDS version number
+      description: >-
+        What version of Red Hat Design System is being used? If unknown, put `unknown`
+      placeholder: >-
+        3.0.3
+    validations:
+      required: true
+      
   - type: textarea
     id: repro
     attributes:
