@@ -1,20 +1,5 @@
 # Navigation Drawer
-
-A navigation drawer is a vertical panel that provides a slottable area for navigation content. It is one part of the composable vertical navigation pattern, allowing users to access navigation items in a space-efficient way, collapsing to a disclosure pattern on narrow screens.
-
-## Installation
-
-If using npm/bundlers:
-
-```bash
-npm install @rhds/elements
-```
-
-Then once installed, import it to your application:
-
-```js
-import '@rhds/elements/rh-navigation-drawer/rh-navigation-drawer.js';
-```
+Navigation Drawer is a component that displays a navigation menu in a vertical drawer in wide viewports and a disclosure in narrow viewports.
 
 ## Usage
 

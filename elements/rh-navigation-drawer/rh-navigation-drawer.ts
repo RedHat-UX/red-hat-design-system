@@ -25,6 +25,7 @@ import styles from './rh-navigation-drawer.css';
 
 /**
  * Navigation Drawer is a component that displays a navigation menu in a vertical drawer in wide viewports and a disclosure in narrow viewports.
+ * @summary Navigation drawer
  * @slot - Drawer content such as vertical navigation elements
  * @slot header - (optional) header content such as titles and filters
  * @slot footer - (optional) Footer content such as links and copyright info
