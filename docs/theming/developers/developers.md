@@ -41,7 +41,7 @@ expression of the lower-level components of the system: [tokens][tokens], and
 highest-level design system component: [patterns][patterns]. To use 
 the theming system, then, developers must already be familiar with our tokens 
 and elements. In other words, theming is the developer’s process of 
-orchestrating design tokens with elements, particularly by way of themeable 
+orchestrating design tokens with elements, particularly by way of themable 
 container elements.
 
 ## How theming works
@@ -141,13 +141,13 @@ to compute theming tokens depending on the color scheme.
 );
 ```
 
-### Themeable containers
+### Themable containers
 
 In <abbr>RHDS</abbr>, elements such as `<rh-surface>`, `<rh-card>`, `<rh-tabs>`, 
-and others are considered themeable containers. Developers can provide custom 
+and others are considered themable containers. Developers can provide custom 
 values for theming tokens on those elements in a [custom theme][themes].
 
-A common pattern for a themeable container is the full-width band. For example, 
+A common pattern for a themable container is the full-width band. For example, 
 a `<rh-surface>` may be used as a full-width container and provide the 
 *Bordeaux* theme values to a set of 3 cards in a grid:
 
@@ -314,9 +314,9 @@ themable graphics.
             color-palette="darkest">
   <h2 id="products">Products</h2>
   <rh-picture>
-    <source srcset="/assets/logos/products/rhel-on-dark.png" color-theme="dark"></source>
-    <source srcset="/assets/logos/products/rhel-on-light.png" color-theme="light"></source>
-    <img src="/assets/logos/products/rhel.png" alt="Red Hat Enterprise Linux">
+    <source srcset="/assets/logos/products/rhel-on-dark.avif" color-theme="dark"></source>
+    <source srcset="/assets/logos/products/rhel-on-light.avif" color-theme="light"></source>
+    <img src="/assets/logos/products/rhel.avif" alt="Red Hat Enterprise Linux">
   <rh-picture>
 </rh-surface>
 ```
