@@ -51,10 +51,10 @@ Wherever meaningful images or other non-text elements are used on a page, you mu
 
 ### Types of alt text
 
-Images loaded via the `<img loading="lazy">
+Images loaded via the `<img>` element typically use the alt attribute for their alternative text:
 
 ```html rhcodeblock
-<img src="imagesource.jpg" alt="Description of image" loading="lazy">
+<img src="imagesource.jpg" alt="Description of image">
 ```
 
 Inline SVGs that compose simple images commonly use a combination of the `role="img"` attribute and a `<title>` element as the first child of the `<svg>` element:
@@ -81,8 +81,8 @@ Complex images, like diagrams, still require alt text. But they may also warrant
 
 Images and other non-text media that don’t add any meaningful information to a page are considered decorative and should be hidden from assistive tech:
 
-- While an alt attribute is required for all `<img loading="lazy">
-- You can hide decorative inline `<svg>` elements (and other non-`<img loading="lazy">
+- While an alt attribute is required for all `<img>` elements, leaving its value empty (e.g., `alt=""` or just `alt`) for decorative images will hide them from assistive tech.
+- You can hide decorative inline `<svg>` elements (and other non-`<img>` media) from assistive tech with the `aria-hidden="true"` attribute.
 
 If an image is a page border, an abstract decoration, or if it’s used more to improve layout than to provide additional context, it can typically be considered decorative.
 
@@ -129,7 +129,7 @@ If the above image supplements the text of an article about Red Hat or our produ
 
 ```html rhcodeblock
 <a href="https://www.redhat.com/">
-  <img src="logo-redhat.avif" alt="Red Hat homepage" / loading="lazy">
+  <img src="logo-redhat.avif" alt="Red Hat homepage" />
 </a>
 ```
 
@@ -139,18 +139,18 @@ Grouped images that convey a single meaning (e.g., movie rating stars), can be g
 
 ```html rhcodeblock
 <div aria-label="2 of 3 attempts left">
-  <img src="pending.jpg" alt / loading="lazy">
-  <img src="pending.jpg" alt / loading="lazy">
-  <img src="failed.jpg" alt / loading="lazy">
+  <img src="pending.jpg" alt />
+  <img src="pending.jpg" alt />
+  <img src="failed.jpg" alt />
 </div>
 ```
 
 Or the first element of the group can have alt text, while the others are hidden:
 
 ```html rhcodeblock
-<img src="pending.jpg" alt="2 of 3 attempts left" / loading="lazy">
-<img src="pending.jpg" alt / loading="lazy">
-<img src="failed.jpg" alt / loading="lazy">
+<img src="pending.jpg" alt="2 of 3 attempts left" />
+<img src="pending.jpg" alt />
+<img src="failed.jpg" alt />
 ```
 
 ### Embedded media (and other non-text) titles

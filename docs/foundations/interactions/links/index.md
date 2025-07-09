@@ -290,7 +290,7 @@ When the Tab key is pressed repeatedly, the focus highlights links in order, fro
   <img src="./a11y-tab-order-A.svg"
         alt="Three inline links and a call to action in a row with focus rings around each"
         width="606"
-       height="27"
+        height="27"
         loading="lazy">
 </uxdot-example>
 
@@ -298,7 +298,7 @@ When the Tab key is pressed repeatedly, the focus highlights links in order, fro
   <img src="./a11y-tab-order-B.svg"
         alt="Four links in a vertical list with focus rings around each"
         width="93"
-       height="156"
+        height="156"
         loading="lazy">
 </uxdot-example>
 
