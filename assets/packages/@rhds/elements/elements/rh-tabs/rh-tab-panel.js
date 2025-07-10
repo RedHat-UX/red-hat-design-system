@@ -5,7 +5,7 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 import { css } from "lit";
-const styles = css `:host{display:block;padding:var(--_panel-padding,var(--rh-space-2xl,32px));background-color:var(--rh-color-surface)}:host([hidden]){display:none!important}#container{display:contents}`;
+const styles = css `:host{display:block;padding:var(--_panel-padding,var(--rh-space-2xl,32px))}:host([hidden]){display:none!important}:host(:is(:focus,:focus-within)){outline:1px auto var(--rh-color-interactive-primary-default)}#container{display:contents}`;
 /**
  * The tab panel for use within a rh-tabs element, must be paired with a rh-tab.
  *
