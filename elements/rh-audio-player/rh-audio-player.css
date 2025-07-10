@@ -104,10 +104,8 @@ rh-audio-player-rate-stepper {
   width: auto;
 }
 
-svg.scrubber {
-  fill: var(--_text-color);
-  height: var(--_svg-size);
-  width: var(--_svg-size);
+.scrubber {
+  color: var(--_text-color);
   padding: var(--_icon-padding);
 }
 
@@ -330,8 +328,8 @@ input[type='range'] {
 #play-tooltip {
   margin: 0;
 
-  --_icon-gap: 16px;
-  --rh-icon-size: 18px;
+  --_icon-gap: var(--rh-space-lg, 16px);
+  --rh-icon-size: var(--rh-size-icon-01, 16px);
 }
 
 #full-play-tooltip {
