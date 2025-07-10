@@ -186,6 +186,13 @@
               border-block-end-color: var(--rh-color-border-subtle);
               border-block-end-width: var(--rh-border-width-sm, 1px);
             }
+
+            &:after {
+              border-block-end:
+                var(--rh-border-width-sm, 1px)
+                solid
+                var(--rh-color-border-subtle);
+            }
           }
         }
       }
