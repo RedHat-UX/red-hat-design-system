@@ -2,7 +2,6 @@ import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
-import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
 import style from './rh-footer-links.css';
@@ -20,8 +19,6 @@ export class RhFooterLinks extends LitElement {
     attribute: 'header-hidden',
     reflect: true,
   }) headerHidden = false;
-
-  #logger = new Logger(this);
 
   #mo = new MutationObserver(() => this.updateAccessibility());
 
@@ -43,8 +40,6 @@ export class RhFooterLinks extends LitElement {
       // ensure there is an id on the header slot
       header.id ||= getRandomId('rh-footer-links');
       ul.setAttribute('aria-labelledby', header.id);
-    } else {
-      this.#logger.warn('This links set doesn\'t have a valid header associated with it.');
     }
   }
 
