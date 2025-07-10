@@ -104,10 +104,8 @@ rh-audio-player-rate-stepper {
   width: auto;
 }
 
-svg.scrubber {
-  fill: var(--_text-color);
-  height: var(--_svg-size);
-  width: var(--_svg-size);
+.scrubber {
+  color: var(--_text-color);
   padding: var(--_icon-padding);
 }
 
@@ -330,8 +328,8 @@ input[type='range'] {
 #play-tooltip {
   margin: 0;
 
-  --_icon-gap: 16px;
-  --rh-icon-size: 18px;
+  --_icon-gap: var(--rh-space-lg, 16px);
+  --rh-icon-size: var(--rh-size-icon-01, 16px);
 }
 
 #full-play-tooltip {
@@ -357,8 +355,7 @@ input[type='range'] {
   display: none;
 }
 
-.expanded #close-tooltip,
-:not(.expanded) #menu-tooltip {
+.expanded #close-tooltip {
   display: inline-block;
 }
 
@@ -433,6 +430,8 @@ rh-menu > button:focus {
 #play,
 #full-play {
   display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 50%;
   background-color:
     light-dark(var(--rh-color-surface-darkest, #151515),
@@ -562,7 +561,6 @@ rh-menu > button:focus {
       & #duration {
         flex: 0 0 calc(var(--_time-slider-width) / 2);
         justify-content: flex-end;
-        margin-inline-end: 140px;
       }
 
       & #mute-tooltip {
@@ -590,7 +588,7 @@ rh-menu > button:focus {
 
       & #full-title {
         display: block;
-        flex: 0 0 454px;
+        flex: 0 0 100%;
       }
 
       /* this will complain either way */
@@ -650,10 +648,8 @@ rh-menu > button:focus {
       display: inline-block;
     }
 
-    &:is(.compact,.compact-wide) #volume-tooltip,
     &.full:not(.expanded) #full-current,
     &.full:not(.expanded) #duration,
-    &.full:not(.expanded) #volume-tooltip,
     &.full:not(.expanded) #rewind-tooltip,
     &.full:not(.expanded) #full-play-tooltip,
     &.full:not(.expanded) #forward-tooltip {
@@ -664,6 +660,11 @@ rh-menu > button:focus {
 
 @media (min-width: 768px) {
   #container {
+    &:is(.compact,.compact-wide) #volume-tooltip,
+    &.full:not(.expanded) #volume-tooltip {
+      display: flex;
+    }
+
     &:is(.compact,.compact-wide) {
       --_time-slider-base: 221px;
       --_player-width: 650px;
@@ -679,6 +680,12 @@ rh-menu > button:focus {
 
     &:is(.compact,.compact-wide).poster #poster {
       display: inline-block;
+    }
+
+    &.full {
+      & #duration {
+        margin-inline-end: 140px;
+      }
     }
 
     &.full.poster {

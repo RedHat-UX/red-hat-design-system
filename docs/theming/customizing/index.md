@@ -83,7 +83,7 @@ order: 3
 
 Red Hat Design System is composed of tokens, elements, and patterns, each layer
 building on the last. Theming emerges as a design possibility from the
-composition of those smaller pieces. By setting custom values for themeable
+composition of those smaller pieces. By setting custom values for themable
 design tokens, elements, sections, or entire pages can take on a new color
 scheme, layout density, etc. Custom themes can apply to multiple color-palettes
 and to both the `light` and `dark` backgrounds.
@@ -97,7 +97,7 @@ _Bordeaux_ theme. We'll write a CSS rule which selects for the `theme-bordeaux`
 class, and in that rule we'll set the values of <abbr title="red hat design 
   system">RHDS</abbr> theming tokens to our custom theme colors.
 In the following example, you can see how we first define some custom theme 
-colours as CSS custom properties beginning with `--bordeaux-`, then we use those 
+colors as CSS custom properties beginning with `--bordeaux-`, then we use those 
 values in our custom theme by applying them to RHDS theming tokens.
 
 <rh-alert state="info">In order to support user's color 
@@ -109,7 +109,7 @@ to always use the `light-dark()` function when crafting custom themes.</rh-alert
                active-tab="css"
                src="../patterns/card-bordeaux.html"></uxdot-pattern>
 
-<rh-alert>When writing themes, override the semantic, themeable tokens such as
+<rh-alert>When writing themes, override the semantic, themable tokens such as
   `--rh-color-interactive-primary-default` rather than the crayon tokens
   e.g. `--rh-color-purple-10`. This ensures that your custom colors apply to 
   elements in the way the designers originally intended</rh-alert>
@@ -144,7 +144,7 @@ system][designsystem] team for guidance.
 
 <uxdot-example>
   <img alt="Example of a hero that uses light blue tags against a background image",
-       src="custom-theme.png">
+       src="custom-theme.avif">
 </uxdot-example>
 
 {% renderFile './docs/_includes/partials/component/feedback.11ty.ts' %}

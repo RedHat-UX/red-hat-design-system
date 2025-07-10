@@ -55,12 +55,15 @@
   /* WARNING: properties containing `__`are deprecated and will be removed */
   color:
     light-dark(var(--rh-tooltip-content-color,
-      var(--rh-tooltip__content--Color, var(--rh-color-text-primary-on-dark, #ffffff))),
-      var(--rh-tooltip-content-color, var(--rh-color-text-primary-on-light, #151515)));
+      var(--rh-tooltip__content--Color, var(--rh-color-text-primary-on-light, #151515))),
+      var(--rh-tooltip-content-color, var(--rh-color-text-primary-on-dark, #ffffff)));
   background-color:
     light-dark(var(--rh-tooltip-content-background-color,
-      var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-darkest, #151515))),
-      var(--rh-tooltip-content-background-color, var(--rh-color-surface-lightest, #ffffff)));
+      var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-lightest, #ffffff))),
+      var(--rh-tooltip-content-background-color, var(--rh-color-surface-darkest, #151515)));
+
+  &.dark { color-scheme: dark; }
+  &.light { color-scheme: light; }
 }
 
 .initialized #tooltip {
@@ -76,9 +79,9 @@
   will-change: left top right bottom;
   background-color:
     light-dark(var(--rh-tooltip-content-background-color,
-      var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-darkest, #151515))),
+      var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-lightest, #ffffff))),
       var(--rh-tooltip-content-background-color,
-      var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-lightest, #ffffff))));
+      var(--rh-tooltip__content--BackgroundColor, var(--rh-color-surface-darkest, #151515))));
 }
 
 .open #tooltip {

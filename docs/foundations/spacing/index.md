@@ -82,7 +82,7 @@ tags:
   vertical rhythm and readability.
 
   <uxdot-example>
-    <img src="spacing-typography-1.png"
+    <img src="spacing-typography-1.avif"
          alt="How to apply spacing to typography"
          width="1000"
          height="421">
@@ -176,7 +176,7 @@ tags:
     desktop and tablet, and 24px on mobile
 
   <uxdot-example variant="full">
-    <img src="spacing-headlines-ctas.png"
+    <img src="spacing-headlines-ctas.avif"
          alt="How to apply spacing to headlines and calls to action"
          width="1000"
          height="814">
