@@ -12,6 +12,14 @@
   z-index: var(--rh-z-index-navigation-drawer, 102);
 }
 
+:host:has(#hamburger.collapsed:not(.compact)) {
+  animation: var(--_animation-speed) ease 0s normal forwards 1 compact;
+}
+
+:host:has(#hamburger.expanded:not(.compact, .initial)) {
+  animation: var(--_animation-speed) ease 0s normal forwards 1 expand;
+}
+
 :host([expand-at='xs']) {
   @container (min-inline-size:576px) {
     --_menu-width: 320px;
@@ -215,19 +223,39 @@ rh-disclosure {
   }
 }
 
+@keyframes compact {
+  0% {
+    inline-size: var(--_menu-width);
+  }
+
+  100% {
+    inline-size: 32px;
+  }
+}
+
+@keyframes expand {
+  0% {
+    inline-size: 32px;
+  }
+
+  100% {
+    inline-size: var(--_menu-width);
+  }
+}
+
 @keyframes squish {
   0% {
     transform: translateX(0);
   }
 
   100% {
-    transform: translateX(-85%);
+    transform: translateX(-90%);
   }
 }
 
 @keyframes stretch {
   0% {
-    transform: translateX(-85%);
+    transform: translateX(-90%);
   }
 
   100% {
