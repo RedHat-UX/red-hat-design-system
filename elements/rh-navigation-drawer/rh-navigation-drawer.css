@@ -81,6 +81,11 @@
     background-color:
       light-dark(oklch(from var(--rh-color-surface) calc(l * 0.95) c h),
         oklch(from var(--rh-color-surface) calc(l / 0.8) c h));
+    color: var(--rh-color-interactive-primary-default);
+  }
+
+  &:is(:hover, :focus) {
+    outline: var(--rh-border-width-md, 2px) solid var(--rh-color-border-interactive);
   }
 
   & rh-icon {

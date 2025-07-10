@@ -29,6 +29,7 @@ import styles from './rh-navigation-drawer.css';
  * @slot - Drawer content such as vertical navigation elements
  * @slot header - (optional) header content such as titles and filters
  * @slot footer - (optional) Footer content such as links and copyright info
+ * @cssprop --rh-z-index-navigation-drawer - The z-index of the navigation drawer, defaults to 102
  */
 
 @customElement('rh-navigation-drawer')
