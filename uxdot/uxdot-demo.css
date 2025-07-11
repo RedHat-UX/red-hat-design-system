@@ -37,6 +37,30 @@ rh-card {
       margin-inline-end: auto;
     }
   }
+
+  rh-tooltip[slot='footer'] {
+    --rh-icon-size: var(--rh-size-icon-02, 24px) !important;
+
+    & a {
+      padding: var(--rh-space-sm, 6px) var(--rh-space-lg, 16px);
+      display: flex;
+      place-items: center;
+
+      &#new-tab {
+        --rh-icon-size: 18px !important;
+
+        margin-block-start: 4px;
+      }
+    }
+
+    & rh-button {
+      & svg {
+        width: 24px;
+        height: 24px;
+        fill: currentcolor;
+      }
+    }
+  }
 }
 
 .code-tabs {
