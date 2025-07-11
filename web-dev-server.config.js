@@ -81,7 +81,7 @@ function transformDevServerHTML(document) {
     && x.tagName === 'main');
   if (main && isElementNode(main)) {
     main.tagName = 'rh-surface';
-    setAttribute(main, 'color-palette', '');
+    removeAttribute(main, 'color-palette');
     setAttribute(main, 'id', surfaceId);
     setAttribute(main, 'role', 'main');
   }
