@@ -17,6 +17,10 @@
     var(--_color-stop-middle),
     var(--_color-stop-start);
   --_gradient-direction: -90deg;
+  --_gradient-ring:
+    linear-gradient(light-dark(var(--rh-color-surface-lighter, #f2f2f2),
+      var(--rh-color-surface-darker, #1f1f1f)) 0 0) padding-box,
+    conic-gradient(from var(--_gradient-direction), var(--_conic-gradient)) border-box;
   --_navbar-height: 83px;
   --_nav-container-z-index: -1;
 
@@ -147,10 +151,7 @@
 
     &:is(:active, :active:hover, :hover, :focus-visible) {
       &:before {
-        background:
-          linear-gradient(light-dark(var(--rh-color-surface-lighter, #f2f2f2),
-            var(--rh-color-surface-darker, #1f1f1f)) 0 0) padding-box,
-          conic-gradient(from var(--_gradient-direction), var(--_conic-gradient)) border-box;
+        background: var(--_gradient-ring);
       }
     }
 
@@ -213,10 +214,7 @@
       /* stylelint-disable-next-line no-descending-specificity */
       &:before {
         border: var(--rh-border-width-md, 2px) solid transparent;
-        background:
-          linear-gradient(light-dark(var(--rh-color-surface-lighter, #f2f2f2),
-            var(--rh-color-surface-darker, #1f1f1f)) 0 0) padding-box,
-          conic-gradient(from var(--_gradient-direction), var(--_conic-gradient)) border-box;
+        background: var(--_gradient-ring);
       }
 
       & rh-icon[icon='caret-down'] {
