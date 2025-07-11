@@ -58,8 +58,11 @@
   from = '/components/popover/*'
   to = '/elements/popover/:splat'
 [[redirects]]
+  from = '/components/progress-stepper/*'
+  to = '/elements/progress-stepper/:splat'
+[[redirects]]
   from = '/components/progress-steps/*'
-  to = '/elements/progress-steps/:splat'
+  to = '/elements/progress-stepper/:splat'
 [[redirects]]
   from = '/components/spinner/*'
   to = '/elements/spinner/:splat'

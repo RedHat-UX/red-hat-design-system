@@ -1,3 +1,3 @@
 <div id="overview-image-description" class="visually-hidden">
-  Example progress-steps element
+  Example progress-stepper element
 </div>
