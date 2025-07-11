@@ -1,5 +1,14 @@
 # @rhds/elements
 
+## 3.0.5
+### Patch Changes
+
+- 2f4714a: `<rh-tabs>`: corrected duplicate focus ring with keyboard navigation
+- 2f4714a: `<rh-tabs>`: corrected background styles inheritied from parent color-scheme and host color-palette
+- 4b130a7: `<rh-footer>`: removed Inc from copyright
+- 877a0a1: `<rh-audio-player>`: corrected icons for rewind and fast forward
+- 2f4714a: `<rh-tabs>`: corrected vertical layout styles
+
 ## 3.0.4
 ### Patch Changes
 
