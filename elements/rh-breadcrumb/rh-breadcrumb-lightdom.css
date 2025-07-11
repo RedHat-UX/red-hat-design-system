@@ -59,10 +59,16 @@ rh-breadcrumb {
 
       /* stylelint-disable-next-line no-descending-specificity */
       & > a {
-        text-decoration: underline;
+        text-decoration: none;
 
         &:is(:hover, :focus, :active) {
           color: var(--_breadcrumb-link-color-hover);
+          text-decoration: underline var(--rh-border-width-sm, 1px) dashed;
+          text-decoration-color: inherit;
+          text-underline-offset: max(5px, 0.28em);
+          transition-timing-function: ease;
+          transition-property: text-underline-offset, color, text-decoration-color;
+          transition-duration: 0.3s;
         }
 
         &:is(:focus, :focus-visible) {
@@ -76,6 +82,12 @@ rh-breadcrumb {
 
         &:visited:hover {
           color: var(--_breadcrumb-link-color-visited-hover);
+          text-decoration: underline var(--rh-border-width-sm, 1px) dashed;
+          text-decoration-color: inherit;
+          text-underline-offset: max(5px, 0.28em);
+          transition-timing-function: ease;
+          transition-property: text-underline-offset, color, text-decoration-color;
+          transition-duration: 0.3s;
         }
 
         &[aria-current='page'] {
@@ -115,7 +127,7 @@ rh-breadcrumb {
     cursor: pointer;
     min-inline-size: var(--rh-length-xl, 24px);
     padding: 0;
-    text-decoration: underline;
+    text-decoration: none;
 
     &:hover,
     &:focus {

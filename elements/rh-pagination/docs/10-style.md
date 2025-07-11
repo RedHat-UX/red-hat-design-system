@@ -106,18 +106,18 @@ colors to prevent background colors of the box variant from bleeding into the su
 ### Dark scheme
 
 <div class="grid sm-two-columns">
-  <uxdot-example color-palette="lightest" width-adjustment="554px" no-border variant="full">
+  <uxdot-example color-palette="darkest" width-adjustment="348px">
     <img alt="Darkest theme pagination"
          src="../pagination-style-theme-darkest-box.svg"
-         width="554"
-         height="180">
+         width="348"
+         height="116">
   </uxdot-example>
 
-  <uxdot-example color-palette="lightest" width-adjustment="554px" no-border variant="full">
+  <uxdot-example color-palette="darkest" width-adjustment="348px">
     <img alt="Darkest theme pagination open variant"
          src="../pagination-style-theme-darkest-open.svg"
-         width="554"
-         height="180">
+         width="348"
+         height="116">
   </uxdot-example>
 </div>
 
@@ -159,7 +159,7 @@ The compact configuration comes in both the box and open variant styles. It’s 
        height="148">
 </uxdot-example>
 
-<uxdot-example no-border variant="full">
+<uxdot-example color-palette="darkest" width-adjustment="720px">
   <img alt="Same as above but dark color palette."
        src="../pagination-style-compact-dark.svg"
        width="1140"

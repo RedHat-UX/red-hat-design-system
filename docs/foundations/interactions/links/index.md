@@ -222,9 +222,11 @@ Developers can use the following CSS as a starting point for link underlining:
       text-decoration-color: var(--rh-color-gray-50, #707070);
       text-decoration-line: underline;
       text-decoration-style: dashed;
-      text-decoration-thickness: 1px;
+      text-decoration-thickness: var(--rh-border-width-sm, 1px);
       text-underline-offset: max(5px, 0.28em);
-      transition: ease all 0.3s;
+      transition-timing-function: ease;
+      transition-property: text-underline-offset, color, text-decoration-color;
+      transition-duration: 0.3s;
       &:hover {
         text-decoration-color: inherit;
         text-underline-offset: max(6px, 0.33em);
