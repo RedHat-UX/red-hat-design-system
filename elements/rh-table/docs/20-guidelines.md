@@ -20,7 +20,7 @@ In some edge cases, table rows can have double padding if there are more element
 
 <uxdot-example color-palette="lightest" width-adjustment="872px">
   <img alt="Image of two tables, one with default vertical padding and the other one with double vertical padding"
-       src="../table-usage-padding.png"
+       src="../table-usage-padding.avif"
        width="872"
        height="652">
 </uxdot-example>
@@ -87,7 +87,7 @@ Logos can be used in cells along with text if necessary.
 
 <uxdot-example color-palette="lightest" width-adjustment="872px">
   <img alt="Image of table with logos and links among text"
-       src="../table-layout-logos.png"
+       src="../table-layout-logos.avif"
        width="872"
        height="774">
 </uxdot-example>
