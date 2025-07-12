@@ -34,7 +34,9 @@ export default pfeCustomElementsManifestConfig({
     async packageLinkPhase({ customElementsManifest }) {
       const { analyze: cemTokens } = await import('./scripts/cem-tokens.ts');
       const { analyze: systemTokens } = await import('./scripts/system-tokens.ts');
+      const { analyze: cemTypes } = await import('./scripts/cem-types.ts');
       cemTokens(customElementsManifest);
+      cemTypes(customElementsManifest);
       await systemTokens(customElementsManifest);
       // Shouldn't need to do this, but practically speaking, the new manifest is not being written
       await writeFile(
