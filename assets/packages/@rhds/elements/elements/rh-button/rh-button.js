@@ -96,7 +96,7 @@ _RhButton_onClick = function _RhButton_onClick() {
     }
 };
 _RhButton_renderIcon = function _RhButton_renderIcon() {
-    switch (this.variant.toLowerCase()) {
+    switch (this.variant?.toLowerCase()) {
         case 'close':
             return html `<rh-icon set="microns" icon="close"></rh-icon>`;
         case 'play':

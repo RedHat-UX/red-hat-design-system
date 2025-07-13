@@ -57,6 +57,7 @@
     "@rhds/tokens/": "/assets/packages/@rhds/tokens/js/",
     "@rhds/elements/lib/": "/assets/packages/@rhds/elements/lib/",
     "@rhds/elements/": "/assets/packages/@rhds/elements/elements/",
+    "@rhds/icons": "/assets/packages/@rhds/icons/icons.js",
     "@rhds/icons/": "/assets/packages/@rhds/icons/",
     "@rhds/icons/icons.js": "/assets/packages/@rhds/icons/icons.js",
     "@patternfly/elements/": "/assets/packages/@patternfly/elements/",
@@ -124,6 +125,7 @@
         import '@rhds/elements/rh-accordion/rh-accordion.js';
         import '@rhds/elements/rh-badge/rh-badge.js';
         import '@rhds/elements/rh-tag/rh-tag.js';
+        import '@patternfly/elements/pf-select/pf-select.js';
       </script><script type="module">
         import '@rhds/elements/rh-audio-player/rh-audio-player.js';
       </script><script type="module">
@@ -1940,14 +1942,14 @@
                   <td><code>mediaseries</code></td>
                   <td><code>mediaseries</code></td>
                   <td><p>Audio's series name, e.g. Podcast series.</p></td>
-                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span> <span class="token operator">|</span> <span class="token keyword">undefined</span></code></pre></td>
+                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span><span class="token operator">|</span><span class="token keyword">undefined</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
                 <tr>
                   <td><code>mediatitle</code></td>
                   <td><code>mediatitle</code></td>
                   <td><p>Audio's title, e.g. Podcast episode title.</p></td>
-                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span> <span class="token operator">|</span> <span class="token keyword">undefined</span></code></pre></td>
+                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span><span class="token operator">|</span><span class="token keyword">undefined</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
                 <tr>
@@ -1960,14 +1962,14 @@
 <li><code>compact-wide</code>: like compact but full width</li>
 <li><code>full</code>: maximal controls and artwork</li>
 </ul></td>
-                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'mini'</span> <span class="token operator">|</span> <span class="token string">'compact'</span> <span class="token operator">|</span> <span class="token string">'compact-wide'</span> <span class="token operator">|</span> <span class="token string">'full'</span></code></pre></td>
+                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'mini'</span><span class="token operator">|</span><span class="token string">'compact'</span><span class="token operator">|</span><span class="token string">'compact-wide'</span><span class="token operator">|</span><span class="token string">'full'</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'mini'</span></code></pre></td>
                 </tr>
                 <tr>
                   <td><code>poster</code></td>
                   <td><code>poster</code></td>
                   <td><p>URL to audio's artwork</p></td>
-                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span> <span class="token operator">|</span> <span class="token keyword">undefined</span></code></pre></td>
+                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span><span class="token operator">|</span><span class="token keyword">undefined</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
                 <tr>
@@ -2002,7 +2004,7 @@
                   <td><code>color-palette</code></td>
                   <td><code>colorPalette</code></td>
                   <td><p>Element's color palette</p></td>
-                  <td class="type"><pre class="language-ts"><code class="language-ts">ColorPalette <span class="token operator">|</span> <span class="token keyword">undefined</span></code></pre></td>
+                  <td class="type"><pre class="language-ts"><code class="language-ts">ColorPalette<span class="token operator">|</span><span class="token keyword">undefined</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
               </tbody>
@@ -5033,21 +5035,21 @@
                   <td><code>label</code></td>
                   <td><code>label</code></td>
                   <td><p>Default label content</p></td>
-                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span> <span class="token operator">|</span> <span class="token keyword">undefined</span></code></pre></td>
+                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span><span class="token operator">|</span><span class="token keyword">undefined</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
                 <tr>
                   <td><code>series</code></td>
                   <td><code>mediaseries</code></td>
                   <td><p>Series this track belongs to, if applicable</p></td>
-                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span> <span class="token operator">|</span> <span class="token keyword">undefined</span></code></pre></td>
+                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span><span class="token operator">|</span><span class="token keyword">undefined</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
                 <tr>
                   <td><code>mediatitle</code></td>
                   <td><code>mediatitle</code></td>
                   <td><p>Title of audio track</p></td>
-                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span> <span class="token operator">|</span> <span class="token keyword">undefined</span></code></pre></td>
+                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span><span class="token operator">|</span><span class="token keyword">undefined</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
               </tbody>
@@ -6327,7 +6329,7 @@
                   <td><code>label</code></td>
                   <td><code>label</code></td>
                   <td><p>Playback rate</p></td>
-                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span> <span class="token operator">|</span> <span class="token keyword">undefined</span></code></pre></td>
+                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span><span class="token operator">|</span><span class="token keyword">undefined</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
               </tbody>
@@ -7394,14 +7396,14 @@
                   <td><code>heading</code></td>
                   <td><code>heading</code></td>
                   <td></td>
-                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span> <span class="token operator">|</span> <span class="token keyword">undefined</span></code></pre></td>
+                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span><span class="token operator">|</span><span class="token keyword">undefined</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
                 <tr>
                   <td><code>label</code></td>
                   <td><code>label</code></td>
                   <td></td>
-                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span> <span class="token operator">|</span> <span class="token keyword">undefined</span></code></pre></td>
+                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span><span class="token operator">|</span><span class="token keyword">undefined</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
               </tbody>
@@ -7797,28 +7799,28 @@
                   <td><code>start</code></td>
                   <td><code>start</code></td>
                   <td><p>Start time, in mm:ss.ms</p></td>
-                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span> <span class="token operator">|</span> <span class="token keyword">undefined</span></code></pre></td>
+                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span><span class="token operator">|</span><span class="token keyword">undefined</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
                 <tr>
                   <td><code>end</code></td>
                   <td><code>end</code></td>
                   <td><p>End time, in mm:ss.ms</p></td>
-                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span> <span class="token operator">|</span> <span class="token keyword">undefined</span></code></pre></td>
+                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span><span class="token operator">|</span><span class="token keyword">undefined</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
                 <tr>
                   <td><code>text</code></td>
                   <td><code>text</code></td>
                   <td><p>Text of this cue. Overridden by <code>text</code> slot</p></td>
-                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span> <span class="token operator">|</span> <span class="token keyword">undefined</span></code></pre></td>
+                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span><span class="token operator">|</span><span class="token keyword">undefined</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
                 <tr>
                   <td><code>voice</code></td>
                   <td><code>voice</code></td>
                   <td><p>Name of voice speaking this text. Overridden by <code>voice</code> slot</p></td>
-                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span> <span class="token operator">|</span> <span class="token keyword">undefined</span></code></pre></td>
+                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span><span class="token operator">|</span><span class="token keyword">undefined</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
                 <tr>
@@ -8431,14 +8433,14 @@
                   <td><code>heading</code></td>
                   <td><code>heading</code></td>
                   <td></td>
-                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span> <span class="token operator">|</span> <span class="token keyword">undefined</span></code></pre></td>
+                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span><span class="token operator">|</span><span class="token keyword">undefined</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
                 <tr>
                   <td><code>label</code></td>
                   <td><code>label</code></td>
                   <td></td>
-                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span> <span class="token operator">|</span> <span class="token keyword">undefined</span></code></pre></td>
+                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span><span class="token operator">|</span><span class="token keyword">undefined</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
                 <tr>

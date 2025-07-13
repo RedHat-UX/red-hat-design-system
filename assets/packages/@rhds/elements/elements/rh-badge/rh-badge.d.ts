@@ -16,8 +16,9 @@ export declare class RhBadge extends LitElement {
     static readonly styles: CSSStyleSheet[];
     /**
      * Denotes the state-of-affairs this badge represents
+     * Note: 'moderate','important', and 'critical' will also work, but are deprecated
      */
-    state: 'danger' | 'warning' | 'caution' | 'neutral' | 'success' | 'moderate' | 'important' | 'critical' | 'info';
+    state: 'danger' | 'warning' | 'caution' | 'neutral' | 'success' | 'info';
     /**
      * Sets a numeric value for a badge.
      *

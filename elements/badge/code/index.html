@@ -57,6 +57,7 @@
     "@rhds/tokens/": "/assets/packages/@rhds/tokens/js/",
     "@rhds/elements/lib/": "/assets/packages/@rhds/elements/lib/",
     "@rhds/elements/": "/assets/packages/@rhds/elements/elements/",
+    "@rhds/icons": "/assets/packages/@rhds/icons/icons.js",
     "@rhds/icons/": "/assets/packages/@rhds/icons/",
     "@rhds/icons/icons.js": "/assets/packages/@rhds/icons/icons.js",
     "@patternfly/elements/": "/assets/packages/@patternfly/elements/",
@@ -124,6 +125,7 @@
         import '@rhds/elements/rh-accordion/rh-accordion.js';
         import '@rhds/elements/rh-badge/rh-badge.js';
         import '@rhds/elements/rh-tag/rh-tag.js';
+        import '@patternfly/elements/pf-select/pf-select.js';
       </script><script type="module">
         import '@rhds/elements/rh-badge/rh-badge.js';
       </script><script type="module">
@@ -1043,9 +1045,6 @@
       <!--lit-node 15--><slot name="legend" hidden></slot>
     <!--/lit-part--></template>
           <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-badge</span> <span class="token attr-name">number</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>7<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>7<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-badge</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-badge</span> <span class="token attr-name">number</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>24<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>24<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-badge</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-badge</span> <span class="token attr-name">number</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>240<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>240<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-badge</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-badge</span> <span class="token attr-name">threshold</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>900<span class="token punctuation">"</span></span> <span class="token attr-name">number</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>999<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>999<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-badge</span><span class="token punctuation">&gt;</span></span>
 
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
   <span class="token keyword">import</span> <span class="token string">'@rhds/elements/rh-badge/rh-badge.js'</span><span class="token punctuation">;</span>
@@ -1184,8 +1183,9 @@
                 <tr>
                   <td><code>state</code></td>
                   <td><code>state</code></td>
-                  <td><p>Denotes the state-of-affairs this badge represents</p></td>
-                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token operator">|</span> <span class="token string">'danger'</span> <span class="token operator">|</span> <span class="token string">'warning'</span> <span class="token operator">|</span> <span class="token string">'caution'</span> <span class="token operator">|</span> <span class="token string">'neutral'</span> <span class="token operator">|</span> <span class="token string">'success'</span> <span class="token operator">|</span> <span class="token string">'moderate'</span> <span class="token comment">// deprecated</span> <span class="token operator">|</span> <span class="token string">'important'</span> <span class="token comment">// deprecated</span> <span class="token operator">|</span> <span class="token string">'critical'</span> <span class="token comment">// deprecated</span> <span class="token operator">|</span> <span class="token string">'info'</span></code></pre></td>
+                  <td><p>Denotes the state-of-affairs this badge represents
+Note: 'moderate','important', and 'critical' will also work, but are deprecated</p></td>
+                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token operator">|</span><span class="token string">'danger'</span><span class="token operator">|</span><span class="token string">'warning'</span><span class="token operator">|</span><span class="token string">'caution'</span><span class="token operator">|</span><span class="token string">'neutral'</span><span class="token operator">|</span><span class="token string">'success'</span><span class="token operator">|</span><span class="token string">'info'</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'neutral'</span></code></pre></td>
                 </tr>
                 <tr>
@@ -1194,7 +1194,7 @@
                   <td><p>Sets a numeric value for a badge.</p>
 <p>You can pair it with <code>threshold</code> attribute to add a <code>+</code> sign
 if the number exceeds the threshold value.</p></td>
-                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">number</span> <span class="token operator">|</span> <span class="token keyword">undefined</span></code></pre></td>
+                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">number</span><span class="token operator">|</span><span class="token keyword">undefined</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
                 <tr>
@@ -1202,7 +1202,7 @@ if the number exceeds the threshold value.</p></td>
                   <td><code>threshold</code></td>
                   <td><p>Sets a threshold for the numeric value and adds <code>+</code> sign if
 the numeric value exceeds the threshold value.</p></td>
-                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">number</span> <span class="token operator">|</span> <span class="token keyword">undefined</span></code></pre></td>
+                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">number</span><span class="token operator">|</span><span class="token keyword">undefined</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
               </tbody>

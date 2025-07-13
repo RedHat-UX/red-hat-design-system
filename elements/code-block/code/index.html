@@ -57,6 +57,7 @@
     "@rhds/tokens/": "/assets/packages/@rhds/tokens/js/",
     "@rhds/elements/lib/": "/assets/packages/@rhds/elements/lib/",
     "@rhds/elements/": "/assets/packages/@rhds/elements/elements/",
+    "@rhds/icons": "/assets/packages/@rhds/icons/icons.js",
     "@rhds/icons/": "/assets/packages/@rhds/icons/",
     "@rhds/icons/icons.js": "/assets/packages/@rhds/icons/icons.js",
     "@patternfly/elements/": "/assets/packages/@patternfly/elements/",
@@ -124,6 +125,7 @@
         import '@rhds/elements/rh-accordion/rh-accordion.js';
         import '@rhds/elements/rh-badge/rh-badge.js';
         import '@rhds/elements/rh-tag/rh-tag.js';
+        import '@patternfly/elements/pf-select/pf-select.js';
       </script><script type="module">
         import '@rhds/elements/rh-code-block/rh-code-block.js';
       </script><script type="module">
@@ -2074,7 +2076,7 @@ content to the clipboard. Each method has benefits and drawbacks.</p>
 one for the action's default state (e.g. "Copy to clipboard"),
 and one for the actions alternative state, e.g. "Copied!".
 The active-state element must have the attributes <code>hidden data-code-block-state="active"</code></p></td>
-                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token punctuation">(</span><span class="token string">'copy'</span> <span class="token operator">|</span> <span class="token string">'wrap'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token punctuation">]</span></code></pre></td>
+                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token punctuation">(</span><span class="token string">'copy'</span><span class="token operator">|</span><span class="token string">'wrap'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token punctuation">]</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token punctuation">[</span><span class="token punctuation">]</span></code></pre></td>
                 </tr>
                 <tr>
@@ -2083,14 +2085,14 @@ The active-state element must have the attributes <code>hidden data-code-block-s
                   <td><p>When set to "client", <code>&lt;rh-code-block&gt;</code> will automatically highlight the source using Prism.js
 When set to "Prerendered", <code>&lt;rh-code-block&gt;</code> will apply supported RHDS styles to children with
 prismjs classnames in the element's root.</p></td>
-                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'client'</span> <span class="token operator">|</span> <span class="token string">'prerendered'</span> <span class="token operator">|</span> <span class="token keyword">undefined</span></code></pre></td>
+                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'client'</span><span class="token operator">|</span><span class="token string">'prerendered'</span><span class="token operator">|</span><span class="token keyword">undefined</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
                 <tr>
                   <td><code>language</code></td>
                   <td><code>language</code></td>
                   <td><p>When set along with <code>highlighting="client"</code>, this grammar will be used to highlight source code</p></td>
-                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token operator">|</span> <span class="token string">'html'</span> <span class="token operator">|</span> <span class="token string">'css'</span> <span class="token operator">|</span> <span class="token string">'javascript'</span> <span class="token operator">|</span> <span class="token string">'typescript'</span> <span class="token operator">|</span> <span class="token string">'bash'</span> <span class="token operator">|</span> <span class="token string">'ruby'</span> <span class="token operator">|</span> <span class="token string">'yaml'</span> <span class="token operator">|</span> <span class="token string">'json'</span> <span class="token operator">|</span> <span class="token keyword">undefined</span></code></pre></td>
+                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token operator">|</span><span class="token string">'html'</span><span class="token operator">|</span><span class="token string">'css'</span><span class="token operator">|</span><span class="token string">'javascript'</span><span class="token operator">|</span><span class="token string">'typescript'</span><span class="token operator">|</span><span class="token string">'bash'</span><span class="token operator">|</span><span class="token string">'ruby'</span><span class="token operator">|</span><span class="token string">'yaml'</span><span class="token operator">|</span><span class="token string">'json'</span><span class="token operator">|</span><span class="token keyword">undefined</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
                 <tr>

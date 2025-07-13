@@ -57,6 +57,7 @@
     "@rhds/tokens/": "/assets/packages/@rhds/tokens/js/",
     "@rhds/elements/lib/": "/assets/packages/@rhds/elements/lib/",
     "@rhds/elements/": "/assets/packages/@rhds/elements/elements/",
+    "@rhds/icons": "/assets/packages/@rhds/icons/icons.js",
     "@rhds/icons/": "/assets/packages/@rhds/icons/",
     "@rhds/icons/icons.js": "/assets/packages/@rhds/icons/icons.js",
     "@patternfly/elements/": "/assets/packages/@patternfly/elements/",
@@ -124,6 +125,7 @@
         import '@rhds/elements/rh-accordion/rh-accordion.js';
         import '@rhds/elements/rh-badge/rh-badge.js';
         import '@rhds/elements/rh-tag/rh-tag.js';
+        import '@patternfly/elements/pf-select/pf-select.js';
       </script><script type="module">
         import '@rhds/elements/rh-alert/rh-alert.js';
       </script><style>
@@ -4144,8 +4146,9 @@ a user triggering an action first.</p>
 <li><code>caution</code> - Indicates an action or notice which should immediately draw the attention</li>
 <li><code>info</code> - Indicates helpful information or a message with very little to no severity.</li>
 <li><code>success</code> - Indicates a success state, like if a process was completed without errors.</li>
-</ul></td>
-                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token operator">|</span> <span class="token string">'danger'</span> <span class="token operator">|</span> <span class="token string">'warning'</span> <span class="token operator">|</span> <span class="token string">'caution'</span> <span class="token operator">|</span> <span class="token string">'neutral'</span> <span class="token operator">|</span> <span class="token string">'info'</span> <span class="token operator">|</span> <span class="token string">'success'</span> <span class="token operator">|</span> <span class="token string">'note'</span> <span class="token comment">// deprecated</span> <span class="token operator">|</span> <span class="token string">'default'</span> <span class="token comment">// deprecated</span> <span class="token operator">|</span> <span class="token string">'error'</span></code></pre></td>
+</ul>
+<p>Note: 'note', 'default', and 'error' will also work, but are deprecated</p></td>
+                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token operator">|</span><span class="token string">'danger'</span><span class="token operator">|</span><span class="token string">'warning'</span><span class="token operator">|</span><span class="token string">'caution'</span><span class="token operator">|</span><span class="token string">'neutral'</span><span class="token operator">|</span><span class="token string">'info'</span><span class="token operator">|</span><span class="token string">'success'</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'neutral'</span></code></pre></td>
                 </tr>
                 <tr>
@@ -4156,7 +4159,7 @@ can be used to express more urgency or better grab the attention of a user.</p>
 <p>A Toast alert is used to present a global message about an event,
 update, or confirmation, like the result of a user action that cannot
 be presented within a specific layout or component.</p></td>
-                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'alternate'</span> <span class="token operator">|</span> <span class="token string">'toast'</span> <span class="token operator">|</span> <span class="token string">'inline'</span> <span class="token operator">|</span> <span class="token keyword">undefined</span></code></pre></td>
+                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'alternate'</span><span class="token operator">|</span><span class="token string">'toast'</span><span class="token operator">|</span><span class="token string">'inline'</span><span class="token operator">|</span><span class="token keyword">undefined</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
                 <tr>

@@ -59,8 +59,10 @@ export declare class RhAlert extends LitElement {
      *  - `caution` - Indicates an action or notice which should immediately draw the attention
      *  - `info` - Indicates helpful information or a message with very little to no severity.
      *  - `success` - Indicates a success state, like if a process was completed without errors.
+     *
+     *  Note: 'note', 'default', and 'error' will also work, but are deprecated
      */
-    state: 'danger' | 'warning' | 'caution' | 'neutral' | 'info' | 'success' | 'note' | 'default' | 'error';
+    state: 'danger' | 'warning' | 'caution' | 'neutral' | 'info' | 'success';
     /**
      * The alternate Inline alert style includes a border instead of a line which
      * can be used to express more urgency or better grab the attention of a user.

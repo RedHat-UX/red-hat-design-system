@@ -57,6 +57,7 @@
     "@rhds/tokens/": "/assets/packages/@rhds/tokens/js/",
     "@rhds/elements/lib/": "/assets/packages/@rhds/elements/lib/",
     "@rhds/elements/": "/assets/packages/@rhds/elements/elements/",
+    "@rhds/icons": "/assets/packages/@rhds/icons/icons.js",
     "@rhds/icons/": "/assets/packages/@rhds/icons/",
     "@rhds/icons/icons.js": "/assets/packages/@rhds/icons/icons.js",
     "@patternfly/elements/": "/assets/packages/@patternfly/elements/",
@@ -124,6 +125,7 @@
         import '@rhds/elements/rh-accordion/rh-accordion.js';
         import '@rhds/elements/rh-badge/rh-badge.js';
         import '@rhds/elements/rh-tag/rh-tag.js';
+        import '@patternfly/elements/pf-select/pf-select.js';
       </script><script type="module">
         import '@rhds/elements/rh-back-to-top/rh-back-to-top.js';
       </script><script type="module">
@@ -1212,14 +1214,14 @@ to the top of a lengthy content page.</p>
                   <td><code>visible</code></td>
                   <td><code>visible</code></td>
                   <td><p>Flag to always show back to top button, defaults to false.</p></td>
-                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'always'</span> <span class="token operator">|</span> <span class="token keyword">undefined</span> <span class="token operator">|</span> <span class="token keyword">undefined</span></code></pre></td>
+                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'always'</span><span class="token operator">|</span><span class="token keyword">undefined</span><span class="token operator">|</span><span class="token keyword">undefined</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
                 <tr>
                   <td><code>scrollable-selector</code></td>
                   <td><code>scrollableSelector</code></td>
                   <td><p>Element selector to spy on for scrolling. Not passing a selector defaults to spying on window scroll events</p></td>
-                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span> <span class="token operator">|</span> <span class="token keyword">undefined</span></code></pre></td>
+                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span><span class="token operator">|</span><span class="token keyword">undefined</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
                 <tr>
@@ -1233,7 +1235,7 @@ to the top of a lengthy content page.</p>
                   <td><code>href</code></td>
                   <td><code>href</code></td>
                   <td><p>Page fragment link to target element, must include hash ex: #top</p></td>
-                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span> <span class="token operator">|</span> <span class="token keyword">undefined</span></code></pre></td>
+                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span><span class="token operator">|</span><span class="token keyword">undefined</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
               </tbody>

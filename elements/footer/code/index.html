@@ -57,6 +57,7 @@
     "@rhds/tokens/": "/assets/packages/@rhds/tokens/js/",
     "@rhds/elements/lib/": "/assets/packages/@rhds/elements/lib/",
     "@rhds/elements/": "/assets/packages/@rhds/elements/elements/",
+    "@rhds/icons": "/assets/packages/@rhds/icons/icons.js",
     "@rhds/icons/": "/assets/packages/@rhds/icons/",
     "@rhds/icons/icons.js": "/assets/packages/@rhds/icons/icons.js",
     "@patternfly/elements/": "/assets/packages/@patternfly/elements/",
@@ -124,6 +125,7 @@
         import '@rhds/elements/rh-accordion/rh-accordion.js';
         import '@rhds/elements/rh-badge/rh-badge.js';
         import '@rhds/elements/rh-tag/rh-tag.js';
+        import '@patternfly/elements/pf-select/pf-select.js';
       </script><script type="module">
         import '@rhds/elements/rh-footer/rh-footer.js';
       </script><script type="module">
@@ -5951,21 +5953,21 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                   <td><code>icon</code></td>
                   <td><code>icon</code></td>
                   <td><p>Icon for this social link e.g. <code>'facebook'</code></p></td>
-                  <td class="type"><pre class="language-ts"><code class="language-ts">IconNameFor<span class="token operator">&lt;</span><span class="token string">'social'</span><span class="token operator">&gt;</span> <span class="token operator">|</span> <span class="token keyword">undefined</span></code></pre></td>
+                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'email-square'</span><span class="token operator">|</span><span class="token string">'email'</span><span class="token operator">|</span><span class="token string">'facebook-square'</span><span class="token operator">|</span><span class="token string">'facebook'</span><span class="token operator">|</span><span class="token string">'flickr-square'</span><span class="token operator">|</span><span class="token string">'flickr'</span><span class="token operator">|</span><span class="token string">'github-square'</span><span class="token operator">|</span><span class="token string">'github'</span><span class="token operator">|</span><span class="token string">'google-square'</span><span class="token operator">|</span><span class="token string">'google'</span><span class="token operator">|</span><span class="token string">'instagram-square'</span><span class="token operator">|</span><span class="token string">'instagram'</span><span class="token operator">|</span><span class="token string">'linkedin-square'</span><span class="token operator">|</span><span class="token string">'linkedin'</span><span class="token operator">|</span><span class="token string">'messenger-square'</span><span class="token operator">|</span><span class="token string">'messenger'</span><span class="token operator">|</span><span class="token string">'microsoft-square'</span><span class="token operator">|</span><span class="token string">'microsoft'</span><span class="token operator">|</span><span class="token string">'rss-square'</span><span class="token operator">|</span><span class="token string">'rss'</span><span class="token operator">|</span><span class="token string">'stackoverflow-square'</span><span class="token operator">|</span><span class="token string">'stackoverflow'</span><span class="token operator">|</span><span class="token string">'threads-square'</span><span class="token operator">|</span><span class="token string">'threads'</span><span class="token operator">|</span><span class="token string">'twitch-square'</span><span class="token operator">|</span><span class="token string">'twitch'</span><span class="token operator">|</span><span class="token string">'wechat-square'</span><span class="token operator">|</span><span class="token string">'wechat'</span><span class="token operator">|</span><span class="token string">'weibo-square'</span><span class="token operator">|</span><span class="token string">'weibo'</span><span class="token operator">|</span><span class="token string">'whatsapp-square'</span><span class="token operator">|</span><span class="token string">'whatsapp'</span><span class="token operator">|</span><span class="token string">'x-square'</span><span class="token operator">|</span><span class="token string">'x'</span><span class="token operator">|</span><span class="token string">'youtube-square'</span><span class="token operator">|</span><span class="token string">'youtube'</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
                 <tr>
                   <td><code>href</code></td>
                   <td><code>href</code></td>
                   <td><p>Social link address</p></td>
-                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span> <span class="token operator">|</span> <span class="token keyword">undefined</span></code></pre></td>
+                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span><span class="token operator">|</span><span class="token keyword">undefined</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
                 <tr>
                   <td><code>accessible-label</code></td>
                   <td><code>accessibleLabel</code></td>
                   <td><p>Textual label for the social link e.g. "Instagram"</p></td>
-                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span> <span class="token operator">|</span> <span class="token keyword">undefined</span></code></pre></td>
+                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span><span class="token operator">|</span><span class="token keyword">undefined</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
               </tbody>
@@ -6440,7 +6442,7 @@ Setting this to true will not affect <code>aria-labelledby</code>.</p></td>
                   <td><code>color-palette</code></td>
                   <td><code>colorPalette</code></td>
                   <td></td>
-                  <td class="type"><pre class="language-ts"><code class="language-ts">ColorPalette</code></pre></td>
+                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'darkest'</span><span class="token operator">|</span><span class="token string">'darker'</span><span class="token operator">|</span><span class="token string">'dark'</span><span class="token operator">|</span><span class="token string">'light'</span><span class="token operator">|</span><span class="token string">'lighter'</span><span class="token operator">|</span><span class="token string">'lightest'</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'darker'</span></code></pre></td>
                 </tr>
               </tbody>

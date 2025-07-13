@@ -57,6 +57,7 @@
     "@rhds/tokens/": "/assets/packages/@rhds/tokens/js/",
     "@rhds/elements/lib/": "/assets/packages/@rhds/elements/lib/",
     "@rhds/elements/": "/assets/packages/@rhds/elements/elements/",
+    "@rhds/icons": "/assets/packages/@rhds/icons/icons.js",
     "@rhds/icons/": "/assets/packages/@rhds/icons/",
     "@rhds/icons/icons.js": "/assets/packages/@rhds/icons/icons.js",
     "@patternfly/elements/": "/assets/packages/@patternfly/elements/",
@@ -124,6 +125,7 @@
         import '@rhds/elements/rh-accordion/rh-accordion.js';
         import '@rhds/elements/rh-badge/rh-badge.js';
         import '@rhds/elements/rh-tag/rh-tag.js';
+        import '@patternfly/elements/pf-select/pf-select.js';
       </script><script type="module">
         import '@rhds/elements/rh-chip/rh-chip.js';
       </script><script type="module">
@@ -1068,14 +1070,10 @@
 
       <!--lit-node 15--><slot name="legend" hidden></slot>
     <!--/lit-part--></template>
-          <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-chip-group</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-chip</span><span class="token punctuation">&gt;</span></span>Edge<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-chip</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-chip</span> <span class="token attr-name">checked</span><span class="token punctuation">&gt;</span></span>AI/ML<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-chip</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-chip</span><span class="token punctuation">&gt;</span></span>DevOps<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-chip</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-chip-group</span><span class="token punctuation">&gt;</span></span>
+          <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-chip</span><span class="token punctuation">&gt;</span></span>Chip<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-chip</span><span class="token punctuation">&gt;</span></span>
 
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
-  <span class="token keyword">import</span> <span class="token string">'@rhds/elements/rh-chip/rh-chip-group.js'</span><span class="token punctuation">;</span>
+  <span class="token keyword">import</span> <span class="token string">'@rhds/elements/rh-chip/rh-chip.js'</span><span class="token punctuation">;</span>
 </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span></code></pre>
           
     <span slot="action-label-copy">Copy to Clipboard</span>
@@ -1242,7 +1240,7 @@
                   <td><code>value</code></td>
                   <td><code>value</code></td>
                   <td><p>Set a custom string for the input's <code>value</code> attribute. Defaults to <code>on</code>.</p></td>
-                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span> <span class="token operator">|</span> <span class="token keyword">undefined</span></code></pre></td>
+                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span><span class="token operator">|</span><span class="token keyword">undefined</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
               </tbody>
@@ -3336,14 +3334,14 @@
                   <td><code>size</code></td>
                   <td><code>size</code></td>
                   <td><p>Decreases the font-size of the chip's label</p></td>
-                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'sm'</span> <span class="token operator">|</span> <span class="token keyword">undefined</span></code></pre></td>
+                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'sm'</span><span class="token operator">|</span><span class="token keyword">undefined</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
                 <tr>
                   <td><code>accessible-label</code></td>
                   <td><code>accessibleLabel</code></td>
                   <td><p>The accessible label for the form control / <code>rh-chip-group</code></p></td>
-                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span> <span class="token operator">|</span> <span class="token keyword">undefined</span></code></pre></td>
+                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span><span class="token operator">|</span><span class="token keyword">undefined</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
               </tbody>

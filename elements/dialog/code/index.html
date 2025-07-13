@@ -57,6 +57,7 @@
     "@rhds/tokens/": "/assets/packages/@rhds/tokens/js/",
     "@rhds/elements/lib/": "/assets/packages/@rhds/elements/lib/",
     "@rhds/elements/": "/assets/packages/@rhds/elements/elements/",
+    "@rhds/icons": "/assets/packages/@rhds/icons/icons.js",
     "@rhds/icons/": "/assets/packages/@rhds/icons/",
     "@rhds/icons/icons.js": "/assets/packages/@rhds/icons/icons.js",
     "@patternfly/elements/": "/assets/packages/@patternfly/elements/",
@@ -124,6 +125,7 @@
         import '@rhds/elements/rh-accordion/rh-accordion.js';
         import '@rhds/elements/rh-badge/rh-badge.js';
         import '@rhds/elements/rh-tag/rh-tag.js';
+        import '@patternfly/elements/pf-select/pf-select.js';
       </script><script type="module">
         import '@rhds/elements/rh-dialog/rh-dialog.js';
       </script><script type="module">
@@ -1218,14 +1220,14 @@
                   <td><code>variant</code></td>
                   <td><p>The <code>variant</code> controls the width of the dialog.
 There are three options: <code>small</code>, <code>medium</code> and <code>large</code>. The default is <code>large</code>.</p></td>
-                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'small'</span> <span class="token operator">|</span> <span class="token string">'medium'</span> <span class="token operator">|</span> <span class="token string">'large'</span> <span class="token operator">|</span> <span class="token keyword">undefined</span></code></pre></td>
+                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'small'</span><span class="token operator">|</span><span class="token string">'medium'</span><span class="token operator">|</span><span class="token string">'large'</span><span class="token operator">|</span><span class="token keyword">undefined</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
                 <tr>
                   <td><code>position</code></td>
                   <td><code>position</code></td>
                   <td><p><code>position="top"</code> aligns the dialog with the top of the page</p></td>
-                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'top'</span> <span class="token operator">|</span> <span class="token keyword">undefined</span></code></pre></td>
+                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'top'</span><span class="token operator">|</span><span class="token keyword">undefined</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
                 <tr>
@@ -1234,7 +1236,7 @@ There are three options: <code>small</code>, <code>medium</code> and <code>large
                   <td><p>Use <code>accessible-label="My custom label"</code> to specify the dialog's accessible name.
 Defaults to the name of the dialog trigger if no attribute is set and no headings exist in the modal.
 See Dialog's Accessibility page for more info.</p></td>
-                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span> <span class="token operator">|</span> <span class="token keyword">undefined</span></code></pre></td>
+                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span><span class="token operator">|</span><span class="token keyword">undefined</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
                 <tr>
@@ -1248,14 +1250,14 @@ See Dialog's Accessibility page for more info.</p></td>
                   <td><code>trigger</code></td>
                   <td><code>trigger</code></td>
                   <td><p>Optional ID of the trigger element</p></td>
-                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span> <span class="token operator">|</span> <span class="token keyword">undefined</span></code></pre></td>
+                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">string</span><span class="token operator">|</span><span class="token keyword">undefined</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
                 <tr>
                   <td><code>type</code></td>
                   <td><code>type</code></td>
                   <td><p>Use <code>type="video"</code> to embed a video player into a dialog.</p></td>
-                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'video'</span> <span class="token operator">|</span> <span class="token keyword">undefined</span></code></pre></td>
+                  <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token string">'video'</span><span class="token operator">|</span><span class="token keyword">undefined</span></code></pre></td>
                   <td class="type"><pre class="language-ts"><code class="language-ts"><span class="token builtin">unknown</span></code></pre></td>
                 </tr>
               </tbody>

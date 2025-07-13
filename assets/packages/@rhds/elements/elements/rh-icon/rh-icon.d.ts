@@ -29,7 +29,7 @@ export declare class RhIcon extends LitElement {
     private static instances;
     static resolve: IconResolverFunction;
     /** Icon set */
-    set?: IconSetName;
+    set: IconSetName;
     /** Icon name */
     icon?: IconNameFor<IconSetName>;
     /**

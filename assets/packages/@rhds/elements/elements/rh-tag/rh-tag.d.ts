@@ -37,8 +37,11 @@ export declare class RhTag extends LitElement {
     size?: 'compact';
     /** optional href for linked tag. */
     href?: string;
-    /** The color of the label. */
-    color?: 'red' | 'red-orange' | 'orange' | 'yellow' | 'green' | 'cyan' | 'teal' | 'blue' | 'purple' | 'gray';
+    /**
+     * The color of the label.
+     * Note: 'cyan' will also work, but is deprecated
+     */
+    color?: 'red' | 'red-orange' | 'orange' | 'yellow' | 'green' | 'teal' | 'blue' | 'purple' | 'gray';
     render(): import("lit-html").TemplateResult<1>;
 }
 export type TagColor = RhTag['color'];

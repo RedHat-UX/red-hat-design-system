@@ -49,7 +49,7 @@ let RhTag = class RhTag extends LitElement {
             class="${classMap({
             hasIcon,
             compact: size === 'compact',
-            teal: color === 'cyan' || color === 'teal',
+            teal: color === 'cyan' /* cyan deprecated */ || color === 'teal',
             [variant]: true,
             [color]: true
         })}">

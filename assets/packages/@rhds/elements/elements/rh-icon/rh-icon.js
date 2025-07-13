@@ -46,6 +46,8 @@ let RhIcon = RhIcon_1 = _a = class RhIcon extends LitElement {
     constructor() {
         super(...arguments);
         _RhIcon_instances.add(this);
+        /** Icon set */
+        this.set = 'standard';
         /**
          * Controls how eager the element will be to load the icon data
          * - `eager`: eagerly load the icon, blocking the main thread
@@ -62,12 +64,12 @@ let RhIcon = RhIcon_1 = _a = class RhIcon extends LitElement {
         RhIcon_1.instances.add(this);
     }
     render() {
-        const { set = 'standard' } = this;
+        const { set } = this;
         const content = __classPrivateFieldGet(this, _RhIcon_instances, "m", _RhIcon_getContent).call(this);
         return html `
       <div id="container"
            aria-hidden="${String(!!content)}"
-           class="${classMap({ [set]: set })}">${!isServer ? content
+           class="${classMap({ [set]: true })}">${!isServer ? content
             : unsafeHTML(content)}<span part="fallback" ?hidden="${content}"><slot></slot></span>
       </div>
     `;
