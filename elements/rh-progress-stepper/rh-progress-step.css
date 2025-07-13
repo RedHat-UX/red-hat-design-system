@@ -1,7 +1,7 @@
 slot[name='description'] {
   display: inline-block;
   margin: 0;
-  grid-column: var(--stepDescriptionGridColumn, 1);
+  grid-column: var(--_step-description-grid-column, 1);
   font-weight: var(--rh-font-weight-body-text-regular, 400);
 }
 
@@ -40,27 +40,27 @@ slot[name='description'] {
 }
 
 :host {
-  grid-row: var(--stepGridRow);
+  grid-row: var(--_step-grid-row);
   width: 100%;
   height: 100%;
-  padding-bottom: var(--stepCompactVPadding, var(--rh-length-2xl, 32px));
-  padding-right: var(--stepCompactHPadding, var(--rh-length-5xl, 80px));
+  padding-bottom: var(--_step-compact-vertical-padding, var(--rh-length-2xl, 32px));
+  padding-right: var(--_step-compact-horizontal-padding, var(--rh-length-5xl, 80px));
   display: grid;
   background:
-    var(--stepLineStyle,
-      linear-gradient(var(--stepLineAngle),
+    var(--_step-line-style,
+      linear-gradient(var(--_step-line-angle),
       transparent 13px,
-      var(--stepLineColor) 13px,
-      var(--stepLineColor) 15px,
+      var(--_step-line-color) 13px,
+      var(--_step-line-color) 15px,
       transparent 15px));
   place-items: start baseline;
   color:
     var(--rh-color-text-secondary,
       light-dark(var(--rh-color-text-secondary-on-light, #4d4d4d),
       var(--rh-color-text-secondary-on-dark, #c7c7c7)));
-  grid-template-columns: var(--stepTemplateColumns, 24px auto);
-  grid-template-rows: var(--stepTemplateRows, 24px auto);
-  justify-self: var(--stepJustifySelf, start);
+  grid-template-columns: var(--_step-template-columns, 24px auto);
+  grid-template-rows: var(--_step-template-rows, 24px auto);
+  justify-self: var(--_step-justify-self, start);
 
   /* Body text/md */
   font-family:
@@ -69,7 +69,7 @@ slot[name='description'] {
   font-style: normal;
   font-weight: var(--rh-font-weight-body-text-regular, 400);
   line-height: 1.5; /* 150% */
-  gap: var(--stepRowGap, 16px) var(--stepColGap, 16px);
+  gap: var(--_step-row-gap, 16px) var(--_step-column-gap, 16px);
 
   & input[type='checkbox'] {
     grid-column: 1;
@@ -77,7 +77,7 @@ slot[name='description'] {
   }
 
   & rh-icon {
-    color: var(--stepColor);
+    color: var(--_step-color);
     background-color: var(--rh-color-surface);
     grid-column: 1;
     grid-row: 1;
@@ -85,14 +85,14 @@ slot[name='description'] {
     width: var(--rh-size-icon-02, 24px);
     border: var(--rh-border-width-md) solid var(--rh-color-border-subtle);
     border-radius: 50%;
-    justify-self: var(--stepIconJustifySelf);
+    justify-self: var(--_step-icon-justify-self);
   }
 
   & strong { align-self: center; }
   & slot[name='description'] { font-size: var(--rh-font-size-body-text-xs, 0.75rem); }
 
   &:has(+ [state='inactive']) {
-    --stepLineColor: var(--rh-color-border-subtle) !important;
+    --_step-line-color: var(--rh-color-border-subtle) !important;
   }
 }
 
@@ -105,11 +105,11 @@ slot[name='description'] {
 }
 
 :host([state='active']) {
-  --stepColor: var(--rh-color-status-note);
+  --_step-color: var(--rh-color-status-note);
 }
 
 :host([state='complete']) {
-  --stepColor: var(--rh-color-status-success);
+  --_step-color: var(--rh-color-status-success);
 
   & strong {
     font-weight: var(--rh-font-weight-body-text-regular, 400);
@@ -117,33 +117,31 @@ slot[name='description'] {
 }
 
 :host([state='warn']) {
-  --stepColor: light-dark(var(--rh-color-yellow-50), var(--rh-color-yellow-30));
+  --_step-color: light-dark(var(--rh-color-yellow-50), var(--rh-color-yellow-30));
 
   & strong {
-    color: var(--stepColor);
+    color: var(--_step-color);
   }
 }
 
 :host([state='fail']) {
-  --stepColor: var(--rh-color-status-danger);
+  --_step-color: var(--rh-color-status-danger);
 
   & strong {
-    color: var(--stepColor);
+    color: var(--_step-color);
   }
 }
 
 :host(:not([state='inactive'])) {
   & :has(+ [state='inactive']) {
-    --stepLineColor: var(--rh-color-border-subtle);
+    --_step-line-color: var(--rh-color-border-subtle);
   }
 
-  --stepLineColor: var(--rh-color-text-primary);
+  --_step-line-color: var(--rh-color-text-primary);
 
   & rh-icon { border-color: var(--rh-color-text-primary); }
 
   & strong {
-    /* color: var(--rh-color-text-secondary, #151515); */
-
     /* Body text/md - Medium weight */
     font-weight: var(--rh-font-weight-body-text-medium, 500);
     text-decoration:
@@ -185,8 +183,4 @@ slot[name='description'] {
   & strong {
     padding-top: 4px;
   }
-}
-
-rh-progress-step:has(+ [state='inactive']) {
-  --stepLineColor: var(--rh-color-border-subtle);
 }

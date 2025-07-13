@@ -1,5 +1,5 @@
 :host {
-  --stepLineColor: var(--rh-color-border-subtle);
+  --_step-line-color: var(--rh-color-border-subtle);
 
   display: grid;
   row-gap: var(--rh-length-lg, 16px);
@@ -36,12 +36,8 @@
     text-underline-offset: 5px; /* 4.8px */
   }
 
-  /* & ::slotted(rh-progress-step) {
-    --stepLineColor: var(--rh-color-text-primary);
-  } */
-
   & ::slotted(rh-progress-step:last-of-type) {
-    --stepLineStyle: none;
+    --_step-line-style: none;
   }
 }
 
@@ -49,46 +45,44 @@
   & #step-list {
     grid-auto-flow: row;
 
-    --stepLineAngle: 90deg;
-    --stepTemplateColumns: calc(var(--rh-length-xl, 24px) + 4px) auto;
-    --stepTemplateRows: auto;
-    --stepJustifySelf: start;
-    --stepIconJustifySelf: center;
-    --stepDescriptionGridColumn: 2;
-    --stepCompactHPadding: 0;
-    --stepColGap: var(--rh-length-lg, 16px);
-    --stepRowGap: var(--rh-length-xs, 4px);
+    --_step-line-angle: 90deg;
+    --_step-template-columns: calc(var(--rh-length-xl, 24px) + 4px) auto;
+    --_step-template-rows: auto;
+    --_step-justify-self: start;
+    --_step-icon-justify-self: center;
+    --_step-description-grid-column: 2;
+    --_step-compact-horizontal-padding: 0;
+    --_step-column-gap: var(--rh-length-lg, 16px);
+    --_step-row-gap: var(--rh-length-xs, 4px);
   }
-
-  /* & ::slotted(rh-progress-step:last-of-type) { background: none; } */
 }
 
 :host([orientation='horizontal']) {
   & #step-list {
     grid-auto-flow: column;
-    grid-auto-columns: var(--stepperGridAutoColumn);
+    grid-auto-columns: var(--_stepper-grid-auto-column);
 
-    --stepLineAngle: -180deg;
-    --stepTemplateColumns: auto;
-    --stepTemplateRows: calc(var(--rh-length-xl, 24px) + 4px) auto 1fr;
-    --stepJustifySelf: baseline;
-    --stepDescriptionMargin: inherit;
-    --stepCompactVPadding: 0;
-    --stepColGap: var(--rh-length-lg, 16px);
-    --stepRowGap: var(--rh-length-xs, 4px);
-    --stepCompactGridRow: 2;
+    --_step-line-angle: -180deg;
+    --_step-template-columns: auto;
+    --_step-template-rows: calc(var(--rh-length-xl, 24px) + 4px) auto 1fr;
+    --_step-justify-self: baseline;
+    --_step-description-margin: inherit;
+    --_step-compact-vertical-padding: 0;
+    --_step-column-gap: var(--rh-length-lg, 16px);
+    --_step-row-gap: var(--rh-length-xs, 4px);
+    --_step-compact-grid-row: 2;
   }
 }
 
 :host([compact]) {
   grid-template-rows: auto;
 
-  --stepperGridAutoColumn: 50px;
-  --stepGridRow: var(--stepCompactGridRow);
-  --stepTemplateRows: auto;
-  --stepCompactDisplay: none;
-  --stepCompactVPadding: var(--rh-length-lg, 16px);
-  --stepCompactHPadding: var(--rh-length-lg, 16px);
+  --_stepper-grid-auto-column: 50px;
+  --_step-grid-row: var(--_step-compact-grid-row);
+  --_step-template-rows: auto;
+  --_step-compact-display: none;
+  --_step-compact-vertical-padding: var(--rh-length-lg, 16px);
+  --_step-compact-horizontal-padding: var(--rh-length-lg, 16px);
 
   & #current-step {
     /* Visually Showing */
@@ -105,40 +99,40 @@
     /* End Visually Showing */
     grid-column: 1 / -1;
     grid-row: 1;
-    color: var(--currentStepColor, #6a6e73);
-    font-weight: var(--currentStepWeight, 500);
+    color: var(--_current-step-color, #6a6e73);
+    font-weight: var(--_current-step-weight, 500);
   }
 }
 
 :host([state='inactive']) {
-  --currentStepColor: var(--rh-color-text-disabled, #6a6e73);
-  --currentStepWeight: var(--rh-font-weight-body-text-regular, 400);
+  --_current-step-color: var(--rh-color-text-disabled, #6a6e73);
+  --_current-step-weight: var(--rh-font-weight-body-text-regular, 400);
 }
 
 :host([state='active']) {
-  --currentStepColor: var(--rh-color-status-note);
-  --currentStepWeight: var(--rh-font-weight-body-text-medium, 500);
+  --_current-step-color: var(--rh-color-status-note);
+  --_current-step-weight: var(--rh-font-weight-body-text-medium, 500);
 }
 
 :host([state='complete']) {
-  --currentStepColor: var(--rh-color-status-success);
-  --currentStepWeight: var(--rh-font-weight-body-text-medium, 500);
+  --_current-step-color: var(--rh-color-status-success);
+  --_current-step-weight: var(--rh-font-weight-body-text-medium, 500);
 }
 
 :host([state='warn']) {
-  --currentStepColor: light-dark(var(--rh-color-yellow-50), var(--rh-color-yellow-30));
-  --currentStepWeight: var(--rh-font-weight-body-text-medium, 500);
+  --_current-step-color: light-dark(var(--rh-color-yellow-50), var(--rh-color-yellow-30));
+  --_current-step-weight: var(--rh-font-weight-body-text-medium, 500);
 }
 
 :host([state='fail']) {
-  --currentStepColor: var(--rh-color-status-danger);
-  --currentStepWeight: var(--rh-font-weight-body-text-medium, 500);
+  --_current-step-color: var(--rh-color-status-danger);
+  --_current-step-weight: var(--rh-font-weight-body-text-medium, 500);
 }
 
-rh-progress-step:has(+ [state='inactive']) {
-  --stepLineColor: var(--rh-color-border-subtle);
+/* rh-progress-step:has(+ [state='inactive']) {
+  --_step-line-color: var(--rh-color-border-subtle);
 }
 
 rh-progress-step:not([state='inactive']) {
-  --stepLineColor: var(--rh-color-text-primary);
-}
+  --_step-line-color: var(--rh-color-text-primary);
+} */

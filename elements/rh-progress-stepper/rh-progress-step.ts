@@ -36,7 +36,7 @@ const ICONS = new Map(Object.entries({
 @customElement('rh-progress-step')
 @themable
 export class RhProgressStep extends LitElement {
-  static styles = styles;
+  static styles = [styles];
 
   @property({ reflect: true }) state: ProgressStepState = 'inactive';
   @property({ type: String }) label = '';
@@ -66,8 +66,8 @@ export class RhProgressStep extends LitElement {
     return html`
       <slot name="icon">
       <rh-icon
-        icon="${this.#icon}"
-        set="${this.state === 'custom' ? this.customIconSet : 'ui'}"
+          icon="${this.#icon}"
+          set="${this.state === 'custom' ? this.customIconSet : 'ui'}"
       ></rh-icon>
       </slot>
       <strong>
