@@ -2,5 +2,5 @@
 "@rhds/elements": patch
 ---
 
-`<rh-navigation-primary>`: corrected dropdown toggle state managment, improved accessibility with keyboard navigation
+`<rh-navigation-primary>`: improved keyboard accessibility of the dropdown toggle
   
