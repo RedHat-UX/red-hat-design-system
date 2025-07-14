@@ -127,6 +127,7 @@ export class RhNavigationPrimaryItem extends LitElement {
     await this.updateComplete;
   }
 
+  /** @summary shows the dropdown */
   public async show() {
     this.open = true;
     this.requestUpdate();
