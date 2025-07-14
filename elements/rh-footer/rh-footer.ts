@@ -3,7 +3,6 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
-import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 export { RhFooterUniversal } from './rh-footer-universal.js';
 
@@ -75,8 +74,6 @@ export class RhFooter extends LitElement {
     }
     return url;
   }
-
-  #logger = new Logger(this);
 
   #compact = false;
 
@@ -197,9 +194,7 @@ export class RhFooter extends LitElement {
             list.previousElementSibling
             : null;
         if (!header) {
-          return this.#logger.warn(
-            'This links set doesn\'t have a valid header associated with it.'
-          );
+          return;
         } else {
           // add an ID to the header if we need it
           header.id ||= getRandomId('rh-footer');
