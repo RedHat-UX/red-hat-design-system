@@ -4,7 +4,7 @@
 
 Inline links should show a dashed underline, provided they are not in a navigation element or accompanied by visual clues that indicate interactivity. The following changes were made to adhere to our inline link styling guidelines.
 
-Removed CSS that would prevent slotted links from being underlined in:
+Updated CSS to allow slotted <a> elements to display underlines in:
 - `<rh-avatar>`
 - `<rh-table>`
 
