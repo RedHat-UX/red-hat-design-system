@@ -10,6 +10,7 @@ import {
   getTextContent,
   isElementNode,
   query,
+  removeAttribute,
   setAttribute,
   setTextContent,
   spliceChildren,

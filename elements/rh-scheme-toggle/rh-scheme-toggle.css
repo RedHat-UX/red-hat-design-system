@@ -3,31 +3,31 @@ fieldset {
   border: 0;
   display: flex;
   flex-flow: row nowrap;
-  gap: var(--rh-space-lg, 16px);
-  margin-block-end: var(--rh-space-4xl, 64px);
+  gap: var(--rh-space-lg);
+  margin-block-end: var(--rh-space-4xl);
   padding: 0;
-}
 
-legend {
-  float: inline-start;
-}
+  legend {
+    float: inline-start;
+  }
 
-#button-group {
-  --rh-icon-size: var(--rh-size-icon-01, 16px);
+  #button-group {
+    --rh-icon-size: var(--rh-size-icon-01);
 
-  display: flex;
+    display: flex;
+  }
 }
 
 label {
   align-items: center;
   background-color: initial;
-  border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+  border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
   color: var(--rh-color-text-primary);
   display: flex;
-  height: var(--rh-space-2xl, 32px);
+  height: var(--rh-space-2xl);
   justify-content: center;
   position: relative;
-  width: var(--rh-space-3xl, 48px);
+  width: var(--rh-space-3xl);
 
   &:not(:first-of-type) {
     margin-inline-start: -1px;
@@ -47,43 +47,40 @@ label {
   &:hover {
     background-color: var(--rh-color-interactive-secondary-focus);
     color:
-      light-dark
-      (var(--rh-color-text-primary-on-dark, #ffffff),
+      light-dark(var(--rh-color-text-primary-on-dark, #ffffff),
         var(--rh-color-text-primary-on-light, #151515));
-  }
-
-  rh-icon {
-    z-index: 2;
-  }
-
-  input {
-    appearance: none;
-    inset: 0;
-    margin: 0;
-    outline-offset: var(--rh-border-width-md, 2px);
-    padding: 0;
-    position: absolute;
-
-    &:focus-visible {
-      outline:
-        var(--rh-border-width-sm, 1px) solid
-        var(--rh-color-interactive-primary-focus);
-    }
   }
 
   &:has(input:checked) {
     background-color: var(--rh-color-interactive-primary-active);
     border-color: var(--rh-color-border-interactive);
     color:
-      light-dark
-      (var(--rh-color-text-primary-on-dark, #ffffff),
+      light-dark(var(--rh-color-text-primary-on-dark, #ffffff),
         var(--rh-color-text-primary-on-light, #151515));
+    z-index: 1;
 
     &:focus-within,
     &:hover {
       background-color: var(--rh-color-interactive-primary-focus);
     }
   }
+}
+
+input {
+  appearance: none;
+  inset: 0;
+  margin: 0;
+  outline-offset: 2px;
+  padding: 0;
+  position: absolute;
+
+  &:focus-visible {
+    outline: 1px solid var(--rh-color-interactive-primary-focus);
+  }
+}
+
+rh-icon {
+  z-index: 2;
 }
 
 .visually-hidden {
