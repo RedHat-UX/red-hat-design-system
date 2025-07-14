@@ -240,13 +240,19 @@ input:invalid:focus {
 }
 
 #numeric a {
-  text-decoration: none;
+  text-decoration: underline dashed var(--rh-border-width-sm, 1px);
+  text-decoration-color: light-dark(var(--rh-color-gray-50), var(--rh-color-gray-40));
+  text-underline-offset: max(5px, 0.28em);
+  transition-timing-function: ease;
+  transition-property: text-underline-offset, color, text-decoration-color;
+  transition-duration: 0.3s;
   color: var(--_numeric-a-color);
 }
 
 #numeric a:hover {
   color: var(--_numeric-a-color-hover);
-  text-decoration: underline;
+  text-decoration-color: inherit;
+  text-underline-offset: max(6px, 0.33em);
 }
 
 #numeric a:visited {
@@ -258,7 +264,8 @@ input:invalid:focus {
   color: var(--_numeric-a-color-focus);
   outline: var(--rh-border-width-md, 2px) solid transparent;
   outline-color: var(--_numeric-a-color-focus-outline);
-  text-decoration: underline;
+  text-decoration-color: inherit;
+  text-underline-offset: max(6px, 0.33em);
 }
 
 #numeric a:visited:hover {

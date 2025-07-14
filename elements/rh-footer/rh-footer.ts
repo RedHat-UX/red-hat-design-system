@@ -54,7 +54,8 @@ function isHeaderTagName(tagName: string) {
  * @cssprop [--rh-footer-accent-color=#e00]
  * @cssprop [--rh-footer-section-side-gap=16px]
  * @cssprop [--rh-footer-links-gap=8px]
- * @cssprop [--rh-footer-link-header-font-size=0.875em]
+ * @cssprop [--rh-footer-link-header-font-size=0.875rem]
+ * @csspropo [--rh-footer-link-font-size=0.875rem]
  * @cssprop [--rh-footer-nojs-min-height=750px]
  */
 @customElement('rh-footer')
