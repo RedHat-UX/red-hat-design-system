@@ -48,15 +48,15 @@ describe('<rh-scheme-toggle>', function() {
     });
     beforeEach(async () => await element.updateComplete);
 
-    describe('first tab press', function() {
+    describe('Tab', function() {
       beforeEach(press('Tab'));
 
-      it('should focus and check the device default mode radio input', async function() {
+      it('should focus and check the System radio input', async function() {
         const snapshot = await a11ySnapshot();
-        expect(snapshot).to.have.axQuery({ name: 'Device default', focused: true, checked: true });
+        expect(snapshot).to.have.axQuery({ name: 'System', focused: true, checked: true });
       });
 
-      describe('right arrow press', function() {
+      describe('Right Arrow', function() {
         beforeEach(press('ArrowRight'));
 
         it('should focus and check the light mode radio input', async function() {
@@ -65,7 +65,7 @@ describe('<rh-scheme-toggle>', function() {
         });
       });
 
-      describe('left arrow press', function() {
+      describe('LeftArrow', function() {
         beforeEach(press('ArrowRight'));
 
         it('should focus and check the dark mode radio input', async function() {
@@ -76,38 +76,58 @@ describe('<rh-scheme-toggle>', function() {
     });
 
     describe('local storage', function() {
-      beforeEach(function() {
-        localStorage.clear();
+      describe('with empty localStorage', function() {
+        beforeEach(function() {
+          localStorage.clear();
+        });
+
+        describe('with stored scheme set to `light dark`', function() {
+          beforeEach(async function() {
+            localStorage.setItem('rhdsColorScheme', 'light dark');
+          });
+
+          describe('adding basic toggle element', function() {
+            let element: RhSchemeToggle;
+            beforeEach(async function() {
+              element = await createFixture<RhSchemeToggle>(html`<rh-scheme-toggle></rh-scheme-toggle>`);
+            });
+            it('uses the stored scheme', async function() {
+              expect(element.scheme).to.equal('light dark');
+            });
+          });
+        });
+
+        describe('with stored scheme set to `light`', function() {
+          beforeEach(async function() {
+            localStorage.setItem('rhdsColorScheme', 'light');
+          });
+
+          describe('adding basic toggle element', function() {
+            let element: RhSchemeToggle;
+            beforeEach(async function() {
+              element = await createFixture<RhSchemeToggle>(html`<rh-scheme-toggle></rh-scheme-toggle>`);
+            });
+            it('uses the stored scheme', async function() {
+              expect(element.scheme).to.equal('light');
+            });
+          });
+        });
       });
 
-      it('if local storage is set to light dark, should focus, check and set the scheme to light dark', async function() {
-        localStorage.setItem('rhdsColorScheme', 'light dark');
-        // Create new element after setting localStorage so it reads the value during initialization
-        const newElement = await createFixture<RhSchemeToggle>(
-          html`<rh-scheme-toggle></rh-scheme-toggle>`
-        );
-        await newElement.updateComplete;
-        expect(newElement.scheme).to.equal('light dark');
-      });
+      describe('with stored scheme set to `dark`', function() {
+        beforeEach(async function() {
+          localStorage.setItem('rhdsColorScheme', 'dark');
+        });
 
-      it('if local storage is set to light, should focus, check and set the scheme to light', async function() {
-        localStorage.setItem('rhdsColorScheme', 'light');
-        // Create new element after setting localStorage so it reads the value during initialization
-        const newElement = await createFixture<RhSchemeToggle>(
-          html`<rh-scheme-toggle></rh-scheme-toggle>`
-        );
-        await newElement.updateComplete;
-        expect(newElement.scheme).to.equal('light');
-      });
-
-      it('if local storage is set to dark, should focus, check and set the scheme to dark', async function() {
-        localStorage.setItem('rhdsColorScheme', 'dark');
-        // Create new element after setting localStorage so it reads the value during initialization
-        const newElement = await createFixture<RhSchemeToggle>(
-          html`<rh-scheme-toggle></rh-scheme-toggle>`
-        );
-        await newElement.updateComplete;
-        expect(newElement.scheme).to.equal('dark');
+        describe('adding basic toggle element', function() {
+          let element: RhSchemeToggle;
+          beforeEach(async function() {
+            element = await createFixture<RhSchemeToggle>(html`<rh-scheme-toggle></rh-scheme-toggle>`);
+          });
+          it('uses the stored scheme', async function() {
+            expect(element.scheme).to.equal('dark');
+          });
+        });
       });
     });
   });
