@@ -121,6 +121,7 @@ export class RhNavigationPrimaryItem extends LitElement {
     this.dispatchEvent(new Event('toggle', { bubbles: true }));
   }
 
+  /** @summary hides the dropdown */
   public async hide() {
     this.open = false;
     this.requestUpdate();
