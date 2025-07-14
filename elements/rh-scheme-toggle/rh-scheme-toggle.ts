@@ -6,7 +6,6 @@ import '@rhds/elements/rh-icon/rh-icon.js';
 import { observes } from '@patternfly/pfe-core/decorators.js';
 
 import styles from './rh-scheme-toggle.css';
-// import visuallyHidden from './visually-hidden.css';
 
 declare global {
   interface Storage {
@@ -23,45 +22,64 @@ type Scheme = 'light' | 'dark' | 'light dark';
 export class RhSchemeToggle extends LitElement {
   static styles = [styles];
 
+  #isLight = false;
+  #isDark = false;
+  #isSystem = false;
+
   @property({ reflect: true }) scheme?: Scheme = globalThis.localStorage
       ?.rhdsColorScheme as Scheme;
 
-  render() {
-    const isLight = this.scheme === 'light';
-    const isDark = this.scheme === 'dark';
-    const isSystem = (this.scheme === 'light dark') || (this.scheme === undefined);
+  @property({ attribute: 'legend-text' }) legendText = 'Color scheme';
 
+  @property({ attribute: 'light-text' }) lightText = 'Light';
+
+  @property({ attribute: 'dark-text' }) darkText = 'Dark';
+
+  @property({ attribute: 'system-text' }) systemText = 'System';
+
+  protected firstUpdated(): void {
+    if (!isServer) {
+      this.#isLight = this.scheme === 'light';
+      this.#isDark = this.scheme === 'dark';
+      this.#isSystem = (this.scheme?.includes('light')
+        && this.scheme?.includes('dark'))
+        || (this.scheme === undefined);
+      this.requestUpdate();
+    }
+  }
+
+  render() {
     return html`
       <fieldset @change="${this.#onChange}">
-        <legend>Color scheme:</legend>
+        <legend>${this.legendText}:</legend>
         <div id="button-group">
-          <label title="Light">
-            <span class="visually-hidden">Light</span>
+          <label title="${this.lightText}">
+            <span class="visually-hidden">${this.lightText}</span>
             <input
               type="radio"
               name="scheme"
               value="light"
-              ?checked="${isLight}"
+              ?checked="${this.#isLight}"
             />
             <rh-icon set="ui" icon="light-mode"></rh-icon>
           </label>
-          <label title="Dark">
-            <span class="visually-hidden">Dark</span>
+          <label title="${this.darkText}">
+            <span class="visually-hidden">${this.darkText}</span>
             <input
               type="radio"
               name="scheme"
               value="dark"
-              ?checked="${isDark}"
+              ?checked="${this.#isDark}"
             />
             <rh-icon set="ui" icon="dark-mode"></rh-icon>
           </label>
-          <label title="Device default">
-            <span class="visually-hidden">Device default</span>
+          <label title="${this.systemText}">
+            <span class="visually-hidden">${this.systemText}</span>
             <input
               type="radio"
               name="scheme"
               value="light dark"
-              ?checked="${isSystem}"
+              ?checked="${this.#isSystem}"
             />
             <rh-icon set="ui" icon="auto-light-dark-mode"></rh-icon>
           </label>
@@ -78,10 +96,12 @@ export class RhSchemeToggle extends LitElement {
 
   @observes('scheme')
   private schemeChanged() {
-    if (this.scheme) {
-      document.body.style.setProperty('color-scheme', this.scheme);
-      if (!isServer) {
-        localStorage.rhdsColorScheme = this.scheme;
+    if (!isServer) {
+      if (this.scheme) {
+        document.body.style.setProperty('color-scheme', this.scheme);
+        if (!isServer) {
+          localStorage.rhdsColorScheme = this.scheme;
+        }
       }
     }
   }

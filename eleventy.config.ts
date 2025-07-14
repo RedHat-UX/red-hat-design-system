@@ -223,6 +223,7 @@ export default async function(eleventyConfig: UserConfig) {
       'elements/rh-navigation-primary/rh-navigation-primary.ts',
       'elements/rh-navigation-secondary/rh-navigation-secondary.ts',
       'elements/rh-pagination/rh-pagination.ts',
+      'elements/rh-scheme-toggle/rh-scheme-toggle.ts',
       'elements/rh-site-status/rh-site-status.ts',
       'elements/rh-skip-link/rh-skip-link.ts',
       'elements/rh-spinner/rh-spinner.ts',
