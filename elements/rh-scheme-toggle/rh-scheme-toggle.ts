@@ -16,7 +16,12 @@ declare global {
 type Scheme = 'light' | 'dark' | 'light dark';
 
 /**
- * Scheme Toggle
+ * A switch toggles the state of the color scheme (between light, dark and system default).
+ * @summary  A switch toggles the state of the color scheme (between light, dark and system default).
+ * @slot legend - The legend text for the toggle.
+ * @slot light-text - The text for the light mode.
+ * @slot dark-text - The text for the dark mode.
+ * @slot system-text - The text for the system mode.
  */
 @customElement('rh-scheme-toggle')
 export class RhSchemeToggle extends LitElement {
@@ -38,6 +43,10 @@ export class RhSchemeToggle extends LitElement {
   @property({ attribute: 'system-text' }) systemText = 'System';
 
   protected firstUpdated(): void {
+    this.schemeCheck();
+  }
+
+  protected schemeCheck() {
     if (!isServer) {
       this.#isLight = this.scheme === 'light';
       this.#isDark = this.scheme === 'dark';
@@ -92,6 +101,7 @@ export class RhSchemeToggle extends LitElement {
     if (e.target instanceof HTMLInputElement) {
       this.scheme = e.target.value as Scheme;
     }
+    this.schemeCheck();
   }
 
   @observes('scheme')
