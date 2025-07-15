@@ -22,7 +22,6 @@ label {
   align-items: center;
   background-color: initial;
   border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
-  color: var(--rh-color-text-primary);
   display: flex;
   height: var(--rh-space-2xl, 32px);
   justify-content: center;
