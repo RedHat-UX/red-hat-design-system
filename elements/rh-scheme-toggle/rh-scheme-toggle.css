@@ -3,8 +3,8 @@ fieldset {
   border: 0;
   display: flex;
   flex-flow: row nowrap;
-  gap: var(--rh-space-lg);
-  margin-block-end: var(--rh-space-4xl);
+  gap: var(--rh-space-lg, 16px);
+  margin-block-end: var(--rh-space-4xl, 64px);
   padding: 0;
 
   legend {
@@ -12,7 +12,7 @@ fieldset {
   }
 
   #button-group {
-    --rh-icon-size: var(--rh-size-icon-01);
+    --rh-icon-size: var(--rh-size-icon-01, 16px);
 
     display: flex;
   }
@@ -21,26 +21,26 @@ fieldset {
 label {
   align-items: center;
   background-color: initial;
-  border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
+  border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
   color: var(--rh-color-text-primary);
   display: flex;
-  height: var(--rh-space-2xl);
+  height: var(--rh-space-2xl, 32px);
   justify-content: center;
   position: relative;
-  width: var(--rh-space-3xl);
+  width: var(--rh-space-3xl, 48px);
 
   &:not(:first-of-type) {
     margin-inline-start: -1px;
   }
 
   &:first-of-type {
-    border-end-start-radius: var(--rh-border-radius-default);
-    border-start-start-radius: var(--rh-border-radius-default);
+    border-end-start-radius: var(--rh-border-radius-default, 3px);
+    border-start-start-radius: var(--rh-border-radius-default, 3px);
   }
 
   &:last-of-type {
-    border-end-end-radius: var(--rh-border-radius-default);
-    border-start-end-radius: var(--rh-border-radius-default);
+    border-end-end-radius: var(--rh-border-radius-default, 3px);
+    border-start-end-radius: var(--rh-border-radius-default, 3px);
   }
 
   &:focus-within,
@@ -75,7 +75,7 @@ input {
   position: absolute;
 
   &:focus-visible {
-    outline: 1px solid var(--rh-color-interactive-primary-focus);
+    outline: var(--rh-border-width-sm, 1px) solid var(--rh-color-interactive-primary-focus);
   }
 }
 
