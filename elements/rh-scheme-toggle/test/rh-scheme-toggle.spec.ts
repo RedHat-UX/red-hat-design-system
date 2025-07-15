@@ -65,7 +65,7 @@ describe('<rh-scheme-toggle>', function() {
         });
       });
 
-      describe('LeftArrow', function() {
+      describe('Right Arrow again ', function() {
         beforeEach(press('ArrowRight'));
 
         it('should focus and check the dark mode radio input', async function() {
