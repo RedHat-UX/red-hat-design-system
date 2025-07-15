@@ -107,10 +107,10 @@ won't make any additional calls as long as they use the same bare module specifi
 If you'd like to continue to use the bundles available in v1 of our CDN, they are still available on our new server at the following URL:
 
 ```html rhcodeblock
-https://www.redhatstatic.com/dssf-001/v1/
+https://www.redhatstatic.com/dssf-001/v1-alpha/
 ```
 
-To migrate, change <code>/dx/v1-alpha/</code> to <code>/dssf-001/v1/</code> in your current URLs.
+To migrate, change <code>/dx/v1-alpha/</code> to <code>/dssf-001/v1-alpha/</code> in your current URLs.
 
 ## NPM
 
