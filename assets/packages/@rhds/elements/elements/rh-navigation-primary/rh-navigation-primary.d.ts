@@ -36,6 +36,7 @@ export declare class RhNavigationPrimary extends LitElement {
     private _overlayOpen;
     private _hamburgerOpen;
     private _hamburger;
+    private _hamburgerSummary;
     /**
      * Sets the mobile toggle (hamburger) text, used for translations, defaults to 'Menu'
      */

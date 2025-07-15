@@ -1,5 +1,4 @@
-var _RhNavigationPrimary_instances, _a, _RhNavigationPrimary_internals, _RhNavigationPrimary_openPrimaryDropdowns, _RhNavigationPrimary_openSecondaryDropdowns, _RhNavigationPrimary_ro, _RhNavigationPrimary_hydrated, _RhNavigationPrimary_slots, _RhNavigationPrimary_upgradeAccessibility, _RhNavigationPrimary_openOverlay, _RhNavigationPrimary_closeOverlay, _RhNavigationPrimary_onOverlayClick, _RhNavigationPrimary_primaryDropdowns, _RhNavigationPrimary_secondaryDropdowns, _RhNavigationPrimary_onDropdownToggle, _RhNavigationPrimary_onKeydown, _RhNavigationPrimary_onKeyup, _RhNavigationPrimary_onFocusout, _RhNavigationPrimary_onTabKeydown, _RhNavigationPrimary_onTabKeyup, _RhNavigationPrimary_closePrimaryDropdowns, _RhNavigationPrimary_closeSecondaryDropdowns, _RhNavigationPrimary_openHamburger, _RhNavigationPrimary_closeHamburger, _RhNavigationPrimary_hamburgerToggle;
-var RhNavigationPrimary_1;
+var _RhNavigationPrimary_instances, _RhNavigationPrimary_internals, _RhNavigationPrimary_openPrimaryDropdowns, _RhNavigationPrimary_openSecondaryDropdowns, _RhNavigationPrimary_ro, _RhNavigationPrimary_hydrated, _RhNavigationPrimary_slots, _RhNavigationPrimary_upgradeAccessibility, _RhNavigationPrimary_openOverlay, _RhNavigationPrimary_closeOverlay, _RhNavigationPrimary_onOverlayClick, _RhNavigationPrimary_primaryItems, _RhNavigationPrimary_openDropdownItems, _RhNavigationPrimary_onDropdownToggle, _RhNavigationPrimary_hamburgerContains, _RhNavigationPrimary_onHamburgerSummaryBlur, _RhNavigationPrimary_onHamburgerFocusOut, _RhNavigationPrimary_onFocusout, _RhNavigationPrimary_onKeydown, _RhNavigationPrimary_onKeyup, _RhNavigationPrimary_onTabUp, _RhNavigationPrimary_closePrimaryDropdowns, _RhNavigationPrimary_closeSecondaryDropdowns, _RhNavigationPrimary_openHamburger, _RhNavigationPrimary_closeHamburger, _RhNavigationPrimary_hamburgerToggle;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
@@ -39,7 +38,7 @@ const styles = css `*,:after,:before{box-sizing:border-box}:host{--_gradient:lin
  * @cssprop       [--rh-navigation-primary-z-index, 102]
  *                The initial z-index for the primary navigation element, default is 102.
  */
-let RhNavigationPrimary = RhNavigationPrimary_1 = _a = class RhNavigationPrimary extends LitElement {
+let RhNavigationPrimary = class RhNavigationPrimary extends LitElement {
     static focusableChildElements(parent) {
         return parent.querySelectorAll(`a,
                                     button:not([disabled]),
@@ -135,15 +134,16 @@ let RhNavigationPrimary = RhNavigationPrimary_1 = _a = class RhNavigationPrimary
               </a>
             </slot>
           </div>
-          <details id="hamburger" ?open="${this._hamburgerOpen}" @toggle="${__classPrivateFieldGet(this, _RhNavigationPrimary_instances, "m", _RhNavigationPrimary_hamburgerToggle)}">
-            <summary>
+          <details id="hamburger" ?open="${this._hamburgerOpen}" @toggle="${__classPrivateFieldGet(this, _RhNavigationPrimary_instances, "m", _RhNavigationPrimary_hamburgerToggle)}" @focusout="${__classPrivateFieldGet(this, _RhNavigationPrimary_instances, "m", _RhNavigationPrimary_onHamburgerFocusOut)}">
+            <summary @blur="${__classPrivateFieldGet(this, _RhNavigationPrimary_instances, "m", _RhNavigationPrimary_onHamburgerSummaryBlur)}">
               <rh-icon icon="menu-bars" set="ui"></rh-icon>
               <div id="summary">${this.mobileToggleLabel}</div>
               <rh-icon icon="caret-down" set="microns"></rh-icon>
             </summary>
-            <div id="details-content" role="list">
+            <div id="details-content" role="list" >
               <slot></slot>
             </div>
+
           </details>
           <div id="secondary">
             <div id="event" role="list"><slot name="event"></slot></div>
@@ -211,11 +211,11 @@ _RhNavigationPrimary_onOverlayClick = function _RhNavigationPrimary_onOverlayCli
     }
     __classPrivateFieldGet(this, _RhNavigationPrimary_instances, "m", _RhNavigationPrimary_closeOverlay).call(this);
 };
-_RhNavigationPrimary_primaryDropdowns = function _RhNavigationPrimary_primaryDropdowns() {
-    return Array.from(this.querySelectorAll('rh-navigation-primary-item[variant="dropdown"]:not([slot="dropdowns"])'));
+_RhNavigationPrimary_primaryItems = function _RhNavigationPrimary_primaryItems() {
+    return Array.from(this.querySelectorAll('rh-navigation-primary-item:not([slot])'));
 };
-_RhNavigationPrimary_secondaryDropdowns = function _RhNavigationPrimary_secondaryDropdowns() {
-    return Array.from(this.querySelectorAll('rh-navigation-primary-item[variant="dropdown"][slot="dropdowns"]'));
+_RhNavigationPrimary_openDropdownItems = function _RhNavigationPrimary_openDropdownItems() {
+    return Array.from(this.querySelectorAll('rh-navigation-primary-item[variant="dropdown"][open]'));
 };
 _RhNavigationPrimary_onDropdownToggle = async function _RhNavigationPrimary_onDropdownToggle(event) {
     const item = event.target;
@@ -253,6 +253,43 @@ _RhNavigationPrimary_onDropdownToggle = async function _RhNavigationPrimary_onDr
         }
     }
 };
+_RhNavigationPrimary_hamburgerContains = function _RhNavigationPrimary_hamburgerContains(item) {
+    const primaryItems = __classPrivateFieldGet(this, _RhNavigationPrimary_instances, "m", _RhNavigationPrimary_primaryItems).call(this);
+    return primaryItems.some(pi => pi.contains(item));
+};
+_RhNavigationPrimary_onHamburgerSummaryBlur = function _RhNavigationPrimary_onHamburgerSummaryBlur(event) {
+    if (event.relatedTarget) {
+        if (__classPrivateFieldGet(this, _RhNavigationPrimary_instances, "m", _RhNavigationPrimary_hamburgerContains).call(this, event.relatedTarget)) {
+            return;
+        }
+        if (this.compact) {
+            __classPrivateFieldGet(this, _RhNavigationPrimary_instances, "m", _RhNavigationPrimary_closeHamburger).call(this);
+        }
+    }
+};
+_RhNavigationPrimary_onHamburgerFocusOut = function _RhNavigationPrimary_onHamburgerFocusOut(event) {
+    if (event.relatedTarget) {
+        if (event.relatedTarget === this._hamburgerSummary) {
+            return;
+        }
+        if (__classPrivateFieldGet(this, _RhNavigationPrimary_instances, "m", _RhNavigationPrimary_hamburgerContains).call(this, event.relatedTarget)) {
+            return;
+        }
+        if (this.compact) {
+            __classPrivateFieldGet(this, _RhNavigationPrimary_instances, "m", _RhNavigationPrimary_closeHamburger).call(this);
+        }
+    }
+};
+_RhNavigationPrimary_onFocusout = async function _RhNavigationPrimary_onFocusout(event) {
+    const target = event.relatedTarget;
+    if (target?.closest('rh-navigation-primary') === this || target === null) {
+        // if the focus is still inside the rh-navigation-secondary exit
+        return;
+    }
+    else {
+        this.close();
+    }
+};
 _RhNavigationPrimary_onKeydown = function _RhNavigationPrimary_onKeydown(event) {
     switch (event.key) {
         case 'Escape': {
@@ -272,88 +309,24 @@ _RhNavigationPrimary_onKeydown = function _RhNavigationPrimary_onKeydown(event) 
             }
             break;
         }
-        case 'Tab':
-            __classPrivateFieldGet(this, _RhNavigationPrimary_instances, "m", _RhNavigationPrimary_onTabKeydown).call(this, event);
-            break;
         default:
             break;
     }
 };
 _RhNavigationPrimary_onKeyup = function _RhNavigationPrimary_onKeyup(event) {
     switch (event.key) {
-        case 'Tab':
-            __classPrivateFieldGet(this, _RhNavigationPrimary_instances, "m", _RhNavigationPrimary_onTabKeyup).call(this, event);
+        case 'Tab': {
+            __classPrivateFieldGet(this, _RhNavigationPrimary_instances, "m", _RhNavigationPrimary_onTabUp).call(this, event);
             break;
-        default:
-            break;
+        }
     }
 };
-_RhNavigationPrimary_onFocusout = async function _RhNavigationPrimary_onFocusout(event) {
-    const target = event.relatedTarget;
-    if (target?.closest('rh-navigation-primary') === this || target === null) {
-        // if the focus is still inside the rh-navigation-secondary exit
-        return;
-    }
-    else {
-        this.close();
-    }
-};
-_RhNavigationPrimary_onTabKeydown = function _RhNavigationPrimary_onTabKeydown(event) {
-    // target is the element we are leaving with tab press
+_RhNavigationPrimary_onTabUp = function _RhNavigationPrimary_onTabUp(event) {
+    // target is the element we are entering with tab up press
     const target = event.target;
-    // get target parent dropdown
-    const primaryDropdowns = __classPrivateFieldGet(this, _RhNavigationPrimary_instances, "m", _RhNavigationPrimary_primaryDropdowns).call(this);
-    const secondaryDropdowns = __classPrivateFieldGet(this, _RhNavigationPrimary_instances, "m", _RhNavigationPrimary_secondaryDropdowns).call(this);
-    // target can be in one of the two dropdown collections, but only 1.
-    const dropdownContainsTarget = primaryDropdowns.find(dropdown => dropdown.contains(target))
-        ?? secondaryDropdowns.find(dropdown => dropdown.contains(target));
-    if (dropdownContainsTarget) {
-        const focusableChildElements = Array.from(RhNavigationPrimary_1.focusableChildElements(dropdownContainsTarget));
-        if (focusableChildElements.length > 0) {
-            const { 0: firstChild, [focusableChildElements.length - 1]: lastChild, } = focusableChildElements;
-            if (event.shiftKey) {
-                if (event.shiftKey && firstChild === target) {
-                    return;
-                }
-                // if target is self, close self
-                if (event.shiftKey && target === dropdownContainsTarget) {
-                    dropdownContainsTarget.hide();
-                    return;
-                }
-            }
-            else {
-                if (!firstChild) {
-                    return;
-                }
-                if (!lastChild) {
-                    return;
-                }
-                else {
-                    if (lastChild === target) {
-                        dropdownContainsTarget.hide();
-                        return;
-                    }
-                }
-            }
-        }
-        else {
-            __classPrivateFieldGet(this, _RhNavigationPrimary_instances, "m", _RhNavigationPrimary_closePrimaryDropdowns).call(this);
-            __classPrivateFieldGet(this, _RhNavigationPrimary_instances, "m", _RhNavigationPrimary_closeSecondaryDropdowns).call(this);
-        }
-    }
-};
-_RhNavigationPrimary_onTabKeyup = function _RhNavigationPrimary_onTabKeyup(event) {
-    if (this.compact && this._hamburgerOpen) {
-        const secondaryDropdowns = __classPrivateFieldGet(this, _RhNavigationPrimary_instances, "m", _RhNavigationPrimary_secondaryDropdowns).call(this);
-        const target = event.target;
-        if (event.shiftKey && target === this) {
-            __classPrivateFieldGet(this, _RhNavigationPrimary_instances, "m", _RhNavigationPrimary_closeHamburger).call(this);
-        }
-        else {
-            if (secondaryDropdowns.some(dropdown => dropdown.contains(target))) {
-                __classPrivateFieldGet(this, _RhNavigationPrimary_instances, "m", _RhNavigationPrimary_closeHamburger).call(this);
-            }
-        }
+    if (!__classPrivateFieldGet(this, _RhNavigationPrimary_instances, "m", _RhNavigationPrimary_openDropdownItems).call(this).some(item => item.contains(target))) {
+        __classPrivateFieldGet(this, _RhNavigationPrimary_instances, "m", _RhNavigationPrimary_closePrimaryDropdowns).call(this);
+        __classPrivateFieldGet(this, _RhNavigationPrimary_instances, "m", _RhNavigationPrimary_closeSecondaryDropdowns).call(this);
     }
 };
 _RhNavigationPrimary_closePrimaryDropdowns = function _RhNavigationPrimary_closePrimaryDropdowns(except) {
@@ -387,6 +360,7 @@ _RhNavigationPrimary_closeHamburger = async function _RhNavigationPrimary_closeH
 _RhNavigationPrimary_hamburgerToggle = function _RhNavigationPrimary_hamburgerToggle(event) {
     if (event instanceof ToggleEvent) {
         if (event.newState === 'open') {
+            __classPrivateFieldGet(this, _RhNavigationPrimary_instances, "m", _RhNavigationPrimary_openHamburger).call(this);
             // if we are compact mode and any secondary link dropdowns are open, close them
             if (this.compact && __classPrivateFieldGet(this, _RhNavigationPrimary_openSecondaryDropdowns, "f").size > 0) {
                 __classPrivateFieldGet(this, _RhNavigationPrimary_instances, "m", _RhNavigationPrimary_closeSecondaryDropdowns).call(this);
@@ -396,6 +370,7 @@ _RhNavigationPrimary_hamburgerToggle = function _RhNavigationPrimary_hamburgerTo
             }
         }
         else {
+            __classPrivateFieldGet(this, _RhNavigationPrimary_instances, "m", _RhNavigationPrimary_closeHamburger).call(this);
             if (__classPrivateFieldGet(this, _RhNavigationPrimary_openPrimaryDropdowns, "f").size > 0) {
                 __classPrivateFieldGet(this, _RhNavigationPrimary_instances, "m", _RhNavigationPrimary_closePrimaryDropdowns).call(this);
             }
@@ -420,6 +395,9 @@ __decorate([
     query('#hamburger')
 ], RhNavigationPrimary.prototype, "_hamburger", void 0);
 __decorate([
+    query('summary')
+], RhNavigationPrimary.prototype, "_hamburgerSummary", void 0);
+__decorate([
     property({ attribute: 'mobile-toggle-label' })
 ], RhNavigationPrimary.prototype, "mobileToggleLabel", void 0);
 __decorate([
@@ -431,7 +409,7 @@ __decorate([
 __decorate([
     observes('compact')
 ], RhNavigationPrimary.prototype, "compactChanged", null);
-RhNavigationPrimary = RhNavigationPrimary_1 = __decorate([
+RhNavigationPrimary = __decorate([
     customElement('rh-navigation-primary'),
     colorPalettes,
     themable

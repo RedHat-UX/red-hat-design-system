@@ -66,7 +66,7 @@ let RhNavigationPrimaryItem = class RhNavigationPrimaryItem extends LitElement {
             hamburger: hamburger,
             dehydrated: !__classPrivateFieldGet(this, _RhNavigationPrimaryItem_hydrated, "f"),
         })}">${this.variant === 'dropdown' ? html `
-        <details @toggle="${__classPrivateFieldGet(this, _RhNavigationPrimaryItem_instances, "m", _RhNavigationPrimaryItem_detailsToggle)}">
+        <details @toggle="${__classPrivateFieldGet(this, _RhNavigationPrimaryItem_instances, "m", _RhNavigationPrimaryItem_detailsToggle)}" ?open="${this.open}">
           <summary>${hamburger ? '' : html `
             <slot name="icon">${!this.icon ? '' : html `
               <rh-icon icon="${ifDefined(this.icon)}" set="${ifDefined(this.iconSet)}"></rh-icon>`}
@@ -82,11 +82,17 @@ let RhNavigationPrimaryItem = class RhNavigationPrimaryItem extends LitElement {
       </div>
     `;
     }
-    hide() {
-        this._details.open = false;
+    /** @summary hides the dropdown */
+    async hide() {
+        this.open = false;
+        this.requestUpdate();
+        await this.updateComplete;
     }
-    show() {
-        this._details.open = true;
+    /** @summary shows the dropdown */
+    async show() {
+        this.open = true;
+        this.requestUpdate();
+        await this.updateComplete;
     }
 };
 _RhNavigationPrimaryItem_highlight = new WeakMap();
@@ -101,6 +107,13 @@ RhNavigationPrimaryItem.styles = [styles];
 __decorate([
     query('details')
 ], RhNavigationPrimaryItem.prototype, "_details", void 0);
+__decorate([
+    query('summary')
+], RhNavigationPrimaryItem.prototype, "_summary", void 0);
+__decorate([
+    consume({ context, subscribe: true }),
+    state()
+], RhNavigationPrimaryItem.prototype, "compact", void 0);
 __decorate([
     property({ type: Boolean, reflect: true })
 ], RhNavigationPrimaryItem.prototype, "open", void 0);
@@ -119,10 +132,6 @@ __decorate([
 __decorate([
     property({ attribute: 'icon-set' })
 ], RhNavigationPrimaryItem.prototype, "iconSet", void 0);
-__decorate([
-    consume({ context, subscribe: true }),
-    state()
-], RhNavigationPrimaryItem.prototype, "compact", void 0);
 RhNavigationPrimaryItem = __decorate([
     themable,
     customElement('rh-navigation-primary-item')

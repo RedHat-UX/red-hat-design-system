@@ -6,6 +6,8 @@ export declare class RhNavigationPrimaryItem extends LitElement {
     #private;
     static readonly styles: CSSStyleSheet[];
     private _details;
+    private _summary;
+    private compact?;
     open: boolean;
     summary?: string;
     variant?: 'link' | 'dropdown';
@@ -18,11 +20,12 @@ export declare class RhNavigationPrimaryItem extends LitElement {
     icon?: IconNameFor<IconSetName>;
     /** Icon set for the `icon` property - 'ui' by default */
     iconSet?: IconSetName;
-    private compact?;
     protected firstUpdated(): void;
     render(): import("lit-html").TemplateResult<1>;
-    hide(): void;
-    show(): void;
+    /** @summary hides the dropdown */
+    hide(): Promise<void>;
+    /** @summary shows the dropdown */
+    show(): Promise<void>;
 }
 declare global {
     interface HTMLElementTagNameMap {
