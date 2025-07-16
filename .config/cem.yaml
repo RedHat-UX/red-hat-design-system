@@ -1,4 +1,4 @@
-sourceControlRootUrl: https://github.com/redhat-ux/red-hat-design-system/tree/main
+sourceControlRootUrl: https://github.com/redhat-ux/red-hat-design-system/tree/main/
 generate:
   files:
     - elements/*/rh-*.ts
@@ -10,4 +10,4 @@ generate:
   demoDiscovery:
     fileGlob: elements/*/demo/*.html
     urlPattern: elements/(?P<tag>[\w-]+)/demo/(?P<demo>[\w-]+).html
-    urlTemplate: https://ux.redhat.com/elements/{tag}/{demo}/
+    urlTemplate: https://ux.redhat.com/elements/{tag}/demo/{demo}/
