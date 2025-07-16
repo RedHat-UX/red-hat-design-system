@@ -16,7 +16,11 @@ import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller
 
 /**
  * A subnavigation allows users to navigate between a small number of page links.
+ *
  * @summary Organizes content into sections using tabbed pages
+ *
+ * @alias Navigation (primary)
+ *
  * @slot - Navigation links, expects collection of `<a>` elements
  * @csspart container - container, `<div>` element
  * @csspart links     - `<slot>` element
