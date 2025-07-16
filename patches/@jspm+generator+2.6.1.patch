@@ -29,7 +29,7 @@ index 4826875..13a5940 100644
 +            for (const specOrRegexp of this.opts.ignore) {
 +                if ((specOrRegexp instanceof RegExp && specOrRegexp.test(specifier))
 +                    || typeof specOrRegexp === 'string' && specifier === specOrRegexp) {
-+                    retrurn;
++                    return;
 +                }
 +            }
 +        }
