@@ -484,14 +484,7 @@ export class RhAudioPlayer extends LitElement {
                     class="toolbar-button"
                     ?disabled=${rewinddisabled}
                     @click=${() => this.rewind()}>
-              <svg xmlns="http://www.w3.org/2000/svg"
-                   viewBox="0 0 32 32"
-                   class="scrubber"
-                   role="presentation">
-                <path d="M10.4,19.5h1.8v-5l-1.8,0.8v-1l2.2-0.9h0.7v6.2h1.9v1h-4.8V19.5z"/>
-                <path d="M16.4,19.6l0.7-0.8c0.6,0.5,1.2,0.8,1.9,0.8c0.9,0,1.5-0.6,1.5-1.4c0-0.8-0.6-1.3-1.5-1.3 c-0.5,0-0.9,0.1-1.4,0.4L16.8,17l0.2-3.7h4.3v1h-3.3l-0.1,2c0.5-0.2,1-0.3,1.5-0.3c1.4,0,2.4,0.9,2.4,2.1c0,1.4-1.1,2.4-2.7,2.4 C18,20.5,17.1,20.2,16.4,19.6z"/>
-                <path d="M4,6.6L9.5,2v3.7h7.4c6.1,0,11.1,5,11.1,11.1c0,6.1-5,11.1-11.1,11.1H9.5V26h1.8h5.5 c5.1,0,9.2-4.1,9.2-9.2c0-5.1-4.1-9.2-9.2-9.2h-5.5H9.5v3.7L4,6.6z"/>
-              </svg>
+              <rh-icon set="ui" icon="undo" class="scrubber"></rh-icon>
             </button>
             <span slot="content">${this.#translation.get('rewind')}</span>
           </rh-tooltip>
@@ -514,14 +507,7 @@ export class RhAudioPlayer extends LitElement {
                     class="toolbar-button"
                     ?disabled=${forwarddisabled}
                     @click=${() => this.forward()}>
-              <svg xmlns="http://www.w3.org/2000/svg"
-                   viewBox="0 0 32 32"
-                   class="scrubber"
-                   role="presentation">
-                <path d="M10.4,19.5h1.8v-5l-1.8,0.8v-1l2.2-0.9h0.7v6.2h1.9v1h-4.8V19.5z"/>
-                <path d="M16.4,19.6l0.7-0.8c0.6,0.5,1.2,0.8,1.9,0.8c0.9,0,1.5-0.6,1.5-1.4c0-0.8-0.6-1.3-1.5-1.3 c-0.5,0-0.9,0.1-1.4,0.4L16.8,17l0.2-3.7h4.3v1h-3.3l-0.1,2c0.5-0.2,1-0.3,1.5-0.3c1.4,0,2.4,0.9,2.4,2.1c0,1.4-1.1,2.4-2.7,2.4 C18,20.5,17.1,20.2,16.4,19.6z"/>
-                <path d="M28,6.6L22.4,2v3.7h-7.4C9,5.7,4,10.6,4,16.7c0,6.1,5,11.1,11.1,11.1h7.4V26h-1.8h-5.5c-5.1,0-9.2-4.1-9.2-9.2 c0-5.1,4.1-9.2,9.2-9.2h5.5h1.8v3.7L28,6.6z"/>
-              </svg>
+              <rh-icon set="ui" icon="redo" class="scrubber"></rh-icon>
             </button>
             <span slot="content">${this.#translation.get('advance')}</span>
           </rh-tooltip>`}${!this.#hasMenu ? '' : html`
