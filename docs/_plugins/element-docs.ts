@@ -108,7 +108,7 @@ function isHidden(tagName: string) {
 export default function(eleventyConfig: UserConfig): void {
   eleventyConfig.on('eleventy.before', async function() {
     performance.mark('analyze-start');
-    await $`node node_modules/.bin/cem analyze`;
+    await $`npx cem generate`;
     performance.mark('analyze-end');
     const TOTAL = performance.measure('analyze-total', 'analyze-start', 'analyze-end');
     // eslint-disable-next-line no-console
