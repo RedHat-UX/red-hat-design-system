@@ -371,8 +371,20 @@ export default [
     },
   },
   {
-    tagName: 'rh-skip-link',
-    name: 'Skip link',
+    tagName: 'rh-scheme-toggle',
+    name: 'Scheme toggle',
+    type: 'element',
+    overallStatus: 'ready',
+    libraries: {
+      figma: 'planned',
+      rhds: 'ready',
+      shared: 'planned',
+      docs: 'planned',
+    },
+  },
+  {
+    tagName: 'rh-site-status',
+    name: 'Site status',
     type: 'element',
     overallStatus: 'ready',
     libraries: {
@@ -383,8 +395,8 @@ export default [
     },
   },
   {
-    tagName: 'rh-site-status',
-    name: 'Site status',
+    tagName: 'rh-skip-link',
+    name: 'Skip link',
     type: 'element',
     overallStatus: 'ready',
     libraries: {
