@@ -9,5 +9,5 @@ generate:
     prefix: --rh
   demoDiscovery:
     fileGlob: elements/*/demo/*.html
-    urlPattern: elements/(?P<tag>[\\w-]+)/demo/(?P<demo>[\\w-]+).html
+    urlPattern: elements/(?P<tag>[\w-]+)/demo/(?P<demo>[\w-]+).html
     urlTemplate: https://ux.redhat.com/elements/{tag}/{demo}/
