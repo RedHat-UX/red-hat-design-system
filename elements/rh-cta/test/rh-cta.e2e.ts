@@ -12,11 +12,11 @@ test.describe(tagName, () => {
     async function elementSuite(selector: string, variant: string) {
       const element = await componentPage.page.$(selector);
       const locator = page.locator(selector);
-      test.expect(await element?.screenshot()).toMatchSnapshot({ name: `${variant} 0.png` });
+      test.expect(await element.screenshot()).toMatchSnapshot({ name: `${variant} 0.png` });
 
       // hover
-      await element?.hover();
-      await element?.evaluate(e =>
+      await element.hover();
+      await element.evaluate(e =>
         Promise.all(e.getAnimations({ subtree: true }).map(animation => animation.finished))
       );
       await componentPage.updateComplete(selector);
@@ -29,7 +29,7 @@ test.describe(tagName, () => {
       await page.mouse.click(0, 0);
       // active
       const defaultBounds = { x: 0, width: 0, y: 0, height: 0 };
-      const { x, width, y, height } = await element?.boundingBox() || defaultBounds;
+      const { x, width, y, height } = await element.boundingBox() || defaultBounds;
       await page.mouse.move(x + width / 2, y + height / 2);
       await page.mouse.down();
       await componentPage.updateComplete(selector);
