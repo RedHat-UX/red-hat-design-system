@@ -33,6 +33,7 @@ export type NavigationPrimaryPalette = Extract<ColorPalette, (
  * @summary       Primary navigation
  *
  * @alias Navigation (primary)
+ *
  * @slot          - Use this slot for `<rh-primary-navigation-item>` hamburger menu links and dropdowns
  * @slot          logo -
  *                Use this slot to override the link and logo image for translations and sub sites.

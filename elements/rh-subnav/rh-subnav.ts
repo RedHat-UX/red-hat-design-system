@@ -19,7 +19,7 @@ import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller
  *
  * @summary Organizes content into sections using tabbed pages
  *
- * @alias Navigation (primary)
+ * @alias subnavigation
  *
  * @slot - Navigation links, expects collection of `<a>` elements
  * @csspart container - container, `<div>` element

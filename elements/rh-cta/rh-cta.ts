@@ -19,7 +19,9 @@ function isSupportedContent(el: Element | null): el is HTMLAnchorElement | HTMLB
 /**
  * A call to action is styled text representing a link.
  * @summary     A call to action is styled text representing a link.
+ *
  * @alias call-to-action
+ *
  * @slot
  *              The default slot contains the link text when the `href`
  *              attribute is set. In case there is no href attribute, an anchor
