@@ -30,13 +30,6 @@ const L2 = html`
  *
  * @alias pagination
  *
- * @slot            - An ordered list of links
- * @slot go-to-page - "Go to page" text, defaults to "Page"
- * @slot out-of     - "of" text
- * @csspart container - pagination container
- * @csspart numeric-middle - container for the numeric control at medium screen widths
- * @csspart numeric-end - container for the numeric control at small and large screen widths
- * @csspart numeric - shared container for the numeric controls at all widths
  * @cssprop [--rh-pagination-accent-color=var(--rh-color-interactive-blue, #0066cc)]
  *          Sets the outline color when the page input has focus.
  * @cssprop [--rh-pagination-background-focused=var(--rh-color-gray-20, #c7c7c7)]
@@ -171,6 +164,9 @@ export class RhPagination extends LitElement {
     const currentPage = this.#currentPage.toString();
 
     return html`
+      <!--
+        description: pagination container
+      -->
       <div id="container" part="container">
         <a id="first"
            class="stepper"
@@ -183,8 +179,14 @@ export class RhPagination extends LitElement {
            .inert="${this.#currentLink === this.#prevLink || this.#currentLink === this.#firstLink}"
            aria-label="${labelPrevious}">${L1}</a>
         <nav aria-label="${label}">
+          <!--
+            description: An ordered list of links
+          -->
           <slot></slot>
         </nav>
+        <!--
+          description: container for the numeric control at medium screen widths
+        -->
         <div id="numeric-middle" part="numeric-middle">
           ${this.#numericContent(currentPage, lastHref)}
         </div>
@@ -198,6 +200,9 @@ export class RhPagination extends LitElement {
            href="${ifDefined(lastHref)}"
            .inert="${this.#currentLink === this.#lastLink}"
            aria-label="${labelLast}">${L2}</a>
+        <!--
+          description: container for the numeric control at small and large screen widths
+        -->
         <div id="numeric-end" part="numeric-end">
           ${this.#numericContent(currentPage, lastHref)}
         </div>
@@ -207,8 +212,14 @@ export class RhPagination extends LitElement {
 
   #numericContent(currentPage: string, lastHref?: string) {
     return html`
+      <!--
+        description: shared container for the numeric controls at all widths
+      -->
       <div id="numeric" part="numeric">
         <span id="go-to-page" class="xxs-visually-hidden sm-visually-visible">
+          <!--
+            description: "Go to page" text, defaults to "Page"
+          -->
           <slot name="go-to-page">
             Page
           </slot>
@@ -221,6 +232,9 @@ export class RhPagination extends LitElement {
                @change="${this.#onChange}"
                @keyup="${this.#onKeyup}"
                .value="${currentPage}">
+        <!--
+          description: "of" text
+        -->
         <slot ?hidden="${!this.total}" name="out-of">of</slot>
         <a ?hidden="${!this.total}" href="${ifDefined(lastHref)}">${this.total}</a>
       </div>

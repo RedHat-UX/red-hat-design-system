@@ -16,8 +16,6 @@ import styles from './rh-avatar.css';
  *
  * @alias avatar
  *
- * @slot                                       - The subject's name
- * @slot subtitle                              - auxiliary information about the subject, e.g. job title
  * @cssprop {<color>+} --rh-avatar-colors      - List of colors to use when generating avatars
  * @cssprop {<length>} [--rh-avatar-size=64px] - Size of the avatar,
  */
@@ -93,7 +91,9 @@ export class RhAvatar extends LitElement {
           <path d="m25.9 36-.1-3.2c-.2-2.1-1.1-3.1-3.1-3.5V36h3.2z" class="st2"/>
         </svg>
         `}
+        <!-- The subject's name -->
         <slot id="title">${this.name}</slot>
+        <!-- auxiliary information about the subject, e.g. job title -->
         <slot id="subtitle" name="subtitle">${this.subtitle}</slot>
       </div>
     `;

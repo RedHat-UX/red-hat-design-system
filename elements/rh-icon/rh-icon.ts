@@ -52,10 +52,8 @@ export class IconResolveErrorEvent extends ErrorEvent {
  *
  * @alias icon
  *
- * @slot - Slotted content is used as a fallback in case the icon doesn't load
  * @fires load - Fired when an icon is loaded and rendered
  * @fires error - Fired when an icon fails to load
- * @csspart fallback - Container for the fallback (i.e. slotted) content
  * @cssprop --rh-icon-size - Override default icon size
  */
 @customElement('rh-icon')
@@ -119,7 +117,12 @@ export class RhIcon extends LitElement {
       <div id="container"
            aria-hidden="${String(!!content)}"
            class="${classMap({ [set]: true })}">${!isServer ? content
-        : unsafeHTML(content as unknown as string)}<span part="fallback" ?hidden="${content}"><slot></slot></span>
+        : unsafeHTML(content as unknown as string)}<!--
+          part:
+            description: Container for the fallback (i.e. slotted) content
+        --><span part="fallback" ?hidden="${content}"><!--
+          description: Slotted content is used as a fallback in case the icon doesn't load
+        --><slot></slot></span>
       </div>
     `;
   }

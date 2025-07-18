@@ -29,30 +29,6 @@ function isHeaderTagName(tagName: string) {
  *
  * @alias footer
  *
- * @csspart base - main footer element, containing all footer content
- * @slot    base - Overrides everything. Do not use.
- * @slot    header - Overrides `header-*`, `logo`, `social-links`
- * @csspart header - footer header, typically containing main logo and social links
- * @slot    header-primary - primary footer header content, e.g. main logo. Overrides `logo`
- * @csspart header-primary - primary footer header content, e.g. main logo
- * @slot    header-secondary - secondary footer header content, e.g. social links. Overrides `social-links`
- * @csspart header-secondary - secondary footer header content, e.g. social links
- * @slot    heading - text that describes the footer section to assistive tecchnology. Contains default text "Red Hat footer".
- * @slot    logo - main page or product logo. Defaults to Red Hat corporate logo
- * @csspart logo - main page or product logo container
- * @slot    social-links - social media links (icons). Contains a default set of links
- * @csspart social-links - social links container `<rh-footer-links>`
- * @slot    main - main footer content. Overrides `main-*`
- * @csspart main - main content container.
- * @slot    main-primary - main footer region. typically a columnar grid
- * @csspart main-primary - container for main footer links
- * @slot    links - main footer links
- * @csspart links - container for main footer links
- * @csspart links-accordion-header - mobile links accordion header element
- * @csspart links-accordion-panel - mobile links panel container element
- * @slot    main-secondary - typically contains prose or promotional content
- * @csspart main-secondary - container fro prose or promotional content
- * @slot    universal - must contain `<rh-footer-universal>`
  * @cssprop [--rh-footer-icon-color=#8a8d90]
  * @cssprop [--rh-footer-icon-color-hover=#b8bbbe]
  * @cssprop [--rh-footer-border-color=#6a6e73]
@@ -103,14 +79,22 @@ export class RhFooter extends LitElement {
 
   override render() {
     return html`
+      <!-- main footer element, containing all footer content -->
       <footer class="base ${classMap({ isMobile: this.#compact })}" part="base">
-        <h2 id="heading"><slot name="heading">Red Hat footer</slot></h2>
+        <h2 id="heading"><!-- text that describes the footer section to assistive tecchnology. Contains default text "Red Hat footer". --><slot name="heading">Red Hat footer</slot></h2>
+        <!-- Overrides everything. Do not use. -->
         <slot name="base">
+          <!-- footer header, typically containing main logo and social links -->
           <div class="section header" part="section header">
+            <!-- Overrides \`header-*\`, \`logo\`, \`social-links\` -->
             <slot name="header">
+              <!-- primary footer header content, e.g. main logo -->
               <div class="header-primary" part="header-primary">
+                <!-- primary footer header content, e.g. main logo. Overrides \`logo\` -->
                 <slot name="header-primary">
+                  <!-- main page or product logo container -->
                   <div class="logo" part="logo">
+                    <!-- main page or product logo. Defaults to Red Hat corporate logo -->
                     <slot name="logo">
                       <a href="/">
                         <img alt="Red Hat" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg"/>
@@ -119,13 +103,17 @@ export class RhFooter extends LitElement {
                   </div>
                 </slot>
               </div>
+              <!-- secondary footer header content, e.g. social links -->
               <div class="header-secondary" part="header-secondary">
+                <!-- secondary footer header content, e.g. social links. Overrides \`social-links\` -->
                 <slot name="header-secondary">
                   <div class="social-links">
+                    <!-- social links container \`<rh-footer-links>\` -->
                     <rh-footer-links class="social-links-item"
                       part="social-links"
                       aria-label="Red Hat social media links"
                       role="list">
+                      <!-- social media links (icons). Contains a default set of links -->
                       <slot name="social-links"></slot>
                     </rh-footer-links>
                   </div>
@@ -133,20 +121,28 @@ export class RhFooter extends LitElement {
               </div>
             </slot>
           </div>
+          <!-- main content container. -->
           <div class="section main" part="section main">
+            <!-- main footer content. Overrides \`main-*\` -->
             <slot name="main">
+              <!-- container for main footer links -->
               <div class="main-primary" part="main-primary">
+                <!-- main footer region. typically a columnar grid -->
                 <slot name="main-primary">
+                  <!-- container for main footer links -->
                   <div class="links" part="links">
                     ${this.#renderLinksTemplate(this.#compact)}
                   </div>
                 </slot>
               </div>
+              <!-- container fro prose or promotional content -->
               <div class="main-secondary" part="main-secondary">
+                <!-- typically contains prose or promotional content -->
                 <slot name="main-secondary"></slot>
               </div>
             </slot>
           </div>
+          <!-- must contain \`<rh-footer-universal>\` -->
           <slot name="universal"></slot>
         </slot>
       </footer>
@@ -162,6 +158,7 @@ export class RhFooter extends LitElement {
     children.forEach((child, i) => child.setAttribute('slot', isMobile ? `links-${i}` : 'links'));
 
     return !(isMobile && children) ? html`
+      <!-- main footer links -->
       <slot name="links"></slot>
       ` : html`
 
@@ -170,10 +167,12 @@ export class RhFooter extends LitElement {
           // SEE https://github.com/asyncLiz/minify-html-literals/issues/37
           switch (type) {
             case 'header': return html`
+              <!-- mobile links accordion header element -->
               <rh-accordion-header part="links-accordion-header">
                 <slot name="links-${i}"></slot>
               </rh-accordion-header>`;
             case 'panel': return html`
+              <!-- mobile links panel container element -->
               <rh-accordion-panel part="links-accordion-panel">
                 <slot name="links-${i}"></slot>
               </rh-accordion-panel>`;

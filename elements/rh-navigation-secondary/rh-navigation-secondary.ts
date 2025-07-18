@@ -53,13 +53,6 @@ function focusableChildElements(parent: HTMLElement): NodeListOf<HTMLElement> {
  *
  * @alias Navigation (secondary)
  *
- * @slot logo           - Logo added to the main nav bar, expects `<a>Text</a> | <a><svg/></a> | <a><img/></a>` element
- * @slot nav            - Navigation list added to the main nav bar, expects `<ul>` element
- * @slot cta            - Nav bar level CTA, expects `<rh-cta>` element
- * @slot mobile-menu    - Text label for the mobile menu button, for l10n. Defaults to "Menu"
- * @csspart nav         - container, `<nav>` element
- * @csspart container   - container, `<div>` element
- * @csspart cta         - container, `<div>` element
  * @fires {SecondaryNavOverlayChangeEvent} overlay-change -
  *                                         Fires when an dropdown is opened or closed in desktop
  *                                         view or when the mobile menu button is toggled in mobile
@@ -183,17 +176,37 @@ export class RhNavigationSecondary extends LitElement {
     // CTA must always be 'lightest' on mobile screens
     const dropdownPalette = this.#compact ? 'lightest' : this.#computedPalette;
     return html`
+      <!--
+        description: container, \`<nav>\` element
+      -->
       <div part="nav"
            class="${classMap({ compact: this.#compact })}">
         ${this.#logoCopy}
+        <!--
+          description: container, \`<div>\` element
+        -->
         <div id="container" part="container" class="${classMap({ expanded })}">
+          <!--
+            description: Logo added to the main nav bar, expects \`<a>Text</a> | <a><svg/></a> | <a><img/></a>\` element
+          -->
           <slot name="logo" id="logo"></slot>
           <button aria-controls="container"
                   aria-expanded="${String(expanded) as 'true' | 'false'}"
-                  @click="${this.#toggleMobileMenu}"><slot name="mobile-menu">Menu</slot></button>
+                  @click="${this.#toggleMobileMenu}"><!--
+            description: Text label for the mobile menu button, for l10n. Defaults to "Menu"
+          --><slot name="mobile-menu">Menu</slot></button>
           <rh-surface color-palette="${dropdownPalette}">
+            <!--
+              description: Navigation list added to the main nav bar, expects \`<ul>\` element
+            -->
             <slot name="nav"></slot>
+            <!--
+              description: container, \`<div>\` element
+            -->
             <div id="cta" part="cta">
+              <!--
+                description: Nav bar level CTA, expects \`<rh-cta>\` element
+              -->
               <slot name="cta"></slot>
             </div>
           </rh-surface>

@@ -33,12 +33,6 @@ export class TileSelectEvent extends Event {
  * @alias tile
  *
  * @fires {TileSelectEvent} select - when tile is clicked
- * @slot image - optional image on top of tile
- * @slot icon - optional icon
- * @slot title - A title provides secondary descriptive context. Selectable and compact tiles do not have title slots
- * @slot headline - In a link tile, the heading should indicate what clicking on the tile will do. In a selectable tile, the heading labels the radio button or checkbox.
- * @slot - The body text expands on heading content and gives the user more information.
- * @slot footer - Footer text should be brief and be used for supplementary information only.
  * @cssprop [--rh-tile-text-color=var(--rh-color-text-primary-on-light, #151515)] - Color of text.<br>Could cause accessibility issues; prefer to use `--rh-color-text-primary-on-light` and `--rh-color-text-primary-on-dark` for theming.
  * @cssprop [--rh-tile-text-color-secondary=var(--rh-color-text-secondary-on-light, #4d4d4d)] - Disabled text and icons.<br>Could cause accessibility issues; prefer to use `--rh-color-text-secondary-on-light` and `--rh-color-text-secondary-on-dark` for theming.
  * @cssprop [--rh-tile-interactive-color=var(--rh-color-border-interactive-on-light, #0066cc)] - Color of interactive elements.<br>Could cause accessibility issues; prefer to use `--rh-color-border-interactive-on-light` and `--rh-color-border-interactive-on-dark` for theming.
@@ -203,11 +197,13 @@ export class RhTile extends LitElement {
                                  : 'arrow-right';
     return html`
       <div id="outer" class="${classMap({ bleed, checkable, compact, checked, desaturated, disabled })}">
+        <!-- optional image on top of tile -->
         <slot id="image"
               name="image"
               ?hidden="${this.checkable}"
         ></slot>
         <div id="inner">
+          <!-- optional icon -->
           <slot id="icon"
                 class="${classMap({ compact, checkable })}"
                 name="icon"
@@ -216,9 +212,11 @@ export class RhTile extends LitElement {
           </slot>
           <div id="content">
             <div id="header">
+              <!-- A title provides secondary descriptive context. Selectable and compact tiles do not have title slots -->
               <slot id="title"
                     name="title"
                     ?hidden="${this.checkable || this.compact}"></slot>
+              <!-- In a link tile, the heading should indicate what clicking on the tile will do. In a selectable tile, the heading labels the radio button or checkbox. -->
               <slot id="headline" name="headline"></slot>
               <div id="input-outer" aria-hidden="true" ?hidden="${!this.#isCheckable}" ?inert="${!this.#isCheckable}">
                 <input id="input"
@@ -228,8 +226,10 @@ export class RhTile extends LitElement {
                        ?disabled="${disabled}"></input>
               </div>
             </div>
+            <!-- The body text expands on heading content and gives the user more information. -->
             <slot id="body" class="${classMap({ empty: this.#slots.isEmpty() })}"></slot>
             <div id="footer" class="${classMap({ empty: this.#slots.isEmpty('footer') })}">
+              <!-- Footer text should be brief and be used for supplementary information only. -->
               <slot id="footer-text" name="footer"></slot><rh-icon set="ui" icon="${linkIcon}"></rh-icon>
             </div>
           </div>

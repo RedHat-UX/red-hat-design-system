@@ -1,6 +1,6 @@
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
-import { property } from 'lit/decorators/property.js';
+import { property } from 'lit/decorators/property.2.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
@@ -22,8 +22,6 @@ import '@rhds/elements/rh-icon/rh-icon.js';
  * @cssprop --rh-switch-unchecked - The background color of the switch when it is unchecked.
  * @cssprop --rh-switch-checked - The background color of the switch when it is checked.
  * @cssprop --rh-switch-disabled - The background color of the switch when it is disabled.
- * @slot message-on - message content when checked. Overrides the `message-on` attribute.
- * @slot message-off - message content when unchecked. Overrides the `message-off` attribute.
  */
 @customElement('rh-switch')
 @themable
@@ -107,7 +105,13 @@ export class RhSwitch extends LitElement {
   render() {
     const { reversed, checked } = this;
     const slots = html`
+      <!--
+        description: message content when checked. Overrides the \`message-on\` attribute.
+      -->
       <slot class="message" name="message-on" ?hidden="${!this.checked}"><span aria-hidden="true">${this.messageOn}</span></slot>
+      <!--
+        description: message content when unchecked. Overrides the \`message-off\` attribute.
+      -->
       <slot class="message" name="message-off" ?hidden="${this.checked}"><span aria-hidden="true">${this.messageOff}</span></slot>`;
     return html`
       <div id="container"

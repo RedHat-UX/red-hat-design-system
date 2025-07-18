@@ -22,14 +22,6 @@ function isSupportedContent(el: Element | null): el is HTMLAnchorElement | HTMLB
  *
  * @alias call-to-action
  *
- * @slot
- *              The default slot contains the link text when the `href`
- *              attribute is set. In case there is no href attribute, an anchor
- *              tag (`<a href="...">`) should be the first child inside `rh-cta`
- *              element. Less preferred but allowed for specific use-cases
- *              include: `<button>` (note however that the `button` tag is not
- *              supported for the default CTA styles).
- * @csspart     container - container element for slotted CTA
  * @cssprop     {<color>} [--rh-cta-color=var(--rh-color-text-primary-on-dark, #ffffff)]
  *              Sets the cta color
  * @cssprop     [--rh-cta-background-color=var(--rh-color-brand-red-on-light, #ee0000)]
@@ -137,13 +129,28 @@ export class RhCta extends LitElement {
     const iconContent =
       !(variant === 'brick' && icon) ? '' : html`<rh-icon .icon=${icon} set="${iconSet ?? 'ui'}"></rh-icon>`;
     const linkContent =
-        !href ? html`<slot></slot>${follower}`
+        !href ? html`<!--
+              The default slot contains the link text when the \`href\`
+              attribute is set. In case there is no href attribute, an anchor
+              tag (\`<a href="...">\`) should be the first child inside \`rh-cta\`
+              element. Less preferred but allowed for specific use-cases
+              include: \`<button>\` (note however that the \`button\` tag is not
+              supported for the default CTA styles).
+        --><slot></slot>${follower}`
       : html`<a href=${href}
                 download="${ifDefined(download)}"
                 rel="${ifDefined(rel)}"
                 referrerpolicy="${ifDefined(referrerpolicy)}"
-                target="${ifDefined(target)}"><slot></slot>${follower}</a>`;
+                target="${ifDefined(target)}"><!--
+              The default slot contains the link text when the \`href\`
+              attribute is set. In case there is no href attribute, an anchor
+              tag (\`<a href="...">\`) should be the first child inside \`rh-cta\`
+              element. Less preferred but allowed for specific use-cases
+              include: \`<button>\` (note however that the \`button\` tag is not
+              supported for the default CTA styles).
+        --><slot></slot>${follower}</a>`;
     return html`
+      <!-- container element for slotted CTA -->
       <span id="container"
             part="container"
             class=${classMap({ icon: !!icon, svg })}

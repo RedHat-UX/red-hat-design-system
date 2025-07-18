@@ -126,7 +126,6 @@ const isStatusPageResponse = (data: unknown): data is SummaryResponse => {
  *
  * @alias site-status
  *
- * @slot - loading-text - Text to display while loading the status defaults to "Loading"
  */
 @customElement('rh-site-status')
 @themable
@@ -196,7 +195,9 @@ export class RhSiteStatus extends LitElement {
            aria-busy="${String(this.#loading) as 'true' | 'false'}"
            aria-live="polite">${this.#loading ? html`
           <rh-spinner size="sm"></rh-spinner>
-          <span><slot name="loading-text">Loading</slot></span>` : html`
+          <span><!--
+            description: Text to display while loading the status defaults to "Loading"
+          --><slot name="loading-text">Loading</slot></span>` : html`
           <rh-icon loading="eager" set="ui" icon="${icon}" class="${status}"></rh-icon>
           <span>${this.#text}</span>`}
         </a>

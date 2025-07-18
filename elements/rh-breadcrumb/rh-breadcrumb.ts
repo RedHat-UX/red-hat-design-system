@@ -14,8 +14,6 @@ import styles from './rh-breadcrumb.css';
  *
  * @alias breadcrumb
  *
- * @slot - Place an ordered list (`<ol>`) of your breadcrumbs into the slot
- * @csspart container - container element for slotted breadcrumb
  * @cssprop [--rh-breadcrumb-link-color=var(--rh-color-interactive-blue-darker, #0066cc)]
  *         The link color for each anchor in the list
  * @cssprop [--rh-breadcrumb-link-color-current-page=var(--rh-color-text-primary-on-light, #151515)]
@@ -57,7 +55,9 @@ export class RhBreadcrumb extends LitElement {
   render() {
     const label = this.accessibleLabel ? this.accessibleLabel : 'Breadcrumb';
     return html`
+      <!-- container element for slotted breadcrumb -->
       <nav aria-label="${label}" part="container" id="container">
+        <!-- Place an ordered list (\`<ol>\`) of your breadcrumbs into the slot -->
         <slot></slot>
       </nav>
     `;

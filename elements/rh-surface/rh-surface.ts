@@ -16,8 +16,6 @@ import styles from './rh-surface.css';
  *
  * @alias surface
  *
- * @slot - The `<rh-surface>` element has a single anonymous slot which accepts any content and does not provide additional layout styling
- *
  * @example A surface providing a theme to a spinner
  *          ```html
  *          <rh-surface color-palette="light">
@@ -41,7 +39,9 @@ export class RhSurface extends LitElement {
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   render() {
-    return html`<slot id="slot" @slotchange=${this.#onSlotchange}></slot>`;
+    return html`<!--
+      description: The \`<rh-surface>\` element has a single anonymous slot which accepts any content and does not provide additional layout styling
+    --><slot id="slot" @slotchange=${this.#onSlotchange}></slot>`;
   }
 
   #onSlotchange() {

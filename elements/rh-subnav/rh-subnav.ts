@@ -21,9 +21,6 @@ import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller
  *
  * @alias subnavigation
  *
- * @slot - Navigation links, expects collection of `<a>` elements
- * @csspart container - container, `<div>` element
- * @csspart links     - `<slot>` element
  */
 @customElement('rh-subnav')
 @colorPalettes
@@ -104,6 +101,9 @@ export class RhSubnav extends LitElement {
 
   override render() {
     return html`
+      <!--
+        description: container, \`<div>\` element
+      -->
       <nav part="container" aria-label="${this.accessibleLabel}">
         ${!this.#overflow.showScrollButtons ? '' : html`
           <button id="previous"
@@ -114,6 +114,12 @@ export class RhSubnav extends LitElement {
                   @click="${this.#onClickScroll}">
             <rh-icon set="ui" icon="caret-left" loading="eager"></rh-icon>
           </button>`}
+        <!--
+          slot:
+            description: Navigation links, expects collection of \`<a>\` elements
+          part:
+            description: \`<slot>\` element
+        -->
         <slot part="links" @slotchange="${this.#onSlotchange}"></slot>
         ${!this.#overflow.showScrollButtons ? '' : html`
           <button id="next"

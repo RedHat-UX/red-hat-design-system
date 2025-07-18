@@ -202,9 +202,6 @@
     },
     "analyze": {
       "command": "cem generate && scripts/cem-demo-index.ts",
-      "dependencies": [
-        "patch"
-      ],
       "files": [
         "elements/*/demo/*.html",
         "elements/**/*.{ts,js,map}",

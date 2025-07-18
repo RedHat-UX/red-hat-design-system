@@ -50,11 +50,6 @@ function getBestGuessAccessibleContent(node: Node): string {
  *
  * @alias tooltip
  *
- * @slot - Place invoking element here,
- *         i.e. the element which when hovered the tooltip will display.
- *         Must be inline content.
- * @slot content - Place tooltip content here. Overrides the `content` attribute.
- *
  * @cssprop {<length>} [--rh-tooltip-arrow-size=11px]
  * @cssprop {<color>} [--rh-tooltip-content-background-color=#ffffff]
  * @cssprop {<color>} [--rh-tooltip-content-color=#151515]
@@ -160,9 +155,18 @@ export class RhTooltip extends LitElement {
                                [anchor]: !!anchor,
                                [alignment]: !!alignment })}">
         <div id="invoker">
+          <!--
+            description: |
+              Place invoking element here,
+              i.e. the element which when hovered the tooltip will display.
+              Must be inline content.
+          -->
           <slot id="invoker-slot"></slot>
         </div>
         <div id="tooltip" role="status" class="${classMap({ dark, light })}">
+          <!--
+            description: Place tooltip content here. Overrides the \`content\` attribute.
+          -->
           <slot id="content" name="content">${this.content}</slot>
         </div>
       </div>
