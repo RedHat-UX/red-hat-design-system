@@ -52,11 +52,9 @@ export class RhFooterUniversal extends LitElement {
     return html`
       <footer role="${ifDefined(footer ? 'none' : undefined)}">
         <h2 id="global-heading" ?hidden="${!!h2}"><!--
-          description: text that describes the footer section to assistive tecchnology. Contains default text "Red Hat footer".
+          text that describes the footer section to assistive tecchnology. Contains default text "Red Hat footer".
         --><slot name="heading">Red Hat footer</slot></h2>
-        <!--
-          description: base
-        -->
+        <!-- base -->
         <div class="section global-base ${classMap({ hasTertiary })}" part="section base">
           <slot name="base">
             <!--

@@ -176,37 +176,25 @@ export class RhNavigationSecondary extends LitElement {
     // CTA must always be 'lightest' on mobile screens
     const dropdownPalette = this.#compact ? 'lightest' : this.#computedPalette;
     return html`
-      <!--
-        description: container, \`<nav>\` element
-      -->
+      <!-- container, \`<nav>\` element -->
       <div part="nav"
            class="${classMap({ compact: this.#compact })}">
         ${this.#logoCopy}
-        <!--
-          description: container, \`<div>\` element
-        -->
+        <!-- container, \`<div>\` element -->
         <div id="container" part="container" class="${classMap({ expanded })}">
-          <!--
-            description: Logo added to the main nav bar, expects \`<a>Text</a> | <a><svg/></a> | <a><img/></a>\` element
-          -->
+          <!-- Logo added to the main nav bar, expects \`<a>Text</a> | <a><svg/></a> | <a><img/></a>\` element -->
           <slot name="logo" id="logo"></slot>
           <button aria-controls="container"
                   aria-expanded="${String(expanded) as 'true' | 'false'}"
                   @click="${this.#toggleMobileMenu}"><!--
-            description: Text label for the mobile menu button, for l10n. Defaults to "Menu"
+            Text label for the mobile menu button, for l10n. Defaults to "Menu"
           --><slot name="mobile-menu">Menu</slot></button>
           <rh-surface color-palette="${dropdownPalette}">
-            <!--
-              description: Navigation list added to the main nav bar, expects \`<ul>\` element
-            -->
+            <!-- Navigation list added to the main nav bar, expects \`<ul>\` element -->
             <slot name="nav"></slot>
-            <!--
-              description: container, \`<div>\` element
-            -->
+            <!-- container, \`<div>\` element -->
             <div id="cta" part="cta">
-              <!--
-                description: Nav bar level CTA, expects \`<rh-cta>\` element
-              -->
+              <!-- Nav bar level CTA, expects \`<rh-cta>\` element -->
               <slot name="cta"></slot>
             </div>
           </rh-surface>

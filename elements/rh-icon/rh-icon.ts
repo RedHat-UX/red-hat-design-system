@@ -118,10 +118,9 @@ export class RhIcon extends LitElement {
            aria-hidden="${String(!!content)}"
            class="${classMap({ [set]: true })}">${!isServer ? content
         : unsafeHTML(content as unknown as string)}<!--
-          part:
-            description: Container for the fallback (i.e. slotted) content
+           Container for the fallback (i.e. slotted) content
         --><span part="fallback" ?hidden="${content}"><!--
-          description: Slotted content is used as a fallback in case the icon doesn't load
+          Slotted content is used as a fallback in case the icon doesn't load
         --><slot></slot></span>
       </div>
     `;

@@ -81,16 +81,12 @@ export class RhTable extends LitElement {
   render() {
     return html`
       <div id="container" part="container">
-        <!--
-          description: an HTML table
-        -->
+        <!-- an HTML table -->
         <slot @pointerleave="${this.#onPointerleave}"
               @pointerover="${this.#onPointerover}"
               @request-sort="${this.#onRequestSort}"
               @slotchange="${this.#onSlotChange}"></slot>
-        <!--
-          description: a brief description of the data
-        -->
+        <!-- description of the data -->
         <slot id="summary" name="summary"></slot>
       </div>
     `;

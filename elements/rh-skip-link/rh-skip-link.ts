@@ -26,12 +26,10 @@ export class RhSkipLink extends LitElement {
   render() {
     return this.href ?
         html`<a id="container" href="${this.href}"><!--
-          description: |
             An anchor tag targeting the main page content by id hash.
             Or, if the \`href\` attribute is set, the text of the link.
         --><slot></slot></a>`
       : html`<div id="container"><!--
-          description: |
             An anchor tag targeting the main page content by id hash.
             Or, if the \`href\` attribute is set, the text of the link.
         --><slot></slot></div>`;

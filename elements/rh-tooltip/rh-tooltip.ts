@@ -156,17 +156,14 @@ export class RhTooltip extends LitElement {
                                [alignment]: !!alignment })}">
         <div id="invoker">
           <!--
-            description: |
-              Place invoking element here,
-              i.e. the element which when hovered the tooltip will display.
-              Must be inline content.
+            Place invoking element here,
+            i.e. the element which when hovered the tooltip will display.
+            Must be inline content.
           -->
           <slot id="invoker-slot"></slot>
         </div>
         <div id="tooltip" role="status" class="${classMap({ dark, light })}">
-          <!--
-            description: Place tooltip content here. Overrides the \`content\` attribute.
-          -->
+          <!-- Place tooltip content here. Overrides the \`content\` attribute. -->
           <slot id="content" name="content">${this.content}</slot>
         </div>
       </div>

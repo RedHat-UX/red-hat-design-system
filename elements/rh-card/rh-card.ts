@@ -97,35 +97,26 @@ export class RhCard extends LitElement {
     const hasImage = this.#slots.hasSlotted('image');
     const hasBody = this.#slots.hasSlotted(null);
     const header = html`
-      <!--
-        description: The header for the card. Contains the header slot.
-      -->
+      <!-- The header for the card. Contains the header slot. -->
       <div id="header"
            part="header"
            class="${classMap({ empty: !hasHeader })}">
         <!--
-          description: |
-            If this slot is used, we expect a heading level tag (h1, h2, h3, h4, h5, h6).
-            An icon, svg, or use of the icon component are also valid in this region.
+          If this slot is used, we expect a heading level tag (h1, h2, h3, h4, h5, h6).
+          An icon, svg, or use of the icon component are also valid in this region.
         -->
         <slot name="header"></slot>
       </div>`;
     const footer = html`
-      <!--
-        description: The footer for the card. Contains the footer slot.
-      -->
+      <!-- The footer for the card. Contains the footer slot. -->
       <div id="footer"
            part="footer"
            class="${classMap({ empty: !hasFooter })}">
-        <!--
-          description: Use this slot for anything that you want to be stuck to the base of the card.
-        -->
+        <!-- Use this slot for anything that you want to be stuck to the base of the card. -->
         <slot name="footer"></slot>
       </div>`;
     return html`
-     <!--
-       description: The container for the card. Contains the image, header, body, and footer.
-     -->
+     <!-- The container for the card. Contains the image, header, body, and footer. -->
      <div id="container"
           part="container"
           class="${classMap({
@@ -137,27 +128,19 @@ export class RhCard extends LitElement {
             [variant]: !!variant,
             [computedPalette ?? '']: !!computedPalette,
           })}">${promo ? '' : header}
-        <!--
-          description: The image for the promo variant for the card. Contains the image slot.
-        -->
+        <!-- The image for the promo variant for the card. Contains the image slot. -->
         <div id="image"
              part="image"
              class="${classMap({ empty: !hasImage })}">
-          <!--
-            description: Use this slot for the promo variant of the card. Images & CTA's are most often slotted here.
-          -->
+          <!-- Use this slot for the promo variant of the card. Images & CTA's are most often slotted here. -->
           <slot name="image"></slot>
         </div>
-        <!--
-          description: The body for the card. Contains the default slot.
-        -->
+        <!-- The body for the card. Contains the default slot. -->
         <div id="body"
              part="body"
              class="${classMap({ empty: !hasBody })}">
           ${!promo ? '' : header}
-          <!--
-            description: Any content that is not designated for the header or footer slot, will go to this slot.
-          -->
+          <!-- Any content that is not designated for the header or footer slot, will go to this slot. -->
           <slot></slot>
           ${!promo ? '' : footer}
         </div>

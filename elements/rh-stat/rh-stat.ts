@@ -79,27 +79,17 @@ export class RhStat extends LitElement {
     return html`
       <div class="${classMap({ isMobile, hasIcon, hasTitle, hasStatistic, hasCta })}">
         <span id="icon" class="${classMap({ [iconSize]: !!iconSize })}">
-          <!--
-            description: Optional icon
-          -->
+          <!-- Optional icon -->
           <slot name="icon">
             ${!this.icon ? '' : html`
               <rh-icon icon="${this.icon}" set="${this.iconSet}"></rh-icon>
             `}
           </slot>
         </span>
-        <span id="title"><!--
-          description: Statistic title
-        --><slot name="title"></slot></span>
-        <span id="statistic"><!--
-          description: Statistic data
-        --><slot name="statistic"></slot></span>
-        <span id="content"><!--
-          description: Description of the stat
-        --><slot></slot></span>
-        <span id="cta"><!--
-          description: Call to action
-        --><slot name="cta"></slot></span>
+        <span id="title"><!-- Statistic title --><slot name="title"></slot></span>
+        <span id="statistic"><!-- Statistic data --><slot name="statistic"></slot></span>
+        <span id="content"><!-- Description of the stat --><slot></slot></span>
+        <span id="cta"><!-- Call to action --><slot name="cta"></slot></span>
       </div>
     `;
   }

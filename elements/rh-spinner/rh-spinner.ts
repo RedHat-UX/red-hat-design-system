@@ -34,9 +34,7 @@ export class RhSpinner extends LitElement {
         <circle class="track" cx="50" cy="50" r="40" fill="none" vector-effect="non-scaling-stroke" />
         <circle class="dash" cx="50" cy="50" r="40" fill="none" vector-effect="non-scaling-stroke" />
       </svg>
-      <!--
-        description: Optional text label below the animated circle.
-      -->
+      <!-- Optional text label below the animated circle. -->
       <slot></slot>
     `;
   }

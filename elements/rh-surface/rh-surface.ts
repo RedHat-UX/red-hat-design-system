@@ -40,7 +40,7 @@ export class RhSurface extends LitElement {
 
   render() {
     return html`<!--
-      description: The \`<rh-surface>\` element has a single anonymous slot which accepts any content and does not provide additional layout styling
+      The \`<rh-surface>\` element has a single anonymous slot which accepts any content and does not provide additional layout styling
     --><slot id="slot" @slotchange=${this.#onSlotchange}></slot>`;
   }
 

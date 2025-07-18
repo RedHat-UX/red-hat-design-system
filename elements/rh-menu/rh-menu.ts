@@ -60,9 +60,7 @@ export class RhMenu extends LitElement {
 
   render() {
     return html`
-      <!--
-        description: menu items
-      -->
+      <!-- menu items -->
       <slot part="menu"
             @slotchange="${this.#onSlotchange}"></slot>
     `;

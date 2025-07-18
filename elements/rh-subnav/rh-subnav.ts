@@ -101,9 +101,7 @@ export class RhSubnav extends LitElement {
 
   override render() {
     return html`
-      <!--
-        description: container, \`<div>\` element
-      -->
+      <!-- container, \`<div>\` element -->
       <nav part="container" aria-label="${this.accessibleLabel}">
         ${!this.#overflow.showScrollButtons ? '' : html`
           <button id="previous"

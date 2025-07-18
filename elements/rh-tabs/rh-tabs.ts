@@ -167,13 +167,9 @@ export class RhTabs extends LitElement {
     const { vertical = false, box = false, centered = false } = this;
     const inset = this.box === 'inset' ? 'inset' : '';
     return html`
-      <!--
-        description: outer container
-      -->
+      <!-- outer container -->
       <div id="container" part="container" class="${classMap({ vertical, box, inset, centered, overflow: this.#overflow.showScrollButtons })}">
-        <!--
-          description: tabs container
-        -->
+        <!-- tabs container -->
         <div part="tabs-container">${!this.#overflow.showScrollButtons ? '' : html`
           <button id="previous-tab" tabindex="-1"
                   aria-label="${this.getAttribute('label-scroll-left') ?? 'Scroll left'}"

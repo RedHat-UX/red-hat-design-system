@@ -65,16 +65,15 @@ export class RhAnnouncement extends LitElement {
               'block-start': imagePosBlockStart,
               'empty': this.#slots.isEmpty(null),
             })}">
-        <!-- description: The row for the banner. Contains the image and content divs. -->
+        <!-- The row for the banner. Contains the image and content divs. -->
         <div id="row" part="row">
-          <!-- description: The image for the banner. Contains the image slot. -->
+          <!-- The image for the banner. Contains the image slot. -->
           <div id="image"
                part="image"
                class="${classMap({ empty: !this.#slots.hasSlotted('image') })}">
             <!--
-              description: |
-                If this slot is used, we expect an image tag with a width and height set.
-                An icon, svg, or use of the icon component are also valid in this region.
+              If this slot is used, we expect an image tag with a width and height set.
+              An icon, svg, or use of the icon component are also valid in this region.
             -->
             <slot name="image"></slot>
           </div>
@@ -84,7 +83,7 @@ export class RhAnnouncement extends LitElement {
               <slot></slot>
             </div>
             <div id="cta" class="${classMap({ empty: !this.#slots.hasSlotted('cta') })}">
-              <!-- description: If this slot is used, we expect a rh-cta component. -->
+              <!-- If this slot is used, we expect a rh-cta component. -->
               <slot name="cta"></slot>
             </div>
           </div>

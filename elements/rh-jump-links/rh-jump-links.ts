@@ -88,9 +88,7 @@ export class RhJumpLinks extends LitElement {
         </button>
 
         <div id="container" role="list">
-          <!--
-            description: Place \`<rh-jump-link>\` or \`<rh-jump-links-list>\` elements here
-          -->
+          <!-- Place \`<rh-jump-link>\` or \`<rh-jump-links-list>\` elements here -->
           <slot></slot>
         </div>
 
