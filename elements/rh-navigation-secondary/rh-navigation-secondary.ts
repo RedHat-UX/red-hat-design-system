@@ -51,7 +51,7 @@ function focusableChildElements(parent: HTMLElement): NodeListOf<HTMLElement> {
  *
  * @summary Propagates related content across a series of pages
  *
- * @alias Navigation (primary)
+ * @alias Navigation (secondary)
  *
  * @slot logo           - Logo added to the main nav bar, expects `<a>Text</a> | <a><svg/></a> | <a><img/></a>` element
  * @slot nav            - Navigation list added to the main nav bar, expects `<ul>` element
