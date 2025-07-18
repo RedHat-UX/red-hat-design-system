@@ -200,7 +200,7 @@
       ]
     },
     "analyze": {
-      "command": "cem generate",
+      "command": "cem generate && scripts/cem-demo-index.ts",
       "dependencies": [
         "patch"
       ],
