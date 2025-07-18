@@ -5,7 +5,8 @@ import { property } from 'lit/decorators/property.js';
 import styles from './rh-skeleton.css';
 
 /**
- * A skeleton loader is a placeholder for content that is loading.
+ * A skeleton displays an animated placeholder that mimics the structure and layout of actual content while it loads.
+ * It gives users a preview of what's coming and reduces perceived loading time.
  * @summary A placeholder for content that is loading.
  * @slot - Place a visually hidden description of what is being loaded for assistive technologies.
  * Defaults to `Loading...`.

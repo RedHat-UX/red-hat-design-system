@@ -86,6 +86,8 @@ rh-progress-steps:
  - rh-jump-links
  - rh-pagination
  - rh-tabs
+rh-skeleton:
+ - rh-spinner
 rh-skip-link:
  - rh-navigation
  - rh-navigation-secondary
