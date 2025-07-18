@@ -61,6 +61,8 @@ const toasts = new Set<Required<ToastOptions>>();
  *
  * @summary Notifies a user without blocking their workflow
  *
+ * @alias alert
+ *
  * @fires {AlertCloseEvent} close - when the dismissable alert closes
  *
  * @slot         - Provide a description for the alert message

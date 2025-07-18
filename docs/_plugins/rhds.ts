@@ -153,7 +153,7 @@ export default async function(
   /** custom-elements.json */
   eleventyConfig.on('eleventy.before', async function({ runMode }) {
     if (runMode === 'watch') {
-      await $`npx cem analyze`;
+      await $`npm run analyze`;
     }
   });
 

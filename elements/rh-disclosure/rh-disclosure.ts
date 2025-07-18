@@ -22,7 +22,11 @@ export class DisclosureToggleEvent extends Event {
 
 /**
  * A disclosure toggles the visibility of content when triggered.
+ *
  * @summary A disclosure toggles the visibility of content when triggered
+ *
+ * @alias disclosure
+ *
  * @slot - Place the content you want to disclose in the default slot. This content is hidden by default.
  * @slot summary - The title of the disclosure
  * @fires {DisclosureToggleEvent} toggle - Fires when a user opens or closes a disclosure.

@@ -20,6 +20,9 @@ export class MenuToggleEvent extends Event {
 
 /**
  * Menu
+ *
+ * @alias menu
+ *
  * @slot - menu items
  */
 @customElement('rh-menu')

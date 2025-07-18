@@ -13,6 +13,9 @@ import styles from './rh-avatar.css';
 /**
  * An avatar is a small thumbnail representation of a user.
  * @summary Visually represents a user in a masthead or navigation
+ *
+ * @alias avatar
+ *
  * @slot                                       - The subject's name
  * @slot subtitle                              - auxiliary information about the subject, e.g. job title
  * @cssprop {<color>+} --rh-avatar-colors      - List of colors to use when generating avatars

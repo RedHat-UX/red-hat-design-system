@@ -12,6 +12,8 @@ import styles from './rh-skip-link.css';
  *
  * @summary Skip to the main content of a page
  *
+ * @alias skip-link
+ *
  * @slot - An anchor tag targeting the main page content by id hash.
  *         Or, if the `href` attribute is set, the text of the link.
  */

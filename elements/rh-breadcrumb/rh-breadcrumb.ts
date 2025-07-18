@@ -11,6 +11,9 @@ import styles from './rh-breadcrumb.css';
  * of links to the parent pages of the current page in hierarchical order. It
  * helps users find their place within a website or web application.
  * @summary Links displaying a hierarchical location
+ *
+ * @alias breadcrumb
+ *
  * @slot - Place an ordered list (`<ol>`) of your breadcrumbs into the slot
  * @csspart container - container element for slotted breadcrumb
  * @cssprop [--rh-breadcrumb-link-color=var(--rh-color-interactive-blue-darker, #0066cc)]

@@ -16,6 +16,9 @@ import '@rhds/elements/rh-icon/rh-icon.js';
 /**
  * A switch toggles the state of a setting (between on and off). Switches and checkboxes can often be used interchangeably, but the switch provides a more explicit, visible representation on a setting.
  * @summary  A switch toggles the state of a setting (between on and off).
+ *
+ * @alias switch
+ *
  * @cssprop --rh-switch-unchecked - The background color of the switch when it is unchecked.
  * @cssprop --rh-switch-checked - The background color of the switch when it is checked.
  * @cssprop --rh-switch-disabled - The background color of the switch when it is disabled.

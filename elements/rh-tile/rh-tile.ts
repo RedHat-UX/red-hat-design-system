@@ -27,7 +27,11 @@ export class TileSelectEvent extends Event {
 
 /**
  * A tile is a flexible layout with a clickable and contained surface.
+ *
  * @summary Creates a clickable, contained surface
+ *
+ * @alias tile
+ *
  * @fires {TileSelectEvent} select - when tile is clicked
  * @slot image - optional image on top of tile
  * @slot icon - optional icon

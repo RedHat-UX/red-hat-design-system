@@ -11,7 +11,11 @@ import styles from './rh-table.css';
 
 /**
  * A table is a container for displaying information. It allows a user to scan, examine, and compare large amounts of data.
+ *
  * @summary Organizes and displays information from a data set
+ *
+ * @alias table
+ *
  * @slot               - an HTML table
  * @slot    summary    - a brief description of the data
  * @cssprop {<color>} [--rh-table-row-background-hover-color=224 224 224 / 40%] - row hover background color

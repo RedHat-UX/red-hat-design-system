@@ -47,6 +47,15 @@ interface Context extends EleventyPageRenderData {
 
 const [manifest] = getAllManifests();
 
+class NoElementInDemoError extends Error {
+  constructor(
+    public tagName: string,
+    public filePath: string,
+  ) {
+    super(`ENOTAG: ${filePath} does not contain ${tagName}`);
+  }
+}
+
 export default class ElementsPage extends Renderer<Context> {
   static assetCache = new AssetCache<ImportMap>('rhds-ux-dot-import-map-jspmio');
 
@@ -64,7 +73,8 @@ export default class ElementsPage extends Renderer<Context> {
   static demoManifestsForTagNames =
     Object.groupBy(getAllManifests()
         .flatMap(manifest => manifest.getTagNames()
-            .flatMap(tagName => manifest.getDemoMetadata(tagName, getPfeConfig()))),
+            .flatMap(tagName => manifest.getDemoMetadata(tagName, getPfeConfig())
+                .filter(x => x.filePath?.includes(tagName)))),
                    x => x.primaryElementName);
 
   async render(ctx: Context) {
@@ -206,10 +216,20 @@ export default class ElementsPage extends Renderer<Context> {
     const attributes = manifest.getAttributes(tagName) ?? [];
     const content = await readFile(demo.filePath, 'utf-8');
     const fragment = parseFragment(content);
+    const isOurNode = (node: Tools.Node) =>
+      Tools.isElementNode(node) && node.tagName === ctx.tagName;
     const elementNode: Tools.Element | null =
-      Tools.query(fragment, node => Tools.isElementNode(node) && node.tagName === ctx.tagName);
+      Tools.query(fragment, isOurNode);
     if (!elementNode) {
-      throw new Error('demo does not contain element');
+      const templatedElementNode =
+        Tools.queryAll(fragment, node => Tools.isTemplateNode(node)
+          && !!Tools.query(node.content, isOurNode));
+      if (!templatedElementNode) {
+        throw new NoElementInDemoError(
+          ctx.tagName,
+          demo.filePath,
+        );
+      }
     }
 
 
