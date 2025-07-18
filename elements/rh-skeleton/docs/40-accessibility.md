@@ -1,11 +1,11 @@
-By default, `<rh-skeleton>` inserts the following content into its shadowdom:
+## Implementation
 
-```html
-<p class="visually-hidden">
-  Loading...
-</p>
-```
+  * By default, `<rh-skeleton>` places visually hidden text, "Loading...", into the default slot of this component. This informs users of assistive technologies that content is loading.
+  * To customize this text, slot in alternate content. You may want to do this if you want to differentiate between multiple skeletons on a page.
 
-The `Loading...` text above resides in the default slot. If multiple `<rh-skeleton>` elements exist on the page, it's recommended to customize this text. 
+{% include 'partials/accessibility/ariaguide.md' %}
 
-Similarly, be careful not to repeat this text. In some cases, you may want to slot an empty `<span>` into `<rh-skeleton>` to remove the default `Loading...` text.
+{% include 'partials/accessibility/wcag.md' %}
+
+{% include 'partials/accessibility/1.3.1-A.md' %}
+{% include 'partials/accessibility/2.1.1-A.md' %}
