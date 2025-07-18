@@ -8,9 +8,6 @@ import styles from './rh-tab-panel.css';
 
 /**
  * The tab panel for use within a rh-tabs element, must be paired with a rh-tab.
- *
- * @slot - Panel content should follow guidelines for [tab panel content layout](../guidelines)
- *
  */
 @customElement('rh-tab-panel')
 @themable
@@ -40,6 +37,7 @@ export class RhTabPanel extends LitElement {
   render() {
     return html`
       <div id="container">
+        <!-- Panel content should follow guidelines for [tab panel content layout](../guidelines) -->
         <slot></slot>
       </div>
     `;

@@ -13,12 +13,6 @@ import styles from './rh-audio-player-subscribe.css';
 
 /**
  * Audio Player Subscribe Panel
- * @slot heading - custom heading for panel
- * @slot - panel content
- * @slot link - link to subscribe to podcast
- * @csspart heading - scrolling text overflow
- * @csspart body - body content slot
- * @csspart links - subscribe links
  */
 @customElement('rh-audio-player-subscribe')
 export class RhAudioPlayerSubscribe extends LitElement {
@@ -36,10 +30,17 @@ export class RhAudioPlayerSubscribe extends LitElement {
 
   override render() {
     return html`
+      <!-- scrolling text overflow -->
       <rh-audio-player-scrolling-text-overflow part="heading">
+        <!-- custom heading for panel -->
         <slot name="heading">${this.#headings.wrap(this.menuLabel)}</slot>
       </rh-audio-player-scrolling-text-overflow>
+      <!-- panel content -->
       <slot part="body" ?hidden="${this.#slots.isEmpty(null)}"></slot>
+      <!-- slot:
+             summary: link to subscribe to podcast
+           part:
+             summary: subscribe links -->
       <slot name="link" part="links"></slot>`;
   }
 

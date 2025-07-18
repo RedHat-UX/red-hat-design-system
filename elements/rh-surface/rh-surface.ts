@@ -12,10 +12,9 @@ import styles from './rh-surface.css';
  * (i.e. a background color as well as accessible font colors) to their child
  * elements. Use surface only when other containers like card or accordion
  * are inappropriate.
- *
  * @summary Provides background color context for elements placed on top
  *
- * @slot - The `<rh-surface>` element has a single anonymous slot which accepts any content and does not provide additional layout styling
+ * @alias surface
  *
  * @example A surface providing a theme to a spinner
  *          ```html
@@ -40,7 +39,9 @@ export class RhSurface extends LitElement {
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   render() {
-    return html`<slot id="slot" @slotchange=${this.#onSlotchange}></slot>`;
+    return html`<!--
+      The \`<rh-surface>\` element has a single anonymous slot which accepts any content and does not provide additional layout styling
+    --><slot id="slot" @slotchange=${this.#onSlotchange}></slot>`;
   }
 
   #onSlotchange() {

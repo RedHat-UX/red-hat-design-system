@@ -12,8 +12,8 @@ import styles from './rh-skip-link.css';
  *
  * @summary Skip to the main content of a page
  *
- * @slot - An anchor tag targeting the main page content by id hash.
- *         Or, if the `href` attribute is set, the text of the link.
+ * @alias skip-link
+ *
  */
 @customElement('rh-skip-link')
 export class RhSkipLink extends LitElement {
@@ -25,8 +25,14 @@ export class RhSkipLink extends LitElement {
 
   render() {
     return this.href ?
-        html`<a id="container" href="${this.href}"><slot></slot></a>`
-      : html`<div id="container"><slot></slot></div>`;
+        html`<a id="container" href="${this.href}"><!--
+            An anchor tag targeting the main page content by id hash.
+            Or, if the \`href\` attribute is set, the text of the link.
+        --><slot></slot></a>`
+      : html`<div id="container"><!--
+            An anchor tag targeting the main page content by id hash.
+            Or, if the \`href\` attribute is set, the text of the link.
+        --><slot></slot></div>`;
   }
 }
 
