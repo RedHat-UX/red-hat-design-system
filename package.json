@@ -297,7 +297,7 @@
     "@patternfly/eslint-plugin-elements": "^2.0.0",
     "@patternfly/icons": "^1.0.3",
     "@patternfly/pfe-tools": "^5.0.1",
-    "@playwright/test": "^1.51.0",
+    "@playwright/test": "1.51.0",
     "@pwrs/cem": "^0.2.5",
     "@rollup/plugin-node-resolve": "^16.0.0",
     "@stylistic/eslint-plugin-js": "^2.13.0",
