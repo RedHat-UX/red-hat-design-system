@@ -23,9 +23,7 @@ for (const module of (manifest as M.Package).modules) {
       for (const demo of decl.demos) {
         const { slug = '' } = demo.url.match(RE)?.groups ?? {};
         if (demo.url.endsWith(`${slug}/`)) {
-          const newUrl = `https://ux.redhat.com/elements/${slug}/demo/`;
-          console.log(`replacing ${demo.url} with ${newUrl}`);
-          demo.url = newUrl;
+          demo.url = `https://ux.redhat.com/elements/${slug}/demo/`;
         }
       }
     }
