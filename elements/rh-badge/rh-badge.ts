@@ -20,6 +20,8 @@ import styles from './rh-badge.css';
  *
  * @summary Annotates information like a label or object
  *
+ * @alias badge
+ *
  */
 @customElement('rh-badge')
 @themable
