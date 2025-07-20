@@ -12,6 +12,9 @@ const styles = css `:host{position:fixed;z-index:1000;inset-inline-end:var(--rh-
  * to the top of a lengthy content page.
  *
  * @summary A shortcut to the top of the page content
+ *
+ * @alias back-to-top
+ *
  * @csspart trigger - back to top link anchor element
  * @slot - Text for the back to top link
  */

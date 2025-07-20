@@ -19,6 +19,8 @@ const styles = css `slot,span{align-items:center;justify-content:center;position
  *
  * @summary Annotates information like a label or object
  *
+ * @alias badge
+ *
  */
 let RhBadge = class RhBadge extends LitElement {
     constructor() {

@@ -64,7 +64,7 @@ PfChip.shadowRootOptions = {
     ...LitElement.shadowRootOptions,
     delegatesFocus: true,
 };
-PfChip.version = "4.0.2";
+PfChip.version = "4.1.0";
 __decorate([
     property({ attribute: 'accessible-close-label', type: String })
 ], PfChip.prototype, "accessibleCloseLabel", void 0);

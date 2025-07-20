@@ -649,6 +649,7 @@ export declare class PfTable extends LitElement {
     static readonly styles: CSSStyleSheet[];
     get rows(): NodeListOf<PfTr>;
     private columns;
+    private thRowContext;
     connectedCallback(): void;
     render(): TemplateResult<1>;
     private static getNodeContentForSort;

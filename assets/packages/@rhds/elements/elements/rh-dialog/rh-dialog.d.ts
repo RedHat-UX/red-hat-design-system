@@ -16,7 +16,11 @@ export declare class DialogOpenEvent extends Event {
 }
 /**
  * A dialog displays important information to users without requiring them to navigate away from the page.
+ *
  * @summary Communicates information requiring user input or action
+ *
+ * @alias dialog
+ *
  * @fires {DialogOpenEvent} open - Fires when a user clicks on the trigger or manually opens a dialog.
  * @fires {DialogCloseEvent} close - Fires when either a user clicks on either the close button or manually closes a dialog.
  * @fires {DialogCancelEvent} cancel - Fires when a user clicks outside the dialog or hits ESC on their keyboard.

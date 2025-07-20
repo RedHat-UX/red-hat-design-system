@@ -15,6 +15,8 @@ const BooleanStringConverter = {
  * A timestamp provides consistent formats for displaying date and time values.
  *
  * @summary Displays a line of text with date and time values
+ *
+ * @alias timestamp
  */
 let RhTimestamp = class RhTimestamp extends LitElement {
     constructor() {

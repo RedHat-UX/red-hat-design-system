@@ -301,7 +301,7 @@ PfSelect.shadowRootOptions = {
     ...LitElement.shadowRootOptions,
     delegatesFocus: true,
 };
-PfSelect.version = "4.0.2";
+PfSelect.version = "4.1.0";
 __decorate([
     property()
 ], PfSelect.prototype, "variant", void 0);

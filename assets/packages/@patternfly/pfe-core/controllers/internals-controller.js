@@ -130,6 +130,7 @@ export class InternalsController {
         this.ariaPosInSet = null;
         this.ariaPressed = null;
         this.ariaReadOnly = null;
+        this.ariaRelevant = null;
         this.ariaRequired = null;
         this.ariaRoleDescription = null;
         this.ariaRowCount = null;
@@ -320,6 +321,9 @@ __decorate([
 __decorate([
     aria
 ], InternalsController.prototype, "ariaReadOnly", void 0);
+__decorate([
+    aria
+], InternalsController.prototype, "ariaRelevant", void 0);
 __decorate([
     aria
 ], InternalsController.prototype, "ariaRequired", void 0);

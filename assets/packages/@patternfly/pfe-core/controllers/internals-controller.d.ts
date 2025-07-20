@@ -46,6 +46,7 @@ export declare class InternalsController implements ReactiveController, ARIAMixi
     ariaPosInSet: string | null;
     ariaPressed: string | null;
     ariaReadOnly: string | null;
+    ariaRelevant: string | null;
     ariaRequired: string | null;
     ariaRoleDescription: string | null;
     ariaRowCount: string | null;

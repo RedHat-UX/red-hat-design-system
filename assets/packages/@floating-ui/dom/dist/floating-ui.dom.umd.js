@@ -78,7 +78,7 @@
     return [':popover-open', ':modal'].some(selector => {
       try {
         return element.matches(selector);
-      } catch (e) {
+      } catch (_e) {
         return false;
       }
     });
@@ -540,6 +540,12 @@
       scrollTop: 0
     };
     const offsets = createCoords(0);
+
+    // If the <body> scrollbar appears on the left (e.g. RTL systems). Use
+    // Firefox with layout.scrollbar.side = 3 in about:config to test this.
+    function setLeftRTLScrollbarOffset() {
+      offsets.x = getWindowScrollBarX(documentElement);
+    }
     if (isOffsetParentAnElement || !isOffsetParentAnElement && !isFixed) {
       if (getNodeName(offsetParent) !== 'body' || isOverflowElement(documentElement)) {
         scroll = getNodeScroll(offsetParent);
@@ -549,10 +555,11 @@
         offsets.x = offsetRect.x + offsetParent.clientLeft;
         offsets.y = offsetRect.y + offsetParent.clientTop;
       } else if (documentElement) {
-        // If the <body> scrollbar appears on the left (e.g. RTL systems). Use
-        // Firefox with layout.scrollbar.side = 3 in about:config to test this.
-        offsets.x = getWindowScrollBarX(documentElement);
+        setLeftRTLScrollbarOffset();
       }
+    }
+    if (isFixed && !isOffsetParentAnElement && documentElement) {
+      setLeftRTLScrollbarOffset();
     }
     const htmlOffset = documentElement && !isOffsetParentAnElement && !isFixed ? getHTMLOffset(documentElement, scroll) : createCoords(0);
     const x = rect.left + scroll.scrollLeft - offsets.x - htmlOffset.x;
@@ -730,7 +737,7 @@
           // Handle <iframe>s
           root: root.ownerDocument
         });
-      } catch (e) {
+      } catch (_e) {
         io = new IntersectionObserver(handleObserve, options);
       }
       io.observe(element);

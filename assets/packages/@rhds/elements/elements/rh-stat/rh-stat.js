@@ -17,6 +17,8 @@ const styles = css `:host{display:block}div{width:100%;height:100%;display:flex;
  *
  * @summary Showcases a data point or quick fact visually
  *
+ * @alias statistic
+ *
  * @slot icon - Optional icon
  * @slot title - Statistic title
  * @slot statistic - Statistic data

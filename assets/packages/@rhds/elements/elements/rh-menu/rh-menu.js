@@ -17,6 +17,9 @@ export class MenuToggleEvent extends Event {
 }
 /**
  * Menu
+ *
+ * @alias menu
+ *
  * @slot - menu items
  */
 let RhMenu = class RhMenu extends LitElement {

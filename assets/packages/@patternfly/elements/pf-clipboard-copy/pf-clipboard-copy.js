@@ -1,6 +1,6 @@
 var _PfClipboardCopy_instances, _PfClipboardCopy_copied, _PfClipboardCopy_mo, _PfClipboardCopy_onClick, _PfClipboardCopy_onChange, _PfClipboardCopy_onMutation, _PfClipboardCopy_dedent;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
@@ -56,7 +56,9 @@ let PfClipboardCopy = class PfClipboardCopy extends LitElement {
     connectedCallback() {
         super.connectedCallback();
         __classPrivateFieldGet(this, _PfClipboardCopy_mo, "f").observe(this, { characterData: true });
-        __classPrivateFieldGet(this, _PfClipboardCopy_instances, "m", _PfClipboardCopy_onMutation).call(this);
+        if (!isServer) {
+            __classPrivateFieldGet(this, _PfClipboardCopy_instances, "m", _PfClipboardCopy_onMutation).call(this);
+        }
     }
     /**
      * @todo fix the collapsed whitespace between the end of the "inline-compact" variant and the text node.
@@ -128,7 +130,7 @@ _PfClipboardCopy_onChange = function _PfClipboardCopy_onChange(e) {
     this.value = value;
 };
 _PfClipboardCopy_onMutation = function _PfClipboardCopy_onMutation() {
-    if (this.childNodes.length > 0) {
+    if (this.childNodes?.length > 0) {
         this.value = this.getAttribute('value') ?? __classPrivateFieldGet(this, _PfClipboardCopy_instances, "m", _PfClipboardCopy_dedent).call(this, Array.from(this.childNodes, child => (child instanceof Element || child instanceof Text) ? (child.textContent ?? '') : '')
             .join(''));
     }
@@ -143,7 +145,7 @@ PfClipboardCopy.shadowRootOptions = {
     ...LitElement.shadowRootOptions,
     delegatesFocus: true,
 };
-PfClipboardCopy.version = "4.0.2";
+PfClipboardCopy.version = "4.1.0";
 __decorate([
     property({ attribute: 'click-tip' })
 ], PfClipboardCopy.prototype, "clickTip", void 0);

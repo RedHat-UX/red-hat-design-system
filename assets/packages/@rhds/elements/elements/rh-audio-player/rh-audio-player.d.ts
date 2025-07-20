@@ -6,6 +6,9 @@ import '@rhds/elements/rh-icon/rh-icon.js';
 /**
  * An audio player plays audio clips in the browser and includes other features.
  * @summary Plays audio clips and includes other features
+ *
+ * @alias audio-player
+ *
  * @slot series - optional, name of podcast series
  * @slot title - optional, title of episode
  * @slot media - html `audio` element

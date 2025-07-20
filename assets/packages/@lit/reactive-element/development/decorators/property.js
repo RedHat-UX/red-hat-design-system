@@ -15,19 +15,24 @@ let issueWarning;
 if (DEV_MODE) {
     // Ensure warnings are issued only 1x, even if multiple versions of Lit
     // are loaded.
-    const issuedWarnings = (globalThis.litIssuedWarnings ??= new Set());
-    // Issue a warning, if we haven't already.
+    globalThis.litIssuedWarnings ??= new Set();
+    /**
+     * Issue a warning if we haven't already, based either on `code` or `warning`.
+     * Warnings are disabled automatically only by `warning`; disabling via `code`
+     * can be done by users.
+     */
     issueWarning = (code, warning) => {
         warning += ` See https://lit.dev/msg/${code} for more information.`;
-        if (!issuedWarnings.has(warning)) {
+        if (!globalThis.litIssuedWarnings.has(warning) &&
+            !globalThis.litIssuedWarnings.has(code)) {
             console.warn(warning);
-            issuedWarnings.add(warning);
+            globalThis.litIssuedWarnings.add(warning);
         }
     };
 }
 const legacyProperty = (options, proto, name) => {
     const hasOwnProperty = proto.hasOwnProperty(name);
-    proto.constructor.createProperty(name, hasOwnProperty ? { ...options, wrapped: true } : options);
+    proto.constructor.createProperty(name, options);
     // For accessors (which have a descriptor on the prototype) we need to
     // return a descriptor, otherwise TypeScript overwrites the descriptor we
     // define in createProperty() with the original descriptor. We don't do this
@@ -64,6 +69,10 @@ export const standardProperty = (options = defaultPropertyDeclaration, target, c
     if (properties === undefined) {
         globalThis.litPropertyMetadata.set(metadata, (properties = new Map()));
     }
+    if (kind === 'setter') {
+        options = Object.create(options);
+        options.wrapped = true;
+    }
     properties.set(context.name, options);
     if (kind === 'accessor') {
         // Standard decorators cannot dynamically modify the class, so we can't
@@ -78,7 +87,7 @@ export const standardProperty = (options = defaultPropertyDeclaration, target, c
             },
             init(v) {
                 if (v !== undefined) {
-                    this._$changeProperty(name, undefined, options);
+                    this._$changeProperty(name, undefined, options, v);
                 }
                 return v;
             },

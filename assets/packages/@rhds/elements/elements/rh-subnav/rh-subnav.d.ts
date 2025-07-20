@@ -3,7 +3,11 @@ import '@rhds/elements/rh-icon/rh-icon.js';
 import { type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
 /**
  * A subnavigation allows users to navigate between a small number of page links.
+ *
  * @summary Organizes content into sections using tabbed pages
+ *
+ * @alias subnavigation
+ *
  * @slot - Navigation links, expects collection of `<a>` elements
  * @csspart container - container, `<div>` element
  * @csspart links     - `<slot>` element

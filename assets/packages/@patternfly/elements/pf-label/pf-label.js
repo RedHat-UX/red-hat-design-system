@@ -80,7 +80,7 @@ PfLabel.shadowRootOptions = {
     ...LitElement.shadowRootOptions,
     delegatesFocus: true,
 };
-PfLabel.version = "4.0.2";
+PfLabel.version = "4.1.0";
 __decorate([
     property()
 ], PfLabel.prototype, "variant", void 0);

@@ -132,7 +132,10 @@ _PfBackToTop_addScrollListener = function _PfBackToTop_addScrollListener() {
         return;
     }
     __classPrivateFieldSet(this, _PfBackToTop_scrollSpy, !!this.scrollableSelector, "f");
-    if (__classPrivateFieldGet(this, _PfBackToTop_scrollSpy, "f") && this.scrollableSelector) {
+    if (isServer) {
+        return;
+    }
+    else if (__classPrivateFieldGet(this, _PfBackToTop_scrollSpy, "f") && this.scrollableSelector) {
         const scrollableElement = __classPrivateFieldGet(this, _PfBackToTop_instances, "a", _PfBackToTop_rootNode_get)?.querySelector?.(this.scrollableSelector);
         if (!scrollableElement) {
             __classPrivateFieldGet(this, _PfBackToTop_logger, "f").error(`unable to find element with selector ${this.scrollableSelector}`);
@@ -147,7 +150,7 @@ _PfBackToTop_addScrollListener = function _PfBackToTop_addScrollListener() {
     __classPrivateFieldGet(this, _PfBackToTop_toggleVisibility, "f").call(this);
 };
 PfBackToTop.styles = [styles];
-PfBackToTop.version = "4.0.2";
+PfBackToTop.version = "4.1.0";
 __decorate([
     property({ reflect: true })
 ], PfBackToTop.prototype, "icon", void 0);

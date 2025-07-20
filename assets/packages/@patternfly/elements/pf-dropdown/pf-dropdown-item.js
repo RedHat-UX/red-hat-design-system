@@ -54,7 +54,7 @@ PfDropdownItem.shadowRootOptions = {
     ...LitElement.shadowRootOptions,
     delegatesFocus: true,
 };
-PfDropdownItem.version = "4.0.2";
+PfDropdownItem.version = "4.1.0";
 __decorate([
     property({ reflect: true })
 ], PfDropdownItem.prototype, "value", void 0);

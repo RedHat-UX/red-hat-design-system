@@ -7,6 +7,8 @@ import type { IconNameFor, IconSetName } from '@rhds/icons';
  *
  * @summary Showcases a data point or quick fact visually
  *
+ * @alias statistic
+ *
  * @slot icon - Optional icon
  * @slot title - Statistic title
  * @slot statistic - Statistic data

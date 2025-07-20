@@ -5,6 +5,8 @@ import { type DateTimeFormat } from '@patternfly/pfe-core/controllers/timestamp-
  * A timestamp provides consistent formats for displaying date and time values.
  *
  * @summary Displays a line of text with date and time values
+ *
+ * @alias timestamp
  */
 export declare class RhTimestamp extends LitElement {
     #private;

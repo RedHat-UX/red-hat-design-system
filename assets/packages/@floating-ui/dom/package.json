@@ -1,6 +1,6 @@
 {
   "name": "@floating-ui/dom",
-  "version": "1.6.13",
+  "version": "1.7.1",
   "description": "Floating UI for the web",
   "publishConfig": {
     "access": "public"
@@ -43,13 +43,13 @@
     "positioning"
   ],
   "dependencies": {
-    "@floating-ui/core": "^1.6.0",
+    "@floating-ui/core": "^1.7.1",
     "@floating-ui/utils": "^0.2.9"
   },
   "devDependencies": {
-    "@types/react": "^18.2.46",
-    "@types/react-dom": "^18.2.18",
-    "@vitejs/plugin-react": "^4.2.1",
+    "@types/react": "^18.3.19",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.1",

@@ -7,6 +7,9 @@ export type NavigationPrimaryPalette = Extract<ColorPalette, ('lightest' | 'dark
  * Primary navigation helps users orient themselves and move through websites and domains.
  *
  * @summary       Primary navigation
+ *
+ * @alias Navigation (primary)
+ *
  * @slot          - Use this slot for `<rh-primary-navigation-item>` hamburger menu links and dropdowns
  * @slot          logo -
  *                Use this slot to override the link and logo image for translations and sub sites.

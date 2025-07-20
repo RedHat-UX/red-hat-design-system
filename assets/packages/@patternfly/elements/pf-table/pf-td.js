@@ -35,7 +35,7 @@ _PfTd_onClick = function _PfTd_onClick() {
     this.dispatchEvent(event);
 };
 PfTd.styles = [styles];
-PfTd.version = "4.0.2";
+PfTd.version = "4.1.0";
 __decorate([
     property({ attribute: 'compound-expand' })
 ], PfTd.prototype, "compoundExpand", void 0);

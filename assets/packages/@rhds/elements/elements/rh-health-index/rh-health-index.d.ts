@@ -1,7 +1,10 @@
 import { LitElement, type PropertyValues } from 'lit';
 /**
  * Health index displays a health grade (A–F) for a particular item or package.
+ *
  * @summary     Displays a health grade for a particular item or package
+ *
+ * @alias health-index
  */
 export declare class RhHealthIndex extends LitElement {
     #private;

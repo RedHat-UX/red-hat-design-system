@@ -6,6 +6,7 @@ import { LitElement, type TemplateResult } from 'lit';
 export declare class PfThead extends LitElement {
     #private;
     static readonly styles: CSSStyleSheet[];
+    private thRowContext;
     connectedCallback(): void;
     render(): TemplateResult<1>;
 }

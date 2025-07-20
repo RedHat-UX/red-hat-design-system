@@ -1,6 +1,6 @@
 import { customElements, HTMLElement } from '@lit-labs/ssr-dom-shim';
 import { getCompatibleStyle, adoptStyles } from './css-tag.js';
-export { CSSResult, adoptStyles, css, getCompatibleStyle, supportsAdoptingStyleSheets, unsafeCSS } from './css-tag.js';
+export { CSSResult, css, supportsAdoptingStyleSheets, unsafeCSS } from './css-tag.js';
 
 // TODO (justinfagnani): Add `hasOwn` here when we ship ES2022
 const { is, defineProperty, getOwnPropertyDescriptor, getOwnPropertyNames, getOwnPropertySymbols, getPrototypeOf, } = Object;
@@ -24,22 +24,28 @@ const polyfillSupport = global.reactiveElementPolyfillSupportDevMode
 {
     // Ensure warnings are issued only 1x, even if multiple versions of Lit
     // are loaded.
-    const issuedWarnings = (global.litIssuedWarnings ??=
-        new Set());
-    // Issue a warning, if we haven't already.
+    global.litIssuedWarnings ??= new Set();
+    /**
+     * Issue a warning if we haven't already, based either on `code` or `warning`.
+     * Warnings are disabled automatically only by `warning`; disabling via `code`
+     * can be done by users.
+     */
     issueWarning = (code, warning) => {
         warning += ` See https://lit.dev/msg/${code} for more information.`;
-        if (!issuedWarnings.has(warning)) {
+        if (!global.litIssuedWarnings.has(warning) &&
+            !global.litIssuedWarnings.has(code)) {
             console.warn(warning);
-            issuedWarnings.add(warning);
+            global.litIssuedWarnings.add(warning);
         }
     };
-    issueWarning('dev-mode', `Lit is in dev mode. Not recommended for production!`);
-    // Issue polyfill support warning.
-    if (global.ShadyDOM?.inUse && polyfillSupport === undefined) {
-        issueWarning('polyfill-support-missing', `Shadow DOM is being polyfilled via \`ShadyDOM\` but ` +
-            `the \`polyfill-support\` module has not been loaded.`);
-    }
+    queueMicrotask(() => {
+        issueWarning('dev-mode', `Lit is in dev mode. Not recommended for production!`);
+        // Issue polyfill support warning.
+        if (global.ShadyDOM?.inUse && polyfillSupport === undefined) {
+            issueWarning('polyfill-support-missing', `Shadow DOM is being polyfilled via \`ShadyDOM\` but ` +
+                `the \`polyfill-support\` module has not been loaded.`);
+        }
+    });
 }
 /**
  * Useful for visualizing and logging insights into what the Lit template system is doing.
@@ -116,6 +122,7 @@ const defaultPropertyDeclaration = {
     type: String,
     converter: defaultConverter,
     reflect: false,
+    useDefault: false,
     hasChanged: notEqual,
 };
 // Ensure metadata is enabled. TypeScript does not polyfill
@@ -223,6 +230,12 @@ class ReactiveElement
             options.attribute = false;
         }
         this.__prepare();
+        // Whether this property is wrapping accessors.
+        // Helps control the initial value change and reflection logic.
+        if (this.prototype.hasOwnProperty(name)) {
+            options = Object.create(options);
+            options.wrapped = true;
+        }
         this.elementProperties.set(name, options);
         if (!options.noAccessor) {
             const key = // Use Symbol.for in dev mode to make it easier to maintain state
@@ -284,12 +297,10 @@ class ReactiveElement
                 `future version of Lit.`);
         }
         return {
-            get() {
-                return get?.call(this);
-            },
+            get,
             set(value) {
                 const oldValue = get?.call(this);
-                set.call(this, value);
+                set?.call(this, value);
                 this.requestUpdate(name, oldValue, options);
             },
             configurable: true,
@@ -472,7 +483,7 @@ class ReactiveElement
     __initialize() {
         this.__updatePromise = new Promise((res) => (this.enableUpdating = res));
         this._$changedProperties = new Map();
-        // This enqueues a microtask that ust run before the first update, so it
+        // This enqueues a microtask that must run before the first update, so it
         // must be called before requestUpdate()
         this.__saveInstanceProperties();
         // ensures first update will be caught by an early access of
@@ -510,13 +521,7 @@ class ReactiveElement
      * Fixes any properties set on the instance before upgrade time.
      * Otherwise these would shadow the accessor and break these properties.
      * The properties are stored in a Map which is played back after the
-     * constructor runs. Note, on very old versions of Safari (<=9) or Chrome
-     * (<=41), properties created for native platform properties like (`id` or
-     * `name`) may not have default values set in the element constructor. On
-     * these browsers native properties appear on instances and therefore their
-     * default value will overwrite any element default (e.g. if the element sets
-     * this.id = 'id' in the constructor, the 'id' will become '' since this is
-     * the native platform default).
+     * constructor runs.
      */
     __saveInstanceProperties() {
         const instanceProperties = new Map();
@@ -583,7 +588,7 @@ class ReactiveElement
      * overridden, `super.attributeChangedCallback(name, _old, value)` must be
      * called.
      *
-     * See [using the lifecycle callbacks](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements#using_the_lifecycle_callbacks)
+     * See [responding to attribute changes](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements#responding_to_attribute_changes)
      * on MDN for more information about the `attributeChangedCallback`.
      * @category attributes
      */
@@ -643,9 +648,11 @@ class ReactiveElement
                     : defaultConverter;
             // mark state reflecting
             this.__reflectingProperty = propName;
-            this[propName] = converter.fromAttribute(value, options.type
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            );
+            this[propName] =
+                converter.fromAttribute(value, options.type) ??
+                    this.__defaultValues?.get(propName) ??
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    null;
             // mark state not reflecting
             this.__reflectingProperty = null;
         }
@@ -670,10 +677,21 @@ class ReactiveElement
             if (name instanceof Event) {
                 issueWarning(``, `The requestUpdate() method was called with an Event as the property name. This is probably a mistake caused by binding this.requestUpdate as an event listener. Instead bind a function that will call it with no arguments: () => this.requestUpdate()`);
             }
-            options ??= this.constructor.getPropertyOptions(name);
-            const hasChanged = options.hasChanged ?? notEqual;
+            const ctor = this.constructor;
             const newValue = this[name];
-            if (hasChanged(newValue, oldValue)) {
+            options ??= ctor.getPropertyOptions(name);
+            const changed = (options.hasChanged ?? notEqual)(newValue, oldValue) ||
+                // When there is no change, check a corner case that can occur when
+                // 1. there's a initial value which was not reflected
+                // 2. the property is subsequently set to this value.
+                // For example, `prop: {useDefault: true, reflect: true}`
+                // and el.prop = 'foo'. This should be considered a change if the
+                // attribute is not set because we will now reflect the property to the attribute.
+                (options.useDefault &&
+                    options.reflect &&
+                    newValue === this.__defaultValues?.get(name) &&
+                    !this.hasAttribute(ctor.__attributeNameForProperty(name, options)));
+            if (changed) {
                 this._$changeProperty(name, oldValue, options);
             }
             else {
@@ -688,17 +706,32 @@ class ReactiveElement
     /**
      * @internal
      */
-    _$changeProperty(name, oldValue, options) {
+    _$changeProperty(name, oldValue, { useDefault, reflect, wrapped }, initializeValue) {
+        // Record default value when useDefault is used. This allows us to
+        // restore this value when the attribute is removed.
+        if (useDefault && !(this.__defaultValues ??= new Map()).has(name)) {
+            this.__defaultValues.set(name, initializeValue ?? oldValue ?? this[name]);
+            // if this is not wrapping an accessor, it must be an initial setting
+            // and in this case we do not want to record the change or reflect.
+            if (wrapped !== true || initializeValue !== undefined) {
+                return;
+            }
+        }
         // TODO (justinfagnani): Create a benchmark of Map.has() + Map.set(
         // vs just Map.set()
         if (!this._$changedProperties.has(name)) {
+            // On the initial change, the old value should be `undefined`, except
+            // with `useDefault`
+            if (!this.hasUpdated && !useDefault) {
+                oldValue = undefined;
+            }
             this._$changedProperties.set(name, oldValue);
         }
         // Add to reflecting properties set.
         // Note, it's important that every change has a chance to add the
         // property to `__reflectingProperties`. This ensures setting
         // attribute + property reflects correctly.
-        if (options.reflect === true && this.__reflectingProperty !== name) {
+        if (reflect === true && this.__reflectingProperty !== name) {
             (this.__reflectingProperties ??= new Set()).add(name);
         }
     }
@@ -806,23 +839,24 @@ class ReactiveElement
                 this.__instanceProperties = undefined;
             }
             // Trigger initial value reflection and populate the initial
-            // changedProperties map, but only for the case of experimental
-            // decorators on accessors, which will not have already populated the
-            // changedProperties map. We can't know if these accessors had
-            // initializers, so we just set them anyway - a difference from
-            // experimental decorators on fields and standard decorators on
-            // auto-accessors.
-            // For context why experimentalDecorators with auto accessors are handled
-            // specifically also see:
+            // `changedProperties` map, but only for the case of properties created
+            // via `createProperty` on accessors, which will not have already
+            // populated the `changedProperties` map since they are not set.
+            // We can't know if these accessors had initializers, so we just set
+            // them anyway - a difference from experimental decorators on fields and
+            // standard decorators on auto-accessors.
+            // For context see:
             // https://github.com/lit/lit/pull/4183#issuecomment-1711959635
             const elementProperties = this.constructor
                 .elementProperties;
             if (elementProperties.size > 0) {
                 for (const [p, options] of elementProperties) {
-                    if (options.wrapped === true &&
+                    const { wrapped } = options;
+                    const value = this[p];
+                    if (wrapped === true &&
                         !this._$changedProperties.has(p) &&
-                        this[p] !== undefined) {
-                        this._$changeProperty(p, this[p], options);
+                        value !== undefined) {
+                        this._$changeProperty(p, undefined, options, value);
                     }
                 }
             }
@@ -963,7 +997,7 @@ class ReactiveElement
      * @category updates
      */
     update(_changedProperties) {
-        // The forEach() expression will only run when when __reflectingProperties is
+        // The forEach() expression will only run when __reflectingProperties is
         // defined, and it returns undefined, setting __reflectingProperties to
         // undefined
         this.__reflectingProperties &&= this.__reflectingProperties.forEach((p) => this.__propertyToAttribute(p, this[p]));
@@ -1051,11 +1085,13 @@ polyfillSupport?.({ ReactiveElement });
 }
 // IMPORTANT: do not change the property name or the assignment expression.
 // This line will be used in regexes to search for ReactiveElement usage.
-(global.reactiveElementVersions ??= []).push('2.0.4');
+(global.reactiveElementVersions ??= []).push('2.1.0');
 if (global.reactiveElementVersions.length > 1) {
-    issueWarning('multiple-versions', `Multiple versions of Lit loaded. Loading multiple versions ` +
-        `is not recommended.`);
+    queueMicrotask(() => {
+        issueWarning('multiple-versions', `Multiple versions of Lit loaded. Loading multiple versions ` +
+            `is not recommended.`);
+    });
 }
 
-export { ReactiveElement, defaultConverter, notEqual };
+export { ReactiveElement, adoptStyles, defaultConverter, getCompatibleStyle, notEqual };
 //# sourceMappingURL=reactive-element.js.map

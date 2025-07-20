@@ -43,11 +43,11 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.2/core.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.3/core.js",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
     "lit/": "/assets/packages/lit/",
     "lit-html/": "/assets/packages/lit-html/",
@@ -1269,25 +1269,40 @@ a user triggering an action first.</p>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-button</span> <span class="token attr-name">slot</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>actions<span class="token punctuation">"</span></span> <span class="token attr-name">variant</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>link<span class="token punctuation">"</span></span> <span class="token attr-name">data-action</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>dismiss<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Cancel<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-button</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-alert</span><span class="token punctuation">&gt;</span></span></code></pre>
 </rh-code-block>
-          <uxdot-knob-attribute slot="knobs" tag="rh-alert" name="state" type="|'danger'|'warning'|'caution'|'neutral'|'info'|'success'" default="'neutral'">
+          <uxdot-knob-attribute slot="knobs" tag="rh-alert" name="state" type="| 'danger'
+    | 'warning'
+    | 'caution'
+    | 'neutral'
+    | 'info'
+    | 'success'" default="'neutral'">
             <div slot="description"><p>Communicates the urgency of a message and is denoted by various styling configurations.</p>
 <ul>
+<li>
+<ul>
 <li><code>neutral</code> - Indicates generic information or a message with no severity.</li>
+</ul>
+</li>
+</ul>
+<ul>
 <li><code>danger</code> - Indicates a danger state, like an error that is blocking a user from completing a task.</li>
 <li><code>warning</code> - Indicates a warning state, like a non-blocking error that might need to be fixed.</li>
 <li><code>caution</code> - Indicates an action or notice which should immediately draw the attention</li>
 <li><code>info</code> - Indicates helpful information or a message with very little to no severity.</li>
 <li><code>success</code> - Indicates a success state, like if a process was completed without errors.</li>
 </ul>
-<p>Note: 'note', 'default', and 'error' will also work, but are deprecated</p>
+<ul>
+<li>Note: 'note', 'default', and 'error' will also work, but are deprecated</li>
+</ul>
 </div>
           </uxdot-knob-attribute>
-          <uxdot-knob-attribute slot="knobs" tag="rh-alert" name="variant" type="'alternate'|'toast'|'inline'|undefined">
+          <uxdot-knob-attribute slot="knobs" tag="rh-alert" name="variant" type="'alternate' | 'toast' | 'inline'">
             <div slot="description"><p>The alternate Inline alert style includes a border instead of a line which
 can be used to express more urgency or better grab the attention of a user.</p>
-<p>A Toast alert is used to present a global message about an event,
+<ul>
+<li>A Toast alert is used to present a global message about an event,
 update, or confirmation, like the result of a user action that cannot
-be presented within a specific layout or component.</p>
+be presented within a specific layout or component.</li>
+</ul>
 </div>
           </uxdot-knob-attribute>
           <uxdot-knob-attribute slot="knobs" tag="rh-alert" name="dismissable" type="boolean" default="false">

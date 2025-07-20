@@ -25,6 +25,9 @@ export class ChipChangeEvent extends Event {
 /**
  * A chip is used to filter information or indicate that a selection was made.
  * @summary Filter information or indicate that a selection was made
+ *
+ * @alias chip
+ *
  * @fires {ChipCheckedEvent} chip-checked - when chip is checked/unchecked
  * @csspart chip - The main chip container
  * @slot - The label of the checkbox

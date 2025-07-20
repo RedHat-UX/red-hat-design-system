@@ -12,9 +12,6 @@ import { css } from "lit";
 const styles = css `:host{display:none;overflow:hidden;will-change:height;--_panel-body-padding-block-start:var(--rh-space-lg,16px);--_panel-body-padding-inline-end:var(--rh-space-xl,24px);--_panel-body-padding-block-end:var(--rh-space-lg,16px);--_panel-body-padding-inline-start:var(--rh-space-xl,24px)}::slotted(:not(rh-accordion)){display:block;margin:unset;background-color:initial}:host ::slotted(:not(:first-child)){padding-block-start:var(--rh-space-xl,24px)}.large{--_panel-body-padding-block-start:var(--rh-space-xl,24px);--_panel-body-padding-inline-end:var(--rh-space-xl,24px);--_panel-body-padding-block-end:var(--rh-space-xl,24px);--_panel-body-padding-inline-start:var(--rh-space-xl,24px)}.body{position:relative;overflow:hidden;display:block;padding:var(--_panel-body-padding-block-start,var(--rh-space-md,8px)) var(--_panel-body-padding-inline-end,var(--rh-space-lg,16px)) var(--_panel-body-padding-block-end,var(--rh-space-md,8px)) var(--_panel-body-padding-inline-start,var(--rh-space-lg,16px))}:host([fixed]){overflow-y:auto;max-height:9.375rem}:host([expanded]){display:block;position:relative;position:unset}#container{border-inline-end:1px solid var(--rh-color-border-subtle);background-color:var(--_accordion-background)}.body:after{content:"";position:absolute;top:0;bottom:0;left:0;width:var(--rh-border-width-lg,3px);background-color:var(--rh-color-accent-brand);inset-block:0;inset-inline-start:0}.content{color:var(--rh-color-text-primary);font-size:var(--_panel-font-size)}`;
 /**
  * Accordion Panel
- *
- * @slot
- *       The content of the accordion panel can be any basic markup including but not limited to div, paragraph, or nested accordion panels.
  */
 let RhAccordionPanel = class RhAccordionPanel extends LitElement {
     constructor() {
@@ -34,6 +31,8 @@ let RhAccordionPanel = class RhAccordionPanel extends LitElement {
            class="${classMap({ large, expanded, content: true })}"
            part="container"
            tabindex="-1">
+        <!-- The content of the accordion panel can be any basic markup including but not limited
+             to div, paragraph, or nested accordion panels. -->
         <slot class="body"></slot>
       </div>
     `;

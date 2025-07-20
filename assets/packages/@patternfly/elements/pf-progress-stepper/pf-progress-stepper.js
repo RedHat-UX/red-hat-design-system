@@ -52,7 +52,7 @@ _PfProgressStepper_onMutation = function _PfProgressStepper_onMutation() {
 PfProgressStepper.childTagName = 'pf-progress-step';
 PfProgressStepper.styles = [style];
 PfProgressStepper.formAssociated = true;
-PfProgressStepper.version = "4.0.2";
+PfProgressStepper.version = "4.1.0";
 __decorate([
     property({ type: Boolean, reflect: true })
 ], PfProgressStepper.prototype, "vertical", void 0);

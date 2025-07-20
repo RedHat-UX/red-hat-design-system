@@ -2,7 +2,11 @@ import type { PropertyValues } from 'lit';
 import { LitElement } from 'lit';
 /**
  * A paginator allows users to navigate between pages of related content.
+ *
  * @summary Allows users to navigate content divided into pages
+ *
+ * @alias pagination
+ *
  * @slot            - An ordered list of links
  * @slot go-to-page - "Go to page" text, defaults to "Page"
  * @slot out-of     - "of" text

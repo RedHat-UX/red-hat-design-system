@@ -9,15 +9,20 @@ let issueWarning;
 {
     // Ensure warnings are issued only 1x, even if multiple versions of Lit
     // are loaded.
-    const issuedWarnings = (globalThis.litIssuedWarnings ??= new Set());
-    // Issue a warning, if we haven't already.
+    globalThis.litIssuedWarnings ??= new Set();
+    /**
+     * Issue a warning if we haven't already, based either on `code` or `warning`.
+     * Warnings are disabled automatically only by `warning`; disabling via `code`
+     * can be done by users.
+     */
     issueWarning = (code, warning) => {
         warning += code
             ? ` See https://lit.dev/msg/${code} for more information.`
             : '';
-        if (!issuedWarnings.has(warning)) {
+        if (!globalThis.litIssuedWarnings.has(warning) &&
+            !globalThis.litIssuedWarnings.has(code)) {
             console.warn(warning);
-            issuedWarnings.add(warning);
+            globalThis.litIssuedWarnings.add(warning);
         }
     };
 }

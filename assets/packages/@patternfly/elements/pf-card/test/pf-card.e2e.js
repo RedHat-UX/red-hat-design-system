@@ -1,7 +1,8 @@
-import { test } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 import { PfeDemoPage } from '@patternfly/pfe-tools/test/playwright/PfeDemoPage.js';
 import { SSRPage } from '@patternfly/pfe-tools/test/playwright/SSRPage.js';
 const tagName = 'pf-card';
+const html = String.raw;
 test.describe(tagName, () => {
     test('snapshot', async ({ page }) => {
         const componentPage = new PfeDemoPage(page, tagName);
@@ -18,6 +19,24 @@ test.describe(tagName, () => {
             ],
         });
         await fixture.snapshots();
+    });
+    test('ssr hints', async ({ browser }) => {
+        const fixture = new SSRPage({
+            tagName,
+            browser,
+            importSpecifiers: [`@patternfly/elements/${tagName}/${tagName}.js`],
+            demoContent: html `
+        <pf-card ssr-hint-has-slotted-default
+                 ssr-hint-has-slotted="header,footer">
+          <h2 slot="header">Header</h2>
+          <span>Body</span>
+          <span slot="footer">Footer</span>
+        </pf-card>
+      `,
+        });
+        await fixture.updateCompleteFor('pf-card');
+        await expect(fixture.page.locator('pf-card #title')).toHaveAttribute('hidden');
+        await expect(fixture.page.locator('pf-card #header')).not.toHaveAttribute('hidden');
     });
 });
 //# sourceMappingURL=pf-card.e2e.js.map

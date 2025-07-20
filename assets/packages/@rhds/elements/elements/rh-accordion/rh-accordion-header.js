@@ -20,16 +20,9 @@ export class AccordionHeaderChangeEvent extends Event {
         this.toggle = toggle;
     }
 }
-const isAccordion = (x) => x instanceof HTMLElement && x.localName === 'rh-accordion';
 /**
  * Accordion Header
  * We expect the light DOM of the rh-accordion-header to be a heading level tag (h1, h2, h3, h4, h5, h6)
- * @csspart text - inline element containing the heading text or slotted heading content
- * @csspart accents - container for accents within the header
- * @slot - accordion toggle content
- * @slot accents -
- *       These elements will appear inline by default with the header title, between the header and the chevron
- *       (or after the chevron and header in disclosure mode). There is an option to set the accents placement to bottom
  * @fires {AccordionHeaderChangeEvent} change - when the open panels change
  */
 let RhAccordionHeader = class RhAccordionHeader extends LitElement {
@@ -67,8 +60,19 @@ let RhAccordionHeader = class RhAccordionHeader extends LitElement {
               class="${classMap({ toggle: true, large, expanded })}"
               @click="${__classPrivateFieldGet(this, _RhAccordionHeader_instances, "m", _RhAccordionHeader_onClick)}">
         <span id="header-container" class="${classMap({ [accents ?? '']: !!accents })}">
-          <span id="header-text" part="text"><slot></slot></span>
-          <span part="accents"><slot name="accents"></slot></span>
+          <!-- summary: inline element containing the heading text or slotted heading content -->
+          <span id="header-text" part="text">
+            <!-- summary: accordion toggle content -->
+            <slot></slot>
+          </span>
+          <!-- summary: container for accents within the header -->
+          <span part="accents">
+           <!-- summary: decorations like icons or tags
+                description: |
+                 These elements will appear inline by default with the header title, between the header and the chevron
+                 (or after the chevron and header in disclosure mode). There is an option to set the accents placement to bottom -->
+            <slot name="accents"></slot>
+          </span>
         </span>
         <svg id="icon"
              role="presentation"

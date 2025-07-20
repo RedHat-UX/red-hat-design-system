@@ -183,7 +183,7 @@ _PfTabs_onExpand = function _PfTabs_onExpand(event) {
 };
 PfTabs.styles = [styles];
 PfTabs.scrollTimeoutDelay = 150;
-PfTabs.version = "4.0.2";
+PfTabs.version = "4.1.0";
 __decorate([
     property({ reflect: false, attribute: 'label-scroll-left' })
 ], PfTabs.prototype, "labelScrollLeft", void 0);

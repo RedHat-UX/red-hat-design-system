@@ -43,11 +43,11 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.2/core.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.3/core.js",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
     "lit/": "/assets/packages/lit/",
     "lit-html/": "/assets/packages/lit-html/",
@@ -877,7 +877,13 @@
       </uxdot-copy-permalink>
       <p>A badge is used to annotate other information like a label or an object name.</p>
 <ul>
+<li>
+<ul>
 <li><code>neutral</code> - Indicates generic information or a message with no severity.</li>
+</ul>
+</li>
+</ul>
+<ul>
 <li><code>danger</code> - Indicates a danger state, like an error that is blocking a user from completing a task.</li>
 <li><code>warning</code> - Indicates a warning state, like a non-blocking error that might need to be fixed.</li>
 <li><code>caution</code> - Indicates an action or notice which should immediately draw the attention</li>
@@ -1210,18 +1216,25 @@
       <!--lit-node 15--><slot name="legend" hidden></slot>
     <!--/lit-part--></template><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rh-badge</span> <span class="token attr-name">number</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>7<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>7<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>rh-badge</span><span class="token punctuation">&gt;</span></span></code></pre>
 </rh-code-block>
-          <uxdot-knob-attribute slot="knobs" tag="rh-badge" name="state" type="|'danger'|'warning'|'caution'|'neutral'|'success'|'info'" default="'neutral'">
+          <uxdot-knob-attribute slot="knobs" tag="rh-badge" name="state" type="| 'danger'
+    | 'warning'
+    | 'caution'
+    | 'neutral'
+    | 'success'
+    | 'info'" default="'neutral'">
             <div slot="description"><p>Denotes the state-of-affairs this badge represents
 Note: 'moderate','important', and 'critical' will also work, but are deprecated</p>
 </div>
           </uxdot-knob-attribute>
-          <uxdot-knob-attribute slot="knobs" tag="rh-badge" name="number" type="number|undefined">
+          <uxdot-knob-attribute slot="knobs" tag="rh-badge" name="number" type="number">
             <div slot="description"><p>Sets a numeric value for a badge.</p>
-<p>You can pair it with <code>threshold</code> attribute to add a <code>+</code> sign
-if the number exceeds the threshold value.</p>
+<ul>
+<li>You can pair it with <code>threshold</code> attribute to add a <code>+</code> sign
+if the number exceeds the threshold value.</li>
+</ul>
 </div>
           </uxdot-knob-attribute>
-          <uxdot-knob-attribute slot="knobs" tag="rh-badge" name="threshold" type="number|undefined">
+          <uxdot-knob-attribute slot="knobs" tag="rh-badge" name="threshold" type="number">
             <div slot="description"><p>Sets a threshold for the numeric value and adds <code>+</code> sign if
 the numeric value exceeds the threshold value.</p>
 </div>

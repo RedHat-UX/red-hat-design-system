@@ -36,19 +36,16 @@ export function provide({ context: context, }) {
         const controllerMap = new WeakMap();
         if (typeof nameOrContext === 'object') {
             // Standard decorators branch
-            nameOrContext.addInitializer(function () {
-                controllerMap.set(this, new ContextProvider(this, { context }));
-            });
             return {
                 get() {
                     return protoOrTarget.get.call(this);
                 },
                 set(value) {
-                    controllerMap.get(this)?.setValue(value);
+                    controllerMap.get(this).setValue(value);
                     return protoOrTarget.set.call(this, value);
                 },
                 init(value) {
-                    controllerMap.get(this)?.setValue(value);
+                    controllerMap.set(this, new ContextProvider(this, { context, initialValue: value }));
                     return value;
                 },
             };

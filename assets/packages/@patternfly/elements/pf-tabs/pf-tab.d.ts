@@ -46,7 +46,7 @@ import { LitElement, type TemplateResult } from 'lit';
 export declare class PfTab extends LitElement {
     #private;
     static readonly styles: CSSStyleSheet[];
-    private icons;
+    private icons?;
     active: boolean;
     disabled: boolean;
     private ctx?;

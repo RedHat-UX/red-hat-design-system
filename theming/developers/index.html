@@ -43,11 +43,11 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.2/core.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.3/core.js",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
     "lit/": "/assets/packages/lit/",
     "lit-html/": "/assets/packages/lit-html/",
@@ -3049,11 +3049,10 @@ when there's no appropriate themable variable.</p>
       </div>
 
       <!--lit-node 15--><slot name="legend" hidden></slot>
-    <!--/lit-part--></template><pre class="language-diff-svg"><code class="language-diff-svg"><span class="token unchanged language-svg"><span class="token prefix unchanged"> </span>&lt;rect x="0"
-<span class="token prefix unchanged"> </span>      y="0"
-</span><span class="token deleted-sign deleted language-svg"><span class="token prefix deleted">-</span>      fill="var(--rh-color-text-primary, light-dark(var(--rh-color-text-primary-on-light, #151515), var(--rh-color-text-primary-on-dark, #ffffff))"&gt;
-</span><span class="token inserted-sign inserted language-svg"><span class="token prefix inserted">+</span>      fill="var(--rh-color-text-primary, #151515)"&gt;
-</span></code></pre>
+    <!--/lit-part--></template><pre class="language-diff-svg"><code class="language-diff-svg"> &lt;rect x="0"
+       y="0"
+-      fill="var(--rh-color-text-primary, light-dark(var(--rh-color-text-primary-on-light, #151515), var(--rh-color-text-primary-on-dark, #ffffff))"&gt;
++      fill="var(--rh-color-text-primary, #151515)"&gt;</code></pre>
 </rh-code-block><p>Last but not least, SVGs inlined into the page need to
 have an accessible description, so make sure they include a <code>&lt;title&gt;</code> element
 containing their <abbr>alt</abbr> text.</p>

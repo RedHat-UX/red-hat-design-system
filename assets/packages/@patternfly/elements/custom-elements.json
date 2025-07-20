@@ -4325,6 +4325,12 @@
               }
             },
             {
+              "url": "https://patternflyelements.org/components/card/demo/ssr/",
+              "source": {
+                "href": "https://github.com/patternfly/patternfly-elements/tree/main/elements/pf-card/demo/ssr.html"
+              }
+            },
+            {
               "url": "https://patternflyelements.org/components/card/demo/title-inline-with-images-and-actions/",
               "source": {
                 "href": "https://github.com/patternfly/patternfly-elements/tree/main/elements/pf-card/demo/title-inline-with-images-and-actions.html"
@@ -14836,6 +14842,15 @@
               "default": "0"
             },
             {
+              "kind": "field",
+              "name": "thRowContext",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "private",
+              "default": "'rowheader'"
+            },
+            {
               "kind": "method",
               "name": "#onRequestExpand",
               "parameters": [
@@ -15240,6 +15255,15 @@
               "attribute": "key"
             },
             {
+              "kind": "field",
+              "name": "contextualRole",
+              "type": {
+                "text": "'colheader' | 'rowheader'"
+              },
+              "privacy": "private",
+              "default": "'rowheader'"
+            },
+            {
               "kind": "method",
               "name": "#onClick",
               "privacy": "private"
@@ -15336,6 +15360,15 @@
             }
           ],
           "members": [
+            {
+              "kind": "field",
+              "name": "thRowContext",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "private",
+              "default": "'colheader'"
+            },
             {
               "kind": "method",
               "name": "#onSlotchange",
@@ -15838,7 +15871,7 @@
               "kind": "field",
               "name": "icons",
               "type": {
-                "text": "HTMLElement[]"
+                "text": "HTMLElement[] | undefined"
               },
               "privacy": "private"
             },

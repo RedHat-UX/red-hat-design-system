@@ -44,6 +44,8 @@ function getBestGuessAccessibleContent(node) {
  *
  * @summary Reveals a small area of information on hover
  *
+ * @alias tooltip
+ *
  * @slot - Place invoking element here,
  *         i.e. the element which when hovered the tooltip will display.
  *         Must be inline content.

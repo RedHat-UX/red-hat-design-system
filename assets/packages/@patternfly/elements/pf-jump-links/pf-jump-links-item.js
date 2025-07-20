@@ -43,7 +43,7 @@ PfJumpLinksItem.shadowRootOptions = {
     ...LitElement.shadowRootOptions,
     delegatesFocus: true,
 };
-PfJumpLinksItem.version = "4.0.2";
+PfJumpLinksItem.version = "4.1.0";
 __decorate([
     property({ type: Boolean, reflect: true })
 ], PfJumpLinksItem.prototype, "active", void 0);

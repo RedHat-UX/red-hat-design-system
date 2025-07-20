@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 import type { Directive } from './directive.js';
-import type { TrustedHTML } from 'trusted-types/lib';
+import type { TrustedHTML } from 'trusted-types/lib/index.js';
 /**
  * Contains types that are part of the unstable debug API.
  *

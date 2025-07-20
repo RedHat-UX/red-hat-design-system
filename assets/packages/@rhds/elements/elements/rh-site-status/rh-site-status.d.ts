@@ -61,7 +61,11 @@ export interface SummaryResponse {
 /**
  * Website status communicates the operational status of a website or domain using a status icon and
  * link. It is usually located in the Footer component.
+ *
  * @summary Communicates operational status of a website or domain
+ *
+ * @alias site-status
+ *
  * @slot - loading-text - Text to display while loading the status defaults to "Loading"
  */
 export declare class RhSiteStatus extends LitElement {

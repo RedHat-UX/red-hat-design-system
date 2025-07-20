@@ -1,9 +1,6 @@
 import { LitElement } from 'lit';
 /**
  * Accordion Panel
- *
- * @slot
- *       The content of the accordion panel can be any basic markup including but not limited to div, paragraph, or nested accordion panels.
  */
 export declare class RhAccordionPanel extends LitElement {
     static readonly styles: CSSStyleSheet[];

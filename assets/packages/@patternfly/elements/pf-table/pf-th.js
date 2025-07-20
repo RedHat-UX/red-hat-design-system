@@ -4,6 +4,8 @@ import { LitElement, html, svg } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
+import { consume } from '@lit/context';
+import { thRoleContext } from './context.js';
 import '@patternfly/elements/pf-button/pf-button.js';
 import { css } from "lit";
 const styles = css `:host {\n  font-weight: bold;\n  padding: 1rem;\n  position: relative;\n}\n\n:host(:empty) {\n  padding: 0;\n}\n\n.sortable {\n  padding-inline-end: 1.5em;\n}\n\n.sortable slot {\n  display: inline;\n  margin-inline-end: 1.5em;\n}\n\nbutton {\n  width: 100%;\n  padding: var(--pf-c-table--cell--PaddingTop) var(--pf-c-table--cell--PaddingRight) var(--pf-c-table--cell--PaddingBottom) var(--pf-c-table--cell--PaddingLeft);\n  font-size: inherit;\n  font-weight: inherit;\n  color: var(--pf-c-table__button--Color);\n  text-align: left;\n  white-space: inherit;\n  -webkit-user-select: text;\n  -moz-user-select: text;\n  -ms-user-select: text;\n  user-select: text;\n  background-color: var(--pf-c-table__button--BackgroundColor);\n  border: 0;\n}\n\nbutton::before {\n  position: absolute;\n  inset: 0;\n  cursor: pointer;\n  content: '';\n}\n\nbutton:hover {\n  --pf-c-table__sort-indicator--Color: var(--pf-c-table__sort__button--hover__sort-indicator--Color);\n  --pf-c-table__sort__button__text--Color: var(--pf-c-table__sort__button--hover__text--Color);\n}\n\nbutton:active {\n  --pf-c-table__sort-indicator--Color: var(--pf-c-table__sort__button--active__sort-indicator--Color);\n  --pf-c-table__sort__button__text--Color: var(--pf-c-table__sort__button--active__text--Color);\n}\n\nbutton:focus {\n  --pf-c-table__sort-indicator--Color: var(--pf-c-table__sort__button--focus__sort-indicator--Color);\n  --pf-c-table__sort__button__text--Color: var(--pf-c-table__sort__button--focus__text--Color);\n}\n\nbutton.sortable {\n  --pf-c-table--cell--PaddingTop: var(--pf-c-table__sort__button--PaddingTop);\n  --pf-c-table--cell--PaddingRight: var(--pf-c-table__sort__button--PaddingRight);\n  --pf-c-table--cell--PaddingBottom: var(--pf-c-table__sort__button--PaddingBottom);\n  --pf-c-table--cell--PaddingLeft: var(--pf-c-table__sort__button--PaddingLeft);\n\n  display: flex;\n  width: auto;\n  margin-top: var(--pf-c-table__sort__button--MarginTop);\n  margin-bottom: var(--pf-c-table__sort__button--MarginBottom);\n  margin-left: var(--pf-c-table__sort__button--MarginLeft);\n}\n\nbutton.selected {\n  --pf-c-table__sort-indicator--Color: var(--pf-c-table__sort--m-selected__sort-indicator--Color);\n  --pf-c-table__sort__button__text--Color: var(--pf-c-table__sort--m-selected__button__text--Color);\n\n  color: var(--pf-c-table__sort--m-selected__button--Color);\n}\n\n#sort-indicator {\n  width: 0;\n  margin-inline-start: -1em;\n  overflow: visible;\n  color: var(--pf-c-table__sort-indicator--Color);\n}\n\n.visually-hidden {\n  position: fixed;\n  top: 0;\n  left: 0;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  white-space: nowrap;\n  border: 0;\n}\n`;
@@ -29,14 +31,11 @@ let PfTh = class PfTh extends LitElement {
         _PfTh_instances.add(this);
         this.sortable = false;
         this.selected = false;
+        this.contextualRole = 'rowheader';
     }
     connectedCallback() {
         super.connectedCallback();
-        const closestThead = this.closest('pf-thead');
-        const closestTable = this.closest('pf-table');
-        const isChildOfThead = !!closestThead && !!closestTable?.contains(closestThead);
-        const role = isChildOfThead ? 'colheader' : 'rowheader';
-        this.setAttribute('role', role);
+        this.setAttribute('role', this.contextualRole);
     }
     render() {
         const selected = !!this.selected;
@@ -70,7 +69,7 @@ _PfTh_onClick = function _PfTh_onClick() {
     }
 };
 PfTh.styles = [styles];
-PfTh.version = "4.0.2";
+PfTh.version = "4.1.0";
 __decorate([
     property({ type: Boolean, reflect: true })
 ], PfTh.prototype, "sortable", void 0);
@@ -86,6 +85,9 @@ __decorate([
 __decorate([
     property()
 ], PfTh.prototype, "key", void 0);
+__decorate([
+    consume({ context: thRoleContext })
+], PfTh.prototype, "contextualRole", void 0);
 PfTh = __decorate([
     customElement('pf-th')
 ], PfTh);

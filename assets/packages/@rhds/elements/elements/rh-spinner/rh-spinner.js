@@ -9,7 +9,11 @@ const styles = css `:host{display:inline-block;text-align:center;width:max-conte
  * A spinner indicates that an action is in progress.
  * It appears as an animated circle over the section that is loading,
  * and it may include a text label
+ *
  * @summary Notifies users their action is being processed or loaded
+ *
+ * @alias spinner
+ *
  * @slot - Optional text label below the animated circle.
  */
 let RhSpinner = class RhSpinner extends LitElement {

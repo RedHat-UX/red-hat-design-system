@@ -94,10 +94,10 @@ _PfTooltip_referenceTrigger = new WeakMap();
 _PfTooltip_float = new WeakMap();
 _PfTooltip_instances = new WeakSet();
 _PfTooltip_invoker_get = function _PfTooltip_invoker_get() {
-    return this.shadowRoot?.querySelector('#invoker') ?? null;
+    return this.shadowRoot?.querySelector?.('#invoker') ?? null;
 };
 _PfTooltip_content_get = function _PfTooltip_content_get() {
-    return this.shadowRoot?.querySelector('#tooltip') ?? null;
+    return this.shadowRoot?.querySelector?.('#tooltip') ?? null;
 };
 _PfTooltip_invokerChanged = function _PfTooltip_invokerChanged() {
     this.requestUpdate();
@@ -135,7 +135,7 @@ _PfTooltip_updateTrigger = function _PfTooltip_updateTrigger() {
     }
 };
 PfTooltip.styles = [styles];
-PfTooltip.version = "4.0.2";
+PfTooltip.version = "4.1.0";
 __decorate([
     property()
 ], PfTooltip.prototype, "position", void 0);

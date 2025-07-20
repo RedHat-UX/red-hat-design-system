@@ -16,7 +16,7 @@ let PfBadge = class PfBadge extends LitElement {
     }
 };
 PfBadge.styles = [styles];
-PfBadge.version = "4.0.2";
+PfBadge.version = "4.1.0";
 __decorate([
     property({ reflect: true })
 ], PfBadge.prototype, "state", void 0);

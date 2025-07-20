@@ -28,7 +28,11 @@ export class VideoPlayEvent extends Event {
 }
 /**
  * A Video embed is a graphical preview of a video overlayed with a play button. When clicked, the embedded YouTube video will begin playing.
+ *
  * @summary Reveals a small area of information on hover
+ *
+ * @alias video-embed
+ *
  * @fires consent-click - "Update preferences" consent button is clicked
  * @fires request-play - Play button is clicked
  * @fires play - Video is about to be played

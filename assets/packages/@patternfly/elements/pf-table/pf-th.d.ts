@@ -16,6 +16,7 @@ export declare class PfTh extends LitElement {
     selected?: boolean;
     sortDirection?: 'asc' | 'desc';
     key: string;
+    private contextualRole;
     connectedCallback(): void;
     render(): TemplateResult<1>;
     sort(): void;

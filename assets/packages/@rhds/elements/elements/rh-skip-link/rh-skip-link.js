@@ -11,6 +11,8 @@ const styles = css `#container{display:block;z-index:1000}a#container{position:f
  *
  * @summary Skip to the main content of a page
  *
+ * @alias skip-link
+ *
  * @slot - An anchor tag targeting the main page content by id hash.
  *         Or, if the `href` attribute is set, the text of the link.
  */

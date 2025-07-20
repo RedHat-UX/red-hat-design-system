@@ -43,11 +43,11 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.2/core.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.3/core.js",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
     "lit/": "/assets/packages/lit/",
     "lit-html/": "/assets/packages/lit-html/",
@@ -1300,7 +1300,7 @@ They are used to announce new features, promos, or news.</p>
 
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>../rh-announcement-lightdom-shim.css<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span></code></pre>
 </rh-code-block>
-          <uxdot-knob-attribute slot="knobs" tag="rh-announcement" name="color-palette" type="ColorPalette|undefined">
+          <uxdot-knob-attribute slot="knobs" tag="rh-announcement" name="color-palette" type="ColorPalette">
             <div slot="description"><p>Sets color context for child components, overrides parent context</p>
 </div>
           </uxdot-knob-attribute>
@@ -1308,7 +1308,7 @@ They are used to announce new features, promos, or news.</p>
             <div slot="description"><p>Make an announcement dismissable</p>
 </div>
           </uxdot-knob-attribute>
-          <uxdot-knob-attribute slot="knobs" tag="rh-announcement" name="image-position" type="'inline-start'|'block-start'|undefined">
+          <uxdot-knob-attribute slot="knobs" tag="rh-announcement" name="image-position" type="'inline-start' | 'block-start'">
             <div slot="description"><p>Set the position of the image in the announcement on mobile viewports. Possible values are:</p>
 <ul>
 <li><code>inline-start</code></li>

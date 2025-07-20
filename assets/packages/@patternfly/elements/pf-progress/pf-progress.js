@@ -101,7 +101,7 @@ _PfProgress_icon_get = function _PfProgress_icon_get() {
     return ICONS.get(this.variant ?? '')?.icon;
 };
 PfProgress.styles = [styles];
-PfProgress.version = "4.0.2";
+PfProgress.version = "4.1.0";
 __decorate([
     property({ reflect: true, type: Number })
 ], PfProgress.prototype, "value", void 0);

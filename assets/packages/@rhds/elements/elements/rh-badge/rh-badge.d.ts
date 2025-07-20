@@ -11,6 +11,8 @@ import { LitElement } from 'lit';
  *
  * @summary Annotates information like a label or object
  *
+ * @alias badge
+ *
  */
 export declare class RhBadge extends LitElement {
     static readonly styles: CSSStyleSheet[];

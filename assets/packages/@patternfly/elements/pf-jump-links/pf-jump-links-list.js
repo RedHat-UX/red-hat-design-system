@@ -11,7 +11,7 @@ let PfJumpLinksList = class PfJumpLinksList extends LitElement {
     }
 };
 PfJumpLinksList.styles = [style];
-PfJumpLinksList.version = "4.0.2";
+PfJumpLinksList.version = "4.1.0";
 PfJumpLinksList = __decorate([
     customElement('pf-jump-links-list')
 ], PfJumpLinksList);

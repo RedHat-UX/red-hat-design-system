@@ -190,7 +190,7 @@ PfChipGroup.shadowRootOptions = {
     ...LitElement.shadowRootOptions,
     delegatesFocus: true,
 };
-PfChipGroup.version = "4.0.2";
+PfChipGroup.version = "4.1.0";
 __decorate([
     property({ attribute: 'accessible-label', type: String })
 ], PfChipGroup.prototype, "accessibleLabel", void 0);
