@@ -22,6 +22,9 @@ export class AnnouncementCloseEvent extends Event {
  * Announcements are flexible surfaces used to group information in a full width banner layout, traditionally across the top of a page.
  * They are used to announce new features, promos, or news.
  * @summary Arranges content and interactive elements in a layout
+ *
+ * @alias announcement
+ *
  * @slot    image
  *          If this slot is used, we expect an image tag with a width and height set.
  *          An icon, svg, or use of the icon component are also valid in this region.

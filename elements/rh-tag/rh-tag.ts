@@ -16,7 +16,11 @@ import styles from './rh-tag.css';
 
 /**
  * A tag is a caption added to an element for better clarity and user convenience.
+ *
  * @summary  Highlights an element to add clarity or draw attention
+ *
+ * @alias tag
+ *
  * @fires close - when a removable label's close button is clicked
  * @slot icon -  Contains the labels's icon, e.g. web-icon-alert-success.
  * @slot      -  Must contain the text for the label.

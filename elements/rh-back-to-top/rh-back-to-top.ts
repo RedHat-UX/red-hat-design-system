@@ -13,6 +13,9 @@ import styles from './rh-back-to-top.css';
  * to the top of a lengthy content page.
  *
  * @summary A shortcut to the top of the page content
+ *
+ * @alias back-to-top
+ *
  * @csspart trigger - back to top link anchor element
  * @slot - Text for the back to top link
  */

@@ -15,6 +15,8 @@ import styles from './rh-blockquote.css';
  *
  * @summary  Highlights quotations and citations with text styles
  *
+ * @alias blockquote
+ *
  * @slot         - Provide a quote for the blockquote
  * @slot author  - Provide an author for the blockquote
  * @slot title   - Provide an author title for the blockquote
