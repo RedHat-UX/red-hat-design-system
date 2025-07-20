@@ -136,6 +136,7 @@
       "dependencies": [
         "patch",
         "analyze",
+        "copy-assets",
         "compile"
       ]
     },
@@ -200,7 +201,7 @@
       ]
     },
     "analyze": {
-      "command": "cem analyze",
+      "command": "cem generate && scripts/cem-demo-index.ts",
       "dependencies": [
         "patch"
       ],
@@ -208,8 +209,6 @@
         "elements/*/demo/*.html",
         "elements/**/*.{ts,js,map}",
         "elements/**/*.css",
-        "scripts/cem-tokens.ts",
-        "scripts/system-tokens.ts",
         "tsconfig.tsbuildinfo"
       ],
       "output": [
@@ -274,8 +273,8 @@
   },
   "dependencies": {
     "@lit/context": "^1.1.4",
-    "@patternfly/pfe-core": "^5.0.2",
-    "@rhds/icons": "^1.2.0",
+    "@patternfly/pfe-core": "^5.0.3",
+    "@rhds/icons": "^1.3.1",
     "@rhds/tokens": "^3.0.1",
     "lit": "^3.2.1",
     "prism-esm": "^1.29.0-fix.6",
@@ -298,8 +297,9 @@
     "@patternfly/eslint-config-elements": "^4.0.0",
     "@patternfly/eslint-plugin-elements": "^2.0.0",
     "@patternfly/icons": "^1.0.3",
-    "@patternfly/pfe-tools": "^4.0.3",
-    "@playwright/test": "^1.51.0",
+    "@patternfly/pfe-tools": "^5.0.3",
+    "@playwright/test": "^1.54.1",
+    "@pwrs/cem": "^0.2.5",
     "@rollup/plugin-node-resolve": "^16.0.0",
     "@stylistic/eslint-plugin-js": "^2.13.0",
     "@stylistic/stylelint-config": "^2.0.0",

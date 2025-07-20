@@ -28,25 +28,25 @@ const [
 const NAV = html`
   <rh-navigation-primary>
     <rh-navigation-primary-item variant="dropdown" summary="${HamburgerItem1Name}">
-      Item 1 Content
+     ${HamburgerItem1Name} Content
     </rh-navigation-primary-item>
 
     <rh-navigation-primary-item variant="dropdown" summary="${HamburgerItem2Name}">
-      Item 2 Content
+     ${HamburgerItem2Name} Content
     </rh-navigation-primary-item>
 
     <rh-navigation-primary-item variant="dropdown" summary="${HamburgerItem3Name}">
-      Item 3 Content
+     ${HamburgerItem3Name} Content
     </rh-navigation-primary-item>
 
     <rh-navigation-primary-item variant="dropdown">
       <span slot="summary">${HamburgerItem4Name}</span>
-      Item 4 Content
+      ${HamburgerItem4Name} Content
     </rh-navigation-primary-item>
 
     <rh-navigation-primary-item variant="dropdown">
       <span slot="summary">${HamburgerItem5Name}</span>
-      Item 5 Content
+      ${HamburgerItem5Name} Content
     </rh-navigation-primary-item>
 
     <rh-navigation-primary-item slot="event">
@@ -185,6 +185,11 @@ describe('<rh-navigation-primary>', function() {
               expect(snapshot).to.have.axQuery({ name: 'Menu', expanded: true });
             });
 
+            it('menu should have focus', async function() {
+              const snapshot = await a11ySnapshot();
+              expect(snapshot).to.have.axQuery({ name: 'Menu', focused: true });
+            });
+
             it('should not hide content behind hamburger menu', async function() {
               const snapshot = await a11ySnapshot();
               expect(snapshot).to.have.axQuery({ name: HamburgerItem1Name });
@@ -199,6 +204,44 @@ describe('<rh-navigation-primary>', function() {
               expect(snapshot).to.have.axQuery({ name: 'Item 6' });
               expect(snapshot).to.have.axQuery({ name: 'Item 7' });
               expect(snapshot).to.have.axQuery({ name: 'Item 8' });
+            });
+
+            describe('toggling a standalone dropdown', function() {
+              beforeEach(async function() {
+                /**
+                 * We normally would not test by query and click but by tabbing to the standalone dropdown
+                 * we are triggering the hamburger menu to close on keyup this is expected behavior
+                 * so we need to click the standalone dropdown to open it which should close the hamburger menu
+                 * the overlay should still remain open
+                 */
+                const item6 = element.querySelector('rh-navigation-primary-item[summary="Item 6"]');
+                const details = item6?.shadowRoot?.querySelector('details');
+                const summary = details?.querySelector('summary');
+                summary?.click();
+              });
+              beforeEach(async () => await element.updateComplete);
+
+              it('should open the standalone dropdown', async function() {
+                const snapshot = await a11ySnapshot();
+                expect(snapshot).to.have.axQuery({ name: 'Item 6', expanded: true });
+                expect(snapshot).to.have.axQuery({ role: 'text', name: 'Item 6 Content' });
+              });
+
+              it('should close the hamburger menu', async function() {
+                const snapshot = await a11ySnapshot();
+                expect(snapshot).to.not.have.axQuery({ name: 'Menu', expanded: false });
+                expect(snapshot).to.not.have.axQuery({ name: HamburgerItem1Name });
+                expect(snapshot).to.not.have.axQuery({ name: HamburgerItem2Name });
+                expect(snapshot).to.not.have.axQuery({ name: HamburgerItem3Name });
+                expect(snapshot).to.not.have.axQuery({ name: HamburgerItem4Name });
+                expect(snapshot).to.not.have.axQuery({ name: HamburgerItem5Name });
+              });
+
+              it('should still have an open overlay', async function() {
+                // query the shadow root for the overlay
+                const overlay = element.shadowRoot?.querySelector('rh-navigation-primary-overlay[open]');
+                expect(overlay).to.exist;
+              });
             });
           });
 

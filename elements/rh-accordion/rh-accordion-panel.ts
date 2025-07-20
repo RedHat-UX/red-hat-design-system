@@ -12,11 +12,9 @@ import { consume } from '@lit/context';
 import { context, type RhAccordionContext } from './context.js';
 
 import styles from './rh-accordion-panel.css';
+
 /**
  * Accordion Panel
- *
- * @slot
- *       The content of the accordion panel can be any basic markup including but not limited to div, paragraph, or nested accordion panels.
  */
 @customElement('rh-accordion-panel')
 @themable
@@ -43,6 +41,8 @@ export class RhAccordionPanel extends LitElement {
            class="${classMap({ large, expanded, content: true })}"
            part="container"
            tabindex="-1">
+        <!-- The content of the accordion panel can be any basic markup including but not limited
+             to div, paragraph, or nested accordion panels. -->
         <slot class="body"></slot>
       </div>
     `;

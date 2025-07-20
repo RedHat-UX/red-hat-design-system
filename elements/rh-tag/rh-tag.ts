@@ -16,7 +16,11 @@ import styles from './rh-tag.css';
 
 /**
  * A tag is a caption added to an element for better clarity and user convenience.
+ *
  * @summary  Highlights an element to add clarity or draw attention
+ *
+ * @alias tag
+ *
  * @fires close - when a removable label's close button is clicked
  * @slot icon -  Contains the labels's icon, e.g. web-icon-alert-success.
  * @slot      -  Must contain the text for the label.
@@ -57,14 +61,16 @@ export class RhTag extends LitElement {
   /** optional href for linked tag. */
   @property() href?: string;
 
-  /** The color of the label. */
+  /**
+   * The color of the label.
+   * Note: 'cyan' will also work, but is deprecated
+   */
   @property() color?:
     | 'red'
     | 'red-orange'
     | 'orange'
     | 'yellow'
     | 'green'
-    | 'cyan' // deprecated
     | 'teal'
     | 'blue'
     | 'purple'
@@ -81,7 +87,7 @@ export class RhTag extends LitElement {
             class="${classMap({
               hasIcon,
               compact: size === 'compact',
-              teal: color === 'cyan' || color === 'teal',
+              teal: color === ('cyan' as 'blue' /* cyan deprecated */) || color === 'teal',
               [variant]: true,
               [color]: true })}">
         <slot name="icon" part="icon">
