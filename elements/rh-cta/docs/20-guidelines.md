@@ -1,470 +1,249 @@
-## Usage
+<style>
+  @container host (min-width: 768px) {
+    #cta-vs-btn td,
+    #styles-variants td:first-child {
+      width: 33%;
+    }
+  }
+</style>
 
-Use a call to action to entice users into making a selection like clicking on a 
-link. For example, use a Primary call to action to bring attention to something 
-important or a Brick call to action if you need to arrange links together in a 
-grid.
+## Guidelines
+
+Use a call to action to entice users to make a selection.
 
 ### When to use a call to action
 
-Using a call to action is a way to highlight a link that is used on its own 
-instead of an inline link in a text block. It is commonly used as the last 
-element in a group so users can read about something first and then proceed 
-further if they are interested. Each page should have only one Primary call to 
-action and any remaining calls to action should be represented as lower in 
-hierarchy.
+Use a call to action to highlight a link on its own so it stands out to users. Most of the time, calls to action are arranged last in a group of elements so users can read about something first and then proceed further if they are interested.
 
 ### Call to action vs. button
 
-Even though they look similar, a call to action is a link which takes users from 
-one page to a **different page** whereas a button communicates and triggers 
-actions on the **same page**. Use a button when the desired action is submitting 
-a form, canceling a process, or creating a new object.
+Here is guidance on when to use a call to action vs. button.
 
-## Variants
+<rh-table id="cta-vs-btn">
 
-Each call to action has a specific function and the design of each variant 
-signals that function to users. Therefore, it is important that each variant is 
-implemented consistently so they communicate the correct actions.
-
-<uxdot-example color-palette="lightest" width-adjustment="788px">
-  <img src="../cta-variants.png"
-       alt="Image of the Primary, Secondary, Brick, and Default variants with descriptive text labels below"
-       width="788"
-       height="90">
-</uxdot-example>
-
-<rh-table>
-
-| Variant   | Use case                                                                                                     |
-|-----------|--------------------------------------------------------------------------------------------------------------|
-| Primary   | Use only once per page for the primary or most important link                                                |
-| Secondary | Use several times on the same page for secondary or general links                                            |
-| Brick     | Use several times on the same page to group links together in a grid                                         |
-| Default   | Use several times on the same page for tertiary or less important links                                      |
-| Video     | Triggers a video in a [dialog](/elements/dialog/) (applies to Primary, Secondary, and Default variants only) |
+| Element        | Intended action                            | Frequency              |
+|----------------|--------------------------------------------|-------------------------|
+| Call to action | Direct users to another page when selected | Always                 |
+| Button         | Perform an action when selected            | Depending on the action, users may or may not be directed to another page as the result of the action |
 
 </rh-table>
 
-### Disabled
+## Using styles or variants
 
-To indicate that a link is currently unavailable, calls to action can become 
-disabled.
+Some calls to action can be used more than once per page depending on their messaging and placement.
 
-<uxdot-example color-palette="lightest" width-adjustment="529px">
-  <img src="../cta-disabled.png"
-       alt="Image of disabled Primary, Secondary, Brick, and Default variants"
-       width="529"
-       height="56">
-</uxdot-example>
+<rh-table id="styles-variants">
 
+| Style or variant | How to use |
+|------------------|------------------------------------------------------------------|
+| Primary          | Try to use only once per page for the most important link        |
+| Secondary        | Use several times on the same page for important links           |
+| Tertiary         | Use several times on the same page for less important links      |
+| Brick            | Use to group several links together in a grid                    |
+| Video            | Use to trigger a video within a [dialog](/elements/dialog/)      |
+| Desaturated      | Use only in the dark scheme if other styles are duplicative or violate accessibility guidelines |
 
-### Brick icons
+</rh-table>
 
-When grouping Brick variants, icons can be paired with text labels to 
-communicate various topics, but the icons must be the same color, height, style, 
-etc.
+### Bricks
 
-<uxdot-example color-palette="lightest" width-adjustment="872px">
-  <img src="../cta-brick-icons.png"
-       alt="Image of Brick variants with an icon on the left of text and on top of text"
-       width="872"
-       height="273">
+[UI icons](/foundations/iconography/#ui-icons) can be used in the Brick variant to add visual interest to various topics.
+
+<uxdot-example color-palette="lightest" width-adjustment="900px">
+  <img src="../cta-guidelines-usage-bricks.svg"
+        alt="Four brick CTAs with various accompanying UI icons"
+        width="900"
+        height="56">
 </uxdot-example>
 
 ## Writing content
 
-### Call to action text labels
+### General text
 
-Call to action text labels should be more action-oriented than button text 
-labels. When writing text labels, be specific and clearly communicate the task 
-or destination by doing the following:
+When writing text, be specific and communicate the action you want users to take by doing the following:
 
-- Make sure the text is unique and easily understood for when screen readers 
-announce text to users
-- Always start the text label with a verb
+- Make sure text is unique and easily understood especially when screen readers announce text to users
+- Always start with a verb, do not use more than 1 verb
 - Use simple words and phrases
-- Do not use multiple verbs
-- Try to write short text labels or rearrange words when possible
-- Do not use punctuation
-- Do not use any other icons except for the ones that are included
+- Keep word counts as short as possible, delete words if needed
+- Do not use any punctuation
+- Do not add extra icons
+- Be aware that text might get longer when translated to certain languages
 
-<uxdot-example color-palette="lightest" width-adjustment="411px">
-  <img src="../cta-text-labels.png"
-        alt="Image of Default variants showing how to incorrectly and correctly write text labels"
-        width="411"
-        height="186">
+<uxdot-example color-palette="lightest" width-adjustment="430px">
+  <img src="../cta-guidelines-content-text.svg"
+        alt="Incorrect vs correct usage. Incorrect: Press release: Red Hat optimizes Red Hat AI. Correct: Read the latest Red Hat AI press release"
+        width="430"
+        height="118">
 </uxdot-example>
 
 ### Clarity of language
-  
-Text labels can be inviting as well as to the point, vague messaging does not 
-help our users make informed decisions.
 
-<uxdot-example color-palette="lightest" width-adjustment="458px">
-  <img src="../cta-clarity-of-language.png"
-        alt="Image of how to incorrectly and correctly use clear and straightforward language"
-        width="458"
-        height="67">
+Generic or vague text does not help users make informed decisions.
+
+<uxdot-example color-palette="lightest" width-adjustment="667px">
+  <img src="../cta-guidelines-content-clarity.svg"
+        alt="Incorrect vs correct usage. Incorrect: Learn more. Correct: Learn about Red Hat AI Enhancements"
+        width="667"
+        height="27">
 </uxdot-example>
 
-### Long text labels
+### Long text
 
-Users do not want to spend more time reading than necessary, so write text 
-labels with as few words as possible.
+Most users do not want to spend more time reading than necessary, so keep text as short as possible.
 
-<uxdot-example color-palette="lightest" width-adjustment="675px">
-  <img src="../cta-long-text-labels-1.png"
-        alt="Image of comparing very long and shortened text labels"
-        width="675"
-        height="221">
-</uxdot-example>
-
-Long text labels will break to two lines on small breakpoints or when translated 
-to certain languages. This can be avoided by writing less text.
-
-<rh-alert state="warning">
-  <h4 slot="header">Warning</h4>
-  <p>The arrow icon in the Default variant should always be connected to at 
-    least one word on the same line.</p>
-</rh-alert>
-
-<uxdot-example color-palette="lightest" width-adjustment="360px">
-  <img src="../cta-long-text-labels-2.png"
-        alt="Image of Primary, Default, and Brick variants within a small breakpoint showing each text label breaking to two lines"
-        width="360"
-        height="342">
-</uxdot-example>
-
-
-### Call to action vs. button text labels
-
-Call to action text labels are written to entice users to select a link whereas 
-button text labels are written to be short and communicate an action.
-
-<uxdot-example color-palette="lightest" width-adjustment="689px">
-  <img src="../cta-call-to-action-vs-button-text-labels.png"
-        alt="Image of comparing text labels in calls to action versus text labels in buttons"
-        width="689"
-        height="56">
-</uxdot-example>
-
-
-### Character count
-The recommended maximum character count for the variants of a call to action are 
-listed below and include spaces.
-
-<rh-table>
-
-| Variants  | Character count |
-|-----------|-----------------|
-| Primary   | 30              |
-| Secondary | 40              |
-| Brick     | 25              |
-| Default   | 55              |
-
-</rh-table>
-
-## Layout
-
-### Heirarchy
-
-Calls to action are ordered by hierarchy with the Primary variant being the most 
-important. Variants that are lower in hierarchy can be used more than one time 
-per page.
-
-<uxdot-example color-palette="lightest" width-adjustment="720px">
-  <img src="../cta-layout-hierarchy.png"
-        alt="Image of calls to action hierarchy and usage guidance"
-        width="720"
-        height="236">
-</uxdot-example>
-
-
-### Placement
-
-Calls to action can be placed in a variety of layouts including cards, grids, 
-lists, and more. It is commonly used as the last element in a group so users can 
-read about something first and then proceed further if they are interested.
-
-<uxdot-example color-palette="lightest" width-adjustment="872px">
-  <img src="../cta-placement-examples-1.png"
-        alt="Image of calls to action used in context including under a text block and within a card"
-        width="872"
-        height="377">
-</uxdot-example>
-
-<uxdot-example color-palette="lightest" width-adjustment="872px">
-  <img src="../cta-placement-examples-2.png"
-        alt="Image of calls to action used in context including within a grid and in a list"
-        width="872"
-        height="430">
-</uxdot-example>
-
-### Grouping
-
-Call to action variants are ordered by hierarchy with Primary being the highest. 
-Variants that are lower in hierarchy can be grouped with Primary as well as used 
-more than once per page.
-
-<uxdot-example color-palette="lightest" width-adjustment="650px">
-  <img src="../cta-layout-grouping.png"
-        alt="Image of call to action groups and their hierarchy from left to right"
-        width="650"
-        height="202">
-</uxdot-example>
-
-### Bricks
-
-Brick variants are flexible and can stretch to fit different column widths.
-
-<rh-alert state="warning">
-  <h4 slot="header">Warning</h4>
-  <p>Long text labels will break to two lines, therefore write no more than two 
-    or three words per Brick variant.</p>
-</rh-alert>
-
-<uxdot-example color-palette="lightest" width-adjustment="872px">
-  <img src="../cta-layout-bricks.png"
-        alt="Image of Brick variants stretched to fit a variety of grid formations"
-        width="872"
-        height="528">
-</uxdot-example>
-
-### Space in groups
-  
-Horizontal and vertical spacing between Primary and Secondary variants should use the `--rh-space-xl` token.
-
-<rh-alert state="info">
-  <h4 slot="header">Helpful tip</h4>
-  <p>Spacing guidance between calls to action and text or other elements are on 
-    the Spacing page.</p>
-</rh-alert>
-
-<uxdot-example color-palette="lightest" width-adjustment="473px">
-  <img src="../cta-layout-space-in-groups-1.png"
-        alt="Image of 24px spacers in between Primary and Secondary variants"
-        width="473"
-        height="256">
-</uxdot-example>
-
-Horizontal and vertical spacing between Default variants should use the `--rh-space-xl` token.
-
-<uxdot-example color-palette="lightest" width-adjustment="705px">
-  <img src="../cta-layout-space-in-groups-2.png"
-        alt="Image of 24px spacers in between Default variants"
-        width="705"
-        height="78">
-</uxdot-example>
-
-Horizontal and vertical spacing between Brick variants should be the same as 
-grid gutters.
-
-<uxdot-example color-palette="lightest" width-adjustment="872px">
-  <img src="../cta-layout-space-in-groups-3.png"
-        alt="Image of a variety of space values in between Brick variants"
-        width="872"
-        height="508">
+<uxdot-example color-palette="lightest" width-adjustment="831px">
+  <img src="../cta-guidelines-content-long-text.svg"
+        alt="Four CTA examples. Two with long text (up to 82 characters) and two with correct text (30-55 characters)"
+        width="831"
+        height="294">
 </uxdot-example>
 
 ## Behavior
 
-### Hiding or revealing content
+### Placement
 
-A Brick variant can hide and reveal a panel of content when selected like an 
-[accordion](/elements/accordion/). However, only one Brick variant can be 
-selected at a time like [tabs](/elements/tabs/).
+Calls to action can be placed in just about any layout or interface. For normal environments, using any style is acceptable. For small environments, use the Tertiary style.
 
-<uxdot-example color-palette="lightest" width-adjustment="1000px">
-  <img src="../cta-bricks-hide-and-reveal.png"
-        alt="Image of Brick variants with a panel open showing a variety of styles and content formations"
-        width="1000"
-        height="1016">
+### Hierarchy
+
+Calls to action follow a hierarchy with the Primary style being the most important.
+
+<uxdot-example color-palette="lightest" width-adjustment="720px">
+  <img src="../cta-guidelines-layout-hierarchy.svg"
+        alt="Use Primary CTA's once or twice per page. Secondary CTA's can be used several times. Tertiary and Brick can be used many times."
+        width="720"
+        height="245">
 </uxdot-example>
 
+### Bricks
+
+Brick variants are the only calls to action that can resize to fit various column arrangements. However, the width of other styles and variants is determined by what content is inside.
+
+<uxdot-example color-palette="lightest" width-adjustment="936px">
+  <img src="../cta-guidelines-layout-bricks.svg"
+        alt="Various bricks with different character counts and widths in different columns"
+        width="936"
+        height="293">
+</uxdot-example>
+
+### Grouping
+
+Calls to action are grouped by hierarchy with the Primary style always being first.
+
+<uxdot-example color-palette="lightest" width-adjustment="796px">
+  <img src="../cta-guidelines-layout-grouping.svg"
+        alt="Four sets of CTAs. In each, the hierarchy cascades from most important to least important, left to right."
+        width="796"
+        height="210">
+</uxdot-example>
+
+### Space when grouped
+
+If calls to action need to be grouped, spacing between them should use the `--rh-space-2xl` token.
+
+Spacing between Brick variants is flexible and should be the same as [grid gutters](/foundations/grid/).
+
+<uxdot-example color-palette="lightest" width-adjustment="483px">
+  <img src="../cta-guidelines-layout-space-a.svg"
+        alt="Three sets of Primary and Secondary CTAs, each with 32px of margin between them on all sides."
+        width="483"
+        height="264">
+</uxdot-example>
+
+<uxdot-example color-palette="lightest" width-adjustment="396px">
+  <img src="../cta-guidelines-layout-space-b.svg"
+        alt="Four tertiary CTAs with 32px of margin between each one."
+        width="396"
+        height="86">
+</uxdot-example>
+
+<uxdot-example color-palette="lightest" width-adjustment="936px">
+  <img src="../cta-guidelines-layout-space-c.svg"
+        alt="Many Brick CTAs showing the spacing slash gutter being controlled by the grid that contains the component."
+        width="936"
+        height="473">
+</uxdot-example>
 
 ## Responsive design
 
-On large breakpoints, calls to action are ordered by hierarchy from left to 
-right in one row. On small breakpoints, if calls to action have long text 
-labels, a second row appears.
+Calls to action are arranged horizontally in 1 row by default. As viewports get smaller, they will stack.
 
-<uxdot-example width-adjustment="1000px" variant="full" no-border alignment="left">
-  <img src="../cta-breakpoints-large.png"
-        alt="Image of calls to action in a layout on a large breakpoint showing them all in one row"
-        width="1000"
-        height="401">
+<uxdot-example color-palette="lightest" width-adjustment="1140px" no-border variant="full">
+  <img src="../cta-guidelines-layout-responsive-design.svg"
+        alt="Three sets of CTAs showing desktop, tablet, and mobile viewports and how they stack as the viewport gets smaller."
+        width="1140"
+        height="560">
 </uxdot-example>
-
-<uxdot-example width-adjustment="576px" variant="full" no-border alignment="left">
-  <img src="../cta-breakpoints-small.png"
-        alt="Image of calls to action in a layout on a small breakpoint showing two variants in one row and one variant in a second row"
-        width="576"
-        height="390">
-</uxdot-example>
-
 
 ## Best practices
 
-### Variant styles
+### Using the primary style
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
-    <uxdot-example color-palette="lightest" width-adjustment="401px" slot="image">
-      <img src="../cta-best-practices-variant-styles-do.svg"
-            alt="Three call to action variants using the built-in options"
-            width="401"
-            height="56">
+    <uxdot-example color-palette="lightest" width-adjustment="374px" slot="image">
+      <img src="../cta-guidelines-best-practice-1-do.svg"
+            alt="A Primary then Secondary CTA"
+            width="374"
+            height="120">
     </uxdot-example>
-    <p>Retain the default styles for each variant.</p>
+    <p>Use the Primary style to indicate the most important action.</p>
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="dont">
-    <uxdot-example color-palette="lightest" width-adjustment="401px" slot="image">
-      <img src="../cta-best-practices-variant-styles-dont.svg"
-            alt="Primary CTA with arrow icon, brick CTA with icon on right, default CTA without arrow icon"
-            width="401"
-            height="56">
+    <uxdot-example color-palette="lightest" width-adjustment="374px" slot="image">
+      <img src="../cta-guidelines-best-practice-1-dont.svg"
+            alt="Two Primary CTAs next to each other"
+            width="374"
+            height="120">
     </uxdot-example>
-    <p>Do not change the styles of any variant.</p>
+    <p>Do not use the Primary style more than once in the same area.</p>
   </uxdot-best-practice>
 </div>
-
-### Primary variants
-
-<div class="grid sm-two-columns">
-  <uxdot-best-practice variant="do">
-    <uxdot-example color-palette="lightest" width-adjustment="325px" slot="image">
-      <img src="../cta-best-practices-primary-do.svg"
-            alt="Primary CTA and secondary CTA in a group"
-            width="325"
-            height="56">
-    </uxdot-example>
-    <p>Use only one primary call to action on each page.</p>
-  </uxdot-best-practice>
-
-  <uxdot-best-practice variant="dont">
-    <uxdot-example color-palette="lightest" width-adjustment="325px" slot="image">
-      <img src="../cta-best-practices-primary-dont.svg"
-            alt="Two primary CTAs in a group"
-            width="325"
-            height="56">
-    </uxdot-example>
-    <p>Do not use more than one primary variant on any page.</p>
-  </uxdot-best-practice>
-</div>
-
-### Brick variants
-
-<uxdot-best-practice variant="do">
-  <uxdot-example color-palette="lightest" width-adjustment="816px" slot="image">
-    <img src="../cta-best-practices-brick-do.svg"
-          alt="Four brick CTAs with icons on the left"
-          width="816"
-          height="56">
-  </uxdot-example>
-  <p>Use one configuration per grid of brick calls to action.</p>
-</uxdot-best-practice>
-
-<uxdot-best-practice variant="dont">
-  <uxdot-example color-palette="lightest" width-adjustment="816px" slot="image">
-    <img src="../cta-best-practices-brick-dont.svg"
-          alt="Four brick CTAs with no icon, an icon on the left, or an icon above the text"
-          width="816"
-          height="88">
-  </uxdot-example>
-  <p>Do not group different brick variants together.</p>
-</uxdot-best-practice>
 
 ### Grouping
 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
-    <uxdot-example color-palette="lightest" width-adjustment="449px" slot="image">
-      <img src="../cta-best-practices-grouping-do.svg"
-            alt="One primary CTA grouped with two secondary CTAs"
-            width="449"
-            height="56">
+    <uxdot-example color-palette="lightest" width-adjustment="374px" slot="image">
+      <img src="../cta-guidelines-best-practice-2-do.svg"
+            alt="A Primary then Secondary CTA"
+            width="374"
+            height="120">
     </uxdot-example>
-    <p>Use up to two different variants in a call to action group.</p>
+    <p>Use a combination of Primary and Secondary styles.</p>
   </uxdot-best-practice>
 
   <uxdot-best-practice variant="dont">
-    <uxdot-example color-palette="lightest" width-adjustment="433px" slot="image">
-      <img src="../cta-best-practices-grouping-dont.svg"
-            alt="One primary CTA, one secondary CTA, and a default CTA in a group"
-            width="433"
-            height="56">
+    <uxdot-example color-palette="lightest" width-adjustment="374px" slot="image">
+      <img src="../cta-guidelines-best-practice-2-dont.svg"
+            alt="Two Primary CTAs next to each other"
+            width="374"
+            height="120">
     </uxdot-example>
-    <p>Do not group more than two different variants together.</p>
+    <p>Do not mix more than 2 styles together.</p>
   </uxdot-best-practice>
 </div>
 
-### Hierarchy
+### Number of actions
 
 <uxdot-best-practice variant="do">
-  <uxdot-example color-palette="lightest" width-adjustment="630px" slot="image">
-    <img src="../cta-best-practices-hierarchy-do.svg"
-          alt="Primary CTA before two secondary CTAs"
-          width="630"
-          height="56">
+  <uxdot-example color-palette="lightest" width-adjustment="483px" slot="image">
+    <img src="../cta-guidelines-best-practice-3-do.svg"
+          alt="One primary and two Secondary CTAs"
+          width="483"
+          height="120">
   </uxdot-example>
-  <p>Variants that are higher in hierarchy should start from the left. (Hierarchy should be reversed when using right-to-left languages.)</p>
+  <p>Use 3 calls to action max, this helps avoid <a href="https://www.scienceofpeople.com/choice-paralysis/">choice paralysis</a>.</p>
 </uxdot-best-practice>
 
 <uxdot-best-practice variant="dont">
-  <uxdot-example color-palette="lightest" width-adjustment="630px" slot="image">
-    <img src="../cta-best-practices-hierarchy-dont.svg"
-          alt="Two secondary CTAs before a primary CTA"
-          width="630"
-          height="88">
+  <uxdot-example color-palette="lightest" width-adjustment="841px" slot="image">
+    <img src="../cta-guidelines-best-practice-3-dont.svg"
+          alt="One primary and four Secondary CTAs"
+          width="841"
+          height="120">
   </uxdot-example>
-  <p>Do not change the hierarchy.</p>
+  <p>Do not use more than 3 calls to action in the same area.</p>
 </uxdot-best-practice>
-
-### Number of choices
-
-<uxdot-best-practice variant="do">
-  <uxdot-example color-palette="lightest" width-adjustment="576px" slot="image">
-    <img src="../cta-best-practices-choices-do.svg"
-          alt="Three CTAs in a group"
-          width="576"
-          height="56">
-  </uxdot-example>
-  <p>Use a maximum of three calls to action in one group. This helps mitigate <a href="https://www.shopify.com/partners/blog/choice-paralysis">choice 
-paralysis</a>.</p>
-</uxdot-best-practice>
-
-<uxdot-best-practice variant="dont">
-  <uxdot-example color-palette="lightest" width-adjustment="985px" slot="image">
-    <img src="../cta-best-practices-choices-dont.svg"
-          alt="Five CTAs in a group"
-          width="985"
-          height="88">
-  </uxdot-example>
-  <p>Do not group more than three calls to action together.</p>
-</uxdot-best-practice>
-
-### Stretching
-
-<div class="grid sm-two-columns">
-  <uxdot-best-practice variant="do">
-    <uxdot-example color-palette="lightest" width-adjustment="296px" slot="image">
-      <img src="../cta-best-practices-stretching-do.svg"
-            alt="Primary and secondary CTAs using the default width"
-            width="296"
-            height="56">
-    </uxdot-example>
-    <p>The width of calls to action should automatically adjust based on the text inside.</p>
-  </uxdot-best-practice>
-
-  <uxdot-best-practice variant="dont">
-    <uxdot-example color-palette="lightest" width-adjustment="482px" slot="image">
-      <img src="../cta-best-practices-stretching-dont.svg"
-            alt="Primary and secondary CTAs that have been stretched to fill the container"
-            width="482"
-            height="56">
-    </uxdot-example>
-    <p>Do not add extra spacing or stretch the width of any variant, except for bricks.</p>
-  </uxdot-best-practice>
-</div>

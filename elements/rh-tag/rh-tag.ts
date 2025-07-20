@@ -17,10 +17,15 @@ import styles from './rh-tag.css';
 
 /**
  * A tag is a caption added to an element for better clarity and user convenience.
+ *
  * @summary  Highlights an element to add clarity or draw attention
- * @slot icon -  Contains the tags's icon, e.g. web-icon-alert-success.
- * @slot      -  Must contain the text for the tag.
- * @csspart icon - container for the tag icon
+ *
+ * @alias tag
+ *
+ * @fires close - when a removable label's close button is clicked
+ * @slot icon -  Contains the labels's icon, e.g. web-icon-alert-success.
+ * @slot      -  Must contain the text for the label.
+ * @csspart icon - container for the label icon
  * @cssprop  {<length>} [--rh-tag-margin-inline-end=4px]
  *           The margin at the end of the direction parallel to the flow of the text.
  * @cssprop  {<length>} [--rh-tag-padding-block-start=4px]
@@ -58,18 +63,20 @@ export class RhTag extends LitElement {
   @property() href?: string;
 
   /**
-  * Whether an interactive tag is disabled.
-  */
+   * Whether an interactive tag is disabled.
+   */
   @property({ type: Boolean, reflect: true }) disabled = false;
 
-  /** The color of the tag. */
+  /**
+   * The color of the label.
+   * Note: 'cyan' will also work, but is deprecated
+   */
   @property() color?:
     | 'red'
     | 'red-orange'
     | 'orange'
     | 'yellow'
     | 'green'
-    | 'cyan' // deprecated
     | 'teal'
     | 'blue'
     | 'purple'
@@ -87,7 +94,7 @@ export class RhTag extends LitElement {
               disabled,
               hasIcon,
               compact: size === 'compact',
-              teal: color === 'cyan' || color === 'teal',
+              teal: color === ('cyan' as 'blue' /* cyan deprecated */) || color === 'teal',
               [variant]: true,
               [color]: true })}">
         <slot name="icon" part="icon">
