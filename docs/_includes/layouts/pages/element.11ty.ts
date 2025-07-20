@@ -47,6 +47,15 @@ interface Context extends EleventyPageRenderData {
 
 const [manifest] = getAllManifests();
 
+class NoElementInDemoError extends Error {
+  constructor(
+    public tagName: string,
+    public filePath: string,
+  ) {
+    super(`ENOTAG: ${filePath} does not contain ${tagName}`);
+  }
+}
+
 export default class ElementsPage extends Renderer<Context> {
   static assetCache = new AssetCache<ImportMap>('rhds-ux-dot-import-map-jspmio');
 
@@ -64,7 +73,8 @@ export default class ElementsPage extends Renderer<Context> {
   static demoManifestsForTagNames =
     Object.groupBy(getAllManifests()
         .flatMap(manifest => manifest.getTagNames()
-            .flatMap(tagName => manifest.getDemoMetadata(tagName, getPfeConfig()))),
+            .flatMap(tagName => manifest.getDemoMetadata(tagName, getPfeConfig())
+                .filter(x => x.filePath?.includes(tagName)))),
                    x => x.primaryElementName);
 
   async render(ctx: Context) {
@@ -206,10 +216,20 @@ export default class ElementsPage extends Renderer<Context> {
     const attributes = manifest.getAttributes(tagName) ?? [];
     const content = await readFile(demo.filePath, 'utf-8');
     const fragment = parseFragment(content);
+    const isOurNode = (node: Tools.Node) =>
+      Tools.isElementNode(node) && node.tagName === ctx.tagName;
     const elementNode: Tools.Element | null =
-      Tools.query(fragment, node => Tools.isElementNode(node) && node.tagName === ctx.tagName);
+      Tools.query(fragment, isOurNode);
     if (!elementNode) {
-      throw new Error('demo does not contain element');
+      const templatedElementNode =
+        Tools.queryAll(fragment, node => Tools.isTemplateNode(node)
+          && !!Tools.query(node.content, isOurNode));
+      if (!templatedElementNode) {
+        throw new NoElementInDemoError(
+          ctx.tagName,
+          demo.filePath,
+        );
+      }
     }
 
 
@@ -364,6 +384,7 @@ export default class ElementsPage extends Renderer<Context> {
               <thead>
                 <tr>
                   <th scope="col">Slot Name</th>
+                  <th scope="col">Summary</th>
                   <th scope="col">Description</th>
                 </tr>
               </thead>
@@ -372,6 +393,7 @@ export default class ElementsPage extends Renderer<Context> {
                 <tr>
                   <td><code>${slot.name}</code></td>
                   <td>${await this.#innerMD(slot.description)}</td>
+                  <td>${await this.#innerMD(slot.summary)}</td>
                 </tr>`))).join('')}
               </tbody>
             </table>
@@ -383,6 +405,7 @@ export default class ElementsPage extends Renderer<Context> {
                 <thead>
                   <tr>
                     <th scope="col">Slot Name</th>
+                    <th scope="col">Summary</th>
                     <th scope="col">Description</th>
                   </tr>
                 </thead>
@@ -390,6 +413,7 @@ export default class ElementsPage extends Renderer<Context> {
                   ${(await Promise.all(deprecated.map(async slot => html`
                   <tr>
                     <td><code>${slot.name}</code></td>
+                    <td>${await this.#innerMD(slot.summary)}</td>
                     <td>
                       ${await this.#innerMD(slot.description)}
                       <em>Note: ${slot.name} is deprecated. ${await this.#innerMD(String(slot.deprecated ?? ''))}</em>
@@ -621,6 +645,7 @@ export default class ElementsPage extends Renderer<Context> {
               <thead>
                 <tr>
                   <th scope="col">Part Name</th>
+                  <th scope="col">Summary</th>
                   <th scope="col">Description</th>
                 </tr>
               </thead>
@@ -629,6 +654,7 @@ export default class ElementsPage extends Renderer<Context> {
                 <tr>
                   <td><code>${part.name}</code></td>
                   <td>${await this.#innerMD(part.description)}</td>
+                  <td>${await this.#innerMD(part.summary)}</td>
                 </tr>`))).join('')}
               </tbody>
             </table>
@@ -640,6 +666,7 @@ export default class ElementsPage extends Renderer<Context> {
                 <thead>
                   <tr>
                     <th scope="col">Part Name</th>
+                    <th scope="col">Summary</th>
                     <th scope="col">Description</th>
                   </tr>
                 </thead>
@@ -647,6 +674,9 @@ export default class ElementsPage extends Renderer<Context> {
                   ${(await Promise.all(deprecated.map(async part => html`
                   <tr>
                     <td><code>${part.name}</code></td>
+                    <td>
+                      ${await this.#innerMD(part.summary)}
+                    </td>
                     <td>
                       ${await this.#innerMD(part.description)}
                       <em>Note: ${part.name} is deprecated. ${await this.#innerMD((part.deprecated ?? '').toString())}</em>
