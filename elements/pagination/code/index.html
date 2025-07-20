@@ -25,8 +25,8 @@
   "imports": {
     "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
-    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
@@ -44,10 +44,10 @@
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.3/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
     "lit/": "/assets/packages/lit/",
     "lit-html/": "/assets/packages/lit-html/",
@@ -732,7 +732,20 @@
         </div>
       </div>
     <!--/lit-part--></template>
-      <uxdot-toc-list  role="list" hydrate-internals-role="list" slot="details"><template shadowroot="open" shadowrootmode="open"><style>:host{columns:16rem;display:block;margin-block:var(--rh-space-lg) 0;padding:0;@container main (min-width: 1440px){columns:unset}}</style><!--lit-part Pz0gobCCM4E=--><slot></slot><!--/lit-part--></template><uxdot-toc-item  role="listitem" hydrate-internals-role="listitem" href="#importing"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block-end:var(--rh-space-lg)}:host(:first-of-type){margin-block-start:0;@container main (min-width: 1440px){margin-block-start:var(--rh-space-md)}}a{align-items:first baseline;color:var(--rh-color-interactive-primary-default);display:inline-flex;font-size:var(--rh-font-size-body-text-lg);gap:var(--rh-space-lg);text-decoration:none;svg{min-width:16px}&:hover{color:var(--rh-color-interactive-primary-hover)}&:focus-within{color:var(--rh-color-interactive-primary-focus)}&:active{color:var(--rh-color-interactive-primary-active)}&:visited{color:var(--rh-color-interactive-primary-visited-default);&:hover{color:var(--rh-color-interactive-primary-visited-hover)}&:focus-within{color:var(--rh-color-interactive-primary-visited-focus)}&:active{color:var(--rh-color-interactive-primary-visited-active)}}}</style><!--lit-part n9KzYiTerrw=-->
+      <uxdot-toc-list  role="list" hydrate-internals-role="list" slot="details"><template shadowroot="open" shadowrootmode="open"><style>:host{columns:16rem;display:block;margin-block:var(--rh-space-lg) 0;padding:0;@container main (min-width: 1440px){columns:unset}}</style><!--lit-part Pz0gobCCM4E=--><slot></slot><!--/lit-part--></template><uxdot-toc-item  role="listitem" hydrate-internals-role="listitem" href="#implementation-guidelines"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block-end:var(--rh-space-lg)}:host(:first-of-type){margin-block-start:0;@container main (min-width: 1440px){margin-block-start:var(--rh-space-md)}}a{align-items:first baseline;color:var(--rh-color-interactive-primary-default);display:inline-flex;font-size:var(--rh-font-size-body-text-lg);gap:var(--rh-space-lg);text-decoration:none;svg{min-width:16px}&:hover{color:var(--rh-color-interactive-primary-hover)}&:focus-within{color:var(--rh-color-interactive-primary-focus)}&:active{color:var(--rh-color-interactive-primary-active)}&:visited{color:var(--rh-color-interactive-primary-visited-default);&:hover{color:var(--rh-color-interactive-primary-visited-hover)}&:focus-within{color:var(--rh-color-interactive-primary-visited-focus)}&:active{color:var(--rh-color-interactive-primary-visited-active)}}}</style><!--lit-part n9KzYiTerrw=-->
+      <!--lit-node 0--><a href="#implementation-guidelines">
+        <svg xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 31.56 31.56"
+             role="presentation"
+             fill="currentColor"
+             focusable="false"
+             width="16px"
+             aria-hidden="true">
+          <path d="M15.78 0l-3.1 3.1 10.5 10.49H0v4.38h23.18l-10.5 10.49 3.1 3.1 15.78-15.78L15.78 0z"></path>
+        </svg>
+        <slot></slot>
+      </a>
+    <!--/lit-part--></template>Implementation guidelines</uxdot-toc-item><uxdot-toc-item  role="listitem" hydrate-internals-role="listitem" href="#importing"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block-end:var(--rh-space-lg)}:host(:first-of-type){margin-block-start:0;@container main (min-width: 1440px){margin-block-start:var(--rh-space-md)}}a{align-items:first baseline;color:var(--rh-color-interactive-primary-default);display:inline-flex;font-size:var(--rh-font-size-body-text-lg);gap:var(--rh-space-lg);text-decoration:none;svg{min-width:16px}&:hover{color:var(--rh-color-interactive-primary-hover)}&:focus-within{color:var(--rh-color-interactive-primary-focus)}&:active{color:var(--rh-color-interactive-primary-active)}&:visited{color:var(--rh-color-interactive-primary-visited-default);&:hover{color:var(--rh-color-interactive-primary-visited-hover)}&:focus-within{color:var(--rh-color-interactive-primary-visited-focus)}&:active{color:var(--rh-color-interactive-primary-visited-active)}}}</style><!--lit-part n9KzYiTerrw=-->
       <!--lit-node 0--><a href="#importing">
         <svg xmlns="http://www.w3.org/2000/svg"
              viewBox="0 0 31.56 31.56"
@@ -758,7 +771,20 @@
         </svg>
         <slot></slot>
       </a>
-    <!--/lit-part--></template>Usage</uxdot-toc-item><uxdot-toc-item  role="listitem" hydrate-internals-role="listitem" href="#rh-pagination-apis"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block-end:var(--rh-space-lg)}:host(:first-of-type){margin-block-start:0;@container main (min-width: 1440px){margin-block-start:var(--rh-space-md)}}a{align-items:first baseline;color:var(--rh-color-interactive-primary-default);display:inline-flex;font-size:var(--rh-font-size-body-text-lg);gap:var(--rh-space-lg);text-decoration:none;svg{min-width:16px}&:hover{color:var(--rh-color-interactive-primary-hover)}&:focus-within{color:var(--rh-color-interactive-primary-focus)}&:active{color:var(--rh-color-interactive-primary-active)}&:visited{color:var(--rh-color-interactive-primary-visited-default);&:hover{color:var(--rh-color-interactive-primary-visited-hover)}&:focus-within{color:var(--rh-color-interactive-primary-visited-focus)}&:active{color:var(--rh-color-interactive-primary-visited-active)}}}</style><!--lit-part n9KzYiTerrw=-->
+    <!--/lit-part--></template>Usage</uxdot-toc-item><uxdot-toc-item  role="listitem" hydrate-internals-role="listitem" href="#implementation-guidelines"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block-end:var(--rh-space-lg)}:host(:first-of-type){margin-block-start:0;@container main (min-width: 1440px){margin-block-start:var(--rh-space-md)}}a{align-items:first baseline;color:var(--rh-color-interactive-primary-default);display:inline-flex;font-size:var(--rh-font-size-body-text-lg);gap:var(--rh-space-lg);text-decoration:none;svg{min-width:16px}&:hover{color:var(--rh-color-interactive-primary-hover)}&:focus-within{color:var(--rh-color-interactive-primary-focus)}&:active{color:var(--rh-color-interactive-primary-active)}&:visited{color:var(--rh-color-interactive-primary-visited-default);&:hover{color:var(--rh-color-interactive-primary-visited-hover)}&:focus-within{color:var(--rh-color-interactive-primary-visited-focus)}&:active{color:var(--rh-color-interactive-primary-visited-active)}}}</style><!--lit-part n9KzYiTerrw=-->
+      <!--lit-node 0--><a href="#implementation-guidelines">
+        <svg xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 31.56 31.56"
+             role="presentation"
+             fill="currentColor"
+             focusable="false"
+             width="16px"
+             aria-hidden="true">
+          <path d="M15.78 0l-3.1 3.1 10.5 10.49H0v4.38h23.18l-10.5 10.49 3.1 3.1 15.78-15.78L15.78 0z"></path>
+        </svg>
+        <slot></slot>
+      </a>
+    <!--/lit-part--></template>Implementation guidelines</uxdot-toc-item><uxdot-toc-item  role="listitem" hydrate-internals-role="listitem" href="#rh-pagination-apis"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block-end:var(--rh-space-lg)}:host(:first-of-type){margin-block-start:0;@container main (min-width: 1440px){margin-block-start:var(--rh-space-md)}}a{align-items:first baseline;color:var(--rh-color-interactive-primary-default);display:inline-flex;font-size:var(--rh-font-size-body-text-lg);gap:var(--rh-space-lg);text-decoration:none;svg{min-width:16px}&:hover{color:var(--rh-color-interactive-primary-hover)}&:focus-within{color:var(--rh-color-interactive-primary-focus)}&:active{color:var(--rh-color-interactive-primary-active)}&:visited{color:var(--rh-color-interactive-primary-visited-default);&:hover{color:var(--rh-color-interactive-primary-visited-hover)}&:focus-within{color:var(--rh-color-interactive-primary-visited-focus)}&:active{color:var(--rh-color-interactive-primary-visited-active)}}}</style><!--lit-part n9KzYiTerrw=-->
       <!--lit-node 0--><a href="#rh-pagination-apis">
         <svg xmlns="http://www.w3.org/2000/svg"
              viewBox="0 0 31.56 31.56"
@@ -771,7 +797,20 @@
         </svg>
         <slot></slot>
       </a>
-    <!--/lit-part--></template>rh-pagination</uxdot-toc-item></uxdot-toc-list><uxdot-toc-list  role="list" hydrate-internals-role="list" slot="expanded"><template shadowroot="open" shadowrootmode="open"><style>:host{columns:16rem;display:block;margin-block:var(--rh-space-lg) 0;padding:0;@container main (min-width: 1440px){columns:unset}}</style><!--lit-part Pz0gobCCM4E=--><slot></slot><!--/lit-part--></template><uxdot-toc-item  role="listitem" hydrate-internals-role="listitem" href="#importing"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block-end:var(--rh-space-lg)}:host(:first-of-type){margin-block-start:0;@container main (min-width: 1440px){margin-block-start:var(--rh-space-md)}}a{align-items:first baseline;color:var(--rh-color-interactive-primary-default);display:inline-flex;font-size:var(--rh-font-size-body-text-lg);gap:var(--rh-space-lg);text-decoration:none;svg{min-width:16px}&:hover{color:var(--rh-color-interactive-primary-hover)}&:focus-within{color:var(--rh-color-interactive-primary-focus)}&:active{color:var(--rh-color-interactive-primary-active)}&:visited{color:var(--rh-color-interactive-primary-visited-default);&:hover{color:var(--rh-color-interactive-primary-visited-hover)}&:focus-within{color:var(--rh-color-interactive-primary-visited-focus)}&:active{color:var(--rh-color-interactive-primary-visited-active)}}}</style><!--lit-part n9KzYiTerrw=-->
+    <!--/lit-part--></template>rh-pagination</uxdot-toc-item></uxdot-toc-list><uxdot-toc-list  role="list" hydrate-internals-role="list" slot="expanded"><template shadowroot="open" shadowrootmode="open"><style>:host{columns:16rem;display:block;margin-block:var(--rh-space-lg) 0;padding:0;@container main (min-width: 1440px){columns:unset}}</style><!--lit-part Pz0gobCCM4E=--><slot></slot><!--/lit-part--></template><uxdot-toc-item  role="listitem" hydrate-internals-role="listitem" href="#implementation-guidelines"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block-end:var(--rh-space-lg)}:host(:first-of-type){margin-block-start:0;@container main (min-width: 1440px){margin-block-start:var(--rh-space-md)}}a{align-items:first baseline;color:var(--rh-color-interactive-primary-default);display:inline-flex;font-size:var(--rh-font-size-body-text-lg);gap:var(--rh-space-lg);text-decoration:none;svg{min-width:16px}&:hover{color:var(--rh-color-interactive-primary-hover)}&:focus-within{color:var(--rh-color-interactive-primary-focus)}&:active{color:var(--rh-color-interactive-primary-active)}&:visited{color:var(--rh-color-interactive-primary-visited-default);&:hover{color:var(--rh-color-interactive-primary-visited-hover)}&:focus-within{color:var(--rh-color-interactive-primary-visited-focus)}&:active{color:var(--rh-color-interactive-primary-visited-active)}}}</style><!--lit-part n9KzYiTerrw=-->
+      <!--lit-node 0--><a href="#implementation-guidelines">
+        <svg xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 31.56 31.56"
+             role="presentation"
+             fill="currentColor"
+             focusable="false"
+             width="16px"
+             aria-hidden="true">
+          <path d="M15.78 0l-3.1 3.1 10.5 10.49H0v4.38h23.18l-10.5 10.49 3.1 3.1 15.78-15.78L15.78 0z"></path>
+        </svg>
+        <slot></slot>
+      </a>
+    <!--/lit-part--></template>Implementation guidelines</uxdot-toc-item><uxdot-toc-item  role="listitem" hydrate-internals-role="listitem" href="#importing"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block-end:var(--rh-space-lg)}:host(:first-of-type){margin-block-start:0;@container main (min-width: 1440px){margin-block-start:var(--rh-space-md)}}a{align-items:first baseline;color:var(--rh-color-interactive-primary-default);display:inline-flex;font-size:var(--rh-font-size-body-text-lg);gap:var(--rh-space-lg);text-decoration:none;svg{min-width:16px}&:hover{color:var(--rh-color-interactive-primary-hover)}&:focus-within{color:var(--rh-color-interactive-primary-focus)}&:active{color:var(--rh-color-interactive-primary-active)}&:visited{color:var(--rh-color-interactive-primary-visited-default);&:hover{color:var(--rh-color-interactive-primary-visited-hover)}&:focus-within{color:var(--rh-color-interactive-primary-visited-focus)}&:active{color:var(--rh-color-interactive-primary-visited-active)}}}</style><!--lit-part n9KzYiTerrw=-->
       <!--lit-node 0--><a href="#importing">
         <svg xmlns="http://www.w3.org/2000/svg"
              viewBox="0 0 31.56 31.56"
@@ -797,7 +836,20 @@
         </svg>
         <slot></slot>
       </a>
-    <!--/lit-part--></template>Usage</uxdot-toc-item><uxdot-toc-item  role="listitem" hydrate-internals-role="listitem" href="#rh-pagination-apis"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block-end:var(--rh-space-lg)}:host(:first-of-type){margin-block-start:0;@container main (min-width: 1440px){margin-block-start:var(--rh-space-md)}}a{align-items:first baseline;color:var(--rh-color-interactive-primary-default);display:inline-flex;font-size:var(--rh-font-size-body-text-lg);gap:var(--rh-space-lg);text-decoration:none;svg{min-width:16px}&:hover{color:var(--rh-color-interactive-primary-hover)}&:focus-within{color:var(--rh-color-interactive-primary-focus)}&:active{color:var(--rh-color-interactive-primary-active)}&:visited{color:var(--rh-color-interactive-primary-visited-default);&:hover{color:var(--rh-color-interactive-primary-visited-hover)}&:focus-within{color:var(--rh-color-interactive-primary-visited-focus)}&:active{color:var(--rh-color-interactive-primary-visited-active)}}}</style><!--lit-part n9KzYiTerrw=-->
+    <!--/lit-part--></template>Usage</uxdot-toc-item><uxdot-toc-item  role="listitem" hydrate-internals-role="listitem" href="#implementation-guidelines"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block-end:var(--rh-space-lg)}:host(:first-of-type){margin-block-start:0;@container main (min-width: 1440px){margin-block-start:var(--rh-space-md)}}a{align-items:first baseline;color:var(--rh-color-interactive-primary-default);display:inline-flex;font-size:var(--rh-font-size-body-text-lg);gap:var(--rh-space-lg);text-decoration:none;svg{min-width:16px}&:hover{color:var(--rh-color-interactive-primary-hover)}&:focus-within{color:var(--rh-color-interactive-primary-focus)}&:active{color:var(--rh-color-interactive-primary-active)}&:visited{color:var(--rh-color-interactive-primary-visited-default);&:hover{color:var(--rh-color-interactive-primary-visited-hover)}&:focus-within{color:var(--rh-color-interactive-primary-visited-focus)}&:active{color:var(--rh-color-interactive-primary-visited-active)}}}</style><!--lit-part n9KzYiTerrw=-->
+      <!--lit-node 0--><a href="#implementation-guidelines">
+        <svg xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 31.56 31.56"
+             role="presentation"
+             fill="currentColor"
+             focusable="false"
+             width="16px"
+             aria-hidden="true">
+          <path d="M15.78 0l-3.1 3.1 10.5 10.49H0v4.38h23.18l-10.5 10.49 3.1 3.1 15.78-15.78L15.78 0z"></path>
+        </svg>
+        <slot></slot>
+      </a>
+    <!--/lit-part--></template>Implementation guidelines</uxdot-toc-item><uxdot-toc-item  role="listitem" hydrate-internals-role="listitem" href="#rh-pagination-apis"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block-end:var(--rh-space-lg)}:host(:first-of-type){margin-block-start:0;@container main (min-width: 1440px){margin-block-start:var(--rh-space-md)}}a{align-items:first baseline;color:var(--rh-color-interactive-primary-default);display:inline-flex;font-size:var(--rh-font-size-body-text-lg);gap:var(--rh-space-lg);text-decoration:none;svg{min-width:16px}&:hover{color:var(--rh-color-interactive-primary-hover)}&:focus-within{color:var(--rh-color-interactive-primary-focus)}&:active{color:var(--rh-color-interactive-primary-active)}&:visited{color:var(--rh-color-interactive-primary-visited-default);&:hover{color:var(--rh-color-interactive-primary-visited-hover)}&:focus-within{color:var(--rh-color-interactive-primary-visited-focus)}&:active{color:var(--rh-color-interactive-primary-visited-active)}}}</style><!--lit-part n9KzYiTerrw=-->
       <!--lit-node 0--><a href="#rh-pagination-apis">
         <svg xmlns="http://www.w3.org/2000/svg"
              viewBox="0 0 31.56 31.56"
@@ -828,7 +880,47 @@
       
       
 
-      
+      <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+  <h2 id="implementation-guidelines" tabindex="-1">
+    <a href="#implementation-guidelines">Implementation guidelines</a><a>
+  </a></h2>
+</uxdot-copy-permalink>
+<ul>
+<li><code>&lt;rh-pagination&gt;</code> must have a nested <code>&lt;ol&gt;</code> element with at least one nested <code>&lt;li&gt;</code> and <code>&lt;a&gt;</code> element.</li>
+<li>Pagination URLs must start with a hash, eg <code>#2</code>.
+<ul>
+<li>We recommend structuring your pagination URL as follows:
+<ul>
+<li><code>example.redhat.com/search/#2</code></li>
+</ul>
+</li>
+<li>If your URL contains query parameters (eg: <code>?search=test</code>), ensure the hash comes after the query parameter.</li>
+<li>Ensure the hash for the <code>href</code> in the first page of the pagination is <code>#</code> and not <code>#1</code>.</li>
+</ul>
+</li>
+<li>The active page is set in this order:
+<ol>
+<li>Looking for an <code>aria-current="page"</code> attribute on a <code>&lt;a&gt;</code> tag</li>
+<li>Looking in the URL for a hash, eg <code>/search/#2</code></li>
+<li>If neither of these are set and no hashes exist in the URL, <code>&lt;rh-pagination&gt;</code> sets the current page to the first <code>&lt;a&gt;</code> in the list</li>
+<li>If <code>&lt;rh-pagination&gt;</code> cannot determine the current link from these conditions, it will log a message to the console saying, "Could not determine current link."</li>
+</ol>
+</li>
+</ul>
+
       <section class="band" id="installation">
         
       <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
@@ -1194,7 +1286,47 @@
     <span slot="action-label-wrap">Wrap lines</span>
     <span slot="action-label-wrap" hidden="" data-code-block-state="active">Overflow lines</span>
   
-        </rh-code-block>
+        </rh-code-block><uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
+      <slot></slot>
+      <span id="signifier">(permalink)</span>
+      <!--lit-node 2--><button 
+              id="button"
+              aria-label="Copy link to clipboard">
+        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part 5A+PTGpViiE=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--lit-node 2--><span part="fallback" hidden><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon>
+      </button>
+    <!--/lit-part--></template>
+  <h2 id="implementation-guidelines" tabindex="-1">
+    <a href="#implementation-guidelines">Implementation guidelines</a><a>
+  </a></h2>
+</uxdot-copy-permalink>
+<ul>
+<li><code>&lt;rh-pagination&gt;</code> must have a nested <code>&lt;ol&gt;</code> element with at least one nested <code>&lt;li&gt;</code> and <code>&lt;a&gt;</code> element.</li>
+<li>Pagination URLs must start with a hash, eg <code>#2</code>.
+<ul>
+<li>We recommend structuring your pagination URL as follows:
+<ul>
+<li><code>example.redhat.com/search/#2</code></li>
+</ul>
+</li>
+<li>If your URL contains query parameters (eg: <code>?search=test</code>), ensure the hash comes after the query parameter.</li>
+<li>Ensure the hash for the <code>href</code> in the first page of the pagination is <code>#</code> and not <code>#1</code>.</li>
+</ul>
+</li>
+<li>The active page is set in this order:
+<ol>
+<li>Looking for an <code>aria-current="page"</code> attribute on a <code>&lt;a&gt;</code> tag</li>
+<li>Looking in the URL for a hash, eg <code>/search/#2</code></li>
+<li>If neither of these are set and no hashes exist in the URL, <code>&lt;rh-pagination&gt;</code> sets the current page to the first <code>&lt;a&gt;</code> in the list</li>
+<li>If <code>&lt;rh-pagination&gt;</code> cannot determine the current link from these conditions, it will log a message to the console saying, "Could not determine current link."</li>
+</ol>
+</li>
+</ul>
+
       
       <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
