@@ -32,12 +32,13 @@ await writeFile('custom-elements.json', JSON.stringify({
     ...module,
     declarations: module.declarations?.map(decl => ({
       ...decl,
-      demos: isCustomElementDeclaration(decl) ? decl.demos?.map(demo => {
-        if (isMainDemo(demo)) {
-          demo.url = `https://ux.redhat.com/elements/${getSlug(demo)}/demo/`;
-        }
-        return demo;
-      }).sort((a, b) => isMainDemo(a) ? -1 : isMainDemo(b) ? 1 : 0) : decl,
+      demos:
+          !isCustomElementDeclaration(decl) ? decl
+        : decl.demos?.map(demo => isMainDemo(demo) ? ({
+          ...demo,
+          url: `https://ux.redhat.com/elements/${getSlug(demo)}/demo/`,
+        }) : demo)
+            .sort((a, b) => isMainDemo(a) ? -1 : isMainDemo(b) ? 1 : 0),
     })),
   })),
 }, null, 2), 'utf-8');
