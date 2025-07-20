@@ -13,7 +13,11 @@ const PALETTE_RE = /(er|est)+/g;
 
 /**
  * Cards are flexible surfaces used to group information in a small layout. They give small previews of information or provide secondary content in relation to the content it's near. Several cards can be used together to group related information.
+ *
  * @summary     Arranges content and interactive elements in a layout
+ *
+ * @alias card
+ *
  * @slot        header -
  *              If this slot is used, we expect a heading level tag (h1, h2, h3, h4, h5, h6).
  *              An icon, svg, or use of the icon component are also valid in this region.
@@ -33,7 +37,7 @@ const PALETTE_RE = /(er|est)+/g;
  * @csspart     footer
  *              The footer for the card. Contains the footer slot.
  * @cssprop     [--rh-card-border-color=var(--rh-border-color-subtle-on-light)]
- *              Computed from the colour context. Intended to be read for
+ *              Computed from the color context. Intended to be read for
  *              theming purposes, rather than set in page css.
  * @cssprop     [--rh-card-heading-font-family=var(--rh-font-family-heading)]
  *              The font family for headings in the header and body

@@ -18,19 +18,19 @@ a,
   border-block-end:
     var(--rh-border-width-sm, 1px)
     solid
-    var(--rh-color-border-interactive-on-light, #0066cc) !important;
+    var(--rh-color-border-interactive-on-light, #0066cc);
   border-inline-start:
     var(--rh-border-width-sm, 1px)
     solid
-    var(--rh-color-border-interactive-on-light, #0066cc) !important;
+    var(--rh-color-border-interactive-on-light, #0066cc);
   border-inline-end:
     var(--rh-border-width-sm, 1px)
     solid
-    var(--rh-color-border-interactive-on-light, #0066cc) !important;
+    var(--rh-color-border-interactive-on-light, #0066cc);
   border-end-start-radius: var(--rh-border-radius-default, 3px) !important;
   border-end-end-radius: var(--rh-border-radius-default, 3px) !important;
   clip: rect(0, 0, 0, 0) !important;
-  color: var(--rh-color-interactive-primary-default-on-light, #0066cc) !important;
+  color: var(--rh-color-interactive-primary-default-on-light, #0066cc);
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif) !important;
   font-size: var(--rh-font-size-body-text-md, 1rem) !important;
   font-weight: var(--rh-font-weight-heading-bold, 700) !important;
@@ -52,8 +52,8 @@ a,
   position: fixed !important;
 }
 
-a:is(:active, :focus),
-::slotted(a:is(:active, :focus)) {
+a:is(:focus),
+::slotted(a:is(:focus)) {
   border-width: var(--rh-border-width-md, 2px) !important;
   clip: auto !important;
   height: auto !important;
@@ -67,7 +67,27 @@ a:is(:active, :focus),
 
 a:is(:active, :hover),
 ::slotted(a:is(:active, :hover)) {
+  color: var(--rh-color-interactive-primary-hover);
   text-decoration: underline !important;
+  text-decoration-style: dashed !important;
+  text-decoration-color: inherit !important;
+  text-decoration-thickness: var(--rh-border-width-sm) !important;
+  text-underline-offset: max(5px, 0.28em) !important;
+  transition-timing-function: ease;
+  transition-property: text-underline-offset, color, text-decoration-color;
+  transition-duration: 0.3s;
+  border-block-end:
+    var(--rh-border-width-sm, 1px)
+    solid
+    var(--rh-color-interactive-primary-hover-on-light, #003366);
+  border-inline-start:
+    var(--rh-border-width-sm, 1px)
+    solid
+    var(--rh-color-interactive-primary-hover-on-light, #003366);
+  border-inline-end:
+    var(--rh-border-width-sm, 1px)
+    solid
+    var(--rh-color-interactive-primary-hover-on-light, #003366);
 }
 
 @media (prefers-reduced-motion: reduce) {

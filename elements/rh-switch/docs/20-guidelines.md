@@ -66,7 +66,7 @@ If your status messages contain rich text, you may use the `message-on` and `mes
 
 ### Status messages vs. form labels
 
-Unlike a status message, a form label is required whenever Switch is used. A form label describes a Switch's purpose. There is no slot for a form label within the web component and has to be added separately.
+Unlike a status message, a form label is required whenever Switch is used. A form label describes a Switch's purpose. There is no slot for a form label within the Web Component and has to be added separately.
 
 <rh-cta href="../accessibility/#using-form-labels">Learn how to use form labels with Switch</rh-cta>
 

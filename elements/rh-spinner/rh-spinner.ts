@@ -12,7 +12,11 @@ export type SpinnerSize = RhSpinner['size'];
  * A spinner indicates that an action is in progress.
  * It appears as an animated circle over the section that is loading,
  * and it may include a text label
+ *
  * @summary Notifies users their action is being processed or loaded
+ *
+ * @alias spinner
+ *
  * @slot - Optional text label below the animated circle.
  */
 @customElement('rh-spinner')

@@ -3,7 +3,6 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
-import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 export { RhFooterUniversal } from './rh-footer-universal.js';
 
@@ -24,7 +23,11 @@ function isHeaderTagName(tagName: string) {
 
 /**
  * A footer displays secondary content and legal information to users who reach the bottom of a page.
+ *
  * @summary Displays secondary information at the bottom of a page
+ *
+ * @alias footer
+ *
  * @csspart base - main footer element, containing all footer content
  * @slot    base - Overrides everything. Do not use.
  * @slot    header - Overrides `header-*`, `logo`, `social-links`
@@ -55,7 +58,8 @@ function isHeaderTagName(tagName: string) {
  * @cssprop [--rh-footer-accent-color=#e00]
  * @cssprop [--rh-footer-section-side-gap=16px]
  * @cssprop [--rh-footer-links-gap=8px]
- * @cssprop [--rh-footer-link-header-font-size=0.875em]
+ * @cssprop [--rh-footer-link-header-font-size=0.875rem]
+ * @csspropo [--rh-footer-link-font-size=0.875rem]
  * @cssprop [--rh-footer-nojs-min-height=750px]
  */
 @customElement('rh-footer')
@@ -75,8 +79,6 @@ export class RhFooter extends LitElement {
     }
     return url;
   }
-
-  #logger = new Logger(this);
 
   #compact = false;
 
@@ -197,9 +199,7 @@ export class RhFooter extends LitElement {
             list.previousElementSibling
             : null;
         if (!header) {
-          return this.#logger.warn(
-            'This links set doesn\'t have a valid header associated with it.'
-          );
+          return;
         } else {
           // add an ID to the header if we need it
           header.id ||= getRandomId('rh-footer');

@@ -70,6 +70,16 @@
       border-block-end-color: transparent;
     }
 
+    & svg {
+      block-size: 30px;
+      inline-size: 42px;
+
+      @container navigation-primary (min-width: 1440px) {
+        block-size: 30px;
+        inline-size: 125px;
+      }
+    }
+
     & ::slotted(a),
     & a {
       display: flex;
@@ -147,7 +157,7 @@
         }
       }
 
-      &:is(:focus-visible, :hover:focus-visible, :active) {
+      &:is(:focus-visible, :hover:focus-visible) {
         outline:
           var(--rh-border-width-md, 2px)
           solid

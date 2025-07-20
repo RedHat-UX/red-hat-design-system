@@ -1,7 +1,6 @@
 :host {
   display: flex;
   flex: none;
-  background-color: var(--rh-color-surface);
 
   --_active-tab-border:
     var(--rh-border-width-lg, 3px) solid var(--_active-tab-border-color,
@@ -79,7 +78,7 @@
   &.box {
     background-color:
       light-dark(var(--rh-color-surface-lighter, #f2f2f2),
-        oklch(from var(--rh-color-surface-dark) calc(l * 0.82) c h));
+        oklch(from var(--rh-color-surface-dark, #383838) calc(l * 0.82) c h));
   }
 
   /* When button is vertical format */
@@ -100,10 +99,20 @@
     }
 
     &:not(.box) {
+      @container (max-width: 767px) {
+        &:after {
+          border-block-start: var(--rh-border-width-lg, 3px) solid transparent;
+        }
+      }
+
       @container (min-width: 768px) {
         padding-block:
           var(--rh-tabs-link-padding-block-start, var(--rh-space-md, 8px))
           var(--rh-tabs-link-padding-block-end, var(--rh-space-md, 8px));
+
+        &:after {
+          border-block-end-color: transparent;
+        }
 
         &.first {
           margin-block-start: var(--rh-space-xl, 24px);
@@ -177,6 +186,13 @@
               border-block-end-color: var(--rh-color-border-subtle);
               border-block-end-width: var(--rh-border-width-sm, 1px);
             }
+
+            &:after {
+              border-block-end:
+                var(--rh-border-width-sm, 1px)
+                solid
+                var(--rh-color-border-subtle);
+            }
           }
         }
       }
@@ -205,20 +221,6 @@
             border-block-start: var(--_active-tab-border);
             border-block-end: var(--_active-tab-border-open);
           }
-        }
-      }
-    }
-
-    &.vertical {
-      @container (max-width: 767px) {
-        &:after {
-          border-block-start: var(--_active-tab-border);
-        }
-      }
-
-      @container (min-width: 768px) {
-        &:after {
-          border-block-end: transparent;
         }
       }
     }
@@ -295,6 +297,10 @@
                 var(--rh-border-width-lg, 3px)
                 solid
                 var(--rh-color-interactive-secondary-default);
+              border-block-start: 0;
+            }
+
+            &:after {
               border-block-start:
                 var(--rh-border-width-sm, 1px)
                 solid
@@ -305,7 +311,7 @@
           &.first {
             @container (min-width: 768px) {
               &:before {
-                border-block-start-color: transparent;
+                border-block-start: 0 solid transparent;
                 border-inline-end-color: var(--rh-color-border-subtle);
               }
             }
@@ -323,7 +329,7 @@
 
       &:not(.vertical) {
         &:hover {
-          &:before {
+          &:after {
             border-block-start:
               var(--rh-border-width-lg, 3px)
               solid
@@ -363,6 +369,8 @@
                 var(--rh-border-width-lg, 3px)
                 solid
                 var(--rh-color-interactive-secondary-default);
+              border-block-start: transparent;
+              border-block-end: transparent;
             }
           }
         }
@@ -395,6 +403,8 @@
 }
 
 :host(:is(:focus, :focus-within)) {
+  outline: none;
+
   & #button {
     outline: 1px auto var(--rh-color-interactive-primary-default);
     outline-offset: -3px;

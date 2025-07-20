@@ -12,11 +12,6 @@ import { themable } from '@rhds/elements/lib/themable.js';
 
 import style from './rh-code-block.css';
 
-/* TODO
- * - style slotted and shadow fake-fabs
- * - manage state of copy and wrap, including if they are slotted. see actions.html
- */
-
 /**
  * Returns a string with common indent stripped from each line. Useful for templating HTML
  * @param str indented string
@@ -36,8 +31,12 @@ interface CodeLineHeightsInfo {
 }
 
 /**
- * A code block is formatted text within a container.
+ * A code block applies special formatting to sections of code.
+ *
  * @summary Formats code strings within a container
+ *
+ * @alias code-block
+ *
  * @slot - A non-executable script tag containing the sample content. JavaScript
  *         samples should use the type `text/sample-javascript`. HTML samples
  *         containing script tags must escape the closing `</script>` tag. Can
@@ -84,11 +83,30 @@ export class RhCodeBlock extends LitElement {
 
   static styles = [style];
 
+  /**
+   * Space- or comma-separated list of code block action buttons to display, containing either 'copy', 'wrap', or both.
+   * 'copy' adds a button that copies the text content to the clipboard. 'wrap' adds a button that toggles line wrap.
+   *
+   * To override the default labels, e.g. for purposes of internationalization, use the
+   * `action-label-copy` and `action-label-wrap` slots. Each slot may receive two elements,
+   * one for the action's default state (e.g. "Copy to clipboard"),
+   * and one for the actions alternative state, e.g. "Copied!".
+   * The active-state element must have the attributes `hidden data-code-block-state="active"`
+   *
+   * @example html```
+   *          <rh-code-block actions="copy wrap">
+   *            <span slot="action-label-copy">Copy to Clipboard</span>
+   *            <span slot="action-label-copy" hidden data-code-block-state="active">Copied!</span>
+   *            <span slot="action-label-wrap">Toggle word wrap</span>
+   *            <span slot="action-label-wrap" hidden data-code-block-state="active">Toggle overflow</span>
+   *          </rh-code-block>
+   *          ```
+   */
   @property({
     reflect: true,
     converter: {
       fromAttribute(value) {
-        return ((value ?? '').split(/\s+/) ?? []).map(x => x.trim()).filter(Boolean);
+        return ((value ?? '').split(/\s+|,/) ?? []).map(x => x.trim()).filter(Boolean);
       },
       toAttribute(value) {
         return Array.isArray(value) ? value.join(' ') : '';
@@ -135,7 +153,6 @@ export class RhCodeBlock extends LitElement {
   #slots = new SlotController(
     this,
     null,
-    // 'actions',
     'action-label-copy',
     'action-label-wrap',
     'show-more',
@@ -145,19 +162,29 @@ export class RhCodeBlock extends LitElement {
 
   #prismOutput?: DirectiveResult;
 
+  #isIntersecting = false;
+  #io = new IntersectionObserver(rs => {
+    this.#isIntersecting = rs.some(r => r.isIntersecting);
+    this.#computeLineNumbers();
+  }, { rootMargin: '50% 0px' });
+
   #ro = new ResizeObserver(() => this.#computeLineNumbers());
 
   #lineHeights: `${string}px`[] = [];
 
   override connectedCallback() {
     super.connectedCallback();
-    this.#ro.observe(this);
+    if (!isServer) {
+      this.#ro.observe(this);
+      this.#io.observe(this);
+    }
     this.#onSlotChange();
   }
 
   override disconnectedCallback() {
     super.disconnectedCallback();
     this.#ro.disconnect();
+    this.#io.disconnect();
   }
 
   render() {
@@ -171,7 +198,7 @@ export class RhCodeBlock extends LitElement {
            @code-action="${this.#onCodeAction}">
         <div id="content-lines" tabindex="${ifDefined((!fullHeight || undefined) && 0)}">
           <div id="sizers" aria-hidden="true"></div>
-          <ol id="line-numbers" aria-hidden="true">${this.#lineHeights.map((height, i) => html`
+          <ol id="line-numbers" inert aria-hidden="true">${this.#lineHeights.map((height, i) => html`
             <li style="${styleMap({ height })}">${i + 1}</li>`)}
           </ol>
           <pre id="prism-output"
@@ -185,16 +212,20 @@ export class RhCodeBlock extends LitElement {
         <div id="actions"
              @click="${this.#onActionsClick}"
              @keyup="${this.#onActionsKeyup}">
-        <!-- <slot name="actions"> -->${this.actions.map(x => html`
+        ${this.actions.map(x => html`
           <rh-tooltip>
-            <slot slot="content" name="action-label-${x}"></slot>
+            <slot id="label" slot="content" name="action-label-${x}">${x === 'copy' ? html`
+              <span>Copy to Clipboard</span>
+              <span hidden data-code-block-state="active">Copied!</span>` : html`
+              <span>Toggle word wrap</span>
+              <span hidden data-code-block-state="active">Toggle overflow</span>`}
+            </slot>
             <button id="action-${x}"
                     class="shadow-fab"
                     data-code-block-action="${x}">
               ${RhCodeBlock.actionIcons.get(this.wrap && x === 'wrap' ? 'wrap-active' : x) ?? ''}
             </button>
           </rh-tooltip>`)}
-        <!-- </slot> -->
         </div>
 
         <button id="expand"
@@ -224,6 +255,9 @@ export class RhCodeBlock extends LitElement {
     if (changed.has('wrap')) {
       this.#wrapChanged();
     }
+    if (this.actions.length && !isServer) {
+      import('@rhds/elements/rh-tooltip/rh-tooltip.js');
+    }
   }
 
   async #onSlotChange() {
@@ -240,7 +274,7 @@ export class RhCodeBlock extends LitElement {
     if (!isServer && getComputedStyle(this).getPropertyValue('--_styles-applied') !== 'true') {
       const root = this.getRootNode();
       if (root instanceof Document || root instanceof ShadowRoot) {
-        const { preRenderedLightDomStyles: { styleSheet } } = await import('./prism.js');
+        const { preRenderedLightDomStyles: { styleSheet } } = await import('./prism.css.js');
         root.adoptedStyleSheets = [...root.adoptedStyleSheets, styleSheet!];
       }
     }
@@ -271,8 +305,9 @@ export class RhCodeBlock extends LitElement {
     await this.updateComplete;
     this.#computeLineNumbers();
     // TODO: handle slotted fabs
-    const slot = this.shadowRoot?.querySelector<HTMLSlotElement>('slot[name="action-label-wrap"]');
-    for (const el of slot?.assignedElements() ?? []) {
+    const assignedElements =
+      this.#getFabContentElements(this.shadowRoot?.querySelector('slot[name="action-label-wrap"]'));
+    for (const el of assignedElements) {
       if (el instanceof HTMLElement) {
         el.hidden = (el.dataset.codeBlockState !== 'active') === this.wrap;
       }
@@ -288,12 +323,23 @@ export class RhCodeBlock extends LitElement {
       : []);
   }
 
+  #getFabContentElements(slot?: HTMLSlotElement | null) {
+    const assignedElements = slot?.assignedElements() ?? [];
+    if (!assignedElements.length) {
+      return [...slot?.querySelectorAll('*') ?? []];
+    }
+    return assignedElements;
+  }
+
   /**
    * Clone the text content and connect it to the document, in order to calculate the number of lines
    * @license MIT
    * Portions copyright prism.js authors (MIT license)
    */
   async #computeLineNumbers() {
+    if (this.lineNumbers === 'hidden' || !this.#isIntersecting) {
+      return;
+    }
     await this.updateComplete;
     const codes =
         this.#prismOutput ? [this.shadowRoot?.getElementById('prism-output')].filter(x => !!x)
@@ -381,21 +427,24 @@ export class RhCodeBlock extends LitElement {
   async #copy() {
     let content: string;
     if (this.highlighting === 'prerendered') {
-      content = this.querySelector('pre')?.textContent ?? '';
+      content =
+        Array.from(
+          this.querySelectorAll('pre'),
+          x => x?.textContent ?? '',
+        ).join('');
     } else {
       content = Array.from(
         this.querySelectorAll('script'),
         x => x.textContent,
       ).join('');
     }
-    await navigator.clipboard.writeText(
-      content
-    );
+    await navigator.clipboard.writeText(content);
     // TODO: handle slotted fabs
     const slot = this.shadowRoot?.querySelector<HTMLSlotElement>('slot[name="action-label-copy"]');
     const tooltip = slot?.closest('rh-tooltip');
     tooltip?.hide();
-    for (const el of slot?.assignedElements() ?? []) {
+    const assignedElements = this.#getFabContentElements(slot);
+    for (const el of assignedElements) {
       if (el instanceof HTMLElement) {
         el.hidden = el.dataset.codeBlockState !== 'active';
       }
@@ -404,7 +453,7 @@ export class RhCodeBlock extends LitElement {
     tooltip?.show();
     await new Promise(r => setTimeout(r, 5_000));
     tooltip?.hide();
-    for (const el of slot?.assignedElements() ?? []) {
+    for (const el of assignedElements) {
       if (el instanceof HTMLElement) {
         el.hidden = el.dataset.codeBlockState === 'active';
       }
@@ -419,28 +468,3 @@ declare global {
     'rh-code-block': RhCodeBlock;
   }
 }
-
-/**
- * TODO: slotted fabs like this:
- *
- *```html
-  <rh-tooltip slot="actions">
-    <span slot="content">Copy to Clipboard</span>
-    <span slot="content"
-          hidden
-          data-code-block-state="active">Copied!</span>
-    <rh-fab icon="copy"
-            data-code-block-action="copy"></rh-fab>
-  </rh-tooltip>
-
-  <rh-tooltip slot="actions">
-    <span slot="content">Toggle linewrap</span>
-    <span slot="content"
-          hidden
-          data-code-block-state="active">Toggle linewrap</span>
-    <rh-fab icon="copy"
-            data-code-block-action="copy"></rh-fab>
-  </rh-tooltip>
-  ````
- *
- */

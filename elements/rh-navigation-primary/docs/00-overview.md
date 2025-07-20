@@ -1,8 +1,11 @@
-<script type="module">
-  import {RhAlert} from '@rhds/elements/rh-alert/rh-alert.js';
-  RhAlert.toast({
-    persistent: true,
-    heading: 'Coming Soon!',
-    message: 'This element is available to use, but the rest of the documentation is in progress.',
-  });
-</script>
+## When to use
+
+- Help users orient themselves after landing
+- Organize content, offers, and other websites in one place
+- Make it easier for users to explore other web domains and systems
+
+<style>
+  rh-navigation-primary {
+    --rh-navigation-primary-z-index: 1;
+  }
+</style>
