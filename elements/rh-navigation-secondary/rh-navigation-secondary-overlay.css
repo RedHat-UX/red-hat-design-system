@@ -4,13 +4,13 @@
   top: 0;
   width: 100vw;
   height: 100vh;
-
-  /* stylelint-disable-next-line */
+  /* stylelint-disable rhds/no-unknown-token-name */
   z-index:
     /** z-index of the navigation-secondary-overlay */
     var(--rh-navigation-secondary-overlay-z-index,
       /** @deprecated use --rh-navigation-secondary-overlay-z-index */
       var(--rh-secondary-nav-overlay-z-index, -1));
+  /* stylelint-enable rhds/no-unknown-token-name */
 }
 
 :host([open]) {

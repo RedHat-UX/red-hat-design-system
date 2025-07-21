@@ -251,12 +251,12 @@ a:focus-within,
   /* --rh-color-border-interactive-on-light with 10% opacity */
 
   --_focus-container-background-color:
-    light-dark(/** Sets the cta container background color on focus */
-      var(--rh-cta-focus-container-background-color, #0066cc1a),
-        var(--rh-cta-focus-container-background-color, #73bcf740));
-
-  --_focus-border-color:
-    /** Sets the cta border color on focus */
+    light-dark(
+        /** Sets the cta container background color on focus */
+        var(--rh-cta-focus-container-background-color, #0066cc1a),
+        var(--rh-cta-focus-container-background-color, #73bcf740)
+      );
+  --_focus-border-color: /** Sets the cta border color on focus */
     var(--rh-cta-focus-border-color, transparent);
   --_focus-color:
     /** Sets the cta color on focus */
@@ -271,12 +271,14 @@ a:focus-within,
 
   --_active-container-background-color:
     light-dark(
-      /** Sets the cta container background color on active. Applicable only for default variant */
-      var(--rh-cta-active-container-background-color, #0066cc1a),
-        var(--rh-cta-active-container-background-color, #73bcf740));
-
-  --_active-inner-border-color:
-    /** Sets the cta inner border color on active */
+        /**
+         * Sets the cta container background color on active.
+         * Applicable only for default variant
+         */
+        var(--rh-cta-active-container-background-color, #0066cc1a),
+        var(--rh-cta-active-container-background-color, #73bcf740)
+      );
+  --_active-inner-border-color: /** Sets the cta inner border color on active */
     var(--rh-cta-active-inner-border-color, transparent);
   --_active-text-decoration: /** Sets the cta text decoration on active */
     var(--rh-cta-active-text-decoration, none);
