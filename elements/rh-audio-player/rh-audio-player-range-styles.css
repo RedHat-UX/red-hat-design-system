@@ -48,6 +48,7 @@ input[type='range'] {
   --_interactive-color: var(--rh-color-border-interactive);
   --_accent-color: var(--rh-color-accent-brand);
   --_outline: var(--rh-border-width-md, 2px) solid var(--_interactive-color);
+
   /** color of time and volume range slider thumb */
   --_thumb-color: var(--rh-audio-player-range-thumb-color, var(--_accent-color));
   --_progress-color: var(--rh-audio-player-range-progress-color, var(--_accent-color));

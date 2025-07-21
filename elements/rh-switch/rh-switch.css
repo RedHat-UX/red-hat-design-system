@@ -73,8 +73,7 @@
   }
 
   &.checked {
-    --_switch-track-background-color:
-      /** The background color of the switch when it is checked. */
+    --_switch-track-background-color: /** The background color of the switch when it is checked. */
       var(--rh-switch-checked, var(--rh-color-accent-base));
 
     & .message {
