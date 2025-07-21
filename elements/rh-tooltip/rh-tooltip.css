@@ -35,7 +35,7 @@
   box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
   max-width:
     var(--rh-tooltip-max-width,
-      /** @deprecated: use --rh-tooltip-max-width */
+      /** @deprecated use --rh-tooltip-max-width */
       var(--rh-tooltip--MaxWidth, 18.75rem)
     );
   border-radius: var(--rh-border-radius-default, 3px);
