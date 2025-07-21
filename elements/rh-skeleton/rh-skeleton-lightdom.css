@@ -17,9 +17,9 @@ rh-skeleton {
     background:
       linear-gradient(to right,
         hsla(from var(--_placeholder-color) h s l / 0) var(--rh-opacity-0, 0%),
-        hsla(from var(--_placeholder-color) h s l / 0.1) calc(var(--rh-opacity-20, 20%) + 5%),
-        hsla(from var(--_placeholder-color) h s l / 0.25) var(--rh-opacity-50, 50%),
-        hsla(from var(--_placeholder-color) h s l / 0.1) calc(var(--rh-opacity-70, 70%) + 5%),
+        hsla(from var(--_placeholder-color) h s l / 0.05) calc(var(--rh-opacity-20, 20%) + 5%),
+        hsla(from var(--_placeholder-color) h s l / 0.1) var(--rh-opacity-50, 50%),
+        hsla(from var(--_placeholder-color) h s l / 0.05) calc(var(--rh-opacity-70, 70%) + 5%),
         hsla(from var(--_placeholder-color) h s l / 0) var(--rh-opacity-100, 100%));
     content: '';
     inset: 0;
