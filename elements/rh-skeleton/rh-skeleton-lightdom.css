@@ -35,11 +35,11 @@ rh-skeleton {
 }
 
 rh-skeleton[size='xs'] {
-  block-size: calc(var(--rh-length-sm, 6px) * 3);
+  block-size: 18px;
 }
 
 rh-skeleton[size='sm'] {
-  block-size: calc(var(--rh-length-xl, 24px) - 3px);
+  block-size: 21px;
 }
 
 rh-skeleton[size='md'] {
@@ -47,31 +47,31 @@ rh-skeleton[size='md'] {
 }
 
 rh-skeleton[size='lg'] {
-  block-size: calc(var(--rh-length-xl, 24px) + 3px);
+  block-size: 27px;
 }
 
 rh-skeleton[size='xl'] {
-  block-size: calc(var(--rh-length-2xl, 32px) - 2px);
+  block-size: 26px;
 }
 
 rh-skeleton[size='2xl'] {
-  block-size: calc(var(--rh-length-2xl, 32px) + 4px);
+  block-size: 31px;
 }
 
 rh-skeleton[size='3xl'] {
-  block-size: var(--rh-length-3xl, 48px);
+  block-size: 37px;
 }
 
 rh-skeleton[size='4xl'] {
-  block-size: var(--rh-length-4xl, 64px);
+  block-size: 47px;
 }
 
 rh-skeleton[size='5xl'] {
-  block-size: var(--rh-length-5xl, 80px);
+  block-size: 52px;
 }
 
 rh-skeleton[size='6xl'] {
-  block-size: var(--rh-length-6xl, 96px);
+  block-size: 62px;
 }
 
 rh-skeleton[type='circle'] {
