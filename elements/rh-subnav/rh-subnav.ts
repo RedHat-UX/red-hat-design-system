@@ -115,7 +115,7 @@ export class RhSubnav extends LitElement {
           slot:
             description: Navigation links, expects collection of \`<a>\` elements
           part:
-            description: \`<slot>\` element
+            description: the anonymous slot
         -->
         <slot part="links" @slotchange="${this.#onSlotchange}"></slot>
         ${!this.#overflow.showScrollButtons ? '' : html`
