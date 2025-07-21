@@ -20,7 +20,6 @@ import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller
  * @summary Organizes content into sections using tabbed pages
  *
  * @alias subnavigation
- *
  */
 @customElement('rh-subnav')
 @colorPalettes

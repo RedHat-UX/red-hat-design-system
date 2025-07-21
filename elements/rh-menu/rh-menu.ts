@@ -22,7 +22,6 @@ export class MenuToggleEvent extends Event {
  * Menu
  *
  * @alias menu
- *
  */
 @customElement('rh-menu')
 @themable

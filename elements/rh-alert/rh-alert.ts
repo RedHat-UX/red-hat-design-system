@@ -65,6 +65,8 @@ const toasts = new Set<Required<ToastOptions>>();
  *
  * @fires {AlertCloseEvent} close - when the dismissable alert closes
  *
+ * @fires {AlertCloseEvent} close - when the dismissable alert closes
+ *
  */
 @customElement('rh-alert')
 @themable

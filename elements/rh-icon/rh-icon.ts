@@ -54,6 +54,7 @@ export class IconResolveErrorEvent extends ErrorEvent {
  *
  * @fires load - Fired when an icon is loaded and rendered
  * @fires error - Fired when an icon fails to load
+ *
  * @cssprop --rh-icon-size - Override default icon size
  */
 @customElement('rh-icon')

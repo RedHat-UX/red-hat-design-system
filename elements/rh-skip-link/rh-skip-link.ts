@@ -13,7 +13,6 @@ import styles from './rh-skip-link.css';
  * @summary Skip to the main content of a page
  *
  * @alias skip-link
- *
  */
 @customElement('rh-skip-link')
 export class RhSkipLink extends LitElement {

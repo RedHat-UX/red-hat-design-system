@@ -36,7 +36,6 @@ interface CodeLineHeightsInfo {
  * @summary Formats code strings within a container
  *
  * @alias code-block
- *
  */
 @customElement('rh-code-block')
 @themable

@@ -16,12 +16,9 @@ import styles from './rh-stat.css';
 /**
  * A statistic showcases a data point or quick fact visually.
  *
- * @summary Displays a statistic with an optional icon, title, statistic, and call to action.
- *
  * @summary Showcases a data point or quick fact visually
  *
  * @alias statistic
- *
  */
 @customElement('rh-stat')
 @themable

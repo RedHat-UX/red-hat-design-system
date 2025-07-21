@@ -125,7 +125,6 @@ const isStatusPageResponse = (data: unknown): data is SummaryResponse => {
  * @summary Communicates operational status of a website or domain
  *
  * @alias site-status
- *
  */
 @customElement('rh-site-status')
 @themable

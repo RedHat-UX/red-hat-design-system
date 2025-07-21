@@ -384,6 +384,7 @@ export default class ElementsPage extends Renderer<Context> {
               <thead>
                 <tr>
                   <th scope="col">Slot Name</th>
+                  <th scope="col">Summary</th>
                   <th scope="col">Description</th>
                 </tr>
               </thead>
@@ -392,6 +393,7 @@ export default class ElementsPage extends Renderer<Context> {
                 <tr>
                   <td><code>${slot.name}</code></td>
                   <td>${await this.#innerMD(slot.description)}</td>
+                  <td>${await this.#innerMD(slot.summary)}</td>
                 </tr>`))).join('')}
               </tbody>
             </table>
@@ -403,6 +405,7 @@ export default class ElementsPage extends Renderer<Context> {
                 <thead>
                   <tr>
                     <th scope="col">Slot Name</th>
+                    <th scope="col">Summary</th>
                     <th scope="col">Description</th>
                   </tr>
                 </thead>
@@ -410,6 +413,7 @@ export default class ElementsPage extends Renderer<Context> {
                   ${(await Promise.all(deprecated.map(async slot => html`
                   <tr>
                     <td><code>${slot.name}</code></td>
+                    <td>${await this.#innerMD(slot.summary)}</td>
                     <td>
                       ${await this.#innerMD(slot.description)}
                       <em>Note: ${slot.name} is deprecated. ${await this.#innerMD(String(slot.deprecated ?? ''))}</em>
@@ -641,7 +645,7 @@ export default class ElementsPage extends Renderer<Context> {
               <thead>
                 <tr>
                   <th scope="col">Part Name</th>
-                    <th scope="col">Summary</th>
+                  <th scope="col">Summary</th>
                   <th scope="col">Description</th>
                 </tr>
               </thead>
@@ -672,7 +676,6 @@ export default class ElementsPage extends Renderer<Context> {
                     <td><code>${part.name}</code></td>
                     <td>
                       ${await this.#innerMD(part.summary)}
-                      <em>Note: ${part.name} is deprecated. ${await this.#innerMD((part.deprecated ?? '').toString())}</em>
                     </td>
                     <td>
                       ${await this.#innerMD(part.description)}

@@ -16,7 +16,6 @@ export type SpinnerSize = RhSpinner['size'];
  * @summary Notifies users their action is being processed or loaded
  *
  * @alias spinner
- *
  */
 @customElement('rh-spinner')
 @themable
