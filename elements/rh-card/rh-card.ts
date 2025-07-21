@@ -18,15 +18,6 @@ const PALETTE_RE = /(er|est)+/g;
  *
  * @alias card
  *
- * @cssprop     [--rh-card-border-color=var(--rh-border-color-subtle-on-light)]
- *              Computed from the color context. Intended to be read for
- *              theming purposes, rather than set in page css.
- * @cssprop     [--rh-card-heading-font-family=var(--rh-font-family-heading)]
- *              The font family for headings in the header and body
- * @cssprop     [--rh-card-heading-font-size=var(--rh-font-size-heading-sm)]
- *              The font size for headings in the header and body
- * @cssprop     [--rh-card-heading-font-weight=var(--rh-font-weight-body-text-medium)]
- *              The font weight for headings in the header and body
  */
 @customElement('rh-card')
 @colorPalettes('lightest', 'lighter', 'darker', 'darkest')

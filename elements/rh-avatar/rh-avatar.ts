@@ -16,8 +16,6 @@ import styles from './rh-avatar.css';
  *
  * @alias avatar
  *
- * @cssprop {<color>+} --rh-avatar-colors      - List of colors to use when generating avatars
- * @cssprop {<length>} [--rh-avatar-size=64px] - Size of the avatar,
  */
 @customElement('rh-avatar')
 @themable

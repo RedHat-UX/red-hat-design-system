@@ -38,34 +38,80 @@
 #outer {
   --_padding: var(--rh-space-2xl, 32px);
   --_margin: var(--rh-space-lg, 16px);
+
+  /**
+   * Color of interactive elements.
+   * Could cause accessibility issues; prefer to use `--rh-color-border-interactive-on-light`
+   * and `--rh-color-border-interactive-on-dark` for theming.
+   */
   --_interactive-color: var(--rh-tile-interactive-color, var(--rh-color-border-interactive));
   --_focus-interactive-color:
     var(--rh-tile-focus-interactive-color,
       var(--rh-color-interactive-primary-hover));
+
+  /**
+   * Disabled text and icons.
+   * Could cause accessibility issues; prefer to use `--rh-color-text-secondary-on-light`
+   * and `--rh-color-text-secondary-on-dark` for theming.
+   */
   --_text-color-secondary:
     var(--rh-tile-text-color-secondary,
       var(--rh-color-text-secondary));
+
+  /**
+   * Color tile surface on focus/hover.
+   * Could cause accessibility issues; prefer to use `--rh-color-surface-lighter`
+   * and `--rh-color-surface-darker` for theming.
+   */
   --_focus-background-color:
     light-dark(var(--rh-tile-focus-background-color,
       var(--rh-color-surface-lighter, #f2f2f2)),
       var(--rh-tile-focus-background-color,
       var(--rh-color-surface-darker, #1f1f1f)));
+
+  /**
+   * Color tile surface when disabled.
+   * Could cause accessibility issues; prefer to use `--rh-color-surface-light`
+   * and `--rh-color-surface-dark` for theming.
+   */
   --_disabled-background-color:
     light-dark(var(--rh-tile-disabled-background-color,
       var(--rh-color-surface-light, #e0e0e0)),
       var(--rh-tile-disabled-background-color,
       var(--rh-color-surface-dark, #383838)));
+
+  /**
+   * Color of tile border.
+   * Could cause accessibility issues; prefer to use `--rh-color-border-subtle-on-light`
+   * and `--rh-color-border-subtle-on-dark` for theming.
+   */
   --_border-color: var(--rh-tile-border-color, var(--rh-color-border-subtle));
+
+  /**
+   * Color of tile link.
+   */
   --_link-color: var(--rh-tile-link-color, var(--_interactive-color));
 
   position: relative;
   padding: var(--_padding);
   border-radius: var(--rh-border-radius-default, 3px);
   border: var(--rh-border-width-sm, 1px) solid var(--_border-color);
+
+  /**
+   * Color tile surface.
+   * Could cause accessibility issues; prefer to use `--rh-color-surface-lightest`
+   * and `--rh-color-surface-darkest` for theming.
+   */
   background-color:
     var(--rh-tile-background-color,
       light-dark(var(--rh-color-surface-lightest, #ffffff),
       var(--rh-color-surface-darkest, #151515)));
+
+  /**
+   * Color of text.
+   * Could cause accessibility issues; prefer to use `--rh-color-text-primary-on-light`
+   * and `--rh-color-text-primary-on-dark` for theming.
+   */
   color: var(--rh-tile-text-color, var(--rh-color-text-primary));
 
   & ::slotted(*) {

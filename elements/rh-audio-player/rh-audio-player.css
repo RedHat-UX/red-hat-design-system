@@ -37,12 +37,20 @@ button {
   --_about-mediatitle-display: none;
   --_about-heading-display: flex;
   --_box-shadow: light-dark(var(--rh-box-shadow-md, 0 4px 6px 1px rgba(21, 21, 21, 0.25)), none);
+
+  /** player secondary opacity used for partially faded elements - */
   --_secondary-opacity: var(--rh-audio-player-secondary-opacity, 1);
   --_text-color: var(--rh-audio-player-text-color, var(--rh-color-text-primary));
+
+  /** color of player border - */
   --_border-color: var(--rh-color-border-subtle);
+
+  /** color of player background - */
   --_surface-color:
     light-dark(var(--rh-audio-player-background-color, var(--rh-color-surface-lightest, #ffffff)),
       var(--rh-audio-player-background-color, var(--rh-color-surface-darkest, #151515)));
+
+  /** player secondary text color - */
   --_secondary-text-color:
     var(--rh-audio-player-secondary-text-color,
       var(--rh-color-text-secondary));
@@ -58,9 +66,17 @@ button {
   --_static-surface-focus-color:
     light-dark(var(--rh-color-surface-light, #e0e0e0),
       var(--rh-color-surface-dark, #383838));
+
+  /** padding top on tooltips - */
   --rh-tooltip-content-padding-block-start: var(--rh-space-md, 8px);
+
+  /** padding bottom on tooltips - */
   --rh-tooltip-content-padding-block-end: var(--rh-space-md, 8px);
+
+  /** padding left on tooltips - */
   --rh-tooltip-content-padding-inline-start: var(--rh-space-md, 8px);
+
+  /** padding right on tooltips - */
   --rh-tooltip-content-padding-inline-end: var(--rh-space-md, 8px);
   --rh-audio-player-scrolling-text-overflow-background-color: var(--_surface-color);
 

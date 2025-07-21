@@ -18,6 +18,7 @@
   --_current-active-child-border-color: var(--rh-color-brand-red);
   --_border-color: light-dark(transparent, var(--rh-color-border-subtle));
 
+  /** z-index of the navigation-secondary */
   z-index: var(--rh-navigation-secondary-z-index, 102);
 }
 

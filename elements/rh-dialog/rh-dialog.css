@@ -163,6 +163,7 @@
 }
 
 #close-button {
+  /** Sets the dialog close button color. */
   color: var(--rh-dialog-close-button-color, var(--rh-color-icon-secondary));
   cursor: pointer;
   display: block;
@@ -208,6 +209,7 @@
 }
 
 :host([type='video'][open]) #dialog {
+  /** Aspect ratio for the video inside the dialog */
   --_aspect-ratio: var(--rh-dialog-video-aspect-ratio, 16/9);
 
   aspect-ratio: var(--_aspect-ratio);

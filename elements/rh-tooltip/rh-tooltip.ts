@@ -50,15 +50,6 @@ function getBestGuessAccessibleContent(node: Node): string {
  *
  * @alias tooltip
  *
- * @cssprop {<length>} [--rh-tooltip-arrow-size=11px]
- * @cssprop {<color>} [--rh-tooltip-content-background-color=#ffffff]
- * @cssprop {<color>} [--rh-tooltip-content-color=#151515]
- * @cssprop {<length>} [--rh-tooltip-max-width=18.75rem]
- * @cssprop {<length>} [--rh-tooltip-content-padding-block-start=16px]
- * @cssprop {<length>} [--rh-tooltip-content-padding-inline-end=16px]
- * @cssprop {<length>} [--rh-tooltip-content-padding-block-end=16px]
- * @cssprop {<length>} [--rh-tooltip-content-padding-inline-start=16px]
- * @cssprop {<absolute-size> | <relative-size> | <length> | <percentage>} [--rh-tooltip-content-font-size=0.875rem]
  */
 @customElement('rh-tooltip')
 @themable

@@ -7,6 +7,14 @@ a {
   display: inline-flex;
   align-items: center;
   position: relative;
+
+  /** The padding at the start of the direction perpendicular to the flow of the text. */
+
+  /** The padding at the end of the direction parallel to the flow of the text. */
+
+  /** The padding at the end of the direction perpendicular to the flow of the text. */
+
+  /** The padding at the start of the direction parallel to the flow of the text. */
   padding:
     var(--rh-tag-padding-block-start, var(--rh-space-xs, 4px))
     var(--rh-tag-padding-inline-end, var(--rh-space-md, 8px))

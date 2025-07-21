@@ -43,7 +43,6 @@ export { RhTab };
  *
  * @alias tabs
  *
- * @cssprop {<length>} [--rh-tabs-inset=auto] - Tabs inset
  */
 @customElement('rh-tabs')
 @colorPalettes

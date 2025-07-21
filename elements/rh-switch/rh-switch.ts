@@ -19,9 +19,6 @@ import '@rhds/elements/rh-icon/rh-icon.js';
  *
  * @alias switch
  *
- * @cssprop --rh-switch-unchecked - The background color of the switch when it is unchecked.
- * @cssprop --rh-switch-checked - The background color of the switch when it is checked.
- * @cssprop --rh-switch-disabled - The background color of the switch when it is disabled.
  */
 @customElement('rh-switch')
 @themable

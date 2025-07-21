@@ -2,6 +2,7 @@
   display: flex;
   flex: none;
 
+  /** Tab active border color */
   --_active-tab-border:
     var(--rh-border-width-lg, 3px) solid var(--_active-tab-border-color,
       var(--rh-tabs-active-border-color,
@@ -40,11 +41,21 @@
   cursor: pointer;
   align-items: center;
   background-color: inherit;
+
+  /** Tab link text color */
   color: var(--rh-tabs-link-color, var(--rh-color-text-secondary));
   width: 100%;
   max-width: var(--_tab-max-width, 200px);
   max-height: 100%;
   line-height: 0;
+
+  /** Tab padding block start */
+
+  /** Tab padding inline end */
+
+  /** Tab padding block end */
+
+  /** Tab padding inline start */
   padding:
     var(--rh-tabs-link-padding-block-start, var(--rh-space-lg, 16px))
     var(--rh-tabs-link-padding-inline-end, var(--rh-space-2xl, 32px))

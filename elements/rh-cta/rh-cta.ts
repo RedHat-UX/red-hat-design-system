@@ -22,46 +22,6 @@ function isSupportedContent(el: Element | null): el is HTMLAnchorElement | HTMLB
  *
  * @alias call-to-action
  *
- * @cssprop     {<color>} [--rh-cta-color=var(--rh-color-text-primary-on-dark, #ffffff)]
- *              Sets the cta color
- * @cssprop     [--rh-cta-background-color=var(--rh-color-brand-red-on-light, #ee0000)]
- *              Sets the cta background color
- * @cssprop     [--rh-cta-border-color=var(--rh-color-brand-red-on-light, #ee0000)]
- *              Sets the cta border color
- * @cssprop     [--rh-cta-hover-color=var(--rh-color-text-primary-on-dark, #ffffff)]
- *              Sets the cta color on hover
- * @cssprop     [--rh-cta-hover-background-color=var(--rh-color-brand-red-dark, #be0000)]
- *              Sets the cta background color on hover
- * @cssprop     [--rh-cta-hover-border-color=var(--rh-color-brand-red-dark, #be0000)]
- *              Sets the cta boder color on hover
- * @cssprop     [--rh-cta-focus-color=var(--rh-color-text-primary-on-dark, #ffffff)]
- *              Sets the cta color on focus
- * @cssprop     [--rh-cta-focus-background-color=var(--rh-color-brand-red-on-light, #ee0000)]
- *              Sets the cta background color on focus
- * @cssprop     [--rh-cta-focus-container-background-color=transparent]
- *              Sets the cta container background color on focus
- * @cssprop     [--rh-cta-focus-container-outline-color=#0066cc]
- *              Sets the cta container outline color on focus
- * @cssprop     [--rh-cta-focus-border-color=transparent]
- *              Sets the cta border color on focus
- * @cssprop     [--rh-cta-focus-inner-border-color=transparent]
- *              Sets the cta inner border color on focus
- * @cssprop     [--rh-cta-active-color=var(--rh-color-text-primary-on-dark, #ffffff)]
- *              Sets the cta color on active. Applicable only for secondary variant
- * @cssprop     [--rh-cta-active-background-color=var(--rh-color-brand-red-dark, #be0000)]
- *              Sets the cta background color on active
- * @cssprop     [--rh-cta-active-container-background-color=#0066cc1a]
- *              Sets the cta container background color on active. Applicable only for default variant
- * @cssprop     [--rh-cta-active-inner-border-color=var(--rh-color-text-primary-on-dark, #ffffff)]
- *              Sets the cta inner border color on active
- * @cssprop     [--rh-cta-text-decoration=none]
- *              Sets the cta text decoration
- * @cssprop     [--rh-cta-focus-text-decoration=none]
- *              Sets the cta text decoration on focus
- * @cssprop     [--rh-cta-hover-text-decoration=none]
- *              Sets the cta text decoration on hover
- * @cssprop     [--rh-cta-active-text-decoration=none]
- *              Sets the cta text decoration on active
  */
 @customElement('rh-cta')
 @themable

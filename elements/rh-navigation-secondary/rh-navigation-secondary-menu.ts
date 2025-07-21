@@ -15,12 +15,6 @@ import styles from './rh-navigation-secondary-menu.css';
 /**
  * Dropdown menu for secondary nav, available in full-width and fixed-with sizes
  * @summary 'Dropdown menu for secondary nav, available in full-width and fixed-with sizes'
- * @cssprop  [--rh-navigation-secondary-menu-section-grid=repeat(auto-fit, minmax(15.5rem, 1fr))]
- *          grid-template-columns for menu sections
- * @cssprop  {<length>} [--rh-navigation-secondary-menu-section-grid-gap=32px]
- *           grid-gap for menu sections
- * @cssprop  {<length>} [--rh-navigation-secondary-menu-content-max-width=1136px]
- *           max-width for menu content
  */
 @customElement('rh-navigation-secondary-menu')
 @colorPalettes

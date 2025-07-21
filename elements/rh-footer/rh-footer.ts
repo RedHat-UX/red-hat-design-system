@@ -29,14 +29,6 @@ function isHeaderTagName(tagName: string) {
  *
  * @alias footer
  *
- * @cssprop [--rh-footer-icon-color=#8a8d90]
- * @cssprop [--rh-footer-icon-color-hover=#b8bbbe]
- * @cssprop [--rh-footer-border-color=#6a6e73]
- * @cssprop [--rh-footer-accent-color=#e00]
- * @cssprop [--rh-footer-section-side-gap=16px]
- * @cssprop [--rh-footer-links-gap=8px]
- * @cssprop [--rh-footer-link-header-font-size=0.875em]
- * @cssprop [--rh-footer-nojs-min-height=750px]
  */
 @customElement('rh-footer')
 export class RhFooter extends LitElement {

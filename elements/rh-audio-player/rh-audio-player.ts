@@ -37,16 +37,6 @@ import '@rhds/elements/rh-icon/rh-icon.js';
  *
  * @alias audio-player
  *
- * @cssprop [--rh-audio-player-background-color=var(--rh-color-surface-lightest, #ffffff)] - color of player background -
- * @cssprop [--rh-audio-player-icon-background-color=var(--rh-audio-player-background-color)]
- * @cssprop [--rh-audio-player-border-color=var(--rh-color-border-subtle-on-light, #d2d2d2)] - color of player border -
- * @cssprop [--rh-audio-player-secondary-text-color=var(--rh-color-text-secondary-on-light, #6a6e73)] - player secondary text color -
- * @cssprop [--rh-audio-player-secondary-opacity=0.75] - player secondary opacity used for partially faded elements -
- * @cssprop [--rh-audio-player-range-thumb-color=var(--rh-color-accent-brand-on-light, #ee0000)] - color of time and volume range slider thumb -
- * @cssprop [--rh-tooltip-content-padding-block-start=var(--rh-space-md, 8px)] - padding top on tooltips -
- * @cssprop [--rh-tooltip-content-padding-block-end=var(--rh-space-md, 8px)] - padding bottom on tooltips -
- * @cssprop [--rh-tooltip-content-padding-inline-start=var(--rh-space-md, 8px)] - padding left on tooltips -
- * @cssprop [--rh-tooltip-content-padding-inline-end=var(--rh-space-md, 8px)] - padding right on tooltips -
  */
 @customElement('rh-audio-player')
 @colorPalettes

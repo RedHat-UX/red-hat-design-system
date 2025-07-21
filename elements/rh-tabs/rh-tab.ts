@@ -33,12 +33,6 @@ export class TabExpandEvent extends Event {
 
 /**
  * The tab button for use within a rh-tabs element, must be paired with a rh-tab-panel.
- * @cssprop {<color>} [--rh-tabs-link-color=#4d4d4d] - Tab link text color
- * @cssprop {<color>} [--rh-tabs-active-border-color=#ff442b] - Tab active border color
- * @cssprop {<length>} [--rh-tabs-link-padding-inline-start=32px] - Tab padding inline start
- * @cssprop {<length>} [--rh-tabs-link-padding-block-start=16px] - Tab padding block start
- * @cssprop {<length>} [--rh-tabs-link-padding-inline-end=32px`] - Tab padding inline end
- * @cssprop {<length>} [--rh-tabs-link-padding-block-end=16px] - Tab padding block end
  * @fires { TabExpandEvent } expand - when a tab expands
  */
 @customElement('rh-tab')

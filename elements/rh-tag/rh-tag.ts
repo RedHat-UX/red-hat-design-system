@@ -22,16 +22,6 @@ import styles from './rh-tag.css';
  * @alias tag
  *
  * @fires close - when a removable label's close button is clicked
- * @cssprop  {<length>} [--rh-tag-margin-inline-end=4px]
- *           The margin at the end of the direction parallel to the flow of the text.
- * @cssprop  {<length>} [--rh-tag-padding-block-start=4px]
- *           The padding at the start of the direction perpendicular to the flow of the text.
- * @cssprop  {<length>} [--rh-tag-padding-block-end=4px]
- *           The padding at the end of the direction perpendicular to the flow of the text.
- * @cssprop  {<length>} [--rh-tag-padding-inline-start=8px]
- *           The padding at the start of the direction parallel to the flow of the text.
- * @cssprop  {<length>} [--rh-tag-padding-inline-end=8px]
- *           The padding at the end of the direction parallel to the flow of the text.
  *
  */
 @customElement('rh-tag')

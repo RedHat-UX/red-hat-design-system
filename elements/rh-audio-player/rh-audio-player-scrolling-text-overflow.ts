@@ -8,8 +8,6 @@ import styles from './rh-audio-player-scrolling-text-overflow.css';
 
 /**
  * Audio Player Scrolling Text Overflow
- * @cssprop [--rh-audio-player-scrolling-text-overflow-background-color=var(--rh-color-surface-lightest, #ffffff)]
- *          color of fade effect (should match background)
  */
 @customElement('rh-audio-player-scrolling-text-overflow')
 @themable

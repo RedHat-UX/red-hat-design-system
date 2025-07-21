@@ -30,12 +30,6 @@ const L2 = html`
  *
  * @alias pagination
  *
- * @cssprop [--rh-pagination-accent-color=var(--rh-color-interactive-blue, #0066cc)]
- *          Sets the outline color when the page input has focus.
- * @cssprop [--rh-pagination-background-focused=var(--rh-color-gray-20, #c7c7c7)]
- *          Sets the disabled stepper color.
- * @cssprop [--rh-pagination-stepper-color=var(--rh-color-icon-subtle, #707070)]
- *           Sets the stepper color.
  */
 @customElement('rh-pagination')
 @themable

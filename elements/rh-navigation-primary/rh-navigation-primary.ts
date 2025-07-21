@@ -34,8 +34,6 @@ export type NavigationPrimaryPalette = Extract<ColorPalette, (
  *
  * @alias Navigation (primary)
  *
- * @cssprop       [--rh-navigation-primary-z-index, 102]
- *                The initial z-index for the primary navigation element, default is 102.
  */
 @customElement('rh-navigation-primary')
 @colorPalettes

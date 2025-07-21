@@ -16,9 +16,6 @@ import styles from './rh-table.css';
  *
  * @alias table
  *
- * @cssprop {<color>} [--rh-table-row-background-hover-color=224 224 224 / 40%] - row hover background color
- * @cssprop {<color>} [--rh-table-column-background-hover-color=0 102 204 / 10%] - column hover background color
- * @cssprop [--rh-table-row-border=1px solid #c7c7c7] - row border
  */
 @customElement('rh-table')
 @themable

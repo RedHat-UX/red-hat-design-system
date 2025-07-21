@@ -53,10 +53,6 @@ async function pauseYoutube(iframe: HTMLIFrameElement) {
  * @fires {DialogOpenEvent} open - Fires when a user clicks on the trigger or manually opens a dialog.
  * @fires {DialogCloseEvent} close - Fires when either a user clicks on either the close button or manually closes a dialog.
  * @fires {DialogCancelEvent} cancel - Fires when a user clicks outside the dialog or hits ESC on their keyboard.
- * @cssprop {<number>} [--rh-dialog-video-aspect-ratio=16/9]
- *          Aspect ratio for the video inside the dialog
- * @cssprop {<color>} [--rh-dialog-close-button-color=var(--rh-color-icon-secondary-on-dark, #ffffff)]
- *          Sets the dialog close button color.
  */
 @customElement('rh-dialog')
 @themable

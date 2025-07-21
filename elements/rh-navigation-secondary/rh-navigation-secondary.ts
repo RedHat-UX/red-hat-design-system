@@ -57,8 +57,6 @@ function focusableChildElements(parent: HTMLElement): NodeListOf<HTMLElement> {
  *                                         Fires when an dropdown is opened or closed in desktop
  *                                         view or when the mobile menu button is toggled in mobile
  *                                         view.
- * @cssprop {<integer>} [--rh-navigation-secondary-z-index=102] - z-index of the navigation-secondary
- * @cssprop {<integer>} [--rh-navigation-secondary-overlay-z-index=-1] - z-index of the navigation-secondary-overlay
  */
 @customElement('rh-navigation-secondary')
 @colorPalettes
