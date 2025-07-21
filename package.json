@@ -226,6 +226,7 @@
     },
     "lint": {
       "dependencies": [
+        "patch",
         "eslint",
         "stylelint",
         "markdownlint"
