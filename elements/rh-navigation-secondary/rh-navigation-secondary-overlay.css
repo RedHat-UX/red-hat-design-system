@@ -5,9 +5,12 @@
   width: 100vw;
   height: 100vh;
 
-  /* TODO remove --rh-secondary-nav-overlay-z-index for v2 */
   /* stylelint-disable-next-line */
-  z-index: var(--rh-navigation-secondary-overlay-z-index, var(--rh-secondary-nav-overlay-z-index, -1));
+  z-index:
+    /** z-index of the navigation-secondary-overlay */
+    var(--rh-navigation-secondary-overlay-z-index,
+      /** @deprecated use --rh-navigation-secondary-overlay-z-index */
+      var(--rh-secondary-nav-overlay-z-index, -1));
 }
 
 :host([open]) {

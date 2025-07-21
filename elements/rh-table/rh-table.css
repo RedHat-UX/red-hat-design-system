@@ -13,23 +13,18 @@
   --_scrollbar-size: calc(10 / 16 * 1rem);
   --_scrollbar-thumb-color: var(--rh-color-gray-50, #707070);
   --_scrollbar-track-color: var(--rh-color-border-subtle);
-
-  /** row border */
   --_row-border:
+    /** row border */
     var(--rh-table-row-border,
       var(--rh-border-width-sm, 1px)
       solid
       var(--rh-color-border-subtle-on-light, #c7c7c7));
-
-  /** row hover background color */
   --_row-background-hover-color:
-    light-dark(var(--rh-table-row-background-hover-color,
+    light-dark(/** row hover background color */var(--rh-table-row-background-hover-color,
       rgba(from var(--rh-color-gray-40, #a3a3a3) r g b / 0.1)),
       rgba(from var(--rh-color-white, #ffffff) r g b / 0.1));
-
-  /** column hover background color */
   --_column-background-hover-color:
-    light-dark(var(--rh-table-column-background-hover-color,
+    light-dark(/** column hover background color */var(--rh-table-column-background-hover-color,
       rgba(from var(--rh-color-blue-50, #0066cc) r g b / 0.1)),
       rgba(from var(--rh-color-blue-70, #003366) r g b / 0.3));
 }

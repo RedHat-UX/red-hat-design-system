@@ -19,8 +19,10 @@
   --_switch-height: 24px;
   --_switch-handle-size: 14px;
   --_switch-track-background-color:
-    light-dark(var(--rh-switch-unchecked, var(--rh-color-gray-60, #4d4d4d)),
-      var(--rh-switch-unchecked, var(--rh-color-gray-40, #a3a3a3)));
+    light-dark(/** The background color of the switch when it is unchecked. */var(
+      --rh-switch-unchecked,
+      var(--rh-color-gray-60, #4d4d4d)),
+        var(--rh-switch-unchecked, var(--rh-color-gray-40, #a3a3a3)));
   --_switch-handle-color:
     light-dark(var(--rh-color-surface-lightest, #ffffff),
       oklch(from var(--rh-color-surface-dark, #383838) calc(l * 0.82) c h));
@@ -71,7 +73,9 @@
   }
 
   &.checked {
-    --_switch-track-background-color: var(--rh-switch-checked, var(--rh-color-accent-base));
+    --_switch-track-background-color:
+      /** The background color of the switch when it is checked. */
+      var(--rh-switch-checked, var(--rh-color-accent-base));
 
     & .message {
       color: var(--rh-color-text-primary);
@@ -122,8 +126,10 @@ rh-icon {
     &.checked,
     &:not(.checked) {
       --_switch-track-background-color:
-        light-dark(var(--rh-switch-disabled, var(--rh-color-gray-30, #c7c7c7)),
-          var(--rh-switch-disabled, var(--rh-color-gray-60, #4d4d4d)));
+        light-dark(/** The background color of the switch when it is disabled. */var(
+          --rh-switch-disabled,
+          var(--rh-color-gray-30, #c7c7c7)),
+            var(--rh-switch-disabled, var(--rh-color-gray-60, #4d4d4d)));
     }
   }
 }
