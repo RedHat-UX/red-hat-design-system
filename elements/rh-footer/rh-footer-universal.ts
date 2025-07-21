@@ -57,29 +57,20 @@ export class RhFooterUniversal extends LitElement {
         <!-- base -->
         <div class="section global-base ${classMap({ hasTertiary })}" part="section base">
           <slot name="base">
-            <!--
-              slot:
-                description: logo
-              part:
-                description: logo
-            -->
+            <!-- logo -->
             <div class="global-logo" part="logo">
+              <!-- logo -->
               <slot name="logo">
                 <a class="global-logo-anchor"
                     part="logo-anchor"
                     href="https://redhat.com"
                     aria-label="Visit Red Hat">
-                  <!--
-                    slot:
-                      description: logo-image
-                    part:
-                      description: logo-image
-                  -->
+                  <!-- logo-image -->
                   <svg class="global-logo-image"
-                      part="logo-image"
-                      data-name="Layer 1"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 192 145">
+                       part="logo-image"
+                       data-name="Layer 1"
+                       xmlns="http://www.w3.org/2000/svg"
+                       viewBox="0 0 192 145">
                       <title>Red Hat logo</title>
                     <defs>
                       <style>
@@ -94,88 +85,52 @@ export class RhFooterUniversal extends LitElement {
                 </a>
               </slot>
             </div>
-            <!--
-              part:
-                description: primary
-              slot:
-                description: primary
-            -->
+            <!-- primary -->
             <div class="global-primary" part="primary">
+              <!-- primary -->
               <slot name="primary">
-                <!--
-                  part:
-                    description: primary-start
-                  slot:
-                    description: primary-start
-                -->
+                <!-- primary-start -->
                 <div class="global-primary-start" part="primary-start" ?hidden=${!this.#slots.hasSlotted('primary-start')}>
+                  <!-- primary-start -->
                   <slot name="primary-start"></slot>
                 </div>
-                <!--
-                  part:
-                    description: links-primary
-                  slot:
-                    description: links-primary
-                -->
+                <!-- links-primary -->
                 <div class="global-links-primary" part="links-primary" ?hidden=${!this.#slots.hasSlotted('links-primary')}>
+                  <!-- links-primary -->
                   <slot name="links-primary"></slot>
                 </div>
-                <!--
-                  part:
-                    description: primary-end
-                  slot:
-                    description: primary-end
-                -->
+                <!-- primary-end -->
                 <div class="global-primary-end" part="primary-end" ?hidden=${!this.#slots.hasSlotted('primary-end')}>
+                  <!-- primary-end -->
                   <slot name="primary-end"></slot>
                 </div>
               </slot>
             </div>
             <div class="spacer" part="spacer"></div>
-            <!--
-              part:
-                description: secondary
-              slot:
-                description: secondary
-            -->
+            <!-- secondary -->
             <div class="global-secondary" part="secondary">
+              <!-- secondary -->
               <slot name="secondary">
-                <!--
-                  part:
-                    description: secondary-start
-                  slot:
-                    description: secondary-start
-                -->
+                <!-- secondary-start -->
                 <div class="global-secondary-start" part="secondary-start" ?hidden=${!this.#slots.hasSlotted('secondary-start')}>
+                  <!-- secondary-start -->
                   <slot name="secondary-start"></slot>
                 </div>
-                <!--
-                  part:
-                    description: links-secondary
-                  slot:
-                    description: links-secondary
-                -->
+                <!-- links-secondary -->
                 <div class="global-links-secondary" part="links-secondary" ?hidden=${!this.#slots.hasSlotted('links-secondary')}>
+                  <!-- links-secondary -->
                   <slot name="links-secondary"></slot>
                 </div>
-                <!--
-                  part:
-                    description: secondary-end
-                  slot:
-                    description: secondary-end
-                -->
+                <!-- secondary-end -->
                 <div class="global-secondary-end" part="secondary-end" ?hidden=${!this.#slots.hasSlotted('secondary-end')}>
+                  <!-- secondary-end -->
                   <slot name="secondary-end"></slot>
                 </div>
               </slot>
             </div>
-            <!--
-              part:
-                description: tertiary
-              slot:
-                description: tertiary
-            -->
+            <!-- tertiary -->
             <div class="global-tertiary" part="tertiary" ?hidden=${!this.#slots.hasSlotted('tertiary')}>
+              <!-- tertiary -->
               <slot name="tertiary"></slot>
             </div>
           </slot>
