@@ -20,6 +20,8 @@ import styles from './rh-stat.css';
  *
  * @summary Showcases a data point or quick fact visually
  *
+ * @alias statistic
+ *
  * @slot icon - Optional icon
  * @slot title - Statistic title
  * @slot statistic - Statistic data

@@ -28,11 +28,12 @@ export type NavigationPrimaryPalette = Extract<ColorPalette, (
 )>;
 
 /**
- * The Primary navigation is a container of menus and utilities, it allows
- * visitors to orient themselves and move through a website. It is persistent on
- * every page to ensure a consistent user experience across websites.
+ * Primary navigation helps users orient themselves and move through websites and domains.
  *
  * @summary       Primary navigation
+ *
+ * @alias Navigation (primary)
+ *
  * @slot          - Use this slot for `<rh-primary-navigation-item>` hamburger menu links and dropdowns
  * @slot          logo -
  *                Use this slot to override the link and logo image for translations and sub sites.
@@ -85,8 +86,14 @@ export class RhNavigationPrimary extends LitElement {
   @state()
   private _overlayOpen = false;
 
+  @state()
+  private _hamburgerOpen = false;
+
   @query('#hamburger')
   private _hamburger!: HTMLDetailsElement;
+
+  @query('summary')
+  private _hamburgerSummary!: HTMLElement;
 
   /**
    * Sets the mobile toggle (hamburger) text, used for translations, defaults to 'Menu'
@@ -182,15 +189,16 @@ export class RhNavigationPrimary extends LitElement {
               </a>
             </slot>
           </div>
-          <details id="hamburger" @toggle="${this.#hamburgerToggle}">
-            <summary>
+          <details id="hamburger" ?open="${this._hamburgerOpen}" @toggle="${this.#hamburgerToggle}" @focusout="${this.#onHamburgerFocusOut}">
+            <summary @blur="${this.#onHamburgerSummaryBlur}">
               <rh-icon icon="menu-bars" set="ui"></rh-icon>
               <div id="summary">${this.mobileToggleLabel}</div>
               <rh-icon icon="caret-down" set="microns"></rh-icon>
             </summary>
-            <div id="details-content" role="list">
+            <div id="details-content" role="list" >
               <slot></slot>
             </div>
+
           </details>
           <div id="secondary">
             <div id="event" role="list"><slot name="event"></slot></div>
@@ -232,21 +240,22 @@ export class RhNavigationPrimary extends LitElement {
     this.#closeOverlay();
   }
 
-  #primaryDropdowns(): RhNavigationPrimaryItem[] {
+  #primaryItems(): RhNavigationPrimaryItem[] {
     return Array.from(
       this.querySelectorAll(
-        'rh-navigation-primary-item[variant="dropdown"]:not([slot="dropdowns"])',
+        'rh-navigation-primary-item:not([slot])',
       )
     );
   }
 
-  #secondaryDropdowns(): RhNavigationPrimaryItem[] {
+  #openDropdownItems(): RhNavigationPrimaryItem[] {
     return Array.from(
       this.querySelectorAll(
-        'rh-navigation-primary-item[variant="dropdown"][slot="dropdowns"]',
+        'rh-navigation-primary-item[variant="dropdown"][open]',
       )
     );
   }
+
 
   async #onDropdownToggle(event: Event) {
     const item = event.target as RhNavigationPrimaryItem;
@@ -271,7 +280,7 @@ export class RhNavigationPrimary extends LitElement {
     } else {
       if (secondaryEventToggle) {
         this.#openSecondaryDropdowns.delete(item);
-        if (this.#openSecondaryDropdowns.size === 0 && (this.compact && !this._hamburger.open)) {
+        if (this.#openSecondaryDropdowns.size === 0 && (this.compact && !this._hamburgerOpen)) {
           this.#closeOverlay();
         }
       } else {
@@ -286,41 +295,35 @@ export class RhNavigationPrimary extends LitElement {
     }
   }
 
-  #onKeydown(event: KeyboardEvent) {
-    switch (event.key) {
-      case 'Escape': {
-        if (this.#openPrimaryDropdowns.size > 0) {
-          const [dropdown] = this.#openPrimaryDropdowns;
-          dropdown.hide();
-          dropdown.shadowRoot?.querySelector('summary')?.focus();
-        } else if (this.#openSecondaryDropdowns.size > 0) {
-          const [dropdown] = this.#openSecondaryDropdowns;
-          dropdown.hide();
-          dropdown.shadowRoot?.querySelector('summary')?.focus();
-        } else if (this._hamburger.open) {
-          this.#closeHamburger();
-          this._hamburger.querySelector('summary')?.focus();
-        }
-        break;
+  #hamburgerContains(item: Node): boolean {
+    const primaryItems = this.#primaryItems();
+    return primaryItems.some(pi => pi.contains(item));
+  }
+
+  #onHamburgerSummaryBlur(event: FocusEvent) {
+    if (event.relatedTarget) {
+      if (this.#hamburgerContains(event.relatedTarget as Node)) {
+        return;
       }
-      case 'Tab':
-        this.#onTabKeydown(event);
-        break;
-      default:
-        break;
+      if (this.compact) {
+        this.#closeHamburger();
+      }
     }
   }
 
-  #onKeyup(event: KeyboardEvent) {
-    switch (event.key) {
-      case 'Tab':
-        this.#onTabKeyup(event);
-        break;
-      default:
-        break;
+  #onHamburgerFocusOut(event: FocusEvent) {
+    if (event.relatedTarget) {
+      if (event.relatedTarget === this._hamburgerSummary) {
+        return;
+      }
+      if (this.#hamburgerContains(event.relatedTarget as Node)) {
+        return;
+      }
+      if (this.compact) {
+        this.#closeHamburger();
+      }
     }
   }
-
 
   async #onFocusout(event: FocusEvent) {
     const target = event.relatedTarget as HTMLElement;
@@ -332,73 +335,46 @@ export class RhNavigationPrimary extends LitElement {
     }
   }
 
-  #onTabKeydown(event: KeyboardEvent) {
-    // target is the element we are leaving with tab press
-    const target = event.target as HTMLElement;
-    // get target parent dropdown
-    const primaryDropdowns = this.#primaryDropdowns();
-    const secondaryDropdowns = this.#secondaryDropdowns();
-    // target can be in one of the two dropdown collections, but only 1.
-    const dropdownContainsTarget =
-      primaryDropdowns.find(dropdown => dropdown.contains(target))
-      ?? secondaryDropdowns.find(dropdown => dropdown.contains(target));
-    if (dropdownContainsTarget) {
-      const focusableChildElements =
-        Array.from(RhNavigationPrimary.focusableChildElements(dropdownContainsTarget));
-
-      if (focusableChildElements.length > 0) {
-        const {
-          0: firstChild,
-          [focusableChildElements.length - 1]: lastChild,
-        } = focusableChildElements;
-
-        if (event.shiftKey) {
-          if (event.shiftKey && firstChild === target) {
-            return;
-          }
-          // if target is self, close self
-          if (event.shiftKey && target === dropdownContainsTarget) {
-            dropdownContainsTarget.hide();
-            return;
-          }
-        } else {
-          if (!firstChild) {
-            return;
-          }
-          if (!lastChild) {
-            return;
-          } else {
-            if (lastChild === target) {
-              dropdownContainsTarget.hide();
-              return;
-            }
-          }
-        }
-      } else {
-        this.#closePrimaryDropdowns();
-        this.#closeSecondaryDropdowns();
-      }
-    }
-  }
-
-  #onTabKeyup(event: KeyboardEvent) {
-    if (this.compact && this._hamburger.open) {
-      const secondaryDropdowns = this.#secondaryDropdowns();
-      const target = event.target as HTMLElement;
-      if (event.shiftKey && target === this) {
-        this.#closeHamburger();
-      } else {
-        if (secondaryDropdowns.some(dropdown => dropdown.contains(target))) {
+  #onKeydown(event: KeyboardEvent) {
+    switch (event.key) {
+      case 'Escape': {
+        if (this.#openPrimaryDropdowns.size > 0) {
+          const [dropdown] = this.#openPrimaryDropdowns;
+          dropdown.hide();
+          dropdown.shadowRoot?.querySelector('summary')?.focus();
+        } else if (this.#openSecondaryDropdowns.size > 0) {
+          const [dropdown] = this.#openSecondaryDropdowns;
+          dropdown.hide();
+          dropdown.shadowRoot?.querySelector('summary')?.focus();
+        } else if (this._hamburgerOpen) {
           this.#closeHamburger();
+          this._hamburger.querySelector('summary')?.focus();
         }
+        break;
+      }
+      default:
+        break;
+    }
+  }
+
+  #onKeyup(event: KeyboardEvent) {
+    switch (event.key) {
+      case 'Tab': {
+        this.#onTabUp(event);
+        break;
       }
     }
   }
 
-  /**
-   * close all open dropdowns in primary slot
-   * @param except
-   */
+  #onTabUp(event: KeyboardEvent) {
+    // target is the element we are entering with tab up press
+    const target = event.target as HTMLElement;
+    if (!this.#openDropdownItems().some(item => item.contains(target))) {
+      this.#closePrimaryDropdowns();
+      this.#closeSecondaryDropdowns();
+    }
+  }
+
   #closePrimaryDropdowns(except?: RhNavigationPrimaryItem) {
     this.#openPrimaryDropdowns.forEach((dropdown: RhNavigationPrimaryItem) => {
       if (dropdown !== except) {
@@ -418,7 +394,8 @@ export class RhNavigationPrimary extends LitElement {
     if (!this._hamburger) {
       await this.updateComplete;
     }
-    this._hamburger.open = true;
+    this._hamburgerOpen = true;
+    this.requestUpdate();
     await this.updateComplete;
   }
 
@@ -426,14 +403,16 @@ export class RhNavigationPrimary extends LitElement {
     if (!this._hamburger) {
       await this.updateComplete;
     }
-    this._hamburger.open = false;
+    this._hamburgerOpen = false;
+    this.requestUpdate();
     await this.updateComplete;
   }
 
   #hamburgerToggle(event: Event) {
     if (event instanceof ToggleEvent) {
       if (event.newState === 'open') {
-      // if we are compact mode and any secondary link dropdowns are open, close them
+        this.#openHamburger();
+        // if we are compact mode and any secondary link dropdowns are open, close them
         if (this.compact && this.#openSecondaryDropdowns.size > 0) {
           this.#closeSecondaryDropdowns();
         }
@@ -441,6 +420,7 @@ export class RhNavigationPrimary extends LitElement {
           this.#openOverlay();
         }
       } else {
+        this.#closeHamburger();
         if (this.#openPrimaryDropdowns.size > 0) {
           this.#closePrimaryDropdowns();
         }
