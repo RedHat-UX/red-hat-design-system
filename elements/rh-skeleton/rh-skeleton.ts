@@ -24,11 +24,9 @@ export class RhSkeleton extends LitElement {
 
   render() {
     return html`
-      <p class="visually-hidden">
-        <slot>
-            Loading...
-        </slot>
-      </p>
+      <span class="visually-hidden">
+        <slot>Loading...</slot>
+      </span>
     `;
   }
 }
