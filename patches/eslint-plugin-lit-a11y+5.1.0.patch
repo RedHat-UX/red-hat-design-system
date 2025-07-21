@@ -1,0 +1,13 @@
+diff --git a/node_modules/eslint-plugin-lit-a11y/lib/utils/hasAccessibleChildren.js b/node_modules/eslint-plugin-lit-a11y/lib/utils/hasAccessibleChildren.js
+index 2dee698..97bcf57 100644
+--- a/node_modules/eslint-plugin-lit-a11y/lib/utils/hasAccessibleChildren.js
++++ b/node_modules/eslint-plugin-lit-a11y/lib/utils/hasAccessibleChildren.js
+@@ -6,7 +6,7 @@ import { isHiddenFromScreenReader } from './isHiddenFromScreenReader.js';
+  */
+ function isElement(node) {
+   // NB: this isn't accurate, but suffices for use in `hasAccessibleChildren`.
+-  return node.type !== 'text';
++  return node.type !== 'text' && node.type !== 'comment';
+ }
+ 
+ /**
