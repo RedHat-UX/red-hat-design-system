@@ -91,7 +91,7 @@ rh-skeleton[type='circle'][size='lg'] {
 }
 
 rh-skeleton[type='square'] {
-  border-radius: 0;
+  border-radius: var(--rh-border-radius-default, 3px);
   block-size: var(--rh-length-4xl, 64px);
   inline-size: var(--rh-length-4xl, 64px);
 }
