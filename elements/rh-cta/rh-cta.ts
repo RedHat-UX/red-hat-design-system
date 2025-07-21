@@ -128,27 +128,21 @@ export class RhCta extends LitElement {
       : '';
     const iconContent =
       !(variant === 'brick' && icon) ? '' : html`<rh-icon .icon=${icon} set="${iconSet ?? 'ui'}"></rh-icon>`;
+    const slot = html`<!--
+          The default slot contains the link text when the \`href\`
+          attribute is set. In case there is no href attribute, an anchor
+          tag (\`<a href="...">\`) should be the first child inside \`rh-cta\`
+          element. Less preferred but allowed for specific use-cases
+          include: \`<button>\` (note however that the \`button\` tag is not
+          supported for the default CTA styles).
+    --><slot></slot>${follower}`;
     const linkContent =
-        !href ? html`<!--
-              The default slot contains the link text when the \`href\`
-              attribute is set. In case there is no href attribute, an anchor
-              tag (\`<a href="...">\`) should be the first child inside \`rh-cta\`
-              element. Less preferred but allowed for specific use-cases
-              include: \`<button>\` (note however that the \`button\` tag is not
-              supported for the default CTA styles).
-        --><slot></slot>${follower}`
+        !href ? slot
       : html`<a href=${href}
                 download="${ifDefined(download)}"
                 rel="${ifDefined(rel)}"
                 referrerpolicy="${ifDefined(referrerpolicy)}"
-                target="${ifDefined(target)}"><!--
-              The default slot contains the link text when the \`href\`
-              attribute is set. In case there is no href attribute, an anchor
-              tag (\`<a href="...">\`) should be the first child inside \`rh-cta\`
-              element. Less preferred but allowed for specific use-cases
-              include: \`<button>\` (note however that the \`button\` tag is not
-              supported for the default CTA styles).
-        --><slot></slot>${follower}</a>`;
+                target="${ifDefined(target)}">${slot}</a>`;
     return html`
       <!-- container element for slotted CTA -->
       <span id="container"
