@@ -564,7 +564,7 @@ export class RhAudioPlayer extends LitElement {
              aria-live="polite"
              aria-labelledby="about-menu-item"
              part="panel"
-             ?hidden=${!this.expanded || !this.#hasMenu}>
+             ?hidden="${!this.expanded || !this.#hasMenu}">
           <!--
             slot:
               description: optional \`rh-audio-player-about\` panel with attribution
