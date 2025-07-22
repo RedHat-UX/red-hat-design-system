@@ -188,7 +188,7 @@ _RhAlert_aliasState = function _RhAlert_aliasState(state) {
         case 'neutral':
         case 'info':
         case 'success':
-            return state;
+            return state.toLowerCase();
         default:
             return 'neutral';
     }
