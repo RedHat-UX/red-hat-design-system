@@ -1,4 +1,6 @@
 :host {
+  --_rh-cta-white-space: normal;
+
   display: flex;
 }
 
@@ -77,6 +79,10 @@
 }
 
 @container announcement (min-width: 768px) {
+  :host {
+    --_rh-cta-white-space: nowrap;
+  }
+
   #row {
     display: flex;
     justify-content: center;
