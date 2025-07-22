@@ -1,6 +1,7 @@
 {
   "demoURLPrefix": "https://ux.redhat.com/",
   "sourceControlURLPrefix": "https://github.com/redhat-ux/red-hat-design-system/tree/main/",
+  "elementsDir": ".",
   "tagPrefix": "rh",
   "aliases": {
     "rh-cta": "Call to action",
