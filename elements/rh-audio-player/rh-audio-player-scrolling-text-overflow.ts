@@ -14,7 +14,6 @@ import styles from './rh-audio-player-scrolling-text-overflow.css';
 export class RhAudioPlayerScrollingTextOverflow extends LitElement {
   static readonly styles = [styles];
 
-
   #scrolling = false;
 
   #style?: CSSStyleDeclaration;
@@ -39,19 +38,21 @@ export class RhAudioPlayerScrollingTextOverflow extends LitElement {
   }
 
   render() {
-    const { direction } = this.#style ?? {};
+    const direction = this.#style?.direction ?? 'auto';
+    const scrolling = this.#scrolling;
+    const scrollable = this.#isScrollable;
     return html`
       <div id="outer"
-           class="${classMap({ [direction || 'auto']: true })}"
+           class="${classMap({ [direction]: true })}"
            @mouseover=${this.startScrolling}
            @mouseout=${this.stopScrolling}
            @focus=${this.startScrolling}
            @blur=${this.stopScrolling}>
         <div id="inner">
           <!-- inline text to scroll if wider than host -->
-          <slot class="${this.#scrolling ? 'scrolling' : ''} ${this.#isScrollable ? 'scrollable' : ''}"></slot>
-        </div>
-        ${this.#isScrollable ? html`<span id="fade"></span>` : ''}
+          <slot class="${classMap({ scrolling, scrollable })}"></slot>
+        </div>${!scrollable ? '' : html`
+        <span id="fade"></span>`}
       </div>`;
   }
 
