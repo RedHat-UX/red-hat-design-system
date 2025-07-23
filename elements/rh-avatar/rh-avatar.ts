@@ -12,10 +12,10 @@ import styles from './rh-avatar.css';
 
 /**
  * An avatar is a small thumbnail representation of a user.
+ *
  * @summary Visually represents a user in a masthead or navigation
  *
  * @alias avatar
- *
  */
 @customElement('rh-avatar')
 @themable
