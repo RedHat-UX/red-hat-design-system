@@ -391,8 +391,8 @@ export default class ElementsPage extends Renderer<Context> {
                 ${(await Promise.all(slots.map(async slot => html`
                 <tr>
                   <td><code>${slot.name}</code></td>
-                  <td>${await this.#innerMD(slot.description)}</td>
                   <td>${await this.#innerMD(slot.summary)}</td>
+                  <td>${await this.#innerMD(slot.description)}</td>
                 </tr>`))).join('')}
               </tbody>
             </table>
@@ -652,8 +652,8 @@ export default class ElementsPage extends Renderer<Context> {
                 ${(await Promise.all(parts.map(async part => html`
                 <tr>
                   <td><code>${part.name}</code></td>
-                  <td>${await this.#innerMD(part.description)}</td>
                   <td>${await this.#innerMD(part.summary)}</td>
+                  <td>${await this.#innerMD(part.description)}</td>
                 </tr>`))).join('')}
               </tbody>
             </table>
