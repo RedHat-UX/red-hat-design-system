@@ -56,9 +56,11 @@ export class RhAudioPlayerAbout extends LitElement {
       <div part="body" ?hidden="${!hasContent}" tabindex=0><!-- panel content --><slot></slot></div>
       <!--
         part:
-          description: panel profile / avatar
+          description: |
+            panel profile / avatar
         slot:
-          description: \`<rh-avatar>\` for attribution
+          description: |
+            \`<rh-avatar>\` for attribution
       -->
       <slot part="profile" name="profile"></slot>`;
   }
