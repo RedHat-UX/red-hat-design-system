@@ -184,7 +184,7 @@ export class RhAlert extends LitElement {
       case 'neutral':
       case 'info':
       case 'success':
-        return state as this['state'];
+        return state.toLowerCase() as this['state'];
       default:
         return 'neutral';
     }
