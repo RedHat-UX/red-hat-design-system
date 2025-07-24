@@ -8,6 +8,9 @@
   display: flex;
   flex-direction: column;
   color-scheme: only dark !important;
+
+  /** Minimum height for the footer when JavaScript is disabled */
+  min-height: var(--rh-footer-nojs-min-height, 750px);
 }
 
 :host,

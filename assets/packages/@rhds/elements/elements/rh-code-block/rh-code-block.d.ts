@@ -5,19 +5,6 @@ import { LitElement, type PropertyValues } from 'lit';
  * @summary Formats code strings within a container
  *
  * @alias code-block
- *
- * @slot - A non-executable script tag containing the sample content. JavaScript
- *         samples should use the type `text/sample-javascript`. HTML samples
- *         containing script tags must escape the closing `</script>` tag. Can
- *         also be a `<pre>` tag.
- * @slot action-label-copy - tooltip content for the copy action button
- * @slot action-label-wrap - tooltip content for the wrap action button
- * @slot show-more - text content for the expandable toggle button when the code
- *                   block is collapsed.
- * @slot show-less - text content for the expandable toggle button when the code
- *                   block is expanded.
- * @slot legend - `<dl>` element containing rh-badges in the `<dt>`
- *                and legend text in the `<dd>` elements
  */
 export declare class RhCodeBlock extends LitElement {
     #private;

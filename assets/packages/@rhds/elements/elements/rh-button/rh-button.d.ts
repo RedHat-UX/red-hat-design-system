@@ -8,11 +8,6 @@ import { LitElement, type TemplateResult } from 'lit';
  * @summary Triggers actions on the page or in the background
  *
  * @alias button
- *
- * @csspart button - Internal button element
- * @csspart icon - Container for the icon slot
- * @slot icon - Contains the button's icon or state indicator, e.g. a spinner.
- * @slot - Contains button text
  */
 export declare class RhButton extends LitElement {
     #private;

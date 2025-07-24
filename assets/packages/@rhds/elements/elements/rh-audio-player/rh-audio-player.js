@@ -35,27 +35,6 @@ import '@rhds/elements/rh-icon/rh-icon.js';
  *
  * @alias audio-player
  *
- * @slot series - optional, name of podcast series
- * @slot title - optional, title of episode
- * @slot media - html `audio` element
- * @slot about - optional `rh-audio-player-about` panel with attribution
- * @slot subscribe - optional `rh-audio-player-subscribe` panel with links to subscribe
- * @slot transcript - optional `rh-transcript` panel with `rh-cue` elements
- * @cssprop [--rh-audio-player-background-color=var(--rh-color-surface-lightest, #ffffff)] - color of player background -
- * @cssprop [--rh-audio-player-icon-background-color=var(--rh-audio-player-background-color)]
- * @cssprop [--rh-audio-player-border-color=var(--rh-color-border-subtle-on-light, #d2d2d2)] - color of player border -
- * @cssprop [--rh-audio-player-secondary-text-color=var(--rh-color-text-secondary-on-light, #6a6e73)] - player secondary text color -
- * @cssprop [--rh-audio-player-secondary-opacity=0.75] - player secondary opacity used for partially faded elements -
- * @cssprop [--rh-audio-player-range-thumb-color=var(--rh-color-accent-brand-on-light, #ee0000)] - color of time and volume range slider thumb -
- * @cssprop [--rh-tooltip-content-padding-block-start=var(--rh-space-md, 8px)] - padding top on tooltips -
- * @cssprop [--rh-tooltip-content-padding-block-end=var(--rh-space-md, 8px)] - padding bottom on tooltips -
- * @cssprop [--rh-tooltip-content-padding-inline-start=var(--rh-space-md, 8px)] - padding left on tooltips -
- * @cssprop [--rh-tooltip-content-padding-inline-end=var(--rh-space-md, 8px)] - padding right on tooltips -
- * @csspart panel - expandable panel
- * @csspart toolbar - main controls
- * @csspart about - about the episode panel
- * @csspart subscribe - subscribe panel
- * @csspart transcript - transcript panel
  */
 let RhAudioPlayer = RhAudioPlayer_1 = _a = class RhAudioPlayer extends LitElement {
     constructor() {
@@ -207,7 +186,9 @@ let RhAudioPlayer = RhAudioPlayer_1 = _a = class RhAudioPlayer extends LitElemen
             'mobile-safari': !!__classPrivateFieldGet(this, _RhAudioPlayer_isMobileSafari, "f"),
         })}">
         <input type="hidden" value=${__classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_readyState_get)}>
+        <!-- html \`audio\` element -->
         <slot id="media" name="media" @slotchange="${__classPrivateFieldGet(this, _RhAudioPlayer_instances, "m", _RhAudioPlayer_initMediaElement)}"></slot>
+        <!-- main controls -->
         <div id="toolbar"
              class="${this.expanded ? 'expanded' : ''}"
              part="toolbar"
@@ -228,9 +209,11 @@ let RhAudioPlayer = RhAudioPlayer_1 = _a = class RhAudioPlayer extends LitElemen
 
           <div id="full-title">
             <rh-audio-player-scrolling-text-overflow id="mediaseries" ?hidden=${!this.mediaseries}>
+              <!-- optional, name of podcast series -->
               <slot name="series" @slotchange=${__classPrivateFieldGet(this, _RhAudioPlayer_instances, "m", _RhAudioPlayer_onTitleChange)}>${this.mediaseries}</slot>
             </rh-audio-player-scrolling-text-overflow>
             <rh-audio-player-scrolling-text-overflow id="mediatitle" ?hidden=${!this.mediatitle}>
+              <!-- optional, title of episode -->
               <slot name="title" @slotchange=${__classPrivateFieldGet(this, _RhAudioPlayer_instances, "m", _RhAudioPlayer_onTitleChange)}>${this.mediatitle}</slot>
             </rh-audio-player-scrolling-text-overflow>
           </div>
@@ -388,23 +371,42 @@ let RhAudioPlayer = RhAudioPlayer_1 = _a = class RhAudioPlayer extends LitElemen
           <div class="full-spacer"></div>
         </div>
 
+        <!-- expandable panel -->
         <div id="panel"
              role="dialog"
              aria-live="polite"
              aria-labelledby="about-menu-item"
              part="panel"
-             ?hidden=${!this.expanded || !__classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_hasMenu_get)}>
+             ?hidden="${!this.expanded || !__classPrivateFieldGet(this, _RhAudioPlayer_instances, "a", _RhAudioPlayer_hasMenu_get)}">
+          <!--
+            slot:
+              description: optional \`rh-audio-player-about\` panel with attribution
+            part:
+              description: about the episode panel
+          -->
           <slot id="about-slot"
                 name="about"
                 part="about"
                 @slotchange=${__classPrivateFieldGet(this, _RhAudioPlayer_instances, "m", _RhAudioPlayer_onPanelChange)}>
             <rh-audio-player-about></rh-audio-player-about>
           </slot>
+          <!--
+            slot:
+              description: optional \`rh-audio-player-subscribe\` panel with links to subscribe
+            part:
+              description: subscribe panel
+          -->
           <slot id="subscribe-slot"
                 name="subscribe"
                 part="subscribe"
                 @slotchange=${__classPrivateFieldGet(this, _RhAudioPlayer_instances, "m", _RhAudioPlayer_onPanelChange)}>
           </slot>
+          <!--
+            slot:
+              description: optional \`rh-transcript\` panel with \`rh-cue\` elements
+            part:
+              description: transcript panel
+          -->
           <slot id="transcribe-slot"
                 name="transcript"
                 part="transcript"

@@ -18,10 +18,6 @@ import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller
  * @summary Organizes content into sections using tabbed pages
  *
  * @alias subnavigation
- *
- * @slot - Navigation links, expects collection of `<a>` elements
- * @csspart container - container, `<div>` element
- * @csspart links     - `<slot>` element
  */
 let RhSubnav = RhSubnav_1 = class RhSubnav extends LitElement {
     constructor() {
@@ -50,6 +46,7 @@ let RhSubnav = RhSubnav_1 = class RhSubnav extends LitElement {
     }
     render() {
         return html `
+      <!-- container, \`<div>\` element -->
       <nav part="container" aria-label="${this.accessibleLabel}">
         ${!__classPrivateFieldGet(this, _RhSubnav_overflow, "f").showScrollButtons ? '' : html `
           <button id="previous"
@@ -60,6 +57,12 @@ let RhSubnav = RhSubnav_1 = class RhSubnav extends LitElement {
                   @click="${__classPrivateFieldGet(this, _RhSubnav_instances, "m", _RhSubnav_onClickScroll)}">
             <rh-icon set="ui" icon="caret-left" loading="eager"></rh-icon>
           </button>`}
+        <!--
+          slot:
+            description: Navigation links, expects collection of \`<a>\` elements
+          part:
+            description: the anonymous slot
+        -->
         <slot part="links" @slotchange="${__classPrivateFieldGet(this, _RhSubnav_instances, "m", _RhSubnav_onSlotchange)}"></slot>
         ${!__classPrivateFieldGet(this, _RhSubnav_overflow, "f").showScrollButtons ? '' : html `
           <button id="next"

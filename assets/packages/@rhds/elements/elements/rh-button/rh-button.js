@@ -18,11 +18,6 @@ const styles = css `:host{display:inline-block;height:max-content}[hidden]{displ
  * @summary Triggers actions on the page or in the background
  *
  * @alias button
- *
- * @csspart button - Internal button element
- * @csspart icon - Container for the icon slot
- * @slot icon - Contains the button's icon or state indicator, e.g. a spinner.
- * @slot - Contains button text
  */
 let RhButton = class RhButton extends LitElement {
     constructor() {
@@ -58,6 +53,7 @@ let RhButton = class RhButton extends LitElement {
         const { danger, variant } = this;
         const hasIcon = __classPrivateFieldGet(this, _RhButton_instances, "a", _RhButton_hasIcon_get);
         return html `
+      <!-- Internal button element -->
       <button aria-label="${ifDefined(this.label)}"
               class="${classMap({
             danger,
@@ -70,11 +66,17 @@ let RhButton = class RhButton extends LitElement {
               @click="${__classPrivateFieldGet(this, _RhButton_instances, "m", _RhButton_onClick)}"
               aria-disabled=${String(!!this.disabled || !!__classPrivateFieldGet(this, _RhButton_internals, "f").formDisabled)}>
         <span aria-hidden="true">
+          <!--
+            slot:
+              description: Contains the button's icon or state indicator, e.g. a spinner.
+            part:
+              description: Container for the icon slot
+          -->
           <slot id="icon"
                 part="icon"
                 name="icon">${__classPrivateFieldGet(this, _RhButton_instances, "m", _RhButton_renderIcon).call(this)}</slot>
         </span>
-        <span aria-hidden=${String(!!this.label)}><slot id="text" ></slot></span>
+        <span aria-hidden=${String(!!this.label)}><!-- Contains button text --><slot id="text" ></slot></span>
       </button>
     `;
     }

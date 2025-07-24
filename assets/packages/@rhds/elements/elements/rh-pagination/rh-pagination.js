@@ -1,4 +1,4 @@
-var _RhPagination_instances, _RhPagination_mo, _RhPagination_logger, _RhPagination_ol, _RhPagination_links, _RhPagination_firstLink, _RhPagination_lastLink, _RhPagination_nextLink, _RhPagination_prevLink, _RhPagination_currentLink, _RhPagination_currentIndex, _RhPagination_currentPage_get, _RhPagination_numericContent, _RhPagination_getOverflow, _RhPagination_getCurrentLink, _RhPagination_updateLightDOMRefs, _RhPagination_checkValidity, _RhPagination_go, _RhPagination_onKeyup, _RhPagination_onChange;
+var _RhPagination_instances, _RhPagination_mo, _RhPagination_logger, _RhPagination_ol, _RhPagination_links, _RhPagination_firstLink, _RhPagination_lastLink, _RhPagination_nextLink, _RhPagination_prevLink, _RhPagination_currentLink, _RhPagination_currentIndex, _RhPagination_currentPage_get, _RhPagination_getOverflow, _RhPagination_getCurrentLink, _RhPagination_updateLightDOMRefs, _RhPagination_checkValidity, _RhPagination_go, _RhPagination_onKeyup, _RhPagination_onChange;
 var RhPagination_1;
 import { __classPrivateFieldGet, __classPrivateFieldSet, __decorate } from "tslib";
 import { LitElement, html, isServer } from 'lit';
@@ -10,7 +10,7 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 import { css } from "lit";
-const styles = css `:host{--_stepper-size:var(--rh-length-3xl,48px);display:block;min-block-size:4em}:host([size=sm]){--_stepper-size:var(--rh-length-2xl,32px)}[hidden]{display:none!important}#container{container-name:pagination;container-type:inline-size;display:flex;gap:var(--rh-space-2xl,32px) calc(var(--rh-space-xs, 4px)/2);flex-wrap:wrap;--rh-pagination-accent-color:var(--rh-color-interactive-primary-default);--_numeric-a-color:var(--rh-pagination-accent-color);--_numeric-a-color-hover:var(--rh-color-interactive-primary-hover);--_numeric-a-color-focus:var(--rh-pagination-accent-color);--_numeric-a-color-focus-outline:var(--rh-pagination-accent-color);--_numeric-a-color-visited:var(--rh-color-interactive-primary-visited-default);--_numeric-a-color-visited-hover:var(--rh-color-interactive-primary-visited-hover);--_list-a-bg-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),oklch(from var(--rh-color-surface-dark,#383838) calc(l * 0.82) c h));--_list-a-current-page-border-color:var(--rh-color-border-subtle);--_list-a-current-page-bg-color:light-dark(var(--rh-color-surface-lightest,#fff),var(--rh-color-surface-darkest,#151515));--_list-a-text-color:var(--rh-color-text-primary);--_stepper-bg-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),oklch(from var(--rh-color-surface-dark,#383838) calc(l * 0.82) c h));--_stepper-hover-focus-color:var(--rh-color-text-primary-on-dark,#fff);--_border-top-hover-color:light-dark(var(--rh-color-gray-60,#4d4d4d),var(--rh-color-border-subtle-on-light,#c7c7c7));--rh-pagination-stepper-color:light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-text-secondary-on-dark,#c7c7c7));--rh-pagination-background-focused:light-dark(var(--rh-color-gray-30,#c7c7c7),var(--rh-color-gray-50,#707070))}@container pagination (min-width: 768px){#container{flex-wrap:nowrap}}.visually-hidden{border:0;clip:rect(0,0,0,0);block-size:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap;inline-size:1px}@container pagination (min-width: 344px){.xxs-visually-hidden{border:0;clip:rect(0,0,0,0);block-size:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap;inline-size:1px}}@container pagination (min-width: 768px){.sm-visually-visible{clip:auto;block-size:auto;margin:0;overflow:visible;padding:0;position:static;white-space:normal;inline-size:auto}}nav{display:none}@container pagination (min-width: 768px){nav{display:contents}}svg{fill:currentcolor}.stepper{background-color:var(--_stepper-bg-color);border:var(--rh-border-width-sm,1px) solid #0000;color:var(--rh-pagination-stepper-color,var(--rh-color-gray-50,#707070));display:grid;font-family:var(--rh-font-family-heading,RedHatDisplay,"Red Hat Display",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-heading-xs,1.25rem);block-size:var(--_stepper-size);place-content:center;position:relative;text-decoration:none;inline-size:var(--_stepper-size)}.stepper:focus{border-radius:var(--rh-border-radius-default,3px);outline-offset:-2px;outline:var(--rh-border-width-md,2px) solid #0000;outline-color:var(--rh-pagination-accent-color,var(--rh-color-interactive-primary-default))}.stepper:focus:after,.stepper:focus:before,.stepper:hover:after{border-block-start-style:solid;content:"";inset-inline-start:-1px;position:absolute;inset-block-start:-1px;inline-size:104%}.stepper:focus:before,.stepper:hover:after{border-block-color:var(--_border-top-hover-color);border-block-width:var(--rh-border-width-lg,3px)}.stepper:focus:after{border-block-color:var(--rh-pagination-accent-color,var(--rh-color-border-interactive));border-block-width:var(--rh-border-width-md,2px)}.stepper svg{block-size:14px}:is(#next,#last) svg,:not(#next,#last) svg:dir(rtl){rotate:180deg}:is(#next,#last) svg:dir(rtl){rotate:0deg}.stepper[inert]{pointer-events:none;color:var(--rh-pagination-background-focused,var(--rh-color-gray-30,#c7c7c7))}@container pagination (min-width: 768px){#last{margin-inline-end:var(--rh-space-2xl,32px)}}input{block-size:var(--rh-length-2xl,32px);inline-size:var(--rh-length-4xl,64px);font-size:var(--rh-font-size-body-text-md,1rem);background:light-dark(var(--rh-color-surface-lightest,#fff),var(--rh-color-surface-darkest,#151515));border:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle);border-block-end-color:light-dark(var(--rh-color-gray-40,#a3a3a3),var(--rh-color-gray-60,#4d4d4d));box-sizing:border-box;padding-block:var(--rh-space-sm,6px);padding-inline:var(--rh-space-md,8px);color:var(--rh-color-text-primary)}input:focus{border:var(--rh-border-width-md,2px) solid var(--rh-pagination-accent-color,var(--rh-color-interactive-primary-default));padding-block:calc(var(--rh-space-sm, 6px) - 1px);padding-inline:calc(var(--rh-space-md, 8px) - 1px);outline:none}input:invalid{border-block-end-color:light-dark(var(--rh-color-red-60,#a60000),var(--rh-color-red-40,#f56e6e))}input:invalid:focus{border-block-end-width:var(--rh-border-width-md,2px)}#numeric-middle{display:none}#numeric-end{display:block;inline-size:100%}#numeric{align-items:center;display:flex;flex:0;font-size:var(--rh-font-size-body-text-md,1rem);gap:.5em;margin-block:0;margin-inline:0 var(--rh-space-lg,16px);min-block-size:var(--_stepper-size);inline-size:100%}#numeric input{align-self:stretch;block-size:auto}#numeric a{text-decoration:none;color:var(--_numeric-a-color)}#numeric a:hover{color:var(--_numeric-a-color-hover);text-decoration:underline}#numeric a:visited{color:var(--_numeric-a-color-visited)}#numeric a:focus{border-radius:var(--rh-border-radius-default,3px);color:var(--_numeric-a-color-focus);outline:var(--rh-border-width-md,2px) solid #0000;outline-color:var(--_numeric-a-color-focus-outline);text-decoration:underline}#numeric a:visited:hover{color:var(--_numeric-a-color-visited-hover)}@container pagination (min-width: 344px){#numeric-middle{display:contents}#numeric-end{display:none}#numeric{margin-inline-start:var(--rh-space-lg,16px)}}@container pagination (min-width: 768px){#numeric-middle{display:none}#numeric-end{display:contents}#numeric{margin-inline-start:0}}:host([variant|=open]) .stepper{--_stepper-bg-color:#0000}:host([variant|=open]) .stepper:focus:after,:host([variant|=open]) .stepper:focus:before,:host([variant|=open]) .stepper:hover:after{border-block-start-style:none;border-block-end-style:solid;inset-block-end:-1px}`;
+const styles = css `:host{--_stepper-size:var(--rh-length-3xl,48px);display:block;min-block-size:4em}:host([size=sm]){--_stepper-size:var(--rh-length-2xl,32px)}[hidden]{display:none!important}#container{container-name:pagination;container-type:inline-size;display:flex;gap:var(--rh-space-2xl,32px) calc(var(--rh-space-xs, 4px)/2);flex-wrap:wrap;--_numeric-a-color:var(--rh-pagination-accent-color,var(--rh-color-interactive-primary-default));--_numeric-a-color-hover:var(--rh-color-interactive-primary-hover);--_numeric-a-color-focus:var(--rh-pagination-accent-color,var(--rh-color-interactive-primary-default));--_numeric-a-color-focus-outline:var(--rh-pagination-accent-color,var(--rh-color-interactive-primary-default));--_numeric-a-color-visited:var(--rh-color-interactive-primary-visited-default);--_numeric-a-color-visited-hover:var(--rh-color-interactive-primary-visited-hover);--_list-a-bg-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),oklch(from var(--rh-color-surface-dark,#383838) calc(l * 0.82) c h));--_list-a-current-page-border-color:var(--rh-color-border-subtle);--_list-a-current-page-bg-color:light-dark(var(--rh-color-surface-lightest,#fff),var(--rh-color-surface-darkest,#151515));--_list-a-text-color:var(--rh-color-text-primary);--_stepper-bg-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),oklch(from var(--rh-color-surface-dark,#383838) calc(l * 0.82) c h));--_stepper-hover-focus-color:var(--rh-color-text-primary-on-dark,#fff);--_border-top-hover-color:light-dark(var(--rh-color-gray-60,#4d4d4d),var(--rh-color-border-subtle-on-light,#c7c7c7));--rh-pagination-stepper-color:light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-text-secondary-on-dark,#c7c7c7));--rh-pagination-background-focused:light-dark(var(--rh-color-gray-30,#c7c7c7),var(--rh-color-gray-50,#707070))}@container pagination (min-width: 768px){#container{flex-wrap:nowrap}}.visually-hidden{border:0;clip:rect(0,0,0,0);block-size:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap;inline-size:1px}@container pagination (min-width: 344px){.xxs-visually-hidden{border:0;clip:rect(0,0,0,0);block-size:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap;inline-size:1px}}@container pagination (min-width: 768px){.sm-visually-visible{clip:auto;block-size:auto;margin:0;overflow:visible;padding:0;position:static;white-space:normal;inline-size:auto}}nav{display:none}@container pagination (min-width: 768px){nav{display:contents}}svg{fill:currentcolor}.stepper{background-color:var(--_stepper-bg-color);border:var(--rh-border-width-sm,1px) solid #0000;color:var(--rh-pagination-stepper-color,var(--rh-color-gray-50,#707070));display:grid;font-family:var(--rh-font-family-heading,RedHatDisplay,"Red Hat Display",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-heading-xs,1.25rem);block-size:var(--_stepper-size);place-content:center;position:relative;text-decoration:none;inline-size:var(--_stepper-size)}.stepper:focus{border-radius:var(--rh-border-radius-default,3px);outline-offset:-2px;outline:var(--rh-border-width-md,2px) solid #0000;outline-color:var(--rh-pagination-accent-color,var(--rh-color-interactive-primary-default))}.stepper:focus:after,.stepper:focus:before,.stepper:hover:after{border-block-start-style:solid;content:"";inset-inline-start:-1px;position:absolute;inset-block-start:-1px;inline-size:104%}.stepper:focus:before,.stepper:hover:after{border-block-color:var(--_border-top-hover-color);border-block-width:var(--rh-border-width-lg,3px)}.stepper:focus:after{border-block-color:var(--rh-pagination-accent-color,var(--rh-color-border-interactive));border-block-width:var(--rh-border-width-md,2px)}.stepper svg{block-size:14px}:is(#next,#last) svg,:not(#next,#last) svg:dir(rtl){rotate:180deg}:is(#next,#last) svg:dir(rtl){rotate:0deg}.stepper[inert]{pointer-events:none;color:var(--rh-pagination-background-focused,var(--rh-color-gray-30,#c7c7c7))}@container pagination (min-width: 768px){#last{margin-inline-end:var(--rh-space-2xl,32px)}}input{block-size:var(--rh-length-2xl,32px);inline-size:var(--rh-length-4xl,64px);font-size:var(--rh-font-size-body-text-md,1rem);background:light-dark(var(--rh-color-surface-lightest,#fff),var(--rh-color-surface-darkest,#151515));border:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle);border-block-end-color:light-dark(var(--rh-color-gray-40,#a3a3a3),var(--rh-color-gray-60,#4d4d4d));box-sizing:border-box;padding-block:var(--rh-space-sm,6px);padding-inline:var(--rh-space-md,8px);color:var(--rh-color-text-primary)}input:focus{border:var(--rh-border-width-md,2px) solid var(--rh-pagination-accent-color,var(--rh-color-interactive-primary-default));padding-block:calc(var(--rh-space-sm, 6px) - 1px);padding-inline:calc(var(--rh-space-md, 8px) - 1px);outline:none}input:invalid{border-block-end-color:light-dark(var(--rh-color-red-60,#a60000),var(--rh-color-red-40,#f56e6e))}input:invalid:focus{border-block-end-width:var(--rh-border-width-md,2px)}#numeric-middle{display:none}#numeric-end{display:block;inline-size:100%}#numeric{align-items:center;display:flex;flex:0;font-size:var(--rh-font-size-body-text-md,1rem);gap:.5em;margin-block:0;margin-inline:0 var(--rh-space-lg,16px);min-block-size:var(--_stepper-size);inline-size:100%}#numeric input{align-self:stretch;block-size:auto}#numeric a{text-decoration:none;color:var(--_numeric-a-color)}#numeric a:hover{color:var(--_numeric-a-color-hover);text-decoration:underline}#numeric a:visited{color:var(--_numeric-a-color-visited)}#numeric a:focus{border-radius:var(--rh-border-radius-default,3px);color:var(--_numeric-a-color-focus);outline:var(--rh-border-width-md,2px) solid #0000;outline-color:var(--_numeric-a-color-focus-outline);text-decoration:underline}#numeric a:visited:hover{color:var(--_numeric-a-color-visited-hover)}@container pagination (min-width: 344px){#numeric-middle{display:contents}#numeric-end{display:none}#numeric{margin-inline-start:var(--rh-space-lg,16px)}}@container pagination (min-width: 768px){#numeric-middle{display:none}#numeric-end{display:contents}#numeric{margin-inline-start:0}}:host([variant|=open]) .stepper{--_stepper-bg-color:#0000}:host([variant|=open]) .stepper:focus:after,:host([variant|=open]) .stepper:focus:before,:host([variant|=open]) .stepper:hover:after{border-block-start-style:none;border-block-end-style:solid;inset-block-end:-1px}`;
 const L1 = html `
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 14">
     <path d="M.3 6.26 6.24.3C6.63-.1 7.3-.1 7.7.3l.99.99c.4.4.4 1.07 0 1.48L4.49 7l4.2 4.22c.41.4.41 1.07 0 1.48l-.98 1c-.41.4-1.07.4-1.48 0L.31 7.73a1.05 1.05 0 0 1 0-1.48Z"/>
@@ -26,19 +26,6 @@ const L2 = html `
  *
  * @alias pagination
  *
- * @slot            - An ordered list of links
- * @slot go-to-page - "Go to page" text, defaults to "Page"
- * @slot out-of     - "of" text
- * @csspart container - pagination container
- * @csspart numeric-middle - container for the numeric control at medium screen widths
- * @csspart numeric-end - container for the numeric control at small and large screen widths
- * @csspart numeric - shared container for the numeric controls at all widths
- * @cssprop [--rh-pagination-accent-color=var(--rh-color-interactive-blue, #0066cc)]
- *          Sets the outline color when the page input has focus.
- * @cssprop [--rh-pagination-background-focused=var(--rh-color-gray-20, #c7c7c7)]
- *          Sets the disabled stepper color.
- * @cssprop [--rh-pagination-stepper-color=var(--rh-color-icon-subtle, #707070)]
- *           Sets the stepper color.
  */
 let RhPagination = RhPagination_1 = class RhPagination extends LitElement {
     constructor() {
@@ -116,7 +103,30 @@ let RhPagination = RhPagination_1 = class RhPagination extends LitElement {
     render() {
         const { label, labelFirst, labelPrevious, labelNext, labelLast, firstHref, prevHref, nextHref, lastHref, } = this;
         const currentPage = __classPrivateFieldGet(this, _RhPagination_instances, "a", _RhPagination_currentPage_get).toString();
+        const numericContent = html `
+      <!-- shared container for the numeric controls at all widths -->
+      <div id="numeric" part="numeric">
+        <span id="go-to-page" class="xxs-visually-hidden sm-visually-visible">
+          <!-- "Go to page" text, defaults to "Page" -->
+          <slot name="go-to-page">
+            Page
+          </slot>
+        </span>
+        <input inputmode="numeric"
+               required
+               min=1
+               max="${this.total}"
+               aria-labelledby="go-to-page"
+               @change="${__classPrivateFieldGet(this, _RhPagination_instances, "m", _RhPagination_onChange)}"
+               @keyup="${__classPrivateFieldGet(this, _RhPagination_instances, "m", _RhPagination_onKeyup)}"
+               .value="${currentPage}">
+        <!-- "of" text -->
+        <slot ?hidden="${!this.total}" name="out-of">of</slot>
+        <a ?hidden="${!this.total}" href="${ifDefined(lastHref)}">${this.total}</a>
+      </div>
+    `;
         return html `
+      <!-- pagination container -->
       <div id="container" part="container">
         <a id="first"
            class="stepper"
@@ -129,10 +139,12 @@ let RhPagination = RhPagination_1 = class RhPagination extends LitElement {
            .inert="${__classPrivateFieldGet(this, _RhPagination_currentLink, "f") === __classPrivateFieldGet(this, _RhPagination_prevLink, "f") || __classPrivateFieldGet(this, _RhPagination_currentLink, "f") === __classPrivateFieldGet(this, _RhPagination_firstLink, "f")}"
            aria-label="${labelPrevious}">${L1}</a>
         <nav aria-label="${label}">
+          <!-- An ordered list of links -->
           <slot></slot>
         </nav>
+        <!-- container for the numeric control at medium screen widths -->
         <div id="numeric-middle" part="numeric-middle">
-          ${__classPrivateFieldGet(this, _RhPagination_instances, "m", _RhPagination_numericContent).call(this, currentPage, lastHref)}
+          ${numericContent}
         </div>
         <a id="next"
            class="stepper"
@@ -144,8 +156,9 @@ let RhPagination = RhPagination_1 = class RhPagination extends LitElement {
            href="${ifDefined(lastHref)}"
            .inert="${__classPrivateFieldGet(this, _RhPagination_currentLink, "f") === __classPrivateFieldGet(this, _RhPagination_lastLink, "f")}"
            aria-label="${labelLast}">${L2}</a>
+        <!-- container for the numeric control at small and large screen widths -->
         <div id="numeric-end" part="numeric-end">
-          ${__classPrivateFieldGet(this, _RhPagination_instances, "m", _RhPagination_numericContent).call(this, currentPage, lastHref)}
+          ${numericContent}
         </div>
       </div>
     `;
@@ -187,27 +200,6 @@ _RhPagination_currentIndex = new WeakMap();
 _RhPagination_instances = new WeakSet();
 _RhPagination_currentPage_get = function _RhPagination_currentPage_get() {
     return __classPrivateFieldGet(this, _RhPagination_currentIndex, "f") + 1;
-};
-_RhPagination_numericContent = function _RhPagination_numericContent(currentPage, lastHref) {
-    return html `
-      <div id="numeric" part="numeric">
-        <span id="go-to-page" class="xxs-visually-hidden sm-visually-visible">
-          <slot name="go-to-page">
-            Page
-          </slot>
-        </span>
-        <input inputmode="numeric"
-               required
-               min=1
-               max="${this.total}"
-               aria-labelledby="go-to-page"
-               @change="${__classPrivateFieldGet(this, _RhPagination_instances, "m", _RhPagination_onChange)}"
-               @keyup="${__classPrivateFieldGet(this, _RhPagination_instances, "m", _RhPagination_onKeyup)}"
-               .value="${currentPage}">
-        <slot ?hidden="${!this.total}" name="out-of">of</slot>
-        <a ?hidden="${!this.total}" href="${ifDefined(lastHref)}">${this.total}</a>
-      </div>
-    `;
 };
 _RhPagination_getOverflow = function _RhPagination_getOverflow() {
     const overflowAt = 9;

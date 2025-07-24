@@ -12,12 +12,6 @@ const styles = css `:host{--rh-avatar-size:var(--rh-size-icon-05,48px)}.media-in
 import { HeadingLevelContextConsumer } from '../../lib/context/headings/consumer.js';
 /**
  * Audio Player About Panel
- * @slot heading - custom heading for panel
- * @slot - panel content
- * @slot profile - `<rh-avatar>` for attribution
- * @csspart heading - panel heading
- * @csspart body - panel body
- * @csspart profile - panel profile / avatar
  */
 let RhAudioPlayerAbout = class RhAudioPlayerAbout extends LitElement {
     constructor() {
@@ -30,7 +24,9 @@ let RhAudioPlayerAbout = class RhAudioPlayerAbout extends LitElement {
         const hasContent = isServer || ((this.content?.length ?? 0) >= 1);
         const heading = __classPrivateFieldGet(this, _RhAudioPlayerAbout_headings, "f").wrap(mediatitle ?? '');
         return html `
+      <!-- panel heading -->
       <rh-audio-player-scrolling-text-overflow id="title" part="heading">
+        <!-- custom heading for panel -->
         <slot name="heading">${label}</slot>
       </rh-audio-player-scrolling-text-overflow>${!mediatitle ? `` : !mediaseries ? heading : html `
       <hgroup class="media-info" part="heading">${!mediaseries ? '' : html `
@@ -41,7 +37,16 @@ let RhAudioPlayerAbout = class RhAudioPlayerAbout extends LitElement {
           ${heading}
         </rh-audio-player-scrolling-text-overflow>
       </hgroup>`}
-      <div part="body" ?hidden="${!hasContent}" tabindex=0><slot></slot></div>
+      <!-- panel body -->
+      <div part="body" ?hidden="${!hasContent}" tabindex=0><!-- panel content --><slot></slot></div>
+      <!--
+        part:
+          description: |
+            panel profile / avatar
+        slot:
+          description: |
+            \`<rh-avatar>\` for attribution
+      -->
       <slot part="profile" name="profile"></slot>`;
     }
     set menuLabel(label) {

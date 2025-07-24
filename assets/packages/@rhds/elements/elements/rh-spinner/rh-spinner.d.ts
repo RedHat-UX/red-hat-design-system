@@ -8,8 +8,6 @@ export type SpinnerSize = RhSpinner['size'];
  * @summary Notifies users their action is being processed or loaded
  *
  * @alias spinner
- *
- * @slot - Optional text label below the animated circle.
  */
 export declare class RhSpinner extends LitElement {
     static readonly styles: CSSStyleSheet[];

@@ -26,16 +26,15 @@ const paths = new Map(Object.entries({
 /**
  * Table sort button
  *
- * @csspart sort-button    - button element
- * @csspart sort-indicator - icon wrapper element
- *
  * @fires {RequestSortEvent} request-sort - when the button is clicked
  */
 let RhSortButton = class RhSortButton extends LitElement {
     render() {
         return html `
+      <!-- button element -->
       <button id="sort-button" part="sort-button" @click="${this.sort}" aria-label="Sort">
         <span class="visually-hidden">${!this.sortDirection ? '' : `(sort${!this.column ? '' : ` by ${this.column}`} in ${this.sortDirection === 'asc' ? 'ascending' : 'descending'} order)`}</span>
+        <!-- icon wrapper element -->
         <span id="sort-indicator" part="sort-indicator">
           <svg fill="currentColor"
                height="1em"

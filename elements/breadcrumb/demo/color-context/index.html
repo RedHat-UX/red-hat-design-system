@@ -30,8 +30,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.3/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
@@ -90,8 +90,10 @@
   </head>
   <body>
     <main><rh-context-demo>
-  <rh-breadcrumb><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}</style><!--lit-part ME46gwc5S5E=-->
-      <!--lit-node 0--><nav aria-label="Breadcrumb" part="container" id="container">
+  <rh-breadcrumb><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;--rh-breadcrumb-link-color:var(--rh-color-interactive-blue-darker,#06c);--rh-breadcrumb-link-color-current-page:var(--rh-color-text-primary-on-light,#151515);--rh-breadcrumb-link-color-current-page-subtle:var(--rh-color-text-secondary-on-light,#4d4d4d);--rh-breadcrumb-link-color-hover:var(--rh-color-interactive-blue-darkest,#036);--rh-breadcrumb-link-color-visited:var(--rh-color-interactive-purple-darker,#5e40be);--rh-breadcrumb-link-color-visited-hover:var(--rh-color-interactive-purple-darkest,#ece6ff);--rh-breadcrumb-link-focus-outline-color:var(--rh-color-border-interactive-on-light,#06c);--rh-breadcrumb-li-padding-inline-end:42px;--rh-breadcrumb-caret-image:url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" width="10" height="21" viewBox="0 0 10 21"%3E%3Cpath d="m0 20.5 9-10-9-10" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/%3E%3C/svg%3E');--rh-breadcrumb-caret-image-subtle:url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" width="10" height="21" viewBox="0 0 10 21"%3E%3Cpath d="m0 20.5 9-10-9-10" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/%3E%3C/svg%3E')}</style><!--lit-part luke0MFC/lo=-->
+      <!-- container element for slotted breadcrumb -->
+      <!--lit-node 1--><nav aria-label="Breadcrumb" part="container" id="container">
+        <!-- Place an ordered list (`<ol>`) of your breadcrumbs into the slot -->
         <slot></slot>
       </nav>
     <!--/lit-part--></template>
@@ -107,8 +109,10 @@
 
   <h2 class="subtle-heading">Subtle:</h2>
 
-  <rh-breadcrumb  variant="subtle"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block}</style><!--lit-part ME46gwc5S5E=-->
-      <!--lit-node 0--><nav aria-label="Breadcrumb" part="container" id="container">
+  <rh-breadcrumb  variant="subtle"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;--rh-breadcrumb-link-color:var(--rh-color-interactive-blue-darker,#06c);--rh-breadcrumb-link-color-current-page:var(--rh-color-text-primary-on-light,#151515);--rh-breadcrumb-link-color-current-page-subtle:var(--rh-color-text-secondary-on-light,#4d4d4d);--rh-breadcrumb-link-color-hover:var(--rh-color-interactive-blue-darkest,#036);--rh-breadcrumb-link-color-visited:var(--rh-color-interactive-purple-darker,#5e40be);--rh-breadcrumb-link-color-visited-hover:var(--rh-color-interactive-purple-darkest,#ece6ff);--rh-breadcrumb-link-focus-outline-color:var(--rh-color-border-interactive-on-light,#06c);--rh-breadcrumb-li-padding-inline-end:42px;--rh-breadcrumb-caret-image:url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" width="10" height="21" viewBox="0 0 10 21"%3E%3Cpath d="m0 20.5 9-10-9-10" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/%3E%3C/svg%3E');--rh-breadcrumb-caret-image-subtle:url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" width="10" height="21" viewBox="0 0 10 21"%3E%3Cpath d="m0 20.5 9-10-9-10" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/%3E%3C/svg%3E')}</style><!--lit-part luke0MFC/lo=-->
+      <!-- container element for slotted breadcrumb -->
+      <!--lit-node 1--><nav aria-label="Breadcrumb" part="container" id="container">
+        <!-- Place an ordered list (`<ol>`) of your breadcrumbs into the slot -->
         <slot></slot>
       </nav>
     <!--/lit-part--></template>

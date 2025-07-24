@@ -16,8 +16,6 @@ const styles = css `:host{display:block;color:var(--rh-color-text-primary);backg
  *
  * @alias surface
  *
- * @slot - The `<rh-surface>` element has a single anonymous slot which accepts any content and does not provide additional layout styling
- *
  * @example A surface providing a theme to a spinner
  *          ```html
  *          <rh-surface color-palette="light">
@@ -31,7 +29,9 @@ let RhSurface = class RhSurface extends LitElement {
         _RhSurface_instances.add(this);
     }
     render() {
-        return html `<slot id="slot" @slotchange=${__classPrivateFieldGet(this, _RhSurface_instances, "m", _RhSurface_onSlotchange)}></slot>`;
+        return html `<!--
+      The \`<rh-surface>\` element has a single anonymous slot which accepts any content and does not provide additional layout styling
+    --><slot id="slot" @slotchange=${__classPrivateFieldGet(this, _RhSurface_instances, "m", _RhSurface_onSlotchange)}></slot>`;
     }
 };
 _RhSurface_instances = new WeakSet();

@@ -30,8 +30,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.3/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
@@ -93,12 +93,14 @@
   <strong>Note: </strong> Tables with no <code>thead</code> will not stack on mobile.
 </p>
 
-<rh-table><template shadowroot="open" shadowrootmode="open"><style>*{box-sizing:border-box}:host{color:var(--rh-color-text-primary);display:block;overflow:auto;position:relative;scrollbar-color:var(--_scrollbar-track-color) var(--_scrollbar-thumb-color);width:100%;--_scrollbar-size:0.625rem;--_scrollbar-thumb-color:var(--rh-color-gray-50,#707070);--_scrollbar-track-color:var(--rh-color-border-subtle);--_row-border:var(--rh-table-row-border,var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle-on-light,#c7c7c7));--_row-background-hover-color:light-dark(var(--rh-table-row-background-hover-color,rgba(from var(--rh-color-gray-40,#a3a3a3) r g b/0.1)),rgba(from var(--rh-color-white,#ffffff) r g b/0.1));--_column-background-hover-color:light-dark(var(--rh-table-column-background-hover-color,rgba(from var(--rh-color-blue-50,#0066cc) r g b/0.1)),rgba(from var(--rh-color-blue-70,#003366) r g b/0.3))}:host::-webkit-scrollbar{height:var(--_scrollbar-size);width:var(--_scrollbar-size)}:host::-webkit-scrollbar,:host::-webkit-scrollbar-track{background-color:var(--_scrollbar-track-color)}:host::-webkit-scrollbar-thumb{background-color:var(--_scrollbar-thumb-color)}[slot]{display:block}::slotted([slot=summary]){color:var(--rh-color-text-secondary);display:block;font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-style:italic;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-body-text,1.5);padding:var(--rh-space-xl,24px) var(--rh-space-lg,16px) 0 var(--rh-space-lg,16px)}</style><!--lit-part XQVmzlN7s7o=-->
+<rh-table><template shadowroot="open" shadowrootmode="open"><style>*{box-sizing:border-box}:host{color:var(--rh-color-text-primary);display:block;overflow:auto;position:relative;scrollbar-color:var(--_scrollbar-track-color) var(--_scrollbar-thumb-color);width:100%;--_scrollbar-size:0.625rem;--_scrollbar-thumb-color:var(--rh-color-gray-50,#707070);--_scrollbar-track-color:var(--rh-color-border-subtle);--_row-border:var(--rh-table-row-border,var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle-on-light,#c7c7c7));--_row-background-hover-color:light-dark(var(--rh-table-row-background-hover-color,rgba(from var(--rh-color-gray-40,#a3a3a3) r g b/0.1)),rgba(from var(--rh-color-white,#ffffff) r g b/0.1));--_column-background-hover-color:light-dark(var(--rh-table-column-background-hover-color,rgba(from var(--rh-color-blue-50,#0066cc) r g b/0.1)),rgba(from var(--rh-color-blue-70,#003366) r g b/0.3))}:host::-webkit-scrollbar{height:var(--_scrollbar-size);width:var(--_scrollbar-size)}:host::-webkit-scrollbar,:host::-webkit-scrollbar-track{background-color:var(--_scrollbar-track-color)}:host::-webkit-scrollbar-thumb{background-color:var(--_scrollbar-thumb-color)}[slot]{display:block}::slotted([slot=summary]){color:var(--rh-color-text-secondary);display:block;font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-style:italic;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-body-text,1.5);padding:var(--rh-space-xl,24px) var(--rh-space-lg,16px) 0 var(--rh-space-lg,16px)}</style><!--lit-part 2TLt9j2sbhA=-->
       <div id="container" part="container">
-        <!--lit-node 1--><slot 
+        <!-- an HTML table -->
+        <!--lit-node 2--><slot 
               
               
               ></slot>
+        <!-- description of the data -->
         <slot id="summary" name="summary"></slot>
       </div>
     <!--/lit-part--></template>

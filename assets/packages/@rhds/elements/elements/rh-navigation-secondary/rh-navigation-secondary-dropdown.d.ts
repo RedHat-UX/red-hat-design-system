@@ -7,9 +7,9 @@ export declare class SecondaryNavDropdownExpandEvent extends ComposedEvent {
 }
 /**
  * Upgrades a top level nav link to include dropdown functionality
+ *
  * @summary Upgrades a top level nav link to include dropdown functionality
- * @slot link   - Link for dropdown, expects `<a>` element
- * @slot menu   - Menu for dropdown, expects `<rh-navigation-secondary-menu>` element
+ *
  * @fires { SecondaryNavDropdownExpandEvent } change - Fires when a dropdown is clicked
  */
 export declare class RhNavigationSecondaryDropdown extends LitElement {

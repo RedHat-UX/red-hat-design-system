@@ -49,7 +49,6 @@ export const getSeconds = (str) => {
 };
 /**
  * Media Transcript Cue
- * @slot - text of cue
  * @fires cueseek - when user clicks a time cue
  */
 let RhCue = class RhCue extends LitElement {
@@ -79,6 +78,7 @@ let RhCue = class RhCue extends LitElement {
         const { start, voice } = this;
         return html `${!__classPrivateFieldGet(this, _RhCue_instances, "a", _RhCue_hasVoice_get) ? nothing : __classPrivateFieldGet(this, _RhCue_headings, "f").wrap(__classPrivateFieldGet(this, _RhCue_instances, "m", _RhCue_linkTemplate).call(this, html `
       <span id="start">${start}</span> - <span id="voice">${voice}</span>`, true))}${__classPrivateFieldGet(this, _RhCue_instances, "m", _RhCue_linkTemplate).call(this, html `
+      <!-- text of cue -->
       <slot></slot>
     `)}`;
     }

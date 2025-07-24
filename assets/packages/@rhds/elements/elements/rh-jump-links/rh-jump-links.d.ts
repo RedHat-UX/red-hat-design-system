@@ -6,7 +6,6 @@ import '@rhds/elements/rh-icon/rh-icon.js';
  * @alias jump-links
  *
  * @fires toggle - when the `expanded` disclosure widget is toggled
- * @slot - Place `<rh-jump-link>` or `<rh-jump-links-list>` elements here
  */
 export declare class RhJumpLinks extends LitElement {
     #private;

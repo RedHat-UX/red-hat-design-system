@@ -7,9 +7,6 @@ export declare class RequestSortEvent extends ComposedEvent {
 /**
  * Table sort button
  *
- * @csspart sort-button    - button element
- * @csspart sort-indicator - icon wrapper element
- *
  * @fires {RequestSortEvent} request-sort - when the button is clicked
  */
 export declare class RhSortButton extends LitElement {

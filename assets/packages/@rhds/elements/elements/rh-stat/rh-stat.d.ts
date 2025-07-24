@@ -3,18 +3,9 @@ import type { IconNameFor, IconSetName } from '@rhds/icons';
 /**
  * A statistic showcases a data point or quick fact visually.
  *
- * @summary Displays a statistic with an optional icon, title, statistic, and call to action.
- *
  * @summary Showcases a data point or quick fact visually
  *
  * @alias statistic
- *
- * @slot icon - Optional icon
- * @slot title - Statistic title
- * @slot statistic - Statistic data
- * @slot cta - Call to action
- * @slot - Description of the stat
- *
  */
 export declare class RhStat extends LitElement {
     #private;

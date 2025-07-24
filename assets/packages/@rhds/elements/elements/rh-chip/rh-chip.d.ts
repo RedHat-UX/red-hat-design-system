@@ -11,8 +11,6 @@ export declare class ChipChangeEvent extends Event {
  * @alias chip
  *
  * @fires {ChipCheckedEvent} chip-checked - when chip is checked/unchecked
- * @csspart chip - The main chip container
- * @slot - The label of the checkbox
  */
 export declare class RhChip extends LitElement {
     #private;

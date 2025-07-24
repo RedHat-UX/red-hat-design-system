@@ -12,15 +12,16 @@ const styles = css `#container{display:block;z-index:1000}a#container{position:f
  * @summary Skip to the main content of a page
  *
  * @alias skip-link
- *
- * @slot - An anchor tag targeting the main page content by id hash.
- *         Or, if the `href` attribute is set, the text of the link.
  */
 let RhSkipLink = class RhSkipLink extends LitElement {
     render() {
+        const slot = html `<!--
+        An anchor tag targeting the main page content by id hash.
+        Or, if the \`href\` attribute is set, the text of the link.
+    --><slot></slot>`;
         return this.href ?
-            html `<a id="container" href="${this.href}"><slot></slot></a>`
-            : html `<div id="container"><slot></slot></div>`;
+            html `<a id="container" href="${this.href}">${slot}</a>`
+            : html `<div id="container">${slot}</div>`;
     }
 };
 RhSkipLink.shadowRootOptions = { ...LitElement.shadowRootOptions, delegatesFocus: true };

@@ -13,13 +13,6 @@ export { RhTab };
  *
  * @alias tabs
  *
- * @csspart container - outer container
- * @csspart tabs-container - tabs container
- * @csspart tabs - tablist
- * @csspart panels - panels
- * @slot tab - Must contain one or more `<rh-tab>`
- * @slot - Must contain one or more `<rh-tab-panel>`
- * @cssprop {<length>} [--rh-tabs-inset=auto] - Tabs inset
  */
 export declare class RhTabs extends LitElement {
     #private;

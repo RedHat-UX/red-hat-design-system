@@ -10,10 +10,6 @@ const styles = css `:host{display:block}::slotted([slot=header]){padding:0}::slo
 /**
  * A menu section which auto upgrades accessibility for headers and sibling list
  * @summary 'A menu section which auto upgrades accessibility for headers and sibling list'
- * @slot header     - Adds a header tag to section, expects `<h1> | <h2> | <h3> | <h4> | <h5> | <h6>` element
- * @slot links      - Adds a ul tag to section, expects `<ul> | <ol>` element
- * @slot cta        - Adds a section level CTA, expects `<rh-cta>` element
- * @csspart container    - container, <section> element
  */
 let RhNavigationSecondaryMenuSection = class RhNavigationSecondaryMenuSection extends LitElement {
     constructor() {
@@ -29,9 +25,13 @@ let RhNavigationSecondaryMenuSection = class RhNavigationSecondaryMenuSection ex
     }
     render() {
         return html `
+      <!-- container, <section> element -->
       <section part="container">
+        <!-- Adds a header tag to section, expects \`<h1> | <h2> | <h3> | <h4> | <h5> | <h6>\` element -->
         <slot name="header"></slot>
+        <!-- Adds a ul tag to section, expects \`<ul> | <ol>\` element -->
         <slot name="links"></slot>
+        <!-- Adds a section level CTA, expects \`<rh-cta>\` element -->
         <slot name="cta"></slot>
       </section>
     `;

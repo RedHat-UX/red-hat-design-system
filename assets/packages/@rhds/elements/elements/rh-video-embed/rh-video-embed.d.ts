@@ -23,18 +23,6 @@ export declare class VideoPlayEvent extends Event {
  * @fires consent-click - "Update preferences" consent button is clicked
  * @fires request-play - Play button is clicked
  * @fires play - Video is about to be played
- * @slot - Place video embed code here; iframe should include a `title` attribute with the video title
- * @slot play-button-text - Text for play button; recommended value "Video title (video)"
- * @slot thumbnail - Optional thumbnail image on top of video embed; should include `alt` text
- * @slot consent-message - Text explaining opt-in to cookies is required, e.g. `<p>View this video by opting in to “Advertising Cookies.”</p>`
- * @slot consent-button-text - Text for CTA button to update preferences, e.g. "Update preferences"
- * @slot caption - Optional caption below video embed
- * @slot autoplay - DO NOT USE! (Used by `rh-video-embed`.)
- * @csspart figure - The outer container for rh-video-embed
- * @csspart video - The container for the video, thumbnail, and play button
- * @csspart consent-body - The container for the consent message and consent button
- * @csspart play - The play button on top of the thumbnail
- * @csspart caption - The container for the caption
  */
 export declare class RhVideoEmbed extends LitElement {
     #private;

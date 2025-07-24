@@ -11,10 +11,7 @@ export declare class DisclosureToggleEvent extends Event {
  *
  * @alias disclosure
  *
- * @slot - Place the content you want to disclose in the default slot. This content is hidden by default.
- * @slot summary - The title of the disclosure
  * @fires {DisclosureToggleEvent} toggle - Fires when a user opens or closes a disclosure.
- * @csspart caret - The caret icon in the shadow DOM
  */
 export declare class RhDisclosure extends LitElement {
     #private;

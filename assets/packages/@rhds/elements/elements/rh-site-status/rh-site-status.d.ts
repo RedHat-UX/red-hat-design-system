@@ -65,8 +65,6 @@ export interface SummaryResponse {
  * @summary Communicates operational status of a website or domain
  *
  * @alias site-status
- *
- * @slot - loading-text - Text to display while loading the status defaults to "Loading"
  */
 export declare class RhSiteStatus extends LitElement {
     #private;

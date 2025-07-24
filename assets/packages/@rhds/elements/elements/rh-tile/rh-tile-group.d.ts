@@ -3,7 +3,6 @@ import { RhTile } from './rh-tile.js';
 import { type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
 /**
  * A group of `<rh-tile>` elements which handles radio selection.
- * @slot - Put one or more `rh-tile` elements in this slot
  */
 export declare class RhTileGroup extends LitElement {
     #private;

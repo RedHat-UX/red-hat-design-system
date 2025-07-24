@@ -9,19 +9,6 @@ import '@rhds/elements/rh-icon/rh-icon.js';
  * @alias tag
  *
  * @fires close - when a removable label's close button is clicked
- * @slot icon -  Contains the labels's icon, e.g. web-icon-alert-success.
- * @slot      -  Must contain the text for the label.
- * @csspart icon - container for the label icon
- * @cssprop  {<length>} [--rh-tag-margin-inline-end=4px]
- *           The margin at the end of the direction parallel to the flow of the text.
- * @cssprop  {<length>} [--rh-tag-padding-block-start=4px]
- *           The padding at the start of the direction perpendicular to the flow of the text.
- * @cssprop  {<length>} [--rh-tag-padding-block-end=4px]
- *           The padding at the end of the direction perpendicular to the flow of the text.
- * @cssprop  {<length>} [--rh-tag-padding-inline-start=8px]
- *           The padding at the start of the direction parallel to the flow of the text.
- * @cssprop  {<length>} [--rh-tag-padding-inline-end=8px]
- *           The padding at the end of the direction parallel to the flow of the text.
  *
  */
 export declare class RhTag extends LitElement {

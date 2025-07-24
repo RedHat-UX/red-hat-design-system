@@ -26,7 +26,6 @@ export declare class AccordionCollapseEvent extends ComposedEvent {
  *
  * @fires {AccordionExpandEvent} expand - when a panel expands
  * @fires {AccordionCollapseEvent} collapse - when a panel collapses
- * @slot - Place the `rh-accordion-header` and `rh-accordion-panel` elements here.
  * @attr  [accents=inline] Position accents in the header either inline or bottom
  */
 export declare class RhAccordion extends LitElement {

@@ -14,9 +14,6 @@ const styles = css `:host{position:fixed;z-index:1000;inset-inline-end:var(--rh-
  * @summary A shortcut to the top of the page content
  *
  * @alias back-to-top
- *
- * @csspart trigger - back to top link anchor element
- * @slot - Text for the back to top link
  */
 let RhBackToTop = class RhBackToTop extends LitElement {
     constructor() {
@@ -68,7 +65,9 @@ let RhBackToTop = class RhBackToTop extends LitElement {
     }
     render() {
         return html `
+      <!-- back to top link anchor element -->
       <a href="${ifDefined(this.href)}" ?hidden="${!__classPrivateFieldGet(this, _RhBackToTop_visible, "f")}" part="trigger">
+        <!-- Text for the back to top link -->
         <slot>Back to top</slot>
         <rh-icon set="ui" icon="caret-up"></rh-icon>
       </a>

@@ -59,8 +59,6 @@ const isStatusPageResponse = (data) => {
  * @summary Communicates operational status of a website or domain
  *
  * @alias site-status
- *
- * @slot - loading-text - Text to display while loading the status defaults to "Loading"
  */
 let RhSiteStatus = RhSiteStatus_1 = _a = class RhSiteStatus extends LitElement {
     constructor() {
@@ -86,7 +84,7 @@ let RhSiteStatus = RhSiteStatus_1 = _a = class RhSiteStatus extends LitElement {
            aria-busy="${String(__classPrivateFieldGet(this, _RhSiteStatus_loading, "f"))}"
            aria-live="polite">${__classPrivateFieldGet(this, _RhSiteStatus_loading, "f") ? html `
           <rh-spinner size="sm"></rh-spinner>
-          <span><slot name="loading-text">Loading</slot></span>` : html `
+          <span><!-- Text to display while loading the status defaults to "Loading" --><slot name="loading-text">Loading</slot></span>` : html `
           <rh-icon loading="eager" set="ui" icon="${icon}" class="${status}"></rh-icon>
           <span>${__classPrivateFieldGet(this, _RhSiteStatus_instances, "a", _RhSiteStatus_text_get)}</span>`}
         </a>

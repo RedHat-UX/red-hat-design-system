@@ -33,11 +33,6 @@ export declare class AlertCloseEvent extends Event {
  * @alias alert
  *
  * @fires {AlertCloseEvent} close - when the dismissable alert closes
- *
- * @slot         - Provide a description for the alert message
- * @slot header  - Provide a header for the alert message.
- * @slot actions - Provide actions that the user can take for the alert
- *
  */
 export declare class RhAlert extends LitElement {
     #private;

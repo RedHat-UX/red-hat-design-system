@@ -30,8 +30,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.3/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
@@ -89,9 +89,10 @@
     <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
   </head>
   <body>
-    <main><rh-pagination  id="constrain"><template shadowroot="open" shadowrootmode="open"><style>:host{--_stepper-size:var(--rh-length-3xl,48px);display:block;min-block-size:4em}:host([size=sm]){--_stepper-size:var(--rh-length-2xl,32px)}[hidden]{display:none!important}#container{container-name:pagination;container-type:inline-size;display:flex;flex-wrap:wrap;gap:var(--rh-space-2xl,32px) calc(var(--rh-space-xs, 4px)/2);--rh-pagination-accent-color:var(--rh-color-interactive-primary-default);--_numeric-a-color:var(--rh-pagination-accent-color);--_numeric-a-color-hover:var(--rh-color-interactive-primary-hover);--_numeric-a-color-focus:var(--rh-pagination-accent-color);--_numeric-a-color-focus-outline:var(--rh-pagination-accent-color);--_numeric-a-color-visited:var(--rh-color-interactive-primary-visited-default);--_numeric-a-color-visited-hover:var(--rh-color-interactive-primary-visited-hover);--_list-a-bg-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),oklch(from var(--rh-color-surface-dark,#383838) calc(l * 0.82) c h));--_list-a-current-page-border-color:var(--rh-color-border-subtle);--_list-a-current-page-bg-color:light-dark(var(--rh-color-surface-lightest,#fff),var(--rh-color-surface-darkest,#151515));--_list-a-text-color:var(--rh-color-text-primary);--_stepper-bg-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),oklch(from var(--rh-color-surface-dark,#383838) calc(l * 0.82) c h));--_stepper-hover-focus-color:var(--rh-color-text-primary-on-dark,#fff);--_border-top-hover-color:light-dark(var(--rh-color-gray-60,#4d4d4d),var(--rh-color-border-subtle-on-light,#c7c7c7));--rh-pagination-stepper-color:light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-text-secondary-on-dark,#c7c7c7));--rh-pagination-background-focused:light-dark(var(--rh-color-gray-30,#c7c7c7),var(--rh-color-gray-50,#707070))}@container pagination (min-width: 768px){#container{flex-wrap:nowrap}}.visually-hidden{border:0;clip:rect(0,0,0,0);block-size:1px;inline-size:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap}@container pagination (min-width: 344px){.xxs-visually-hidden{border:0;clip:rect(0,0,0,0);block-size:1px;inline-size:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap}}@container pagination (min-width: 768px){.sm-visually-visible{clip:auto;block-size:auto;inline-size:auto;margin:0;overflow:visible;padding:0;position:static;white-space:normal}}nav{display:none}@container pagination (min-width: 768px){nav{display:contents}}svg{fill:currentcolor}.stepper{background-color:var(--_stepper-bg-color);block-size:var(--_stepper-size);border:var(--rh-border-width-sm,1px) solid #0000;color:var(--rh-pagination-stepper-color,var(--rh-color-gray-50,#707070));display:grid;font-family:var(--rh-font-family-heading,RedHatDisplay,"Red Hat Display",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-heading-xs,1.25rem);inline-size:var(--_stepper-size);place-content:center;position:relative;text-decoration:none}.stepper:focus{border-radius:var(--rh-border-radius-default,3px);outline:var(--rh-border-width-md,2px) solid #0000;outline-color:var(--rh-pagination-accent-color,var(--rh-color-interactive-primary-default));outline-offset:-2px}.stepper:focus:after,.stepper:focus:before,.stepper:hover:after{border-block-start-style:solid;content:"";inline-size:104%;inset-block-start:-1px;inset-inline-start:-1px;position:absolute}.stepper:focus:before,.stepper:hover:after{border-block-color:var(--_border-top-hover-color);border-block-width:var(--rh-border-width-lg,3px)}.stepper:focus:after{border-block-color:var(--rh-pagination-accent-color,var(--rh-color-border-interactive));border-block-width:var(--rh-border-width-md,2px)}.stepper svg{block-size:14px}:is(#next,#last) svg,:not(#next,#last) svg:dir(rtl){rotate:180deg}:is(#next,#last) svg:dir(rtl){rotate:0deg}.stepper[inert]{color:var(--rh-pagination-background-focused,var(--rh-color-gray-30,#c7c7c7));pointer-events:none}@container pagination (min-width: 768px){#last{margin-inline-end:var(--rh-space-2xl,32px)}}input{background:light-dark(var(--rh-color-surface-lightest,#fff),var(--rh-color-surface-darkest,#151515));block-size:var(--rh-length-2xl,32px);border:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle);border-block-end-color:light-dark(var(--rh-color-gray-40,#a3a3a3),var(--rh-color-gray-60,#4d4d4d));box-sizing:border-box;color:var(--rh-color-text-primary);font-size:var(--rh-font-size-body-text-md,1rem);inline-size:var(--rh-length-4xl,64px);padding-block:var(--rh-space-sm,6px);padding-inline:var(--rh-space-md,8px)}input:focus{border:var(--rh-border-width-md,2px) solid var(--rh-pagination-accent-color,var(--rh-color-interactive-primary-default));outline:none;padding-block:calc(var(--rh-space-sm, 6px) - 1px);padding-inline:calc(var(--rh-space-md, 8px) - 1px)}input:invalid{border-block-end-color:light-dark(var(--rh-color-red-60,#a60000),var(--rh-color-red-40,#f56e6e))}input:invalid:focus{border-block-end-width:var(--rh-border-width-md,2px)}#numeric-middle{display:none}#numeric-end{display:block;inline-size:100%}#numeric{align-items:center;display:flex;flex:0;font-size:var(--rh-font-size-body-text-md,1rem);gap:.5em;inline-size:100%;margin-block:0;margin-inline:0 var(--rh-space-lg,16px);min-block-size:var(--_stepper-size)}#numeric input{align-self:stretch;block-size:auto}#numeric a{color:var(--_numeric-a-color);text-decoration:none}#numeric a:hover{color:var(--_numeric-a-color-hover);text-decoration:underline}#numeric a:visited{color:var(--_numeric-a-color-visited)}#numeric a:focus{border-radius:var(--rh-border-radius-default,3px);color:var(--_numeric-a-color-focus);outline:var(--rh-border-width-md,2px) solid #0000;outline-color:var(--_numeric-a-color-focus-outline);text-decoration:underline}#numeric a:visited:hover{color:var(--_numeric-a-color-visited-hover)}@container pagination (min-width: 344px){#numeric-middle{display:contents}#numeric-end{display:none}#numeric{margin-inline-start:var(--rh-space-lg,16px)}}@container pagination (min-width: 768px){#numeric-middle{display:none}#numeric-end{display:contents}#numeric{margin-inline-start:0}}:host([variant|=open]) .stepper{--_stepper-bg-color:#0000}:host([variant|=open]) .stepper:focus:after,:host([variant|=open]) .stepper:focus:before,:host([variant|=open]) .stepper:hover:after{border-block-end-style:solid;border-block-start-style:none;inset-block-end:-1px}</style><!--lit-part 6K5cnna+Kfo=-->
+    <main><rh-pagination  id="constrain"><template shadowroot="open" shadowrootmode="open"><style>:host{--_stepper-size:var(--rh-length-3xl,48px);display:block;min-block-size:4em}:host([size=sm]){--_stepper-size:var(--rh-length-2xl,32px)}[hidden]{display:none!important}#container{container-name:pagination;container-type:inline-size;display:flex;flex-wrap:wrap;gap:var(--rh-space-2xl,32px) calc(var(--rh-space-xs, 4px)/2);--_numeric-a-color:var(--rh-pagination-accent-color,var(--rh-color-interactive-primary-default));--_numeric-a-color-hover:var(--rh-color-interactive-primary-hover);--_numeric-a-color-focus:var(--rh-pagination-accent-color,var(--rh-color-interactive-primary-default));--_numeric-a-color-focus-outline:var(--rh-pagination-accent-color,var(--rh-color-interactive-primary-default));--_numeric-a-color-visited:var(--rh-color-interactive-primary-visited-default);--_numeric-a-color-visited-hover:var(--rh-color-interactive-primary-visited-hover);--_list-a-bg-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),oklch(from var(--rh-color-surface-dark,#383838) calc(l * 0.82) c h));--_list-a-current-page-border-color:var(--rh-color-border-subtle);--_list-a-current-page-bg-color:light-dark(var(--rh-color-surface-lightest,#fff),var(--rh-color-surface-darkest,#151515));--_list-a-text-color:var(--rh-color-text-primary);--_stepper-bg-color:light-dark(var(--rh-color-surface-lighter,#f2f2f2),oklch(from var(--rh-color-surface-dark,#383838) calc(l * 0.82) c h));--_stepper-hover-focus-color:var(--rh-color-text-primary-on-dark,#fff);--_border-top-hover-color:light-dark(var(--rh-color-gray-60,#4d4d4d),var(--rh-color-border-subtle-on-light,#c7c7c7));--rh-pagination-stepper-color:light-dark(var(--rh-color-gray-50,#707070),var(--rh-color-text-secondary-on-dark,#c7c7c7));--rh-pagination-background-focused:light-dark(var(--rh-color-gray-30,#c7c7c7),var(--rh-color-gray-50,#707070))}@container pagination (min-width: 768px){#container{flex-wrap:nowrap}}.visually-hidden{border:0;clip:rect(0,0,0,0);block-size:1px;inline-size:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap}@container pagination (min-width: 344px){.xxs-visually-hidden{border:0;clip:rect(0,0,0,0);block-size:1px;inline-size:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;white-space:nowrap}}@container pagination (min-width: 768px){.sm-visually-visible{clip:auto;block-size:auto;inline-size:auto;margin:0;overflow:visible;padding:0;position:static;white-space:normal}}nav{display:none}@container pagination (min-width: 768px){nav{display:contents}}svg{fill:currentcolor}.stepper{background-color:var(--_stepper-bg-color);block-size:var(--_stepper-size);border:var(--rh-border-width-sm,1px) solid #0000;color:var(--rh-pagination-stepper-color,var(--rh-color-gray-50,#707070));display:grid;font-family:var(--rh-font-family-heading,RedHatDisplay,"Red Hat Display",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-heading-xs,1.25rem);inline-size:var(--_stepper-size);place-content:center;position:relative;text-decoration:none}.stepper:focus{border-radius:var(--rh-border-radius-default,3px);outline:var(--rh-border-width-md,2px) solid #0000;outline-color:var(--rh-pagination-accent-color,var(--rh-color-interactive-primary-default));outline-offset:-2px}.stepper:focus:after,.stepper:focus:before,.stepper:hover:after{border-block-start-style:solid;content:"";inline-size:104%;inset-block-start:-1px;inset-inline-start:-1px;position:absolute}.stepper:focus:before,.stepper:hover:after{border-block-color:var(--_border-top-hover-color);border-block-width:var(--rh-border-width-lg,3px)}.stepper:focus:after{border-block-color:var(--rh-pagination-accent-color,var(--rh-color-border-interactive));border-block-width:var(--rh-border-width-md,2px)}.stepper svg{block-size:14px}:is(#next,#last) svg,:not(#next,#last) svg:dir(rtl){rotate:180deg}:is(#next,#last) svg:dir(rtl){rotate:0deg}.stepper[inert]{color:var(--rh-pagination-background-focused,var(--rh-color-gray-30,#c7c7c7));pointer-events:none}@container pagination (min-width: 768px){#last{margin-inline-end:var(--rh-space-2xl,32px)}}input{background:light-dark(var(--rh-color-surface-lightest,#fff),var(--rh-color-surface-darkest,#151515));block-size:var(--rh-length-2xl,32px);border:var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle);border-block-end-color:light-dark(var(--rh-color-gray-40,#a3a3a3),var(--rh-color-gray-60,#4d4d4d));box-sizing:border-box;color:var(--rh-color-text-primary);font-size:var(--rh-font-size-body-text-md,1rem);inline-size:var(--rh-length-4xl,64px);padding-block:var(--rh-space-sm,6px);padding-inline:var(--rh-space-md,8px)}input:focus{border:var(--rh-border-width-md,2px) solid var(--rh-pagination-accent-color,var(--rh-color-interactive-primary-default));outline:none;padding-block:calc(var(--rh-space-sm, 6px) - 1px);padding-inline:calc(var(--rh-space-md, 8px) - 1px)}input:invalid{border-block-end-color:light-dark(var(--rh-color-red-60,#a60000),var(--rh-color-red-40,#f56e6e))}input:invalid:focus{border-block-end-width:var(--rh-border-width-md,2px)}#numeric-middle{display:none}#numeric-end{display:block;inline-size:100%}#numeric{align-items:center;display:flex;flex:0;font-size:var(--rh-font-size-body-text-md,1rem);gap:.5em;inline-size:100%;margin-block:0;margin-inline:0 var(--rh-space-lg,16px);min-block-size:var(--_stepper-size)}#numeric input{align-self:stretch;block-size:auto}#numeric a{color:var(--_numeric-a-color);text-decoration:none}#numeric a:hover{color:var(--_numeric-a-color-hover);text-decoration:underline}#numeric a:visited{color:var(--_numeric-a-color-visited)}#numeric a:focus{border-radius:var(--rh-border-radius-default,3px);color:var(--_numeric-a-color-focus);outline:var(--rh-border-width-md,2px) solid #0000;outline-color:var(--_numeric-a-color-focus-outline);text-decoration:underline}#numeric a:visited:hover{color:var(--_numeric-a-color-visited-hover)}@container pagination (min-width: 344px){#numeric-middle{display:contents}#numeric-end{display:none}#numeric{margin-inline-start:var(--rh-space-lg,16px)}}@container pagination (min-width: 768px){#numeric-middle{display:none}#numeric-end{display:contents}#numeric{margin-inline-start:0}}:host([variant|=open]) .stepper{--_stepper-bg-color:#0000}:host([variant|=open]) .stepper:focus:after,:host([variant|=open]) .stepper:focus:before,:host([variant|=open]) .stepper:hover:after{border-block-end-style:solid;border-block-start-style:none;inset-block-end:-1px}</style><!--lit-part gzW6RVoqLqs=-->
+      <!-- pagination container -->
       <div id="container" part="container">
-        <!--lit-node 1--><a id="first"
+        <!--lit-node 2--><a id="first"
            class="stepper"
            
            
@@ -99,7 +100,7 @@
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.44 14">
     <path d="M8.7 6.26 14.66.3a1.05 1.05 0 0 1 1.49 0l.98.99c.42.4.42 1.07 0 1.48L12.92 7l4.2 4.22c.42.4.42 1.07 0 1.48l-.98 1c-.41.4-1.08.4-1.48 0L8.7 7.73a1.05 1.05 0 0 1 0-1.48zM.3 7.74l5.96 5.95c.4.41 1.07.41 1.48 0l.99-.99c.4-.4.4-1.07 0-1.48L4.52 7l4.21-4.22c.41-.4.41-1.07 0-1.48l-.99-1a1.05 1.05 0 0 0-1.48 0L.31 6.27a1.05 1.05 0 0 0 0 1.48z"/>
   </svg><!--/lit-part--></a>
-        <!--lit-node 3--><a id="prev"
+        <!--lit-node 4--><a id="prev"
            class="stepper"
            
            
@@ -107,18 +108,22 @@
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 14">
     <path d="M.3 6.26 6.24.3C6.63-.1 7.3-.1 7.7.3l.99.99c.4.4.4 1.07 0 1.48L4.49 7l4.2 4.22c.41.4.41 1.07 0 1.48l-.98 1c-.41.4-1.07.4-1.48 0L.31 7.73a1.05 1.05 0 0 1 0-1.48Z"/>
   </svg><!--/lit-part--></a>
-        <!--lit-node 5--><nav aria-label="Page navigation">
+        <!--lit-node 6--><nav aria-label="Page navigation">
+          <!-- An ordered list of links -->
           <slot></slot>
         </nav>
+        <!-- container for the numeric control at medium screen widths -->
         <div id="numeric-middle" part="numeric-middle">
-          <!--lit-part 3jEjM7O8qoE=-->
+          <!--lit-part zTknbW52nnc=-->
+      <!-- shared container for the numeric controls at all widths -->
       <div id="numeric" part="numeric">
         <span id="go-to-page" class="xxs-visually-hidden sm-visually-visible">
+          <!-- "Go to page" text, defaults to "Page" -->
           <slot name="go-to-page">
             Page
           </slot>
         </span>
-        <!--lit-node 3--><input inputmode="numeric"
+        <!--lit-node 5--><input inputmode="numeric"
                required
                min=1
                max="0"
@@ -126,12 +131,13 @@
                
                
                value="1">
-        <!--lit-node 4--><slot hidden name="out-of">of</slot>
-        <!--lit-node 5--><a hidden ><!--lit-part-->0<!--/lit-part--></a>
+        <!-- "of" text -->
+        <!--lit-node 7--><slot hidden name="out-of">of</slot>
+        <!--lit-node 8--><a hidden ><!--lit-part-->0<!--/lit-part--></a>
       </div>
     <!--/lit-part-->
         </div>
-        <!--lit-node 9--><a id="next"
+        <!--lit-node 12--><a id="next"
            class="stepper"
            
            
@@ -139,7 +145,7 @@
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 14">
     <path d="M.3 6.26 6.24.3C6.63-.1 7.3-.1 7.7.3l.99.99c.4.4.4 1.07 0 1.48L4.49 7l4.2 4.22c.41.4.41 1.07 0 1.48l-.98 1c-.41.4-1.07.4-1.48 0L.31 7.73a1.05 1.05 0 0 1 0-1.48Z"/>
   </svg><!--/lit-part--></a>
-        <!--lit-node 11--><a id="last"
+        <!--lit-node 14--><a id="last"
            class="stepper"
            
            
@@ -147,15 +153,18 @@
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.44 14">
     <path d="M8.7 6.26 14.66.3a1.05 1.05 0 0 1 1.49 0l.98.99c.42.4.42 1.07 0 1.48L12.92 7l4.2 4.22c.42.4.42 1.07 0 1.48l-.98 1c-.41.4-1.08.4-1.48 0L8.7 7.73a1.05 1.05 0 0 1 0-1.48zM.3 7.74l5.96 5.95c.4.41 1.07.41 1.48 0l.99-.99c.4-.4.4-1.07 0-1.48L4.52 7l4.21-4.22c.41-.4.41-1.07 0-1.48l-.99-1a1.05 1.05 0 0 0-1.48 0L.31 6.27a1.05 1.05 0 0 0 0 1.48z"/>
   </svg><!--/lit-part--></a>
+        <!-- container for the numeric control at small and large screen widths -->
         <div id="numeric-end" part="numeric-end">
-          <!--lit-part 3jEjM7O8qoE=-->
+          <!--lit-part zTknbW52nnc=-->
+      <!-- shared container for the numeric controls at all widths -->
       <div id="numeric" part="numeric">
         <span id="go-to-page" class="xxs-visually-hidden sm-visually-visible">
+          <!-- "Go to page" text, defaults to "Page" -->
           <slot name="go-to-page">
             Page
           </slot>
         </span>
-        <!--lit-node 3--><input inputmode="numeric"
+        <!--lit-node 5--><input inputmode="numeric"
                required
                min=1
                max="0"
@@ -163,8 +172,9 @@
                
                
                value="1">
-        <!--lit-node 4--><slot hidden name="out-of">of</slot>
-        <!--lit-node 5--><a hidden ><!--lit-part-->0<!--/lit-part--></a>
+        <!-- "of" text -->
+        <!--lit-node 7--><slot hidden name="out-of">of</slot>
+        <!--lit-node 8--><a hidden ><!--lit-part-->0<!--/lit-part--></a>
       </div>
     <!--/lit-part-->
         </div>

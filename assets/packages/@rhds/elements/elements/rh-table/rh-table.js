@@ -15,11 +15,6 @@ const styles = css `*{box-sizing:border-box}:host{position:relative;display:bloc
  *
  * @alias table
  *
- * @slot               - an HTML table
- * @slot    summary    - a brief description of the data
- * @cssprop {<color>} [--rh-table-row-background-hover-color=224 224 224 / 40%] - row hover background color
- * @cssprop {<color>} [--rh-table-column-background-hover-color=0 102 204 / 10%] - column hover background color
- * @cssprop [--rh-table-row-border=1px solid #c7c7c7] - row border
  */
 let RhTable = RhTable_1 = _a = class RhTable extends LitElement {
     constructor() {
@@ -51,10 +46,12 @@ let RhTable = RhTable_1 = _a = class RhTable extends LitElement {
     render() {
         return html `
       <div id="container" part="container">
+        <!-- an HTML table -->
         <slot @pointerleave="${__classPrivateFieldGet(this, _RhTable_instances, "m", _RhTable_onPointerleave)}"
               @pointerover="${__classPrivateFieldGet(this, _RhTable_instances, "m", _RhTable_onPointerover)}"
               @request-sort="${__classPrivateFieldGet(this, _RhTable_instances, "m", _RhTable_onRequestSort)}"
               @slotchange="${__classPrivateFieldGet(this, _RhTable_instances, "m", _RhTable_onSlotChange)}"></slot>
+        <!-- description of the data -->
         <slot id="summary" name="summary"></slot>
       </div>
     `;

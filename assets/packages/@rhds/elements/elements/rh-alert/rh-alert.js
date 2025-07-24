@@ -40,11 +40,6 @@ const toasts = new Set();
  * @alias alert
  *
  * @fires {AlertCloseEvent} close - when the dismissable alert closes
- *
- * @slot         - Provide a description for the alert message
- * @slot header  - Provide a header for the alert message.
- * @slot actions - Provide actions that the user can take for the alert
- *
  */
 let RhAlert = class RhAlert extends LitElement {
     constructor() {
@@ -118,6 +113,7 @@ let RhAlert = class RhAlert extends LitElement {
         // eslint-disable-next-line lit-a11y/click-events-have-key-events
         const footer = html `<footer class="${classMap({ hasActions })}"
                   @click="${__classPrivateFieldGet(this, _RhAlert_instances, "m", _RhAlert_onActionsClick)}">
+            <!-- Provide actions that the user can take for the alert -->
             <slot name="actions"></slot>
           </footer>`;
         return html `
@@ -137,6 +133,7 @@ let RhAlert = class RhAlert extends LitElement {
         <div id="middle-column">
           <header ?hidden="${!_isServer && __classPrivateFieldGet(this, _RhAlert_slots, "f").isEmpty('header')}">
             <div id="header">
+              <!-- Provide a header for the alert message. -->
               <slot name="header"></slot>
             </div>${!this.dismissable && this.variant !== 'toast' ? '' : html `
             <div id="header-actions">
@@ -148,6 +145,7 @@ let RhAlert = class RhAlert extends LitElement {
             </div>`}
           </header>
           <div id="description">
+            <!-- Provide a description for the alert message -->
             <slot></slot>
           </div>
           ${footer}

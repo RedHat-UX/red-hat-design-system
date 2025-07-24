@@ -13,7 +13,7 @@ import './rh-footer-social-link.js';
 import './rh-footer-links.js';
 import './rh-footer-block.js';
 import { css } from "lit";
-const style = css `:host{color:var(--rh-color-white,#fff);font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif);line-height:var(--rh-line-height-body-text,1.5);font-weight:var(--_font-weight);font-size:medium;display:flex;flex-direction:column;color-scheme:only dark!important}::slotted(rh-footer-universal),:host{--_fallback-animation:nothing-doing!important;--_fallback-opacity:1!important;overflow-y:initial}.global-base,footer{--_icon-color:var(--rh-footer-icon-color,var(--rh-color-gray-40,#a3a3a3));--_icon-color-hover:var(--rh-footer-icon-color-hover,var(--rh-color-gray-30,#c7c7c7));--_border-color:var(--rh-footer-border-color,var(--rh-color-border-subtle-on-dark,#707070));--_accent-color:var(--rh-footer-accent-color,var(--rh-color-accent-brand-on-light,#e00));--_section-side-gap:var(--rh-footer-section-side-gap,var(--rh-space-lg,16px));--_accordion-background:var(--rh-color-white,#fff);--_logo-width:var(--rh-size-icon-04,40px);--_font-weight:var(--rh-font-weight-body-text-regular,400)}*{box-sizing:border-box}::slotted(:is(h1,h2,h3,h4,h5,h6)){font-family:var(--rh-font-family-heading,RedHatDisplay,"Red Hat Display",Helvetica,Arial,sans-serif)!important;line-height:var(--rh-line-height-heading,1.3)!important}:host([debug]) :not(.spacer,.base,a,svg){min-height:var(--rh-length-xl,24px);position:relative;outline:var(--rh-length-3xs,2px) dotted red}:host([debug]) :not(.spacer,.base,a,svg):after{content:attr(part);display:block;position:absolute;color:#fff;background-color:#2f4f4f;padding:var(--rh-space-xs,4px);top:0;right:0;font-family:var(--rh-font-family-code,RedHatMono,"Red Hat Mono","Courier New",Courier,monospace);font-size:var(--rh-font-size-code-xs,.75rem)}.section{padding:var(--rh-space-2xl,32px) var(--_section-side-gap)}.header{background-color:var(--rh-color-surface-darker,#1f1f1f);display:flex;flex-wrap:wrap;gap:var(--rh-space-2xl,32px);align-items:center;position:relative}.header:after{display:none;content:"";background-color:var(--_border-color);height:var(--rh-length-4xs,1px);position:absolute;bottom:0;width:calc(100% - var(--_section-side-gap)*2);left:var(--_section-side-gap)}.header-primary{flex:1 1 auto}.header-secondary{flex:0 1 auto}.main{background-color:var(--rh-color-surface-darker,#1f1f1f);display:grid;gap:var(--rh-space-2xl,32px);padding-top:0}.main-secondary{display:grid;gap:var(--pf-global--spacer--xl,32px);place-items:baseline;place-content:start}.global-base{--rh-footer-link-font-size:var(--rh-font-size-body-text-xs,0.75rem);line-height:100%;background-color:var(--rh-color-surface-darkest,#151515);display:grid;grid-template-columns:1fr;grid-template-areas:"logo" "primary" "spacer" "secondary" "tertiary";gap:var(--rh-space-2xl,32px) var(--rh-space-xl,24px)}.global-logo{grid-area:logo;width:var(--_logo-width)}.global-logo-image{fill:var(--_icon-color)}.global-logo-image:is(:hover,:focus-within){fill:var(--_icon-color-hover)}.global-primary{grid-area:primary}.global-secondary{grid-area:secondary;color:var(--rh-color-text-secondary);display:flex;flex-direction:column;gap:var(--rh-space-lg,16px);justify-content:space-between}.global-tertiary{grid-area:tertiary;display:grid;justify-content:start;align-items:start}.global-links-primary,.global-links-secondary{display:flex;flex-direction:column;gap:var(--rh-space-md,8px) var(--rh-space-xl,24px)}:is(.global-primary,.global-secondary,.global-tertiary) ::slotted(*){font-size:var(--rh-font-size-body-text-xs,.75rem)!important}.logo{line-height:0px}.social-links{display:flex;margin-inline-start:0;padding-inline-start:0}.social-links rh-footer-links,.social-links slot::slotted(rh-footer-links){display:flex;flex-direction:row;gap:var(--rh-space-xl,24px)}:is(.links,.global-links-primary,.global-links-secondary) ::slotted(ul){padding:0;margin:0;display:contents}.isMobile .links{--rh-footer-link-header-font-size:var(--rh-font-size-body-text-lg,1.125rem)}.isMobile .links ::slotted(ul){--rh-footer-link-font-size:1em;display:grid;grid-template-columns:1fr;gap:calc(var(--rh-space-2xl, 32px)/2)}#global-heading,#heading{position:absolute;left:-9999999px;width:0;height:0;overflow:hidden;display:flex}[part=base]:not(.isMobile) .links{display:grid;grid-template-columns:repeat(1fr,25%);grid-template-rows:repeat(1,min-content auto);grid-auto-columns:minmax(0,1fr);gap:var(--rh-space-lg,16px) var(--rh-space-2xl,32px);grid-auto-flow:column}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):first-of-type){grid-column:1/2;grid-row:1/2}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):nth-of-type(2)){grid-column:2/3;grid-row:1/2}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):nth-of-type(3)){grid-column:3/4;grid-row:1/2}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):nth-of-type(4)){grid-column:4/5;grid-row:1/2}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):nth-of-type(5)){grid-column:1/2;grid-row:3/4}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):nth-of-type(6)){grid-column:2/3;grid-row:3/4}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):nth-of-type(7)){grid-column:3/4;grid-row:3/4}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):nth-of-type(8)){grid-column:4/5;grid-row:3/4}[part=base]:not(.isMobile) .links ::slotted(:is(ul:first-of-type)){grid-column:1/2;grid-row:2/3}[part=base]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(2))){grid-column:2/3;grid-row:2/3}[part=base]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(3))){grid-column:3/4;grid-row:2/3}[part=base]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(4))){grid-column:4/5;grid-row:2/3}[part=base]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(5))){grid-column:1/2;grid-row:4/5}[part=base]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(6))){grid-column:2/3;grid-row:4/5}[part=base]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(7))){grid-column:3/4;grid-row:4/5}[part=base]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(8))){grid-column:4/5;grid-row:4/5}[part=base]:not(.isMobile) .links ::slotted(ul){gap:var(--rh-footer-links-gap,var(--rh-space-lg,16px));display:flex;flex-direction:column}#footer-logo{width:var(--_logo-width)}:is(.links,.global-links-primary,.global-links-secondary) ::slotted(:is(h1,h2,h3,h4,h5)){font-weight:var(--rh-font-weight-heading-medium,500)!important;margin-block:0!important;margin-block-start:var(--_link-header-margin,0)!important;font-size:var(--rh-footer-link-header-font-size,var(--rh-font-size-body-text-sm,.875rem))!important;color:var(--rh-color-text-primary)!important}::slotted(rh-footer-copyright){grid-column:-1/1}@media screen and (min-width:768px){.global-base{grid-template-columns:4fr 4fr 4fr;grid-template-areas:"logo      logo      logo" "primary   primary   primary" "spacer    spacer    spacer" "secondary secondary secondary"}.global-base:is(.hasTertiary){grid-template-columns:4fr 4fr 4fr;grid-template-areas:"logo      logo      logo" "primary   primary   primary" "spacer    spacer    spacer" "secondary secondary tertiary"}}@media screen and (min-width:992px){.global-base:not(.nothing){grid-template-columns:auto 10fr 2fr;grid-template-rows:max-content max-content;grid-template-areas:"logo primary  tertiary" "logo secondary tertiary";gap:24px 32px}.global-primary{display:flex}}.spacer{grid-area:spacer;border-bottom:1px solid var(--_border-color)}@media screen and (min-width:992px){.spacer{display:none}.global-tertiary{display:grid;justify-content:flex-end;align-items:center}}@media screen and (min-width:320px){.global-links-primary,.global-links-secondary{display:grid;grid-template-columns:1fr 1fr}}@media screen and (min-width:768px){.global-links-primary,.global-links-secondary{display:grid;grid-template-columns:1fr 1fr 1fr}.hasTertiary .global-links-secondary{display:grid;grid-template-columns:1fr 1fr}}@media screen and (min-width:992px){.global-links-primary{display:flex;flex-flow:row wrap;align-items:center}:not(.hasTertiary) .global-links-secondary{display:flex;flex-flow:row wrap;gap:8px 24px}}@media screen and (max-width:992px){.global-logo{grid-area:logo}.global-primary{grid-area:primary}}@media screen and (min-width:992px){.header:after{display:block}.main{padding-top:var(--rh-space-2xl,32px);padding-bottom:var(--rh-space-4xl,64px)}}@media screen and (min-width:992px) and (max-width:1368px){.header,.main{display:grid;grid-template-columns:8fr 4fr}}@media screen and (min-width:1368px){.header,.main{display:grid;grid-template-columns:8fr 4fr}}@media screen and (min-width:768px){.isMobile .links ::slotted(ul){grid-template-columns:1fr 1fr}}`;
+const style = css `:host{color:var(--rh-color-white,#fff);font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif);line-height:var(--rh-line-height-body-text,1.5);font-weight:var(--_font-weight);font-size:medium;display:flex;flex-direction:column;color-scheme:only dark!important;min-height:var(--rh-footer-nojs-min-height,750px)}::slotted(rh-footer-universal),:host{--_fallback-animation:nothing-doing!important;--_fallback-opacity:1!important;overflow-y:initial}.global-base,footer{--_icon-color:var(--rh-footer-icon-color,var(--rh-color-gray-40,#a3a3a3));--_icon-color-hover:var(--rh-footer-icon-color-hover,var(--rh-color-gray-30,#c7c7c7));--_border-color:var(--rh-footer-border-color,var(--rh-color-border-subtle-on-dark,#707070));--_accent-color:var(--rh-footer-accent-color,var(--rh-color-accent-brand-on-light,#e00));--_section-side-gap:var(--rh-footer-section-side-gap,var(--rh-space-lg,16px));--_accordion-background:var(--rh-color-white,#fff);--_logo-width:var(--rh-size-icon-04,40px);--_font-weight:var(--rh-font-weight-body-text-regular,400)}*{box-sizing:border-box}::slotted(:is(h1,h2,h3,h4,h5,h6)){font-family:var(--rh-font-family-heading,RedHatDisplay,"Red Hat Display",Helvetica,Arial,sans-serif)!important;line-height:var(--rh-line-height-heading,1.3)!important}:host([debug]) :not(.spacer,.base,a,svg){min-height:var(--rh-length-xl,24px);position:relative;outline:var(--rh-length-3xs,2px) dotted red}:host([debug]) :not(.spacer,.base,a,svg):after{content:attr(part);display:block;position:absolute;color:#fff;background-color:#2f4f4f;padding:var(--rh-space-xs,4px);top:0;right:0;font-family:var(--rh-font-family-code,RedHatMono,"Red Hat Mono","Courier New",Courier,monospace);font-size:var(--rh-font-size-code-xs,.75rem)}.section{padding:var(--rh-space-2xl,32px) var(--_section-side-gap)}.header{background-color:var(--rh-color-surface-darker,#1f1f1f);display:flex;flex-wrap:wrap;gap:var(--rh-space-2xl,32px);align-items:center;position:relative}.header:after{display:none;content:"";background-color:var(--_border-color);height:var(--rh-length-4xs,1px);position:absolute;bottom:0;width:calc(100% - var(--_section-side-gap)*2);left:var(--_section-side-gap)}.header-primary{flex:1 1 auto}.header-secondary{flex:0 1 auto}.main{background-color:var(--rh-color-surface-darker,#1f1f1f);display:grid;gap:var(--rh-space-2xl,32px);padding-top:0}.main-secondary{display:grid;gap:var(--pf-global--spacer--xl,32px);place-items:baseline;place-content:start}.global-base{--rh-footer-link-font-size:var(--rh-font-size-body-text-xs,0.75rem);line-height:100%;background-color:var(--rh-color-surface-darkest,#151515);display:grid;grid-template-columns:1fr;grid-template-areas:"logo" "primary" "spacer" "secondary" "tertiary";gap:var(--rh-space-2xl,32px) var(--rh-space-xl,24px)}.global-logo{grid-area:logo;width:var(--_logo-width)}.global-logo-image{fill:var(--_icon-color)}.global-logo-image:is(:hover,:focus-within){fill:var(--_icon-color-hover)}.global-primary{grid-area:primary}.global-secondary{grid-area:secondary;color:var(--rh-color-text-secondary);display:flex;flex-direction:column;gap:var(--rh-space-lg,16px);justify-content:space-between}.global-tertiary{grid-area:tertiary;display:grid;justify-content:start;align-items:start}.global-links-primary,.global-links-secondary{display:flex;flex-direction:column;gap:var(--rh-space-md,8px) var(--rh-space-xl,24px)}:is(.global-primary,.global-secondary,.global-tertiary) ::slotted(*){font-size:var(--rh-font-size-body-text-xs,.75rem)!important}.logo{line-height:0px}.social-links{display:flex;margin-inline-start:0;padding-inline-start:0}.social-links rh-footer-links,.social-links slot::slotted(rh-footer-links){display:flex;flex-direction:row;gap:var(--rh-space-xl,24px)}:is(.links,.global-links-primary,.global-links-secondary) ::slotted(ul){padding:0;margin:0;display:contents}.isMobile .links{--rh-footer-link-header-font-size:var(--rh-font-size-body-text-lg,1.125rem)}.isMobile .links ::slotted(ul){--rh-footer-link-font-size:1em;display:grid;grid-template-columns:1fr;gap:calc(var(--rh-space-2xl, 32px)/2)}#global-heading,#heading{position:absolute;left:-9999999px;width:0;height:0;overflow:hidden;display:flex}[part=base]:not(.isMobile) .links{display:grid;grid-template-columns:repeat(1fr,25%);grid-template-rows:repeat(1,min-content auto);grid-auto-columns:minmax(0,1fr);gap:var(--rh-space-lg,16px) var(--rh-space-2xl,32px);grid-auto-flow:column}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):first-of-type){grid-column:1/2;grid-row:1/2}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):nth-of-type(2)){grid-column:2/3;grid-row:1/2}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):nth-of-type(3)){grid-column:3/4;grid-row:1/2}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):nth-of-type(4)){grid-column:4/5;grid-row:1/2}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):nth-of-type(5)){grid-column:1/2;grid-row:3/4}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):nth-of-type(6)){grid-column:2/3;grid-row:3/4}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):nth-of-type(7)){grid-column:3/4;grid-row:3/4}[part=base]:not(.isMobile) .links ::slotted(:is(h2,h3,h4,h5,h6):nth-of-type(8)){grid-column:4/5;grid-row:3/4}[part=base]:not(.isMobile) .links ::slotted(:is(ul:first-of-type)){grid-column:1/2;grid-row:2/3}[part=base]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(2))){grid-column:2/3;grid-row:2/3}[part=base]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(3))){grid-column:3/4;grid-row:2/3}[part=base]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(4))){grid-column:4/5;grid-row:2/3}[part=base]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(5))){grid-column:1/2;grid-row:4/5}[part=base]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(6))){grid-column:2/3;grid-row:4/5}[part=base]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(7))){grid-column:3/4;grid-row:4/5}[part=base]:not(.isMobile) .links ::slotted(:is(ul:nth-of-type(8))){grid-column:4/5;grid-row:4/5}[part=base]:not(.isMobile) .links ::slotted(ul){gap:var(--rh-footer-links-gap,var(--rh-space-lg,16px));display:flex;flex-direction:column}#footer-logo{width:var(--_logo-width)}:is(.links,.global-links-primary,.global-links-secondary) ::slotted(:is(h1,h2,h3,h4,h5)){font-weight:var(--rh-font-weight-heading-medium,500)!important;margin-block:0!important;margin-block-start:var(--_link-header-margin,0)!important;font-size:var(--rh-footer-link-header-font-size,var(--rh-font-size-body-text-sm,.875rem))!important;color:var(--rh-color-text-primary)!important}::slotted(rh-footer-copyright){grid-column:-1/1}@media screen and (min-width:768px){.global-base{grid-template-columns:4fr 4fr 4fr;grid-template-areas:"logo      logo      logo" "primary   primary   primary" "spacer    spacer    spacer" "secondary secondary secondary"}.global-base:is(.hasTertiary){grid-template-columns:4fr 4fr 4fr;grid-template-areas:"logo      logo      logo" "primary   primary   primary" "spacer    spacer    spacer" "secondary secondary tertiary"}}@media screen and (min-width:992px){.global-base:not(.nothing){grid-template-columns:auto 10fr 2fr;grid-template-rows:max-content max-content;grid-template-areas:"logo primary  tertiary" "logo secondary tertiary";gap:24px 32px}.global-primary{display:flex}}.spacer{grid-area:spacer;border-bottom:1px solid var(--_border-color)}@media screen and (min-width:992px){.spacer{display:none}.global-tertiary{display:grid;justify-content:flex-end;align-items:center}}@media screen and (min-width:320px){.global-links-primary,.global-links-secondary{display:grid;grid-template-columns:1fr 1fr}}@media screen and (min-width:768px){.global-links-primary,.global-links-secondary{display:grid;grid-template-columns:1fr 1fr 1fr}.hasTertiary .global-links-secondary{display:grid;grid-template-columns:1fr 1fr}}@media screen and (min-width:992px){.global-links-primary{display:flex;flex-flow:row wrap;align-items:center}:not(.hasTertiary) .global-links-secondary{display:flex;flex-flow:row wrap;gap:8px 24px}}@media screen and (max-width:992px){.global-logo{grid-area:logo}.global-primary{grid-area:primary}}@media screen and (min-width:992px){.header:after{display:block}.main{padding-top:var(--rh-space-2xl,32px);padding-bottom:var(--rh-space-4xl,64px)}}@media screen and (min-width:992px) and (max-width:1368px){.header,.main{display:grid;grid-template-columns:8fr 4fr}}@media screen and (min-width:1368px){.header,.main{display:grid;grid-template-columns:8fr 4fr}}@media screen and (min-width:768px){.isMobile .links ::slotted(ul){grid-template-columns:1fr 1fr}}`;
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
 function isHeaderTagName(tagName) {
     return !!tagName.match(/^H[1-6]$/i);
@@ -25,38 +25,6 @@ function isHeaderTagName(tagName) {
  *
  * @alias footer
  *
- * @csspart base - main footer element, containing all footer content
- * @slot    base - Overrides everything. Do not use.
- * @slot    header - Overrides `header-*`, `logo`, `social-links`
- * @csspart header - footer header, typically containing main logo and social links
- * @slot    header-primary - primary footer header content, e.g. main logo. Overrides `logo`
- * @csspart header-primary - primary footer header content, e.g. main logo
- * @slot    header-secondary - secondary footer header content, e.g. social links. Overrides `social-links`
- * @csspart header-secondary - secondary footer header content, e.g. social links
- * @slot    heading - text that describes the footer section to assistive tecchnology. Contains default text "Red Hat footer".
- * @slot    logo - main page or product logo. Defaults to Red Hat corporate logo
- * @csspart logo - main page or product logo container
- * @slot    social-links - social media links (icons). Contains a default set of links
- * @csspart social-links - social links container `<rh-footer-links>`
- * @slot    main - main footer content. Overrides `main-*`
- * @csspart main - main content container.
- * @slot    main-primary - main footer region. typically a columnar grid
- * @csspart main-primary - container for main footer links
- * @slot    links - main footer links
- * @csspart links - container for main footer links
- * @csspart links-accordion-header - mobile links accordion header element
- * @csspart links-accordion-panel - mobile links panel container element
- * @slot    main-secondary - typically contains prose or promotional content
- * @csspart main-secondary - container fro prose or promotional content
- * @slot    universal - must contain `<rh-footer-universal>`
- * @cssprop [--rh-footer-icon-color=#8a8d90]
- * @cssprop [--rh-footer-icon-color-hover=#b8bbbe]
- * @cssprop [--rh-footer-border-color=#6a6e73]
- * @cssprop [--rh-footer-accent-color=#e00]
- * @cssprop [--rh-footer-section-side-gap=16px]
- * @cssprop [--rh-footer-links-gap=8px]
- * @cssprop [--rh-footer-link-header-font-size=0.875em]
- * @cssprop [--rh-footer-nojs-min-height=750px]
  */
 let RhFooter = RhFooter_1 = class RhFooter extends LitElement {
     constructor() {
@@ -93,14 +61,22 @@ let RhFooter = RhFooter_1 = class RhFooter extends LitElement {
     }
     render() {
         return html `
+      <!-- main footer element, containing all footer content -->
       <footer class="base ${classMap({ isMobile: __classPrivateFieldGet(this, _RhFooter_compact, "f") })}" part="base">
-        <h2 id="heading"><slot name="heading">Red Hat footer</slot></h2>
+        <h2 id="heading"><!-- text that describes the footer section to assistive tecchnology. Contains default text "Red Hat footer". --><slot name="heading">Red Hat footer</slot></h2>
+        <!-- Overrides everything. Do not use. -->
         <slot name="base">
+          <!-- footer header, typically containing main logo and social links -->
           <div class="section header" part="section header">
+            <!-- Overrides \`header-*\`, \`logo\`, \`social-links\` -->
             <slot name="header">
+              <!-- primary footer header content, e.g. main logo -->
               <div class="header-primary" part="header-primary">
+                <!-- primary footer header content, e.g. main logo. Overrides \`logo\` -->
                 <slot name="header-primary">
+                  <!-- main page or product logo container -->
                   <div class="logo" part="logo">
+                    <!-- main page or product logo. Defaults to Red Hat corporate logo -->
                     <slot name="logo">
                       <a href="/">
                         <img alt="Red Hat" src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg"/>
@@ -109,13 +85,17 @@ let RhFooter = RhFooter_1 = class RhFooter extends LitElement {
                   </div>
                 </slot>
               </div>
+              <!-- secondary footer header content, e.g. social links -->
               <div class="header-secondary" part="header-secondary">
+                <!-- secondary footer header content, e.g. social links. Overrides \`social-links\` -->
                 <slot name="header-secondary">
                   <div class="social-links">
+                    <!-- social links container \`<rh-footer-links>\` -->
                     <rh-footer-links class="social-links-item"
                       part="social-links"
                       aria-label="Red Hat social media links"
                       role="list">
+                      <!-- social media links (icons). Contains a default set of links -->
                       <slot name="social-links"></slot>
                     </rh-footer-links>
                   </div>
@@ -123,20 +103,28 @@ let RhFooter = RhFooter_1 = class RhFooter extends LitElement {
               </div>
             </slot>
           </div>
+          <!-- main content container. -->
           <div class="section main" part="section main">
+            <!-- main footer content. Overrides \`main-*\` -->
             <slot name="main">
+              <!-- container for main footer links -->
               <div class="main-primary" part="main-primary">
+                <!-- main footer region. typically a columnar grid -->
                 <slot name="main-primary">
+                  <!-- container for main footer links -->
                   <div class="links" part="links">
                     ${__classPrivateFieldGet(this, _RhFooter_instances, "m", _RhFooter_renderLinksTemplate).call(this, __classPrivateFieldGet(this, _RhFooter_compact, "f"))}
                   </div>
                 </slot>
               </div>
+              <!-- container fro prose or promotional content -->
               <div class="main-secondary" part="main-secondary">
+                <!-- typically contains prose or promotional content -->
                 <slot name="main-secondary"></slot>
               </div>
             </slot>
           </div>
+          <!-- must contain \`<rh-footer-universal>\` -->
           <slot name="universal"></slot>
         </slot>
       </footer>
@@ -178,6 +166,7 @@ _RhFooter_renderLinksTemplate = function _RhFooter_renderLinksTemplate(isMobile 
     // Update the dynamic slot names if on mobile
     children.forEach((child, i) => child.setAttribute('slot', isMobile ? `links-${i}` : 'links'));
     return !(isMobile && children) ? html `
+      <!-- main footer links -->
       <slot name="links"></slot>
       ` : html `
 
@@ -186,10 +175,12 @@ _RhFooter_renderLinksTemplate = function _RhFooter_renderLinksTemplate(isMobile 
         // SEE https://github.com/asyncLiz/minify-html-literals/issues/37
         switch (type) {
             case 'header': return html `
+              <!-- mobile links accordion header element -->
               <rh-accordion-header part="links-accordion-header">
                 <slot name="links-${i}"></slot>
               </rh-accordion-header>`;
             case 'panel': return html `
+              <!-- mobile links panel container element -->
               <rh-accordion-panel part="links-accordion-panel">
                 <slot name="links-${i}"></slot>
               </rh-accordion-panel>`;

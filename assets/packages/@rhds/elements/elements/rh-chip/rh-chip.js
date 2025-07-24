@@ -29,8 +29,6 @@ export class ChipChangeEvent extends Event {
  * @alias chip
  *
  * @fires {ChipCheckedEvent} chip-checked - when chip is checked/unchecked
- * @csspart chip - The main chip container
- * @slot - The label of the checkbox
  */
 let RhChip = class RhChip extends LitElement {
     constructor() {
@@ -56,7 +54,9 @@ let RhChip = class RhChip extends LitElement {
     }
     render() {
         return html `
+      <!-- The main chip container -->
       <label part="chip" class=${classMap({ [`size-${this.size}`]: !!this.size })}>
+        <!-- The label of the checkbox -->
         <slot></slot>
         <input type="checkbox"
                value="${ifDefined(this.value)}"

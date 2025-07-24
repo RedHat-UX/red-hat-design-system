@@ -2,12 +2,6 @@ import { LitElement } from 'lit';
 import './rh-audio-player-scrolling-text-overflow.js';
 /**
  * Audio Player Subscribe Panel
- * @slot heading - custom heading for panel
- * @slot - panel content
- * @slot link - link to subscribe to podcast
- * @csspart heading - scrolling text overflow
- * @csspart body - body content slot
- * @csspart links - subscribe links
  */
 export declare class RhAudioPlayerSubscribe extends LitElement {
     #private;

@@ -30,13 +30,6 @@ export { RhTab };
  *
  * @alias tabs
  *
- * @csspart container - outer container
- * @csspart tabs-container - tabs container
- * @csspart tabs - tablist
- * @csspart panels - panels
- * @slot tab - Must contain one or more `<rh-tab>`
- * @slot - Must contain one or more `<rh-tab-panel>`
- * @cssprop {<length>} [--rh-tabs-inset=auto] - Tabs inset
  */
 let RhTabs = class RhTabs extends LitElement {
     constructor() {
@@ -123,7 +116,9 @@ let RhTabs = class RhTabs extends LitElement {
         const { vertical = false, box = false, centered = false } = this;
         const inset = this.box === 'inset' ? 'inset' : '';
         return html `
+      <!-- outer container -->
       <div id="container" part="container" class="${classMap({ vertical, box, inset, centered, overflow: __classPrivateFieldGet(this, _RhTabs_overflow, "f").showScrollButtons })}">
+        <!-- tabs container -->
         <div part="tabs-container">${!__classPrivateFieldGet(this, _RhTabs_overflow, "f").showScrollButtons ? '' : html `
           <button id="previous-tab" tabindex="-1"
                   aria-label="${this.getAttribute('label-scroll-left') ?? 'Scroll left'}"
@@ -132,6 +127,12 @@ let RhTabs = class RhTabs extends LitElement {
             <rh-icon set="ui" icon="caret-left" loading="eager"></rh-icon>
           </button>`}
           <div id="tablist" role="tablist">
+            <!--
+              slot:
+                description: Must contain one or more \`<rh-tab>\`
+              part:
+                description: tablist
+            -->
             <slot name="tab"
                   part="tabs"
                   @slotchange="${__classPrivateFieldGet(this, _RhTabs_instances, "m", _RhTabs_onSlotchange)}"></slot>
@@ -144,6 +145,12 @@ let RhTabs = class RhTabs extends LitElement {
              <rh-icon set="ui" icon="caret-right" loading="eager"></rh-icon>
           </button>`}
         </div>
+        <!--
+          slot:
+            description: Must contain one or more \`<rh-tab-panel>\`
+          part:
+            description: panels
+        -->
         <slot part="panels" @slotchange="${__classPrivateFieldGet(this, _RhTabs_instances, "m", _RhTabs_onSlotchange)}"></slot>
       </div>
     `;

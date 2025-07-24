@@ -19,8 +19,6 @@ export class MenuToggleEvent extends Event {
  * Menu
  *
  * @alias menu
- *
- * @slot - menu items
  */
 let RhMenu = class RhMenu extends LitElement {
     constructor() {
@@ -50,6 +48,7 @@ let RhMenu = class RhMenu extends LitElement {
     }
     render() {
         return html `
+      <!-- menu items -->
       <slot part="menu"
             @slotchange="${__classPrivateFieldGet(this, _RhMenu_instances, "m", _RhMenu_onSlotchange)}"></slot>
     `;

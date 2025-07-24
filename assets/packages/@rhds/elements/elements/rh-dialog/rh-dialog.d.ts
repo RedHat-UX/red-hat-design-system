@@ -24,19 +24,6 @@ export declare class DialogOpenEvent extends Event {
  * @fires {DialogOpenEvent} open - Fires when a user clicks on the trigger or manually opens a dialog.
  * @fires {DialogCloseEvent} close - Fires when either a user clicks on either the close button or manually closes a dialog.
  * @fires {DialogCancelEvent} cancel - Fires when a user clicks outside the dialog or hits ESC on their keyboard.
- * @slot - The default slot can contain any type of content. When the header is not present this unnamed slot appear at the top of the dialog window (to the left of the close button). Otherwise it will appear beneath the header.
- * @slot header - The header is an optional slot that appears at the top of the dialog window. It should be a header tag (h2-h6).
- * @slot footer - Optional footer content. Good place to put action buttons.
- * @csspart dialog - The dialog element
- * @csspart content - The container for the dialog content
- * @csspart header - The container for the optional dialog header
- * @csspart description - The container for the optional dialog description in the header
- * @csspart close-button - The dialog's close button
- * @csspart footer - Actions footer container
- * @cssprop {<number>} [--rh-dialog-video-aspect-ratio=16/9]
- *          Aspect ratio for the video inside the dialog
- * @cssprop {<color>} [--rh-dialog-close-button-color=var(--rh-color-icon-secondary-on-dark, #ffffff)]
- *          Sets the dialog close button color.
  */
 export declare class RhDialog extends LitElement {
     #private;

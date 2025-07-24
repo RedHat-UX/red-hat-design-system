@@ -4,10 +4,6 @@ import '@rhds/elements/rh-tooltip/rh-tooltip.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
 /**
  * Audio Player Transcript Panel
- * @slot heading - custom heading for panel
- * @slot - `rh-cue` elements
- * @csspart heading - scrolling text overflow
- * @csspart toolbar - toolbar area above cues list
  */
 export declare class RhTranscript extends LitElement {
     #private;

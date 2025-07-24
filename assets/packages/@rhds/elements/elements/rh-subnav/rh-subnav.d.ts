@@ -7,10 +7,6 @@ import { type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
  * @summary Organizes content into sections using tabbed pages
  *
  * @alias subnavigation
- *
- * @slot - Navigation links, expects collection of `<a>` elements
- * @csspart container - container, `<div>` element
- * @csspart links     - `<slot>` element
  */
 export declare class RhSubnav extends LitElement {
     #private;

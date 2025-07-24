@@ -1,7 +1,6 @@
 import { LitElement } from 'lit';
 /**
  * Navigation Menu
- * @slot - Place element content here
  */
 export declare class RhNavigationPrimaryItemMenu extends LitElement {
     #private;

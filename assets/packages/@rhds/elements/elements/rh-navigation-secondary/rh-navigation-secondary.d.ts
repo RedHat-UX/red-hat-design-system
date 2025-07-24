@@ -17,19 +17,10 @@ export declare class SecondaryNavOverlayChangeEvent extends ComposedEvent {
  *
  * @alias Navigation (secondary)
  *
- * @slot logo           - Logo added to the main nav bar, expects `<a>Text</a> | <a><svg/></a> | <a><img/></a>` element
- * @slot nav            - Navigation list added to the main nav bar, expects `<ul>` element
- * @slot cta            - Nav bar level CTA, expects `<rh-cta>` element
- * @slot mobile-menu    - Text label for the mobile menu button, for l10n. Defaults to "Menu"
- * @csspart nav         - container, `<nav>` element
- * @csspart container   - container, `<div>` element
- * @csspart cta         - container, `<div>` element
  * @fires {SecondaryNavOverlayChangeEvent} overlay-change -
  *                                         Fires when an dropdown is opened or closed in desktop
  *                                         view or when the mobile menu button is toggled in mobile
  *                                         view.
- * @cssprop {<integer>} [--rh-navigation-secondary-z-index=102] - z-index of the navigation-secondary
- * @cssprop {<integer>} [--rh-navigation-secondary-overlay-z-index=-1] - z-index of the navigation-secondary-overlay
  */
 export declare class RhNavigationSecondary extends LitElement {
     #private;

@@ -25,10 +25,7 @@ export class DisclosureToggleEvent extends Event {
  *
  * @alias disclosure
  *
- * @slot - Place the content you want to disclose in the default slot. This content is hidden by default.
- * @slot summary - The title of the disclosure
  * @fires {DisclosureToggleEvent} toggle - Fires when a user opens or closes a disclosure.
- * @csspart caret - The caret icon in the shadow DOM
  */
 let RhDisclosure = RhDisclosure_1 = _a = class RhDisclosure extends LitElement {
     constructor() {
@@ -48,10 +45,13 @@ let RhDisclosure = RhDisclosure_1 = _a = class RhDisclosure extends LitElement {
           @keydown="${__classPrivateFieldGet(this, _RhDisclosure_instances, "m", _RhDisclosure_onKeydown)}"
           @toggle="${__classPrivateFieldGet(this, _RhDisclosure_instances, "m", _RhDisclosure_onToggle)}">
         <summary>
+          <!-- The caret icon in the shadow DOM -->
           <rh-icon id="caret" set="ui" icon="caret-down"></rh-icon>
+          <!-- The title of the disclosure -->
           <slot name="summary">${this.summary}</slot>
         </summary>
         <div id="details-content">
+          <!-- Place the content you want to disclose in the default slot. This content is hidden by default. -->
           <slot></slot>
         </div>
       </details>

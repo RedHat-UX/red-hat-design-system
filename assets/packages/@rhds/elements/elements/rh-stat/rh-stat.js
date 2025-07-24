@@ -13,18 +13,9 @@ const styles = css `:host{display:block}div{width:100%;height:100%;display:flex;
 /**
  * A statistic showcases a data point or quick fact visually.
  *
- * @summary Displays a statistic with an optional icon, title, statistic, and call to action.
- *
  * @summary Showcases a data point or quick fact visually
  *
  * @alias statistic
- *
- * @slot icon - Optional icon
- * @slot title - Statistic title
- * @slot statistic - Statistic data
- * @slot cta - Call to action
- * @slot - Description of the stat
- *
  */
 let RhStat = class RhStat extends LitElement {
     constructor() {
@@ -67,16 +58,17 @@ let RhStat = class RhStat extends LitElement {
         return html `
       <div class="${classMap({ isMobile, hasIcon, hasTitle, hasStatistic, hasCta })}">
         <span id="icon" class="${classMap({ [iconSize]: !!iconSize })}">
+          <!-- Optional icon -->
           <slot name="icon">
             ${!this.icon ? '' : html `
               <rh-icon icon="${this.icon}" set="${this.iconSet}"></rh-icon>
             `}
           </slot>
         </span>
-        <span id="title"><slot name="title"></slot></span>
-        <span id="statistic"><slot name="statistic"></slot></span>
-        <span id="content"><slot></slot></span>
-        <span id="cta"><slot name="cta"></slot></span>
+        <span id="title"><!-- Statistic title --><slot name="title"></slot></span>
+        <span id="statistic"><!-- Statistic data --><slot name="statistic"></slot></span>
+        <span id="content"><!-- Description of the stat --><slot></slot></span>
+        <span id="cta"><!-- Call to action --><slot name="cta"></slot></span>
       </div>
     `;
     }

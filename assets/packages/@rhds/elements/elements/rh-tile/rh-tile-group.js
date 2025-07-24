@@ -14,7 +14,6 @@ import { css } from "lit";
 const styles = css `:host{display:grid;grid-template-columns:repeat(auto-fit,320px);gap:var(--rh-space-2xl,32px)}:host([disabled]){pointer-events:none}`;
 /**
  * A group of `<rh-tile>` elements which handles radio selection.
- * @slot - Put one or more `rh-tile` elements in this slot
  */
 let RhTileGroup = class RhTileGroup extends LitElement {
     /**
@@ -77,6 +76,7 @@ let RhTileGroup = class RhTileGroup extends LitElement {
     render() {
         const { radio } = this;
         return html `
+      <!-- Put one or more \`rh-tile\` elements in this slot -->
       <slot class="${classMap({ radio })}"></slot>
     `;
     }

@@ -19,11 +19,9 @@ export declare class IconResolveErrorEvent extends ErrorEvent {
  *
  * @alias icon
  *
- * @slot - Slotted content is used as a fallback in case the icon doesn't load
  * @fires load - Fired when an icon is loaded and rendered
  * @fires error - Fired when an icon fails to load
- * @csspart fallback - Container for the fallback (i.e. slotted) content
- * @cssprop --rh-icon-size - Override default icon size
+ *
  */
 export declare class RhIcon extends LitElement {
     #private;

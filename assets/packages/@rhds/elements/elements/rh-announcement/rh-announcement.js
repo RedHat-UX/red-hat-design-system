@@ -22,18 +22,8 @@ export class AnnouncementCloseEvent extends Event {
  *
  * @alias announcement
  *
- * @slot    image
- *          If this slot is used, we expect an image tag with a width and height set.
- *          An icon, svg, or use of the icon component are also valid in this region.
- * @slot    Any content that is not designated for the header or footer slot, will go to this slot.
- * @slot    cta
- *          If this slot is used, we expect a rh-cta component.
  * @fires   {AnnouncementCloseEvent} close
  *          When a user clicks the close/dismiss button on an announcement.
- * @csspart row
- *          The row for the banner. Contains the image and content divs.
- * @csspart image
- *          The image for the banner. Contains the image slot.
  */
 let RhAnnouncement = class RhAnnouncement extends LitElement {
     constructor() {
@@ -57,17 +47,25 @@ let RhAnnouncement = class RhAnnouncement extends LitElement {
             'block-start': imagePosBlockStart,
             'empty': __classPrivateFieldGet(this, _RhAnnouncement_slots, "f").isEmpty(null),
         })}">
+        <!-- The row for the banner. Contains the image and content divs. -->
         <div id="row" part="row">
+          <!-- The image for the banner. Contains the image slot. -->
           <div id="image"
                part="image"
                class="${classMap({ empty: !__classPrivateFieldGet(this, _RhAnnouncement_slots, "f").hasSlotted('image') })}">
+            <!--
+              If this slot is used, we expect an image tag with a width and height set.
+              An icon, svg, or use of the icon component are also valid in this region.
+            -->
             <slot name="image"></slot>
           </div>
           <div id="content">
             <div id="body" class="${classMap({ empty: __classPrivateFieldGet(this, _RhAnnouncement_slots, "f").isEmpty(null) })}">
+              <!-- Any content that is not designated for the header or footer slot, will go to this slot. -->
               <slot></slot>
             </div>
             <div id="cta" class="${classMap({ empty: !__classPrivateFieldGet(this, _RhAnnouncement_slots, "f").hasSlotted('cta') })}">
+              <!-- If this slot is used, we expect a rh-cta component. -->
               <slot name="cta"></slot>
             </div>
           </div>

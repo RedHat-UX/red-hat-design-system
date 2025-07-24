@@ -25,21 +25,6 @@ const styles = css `*,:after,:before{box-sizing:border-box}:host{--_color-stop-s
  *
  * @alias Navigation (primary)
  *
- * @slot          - Use this slot for `<rh-primary-navigation-item>` hamburger menu links and dropdowns
- * @slot          logo -
- *                Use this slot to override the link and logo image for translations and sub sites.
- * @slot          event -
- *                Use this slot for event promotion.  Images such as SVGs and links are most often slotted here.
- *                Slot these items using the `<rh-navigation-primary-item slot="event">` element.
- * @slot          links -
- *                Use this slot for quick links to other sites not directly associated with the page the
- *                navigation is on.  Common use cases are developers docs and support. Slot these items using
- *                the `<rh-navigation-primary-item slot="links">` element.
- * @slot          dropdowns -
- *                Use this slot for search, for you, and account dropdowns. Slot these items using the
- *                `<rh-navigation-primary-item slot="dropdown" variant="dropdown">` element.
- * @cssprop       [--rh-navigation-primary-z-index, 102]
- *                The initial z-index for the primary navigation element, default is 102.
  */
 let RhNavigationPrimary = class RhNavigationPrimary extends LitElement {
     static focusableChildElements(parent) {
@@ -126,6 +111,7 @@ let RhNavigationPrimary = class RhNavigationPrimary extends LitElement {
       <div id="container" class="${classMap({ compact, dehydrated: !__classPrivateFieldGet(this, _RhNavigationPrimary_hydrated, "f") })}">
         <div id="bar">
           <div id="logo">
+            <!-- Use this slot to override the link and logo image for translations and sub sites. -->
             <slot name="logo">
               <a href="/">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 613 145" height="30" width="125">
@@ -144,13 +130,27 @@ let RhNavigationPrimary = class RhNavigationPrimary extends LitElement {
               <rh-icon icon="caret-down" set="microns"></rh-icon>
             </summary>
             <div id="details-content" role="list" >
+              <!-- Use this slot for \`<rh-primary-navigation-item>\` hamburger menu links and dropdowns -->
               <slot></slot>
             </div>
 
           </details>
           <div id="secondary">
+            <!--
+              Use this slot for event promotion.  Images such as SVGs and links are most often slotted here.
+              Slot these items using the \`<rh-navigation-primary-item slot="event">\` element.
+            -->
             <div id="event" role="list"><slot name="event"></slot></div>
+            <!--
+              Use this slot for quick links to other sites not directly associated with the page the
+              navigation is on.  Common use cases are developers docs and support. Slot these items using
+              the \`<rh-navigation-primary-item slot="links">\` element.
+            -->
             <div id="links" role="list"><slot name="links"></slot></div>
+            <!--
+              Use this slot for search, for you, and account dropdowns. Slot these items using the
+              \`<rh-navigation-primary-item slot="dropdown" variant="dropdown">\` element.
+            -->
             <div id="dropdowns" role="list"><slot name="dropdowns"></slot></div>
           </div>
         </div>

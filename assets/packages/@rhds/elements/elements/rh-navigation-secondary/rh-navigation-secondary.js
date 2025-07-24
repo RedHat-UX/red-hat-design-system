@@ -43,19 +43,10 @@ function focusableChildElements(parent) {
  *
  * @alias Navigation (secondary)
  *
- * @slot logo           - Logo added to the main nav bar, expects `<a>Text</a> | <a><svg/></a> | <a><img/></a>` element
- * @slot nav            - Navigation list added to the main nav bar, expects `<ul>` element
- * @slot cta            - Nav bar level CTA, expects `<rh-cta>` element
- * @slot mobile-menu    - Text label for the mobile menu button, for l10n. Defaults to "Menu"
- * @csspart nav         - container, `<nav>` element
- * @csspart container   - container, `<div>` element
- * @csspart cta         - container, `<div>` element
  * @fires {SecondaryNavOverlayChangeEvent} overlay-change -
  *                                         Fires when an dropdown is opened or closed in desktop
  *                                         view or when the mobile menu button is toggled in mobile
  *                                         view.
- * @cssprop {<integer>} [--rh-navigation-secondary-z-index=102] - z-index of the navigation-secondary
- * @cssprop {<integer>} [--rh-navigation-secondary-overlay-z-index=-1] - z-index of the navigation-secondary-overlay
  */
 let RhNavigationSecondary = RhNavigationSecondary_1 = _a = class RhNavigationSecondary extends LitElement {
     constructor() {
@@ -130,17 +121,25 @@ let RhNavigationSecondary = RhNavigationSecondary_1 = _a = class RhNavigationSec
         // CTA must always be 'lightest' on mobile screens
         const dropdownPalette = __classPrivateFieldGet(this, _RhNavigationSecondary_compact, "f") ? 'lightest' : __classPrivateFieldGet(this, _RhNavigationSecondary_instances, "a", _RhNavigationSecondary_computedPalette_get);
         return html `
+      <!-- container, \`<nav>\` element -->
       <div part="nav"
            class="${classMap({ compact: __classPrivateFieldGet(this, _RhNavigationSecondary_compact, "f") })}">
         ${__classPrivateFieldGet(this, _RhNavigationSecondary_logoCopy, "f")}
+        <!-- container, \`<div>\` element -->
         <div id="container" part="container" class="${classMap({ expanded })}">
+          <!-- Logo added to the main nav bar, expects \`<a>Text</a> | <a><svg/></a> | <a><img/></a>\` element -->
           <slot name="logo" id="logo"></slot>
           <button aria-controls="container"
                   aria-expanded="${String(expanded)}"
-                  @click="${__classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_toggleMobileMenu)}"><slot name="mobile-menu">Menu</slot></button>
+                  @click="${__classPrivateFieldGet(this, _RhNavigationSecondary_instances, "m", _RhNavigationSecondary_toggleMobileMenu)}"><!--
+            Text label for the mobile menu button, for l10n. Defaults to "Menu"
+          --><slot name="mobile-menu">Menu</slot></button>
           <rh-surface color-palette="${dropdownPalette}">
+            <!-- Navigation list added to the main nav bar, expects \`<ul>\` element -->
             <slot name="nav"></slot>
+            <!-- container, \`<div>\` element -->
             <div id="cta" part="cta">
+              <!-- Nav bar level CTA, expects \`<rh-cta>\` element -->
               <slot name="cta"></slot>
             </div>
           </rh-surface>

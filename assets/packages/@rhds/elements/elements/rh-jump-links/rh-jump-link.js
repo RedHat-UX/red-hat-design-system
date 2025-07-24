@@ -13,10 +13,6 @@ import { themable } from '@rhds/elements/lib/themable.js';
 import { css } from "lit";
 const style = css `:host{display:block;position:relative;width:max-content}a{color:var(--rh-color-interactive-secondary-default);text-decoration:none;display:inline-block;box-sizing:border-box;white-space:normal;overflow-wrap:break-word}a:before{content:"";display:block;position:absolute}a.vertical{padding-block:var(--rh-space-md,8px);padding-inline:calc(var(--rh-space-lg, 16px) + var(--_padding-inline-start, 0px)) var(--rh-space-lg,16px);border-inline-start:var(--_bdr);max-width:var(--rh-jump-link-max-width,calc(var(--rh-length-md, 8px)*40))}a.horizontal{padding:var(--rh-space-lg,16px);white-space:nowrap}a:focus,a:hover{color:var(--rh-color-text-primary)}a:focus-visible{outline:none}a:focus-visible:after{content:"";display:block;position:absolute;inset:0;border:2px solid var(--rh-color-interactive-primary-default);border-radius:var(--rh-border-radius-default,3px)}a:focus-visible,a:hover{--_bdr-c:var(--rh-color-border-status-neutral)}a.active{color:var(--rh-color-text-primary);--_bdr-c:var(--rh-color-brand-red)}a.active.vertical:before,a.vertical:focus-visible:before,a.vertical:hover:before{height:100%;inset-inline-start:0;inset-block:0;border-inline-start:var(--_active_bdr,var(--rh-border-width-lg,3px) solid var(--_bdr-c,var(--rh-color-border-status-neutral)))}a.active.horizontal:before,a.horizontal:focus-visible:before,a.horizontal:hover:before{width:100%;inset-block-start:0;inset-inline:0;border-block-start:var(--rh-border-width-lg,3px) solid var(--_bdr-c,var(--rh-color-border-status-neutral))}:host([slot]) a.vertical{border-inline-start:none}`;
 import { rhJumpLinksOrientationContext } from './context.js';
-/**
- * @cssprop  {<length>} [--rh-jump-link-max-width=320px]
- *           max-width for each vertical jump link
- */
 let RhJumpLink = class RhJumpLink extends LitElement {
     constructor() {
         super(...arguments);

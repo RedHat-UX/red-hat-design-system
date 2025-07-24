@@ -9,8 +9,6 @@ import { type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
  *
  * @alias surface
  *
- * @slot - The `<rh-surface>` element has a single anonymous slot which accepts any content and does not provide additional layout styling
- *
  * @example A surface providing a theme to a spinner
  *          ```html
  *          <rh-surface color-palette="light">

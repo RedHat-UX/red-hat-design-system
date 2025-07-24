@@ -8,7 +8,6 @@ import { css } from "lit";
 const style = css `:host{display:block;--rh-icon-size:var(--rh-footer--social-icon--size,var(--rh-size-icon-02,24px))}[hidden]{display:none!important}::slotted(a),a{color:var(--_icon-color)!important}::slotted(a:is(:hover,:focus-within)),a:is(:hover,:focus-within){color:var(--_icon-color-hover)!important}`;
 /**
  * Social media links for Red Hat Footer
- * @slot - Optional icon for social link. Use only when suitable icon is unavailable with `<rh-icon>`
  */
 let RhFooterSocialLink = class RhFooterSocialLink extends LitElement {
     constructor() {
@@ -22,6 +21,7 @@ let RhFooterSocialLink = class RhFooterSocialLink extends LitElement {
     render() {
         return html `
       <a href="${this.href}" aria-label="${this.accessibleLabel}">
+        <!-- Optional icon for social link. Use only when suitable icon is unavailable with \`<rh-icon>\` -->
         <slot>
           <rh-icon set="social" icon="${this.icon}"></rh-icon>
         </slot>

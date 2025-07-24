@@ -10,7 +10,6 @@ import { css } from "lit";
 const styles = css `:host{display:block}#container{color:var(--rh-color-text-primary);background-color:var(--rh-color-surface);padding:var(--rh-space-2xl,32px) var(--rh-space-xl,24px)}@container (min-width: 1200px){#container:not(.compact){margin:0 auto;max-width:1440px;padding:var(--rh-space-3xl,48px) var(--rh-space-2xl,32px)}}`;
 /**
  * Navigation Menu
- * @slot - Place element content here
  */
 let RhNavigationPrimaryItemMenu = class RhNavigationPrimaryItemMenu extends LitElement {
     constructor() {
@@ -41,6 +40,7 @@ let RhNavigationPrimaryItemMenu = class RhNavigationPrimaryItemMenu extends LitE
         const compact = !__classPrivateFieldGet(this, _RhNavigationPrimaryItemMenu_hydrated, "f") ? true : this.compact ?? true;
         return html `
       <div id="container" class="${classMap({ compact: compact, dehydrated: !__classPrivateFieldGet(this, _RhNavigationPrimaryItemMenu_hydrated, "f") })}">
+        <!-- Place element content here -->
         <slot></slot>
       </div>
     `;

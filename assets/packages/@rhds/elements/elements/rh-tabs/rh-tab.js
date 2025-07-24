@@ -22,17 +22,6 @@ export class TabExpandEvent extends Event {
 }
 /**
  * The tab button for use within a rh-tabs element, must be paired with a rh-tab-panel.
- * @slot icon - Can contain an `<svg>` or `<rh-icon>`
- * @slot - Tab title text
- * @csspart button - element that contains the interactive part of a tab
- * @csspart icon - `<rh-icon>` element
- * @csspart text - tile text `<span>` element
- * @cssprop {<color>} [--rh-tabs-link-color=#4d4d4d] - Tab link text color
- * @cssprop {<color>} [--rh-tabs-active-border-color=#ff442b] - Tab active border color
- * @cssprop {<length>} [--rh-tabs-link-padding-inline-start=32px] - Tab padding inline start
- * @cssprop {<length>} [--rh-tabs-link-padding-block-start=16px] - Tab padding block start
- * @cssprop {<length>} [--rh-tabs-link-padding-inline-end=32px`] - Tab padding inline end
- * @cssprop {<length>} [--rh-tabs-link-padding-block-end=16px] - Tab padding block end
  * @fires { TabExpandEvent } expand - when a tab expands
  */
 let RhTab = class RhTab extends LitElement {
@@ -64,12 +53,15 @@ let RhTab = class RhTab extends LitElement {
         const first = firstTab === this;
         const last = lastTab === this;
         return html `
+      <!-- element that contains the interactive part of a tab -->
       <div id="button"
            part="button"
            ?disabled="${this.disabled}"
            class="${classMap({ active, box, vertical, first, last })}">
+        <!-- Can contain an \`<svg>\` or \`<rh-icon>\` -->
         <slot name="icon"
               part="icon"></slot>
+        <!-- Tab title text -->
         <slot part="text"></slot>
       </div>
     `;

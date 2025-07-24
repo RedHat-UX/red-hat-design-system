@@ -8,9 +8,6 @@ import { css } from "lit";
 const styles = css `:host{display:block;padding:var(--_panel-padding,var(--rh-space-2xl,32px))}:host([hidden]){display:none!important}:host(:is(:focus,:focus-within)){outline:1px auto var(--rh-color-interactive-primary-default)}#container{display:contents}`;
 /**
  * The tab panel for use within a rh-tabs element, must be paired with a rh-tab.
- *
- * @slot - Panel content should follow guidelines for [tab panel content layout](../guidelines)
- *
  */
 let RhTabPanel = class RhTabPanel extends LitElement {
     constructor() {
@@ -36,6 +33,7 @@ let RhTabPanel = class RhTabPanel extends LitElement {
     render() {
         return html `
       <div id="container">
+        <!-- Panel content should follow guidelines for [tab panel content layout](../guidelines) -->
         <slot></slot>
       </div>
     `;

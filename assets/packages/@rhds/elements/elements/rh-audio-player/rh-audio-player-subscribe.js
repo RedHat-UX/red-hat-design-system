@@ -11,12 +11,6 @@ const panelStyles = css `:host{display:block;border-top:1px solid var(--_border-
 const styles = css `[part=body]{max-height:240px;overflow-y:auto}::slotted([slot=link]){display:block}@media (min-width:576px){slot[part=links]{display:flex;align-items:stretch;justify-content:space-between;flex-wrap:wrap}}`;
 /**
  * Audio Player Subscribe Panel
- * @slot heading - custom heading for panel
- * @slot - panel content
- * @slot link - link to subscribe to podcast
- * @csspart heading - scrolling text overflow
- * @csspart body - body content slot
- * @csspart links - subscribe links
  */
 let RhAudioPlayerSubscribe = class RhAudioPlayerSubscribe extends LitElement {
     constructor() {
@@ -27,10 +21,17 @@ let RhAudioPlayerSubscribe = class RhAudioPlayerSubscribe extends LitElement {
     }
     render() {
         return html `
+      <!-- scrolling text overflow -->
       <rh-audio-player-scrolling-text-overflow part="heading">
+        <!-- custom heading for panel -->
         <slot name="heading">${__classPrivateFieldGet(this, _RhAudioPlayerSubscribe_headings, "f").wrap(this.menuLabel)}</slot>
       </rh-audio-player-scrolling-text-overflow>
+      <!-- panel content -->
       <slot part="body" ?hidden="${__classPrivateFieldGet(this, _RhAudioPlayerSubscribe_slots, "f").isEmpty(null)}"></slot>
+      <!-- slot:
+             summary: link to subscribe to podcast
+           part:
+             summary: subscribe links -->
       <slot name="link" part="links"></slot>`;
     }
     set menuLabel(label) {

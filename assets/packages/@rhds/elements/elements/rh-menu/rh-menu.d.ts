@@ -8,8 +8,6 @@ export declare class MenuToggleEvent extends Event {
  * Menu
  *
  * @alias menu
- *
- * @slot - menu items
  */
 export declare class RhMenu extends LitElement {
     #private;
