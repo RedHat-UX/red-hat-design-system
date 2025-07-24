@@ -48,18 +48,13 @@
   max-width: var(--_tab-max-width, 200px);
   max-height: 100%;
   line-height: 0;
-
-  /** Tab padding block start */
-
-  /** Tab padding inline end */
-
-  /** Tab padding block end */
-
-  /** Tab padding inline start */
-  padding:
+  padding: /** Tab padding block start */
     var(--rh-tabs-link-padding-block-start, var(--rh-space-lg, 16px))
+    /** Tab padding inline end */
     var(--rh-tabs-link-padding-inline-end, var(--rh-space-2xl, 32px))
+    /** Tab padding block end */
     var(--rh-tabs-link-padding-block-end, var(--rh-space-lg, 16px))
+    /** Tab padding inline start */
     var(--rh-tabs-link-padding-inline-start, var(--rh-space-2xl, 32px));
 
   &:before,
