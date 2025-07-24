@@ -20,10 +20,6 @@ import '@rhds/elements/rh-icon/rh-icon.js';
 
 /**
  * Audio Player Transcript Panel
- * @slot heading - custom heading for panel
- * @slot - `rh-cue` elements
- * @csspart heading - scrolling text overflow
- * @csspart toolbar - toolbar area above cues list
  */
 @customElement('rh-transcript')
 export class RhTranscript extends LitElement {
@@ -62,9 +58,12 @@ export class RhTranscript extends LitElement {
 
   override render(): TemplateResult {
     return html`
+      <!-- scrolling text overflow -->
       <rh-audio-player-scrolling-text-overflow part="heading">
+        <!-- custom heading for panel -->
         <slot name="heading">${this.#headings.wrap(this.menuLabel)}</slot>
       </rh-audio-player-scrolling-text-overflow>
+      <!-- toolbar area above cues list -->
       <div class="panel-toolbar" part="toolbar">${this.#slots.isEmpty('cues') ? '' : html`
         <label>
           <input id="autoscroll"
@@ -80,6 +79,7 @@ export class RhTranscript extends LitElement {
           <span slot="content">${this.downloadLabel}</span>
         </rh-tooltip>`}
       </div>
+      <!-- \`rh-cue\` elements -->
       <slot id="cues"></slot>
     `;
   }

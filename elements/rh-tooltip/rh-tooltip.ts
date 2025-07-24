@@ -50,20 +50,6 @@ function getBestGuessAccessibleContent(node: Node): string {
  *
  * @alias tooltip
  *
- * @slot - Place invoking element here,
- *         i.e. the element which when hovered the tooltip will display.
- *         Must be inline content.
- * @slot content - Place tooltip content here. Overrides the `content` attribute.
- *
- * @cssprop {<length>} [--rh-tooltip-arrow-size=11px]
- * @cssprop {<color>} [--rh-tooltip-content-background-color=#ffffff]
- * @cssprop {<color>} [--rh-tooltip-content-color=#151515]
- * @cssprop {<length>} [--rh-tooltip-max-width=18.75rem]
- * @cssprop {<length>} [--rh-tooltip-content-padding-block-start=16px]
- * @cssprop {<length>} [--rh-tooltip-content-padding-inline-end=16px]
- * @cssprop {<length>} [--rh-tooltip-content-padding-block-end=16px]
- * @cssprop {<length>} [--rh-tooltip-content-padding-inline-start=16px]
- * @cssprop {<absolute-size> | <relative-size> | <length> | <percentage>} [--rh-tooltip-content-font-size=0.875rem]
  */
 @customElement('rh-tooltip')
 @themable
@@ -160,9 +146,15 @@ export class RhTooltip extends LitElement {
                                [anchor]: !!anchor,
                                [alignment]: !!alignment })}">
         <div id="invoker">
+          <!--
+            Place invoking element here,
+            i.e. the element which when hovered the tooltip will display.
+            Must be inline content.
+          -->
           <slot id="invoker-slot"></slot>
         </div>
         <div id="tooltip" role="status" class="${classMap({ dark, light })}">
+          <!-- Place tooltip content here. Overrides the \`content\` attribute. -->
           <slot id="content" name="content">${this.content}</slot>
         </div>
       </div>

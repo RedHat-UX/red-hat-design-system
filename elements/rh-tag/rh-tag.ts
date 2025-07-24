@@ -22,19 +22,6 @@ import styles from './rh-tag.css';
  * @alias tag
  *
  * @fires close - when a removable label's close button is clicked
- * @slot icon -  Contains the labels's icon, e.g. web-icon-alert-success.
- * @slot      -  Must contain the text for the label.
- * @csspart icon - container for the label icon
- * @cssprop  {<length>} [--rh-tag-margin-inline-end=4px]
- *           The margin at the end of the direction parallel to the flow of the text.
- * @cssprop  {<length>} [--rh-tag-padding-block-start=4px]
- *           The padding at the start of the direction perpendicular to the flow of the text.
- * @cssprop  {<length>} [--rh-tag-padding-block-end=4px]
- *           The padding at the end of the direction perpendicular to the flow of the text.
- * @cssprop  {<length>} [--rh-tag-padding-inline-start=8px]
- *           The padding at the start of the direction parallel to the flow of the text.
- * @cssprop  {<length>} [--rh-tag-padding-inline-end=8px]
- *           The padding at the end of the direction parallel to the flow of the text.
  *
  */
 @customElement('rh-tag')
@@ -90,11 +77,19 @@ export class RhTag extends LitElement {
               teal: color === ('cyan' as 'blue' /* cyan deprecated */) || color === 'teal',
               [variant]: true,
               [color]: true })}">
+        <!--
+          slot:
+            summary: Contains the labels's icon, e.g. web-icon-alert-success.
+          part:
+            summary: container for the label icon
+        -->
         <slot name="icon" part="icon">
           <rh-icon ?hidden="${!icon}" icon="${ifDefined(icon)}" set="${this.iconSet}"></rh-icon>
         </slot>${!this.href ? html`
+        <!-- Must contain the text for the label. -->
         <slot id="text"></slot>` : html`
         <a href="${this.href}">
+          <!-- Must contain the text for the label. -->
           <slot id="text"></slot>
         </a>`}
       </span>

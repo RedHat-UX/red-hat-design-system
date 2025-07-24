@@ -15,9 +15,6 @@ import styles from './rh-back-to-top.css';
  * @summary A shortcut to the top of the page content
  *
  * @alias back-to-top
- *
- * @csspart trigger - back to top link anchor element
- * @slot - Text for the back to top link
  */
 @customElement('rh-back-to-top')
 export class RhBackToTop extends LitElement {
@@ -77,7 +74,9 @@ export class RhBackToTop extends LitElement {
 
   render() {
     return html`
+      <!-- back to top link anchor element -->
       <a href="${ifDefined(this.href)}" ?hidden="${!this.#visible}" part="trigger">
+        <!-- Text for the back to top link -->
         <slot>Back to top</slot>
         <rh-icon set="ui" icon="caret-up"></rh-icon>
       </a>
