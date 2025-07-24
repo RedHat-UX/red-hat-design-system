@@ -20,15 +20,16 @@
 :host(:not([type='fixed-width'])) #sections {
   display: grid;
 
-  /** grid-template-columns for menu sections */
   grid-template-columns:
+    /** grid-template-columns for menu sections */
     var(--rh-navigation-secondary-menu-section-grid,
       repeat(auto-fit,
       minmax(15.5rem, 1fr)));
   grid-template-rows: auto;
 
-  /** grid-gap for menu sections */
-  gap: var(--rh-navigation-secondary-menu-section-grid-gap, var(--rh-space-2xl, 32px));
+  gap:
+    /** grid-gap for menu sections */
+    var(--rh-navigation-secondary-menu-section-grid-gap, var(--rh-space-2xl, 32px));
 }
 
 ::slotted(:is(ul, ol)) {
