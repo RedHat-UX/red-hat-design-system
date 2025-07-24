@@ -23,15 +23,13 @@ export class RhSkipLink extends LitElement {
   @property({ reflect: true }) href?: string;
 
   render() {
+    const slot = html`<!--
+        An anchor tag targeting the main page content by id hash.
+        Or, if the \`href\` attribute is set, the text of the link.
+    --><slot></slot>`;
     return this.href ?
-        html`<a id="container" href="${this.href}"><!--
-            An anchor tag targeting the main page content by id hash.
-            Or, if the \`href\` attribute is set, the text of the link.
-        --><slot></slot></a>`
-      : html`<div id="container"><!--
-            An anchor tag targeting the main page content by id hash.
-            Or, if the \`href\` attribute is set, the text of the link.
-        --><slot></slot></div>`;
+        html`<a id="container" href="${this.href}">${slot}</a>`
+      : html`<div id="container">${slot}</div>`;
   }
 }
 
