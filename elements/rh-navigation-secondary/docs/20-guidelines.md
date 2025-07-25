@@ -280,20 +280,20 @@ As breakpoints get smaller, the nav slot will collapse into an accordion within 
 ### Number of slots
 
 <uxdot-best-practice variant="do">
-  <uxdot-example width-adjustment="482px" slot="image">
+  <uxdot-example width-adjustment="1012px" slot="image">
     <img src="../secondary-nav-best-practices-slot-number-do.avif"
           alt="Secondary navigation with three slots"
-          width="482"
+          width="1012"
           height="79">
   </uxdot-example>
   <p>Three is the maximum number of slots for large screen sizes.</p>
 </uxdot-best-practice>
 
 <uxdot-best-practice variant="dont">
-  <uxdot-example width-adjustment="482px" slot="image">
+  <uxdot-example width-adjustment="1012px" slot="image">
     <img src="../secondary-nav-best-practices-slot-number-dont.avif"
           alt="Secondary navigation with four slots"
-          width="482"
+          width="1012"
           height="79">
   </uxdot-example>
   <p>Do not display more slots than the three provided for large screen sizes.</p>
@@ -302,21 +302,21 @@ As breakpoints get smaller, the nav slot will collapse into an accordion within 
 ### Number of navigation items
 
 <uxdot-best-practice variant="do">
-  <uxdot-example width-adjustment="482px" slot="image">
+  <uxdot-example width-adjustment="837px" slot="image">
     <img src="../secondary-nav-best-practices-items-number-do.avif"
           alt="Secondary navigation with five items in the nav slot"
-          width="482"
-          height="79">
+          width="837"
+          height="86">
   </uxdot-example>
   <p>Display at least one navigation item in the `nav` slot and make sure that there are not too many. (A maximum of five items typically fits well.)</p>
 </uxdot-best-practice>
 
 <uxdot-best-practice variant="dont">
-  <uxdot-example width-adjustment="482px" slot="image">
+  <uxdot-example width-adjustment="1025px" slot="image">
     <img src="../secondary-nav-best-practices-items-number-do.avif"
           alt="Secondary navigation with seven items in the nav slot"
-          width="482"
-          height="79">
+          width="1025"
+          height="86">
   </uxdot-example>
   <p>Do not add too many navigation items in the `nav` slot.</p>
 </uxdot-best-practice>

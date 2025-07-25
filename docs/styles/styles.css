@@ -35,335 +35,342 @@
 
   :where(h1, h2, h3, h4, h5, h6) {
     font-weight: var(--rh-font-weight-heading-medium);
-  }
 
-  a {
-    color: var(--rh-color-interactive-primary-default);
-    text-decoration: underline dashed 1px;
-    text-decoration-color: light-dark(var(--rh-color-gray-50), var(--rh-color-gray-40));
-    text-underline-offset: max(5px, 0.28em);
-    transition: ease all 0.3s;
-
-    &:hover {
-      color: var(--rh-color-interactive-primary-hover);
-      text-decoration-color: inherit;
-      text-underline-offset: max(6px, 0.33em);
+    & code {
+      font-size: inherit;
     }
 
-    &:focus-within {
-      color: var(--rh-color-interactive-primary-focus);
-      text-decoration-color: inherit;
-      text-underline-offset: max(6px, 0.33em);
-      &:hover { color: var(--rh-color-interactive-primary-focus); }
+    h3 code {
+      font-size: inherit;
     }
 
-    &:visited { /* stylelint-disable-line no-descending-specificity */
-      color: var(--rh-color-interactive-primary-visited-default);
-      &:hover { color: var(--rh-color-interactive-primary-visited-hover); }
+    a {
+      color: var(--rh-color-interactive-primary-default);
+      text-decoration: underline dashed 1px;
+      text-decoration-color: light-dark(var(--rh-color-gray-50), var(--rh-color-gray-40));
+      text-underline-offset: max(5px, 0.28em);
+      transition: ease all 0.3s;
+
+      &:hover {
+        color: var(--rh-color-interactive-primary-hover);
+        text-decoration-color: inherit;
+        text-underline-offset: max(6px, 0.33em);
+      }
+
+      &:focus-within {
+        color: var(--rh-color-interactive-primary-focus);
+        text-decoration-color: inherit;
+        text-underline-offset: max(6px, 0.33em);
+        &:hover { color: var(--rh-color-interactive-primary-focus); }
+      }
+
+      &:visited { /* stylelint-disable-line no-descending-specificity */
+        color: var(--rh-color-interactive-primary-visited-default);
+        &:hover { color: var(--rh-color-interactive-primary-visited-hover); }
+      }
+    }
+
+    hr {
+      border-block-start: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
+      border-inline: none;
+      border-block-end: none;
+      margin-block-end: var(--rh-space-2xl);
+    }
+
+    figure > img {
+      max-width: 100%;
+    }
+
+    figcaption {
+      color: var(--rh-color-text-secondary);
+    }
+
+    .visually-hidden {
+      position: fixed;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
     }
   }
 
-  hr {
-    border-block-start: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
-    border-inline: none;
-    border-block-end: none;
-    margin-block-end: var(--rh-space-2xl);
-  }
+  @layer layout {
+    :root {
+      --uxdot-masthead-max-height: 72px;
+      --uxdot-masthead-z-index: 4;
+      --container-min-width: 992px;
+      --container-max-width: 1332px;
+    }
 
-  figure > img {
-    max-width: 100%;
-  }
+    :target {
+      /* Set padding for #hash links */
+      scroll-margin-top: calc(var(--uxdot-masthead-max-height) + var(--rh-space-5xl));
+    }
 
-  figcaption {
-    color: var(--rh-color-text-secondary);
-  }
-
-  .visually-hidden {
-    position: fixed;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-  }
-}
-
-@layer layout {
-  :root {
-    --uxdot-masthead-max-height: 72px;
-    --uxdot-masthead-z-index: 4;
-    --container-min-width: 992px;
-    --container-max-width: 1332px;
-  }
-
-  :target {
-    /* Set padding for #hash links */
-    scroll-margin-top: calc(var(--uxdot-masthead-max-height) + var(--rh-space-5xl));
-  }
-
-  body {
-    display: grid;
-    grid-template-rows: max-content 1fr max-content;
-    grid-template-areas: 'header' 'main' 'footer';
-    position: relative;
-    min-height: 100dvh;
-  }
-
-  body:has(uxdot-sidenav:not(:defined)) {
-    grid-template-rows: max-content max-content 1fr max-content;
-    grid-template-areas: 'header' 'nav' 'main' 'footer';
-  }
-
-  #main,
-  uxdot-sidenav {
-    --rh-color-surface:
-      light-dark(var(--rh-color-surface-lightest),
-        var(--rh-color-surface-darker));
-  }
-
-  #main {
-    grid-area: main;
-    border-inline-start: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
-    container-type: inline-size;
-    container-name: main;
-    padding-block-start: var(--uxdot-masthead-max-height);
-  }
-
-  .container {
-    padding-inline: var(--rh-space-lg);
-    padding-block-end: var(--rh-space-lg);
-  }
-
-  uxdot-masthead {
-    grid-area: header;
-  }
-
-  uxdot-sidenav {
-    grid-area: nav;
-  }
-
-  rh-footer-universal {
-    grid-area: footer;
-  }
-
-  @media (min-width: 992px) {
     body {
+      display: grid;
       grid-template-rows: max-content 1fr max-content;
-      grid-template-columns: minmax(300px, 320px) max-content 1fr;
-      grid-template-areas:
-        'header header header'
-        'nav main main'
-        'nav footer footer';
+      grid-template-areas: 'header' 'main' 'footer';
+      position: relative;
+      min-height: 100dvh;
     }
 
     body:has(uxdot-sidenav:not(:defined)) {
-      grid-template-rows: max-content 1fr max-content;
-      grid-template-areas:
-        'header header header'
-        'nav main main'
-        'nav footer footer';
+      grid-template-rows: max-content max-content 1fr max-content;
+      grid-template-areas: 'header' 'nav' 'main' 'footer';
     }
-  }
 
-  @container main (min-width: 576px) {
+    #main,
+    uxdot-sidenav {
+      --rh-color-surface:
+        light-dark(var(--rh-color-surface-lightest),
+          var(--rh-color-surface-darker));
+    }
+
+    #main {
+      grid-area: main;
+      border-inline-start: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
+      container-type: inline-size;
+      container-name: main;
+      padding-block-start: var(--uxdot-masthead-max-height);
+    }
+
     .container {
-      padding-inline: var(--rh-space-2xl);
-      padding-block-end: var(--rh-space-2xl);
+      padding-inline: var(--rh-space-lg);
+      padding-block-end: var(--rh-space-lg);
+    }
+
+    uxdot-masthead {
+      grid-area: header;
+    }
+
+    uxdot-sidenav {
+      grid-area: nav;
+    }
+
+    rh-footer-universal {
+      grid-area: footer;
+    }
+
+    @media (min-width: 992px) {
+      body {
+        grid-template-rows: max-content 1fr max-content;
+        grid-template-columns: minmax(300px, 320px) max-content 1fr;
+        grid-template-areas:
+          'header header header'
+          'nav main main'
+          'nav footer footer';
+      }
+
+      body:has(uxdot-sidenav:not(:defined)) {
+        grid-template-rows: max-content 1fr max-content;
+        grid-template-areas:
+          'header header header'
+          'nav main main'
+          'nav footer footer';
+      }
+    }
+
+    @container main (min-width: 576px) {
+      .container {
+        padding-inline: var(--rh-space-2xl);
+        padding-block-end: var(--rh-space-2xl);
+      }
+    }
+
+    @container main (min-width: 768px) {
+      .container {
+        padding-inline: var(--rh-space-3xl);
+        padding-block-end: var(--rh-space-3xl);
+      }
+    }
+
+    @container main (min-width: 992px) {
+      .container {
+        max-width: var(--container-max-width);
+        padding-inline: var(--rh-space-6xl);
+        padding-block: 0 var(--rh-space-6xl);
+      }
     }
   }
 
-  @container main (min-width: 768px) {
-    .container {
-      padding-inline: var(--rh-space-3xl);
-      padding-block-end: var(--rh-space-3xl);
+  @layer flow {
+    :where(p, ul, ol, dl) {
+      margin-block: var(--rh-space-lg) var(--rh-space-2xl);
+    }
+
+    :where(li) {
+      margin-block: var(--rh-space-md);
+    }
+
+    :where(h1, h2, h3, h4, h5, h6) {
+      margin-block-end: var(--rh-space-lg);
+    }
+
+    :where(h1, h2, h3, h4, h5, h6) + :where(h2, h3, h4, h5, h6),
+    :where(uxdot-copy-permalink + uxdot-copy-permalink) {
+      margin-block-start: var(--rh-space-2xl);
+    }
+
+    :where(uxdot-copy-permalink, h1, h2, h3 ,h4, h5 ,h6) + uxdot-example {
+      margin-block-start: var(--rh-space-lg);
+    }
+
+    figure uxdot-example {
+      margin-block-end: 0;
+    }
+
+    rh-alert + .grid,
+    rh-alert + uxdot-example,
+    rh-alert + rh-code-block,
+    rh-code-block + rh-alert,
+    rh-cta + uxdot-example {
+      margin-block-start: var(--rh-space-2xl);
+    }
+
+    rh-table {
+      margin-block: var(--rh-space-3xl);
+    }
+
+    /* TODO: look into this do we need this rule? */
+    uxdot-copy-permalink.h2 + uxdot-copy-permalink.h3 {
+      --uxdot-copy-permalink-margin-block-start: 0;
+    }
+
+    rh-alert + rh-alert {
+      margin-block-start: var(--rh-space-xl);
+    }
+
+    uxdot-example + figcaption,
+    figcaption + uxdot-example {
+      margin-block: var(--rh-space-xl);
     }
   }
 
-  @container main (min-width: 992px) {
-    .container {
-      max-width: var(--container-max-width);
-      padding-inline: var(--rh-space-6xl);
-      padding-block: 0 var(--rh-space-6xl);
-    }
-  }
-}
-
-@layer flow {
-  :where(p, ul, ol, dl) {
-    margin-block: var(--rh-space-lg) var(--rh-space-2xl);
-  }
-
-  :where(li) {
-    margin-block: var(--rh-space-md);
-  }
-
-  :where(h1, h2, h3, h4, h5, h6) {
-    margin-block-end: var(--rh-space-lg);
-  }
-
-  :where(h1, h2, h3, h4, h5, h6) + :where(h2, h3, h4, h5, h6),
-  /* any where copy-permalink is used as a sibling to another */
-  :where(uxdot-copy-permalink + uxdot-copy-permalink) {
-    margin-block-start: var(--rh-space-2xl);
-  }
-
-  :where(uxdot-copy-permalink, h1, h2, h3 ,h4, h5 ,h6) + uxdot-example {
-    margin-block-start: var(--rh-space-lg);
-  }
-
-  figure uxdot-example {
-    margin-block-end: 0;
-  }
-
-  rh-alert + .grid,
-  rh-alert + uxdot-example,
-  rh-alert + rh-code-block,
-  rh-code-block + rh-alert,
-  rh-cta + uxdot-example {
-    margin-block-start: var(--rh-space-2xl);
-  }
-
-  rh-table {
-    margin-block: var(--rh-space-3xl);
-  }
-
-  /* TODO: look into this do we need this rule? */
-  uxdot-copy-permalink.h2 + uxdot-copy-permalink.h3 {
-    --uxdot-copy-permalink-margin-block-start: 0;
-  }
-
-  rh-alert + rh-alert {
-    margin-block-start: var(--rh-space-xl);
-  }
-
-  uxdot-example + figcaption,
-  figcaption + uxdot-example {
-    margin-block: var(--rh-space-xl);
-  }
-}
-
-@layer patterns {
-  /**
+  @layer patterns {
+    /**
    * Patterns layer for defining component and site patterns
    **/
 
-  /**
+    /**
    * KBD and code pattern
   **/
 
-  :where(code:not([class^='language-'])) {
-    padding-inline: var(--rh-space-xs);
-    background:
-      light-dark(oklch(from var(--rh-color-surface) calc(l - 0.05) c h),
-        oklch(from var(--rh-color-surface) calc(l + 0.1) c h));
-    border-radius: var(--rh-border-radius-default);
-    font-size: var(--rh-font-size-code-md);
-    font-weight: var(--rh-font-weight-code-regular);
-  }
+    :where(code:not([class^='language-'])) {
+      padding-inline: var(--rh-space-xs);
+      background:
+        light-dark(oklch(from var(--rh-color-surface) calc(l - 0.05) c h),
+          oklch(from var(--rh-color-surface) calc(l + 0.1) c h));
+      border-radius: var(--rh-border-radius-default);
+      font-size: var(--rh-font-size-code-md);
+      font-weight: var(--rh-font-weight-code-regular);
+    }
 
-  :where(code:empty) {
-    display: none;
-  }
+    :where(code:empty) {
+      display: none;
+    }
 
-  /* prism js, when a code is used in a pre remove the background color */
-  pre:has(code) :where(code) {
-    background: none;
-  }
+    /* prism js, when a code is used in a pre remove the background color */
+    pre:has(code) :where(code) {
+      background: none;
+    }
 
-  :where(kbd) {
-    --_uxdot-kbd-color-border: var(--rh-color-border-subtle);
+    :where(kbd) {
+      --_uxdot-kbd-color-border: var(--rh-color-border-subtle);
 
-    background-color: light-dark(var(--rh-color-surface-lightest), var(--rh-color-surface-darkest));
-    color: var(--rh-color-text-primary);
-    border-radius: var(--rh-border-radius-default);
-    border: var(--rh-border-width-sm) solid var(--_uxdot-kbd-color-border);
-    box-shadow: 0 2px 0 1px var(--_uxdot-kbd-color-border);
-    cursor: default;
-    font-size: var(--rh-font-size-body-text-md);
-    line-height: 1;
-    min-width: 0.75rem;
-    display: inline-block;
-    text-align: center;
-    padding: 2px var(--rh-space-sm);
-    margin-inline: var(--rh-space-xs);
-    position: relative;
-    top: -1px;
-  }
+      background-color: light-dark(var(--rh-color-surface-lightest), var(--rh-color-surface-darkest));
+      color: var(--rh-color-text-primary);
+      border-radius: var(--rh-border-radius-default);
+      border: var(--rh-border-width-sm) solid var(--_uxdot-kbd-color-border);
+      box-shadow: 0 2px 0 1px var(--_uxdot-kbd-color-border);
+      cursor: default;
+      font-size: var(--rh-font-size-body-text-md);
+      line-height: 1;
+      min-width: 0.75rem;
+      display: inline-block;
+      text-align: center;
+      padding: 2px var(--rh-space-sm);
+      margin-inline: var(--rh-space-xs);
+      position: relative;
+      top: -1px;
+    }
 
-  :where(kbd):hover {
-    box-shadow: 0 1px 0 0.5px var(--_uxdot-kbd-color-border);
-    top: 1px;
-  }
+    :where(kbd):hover {
+      box-shadow: 0 1px 0 0.5px var(--_uxdot-kbd-color-border);
+      top: 1px;
+    }
 
-  :where(kbd):has(kbd),
-  :where(kbd):has(kbd):hover {
-    background-color: unset;
-    border-radius: unset;
-    border: unset;
-    box-shadow: unset;
-    min-width: unset;
-    padding: unset;
-    position: unset;
-    top: unset;
-  }
+    :where(kbd):has(kbd),
+    :where(kbd):has(kbd):hover {
+      background-color: unset;
+      border-radius: unset;
+      border: unset;
+      box-shadow: unset;
+      min-width: unset;
+      padding: unset;
+      position: unset;
+      top: unset;
+    }
 
-  /**
+    /**
    * position masthead as fixed
    * z-index: to float above scroll page content
   */
-  uxdot-masthead {
-    position: fixed;
-    inset: 0;
-    z-index: var(--uxdot-masthead-z-index);
-  }
+    uxdot-masthead {
+      position: fixed;
+      inset: 0;
+      z-index: var(--uxdot-masthead-z-index);
+    }
 
-  /**
+    /**
    * Sticky header pattern
    * progressive enhancement sticky, using :has()
    * z-index: of masthead + 1
    **/
-  uxdot-header:has(rh-subnav) {
-    position: sticky;
-    top: -54px; /* masthead height (72px) + subnav height (56px) - header mobile height (182px) */
+    uxdot-header:has(rh-subnav) {
+      position: sticky;
+      top: -54px; /* masthead height (72px) + subnav height (56px) - header mobile height (182px) */
 
-    /* z-index 1 under masthead to allow content to scroll under */
-    z-index: calc(var(--uxdot-masthead-z-index) - 1);
+      /* z-index 1 under masthead to allow content to scroll under */
+      z-index: calc(var(--uxdot-masthead-z-index) - 1);
 
-    @container main (min-width: 768px) {
-      top: -70px; /* masthead (72px) + subnav (56px) - header tablet (198px) */
+      @container main (min-width: 768px) {
+        top: -70px; /* masthead (72px) + subnav (56px) - header tablet (198px) */
+      }
+
+      @container main (min-width: 992px) {
+        top: -118px; /* masthead (72px) + subnav (56px) - header desktop (246px) */
+      }
     }
 
-    @container main (min-width: 992px) {
-      top: -118px; /* masthead (72px) + subnav (56px) - header desktop (246px) */
+    #edit-this-page {
+      border-block-start: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
+      margin-block-start: var(--rh-space-6xl);
+      padding-block-start: var(--rh-space-lg);
     }
   }
 
-  #edit-this-page {
-    border-block-start: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
-    margin-block-start: var(--rh-space-6xl);
-    padding-block-start: var(--rh-space-lg);
-  }
-}
-
-@layer overrides {
-  /**
+  @layer overrides {
+    /**
    * Overrides layer for overriding component and site styles
    */
 
-  /* TODO: Document this bug table overflows vertically causing a scrollbar when it shouldn't */
-  rh-table {
-    overflow-y: unset;
-  }
+    /* TODO: Document this bug table overflows vertically causing a scrollbar when it shouldn't */
+    rh-table {
+      overflow-y: unset;
+    }
 
-  /* Compact tile + Uxdot Example reduce overall spacing */
-  rh-tile[compact] uxdot-example::part(container) {
-    margin-block-end: 0;
-  }
+    /* Compact tile + Uxdot Example reduce overall spacing */
+    rh-tile[compact] uxdot-example::part(container) {
+      margin-block-end: 0;
+    }
 
-  rh-alert p {
-    /* TODO: Document this bug shouldn't have to force the font size
+    rh-alert p {
+      /* TODO: Document this bug shouldn't have to force the font size
     the component is trying to set internally on #description */
-    font-size: var(--rh-font-size-body-text-md) !important;
+      font-size: var(--rh-font-size-body-text-md) !important;
+    }
   }
 }
