@@ -251,12 +251,12 @@
 
   @layer patterns {
     /**
-   * Patterns layer for defining component and site patterns
-   **/
+     * Patterns layer for defining component and site patterns
+     */
 
     /**
-   * KBD and code pattern
-  **/
+     * KBD and code pattern
+     */
 
     :where(code:not([class^='language-'])) {
       padding-inline: var(--rh-space-xs);
@@ -318,9 +318,9 @@
     }
 
     /**
-   * position masthead as fixed
-   * z-index: to float above scroll page content
-  */
+     * position masthead as fixed
+     * z-index: to float above scroll page content
+     */
     uxdot-masthead {
       position: fixed;
       inset: 0;
@@ -328,10 +328,10 @@
     }
 
     /**
-   * Sticky header pattern
-   * progressive enhancement sticky, using :has()
-   * z-index: of masthead + 1
-   **/
+     * Sticky header pattern
+     * progressive enhancement sticky, using :has()
+     * z-index: of masthead + 1
+     */
     uxdot-header:has(rh-subnav) {
       position: sticky;
       top: -54px; /* masthead height (72px) + subnav height (56px) - header mobile height (182px) */
@@ -357,8 +357,8 @@
 
   @layer overrides {
     /**
-   * Overrides layer for overriding component and site styles
-   */
+     * Overrides layer for overriding component and site styles
+     */
 
     /* TODO: Document this bug table overflows vertically causing a scrollbar when it shouldn't */
     rh-table {
@@ -372,7 +372,7 @@
 
     rh-alert p {
       /* TODO: Document this bug shouldn't have to force the font size
-    the component is trying to set internally on #description */
+               the component is trying to set internally on #description */
       font-size: var(--rh-font-size-body-text-md) !important;
     }
   }
