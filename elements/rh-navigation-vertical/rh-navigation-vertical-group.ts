@@ -8,7 +8,8 @@ import { classMap } from 'lit-html/directives/class-map.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
 import { consume, provide } from '@lit/context';
-import { context, type RhNavigationVerticalContext } from './context.js';
+import { navigationContext } from '../rh-navigation-item/navigation-context.js';
+import { borderedContext, type BorderedContext } from '../rh-navigation-item/bordered-context.js';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 
@@ -49,19 +50,24 @@ export class RhNavigationVerticalGroup extends LitElement {
   #internals = InternalsController.of(this, { role: 'listitem' });
 
   /* Internal state for depth, initially 0 */
-  @state()
-  private _depth = 0;
+  @state() private depth = 1;
 
-  /* Consume the parent context to determine our own depth */
-  @consume({ context: context, subscribe: true })
-  @state()
-  private _upstreamParentInfo?: RhNavigationVerticalContext;
+  @consume({ context: navigationContext, subscribe: true })
+  @state() private parentDepth?: number;
 
-  /**
-   * Provide our own parent information, including our calculated depth
-   */
-  @provide({ context: context })
-  private _ctx = this.#makeContext();
+  @provide({ context: navigationContext })
+  @state() private providedDepth = 1;
+
+  @consume({ context: borderedContext, subscribe: true })
+  @provide({ context: borderedContext })
+  @state()
+  private borderedContext: BorderedContext = '';
+
+  willUpdate() {
+    this.depth = (this.parentDepth ?? 0) + 1;
+    this.providedDepth = this.depth;
+    this.style.setProperty('--_depth', this.depth.toString());
+  }
 
   /**
    * Optional open attribute that, sets the open state of the group.
@@ -78,15 +84,7 @@ export class RhNavigationVerticalGroup extends LitElement {
   @query('details') private detailsEl!: HTMLDetailsElement;
   @query('summary') private summaryEl!: HTMLElement;
 
-  // Lifecycle method to update depth based on consumed context
-  willUpdate(changedProperties: Map<string | number | symbol, unknown>) {
-    if (changedProperties.has('_upstreamParentInfo')) {
-      // If we found an upstream parent context, our depth is theirs + 1
-      this._depth = this._upstreamParentInfo ? this._upstreamParentInfo.depth + 1 : 0;
-      // Update the provided context value when _depth changes
-      this._ctx = this.#makeContext();
-    }
-  }
+  
 
   protected firstUpdated(): void {
     // ensure we update initially on client hydration
@@ -103,17 +101,12 @@ export class RhNavigationVerticalGroup extends LitElement {
   }
 
   render(): TemplateResult<1> {
-    const { bordered = '' } = this._upstreamParentInfo ?? {};
-    const classes = {
-      [bordered]: !!bordered,
-    };
     return html`
       <details 
         @toggle="${this.#toggle}" 
         ?open="${this.open}"
         @keydown="${this.#onKeydown}"
-        data-depth="${this._depth}"
-        class="${classMap(classes)}">
+        data-depth="${this.depth}">
         <summary>
           <slot name="summary">${this.summary}</slot>
           <rh-icon set="ui" icon="caret-down"></rh-icon>
@@ -125,12 +118,7 @@ export class RhNavigationVerticalGroup extends LitElement {
       `;
   }
 
-  #makeContext(): RhNavigationVerticalContext {
-    return {
-      depth: this._depth,
-      bordered: this._upstreamParentInfo?.bordered,
-    };
-  }
+  
 
   #onKeydown(event: KeyboardEvent): void {
     if (event.code === 'Escape') {
