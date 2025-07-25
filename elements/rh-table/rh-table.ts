@@ -11,12 +11,11 @@ import styles from './rh-table.css';
 
 /**
  * A table is a container for displaying information. It allows a user to scan, examine, and compare large amounts of data.
+ *
  * @summary Organizes and displays information from a data set
- * @slot               - an HTML table
- * @slot    summary    - a brief description of the data
- * @cssprop {<color>} [--rh-table-row-background-hover-color=224 224 224 / 40%] - row hover background color
- * @cssprop {<color>} [--rh-table-column-background-hover-color=0 102 204 / 10%] - column hover background color
- * @cssprop [--rh-table-row-border=1px solid #c7c7c7] - row border
+ *
+ * @alias table
+ *
  */
 @customElement('rh-table')
 @themable
@@ -79,10 +78,12 @@ export class RhTable extends LitElement {
   render() {
     return html`
       <div id="container" part="container">
+        <!-- an HTML table -->
         <slot @pointerleave="${this.#onPointerleave}"
               @pointerover="${this.#onPointerover}"
               @request-sort="${this.#onRequestSort}"
               @slotchange="${this.#onSlotChange}"></slot>
+        <!-- description of the data -->
         <slot id="summary" name="summary"></slot>
       </div>
     `;

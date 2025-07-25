@@ -216,14 +216,10 @@
     margin-block-end: 0;
   }
 
-  rh-alert + uxdot-example {
-    margin-block-start: var(--rh-space-2xl);
-  }
-
-  rh-alert + .grid {
-    margin-block-start: var(--rh-space-2xl);
-  }
-
+  rh-alert + .grid,
+  rh-alert + uxdot-example,
+  rh-alert + rh-code-block,
+  rh-code-block + rh-alert,
   rh-cta + uxdot-example {
     margin-block-start: var(--rh-space-2xl);
   }

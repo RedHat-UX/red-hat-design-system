@@ -41,11 +41,16 @@ export class AccordionCollapseEvent extends ComposedEvent {
 }
 
 /**
- * An accordion is a stacked list of panels which allows users to expand or collapse information when selected. They feature panels that consist of a section text label and a caret icon that collapses or expands to reveal more information.
+ * An accordion is a stacked list of panels which allows users to expand or collapse information
+ * when selected. They feature panels that consist of a section text label and a caret icon that
+ * collapses or expands to reveal more information.
+ *
  * @summary Expands or collapses a stacked list of panels
+ *
+ * @alias accordion
+ *
  * @fires {AccordionExpandEvent} expand - when a panel expands
  * @fires {AccordionCollapseEvent} collapse - when a panel collapses
- * @slot - Place the `rh-accordion-header` and `rh-accordion-panel` elements here.
  * @attr  [accents=inline] Position accents in the header either inline or bottom
  */
 @customElement('rh-accordion')
@@ -144,7 +149,9 @@ export class RhAccordion extends LitElement {
     const expanded = this.#expanded;
     return html`
       <div id="container"
-           class="${classMap({ large, expanded })}"><slot></slot></div>
+           class="${classMap({ large, expanded })}"><!--
+        Place the \`rh-accordion-header\` and \`rh-accordion-panel\` elements here.
+        --><slot></slot></div>
     `;
   }
 

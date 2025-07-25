@@ -25,20 +25,11 @@ const L2 = html`
 
 /**
  * A paginator allows users to navigate between pages of related content.
+ *
  * @summary Allows users to navigate content divided into pages
- * @slot            - An ordered list of links
- * @slot go-to-page - "Go to page" text, defaults to "Page"
- * @slot out-of     - "of" text
- * @csspart container - pagination container
- * @csspart numeric-middle - container for the numeric control at medium screen widths
- * @csspart numeric-end - container for the numeric control at small and large screen widths
- * @csspart numeric - shared container for the numeric controls at all widths
- * @cssprop [--rh-pagination-accent-color=var(--rh-color-interactive-blue, #0066cc)]
- *          Sets the outline color when the page input has focus.
- * @cssprop [--rh-pagination-background-focused=var(--rh-color-gray-20, #c7c7c7)]
- *          Sets the disabled stepper color.
- * @cssprop [--rh-pagination-stepper-color=var(--rh-color-icon-subtle, #707070)]
- *           Sets the stepper color.
+ *
+ * @alias pagination
+ *
  */
 @customElement('rh-pagination')
 @themable
@@ -165,46 +156,11 @@ export class RhPagination extends LitElement {
       lastHref,
     } = this;
     const currentPage = this.#currentPage.toString();
-
-    return html`
-      <div id="container" part="container">
-        <a id="first"
-           class="stepper"
-           href="${ifDefined(firstHref)}"
-           .inert="${this.#currentLink === this.#firstLink}"
-           aria-label="${labelFirst}">${L2}</a>
-        <a id="prev"
-           class="stepper"
-           href="${ifDefined(prevHref)}"
-           .inert="${this.#currentLink === this.#prevLink || this.#currentLink === this.#firstLink}"
-           aria-label="${labelPrevious}">${L1}</a>
-        <nav aria-label="${label}">
-          <slot></slot>
-        </nav>
-        <div id="numeric-middle" part="numeric-middle">
-          ${this.#numericContent(currentPage, lastHref)}
-        </div>
-        <a id="next"
-           class="stepper"
-           href="${ifDefined(nextHref)}"
-           .inert="${this.#currentLink === this.#nextLink || this.#currentLink === this.#lastLink}"
-           aria-label="${labelNext}">${L1}</a>
-        <a id="last"
-           class="stepper"
-           href="${ifDefined(lastHref)}"
-           .inert="${this.#currentLink === this.#lastLink}"
-           aria-label="${labelLast}">${L2}</a>
-        <div id="numeric-end" part="numeric-end">
-          ${this.#numericContent(currentPage, lastHref)}
-        </div>
-      </div>
-    `;
-  }
-
-  #numericContent(currentPage: string, lastHref?: string) {
-    return html`
+    const numericContent = html`
+      <!-- shared container for the numeric controls at all widths -->
       <div id="numeric" part="numeric">
         <span id="go-to-page" class="xxs-visually-hidden sm-visually-visible">
+          <!-- "Go to page" text, defaults to "Page" -->
           <slot name="go-to-page">
             Page
           </slot>
@@ -217,8 +173,47 @@ export class RhPagination extends LitElement {
                @change="${this.#onChange}"
                @keyup="${this.#onKeyup}"
                .value="${currentPage}">
+        <!-- "of" text -->
         <slot ?hidden="${!this.total}" name="out-of">of</slot>
         <a ?hidden="${!this.total}" href="${ifDefined(lastHref)}">${this.total}</a>
+      </div>
+    `;
+
+    return html`
+      <!-- pagination container -->
+      <div id="container" part="container">
+        <a id="first"
+           class="stepper"
+           href="${ifDefined(firstHref)}"
+           .inert="${this.#currentLink === this.#firstLink}"
+           aria-label="${labelFirst}">${L2}</a>
+        <a id="prev"
+           class="stepper"
+           href="${ifDefined(prevHref)}"
+           .inert="${this.#currentLink === this.#prevLink || this.#currentLink === this.#firstLink}"
+           aria-label="${labelPrevious}">${L1}</a>
+        <nav aria-label="${label}">
+          <!-- An ordered list of links -->
+          <slot></slot>
+        </nav>
+        <!-- container for the numeric control at medium screen widths -->
+        <div id="numeric-middle" part="numeric-middle">
+          ${numericContent}
+        </div>
+        <a id="next"
+           class="stepper"
+           href="${ifDefined(nextHref)}"
+           .inert="${this.#currentLink === this.#nextLink || this.#currentLink === this.#lastLink}"
+           aria-label="${labelNext}">${L1}</a>
+        <a id="last"
+           class="stepper"
+           href="${ifDefined(lastHref)}"
+           .inert="${this.#currentLink === this.#lastLink}"
+           aria-label="${labelLast}">${L2}</a>
+        <!-- container for the numeric control at small and large screen widths -->
+        <div id="numeric-end" part="numeric-end">
+          ${numericContent}
+        </div>
       </div>
     `;
   }
