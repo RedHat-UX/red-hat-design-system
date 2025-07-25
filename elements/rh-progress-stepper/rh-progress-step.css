@@ -5,7 +5,9 @@ slot[name='description'] {
   font-weight: var(--rh-font-weight-body-text-regular, 400);
 }
 
-strong,
+a { display: inline; }
+
+strong, a,
 slot[name='description'] {
   /* Visually Showing */
   block-size: auto;
@@ -23,6 +25,7 @@ slot[name='description'] {
 
 :host-context([compact]) {
   & strong,
+  & a,
   & slot[name='description'] {
     /* Visually Hiding */
     block-size: 1px;
@@ -71,6 +74,10 @@ slot[name='description'] {
   line-height: 1.5; /* 150% */
   gap: var(--_step-row-gap, 16px) var(--_step-column-gap, 16px);
 
+  &:has(> :focus-visible) {
+    border: 1px solid blue;
+  }
+
   & input[type='checkbox'] {
     grid-column: 1;
     grid-row: 1;
@@ -88,7 +95,7 @@ slot[name='description'] {
     justify-self: var(--_step-icon-justify-self);
   }
 
-  & strong { align-self: center; }
+  & strong, & a { align-self: center; }
   & slot[name='description'] { font-size: var(--rh-font-size-body-text-xs, 0.75rem); }
 
   &:has(+ [state='inactive']) {
@@ -98,6 +105,7 @@ slot[name='description'] {
 
 :host([state='inactive']) {
   & strong,
+  & a,
   & slot[name='description'] {
     color: var(--rh-color-text-disabled, #6a6e73);
     font-weight: var(--rh-font-weight-body-text-regular, 400);
@@ -111,7 +119,7 @@ slot[name='description'] {
 :host([state='complete']) {
   --_step-color: var(--rh-color-status-success);
 
-  & strong {
+  & strong, & a {
     font-weight: var(--rh-font-weight-body-text-regular, 400);
   }
 }
@@ -119,7 +127,7 @@ slot[name='description'] {
 :host([state='warn']) {
   --_step-color: light-dark(var(--rh-color-yellow-50), var(--rh-color-yellow-30));
 
-  & strong {
+  & strong, & a {
     color: var(--_step-color);
   }
 }
@@ -127,7 +135,7 @@ slot[name='description'] {
 :host([state='fail']) {
   --_step-color: var(--rh-color-status-danger);
 
-  & strong {
+  & strong, & a {
     color: var(--_step-color);
   }
 }
@@ -141,7 +149,7 @@ slot[name='description'] {
 
   & rh-icon { border-color: var(--rh-color-text-primary); }
 
-  & strong {
+  & strong, & a {
     /* Body text/md - Medium weight */
     font-weight: var(--rh-font-weight-body-text-medium, 500);
     text-decoration:
@@ -180,7 +188,7 @@ slot[name='description'] {
 }
 
 :host-context([orientation='horizontal']) {
-  & strong {
+  & strong, & a {
     padding-top: 4px;
   }
 }

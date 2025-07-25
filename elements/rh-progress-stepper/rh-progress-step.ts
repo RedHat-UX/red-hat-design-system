@@ -39,10 +39,11 @@ export class RhProgressStep extends LitElement {
   static styles = [styles];
 
   @property({ reflect: true }) state: ProgressStepState = 'inactive';
-  @property({ type: String }) label = '';
-  @property({ type: String }) description = '';
-  @property({ type: String }) customIcon = '';
-  @property({ type: String }) customIconSet = 'ui';
+  @property({ reflect: true, type: String }) label = '';
+  @property({ reflect: true, type: String }) description = '';
+  @property({ reflect: true, type: String }) customIcon = '';
+  @property({ reflect: true, type: String }) customIconSet = 'ui';
+  @property({ reflect: true, type: String}) href = '';
 
   get #icon() {
     const state = this.state.toLowerCase() as ProgressStepState;
@@ -70,9 +71,14 @@ export class RhProgressStep extends LitElement {
           set="${this.state === 'custom' ? this.customIconSet : 'ui'}"
       ></rh-icon>
       </slot>
-      <strong>
-        <slot name="label">${this.label}</slot>
-      </strong>
+      ${this.href ? 
+        html`<a href="${this.href}">
+          <slot>${this.label}</slot>
+        </a>` : 
+        html`<strong>
+          <slot>${this.label}</slot>
+        </strong>`
+      }
       <slot name="description">
         ${this.description ? html`${this.description}` : ''}
       </slot>
