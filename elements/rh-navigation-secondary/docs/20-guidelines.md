@@ -308,7 +308,7 @@ As breakpoints get smaller, the nav slot will collapse into an accordion within 
           width="837"
           height="86">
   </uxdot-example>
-  <p>Display at least one navigation item in the `nav` slot and make sure that there are not too many. (A maximum of five items typically fits well.)</p>
+  <p>Display at least one navigation item in the <code>nav</code> slot and make sure that there are not too many. (A maximum of five items typically fits well.)</p>
 </uxdot-best-practice>
 
 <uxdot-best-practice variant="dont">
@@ -318,5 +318,5 @@ As breakpoints get smaller, the nav slot will collapse into an accordion within 
           width="1025"
           height="86">
   </uxdot-example>
-  <p>Do not add too many navigation items in the `nav` slot.</p>
+  <p>Do not add too many navigation items in the <code>nav</code> slot.</p>
 </uxdot-best-practice>
