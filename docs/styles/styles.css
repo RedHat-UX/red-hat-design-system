@@ -280,7 +280,10 @@
     :where(kbd) {
       --_uxdot-kbd-color-border: var(--rh-color-border-subtle);
 
-      background-color: light-dark(var(--rh-color-surface-lightest), var(--rh-color-surface-darkest));
+      background-color:
+        light-dark(
+            var(--rh-color-surface-lightest),
+            var(--rh-color-surface-darkest));
       color: var(--rh-color-text-primary);
       border-radius: var(--rh-border-radius-default);
       border: var(--rh-border-width-sm) solid var(--_uxdot-kbd-color-border);
