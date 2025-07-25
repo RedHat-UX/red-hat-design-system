@@ -1080,13 +1080,14 @@
     <!--/lit-part--></template></rh-icon>
       </button>
     <!--/lit-part--></template>
-  <h3 id="slot-1-text" tabindex="-1">
-    <a href="#slot-1-text">Slot 1 text</a><a>
+  <h3 id="logo-slot-text" tabindex="-1">
+    <a href="#logo-slot-text"><code>logo</code> slot text</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<p>If a secondary navigation is used on a product page, Slot 1 should display the product name as linked text. When writing content for Slot 1, consider the following:</p>
+<p>If a secondary navigation is used on a product page, the <code>logo</code> slot should display the product name as linked text. When writing content, consider the following:</p>
 <ul>
 <li>If product name text is long, it needs to break to two lines</li>
+<li>A product name should not be so long that it breaks to three lines</li>
 <li>If product name text is short and there are fewer links and menus, it can remain on one line</li>
 </ul>
 <uxdot-example      color-palette="lightest" width-adjustment="1000px" variant="full" alignment="left" no-border><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
@@ -1117,11 +1118,11 @@
     <!--/lit-part--></template></rh-icon>
       </button>
     <!--/lit-part--></template>
-  <h3 id="slot-2-text" tabindex="-1">
-    <a href="#slot-2-text">Slot 2 text</a><a>
+  <h3 id="nav-slot-text" tabindex="-1">
+    <a href="#nav-slot-text"><code>nav</code> slot text</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<p>Slot 2 includes inline links, menus, and sometimes external links. The order of elements is decided by content strategists. When writing content for Slot 2, consider the following:</p>
+<p>The <code>nav</code> slot includes inline links, menus, and sometimes external links. The order of elements is decided by content strategists. When writing content, consider the following:</p>
 <ul>
 <li>A secondary navigation can become cluttered quickly if there are too many items</li>
 <li>Try to be short and concise when writing</li>
@@ -1156,14 +1157,14 @@
     <!--/lit-part--></template></rh-icon>
       </button>
     <!--/lit-part--></template>
-  <h3 id="slot-3-text" tabindex="-1">
-    <a href="#slot-3-text">Slot 3 text</a><a>
+  <h3 id="cta-slot-text" tabindex="-1">
+    <a href="#cta-slot-text"><code>cta</code> slot text</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<p>Slot 3 is optional, but it can include interactive elements like a call to action. When writing content for Slot 3, consider the following:</p>
+<p>The <code>cta</code> slot is optional, but it can include interactive elements like a call to action. When writing content, consider the following:</p>
 <ul>
 <li>Try to be short and concise when writing</li>
-<li>Including a call to action will reduce the amount of space for Slot 2 elements</li>
+<li>Including a call to action will reduce the amount of space for <code>nav</code> slot elements</li>
 <li>A call to action <strong>does not</strong> stack to increase the amount of space</li>
 <li>Text will expand when translated to some languages</li>
 </ul>
@@ -1199,7 +1200,7 @@
     <a href="#maximum-uses-and-character-count">Maximum uses and character count</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<p>If there are fewer links and menus in Slot 2, text labels can be longer. If there are more links and menus, text labels need to be shorter to avoid cluttering.</p>
+<p>If there are fewer links and menus in the <code>nav</code> slot, text labels can be longer. If there are more links and menus, text labels need to be shorter to avoid cluttering.</p>
 <rh-table><template shadowroot="open" shadowrootmode="open"><style>*{box-sizing:border-box}:host{color:var(--rh-color-text-primary);display:block;overflow:auto;position:relative;scrollbar-color:var(--_scrollbar-track-color) var(--_scrollbar-thumb-color);width:100%;--_scrollbar-size:0.625rem;--_scrollbar-thumb-color:var(--rh-color-gray-50,#707070);--_scrollbar-track-color:var(--rh-color-border-subtle);--_row-border:var(--rh-table-row-border,var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle-on-light,#c7c7c7));--_row-background-hover-color:light-dark(var(--rh-table-row-background-hover-color,rgba(from var(--rh-color-gray-40,#a3a3a3) r g b/0.1)),rgba(from var(--rh-color-white,#ffffff) r g b/0.1));--_column-background-hover-color:light-dark(var(--rh-table-column-background-hover-color,rgba(from var(--rh-color-blue-50,#0066cc) r g b/0.1)),rgba(from var(--rh-color-blue-70,#003366) r g b/0.3))}:host::-webkit-scrollbar{height:var(--_scrollbar-size);width:var(--_scrollbar-size)}:host::-webkit-scrollbar,:host::-webkit-scrollbar-track{background-color:var(--_scrollbar-track-color)}:host::-webkit-scrollbar-thumb{background-color:var(--_scrollbar-thumb-color)}[slot]{display:block}::slotted([slot=summary]){color:var(--rh-color-text-secondary);display:block;font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-style:italic;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-body-text,1.5);padding:var(--rh-space-xl,24px) var(--rh-space-lg,16px) 0 var(--rh-space-lg,16px)}</style><!--lit-part 2TLt9j2sbhA=-->
       <div id="container" part="container">
         <!-- an HTML table -->
@@ -1583,7 +1584,7 @@
     <a href="#responsive-design">Responsive design</a><a>
   </a></h2>
 </uxdot-copy-permalink>
-<p>As breakpoints get smaller, Slot 2 will collapse into an accordion within a menu instead.</p>
+<p>As breakpoints get smaller, the nav slot will collapse into an accordion within a menu instead.</p>
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
@@ -1602,8 +1603,8 @@
     <!--/lit-part--></template></rh-icon>
       </button>
     <!--/lit-part--></template>
-  <h3 id="slot-2-visible" tabindex="-1">
-    <a href="#slot-2-visible">Slot 2 visible</a><a>
+  <h3 id="nav-slot-visible" tabindex="-1">
+    <a href="#nav-slot-visible"><code>nav</code> slot visible</a><a>
   </a></h3>
 </uxdot-copy-permalink>
 <uxdot-example      color-palette="lightest" width-adjustment="1000px" variant="full" alignment="left" no-border><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
@@ -1614,7 +1615,7 @@
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-  <img alt="Image of secondary navigations; one has a menu collapsed and the other has a menu expanded, but both have slot 2 visible on large breakpoints" src="../nav-secondary-guidelines-responsive-slot-2-visible.png" width="1000" height="550">
+  <img alt="Image of secondary navigations; one has a menu collapsed and the other has a menu expanded, but both have the nav slot visible on large breakpoints" src="../nav-secondary-guidelines-responsive-nav-slot-visible.avif" width="1000" height="550">
 </uxdot-example>
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1634,19 +1635,19 @@
     <!--/lit-part--></template></rh-icon>
       </button>
     <!--/lit-part--></template>
-  <h3 id="slot-2-hidden" tabindex="-1">
-    <a href="#slot-2-hidden">Slot 2 hidden</a><a>
+  <h3 id="nav-slot-hidden" tabindex="-1">
+    <a href="#nav-slot-hidden"><code>nav</code> slot hidden</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<uxdot-example      color-palette="lightest" width-adjustment="784px" variant="full" alignment="left" no-border><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
+<uxdot-example      color-palette="lightest" width-adjustment="781px" variant="full" alignment="left" no-border><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
       <!--lit-node 0--><div id="container"
            part="container"
            class=" widthAdjustment "
-           style="--_width: 784px; --_alignment: left">
+           style="--_width: 781px; --_alignment: left">
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-  <img alt="Image of secondary navigations; slot 2 on small breakpoints is not visible unless the menu is expanded" src="../nav-secondary-guidelines-responsive-slot-2-hidden.png" width="784" height="731">
+  <img alt="Image of secondary navigations; the nav slot on small breakpoints is not visible unless the menu is expanded" src="../nav-secondary-guidelines-responsive-nav-slot-hidden.avif" width="781" height="725">
 </uxdot-example>
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1686,7 +1687,7 @@
 <tr>
 <th>Breakpoint</th>
 <th>Range</th>
-<th>Slot 2 status</th>
+<th><code>nav</code> slot visibility</th>
 <th>Left and right padding</th>
 </tr>
 </thead>
@@ -1776,21 +1777,72 @@
     <!--/lit-part--></template></rh-icon>
       </button>
     <!--/lit-part--></template>
-  <h3 id="incorrect-ordering" tabindex="-1">
-    <a href="#incorrect-ordering">Incorrect ordering</a><a>
+  <h3 id="navigation-order" tabindex="-1">
+    <a href="#navigation-order">Navigation order</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<p>Do not position the secondary navigation above the primary navigation.</p>
-<uxdot-example    color-palette="lightest" width-adjustment="872px" danger><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
+<div class="grid sm-two-columns">
+  <uxdot-best-practice  variant="do"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block:var(--rh-space-2xl)}#container{display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl)}span{align-items:center;display:flex;flex-direction:row;font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xs);font-weight:var(--rh-font-weight-heading-medium);gap:var(--rh-space-md)}#do span{color:var(--rh-color-status-success)}#dont span{color:var(--rh-color-status-danger)}#caution{span{color:light-dark(var(--rh-color-yellow-60),var(--rh-color-status-warning-on-dark))}rh-icon{color:var(--rh-color-status-warning)}}::slotted(uxdot-example){margin:0!important}figure{margin:0!important}</style><!--lit-part /OqYtWIsZqM=-->
+      <figure id="container">
+        <slot name="image"></slot>
+        <!--lit-node 2--><figcaption id="do">
+          <span><!--lit-node 4--><rh-icon    set="ui" size="md" icon="check-circle-fill" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part dS1mROSl53E=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm7.795 12.796-8.646 8.646c-.317.317-.733.475-1.149.475s-.832-.158-1.149-.475l-4.646-4.646a1.126 1.126 0 0 1 1.59-1.592L14 19.41l8.205-8.205a1.124 1.124 0 1 1 1.59 1.592Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          Slotted content is used as a fallback in case the icon doesn't load
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon><!--lit-part-->Do<!--/lit-part--></span>
+          <slot></slot>
+        </figcaption>
+      </figure>
+    <!--/lit-part--></template>
+    <uxdot-example   width-adjustment="482px" slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
       <!--lit-node 0--><div id="container"
            part="container"
            class=" widthAdjustment "
-           style="--_width: 872px; --_alignment: center">
+           style="--_width: 482px; --_alignment: center">
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-  <img alt="Image of a secondary navigation on top of a primary navigation which is incorrect usage" src="../nav-secondary-best-practice-1.png" width="1000" height="170">
-</uxdot-example>
+      <img src="../secondary-nav-best-practices-nav-order-do.avif" alt="Primary navigation above a secondary navigation" width="482" height="152">
+    </uxdot-example>
+    <p>The secondary navigation always appears below primary navigation when both are used.</p>
+  </uxdot-best-practice>
+  <uxdot-best-practice  variant="dont"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block:var(--rh-space-2xl)}#container{display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl)}span{align-items:center;display:flex;flex-direction:row;font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xs);font-weight:var(--rh-font-weight-heading-medium);gap:var(--rh-space-md)}#do span{color:var(--rh-color-status-success)}#dont span{color:var(--rh-color-status-danger)}#caution{span{color:light-dark(var(--rh-color-yellow-60),var(--rh-color-status-warning-on-dark))}rh-icon{color:var(--rh-color-status-warning)}}::slotted(uxdot-example){margin:0!important}figure{margin:0!important}</style><!--lit-part /OqYtWIsZqM=-->
+      <figure id="container">
+        <slot name="image"></slot>
+        <!--lit-node 2--><figcaption id="dont">
+          <span><!--lit-node 4--><rh-icon    set="ui" size="md" icon="close-circle-fill" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part iKtDDm471k4=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm5.796 20.204c.438.44.438 1.152 0 1.592a1.122 1.122 0 0 1-1.592-.001L16 17.593l-4.204 4.204a1.122 1.122 0 0 1-1.592-.001 1.128 1.128 0 0 1 0-1.59L14.408 16l-4.204-4.204a1.126 1.126 0 0 1 1.592-1.592L16 14.408l4.204-4.204a1.126 1.126 0 0 1 1.592 1.592L17.592 16l4.204 4.204Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          Slotted content is used as a fallback in case the icon doesn't load
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon><!--lit-part-->Don&#39;t<!--/lit-part--></span>
+          <slot></slot>
+        </figcaption>
+      </figure>
+    <!--/lit-part--></template>
+    <uxdot-example   width-adjustment="482px" slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
+      <!--lit-node 0--><div id="container"
+           part="container"
+           class=" widthAdjustment "
+           style="--_width: 482px; --_alignment: center">
+        <slot></slot>
+      </div>
+    <!--/lit-part--></template>
+      <img src="../secondary-nav-best-practices-nav-order-dont.avif" alt="Secondary navigation above primary navigation" width="482" height="152">
+    </uxdot-example>
+    <p>Do not position the secondary navigation above the primary navigation.</p>
+  </uxdot-best-practice>
+</div>
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
@@ -1809,22 +1861,72 @@
     <!--/lit-part--></template></rh-icon>
       </button>
     <!--/lit-part--></template>
-  <h3 id="color-scheme-mismatch" tabindex="-1">
-    <a href="#color-scheme-mismatch">Color scheme mismatch</a><a>
+  <h3 id="scheme-matching" tabindex="-1">
+    <a href="#scheme-matching">Scheme matching</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<p><a id="theme-mismatch"></a></p>
-<p>Do not use a dark color scheme secondary navigation in light environments and vice versa.</p>
-<uxdot-example    color-palette="lightest" width-adjustment="872px" danger><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
+<div class="grid sm-two-columns">
+  <uxdot-best-practice  variant="do"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block:var(--rh-space-2xl)}#container{display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl)}span{align-items:center;display:flex;flex-direction:row;font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xs);font-weight:var(--rh-font-weight-heading-medium);gap:var(--rh-space-md)}#do span{color:var(--rh-color-status-success)}#dont span{color:var(--rh-color-status-danger)}#caution{span{color:light-dark(var(--rh-color-yellow-60),var(--rh-color-status-warning-on-dark))}rh-icon{color:var(--rh-color-status-warning)}}::slotted(uxdot-example){margin:0!important}figure{margin:0!important}</style><!--lit-part /OqYtWIsZqM=-->
+      <figure id="container">
+        <slot name="image"></slot>
+        <!--lit-node 2--><figcaption id="do">
+          <span><!--lit-node 4--><rh-icon    set="ui" size="md" icon="check-circle-fill" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part dS1mROSl53E=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm7.795 12.796-8.646 8.646c-.317.317-.733.475-1.149.475s-.832-.158-1.149-.475l-4.646-4.646a1.126 1.126 0 0 1 1.59-1.592L14 19.41l8.205-8.205a1.124 1.124 0 1 1 1.59 1.592Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          Slotted content is used as a fallback in case the icon doesn't load
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon><!--lit-part-->Do<!--/lit-part--></span>
+          <slot></slot>
+        </figcaption>
+      </figure>
+    <!--/lit-part--></template>
+    <uxdot-example   width-adjustment="482px" slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
       <!--lit-node 0--><div id="container"
            part="container"
            class=" widthAdjustment "
-           style="--_width: 872px; --_alignment: center">
+           style="--_width: 482px; --_alignment: center">
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-  <img alt="Image of a dark theme secondary navigation in a light theme environment which is incorrect usage" src="../nav-secondary-best-practice-2.png" width="1000" height="393">
-</uxdot-example>
+      <img src="../secondary-nav-best-practices-scheme-do.avif" alt="Light scheme secondary navigation used on a snippet of a light scheme page" width="482" height="200">
+    </uxdot-example>
+    <p>Use a light scheme secondary navigation in a light scheme environment and vice versa.</p>
+  </uxdot-best-practice>
+  <uxdot-best-practice  variant="dont"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block:var(--rh-space-2xl)}#container{display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl)}span{align-items:center;display:flex;flex-direction:row;font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xs);font-weight:var(--rh-font-weight-heading-medium);gap:var(--rh-space-md)}#do span{color:var(--rh-color-status-success)}#dont span{color:var(--rh-color-status-danger)}#caution{span{color:light-dark(var(--rh-color-yellow-60),var(--rh-color-status-warning-on-dark))}rh-icon{color:var(--rh-color-status-warning)}}::slotted(uxdot-example){margin:0!important}figure{margin:0!important}</style><!--lit-part /OqYtWIsZqM=-->
+      <figure id="container">
+        <slot name="image"></slot>
+        <!--lit-node 2--><figcaption id="dont">
+          <span><!--lit-node 4--><rh-icon    set="ui" size="md" icon="close-circle-fill" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part iKtDDm471k4=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm5.796 20.204c.438.44.438 1.152 0 1.592a1.122 1.122 0 0 1-1.592-.001L16 17.593l-4.204 4.204a1.122 1.122 0 0 1-1.592-.001 1.128 1.128 0 0 1 0-1.59L14.408 16l-4.204-4.204a1.126 1.126 0 0 1 1.592-1.592L16 14.408l4.204-4.204a1.126 1.126 0 0 1 1.592 1.592L17.592 16l4.204 4.204Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          Slotted content is used as a fallback in case the icon doesn't load
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon><!--lit-part-->Don&#39;t<!--/lit-part--></span>
+          <slot></slot>
+        </figcaption>
+      </figure>
+    <!--/lit-part--></template>
+    <uxdot-example   width-adjustment="482px" slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
+      <!--lit-node 0--><div id="container"
+           part="container"
+           class=" widthAdjustment "
+           style="--_width: 482px; --_alignment: center">
+        <slot></slot>
+      </div>
+    <!--/lit-part--></template>
+      <img src="../secondary-nav-best-practices-scheme-dont.avif" alt="Light scheme secondary navigation used on a snippet of a dark scheme page" width="482" height="200">
+    </uxdot-example>
+    <p>Do not use a light scheme secondary navigation in a dark environment and vice versa.</p>
+  </uxdot-best-practice>
+</div>
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
@@ -1843,21 +1945,70 @@
     <!--/lit-part--></template></rh-icon>
       </button>
     <!--/lit-part--></template>
-  <h3 id="content-overload" tabindex="-1">
-    <a href="#content-overload">Content overload</a><a>
+  <h3 id="number-of-slots" tabindex="-1">
+    <a href="#number-of-slots">Number of slots</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<p>Do not use too many links or menus in Slot 2.</p>
-<uxdot-example    color-palette="lightest" width-adjustment="872px" danger><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
+<uxdot-best-practice  variant="do"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block:var(--rh-space-2xl)}#container{display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl)}span{align-items:center;display:flex;flex-direction:row;font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xs);font-weight:var(--rh-font-weight-heading-medium);gap:var(--rh-space-md)}#do span{color:var(--rh-color-status-success)}#dont span{color:var(--rh-color-status-danger)}#caution{span{color:light-dark(var(--rh-color-yellow-60),var(--rh-color-status-warning-on-dark))}rh-icon{color:var(--rh-color-status-warning)}}::slotted(uxdot-example){margin:0!important}figure{margin:0!important}</style><!--lit-part /OqYtWIsZqM=-->
+      <figure id="container">
+        <slot name="image"></slot>
+        <!--lit-node 2--><figcaption id="do">
+          <span><!--lit-node 4--><rh-icon    set="ui" size="md" icon="check-circle-fill" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part dS1mROSl53E=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm7.795 12.796-8.646 8.646c-.317.317-.733.475-1.149.475s-.832-.158-1.149-.475l-4.646-4.646a1.126 1.126 0 0 1 1.59-1.592L14 19.41l8.205-8.205a1.124 1.124 0 1 1 1.59 1.592Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          Slotted content is used as a fallback in case the icon doesn't load
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon><!--lit-part-->Do<!--/lit-part--></span>
+          <slot></slot>
+        </figcaption>
+      </figure>
+    <!--/lit-part--></template>
+  <uxdot-example   width-adjustment="1012px" slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
       <!--lit-node 0--><div id="container"
            part="container"
            class=" widthAdjustment "
-           style="--_width: 872px; --_alignment: center">
+           style="--_width: 1012px; --_alignment: center">
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-  <img alt="Image of a secondary navigation with way more than five links and menus which is incorrect usage" src="../nav-secondary-best-practice-3.png" width="1000" height="98">
-</uxdot-example>
+    <img src="../secondary-nav-best-practices-slot-number-do.avif" alt="Secondary navigation with three slots" width="1012" height="79">
+  </uxdot-example>
+  <p>Three is the maximum number of slots for large screen sizes.</p>
+</uxdot-best-practice>
+<uxdot-best-practice  variant="dont"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block:var(--rh-space-2xl)}#container{display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl)}span{align-items:center;display:flex;flex-direction:row;font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xs);font-weight:var(--rh-font-weight-heading-medium);gap:var(--rh-space-md)}#do span{color:var(--rh-color-status-success)}#dont span{color:var(--rh-color-status-danger)}#caution{span{color:light-dark(var(--rh-color-yellow-60),var(--rh-color-status-warning-on-dark))}rh-icon{color:var(--rh-color-status-warning)}}::slotted(uxdot-example){margin:0!important}figure{margin:0!important}</style><!--lit-part /OqYtWIsZqM=-->
+      <figure id="container">
+        <slot name="image"></slot>
+        <!--lit-node 2--><figcaption id="dont">
+          <span><!--lit-node 4--><rh-icon    set="ui" size="md" icon="close-circle-fill" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="true"
+           class=" ui "><!--lit-part iKtDDm471k4=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm5.796 20.204c.438.44.438 1.152 0 1.592a1.122 1.122 0 0 1-1.592-.001L16 17.593l-4.204 4.204a1.122 1.122 0 0 1-1.592-.001 1.128 1.128 0 0 1 0-1.59L14.408 16l-4.204-4.204a1.126 1.126 0 0 1 1.592-1.592L16 14.408l4.204-4.204a1.126 1.126 0 0 1 1.592 1.592L17.592 16l4.204 4.204Z"/></svg><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" hidden><!--
+          Slotted content is used as a fallback in case the icon doesn't load
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon><!--lit-part-->Don&#39;t<!--/lit-part--></span>
+          <slot></slot>
+        </figcaption>
+      </figure>
+    <!--/lit-part--></template>
+  <uxdot-example   width-adjustment="1012px" slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
+      <!--lit-node 0--><div id="container"
+           part="container"
+           class=" widthAdjustment "
+           style="--_width: 1012px; --_alignment: center">
+        <slot></slot>
+      </div>
+    <!--/lit-part--></template>
+    <img src="../secondary-nav-best-practices-slot-number-dont.avif" alt="Secondary navigation with four slots" width="1012" height="79">
+  </uxdot-example>
+  <p>Do not display more slots than the three provided for large screen sizes.</p>
+</uxdot-best-practice>
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
@@ -1876,88 +2027,70 @@
     <!--/lit-part--></template></rh-icon>
       </button>
     <!--/lit-part--></template>
-  <h3 id="adding-slots" tabindex="-1">
-    <a href="#adding-slots">Adding slots</a><a>
+  <h3 id="number-of-navigation-items" tabindex="-1">
+    <a href="#number-of-navigation-items">Number of navigation items</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<p>Do not add more slots than provided, three is the maximum.</p>
-<uxdot-example    color-palette="lightest" width-adjustment="872px" danger><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
-      <!--lit-node 0--><div id="container"
-           part="container"
-           class=" widthAdjustment "
-           style="--_width: 872px; --_alignment: center">
-        <slot></slot>
-      </div>
-    <!--/lit-part--></template>
-  <img alt="Image of a secondary navigation with four dotted line boxes for slots which is incorrect usage" src="../nav-secondary-best-practice-4.png" width="1000" height="98">
-</uxdot-example>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button 
-              id="button"
-              aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+<uxdot-best-practice  variant="do"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block:var(--rh-space-2xl)}#container{display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl)}span{align-items:center;display:flex;flex-direction:row;font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xs);font-weight:var(--rh-font-weight-heading-medium);gap:var(--rh-space-md)}#do span{color:var(--rh-color-status-success)}#dont span{color:var(--rh-color-status-danger)}#caution{span{color:light-dark(var(--rh-color-yellow-60),var(--rh-color-status-warning-on-dark))}rh-icon{color:var(--rh-color-status-warning)}}::slotted(uxdot-example){margin:0!important}figure{margin:0!important}</style><!--lit-part /OqYtWIsZqM=-->
+      <figure id="container">
+        <slot name="image"></slot>
+        <!--lit-node 2--><figcaption id="do">
+          <span><!--lit-node 4--><rh-icon    set="ui" size="md" icon="check-circle-fill" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
-           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--
+           class=" ui "><!--lit-part dS1mROSl53E=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm7.795 12.796-8.646 8.646c-.317.317-.733.475-1.149.475s-.832-.158-1.149-.475l-4.646-4.646a1.126 1.126 0 0 1 1.59-1.592L14 19.41l8.205-8.205a1.124 1.124 0 1 1 1.59 1.592Z"/></svg><!--/lit-part--><!--
            Container for the fallback (i.e. slotted) content
         --><!--lit-node 3--><span part="fallback" hidden><!--
           Slotted content is used as a fallback in case the icon doesn't load
         --><slot></slot></span>
       </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
+    <!--/lit-part--></template></rh-icon><!--lit-part-->Do<!--/lit-part--></span>
+          <slot></slot>
+        </figcaption>
+      </figure>
     <!--/lit-part--></template>
-  <h3 id="slot-1-text-1" tabindex="-1">
-    <a href="#slot-1-text-1">Slot 1 text</a><a>
-  </a></h3>
-</uxdot-copy-permalink>
-<p>Slot 1 text should never break to three lines.</p>
-<uxdot-example    color-palette="lightest" width-adjustment="872px" danger><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
+  <uxdot-example   width-adjustment="837px" slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
       <!--lit-node 0--><div id="container"
            part="container"
            class=" widthAdjustment "
-           style="--_width: 872px; --_alignment: center">
+           style="--_width: 837px; --_alignment: center">
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-  <img src="../nav-secondary-best-practice-5.png" alt="Image of a secondary navigation, but the product name logo in slot 1 is three lines which is incorrect usage" width="1000" height="125">
-</uxdot-example>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button 
-              id="button"
-              aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+    <img src="../secondary-nav-best-practices-items-number-do.avif" alt="Secondary navigation with five items in the nav slot" width="837" height="86">
+  </uxdot-example>
+  <p>Display at least one navigation item in the <code>nav</code> slot and make sure that there are not too many. (A maximum of five items typically fits well.)</p>
+</uxdot-best-practice>
+<uxdot-best-practice  variant="dont"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;margin-block:var(--rh-space-2xl)}#container{display:flex;flex-direction:column;gap:var(--rh-space-2xl);margin-block:var(--rh-space-2xl)}span{align-items:center;display:flex;flex-direction:row;font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-xs);font-weight:var(--rh-font-weight-heading-medium);gap:var(--rh-space-md)}#do span{color:var(--rh-color-status-success)}#dont span{color:var(--rh-color-status-danger)}#caution{span{color:light-dark(var(--rh-color-yellow-60),var(--rh-color-status-warning-on-dark))}rh-icon{color:var(--rh-color-status-warning)}}::slotted(uxdot-example){margin:0!important}figure{margin:0!important}</style><!--lit-part /OqYtWIsZqM=-->
+      <figure id="container">
+        <slot name="image"></slot>
+        <!--lit-node 2--><figcaption id="dont">
+          <span><!--lit-node 4--><rh-icon    set="ui" size="md" icon="close-circle-fill" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
       <!--lit-node 0--><div id="container"
            aria-hidden="true"
-           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--
+           class=" ui "><!--lit-part iKtDDm471k4=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm5.796 20.204c.438.44.438 1.152 0 1.592a1.122 1.122 0 0 1-1.592-.001L16 17.593l-4.204 4.204a1.122 1.122 0 0 1-1.592-.001 1.128 1.128 0 0 1 0-1.59L14.408 16l-4.204-4.204a1.126 1.126 0 0 1 1.592-1.592L16 14.408l4.204-4.204a1.126 1.126 0 0 1 1.592 1.592L17.592 16l4.204 4.204Z"/></svg><!--/lit-part--><!--
            Container for the fallback (i.e. slotted) content
         --><!--lit-node 3--><span part="fallback" hidden><!--
           Slotted content is used as a fallback in case the icon doesn't load
         --><slot></slot></span>
       </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
+    <!--/lit-part--></template></rh-icon><!--lit-part-->Don&#39;t<!--/lit-part--></span>
+          <slot></slot>
+        </figcaption>
+      </figure>
     <!--/lit-part--></template>
-  <h3 id="missing-navigation" tabindex="-1">
-    <a href="#missing-navigation">Missing navigation</a><a>
-  </a></h3>
-</uxdot-copy-permalink>
-<p>At least one link or menu in Slot 2 must be visible.</p>
-<uxdot-example    color-palette="lightest" width-adjustment="872px" danger><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
+  <uxdot-example   width-adjustment="1025px" slot="image"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
       <!--lit-node 0--><div id="container"
            part="container"
            class=" widthAdjustment "
-           style="--_width: 872px; --_alignment: center">
+           style="--_width: 1025px; --_alignment: center">
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-  <img alt="Image of a secondary navigation with no links or menus in slot 2 which is incorrect usage" src="../nav-secondary-best-practice-6.png" width="1000" height="98">
-</uxdot-example>
-
+    <img src="../secondary-nav-best-practices-items-number-dont.avif" alt="Secondary navigation with seven items in the nav slot" width="1025" height="86">
+  </uxdot-example>
+  <p>Do not add too many navigation items in the <code>nav</code> slot.</p>
+</uxdot-best-practice>
 
       
 <uxdot-feedback><template shadowroot="open" shadowrootmode="open"><style>:host{container-name:host;container-type:inline-size;display:block;margin-block-start:var(--rh-space-5xl)}#container{display:grid;grid-template-columns:1fr;grid-gap:var(--rh-space-3xl);margin-block-end:var(--rh-space-3xl)}::slotted(h2),h2{font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-md)!important;font-weight:var(--rh-font-weight-heading-medium);line-height:var(--rh-line-height-heading);margin:var(--rh-space-2xl) 0!important}p{font-size:var(--rh-font-size-body-text-lg)}a{text-decoration:underline dashed 1px;text-decoration-color:light-dark(var(--rh-color-gray-50),var(--rh-color-gray-40));text-underline-offset:max(5px,.28em);transition:all .3s ease;&:focus-within,&:hover{text-decoration-color:inherit;text-underline-offset:max(6px,.33em)}}@container host (min-width: 576px){#container{grid-template-columns:1fr 1fr}}</style><!--lit-part 9jy8OEN+o7M=-->

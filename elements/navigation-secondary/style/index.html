@@ -980,79 +980,22 @@
     <a href="#anatomy">Anatomy</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<p>A secondary navigation is divided into three slots, it is not required to use all three slots.</p>
+<p>A secondary navigation is divided into three slots. It is not required to use all three slots.</p>
 <ul>
-<li>Slot 1 - includes primary elements like product logo text</li>
-<li>Slot 2 - includes secondary elements like links and menus</li>
-<li>Slot 3 - includes tertiary elements like a call to action (optional)</li>
+<li>Logo (<code>logo</code>) - includes primary elements, like a linked logo or a product name</li>
+<li>Navigation (<code>nav</code>) - includes navigation elements, such as inline links, menus, and external links</li>
+<li>Call to action (<code>cta</code>)  - includes a call to action, typically the default variant (optional)</li>
 </ul>
-<uxdot-example   color-palette="lightest" width-adjustment="872px"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
+<uxdot-example   color-palette="lightest" width-adjustment="992px"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
       <!--lit-node 0--><div id="container"
            part="container"
            class=" widthAdjustment "
-           style="--_width: 872px; --_alignment: center">
+           style="--_width: 992px; --_alignment: center">
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-  <img alt="Image of a gray secondary navigation background with dotted line boxes that say slot 1, slot 2, and slot 3 from left to right" src="../nav-secondary-style-slots.png" width="872" height="98">
+  <img alt="A secondary navigation featuring a logo, menu nav item, link, an external link, and a default call to action" src="../nav-secondary-style-slots.avif" width="992" height="116">
 </uxdot-example>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button 
-              id="button"
-              aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
-      <!--lit-node 0--><div id="container"
-           aria-hidden="true"
-           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--
-           Container for the fallback (i.e. slotted) content
-        --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
-        --><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
-    <!--/lit-part--></template>
-  <h3 id="using-slots" tabindex="-1">
-    <a href="#using-slots">Using slots</a><a>
-  </a></h3>
-</uxdot-copy-permalink>
-<p>Slots are defined areas where content can be inserted, each slot includes a specific type of content.</p>
-<rh-table><template shadowroot="open" shadowrootmode="open"><style>*{box-sizing:border-box}:host{color:var(--rh-color-text-primary);display:block;overflow:auto;position:relative;scrollbar-color:var(--_scrollbar-track-color) var(--_scrollbar-thumb-color);width:100%;--_scrollbar-size:0.625rem;--_scrollbar-thumb-color:var(--rh-color-gray-50,#707070);--_scrollbar-track-color:var(--rh-color-border-subtle);--_row-border:var(--rh-table-row-border,var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle-on-light,#c7c7c7));--_row-background-hover-color:light-dark(var(--rh-table-row-background-hover-color,rgba(from var(--rh-color-gray-40,#a3a3a3) r g b/0.1)),rgba(from var(--rh-color-white,#ffffff) r g b/0.1));--_column-background-hover-color:light-dark(var(--rh-table-column-background-hover-color,rgba(from var(--rh-color-blue-50,#0066cc) r g b/0.1)),rgba(from var(--rh-color-blue-70,#003366) r g b/0.3))}:host::-webkit-scrollbar{height:var(--_scrollbar-size);width:var(--_scrollbar-size)}:host::-webkit-scrollbar,:host::-webkit-scrollbar-track{background-color:var(--_scrollbar-track-color)}:host::-webkit-scrollbar-thumb{background-color:var(--_scrollbar-thumb-color)}[slot]{display:block}::slotted([slot=summary]){color:var(--rh-color-text-secondary);display:block;font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-style:italic;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-body-text,1.5);padding:var(--rh-space-xl,24px) var(--rh-space-lg,16px) 0 var(--rh-space-lg,16px)}</style><!--lit-part 2TLt9j2sbhA=-->
-      <div id="container" part="container">
-        <!-- an HTML table -->
-        <!--lit-node 2--><slot 
-              
-              
-              ></slot>
-        <!-- description of the data -->
-        <slot id="summary" name="summary"></slot>
-      </div>
-    <!--/lit-part--></template>
-<table>
-<thead>
-<tr>
-<th>Slot number</th>
-<th>Use case</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Slot 1</td>
-<td>Includes a linked logo or text that directs users to a main page or home page</td>
-</tr>
-<tr>
-<td>Slot 2</td>
-<td>Includes navigation elements like inline links, menus, and external links</td>
-</tr>
-<tr>
-<td>Slot 3</td>
-<td>May include interactive elements like a call to action</td>
-</tr>
-</tbody>
-</table>
-</rh-table>
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
@@ -1075,16 +1018,16 @@
     <a href="#slots-and-breakpoints">Slots and breakpoints</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<p>On small breakpoints, navigation elements in Slot 2 will collapse into an accordion within a menu. Optional elements in Slot 3 will be placed below the accordion or hidden completely.</p>
-<uxdot-example   color-palette="lightest" width-adjustment="872px"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
+<p>On small breakpoints, elements in the <code>nav</code> slot will collapse into an accordion within a menu (also called the <code>mobile-menu</code> slot). Optional elements in the <code>cta</code> slot will be placed below the accordion or hidden completely.</p>
+<uxdot-example   color-palette="lightest" width-adjustment="1012px"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
       <!--lit-node 0--><div id="container"
            part="container"
            class=" widthAdjustment "
-           style="--_width: 872px; --_alignment: center">
+           style="--_width: 1012px; --_alignment: center">
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-  <img alt="Image of four secondary navigations; two large ones and two small ones with dotted line boxes around each slot and labels that say slot 1, slot 2, and slot 3" src="../nav-secondary-style-slots-and-breakpoints.png" width="872" height="748">
+  <img alt="Three diagrams illustrating the responsiveness of secondary nav. The first shows a logo slot, nav slot, and cta slot. The second shows the tablet view with only the logo and mobile-menu slots. The third shows the nav and cta slots in the expanded mobile menu." src="../nav-secondary-style-slots-and-breakpoints.avif" width="1012" height="692">
 </uxdot-example>
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1130,11 +1073,11 @@
 <tbody>
 <tr>
 <td>Color - backdrop</td>
-<td>#151515</td>
+<td><code>--rh-color-gray-90</code></td>
 </tr>
 <tr>
 <td>Opacity - background</td>
-<td>50%</td>
+<td><code>--rh-opacity-80</code></td>
 </tr>
 </tbody>
 </table>
@@ -1161,9 +1104,7 @@
     <a href="#color-scheme">Color scheme</a><a>
   </a></h2>
 </uxdot-copy-permalink>
-<p><a id="theme"></a></p>
-<p>A secondary navigation is available in <code>lightest</code>, <code>lighter</code>, and <code>dark</code> color palettes.
-The lightest and lighter palettes includes a box shadow whereas the dark palette includes a gray bottom border.</p>
+<p>A secondary navigation is available in both light and dark schemes. The light scheme background includes a box shadow whereas the dark scheme background includes a gray bottom border.</p>
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
@@ -1186,52 +1127,17 @@ The lightest and lighter palettes includes a box shadow whereas the dark palette
     <a href="#light-scheme">Light scheme</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<p>The light secondary navigation should be used in environments with a lighter look and feel.
-The box shadow is always visible unless covered by an expanded menu.</p>
-<uxdot-example   color-palette="lightest" width-adjustment="872px"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
+<p>The light scheme secondary navigation should be used in environments with a lighter look and feel. The box shadow is always visible unless covered by an expanded menu.</p>
+<uxdot-example   color-palette="lightest" width-adjustment="837px"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
       <!--lit-node 0--><div id="container"
            part="container"
            class=" widthAdjustment "
-           style="--_width: 872px; --_alignment: center">
+           style="--_width: 837px; --_alignment: center">
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-  <img alt="Image of a light theme secondary navigation" src="../nav-secondary-style-theme-light.png" width="872" height="98">
+  <img alt="A light scheme secondary navigation with black text, light gray background, and slight box shadow" src="../nav-secondary-style-scheme-light.avif" width="837" height="86">
 </uxdot-example>
-<rh-table><template shadowroot="open" shadowrootmode="open"><style>*{box-sizing:border-box}:host{color:var(--rh-color-text-primary);display:block;overflow:auto;position:relative;scrollbar-color:var(--_scrollbar-track-color) var(--_scrollbar-thumb-color);width:100%;--_scrollbar-size:0.625rem;--_scrollbar-thumb-color:var(--rh-color-gray-50,#707070);--_scrollbar-track-color:var(--rh-color-border-subtle);--_row-border:var(--rh-table-row-border,var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle-on-light,#c7c7c7));--_row-background-hover-color:light-dark(var(--rh-table-row-background-hover-color,rgba(from var(--rh-color-gray-40,#a3a3a3) r g b/0.1)),rgba(from var(--rh-color-white,#ffffff) r g b/0.1));--_column-background-hover-color:light-dark(var(--rh-table-column-background-hover-color,rgba(from var(--rh-color-blue-50,#0066cc) r g b/0.1)),rgba(from var(--rh-color-blue-70,#003366) r g b/0.3))}:host::-webkit-scrollbar{height:var(--_scrollbar-size);width:var(--_scrollbar-size)}:host::-webkit-scrollbar,:host::-webkit-scrollbar-track{background-color:var(--_scrollbar-track-color)}:host::-webkit-scrollbar-thumb{background-color:var(--_scrollbar-thumb-color)}[slot]{display:block}::slotted([slot=summary]){color:var(--rh-color-text-secondary);display:block;font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-style:italic;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-body-text,1.5);padding:var(--rh-space-xl,24px) var(--rh-space-lg,16px) 0 var(--rh-space-lg,16px)}</style><!--lit-part 2TLt9j2sbhA=-->
-      <div id="container" part="container">
-        <!-- an HTML table -->
-        <!--lit-node 2--><slot 
-              
-              
-              ></slot>
-        <!-- description of the data -->
-        <slot id="summary" name="summary"></slot>
-      </div>
-    <!--/lit-part--></template>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Light theme</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Color - all text and chevron icons</td>
-<td>#151515</td>
-</tr>
-<tr>
-<td>Color - bar background</td>
-<td>#F2F2F2</td>
-</tr>
-<tr>
-<td>Box shadow - bar background</td>
-<td>0 2px 4px 0 rgba(21, 21, 21, 0.2)</td>
-</tr>
-</tbody>
-</table>
-</rh-table>
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
@@ -1250,55 +1156,21 @@ The box shadow is always visible unless covered by an expanded menu.</p>
     <!--/lit-part--></template></rh-icon>
       </button>
     <!--/lit-part--></template>
-  <h3 id="dark-theme" tabindex="-1">
-    <a href="#dark-theme">Dark theme</a><a>
+  <h3 id="dark-scheme" tabindex="-1">
+    <a href="#dark-scheme">Dark scheme</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<p>The dark theme secondary navigation should be used in environments with a darker look and feel. The gray bottom border is always visible unless covered by an expanded menu.</p>
-<uxdot-example   color-palette="darkest" width-adjustment="872px"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
+<p>The dark scheme secondary navigation should be used in environments with a darker look and feel. The gray bottom border is always visible unless covered by an expanded menu.</p>
+<uxdot-example   color-palette="darkest" width-adjustment="833px"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
       <!--lit-node 0--><div id="container"
            part="container"
            class=" widthAdjustment "
-           style="--_width: 872px; --_alignment: center">
+           style="--_width: 833px; --_alignment: center">
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-  <img alt="Image of a dark theme secondary navigation" src="../nav-secondary-style-theme-dark.png" width="872" height="98">
+  <img alt="A dark scheme secondary navigation with white text, a dark gray background, and a light gray bottom border" src="../nav-secondary-style-scheme-dark.avif" width="833" height="86">
 </uxdot-example>
-<rh-table><template shadowroot="open" shadowrootmode="open"><style>*{box-sizing:border-box}:host{color:var(--rh-color-text-primary);display:block;overflow:auto;position:relative;scrollbar-color:var(--_scrollbar-track-color) var(--_scrollbar-thumb-color);width:100%;--_scrollbar-size:0.625rem;--_scrollbar-thumb-color:var(--rh-color-gray-50,#707070);--_scrollbar-track-color:var(--rh-color-border-subtle);--_row-border:var(--rh-table-row-border,var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle-on-light,#c7c7c7));--_row-background-hover-color:light-dark(var(--rh-table-row-background-hover-color,rgba(from var(--rh-color-gray-40,#a3a3a3) r g b/0.1)),rgba(from var(--rh-color-white,#ffffff) r g b/0.1));--_column-background-hover-color:light-dark(var(--rh-table-column-background-hover-color,rgba(from var(--rh-color-blue-50,#0066cc) r g b/0.1)),rgba(from var(--rh-color-blue-70,#003366) r g b/0.3))}:host::-webkit-scrollbar{height:var(--_scrollbar-size);width:var(--_scrollbar-size)}:host::-webkit-scrollbar,:host::-webkit-scrollbar-track{background-color:var(--_scrollbar-track-color)}:host::-webkit-scrollbar-thumb{background-color:var(--_scrollbar-thumb-color)}[slot]{display:block}::slotted([slot=summary]){color:var(--rh-color-text-secondary);display:block;font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-style:italic;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-body-text,1.5);padding:var(--rh-space-xl,24px) var(--rh-space-lg,16px) 0 var(--rh-space-lg,16px)}</style><!--lit-part 2TLt9j2sbhA=-->
-      <div id="container" part="container">
-        <!-- an HTML table -->
-        <!--lit-node 2--><slot 
-              
-              
-              ></slot>
-        <!-- description of the data -->
-        <slot id="summary" name="summary"></slot>
-      </div>
-    <!--/lit-part--></template>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Dark theme</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Color - all text and chevron icons</td>
-<td>#FFFFFF</td>
-</tr>
-<tr>
-<td>Color - bar background</td>
-<td>#383838</td>
-</tr>
-<tr>
-<td>Box shadow - bar background</td>
-<td>#4D4D4D</td>
-</tr>
-</tbody>
-</table>
-</rh-table>
 <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
@@ -1321,16 +1193,16 @@ The box shadow is always visible unless covered by an expanded menu.</p>
     <a href="#configuration">Configuration</a><a>
   </a></h2>
 </uxdot-copy-permalink>
-<p>A secondary navigation spans the entire width of a browser window on all breakpoints. It has a fixed height of <code>86px</code> on large breakpoints and a fixed height of <code>80px</code> on small breakpoints even if Slot 1 text is only one line. Content in all slots is horizontally centered with the background.</p>
-<uxdot-example   color-palette="lightest" width-adjustment="872px"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
+<p>A secondary navigation spans the entire width of a browser window on all breakpoints. It has a fixed height of&nbsp;<code>86px</code>&nbsp;on large breakpoints and a fixed height of&nbsp;<code>80px</code>&nbsp;on small breakpoints even if the logo slot’s text is only one line. Content in all slots is horizontally centered with the background.</p>
+<uxdot-example   color-palette="lightest" width-adjustment="838px"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
       <!--lit-node 0--><div id="container"
            part="container"
            class=" widthAdjustment "
-           style="--_width: 872px; --_alignment: center">
+           style="--_width: 838px; --_alignment: center">
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-  <img alt="Image of a secondary navigation construction; several examples showing details like spacing, alignment, height, width, and more" src="../nav-secondary-style-configuration.png" width="872" height="802">
+  <img alt="A responsive secondary navigation, transitioning from a full desktop view with multiple links to a collapsed mobile menu." src="../nav-secondary-style-configuration.avif" width="838" height="930">
 </uxdot-example>
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1355,159 +1227,16 @@ The box shadow is always visible unless covered by an expanded menu.</p>
   </a></h3>
 </uxdot-copy-permalink>
 <p>An expandable menu includes content like text, links, calls to action, and more. The menu tab, panel, and backdrop have the same styles on all breakpoints.</p>
-<uxdot-example   color-palette="lightest" width-adjustment="872px"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
+<uxdot-example   color-palette="lightest" width-adjustment="837px"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
       <!--lit-node 0--><div id="container"
            part="container"
            class=" widthAdjustment "
-           style="--_width: 872px; --_alignment: center">
+           style="--_width: 837px; --_alignment: center">
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-  <img alt="Image of two stacked secondary navigations with menus expanded; one for large breakpoints and the other for small breakpoints" src="../nav-secondary-style-expandable-menu-styles.png" width="872" height="1125">
+  <img alt="Two diagrams: A desktop-size secondary nav with all nav items showing and a mobile menu view with nav items styled like accordions" src="../nav-secondary-style-expandable-menu-styles.avif" width="837" height="1105">
 </uxdot-example>
-<uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
-      <slot></slot>
-      <span id="signifier">(permalink)</span>
-      <!--lit-node 2--><button 
-              id="button"
-              aria-label="Copy link to clipboard">
-        <!--lit-node 3--><rh-icon   set="ui" icon="link" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
-      <!--lit-node 0--><div id="container"
-           aria-hidden="true"
-           class=" ui "><!--lit-part ySn0ZC4Axag=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.721 2.279c-3.034-3.035-7.97-3.034-11.003 0l-6.165 6.164c-3.034 3.034-3.034 7.97 0 11.004a8.525 8.525 0 0 0 1.982 1.438 1 1 0 0 0 .93-1.77 6.526 6.526 0 0 1-1.498-1.082 5.787 5.787 0 0 1 0-8.176l6.165-6.164c2.254-2.255 5.922-2.254 8.175 0s2.254 5.921 0 8.175l-3.405 3.405a1 1 0 1 0 1.415 1.414l3.404-3.405c3.034-3.034 3.034-7.97 0-11.003Z"/><path d="M17.465 11.115a1 1 0 0 0-.93 1.77 6.571 6.571 0 0 1 1.498 1.082 5.787 5.787 0 0 1 0 8.175l-6.165 6.165a5.787 5.787 0 0 1-8.175 0 5.787 5.787 0 0 1 0-8.175l3.404-3.405a1 1 0 1 0-1.414-1.414L2.28 18.718c-3.034 3.033-3.034 7.97 0 11.003 1.516 1.517 3.509 2.275 5.501 2.275s3.985-.758 5.502-2.275l6.165-6.165c3.033-3.033 3.033-7.97 0-11.003a8.525 8.525 0 0 0-1.982-1.438Z"/></svg><!--/lit-part--><!--
-           Container for the fallback (i.e. slotted) content
-        --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
-        --><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-      </button>
-    <!--/lit-part--></template>
-  <h3 id="slot-text-labels" tabindex="-1">
-    <a href="#slot-text-labels">Slot text labels</a><a>
-  </a></h3>
-</uxdot-copy-permalink>
-<p>Slot 1 and Slot 2 text elements have specific styles applied to them.</p>
-<rh-alert    state="info" ssr-hint-has-slotted-default ssr-hint-has-slotted="header"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;max-width:var(--_max-width,initial)}[hidden]{display:none!important}header{align-items:center;display:flex;justify-content:flex-start}.hasBody header{margin-block-end:var(--rh-space-xs,4px)}footer.hasActions{margin-block-start:var(--rh-space-lg,16px)}footer ::slotted([slot=actions]:not(rh-button[variant=link i])){background-color:initial!important;border:none!important;color:var(--rh-color-interactive-primary-default)!important;font-family:var(--_font-family)!important;font-size:var(--rh-font-size-body-text-sm,.875rem)!important;margin-inline-end:var(--rh-space-xl,24px)!important;padding:0!important}footer ::slotted([slot=actions]:focus){color:var(--rh-color-interactive-primary-hover)!important;text-decoration:underline!important}footer ::slotted([slot=actions]:hover){color:var(--rh-color-interactive-primary-hover)!important;cursor:pointer!important;text-decoration:underline!important}footer ::slotted(rh-button[variant=link i]){display:inline-block;translate:calc(var(--rh-space-lg, 16px)*-1)}#container{--_background-color:var(--rh-color-teal-10,#daf2f2);--_border-color:var(--rh-color-teal-50,#37a3a3);--_icon-color:var(--rh-color-teal-50,#37a3a3);background-color:var(--_background-color);border-color:var(--_border-color);border-block-end-color:#0000;border-inline-end-color:#0000;border-inline-start-color:#0000;border-style:solid;border-width:var(--rh-border-width-md,2px);box-shadow:var(--_box-shadow,none);display:grid;font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-body-text-sm,.875rem);font-weight:var(--rh-font-weight-body-text-regular,400);gap:var(--rh-space-xs,4px);grid-template-columns:min-content 1fr;line-height:var(--rh-line-height-body-text,1.5);padding:var(--rh-space-lg,16px);& header ::slotted(*){font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif)!important;font-size:var(--rh-font-size-body-text-sm,.875rem)!important;font-weight:var(--rh-font-weight-body-text-medium,500)!important;line-height:var(--rh-line-height-body-text,1.5)!important;margin:0!important}& header ::slotted(:is(h1,h2,h3,h4,h5,h6)){padding-block:2px var(--rh-space-xs,4px)!important}& #description{&>::slotted(*){font-size:var(--rh-font-size-body-text-sm,.875rem)!important;margin-block:0!important;padding:0!important}}}#container.neutral{--_border-color:var(--rh-color-status-neutral);--_icon-color:var(--rh-color-icon-status-neutral);--_background-color:var(--rh-color-surface-status-neutral)}#container.info{--_border-color:var(--rh-color-status-info);--_icon-color:var(--rh-color-icon-status-info);--_background-color:var(--rh-color-surface-status-info)}#container.success{--_border-color:var(--rh-color-status-success);--_icon-color:var(--rh-color-icon-status-success);--_background-color:var(--rh-color-surface-status-success)}#container.caution{--_border-color:var(--rh-color-status-caution);--_icon-color:var(--rh-color-icon-status-caution);--_background-color:var(--rh-color-surface-status-caution)}#container.warning{--_border-color:var(--rh-color-status-warning);--_icon-color:var(--rh-color-icon-status-warning);--_background-color:var(--rh-color-surface-status-warning)}#container.danger{--_border-color:var(--rh-color-status-danger);--_icon-color:var(--rh-color-icon-status-danger);--_background-color:var(--rh-color-surface-status-danger)}#container.toast{--_background-color:var(--rh-color-surface-lightest,#fff);--_max-width:550px;--_box-shadow:var(--rh-box-shadow-xl,0 8px 24px 3px #15151559)}#container.alternate{border-block-end-color:var(--_border-color);border-inline-end-color:var(--_border-color);border-inline-start-color:var(--_border-color)}#left-column,#middle-column{display:inline-block;vertical-align:top}#header-actions{margin-inline-end:var(--rh-space-xs,4px)}#header{color:var(--rh-color-text-primary);flex:1 1 auto}#icon{align-items:center;color:var(--_icon-color);display:flex;height:var(--rh-size-icon-02,24px);justify-content:center;width:var(--rh-size-icon-02,24px)}#close-button{background-color:initial;border:none;color:var(--rh-color-text-secondary);cursor:pointer;height:var(--rh-length-xl,24px);width:var(--rh-length-xl,24px)}#close-button:hover{color:var(--rh-color-text-primary)}</style><!--lit-part YXtSoMwur0U=-->
-      <!--lit-node 0--><rh-surface 
-                  
-                  
-                  
-                   id="container" role="alert" aria-hidden="false" color-palette="lightest" class=" hasBody light info inline " defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{background-color:var(--rh-color-surface);color:var(--rh-color-text-primary);display:block}</style><!--lit-part rmWB4uiS0UM=--><!--
-      The `<rh-surface>` element has a single anonymous slot which accepts any content and does not provide additional layout styling
-    --><!--lit-node 1--><slot id="slot" ></slot><!--/lit-part--></template>
-        <div id="left-column">
-          <!--lit-node 2--><rh-icon    id="icon" set="ui" icon="information-fill" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
-      <!--lit-node 0--><div id="container"
-           aria-hidden="true"
-           class=" ui "><!--lit-part biCFxPE5L4Y=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm1.25 23a1.25 1.25 0 1 1-2.5 0v-8a1.25 1.25 0 1 1 2.5 0v8ZM16 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z"/></svg><!--/lit-part--><!--
-           Container for the fallback (i.e. slotted) content
-        --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
-        --><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-        </div>
-        <div id="middle-column">
-          <!--lit-node 4--><header >
-            <div id="header">
-              <!-- Provide a header for the alert message. -->
-              <slot name="header"></slot>
-            </div><!--lit-part--><!--/lit-part-->
-          </header>
-          <div id="description">
-            <!-- Provide a description for the alert message -->
-            <slot></slot>
-          </div>
-          <!--lit-part 0c3PeeHD68k=--><!--lit-node 0--><footer class=" hasActions "
-                  >
-            <!-- Provide actions that the user can take for the alert -->
-            <slot name="actions"></slot>
-          </footer><!--/lit-part-->
-        </div>
-      </rh-surface>
-    <!--/lit-part--></template>
-  <h4 slot="header">Helpful Tip</h4>
-  <p>Slot 3 usually includes a Call to action. To see Call to action styles, visit the <a href="/elements/call-to-action">Call to action</a> page.</p>
-</rh-alert>
-<uxdot-example   color-palette="lightest" width-adjustment="872px"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
-      <!--lit-node 0--><div id="container"
-           part="container"
-           class=" widthAdjustment "
-           style="--_width: 872px; --_alignment: center">
-        <slot></slot>
-      </div>
-    <!--/lit-part--></template>
-  <img alt="Image of four stacked secondary navigations; two are light theme and two are dark theme, both with dotted line boxes and labels that say slot 1 and slot 2" src="../nav-secondary-style-text-labels.png" width="872" height="430">
-</uxdot-example>
-<rh-table><template shadowroot="open" shadowrootmode="open"><style>*{box-sizing:border-box}:host{color:var(--rh-color-text-primary);display:block;overflow:auto;position:relative;scrollbar-color:var(--_scrollbar-track-color) var(--_scrollbar-thumb-color);width:100%;--_scrollbar-size:0.625rem;--_scrollbar-thumb-color:var(--rh-color-gray-50,#707070);--_scrollbar-track-color:var(--rh-color-border-subtle);--_row-border:var(--rh-table-row-border,var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle-on-light,#c7c7c7));--_row-background-hover-color:light-dark(var(--rh-table-row-background-hover-color,rgba(from var(--rh-color-gray-40,#a3a3a3) r g b/0.1)),rgba(from var(--rh-color-white,#ffffff) r g b/0.1));--_column-background-hover-color:light-dark(var(--rh-table-column-background-hover-color,rgba(from var(--rh-color-blue-50,#0066cc) r g b/0.1)),rgba(from var(--rh-color-blue-70,#003366) r g b/0.3))}:host::-webkit-scrollbar{height:var(--_scrollbar-size);width:var(--_scrollbar-size)}:host::-webkit-scrollbar,:host::-webkit-scrollbar-track{background-color:var(--_scrollbar-track-color)}:host::-webkit-scrollbar-thumb{background-color:var(--_scrollbar-thumb-color)}[slot]{display:block}::slotted([slot=summary]){color:var(--rh-color-text-secondary);display:block;font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-style:italic;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-body-text,1.5);padding:var(--rh-space-xl,24px) var(--rh-space-lg,16px) 0 var(--rh-space-lg,16px)}</style><!--lit-part 2TLt9j2sbhA=-->
-      <div id="container" part="container">
-        <!-- an HTML table -->
-        <!--lit-node 2--><slot 
-              
-              
-              ></slot>
-        <!-- description of the data -->
-        <slot id="summary" name="summary"></slot>
-      </div>
-    <!--/lit-part--></template>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Large breakpoints</th>
-<th>Small breakpoints</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Slot 1 - font family</td>
-<td>Red Hat Display</td>
-<td>Red Hat Display</td>
-</tr>
-<tr>
-<td>Slot 1 - font size</td>
-<td>18px<br>1.125rem</td>
-<td>16px<br>1.0rem</td>
-</tr>
-<tr>
-<td>Slot 1 - font weight</td>
-<td>Medium</td>
-<td>Medium</td>
-</tr>
-<tr>
-<td>Slot 1 - line height</td>
-<td>1.5 (27)</td>
-<td>1.5 (24)</td>
-</tr>
-<tr>
-<td>Slot 1 - letter spacing</td>
-<td>0.4px<br>0.025rem</td>
-<td>0.4px<br>0.025rem</td>
-</tr>
-<tr>
-<td>Slot 2 - font family</td>
-<td>Red Hat Text</td>
-<td>Red Hat Text</td>
-</tr>
-<tr>
-<td>Slot 2 - font size</td>
-<td>16px<br>1.0rem</td>
-<td>16px<br>1.0rem</td>
-</tr>
-<tr>
-<td>Slot 2 - font weight</td>
-<td>Regular</td>
-<td>Regular</td>
-</tr>
-<tr>
-<td>Slot 2 - line height</td>
-<td>1.5 (24)</td>
-<td>1.5 (24)</td>
-</tr>
-</tbody>
-</table>
-</rh-table>
 <uxdot-copy-permalink  class="h2"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
@@ -1553,15 +1282,15 @@ The box shadow is always visible unless covered by an expanded menu.</p>
     <a href="#large-breakpoints">Large breakpoints</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<uxdot-example   color-palette="lightest" width-adjustment="872px"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
+<uxdot-example   color-palette="lightest" width-adjustment="992px"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
       <!--lit-node 0--><div id="container"
            part="container"
            class=" widthAdjustment "
-           style="--_width: 872px; --_alignment: center">
+           style="--_width: 992px; --_alignment: center">
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-  <img alt="Image of secondary navigation spacing values on large breakpoints" src="../nav-secondary-space-breakpoints-large.png" width="1000" height="582">
+  <img alt="Image of secondary navigation spacing values on large breakpoints" src="../nav-secondary-space-breakpoints-large.avif" width="992" height="416">
 </uxdot-example>
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
@@ -1585,15 +1314,15 @@ The box shadow is always visible unless covered by an expanded menu.</p>
     <a href="#small-breakpoints">Small breakpoints</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<uxdot-example   color-palette="lightest" width-adjustment="872px"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
+<uxdot-example   color-palette="lightest" width-adjustment="984px"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
       <!--lit-node 0--><div id="container"
            part="container"
            class=" widthAdjustment "
-           style="--_width: 872px; --_alignment: center">
+           style="--_width: 984px; --_alignment: center">
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-  <img alt="Image of secondary navigation spacing values on small breakpoints" src="../nav-secondary-space-breakpoints-small.png" width="984" height="714">
+  <img alt="Image of secondary navigation spacing values on small breakpoints" src="../nav-secondary-space-breakpoints-small.avif" width="984" height="554">
 </uxdot-example>
 <p><uxdot-spacer-tokens-table  tokens="md, lg, 2xl"><template shadowroot="open" shadowrootmode="open"><style>samp:not(.swatch){&.space{align-items:center;aspect-ratio:1/1;color:var(--samp-space-color,var(--rh-color-text-primary-on-light));display:flex;font-size:var(--rh-font-size-body-text-xs);justify-content:center;outline:var(--rh-border-width-sm) dashed var(--samp-space-color,var(--rh-color-surface-darkest));position:relative;width:var(--samp-space-size);& span{align-items:center;display:flex;justify-content:center;line-height:1rem;min-height:100%}&:before{aspect-ratio:1/1;background-color:var(--samp-space-color,var(--rh-color-surface-darkest));content:"";opacity:.125;position:absolute;width:var(--samp-space-size);z-index:-1}& span.offset{left:calc(var(--samp-space-size) + 2px);position:absolute}&.xs:before{opacity:1}&.sm{color:#c58c00;&:before{opacity:1}}&.md{color:#51a549}}&.length{background-color:var(--rh-color-surface-darkest);border-bottom:2px solid var(--rh-color-border-strong-on-light);display:block;opacity:var(--rh-opacity-60);position:relative;width:var(--samp-length-size);&:after,&:before{border-color:var(--rh-color-border-interactive-on-light);border-inline-width:var(--rh-border-width-md) 0;border-style:solid;content:" ";display:block;height:var(--rh-length-xs);inset-block:calc(var(--rh-length-xs)*-1);position:absolute;width:0}&:before{inset-inline:-2px 100%}&:after{inset-inline:100% 2px}}&.icon{aspect-ratio:1;border:var(--rh-border-width-md) dotted var(--rh-color-border-strong);display:block;width:var(--samp-icon-size)}&.font{font-family:var(--samp-font-family,var(--rh-font-family-body-text));font-size:var(--samp-font-size,var(--rh-font-size-body-text-md));font-weight:var(--samp-font-weight,var(--rh-font-weight-body-text-regular));&.heading{font-family:var(--rh-font-family-heading);font-size:var(--samp-font-size,var(--rh-font-size-heading-md))}&.code{font-family:var(--rh-font-family-code)}}&.color{color:var(--samp-color);&:not(.border,.text){aspect-ratio:1;background:var(--samp-color);border:1px solid #0000;border-radius:100%;display:block;height:var(--rh-length-xl)}&:not(.border,.text,.dark){border-color:var(--rh-color-border-strong-on-light)}}&.line-height{line-height:var(--samp-line-height)}&.box-shadow{aspect-ratio:1;border-radius:var(--rh-border-radius-default);box-shadow:var(--samp-box-shadow);display:block;height:var(--rh-length-2xl)}&.border{aspect-ratio:2;border-color:var(--samp-color,var(--rh-color-border-strong-on-light));border-radius:var(--samp-radius,var(--rh-border-radius-default));border-style:solid;border-width:var(--samp-space-size,var(--rh-border-width-md));display:block;width:var(--rh-length-2xl);&.sm{border-width:var(--samp-space-size,var(--rh-border-width-sm))}&.md{border-width:var(--samp-space-size,var(--rh-border-width-md))}&.lg{border-width:var(--samp-space-size,var(--rh-border-width-lg))}}&.opacity{aspect-ratio:1;background-color:#000;display:block;opacity:var(--samp-opacity);width:var(--rh-length-xl)}&.breakpoint img{max-height:var(--rh-length-3xl)}}samp.swatch{border-color:oklch(from var(--swatch-color) calc(l + var(--_offset)) c h);border-radius:var(--rh-border-radius-pill);border-style:solid;border-width:var(--rh-border-width-sm);display:inline;padding:var(--rh-space-xs) var(--rh-space-md);position:relative;width:max-content;& span{display:block;inset-block-end:4px;line-height:1;width:max-content}&.color{background-color:var(--swatch-color);font-family:var(--rh-font-family-body-text);font-size:var(--rh-font-size-body-text-sm);transition-duration:var(--rh-animation-speed);transition-property:background-color,border-color;transition-timing-function:var(--rh-animation-timing);&.isLight{color:var(--rh-color-text-primary-on-light)}&.isDark{color:var(--rh-color-text-primary-on-dark)}}&.font{border-radius:var(--rh-border-radius-default);color:var(--swatch-color);font-size:var(--rh-font-size-heading-lg);font-weight:var(--rh-font-weight-heading-bold);padding:var(--rh-space-sm) var(--rh-space-md);transition:color var(--rh-animation-speed) var(--rh-animation-timing);& span:last-child{font-size:var(--rh-font-size-body-text-md)}}&.border{border-color:var(--swatch-color);border-width:var(--rh-border-width-lg)}&.icon{align-items:center;display:inline-flex;gap:var(--rh-space-xs);& rh-icon{color:var(--swatch-color)}}}</style><!--lit-part 6n21eKkknWs=-->
       <!-- TODO: remove lightdom after implementing auto-load-->
@@ -1985,74 +1714,26 @@ The box shadow is always visible unless covered by an expanded menu.</p>
     <a href="#hover">Hover</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<uxdot-example   color-palette="lightest" width-adjustment="872px"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
+<uxdot-example   color-palette="lightest" width-adjustment="992px"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
       <!--lit-node 0--><div id="container"
            part="container"
            class=" widthAdjustment "
-           style="--_width: 872px; --_alignment: center">
+           style="--_width: 992px; --_alignment: center">
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-  <img alt="Image of light theme secondary navigation hover states" src="../nav-secondary-interaction-state-hover-theme-light.png" width="872" height="238">
+  <img alt="Image of light scheme secondary navigation hover states" src="../nav-secondary-interaction-state-hover-scheme-light.avif" width="992" height="244">
 </uxdot-example>
-<uxdot-example   color-palette="darkest" width-adjustment="872px"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
+<uxdot-example   color-palette="darkest" width-adjustment="992px"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
       <!--lit-node 0--><div id="container"
            part="container"
            class=" widthAdjustment "
-           style="--_width: 872px; --_alignment: center">
+           style="--_width: 992px; --_alignment: center">
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-  <img alt="Image of dark theme secondary navigation hover states" src="../nav-secondary-interaction-state-hover-theme-dark.png" width="872" height="238">
+  <img alt="Image of dark scheme secondary navigation hover states" src="../nav-secondary-interaction-state-hover-scheme-dark.avif" width="992" height="245">
 </uxdot-example>
-<rh-table><template shadowroot="open" shadowrootmode="open"><style>*{box-sizing:border-box}:host{color:var(--rh-color-text-primary);display:block;overflow:auto;position:relative;scrollbar-color:var(--_scrollbar-track-color) var(--_scrollbar-thumb-color);width:100%;--_scrollbar-size:0.625rem;--_scrollbar-thumb-color:var(--rh-color-gray-50,#707070);--_scrollbar-track-color:var(--rh-color-border-subtle);--_row-border:var(--rh-table-row-border,var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle-on-light,#c7c7c7));--_row-background-hover-color:light-dark(var(--rh-table-row-background-hover-color,rgba(from var(--rh-color-gray-40,#a3a3a3) r g b/0.1)),rgba(from var(--rh-color-white,#ffffff) r g b/0.1));--_column-background-hover-color:light-dark(var(--rh-table-column-background-hover-color,rgba(from var(--rh-color-blue-50,#0066cc) r g b/0.1)),rgba(from var(--rh-color-blue-70,#003366) r g b/0.3))}:host::-webkit-scrollbar{height:var(--_scrollbar-size);width:var(--_scrollbar-size)}:host::-webkit-scrollbar,:host::-webkit-scrollbar-track{background-color:var(--_scrollbar-track-color)}:host::-webkit-scrollbar-thumb{background-color:var(--_scrollbar-thumb-color)}[slot]{display:block}::slotted([slot=summary]){color:var(--rh-color-text-secondary);display:block;font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-style:italic;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-body-text,1.5);padding:var(--rh-space-xl,24px) var(--rh-space-lg,16px) 0 var(--rh-space-lg,16px)}</style><!--lit-part 2TLt9j2sbhA=-->
-      <div id="container" part="container">
-        <!-- an HTML table -->
-        <!--lit-node 2--><slot 
-              
-              
-              ></slot>
-        <!-- description of the data -->
-        <slot id="summary" name="summary"></slot>
-      </div>
-    <!--/lit-part--></template>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Light theme</th>
-<th>Dark theme</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Color - Slot 1 text</td>
-<td>#4D4D4D</td>
-<td>#C7C7C7</td>
-</tr>
-<tr>
-<td>Color - Slot 2 top border</td>
-<td>#EE0000</td>
-<td>#FF542E</td>
-</tr>
-<tr>
-<td>Border width - Slot 2 top border</td>
-<td>4px</td>
-<td>4px</td>
-</tr>
-<tr>
-<td>Color - call to action text</td>
-<td>#004080</td>
-<td>#BEE1F4</td>
-</tr>
-<tr>
-<td>Color - menu tab background</td>
-<td>#FFFFFF</td>
-<td>#151515</td>
-</tr>
-</tbody>
-</table>
-</rh-table>
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
@@ -2075,96 +1756,26 @@ The box shadow is always visible unless covered by an expanded menu.</p>
     <a href="#focus">Focus</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<rh-alert    state="info" ssr-hint-has-slotted-default ssr-hint-has-slotted="header"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;max-width:var(--_max-width,initial)}[hidden]{display:none!important}header{align-items:center;display:flex;justify-content:flex-start}.hasBody header{margin-block-end:var(--rh-space-xs,4px)}footer.hasActions{margin-block-start:var(--rh-space-lg,16px)}footer ::slotted([slot=actions]:not(rh-button[variant=link i])){background-color:initial!important;border:none!important;color:var(--rh-color-interactive-primary-default)!important;font-family:var(--_font-family)!important;font-size:var(--rh-font-size-body-text-sm,.875rem)!important;margin-inline-end:var(--rh-space-xl,24px)!important;padding:0!important}footer ::slotted([slot=actions]:focus){color:var(--rh-color-interactive-primary-hover)!important;text-decoration:underline!important}footer ::slotted([slot=actions]:hover){color:var(--rh-color-interactive-primary-hover)!important;cursor:pointer!important;text-decoration:underline!important}footer ::slotted(rh-button[variant=link i]){display:inline-block;translate:calc(var(--rh-space-lg, 16px)*-1)}#container{--_background-color:var(--rh-color-teal-10,#daf2f2);--_border-color:var(--rh-color-teal-50,#37a3a3);--_icon-color:var(--rh-color-teal-50,#37a3a3);background-color:var(--_background-color);border-color:var(--_border-color);border-block-end-color:#0000;border-inline-end-color:#0000;border-inline-start-color:#0000;border-style:solid;border-width:var(--rh-border-width-md,2px);box-shadow:var(--_box-shadow,none);display:grid;font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-body-text-sm,.875rem);font-weight:var(--rh-font-weight-body-text-regular,400);gap:var(--rh-space-xs,4px);grid-template-columns:min-content 1fr;line-height:var(--rh-line-height-body-text,1.5);padding:var(--rh-space-lg,16px);& header ::slotted(*){font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif)!important;font-size:var(--rh-font-size-body-text-sm,.875rem)!important;font-weight:var(--rh-font-weight-body-text-medium,500)!important;line-height:var(--rh-line-height-body-text,1.5)!important;margin:0!important}& header ::slotted(:is(h1,h2,h3,h4,h5,h6)){padding-block:2px var(--rh-space-xs,4px)!important}& #description{&>::slotted(*){font-size:var(--rh-font-size-body-text-sm,.875rem)!important;margin-block:0!important;padding:0!important}}}#container.neutral{--_border-color:var(--rh-color-status-neutral);--_icon-color:var(--rh-color-icon-status-neutral);--_background-color:var(--rh-color-surface-status-neutral)}#container.info{--_border-color:var(--rh-color-status-info);--_icon-color:var(--rh-color-icon-status-info);--_background-color:var(--rh-color-surface-status-info)}#container.success{--_border-color:var(--rh-color-status-success);--_icon-color:var(--rh-color-icon-status-success);--_background-color:var(--rh-color-surface-status-success)}#container.caution{--_border-color:var(--rh-color-status-caution);--_icon-color:var(--rh-color-icon-status-caution);--_background-color:var(--rh-color-surface-status-caution)}#container.warning{--_border-color:var(--rh-color-status-warning);--_icon-color:var(--rh-color-icon-status-warning);--_background-color:var(--rh-color-surface-status-warning)}#container.danger{--_border-color:var(--rh-color-status-danger);--_icon-color:var(--rh-color-icon-status-danger);--_background-color:var(--rh-color-surface-status-danger)}#container.toast{--_background-color:var(--rh-color-surface-lightest,#fff);--_max-width:550px;--_box-shadow:var(--rh-box-shadow-xl,0 8px 24px 3px #15151559)}#container.alternate{border-block-end-color:var(--_border-color);border-inline-end-color:var(--_border-color);border-inline-start-color:var(--_border-color)}#left-column,#middle-column{display:inline-block;vertical-align:top}#header-actions{margin-inline-end:var(--rh-space-xs,4px)}#header{color:var(--rh-color-text-primary);flex:1 1 auto}#icon{align-items:center;color:var(--_icon-color);display:flex;height:var(--rh-size-icon-02,24px);justify-content:center;width:var(--rh-size-icon-02,24px)}#close-button{background-color:initial;border:none;color:var(--rh-color-text-secondary);cursor:pointer;height:var(--rh-length-xl,24px);width:var(--rh-length-xl,24px)}#close-button:hover{color:var(--rh-color-text-primary)}</style><!--lit-part YXtSoMwur0U=-->
-      <!--lit-node 0--><rh-surface 
-                  
-                  
-                  
-                   id="container" role="alert" aria-hidden="false" color-palette="lightest" class=" hasBody light info inline " defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{background-color:var(--rh-color-surface);color:var(--rh-color-text-primary);display:block}</style><!--lit-part rmWB4uiS0UM=--><!--
-      The `<rh-surface>` element has a single anonymous slot which accepts any content and does not provide additional layout styling
-    --><!--lit-node 1--><slot id="slot" ></slot><!--/lit-part--></template>
-        <div id="left-column">
-          <!--lit-node 2--><rh-icon    id="icon" set="ui" icon="information-fill" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
-      <!--lit-node 0--><div id="container"
-           aria-hidden="true"
-           class=" ui "><!--lit-part biCFxPE5L4Y=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm1.25 23a1.25 1.25 0 1 1-2.5 0v-8a1.25 1.25 0 1 1 2.5 0v8ZM16 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z"/></svg><!--/lit-part--><!--
-           Container for the fallback (i.e. slotted) content
-        --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
-        --><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-        </div>
-        <div id="middle-column">
-          <!--lit-node 4--><header >
-            <div id="header">
-              <!-- Provide a header for the alert message. -->
-              <slot name="header"></slot>
-            </div><!--lit-part--><!--/lit-part-->
-          </header>
-          <div id="description">
-            <!-- Provide a description for the alert message -->
-            <slot></slot>
-          </div>
-          <!--lit-part 0c3PeeHD68k=--><!--lit-node 0--><footer class=" hasActions "
-                  >
-            <!-- Provide actions that the user can take for the alert -->
-            <slot name="actions"></slot>
-          </footer><!--/lit-part-->
-        </div>
-      </rh-surface>
-    <!--/lit-part--></template>
-  <h4 slot="header">Helpful Tip</h4>
-  <p>The Focus state has the same styles as the Hover state.</p> 
-</rh-alert>
-<uxdot-example   color-palette="lightest" width-adjustment="872px"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
+<uxdot-example   color-palette="lightest" width-adjustment="992px"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
       <!--lit-node 0--><div id="container"
            part="container"
            class=" widthAdjustment "
-           style="--_width: 872px; --_alignment: center">
+           style="--_width: 992px; --_alignment: center">
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-  <img alt="Image of light theme secondary navigation focus states" src="../nav-secondary-interaction-state-focus-theme-light.png" width="872" height="212">
+  <img alt="Image of light scheme secondary navigation focus states" src="../nav-secondary-interaction-state-focus-scheme-light.avif" width="992" height="244">
 </uxdot-example>
-<uxdot-example   color-palette="darkest" width-adjustment="872px"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
+<uxdot-example   color-palette="darkest" width-adjustment="992px"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
       <!--lit-node 0--><div id="container"
            part="container"
            class=" widthAdjustment "
-           style="--_width: 872px; --_alignment: center">
+           style="--_width: 992px; --_alignment: center">
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-  <img alt="Image of dark theme secondary navigation focus states" src="../nav-secondary-interaction-state-focus-theme-dark.png" width="872" height="212">
+  <img alt="Image of dark scheme secondary navigation focus states" src="../nav-secondary-interaction-state-focus-scheme-dark.avif" width="992" height="245">
 </uxdot-example>
-<rh-table><template shadowroot="open" shadowrootmode="open"><style>*{box-sizing:border-box}:host{color:var(--rh-color-text-primary);display:block;overflow:auto;position:relative;scrollbar-color:var(--_scrollbar-track-color) var(--_scrollbar-thumb-color);width:100%;--_scrollbar-size:0.625rem;--_scrollbar-thumb-color:var(--rh-color-gray-50,#707070);--_scrollbar-track-color:var(--rh-color-border-subtle);--_row-border:var(--rh-table-row-border,var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle-on-light,#c7c7c7));--_row-background-hover-color:light-dark(var(--rh-table-row-background-hover-color,rgba(from var(--rh-color-gray-40,#a3a3a3) r g b/0.1)),rgba(from var(--rh-color-white,#ffffff) r g b/0.1));--_column-background-hover-color:light-dark(var(--rh-table-column-background-hover-color,rgba(from var(--rh-color-blue-50,#0066cc) r g b/0.1)),rgba(from var(--rh-color-blue-70,#003366) r g b/0.3))}:host::-webkit-scrollbar{height:var(--_scrollbar-size);width:var(--_scrollbar-size)}:host::-webkit-scrollbar,:host::-webkit-scrollbar-track{background-color:var(--_scrollbar-track-color)}:host::-webkit-scrollbar-thumb{background-color:var(--_scrollbar-thumb-color)}[slot]{display:block}::slotted([slot=summary]){color:var(--rh-color-text-secondary);display:block;font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-style:italic;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-body-text,1.5);padding:var(--rh-space-xl,24px) var(--rh-space-lg,16px) 0 var(--rh-space-lg,16px)}</style><!--lit-part 2TLt9j2sbhA=-->
-      <div id="container" part="container">
-        <!-- an HTML table -->
-        <!--lit-node 2--><slot 
-              
-              
-              ></slot>
-        <!-- description of the data -->
-        <slot id="summary" name="summary"></slot>
-      </div>
-    <!--/lit-part--></template>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Light theme</th>
-<th>Dark theme</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Color - focus ring</td>
-<td>#0066CC</td>
-<td>#73BCF7</td>
-</tr>
-</tbody>
-</table>
-</rh-table>
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
@@ -2187,97 +1798,26 @@ The box shadow is always visible unless covered by an expanded menu.</p>
     <a href="#active">Active</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<rh-alert    state="info" ssr-hint-has-slotted-default ssr-hint-has-slotted="header"><template shadowroot="open" shadowrootmode="open"><style>:host{display:block;max-width:var(--_max-width,initial)}[hidden]{display:none!important}header{align-items:center;display:flex;justify-content:flex-start}.hasBody header{margin-block-end:var(--rh-space-xs,4px)}footer.hasActions{margin-block-start:var(--rh-space-lg,16px)}footer ::slotted([slot=actions]:not(rh-button[variant=link i])){background-color:initial!important;border:none!important;color:var(--rh-color-interactive-primary-default)!important;font-family:var(--_font-family)!important;font-size:var(--rh-font-size-body-text-sm,.875rem)!important;margin-inline-end:var(--rh-space-xl,24px)!important;padding:0!important}footer ::slotted([slot=actions]:focus){color:var(--rh-color-interactive-primary-hover)!important;text-decoration:underline!important}footer ::slotted([slot=actions]:hover){color:var(--rh-color-interactive-primary-hover)!important;cursor:pointer!important;text-decoration:underline!important}footer ::slotted(rh-button[variant=link i]){display:inline-block;translate:calc(var(--rh-space-lg, 16px)*-1)}#container{--_background-color:var(--rh-color-teal-10,#daf2f2);--_border-color:var(--rh-color-teal-50,#37a3a3);--_icon-color:var(--rh-color-teal-50,#37a3a3);background-color:var(--_background-color);border-color:var(--_border-color);border-block-end-color:#0000;border-inline-end-color:#0000;border-inline-start-color:#0000;border-style:solid;border-width:var(--rh-border-width-md,2px);box-shadow:var(--_box-shadow,none);display:grid;font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-body-text-sm,.875rem);font-weight:var(--rh-font-weight-body-text-regular,400);gap:var(--rh-space-xs,4px);grid-template-columns:min-content 1fr;line-height:var(--rh-line-height-body-text,1.5);padding:var(--rh-space-lg,16px);& header ::slotted(*){font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif)!important;font-size:var(--rh-font-size-body-text-sm,.875rem)!important;font-weight:var(--rh-font-weight-body-text-medium,500)!important;line-height:var(--rh-line-height-body-text,1.5)!important;margin:0!important}& header ::slotted(:is(h1,h2,h3,h4,h5,h6)){padding-block:2px var(--rh-space-xs,4px)!important}& #description{&>::slotted(*){font-size:var(--rh-font-size-body-text-sm,.875rem)!important;margin-block:0!important;padding:0!important}}}#container.neutral{--_border-color:var(--rh-color-status-neutral);--_icon-color:var(--rh-color-icon-status-neutral);--_background-color:var(--rh-color-surface-status-neutral)}#container.info{--_border-color:var(--rh-color-status-info);--_icon-color:var(--rh-color-icon-status-info);--_background-color:var(--rh-color-surface-status-info)}#container.success{--_border-color:var(--rh-color-status-success);--_icon-color:var(--rh-color-icon-status-success);--_background-color:var(--rh-color-surface-status-success)}#container.caution{--_border-color:var(--rh-color-status-caution);--_icon-color:var(--rh-color-icon-status-caution);--_background-color:var(--rh-color-surface-status-caution)}#container.warning{--_border-color:var(--rh-color-status-warning);--_icon-color:var(--rh-color-icon-status-warning);--_background-color:var(--rh-color-surface-status-warning)}#container.danger{--_border-color:var(--rh-color-status-danger);--_icon-color:var(--rh-color-icon-status-danger);--_background-color:var(--rh-color-surface-status-danger)}#container.toast{--_background-color:var(--rh-color-surface-lightest,#fff);--_max-width:550px;--_box-shadow:var(--rh-box-shadow-xl,0 8px 24px 3px #15151559)}#container.alternate{border-block-end-color:var(--_border-color);border-inline-end-color:var(--_border-color);border-inline-start-color:var(--_border-color)}#left-column,#middle-column{display:inline-block;vertical-align:top}#header-actions{margin-inline-end:var(--rh-space-xs,4px)}#header{color:var(--rh-color-text-primary);flex:1 1 auto}#icon{align-items:center;color:var(--_icon-color);display:flex;height:var(--rh-size-icon-02,24px);justify-content:center;width:var(--rh-size-icon-02,24px)}#close-button{background-color:initial;border:none;color:var(--rh-color-text-secondary);cursor:pointer;height:var(--rh-length-xl,24px);width:var(--rh-length-xl,24px)}#close-button:hover{color:var(--rh-color-text-primary)}</style><!--lit-part YXtSoMwur0U=-->
-      <!--lit-node 0--><rh-surface 
-                  
-                  
-                  
-                   id="container" role="alert" aria-hidden="false" color-palette="lightest" class=" hasBody light info inline " defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{background-color:var(--rh-color-surface);color:var(--rh-color-text-primary);display:block}</style><!--lit-part rmWB4uiS0UM=--><!--
-      The `<rh-surface>` element has a single anonymous slot which accepts any content and does not provide additional layout styling
-    --><!--lit-node 1--><slot id="slot" ></slot><!--/lit-part--></template>
-        <div id="left-column">
-          <!--lit-node 2--><rh-icon    id="icon" set="ui" icon="information-fill" defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
-      <!--lit-node 0--><div id="container"
-           aria-hidden="true"
-           class=" ui "><!--lit-part biCFxPE5L4Y=--><!-- © Red Hat, Inc. CC-BY-4.0 licensed --><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M16 0C7.178 0 0 7.178 0 16s7.178 16 16 16 16-7.178 16-16S24.822 0 16 0Zm1.25 23a1.25 1.25 0 1 1-2.5 0v-8a1.25 1.25 0 1 1 2.5 0v8ZM16 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z"/></svg><!--/lit-part--><!--
-           Container for the fallback (i.e. slotted) content
-        --><!--lit-node 3--><span part="fallback" hidden><!--
-          Slotted content is used as a fallback in case the icon doesn't load
-        --><slot></slot></span>
-      </div>
-    <!--/lit-part--></template></rh-icon>
-        </div>
-        <div id="middle-column">
-          <!--lit-node 4--><header >
-            <div id="header">
-              <!-- Provide a header for the alert message. -->
-              <slot name="header"></slot>
-            </div><!--lit-part--><!--/lit-part-->
-          </header>
-          <div id="description">
-            <!-- Provide a description for the alert message -->
-            <slot></slot>
-          </div>
-          <!--lit-part 0c3PeeHD68k=--><!--lit-node 0--><footer class=" hasActions "
-                  >
-            <!-- Provide actions that the user can take for the alert -->
-            <slot name="actions"></slot>
-          </footer><!--/lit-part-->
-        </div>
-      </rh-surface>
-    <!--/lit-part--></template>
-  <h4 slot="header">Helpful Tip</h4>
-  <p>The Active state has the same styles as the Hover state.</p>
-</rh-alert>
-<uxdot-example   color-palette="lightest" width-adjustment="872px"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
+<uxdot-example   color-palette="lightest" width-adjustment="992px"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
       <!--lit-node 0--><div id="container"
            part="container"
            class=" widthAdjustment "
-           style="--_width: 872px; --_alignment: center">
+           style="--_width: 992px; --_alignment: center">
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-  <img alt="Image of light theme secondary navigation active states" src="../nav-secondary-interaction-state-active-theme-light.png" width="872" height="212">
+  <img alt="Image of light scheme secondary navigation active states" src="../nav-secondary-interaction-state-active-scheme-light.avif" width="992" height="244">
 </uxdot-example>
-<uxdot-example   color-palette="darkest" width-adjustment="872px"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
+<uxdot-example   color-palette="darkest" width-adjustment="992px"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
       <!--lit-node 0--><div id="container"
            part="container"
            class=" widthAdjustment "
-           style="--_width: 872px; --_alignment: center">
+           style="--_width: 992px; --_alignment: center">
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-  <img alt="Image of dark theme secondary navigation active states" src="../nav-secondary-interaction-state-active-theme-dark.png" width="872" height="212">
+  <img alt="Image of dark scheme secondary navigation active states" src="../nav-secondary-interaction-state-active-scheme-dark.avif" width="992" height="245">
 </uxdot-example>
-<rh-table><template shadowroot="open" shadowrootmode="open"><style>*{box-sizing:border-box}:host{color:var(--rh-color-text-primary);display:block;overflow:auto;position:relative;scrollbar-color:var(--_scrollbar-track-color) var(--_scrollbar-thumb-color);width:100%;--_scrollbar-size:0.625rem;--_scrollbar-thumb-color:var(--rh-color-gray-50,#707070);--_scrollbar-track-color:var(--rh-color-border-subtle);--_row-border:var(--rh-table-row-border,var(--rh-border-width-sm,1px) solid var(--rh-color-border-subtle-on-light,#c7c7c7));--_row-background-hover-color:light-dark(var(--rh-table-row-background-hover-color,rgba(from var(--rh-color-gray-40,#a3a3a3) r g b/0.1)),rgba(from var(--rh-color-white,#ffffff) r g b/0.1));--_column-background-hover-color:light-dark(var(--rh-table-column-background-hover-color,rgba(from var(--rh-color-blue-50,#0066cc) r g b/0.1)),rgba(from var(--rh-color-blue-70,#003366) r g b/0.3))}:host::-webkit-scrollbar{height:var(--_scrollbar-size);width:var(--_scrollbar-size)}:host::-webkit-scrollbar,:host::-webkit-scrollbar-track{background-color:var(--_scrollbar-track-color)}:host::-webkit-scrollbar-thumb{background-color:var(--_scrollbar-thumb-color)}[slot]{display:block}::slotted([slot=summary]){color:var(--rh-color-text-secondary);display:block;font-family:var(--rh-font-family-body-text,RedHatText,"Red Hat Text",Helvetica,Arial,sans-serif);font-size:var(--rh-font-size-body-text-md,1rem);font-style:italic;font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-body-text,1.5);padding:var(--rh-space-xl,24px) var(--rh-space-lg,16px) 0 var(--rh-space-lg,16px)}</style><!--lit-part 2TLt9j2sbhA=-->
-      <div id="container" part="container">
-        <!-- an HTML table -->
-        <!--lit-node 2--><slot 
-              
-              
-              ></slot>
-        <!-- description of the data -->
-        <slot id="summary" name="summary"></slot>
-      </div>
-    <!--/lit-part--></template>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Light theme</th>
-<th>Dark theme</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Color - focus ring</td>
-<td>#0066CC</td>
-<td>#73BCF7</td>
-</tr>
-</tbody>
-</table>
-</rh-table>
-
 
       
 <uxdot-feedback><template shadowroot="open" shadowrootmode="open"><style>:host{container-name:host;container-type:inline-size;display:block;margin-block-start:var(--rh-space-5xl)}#container{display:grid;grid-template-columns:1fr;grid-gap:var(--rh-space-3xl);margin-block-end:var(--rh-space-3xl)}::slotted(h2),h2{font-family:var(--rh-font-family-heading);font-size:var(--rh-font-size-heading-md)!important;font-weight:var(--rh-font-weight-heading-medium);line-height:var(--rh-line-height-heading);margin:var(--rh-space-2xl) 0!important}p{font-size:var(--rh-font-size-body-text-lg)}a{text-decoration:underline dashed 1px;text-decoration-color:light-dark(var(--rh-color-gray-50),var(--rh-color-gray-40));text-underline-offset:max(5px,.28em);transition:all .3s ease;&:focus-within,&:hover{text-decoration-color:inherit;text-underline-offset:max(6px,.33em)}}@container host (min-width: 576px){#container{grid-template-columns:1fr 1fr}}</style><!--lit-part 9jy8OEN+o7M=-->

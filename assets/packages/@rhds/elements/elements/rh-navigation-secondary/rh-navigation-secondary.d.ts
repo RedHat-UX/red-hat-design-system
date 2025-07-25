@@ -11,7 +11,7 @@ export declare class SecondaryNavOverlayChangeEvent extends ComposedEvent {
     constructor(open: boolean, toggle: HTMLElement);
 }
 /**
- * The Secondary navigation is used to connect a series of pages together. It displays wayfinding content and links relevant to the page it is placed on. It should be used in conjunction with the [primary navigation](../navigation-primary).
+ * The secondary navigation is used to connect a series of pages together. It displays wayfinding content and links relevant to the page it is placed on. It should be used in conjunction with the [primary navigation](../navigation-primary).
  *
  * @summary Propagates related content across a series of pages
  *
