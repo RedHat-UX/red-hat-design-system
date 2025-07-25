@@ -313,7 +313,7 @@ As breakpoints get smaller, the nav slot will collapse into an accordion within 
 
 <uxdot-best-practice variant="dont">
   <uxdot-example width-adjustment="1025px" slot="image">
-    <img src="../secondary-nav-best-practices-items-number-do.avif"
+    <img src="../secondary-nav-best-practices-items-number-dont.avif"
           alt="Secondary navigation with seven items in the nav slot"
           width="1025"
           height="86">
