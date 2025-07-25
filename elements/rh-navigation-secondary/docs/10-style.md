@@ -52,7 +52,7 @@ The light scheme secondary navigation should be used in environments with a ligh
 
 <uxdot-example color-palette="lightest" width-adjustment="837px">
   <img alt="A light scheme secondary navigation with black text, light gray background, and slight box shadow"
-       src="../nav-secondary-style-sceme-light.avif"
+       src="../nav-secondary-style-scheme-light.avif"
        width="837"
        height="86">
 </uxdot-example>
