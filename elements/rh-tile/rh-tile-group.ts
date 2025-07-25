@@ -7,18 +7,19 @@ import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
-
 import { RhTile, TileSelectEvent } from './rh-tile.js';
+
+import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-tile-group.css';
 
 /**
  * A group of `<rh-tile>` elements which handles radio selection.
- * @slot - Put one or more `rh-tile` elements in this slot
  */
 @customElement('rh-tile-group')
+@colorPalettes
+@themable
 export class RhTileGroup extends LitElement {
   static readonly styles = [styles];
 
@@ -40,13 +41,7 @@ export class RhTileGroup extends LitElement {
    *
    * Tile group always resets its context to `base`, unless explicitly provided with a `color-palette`.
    */
-  @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
-
-  /**
-   * Sets color theme based on parent context
-   */
-  @colorContextConsumer() private on?: ColorTheme;
 
   #tiles: RhTile[] = [];
 
@@ -105,9 +100,10 @@ export class RhTileGroup extends LitElement {
   }
 
   render() {
-    const { on = '', radio } = this;
+    const { radio } = this;
     return html`
-      <slot class="${classMap({ [on]: !!on, radio })}"></slot>
+      <!-- Put one or more \`rh-tile\` elements in this slot -->
+      <slot class="${classMap({ radio })}"></slot>
     `;
   }
 

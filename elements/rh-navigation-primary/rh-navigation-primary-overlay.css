@@ -1,0 +1,17 @@
+:host {
+  position: fixed;
+  background-color: rgb(from var(--rh-color-gray-90, #1f1f1f) r g b / var(--rh-opacity-80, 80%));
+  inset: 0;
+  inline-size: 100dvw;
+  block-size: 100dvh;
+  /* stylelint-disable-next-line rhds/no-unknown-token-name */
+  z-index: var(--rh-overlay-z-index, 1);
+}
+
+:host([open]) {
+  display: block;
+}
+
+:host(:not([open])) {
+  display: none;
+}

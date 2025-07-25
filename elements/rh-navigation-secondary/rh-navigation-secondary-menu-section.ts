@@ -1,4 +1,4 @@
-import { html, LitElement } from 'lit';
+import { html, isServer, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
@@ -11,10 +11,6 @@ import styles from './rh-navigation-secondary-menu-section.css';
 /**
  * A menu section which auto upgrades accessibility for headers and sibling list
  * @summary 'A menu section which auto upgrades accessibility for headers and sibling list'
- * @slot header     - Adds a header tag to section, expects `<h1> | <h2> | <h3> | <h4> | <h5> | <h6>` element
- * @slot links      - Adds a ul tag to section, expects `<ul> | <ol>` element
- * @slot cta        - Adds a section level CTA, expects `<rh-cta>` element
- * @csspart container    - container, <section> element
  */
 @customElement('rh-navigation-secondary-menu-section')
 export class RhNavigationSecondaryMenuSection extends LitElement {
@@ -24,15 +20,20 @@ export class RhNavigationSecondaryMenuSection extends LitElement {
 
   connectedCallback(): void {
     super.connectedCallback();
-
-    this.#updateAccessibility();
+    if (!isServer) {
+      this.#updateAccessibility();
+    }
   }
 
   render() {
     return html`
+      <!-- container, <section> element -->
       <section part="container">
+        <!-- Adds a header tag to section, expects \`<h1> | <h2> | <h3> | <h4> | <h5> | <h6>\` element -->
         <slot name="header"></slot>
+        <!-- Adds a ul tag to section, expects \`<ul> | <ol>\` element -->
         <slot name="links"></slot>
+        <!-- Adds a section level CTA, expects \`<rh-cta>\` element -->
         <slot name="cta"></slot>
       </section>
     `;

@@ -7,8 +7,7 @@ import { InternalsController } from '@patternfly/pfe-core/controllers/internals-
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
-import { DirController } from '../../lib/DirController.js';
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-switch.css';
 
@@ -17,13 +16,12 @@ import '@rhds/elements/rh-icon/rh-icon.js';
 /**
  * A switch toggles the state of a setting (between on and off). Switches and checkboxes can often be used interchangeably, but the switch provides a more explicit, visible representation on a setting.
  * @summary  A switch toggles the state of a setting (between on and off).
- * @cssprop --rh-switch-unchecked - The background color of the switch when it is unchecked.
- * @cssprop --rh-switch-checked - The background color of the switch when it is checked.
- * @cssprop --rh-switch-disabled - The background color of the switch when it is disabled.
- * @slot message-on - message content when checked. Overrides the `message-on` attribute.
- * @slot message-off - message content when unchecked. Overrides the `message-off` attribute.
+ *
+ * @alias switch
+ *
  */
 @customElement('rh-switch')
+@themable
 export class RhSwitch extends LitElement {
   static readonly styles = [styles];
 
@@ -50,13 +48,9 @@ export class RhSwitch extends LitElement {
   /** If the switch is reversed: message first, then control */
   @property({ reflect: true, type: Boolean }) reversed = false;
 
-  @colorContextConsumer() private on?: ColorTheme;
-
   #internals = InternalsController.of(this, { role: 'switch' });
 
   #slots = new SlotController(this, null, 'message-on', 'message-off');
-
-  #dir = new DirController(this);
 
   get #message() {
     return this.checked ? this.messageOn : this.messageOff;
@@ -85,7 +79,7 @@ export class RhSwitch extends LitElement {
     const noMessageOn = this.#slots.isEmpty('message-on');
     const noMessageOff = this.#slots.isEmpty('message-off');
     if (noMessageOn || noMessageOff) {
-      if ('ariaDescription' in ElementInternals) {
+      if ('ariaDescription' in (globalThis.ElementInternals ?? {})) {
         this.#internals.ariaDescription = this.#message ?? '';
       } else {
         this.setAttribute('aria-description', this.#message ?? '');
@@ -96,7 +90,7 @@ export class RhSwitch extends LitElement {
       for (const el of stateEls) {
         el.id ||= getRandomId('rh-switch-message');
       }
-      if ('ariaDescribedByElements' in ElementInternals) {
+      if ('ariaDescribedByElements' in (globalThis.ElementInternals ?? {})) {
         // see https://w3c.github.io/aria/#dom-ariamixin
         this.#internals.ariaDescribedByElements = stateEls;
       } else {
@@ -106,15 +100,16 @@ export class RhSwitch extends LitElement {
   }
 
   render() {
-    const rtl = this.#dir.dir === 'rtl';
-    const { on = 'light', reversed, checked } = this;
+    const { reversed, checked } = this;
     const slots = html`
+      <!-- message content when checked. Overrides the \`message-on\` attribute. -->
       <slot class="message" name="message-on" ?hidden="${!this.checked}"><span aria-hidden="true">${this.messageOn}</span></slot>
+      <!-- message content when unchecked. Overrides the \`message-off\` attribute. -->
       <slot class="message" name="message-off" ?hidden="${this.checked}"><span aria-hidden="true">${this.messageOff}</span></slot>`;
     return html`
       <div id="container"
            part="container"
-           class="${classMap({ checked, on: true, [on]: true, rtl })}">
+           class="${classMap({ checked })}">
         ${reversed ? slots : ''}
         <div id="switch"
              part="switch">

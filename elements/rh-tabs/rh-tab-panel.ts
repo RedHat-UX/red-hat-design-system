@@ -1,26 +1,18 @@
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
-import { classMap } from 'lit/directives/class-map.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-tab-panel.css';
 
 /**
  * The tab panel for use within a rh-tabs element, must be paired with a rh-tab.
- *
- * @slot - Panel content should follow guidelines for [tab panel content layout](../guidelines)
- *
  */
 @customElement('rh-tab-panel')
+@themable
 export class RhTabPanel extends LitElement {
   static readonly styles = [styles];
-
-  /**
-   * Sets color theme based on parent context
-   */
-  @colorContextConsumer() private on?: ColorTheme;
 
   #internals = this.attachInternals();
 
@@ -43,9 +35,9 @@ export class RhTabPanel extends LitElement {
   }
 
   render() {
-    const { on = 'light' } = this;
     return html`
-      <div id="container" class="${classMap({ on: true, [on]: true })}">
+      <div id="container">
+        <!-- Panel content should follow guidelines for [tab panel content layout](../guidelines) -->
         <slot></slot>
       </div>
     `;

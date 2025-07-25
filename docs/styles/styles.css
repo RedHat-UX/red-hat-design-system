@@ -18,6 +18,7 @@
 @import url('reset.css') layer(reset);
 @import url('fonts.css') layer(fonts);
 @import url('/assets/packages/@rhds/tokens/css/global.css') layer(tokens);
+@import url('/assets/packages/@rhds/tokens/css/default-theme.css') layer(tokens);
 @import url('typography.css') layer(typography);
 @import url('grid.css') layer(grid);
 @import url('lightdom.css') layer(lightdom);
@@ -38,10 +39,21 @@
 
   a {
     color: var(--rh-color-interactive-primary-default);
-    &:hover { color: var(--rh-color-interactive-primary-hover); }
+    text-decoration: underline dashed 1px;
+    text-decoration-color: light-dark(var(--rh-color-gray-50), var(--rh-color-gray-40));
+    text-underline-offset: max(5px, 0.28em);
+    transition: ease all 0.3s;
+
+    &:hover {
+      color: var(--rh-color-interactive-primary-hover);
+      text-decoration-color: inherit;
+      text-underline-offset: max(6px, 0.33em);
+    }
 
     &:focus-within {
       color: var(--rh-color-interactive-primary-focus);
+      text-decoration-color: inherit;
+      text-underline-offset: max(6px, 0.33em);
       &:hover { color: var(--rh-color-interactive-primary-focus); }
     }
 
@@ -103,18 +115,20 @@
     grid-template-areas: 'header' 'nav' 'main' 'footer';
   }
 
-  /* stylelint-disable rhds/token-values */
+  #main,
+  uxdot-sidenav {
+    --rh-color-surface:
+      light-dark(var(--rh-color-surface-lightest),
+        var(--rh-color-surface-darker));
+  }
+
   #main {
     grid-area: main;
-    border-inline-start:
-      var(--rh-border-width-sm)
-      solid
-      var(--rh-color-border-subtle, var(--rh-color-border-subtle-on-light));
+    border-inline-start: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
     container-type: inline-size;
     container-name: main;
     padding-block-start: var(--uxdot-masthead-max-height);
   }
-  /* stylelint-enable rhds/token-values */
 
   .container {
     padding-inline: var(--rh-space-lg);
@@ -202,14 +216,10 @@
     margin-block-end: 0;
   }
 
-  rh-alert + uxdot-example {
-    margin-block-start: var(--rh-space-2xl);
-  }
-
-  rh-alert + .grid {
-    margin-block-start: var(--rh-space-2xl);
-  }
-
+  rh-alert + .grid,
+  rh-alert + uxdot-example,
+  rh-alert + rh-code-block,
+  rh-code-block + rh-alert,
   rh-cta + uxdot-example {
     margin-block-start: var(--rh-space-2xl);
   }
@@ -244,7 +254,9 @@
 
   :where(code:not([class^='language-'])) {
     padding-inline: var(--rh-space-xs);
-    background: oklch(from var(--rh-color-surface) calc(l - 0.05) c h);
+    background:
+      light-dark(oklch(from var(--rh-color-surface) calc(l - 0.05) c h),
+        oklch(from var(--rh-color-surface) calc(l + 0.1) c h));
     border-radius: var(--rh-border-radius-default);
     font-size: var(--rh-font-size-code-md);
     font-weight: var(--rh-font-weight-code-regular);
@@ -262,7 +274,8 @@
   :where(kbd) {
     --_uxdot-kbd-color-border: var(--rh-color-border-subtle);
 
-    background-color: var(--rh-color-surface-lightest);
+    background-color: light-dark(var(--rh-color-surface-lightest), var(--rh-color-surface-darkest));
+    color: var(--rh-color-text-primary);
     border-radius: var(--rh-border-radius-default);
     border: var(--rh-border-width-sm) solid var(--_uxdot-kbd-color-border);
     box-shadow: 0 2px 0 1px var(--_uxdot-kbd-color-border);

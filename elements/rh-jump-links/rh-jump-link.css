@@ -1,0 +1,95 @@
+:host {
+  display: block;
+  position: relative;
+  width: max-content;
+}
+
+a {
+  color: var(--rh-color-interactive-secondary-default);
+  text-decoration: none;
+  display: inline-block;
+  box-sizing: border-box;
+  white-space: normal;
+  overflow-wrap: break-word;
+
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+  }
+
+  &.vertical {
+    padding-block: var(--rh-space-md, 8px);
+    padding-inline:
+      calc(var(--rh-space-lg, 16px) + var(--_padding-inline-start, 0px))
+      var(--rh-space-lg, 16px);
+    border-inline-start: var(--_bdr);
+
+    /** max-width for each vertical jump link */
+    max-width: var(--rh-jump-link-max-width, calc(var(--rh-length-md, 8px) * 40));
+  }
+
+  &.horizontal {
+    padding: var(--rh-space-lg, 16px);
+    white-space: nowrap;
+  }
+
+  &:hover {
+    color: var(--rh-color-text-primary);
+  }
+
+  &:focus { color: var(--rh-color-text-primary); }
+
+  &:focus-visible {
+    outline: none;
+
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      inset: 0;
+      border: 2px solid var(--rh-color-interactive-primary-default);
+      border-radius: var(--rh-border-radius-default, 3px);
+    }
+  }
+
+  &:hover,
+  &:focus-visible {
+    --_bdr-c: var(--rh-color-border-status-neutral);
+  }
+
+  &.active {
+    color: var(--rh-color-text-primary);
+
+    --_bdr-c: var(--rh-color-brand-red);
+  }
+
+  &:focus-visible,
+  &:hover,
+  &.active {
+    &.vertical:before {
+      height: 100%;
+      inset-inline-start: 0;
+      inset-block: 0;
+      border-inline-start:
+        var(--_active_bdr,
+          var(--rh-border-width-lg, 3px)
+          solid
+          var(--_bdr-c, var(--rh-color-border-status-neutral)));
+    }
+
+    &.horizontal:before {
+      width: 100%;
+      inset-block-start: 0;
+      inset-inline: 0;
+      border-block-start:
+        var(--rh-border-width-lg, 3px)
+        solid
+        var(--_bdr-c, var(--rh-color-border-status-neutral));
+    }
+  }
+}
+
+:host([slot]) a.vertical {
+  border-inline-start: none;
+}

@@ -59,20 +59,14 @@ export default async function(eleventyConfig: UserConfig) {
   eleventyConfig.watchIgnores?.add('elements/*/test/');
   eleventyConfig.watchIgnores?.add('lib/elements/*/test/');
   eleventyConfig.watchIgnores?.add('**/*.tsbuildinfo');
-  eleventyConfig.addPassthroughCopy('docs/patterns/**/*.{svg,jpg,jpeg,png}');
-  eleventyConfig.addPassthroughCopy('elements/*/demo/**/*.{svg,jpg,jpeg,png}');
+  eleventyConfig.addPassthroughCopy('docs/**/*.{svg,jpg,jpeg,png,webp,avif}');
+  eleventyConfig.addPassthroughCopy('elements/*/demo/**/*.{svg,jpg,jpeg,png,webp,avif}');
   eleventyConfig.addPassthroughCopy('docs/CNAME');
   eleventyConfig.addPassthroughCopy('docs/.nojekyll');
   eleventyConfig.addPassthroughCopy('docs/robots.txt');
   eleventyConfig.addPassthroughCopy('docs/assets/**/*');
   eleventyConfig.addPassthroughCopy('docs/styles/**/*');
   eleventyConfig.addPassthroughCopy('docs/**/*.{css,js}');
-
-  if (isLocal) {
-    eleventyConfig.addPassthroughCopy({
-      'node_modules/playground-elements/playground-*worker*': '.',
-    });
-  }
 
   eleventyConfig.addWatchTarget('docs/styles/');
   eleventyConfig.addWatchTarget('docs/**/*.md');
@@ -112,13 +106,13 @@ export default async function(eleventyConfig: UserConfig) {
         '@rhds/tokens/': '/assets/packages/@rhds/tokens/js/',
         '@rhds/elements/lib/': '/assets/packages/@rhds/elements/lib/',
         '@rhds/elements/': '/assets/packages/@rhds/elements/elements/',
+        '@rhds/icons': '/assets/packages/@rhds/icons/icons.js',
         '@rhds/icons/': '/assets/packages/@rhds/icons/',
         '@rhds/icons/icons.js': '/assets/packages/@rhds/icons/icons.js',
         '@patternfly/elements/': '/assets/packages/@patternfly/elements/',
         '@patternfly/icons/': '/assets/packages/@patternfly/icons/',
         '@patternfly/pfe-core/': '/assets/packages/@patternfly/pfe-core/',
         '@uxdot/elements/': '/assets/packages/@uxdot/elements/',
-        'playground-elements': 'https://cdn.jsdelivr.net/npm/playground-elements@0.19.1/+esm',
       },
     },
     localPackages: [
@@ -134,8 +128,8 @@ export default async function(eleventyConfig: UserConfig) {
       '@rhds/tokens',
       '@rhds/tokens/media.js',
       '@rhds/tokens/meta.js',
-      '@rhds/tokens/css/color-context-provider.css.js',
-      '@rhds/tokens/css/color-context-consumer.css.js',
+      '@rhds/tokens/css/default-theme.css.js',
+      '@rhds/tokens/css/color-palette.css.js',
       '@rhds/icons/',
       '@rhds/icons/microns/',
       '@rhds/icons/social/',
@@ -202,25 +196,59 @@ export default async function(eleventyConfig: UserConfig) {
   await eleventyConfig.addPlugin(RHDSPlugin, {
     tsconfig: './tsconfig.settings.json',
     componentModules: [
-      'elements/rh-button/rh-button.ts',
-      'elements/rh-icon/rh-icon.ts',
-      'elements/rh-surface/rh-surface.ts',
-      'elements/rh-code-block/rh-code-block.ts',
-      'elements/rh-table/rh-table.ts',
       'elements/rh-accordion/rh-accordion.ts',
+      'elements/rh-alert/rh-alert.ts',
+      'elements/rh-announcement/rh-announcement.ts',
+      'elements/rh-avatar/rh-avatar.ts',
+      'elements/rh-back-to-top/rh-back-to-top.ts',
+      'elements/rh-badge/rh-badge.ts',
+      'elements/rh-blockquote/rh-blockquote.ts',
+      'elements/rh-breadcrumb/rh-breadcrumb.ts',
+      'elements/rh-button/rh-button.ts',
+      'elements/rh-card/rh-card.ts',
+      'elements/rh-chip/rh-chip.ts',
+      'elements/rh-code-block/rh-code-block.ts',
       'elements/rh-cta/rh-cta.ts',
+      'elements/rh-dialog/rh-dialog.ts',
+      'elements/rh-disclosure/rh-disclosure.ts',
+      'elements/rh-footer/rh-footer-copyright.ts',
       'elements/rh-footer/rh-footer-universal.ts',
+      'elements/rh-health-index/rh-health-index.ts',
+      'elements/rh-icon/rh-icon.ts',
+      'elements/rh-jump-links/rh-jump-link.ts',
+      'elements/rh-jump-links/rh-jump-links-list.ts',
+      'elements/rh-jump-links/rh-jump-links.ts',
+      'elements/rh-navigation-primary/rh-navigation-primary-item-menu.ts',
+      'elements/rh-navigation-primary/rh-navigation-primary-item.ts',
+      'elements/rh-navigation-primary/rh-navigation-primary-overlay.ts',
+      'elements/rh-navigation-primary/rh-navigation-primary.ts',
+      'elements/rh-navigation-secondary/rh-navigation-secondary.ts',
+      'elements/rh-pagination/rh-pagination.ts',
+      'elements/rh-site-status/rh-site-status.ts',
       'elements/rh-skip-link/rh-skip-link.ts',
+      'elements/rh-spinner/rh-spinner.ts',
+      'elements/rh-stat/rh-stat.ts',
       'elements/rh-subnav/rh-subnav.ts',
+      'elements/rh-surface/rh-surface.ts',
+      'elements/rh-switch/rh-switch.ts',
+      'elements/rh-table/rh-sort-button.ts',
+      'elements/rh-table/rh-table.ts',
+      'elements/rh-tabs/rh-tab-panel.ts',
+      'elements/rh-tabs/rh-tab.ts',
+      'elements/rh-tabs/rh-tabs.ts',
       'elements/rh-tag/rh-tag.ts',
+      'elements/rh-tile/rh-tile.ts',
+      'elements/rh-tooltip/rh-tooltip.ts',
+      'elements/rh-video-embed/rh-video-embed.ts',
+      'lib/elements/rh-context-picker/rh-context-picker.ts',
       'uxdot/uxdot-best-practice.ts',
+      'uxdot/uxdot-color-scheme-picker.ts',
       'uxdot/uxdot-copy-button.ts',
       'uxdot/uxdot-copy-permalink.ts',
+      'uxdot/uxdot-demo.ts',
       'uxdot/uxdot-example.ts',
       'uxdot/uxdot-feedback.ts',
       'uxdot/uxdot-header.ts',
-      'uxdot/uxdot-hero.ts',
-      'uxdot/uxdot-installation-tabs.ts',
       'uxdot/uxdot-masthead.ts',
       'uxdot/uxdot-pattern.ts',
       'uxdot/uxdot-repo-status-checklist.ts',
@@ -229,6 +257,28 @@ export default async function(eleventyConfig: UserConfig) {
       'uxdot/uxdot-sidenav.ts',
       'uxdot/uxdot-spacer-tokens-table.ts',
       'uxdot/uxdot-toc.ts',
+
+      // still not working nicely with ssr
+      // 'elements/rh-audio-player/rh-audio-player.ts',
+      // 'elements/rh-footer/rh-footer.ts',
+    ],
+    slotControllerElements: [
+      'rh-alert',
+      'rh-announcement',
+      'rh-audio-player',
+      'rh-audio-player-subscribe',
+      'rh-transcript',
+      'rh-card',
+      'rh-code-block',
+      'rh-dialog',
+      'rh-footer',
+      'rh-footer-universal',
+      'rh-stat',
+      'rh-switch',
+      'rh-tab',
+      'rh-tag',
+      'rh-tile',
+      'rh-video-embed',
     ],
     tagsToAlphabetize: [
       'component',

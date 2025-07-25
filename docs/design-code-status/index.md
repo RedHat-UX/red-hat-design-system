@@ -21,7 +21,7 @@ title: Design/code status
 
   ## Overview
 
-  A detailed synopsis of our web components and their implementation status.
+  A detailed synopsis of our Web Components and their implementation status.
 
   <rh-table>
 

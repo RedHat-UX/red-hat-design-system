@@ -1,12 +1,10 @@
 :host {
   display: block;
   min-height: 100%;
-  height: auto;
-  position: relative;
+  height: max-content;
+  color: var(--rh-color-text-primary);
+  background: var(--rh-color-surface);
 }
-
-rh-surface,
-.on { color: var(--rh-color-text-primary); }
 
 #picker-container {
   display: flex;
@@ -17,6 +15,6 @@ rh-surface,
 
 #provider {
   padding: var(--rh-context-demo-padding, var(--rh-space-xl, 24px));
-  position: absolute;
-  inset: 0;
+  min-height: 100%;
+  height: max-content;
 }

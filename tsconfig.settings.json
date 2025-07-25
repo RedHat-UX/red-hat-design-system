@@ -30,10 +30,10 @@
     "skipLibCheck": true,
     "useDefineForClassFields": false,
     "plugins": [
-      {
-        "transform": "@lit/ts-transformers",
-        "import": "idiomaticDecoratorsTransformer"
-      },
+      // {
+      //   "transform": "@lit/ts-transformers",
+      //   "import": "idiomaticDecoratorsTransformer"
+      // },
       {
         "transform": "typescript-transform-lit-css",
         "inline": true,
@@ -53,9 +53,11 @@
       "ES6",
       "ES2020",
       "ES2022",
+      "ES2024",
       "ES2015.Generator",
       "ESNext.Collection",
       "ESNext.Array",
+      "ESNext.Iterator",
       "ESNext.AsyncIterable",
       "ESNext.Disposable",
       "ScriptHost"

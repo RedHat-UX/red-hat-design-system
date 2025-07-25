@@ -1,13 +1,15 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { state } from 'lit/decorators/state.js';
-import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 
 import { ComposedEvent } from '@patternfly/pfe-core';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
+
+import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import '@rhds/elements/rh-surface/rh-surface.js';
 
@@ -19,10 +21,8 @@ import {
   SecondaryNavDropdownExpandEvent,
 } from './rh-navigation-secondary-dropdown.js';
 
-import { DirController } from '../../lib/DirController.js';
 import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+
 export class SecondaryNavOverlayChangeEvent extends ComposedEvent {
   constructor(
     public open: boolean,
@@ -32,13 +32,7 @@ export class SecondaryNavOverlayChangeEvent extends ComposedEvent {
   }
 }
 
-export type NavPalette = Extract<ColorPalette, (
-  | 'lighter'
-  | 'dark'
-)>;
-
 import styles from './rh-navigation-secondary.css';
-
 
 /* TODO: Abstract this out to a shareable function, should RTI handle something similar? */
 function focusableChildElements(parent: HTMLElement): NodeListOf<HTMLElement> {
@@ -54,60 +48,64 @@ function focusableChildElements(parent: HTMLElement): NodeListOf<HTMLElement> {
 
 /**
  * The Secondary navigation is used to connect a series of pages together. It displays wayfinding content and links relevant to the page it is placed on. It should be used in conjunction with the [primary navigation](../navigation-primary).
+ *
  * @summary Propagates related content across a series of pages
- * @slot logo           - Logo added to the main nav bar, expects `<a>Text</a> | <a><svg/></a> | <a><img/></a>` element
- * @slot nav            - Navigation list added to the main nav bar, expects `<ul>` element
- * @slot cta            - Nav bar level CTA, expects `<rh-cta>` element
- * @slot mobile-menu    - Text label for the mobile menu button, for l10n. Defaults to "Menu"
- * @csspart nav         - container, `<nav>` element
- * @csspart container   - container, `<div>` element
- * @csspart cta         - container, `<div>` element
+ *
+ * @alias Navigation (secondary)
+ *
  * @fires {SecondaryNavOverlayChangeEvent} overlay-change -
  *                                         Fires when an dropdown is opened or closed in desktop
  *                                         view or when the mobile menu button is toggled in mobile
  *                                         view.
- * @cssprop {<integer>} [--rh-navigation-secondary-z-index=102] - z-index of the navigation-secondary
- * @cssprop {<integer>} [--rh-navigation-secondary-overlay-z-index=-1] - z-index of the navigation-secondary-overlay
  */
 @customElement('rh-navigation-secondary')
+@colorPalettes
+@themable
 export class RhNavigationSecondary extends LitElement {
   static readonly styles = [styles];
 
   private static instances = new Set<RhNavigationSecondary>();
 
   static {
-    globalThis.addEventListener('keyup', (event: KeyboardEvent) => {
-      const { instances } = RhNavigationSecondary;
-      for (const instance of instances) {
-        instance.#onKeyup(event);
-      }
-    }, { capture: false });
+    if (!isServer) {
+      document.addEventListener('keyup', (event: KeyboardEvent) => {
+        const { instances } = RhNavigationSecondary;
+        for (const instance of instances) {
+          instance.#onKeyup(event);
+        }
+      }, { capture: false });
+    }
   }
 
 
   #logger = new Logger(this);
   #logoCopy: HTMLElement | null = null;
 
-  /** Is the element in an RTL context? */
-  #dir = new DirController(this);
-
   /** Compact mode  */
   #compact = false;
 
   #internals = InternalsController.of(this, { role: 'navigation' });
 
-  /**
-   * Color palette darker | lighter (default: lighter)
-   */
-  @colorContextProvider()
-  @property({ reflect: true, attribute: 'color-palette' }) colorPalette: NavPalette = 'lighter';
+  get #computedPalette() {
+    switch (this.colorPalette) {
+      case 'lighter':
+      case 'dark':
+        return this.colorPalette;
+      case 'light':
+      case 'lightest':
+        return 'lighter';
+      case 'darker':
+      case 'darkest':
+        return 'dark';
+      default:
+        return 'lightest';
+    }
+  }
 
   /**
-   * Sets color theme based on parent context
+   * Color palette dark | lighter (default: lighter)
    */
-  @colorContextConsumer() private on?: ColorTheme;
-
-  @queryAssignedElements({ slot: 'nav' }) private _nav?: HTMLElement[];
+  @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'lighter';
 
   /**
    * Customize the default `aria-label` on the `<nav>` container.
@@ -150,12 +148,20 @@ export class RhNavigationSecondary extends LitElement {
   async connectedCallback() {
     super.connectedCallback();
     RhNavigationSecondary.instances.add(this);
-    this.#compact = !this.#screenSize.matches.has('md');
     this.addEventListener('expand-request', this.#onExpandRequest);
     this.addEventListener('overlay-change', this.#onOverlayChange);
     this.addEventListener('focusout', this.#onFocusout);
     this.addEventListener('keydown', this.#onKeydown);
-    this.#upgradeAccessibility();
+    if (!isServer) {
+      this.#upgradeAccessibility();
+    }
+  }
+
+  async firstUpdated() {
+    if (!isServer) {
+      await this.updateComplete;
+      this.#compact = !this.#screenSize.matches.has('md');
+    }
   }
 
   disconnectedCallback(): void {
@@ -164,23 +170,29 @@ export class RhNavigationSecondary extends LitElement {
   }
 
   render() {
-    const { on = '' } = this;
     const expanded = this.mobileMenuExpanded;
-    const rtl = this.#dir.dir === 'rtl';
     // CTA must always be 'lightest' on mobile screens
-    const dropdownPalette = this.#compact ? 'lightest' : this.colorPalette;
+    const dropdownPalette = this.#compact ? 'lightest' : this.#computedPalette;
     return html`
+      <!-- container, \`<nav>\` element -->
       <div part="nav"
-           class="${classMap({ [on]: !!on, on: true, compact: this.#compact, rtl })}">
+           class="${classMap({ compact: this.#compact })}">
         ${this.#logoCopy}
+        <!-- container, \`<div>\` element -->
         <div id="container" part="container" class="${classMap({ expanded })}">
+          <!-- Logo added to the main nav bar, expects \`<a>Text</a> | <a><svg/></a> | <a><img/></a>\` element -->
           <slot name="logo" id="logo"></slot>
           <button aria-controls="container"
                   aria-expanded="${String(expanded) as 'true' | 'false'}"
-                  @click="${this.#toggleMobileMenu}"><slot name="mobile-menu">Menu</slot></button>
+                  @click="${this.#toggleMobileMenu}"><!--
+            Text label for the mobile menu button, for l10n. Defaults to "Menu"
+          --><slot name="mobile-menu">Menu</slot></button>
           <rh-surface color-palette="${dropdownPalette}">
+            <!-- Navigation list added to the main nav bar, expects \`<ul>\` element -->
             <slot name="nav"></slot>
+            <!-- container, \`<div>\` element -->
             <div id="cta" part="cta">
+              <!-- Nav bar level CTA, expects \`<rh-cta>\` element -->
               <slot name="cta"></slot>
             </div>
           </rh-surface>

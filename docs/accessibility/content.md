@@ -100,7 +100,7 @@ Note that background images inserted into a page via CSS are always considered d
 When writing alternative text, it’s important to first consider the image’s context. An image’s meaning or function may be more relevant than its literal depiction. So, the same image may need very different alt text in different contexts.
 
 <uxdot-example width-adjustment="500px" no-border class="limit-width">
-  <img src="/assets/accessibility/Its_A_Wonderful_Life.jpg"
+  <img src="/assets/accessibility/Its_A_Wonderful_Life.avif"
       alt="George Bailey hugs his wife, Mary, and holds his daughter, Zuzu, in the movie It's a Wonderful Life"
       width="720"
       height="540">
@@ -112,20 +112,22 @@ Depending on whether a web page is about the plot of the 1946 movie It’s a Won
 
 Images acting as buttons or links are functional, and thus serve different purposes than images supporting the surrounding text.
 
-<figure>
-  <a href="https://www.redhat.com/">
-    <img src="/assets/logo-redhat.png"
-      alt="Red Hat homepage"
-      width="613"
-      height="145">
-  </a>
-</figure>
+<uxdot-example color-palette="lightest">
+  <figure>
+    <a href="https://www.redhat.com/">
+      <img src="/assets/logo-redhat.avif"
+        alt="Red Hat homepage"
+        width="613"
+        height="145">
+    </a>
+  </figure>
+</uxdot-example>
 
 If the above image supplements the text of an article about Red Hat or our products, the appropriate alt text could be something like `"Red Hat, Inc. logo."` But if that image is a link pointing to the corporate homepage, you might want something along the lines of `"Red Hat homepage"` for your alt text:
 
 ```html rhcodeblock
 <a href="https://www.redhat.com/">
-  <img src="logo-redhat.png" alt="Red Hat homepage" />
+  <img src="logo-redhat.avif" alt="Red Hat homepage" />
 </a>
 ```
 
@@ -215,7 +217,7 @@ In addition to the best practices for all microcopy, adhere to the following bes
 - Use the same link text for links that go to the same place.
 - Use different link text for links that go to different places.
 - If you absolutely must use URLs as link text, try to choose short and easy-to-read URLs (e.g., “redhat.com” instead of "https://www.redhat.com/").
-- Links that point to external sites, open new windows/tabs, or launch other media should indicate this behavior to all visitors (both users and non-users of assistive tech alike)
+- Links that point to external sites, [open new windows/tabs](/accessibility/design/#opening-links-in-new-windows), or launch other media should indicate this behavior to all visitors (both users and non-users of assistive tech alike).
 
 #### Avoid the following when creating links
 

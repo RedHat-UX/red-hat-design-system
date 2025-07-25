@@ -1,5 +1,378 @@
 # @rhds/elements
 
+## 3.0.4
+### Patch Changes
+
+- 7e9e971: `<rh-navigation-primary>`: improved component reactivity
+- c904202: Improved SSR for elements whose layout depends on their content
+- bd8eb99: `<rh-audio-player>`: fix layout issue between 576px and 768px breakpoints
+
+## 3.0.3
+### Patch Changes
+
+- 7c845cd: `<rh-navigation-primary>`: prevent an error from being thrown in certain circumstances when the element connects
+- 4ae9221: `<rh-code-block>`: improve performance of line numbers
+
+## 3.0.2
+### Patch Changes
+
+- 885ab9a: `<rh-dialog>`: corrected background color for dark scheme
+- c953111: `<rh-tooltip>`: improved screen reader support
+- 977389f: `<rh-code-block>`: improve performance of pre-rendered code blocks.
+- 75b43f6: `<rh-video-embed>`: hide thumbnail and show video after hitting play button
+- 885ab9a: `<rh-code-block>`: corrected background color for dark scheme
+- dce6e53: `<rh-tabs>`: corrected icons from being incorrectly hidden
+- 885ab9a: `<rh-switch>`: corrected switch handle color for dark scheme
+- 2faf93b: `<rh-dialog>`: corrected dialog positioning to prevent page scrolling
+- 885ab9a: `<rh-health-index>`: corrected background color for dark scheme
+- 49e06d3: `<rh-navigation-primary>`: corrected missing named logo slot documentation
+- 7607ce1: `<rh-navigation-primary>`: corrected `:active` state for hamburger and secondary slotted items
+- 885ab9a: `<rh-navigation-secondary>`: corrected background color for dark scheme
+- d1b66d7: `<rh-code-block>`: fixed copy actions for prerendered codeblocks with badge callouts
+- 0e85889: `<rh-code-block>`: added default content for action buttons.
+- 921eaf2: `<rh-navigation-primary>`: corrected cursor style on secondary links
+- 00b8429: `<rh-dialog>`: The dialog element will now reset scrollbar when closed, even if it was not in focus at the time of closure.
+- 74cfbc4: `<rh-audio-player>`: fix play button icon misalignment in webkit
+- 4841490: `<rh-audio-player>`: fix transcript close button on chrome
+- da05c0d: `<rh-pagination>`: show total pages counter
+- 3f41d58: `<rh-tooltip>`: correctly renders tooltip content using contrasting color scheme
+- d575265: `<rh-navigation-primary>`: corrected render height for navigation items in safari
+- 885ab9a: `<rh-tile>`: corrected background color for light and dark scheme
+- 885ab9a: `<rh-accordion>`: corrected hover background-color for dark scheme
+- e0109e8: `<rh-subnav>`: prevent error which can occur when bundling the element with esbuild
+- a9dafdf: `<rh-code-block>`: automatically load tooltip when action buttons are added
+- 008dd45: `<rh-dialog>`
+  `<rh-navigation-primary>`
+  `<rh-navigation-secondary>`: updated usage of design tokens
+- 885ab9a: `<rh-pagination>`: correct background-colors for dark scheme
+- 11a1f07: `<rh-footer>`: only show vertical scrollbars if content overflows
+- 220b522: `<rh-navigation-primary>`: documented the `logo` slot
+- 512091f: `<rh-badge>`: fixed rendering in SSR scenarios
+
+## 3.0.1
+### Patch Changes
+
+- 4e036d1: `<rh-navigation-secondary>`: improved <abbr title="server side rendering">SSR</abbr> support
+- 642800b: `<rh-button>`: dark scheme support for buttons with icons
+- 706be44: `<rh-cta>`: ensure the arrow icon always appears
+- 4e036d1: `<rh-back-to-top>`: improved <abbr title="server side rendering">SSR</abbr> support
+- 4e036d1: `<rh-avatar>`: improved <abbr title="server side rendering">SSR</abbr> support
+- 4e036d1: `<rh-accordion>`: improved <abbr title="server side rendering">SSR</abbr> support
+- 4e036d1: `<rh-table>`: improved <abbr title="server side rendering">SSR</abbr> support
+- 4e036d1: `<rh-code-block>`: improved <abbr title="server side rendering">SSR</abbr> support
+- 4e036d1: `<rh-table>`: improved <abbr title="server side rendering">SSR</abbr> support
+- 4e036d1: `<rh-stat>`: improved <abbr title="server side rendering">SSR</abbr> support
+- 706be44: Theming: ensure themable elements always load the default theme
+- 4e036d1: `<rh-pagination>`: improved <abbr title="server side rendering">SSR</abbr> support
+- d54b1cb: `<rh-tile>`: fixed empty body slot
+- 4e036d1: `<rh-switch>`: improved <abbr title="server side rendering">SSR</abbr> support
+- 316bcd0: `<rh-dialog>`: increase contrast of close button for video dialogs
+- 8beac87: `<rh-pagination>`: fix ellipsis background color on dark color schemes
+
+## 3.0.0
+### Major Changes
+
+- f32f39d: `<rh-accordion>`: make accordion panel always use it's parent's color scheme
+  
+  BEFORE: Users could override an accordion panel's color palette
+  ```html
+  <rh-accordion color-palette="darkest">
+    <rh-accordion-header>Override Panel</rh-accordion-header>
+    <rh-accordion-panel color-palette="lightest">Overridden panel</rh-accordion-panel>
+  </rh-accordion>
+  ```
+  
+  AFTER: Users cannot override an accordion panel's color palette
+  ```html
+  <rh-accordion color-palette="darkest">
+    <rh-accordion-header>Consistent Panel</rh-accordion-header>
+    <rh-accordion-panel>Consistent panel</rh-accordion-panel>
+  </rh-accordion>
+  ```
+- f32f39d: **🎨 Color Schemes 😎**
+  
+  This release introduces built-in support for user [color scheme][colorscheme] preferences (a.k.a. "dark mode"). The [color palette][colorpalette] and [theming][theming] integrate into device color schemes, or can be overridden on a per-page or per-element basis.
+  
+  #### Performance
+  
+  This change significantly improves both the loading and the runtime performance of themable elements. We no longer need to apply the color scheming stylesheet to each element, which reduces SSR payloads as well.
+  
+  #### Breaking Changes
+  
+  In version 2, users could apply custom themes to specific sections or elements by setting theme tokens ending in `-on-light` and `-on-dark`. In this version, that will still work when applied to the entire document via the `:root` selector, but when theming individual elements, it will fail. For that reason, we recommend users should set theme tokens using the `light-dark()` function instead:
+  
+  ##### Before
+  ```css
+  .theme-custom {
+    --rh-color-border-interactive-on-light: var(--custom-darkest);
+    --rh-color-border-interactive-on-dark: var(--custom-lightest);
+    --rh-color-interactive-primary-default-on-light: var(--custom-darker);
+    --rh-color-interactive-primary-default-on-dark: var(--custom-lighter);
+  }
+  ```
+  
+  ##### After
+  ```css
+  .theme-custom {
+    --rh-color-border-interactive: light-dark(var(--custom-darkest),
+                                              var(--custom-lightest));
+    --rh-color-interactive-primary-default: light-dark(var(--custom-darker),
+                                                       var(--custom-lighter));
+  }
+  ```
+  
+  #### Potentially Breaking Changes
+  
+  Because elements can now render by default using your user's preferred color scheme, pages which are not set up to style content based on user preferences may become unreadable. For example, if a user who set their device to prefer dark mode visits a page which does not style content based on their color-scheme preferences (i.e. it assumes "light mode") and that page contains RHDS elements, those elements may become unreadable, by rendering text for a dark background, when that page actually shows a light background.
+  
+  We expect that this should not affect the majority of cases, but if you find that it does, there are two solutions you can implement to force your pages into light mode: either use an `<rh-surface>` element with the `lightest` color palette, or set your page's rendering mode to `only light`
+  
+  ```diff
+  - <main>
+  + <rh-surface role="main" color-palette="lightest">
+  ```
+  
+  ```css
+  :root {
+    color-scheme: only light;
+  }
+  ```
+  
+  [colorscheme]: https://developer.mozilla.org/en-US/docs/Web/CSS/color-scheme
+  [colorpalette]: https://ux.redhat.com/theming/color-palettes/
+  [theming]: https://ux.redhat.com/theming/customizing/
+- f32f39d: `<rh-dialog>`: the `overlay` CSS shadow part has been removed. Users who want to customize the overlay should refer to our [theming documentation](https://ux.redhat.com/theming/customizing/).
+  
+  Before:
+  
+  ```css
+  rh-dialog::part(overlay) {
+    background-color: #260710e7;
+  }
+  ```
+  
+  After:
+  
+  ```css
+  rh-dialog.theme-ai {
+    --ai-darker: #260710;
+    --rh-color-surface-darker: var(--ai-darker);
+  }
+  ```
+- f32f39d: `<rh-tabs>`: removed `--rh-tabs-border-color`. Use `--rh-color-border-subtle` instead.
+  
+  #### Before:
+  ```css
+  .my-tabs {
+    --rh-tabs-border-color: cadetblue;
+  }
+  ```
+  
+  #### Before:
+  ```css
+  .my-tabs {
+    --rh-color-border-subtle: light-dark(cadetblue, darkslategray);
+  }
+  ```
+- f32f39d: `@rhds/tokens`: bumps the version to 3.0. CSS customizations which used the design tokens may no longer apply. See the [tokens release notes](https://github.com/RedHat-UX/red-hat-design-tokens/releases/tag/v3.0.0) for more information on the breaking changes.
+- 9dcbc70: `<rh-accordion>`: remove unused `bordered` attribute, which anyways has no effect since 2.0
+
+### Minor Changes
+
+- f32f39d: ✨ Added `<rh-chip>`.
+  
+  Chip creates a component that can be used in place of a checkbox.
+  
+  ```html
+  <rh-chip-group>
+    <span slot="accessible-label">Filter by:</span>
+    <rh-chip>Edge</rh-chip>
+    <rh-chip>AI/ML</rh-chip>
+    <rh-chip>DevOps</rh-chip>
+  </rh-chip-group>
+  ```
+- f32f39d: `<rh-footer>`: social link element can now take an `href` attribute instead of a slotted link. The previous behaviour will still work.
+  
+  Before:
+  
+  ```html
+  
+  <rh-footer-social-link slot="social-links"
+                         icon="linkedin">
+    <a href="https://www.linkedin.com/company/red-hat"
+       data-analytics-region="social-links-exit"
+       data-analytics-category="Footer|social-links"
+       data-analytics-text="LinkedIn">LinkedIn</a>
+  </rh-footer-social-link>
+  ```
+  
+  After:
+  ```html
+    <rh-footer-social-link slot="social-links"
+                           icon="linkedin"
+                           href="https://www.linkedin.com/company/red-hat"
+                           data-analytics-region="social-links-exit"
+                           data-analytics-category="Footer|social-links"
+                           data-analytics-text="LinkedIn"
+                           accessible-label="LinkedIn"></rh-footer-social-link>
+  ```
+- f32f39d: ✨ Added `<rh-disclosure>`
+  
+  A disclosure is a widget that enables content to be either collapsed (hidden) or expanded (visible).
+  
+  ```html
+  <rh-disclosure summary="Collapsed panel title">
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing, elit.</p>
+  </rh-disclosure>
+  ```
+- f32f39d: ✨ Added `<rh-jump-links>`
+  
+  Jump links is a navigation list of links enhanced with Red Hat branded design and a scroll spy mechanism. It comes in horizontal and vertical layouts, and can be composed with `<rh-disclosure>` for a mobile-friendly presentation.
+  
+  ```html
+  <aside id="jump-links-container">
+    <h2 id="jump-links-title">Sections</h2>
+    <rh-jump-links aria-labelledby="jump-links-title">
+      <rh-jump-link href="#heading-1">Heading 1</rh-jump-link>
+      <rh-jump-link href="#heading-2">Heading 2</rh-jump-link>
+      <rh-jump-link href="#heading-3">Heading 3</rh-jump-link>
+      <rh-jump-link href="#heading-4">Heading 4</rh-jump-link>
+      <rh-jump-link href="#heading-5">Heading 5</rh-jump-link>
+    </rh-jump-links>
+  </aside>
+  ```
+- f32f39d: ✨ Added `<rh-announcement>`.
+  
+  `<rh-announcement>` is a short banner that conveys an important message, such as
+  promoting an event or advertising an organizational or product announcement.
+  
+  ```html
+  <rh-announcement>
+    <img slot="image"
+         alt="summit logo"
+         src="/images/summit.png">
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit adipisicing elit adipisicing elit.</p>
+    <rh-cta slot="cta" href="#">Learn More</rh-cta>
+  </rh-announcement>
+  ```
+- f32f39d: ✨ Added `<rh-navigation-primary>`.
+  
+  The Primary navigation allows users to orient themselves and successfully move through web experiences. It is persistent on every page to ensure a consistent user experience across our systems of website
+  
+  ```html
+  <rh-navigation-primary>
+    <rh-navigation-primary-item variant="dropdown"
+                                summary="AI">
+      AI dropdown content
+    </rh-navigation-primary-item>
+  
+    <rh-navigation-primary-item variant="dropdown"
+                                summary="Hybrid Cloud">
+      Hybrid Cloud dropdown content
+    </rh-navigation-primary-item>
+  
+    <rh-navigation-primary-item variant="dropdown"
+                                summary="Products">
+      Products dropdown content
+    </rh-navigation-primary-item>
+  
+    <rh-navigation-primary-item variant="dropdown"
+                                summary="Learn">
+      Learn dropdown content
+    </rh-navigation-primary-item>
+  
+    <rh-navigation-primary-item variant="dropdown"
+                                summary="Partners">
+      Partners dropdown content
+    </rh-navigation-primary-item>
+  
+    <rh-navigation-primary-item slot="links">
+      <a href="https://developers.redhat.com/">Developers</a>
+    </rh-navigation-primary-item>
+  
+    <rh-navigation-primary-item slot="links">
+      <a href="https://docs.redhat.com/en">Docs</a>
+    </rh-navigation-primary-item>
+  
+    <rh-navigation-primary-item slot="links">
+      <a href="https://access.redhat.com/support">Support</a>
+    </rh-navigation-primary-item>
+  
+    <rh-navigation-primary-item slot="dropdowns"
+                                variant="dropdown"
+                                hide-at="sm"
+                                summary="Search">
+      Search dropdown content
+    </rh-navigation-primary-item>
+  
+    <rh-navigation-primary-item slot="dropdowns"
+                                variant="dropdown"
+                                hide-at="sm"
+                                summary="For you">
+      For you dropdown content
+    </rh-navigation-primary-item>
+  
+    <rh-navigation-primary-item slot="dropdowns"
+                                variant="dropdown"
+                                summary="My Red Hat">
+      My Red Hat dropdown content
+    </rh-navigation-primary-item>
+  </rh-navigation-primary>
+  ```
+- 5eaee73: `<rh-alert>`: added `actions` and `persistent: true` options for toasts.
+  
+  ```js
+  RhAlert.toast({
+    message: 'Toast!',
+    persistent: true,
+    actions: [
+      { text: 'Confirm', action: 'confirm' },
+      { text: 'dismiss', action: 'dismiss' }
+    ],
+  });
+  ```
+
+### Patch Changes
+
+- f32f39d: `<rh-accordion>`: reduce JavaScript payload
+- f32f39d: `<rh-pagination>`: reduce JavaScript payload
+- f32f39d: `<rh-cta>`: reduce JavaScript payload
+- f32f39d: `<rh-icon>`: corrected micron set to allow for a range from 8px to 12px
+- f32f39d: `<rh-tabs>`: reduce JavaScript payload
+- f32f39d: `<rh-card>`: changed the `header` slot's top margin to from `--rh-space-lg` to `--rh-space-xl`
+- f32f39d: `<rh-tile>`: corrected border colors
+- f32f39d: `<rh-pagination>`: improves layouts for non-left-to-right languages
+- f32f39d: Removed instances of `--rh-color-surface-dark-alt`: use `--rh-color-surface-dark` instead, and it will be automatically darkened where necessary.
+- f32f39d: `<rh-health-index>`: prevent graphical elements from escaping stacking context
+- f32f39d: `<rh-audio-player>`: fix right-to-left layout
+- f32f39d: `<rh-tile>`: Fix a bug where a Tile's link stretches beyond the bounds of the element when JavaScript doesn't load
+- f32f39d: `<rh-switch>`: reduce JavaScript payload
+- f32f39d: `<rh-navigation-secondary>`: remove underlines from links
+- f32f39d: `<rh-tile>`: improved layout when footer slot is empty.
+- f32f39d: Elements with `color-palette`s no longer depend on JavaScript to set the background color of children. See [theming docs](https://ux.redhat.com/theming) for more information.
+- f32f39d: `<rh-back-to-top>`: remove user-facing errors and warnings from missing attributes/values from the console
+- f32f39d: `<rh-dialog>`: Aligned CSS variable naming with privacy conventions by prefixing the undocumented `--offset`, `--offset-top`, and `--offset-right` variables with an underscore, marking them as private (`--_offset`, `--_offset-top`, `--_offset-right`).
+- 5ca27af: `<rh-accordion>`: corrected `large` size header fonts.
+- f32f39d: `<rh-card>`: corrected margins on small screens
+- f32f39d: `<rh-subnav>`: restored overflow scrolling
+- f32f39d: `<rh-navigation-secondary>`: reduce JavaScript payload
+- f32f39d: `<rh-avatar>`: improved layout compatibility for plain variant avatars
+- f32f39d: `<rh-table>`: remove background color. Use an `<rh-surface>`, or other themable container element if you need to set a background.
+- f32f39d: `<rh-navigation-secondary>`: improve visual rendering when scrollbars are turned on by user
+- 5eaee73: `<rh-alert>`: pause the timer which dismisses a toasted alert when the user hovers or focuses the alert
+- f32f39d: `<rh-tabs>`: remove background from tabs panel and corrected colors
+- f32f39d: `<rh-pagination>`: remove background from open variant links
+- f32f39d: `<rh-health-index>`: corrected colors
+- f32f39d: `<rh-subnav>`: corrected focus styles
+- f32f39d: `<rh-accordion>`: `expanded` and `expanded-index` attributes work as expected
+- f32f39d: `<rh-button>`: corrected play button icon colors
+- f32f39d: `<rh-subnav>`: removed background color
+- f32f39d: `<rh-dialog>`: add dark color scheme support
+- f32f39d: `<rh-blockquote>`: fix `align="center"` alignment and font size.
+- f32f39d: `<rh-site-status>`: corrected icon colors
+- f32f39d: `<rh-pagination>`: improve dark mode for the numeric paginator control
+- 01d29a8: Update dependencies
+
 ## 2.1.2
 
 ### Patch Changes
@@ -28,7 +401,7 @@
 
 - f63c46d: **Color Context**: prevent errors in certain SSR scenarios
 - 249a596: `<rh-alert>`: corrected typography and layouts
-- 613e827: `<rh-code-block>`: ensure that syntax colours and styles are applied when the element upgrades
+- 613e827: `<rh-code-block>`: ensure that syntax colors and styles are applied when the element upgrades
 - 0d70e3f: `<rh-tabs>`: corrects active tab styles in SSR scenarios
 - 7bf5841: `<rh-navigation-secondary>`: corrected style regression in dark color palettes
 - 955d393: `<rh-surface>`: corrected themed text color
@@ -142,7 +515,7 @@
   </rh-skip-link>
   ```
 
-- 82ffb12: `<rh-code-block>`: Added `highlighting="client"` for client-side syntax highlighting with Red Hat colour scheme
+- 82ffb12: `<rh-code-block>`: Added `highlighting="client"` for client-side syntax highlighting with Red Hat color scheme
 - 82ffb12: `<rh-tag>`: added `href` attribute
 
   ```html
@@ -151,8 +524,8 @@
 
 - 82ffb12: Theming: Added [theming tokens][theming] to most elements
 
-  Theming tokens let authors respond to the currently-active colour palette, and
-  are especially useful when implementing [patterns][patterns] using themeable
+  Theming tokens let authors respond to the currently-active color palette, and
+  are especially useful when implementing [patterns][patterns] using themable
   elements.
 
   ```html
@@ -367,7 +740,7 @@
 
 - fa2c4d2: `<rh-cta>`: Removed previously-deprecated `color-palette` attribute
 
-  Use themeable containers (e.g. `<rh-surface>` or `<rh-card>`) instead.
+  Use themable containers (e.g. `<rh-surface>` or `<rh-card>`) instead.
 
   Before:
 
@@ -774,7 +1147,7 @@
 - fecdcbf: `<rh-accordion>`: added a accents slot with placement options as inline and bottom
 - fecdcbf: Context: aligned context implementation with updated [protocol defintions](https://github.com/webcomponents-cg/community-protocols/blob/main/proposals/context.md#definitions)
 - fecdcbf: Update dependencies, including Lit version 3
-- fecdcbf: `<rh-alert>`: make sure alerts always have to correct (lightest) colour palette
+- fecdcbf: `<rh-alert>`: make sure alerts always have to correct (lightest) color palette
 - fecdcbf: `<rh-tabs>`: allow tabs with long text content to fit into different-sized containers
 
 ## 1.3.2
@@ -843,11 +1216,11 @@
 
 - 58ab8e60b: Uses `@rhds/tokens` - Red Hat Design Tokens - version 2!
 
-  ⚠️ if your pages directly override "crayon" colour values, (e.g. `--rh-color-red-50`)
+  ⚠️ if your pages directly override "crayon" color values, (e.g. `--rh-color-red-50`)
   then this is a breaking change, since the token names have changed.
 
   However, if your project follows the theming guidelines and only overrides the
-  semantic tokens, then you should automatically receive the new colour values.
+  semantic tokens, then you should automatically receive the new color values.
 
 - 05fbc275a: `<rh-tile>`: radio and checkbox tiles now submit their values in `<form>` elements
 
@@ -923,7 +1296,7 @@
 - baa382063: `<rh-accordion>`: fixed border color for dark color palettes
 - fb9e3eac0: `<rh-accordion>`: remove dependency on `@patternfly/elements`
 - d4e1ebd4b: `<rh-tag>`: while tag should not be used on dark contexts unless it has the
-  `white` colour, this change ensures that tags that are used on dark context will
+  `white` color, this change ensures that tags that are used on dark context will
   be legible.
 - 422d6279b: `<rh-tile>`: ensure that tiles in a flex container grow along the cross axis
 - 61ca7202d: `<rh-tooltip>`: remove dependency on `@patternfly/elements`
@@ -1385,11 +1758,11 @@
 - de7fd69b: ✨ Added `<rh-context-provider>`.
 
   Component meant to be used internally within rh-elements shadow templates or
-  demos to override colour context.
+  demos to override color context.
 
   `<rh-dialog>`:
 
-  - [fixed][overrides] the colour context overrides for slotted content.
+  - [fixed][overrides] the color context overrides for slotted content.
   - renamed the `variant` attribute to `type`.
 
   [overrides]: https://github.com/patternfly/patternfly-elements/pull/2036#issuecomment-1134460631
@@ -1524,7 +1897,7 @@
   color values
 - c677b9e8: ✨ Added `<rh-pagination>`.
 
-  Pagination is a web component for navigating paginated content.
+  Pagination is a Web Component for navigating paginated content.
 
   ```html
   <rh-pagination>
@@ -1654,7 +2027,7 @@
   to the `href="/en"` url. They have been changed to `href="/"`.
 - fd78f884: `<rh-footer>`: fixed styles when used on redhat.com
 - 86d075e8: **Color Context**: added missing `light` color palette option
-- aa2d5b40: `<rh-blockquote>`: added colour context and updated style tokens
+- aa2d5b40: `<rh-blockquote>`: added color context and updated style tokens
 - b7aa79aa: **Color Context**: added `attribute` option to `@colorContextConsumer` (defaults
   to `false`), allowing elements to make their context private to the shadow DOM.
 - da26ab31: `<rh-alert>`: clicking close button now removes the element.
@@ -1714,7 +2087,7 @@
 - ce2ce34a: chore: added missing development dependencies
 - 750f451a: Added support for PFE 2.0 icon color in rh-footer
 - fe8f11f6: `<rh-stat>`: fixed dark theme font color contrast.
-- 42331698: Fixed nested colour contexts
+- 42331698: Fixed nested color contexts
 - 7f1ae4a8: `<rh-footer>`: fix typography in various page contexts ([#790][issue])
 
   [issue]: https://github.com/RedHat-UX/red-hat-design-system/issues/790
@@ -1917,7 +2290,7 @@
 - 84da26fd: `<rh-footer>`: Corrected href for footer logo links. They were incorrectly pointing
   to the `href="/en"` url. They have been changed to `href="/"`.
 - 94eeec07: `<rh-global-footer>`: fixed logo links, as per `<rh-footer>`
-- 42331698: Fixed nested colour contexts
+- 42331698: Fixed nested color contexts
 - e40e87dc: `<rh-context-provider>`: notify children of context when adding them using javascript.
 - e40e87dc: `<rh-context-provider>`: set color context, rather than palette, on consumers
 - b23a8038: `<rh-tooltip>`: fixed tooltips on dark contexts
@@ -1988,7 +2361,7 @@
 ### Patch Changes
 
 - aa2d5b40: `<rh-tooltip>`: calculated the tooltip offset when the element is first updated
-- aa2d5b40: `<rh-blockquote>`: added colour context and updated style tokens
+- aa2d5b40: `<rh-blockquote>`: added color context and updated style tokens
 - b7aa79aa: **Color Context**: added `attribute` option to `@colorContextConsumer` (defaults
   to `false`), allowing elements to make their context private to the shadow DOM.
 - 41e27ddc: `<rh-tag>`: Fixed styles and tests connected with upstream changes in `BaseLabel`
@@ -2048,7 +2421,7 @@
 
 ### Minor Changes
 
-- c677b9e8: Added `<rh-pagination>`, a web component for navigating paginated content.
+- c677b9e8: Added `<rh-pagination>`, a Web Component for navigating paginated content.
 
   ```html
   <rh-pagination>
@@ -2333,8 +2706,8 @@
 
 ### Minor Changes
 
-- de7fd69: Added `rh-context-provider` component, which is meant to be used internally within rh-elements shadow templates to override colour context.
-  In `rh-dialog`, fix the colour context overrides for slotted content. See https://github.com/patternfly/patternfly-elements/pull/2036#issuecomment-1134460631
+- de7fd69: Added `rh-context-provider` component, which is meant to be used internally within rh-elements shadow templates to override color context.
+  In `rh-dialog`, fix the color context overrides for slotted content. See https://github.com/patternfly/patternfly-elements/pull/2036#issuecomment-1134460631
   In `rh-dialog`, changed the attribute `variant="video"` to `type="video"`, because `<pfe-modal>` uses variant for width.
 - 3248990: Add `rh-stat`
 

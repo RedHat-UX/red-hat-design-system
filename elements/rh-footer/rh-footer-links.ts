@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
@@ -29,7 +29,9 @@ export class RhFooterLinks extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.updateAccessibility();
+    if (!isServer) {
+      this.updateAccessibility();
+    }
     this.#mo.observe(this, { childList: true });
   }
 

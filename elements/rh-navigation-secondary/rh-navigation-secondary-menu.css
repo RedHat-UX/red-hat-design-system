@@ -1,5 +1,6 @@
 :host {
   display: block;
+  color-scheme: only light;
 }
 
 #container {
@@ -18,12 +19,13 @@
 
 :host(:not([type='fixed-width'])) #sections {
   display: grid;
-  grid-template-columns:
+  grid-template-columns: /** grid-template-columns for menu sections */
     var(--rh-navigation-secondary-menu-section-grid,
       repeat(auto-fit,
       minmax(15.5rem, 1fr)));
   grid-template-rows: auto;
-  gap: var(--rh-navigation-secondary-menu-section-grid-gap, var(--rh-space-2xl, 32px));
+  gap: /** grid-gap for menu sections */
+    var(--rh-navigation-secondary-menu-section-grid-gap, var(--rh-space-2xl, 32px));
 }
 
 ::slotted(:is(ul, ol)) {
@@ -47,7 +49,7 @@
     box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
     z-index: -1;
     max-height: calc(100vh - (var(--rh-space-4xl, 64px)) - var(--_nav-min-height));
-    overflow-y: scroll;
+    overflow-y: auto;
   }
 
   :host([layout='fixed-width']) #container {
@@ -59,6 +61,8 @@
 
   #sections {
     padding: 0;
+
+    /** max-width for menu content */
     max-width: var(--rh-navigation-secondary-menu-content-max-width, 1136px);
     margin: auto;
   }

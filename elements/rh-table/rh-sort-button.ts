@@ -1,11 +1,10 @@
 import { LitElement, html, svg } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { classMap } from 'lit/directives/class-map.js';
 
 import { ComposedEvent } from '@patternfly/pfe-core';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-sort-button.css';
 
@@ -31,16 +30,12 @@ const paths = new Map(Object.entries({
 /**
  * Table sort button
  *
- * @csspart sort-button    - button element
- * @csspart sort-indicator - icon wrapper element
- *
  * @fires {RequestSortEvent} request-sort - when the button is clicked
  */
 @customElement('rh-sort-button')
+@themable
 export class RhSortButton extends LitElement {
   static readonly styles = [styles];
-
-  @colorContextConsumer() private on?: ColorTheme;
 
   /** The button's sorting order */
   @property({
@@ -52,12 +47,13 @@ export class RhSortButton extends LitElement {
   @property() column?: string;
 
   render() {
-    const { on = '' } = this;
     return html`
-      <button id="sort-button" part="sort-button" @click="${this.sort}" aria-label="Sort" class="${classMap({ [on]: !!on })}">
+      <!-- button element -->
+      <button id="sort-button" part="sort-button" @click="${this.sort}" aria-label="Sort">
         <span class="visually-hidden">${!this.sortDirection ? '' : `(sort${!this.column ? '' : ` by ${this.column}`} in ${this.sortDirection === 'asc' ? 'ascending' : 'descending'} order)`}</span>
+        <!-- icon wrapper element -->
         <span id="sort-indicator" part="sort-indicator">
-          <svg fill="currentColor" 
+          <svg fill="currentColor"
                height="1em"
                width="1em"
                viewBox="0 0 320 512"

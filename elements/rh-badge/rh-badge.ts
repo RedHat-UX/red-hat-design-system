@@ -4,7 +4,7 @@ import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit-html/directives/class-map.js';
 import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 
-import { colorContextConsumer } from '@rhds/elements/lib/context/color/consumer.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-badge.css';
 
@@ -20,15 +20,17 @@ import styles from './rh-badge.css';
  *
  * @summary Annotates information like a label or object
  *
+ * @alias badge
+ *
  */
 @customElement('rh-badge')
+@themable
 export class RhBadge extends LitElement {
   static readonly styles = [styles];
 
-  @colorContextConsumer() private on?: string;
-
   /**
    * Denotes the state-of-affairs this badge represents
+   * Note: 'moderate','important', and 'critical' will also work, but are deprecated
    */
   @property({ reflect: true }) state:
     | 'danger'
@@ -36,9 +38,6 @@ export class RhBadge extends LitElement {
     | 'caution'
     | 'neutral'
     | 'success'
-    | 'moderate' // deprecated
-    | 'important' // deprecated
-    | 'critical' // deprecated
     | 'info' =
       'neutral';
 
@@ -80,18 +79,12 @@ export class RhBadge extends LitElement {
   }
 
   override render() {
-    const { threshold, number, textContent, on = 'light', state = 'neutral' } = this;
-    const displayText =
-        (threshold && number && (threshold < number)) ? `${threshold.toString()}+`
-      : (number != null) ? number.toString()
-      : textContent ?? '';
-
+    const { state, threshold, number } = this;
+    const isLarge = !!threshold && number != null && (threshold < number);
+    const computedContent = isLarge ? `${threshold}+` : number?.toString() ?? null;
     return html`
-      <span class="${classMap({
-        on: true,
-        [on]: true,
-        [state]: true,
-      })}">${displayText}</span>
+      <span class="${classMap({ [state]: true })}">${computedContent}</span>
+      <slot class="${classMap({ [state]: true })}"></slot>
     `;
   }
 }

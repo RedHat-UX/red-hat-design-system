@@ -1,6 +1,7 @@
 import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
+import { state } from 'lit/decorators/state.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { query } from 'lit/decorators/query.js';
 import { provide } from '@lit/context';
@@ -14,14 +15,20 @@ import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
 import { RhTab, TabExpandEvent } from './rh-tab.js';
 import { RhTabPanel } from './rh-tab-panel.js';
+
 import '@rhds/elements/rh-icon/rh-icon.js';
 
-import { DirController } from '../../lib/DirController.js';
+import {
+  rhTabsActiveTabContext,
+  rhTabsBoxContext,
+  rhTabsVerticalContext,
+  rhTabsLastTabContext,
+  rhTabsManualContext,
+  rhTabsFirstTabContext,
+} from './context.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
-
-import { context, type RhTabsContext } from './context.js';
+import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-tabs.css';
 
@@ -31,17 +38,15 @@ export { RhTab };
  * Tabs are used to organize and navigate between sections of content.
  * They feature a horizontal or a vertical list of section text labels
  * with a content panel below or to the right of the component.
+ *
  * @summary Arranges content in a contained view on the same page
- * @csspart container - outer container
- * @csspart tabs-container - tabs container
- * @csspart tabs - tablist
- * @csspart panels - panels
- * @slot tab - Must contain one or more `<rh-tab>`
- * @slot - Must contain one or more `<rh-tab-panel>`
- * @cssprop {<color>} [--rh-tabs-border-color=#c7c7c7] - Tabs Border color
- * @cssprop {<length>} [--rh-tabs-inset=auto] - Tabs inset
+ *
+ * @alias tabs
+ *
  */
 @customElement('rh-tabs')
+@colorPalettes
+@themable
 export class RhTabs extends LitElement {
   static readonly styles = [styles];
 
@@ -59,6 +64,7 @@ export class RhTabs extends LitElement {
    * Tabs can be either [automatic](https://w3c.github.io/aria-practices/examples/tabs/tabs-automatic.html) activated
    * or [manual](https://w3c.github.io/aria-practices/examples/tabs/tabs-manual.html)
    */
+  @provide({ context: rhTabsManualContext })
   @property({ reflect: true, type: Boolean }) manual = false;
 
   /**
@@ -81,32 +87,30 @@ export class RhTabs extends LitElement {
     }
   }
 
+  @provide({ context: rhTabsActiveTabContext })
   @property({ attribute: false }) activeTab?: RhTab;
 
-  @colorContextConsumer() private on?: ColorTheme;
-
   /** Sets color context for child components, overrides parent context */
-  @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette?: ColorPalette;
 
   /** Aligns tabs to the center */
   @property({ reflect: true, type: Boolean }) centered? = false;
 
   /** Sets tabs to a boxed style with or without an inset */
+  @provide({ context: rhTabsBoxContext })
   @property({ reflect: true }) box?: 'box' | 'inset';
 
   /** Sets the alignment of the tabs vertical */
+  @provide({ context: rhTabsVerticalContext })
   @property({ reflect: true, type: Boolean }) vertical = false;
 
-  @query('[part="tabs"]') private tabList!: HTMLElement;
+  @provide({ context: rhTabsFirstTabContext })
+  @state() private firstTab: RhTab | null = null;
 
-  get #ctx(): RhTabsContext {
-    const { activeTab, manual, vertical } = this;
-    const box = this.box === null || this.box === '' as 'box' ? 'box' : this.box;
-    const firstTab = this.#firstTab;
-    const lastTab = this.#lastTab;
-    return { activeTab, box, firstTab, lastTab, manual, vertical };
-  }
+  @provide({ context: rhTabsLastTabContext })
+  @state() private lastTab: RhTab | null = null;
+
+  @query('[part="tabs"]') private tabList!: HTMLElement;
 
   protected get canShowScrollButtons(): boolean {
     return !this.vertical;
@@ -127,8 +131,6 @@ export class RhTabs extends LitElement {
     getItems: () => this.tabs ?? [],
   });
 
-  #dir = new DirController(this);
-
   get tabs(): RhTab[] {
     return this.#tabs.tabs;
   }
@@ -136,17 +138,6 @@ export class RhTabs extends LitElement {
   get panels() {
     return this.tabs.map(tab => this.#tabs.panelFor(tab));
   }
-
-  get #firstTab(): RhTab | undefined {
-    const [tab] = this.tabs;
-    return tab;
-  }
-
-  get #lastTab(): RhTab | undefined {
-    return this.tabs.at(-1);
-  }
-
-  @provide({ context }) private ctx = this.#ctx;
 
   override connectedCallback() {
     super.connectedCallback();
@@ -159,7 +150,8 @@ export class RhTabs extends LitElement {
     if (!this.manual && this.activeIndex !== this.#tabindex.atFocusedItemIndex) {
       this.activeIndex = this.#tabindex.atFocusedItemIndex;
     }
-    this.ctx = this.#ctx;
+    this.firstTab = this.tabs.at(0) ?? null;
+    this.lastTab = this.tabs.at(-1) ?? null;
   }
 
   async firstUpdated() {
@@ -171,34 +163,45 @@ export class RhTabs extends LitElement {
   }
 
   override render() {
-    const { on = '', vertical = false, box = false, centered = false } = this;
+    const { vertical = false, box = false, centered = false } = this;
     const inset = this.box === 'inset' ? 'inset' : '';
-    const rtl = this.#dir.dir === 'rtl';
     return html`
-      <div id="rhds-container" class="${classMap({ on: true, [on]: !!on, rtl, vertical, box, inset, centered })}">
-        <div part="container" class="${classMap({ overflow: this.#overflow.showScrollButtons })}">
-          <div part="tabs-container">${!this.#overflow.showScrollButtons ? '' : html`
-            <button id="previous-tab" tabindex="-1"
-                    aria-label="${this.getAttribute('label-scroll-left') ?? 'Scroll left'}"
-                    ?disabled="${!this.#overflow.overflowLeft}"
-                    @click="${() => !rtl ? this.#overflow.scrollLeft() : this.#overflow.scrollRight()}">
-              <rh-icon set="ui" icon="caret-left" loading="eager"></rh-icon>
-            </button>`}
-            <div id="tablist" role="tablist">
-              <slot name="tab"
-                    part="tabs"
-                    @slotchange="${this.#onSlotchange}"></slot>
-            </div>${!this.#overflow.showScrollButtons ? '' : html`
-            <button id="next-tab"
-                    tabindex="-1"
-                    aria-label="${this.getAttribute('label-scroll-right') ?? 'Scroll right'}"
-                    ?disabled="${!this.#overflow.overflowRight}"
-                    @click="${() => !rtl ? this.#overflow.scrollRight() : this.#overflow.scrollLeft()}">
-               <rh-icon set="ui" icon="caret-right" loading="eager"></rh-icon>
-            </button>`}
-          </div>
-          <slot part="panels" @slotchange="${this.#onSlotchange}"></slot>
+      <!-- outer container -->
+      <div id="container" part="container" class="${classMap({ vertical, box, inset, centered, overflow: this.#overflow.showScrollButtons })}">
+        <!-- tabs container -->
+        <div part="tabs-container">${!this.#overflow.showScrollButtons ? '' : html`
+          <button id="previous-tab" tabindex="-1"
+                  aria-label="${this.getAttribute('label-scroll-left') ?? 'Scroll left'}"
+                  ?disabled="${!this.#overflow.overflowLeft}"
+                  @click="${() => !this.matches(':dir(rtl)') ? this.#overflow.scrollLeft() : this.#overflow.scrollRight()}">
+            <rh-icon set="ui" icon="caret-left" loading="eager"></rh-icon>
+          </button>`}
+          <div id="tablist" role="tablist">
+            <!--
+              slot:
+                description: Must contain one or more \`<rh-tab>\`
+              part:
+                description: tablist
+            -->
+            <slot name="tab"
+                  part="tabs"
+                  @slotchange="${this.#onSlotchange}"></slot>
+          </div>${!this.#overflow.showScrollButtons ? '' : html`
+          <button id="next-tab"
+                  tabindex="-1"
+                  aria-label="${this.getAttribute('label-scroll-right') ?? 'Scroll right'}"
+                  ?disabled="${!this.#overflow.overflowRight}"
+                  @click="${() => !this.matches(':dir(rtl)') ? this.#overflow.scrollRight() : this.#overflow.scrollLeft()}">
+             <rh-icon set="ui" icon="caret-right" loading="eager"></rh-icon>
+          </button>`}
         </div>
+        <!--
+          slot:
+            description: Must contain one or more \`<rh-tab-panel>\`
+          part:
+            description: panels
+        -->
+        <slot part="panels" @slotchange="${this.#onSlotchange}"></slot>
       </div>
     `;
   }

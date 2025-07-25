@@ -35,10 +35,11 @@ A sticky card acts as a small container for a limited amount of content.
        height="361">
 </uxdot-example>
 
-### Theme
+### Color scheme
+<a id="theme"></a>
 
 The required elements in a sticky card are a close button, a title or a
-headline, a call to action, and a container (the light theme container features
+headline, a call to action, and a container (the light container features
 a drop shadow). The container consists of a background color and two rounded
 corners on the left or the right side, depending on the orientation. A thin
 border is also required even if the sticky card background color is different
@@ -123,7 +124,7 @@ included at the same time. Move any extra content to other parts of the page if
 possible.
 
 <uxdot-example width-adjustment="596px">
-  <img src="./sticky-card-content.png"
+  <img src="./sticky-card-content.avif"
        alt="Sticky card content sections"
        width="596"
        height="399">

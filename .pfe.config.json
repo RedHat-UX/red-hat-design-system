@@ -1,11 +1,11 @@
 {
   "demoURLPrefix": "https://ux.redhat.com/",
   "sourceControlURLPrefix": "https://github.com/redhat-ux/red-hat-design-system/tree/main/",
+  "elementsDir": ".",
   "tagPrefix": "rh",
   "aliases": {
     "rh-cta": "Call to action",
     "rh-stat": "Statistic",
-    "rh-navigation": "Navigation (primary)",
     "rh-navigation-primary": "Navigation (primary)",
     "rh-navigation-secondary": "Navigation (secondary)",
     "rh-subnav": "Subnavigation"

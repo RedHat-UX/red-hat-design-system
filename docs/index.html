@@ -33,7 +33,7 @@ title: Home
     align-items: center;
     gap: var(--rh-space-4xl);
 
-    @container (min-width: 768px) { 
+    @container (min-width: 768px) {
       grid-template-columns: 4fr 3fr;
       grid-template-areas: 'text image';
       align-items: center;
@@ -43,7 +43,7 @@ title: Home
       grid-area: text;
     }
 
-    & h1 {      
+    & h1 {
       font-size: var(--rh-font-size-heading-2xl);
       font-weight: var(--rh-font-weight-heading-regular);
       font-family: var(--rh-font-family-heading);
@@ -74,8 +74,7 @@ title: Home
   }
 
   rh-card {
-    --rh-color-border-subtle-on-light: transparent;
-    --rh-color-border-subtle-on-dark: transparent;
+    --rh-color-border-subtle: transparent !important;
 
     & p { margin: 0; }
 
@@ -85,6 +84,9 @@ title: Home
     }
 
     &.start {
+      --rh-color-surface-lightest: transparent;
+      --rh-color-surface-darkest: transparent;
+
       &::part(header),
       &::part(footer),
       &::part(body) {
@@ -113,8 +115,17 @@ title: Home
       }
 
       &::part(container) {
+        --_gradient-start: light-dark(
+          var(--rh-color-gray-10),
+          black
+        );
+        --_gradient-end: light-dark(white, var(--rh-color-gray-90));
         display: grid;
-        background: linear-gradient(90deg, var(--rh-color-gray-10) 0%, white 100%);
+        background: linear-gradient(
+          90deg,
+          var(--_gradient-start) 0%,
+          var(--_gradient-end) 100%
+        );
         background-repeat: no-repeat;
         border-radius: 48px 16px;
         padding: var(--nav-padding);
@@ -124,7 +135,7 @@ title: Home
           'header'
           'body'
           'footer';
-            
+
         @container (min-width: 576px) {
           grid-template-rows: 1fr auto 1fr;
           grid-template-areas:
@@ -180,12 +191,9 @@ title: Home
   import '@rhds/elements/rh-tile/rh-tile.js';
 </script>
 
-{% include 'partials/component/masthead.njk' %}
 {% include 'partials/component/sidenav.njk' %}
 
-<rh-surface id="main"
-            role="main"
-            color-palette="lightest">
+<main id="main">
   <div id="container">
     <header id="hero">
       <div>
@@ -194,7 +202,7 @@ title: Home
           digital experiences that <strong>look and feel like Red Hat.</strong></p>
       </div>
       <img alt="A woman sits cross-legged on a low office chair, smiling at the screen of the black laptop on her knee. floating graphics surround her head: a cloud, a stylized representation of a website"
-           src="/assets/home/hero-image.png"
+           src="/assets/home/hero-image.avif"
            width="494"
            height="438">
     </header>
@@ -246,7 +254,7 @@ title: Home
       <p>Design language principles for better layouts</p>
       <img slot="image"
            alt="A stylized molecule on a red background"
-           src="/assets/home/section-1.png"
+           src="/assets/home/section-1.avif"
            width="460"
            height="320">
       <rh-cta slot="footer" href="/foundations/">Explore foundations</rh-cta>
@@ -257,7 +265,7 @@ title: Home
       <p>Interface building blocks for better experiences</p>
       <img slot="image"
            alt="Stylized schematic of a website with oversized cursor overlayed"
-           src="/assets/home/section-2.png"
+           src="/assets/home/section-2.avif"
            width="460"
            height="320">
       <rh-cta slot="footer" href="/elements/">Explore elements</rh-cta>
@@ -267,8 +275,8 @@ title: Home
       <h2 slot="header">Design/code status</h2>
       <p>The status of elements and patterns at a glance</p>
       <img slot="image"
-           alt="Stylized nested list on a grey background"
-           src="/assets/home/section-3.png"
+           alt="Stylized nested list on a gray background"
+           src="/assets/home/section-3.avif"
            width="460"
            height="320">
       <rh-cta slot="footer" href="/design-code-status/">View the design/code status</rh-cta>
@@ -279,7 +287,7 @@ title: Home
       <p>Track any changes and major releases to RHDS</p>
       <img slot="image"
            alt="Opposing speech bubbled on a teal background"
-           src="/assets/home/section-4.png"
+           src="/assets/home/section-4.avif"
            width="460"
            height="320">
       <rh-cta slot="footer" href="/release-notes/">Read the release notes</rh-cta>
@@ -290,14 +298,14 @@ title: Home
       <p>Help us grow and improve our system together</p>
       <img slot="image"
            alt="Three generic person avatars in a range of shades"
-           src="/assets/home/section-5.png"
+           src="/assets/home/section-5.avif"
            width="460"
            height="320">
       <rh-cta slot="footer" href="https://github.com/RedHat-UX/red-hat-design-system/">Learn how to contribute</rh-cta>
     </rh-card>
   </div>
   {% include "partials/component/back-to-top.njk" %}
-</rh-surface>
+</main>
 
 {% include 'partials/component/footer.njk' %}
 

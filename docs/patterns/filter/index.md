@@ -18,13 +18,13 @@ in an accordion or a disclosure.
 ## Sample pattern
 
 <div class="grid">
-  <uxdot-example width-adjustment="300px">
+  <uxdot-example width-adjustment="300px" color-palette="lightest">
     <img src="./filter-sample-1.svg"
          alt="Example of a filter using an accordion"
          width="300"
          height="513">
   </uxdot-example>
-  <uxdot-example width-adjustment="300px">
+  <uxdot-example width-adjustment="300px" color-palette="lightest">
     <img src="./filter-sample-2.svg"
          alt="Example of a filter using a disclosure"
          width="300"
@@ -41,7 +41,7 @@ panels that users can expand to view the checkboxes inside. When one or more
 checkboxes are selected, a button will appear that gives users the option to
 reset their selections.
 
-<uxdot-example width-adjustment="600px">
+<uxdot-example width-adjustment="600px" color-palette="lightest">
   <img src="./filter-style-1.svg"
        alt="Filter component with different parts labeled"
        width="600"
@@ -62,7 +62,7 @@ amount of time that users spend searching for something.
 
 <div class="grid sm-two-columns">
   <figure>
-    <uxdot-example width-adjustment="300px">
+    <uxdot-example width-adjustment="300px" color-palette="lightest">
       <img src="./filter-usage-1.svg"
            alt="Expanded disclosure panel with one checkbox"
            width="300"
@@ -71,7 +71,7 @@ amount of time that users spend searching for something.
     <figcaption>A user can select one or multiple tags to sort by in one category</figcaption>
   </figure>
   <figure>
-    <uxdot-example width-adjustment="300px">
+    <uxdot-example width-adjustment="300px" color-palette="lightest">
       <img src="./filter-usage-2.svg"
            alt="Expanded accordion panels with multiple checkboxes selected"
            width="300"
@@ -98,7 +98,7 @@ search for something and filter the results simultaneously.
 Even when used in a filter, accordions still require at least two panels. If
 only one panel is needed, use a disclosure instead.
 
-<uxdot-example width-adjustment="300px">
+<uxdot-example width-adjustment="300px" color-palette="lightest">
   <img src="./filter-best-practices-1.svg"
        alt="A filter using an accordion instead of a disclosure even though it has only one panel"
        width="300"
@@ -108,7 +108,7 @@ only one panel is needed, use a disclosure instead.
 Don’t change the width of a filter on large screens because the aside region is
 already a fixed width.
 
-<uxdot-example width-adjustment="555px" danger>
+<uxdot-example width-adjustment="555px" danger color-palette="lightest">
   <img src="./filter-best-practices-2.svg"
        alt="A filter that is abnormally wide on desktop"
        width="555"
@@ -204,7 +204,7 @@ content set.
 
 ### Desktop
 
-<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
+<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border color-palette="lightest">
   <img src="./filter-responsive-2.svg"
        alt="A filter on desktop taking up almost 4 columns"
        width="1000"
@@ -213,7 +213,7 @@ content set.
 
 ### Tablet
 
-<uxdot-example width-adjustment="768px" variant="full" alignment="left" no-border>
+<uxdot-example width-adjustment="768px" variant="full" alignment="left" no-border color-palette="lightest">
   <img src="./filter-responsive-3.svg"
        alt="A filter on a tablet taking up the full width"
        width="768"
@@ -222,7 +222,7 @@ content set.
 
 ### Mobile
 
-<uxdot-example width-adjustment="360px" variant="full" alignment="left" no-border>
+<uxdot-example width-adjustment="360px" variant="full" alignment="left" no-border color-palette="lightest">
   <img src="./filter-responsive-4.svg"
        alt="A filter on a mobile device taking up the full width"
        width="360"

@@ -1,6 +1,6 @@
 import type { IconNameFor } from '@rhds/icons';
 
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
@@ -9,17 +9,20 @@ import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 import style from './rh-footer-social-link.css';
 
 /**
- * Displays a linked icon to a social media property
- * @summary Displays a linked icon to a social media property
- * @slot    - Add an anchor tag linking to a social media property
-*/
-
+ * Social media links for Red Hat Footer
+ */
 @customElement('rh-footer-social-link')
 export class RhFooterSocialLink extends LitElement {
   static readonly styles = style;
 
   /** Icon for this social link e.g. `'facebook'` */
   @property() icon?: IconNameFor<'social'>;
+
+  /** Social link address */
+  @property() href?: string;
+
+  /** Textual label for the social link e.g. "Instagram" */
+  @property({ attribute: 'accessible-label' }) accessibleLabel?: string;
 
   #logger = new Logger(this);
 
@@ -29,12 +32,19 @@ export class RhFooterSocialLink extends LitElement {
   }
 
   render() {
-    return html`<slot></slot>`;
+    return html`
+      <a href="${this.href}" aria-label="${this.accessibleLabel}">
+        <!-- Optional icon for social link. Use only when suitable icon is unavailable with \`<rh-icon>\` -->
+        <slot>
+          <rh-icon set="social" icon="${this.icon}"></rh-icon>
+        </slot>
+      </a>
+    `;
   }
 
   updated() {
-    const oldDiv = this.querySelector('a');
-    if (oldDiv) {
+    let oldDiv;
+    if (!isServer && (oldDiv = this.querySelector('a'))) {
       const newDiv = oldDiv.cloneNode(true) as Element;
       // remove the _rendered content
       newDiv.querySelectorAll('[_rendered]').forEach(i => i.remove());

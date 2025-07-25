@@ -7,44 +7,17 @@ import { property } from 'lit/decorators/property.js';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 import { classMap } from 'lit/directives/class-map.js';
 
-import { colorContextProvider, type ColorPalette } from '../../lib/context/color/provider.js';
+import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
 
 import style from './rh-footer.css';
 
 import './rh-footer-copyright.js';
 
-/**
- * @csspart base
- * @csspart base
- * @slot    heading - text that describes the footer section to assistive tecchnology. Contains default text "Red Hat footer".
- * @slot    logo
- * @csspart logo
- * @slot    logo-image
- * @csspart logo-image
- * @slot    primary
- * @csspart primary
- * @slot    primary-start
- * @csspart primary-start
- * @slot    primary-end
- * @csspart primary-end
- * @slot    secondary
- * @csspart secondary
- * @slot    secondary-start
- * @csspart secondary-start
- * @slot    secondary-end
- * @csspart secondary-end
- * @slot    links-primary
- * @csspart links-primary
- * @slot    links-secondary
- * @csspart links-secondary
- * @slot    tertiary
- * @csspart tertiary
- */
 @customElement('rh-footer-universal')
+@colorPalettes
 export class RhFooterUniversal extends LitElement {
   static readonly styles = [style];
 
-  @colorContextProvider()
   @property({ reflect: true, attribute: 'color-palette' }) colorPalette: ColorPalette = 'darker';
 
   #slots = new SlotController(
@@ -78,20 +51,27 @@ export class RhFooterUniversal extends LitElement {
 
     return html`
       <footer role="${ifDefined(footer ? 'none' : undefined)}">
-        <h2 id="global-heading" ?hidden="${!!h2}"><slot name="heading">Red Hat footer</slot></h2>
+        <h2 id="global-heading" ?hidden="${!!h2}">
+          <!-- text that describes the footer section to assistive tecchnology. Contains default text "Red Hat footer". -->
+          <slot name="heading">Red Hat footer</slot>
+        </h2>
+        <!-- base -->
         <div class="section global-base ${classMap({ hasTertiary })}" part="section base">
           <slot name="base">
+            <!-- logo -->
             <div class="global-logo" part="logo">
+              <!-- logo -->
               <slot name="logo">
                 <a class="global-logo-anchor"
                     part="logo-anchor"
                     href="https://redhat.com"
                     aria-label="Visit Red Hat">
+                  <!-- logo-image -->
                   <svg class="global-logo-image"
-                      part="logo-image"
-                      data-name="Layer 1"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 192 145">
+                       part="logo-image"
+                       data-name="Layer 1"
+                       xmlns="http://www.w3.org/2000/svg"
+                       viewBox="0 0 192 145">
                       <title>Red Hat logo</title>
                     <defs>
                       <style>
@@ -106,34 +86,52 @@ export class RhFooterUniversal extends LitElement {
                 </a>
               </slot>
             </div>
+            <!-- primary -->
             <div class="global-primary" part="primary">
+              <!-- primary -->
               <slot name="primary">
+                <!-- primary-start -->
                 <div class="global-primary-start" part="primary-start" ?hidden=${!this.#slots.hasSlotted('primary-start')}>
+                  <!-- primary-start -->
                   <slot name="primary-start"></slot>
                 </div>
+                <!-- links-primary -->
                 <div class="global-links-primary" part="links-primary" ?hidden=${!this.#slots.hasSlotted('links-primary')}>
+                  <!-- links-primary -->
                   <slot name="links-primary"></slot>
                 </div>
+                <!-- primary-end -->
                 <div class="global-primary-end" part="primary-end" ?hidden=${!this.#slots.hasSlotted('primary-end')}>
+                  <!-- primary-end -->
                   <slot name="primary-end"></slot>
                 </div>
               </slot>
             </div>
             <div class="spacer" part="spacer"></div>
+            <!-- secondary -->
             <div class="global-secondary" part="secondary">
+              <!-- secondary -->
               <slot name="secondary">
+                <!-- secondary-start -->
                 <div class="global-secondary-start" part="secondary-start" ?hidden=${!this.#slots.hasSlotted('secondary-start')}>
+                  <!-- secondary-start -->
                   <slot name="secondary-start"></slot>
                 </div>
+                <!-- links-secondary -->
                 <div class="global-links-secondary" part="links-secondary" ?hidden=${!this.#slots.hasSlotted('links-secondary')}>
+                  <!-- links-secondary -->
                   <slot name="links-secondary"></slot>
                 </div>
+                <!-- secondary-end -->
                 <div class="global-secondary-end" part="secondary-end" ?hidden=${!this.#slots.hasSlotted('secondary-end')}>
+                  <!-- secondary-end -->
                   <slot name="secondary-end"></slot>
                 </div>
               </slot>
             </div>
+            <!-- tertiary -->
             <div class="global-tertiary" part="tertiary" ?hidden=${!this.#slots.hasSlotted('tertiary')}>
+              <!-- tertiary -->
               <slot name="tertiary"></slot>
             </div>
           </slot>

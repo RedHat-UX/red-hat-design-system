@@ -1,9 +1,9 @@
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 
 import { HeadingLevelContextConsumer } from '../../lib/context/headings/consumer.js';
+import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 
 import './rh-audio-player-scrolling-text-overflow.js';
 
@@ -13,12 +13,6 @@ import styles from './rh-audio-player-subscribe.css';
 
 /**
  * Audio Player Subscribe Panel
- * @slot heading - custom heading for panel
- * @slot - panel content
- * @slot link - link to subscribe to podcast
- * @csspart heading - scrolling text overflow
- * @csspart body - body content slot
- * @csspart links - subscribe links
  */
 @customElement('rh-audio-player-subscribe')
 export class RhAudioPlayerSubscribe extends LitElement {
@@ -28,18 +22,25 @@ export class RhAudioPlayerSubscribe extends LitElement {
 
   @property() label?: string;
 
-  @queryAssignedElements({ slot: '' }) private body?: HTMLElement[];
-
   #headings = new HeadingLevelContextConsumer(this);
+
+  #slots = new SlotController(this, 'heading', null, 'link');
 
   #label?: string;
 
   override render() {
     return html`
+      <!-- scrolling text overflow -->
       <rh-audio-player-scrolling-text-overflow part="heading">
+        <!-- custom heading for panel -->
         <slot name="heading">${this.#headings.wrap(this.menuLabel)}</slot>
       </rh-audio-player-scrolling-text-overflow>
-      <slot part="body" ?hidden="${(this.body?.length ?? 0) < 1}"></slot>
+      <!-- panel content -->
+      <slot part="body" ?hidden="${this.#slots.isEmpty(null)}"></slot>
+      <!-- slot:
+             summary: link to subscribe to podcast
+           part:
+             summary: subscribe links -->
       <slot name="link" part="links"></slot>`;
   }
 

@@ -4,8 +4,6 @@ import { classMap } from 'lit/directives/class-map.js';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
-
 import '@rhds/elements/rh-icon/rh-icon.js';
 import '@rhds/elements/rh-spinner/rh-spinner.js';
 
@@ -16,6 +14,8 @@ import '@rhds/icons/ui/warning-fill.js';
 import '@rhds/icons/ui/warning.js';
 import '@rhds/icons/ui/error.js';
 import '@rhds/icons/ui/error-fill.js';
+
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-site-status.css';
 
@@ -121,10 +121,13 @@ const isStatusPageResponse = (data: unknown): data is SummaryResponse => {
 /**
  * Website status communicates the operational status of a website or domain using a status icon and
  * link. It is usually located in the Footer component.
+ *
  * @summary Communicates operational status of a website or domain
- * @slot - loading-text - Text to display while loading the status defaults to "Loading"
+ *
+ * @alias site-status
  */
 @customElement('rh-site-status')
+@themable
 export class RhSiteStatus extends LitElement {
   static readonly styles = [styles];
 
@@ -138,10 +141,6 @@ export class RhSiteStatus extends LitElement {
     },
   };
 
-  /**
-   * Sets color theme based on parent context
-   */
-  @colorContextConsumer() private on?: ColorTheme;
 
   #status: Status | null = null;
 
@@ -187,20 +186,16 @@ export class RhSiteStatus extends LitElement {
   }
 
   protected override render() {
-    const { on = 'light' } = this;
     const loading = this.#loading;
     const { icon, status } = this.#icon;
     return html`
-      <div id="container" class="${classMap({ on: true, [on]: true, loading })}">
+      <div id="container" class="${classMap({ loading })}">
         <a href="https://status.redhat.com/"
            aria-busy="${String(this.#loading) as 'true' | 'false'}"
            aria-live="polite">${this.#loading ? html`
           <rh-spinner size="sm"></rh-spinner>
-          <span><slot name="loading-text">Loading</slot></span>` : html`
-          <div id="icon">
-            <rh-icon loading="eager" set="ui" icon="${icon.replace(`-fill`, '')}"></rh-icon>
-            <rh-icon loading="eager" set="ui" icon="${icon}" class="${status}"></rh-icon>
-          </div>
+          <span><!-- Text to display while loading the status defaults to "Loading" --><slot name="loading-text">Loading</slot></span>` : html`
+          <rh-icon loading="eager" set="ui" icon="${icon}" class="${status}"></rh-icon>
           <span>${this.#text}</span>`}
         </a>
       </div>

@@ -3,10 +3,13 @@
 A tile can be used when a clickable container is needed to provide one call to action or show one form input option. It can be grouped with similarly-structured and styled tiles in a tile group. There
 are two types, link tiles and selectable tiles. Both can be used in groups or individually, except for a selectable tile with a radio button, which always has to be grouped.
 
-### Tile vs. card
+### Tiles vs. cards
 
-The primary distinguishing factor between a tile and a card is that each tile can perform only one action because the whole surface is clickable. A tile also has the ability to be used as selectable
-items in a form. Tiles can be grouped together like card, however.
+The primary distinguishing factor between a tile and a [card](/elements/card/) is that each tile **must** perform only one action, because its whole surface is interactive (e.g., can be clicked).
+
+Tiles also have the ability to be used as selectable items in a form.
+
+Tiles can be grouped together with other tiles, and cards can be grouped together with other cards.
 
 ## Variants
 
@@ -30,7 +33,7 @@ if each tile includes a logo. Other than the heading color, the hover, focus, an
 For a link tile, there are two image sizes available. The Default size has spacing around the entire image. The Full-width image size bleeds to the top, left, and right edges. The default image size
 is recommended for logos, while illustrations or photos would work well as a full-width image.
 
-<uxdot-example width-adjustment="750px">
+<uxdot-example color-palette="lightest" width-adjustment="750px">
   <img alt="Examples of a logo in a tile with the default image size and a photo in a tile with the full-width image size"
        src="../tile-variants-image-sizes.png"
        width="750"

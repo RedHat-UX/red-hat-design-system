@@ -1,119 +1,121 @@
 rh-navigation-secondary {
   --_max-height: max-content;
   --_min-height: 80px;
-  --_nav-link-color: var(--rh-color-text-primary-on-light, #151515);
-  --_logo-link-color: var(--rh-color-text-primary-on-light, #151515);
-  --_nav-chevron-color: var(--rh-color-text-primary-on-light, #151515);
+  --_nav-link-color: var(--rh-color-text-primary);
+  --_logo-link-color: var(--rh-color-text-primary);
+  --_nav-chevron-color: var(--rh-color-text-primary);
+  --rh-color-surface:
+    light-dark(var(--rh-color-surface-lighter, #f2f2f2),
+      var(--rh-color-surface-dark, #383838));
 
   display: block;
   position: sticky;
   top: 0;
-  background-color: var(--rh-color-surface-lighter, #f2f2f2);
+  background-color: var(--rh-color-surface);
   border-block-end: var(--rh-border-width-sm, 1px) solid transparent;
   box-shadow: var(--rh-box-shadow-sm, 0 2px 4px 0 rgba(21, 21, 21, 0.2));
   height: var(--_max-height);
   min-height: var(--_min-height);
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
-}
 
-rh-navigation-secondary:not(:defined) {
-  display: grid;
-  position: relative;
-  gap: 0 var(--rh-space-2xl, 32px);
-  grid-template-rows: minmax(var(--_min-height), var(--_max-height)) max-content max-content;
-  grid-template-columns: 1fr max-content;
-  grid-template-areas:
-    'logo logo'
-    'nav nav'
-    'cta cta';
-}
+  &:not(:defined) {
+    display: grid;
+    position: relative;
+    gap: 0 var(--rh-space-2xl, 32px);
+    grid-template-rows: minmax(var(--_min-height), var(--_max-height)) max-content max-content;
+    grid-template-columns: 1fr max-content;
+    grid-template-areas:
+      'logo logo'
+      'nav nav'
+      'cta cta';
+  }
 
-rh-navigation-secondary[color-palette='dark'] {
-  --_nav-link-color: var(--rh-color-text-primary-on-light, #151515);
-  --_logo-link-color: var(--rh-color-text-primary-on-dark, #ffffff);
+  & > [slot='logo'] {
+    grid-area: logo;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    color: var(--_logo-link-color);
 
-  background-color: var(--rh-color-surface-dark, #383838);
-  border-block-end-color: var(--rh-color-border-subtle-on-dark, #707070);
-  box-shadow: none;
-}
+    /* TODO: remove for v2 */
+    /* stylelint-disable-next-line */
+    max-width: var(--rh-navigation-secondary-logo-max-width, 10em);
+    text-decoration: none;
+    font-size: var(--rh-font-size-body-text-md, 1rem);
+    letter-spacing: 0.01125em;
+    margin-inline-start: var(--rh-space-lg, 16px);
+    font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
+    font-weight: var(--rh-font-weight-heading-medium, 500);
+    padding-block: var(--rh-space-lg, 16px);
+    border-block-start: var(--rh-border-width-lg, 3px) solid transparent;
+    width: max-content;
 
-rh-navigation-secondary * {
-  box-sizing: border-box;
+    &:hover {
+      text-decoration: none;
+      color: var(--_nav-link-color);
+    }
+
+    &[aria-current='page'] {
+      border-block-start-color: var(--rh-color-brand-red);
+    }
+  }
+
+  & > [slot='nav'] {
+    grid-area: nav;
+    display: none;
+    flex-direction: column;
+    list-style: none;
+    background-color: var(--rh-color-surface-lightest, #ffffff);
+    margin: 0;
+    padding:
+      var(--rh-space-2xl, 32px)
+      var(--rh-space-lg, 16px)
+      var(--rh-space-lg, 16px);
+  }
+
+  & > :is([slot='logo'], [slot='nav']) {
+    line-height: var(--rh-line-height-heading, 1.3);
+  }
+
+  & > [slot='cta'] {
+    grid-area: cta;
+    display: none;
+    height: 100%;
+    align-items: center;
+    background-color: var(--rh-color-surface-lightest, #ffffff);
+    padding:
+      var(--rh-space-lg, 16px)
+      var(--rh-space-lg, 16px)
+      var(--rh-space-2xl, 32px);
+    margin: 0;
+    max-width: 100%;
+  }
+
+  &[color-palette^='light'] {
+    color-scheme: only light;
+  }
+
+  &[color-palette^='dark'] {
+    border-block-end-color: var(--rh-color-border-subtle-on-dark, #707070);
+    box-shadow: none;
+    color-scheme: only dark;
+
+    & > [slot='logo']:hover {
+      color: var(--_logo-link-color);
+    }
+  }
+
+  * {
+    box-sizing: border-box;
+  }
 }
 
 rh-navigation-secondary-menu a {
-  text-decoration: underline !important;
   color: var(--rh-color-interactive-primary-default-on-light, #0066cc);
 }
 
 rh-navigation-secondary-menu a:hover {
   color: var(--rh-color-interactive-primary-hover-on-light, #003366) !important;
-}
-
-rh-navigation-secondary > [slot='logo'] {
-  grid-area: logo;
-  display: flex;
-  align-items: center;
-  height: 100%;
-  color: var(--_logo-link-color);
-
-  /* TODO: remove for v2 */
-  /* stylelint-disable-next-line */
-  max-width: var(--rh-navigation-secondary-logo-max-width, 10em);
-  text-decoration: underline;
-  font-size: var(--rh-font-size-body-text-md, 1rem);
-  letter-spacing: 0.01125em;
-  margin-inline-start: var(--rh-space-lg, 16px);
-  font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
-  font-weight: var(--rh-font-weight-heading-medium, 500);
-  padding-block: var(--rh-space-lg, 16px);
-  border-block-start: var(--rh-border-width-lg, 3px) solid transparent;
-  width: max-content;
-}
-
-rh-navigation-secondary > [slot='logo'][aria-current='page'] {
-  border-block-start-color: var(--rh-color-brand-red-on-light, #ee0000);
-}
-
-rh-navigation-secondary > [slot='logo']:hover {
-  text-decoration: none;
-  color: var(--_nav-link-color);
-}
-
-rh-navigation-secondary[color-palette='dark'] > [slot='logo']:hover {
-  color: var(--_logo-link-color);
-}
-
-rh-navigation-secondary > [slot='nav'] {
-  grid-area: nav;
-  display: none;
-  flex-direction: column;
-  list-style: none;
-  background-color: var(--rh-color-surface-lightest, #ffffff);
-  margin: 0;
-  padding:
-    var(--rh-space-2xl, 32px)
-    var(--rh-space-lg, 16px)
-    var(--rh-space-lg, 16px);
-}
-
-rh-navigation-secondary > [slot='logo'],
-rh-navigation-secondary > [slot='nav'] {
-  line-height: var(--rh-line-height-heading, 1.3);
-}
-
-rh-navigation-secondary > [slot='cta'] {
-  grid-area: cta;
-  display: none;
-  height: 100%;
-  align-items: center;
-  background-color: var(--rh-color-surface-lightest, #ffffff);
-  padding:
-    var(--rh-space-lg, 16px)
-    var(--rh-space-lg, 16px)
-    var(--rh-space-2xl, 32px);
-  margin: 0;
-  max-width: 100%;
 }
 
 /* If the component isn't defined display top level links */
@@ -147,11 +149,7 @@ rh-navigation-secondary-dropdown > a {
 }
 
 rh-navigation-secondary [slot='nav'] > li > a[aria-current='page'] {
-  border-block-start-color: var(--rh-color-brand-red-on-light, #ee0000);
-}
-
-rh-navigation-secondary[color-palette='dark'] [slot='nav'] li > a[aria-current='page'] {
-  border-block-start-color: var(--rh-color-brand-red-on-dark, #ee0000);
+  border-block-start-color: var(--rh-color-brand-red);
 }
 
 rh-navigation-secondary > [slot='nav'] > li > a:hover,
@@ -209,17 +207,8 @@ rh-navigation-secondary-menu-section > [slot='header'] {
     grid-template-columns: max-content 1fr max-content;
   }
 
-  rh-navigation-secondary[color-palette='dark'] {
-    --_nav-link-color: var(--rh-color-text-primary-on-dark, #ffffff);
-    --_nav-chevron-color: var(--rh-color-text-primary-on-dark, #ffffff);
-  }
-
-  /* stylelint-disable-next-line @stylistic/max-line-length */
-  rh-navigation-secondary[color-palette='dark'] rh-navigation-secondary-dropdown > a[aria-expanded='true'] {
-    --_nav-link-color: var(--rh-color-text-primary-on-light, #151515);
-    --_nav-chevron-color: var(--rh-color-text-primary-on-light, #151515);
-
-    color: var(--_nav-link-color);
+  rh-navigation-secondary-dropdown > a[aria-expanded='true'] {
+    color-scheme: only light;
   }
 
   rh-navigation-secondary > [slot='logo'] {

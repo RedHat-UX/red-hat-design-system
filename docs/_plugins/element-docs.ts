@@ -3,10 +3,13 @@ import type { UserConfig } from '@11ty/eleventy';
 import slugify from 'slugify';
 import { basename, dirname, join, sep } from 'node:path';
 import { glob, readFile, readdir, stat } from 'node:fs/promises';
-import { deslugify, getPfeConfig } from '@patternfly/pfe-tools/config.js';
+import { getPfeConfig } from '@patternfly/pfe-tools/config.js';
 import { getAllManifests } from '@patternfly/pfe-tools/custom-elements-manifest/custom-elements-manifest.js';
 import { capitalize } from '#11ty-plugins/tokensHelpers.js';
 import { DocsPage } from '@patternfly/pfe-tools/11ty/DocsPage.js';
+
+import { $ } from 'execa';
+import chalk from 'chalk';
 
 import repoStatus from '#11ty-data/repoStatus.js';
 
@@ -84,70 +87,7 @@ function getTagNameSlug(tagName: string) {
   });
 }
 
-function getTabData(filePath: string): ElementDocsPageTabData {
-  const parts = filePath.split(sep);
-  const tagName = parts.find(x => x.startsWith('rh-'))!;
-  const pageSlug = filePath.split(sep).pop()?.split('.').shift()?.replace(/^(\d+|rh)-/, '') ?? '';
-  const slug = getTagNameSlug(tagName);
-  const permalink =
-        pageSlug === 'overview' ? `/elements/${slug}/index.html`
-      : `/elements/${slug}/${pageSlug}/index.html`;
-  const pageTitle = capitalize(deslugify(pageSlug).toLowerCase().replace('rh-', ''));
-  return {
-    tagName,
-    filePath,
-    permalink,
-    slug,
-    url: permalink.replace('index.html', ''),
-    pageTitle,
-    pageSlug,
-  };
-}
-
-function getBasicData(filePath: string): ElementDocsPageBasicData {
-  const tabProps = getTabData(filePath);
-  const status = repoStatus.find(x => x.tagName === tabProps.tagName);
-  return { ...tabProps,
-    isCodePage: tabProps.pageSlug === 'code',
-    isDemoPage: tabProps.pageSlug === 'demos',
-    isOverviewPage: tabProps.pageSlug === 'overview',
-    absPath: join(cwd, filePath),
-    description: status?.description,
-    alias: pfeconfig.aliases?.[tabProps.tagName],
-    screenshotPath: `/elements/${tabProps.slug}/screenshot.png`,
-    overviewHref: `/elements/${tabProps.slug}/`,
-  };
-}
-
-async function getFSData(props: ElementDocsPageBasicData): Promise<ElementDocsPageFileSystemData> {
-  const elDir = join(cwd, 'elements', props.tagName);
-  const docsDir = join(elDir, 'docs');
-  const demoPath = join(elDir, 'demo', `${props.tagName}.html`);
-  const allTSFiles = await Array.fromAsync(glob(`elements/${props.tagName}/*.ts`, { cwd }));
-  const hasDocs = await exists(docsDir);
-  const docsDirLs = hasDocs ? await readdir(docsDir) : null;
-  const _overviewImageHref = docsDirLs?.find(x => x.match(/overview.(png|svg)/));
-  const overviewImageHref =
-    _overviewImageHref && await exists(join(docsDir, _overviewImageHref)) ?
-      _overviewImageHref : undefined;
-  return {
-    ...props,
-    fileExists: await exists(props.absPath),
-    planned: await isPlanned(props.tagName),
-    hidden: await isHidden(props.tagName),
-    hasLightdom: await exists(join(elDir, `${props.tagName}-lightdom.css`)),
-    hasLightdomShim: await exists(join(elDir, `${props.tagName}-lightdom-shim.css`)),
-    mainDemoContent: await exists(demoPath) ? await readFile(demoPath, 'utf8') : '',
-    overviewImageHref,
-    siblingElements: allTSFiles
-        .map(x => basename(x))
-        .filter(isElementSource)
-        .map(stripExtension)
-        .filter((x): x is string => !!x && x !== props.tagName),
-  };
-}
-
-async function isPlanned(tagName: string) {
+function isPlanned(tagName: string) {
   for (const manifest of getAllManifests()) {
     if (manifest.declarations.has(tagName)) {
       return false;
@@ -157,96 +97,147 @@ async function isPlanned(tagName: string) {
   return element?.libraries.rhds === 'planned';
 }
 
-async function isHidden(tagName: string) {
+function isHidden(tagName: string) {
   const element = repoStatus.find(element => element.tagName === tagName);
   return element?.type === 'hidden';
 }
 
-const isDocFor = (tagName: string) =>
-  (x: string) =>
-    x.split('/docs/').at(0) === `elements/${tagName}`;
-
-export default function(eleventyConfig: UserConfig) {
+/**
+ * @param eleventyConfig
+ */
+export default function(eleventyConfig: UserConfig): void {
+  eleventyConfig.on('eleventy.before', async function() {
+    performance.mark('analyze-start');
+    await $`npm run analyze`;
+    performance.mark('analyze-end');
+    const TOTAL = performance.measure('analyze-total', 'analyze-start', 'analyze-end');
+    // eslint-disable-next-line no-console
+    console.log(`⏲️  Custom elements manifest generated in ${chalk.blue(TOTAL.duration)}ms\n`);
+  });
   eleventyConfig.addCollection('elementDocs', async function() {
     try {
-      const _docFilePaths = await Array.fromAsync(glob(`elements/*/docs/*.md`, { cwd }));
-      // TODO: adding the code file in the next line is a temporary hack to add in a virtual
-      // `XX-code.md` and demo if one doesn't already exist. At a later date, this entire function
-      // (elementDocs) should be refactored, and the elements/*/docs/*.md files should be used
-      // only for markdown content, but the code and demos tabs should be fully generated, with
-      // the XX-code.md content interjected, if any.
-      const fakeCodeDocsPaths = await Array.fromAsync(glob('elements/*', { cwd }), x =>
-        x.includes('.') ? [] : [
-          `${x}/docs/30-code.md`,
-          `${x}/docs/90-demos.md`,
-        ]);
+      const [manifest] = getAllManifests();
 
-      const docFilePaths = Array.from(new Set([..._docFilePaths, ...fakeCodeDocsPaths.flat()]))
-          .sort(function alphabetically(a: string, b: string) {
-            return ( a < b ? -1 : a > b ? 1 : 0);
-          });
+      const _docsPages =
+        eleventyConfig.globalData.elements as DocsPage[] | (() => Promise<DocsPage[]>);
 
-      const { elements } = eleventyConfig.globalData as {
-        elements: DocsPage[] | (() => Promise<DocsPage[]>);
-      };
+      const docsPages = typeof _docsPages === 'function' ? await _docsPages() : _docsPages;
 
-      const docsPages: DocsPage[] =
-        (typeof elements === 'function') ? await elements() : elements;
+      // 1. compile a list of all sibling element names by scanning the filesystem
+      // 2. compile a list of all output files
+      // 3. assign helpful data to each page entry
+      // 4. compile a list of tabs for each page's subnav.
+      //    this step depends on the full list from step 2.
+      // 5. assign data which relies on the filesystem (async)
 
-
-      const elementDocs = await Promise.all(docFilePaths.map(async filePath => {
-        const fileSystemData = await getFSData(getBasicData(filePath));
-
-        const [manifest] = getAllManifests();
-
-        const docsPage = docsPages.find(x => x.tagName === fileSystemData.tagName)
-            ?? new DocsPage(manifest);
-
-        let tabs = docFilePaths
-            .filter(isDocFor(fileSystemData.tagName))
-            .sort()
-            .map(x => getTabData(x));
-
-        const isDemoTab = (x: ElementDocsPageTabData) => x.pageSlug === 'demos';
-
-        const getPrettyElementName =
-          eleventyConfig.getFilter('getPrettyElementName') as (tagname: string) => string;
-
-        if (!fileSystemData.planned) {
-          if (!tabs.some(isDemoTab)) {
-            tabs.push({ pageSlug: 'demos' } as ElementDocsPageTabData);
+      const siblingElementsByTagName = new Map<string, string[]>();
+      for await (const path of glob(`elements/*/*.ts`, { cwd })) {
+        const tagName = path.replace('elements/', '').split('/').shift()!;
+        const filebasename = basename(path);
+        const siblingTagName = stripExtension(filebasename);
+        if (siblingTagName && isElementSource(filebasename) && siblingTagName !== tagName) {
+          if (!siblingElementsByTagName.has(tagName)) {
+            siblingElementsByTagName.set(tagName, []);
           }
-          // Add 'virtual' demos page, it's generated by demos.11ty.cjs
-          const tab = tabs.find(isDemoTab)!;
-          tab.url ??= `/elements/${fileSystemData.slug}/demos/`;
-          tab.pageTitle ??= getPrettyElementName(fileSystemData.tagName);
-          tab.pageSlug ??= 'demos';
-          tab.permalink ??= `/elements/${fileSystemData.slug}/demos/index.html`;
-          tab.filePath ??= `${dirname(fileSystemData.filePath)}/40-demos.md`;
-          tab.slug ??= fileSystemData.slug;
-          tab.tagName ??= fileSystemData.tagName;
-        } else {
-          tabs = tabs.filter(x => x.pageSlug !== 'code' && x.pageSlug !== 'demos');
+          siblingElementsByTagName.get(tagName)!.push(siblingTagName);
         }
+      }
 
-        const collection = `${fileSystemData.tagName}-tabs`;
-
-        const pageSlug = getTagNameSlug(fileSystemData.tagName);
-        const pageTitle = capitalize(deslugify(pageSlug).toLowerCase().replace('rh-', ''));
-        return {
-          ...fileSystemData,
-          tags: [collection],
-          layout: 'layouts/pages/element.11ty.ts',
-          subnav: {
-            collection,
-          },
-          pageSlug,
-          pageTitle,
-          docsPage,
-          tabs,
-        };
-      }));
-      return elementDocs;
+      return (await Promise.all(
+        Array.from(new Set([
+          // docs file paths that exist on disk
+          ...await Array.fromAsync(glob(`elements/*/docs/*.md`, { cwd })),
+          // ensure that code and demos pages are generated, should there not be any content for them
+          // in elements/*/docs/*-code.md or elements/*/docs/*-demos.md. Duplicates are avoided with
+          // the new Set constructor
+          ...(await Array.fromAsync(glob('elements/*', { cwd }), x =>
+              x.includes('.') ? [] : [
+                `${x}/docs/30-code.md`,
+                `${x}/docs/90-demos.md`,
+              ])).flat(),
+        ]))
+            .sort()
+            .map(filePath => {
+              const tagName = filePath
+                  .split(sep)
+                  .find(x => x.startsWith('rh-'))!;
+              const pageSlug = filePath
+                  .split(sep)
+                  .pop()
+                  ?.split('.')
+                  ?.shift()
+                  ?.replace(/^(\d+|rh)-/, '') ?? '';
+              const slug = getTagNameSlug(tagName);
+              const collection = `${tagName}-tabs`;
+              const permalink =
+                    pageSlug === 'overview' ? `/elements/${slug}/index.html`
+                  : `/elements/${slug}/${pageSlug}/index.html`;
+              return {
+                filePath,
+                tagName,
+                pageSlug,
+                layout: 'layouts/pages/element.11ty.ts',
+                planned: isPlanned(tagName),
+                hidden: isHidden(tagName),
+                subnav: { collection },
+                slug,
+                pageTitle: capitalize(pageSlug),
+                docsPage: docsPages.find(x => x.tagName === tagName) ?? new DocsPage(manifest),
+                permalink,
+                tags: [collection],
+                url: permalink.replace('index.html', ''),
+                absPath: join(cwd, filePath),
+                description: repoStatus.find(x => x.tagName === tagName)?.description,
+                alias: pfeconfig.aliases?.[tagName],
+                screenshotPath: `/elements/${slug}/screenshot.png`,
+                overviewHref: `/elements/${slug}/`,
+              };
+            })
+            .map((data, _, a) => ({
+              ...data,
+              tabs: a
+                  .filter(x =>
+                    x.tagName === data.tagName
+                    && (
+                      !data.planned
+                      || (
+                        x.pageSlug !== 'code'
+                        && x.pageSlug !== 'demos'
+                      )
+                    ))
+                  .map(tab => !data.planned || tab.pageSlug !== 'demo' ? tab : ({
+                  // Add 'virtual' demos page, it's generated by demos.11ty.cjs
+                    ...tab,
+                    url: `/elements/${data.slug}/demos/`,
+                    pageSlug: 'demos',
+                    permalink: `/elements/${data.slug}/demos/index.html`,
+                    filePath: `${dirname(data.filePath)}/40-demos.md`,
+                    slug: data.slug,
+                    tagName: data.tagName,
+                  }))
+                  .sort((a, b) => a.filePath > b.filePath ? 1 : -1),
+            }))
+            .map(async data => {
+              const elDir = join(cwd, 'elements', data.tagName);
+              const docsDir = join(elDir, 'docs');
+              const demoPath = join(elDir, 'demo', `${data.tagName}.html`);
+              const hasDocs = await exists(docsDir);
+              const docsDirLs = hasDocs ? await readdir(docsDir) : null;
+              const _overviewImageHref = docsDirLs?.find(x => x.match(/overview.(png|svg)/));
+              const overviewImageHref =
+                _overviewImageHref && await exists(join(docsDir, _overviewImageHref)) ?
+                  _overviewImageHref : undefined;
+              return {
+                ...data,
+                fileExists: await exists(data.absPath),
+                hasLightdom: await exists(join(elDir, `${data.tagName}-lightdom.css`)),
+                hasLightdomShim: await exists(join(elDir, `${data.tagName}-lightdom-shim.css`)),
+                mainDemoContent: await exists(demoPath) ? await readFile(demoPath, 'utf8') : '',
+                overviewImageHref,
+                siblingElements: siblingElementsByTagName.get(data.tagName) ?? [],
+              };
+            })
+      ));
     } catch (e) {
       // it's important to surface this
       // eslint-disable-next-line no-console

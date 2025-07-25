@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
@@ -13,12 +13,6 @@ import { HeadingLevelContextConsumer } from '../../lib/context/headings/consumer
 
 /**
  * Audio Player About Panel
- * @slot heading - custom heading for panel
- * @slot - panel content
- * @slot profile - `<rh-avatar>` for attribution
- * @csspart heading - panel heading
- * @csspart body - panel body
- * @csspart profile - panel profile / avatar
  */
 @customElement('rh-audio-player-about')
 export class RhAudioPlayerAbout extends LitElement {
@@ -41,11 +35,13 @@ export class RhAudioPlayerAbout extends LitElement {
 
   override render() {
     const { label, mediaseries, mediatitle } = this;
-    const hasContent = (this.content?.length ?? 0) >= 1;
+    const hasContent = isServer || ((this.content?.length ?? 0) >= 1);
     const heading = this.#headings.wrap(mediatitle ?? '');
 
     return html`
+      <!-- panel heading -->
       <rh-audio-player-scrolling-text-overflow id="title" part="heading">
+        <!-- custom heading for panel -->
         <slot name="heading">${label}</slot>
       </rh-audio-player-scrolling-text-overflow>${!mediatitle ? `` : !mediaseries ? heading : html`
       <hgroup class="media-info" part="heading">${!mediaseries ? '' : html`
@@ -56,7 +52,16 @@ export class RhAudioPlayerAbout extends LitElement {
           ${heading}
         </rh-audio-player-scrolling-text-overflow>
       </hgroup>`}
-      <div part="body" ?hidden="${!hasContent}" tabindex=0><slot></slot></div>
+      <!-- panel body -->
+      <div part="body" ?hidden="${!hasContent}" tabindex=0><!-- panel content --><slot></slot></div>
+      <!--
+        part:
+          description: |
+            panel profile / avatar
+        slot:
+          description: |
+            \`<rh-avatar>\` for attribution
+      -->
       <slot part="profile" name="profile"></slot>`;
   }
 

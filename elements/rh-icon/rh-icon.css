@@ -10,6 +10,7 @@
 }
 
 svg {
+  /** Override default icon size */
   width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
   fill: currentcolor;
   aspect-ratio: 1/1;
@@ -20,5 +21,7 @@ svg {
 }
 
 .microns svg {
-  width: 12px;
+  min-width: 8px;
+  max-width: 12px;
+  width: var(--rh-icon-size, 12px);
 }

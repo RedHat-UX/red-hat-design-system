@@ -7,6 +7,10 @@
   display: none !important;
 }
 
+:host(:is(:focus, :focus-within)) {
+  outline: 1px auto var(--rh-color-interactive-primary-default);
+}
+
 #container {
   display: contents;
 }

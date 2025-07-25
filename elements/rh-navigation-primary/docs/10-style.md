@@ -1,300 +1,141 @@
 ## Style
 
-Elements in the primary navigation are high in contrast so they stand out to 
-visitors and meet accessibility guidelines. The primary navigation looks 
-similar in style to the [Footer](/elements/footer) for a 
-consistent user experience across websites.
-
-<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../primary-nav-style-intro.png"
-        alt="Primary navigation - style"
-        width="1000"
-        height="104">
-</uxdot-example>
-
+Primary navigation includes our brand logo or hat and groups of menus and links in a container that spans the width of the browser window.
 
 ### Anatomy
 
-The primary navigation is divided into **three zones** where content can be 
-placed. Each zone may include custom content and elements in certain zones 
-will collapse or become hidden completely as breakpoints get smaller. 
-**It is required to use all three zones.**
+<figure>
+  <uxdot-example color-palette="lighter" no-border>
+    <img src="../nav-primary-style-anatomy.svg"
+        alt="Anatomy of primary navigation with numbered annotations pointing to various parts. Top left is the logo. The primary nav items follow on the right. then the secondary items are right aligned."
+        width="1012"
+        height="370">
+  </uxdot-example>
+  <figcaption>
+     <ol>
+       <li>Hat or logo</li>
+       <li>Primary menus</li>
+       <li>Cross-domain links</li>
+       <li>Utility menus</li>
+     </ol>
+  </figcaption>
+</figure>
 
-- **Zone 1** - Website logo
-- **Zone 2** - Menus
-- **Zone 3** - Utilities
+## Color scheme
 
-<rh-alert state="info">
-  <h4 slot="header">Helpful tip</h4>
-  <p>The website logo in Zone 1 should direct visitors to a home page when selected.</p>
-</rh-alert>
-
-<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../primary-nav-anatomy.png"
-        alt="Primary navigation - anatomy"
-        width="1000"
-        height="280">
-</uxdot-example>
-
-
-#### Website logo
-
-A branded logo corresponding to the website in which the primary navigation 
-is used. It will direct a visitor to the website home page when selected.
-
-#### Menus
-
-Text that triggers an expandable tray when selected. The content within is 
-specific to one website and does not appear d in the same format on other 
-websites.
-
-#### Utilities
-
-Actions or tools that display content within an expandable tray when 
-triggered or function as links. They can be unique to one website or global 
-across many websites.
-
-
-### Expandable tray
-
-When menu text in Zone 2 is selected, an **expandable tray** will appear. 
-It is divided into three parts and is styled the same across all primary 
-navigation instances.
-
-1. **Tab** - visually informs a visitor of what menu they selected
-1. **Tray** - the area to place content, links, etc.
-1. **Overlay** - separates tray content from website content underneath
-
-<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../expandable-tray.png"
-        alt="Primary navigation - expandable tray"
-        width="1000"
-        height="472">
-</uxdot-example>
-
-
-### Expandable tray tab
-
-When the expandable tray tab appears, text and icon colors are reversed. A tab 
-with a white background and red bar will also appear behind content.
+Primary navigation is available in both light and dark color schemes.
 
 <rh-alert state="info">
   <h4 slot="header">Helpful tip</h4>
-  <p>Menu text displays a gray arrow on hover to indicate that an expandable tray will appear when triggered.</p>
+  <p>It is recommended to match color schemes. For example, if you use lots of dark scheme elements, use the dark scheme primary navigation.</p>
 </rh-alert>
 
-<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../expandable-tray-tab.png"
-        alt="Primary navigation - expandable tray tab"
-        width="1000"
-        height="384">
+### Light scheme
+
+<uxdot-example color-palette="lightest" variant="full" no-border>
+  <img alt="Primary nav in a light scheme which means it has a white background"
+       src="../nav-primary-style-scheme-light.svg"
+       width="1140"
+       height="94">
+</uxdot-example>
+
+### Dark scheme
+
+<uxdot-example variant="full" no-border>
+  <img alt="Primary nav in a dark scheme which means it has a dark or black background"
+       src="../nav-primary-style-scheme-dark.svg"
+       width="1140"
+       height="94">
+</uxdot-example>
+
+## Menus
+
+### Primary menus
+
+Primary menus organize high-level topics into sections. When expanded, all menu backgrounds span the width of the browser window. Content is then organized within a fixed width container.
+
+<uxdot-example color-palette="lighter" no-border>
+  <img alt="A primary nav with a full width expanded primary menu with a placeholder showing where end users would put menu content."
+       src="../nav-primary-style-menus-primary.svg"
+       width="1012"
+       height="478">
 </uxdot-example>
 
 
-### Layout
+### Utility menus
 
-The primary navigation spans the entire width of the browser window on all 
-breakpoints.
+Utility menus organize secondary content like important user actions. The height and width of each menu is determined by the content inside. Some menus may have a different size than others.
 
-<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../layout-desktop.png"
-        alt="Primary navigation - layout (desktop)"
-        width="1000"
-        height="192">
+<uxdot-example color-palette="lighter" no-border>
+  <img alt="A primary nav with a one-third width expanded utility nav showing where content should be placed."
+       src="../nav-primary-style-menus-utility.svg"
+       width="1012"
+       height="478">
 </uxdot-example>
 
-<uxdot-example width-adjustment="360px" variant="full" alignment="left" no-border>
-  <img src="../layout-mobile.png"
-        alt="Primary navigation - layout (mobile)"
-        width="360"
-        height="192">
+## Space
+
+<uxdot-example color-palette="lighter" no-border>
+  <img alt="Primary nav has 32px of inline padding, 24 px of padding-block, 32px between each link. On mobile, the horizontal padding decreases to 16px."
+       src="../nav-primary-style-space-a.svg"
+       width="1012"
+       height="654">
 </uxdot-example>
 
-
-### Left-to-right languages
-
-When content is translated to other left-to-right languages, the primary 
-navigation maintains the same layout and text size.
-
-<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../languages-left-to-right.png"
-        alt="Primary navigation - left-to-right languages"
-        width="1000"
-        height="176">
+<uxdot-example color-palette="lighter" no-border>
+  <img alt="Expanded dropdown menus have 32px of padding on the top and bottom of the expanded menu."
+       src="../nav-primary-style-space-b.svg"
+       width="1012"
+       height="654">
 </uxdot-example>
 
+## Interaction states
 
-### Right-to-left languages
+### Hover
 
-When content is translated to a right-to-left language like Hebrew, the text 
-size increases so visual subtleties of unique characters are easier to notice.
+Certain elements have specific hover states.
 
-<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../languages-right-to-left.png"
-        alt="Primary navigation - right-to-left languages"
-        width="1000"
-        height="72">
+- The primary menu bottom border changes to gray
+- Links change color and display a dashed underline
+- The utility menu background changes to gray
+- The utility menu border changes to a [Hybrid style](/elements/navigation-primary/style/#hybrid-style) gradient
+
+<uxdot-example color-palette="lighter" no-border>
+  <img alt="Two navigations. The first shows a cursor hovering over the first item and a gray border underneath. The second shows two hover states. A link with an underline and a utility nav trigger with a darker background and hybrid style border."
+       src="../nav-primary-style-interaction-states-hover.svg"
+       width="1012"
+       height="228">
 </uxdot-example>
 
+### Focus
 
-## Responsive design
+There is one difference between hover and focus states.
 
-### Large breakpoints
+- The primary menu bottom border changes to a Hybrid style gradient
 
-Both menus and utilities are visible in the primary navigation on large 
-breakpoints.
-
-<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../breakpoints-large.png"
-        alt="Primary navigation - large breakpoints"
-        width="1000"
-        height="617">
+<uxdot-example color-palette="lighter" no-border>
+  <img alt="All interactive items on focus recieve the hover state plus a blue focus ring surrounding the entire trigger."
+       src="../nav-primary-style-interaction-states-focus.svg"
+       width="1012"
+       height="228">
 </uxdot-example>
 
+### Active
 
-### Medium breakpoints
+Primary and utility menus display subtle visual changes.
 
-As breakpoints become smaller, menus will collapse into a utility and 
-accordion. **This includes full-width and fixed-width expandable 
-trays.** On tablet breakpoints, a menu utility replaces the horizontal 
-list of menus and maintains the same position for a smoother transition from 
-large to small breakpoints.
+- The caret icon rotates and points up instead of down
+- The utility menu border becomes 1px thicker
 
-<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../breakpoints-medium.png"
-        alt="Primary navigation - medium breakpoints"
-        width="768"
-        height="72">
+<uxdot-example color-palette="lighter" no-border>
+  <img alt="Two navs showing active states. The blue focus ring exists alongside the points outlined above."
+       src="../nav-primary-style-interaction-states-active.svg"
+       width="1012"
+       height="228">
 </uxdot-example>
 
+### Hybrid style
 
-### Small breakpoints
+Some interaction state properties leverage Hybrid style, our new system of visual elements.
 
-On small breakpoints, the menus and most of the utilities collapse into a menu 
-and accordion.
-
-<uxdot-example width-adjustment="576px" variant="full" alignment="left" no-border>
-  <img src="../breakpoints-small.png"
-        alt="Primary navigation - small breakpoints"
-        width="576"
-        height="745">
-</uxdot-example>
-
-
-## Best practices
-
-### Content overload
-
-Do not overload the primary navigation with too many menus and utilities.
-
-<uxdot-example width-adjustment="1000px" danger >
-  <img src="../best-practice-1.png"
-        alt="Primary navigation - best practice 1"
-        width="1000"
-        height="72">
-</uxdot-example>
-
-
-### Using icons alone
-
-Do not rely on icons alone to accurately represent content or actions, 
-ambiguity will not help visitors find what they need.
-
-<uxdot-example width-adjustment="1000px" danger >
-  <img src="../best-practice-2.png"
-        alt="Primary navigation - best practice 2"
-        width="1000"
-        height="72">
-</uxdot-example>
-
-
-### Change spacing
-
-Do not change the spacing between menus and utilities.
-
-<uxdot-example width-adjustment="1000px" danger >
-  <img src="../best-practice-3.png"
-        alt="Primary navigation - best practice 3"
-        width="1000"
-        height="72">
-</uxdot-example>
-
-
-### Hiding menus and utilities
-
-Do not hide menus and utilities on large breakpoints.
-
-<uxdot-example width-adjustment="1000px" danger >
-  <img src="../best-practice-4.png"
-        alt="Primary navigation - best practice 4"
-        width="1000"
-        height="72">
-</uxdot-example>
-
-
-### Mixing expandable trays
-
-Do not mix the full-width and fixed-width expandable trays within the same 
-menu group.
-
-<uxdot-example width-adjustment="1000px" danger >
-  <img src="../best-practice-5.png"
-        alt="Primary navigation - best practice 5"
-        width="1000"
-        height="616">
-</uxdot-example>
-
-
-## Spacing
-
-The primary navigation uses [spacers](/foundations/spacing) to define space values 
-between elements.
-
-### Extra large breakpoints
-
-<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../spacing-extra-large.png"
-        alt="Primary navigation - Spacing for extra large breakpoints"
-        width="1000"
-        height="544">
-</uxdot-example>
-
-
-### Large breakpoints
-
-<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../spacing-large.png"
-        alt="Primary navigation - Spacing for large breakpoints"
-        width="1000"
-        height="544">
-</uxdot-example>
-
-
-### Medium breakpoints
-
-<uxdot-example width-adjustment="768px" variant="full" alignment="left" no-border>
-  <img src="../spacing-medium.png"
-        alt="Primary navigation - Spacing for medium breakpoints"
-        width="768"
-        height="641">
-</uxdot-example>
-
-
-### Small breakpoints
-
-<uxdot-example width-adjustment="360px" variant="full" alignment="left" no-border>
-  <img src="../spacing-small.png"
-        alt="Primary navigation - Spacing for small breakpoints"
-        width="360"
-        height="641">
-</uxdot-example>
-
-
-### Fixed-width expandable tray
-
-<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img src="../spacing-fixed-width-tray.png"
-        alt="Primary navigation - Spacing for the fixed-width expandable tray"
-        width="1000"
-        height="411">
-</uxdot-example>
+Learn more about Hybrid style in the [Brand standards](https://www.redhat.com/en/about/brand/standards) section.

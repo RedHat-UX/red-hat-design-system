@@ -84,7 +84,7 @@ and adapts to meet new challenges.
 <rh-cta href="https://www.redhat.com/en/about/brand/standards">Learn about the Red Hat brand</rh-cta>
 
 <uxdot-example variant="full" no-border alignment="left" width-adjustment="1140px">
- <img src="../assets/about/about-rhds-brand-standards.png"
+ <img src="../assets/about/about-rhds-brand-standards.avif"
       alt="the words 'brand standards' framed by elements and shapes in Red Hat colors"
       width="1140"
       height="286">
@@ -94,13 +94,13 @@ and adapts to meet new challenges.
 
 Our foundations are implemented through design tokens, which are used in lieu of 
 hard-coded values for color, text attributes, spacing, and more. Tokens help us 
-keep web components flexible and scalable. Additionally, semantic token names 
+keep Web Components flexible and scalable. Additionally, semantic token names 
 help us assign consistent meanings that correspond with foundational guidelines.
 
 <rh-cta href="/tokens/">Learn about our tokens</rh-cta>
 
-<uxdot-example width-adjustment="807px">
- <img src="/tokens/images/design-tokens-intro.png"
+<uxdot-example color-palette="lightest" width-adjustment="807px">
+ <img src="/tokens/images/design-tokens-intro.avif"
       alt="Flow showing how a color like brand red becomes a token, how it is named, and how it is applied to a call to action"
       width="807"
       height="96">
@@ -149,10 +149,7 @@ upgraded easily, allowing for consistency, scalability, and flexibility.
 <rh-cta href="https://patternflyelements.org/">Visit PatternFly Elements</rh-cta>
 
 <uxdot-example width-adjustment="558px">
- <img src="../assets/about/about-rhds-pf-pfe.svg"
-      alt="A back-to-top element that looks the same in RHDS, PatternFly, and PatternFly Elements"
-      width="558"
-      height="58">
+{% include './about-rhds-pf-pfe.svg' %}
 </uxdot-example>
 
 ## We provide support

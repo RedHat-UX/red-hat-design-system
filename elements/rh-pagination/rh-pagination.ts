@@ -1,15 +1,15 @@
 import type { PropertyValues } from 'lit';
 
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
+import { state } from 'lit/decorators/state.js';
 import { query } from 'lit/decorators/query.js';
-import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
-import { DirController } from '../../lib/DirController.js';
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-pagination.css';
 
@@ -25,29 +25,28 @@ const L2 = html`
 
 /**
  * A paginator allows users to navigate between pages of related content.
+ *
  * @summary Allows users to navigate content divided into pages
- * @slot            - An ordered list of links
- * @slot go-to-page - "Go to page" text, defaults to "Page"
- * @slot out-of     - "of" text
- * @csspart container - pagination container
- * @csspart numeric-middle - container for the numeric control at medium screen widths
- * @csspart numeric-end - container for the numeric control at small and large screen widths
- * @csspart numeric - shared container for the numeric controls at all widths
- * @cssprop [--rh-pagination-accent-color=var(--rh-color-interactive-blue, #0066cc)]
- *          Sets the outline color when the page input has focus.
- * @cssprop [--rh-pagination-background-focused=var(--rh-color-gray-20, #c7c7c7)]
- *          Sets the disabled stepper color.
- * @cssprop [--rh-pagination-stepper-color=var(--rh-color-icon-subtle, #707070)]
- *           Sets the stepper color.
+ *
+ * @alias pagination
+ *
  */
 @customElement('rh-pagination')
+@themable
 export class RhPagination extends LitElement {
-  static readonly version = '{{version}}';
-
-  /** Sets color theme based on parent context */
-  @colorContextConsumer() private on?: ColorTheme;
-
   static readonly styles = [styles];
+
+  private static instances = new Set<RhPagination>();
+
+  static {
+    if (!isServer) {
+      globalThis.addEventListener('hashchange', () => {
+        for (const instance of RhPagination.instances) {
+          instance.requestUpdate();
+        }
+      });
+    }
+  }
 
   /**
    * Override `overflow` values set from HTML or JS.
@@ -81,11 +80,10 @@ export class RhPagination extends LitElement {
 
   @query('input') private input?: HTMLInputElement;
 
-  #dir = new DirController(this);
-  #mo = new MutationObserver(() => this.#update());
+  #mo = new MutationObserver(() => this.requestUpdate());
   #logger = new Logger(this);
 
-  #ol = this.querySelector('ol');
+  #ol = isServer ? null : this.querySelector('ol');
   #links = this.#ol?.querySelectorAll<HTMLAnchorElement>('li a');
 
   #firstLink: HTMLAnchorElement | null = null;
@@ -94,86 +92,135 @@ export class RhPagination extends LitElement {
   #prevLink: HTMLAnchorElement | null = null;
   #currentLink = this.#getCurrentLink();
   #currentIndex = 0;
+
+  @state() private total = 0;
+  @state() private firstHref?: string;
+  @state() private lastHref?: string;
+  @state() private nextHref?: string;
+  @state() private prevHref?: string;
+  @state() private currentHref?: string;
+
   get #currentPage() {
     return this.#currentIndex + 1;
   }
 
-  connectedCallback(): void {
+  override connectedCallback(): void {
     super.connectedCallback();
-    this.#mo.observe(this, { childList: true, subtree: true });
+    RhPagination.instances.add(this);
+    // Validate DOM
+    if (!isServer) {
+      this.#mo.observe(this, { childList: true, subtree: true });
+      if (!this.#ol || [...this.children].filter(x => !x.slot).length > 1) {
+        this.#logger.warn('must have a single <ol> element as it\'s only child');
+      }
+    }
   }
 
-  disconnectedCallback(): void {
+  override disconnectedCallback(): void {
     super.disconnectedCallback();
+    RhPagination.instances.delete(this);
     this.#mo.disconnect();
   }
 
-  update(changed: PropertyValues<this>): void {
-    this.#update();
+  override update(changed: PropertyValues<this>): void {
+    if (!isServer) {
+      this.querySelector('[aria-current="page"]')?.removeAttribute('aria-current');
+      this.#updateLightDOMRefs();
+      this.overflow = this.#getOverflow();
+    }
     super.update(changed);
   }
 
-  render() {
-    const { on = '' } = this;
-    const { dir } = this.#dir;
-    const { label, labelFirst, labelPrevious, labelNext, labelLast } = this;
-    const firstHref = this.#currentLink === this.#firstLink ? undefined : this.#firstLink?.href;
-    const prevHref = this.#prevLink?.href;
-    const nextHref = this.#nextLink?.href;
-    const lastHref = this.#currentLink === this.#lastLink ? undefined : this.#lastLink?.href;
-    const currentPage = this.#currentPage.toString();
-
-    return html`
-      <div id="container" part="container"
-           class=${classMap({ [dir]: true, [on]: !!on })}>
-        <a id="first" class="stepper" href=${ifDefined(firstHref)} ?inert=${!firstHref} aria-label=${labelFirst}>${L2}</a>
-        <a id="prev" class="stepper" href=${ifDefined(prevHref)} ?inert=${!prevHref} aria-label=${labelPrevious}>${L1}</a>
-        <nav aria-label=${label}>
-          <slot></slot>
-        </nav>
-        <div id="numeric-middle" part="numeric-middle">
-          ${this.#numericContent(currentPage, lastHref)}
-        </div>
-        <a id="next" class="stepper" href=${ifDefined(nextHref)} ?inert=${!nextHref} aria-label=${labelNext}>${L1}</a>
-        <a id="last" class="stepper" href=${ifDefined(lastHref)} ?inert=${!lastHref} aria-label=${labelLast}>${L2}</a>
-        <div id="numeric-end" part="numeric-end">
-          ${this.#numericContent(currentPage, lastHref)}
-        </div>
-      </div>
-    `;
+  override updated() {
+    if (!isServer && this.hasUpdated) {
+      this.total = this.#links?.length ?? 0;
+      this.firstHref = this.#firstLink?.href;
+      this.lastHref = this.#lastLink?.href;
+      this.prevHref = this.#prevLink?.href;
+      this.nextHref = this.#nextLink?.href;
+      this.currentHref = this.#currentLink?.href;
+      this.#checkValidity();
+    }
   }
 
-  #numericContent(currentPage: string, lastHref?: string, ) {
-    return html`
+  override render() {
+    const {
+      label,
+      labelFirst,
+      labelPrevious,
+      labelNext,
+      labelLast,
+      firstHref,
+      prevHref,
+      nextHref,
+      lastHref,
+    } = this;
+    const currentPage = this.#currentPage.toString();
+    const numericContent = html`
+      <!-- shared container for the numeric controls at all widths -->
       <div id="numeric" part="numeric">
         <span id="go-to-page" class="xxs-visually-hidden sm-visually-visible">
+          <!-- "Go to page" text, defaults to "Page" -->
           <slot name="go-to-page">
             Page
           </slot>
         </span>
         <input inputmode="numeric"
-            required
-            min=1 max=${this.#links?.length ?? 1}
-            aria-labelledby="go-to-page"
-            @change=${this.#onChange}
-            @keyup=${this.#onKeyup}
-            .value=${currentPage}>
-        <slot name="out-of">of</slot>
-        <a href=${ifDefined(lastHref)}>${this.#links?.length}</a>
+               required
+               min=1
+               max="${this.total}"
+               aria-labelledby="go-to-page"
+               @change="${this.#onChange}"
+               @keyup="${this.#onKeyup}"
+               .value="${currentPage}">
+        <!-- "of" text -->
+        <slot ?hidden="${!this.total}" name="out-of">of</slot>
+        <a ?hidden="${!this.total}" href="${ifDefined(lastHref)}">${this.total}</a>
+      </div>
+    `;
+
+    return html`
+      <!-- pagination container -->
+      <div id="container" part="container">
+        <a id="first"
+           class="stepper"
+           href="${ifDefined(firstHref)}"
+           .inert="${this.#currentLink === this.#firstLink}"
+           aria-label="${labelFirst}">${L2}</a>
+        <a id="prev"
+           class="stepper"
+           href="${ifDefined(prevHref)}"
+           .inert="${this.#currentLink === this.#prevLink || this.#currentLink === this.#firstLink}"
+           aria-label="${labelPrevious}">${L1}</a>
+        <nav aria-label="${label}">
+          <!-- An ordered list of links -->
+          <slot></slot>
+        </nav>
+        <!-- container for the numeric control at medium screen widths -->
+        <div id="numeric-middle" part="numeric-middle">
+          ${numericContent}
+        </div>
+        <a id="next"
+           class="stepper"
+           href="${ifDefined(nextHref)}"
+           .inert="${this.#currentLink === this.#nextLink || this.#currentLink === this.#lastLink}"
+           aria-label="${labelNext}">${L1}</a>
+        <a id="last"
+           class="stepper"
+           href="${ifDefined(lastHref)}"
+           .inert="${this.#currentLink === this.#lastLink}"
+           aria-label="${labelLast}">${L2}</a>
+        <!-- container for the numeric control at small and large screen widths -->
+        <div id="numeric-end" part="numeric-end">
+          ${numericContent}
+        </div>
       </div>
     `;
   }
 
-  #update() {
-    this.querySelector('[aria-current="page"]')?.removeAttribute('aria-current');
-    this.#updateLightDOMRefs();
-    this.overflow = this.#getOverflow();
-    this.#checkValidity();
-  }
-
   #getOverflow(): 'start' | 'end' | 'both' | null {
     const overflowAt = 9;
-    const length = this.#links?.length ?? 0;
+    const length = this.total;
     if (length <= overflowAt) {
       return null;
     }
@@ -190,6 +237,9 @@ export class RhPagination extends LitElement {
   }
 
   #getCurrentLink(): HTMLAnchorElement | null {
+    if (isServer) {
+      return null;
+    }
     const ariaCurrent = this.querySelector<HTMLAnchorElement>('li a[aria-current="page"]');
     if (ariaCurrent) {
       return ariaCurrent;
@@ -232,15 +282,11 @@ export class RhPagination extends LitElement {
 
   #checkValidity(): boolean {
     let message = '';
-    // Validate DOM
-    if (!this.#ol || [...this.children].filter(x => !x.slot).length > 1) {
-      message = 'must have a single <ol> element as it\'s only child';
-    }
     // Validate user input
     if (this.input && this.#links) {
       if (Number.isNaN(this.#currentPage)) {
         message = `${this.#currentPage} is not a valid page number`;
-      } else if (this.#currentPage > this.#links.length || this.#currentPage < 1) {
+      } else if (this.#currentPage > this.total || this.#currentPage < 1) {
         message = `cannot navigate to page ${this.#currentPage}`;
       }
       this.input.setCustomValidity(message);
@@ -256,6 +302,7 @@ export class RhPagination extends LitElement {
    * 1. Normalize the element state
    * 2. validate and act on the input
    * 3. update the element in case a full browser navigation was prevented (e.g. SPA routing)
+   * @param id
    */
   async #go(id: 'first' | 'prev' | 'next' | 'last' | number) {
     await this.updateComplete;
@@ -274,7 +321,7 @@ export class RhPagination extends LitElement {
     if (!(event.target instanceof HTMLInputElement) || !this.#links) {
       return;
     }
-    const max = this.#links.length.toString();
+    const max = this.total.toString();
     const input = event.target;
     if (parseInt(input.value) > parseInt(max)) {
       input.value = max;
@@ -312,7 +359,10 @@ export class RhPagination extends LitElement {
     return this.#go('last');
   }
 
-  /** Navigate to a specific page */
+  /**
+   * Navigate to a specific page
+   * @param page
+   */
   go(page: 'first' | 'prev' | 'next' | 'last' | number) {
     return this.#go(page);
   }

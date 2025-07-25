@@ -1,29 +1,35 @@
 import type { ElementDocsPageData } from '#11ty-plugins/element-docs.js';
-import type { ClassMethod } from 'custom-elements-manifest';
-import type { FileOptions, ProjectManifest } from 'playground-elements/shared/worker-api.js';
+import type * as CEM from 'custom-elements-manifest';
 
 import { tokens } from '@rhds/tokens/meta.js';
 import { join } from 'node:path';
-import { fileURLToPath } from 'node:url';
 import { readFile } from 'node:fs/promises';
-import { copyCell, dedent, getTokenHref } from '#11ty-plugins/tokensHelpers.js';
-import { Generator } from '@jspm/generator';
+import { capitalize, copyCell, dedent, getTokenHref } from '#11ty-plugins/tokensHelpers.js';
+import { getPfeConfig } from '@patternfly/pfe-tools/config.js';
 import { AssetCache } from '@11ty/eleventy-fetch';
 import { Renderer } from '#eleventy.config';
 import type { ImportMap } from '#11ty-plugins/importMap.js';
 
-type FileEntry = [string, FileOptions & { inline: string }];
+import { serialize } from 'parse5';
+
+import * as Tools from '@parse5/tools';
+
+import {
+  getAllManifests,
+  type DemoRecord,
+} from '@patternfly/pfe-tools/custom-elements-manifest/custom-elements-manifest.js';
+import { parseFragment } from 'parse5';
 
 const html = String.raw; // for editor highlighting
-const { version: packageVersion } =
-  JSON.parse(await readFile(
-    fileURLToPath(import.meta.resolve('@rhds/elements')).replace('elements.js', 'package.json'),
-    'utf8',
-  ));
+const pfeconfig = getPfeConfig();
 
-function stringifyParams(method: ClassMethod) {
+function stringifyParams(method: CEM.ClassMethod) {
   return method.parameters?.map?.(p =>
     `${p.name}: ${p.type?.text ?? 'unknown'}`).join(', ') ?? '';
+}
+
+function getDeprecationReason(deprecatable: { deprecated?: true | string }): string {
+  return deprecatable.deprecated === true ? '' : deprecatable.deprecated ?? '';
 }
 
 interface EleventyPageRenderData {
@@ -41,7 +47,17 @@ interface Context extends EleventyPageRenderData {
   tagName: string;
   isLocal: boolean;
   importMap: { imports: Record<string, string>; scopes: Record<string, Record<string, string>> };
-  playgrounds: Record<`rh-${string}`, ProjectManifest>;
+}
+
+const [manifest] = getAllManifests();
+
+class NoElementInDemoError extends Error {
+  constructor(
+    public tagName: string,
+    public filePath: string,
+  ) {
+    super(`ENOTAG: ${filePath} does not contain ${tagName}`);
+  }
 }
 
 export default class ElementsPage extends Renderer<Context> {
@@ -52,23 +68,24 @@ export default class ElementsPage extends Renderer<Context> {
       layout: 'layouts/pages/has-toc.njk',
       permalink: ({ doc }: Context) => doc.permalink,
       eleventyComputed: {
-        title: ({ doc }: Context) => doc.pageTitle,
+        title: ({ doc }: Context) => `${doc.pageTitle} | ${pfeconfig.aliases[doc.tagName] ?? capitalize(doc.tagName.replace('rh-', '').replaceAll('-', ' '))}`,
         tagName: ({ doc }: Context) => doc.tagName,
       },
     };
   }
 
+  static demoManifestsForTagNames =
+    Object.groupBy(getAllManifests()
+        .flatMap(manifest => manifest.getTagNames()
+            .flatMap(tagName => manifest.getDemoMetadata(tagName, getPfeConfig())
+                .filter(x => x.filePath?.includes(tagName)))),
+                   x => x.primaryElementName);
+
   async render(ctx: Context) {
-    const { doc } = ctx;
-    const {
-      fileExists,
-      filePath,
-      isCodePage,
-      isDemoPage,
-      isOverviewPage,
-      tagName,
-      planned,
-    } = doc;
+    const { fileExists, filePath, pageSlug, planned, tagName } = ctx.doc;
+    const isCodePage = pageSlug === 'code';
+    const isDemoPage = pageSlug === 'demos';
+    const isOverviewPage = pageSlug === 'overview';
     const content = fileExists ? await this.renderFile(filePath, ctx) : '';
     const stylesheets = [
       '/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css',
@@ -105,6 +122,7 @@ export default class ElementsPage extends Renderer<Context> {
         import '@rhds/elements/rh-accordion/rh-accordion.js';
         import '@rhds/elements/rh-badge/rh-badge.js';
         import '@rhds/elements/rh-tag/rh-tag.js';
+        import '@patternfly/elements/pf-select/pf-select.js';
       </script>
 
       ${planned ? '' : html`
@@ -113,8 +131,8 @@ export default class ElementsPage extends Renderer<Context> {
       </script>`}
 
       ${isOverviewPage ? await this.#renderOverviewPage(content, ctx)
-      : isCodePage ? await this.#renderCodePage(ctx)
-      : isDemoPage ? await this.#renderDemos(ctx)
+      : isCodePage ? await this.#renderCodePage(content, ctx)
+      : isDemoPage ? await this.#renderDemos(content, ctx)
       : content}
 
       ${await this.renderFile('./docs/_includes/partials/component/feedback.11ty.ts', ctx)}
@@ -127,26 +145,6 @@ export default class ElementsPage extends Renderer<Context> {
     <span slot="action-label-wrap">Wrap lines</span>
     <span slot="action-label-wrap" hidden data-code-block-state="active">Overflow lines</span>
   `;
-
-  async #generateImportMap(tagName: string) {
-    const { assetCache } = ElementsPage;
-    if (!assetCache.isCacheValid('1d')) {
-      const generator = new Generator({
-        cache: false,
-        // prevent node from resolving @rhds/elements to cwd
-        // see https://discord.com/channels/570400367884501026/724211491087056916/1290733101923700737
-        baseUrl: 'about:blank',
-        defaultProvider: 'jspm.io',
-      });
-      await generator.install('@rhds/elements');
-      await assetCache.save(generator.getMap(), 'json');
-    }
-    const map = structuredClone(await assetCache.getCachedValue());
-    map.imports![`@rhds/elements/${tagName}/${tagName}.js`] =
-      map.imports!['@rhds/elements'].replace('elements.js', `${tagName}/${tagName}.js`);
-    delete map.imports!['@rhds/elements'];
-    return JSON.stringify(map, null, 2);
-  }
 
   async #innerMD(content = '') {
     return (await this.renderTemplate(content.trim(), 'md')).trim();
@@ -166,38 +164,127 @@ export default class ElementsPage extends Renderer<Context> {
     }
   }
 
+  async #getOverviewInlineSvg(ctx: Context) {
+    const svgPath = join(
+      process.cwd(),
+      'elements',
+      ctx.tagName,
+      'docs',
+      ctx.doc.overviewImageHref!,
+    );
+    return readFile(svgPath, 'utf8');
+  }
+
+  #header(text: string, level = 2, id = this.slugify(text)) {
+    return html`
+      <uxdot-copy-permalink class="h${level}">
+        <h${level} id="${id}">
+          <a href="#${id}">${text}</a>
+        </h${level}>
+      </uxdot-copy-permalink>`;
+  }
+
   async #renderOverviewPage(content: string, ctx: Context) {
     const description = ctx.doc.docsPage.description ?? ctx.doc.description ?? '';
     return html`${!ctx.doc.planned ? '' : html`
-      <h2 id="coming-soon">Coming soon!</h2>
-      <p>This element is currently in progress and not yet available for
-      use.</p>`}
-      <h2 id="overview">Overview</h2>
+      ${this.#header('Coming soon!')}
+      <p>This element is currently in progress and not yet available for use.</p>`}
+      ${this.#header('Overview')}
       ${await this.renderTemplate(description, 'md')}
-      ${!ctx.doc.overviewImageHref ? '' : html`
-      <uxdot-example><img src="${ctx.doc.overviewImageHref}" alt="" aria-labelledby="overview-image-description"></uxdot-example>`}
-      <h2 id="status">Status</h2>
+      ${!ctx.doc.overviewImageHref ? await this.#renderKnobs(ctx)
+       : ctx.doc.overviewImageHref.endsWith('svg') ? html`
+      <uxdot-example>${await this.#getOverviewInlineSvg(ctx)}</uxdot-example>
+      ` : html`
+      <uxdot-example color-palette="lightest"><img src="${ctx.doc.overviewImageHref}" alt="" aria-labelledby="overview-image-description"></uxdot-example>`}
+      ${this.#header('Status')}
       <uxdot-repo-status-list element="${ctx.tagName}"></uxdot-repo-status-list>
-      <h2 id="sample-element">Sample element</h2>
-      ${ctx.doc.mainDemoContent}
       ${content}
-      <h2 id="status-checklist">Status checklist</h2>
+      ${this.#header('Status checklist')}
       <uxdot-repo-status-checklist element="${ctx.tagName}"></uxdot-repo-status-checklist>
     `;
   }
 
-  async #renderCodePage(ctx: Context) {
+  async #renderKnobs(ctx: Context) {
+    // set up an iframe
+    // inject a script which receives messages from the parent
+    // render knobs based on cem - these are ces, one element per field type
+    // e.g. uxdot-knob-attribute
+    //      uxdot-knob-slot
+    //      uxdot-knob-event (read only), etc
+    //
+    const tagName = ctx.tagName as `rh-${string}`;
+    const [demo] = ElementsPage.demoManifestsForTagNames[tagName] ?? [];
+    if (!demo?.filePath) {
+      return '';
+    };
+    const attributes = manifest.getAttributes(tagName) ?? [];
+    const content = await readFile(demo.filePath, 'utf-8');
+    const fragment = parseFragment(content);
+    const isOurNode = (node: Tools.Node) =>
+      Tools.isElementNode(node) && node.tagName === ctx.tagName;
+    const elementNode: Tools.Element | null =
+      Tools.query(fragment, isOurNode);
+    if (!elementNode) {
+      const templatedElementNode =
+        Tools.queryAll(fragment, node => Tools.isTemplateNode(node)
+          && !!Tools.query(node.content, isOurNode));
+      if (!templatedElementNode) {
+        throw new NoElementInDemoError(
+          ctx.tagName,
+          demo.filePath,
+        );
+      }
+    }
+
+
+    return html`
+      <script type="module" data-helmet>
+        import '@uxdot/elements/uxdot-demo.js';
+        import '@uxdot/elements/uxdot-knob-attribute.js';
+      </script>
+      ${await this.#renderDemo(demo, ctx, (await Promise.all(attributes.map(async attr => {
+        const type = attr.type?.text?.replaceAll('"', '\\"');
+        const description =
+            !attr.description ? ''
+          : await this.renderTemplate(attr.description, 'md');
+        return html`
+          <uxdot-knob-attribute slot="knobs"
+                                tag="${ctx.tagName}"
+                                name="${attr.name}"${!type ? '' : html`
+                                type="${type}"`}${!attr.default ? '' : html`
+                                default="${attr.default}"`}>
+            <div slot="description">${description}</div>
+          </uxdot-knob-attribute>`;
+        }))).join(''))}
+    `;
+  }
+
+  async #renderCodePage(content: string, ctx: Context) {
     const { doc } = ctx;
     const { tagName } = doc.docsPage;
     return [
-      await this.#renderInstallation.call(this, ctx),
+      content,
+      html`
+      <section class="band" id="installation">
+        ${this.#header('Importing')}
+        <p>Add ${doc.docsPage.tagName} to your page with this import statement:</p>
+        <rh-code-block actions="copy" highlighting="prerendered">${this.highlight('html', dedent(html`
+          <script type="module">
+            import '@rhds/elements/${doc.docsPage.tagName}/${doc.docsPage.tagName}.js';
+          </script>`))}
+          ${this.#actionsLabels}
+        </rh-code-block>
+        <p>To learn more about installing RHDS elements on your site using an import map read our <a href="/get-started/developers/installation/">getting started docs</a>.        
+      </section>
+      `,
+
+
       await this.#renderLightdom(ctx),
-      html`<h2 id="usage">Usage</h2>`,
+      this.#header('Usage'),
       await this.#getMainDemoContent(tagName),
-      doc.fileExists && await this.renderFile(doc.filePath, ctx),
       await this.#renderCodeDocs.call(this,
                                       doc.docsPage.tagName,
-                                      { ...ctx, level: (ctx.level ?? 2) + 1 }),
+                                      { ...ctx, level: (ctx.level ?? 1) + 1 }),
       ...await Promise.all(doc.siblingElements.map(tagName =>
         this.#renderCodeDocs.call(this, tagName, ctx))),
     ].filter(Boolean).join('');
@@ -209,7 +296,7 @@ export default class ElementsPage extends Renderer<Context> {
     // TODO: revisit after implementing auto-loaded light-dom css
     if (ctx.doc.hasLightdom) {
       content += html`
-        <h3 id="lightdom-css">Lightdom CSS</h3>
+        ${this.#header('Lightdom CSS', 3)}
 
         <p>This element requires you to load "Lightdom CSS" stylesheets for styling
            deeply slotted elements.</p>
@@ -228,7 +315,7 @@ export default class ElementsPage extends Renderer<Context> {
     }
     if (ctx.doc.hasLightdomShim) {
       content += html`
-        <h3 id="lightdom-css-shim">Lightdom CSS shim</h3>
+        ${this.#header('Lightdom CSS shim', 3)}
 
         <rh-alert state="warning">
           <h4 slot="header">Warning</h4>
@@ -254,90 +341,6 @@ export default class ElementsPage extends Renderer<Context> {
     return content;
   }
 
-  async #renderInstallation({ doc, cdnVersion = 'v1-alpha' }: Context) {
-    const jspmMap = await this.#generateImportMap(doc.docsPage.tagName)
-        .catch(() => {
-          // try again
-          ElementsPage.assetCache.cache.destroy();
-          return this.#generateImportMap(doc.docsPage.tagName);
-        })
-        .catch(error => {
-          console.warn(error); // eslint-disable-line no-console
-          return `Could not generate import map using JSPM: ${error.message}`;
-        });
-
-    return html`
-      <script data-helmet type="module">
-        import "@uxdot/elements/uxdot-installation-tabs.js";
-      </script>
-      <style data-helmet>${''/* NOTE: adapted from theming/developers.css - better to wrap the localhost behaviour? */}
-      uxdot-installation-tabs {
-        border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle);
-        border-radius: var(--rh-border-radius-default);
-        max-width: 56rem; /* warning: magic number */
-        overflow: hidden;
-        & rh-tab-panel {
-          padding: 0;
-          border-radius: 0;
-        }
-        & rh-code-block {
-          --rh-border-radius-default: 0;
-          --rh-border-width-sm: 0px;
-          border-width: 0;
-        }
-      }
-      .attributes rh-table td.type pre {
-        background: transparent;
-        margin: 0;
-        padding: 0;
-        display: inline;
-      }
-      </style>
-      <section class="band">
-        <h2 id="installation">Installation</h2>
-        <p>We recommend import maps when building pages with RHDS. Learn more about how to install on our <a href="/get-started/developers/installation/">getting started docs</a>.</p>
-        <uxdot-installation-tabs>
-          <rh-tab slot="tab">Red Hat CDN</rh-tab>
-          <rh-tab-panel>
-            <rh-code-block actions="copy" highlighting="prerendered">${this.highlight('html', dedent(html`
-              <script type="importmap">
-              {
-                "imports": {
-                  "@rhds/elements/": "https://www.redhatstatic.com/dx/${cdnVersion}/@rhds/elements@${packageVersion}/elements/",
-                }
-              }
-              </script>`))}
-              ${this.#actionsLabels}
-            </rh-code-block>
-          </rh-tab-panel>
-          <rh-tab slot="tab">NPM</rh-tab>
-          <rh-tab-panel>
-            <rh-code-block actions="copy" highlighting="prerendered">${this.highlight('shell', `npm install @rhds/elements`)}${this.#actionsLabels}
-            </rh-code-block>
-          </rh-tab-panel>
-          <rh-tab slot="tab">JSPM</rh-tab>
-          <rh-tab-panel>
-            <rh-code-block actions="copy" highlighting="prerendered">${this.highlight('html', dedent(html`
-              <script type="importmap">
-              ${jspmMap}
-              </script>`))}
-              ${this.#actionsLabels}
-            </rh-code-block>
-          </rh-tab-panel>
-        </uxdot-installation-tabs>
-
-        <p>Add it to your page with this import statement</p>
-
-        <rh-code-block actions="copy" highlighting="prerendered">${this.highlight('html', dedent(html`
-          <script type="module">
-            import '@rhds/elements/${doc.docsPage.tagName}/${doc.docsPage.tagName}.js';
-          </script>`))}
-          ${this.#actionsLabels}
-        </rh-code-block>
-      </section>
-    `;
-  }
-
   async #renderCodeDocs(tagName: string, ctx: Context) {
     const { docsPage } = ctx.doc;
     const { manifest } = docsPage;
@@ -346,9 +349,9 @@ export default class ElementsPage extends Renderer<Context> {
 
     // TODO: dsd
     return html`
-      <h${h} id="${tagName}-apis">${tagName}</h${h}>
+      ${this.#header(tagName, h, `${tagName}-apis`)}
 
-      <p>${manifest.getDescription(tagName)}</p>
+      ${await this.renderTemplate(manifest.getDescription(tagName) ?? '', 'md')}
 
       <rh-accordion box>
         ${await this.#renderSlots(tagName, ctx)}
@@ -384,6 +387,7 @@ export default class ElementsPage extends Renderer<Context> {
               <thead>
                 <tr>
                   <th scope="col">Slot Name</th>
+                  <th scope="col">Summary</th>
                   <th scope="col">Description</th>
                 </tr>
               </thead>
@@ -391,34 +395,35 @@ export default class ElementsPage extends Renderer<Context> {
                 ${(await Promise.all(slots.map(async slot => html`
                 <tr>
                   <td><code>${slot.name}</code></td>
+                  <td>${await this.#innerMD(slot.summary)}</td>
                   <td>${await this.#innerMD(slot.description)}</td>
                 </tr>`))).join('')}
               </tbody>
             </table>
-          </rh-table>`}${!deprecated.length ? '' : html`
-          <details>
-            <summary><h${level + 1}>Deprecated Slots</h${level + 1}></summary>
+          </rh-table>`}${!deprecated.length ? '' : /* NB: we need to use our own stuff. don't replace with details */ html`
+          <rh-disclosure summary="Deprecated Slots">
             <rh-table>
               <table>
                 <thead>
                   <tr>
                     <th scope="col">Slot Name</th>
+                    <th scope="col">Summary</th>
                     <th scope="col">Description</th>
+                    <th scope="col">Reason</th>
                   </tr>
                 </thead>
                 <tbody>
                   ${(await Promise.all(deprecated.map(async slot => html`
                   <tr>
                     <td><code>${slot.name}</code></td>
-                    <td>
-                      ${await this.#innerMD(slot.description)}
-                      <em>Note: ${slot.name} is deprecated. ${await this.#innerMD(String(slot.deprecated ?? ''))}</em>
-                    </td>
+                    <td>${await this.#innerMD(slot.summary)}</td>
+                    <td>${await this.#innerMD(slot.description)}</td>
+                    <td>${await this.#innerMD(getDeprecationReason(slot))}</td>
                   </tr>`))).join('')}
                 </tbody>
               </table>
             </rh-table>
-          </details>`}
+          </rh-disclosure>`}
         </section>
       </rh-accordion-panel>`;
   }
@@ -462,9 +467,8 @@ export default class ElementsPage extends Renderer<Context> {
               </tbody>
             </table>
           </rh-table>`}
-          ${!deprecated.length ? '' : html`
-          <details>
-            <summary><h${level + 1}>Deprecated Attributes<h${level + 1}></summary>
+          ${!deprecated.length ? '' : /* NB: we need to use our own stuff. don't replace with details */ html`
+          <rh-disclosure summary="Deprecated Attributes">
             <rh-table>
               <table>
                 <thead>
@@ -488,7 +492,7 @@ export default class ElementsPage extends Renderer<Context> {
                 </tbody>
               </table>
             </rh-table>
-          </details>`}
+          </rh-disclosure>`}
         </section>
       </rh-accordion-panel>
     `;
@@ -528,30 +532,28 @@ export default class ElementsPage extends Renderer<Context> {
                 </tr>`))).join('')}
               </tbody>
             </table>
-          </rh-table>`}${!deprecated.length ? '' : html`
-          <details>
-            <summary><h${level + 1}>Deprecated Methods</h${level + 1}></summary>
+          </rh-table>`}${!deprecated.length ? '' : /* NB: we need to use our own stuff. don't replace with details */ html`
+          <rh-disclosure summary="Deprecated Methods">
             <rh-table>
               <table>
                 <thead>
                   <tr>
                     <th scope="col">Method Name</th>
                     <th scope="col">Description</th>
+                    <th scope="col">Reason</th>
                   </tr>
                 </thead>
                 <tbody>
                   ${(await Promise.all(deprecated.map(async method => html`
                   <tr>
                     <td><code>${method.name}(${stringifyParams(method)})</code></td>
-                    <td>
-                      ${await this.#innerMD(method.description)}
-                      <em>Note: ${method.name} is deprecated. ${await this.#innerMD((method.deprecated ?? '').toString())}</em>
-                    </td>
+                    <td>${await this.#innerMD(method.description)}</td>
+                    <td>${await this.#innerMD(getDeprecationReason(method))}</td>
                   </tr>`))).join('')}
                 </tbody>
               </table>
             </rh-table>
-          </details>`}
+          </rh-disclosure>`}
         </section>
       </rh-accordion-panel>
     `;
@@ -590,30 +592,28 @@ export default class ElementsPage extends Renderer<Context> {
                 </tr>`))).join('')}
               </tbody>
             </table>
-          </rh-table>`}${!deprecated.length ? '' : html`
-          <details>
-            <summary><h${level + 1}>Deprecated Events</h${level + 1}></summary>
+          </rh-table>`}${!deprecated.length ? '' : /* NB: we need to use our own stuff. don't replace with details */ html`
+          <rh-disclosure summary="Deprecated Events">
             <rh-table>
               <table>
                 <thead>
                   <tr>
                     <th scope="col">Event Name</th>
                     <th scope="col">Description</th>
+                    <th scope="col">Reason</th>
                   </tr>
                 </thead>
                 <tbody>
                   ${(await Promise.all(deprecated.map(async event => html`
                   <tr>
                     <td><code>${event.name}</code></td>
-                    <td>
-                      ${await this.#innerMD(event.description)}
-                      <em>Note: ${event.name} is deprecated. ${await this.#innerMD((event.deprecated ?? '').toString())}</em>
-                    </td>
+                    <td>${await this.#innerMD(event.description)}</td>
+                    <td>${await this.#innerMD(getDeprecationReason(event))}</td>
                   </tr>`))).join('')}
                 </tbody>
               </table>
             </rh-table>
-          </details>`}
+          </rh-disclosure>`}
         </section>
       </rh-accordion-panel>
     `;
@@ -641,6 +641,7 @@ export default class ElementsPage extends Renderer<Context> {
               <thead>
                 <tr>
                   <th scope="col">Part Name</th>
+                  <th scope="col">Summary</th>
                   <th scope="col">Description</th>
                 </tr>
               </thead>
@@ -648,34 +649,35 @@ export default class ElementsPage extends Renderer<Context> {
                 ${(await Promise.all(parts.map(async part => html`
                 <tr>
                   <td><code>${part.name}</code></td>
+                  <td>${await this.#innerMD(part.summary)}</td>
                   <td>${await this.#innerMD(part.description)}</td>
                 </tr>`))).join('')}
               </tbody>
             </table>
-          </rh-table>`}${!deprecated.length ? '' : html`
-          <details>
-            <summary><h${level + 1}>Deprecated CSS Shadow Parts</h${level + 1}></summary>
+          </rh-table>`}${!deprecated.length ? '' : /* NB: we need to use our own stuff. don't replace with details */ html`
+          <rh-disclosure summary="Deprecated CSS Shadow Parts">
             <rh-table>
               <table>
                 <thead>
                   <tr>
                     <th scope="col">Part Name</th>
+                    <th scope="col">Summary</th>
                     <th scope="col">Description</th>
+                    <th scope="col">Reason</th>
                   </tr>
                 </thead>
                 <tbody>
                   ${(await Promise.all(deprecated.map(async part => html`
                   <tr>
                     <td><code>${part.name}</code></td>
-                    <td>
-                      ${await this.#innerMD(part.description)}
-                      <em>Note: ${part.name} is deprecated. ${await this.#innerMD((part.deprecated ?? '').toString())}</em>
-                    </td>
+                    <td>${await this.#innerMD(part.summary)}</td>
+                    <td>${await this.#innerMD(part.description)}</td>
+                    <td>${await this.#innerMD(getDeprecationReason(part))}</td>
                   </tr>`))).join('')}
                 </tbody>
               </table>
             </rh-table>
-          </details>`}
+          </rh-disclosure>`}
         </section>
       </rh-accordion-panel>
     `;
@@ -686,7 +688,7 @@ export default class ElementsPage extends Renderer<Context> {
     const allCssProperties = (ctx.doc.docsPage.manifest.getCssCustomProperties(tagName) ?? [])
         .filter(x => !tokens.has(x.name));
     const cssProperties = allCssProperties.filter(x => !x.deprecated);
-    const deprecated = allCssProperties.filter(x => x.deprecated);
+    const deprecated = allCssProperties.filter(x => x.deprecated != null);
     const count = cssProperties.length;
     const deprecatedCssPropertiesCount = deprecated.length;
 
@@ -718,16 +720,16 @@ export default class ElementsPage extends Renderer<Context> {
                 </tr>`))).join('')}
               </tbody>
             </table>
-          </rh-table>`}${!deprecated.length ? '' : html`
-          <details>
-            <summary><h${level + 1}>Deprecated CSS Custom Properties</h${level + 1}></summary>
+          </rh-table>`}${!deprecated.length ? '' : /* NB: we need to use our own stuff. don't replace with details */ html`
+          <rh-disclosure summary="Deprecated CSS Custom Properties">
             <rh-table>
               <table>
                 <thead>
                   <tr>
                     <th scope="col">CSS Property</th>
                     <th scope="col">Description</th>
-                    <th>Default</th>
+                    <th scope="col">Default</th>
+                    <th scope="col">Reason</th>
                   </tr>
                 </thead>
                 <tbody>${(await Promise.all(deprecated.map(async prop => html`
@@ -735,11 +737,12 @@ export default class ElementsPage extends Renderer<Context> {
                     <td><code>${prop.name}</code></td>
                     <td>${await this.#innerMD(prop.description)}</td>
                     <td>${await this.#innerMD(prop.default ?? '—')}</td>
+                    <td>${await this.#innerMD(getDeprecationReason(prop))}</td>
                   </tr>`))).join('')}
                 </tbody>
               </table>
             </rh-table>
-          </details>`}
+          </rh-disclosure>`}
         </section>
       </rh-accordion-panel>
     `;
@@ -782,70 +785,14 @@ export default class ElementsPage extends Renderer<Context> {
     `;
   }
 
-  async #renderDemos(ctx: Context) {
+  async #renderDemos(content: string, ctx: Context) {
     const tagName = ctx.tagName as `rh-${string}`;
-    const entries = Object.entries(ctx.playgrounds[tagName]?.files ?? {}) as FileEntry[];
-    return [
-      await this.#renderDemoHead(),
-      ctx.doc.fileExists && await this.renderFile(ctx.doc.filePath, ctx),
-      ...await this.#renderPlaygrounds(ctx, entries),
-    ].filter(Boolean).join('');
-  }
-
-  async #renderDemoHead() {
+    const demos: DemoRecord[] = ElementsPage.demoManifestsForTagNames[tagName] ?? [];
     return html`
-      <style data-helmet>
-        playground-project {
-          height: 825px;
-          &:fullscreen {
-            height: 100vh;
-            & rh-card {
-              height: 100%;
-              &::part(body) {
-                flex: auto;
-              }
-            }
-            & playground-file-editor,
-            & playground-preview {
-              height: 100%;
-            }
-          }
-          &:not(:defined) { opacity: 0; }
-          display: flex;
-          flex-flow: column;
-          gap: var(--rh-space-sm);
-          --playground-code-background: var(--rh-color-surface-lighter);
-          & playground-preview {
-            border: var(--rh-border-width-sm) solid var(--rh-color-border-subtle-on-light);
-            &::part(preview-toolbar) {
-              display: none;
-            }
-          }
-          & rh-card {
-            &::part(header),
-            &::part(body) { margin: 0; }
-            &::part(footer) {
-              margin-block: var(--rh-space-lg);
-              justify-content: end;
-            }
-            &::part(body) {
-              border-block-end: var(--rh-border-width-sm) solid var(--rh-color-border-subtle-on-light);
-            }
-            & rh-button[slot="footer"] {
-              display: inline-block;
-              margin-inline-end: auto;
-            }
-          }
-          & rh-tab-panel {
-            display: none !important;
-          }
-        }
-      </style>
-
       <script type="module" data-helmet>
         import '@uxdot/elements/uxdot-copy-button.js';
         import '@uxdot/elements/uxdot-header.js';
-        import 'playground-elements';
+        import '@uxdot/elements/uxdot-demo.js';
         import '@rhds/elements/rh-button/rh-button.js';
         import '@rhds/elements/rh-card/rh-card.js';
         import '@rhds/elements/rh-code-block/rh-code-block.js';
@@ -854,119 +801,82 @@ export default class ElementsPage extends Renderer<Context> {
         import '@rhds/elements/rh-subnav/rh-subnav.js';
         import '@rhds/elements/rh-surface/rh-surface.js';
         import '@rhds/elements/rh-tabs/rh-tabs.js';
-        import {TabExpandEvent} from '@rhds/elements/rh-tabs/rh-tab.js';
-        for (const tabs of document.querySelectorAll('.demo-fileswitcher')) {
-          tabs.addEventListener('expand', function(event) {
-            if (event instanceof TabExpandEvent && event.active) {
-              const { filename } = event.tab.dataset;
-              if (filename) {
-                const project = tabs.closest('playground-project');
-                const fileEditor = project.querySelector('playground-file-editor');
-                if (fileEditor) {
-                  fileEditor.filename = filename;
-                }
-              }
-            }
-          })
-        }
-        for (const playground of document.querySelectorAll('playground-project')) {
-          playground.addEventListener('click', function(event) {
-            if (event.target.dataset?.action === 'fullscreen') {
-              playground.requestFullscreen();
-            }
-          })
-        }
       </script>
+      ${content}
+      ${!ctx.doc.fileExists ? '' : await this.renderFile(ctx.doc.filePath, ctx)}
+      ${(await Promise.all(demos.map(async demo => `
+      ${this.#header(demo.title, 2, `demo-${this.slugify(demo.title)}`)}
+      ${await this.#renderDemo(demo, ctx)}
+      `))).filter(Boolean).join('')}
     `;
   }
 
-  /**
-   * Files to include with every demo playground e.g. import map, shared styles, etc.
-   * Some of these are generated by /scripts/playgrounds.ts
-   * @param ctx
-   * @param entries
-   */
-  async #renderPlaygroundsCommon(ctx: Context, entries: FileEntry[]) {
-    const { isLocal, importMap: { imports } } = ctx;
-    const baseUrl = process.env.DEPLOY_PRIME_URL || 'http://localhost:8080';
-    return html`${isLocal ? html`
-      <script type="sample/importmap">${JSON.stringify({ imports }, null, 2).replaceAll('"/assets', `"${baseUrl}/assets`)}</script>` : html`
-      <script type="sample/importmap">
-        {
-          "imports": {
-            "@patternfly/icons/": "https://ux.redhat.com/assets/packages/@patternfly/icons/"
-          }
-        }
-      </script>`}${entries.map(([filename, config]) => config.label ? '' : html`
-      <script type="sample/${filename.split('.').pop()}" filename="${filename}" ${!config.hidden ? '' : 'hidden'}>${
-      config.content?.replace('</' + 'script>', '&lt;/script>') ?? ''
-    }</script>`).join('')}
-    `;
-  }
-
-  async #renderPlaygrounds(ctx: Context, entries: FileEntry[]) {
-    const common = await this.#renderPlaygroundsCommon(ctx, entries);
-    return entries.flatMap(([filename, config], _, array) => this.#renderPlayground(
-      filename,
-      config,
-      ctx,
-      common,
-      array,
-    )).join('');
-  };
-
-  #renderPlayground(
-    filename: string,
-    config: FileOptions,
-    ctx: Context,
-    common: string,
-    entries: FileEntry[]
-  ) {
-    const inlineResources = entries
-        .filter(([, config]) => config.inline === filename)
-        .map(([s]) => s);
-    const { doc, tagName, isLocal } = ctx;
-    const { slug } = doc;
-    if (!config.label) {
+  async #renderDemo(demo: DemoRecord, ctx: Context, knobs?: string) {
+    if (!demo.title || !demo.filePath) {
       return '';
     } else {
-      const labelSlug = this.slugify(config.label);
-      const extension = filename.split('.').pop();
-      const demoSlug =
-        filename.split('.').shift()?.replace('demo/', '').replaceAll('/', '-') ?? '';
-      const projectId = `playground-${tagName}-${demoSlug}`;
-      const demoPageUrl = `/elements/${slug}/demo/${demoSlug === 'index' ? '' : `${labelSlug}/`}`;
-      const githubSourcePrefix = `https://github.com/RedHat-UX/red-hat-design-system/tree/main/elements`;
-      const githubSourceUrl = `${githubSourcePrefix}/${tagName}/demo/${filename
-          .replace('demo/', '')
-          .replace('/index.html', '')
-          .replace('.html', '')
-          .replace('index', tagName)}.html`;
-
-      const content = config.content?.replace('</' + 'script>', '&lt;/script>') ?? '';
-      return html`
-        <h2 id="demo-${labelSlug}">${config.label}</h2>
-        <playground-project id="${projectId}" ${!isLocal ? '' : 'sandbox-base-url="http://localhost:8080"'}>
-          ${common}
-          <script type="sample/${extension}" filename="${filename}">${content}</script>
-          <playground-preview project="${projectId}" html-file="${filename}"></playground-preview>
-          <rh-card>
-            <rh-tabs slot="header" class="demo-fileswitcher">
-              <rh-tab slot="tab" data-filename="${filename}">HTML</rh-tab>
-              <rh-tab-panel hidden></rh-tab-panel>
-              ${inlineResources.map(subresourcename => html`
-              <rh-tab slot="tab" data-filename="${subresourcename}">${subresourcename.split('.').pop()?.toUpperCase() ?? ''}</rh-tab>
-              <rh-tab-panel hidden></rh-tab-panel>`).join('')}
-            </rh-tabs>
-            <playground-file-editor project="${projectId}"
-                                    filename="${filename}"
-                                    line-numbers></playground-file-editor>
-            <rh-button slot="footer" variant="tertiary" data-action="fullscreen" icon="expand">FullScreen</rh-button>
-            <rh-cta slot="footer" href="${githubSourceUrl}">View source on GitHub</rh-cta>
-            <rh-cta slot="footer" href="${demoPageUrl}">View In Own Tab</rh-cta>
-          </rh-card>
-        </playground-project>
-      `;
+      const tagName = ctx.tagName as `rh-${string}`;
+      const filepath = demo.filePath
+          ?.replace(join(process.cwd(), 'elements', tagName, 'demo/'), '');
+      const demoSlug = filepath?.split('.').shift()?.replaceAll('/', '-') ?? '';
+      const projectId = `demo-${tagName}-${demoSlug}`;
+      const githubSourcePrefix = `https://github.com/RedHat-UX/red-hat-design-system/tree/main`;
+      const sourceUrl = `${githubSourcePrefix}${demo.filePath.replace(process.cwd(), '')}`;
+      const demoUrl = `/elements/${this.getTagNameSlug(tagName)}/demo/${demoSlug === tagName ? '' : `${demoSlug}/`}`;
+      const codeblocks = await this.#getDemoCodeBlocks(demo);
+      if (codeblocks) {
+        return html`
+          <uxdot-demo id="${projectId}"
+                      tag="${tagName}"
+                      demo="${demoSlug}"${!knobs ? '' : html`
+                      attribute-knobs="${[...manifest.getAttributes(tagName)?.values().map(x => x.name) ?? []]}"`}
+                      demo-title="${demo.title}"
+                      demo-source-url="${sourceUrl}"
+                      demo-url="${demoUrl}"
+                      demo-file-path="${demo.filePath}"
+          >${codeblocks}${knobs ?? ''}</uxdot-demo>
+        `;
+      } else {
+        return '';
+      }
     }
   }
-};
+
+  async #getDemoCodeBlocks(demo: DemoRecord) {
+    const map = new Map<'html' | 'css' | 'js', string>();
+
+    function updateDemoContentForType(contentType: 'html' | 'css' | 'js', node: Tools.ParentNode) {
+      const oldContent = map.get(contentType) ?? '';
+      const newContent =
+      dedent(node.childNodes.map(x => Tools.isTextNode(x) ? x.value : '').join('\n'));
+      Tools.removeNode(node);
+      map.set(contentType, oldContent + newContent);
+    }
+
+    if (demo.filePath) {
+      const content = await readFile(demo.filePath, 'utf-8');
+      const fragment = parseFragment(content);
+
+      for (const node of Tools.queryAll<Tools.Element>(fragment, Tools.isElementNode)) {
+        if (node.tagName === 'script'
+          && node.attrs.some(x => x.name === 'type' && x.value === 'module')) {
+          updateDemoContentForType('js', node);
+        } else if (node.tagName === 'style') {
+          updateDemoContentForType('css', node);
+        }
+      }
+
+      map.set('html', serialize(fragment));
+
+      const blocks = await Promise.all(map.entries().map(([kind, content]) => {
+        const tpl = dedent(`
+          \`\`\`${kind} uxdotcodeblock {slot=${kind}}
+          ${content.trim()}
+          \`\`\`
+        `);
+        return this.renderTemplate(tpl, 'md');
+      }).toArray());
+      return blocks.join('\n');
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, isServer } from 'lit';
 import { property } from 'lit/decorators/property.js';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { state } from 'lit/decorators/state.js';
@@ -8,7 +8,7 @@ import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller
 import '@rhds/elements/rh-button/rh-button.js';
 import '@rhds/elements/rh-surface/rh-surface.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-video-embed.css';
 
@@ -35,24 +35,17 @@ export class VideoPlayEvent extends Event {
 
 /**
  * A Video embed is a graphical preview of a video overlayed with a play button. When clicked, the embedded YouTube video will begin playing.
+ *
  * @summary Reveals a small area of information on hover
+ *
+ * @alias video-embed
+ *
  * @fires consent-click - "Update preferences" consent button is clicked
  * @fires request-play - Play button is clicked
  * @fires play - Video is about to be played
- * @slot - Place video embed code here; iframe should include a `title` attribute with the video title
- * @slot play-button-text - Text for play button; recommended value "Video title (video)"
- * @slot thumbnail - Optional thumbnail image on top of video embed; should include `alt` text
- * @slot consent-message - Text explaining opt-in to cookies is required, e.g. `<p>View this video by opting in to “Advertising Cookies.”</p>`
- * @slot consent-button-text - Text for CTA button to update preferences, e.g. "Update preferences"
- * @slot caption - Optional caption below video embed
- * @slot autoplay - DO NOT USE! (Used by `rh-video-embed`.)
- * @csspart figure - The outer container for rh-video-embed
- * @csspart video - The container for the video, thumbnail, and play button
- * @csspart consent-body - The container for the consent message and consent button
- * @csspart play - The play button on top of the thumbnail
- * @csspart caption - The container for the caption
  */
 @customElement('rh-video-embed')
+@themable
 export class RhVideoEmbed extends LitElement {
   static readonly styles = [styles];
 
@@ -71,11 +64,6 @@ export class RhVideoEmbed extends LitElement {
    * See the Require Consent demo for reference.
    */
   @property({ type: Boolean }) consented = false;
-
-  /**
-   * Sets color theme based on parent context
-   */
-  @colorContextConsumer() private on?: ColorTheme;
 
   // TODO(bennyp): https://lit.dev/docs/data/context/#content
   @state() private _consentClicked = false;
@@ -125,22 +113,35 @@ export class RhVideoEmbed extends LitElement {
     return this._playStarted;
   }
 
+  firstUpdated() {
+    if (!isServer) {
+      this.#iframe = this.#getIframe();
+    }
+  }
+
   render() {
-    const { playClicked, on = '' } = this;
+    const { playClicked } = this;
     const hasCaption = this.#slots.hasSlotted('caption');
     const hasThumbnail = this.#slots.hasSlotted('thumbnail');
-    const playLabel = this.iframeElement && this.iframeElement.title ? `${this.iframeElement.title} (play video)` : 'Play video';
-    const show = this.#showConsent ? 'consent' : !!playClicked || !hasThumbnail ?
-      'video' : 'thumbnail';
+    const playLabel = this.#iframe && this.#iframe.title ? `${this.#iframe.title} (play video)` : 'Play video';
+    const consent = this.#showConsent;
+    const video = !!playClicked || !hasThumbnail;
+    const show = consent ? 'consent' : video ? 'video' : 'thumbnail';
 
     return html`
-      <figure part="figure" class="${classMap({ on: true, [show]: !!show, [on]: !!on })}">
+      <!-- The outer container for rh-video-embed -->
+      <figure part="figure" class="${classMap({ video, consent })}">
+        <!-- The container for the video, thumbnail, and play button -->
         <div part="video" id="video">
           <div aria-hidden="${show !== 'thumbnail'}">
+            <!-- Optional thumbnail image on top of video embed; should include \`alt\` text -->
             <slot id="thumbnail" name="thumbnail"></slot>
           </div>
-          <slot @slotchange="${this.#copyIframe}"></slot>
-          <div id="autoplay"><slot name="autoplay"></slot></div>
+          <!-- Place video embed code here; iframe should include a \`title\` attribute with the video title -->
+          <slot></slot>
+          <div id="autoplay"><!--
+            DO NOT USE! (Used by \`rh-video-embed\`.)
+          --><slot name="autoplay"></slot></div>
           ${this.#showConsent ? html`
             <rh-surface id="consent" color-palette="darker">
               <svg id="watermark" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1136 639">
@@ -160,7 +161,9 @@ export class RhVideoEmbed extends LitElement {
                   </g>
                 </g>
               </svg>
+              <!-- The container for the consent message and consent button -->
               <div part="consent-body" id="consent-body">
+                <!-- Text explaining opt-in to cookies is required, e.g. \`<p>View this video by opting in to “Advertising Cookies.”</p>\` -->
                 <slot name="consent-message">
                   <p id="consent-message">View this video by opting in to “Advertising Cookies.”</p>
                 </slot>
@@ -168,37 +171,50 @@ export class RhVideoEmbed extends LitElement {
                   id="consent-button"
                   variant="tertiary"
                   @click="${this.#handleConsentClick}"
-                  @keyup="${this.#handleConsentKeyup}"><slot name="consent-button-text">Update preferences</slot></rh-button>
+                  @keyup="${this.#handleConsentKeyup}"><!--
+                    Text for CTA button to update preferences, e.g. "Update preferences"
+                  --><slot name="consent-button-text">Update preferences</slot></rh-button>
               </div>
             </rh-surface>
           ` : ''}
-          <rh-button part="play" id="play" variant="play"
-            ?hidden="${show !== 'thumbnail'}"
-            @click="${this.#handlePlayClick}"
-            @keyup="${this.#handlePlayKeyup}">
-            <span class="visually-hidden"><slot name="play-button-text">${playLabel}</slot></span>
+          <!-- The play button on top of the thumbnail -->
+          <rh-button part="play"
+                     id="play"
+                     variant="play"
+                     ?hidden="${show !== 'thumbnail'}"
+                     @click="${this.#handlePlayClick}"
+                     @keyup="${this.#handlePlayKeyup}">
+            <span class="visually-hidden"><!--
+              Text for play button; recommended value "Video title (video)"
+            --><slot name="play-button-text">${playLabel}</slot></span>
           </rh-button>
         </div>
-        <figcaption part="caption" ?hidden="${!hasCaption}"><slot name="caption"></slot></figcaption>
+        <!-- The container for the caption -->
+        <figcaption part="caption" ?hidden="${!hasCaption}"><!--
+          Optional caption below video embed
+        --><slot name="caption"></slot></figcaption>
       </figure>
     `;
   }
 
-  #copyIframe() {
+  #getIframe() {
     const template = this.querySelector('template');
     const node = template ? document.importNode(template.content, true) : undefined;
     const iframe = node ?
       node.querySelector('iframe')?.cloneNode(true) as HTMLIFrameElement : undefined;
-    if (iframe) {
-      const url = new URL(iframe.getAttribute('src') || '');
+    return iframe;
+  }
+
+  #copyIframe() {
+    if (this.#iframe) {
+      const url = new URL(this.#iframe.getAttribute('src') || '');
       url.searchParams.append('autoplay', '1');
       url.searchParams.append('rel', '0');
-      iframe.src = url.href;
-      iframe.classList.add('rh-yt-iframe');
-      iframe.allow = 'autoplay';
-      iframe.slot = 'autoplay';
+      this.#iframe.src = url.href;
+      this.#iframe.classList.add('rh-yt-iframe');
+      this.#iframe.allow = 'autoplay';
+      this.#iframe.slot = 'autoplay';
     }
-    this.#iframe = iframe;
     this.#playVideo();
   }
 
@@ -221,7 +237,7 @@ export class RhVideoEmbed extends LitElement {
     if (!this.playClicked) {
       this._playClicked = true;
       this.dispatchEvent(new VideoClickEvent());
-      this.#playVideo();
+      this.#copyIframe();
     }
   }
 
@@ -232,7 +248,7 @@ export class RhVideoEmbed extends LitElement {
         if (!this.playClicked) {
           this._playClicked = true;
           this.dispatchEvent(new VideoClickEvent());
-          this.#playVideo();
+          this.#copyIframe();
         }
         break;
     }

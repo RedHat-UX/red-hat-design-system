@@ -21,7 +21,7 @@ order: 1
 
 ### The Red Hat Design System and Accessibility
 
-At Red Hat®, we believe that an open source approach leads to better, more inclusive experiences for people of all abilities.
+At Red Hat®, we believe that an open source approach leads to better, more inclusive experiences for all people, including users with disabilities.
 
 The user experience across Red Hat properties, including our products, services, applications, and digital communications, are all held to a high standard of inclusivity. We strive to make them accessible for as many users and devices as possible.
 

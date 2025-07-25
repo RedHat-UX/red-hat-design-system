@@ -1,29 +1,26 @@
-import { LitElement, html, isServer } from 'lit';
+import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
-import { classMap } from 'lit/directives/class-map.js';
 
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 import { RequestSortEvent, RhSortButton } from './rh-sort-button.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-table.css';
 
 /**
  * A table is a container for displaying information. It allows a user to scan, examine, and compare large amounts of data.
+ *
  * @summary Organizes and displays information from a data set
- * @slot               - an HTML table
- * @slot    summary    - a brief description of the data
- * @cssprop {<color>} [--rh-table-row-background-hover-color=224 224 224 / 40%] - row hover background color
- * @cssprop {<color>} [--rh-table-column-background-hover-color=0 102 204 / 10%] - column hover background color
- * @cssprop [--rh-table-row-border=1px solid #c7c7c7] - row border
+ *
+ * @alias table
+ *
  */
 @customElement('rh-table')
+@themable
 export class RhTable extends LitElement {
   static readonly styles = [styles];
-
-  @colorContextConsumer() private on?: ColorTheme;
 
   private static getNodeContentForSort(
     columnIndexToSort: number,
@@ -49,26 +46,24 @@ export class RhTable extends LitElement {
   }
 
   get #table(): HTMLTableElement | undefined {
-    return this.querySelector('table') as HTMLTableElement | undefined;
+    return this.querySelector?.('table') as HTMLTableElement | undefined;
   }
 
   get #cols(): NodeListOf<HTMLTableColElement> | undefined {
-    return this.querySelectorAll('col') as NodeListOf<HTMLTableColElement> | undefined;
+    return this.querySelectorAll?.('col') as NodeListOf<HTMLTableColElement> | undefined;
   }
 
   get #rows(): NodeListOf<HTMLTableRowElement> | undefined {
-    return this.querySelectorAll('tbody > tr') as NodeListOf<HTMLTableRowElement> | undefined;
+    return this.querySelectorAll?.('tbody > tr') as NodeListOf<HTMLTableRowElement> | undefined;
   }
 
   get #colHeaders(): NodeListOf<HTMLTableCellElement> | undefined {
-    return this.querySelectorAll<HTMLTableCellElement>('thead > tr > th');
+    return this.querySelectorAll?.<HTMLTableCellElement>('thead > tr > th');
   }
 
   get #summary(): HTMLElement | undefined {
-    return this.querySelector('[slot="summary"]') as HTMLElement | undefined;
+    return this.querySelector?.('[slot="summary"]') as HTMLElement | undefined;
   }
-
-  #internalColorPalette?: string | null;
 
   #logger = new Logger(this);
 
@@ -80,47 +75,15 @@ export class RhTable extends LitElement {
     this.#mo.observe(this, { childList: true });
   }
 
-  protected willUpdate(): void {
-    if (!isServer) {
-      /**
-       * TEMPORARY: this fixes the need to access the parents color-palette in order to get the `lightest`
-       * value.  This fix will only update the component when switching between light and dark themes as
-       * thats when the consumer requests an update.  Switching between lighter -> light for example will
-       * not trigger the component to update at this time.
-       *
-       * As well, this hack is not supported in SSR (likewise, context is not yet supported)
-       */
-      const selector = '[color-palette]';
-      function closestShadowRecurse(el: Element | Window | Document | null): Element | null {
-        if (!el || el === document || el === window) {
-          return null;
-        }
-        if ((el as Element).assignedSlot) {
-          el = (el as Element).assignedSlot;
-        }
-        const found = (el as Element).closest(selector);
-        return found ?
-        found
-        : closestShadowRecurse(((el as Element).getRootNode() as ShadowRoot).host);
-      }
-      this.#internalColorPalette = closestShadowRecurse(this)?.getAttribute('color-palette');
-    }
-  }
-
   render() {
-    const { on = 'light' } = this;
     return html`
-      <div id="container"
-           part="container"
-           class="${classMap({
-             on: true,
-             [on]: true,
-             [`color-palette-${this.#internalColorPalette}`]: !!this.#internalColorPalette,
-           })}">
+      <div id="container" part="container">
+        <!-- an HTML table -->
         <slot @pointerleave="${this.#onPointerleave}"
               @pointerover="${this.#onPointerover}"
               @request-sort="${this.#onRequestSort}"
               @slotchange="${this.#onSlotChange}"></slot>
+        <!-- description of the data -->
         <slot id="summary" name="summary"></slot>
       </div>
     `;
@@ -180,7 +143,7 @@ export class RhTable extends LitElement {
      *
      * So we bail for now...
      */
-    if (this.querySelector('[colspan], [rowspan]')) {
+    if (this.querySelector?.('[colspan], [rowspan]')) {
       return;
     }
 

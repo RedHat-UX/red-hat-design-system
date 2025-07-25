@@ -5,6 +5,8 @@ import { repeat } from 'lit/directives/repeat.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 
+import { themable } from '@rhds/elements/lib/themable.js';
+
 import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 
 import '@rhds/elements/rh-surface/rh-surface.js';
@@ -13,7 +15,6 @@ import '@rhds/elements/rh-icon/rh-icon.js';
 
 import styles from './rh-alert.css';
 import toastStyles from './rh-alert-toast-styles.css';
-import consumerStyles from '@rhds/tokens/css/color-context-consumer.css.js';
 
 interface AlertAction {
   action: 'dismiss' | 'confirm' | string;
@@ -60,16 +61,14 @@ const toasts = new Set<Required<ToastOptions>>();
  *
  * @summary Notifies a user without blocking their workflow
  *
+ * @alias alert
+ *
  * @fires {AlertCloseEvent} close - when the dismissable alert closes
- *
- * @slot         - Provide a description for the alert message
- * @slot header  - Provide a header for the alert message.
- * @slot actions - Provide actions that the user can take for the alert
- *
  */
 @customElement('rh-alert')
+@themable
 export class RhAlert extends LitElement {
-  static readonly styles = [styles, consumerStyles];
+  static readonly styles = [styles];
 
   /**
    * Toast a message with an rh-alert
@@ -109,8 +108,11 @@ export class RhAlert extends LitElement {
   get #icon() {
     const state = this.state.toLowerCase() as this['state'];
     switch (state) {
+      // @ts-expect-error: support for deprecated props
       case 'note': return ICONS.get('info');
+      // @ts-expect-error: support for deprecated props
       case 'default': return ICONS.get('neutral');
+      // @ts-expect-error: support for deprecated props
       case 'error': return ICONS.get('danger');
       default: return ICONS.get(state);
     }
@@ -125,6 +127,8 @@ export class RhAlert extends LitElement {
    *  - `caution` - Indicates an action or notice which should immediately draw the attention
    *  - `info` - Indicates helpful information or a message with very little to no severity.
    *  - `success` - Indicates a success state, like if a process was completed without errors.
+   *
+   *  Note: 'note', 'default', and 'error' will also work, but are deprecated
    */
   @property({ reflect: true })
   state:
@@ -133,10 +137,7 @@ export class RhAlert extends LitElement {
     | 'caution'
     | 'neutral'
     | 'info'
-    | 'success'
-    | 'note' // deprecated
-    | 'default' // deprecated
-    | 'error' = // deprecated
+    | 'success' =
       'neutral';
 
   /**
@@ -178,7 +179,7 @@ export class RhAlert extends LitElement {
       case 'neutral':
       case 'info':
       case 'success':
-        return state as this['state'];
+        return state.toLowerCase() as this['state'];
       default:
         return 'neutral';
     }
@@ -203,13 +204,13 @@ export class RhAlert extends LitElement {
     // eslint-disable-next-line lit-a11y/click-events-have-key-events
     const footer = html`<footer class="${classMap({ hasActions })}"
                   @click="${this.#onActionsClick}">
+            <!-- Provide actions that the user can take for the alert -->
             <slot name="actions"></slot>
           </footer>`;
     return html`
       <rh-surface id="container"
                   class="${classMap({
                     hasBody,
-                    on: true,
                     light: true,
                     [state]: true,
                     [variant]: !!variant,
@@ -223,6 +224,7 @@ export class RhAlert extends LitElement {
         <div id="middle-column">
           <header ?hidden="${!_isServer && this.#slots.isEmpty('header')}">
             <div id="header">
+              <!-- Provide a header for the alert message. -->
               <slot name="header"></slot>
             </div>${!this.dismissable && this.variant !== 'toast' ? '' : html`
             <div id="header-actions">
@@ -234,6 +236,7 @@ export class RhAlert extends LitElement {
             </div>`}
           </header>
           <div id="description">
+            <!-- Provide a description for the alert message -->
             <slot></slot>
           </div>
           ${footer}

@@ -7,7 +7,7 @@ import { query } from 'lit/decorators/query.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
 
-import { colorContextConsumer, type ColorTheme } from '../../lib/context/color/consumer.js';
+import { themable } from '@rhds/elements/lib/themable.js';
 
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
@@ -17,13 +17,13 @@ import styles from './rh-button.css';
  * A button is clickable text or an icon that triggers an action on the page or in the background.
  * Depending on the action, content, and hierarchy, a button can be used on its own or grouped with
  * other buttons.
+ *
  * @summary Triggers actions on the page or in the background
- * @csspart button - Internal button element
- * @csspart icon - Container for the icon slot
- * @slot icon - Contains the button's icon or state indicator, e.g. a spinner.
- * @slot - Contains button text
+ *
+ * @alias button
  */
 @customElement('rh-button')
+@themable
 export class RhButton extends LitElement {
   static readonly styles = [styles];
 
@@ -84,8 +84,6 @@ export class RhButton extends LitElement {
    */
   @property({ type: Boolean, reflect: true }) danger = false;
 
-  @colorContextConsumer() private on?: ColorTheme;
-
   get #hasIcon() {
     return this.variant === 'play' || this.variant === 'close' || !!this.icon;
   }
@@ -99,15 +97,14 @@ export class RhButton extends LitElement {
   }
 
   override render() {
-    const { danger, variant, on = 'light' } = this;
+    const { danger, variant } = this;
     const hasIcon = this.#hasIcon;
     return html`
+      <!-- Internal button element -->
       <button aria-label="${ifDefined(this.label)}"
               class="${classMap({
                 danger,
                 hasIcon,
-                on: true,
-                [on]: true,
                 [variant]: true,
               })}"
               part="button"
@@ -116,11 +113,17 @@ export class RhButton extends LitElement {
               @click="${this.#onClick}"
               aria-disabled=${String(!!this.disabled || !!this.#internals.formDisabled) as 'true' | 'false'}>
         <span aria-hidden="true">
+          <!--
+            slot:
+              description: Contains the button's icon or state indicator, e.g. a spinner.
+            part:
+              description: Container for the icon slot
+          -->
           <slot id="icon"
                 part="icon"
                 name="icon">${this.#renderIcon()}</slot>
         </span>
-        <span aria-hidden=${String(!!this.label) as 'true' | 'false'}><slot id="text" ></slot></span>
+        <span aria-hidden=${String(!!this.label) as 'true' | 'false'}><!-- Contains button text --><slot id="text" ></slot></span>
       </button>
     `;
   }
@@ -147,7 +150,7 @@ export class RhButton extends LitElement {
    *          ```
    */
   #renderIcon(): TemplateResult {
-    switch (this.variant.toLowerCase()) {
+    switch (this.variant?.toLowerCase()) {
       case 'close':
         return html`<rh-icon set="microns" icon="close"></rh-icon>`;
       case 'play':

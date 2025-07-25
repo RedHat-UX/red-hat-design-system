@@ -51,7 +51,7 @@ Having only one persistent back to top button ensures that users are able to scr
       <img src="../one-back-to-top-dont.svg" 
           alt="Image of wireframe with back to top buttons below each content section"
           width="468"
-          height="247">>
+          height="247">
     </uxdot-example>
     <p>Do not use multiple back to top buttons.</p>
   </uxdot-best-practice>

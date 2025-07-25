@@ -1,72 +1,53 @@
+<style>
+  @container host (min-width: 768px) {
+    #kbd-interactions td:first-child {
+      width: 33%;
+    }
+  }
+</style>
+
 ## Keyboard interactions
 
-Users should have the ability to navigate to and interact with calls to action using their keyboard.
+Every call to action style and variant must be able to receive focus and be navigated with a keyboard.
 
-<uxdot-example width-adjustment="586px">
-  <img src="../cta-a11y-keyboard-interactions.png"
-        alt="Image of three groups with different variants showing focus indicators and tab key labels"
-        width="586"
-        height="474">
+<uxdot-example color-palette="lightest" width-adjustment="574px">
+  <img src="../cta-a11y-keyboard-interactions.svg"
+        alt="The four different CTAs, each showing a blue focus ring around it and the words 'Tab' underneath."
+        width="574"
+        height="103">
 </uxdot-example>
 
-<rh-table>
-  <table>
-    <thead>
-      <tr>
-        <th scope="col" data-label="Key">Key</th>
-        <th scope="col" data-label="Result">Result</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td data-label="Key"><kbd>Tab</kbd></td>
-        <td data-label="Result">Moves focus to the next call to action or interactive element</td>
-      </tr>
-      <tr>
-        <td data-label="Key"><kbd>Shift+Tab</kbd</td>
-        <td data-label="Result">Moves focus to the previous call to action or interactive element</td>
-      </tr>
-      <tr>
-        <td data-label="Key"><kbd>Enter</kbd</td>
-        <td data-label="Result">Activates a link</td>
-      </tr>
-      <tr>
-        <td data-label="Key"><kbd>Enter</kbd</td>
-        <td data-label="Result">Hides or reveals a panel below a Brick variant</td>
-      </tr>
-    </tbody>
-  </table>
-</rh-table>
+<rh-table id="kbd-interactions">
 
+| Key                  | Result                                                            |
+| -------------------- | ----------------------------------------------------------------- |
+| <kbd>Tab</kbd>       | Moves focus to the next call to action or interactive element     |
+| <kbd>Shift+Tab</kbd> | Moves focus to the previous call to action or interactive element |
+| <kbd>Enter</kbd>/<kbd>Return</kbd>     | Activates a link                                |
+
+</rh-table>
 
 ## Focus order
 
-A logical focus order helps keyboard users operate our websites. Elements need to receive focus in an order that preserves meaning, therefore the focus order should make sense and not jump around randomly. For grouped calls to action, the focus order is from left to right and top to bottom.
+A logical focus order helps keyboard users operate our websites. Elements need to receive focus in an order that preserves meaning, therefore the focus order should make sense and not jump around randomly. For grouped calls to action, the focus order is left to right and top to bottom.
 
-<uxdot-example width-adjustment="489px">
-  <img src="../cta-a11y-focus-order.png"
-        alt="Image of groups of three variants with numbers one through three moving from left to right and top to bottom"
-        width="489"
-        height="363">
+<uxdot-example color-palette="lightest" width-adjustment="906px">
+  <img src="../cta-a11y-focus-order.svg"
+        alt="Two Groups of three variants with numbers one through three moving from left to right and top to bottom"
+        width="906"
+        height="238">
 </uxdot-example>
 
 ## Touch targets
 
-Grouped calls to action are adequately spaced for optimal touch targets.
+The large containers and large text size make calls to action easy to select.
 
-<uxdot-example width-adjustment="474px">
-  <img src="../cta-a11y-touch-targets.png"
-        alt="Image of groups of variants with touch targets on top of each"
-        width="474"
-        height="323">
+<uxdot-example color-palette="lightest" width-adjustment="568px">
+  <img src="../cta-a11y-touch-targets.svg"
+        alt="Groups of variants with touch targets centered on top of each"
+        width="568"
+        height="56">
 </uxdot-example>
-
-## Screen reader guidelines
-
-Calls to action should communicate the following to users:
-- Their intended purpose or function
-- The toggle state when a panel is hidden or visible
-- An instruction that a panel will open
 
 {% include 'partials/accessibility/ariaguide.md' %}
 

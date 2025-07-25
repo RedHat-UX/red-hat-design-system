@@ -1,13 +1,13 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, type TemplateResult } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { state } from 'lit/decorators/state.js';
-import { queryAssignedElements } from 'lit/decorators/query-assigned-elements.js';
 
 import { RhCue, getFormattedTime } from './rh-cue.js';
 
 import { HeadingLevelContextConsumer } from '@rhds/elements/lib/context/headings/consumer.js';
 import { HeadingLevelContextProvider } from '@rhds/elements/lib/context/headings/provider.js';
+import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller-server.js';
 
 import buttonStyles from './rh-audio-player-button.css';
 import panelStyles from './rh-audio-player-panel.css';
@@ -20,10 +20,6 @@ import '@rhds/elements/rh-icon/rh-icon.js';
 
 /**
  * Audio Player Transcript Panel
- * @slot heading - custom heading for panel
- * @slot - `rh-cue` elements
- * @csspart heading - scrolling text overflow
- * @csspart toolbar - toolbar area above cues list
  */
 @customElement('rh-transcript')
 export class RhTranscript extends LitElement {
@@ -35,58 +31,40 @@ export class RhTranscript extends LitElement {
 
   @property({ reflect: true }) lang!: string;
 
-  @state() private _label!: string;
+  @property() menuLabel = 'About the episode';
+  @property() downloadLabel = 'Download';
+  @property() autoscrollLabel = 'Autoscroll';
 
   @state() private _autoscroll!: string;
 
   @state() private _download!: string;
 
-  @queryAssignedElements({ selector: 'rh-cue' })
-  private _cues!: RhCue[];
-
   #autoscroll = true;
 
   #duration?: number;
 
-  #headings = new HeadingLevelContextProvider(this, {
-    offset: 0,
-    parent: new HeadingLevelContextConsumer(this),
-  });
+  #slots = new SlotController(this, 'heading', null, 'cues');
 
-  set autoscrollLabel(label: string) {
-    this._autoscroll = label;
-  }
-
-  get autoscrollLabel(): string {
-    return this._autoscroll || 'Autoscroll';
-  }
-
-  set downloadLabel(label: string) {
-    this._download = label;
-  }
-
-  get downloadLabel(): string {
-    return this._download || 'Download';
-  }
+  #headings = new HeadingLevelContextConsumer(this);
 
   get downloadText() {
-    return this._cues.map(cue =>cue.downloadText).join('\n\n');
+    return this.#slots.getSlotted<RhCue>('cues').map(cue =>cue.downloadText).join('\n\n');
   }
 
-  set menuLabel(label: string) {
-    this._label = label;
+  constructor() {
+    super();
+    new HeadingLevelContextProvider(this, { offset: 0 });
   }
 
-  get menuLabel(): string {
-    return this.label || this._label || 'About the episode';
-  }
-
-  render() {
+  override render(): TemplateResult {
     return html`
+      <!-- scrolling text overflow -->
       <rh-audio-player-scrolling-text-overflow part="heading">
+        <!-- custom heading for panel -->
         <slot name="heading">${this.#headings.wrap(this.menuLabel)}</slot>
       </rh-audio-player-scrolling-text-overflow>
-      <div class="panel-toolbar" part="toolbar">${this._cues.length < 0 ? '' : html`
+      <!-- toolbar area above cues list -->
+      <div class="panel-toolbar" part="toolbar">${this.#slots.isEmpty('cues') ? '' : html`
         <label>
           <input id="autoscroll"
                  type="checkbox"
@@ -101,22 +79,23 @@ export class RhTranscript extends LitElement {
           <span slot="content">${this.downloadLabel}</span>
         </rh-tooltip>`}
       </div>
+      <!-- \`rh-cue\` elements -->
       <slot id="cues"></slot>
     `;
   }
 
   #updateCues(currentTime?: number) {
     let activeCue: RhCue;
-    this._cues.forEach((cue, index)=>{
+    this.#slots.getSlotted<RhCue>('cues').forEach((cue, index, a)=>{
       if (!cue.start) {
-        const prevCue = this._cues[index - 1];
+        const prevCue = a[index - 1];
         const prevEnd = prevCue?.end;
         if (prevEnd) {
           cue.start = prevEnd || '0:00';
         }
       }
       if (!cue.end) {
-        const nextCue = this._cues[index + 1];
+        const nextCue = a[index + 1];
         const nextStart = nextCue?.start;
         const duration = getFormattedTime(this.#duration);
         if (!!nextStart || !!duration) {
