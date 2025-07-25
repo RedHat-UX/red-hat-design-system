@@ -16,11 +16,9 @@ import '@rhds/elements/rh-icon/rh-icon.js';
 /**
  * A switch toggles the state of a setting (between on and off). Switches and checkboxes can often be used interchangeably, but the switch provides a more explicit, visible representation on a setting.
  * @summary  A switch toggles the state of a setting (between on and off).
- * @cssprop --rh-switch-unchecked - The background color of the switch when it is unchecked.
- * @cssprop --rh-switch-checked - The background color of the switch when it is checked.
- * @cssprop --rh-switch-disabled - The background color of the switch when it is disabled.
- * @slot message-on - message content when checked. Overrides the `message-on` attribute.
- * @slot message-off - message content when unchecked. Overrides the `message-off` attribute.
+ *
+ * @alias switch
+ *
  */
 @customElement('rh-switch')
 @themable
@@ -104,7 +102,9 @@ export class RhSwitch extends LitElement {
   render() {
     const { reversed, checked } = this;
     const slots = html`
+      <!-- message content when checked. Overrides the \`message-on\` attribute. -->
       <slot class="message" name="message-on" ?hidden="${!this.checked}"><span aria-hidden="true">${this.messageOn}</span></slot>
+      <!-- message content when unchecked. Overrides the \`message-off\` attribute. -->
       <slot class="message" name="message-off" ?hidden="${this.checked}"><span aria-hidden="true">${this.messageOff}</span></slot>`;
     return html`
       <div id="container"

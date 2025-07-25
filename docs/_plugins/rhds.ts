@@ -45,6 +45,7 @@ const COPY_CONTENT_EXTENSIONS = [
   'jpg',
   'jpeg',
   'bmp',
+  'avif',
   'webp',
   'webm',
   'mp3',
@@ -152,7 +153,7 @@ export default async function(
   /** custom-elements.json */
   eleventyConfig.on('eleventy.before', async function({ runMode }) {
     if (runMode === 'watch') {
-      await $`npx cem analyze`;
+      await $`npm run analyze`;
     }
   });
 

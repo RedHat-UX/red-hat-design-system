@@ -1,0 +1,82 @@
+li {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  margin-block: 0;
+
+  > label,
+  .checkbox-group {
+    display: flex;
+    align-items: center;
+  }
+
+  > label {
+    padding-block-end: var(--pf-c-form__group-label--PaddingBottom, 8px);
+    font-size: var(--pf-c-form__label--FontSize, 16px);
+    line-height: var(--pf-c-form__label--LineHeight, 1.5rem);
+  }
+
+  rh-tooltip {
+    --rh-color-interactive-primary-default: var(--rh-color-icon-subtle);
+
+    margin-block-start: var(--rh-space-sm, 6px);
+  }
+}
+
+#knob-title {
+  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+}
+
+#knob[type='text'] {
+  box-sizing: border-box;
+  display: flex;
+  flex: 1 0 auto;
+  min-width: 44px;
+  font-family: var(--pf-global--FontFamily--sans-serif);
+  font-weight: var(--pf-global--FontWeight--normal, 400);
+  color: var(--pf-c-form-control--Color, #151515);
+  width: var(--pf-c-form-control--Width, 100%);
+  height: var(--pf-c-form-control--Height, 36px);
+  line-height: var(--pf-c-form-control--LineHeight, 24px);
+  padding-block:
+    var(--pf-c-form-control--PaddingTop, 8px)
+    var(--pf-c-form-control--PaddingBottom, 8px);
+  padding-inline:
+    var(--pf-c-form-control--PaddingLeft, 8px)
+    var(--pf-c-form-control--PaddingRight, 8px);
+  font-size: var(--pf-c-form-control--FontSize);
+  background-color: var(--pf-c-form-control--BackgroundColor, #ffffff);
+  background-repeat: no-repeat;
+  border: var(--pf-c-form-control--BorderWidth, 1px) solid;
+  border-color:
+    var(--pf-c-form-control--BorderTopColor, #d2d2d2)
+    var(--pf-c-form-control--BorderRightColor, #d2d2d2)
+    var(--pf-theme--color--text, #151515)
+    var(--pf-c-form-control--BorderLeftColor, #d2d2d2);
+  border-radius: var(--pf-c-form-control--BorderRadius);
+  appearance: none;
+}
+
+pf-option {
+  --rh-icon-size: var(--rh-size-icon-03);
+}
+
+button.toggletip {
+  background: none;
+  border: none;
+  padding: none;
+  margin: none;
+  outline: none;
+
+  rh-icon {
+    color: var(--rh-color-interactive-primary-default);
+  }
+
+  &:is(:focus,:hover) {
+    outline: none;
+
+    rh-icon {
+      color: var(--rh-color-interactive-primary-hover);
+    }
+  }
+}

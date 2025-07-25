@@ -15,9 +15,7 @@ import styles from './rh-blockquote.css';
  *
  * @summary  Highlights quotations and citations with text styles
  *
- * @slot         - Provide a quote for the blockquote
- * @slot author  - Provide an author for the blockquote
- * @slot title   - Provide an author title for the blockquote
+ * @alias blockquote
  *
  */
 @customElement('rh-blockquote')
@@ -58,11 +56,12 @@ export class RhBlockquote extends LitElement {
       <figure id="container" class="${classMap({ highlight })}">
         <rh-icon set="standard" icon="quotemark-open"></rh-icon>
         <blockquote id="quote">
+          <!-- Provide a quote for the blockquote -->
           <slot></slot>
         </blockquote>
         <figcaption>
-          <p id="author"><slot name="author"></slot></p>
-          <p id="title"><slot name="title"></slot></p>
+          <p id="author"><!-- Provide an author for the blockquote --><slot name="author"></slot></p>
+          <p id="title"><!-- Provide an author title for the blockquote --><slot name="title"></slot></p>
         </figcaption>
       </figure>
     `;

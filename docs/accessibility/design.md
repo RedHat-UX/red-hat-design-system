@@ -46,7 +46,7 @@ We strive to adhere to [WCAG 2.1 AA contrast ratio standards][wcagcontrast]. Our
 Small foreground text (non-bold text under 24px and bold text under 19px) must have a contrast ratio of 4.5:1 and large foreground text (non-bold text of at least 24px and bold text of at least 19px) must have a contrast ratio of 3:1.
 
 <uxdot-example width-adjustment="872px">
-  <img src="/assets/color/contrast-text.png"
+  <img src="/assets/color/contrast-text.avif"
       alt="Contrast ratio examples for dark gray sections with black text that use different weights and fonts"
       width="872"
       height="576">

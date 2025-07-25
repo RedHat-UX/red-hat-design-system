@@ -17,11 +17,10 @@ import styles from './rh-button.css';
  * A button is clickable text or an icon that triggers an action on the page or in the background.
  * Depending on the action, content, and hierarchy, a button can be used on its own or grouped with
  * other buttons.
+ *
  * @summary Triggers actions on the page or in the background
- * @csspart button - Internal button element
- * @csspart icon - Container for the icon slot
- * @slot icon - Contains the button's icon or state indicator, e.g. a spinner.
- * @slot - Contains button text
+ *
+ * @alias button
  */
 @customElement('rh-button')
 @themable
@@ -101,6 +100,7 @@ export class RhButton extends LitElement {
     const { danger, variant } = this;
     const hasIcon = this.#hasIcon;
     return html`
+      <!-- Internal button element -->
       <button aria-label="${ifDefined(this.label)}"
               class="${classMap({
                 danger,
@@ -113,11 +113,17 @@ export class RhButton extends LitElement {
               @click="${this.#onClick}"
               aria-disabled=${String(!!this.disabled || !!this.#internals.formDisabled) as 'true' | 'false'}>
         <span aria-hidden="true">
+          <!--
+            slot:
+              description: Contains the button's icon or state indicator, e.g. a spinner.
+            part:
+              description: Container for the icon slot
+          -->
           <slot id="icon"
                 part="icon"
                 name="icon">${this.#renderIcon()}</slot>
         </span>
-        <span aria-hidden=${String(!!this.label) as 'true' | 'false'}><slot id="text" ></slot></span>
+        <span aria-hidden=${String(!!this.label) as 'true' | 'false'}><!-- Contains button text --><slot id="text" ></slot></span>
       </button>
     `;
   }
@@ -144,7 +150,7 @@ export class RhButton extends LitElement {
    *          ```
    */
   #renderIcon(): TemplateResult {
-    switch (this.variant.toLowerCase()) {
+    switch (this.variant?.toLowerCase()) {
       case 'close':
         return html`<rh-icon set="microns" icon="close"></rh-icon>`;
       case 'play':

@@ -20,11 +20,15 @@
   gap: var(--rh-space-2xl, 32px) calc(var(--rh-space-xs, 4px) / 2);
   flex-wrap: wrap;
 
-  --rh-pagination-accent-color: var(--rh-color-interactive-primary-default);
-  --_numeric-a-color: var(--rh-pagination-accent-color);
+  --_numeric-a-color: /** Sets the outline color when the page input has focus. */
+    var(--rh-pagination-accent-color, var(--rh-color-interactive-primary-default));
   --_numeric-a-color-hover: var(--rh-color-interactive-primary-hover);
-  --_numeric-a-color-focus: var(--rh-pagination-accent-color);
-  --_numeric-a-color-focus-outline: var(--rh-pagination-accent-color);
+  --_numeric-a-color-focus:
+    var(--rh-pagination-accent-color,
+      var(--rh-color-interactive-primary-default));
+  --_numeric-a-color-focus-outline:
+    var(--rh-pagination-accent-color,
+      var(--rh-color-interactive-primary-default));
   --_numeric-a-color-visited: var(--rh-color-interactive-primary-visited-default);
   --_numeric-a-color-visited-hover: var(--rh-color-interactive-primary-visited-hover);
   --_list-a-bg-color:
@@ -112,6 +116,8 @@ svg {
 .stepper {
   background-color: var(--_stepper-bg-color);
   border: var(--rh-border-width-sm, 1px) solid transparent;
+
+  /** Sets the stepper color. */
   color: var(--rh-pagination-stepper-color, var(--rh-color-gray-50, #707070));
   display: grid;
   font-family: var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif);
@@ -167,6 +173,8 @@ svg {
 
 .stepper[inert] {
   pointer-events: none;
+
+  /** Sets the disabled stepper color. */
   color: var(--rh-pagination-background-focused, var(--rh-color-gray-30, #c7c7c7));
 }
 
@@ -240,13 +248,19 @@ input:invalid:focus {
 }
 
 #numeric a {
-  text-decoration: none;
+  text-decoration: underline dashed var(--rh-border-width-sm, 1px);
+  text-decoration-color: light-dark(var(--rh-color-gray-50), var(--rh-color-gray-40));
+  text-underline-offset: max(5px, 0.28em);
+  transition-timing-function: ease;
+  transition-property: text-underline-offset, color, text-decoration-color;
+  transition-duration: 0.3s;
   color: var(--_numeric-a-color);
 }
 
 #numeric a:hover {
   color: var(--_numeric-a-color-hover);
-  text-decoration: underline;
+  text-decoration-color: inherit;
+  text-underline-offset: max(6px, 0.33em);
 }
 
 #numeric a:visited {
@@ -258,7 +272,8 @@ input:invalid:focus {
   color: var(--_numeric-a-color-focus);
   outline: var(--rh-border-width-md, 2px) solid transparent;
   outline-color: var(--_numeric-a-color-focus-outline);
-  text-decoration: underline;
+  text-decoration-color: inherit;
+  text-underline-offset: max(6px, 0.33em);
 }
 
 #numeric a:visited:hover {
