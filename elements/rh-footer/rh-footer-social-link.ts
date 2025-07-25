@@ -10,7 +10,6 @@ import style from './rh-footer-social-link.css';
 
 /**
  * Social media links for Red Hat Footer
- * @slot - Optional icon for social link. Use only when suitable icon is unavailable with `<rh-icon>`
  */
 @customElement('rh-footer-social-link')
 export class RhFooterSocialLink extends LitElement {
@@ -33,9 +32,8 @@ export class RhFooterSocialLink extends LitElement {
   render() {
     return html`
       <a href="${ifDefined(this.href)}" aria-label="${ifDefined(this.accessibleLabel)}">
-        <slot>
-          ${this.icon ? html`<rh-icon set="social" icon="${this.icon}"></rh-icon>` : ''}
-        </slot>
+        <!-- Optional icon for social link. Use only when suitable icon is unavailable with \`<rh-icon>\` -->
+        <slot>${this.icon ? html`<rh-icon set="social" icon="${this.icon}"></rh-icon>` : ''}</slot>
       </a>
     `;
   }

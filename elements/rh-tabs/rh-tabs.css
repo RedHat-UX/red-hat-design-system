@@ -186,6 +186,7 @@ button {
 }
 
 :host(:is([centered], [box='inset'])) #container:not(.overflow) [part='tabs'] {
+  /** Tabs inset */
   margin-inline: var(--rh-tabs-inset, var(--_inset-inline-margin, auto));
 }
 

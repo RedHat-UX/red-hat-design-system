@@ -29,9 +29,9 @@ import styles from './rh-navigation-secondary-dropdown.css';
 
 /**
  * Upgrades a top level nav link to include dropdown functionality
+ *
  * @summary Upgrades a top level nav link to include dropdown functionality
- * @slot link   - Link for dropdown, expects `<a>` element
- * @slot menu   - Menu for dropdown, expects `<rh-navigation-secondary-menu>` element
+ *
  * @fires { SecondaryNavDropdownExpandEvent } change - Fires when a dropdown is clicked
  */
 @customElement('rh-navigation-secondary-dropdown')
@@ -67,7 +67,9 @@ export class RhNavigationSecondaryDropdown extends LitElement {
 
     return html`
       <div id="container" part="container" class="${classMap(classes)}">
+        <!-- Link for dropdown, expects \`<a>\` element -->
         <slot name="link"></slot>
+        <!-- Menu for dropdown, expects \`<rh-navigation-secondary-menu>\` element -->
         <slot name="menu"></slot>
       </div>
     `;

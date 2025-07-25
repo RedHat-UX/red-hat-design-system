@@ -43,18 +43,6 @@ export class VideoPlayEvent extends Event {
  * @fires consent-click - "Update preferences" consent button is clicked
  * @fires request-play - Play button is clicked
  * @fires play - Video is about to be played
- * @slot - Place video embed code here; iframe should include a `title` attribute with the video title
- * @slot play-button-text - Text for play button; recommended value "Video title (video)"
- * @slot thumbnail - Optional thumbnail image on top of video embed; should include `alt` text
- * @slot consent-message - Text explaining opt-in to cookies is required, e.g. `<p>View this video by opting in to “Advertising Cookies.”</p>`
- * @slot consent-button-text - Text for CTA button to update preferences, e.g. "Update preferences"
- * @slot caption - Optional caption below video embed
- * @slot autoplay - DO NOT USE! (Used by `rh-video-embed`.)
- * @csspart figure - The outer container for rh-video-embed
- * @csspart video - The container for the video, thumbnail, and play button
- * @csspart consent-body - The container for the consent message and consent button
- * @csspart play - The play button on top of the thumbnail
- * @csspart caption - The container for the caption
  */
 @customElement('rh-video-embed')
 @themable
@@ -141,13 +129,19 @@ export class RhVideoEmbed extends LitElement {
     const show = consent ? 'consent' : video ? 'video' : 'thumbnail';
 
     return html`
+      <!-- The outer container for rh-video-embed -->
       <figure part="figure" class="${classMap({ video, consent })}">
+        <!-- The container for the video, thumbnail, and play button -->
         <div part="video" id="video">
           <div aria-hidden="${show !== 'thumbnail'}">
+            <!-- Optional thumbnail image on top of video embed; should include \`alt\` text -->
             <slot id="thumbnail" name="thumbnail"></slot>
           </div>
+          <!-- Place video embed code here; iframe should include a \`title\` attribute with the video title -->
           <slot></slot>
-          <div id="autoplay"><slot name="autoplay"></slot></div>
+          <div id="autoplay"><!--
+            DO NOT USE! (Used by \`rh-video-embed\`.)
+          --><slot name="autoplay"></slot></div>
           ${this.#showConsent ? html`
             <rh-surface id="consent" color-palette="darker">
               <svg id="watermark" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1136 639">
@@ -167,7 +161,9 @@ export class RhVideoEmbed extends LitElement {
                   </g>
                 </g>
               </svg>
+              <!-- The container for the consent message and consent button -->
               <div part="consent-body" id="consent-body">
+                <!-- Text explaining opt-in to cookies is required, e.g. \`<p>View this video by opting in to “Advertising Cookies.”</p>\` -->
                 <slot name="consent-message">
                   <p id="consent-message">View this video by opting in to “Advertising Cookies.”</p>
                 </slot>
@@ -175,20 +171,28 @@ export class RhVideoEmbed extends LitElement {
                   id="consent-button"
                   variant="tertiary"
                   @click="${this.#handleConsentClick}"
-                  @keyup="${this.#handleConsentKeyup}"><slot name="consent-button-text">Update preferences</slot></rh-button>
+                  @keyup="${this.#handleConsentKeyup}"><!--
+                    Text for CTA button to update preferences, e.g. "Update preferences"
+                  --><slot name="consent-button-text">Update preferences</slot></rh-button>
               </div>
             </rh-surface>
           ` : ''}
+          <!-- The play button on top of the thumbnail -->
           <rh-button part="play"
                      id="play"
                      variant="play"
                      ?hidden="${show !== 'thumbnail'}"
                      @click="${this.#handlePlayClick}"
                      @keyup="${this.#handlePlayKeyup}">
-            <span class="visually-hidden"><slot name="play-button-text">${playLabel}</slot></span>
+            <span class="visually-hidden"><!--
+              Text for play button; recommended value "Video title (video)"
+            --><slot name="play-button-text">${playLabel}</slot></span>
           </rh-button>
         </div>
-        <figcaption part="caption" ?hidden="${!hasCaption}"><slot name="caption"></slot></figcaption>
+        <!-- The container for the caption -->
+        <figcaption part="caption" ?hidden="${!hasCaption}"><!--
+          Optional caption below video embed
+        --><slot name="caption"></slot></figcaption>
       </figure>
     `;
   }

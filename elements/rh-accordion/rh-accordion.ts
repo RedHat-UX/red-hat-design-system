@@ -51,7 +51,6 @@ export class AccordionCollapseEvent extends ComposedEvent {
  *
  * @fires {AccordionExpandEvent} expand - when a panel expands
  * @fires {AccordionCollapseEvent} collapse - when a panel collapses
- * @slot - Place the `rh-accordion-header` and `rh-accordion-panel` elements here.
  * @attr  [accents=inline] Position accents in the header either inline or bottom
  */
 @customElement('rh-accordion')
@@ -150,7 +149,9 @@ export class RhAccordion extends LitElement {
     const expanded = this.#expanded;
     return html`
       <div id="container"
-           class="${classMap({ large, expanded })}"><slot></slot></div>
+           class="${classMap({ large, expanded })}"><!--
+        Place the \`rh-accordion-header\` and \`rh-accordion-panel\` elements here.
+        --><slot></slot></div>
     `;
   }
 

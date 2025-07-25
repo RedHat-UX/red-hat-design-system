@@ -10,7 +10,6 @@ import styles from './rh-navigation-primary-item-menu.css';
 
 /**
  * Navigation Menu
- * @slot - Place element content here
  */
 @customElement('rh-navigation-primary-item-menu')
 export class RhNavigationPrimaryItemMenu extends LitElement {
@@ -46,6 +45,7 @@ export class RhNavigationPrimaryItemMenu extends LitElement {
     const compact = !this.#hydrated ? true : this.compact ?? true;
     return html`
       <div id="container" class="${classMap({ compact: compact, dehydrated: !this.#hydrated })}">
+        <!-- Place element content here -->
         <slot></slot>
       </div>
     `;
