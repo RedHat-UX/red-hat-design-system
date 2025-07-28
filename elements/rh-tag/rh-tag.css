@@ -17,7 +17,6 @@ a {
   align-items: center;
   background-color: var(--_fill-color, var(--rh-color-surface-lighter, #f2f2f2));
   border-radius: var(--rh-border-radius-pill, 64px);
-  border-width: 0;
   border: 0;
   color: var(--_text-color, var(--rh-color-text-primary));
   display: inline-flex;
