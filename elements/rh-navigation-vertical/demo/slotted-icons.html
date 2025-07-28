@@ -1,0 +1,40 @@
+<rh-navigation-vertical>
+  <rh-navigation-vertical-item href="#" current-page>
+    <span><rh-icon set="ui" icon="home-fill"></rh-icon> Icon Example 1</span>
+  </rh-navigation-vertical-item>
+    <rh-navigation-vertical-item href="#">
+    <span><rh-icon set="ui" icon="language-fill"></rh-icon> Icon Example 2</span>
+  </rh-navigation-vertical-item>
+    <rh-navigation-vertical-item href="#">
+    <span><rh-icon set="ui" icon="secured-fill"></rh-icon> Icon Example 3</span>
+  </rh-navigation-vertical-item>
+    <rh-navigation-vertical-item href="#">
+    <span><rh-icon set="ui" icon="bug-fill"></rh-icon> Icon Example 4</span>
+  </rh-navigation-vertical-item>
+  <rh-navigation-vertical-group>
+    <span slot="summary"><rh-icon set="ui" icon="check-circle-fill"></rh-icon> Icon Example 5</span>
+    <rh-navigation-vertical-item href="#">
+    <span><rh-icon set="ui" icon="cloud-fill"></rh-icon>Icon Example 6</span>
+  </rh-navigation-vertical-item>
+  <rh-navigation-vertical-item href="#">
+    <span><rh-icon set="ui" icon="folder-fill"></rh-icon> Icon Example 7</span>
+  </rh-navigation-vertical-item>
+  </rh-navigation-vertical-group>
+</rh-navigation-vertical>
+
+<style>
+  rh-navigation-vertical-item > span {
+    display: inline-flex;
+    gap: var(--rh-space-md, 8px);
+    align-items: center;
+  }
+  rh-navigation-vertical-group > span {
+    display: inline-flex;
+    gap: var(--rh-space-md, 8px);
+    align-items: center;
+  }
+</style>
+
+<script type="module">
+  import '@rhds/elements/rh-navigation-vertical/rh-navigation-vertical.js';
+</script>
