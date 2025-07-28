@@ -72,7 +72,7 @@
   @container navigation-primary (min-width: 576px) {
     border-block-end-color: transparent;
   }
-  
+
   & svg {
     block-size: 30px;
     inline-size: 42px;
@@ -81,7 +81,7 @@
       block-size: 30px;
       inline-size: 125px;
     }
-  }  
+  }
 
   & ::slotted(a),
   & a {
