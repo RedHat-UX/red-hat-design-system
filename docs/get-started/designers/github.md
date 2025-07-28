@@ -1,13 +1,13 @@
 ---
 layout: layouts/pages/has-toc.njk
-title: Github project
+title: Github
 heading: Designers
 permalink: /get-started/designers/github.html
 tags:
   - designers
 subnav:
   collection: sortedDesigners
-  order: 20
+  order: 40
 ---
 
 <link rel="stylesheet"

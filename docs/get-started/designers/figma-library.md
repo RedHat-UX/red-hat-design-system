@@ -7,7 +7,7 @@ tags:
   - designers
 subnav:
   collection: sortedDesigners
-  order: 10
+  order: 20
 ---
 
 <link rel="stylesheet"
