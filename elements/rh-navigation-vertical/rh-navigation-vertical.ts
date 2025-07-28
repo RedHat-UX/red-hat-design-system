@@ -9,12 +9,13 @@ import { InternalsController } from '@patternfly/pfe-core/controllers/internals-
 import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 
 import { provide } from '@lit/context';
-import { context, type RhNavigationVerticalContext } from './context.js';
+import { navigationContext } from '../rh-navigation-item/navigation-context.js';
+import { borderedContext, type BorderedContext } from '../rh-navigation-item/bordered-context.js';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
 
 import './rh-navigation-vertical-group.js';
-import './rh-navigation-vertical-item.js';
+import '../rh-navigation-item/rh-navigation-item.js';
 
 import styles from './rh-navigation-vertical.css';
 
@@ -32,7 +33,7 @@ export class RhNavigationVertical extends LitElement {
   // eslint-disable-next-line no-unused-private-class-members
   #internals = InternalsController.of(this, { role: 'navigation' });
 
-  private _depth = 0; // Internal state for depth, initially 0
+  
 
   /**
    * Optional bordered attribute that adds a border to the inline-start
@@ -47,11 +48,21 @@ export class RhNavigationVertical extends LitElement {
    */
   @property({ attribute: 'accessible-label' }) accessibleLabel = 'main';
 
+  @provide({ context: borderedContext })
+  @state()
+  private _borderedContext: BorderedContext = '';
+
   /**
    * Provide our own parent information, depth = 0
    */
-  @provide({ context: context })
-  private _ctx = this.#makeContext();
+  @provide({ context: navigationContext })
+  private _navContext = 0;
+
+  willUpdate(changed: Map<string, unknown>) {
+    if (changed.has('bordered')) {
+      this._borderedContext = this.bordered ?? '';
+    }
+  }
 
   connectedCallback() {
     super.connectedCallback();
@@ -93,17 +104,7 @@ export class RhNavigationVertical extends LitElement {
     this.#internals.ariaLabel = this.accessibleLabel;
   }
 
-  #makeContext(): RhNavigationVerticalContext {
-    return {
-      depth: this._depth,
-      bordered: this.bordered,
-    };
-  }
-
-  @observes('bordered')
-  protected _openChanged() {
-    this._ctx = this.#makeContext();
-  }
+  
 }
 
 declare global {
