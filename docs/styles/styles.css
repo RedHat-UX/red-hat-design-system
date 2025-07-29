@@ -79,20 +79,6 @@
     white-space: nowrap;
     border: 0;
   }
-
-  @view-transition {
-    navigation: auto;
-  }
-
-  ::view-transition-old(main),
-  ::view-transition-new(main) {
-    animation: fade 0.3s ease both;
-  }
-
-  @keyframes fade {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
 }
 
 @layer layout {
