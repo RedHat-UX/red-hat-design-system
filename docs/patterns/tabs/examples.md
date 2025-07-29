@@ -3,12 +3,11 @@ title: Examples
 heading: Tabs
 sidenavTitle: Tabs
 layout: layouts/pages/pattern.njk
-order: 20
 tags:
   - tabPatterns
 subnav:
   collection: tabPatterns
-  order: 1
+  order: 2
 ---
 
 

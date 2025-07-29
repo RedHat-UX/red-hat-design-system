@@ -3,7 +3,7 @@ title: Overview
 heading: Tag
 sidenavTitle: Tag
 layout: layouts/pages/pattern.njk
-order: 119
+order: 130
 tags:
   - pattern
   - tagPatterns

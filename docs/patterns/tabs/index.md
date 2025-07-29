@@ -3,13 +3,13 @@ title: Overview
 heading: Tabs
 sidenavTitle: Tabs
 layout: layouts/pages/pattern.njk
-order: 118
+order: 120
 tags:
   - pattern
   - tabPatterns
 subnav:
   collection: tabPatterns
-  order: 118
+  order: 1
 ---
 
 
