@@ -258,7 +258,8 @@ Use the `--rh-space-lg` token in between stacked headings and in between heading
   <img src="./scale-and-rhythm-headings-paragraphs.svg"
       alt="Diagram showing spacing between headings and between a heading and body text"
       width="820"
-      height="148">
+      height="148"
+      loading="lazy">
 </uxdot-example>
 
 ### Lists
@@ -273,7 +274,8 @@ Use the following specs for lists.
   <img src="./scale-and-rhythm-lists.svg"
       alt="Diagram showing indentation and spacing between list items"
       width="1012"
-      height="440">
+      height="440"
+      loading="lazy">
 </uxdot-example>
 
 ### Margins
@@ -287,14 +289,16 @@ There are different margin specs depending on how text styles are grouped.
   <img src="./scale-and-rhythm-padding-A.svg"
       alt="Diagram showing spacing between body text, calls to action, and headings"
       width="1012"
-      height="633">
+      height="633"
+      loading="lazy">
 </uxdot-example>
 
 <uxdot-example width-adjustment="1012px" color-palette="lightest">
   <img src="./scale-and-rhythm-padding-B.svg"
       alt="Diagram showing spacing above and below different headings and body text"
       width="1012"
-      height="905">
+      height="905"
+      loading="lazy">
 </uxdot-example>
 
 <uxdot-feedback>

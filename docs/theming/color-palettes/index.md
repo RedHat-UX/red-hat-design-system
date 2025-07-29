@@ -233,7 +233,8 @@ creating themable, responsive graphics.
 
 <uxdot-example>
   <img alt="correct uses of an illustration with a transparent background and one illustration incorrectly using a white background on a surface with a dark color palette area"
-       src="illustrations-and-imagery.avif">
+       src="illustrations-and-imagery.avif"
+       loading="lazy">
 </uxdot-example>
 
 {% renderFile './docs/_includes/partials/component/feedback.11ty.ts' %}

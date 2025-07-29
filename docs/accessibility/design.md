@@ -49,7 +49,8 @@ Small foreground text (non-bold text under 24px and bold text under 19px) must h
   <img src="/assets/color/contrast-text.avif"
       alt="Contrast ratio examples for dark gray sections with black text that use different weights and fonts"
       width="872"
-      height="576">
+      height="576"
+      loading="lazy">
 </uxdot-example>
 
 #### Links
@@ -74,7 +75,8 @@ It is acceptable to layer colors with the same hue, saturation, or lightness on 
   <img src="/assets/color/color-a11y-color-contrast-layering.svg"
       alt="Red CTA against a white background, blue button against a light gray background, and a light red-orange button against a black background"
       width="872"
-      height="250">
+      height="250"
+      loading="lazy">
 </uxdot-example>
 
 #### Further help
@@ -153,7 +155,8 @@ If a link must open in a new window, indicate this both visually and non-visuall
 
 <uxdot-example color-palette="lightest" width-adjustment="496px" slot="image">
   <img src="../behavior-external-pages.svg"
-        alt="Examples of links paired with a new tab/window icon">
+        alt="Examples of links paired with a new tab/window icon"
+        loading="lazy">
 </uxdot-example>
 
 ### Target size

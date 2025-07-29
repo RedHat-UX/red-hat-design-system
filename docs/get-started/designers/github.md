@@ -50,7 +50,8 @@ with us for additional help.
 
 <uxdot-example variant="full" no-border>
   <img alt="Screenshot of the red-hat-design-system GitHub repo's Code tab"
-       src="get-familiar-with-github.avif">
+       src="get-familiar-with-github.avif"
+       loading="lazy">
 </uxdot-example>
 
 ## Roadmap

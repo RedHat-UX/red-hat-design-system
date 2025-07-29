@@ -73,7 +73,7 @@ standard backbone of RHDS' theming engine.
 
 <nav class="card-grid" aria-label="Theming pages">
   <rh-tile>
-    <img slot="image" src="color-palettes.svg" alt="">
+    <img slot="image" src="color-palettes.svg" alt="" loading="lazy">
     <h2 slot="headline">
       <a href="color-palettes/">Color Palettes</a>
     </h2>
@@ -82,7 +82,7 @@ standard backbone of RHDS' theming engine.
   </rh-tile>
 
   <rh-tile>
-    <img slot="image" src="customizing.svg" alt="">
+    <img slot="image" src="customizing.svg" alt="" loading="lazy">
     <h2 slot="headline">
       <a href="customizing/">Customizing</a>
     </h2>
@@ -91,7 +91,7 @@ standard backbone of RHDS' theming engine.
   </rh-tile>
 
   <rh-tile>
-    <img slot="image" src="developers.svg" alt="">
+    <img slot="image" src="developers.svg" alt="" loading="lazy">
     <h2 slot="headline">
       <a href="developers/">Developers</a>
     </h2>
