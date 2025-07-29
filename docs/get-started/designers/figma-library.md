@@ -48,7 +48,8 @@ Our Figma library can be accessed by following these steps.
   <img alt="Screenshot of the manage libraries dialog in Figma with a cursor over the 'Add file' button."
        src="figma-library-accessing-our-library.avif"
        width="1140"
-       height="464">
+       height="464"
+       loading="lazy">
 </uxdot-example>
 
 ### Access for agencies
