@@ -26,7 +26,7 @@ subnav:
 
 Using Figma variables and styles is an evolution from **painting pictures** to **building systems**. It reframes design as a shared language between disciplines, where we communicate with design tokens that carry intent, not just appearance.
 
-This philosophical shift redefines our role as designers from creators of static visuals to architects of dynamic coherent language that **bridges design and engineering**.
+This philosophical shift redefines our role as designers from creators of static visuals to architects of language that **bridges design and engineering**.
 
 ## Benefits
 
@@ -154,7 +154,7 @@ The power of theming extends far beyond color schemes. Here are other ways we mi
 
 <rh-alert state="info">
   <h4 slot="header">Helpful tip</h4>
-  <p>All RHDS components and patterns are preloaded with variables and styles that map to our design tokens.</p>
+  <p>All RHDS components and patterns are preloaded with variables and styles that connect to our design tokens.</p>
 </rh-alert>
 
 #### Fill 
