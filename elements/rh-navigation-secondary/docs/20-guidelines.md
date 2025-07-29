@@ -21,11 +21,12 @@ The [primary navigation](../../navigation-primary) includes links to the most im
 
 ## Writing content
 
-### Slot 1 text 
+### `logo` slot text 
 
-If a secondary navigation is used on a product page, Slot 1 should display the product name as linked text. When writing content for Slot 1, consider the following:
+If a secondary navigation is used on a product page, the `logo` slot should display the product name as linked text. When writing content, consider the following:
 
 - If product name text is long, it needs to break to two lines
+- A product name should not be so long that it breaks to three lines
 - If product name text is short and there are fewer links and menus, it can remain on one line
 
 <uxdot-example color-palette="lightest" width-adjustment="1000px" variant="full" alignment="left" no-border>
@@ -36,9 +37,9 @@ If a secondary navigation is used on a product page, Slot 1 should display the p
 </uxdot-example>
 
 
-### Slot 2 text
+### `nav` slot text
 
-Slot 2 includes inline links, menus, and sometimes external links. The order of elements is decided by content strategists. When writing content for Slot 2, consider the following:
+The `nav` slot includes inline links, menus, and sometimes external links. The order of elements is decided by content strategists. When writing content, consider the following:
   
 - A secondary navigation can become cluttered quickly if there are too many items
 - Try to be short and concise when writing
@@ -53,12 +54,12 @@ Slot 2 includes inline links, menus, and sometimes external links. The order of 
 </uxdot-example>
 
 
-### Slot 3 text
+### `cta` slot text
 
-Slot 3 is optional, but it can include interactive elements like a call to action. When writing content for Slot 3, consider the following:
+The `cta` slot is optional, but it can include interactive elements like a call to action. When writing content, consider the following:
   
 - Try to be short and concise when writing
-- Including a call to action will reduce the amount of space for Slot 2 elements
+- Including a call to action will reduce the amount of space for `nav` slot elements
 - A call to action <strong>does not</strong> stack to increase the amount of space
 - Text will expand when translated to some languages
 
@@ -72,7 +73,7 @@ Slot 3 is optional, but it can include interactive elements like a call to actio
 
 ### Maximum uses and character count
 
-If there are fewer links and menus in Slot 2, text labels can be longer. If there are more links and menus, text labels need to be shorter to avoid cluttering.
+If there are fewer links and menus in the `nav` slot, text labels can be longer. If there are more links and menus, text labels need to be shorter to avoid cluttering.
 
 <rh-table>
 
@@ -186,26 +187,26 @@ If the height of the menu is **taller** than the viewport height, scroll is trap
 
 ## Responsive design
 
-As breakpoints get smaller, Slot 2 will collapse into an accordion within a menu instead.
+As breakpoints get smaller, the nav slot will collapse into an accordion within a menu instead.
 
 
-### Slot 2 visible
+### `nav` slot visible
 
 <uxdot-example color-palette="lightest" width-adjustment="1000px" variant="full" alignment="left" no-border>
-  <img alt="Image of secondary navigations; one has a menu collapsed and the other has a menu expanded, but both have slot 2 visible on large breakpoints"
-       src="../nav-secondary-guidelines-responsive-slot-2-visible.png"
+  <img alt="Image of secondary navigations; one has a menu collapsed and the other has a menu expanded, but both have the nav slot visible on large breakpoints"
+       src="../nav-secondary-guidelines-responsive-nav-slot-visible.avif"
        width="1000"
        height="550">
 </uxdot-example>
 
 
-### Slot 2 hidden 
+### `nav` slot hidden 
 
-<uxdot-example color-palette="lightest" width-adjustment="784px" variant="full" alignment="left" no-border>
-  <img alt="Image of secondary navigations; slot 2 on small breakpoints is not visible unless the menu is expanded"
-       src="../nav-secondary-guidelines-responsive-slot-2-hidden.png"
-       width="784"
-       height="731">
+<uxdot-example color-palette="lightest" width-adjustment="781px" variant="full" alignment="left" no-border>
+  <img alt="Image of secondary navigations; the nav slot on small breakpoints is not visible unless the menu is expanded"
+       src="../nav-secondary-guidelines-responsive-nav-slot-hidden.avif"
+       width="781"
+       height="725">
 </uxdot-example>
 
 
@@ -213,89 +214,109 @@ As breakpoints get smaller, Slot 2 will collapse into an accordion within a menu
 
 <rh-table>
 
-| Breakpoint      | Range           | Slot 2 status         | Left and right padding |
-|-----------------|-----------------|-----------------------|------------------------|
-| Desktop, large  | &gt; 1680px     | Visible               | 64px                   |
-| Desktop, medium | 1440px - 1679px | Visible               | 64px                   |
-| Desktop, small  | 1200px - 1439px | Visible               | 32px                   |
-| Tablet, large   | 992px - 1199px  | Hidden, one menu only | 32px                   |
-| Tablet, small   | 768px - 991px   | Hidden, one menu only | 32px                   |
-| Mobile, large   | 576px - 767px   | Hidden, one menu only | 16px                   |
-| Mobile, small   | &lt; 575px      | Hidden, one menu only | 16px                   |
+| Breakpoint      | Range           | `nav` slot visibility         | Left and right padding |
+|-----------------|-----------------|-------------------------------|------------------------|
+| Desktop, large  | &gt; 1680px     | Visible                       | 64px                   |
+| Desktop, medium | 1440px - 1679px | Visible                       | 64px                   |
+| Desktop, small  | 1200px - 1439px | Visible                       | 32px                   |
+| Tablet, large   | 992px - 1199px  | Hidden, one menu only         | 32px                   |
+| Tablet, small   | 768px - 991px   | Hidden, one menu only         | 32px                   |
+| Mobile, large   | 576px - 767px   | Hidden, one menu only         | 16px                   |
+| Mobile, small   | &lt; 575px      | Hidden, one menu only         | 16px                   |
 
 </rh-table>
 
 
 ## Best practices
   
-### Incorrect ordering
+### Navigation order
 
-Do not position the secondary navigation above the primary navigation.
+<div class="grid sm-two-columns">
+  <uxdot-best-practice variant="do">
+    <uxdot-example width-adjustment="482px" slot="image">
+      <img src="../secondary-nav-best-practices-nav-order-do.avif"
+            alt="Primary navigation above a secondary navigation"
+            width="482"
+            height="152">
+    </uxdot-example>
+    <p>The secondary navigation always appears below primary navigation when both are used.</p>
+  </uxdot-best-practice>
 
-<uxdot-example color-palette="lightest" width-adjustment="872px" danger>
-  <img alt="Image of a secondary navigation on top of a primary navigation which is incorrect usage"
-       src="../nav-secondary-best-practice-1.png"
-       width="1000"
-       height="170">
-</uxdot-example>
+  <uxdot-best-practice variant="dont">
+    <uxdot-example width-adjustment="482px" slot="image">
+      <img src="../secondary-nav-best-practices-nav-order-dont.avif"
+            alt="Secondary navigation above primary navigation"
+            width="482"
+            height="152">
+    </uxdot-example>
+    <p>Do not position the secondary navigation above the primary navigation.</p>
+  </uxdot-best-practice>
+</div>
 
+### Scheme matching
 
-### Color scheme mismatch
-<a id="theme-mismatch"></a>
+<div class="grid sm-two-columns">
+  <uxdot-best-practice variant="do">
+    <uxdot-example width-adjustment="482px" slot="image">
+      <img src="../secondary-nav-best-practices-scheme-do.avif"
+            alt="Light scheme secondary navigation used on a snippet of a light scheme page"
+            width="482"
+            height="200">
+    </uxdot-example>
+    <p>Use a light scheme secondary navigation in a light scheme environment and vice versa.</p>
+  </uxdot-best-practice>
 
-Do not use a dark color scheme secondary navigation in light environments and vice versa.
+  <uxdot-best-practice variant="dont">
+    <uxdot-example width-adjustment="482px" slot="image">
+      <img src="../secondary-nav-best-practices-scheme-dont.avif"
+            alt="Light scheme secondary navigation used on a snippet of a dark scheme page"
+            width="482"
+            height="200">
+    </uxdot-example>
+    <p>Do not use a light scheme secondary navigation in a dark environment and vice versa.</p>
+  </uxdot-best-practice>
+</div>
 
-<uxdot-example color-palette="lightest" width-adjustment="872px" danger>
-  <img alt="Image of a dark theme secondary navigation in a light theme environment which is incorrect usage"
-       src="../nav-secondary-best-practice-2.png"
-       width="1000"
-       height="393">
-</uxdot-example>
+### Number of slots
 
+<uxdot-best-practice variant="do">
+  <uxdot-example width-adjustment="1012px" slot="image">
+    <img src="../secondary-nav-best-practices-slot-number-do.avif"
+          alt="Secondary navigation with three slots"
+          width="1012"
+          height="79">
+  </uxdot-example>
+  <p>Three is the maximum number of slots for large screen sizes.</p>
+</uxdot-best-practice>
 
-### Content overload
+<uxdot-best-practice variant="dont">
+  <uxdot-example width-adjustment="1012px" slot="image">
+    <img src="../secondary-nav-best-practices-slot-number-dont.avif"
+          alt="Secondary navigation with four slots"
+          width="1012"
+          height="79">
+  </uxdot-example>
+  <p>Do not display more slots than the three provided for large screen sizes.</p>
+</uxdot-best-practice>
 
-Do not use too many links or menus in Slot 2.
+### Number of navigation items
 
-<uxdot-example color-palette="lightest" width-adjustment="872px" danger>
-  <img alt="Image of a secondary navigation with way more than five links and menus which is incorrect usage"
-       src="../nav-secondary-best-practice-3.png"
-       width="1000"
-       height="98">
-</uxdot-example>
+<uxdot-best-practice variant="do">
+  <uxdot-example width-adjustment="837px" slot="image">
+    <img src="../secondary-nav-best-practices-items-number-do.avif"
+          alt="Secondary navigation with five items in the nav slot"
+          width="837"
+          height="86">
+  </uxdot-example>
+  <p>Display at least one navigation item in the <code>nav</code> slot and make sure that there are not too many. (A maximum of five items typically fits well.)</p>
+</uxdot-best-practice>
 
-
-### Adding slots
-
-Do not add more slots than provided, three is the maximum.
-
-<uxdot-example color-palette="lightest" width-adjustment="872px" danger>
-  <img alt="Image of a secondary navigation with four dotted line boxes for slots which is incorrect usage"
-       src="../nav-secondary-best-practice-4.png"
-       width="1000"
-       height="98">
-</uxdot-example>
-
-  
-### Slot 1 text
-
-Slot 1 text should never break to three lines.
-
-<uxdot-example color-palette="lightest" width-adjustment="872px" danger>
-  <img src="../nav-secondary-best-practice-5.png"
-       alt="Image of a secondary navigation, but the product name logo in slot 1 is three lines which is incorrect usage"
-       width="1000"
-       height="125">
-</uxdot-example>
-
-  
-### Missing navigation
-
-At least one link or menu in Slot 2 must be visible.
-
-<uxdot-example color-palette="lightest" width-adjustment="872px" danger>
-  <img alt="Image of a secondary navigation with no links or menus in slot 2 which is incorrect usage"
-       src="../nav-secondary-best-practice-6.png"
-       width="1000"
-       height="98">
-</uxdot-example>
+<uxdot-best-practice variant="dont">
+  <uxdot-example width-adjustment="1025px" slot="image">
+    <img src="../secondary-nav-best-practices-items-number-dont.avif"
+          alt="Secondary navigation with seven items in the nav slot"
+          width="1025"
+          height="86">
+  </uxdot-example>
+  <p>Do not add too many navigation items in the <code>nav</code> slot.</p>
+</uxdot-best-practice>
