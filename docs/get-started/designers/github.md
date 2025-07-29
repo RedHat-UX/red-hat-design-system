@@ -1,6 +1,6 @@
 ---
 layout: layouts/pages/has-toc.njk
-title: Github
+title: GitHub
 heading: Designers
 permalink: /get-started/designers/github.html
 tags:
