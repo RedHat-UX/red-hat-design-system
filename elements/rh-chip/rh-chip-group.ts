@@ -11,13 +11,6 @@ import styles from './rh-chip-group.css';
 
 /**
  * Chip Group
- * @slot - Place individual `rh-chips` inside `rh-chip-group`
- * @slot accessible-label
- *       An accessible label for the chip group.
- *       Content for this slot is put into the `<legend>` element.
- *       Also available as an attribute.
- * @slot clear-all
- *       Customized text for the "Clear all" button
  */
 @customElement('rh-chip-group')
 export class RhChipGroup extends LitElement {
@@ -49,10 +42,17 @@ export class RhChipGroup extends LitElement {
     return html`
       <fieldset>
         <legend part="legend">
+          <!--
+            An accessible label for the chip group.
+            Content for this slot is put into the \`<legend>\` element.
+            Also available as an attribute.
+          -->
           <slot name="accessible-label">${label}</slot>
         </legend>
+        <!-- Place individual \`rh-chips\` inside \`rh-chip-group\` -->
         <slot></slot>
         <button class="btn-link" type="button" @click="${this.#uncheckAllChips}">
+          <!-- Customized text for the "Clear all" button -->
           <slot name="clear-all">Clear all</slot>
         </button>
       </fieldset>

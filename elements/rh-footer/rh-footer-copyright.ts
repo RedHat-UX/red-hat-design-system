@@ -10,7 +10,7 @@ export class RhFooterCopyright extends LitElement {
   static readonly styles = style;
 
   render() {
-    return html`<slot>&copy; ${currentYear} Red Hat, Inc.</slot>`;
+    return html`<slot>&copy; ${currentYear} Red Hat</slot>`;
   }
 }
 

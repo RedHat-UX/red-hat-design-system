@@ -57,7 +57,6 @@ export const getSeconds = (str: TimeString): Seconds => {
 
 /**
  * Media Transcript Cue
- * @slot - text of cue
  * @fires cueseek - when user clicks a time cue
  */
 @customElement('rh-cue')
@@ -107,6 +106,7 @@ export class RhCue extends LitElement {
     const { start, voice } = this;
     return html`${!this.#hasVoice ? nothing : this.#headings.wrap(this.#linkTemplate(html`
       <span id="start">${start}</span> - <span id="voice">${voice}</span>`, true))}${this.#linkTemplate(html`
+      <!-- text of cue -->
       <slot></slot>
     `)}`;
   }

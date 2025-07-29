@@ -1,36 +1,32 @@
 import { expect, html, oneEvent, fixture } from '@open-wc/testing';
 import { clickElementAtCenter } from '@patternfly/pfe-tools/test/utils.js';
 import { RhAlert } from '../rh-alert.js';
-
-
-const defaultTemplate = html`
-  <rh-alert state="default">
-   <h3 slot="header">Default</h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
-      egestas, a sollicitudin mauris tincidunt.</p>
-    <button slot="actions" data-action="dismiss">Dismiss</button>
-    <button slot="actions" data-action="confirm">Confirm</button>
-  </rh-alert>
-`;
-
-const dismissableTemplate = html`
-  <rh-alert dismissable>
-    <h3 slot="header">Default dismissable</h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
-      egestas, a sollicitudin mauris tincidunt.</p>
-    <button slot="actions" data-action="dismiss">Dismiss</button>
-    <button slot="actions" data-action="confirm">Confirm</button>
-  </rh-alert>
-`;
-
+import { tokens } from '@rhds/tokens';
+import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
 
 describe('<rh-alert>', function() {
   let element: RhAlert;
   let dismissableElement: RhAlert;
 
   beforeEach(async function() {
-    element = await fixture<RhAlert>(defaultTemplate);
-    dismissableElement = await fixture<RhAlert>(dismissableTemplate);
+    element = await fixture<RhAlert>(html`
+      <rh-alert state="default">
+       <h3 slot="header">Default</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
+          egestas, a sollicitudin mauris tincidunt.</p>
+        <button slot="actions" data-action="dismiss">Dismiss</button>
+        <button slot="actions" data-action="confirm">Confirm</button>
+      </rh-alert>
+    `);
+    dismissableElement = await fixture<RhAlert>(html`
+      <rh-alert dismissable>
+        <h3 slot="header">Default dismissable</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend elit sed est
+          egestas, a sollicitudin mauris tincidunt.</p>
+        <button slot="actions" data-action="dismiss">Dismiss</button>
+        <button slot="actions" data-action="confirm">Confirm</button>
+      </rh-alert>
+    `);
   });
 
   it('should upgrade', async function() {
@@ -78,4 +74,39 @@ describe('<rh-alert>', function() {
       expect(dismissableElement.isConnected).to.be.true;
     });
   });
+
+  for (const [state, bgtoken] of Object.entries({
+    neutral: '--rh-color-surface-status-neutral',
+    info: '--rh-color-surface-status-info',
+    success: '--rh-color-surface-status-success',
+    caution: '--rh-color-surface-status-caution',
+    warning: '--rh-color-surface-status-warning',
+    danger: '--rh-color-surface-status-danger',
+  })) {
+    const expected = tokens.get(`${bgtoken}-on-light`) as unknown as string;
+    describe(`state="${state}"`, function() {
+      let element: RhAlert;
+      beforeEach(async function() {
+        element = await createFixture(html`<rh-alert state="${state}">Content</rh-alert>`);
+      });
+      it('uses the correct background color', function() {
+        // it would be better to assert the color value at a given pixel offset from the element boundary
+        // but we take a shortcut here because we know the id of the shadow container. this is brittle though
+        const actual = getComputedStyle(element.shadowRoot!.getElementById('container')!).backgroundColor;
+        expect(actual).to.be.colored(expected);
+      });
+    });
+    describe(`state="${state.toUpperCase()}" case insensitive`, function() {
+      let element: RhAlert;
+      beforeEach(async function() {
+        element = await createFixture(html`<rh-alert state="${state.toUpperCase()}">Content</rh-alert>`);
+      });
+      it('uses the correct background color', function() {
+        // it would be better to assert the color value at a given pixel offset from the element boundary
+        // but we take a shortcut here because we know the id of the shadow container. this is brittle though
+        const actual = getComputedStyle(element.shadowRoot!.getElementById('container')!).backgroundColor;
+        expect(actual).to.be.colored(expected);
+      });
+    });
+  }
 });

@@ -167,7 +167,7 @@ maintain consistency.
 
 <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
   <img alt="Hover state examples within a footer"
-       src="../footer-interaction-state-hover.png"
+       src="../footer-interaction-state-hover.avif"
        width="968"
        height="796">
 </uxdot-example>
@@ -212,7 +212,7 @@ maintain consistency.
 
 <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
   <img alt="Focus state examples within a footer"
-       src="../footer-interaction-state-focus.png"
+       src="../footer-interaction-state-focus.avif"
        width="968"
        height="796">
 </uxdot-example>
@@ -256,7 +256,7 @@ maintain consistency.
 </rh-alert>
 
 <uxdot-example width-adjustment="968px" variant="full" alignment="left" no-border>
-  <img src="../footer-interaction-state-active.png"
+  <img src="../footer-interaction-state-active.avif"
         alt="Active state examples within a footer"
         width="968"
         height="796">
