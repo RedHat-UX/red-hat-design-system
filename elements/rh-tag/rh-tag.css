@@ -16,7 +16,6 @@ a {
 #container {
   align-items: center;
   background-color: var(--_fill-color, var(--rh-color-surface-lighter, #f2f2f2));
-  border: 0;
   border-radius: var(--rh-border-radius-pill, 64px);
   border-width: 0;
   color: var(--_text-color, var(--rh-color-text-primary));
@@ -28,14 +27,19 @@ a {
   line-height: var(--rh-line-height-body-text, 1.5);
   max-inline-size: 100%;
   overflow: hidden;
-  padding:
-    var(--rh-tag-padding-block-start, var(--rh-space-xs, 4px))
-    var(--rh-tag-padding-inline-end, var(--rh-space-md, 8px))
-    var(--rh-tag-padding-block-end, var(--rh-space-xs, 4px))
-    var(--rh-tag-padding-inline-start, var(--rh-space-md, 8px));
   position: relative;
   text-overflow: ellipsis;
   white-space: nowrap;
+  padding-block:
+    /** The padding at the start of the direction perpendicular to the flow of the text. */
+    var(--rh-tag-padding-block-start, var(--rh-space-xs, 4px))
+    /** The padding at the end of the direction perpendicular to the flow of the text. */
+    var(--rh-tag-padding-block-end, var(--rh-space-xs, 4px));
+  padding-inline:
+    /** The padding at the start of the direction parallel to the flow of the text. */
+    var(--rh-tag-padding-inline-start, var(--rh-space-md, 8px))
+    /** The padding at the end of the direction parallel to the flow of the text. */
+    var(--rh-tag-padding-inline-end, var(--rh-space-md, 8px));
 
   --rh-icon-size: var(--rh-size-icon-01, 16px);
   --_icon-color: currentcolor;
