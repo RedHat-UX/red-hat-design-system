@@ -19,8 +19,7 @@ subnav:
 
 You can use tag within the `<button>` HTML element to make it trigger an action, like revealing a popover.
 
-<uxdot-pattern src="./patterns/tag-in-button.html">
-</uxdot-pattern>
+<uxdot-pattern src="./patterns/tag-in-button.html"></uxdot-pattern>
 
 ### Interaction states
 
