@@ -17,7 +17,10 @@ type Scheme = 'light' | 'dark' | 'light dark';
 
 /**
  * A switch toggles the state of the color scheme (between light, dark and system default).
+ *
  * @summary  A switch toggles the state of the color scheme (between light, dark and system default).
+ *
+ * @alias Scheme toggle
  * @slot legend - The legend text for the toggle.
  * @slot light-text - The text for the light mode.
  * @slot dark-text - The text for the dark mode.
