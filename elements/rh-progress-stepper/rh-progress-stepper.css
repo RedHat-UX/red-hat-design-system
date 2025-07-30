@@ -1,3 +1,5 @@
+/* Progress Stepper Component Styles */
+
 :host {
   --_step-line-color: var(--rh-color-border-subtle);
 
@@ -28,9 +30,7 @@
     text-decoration:
       underline
       dotted
-      var(--rh-color-text-secondary,
-        light-dark(var(--rh-color-text-secondary-on-light, #4d4d4d),
-        var(--rh-color-text-secondary-on-dark, #c7c7c7)))
+      var(--rh-color-text-secondary)
       1px;
     text-decoration-skip-ink: none; /* 9.375% */
     text-underline-offset: 5px; /* 4.8px */
@@ -41,6 +41,7 @@
   }
 }
 
+/* Vertical orientation styles */
 :host([orientation='vertical']) {
   & #step-list {
     grid-auto-flow: row;
@@ -57,6 +58,7 @@
   }
 }
 
+/* Horizontal orientation styles */
 :host([orientation='horizontal']) {
   & #step-list {
     grid-auto-flow: column;
@@ -74,6 +76,7 @@
   }
 }
 
+/* Compact view styles */
 :host([compact]) {
   grid-template-rows: auto;
 
@@ -104,8 +107,9 @@
   }
 }
 
+/* State-based color and weight variations */
 :host([state='inactive']) {
-  --_current-step-color: var(--rh-color-text-disabled, #6a6e73);
+  --_current-step-color: var(--_color-text-disabled, #6a6e73);
   --_current-step-weight: var(--rh-font-weight-body-text-regular, 400);
 }
 

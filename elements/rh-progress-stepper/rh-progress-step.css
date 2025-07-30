@@ -1,3 +1,6 @@
+/* Progress Step Component Styles */
+
+/* Description slot styling */
 slot[name='description'] {
   display: inline-block;
   margin: 0;
@@ -5,9 +8,12 @@ slot[name='description'] {
   font-weight: var(--rh-font-weight-body-text-regular, 400);
 }
 
+/* Link styling */
 a { display: inline; }
 
-strong, a,
+/* Common styling for strong elements, links, and description slots */
+strong,
+a,
 slot[name='description'] {
   /* Visually Showing */
   block-size: auto;
@@ -23,6 +29,7 @@ slot[name='description'] {
   /* End Visually Showing */
 }
 
+/* Compact view - hide text content */
 :host-context([compact]) {
   & strong,
   & a,
@@ -42,6 +49,7 @@ slot[name='description'] {
   }
 }
 
+/* Main step container styling */
 :host {
   grid-row: var(--_step-grid-row);
   width: 100%;
@@ -57,32 +65,31 @@ slot[name='description'] {
       var(--_step-line-color) 15px,
       transparent 15px));
   place-items: start baseline;
-  color:
-    var(--rh-color-text-secondary,
-      light-dark(var(--rh-color-text-secondary-on-light, #4d4d4d),
-      var(--rh-color-text-secondary-on-dark, #c7c7c7)));
+  color: var(--rh-color-text-secondary);
   grid-template-columns: var(--_step-template-columns, 24px auto);
   grid-template-rows: var(--_step-template-rows, 24px auto);
   justify-self: var(--_step-justify-self, start);
 
   /* Body text/md */
-  font-family:
-    var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-body-text-md, 1rem);
   font-style: normal;
   font-weight: var(--rh-font-weight-body-text-regular, 400);
   line-height: 1.5; /* 150% */
   gap: var(--_step-row-gap, 16px) var(--_step-column-gap, 16px);
 
+  /* Focus indicator */
   &:has(> :focus-visible) {
     border: 1px solid blue;
   }
 
+  /* Checkbox positioning */
   & input[type='checkbox'] {
     grid-column: 1;
     grid-row: 1;
   }
 
+  /* Icon styling */
   & rh-icon {
     color: var(--_step-color);
     background-color: var(--rh-color-surface);
@@ -95,51 +102,66 @@ slot[name='description'] {
     justify-self: var(--_step-icon-justify-self);
   }
 
-  & strong, & a { align-self: center; }
+  /* Text alignment */
+  & strong,
+  & a {
+    align-self: center;
+  }
+
   & slot[name='description'] { font-size: var(--rh-font-size-body-text-xs, 0.75rem); }
 
+  /* Step line color for inactive adjacent steps */
   &:has(+ [state='inactive']) {
     --_step-line-color: var(--rh-color-border-subtle) !important;
   }
 }
 
+/* Inactive state styling */
 :host([state='inactive']) {
   & strong,
   & a,
   & slot[name='description'] {
-    color: var(--rh-color-text-disabled, #6a6e73);
+    color: var(--_color-text-disabled, #6a6e73);
     font-weight: var(--rh-font-weight-body-text-regular, 400);
   }
 }
 
+/* Active state styling */
 :host([state='active']) {
   --_step-color: var(--rh-color-status-note);
 }
 
+/* Complete state styling */
 :host([state='complete']) {
   --_step-color: var(--rh-color-status-success);
 
-  & strong, & a {
+  & strong,
+  & a {
     font-weight: var(--rh-font-weight-body-text-regular, 400);
   }
 }
 
+/* Warning state styling */
 :host([state='warn']) {
   --_step-color: light-dark(var(--rh-color-yellow-50), var(--rh-color-yellow-30));
 
-  & strong, & a {
+  & strong,
+  & a {
     color: var(--_step-color);
   }
 }
 
+/* Fail state styling */
 :host([state='fail']) {
   --_step-color: var(--rh-color-status-danger);
 
-  & strong, & a {
+  & strong,
+  & a {
     color: var(--_step-color);
   }
 }
 
+/* Non-inactive state styling */
 :host(:not([state='inactive'])) {
   & :has(+ [state='inactive']) {
     --_step-line-color: var(--rh-color-border-subtle);
@@ -149,37 +171,33 @@ slot[name='description'] {
 
   & rh-icon { border-color: var(--rh-color-text-primary); }
 
-  & strong, & a {
+  /* Text styling for non-inactive states */
+  & strong,
+  & a {
     /* Body text/md - Medium weight */
     font-weight: var(--rh-font-weight-body-text-medium, 500);
     text-decoration:
       underline
       dotted
-      var(--rh-color-text-secondary,
-        light-dark(var(--rh-color-text-secondary-on-light, #4d4d4d),
-        var(--rh-color-text-secondary-on-dark, #c7c7c7)))
+      var(--rh-color-text-secondary)
       1px;
     text-decoration-skip-ink: none; /* 9.375% */
     text-underline-offset: 5px; /* 4.8px */
   }
 
+  /* Nested div styling */
   & div {
     & rh-icon { border-color: var(--rh-color-text-primary); }
 
     & span {
-      color:
-        var(--rh-color-text-secondary,
-          light-dark(var(--rh-color-text-secondary-on-light, #4d4d4d),
-          var(--rh-color-text-secondary-on-dark, #c7c7c7)));
+      color: var(--rh-color-text-secondary);
 
       /* Body text/md - Medium weight */
       font-weight: var(--rh-font-weight-body-text-medium, 500);
       text-decoration:
         underline
         dotted
-        var(--rh-color-text-secondary,
-          light-dark(var(--rh-color-text-secondary-on-light, #4d4d4d),
-          var(--rh-color-text-secondary-on-dark, #c7c7c7)))
+        var(--rh-color-text-secondary)
         1px;
       text-decoration-skip-ink: none; /* 9.375% */
       text-underline-offset: 5px; /* 4.8px */
@@ -187,8 +205,10 @@ slot[name='description'] {
   }
 }
 
+/* Horizontal orientation text padding */
 :host-context([orientation='horizontal']) {
-  & strong, & a {
+  & strong,
+  & a {
     padding-top: 4px;
   }
 }

@@ -6,45 +6,93 @@ import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import styles from './rh-progress-step.css';
 
-/** Available states for a progress step:
- * - inactive: The step is not active.
- * - active: The step is active.
- * - complete: The step is complete.
- * - warn: The step is in a warning state.
- * - fail: The step is in a failed state.
- * - custom: The step is using a custom icon.
+/**
+ * Available states for a progress step:
+ * - `inactive` - The step is not active
+ * - `active` - The step is currently active
+ * - `complete` - The step has been completed
+ * - `warn` - The step is in a warning state
+ * - `fail` - The step has failed
+ * - `custom` - The step uses a custom icon
  */
 export type ProgressStepState = 'inactive' | 'active' | 'complete' | 'warn' | 'fail' | 'custom';
 
+/**
+ * Map of state names to their corresponding icon names
+ */
 const ICONS = new Map(Object.entries({
   inactive: '',
   active: 'resources-full',
   complete: 'check-circle-fill',
   warn: 'error-fill',
-  fail: 'ban-fill'
+  fail: 'ban-fill',
 }));
 
-
 /**
- * A progress step is a single step in a progress stepper.
- * 
- * @slot - The content of the progress step.
- * @slot icon - The icon to display for the progress step.
- * @slot label - The label to display for the progress step.
- * @slot description - The description to display for the progress step.
+ * A progress step represents a single step in a progress stepper.
+ * Each step can have different states and may include an icon, label,
+ * and description. Steps can also be linked to URLs.
+ *
+ * @summary Single step in a progress stepper
+ *
+ * @alias progress-step
+ *
+ * @slot - The content of the progress step
+ * @slot icon - The icon to display for the progress step
+ * @slot label - The label to display for the progress step
+ * @slot description - The description to display for the progress step
+ * @attr {string} state - Sets the state of the step ('inactive' | 'active' | 'complete' | 'warn' | 'fail' | 'custom')
+ * @attr {string} label - Sets the label text for the step
+ * @attr {string} description - Sets the description text for the step
+ * @attr {string} custom-icon - Sets a custom icon name when state is 'custom'
+ * @attr {string} custom-icon-set - Sets the icon set for custom icons (default: 'ui')
+ * @attr {string} href - Sets a URL to make the step clickable
  */
 @customElement('rh-progress-step')
 @themable
 export class RhProgressStep extends LitElement {
   static styles = [styles];
 
+  /**
+   * Sets the state of the progress step
+   * - `inactive` - The step is not active
+   * - `active` - The step is currently active
+   * - `complete` - The step has been completed
+   * - `warn` - The step is in a warning state
+   * - `fail` - The step has failed
+   * - `custom` - The step uses a custom icon
+   */
   @property({ reflect: true }) state: ProgressStepState = 'inactive';
-  @property({ reflect: true, type: String }) label = '';
-  @property({ reflect: true, type: String }) description = '';
-  @property({ reflect: true, type: String }) customIcon = '';
-  @property({ reflect: true, type: String }) customIconSet = 'ui';
-  @property({ reflect: true, type: String}) href = '';
 
+  /**
+   * Sets the label text for the progress step
+   */
+  @property({ reflect: true, type: String }) label = '';
+
+  /**
+   * Sets the description text for the progress step
+   */
+  @property({ reflect: true, type: String }) description = '';
+
+  /**
+   * Sets a custom icon name when the state is 'custom'
+   */
+  @property({ reflect: true, type: String }) customIcon = '';
+
+  /**
+   * Sets the icon set for custom icons (default: 'ui')
+   */
+  @property({ reflect: true, type: String }) customIconSet = 'ui';
+
+  /**
+   * Sets a URL to make the step clickable
+   */
+  @property({ reflect: true, type: String }) href = '';
+
+  /**
+   * Gets the appropriate icon based on the current state
+   * @returns The icon name for the current state
+   */
   get #icon() {
     const state = this.state.toLowerCase() as ProgressStepState;
     switch (state) {
@@ -71,11 +119,11 @@ export class RhProgressStep extends LitElement {
           set="${this.state === 'custom' ? this.customIconSet : 'ui'}"
       ></rh-icon>
       </slot>
-      ${this.href ? 
+      ${this.href ?
         html`<a href="${this.href}">
           <slot>${this.label}</slot>
-        </a>` : 
-        html`<strong>
+        </a>`
+        : html`<strong>
           <slot>${this.label}</slot>
         </strong>`
       }
@@ -84,7 +132,6 @@ export class RhProgressStep extends LitElement {
       </slot>
     `;
   }
-
 }
 
 declare global {

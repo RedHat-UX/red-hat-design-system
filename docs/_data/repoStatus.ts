@@ -366,7 +366,7 @@ export default [
     libraries: {
       figma: 'ready',
       rhds: 'ready',
-      shared: 'ready',
+      shared: 'planned',
       docs: 'ready',
     },
   },
