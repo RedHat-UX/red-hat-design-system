@@ -18,7 +18,7 @@ Use skeleton when you want to show users the structure of content that's loading
 
 - `size`
     - Values are `xs` through `6xl`.
-        - Non-text skeletons only have `sm`, `md`, and `lg` sizes.
+        - The `size` attribute does not apply to non-text skeletons.
     - Eg: `<rh-skeleton size="lg"></rh-skeleton>`
 - `type`
     - Values are: `text`, `circle`, `square`, `rectangle`
