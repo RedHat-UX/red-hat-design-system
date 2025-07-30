@@ -37,13 +37,13 @@ If a tag is being used as a button, the border width changes to `--rh-border-wid
   <uxdot-example color-palette="lightest">
     <img src="../tag-in-button-style-interaction-states-hover-scheme-light.svg"
         alt="A row of light scheme tag variants used in buttons and showing the difference between the default state and the hover state"
-        width="448"
+        width="271"
         height="32">
   </uxdot-example>
   <uxdot-example color-palette="darkest">
     <img src="../tag-in-button-style-interaction-states-hover-scheme-dark.svg"
         alt="A row of dark scheme tag variants used in buttons and showing the difference between the default state and the hover state"
-        width="448"
+        width="271"
         height="32">
   </uxdot-example>
 </div>
@@ -56,14 +56,14 @@ A focus ring wraps around the text and icon in both focus and active states. Hov
   <uxdot-example color-palette="lightest">
     <img src="../tag-in-button-style-interaction-states-focus-active-scheme-light.svg"
         alt="A row of light scheme tag variants used in buttons and showing showing the difference between the default state and the focus/active states"
-        width="448"
-        height="29">
+        width="279"
+        height="33">
   </uxdot-example>
   <uxdot-example color-palette="darkest">
     <img src="../tag-in-button-style-interaction-states-focus-active-scheme-dark.svg"
         alt="A row of dark scheme tag variants used in buttons and showing the difference between the default state and the focus/active states"
-        width="448"
-        height="29">
+        width="279"
+        height="33">
   </uxdot-example>
 </div>
 

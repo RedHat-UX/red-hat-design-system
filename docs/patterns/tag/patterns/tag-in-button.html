@@ -27,7 +27,11 @@ button:has(rh-tag) {
   padding: 0;
 
   &:focus-visible {
-    outline: 0;
+    outline-width: var(--rh-border-width-md, 2px);
+    outline-style: solid;
+    outline-color: var(--rh-color-interactive-primary-default);
+    outline-offset: var(--rh-length-3xs, 2px);
+    --rh-border-width-sm: var(--rh-border-width-md, 2px);
   }
 
   &:hover {
