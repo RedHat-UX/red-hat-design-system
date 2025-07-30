@@ -1,8 +1,6 @@
 import { LitElement, html, type TemplateResult } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
-import { RhIcon } from '@rhds/elements/rh-icon/rh-icon.js';
 import styles from './rh-progress-stepper.css';
 
 type ProgressStepsOrientation = 'horizontal' | 'vertical';
@@ -16,11 +14,6 @@ type ProgressStepperState = 'inactive' | 'active' | 'complete' | 'warn' | 'fail'
  * @summary Container for progress steps with horizontal or vertical layout
  *
  * @alias progress-stepper
- *
- * @slot - Use this slot for `<rh-progress-step>` items
- * @attr {string} orientation - Sets the orientation of the stepper ('horizontal' | 'vertical')
- * @attr {string} current - Sets the current step label
- * @attr {string} state - Sets the state of the stepper ('inactive' | 'active' | 'complete' | 'warn' | 'fail' | 'custom')
  */
 @customElement('rh-progress-stepper')
 export class RhProgressStepper extends LitElement {
@@ -57,6 +50,7 @@ export class RhProgressStepper extends LitElement {
   render(): TemplateResult<1> {
     return html`
       <strong id="current-step">${this.current}</strong>
+      <!-- Use this slot for \`<rh-progress-step>\` items -->
       <slot id="step-list"></slot>
     `;
   }

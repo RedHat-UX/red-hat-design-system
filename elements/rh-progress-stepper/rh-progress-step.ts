@@ -36,17 +36,6 @@ const ICONS = new Map(Object.entries({
  * @summary Single step in a progress stepper
  *
  * @alias progress-step
- *
- * @slot - The content of the progress step
- * @slot icon - The icon to display for the progress step
- * @slot label - The label to display for the progress step
- * @slot description - The description to display for the progress step
- * @attr {string} state - Sets the state of the step ('inactive' | 'active' | 'complete' | 'warn' | 'fail' | 'custom')
- * @attr {string} label - Sets the label text for the step
- * @attr {string} description - Sets the description text for the step
- * @attr {string} custom-icon - Sets a custom icon name when state is 'custom'
- * @attr {string} custom-icon-set - Sets the icon set for custom icons (default: 'ui')
- * @attr {string} href - Sets a URL to make the step clickable
  */
 @customElement('rh-progress-step')
 @themable
@@ -67,27 +56,27 @@ export class RhProgressStep extends LitElement {
   /**
    * Sets the label text for the progress step
    */
-  @property({ reflect: true, type: String }) label = '';
+  @property({ reflect: true }) label = '';
 
   /**
    * Sets the description text for the progress step
    */
-  @property({ reflect: true, type: String }) description = '';
+  @property({ reflect: true }) description = '';
 
   /**
    * Sets a custom icon name when the state is 'custom'
    */
-  @property({ reflect: true, type: String }) customIcon = '';
+  @property({ reflect: true, attribute: 'custom-icon' }) customIcon = '';
 
   /**
    * Sets the icon set for custom icons (default: 'ui')
    */
-  @property({ reflect: true, type: String }) customIconSet = 'ui';
+  @property({ reflect: true, attribute: 'custom-icon-set' }) customIconSet = 'ui';
 
   /**
    * Sets a URL to make the step clickable
    */
-  @property({ reflect: true, type: String }) href = '';
+  @property({ reflect: true }) href = '';
 
   /**
    * Gets the appropriate icon based on the current state
@@ -112,21 +101,20 @@ export class RhProgressStep extends LitElement {
   }
 
   render() {
+    const labelSlot = html`
+      <!-- The label to display for the progress step -->
+      <slot>${this.label}</slot>
+    `;
     return html`
+      <!-- The icon to display for the progress step -->
       <slot name="icon">
-      <rh-icon
-          icon="${this.#icon}"
-          set="${this.state === 'custom' ? this.customIconSet : 'ui'}"
-      ></rh-icon>
-      </slot>
-      ${this.href ?
-        html`<a href="${this.href}">
-          <slot>${this.label}</slot>
-        </a>`
-        : html`<strong>
-          <slot>${this.label}</slot>
-        </strong>`
-      }
+        <rh-icon
+            icon="${this.#icon}"
+            set="${this.state === 'custom' ? this.customIconSet : 'ui'}"
+        ></rh-icon>
+      </slot>${this.href ? html`<a href="${this.href}">${labelSlot}</a>`
+                         : html`<strong>${labelSlot}</strong>`}
+      <!-- The description to display for the progress step -->
       <slot name="description">
         ${this.description ? html`${this.description}` : ''}
       </slot>
