@@ -10,11 +10,6 @@ subnav:
 ---
 
 <script type="module" data-helmet>
-  import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
-  import '@rhds/elements/rh-card/rh-card.js';
-  import '@rhds/elements/rh-code-block/rh-code-block.js';
-  import '@rhds/elements/rh-cta/rh-cta.js';
-  import '@rhds/elements/rh-surface/rh-surface.js';
   import '@rhds/elements/rh-tag/rh-tag.js';
 </script>
 
