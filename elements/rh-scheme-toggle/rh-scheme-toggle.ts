@@ -21,10 +21,6 @@ type Scheme = 'light' | 'dark' | 'light dark';
  * @summary  A switch toggles the state of the color scheme (between light, dark and system default).
  *
  * @alias Scheme toggle
- * @slot legend - The legend text for the toggle.
- * @slot light-text - The text for the light mode.
- * @slot dark-text - The text for the dark mode.
- * @slot system-text - The text for the system mode.
  */
 @customElement('rh-scheme-toggle')
 export class RhSchemeToggle extends LitElement {
@@ -34,30 +30,24 @@ export class RhSchemeToggle extends LitElement {
   #isDark = false;
   #isSystem = false;
 
+  /** Current color scheme setting */
   @property({ reflect: true }) scheme?: Scheme = globalThis.localStorage
       ?.rhdsColorScheme as Scheme;
 
+  /** Legend text for the color scheme toggle group */
   @property({ attribute: 'legend-text' }) legendText = 'Color scheme';
 
+  /** Label text for the light mode option */
   @property({ attribute: 'light-text' }) lightText = 'Light';
 
+  /** Label text for the dark mode option */
   @property({ attribute: 'dark-text' }) darkText = 'Dark';
 
+  /** Label text for the system default option */
   @property({ attribute: 'system-text' }) systemText = 'System';
 
   protected firstUpdated(): void {
-    this.schemeCheck();
-  }
-
-  protected schemeCheck() {
-    if (!isServer) {
-      this.#isLight = this.scheme === 'light';
-      this.#isDark = this.scheme === 'dark';
-      this.#isSystem = (this.scheme?.includes('light')
-        && this.scheme?.includes('dark'))
-        || (this.scheme === undefined);
-      this.requestUpdate();
-    }
+    this.#schemeCheck();
   }
 
   render() {
@@ -67,32 +57,26 @@ export class RhSchemeToggle extends LitElement {
         <div id="button-group">
           <label title="${this.lightText}">
             <span class="visually-hidden">${this.lightText}</span>
-            <input
-              type="radio"
-              name="scheme"
-              value="light"
-              ?checked="${this.#isLight}"
-            />
+            <input type="radio"
+                   name="scheme"
+                   value="light"
+                   ?checked="${this.#isLight}">
             <rh-icon set="ui" icon="light-mode"></rh-icon>
           </label>
           <label title="${this.darkText}">
             <span class="visually-hidden">${this.darkText}</span>
-            <input
-              type="radio"
-              name="scheme"
-              value="dark"
-              ?checked="${this.#isDark}"
-            />
+            <input type="radio"
+                   name="scheme"
+                   value="dark"
+                   ?checked="${this.#isDark}">
             <rh-icon set="ui" icon="dark-mode"></rh-icon>
           </label>
           <label title="${this.systemText}">
             <span class="visually-hidden">${this.systemText}</span>
-            <input
-              type="radio"
-              name="scheme"
-              value="light dark"
-              ?checked="${this.#isSystem}"
-            />
+            <input type="radio"
+                   name="scheme"
+                   value="light dark"
+                   ?checked="${this.#isSystem}">
             <rh-icon set="ui" icon="auto-light-dark-mode"></rh-icon>
           </label>
         </div>
@@ -104,7 +88,18 @@ export class RhSchemeToggle extends LitElement {
     if (e.target instanceof HTMLInputElement) {
       this.scheme = e.target.value as Scheme;
     }
-    this.schemeCheck();
+    this.#schemeCheck();
+  }
+
+  #schemeCheck() {
+    if (!isServer) {
+      this.#isLight = this.scheme === 'light';
+      this.#isDark = this.scheme === 'dark';
+      this.#isSystem = (this.scheme?.includes('light')
+        && this.scheme?.includes('dark'))
+        || (this.scheme === undefined);
+      this.requestUpdate();
+    }
   }
 
   @observes('scheme')
