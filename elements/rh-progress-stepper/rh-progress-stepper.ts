@@ -1,6 +1,15 @@
 import { LitElement, html, type TemplateResult } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
+
+import { classMap } from 'lit/directives/class-map.js';
+
+import { provide } from '@lit/context';
+import { context } from './context.js';
+
+import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
+import { RhIcon } from '@rhds/elements/rh-icon/rh-icon.js';
+import './rh-progress-step.js';
 import styles from './rh-progress-stepper.css';
 
 type ProgressStepsOrientation = 'horizontal' | 'vertical';
@@ -42,16 +51,27 @@ export class RhProgressStepper extends LitElement {
    */
   @property({ reflect: true }) state: ProgressStepperState = 'inactive';
 
+  /**
+   * Setting `compact` will remove...
+   */
+  @provide({ context })
+  @property({ reflect: true, type: Boolean }) compact = false;
+
   override connectedCallback(): void {
     super.connectedCallback();
     this.role = 'list';
   }
 
   render(): TemplateResult<1> {
+    const compact = this.compact ?? false;
+    const vertical = this.orientation === 'vertical';
+
     return html`
+    <div id="container" class="${classMap({ compact, vertical })}">
       <strong id="current-step">${this.current}</strong>
       <!-- Use this slot for \`<rh-progress-step>\` items -->
       <slot id="step-list"></slot>
+    </div>
     `;
   }
 }

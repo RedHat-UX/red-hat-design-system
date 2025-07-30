@@ -1,9 +1,15 @@
+import type { IconNameFor, IconSetName } from '@rhds/icons';
+
 import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
+import { classMap } from 'lit/directives/class-map.js';
+import { ifDefined } from 'lit-html/directives/if-defined.js';
+
+import { consume } from '@lit/context';
+import { context } from './context.js';
+
 import { themable } from '@rhds/elements/lib/themable.js';
-import { observes } from '@patternfly/pfe-core/decorators/observes.js';
-import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 import styles from './rh-progress-step.css';
 
 /**
@@ -42,6 +48,8 @@ const ICONS = new Map(Object.entries({
 export class RhProgressStep extends LitElement {
   static styles = [styles];
 
+  #iconSet = 'ui';
+
   /**
    * Sets the state of the progress step
    * - `inactive` - The step is not active
@@ -56,27 +64,27 @@ export class RhProgressStep extends LitElement {
   /**
    * Sets the label text for the progress step
    */
-  @property({ reflect: true }) label = '';
+  @property({ reflect: true }) label?: string;
 
   /**
    * Sets the description text for the progress step
    */
-  @property({ reflect: true }) description = '';
 
-  /**
-   * Sets a custom icon name when the state is 'custom'
-   */
-  @property({ reflect: true, attribute: 'custom-icon' }) customIcon = '';
+  @property({ reflect: true }) description?: string;
 
-  /**
-   * Sets the icon set for custom icons (default: 'ui')
-   */
-  @property({ reflect: true, attribute: 'custom-icon-set' }) customIconSet = 'ui';
+  /** Shorthand for the `icon` slot, the value is icon name */
+  @property() icon?: IconNameFor<IconSetName>;
+
+  /** Icon set for the `icon` property - 'ui' by default */
+  @property({ attribute: 'icon-set' }) iconSet?: IconSetName;
 
   /**
    * Sets a URL to make the step clickable
    */
-  @property({ reflect: true }) href = '';
+  @property({ reflect: true }) href?: string;
+
+  @consume({ context, subscribe: true })
+  private compact?: boolean;
 
   /**
    * Gets the appropriate icon based on the current state
@@ -85,13 +93,15 @@ export class RhProgressStep extends LitElement {
   get #icon() {
     const state = this.state.toLowerCase() as ProgressStepState;
     switch (state) {
-      case 'inactive': return ICONS.get('inactive');
       case 'active': return ICONS.get('active');
       case 'complete': return ICONS.get('complete');
       case 'warn': return ICONS.get('warn');
       case 'fail': return ICONS.get('fail');
-      case 'custom': return this.customIcon;
-      default: return ICONS.get('inactive');
+      case 'custom': {
+        this.#iconSet = this.iconSet ?? 'ui';
+        return this.icon;
+      }
+      default: return undefined;
     }
   }
 
@@ -101,23 +111,22 @@ export class RhProgressStep extends LitElement {
   }
 
   render() {
+    const compact = this.compact ?? false;
     const labelSlot = html`
       <!-- The label to display for the progress step -->
       <slot>${this.label}</slot>
     `;
     return html`
-      <!-- The icon to display for the progress step -->
-      <slot name="icon">
-        <rh-icon
-            icon="${this.#icon}"
-            set="${this.state === 'custom' ? this.customIconSet : 'ui'}"
-        ></rh-icon>
-      </slot>${this.href ? html`<a href="${this.href}">${labelSlot}</a>`
-                         : html`<strong>${labelSlot}</strong>`}
-      <!-- The description to display for the progress step -->
-      <slot name="description">
-        ${this.description ? html`${this.description}` : ''}
-      </slot>
+      <div id="container" class="${classMap({ compact })}">
+        <slot name="icon">${!this.#icon ? html`<span class="no-icon"></span>` : html`
+          <rh-icon icon="${ifDefined(this.#icon)}" set="${ifDefined(this.#iconSet)}"></rh-icon>`}
+        </slot>
+        ${this.href ? html`<a id="label" href="${this.href}">${labelSlot}</a>`
+                         : html`<strong id="label">${labelSlot}</strong>`}
+        <slot name="description" id="description">
+          ${this.description}
+        </slot>
+      </div>
     `;
   }
 }
