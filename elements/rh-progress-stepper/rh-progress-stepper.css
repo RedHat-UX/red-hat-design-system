@@ -1,8 +1,4 @@
 /* Progress Stepper Component Styles */
-:host {
-  --_step-line-color: var(--rh-color-border-subtle);
-}
-
 #container {
   display: flex;
   flex-direction: column;

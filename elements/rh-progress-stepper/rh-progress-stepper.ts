@@ -8,6 +8,9 @@ import { provide } from '@lit/context';
 import { context } from './context.js';
 
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
+
+import { themable } from '@rhds/elements/lib/themable.js';
+
 import { RhIcon } from '@rhds/elements/rh-icon/rh-icon.js';
 import './rh-progress-step.js';
 import styles from './rh-progress-stepper.css';
@@ -25,6 +28,7 @@ type ProgressStepperState = 'inactive' | 'active' | 'complete' | 'warn' | 'fail'
  * @alias progress-stepper
  */
 @customElement('rh-progress-stepper')
+@themable
 export class RhProgressStepper extends LitElement {
   static readonly styles: CSSStyleSheet[] = [styles];
 
