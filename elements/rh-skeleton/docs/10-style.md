@@ -1,20 +1,21 @@
 ## Style
 
-Primary navigation includes our brand logo or hat and groups of menus and links in a container that spans the width of the browser window.
+A skeleton uses basic shapes to provide a low-fidelity representation of loading content. A gradient animation overlays the shapes to  indicate activity.
 
 ### Anatomy
 
 <figure>
   <uxdot-example color-palette="lightest">
-    <img alt="A stack of long bars represent a text skeleton group, with each bar defined as a text skeleton. A shape skeleton can be a circle, square, or rectangle."
+    <img alt="A stack of long bars represent a skeleton group, with both a heading skeleton and three body skeletons. A shape skeleton can be a circle, square, or rectangle."
          src="../skeleton-style-anatomy.svg"
-         width="1012"
-         height="103">
+         width="818"
+         height="132">
   </uxdot-example>
   <figcaption>
     <ol style="font-size: var(--rh-font-size-body-text-sm, 0.875rem);">
-      <li>Text skeleton</li>
-      <li>Text skeleton group</li>
+      <li>Heading skeleton</li>
+      <li>Body text skeleton group</li>
+      <li>Skeleton group</li>
       <li>Shape skeleton</li>
     </ol>
   </figcaption>
@@ -22,7 +23,7 @@ Primary navigation includes our brand logo or hat and groups of menus and links 
 
 ## Color scheme
 
-Skeletons are available in both light and dark schemes.
+Skeletons are available in both light and dark schemes. The shapes use varying opacities of `--rh-color-black` and `--rh-color-white` to make them visible against different background colors.
 
 <rh-alert state="info">
   <h4 slot="header">Helpful tip</h4>
@@ -49,9 +50,20 @@ Skeletons are available in both light and dark schemes.
 
 ## Configuration
 
+### Types
+
+There are five types of skeletons: body text, heading, circle, square, and rectangle.
+
+<uxdot-example color-palette="lightest">
+  <img alt="Body text, heading, circle, square, and rectangle skeletons."
+       src="../skeleton-style-types.svg"
+       width="600"
+       height="308">
+</uxdot-example>
+
 ### Sizes
 
-Text skeleton sizes range from `xs` to `6xl`.
+Body text and heading skeleton sizes are named based on their corresponding font size tokens, and the sizes range from `xs` to` 2xl`.
 
 <rh-alert state="info">
   <h4 slot="header">Helpful tip</h4>
@@ -59,30 +71,19 @@ Text skeleton sizes range from `xs` to `6xl`.
 </rh-alert>
 
 <uxdot-example color-palette="lightest">
-  <img alt="Ten rectangular skeletons in two columns with sizes varying from xs to 6xl."
+  <img alt="Site status table shows websites and statuses. Body text skeletons appear in the status column."
        src="../skeleton-style-sizes-text.svg"
-       width="648"
-       height="441">
+       width="664"
+       height="595">
 </uxdot-example>
 
-Shape skeletons are available in `sm`, `md`, and `lg` sizes. However, their sizes can be easily customized if necessary.
+The default and only built-in size for shape skeletons is `md`, which sets its height to the value of `--rh-length-md`. However, most shape skeletons will need to use a custom size, and any length token or pixel value can be used to change their dimensions.
 
 <uxdot-example color-palette="lightest">
-  <img alt="Three square skeletons, sm, md, and large."
+  <img alt="A square skeleton in the default size and one in a much larger custom size."
        src="../skeleton-style-sizes-shapes.svg"
-       width="320"
-       height="157">
-</uxdot-example>
-
-### Types
-
-There are four types of skeletons: text, circle, square, and rectangle.
-
-<uxdot-example color-palette="lightest">
-  <img alt="A full width text skeleton over top of a circle, square, and rectangle skeleton."
-       src="../skeleton-style-types.svg"
-       width="600"
-       height="194">
+       width="255"
+       height="178">
 </uxdot-example>
 
 ## Space

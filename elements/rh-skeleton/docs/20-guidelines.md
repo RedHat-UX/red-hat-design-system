@@ -4,49 +4,53 @@ Use a skeleton to convey a page or section’s structure while it’s loading.
 
 ### Types
 
-The four types of skeleton loaders are: text, circle, square, and rectangle. The type of skeleton used should closely reflect the type or shape of the content that is loading. For example, if you’re loading a round avatar, use the circle skeleton.
+The five types of skeleton loaders are body text, heading, circle, square, and rectangle. The type of skeleton used should closely reflect the type or shape of the content that is loading. For example, if you’re loading a round avatar, use the circle skeleton.
 
-<uxdot-example color-palette="lightest" full no-border>
+<uxdot-example color-palette="lightest">
   <img alt="A circle skeleton next to a stack of two text skeletons are used to represent an avatar image with account information."
        src="../skeleton-guidelines-types.svg"
-       width="1140"
-       height="192">
+       width="602"
+       height="64">
 </uxdot-example>
 
-### Text skeleton sizes
+### Body text skeleton sizes
 
-The text skeleton sizes match the amount of space occupied by a line of text. The width of these skeletons are customizable. The table below shows our font size tokens with their corresponding text skeleton sizes. 
+Body text skeleton sizes match the amount of space occupied by a line of text, which is calculated by multiplying their font size token by their line height token. The widths of these skeletons are customizable. The table below shows which body text skeleton size corresponds to each font size token.
 
 <rh-table>
 
-| Text Skeleton Size | Token Names                                                                                            |
-|--------------------|--------------------------------------------------------------------------------------------------------|
-| xs                 | `--rh-font-size-body-text-xs` <br> `--rh-font-size-body-code-xs`                                       |
-| sm                 | `--rh-font-size-body-text-sm` <br> `--rh-font-size-body-code-sm`                                       |
-| md                 | `--rh-font-size-body-text-md` <br> `--rh-font-size-body-code-md`                                       |
-| lg                 | `--rh-font-size-body-text-lg` <br> `--rh-font-size-body-code-lg`                                       |
-| xl                 | `--rh-font-size-body-heading-xs`                                                                       |
-| 2xl                | `--rh-font-size-body-text-xl` <br> `--rh-font-size-body-code-xl` <br> `--rh-font-size-body-heading-sm` |
-| 3xl                | `--rh-font-size-body-text-xl` <br> `--rh-font-size-body-code-xl` <br> `--rh-font-size-body-heading-md` |
-| 4xl                | `--rh-font-size-body-heading-lg`                                                                       |
-| 5xl                | `--rh-font-size-body-heading-xl`                                                                       |
-| 6xl                | `--rh-font-size-body-heading-2xl`                                                                      |
+| Body text skeleton size | Token names                                                                                            |
+|-------------------------|--------------------------------------------------------------------------------------------------------|
+| xs                      | `--rh-font-size-body-text-xs` <br> `--rh-font-size-body-code-xs`                                       |
+| sm                      | `--rh-font-size-body-text-sm` <br> `--rh-font-size-body-code-sm`                                       |
+| md                      | `--rh-font-size-body-text-md` <br> `--rh-font-size-body-code-md`                                       |
+| lg                      | `--rh-font-size-body-text-lg` <br> `--rh-font-size-body-code-lg`                                       |
+| xl                      | `--rh-font-size-body-text-xl` <br> `--rh-font-size-body-code-xl`                                       |
+| 2xl                     | `--rh-font-size-body-text-2xl` <br> `--rh-font-size-code-2xl`                                          |
 
 </rh-table>
+
+### Heading skeleton sizes
+
+Heading skeleton sizes work similarly to body text skeletons, and the widths of these skeletons are also customizable. The table below shows which heading skeleton size pairs with each font size token.
+
+<rh-table>
+
+| Body text skeleton size | Token names                                                       |
+|-------------------------|-------------------------------------------------------------------|
+| xs                      | `--rh-font-size-heading-xs`                                       |
+| sm                      | `--rh-font-size-heading-sm`                                       |
+| md                      | `--rh-font-size-heading-md`                                       |
+| lg                      | `--rh-font-size-heading-lg`                                       |
+| xl                      | `--rh-font-size-heading-xl`                                       |
+| 2xl                     | `--rh-font-size-heading-2xl`                                      |
+
+</rh-table>
+
 
 ### Shape skeleton sizes
 
-The table below outlines the size token values for the `sm`, `md`, and `lg` shape skeletons. If different sizes are needed, these can be customized.
-
-<rh-table>
-
-| Shape skeleton size | Token Name        |
-|---------------------|-------------------|
-| sm                  | `--rh-length-2xl` |
-| md                  | `--rh-length-4xl` |
-| lg                  | `--rh-length-7xl` |
-
-</rh-table>
+While the default size for a shape skeleton is `md`, most shape skeletons will need to use a custom size, and any length token or pixel value can be used to change their dimensions. Choose a size that matches the element or graphic that the skeleton represents.
 
 ## Animation
 
@@ -61,7 +65,7 @@ Each group of skeletons should have their gradients moving at the same speed to 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
     <uxdot-example color-palette="lightest" slot="image">
-      <img alt="Support cases table with text skeletons in every row and column, except for the header row."
+      <img alt="Support cases table with body text skeletons in every row and column, except for the header row."
            src="../skeleton-guidelines-best-practice-1-do.svg"
            width="474"
            height="177">
@@ -85,7 +89,7 @@ Each group of skeletons should have their gradients moving at the same speed to 
 <div class="grid sm-two-columns">
   <uxdot-best-practice variant="do">
     <uxdot-example color-palette="lightest" slot="image">
-      <img alt="Site status table shows websites and statuses. Text skeletons appear in the status column."
+      <img alt="Site status table shows websites and statuses. Body text skeletons appear in the status column."
            src="../skeleton-guidelines-best-practice-2-do.svg"
            width="474"
            height="230">
