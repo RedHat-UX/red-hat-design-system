@@ -16,12 +16,13 @@ import styles from './rh-skeleton.css';
 export class RhSkeleton extends LitElement {
   static readonly styles = [styles];
 
-  /** What shape the skeleton should be */
-  @property({ reflect: true }) type: 'text' | 'circle' | 'square' | 'rectangle' | null = 'text';
+  /** What shape the skeleton should be. Defaults to `body-copy`. */
+  @property({ reflect: true }) type?: 'body-copy' | 'heading' | 'circle' | 'square' | 'rectangle';
 
-  /** What size the skeleton should be. The `size` attribute is not valid on non-text skeletons. */
-  @property({ reflect: true })
-  size: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | null = 'md';
+  /** What size the skeleton should be. Defaults to `md`.
+   * The `size` attribute is not valid on circle, square, or rectangle skeletons.
+  */
+  @property({ reflect: true }) size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 
   render() {
     return html`
