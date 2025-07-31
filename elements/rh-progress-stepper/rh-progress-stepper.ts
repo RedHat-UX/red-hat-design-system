@@ -18,9 +18,7 @@ type ProgressStepsOrientation = 'horizontal' | 'vertical';
 type ProgressStepperState = 'inactive' | 'active' | 'complete' | 'warn' | 'fail' | 'custom';
 
 /**
- * A progress stepper is a container of progress steps that presents
- * a horizontal or vertical display of steps and their details. The stepper
- * can also display a compact view with a single heading.
+ * A progress stepper conveys how many steps are required to complete a process or task.
  *
  * @summary Container for progress steps with horizontal or vertical layout
  *
