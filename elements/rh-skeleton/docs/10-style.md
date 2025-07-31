@@ -77,18 +77,18 @@ Body text and heading skeleton sizes are named based on their corresponding font
        height="595">
 </uxdot-example>
 
-The default and only built-in size for shape skeletons is `md`, which sets its height to the value of `--rh-length-md`. However, most shape skeletons will need to use a custom size, and any length token or pixel value can be used to change their dimensions.
+The default and only built-in size for shape skeletons sets its height to the value of `--rh-length-4xl`. However, most shape skeletons will need to use a custom size, and any length token or pixel value can be used to change their dimensions.
 
 <uxdot-example color-palette="lightest">
-  <img alt="A square skeleton in the default size and one in a much larger custom size."
+  <img alt="A square skeleton in the default size and one in a larger custom size."
        src="../skeleton-style-sizes-shapes.svg"
-       width="255"
+       width="302"
        height="178">
 </uxdot-example>
 
 ## Space
 
-The space between text skeletons is `--rh-space-xs`. Otherwise, spacing should be based on the structure of the page or section.
+The space between body text skeletons is `--rh-space-xs`. Otherwise, spacing should be based on the structure of the page or section.
 
 <uxdot-example color-palette="lightest">
   <img alt="A stack of three text skeletons with four-pixel spacers in between each skeleton"

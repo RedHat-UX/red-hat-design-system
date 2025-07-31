@@ -50,7 +50,7 @@ Heading skeleton sizes work similarly to body text skeletons, and the widths of 
 
 ### Shape skeleton sizes
 
-While the default size for a shape skeleton is `md`, most shape skeletons will need to use a custom size, and any length token or pixel value can be used to change their dimensions. Choose a size that matches the element or graphic that the skeleton represents.
+While the default size for a shape skeleton uses `--rh-length-4xl` for its height, most shape skeletons will need to use a custom size, and any length token or pixel value can be used to change their dimensions. Choose a size that matches the element or graphic that the skeleton represents.
 
 ## Animation
 
