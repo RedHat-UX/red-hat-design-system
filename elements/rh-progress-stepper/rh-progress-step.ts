@@ -11,6 +11,7 @@ import { context } from './context.js';
 
 import { themable } from '@rhds/elements/lib/themable.js';
 import styles from './rh-progress-step.css';
+import { observes } from '@patternfly/pfe-core/decorators.js';
 
 /**
  * Available states for a progress step:
@@ -35,18 +36,27 @@ const ICONS = new Map(Object.entries({
 }));
 
 /**
+ * Fired when a step becomes active
+ */
+export class RhProgressStepChangeEvent extends Event {
+  constructor() {
+    super('change', { bubbles: true });
+  }
+}
+
+/**
  * A progress step represents a single step in a progress stepper.
  * Each step can have different states and may include an icon, label,
  * and description. Steps can also be linked to URLs.
  *
  * @summary Single step in a progress stepper
+ *
+ * @fires { RhProgressStepChangeEvent } fired when this step becomes active
  */
 @customElement('rh-progress-step')
 @themable
 export class RhProgressStep extends LitElement {
   static styles = [styles];
-
-  #iconSet = 'ui';
 
   /**
    * Sets the state of the progress step
@@ -60,14 +70,8 @@ export class RhProgressStep extends LitElement {
   @property({ reflect: true }) state: ProgressStepState = 'inactive';
 
   /**
-   * Sets the label text for the progress step
-   */
-  @property({ reflect: true }) label?: string;
-
-  /**
    * Sets the description text for the progress step
    */
-
   @property({ reflect: true }) description?: string;
 
   /** Shorthand for the `icon` slot, the value is icon name */
@@ -84,25 +88,6 @@ export class RhProgressStep extends LitElement {
   @consume({ context, subscribe: true })
   private compact?: boolean;
 
-  /**
-   * Gets the appropriate icon based on the current state
-   * @returns The icon name for the current state
-   */
-  get #icon() {
-    const state = this.state.toLowerCase() as ProgressStepState;
-    switch (state) {
-      case 'active': return ICONS.get('active');
-      case 'complete': return ICONS.get('complete');
-      case 'warn': return ICONS.get('warn');
-      case 'fail': return ICONS.get('fail');
-      case 'custom': {
-        this.#iconSet = this.iconSet ?? 'ui';
-        return this.icon;
-      }
-      default: return undefined;
-    }
-  }
-
   override connectedCallback(): void {
     super.connectedCallback();
     this.role = 'listitem';
@@ -112,20 +97,43 @@ export class RhProgressStep extends LitElement {
     const compact = this.compact ?? false;
     const labelSlot = html`
       <!-- The label to display for the progress step -->
-      <slot>${this.label}</slot>
+      <slot></slot>
     `;
+    const state = this.state?.toLowerCase() as ProgressStepState;
+    let icon: string | undefined;
+    let iconSet = 'ui';
+    if (state === 'warn') {
+      icon = 'error-fill';
+    } else if (state === 'fail') {
+      icon = 'ban-fill';
+    } else if (this.icon) {
+      ({ icon } = this);
+      if (this.iconSet) {
+        ({ iconSet } = this);
+      }
+    } else if (ICONS.has(state)) {
+      icon = ICONS.get(state);
+    } else {
+      icon = undefined;
+    }
+    const ariaCurrent = this.state === 'active' ? 'step' : undefined;
     return html`
       <div id="container" class="${classMap({ compact })}">
-        <slot name="icon">${!this.#icon ? html`<span class="no-icon"></span>` : html`
-          <rh-icon icon="${ifDefined(this.#icon)}" set="${ifDefined(this.#iconSet)}"></rh-icon>`}
+        <slot name="icon">
+          <rh-icon icon="${ifDefined(icon)}" set="${ifDefined(iconSet)}"></rh-icon>
         </slot>
-        ${this.href ? html`<a id="label" href="${this.href}">${labelSlot}</a>`
-                         : html`<strong id="label">${labelSlot}</strong>`}
+        ${this.href ? html`<a id="label" href="${this.href}" aria-current="${ifDefined(ariaCurrent)}">${labelSlot}</a>`
+                         : html`<strong id="label" aria-current="${ifDefined(ariaCurrent)}">${labelSlot}</strong>`}
         <slot name="description" id="description">
           ${this.description}
         </slot>
       </div>
     `;
+  }
+
+  @observes('state')
+  protected stateChanged() {
+    this.dispatchEvent(new RhProgressStepChangeEvent());
   }
 }
 

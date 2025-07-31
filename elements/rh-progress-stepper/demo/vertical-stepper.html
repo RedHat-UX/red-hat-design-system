@@ -1,33 +1,27 @@
 <rh-progress-stepper orientation="vertical">
-  <rh-progress-step
-    state="complete"
-    description="This step has been completed successfully">
+  <rh-progress-step state="complete">
     Complete Step
+    <span slot="description">This step has been completed successfully</span>
   </rh-progress-step>
   
-  <rh-progress-step
-    state="warn"
-    description="This step has a warning that needs attention">
+  <rh-progress-step state="warn">
     Warning Step
+    <span slot="description">This step has a warning that needs attention</span>
   </rh-progress-step>
   
-  <rh-progress-step
-    state="fail"
-    description="This step has failed and needs to be retried">
+  <rh-progress-step state="fail">
     Failed Step
+    <span slot="description">This step has failed and needs to be retried</span>
   </rh-progress-step>
 
-  <rh-progress-step
-    state="active"
-    description="Currently working on this step"
-    aria-current="step">
+  <rh-progress-step state="active">
     Active Step
+    <span slot="description">Currently working on this step</span>
   </rh-progress-step>
 
-  <rh-progress-step
-    state="inactive"
-    description="This step is not yet started">
+  <rh-progress-step>
     Inactive Step
+    <span slot="description">This step is not yet started</span>
   </rh-progress-step>
 </rh-progress-stepper>
 

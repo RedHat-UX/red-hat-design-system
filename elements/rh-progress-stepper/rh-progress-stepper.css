@@ -42,14 +42,6 @@
   white-space: nowrap;
 
   /* End Visual Hiding */
-  font-weight: var(--rh-font-weight-body-text-medium, 500);
-  text-decoration:
-    underline
-    dotted
-    var(--rh-color-text-secondary)
-    1px;
-  text-decoration-skip-ink: none; /* 9.375% */
-  text-underline-offset: 5px; /* 4.8px */
 }
 
 ::slotted(rh-progress-step:last-of-type) {
@@ -103,32 +95,34 @@
     grid-column: 1 / -1;
     grid-row: 1;
     color: var(--_current-step-color, #6a6e73);
-    font-weight: var(--_current-step-weight, 500);
+    font-weight: var(--_current-step-weight, var(--rh-font-weight-body-text-medium, 500));
   }
 }
 
-/* State-based color and weight variations */
+/* State-based color and weight variations for compact progress stepper */
 :host([state='inactive']) {
   --_current-step-color: var(--_color-text-disabled, #6a6e73);
-  --_current-step-weight: var(--rh-font-weight-body-text-regular, 400);
 }
 
 :host([state='active']) {
   --_current-step-color: var(--rh-color-status-note);
-  --_current-step-weight: var(--rh-font-weight-body-text-medium, 500);
 }
 
 :host([state='complete']) {
   --_current-step-color: var(--rh-color-status-success);
-  --_current-step-weight: var(--rh-font-weight-body-text-medium, 500);
 }
 
 :host([state='warn']) {
   --_current-step-color: light-dark(var(--rh-color-yellow-50), var(--rh-color-yellow-30));
-  --_current-step-weight: var(--rh-font-weight-body-text-medium, 500);
 }
 
 :host([state='fail']) {
   --_current-step-color: var(--rh-color-status-danger);
+}
+
+:host([state='warn']),
+:host([state='fail']),
+:host([state='active']),
+:host([aria-current='step']) {
   --_current-step-weight: var(--rh-font-weight-body-text-medium, 500);
 }

@@ -1,4 +1,4 @@
-import { LitElement, html, type TemplateResult } from 'lit';
+import { LitElement, html, isServer, type TemplateResult } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
@@ -7,13 +7,12 @@ import { classMap } from 'lit/directives/class-map.js';
 import { provide } from '@lit/context';
 import { context } from './context.js';
 
-import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
-
 import { themable } from '@rhds/elements/lib/themable.js';
 
-import { RhIcon } from '@rhds/elements/rh-icon/rh-icon.js';
-import './rh-progress-step.js';
+import '@rhds/elements/rh-icon/rh-icon.js';
 import styles from './rh-progress-stepper.css';
+import { state } from 'lit/decorators/state.js';
+import { RhProgressStepChangeEvent } from './rh-progress-step.js';
 
 type ProgressStepsOrientation = 'horizontal' | 'vertical';
 type ProgressStepperState = 'inactive' | 'active' | 'complete' | 'warn' | 'fail' | 'custom';
@@ -40,9 +39,15 @@ export class RhProgressStepper extends LitElement {
   @property({ reflect: true }) orientation: ProgressStepsOrientation = 'horizontal';
 
   /**
+   * Setting `compact` will remove...
+   */
+  @provide({ context })
+  @property({ reflect: true, type: Boolean }) compact = false;
+
+  /**
    * Sets the current step label that is displayed prominently
    */
-  @property({ reflect: true }) current = '';
+  @state() private current = '';
 
   /**
    * Sets the state of the progress stepper
@@ -53,17 +58,17 @@ export class RhProgressStepper extends LitElement {
    * - `fail` - The stepper has failed
    * - `custom` - The stepper uses a custom state
    */
-  @property({ reflect: true }) state: ProgressStepperState = 'inactive';
-
-  /**
-   * Setting `compact` will remove...
-   */
-  @provide({ context })
-  @property({ reflect: true, type: Boolean }) compact = false;
+  @state() private state: ProgressStepperState = 'inactive';
 
   override connectedCallback(): void {
     super.connectedCallback();
     this.role = 'list';
+    if (!isServer) {
+      this.#updateState();
+    }
+    this.addEventListener('change', () => {
+      this.#updateState();
+    });
   }
 
   render(): TemplateResult<1> {
@@ -74,9 +79,27 @@ export class RhProgressStepper extends LitElement {
     <div id="container" class="${classMap({ compact, vertical })}">
       <strong id="current-step">${this.current}</strong>
       <!-- Use this slot for \`<rh-progress-step>\` items -->
-      <slot id="step-list"></slot>
+      <slot id="step-list" @change="${this.#onChange}"></slot>
     </div>
     `;
+  }
+
+  #onChange(event: Event) {
+    if (event instanceof RhProgressStepChangeEvent) {
+      this.#updateState();
+    }
+  }
+
+  #updateState() {
+    const statefulSteps =
+      this.querySelectorAll(
+        'rh-progress-step:is([state="active"], [state="fail"], [state="warn"])'
+      );
+    const activeStep = Array.from(statefulSteps).at(-1);
+    if (activeStep) {
+      this.current = activeStep.textContent?.trim() ?? '';
+      this.state = activeStep.getAttribute('state') as ProgressStepperState;
+    }
   }
 }
 
