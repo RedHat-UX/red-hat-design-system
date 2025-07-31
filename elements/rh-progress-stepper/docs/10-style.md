@@ -1,149 +1,103 @@
 ## Style
 
-Progress steps contain **at least three** step indicators. They are positioned
-on a thin horizontal or vertical line and organized sequentially from left to
-right or top to bottom.
+A progress stepper is a group of at least 3 sequential steps placed in the 
+middle of a horizontal or vertical line.
 
-<uxdot-example width-adjustment="699px" color-palette="lightest">
-  <img src="../progress-stepper-blueprint.svg"
-        alt="Progress steps component blueprint"
-        width="699"
-        height="298">
-</uxdot-example>
+<figure>
+  <uxdot-example color-palette="lightest">
+    <img src="../progress-stepper-style-anatomy.svg"
+          alt="A progress stepper with annotations around the items listed below."
+          width="663"
+          height="80">
+  </uxdot-example>
+  <figcaption>
+    <ol>
+      <li>Status icon</li>
+      <li>Title</li>
+      <li>Optional description</li>
+    </ol>
+  </figcaption>
+</figure>
 
+### Status icons
 
-### Visual elements
+A progress stepper uses icons to indicate the status of a process or task. These 
+icons change as users move through each step.
 
-Progress steps display circles or icons that indicate where a user is in the
-completion process. The appearance of these states change as a user moves
-through each step of the task.
-
-- **Finished step** - A green circle with a check mark indicates a user has
-  completed a previous step.
-- **Current step** - A bright red circle with a pink border indicates a user
-  is viewing or completing the current step.
-- **Error step** - A dark red circle with an exclamation mark indicates there
-  is an issue a user should be aware of.
-- **Next or Final step** - A white circle with a light gray border indicates
-  the next or final step has not been visited yet.
-- **Progress bar** - A dark gray bar in between Finished and Current steps
-  indicates how much progress a user has made.
-
-<uxdot-example width-adjustment="385px" color-palette="lightest">
-  <img src="../progress-stepper-visual-elements.svg"
-        alt="Progress steps component visual elements"
-        width="385"
+<uxdot-example color-palette="lightest">
+  <img src="../progress-stepper-style-status-icons.svg"
+        alt="Three compact progress steppers showing current step, warning, and error states."
+        width="560"
         height="64">  
 </uxdot-example>
 
 
-### Text labels
+## Color Scheme
 
-Every step must have a text label indicating what a user has and will
-accomplish. Each text label should be written clearly and use ideally
-**one word** to avoid crowding. If two words need to be used, set
-them in **Sentence case** only.
+A progress stepper is available in both light and dark color schemes.
 
-<rh-alert state="info">
-  <h4 slot="header">Helpful tip</h4>
-  <p>Always try to write text labels as short as possible. If there are more than
-  three steps, reduce the amount of characters.</p>
-</rh-alert>
+### Light scheme
 
-<uxdot-example width-adjustment="687px" color-palette="lightest">
-  <img src="../progress-stepper-text-labels.svg"
-        alt="Progress steps component text labels"
-        width="687"
-        height="64">
+<uxdot-example color-palette="lightest">
+  <img src="../progress-stepper-style-scheme-light.svg"
+        alt="Light scheme progress stepper showing two completed steps, a current step, and a not yet completed last step."
+        width="643"
+        height="78">  
 </uxdot-example>
 
+### Dark scheme
 
-## Orientation
-
-### Horizontal
-
-The Horizontal orientation can be stretched or squeezed to fit different
-desktop or tablet layouts, it can also be used on mobile if there are fewer
-steps with short text labels.
-
-<rh-alert state="warning">
-  <h4 slot="header">Warning</h4>
-  <p>Do not write text labels with <strong>more than two words</strong> as space
-  can become crowded when breakpoints get smaller or when text is translated.</p>
-</rh-alert>
-
-<uxdot-example width-adjustment="687px" color-palette="lightest">
-  <img src="../progress-stepper-horizontal-orientation.svg"
-        alt="Progress steps component horizontal orientation"
-        width="687"
-        height="592">
+<uxdot-example color-palette="darkest">
+  <img src="../progress-stepper-style-scheme-dark.svg"
+        alt="Dark scheme progress stepper showing two completed steps, a current step, and a not yet completed last step."
+        width="643"
+        height="78">  
 </uxdot-example>
 
+## Variants
 
-### Vertical
+### Orientation
 
-The Vertical orientation can be used on desktop or tablet if the content
-within needs to be positioned on the right instead of underneath. It can also
-be used on mobile if the horizontal orientation has more steps or text labels
-with more words.
+A progress stepper is available in both horizontal and vertical orientations.
 
-<rh-alert state="warning">
-  <h4 slot="header">Warning</h4>
-  <p>Do not write text labels with <strong>more than two words</strong> as space
-  can become crowded when breakpoints get smaller or when text is translated.</p>
-</rh-alert>
-
-<uxdot-example width-adjustment="872px" color-palette="lightest">
-  <img src="../progress-stepper-vertical-orientation.svg"
-        alt="Progress steps component vertical orientation"
-        width="872"
-        height="641">
+<uxdot-example color-palette="lightest">
+  <img src="../progress-stepper-style-orientation.svg"
+        alt="Two progress steppers. One horizontal, one vertical. Each contain four steps."
+        width="643"
+        height="422">  
 </uxdot-example>
 
+### Size
 
-## Responsive design
+A progress stepper is available in both default and compact sizes.
 
-Progress steps mostly remain the same on large and small screens. When the
-horizontal orientation becomes crowded, it will switch to the vertical
-orientation.
-
-### Desktop
-
-<uxdot-example width-adjustment="1000px" variant="full" alignment="left" no-border color-palette="lightest">
-  <img src="../progress-stepper-responsive-desktop.svg"
-        alt="Progress steps component responsive design, desktop"
-        width="1000"
-        height="536">
+<uxdot-example color-palette="lightest">
+  <img src="../progress-stepper-style-size.svg"
+        alt="Three progress steppers. One horizontal with descriptions. Two other compact progress steppers, one horizontal one vertical."
+        width="643"
+        height="326">  
 </uxdot-example>
 
+### Descriptions
 
-### Tablet
+If more description is needed, a progress stepper with descriptions can be used which allows for more context for each step.
 
-<uxdot-example width-adjustment="768px"  variant="full" alignment="left" no-border color-palette="lightest">
-  <img src="../progress-stepper-responsive-tablet.svg"
-        alt="Progress steps component responsive design, tablet"
-        width="768"
-        height="536">
+<uxdot-example color-palette="lightest">
+  <img src="../progress-stepper-style-descriptions.svg"
+        alt="Two horizontal progress steppers. One with and one without a description below each step's label."
+        width="643"
+        height="198">  
 </uxdot-example>
 
+### Space
 
-### Mobile
-
-<uxdot-example width-adjustment="375px" variant="full" alignment="left" no-border color-palette="lightest">
-  <img src="../progress-stepper-responsive-mobile.svg"
-        alt="Progress steps component responsive design, mobile"
-        width="360"
-        height="648">
+<uxdot-example color-palette="lightest">
+  <img src="../progress-stepper-style-space.svg"
+        alt="Four progress steppers showing 32px space between each step's text. There's 16px space between the icon and the label for all variants except the default horizontal stepper. For the default, there's 8px of margin bottom between the icon and the label."
+        width="643"
+        height="422">  
 </uxdot-example>
 
+## Interaction states
 
-## Spacing
-
-<uxdot-example width-adjustment="687px" color-palette="lightest">
-  <img src="../progress-stepper-spacing.svg"
-        alt="Progress steps component spacing"
-        width="687"
-        height="272">
-</uxdot-example>
-
-<uxdot-spacer-tokens-table tokens="xl"></uxdot-spacer-tokens-table>
+At this time, none of the steps are interactive so there are no interaction states.
