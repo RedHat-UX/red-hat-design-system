@@ -25,7 +25,7 @@ type ProgressStepperState = 'inactive' | 'active' | 'complete' | 'warn' | 'fail'
  *
  * @summary Container for progress steps with horizontal or vertical layout
  *
- * @alias progress-stepper
+ * @alias Progress stepper
  */
 @customElement('rh-progress-stepper')
 @themable

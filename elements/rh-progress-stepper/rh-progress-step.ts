@@ -40,8 +40,6 @@ const ICONS = new Map(Object.entries({
  * and description. Steps can also be linked to URLs.
  *
  * @summary Single step in a progress stepper
- *
- * @alias progress-step
  */
 @customElement('rh-progress-step')
 @themable
