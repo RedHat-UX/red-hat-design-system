@@ -1,25 +1,39 @@
 /* Main step container styling */
-:host {
-  --_step-line-color: var(--rh-color-text-primary);
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
 
+:host {
+  --_step-line-style:
+    linear-gradient(
+        var(--_step-line-angle),
+        transparent 13px,
+        var(--_step-line-color) 13px,
+        var(--_step-line-color) 15px,
+        transparent 15px);
+
+  container-type: inline-size;
+
+  &:has(+ :not([state='inactive'], :not([state]))) {
+    --_step-line-color: var(--rh-color-border-strong) !important;
+  }
+}
+
+#container {
   display: grid;
-  grid-template-columns: var(--_step-template-columns, 24px auto);
+  grid-template-columns: var(--_step-template-columns);
   grid-template-rows: var(--_step-template-rows, 24px auto);
   grid-template-areas: var(--_step-template-areas);
   gap: var(--_step-row-gap, 16px) var(--_step-column-gap, 16px);
   justify-self: var(--_step-justify-self, start);
-  place-items: start baseline;
+  align-items: var(--_step-align-items);
   padding-block-end: var(--_step-compact-vertical-padding, var(--rh-length-2xl, 32px));
-  padding-inline-end: var(--_step-compact-horizontal-padding, var(--rh-length-5xl, 80px));
+  padding-inline-end: var(--_step-compact-horizontal-padding, var(--rh-length-2xl, 32px));
   width: 100%;
   height: 100%;
-  background:
-    var(--_step-line-style,
-      linear-gradient(var(--_step-line-angle),
-      transparent 13px,
-      var(--_step-line-color) 13px,
-      var(--_step-line-color) 15px,
-      transparent 15px));
+  background: var(--_step-line-style);
   color: var(--rh-color-text-secondary);
 
   /* Body text/md */
@@ -28,23 +42,15 @@
   font-style: normal;
   line-height: 1.5; /* 150% */
 
-  &:has(+ [state='inactive']) {
-    --_step-line-color: var(--rh-color-border-subtle) !important;
+  @container (min-width: 992px) {
+    padding-inline-end: var(--_step-compact-horizontal-padding, var(--rh-length-5xl, 80px));
   }
-
-  &:has(> :focus-visible) {
-    border: 1px solid blue;
-  }
-}
-
-#container {
-  display: contents;
 }
 
 /* Icon styling */
 :is(rh-icon, .no-icon) {
   grid-area: icon;
-  justify-self: var(--_step-icon-justify-self);
+  place-self: center var(--_step-icon-justify-self);
   height: var(--rh-size-icon-02, 24px);
   width: var(--rh-size-icon-02, 24px);
   border: var(--rh-border-width-md) solid var(--rh-color-text-primary);

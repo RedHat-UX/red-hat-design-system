@@ -1,11 +1,12 @@
 /* Progress Stepper Component Styles */
-#container {
-  display: flex;
-  flex-direction: column;
-  gap: var(--rh-length-lg, 16px);
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
 }
 
-#step-list {
+:host {
+  --_step-line-color: var(--rh-color-border-subtle);
   --_step-line-angle: -180deg; /* sets the line direction between steps to horizontal */
   --_step-template-areas:
     'icon line'
@@ -19,7 +20,19 @@
   --_step-row-gap: var(--rh-length-xs, 4px);
   --_step-compact-grid-row: 2;
   --_step-description-margin: inherit;
+  --_step-align-items: center;
 
+  container-type: inline-size;
+  display: block;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rh-length-lg, 16px);
+}
+
+#step-list {
   padding: 0;
   display: grid;
   place-content: baseline normal;
@@ -50,20 +63,21 @@
 
 /* Vertical orientation styles */
 .vertical {
-  & #step-list {
-    --_step-line-angle: 90deg; /* sets the line direction between steps to vertical */
-    --_step-template-areas:
-      'icon label'
-      'line description';
-    --_step-template-columns: calc(var(--rh-length-xl, 24px) + 4px) auto;
-    --_step-template-rows: auto;
-    --_step-justify-self: start;
-    --_step-icon-justify-self: center;
-    --_step-description-grid-column: 2;
-    --_step-compact-horizontal-padding: 0;
-    --_step-column-gap: var(--rh-length-lg, 16px);
-    --_step-row-gap: var(--rh-length-xs, 4px);
+  --_step-line-angle: 90deg; /* sets the line direction between steps to vertical */
+  --_step-template-areas:
+    'icon label'
+    'line description';
+  --_step-template-columns: calc(var(--rh-length-xl, 24px) + 4px) auto;
+  --_step-template-rows: auto;
+  --_step-justify-self: start;
+  --_step-icon-justify-self: center;
+  --_step-description-grid-column: 2;
+  --_step-compact-horizontal-padding: 0;
+  --_step-column-gap: var(--rh-length-lg, 16px);
+  --_step-row-gap: var(--rh-length-xs, 4px);
+  --_step-align-items: baseline;
 
+  & #step-list {
     grid-auto-flow: row;
   }
 }
