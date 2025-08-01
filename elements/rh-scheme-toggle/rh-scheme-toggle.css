@@ -1,0 +1,99 @@
+:host {
+  display: block;
+}
+
+fieldset {
+  align-items: center;
+  border: 0;
+  display: flex;
+  flex-flow: row nowrap;
+  gap: var(--rh-space-lg, 16px);
+  margin: 0;
+  padding: 0;
+
+  legend {
+    float: inline-start;
+  }
+
+  #button-group {
+    --rh-icon-size: var(--rh-size-icon-01, 16px);
+
+    display: flex;
+  }
+}
+
+label {
+  align-items: center;
+  background-color: initial;
+  border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+  display: flex;
+  height: var(--rh-space-2xl, 32px);
+  justify-content: center;
+  position: relative;
+  width: var(--rh-space-3xl, 48px);
+
+  &:not(:first-of-type) {
+    margin-inline-start: -1px;
+  }
+
+  &:first-of-type {
+    border-start-start-radius: var(--rh-border-radius-default, 3px);
+    border-end-start-radius: var(--rh-border-radius-default, 3px);
+  }
+
+  &:last-of-type {
+    border-start-end-radius: var(--rh-border-radius-default, 3px);
+    border-end-end-radius: var(--rh-border-radius-default, 3px);
+  }
+
+  &:focus-within,
+  &:hover {
+    background-color: var(--rh-color-interactive-secondary-focus);
+    color:
+      light-dark(var(--rh-color-text-primary-on-dark, #ffffff),
+        var(--rh-color-text-primary-on-light, #151515));
+  }
+
+  &:has(input:checked) {
+    background-color: var(--rh-color-interactive-primary-active);
+    border-color: var(--rh-color-border-interactive);
+    color:
+      light-dark(var(--rh-color-text-primary-on-dark, #ffffff),
+        var(--rh-color-text-primary-on-light, #151515));
+    z-index: 1;
+
+    &:focus-within,
+    &:hover {
+      background-color: var(--rh-color-interactive-primary-focus);
+    }
+  }
+}
+
+input {
+  appearance: none;
+  inset: 0;
+  margin: 0;
+  outline-offset: 2px;
+  padding: 0;
+  position: absolute;
+
+  &:focus-visible {
+    outline: var(--rh-border-width-sm, 1px) solid var(--rh-color-interactive-primary-focus);
+  }
+}
+
+rh-icon {
+  z-index: 2;
+}
+
+.visually-hidden {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  block-size: 1px;
+  inline-size: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+}
