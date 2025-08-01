@@ -60,7 +60,7 @@ Links can be applied to full name or job details text.
 
 <uxdot-example color-palette="lightest" width-adjustment="706px">
   <img alt="Image of two avatar groups; one has the full name linked and the other has the company name linked"
-       src="../avatar-links.png"
+       src="../avatar-links.svg"
        width="706"
        height="64">
 </uxdot-example>
@@ -148,17 +148,17 @@ Interaction states are visual representations used to communicate the status of 
 
 ### Hover
 
-<uxdot-example color-palette="lightest" width-adjustment="293px">
+<uxdot-example color-palette="lightest" width-adjustment="289px">
   <img alt="Image of light theme avatar group hover states"
-       src="../avatar-interaction-state-hover-theme-light.png"
-       width="293"
+       src="../avatar-interaction-state-hover-theme-light.svg"
+       width="289"
        height="64">
 </uxdot-example>
 
-<uxdot-example color-palette="darkest" width-adjustment="293px">
+<uxdot-example color-palette="darkest" width-adjustment="289px">
   <img alt="Image of dark theme avatar group hover states"
-       src="../avatar-interaction-state-hover-theme-dark.png"
-       width="293"
+       src="../avatar-interaction-state-hover-theme-dark.svg"
+       width="289"
        height="64">
 </uxdot-example>
 
@@ -182,17 +182,17 @@ Interaction states are visual representations used to communicate the status of 
 </rh-table>
 
 
-<uxdot-example color-palette="lightest" width-adjustment="293px">
+<uxdot-example color-palette="lightest" width-adjustment="289px">
   <img alt="Image of light theme avatar group focus states"
-       src="../avatar-interaction-state-focus-theme-light.png"
-       width="293"
+       src="../avatar-interaction-state-focus-theme-light.svg"
+       width="289"
        height="64">
 </uxdot-example>
 
-<uxdot-example color-palette="darkest" width-adjustment="293px">
+<uxdot-example color-palette="darkest" width-adjustment="289px">
   <img alt="Image of dark theme avatar group focus states"
-       src="../avatar-interaction-state-focus-theme-dark.png"
-       width="293"
+       src="../avatar-interaction-state-focus-theme-dark.svg"
+       width="289"
        height="64">
 </uxdot-example>
 
@@ -212,17 +212,17 @@ Interaction states are visual representations used to communicate the status of 
   <p>The Active state has the same styles as the Hover state.</p>
 </rh-alert>
 
-<uxdot-example color-palette="lightest" width-adjustment="293px">
+<uxdot-example color-palette="lightest" width-adjustment="289px">
   <img alt="Image of light theme avatar group active states"
-       src="../avatar-interaction-state-active-theme-light.png"
-       width="293"
+       src="../avatar-interaction-state-active-theme-light.svg"
+       width="289"
        height="64">
 </uxdot-example>
 
-<uxdot-example color-palette="darkest" width-adjustment="293px">
+<uxdot-example color-palette="darkest" width-adjustment="289px">
   <img alt="Image of dark theme avatar group active states"
-       src="../avatar-interaction-state-active-theme-dark.png"
-       width="293"
+       src="../avatar-interaction-state-active-theme-dark.svg"
+       width="289"
        height="64">
 </uxdot-example>
 

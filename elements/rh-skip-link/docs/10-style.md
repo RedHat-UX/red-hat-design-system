@@ -91,8 +91,8 @@ Because a skip link is in focus once it appears on the screen, the default and f
 ### Hover
 
 <uxdot-example width-adjustment="220px">
-  <img alt="A skip link's text is underlined on hover"
-       src="../skip-link-hover-and-active.svg"
+  <img alt="A skip link's blue darkens and its text is underlined on hover"
+       src="../skip-link-hover.svg"
        width="220"
        height="56">
 </uxdot-example>
@@ -106,8 +106,8 @@ Because a skip link is in focus once it appears on the screen, the default and f
 </rh-alert>
 
 <uxdot-example width-adjustment="220px">
-  <img alt="A skip link's text is underlined when it's active"
-       src="../skip-link-hover-and-active.svg"
+  <img alt="A skip link's blue darkens and its text is underlined on hover"
+       src="../skip-link-active.svg"
        width="220"
        height="56">
 </uxdot-example>

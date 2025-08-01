@@ -52,6 +52,28 @@ Code block is available for both light and dark color schemes.
 
 A code block may or may not show line numbers.
 
+<uxdot-example width-adjustment="495px">
+  <img src="../code-block-style-variants-line-numbers.svg"
+       alt="Two code blocks. One with and one without line numbers."
+       width="495"
+       height="416">
+</uxdot-example>
+
+<rh-table>
+
+| Property                | Light scheme                | Dark scheme                 |
+|-------------------------|-----------------------------|-----------------------------|
+| Line numbers text color | `--rh-color-text-secondary` | `--rh-color-text-secondary` |
+| Line numbers border     | `--rh-color-border-subtle`  | `--rh-color-border-subtle`  |
+
+</rh-table>
+
+### Configuration
+
+### Line numbers
+
+A code block may or may not show line numbers.
+
 <uxdot-example width-adjustment="503px">
   <img src="../code-block-style-variants-line-numbers.svg"
        alt="Two code blocks, one with line numbers and one without"

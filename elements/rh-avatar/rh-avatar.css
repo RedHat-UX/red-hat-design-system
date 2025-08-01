@@ -75,7 +75,6 @@ slot {
 
 ::slotted(a) {
   color: var(--rh-color-interactive-primary-default);
-  text-decoration: none;
 }
 
 ::slotted(a:visited) {

@@ -1,0 +1,1 @@
+Users should remove `<rh-skeleton>` elements from the DOM once content is loaded. See the [Accessibility](/elements/skeleton/accessibility/) for more information.

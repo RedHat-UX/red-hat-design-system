@@ -1,12 +1,19 @@
 ---
-title: Tabs
-layout: layouts/pages/basic.njk
+title: Overview
+heading: Tabs
+sidenavTitle: Tabs
+layout: layouts/pages/pattern.njk
+order: 120
 tags:
+  - pattern
   - tabPatterns
 subnav:
   collection: tabPatterns
-  order: 10
+  order: 1
 ---
+
+
+
 
 <script type="module" data-helmet>
   import '@rhds/elements/rh-tabs/rh-tabs.js';

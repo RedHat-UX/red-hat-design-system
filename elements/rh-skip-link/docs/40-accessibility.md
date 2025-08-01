@@ -2,9 +2,9 @@
 
 Users will interact with the skip link using a keyboard primarily.
 
-<uxdot-example width-adjustment="870px">
+<uxdot-example width-adjustment="872px">
   <img alt="Screenshots of navigation with and without skip link showing and keyboard navigation text"
-       src="../skip-link-keyboard-navigation.png"
+       src="../skip-link-keyboard-navigation.avif"
        width="872"
        height="651">
 </uxdot-example>

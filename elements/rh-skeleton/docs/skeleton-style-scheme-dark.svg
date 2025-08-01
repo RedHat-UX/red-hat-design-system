@@ -1,0 +1,26 @@
+<svg width="600" height="174" viewBox="0 0 600 174" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_2022_5695" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="600" height="174">
+<rect y="0.27002" width="600" height="27" rx="2" fill="white"/>
+<rect y="0.27002" width="600" height="27" rx="2" fill="white"/>
+<rect y="31.27" width="600" height="27" rx="2" fill="white"/>
+<rect y="31.27" width="600" height="27" rx="2" fill="white"/>
+<rect y="62.27" width="450" height="27" rx="2" fill="white"/>
+<rect y="62.27" width="450" height="27" rx="2" fill="white"/>
+<rect width="210" height="52" transform="translate(0 121.27)" fill="white"/>
+<rect y="121.27" width="210" height="52" rx="2" fill="white"/>
+<rect y="121.27" width="210" height="52" rx="2" fill="white"/>
+</mask>
+<g mask="url(#mask0_2022_5695)">
+<rect x="0.000244141" y="0.27002" width="600" height="173" fill="white" fill-opacity="0.1"/>
+<rect y="0.27002" width="600" height="173" fill="url(#paint0_linear_2022_5695)"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_2022_5695" x1="0" y1="86.77" x2="600" y2="86.77" gradientUnits="userSpaceOnUse">
+<stop stop-color="white" stop-opacity="0"/>
+<stop offset="0.25" stop-color="white" stop-opacity="0.05"/>
+<stop offset="0.5" stop-color="white" stop-opacity="0.1"/>
+<stop offset="0.75" stop-color="white" stop-opacity="0.05"/>
+<stop offset="1" stop-color="white" stop-opacity="0"/>
+</linearGradient>
+</defs>
+</svg>

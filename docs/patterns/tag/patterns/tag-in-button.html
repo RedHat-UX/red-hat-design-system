@@ -1,0 +1,40 @@
+<script type="module">
+  import '@rhds/elements/rh-tag/rh-tag.js';
+</script>
+
+<button>
+  <rh-tag color="purple">Purple</rh-tag>
+</button>
+<button>
+  <rh-tag color="purple" variant="outline">Purple</rh-tag>
+</button>
+<button>
+  <rh-tag color="purple" icon="information-fill">Purple</rh-tag>
+</button>
+<button>
+  <rh-tag color="purple" size="compact">Purple</rh-tag>
+</button>
+
+<style>
+  button:has(rh-tag) {
+    cursor: pointer;
+    position: relative;
+    align-items: center;
+    background-color: transparent;
+    border: 0;
+    border-radius: var(--rh-border-radius-pill, 64px);
+    padding: 0;
+
+    &:focus-visible {
+      outline-width: var(--rh-border-width-md, 2px);
+      outline-style: solid;
+      outline-color: var(--rh-color-interactive-primary-default);
+      outline-offset: var(--rh-length-3xs, 2px);
+      --rh-border-width-sm: var(--rh-border-width-md, 2px);
+    }
+
+    &:hover {
+      --rh-border-width-sm: var(--rh-border-width-md, 2px);
+    }
+  }
+</style>

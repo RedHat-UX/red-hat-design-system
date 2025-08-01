@@ -3,7 +3,6 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
-import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
 export { RhFooterUniversal } from './rh-footer-universal.js';
 
@@ -28,7 +27,6 @@ function isHeaderTagName(tagName: string) {
  * @summary Displays secondary information at the bottom of a page
  *
  * @alias footer
- *
  */
 @customElement('rh-footer')
 export class RhFooter extends LitElement {
@@ -47,8 +45,6 @@ export class RhFooter extends LitElement {
     }
     return url;
   }
-
-  #logger = new Logger(this);
 
   #compact = false;
 
@@ -73,7 +69,7 @@ export class RhFooter extends LitElement {
     return html`
       <!-- main footer element, containing all footer content -->
       <footer class="base ${classMap({ isMobile: this.#compact })}" part="base">
-        <h2 id="heading"><!-- text that describes the footer section to assistive tecchnology. Contains default text "Red Hat footer". --><slot name="heading">Red Hat footer</slot></h2>
+        <h2 id="heading"><!-- text that describes the footer section to assistive technology. Contains default text "Red Hat footer". --><slot name="heading">Red Hat footer</slot></h2>
         <!-- Overrides everything. Do not use. -->
         <slot name="base">
           <!-- footer header, typically containing main logo and social links -->
@@ -102,9 +98,9 @@ export class RhFooter extends LitElement {
                   <div class="social-links">
                     <!-- social links container \`<rh-footer-links>\` -->
                     <rh-footer-links class="social-links-item"
-                      part="social-links"
-                      aria-label="Red Hat social media links"
-                      role="list">
+                                     part="social-links"
+                                     role="list"
+                                     aria-label="Red Hat social media links">
                       <!-- social media links (icons). Contains a default set of links -->
                       <slot name="social-links"></slot>
                     </rh-footer-links>
@@ -127,7 +123,7 @@ export class RhFooter extends LitElement {
                   </div>
                 </slot>
               </div>
-              <!-- container fro prose or promotional content -->
+              <!-- container for prose or promotional content -->
               <div class="main-secondary" part="main-secondary">
                 <!-- typically contains prose or promotional content -->
                 <slot name="main-secondary"></slot>
@@ -192,9 +188,7 @@ export class RhFooter extends LitElement {
             list.previousElementSibling
             : null;
         if (!header) {
-          return this.#logger.warn(
-            'This links set doesn\'t have a valid header associated with it.'
-          );
+          return;
         } else {
           // add an ID to the header if we need it
           header.id ||= getRandomId('rh-footer');

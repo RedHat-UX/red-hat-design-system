@@ -105,20 +105,11 @@ Interaction states are visual representations used to communicate the status of 
 
 On hover, cell rows and columns are highlighted with a semitransparent background color to make content easier to view. 
 
-In light scheme, a row is highlighted in light gray on white surface colors and white on light gray surface colors. The column highlight remains light blue.
+In light scheme, a row is highlighted in light gray on white surface colors. The column highlight is light blue.
 
 <uxdot-example color-palette="lightest" width-adjustment="872px">
   <img alt="Light scheme tables with hover effects on a white surface"
-       src="../table-interaction-state-hover.png"
-       width="872"
-       height="512">
-</uxdot-example>
-
-
-<!--change bg to light gray -->
-<uxdot-example color-palette="lighter" width-adjustment="872px">
-  <img alt="Light scheme tables with hover effects on a light gray surface"
-       src="../table-interaction-state-hover-light-gray-surface.png"
+       src="../table-interaction-state-hover.avif"
        width="872"
        height="512">
 </uxdot-example>
@@ -127,7 +118,7 @@ On all dark color palettes, the row highlight is white, and the column highlight
 
 <uxdot-example color-palette="darkest" width-adjustment="872px">
   <img alt="Dark scheme tables with hover effects on a black surface"
-       src="../table-interaction-state-hover-dark.png"
+       src="../table-interaction-state-hover-dark.avif"
        width="872"
        height="512">
 </uxdot-example>
@@ -142,14 +133,14 @@ On all dark color palettes, the row highlight is white, and the column highlight
 
 <uxdot-example color-palette="lightest" width-adjustment="872px">
   <img alt="Light scheme table cell in focus state"
-       src="../table-interaction-state-focus.png"
+       src="../table-interaction-state-focus.avif"
        width="872"
        height="224">
 </uxdot-example>
 
 <uxdot-example color-palette="darkest" width-adjustment="872px">
   <img alt="Dark scheme table cell in focus state"
-       src="../table-interaction-state-focus-dark.png"
+       src="../table-interaction-state-focus-dark.avif"
        width="872"
        height="224">
 </uxdot-example>

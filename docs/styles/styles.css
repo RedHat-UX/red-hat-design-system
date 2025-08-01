@@ -234,6 +234,10 @@
   }
 }
 
+rh-alert code {
+  font-size: inherit;
+}
+
 @layer patterns {
   /**
      * Patterns layer for defining component and site patterns
