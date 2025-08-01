@@ -1,10 +1,14 @@
+:host {
+  display: block;
+}
+
 fieldset {
   align-items: center;
   border: 0;
   display: flex;
   flex-flow: row nowrap;
   gap: var(--rh-space-lg, 16px);
-  margin-block-end: var(--rh-space-4xl, 64px);
+  margin: 0;
   padding: 0;
 
   legend {
