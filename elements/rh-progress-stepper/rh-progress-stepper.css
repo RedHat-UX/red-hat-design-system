@@ -1,0 +1,142 @@
+/* Progress Stepper Component Styles */
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+:host {
+  --_step-line-color: var(--rh-color-border-subtle);
+  --_step-line-angle: -180deg; /* sets the line direction between steps to horizontal */
+  --_step-template-areas:
+    'icon line'
+    'label label'
+    'description description';
+  --_step-template-columns: auto;
+  --_step-template-rows: calc(var(--rh-length-xl, 24px) + 4px) auto 1fr;
+  --_step-justify-self: baseline;
+  --_step-compact-vertical-padding: 0;
+  --_step-column-gap: var(--rh-length-lg, 16px);
+  --_step-row-gap: var(--rh-length-xs, 4px);
+  --_step-compact-grid-row: 2;
+  --_step-description-margin: inherit;
+  --_step-align-items: center;
+
+  container-type: inline-size;
+  display: block;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--rh-length-lg, 16px);
+}
+
+#step-list {
+  padding: 0;
+  display: grid;
+  place-content: baseline normal;
+
+  /* Horizontal orientation styles */
+  grid-auto-flow: column;
+  grid-auto-columns: var(--_stepper-grid-auto-column);
+}
+
+#current-step {
+  /* Visually Hiding */
+  block-size: 1px;
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  inline-size: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+
+  /* End Visual Hiding */
+}
+
+::slotted(rh-progress-step:last-of-type) {
+  --_step-line-style: none;
+}
+
+/* Vertical orientation styles */
+.vertical {
+  --_step-line-angle: 90deg; /* sets the line direction between steps to vertical */
+  --_step-template-areas:
+    'icon label'
+    'line description';
+  --_step-template-columns: calc(var(--rh-length-xl, 24px) + 4px) auto;
+  --_step-template-rows: auto;
+  --_step-justify-self: start;
+  --_step-icon-justify-self: center;
+  --_step-description-grid-column: 2;
+  --_step-compact-horizontal-padding: 0;
+  --_step-column-gap: var(--rh-length-lg, 16px);
+  --_step-row-gap: var(--rh-length-xs, 4px);
+  --_step-align-items: baseline;
+
+  & #step-list {
+    grid-auto-flow: row;
+  }
+}
+
+/* Compact view styles */
+.compact {
+  grid-template-rows: auto;
+
+  --_stepper-grid-auto-column: 50px;
+  --_step-grid-row: var(--_step-compact-grid-row);
+  --_step-template-rows: auto;
+  --_step-compact-vertical-padding: var(--rh-length-lg, 16px);
+  --_step-compact-horizontal-padding: var(--rh-length-lg, 16px);
+
+  & #current-step {
+    /* Visually Showing */
+    block-size: auto;
+    border: none;
+    clip: auto;
+    inline-size: auto;
+    margin: 0;
+    overflow: auto;
+    padding: 0;
+    position: relative;
+    white-space: normal;
+
+    /* End Visually Showing */
+
+    grid-column: 1 / -1;
+    grid-row: 1;
+    color: var(--_current-step-color, #6a6e73);
+    font-weight: var(--_current-step-weight, var(--rh-font-weight-body-text-medium, 500));
+  }
+}
+
+/* State-based color and weight variations for compact progress stepper */
+:host([state='inactive']) {
+  --_current-step-color: var(--_color-text-disabled, #6a6e73);
+}
+
+:host([state='active']) {
+  --_current-step-color: var(--rh-color-status-note);
+}
+
+:host([state='complete']) {
+  --_current-step-color: var(--rh-color-status-success);
+}
+
+:host([state='warn']) {
+  --_current-step-color: light-dark(var(--rh-color-yellow-50), var(--rh-color-yellow-30));
+}
+
+:host([state='fail']) {
+  --_current-step-color: var(--rh-color-status-danger);
+}
+
+:host([state='warn']),
+:host([state='fail']),
+:host([state='active']),
+:host([aria-current='step']) {
+  --_current-step-weight: var(--rh-font-weight-body-text-medium, 500);
+}
