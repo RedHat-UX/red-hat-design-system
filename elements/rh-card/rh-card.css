@@ -40,6 +40,9 @@
   line-height: var(--rh-line-height-body-text, 1.5);
   border-style: solid;
   border-width: var(--rh-border-width-sm, 1px);
+
+  /** Computed from the color context. Intended to be read for
+   *              theming purposes, rather than set in page css. */
   border-color: var(--rh-color-border-subtle);
   width: 100%;
   height: 100%;
@@ -82,8 +85,14 @@
   flex-direction: column;
   gap: var(--rh-space-lg, 16px);
   box-sizing: border-box;
+
+  /** The font family for headings in the header and body */
   font-family: var(--rh-card-heading-font-family, var(--rh-font-family-heading, RedHatDisplay, 'Red Hat Display', Helvetica, Arial, sans-serif)) !important;
+
+  /** The font size for headings in the header and body */
   font-size: var(--rh-card-heading-font-size, var(--rh-font-size-heading-sm, 1.5rem));
+
+  /** The font weight for headings in the header and body */
   font-weight:
     var(--rh-card-heading-font-weight,
       var(--rh-font-weight-body-text-medium, 500)) !important;

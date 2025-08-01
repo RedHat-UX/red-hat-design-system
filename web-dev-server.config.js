@@ -119,7 +119,7 @@ function transformDevServerHTML(document) {
 export const litcssOptions = {
   exclude: [
     /(lightdom)/,
-    /node_modules\/@rhds\/tokens\/css\/global\.css/,
+    /node_modules\/@rhds\/tokens\/css\/.*\.css/,
   ],
   include: [
     /elements\/rh-[\w-]+\/[\w-]+\.css$/,

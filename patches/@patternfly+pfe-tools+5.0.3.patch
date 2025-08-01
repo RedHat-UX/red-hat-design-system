@@ -1,0 +1,64 @@
+diff --git a/node_modules/@patternfly/pfe-tools/custom-elements-manifest/lib/Manifest.js b/node_modules/@patternfly/pfe-tools/custom-elements-manifest/lib/Manifest.js
+index bc21162..f0e47b7 100644
+--- a/node_modules/@patternfly/pfe-tools/custom-elements-manifest/lib/Manifest.js
++++ b/node_modules/@patternfly/pfe-tools/custom-elements-manifest/lib/Manifest.js
+@@ -180,14 +180,15 @@ export class Manifest {
+             const primaryElementName = deslugify(slug, options.rootDir);
+             const filePath = demo.source?.href.replace(options.sourceControlURLPrefix, `${join(options.rootDir, options.elementsDir)}/`) ?? '';
+             const [last = ''] = filePath.split('/').reverse();
+-            const filename = last.replace('.html', '');
+-            const isMainElementDemo = this.getTagNames().includes(filename);
++            const filenameWithoutExtension = last.replace('.html', '');
++            const isMainElementDemo = filenameWithoutExtension === primaryElementName && tagName === primaryElementName;
+             const title = isMainElementDemo ? options.aliases[tagName] ?? prettyTag(tagName) : last
+                 .replace(/(?:^|[-/\s])\w/g, x => x.toUpperCase())
+                 .replace(/-/g, ' ')
+                 .replace('.html', '');
+             return {
+                 tagName,
++                isMainElementDemo,
+                 primaryElementName,
+                 permalink,
+                 slug,
+diff --git a/node_modules/@patternfly/pfe-tools/dev-server/plugins/dev-server-templates.js b/node_modules/@patternfly/pfe-tools/dev-server/plugins/dev-server-templates.js
+index af01d5d..c6c614d 100644
+--- a/node_modules/@patternfly/pfe-tools/dev-server/plugins/dev-server-templates.js
++++ b/node_modules/@patternfly/pfe-tools/dev-server/plugins/dev-server-templates.js
+@@ -25,20 +25,10 @@ async function getDemos(config) {
+     return manifests
+         .flatMap(manifest => manifest
+         .getTagNames()
+-        .flatMap(tagName => manifest.getDemoMetadata(tagName, config)
+-        .filter(demo => demo.filePath?.includes(tagName))
+-        .map(demo => {
+-        if (demo.filePath?.endsWith(`${tagName}.html`)
+-            || demo.filePath?.endsWith('/index.html')) {
+-            return {
+-                ...demo,
+-                permalink: `${dirname(demo.permalink)}/`,
+-            };
+-        }
+-        else {
+-            return demo;
+-        }
+-    })));
++        .flatMap(tagName =>
++          manifest.getDemoMetadata(tagName, config)
++            .filter(demo => demo.primaryElementName === tagName)
++            .map(demo => !demo.isMainElementDemo ? demo : { ...demo, permalink: `${dirname(demo.permalink)}/` })));
+ }
+ async function getTemplateContent(demo) {
+     if (typeof demo?.filePath === 'string') {
+diff --git a/node_modules/@patternfly/pfe-tools/dev-server/plugins/templates/index.html b/node_modules/@patternfly/pfe-tools/dev-server/plugins/templates/index.html
+index 18b76dc..93cebc3 100644
+--- a/node_modules/@patternfly/pfe-tools/dev-server/plugins/templates/index.html
++++ b/node_modules/@patternfly/pfe-tools/dev-server/plugins/templates/index.html
+@@ -1,7 +1,7 @@
+ <!DOCTYPE html>
+ <html lang="en" dir="ltr" unresolved>
+ 
+-{% set groupeddemos = demos | groupby('primaryElementName') %}
++{% set groupeddemos = demos | groupby('primaryElementName')  %}
+ {% if demo.title %}
+   {% set title = demo.title + ' | ' + options.site.title %}
+ {% else %}

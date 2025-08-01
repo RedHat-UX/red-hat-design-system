@@ -383,6 +383,30 @@ export default [
     },
   },
   {
+    tagName: 'rh-skeleton',
+    name: 'Skeleton',
+    type: 'element',
+    overallStatus: 'ready',
+    libraries: {
+      figma: 'ready',
+      rhds: 'ready',
+      shared: 'planned',
+      docs: 'ready',
+    },
+  },
+  {
+    tagName: 'rh-skip-link',
+    name: 'Skip link',
+    type: 'element',
+    overallStatus: 'ready',
+    libraries: {
+      figma: 'planned',
+      rhds: 'ready',
+      shared: 'planned',
+      docs: 'planned',
+    },
+  },
+  {
     tagName: 'rh-site-status',
     name: 'Site status',
     type: 'element',

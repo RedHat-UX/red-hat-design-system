@@ -11,6 +11,7 @@
   display: grid;
   color: var(--rh-color-text-secondary);
 
+  /** List of colors to use when generating avatars */
   --_colors:
     light-dark(var(--rh-avatar-colors,
       var(--rh-color-blue-30, #92c5f9)
@@ -95,6 +96,8 @@ canvas,
 img,
 svg {
   overflow: hidden;
+
+  /** Size of the avatar, */
   width: var(--rh-avatar-size, var(--rh-size-icon-06, 64px));
   max-width: var(--rh-size-icon-06, 64px);
   aspect-ratio: 1;

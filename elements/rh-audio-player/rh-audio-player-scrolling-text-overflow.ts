@@ -8,15 +8,11 @@ import styles from './rh-audio-player-scrolling-text-overflow.css';
 
 /**
  * Audio Player Scrolling Text Overflow
- * @slot - inline text to scroll if wider than host
- * @cssprop [--rh-audio-player-scrolling-text-overflow-background-color=var(--rh-color-surface-lightest, #ffffff)]
- *          color of fade effect (should match background)
  */
 @customElement('rh-audio-player-scrolling-text-overflow')
 @themable
 export class RhAudioPlayerScrollingTextOverflow extends LitElement {
   static readonly styles = [styles];
-
 
   #scrolling = false;
 
@@ -42,18 +38,21 @@ export class RhAudioPlayerScrollingTextOverflow extends LitElement {
   }
 
   render() {
-    const { direction } = this.#style ?? {};
+    const direction = this.#style?.direction ?? 'auto';
+    const scrolling = this.#scrolling;
+    const scrollable = this.#isScrollable;
     return html`
       <div id="outer"
-           class="${classMap({ [direction || 'auto']: true })}"
+           class="${classMap({ [direction]: true })}"
            @mouseover=${this.startScrolling}
            @mouseout=${this.stopScrolling}
            @focus=${this.startScrolling}
            @blur=${this.stopScrolling}>
         <div id="inner">
-          <slot class="${this.#scrolling ? 'scrolling' : ''} ${this.#isScrollable ? 'scrollable' : ''}"></slot>
-        </div>
-        ${this.#isScrollable ? html`<span id="fade"></span>` : ''}
+          <!-- inline text to scroll if wider than host -->
+          <slot class="${classMap({ scrolling, scrollable })}"></slot>
+        </div>${!scrollable ? '' : html`
+        <span id="fade"></span>`}
       </div>`;
   }
 

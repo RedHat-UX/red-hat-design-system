@@ -28,6 +28,10 @@ function stringifyParams(method: CEM.ClassMethod) {
     `${p.name}: ${p.type?.text ?? 'unknown'}`).join(', ') ?? '';
 }
 
+function getDeprecationReason(deprecatable: { deprecated?: true | string }): string {
+  return deprecatable.deprecated === true ? '' : deprecatable.deprecated ?? '';
+}
+
 interface EleventyPageRenderData {
   page: {
     outputPath: string;
@@ -278,7 +282,6 @@ export default class ElementsPage extends Renderer<Context> {
       await this.#renderLightdom(ctx),
       this.#header('Usage'),
       await this.#getMainDemoContent(tagName),
-      doc.fileExists && await this.renderFile(doc.filePath, ctx),
       await this.#renderCodeDocs.call(this,
                                       doc.docsPage.tagName,
                                       { ...ctx, level: (ctx.level ?? 1) + 1 }),
@@ -392,14 +395,13 @@ export default class ElementsPage extends Renderer<Context> {
                 ${(await Promise.all(slots.map(async slot => html`
                 <tr>
                   <td><code>${slot.name}</code></td>
-                  <td>${await this.#innerMD(slot.description)}</td>
                   <td>${await this.#innerMD(slot.summary)}</td>
+                  <td>${await this.#innerMD(slot.description)}</td>
                 </tr>`))).join('')}
               </tbody>
             </table>
-          </rh-table>`}${!deprecated.length ? '' : html`
-          <details>
-            <summary><h${level + 1}>Deprecated Slots</h${level + 1}></summary>
+          </rh-table>`}${!deprecated.length ? '' : /* NB: we need to use our own stuff. don't replace with details */ html`
+          <rh-disclosure summary="Deprecated Slots">
             <rh-table>
               <table>
                 <thead>
@@ -407,6 +409,7 @@ export default class ElementsPage extends Renderer<Context> {
                     <th scope="col">Slot Name</th>
                     <th scope="col">Summary</th>
                     <th scope="col">Description</th>
+                    <th scope="col">Reason</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -414,15 +417,13 @@ export default class ElementsPage extends Renderer<Context> {
                   <tr>
                     <td><code>${slot.name}</code></td>
                     <td>${await this.#innerMD(slot.summary)}</td>
-                    <td>
-                      ${await this.#innerMD(slot.description)}
-                      <em>Note: ${slot.name} is deprecated. ${await this.#innerMD(String(slot.deprecated ?? ''))}</em>
-                    </td>
+                    <td>${await this.#innerMD(slot.description)}</td>
+                    <td>${await this.#innerMD(getDeprecationReason(slot))}</td>
                   </tr>`))).join('')}
                 </tbody>
               </table>
             </rh-table>
-          </details>`}
+          </rh-disclosure>`}
         </section>
       </rh-accordion-panel>`;
   }
@@ -466,9 +467,8 @@ export default class ElementsPage extends Renderer<Context> {
               </tbody>
             </table>
           </rh-table>`}
-          ${!deprecated.length ? '' : html`
-          <details>
-            <summary><h${level + 1}>Deprecated Attributes<h${level + 1}></summary>
+          ${!deprecated.length ? '' : /* NB: we need to use our own stuff. don't replace with details */ html`
+          <rh-disclosure summary="Deprecated Attributes">
             <rh-table>
               <table>
                 <thead>
@@ -492,7 +492,7 @@ export default class ElementsPage extends Renderer<Context> {
                 </tbody>
               </table>
             </rh-table>
-          </details>`}
+          </rh-disclosure>`}
         </section>
       </rh-accordion-panel>
     `;
@@ -532,30 +532,28 @@ export default class ElementsPage extends Renderer<Context> {
                 </tr>`))).join('')}
               </tbody>
             </table>
-          </rh-table>`}${!deprecated.length ? '' : html`
-          <details>
-            <summary><h${level + 1}>Deprecated Methods</h${level + 1}></summary>
+          </rh-table>`}${!deprecated.length ? '' : /* NB: we need to use our own stuff. don't replace with details */ html`
+          <rh-disclosure summary="Deprecated Methods">
             <rh-table>
               <table>
                 <thead>
                   <tr>
                     <th scope="col">Method Name</th>
                     <th scope="col">Description</th>
+                    <th scope="col">Reason</th>
                   </tr>
                 </thead>
                 <tbody>
                   ${(await Promise.all(deprecated.map(async method => html`
                   <tr>
                     <td><code>${method.name}(${stringifyParams(method)})</code></td>
-                    <td>
-                      ${await this.#innerMD(method.description)}
-                      <em>Note: ${method.name} is deprecated. ${await this.#innerMD((method.deprecated ?? '').toString())}</em>
-                    </td>
+                    <td>${await this.#innerMD(method.description)}</td>
+                    <td>${await this.#innerMD(getDeprecationReason(method))}</td>
                   </tr>`))).join('')}
                 </tbody>
               </table>
             </rh-table>
-          </details>`}
+          </rh-disclosure>`}
         </section>
       </rh-accordion-panel>
     `;
@@ -594,30 +592,28 @@ export default class ElementsPage extends Renderer<Context> {
                 </tr>`))).join('')}
               </tbody>
             </table>
-          </rh-table>`}${!deprecated.length ? '' : html`
-          <details>
-            <summary><h${level + 1}>Deprecated Events</h${level + 1}></summary>
+          </rh-table>`}${!deprecated.length ? '' : /* NB: we need to use our own stuff. don't replace with details */ html`
+          <rh-disclosure summary="Deprecated Events">
             <rh-table>
               <table>
                 <thead>
                   <tr>
                     <th scope="col">Event Name</th>
                     <th scope="col">Description</th>
+                    <th scope="col">Reason</th>
                   </tr>
                 </thead>
                 <tbody>
                   ${(await Promise.all(deprecated.map(async event => html`
                   <tr>
                     <td><code>${event.name}</code></td>
-                    <td>
-                      ${await this.#innerMD(event.description)}
-                      <em>Note: ${event.name} is deprecated. ${await this.#innerMD((event.deprecated ?? '').toString())}</em>
-                    </td>
+                    <td>${await this.#innerMD(event.description)}</td>
+                    <td>${await this.#innerMD(getDeprecationReason(event))}</td>
                   </tr>`))).join('')}
                 </tbody>
               </table>
             </rh-table>
-          </details>`}
+          </rh-disclosure>`}
         </section>
       </rh-accordion-panel>
     `;
@@ -653,14 +649,13 @@ export default class ElementsPage extends Renderer<Context> {
                 ${(await Promise.all(parts.map(async part => html`
                 <tr>
                   <td><code>${part.name}</code></td>
-                  <td>${await this.#innerMD(part.description)}</td>
                   <td>${await this.#innerMD(part.summary)}</td>
+                  <td>${await this.#innerMD(part.description)}</td>
                 </tr>`))).join('')}
               </tbody>
             </table>
-          </rh-table>`}${!deprecated.length ? '' : html`
-          <details>
-            <summary><h${level + 1}>Deprecated CSS Shadow Parts</h${level + 1}></summary>
+          </rh-table>`}${!deprecated.length ? '' : /* NB: we need to use our own stuff. don't replace with details */ html`
+          <rh-disclosure summary="Deprecated CSS Shadow Parts">
             <rh-table>
               <table>
                 <thead>
@@ -668,24 +663,21 @@ export default class ElementsPage extends Renderer<Context> {
                     <th scope="col">Part Name</th>
                     <th scope="col">Summary</th>
                     <th scope="col">Description</th>
+                    <th scope="col">Reason</th>
                   </tr>
                 </thead>
                 <tbody>
                   ${(await Promise.all(deprecated.map(async part => html`
                   <tr>
                     <td><code>${part.name}</code></td>
-                    <td>
-                      ${await this.#innerMD(part.summary)}
-                    </td>
-                    <td>
-                      ${await this.#innerMD(part.description)}
-                      <em>Note: ${part.name} is deprecated. ${await this.#innerMD((part.deprecated ?? '').toString())}</em>
-                    </td>
+                    <td>${await this.#innerMD(part.summary)}</td>
+                    <td>${await this.#innerMD(part.description)}</td>
+                    <td>${await this.#innerMD(getDeprecationReason(part))}</td>
                   </tr>`))).join('')}
                 </tbody>
               </table>
             </rh-table>
-          </details>`}
+          </rh-disclosure>`}
         </section>
       </rh-accordion-panel>
     `;
@@ -696,7 +688,7 @@ export default class ElementsPage extends Renderer<Context> {
     const allCssProperties = (ctx.doc.docsPage.manifest.getCssCustomProperties(tagName) ?? [])
         .filter(x => !tokens.has(x.name));
     const cssProperties = allCssProperties.filter(x => !x.deprecated);
-    const deprecated = allCssProperties.filter(x => x.deprecated);
+    const deprecated = allCssProperties.filter(x => x.deprecated != null);
     const count = cssProperties.length;
     const deprecatedCssPropertiesCount = deprecated.length;
 
@@ -728,16 +720,16 @@ export default class ElementsPage extends Renderer<Context> {
                 </tr>`))).join('')}
               </tbody>
             </table>
-          </rh-table>`}${!deprecated.length ? '' : html`
-          <details>
-            <summary><h${level + 1}>Deprecated CSS Custom Properties</h${level + 1}></summary>
+          </rh-table>`}${!deprecated.length ? '' : /* NB: we need to use our own stuff. don't replace with details */ html`
+          <rh-disclosure summary="Deprecated CSS Custom Properties">
             <rh-table>
               <table>
                 <thead>
                   <tr>
                     <th scope="col">CSS Property</th>
                     <th scope="col">Description</th>
-                    <th>Default</th>
+                    <th scope="col">Default</th>
+                    <th scope="col">Reason</th>
                   </tr>
                 </thead>
                 <tbody>${(await Promise.all(deprecated.map(async prop => html`
@@ -745,11 +737,12 @@ export default class ElementsPage extends Renderer<Context> {
                     <td><code>${prop.name}</code></td>
                     <td>${await this.#innerMD(prop.description)}</td>
                     <td>${await this.#innerMD(prop.default ?? '—')}</td>
+                    <td>${await this.#innerMD(getDeprecationReason(prop))}</td>
                   </tr>`))).join('')}
                 </tbody>
               </table>
             </rh-table>
-          </details>`}
+          </rh-disclosure>`}
         </section>
       </rh-accordion-panel>
     `;

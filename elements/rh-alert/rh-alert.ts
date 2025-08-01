@@ -64,11 +64,6 @@ const toasts = new Set<Required<ToastOptions>>();
  * @alias alert
  *
  * @fires {AlertCloseEvent} close - when the dismissable alert closes
- *
- * @slot         - Provide a description for the alert message
- * @slot header  - Provide a header for the alert message.
- * @slot actions - Provide actions that the user can take for the alert
- *
  */
 @customElement('rh-alert')
 @themable
@@ -184,7 +179,7 @@ export class RhAlert extends LitElement {
       case 'neutral':
       case 'info':
       case 'success':
-        return state as this['state'];
+        return state.toLowerCase() as this['state'];
       default:
         return 'neutral';
     }
@@ -209,6 +204,7 @@ export class RhAlert extends LitElement {
     // eslint-disable-next-line lit-a11y/click-events-have-key-events
     const footer = html`<footer class="${classMap({ hasActions })}"
                   @click="${this.#onActionsClick}">
+            <!-- Provide actions that the user can take for the alert -->
             <slot name="actions"></slot>
           </footer>`;
     return html`
@@ -228,6 +224,7 @@ export class RhAlert extends LitElement {
         <div id="middle-column">
           <header ?hidden="${!_isServer && this.#slots.isEmpty('header')}">
             <div id="header">
+              <!-- Provide a header for the alert message. -->
               <slot name="header"></slot>
             </div>${!this.dismissable && this.variant !== 'toast' ? '' : html`
             <div id="header-actions">
@@ -239,6 +236,7 @@ export class RhAlert extends LitElement {
             </div>`}
           </header>
           <div id="description">
+            <!-- Provide a description for the alert message -->
             <slot></slot>
           </div>
           ${footer}

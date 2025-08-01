@@ -16,8 +16,6 @@ export type SpinnerSize = RhSpinner['size'];
  * @summary Notifies users their action is being processed or loaded
  *
  * @alias spinner
- *
- * @slot - Optional text label below the animated circle.
  */
 @customElement('rh-spinner')
 @themable
@@ -35,6 +33,7 @@ export class RhSpinner extends LitElement {
         <circle class="track" cx="50" cy="50" r="40" fill="none" vector-effect="non-scaling-stroke" />
         <circle class="dash" cx="50" cy="50" r="40" fill="none" vector-effect="non-scaling-stroke" />
       </svg>
+      <!-- Optional text label below the animated circle. -->
       <slot></slot>
     `;
   }

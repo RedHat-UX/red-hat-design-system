@@ -38,7 +38,7 @@
     {%- set active = tab.url == pageUrl -%}
     <a href="{{ tab.url }}"
        {{- ' active' if active -}}
-       {{- ' hidden' if hidden -}}>{{ title | capitalize }}</a>
+       {{- ' hidden' if hidden -}}>{{ title }}</a>
   {%- endfor -%}
   </rh-subnav>
   {% endif %}
