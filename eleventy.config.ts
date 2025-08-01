@@ -243,7 +243,6 @@ export default async function(eleventyConfig: UserConfig) {
       'elements/rh-video-embed/rh-video-embed.ts',
       'lib/elements/rh-context-picker/rh-context-picker.ts',
       'uxdot/uxdot-best-practice.ts',
-      'uxdot/uxdot-color-scheme-picker.ts',
       'uxdot/uxdot-copy-button.ts',
       'uxdot/uxdot-copy-permalink.ts',
       'uxdot/uxdot-demo.ts',
