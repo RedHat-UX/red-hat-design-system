@@ -20,7 +20,7 @@ type ProgressStepperState = 'inactive' | 'active' | 'complete' | 'warn' | 'fail'
 /**
  * A progress stepper conveys how many steps are required to complete a process or task.
  *
- * @summary Container for progress steps with horizontal or vertical layout
+ * @summary Communicate how many steps are required to complete a process
  *
  * @alias Progress stepper
  */
