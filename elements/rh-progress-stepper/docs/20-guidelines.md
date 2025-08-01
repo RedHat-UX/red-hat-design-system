@@ -56,50 +56,117 @@ When writing text, include minimal content by doing the following:
   - Use verbs that clearly communicate each step of the process
   - Do not punctuate the title or description because they are fragments and not full sentences
 
-  <rh-table>
-    <table>
-      <thead>
-        <tr>
-          <th scope="col" data-label="Step">Step</th>
-          <th scope="col" data-label="Verb tense">Verb tense</th>
-          <th scope="col" data-label="Example">Example</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td data-label="Step">In progress</td>
-          <td data-label="Verb tense">Present participle</td>
-          <td data-label="Example">
-            <ul>
-              <li>Installing cluster</li>
-              <li>Creating cache</li>
-            </ul>
-          </td>
-        </tr>
-        <tr>
-          <td data-label="Step">Error</td>
-          <td data-label="Verb tense">Past</td>
-          <td data-label="Example">
-            <ul>
-              <li>Could not install cluster</li>
-              <li>Could not validate account credentials</li>
-            </ul>
-          </td>
-        </tr>
-        <tr>
-          <td data-label="Step">Cluster installed</td>
-          <td data-label="Verb tense">Past</td>
-          <td data-label="Example">
-            <ul>
-              <li>Cluster installed</li>
-              <li>Account credentials validated</li>
-            </ul>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </rh-table>
+<rh-table>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col" data-label="Step">Step</th>
+        <th scope="col" data-label="Verb tense">Verb tense</th>
+        <th scope="col" data-label="Example">Example</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Step">In progress</td>
+        <td data-label="Verb tense">Present participle</td>
+        <td data-label="Example">
+          <ul>
+            <li>Installing cluster</li>
+            <li>Creating cache</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td data-label="Step">Error</td>
+        <td data-label="Verb tense">Past</td>
+        <td data-label="Example">
+          <ul>
+            <li>Could not install cluster</li>
+            <li>Could not validate account credentials</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td data-label="Step">Cluster installed</td>
+        <td data-label="Verb tense">Past</td>
+        <td data-label="Example">
+          <ul>
+            <li>Cluster installed</li>
+            <li>Account credentials validated</li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</rh-table>
 
-  ## Responsive design
+## Responsive design
 
-  A horizontal progress stepper can be a fixed width or stretch to fill a container.
+A horizontal progress stepper can be a fixed width or stretch to fill a container.
+
+<uxdot-example variant="full" color-palette="lightest" no-border>
+  <img src="../progress-stepper-guidelines-responsive-1.svg"
+        alt="Two progress steppers. One 50% width and one 100% width. Each has four steps."
+        width="1140"
+        height="188">  
+</uxdot-example>
+
+If space becomes an issue with the horizontal size, switch to the compact size or 
+the vertical orientation.
+
+<uxdot-example variant="full" color-palette="lightest" no-border>
+  <img src="../progress-stepper-guidelines-responsive-2.svg"
+        alt="Three progress steppers at varying viewport sizes. One horizontal, one compact horizontal, and one vertical."
+        width="1156"
+        height="450">  
+</uxdot-example>
+
+## Best practices
+
+### No title or description
+
+<div class="grid sm-two-columns">
+  <uxdot-best-practice variant="do">
+    <uxdot-example slot="image" color-palette="lightest">
+      <img src="../progress-stepper-guidelines-best-practice-1-do.svg"
+        alt="A four step progress stepper where each step has a title and description."
+        width="482"
+        height="80">
+    </uxdot-example>
+    <p>Always include at least a title so users know what step they are on.</p>
+  </uxdot-best-practice>
+
+  <uxdot-best-practice variant="dont">
+    <uxdot-example slot="image" color-palette="lightest">
+      <img src="../progress-stepper-guidelines-best-practice-1-dont.svg"
+        alt="A four step progress stepper without any text labels."
+        width="482"
+        height="80">
+    </uxdot-example>
+    <p>Never remove the title because it will be confusing for users.</p>
+  </uxdot-best-practice>
+</div>
+
+## Stretching the compact size
+
+<div class="grid sm-two-columns">
+  <uxdot-best-practice variant="do">
+    <uxdot-example slot="image" color-palette="lightest">
+      <img src="../progress-stepper-guidelines-best-practice-2-do.svg"
+        alt="Two compact steppers. One horizontal and one vertical."
+        width="482"
+        height="296">
+    </uxdot-example>
+    <p>Maintain the compact size, it was designed to have less visual prominence.</p>
+  </uxdot-best-practice>
+
+  <uxdot-best-practice variant="dont">
+    <uxdot-example slot="image" color-palette="lightest">
+      <img src="../progress-stepper-guidelines-best-practice-2-dont.svg"
+        alt="Two compact steppers like above; however, space has been added between each step's icon making it look more like a normal stepper without labels instead of a compact stepper."
+        width="482"
+        height="296">
+    </uxdot-example>
+    <p>Do not stretch the compact size. Switch back to the default size or use another orientation.</p>
+  </uxdot-best-practice>
+</div>
