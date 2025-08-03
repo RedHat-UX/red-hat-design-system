@@ -46,7 +46,8 @@ export class RhSchemeToggle extends LitElement {
   /** Label text for the system default option */
   @property({ attribute: 'system-text' }) systemText = 'System';
 
-  protected firstUpdated(): void {
+  connectedCallback(): void {
+    super.connectedCallback();
     this.#schemeCheck();
   }
 
