@@ -108,7 +108,7 @@ A progress stepper consists of multiple `<rh-progress-step>` elements placed ins
 
 ## Accessibility
 
-- Use `aria-current="step"` on the currently active step
+- Use `state="active"` on the currently active step to denote the current step
 - The stepper automatically sets `role="list"` and steps set `role="listitem"`
 - Ensure meaningful labels and descriptions for screen readers
 - When using links, ensure the link purpose is clear from the label or description
