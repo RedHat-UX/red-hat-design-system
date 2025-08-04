@@ -51,8 +51,8 @@
 :is(rh-icon, .no-icon) {
   grid-area: icon;
   place-self: center var(--_step-icon-justify-self);
-  height: var(--rh-size-icon-02, 24px);
-  width: var(--rh-size-icon-02, 24px);
+  block-size: var(--rh-size-icon-02, 24px);
+  inline-size: var(--rh-size-icon-02, 24px);
   border: var(--rh-border-width-md) solid var(--rh-color-text-primary);
   border-radius: 50%;
   color: var(--_step-color);
