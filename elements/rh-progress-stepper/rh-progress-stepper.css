@@ -16,11 +16,13 @@
   --_step-template-rows: calc(var(--rh-length-xl, 24px) + 4px) auto 1fr;
   --_step-justify-self: baseline;
   --_step-compact-vertical-padding: 0;
+  --_step-compact-horizontal-padding: var(--rh-length-2xl, 32px);
   --_step-column-gap: var(--rh-length-lg, 16px);
   --_step-row-gap: var(--rh-length-xs, 4px);
   --_step-compact-grid-row: 2;
   --_step-description-margin: inherit;
   --_step-align-items: center;
+  --_step-icon-width: calc(var(--rh-length-xl, 24px) + 4px);
 
   container-type: inline-size;
   display: block;
@@ -67,12 +69,13 @@
   --_step-template-areas:
     'icon label'
     'line description';
-  --_step-template-columns: calc(var(--rh-length-xl, 24px) + 4px) auto;
+  --_step-template-columns: var(--_step-icon-width) auto;
   --_step-template-rows: auto;
   --_step-justify-self: start;
   --_step-icon-justify-self: center;
   --_step-description-grid-column: 2;
   --_step-compact-horizontal-padding: 0;
+  --_step-compact-vertical-padding: var(--rh-length-2xl, 32px);
   --_step-column-gap: var(--rh-length-lg, 16px);
   --_step-row-gap: var(--rh-length-xs, 4px);
   --_step-align-items: baseline;
@@ -86,11 +89,21 @@
 .compact {
   grid-template-rows: auto;
 
+  --_step-template-areas: 'icon line';
   --_stepper-grid-auto-column: 50px;
   --_step-grid-row: var(--_step-compact-grid-row);
   --_step-template-rows: auto;
-  --_step-compact-vertical-padding: var(--rh-length-lg, 16px);
+  --_step-compact-vertical-padding: 0;
   --_step-compact-horizontal-padding: var(--rh-length-lg, 16px);
+  --_step-template-columns: var(--_step-icon-width);
+  --_step-row-gap: 0;
+  --_step-column-gap: 0;
+
+  &.vertical {
+    --_step-template-areas: 'icon' 'line';
+    --_step-compact-horizontal-padding: 0;
+    --_step-compact-vertical-padding: var(--rh-length-lg, 16px);
+  }
 
   & #current-step {
     /* Visually Showing */
