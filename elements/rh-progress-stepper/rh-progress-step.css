@@ -31,8 +31,8 @@
   align-items: var(--_step-align-items);
   padding-block-end: var(--_step-compact-vertical-padding);
   padding-inline-end: var(--_step-compact-horizontal-padding);
-  width: 100%;
-  height: 100%;
+  inline-size: 100%;
+  block-size: 100%;
   background: var(--_step-line-style);
   color: var(--rh-color-text-secondary);
 
