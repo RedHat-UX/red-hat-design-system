@@ -3,7 +3,7 @@ import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
-import './uxdot-color-scheme-picker.js';
+import '@rhds/elements/rh-scheme-toggle/rh-scheme-toggle.js';
 
 import styles from './uxdot-masthead.css';
 
@@ -26,7 +26,7 @@ export class UxdotMasthead extends LitElement {
                  height="40">
           </a>
         </div>
-        <uxdot-color-scheme-picker id="scheme"></uxdot-color-scheme-picker>
+        <rh-scheme-toggle id="scheme"></rh-scheme-toggle>
         <div id="links">
           <a id="github" href="https://github.com/RedHat-UX/red-hat-design-system/">
             <span class="display-xs">Contribute on Github</span>

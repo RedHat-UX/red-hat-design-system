@@ -371,6 +371,18 @@ export default [
     },
   },
   {
+    tagName: 'rh-scheme-toggle',
+    name: 'Scheme toggle',
+    type: 'element',
+    overallStatus: 'ready',
+    libraries: {
+      figma: 'planned',
+      rhds: 'ready',
+      shared: 'planned',
+      docs: 'planned',
+    },
+  },
+  {
     tagName: 'rh-skeleton',
     name: 'Skeleton',
     type: 'element',
@@ -388,6 +400,18 @@ export default [
     type: 'element',
     overallStatus: 'ready',
     libraries: {
+      figma: 'planned',
+      rhds: 'ready',
+      shared: 'planned',
+      docs: 'planned',
+    },
+  },
+  {
+    tagName: 'rh-site-status',
+    name: 'Site status',
+    type: 'element',
+    overallStatus: 'ready',
+    libraries: {
       figma: 'ready',
       rhds: 'ready',
       shared: 'planned',
@@ -395,8 +419,8 @@ export default [
     },
   },
   {
-    tagName: 'rh-site-status',
-    name: 'Site status',
+    tagName: 'rh-skip-link',
+    name: 'Skip link',
     type: 'element',
     overallStatus: 'ready',
     libraries: {
