@@ -7,7 +7,7 @@ import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
 
 import { consume } from '@lit/context';
-import { context } from './context.js';
+import { compactContext, currentStepContext } from './context.js';
 
 import { themable } from '@rhds/elements/lib/themable.js';
 import styles from './rh-progress-step.css';
@@ -85,8 +85,11 @@ export class RhProgressStep extends LitElement {
    */
   @property({ reflect: true }) href?: string;
 
-  @consume({ context, subscribe: true })
+  @consume({ context: compactContext, subscribe: true })
   private compact?: boolean;
+
+  @consume({ context: currentStepContext, subscribe: true })
+  private currentStep: RhProgressStep | null = null;
 
   override connectedCallback(): void {
     super.connectedCallback();
@@ -116,7 +119,7 @@ export class RhProgressStep extends LitElement {
     } else {
       icon = undefined;
     }
-    const ariaCurrent = this.state === 'active' ? 'step' : undefined;
+    const ariaCurrent = this.currentStep === this ? 'step' : undefined;
     return html`
       <div id="container" class="${classMap({ compact })}">
         <slot name="icon">

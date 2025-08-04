@@ -5,7 +5,7 @@ import { property } from 'lit/decorators/property.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 import { provide } from '@lit/context';
-import { context } from './context.js';
+import { compactContext, currentStepContext } from './context.js';
 
 import { themable } from '@rhds/elements/lib/themable.js';
 
@@ -22,22 +22,21 @@ import '@rhds/elements/rh-icon/rh-icon.js';
 import styles from './rh-progress-stepper.css';
 import { state } from 'lit/decorators/state.js';
 
-import { RhProgressStepChangeEvent } from './rh-progress-step.js';
+import { RhProgressStep, RhProgressStepChangeEvent } from './rh-progress-step.js';
 import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 export * from './rh-progress-step.js';
 
 type ProgressStepsOrientation = 'horizontal' | 'vertical';
-type ProgressStepperState = 'inactive' | 'active' | 'complete' | 'warn' | 'fail' | 'custom';
 
-const BREAKPOINTS = new Map();
-
-BREAKPOINTS.set('2xs', '320px');
-BREAKPOINTS.set('xs', BreakpointXs);
-BREAKPOINTS.set('sm', BreakpointSm);
-BREAKPOINTS.set('md', BreakpointMd);
-BREAKPOINTS.set('lg', BreakpointLg);
-BREAKPOINTS.set('xl', BreakpointXl);
-BREAKPOINTS.set('2xl', Breakpoint2xl);
+const BREAKPOINTS = new Map(Object.entries({
+  '2xs': '320px',
+  'xs': BreakpointXs,
+  'sm': BreakpointSm,
+  'md': BreakpointMd,
+  'lg': BreakpointLg,
+  'xl': BreakpointXl,
+  '2xl': Breakpoint2xl,
+}));
 
 /**
  * A progress stepper conveys how many steps are required to complete a process or task.
@@ -52,8 +51,6 @@ export class RhProgressStepper extends LitElement {
   static readonly styles: CSSStyleSheet[] = [styles];
 
   #ro?: ResizeObserver;
-
-  #hydrated = false;
 
   #maxWidth = 768;
 
@@ -74,29 +71,23 @@ export class RhProgressStepper extends LitElement {
   /**
    * Setting `compact` will remove...
    */
-  @provide({ context })
+  @provide({ context: compactContext })
   @property({ reflect: true, type: Boolean }) compact = false;
 
   /**
-   * Sets the current step label that is displayed prominently
+   * Defines the current step, so it can be marked as such with ARIA,
+   * and so its label can be displayed in compact layouts.
    */
-  @state() private current = '';
-
-  /**
-   * Sets the state of the progress stepper
-   * - `inactive` - The stepper is not active
-   * - `active` - The stepper is currently active
-   * - `complete` - The stepper has completed all steps
-   * - `warn` - The stepper is in a warning state
-   * - `fail` - The stepper has failed
-   * - `custom` - The stepper uses a custom state
-   */
-  @state() private state: ProgressStepperState = 'inactive';
+  @provide({ context: currentStepContext })
+  @state() private currentStep: RhProgressStep | null = null;
 
   /**
    * Set when
    */
   @state() private mobile = true;
+
+  /** normalized string content of the current step */
+  #contentString = '';
 
   constructor() {
     super();
@@ -124,7 +115,6 @@ export class RhProgressStepper extends LitElement {
     // ensure we update initially on client hydration
     const _isHydrated = isServer && !this.hasUpdated;
     if (!_isHydrated) {
-      this.#hydrated = true;
       this.mobile = this.offsetWidth < this.#maxWidth;
     }
   }
@@ -147,7 +137,7 @@ export class RhProgressStepper extends LitElement {
 
     return html`
     <div id="container" class="${classMap({ compact, vertical })}">
-      <strong id="current-step">${this.current}</strong>
+      <strong id="current-step">${this.#contentString}</strong>
       <!-- Use this slot for \`<rh-progress-step>\` items -->
       <slot id="step-list" @change="${this.#onChange}"></slot>
     </div>
@@ -161,31 +151,37 @@ export class RhProgressStepper extends LitElement {
   }
 
   #updateState() {
+    // all steps with [state=active], fail or warn
     const statefulSteps =
       this.querySelectorAll(
         'rh-progress-step:is([state="active"], [state="fail"], [state="warn"])'
       );
-    const activeStep = Array.from(statefulSteps).at(-1);
-    if (activeStep) {
-      const defaultSlotEl = activeStep.shadowRoot?.querySelector<HTMLSlotElement>('#label slot');
-      const slotNodes = defaultSlotEl?.assignedNodes();
-      let contentString = '';
-      slotNodes?.forEach(node => {
-        contentString = contentString + node.textContent?.trim();
-      });
-      this.current = contentString;
-      this.state = activeStep.getAttribute('state') as ProgressStepperState;
+    // always, only take the last item in the list, in order to prevent having more
+    // than one aria-current step, which is not approved of in the aria spec
+    // see https://w3c.github.io/aria/#aria-current
+    const activeStep = Array.from(statefulSteps) .at(-1);
+    this.currentStep = activeStep instanceof RhProgressStep ? activeStep : null;
+    if (this.currentStep) {
+      this.#contentString = '';
+      for (const node of this.currentStep.children) {
+        if (node instanceof Element && !node.hasAttribute('slot')) {
+          this.#contentString += node.textContent?.trim();
+        } else if (node instanceof Text) {
+          this.#contentString += node.data.trim();
+        }
+      };
     }
   }
 
   @observes('verticalAt')
   protected verticalAtChanged() {
-    if (this.verticalAt === undefined) {
-      return;
+    const breakpoint = BREAKPOINTS.get(this.verticalAt!);
+    if (breakpoint) {
+      const int = parseInt(breakpoint.replace('px', ''));
+      if (!Number.isNaN(breakpoint)) {
+        this.#maxWidth = int;
+      }
     }
-
-    const breakpoint = this.verticalAt;
-    this.#maxWidth = BREAKPOINTS.get(breakpoint).replace('px', '');
   }
 }
 
