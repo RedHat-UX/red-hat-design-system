@@ -140,7 +140,11 @@
 }
 
 :host([state='warn']) {
-  --_current-step-color: light-dark(var(--rh-color-yellow-50), var(--rh-color-yellow-30));
+  --_current-step-color:
+    light-dark(
+        var(--rh-color-yellow-50, #b98412),
+        var(--rh-color-yellow-30, #ffcc17)
+      );
 }
 
 :host([state='fail']) {
