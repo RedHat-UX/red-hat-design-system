@@ -100,4 +100,4 @@ If more description is needed, a progress stepper with descriptions can be used 
 
 ## Interaction states
 
-At this time, none of the steps are interactive so there are no interaction states.
+Coming soon
