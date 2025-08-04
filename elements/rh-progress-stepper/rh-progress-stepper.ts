@@ -69,7 +69,7 @@ export class RhProgressStepper extends LitElement {
   @property({ reflect: true }) orientation: ProgressStepsOrientation = 'horizontal';
 
   /**
-   * Setting `compact` will remove...
+   * Makes element display as `compact`
    */
   @provide({ context: compactContext })
   @property({ reflect: true, type: Boolean }) compact = false;
@@ -82,7 +82,7 @@ export class RhProgressStepper extends LitElement {
   @state() private currentStep: RhProgressStep | null = null;
 
   /**
-   * Set when
+   * Set when ResizeObserver detects width is less than the breakpoint (default: `--rh-breakpoint-sm`)
    */
   @state() private mobile = true;
 
