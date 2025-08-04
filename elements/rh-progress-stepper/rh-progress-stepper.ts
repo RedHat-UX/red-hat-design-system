@@ -137,7 +137,7 @@ export class RhProgressStepper extends LitElement {
 
     return html`
     <div id="container" class="${classMap({ compact, vertical })}">
-      <strong id="current-step">${this.#contentString}</strong>
+      <strong ?hidden="${!compact}" id="current-step">${this.#contentString}</strong>
       <!-- Use this slot for \`<rh-progress-step>\` items -->
       <slot id="step-list" @change="${this.#onChange}"></slot>
     </div>
@@ -159,11 +159,12 @@ export class RhProgressStepper extends LitElement {
     // always, only take the last item in the list, in order to prevent having more
     // than one aria-current step, which is not approved of in the aria spec
     // see https://w3c.github.io/aria/#aria-current
-    const activeStep = Array.from(statefulSteps) .at(-1);
+    const activeStep = Array.from(statefulSteps).at(-1);
     this.currentStep = activeStep instanceof RhProgressStep ? activeStep : null;
     if (this.currentStep) {
       this.#contentString = '';
-      for (const node of this.currentStep.children) {
+      // Use childNodes instead of children to access both Element and Text nodes
+      for (const node of this.currentStep.childNodes) {
         if (node instanceof Element && !node.hasAttribute('slot')) {
           this.#contentString += node.textContent?.trim();
         } else if (node instanceof Text) {
