@@ -123,7 +123,11 @@
 
 /* Warning state styling */
 :host([state='warn']) {
-  --_step-color: light-dark(var(--rh-color-yellow-50), var(--rh-color-yellow-30));
+  --_step-color:
+    light-dark(
+        var(--rh-color-yellow-50, #b98412),
+        var(--rh-color-yellow-30, #ffcc17)
+      );
 
   #label {
     color: var(--_step-color);
