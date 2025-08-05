@@ -53,10 +53,18 @@ export class RhNavigationPrimaryItem extends LitElement {
 
   /**
    * Hides the element at various container query based breakpoints.
-   * Breakpoints available 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
+   * Breakpoints available '2xs', 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
    */
   @property({ reflect: true, attribute: 'hide-at' })
-  hideAt?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' = undefined;
+  hideAt?: '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' = undefined;
+
+  /**
+   * Secondary slotted menus go from full screen to fit content
+   * at container query based breakpoints. Defaults to 'lg' (1200px)
+   * Breakpoints available 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
+   */
+  @property({ reflect: true, attribute: 'menu-fit-content-at' })
+  menuFitContentAt?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' = undefined;
 
   /** Shorthand for the `icon` slot, the value is icon name */
   @property() icon?: IconNameFor<IconSetName>;
@@ -90,6 +98,7 @@ export class RhNavigationPrimaryItem extends LitElement {
     const { variant = '' } = this;
     const compact = this.compact ?? true;
     const hamburger = (!this.getAttribute('slot'));
+    const { menuFitContentAt = '' } = this;
     return html`
       <div id="container" class="${classMap({
       [variant]: true,
@@ -107,7 +116,10 @@ export class RhNavigationPrimaryItem extends LitElement {
             <div id="summary-text"><slot name="summary">${this.summary}</slot></div>
             <rh-icon icon="caret-down" set="microns"></rh-icon>
           </summary>
-          <rh-navigation-primary-item-menu id="details-content">
+          <rh-navigation-primary-item-menu id="details-content" 
+              class="${classMap({
+                [`fit-content-at-${menuFitContentAt}`]: menuFitContentAt && !hamburger,
+              })}">
             <slot></slot>
           </rh-navigation-primary-item-menu>
         </details>` : html`
