@@ -52,6 +52,40 @@ or anything else, please submit a [GitHub issue][issues].
   <a slot="headline" href="https://github.com/RedHat-UX/red-hat-design-system/releases">Changelog</a>
 </rh-tile>
 
+<section aria-labelledby="version-3.1.0">
+
+## Version 3.1.0
+Released August 6, 2025
+
+### Highlights
+
+<rh-table>
+
+| Change        | Type        | Notes        |
+| ------------- | ----------- | ------------ |
+| ✨ Added `<rh-scheme-toggle>` | {{i()}} | A toggle to switch between light, dark and system default color schemes. |
+| ✨ Added `<rh-progress-stepper>` | {{i()}} | Progress stepper communicates how many steps are required to complete a process. |
+| ✨ Added `<rh-skeleton>` | {{i()}} | A skeleton loader is a placeholder for content that is loading. |
+| `<rh-navigation-primary>`: improved logo rendering | {{i()}} | Default logo is now bi-modal auto adjusting text color to light or dark scheme. For more control, use the existing [`logo` slot](https://ux.redhat.com/elements/navigation-primary/code/#slots). |
+| `<rh-code-block>`: added the `line-numbers="hidden"` attribute | {{i()}} | Line numbers can now be hidden. |
+| `<rh-tag>`: add disabled, hover, focus, and active states to linked tags | {{i()}} | Linked `<rh-tag>` elements now have hover, focus, active, and disabled states. |
+| `<rh-breadcrumb>`: added the `truncate` attribute | {{i()}} | When the `truncate` attribute is present, the middle breadcrumb items are hidden until the user interacts with them. |
+| `<rh-code-block>`: performance improvements | {{p()}} | Improved performance when `line-numbers="hidden"` attribute is present. |
+| `<rh-tag>`: color contrast improvements | {{p()}} | Improved color contrast of gray tags on dark color schemes. |
+| `<rh-footer>`: removed console warnings | {{p()}} | Removed console warnings in `<rh-footer>`. |
+| `<rh-tabs>`: corrected background styles | {{p()}} | Corrected background styles inherited from parent color-scheme and host color-palette. |
+| `<rh-alert>`: fixed case-sensitivity on `state` attribute | {{p()}} | Made `state` attribute case-insensitive. |
+| `<rh-footer>`: removed "Inc" from copyright | {{p()}} | Removed "Inc" from copyright in `<rh-footer>`. |
+| Improved accessibility of links | {{p()}} | Inline links should show a dashed underline in accordance to our [inline link style guidelines](https://ux.redhat.com/foundations/interactions/links/#inline-links). |
+| `<rh-card>`: allow card to accept all six color palettes | {{p()}} | `<rh-card>` now works with all six [color palettes](https://ux.redhat.com/theming/color-palettes/). |
+| `<rh-footer>`: corrected height style | {{p()}} | Corrected height style when JavaScript is not available |
+
+</rh-table>
+
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v3.1.0">View all version 3.1 release notes</rh-cta>
+
+</section>
+
 <section aria-labelledby="version-3.0.0">
 
 ### Patches from version 3.0.4
