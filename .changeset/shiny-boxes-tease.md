@@ -3,4 +3,3 @@
 ---
 
 `<rh-tabs>`: corrected vertical layout styles
-  
