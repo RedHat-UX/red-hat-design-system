@@ -82,10 +82,6 @@
   </article>
 </div>
 
-<script type="module">
-  import '@rhds/elements/rh-jump-links/rh-jump-links.js';
-</script>
-
 <style>
   .grid {
     display: grid;
@@ -136,7 +132,15 @@
 
   [id^="sub-chapter-"] {
     min-height: 200px;
+    height: calc(200px + var(--random, 1) * 200px);
     background-color: #0F02;
     margin-inline-start: var(--rh-space-2xl);
   }
 </style>
+
+<script type="module">
+  import '@rhds/elements/rh-jump-links/rh-jump-links.js';
+  for (const el of document.querySelectorAll('[id^="sub-chapter-"]'))
+    el.style.setProperty('--random', Math.random());
+</script>
+
