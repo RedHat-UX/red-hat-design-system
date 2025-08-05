@@ -33,7 +33,7 @@ await writeFile('custom-elements.json', JSON.stringify({
     declarations: module.declarations?.map(decl => ({
       ...decl,
       demos:
-          !isCustomElementDeclaration(decl) ? decl
+          !isCustomElementDeclaration(decl) ? undefined
         : decl.demos?.map(demo => isMainDemo(demo) ? ({
           ...demo,
           url: `https://ux.redhat.com/elements/${getSlug(demo)}/demo/`,
