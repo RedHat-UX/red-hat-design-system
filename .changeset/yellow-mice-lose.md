@@ -2,5 +2,4 @@
 "@rhds/elements": patch
 ---
 
-`<rh-footer>`: corrected height style when javascript is not available'
-  
+`<rh-footer>`: corrected height style when JavaScript is not available
