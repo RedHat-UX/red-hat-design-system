@@ -1,6 +1,5 @@
 import { expect, html } from '@open-wc/testing';
 import { createFixture } from '@patternfly/pfe-tools/test/create-fixture.js';
-import { a11ySnapshot } from '@patternfly/pfe-tools/test/a11y-snapshot.js';
 
 import { RhProgressStepper, RhProgressStep } from '@rhds/elements/rh-progress-stepper/rh-progress-stepper.js';
 
