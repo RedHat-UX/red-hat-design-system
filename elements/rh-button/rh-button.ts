@@ -21,11 +21,6 @@ import styles from './rh-button.css';
  * @summary Triggers actions on the page or in the background
  *
  * @alias button
- *
- * @csspart button - Internal button element
- * @csspart icon - Container for the icon slot
- * @slot icon - Contains the button's icon or state indicator, e.g. a spinner.
- * @slot - Contains button text
  */
 @customElement('rh-button')
 @themable
@@ -105,6 +100,7 @@ export class RhButton extends LitElement {
     const { danger, variant } = this;
     const hasIcon = this.#hasIcon;
     return html`
+      <!-- Internal button element -->
       <button aria-label="${ifDefined(this.label)}"
               class="${classMap({
                 danger,
@@ -117,11 +113,17 @@ export class RhButton extends LitElement {
               @click="${this.#onClick}"
               aria-disabled=${String(!!this.disabled || !!this.#internals.formDisabled) as 'true' | 'false'}>
         <span aria-hidden="true">
+          <!--
+            slot:
+              description: Contains the button's icon or state indicator, e.g. a spinner.
+            part:
+              description: Container for the icon slot
+          -->
           <slot id="icon"
                 part="icon"
                 name="icon">${this.#renderIcon()}</slot>
         </span>
-        <span aria-hidden=${String(!!this.label) as 'true' | 'false'}><slot id="text" ></slot></span>
+        <span aria-hidden=${String(!!this.label) as 'true' | 'false'}><!-- Contains button text --><slot id="text" ></slot></span>
       </button>
     `;
   }

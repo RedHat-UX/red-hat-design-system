@@ -7,11 +7,16 @@ a {
   display: inline-flex;
   align-items: center;
   position: relative;
-  padding:
+  padding-block:
+    /** The padding at the start of the direction perpendicular to the flow of the text. */
     var(--rh-tag-padding-block-start, var(--rh-space-xs, 4px))
-    var(--rh-tag-padding-inline-end, var(--rh-space-md, 8px))
-    var(--rh-tag-padding-block-end, var(--rh-space-xs, 4px))
-    var(--rh-tag-padding-inline-start, var(--rh-space-md, 8px));
+    /** The padding at the end of the direction perpendicular to the flow of the text. */
+    var(--rh-tag-padding-block-end, var(--rh-space-xs, 4px));
+  padding-inline:
+    /** The padding at the start of the direction parallel to the flow of the text. */
+    var(--rh-tag-padding-inline-start, var(--rh-space-md, 8px))
+    /** The padding at the end of the direction parallel to the flow of the text. */
+    var(--rh-tag-padding-inline-end, var(--rh-space-md, 8px));
   gap: var(--rh-space-xs, 4px);
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
   font-weight: var(--rh-font-weight-body-text-regular, 400);

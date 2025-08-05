@@ -36,19 +36,6 @@ interface CodeLineHeightsInfo {
  * @summary Formats code strings within a container
  *
  * @alias code-block
- *
- * @slot - A non-executable script tag containing the sample content. JavaScript
- *         samples should use the type `text/sample-javascript`. HTML samples
- *         containing script tags must escape the closing `</script>` tag. Can
- *         also be a `<pre>` tag.
- * @slot action-label-copy - tooltip content for the copy action button
- * @slot action-label-wrap - tooltip content for the wrap action button
- * @slot show-more - text content for the expandable toggle button when the code
- *                   block is collapsed.
- * @slot show-less - text content for the expandable toggle button when the code
- *                   block is expanded.
- * @slot legend - `<dl>` element containing rh-badges in the `<dt>`
- *                and legend text in the `<dd>` elements
  */
 @customElement('rh-code-block')
 @themable
@@ -201,6 +188,12 @@ export class RhCodeBlock extends LitElement {
           <pre id="prism-output"
                class="language-${this.language}"
                ?hidden="${!this.#prismOutput}">${this.#prismOutput}</pre>
+          <!--
+            A non-executable script tag containing the sample content. JavaScript
+            samples should use the type \`text/sample-javascript\`. HTML samples
+            containing script tags must escape the closing \`</script>\` tag. Can
+            also be a \`<pre>\` tag.
+          -->
           <slot id="content"
                 ?hidden="${!!this.#prismOutput}"
                 @slotchange="${this.#onSlotChange}"></slot>
@@ -211,9 +204,11 @@ export class RhCodeBlock extends LitElement {
              @keyup="${this.#onActionsKeyup}">
         ${this.actions.map(x => html`
           <rh-tooltip>
+            <!-- tooltip content for the copy action button -->
             <slot id="label" slot="content" name="action-label-${x}">${x === 'copy' ? html`
               <span>Copy to Clipboard</span>
               <span hidden data-code-block-state="active">Copied!</span>` : html`
+              <!-- tooltip content for the wrap action button -->
               <span>Toggle word wrap</span>
               <span hidden data-code-block-state="active">Toggle overflow</span>`}
             </slot>
@@ -230,7 +225,9 @@ export class RhCodeBlock extends LitElement {
                 aria-controls="content-lines"
                 aria-expanded="${String(!!fullHeight) as 'true' | 'false'}"
                 @click="${this.#onClickExpand}">
+          <!-- text content for the expandable toggle button when the code block is collapsed. -->
           <slot name="show-more" ?hidden="${this.fullHeight}">Show more</slot>
+          <!-- text content for the expandable toggle button when the code block is expanded. -->
           <slot name="show-less" ?hidden="${!this.fullHeight}">Show less</slot>
           <svg xmlns="http://www.w3.org/2000/svg"
                fill="currentColor"
@@ -240,6 +237,7 @@ export class RhCodeBlock extends LitElement {
         </button>
       </div>
 
+      <!-- \`<dl>\` element containing rh-badges in the \`<dt>\` and legend text in the \`<dd>\` elements -->
       <slot name="legend" ?hidden="${this.#slots.isEmpty('legend')}"></slot>
     `;
   }

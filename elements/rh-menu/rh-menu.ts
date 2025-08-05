@@ -22,8 +22,6 @@ export class MenuToggleEvent extends Event {
  * Menu
  *
  * @alias menu
- *
- * @slot - menu items
  */
 @customElement('rh-menu')
 @themable
@@ -61,6 +59,7 @@ export class RhMenu extends LitElement {
 
   render() {
     return html`
+      <!-- menu items -->
       <slot part="menu"
             @slotchange="${this.#onSlotchange}"></slot>
     `;

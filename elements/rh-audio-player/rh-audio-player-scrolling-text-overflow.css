@@ -19,6 +19,7 @@
   flex: 1 0 auto;
   overflow-y: visible;
 
+  /** color of fade effect (should match background) */
   --_fade-color:
     light-dark(var(--rh-audio-player-scrolling-text-overflow-background-color,
       var(--rh-color-surface-lightest, #ffffff)),
