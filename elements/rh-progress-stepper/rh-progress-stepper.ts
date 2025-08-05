@@ -86,6 +86,11 @@ export class RhProgressStepper extends LitElement {
    */
   @state() private mobile = true;
 
+  /**
+   * Set to match current step's `state`
+   */
+  @state() private currentState = '';
+
   /** normalized string content of the current step */
   #contentString = '';
 
@@ -134,9 +139,10 @@ export class RhProgressStepper extends LitElement {
   render(): TemplateResult<1> {
     const compact = this.compact ?? false;
     const vertical = this.orientation === 'vertical' || this.mobile;
+    const currentState = this.currentState || '';
 
     return html`
-    <div id="container" class="${classMap({ compact, vertical })}">
+    <div id="container" class="${classMap({ compact, vertical, [currentState]: true })}">
       <strong ?hidden="${!compact}" id="current-step">${this.#contentString}</strong>
       <!-- Use this slot for \`<rh-progress-step>\` items -->
       <slot id="step-list" @change="${this.#onChange}"></slot>
@@ -151,7 +157,8 @@ export class RhProgressStepper extends LitElement {
   }
 
   #updateState() {
-    // all steps with [state=active], fail or warn
+    // all steps with `[state=active]`, `fail` or `warn`
+    // `[state=complete]` is not a stateful step, since `complete` is always a past step
     const statefulSteps =
       this.querySelectorAll(
         'rh-progress-step:is([state="active"], [state="fail"], [state="warn"])'
@@ -162,6 +169,7 @@ export class RhProgressStepper extends LitElement {
     const activeStep = Array.from(statefulSteps).at(-1);
     this.currentStep = activeStep instanceof RhProgressStep ? activeStep : null;
     if (this.currentStep) {
+      this.currentState = this.currentStep.getAttribute('state') || '';
       this.#contentString = '';
       // Use childNodes instead of children to access both Element and Text nodes
       for (const node of this.currentStep.childNodes) {

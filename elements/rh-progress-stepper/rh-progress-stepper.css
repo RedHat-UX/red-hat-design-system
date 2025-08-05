@@ -6,8 +6,14 @@
 }
 
 :host {
-  --_step-line-color: var(--rh-color-border-subtle);
+  --_step-line-color: var(--rh-color-border-strong);
+  --_current-step-color: var(--rh-color-status-disabled, #6a6e73);
+  --_current-step-label-color: var(--rh-color-text-primary);
   --_step-line-angle: -180deg; /* sets the line direction between steps to horizontal */
+  --_step-line-position-block: 0 100%;
+  --_step-line-position-inline: calc(calc(100% - var(--_step-icon-width)) * -1) 100%;
+  --_step-line-size-inline: calc(100% - var(--_step-icon-width));
+  --_step-line-size-block: 100%;
   --_step-template-areas:
     'icon line'
     'label label'
@@ -22,7 +28,7 @@
   --_step-compact-grid-row: 2;
   --_step-description-margin: inherit;
   --_step-align-items: center;
-  --_step-icon-width: calc(var(--rh-length-xl, 24px) + 4px);
+  --_step-icon-width: calc(var(--rh-size-icon-02, 24px) + 4px);
 
   container-type: inline-size;
   display: block;
@@ -55,17 +61,28 @@
   padding: 0;
   position: absolute;
   white-space: nowrap;
+  color: var(--_current-step-label-color);
+  font-weight: var(--_current-step-weight, var(--rh-font-weight-body-text-medium, 500));
 
   /* End Visual Hiding */
 }
 
-::slotted(rh-progress-step:last-of-type) {
+::slotted(rh-progress-step:first-of-type) {
   --_step-line-style: none;
+}
+
+::slotted([state='inactive']),
+::slotted(:not([state])) {
+  --_step-line-color: var(--rh-color-border-subtle) !important;
 }
 
 /* Vertical orientation styles */
 .vertical {
   --_step-line-angle: 90deg; /* sets the line direction between steps to vertical */
+  --_step-line-position-block: calc(calc(100% - var(--_step-icon-width)) * -1) 100%;
+  --_step-line-position-inline: 0 100%;
+  --_step-line-size-inline: 100%;
+  --_step-line-size-block: calc(100% - var(--_step-icon-width));
   --_step-template-areas:
     'icon label'
     'line description';
@@ -121,39 +138,36 @@
 
     grid-column: 1 / -1;
     grid-row: 1;
-    color: var(--_current-step-color, #6a6e73);
-    font-weight: var(--_current-step-weight, var(--rh-font-weight-body-text-medium, 500));
   }
 }
 
-/* State-based color and weight variations for compact progress stepper */
-:host([state='inactive']) {
-  --_current-step-color: var(--_color-text-disabled, #6a6e73);
+/* State-based color and weight variations for compact <rh-progress-stepper> */
+.inactive {
+  --_current-step-color: var(--rh-color-status-disabled, #6a6e73);
 }
 
-:host([state='active']) {
+.active {
   --_current-step-color: var(--rh-color-status-note);
 }
 
-:host([state='complete']) {
+.complete {
   --_current-step-color: var(--rh-color-status-success);
 }
 
-:host([state='warn']) {
+.warn {
   --_current-step-color:
     light-dark(
         var(--rh-color-yellow-50, #b98412),
         var(--rh-color-yellow-30, #ffcc17)
       );
+  --_current-step-label-color:
+    light-dark(
+        var(--rh-color-yellow-60, #96640f),
+        var(--rh-color-yellow-20, #ffe072)
+      ) !important;
 }
 
-:host([state='fail']) {
+.fail {
   --_current-step-color: var(--rh-color-status-danger);
-}
-
-:host([state='warn']),
-:host([state='fail']),
-:host([state='active']),
-:host([aria-current='step']) {
-  --_current-step-weight: var(--rh-font-weight-body-text-medium, 500);
+  --_current-step-label-color: var(--rh-color-status-danger) !important;
 }
