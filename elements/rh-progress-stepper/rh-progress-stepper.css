@@ -7,7 +7,7 @@
 
 :host {
   --_step-line-color: var(--rh-color-border-strong);
-  --_current-step-color: var(--rh-color-status-disabled, #6a6e73);
+  --_current-step-color: var(--_rh-color-status-disabled, #6a6e73);
   --_current-step-label-color: var(--rh-color-text-primary);
   --_step-line-angle: -180deg; /* sets the line direction between steps to horizontal */
   --_step-line-position-block: 0 100%;
@@ -143,7 +143,7 @@
 
 /* State-based color and weight variations for compact <rh-progress-stepper> */
 .inactive {
-  --_current-step-color: var(--rh-color-status-disabled, #6a6e73);
+  --_current-step-color: var(--_rh-color-status-disabled, #6a6e73);
 }
 
 .active {
