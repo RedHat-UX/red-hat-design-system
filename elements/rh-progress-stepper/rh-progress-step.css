@@ -16,7 +16,9 @@
   --_step-color: var(--rh-color-text-primary);
   --_step-label-color: var(--rh-color-text-primary);
 
-  container-type: inline-size;
+  @container (width > 992px) {
+    --_step-compact-horizontal-padding: var(--rh-length-5xl, 80px);
+  }
 }
 
 #container {
@@ -38,11 +40,7 @@
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
   font-size: var(--rh-font-size-body-text-md, 1rem);
   font-style: normal;
-  line-height: 1.5; /* 150% */
-
-  @container (min-width: 992px) {
-    padding-inline-end: var(--_step-compact-horizontal-padding, var(--rh-length-5xl, 80px));
-  }
+  line-height: 1.5;
 
   &:before {
     position: absolute;
@@ -92,6 +90,7 @@
 #description {
   grid-area: description;
   display: grid;
+  align-self: start;
   margin: 0;
   grid-column: var(--_step-description-grid-column, 1);
   font-weight: var(--rh-font-weight-body-text-regular, 400);

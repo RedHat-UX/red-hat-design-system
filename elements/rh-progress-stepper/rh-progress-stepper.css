@@ -15,9 +15,9 @@
   --_step-line-size-inline: calc(100% - var(--_step-icon-width));
   --_step-line-size-block: 100%;
   --_step-template-areas:
-    'icon line'
-    'label label'
-    'description description';
+    'icon'
+    'label'
+    'description';
   --_step-template-columns: auto;
   --_step-template-rows: calc(var(--rh-length-xl, 24px) + 4px) auto 1fr;
   --_step-justify-self: baseline;
@@ -47,7 +47,7 @@
 
   /* Horizontal orientation styles */
   grid-auto-flow: column;
-  grid-auto-columns: var(--_stepper-grid-auto-column);
+  grid-auto-columns: var(--_stepper-grid-auto-column, 1fr);
 }
 
 #current-step {
@@ -91,7 +91,6 @@
   --_step-justify-self: start;
   --_step-icon-justify-self: center;
   --_step-description-grid-column: 2;
-  --_step-compact-horizontal-padding: 0;
   --_step-compact-vertical-padding: var(--rh-length-2xl, 32px);
   --_step-column-gap: var(--rh-length-lg, 16px);
   --_step-row-gap: var(--rh-length-xs, 4px);
@@ -100,14 +99,17 @@
   & #step-list {
     grid-auto-flow: row;
   }
+
+  & ::slotted(rh-progress-step) {
+    --_step-compact-horizontal-padding: 0;
+  }
 }
 
 /* Compact view styles */
 .compact {
   grid-template-rows: auto;
 
-  --_step-template-areas: 'icon line';
-  --_stepper-grid-auto-column: 50px;
+  --_step-template-areas: 'icon';
   --_step-grid-row: var(--_step-compact-grid-row);
   --_step-template-rows: auto;
   --_step-compact-vertical-padding: 0;
@@ -115,11 +117,20 @@
   --_step-template-columns: var(--_step-icon-width);
   --_step-row-gap: 0;
   --_step-column-gap: 0;
+  --_stepper-grid-auto-column:
+    calc(
+        var(--_step-icon-width) + var(--_step-compact-horizontal-padding)
+      );
 
   &.vertical {
     --_step-template-areas: 'icon' 'line';
     --_step-compact-horizontal-padding: 0;
     --_step-compact-vertical-padding: var(--rh-length-lg, 16px);
+  }
+
+  & ::slotted(rh-progress-step) {
+    /* set again to override container query in rh-progress-step */
+    --_step-compact-horizontal-padding: var(--rh-length-lg, 16px);
   }
 
   & #current-step {
