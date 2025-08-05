@@ -45,7 +45,6 @@ export class RhJumpLinks extends LitElement {
   #onScroll = this.#overflow.onScroll.bind(this);
 
   #spy = new ScrollSpyController(this, {
-    rootMargin: '0px 0px 0px 0px',
     tagNames: ['rh-jump-link'],
     onIntersection: () => {
       for (const list of this.querySelectorAll('rh-jump-links-list')) {
