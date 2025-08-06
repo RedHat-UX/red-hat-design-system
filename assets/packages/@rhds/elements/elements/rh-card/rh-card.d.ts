@@ -26,7 +26,6 @@ export declare class RhCard extends LitElement {
      * Change a promo with an image + body + footer to use the `full-width` style
      */
     fullWidth?: boolean | undefined;
-    willUpdate(): void;
     render(): import("lit-html").TemplateResult<1>;
 }
 declare global {

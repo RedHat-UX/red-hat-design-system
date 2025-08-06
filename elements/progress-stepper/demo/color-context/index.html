@@ -1,0 +1,185 @@
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/assets/logo-red-hat.svg">
+    <title>Color Context | Red Hat Design System</title>
+
+    <link rel="preconnect" href="https://ga.jspm.io">
+
+    <link rel="stylesheet" href="/styles/demo/styles.css" media="all">
+
+    <script type="importmap">{
+  "imports": {
+    "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
+    "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
+    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
+    "lit-html": "/assets/packages/lit-html/lit-html.js",
+    "tslib": "/assets/packages/tslib/tslib.es6.mjs",
+    "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
+    "lit-element": "/assets/packages/lit-element/index.js",
+    "prism-esm": "/assets/packages/prism-esm/prism.js",
+    "lit": "/assets/packages/lit/index.js",
+    "@rhds/tokens/css/default-theme.css.js": "/assets/packages/@rhds/tokens/css/default-theme.css.js",
+    "@rhds/tokens/css/color-palette.css.js": "/assets/packages/@rhds/tokens/css/color-palette.css.js",
+    "lit/decorators/custom-element.js": "/assets/packages/lit/decorators/custom-element.js",
+    "lit/decorators/property.js": "/assets/packages/lit/decorators/property.js",
+    "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
+    "lit/static-html.js": "/assets/packages/lit/static-html.js",
+    "@lit/context": "/assets/packages/@lit/context/index.js",
+    "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
+    "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
+    "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
+    "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.3/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
+    "lit/": "/assets/packages/lit/",
+    "lit-html/": "/assets/packages/lit-html/",
+    "prism-esm/": "/assets/packages/prism-esm/",
+    "@lit-labs/ssr-client/lit-element-hydrate-support.js": "/assets/packages/@lit-labs/ssr-client/lit-element-hydrate-support.js",
+    "@rhds/tokens/css/": "/assets/packages/@rhds/tokens/css/",
+    "@rhds/tokens/": "/assets/packages/@rhds/tokens/js/",
+    "@rhds/elements/lib/": "/assets/packages/@rhds/elements/lib/",
+    "@rhds/elements/": "/assets/packages/@rhds/elements/elements/",
+    "@rhds/icons": "/assets/packages/@rhds/icons/icons.js",
+    "@rhds/icons/": "/assets/packages/@rhds/icons/",
+    "@rhds/icons/icons.js": "/assets/packages/@rhds/icons/icons.js",
+    "@patternfly/elements/": "/assets/packages/@patternfly/elements/",
+    "@patternfly/icons/": "/assets/packages/@patternfly/icons/",
+    "@patternfly/pfe-core/": "/assets/packages/@patternfly/pfe-core/",
+    "@uxdot/elements/": "/assets/packages/@uxdot/elements/"
+  },
+  "scopes": {
+    "/assets/packages/": {
+      "@floating-ui/utils": "https://ga.jspm.io/npm:@floating-ui/utils@0.2.10/dist/floating-ui.utils.mjs",
+      "@floating-ui/utils/dom": "https://ga.jspm.io/npm:@floating-ui/utils@0.2.10/dist/floating-ui.utils.dom.mjs",
+      "@lit/reactive-element/decorators/": "/assets/packages/@lit/reactive-element/decorators/",
+      "lit-element/lit-element.js": "/assets/packages/lit-element/lit-element.js",
+      "lit-html/": "/assets/packages/lit-html/",
+      "lit/": "/assets/packages/lit/"
+    }
+  }
+}</script>
+
+    
+      <script type="module">
+    // although we load these ssr support modules elsewhere, we still
+    // need them here to ensure no double-rendering on webkit
+    import '/assets/javascript/ssr-support.js';
+    // include these, which are often internal to elements,
+    // and are definitely required by context-picker and context-demo
+    // to avoid SSR defer-hydration bugs and SSR double-rendering bugs
+    import '@rhds/elements/rh-icon/rh-icon.js';
+    import '@rhds/elements/rh-surface/rh-surface.js';
+    import '@rhds/elements/rh-button/rh-button.js';
+    import '@rhds/elements/rh-tooltip/rh-tooltip.js';
+    import '@rhds/elements/rh-tag/rh-tag.js';
+  </script>
+
+
+    <script type="module">
+      // load up the demo and picker
+      import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
+      import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
+    </script>
+
+    <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
+  </head>
+  <body>
+    <main><rh-context-demo>
+  <rh-context-picker    id="picker" target="navigation" allow="darkest, lightest"><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline-flex;position:relative}*{box-sizing:border-box}#container{display:contents;--thumb-color:var(--rh-color-interactive-primary-default)}.darkest{--c:var(--rh-color-surface-darkest,#151515)}.darker{--c:var(--rh-color-surface-darker,#1f1f1f)}.dark{--c:var(--rh-color-surface-dark,#383838)}.light{--c:var(--rh-color-surface-light,#e0e0e0)}.lighter{--c:var(--rh-color-surface-lighter,#f2f2f2)}.lightest{--c:var(--rh-color-surface-lightest,#fff)}:is(.dark,.darker,.darkest){--alt-color:var(--rh-color-surface-light,#e0e0e0)}:is(.light,.lighter,.lightest){--alt-color:var(--rh-color-surface-dark,#383838)}:is(:focus,:hover){--alt-color:var(--thumb-color)}input{appearance:none;border-radius:50%;display:block;height:var(--rh-size-icon-03,32px);margin-block:8px;margin-inline:4px;position:relative;width:var(--rh-size-icon-03,32px)}input:before{background:var(--c);inset:0;outline:var(--alt-color) solid 2px}input:before,input:checked:after{border-radius:50%;content:"";display:block;position:absolute}input:checked:after{background:var(--alt-color);inset:6px}input:focus{outline:var(--thumb-color) solid 4px}label,rh-tooltip span{text-transform:capitalize}.visually-hidden{left:0;overflow:hidden;position:fixed;top:0;clip:rect(0,0,0,0);border:0;white-space:nowrap}</style><!--lit-part Z/qYP/881j0=-->
+      <div id="host-label"
+           class="visually-hidden"><!--lit-part--><!--/lit-part--></div>
+      <!--lit-node 2--><div id="container"
+           >
+        <!--lit-part--><!--lit-part CvB6VummPTo=-->
+        <!--lit-node 0--><label for="radio-darkest" class="visually-hidden"><!--lit-part-->darkest<!--/lit-part--></label>
+        <!--lit-node 2--><rh-tooltip defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline}#container{display:inline-flex;max-width:100%;position:relative;--_floating-arrow-size:var(--rh-tooltip-arrow-size,var(--rh-tooltip__arrow--Width,11px))}#tooltip,#tooltip:after{position:absolute}#tooltip{background-color:light-dark(var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-lightest,#fff))),var(--rh-tooltip-content-background-color,var(--rh-color-surface-darkest,#151515)));border-radius:var(--rh-border-radius-default,3px);box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 #15151533);color:light-dark(var(--rh-tooltip-content-color,var(--rh-tooltip__content--Color,var(--rh-color-text-primary-on-light,#151515))),var(--rh-tooltip-content-color,var(--rh-color-text-primary-on-dark,#fff)));display:none;font-size:var(--rh-tooltip-content-font-size,var(--rh-tooltip__content--FontSize,var(--rh-font-size-body-text-sm,.875rem)));inset-block-start:0;inset-inline-start:0;line-height:var(--rh-line-height-body-text,1.5);max-width:var(--rh-tooltip-max-width,var(--rh-tooltip--MaxWidth,18.75rem)
+    );opacity:0;padding-block:var(--rh-tooltip-content-padding-block-start,var(--rh-tooltip__content--PaddingTop,var(--rh-space-lg,16px))) var(--rh-tooltip-content-padding-block-end,var(--rh-tooltip__content--PaddingBottom,var(--rh-space-lg,16px)));padding-inline:var(--rh-tooltip-content-padding-inline-start,var(--rh-tooltip__content--PaddingLeft,var(--rh-space-lg,16px))) var(--rh-tooltip-content-padding-inline-end,var(--rh-tooltip__content--PaddingRight,var(--rh-space-lg,16px)));pointer-events:none;text-align:var(--_text-alignment,center);transition:opacity .3s cubic-bezier(.54,1.5,.38,1.11) 0s;translate:var(--_floating-content-translate);width:max-content;will-change:opacity;word-break:break-word;z-index:10000;&.dark{color-scheme:dark}&.light{color-scheme:light}}.initialized #tooltip{display:block}#tooltip:after{background-color:light-dark(var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-lightest,#fff))),var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-darkest,#151515))));content:"";display:block;height:var(--_floating-arrow-size);rotate:45deg;width:var(--_floating-arrow-size);will-change:left top right bottom}.open #tooltip{opacity:1}.left #tooltip:after{inset-inline-start:calc(var(--_floating-arrow-size)*-.5)}.top #tooltip:after{inset-block-start:calc(100% - var(--_floating-arrow-size)*.5)}.right #tooltip:after{inset-inline-end:calc(100% - var(--_floating-arrow-size)*.5)}.bottom #tooltip:after{inset-block-end:calc(100% - var(--_floating-arrow-size)*.5)}.left.center #tooltip:after{inset-block-start:calc(50% - var(--_floating-arrow-size)*.5)}.top.center #tooltip:after{inset-inline-end:calc(50% - var(--_floating-arrow-size)*.5)}.right.center #tooltip:after{inset-block-start:calc(50% - var(--_floating-arrow-size)*.5)}.bottom.center #tooltip:after{inset-inline-end:calc(50% - var(--_floating-arrow-size)*.5)}.left.start #tooltip:after{inset-block-start:var(--_floating-arrow-size)}.top.start #tooltip:after{inset-inline-start:var(--_floating-arrow-size)}.right.start #tooltip:after{inset-block-start:var(--_floating-arrow-size)}.bottom.start #tooltip:after{inset-inline-start:var(--_floating-arrow-size)}.left.end #tooltip:after{inset-block-end:var(--_floating-arrow-size)}.top.end #tooltip:after{inset-inline-end:var(--_floating-arrow-size)}.right.end #tooltip:after{inset-block-end:var(--_floating-arrow-size)}.bottom.end #tooltip:after{inset-inline-end:var(--_floating-arrow-size)}:host([position=left]),:host([position=right]){--_text-alignment:"start"}</style><!--lit-part Z7PEsgFOJso=-->
+      <!--lit-node 0--><div id="container"
+           style=""
+           class=" center ">
+        <div id="invoker">
+          <!--
+            Place invoking element here,
+            i.e. the element which when hovered the tooltip will display.
+            Must be inline content.
+          -->
+          <slot id="invoker-slot"></slot>
+        </div>
+        <!--lit-node 4--><div id="tooltip" role="status" class=" dark ">
+          <!-- Place tooltip content here. Overrides the `content` attribute. -->
+          <slot id="content" name="content"><!--lit-part--><!--/lit-part--></slot>
+        </div>
+      </div>
+    <!--/lit-part--></template>
+          <span slot="content"><!--lit-part-->darkest<!--/lit-part--></span>
+          <!--lit-node 5--><input id="radio-darkest"
+                 class=" darkest "
+                 name="palette"
+                 type="radio"
+                 value="darkest"
+                 aria-describedby="host-label"
+                 checked>
+        </rh-tooltip><!--/lit-part--><!--lit-part CvB6VummPTo=-->
+        <!--lit-node 0--><label for="radio-lightest" class="visually-hidden"><!--lit-part-->lightest<!--/lit-part--></label>
+        <!--lit-node 2--><rh-tooltip defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{display:inline}#container{display:inline-flex;max-width:100%;position:relative;--_floating-arrow-size:var(--rh-tooltip-arrow-size,var(--rh-tooltip__arrow--Width,11px))}#tooltip,#tooltip:after{position:absolute}#tooltip{background-color:light-dark(var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-lightest,#fff))),var(--rh-tooltip-content-background-color,var(--rh-color-surface-darkest,#151515)));border-radius:var(--rh-border-radius-default,3px);box-shadow:var(--rh-box-shadow-sm,0 2px 4px 0 #15151533);color:light-dark(var(--rh-tooltip-content-color,var(--rh-tooltip__content--Color,var(--rh-color-text-primary-on-light,#151515))),var(--rh-tooltip-content-color,var(--rh-color-text-primary-on-dark,#fff)));display:none;font-size:var(--rh-tooltip-content-font-size,var(--rh-tooltip__content--FontSize,var(--rh-font-size-body-text-sm,.875rem)));inset-block-start:0;inset-inline-start:0;line-height:var(--rh-line-height-body-text,1.5);max-width:var(--rh-tooltip-max-width,var(--rh-tooltip--MaxWidth,18.75rem)
+    );opacity:0;padding-block:var(--rh-tooltip-content-padding-block-start,var(--rh-tooltip__content--PaddingTop,var(--rh-space-lg,16px))) var(--rh-tooltip-content-padding-block-end,var(--rh-tooltip__content--PaddingBottom,var(--rh-space-lg,16px)));padding-inline:var(--rh-tooltip-content-padding-inline-start,var(--rh-tooltip__content--PaddingLeft,var(--rh-space-lg,16px))) var(--rh-tooltip-content-padding-inline-end,var(--rh-tooltip__content--PaddingRight,var(--rh-space-lg,16px)));pointer-events:none;text-align:var(--_text-alignment,center);transition:opacity .3s cubic-bezier(.54,1.5,.38,1.11) 0s;translate:var(--_floating-content-translate);width:max-content;will-change:opacity;word-break:break-word;z-index:10000;&.dark{color-scheme:dark}&.light{color-scheme:light}}.initialized #tooltip{display:block}#tooltip:after{background-color:light-dark(var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-lightest,#fff))),var(--rh-tooltip-content-background-color,var(--rh-tooltip__content--BackgroundColor,var(--rh-color-surface-darkest,#151515))));content:"";display:block;height:var(--_floating-arrow-size);rotate:45deg;width:var(--_floating-arrow-size);will-change:left top right bottom}.open #tooltip{opacity:1}.left #tooltip:after{inset-inline-start:calc(var(--_floating-arrow-size)*-.5)}.top #tooltip:after{inset-block-start:calc(100% - var(--_floating-arrow-size)*.5)}.right #tooltip:after{inset-inline-end:calc(100% - var(--_floating-arrow-size)*.5)}.bottom #tooltip:after{inset-block-end:calc(100% - var(--_floating-arrow-size)*.5)}.left.center #tooltip:after{inset-block-start:calc(50% - var(--_floating-arrow-size)*.5)}.top.center #tooltip:after{inset-inline-end:calc(50% - var(--_floating-arrow-size)*.5)}.right.center #tooltip:after{inset-block-start:calc(50% - var(--_floating-arrow-size)*.5)}.bottom.center #tooltip:after{inset-inline-end:calc(50% - var(--_floating-arrow-size)*.5)}.left.start #tooltip:after{inset-block-start:var(--_floating-arrow-size)}.top.start #tooltip:after{inset-inline-start:var(--_floating-arrow-size)}.right.start #tooltip:after{inset-block-start:var(--_floating-arrow-size)}.bottom.start #tooltip:after{inset-inline-start:var(--_floating-arrow-size)}.left.end #tooltip:after{inset-block-end:var(--_floating-arrow-size)}.top.end #tooltip:after{inset-inline-end:var(--_floating-arrow-size)}.right.end #tooltip:after{inset-block-end:var(--_floating-arrow-size)}.bottom.end #tooltip:after{inset-inline-end:var(--_floating-arrow-size)}:host([position=left]),:host([position=right]){--_text-alignment:"start"}</style><!--lit-part Z7PEsgFOJso=-->
+      <!--lit-node 0--><div id="container"
+           style=""
+           class=" center ">
+        <div id="invoker">
+          <!--
+            Place invoking element here,
+            i.e. the element which when hovered the tooltip will display.
+            Must be inline content.
+          -->
+          <slot id="invoker-slot"></slot>
+        </div>
+        <!--lit-node 4--><div id="tooltip" role="status" class=" dark ">
+          <!-- Place tooltip content here. Overrides the `content` attribute. -->
+          <slot id="content" name="content"><!--lit-part--><!--/lit-part--></slot>
+        </div>
+      </div>
+    <!--/lit-part--></template>
+          <span slot="content"><!--lit-part-->lightest<!--/lit-part--></span>
+          <!--lit-node 5--><input id="radio-lightest"
+                 class=" lightest "
+                 name="palette"
+                 type="radio"
+                 value="lightest"
+                 aria-describedby="host-label"
+                 >
+        </rh-tooltip><!--/lit-part--><!--/lit-part-->
+      </div>
+    <!--/lit-part--></template></rh-context-picker>
+  <rh-progress-stepper>
+    <rh-progress-step state="complete" description="This step has been completed successfully">
+      Complete Step
+    </rh-progress-step>
+    <rh-progress-step state="warn" description="This step has a warning that needs attention">
+      Warning Step
+    </rh-progress-step>
+    <rh-progress-step state="fail" description="This step has failed and needs to be retried">
+      Failed Step
+    </rh-progress-step>
+    <rh-progress-step state="active" description="Currently working on this step">
+      Active Step
+    </rh-progress-step>
+    <rh-progress-step state="inactive" description="This step is not yet started">
+      Inactive Step
+    </rh-progress-step>
+  </rh-progress-stepper>
+</rh-context-demo>
+
+<script type="module">
+  import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
+  import '@rhds/elements/rh-progress-stepper/rh-progress-stepper.js';
+</script>
+</main>
+
+
+</body></html>

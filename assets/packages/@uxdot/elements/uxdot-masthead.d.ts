@@ -1,5 +1,5 @@
 import { LitElement } from 'lit';
-import './uxdot-color-scheme-picker.js';
+import '@rhds/elements/rh-scheme-toggle/rh-scheme-toggle.js';
 export declare class UxdotMasthead extends LitElement {
     static styles: CSSStyleSheet[];
     version: string;

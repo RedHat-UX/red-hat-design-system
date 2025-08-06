@@ -12,7 +12,6 @@ import { ScreenSizeController } from '../../lib/ScreenSizeController.js';
  * @summary Displays secondary information at the bottom of a page
  *
  * @alias footer
- *
  */
 export declare class RhFooter extends LitElement {
     #private;

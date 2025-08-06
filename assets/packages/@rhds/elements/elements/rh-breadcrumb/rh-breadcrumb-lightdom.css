@@ -13,91 +13,142 @@ rh-breadcrumb {
   --_breadcrumb-link-focus-outline-color: var(--rh-color-border-interactive);
 
   display: block;
-}
 
-rh-breadcrumb ol {
-  container-type: inline-size;
-  container-name: breadcrumbs-list;
-  font-size: var(--rh-font-size-body-text-sm, 0.875rem);
-  line-height: var(--rh-line-height-body-text, 1.5);
-  margin-block: 0;
-  padding-inline-start: 0;
-}
+  & [hidden] {
+    display: none !important;
+  }
 
-rh-breadcrumb > ol > li {
-  display: inline-flex;
-  margin-block-end: var(--rh-space-md, 8px);
-  padding-inline-end: var(--rh-breadcrumb-li-padding-inline-end, var(--rh-space-lg, 16px));
-  vertical-align: bottom;
-  align-items: center;
-  gap: var(--rh-space-lg, 16px);
-}
+  & > ol {
+    container-type: inline-size;
+    container-name: breadcrumbs-list;
+    font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+    line-height: var(--rh-line-height-body-text, 1.5);
+    margin-block: 0;
+    padding-inline-start: 0;
 
-rh-breadcrumb > ol > li:not(:first-of-type):before {
-  display: inline-block;
-  background-color: var(--rh-color-icon-secondary);
-  mask-image: var(--_breadcrumb-caret-image-default);
-  mask-position: center center;
-  mask-repeat: no-repeat;
-  height: var(--rh-font-size-body-text-sm, 0.875rem);
-  width: var(--rh-font-size-body-text-sm, 0.875rem);
-  content: '';
-}
+    & > li {
+      display: inline-flex;
+      margin-block-end: var(--rh-space-md, 8px);
+      padding-inline-end: var(--rh-breadcrumb-li-padding-inline-end, var(--rh-space-lg, 16px));
+      vertical-align: bottom;
+      align-items: center;
+      gap: var(--rh-space-lg, 16px);
 
-rh-breadcrumb[variant='subtle'] > ol > li:not(:first-of-type):before {
-  background-color: var(--rh-color-icon-subtle, #707070);
-}
+      &:not(:first-of-type):before {
+        display: inline-block;
+        background-color: var(--rh-color-icon-secondary);
+        mask-image: var(--_breadcrumb-caret-image-default);
+        mask-position: center center;
+        mask-repeat: no-repeat;
+        block-size: var(--rh-font-size-body-text-sm, 0.875rem);
+        inline-size: var(--rh-font-size-body-text-sm, 0.875rem);
+        content: '';
+      }
 
-rh-breadcrumb > ol > li:first-child {
-  padding-inline-start: 0;
-}
+      &:first-child {
+        padding-inline-start: 0;
 
-rh-breadcrumb > ol > li:last-child {
-  background-image: none;
-}
+        & > a {
+          margin-inline-start: 0;
+        }
+      }
 
-rh-breadcrumb > ol > li,
-rh-breadcrumb > ol > li > a {
-  color: var(--_breadcrumb-link-color);
-}
+      &:last-child {
+        background-image: none;
+      }
 
-rh-breadcrumb > ol > li > a {
-  text-decoration: underline;
-}
+      /* stylelint-disable-next-line no-descending-specificity */
+      & > a {
+        text-decoration: none;
 
-rh-breadcrumb > ol > li > a:is(:hover, :focus, :active) {
-  color: var(--_breadcrumb-link-color-hover);
-}
+        &:is(:hover, :focus, :active) {
+          color: var(--_breadcrumb-link-color-hover);
+          text-decoration: underline var(--rh-border-width-sm, 1px) dashed;
+          text-decoration-color: inherit;
+          text-underline-offset: max(5px, 0.28em);
+          transition-timing-function: ease;
+          transition-property: text-underline-offset, color, text-decoration-color;
+          transition-duration: 0.3s;
+        }
 
-rh-breadcrumb > ol > li > a:is(:focus, :focus-visible) {
-  border-radius: var(--rh-border-radius-default, 3px);
-  outline: 2px solid var(--_breadcrumb-link-focus-outline-color);
-}
+        &:is(:focus, :focus-visible) {
+          border-radius: var(--rh-border-radius-default, 3px);
+          outline: 2px solid var(--_breadcrumb-link-focus-outline-color);
+        }
 
-rh-breadcrumb > ol > li:first-child > a {
-  margin-inline-start: 0;
-}
+        &:visited {
+          color: var(--_breadcrumb-link-color-visited);
+        }
 
-rh-breadcrumb > ol > li > a:visited {
-  color: var(--_breadcrumb-link-color-visited);
-}
+        &:visited:hover {
+          color: var(--_breadcrumb-link-color-visited-hover);
+          text-decoration: underline var(--rh-border-width-sm, 1px) dashed;
+          text-decoration-color: inherit;
+          text-underline-offset: max(5px, 0.28em);
+          transition-timing-function: ease;
+          transition-property: text-underline-offset, color, text-decoration-color;
+          transition-duration: 0.3s;
+        }
 
-rh-breadcrumb > ol > li > a:visited:hover {
-  color: var(--_breadcrumb-link-color-visited-hover);
-}
+        &[aria-current='page'] {
+          cursor: default;
+          pointer-events: none;
+        }
+      }
 
-rh-breadcrumb > ol > li:last-child,
-rh-breadcrumb > ol > li > a[aria-current='page'] {
-  color: var(--_breadcrumb-link-color-current-page);
-  text-decoration: none;
-}
+      &:last-child,
+      & > a[aria-current='page'] {
+        color: var(--_breadcrumb-link-color-current-page);
+        text-decoration: none;
+      }
+    }
 
-rh-breadcrumb > ol > li > a[aria-current='page'] {
-  cursor: default;
-  pointer-events: none;
-}
+    & > li,
+    & > li > a {
+      color: var(--_breadcrumb-link-color);
+    }
+  }
 
-rh-breadcrumb[variant='subtle'] > ol > li:last-child,
-rh-breadcrumb[variant='subtle'] > ol > li > a[aria-current='page'] {
-  color: var(--_breadcrumb-link-color-current-page-subtle);
+  &[variant='subtle'] > ol > li {
+    &:not(:first-of-type):before {
+      background-color: var(--rh-color-icon-subtle, #707070);
+    }
+
+    &:last-child,
+    & > a[aria-current='page'] {
+      color: var(--_breadcrumb-link-color-current-page-subtle);
+    }
+  }
+
+  & .truncate-btn {
+    background-color: transparent;
+    border: 0;
+    color: var(--_breadcrumb-link-color);
+    cursor: pointer;
+    min-inline-size: var(--rh-length-xl, 24px);
+    padding: 0;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      color: var(--_breadcrumb-link-color-hover);
+    }
+
+    &:focus {
+      border-radius: var(--rh-border-radius-default, 3px);
+      outline: 2px solid var(--_breadcrumb-link-focus-outline-color);
+    }
+
+    & .visually-hidden {
+      border: 0;
+      clip: rect(0, 0, 0, 0);
+      block-size: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      white-space: nowrap;
+      inline-size: 1px;
+    }
+  }
 }

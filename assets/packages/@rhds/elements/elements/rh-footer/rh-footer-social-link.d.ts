@@ -4,7 +4,6 @@ import { LitElement } from 'lit';
  * Social media links for Red Hat Footer
  */
 export declare class RhFooterSocialLink extends LitElement {
-    #private;
     static readonly styles: CSSStyleSheet;
     /** Icon for this social link e.g. `'facebook'` */
     icon?: IconNameFor<'social'>;

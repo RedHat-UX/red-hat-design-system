@@ -48,6 +48,8 @@ export declare class RhCodeBlock extends LitElement {
     fullHeight: boolean;
     /** When set, lines in the code snippet wrap */
     wrap: boolean;
+    /** When set to `hidden`, the code block's line numbers are hidden */
+    lineNumbers?: 'hidden';
     connectedCallback(): void;
     disconnectedCallback(): void;
     render(): import("lit-html").TemplateResult<1>;

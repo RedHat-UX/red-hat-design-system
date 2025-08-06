@@ -9,6 +9,8 @@ import { LitElement } from 'lit';
  *
  */
 export declare class RhBreadcrumb extends LitElement {
+    #private;
+    static readonly styles: CSSStyleSheet[];
     /**
      * Customize the default `aria-label` on the `<nav>` container.
      * Defaults to "Breadcrumb" if no attribute/property is set.
@@ -18,8 +20,12 @@ export declare class RhBreadcrumb extends LitElement {
      * Sets variants to breadcrumbs
      */
     variant?: 'subtle';
-    static readonly styles: CSSStyleSheet[];
+    /**
+   * Breadcrumbs over four items will be truncated and include a button to expand the middle breadcrumb items
+   */
+    truncate?: boolean | undefined;
     render(): import("lit-html").TemplateResult<1>;
+    firstUpdated(): void;
 }
 declare global {
     interface HTMLElementTagNameMap {

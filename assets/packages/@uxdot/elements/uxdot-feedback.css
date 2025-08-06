@@ -26,6 +26,9 @@ p {
 }
 
 a {
+  color:
+    light-dark(var(--rh-color-interactive-primary-default-on-light, #0066cc),
+      var(--rh-color-interactive-primary-default-on-dark, #92c5f9));
   text-decoration: underline dashed 1px;
   text-decoration-color: light-dark(var(--rh-color-gray-50), var(--rh-color-gray-40));
   text-underline-offset: max(5px, 0.28em);
