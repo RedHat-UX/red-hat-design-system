@@ -1,11 +1,10 @@
 import { LitElement, html, isServer, type TemplateResult } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-
+import { state } from 'lit/decorators/state.js';
 import { classMap } from 'lit/directives/class-map.js';
-
 import { provide } from '@lit/context';
-import { compactContext, currentStepContext } from './context.js';
+import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 
 import { themable } from '@rhds/elements/lib/themable.js';
 
@@ -19,12 +18,13 @@ import {
 } from '@rhds/tokens/media.js';
 
 import '@rhds/elements/rh-icon/rh-icon.js';
-import styles from './rh-progress-stepper.css';
-import { state } from 'lit/decorators/state.js';
 
+import { compactContext, currentStepContext } from './context.js';
 import { RhProgressStep, RhProgressStepChangeEvent } from './rh-progress-step.js';
-import { observes } from '@patternfly/pfe-core/decorators/observes.js';
+
 export * from './rh-progress-step.js';
+
+import styles from './rh-progress-stepper.css';
 
 type ProgressStepsOrientation = 'horizontal' | 'vertical';
 
@@ -39,7 +39,13 @@ const BREAKPOINTS = new Map(Object.entries({
 }));
 
 /**
- * A progress stepper conveys how many steps are required to complete a process or task.
+ * A progress stepper conveys the steps necessary to complete a process or task, and the status of
+ * each step. Steps have titles and descriptions; and each step can be in one of a number of possible states:
+ * - inactive (yet to be performed)
+ * - active (currently being performed)
+ * - warn (succeeded, but with warnings)
+ * - fail (failed to occur)
+ * Or a custom state, set using the `icon` attribute.
  *
  * @summary Communicate how many steps are required to complete a process
  *
@@ -49,10 +55,6 @@ const BREAKPOINTS = new Map(Object.entries({
 @themable
 export class RhProgressStepper extends LitElement {
   static readonly styles: CSSStyleSheet[] = [styles];
-
-  #ro?: ResizeObserver;
-
-  #maxWidth = 768;
 
   /**
    * Makes the element `vertical` at various container query based breakpoints.
@@ -91,35 +93,39 @@ export class RhProgressStepper extends LitElement {
    */
   @state() private currentState = '';
 
+  #maxWidth = 768;
+
   /** normalized string content of the current step */
   #contentString = '';
 
-  constructor() {
-    super();
+  #resizeTimeoutId?: number;
 
-    if (!isServer) {
-      // TODO: Perf look into debouncing the resize observer
-      // or look into using style observer: https://www.bram.us/2025/02/24/solved-by-styleobserver-element-matchcontainer/?ref=dailydev
-      // lea verou style observer: https://github.com/LeaVerou/style-observer/
-      this.#ro = new ResizeObserver(entries => {
-        if (this.compact || this.orientation === 'vertical') {
-          return;
-        }
-        const [entry] = entries;
-        const [contentBoxSize] = entry.contentBoxSize;
-        const oldState = this.mobile;
-        const newState = contentBoxSize.inlineSize < this.#maxWidth;
-        if (oldState !== newState) {
-          this.mobile = newState;
-        }
-      });
+  /**
+   *
+   * This callback is debounced with a simple timeout.
+   * In the future, we should consider StyleObserver:
+   * @see https://www.bram.us/2025/02/24/solved-by-styleobserver-element-matchcontainer/
+   * @see https://github.com/LeaVerou/style-observer/
+   */
+  #ro = new ResizeObserver(entries => {
+    if (this.compact || this.orientation === 'vertical') {
+      return;
     }
-  }
+    if (this.#resizeTimeoutId) {
+      clearTimeout(this.#resizeTimeoutId);
+    }
+    this.#resizeTimeoutId = window.setTimeout(() => {
+      const [{ contentBoxSize: [{ inlineSize } = {}] = [] } = {}] = entries;
+      if (inlineSize != null) {
+        this.mobile = inlineSize < this.#maxWidth;
+      }
+    }, 100);
+  });
 
-  protected firstUpdated(): void {
+  protected override firstUpdated(): void {
     // ensure we update initially on client hydration
-    const _isHydrated = isServer && !this.hasUpdated;
-    if (!_isHydrated) {
+    const isHydrated = isServer && !this.hasUpdated;
+    if (!isHydrated) {
       this.mobile = this.offsetWidth < this.#maxWidth;
     }
   }
@@ -131,9 +137,7 @@ export class RhProgressStepper extends LitElement {
       this.#ro?.observe(this);
       this.#updateState();
     }
-    this.addEventListener('change', () => {
-      this.#updateState();
-    });
+    this.addEventListener('change', this.#updateState);
   }
 
   render(): TemplateResult<1> {
@@ -142,11 +146,11 @@ export class RhProgressStepper extends LitElement {
     const currentState = this.currentState || '';
 
     return html`
-    <div id="container" class="${classMap({ compact, vertical, [currentState]: true })}">
-      <strong ?hidden="${!compact}" id="current-step">${this.#contentString}</strong>
-      <!-- Use this slot for \`<rh-progress-step>\` items -->
-      <slot id="step-list" @change="${this.#onChange}"></slot>
-    </div>
+      <div id="container" class="${classMap({ compact, vertical, [currentState]: true })}">
+        <strong ?hidden="${!compact}" id="current-step">${this.#contentString}</strong>
+        <!-- Use this slot for \`<rh-progress-step>\` items -->
+        <slot id="step-list" @change="${this.#onChange}"></slot>
+      </div>
     `;
   }
 
@@ -169,7 +173,7 @@ export class RhProgressStepper extends LitElement {
     const activeStep = Array.from(statefulSteps).at(-1);
     this.currentStep = activeStep instanceof RhProgressStep ? activeStep : null;
     if (this.currentStep) {
-      this.currentState = this.currentStep.getAttribute('state') || '';
+      this.currentState = this.currentStep.state || '';
       this.#contentString = '';
       // Use childNodes instead of children to access both Element and Text nodes
       for (const node of this.currentStep.childNodes) {
