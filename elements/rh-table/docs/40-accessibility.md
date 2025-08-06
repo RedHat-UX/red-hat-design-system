@@ -93,7 +93,7 @@ A logical focus order helps keyboard users operate our websites and apps. Elemen
 
 <uxdot-example color-palette="lightest" width-adjustment="872px">
   <img alt="Image of table with links, focus indicators, and numbers showing the focus order"
-       src="../table-a11y-focus-order.png"
+       src="../table-a11y-focus-order.avif"
        width="872"
        height="280">
 </uxdot-example>
@@ -105,7 +105,7 @@ Each cell includes enough spacing for selecting interactive elements.
 
 <uxdot-example color-palette="lightest" width-adjustment="872px">
   <img alt="Image of table with links and focus indicators showing touch target size"
-       src="../table-a11y-touch-targets.png"
+       src="../table-a11y-touch-targets.avif"
        width="872"
        height="280">
 </uxdot-example>

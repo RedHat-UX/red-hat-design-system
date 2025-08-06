@@ -76,16 +76,18 @@ rh-navigation-secondary:
  - rh-subnav
 rh-pagination: 
  - rh-jump-links
- - rh-progress-steps
+ - rh-progress-stepper
  - rh-tabs
 rh-popover: 
  - rh-alert
  - rh-footer
  - rh-tooltip
-rh-progress-steps: 
+rh-progress-stepper: 
  - rh-jump-links
  - rh-pagination
  - rh-tabs
+rh-skeleton:
+ - rh-spinner
 rh-skip-link:
  - rh-navigation
  - rh-navigation-secondary
@@ -111,10 +113,11 @@ rh-table:
 rh-tabs: 
  - rh-jump-links
  - rh-pagination
- - rh-progress-steps
+ - rh-progress-stepper
 rh-tag: 
  - rh-badge
  - rh-button
+ - rh-chip
 rh-tile:
  - rh-cta
  - rh-card
