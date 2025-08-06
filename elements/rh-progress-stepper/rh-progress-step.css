@@ -149,6 +149,7 @@
 :host([state='warn']),
 :host([state='fail']),
 :host([state='active']),
+:host([icon]),
 :host([aria-current='step']) {
   --_current-step-weight: var(--rh-font-weight-body-text-medium, 500);
 }
