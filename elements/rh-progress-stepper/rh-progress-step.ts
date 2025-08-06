@@ -69,7 +69,7 @@ export class RhProgressStep extends LitElement {
    * - `fail` - The step has failed
    * - `custom` - The step uses a custom icon
    */
-  @property({ reflect: true }) state: ProgressStepState = 'inactive';
+  @property({ reflect: true }) state?: ProgressStepState;
 
   /**
    * Sets the description text for the progress step

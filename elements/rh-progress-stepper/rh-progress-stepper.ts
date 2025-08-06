@@ -147,7 +147,9 @@ export class RhProgressStepper extends LitElement {
 
     return html`
       <div id="container" class="${classMap({ compact, vertical, [currentState]: true })}">
-        <strong ?hidden="${!compact}" id="current-step">${this.#contentString}</strong>
+        <strong id="current-step"
+                class="visually-hidden"
+                ?hidden="${!compact}">${this.#contentString}</strong>
         <!-- Use this slot for \`<rh-progress-step>\` items -->
         <slot id="step-list" @change="${this.#onChange}"></slot>
       </div>
@@ -164,9 +166,10 @@ export class RhProgressStepper extends LitElement {
     // all steps with `[state=active]`, `fail` or `warn`
     // `[state=complete]` is not a stateful step, since `complete` is always a past step
     const statefulSteps =
-      this.querySelectorAll(
-        'rh-progress-step:is([state="active"], [state="fail"], [state="warn"])'
-      );
+      this.querySelectorAll(/* css */`
+        rh-progress-step:is([state="active"], [state="fail"], [state="warn"], [icon]),
+        rh-progress-step:has(> [slot=icon])
+      `);
     // always, only take the last item in the list, in order to prevent having more
     // than one aria-current step, which is not approved of in the aria spec
     // see https://w3c.github.io/aria/#aria-current
