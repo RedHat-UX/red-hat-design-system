@@ -7,20 +7,22 @@
 Progress stepper communicates how many steps are required to complete a process.
 
 ```html
-<rh-progress-stepper role="list" orientation="horizontal">
-  <rh-progress-step state="complete" role="listitem">
+<rh-progress-stepper orientation="horizontal">
+  <rh-progress-step state="complete"
+                    description="This step has been completed successfully">
     Complete Step
-    <span slot="description">This step has been completed successfully</span>
   </rh-progress-step>
 
-  <rh-progress-step state="active" role="listitem">
+  <rh-progress-step state="active"
+                    description="Currently working on this step">
     Active Step
-    <span slot="description">Currently working on this step</span>
   </rh-progress-step>
 
-  <rh-progress-step role="listitem" state="inactive">
+  <rh-progress-step state="inactive">
     Inactive Step
-    <span slot="description">This step is not yet started</span>
+    <span slot="description">
+      This step is <strong>not yet started</strong>
+    </span>
   </rh-progress-step>
 </rh-progress-stepper>
 ```
