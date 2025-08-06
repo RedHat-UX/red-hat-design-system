@@ -1,0 +1,155 @@
+/* Main step container styling */
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+:host {
+  --_step-line-style:
+    linear-gradient(
+        var(--_step-line-angle),
+        transparent 13px,
+        var(--_step-line-color) 13px,
+        var(--_step-line-color) 15px,
+        transparent 15px);
+  --_step-color: var(--rh-color-text-primary);
+  --_step-label-color: var(--rh-color-text-primary);
+
+  @container (width > 992px) {
+    --_step-compact-horizontal-padding: var(--rh-length-5xl, 80px);
+  }
+}
+
+#container {
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--_step-template-columns);
+  grid-template-rows: var(--_step-template-rows, 24px) auto;
+  grid-template-areas: var(--_step-template-areas);
+  gap: var(--_step-row-gap, 16px) var(--_step-column-gap, 16px);
+  justify-self: var(--_step-justify-self, start);
+  align-items: var(--_step-align-items);
+  padding-block-end: var(--_step-compact-vertical-padding);
+  padding-inline-end: var(--_step-compact-horizontal-padding);
+  inline-size: 100%;
+  block-size: 100%;
+  color: var(--rh-color-text-secondary); /* sets description color */
+
+  /* Body text/md */
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
+  font-size: var(--rh-font-size-body-text-md, 1rem);
+  font-style: normal;
+  line-height: 1.5;
+
+  &:before {
+    position: absolute;
+    content: '';
+    inset-block: var(--_step-line-position-block);
+    inset-inline: var(--_step-line-position-inline);
+    inline-size: var(--_step-line-size-inline);
+    block-size: var(--_step-line-size-block);
+    background: var(--_step-line-style);
+    pointer-events: none;
+  }
+}
+
+/* Icon styling */
+:is(rh-icon, .no-icon) {
+  grid-area: icon;
+  place-self: center var(--_step-icon-justify-self);
+  block-size: var(--_step-icon-width);
+  inline-size: var(--_step-icon-width);
+  border: var(--rh-border-width-md) solid var(--_step-line-color);
+  border-radius: 50%;
+  color: var(--_step-color);
+  background-color: light-dark(var(--rh-color-surface-lightest), var(--rh-color-surface-darkest));
+}
+
+#label {
+  display: grid;
+  grid-area: label;
+  align-self: center;
+  color: var(--_step-label-color);
+  font-weight: var(--_current-step-weight, var(--rh-font-weight-body-text-regular, 400));
+
+  &:is(a[href]) {
+    text-decoration: underline dashed 1px;
+    text-decoration-color: light-dark(var(--rh-color-gray-50), var(--rh-color-gray-40));
+    text-underline-offset: max(5px, 0.28em);
+    transition: ease text-underline-offset 0.3s;
+
+    &:hover {
+      color: var(--rh-color-interactive-primary-hover);
+      text-decoration-color: var(--rh-color-interactive-primary-hover);
+      text-underline-offset: max(6px, 0.33em);
+    }
+  }
+}
+
+#description {
+  grid-area: description;
+  display: grid;
+  align-self: start;
+  margin: 0;
+  grid-column: var(--_step-description-grid-column, 1);
+  font-weight: var(--rh-font-weight-body-text-regular, 400);
+  font-size: var(--rh-font-size-body-text-xs, 0.75rem);
+}
+
+/* Compact view - hide text content */
+.compact {
+  & :is(#label, #description) {
+    /* Visually Hiding */
+    block-size: 1px;
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    inline-size: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+
+    /* End Visually Showing */
+  }
+}
+
+/* Active state styling */
+:host([state='active']) {
+  --_step-color: var(--rh-color-status-note);
+}
+
+/* Complete state styling */
+:host([state='complete']) {
+  --_step-color: var(--rh-color-status-success);
+}
+
+/* Warning state styling */
+:host([state='warn']) {
+  --_step-color:
+    light-dark(
+        var(--rh-color-yellow-50, #b98412),
+        var(--rh-color-yellow-30, #ffcc17)
+      );
+  --_step-label-color:
+    light-dark(
+        var(--rh-color-yellow-60, #96640f),
+        var(--rh-color-yellow-20, #ffe072)
+      );
+}
+
+/* Fail state styling */
+:host([state='fail']) {
+  --_step-color: var(--rh-color-status-danger);
+  --_step-label-color: var(--rh-color-status-danger);
+}
+
+/* State-based color and weight variations for display of individual progress steps */
+:host([state='warn']),
+:host([state='fail']),
+:host([state='active']),
+:host([icon]),
+:host([aria-current='step']) {
+  --_current-step-weight: var(--rh-font-weight-body-text-medium, 500);
+}

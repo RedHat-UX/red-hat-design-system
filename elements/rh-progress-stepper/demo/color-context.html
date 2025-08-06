@@ -1,0 +1,35 @@
+<rh-context-demo>
+  <rh-context-picker id="picker" target="navigation" allow="darkest, lightest"></rh-context-picker>
+  <rh-progress-stepper>
+    <rh-progress-step
+        state="complete"
+        description="This step has been completed successfully">
+      Complete Step
+    </rh-progress-step>
+    <rh-progress-step
+        state="warn"
+        description="This step has a warning that needs attention">
+      Warning Step
+    </rh-progress-step>
+    <rh-progress-step
+        state="fail"
+        description="This step has failed and needs to be retried">
+      Failed Step
+    </rh-progress-step>
+    <rh-progress-step
+        state="active"
+        description="Currently working on this step">
+      Active Step
+    </rh-progress-step>
+    <rh-progress-step
+        state="inactive"
+        description="This step is not yet started">
+      Inactive Step
+    </rh-progress-step>
+  </rh-progress-stepper>
+</rh-context-demo>
+
+<script type="module">
+  import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
+  import '@rhds/elements/rh-progress-stepper/rh-progress-stepper.js';
+</script>
