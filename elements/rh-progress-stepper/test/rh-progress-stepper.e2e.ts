@@ -16,7 +16,7 @@ test.describe(tagName, () => {
       browser,
       demoDir: new URL('../demo/', import.meta.url),
       importSpecifiers: [
-        `@patternfly/elements/${tagName}/${tagName}.js`,
+        `@rhds/elements/${tagName}/${tagName}.js`,
       ],
     });
     await fixture.snapshots();
