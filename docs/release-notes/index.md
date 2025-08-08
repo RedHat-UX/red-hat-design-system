@@ -71,12 +71,16 @@ Released August 6, 2025
 | `<rh-navigation-primary>`: improved logo rendering | {{i()}} | Default logo is now bi-modal auto adjusting text color to light or dark scheme. For more control, use the existing [`logo` slot](https://ux.redhat.com/elements/navigation-primary/code/#slots). |
 | `<rh-tag>`: add disabled, hover, focus, and active states to linked tags | {{i()}} | Linked `<rh-tag>` elements now have hover, focus, active, and disabled states. |
 | `<rh-alert>`: fixed case-sensitivity on `state` attribute | {{p()}} | Made `state` attribute case-insensitive. |
+| `<rh-announcement>`: fixed line wrapping in CTAs | {{p()}} | Long CTA text wraps to next line for small viewports. |
+| `<rh-audio-player>`: corrected icons for rewind and fast forward | {{p()}} | Fixed rewind and fast forward icons. |
 | `<rh-card>`: allow card to accept all six color palettes | {{p()}} | `<rh-card>` now works with all six [color palettes](https://ux.redhat.com/theming/color-palettes/). |
 | `<rh-code-block>`: performance improvements | {{p()}} | Improved performance when `line-numbers="hidden"` attribute is present. |
 | `<rh-footer>`: corrected height style | {{p()}} | Corrected height style when JavaScript is not available |
 | `<rh-footer>`: removed console warnings | {{p()}} | Removed console warnings in `<rh-footer>`. |
 | `<rh-footer>`: removed "Inc" from copyright | {{p()}} | Removed "Inc" from copyright in `<rh-footer>`. |
 | `<rh-tabs>`: corrected background styles | {{p()}} | Corrected background styles inherited from parent color-scheme and host color-palette. |
+| `<rh-tabs>`: corrected vertical layout styles | {{p()}} |  |
+| `<rh-tabs>`: corrected duplicate focus ring | {{p()}} | Fixed duplicate focus ring with keyboard navigation. |
 | `<rh-tag>`: color contrast improvements | {{p()}} | Improved color contrast of gray tags on dark color schemes. |
 | Improved accessibility of links | {{p()}} | Inline links should show a dashed underline in accordance to our [inline link style guidelines](https://ux.redhat.com/foundations/interactions/links/#inline-links). |
 
