@@ -78,6 +78,7 @@ Released August 6, 2025
 | `<rh-footer>`: corrected height style | {{p()}} | Corrected height style when JavaScript is not available |
 | `<rh-footer>`: removed console warnings | {{p()}} | Removed console warnings in `<rh-footer>`. |
 | `<rh-footer>`: removed "Inc" from copyright | {{p()}} | Removed "Inc" from copyright in `<rh-footer>`. |
+| `<rh-navigation-primary>`: keyboard accessibility | {{p()}} | Improved keyboard accessibility of the dropdown toggle. |
 | `<rh-tabs>`: corrected background styles | {{p()}} | Corrected background styles inherited from parent color-scheme and host color-palette. |
 | `<rh-tabs>`: corrected vertical layout styles | {{p()}} |  |
 | `<rh-tabs>`: corrected duplicate focus ring | {{p()}} | Fixed duplicate focus ring with keyboard navigation. |
