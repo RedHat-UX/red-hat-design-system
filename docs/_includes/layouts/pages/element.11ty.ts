@@ -805,7 +805,7 @@ export default class ElementsPage extends Renderer<Context> {
       ${content}
       ${!ctx.doc.fileExists ? '' : await this.renderFile(ctx.doc.filePath, ctx)}
       ${(await Promise.all(demos.map(async demo => `
-      ${this.#header(demo.title, 2, `demo-${this.slugify(demo.title)}`)}
+      ${this.#header(demo.title === 'Index' ? tagName : demo.title, 2, `demo-${this.slugify(demo.title)}`)}
       ${await this.#renderDemo(demo, ctx)}
       `))).filter(Boolean).join('')}
     `;
