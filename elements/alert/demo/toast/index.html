@@ -1,0 +1,183 @@
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/assets/logo-red-hat.svg">
+    <title>Toast | Red Hat Design System</title>
+
+    <link rel="preconnect" href="https://ga.jspm.io">
+
+    <link rel="stylesheet" href="/styles/demo/styles.css" media="all">
+
+    <script type="importmap">{
+  "imports": {
+    "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
+    "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
+    "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
+    "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
+    "lit-html": "/assets/packages/lit-html/lit-html.js",
+    "tslib": "/assets/packages/tslib/tslib.es6.mjs",
+    "@lit/reactive-element": "/assets/packages/@lit/reactive-element/reactive-element.js",
+    "lit-element": "/assets/packages/lit-element/index.js",
+    "prism-esm": "/assets/packages/prism-esm/prism.js",
+    "lit": "/assets/packages/lit/index.js",
+    "@rhds/tokens/css/default-theme.css.js": "/assets/packages/@rhds/tokens/css/default-theme.css.js",
+    "@rhds/tokens/css/color-palette.css.js": "/assets/packages/@rhds/tokens/css/color-palette.css.js",
+    "lit/decorators/custom-element.js": "/assets/packages/lit/decorators/custom-element.js",
+    "lit/decorators/property.js": "/assets/packages/lit/decorators/property.js",
+    "lit/directives/if-defined.js": "/assets/packages/lit/directives/if-defined.js",
+    "lit/static-html.js": "/assets/packages/lit/static-html.js",
+    "@lit/context": "/assets/packages/@lit/context/index.js",
+    "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
+    "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
+    "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.3/core.js",
+    "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
+    "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
+    "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
+    "element-internals-polyfill": "/assets/packages/element-internals-polyfill/dist/index.js",
+    "lit/": "/assets/packages/lit/",
+    "lit-html/": "/assets/packages/lit-html/",
+    "prism-esm/": "/assets/packages/prism-esm/",
+    "@lit-labs/ssr-client/lit-element-hydrate-support.js": "/assets/packages/@lit-labs/ssr-client/lit-element-hydrate-support.js",
+    "@rhds/tokens/css/": "/assets/packages/@rhds/tokens/css/",
+    "@rhds/tokens/": "/assets/packages/@rhds/tokens/js/",
+    "@rhds/elements/lib/": "/assets/packages/@rhds/elements/lib/",
+    "@rhds/elements/": "/assets/packages/@rhds/elements/elements/",
+    "@rhds/icons": "/assets/packages/@rhds/icons/icons.js",
+    "@rhds/icons/": "/assets/packages/@rhds/icons/",
+    "@rhds/icons/icons.js": "/assets/packages/@rhds/icons/icons.js",
+    "@patternfly/elements/": "/assets/packages/@patternfly/elements/",
+    "@patternfly/icons/": "/assets/packages/@patternfly/icons/",
+    "@patternfly/pfe-core/": "/assets/packages/@patternfly/pfe-core/",
+    "@uxdot/elements/": "/assets/packages/@uxdot/elements/"
+  },
+  "scopes": {
+    "/assets/packages/": {
+      "@floating-ui/utils": "https://ga.jspm.io/npm:@floating-ui/utils@0.2.10/dist/floating-ui.utils.mjs",
+      "@floating-ui/utils/dom": "https://ga.jspm.io/npm:@floating-ui/utils@0.2.10/dist/floating-ui.utils.dom.mjs",
+      "@lit/reactive-element/decorators/": "/assets/packages/@lit/reactive-element/decorators/",
+      "lit-element/lit-element.js": "/assets/packages/lit-element/lit-element.js",
+      "lit-html/": "/assets/packages/lit-html/",
+      "lit/": "/assets/packages/lit/"
+    }
+  }
+}</script>
+
+    
+      <script type="module">
+    // although we load these ssr support modules elsewhere, we still
+    // need them here to ensure no double-rendering on webkit
+    import '/assets/javascript/ssr-support.js';
+    // include these, which are often internal to elements,
+    // and are definitely required by context-picker and context-demo
+    // to avoid SSR defer-hydration bugs and SSR double-rendering bugs
+    import '@rhds/elements/rh-icon/rh-icon.js';
+    import '@rhds/elements/rh-surface/rh-surface.js';
+    import '@rhds/elements/rh-button/rh-button.js';
+    import '@rhds/elements/rh-tooltip/rh-tooltip.js';
+    import '@rhds/elements/rh-tag/rh-tag.js';
+  </script>
+
+
+    <script type="module">
+      // load up the demo and picker
+      import '@rhds/elements/lib/elements/rh-context-picker/rh-context-picker.js';
+      import '@rhds/elements/lib/elements/rh-context-demo/rh-context-demo.js';
+    </script>
+
+    <script async="" src="https://ga.jspm.io/npm:es-module-shims@1.8.1/dist/es-module-shims.js"></script>
+  </head>
+  <body>
+    <main><form id="alert-variant-toast">
+  <fieldset>
+    <legend>Alert State</legend>
+    <label><input type="radio" name="state" value="neutral">Neutral</label>
+    <label><input type="radio" name="state" value="info">Info</label>
+    <label><input type="radio" name="state" value="success">Success</label>
+    <label><input type="radio" name="state" value="caution">Caution</label>
+    <label><input type="radio" name="state" value="warning">Warning</label>
+    <label><input type="radio" name="state" value="danger">Danger</label>
+  </fieldset>
+  <fieldset>
+    <legend>Persistence</legend>
+    <label><input type="checkbox" name="persistent">Persistent</label>
+  </fieldset>
+  <fieldset>
+    <legend>Actions</legend>
+    <label><input type="radio" name="actions" value="none">No actions</label>
+    <label><input type="radio" name="actions" value="primary">Single action</label>
+    <label><input type="radio" name="actions" value="secondary">Secondary action</label>
+  </fieldset>
+  <rh-button variant="primary"><template shadowroot="open" shadowrootmode="open" shadowrootdelegatesfocus><style>:host{display:inline-block;height:max-content}[hidden]{display:none!important}[part=icon]{display:none;pointer-events:none}rh-icon{color:currentcolor}button{background-color:var(--_background-color);border-radius:var(--rh-border-radius-default,3px);border-style:solid;border-width:0;color:var(--_color);cursor:pointer;font-family:inherit;font-size:var(--rh-font-size-body-text-md,1rem);font-weight:var(--rh-font-weight-body-text-regular,400);line-height:var(--rh-line-height-body-text,1.5);outline-offset:var(--rh-length-4xs,1px);padding-block:var(--rh-space-sm,6px);padding-inline:var(--rh-space-lg,16px);position:relative;&:active{--_color:var(--_active-color);--_background-color:var(--_active-background-color);--_border-width:var(--_active-border-width)}&:after{border-color:var(--_border-color);border-radius:var(--rh-border-radius-default,3px);border-style:solid;border-width:var(--_border-width);content:"";inset:0;position:absolute}&:focus{--_color:var(--_focus-color);--_background-color:var(--_focus-background-color);--_border-width:var(--_focus-border-width);outline:var(--rh-border-width-md,2px) solid var(--rh-color-interactive-primary-default);&:after{border-width:var(--_border-width,var(--rh-border-width-md,2px))}}&.hasIcon{align-items:center;display:flex;gap:var(--rh-space-sm,6px);padding-inline-start:calc(var(--rh-space-lg, 16px)*.75);position:relative;& [part=icon]{display:contents}}&.primary{--_color:var(--rh-color-text-primary-on-dark,#fff);--_background-color:var(--rh-color-interactive-primary-default-on-light,#06c);--_border-color:#0000;--_border-width:var(--rh-border-width-sm,1px);--_active-color:var(--rh-color-text-primary-on-dark,#fff);--_active-background-color:var(--rh-color-interactive-primary-hover-on-light,#036);--_active-border-width:var(--rh-border-width-sm,1px);--_focus-color:var(--rh-color-text-primary-on-dark,#fff);--_focus-background-color:var(--rh-color-interactive-primary-hover-on-light,#036);--_focus-border-width:var(--rh-border-width-md,2px);--_hover-color:var(--rh-color-text-primary-on-dark,#fff);--_hover-background-color:var(--rh-color-interactive-primary-hover-on-light,#036);--_hover-border-width:var(--rh-border-width-sm,1px)}&.danger{--_color:light-dark(var(--rh-color-text-primary-on-dark,#fff),var(--rh-color-text-primary-on-light,#151515));--_background-color:light-dark(#c9190b,#fe5142);--_border-color:#0000;--_border-width:var(--rh-border-width-sm,1px);--_active-color:light-dark(var(--rh-color-text-primary-on-dark,#fff),var(--rh-color-text-primary-on-light,#151515));--_active-background-color:light-dark(#a30000,#ff7468);--_active-border-color:#0000;--_focus-color:light-dark(var(--rh-color-text-primary-on-dark,#fff),var(--rh-color-text-primary-on-light,#151515));--_focus-background-color:light-dark(#a30000,#ff7468);--_focus-border-color:#0000;--_focus-border-width:var(--rh-border-width-md,2px);--_hover-color:light-dark(var(--rh-color-text-primary-on-dark,#fff),var(--rh-color-text-primary-on-light,#151515));--_hover-background-color:light-dark(#a30000,#ff7468);--_hover-border-color:#0000}&.secondary{--_color:var(--rh-color-interactive-primary-default);--_background-color:#0000;--_border-color:var(--rh-color-interactive-primary-default);--_border-width:var(--rh-border-width-sm,1px);--_active-color:var(--rh-color-interactive-primary-default);--_active-background-color:#0000;--_active-border-color:var(--rh-color-interactive-primary-default);--_active-border-width:var(--rh-border-width-md,2px);--_focus-color:var(--rh-color-interactive-primary-default);--_focus-background-color:#0000;--_focus-border-color:var(--rh-color-interactive-primary-default);--_focus-border-width:var(--rh-border-width-md,2px);--_hover-color:var(--rh-color-interactive-primary-default);--_hover-background-color:#0000;--_hover-border-color:var(--rh-color-interactive-primary-default);--_hover-border-width:var(--rh-border-width-md,2px);&.danger{--_color:light-dark(var(--rh-color-red-60,#a60000),var(--rh-color-red-30,#f9a8a8));--_background-color:#0000;--_border-color:light-dark(#c9190b,#fe5142);--_active-color:light-dark(#c9190b,#fe5142);--_active-background-color:#0000;--_active-border-color:#0000;--_focus-color:light-dark(var(--rh-color-red-60,#a60000),var(--rh-color-red-30,#f9a8a8));--_focus-background-color:#0000;--_focus-border-color:#0000;--_hover-color:light-dark(#c9190b,#fe5142);--_hover-background-color:#0000;--_hover-border-color:#0000}}&.tertiary{--_color:var(--rh-color-text-primary);--_background-color:#0000;--_border-color:var(--rh-color-border-strong);--_border-width:var(--rh-border-width-sm,1px);--_active-color:var(--rh-color-text-primary);--_active-background-color:#0000;--_active-border-color:var(--rh-color-border-strong);--_active-border-width:var(--rh-border-width-md,2px);--_focus-color:var(--rh-color-text-primary);--_focus-background-color:#0000;--_focus-border-color:var(--rh-color-border-strong);--_focus-border-width:var(--rh-border-width-md,2px);--_hover-color:var(--rh-color-text-primary);--_hover-background-color:#0000;--_hover-border-color:var(--rh-color-border-strong);--_hover-border-width:var(--rh-border-width-md,2px)}&.link{--_color:var(--rh-color-interactive-primary-default);--_background-color:#0000;--_border-color:#0000;--_active-color:light-dark(var(--rh-color-blue-70,#036),var(--rh-color-interactive-primary-hover-on-dark,#b9dafc));--_active-background-color:#0000;--_focus-color:light-dark(var(--rh-color-blue-70,#036),var(--rh-color-interactive-primary-hover-on-dark,#b9dafc));--_focus-background-color:#0000;--_focus-outline-color:var(--rh-color-interactive-primary-default);--_hover-color:light-dark(var(--rh-color-blue-70,#036),var(--rh-color-interactive-primary-hover-on-dark,#b9dafc));--_hover-background-color:#0000;display:inline-flex;& rh-icon{order:1}}&.close{--_color:var(--rh-color-text-secondary);--_background-color:#0000;--_active-color:var(--rh-color-icon-secondary);--_active-background-color:#0000;--_focus-color:var(--rh-color-icon-secondary);--_focus-background-color:#0000;--_focus-outline-color:var(--rh-color-interactive-primary-default);--_hover-color:var(--rh-color-icon-secondary);--_hover-background-color:#0000;aspect-ratio:1;width:var(--rh-length-lg,16px);rh-icon{color:inherit}}&.play{--_color:var(--rh-color-icon-secondary-on-dark);--_background-color:light-dark(rgba(from var(--rh-color-gray-90,#1f1f1f) r g b/var(--rh-opacity-50,50%)),rgba(from white r g b/var(--rh-opacity-50,50%)));--_active-background-color:light-dark(rgba(from var(--rh-color-gray-90,#1f1f1f) r g b/var(--rh-opacity-80,80%)),rgba(from white r g b/var(--rh-opacity-80,80%)));--_focus-background-color:light-dark(rgba(from var(--rh-color-gray-90,#1f1f1f) r g b/var(--rh-opacity-80,80%)),rgba(from white r g b/var(--rh-opacity-80,80%)));--_focus-outline-color:var(--rh-color-interactive-primary-default);--_hover-background-color:light-dark(rgba(from var(--rh-color-gray-90,#1f1f1f) r g b/var(--rh-opacity-80,80%)),rgba(from white r g b/var(--rh-opacity-80,80%)));border-radius:100%;width:var(--rh-length-4xl,64px);& [part=icon]{display:contents}& rh-icon{color:var(--rh-color-icon-secondary-on-dark,#fff);translate:10%}}&:is(.play,.close){--_border-color:#0000;align-items:center;aspect-ratio:1;display:inline-flex;justify-content:center;padding:0;& #text{display:inline;height:1px!important;margin:-1px!important;overflow:hidden!important;padding:0!important;position:absolute!important;width:1px!important;clip:rect(0,0,0,0)!important;border:0!important;white-space:nowrap!important}}&:hover{--_color:var(--_hover-color);--_background-color:var(--_hover-background-color);--_border-width:var(--_hover-border-width)}&>span{display:contents}}:host(:is(:disabled,[aria-disabled=true])),:host(:is(:disabled,[aria-disabled=true])) #container,:host(:is(:disabled,[aria-disabled=true])) button,:host(:is(:disabled,[aria-disabled=true])[danger]) button,:host(:is(:disabled,[aria-disabled=true])[variant=link]) button{cursor:default;pointer-events:none}[part=icon] ::slotted(*){height:16px;max-height:16px;max-width:16px;width:16px}:host(:is([variant=play i],[variant=close i])){line-height:0}:host(:disabled) button,:host(:disabled[danger]) button,:host(:disabled[variant=link]) button,button[disabled]{cursor:default;pointer-events:none;--_color:light-dark(var(--rh-color-text-secondary-on-light,#4d4d4d),var(--rh-color-gray-40,#a3a3a3));--_background-color:light-dark(var(--rh-color-surface-light,#e0e0e0),var(--rh-color-surface-dark,#383838))}:host(:disabled) button:after{--_border-color:#0000}:host(:not([disabled])) .hasIcon [part=icon]{cursor:pointer}</style><!--lit-part G45dP2QHduE=-->
+      <!-- Internal button element -->
+      <!--lit-node 1--><button 
+              class=" primary "
+              part="button"
+              
+              
+              
+              aria-disabled="false">
+        <span aria-hidden="true">
+          <!--
+            slot:
+              description: Contains the button's icon or state indicator, e.g. a spinner.
+            part:
+              description: Container for the icon slot
+          -->
+          <slot id="icon"
+                part="icon"
+                name="icon"><!--lit-part 2vlZC1y7fLI=--><!--lit-node 0--><rh-icon   set="ui" icon defer-hydration><template shadowroot="open" shadowrootmode="open"><style>:host{aspect-ratio:1/1;display:inline-flex;line-height:0;place-content:center}#container{display:contents}svg{width:var(--rh-icon-size,var(--rh-size-icon-01,16px));fill:currentcolor;aspect-ratio:1/1}.standard svg{width:var(--rh-icon-size,var(--rh-size-icon-04,40px))}.microns svg{max-width:12px;min-width:8px;width:var(--rh-icon-size,12px)}</style><!--lit-part KXpnCoa9VBk=-->
+      <!--lit-node 0--><div id="container"
+           aria-hidden="false"
+           class=" ui "><!--lit-part BRUAAAUVAAA=--><?><!--/lit-part--><!--
+           Container for the fallback (i.e. slotted) content
+        --><!--lit-node 3--><span part="fallback" ><!--
+          Slotted content is used as a fallback in case the icon doesn't load
+        --><slot></slot></span>
+      </div>
+    <!--/lit-part--></template></rh-icon><!--/lit-part--></slot>
+        </span>
+        <!--lit-node 6--><span aria-hidden="false"><!-- Contains button text --><slot id="text" ></slot></span>
+      </button>
+    <!--/lit-part--></template>Toast alert</rh-button>
+</form>
+
+<style>
+  #alert-variant-toast {
+    display: grid;
+    gap: var(--rh-space-lg, 16px);
+    padding: var(--rh-space-lg, 16px);
+    width: max-content;
+  }
+</style>
+
+<script type="module">
+  import { RhAlert } from '@rhds/elements/rh-alert/rh-alert.js';
+  import '@rhds/elements/rh-button/rh-button.js';
+  let i = 0;
+  document.addEventListener('close', e => console.log(e.action));
+  document.getElementById('alert-variant-toast').addEventListener('submit', async function(event) {
+    event.preventDefault();
+    const data = new FormData(event.target);
+    const persistent = data.has('persistent');
+    const state = data.get('state') ?? 'info';
+    const [a, ...rest] = state;
+    await RhAlert.toast({
+      state,
+      persistent,
+      message: `${++i}: Lorem ipsum dolor sit amet, consectetur adipiscing elit.`,
+      heading: `${a.toUpperCase()}${rest.join('')}${persistent ? ` - persistent`:''}`,
+      actions: data.get('actions') === 'primary' ? [
+          { action: 'dismiss', text: 'Dismiss' },
+        ] : data.get('actions') === 'secondary' ? [
+          { action: 'confirm', text: 'Confirm' },
+          { action: 'dismiss', text: 'Dismiss' },
+        ] : undefined,
+    });
+  });
+</script>
+</main>
+
+
+</body></html>
