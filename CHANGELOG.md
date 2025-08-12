@@ -1,5 +1,106 @@
 # @rhds/elements
 
+## 3.1.0
+### Minor Changes
+
+- c0b5e9a: `<rh-tag>`: add disabled, hover, focus, and active states to linked tags
+  
+  ```html
+  <rh-tag href="/engage">Engage cluster</rh-tag>
+  ```
+- c0b5e9a: ✨ Added `<rh-scheme-toggle>`
+  
+  A toggle to switch between light, dark and system default color schemes.
+  
+  ```html
+  <rh-scheme-toggle></rh-scheme-toggle>
+  ```
+- c0b5e9a: `<rh-navigation-primary>`: improved logo rendering
+  
+  Default logo is now bi-modal auto adjusting text color to light or dark scheme. For more control,
+  use the existing [`logo` slot](https://ux.redhat.com/elements/navigation-primary/code/#slots).
+- c0b5e9a: `<rh-code-block>`: added the `line-numbers="hidden"` attribute:
+  
+  ```html
+  <rh-code-block line-numbers="hidden">
+  <script type="text/html"><p>Lines gone</p></script>
+  </rh-code-block>
+  ```
+- c0b5e9a: `<rh-breadcrumb>`: added the `truncate` attribute.
+  
+  When present, the middle breadcrumb items are hidden until the user interacts with them:
+  
+  ```html
+  <rh-breadcrumb truncate>
+    <ol>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#open-shift-aws">Red Hat OpenShift on AWS</a></li>
+      <li><a href="#4">4</a></li>
+      <li><a href="#introduction-to-rosa">Introduction to ROSA</a></li>
+      <li><a href="#understanding-rosa" aria-current="page">Chapter 1. Understanding ROSA</a></li>
+    </ol>
+  </rh-breadcrumb>
+  ```
+- c0b5e9a: ✨ Added `<rh-progress-stepper>`
+  
+  Progress stepper communicates how many steps are required to complete a process.
+  
+  ```html
+  <rh-progress-stepper orientation="horizontal">
+    <rh-progress-step state="complete"
+                      description="This step has been completed successfully">
+      Complete Step
+    </rh-progress-step>
+  
+    <rh-progress-step state="active"
+                      description="Currently working on this step">
+      Active Step
+    </rh-progress-step>
+  
+    <rh-progress-step state="inactive">
+      Inactive Step
+      <span slot="description">
+        This step is <strong>not yet started</strong>
+      </span>
+    </rh-progress-step>
+  </rh-progress-stepper>
+  ```
+- c0b5e9a: ✨ Added `<rh-skeleton>`
+  
+  A skeleton loader is a placeholder for content that is loading.
+  
+  ```html
+  <rh-skeleton></rh-skeleton>
+  ```
+
+### Patch Changes
+
+- c76fe5e: `<rh-announcement>`: let long CTA text wrap to next line for small viewports
+- 2f4714a: `<rh-tabs>`: corrected duplicate focus ring with keyboard navigation
+- c0b5e9a: `<rh-tag>`: improve color contrast of gray tags on dark color schemes
+- c0b5e9a: `<rh-footer>`: removed console warnings
+- 2f4714a: `<rh-tabs>`: corrected background styles inherited from parent color-scheme and host color-palette
+- 9f01572: `<rh-alert>`: make `state` attribute case-insensitive
+- 83561d7: `<rh-navigation-primary>`: improved keyboard accessibility of the dropdown toggle
+- 4b130a7: `<rh-footer>`: removed "Inc" from copyright
+- 877a0a1: `<rh-audio-player>`: corrected icons for rewind and fast forward
+- c0b5e9a: Inline links should show a dashed underline, provided they are not in a navigation element or accompanied by visual clues that indicate interactivity. The following changes were made to adhere to our inline link styling guidelines.
+  
+  Updated CSS to allow slotted `<a>` elements to display underlines in `<rh-avatar>` and `<rh-table>`.
+  
+  Removed underlines from linked text in `<rh-breadcrumbs>`.
+  
+  Updated or added underline styles for:
+  
+    - `<rh-footer>`: Links that show an underline only on hover now show a dashed underline, instead of a solid one. Links in `<rh-footer-block>` show an underline in the default state.
+    - `<rh-pagination>`: An underline was added only for the last page link.
+    - `<rh-skip-link>`: Skip link's hover state uses a dashed underline, instead of a solid underline, now.
+- 2f4714a: `<rh-tabs>`: corrected vertical layout styles
+- c0b5e9a: `<rh-code-block>`: improve performance when `line-numbers="hidden"` attribute is present
+- c0b5e9a: `<rh-card>`: allow card to accept all six color palettes
+- c0b5e9a: `<rh-footer>`: corrected height style when JavaScript is not available
+
 ## 3.0.4
 ### Patch Changes
 

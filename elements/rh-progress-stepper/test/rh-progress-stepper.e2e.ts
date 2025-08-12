@@ -1,0 +1,24 @@
+import { test } from '@playwright/test';
+import { PfeDemoPage } from '@patternfly/pfe-tools/test/playwright/PfeDemoPage.js';
+
+const tagName = 'rh-progress-stepper';
+
+test.describe(tagName, () => {
+  test('snapshot', async ({ page }) => {
+    const componentPage = new PfeDemoPage(page, tagName);
+    await componentPage.navigate();
+    await componentPage.snapshot();
+  });
+
+  test('ssr', async ({ browser }) => {
+    const fixture = new SSRPage({
+      tagName,
+      browser,
+      demoDir: new URL('../demo/', import.meta.url),
+      importSpecifiers: [
+        `@rhds/elements/${tagName}/${tagName}.js`,
+      ],
+    });
+    await fixture.snapshots();
+  });
+});
