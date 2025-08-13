@@ -244,6 +244,7 @@ rh-footer-universal rh-footer-copyright {
     }
 
     ul[slot='links'] {
+      gap: var(--rh-footer-links-gap, var(--rh-space-lg, 16px));
       grid-row: 3 / span 1;
       margin: 0;
     }
