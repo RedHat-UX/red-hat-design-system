@@ -104,14 +104,6 @@ rh-footer [slot='links']:is(h1, h2, h3, h4, h5):nth-of-type(n+5) {
 
   color-scheme: only dark;
   overflow-y: auto;
-
-  & > :not([slot='logo'], rh-footer-universal) {
-    animation-name: var(--_fallback-animation, deopacitize-footer);
-    animation-duration: 5s;
-    animation-timing-function: ease;
-    animation-delay: 0s;
-    opacity: var(--_fallback-opacity);
-  }
 }
 
 /* (min-width: --rh-breakpoint-sm) */
@@ -179,12 +171,6 @@ rh-footer-social-link:not(:defined) {
       font-weight: var(--rh-font-weight-heading-medium, 500);
     }
   }
-}
-
-@keyframes deopacitize-footer {
-  0% { --_fallback-opacity: 0; }
-  99% { --_fallback-opacity: 0; }
-  100% { --_fallback-opacity: 1; }
 }
 
 rh-footer-block:not(:defined) {
