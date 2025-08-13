@@ -12,7 +12,9 @@
 svg {
   /** Override default icon size */
   width: var(--rh-icon-size, var(--rh-size-icon-01, 16px));
-  fill: currentcolor;
+
+  /** color of the icon */
+  fill: var(--rh-icon-fill, currentcolor);
   aspect-ratio: 1/1;
 }
 
@@ -24,4 +26,23 @@ svg {
   min-width: 8px;
   max-width: 12px;
   width: var(--rh-icon-size, 12px);
+}
+
+#svg-gradients {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+#svg-gradient {
+  --_icon-gradient-color-stop-1:
+    /** color of the gradient's 1st stop */
+    var(--rh-icon-gradient-color-stop-1,
+      var(--rh-color-red-50, #ee0000)
+    );
+  --_icon-gradient-color-stop-2:
+    /** color of the gradient's 2nd stop */
+    var(--rh-icon-gradient-color-stop-2,
+      var(--rh-color-purple-50, #5e40be)
+    );
 }
