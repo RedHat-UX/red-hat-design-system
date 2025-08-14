@@ -102,6 +102,7 @@ rh-footer [slot='links']:is(h1, h2, h3, h4, h5):nth-of-type(n+5) {
 :is(rh-footer, rh-footer-universal) {
   --rh-footer-section-side-gap: var(--rh-space-lg, 16px);
 
+  color-scheme: only dark;
   overflow-y: auto;
 
   & > :not([slot='logo'], rh-footer-universal) {
@@ -139,6 +140,20 @@ rh-footer:not(:defined) {
     'global';
   grid-template-rows: 1fr auto;
   min-height: var(--rh-footer-nojs-min-height, 750px);
+}
+
+:is(rh-footer, rh-footer-universal):not(:defined) {
+  p {
+    color: var(--rh-color-text-secondary-on-dark, #c7c7c7);
+  }
+
+  & :is(h1, h2, h3, h4, h5, h6) {
+    &[slot='links'],
+    &[slot='header'] {
+      font-size: var(--rh-footer-link-header-font-size, var(--rh-font-size-body-text-sm, 0.875rem));
+      font-weight: var(--rh-font-weight-heading-medium, 500);
+    }
+  }
 }
 
 @keyframes deopacitize-footer {
