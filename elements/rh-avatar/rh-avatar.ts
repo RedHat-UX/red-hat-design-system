@@ -49,7 +49,7 @@ export class RhAvatar extends LitElement {
   @property({ reflect: true, type: Boolean }) plain = false;
 
   /** Adds a subtle border to the avatar image */
-  @property({ reflect: true }) variant?: '' | 'bordered';
+  @property({ reflect: true }) variant?: 'bordered';
 
   #style?: CSSStyleDeclaration;
 
