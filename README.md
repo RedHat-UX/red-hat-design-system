@@ -8,7 +8,7 @@ RHDS provides Figma libraries and subsystems to aid in your design work.
 
 ## 💻 For Developers
 
-RHDS provides a collection of ready-made, framework-agnostic Web Components with Red Hat branding, user experience, accessibility, and style guidelines built in.
+RHDS provides a collection of ready-made, framework-agnostic Web Components with Red Hat branding, user experience, accessibility and style guidelines built in.
 
 ```html
 <rh-card>
