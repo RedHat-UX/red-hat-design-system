@@ -59,7 +59,7 @@ footer ::slotted(rh-button[variant='link' i]) {
   border-inline-start-color: transparent;
   border-block-end-color: transparent;
   border-inline-end-color: transparent;
-  background-color: var(--_background-color);
+  background-color: light-dark(var(--_background-color), var(--rh-color-surface-dark, #383838));
   box-shadow: var(--_box-shadow, none);
   padding: var(--rh-space-lg, 16px);
   display: grid;

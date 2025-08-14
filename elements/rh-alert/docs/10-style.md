@@ -31,6 +31,27 @@ background with a drop shadow.
   </figcaption>
 </figure>
 
+## Color scheme
+<a id="theme"></a>
+
+Alerts are available for both light and dark color schemes.
+
+### Light and dark themes
+
+<uxdot-example color-palette="lightest" width-adjustment="494px">
+  <img alt="Image of light theme alerts"
+       src="../alert-theme-light.png"
+       width="494"
+       height="124">
+</uxdot-example>
+
+<uxdot-example color-palette="darkest" width-adjustment="494px">
+  <img alt="Image of dark theme alerts"
+       src="../alert-theme-dark.png"
+       width="494"
+       height="124">
+</uxdot-example>
+
 ## Variants
 
 ### Inline
