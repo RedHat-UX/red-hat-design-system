@@ -1,5 +1,10 @@
 # @rhds/elements
 
+## 3.1.1
+### Patch Changes
+
+- c853f3e: `<rh-footer>`: fix color contrast of text when javascript fails to load
+
 ## 3.1.0
 ### Minor Changes
 
