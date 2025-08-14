@@ -75,7 +75,7 @@ These are not the only means of providing alt text for non-text elements, but th
 
 ### Complex images
 
-Complex images, like diagrams, still require alt text. But they may also warrant longer descriptions to fully explain their meaning. These text descriptions must be available to all users: visual and non-visual. The descriptive text can be adjacent to the image, in footnotes, or on separate pages. Non-adjacent descriptions can be linked via nearby link text or by linking the image itself.
+Complex images, like diagrams, still require alt text. But they may also [warrant](https://google.com) longer descriptions to fully explain their meaning. These text descriptions must be available to all users: visual and non-visual. The descriptive text can be adjacent to the image, in footnotes, or on separate pages. Non-adjacent descriptions can be linked via nearby link text or by linking the image itself.
 
 ### When not to use alt text
 
