@@ -48,6 +48,9 @@ export class RhAvatar extends LitElement {
   /** When true, hides the title and subtitle */
   @property({ reflect: true, type: Boolean }) plain = false;
 
+  /** Adds a subtle border to the avatar image */
+  @property({ reflect: true }) variant?: '' | 'bordered';
+
   #style?: CSSStyleDeclaration;
 
   #pattern?: RandomPatternController;
