@@ -96,6 +96,14 @@ export class RhIcon extends LitElement {
    */
   @property() loading?: 'idle' | 'lazy' | 'eager' = 'lazy';
 
+  /**
+   * Adds gradient fill to icon.
+   * Default color stops can be overwritten by using its CSS Custom Properties.
+   * - `--rh-icon-gradient-color-stop-1`
+   * - `--rh-icon-gradient-color-stop-2`
+   */
+  @property({ attribute: 'gradient-fill', reflect: true, type: Boolean }) gradientFill = false;
+
   /** Icon content. Any value that lit can render */
   @state() private content?: unknown;
 
@@ -113,16 +121,21 @@ export class RhIcon extends LitElement {
   render(): TemplateResult {
     const { set } = this;
     const content = this.#getContent();
+    const gradientFill = (this.gradientFill === true) ? 'gradient-fill' : '';
+    console.log(gradientFill);
+
     return html`
+      ${!this.gradientFill ? '' : html`
       <svg id="svg-gradients" aria-hidden="true" focusable="false">
         <linearGradient id="svg-gradient" x2="1" y2="1">
           <stop offset="0%" stop-color="var(--_icon-gradient-color-stop-1)" />
           <stop offset="100%" stop-color="var(--_icon-gradient-color-stop-2)" />
         </linearGradient>
       </svg>
+      `}
       <div id="container"
            aria-hidden="${String(!!content)}"
-           class="${classMap({ [set]: true })}">${!isServer ? content
+           class="${classMap({ [set]: true, [gradientFill]: true })}">${!isServer ? content
         : unsafeHTML(content as unknown as string)}<!--
            Container for the fallback (i.e. slotted) content
         --><span part="fallback" ?hidden="${content}"><!--

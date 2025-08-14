@@ -1,18 +1,20 @@
-<rh-icon class="icon-ai-gradient" icon="new-fill" set="ui"></rh-icon>
+<rh-icon icon="new-fill" set="ui" gradient-fill></rh-icon>
+<rh-icon class="custom-gradient" icon="check-circle-fill" set="ui" gradient-fill></rh-icon>
 
 <script type="module">
   import "@rhds/elements/rh-icon/rh-icon.js";
 </script>
 
 <style>
-  .icon-ai-gradient {
-    /* Override default color with gradient */
-    --rh-icon-fill: url(#svg-gradient);
+  .custom-gradient {
     /* Color 1 */
     --rh-icon-gradient-color-stop-1: var(--rh-color-blue-40, #4394e5); 
     /* Color 2 */
     --rh-icon-gradient-color-stop-2: var(--rh-color-green-40, #87bb62);
-    /* For demo purposes */
+  }
+  
+  :root {
+    /* For demo purposes only */
     --rh-icon-size: var(--rh-size-icon-06);
   }
 </style>

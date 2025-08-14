@@ -28,6 +28,10 @@ svg {
   width: var(--rh-icon-size, 12px);
 }
 
+.gradient-fill {
+  --rh-icon-fill: url('#svg-gradient');
+}
+
 #svg-gradients {
   position: absolute;
   width: 0;
