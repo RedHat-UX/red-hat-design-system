@@ -39,7 +39,7 @@ export class RhAvatar extends LitElement {
   /** The auxiliary information about the user, e.g. job title */
   @property({ reflect: true }) subtitle?: string;
 
-  /** The type of pattern to display. */
+  /** Places avatar on the left or on top of the text. */
   @property({ reflect: true }) layout?: 'inline' | 'block';
 
   /** The type of pattern to display. */
