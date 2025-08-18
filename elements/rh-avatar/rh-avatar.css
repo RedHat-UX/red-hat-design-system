@@ -105,6 +105,10 @@ svg {
   border-radius: var(--rh-border-radius-pill, 64px);
 }
 
+:host([variant='bordered']) :is(canvas, img, svg) {
+  border: var(--rh-border-width-sm, 1px) solid var(--rh-color-border-subtle);
+}
+
 :host([plain]) slot {
   /* .visually-hidden */
   position: absolute;
