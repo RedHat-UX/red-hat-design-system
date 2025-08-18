@@ -27,8 +27,9 @@
 
 [part='trigger']:is(:hover, :focus) {
   outline: var(--rh-border-width-md, 2px) solid var(--rh-color-interactive-primary-hover);
-  border: var(--rh-border-width-md, 2px) solid;
-  border-color:
+  border:
+    var(--rh-border-width-md, 2px)
+    solid
     light-dark(var(--rh-color-border-strong-on-dark, #ffffff),
       var(--rh-color-border-strong-on-light, #151515));
   background-color: var(--rh-color-interactive-primary-hover);
