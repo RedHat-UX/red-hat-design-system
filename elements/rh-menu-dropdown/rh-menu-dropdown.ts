@@ -5,7 +5,7 @@ import styles from './rh-menu-dropdown.css';
 
 /**
  * Menu Dropdown
- * @slot - Place element content here
+ * @alias Menu Dropdown
  */
 @customElement('rh-menu-dropdown')
 export class RhMenuDropdown extends LitElement {
@@ -13,6 +13,7 @@ export class RhMenuDropdown extends LitElement {
 
   render(): TemplateResult<1> {
     return html`
+      <!-- Place element content here -->
       <slot></slot>
     `;
   }
