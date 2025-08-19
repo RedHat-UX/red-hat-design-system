@@ -2,5 +2,5 @@
 "@rhds/elements": patch
 ---
 
-`<rh-alert>`: add dark color theme styling
+`<rh-alert>`: added support for dark color schemes
   
