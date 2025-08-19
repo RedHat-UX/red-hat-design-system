@@ -9,7 +9,7 @@
           status: 200,
           statusText: 'OK',
           async json() {
-            await new Promise(r => setTimeout(r, 100_000));
+            await new Promise(r => setTimeout(r, 3_500));
             return {
               page: 'fake data',
               components: ['fake data'],
