@@ -1,0 +1,131 @@
+diff --git a/node_modules/@patternfly/pfe-tools/custom-elements-manifest/lib/Manifest.js b/node_modules/@patternfly/pfe-tools/custom-elements-manifest/lib/Manifest.js
+index 2d5ecfe..c5ba2fd 100644
+--- a/node_modules/@patternfly/pfe-tools/custom-elements-manifest/lib/Manifest.js
++++ b/node_modules/@patternfly/pfe-tools/custom-elements-manifest/lib/Manifest.js
+@@ -178,7 +178,7 @@ export class Manifest {
+             // strict removes all special characters from slug
+             slug = slugify(slug, { strict: true, lower: true });
+             const primaryElementName = deslugify(slug, options.rootDir);
+-            const filePath = path.normalize(path.posix.join(options.rootDir, options.elementsDir, decodeURIComponent(demo.source?.href.replace(options.sourceControlURLPrefix, '') ?? '')));
++            const filePath = path.normalize(path.posix.join(options.rootDir, decodeURIComponent(demo.source?.href.replace(options.sourceControlURLPrefix, '') ?? '')));
+             const [last = ''] = filePath.split(path.sep).reverse();
+             const filename = last.replace('.html', '');
+             const isMainElementDemo = filename === 'index';
+diff --git a/node_modules/@patternfly/pfe-tools/dev-server/plugins/dev-server-router.js b/node_modules/@patternfly/pfe-tools/dev-server/plugins/dev-server-router.js
+index bff0cd8..b4d3b47 100644
+--- a/node_modules/@patternfly/pfe-tools/dev-server/plugins/dev-server-router.js
++++ b/node_modules/@patternfly/pfe-tools/dev-server/plugins/dev-server-router.js
+@@ -74,6 +74,64 @@ const demoSubresourceMiddleware = config => (ctx, next) => {
+         return next();
+     }
+ };
++/**
++ * Redirects both /elements and /elements/ to the root
++ * Handles both cases: /elements → / and /elements/ → /
++ */
++const elementsToRootRedirectMiddleware = () => (ctx) => ctx.redirect('/');
++
++/**
++ * Ensures trailing slash for component URLs
++ * FROM: `/elements/footer`
++ *   TO: `/elements/footer/`
++ * @param config normalized PFE dev server config
++ */
++const ensureTrailingSlashMiddleware = config => (ctx, next) => {
++    // Only add trailing slash if path doesn't already end with one
++    if (!ctx.path.endsWith('/')) {
++        return ctx.redirect(`${ctx.path}/`);
++    }
++    // If it already ends with slash, continue to next middleware
++    return next();
++};
++
++/**
++ * Handles lightdom CSS files that are missing the tag name in the path
++ * FROM: `elements/rh-footer-lightdom.css` or `elements/rh-footer-lightdom-shim.css`
++ *   TO: `elements/rh-footer/rh-footer-lightdom.css` or `elements/rh-footer/rh-footer-lightdom-shim.css`
++ * @param config normalized PFE dev server config
++ */
++const lightdomShortPathMiddleware = config => (ctx, next) => {
++    const { sheetName, suffix } = ctx.params;
++    // Extract tag name from sheet name (e.g., "rh-footer-lightdom" -> "rh-footer")
++    const tagName = sheetName.replace(/-lightdom$/, '');
++    // Keep the full sheetName including -lightdom part for the redirect
++    const redirect = `/${config.elementsDir}/${tagName}/${tagName}-lightdom${suffix ?? ''}.css`;
++    if (ctx.path !== redirect) {
++        return ctx.redirect(redirect);
++    }
++    else {
++        return next();
++    }
++};
++
++/**
++ * Handles lightdom CSS files accessed from demo directory
++ * FROM: `elements/rh-footer/demo/rh-footer-lightdom.css`
++ *   TO: `elements/rh-footer/rh-footer-lightdom.css`
++ * @param config normalized PFE dev server config
++ */
++const demoLightdomMiddleware = config => (ctx, next) => {
++    const { tagName, sheetName, suffix } = ctx.params;
++    const redirect = `/${config.elementsDir}/${tagName}/${sheetName}${suffix ?? ''}.css`;
++    if (ctx.path !== redirect) {
++        return ctx.redirect(redirect);
++    }
++    else {
++        return next();
++    }
++};
++
+ /**
+  * Creates a router Koa middleware for PFE dev server
+  * @param config Normalized dev server options
+@@ -83,6 +141,10 @@ export function pfeDevServerRouterMiddleware(config) {
+     const router = new Router();
+     const shim = lightdomShimMiddleware(config);
+     const demo = demoSubresourceMiddleware(config);
++    const shortPath = lightdomShortPathMiddleware(config);
++    const demoLightdom = demoLightdomMiddleware(config);
++    const trailingSlash = ensureTrailingSlashMiddleware(config);
++    const elementsRedirect = elementsToRootRedirectMiddleware();
+     return router
+         .get('/tools/pfe-tools/environment.js(.js)?', environmentMiddleware(config))
+         .get(`/core/pfe-core/:splatPath*.js`, coreMiddleware(config))
+@@ -94,6 +156,14 @@ export function pfeDevServerRouterMiddleware(config) {
+         .get(`/${componentSubpath}/:unprefixedElementSlug/:sheetName-lightdom.css`, shim)
+         .get(`/${componentSubpath}/:unprefixedElementSlug/demo/:demoName/:fileName.:ext`, demo)
+         .get(`/${componentSubpath}/:unprefixedElementSlug/demo/:fileName.:ext`, demo)
++        .get(`/${componentSubpath}/:sheetName-lightdom:suffix.css`, shortPath)
++        .get(`/${componentSubpath}/:sheetName-lightdom.css`, shortPath)
++        .get(`/${elementsDir}/:tagName/demo/:sheetName-lightdom:suffix.css`, demoLightdom)
++        .get(`/${elementsDir}/:tagName/demo/:sheetName-lightdom.css`, demoLightdom)
++        .get(`/${componentSubpath}/:unprefixedElementSlug/demo`, trailingSlash)
++        .get(`/${componentSubpath}/:unprefixedElementSlug`, trailingSlash)
++        .get(`/${componentSubpath}`, elementsRedirect)
++        .get(`/${componentSubpath}/`, elementsRedirect)
+         .routes();
+ }
+ //# sourceMappingURL=dev-server-router.js.map
+diff --git a/node_modules/@patternfly/pfe-tools/dev-server/plugins/dev-server-templates.js b/node_modules/@patternfly/pfe-tools/dev-server/plugins/dev-server-templates.js
+index 60f73d2..814e12e 100644
+--- a/node_modules/@patternfly/pfe-tools/dev-server/plugins/dev-server-templates.js
++++ b/node_modules/@patternfly/pfe-tools/dev-server/plugins/dev-server-templates.js
+@@ -58,7 +58,17 @@ export function pfeDevServerTemplateMiddleware(config) {
+         if (config.loadDemo && !(method !== 'HEAD' && method !== 'GET' || path.includes('.'))) {
+             const url = new URL(ctx.request.url, `http://${ctx.request.headers.host}`);
+             const demos = await getDemos(config);
+-            const demo = demos.find(x => x.permalink === url.pathname);
++
++
++
++            let demo = demos.find(x => x.permalink === url.pathname);
++
++            // Handle case where URL ends with /demo/ but permalink was shortened to just /
++            // e.g., request for /elements/footer/demo/ should match demo with permalink /elements/footer/
++            if (!demo && url.pathname.endsWith('/demo/')) {
++                const alternativePathname = url.pathname.replace('/demo/', '/');
++                demo = demos.find(x => x.permalink === alternativePathname);
++            }
+             const manifest = demo?.manifest;
+             const templateContent = await getTemplateContent(demo);
+             ctx.cwd = process.cwd();
