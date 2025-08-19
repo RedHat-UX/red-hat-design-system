@@ -809,7 +809,7 @@ export default class ElementsPage extends Renderer<Context> {
       ${content}
       ${!ctx.doc.fileExists ? '' : await this.renderFile(ctx.doc.filePath, ctx)}
       ${(await Promise.all(demos.map(async demo => `
-      ${this.#header(demo.filePath?.endsWith('/index.html') ? this.#getPrettyTagName(ctx)
+      ${this.#header(demo.filePath?.match(/\/index(\.html|\/)/) ? this.#getPrettyTagName(ctx)
                    : demo.title, 2, `demo-${this.slugify(demo.title)}`)}
       ${await this.#renderDemo(demo, ctx)}
       `))).filter(Boolean).join('')}
@@ -827,7 +827,7 @@ export default class ElementsPage extends Renderer<Context> {
       const projectId = `demo-${tagName}-${demoSlug}`;
       const githubSourcePrefix = `https://github.com/RedHat-UX/red-hat-design-system/tree/main`;
       const sourceUrl = `${githubSourcePrefix}${demo.filePath.replace(process.cwd(), '')}`;
-      const demoUrl = `/elements/${this.getTagNameSlug(tagName)}/demo/${demoSlug === tagName ? '' : `${demoSlug}/`}`;
+      const demoUrl = `/elements/${this.getTagNameSlug(tagName)}/demo/${demoSlug === 'index' ? '' : `${demoSlug}/`}`;
       const codeblocks = await this.#getDemoCodeBlocks(demo);
       if (codeblocks) {
         return html`
