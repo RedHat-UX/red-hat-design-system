@@ -1,16 +1,3 @@
-diff --git a/node_modules/@patternfly/pfe-tools/custom-elements-manifest/lib/Manifest.js b/node_modules/@patternfly/pfe-tools/custom-elements-manifest/lib/Manifest.js
-index 2d5ecfe..c5ba2fd 100644
---- a/node_modules/@patternfly/pfe-tools/custom-elements-manifest/lib/Manifest.js
-+++ b/node_modules/@patternfly/pfe-tools/custom-elements-manifest/lib/Manifest.js
-@@ -178,7 +178,7 @@ export class Manifest {
-             // strict removes all special characters from slug
-             slug = slugify(slug, { strict: true, lower: true });
-             const primaryElementName = deslugify(slug, options.rootDir);
--            const filePath = path.normalize(path.posix.join(options.rootDir, options.elementsDir, decodeURIComponent(demo.source?.href.replace(options.sourceControlURLPrefix, '') ?? '')));
-+            const filePath = path.normalize(path.posix.join(options.rootDir, decodeURIComponent(demo.source?.href.replace(options.sourceControlURLPrefix, '') ?? '')));
-             const [last = ''] = filePath.split(path.sep).reverse();
-             const filename = last.replace('.html', '');
-             const isMainElementDemo = filename === 'index';
 diff --git a/node_modules/@patternfly/pfe-tools/dev-server/plugins/dev-server-router.js b/node_modules/@patternfly/pfe-tools/dev-server/plugins/dev-server-router.js
 index bff0cd8..b4d3b47 100644
 --- a/node_modules/@patternfly/pfe-tools/dev-server/plugins/dev-server-router.js
