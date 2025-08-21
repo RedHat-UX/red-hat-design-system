@@ -5,7 +5,7 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { themable } from '@rhds/elements/lib/themable.js';
 import { css } from "lit";
-const styles = css `:host{display:block;--rh-breadcrumb-link-color:var(--rh-color-interactive-blue-darker,#06c);--rh-breadcrumb-link-color-current-page:var(--rh-color-text-primary-on-light,#151515);--rh-breadcrumb-link-color-current-page-subtle:var(--rh-color-text-secondary-on-light,#4d4d4d);--rh-breadcrumb-link-color-hover:var(--rh-color-interactive-blue-darkest,#036);--rh-breadcrumb-link-color-visited:var(--rh-color-interactive-purple-darker,#5e40be);--rh-breadcrumb-link-color-visited-hover:var(--rh-color-interactive-purple-darkest,#ece6ff);--rh-breadcrumb-link-focus-outline-color:var(--rh-color-border-interactive-on-light,#06c);--rh-breadcrumb-li-padding-inline-end:42px;--rh-breadcrumb-caret-image:url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" width="10" height="21" viewBox="0 0 10 21"%3E%3Cpath d="m0 20.5 9-10-9-10" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/%3E%3C/svg%3E');--rh-breadcrumb-caret-image-subtle:url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" width="10" height="21" viewBox="0 0 10 21"%3E%3Cpath d="m0 20.5 9-10-9-10" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/%3E%3C/svg%3E')}`;
+const styles = css `:host{display:block}`;
 const truncateBtnClass = 'truncate-btn';
 const truncateBtnContainerClass = `${truncateBtnClass}-container`;
 function isTruncateButtonDescendant(target) {
@@ -30,7 +30,12 @@ const truncationBtn = html `
  * @summary Links displaying a hierarchical location
  *
  * @alias breadcrumb
- *
+ * @cssprop [--rh-breadcrumb-caret-image={svg encoded as data URI}] -
+ * The default `mask-image` separating each breadcrumb item
+ * @cssprop [--rh-breadcrumb-li-padding-inline-end=var(--rh-space-lg, 16px)] -
+ * Sets the spacing between each breadcrumb item.
+ * @cssprop [--rh-breadcrumb-link-color=var(--rh-color-interactive-primary-default)] -
+ * The link color for each anchor in the list
  */
 let RhBreadcrumb = class RhBreadcrumb extends LitElement {
     constructor() {
