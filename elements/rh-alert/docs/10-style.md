@@ -31,6 +31,35 @@ background with a drop shadow.
   </figcaption>
 </figure>
 
+## Color scheme
+<a id="theme"></a>
+
+Alerts are available for both light and dark color schemes.
+
+### Light and dark themes
+
+<uxdot-example variant="full" no-border alignment="left" color-palette="lightest" width-adjustment="1140px">
+  <img alt="Three examples of a light theme alert - 
+  one info status inline alert with a top border, 
+  one success status inline alert with a full border, 
+  and one warning status toast alert. 
+  The background color for inline alerts changes with the status."
+       src="../alert-theme-light.svg"
+       width="1140"
+       height="286">
+</uxdot-example>
+
+<uxdot-example variant="full" no-border alignment="left" color-palette="darkest" width-adjustment="1140px">
+  <img alt="Three examples of a dark theme alert - 
+  one info status inline alert with a top border, 
+  one success status inline alert with a full border, 
+  and one warning status toast alert. 
+  The background color for all alert variants are the same."
+       src="../alert-theme-dark.svg"
+       width="1140"
+       height="286">
+</uxdot-example>
+
 ## Variants
 
 ### Inline
