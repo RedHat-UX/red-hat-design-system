@@ -1,0 +1,14 @@
+:host {
+  display: block;
+  padding: 0.5em 1em;
+  cursor: pointer;
+}
+:host(:focus) {
+  background: #eee;
+  outline: none;
+}
+:host([disabled]) {
+  color: #888;
+  cursor: default;
+  pointer-events: none;
+}
