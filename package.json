@@ -85,7 +85,8 @@
     "⚙️--UTIL": "❓ Manages the repo",
     "clean": "git clean -dfx -e node_modules -e .husky",
     "clean:nuke": "git clean -fX",
-    "lint": "wireit"
+    "lint": "wireit",
+    "validate-element-data": "wireit"
   },
   "wireit": {
     "patch": {
@@ -230,7 +231,8 @@
         "patch",
         "eslint",
         "stylelint",
-        "markdownlint"
+        "markdownlint",
+        "validate-element-data"
       ]
     },
     "eslint": {
@@ -267,6 +269,14 @@
     "prepublishOnly": {
       "dependencies": [
         "build"
+      ]
+    },
+    "validate-element-data": {
+      "command": "npx tsx scripts/validate-element-data.ts --errors-only",
+      "files": [
+        "elements/*/docs/data.yaml",
+        "docs/schemas/element-data.schema.json",
+        "scripts/validate-element-data.ts"
       ]
     }
   },

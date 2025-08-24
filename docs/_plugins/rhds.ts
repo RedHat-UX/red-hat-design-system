@@ -1,6 +1,7 @@
 import type { UserConfig } from '@11ty/eleventy';
+import type { RepoStatusRecord } from './types.js';
 import { join, dirname, relative } from 'node:path';
-import { cp, glob, readdir, writeFile, mkdir } from 'node:fs/promises';
+import { cp, glob, readdir, writeFile, mkdir, readFile, stat } from 'node:fs/promises';
 import { makeDemoEnv } from '#scripts/environment.js';
 
 import { $ } from 'execa';
@@ -16,8 +17,6 @@ import LitSSRPlugin from '#11ty-plugins/lit-ssr/lit.js';
 
 import { getPfeConfig } from '@patternfly/pfe-tools/config.js';
 import { capitalize } from '#11ty-plugins/tokensHelpers.js';
-
-import repoStatus from '#11ty-data/repoStatus.js';
 
 /**
  * EleventyTransformContext the `this` binding for transform functions
@@ -60,6 +59,40 @@ const COPY_CONTENT_EXTENSIONS = [
 const cwd = process.cwd();
 
 /**
+ * Load and aggregate element data from colocated YAML files
+ */
+async function loadAggregatedElementData(): Promise<RepoStatusRecord[]> {
+  const elementDirs = (await readdir(join(cwd, 'elements'), { withFileTypes: true }))
+      .filter(ent => ent.isDirectory() && ent.name.startsWith('rh-'))
+      .map(ent => ent.name);
+
+  const aggregatedData: RepoStatusRecord[] = [];
+
+  // Load colocated YAML data
+  for (const tagName of elementDirs) {
+    const yamlPath = join(cwd, 'elements', tagName, 'docs', 'data.yaml');
+
+    try {
+      await stat(yamlPath);
+      const yamlContent = await readFile(yamlPath, 'utf8');
+      const data = yaml.load(yamlContent) as RepoStatusRecord;
+
+      if (data.tagName !== tagName) {
+        // eslint-disable-next-line no-console
+        console.warn(`Warning: tagName mismatch in ${yamlPath}. Expected ${tagName}, got ${data.tagName}`);
+      }
+
+      aggregatedData.push(data);
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.warn(`Warning: Failed to load YAML data for ${tagName}:`, error);
+    }
+  }
+
+  return aggregatedData;
+}
+
+/**
  * Generate a map of files per package which should be copied to the site dir
  */
 async function getFilesToCopy() {
@@ -100,6 +133,8 @@ export default async function(
   /** add the normalized pfe-tools config to global data */
   eleventyConfig.addGlobalData('pfeconfig', getPfeConfig());
 
+  // Related items are now loaded per-page via element data instead of global data
+
   eleventyConfig.addGlobalData('sideNavDropdowns', [
     { title: 'About', url: '/about', collection: 'about' },
     { title: 'Get started', url: '/get-started', collection: 'getstarted' },
@@ -128,12 +163,14 @@ export default async function(
   });
 
   eleventyConfig.on('eleventy.before', async ({ directories, runMode }) => {
-    const outPath = join(directories.output, 'assets/javascript/repoStatus.json');
     switch (runMode) {
       case 'watch':
-      case 'build':
-        await mkdir(dirname(outPath), { recursive: true });
-        await writeFile(outPath, JSON.stringify(repoStatus), 'utf8');
+      case 'build': {
+        await mkdir(join(directories.output, 'assets/javascript'), { recursive: true });
+        // Generate aggregated repoStatus JSON for uxdot components
+        const repoStatusPath = join(directories.output, 'assets/javascript/repoStatus.json');
+        const aggregatedData = await loadAggregatedElementData();
+        await writeFile(repoStatusPath, JSON.stringify(aggregatedData), 'utf8'); }
     }
   });
 
