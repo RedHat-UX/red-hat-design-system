@@ -1,0 +1,14 @@
+$schema: ../../../docs/schemas/element-data.schema.json
+tagName: rh-blockquote
+name: Blockquote
+type: element
+overallStatus: ready
+libraries:
+  figma: ready
+  rhds: ready
+  shared: ready
+  docs: ready
+relatedItems:
+  - rh-card
+  - rh-statistic
+  - rh-video-embed

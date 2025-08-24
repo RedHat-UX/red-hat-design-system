@@ -1,8 +1,10 @@
 import { html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
+import { state } from 'lit/decorators/state.js';
 
 import { UxdotRepoElement } from './uxdot-repo.js';
+import type { ComputedTagStatus } from './uxdot-repo.js';
 
 import '@rhds/elements/rh-table/rh-table.js';
 
@@ -13,9 +15,18 @@ export class UxdotRepoStatusTable extends UxdotRepoElement {
   static styles = [style];
 
   @property() element?: string;
+  @state() private allStatus: ComputedTagStatus[] = [];
+
+  async connectedCallback() {
+    super.connectedCallback();
+    try {
+      this.allStatus = await this.getStatus();
+    } catch {
+      this.allStatus = [];
+    }
+  }
 
   render() {
-    const status = this.getStatus();
     return html`
       <!-- TODO: remove lightdom after implementing auto-load-->
       <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
@@ -38,18 +49,18 @@ export class UxdotRepoStatusTable extends UxdotRepoElement {
                 <th scope="col">Documentation</th>
               </tr>
             </thead>
-            <tbody>${status.map(x => this.getStatus(x.tagName)).map(x => html`
+            <tbody>${this.allStatus.map(x => html`
               <tr>
                 <td>
                   <a href="/elements/${x.slug}/">${x?.name}</a>${x?.overallStatus === 'ready' ? '' : html`
                   <rh-tag color="${x?.color}"
                           variant="${x?.variant}"
                           icon="${x?.icon}">${x?.overallStatus}</rh-tag>`}
-                </td>${x?.libraries.map(x => html`
+                </td>${x?.libraries.map(lib => html`
                 <td>
-                  <rh-tag color="${x.color}"
-                          variant="${x.variant}"
-                          icon="${x.icon}">${x.status}</rh-tag>
+                  <rh-tag color="${lib.color}"
+                          variant="${lib.variant}"
+                          icon="${lib.icon}">${lib.status}</rh-tag>
                 </td>`)}
               </tr>`)}
             </tbody>

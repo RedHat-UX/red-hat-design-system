@@ -1,0 +1,10 @@
+$schema: ../../../docs/schemas/element-data.schema.json
+tagName: rh-back-to-top
+name: Back to top
+type: element
+overallStatus: ready
+libraries:
+  figma: ready
+  rhds: ready
+  shared: planned
+  docs: inProgress

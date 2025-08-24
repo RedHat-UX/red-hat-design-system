@@ -1,0 +1,10 @@
+$schema: ../../../docs/schemas/element-data.schema.json
+tagName: rh-footnote
+name: Footnote
+type: element
+overallStatus: planned
+libraries:
+  figma: planned
+  rhds: planned
+  shared: planned
+  docs: planned

@@ -1,0 +1,14 @@
+$schema: ../../../docs/schemas/element-data.schema.json
+tagName: rh-navigation-primary
+name: Navigation (primary)
+type: element
+overallStatus: ready
+libraries:
+  figma: ready
+  rhds: ready
+  shared: planned
+  docs: ready
+relatedItems:
+  - rh-navigation-secondary
+  - skip-navigation
+  - rh-subnav

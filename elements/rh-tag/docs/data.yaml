@@ -1,0 +1,14 @@
+$schema: ../../../docs/schemas/element-data.schema.json
+tagName: rh-tag
+name: Tag
+type: element
+overallStatus: ready
+libraries:
+  figma: ready
+  rhds: ready
+  shared: inProgress
+  docs: ready
+relatedItems:
+  - rh-badge
+  - rh-button
+  - rh-chip

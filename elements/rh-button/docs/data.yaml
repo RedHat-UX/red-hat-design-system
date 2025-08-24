@@ -1,0 +1,14 @@
+$schema: ../../../docs/schemas/element-data.schema.json
+tagName: rh-button
+name: Button
+type: element
+overallStatus: ready
+libraries:
+  figma: ready
+  rhds: ready
+  shared: ready
+  docs: ready
+relatedItems:
+  - rh-alert
+  - rh-cta
+  - search-bar

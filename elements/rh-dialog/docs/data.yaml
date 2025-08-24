@@ -1,0 +1,14 @@
+$schema: ../../../docs/schemas/element-data.schema.json
+tagName: rh-dialog
+name: Dialog
+type: element
+overallStatus: ready
+libraries:
+  figma: ready
+  rhds: ready
+  shared: ready
+  docs: ready
+relatedItems:
+  - announcement
+  - sticky-banner
+  - sticky-card

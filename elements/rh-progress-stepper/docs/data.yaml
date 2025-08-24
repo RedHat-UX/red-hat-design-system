@@ -1,0 +1,17 @@
+$schema: ../../../docs/schemas/element-data.schema.json
+tagName: rh-progress-stepper
+name: Progress Steps
+type: element
+overallStatus: ready
+description: >-
+  Progress steps guide a user through a task with multiple sequential steps toward the completion of
+  a linear process.
+libraries:
+  figma: ready
+  rhds: ready
+  shared: inProgress
+  docs: ready
+relatedItems:
+  - rh-jump-links
+  - rh-pagination
+  - rh-tabs

@@ -1,0 +1,17 @@
+$schema: ../../../docs/schemas/element-data.schema.json
+tagName: rh-popover
+name: Popover
+type: element
+overallStatus: ready
+description: >-
+  A Popover displays content in a non-modal dialog and adds contextual information or provides
+  resources via text and links.
+libraries:
+  figma: ready
+  rhds: planned
+  shared: planned
+  docs: ready
+relatedItems:
+  - rh-alert
+  - rh-footer
+  - rh-tooltip

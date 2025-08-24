@@ -1,0 +1,10 @@
+$schema: ../../../docs/schemas/element-data.schema.json
+tagName: rh-scheme-toggle
+name: Scheme toggle
+type: element
+overallStatus: ready
+libraries:
+  figma: planned
+  rhds: ready
+  shared: planned
+  docs: planned

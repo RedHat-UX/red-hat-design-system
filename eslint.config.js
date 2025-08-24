@@ -27,7 +27,6 @@ export default tseslint.config(
       'docs/core',
       'docs/components',
       'docs/_plugins/lit-ssr/worker.js',
-      'docs/_data/repoStatus.js',
       'docs/assets/javascript/elements/uxdot/*.js.map',
       'docs/assets/javascript/elements/uxdot/*.d.ts',
       'docs/assets/javascript/elements/uxdot/*.js',

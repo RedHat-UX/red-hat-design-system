@@ -1,0 +1,10 @@
+$schema: ../../../docs/schemas/element-data.schema.json
+tagName: rh-announcement
+name: Announcement
+type: element
+overallStatus: new
+libraries:
+  figma: ready
+  rhds: ready
+  shared: planned
+  docs: ready

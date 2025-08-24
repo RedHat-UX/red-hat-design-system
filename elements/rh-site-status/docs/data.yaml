@@ -1,0 +1,13 @@
+$schema: ../../../docs/schemas/element-data.schema.json
+tagName: rh-site-status
+name: Site status
+type: element
+overallStatus: ready
+libraries:
+  figma: ready
+  rhds: ready
+  shared: planned
+  docs: ready
+relatedItems:
+  - rh-card
+  - rh-footer
