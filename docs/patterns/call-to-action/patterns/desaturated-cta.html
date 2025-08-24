@@ -1,29 +1,33 @@
 <rh-card color-palette="darkest">
   <h2 slot="header">Desaturated Calls to Action</h2>
   <p>Desaturated is a theme (i.e. a pattern) applied to default and primary dark schemed CTAs</p>
-  <rh-cta class="desaturated"><a href="#">Default</a></rh-cta>
-  <rh-cta class="desaturated" icon="play-circle"><a href="#">Default Video</a></rh-cta>
-  <rh-cta class="desaturated" variant="primary"><a href="#">Primary</a></rh-cta>
-  <rh-cta class="desaturated" variant="primary" icon="play-circle"><a href="#">Video</a></rh-cta>
+  <rh-cta class="desaturated" href="#">Default</rh-cta>
+  <rh-cta class="desaturated" icon="play-circle" href="#">Default Video</rh-cta>
+  <rh-cta class="desaturated" variant="primary" href="#">Primary</rh-cta>
+  <rh-cta class="desaturated" variant="primary" icon="play-circle" href="#">Video</rh-cta>
 </rh-card>
 
 <style>
-  .desaturated {
-    --rh-cta-color: var(--rh-color-text-primary-on-dark, #ffffff);
-    --rh-cta-hover-color: var(--rh-color-gray-40, #a3a3a3);
-    --rh-cta-focus-color: var(--rh-color-text-primary-on-light, #151515);
-    --rh-cta-focus-container-background-color: var(--rh-color-gray-40, #a3a3a3);
-  }
-
-  .desaturated[variant='primary'] {
-    --rh-cta-color: var(--rh-color-text-primary-on-light, #151515);
-    --rh-cta-hover-color: var(--rh-color-text-primary-on-light, #151515);
-    --rh-color-brand-red: var(--rh-color-surface-lightest, #ffffff);
-    --rh-color-brand-red-dark: var(--rh-color-gray-40, #a3a3a3);
-  }
-
   rh-cta {
     margin-inline-end: 1rem;
     margin-block: 1rem;
+    &.desaturated {
+      --rh-cta-color: var(--rh-color-text-primary-on-dark, #ffffff);
+      --rh-cta-hover-color: var(--rh-color-gray-40, #a3a3a3);
+      --rh-cta-focus-color: var(--rh-color-text-primary-on-light, #151515);
+      --rh-cta-focus-container-background-color: var(--rh-color-gray-40, #a3a3a3);
+    }
+    &[variant='primary'] {
+      --rh-cta-color: var(--rh-color-text-primary-on-light, #151515);
+      --rh-cta-hover-color: var(--rh-color-text-primary-on-light, #151515);
+      --rh-color-brand-red: var(--rh-color-surface-lightest, #ffffff);
+      --rh-color-brand-red-dark: var(--rh-color-gray-40, #a3a3a3);
+    }
   }
 </style>
+
+<script type="module">
+  import "@rhds/elements/rh-card/rh-card.js";
+  import "@rhds/elements/rh-cta/rh-cta.js";
+</script>
+
