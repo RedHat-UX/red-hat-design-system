@@ -26,16 +26,6 @@ export class RhMenuItem extends LitElement {
     const el = this.shadowRoot?.querySelector('[role="menuitem"]') as HTMLElement | null;
     el?.focus();
   }
-
-  click() {
-    if (!this.disabled) {
-      this.dispatchEvent(new CustomEvent('item-selected', {
-        detail: { text: this.textContent?.trim() },
-        bubbles: true,
-        composed: true
-      }));
-    }
-  } 
 }
 
 declare global {

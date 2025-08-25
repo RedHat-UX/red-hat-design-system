@@ -4,7 +4,7 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import styles from './rh-menu-dropdown.css';
 import { property, query, queryAll } from 'lit/decorators.js';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
-import type { RhMenuItem } from './rh-menu-item.js';
+import { RhMenuItem } from './rh-menu-item.js';
 
 /**
  * Menu Dropdown
@@ -14,10 +14,31 @@ import type { RhMenuItem } from './rh-menu-item.js';
 export class RhMenuDropdown extends LitElement {
   static readonly styles: CSSStyleSheet[] = [styles];
   @property({ type: Boolean, reflect: true }) open = false;
-  @query('#toggle') toggleButton!: HTMLElement;
+  @query('#menu-toggle') menuToggleButton!: HTMLElement;
+  @query('slot') slotElement!: HTMLSlotElement;
+
+  firstUpdated() {
+    this.validateSlotContent();
+    this.slotElement.addEventListener('slotchange', () => this.validateSlotContent());
+  }
 
   get #items() {
     return this.items;
+  }
+
+  private validateSlotContent() {
+    const assignedElements = this.slotElement.assignedElements({ flatten: true });
+
+    assignedElements.forEach(el => {
+      if (!this.isValidMenuDropdownChild(el)) {
+        console.error(`Invalid slotted element:`,el);
+        //el.remove();
+      }
+    });
+  }
+
+  private isValidMenuDropdownChild(el: Element): boolean {
+    return el instanceof RhMenuItem || el instanceof HTMLHRElement;
   }
 
   #tabindex = RovingTabindexController.of(this, {
@@ -39,7 +60,7 @@ export class RhMenuDropdown extends LitElement {
   render(): TemplateResult<1> {
     return html`
       <button
-        id="toggle"
+        id="menu-toggle"
         aria-haspopup="true"
         aria-expanded="${this.open}"
         @click="${this.toggleMenu}"
@@ -50,7 +71,7 @@ export class RhMenuDropdown extends LitElement {
       <div
         id="menu"
         role="menu"
-        @item-selected="${this.onItemSelected}"
+        @click=${this.onSelect}
       >
         <slot></slot>
       </div>
@@ -80,14 +101,16 @@ export class RhMenuDropdown extends LitElement {
     }
   }
 
-  onItemSelected(e: CustomEvent) {
-    this.open = false;
-    this.toggleButton.focus();
-    this.dispatchEvent(new CustomEvent('select', {
-      detail: e.detail,
-      bubbles: true,
-      composed: true
-    }));
+  onSelect(event: KeyboardEvent | Event & { target: RhMenuItem }) {
+    if(event.target instanceof RhMenuItem){
+      this.open = false;
+      this.menuToggleButton.focus();
+      this.dispatchEvent(new CustomEvent('select', {
+        detail: {text: event.target.textContent},
+        bubbles: true,
+        composed: true
+      }));
+    }
   }
 }
 
