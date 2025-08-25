@@ -14,13 +14,14 @@
 #container {
   display: grid;
   grid-template-columns: auto;
-  grid-template-areas: 'heading' 'controls' 'content' 'code';
+  grid-template-areas: 'heading' 'controls' 'description' 'content' 'code';
   gap: var(--rh-space-2xl) var(--rh-space-4xl);
 
   @container host (width >= 530px) {
     grid-template-columns: auto auto;
     grid-template-areas:
       'heading controls'
+      'description description'
       'content content'
       'code code';
   }
@@ -29,6 +30,7 @@
     grid-template-areas:
       'heading heading'
       'controls controls'
+      'description description'
       'content content'
       'code code';
   }
@@ -40,7 +42,13 @@
   align-items: center;
 }
 
-#description { grid-area: content; }
+#description {
+  grid-area: description;
+
+  & ::slotted(p) {
+    margin-block: 0 !important;
+  }
+}
 
 h3,
 ::slotted(h2),
@@ -98,4 +106,13 @@ h3,
 
     border-width: 0;
   }
+}
+
+/* When description is empty, move content and code tabs up one area: */
+#description.empty ~ #content {
+  grid-area: description;
+}
+
+#description.empty ~ #code-tabs {
+  grid-area: content;
 }
