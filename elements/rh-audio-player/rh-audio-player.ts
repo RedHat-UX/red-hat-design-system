@@ -352,16 +352,17 @@ export class RhAudioPlayer extends LitElement {
     const accentColor = !!this.#styles?.getPropertyValue('--rh-audio-player-background-color');
 
     return html`
-      <div id="container"
-          class="${classMap({
-              [layout]: true,
-              expanded,
-              'mediatitle': mediatitle !== undefined,
-              'poster': poster !== undefined,
-              'show-menu': showMenu,
-              'has-accent-color': accentColor,
-              'mobile-safari': !!this.#isMobileSafari,
-            })}">
+      <div id="query-context">
+        <div id="container"
+            class="${classMap({
+                [layout]: true,
+                expanded,
+                'mediatitle': mediatitle !== undefined,
+                'poster': poster !== undefined,
+                'show-menu': showMenu,
+                'has-accent-color': accentColor,
+                'mobile-safari': !!this.#isMobileSafari,
+              })}">
         <input type="hidden" value=${this.#readyState}>
         <!-- html \`audio\` element -->
         <slot id="media" name="media" @slotchange="${this.#initMediaElement}"></slot>
@@ -591,6 +592,7 @@ export class RhAudioPlayer extends LitElement {
                 @transcriptdownload=${this.#onTranscriptDownload}>
           </slot>
         </div>
+      </div>
       </div>
     `;
   }
