@@ -3,8 +3,11 @@ import { html, isServer } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 import { ifDefined } from 'lit/directives/if-defined.js';
+import { classMap } from 'lit/directives/class-map.js';
 
 import { SSRFailureRecoverableElement } from './ssr-failure-recoverable.js';
+
+import { SlotController } from '@patternfly/pfe-core/controllers/slot-controller.js';
 
 import { colorPalettes, type ColorPalette } from '@rhds/elements/lib/color-palettes.js';
 import { themable } from '@rhds/elements/lib/themable.js';
@@ -67,6 +70,8 @@ export class UxdotPattern extends SSRFailureRecoverableElement {
 
   ssr = new UxdotPatternSSRController(this);
 
+  #slots = new SlotController(this, null, 'heading');
+
   render() {
     const { activeTab = 'html' } = this;
     const { allContent, htmlContent, cssContent, jsContent, hasJs, hasCss } = this.ssr;
@@ -92,7 +97,9 @@ export class UxdotPattern extends SSRFailureRecoverableElement {
                              allow="${this.allow}"></rh-context-picker>
         </form>
 
-        <div id="description"><slot></slot></div>
+        <div id="description" class="${classMap({ empty: this.#slots.isEmpty(null) })}">
+          <slot></slot>
+        </div>
 
         <rh-surface id="content">${allContent}</rh-surface>
 
