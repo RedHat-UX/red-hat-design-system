@@ -75,14 +75,19 @@ async function loadAggregatedElementData(): Promise<RepoStatusRecord[]> {
     try {
       await stat(yamlPath);
       const yamlContent = await readFile(yamlPath, 'utf8');
-      const data = yaml.load(yamlContent) as RepoStatusRecord;
+      const data = yaml.load(yamlContent) as Partial<RepoStatusRecord>;
 
-      if (data.tagName !== tagName) {
-        // eslint-disable-next-line no-console
-        console.warn(`Warning: tagName mismatch in ${yamlPath}. Expected ${tagName}, got ${data.tagName}`);
-      }
+      // Derive name from aliases or tag name
+      const name = pfeconfig?.aliases?.[tagName] ?? capitalize(tagName.replace(`${pfeconfig?.tagPrefix ?? 'rh'}-`, ''));
 
-      aggregatedData.push(data);
+      // Merge derived data with YAML data
+      const record: RepoStatusRecord = {
+        tagName,
+        name,
+        ...data
+      } as RepoStatusRecord;
+
+      aggregatedData.push(record);
     } catch (error) {
       // eslint-disable-next-line no-console
       console.warn(`Warning: Failed to load YAML data for ${tagName}:`, error);

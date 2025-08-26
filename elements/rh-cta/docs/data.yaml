@@ -1,6 +1,4 @@
-$schema: ../../../docs/schemas/element-data.schema.json
-tagName: rh-cta
-name: Call to action
+# yaml-language-server: $schema=../../../docs/schemas/element-data.schema.json
 type: element
 overallStatus: ready
 libraries:

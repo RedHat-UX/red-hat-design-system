@@ -72,6 +72,6 @@
       "uniqueItems": true
     }
   },
-  "required": ["tagName", "name", "type", "overallStatus", "libraries"],
+  "required": ["type", "overallStatus", "libraries"],
   "additionalProperties": false
 }
