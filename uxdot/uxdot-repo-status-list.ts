@@ -23,7 +23,7 @@ export class UxdotRepoStatusList extends UxdotRepoElement {
       <div id="container">
         <a href="#status-checklist" class="checklist">What do these mean?</a>
         <div id="inner-container">
-          <dl>${this.statusData?.libraries.map(x => x.key === 'docs' ? '' : html`
+          <dl>${this.statusData?.libraries?.map(x => x.key === 'docs' ? '' : html`
             <div>
               <dt>${x.name}:</dt>
               <dd>

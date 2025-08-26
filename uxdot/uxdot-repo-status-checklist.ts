@@ -37,7 +37,7 @@ export class UxdotRepoStatusChecklist extends UxdotRepoElement {
                 <th scope="col" width="60%">Meaning</th>
               </tr>
             </thead>
-            <tbody>${this.statusData?.libraries.map(x => x.key === 'docs' ? '' : html`
+            <tbody>${this.statusData?.libraries?.map(x => x.key === 'docs' ? '' : html`
               <tr>
                 <td data-label="Property">${x.name}</td>
                 <td data-label="Status">
