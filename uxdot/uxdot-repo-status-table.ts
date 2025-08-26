@@ -3,9 +3,11 @@ import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
 import { UxdotRepoElement } from './uxdot-repo.js';
-import type { ComputedTagStatus } from './uxdot-repo.js';
+import type { RepoStatusRecord } from '../docs/_plugins/types.js';
 
 import '@rhds/elements/rh-table/rh-table.js';
+import '@rhds/elements/rh-tag/rh-tag.js';
+
 
 import style from './uxdot-repo-status-table.css';
 
@@ -13,18 +15,13 @@ import style from './uxdot-repo-status-table.css';
 export class UxdotRepoStatusTable extends UxdotRepoElement {
   static styles = [style];
 
-  @property({
-    attribute: 'status-data',
-    type: Object,
-  }) statusData?: ComputedTagStatus[];
+  @property({ attribute: 'status-data', type: Object }) statusData: RepoStatusRecord[] = [];
 
-  get allStatus(): ComputedTagStatus[] {
-    // In browser, check for global data first, then fall back to attribute
-    if (typeof window !== 'undefined') {
-      return (window as any).__REPO_STATUS_DATA__ || this.statusData || [];
+  private getStatusInfo(status?: string) {
+    if (!status) {
+      return null;
     }
-    // In SSR, only use attribute data
-    return this.statusData || [];
+    return UxdotRepoElement.legend[status as keyof typeof UxdotRepoElement.legend] || null;
   }
 
   render() {
@@ -50,20 +47,43 @@ export class UxdotRepoStatusTable extends UxdotRepoElement {
                 <th scope="col">Documentation</th>
               </tr>
             </thead>
-            <tbody>${this.allStatus.map(x => html`
+            <tbody>${this.statusData.map(x => {
+              const figmaInfo = this.getStatusInfo(x.libraries?.figma);
+              const rhdsInfo = this.getStatusInfo(x.libraries?.rhds);
+              const sharedInfo = this.getStatusInfo(x.libraries?.shared);
+              const docsInfo = this.getStatusInfo(x.libraries?.docs);
+              const overallInfo = this.getStatusInfo(x.overallStatus);
+
+              return html`
               <tr>
                 <td>
-                  <a href="/elements/${x.slug}/">${x?.name}</a>${x?.overallStatus === 'ready' ? '' : html`
-                  <rh-tag color="${x?.color}"
-                          variant="${x?.variant}"
-                          icon="${x?.icon}">${x?.overallStatus}</rh-tag>`}
-                </td>${x?.libraries.map(lib => html`
-                <td>
-                  <rh-tag color="${lib.color}"
-                          variant="${lib.variant}"
-                          icon="${lib.icon}">${lib.status}</rh-tag>
-                </td>`)}
-              </tr>`)}
+                  <a href="/elements/${x.tagName}/">${x.name}</a>${x.overallStatus === 'ready' ? '' : html`
+                  <rh-tag color="${overallInfo?.color || 'gray'}"
+                          variant="${overallInfo?.variant || 'outline'}"
+                          icon="${overallInfo?.icon || 'ban'}">${x.overallStatus}</rh-tag>`}
+                </td>
+                <td>${!figmaInfo ? '' : html`
+                  <rh-tag color="${figmaInfo.color}"
+                          variant="${figmaInfo.variant}"
+                          icon="${figmaInfo.icon}">${figmaInfo.pretty}</rh-tag>`}
+                </td>
+                <td>${!rhdsInfo ? '' : html`
+                  <rh-tag color="${rhdsInfo.color}"
+                          variant="${rhdsInfo.variant}"
+                          icon="${rhdsInfo.icon}">${rhdsInfo.pretty}</rh-tag>`}
+                </td>
+                <td>${!sharedInfo ? '' : html`
+                  <rh-tag color="${sharedInfo.color}"
+                          variant="${sharedInfo.variant}"
+                          icon="${sharedInfo.icon}">${sharedInfo.pretty}</rh-tag>`}
+                </td>
+                <td>${!docsInfo ? '' : html`
+                  <rh-tag color="${docsInfo.color}"
+                          variant="${docsInfo.variant}"
+                          icon="${docsInfo.icon}">${docsInfo.pretty}</rh-tag>`}
+                </td>
+              </tr>`;
+            })}
             </tbody>
           </table>
         </rh-table>
