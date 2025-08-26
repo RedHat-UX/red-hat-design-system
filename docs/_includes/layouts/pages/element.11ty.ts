@@ -180,18 +180,9 @@ export default class ElementsPage extends Renderer<Context> {
     return capitalize(this.deslugify(ctx.doc.alias ?? ctx.doc.slug));
   }
 
-  async #getElementStatusJson(ctx: Context, tagName: string): Promise<string> {
-    // Access global data through this context - it should be available on this object
-    const allStatus = ctx.repoStatusData;
-
-    // If not available on global, try to load it directly
-    if (!allStatus) {
-      console.log(ctx);
-      throw new Error('no status data');
-    }
-
-    const elementStatus = allStatus?.find((x: any) => x.tagName === tagName);
-    return elementStatus ? JSON.stringify(elementStatus) : '{}';
+  #getElementStatus(ctx: Context, tagName: string) {
+    const allStatus = ctx.repoStatusData || [];
+    return allStatus.find((x: any) => x.tagName === tagName);
   }
 
   #header(text: string, level = 2, id = this.slugify(text)) {
@@ -216,10 +207,16 @@ export default class ElementsPage extends Renderer<Context> {
       ` : html`
       <uxdot-example color-palette="lightest"><img src="${ctx.doc.overviewImageHref}" alt="" aria-labelledby="overview-image-description"></uxdot-example>`}
       ${this.#header('Status')}
-      <uxdot-repo-status-list status-data='${await this.#getElementStatusJson(ctx, ctx.tagName)}'></uxdot-repo-status-list>
+      <uxdot-repo-status-list 
+        figma-status="${this.#getElementStatus(ctx, ctx.tagName)?.libraries?.figma || ''}"
+        rhds-status="${this.#getElementStatus(ctx, ctx.tagName)?.libraries?.rhds || ''}"
+        shared-status="${this.#getElementStatus(ctx, ctx.tagName)?.libraries?.shared || ''}"></uxdot-repo-status-list>
       ${content}
       ${this.#header('Status checklist')}
-      <uxdot-repo-status-checklist status-data='${await this.#getElementStatusJson(ctx, ctx.tagName)}'></uxdot-repo-status-checklist>
+      <uxdot-repo-status-checklist 
+        figma-status="${this.#getElementStatus(ctx, ctx.tagName)?.libraries?.figma || ''}"
+        rhds-status="${this.#getElementStatus(ctx, ctx.tagName)?.libraries?.rhds || ''}"
+        shared-status="${this.#getElementStatus(ctx, ctx.tagName)?.libraries?.shared || ''}"></uxdot-repo-status-checklist>
     `;
   }
 

@@ -57,14 +57,14 @@ async function loadRepoStatus(): Promise<RepoStatusRecord[]> {
 }
 
 export class UxdotRepoElement extends LitElement {
-  private static libraries: Record<LibraryKey, string> = {
+  static libraries: Record<LibraryKey, string> = {
     figma: 'Figma library',
     rhds: 'RH Elements',
     shared: 'RH Shared Libs',
     docs: 'Documentation',
   };
 
-  private static legend: Record<RepoStatus, Status> = {
+  static legend: Record<RepoStatus, Status> = {
     'planned': {
       pretty: 'Planned',
       description: 'Ready to be worked on or ready to be released',
@@ -130,7 +130,7 @@ export class UxdotRepoElement extends LitElement {
     },
   };
 
-  private static checklist: Record<LibraryKey, Record<RepoStatus, string>> = {
+  static checklist: Record<LibraryKey, Record<RepoStatus, string>> = {
     figma: {
       'ready': 'Component is available in the Figma library',
       'inProgress': 'Component will be added to the Figma library when finished',
