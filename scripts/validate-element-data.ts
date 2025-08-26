@@ -113,13 +113,18 @@ async function validateElementData(): Promise<ValidationResult> {
         });
       }
 
-      // Consistency validation
-      if (yamlData.tagName !== tagName) {
-        result.valid = false;
-        result.errors.push({
+      // Consistency validation - tagName and name are now derived, so check if they exist in YAML
+      if (yamlData.tagName !== undefined) {
+        result.warnings.push({
           tagName,
-          type: 'consistency',
-          message: `tagName in YAML (${yamlData.tagName}) does not match directory name (${tagName})`,
+          message: 'tagName field found in YAML but should be derived from directory structure',
+        });
+      }
+
+      if (yamlData.name !== undefined) {
+        result.warnings.push({
+          tagName,
+          message: 'name field found in YAML but should be derived from directory structure',
         });
       }
 
