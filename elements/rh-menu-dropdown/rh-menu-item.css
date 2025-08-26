@@ -1,12 +1,19 @@
 :host {
   display: block;
-  padding: 0.5em 1em;
+  padding: 0.5rem 1rem;
   cursor: pointer;
 }
-:host(:focus) {
-  background: #eee;
-  outline: none;
+
+:host(:hover) {
+  background: #F2F2F2;
 }
+
+:host(:focus) {
+  background: #F2F2F2;
+  border: 2px solid #0066CC;
+  border-radius: 2px;
+}
+
 :host([disabled]) {
   color: #888;
   cursor: default;

@@ -2,8 +2,10 @@ import { LitElement, html, type TemplateResult } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 
 import styles from './rh-menu-dropdown.css';
-import { property, query, queryAll } from 'lit/decorators.js';
+import { property, query } from 'lit/decorators.js';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
+import '@rhds/elements/rh-button/rh-button.js';
+import '@rhds/elements/rh-icon/rh-icon.js';
 import { RhMenuItem } from './rh-menu-item.js';
 
 /**
@@ -59,21 +61,28 @@ export class RhMenuDropdown extends LitElement {
 
   render(): TemplateResult<1> {
     return html`
-      <button
-        id="menu-toggle"
-        aria-haspopup="true"
-        aria-expanded="${this.open}"
-        @click="${this.toggleMenu}"
-        @keydown="${this.onToggleKeydown}"
-      >
-        Menu 
-      </button>
-      <div
-        id="menu"
-        role="menu"
-        @click=${this.onSelect}
-      >
-        <slot></slot>
+      <div class="menu-dropdown-container">
+        <button
+          id="menu-toggle"
+          aria-haspopup="true"
+          aria-expanded="${this.open}"
+          @click="${this.toggleMenu}"
+          @keydown="${this.onToggleKeydown}">
+            <span> Basic toggle </span>
+            <span> 
+              ${ this.open ? 
+                html`<rh-icon set="ui" icon="caret-up"></rh-icon>` 
+                : html`<rh-icon set="ui" icon="caret-down"></rh-icon>`
+              }
+            </span>
+        </button>
+        <div
+          id="menu"
+          role="menu"
+          @click=${this.onSelect}
+        >
+          <slot></slot>
+        </div>
       </div>
     `;
   }
