@@ -6,6 +6,7 @@ import { UxdotRepoElement } from './uxdot-repo.js';
 import type { RepoStatus } from '../docs/_plugins/types.js';
 
 import '@rhds/elements/rh-table/rh-table.js';
+import '@rhds/elements/rh-tag/rh-tag.js';
 
 import style from './uxdot-repo-status-list.css';
 
@@ -18,13 +19,18 @@ export class UxdotRepoStatusChecklist extends UxdotRepoElement {
   @property({ attribute: 'shared-status' }) sharedStatus?: RepoStatus;
 
   private getStatusInfo(status?: RepoStatus) {
-    if (!status) return null;
+    if (!status) {
+      return null;
+    }
     return UxdotRepoElement.legend[status] || null;
   }
 
   private getStatusDescription(library: string, status?: RepoStatus) {
-    if (!status) return '';
-    return UxdotRepoElement.checklist[library as keyof typeof UxdotRepoElement.checklist]?.[status] || '';
+    if (!status) {
+      return '';
+    }
+    return UxdotRepoElement
+        .checklist[library as keyof typeof UxdotRepoElement.checklist]?.[status] || '';
   }
 
   render() {

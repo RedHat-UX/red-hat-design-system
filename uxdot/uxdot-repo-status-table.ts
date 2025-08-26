@@ -13,9 +13,9 @@ import style from './uxdot-repo-status-table.css';
 export class UxdotRepoStatusTable extends UxdotRepoElement {
   static styles = [style];
 
-  @property({ 
+  @property({
     attribute: 'status-data',
-    type: Object
+    type: Object,
   }) statusData?: ComputedTagStatus[];
 
   get allStatus(): ComputedTagStatus[] {

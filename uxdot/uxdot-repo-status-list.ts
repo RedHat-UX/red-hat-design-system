@@ -16,7 +16,9 @@ export class UxdotRepoStatusList extends UxdotRepoElement {
   @property({ attribute: 'shared-status' }) sharedStatus?: RepoStatus;
 
   private getStatusInfo(status?: RepoStatus) {
-    if (!status) return null;
+    if (!status) {
+      return null;
+    }
     return UxdotRepoElement.legend[status] || null;
   }
 
