@@ -9,9 +9,9 @@ rh-alert:
 rh-audio-player: 
  - video-thumbnail
 rh-avatar: 
- - rh-badge
  - rh-card
- - rh-tag
+ - rh-skeleton
+ - rh-statistic
 rh-badge: 
  - rh-alert
  - rh-avatar
