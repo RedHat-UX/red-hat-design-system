@@ -3,8 +3,6 @@
 An avatar is a placeholder graphic, custom photo, or generated image. It can be used by itself, but
 it is often paired with text about the user like their full name, job title, company, etc.
 
-### Anatomy
-
 <figure>
   <uxdot-example color-palette="lightest">
     <img alt="Anatomy of an avatar group with numbered annotations. The first number points to the image, the second points to the avatar's text description."
@@ -14,8 +12,8 @@ it is often paired with text about the user like their full name, job title, com
   </uxdot-example>
   <figcaption>
     <ol>
-      <li>Thumbnail</li>
-      <li>Job details text</li>
+      <li>Avatar</li>
+      <li>Attribution text</li>
     </ol>
   </figcaption>
  </figure>
