@@ -1,8 +1,8 @@
-import { html } from 'lit';
+import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
-import { UxdotRepoElement } from './uxdot-repo.js';
+import { legend, checklist } from './uxdot-repo.js';
 import type { RepoStatus } from '../docs/_plugins/types.js';
 
 import '@rhds/elements/rh-table/rh-table.js';
@@ -11,7 +11,7 @@ import '@rhds/elements/rh-tag/rh-tag.js';
 import style from './uxdot-repo-status-list.css';
 
 @customElement('uxdot-repo-status-checklist')
-export class UxdotRepoStatusChecklist extends UxdotRepoElement {
+export class UxdotRepoStatusChecklist extends LitElement {
   static styles = [style];
 
   @property({ attribute: 'figma-status' }) figmaStatus?: RepoStatus;
@@ -22,15 +22,14 @@ export class UxdotRepoStatusChecklist extends UxdotRepoElement {
     if (!status) {
       return null;
     }
-    return UxdotRepoElement.legend[status] || null;
+    return legend[status] || null;
   }
 
   private getStatusDescription(library: string, status?: RepoStatus) {
     if (!status) {
       return '';
     }
-    return UxdotRepoElement
-        .checklist[library as keyof typeof UxdotRepoElement.checklist]?.[status] || '';
+    return checklist[library as keyof typeof checklist]?.[status] || '';
   }
 
   render() {

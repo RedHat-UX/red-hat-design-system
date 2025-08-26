@@ -1,5 +1,4 @@
 import type { RepoStatusRecord, RepoStatus } from '../docs/_plugins/types.js';
-import { LitElement } from 'lit';
 
 type Color = 'purple' | 'green' | 'orange' | 'gray' | 'cyan';
 type Variant = 'filled' | 'outline';
@@ -42,29 +41,14 @@ export interface ComputedTagStatus extends Omit<RepoStatusRecord, 'libraries'> {
   libraries: ComputedLibraryStatus[];
 }
 
-// Load repoStatus data at runtime instead of module load time
-let repoStatusData: RepoStatusRecord[] | null = null;
+export const libraries: Record<LibraryKey, string> = {
+  figma: 'Figma library',
+  rhds: 'RH Elements',
+  shared: 'RH Shared Libs',
+  docs: 'Documentation',
+};
 
-async function loadRepoStatus(): Promise<RepoStatusRecord[]> {
-  if (repoStatusData === null) {
-    try {
-      repoStatusData = await fetch('/assets/javascript/repoStatus.json').then(x => x.json());
-    } catch {
-      repoStatusData = []; // Fallback to empty array if fetch fails
-    }
-  }
-  return repoStatusData!; // Non-null assertion since we just set it
-}
-
-export class UxdotRepoElement extends LitElement {
-  static libraries: Record<LibraryKey, string> = {
-    figma: 'Figma library',
-    rhds: 'RH Elements',
-    shared: 'RH Shared Libs',
-    docs: 'Documentation',
-  };
-
-  static legend: Record<RepoStatus, Status> = {
+export const legend: Record<RepoStatus, Status> = {
     'planned': {
       pretty: 'Planned',
       description: 'Ready to be worked on or ready to be released',
@@ -128,97 +112,51 @@ export class UxdotRepoElement extends LitElement {
       variant: 'outline',
       icon: 'sparkle',
     },
-  };
+};
 
-  static checklist: Record<LibraryKey, Record<RepoStatus, string>> = {
+export const checklist: Record<LibraryKey, Record<RepoStatus, string>> = {
     figma: {
       'ready': 'Component is available in the Figma library',
-      'inProgress': 'Component will be added to the Figma library when finished',
-      'planned': 'Component should be added to the Figma library at a later date',
-      'deprecated': 'Component was removed from the Figma library',
-      'na': 'Not planned, not available, or does not apply',
-      'not-applicable': 'Not planned, not available, or does not apply',
-      'beta': '',
-      'experimental': '',
-      'new': '',
+      'planned': 'Component will be added to the Figma library',
+      'inProgress': 'Component is being designed in Figma',
+      'deprecated': 'Component is deprecated in the Figma library',
+      'na': 'Component is not applicable for Figma',
+      'not-applicable': 'Component is not applicable for Figma',
+      'beta': 'Component is in beta in the Figma library',
+      'experimental': 'Component is experimental in the Figma library',
+      'new': 'Component is newly added to the Figma library',
     },
     rhds: {
-      'ready': 'Component is available in the RH Elements repo',
-      'inProgress': 'Component will be added to the RH Elements repo when finished',
-      'planned': 'Component should be added to the RH Elements repo at a later date',
-      'deprecated': 'Component is no longer available in the RH Elements repo',
-      'na': 'Not planned, not available, or does not apply',
-      'not-applicable': 'Not planned, not available, or does not apply',
-      'beta': '',
-      'experimental': '',
-      'new': '',
+      'ready': 'Component is available in RH Elements',
+      'planned': 'Component will be added to RH Elements',
+      'inProgress': 'Component is being developed for RH Elements',
+      'deprecated': 'Component is deprecated in RH Elements',
+      'na': 'Component is not applicable for RH Elements',
+      'not-applicable': 'Component is not applicable for RH Elements',
+      'beta': 'Component is in beta in RH Elements',
+      'experimental': 'Component is experimental in RH Elements',
+      'new': 'Component is newly added to RH Elements',
     },
     shared: {
-      'ready': 'Component is available in the RH Shared Libs repo',
-      'inProgress': 'Component will be added to the RH Shared Libs repo when finished',
-      'planned': 'Component should be added to the RH Shared Libs repo at a later date',
-      'deprecated': 'Component is no longer available in the RH Shared Libs repo',
-      'na': 'Not planned, not available, or does not apply',
-      'not-applicable': 'Not planned, not available, or does not apply',
-      'beta': '',
-      'experimental': '',
-      'new': '',
+      'ready': 'Component is available in RH Shared Libs',
+      'planned': 'Component will be added to RH Shared Libs',
+      'inProgress': 'Component is being developed for RH Shared Libs',
+      'deprecated': 'Component is deprecated in RH Shared Libs',
+      'na': 'Component is not applicable for RH Shared Libs',
+      'not-applicable': 'Component is not applicable for RH Shared Libs',
+      'beta': 'Component is in beta in RH Shared Libs',
+      'experimental': 'Component is experimental in RH Shared Libs',
+      'new': 'Component is newly added to RH Shared Libs',
     },
     docs: {
-      'ready': '',
-      'inProgress': '',
-      'planned': '',
-      'deprecated': '',
-      'na': '',
-      'not-applicable': '',
-      'beta': '',
-      'experimental': '',
-      'new': '',
+      'ready': 'Component documentation is complete',
+      'planned': 'Component documentation will be written',
+      'inProgress': 'Component documentation is being written',
+      'deprecated': 'Component documentation is deprecated',
+      'na': 'Component documentation is not applicable',
+      'not-applicable': 'Component documentation is not applicable',
+      'beta': 'Component documentation is in beta',
+      'experimental': 'Component documentation is experimental',
+      'new': 'Component documentation is newly added',
     },
-  };
-
-  private static allStatus: ComputedTagStatus[] | null = null;
-
-  private static async loadAllStatus(): Promise<ComputedTagStatus[]> {
-    if (UxdotRepoElement.allStatus === null) {
-      const data = await loadRepoStatus();
-      UxdotRepoElement.allStatus = data.map(UxdotRepoElement.getStatus);
-    }
-    return UxdotRepoElement.allStatus!; // Non-null assertion since we just set it
-  }
-
-  private static getStatus(status: RepoStatusRecord) {
-    const libraries = Object.entries(status.libraries) as [LibraryKey, RepoStatus][];
-    const overall = UxdotRepoElement.legend[status.overallStatus];
-    return {
-      ...status!,
-      color: overall.color,
-      variant: overall.variant,
-      icon: overall.icon,
-      slug: status.name.toLowerCase().replace(/\s+/, '-'),
-      libraries: libraries.flatMap(([key, status]) => {
-        const legend = UxdotRepoElement.legend[status];
-        return !legend ? [] : [{
-          key,
-          name: UxdotRepoElement.libraries[key],
-          color: legend.color,
-          variant: legend.variant,
-          icon: legend.icon,
-          status: legend.pretty,
-          description: UxdotRepoElement.checklist[key]?.[status] ?? '',
-        }];
-      }),
-    };
-  }
-
-  async getStatus(): Promise<ComputedTagStatus[]>;
-  async getStatus(tagName: string): Promise<ComputedTagStatus>;
-  async getStatus(tagName?: string) {
-    const allStatus = await UxdotRepoElement.loadAllStatus();
-    if (tagName) {
-      return allStatus.find(x => x.tagName === tagName);
-    } else {
-      return allStatus;
-    }
-  }
-}
+};

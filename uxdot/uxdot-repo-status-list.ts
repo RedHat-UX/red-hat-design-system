@@ -1,14 +1,14 @@
-import { html } from 'lit';
+import { html, LitElement } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
 
-import { UxdotRepoElement } from './uxdot-repo.js';
+import { legend } from './uxdot-repo.js';
 import type { RepoStatus } from '../docs/_plugins/types.js';
 
 import style from './uxdot-repo-status-list.css';
 
 @customElement('uxdot-repo-status-list')
-export class UxdotRepoStatusList extends UxdotRepoElement {
+export class UxdotRepoStatusList extends LitElement {
   static styles = [style];
 
   @property({ attribute: 'figma-status' }) figmaStatus?: RepoStatus;
@@ -19,7 +19,7 @@ export class UxdotRepoStatusList extends UxdotRepoElement {
     if (!status) {
       return null;
     }
-    return UxdotRepoElement.legend[status] || null;
+    return legend[status] || null;
   }
 
   render() {

@@ -8,6 +8,7 @@ title: Design/code status
 <script data-helmet type="module">
   import '@rhds/elements/rh-tag/rh-tag.js';
   import '@rhds/elements/rh-table/rh-table.js';
+  import '@rhds/elements/rh-icon/rh-icon.js';
 </script>
 
 <style>
@@ -89,27 +90,42 @@ title: Design/code status
                 <td>
                   <a href="/elements/{{ item.tagName }}/">{{ item.name }}</a>
                   {%- if item.overallStatus != 'ready' and overallStatus -%}
-                  <rh-tag color="{{ overallStatus.color }}" variant="{{ overallStatus.variant }}" icon="{{ overallStatus.icon }}">{{ item.overallStatus }}</rh-tag>
+                  <rh-tag color="{{ overallStatus.color }}" variant="{{ overallStatus.variant }}" icon="{{ overallStatus.icon }}">
+                    <rh-icon set="ui" icon="{{ overallStatus.icon }}"></rh-icon>
+                    {{ item.overallStatus }}
+                  </rh-tag>
                   {%- endif -%}
                 </td>
                 <td>
                   {%- if figmaStatus -%}
-                  <rh-tag color="{{ figmaStatus.color }}" variant="{{ figmaStatus.variant }}" icon="{{ figmaStatus.icon }}">{{ figmaStatus.pretty }}</rh-tag>
+                  <rh-tag color="{{ figmaStatus.color }}" variant="{{ figmaStatus.variant }}" icon="{{ figmaStatus.icon }}">
+                    <rh-icon set="ui" icon="{{ figmaStatus.icon }}"></rh-icon>
+                    {{ figmaStatus.pretty }}
+                  </rh-tag>
                   {%- endif -%}
                 </td>
                 <td>
                   {%- if rhdsStatus -%}
-                  <rh-tag color="{{ rhdsStatus.color }}" variant="{{ rhdsStatus.variant }}" icon="{{ rhdsStatus.icon }}">{{ rhdsStatus.pretty }}</rh-tag>
+                  <rh-tag color="{{ rhdsStatus.color }}" variant="{{ rhdsStatus.variant }}" icon="{{ rhdsStatus.icon }}">
+                    <rh-icon set="ui" icon="{{ rhdsStatus.icon }}"></rh-icon>
+                    {{ rhdsStatus.pretty }}
+                  </rh-tag>
                   {%- endif -%}
                 </td>
                 <td>
                   {%- if sharedStatus -%}
-                  <rh-tag color="{{ sharedStatus.color }}" variant="{{ sharedStatus.variant }}" icon="{{ sharedStatus.icon }}">{{ sharedStatus.pretty }}</rh-tag>
+                  <rh-tag color="{{ sharedStatus.color }}" variant="{{ sharedStatus.variant }}" icon="{{ sharedStatus.icon }}">
+                    <rh-icon set="ui" icon="{{ sharedStatus.icon }}"></rh-icon>
+                    {{ sharedStatus.pretty }}
+                  </rh-tag>
                   {%- endif -%}
                 </td>
                 <td>
                   {%- if docsStatus -%}
-                  <rh-tag color="{{ docsStatus.color }}" variant="{{ docsStatus.variant }}" icon="{{ docsStatus.icon }}">{{ docsStatus.pretty }}</rh-tag>
+                  <rh-tag color="{{ docsStatus.color }}" variant="{{ docsStatus.variant }}" icon="{{ docsStatus.icon }}">
+                    <rh-icon set="ui" icon="{{ docsStatus.icon }}"></rh-icon>
+                    {{ docsStatus.pretty }}
+                  </rh-tag>
                   {%- endif -%}
                 </td>
               </tr>
