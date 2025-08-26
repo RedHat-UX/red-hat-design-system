@@ -165,6 +165,7 @@ export default async function(
   eleventyConfig.on('eleventy.before', async ({ directories, runMode }) => {
     switch (runMode) {
       case 'watch':
+      case 'serve':
       case 'build': {
         await mkdir(join(directories.output, 'assets/javascript'), { recursive: true });
         // Generate aggregated repoStatus JSON for uxdot components
