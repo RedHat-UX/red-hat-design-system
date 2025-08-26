@@ -84,7 +84,7 @@ async function loadAggregatedElementData(): Promise<RepoStatusRecord[]> {
       const record: RepoStatusRecord = {
         tagName,
         name,
-        ...data
+        ...data,
       } as RepoStatusRecord;
 
       aggregatedData.push(record);
