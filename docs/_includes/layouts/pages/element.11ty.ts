@@ -179,6 +179,13 @@ export default class ElementsPage extends Renderer<Context> {
     return capitalize(this.deslugify(ctx.doc.alias ?? ctx.doc.slug));
   }
 
+  #getElementStatusJson(ctx: Context, tagName: string): string {
+    // Use the global repoStatusData that's already loaded
+    const allStatus = (this as any).eleventy?.globalData?.repoStatusData || ctx.repoStatusData || [];
+    const elementStatus = allStatus.find((x: any) => x.tagName === tagName);
+    return elementStatus ? JSON.stringify(elementStatus) : '{}';
+  }
+
   #header(text: string, level = 2, id = this.slugify(text)) {
     return html`
       <uxdot-copy-permalink class="h${level}">
@@ -201,10 +208,10 @@ export default class ElementsPage extends Renderer<Context> {
       ` : html`
       <uxdot-example color-palette="lightest"><img src="${ctx.doc.overviewImageHref}" alt="" aria-labelledby="overview-image-description"></uxdot-example>`}
       ${this.#header('Status')}
-      <uxdot-repo-status-list element="${ctx.tagName}"></uxdot-repo-status-list>
+      <uxdot-repo-status-list status-data='${this.#getElementStatusJson(ctx, ctx.tagName)}'></uxdot-repo-status-list>
       ${content}
       ${this.#header('Status checklist')}
-      <uxdot-repo-status-checklist element="${ctx.tagName}"></uxdot-repo-status-checklist>
+      <uxdot-repo-status-checklist status-data='${this.#getElementStatusJson(ctx, ctx.tagName)}'></uxdot-repo-status-checklist>
     `;
   }
 

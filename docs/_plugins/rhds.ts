@@ -147,6 +147,9 @@ export default async function(
     { title: 'Accessibility', url: '/accessibility', collection: 'accessibility' },
   ]);
 
+  // Add repo status data as global data for components
+  eleventyConfig.addGlobalData('repoStatusData', loadAggregatedElementData);
+
   eleventyConfig.addDataExtension('yml, yaml', (contents: string) => yaml.load(contents));
 
   eleventyConfig.addPassthroughCopy('docs/demo.{js,map,ts}');
@@ -162,18 +165,6 @@ export default async function(
     filter: (path: string) => !path.endsWith('.html'),
   });
 
-  eleventyConfig.on('eleventy.before', async ({ directories, runMode }) => {
-    switch (runMode) {
-      case 'watch':
-      case 'serve':
-      case 'build': {
-        await mkdir(join(directories.output, 'assets/javascript'), { recursive: true });
-        // Generate aggregated repoStatus JSON for uxdot components
-        const repoStatusPath = join(directories.output, 'assets/javascript/repoStatus.json');
-        const aggregatedData = await loadAggregatedElementData();
-        await writeFile(repoStatusPath, JSON.stringify(aggregatedData), 'utf8'); }
-    }
-  });
 
   let hasCleanedSinceWatchStarted = false;
   eleventyConfig.on('eleventy.before', async function({ runMode }) {

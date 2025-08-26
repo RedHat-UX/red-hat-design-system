@@ -40,8 +40,13 @@ title: Design/code status
 
   ## Web component status
 
-  <uxdot-repo-status-table>
-  </uxdot-repo-status-table>
+  <!-- Pass repo status data via attribute for SSR compatibility -->
+  <uxdot-repo-status-table status-data='{{ repoStatusData | dump | safe }}'></uxdot-repo-status-table>
+
+  <!-- Optional: Provide global variable for client-side performance -->
+  <script data-helmet>
+    window.__REPO_STATUS_DATA__ = {{ repoStatusData | dump | safe }};
+  </script>
 
 </section>
 

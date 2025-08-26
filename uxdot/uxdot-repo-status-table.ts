@@ -1,7 +1,6 @@
 import { html } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 import { property } from 'lit/decorators/property.js';
-import { state } from 'lit/decorators/state.js';
 
 import { UxdotRepoElement } from './uxdot-repo.js';
 import type { ComputedTagStatus } from './uxdot-repo.js';
@@ -14,16 +13,18 @@ import style from './uxdot-repo-status-table.css';
 export class UxdotRepoStatusTable extends UxdotRepoElement {
   static styles = [style];
 
-  @property() element?: string;
-  @state() private allStatus: ComputedTagStatus[] = [];
+  @property({ 
+    attribute: 'status-data',
+    type: Object
+  }) statusData?: ComputedTagStatus[];
 
-  async connectedCallback() {
-    super.connectedCallback();
-    try {
-      this.allStatus = await this.getStatus();
-    } catch {
-      this.allStatus = [];
+  get allStatus(): ComputedTagStatus[] {
+    // In browser, check for global data first, then fall back to attribute
+    if (typeof window !== 'undefined') {
+      return (window as any).__REPO_STATUS_DATA__ || this.statusData || [];
     }
+    // In SSR, only use attribute data
+    return this.statusData || [];
   }
 
   render() {
