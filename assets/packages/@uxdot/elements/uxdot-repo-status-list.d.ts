@@ -1,6 +1,10 @@
-import { UxdotRepoElement } from './uxdot-repo.js';
-export declare class UxdotRepoStatusList extends UxdotRepoElement {
+import { LitElement } from 'lit';
+import type { RepoStatus } from '../docs/_plugins/types.js';
+export declare class UxdotRepoStatusList extends LitElement {
     static styles: CSSStyleSheet[];
-    element?: string;
+    figmaStatus?: RepoStatus;
+    rhdsStatus?: RepoStatus;
+    sharedStatus?: RepoStatus;
+    private getStatusInfo;
     render(): import("lit-html").TemplateResult<1>;
 }

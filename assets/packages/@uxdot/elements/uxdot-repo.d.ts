@@ -1,9 +1,15 @@
-import type { RepoStatusRecord } from '#11ty-data/repoStatus.js';
-import { LitElement } from 'lit';
+import type { RepoStatusRecord, RepoStatus } from '../docs/_plugins/types.js';
 type Color = 'purple' | 'green' | 'orange' | 'gray' | 'cyan';
 type Variant = 'filled' | 'outline';
 type Icon = string;
 type LibraryKey = 'figma' | 'rhds' | 'shared' | 'docs';
+interface Status {
+    pretty: string;
+    description?: string;
+    color: Color;
+    variant: Variant;
+    icon: string;
+}
 interface LibraryStatus {
     key: LibraryKey;
     name: string;
@@ -24,13 +30,7 @@ export interface ComputedTagStatus extends Omit<RepoStatusRecord, 'libraries'> {
     slug: string;
     libraries: ComputedLibraryStatus[];
 }
-export declare class UxdotRepoElement extends LitElement {
-    private static libraries;
-    private static legend;
-    private static checklist;
-    private static allStatus;
-    private static getStatus;
-    getStatus(): ComputedTagStatus[];
-    getStatus(tagName: string): ComputedTagStatus;
-}
+export declare const libraries: Record<LibraryKey, string>;
+export declare const legend: Record<RepoStatus, Status>;
+export declare const checklist: Record<LibraryKey, Record<RepoStatus, string>>;
 export {};
