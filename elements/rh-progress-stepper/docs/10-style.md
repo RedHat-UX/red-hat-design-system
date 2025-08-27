@@ -114,7 +114,7 @@ When the titles in a progress stepper are linked, the interaction states use our
 
 ### Hover
 
-Though it’s difficult to see in a static image, the dashed underline’s offset value increases by 1 pixel on hover.
+The dashed underline offset value increases by 1 pixel on hover.
 
 <uxdot-example color-palette="lightest">
   <img src="../progress-stepper-style-interaction-state-hover.svg"

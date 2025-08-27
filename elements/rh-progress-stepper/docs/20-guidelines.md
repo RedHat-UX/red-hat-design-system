@@ -125,11 +125,11 @@ The table below describes how a horizontal progress stepper changes based on the
 
 <rh-table>
 
-  | Viewport range | Result                                                     |
-  | -------------- | -----------------------------------------------------|
-  | >992px         | The padding between each step is set to `--rh-space-5xl`.  |
-  | ≤992px         | The padding between steps reduces to `--rh-space-2xl`.     |
-  | <768px         | The orientation changes to vertical.                       |
+  | Viewport range | Result                                                       |
+  | -------------- | -------------------------------------------------------------|
+  | `>992px`         | The padding between each step is set to `--rh-space-5xl`.  |
+  | `≤992px`         | The padding between steps reduces to `--rh-space-2xl`.     |
+  | `<768px`         | The orientation changes to vertical.                       |
 
 </rh-table>
 

@@ -20,11 +20,11 @@ Any linked titles in a progress stepper can be navigated with a keyboard.
 
 <rh-table>
 
-  | Key         | Result                                               |
-  | ----------- | -----------------------------------------------------|
-  | Tab         | Moves focus to a linked progress step title          |
-  | Shift + Tab | Moves focus to a previous linked progress step title |
-  | Enter       | Activates a linked title                             |
+  | Key                    | Result                                               |
+  | ---------------------- | -----------------------------------------------------|
+  | <kbd>Tab</kbd>         | Moves focus to a linked progress step title          |
+  | <kbd>Shift + Tab</kbd> | Moves focus to a previous linked progress step title |
+  | <kbd>Enter</kbd>       | Activates a linked title                             |
 
 </rh-table>
 
