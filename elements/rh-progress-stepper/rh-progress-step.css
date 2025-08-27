@@ -6,7 +6,7 @@
 }
 
 :host {
-  --_step-line-style:
+  --_step-line-style: /* @summary Styles the line between each step */
     linear-gradient(
         var(--_step-line-angle),
         transparent 13px,
@@ -14,10 +14,14 @@
         var(--_step-line-color) 15px,
         transparent 15px);
   --_step-color: var(--rh-color-text-primary);
-  --_step-label-color: var(--rh-color-text-primary);
+  --_step-label-color: /* @summary A step's title color */
+    var(--rh-color-text-primary);
 
   @container (width > 992px) {
-    --_step-compact-horizontal-padding: var(--rh-length-5xl, 80px);
+    --_step-compact-horizontal-padding: /* @summary Padding for the compact variant when horizontal
+       * @description Default padding for horizontal progress stepper for large container widths
+       */
+      var(--rh-length-5xl, 80px);
   }
 }
 
@@ -30,11 +34,14 @@
   gap: var(--_step-row-gap, 16px) var(--_step-column-gap, 16px);
   justify-self: var(--_step-justify-self, start);
   align-items: var(--_step-align-items);
-  padding-block-end: var(--_step-compact-vertical-padding);
-  padding-inline-end: var(--_step-compact-horizontal-padding);
+  padding-block-end: /* @summary padding for the compact variant when vertical */
+    var(--_step-compact-vertical-padding);
+  padding-inline-end: /* @summary padding for the compact variant when horizontal */
+    var(--_step-compact-horizontal-padding);
   inline-size: 100%;
   block-size: 100%;
-  color: var(--rh-color-text-secondary); /* sets description color */
+  color: /* @summary A step's description color */
+    var(--rh-color-text-secondary);
 
   /* Body text/md */
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
@@ -58,11 +65,14 @@
 :is(rh-icon, .no-icon) {
   grid-area: icon;
   place-self: center var(--_step-icon-justify-self);
-  block-size: var(--_step-icon-width);
-  inline-size: var(--_step-icon-width);
+  block-size: /* @summary Sets width of the icon */
+    var(--_step-icon-width);
+  inline-size: /* @summary Sets width of the icon */
+    var(--_step-icon-width);
   border: var(--rh-border-width-md) solid var(--_step-line-color);
   border-radius: 50%;
-  color: var(--_step-color);
+  color: /* @summary Sets color of the icon */
+    var(--_step-color);
   background-color: light-dark(var(--rh-color-surface-lightest), var(--rh-color-surface-darkest));
 }
 

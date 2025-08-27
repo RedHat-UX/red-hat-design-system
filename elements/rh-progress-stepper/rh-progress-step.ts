@@ -72,7 +72,8 @@ export class RhProgressStep extends LitElement {
   @property({ reflect: true }) state?: ProgressStepState;
 
   /**
-   * Sets the description text for the progress step
+   * Sets the description text for the progress step if more context is needed.
+   * Descriptions are secondary to titles.
    * Overridden by the `description` slot.
    */
   @property({ reflect: true }) description?: string;
@@ -110,7 +111,9 @@ export class RhProgressStep extends LitElement {
     const compact = this.compact ?? false;
     const ariaCurrent = this.currentStep === this ? 'step' : undefined;
     const labelSlot = html`
-      <!-- A short title for the step, which also serves as the step's accessible name -->
+      <!-- A short title for the step, which also serves as the step's accessible name.
+          A title can also be 
+       -->
       <slot></slot>
     `;
     return html`
@@ -139,10 +142,12 @@ export class RhProgressStep extends LitElement {
   }
 
   /**
+   * Icons for each step indicates the status of a process or task.
+   * Icons change as users progress.
    * Computes the icon for the step:
-   * always use the prescribed warn or fail icons
-   * otherwise, use the custom user icon,
-   * or fall back to the default active/inactive icon
+   * Always use the prescribed warn or fail icons.
+   * Otherwise, use the custom user icon, if available,
+   * or fall back to the default active/inactive icon.
    */
   @observes('icon')
   @observes('iconSet')

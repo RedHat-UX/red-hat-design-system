@@ -42,7 +42,7 @@ A progress stepper can also include custom icons. When a custom icon is used for
         height="80">  
 </uxdot-example>
 
-## Color Scheme
+## Color scheme
 
 A progress stepper is available in both light and dark color schemes.
 
