@@ -1,5 +1,12 @@
 # @rhds/elements
 
+## 3.1.1
+### Patch Changes
+
+- 4886ec0: `<rh-alert>`: added support for dark color schemes
+- c853f3e: `<rh-footer>`: fix color contrast of text when javascript fails to load
+- 8d40d2c: `<rh-breadcrumb>`: fix colors, spacing, and arrows
+
 ## 3.1.0
 ### Minor Changes
 
