@@ -176,6 +176,9 @@ svg {
 
   /** Sets the disabled stepper color. */
   color: var(--rh-pagination-background-focused, var(--rh-color-gray-30, #c7c7c7));
+  background-color:
+    light-dark(var(--rh-color-surface-lighter, #f2f2f2),
+      var(--rh-color-surface-darker, #1f1f1f));
 }
 
 @container pagination (min-width: 768px) {
