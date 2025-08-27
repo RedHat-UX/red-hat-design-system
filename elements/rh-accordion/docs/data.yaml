@@ -1,4 +1,6 @@
-# yaml-language-server: $schema=../../../docs/schemas/element-data.schema.json
+$schema: ../../../docs/schemas/element-data.schema.json
+tagName: rh-accordion
+name: Accordion
 type: element
 overallStatus: ready
 libraries:
