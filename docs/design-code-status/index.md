@@ -11,9 +11,13 @@ title: Design/code status
   import '@rhds/elements/rh-icon/rh-icon.js';
 </script>
 
-<style>
+<style data-helmet>
   rh-tag {
     text-transform: capitalize;
+  }
+
+  #web-component-status-table {
+    margin-block: var(--rh-space-3xl);
   }
 </style>
 
@@ -40,108 +44,94 @@ title: Design/code status
 
   ## Web component status
 
-  <uxdot-repo-status-table>
-    <template shadowrootmode="open">
-      <style>
-        rh-table {
-          margin-block: var(--rh-space-3xl);
-        }
-      </style>
-      <!-- TODO: remove lightdom after implementing auto-load-->
-      <link rel="stylesheet" href="/assets/packages/@rhds/elements/elements/rh-table/rh-table-lightdom.css">
-      <div id="container">
-        <rh-table>
-          <table>
-            <colgroup>
-              <col>
-              <col>
-              <col>
-              <col>
-              <col>
-            </colgroup>
-            <thead>
-              <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Figma library</th>
-                <th scope="col">RH Elements</th>
-                <th scope="col">RH Shared Libs</th>
-                <th scope="col">Documentation</th>
-              </tr>
-            </thead>
-            <tbody>
-              {%- set statusLegend = {
-                'planned': { pretty: 'Planned', color: 'purple', variant: 'filled', icon: 'notification-fill' },
-                'inProgress': { pretty: 'In Progress', color: 'green', variant: 'outline', icon: 'harvey-ball-50' },
-                'ready': { pretty: 'Ready', color: 'green', variant: 'filled', icon: 'check-circle-fill' },
-                'deprecated': { pretty: 'Deprecated', color: 'orange', variant: 'filled', icon: 'close-circle-fill' },
-                'na': { pretty: 'N/A', color: 'gray', variant: 'outline', icon: 'ban' },
-                'not-applicable': { pretty: 'Not Applicable', color: 'gray', variant: 'outline', icon: 'ban' },
-                'beta': { pretty: 'Beta', color: 'cyan', variant: 'outline', icon: 'notification' },
-                'experimental': { pretty: 'Experimental', color: 'orange', variant: 'outline', icon: 'warning-triangle' },
-                'new': { pretty: 'New', color: 'green', variant: 'outline', icon: 'new-fill' }
-              } -%}
-              {% for item in repoStatusData %}
-              {%- set figmaStatus = statusLegend[item.libraries.figma] -%}
-              {%- set rhdsStatus = statusLegend[item.libraries.rhds] -%}
-              {%- set sharedStatus = statusLegend[item.libraries.shared] -%}
-              {%- set docsStatus = statusLegend[item.libraries.docs] -%}
-              {%- set overallStatus = statusLegend[item.overallStatus] -%}
-              <tr>
-                <td>
-                  <a href="/elements/{{ item.tagName }}/">{{ item.name }}</a>
-                  {%- if item.overallStatus != 'ready' and overallStatus -%}
-                  <rh-tag color="{{ overallStatus.color }}"
-                          variant="{{ overallStatus.variant }}"
-                          icon="{{ overallStatus.icon }}">
-                    {{- overallStatus.pretty -}}
-                  </rh-tag>
-                  {%- endif -%}
-                </td>
-                <td>
-                  {%- if figmaStatus -%}
-                  <rh-tag color="{{ figmaStatus.color }}"
-                          variant="{{ figmaStatus.variant }}"
-                          icon="{{ figmaStatus.icon }}">
-                    {{- figmaStatus.pretty -}}
-                  </rh-tag>
-                  {%- endif -%}
-                </td>
-                <td>
-                  {%- if rhdsStatus -%}
-                  <rh-tag color="{{ rhdsStatus.color }}"
-                          variant="{{ rhdsStatus.variant }}"
-                          icon="{{ rhdsStatus.icon }}">
-                    {{- rhdsStatus.pretty -}}
-                  </rh-tag>
-                  {%- endif -%}
-                </td>
-                <td>
-                  {%- if sharedStatus -%}
-                  <rh-tag color="{{ sharedStatus.color }}"
-                          variant="{{ sharedStatus.variant }}"
-                          icon="{{ sharedStatus.icon }}">
-                    {{- sharedStatus.pretty -}}
-                  </rh-tag>
-                  {%- endif -%}
-                </td>
-                <td>
-                  {%- if docsStatus -%}
-                  <rh-tag color="{{ docsStatus.color }}"
-                          variant="{{ docsStatus.variant }}"
-                          icon="{{ docsStatus.icon }}">
-                    {{- docsStatus.pretty -}}
-                  </rh-tag>
-                  {%- endif -%}
-                </td>
-              </tr>
-              {% endfor %}
-            </tbody>
-          </table>
-        </rh-table>
-      </div>
-    </template>
-  </uxdot-repo-status-table>
-
+  <rh-table id="web-component-status-table">
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col>
+        <col>
+        <col>
+      </colgroup>
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Figma library</th>
+          <th scope="col">RH Elements</th>
+          <th scope="col">RH Shared Libs</th>
+          <th scope="col">Documentation</th>
+        </tr>
+      </thead>
+      <tbody>
+        {%- set statusLegend = {
+          'planned': { pretty: 'Planned', color: 'purple', variant: 'filled', icon: 'notification-fill' },
+          'inProgress': { pretty: 'In Progress', color: 'green', variant: 'outline', icon: 'harvey-ball-50' },
+          'ready': { pretty: 'Ready', color: 'green', variant: 'filled', icon: 'check-circle-fill' },
+          'deprecated': { pretty: 'Deprecated', color: 'orange', variant: 'filled', icon: 'close-circle-fill' },
+          'na': { pretty: 'N/A', color: 'gray', variant: 'outline', icon: 'ban' },
+          'not-applicable': { pretty: 'Not Applicable', color: 'gray', variant: 'outline', icon: 'ban' },
+          'beta': { pretty: 'Beta', color: 'cyan', variant: 'outline', icon: 'notification' },
+          'experimental': { pretty: 'Experimental', color: 'orange', variant: 'outline', icon: 'warning-triangle' },
+          'new': { pretty: 'New', color: 'green', variant: 'outline', icon: 'new-fill' }
+        } -%}
+        {% for item in repoStatusData %}
+        {%- set figmaStatus = statusLegend[item.libraries.figma] -%}
+        {%- set rhdsStatus = statusLegend[item.libraries.rhds] -%}
+        {%- set sharedStatus = statusLegend[item.libraries.shared] -%}
+        {%- set docsStatus = statusLegend[item.libraries.docs] -%}
+        {%- set overallStatus = statusLegend[item.overallStatus] -%}
+        <tr>
+          <td>
+            <a href="/elements/{{ item.tagName }}/">{{ item.name }}</a>
+            {%- if item.overallStatus != 'ready' and overallStatus -%}
+            <rh-tag color="{{ overallStatus.color }}"
+                    variant="{{ overallStatus.variant }}"
+                    icon="{{ overallStatus.icon }}">
+              {{- overallStatus.pretty -}}
+            </rh-tag>
+            {%- endif -%}
+          </td>
+          <td>
+            {%- if figmaStatus -%}
+            <rh-tag color="{{ figmaStatus.color }}"
+                    variant="{{ figmaStatus.variant }}"
+                    icon="{{ figmaStatus.icon }}">
+              {{- figmaStatus.pretty -}}
+            </rh-tag>
+            {%- endif -%}
+          </td>
+          <td>
+            {%- if rhdsStatus -%}
+            <rh-tag color="{{ rhdsStatus.color }}"
+                    variant="{{ rhdsStatus.variant }}"
+                    icon="{{ rhdsStatus.icon }}">
+              {{- rhdsStatus.pretty -}}
+            </rh-tag>
+            {%- endif -%}
+          </td>
+          <td>
+            {%- if sharedStatus -%}
+            <rh-tag color="{{ sharedStatus.color }}"
+                    variant="{{ sharedStatus.variant }}"
+                    icon="{{ sharedStatus.icon }}">
+              {{- sharedStatus.pretty -}}
+            </rh-tag>
+            {%- endif -%}
+          </td>
+          <td>
+            {%- if docsStatus -%}
+            <rh-tag color="{{ docsStatus.color }}"
+                    variant="{{ docsStatus.variant }}"
+                    icon="{{ docsStatus.icon }}">
+              {{- docsStatus.pretty -}}
+            </rh-tag>
+            {%- endif -%}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </rh-table>
 </section>
 
 <uxdot-feedback>
