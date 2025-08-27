@@ -6,29 +6,47 @@
 }
 
 :host {
-  --_step-line-color: var(--rh-color-border-strong);
-  --_current-step-color: var(--_rh-color-status-disabled, #6a6e73);
-  --_current-step-label-color: var(--rh-color-text-primary);
-  --_step-line-angle: -180deg; /* sets the line direction between steps to horizontal */
-  --_step-line-position-block: 0 100%;
-  --_step-line-position-inline: calc(calc(100% - var(--_step-icon-width)) * -1) 100%;
-  --_step-line-size-inline: calc(100% - var(--_step-icon-width));
-  --_step-line-size-block: 100%;
-  --_step-template-areas:
+  --_step-line-color: /* @summary Color of connecting lines between steps */
+    var(--rh-color-border-strong);
+  --_current-step-color: /* @summary Color of the current step indicator */
+    var(--_rh-color-status-disabled, #6a6e73);
+  --_current-step-label-color: /* @summary Text color of the current step label */
+    var(--rh-color-text-primary);
+  --_step-line-angle: -180deg; /* Line direction between steps to horizontal */
+  --_step-line-position-block: /* @summary Vertical positioning of connecting lines */
+    0 100%;
+  --_step-line-position-inline: /* @summary Horizontal positioning of connecting lines */
+    calc(calc(100% - var(--_step-icon-width)) * -1) 100%;
+  --_step-line-size-inline: /* @summary Width of connecting lines between steps */
+    calc(100% - var(--_step-icon-width));
+  --_step-line-size-block: /* @summary Height of connecting lines between steps */
+    100%;
+  --_step-template-areas: /* @summary Grid template areas for step component layout */
     'icon'
     'label'
     'description';
-  --_step-template-columns: auto;
-  --_step-template-rows: calc(var(--rh-length-xl, 24px) + 4px) auto 1fr;
-  --_step-justify-self: baseline;
-  --_step-compact-vertical-padding: 0;
-  --_step-compact-horizontal-padding: var(--rh-length-2xl, 32px);
-  --_step-column-gap: var(--rh-length-lg, 16px);
-  --_step-row-gap: var(--rh-length-xs, 4px);
-  --_step-compact-grid-row: 2;
-  --_step-description-margin: inherit;
-  --_step-align-items: center;
-  --_step-icon-width: calc(var(--rh-size-icon-02, 24px) + 4px);
+  --_step-template-columns: /* @summary Grid column template for step positioning */
+    auto;
+  --_step-template-rows: /* @summary Grid row template for step positioning */
+    calc(var(--rh-length-xl, 24px) + 4px) auto 1fr;
+  --_step-justify-self: /* @summary Horizontal alignment of individual steps */
+    baseline;
+  --_step-compact-vertical-padding: /* @summary Vertical spacing for compact variant */
+    0;
+  --_step-compact-horizontal-padding: /* @summary Horizontal spacing for compact variant */
+    var(--rh-length-2xl, 32px);
+  --_step-column-gap: /* @summary Spacing between step columns */
+    var(--rh-length-lg, 16px);
+  --_step-row-gap: /* @summary Spacing between step rows */
+    var(--rh-length-xs, 4px);
+  --_step-compact-grid-row: /* @summary Grid row position for compact variant */
+    2;
+  --_step-description-margin: /* @summary Margin around step description */
+    inherit;
+  --_step-align-items: /* @summary Vertical alignment of step content */
+    center;
+  --_step-icon-width: /* @summary Width of step icons */
+    calc(var(--rh-size-icon-02, 24px) + 4px);
 
   container-type: inline-size;
   display: block;
@@ -47,7 +65,8 @@
 
   /* Horizontal orientation styles */
   grid-auto-flow: column;
-  grid-auto-columns: var(--_stepper-grid-auto-column, 1fr);
+  grid-auto-columns: /* @summary Size for stepper grid columns in horizontal variant */
+    var(--_stepper-grid-auto-column, 1fr);
 }
 
 .visually-hidden {
@@ -61,11 +80,13 @@
   position: absolute;
   white-space: nowrap;
   color: var(--_current-step-label-color);
-  font-weight: var(--_current-step-weight, var(--rh-font-weight-body-text-medium, 500));
+  font-weight: /* @summary Font weight for current step text */
+    var(--_current-step-weight, var(--rh-font-weight-body-text-medium, 500));
 }
 
 ::slotted(rh-progress-step:first-of-type) {
-  --_step-line-style: none;
+  --_step-line-style: /* @summary Styles connecting lines */
+    none;
 }
 
 ::slotted([state='inactive']),
@@ -86,8 +107,10 @@
   --_step-template-columns: var(--_step-icon-width) auto;
   --_step-template-rows: auto;
   --_step-justify-self: start;
-  --_step-icon-justify-self: center;
-  --_step-description-grid-column: 2;
+  --_step-icon-justify-self: /* @summary Horizontal alignment of step icons */
+    center;
+  --_step-description-grid-column: /* @summary Grid column placement for descriptions */
+    2;
   --_step-compact-vertical-padding: var(--rh-length-2xl, 32px);
   --_step-column-gap: var(--rh-length-lg, 16px);
   --_step-row-gap: var(--rh-length-xs, 4px);
@@ -107,14 +130,15 @@
   grid-template-rows: auto;
 
   --_step-template-areas: 'icon';
-  --_step-grid-row: var(--_step-compact-grid-row);
+  --_step-grid-row: /* @summary Grid row positioning for step elements in compact variant */
+    var(--_step-compact-grid-row);
   --_step-template-rows: auto;
   --_step-compact-vertical-padding: 0;
   --_step-compact-horizontal-padding: var(--rh-length-lg, 16px);
   --_step-template-columns: var(--_step-icon-width);
   --_step-row-gap: 0;
   --_step-column-gap: 0;
-  --_stepper-grid-auto-column:
+  --_stepper-grid-auto-column: /* @summary Size tepper grid columns in compact variant */
     calc(
         var(--_step-icon-width) + var(--_step-compact-horizontal-padding)
       );
