@@ -33,7 +33,12 @@ const truncationBtn = html`
  * @summary Links displaying a hierarchical location
  *
  * @alias breadcrumb
- *
+ * @cssprop [--rh-breadcrumb-caret-image={svg encoded as data URI}] -
+ * The default `mask-image` separating each breadcrumb item
+ * @cssprop [--rh-breadcrumb-li-padding-inline-end=var(--rh-space-lg, 16px)] -
+ * Sets the spacing between each breadcrumb item.
+ * @cssprop [--rh-breadcrumb-link-color=var(--rh-color-interactive-primary-default)] -
+ * The link color for each anchor in the list
  */
 
 @customElement('rh-breadcrumb')
