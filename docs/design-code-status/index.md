@@ -82,7 +82,7 @@ title: Design/code status
         {%- set overallStatus = statusLegend[item.overallStatus] -%}
         <tr>
           <td>
-            <a href="/elements/{{ item.tagName }}/">{{ item.name }}</a>
+            <a href="/elements/{{ item.name | slugify }}/">{{ item.name }}</a>
             {%- if item.overallStatus != 'ready' and overallStatus -%}
             <rh-tag color="{{ overallStatus.color }}"
                     variant="{{ overallStatus.variant }}"
