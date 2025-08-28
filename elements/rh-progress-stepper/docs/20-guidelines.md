@@ -52,7 +52,7 @@ start the process all over again.
 When writing text, include minimal content by doing the following:
 
   - Keep the title and description short and specific
-  - Use between 1 - 3 words for the title and a few words for the description
+  - Use between 1 - 3 words for the title and around 40 characters (or a max of 2 lines at the 768px breakpoint) for the description
   - Use verbs that clearly communicate each step of the process
   - Do not punctuate the title or description because they are fragments and not full sentences
 
@@ -118,8 +118,20 @@ the vertical orientation.
   <img src="../progress-stepper-guidelines-responsive-2.svg"
         alt="Three progress steppers at varying viewport sizes. One horizontal, one compact horizontal, and one vertical."
         width="1156"
-        height="450">  
+        height="450">
 </uxdot-example>
+
+The table below describes how a horizontal progress stepper changes based on the container size.
+
+<rh-table>
+
+  | Viewport range | Result                                                       |
+  | -------------- | -------------------------------------------------------------|
+  | `>992px`         | The padding between each step is set to `--rh-space-5xl`.  |
+  | `≤992px`         | The padding between steps reduces to `--rh-space-2xl`.     |
+  | `<768px`         | The orientation changes to vertical.                       |
+
+</rh-table>
 
 ## Best practices
 
