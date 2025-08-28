@@ -336,6 +336,8 @@ rh-footer:not(:defined) rh-footer-universal:not(:defined) {
   }
 
   rh-footer:not(:defined) rh-footer-universal:not(:defined) {
+    --_grid-row-max: 8;
+
     grid-row: var(--_grid-row-max) / var(--_grid-row-max);
   }
 }
