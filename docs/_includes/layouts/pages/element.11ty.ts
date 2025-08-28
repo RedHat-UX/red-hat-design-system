@@ -47,6 +47,7 @@ interface Context extends EleventyPageRenderData {
   tagName: string;
   isLocal: boolean;
   importMap: { imports: Record<string, string>; scopes: Record<string, Record<string, string>> };
+  repoStatusData: Record<string, any>; // todo: type this
 }
 
 const [manifest] = getAllManifests();
@@ -179,6 +180,11 @@ export default class ElementsPage extends Renderer<Context> {
     return capitalize(this.deslugify(ctx.doc.alias ?? ctx.doc.slug));
   }
 
+  #getElementStatus(ctx: Context, tagName: string) {
+    const allStatus = ctx.repoStatusData || [];
+    return allStatus.find((x: any) => x.tagName === tagName);
+  }
+
   #header(text: string, level = 2, id = this.slugify(text)) {
     return html`
       <uxdot-copy-permalink class="h${level}">
@@ -201,10 +207,16 @@ export default class ElementsPage extends Renderer<Context> {
       ` : html`
       <uxdot-example color-palette="lightest"><img src="${ctx.doc.overviewImageHref}" alt="" aria-labelledby="overview-image-description"></uxdot-example>`}
       ${this.#header('Status')}
-      <uxdot-repo-status-list element="${ctx.tagName}"></uxdot-repo-status-list>
+      <uxdot-repo-status-list 
+        figma-status="${this.#getElementStatus(ctx, ctx.tagName)?.libraries?.figma || ''}"
+        rhds-status="${this.#getElementStatus(ctx, ctx.tagName)?.libraries?.rhds || ''}"
+        shared-status="${this.#getElementStatus(ctx, ctx.tagName)?.libraries?.shared || ''}"></uxdot-repo-status-list>
       ${content}
       ${this.#header('Status checklist')}
-      <uxdot-repo-status-checklist element="${ctx.tagName}"></uxdot-repo-status-checklist>
+      <uxdot-repo-status-checklist 
+        figma-status="${this.#getElementStatus(ctx, ctx.tagName)?.libraries?.figma || ''}"
+        rhds-status="${this.#getElementStatus(ctx, ctx.tagName)?.libraries?.rhds || ''}"
+        shared-status="${this.#getElementStatus(ctx, ctx.tagName)?.libraries?.shared || ''}"></uxdot-repo-status-checklist>
     `;
   }
 
@@ -809,7 +821,7 @@ export default class ElementsPage extends Renderer<Context> {
       ${content}
       ${!ctx.doc.fileExists ? '' : await this.renderFile(ctx.doc.filePath, ctx)}
       ${(await Promise.all(demos.map(async demo => `
-      ${this.#header(demo.filePath?.endsWith('/index.html') ? this.#getPrettyTagName(ctx)
+      ${this.#header(demo.filePath?.match(/\/index(\.html|\/)/) ? this.#getPrettyTagName(ctx)
                    : demo.title, 2, `demo-${this.slugify(demo.title)}`)}
       ${await this.#renderDemo(demo, ctx)}
       `))).filter(Boolean).join('')}
@@ -827,7 +839,7 @@ export default class ElementsPage extends Renderer<Context> {
       const projectId = `demo-${tagName}-${demoSlug}`;
       const githubSourcePrefix = `https://github.com/RedHat-UX/red-hat-design-system/tree/main`;
       const sourceUrl = `${githubSourcePrefix}${demo.filePath.replace(process.cwd(), '')}`;
-      const demoUrl = `/elements/${this.getTagNameSlug(tagName)}/demo/${demoSlug === tagName ? '' : `${demoSlug}/`}`;
+      const demoUrl = `/elements/${this.getTagNameSlug(tagName)}/demo/${demoSlug === 'index' ? '' : `${demoSlug}/`}`;
       const codeblocks = await this.#getDemoCodeBlocks(demo);
       if (codeblocks) {
         return html`

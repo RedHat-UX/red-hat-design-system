@@ -1,0 +1,13 @@
+$schema: ../../../docs/schemas/element-data.schema.json
+tagName: rh-video-embed
+name: Video embed
+type: element
+overallStatus: new
+libraries:
+  figma: ready
+  rhds: ready
+  shared: planned
+  docs: ready
+relatedItems:
+  - rh-audio-player
+  - rh-button
