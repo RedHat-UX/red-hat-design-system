@@ -23,7 +23,7 @@ const KITCHEN_SINK_TEMPLATE = html`
     </rh-footer-social-link>
     <!-- This is commented out because logos are exempt from contrast checks
      and was throwing an error in automated axe test.
-     https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html
+     https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html
     <rh-footer-social-link slot="social-links" icon="x">
       <a href="https://twitter.com/RedHat">Twitter</a>
     </rh-footer-social-link> -->

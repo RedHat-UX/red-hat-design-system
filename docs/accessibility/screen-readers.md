@@ -34,7 +34,7 @@ When testing with screen readers, our goal is to verify that an assistive tech u
 On computers, screen reader testing often lets you perform two tests simultaneously:
 
 1. It ensures that all meaningful web content and interactions are available to assistive tech.
-2. It helps you verify that your experiences are keyboard operable (which is a [WCAG requirement](https://www.w3.org/WAI/WCAG21/Understanding/keyboard-accessible.html)).
+2. It helps you verify that your experiences are keyboard operable (which is a [WCAG requirement](https://www.w3.org/WAI/WCAG22/Understanding/keyboard-accessible.html)).
 
 After turning on your computer’s screen reader and opening your browser, use your keyboard to access the entire experience, top to bottom. Use the <kbd>Tab</kbd>, <kbd>Shift-Tab</kbd>, and <kbd>↑ → ↓ ←</kbd> keys to move among (and within) focusable elements like links, form controls, and interactive components. And you can then use other keys like <kbd>Space</kbd>, <kbd>Enter</kbd>, and <kbd>Escape</kbd> to interact with those elements.
 
