@@ -41,7 +41,7 @@ The W3C Web Accessibility Initiative (WAI) has designed a collection of [web use
 
 If you’ve spent any time incorporating or reading about web accessibility, you’ve likely heard mention of the World Wide Web Consortium’s (W3C) Web Content Accessibility Guidelines—or WCAG. (You may also have heard this acronym pronounced several different ways, any of them acceptable: W-C-A-G, Wuh-cag, W-cag, etc.)
 
-At Red Hat, we currently target [WCAG 2.1 AA](https://www.w3.org/WAI/WCAG21/Understanding/), as it aligns with many laws and regulations and provides a good experience for most users.
+At Red Hat, we currently target [WCAG 2.2 AA](https://www.w3.org/WAI/WCAG21/Understanding/), as it aligns with many laws and regulations and provides a good experience for most users.
 
 ### POUR
 

@@ -168,7 +168,7 @@ Our complex components, like accordion, secondary navigation, subnavigation, tab
 If the focus cannot be moved away from a focusable element by keyboard alone, a keyboard user can be "trapped" on the element, unable to focus on and interact with other focusable elements. See the following on avoiding keyboard traps:
 
 - [WCAG 2.1.2: No keyboard trap][wcag212nokeyboardtrap]
-- [WCAG 2.1, Technique G21: Ensuring that users are not trapped in content][wcag21techniqueg21]
+- [WCAG 2.2, Technique G21: Ensuring that users are not trapped in content][wcag21techniqueg21]
 - [CSUN: Web Accessibility Criteria - Keyboard Traps][csunkeyboardtraps]
 
 ## Error Handling

@@ -39,7 +39,7 @@ For specific information on how we use color accessibly, visit [our Foundations 
 
 ### Contrast
 
-We strive to adhere to [WCAG 2.1 AA contrast ratio standards][wcagcontrast]. Our text, links, interface elements, etc. are designed with sufficient contrast when used on top of surfaces, image backgrounds with low contrast, and near adjacent colors.
+We strive to adhere to [WCAG 2.2 AA contrast ratio standards][wcagcontrast]. Our text, links, interface elements, etc. are designed with sufficient contrast when used on top of surfaces, image backgrounds with low contrast, and near adjacent colors.
 
 #### Text
 
@@ -68,7 +68,7 @@ Non-color cues must be also used to signify when an object or component receives
 
 #### Layering
 
-It is acceptable to layer colors with the same hue, saturation, or lightness on white, black, or gray. However, layering them near or on top of each other might cause vibration. If you need to layer colors, follow [WCAG 2.1 AA][wcag21aa] requirements.
+It is acceptable to layer colors with the same hue, saturation, or lightness on white, black, or gray. However, layering them near or on top of each other might cause vibration. If you need to layer colors, follow [WCAG 2.2 AA][wcag22aa] requirements.
 
 <uxdot-example width-adjustment=”1140px”>
   <img src="/assets/color/color-a11y-color-contrast-layering.svg"
@@ -131,7 +131,7 @@ Essential information should not be conveyed by sound alone. For example, if a t
 
 ### User control
 
-[Giving users control][usercontrol] over user interfaces is a foundational principle of user experience design. It is also the basis of several WCAG 2.1 AA requirements, like ensuring [interfaces operate in predictable ways][wcagpredictable].
+[Giving users control][usercontrol] over user interfaces is a foundational principle of user experience design. It is also the basis of several WCAG 2.2 AA requirements, like ensuring [interfaces operate in predictable ways][wcagpredictable].
 
 ### Links
 
@@ -205,7 +205,7 @@ Text should never be justified. Justified text is aligned to the left and right 
 [paragraphspacing]: https://www.w3.org/WAI/WCAG21/Understanding/visual-presentation.html
 [rhbutton]: /elements/button/
 [usercontrol]: https://www.interaction-design.org/literature/topics/user-control
-[wcag21aa]: https://www.w3.org/WAI/WCAG21/Understanding/
+[wcag22aa]: https://www.w3.org/WAI/WCAG22/Understanding/
 [wcagcontrast]: https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum
 [webaimskipnav]: https://webaim.org/techniques/skipnav/
 [wcagpredictable]: https://www.w3.org/WAI/WCAG22/quickref/#predictable

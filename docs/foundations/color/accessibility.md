@@ -75,7 +75,7 @@ If red text cannot be used, use dark gray or black text against lighter backgrou
 
 #### Red text WCAG requirements
 
-WCAG 2.0 level AA requires a contrast ratio of at least 4.5:1 for normal text and 3:1 for large text. WCAG 2.1 requires a contrast ratio of at least 3:1 for graphics and UI elements like form input borders. Use the table below to confirm you are using color contrast correctly before using red text.
+WCAG 2.2 level AA requires a contrast ratio of at least 4.5:1 for normal text and 3:1 for large text. The standard also requires a contrast ratio of at least 3:1 for graphics and UI elements like form input borders. Use the table below to confirm you are using color contrast correctly before using red text.
 
 The font sizes that are considered normal and large are as follows:
 
@@ -123,7 +123,7 @@ text must be at least 3:1.
 
 ### Layering
 
-You can layer colors on light or dark backgrounds. However, layering colors on top of other colors will cause vibration. For more information about layering colors, follow [WCAG 2.1 AA][wcag21aa] requirements.
+You can layer colors on light or dark backgrounds. However, layering colors on top of other colors will cause vibration. For more information about layering colors, follow [WCAG 2.2 AA][wcag22aa] requirements.
 
 <uxdot-example width-adjustment=”1140px” variant="full" alignment="left" no-border>
   <img alt="Red call to action on a white background, blue button on a light gray background, and a light red-orange button on a black background"
@@ -136,4 +136,4 @@ You can layer colors on light or dark backgrounds. However, layering colors on t
 </uxdot-feedback>
 
 [brandteam]: https://www.redhat.com/en/about/brand/standards
-[wcag21aa]: https://www.w3.org/WAI/WCAG21/Understanding/
+[wcag22aa]: https://www.w3.org/WAI/WCAG22/Understanding/
