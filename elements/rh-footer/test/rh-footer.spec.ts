@@ -1,16 +1,19 @@
-import { html } from 'lit';
-import { fixture, expect, aTimeout, nextFrame } from '@open-wc/testing';
-import { setViewport } from '@web/test-runner-commands';
-import { tokens } from '@rhds/tokens';
-import { RhFooter, RhFooterUniversal } from '../rh-footer.js';
+import { html } from "lit";
+import { fixture, expect, aTimeout, nextFrame } from "@open-wc/testing";
+import { setViewport } from "@web/test-runner-commands";
+import { tokens } from "@rhds/tokens";
+import { RhFooter, RhFooterUniversal } from "../rh-footer.js";
 
-import '@patternfly/pfe-tools/test/stub-logger.js';
+import "@patternfly/pfe-tools/test/stub-logger.js";
 
 const KITCHEN_SINK_TEMPLATE = html`
   <rh-footer>
     <a slot="logo" href="/">
-      <img src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg" alt="Red Hat logo"
-        loading="lazy" />
+      <img
+        src="https://static.redhat.com/libs/redhat/brand-assets/2/corp/logo--on-dark.svg"
+        alt="Red Hat logo"
+        loading="lazy"
+      />
     </a>
     <rh-footer-social-link slot="social-links" icon="linkedin">
       <a href="http://www.linkedin.com/company/red-hat">LinkedIn</a>
@@ -23,7 +26,7 @@ const KITCHEN_SINK_TEMPLATE = html`
     </rh-footer-social-link>
     <!-- This is commented out because logos are exempt from contrast checks
      and was throwing an error in automated axe test.
-     https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html
+     https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html
     <rh-footer-social-link slot="social-links" icon="x">
       <a href="https://twitter.com/RedHat">Twitter</a>
     </rh-footer-social-link> -->
@@ -80,7 +83,12 @@ const KITCHEN_SINK_TEMPLATE = html`
     </ul>
     <rh-footer-block slot="main-secondary">
       <h3 slot="header">About Red Hat</h3>
-      <p>We’re the world’s leading provider of enterprise open source solutions―including Linux, cloud, container, and Kubernetes. We deliver hardened solutions that make it easier for enterprises to work across platforms and environments, from the core datacenter to the network edge.</p>
+      <p>
+        We’re the world’s leading provider of enterprise open source solutions―including Linux,
+        cloud, container, and Kubernetes. We deliver hardened solutions that make it easier for
+        enterprises to work across platforms and environments, from the core datacenter to the
+        network edge.
+      </p>
     </rh-footer-block>
     <rh-footer-block slot="main-secondary">
       <h3 slot="header">Subscribe to our free newsletter, Red Hat Shares</h3>
@@ -116,7 +124,7 @@ const KITCHEN_SINK_TEMPLATE = html`
       </div>
     </rh-footer-universal>
   </rh-footer>
-  <link rel="stylesheet" href="/elements/rh-footer/rh-footer-lightdom.css">
+  <link rel="stylesheet" href="/elements/rh-footer/rh-footer-lightdom.css" />
 `;
 
 const UNIVERSAL_FOOTER_TEMPLATE = html`
@@ -145,193 +153,219 @@ const UNIVERSAL_FOOTER_TEMPLATE = html`
       <a href="#">*We’ve updated our privacy statement effective December 30, 202X.</a>
     </div>
   </rh-footer-universal>
-  <link rel="stylesheet" href="/elements/rh-footer/rh-footer-lightdom.css">
+  <link rel="stylesheet" href="/elements/rh-footer/rh-footer-lightdom.css" />
 `;
 
-describe('<rh-footer>', function() {
+describe("<rh-footer>", function () {
   let element: RhFooter;
   let universalFooter: RhFooterUniversal;
 
-  describe('simply instantiating footer', function() {
-    beforeEach(async function() {
+  describe("simply instantiating footer", function () {
+    beforeEach(async function () {
       element = await fixture<RhFooter>(KITCHEN_SINK_TEMPLATE);
       await aTimeout(200);
     });
 
-    it('should upgrade', async function() {
-      const klass = customElements.get('rh-footer');
-      expect(element)
-          .to.be.an.instanceOf(klass)
-          .and
-          .to.be.an.instanceOf(RhFooter);
+    it("should upgrade", async function () {
+      const klass = customElements.get("rh-footer");
+      expect(element).to.be.an.instanceOf(klass).and.to.be.an.instanceOf(RhFooter);
     });
 
-    it('passes the a11y audit', function() {
+    it("passes the a11y audit", function () {
       return expect(element).shadowDom.to.be.accessible();
     });
   });
 
-  describe('simply instantiating', function() {
-    beforeEach(async function() {
+  describe("simply instantiating", function () {
+    beforeEach(async function () {
       universalFooter = await fixture<RhFooterUniversal>(UNIVERSAL_FOOTER_TEMPLATE);
       await aTimeout(200);
     });
 
-    it('universal should upgrade', async function() {
-      const klass = customElements.get('rh-footer-universal');
-      expect(universalFooter)
-          .to.be.an.instanceOf(klass)
-          .and
-          .to.be.an.instanceOf(RhFooterUniversal);
+    it("universal should upgrade", async function () {
+      const klass = customElements.get("rh-footer-universal");
+      expect(universalFooter).to.be.an.instanceOf(klass).and.to.be.an.instanceOf(RhFooterUniversal);
     });
 
-    it('universal passes the a11y audit', async function() {
+    it("universal passes the a11y audit", async function () {
       return expect(universalFooter).shadowDom.to.be.accessible();
     });
   });
 
-  describe('adjusting window size', function() {
-    beforeEach(async function() {
+  describe("adjusting window size", function () {
+    beforeEach(async function () {
       element = await fixture<RhFooter>(KITCHEN_SINK_TEMPLATE);
       await aTimeout(200);
     });
 
-    describe('wide screen', function() {
-      beforeEach(async function() {
+    describe("wide screen", function () {
+      beforeEach(async function () {
         await setViewport({ width: 1200, height: 800 });
         await element.updateComplete;
         await aTimeout(200);
       });
 
-      it('does not use accordion', function() {
-        expect(element.shadowRoot?.querySelectorAll('rh-accordion')?.length).to.equal(0);
+      it("does not use accordion", function () {
+        expect(element.shadowRoot?.querySelectorAll("rh-accordion")?.length).to.equal(0);
       });
 
-      it('is accessible', function() {
+      it("is accessible", function () {
         return expect(element).to.be.accessible();
       });
     });
 
-    describe('narrow screen', function() {
-      beforeEach(async function() {
+    describe("narrow screen", function () {
+      beforeEach(async function () {
         await setViewport({ width: 300, height: 800 });
         await element.updateComplete;
         await aTimeout(500);
       });
 
-      it('uses accordion', function() {
-        expect(element.shadowRoot?.querySelectorAll('rh-accordion')?.length).to.equal(1);
+      it("uses accordion", function () {
+        expect(element.shadowRoot?.querySelectorAll("rh-accordion")?.length).to.equal(1);
       });
 
-      it('is accessible', function() {
+      it("is accessible", function () {
         return expect(element).to.be.accessible();
       });
     });
 
-    describe('Tablet, landscape', function() {
+    describe("Tablet, landscape", function () {
       let element: RhFooter;
 
       beforeEach(() => setViewport({ width: 992, height: 800 }));
 
-      beforeEach(async function() {
+      beforeEach(async function () {
         element = await fixture<RhFooter>(KITCHEN_SINK_TEMPLATE);
       });
 
       beforeEach(() => element.updateComplete);
       beforeEach(nextFrame);
 
-      it('distributes links horizontally', function() {
-        const firstPrimaryLink = element.querySelector('ul[slot=links]:first-of-type');
-        const secondPrimaryLink = element.querySelector('h3[slot=links]:nth-of-type(n+2)');
-        const d = Math.abs(firstPrimaryLink!.getBoundingClientRect().right - secondPrimaryLink!.getBoundingClientRect().left);
+      it("distributes links horizontally", function () {
+        const firstPrimaryLink = element.querySelector("ul[slot=links]:first-of-type");
+        const secondPrimaryLink = element.querySelector("h3[slot=links]:nth-of-type(n+2)");
+        const d = Math.abs(
+          firstPrimaryLink!.getBoundingClientRect().right -
+            secondPrimaryLink!.getBoundingClientRect().left
+        );
         // 32px between the link items
-        expect(d).to.equal(parseInt(tokens.get('--rh-space-2xl')), '--rh-space-2xl');
+        expect(d).to.equal(parseInt(tokens.get("--rh-space-2xl")), "--rh-space-2xl");
       });
 
-      it('distributes links vertically', function() {
-        const firstPrimaryLink = element.querySelector('ul[slot=links]:first-of-type');
-        const fifthPrimaryLink = element.querySelector('h3[slot=links]:nth-of-type(n+5)');
-        const d = Math.abs(firstPrimaryLink!.getBoundingClientRect().bottom - fifthPrimaryLink!.getBoundingClientRect().top);
+      it("distributes links vertically", function () {
+        const firstPrimaryLink = element.querySelector("ul[slot=links]:first-of-type");
+        const fifthPrimaryLink = element.querySelector("h3[slot=links]:nth-of-type(n+5)");
+        const d = Math.abs(
+          firstPrimaryLink!.getBoundingClientRect().bottom -
+            fifthPrimaryLink!.getBoundingClientRect().top
+        );
         // 32px between the first and second row
-        expect(d).to.equal(parseInt(tokens.get('--rh-space-2xl')), '--rh-space-2xl');
+        expect(d).to.equal(parseInt(tokens.get("--rh-space-2xl")), "--rh-space-2xl");
       });
     });
 
-    describe('footer-universal behaviors', function() {
-      it('logo anchor tag should always link to redhat.com', async function() {
+    describe("footer-universal behaviors", function () {
+      it("logo anchor tag should always link to redhat.com", async function () {
         const universalElement = await fixture<RhFooterUniversal>(UNIVERSAL_FOOTER_TEMPLATE);
-        expect(universalElement.shadowRoot?.querySelector('slot[name="logo"] a')?.getAttribute('href')).to.equal('https://redhat.com');
+        expect(
+          universalElement.shadowRoot?.querySelector('slot[name="logo"] a')?.getAttribute("href")
+        ).to.equal("https://redhat.com");
       });
     });
 
-    describe('footer-universal links stack correctly.', function() {
+    describe("footer-universal links stack correctly.", function () {
       let universalElement: HTMLElement;
       let primaryLinks: HTMLElement;
       let secondaryLinks: HTMLElement;
 
-      beforeEach(async function() {
+      beforeEach(async function () {
         universalElement = await fixture<RhFooterUniversal>(UNIVERSAL_FOOTER_TEMPLATE);
-        primaryLinks = universalElement.shadowRoot!.querySelector('.global-links-primary')!;
-        secondaryLinks = universalElement.shadowRoot!.querySelector('.global-links-secondary')!;
+        primaryLinks = universalElement.shadowRoot!.querySelector(".global-links-primary")!;
+        secondaryLinks = universalElement.shadowRoot!.querySelector(".global-links-secondary")!;
       });
 
-      it('Mobile, portrait', async function() {
+      it("Mobile, portrait", async function () {
         await setViewport({ width: 360, height: 800 });
         await element.updateComplete;
 
         // primary, secondary links 2 columns
-        expect(getComputedStyle(primaryLinks).getPropertyValue('grid-template-columns')?.split(' ')?.length).to.equal(2);
-        expect(getComputedStyle(secondaryLinks).getPropertyValue('grid-template-columns')?.split(' ')?.length).to.equal(2);
+        expect(
+          getComputedStyle(primaryLinks).getPropertyValue("grid-template-columns")?.split(" ")
+            ?.length
+        ).to.equal(2);
+        expect(
+          getComputedStyle(secondaryLinks).getPropertyValue("grid-template-columns")?.split(" ")
+            ?.length
+        ).to.equal(2);
       });
 
-      it('Mobile, landscape', async function() {
+      it("Mobile, landscape", async function () {
         await setViewport({ width: 576, height: 800 });
         await element.updateComplete;
 
         // primary links 2 columns
-        expect(getComputedStyle(primaryLinks).getPropertyValue('display')).to.equal('grid');
-        expect(getComputedStyle(primaryLinks).getPropertyValue('grid-template-columns')?.split(' ')?.length).to.equal(2);
+        expect(getComputedStyle(primaryLinks).getPropertyValue("display")).to.equal("grid");
+        expect(
+          getComputedStyle(primaryLinks).getPropertyValue("grid-template-columns")?.split(" ")
+            ?.length
+        ).to.equal(2);
         // secondary links 2 columns
-        expect(getComputedStyle(secondaryLinks).getPropertyValue('display')).to.equal('grid');
-        expect(getComputedStyle(secondaryLinks).getPropertyValue('grid-template-columns')?.split(' ')?.length).to.equal(2);
+        expect(getComputedStyle(secondaryLinks).getPropertyValue("display")).to.equal("grid");
+        expect(
+          getComputedStyle(secondaryLinks).getPropertyValue("grid-template-columns")?.split(" ")
+            ?.length
+        ).to.equal(2);
       });
 
-      it('Mobile, landscape', async function() {
+      it("Mobile, landscape", async function () {
         await setViewport({ width: 576, height: 800 });
         await element.updateComplete;
 
         // primary links 2 columns
-        expect(getComputedStyle(primaryLinks).getPropertyValue('display')).to.equal('grid');
-        expect(getComputedStyle(primaryLinks).getPropertyValue('grid-template-columns')?.split(' ')?.length).to.equal(2);
+        expect(getComputedStyle(primaryLinks).getPropertyValue("display")).to.equal("grid");
+        expect(
+          getComputedStyle(primaryLinks).getPropertyValue("grid-template-columns")?.split(" ")
+            ?.length
+        ).to.equal(2);
         // secondary links 2 columns
-        expect(getComputedStyle(secondaryLinks).getPropertyValue('display')).to.equal('grid');
-        expect(getComputedStyle(secondaryLinks).getPropertyValue('grid-template-columns')?.split(' ')?.length).to.equal(2);
+        expect(getComputedStyle(secondaryLinks).getPropertyValue("display")).to.equal("grid");
+        expect(
+          getComputedStyle(secondaryLinks).getPropertyValue("grid-template-columns")?.split(" ")
+            ?.length
+        ).to.equal(2);
       });
 
-      it('Tablet, portrait', async function() {
+      it("Tablet, portrait", async function () {
         await setViewport({ width: 768, height: 800 });
         await element.updateComplete;
 
         // primary links 3 columns
-        expect(getComputedStyle(primaryLinks).getPropertyValue('display')).to.equal('grid');
-        expect(getComputedStyle(primaryLinks).getPropertyValue('grid-template-columns')?.split(' ')?.length).to.equal(3);
+        expect(getComputedStyle(primaryLinks).getPropertyValue("display")).to.equal("grid");
+        expect(
+          getComputedStyle(primaryLinks).getPropertyValue("grid-template-columns")?.split(" ")
+            ?.length
+        ).to.equal(3);
         // secondary links 3 columns
-        expect(getComputedStyle(secondaryLinks).getPropertyValue('display')).to.equal('grid');
-        expect(getComputedStyle(secondaryLinks).getPropertyValue('grid-template-columns')?.split(' ')?.length).to.equal(3);
+        expect(getComputedStyle(secondaryLinks).getPropertyValue("display")).to.equal("grid");
+        expect(
+          getComputedStyle(secondaryLinks).getPropertyValue("grid-template-columns")?.split(" ")
+            ?.length
+        ).to.equal(3);
       });
 
-      it('Tablet, landscape', async function() {
+      it("Tablet, landscape", async function () {
         await setViewport({ width: 992, height: 800 });
         await element.updateComplete;
 
         // primary links 2 columns
-        expect(getComputedStyle(secondaryLinks).getPropertyValue('display')).to.equal('flex');
+        expect(getComputedStyle(secondaryLinks).getPropertyValue("display")).to.equal("flex");
         // secondary links 2 columns
-        expect(getComputedStyle(secondaryLinks).getPropertyValue('display')).to.equal('flex');
+        expect(getComputedStyle(secondaryLinks).getPropertyValue("display")).to.equal("flex");
       });
     });
 
-    describe('Region spacing is correct', function() {
+    describe("Region spacing is correct", function () {
       let element: RhFooter;
       let universalFooter: RhFooterUniversal;
       let base: HTMLElement;
@@ -342,108 +376,152 @@ describe('<rh-footer>', function() {
       let secondaryContent: HTMLElement;
       let redHatLogo: HTMLElement;
 
-      beforeEach(async function() {
+      beforeEach(async function () {
         element = await fixture<RhFooter>(KITCHEN_SINK_TEMPLATE);
         universalFooter = await fixture<RhFooterUniversal>(UNIVERSAL_FOOTER_TEMPLATE);
-        base = universalFooter?.shadowRoot?.querySelector('.global-base');
-        logo = universalFooter?.shadowRoot?.querySelector('.global-logo');
-        primary = universalFooter?.shadowRoot?.querySelector('.global-primary');
-        spacer = universalFooter?.shadowRoot?.querySelector('.spacer');
-        secondaryContent = universalFooter?.querySelector('[slot*=secondary]');
-        tertiary = universalFooter?.shadowRoot?.querySelector('.global-tertiary');
+        base = universalFooter?.shadowRoot?.querySelector(".global-base");
+        logo = universalFooter?.shadowRoot?.querySelector(".global-logo");
+        primary = universalFooter?.shadowRoot?.querySelector(".global-primary");
+        spacer = universalFooter?.shadowRoot?.querySelector(".spacer");
+        secondaryContent = universalFooter?.querySelector("[slot*=secondary]");
+        tertiary = universalFooter?.shadowRoot?.querySelector(".global-tertiary");
         redHatLogo = element.querySelector('[slot*="logo"]');
       });
 
       // Mockup: https://xd.adobe.com/view/835616bd-1374-483d-ab10-6ae92e0e343c-d605/screen/f04f89c1-3461-4ffb-a622-bb8654a19f03/
-      it('Mobile, portrait', async function() {
+      it("Mobile, portrait", async function () {
         await setViewport({ width: 360, height: 800 });
         await element.updateComplete;
 
         // @todo: swap these with design tokens
-        expect(Math.abs(base.getBoundingClientRect().top - logo.getBoundingClientRect().top)).to.equal(32);
-        expect(Math.abs(logo.getBoundingClientRect().bottom - primary.getBoundingClientRect().top)).to.equal(32);
-        expect(Math.abs(primary.getBoundingClientRect().bottom - spacer.getBoundingClientRect().top)).to.equal(32);
-        expect(Math.abs(spacer.getBoundingClientRect().bottom - secondaryContent.getBoundingClientRect().top)).to.equal(32);
-        expect(Math.abs(base.getBoundingClientRect().bottom - tertiary.getBoundingClientRect().bottom)).to.equal(32);
+        expect(
+          Math.abs(base.getBoundingClientRect().top - logo.getBoundingClientRect().top)
+        ).to.equal(32);
+        expect(
+          Math.abs(logo.getBoundingClientRect().bottom - primary.getBoundingClientRect().top)
+        ).to.equal(32);
+        expect(
+          Math.abs(primary.getBoundingClientRect().bottom - spacer.getBoundingClientRect().top)
+        ).to.equal(32);
+        expect(
+          Math.abs(
+            spacer.getBoundingClientRect().bottom - secondaryContent.getBoundingClientRect().top
+          )
+        ).to.equal(32);
+        expect(
+          Math.abs(base.getBoundingClientRect().bottom - tertiary.getBoundingClientRect().bottom)
+        ).to.equal(32);
 
         // verify --_section-side-gap
-        expect(Math.abs(redHatLogo.getBoundingClientRect().left - element.getBoundingClientRect().left)).to.equal(16);
+        expect(
+          Math.abs(redHatLogo.getBoundingClientRect().left - element.getBoundingClientRect().left)
+        ).to.equal(16);
 
         // distance between main-secondary and footer-universal
-        expect(Math.abs(element.shadowRoot.querySelector('.main-secondary').getBoundingClientRect().bottom - element.querySelector('rh-footer-universal').getBoundingClientRect().top)).to.equal(32);
+        expect(
+          Math.abs(
+            element.shadowRoot.querySelector(".main-secondary").getBoundingClientRect().bottom -
+              element.querySelector("rh-footer-universal").getBoundingClientRect().top
+          )
+        ).to.equal(32);
       });
 
-      it('Mobile landscape', async function() {
-        await setViewport({ width: parseInt(tokens.get('--rh-breakpoint-sm')), height: 800 });
+      it("Mobile landscape", async function () {
+        await setViewport({ width: parseInt(tokens.get("--rh-breakpoint-sm")), height: 800 });
         await element.updateComplete;
 
         // verify --_section-side-gap
-        expect(Math.abs(redHatLogo.getBoundingClientRect().left - element.getBoundingClientRect().left)).to.equal(32);
+        expect(
+          Math.abs(redHatLogo.getBoundingClientRect().left - element.getBoundingClientRect().left)
+        ).to.equal(32);
       });
 
-      it('Tablet, landscape', async function() {
+      it("Tablet, landscape", async function () {
         await setViewport({ width: 992, height: 800 });
         await element.updateComplete;
 
-        expect(Math.abs(element.shadowRoot.querySelector('.main-secondary').getBoundingClientRect().bottom - element.querySelector('rh-footer-universal').getBoundingClientRect().top)).to.equal(64);
+        expect(
+          Math.abs(
+            element.shadowRoot.querySelector(".main-secondary").getBoundingClientRect().bottom -
+              element.querySelector("rh-footer-universal").getBoundingClientRect().top
+          )
+        ).to.equal(64);
       });
 
-      it('Desktop, small', async function() {
-        await setViewport({ width: parseInt(tokens.get('--rh-breakpoint-lg')), height: 800 });
+      it("Desktop, small", async function () {
+        await setViewport({ width: parseInt(tokens.get("--rh-breakpoint-lg")), height: 800 });
         await element.updateComplete;
 
-        expect(Math.abs(base.getBoundingClientRect().top - logo.getBoundingClientRect().top)).to.equal(32);
-        expect(Math.floor(Math.abs(logo.getBoundingClientRect().right - primary.getBoundingClientRect().left))).to.equal(32);
-        expect(Math.abs(primary.getBoundingClientRect().bottom - secondaryContent.getBoundingClientRect().top)).to.equal(24);
-        expect(Math.abs(base.getBoundingClientRect().bottom - tertiary.getBoundingClientRect().bottom)).to.equal(32);
+        expect(
+          Math.abs(base.getBoundingClientRect().top - logo.getBoundingClientRect().top)
+        ).to.equal(32);
+        expect(
+          Math.floor(
+            Math.abs(logo.getBoundingClientRect().right - primary.getBoundingClientRect().left)
+          )
+        ).to.equal(32);
+        expect(
+          Math.abs(
+            primary.getBoundingClientRect().bottom - secondaryContent.getBoundingClientRect().top
+          )
+        ).to.equal(24);
+        expect(
+          Math.abs(base.getBoundingClientRect().bottom - tertiary.getBoundingClientRect().bottom)
+        ).to.equal(32);
       });
 
-      it('Desktop, medium', async function() {
-        await setViewport({ width: parseInt(tokens.get('--rh-breakpoint-xl')), height: 800 });
+      it("Desktop, medium", async function () {
+        await setViewport({ width: parseInt(tokens.get("--rh-breakpoint-xl")), height: 800 });
         await element.updateComplete;
 
         // verify --_section-side-gap
-        expect(Math.abs(redHatLogo.getBoundingClientRect().left - element.getBoundingClientRect().left)).to.equal(64);
+        expect(
+          Math.abs(redHatLogo.getBoundingClientRect().left - element.getBoundingClientRect().left)
+        ).to.equal(64);
       });
     });
 
-    describe('rh-block', function() {
+    describe("rh-block", function () {
       let element;
       let block;
       let firstChild;
       let lastChild;
 
-      beforeEach(async function() {
+      beforeEach(async function () {
         element = await fixture<RhFooter>(KITCHEN_SINK_TEMPLATE);
-        block = element.querySelector('rh-footer-block');
-        firstChild = block.querySelector(':first-child');
-        lastChild = block.querySelector(':last-child');
+        block = element.querySelector("rh-footer-block");
+        firstChild = block.querySelector(":first-child");
+        lastChild = block.querySelector(":last-child");
       });
 
-      it('first and last child should be flush with the block', function() {
+      it("first and last child should be flush with the block", function () {
         // the top of the first child of the block should be flush with the top of the block itself
         expect(firstChild.getBoundingClientRect().top).to.equal(block.getBoundingClientRect().top);
         // the bottom of the last child of the block should be flush with the bottom of the block itself
         // @todo: give it a 5px variance because to account for line-height, that should be figured out why we have to do that
-        expect(Math.abs(lastChild.getBoundingClientRect().bottom - block.getBoundingClientRect().bottom) < 5).to.be.true;
+        expect(
+          Math.abs(
+            lastChild.getBoundingClientRect().bottom - block.getBoundingClientRect().bottom
+          ) < 5
+        ).to.be.true;
       });
 
-      it('has a max-width for contents', async function() {
+      it("has a max-width for contents", async function () {
         const element = await fixture<RhFooter>(KITCHEN_SINK_TEMPLATE);
-        const block = element.querySelector('rh-footer-block');
-        expect(getComputedStyle(block?.querySelector('p') as Element)?.maxWidth).to.equal('650px');
+        const block = element.querySelector("rh-footer-block");
+        expect(getComputedStyle(block?.querySelector("p") as Element)?.maxWidth).to.equal("650px");
       });
     });
 
-    describe('rh-social-link', function() {
-      it('should have an icon size of --rh-icon-size-02', async function() {
+    describe("rh-social-link", function () {
+      it("should have an icon size of --rh-icon-size-02", async function () {
         const element = await fixture<RhFooter>(KITCHEN_SINK_TEMPLATE);
-        const socialLink = element.querySelector('rh-footer-social-link');
+        const socialLink = element.querySelector("rh-footer-social-link");
         await aTimeout(200);
         // we need to reach into rh-icon to get the actual size of the svg.
-        const icon = socialLink?.querySelector('rh-icon')?.shadowRoot?.querySelector('svg');
+        const icon = socialLink?.querySelector("rh-icon")?.shadowRoot?.querySelector("svg");
         if (icon) {
-          expect(getComputedStyle(icon).height).to.equal(tokens.get('--rh-size-icon-02'));
+          expect(getComputedStyle(icon).height).to.equal(tokens.get("--rh-size-icon-02"));
         }
       });
     });

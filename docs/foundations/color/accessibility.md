@@ -47,7 +47,7 @@ Consider how these elements might look to a color blind user:
   </figcaption>
 </figure>
 
-Note that the emphasis here is on "solely," as we often do use color to enhance the visual design of our digital experiences. As stated in the [WCAG criterion on color usage](https://www.w3.org/WAI/WCAG21/Understanding/use-of-color.html), "This should not in any way discourage the use of color on a page, or even color coding if it is complemented by other visual indication."
+Note that the emphasis here is on "solely," as we often do use color to enhance the visual design of our digital experiences. As stated in the [WCAG criterion on color usage](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html), "This should not in any way discourage the use of color on a page, or even color coding if it is complemented by other visual indication."
 
 ## Color contrast
 

@@ -34,7 +34,7 @@ Visit our [Content section][content] for more information on image accessibility
 
 Icon fonts are a nifty visual hack that you shouldn’t use.
 
-- They put your site at risk of failing [WCAG Success Criterion 1.1.1][wcag21tf3].
+- They put your site at risk of failing [WCAG Success Criterion 1.1.1][wcag22tf3].
 - Because assistive tech can’t reliably interpret them, the icons may be rendered “[inaccurate, nonsensical, redundant, or unpredictable][wcagiconfont].”
 - And if the font file doesn’t load (or is overridden by the user), the icons may not display properly for visual users.
 
@@ -167,8 +167,8 @@ Our complex components, like accordion, secondary navigation, subnavigation, tab
 
 If the focus cannot be moved away from a focusable element by keyboard alone, a keyboard user can be "trapped" on the element, unable to focus on and interact with other focusable elements. See the following on avoiding keyboard traps:
 
-- [WCAG 2.1.2: No keyboard trap][wcag212nokeyboardtrap]
-- [WCAG 2.2, Technique G21: Ensuring that users are not trapped in content][wcag21techniqueg21]
+- [WCAG 2.1.2: No keyboard trap][wcagnokeyboardtrap]
+- [WCAG 2.2, Technique G21: Ensuring that users are not trapped in content][wcag22techniqueg21]
 - [CSUN: Web Accessibility Criteria - Keyboard Traps][csunkeyboardtraps]
 
 ## Error Handling
@@ -186,13 +186,13 @@ The following World Wide Web Consortium (W3C) Web Content Accessibility Guidelin
 
 Your pages should permit users without assistive tech to scale text to at least 200% of its original size in the browser (e.g., via command-plus or control-plus on desktop, and pinch to zoom on touchscreens). Scaled text must all still be functional and visible after such scaling. That means no overlapping, clipping, or unexpected separation of content. ([1.4.4: Resize Text][wcag22u144])
 
-To give users more control over scaling, font sizes specified in CSS should be set via relative measurements (e.g., em, rem, etc.) rather than absolute sizes (e.g., px, pt, etc.). This applies not only to body copy, but also to form element text. ([1.4.4: Resize Text][wcag21resize])
+To give users more control over scaling, font sizes specified in CSS should be set via relative measurements (e.g., em, rem, etc.) rather than absolute sizes (e.g., px, pt, etc.). This applies not only to body copy, but also to form element text. ([1.4.4: Resize Text][wcag22resize])
 
-Content and functionality must also be maintained if users override the following text styles: line-height (up to 1.5× the font size), paragraph spacing (up to 2× the font size), letter spacing (up to .12× the font size), and word spacing (up to .16× the font size). ([1.4.12: Text Spacing][wcag21spacing])
+Content and functionality must also be maintained if users override the following text styles: line-height (up to 1.5× the font size), paragraph spacing (up to 2× the font size), letter spacing (up to .12× the font size), and word spacing (up to .16× the font size). ([1.4.12: Text Spacing][wcag22spacing])
 
 ### Screen rotation
 
-Mobile users must be permitted to reorient their screen at will between landscape/portrait, without any messages requesting that they select a particular orientation. ([1.3.4: Orientation][wcag21orientation])
+Mobile users must be permitted to reorient their screen at will between landscape/portrait, without any messages requesting that they select a particular orientation. ([1.3.4: Orientation][wcag22orientation])
 
 [accessibilitycontrollers]: /accessibility/contributors/#accessibility-controllers
 [apg]: https://www.w3.org/WAI/ARIA/apg
@@ -211,14 +211,14 @@ Mobile users must be permitted to reorient their screen at will between landscap
 [smashingmagainearticle]: https://www.smashingmagaine.com/2021/05/accessible-svg-patterns-comparison/
 [tabscomponent]: https://www.w3.org/WAI/ARIA/apg/patterns/tabs/#wai-ariaroles,states,andproperties
 [waiariarecommends]: https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#focusabilityofdisabledcontrols
-[wcag212nokeyboardtrap]: https://www.w3.org/WAI/WCAG21/Understanding/no-keyboard-trap.html
-[wcag21orientation]: https://www.w3.org/WAI/WCAG21/Understanding/orientation.html
-[wcag21resize]: https://www.w3.org/WAI/WCAG21/Understanding/resize-text
-[wcag21spacing]: https://www.w3.org/WAI/WCAG21/Understanding/text-spacing
-[wcag21techniqueg21]: https://www.w3.org/WAI/WCAG21/Techniques/general/G21
-[wcag21tf3]: https://www.w3.org/WAI/WCAG21/Techniques/failures/F3.html
+[wcagnokeyboardtrap]: https://www.w3.org/WAI/WCAG22/Understanding/no-keyboard-trap.html
+[wcag22orientation]: https://www.w3.org/WAI/WCAG22/Understanding/orientation.html
+[wcag22resize]: https://www.w3.org/WAI/WCAG22/Understanding/resize-text
+[wcag22spacing]: https://www.w3.org/WAI/WCAG22/Understanding/text-spacing
+[wcag22techniqueg21]: https://www.w3.org/WAI/WCAG22/Techniques/general/G21
+[wcag22tf3]: https://www.w3.org/WAI/WCAG22/Techniques/failures/F3.html
 [wcag22u1413]: https://www.w3.org/WAI/WCAG22/Understanding/content-on-hover-or-focus.html
-[wcag22u144]: https://www.w3.org/WAI/WCAG21/Understanding/resize-text
+[wcag22u144]: https://www.w3.org/WAI/WCAG22/Understanding/resize-text
 [wcag22uerror]: https://www.w3.org/WAI/WCAG22/Understanding/error-identification.html
 [wcag22uerrorsugg]: https://www.w3.org/WAI/WCAG22/Understanding/error-suggestion.html
 [wcag22ufocusvis]: https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html

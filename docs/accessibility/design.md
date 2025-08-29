@@ -176,7 +176,7 @@ The act of focusing on an element should not cause the element to change the int
 
 <rh-alert state="info">
   <h2 slot="header">Note</h2>
-  <p>A change in a page’s content does not always mean that the context has changed. Learn more about what constitutes a <a href="https://www.w3.org/WAI/WCAG21/Understanding/on-focus#dfn-changes-of-context">change in context</a>.</p>
+  <p>A change in a page’s content does not always mean that the context has changed. Learn more about what constitutes a <a href="https://www.w3.org/WAI/WCAG22/Understanding/on-focus#dfn-changes-of-context">change in context</a>.</p>
 </rh-alert>
 
 If keyboard focus appears to be trapped in a subsection, instructions for exiting this section via keyboard will need to be available. For example, if pressing the tab key does not allow the user to exit an embedded video or learning module on a page, another method (e.g., pressing the <kbd>escape</kbd> key or some key combo) must exist, and instructions must be presented to all users.
@@ -202,10 +202,10 @@ Text should never be justified. Justified text is aligned to the left and right 
 [coloraccessibility]: /foundations/color/accessibility/
 [colorcontrast]: https://www.tpgi.com/color-contrast-checker/
 [linkfoundations]: /foundations/interactions/links/
-[paragraphspacing]: https://www.w3.org/WAI/WCAG21/Understanding/visual-presentation.html
+[paragraphspacing]: https://www.w3.org/WAI/WCAG22/Understanding/visual-presentation.html
 [rhbutton]: /elements/button/
 [usercontrol]: https://www.interaction-design.org/literature/topics/user-control
 [wcag22aa]: https://www.w3.org/WAI/WCAG22/Understanding/
-[wcagcontrast]: https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum
+[wcagcontrast]: https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum
 [webaimskipnav]: https://webaim.org/techniques/skipnav/
 [wcagpredictable]: https://www.w3.org/WAI/WCAG22/quickref/#predictable
