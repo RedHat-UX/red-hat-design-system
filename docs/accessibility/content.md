@@ -54,7 +54,7 @@ Wherever meaningful images or other non-text elements are used on a page, you mu
 Images loaded via the `<img>` element typically use the alt attribute for their alternative text:
 
 ```html rhcodeblock
-<img src="imagesource.jpg" alt="Description of image" />
+<img src="imagesource.jpg" alt="Description of image">
 ```
 
 Inline SVGs that compose simple images commonly use a combination of the `role="img"` attribute and a `<title>` element as the first child of the `<svg>` element:

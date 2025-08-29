@@ -27,9 +27,9 @@ Since tables are inherently complex HTML structures, they can create barriers fo
       Concerts
     </caption>
     <colgroup>
-      <col />
-      <col />
-      <col />
+      <col>
+      <col>
+      <col>
     </colgroup>
     <thead>
       <tr>
