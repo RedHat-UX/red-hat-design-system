@@ -2,6 +2,14 @@
   display: block;
   padding: 0.5rem 1rem;
   cursor: pointer;
+
+  a {
+    text-decoration: none;
+    color: #151515;
+    &:focus {
+      outline: none;
+    }
+  }
 }
 
 :host(:hover) {
@@ -12,6 +20,10 @@
   background: #F2F2F2;
   border: 2px solid #0066CC;
   border-radius: 2px;
+  box-sizing: border-box;
+  .menu-item{
+    outline: none;
+  }
 }
 
 :host([disabled]) {
