@@ -16,10 +16,10 @@ export class RhMenuItem extends LitElement {
 
   render(): TemplateResult<1> {
     if (this.href && !this.disabled) {
-      return html`<a href="${this.href}" role="menuitem" tabindex="-1"><slot></slot></a>`;
+      return html`<a class="menu-item" href="${this.href}" role="menuitem" tabindex="-1"><slot></slot></a>`;
     }
 
-    return html`<div role="menuitem" tabindex="-1"><slot></slot></div>`;
+    return html`<div class="menu-item" role="menuitem" tabindex="-1"><slot></slot></div>`;
   }
 
   focus() {
