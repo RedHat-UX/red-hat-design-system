@@ -1,0 +1,69 @@
+<nav id="simulate-nav" aria-labelledby="simulate-nav-heading">
+  <h3 id="simulate-nav-heading">Navigate to accordion header</h3>
+  <ul>
+    <li><a href="#north">North tab</a></li>
+    <li><a href="#south">South tab</a></li>
+    <li><a href="#east">East tab</a></li>
+    <li><a href="#west">West tab</a></li>
+    <li><a href="#best">Content inside the West panel</a></li>
+  </ul>
+</nav>
+
+<rh-accordion>
+  <!-- H2 tags will be removed on upgrade, rh-accordion-header will set the correct heading level internally using the header tag that wraps it -->
+  <h2><rh-accordion-header id="north">North</rh-accordion-header></h2>
+  <rh-accordion-panel>
+    <p>North Panel</p>
+  </rh-accordion-panel>
+  <h2><rh-accordion-header id="south">South</rh-accordion-header></h2>
+  <rh-accordion-panel>
+    <p>South Panel</p>
+  </rh-accordion-panel>
+  <h2><rh-accordion-header id="east">East</rh-accordion-header></h2>
+  <rh-accordion-panel>
+    <p>East Panel</p>
+  </rh-accordion-panel>
+  <h2><rh-accordion-header id="west">West</rh-accordion-header></h2>
+  <rh-accordion-panel>
+    <p>The West end is the <a href="#" id="best"><em>best</em></a> end.</p>
+  </rh-accordion-panel>
+</rh-accordion>
+
+
+<script type="module">
+  import '@rhds/elements/rh-accordion/rh-accordion.js';
+  function accordionTargetIndex(accordion, target) {
+    return Array.from(accordion.querySelectorAll('rh-accordion-header')).indexOf(target);
+  }
+
+  async function activateAccordionByHash() {
+      const { hash } = location;
+    if (!hash) { return; }
+    const hashTarget = document.querySelector(hash);
+    const accordion = hashTarget?.closest('rh-accordion');
+    if (!accordion || !hashTarget) { return; }
+    await accordion.updateComplete;
+    if (hashTarget.localName === 'rh-accordion-header') {
+      const headerIndex = accordionTargetIndex(accordion, hashTarget);
+      await hashTarget.updateComplete;
+      accordion.expand(headerIndex);
+      await accordion.updateComplete;
+      hashTarget.focus();
+    } else {
+      const panel = hashTarget?.closest('rh-accordion-panel');
+      if (!panel) { return; }
+      await panel.updateComplete;
+      const headerId = panel.getAttribute('aria-labelledby');
+      const header = accordion.querySelector(`#${headerId}`);
+      const headerIndex = accordionTargetIndex(accordion, header);
+      if (headerIndex >= 0) {
+        accordion.expand(headerIndex);
+        await accordion.updateComplete;
+        hashTarget.focus();
+      }
+    }
+    hashTarget.scrollIntoView({ block: 'center', inline: 'center', behavior: 'auto' });
+  }
+  addEventListener('hashchange', activateAccordionByHash);
+  activateAccordionByHash();
+</script>
