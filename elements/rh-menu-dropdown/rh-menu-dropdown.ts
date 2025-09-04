@@ -6,6 +6,7 @@ import { property, query } from 'lit/decorators.js';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 import '@rhds/elements/rh-button/rh-button.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
+import '@rhds/elements/rh-menu/rh-menu.js';
 import { RhMenuItem } from './rh-menu-item.js';
 
 /**
@@ -76,13 +77,13 @@ export class RhMenuDropdown extends LitElement {
               }
             </span>
         </button>
-        <div
-          id="menu"
+        <rh-menu
+          id="menu-list"
           role="menu"
           @click=${this.onSelect}
         >
           <slot></slot>
-        </div>
+        </rh-menu>
       </div>
     `;
   }
