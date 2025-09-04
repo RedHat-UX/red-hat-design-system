@@ -139,9 +139,9 @@ button {
     --_hover-border-width: var(--rh-border-width-md, 2px);
 
     &.danger {
-      --_color: light-dark(var(--rh-color-red-60, #a60000), var(--rh-color-red-30, #f9a8a8));
+      --_color: var(--rh-color-status-danger);
       --_background-color: transparent;
-      --_border-color: light-dark(#c9190b, #fe5142);
+      --_border-color: var(--rh-color-border-status-danger);
       --_active-color: light-dark(#c9190b, #fe5142);
       --_active-background-color: transparent;
       --_active-border-color: transparent;
