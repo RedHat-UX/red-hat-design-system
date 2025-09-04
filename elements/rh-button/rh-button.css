@@ -195,14 +195,14 @@ button {
   }
 
   &.close {
-    --_color: var(--rh-color-text-secondary);
+    --_color: var(--rh-color-icon-secondary);
     --_background-color: transparent;
-    --_active-color: var(--rh-color-icon-secondary);
+    --_active-color: var(--rh-color-interactive-secondary-active);
     --_active-background-color: transparent;
-    --_focus-color: var(--rh-color-icon-secondary);
+    --_focus-color: var(--rh-color-interactive-secondary-focus);
     --_focus-background-color: transparent;
     --_focus-outline-color: var(--rh-color-interactive-primary-default);
-    --_hover-color: var(--rh-color-icon-secondary);
+    --_hover-color: var(--rh-color-interactive-secondary-hover);
     --_hover-background-color: transparent;
 
     width: var(--rh-length-lg, 16px);
