@@ -99,7 +99,7 @@ button {
     --_color:
       light-dark(var(--rh-color-text-primary-on-dark, #ffffff),
         var(--rh-color-text-primary-on-light, #151515));
-    --_background-color: light-dark(#c9190b, #fe5142); /* WARNING: non-token value */
+    --_background-color: var(--rh-color-status-danger);
     --_border-color: transparent;
     --_border-width: var(--rh-border-width-sm, 1px);
     --_active-color:
