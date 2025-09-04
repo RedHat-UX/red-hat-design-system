@@ -2,7 +2,7 @@
   position: relative;
   display: inline-block;
 }
-#menu {
+#menu-list {
   position: absolute;
   top: 100%;
   left: 0;
@@ -19,7 +19,7 @@
   box-shadow: 0 4px 6px 1px rgba(21, 21, 21, 0.25);
 }
 
-:host([open]) #menu {
+:host([open]) #menu-list {
   display: block;
 }
 
@@ -53,4 +53,8 @@
 ::slotted(hr)  {
   border: 0;
   border-top: 1px solid #C7C7C7;
+}
+
+rh-menu::part(menu) {
+  width: 100%;
 }
