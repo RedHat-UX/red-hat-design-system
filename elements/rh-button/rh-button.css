@@ -76,8 +76,10 @@ button {
   }
 
   &.primary {
-    --_color: var(--rh-color-text-primary-on-dark, #ffffff);
-    --_background-color: var(--rh-color-interactive-primary-default-on-light, #0066cc);
+    --_color:
+      light-dark(var(--rh-color-text-primary-on-dark, #ffffff),
+        var(--rh-color-text-primary-on-light, #151515));
+    --_background-color: var(--rh-color-interactive-primary-default);
     --_border-color: transparent;
     --_border-width: var(--rh-border-width-sm, 1px);
     --_active-color: var(--rh-color-text-primary-on-dark, #ffffff);
@@ -86,8 +88,10 @@ button {
     --_focus-color: var(--rh-color-text-primary-on-dark, #ffffff);
     --_focus-background-color: var(--rh-color-interactive-primary-hover-on-light, #003366);
     --_focus-border-width: var(--rh-border-width-md, 2px);
-    --_hover-color: var(--rh-color-text-primary-on-dark, #ffffff);
-    --_hover-background-color: var(--rh-color-interactive-primary-hover-on-light, #003366);
+    --_hover-color:
+      light-dark(var(--rh-color-text-primary-on-dark, #ffffff),
+        var(--rh-color-text-primary-on-light, #151515));
+    --_hover-background-color: var(--rh-color-interactive-primary-hover);
     --_hover-border-width: var(--rh-border-width-sm, 1px);
   }
 
