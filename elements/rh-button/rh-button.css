@@ -192,10 +192,6 @@ button {
     --_hover-background-color: transparent;
 
     display: inline-flex;
-
-    & rh-icon {
-      order: 1;
-    }
   }
 
   &.close {
