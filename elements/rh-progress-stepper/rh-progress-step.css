@@ -6,7 +6,7 @@
 }
 
 :host {
-  --_step-line-style: /* @summary Styles connecting lines */
+  --_step-line-style:
     linear-gradient(
         var(--_step-line-angle),
         /* @summary Sets the angle direction for connecting line gradient */
@@ -16,14 +16,10 @@
         var(--_step-line-color) 15px,
         transparent 15px);
   --_step-color: var(--rh-color-text-primary);
-  --_step-label-color: /* @summary A step's title color */
-    var(--rh-color-text-primary);
+  --_step-label-color: var(--rh-color-text-primary);
 
   @container (width > 992px) {
-    --_step-compact-horizontal-padding: /* @summary Padding for the compact variant when horizontal
-       * @description Default padding for horizontal progress stepper for large container widths
-       */
-      var(--rh-length-5xl, 80px);
+    --_step-compact-horizontal-padding: var(--rh-length-5xl, 80px);
   }
 }
 
