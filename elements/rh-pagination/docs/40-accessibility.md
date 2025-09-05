@@ -21,7 +21,6 @@ The buttons, page input field, and last page link all have keyboard interactions
 
 </rh-table>
 
-
 ## Focus order
 
 {% include 'partials/accessibility/focusorder.md' %}
@@ -33,10 +32,9 @@ The buttons, page input field, and last page link all have keyboard interactions
        height="486">
 </uxdot-example>
 
-
 ## Touch targets
 
-Buttons, page field input, and the last page link are adequately spaced for optimal touch targets. The default size meets the WCAG [Level AAA success criteria for target size](https://www.w3.org/WAI/WCAG21/Understanding/target-size.html) which requires at least a 44px by 44px touch target.
+Buttons, page field input, and the last page link are adequately spaced for optimal touch targets. The default size meets the WCAG [Level AAA success criteria for target size](https://www.w3.org/WAI/WCAG22/Understanding/target-size.html) which requires at least a 44px by 44px touch target.
 
 <uxdot-example color-palette="lightest" width-adjustment="792px">
   <img alt="Paginations with elements showing WCAG AAA compliant touch target spacing"
@@ -56,8 +54,8 @@ The small size exceeds the WCAG [Level AA success criteria for target size](http
 
 ## Additional guidelines
 
-* The active page must be conveyed to assistive technologies
-* Icon only buttons must have accessible names for assistive technologies
+- The active page must be conveyed to assistive technologies
+- Icon only buttons must have accessible names for assistive technologies
 
 {% include 'partials/accessibility/ariaguide.md' %}
 
@@ -67,4 +65,3 @@ The small size exceeds the WCAG [Level AA success criteria for target size](http
 {% include 'partials/accessibility/2.4.3-A.md' %}
 {% include 'partials/accessibility/2.5.5-AAA.md' %}
 {% include 'partials/accessibility/2.5.8-AA.md' %}
-
