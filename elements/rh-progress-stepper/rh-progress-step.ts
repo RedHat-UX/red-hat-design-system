@@ -72,15 +72,16 @@ export class RhProgressStep extends LitElement {
   @property({ reflect: true }) state?: ProgressStepState;
 
   /**
-   * Sets the description text for the progress step
+   * Sets the description text for the progress step if more context is needed.
+   * Descriptions are secondary to titles.
    * Overridden by the `description` slot.
    */
   @property({ reflect: true }) description?: string;
 
   /**
    * Custom icon for the step. Overridden by the `icon` slot.
-   * When the step is in the `warn` or `fail` state, it should not have a custom
-   * icon.
+   * When the step is in the `warn` or `fail` state, it should not have a custom icon.
+   * If there's no custom icon, default active/inactive will appear.
    */
   @property() icon?: IconNameFor<IconSetName>;
 
@@ -110,7 +111,8 @@ export class RhProgressStep extends LitElement {
     const compact = this.compact ?? false;
     const ariaCurrent = this.currentStep === this ? 'step' : undefined;
     const labelSlot = html`
-      <!-- A short title for the step, which also serves as the step's accessible name -->
+      <!-- A short title (1 to 3 words) for each step is required and serves as the step's accessible name.
+          Titles can be hyperlinked. Do not add punctuation to end. -->
       <slot></slot>
     `;
     return html`
@@ -129,20 +131,19 @@ export class RhProgressStep extends LitElement {
              aria-current="${ifDefined(ariaCurrent)}">${labelSlot}</a>` : html`
           <strong id="label"
                   aria-current="${ifDefined(ariaCurrent)}">${labelSlot}</strong>`}
-        <!-- summary: Elaborative description for the step
+        <!-- summary: Elaborative, optional description for the step
              description: |
                Rich HTML content can be slotted here , to override the (plain text) \`description\` attribute.
-               Avoid slotting links, images, block-level content, etc.: descriptions should be prose only. -->
+               Avoid slotting links, images, block-level content, etc.: descriptions should be prose only (around 40 characters). -->
         <slot name="description" id="description">${this.description}</slot>
       </div>
     `;
   }
 
   /**
+   * Icons for each step indicates the status of a process or task.
+   * Icons change as users progress.
    * Computes the icon for the step:
-   * always use the prescribed warn or fail icons
-   * otherwise, use the custom user icon,
-   * or fall back to the default active/inactive icon
    */
   @observes('icon')
   @observes('iconSet')
