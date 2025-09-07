@@ -306,7 +306,7 @@
     "@patternfly/eslint-config-elements": "^4.0.0",
     "@patternfly/eslint-plugin-elements": "^2.0.0",
     "@patternfly/icons": "^1.0.3",
-    "@patternfly/pfe-tools": "^5.0.3",
+    "@patternfly/pfe-tools": "^5.0.4",
     "@playwright/test": "^1.54.1",
     "@pwrs/cem": "^0.3.0",
     "@rollup/plugin-node-resolve": "^16.0.0",
