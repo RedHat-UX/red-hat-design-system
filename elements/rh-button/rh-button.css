@@ -311,11 +311,11 @@ button {
 button[disabled] {
   /* Remove these two re-declarations when the `status-disabled` variables are defined in tokens */
   --rh-color-text-status-disabled:
-    light-dark(var(--rh-color-text-secondary-on-light, #4d4d4d),
-      var(--rh-color-gray-40, #a3a3a3));
+    light-dark(var(--rh-color-gray-50, #707070),
+      var(--rh-color-gray-60, #4d4d4d));
   --rh-color-status-disabled:
-    light-dark(var(--rh-color-surface-light, #e0e0e0),
-      var(--rh-color-surface-dark, #383838));
+    light-dark(var(--rh-color-gray-30, #c7c7c7),
+      var(--rh-color-gray-40, #a3a3a3));
 
   pointer-events: none;
   cursor: default;
