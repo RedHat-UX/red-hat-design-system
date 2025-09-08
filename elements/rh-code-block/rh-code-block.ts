@@ -335,7 +335,7 @@ export class RhCodeBlock extends LitElement {
    * Portions copyright prism.js authors (MIT license)
    */
   async #computeLineNumbers() {
-    if (this.lineNumbers === 'hidden' || !this.#isIntersecting) {
+    if ( !this.#isIntersecting) {
       return;
     }
     await this.updateComplete;
