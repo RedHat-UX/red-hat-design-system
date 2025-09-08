@@ -41,6 +41,9 @@ export class RhMenuDropdown extends LitElement {
   }
 
   private isValidMenuDropdownChild(el: Element): boolean {
+    if ( el instanceof HTMLHRElement){
+      el.inert = true;
+    }
     return el instanceof RhMenuItem || el instanceof HTMLHRElement;
   }
 
