@@ -9,6 +9,7 @@ import { observes } from '@patternfly/pfe-core/decorators/observes.js';
 import { getRandomId } from '@patternfly/pfe-core/functions/random.js';
 import { InternalsController } from '@patternfly/pfe-core/controllers/internals-controller.js';
 
+
 import {
   rhTabsActiveTabContext,
   rhTabsBoxContext,
@@ -21,6 +22,7 @@ import {
 import { themable } from '@rhds/elements/lib/themable.js';
 
 import styles from './rh-tab.css';
+import type { IconNameFor, IconSetName } from '@rhds/icons';
 
 export class TabExpandEvent extends Event {
   constructor(
@@ -46,6 +48,9 @@ export class RhTab extends LitElement {
   /** True when the tab is disabled */
   @property({ reflect: true, type: Boolean }) disabled = false;
 
+  @property({ reflect: true }) icon?: IconNameFor<IconSetName>;
+  @property({ attribute: 'icon-set' }) iconSet: IconSetName = 'ui';
+
   @consume({ context: rhTabsBoxContext, subscribe: true })
   @state() private box = false;
 
@@ -63,7 +68,13 @@ export class RhTab extends LitElement {
 
   @consume({ context: rhTabsLastTabContext, subscribe: true })
   @state() private lastTab: RhTab | null = null;
-
+  
+  @state() private hasIconSlot = false;
+  #onIconSlotChange(e: Event) {
+  const slot = e.currentTarget as HTMLSlotElement;
+  this.hasIconSlot = slot.assignedNodes({ flatten: true })
+      .some(n => n.nodeType === Node.ELEMENT_NODE);
+}
   #internals = InternalsController.of(this, { role: 'tab' });
 
   override connectedCallback() {
@@ -79,15 +90,20 @@ export class RhTab extends LitElement {
     const active = isServer ? this.active : activeTab === this;
     const first = firstTab === this;
     const last = lastTab === this;
+    const showAttrIcon = !!this.icon && !this.hasIconSlot;
     return html`
       <!-- element that contains the interactive part of a tab -->
       <div id="button"
            part="button"
            ?disabled="${this.disabled}"
            class="${classMap({ active, box, vertical, first, last })}">
-        <!-- Can contain an \`<svg>\` or \`<rh-icon>\` -->
-        <slot name="icon"
-              part="icon"></slot>
+        <slot name="icon" @slotchange=${this.#onIconSlotChange}>
+          <span part="icon">
+          ${showAttrIcon ? html`
+          <rh-icon icon=${this.icon!} set=${this.iconSet}></rh-icon>
+           ` : null}
+          </span>
+        </slot>      
         <!-- Tab title text -->
         <slot part="text"></slot>
       </div>
