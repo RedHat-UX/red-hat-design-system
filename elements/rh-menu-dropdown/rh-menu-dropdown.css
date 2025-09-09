@@ -2,20 +2,20 @@
   position: relative;
   display: inline-block;
 }
+
 #menu-list {
   position: absolute;
   top: 100%;
   left: 0;
-  background: white;
-  padding: 8px 0px;
+  padding: 8px 0;
   margin: 0.25rem 0;
   display: none;
   z-index: 1000;
   min-width: 150px;
   width: 100%;
   border-radius: 3px;
-  border: 1px solid #C7C7C7;
-  background: #FFF;
+  border: 1px solid #c7c7c7;
+  background: #ffffff;
   box-shadow: 0 4px 6px 1px rgba(21, 21, 21, 0.25);
 }
 
@@ -25,11 +25,11 @@
 
 #menu-toggle {
   color: #151515;
-  font-family: "Red Hat Text";
+  font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
-  line-height: 24px; 
+  line-height: 24px;
   width: 100%;
   padding: 6px 16px;
   display: flex;
@@ -38,24 +38,25 @@
   box-sizing: border-box;
   max-height: 36px;
   border-radius: 3px;
-  background: #FFF;
+  background: #ffffff;
   border: none;
+
   rh-icon {
     --rh-icon-size: 10px;
   }
 }
 
 #menu-toggle.closed {
-  border: 1px solid #C7C7C7;
+  border: 1px solid #c7c7c7;
 }
 
 .menu-dropdown-container {
   width: 100%;
 }
 
-::slotted(hr)  {
+::slotted(hr) {
   border: 0;
-  border-top: 1px solid #C7C7C7;
+  border-top: 1px solid #c7c7c7;
   width: 100%;
 }
 

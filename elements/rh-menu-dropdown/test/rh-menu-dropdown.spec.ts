@@ -13,9 +13,9 @@ describe('<rh-menu-dropdown>', function() {
       element = await createFixture<RhMenuDropdown>(html`<rh-menu-dropdown></rh-menu-dropdown>`);
       const klass = customElements.get('rh-menu-dropdown');
       expect(element)
-        .to.be.an.instanceOf(klass)
-        .and
-        .to.be.an.instanceOf(RhMenuDropdown);
+          .to.be.an.instanceOf(klass)
+          .and
+          .to.be.an.instanceOf(RhMenuDropdown);
     });
-  })
+  });
 });
