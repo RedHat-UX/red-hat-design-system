@@ -335,13 +335,23 @@ export class RhCodeBlock extends LitElement {
    * Portions copyright prism.js authors (MIT license)
    */
   async #computeLineNumbers() {
-    if ( !this.#isIntersecting) {
+    if (!this.#isIntersecting) {
       return;
     }
     await this.updateComplete;
     const codes =
         this.#prismOutput ? [this.shadowRoot?.getElementById('prism-output')].filter(x => !!x)
       : this.#getSlottedCodeElements();
+
+     if (this.lineNumbers === 'hidden') {
+        this.#lineHeights = codes.flatMap(element =>
+          element.textContent?.split(/\n(?!$)/g).map(() => 1) ?? []
+        );
+        this.requestUpdate();
+        return; 
+      }
+
+
 
     const infos: CodeLineHeightsInfo[] = codes.map(element => {
       const codeElement = this.#prismOutput ? element.querySelector('code') : element;
