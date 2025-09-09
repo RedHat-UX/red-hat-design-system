@@ -25,8 +25,8 @@
   "imports": {
     "fuse.js": "/assets/packages/fuse.js/dist/fuse.mjs",
     "tinycolor2": "/assets/packages/tinycolor2/esm/tinycolor.js",
-    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@rhds/tokens/media.js": "/assets/packages/@rhds/tokens/js/media.js",
+    "@rhds/tokens": "/assets/packages/@rhds/tokens/js/tokens.js",
     "@rhds/tokens/meta.js": "/assets/packages/@rhds/tokens/js/meta.js",
     "lit-html": "/assets/packages/lit-html/lit-html.js",
     "tslib": "/assets/packages/tslib/tslib.es6.mjs",
@@ -43,8 +43,8 @@
     "@lit/context": "/assets/packages/@lit/context/index.js",
     "lit/directives/class-map.js": "/assets/packages/lit/directives/class-map.js",
     "lit/directives/repeat.js": "/assets/packages/lit/directives/repeat.js",
-    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@patternfly/pfe-core": "https://ga.jspm.io/npm:@patternfly/pfe-core@5.0.3/core.js",
+    "@webcomponents/template-shadowroot/template-shadowroot.js": "https://ga.jspm.io/npm:@webcomponents/template-shadowroot@0.2.1/template-shadowroot.js",
     "@floating-ui/core": "/assets/packages/@floating-ui/core/dist/floating-ui.core.mjs",
     "@floating-ui/dom": "/assets/packages/@floating-ui/dom/dist/floating-ui.dom.mjs",
     "@patternfly/elements": "/assets/packages/@patternfly/elements/pfe.min.js",
@@ -982,27 +982,31 @@ border for emphasis.</p>
     <a href="#anatomy">Anatomy</a><a>
   </a></h3>
 </uxdot-copy-permalink>
-<uxdot-example   color-palette="lightest" width-adjustment="872px"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
+<figure>
+  <uxdot-example  color-palette="lightest"><template shadowroot="open" shadowrootmode="open"><style>:host{color-scheme:inherit}:host([color-palette^=dark]){color-scheme:only dark}:host([color-palette^=light]){color-scheme:only light}:host([color-palette=lightest]){--rh-color-surface:var(--rh-color-surface-lightest,#fff)}:host([color-palette=lighter]){--rh-color-surface:var(--rh-color-surface-lighter,#f2f2f2)}:host([color-palette=light]){--rh-color-surface:var(--rh-color-surface-light,#e0e0e0)}:host([color-palette=dark]){--rh-color-surface:var(--rh-color-surface-dark,#383838)}:host([color-palette=darker]){--rh-color-surface:var(--rh-color-surface-darker,#1f1f1f)}:host([color-palette=darkest]){--rh-color-surface:var(--rh-color-surface-darkest,#151515)}:host{container-name:host;container-type:inline-size;display:block;margin-block-end:var(--rh-space-2xl)}:host([transparent]){--rh-color-surface:#0000}#container{align-items:var(--_alignment,center);background-color:var(--rh-color-surface);border-color:var(--rh-color-border-subtle);border-radius:var(--rh-border-radius-default);border-style:solid;border-width:var(--rh-border-width-sm);color:var(--rh-color-text-primary);display:flex;flex-direction:column;justify-content:center;padding:var(--rh-space-2xl)}::slotted(*){align-items:var(--_alignment,center);display:flex;flex-direction:column;height:auto;justify-content:center;max-width:100%}.widthAdjustment ::slotted(*){width:var(--_width)}:host([variant=full]) #container{padding:0}:host([danger]) #container{--rh-color-border-subtle:var(--rh-color-border-destructive);background-image:url(/assets/best-practices-danger-icon.svg);background-position-x:8px;background-position-y:8px;background-repeat:no-repeat}:host([no-border]:not([danger])) #container{border:none}@container host (min-width: 576px){#container{padding:var(--rh-space-3xl)}}@container host (min-width: 768px){#container{padding:var(--rh-space-4xl)}}</style><!--lit-part AzCbcegPFE8=-->
       <!--lit-node 0--><div id="container"
            part="container"
-           class=" widthAdjustment "
-           style="--_width: 872px; --_alignment: center">
+           class="  "
+           style="--_width: 100%; --_alignment: center">
         <slot></slot>
       </div>
     <!--/lit-part--></template>
-  <img alt="Anatomy of an accordion with lots of annotations pointing to various parts" src="../accordion-anatomy.png" width="872" height="755">
-</uxdot-example>
-<ol class="example-notes">
-<li>Collapsed panel</li>
-<li>Expanded panel</li>
-<li>Title</li>
-<li>Panel header region</li>
-<li>Caret</li>
-<li>Emphasis</li>
-<li>Content</li>
-<li>Panel body region</li>
-<li>Accent slot</li>
-</ol>
+    <img alt="Anatomy of an accordion with lots of annotations pointing to various parts" src="../accordion-anatomy.png" width="872" height="755">
+  </uxdot-example>
+  <figcaption>
+    <ol>
+      <li>Collapsed panel</li>
+      <li>Expanded panel</li>
+      <li>Title</li>
+      <li>Panel header region</li>
+      <li>Caret</li>
+      <li>Emphasis</li>
+      <li>Content</li>
+      <li>Panel body region</li>
+      <li>Accent slot</li>
+    </ol>
+  </figcaption>
+</figure>
 <uxdot-copy-permalink  class="h3"><template shadowroot="open" shadowrootmode="open"><style>:host{align-items:center;display:flex;margin-block-end:var(--rh-space-lg)}#signifier{display:var(--perma-signifier-display,none)}#button{align-items:center;background:none;border:none;border-radius:var(--rh-border-radius-default);display:none;height:1.75rem}#button:is(:hover,:focus){background:var(--rh-color-surface-light)}:host(:state(--rendered)) #button{display:flex}::slotted(:is(h1,h2,h3,h4,h5,h6)){align-items:center;color:inherit;display:flex;margin-block-end:0!important;text-decoration:inherit}</style><!--lit-part uJX07w0RWL0=-->
       <slot></slot>
       <span id="signifier">(permalink)</span>
