@@ -6,6 +6,7 @@
   a {
     text-decoration: none;
     color: #151515;
+
     &:focus {
       outline: none;
     }
@@ -13,21 +14,22 @@
 }
 
 :host(:hover) {
-  background: #F2F2F2;
+  background: #f2f2f2;
 }
 
 :host(:focus) {
-  background: #F2F2F2;
-  border: 2px solid #0066CC;
+  background: #f2f2f2;
+  border: 2px solid #0066cc;
   border-radius: 2px;
   box-sizing: border-box;
-  .menu-item{
+
+  .menu-item {
     outline: none;
   }
 }
 
 :host([disabled]) {
-  color: #888;
+  color: #888888;
   cursor: default;
   pointer-events: none;
 }

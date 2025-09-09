@@ -33,10 +33,10 @@ export class RhMenu extends LitElement {
   @queryAssignedElements() private _menuItems!: Element[];
 
   #tabindex: RovingTabindexController<HTMLElement> = RovingTabindexController.of(this, {
-    getItems: (): HTMLElement[] => 
-      this._menuItems.flatMap((element: Element) => 
+    getItems: (): HTMLElement[] =>
+      this._menuItems.flatMap((element: Element) =>
         element instanceof HTMLSlotElement ? element.assignedElements() : [element]
-      ) as HTMLElement[]
+      ) as HTMLElement[],
   });
 
   get activeItem() {

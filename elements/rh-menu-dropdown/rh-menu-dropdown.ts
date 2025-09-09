@@ -2,7 +2,8 @@ import { LitElement, html, type TemplateResult } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 
 import styles from './rh-menu-dropdown.css';
-import { property, query } from 'lit/decorators.js';
+import { property } from 'lit/decorators/property.js';
+import { query } from 'lit/decorators/query.js';
 import { RovingTabindexController } from '@patternfly/pfe-core/controllers/roving-tabindex-controller.js';
 import '@rhds/elements/rh-button/rh-button.js';
 import '@rhds/elements/rh-icon/rh-icon.js';
@@ -17,7 +18,7 @@ import { RhMenuItem } from './rh-menu-item.js';
 export class RhMenuDropdown extends LitElement {
   static readonly styles: CSSStyleSheet[] = [styles];
   @property({ type: Boolean, reflect: true }) open = false;
-  @property({ attribute: 'action-icon-name', reflect: true }) actionIconName = "caret-down";
+  @property({ attribute: 'action-icon-name', reflect: true }) actionIconName = 'caret-down';
   @property({ attribute: 'info-icon-name', reflect: true }) infoIconName!: string;
   @property({ attribute: 'variant', reflect: true }) variant: 'open' | 'closed' = 'closed';
   @property({ attribute: 'text', type: String, reflect: true }) text!: string;
@@ -38,14 +39,15 @@ export class RhMenuDropdown extends LitElement {
 
     assignedElements.forEach(el => {
       if (!this.isValidMenuDropdownChild(el)) {
-        console.error(`Invalid slotted element:`,el);
-        //el.remove();
+        // eslint-disable-next-line no-console
+        console.error(`Invalid slotted element:`, el);
+        // el.remove();
       }
     });
   }
 
   private isValidMenuDropdownChild(el: Element): boolean {
-    if ( el instanceof HTMLHRElement){
+    if ( el instanceof HTMLHRElement) {
       el.inert = true;
     }
     return el instanceof RhMenuItem || el instanceof HTMLHRElement;
@@ -120,13 +122,13 @@ export class RhMenuDropdown extends LitElement {
   }
 
   onSelect(event: KeyboardEvent | Event & { target: RhMenuItem }) {
-    if(event.target instanceof RhMenuItem){
+    if (event.target instanceof RhMenuItem) {
       this.open = false;
       this.menuToggleButton.focus();
       this.dispatchEvent(new CustomEvent('select', {
-        detail: {text: event.target.textContent},
+        detail: { text: event.target.textContent },
         bubbles: true,
-        composed: true
+        composed: true,
       }));
     }
   }
