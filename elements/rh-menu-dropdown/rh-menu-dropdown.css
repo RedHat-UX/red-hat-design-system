@@ -38,12 +38,15 @@
   box-sizing: border-box;
   max-height: 36px;
   border-radius: 3px;
-  border: 1px solid #C7C7C7;
   background: #FFF;
-
+  border: none;
   rh-icon {
     --rh-icon-size: 10px;
   }
+}
+
+#menu-toggle.closed {
+  border: 1px solid #C7C7C7;
 }
 
 .menu-dropdown-container {
