@@ -1,4 +1,4 @@
-import { LitElement, html, type TemplateResult } from 'lit';
+import { LitElement, html, isServer, type TemplateResult } from 'lit';
 import { customElement } from 'lit/decorators/custom-element.js';
 
 import styles from './rh-menu-dropdown.css';
@@ -17,6 +17,7 @@ import { RhMenuItem } from './rh-menu-item.js';
 @customElement('rh-menu-dropdown')
 export class RhMenuDropdown extends LitElement {
   static readonly styles: CSSStyleSheet[] = [styles];
+  private static instances = new Set<RhMenuDropdown>();
   @property({ type: Boolean, reflect: true }) open = false;
   @property({ attribute: 'action-icon-name', reflect: true }) actionIconName = 'caret-down';
   @property({ attribute: 'info-icon-name', reflect: true }) infoIconName!: string;
@@ -25,6 +26,25 @@ export class RhMenuDropdown extends LitElement {
   @query('#menu-toggle') menuToggleButton!: HTMLElement;
   @query('slot') slotElement!: HTMLSlotElement;
 
+  static {
+    if (!isServer) {
+      document.addEventListener('click', function(event) {
+        for (const instance of RhMenuDropdown.instances) {
+          instance.#outsideClick(event);
+        }
+      });
+    }
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    RhMenuDropdown.instances.add(this);
+  }
+
+  disconnectedCallback() {
+    RhMenuDropdown.instances.delete(this);
+  }
+
   firstUpdated() {
     this.validateSlotContent();
     this.slotElement.addEventListener('slotchange', () => this.validateSlotContent());
@@ -32,6 +52,15 @@ export class RhMenuDropdown extends LitElement {
 
   get #items() {
     return this.items;
+  }
+
+  #outsideClick(event: MouseEvent) {
+    const path = event.composedPath();
+    if (!path.includes(this)) {
+      if (this.open) {
+        this.open = false;
+      }
+    }
   }
 
   private validateSlotContent() {
