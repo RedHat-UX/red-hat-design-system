@@ -1,0 +1,14 @@
+$schema: ../../../docs/schemas/element-data.schema.json
+tagName: rh-jump-links
+name: Jump links
+type: element
+overallStatus: ready
+libraries:
+  figma: ready
+  rhds: ready
+  shared: inProgress
+  docs: ready
+relatedItems:
+  - rh-disclosure
+  - rh-pagination
+  - rh-tabs

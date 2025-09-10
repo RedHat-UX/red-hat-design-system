@@ -47,6 +47,7 @@ interface Context extends EleventyPageRenderData {
   tagName: string;
   isLocal: boolean;
   importMap: { imports: Record<string, string>; scopes: Record<string, Record<string, string>> };
+  repoStatusData: Record<string, any>; // todo: type this
 }
 
 const [manifest] = getAllManifests();
@@ -179,6 +180,11 @@ export default class ElementsPage extends Renderer<Context> {
     return capitalize(this.deslugify(ctx.doc.alias ?? ctx.doc.slug));
   }
 
+  #getElementStatus(ctx: Context, tagName: string) {
+    const allStatus = ctx.repoStatusData || [];
+    return allStatus.find((x: any) => x.tagName === tagName);
+  }
+
   #header(text: string, level = 2, id = this.slugify(text)) {
     return html`
       <uxdot-copy-permalink class="h${level}">
@@ -201,10 +207,16 @@ export default class ElementsPage extends Renderer<Context> {
       ` : html`
       <uxdot-example color-palette="lightest"><img src="${ctx.doc.overviewImageHref}" alt="" aria-labelledby="overview-image-description"></uxdot-example>`}
       ${this.#header('Status')}
-      <uxdot-repo-status-list element="${ctx.tagName}"></uxdot-repo-status-list>
+      <uxdot-repo-status-list 
+        figma-status="${this.#getElementStatus(ctx, ctx.tagName)?.libraries?.figma || ''}"
+        rhds-status="${this.#getElementStatus(ctx, ctx.tagName)?.libraries?.rhds || ''}"
+        shared-status="${this.#getElementStatus(ctx, ctx.tagName)?.libraries?.shared || ''}"></uxdot-repo-status-list>
       ${content}
       ${this.#header('Status checklist')}
-      <uxdot-repo-status-checklist element="${ctx.tagName}"></uxdot-repo-status-checklist>
+      <uxdot-repo-status-checklist 
+        figma-status="${this.#getElementStatus(ctx, ctx.tagName)?.libraries?.figma || ''}"
+        rhds-status="${this.#getElementStatus(ctx, ctx.tagName)?.libraries?.rhds || ''}"
+        shared-status="${this.#getElementStatus(ctx, ctx.tagName)?.libraries?.shared || ''}"></uxdot-repo-status-checklist>
     `;
   }
 
