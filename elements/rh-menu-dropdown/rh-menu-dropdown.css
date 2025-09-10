@@ -11,7 +11,7 @@
   margin: 0.25rem 0;
   display: none;
   z-index: 1000;
-  min-width: 150px;
+  min-width: 296px;
   width: 100%;
   border-radius: 3px;
   border: 1px solid #c7c7c7;
@@ -41,8 +41,18 @@
   background: #ffffff;
   border: none;
 
-  rh-icon {
+  .action-icon rh-icon {
     --rh-icon-size: 10px;
+  }
+
+  .info-section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    rh-icon {
+      margin-inline-end: 0.5rem;
+    }
   }
 }
 

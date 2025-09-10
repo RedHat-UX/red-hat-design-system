@@ -47,23 +47,13 @@ export class RhMenu extends LitElement {
     super.connectedCallback();
     this.id ||= getRandomId('menu');
     this.setAttribute('role', 'menu'); // TODO: use InternalsController.role when support/polyfill is better
-    if (!isServer) {
-      this.#onSlotchange();
-    }
   }
 
   render() {
     return html`
       <!-- menu items -->
-      <slot part="menu"
-            @slotchange="${this.#onSlotchange}"></slot>
+      <slot part="menu"></slot>
     `;
-  }
-
-  #onSlotchange() {
-    for (const item of this._menuItems ?? []) {
-      item.setAttribute('role', 'menuitem');
-    }
   }
 
   activateItem(item: HTMLElement) {
