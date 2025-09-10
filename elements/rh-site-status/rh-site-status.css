@@ -5,11 +5,32 @@
 #container {
   display: inline-flex;
   padding: var(--rh-space-lg, 16px);
-  background:
-    light-dark(var(--rh-color-surface-light, #e0e0e0),
-      var(--rh-color-surface-dark, #383838));
   border-radius: var(--rh-border-radius-default, 3px);
   min-width: 150px;
+
+  &.success {
+    background-color:
+      light-dark(var(--rh-color-surface-status-success),
+        var(--rh-color-surface-dark, #383838));
+  }
+
+  &.warning {
+    background-color:
+      light-dark(var(--rh-color-surface-status-warning),
+        var(--rh-color-surface-dark, #383838));
+  }
+
+  &.danger {
+    background-color:
+      light-dark(var(--rh-color-surface-status-danger),
+        var(--rh-color-surface-dark, #383838));
+  }
+
+  &.loading {
+    background-color:
+      light-dark(var(--rh-color-surface-light, #e0e0e0),
+        var(--rh-color-surface-dark, #383838));
+  }
 }
 
 a {
