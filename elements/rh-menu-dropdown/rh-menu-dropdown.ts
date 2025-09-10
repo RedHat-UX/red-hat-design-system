@@ -79,11 +79,11 @@ export class RhMenuDropdown extends LitElement {
           @click="${this.toggleMenu}"
           @keydown="${this.onToggleKeydown}"
           class=${this.variant === 'closed' ? 'closed' : ''}>
-            <span> 
+            <span class="info-section"> 
               ${this.infoIconName && html`<rh-icon set="ui" icon=${this.infoIconName}></rh-icon>`}
               ${this.text} 
             </span>
-            <span> 
+            <span class="action-icon"> 
               <rh-icon set="ui" icon=${this.actionIconName}></rh-icon>
             </span>
         </button>
