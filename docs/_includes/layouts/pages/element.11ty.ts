@@ -175,6 +175,10 @@ export default class ElementsPage extends Renderer<Context> {
     return readFile(svgPath, 'utf8');
   }
 
+  #getPrettyTagName(ctx: Context) {
+    return capitalize(this.deslugify(ctx.doc.alias ?? ctx.doc.slug));
+  }
+
   #header(text: string, level = 2, id = this.slugify(text)) {
     return html`
       <uxdot-copy-permalink class="h${level}">
@@ -805,7 +809,8 @@ export default class ElementsPage extends Renderer<Context> {
       ${content}
       ${!ctx.doc.fileExists ? '' : await this.renderFile(ctx.doc.filePath, ctx)}
       ${(await Promise.all(demos.map(async demo => `
-      ${this.#header(demo.title, 2, `demo-${this.slugify(demo.title)}`)}
+      ${this.#header(demo.filePath?.endsWith('/index.html') ? this.#getPrettyTagName(ctx)
+                   : demo.title, 2, `demo-${this.slugify(demo.title)}`)}
       ${await this.#renderDemo(demo, ctx)}
       `))).filter(Boolean).join('')}
     `;
