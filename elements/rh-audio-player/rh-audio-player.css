@@ -5,6 +5,11 @@
   font-family: var(--rh-font-family-body-text, RedHatText, 'Red Hat Text', Helvetica, Arial, sans-serif);
 }
 
+#query-context {
+  container-type: inline-size;
+  width: 100%;
+}
+
 [hidden] {
   display: none !important;
   border-radius: var(--rh-border-radius-default, 3px);
@@ -25,7 +30,7 @@ button {
   color: var(--_text-color);
   background-color: transparent;
   border-radius: var(--rh-border-radius-default, 3px);
-  width: var(--_player-width, 304px);
+  width: min(100%, var(--_player-width, 304px));
 
   --_player-width: 328px;
   --_poster-size: 40px;
@@ -471,7 +476,7 @@ rh-menu > button:focus {
   }
 }
 
-@media (min-width: 360px) {
+@container (min-width: 360px) {
   #container {
     --_player-width: 360px;
     --_time-slider-base: 191px;
@@ -482,7 +487,7 @@ rh-menu > button:focus {
   }
 }
 
-@media (min-width: 576px) {
+@container (min-width: 576px) {
   #container {
     --_player-width: 503px;
     --_time-slider-base: 334px;
@@ -671,7 +676,7 @@ rh-menu > button:focus {
   }
 }
 
-@media (min-width: 768px) {
+@container (min-width: 768px) {
   #container {
     &:is(.compact,.compact-wide) #volume-tooltip,
     &.full:not(.expanded) #volume-tooltip {
