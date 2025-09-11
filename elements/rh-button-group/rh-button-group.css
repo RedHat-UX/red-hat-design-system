@@ -1,0 +1,29 @@
+:host {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0; /* We'll use explicit margins for spacing */
+  margin-bottom: var(--pf-t--global--spacer--md, 16px); /* space between button groups */
+}
+
+/* Normal button groups: primary/secondary/tertiary */
+:host([role="group"]) ::slotted(rh-button),
+:host([role="group"]) ::slotted(button) {
+  margin: 0;
+  margin-right: var(--pf-t--global--spacer--sm, 8px); /* spacing between buttons */
+}
+
+/* Icon buttons inside toolbars */
+:host([role="toolbar"]) ::slotted(rh-button[icon]),
+:host([role="toolbar"]) ::slotted(button[icon-only]) {
+  margin: 0;
+  margin-right: var(--pf-t--global--spacer--xs, 4px); /* spacing between icon buttons */
+}
+
+/* Remove right margin from last button in any group */
+:host([role="group"]) ::slotted(rh-button:last-child),
+:host([role="group"]) ::slotted(button:last-child),
+:host([role="toolbar"]) ::slotted(rh-button[icon]:last-child),
+:host([role="toolbar"]) ::slotted(button[icon-only]()
+) {
+  margin-right: 0;
+}
