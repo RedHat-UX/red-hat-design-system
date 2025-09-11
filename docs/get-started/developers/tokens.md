@@ -15,12 +15,49 @@ subnav:
   import '@rhds/elements/rh-code-block/rh-code-block.js';
 </script>
 
+Design tokens are the source of truth for our design decisions. They provide the values
+needed to maintain our design system and are integral to consistently branded Red Hat digital 
+experiences.
+
+Developers are strongly encouraged to use our design [tokens](/tokens/) when writing CSS.
+
 ## How to install tokens
 
-Run the following git command to install RHDS tokens:
+Add **one** of the following `<link>` tags to your document's `<head>`:
+
+### Red Hat CDN
 
 ```js rhcodeblock
-npm i @rhds/tokens
+<link rel="stylesheet"
+      href="https://www.redhatstatic.com/dssf-001/v2/@rhds/tokens@{{ packageinfo.packages["node_modules/@rhds/tokens"].version }}/css/global.css">
+```
+
+### Third party CDN
+
+<rh-alert state="warning">
+  <h4 slot="header">Public CDNs</h4>
+  <p>jsDelivr and other public CDNs should not be used on corporate domains. Use 
+    them for <strong>development purposes only</strong>!</p>
+</rh-alert>
+
+```js rhcodeblock
+<link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@rhds/tokens@{{ packageinfo.packages["node_modules/@rhds/tokens"].version }}/css/global.min.css">
+```
+
+### NPM
+
+Alternatively, if your project uses a bundler, run the following command in your terminal to install
+RHDS tokens:
+
+```js rhcodeblock
+npm install @rhds/tokens
+```
+
+Then reference the Tokens CSS file:
+
+```js rhcodeblock
+@import '@rhds/tokens@{{ packageinfo.packages["node_modules/@rhds/tokens"].version }}/css/global.css';
 ```
 
 ## Usage
@@ -28,15 +65,17 @@ npm i @rhds/tokens
 We use [style-dictionary][styledictionary] to transform our tokens into multiple
 formats and helpers.
 
-### Import global CSS
+### Use tokens in CSS
 
-Apply defaults to the document root by importing the global stylesheet:
+Apply defaults to the document root by importing the global stylesheet as seen above, then use our
+tokens in your CSS:
 
 ```html rhcodeblock
-<link rel="stylesheet" href="/url/to/@rhds/tokens/css/global.css" />
 <style>
   :is(h1, h2, h3, h4, h5, h6) {
+    color: var(--rh-color-text-primary);
     font-family: var(--rh-font-family-heading);
+    margin-block-end: var(--rh-space-xl);
   }
 </style>
 ```
