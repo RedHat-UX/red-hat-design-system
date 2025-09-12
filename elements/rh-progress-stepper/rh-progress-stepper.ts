@@ -66,12 +66,16 @@ export class RhProgressStepper extends LitElement {
   /**
    * Sets the orientation of the progress stepper
    * - `horizontal` - Steps are displayed in a horizontal row
-   * - `vertical` - Steps are displayed in a vertical column
+   * - `vertical` - Steps are displayed in a vertical column.
+   *    Vertical orientation can be used when horizontal space is limited.
+   *    Orientation changes to vertical automatically at `--rh-breakpoint-xs-max` breakpoint.
    */
   @property({ reflect: true }) orientation: ProgressStepsOrientation = 'horizontal';
 
   /**
-   * Makes element display as `compact`
+   * Makes element display as `compact`.
+   * Use compact stepper when there is limited space.
+   * Do not change the spacing between steps in the compact size.
    */
   @provide({ context: compactContext })
   @property({ reflect: true, type: Boolean }) compact = false;
@@ -95,13 +99,14 @@ export class RhProgressStepper extends LitElement {
 
   #maxWidth = 768;
 
-  /** normalized string content of the current step */
+  /**
+   * Normalized string content of the current step
+   */
   #contentString = '';
 
   #resizeTimeoutId?: number;
 
   /**
-   *
    * This callback is debounced with a simple timeout.
    * In the future, we should consider StyleObserver:
    * @see https://www.bram.us/2025/02/24/solved-by-styleobserver-element-matchcontainer/
