@@ -153,7 +153,7 @@ export default class ElementsPage extends Renderer<Context> {
 
   async #getMainDemoContent(tagName: string) {
     try {
-      const demoPath = join(process.cwd(), 'elements', tagName, 'demo', `${tagName}.html`);
+      const demoPath = join(process.cwd(), 'elements', tagName, 'demo', `index.html`);
       const demoContent = await readFile(demoPath, 'utf8');
       return html`
         <rh-code-block actions="wrap copy" highlighting="prerendered">
