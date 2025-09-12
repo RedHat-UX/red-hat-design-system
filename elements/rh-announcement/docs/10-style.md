@@ -10,7 +10,7 @@ An announcement is a layout with various slots for content and images. Inline or
          src="../announcement-anatomy.svg">
   </uxdot-example>
   <figcaption>
-    <ol style="font-size: var(--rh-font-size-body-text-sm, 0.875rem);">
+    <ol>
       <li>Background image</li>
       <li>Inline image</li>
       <li>Body text</li>

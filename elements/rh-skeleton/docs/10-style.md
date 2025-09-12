@@ -12,7 +12,7 @@ A skeleton uses basic shapes to provide a low-fidelity representation of loading
          height="132">
   </uxdot-example>
   <figcaption>
-    <ol style="font-size: var(--rh-font-size-body-text-sm, 0.875rem);">
+    <ol>
       <li>Heading skeleton</li>
       <li>Body text skeleton group</li>
       <li>Skeleton group</li>

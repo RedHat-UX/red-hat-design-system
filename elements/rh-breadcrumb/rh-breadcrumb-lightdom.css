@@ -1,7 +1,13 @@
+/**
+ *  Public vars used *only* in this file must be documented in `rh-breadcrumb.ts`
+ * so that CEM adds them to the Code page documentation.
+ */
+
 rh-breadcrumb {
   --_breadcrumb-caret-image-default:
     var(--rh-breadcrumb-caret-image,
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='15' viewBox='0 0 10 15' fill='none'%3E%3Cg clip-path='url(%23clip0_232_19576)'%3E%3Cpath d='M2.5 14.5L0.5 12.5L5.5 7.5L0.5 2.5L2.5 0.5L9.5 7.5L2.5 14.5Z'  fill='red' /%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_232_19576'%3E%3Crect width='10' height='14' fill='white' transform='matrix(-1 0 0 1 10 0.5)'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E"));
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='15' viewBox='0 0 10 15' fill='none'%3E%3Cg clip-path='url(%23clip0_232_19576)'%3E%3Cpath d='M2.5 14.5L0.5 12.5L5.5 7.5L0.5 2.5L2.5 0.5L9.5 7.5L2.5 14.5Z'  fill='red' /%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_232_19576'%3E%3Crect width='10' height='14' fill='white' transform='matrix(-1 0 0 1 10 0.5)'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E")); /* stylelint-disable-line @stylistic/declaration-colon-newline-after */
+
   --_breadcrumb-link-color:
     var(--rh-breadcrumb-link-color,
       var(--rh-color-interactive-primary-default));
@@ -29,7 +35,9 @@ rh-breadcrumb {
     & > li {
       display: inline-flex;
       margin-block-end: var(--rh-space-md, 8px);
-      padding-inline-end: var(--rh-breadcrumb-li-padding-inline-end, var(--rh-space-lg, 16px));
+      padding-inline-end:
+        var(--rh-breadcrumb-li-padding-inline-end,
+          var(--rh-space-lg, 16px));
       vertical-align: bottom;
       align-items: center;
       gap: var(--rh-space-lg, 16px);

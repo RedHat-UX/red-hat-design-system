@@ -62,7 +62,8 @@ export class UxdotSideNav extends LitElement {
             <rh-icon set="ui" icon="close" size="lg"></rh-icon>
           </button>
         </div>
-        <nav part="nav" aria-label="Main menu">
+        <nav part="nav" aria-labelledby="aria__uxdot-nav-header">
+          <h2 id="aria__uxdot-nav-header" class="visually-hidden">Main navigation</h2>
           <slot></slot>
         </nav>
       </div>

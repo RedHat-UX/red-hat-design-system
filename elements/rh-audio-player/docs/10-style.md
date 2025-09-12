@@ -9,27 +9,34 @@ The audio player is a collection of elements used to play audio clips and browse
 
 ### Anatomy
 
-<uxdot-example color-palette="lightest" width-adjustment="712px">
-  <img alt="Image of audio player anatomy showing all players with lots of annotations"
-       src="../audio-player-anatomy.png"
-       width="712"
-       height="504">
-</uxdot-example>
-
-1. Image
-2. Description
-3. Title
-   1. Elapsed time
-   2. Total time
-5. Current time/seek bar
-6. Unmute/mute button
-7. Volume level
-8. Playback speed
-9. Rewind
-10. Play/pause
-11. Forward
-12. Contextual menu
-{.example-notes}
+<figure>
+  <uxdot-example color-palette="lightest">
+    <img alt="Image of audio player anatomy showing all players with lots of annotations"
+         src="../audio-player-anatomy.png"
+         width="712"
+         height="504">
+  </uxdot-example>
+  <figcaption>
+    <ol>
+      <li>Image</li>
+      <li>Description</li>
+      <li>Title
+        <ol>
+          <li>Elapsed time</li>
+          <li>Total time</li>
+        </ol>
+      </li>
+      <li>Current time/seek bar</li>
+      <li>Unmute/mute button</li>
+      <li>Volume level</li>
+      <li>Playback speed</li>
+      <li>Rewind</li>
+      <li>Play/pause</li>
+      <li>Forward</li>
+      <li>Contextual menu</li>
+    </ol>
+  </figcaption>
+</figure>
 
 ## Sizes
 There are three available sizes and the only difference is the amount of interface elements. The Compact and Mini players can be used on large breakpoints, but the Full player cannot be used on small breakpoints due to space constraints.
