@@ -99,13 +99,14 @@ export class RhProgressStepper extends LitElement {
 
   #maxWidth = 768;
 
-  /** normalized string content of the current step */
+  /**
+   * Normalized string content of the current step
+   */
   #contentString = '';
 
   #resizeTimeoutId?: number;
 
   /**
-   *
    * This callback is debounced with a simple timeout.
    * In the future, we should consider StyleObserver:
    * @see https://www.bram.us/2025/02/24/solved-by-styleobserver-element-matchcontainer/

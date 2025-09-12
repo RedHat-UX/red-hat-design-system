@@ -72,16 +72,19 @@ export class RhProgressStep extends LitElement {
   @property({ reflect: true }) state?: ProgressStepState;
 
   /**
-   * Sets the description text for the progress step if more context is needed.
+   * Sets the description text for the progress step when more context is needed.
    * Descriptions are secondary to titles.
-   * Overridden by the `description` slot.
+   *
+   * It is overridden by the `description` slot.
    */
   @property({ reflect: true }) description?: string;
 
   /**
-   * Custom icon for the step. Overridden by the `icon` slot.
+   * Can be used to set a custom icon for the step.
    * When the step is in the `warn` or `fail` state, it should not have a custom icon.
-   * If there's no custom icon, default active/inactive will appear.
+   * If there's no custom icon, the default active or inactive icon will appear.
+   *
+   * It can be overridden by the `icon` slot.
    */
   @property() icon?: IconNameFor<IconSetName>;
 
@@ -89,7 +92,9 @@ export class RhProgressStep extends LitElement {
   @property({ attribute: 'icon-set' }) iconSet: IconSetName = 'ui';
 
   /**
-   * Sets a URL to make the step clickable
+   * Sets a URL to make the step's title clickable.
+   * Only completed or current steps will appear linked.
+   * The linked title will use our inline link styling, with gray, dashed underlines.
    */
   @property({ reflect: true }) href?: string;
 
@@ -134,7 +139,8 @@ export class RhProgressStep extends LitElement {
         <!-- summary: Elaborative, optional description for the step
              description: |
                Rich HTML content can be slotted here , to override the (plain text) \`description\` attribute.
-               Avoid slotting links, images, block-level content, etc.: descriptions should be prose only (around 40 characters). -->
+               Avoid slotting links, images, block-level content, etc.: descriptions should be prose only 
+               (around 40 characters or a max of 2 lines at the 768px breakpoint). -->
         <slot name="description" id="description">${this.description}</slot>
       </div>
     `;
@@ -143,6 +149,7 @@ export class RhProgressStep extends LitElement {
   /**
    * Icons for each step indicates the status of a process or task.
    * Icons change as users progress.
+   *
    * Computes the icon for the step:
    */
   @observes('icon')
