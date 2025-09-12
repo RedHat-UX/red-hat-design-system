@@ -205,20 +205,22 @@ export class RhCodeBlock extends LitElement {
         <div id="actions"
              @click="${this.#onActionsClick}"
              @keyup="${this.#onActionsKeyup}">
-        ${this.actions.map(x => html`
-          <rh-tooltip>
+        ${this.actions.map((task, index) => html`
+          <rh-tooltip silent>
             <!-- tooltip content for the copy action button -->
-            <slot id="label" slot="content" name="action-label-${x}">${x === 'copy' ? html`
+            <slot id="label-${index}" slot="content" name="action-label-${task}">${task === 'copy' ? html`
               <span>Copy to Clipboard</span>
               <span hidden data-code-block-state="active">Copied!</span>` : html`
               <!-- tooltip content for the wrap action button -->
               <span>Toggle word wrap</span>
               <span hidden data-code-block-state="active">Toggle overflow</span>`}
             </slot>
-            <button id="action-${x}"
+            <button id="action-${task}"
                     class="shadow-fab"
-                    data-code-block-action="${x}">
-              ${RhCodeBlock.actionIcons.get(this.wrap && x === 'wrap' ? 'wrap-active' : x) ?? ''}
+                    type="button"
+                    data-code-block-action="${task}"
+                    aria-labelledby="label-${index}">
+              ${RhCodeBlock.actionIcons.get(this.wrap && task === 'wrap' ? 'wrap-active' : task) ?? ''}
             </button>
           </rh-tooltip>`)}
         </div>
@@ -226,6 +228,7 @@ export class RhCodeBlock extends LitElement {
         <button id="expand"
                 ?hidden="${!expandable}"
                 aria-controls="content-lines"
+                type="button"
                 aria-expanded="${String(!!fullHeight) as 'true' | 'false'}"
                 @click="${this.#onClickExpand}">
           <!-- text content for the expandable toggle button when the code block is collapsed. -->
