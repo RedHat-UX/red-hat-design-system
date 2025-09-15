@@ -7,11 +7,11 @@ import { themable } from '@rhds/elements/lib/themable.js';
 import styles from './rh-button-group.css';
 import { Logger } from '@patternfly/pfe-core/controllers/logger.js';
 
-// ✅ Import RhButton type for IntelliSense
+// Import RhButton type for IntelliSense
 import type { RhButton } from '@rhds/elements/rh-button/rh-button.js';
 import '@rhds/elements/rh-button/rh-button.js';
 
-// ✅ Side-effect imports to register elements for runtime & linter
+// Side-effect imports to register elements for runtime & linter
 import '@rhds/elements/rh-button/rh-button.js';
 import '@rhds/elements/rh-button-group/rh-button-group.js';
 
@@ -25,7 +25,7 @@ export class RhButtonGroup extends themable(LitElement) {
    * - "group": Each button tabbable (normal tab order)
    * - "toolbar": Roving tabindex (WAI-ARIA Toolbar pattern)
    */
-  @property({ reflect: true })
+  @property()
   role: 'group' | 'toolbar' = 'group';
 
   /**
@@ -58,7 +58,16 @@ export class RhButtonGroup extends themable(LitElement) {
     this.addEventListener('keydown', (event: KeyboardEvent) => {
       const { key } = event;
 
-      if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'].includes(key)) {
+      if (
+        ![
+          'ArrowLeft',
+          'ArrowRight',
+          'ArrowUp',
+          'ArrowDown',
+          'Home',
+          'End',
+        ].includes(key)
+      ) {
         return;
       }
 
@@ -73,7 +82,8 @@ export class RhButtonGroup extends themable(LitElement) {
         case 'ArrowLeft':
         case 'ArrowUp':
           this._moveFocus(currentIndex, -1);
-          currentIndex = (currentIndex - 1 + this._buttons.length) % this._buttons.length;
+          currentIndex =
+            (currentIndex - 1 + this._buttons.length) % this._buttons.length;
           break;
         case 'Home':
           this._focusButton(0);
@@ -88,7 +98,8 @@ export class RhButtonGroup extends themable(LitElement) {
   }
 
   private _moveFocus(current: number, delta: number) {
-    const next = (current + delta + this._buttons.length) % this._buttons.length;
+    const next =
+      (current + delta + this._buttons.length) % this._buttons.length;
     this._focusButton(next);
   }
 
