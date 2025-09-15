@@ -98,16 +98,6 @@
   border: var(--rh-border-width-sm, 1px) solid var(--_border-color);
 
   /**
-   * Color tile surface.
-   * Could cause accessibility issues; prefer to use `--rh-color-surface-lightest`
-   * and `--rh-color-surface-darkest` for theming.
-   */
-  background-color:
-    var(--rh-tile-background-color,
-      light-dark(var(--rh-color-surface-lightest, #ffffff),
-      var(--rh-color-surface-darkest, #151515)));
-
-  /**
    * Color of text.
    * Could cause accessibility issues; prefer to use `--rh-color-text-primary-on-light`
    * and `--rh-color-text-primary-on-dark` for theming.
@@ -344,4 +334,69 @@ svg {
 
 *:is(#image, #tile, #headline, #body, #footer) {
   z-index: 2;
+}
+
+/*
+ * Defines color palettes for the host element.
+ * These styles are necessary for the `color-palette` attribute to apply
+ * specific color themes from the design system.
+ */
+:host([color-palette="darkest"]) {
+  background-color: var(--rh-color-surface-darkest, #151515);
+  color: var(--rh-color-text-primary-on-dark, #fff);
+  --_interactive-color: var(--rh-color-border-interactive-on-dark, #0099d3);
+  --_focus-interactive-color: var(--rh-color-interactive-primary-hover-on-dark, #33ccff);
+  --_text-color-secondary: var(--rh-color-text-secondary-on-dark, #9b9b9b);
+  --_disabled-background-color: var(--rh-color-surface-dark, #383838);
+  --_border-color: var(--rh-color-border-subtle-on-dark, #383838);
+}
+
+:host([color-palette="darker"]) {
+  background-color: var(--rh-color-surface-darker, #1f1f1f);
+  color: var(--rh-color-text-primary-on-dark, #fff);
+  --_interactive-color: var(--rh-color-border-interactive-on-dark, #0099d3);
+  --_focus-interactive-color: var(--rh-color-interactive-primary-hover-on-dark, #33ccff);
+  --_text-color-secondary: var(--rh-color-text-secondary-on-dark, #9b9b9b);
+  --_disabled-background-color: var(--rh-color-surface-dark, #383838);
+  --_border-color: var(--rh-color-border-subtle-on-dark, #383838);
+}
+
+:host([color-palette="dark"]) {
+  background-color: var(--rh-color-surface-dark, #383838);
+  color: var(--rh-color-text-primary-on-dark, #fff);
+  --_interactive-color: var(--rh-color-border-interactive-on-dark, #0099d3);
+  --_focus-interactive-color: var(--rh-color-interactive-primary-hover-on-dark, #33ccff);
+  --_text-color-secondary: var(--rh-color-text-secondary-on-dark, #9b9b9b);
+  --_disabled-background-color: var(--rh-color-surface-dark, #383838);
+  --_border-color: var(--rh-color-border-subtle-on-dark, #383838);
+}
+
+:host([color-palette="light"]) {
+  background-color: var(--rh-color-surface-light, #e0e0e0);
+  color: var(--rh-color-text-primary-on-light, #151515);
+  --_interactive-color: var(--rh-color-border-interactive-on-light, #006699);
+  --_focus-interactive-color: var(--rh-color-interactive-primary-hover-on-light, #004466);
+  --_text-color-secondary: var(--rh-color-text-secondary-on-light, #767676);
+  --_disabled-background-color: var(--rh-color-surface-light, #e0e0e0);
+  --_border-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
+}
+
+:host([color-palette="lighter"]) {
+  background-color: var(--rh-color-surface-lighter, #f2f2f2);
+  color: var(--rh-color-text-primary-on-light, #151515);
+  --_interactive-color: var(--rh-color-border-interactive-on-light, #006699);
+  --_focus-interactive-color: var(--rh-color-interactive-primary-hover-on-light, #004466);
+  --_text-color-secondary: var(--rh-color-text-secondary-on-light, #767676);
+  --_disabled-background-color: var(--rh-color-surface-light, #e0e0e0);
+  --_border-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
+}
+
+:host([color-palette="lightest"]) {
+  background-color: var(--rh-color-surface-lightest, #ffffff);
+  color: var(--rh-color-text-primary-on-light, #151515);
+  --_interactive-color: var(--rh-color-border-interactive-on-light, #006699);
+  --_focus-interactive-color: var(--rh-color-interactive-primary-hover-on-light, #004466);
+  --_text-color-secondary: var(--rh-color-text-secondary-on-light, #767676);
+  --_disabled-background-color: var(--rh-color-surface-light, #e0e0e0);
+  --_border-color: var(--rh-color-border-subtle-on-light, #d2d2d2);
 }
