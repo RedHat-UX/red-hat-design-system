@@ -1,62 +1,37 @@
 :host {
   display: inline-flex;
-  gap: 6px;
-  margin: 1rem;
+  flex-wrap: wrap;
+  gap: 0;
+  margin-bottom: var(
+    --rh-space-md,
+    16px
+  ); /* space between button groups */
 }
 
-.group {
-  display: inline-flex;
-  gap: 0.5rem;
+/* Normal button groups: primary/secondary/tertiary */
+:host([role="group"]) ::slotted(rh-button),
+:host([role="group"]) ::slotted(button) {
+  margin: 0;
+  margin-right: var(
+    --rh-space-sm,
+    8px
+  ); /* spacing between buttons */
 }
 
-/* Default button styling */
-::slotted(button) {
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
-  border-radius: 4px;
-  border: 1px solid transparent;
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out, border-color 0.2s;
+/* Icon buttons inside toolbars */
+:host([role="toolbar"]) ::slotted(rh-button[icon]),
+:host([role="toolbar"]) ::slotted(button[icon-only]) {
+  margin: 0;
+  margin-right: var(
+    --rh-space-xs,
+    4px
+  ); /* spacing between icon buttons */
 }
 
-/* Variants */
-::slotted(button[variant="primary"]) {
-  background: #007bba;
-  border-color: #007bba;
-  color: #fff;
-}
-::slotted(button[variant="primary"]:hover) {
-  background: #005f9e;
-}
-
-::slotted(button[variant="secondary"]) {
-  background: #f3f3f3;
-  border-color: #d2d2d2;
-  color: #333;
-}
-::slotted(button[variant="secondary"]:hover) {
-  background: #e0e0e0;
-}
-
-::slotted(button[variant="danger"]) {
-  background: #c9190b;
-  border-color: #a30000;
-  color: #fff;
-}
-::slotted(button[variant="danger"]:hover) {
-  background: #a30000;
-}
-
-/* Icon button */
-::slotted(button[icon]) {
-  padding: 0.5rem;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-::slotted(button[icon] svg) {
-  width: 1rem;
-  height: 1rem;
-  fill: currentColor;
+/* Remove right margin from last button in any group */
+:host([role="group"]) ::slotted(rh-button:last-child),
+:host([role="group"]) ::slotted(button:last-child),
+:host([role="toolbar"]) ::slotted(rh-button[icon]:last-child),
+:host([role="toolbar"]) ::slotted(button[icon-only]) {
+  margin-right: 0;
 }
