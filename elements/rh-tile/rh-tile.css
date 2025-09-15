@@ -341,9 +341,10 @@ svg {
  * These styles are necessary for the `color-palette` attribute to apply
  * specific color themes from the design system.
  */
-:host([color-palette="darkest"]) {
+:host([color-palette='darkest']) {
   background-color: var(--rh-color-surface-darkest);
   color: var(--rh-color-text-primary-on-dark);
+
   --_interactive-color: var(--rh-color-border-interactive-on-dark);
   --_focus-interactive-color: var(--rh-color-interactive-primary-hover-on-dark);
   --_text-color-secondary: var(--rh-color-text-secondary-on-dark);
@@ -351,9 +352,10 @@ svg {
   --_border-color: var(--rh-color-border-subtle-on-dark);
 }
 
-:host([color-palette="darker"]) {
+:host([color-palette='darker']) {
   background-color: var(--rh-color-surface-darker);
   color: var(--rh-color-text-primary-on-dark);
+
   --_interactive-color: var(--rh-color-border-interactive-on-dark);
   --_focus-interactive-color: var(--rh-color-interactive-primary-hover-on-dark);
   --_text-color-secondary: var(--rh-color-text-secondary-on-dark);
@@ -361,9 +363,10 @@ svg {
   --_border-color: var(--rh-color-border-subtle-on-dark);
 }
 
-:host([color-palette="dark"]) {
+:host([color-palette='dark']) {
   background-color: var(--rh-color-surface-dark);
   color: var(--rh-color-text-primary-on-dark);
+
   --_interactive-color: var(--rh-color-border-interactive-on-dark);
   --_focus-interactive-color: var(--rh-color-interactive-primary-hover-on-dark);
   --_text-color-secondary: var(--rh-color-text-secondary-on-dark);
@@ -371,9 +374,10 @@ svg {
   --_border-color: var(--rh-color-border-subtle-on-dark);
 }
 
-:host([color-palette="light"]) {
+:host([color-palette='light']) {
   background-color: var(--rh-color-surface-light);
   color: var(--rh-color-text-primary-on-light);
+
   --_interactive-color: var(--rh-color-border-interactive-on-light);
   --_focus-interactive-color: var(--rh-color-interactive-primary-hover-on-light);
   --_text-color-secondary: var(--rh-color-text-secondary-on-light);
@@ -381,9 +385,10 @@ svg {
   --_border-color: var(--rh-color-border-subtle-on-light);
 }
 
-:host([color-palette="lighter"]) {
+:host([color-palette='lighter']) {
   background-color: var(--rh-color-surface-lighter);
   color: var(--rh-color-text-primary-on-light);
+
   --_interactive-color: var(--rh-color-border-interactive-on-light);
   --_focus-interactive-color: var(--rh-color-interactive-primary-hover-on-light);
   --_text-color-secondary: var(--rh-color-text-secondary-on-light);
@@ -391,13 +396,13 @@ svg {
   --_border-color: var(--rh-color-border-subtle-on-light);
 }
 
-:host([color-palette="lightest"]) {
+:host([color-palette='lightest']) {
   background-color: var(--rh-color-surface-lightest);
   color: var(--rh-color-text-primary-on-light);
+
   --_interactive-color: var(--rh-color-border-interactive-on-light);
   --_focus-interactive-color: var(--rh-color-interactive-primary-hover-on-light);
   --_text-color-secondary: var(--rh-color-text-secondary-on-light);
   --_disabled-background-color: var(--rh-color-surface-light);
   --_border-color: var(--rh-color-border-subtle-on-light);
 }
-
