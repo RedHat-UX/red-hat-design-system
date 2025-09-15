@@ -4,15 +4,13 @@
 }
 
 #menu-list {
-  position: absolute;
-  top: 100%;
-  left: 0;
+  position: fixed;
   padding: 8px 0;
   margin: 0.25rem 0;
   display: none;
   z-index: 1000;
   min-width: 296px;
-  width: 100%;
+  max-width: 100%;
   border-radius: 3px;
   border: 1px solid #c7c7c7;
   background: #ffffff;
@@ -20,6 +18,10 @@
 }
 
 :host([open]) #menu-list {
+  display: block;
+}
+
+.visible {
   display: block;
 }
 
@@ -62,6 +64,7 @@
 
 .menu-dropdown-container {
   width: 100%;
+  position: relative;
 }
 
 ::slotted(hr) {

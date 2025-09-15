@@ -24,6 +24,7 @@ export class RhMenuDropdown extends LitElement {
   @property({ attribute: 'variant', reflect: true }) variant: 'open' | 'closed' = 'closed';
   @property({ attribute: 'text', type: String, reflect: true }) text!: string;
   @query('#menu-toggle') menuToggleButton!: HTMLElement;
+  @query('#menu-list') menuList!: HTMLElement;
   @query('slot') slotElement!: HTMLSlotElement;
 
   static {
@@ -129,9 +130,55 @@ export class RhMenuDropdown extends LitElement {
 
   toggleMenu() {
     this.open = !this.open;
+
     if (this.open) {
-      this.updateComplete.then(() => this.focusFirstItem());
+      this.updateComplete.then(() => {
+        this.focusFirstItem();
+        this.positionPopover();
+      });
     }
+  }
+
+  positionPopover() {
+    const {
+      top: toggleTop,
+      bottom: toggleBottom,
+      left: toggleLeft,
+      right: toggleRight,
+    } = this.menuToggleButton.getBoundingClientRect();
+
+    const { offsetWidth: menuWidth, offsetHeight: menuHeight } = this.menuList;
+    const { innerWidth: viewportWidth, innerHeight: viewportHeight, scrollX, scrollY } = window;
+    const spacing = 2;
+
+    let top: number;
+    let left: number;
+
+    // ----------- Vertical positioning -----------
+    if (toggleBottom + menuHeight + spacing > viewportHeight) {
+      // Position the menulist above the toggle if there isn't enough space below
+      top = toggleTop - menuHeight - spacing;
+    } else {
+      // Position below the toggle
+      top = toggleBottom + spacing;
+    }
+
+    // ----------- Horizontal positioning -----------
+    if (toggleLeft + menuWidth <= viewportWidth) {
+      // Enough space to the right, position the menu starting from the left edge of the button.
+      left = toggleLeft;
+    } else {
+      // Not enough space to the right, align right edge of popover to button's right
+      left = toggleRight - menuWidth;
+
+      // Prevent menu from going off-screen left
+      if (left < 0) {
+        left = spacing;
+      }
+    }
+
+    this.menuList.style.top = `${top + scrollY}px`;
+    this.menuList.style.left = `${left + scrollX}px`;
   }
 
   get items(): RhMenuItem[] {
