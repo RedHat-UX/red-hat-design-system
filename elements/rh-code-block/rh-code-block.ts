@@ -345,7 +345,7 @@ export class RhCodeBlock extends LitElement {
 
      if (this.lineNumbers === 'hidden') {
         this.#lineHeights = codes.flatMap(element =>
-          element.textContent?.split(/\n(?!$)/g).map(() => 1) ?? []
+          element.textContent?.split(/\n(?!$)/g).map(() => '1px' ) ?? []
         );
         this.requestUpdate();
         return; 
