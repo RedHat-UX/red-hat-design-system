@@ -37,7 +37,7 @@ information with code snippets that are specific to that element.
 In addition to loading JavaScript, RHDS strongly encourages loading our design [tokens](/tokens/)
 via a `<link>` tag in the `<head>`. Designers and developers use tokens instead of hard-coded values
 to create flexible yet seamless user experiences across a variety of Red Hat platforms and
-technologies. See our [Tokens Installation](/developers/tokens/) page for further details.
+technologies. See our [Tokens Installation](/get-started/developers/tokens/) page for further details.
 
 ## Red Hat CDN
 
