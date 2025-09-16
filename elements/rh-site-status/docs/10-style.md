@@ -1,32 +1,3 @@
-<style data-helmet>
-  figure {
-    margin: 0;
-  }
-  figcaption ol {
-    font-size: var(--rh-font-size-body-text-sm, 0.875rem);
-    font-weight: var(--rh-font-weight-body-text-regular, 400);
-    line-height: var(--rh-line-height-heading, 1.3);
-    padding-inline-start: var(--rh-space-lg, 16px);
-  }
-  figure .example {
-    margin-bottom: var(--rh-space-lg, 16px);
-  }
-
-  figure .example + figcaption {
-    margin-bottom: var(--rh-space-4xl, 64px);
-  }
-
-  .example {
-    width: 100%;
-  }
-
-  .example + .example {
-    margin-top: unset;
-    margin-block-start: unset;
-  }
-</style>
-
-
 ## Styles
 
 Website status is a combination of an icon and link within a very small card. It is designed to be understood immediately. Otherwise, a user can click on the link to learn more.

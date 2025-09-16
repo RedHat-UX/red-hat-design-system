@@ -37,11 +37,11 @@ subnav:
 
 ## Our color palette
 
-Our color palette was built to be extensive and flexible. Applying color 
-thoughtfully and consistently helps us deliver accessible, cohesive, and 
+Our color palette was built to be extensive and flexible. Applying color
+thoughtfully and consistently helps us deliver accessible, cohesive, and
 recognizable experiences for our users.
 
-[Contact us][contactus] if you have design system questions or visit the [Brand 
+[Contact us][contactus] if you have design system questions or visit the [Brand
 standards website][brandstandards] if you have brand questions.
 
 ## Brand red
@@ -169,14 +169,14 @@ Status has its own severity levels, color palettes, and meanings assigned to eac
 
 <rh-table>
 
-| Status name | Severity level |  Status                                         | Use case                                                                                        |
-| ----------- | :------------: | ----------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| Info        | 0              |  Purple         | <ul><li>Helpful information before an action</li><li>Positive</li></ul>                         |
-| Success     | 0              |  Green           | <ul><li>Success state or an action was successful</li><li>Positive or healthy</li></ul>         |
-| Neutral     | 0              |  Gray             | <ul><li>An action is not available or will have no impact</li><li>Disabled or neutral</li></ul> |
-| Warning     | 1              |  Yellow         | <ul><li>How to avoid a destructive action or error</li><li>Negative</li></ul>                   |
-| Caution     | 2              |  Orange         | <ul><li>Non-destructive action or fixable error</li><li>Negative</li></ul>                      |
-| Danger      | 3              |  Red orange | <ul><li>Destructive action or critical errorr</li><li>Negative</li></ul>                        |
+| Status name | Severity level | Status     | Use case                                                                                        |
+| ----------- | :------------: | ---------- | ----------------------------------------------------------------------------------------------- |
+| Info        |       0        | Purple     | <ul><li>Helpful information before an action</li><li>Positive</li></ul>                         |
+| Success     |       0        | Green      | <ul><li>Success state or an action was successful</li><li>Positive or healthy</li></ul>         |
+| Neutral     |       0        | Gray       | <ul><li>An action is not available or will have no impact</li><li>Disabled or neutral</li></ul> |
+| Warning     |       1        | Yellow     | <ul><li>How to avoid a destructive action or error</li><li>Negative</li></ul>                   |
+| Caution     |       2        | Orange     | <ul><li>Non-destructive action or fixable error</li><li>Negative</li></ul>                      |
+| Danger      |       3        | Red orange | <ul><li>Destructive action or critical errorr</li><li>Negative</li></ul>                        |
 
 </rh-table>
 
@@ -190,7 +190,7 @@ Status has its own severity levels, color palettes, and meanings assigned to eac
 - [Theming][theming]
 - [Iconography foundations][iconography]
 - [Icon element][rhicon]
-- [WCAG 2.1][wcag21]
+- [WCAG 2.2][wcag22]
 - [WebAIM: Contrast and Color Accessibility][aimcc]
 
 ## Best practices
@@ -234,7 +234,7 @@ Ensure backgrounds have adequate contrast when other elements are placed on top.
 [forms]: /patterns/form
 [toasts]: /elements/alert/style/#toast
 [tokens]: /tokens
-[wcag21]: https://www.w3.org/WAI/WCAG21/Understanding/
+[wcag22]: https://www.w3.org/WAI/WCAG22/Understanding/
 [aimcc]: https://webaim.org/articles/contrast/
 [theming]: /theming/
 [iconography]: /foundations/iconography/
