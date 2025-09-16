@@ -1,0 +1,14 @@
+$schema: ../../../docs/schemas/element-data.schema.json
+tagName: rh-cta
+name: Call to Action
+type: element
+overallStatus: ready
+libraries:
+  figma: ready
+  rhds: ready
+  shared: ready
+  docs: ready
+relatedItems:
+  - rh-button
+  - link
+  - link-with-icon

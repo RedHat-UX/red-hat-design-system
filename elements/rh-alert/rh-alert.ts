@@ -216,8 +216,7 @@ export class RhAlert extends LitElement {
                     [variant]: !!variant,
                   })}"
                   role="alert"
-                  aria-hidden="false"
-                  color-palette="lightest">
+                  aria-hidden="false">
         <div id="left-column">
           <rh-icon id="icon" set="ui" icon="${this.#icon}"></rh-icon>
         </div>
