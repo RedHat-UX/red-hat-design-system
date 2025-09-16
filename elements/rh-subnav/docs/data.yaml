@@ -1,0 +1,14 @@
+$schema: ../../../docs/schemas/element-data.schema.json
+tagName: rh-subnav
+name: Subnavigation
+type: element
+overallStatus: ready
+libraries:
+  figma: ready
+  rhds: ready
+  shared: ready
+  docs: ready
+relatedItems:
+  - rh-navigation
+  - rh-navigation-secondary
+  - skip-navigation

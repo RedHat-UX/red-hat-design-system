@@ -54,6 +54,21 @@ or anything else, please submit a [GitHub issue][issues].
 
 <section aria-labelledby="version-3.1.0">
 
+### Patches from version 3.1.1
+
+<rh-table>
+
+| Change        | Type        | Notes        |
+| ------------- | ----------- | ------------ |
+| `<rh-alert>`: color schemes | {{p()}} | Added support for dark color schemes |
+| `<rh-breadcrumb>`: layout fixes | {{p()}} | Fix colors, spacing, and arrows |
+| `<rh-footer>`: color contrast | {{p()}} | Fix color contrast of text when javascript fails to load |
+
+</rh-table>
+
+<rh-cta href="https://github.com/RedHat-UX/red-hat-design-system/releases/tag/v3.1.1">View all version 3.1.1 release notes</rh-cta>
+
+
 ## Version 3.1.0
 Released August 6, 2025
 

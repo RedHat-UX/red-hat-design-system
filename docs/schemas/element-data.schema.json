@@ -1,0 +1,77 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://ux.redhat.com/schemas/element-data.schema.json",
+  "title": "Red Hat Design System Element Data",
+  "description": "Schema for element documentation data in the Red Hat Design System",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "JSON Schema reference"
+    },
+    "tagName": {
+      "type": "string",
+      "pattern": "^rh-[a-z][a-z0-9-]*[a-z0-9]$",
+      "description": "The custom element tag name (e.g., 'rh-button')"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Pretty name as it appears in navigation (e.g., 'Button')"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["element", "pattern", "hidden"],
+      "description": "The type of component"
+    },
+    "description": {
+      "type": "string",
+      "description": "Optional description that appears on the header of docs pages"
+    },
+    "overallStatus": {
+      "type": "string",
+      "enum": ["planned", "inProgress", "ready", "deprecated", "na", "beta", "experimental", "new"],
+      "description": "Overall status of the component"
+    },
+    "libraries": {
+      "type": "object",
+      "description": "Status of the component in different libraries",
+      "properties": {
+        "figma": {
+          "type": "string",
+          "enum": ["planned", "inProgress", "ready", "deprecated", "na", "beta", "experimental", "new"],
+          "description": "Status in the Figma library"
+        },
+        "rhds": {
+          "type": "string",
+          "enum": ["planned", "inProgress", "ready", "deprecated", "na", "beta", "experimental", "new"],
+          "description": "Status in RH Elements"
+        },
+        "shared": {
+          "type": "string",
+          "enum": ["planned", "inProgress", "ready", "deprecated", "na", "beta", "experimental", "new"],
+          "description": "Status in RH Shared Libs"
+        },
+        "docs": {
+          "type": "string",
+          "enum": ["planned", "inProgress", "ready", "deprecated", "na", "beta", "experimental", "new"],
+          "description": "Status of documentation"
+        }
+      },
+      "required": ["figma", "rhds", "shared", "docs"],
+      "additionalProperties": false
+    },
+    "relatedItems": {
+      "type": "array",
+      "description": "List of related elements and patterns that appear in the feedback section",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "description": "Element tag name (e.g., 'rh-button') or pattern name (e.g., 'filter', 'link')"
+      },
+      "uniqueItems": true
+    }
+  },
+  "required": ["type", "overallStatus", "libraries"],
+  "additionalProperties": false
+}

@@ -230,7 +230,26 @@
 
   uxdot-example + figcaption,
   figcaption + uxdot-example {
-    margin-block: var(--rh-space-xl);
+    margin-block: var(--rh-space-lg);
+  }
+
+  uxdot-example + figcaption ol {
+    color: var(--rh-color-text-secondary);
+    font-size: var(--rh-font-size-body-text-sm, 0.875rem);
+    line-height: var(--rh-line-height-body-text, 1.5);
+    list-style-position: inside;
+  }
+
+  uxdot-example + figcaption > ol {
+    padding-inline-start: 0;
+  }
+
+  uxdot-example + figcaption > ol li {
+    margin-block: 0;
+  }
+
+  uxdot-example + figcaption > ol ol {
+    margin: 0;
   }
 }
 

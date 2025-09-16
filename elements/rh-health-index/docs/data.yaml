@@ -1,0 +1,14 @@
+$schema: ../../../docs/schemas/element-data.schema.json
+tagName: rh-health-index
+name: Health index
+type: element
+overallStatus: new
+libraries:
+  figma: ready
+  rhds: ready
+  shared: planned
+  docs: ready
+relatedItems:
+  - rh-avatar
+  - rh-badge
+  - rh-tag

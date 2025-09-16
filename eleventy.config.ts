@@ -279,6 +279,7 @@ export default async function(eleventyConfig: UserConfig) {
       'rh-tag',
       'rh-tile',
       'rh-video-embed',
+      'uxdot-pattern',
     ],
     tagsToAlphabetize: [
       'component',
